@@ -11,10 +11,13 @@ export default function Home() {
         <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
           <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
             <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-              Stock Information Dashboard
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
             </h1>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Your Smart Stock/Option Portfolio Helper
+            </h2>
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-              Search for stocks, view detailed information, and stay updated with the latest market data.
+              Empowering investors with intelligent insights, education, and portfolio management tools for stock and option investments.
             </p>
             <div className="flex justify-center space-x-4">
               <Button asChild size="lg">
@@ -32,16 +35,16 @@ export default function Home() {
               Features
             </h2>
             <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              Our platform provides comprehensive information to help with your investment decisions.
+              SOPHIE provides comprehensive tools to help with your investment decisions and financial education.
             </p>
           </div>
           <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Real-time Stock Data</h3>
+                  <h3 className="font-bold">Real-time Market Data</h3>
                   <p className="text-sm text-muted-foreground">
-                    Access up-to-date information on stock prices, volumes, and market trends.
+                    Access up-to-date information on stock prices, options, volumes, and market trends.
                   </p>
                 </div>
               </div>
@@ -49,9 +52,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Company Information</h3>
+                  <h3 className="font-bold">Portfolio Analysis</h3>
                   <p className="text-sm text-muted-foreground">
-                    Get detailed information about companies, including their sectors and industries.
+                    Track and analyze your investments with advanced portfolio management tools.
                   </p>
                 </div>
               </div>
@@ -61,7 +64,7 @@ export default function Home() {
                 <div className="space-y-2">
                   <h3 className="font-bold">Financial Metrics</h3>
                   <p className="text-sm text-muted-foreground">
-                    View key financial metrics like market cap, P/E ratio, and more.
+                    View key financial metrics like market cap, P/E ratio, option Greeks, and more.
                   </p>
                 </div>
               </div>
@@ -69,9 +72,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Price Charts</h3>
+                  <h3 className="font-bold">Interactive Charts</h3>
                   <p className="text-sm text-muted-foreground">
-                    Visualize stock performance with interactive price charts.
+                    Visualize stock and option performance with interactive price and volatility charts.
                   </p>
                 </div>
               </div>
@@ -79,9 +82,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Latest News</h3>
+                  <h3 className="font-bold">Investment Education</h3>
                   <p className="text-sm text-muted-foreground">
-                    Stay informed with the latest news and updates about your favorite stocks.
+                    Learn about investing strategies with our educational resources and news insights.
                   </p>
                 </div>
               </div>
@@ -89,9 +92,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Search Capability</h3>
+                  <h3 className="font-bold">Smart Search</h3>
                   <p className="text-sm text-muted-foreground">
-                    Quickly find stocks with our powerful search functionality.
+                    Quickly find stocks and options with our intelligent search functionality.
                   </p>
                 </div>
               </div>
@@ -102,7 +105,7 @@ export default function Home() {
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © {new Date().getFullYear()} Stock Dashboard. All rights reserved.
+            © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
           </p>
         </div>
       </footer>

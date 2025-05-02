@@ -26,13 +26,13 @@ export default function TrendingPage() {
           <div className="flex flex-col space-y-2">
             <h1 className="text-3xl font-bold tracking-tight">Trending Stocks</h1>
             <p className="text-muted-foreground">
-              Most popular stocks currently being viewed on our platform.
+              SOPHIE's selection of popular stocks currently gaining attention in the market.
             </p>
           </div>
           
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {trendingStocks.map((stock) => (
-              <Card key={stock.ticker}>
+              <Card key={stock.ticker} className="hover:shadow-md transition-shadow">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl font-bold">{stock.ticker}</CardTitle>
                   <CardDescription>{stock.name}</CardDescription>
@@ -46,7 +46,7 @@ export default function TrendingPage() {
                   </div>
                   <Button asChild className="w-full">
                     <Link href={`/stock/${stock.ticker}`}>
-                      View Details
+                      View Analysis
                     </Link>
                   </Button>
                 </CardContent>

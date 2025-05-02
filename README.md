@@ -1,11 +1,21 @@
-# Next.js Stock Information Dashboard
+# SOPHIE - Stock/Option Portfolio Helper
 
-A responsive Next.js frontend for a stock information and recommendation platform, powered by a GraphQL backend.
+A responsive Next.js frontend for an intelligent stock/option portfolio helper, designed to provide investment insights and education.
+
+## About SOPHIE
+
+SOPHIE (Stock/Option Portfolio Helper for Investment and Education) is a comprehensive platform that helps investors:
+- Analyze stock and option investments
+- Track portfolio performance
+- Learn about investment strategies
+- Make informed financial decisions
 
 ## Features
 
-- **Search Functionality**: Dynamic search bar to query stock tickers with real-time suggestions
-- **Stock Dashboard**: Display key stock information, financial metrics, price charts, and news
+- **Smart Search**: Dynamic search bar to query stock and option information with real-time suggestions
+- **Portfolio Analysis**: Tools to help track and analyze your investments
+- **Market Data**: Display key stock information, financial metrics, price charts, and news
+- **Investment Education**: Resources to learn about investing strategies
 - **Responsive Design**: Fully responsive layout for desktop, tablet, and mobile
 - **Dark/Light Mode**: Toggle between dark and light themes
 
@@ -39,11 +49,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The application communicates with a GraphQL API that provides:
 
-- Stock search functionality
+- Stock and option search functionality
 - Company information
 - Financial metrics
-- Stock price data
+- Price data
 - News and updates
+- Portfolio analytics
 
 ## Project Structure
 

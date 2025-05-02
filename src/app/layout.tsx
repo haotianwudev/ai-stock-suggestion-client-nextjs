@@ -7,8 +7,8 @@ import { ApolloWrapper } from "@/lib/apollo/apollo-wrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Stock Information Dashboard",
-  description: "A dashboard for viewing stock information and recommendations",
+  title: "SOPHIE | Stock/Option Portfolio Helper",
+  description: "Your intelligent stock/option portfolio helper for investment and education",
 };
 
 export default function RootLayout({
