@@ -14,7 +14,7 @@ interface StockDetailClientProps {
   ticker: string;
 }
 
-export default function StockDetailClient({ ticker }: StockDetailClientProps) {
+export function StockDetailClient({ ticker }: StockDetailClientProps) {
   const [startDate, setStartDate] = useState<string>(getDefaultStartDate());
   const [endDate, setEndDate] = useState<string>(getDefaultEndDate());
 
@@ -36,19 +36,19 @@ export default function StockDetailClient({ ticker }: StockDetailClientProps) {
   const stockData: StockDetails | null = data?.stock || null;
 
   if (loading) return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-64">
       <p>Loading stock information...</p>
     </div>
   );
 
   if (error) return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-64">
       <p>Error loading stock information: {error.message}</p>
     </div>
   );
 
   if (!stockData) return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-64">
       <p>No stock data found for ticker: {ticker}</p>
     </div>
   );
