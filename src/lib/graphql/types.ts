@@ -21,6 +21,15 @@ export interface StockPrice {
   volume: number;
 }
 
+export interface StockValuation {
+  valuation_method: string;
+  intrinsic_value: number;
+  market_cap: number;
+  gap: number;
+  signal: string;
+  biz_date: string;
+}
+
 export interface NewsItem {
   title: string;
   date: string;

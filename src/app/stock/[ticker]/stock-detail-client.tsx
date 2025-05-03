@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { GET_STOCK_DETAILS } from "@/lib/graphql/queries";
-import { StockDetails } from "@/lib/graphql/types";
+import { GET_STOCK_DETAILS, GET_STOCK_VALUATIONS } from "@/lib/graphql/queries";
+import { StockDetails, type StockValuation } from "@/lib/graphql/types";
 import { StockChart } from "@/components/stock/stock-chart";
 import { StockNews } from "@/components/stock/stock-news";
 import { StockFinancials } from "@/components/stock/stock-financials";
 import { StockCompanyInfo } from "@/components/stock/stock-company-info";
+import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
 
 interface StockDetailClientProps {
   ticker: string;
@@ -29,21 +30,26 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     return date.toISOString().split('T')[0];
   }
 
-  const { loading, error, data } = useQuery(GET_STOCK_DETAILS, {
+  const { loading: detailsLoading, error: detailsError, data: detailsData } = useQuery(GET_STOCK_DETAILS, {
     variables: { ticker, startDate, endDate },
   });
 
-  const stockData: StockDetails | null = data?.stock || null;
+  const { loading: valuationsLoading, error: valuationsError, data: valuationsData } = useQuery(GET_STOCK_VALUATIONS, {
+    variables: { ticker },
+  });
 
-  if (loading) return (
+  const stockData: StockDetails | null = detailsData?.stock || null;
+  const valuations: StockValuation[] = valuationsData?.latestValuations || [];
+
+  if (detailsLoading) return (
     <div className="flex justify-center items-center h-64">
       <p>Loading stock information...</p>
     </div>
   );
 
-  if (error) return (
+  if (detailsError) return (
     <div className="flex justify-center items-center h-64">
-      <p>Error loading stock information: {error.message}</p>
+      <p>Error loading stock information: {detailsError.message}</p>
     </div>
   );
 
@@ -79,6 +85,10 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
             <StockChart prices={stockData.prices} />
           </CardContent>
         </Card>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-1">
+        <StockValuationComponent valuations={valuations} />
       </div>
       
       <div className="grid gap-6 md:grid-cols-1">

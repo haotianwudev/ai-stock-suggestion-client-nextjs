@@ -40,4 +40,17 @@ export const GET_STOCK_DETAILS = gql`
       }
     }
   }
+`;
+
+export const GET_STOCK_VALUATIONS = gql`
+  query GetLatestValuations($ticker: String!) {
+    latestValuations(ticker: $ticker) {
+      valuation_method
+      intrinsic_value
+      market_cap
+      gap
+      signal
+      biz_date
+    }
+  }
 `; 
