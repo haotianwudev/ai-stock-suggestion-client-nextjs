@@ -13,15 +13,19 @@ interface InfoIconProps {
 
 export function InfoIcon({ text, className = "" }: InfoIconProps) {
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={100}>
       <Tooltip.Root>
         <TooltipTrigger asChild>
-          <div className={`inline-flex items-center justify-center rounded-full border w-4 h-4 text-[10px] text-muted-foreground font-medium hover:bg-muted cursor-help transition-colors ${className}`}>
+          <button 
+            type="button" 
+            className={`inline-flex items-center justify-center rounded-full border w-4 h-4 text-[10px] text-muted-foreground font-medium hover:bg-muted cursor-help transition-colors ${className}`}
+            aria-label="More information"
+          >
             i
-          </div>
+          </button>
         </TooltipTrigger>
-        <TooltipContent side="top" className="max-w-xs text-xs">
-          <p>{text}</p>
+        <TooltipContent side="top" align="center" className="max-w-xs text-xs">
+          {text}
         </TooltipContent>
       </Tooltip.Root>
     </TooltipProvider>

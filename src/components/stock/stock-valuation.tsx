@@ -5,6 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import { InfoIcon } from "@/components/ui/info-icon";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface StockValuationProps {
   valuations: StockValuation[];
@@ -75,10 +81,7 @@ export function StockValuation({ valuations }: StockValuationProps) {
   return (
     <Card className="overflow-hidden">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          Valuation Analysis 
-          <InfoIcon text="Analysis of stock value using four different methods: DCF, EV/EBITDA, Owner Earnings, and Residual Income. The gap shows the difference between intrinsic value and market cap." />
-        </CardTitle>
+        <CardTitle>Valuation Analysis</CardTitle>
         <CardDescription>
           Multiple valuation methods as of {date}
         </CardDescription>
@@ -88,10 +91,10 @@ export function StockValuation({ valuations }: StockValuationProps) {
           <div className="mb-6 p-4 border rounded-lg bg-muted/40">
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-lg flex items-center gap-2">
-                  Summary Valuation
+                <div className="flex items-center gap-2">
+                  <h3 className="font-semibold text-lg">Summary Valuation</h3>
                   <InfoIcon text={METHOD_DESCRIPTIONS["weighted"]} />
-                </h3>
+                </div>
                 <span className={`font-bold ${SIGNAL_COLORS[weightedValuation.signal]}`}>
                   {weightedValuation.signal.toUpperCase()}
                 </span>
