@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { GET_STOCK_DETAILS, GET_STOCK_VALUATIONS } from "@/lib/graphql/queries";
-import { StockDetails, type StockValuation } from "@/lib/graphql/types";
+import { GET_STOCK_DETAILS, GET_STOCK_VALUATIONS, GET_STOCK_FUNDAMENTALS } from "@/lib/graphql/queries";
+import { StockDetails, type StockValuation, type StockFundamentals } from "@/lib/graphql/types";
 import { StockChart } from "@/components/stock/stock-chart";
 import { StockNews } from "@/components/stock/stock-news";
 import { StockFinancials } from "@/components/stock/stock-financials";
 import { StockCompanyInfo } from "@/components/stock/stock-company-info";
 import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
+import { StockFundamentalsAnalysis } from "@/components/stock/stock-fundamentals-analysis";
 
 interface StockDetailClientProps {
   ticker: string;
@@ -18,6 +19,7 @@ interface StockDetailClientProps {
 export function StockDetailClient({ ticker }: StockDetailClientProps) {
   const [startDate, setStartDate] = useState<string>(getDefaultStartDate());
   const [endDate, setEndDate] = useState<string>(getDefaultEndDate());
+  const [fundamentals, setFundamentals] = useState<StockFundamentals | null>(null);
 
   function getDefaultStartDate() {
     const date = new Date();
@@ -38,8 +40,32 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     variables: { ticker },
   });
 
+  const { loading: fundamentalsLoading, error: fundamentalsError, data: fundamentalsData } = useQuery(GET_STOCK_FUNDAMENTALS, {
+    variables: { ticker },
+  });
+
+  // For debugging
+  useEffect(() => {
+    if (fundamentalsData) {
+      console.log("Fundamentals data:", fundamentalsData);
+      
+      // Try various possible formats
+      const data = fundamentalsData?.latestFundamentals || 
+                  (Array.isArray(fundamentalsData?.latestFundamentals) 
+                    ? fundamentalsData?.latestFundamentals[0] 
+                    : null);
+                    
+      setFundamentals(data);
+    }
+  }, [fundamentalsData]);
+
   const stockData: StockDetails | null = detailsData?.stock || null;
   const valuations: StockValuation[] = valuationsData?.latestValuations || [];
+
+  // For debugging when user sees the issue
+  if (fundamentalsError) {
+    console.error("Fundamentals error:", fundamentalsError);
+  }
 
   if (detailsLoading) return (
     <div className="flex justify-center items-center h-64">
@@ -58,6 +84,34 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       <p>No stock data found for ticker: {ticker}</p>
     </div>
   );
+
+  // Mock fundamentals data for testing the UI - will only be used if real data is missing
+  const mockFundamentals: StockFundamentals = {
+    biz_date: "2025-05-02",
+    overall_signal: "neutral",
+    confidence: 25.00,
+    profitability_score: 3,
+    profitability_signal: "bullish",
+    growth_score: 1,
+    growth_signal: "neutral",
+    health_score: 1,
+    health_signal: "neutral",
+    valuation_score: 3,
+    valuation_signal: "bearish",
+    return_on_equity: 1.4530,
+    net_margin: 0.2430,
+    operating_margin: 0.3177,
+    revenue_growth: 0.0121,
+    earnings_growth: 0.0258,
+    book_value_growth: 0.1722,
+    current_ratio: 0.9200,
+    debt_to_equity: 4.1500,
+    free_cash_flow_per_share: 6.5200,
+    earnings_per_share: 6.3600,
+    pe_ratio: 40.1800,
+    pb_ratio: 57.8700,
+    ps_ratio: 9.7600
+  };
 
   return (
     <div className="grid gap-6">
@@ -85,6 +139,10 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
             <StockChart prices={stockData.prices} />
           </CardContent>
         </Card>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-1">
+        <StockFundamentalsAnalysis fundamentals={fundamentals || mockFundamentals} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-1">
