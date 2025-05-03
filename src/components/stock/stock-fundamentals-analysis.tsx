@@ -2,14 +2,13 @@
 
 import { type StockFundamentals } from "@/lib/graphql/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { InfoIcon } from "@/components/ui/info-icon";
 import { Progress } from "@/components/ui/progress";
+
+type SignalType = "bullish" | "neutral" | "bearish";
 
 interface StockFundamentalsAnalysisProps {
   fundamentals: StockFundamentals | null;
 }
-
-type SignalType = 'bullish' | 'neutral' | 'bearish';
 
 const SIGNAL_COLORS: Record<SignalType, string> = {
   "bullish": "text-green-500",
@@ -32,24 +31,24 @@ const DIMENSION_DESCRIPTIONS = {
 
 const METRIC_DESCRIPTIONS = {
   // Profitability
-  return_on_equity: "Return on Equity: Measures how efficiently a company uses shareholders' equity to generate profit. Threshold: >15% is strong.",
-  net_margin: "Net Margin: The percentage of revenue that remains as profit after all expenses. Threshold: >20% is healthy.",
-  operating_margin: "Operating Margin: Profit from operations as a percentage of revenue, before interest and taxes. Threshold: >15% is efficient.",
+  return_on_equity: "Measures how efficiently a company uses shareholders' equity to generate profit. Threshold: >15% is strong.",
+  net_margin: "The percentage of revenue that remains as profit after all expenses. Threshold: >20% is healthy.",
+  operating_margin: "Profit from operations as a percentage of revenue, before interest and taxes. Threshold: >15% is efficient.",
   
   // Growth
-  revenue_growth: "Revenue Growth: Year-over-year percentage increase in company sales. Threshold: >10% is strong.",
-  earnings_growth: "Earnings Growth: Year-over-year percentage increase in company profits. Threshold: >10% is strong.",
-  book_value_growth: "Book Value Growth: Year-over-year percentage increase in company equity value. Threshold: >10% is strong.",
+  revenue_growth: "Year-over-year percentage increase in company sales. Threshold: >10% is strong.",
+  earnings_growth: "Year-over-year percentage increase in company profits. Threshold: >10% is strong.",
+  book_value_growth: "Year-over-year percentage increase in company equity value. Threshold: >10% is strong.",
   
   // Health
-  current_ratio: "Current Ratio: Measures ability to pay short-term obligations (current assets / current liabilities). Threshold: >1.5 indicates good liquidity.",
-  debt_to_equity: "Debt-to-Equity: Ratio of total debt to shareholders' equity, indicating financial leverage. Threshold: <0.5 is conservative.",
-  fcf_conversion: "Free Cash Flow Conversion: Ratio of free cash flow to earnings, indicating quality of earnings. Threshold: >0.8 (80% of earnings) is healthy.",
+  current_ratio: "Measures ability to pay short-term obligations (current assets / current liabilities). Threshold: >1.5 indicates good liquidity.",
+  debt_to_equity: "Ratio of total debt to shareholders' equity, indicating financial leverage. Threshold: <0.5 is conservative.",
+  fcf_conversion: "Ratio of free cash flow to earnings, indicating quality of earnings. Threshold: >0.8 (80% of earnings) is healthy.",
   
   // Valuation
-  pe_ratio: "Price-to-Earnings: Stock price divided by earnings per share. Threshold: <25 is reasonable, higher values may indicate overvaluation.",
-  pb_ratio: "Price-to-Book: Stock price divided by book value per share. Threshold: <3 is reasonable, higher values may indicate overvaluation.",
-  ps_ratio: "Price-to-Sales: Stock price divided by revenue per share. Threshold: <5 is reasonable, higher values may indicate overvaluation."
+  pe_ratio: "Stock price divided by earnings per share. Threshold: <25 is reasonable, higher values may indicate overvaluation.",
+  pb_ratio: "Stock price divided by book value per share. Threshold: <3 is reasonable, higher values may indicate overvaluation.",
+  ps_ratio: "Stock price divided by revenue per share. Threshold: <5 is reasonable, higher values may indicate overvaluation."
 };
 
 const THRESHOLDS = {
@@ -85,12 +84,9 @@ function formatRatio(value: number): string {
 export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAnalysisProps) {
   if (!fundamentals) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Fundamental Analysis</CardTitle>
-          <CardDescription>No fundamental data available</CardDescription>
-        </CardHeader>
-      </Card>
+      <div className="text-center p-4">
+        <p>No fundamental analysis data available.</p>
+      </div>
     );
   }
 
@@ -124,136 +120,183 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
     { name: "P/S Ratio", value: fundamentals.ps_ratio, format: formatRatio, threshold: THRESHOLDS.ps_ratio, description: METRIC_DESCRIPTIONS.ps_ratio, isHigherBetter: false },
   ];
 
+  // Get color based on value comparison to threshold
+  const getComparisonColor = (value: number, threshold: number, isHigherBetter: boolean) => {
+    if (isHigherBetter) {
+      return value >= threshold ? "text-green-500" : "text-red-500";
+    } else {
+      return value <= threshold ? "text-green-500" : "text-red-500";
+    }
+  };
+
+  // Render a metric row with value and threshold comparison
   const renderMetricRow = (metric: any) => {
-    const isGood = metric.isHigherBetter 
-      ? metric.value >= metric.threshold 
-      : metric.value <= metric.threshold;
-    
-    const compareText = metric.isHigherBetter 
-      ? `>${metric.format(metric.threshold)} is good` 
-      : `<${metric.format(metric.threshold)} is good`;
+    const formattedValue = metric.format(metric.value);
+    const comparisonColor = getComparisonColor(metric.value, metric.threshold, metric.isHigherBetter);
     
     return (
-      <div key={metric.name} className="flex items-center justify-between py-2 border-b last:border-0">
-        <div className="flex items-center space-x-2">
-          <span className="text-sm font-medium">{metric.name}</span>
-          <InfoIcon text={metric.description} />
-        </div>
-        <div className="flex items-center space-x-3">
-          <span className={`text-sm ${isGood ? "text-green-500 font-medium" : "text-red-500 font-medium"}`}>
-            {metric.format(metric.value)}
+      <div key={metric.name} className="space-y-1 mb-4">
+        <div className="flex justify-between">
+          <span className="font-medium">{metric.name}</span>
+          <span className={`font-medium ${comparisonColor}`}>
+            {formattedValue}
           </span>
         </div>
+        <p className="text-xs text-muted-foreground break-words hyphens-auto">
+          {metric.description}
+        </p>
       </div>
     );
   };
 
   const renderDimension = (title: string, metrics: any[], score: number, signal: string, description: string) => (
-    <div className="p-4 border rounded-lg">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <h3 className="text-base font-semibold">{title}</h3>
-          <InfoIcon text={description} />
-        </div>
-        <div className="flex items-center gap-2">
-          <span className={`font-medium text-sm ${SIGNAL_COLORS[signal.toLowerCase() as SignalType]}`}>
-            {signal.toUpperCase()}
-          </span>
-        </div>
-      </div>
-      <div className="space-y-1">
-        {metrics.map(renderMetricRow)}
-      </div>
-      <div className="mt-3">
-        <div className="flex justify-between items-center text-xs text-muted-foreground mb-1">
-          <span>Score: {score}/3 metrics meet thresholds</span>
-          <span className={`px-2 py-0.5 rounded-full ${SIGNAL_BG_COLORS[signal.toLowerCase() as SignalType]} text-white font-medium`}>
-            {signal}
-          </span>
-        </div>
-        <Progress 
-          value={(score / 3) * 100} 
-          className="h-1.5" 
-        />
-      </div>
-    </div>
-  );
-
-  return (
     <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle>Fundamental Analysis</CardTitle>
+      <CardContent className="pt-6">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className={`font-bold ${SIGNAL_COLORS[(fundamentals.overall_signal.toLowerCase() as SignalType) || 'neutral']}`}>
-              {fundamentals.overall_signal.toUpperCase()}
-            </span>
-            <span className="text-sm text-muted-foreground">
-              {fundamentals.confidence}% confidence
-            </span>
+            <h3 className="text-lg font-bold">{title}</h3>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className={`font-bold ${SIGNAL_COLORS[signal.toLowerCase() as SignalType]} capitalize`}>{signal}</span>
+            <span className="text-sm text-muted-foreground ml-1">({score}/3 metrics)</span>
           </div>
         </div>
-        <CardDescription>
-          Multi-dimensional fundamental analysis as of {date}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {renderDimension(
-            "Profitability", 
-            profitabilityMetrics, 
-            fundamentals.profitability_score, 
-            fundamentals.profitability_signal,
-            DIMENSION_DESCRIPTIONS.profitability
-          )}
-          
-          {renderDimension(
-            "Growth", 
-            growthMetrics, 
-            fundamentals.growth_score, 
-            fundamentals.growth_signal,
-            DIMENSION_DESCRIPTIONS.growth
-          )}
-        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {renderDimension(
-            "Financial Health", 
-            healthMetrics, 
-            fundamentals.health_score, 
-            fundamentals.health_signal,
-            DIMENSION_DESCRIPTIONS.health
-          )}
-          
-          {renderDimension(
-            "Valuation", 
-            valuationMetrics, 
-            fundamentals.valuation_score, 
-            fundamentals.valuation_signal,
-            DIMENSION_DESCRIPTIONS.valuation
-          )}
-        </div>
+        <p className="text-sm text-muted-foreground mb-4">
+          {description}
+        </p>
         
-        <div className="mt-2 text-xs text-muted-foreground bg-muted/50 p-3 rounded-md">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="font-semibold mb-1">Methodology:</p>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Profitability (33% weight): Measures how effectively a company generates profit</li>
-                <li>Growth (33% weight): Examines a company's expansion rates across revenue, earnings, and book value</li>
-                <li>Financial Health (17% weight): Assesses stability, risk levels, and cash flow quality</li>
-                <li>Valuation (17% weight): Determines if the current stock price is reasonably valued</li>
-              </ul>
-            </div>
-            <div className="text-right">
-              <p className="font-semibold mb-1">Signal Generation:</p>
-              <p>Bullish: More bullish than bearish dimensions</p>
-              <p>Bearish: More bearish than bullish dimensions</p>
-              <p>Neutral: Equal bullish and bearish dimensions</p>
-            </div>
-          </div>
+        <div className="space-y-2 mb-4">
+          {metrics.map(renderMetricRow)}
+        </div>
+
+        <div className="mt-2">
+          <Progress 
+            value={(score / 3) * 100} 
+            className="h-1.5" 
+          />
         </div>
       </CardContent>
     </Card>
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Overall Fundamental Signal */}
+      <div className="bg-card rounded-lg p-6 shadow-sm border">
+        <div className="flex justify-between items-center mb-3">
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-bold">Fundamental Analysis</h3>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Analysis Date:</span>
+            <span className="font-medium">{date}</span>
+          </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground mb-4">
+          Fundamental analysis evaluates a company's financial health across multiple dimensions to determine its investment potential. The analysis considers profitability, growth, financial health, and valuation metrics.
+        </p>
+
+        <div className="flex flex-col space-y-4">
+          <div className="flex items-center gap-2">
+            <div className={`w-4 h-4 rounded-full ${SIGNAL_BG_COLORS[fundamentals.overall_signal.toLowerCase() as SignalType]}`}></div>
+            <div className="flex items-center gap-1">
+              <span className={`font-semibold capitalize ${SIGNAL_COLORS[fundamentals.overall_signal.toLowerCase() as SignalType]}`}>{fundamentals.overall_signal}</span>
+              <span className="text-sm text-muted-foreground">with {Math.round(fundamentals.confidence)}% confidence</span>
+            </div>
+          </div>
+
+          {/* Dimension Overview Cards */}
+          <div className="grid md:grid-cols-4 gap-2 mt-4">
+            <div className="bg-muted/50 rounded-lg p-2 text-center">
+              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.profitability_signal.toLowerCase() as SignalType]}`}>
+                {fundamentals.profitability_signal}
+              </div>
+              <div className="text-xs text-muted-foreground">Profitability</div>
+            </div>
+            
+            <div className="bg-muted/50 rounded-lg p-2 text-center">
+              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.growth_signal.toLowerCase() as SignalType]}`}>
+                {fundamentals.growth_signal}
+              </div>
+              <div className="text-xs text-muted-foreground">Growth</div>
+            </div>
+            
+            <div className="bg-muted/50 rounded-lg p-2 text-center">
+              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.health_signal.toLowerCase() as SignalType]}`}>
+                {fundamentals.health_signal}
+              </div>
+              <div className="text-xs text-muted-foreground">Financial Health</div>
+            </div>
+            
+            <div className="bg-muted/50 rounded-lg p-2 text-center">
+              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.valuation_signal.toLowerCase() as SignalType]}`}>
+                {fundamentals.valuation_signal}
+              </div>
+              <div className="text-xs text-muted-foreground">Valuation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Detail Cards */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {renderDimension(
+          "Profitability", 
+          profitabilityMetrics, 
+          fundamentals.profitability_score, 
+          fundamentals.profitability_signal,
+          DIMENSION_DESCRIPTIONS.profitability
+        )}
+        
+        {renderDimension(
+          "Growth", 
+          growthMetrics, 
+          fundamentals.growth_score, 
+          fundamentals.growth_signal,
+          DIMENSION_DESCRIPTIONS.growth
+        )}
+        
+        {renderDimension(
+          "Financial Health", 
+          healthMetrics, 
+          fundamentals.health_score, 
+          fundamentals.health_signal,
+          DIMENSION_DESCRIPTIONS.health
+        )}
+        
+        {renderDimension(
+          "Valuation", 
+          valuationMetrics, 
+          fundamentals.valuation_score, 
+          fundamentals.valuation_signal,
+          DIMENSION_DESCRIPTIONS.valuation
+        )}
+      </div>
+
+      {/* Methodology */}
+      <div className="bg-muted/50 p-4 rounded-lg text-sm">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <p className="font-semibold mb-2">Methodology:</p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <li>Profitability (33% weight): Measures how effectively a company generates profit</li>
+              <li>Growth (33% weight): Examines a company's expansion rates across revenue, earnings, and book value</li>
+              <li>Financial Health (17% weight): Assesses stability, risk levels, and cash flow quality</li>
+              <li>Valuation (17% weight): Determines if the current stock price is reasonably valued</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold mb-2">Signal Generation:</p>
+            <ul className="space-y-1 text-muted-foreground">
+              <li><span className="text-green-500 font-medium">Bullish:</span> More bullish than bearish dimensions</li>
+              <li><span className="text-red-500 font-medium">Bearish:</span> More bearish than bullish dimensions</li>
+              <li><span className="text-yellow-500 font-medium">Neutral:</span> Equal bullish and bearish dimensions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 } 

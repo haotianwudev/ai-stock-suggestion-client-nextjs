@@ -1,16 +1,9 @@
 "use client";
 
 import { type StockValuation } from "@/lib/graphql/types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, formatPercent } from "@/lib/utils";
-import { InfoIcon } from "@/components/ui/info-icon";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 interface StockValuationProps {
   valuations: StockValuation[];
@@ -32,11 +25,11 @@ const METHOD_WEIGHTS: Record<string, number> = {
 };
 
 const METHOD_DESCRIPTIONS: Record<string, string> = {
-  "dcf": "5-year free cash flow projection with 5% growth and 10% discount rates. Measures the present value of expected future cash flows.",
-  "ev_ebitda": "Compares enterprise value to earnings before interest, taxes, depreciation & amortization using median historical multiple.",
-  "owner_earnings": "Warren Buffett's preferred method: Net Income + Depreciation - Maintenance Capex, discounted with margin of safety.",
-  "residual_income": "Accounts for cost of capital and is based on book value growth. Measures excess returns over required cost of capital.",
-  "weighted": "A weighted average of the four valuation methods, with DCF and Owner Earnings weighted at 35%, EV/EBITDA at 20%, and Residual Income at 10%."
+  "dcf": "Projects future cash flows over 5 years with 5% growth and 10% discount rate. Calculates the present value of expected future cash flows.",
+  "ev_ebitda": "Compares enterprise value to earnings before interest, taxes, depreciation & amortization using historical multiples.",
+  "owner_earnings": "Warren Buffett's method: Net Income + Depreciation - Maintenance Capex, with a margin of safety applied.",
+  "residual_income": "Based on book value plus excess returns over required cost of capital, focusing on economic profit.",
+  "weighted": "Combines all methods: DCF (35%), Owner Earnings (35%), EV/EBITDA (20%), and Residual Income (10%)."
 };
 
 const SIGNAL_COLORS: Record<string, string> = {
@@ -54,12 +47,9 @@ const SIGNAL_BG_COLORS: Record<string, string> = {
 export function StockValuation({ valuations }: StockValuationProps) {
   if (!valuations || valuations.length === 0) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Valuation Analysis</CardTitle>
-          <CardDescription>No valuation data available</CardDescription>
-        </CardHeader>
-      </Card>
+      <div className="text-center p-4">
+        <p>No valuation data available.</p>
+      </div>
     );
   }
 
@@ -78,115 +68,152 @@ export function StockValuation({ valuations }: StockValuationProps) {
   const confidence = weightedValuation ? getConfidence(weightedValuation.gap) : 0;
   const date = weightedValuation?.biz_date ? new Date(weightedValuation.biz_date).toLocaleDateString() : "";
 
+  const formatDateString = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
+
   return (
-    <Card className="overflow-hidden">
-      <CardHeader>
-        <CardTitle>Valuation Analysis</CardTitle>
-        <CardDescription>
-          Multiple valuation methods as of {date}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <div className="space-y-6">
+      {/* Overall Valuation Summary */}
+      <div className="bg-card rounded-lg p-6 shadow-sm border">
+        <div className="flex justify-between items-center mb-3">
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-bold">Valuation Analysis</h3>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Analysis Date:</span>
+            <span className="font-medium">{weightedValuation ? formatDateString(weightedValuation.biz_date) : "N/A"}</span>
+          </div>
+        </div>
+
         {weightedValuation && (
-          <div className="mb-6 p-4 border rounded-lg bg-muted/40">
-            <div className="flex flex-col space-y-2">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-semibold text-lg">Valuation Summary</h3>
-                  <InfoIcon text={METHOD_DESCRIPTIONS["weighted"]} />
+          <>
+            <p className="text-sm text-muted-foreground mb-4">
+              Valuation analysis calculates a stock's intrinsic value using multiple methodologies and compares it to the current market price to determine if the stock is undervalued or overvalued.
+            </p>
+
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-center gap-2">
+                <div className={`w-4 h-4 rounded-full ${SIGNAL_BG_COLORS[weightedValuation.signal]}`}></div>
+                <div className="flex items-center gap-1">
+                  <span className={`font-semibold capitalize ${SIGNAL_COLORS[weightedValuation.signal]}`}>{weightedValuation.signal}</span>
+                  <span className="text-sm text-muted-foreground">with {Math.round(confidence)}% confidence</span>
                 </div>
-                <span className={`font-bold ${SIGNAL_COLORS[weightedValuation.signal]}`}>
-                  {weightedValuation.signal.toUpperCase()}
-                </span>
               </div>
-              
-              <div className="flex flex-col space-y-1">
-                <div className="text-sm text-muted-foreground">
-                  Intrinsic Value: {formatCurrency(weightedValuation.intrinsic_value)}
+
+              <div className="grid grid-cols-2 gap-4 bg-muted/30 p-3 rounded-lg">
+                <div>
+                  <div className="text-sm text-muted-foreground">Intrinsic Value:</div>
+                  <div className="text-xl font-semibold">{formatCurrency(weightedValuation.intrinsic_value)}</div>
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  Market Cap: {formatCurrency(weightedValuation.market_cap)}
+                <div>
+                  <div className="text-sm text-muted-foreground">Current Market Value:</div>
+                  <div className="text-xl font-semibold">{formatCurrency(weightedValuation.market_cap)}</div>
                 </div>
-                <div className="flex items-center mt-1">
-                  <div className="flex-1 mr-2">
-                    <Progress 
-                      value={50 + (weightedValuation.gap * 100)} 
-                      max={100} 
-                      className="h-2"
-                    />
+              </div>
+
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Undervalued</span>
+                  <span>Overvalued</span>
+                </div>
+                <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                  <div className="absolute inset-0 flex">
+                    <div className="bg-green-500 h-full" style={{ width: "50%" }}></div>
+                    <div className="bg-red-500 h-full" style={{ width: "50%" }}></div>
                   </div>
+                  <div 
+                    className="absolute top-0 bottom-0 w-2 bg-black transform -translate-x-1/2 border-2 border-white"
+                    style={{ left: `${50 + (weightedValuation.gap * 100)}%` }}
+                  ></div>
+                </div>
+                <div className="flex justify-center mt-1">
                   <span className={`text-sm font-medium ${weightedValuation.gap >= 0 ? "text-green-500" : "text-red-500"}`}>
-                    {formatPercent(weightedValuation.gap)}
+                    {formatPercent(weightedValuation.gap)} {weightedValuation.gap >= 0 ? "Undervalued" : "Overvalued"}
                   </span>
                 </div>
               </div>
-              
-              <div className="mt-1">
-                <div className="text-sm font-medium mb-1 flex items-center gap-2">
-                  Confidence: {Math.round(confidence)}%
-                  <InfoIcon text="Confidence is scaled based on gap magnitude (0-30%). A larger absolute gap indicates stronger mispricing confidence, capped at 30% difference." />
-                </div>
-                <Progress value={confidence} className="h-1.5" />
-              </div>
             </div>
-          </div>
+          </>
         )}
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {methodValuations.map((valuation) => (
-            <div 
-              key={valuation.valuation_method} 
-              className="border rounded-lg p-3 hover:shadow-sm transition-shadow"
-            >
-              <div className="flex justify-between items-center mb-2">
-                <h4 className="font-medium flex items-center gap-2">
-                  {METHOD_NAMES[valuation.valuation_method]}
-                  <InfoIcon text={METHOD_DESCRIPTIONS[valuation.valuation_method]} />
-                </h4>
-                <div 
-                  className={`text-xs px-2 py-1 rounded-full ${SIGNAL_BG_COLORS[valuation.signal]} text-white font-medium`}
-                >
-                  {valuation.signal}
+      {/* Individual Valuation Methods */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {methodValuations.map((valuation) => (
+          <Card key={valuation.valuation_method}>
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-bold">{METHOD_NAMES[valuation.valuation_method] || valuation.valuation_method}</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`font-bold text-sm ${SIGNAL_COLORS[valuation.signal]} capitalize`}>{valuation.signal}</span>
                 </div>
               </div>
               
-              <div className="text-xs text-muted-foreground mb-1">
-                <span className="inline-block w-28">Intrinsic Value:</span> 
-                {formatCurrency(valuation.intrinsic_value)}
-              </div>
+              <p className="text-sm text-muted-foreground mb-4 break-words hyphens-auto">
+                {METHOD_DESCRIPTIONS[valuation.valuation_method]}
+              </p>
               
-              <div className="flex items-center mt-2">
-                <div className="flex-1 mr-2">
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm text-muted-foreground">Intrinsic Value:</div>
+                    <div className="text-lg font-medium">{formatCurrency(valuation.intrinsic_value)}</div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Market Value:</div>
+                    <div className="text-lg font-medium">{formatCurrency(valuation.market_cap)}</div>
+                  </div>
+                </div>
+              
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span>Valuation Gap:</span>
+                    <span className={`${valuation.gap >= 0 ? "text-green-500" : "text-red-500"} font-medium`}>
+                      {formatPercent(valuation.gap)} {valuation.gap >= 0 ? "Undervalued" : "Overvalued"}
+                    </span>
+                  </div>
                   <Progress 
-                    value={50 + (valuation.gap * 100)} 
+                    value={50 + (valuation.gap * 100)}
                     max={100} 
                     className="h-1.5"
                   />
                 </div>
-                <span className={`text-xs font-medium ${valuation.gap >= 0 ? "text-green-500" : "text-red-500"}`}>
-                  {formatPercent(valuation.gap)}
-                </span>
+                
+                <div className="text-xs text-muted-foreground mt-2">
+                  Weight: {(METHOD_WEIGHTS[valuation.valuation_method] * 100)}% of weighted average calculation
+                </div>
               </div>
-              
-              <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                Weight: {(METHOD_WEIGHTS[valuation.valuation_method] * 100)}%
-                <InfoIcon text="Weight assigned to this valuation method in the weighted average calculation." className="ml-1"/>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="mt-4 text-xs text-muted-foreground">
-          <p>
-            <b>Valuation Gap:</b> Percentage difference between intrinsic value and market cap.
-            <span className="text-green-500 font-medium"> Positive gap → Undervalued. </span>
-            <span className="text-red-500 font-medium"> Negative gap → Overvalued. </span>
-          </p>
-          <p className="mt-1">
-            <b>Signal:</b> Bullish (&gt;+15%), Bearish (&lt;-15%), or Neutral (between)
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      
+      {/* Methodology */}
+      <div className="bg-muted/50 p-4 rounded-lg text-sm">
+        <div className="mb-2">
+          <p className="font-semibold mb-2">Valuation Methodology:</p>
+          <p className="text-muted-foreground">
+            Each valuation method calculates intrinsic value differently, considering various aspects of a company's financials.
+            The weighted average combines all methods with appropriate weights to produce a balanced final estimate.
           </p>
         </div>
-      </CardContent>
-    </Card>
+        <div>
+          <p className="font-semibold mb-1">Signal Generation:</p>
+          <ul className="space-y-1 text-muted-foreground">
+            <li><span className="text-green-500 font-medium">Bullish:</span> Gap &gt; +15% (significantly undervalued)</li>
+            <li><span className="text-red-500 font-medium">Bearish:</span> Gap &lt; -15% (significantly overvalued)</li>
+            <li><span className="text-yellow-500 font-medium">Neutral:</span> Gap between -15% and +15% (fairly valued)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 } 

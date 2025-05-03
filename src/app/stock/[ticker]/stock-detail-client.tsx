@@ -18,7 +18,6 @@ import {
   type StockTechnicals
 } from "@/lib/graphql/types";
 import { StockChart } from "@/components/stock/stock-chart";
-import { StockNews } from "@/components/stock/stock-news";
 import { StockFinancials } from "@/components/stock/stock-financials";
 import { StockCompanyInfo } from "@/components/stock/stock-company-info";
 import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
@@ -299,13 +298,6 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
           <CardContent>
             <div className="space-y-8">
               <StockSentimentAnalysis sentiment={sentiment || mockSentiment} news={stockData.news} />
-              
-              <hr className="border-t border-gray-200 dark:border-gray-800 my-6" />
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Latest News</h3>
-                <StockNews news={stockData.news} />
-              </div>
             </div>
           </CardContent>
         </Card>
