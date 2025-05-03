@@ -38,7 +38,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
 
   function getDefaultStartDate() {
     const date = new Date();
-    date.setMonth(date.getMonth() - 1);
+    date.setFullYear(date.getFullYear() - 1);
     return date.toISOString().split('T')[0];
   }
 
@@ -254,20 +254,6 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       <div className="grid gap-6 md:grid-cols-1">
         <Card>
           <CardHeader>
-            <CardTitle>Stock Price Chart</CardTitle>
-            <CardDescription>
-              Price data from {startDate} to {endDate}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <StockChart prices={stockData.prices} />
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-1">
-        <Card>
-          <CardHeader>
             <CardTitle>Technical Analysis</CardTitle>
             <CardDescription>
               Comprehensive analysis based on price action and market statistics
@@ -279,14 +265,6 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         </Card>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-1">
-        <StockFundamentalsAnalysis fundamentals={fundamentals || mockFundamentals} />
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-1">
-        <StockValuationComponent valuations={valuations} />
-      </div>
-      
       <div className="grid gap-6 md:grid-cols-1">
         <Card>
           <CardHeader>
@@ -301,6 +279,14 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
             </div>
           </CardContent>
         </Card>
+      </div>
+      
+      <div className="grid gap-6 md:grid-cols-1">
+        <StockFundamentalsAnalysis fundamentals={fundamentals || mockFundamentals} />
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-1">
+        <StockValuationComponent valuations={valuations} />
       </div>
     </div>
   );

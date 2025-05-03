@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { InfoIcon, TrendingUp, TrendingDown, ArrowRight, Repeat, BarChart3, ArrowUpDown, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { StockChart } from "@/components/stock/stock-chart";
 
 interface StockTechnicalsAnalysisProps {
   technicals: StockTechnicals | null;
@@ -47,12 +48,12 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
 
   const getStrategyIcon = (strategy: string) => {
     switch(strategy) {
-      case 'trend': return <TrendingUp className="h-5 w-5" />;
-      case 'mr': return <Repeat className="h-5 w-5" />;
-      case 'momentum': return <Zap className="h-5 w-5" />;
-      case 'volatility': return <BarChart3 className="h-5 w-5" />;
-      case 'stat_arb': return <ArrowUpDown className="h-5 w-5" />;
-      default: return <InfoIcon className="h-5 w-5" />;
+      case 'trend': return <TrendingUp className="h-10 w-10" />;
+      case 'mr': return <Repeat className="h-10 w-10" />;
+      case 'momentum': return <Zap className="h-10 w-10" />;
+      case 'volatility': return <BarChart3 className="h-10 w-10" />;
+      case 'stat_arb': return <ArrowUpDown className="h-10 w-10" />;
+      default: return <InfoIcon className="h-10 w-10" />;
     }
   };
 
@@ -191,6 +192,15 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
 
   return (
     <div className="space-y-6">
+      {/* Price Chart */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Price Chart with Technical Indicators</h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          Historical price data with EMAs (8, 21, 55) and Bollinger Bands overlaid
+        </p>
+        <StockChart prices={prices} />
+      </div>
+
       {/* Overall Technical Signal */}
       <div className="bg-card rounded-lg p-6 shadow-sm border">
         <div className="flex justify-between items-center mb-3">
@@ -217,55 +227,65 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
           </div>
 
           {/* Strategy Overview Cards */}
-          <div className="grid md:grid-cols-5 gap-2 mt-4">
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className="mb-1 flex justify-center">
-                {getStrategyIcon('trend')}
+          <div className="grid md:grid-cols-5 gap-5 mt-8 mb-8">
+            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+              <div className="mb-2 flex justify-center">
+                <div className="p-2 bg-background rounded-full shadow-inner">
+                  {getStrategyIcon('trend')}
+                </div>
               </div>
-              <div className={`text-xs font-semibold capitalize ${getSignalColor(technicals.trend_signal)}`}>
-                {technicals.trend_signal}
+              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.trend_signal)}`}>
+                {technicals.trend_signal.toUpperCase()}
               </div>
-              <div className="text-xs text-muted-foreground">Trend</div>
+              <div className="text-base font-semibold">Trend Following</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className="mb-1 flex justify-center">
-                {getStrategyIcon('mr')}
+            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+              <div className="mb-2 flex justify-center">
+                <div className="p-2 bg-background rounded-full shadow-inner">
+                  {getStrategyIcon('mr')}
+                </div>
               </div>
-              <div className={`text-xs font-semibold capitalize ${getSignalColor(technicals.mr_signal)}`}>
-                {technicals.mr_signal}
+              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.mr_signal)}`}>
+                {technicals.mr_signal.toUpperCase()}
               </div>
-              <div className="text-xs text-muted-foreground">Mean Reversion</div>
+              <div className="text-base font-semibold">Mean Reversion</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className="mb-1 flex justify-center">
-                {getStrategyIcon('momentum')}
+            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+              <div className="mb-2 flex justify-center">
+                <div className="p-2 bg-background rounded-full shadow-inner">
+                  {getStrategyIcon('momentum')}
+                </div>
               </div>
-              <div className={`text-xs font-semibold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
-                {technicals.momentum_signal}
+              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
+                {technicals.momentum_signal.toUpperCase()}
               </div>
-              <div className="text-xs text-muted-foreground">Momentum</div>
+              <div className="text-base font-semibold">Momentum</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className="mb-1 flex justify-center">
-                {getStrategyIcon('volatility')}
+            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+              <div className="mb-2 flex justify-center">
+                <div className="p-2 bg-background rounded-full shadow-inner">
+                  {getStrategyIcon('volatility')}
+                </div>
               </div>
-              <div className={`text-xs font-semibold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
-                {technicals.volatility_signal}
+              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
+                {technicals.volatility_signal.toUpperCase()}
               </div>
-              <div className="text-xs text-muted-foreground">Volatility</div>
+              <div className="text-base font-semibold">Volatility</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className="mb-1 flex justify-center">
-                {getStrategyIcon('stat_arb')}
+            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+              <div className="mb-2 flex justify-center">
+                <div className="p-2 bg-background rounded-full shadow-inner">
+                  {getStrategyIcon('stat_arb')}
+                </div>
               </div>
-              <div className={`text-xs font-semibold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
-                {technicals.stat_arb_signal}
+              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
+                {technicals.stat_arb_signal.toUpperCase()}
               </div>
-              <div className="text-xs text-muted-foreground">Statistical</div>
+              <div className="text-base font-semibold">Statistical</div>
             </div>
           </div>
         </div>
