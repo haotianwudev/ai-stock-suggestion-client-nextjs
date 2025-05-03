@@ -92,7 +92,7 @@ export function StockValuation({ valuations }: StockValuationProps) {
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-semibold text-lg">Summary Valuation</h3>
+                  <h3 className="font-semibold text-lg">Valuation Summary</h3>
                   <InfoIcon text={METHOD_DESCRIPTIONS["weighted"]} />
                 </div>
                 <span className={`font-bold ${SIGNAL_COLORS[weightedValuation.signal]}`}>

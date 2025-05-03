@@ -32,11 +32,12 @@ export const GET_STOCK_DETAILS = gql`
         close
         volume
       }       
-      news {
+      news (limit: 100) {
         title
         date
         source
         url
+        sentiment
       }
     }
   }
@@ -82,6 +83,30 @@ export const GET_STOCK_FUNDAMENTALS = gql`
       pe_ratio
       pb_ratio
       ps_ratio
+    }
+  }
+`;
+
+export const GET_STOCK_SENTIMENT = gql`
+  query GetLatestSentiment($ticker: String!) {
+    latestSentiment(ticker: $ticker) {
+      biz_date
+      overall_signal
+      confidence
+      insider_total
+      insider_bullish
+      insider_bearish
+      insider_value_total
+      insider_value_bullish
+      insider_value_bearish
+      insider_weight
+      news_total
+      news_bullish
+      news_bearish
+      news_neutral
+      news_weight
+      weighted_bullish
+      weighted_bearish
     }
   }
 `; 

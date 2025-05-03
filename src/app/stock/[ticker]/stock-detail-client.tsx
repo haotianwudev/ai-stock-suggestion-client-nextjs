@@ -3,14 +3,25 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { GET_STOCK_DETAILS, GET_STOCK_VALUATIONS, GET_STOCK_FUNDAMENTALS } from "@/lib/graphql/queries";
-import { StockDetails, type StockValuation, type StockFundamentals } from "@/lib/graphql/types";
+import { 
+  GET_STOCK_DETAILS, 
+  GET_STOCK_VALUATIONS, 
+  GET_STOCK_FUNDAMENTALS,
+  GET_STOCK_SENTIMENT
+} from "@/lib/graphql/queries";
+import { 
+  StockDetails, 
+  type StockValuation, 
+  type StockFundamentals,
+  type StockSentiment
+} from "@/lib/graphql/types";
 import { StockChart } from "@/components/stock/stock-chart";
 import { StockNews } from "@/components/stock/stock-news";
 import { StockFinancials } from "@/components/stock/stock-financials";
 import { StockCompanyInfo } from "@/components/stock/stock-company-info";
 import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
 import { StockFundamentalsAnalysis } from "@/components/stock/stock-fundamentals-analysis";
+import { StockSentimentAnalysis } from "@/components/stock/stock-sentiment";
 
 interface StockDetailClientProps {
   ticker: string;
@@ -20,6 +31,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
   const [startDate, setStartDate] = useState<string>(getDefaultStartDate());
   const [endDate, setEndDate] = useState<string>(getDefaultEndDate());
   const [fundamentals, setFundamentals] = useState<StockFundamentals | null>(null);
+  const [sentiment, setSentiment] = useState<StockSentiment | null>(null);
 
   function getDefaultStartDate() {
     const date = new Date();
@@ -44,6 +56,10 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     variables: { ticker },
   });
 
+  const { loading: sentimentLoading, error: sentimentError, data: sentimentData } = useQuery(GET_STOCK_SENTIMENT, {
+    variables: { ticker },
+  });
+
   // For debugging
   useEffect(() => {
     if (fundamentalsData) {
@@ -58,6 +74,21 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       setFundamentals(data);
     }
   }, [fundamentalsData]);
+
+  // For sentiment data
+  useEffect(() => {
+    if (sentimentData) {
+      console.log("Sentiment data:", sentimentData);
+      
+      // Try various possible formats
+      const data = sentimentData?.latestSentiment || 
+                  (Array.isArray(sentimentData?.latestSentiment) 
+                    ? sentimentData?.latestSentiment[0] 
+                    : null);
+                    
+      setSentiment(data);
+    }
+  }, [sentimentData]);
 
   const stockData: StockDetails | null = detailsData?.stock || null;
   const valuations: StockValuation[] = valuationsData?.latestValuations || [];
@@ -113,6 +144,27 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     ps_ratio: 9.7600
   };
 
+  // Mock sentiment data for testing the UI - will only be used if real data is missing
+  const mockSentiment: StockSentiment = {
+    biz_date: "2025-05-03",
+    overall_signal: "bullish",
+    confidence: 47.00,
+    insider_total: 537,
+    insider_bullish: 244,
+    insider_bearish: 293,
+    insider_value_total: -54417304,
+    insider_value_bullish: 1610410659,
+    insider_value_bearish: -1664827963,
+    insider_weight: 0.30,
+    news_total: 100,
+    news_bullish: 49,
+    news_bearish: 18,
+    news_neutral: 33,
+    news_weight: 0.70,
+    weighted_bullish: 107.50,
+    weighted_bearish: 100.50
+  };
+
   return (
     <div className="grid gap-6">
       <div className="flex flex-col space-y-2">
@@ -152,13 +204,22 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       <div className="grid gap-6 md:grid-cols-1">
         <Card>
           <CardHeader>
-            <CardTitle>Latest News</CardTitle>
+            <CardTitle>Sentiment Analysis</CardTitle>
             <CardDescription>
-              Recent news and updates about {stockData.company.name}
+              Insights from insider trading, news sentiment, and latest {stockData.company.name} coverage
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <StockNews news={stockData.news} />
+            <div className="space-y-8">
+              <StockSentimentAnalysis sentiment={sentiment || mockSentiment} news={stockData.news} />
+              
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-6" />
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Latest News</h3>
+                <StockNews news={stockData.news} />
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

@@ -62,6 +62,7 @@ export interface NewsItem {
   date: string;
   source: string;
   url: string;
+  sentiment: string;
 }
 
 export interface StockDetails {
@@ -74,4 +75,24 @@ export interface StockDetails {
 export interface SearchResult {
   ticker: string;
   name: string;
+}
+
+export interface StockSentiment {
+  biz_date: string;
+  overall_signal: string;
+  confidence: number;
+  insider_total: number;
+  insider_bullish: number;
+  insider_bearish: number;
+  insider_value_total: number;
+  insider_value_bullish: number;
+  insider_value_bearish: number;
+  insider_weight: number;
+  news_total: number;
+  news_bullish: number;
+  news_bearish: number;
+  news_neutral: number;
+  news_weight: number;
+  weighted_bullish: number;
+  weighted_bearish: number;
 } 
