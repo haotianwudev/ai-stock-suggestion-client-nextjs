@@ -95,4 +95,53 @@ export interface StockSentiment {
   news_weight: number;
   weighted_bullish: number;
   weighted_bearish: number;
+}
+
+export interface StockTechnicals {
+  biz_date: string;
+  signal: string;
+  confidence: number;
+  
+  trend_signal: string;
+  trend_confidence: number;
+  trend_score: number;
+  trend_adx_threshold: number;
+  ema_8: number;
+  ema_21: number;
+  ema_55: number;
+  adx: number;
+  di_plus: number;
+  di_minus: number;
+  
+  mr_signal: string;
+  mr_confidence: number;
+  mr_score: number;
+  z_score: number;
+  bb_upper: number;
+  bb_lower: number;
+  rsi_14: number;
+  rsi_28: number;
+  
+  momentum_signal: string;
+  momentum_confidence: number;
+  momentum_score: number;
+  mom_1m: number;
+  mom_3m: number;
+  mom_6m: number;
+  volume_ratio: number;
+  
+  volatility_signal: string;
+  volatility_confidence: number;
+  volatility_score: number;
+  hist_vol_21d: number;
+  vol_regime: number;
+  vol_z_score: number;
+  atr_ratio: number;
+  
+  stat_arb_signal: string;
+  stat_arb_confidence: number;
+  stat_arb_score: number;
+  hurst_exp: number;
+  skewness: number;
+  kurtosis: number;
 } 

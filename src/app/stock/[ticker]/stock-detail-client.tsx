@@ -7,13 +7,15 @@ import {
   GET_STOCK_DETAILS, 
   GET_STOCK_VALUATIONS, 
   GET_STOCK_FUNDAMENTALS,
-  GET_STOCK_SENTIMENT
+  GET_STOCK_SENTIMENT,
+  GET_STOCK_TECHNICALS
 } from "@/lib/graphql/queries";
 import { 
   StockDetails, 
   type StockValuation, 
   type StockFundamentals,
-  type StockSentiment
+  type StockSentiment,
+  type StockTechnicals
 } from "@/lib/graphql/types";
 import { StockChart } from "@/components/stock/stock-chart";
 import { StockNews } from "@/components/stock/stock-news";
@@ -22,6 +24,7 @@ import { StockCompanyInfo } from "@/components/stock/stock-company-info";
 import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
 import { StockFundamentalsAnalysis } from "@/components/stock/stock-fundamentals-analysis";
 import { StockSentimentAnalysis } from "@/components/stock/stock-sentiment";
+import { StockTechnicalsAnalysis } from "@/components/stock/stock-technicals-analysis";
 
 interface StockDetailClientProps {
   ticker: string;
@@ -32,6 +35,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
   const [endDate, setEndDate] = useState<string>(getDefaultEndDate());
   const [fundamentals, setFundamentals] = useState<StockFundamentals | null>(null);
   const [sentiment, setSentiment] = useState<StockSentiment | null>(null);
+  const [technicals, setTechnicals] = useState<StockTechnicals | null>(null);
 
   function getDefaultStartDate() {
     const date = new Date();
@@ -57,6 +61,10 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
   });
 
   const { loading: sentimentLoading, error: sentimentError, data: sentimentData } = useQuery(GET_STOCK_SENTIMENT, {
+    variables: { ticker },
+  });
+
+  const { loading: technicalsLoading, error: technicalsError, data: technicalsData } = useQuery(GET_STOCK_TECHNICALS, {
     variables: { ticker },
   });
 
@@ -89,6 +97,21 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       setSentiment(data);
     }
   }, [sentimentData]);
+
+  // For technicals data
+  useEffect(() => {
+    if (technicalsData) {
+      console.log("Technicals data:", technicalsData);
+      
+      // Try various possible formats
+      const data = technicalsData?.latestTechnicals || 
+                  (Array.isArray(technicalsData?.latestTechnicals) 
+                    ? technicalsData?.latestTechnicals[0] 
+                    : null);
+                    
+      setTechnicals(data);
+    }
+  }, [technicalsData]);
 
   const stockData: StockDetails | null = detailsData?.stock || null;
   const valuations: StockValuation[] = valuationsData?.latestValuations || [];
@@ -165,6 +188,56 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     weighted_bearish: 100.50
   };
 
+  // Mock technicals data for testing the UI - will only be used if real data is missing
+  const mockTechnicals: StockTechnicals = {
+    biz_date: "2025-05-03",
+    signal: "bearish",
+    confidence: 39.00,
+    
+    trend_signal: "neutral",
+    trend_confidence: 50.00,
+    trend_score: 0.1933,
+    trend_adx_threshold: 25.00,
+    ema_8: 207.9848,
+    ema_21: 206.6055,
+    ema_55: 214.2879,
+    adx: 19.3267,
+    di_plus: 20.7070,
+    di_minus: 25.4337,
+    
+    mr_signal: "neutral",
+    mr_confidence: 50.00,
+    mr_score: -0.5863,
+    z_score: -0.5863,
+    bb_upper: 221.1915,
+    bb_lower: 178.1345,
+    rsi_14: 57.6142,
+    rsi_28: 45.2189,
+    
+    momentum_signal: "bearish",
+    momentum_confidence: 42.00,
+    momentum_score: -0.0920,
+    mom_1m: -0.0616,
+    mom_3m: -0.1079,
+    mom_6m: -0.0920,
+    volume_ratio: 1.2529,
+    
+    volatility_signal: "bearish",
+    volatility_confidence: 55.00,
+    volatility_score: 1.6501,
+    hist_vol_21d: 0.7987,
+    vol_regime: 1.8413,
+    vol_z_score: 1.6501,
+    atr_ratio: 0.0340,
+    
+    stat_arb_signal: "neutral",
+    stat_arb_confidence: 50.00,
+    stat_arb_score: 0.5324,
+    hurst_exp: 0.5324,
+    skewness: 1.1836,
+    kurtosis: 8.8009
+  };
+
   return (
     <div className="grid gap-6">
       <div className="flex flex-col space-y-2">
@@ -194,6 +267,20 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-1">
+        <Card>
+          <CardHeader>
+            <CardTitle>Technical Analysis</CardTitle>
+            <CardDescription>
+              Comprehensive analysis based on price action and market statistics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <StockTechnicalsAnalysis technicals={technicals || mockTechnicals} prices={stockData.prices} />
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-1">
         <StockFundamentalsAnalysis fundamentals={fundamentals || mockFundamentals} />
       </div>
 
@@ -204,7 +291,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       <div className="grid gap-6 md:grid-cols-1">
         <Card>
           <CardHeader>
-            <CardTitle>Sentiment Analysis</CardTitle>
+            <CardTitle>Market Sentiment Analysis</CardTitle>
             <CardDescription>
               Insights from insider trading, news sentiment, and latest {stockData.company.name} coverage
             </CardDescription>

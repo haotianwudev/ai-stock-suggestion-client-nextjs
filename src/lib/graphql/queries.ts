@@ -109,4 +109,57 @@ export const GET_STOCK_SENTIMENT = gql`
       weighted_bearish
     }
   }
+`;
+
+export const GET_STOCK_TECHNICALS = gql`
+  query GetLatestTechnicals($ticker: String!) {
+    latestTechnicals(ticker: $ticker) {
+      biz_date
+      signal
+      confidence
+      
+      trend_signal
+      trend_confidence
+      trend_score
+      trend_adx_threshold
+      ema_8
+      ema_21
+      ema_55
+      adx
+      di_plus
+      di_minus
+      
+      mr_signal
+      mr_confidence
+      mr_score
+      z_score
+      bb_upper
+      bb_lower
+      rsi_14
+      rsi_28
+      
+      momentum_signal
+      momentum_confidence
+      momentum_score
+      mom_1m
+      mom_3m
+      mom_6m
+      volume_ratio
+      
+      volatility_signal
+      volatility_confidence
+      volatility_score
+      hist_vol_21d
+      vol_regime
+      vol_z_score
+      atr_ratio
+      
+      stat_arb_signal
+      stat_arb_confidence
+      stat_arb_score
+      hurst_exp
+      skewness
+      kurtosis
+    }
+  }
 `; 
