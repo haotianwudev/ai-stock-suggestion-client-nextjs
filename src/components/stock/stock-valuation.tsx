@@ -94,7 +94,7 @@ export function StockValuation({ valuations }: StockValuationProps) {
         {weightedValuation && (
           <>
             <p className="text-sm text-muted-foreground mb-4">
-              Valuation analysis calculates a stock's intrinsic value using multiple methodologies and compares it to the current market price to determine if the stock is undervalued or overvalued.
+              Best for determining a stock's fair value and identifying margin of safety for value investors focused on buying quality businesses at reasonable prices
             </p>
 
             <div className="flex flex-col space-y-4">

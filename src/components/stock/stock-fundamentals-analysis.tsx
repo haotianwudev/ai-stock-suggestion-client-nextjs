@@ -195,7 +195,7 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
         </div>
 
         <p className="text-sm text-muted-foreground mb-4">
-          Fundamental analysis evaluates a company's financial health across multiple dimensions to determine its investment potential. The analysis considers profitability, growth, financial health, and valuation metrics.
+          Ideal for long-term investment decisions based on company financial strength and business quality rather than short-term price movements
         </p>
 
         <div className="flex flex-col space-y-4">

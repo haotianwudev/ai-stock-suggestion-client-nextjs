@@ -256,7 +256,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
           <CardHeader>
             <CardTitle>Technical Analysis</CardTitle>
             <CardDescription>
-              Comprehensive analysis based on price action and market statistics
+              Best for short-term trading decisions and timing market entry/exit points based on price patterns and momentum
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -270,7 +270,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
           <CardHeader>
             <CardTitle>Market Sentiment Analysis</CardTitle>
             <CardDescription>
-              Insights from insider trading, news sentiment, and latest {stockData.company.name} coverage
+              Useful for gauging market psychology and institutional interest in the short to medium term
             </CardDescription>
           </CardHeader>
           <CardContent>
