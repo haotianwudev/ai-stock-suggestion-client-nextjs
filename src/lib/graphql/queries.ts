@@ -162,4 +162,20 @@ export const GET_STOCK_TECHNICALS = gql`
       kurtosis
     }
   }
+`;
+
+export const GET_STOCK_AGENT_SUGGESTIONS = gql`
+  query GetStockAgentSuggestions($ticker: String!) {
+    agentSuggestions(ticker: $ticker) {
+      id
+      ticker
+      agent
+      signal
+      confidence
+      reasoning
+      biz_date
+      created_at
+      updated_at
+    }
+  }
 `; 

@@ -144,4 +144,16 @@ export interface StockTechnicals {
   hurst_exp: number;
   skewness: number;
   kurtosis: number;
+}
+
+export interface StockAgentSuggestion {
+  id: number;
+  ticker: string;
+  agent: string;
+  signal: string;
+  confidence: number;
+  reasoning: string;
+  biz_date: string;
+  created_at: string;
+  updated_at: string;
 } 

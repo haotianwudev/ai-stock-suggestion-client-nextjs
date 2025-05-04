@@ -67,6 +67,53 @@ The application communicates with a GraphQL API that provides:
 
 This application can be easily deployed to Vercel or any other hosting platform that supports Next.js.
 
+## AI Agent Suggestions
+
+The application now includes AI agent analysis and suggestions from virtual investment experts:
+
+- Warren Buffett agent provides analysis based on fundamental business quality and intrinsic value
+- Charlie Munger agent focuses on business moats, predictability, and mental models
+
+### Agent Images
+
+The application includes built-in placeholder images for the AI agents, displayed as colored circles with initials when custom images are not available.
+
+For a more personalized experience, you can add custom cartoon-style images:
+
+1. Create the following directories (if they don't exist):
+   ```
+   public/images/agents/
+   ```
+
+2. Add the following image files:
+   - `public/images/agents/warren_buffett.png` - A cartoon-style image of Warren Buffett
+   - `public/images/agents/charlie_munger.png` - A cartoon-style image of Charlie Munger
+
+The application will automatically use your custom images when available.
+
+## Setup Instructions
+
+### Adding Agent Images
+
+For the AI agent suggestions feature to display properly, please add cartoon-style images for each agent:
+
+1. Create the following directories (if they don't exist):
+   ```
+   public/images/agents/
+   ```
+
+2. Add the following image files:
+   - `public/images/agents/warren_buffett.png` - A cartoon-style image of Warren Buffett
+   - `public/images/agents/charlie_munger.png` - A cartoon-style image of Charlie Munger
+
+You can use any cartoon/avatar style images that represent these investors.
+
+## Development
+
 ```bash
-npm run build
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
 ```
