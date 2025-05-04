@@ -75,16 +75,29 @@ function calculateIndicators(prices: StockPrice[]) {
   }
   
   // Calculate Bollinger Bands
-  const upperBB = sma.map((val, i) => val !== null ? val + 2 * stdDev[i] : null);
-  const lowerBB = sma.map((val, i) => val !== null ? val - 2 * stdDev[i] : null);
+  const upperBB = sma.map((val, i) => {
+    if (val !== null) {
+      const result = val + 2 * stdDev[i];
+      return Math.round(result * 100) / 100; // Round to 2 decimal places
+    }
+    return null;
+  });
   
-  // Combine all data
+  const lowerBB = sma.map((val, i) => {
+    if (val !== null) {
+      const result = val - 2 * stdDev[i];
+      return Math.round(result * 100) / 100; // Round to 2 decimal places
+    }
+    return null;
+  });
+  
+  // Combine all data with rounded values
   return data.map((price, i) => ({
     ...price,
-    ema8: ema8[i],
-    ema21: ema21[i],
-    ema55: ema55[i],
-    sma20: sma[i],
+    ema8: ema8[i] !== undefined ? Math.round(ema8[i] * 100) / 100 : null,
+    ema21: ema21[i] !== undefined ? Math.round(ema21[i] * 100) / 100 : null,
+    ema55: ema55[i] !== undefined ? Math.round(ema55[i] * 100) / 100 : null,
+    sma20: sma[i] !== null ? Math.round(sma[i] * 100) / 100 : null,
     upperBB: upperBB[i],
     lowerBB: lowerBB[i]
   }));
@@ -99,26 +112,82 @@ export function StockChart({ prices }: StockChartProps) {
   // Calculate indicators
   const enhancedPrices = calculateIndicators(sortedPrices);
   
-  // Format data for the chart
+  // Format data for the chart - round all price-related values to 2 decimal places
   const chartData = enhancedPrices.map((price) => ({
     date: new Date(price.biz_date).toLocaleDateString(),
-    price: price.close,
+    price: Math.round(price.close * 100) / 100,
     volume: price.volume,
-    ema8: price.ema8,
-    ema21: price.ema21,
-    ema55: price.ema55,
-    upperBB: price.upperBB,
-    lowerBB: price.lowerBB
+    ema8: price.ema8 !== null ? Math.round(price.ema8 * 100) / 100 : null,
+    ema21: price.ema21 !== null ? Math.round(price.ema21 * 100) / 100 : null,
+    ema55: price.ema55 !== null ? Math.round(price.ema55 * 100) / 100 : null,
+    upperBB: price.upperBB !== null ? Math.round(price.upperBB * 100) / 100 : null,
+    lowerBB: price.lowerBB !== null ? Math.round(price.lowerBB * 100) / 100 : null
   }));
 
   // Determine min and max price for chart domain
   const priceValues = sortedPrices.map((price) => price.close);
-  const minPrice = Math.min(...priceValues) * 0.90; // Add 10% padding to bottom (was 5%)
+  const minPrice = Math.min(...priceValues) * 0.90; // Add 10% padding to bottom
   const maxPrice = Math.max(...priceValues) * 1.05; // Add 5% padding to top
   
   // Determine volume scale
   const volumeValues = sortedPrices.map((price) => price.volume);
   const maxVolume = Math.max(...volumeValues);
+
+  // Function to format volume with K or M suffix
+  const formatVolumeWithUnits = (value: any) => {
+    if (value === undefined || value === null) return "0";
+    const num = Number(value);
+    if (isNaN(num)) return "0";
+    
+    if (num >= 1000000) {
+      return `${(num / 1000000).toFixed(2)}M`;
+    } else if (num >= 1000) {
+      return `${(num / 1000).toFixed(2)}K`;
+    }
+    return num.toString();
+  };
+
+  // Define our custom Tooltip component that ensures volume is properly formatted
+  const CustomTooltip = (props: any) => {
+    const { active, payload, label } = props;
+    
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip bg-white p-3 border rounded shadow-sm">
+          <p className="font-medium">{`Date: ${label}`}</p>
+          {payload.map((entry: any, index: number) => {
+            // Special formatting for volume
+            if (entry.name === 'Volume') {
+              return (
+                <p key={`item-${index}`} style={{ color: entry.color }}>
+                  {`${entry.name}: ${formatVolumeWithUnits(entry.value)}`}
+                </p>
+              );
+            }
+            
+            // Regular formatting for price values
+            if (entry.value !== null && entry.value !== undefined) {
+              if (['Price', 'EMA(8)', 'EMA(21)', 'EMA(55)', 'Upper BB', 'Lower BB'].includes(entry.name)) {
+                return (
+                  <p key={`item-${index}`} style={{ color: entry.color }}>
+                    {`${entry.name}: $${Number(entry.value).toFixed(2)}`}
+                  </p>
+                );
+              }
+            }
+            
+            return (
+              <p key={`item-${index}`} style={{ color: entry.color }}>
+                {`${entry.name}: ${entry.value}`}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+    
+    return null;
+  };
 
   // Common margin and padding settings for both charts
   const chartMargin = { top: 5, right: 30, left: 50, bottom: 5 };
@@ -154,19 +223,7 @@ export function StockChart({ prices }: StockChartProps) {
               width={50}
             />
             <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip 
-              formatter={(value: number, name: string) => {
-                if (name === 'price') return [`$${value.toFixed(2)}`, "Price"];
-                if (name === 'ema8') return [`$${value.toFixed(2)}`, "EMA(8)"];
-                if (name === 'ema21') return [`$${value.toFixed(2)}`, "EMA(21)"];
-                if (name === 'ema55') return [`$${value.toFixed(2)}`, "EMA(55)"];
-                if (name === 'upperBB') return [`$${value?.toFixed(2)}`, "Upper BB"];
-                if (name === 'lowerBB') return [`$${value?.toFixed(2)}`, "Lower BB"];
-                return [value, name];
-              }}
-              labelFormatter={(label) => `Date: ${label}`}
-              shared={true}
-            />
+            <Tooltip content={<CustomTooltip />} shared={true} />
             <Legend />
             <Area 
               yAxisId="price"
@@ -249,24 +306,12 @@ export function StockChart({ prices }: StockChartProps) {
               orientation="left"
               domain={[0, maxVolume]}
               tick={{ fontSize: 10 }}
-              tickFormatter={(value) => value >= 1000000 
-                ? `${(value/1000000).toFixed(1)}M` 
-                : value >= 1000 
-                  ? `${(value/1000).toFixed(1)}K` 
-                  : value
-              }
+              tickFormatter={(value) => formatVolumeWithUnits(value)}
               width={50}
               axisLine={true}
             />
             <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip 
-              formatter={(value: number, name: string) => {
-                if (name === 'volume') return [value.toLocaleString(), "Volume"];
-                return [value, name];
-              }}
-              labelFormatter={(label) => `Date: ${label}`}
-              shared={true}
-            />
+            <Tooltip content={<CustomTooltip />} />
             <Bar 
               yAxisId="volume"
               dataKey="volume" 

@@ -3,6 +3,20 @@ export interface Company {
   name: string;
   sector: string;
   industry: string;
+  category?: string;
+  exchange?: string;
+  cik?: string;
+  is_active?: number;
+  listing_date?: string;
+  location?: string;
+  market_cap?: number;
+  number_of_employees?: number;
+  sec_filings_url?: string;
+  sic_code?: string;
+  sic_industry?: string;
+  sic_sector?: string;
+  website_url?: string;
+  weighted_average_shares?: number;
 }
 
 export interface FinancialMetrics {
@@ -13,10 +27,17 @@ export interface FinancialMetrics {
   enterprise_value: number;
   price_to_earnings_ratio: number;
   price_to_book_ratio: number;
+  price_to_sales_ratio?: number;
+  earnings_per_share?: number;
+  free_cash_flow_yield?: number;
+  payout_ratio?: number;
 }
 
 export interface StockPrice {
   biz_date: string;
+  open: number;
+  high: number;
+  low: number;
   close: number;
   volume: number;
 }

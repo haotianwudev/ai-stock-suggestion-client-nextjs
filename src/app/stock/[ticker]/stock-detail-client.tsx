@@ -27,6 +27,7 @@ import { StockFundamentalsAnalysis } from "@/components/stock/stock-fundamentals
 import { StockSentimentAnalysis } from "@/components/stock/stock-sentiment";
 import { StockTechnicalsAnalysis } from "@/components/stock/stock-technicals-analysis";
 import { StockAgentSuggestions } from "@/components/stock/stock-agent-suggestions";
+import { StockAnalysisSummary } from "@/components/stock/stock-analysis-summary";
 
 interface StockDetailClientProps {
   ticker: string;
@@ -297,9 +298,16 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         </p>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <StockCompanyInfo company={stockData.company} />
-        <StockFinancials financialMetrics={stockData.financialMetricsLatest} />
+      <div className="grid gap-6 grid-cols-1 lg:grid-cols-7">
+        <StockCompanyInfo company={stockData.company} prices={stockData.prices} className="lg:col-span-2" />
+        <StockFinancials financialMetrics={stockData.financialMetricsLatest} prices={stockData.prices} className="lg:col-span-2" />
+        <StockAnalysisSummary 
+          technicals={technicals || mockTechnicals}
+          sentiment={sentiment || mockSentiment}
+          fundamentals={fundamentals || mockFundamentals}
+          valuations={valuations}
+          className="lg:col-span-3"
+        />
       </div>
       
       {agentSuggestions.length > 0 && (
@@ -315,7 +323,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       )}
       
       <div className="grid gap-6 md:grid-cols-1">
-        <Card>
+        <Card id="technical-analysis">
           <CardHeader>
             <CardTitle>Technical Analysis</CardTitle>
             <CardDescription>
@@ -329,7 +337,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-1">
-        <Card>
+        <Card id="sentiment-analysis">
           <CardHeader>
             <CardTitle>Market Sentiment Analysis</CardTitle>
             <CardDescription>
@@ -344,11 +352,11 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         </Card>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-1">
+      <div className="grid gap-6 md:grid-cols-1" id="fundamental-analysis">
         <StockFundamentalsAnalysis fundamentals={fundamentals || mockFundamentals} />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-1">
+      <div className="grid gap-6 md:grid-cols-1" id="valuation-analysis">
         <StockValuationComponent valuations={valuations} />
       </div>
     </div>

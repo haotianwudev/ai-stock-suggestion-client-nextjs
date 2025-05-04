@@ -17,6 +17,8 @@ export const GET_STOCK_DETAILS = gql`
         name
         sector
         industry
+        website_url
+        market_cap
       }
       financialMetricsLatest {
         report_period
@@ -26,9 +28,16 @@ export const GET_STOCK_DETAILS = gql`
         enterprise_value
         price_to_earnings_ratio
         price_to_book_ratio
+        price_to_sales_ratio
+        earnings_per_share
+        free_cash_flow_yield
+        payout_ratio
       }
       prices(start_date: $startDate, end_date: $endDate) {
         biz_date
+        open
+        high
+        low
         close
         volume
       }       
