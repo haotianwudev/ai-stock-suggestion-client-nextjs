@@ -147,13 +147,13 @@ export interface StockTechnicals {
 }
 
 export interface StockAgentSuggestion {
-  id: number;
+  id?: number;
   ticker: string;
   agent: string;
   signal: string;
   confidence: number;
   reasoning: string;
   biz_date: string;
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
 } 

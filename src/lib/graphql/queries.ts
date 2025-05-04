@@ -164,6 +164,21 @@ export const GET_STOCK_TECHNICALS = gql`
   }
 `;
 
+export const GET_LATEST_AGENT_SIGNAL = gql`
+  query GetLatestAgentSignal($ticker: String!, $agent: String!) {
+    latestAgentSignal(ticker: $ticker, agent: $agent) {
+      ticker
+      agent
+      signal
+      confidence
+      reasoning
+      biz_date
+    }
+  }
+`;
+
+// Old query - keeping for reference
+/*
 export const GET_STOCK_AGENT_SUGGESTIONS = gql`
   query GetStockAgentSuggestions($ticker: String!) {
     agentSuggestions(ticker: $ticker) {
@@ -178,4 +193,5 @@ export const GET_STOCK_AGENT_SUGGESTIONS = gql`
       updated_at
     }
   }
-`; 
+`;
+*/ 

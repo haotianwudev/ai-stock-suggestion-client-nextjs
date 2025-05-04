@@ -9,7 +9,7 @@ import {
   GET_STOCK_FUNDAMENTALS,
   GET_STOCK_SENTIMENT,
   GET_STOCK_TECHNICALS,
-  GET_STOCK_AGENT_SUGGESTIONS
+  GET_LATEST_AGENT_SIGNAL
 } from "@/lib/graphql/queries";
 import { 
   StockDetails, 
@@ -39,6 +39,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
   const [sentiment, setSentiment] = useState<StockSentiment | null>(null);
   const [technicals, setTechnicals] = useState<StockTechnicals | null>(null);
   const [agentSuggestions, setAgentSuggestions] = useState<StockAgentSuggestion[]>([]);
+  const [loadingAgents, setLoadingAgents] = useState(true);
 
   function getDefaultStartDate() {
     const date = new Date();
@@ -71,8 +72,14 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     variables: { ticker },
   });
 
-  const { loading: agentSuggestionsLoading, error: agentSuggestionsError, data: agentSuggestionsData } = useQuery(GET_STOCK_AGENT_SUGGESTIONS, {
-    variables: { ticker },
+  // Fetch Warren Buffett agent signal
+  const { loading: buffettLoading, error: buffettError, data: buffettData } = useQuery(GET_LATEST_AGENT_SIGNAL, {
+    variables: { ticker, agent: "warren_buffett" },
+  });
+
+  // Fetch Charlie Munger agent signal
+  const { loading: mungerLoading, error: mungerError, data: mungerData } = useQuery(GET_LATEST_AGENT_SIGNAL, {
+    variables: { ticker, agent: "charlie_munger" },
   });
 
   // For debugging
@@ -120,16 +127,41 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     }
   }, [technicalsData]);
 
-  // For agent suggestions data
+  // For agent signals data
   useEffect(() => {
-    if (agentSuggestionsData) {
-      console.log("Agent suggestions data:", agentSuggestionsData);
-      
-      // Set agent suggestions data
-      const data = agentSuggestionsData?.agentSuggestions || [];
-      setAgentSuggestions(data);
+    const suggestions: StockAgentSuggestion[] = [];
+    let buffettSignal = null;
+    let mungerSignal = null;
+    
+    if (buffettData?.latestAgentSignal) {
+      buffettSignal = {
+        id: 1, // Adding ID for compatibility 
+        ...buffettData.latestAgentSignal,
+        created_at: buffettData.latestAgentSignal.biz_date,
+        updated_at: buffettData.latestAgentSignal.biz_date
+      };
+      suggestions.push(buffettSignal);
     }
-  }, [agentSuggestionsData]);
+    
+    if (mungerData?.latestAgentSignal) {
+      mungerSignal = {
+        id: 2, // Adding ID for compatibility
+        ...mungerData.latestAgentSignal,
+        created_at: mungerData.latestAgentSignal.biz_date,
+        updated_at: mungerData.latestAgentSignal.biz_date
+      };
+      suggestions.push(mungerSignal);
+    }
+    
+    if (suggestions.length > 0) {
+      setAgentSuggestions(suggestions);
+    }
+    
+    if (!buffettLoading && !mungerLoading) {
+      setLoadingAgents(false);
+    }
+    
+  }, [buffettData, mungerData, buffettLoading, mungerLoading]);
 
   const stockData: StockDetails | null = detailsData?.stock || null;
   const valuations: StockValuation[] = valuationsData?.latestValuations || [];
@@ -256,32 +288,6 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     kurtosis: 8.8009
   };
 
-  // Mock data for testing - will be used until we have real data from backend
-  const mockAgentSuggestions: StockAgentSuggestion[] = [
-    {
-      id: 1,
-      ticker: ticker,
-      agent: "warren_buffett",
-      signal: "bearish",
-      confidence: 70.00,
-      reasoning: "While Apple (AAPL) demonstrates some classic Buffett qualities like a strong economic moat (stable ROE of 151.3% and operating margins above 30%) and quality products, several critical factors give me pause. The debt-to-equity ratio of 4.0 is alarmingly high for our standards - reminiscent of the overleveraged businesses we avoided during the 2008 crisis. The current ratio of 0.8 shows weak liquidity, which violates our principle of financial strength. Most concerning is the negative 38.7% margin of safety - we're being asked to pay a significant premium to intrinsic value ($3.14T market cap vs $1.93T intrinsic value).",
-      biz_date: "2025-05-04",
-      created_at: "2025-05-04 14:49:14.965",
-      updated_at: "2025-05-04 15:46:33.899"
-    },
-    {
-      id: 7,
-      ticker: ticker,
-      agent: "charlie_munger",
-      signal: "neutral",
-      confidence: 65.00,
-      reasoning: "Apple displays classic Munger virtues - a wide moat (45% gross margins, >15% ROIC consistently), predictable cash flows, and shareholder-friendly buybacks. However, two problems give me pause: 1) Valuation sits at a 51% premium to reasonable value (FCF yield just 3.3%), violating our 'never overpay' principle. 2) Management gets only a 5/10 score - no insider buying and moderate debt (D/E 1.47) suggest less skin-in-the-game than I'd like. As Charlie says, 'The big money is not in the buying and selling, but in the waiting.' We'll wait for a better price.",
-      biz_date: "2025-05-04",
-      created_at: "2025-05-04 15:46:34.117",
-      updated_at: "2025-05-04 15:46:34.117"
-    }
-  ];
-
   return (
     <div className="grid gap-6">
       <div className="flex flex-col space-y-2">
@@ -296,9 +302,17 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         <StockFinancials financialMetrics={stockData.financialMetricsLatest} />
       </div>
       
-      <div className="grid gap-6 md:grid-cols-1">
-        <StockAgentSuggestions suggestions={agentSuggestions.length > 0 ? agentSuggestions : mockAgentSuggestions} />
-      </div>
+      {agentSuggestions.length > 0 && (
+        <div className="grid gap-6 md:grid-cols-1">
+          <StockAgentSuggestions suggestions={agentSuggestions} />
+        </div>
+      )}
+      
+      {loadingAgents && (
+        <div className="flex justify-center items-center h-32">
+          <p>Loading AI agent analysis...</p>
+        </div>
+      )}
       
       <div className="grid gap-6 md:grid-cols-1">
         <Card>
