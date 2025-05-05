@@ -37,7 +37,7 @@ export default function Home() {
               Features
             </h2>
             <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              SOPHIE analyzes stocks from multiple perspectives to provide comprehensive insights for investors at all experience levels.
+              SOPHIE is a AI driven analyst now evaluating stocks from multiple perspectives to provide comprehensive insights to common investors. SOPHIE is not for financial advice, but an educational tool to help you understand the market and make your own decisions. SOPHIE will learn options and portfolio management in the future. Please check back soon!
             </p>
           </div>
           <div className="grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -111,7 +111,7 @@ export default function Home() {
               © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Some analysis methodologies are inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>
+              Some analysis methodologies are inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. Website is completely free for everyone and myself to learn more about finance and AI.
             </p>
           </div>
         </div>
