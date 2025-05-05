@@ -7,7 +7,7 @@ export function ApolloWrapper({ children }: { children: React.ReactNode }) {
   const client = useMemo(() => {
     return new ApolloClient({
       link: new HttpLink({
-        uri: process.env.NEXT_PUBLIC_GRAPHQL_URI || "https://sophie-gql.vercel.app/graphql",
+        uri: process.env.NEXT_PUBLIC_GRAPHQL_URI,
       }),
       cache: new InMemoryCache(),
       defaultOptions: {
