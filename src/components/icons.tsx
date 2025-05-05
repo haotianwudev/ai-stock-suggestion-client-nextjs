@@ -92,4 +92,27 @@ export function ExternalLinkIcon(props: React.SVGProps<SVGSVGElement>) {
       <line x1="10" y1="14" x2="21" y2="3" />
     </svg>
   );
+}
+
+export function RobotIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <rect width="16" height="16" x="4" y="4" rx="2" />
+      <circle cx="9" cy="9" r="1" />
+      <circle cx="15" cy="9" r="1" />
+      <path d="M8 14h8" />
+      <path d="M9 17v3" />
+      <path d="M15 17v3" />
+      <path d="M12 17v2" />
+    </svg>
+  );
 } 

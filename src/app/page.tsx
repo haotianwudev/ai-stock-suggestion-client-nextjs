@@ -37,16 +37,16 @@ export default function Home() {
               Features
             </h2>
             <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              SOPHIE using AI in different angles to help with your investment decisions and financial education.
+              SOPHIE analyzes stocks from multiple perspectives to provide comprehensive insights for investors at all experience levels.
             </p>
           </div>
           <div className="grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Market Data</h3>
+                  <h3 className="font-bold">AI-Powered Analysis</h3>
                   <p className="text-sm text-muted-foreground">
-                    Access up-to-date information on prices, options, volumes, and market trends.
+                    Comprehensive stock analysis using SOPHIE, our AI model that synthesizes all available data into actionable insights.
                   </p>
                 </div>
               </div>
@@ -54,9 +54,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Portfolio Analysis</h3>
+                  <h3 className="font-bold">Technical Analysis</h3>
                   <p className="text-sm text-muted-foreground">
-                    Track and analyze your investments with advanced portfolio management tools.
+                    Advanced technical indicators including trend analysis, momentum, mean reversion, volatility metrics, and statistical arbitrage signals.
                   </p>
                 </div>
               </div>
@@ -64,9 +64,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Financial Metrics</h3>
+                  <h3 className="font-bold">Fundamental Analysis</h3>
                   <p className="text-sm text-muted-foreground">
-                    View key financial metrics like market cap, P/E ratio, option Greeks, and more.
+                    Deep evaluation of company fundamentals across profitability, growth, financial health, and valuation metrics.
                   </p>
                 </div>
               </div>
@@ -74,9 +74,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Interactive Charts</h3>
+                  <h3 className="font-bold">Market Sentiment</h3>
                   <p className="text-sm text-muted-foreground">
-                    Visualize stock and option performance with interactive price and volatility charts.
+                    Analysis of market psychology through news sentiment, insider trading activity, and institutional interest signals.
                   </p>
                 </div>
               </div>
@@ -84,9 +84,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Investment Education</h3>
+                  <h3 className="font-bold">Investment Legends</h3>
                   <p className="text-sm text-muted-foreground">
-                    Learn about investing strategies with our educational resources and news insights.
+                    Stock analysis through the lens of legendary investors like Warren Buffett and Charlie Munger to provide time-tested perspectives.
                   </p>
                 </div>
               </div>
@@ -94,9 +94,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Smart Search</h3>
+                  <h3 className="font-bold">Educational Focus</h3>
                   <p className="text-sm text-muted-foreground">
-                    Quickly find stocks and options with our intelligent search functionality.
+                    Designed for learning - all analyses include clear explanations to help new investors understand market concepts and terminology.
                   </p>
                 </div>
               </div>
@@ -106,9 +106,14 @@ export default function Home() {
       </main>
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center md:items-start">
+            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+              © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Some analysis methodologies are inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>
+            </p>
+          </div>
         </div>
       </footer>
     </div>

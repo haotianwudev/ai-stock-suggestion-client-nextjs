@@ -177,4 +177,24 @@ export interface StockAgentSuggestion {
   biz_date: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface SophieAnalysis {
+  id: number;
+  ticker: string;
+  biz_date: string;
+  signal: string;
+  confidence: number;
+  overall_score: number;
+  reasoning: string;
+  short_term_outlook: string;
+  medium_term_outlook: string;
+  long_term_outlook: string;
+  bullish_factors: string[];
+  bearish_factors: string[];
+  risks: string[];
+  model_name: string;
+  model_display_name: string;
+  created_at: string;
+  updated_at: string;
 } 

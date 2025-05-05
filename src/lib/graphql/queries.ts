@@ -186,6 +186,30 @@ export const GET_LATEST_AGENT_SIGNAL = gql`
   }
 `;
 
+export const GET_LATEST_SOPHIE_ANALYSIS = gql`
+  query GetLatestSophieAnalysis($ticker: String!) {
+    latestSophieAnalysis(ticker: $ticker) {
+      id
+      ticker
+      biz_date
+      signal
+      confidence
+      overall_score
+      reasoning
+      short_term_outlook
+      medium_term_outlook
+      long_term_outlook
+      bullish_factors
+      bearish_factors
+      risks
+      model_name
+      model_display_name
+      created_at
+      updated_at
+    }
+  }
+`;
+
 // Old query - keeping for reference
 /*
 export const GET_STOCK_AGENT_SUGGESTIONS = gql`
