@@ -1,10 +1,14 @@
-import { use } from "react";
 import { StockDetailClient } from "@/app/stock/[ticker]/stock-detail-client";
 import { Header } from "@/components/layout/header";
 
-export default function StockDetailPage({ params }: { params: { ticker: string } }) {
-  const resolvedParams = use(Promise.resolve(params));
-  const ticker = resolvedParams.ticker;
+interface PageProps {
+  params: {
+    ticker: string;
+  };
+}
+
+export default function StockDetailPage({ params }: PageProps) {
+  const ticker = params.ticker.toUpperCase();
   
   return (
     <div className="flex min-h-screen flex-col">
