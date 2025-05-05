@@ -1,14 +1,15 @@
 import { StockDetailClient } from "@/app/stock/[ticker]/stock-detail-client";
 import { Header } from "@/components/layout/header";
 import { Metadata } from "next";
+import { use } from "react";
 
-type Props = {
-  params: { ticker: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+type Params = {
+  ticker: string;
+};
 
-export default function StockDetailPage(props: Props) {
-  const ticker = props.params.ticker.toUpperCase();
+export default function StockDetailPage({ params }: { params: Params }) {
+  // In Next.js 15, we need to handle params as a promise
+  const ticker = params.ticker.toUpperCase();
   
   return (
     <div className="flex min-h-screen flex-col">
@@ -20,7 +21,7 @@ export default function StockDetailPage(props: Props) {
   );
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export function generateMetadata({ params }: { params: Params }): Metadata {
   return {
     title: `${params.ticker.toUpperCase()} Stock Analysis | SOPHIE`,
     description: `Analysis of ${params.ticker.toUpperCase()} stock by SOPHIE AI`,
