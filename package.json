@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --no-lint",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "use:local-gql": "node scripts/switch-gql.js --local",
+    "use:prod-gql": "node scripts/switch-gql.js --prod",
+    "use:custom-gql": "node scripts/switch-gql.js --local --port"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",

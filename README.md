@@ -30,20 +30,33 @@ SOPHIE (Stock/Option Portfolio Helper for Investment and Education) is a compreh
 
 ## Getting Started
 
-First, create a `.env.local` file in the root directory with the following:
+### Method 2: Configuration Toggle Scripts
 
-```
-NEXT_PUBLIC_GRAPHQL_URI=http://localhost:4000/graphql
-```
-
-Then, install dependencies and run the development server:
+Use these npm scripts to easily switch between environments:
 
 ```bash
-npm install
+# Use production GraphQL server
+npm run use:prod-gql
+
+# Use local GraphQL server (default port 4000)
+npm run use:local-gql
+
+# Use local GraphQL server with custom port
+npm run use:custom-gql 5000  # Replace 5000 with your desired port
+```
+
+After switching environments, restart your Next.js server for changes to take effect:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configuration Files
+
+The GraphQL configuration is managed in:
+
+- `/src/lib/apollo/gql-config.ts` - Central configuration file
+- `/scripts/switch-gql.js` - Script to switch between environments
 
 ## GraphQL API
 
@@ -62,10 +75,16 @@ The application communicates with a GraphQL API that provides:
 - `/src/components`: Reusable React components
 - `/src/lib`: Utilities, hooks, and GraphQL configuration
 - `/public`: Static assets
+- `/scripts`: Utility scripts for development
 
 ## Deployment
 
-This application can be easily deployed to Vercel or any other hosting platform that supports Next.js.
+This application can be easily deployed to Vercel or any other hosting platform that supports Next.js. 
+
+For Vercel deployment, set the environment variable in your Vercel project settings:
+```
+NEXT_PUBLIC_GRAPHQL_URI=
+```
 
 ## AI Agent Suggestions
 
@@ -114,6 +133,16 @@ You can use any cartoon/avatar style images that represent these investors.
 # Install dependencies
 npm install
 
+# Create .env.local with your GraphQL endpoint (example)
+echo "NEXT_PUBLIC_GRAPHQL_URI=CCC/graphql" > .env.local
+
+# Or switch to local GraphQL server
+npm run use:local-gql
+
 # Run development server
 npm run dev
 ```
+
+## Contact
+
+For inquiries, please contact: [sophieaifinance@gmail.com](mailto:sophieaifinance@gmail.com)
