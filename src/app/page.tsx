@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-24">
+        <section className="space-y-6 pb-4 pt-6 md:pb-6 md:pt-10 lg:py-12">
           <div className="container max-w-screen-xl mx-auto">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
               <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
@@ -31,7 +31,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12">
+        <section className="container max-w-screen-xl mx-auto space-y-6 py-4 md:py-8">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Features
