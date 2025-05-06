@@ -168,8 +168,32 @@ export default function Home() {
           
           // Get latest price data
           const prices = stockData.prices;
-          const latestPrice = prices[prices.length - 1];
-          const firstPrice = prices[0];
+          
+          // Sort prices by date to ensure correct order
+          const sortedPrices = [...prices].sort((a, b) => 
+            new Date(a.biz_date).getTime() - new Date(b.biz_date).getTime()
+          );
+          
+          const latestPrice = sortedPrices[sortedPrices.length - 1];
+          
+          // Find the price closest to 3 months ago
+          const threeMonthsAgo = new Date();
+          threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+          const threeMonthsAgoTime = threeMonthsAgo.getTime();
+          
+          let closestPriceIndex = 0;
+          let minTimeDiff = Infinity;
+          
+          sortedPrices.forEach((price, index) => {
+            const priceDate = new Date(price.biz_date);
+            const timeDiff = Math.abs(priceDate.getTime() - threeMonthsAgoTime);
+            if (timeDiff < minTimeDiff) {
+              minTimeDiff = timeDiff;
+              closestPriceIndex = index;
+            }
+          });
+          
+          const threeMonthPrice = sortedPrices[closestPriceIndex];
           
           // Skip if price data is invalid
           if (!latestPrice || !latestPrice.close) {
@@ -179,8 +203,8 @@ export default function Home() {
           
           // Calculate percentage change over the period
           let changePercent = 0;
-          if (firstPrice && firstPrice.close) {
-            changePercent = ((latestPrice.close - firstPrice.close) / firstPrice.close) * 100;
+          if (threeMonthPrice && threeMonthPrice.close) {
+            changePercent = ((latestPrice.close - threeMonthPrice.close) / threeMonthPrice.close) * 100;
           }
           
           // Use the SOPHIE score from API if available, otherwise generate a fallback score
