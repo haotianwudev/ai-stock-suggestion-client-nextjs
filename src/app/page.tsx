@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
+import Image from "next/image";
 
 // Types for stock data
 interface StockData {
@@ -208,20 +209,31 @@ export default function Home() {
         <section className="space-y-6 pb-4 pt-6 md:pb-6 md:pt-10 lg:py-12">
           <div className="container max-w-screen-xl mx-auto">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
-              <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-                <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
-              </h1>
+              <div className="flex items-center gap-4">
+                <div className="relative h-16 w-16 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-purple-300 shadow-md">
+                  <Image 
+                    src="/images/agents/SOPHIE.png"
+                    alt="SOPHIE" 
+                    width={96} 
+                    height={96}
+                    className="object-cover"
+                  />
+                </div>
+                <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+                  <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
+                </h1>
+              </div>
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 Stock/Option Portfolio Helper for Investment and Education
               </h2>
               <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-                Empowering stock and option investors with insights, education, and ideas by SOPHIE using AI.
+              SOPHIE is an AI financial analyst now!
               </p>
               <div className="flex justify-center space-x-4">
                 <Button asChild size="lg">
                   <Link href="/trending">
                     <SearchIcon className="mr-2 h-4 w-4" />
-                    Explore Trending Stocks
+                    Explore More Trending Stocks
                   </Link>
                 </Button>
               </div>
@@ -272,7 +284,7 @@ export default function Home() {
               Features
             </h2>
             <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              SOPHIE is a AI driven analyst now evaluating stocks from multiple perspectives to provide comprehensive insights to common investors. SOPHIE is not for financial advice, but an educational tool to help you understand the market and make your own decisions. SOPHIE will learn options and portfolio management in the future. Please check back soon!
+                
             </p>
           </div>
           <div className="grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -346,7 +358,7 @@ export default function Home() {
               © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Some analysis methodologies are inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. Website is completely free for everyone and myself to learn more about finance and AI.
+              Inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is completely free for everyone and myself to learn more about finance and AI. SOPHIE is not for financial advice, but an educational tool to help you understand the market and make your own decisions. Please show support if you like SOPHIE! SOPHIE will learn options and portfolio management in the future. Please check back soon!
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Contact: <a href="mailto:sophieaifinance@gmail.com" className="underline hover:text-primary">sophieaifinance@gmail.com</a>
