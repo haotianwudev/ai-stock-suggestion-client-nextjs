@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   title: "SOPHIE | Stock/Option Portfolio Helper",
   description: "Your intelligent stock/option portfolio helper for investment and education",
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png'
+    icon: [
+      {
+        url: '/favicon.ico',
+        sizes: 'any'
+      }
+    ]
   }
 };
 
