@@ -9,6 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "SOPHIE | Stock/Option Portfolio Helper",
   description: "Your intelligent stock/option portfolio helper for investment and education",
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png'
+  }
 };
 
 export default function RootLayout({
