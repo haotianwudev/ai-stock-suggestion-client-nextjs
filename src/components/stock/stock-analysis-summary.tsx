@@ -142,19 +142,19 @@ export function StockAnalysisSummary({
     <Card className={cn("col-span-3", className)}>
       <CardHeader className="pb-0 mb-0">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <div className="relative h-24 w-24 rounded-full overflow-hidden shadow-md border-2 border-purple-300">
+          <div className="flex items-center gap-5">
+            <div className="relative h-32 w-32 rounded-full overflow-hidden shadow-md border-3 border-purple-300">
               <Image 
-                src={SOPHIE_PLACEHOLDER}
+                src="/images/agents/SOPHIE.png"
                 alt="SOPHIE" 
-                width={96} 
-                height={96}
+                width={128} 
+                height={128}
                 className="object-cover"
               />
             </div>
             <div>
-              <CardTitle className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">SOPHIE</CardTitle>
-              <p className="text-xs text-muted-foreground mt-1">Confidence: {sophieData.confidence}%</p>
+              <CardTitle className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">SOPHIE</CardTitle>
+              <p className="text-sm text-muted-foreground mt-2">Confidence: {sophieData.confidence}%</p>
             </div>
           </div>
           
@@ -162,19 +162,19 @@ export function StockAnalysisSummary({
           <div className="relative flex flex-col items-center justify-center mr-8">
             <div 
               className={`
-                w-24 h-24 rounded-md border-2 shadow-lg flex items-center justify-center
+                w-28 h-28 rounded-md border-2 shadow-lg flex items-center justify-center
                 bg-gradient-to-br ${getScoreColor(sophieData.overall_score)}
               `}
             >
-              <span className="text-4xl font-bold text-white">{sophieData.overall_score}</span>
+              <span className="text-5xl font-bold text-white">{sophieData.overall_score}</span>
             </div>
-            <div className="absolute -bottom-2 w-28 bg-black rounded-sm py-1 text-sm font-bold text-center text-white">
+            <div className="absolute -bottom-2 w-32 bg-black rounded-sm py-1 text-sm font-bold text-center text-white">
               SOPHIE SCORE
             </div>
           </div>
         </div>
       </CardHeader>
-      <CardContent className="pt-4">
+      <CardContent className="pt-2">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-64 gap-3">
             <div className="animate-pulse flex space-x-2">
@@ -185,7 +185,7 @@ export function StockAnalysisSummary({
             <p className="text-sm text-muted-foreground">Loading SOPHIE Analysis...</p>
           </div>
         ) : (
-          <div className="space-y-4 -mt-2">
+          <div className="space-y-4 -mt-4">
             {/* SOPHIE's Commentary */}
             <div className={`relative rounded-lg border p-4 ${commentStyle.background} ${commentStyle.border}`}>
               <div className="absolute -top-2 -left-2">
