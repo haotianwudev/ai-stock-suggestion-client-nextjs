@@ -206,7 +206,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="space-y-6 pb-4 pt-6 md:pb-6 md:pt-10 lg:py-12">
+        <section className="space-y-4 pb-2 pt-6 md:pb-4 md:pt-8 lg:py-8">
           <div className="container max-w-screen-xl mx-auto">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
               <div className="flex items-center gap-4">
@@ -242,8 +242,8 @@ export default function Home() {
         </section>
         
         {/* Quick Access Stock Cards */}
-        <section className="container max-w-screen-xl mx-auto py-2 md:py-4">
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+        <section className="container max-w-screen-xl mx-auto py-0 md:py-1">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
             {stocks.map((stock) => (
               <Link key={stock.ticker} href={`/stock/${stock.ticker}`} className="group">
                 <Card className="overflow-hidden transition-all hover:shadow-lg">
@@ -278,7 +278,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="container max-w-screen-xl mx-auto space-y-6 py-4 md:py-8">
+        <section className="container max-w-screen-xl mx-auto space-y-4 py-2 md:py-4">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Features
