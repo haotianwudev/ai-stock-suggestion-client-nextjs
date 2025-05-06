@@ -168,7 +168,7 @@ export function StockAnalysisSummary({
             >
               <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{sophieData.overall_score}</span>
             </div>
-            <div className="absolute -bottom-2 w-20 sm:w-24 md:w-28 bg-black rounded-sm py-0.5 text-xs font-bold text-center text-white">
+            <div className="absolute -bottom-2 w-20 sm:w-24 md:w-28 bg-black rounded-sm py-0.5 text-[9px] sm:text-[10px] font-medium text-center text-white tracking-wide">
               SOPHIE SCORE
             </div>
           </div>

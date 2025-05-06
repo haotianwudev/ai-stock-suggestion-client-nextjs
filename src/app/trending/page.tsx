@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/header";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
-import { ArrowDownIcon, ArrowUpIcon, TrendingUpIcon } from "lucide-react";
+import { AlertCircleIcon } from "lucide-react";
+import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
+import Image from "next/image";
 
 // TypeScript interfaces
 interface StockData {
@@ -16,22 +17,22 @@ interface StockData {
   name: string;
   price: number;
   change: number;
-  dayChange?: number;
-  volume?: number;
-  marketCap?: number;
+  sophieScore?: number;
+  color?: string;
 }
 
 interface BatchStockResponse {
   ticker: string;
   company: {
     name: string;
-    market_cap?: number;
   };
   prices: {
     biz_date: string;
     close: number;
-    volume?: number;
   }[];
+  latestSophieAnalysis?: {
+    overall_score: number;
+  };
 }
 
 // Batch stocks GraphQL query
@@ -45,24 +46,17 @@ const BATCH_STOCKS_QUERY = gql`
       ticker
       company {
         name
-        market_cap
       }
       prices {
         biz_date
         close
-        volume
+      }
+      latestSophieAnalysis {
+        overall_score
       }
     }
   }
 `;
-
-// Fallback data in case API isn't working
-const fallbackStocks: StockData[] = [
-  { ticker: "AAPL", name: "Apple Inc.", change: 2.34, price: 187.45, dayChange: 0.5, volume: 45782390, marketCap: 2970000000000 },
-  { ticker: "MSFT", name: "Microsoft Corporation", change: 1.12, price: 324.82, dayChange: 0.3, volume: 28576230, marketCap: 2420000000000 },
-  { ticker: "NVDA", name: "NVIDIA Corporation", change: 4.67, price: 848.35, dayChange: 1.2, volume: 53892140, marketCap: 2090000000000 },
-  { ticker: "GS", name: "Goldman Sachs Group Inc.", change: 0.78, price: 456.92, dayChange: -0.2, volume: 2341520, marketCap: 148000000000 }
-];
 
 // Create Apollo client for direct use
 const createApolloClient = () => {
@@ -96,33 +90,40 @@ const createApolloClient = () => {
   });
 };
 
-// Format large numbers for market cap
-function formatMarketCap(marketCap: number): string {
-  if (marketCap >= 1000000000000) {
-    return `$${(marketCap / 1000000000000).toFixed(2)}T`;
-  } else if (marketCap >= 1000000000) {
-    return `$${(marketCap / 1000000000).toFixed(2)}B`;
-  } else if (marketCap >= 1000000) {
-    return `$${(marketCap / 1000000).toFixed(2)}M`;
-  }
-  return `$${marketCap.toLocaleString()}`;
+// Get score color based on the value - matching the analysis section
+function getScoreColor(score: number): string {
+  if (score >= 80) return 'from-green-500 to-emerald-600 border-green-300';
+  if (score >= 60) return 'from-blue-500 to-indigo-600 border-blue-300';
+  if (score >= 40) return 'from-yellow-500 to-amber-600 border-yellow-300';
+  return 'from-red-500 to-rose-600 border-red-300';
 }
 
-// Format volume numbers
-function formatVolume(volume: number): string {
-  if (volume >= 1000000) {
-    return `${(volume / 1000000).toFixed(2)}M`;
-  } else if (volume >= 1000) {
-    return `${(volume / 1000).toFixed(2)}K`;
-  }
-  return volume.toLocaleString();
+// Format color based on ticker for visual consistency with main page
+function getTickerColor(ticker: string): string {
+  const colorMap: Record<string, string> = {
+    "AAPL": "from-blue-500 to-cyan-500",
+    "MSFT": "from-emerald-500 to-green-500",
+    "NVDA": "from-green-500 to-lime-500",
+    "GS": "from-purple-500 to-indigo-500"
+  };
+  
+  return colorMap[ticker] || "from-blue-400 to-blue-600";
+}
+
+// Function to generate a random SOPHIE score between 30 and 95 (fallback if API doesn't provide a score)
+function generateSophieScore(ticker: string): number {
+  // Seed the random generator based on ticker to get consistent scores
+  const seed = ticker.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+  const rand = Math.sin(seed) * 10000;
+  return Math.floor(30 + (rand - Math.floor(rand)) * 65); // Between 30-95
 }
 
 export default function TrendingPage() {
   // We want to display specifically AAPL, MSFT, NVDA, GS
   const TICKERS = ["AAPL", "MSFT", "NVDA", "GS"];
-  const [stocks, setStocks] = useState<StockData[]>(fallbackStocks);
+  const [stocks, setStocks] = useState<StockData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch stock data using GraphQL and fall back to mock data if that fails
   useEffect(() => {
@@ -132,6 +133,9 @@ export default function TrendingPage() {
   // Fetch stock data using our GraphQL endpoint with batchStocks query
   const fetchStocksFromGraphQL = async () => {
     try {
+      setIsLoading(true);
+      setError(null);
+      
       // Get current date for GraphQL query
       const today = new Date();
       const threeMonthsAgo = new Date();
@@ -181,29 +185,22 @@ export default function TrendingPage() {
             return;
           }
           
-          // Get previous day price if available (second to last element)
-          let dayChange = 0;
-          if (prices.length > 1) {
-            const prevDayPrice = prices[prices.length - 2];
-            dayChange = prevDayPrice.close 
-              ? ((latestPrice.close - prevDayPrice.close) / prevDayPrice.close) * 100
-              : 0;
-          }
-          
           // Calculate percentage change over the period
           let changePercent = 0;
           if (firstPrice && firstPrice.close) {
             changePercent = ((latestPrice.close - firstPrice.close) / firstPrice.close) * 100;
           }
           
+          // Use the SOPHIE score from API if available, otherwise generate a fallback score
+          const sophieScore = stockData.latestSophieAnalysis?.overall_score || generateSophieScore(ticker);
+          
           validStocks.push({
             ticker,
             name: stockData.company?.name || ticker,
             price: latestPrice.close,
             change: changePercent,
-            dayChange: dayChange,
-            volume: latestPrice.volume,
-            marketCap: stockData.company?.market_cap
+            sophieScore: sophieScore,
+            color: getTickerColor(ticker)
           });
         });
         
@@ -211,12 +208,12 @@ export default function TrendingPage() {
         if (validStocks.length > 0) {
           setStocks(validStocks);
         } else {
-          console.error("No valid stock data returned from API");
+          setError("No valid stock data returned from API");
         }
       }
     } catch (err) {
       console.error("Error fetching from GraphQL:", err);
-      // Keep using fallback data if GraphQL fails
+      setError("Unable to fetch stock data. Please try again later.");
     } finally {
       setIsLoading(false);
     }
@@ -230,88 +227,38 @@ export default function TrendingPage() {
           <div className="flex flex-col space-y-2">
             <h1 className="text-3xl font-bold tracking-tight">Trending Stocks</h1>
             <p className="text-muted-foreground">
-              Real-time data for AAPL, MSFT, NVDA, and GS.
+              More stocks supported soon!
             </p>
           </div>
           
           {isLoading ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {[1, 2, 3, 4].map(i => (
-                <Card key={i} className="opacity-70 animate-pulse">
-                  <CardHeader className="pb-2">
-                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-2"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between items-center mb-4">
-                      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
-                      <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-                    </div>
-                    <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
-                  </CardContent>
-                </Card>
+                <StockCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : stocks.length > 0 ? (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {stocks.map((stock) => (
+                <StockCard key={stock.ticker} stock={stock} />
               ))}
             </div>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {stocks.map((stock) => (
-                <Card key={stock.ticker} className="hover:shadow-md transition-shadow">
-                  <CardHeader className="pb-2">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <CardTitle className="text-xl font-bold">{stock.ticker}</CardTitle>
-                        <CardDescription>{stock.name}</CardDescription>
-                      </div>
-                      {stock.marketCap && (
-                        <div className="text-xs text-muted-foreground">
-                          <div>Market Cap</div>
-                          <div className="font-medium">{formatMarketCap(stock.marketCap)}</div>
-                        </div>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">Price</div>
-                        <div className="text-2xl font-bold">${stock.price.toFixed(2)}</div>
-                      </div>
-                      
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">3-Month Change</div>
-                        <div className={`flex items-center font-semibold ${stock.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                          {stock.change >= 0 ? <ArrowUpIcon className="h-4 w-4 mr-1" /> : <ArrowDownIcon className="h-4 w-4 mr-1" />}
-                          {stock.change.toFixed(2)}%
-                        </div>
-                      </div>
-                      
-                      {stock.dayChange !== undefined && (
-                        <div>
-                          <div className="text-sm text-muted-foreground mb-1">Daily Change</div>
-                          <div className={`flex items-center font-semibold ${stock.dayChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                            {stock.dayChange >= 0 ? <ArrowUpIcon className="h-4 w-4 mr-1" /> : <ArrowDownIcon className="h-4 w-4 mr-1" />}
-                            {stock.dayChange.toFixed(2)}%
-                          </div>
-                        </div>
-                      )}
-                      
-                      {stock.volume && (
-                        <div>
-                          <div className="text-sm text-muted-foreground mb-1">Volume</div>
-                          <div className="font-medium">{formatVolume(stock.volume)}</div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <Button asChild className="w-full">
-                      <Link href={`/stock/${stock.ticker}`}>
-                        <TrendingUpIcon className="mr-2 h-4 w-4" /> 
-                        View Analysis
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <div className="rounded-full bg-yellow-100 p-3 text-yellow-600 mb-4">
+                <AlertCircleIcon className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-medium">No Stock Data Available</h3>
+              <p className="text-sm text-muted-foreground mt-2 max-w-md">
+                {error || "Unable to retrieve stock data at this time. Please check back later."}
+              </p>
+              <Button 
+                variant="outline" 
+                className="mt-4"
+                onClick={() => fetchStocksFromGraphQL()}
+              >
+                Retry
+              </Button>
             </div>
           )}
         </div>

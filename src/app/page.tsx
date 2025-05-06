@@ -11,6 +11,7 @@ import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
 import Image from "next/image";
+import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
 
 // Types for stock data
 interface StockData {
@@ -19,6 +20,7 @@ interface StockData {
   price: number;
   change: number;
   color: string;
+  sophieScore?: number;
 }
 
 interface BatchStockResponse {
@@ -30,6 +32,9 @@ interface BatchStockResponse {
     biz_date: string;
     close: number;
   }[];
+  latestSophieAnalysis?: {
+    overall_score: number;
+  };
 }
 
 // GraphQL query for batch stock data
@@ -48,6 +53,9 @@ const BATCH_STOCKS_QUERY = gql`
         biz_date
         close
       }
+      latestSophieAnalysis {
+        overall_score
+      }
     }
   }
 `;
@@ -58,31 +66,6 @@ const stockColors = {
   "MSFT": "from-emerald-500 to-green-500",
   "NVDA": "from-green-500 to-lime-500"
 };
-
-// Fallback data as a last resort
-const fallbackStocks: StockData[] = [
-  { 
-    ticker: "AAPL", 
-    name: "Apple Inc.", 
-    price: 187.45, 
-    change: 2.34, 
-    color: "from-blue-500 to-cyan-500" 
-  },
-  { 
-    ticker: "MSFT", 
-    name: "Microsoft Corporation", 
-    price: 324.82, 
-    change: 1.12,
-    color: "from-emerald-500 to-green-500" 
-  },
-  { 
-    ticker: "NVDA", 
-    name: "NVIDIA Corporation", 
-    price: 848.35, 
-    change: 4.67,
-    color: "from-green-500 to-lime-500" 
-  }
-];
 
 // Create Apollo client for direct use
 const createApolloClient = () => {
@@ -116,8 +99,25 @@ const createApolloClient = () => {
   });
 };
 
+// Get score color based on the value - matching the analysis section
+function getScoreColor(score: number): string {
+  if (score >= 80) return 'from-green-500 to-emerald-600 border-green-300';
+  if (score >= 60) return 'from-blue-500 to-indigo-600 border-blue-300';
+  if (score >= 40) return 'from-yellow-500 to-amber-600 border-yellow-300';
+  return 'from-red-500 to-rose-600 border-red-300';
+}
+
+// Function to generate a random SOPHIE score between 30 and 95 (fallback if API doesn't provide a score)
+function generateSophieScore(ticker: string): number {
+  // Seed the random generator based on ticker to get consistent scores
+  const seed = ticker.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+  const rand = Math.sin(seed) * 10000;
+  return Math.floor(30 + (rand - Math.floor(rand)) * 65); // Between 30-95
+}
+
 export default function Home() {
-  const [stocks, setStocks] = useState<StockData[]>(fallbackStocks);
+  const [stocks, setStocks] = useState<StockData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const TICKERS = ["AAPL", "MSFT", "NVDA"];
   
   useEffect(() => {
@@ -127,6 +127,7 @@ export default function Home() {
   
   const fetchStockData = async () => {
     try {
+      setIsLoading(true);
       // Get current date for GraphQL query
       const today = new Date();
       const threeMonthsAgo = new Date();
@@ -182,12 +183,16 @@ export default function Home() {
             changePercent = ((latestPrice.close - firstPrice.close) / firstPrice.close) * 100;
           }
           
+          // Use the SOPHIE score from API if available, otherwise generate a fallback score
+          const sophieScore = stockData.latestSophieAnalysis?.overall_score || generateSophieScore(ticker);
+          
           validStocks.push({
             ticker,
             name: stockData.company?.name || ticker,
             price: latestPrice.close,
             change: changePercent,
-            color: stockColors[ticker as keyof typeof stockColors] || "from-blue-400 to-blue-600"
+            color: stockColors[ticker as keyof typeof stockColors] || "from-blue-400 to-blue-600",
+            sophieScore: sophieScore
           });
         });
         
@@ -198,7 +203,8 @@ export default function Home() {
       }
     } catch (err) {
       console.error("Error fetching from GraphQL:", err);
-      // Keep using fallback data if GraphQL fails
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -243,39 +249,29 @@ export default function Home() {
         
         {/* Quick Access Stock Cards */}
         <section className="container max-w-screen-xl mx-auto py-0 md:py-1">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
-            {stocks.map((stock) => (
-              <Link key={stock.ticker} href={`/stock/${stock.ticker}`} className="group">
-                <Card className="overflow-hidden transition-all hover:shadow-lg">
-                  <div className={`h-2 bg-gradient-to-r ${stock.color}`}></div>
-                  <CardHeader className="pb-2">
-                    <div className="flex justify-between items-center">
-                      <CardTitle className="text-xl font-bold">{stock.ticker}</CardTitle>
-                      <CardDescription>{stock.name}</CardDescription>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="flex flex-col">
-                        <div className="text-2xl font-bold">${stock.price.toFixed(2)}</div>
-                        <div className="text-xs text-muted-foreground">Current close price</div>
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <div className={`flex items-center font-medium ${stock.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                          {stock.change >= 0 ? <ArrowUpIcon className="h-4 w-4 mr-1" /> : <ArrowDownIcon className="h-4 w-4 mr-1" />}
-                          {stock.change.toFixed(2)}%
-                        </div>
-                        <div className="text-xs text-muted-foreground">3-month change</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                      View Analysis <ExternalLinkIcon className="ml-1 h-3 w-3" />
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+              {[1, 2, 3].map(i => (
+                <StockCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : stocks.length > 0 ? (
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+              {stocks.map((stock) => (
+                <StockCard key={stock.ticker} stock={stock} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <div className="rounded-full bg-yellow-100 p-3 text-yellow-600 mb-4">
+                <InfoIcon className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-medium">No Stock Data Available</h3>
+              <p className="text-sm text-muted-foreground mt-2 max-w-md">
+                Unable to retrieve stock data at this time. Please check back later.
+              </p>
+            </div>
+          )}
         </section>
         
         <section className="container max-w-screen-xl mx-auto space-y-4 py-2 md:py-4">
