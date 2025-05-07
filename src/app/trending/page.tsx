@@ -43,7 +43,7 @@ interface TopTickerResponse {
 // Top tickers GraphQL query
 const GET_TOP_TICKERS = gql`
   query GetTopTickers {
-    coveredTickers(top: 12) {
+    coveredTickers {
       ticker
       score
     }
@@ -297,7 +297,7 @@ export default function TrendingPage() {
           
           {isLoading ? (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
+              {Array.from({ length: 12 }, (_, i) => i + 1).map(i => (
                 <StockCardSkeleton key={i} />
               ))}
             </div>

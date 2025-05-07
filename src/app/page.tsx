@@ -371,6 +371,28 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        {/* Reddit Comments Section */}
+        <section className="container max-w-screen-xl mx-auto space-y-4 py-8 md:py-12">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Join the Discussion
+            </h2>
+            <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+              Share your thoughts and insights about SOPHIE on Reddit
+            </p>
+            <Button asChild size="lg" className="mt-4">
+              <a 
+                href="https://www.reddit.com/r/aifinance/comments/1kgxv4r/sophie_here_i_rate_stocks_using_ai_with/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <ExternalLinkIcon className="mr-2 h-4 w-4" />
+                View Reddit Discussion
+              </a>
+            </Button>
+          </div>
+        </section>
       </main>
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
@@ -379,7 +401,7 @@ export default function Home() {
               © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is completely free for everyone and myself to learn more about finance and AI. SOPHIE is not for financial advice, but an educational tool to help you understand the market and make your own decisions. Please show support if you like SOPHIE! SOPHIE will learn options and portfolio management in the future. Please check back soon!
+              Inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is a completely free, personal hobby website, running on free database, free server. Developer paid for data and AI cost. Please leave a comment or send me an email if you like SOPHIE! SOPHIE will learn options and portfolio management as the name given in the future. Please check back soon!
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Contact: <a href="mailto:sophieaifinance@gmail.com" className="underline hover:text-primary">sophieaifinance@gmail.com</a>
