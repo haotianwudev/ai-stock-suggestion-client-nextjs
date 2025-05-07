@@ -35,6 +35,21 @@ interface BatchStockResponse {
   };
 }
 
+interface TopTickerResponse {
+  ticker: string;
+  score: number;
+}
+
+// Top tickers GraphQL query
+const GET_TOP_TICKERS = gql`
+  query GetTopTickers {
+    coveredTickers(top: 12) {
+      ticker
+      score
+    }
+  }
+`;
+
 // Batch stocks GraphQL query
 const BATCH_STOCKS_QUERY = gql`
   query GetBatchStocksWithDates($tickers: [String!]!, $startDate: String!, $endDate: String!) {
@@ -119,22 +134,38 @@ function generateSophieScore(ticker: string): number {
 }
 
 export default function TrendingPage() {
-  // We want to display specifically AAPL, MSFT, NVDA, GS
-  const TICKERS = ["AAPL", "MSFT", "NVDA", "GS"];
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Fetch stock data using GraphQL and fall back to mock data if that fails
   useEffect(() => {
-    fetchStocksFromGraphQL();
+    fetchTopStocks();
   }, []);
 
-  // Fetch stock data using our GraphQL endpoint with batchStocks query
-  const fetchStocksFromGraphQL = async () => {
+  // Fetch top tickers and then their stock data
+  const fetchTopStocks = async () => {
     try {
       setIsLoading(true);
       setError(null);
+      
+      // Create Apollo client for direct use
+      const client = createApolloClient();
+
+      // First, get the top tickers
+      const topTickersResult = await client.query({
+        query: GET_TOP_TICKERS
+      });
+      
+      if (!topTickersResult.data?.coveredTickers || topTickersResult.data.coveredTickers.length === 0) {
+        setError("No top tickers available");
+        setIsLoading(false);
+        return;
+      }
+      
+      // Extract tickers from the response
+      const topTickers = topTickersResult.data.coveredTickers as TopTickerResponse[];
+      const tickersToFetch = topTickers.map(t => t.ticker);
       
       // Get current date for GraphQL query
       const today = new Date();
@@ -144,14 +175,11 @@ export default function TrendingPage() {
       const endDate = today.toISOString().split('T')[0];
       const startDate = threeMonthsAgo.toISOString().split('T')[0];
 
-      // Create Apollo client for direct use
-      const client = createApolloClient();
-
-      // Execute batch query for all tickers at once
+      // Execute batch query for all top tickers at once
       const result = await client.query({
         query: BATCH_STOCKS_QUERY,
         variables: { 
-          tickers: TICKERS, 
+          tickers: tickersToFetch, 
           startDate, 
           endDate 
         }
@@ -162,7 +190,7 @@ export default function TrendingPage() {
         const batchResults = result.data.batchStocks;
         const validStocks: StockData[] = [];
         
-        TICKERS.forEach(ticker => {
+        tickersToFetch.forEach(ticker => {
           // Find matching stock data in the response
           const stockData = batchResults.find((stock: BatchStockResponse) => 
             stock.ticker === ticker
@@ -215,8 +243,13 @@ export default function TrendingPage() {
             changePercent = ((latestPrice.close - threeMonthPrice.close) / threeMonthPrice.close) * 100;
           }
           
-          // Use the SOPHIE score from API if available, otherwise generate a fallback score
-          const sophieScore = stockData.latestSophieAnalysis?.overall_score || generateSophieScore(ticker);
+          // Get the SOPHIE score from the top tickers response
+          const topTickerData = topTickers.find(t => t.ticker === ticker);
+          
+          // Use the score from top tickers as the primary source
+          // Only fall back to latestSophieAnalysis if no score is available from top tickers
+          const sophieScore = topTickerData ? topTickerData.score : 
+                             (stockData.latestSophieAnalysis?.overall_score || generateSophieScore(ticker));
           
           validStocks.push({
             ticker,
@@ -230,6 +263,13 @@ export default function TrendingPage() {
         
         // Only update state if we have valid stocks
         if (validStocks.length > 0) {
+          // Sort stocks to match the order from the topTickers query
+          validStocks.sort((a, b) => {
+            const aIndex = topTickers.findIndex(t => t.ticker === a.ticker);
+            const bIndex = topTickers.findIndex(t => t.ticker === b.ticker);
+            return aIndex - bIndex;
+          });
+          
           setStocks(validStocks);
         } else {
           setError("No valid stock data returned from API");
@@ -257,7 +297,7 @@ export default function TrendingPage() {
           
           {isLoading ? (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {[1, 2, 3, 4].map(i => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(i => (
                 <StockCardSkeleton key={i} />
               ))}
             </div>
@@ -279,7 +319,7 @@ export default function TrendingPage() {
               <Button 
                 variant="outline" 
                 className="mt-4"
-                onClick={() => fetchStocksFromGraphQL()}
+                onClick={() => fetchTopStocks()}
               >
                 Retry
               </Button>
