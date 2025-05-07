@@ -12,6 +12,7 @@ import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
 import Image from "next/image";
 import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
+import { TrendingUp, Trophy, GraduationCap, LineChart, Shield, Users } from "lucide-react";
 
 // Types for stock data
 interface StockData {
@@ -321,6 +322,26 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
+                  <h3 className="font-bold">Investment Legend AI Bot</h3>
+                  <p className="text-sm text-muted-foreground">
+                    AI driven stock analysis through the lens of legendary investors like Warren Buffett and Charlie Munger to provide time-tested perspectives.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
+                <div className="space-y-2">
+                  <h3 className="font-bold">Educational Focus</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Designed for learning - all analyses include clear explanations to help new investors understand market concepts and terminology.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
+                <div className="space-y-2">
                   <h3 className="font-bold">Technical Analysis</h3>
                   <p className="text-sm text-muted-foreground">
                     Advanced technical indicators including trend analysis, momentum, mean reversion, volatility metrics, and statistical arbitrage signals.
@@ -344,26 +365,6 @@ export default function Home() {
                   <h3 className="font-bold">Market Sentiment</h3>
                   <p className="text-sm text-muted-foreground">
                     Analysis of market psychology through news sentiment, insider trading activity, and institutional interest signals.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Investment Legends</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Stock analysis through the lens of legendary investors like Warren Buffett and Charlie Munger to provide time-tested perspectives.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Educational Focus</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Designed for learning - all analyses include clear explanations to help new investors understand market concepts and terminology.
                   </p>
                 </div>
               </div>

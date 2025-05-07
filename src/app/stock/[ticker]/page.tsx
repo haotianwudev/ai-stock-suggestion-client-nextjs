@@ -7,9 +7,9 @@ type Params = {
   ticker: string;
 };
 
-export default function StockDetailPage({ params }: { params: Params }) {
+export default async function StockDetailPage({ params }: { params: Params }) {
   // In Next.js 15, we need to handle params as a promise
-  const ticker = params.ticker.toUpperCase();
+  const ticker = (await params).ticker.toUpperCase();
   
   return (
     <div className="flex min-h-screen flex-col">
@@ -21,9 +21,11 @@ export default function StockDetailPage({ params }: { params: Params }) {
   );
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const ticker = (await params).ticker.toUpperCase();
+  
   return {
-    title: `${params.ticker.toUpperCase()} Stock Analysis | SOPHIE`,
-    description: `Analysis of ${params.ticker.toUpperCase()} stock by SOPHIE AI`,
+    title: `${ticker} Stock Analysis | SOPHIE`,
+    description: `Analysis of ${ticker} stock by SOPHIE AI`,
   }
 }
