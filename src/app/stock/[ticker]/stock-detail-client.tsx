@@ -86,6 +86,21 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     variables: { ticker, agent: "charlie_munger" },
   });
 
+  // Fetch Cathie Wood agent signal
+  const { loading: woodLoading, error: woodError, data: woodData } = useQuery(GET_LATEST_AGENT_SIGNAL, {
+    variables: { ticker, agent: "cathie_wood" },
+  });
+
+  // Fetch Stanley Druckenmiller agent signal
+  const { loading: druckenmillerLoading, error: druckenmillerError, data: druckenmillerData } = useQuery(GET_LATEST_AGENT_SIGNAL, {
+    variables: { ticker, agent: "stanley_druckenmiller" },
+  });
+
+  // Fetch Benjamin Graham agent signal
+  const { loading: grahamLoading, error: grahamError, data: grahamData } = useQuery(GET_LATEST_AGENT_SIGNAL, {
+    variables: { ticker, agent: "ben_graham" },
+  });
+
   // Fetch SOPHIE analysis
   const { loading: sophieLoading, error: sophieError, data: sophieData } = useQuery(GET_LATEST_SOPHIE_ANALYSIS, {
     variables: { ticker },
@@ -141,6 +156,9 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     const suggestions: StockAgentSuggestion[] = [];
     let buffettSignal = null;
     let mungerSignal = null;
+    let woodSignal = null;
+    let druckenmillerSignal = null;
+    let grahamSignal = null;
     
     if (buffettData?.latestAgentSignal) {
       buffettSignal = {
@@ -161,16 +179,46 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
       };
       suggestions.push(mungerSignal);
     }
+
+    if (woodData?.latestAgentSignal) {
+      woodSignal = {
+        id: 3, // Adding ID for compatibility
+        ...woodData.latestAgentSignal,
+        created_at: woodData.latestAgentSignal.biz_date,
+        updated_at: woodData.latestAgentSignal.biz_date
+      };
+      suggestions.push(woodSignal);
+    }
+
+    if (druckenmillerData?.latestAgentSignal) {
+      druckenmillerSignal = {
+        id: 4, // Adding ID for compatibility
+        ...druckenmillerData.latestAgentSignal,
+        created_at: druckenmillerData.latestAgentSignal.biz_date,
+        updated_at: druckenmillerData.latestAgentSignal.biz_date
+      };
+      suggestions.push(druckenmillerSignal);
+    }
+
+    if (grahamData?.latestAgentSignal) {
+      grahamSignal = {
+        id: 5, // Adding ID for compatibility
+        ...grahamData.latestAgentSignal,
+        created_at: grahamData.latestAgentSignal.biz_date,
+        updated_at: grahamData.latestAgentSignal.biz_date
+      };
+      suggestions.push(grahamSignal);
+    }
     
     if (suggestions.length > 0) {
       setAgentSuggestions(suggestions);
     }
     
-    if (!buffettLoading && !mungerLoading) {
+    if (!buffettLoading && !mungerLoading && !woodLoading && !druckenmillerLoading && !grahamLoading) {
       setLoadingAgents(false);
     }
     
-  }, [buffettData, mungerData, buffettLoading, mungerLoading]);
+  }, [buffettData, mungerData, woodData, druckenmillerData, grahamData, buffettLoading, mungerLoading, woodLoading, druckenmillerLoading, grahamLoading]);
 
   // For SOPHIE analysis data
   useEffect(() => {

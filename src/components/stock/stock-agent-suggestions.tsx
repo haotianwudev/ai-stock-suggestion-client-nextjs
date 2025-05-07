@@ -11,7 +11,10 @@ import { StockAgentSuggestion } from "@/lib/graphql/types";
 // Base64 placeholder images (simple SVG circles with initials)
 const PLACEHOLDER_IMAGES: Record<string, string> = {
   warren_buffett: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiM0Mjg1RjQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5XQjwvdGV4dD48L3N2Zz4=',
-  charlie_munger: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiM5QzI3QjAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5DTTwvdGV4dD48L3N2Zz4='
+  charlie_munger: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiM5QzI3QjAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5DTTwvdGV4dD48L3N2Zz4=',
+  cathie_wood: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiNGRjQ4NDgiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5DVzwvdGV4dD48L3N2Zz4=',
+  stanley_druckenmiller: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiM2QjI4RjQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5TRDwvdGV4dD48L3N2Zz4=',
+  ben_graham: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiM0Q0FGNTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIj5CRzwvdGV4dD48L3N2Zz4='
 };
 
 interface StockAgentSuggestionsProps {
@@ -46,6 +49,9 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
   
   // Format agent name for display (warren_buffett -> Warren Buffett)
   const formatAgentName = (name: string) => {
+    if (name === 'stanley_druckenmiller') {
+      return 'Stan Druckenmiller';
+    }
     return name
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -124,15 +130,15 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
       <CardContent>
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6">
           {/* Section 1: Agent Selection (Left) - Made Smaller */}
-          <div className="w-full lg:w-52 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible">
+          <div className="w-full lg:w-44 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible">
             {agents.map((agent, index) => (
               <Button
                 key={agent}
                 variant={currentAgentIndex === index ? "default" : "outline"}
-                className="flex items-start p-2 h-auto min-w-[160px] relative"
+                className="flex items-center p-2 h-auto w-[140px] lg:w-full relative"
                 onClick={() => handleSelectAgent(index)}
               >
-                <div className="relative h-10 w-10 rounded-full overflow-hidden flex-shrink-0 mr-2">
+                <div className="relative h-10 w-10 rounded-full overflow-hidden flex-shrink-0">
                   <Image
                     src={getAgentImageSrc(agent)}
                     alt={formatAgentName(agent)}
@@ -141,9 +147,9 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
                     onError={() => handleImageError(agent)}
                   />
                 </div>
-                <div className="flex flex-col h-full justify-between">
-                  <span className="text-xs font-medium text-left">{formatAgentName(agent)}</span>
-                  <Badge className={`${getSignalColor(agentMap[agent].signal)} text-xs px-2 py-0.5 mt-1`}>
+                <div className="flex flex-col h-full justify-between min-w-0 ml-2 flex-1">
+                  <span className="text-xs font-medium text-left truncate">{formatAgentName(agent)}</span>
+                  <Badge className={`${getSignalColor(agentMap[agent].signal)} text-xs px-1.5 py-0.5 mt-1 w-fit`}>
                     {agentMap[agent].signal.toUpperCase()}
                   </Badge>
                 </div>
@@ -224,7 +230,13 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
                 ? "Warren Buffett's Investment Philosophy" 
                 : currentAgent === 'charlie_munger'
                   ? "Charlie Munger's Investment Philosophy"
-                  : "Investment Methodology"}
+                  : currentAgent === 'cathie_wood'
+                    ? "Cathie Wood's Investment Philosophy"
+                    : currentAgent === 'stanley_druckenmiller'
+                      ? "Stanley Druckenmiller's Investment Philosophy"
+                      : currentAgent === 'ben_graham'
+                        ? "Benjamin Graham's Investment Philosophy"
+                        : "Investment Methodology"}
             </h4>
             <div className="text-sm text-muted-foreground">
               {currentAgent === 'warren_buffett' ? (
@@ -305,6 +317,141 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
                         <li>Inversion (avoiding mistakes)</li>
                         <li>Microeconomics (supply/demand)</li>
                         <li>Psychology (market sentiment)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ) : currentAgent === 'cathie_wood' ? (
+                <div className="space-y-2">
+                  <p>
+                    Cathie Wood is known for her focus on disruptive innovation and exponential growth potential. She pioneered thematic investing in areas like genomics, AI, fintech, and blockchain, embracing volatility for long-term gains.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                      <p className="font-medium text-xs">Disruptive Potential</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Revenue Growth Acceleration</li>
+                        <li>Gross Margin Expansion</li>
+                        <li>Operating Leverage</li>
+                        <li>R&D Intensity</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Innovation Growth</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>R&D Growth Rate</li>
+                        <li>Free Cash Flow</li>
+                        <li>Operating Efficiency</li>
+                        <li>Capital Allocation</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Exponential Valuation</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>High-Growth DCF</li>
+                        <li>TAM Analysis</li>
+                        <li>Margin of Safety</li>
+                        <li>Scoring Summary</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Key Metrics</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Exponential Growth Potential</li>
+                        <li>Innovation Intensity</li>
+                        <li>Disruptive Valuation</li>
+                        <li>Signal Generation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ) : currentAgent === 'stanley_druckenmiller' ? (
+                <div className="space-y-2">
+                  <p>
+                    Stanley Druckenmiller is known for his aggressive but disciplined approach, focusing on asymmetric risk-reward opportunities and capital preservation. He achieved 30%+ annual returns over 30 years by riding strong trends and managing risk effectively.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                      <p className="font-medium text-xs">Growth & Momentum</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Revenue Growth {'>'}30%</li>
+                        <li>EPS Growth {'>'}30%</li>
+                        <li>Price Momentum {'>'}50%</li>
+                        <li>Trend Strength</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Risk-Reward Analysis</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Debt-to-Equity {'<'}0.3</li>
+                        <li>Price Volatility</li>
+                        <li>Upside/Downside Ratio</li>
+                        <li>Capital Preservation</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Valuation Metrics</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>P/E Ratio {'<'}15</li>
+                        <li>P/FCF Ratio {'<'}15</li>
+                        <li>EV/EBIT {'<'}15</li>
+                        <li>EV/EBITDA {'<'}10</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Market Signals</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>News Sentiment</li>
+                        <li>Insider Activity</li>
+                        <li>Institutional Interest</li>
+                        <li>Market Psychology</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ) : currentAgent === 'ben_graham' ? (
+                <div className="space-y-2">
+                  <p>
+                    Benjamin Graham, the father of value investing, pioneered quantitative security analysis and emphasized buying stocks trading below their intrinsic value with a margin of safety. His approach focuses strictly on valuation metrics rather than qualitative factors.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                      <p className="font-medium text-xs">Earnings Stability</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Positive EPS Years</li>
+                        <li>EPS Growth Rate</li>
+                        <li>Earnings Consistency</li>
+                        <li>Profit Stability</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Financial Strength</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Current Ratio {'>'}2.0</li>
+                        <li>Debt Ratio {'<'}0.5</li>
+                        <li>Dividend Record</li>
+                        <li>Working Capital</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Valuation Metrics</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Net-Net Working Capital</li>
+                        <li>Graham Number</li>
+                        <li>Margin of Safety</li>
+                        <li>Intrinsic Value</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-xs">Key Principles</p>
+                      <ul className="list-disc pl-4 text-xs space-y-0.5">
+                        <li>Margin of Safety</li>
+                        <li>Quantitative Focus</li>
+                        <li>Conservative Approach</li>
+                        <li>Value vs. Price</li>
                       </ul>
                     </div>
                   </div>
