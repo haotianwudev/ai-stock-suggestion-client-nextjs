@@ -401,7 +401,7 @@ export default function Home() {
               © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Inspired by <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is a completely free, personal hobby website, running on free database, free server. Developer paid for data and AI cost. Please leave a comment or send me an email if you like SOPHIE! SOPHIE will learn options and portfolio management as the name given in the future. Please check back soon!
+              Inspired and built on top of <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is a completely free, personal hobby website, running on free database, free server. Developer paid for data and AI cost. Please leave a comment or send me an email if you like SOPHIE! SOPHIE will learn options and portfolio management as the name given in the future. Please check back soon!
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Contact: <a href="mailto:sophieaifinance@gmail.com" className="underline hover:text-primary">sophieaifinance@gmail.com</a>
