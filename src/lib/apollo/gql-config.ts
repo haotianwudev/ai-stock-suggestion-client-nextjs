@@ -25,5 +25,12 @@ export function getGraphQLUri(): string {
   }
   
   // Return environment variable or default if not set
-  return envUri || DEFAULT_PROD_URI;
-} 
+  const uri = envUri || DEFAULT_PROD_URI;
+  
+  // Ensure the URI ends with /graphql if it's not empty
+  if (uri && !uri.endsWith('/graphql')) {
+    return uri.endsWith('/') ? `${uri}graphql` : `${uri}/graphql`;
+  }
+  
+  return uri;
+}

@@ -26,6 +26,10 @@ export function ApolloWrapper({ children }: { children: React.ReactNode }) {
 
     const httpLink = new HttpLink({
       uri: graphqlUri,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     });
 
     return new ApolloClient({
@@ -43,4 +47,4 @@ export function ApolloWrapper({ children }: { children: React.ReactNode }) {
   }, []);
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
-} 
+}
