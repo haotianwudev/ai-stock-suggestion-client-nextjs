@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/components/layout/header";
+import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/components/icons";
@@ -394,6 +395,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Disclaimer />
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <div className="flex flex-col items-center md:items-start">

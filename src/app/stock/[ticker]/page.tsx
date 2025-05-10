@@ -1,5 +1,6 @@
 import { StockDetailClient } from "@/app/stock/[ticker]/stock-detail-client";
 import { Header } from "@/components/layout/header";
+import { Disclaimer } from "@/components/ui/disclaimer";
 import { Metadata } from "next";
 import { use } from "react";
 
@@ -17,6 +18,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
       <main className="flex-1 container py-8">
         <StockDetailClient ticker={ticker} />
       </main>
+      <Disclaimer />
     </div>
   );
 }
