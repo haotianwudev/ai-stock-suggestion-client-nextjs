@@ -6,14 +6,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/components/icons";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUpIcon, ArrowDownIcon, ExternalLinkIcon, TrendingUpIcon, InfoIcon } from "lucide-react";
+import { ArrowUpIcon, ArrowDownIcon, ExternalLinkIcon, TrendingUpIcon, InfoIcon, LineChart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
 import Image from "next/image";
 import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
-import { TrendingUp, Trophy, GraduationCap, LineChart, Shield, Users } from "lucide-react";
+import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users } from "lucide-react";
 
 // Types for stock data
 interface StockData {
@@ -268,6 +268,7 @@ export default function Home() {
                     Explore More Trending Stocks
                   </Link>
                 </Button>
+                
                 <Button asChild size="lg" variant="outline">
                   <a 
                     href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
@@ -282,6 +283,12 @@ export default function Home() {
                     </svg>
                     Download Android App
                   </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/option">
+                    <LineChart className="mr-2 h-4 w-4" />
+                    Option Page To Be Updated
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -375,16 +382,16 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+            <Link href="/option" className="relative overflow-hidden rounded-lg border bg-background p-2 hover:bg-accent hover:text-accent-foreground transition-colors">
               <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold">Market Sentiment</h3>
+                  <h3 className="font-bold">Options Education</h3>
                   <p className="text-sm text-muted-foreground">
-                    Analysis of market psychology through news sentiment, insider trading activity, and institutional interest signals.
+                    Learn when to trade options, understand strategies, and discover the best use cases for options in your investment portfolio.
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
         
