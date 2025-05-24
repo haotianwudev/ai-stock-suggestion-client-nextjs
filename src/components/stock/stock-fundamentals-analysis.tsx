@@ -77,7 +77,10 @@ function formatPercent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
 
-function formatRatio(value: number): string {
+function formatRatio(value: number | null | undefined): string {
+  if (value === null || value === undefined || isNaN(value)) {
+    return 'N/A';
+  }
   return value.toFixed(2);
 }
 
@@ -121,7 +124,10 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
   ];
 
   // Get color based on value comparison to threshold
-  const getComparisonColor = (value: number, threshold: number, isHigherBetter: boolean) => {
+  const getComparisonColor = (value: number | null | undefined, threshold: number, isHigherBetter: boolean) => {
+    if (value === null || value === undefined || isNaN(value)) {
+      return "text-muted-foreground";
+    }
     if (isHigherBetter) {
       return value >= threshold ? "text-green-500" : "text-red-500";
     } else {
