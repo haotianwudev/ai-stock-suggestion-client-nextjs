@@ -258,9 +258,26 @@ export default function Home() {
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 Stock/Option Portfolio Helper for Investment and Education
               </h2>
-              <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-              SOPHIE is an AI financial analyst now!
-              </p>
+              <div className="flex flex-col md:flex-row gap-3 max-w-[64rem] flex-wrap justify-center">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-purple-100 dark:border-purple-900/30">
+                  <LineChart className="h-5 w-5 text-purple-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground sm:text-lg">
+                    SOPHIE is an AI stock analyst now!
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-pink-100 dark:border-pink-900/30">
+                  <TrendingUp className="h-5 w-5 text-pink-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground sm:text-lg">
+                    SOPHIE is a youtuber now!
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-100 dark:border-blue-900/30">
+                  <Shield className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground sm:text-lg">
+                    SOPHIE is going to be a option expert soon!
+                  </p>
+                </div>
+              </div>
               <div className="flex justify-center space-x-4">
                 <Button asChild size="lg">
                   <Link href="/trending">
@@ -320,79 +337,6 @@ export default function Home() {
               </p>
             </div>
           )}
-        </section>
-        
-        <section className="container max-w-screen-xl mx-auto space-y-4 py-2 md:py-4">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Features
-            </h2>
-            <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                
-            </p>
-          </div>
-          <div className="grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">AI-Powered Analysis</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Comprehensive stock analysis using SOPHIE, our AI model that synthesizes all available data into actionable insights.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Investment Legend AI Bot</h3>
-                  <p className="text-sm text-muted-foreground">
-                    AI driven stock analysis through the lens of legendary investors like Warren Buffett and Charlie Munger to provide time-tested perspectives.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Educational Focus</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Designed for learning - all analyses include clear explanations to help new investors understand market concepts and terminology.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Technical Analysis</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Advanced technical indicators including trend analysis, momentum, mean reversion, volatility metrics, and statistical arbitrage signals.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Fundamental Analysis</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Deep evaluation of company fundamentals across profitability, growth, financial health, and valuation metrics.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <Link href="/option" className="relative overflow-hidden rounded-lg border bg-background p-2 hover:bg-accent hover:text-accent-foreground transition-colors">
-              <div className="flex h-[160px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold">Options Education</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Learn when to trade options, understand strategies, and discover the best use cases for options in your investment portfolio.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
         </section>
         
         {/* Reddit Comments Section */}
