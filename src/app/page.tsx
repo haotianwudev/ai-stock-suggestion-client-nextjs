@@ -14,6 +14,7 @@ import { getGraphQLUri } from "@/lib/apollo/gql-config";
 import Image from "next/image";
 import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
 import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users } from "lucide-react";
+import { ArticleCard } from "@/components/articles/article-card";
 
 // Types for stock data
 interface StockData {
@@ -116,6 +117,26 @@ function generateSophieScore(ticker: string): number {
   const rand = Math.sin(seed) * 10000;
   return Math.floor(30 + (rand - Math.floor(rand)) * 65); // Between 30-95
 }
+
+// Articles data
+const articles = [
+  {
+    title: "Gemini Deep Research on AAPL",
+    description: "This analysis presents the central conflict in evaluating Apple today: it is an undeniably wonderful business, yet it trades at a price that appears to offer little-to-no margin of safety.",
+    slug: "gemini-deep-research-aapl",
+    date: "May 31, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1000",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRxLdxU6sD0jgrNS_o0oMDXkYBHaotgVCj7Olli85c5P-YBIBHjH_cwF8pe01zuh_4R85NlBZram6WY/pub",
+    deepResearch: true
+  },
+  {
+    title: "Stock Analysis AI Agent Prompt Example",
+    description: `A full prompt and data example for a Charlie Munger-style AI stock analysis agent. Includes all rules, mental models, and a real JSON analysis for AAPL.\n\nPrompt:\n\nYou are a Charlie Munger AI agent, making investment decisions using his principles:\n\n1. Focus on the quality and predictability of the business.\n2. Rely on mental models from multiple disciplines to analyze investments.\n3. Look for strong, durable competitive advantages (moats).\n4. Emphasize long-term thinking and patience.\n5. Value management integrity and competence.\n6. Prioritize businesses with high returns on invested capital.\n7. Pay a fair price for wonderful businesses.\n8. Never overpay, always demand a margin of safety.\n9. Avoid complexity and businesses you don't understand.\n10. \"Invert, always invert\" - focus on avoiding stupidity rather than seeking brilliance.\n\nRules:\n- Praise businesses with predictable, consistent operations and cash flows.\n- Value businesses with high ROIC and pricing power.\n- Prefer simple businesses with understandable economics.\n- Admire management with skin in the game and shareholder-friendly capital allocation.\n- Focus on long-term economics rather than short-term metrics.\n- Be skeptical of businesses with rapidly changing dynamics or excessive share dilution.\n- Avoid excessive leverage or financial engineering.\n- Provide a rational, data-driven recommendation (bullish, bearish, or neutral).\n\nWhen providing your reasoning, be thorough and specific by:\n1. Explaining the key factors that influenced your decision the most (both positive and negative)\n2. Applying at least 2-3 specific mental models or disciplines to explain your thinking\n3. Providing quantitative evidence where relevant (e.g., specific ROIC values, margin trends)\n4. Citing what you would \"avoid\" in your analysis (invert the problem)\n5. Using Charlie Munger's direct, pithy conversational style in your explanation\n\nTask:\nBased on the following analysis, create a Munger-style investment signal.\n\nAnalysis Data for AAPL:\n\n{\n  \"AAPL\": {\n    \"signal\": \"neutral\",\n    \"score\": 7.06,\n    \"max_score\": 10,\n    \"moat_analysis\": {\n      \"score\": 8.89,\n      \"details\": \"Excellent ROIC: >15% in 10/10 periods; Good pricing power: Average gross margin 45.0%; Low capital requirements: Avg capex 2.7% of revenue; Invests in R&D, building intellectual property; Significant goodwill/intangible assets, suggesting brand value or IP\"\n    },\n    \"management_analysis\": {\n      \"score\": 5.0,\n      \"details\": \"Good cash conversion: FCF/NI ratio of 1.04; Moderate debt level: D/E ratio of 1.47; Acceptable cash position: Cash/Revenue ratio of 0.07; No recorded insider transactions; Shareholder-friendly: Reducing share count over time\"\n    },\n    \"predictability_analysis\": {\n      \"score\": 9.0,\n      \"details\": \"Moderately predictable revenue: 0.4% avg growth with some volatility; Highly predictable operations: Operating income positive in all periods; Highly predictable margins: 30.4% avg with minimal volatility; Highly predictable cash generation: Positive FCF in all periods\"\n    },\n    \"valuation_analysis\": {\n      \"score\": 3.0,\n      \"details\": \"Fair value: 3.3% FCF yield; Expensive: 50.3% premium to reasonable value; Stable to growing FCF supports valuation\",\n      \"intrinsic_value_range\": {\n        \"conservative\": 1023700000000.0,\n        \"reasonable\": 1535550000000.0,\n        \"optimistic\": 2047400000000.0\n      },\n      \"fcf_yield\": 0.033,\n      \"normalized_fcf\": 102370000000.0\n    },\n    \"news_sentiment\": \"Qualitative review of 100 recent news items would be needed\"\n  }\n}\n\nReturn the trading signal in this JSON format:\n\n{\n  \"signal\": \"bullish/bearish/neutral\",\n  \"confidence\": float (0-100),\n  \"reasoning\": \"string\"\n}`,
+    slug: "stock-analysis-ai-agent-prompt-example",
+    date: "May 31, 2025",
+    imageUrl: "/images/agents/charlie_munger.png"
+  }
+];
 
 export default function Home() {
   const [stocks, setStocks] = useState<StockData[]>([]);
@@ -277,6 +298,12 @@ export default function Home() {
                     SOPHIE is going to be a option expert soon!
                   </p>
                 </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-50 to-lime-50 dark:from-green-950/30 dark:to-lime-950/30 border border-green-100 dark:border-lime-900/30">
+                  <LucideLineChart className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground sm:text-lg">
+                    SOPHIE is going to be a quant researcher soon!
+                  </p>
+                </div>
               </div>
               <div className="flex justify-center space-x-4">
                 <Button asChild size="lg">
@@ -337,6 +364,29 @@ export default function Home() {
               </p>
             </div>
           )}
+        </section>
+        
+        {/* Articles Section */}
+        <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Articles
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <ArticleCard 
+                key={article.slug}
+                title={article.title}
+                description={article.description}
+                slug={article.slug}
+                date={article.date}
+                imageUrl={article.imageUrl}
+                googleDoc={article.googleDoc}
+                deepResearch={article.deepResearch}
+              />
+            ))}
+          </div>
         </section>
         
         {/* Reddit Comments Section */}
