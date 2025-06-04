@@ -84,17 +84,23 @@ export function StockCard({ stock }: StockCardProps) {
             </div>
           </div>
           
-          {/* SOPHIE Score - on the right side */}
+          {/* SOPHIE Score - show loading state if score not available */}
           <div className="ml-2 flex items-center">
             <div className="relative">
-              <div 
-                className={`
-                  w-14 h-14 rounded-md border-2 shadow-md flex items-center justify-center
-                  bg-gradient-to-br ${getScoreColor(stock.sophieScore || 0)}
-                `}
-              >
-                <span className="text-xl font-bold text-white">{stock.sophieScore}</span>
-              </div>
+              {stock.sophieScore !== undefined ? (
+                <div 
+                  className={`
+                    w-14 h-14 rounded-md border-2 shadow-md flex items-center justify-center
+                    bg-gradient-to-br ${getScoreColor(stock.sophieScore)}
+                  `}
+                >
+                  <span className="text-xl font-bold text-white">{stock.sophieScore}</span>
+                </div>
+              ) : (
+                <div className="w-14 h-14 rounded-md border-2 shadow-md flex items-center justify-center bg-gradient-to-br from-gray-400 to-gray-500 animate-pulse">
+                  <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
               <div className="absolute -bottom-1 w-16 bg-black rounded-sm py-0.5 text-[8px] font-medium text-center text-white tracking-wide">
                 SOPHIE SCORE
               </div>

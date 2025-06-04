@@ -40,6 +40,11 @@ interface BatchStockResponse {
   };
 }
 
+interface TopTickerResponse {
+  ticker: string;
+  score: number;
+}
+
 // GraphQL query for batch stock data
 const BATCH_STOCKS_QUERY = gql`
   query GetBatchStocksWithDates($tickers: [String!]!, $startDate: String!, $endDate: String!) {
@@ -59,6 +64,16 @@ const BATCH_STOCKS_QUERY = gql`
       latestSophieAnalysis {
         overall_score
       }
+    }
+  }
+`;
+
+// Top tickers GraphQL query to get SOPHIE scores
+const GET_TOP_TICKERS = gql`
+  query GetTopTickers {
+    coveredTickers {
+      ticker
+      score
     }
   }
 `;
@@ -108,14 +123,6 @@ function getScoreColor(score: number): string {
   if (score >= 60) return 'from-blue-500 to-indigo-600 border-blue-300';
   if (score >= 40) return 'from-yellow-500 to-amber-600 border-yellow-300';
   return 'from-red-500 to-rose-600 border-red-300';
-}
-
-// Function to generate a random SOPHIE score between 30 and 95 (fallback if API doesn't provide a score)
-function generateSophieScore(ticker: string): number {
-  // Seed the random generator based on ticker to get consistent scores
-  const seed = ticker.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
-  const rand = Math.sin(seed) * 10000;
-  return Math.floor(30 + (rand - Math.floor(rand)) * 65); // Between 30-95
 }
 
 // Articles data
@@ -170,6 +177,13 @@ export default function Home() {
 
       // Create Apollo client for direct use
       const client = createApolloClient();
+
+      // First, get the top tickers with scores
+      const topTickersResult = await client.query({
+        query: GET_TOP_TICKERS
+      });
+      
+      const topTickers = topTickersResult.data?.coveredTickers as TopTickerResponse[] || [];
 
       // Execute batch query for all tickers at once
       const result = await client.query({
@@ -239,17 +253,35 @@ export default function Home() {
             changePercent = ((latestPrice.close - threeMonthPrice.close) / threeMonthPrice.close) * 100;
           }
           
-          // Use the SOPHIE score from API if available, otherwise generate a fallback score
-          const sophieScore = stockData.latestSophieAnalysis?.overall_score || generateSophieScore(ticker);
+          // Get the SOPHIE score from the top tickers response (primary source)
+          const topTickerData = topTickers.find(t => t.ticker === ticker);
           
-          validStocks.push({
+          // Only use the SOPHIE score from API if it exists and is a valid number
+          let sophieScore: number | undefined;
+          if (topTickerData && typeof topTickerData.score === 'number' && !isNaN(topTickerData.score)) {
+            sophieScore = topTickerData.score;
+          } else {
+            // Fallback to latestSophieAnalysis
+            const apiScore = stockData.latestSophieAnalysis?.overall_score;
+            if (typeof apiScore === 'number' && !isNaN(apiScore)) {
+              sophieScore = apiScore;
+            }
+          }
+          
+          const stockItem: StockData = {
             ticker,
             name: stockData.company?.name || ticker,
             price: latestPrice.close,
             change: changePercent,
-            color: stockColors[ticker as keyof typeof stockColors] || "from-blue-400 to-blue-600",
-            sophieScore: sophieScore
-          });
+            color: stockColors[ticker as keyof typeof stockColors] || "from-blue-400 to-blue-600"
+          };
+          
+          // Only add sophieScore if we have a valid score from the API
+          if (sophieScore !== undefined) {
+            stockItem.sophieScore = sophieScore;
+          }
+          
+          validStocks.push(stockItem);
         });
         
         // Only update state if we have valid stocks
