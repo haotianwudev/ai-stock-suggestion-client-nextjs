@@ -3,7 +3,7 @@
 import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
@@ -13,90 +13,114 @@ declare global {
 }
 
 export default function DeepResearchTAvsMLTrading() {
-  useEffect(() => {
-    // Chart.js Radar Chart
+  const [chartLibLoaded, setChartLibLoaded] = useState(false);
+
+  const initializeChart = () => {
     if (typeof window !== "undefined" && window.Chart) {
       const canvas = document.getElementById("comparisonChart") as HTMLCanvasElement | null;
       const ctx = canvas ? canvas.getContext("2d") : null;
+      
       if (ctx) {
+        // Destroy existing chart instance
         if (window.comparisonChartInstance) {
           window.comparisonChartInstance.destroy();
         }
-        window.comparisonChartInstance = new window.Chart(ctx, {
-          type: "radar",
-          data: {
-            labels: [
-              "Speed",
-              "Accuracy Potential",
-              "Adaptability",
-              "Scalability",
-              "Interpretability",
-              "Cost/Complexity",
-            ],
-            datasets: [
-              {
-                label: "Technical Analysis",
-                data: [4, 2, 2, 2, 4, 5],
-                backgroundColor: "rgba(217, 119, 6, 0.2)",
-                borderColor: "rgba(217, 119, 6, 1)",
-                pointBackgroundColor: "rgba(217, 119, 6, 1)",
-                pointBorderColor: "#fff",
-                pointHoverBackgroundColor: "#fff",
-                pointHoverBorderColor: "rgba(217, 119, 6, 1)",
-              },
-              {
-                label: "Machine Learning",
-                data: [5, 4, 5, 5, 2, 1],
-                backgroundColor: "rgba(166, 123, 91, 0.3)",
-                borderColor: "rgba(166, 123, 91, 1)",
-                pointBackgroundColor: "rgba(166, 123, 91, 1)",
-                pointBorderColor: "#fff",
-                pointHoverBackgroundColor: "#fff",
-                pointHoverBorderColor: "rgba(166, 123, 91, 1)",
-              },
-            ],
-          },
-          options: {
-            maintainAspectRatio: false,
-            scales: {
-              r: {
-                angleLines: { color: "rgba(0, 0, 0, 0.1)" },
-                grid: { color: "rgba(0, 0, 0, 0.1)" },
-                pointLabels: { font: { size: 12 } },
-                suggestedMin: 0,
-                suggestedMax: 5,
-                ticks: {
-                  backdropColor: "rgba(255, 255, 255, 0.75)",
-                  stepSize: 1,
+        
+        try {
+          window.comparisonChartInstance = new window.Chart(ctx, {
+            type: "radar",
+            data: {
+              labels: [
+                "Speed",
+                "Accuracy Potential", 
+                "Adaptability",
+                "Scalability",
+                "Interpretability",
+                "Cost/Complexity",
+              ],
+              datasets: [
+                {
+                  label: "Technical Analysis",
+                  data: [4, 2, 2, 2, 4, 5],
+                  backgroundColor: "rgba(217, 119, 6, 0.2)",
+                  borderColor: "rgba(217, 119, 6, 1)",
+                  pointBackgroundColor: "rgba(217, 119, 6, 1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(217, 119, 6, 1)",
+                  borderWidth: 2,
+                },
+                {
+                  label: "Machine Learning",
+                  data: [5, 4, 5, 5, 2, 1],
+                  backgroundColor: "rgba(166, 123, 91, 0.3)",
+                  borderColor: "rgba(166, 123, 91, 1)",
+                  pointBackgroundColor: "rgba(166, 123, 91, 1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(166, 123, 91, 1)",
+                  borderWidth: 2,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                r: {
+                  angleLines: { color: "rgba(0, 0, 0, 0.1)" },
+                  grid: { color: "rgba(0, 0, 0, 0.1)" },
+                  pointLabels: { font: { size: 12 } },
+                  suggestedMin: 0,
+                  suggestedMax: 5,
+                  ticks: {
+                    backdropColor: "rgba(255, 255, 255, 0.75)",
+                    stepSize: 1,
+                  },
                 },
               },
-            },
-            plugins: {
-              legend: { position: "top" },
-              tooltip: {
-                callbacks: {
-                  label: function (context: any) {
-                    let label = context.dataset.label || "";
-                    if (label) {
-                      label += ": ";
-                    }
-                    const value = context.parsed.r;
-                    const labels = [
-                      "Very Low",
-                      "Low",
-                      "Medium",
-                      "High",
-                      "Very High",
-                    ];
-                    label += labels[value - 1] || value;
-                    return label;
+              plugins: {
+                legend: { position: "top" },
+                tooltip: {
+                  callbacks: {
+                    label: function (context: any) {
+                      let label = context.dataset.label || "";
+                      if (label) {
+                        label += ": ";
+                      }
+                      const value = context.parsed.r;
+                      const labels = [
+                        "Very Low",
+                        "Low", 
+                        "Medium",
+                        "High",
+                        "Very High",
+                      ];
+                      label += labels[value - 1] || value;
+                      return label;
+                    },
                   },
                 },
               },
             },
-          },
-        });
+          });
+        } catch (error) {
+          console.error("Error initializing chart:", error);
+        }
       }
+    }
+  };
+
+  useEffect(() => {
+    // Initialize chart if Chart.js is already loaded
+    if (chartLibLoaded && window.Chart) {
+      // Small delay to ensure DOM is ready
+      setTimeout(initializeChart, 100);
+    }
+    
+    // Fallback: Check if Chart.js is already loaded (on hot reload/dev mode)
+    if (!chartLibLoaded && window.Chart) {
+      setChartLibLoaded(true);
     }
 
     // Tabs
@@ -208,12 +232,16 @@ export default function DeepResearchTAvsMLTrading() {
         button.classList.remove("bg-white");
       });
     });
-  }, []);
+  }, [chartLibLoaded]);
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js" strategy="afterInteractive" />
+              <Script 
+          src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" 
+          strategy="afterInteractive" 
+          onLoad={() => setChartLibLoaded(true)} 
+        />
       <main className="flex-1 antialiased bg-[#FDFBF8] text-gray-800">
         <div className="container mx-auto px-6 py-12 max-w-6xl">
           <header className="bg-white/80 backdrop-blur-md sticky top-0 z-10 shadow-sm rounded-xl mb-8">
@@ -244,8 +272,13 @@ export default function DeepResearchTAvsMLTrading() {
               <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">This section provides a direct comparison between Technical Analysis and Machine Learning across key attributes. The radar chart below offers a visual summary of their relative strengths, while the lists detail their core pros and cons. This allows for a quick, high-level understanding of where each methodology excels and falls short.</p>
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="chart-container mx-auto">
+              <div className="chart-container mx-auto relative">
                 <canvas id="comparisonChart"></canvas>
+                {!chartLibLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+                    <p className="text-gray-500">Loading chart...</p>
+                  </div>
+                )}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
