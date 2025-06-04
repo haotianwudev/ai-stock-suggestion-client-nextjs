@@ -398,23 +398,23 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Reddit Comments Section */}
+        {/* Discord Community Section */}
         <section className="container max-w-screen-xl mx-auto space-y-4 py-8 md:py-12">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Join the Discussion
+              Join the Community
             </h2>
             <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              Share your thoughts and insights about SOPHIE on Reddit
+              Connect with other SOPHIE users and discuss stocks, options, and more on Discord
             </p>
-            <Button asChild size="lg" className="mt-4">
+            <Button asChild size="lg" className="mt-4 bg-[#5865F2] hover:bg-[#4752C4] text-white">
               <a 
-                href="https://www.reddit.com/r/aifinance/comments/1kgxv4r/sophie_here_i_rate_stocks_using_ai_with/" 
+                href="https://discord.com/channels/1379865130665250927/1379865132213076051" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <ExternalLinkIcon className="mr-2 h-4 w-4" />
-                View Reddit Discussion
+                <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.07.07 0 00-.073.035c-.211.375-.444.864-.608 1.249a18.767 18.767 0 00-5.487 0 12.683 12.683 0 00-.617-1.25.07.07 0 00-.073-.035A19.736 19.736 0 003.683 4.369a.064.064 0 00-.03.027C.533 9.09-.32 13.579.099 18.021a.07.07 0 00.028.048c2.052 1.507 4.042 2.422 5.992 3.029a.07.07 0 00.076-.027c.461-.63.873-1.295 1.226-1.994a.07.07 0 00-.038-.098c-.652-.247-1.27-.549-1.872-.892a.07.07 0 01-.007-.117c.126-.094.252-.192.372-.291a.07.07 0 01.071-.01c3.927 1.793 8.18 1.793 12.061 0a.07.07 0 01.072.009c.12.099.246.198.372.292a.07.07 0 01-.006.117 12.298 12.298 0 01-1.873.891.07.07 0 00-.038.099c.36.698.772 1.362 1.225 1.993a.07.07 0 00.076.028c1.95-.607 3.94-1.522 5.992-3.029a.07.07 0 00.028-.048c.5-5.177-.838-9.637-3.548-13.625a.061.061 0 00-.03-.028zM8.02 15.331c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.174 1.095 2.156 2.418 0 1.334-.955 2.419-2.156 2.419zm7.974 0c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.174 1.095 2.156 2.418 0 1.334-.946 2.419-2.156 2.419z" fill="currentColor"/></svg>
+                Join Discord
               </a>
             </Button>
           </div>
