@@ -298,7 +298,7 @@ export default function Home() {
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-pink-100 dark:border-pink-900/30">
                   <TrendingUp className="h-5 w-5 text-pink-500 flex-shrink-0" />
                   <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE is a youtuber now!
+                    SOPHIE's Daddy is a youtuber now!
                   </p>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-100 dark:border-blue-900/30">
