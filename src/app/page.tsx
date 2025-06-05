@@ -128,6 +128,15 @@ function getScoreColor(score: number): string {
 // Articles data
 const articles = [
   {
+    title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
+    description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
+    slug: "sophie-youtube-introduction",
+    date: "January 2, 2025",
+    imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
+    isVideo: true
+  },
+  {
     title: "Gemini Deep Research on AAPL",
     description: "This analysis presents the central conflict in evaluating Apple today: it is an undeniably wonderful business, yet it trades at a price that appears to offer little-to-no margin of safety.",
     slug: "gemini-deep-research-aapl",
@@ -348,6 +357,19 @@ export default function Home() {
                 
                 <Button asChild size="lg" variant="outline">
                   <a 
+                    href="https://www.youtube.com/@SOPHIEAIFinance" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    YouTube Channel
+                  </a>
+                </Button>
+                
+                <Button asChild size="lg" variant="outline">
+                  <a 
                     href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -417,6 +439,8 @@ export default function Home() {
                 imageUrl={article.imageUrl}
                 googleDoc={article.googleDoc}
                 deepResearch={article.deepResearch}
+                youtubeUrl={article.youtubeUrl}
+                isVideo={article.isVideo}
               />
             ))}
           </div>
