@@ -317,9 +317,6 @@ export default function Home() {
                   <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
                 </h1>
               </div>
-              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                Stock/Option Portfolio Helper for Investment and Education
-              </h2>
               <div className="flex flex-col md:flex-row gap-3 max-w-[64rem] flex-wrap justify-center">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-purple-100 dark:border-purple-900/30">
                   <LineChart className="h-5 w-5 text-purple-500 flex-shrink-0" />
@@ -336,21 +333,16 @@ export default function Home() {
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-100 dark:border-blue-900/30">
                   <Shield className="h-5 w-5 text-blue-500 flex-shrink-0" />
                   <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE is going to be a option expert soon!
+                    SOPHIE's Daddy is teaching SOPHIE option strategies and machine learning!
                   </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-50 to-lime-50 dark:from-green-950/30 dark:to-lime-950/30 border border-green-100 dark:border-lime-900/30">
-                  <LucideLineChart className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE is going to be a quant researcher soon!
-                  </p>
-                </div>
+        
               </div>
               <div className="flex justify-center space-x-4">
                 <Button asChild size="lg">
                   <Link href="/trending">
                     <SearchIcon className="mr-2 h-4 w-4" />
-                    Explore More Trending Stocks
+                    Explore Stocks Analysis
                   </Link>
                 </Button>
                 
@@ -436,9 +428,6 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Join the Community
             </h2>
-            <p className="max-w-[64rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              Connect with other SOPHIE users and discuss stocks, options, and more on Discord
-            </p>
             <Button asChild size="lg" className="mt-4 bg-[#5865F2] hover:bg-[#4752C4] text-white">
               <a 
                 href="https://discord.com/channels/1379865130665250927/1379865132213076051" 
@@ -457,10 +446,10 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <div className="flex flex-col items-center md:items-start">
             <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-              © {new Date().getFullYear()} SOPHIE - Stock/Option Portfolio Helper. All rights reserved.
+              © {new Date().getFullYear()} SOPHIE. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Inspired and built on top of <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is a completely free, open source, personal hobby website, running on free database, free server. Developer paid for data and AI cost all from public sources. The app is not intended to give any financial advise or use for any commercial purposes. Please leave a comment or send me an email if you like SOPHIE! SOPHIE will learn options and portfolio management as the name given in the future. Please check back soon!
+              Stock analysis inspired and built on top of <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE is a completely free, open source, personal hobby website, running on free database, free server. Developer paid for data and AI cost all from public sources. The app is not intended to give any financial advise or use for any commercial purposes. Please leave a comment or send me an email if you like SOPHIE! Please check back soon!
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Contact: <a href="mailto:sophieaifinance@gmail.com" className="underline hover:text-primary">sophieaifinance@gmail.com</a>

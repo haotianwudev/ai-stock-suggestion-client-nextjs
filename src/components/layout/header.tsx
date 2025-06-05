@@ -21,9 +21,6 @@ export function Header() {
               />
             </div>
             <span className="inline-block font-bold text-xl">SOPHIE</span>
-            <span className="hidden md:inline-block text-sm text-muted-foreground">
-              Stock/Option Portfolio Helper
-            </span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">

@@ -8,7 +8,7 @@ import { ApolloWrapper } from "@/lib/apollo/apollo-wrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SOPHIE | Stock/Option Portfolio Helper",
+  title: "SOPHIE",
   description: "Your intelligent stock/option portfolio helper for investment and education",
   icons: {
     icon: [
