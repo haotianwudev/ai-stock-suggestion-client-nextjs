@@ -131,10 +131,19 @@ const articles = [
     title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
     description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
     slug: "sophie-youtube-introduction",
-    date: "January 2, 2025",
+    date: "June 4, 2025",
     imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",
     youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
     isVideo: true
+  },
+  {
+    title: "Technical Analysis vs. Machine Learning Trading",
+    description: "An interactive, in-depth comparison of Technical Analysis and Machine Learning trading strategies. Includes radar chart, paradigm tabs, and synergy explorer. Explore the strengths, weaknesses, and future of each approach.",
+    slug: "deep-research-ta-vs-ml-trading",
+    date: "June 2, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub",
+    deepResearch: true,
+    imageUrl: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Gemini Deep Research on AAPL",
@@ -151,15 +160,6 @@ const articles = [
     slug: "stock-analysis-ai-agent-prompt-example",
     date: "May 31, 2025",
     imageUrl: "/images/agents/charlie_munger.png"
-  },
-  {
-    title: "Technical Analysis vs. Machine Learning Trading",
-    description: "An interactive, in-depth comparison of Technical Analysis and Machine Learning trading strategies. Includes radar chart, paradigm tabs, and synergy explorer. Explore the strengths, weaknesses, and future of each approach.",
-    slug: "deep-research-ta-vs-ml-trading",
-    date: "June 2, 2025",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub",
-    deepResearch: true,
-    imageUrl: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
