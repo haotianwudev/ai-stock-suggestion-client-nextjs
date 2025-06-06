@@ -129,7 +129,7 @@ function getScoreColor(score: number): string {
 const articles = [
   {
     title: "Navigating Option Trading Strategies",
-    description: "Summary of Options as a Strategic Investment. Options as a Strategic Investment is a book that provides comprehensive coverage of option trading strategies organized by risk profile and market outlook, from basic directional strategies to advanced volatility trading and arbitrage techniques.",
+    description: "Summary of Options as a Strategic Investment. A comprehensive guide covering option trading strategies from basic directional approaches to advanced volatility trading and arbitrage techniques.",
     slug: "navigating-option-trading-strategies",
     date: "June 5, 2025",
     imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000"
