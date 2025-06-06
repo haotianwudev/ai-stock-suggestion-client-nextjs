@@ -128,6 +128,13 @@ function getScoreColor(score: number): string {
 // Articles data
 const articles = [
   {
+    title: "Navigating Option Trading Strategies",
+    description: "Summary of Options as a Strategic Investment. Options as a Strategic Investment is a book that provides comprehensive coverage of option trading strategies organized by risk profile and market outlook, from basic directional strategies to advanced volatility trading and arbitrage techniques.",
+    slug: "navigating-option-trading-strategies",
+    date: "June 5, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000"
+  },
+  {
     title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
     description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
     slug: "sophie-youtube-introduction",
