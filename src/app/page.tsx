@@ -128,6 +128,15 @@ function getScoreColor(score: number): string {
 // Articles data
 const articles = [
   {
+    title: "DCF Valuation Analysis of Google",
+    description: "An in-depth DCF valuation analysis of Alphabet Inc. featuring interactive modeling tools. Includes comprehensive business segment analysis, historical performance review, peer comparisons, and a dynamic DCF calculator that lets you adjust WACC and growth assumptions to see real-time valuation impacts. Current analysis suggests potential overvaluation at market prices.",
+    slug: "interactive-alphabet-googl-valuation-analysis",
+    date: "June 6, 2025",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Wa-f0wMNP_3C3Z6eRuWoULhTlQkRkjIwnw&s",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQIySlwr9C6e6277NouqPQYxsBhYVb7AN-7eHAqjBlVFwbS8yIHQ3aHHm8Il4o6Mep7nYwjerScTiD4/pub",
+    deepResearch: true
+  },
+  {
     title: "Navigating Option Trading Strategies",
     description: "Summary of Options as a Strategic Investment. A comprehensive guide covering option trading strategies from basic directional approaches to advanced volatility trading and arbitrage techniques.",
     slug: "navigating-option-trading-strategies",
