@@ -372,6 +372,13 @@ export default function Home() {
                 </Button>
                 
                 <Button asChild size="lg" variant="outline">
+                  <Link href="/option">
+                    <LineChart className="mr-2 h-4 w-4" />
+                    Explore Option Strategies
+                  </Link>
+                </Button>
+
+                <Button asChild size="lg" variant="outline">
                   <a 
                     href="https://www.youtube.com/@SOPHIEAIFinance" 
                     target="_blank" 
@@ -399,12 +406,7 @@ export default function Home() {
                     Download Android App
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/option">
-                    <LineChart className="mr-2 h-4 w-4" />
-                    Option Page To Be Updated
-                  </Link>
-                </Button>
+                
               </div>
             </div>
           </div>
