@@ -12,9 +12,10 @@ interface ArticleCardProps {
   deepResearch?: boolean;
   youtubeUrl?: string;
   isVideo?: boolean;
+  options?: boolean;
 }
 
-export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo }: ArticleCardProps) {
+export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo, options }: ArticleCardProps) {
   return (
     <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
       <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
@@ -33,6 +34,11 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
             {isVideo && (
               <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
                 Video
+              </span>
+            )}
+            {options && (
+              <span className={`absolute ${isVideo ? 'top-8' : 'top-2'} right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow`}>
+                Options
               </span>
             )}
           </div>

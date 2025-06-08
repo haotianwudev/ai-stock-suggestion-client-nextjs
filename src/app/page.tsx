@@ -128,11 +128,21 @@ function getScoreColor(score: number): string {
 // Articles data
 const articles = [
   {
+    title: "Decoding Stock Analysis DCF model using AI",
+    description: "In this video, we're decoding the DCF model, the powerhouse of absolute stock valuation. Forget the jargon and complex spreadsheets; we're making this simple, fun, and accessible for everyone.",
+    slug: "decoding-stock-analysis-dcf-model-using-ai",
+    date: "June 8, 2025",
+    imageUrl: "/images/Decoding Stock Analysis - DCF model using AI.jpg",
+    youtubeUrl: "https://www.youtube.com/watch?v=DEzMJY7dJ6o",
+    isVideo: true
+  },
+  {
     title: "Losing Money With Options: Common Pitfalls",
     description: "A comprehensive summary of common pitfalls discussed in options trading literature, where losses arise from technical ignorance, errors, and misunderstanding the nuances of options behavior. Covers directional trading mistakes, exercise and expiration errors, gamma trading pitfalls, volatility trading issues, and order entry disasters. Learn how to avoid these costly mistakes through technical knowledge, alertness, and proper risk management systems.",
     slug: "losing-money-with-options-common-pitfalls",
     date: "June 7, 2025",
-    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000"
+    imageUrl: "https://m.media-amazon.com/images/I/7153sgbC9sL._SY522_.jpg",
+    options: true
   },
   {
     title: "DCF Valuation Analysis of Google",
@@ -148,7 +158,8 @@ const articles = [
     description: "Summary of Options as a Strategic Investment. A comprehensive guide covering option trading strategies from basic directional approaches to advanced volatility trading and arbitrage techniques.",
     slug: "navigating-option-trading-strategies",
     date: "June 5, 2025",
-    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000"
+    imageUrl: "https://m.media-amazon.com/images/I/41Eq0i5hoQL._PQ35_.jpg",
+    options: true
   },
   {
     title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
@@ -466,6 +477,7 @@ export default function Home() {
                 deepResearch={article.deepResearch}
                 youtubeUrl={article.youtubeUrl}
                 isVideo={article.isVideo}
+                options={article.options}
               />
             ))}
           </div>
