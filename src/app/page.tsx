@@ -128,6 +128,13 @@ function getScoreColor(score: number): string {
 // Articles data
 const articles = [
   {
+    title: "Losing Money With Options: Common Pitfalls",
+    description: "A comprehensive summary of common pitfalls discussed in options trading literature, where losses arise from technical ignorance, errors, and misunderstanding the nuances of options behavior. Covers directional trading mistakes, exercise and expiration errors, gamma trading pitfalls, volatility trading issues, and order entry disasters. Learn how to avoid these costly mistakes through technical knowledge, alertness, and proper risk management systems.",
+    slug: "losing-money-with-options-common-pitfalls",
+    date: "June 7, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000"
+  },
+  {
     title: "DCF Valuation Analysis of Google",
     description: "An in-depth DCF valuation analysis of Alphabet Inc. featuring interactive modeling tools. Includes comprehensive business segment analysis, historical performance review, peer comparisons, and a dynamic DCF calculator that lets you adjust WACC and growth assumptions to see real-time valuation impacts. Current analysis suggests potential overvaluation at market prices.",
     slug: "interactive-alphabet-googl-valuation-analysis",

@@ -107,7 +107,7 @@ export const GreekSection = ({
   );
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 items-center">
+    <div className="grid lg:grid-cols-2 gap-8 items-start">
       {leftSide ? (
         <>
           {contentSide}
