@@ -1,0 +1,90 @@
+# AI Stock Suggestion Client - Cursor Rules
+
+## Article Creation Workflow
+
+### 1. File Structure & Creation Process
+- Articles: `src/app/articles/[slug]/page.tsx` (kebab-case slugs)
+- Add to: `src/data/articles.ts` (at beginning for newest date)
+
+### 2. Article Interface
+```typescript
+interface Article {
+  title: string;           // Required
+  description: string;     // Required: 2-3 sentences
+  slug: string;           // Required: kebab-case
+  date: string;          // Required: "Month DD, YYYY"
+  imageUrl?: string;     // Optional: Unsplash URLs
+  googleDoc?: string;    // Optional: Source research
+  deepResearch?: boolean; // Optional: Comprehensive analysis
+  youtubeUrl?: string;   // Optional: Video content
+  isVideo?: boolean;     // Optional: Video flag
+  options?: boolean;     // Optional: Options trading
+}
+```
+
+### 3. Required Components
+- **Return to Home button** in header:
+```tsx
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+
+<div className="flex items-center gap-4 mb-4">
+  <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+    <ArrowLeft className="mr-2 h-4 w-4" />
+    Return to Home
+  </Link>
+</div>
+```
+
+- **Navigation sidebar** with smooth scrolling and IntersectionObserver
+- **Interactive components** with `'use client';` and React hooks
+
+### 4. Badge Positioning
+- **"Deep Research"**: Top-left corner (purple)
+- **"Video"**: Top-right corner (red)  
+- **"Options"**: Bottom-right corner (orange-yellow)
+
+### 5. Content Styling
+- Use research callouts, strategy boxes, risk warnings
+- JSX arrows: `&rarr;` not `→`
+- Responsive design with Tailwind CSS
+- Educational disclaimers
+
+### 6. Flags Usage
+- `deepResearch: true` for comprehensive analysis
+- `options: true` for options trading content  
+- `isVideo: true` for video content
+
+### 7. Content Categories
+- **Deep Research**: Comprehensive analysis with multiple sections, interactive elements
+- **Options Trading**: Put/call strategies, Greeks, volatility analysis
+- **Video Content**: YouTube integration with embedded players
+- **Stock Analysis**: Company-specific DCF models, valuation analysis
+
+### 8. Technical Requirements
+- Use `'use client';` for interactive React components
+- Implement smooth scrolling navigation
+- Add proper TypeScript typing
+- Include responsive design for mobile/desktop
+- Use semantic HTML structure with proper heading hierarchy
+
+### 9. Quality Standards
+- Articles should be educational, not investment advice
+- Include proper disclaimers and risk warnings
+- Cite sources when using external research
+- Use professional language and formatting
+- Test all interactive features before publishing
+
+### 10. Common Patterns
+- Navigation sidebars with active highlighting
+- Strategy comparison boxes and tables
+- Risk callouts with warning styling
+- Research citations with external links
+- Interactive elements (calculators, charts) when appropriate
+
+## General Development Guidelines
+- Always follow existing code patterns and conventions
+- Use TypeScript for type safety
+- Maintain responsive design principles
+- Follow the established component structure
+- Test thoroughly before implementing changes 

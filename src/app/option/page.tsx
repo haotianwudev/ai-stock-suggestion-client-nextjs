@@ -50,7 +50,7 @@ export default function OptionsPage() {
               <TabsTrigger value="when-to-trade">When to Trade</TabsTrigger>
               <TabsTrigger value="option-greeks">Option Greeks</TabsTrigger>
               <TabsTrigger value="strategies">Strategies</TabsTrigger>
-              <TabsTrigger value="articles">Book Summaries</TabsTrigger>
+              <TabsTrigger value="articles">Research Articles</TabsTrigger>
             </TabsList>
             
             <TabsContent value="when-to-trade" className="space-y-6 mt-6">
@@ -187,10 +187,10 @@ export default function OptionsPage() {
                 <CardHeader>
                   <CardTitle className="text-2xl flex items-center gap-2">
                     <BookOpen className="h-6 w-6" />
-                    Options Book Summaries
+                    Options Research Article Summaries
                   </CardTitle>
                   <CardDescription>
-                    Comprehensive summaries of essential options trading books covering key concepts, strategies, and common pitfalls to avoid.
+                    Comprehensive summaries of essential options trading books and research articles covering key concepts, strategies, and common pitfalls to avoid.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

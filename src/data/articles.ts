@@ -13,6 +13,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Enhancing the Sell Put Strategy: Advanced Techniques for Optimal Performance",
+    description: "A comprehensive deep research analysis of advanced put-selling techniques and strategic optimizations. Covers refined strategic objectives, cash-secured vs naked puts analysis, advanced risk management frameworks, position sizing methodologies, rolling strategies, and multi-leg structures like bull put spreads and the wheel strategy. Essential reading for traders seeking to elevate their put-selling methodology beyond basic execution.",
+    slug: "enhancing-sell-put-strategy",
+    date: "June 9, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTk9wrfRXDHiChW36eqp7876n9TpPKmhAUjzEIQ6MHV_ixFMD0eyHy5yKTezL_Oje4fZ_PZr6aV3P2N/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Decoding Stock Analysis DCF model using AI",
     description: "In this video, we're decoding the DCF model, the powerhouse of absolute stock valuation. Forget the jargon and complex spreadsheets; we're making this simple, fun, and accessible for everyone.",
     slug: "decoding-stock-analysis-dcf-model-using-ai",

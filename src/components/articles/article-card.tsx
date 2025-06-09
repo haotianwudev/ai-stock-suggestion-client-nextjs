@@ -37,7 +37,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               </span>
             )}
             {options && (
-              <span className={`absolute ${isVideo ? 'top-8' : 'top-2'} right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow`}>
+              <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
                 Options
               </span>
             )}
