@@ -46,10 +46,9 @@ export default function OptionsPage() {
           </div>
 
           <Tabs defaultValue="when-to-trade" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="when-to-trade">When to Trade</TabsTrigger>
               <TabsTrigger value="option-greeks">Option Greeks</TabsTrigger>
-              <TabsTrigger value="strategies">Strategies</TabsTrigger>
               <TabsTrigger value="articles">Research Articles</TabsTrigger>
             </TabsList>
             
@@ -163,23 +162,6 @@ export default function OptionsPage() {
             
             <TabsContent value="option-greeks" className="mt-6">
               <GreeksTab />
-            </TabsContent>
-            
-            <TabsContent value="strategies" className="mt-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Option Strategies</CardTitle>
-                  <CardDescription>
-                    Learn about different option trading strategies (Coming Soon).
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    This section will cover various option strategies including covered calls, 
-                    protective puts, straddles, strangles, iron condors, and more.
-                  </p>
-                </CardContent>
-              </Card>
             </TabsContent>
             
             <TabsContent value="articles" className="mt-6">
