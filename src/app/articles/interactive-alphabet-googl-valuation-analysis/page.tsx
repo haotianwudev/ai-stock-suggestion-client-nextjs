@@ -46,6 +46,11 @@ export default function AlphabetValuationAnalysis() {
     difference: 31.00
   });
 
+  // Update valuation when sliders change
+  useEffect(() => {
+    updateValuation(wacc, growthRate);
+  }, [wacc, growthRate]);
+
   // Update valuation calculation
   const updateValuation = (waccValue: number, gValue: number) => {
     const discountFactor10 = 1 / Math.pow(1 + waccValue / 100, 10);
@@ -69,24 +74,30 @@ export default function AlphabetValuationAnalysis() {
     });
   };
 
-  // Initialize charts
+  // Initialize charts when Chart.js loads or when switching to chart sections
   useEffect(() => {
     if (!chartLoaded || !window.Chart) return;
+    
+    const timer = setTimeout(() => {
+      if (activeSection === 'performance') {
+        initializeHistoricalChart();
+      } else if (activeSection === 'comparison') {
+        initializePeerCharts();
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [chartLoaded, activeSection]);
 
-    // Destroy existing charts
+  const initializeHistoricalChart = () => {
+    // Destroy existing chart
     if (historicalChartRef.current) {
       historicalChartRef.current.destroy();
-    }
-    if (peRatioChartRef.current) {
-      peRatioChartRef.current.destroy();
-    }
-    if (evEbitdaChartRef.current) {
-      evEbitdaChartRef.current.destroy();
+      historicalChartRef.current = null;
     }
 
-    // Historical Chart
     const historicalCanvas = document.getElementById('historicalChart') as HTMLCanvasElement;
-    if (historicalCanvas) {
+    if (historicalCanvas && window.Chart) {
       const ctx = historicalCanvas.getContext('2d');
       if (ctx) {
         historicalChartRef.current = new window.Chart(ctx, {
@@ -130,7 +141,7 @@ export default function AlphabetValuationAnalysis() {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  callback: function(value) {
+                  callback: function(value: any) {
                     return '$' + value + 'B';
                   }
                 }
@@ -149,10 +160,22 @@ export default function AlphabetValuationAnalysis() {
         });
       }
     }
+  };
+
+  const initializePeerCharts = () => {
+    // Destroy existing charts
+    if (peRatioChartRef.current) {
+      peRatioChartRef.current.destroy();
+      peRatioChartRef.current = null;
+    }
+    if (evEbitdaChartRef.current) {
+      evEbitdaChartRef.current.destroy();
+      evEbitdaChartRef.current = null;
+    }
 
     // P/E Ratio Chart
     const peCanvas = document.getElementById('peRatioChart') as HTMLCanvasElement;
-    if (peCanvas) {
+    if (peCanvas && window.Chart) {
       const ctx = peCanvas.getContext('2d');
       if (ctx) {
         peRatioChartRef.current = new window.Chart(ctx, {
@@ -180,7 +203,7 @@ export default function AlphabetValuationAnalysis() {
 
     // EV/EBITDA Chart
     const evCanvas = document.getElementById('evEbitdaChart') as HTMLCanvasElement;
-    if (evCanvas) {
+    if (evCanvas && window.Chart) {
       const ctx = evCanvas.getContext('2d');
       if (ctx) {
         evEbitdaChartRef.current = new window.Chart(ctx, {
@@ -205,12 +228,7 @@ export default function AlphabetValuationAnalysis() {
         });
       }
     }
-  }, [chartLoaded]);
-
-  // Update valuation when inputs change
-  useEffect(() => {
-    updateValuation(wacc, growthRate);
-  }, [wacc, growthRate]);
+  };
 
   const toggleDataset = (datasetLabel: string) => {
     if (historicalChartRef.current) {
@@ -267,10 +285,6 @@ export default function AlphabetValuationAnalysis() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
-      <Script 
-        src="https://cdn.jsdelivr.net/npm/chart.js" 
-        onLoad={() => setChartLoaded(true)}
-      />
       <Header />
       
       <main className="flex-1">
@@ -553,6 +567,12 @@ export default function AlphabetValuationAnalysis() {
           </div>
         </div>
       </footer>
+      
+      <Script 
+        src="https://cdn.jsdelivr.net/npm/chart.js" 
+        strategy="afterInteractive"
+        onLoad={() => setChartLoaded(true)}
+      />
     </div>
   );
 } 
