@@ -13,6 +13,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Writing Naked Puts: A Complete Interactive Guide",
+    description: "An interactive comprehensive guide to writing naked puts based on Mark D. Wolfinger's book. Learn the strategy, risk management, and practical implementation with an intuitive navigation system covering all aspects from basic concepts to advanced repair strategies.",
+    slug: "writing-naked-puts-complete-interactive-guide",
+    date: "June 10, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/5165u8eVyZL._SY445_SX342_PQ35_.jpg",
+    options: true
+  },
+  {
     title: "Enhancing the Sell Put Strategy: Advanced Techniques for Optimal Performance",
     description: "A comprehensive deep research analysis of advanced put-selling techniques and strategic optimizations. Covers refined strategic objectives, cash-secured vs naked puts analysis, advanced risk management frameworks, position sizing methodologies, rolling strategies, and multi-leg structures like bull put spreads and the wheel strategy. Essential reading for traders seeking to elevate their put-selling methodology beyond basic execution.",
     slug: "enhancing-sell-put-strategy",
