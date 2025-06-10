@@ -93,18 +93,18 @@ export default function AboutPage() {
                 Together, we'll decode complex topics—from open-source projects and stock analysis to 
                 machine learning and app development.
               </p>
-              <div className="flex gap-2 flex-wrap">
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                  <TrendingUp className="h-3 w-3 mr-1" />
+              <div className="flex gap-4 flex-wrap justify-center">
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 px-6 py-3 text-xl font-semibold">
+                  <TrendingUp className="h-6 w-6 mr-2" />
                   Personal Hobby
                 </Badge>
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-6 py-3 text-xl font-semibold">
                   Completely Free
                 </Badge>
-                <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200">
+                <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 px-6 py-3 text-xl font-semibold">
                   No Logins Required
                 </Badge>
-                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200">
+                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 px-6 py-3 text-xl font-semibold">
                   No Subscriptions
                 </Badge>
               </div>
