@@ -276,18 +276,22 @@ export default function Home() {
           <div className="container max-w-screen-xl mx-auto">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
               <div className="flex items-center gap-4">
-                <div className="relative h-16 w-16 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-purple-300 shadow-md">
-                  <Image 
-                    src="/images/agents/SOPHIE.png"
-                    alt="SOPHIE" 
-                    width={96} 
-                    height={96}
-                    className="object-cover"
-                  />
-                </div>
-                <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-                  <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
-                </h1>
+                <Link href="/about">
+                  <div className="relative h-16 w-16 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-purple-300 shadow-md cursor-pointer hover:scale-105 transition-transform duration-200">
+                    <Image 
+                      src="/images/agents/SOPHIE.png"
+                      alt="SOPHIE" 
+                      width={96} 
+                      height={96}
+                      className="object-cover"
+                    />
+                  </div>
+                </Link>
+                <Link href="/about">
+                  <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl cursor-pointer hover:scale-105 transition-transform duration-200">
+                    <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">SOPHIE</span>
+                  </h1>
+                </Link>
               </div>
               <div className="flex flex-col md:flex-row gap-3 max-w-[64rem] flex-wrap justify-center">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-purple-100 dark:border-purple-900/30">
