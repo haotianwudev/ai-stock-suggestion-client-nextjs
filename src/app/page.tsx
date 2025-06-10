@@ -273,7 +273,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <section className="space-y-4 pb-2 pt-6 md:pb-4 md:pt-8 lg:py-8">
-          <div className="container max-w-screen-xl mx-auto">
+          <div className="container max-w-screen-xl mx-auto px-4">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
               <div className="flex items-center gap-4">
                 <Link href="/about">
@@ -294,49 +294,55 @@ export default function Home() {
                 </Link>
               </div>
               <div className="flex flex-col md:flex-row gap-3 max-w-[64rem] flex-wrap justify-center">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-purple-100 dark:border-purple-900/30">
-                  <LineChart className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                  <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE is an AI stock analyst now!
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border border-purple-100 dark:border-purple-900/30">
+                  <LineChart className="h-4 w-4 sm:h-5 sm:w-5 text-purple-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground text-sm sm:text-lg">
+                    <span className="hidden sm:inline">SOPHIE is an AI stock analyst now!</span>
+                    <span className="sm:hidden">AI Stock Analyst</span>
                   </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-pink-100 dark:border-pink-900/30">
-                  <TrendingUp className="h-5 w-5 text-pink-500 flex-shrink-0" />
-                  <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE's Daddy is a youtuber now!
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-pink-100 dark:border-pink-900/30">
+                  <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-pink-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground text-sm sm:text-lg">
+                    <span className="hidden sm:inline">SOPHIE's Daddy is a youtuber now!</span>
+                    <span className="sm:hidden">YouTube Creator</span>
                   </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-100 dark:border-blue-900/30">
-                  <Shield className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                  <p className="leading-normal text-muted-foreground sm:text-lg">
-                    SOPHIE's Daddy is teaching SOPHIE option strategies and machine learning!
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-100 dark:border-blue-900/30">
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500 flex-shrink-0" />
+                  <p className="leading-normal text-muted-foreground text-sm sm:text-lg">
+                    <span className="hidden sm:inline">SOPHIE's Daddy is teaching SOPHIE option strategies and machine learning!</span>
+                    <span className="sm:hidden">Teaching AI & Finance</span>
                   </p>
                 </div>
         
               </div>
-              <div className="flex justify-center space-x-4">
-                <Button asChild size="lg">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+                <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link href="/trending">
                     <SearchIcon className="mr-2 h-4 w-4" />
-                    Explore Stocks Analysis
+                    <span className="hidden sm:inline">Explore Stocks Analysis</span>
+                    <span className="sm:hidden">Stocks Analysis</span>
                   </Link>
                 </Button>
                 
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/option">
                     <LineChart className="mr-2 h-4 w-4" />
-                    Explore Option Strategies
+                    <span className="hidden sm:inline">Explore Option Strategies</span>
+                    <span className="sm:hidden">Option Strategies</span>
                   </Link>
                 </Button>
 
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/about">
                     <Users className="mr-2 h-4 w-4" />
-                    Meet Sophie's Daddy
+                    <span className="hidden sm:inline">Meet Sophie's Daddy</span>
+                    <span className="sm:hidden">Meet Creator</span>
                   </Link>
                 </Button>
 
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <a 
                     href="https://www.youtube.com/@SOPHIEAIFinance" 
                     target="_blank" 
@@ -345,11 +351,12 @@ export default function Home() {
                     <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
-                    YouTube Channel
+                    <span className="hidden sm:inline">YouTube Channel</span>
+                    <span className="sm:hidden">YouTube</span>
                   </a>
                 </Button>
                 
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <a 
                     href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
                     target="_blank" 
@@ -361,7 +368,8 @@ export default function Home() {
                       <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
                       <line x1="12" y1="20" x2="12" y2="20" />
                     </svg>
-                    Download Android App
+                    <span className="hidden sm:inline">Download Android App</span>
+                    <span className="sm:hidden">Android App</span>
                   </a>
                 </Button>
                 
@@ -371,7 +379,7 @@ export default function Home() {
         </section>
         
         {/* Quick Access Stock Cards */}
-        <section className="container max-w-screen-xl mx-auto py-0 md:py-1">
+        <section className="container max-w-screen-xl mx-auto py-0 md:py-1 px-4">
           {isLoading ? (
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
               {[1, 2, 3].map(i => (
@@ -398,7 +406,7 @@ export default function Home() {
         </section>
         
         {/* Articles Section */}
-        <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border">
+        <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Articles
@@ -424,7 +432,7 @@ export default function Home() {
         </section>
         
         {/* Discord Community Section */}
-        <section className="container max-w-screen-xl mx-auto space-y-4 py-8 md:py-12">
+        <section className="container max-w-screen-xl mx-auto space-y-4 py-8 md:py-12 px-4">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Join the Community
