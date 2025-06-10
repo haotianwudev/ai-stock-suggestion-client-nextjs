@@ -326,6 +326,13 @@ export default function Home() {
                 </Button>
 
                 <Button asChild size="lg" variant="outline">
+                  <Link href="/about">
+                    <Users className="mr-2 h-4 w-4" />
+                    Meet Sophie's Daddy
+                  </Link>
+                </Button>
+
+                <Button asChild size="lg" variant="outline">
                   <a 
                     href="https://www.youtube.com/@SOPHIEAIFinance" 
                     target="_blank" 
