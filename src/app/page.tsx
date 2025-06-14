@@ -13,9 +13,10 @@ import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
 import Image from "next/image";
 import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
-import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users } from "lucide-react";
+import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, BookOpen } from "lucide-react";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
+import { useRouter } from "next/navigation";
 
 // Types for stock data
 interface StockData {
@@ -130,6 +131,10 @@ export default function Home() {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const TICKERS = ["AAPL", "MSFT", "NVDA"];
+  const [showBookModal, setShowBookModal] = useState(false);
+  const [bookPassword, setBookPassword] = useState("");
+  const [bookError, setBookError] = useState("");
+  const router = useRouter();
   
   useEffect(() => {
     // Fetch real stock data on component mount
@@ -374,6 +379,13 @@ export default function Home() {
                 </Button>
                 
               </div>
+              {/* Book Summary Entry Link */}
+              <div className="mt-2 flex items-center justify-center">
+                <Link href="/book-summary" className="inline-flex items-center text-purple-700 hover:text-purple-900 underline text-sm font-medium transition-colors duration-200">
+                  <BookOpen className="mr-1 h-4 w-4" />
+                  Book Summary (password required)
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -413,28 +425,28 @@ export default function Home() {
             </h2>
           </div>
           {/* Pinned Article as Featured */}
-          {articles.find(article => article.pinned) && (
+          {articles.find(article => article.pinned && !article.bookSummary) && (
             <div className="mb-8 relative">
               <div className="absolute -top-3 left-3 z-10">
                 <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded shadow">Featured</span>
               </div>
               <ArticleCard
-                key={articles.find(article => article.pinned)!.slug}
-                title={articles.find(article => article.pinned)!.title}
-                description={articles.find(article => article.pinned)!.description}
-                slug={articles.find(article => article.pinned)!.slug}
-                date={articles.find(article => article.pinned)!.date}
-                imageUrl={articles.find(article => article.pinned)!.imageUrl}
-                googleDoc={articles.find(article => article.pinned)!.googleDoc}
-                deepResearch={articles.find(article => article.pinned)!.deepResearch}
-                youtubeUrl={articles.find(article => article.pinned)!.youtubeUrl}
-                isVideo={articles.find(article => article.pinned)!.isVideo}
-                options={articles.find(article => article.pinned)!.options}
+                key={articles.find(article => article.pinned && !article.bookSummary)!.slug}
+                title={articles.find(article => article.pinned && !article.bookSummary)!.title}
+                description={articles.find(article => article.pinned && !article.bookSummary)!.description}
+                slug={articles.find(article => article.pinned && !article.bookSummary)!.slug}
+                date={articles.find(article => article.pinned && !article.bookSummary)!.date}
+                imageUrl={articles.find(article => article.pinned && !article.bookSummary)!.imageUrl}
+                googleDoc={articles.find(article => article.pinned && !article.bookSummary)!.googleDoc}
+                deepResearch={articles.find(article => article.pinned && !article.bookSummary)!.deepResearch}
+                youtubeUrl={articles.find(article => article.pinned && !article.bookSummary)!.youtubeUrl}
+                isVideo={articles.find(article => article.pinned && !article.bookSummary)!.isVideo}
+                options={articles.find(article => article.pinned && !article.bookSummary)!.options}
               />
             </div>
           )}
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {articles.filter(article => !article.pinned).map((article) => (
+            {articles.filter(article => !article.pinned && !article.bookSummary).map((article) => (
               <ArticleCard 
                 key={article.slug}
                 title={article.title}

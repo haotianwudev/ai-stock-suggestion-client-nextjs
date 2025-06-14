@@ -178,7 +178,7 @@ export default function OptionsPage() {
                 <CardContent>
                   <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
                     {articles
-                      .filter(article => article.options === true)
+                      .filter(article => article.options === true && !article.bookSummary)
                       .map((article) => (
                         <ArticleCard 
                           key={article.slug}
@@ -195,7 +195,7 @@ export default function OptionsPage() {
                         />
                       ))}
                   </div>
-                  {articles.filter(article => article.options === true).length === 0 && (
+                  {articles.filter(article => article.options === true && !article.bookSummary).length === 0 && (
                     <p className="text-center text-muted-foreground py-8">
                       No options articles available yet. Check back soon!
                     </p>

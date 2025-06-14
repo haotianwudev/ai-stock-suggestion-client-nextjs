@@ -10,6 +10,7 @@ export interface Article {
   isVideo?: boolean;
   options?: boolean;
   pinned?: boolean;
+  bookSummary?: boolean;
 }
 
 export const articles: Article[] = [
@@ -28,7 +29,8 @@ export const articles: Article[] = [
     slug: "writing-naked-puts-complete-interactive-guide",
     date: "June 10, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/5165u8eVyZL._SY445_SX342_PQ35_.jpg",
-    options: true
+    options: true,
+    bookSummary: true
   },
   {
     title: "Enhancing the Sell Put Strategy: Advanced Techniques for Optimal Performance",
@@ -55,7 +57,8 @@ export const articles: Article[] = [
     slug: "losing-money-with-options-common-pitfalls",
     date: "June 7, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/7153sgbC9sL._SY522_.jpg",
-    options: true
+    options: true,
+    bookSummary: true
   },
   {
     title: "DCF Valuation Analysis of Google",
@@ -72,16 +75,8 @@ export const articles: Article[] = [
     slug: "navigating-option-trading-strategies",
     date: "June 5, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/41Eq0i5hoQL._PQ35_.jpg",
-    options: true
-  },
-  {
-    title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
-    description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
-    slug: "sophie-youtube-introduction",
-    date: "June 4, 2025",
-    imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",
-    youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
-    isVideo: true
+    options: true,
+    bookSummary: true
   },
   {
     title: "Technical Analysis vs. Machine Learning Trading",
@@ -107,5 +102,14 @@ export const articles: Article[] = [
     slug: "stock-analysis-ai-agent-prompt-example",
     date: "May 31, 2025",
     imageUrl: "/images/agents/charlie_munger.png"
+  },
+  {
+    title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
+    description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
+    slug: "sophie-youtube-introduction",
+    date: "June 4, 2025",
+    imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
+    isVideo: true
   }
 ]; 
