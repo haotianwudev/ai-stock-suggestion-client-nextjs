@@ -383,7 +383,7 @@ export default function Home() {
               <div className="mt-2 flex items-center justify-center">
                 <Link href="/book-summary" className="inline-flex items-center text-purple-700 hover:text-purple-900 underline text-sm font-medium transition-colors duration-200">
                   <BookOpen className="mr-1 h-4 w-4" />
-                  Book Summary (password required)
+                  Hidden Articles (password required)
                 </Link>
               </div>
             </div>
