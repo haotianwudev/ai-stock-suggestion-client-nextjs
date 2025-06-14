@@ -18,6 +18,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { StrategyExplorer } from "@/components/options/strategy-explorer";
 
 // Register Chart.js components
 ChartJS.register(
@@ -46,10 +47,11 @@ export default function OptionsPage() {
           </div>
 
           <Tabs defaultValue="when-to-trade" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="when-to-trade">When to Trade</TabsTrigger>
               <TabsTrigger value="option-greeks">Option Greeks</TabsTrigger>
               <TabsTrigger value="articles">Research Articles</TabsTrigger>
+              <TabsTrigger value="strategies">Strategies</TabsTrigger>
             </TabsList>
             
             <TabsContent value="when-to-trade" className="space-y-6 mt-6">
@@ -200,6 +202,25 @@ export default function OptionsPage() {
                       No options articles available yet. Check back soon!
                     </p>
                   )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+            
+            <TabsContent value="strategies" className="mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <BarChart4 className="h-6 w-6" />
+                    Strategy Explorer
+                  </CardTitle>
+                  <CardDescription>
+                    Explore a comprehensive taxonomy of common options strategies. Filter by market outlook and view risk profiles.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-white rounded-xl shadow p-4 md:p-8">
+                    <StrategyExplorer />
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>

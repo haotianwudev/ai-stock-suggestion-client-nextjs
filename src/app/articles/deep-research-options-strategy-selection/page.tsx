@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Script from "next/script";
 import { useState, useEffect, useRef } from "react";
+import { StrategyExplorer } from "@/components/options/strategy-explorer";
 
 // --- DATA STORE ---
 const data = {
@@ -149,41 +150,6 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
         </div>
     </div>
 );
-
-const StrategyExplorer = () => {
-    const [filter, setFilter] = useState('All');
-    const [selectedId, setSelectedId] = useState<string | null>(null);
-
-    const filteredStrategies = filter === 'All' ? data.strategies : data.strategies.filter(s => s.category === filter);
-    const selectedStrategy = selectedId ? data.strategies.find(s => s.id === selectedId) : null;
-
-    if (selectedStrategy) {
-        return <StrategyDetail strategy={selectedStrategy} onBack={() => setSelectedId(null)} />;
-    }
-
-    return (
-        <div className="space-y-8">
-            <div>
-                <h2 className="text-3xl font-bold text-gray-900">Strategy Explorer</h2>
-                <p className="mt-2 text-lg text-gray-600">This section provides a comprehensive taxonomy of common options strategies. Each strategy is designed for a specific market outlook. Use the filters to discover strategies based on your view of the market's direction and volatility, then click on a card to see a detailed breakdown and a dynamic risk profile graph.</p>
-            </div>
-            <div className="flex flex-wrap gap-2 p-4 bg-gray-100 rounded-lg">
-                {['All', 'Bullish', 'Bearish', 'Neutral', 'Volatility'].map(f => (
-                    <button key={f} onClick={() => setFilter(f)} className={`btn px-4 py-2 rounded-md font-semibold text-gray-700 ${filter === f ? 'btn-active' : 'bg-white'}`}>{f} { {Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] }</button>
-                ))}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredStrategies.map(s => (
-                    <div key={s.id} onClick={() => setSelectedId(s.id)} className="content-card p-6 cursor-pointer strategy-card">
-                        <h3 className="text-xl font-bold text-gray-900">{s.name}</h3>
-                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${ {Bullish: 'bg-green-100 text-green-800', Bearish: 'bg-red-100 text-red-800', Neutral: 'bg-yellow-100 text-yellow-800', Volatility: 'bg-blue-100 text-blue-800'}[s.category] }`}>{s.category}</span>
-                        <p className="mt-4 text-gray-600">{s.description.split('.')[0]}.</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
 
 const AnalystToolkit = () => (
     <div className="space-y-8">

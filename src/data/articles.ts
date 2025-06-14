@@ -21,7 +21,8 @@ export const articles: Article[] = [
     date: "June 13, 2025",
     imageUrl: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYw1t12BokYTuE9Q3t5FngMQpAYDSrLfQVh5znjIbbwdDkDpaBpL77GPHJLMKrp_tS9gTU0paRCShO/pub",
-    deepResearch: true
+    deepResearch: true,
+    options: true
   },
   {
     title: "Writing Naked Puts: A Complete Interactive Guide",

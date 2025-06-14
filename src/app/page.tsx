@@ -378,13 +378,13 @@ export default function Home() {
                   </a>
                 </Button>
                 
-              </div>
-              {/* Book Summary Entry Link */}
-              <div className="mt-2 flex items-center justify-center">
-                <Link href="/book-summary" className="inline-flex items-center text-purple-700 hover:text-purple-900 underline text-sm font-medium transition-colors duration-200">
-                  <BookOpen className="mr-1 h-4 w-4" />
-                  Hidden Articles (password required)
-                </Link>
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Link href="/book-summary">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Hidden Articles (password required)
+                  </Link>
+                </Button>
+                
               </div>
             </div>
           </div>
