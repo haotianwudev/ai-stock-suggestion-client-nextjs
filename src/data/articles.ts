@@ -14,6 +14,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Systematic Options Strategy Selection: From Technical Analysis to Machine Learning",
+    description: "A comprehensive deep research article and interactive guide to systematic options strategy selection. Covers a taxonomy of options strategies, technical indicator signals, machine learning features, and quant evaluation metrics. Includes interactive strategy explorer, analyst toolkit, ML engine, and quant playbook. Full document and research links provided.",
+    slug: "deep-research-options-strategy-selection",
+    date: "June 13, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYw1t12BokYTuE9Q3t5FngMQpAYDSrLfQVh5znjIbbwdDkDpaBpL77GPHJLMKrp_tS9gTU0paRCShO/pub",
+    deepResearch: true
+  },
+  {
     title: "Matt Levine's Market Opinions",
     description: "A regularly updated collection of Matt Levine's Bloomberg market opinions, covering market structure, regulation, and financial innovation. Click to read the latest and past briefings.",
     slug: "matt-levine-opinions",
