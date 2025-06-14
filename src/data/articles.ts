@@ -15,6 +15,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Covered Calls vs. Cash-Secured Puts: A Comprehensive Analysis of Theoretical Equivalence and Practical Divergence",
+    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
+    slug: "covered-calls-vs-cash-secured-puts",
+    date: "June 14, 2025",
+    options: true,
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
+    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
+  },
+  {
     title: "Systematic Options Strategy Selection: From Technical Analysis to Machine Learning",
     description: "A comprehensive deep research article and interactive guide to systematic options strategy selection. Covers a taxonomy of options strategies, technical indicator signals, machine learning features, and quant evaluation metrics. Includes interactive strategy explorer, analyst toolkit, ML engine, and quant playbook. Full document and research links provided.",
     slug: "deep-research-options-strategy-selection",
