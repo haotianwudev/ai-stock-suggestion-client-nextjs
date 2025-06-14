@@ -9,9 +9,18 @@ export interface Article {
   youtubeUrl?: string;
   isVideo?: boolean;
   options?: boolean;
+  pinned?: boolean;
 }
 
 export const articles: Article[] = [
+  {
+    title: "Matt Levine's Market Opinions",
+    description: "A regularly updated collection of Matt Levine's Bloomberg market opinions, covering market structure, regulation, and financial innovation. Click to read the latest and past briefings.",
+    slug: "matt-levine-opinions",
+    date: "June 12, 2025",
+    imageUrl: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iE8O2RXbXRhw/v6/piUjdcePl62Og/200x200.jpg",
+    pinned: true
+  },
   {
     title: "Writing Naked Puts: A Complete Interactive Guide",
     description: "An interactive comprehensive guide to writing naked puts based on Mark D. Wolfinger's book. Learn the strategy, risk management, and practical implementation with an intuitive navigation system covering all aspects from basic concepts to advanced repair strategies.",
