@@ -11,9 +11,20 @@ export interface Article {
   options?: boolean;
   pinned?: boolean;
   bookSummary?: boolean;
+  noSummary?: boolean;
 }
 
 export const articles: Article[] = [
+  {
+    title: "A Technical Blueprint for Building a Graph-Aware Confluence Chatbot with LangChain",
+    description: "This report provides a comprehensive, end-to-end architectural guide for developing a sophisticated knowledge base chatbot built upon a Confluence wiki. The primary objective is to move beyond conventional Retrieval-Augmented Generation (RAG) techniques, which often treat documents as a flat, disconnected collection of texts. Instead, this blueprint addresses the unique opportunity presented by Confluence's inherent page hierarchy. This structure is not a challenge to be overcome but a foundational asset that, when properly leveraged, enables the creation of a more intelligent, context-aware, and accurate conversational agent.",
+    slug: "confluence-chatbot-langchain-blueprint",
+    date: "June 18, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRb2Opr7keDlhiUot7H3XkPkiBnZAusLebEM5o5hz-8Mp_skm58SjSDOTZlaYuTLINT7keGh4Njd5tO/pub",
+    deepResearch: true,
+    noSummary: true
+  },
   {
     title: "Covered Calls vs. Cash-Secured Puts: A Comprehensive Analysis of Theoretical Equivalence and Practical Divergence",
     description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",

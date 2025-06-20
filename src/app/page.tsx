@@ -442,6 +442,7 @@ export default function Home() {
                 youtubeUrl={articles.find(article => article.pinned && !article.bookSummary)!.youtubeUrl}
                 isVideo={articles.find(article => article.pinned && !article.bookSummary)!.isVideo}
                 options={articles.find(article => article.pinned && !article.bookSummary)!.options}
+                noSummary={articles.find(article => article.pinned && !article.bookSummary)!.noSummary}
               />
             </div>
           )}
@@ -459,6 +460,7 @@ export default function Home() {
                 youtubeUrl={article.youtubeUrl}
                 isVideo={article.isVideo}
                 options={article.options}
+                noSummary={article.noSummary}
               />
             ))}
           </div>

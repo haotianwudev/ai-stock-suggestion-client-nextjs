@@ -194,6 +194,7 @@ export default function OptionsPage() {
                           youtubeUrl={article.youtubeUrl}
                           isVideo={article.isVideo}
                           options={article.options}
+                          noSummary={article.noSummary}
                         />
                       ))}
                   </div>
