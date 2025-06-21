@@ -17,6 +17,7 @@ import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, Book
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { useRouter } from "next/navigation";
+import { StickyPodcastPlayer } from "@/components/ui/sticky-podcast-player";
 
 // Types for stock data
 interface StockData {
@@ -501,6 +502,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
+      {/* Sticky Podcast Player */}
+      <StickyPodcastPlayer />
     </div>
   );
 }
