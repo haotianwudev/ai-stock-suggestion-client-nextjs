@@ -19,7 +19,7 @@ export const articles: Article[] = [
     title: "MSFT: EV/EBITDA vs DCF",
     description: "A comprehensive comparative analysis of two cornerstone valuation methodologies—Enterprise Value to EBITDA (EV/EBITDA) and Discounted Cash Flow (DCF).",
     slug: "deep-research-microsoft-valuation-analysis",
-    date: "January 15, 2025",
+    date: "June 21, 2025",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ5jsRg3J5a0cfbpS5C5uw3tvd-mwyDadUdE2CUzxOrd-PuA3CJ8phN0wWI9KUwE8Sc4r6ik96kb5UQ/pub",
     deepResearch: true
