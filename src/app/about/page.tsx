@@ -67,7 +67,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="space-y-4 text-lg leading-relaxed">
               <p>
-                I'm the creator of this site, but you can call me <strong>Sophie's Daddy</strong>. 
+                I'm the creator of this site, but you can call me <strong>SOPHIE's Daddy</strong>. 
                 My day job is on Wall Street, but I believe financial knowledge shouldn't be a luxury, 
                 so I am right here with you.
               </p>
