@@ -16,7 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    title: "A Technical Blueprint for Building a Graph-Aware Confluence Chatbot with LangChain",
+    title: "MSFT: EV/EBITDA vs DCF",
+    description: "A comprehensive comparative analysis of two cornerstone valuation methodologies—Enterprise Value to EBITDA (EV/EBITDA) and Discounted Cash Flow (DCF).",
+    slug: "deep-research-microsoft-valuation-analysis",
+    date: "January 15, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ5jsRg3J5a0cfbpS5C5uw3tvd-mwyDadUdE2CUzxOrd-PuA3CJ8phN0wWI9KUwE8Sc4r6ik96kb5UQ/pub",
+    deepResearch: true
+  },
+  {
+    title: "Graph-Aware Confluence Chatbot with LangChain",
     description: "This report provides a comprehensive, end-to-end architectural guide for developing a sophisticated knowledge base chatbot built upon a Confluence wiki. The primary objective is to move beyond conventional Retrieval-Augmented Generation (RAG) techniques, which often treat documents as a flat, disconnected collection of texts. Instead, this blueprint addresses the unique opportunity presented by Confluence's inherent page hierarchy. This structure is not a challenge to be overcome but a foundational asset that, when properly leveraged, enables the creation of a more intelligent, context-aware, and accurate conversational agent.",
     slug: "confluence-chatbot-langchain-blueprint",
     date: "June 18, 2025",
@@ -26,7 +35,7 @@ export const articles: Article[] = [
     noSummary: true
   },
   {
-    title: "Covered Calls vs. Cash-Secured Puts: A Comprehensive Analysis of Theoretical Equivalence and Practical Divergence",
+    title: "Covered Calls vs Cash-Secured Puts",
     description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
     slug: "covered-calls-vs-cash-secured-puts",
     date: "June 14, 2025",
@@ -36,7 +45,7 @@ export const articles: Article[] = [
     imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
   },
   {
-    title: "Systematic Options Strategy Selection: From Technical Analysis to Machine Learning",
+    title: "Options Strategy Selection:TA to ML",
     description: "A comprehensive deep research article and interactive guide to systematic options strategy selection. Covers a taxonomy of options strategies, technical indicator signals, machine learning features, and quant evaluation metrics. Includes interactive strategy explorer, analyst toolkit, ML engine, and quant playbook. Full document and research links provided.",
     slug: "deep-research-options-strategy-selection",
     date: "June 13, 2025",
@@ -46,7 +55,7 @@ export const articles: Article[] = [
     options: true
   },
   {
-    title: "Writing Naked Puts: A Complete Interactive Guide",
+    title: "Writing Naked Puts: A Complete Guide",
     description: "An interactive comprehensive guide to writing naked puts based on Mark D. Wolfinger's book. Learn the strategy, risk management, and practical implementation with an intuitive navigation system covering all aspects from basic concepts to advanced repair strategies.",
     slug: "writing-naked-puts-complete-interactive-guide",
     date: "June 10, 2025",
@@ -55,7 +64,7 @@ export const articles: Article[] = [
     bookSummary: true
   },
   {
-    title: "Enhancing the Sell Put Strategy: Advanced Techniques for Optimal Performance",
+    title: "Sell Put Strategy: Advanced Techniques",
     description: "A comprehensive deep research analysis of advanced put-selling techniques and strategic optimizations. Covers refined strategic objectives, cash-secured vs naked puts analysis, advanced risk management frameworks, position sizing methodologies, rolling strategies, and multi-leg structures like bull put spreads and the wheel strategy. Essential reading for traders seeking to elevate their put-selling methodology beyond basic execution.",
     slug: "enhancing-sell-put-strategy",
     date: "June 9, 2025",
@@ -101,7 +110,7 @@ export const articles: Article[] = [
     bookSummary: true
   },
   {
-    title: "Technical Analysis vs. Machine Learning Trading",
+    title: "Technical Analysis vs ML Trading",
     description: "An interactive, in-depth comparison of Technical Analysis and Machine Learning trading strategies. Includes radar chart, paradigm tabs, and synergy explorer. Explore the strengths, weaknesses, and future of each approach.",
     slug: "deep-research-ta-vs-ml-trading",
     date: "June 2, 2025",
@@ -126,7 +135,7 @@ export const articles: Article[] = [
     imageUrl: "/images/agents/charlie_munger.png"
   },
   {
-    title: "Decoding AI-Hedge-Fund Charlie Munger AI Agent Stock Analyst",
+    title: "Decoding AI Agent Stock Analyst",
     description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
     slug: "sophie-youtube-introduction",
     date: "June 4, 2025",
