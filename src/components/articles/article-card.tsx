@@ -102,7 +102,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     rel="noopener noreferrer"
                     className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"
                   >
-                    Read Full Document
+                    Google Document
                   </a>
                 )}
                 {!noSummary && (
@@ -110,7 +110,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     href={`/articles/${slug}`} 
                     className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
                   >
-                    Read Summary <ArrowRight className="ml-2 h-4 w-4" />
+                    Interactive Summary <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 )}
               </>

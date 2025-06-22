@@ -422,7 +422,7 @@ export default function Home() {
         <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Articles
+              Interactive Articles
             </h2>
           </div>
           {/* Pinned Article as Featured */}
