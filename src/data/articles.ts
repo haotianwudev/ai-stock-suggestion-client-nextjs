@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Decoding Stock Analysis EV/EBTIDA model using AI",
+    description: "In this video, we're decoding the EV/EBITDA multiple, a favorite tool of professional investors. We're making this powerful valuation method simple, fun, and accessible for everyone.",
+    slug: "ev-ebitda-multiple",
+    date: "June 22, 2025",
+    imageUrl: "/images/Decoding Stock Analysis – EVEBTIDA model using AI.jpg",
+    youtubeUrl: "https://www.youtube.com/watch?v=7_cJfQ_qKmM",
+    isVideo: true
+  },
+  {
     title: "MSFT: EV/EBITDA vs DCF",
     description: "A comprehensive comparative analysis of two cornerstone valuation methodologies—Enterprise Value to EBITDA (EV/EBITDA) and Discounted Cash Flow (DCF).",
     slug: "deep-research-microsoft-valuation-analysis",
