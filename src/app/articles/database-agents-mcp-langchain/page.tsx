@@ -49,7 +49,7 @@ const InfoCard = ({ title, children, icon }: { title: string; children: React.Re
     </div>
 );
 
-const SecurityTable = ({ data }: { data: any }) => (
+const DataTable = ({ data, highlightFirstColumn = true }: { data: any; highlightFirstColumn?: boolean }) => (
   <div className="overflow-x-auto">
     <table className="w-full text-left border-collapse">
       <thead className="border-b border-gray-700">
@@ -64,7 +64,10 @@ const SecurityTable = ({ data }: { data: any }) => (
           <tr key={i} className="border-b border-gray-800 last:border-0 hover:bg-gray-800/40">
             {row.map((cell, j) => (
               <td key={j} className="p-4 text-gray-400 text-sm align-top">
-                {j === 0 ? <span className="font-semibold text-cyan-400">{cell}</span> : cell}
+                {j === 0 && highlightFirstColumn ? 
+                  <span className="font-semibold text-cyan-400">{cell}</span> : 
+                  cell
+                }
               </td>
             ))}
           </tr>
@@ -73,6 +76,9 @@ const SecurityTable = ({ data }: { data: any }) => (
     </table>
   </div>
 );
+
+// Keep SecurityTable for backward compatibility
+const SecurityTable = ({ data }: { data: any }) => <DataTable data={data} />;
 
 // Sample code blocks based on the research
 const mcpServerCode = `# sql_server.py
@@ -179,6 +185,41 @@ inputs = {"question": "How many employees are there?", "chat_history": []}
 for s in app.stream(inputs):
     print(s)`;
 
+// Context provisioning techniques data
+const contextTechniquesData = {
+  headers: ["Technique", "Description", "Implementation", "Pros", "Cons"],
+  rows: [
+    [
+      "Prompt Engineering",
+      "Manually embedding descriptions of tables, columns, business rules, and value mappings directly into the agent's system prompt.",
+      "The system_message string in the prompt template is augmented with detailed, human-readable explanations of the schema.",
+      "Simple to implement for small, stable schemas; offers fine-grained control over the context provided.",
+      "Becomes unmanageable and quickly exceeds token limits for large or evolving databases; context is hardcoded and difficult to maintain."
+    ],
+    [
+      "Database Comments",
+      "Storing metadata directly within the database using standard SQL COMMENT ON TABLE or COMMENT ON COLUMN statements.",
+      "The database schema is modified to include these comments. The application must then include a function to extract these comments and inject them into the table_info string provided to the LLM.",
+      "Metadata lives with the data, ensuring it is version-controlled and maintained alongside the schema itself.",
+      "Requires database modification permissions; may not be expressive enough for complex business rules or multi-step logic."
+    ],
+    [
+      "RAG on Documentation",
+      "Creating a vector store from existing enterprise documentation, such as data dictionaries, business glossaries, or internal wikis. The agent is given a retriever tool to query this knowledge base.",
+      "An embedding model (e.g., from Hugging Face) and a vector store (e.g., FAISS, Chroma) are used to index the documentation. A retriever tool is created that the agent can call to 'look up' the business meaning of a table or column before generating SQL.",
+      "Can handle vast amounts of unstructured context; effectively decouples documentation from the agent's core prompt, making both easier to maintain.",
+      "Adds architectural complexity (vector store, embedding model); introduces the possibility of retrieval errors or irrelevant context being returned."
+    ],
+    [
+      "Curated Views",
+      "Creating simplified, denormalized database views with clean, human-readable column names (e.g., customer_status instead of cust_stat_cd) specifically for the LLM to query.",
+      "This is a database administration task. The agent is then configured to only see and query these curated views, hiding the complexity of the underlying base tables.",
+      "Drastically simplifies the schema the LLM has to reason about, which significantly improves accuracy and query generation performance.",
+      "High initial setup and ongoing maintenance effort; may not cover all possible ad-hoc query needs, limiting flexibility."
+    ]
+  ]
+};
+
 // Security data based on the research
 const securityData = {
   headers: ["Layer", "Control", "Implementation Details", "Rationale"],
@@ -275,6 +316,16 @@ const ContextProvisioning = () => (
                 <InfoCard title="Error Correction Tools" icon={<Puzzle className="w-6 h-6 text-rose-400"/>}>
                     <p>Equip the agent with retriever tools to correct common errors, like user misspellings of names in high-cardinality columns, before the SQL query is even generated.</p>
                 </InfoCard>
+            </div>
+
+            <div>
+                <h3 className="text-xl font-semibold text-white mb-6">📋 Context Provisioning Techniques Comparison</h3>
+                <p className="text-gray-300 mb-6">
+                    Each approach to context provisioning has distinct trade-offs in terms of implementation complexity, maintenance overhead, and effectiveness. Choose the right combination based on your database size, team capabilities, and accuracy requirements.
+                </p>
+                <div className="bg-gray-800/50 rounded-2xl border border-gray-700/50 p-2">
+                    <DataTable data={contextTechniquesData} highlightFirstColumn={true} />
+                </div>
             </div>
 
             <div className="bg-gradient-to-r from-orange-900/30 to-amber-900/20 p-6 rounded-lg border border-orange-400/30">
