@@ -16,10 +16,19 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Database Agents with MCP and LangChain",
+    description: "A comprehensive guide to architecting production-grade database agents using the Model Context Protocol (MCP) and LangGraph. Covers standardized tool communication, workflow orchestration, context provisioning strategies, and enterprise security considerations for AI-powered database interactions.",
+    slug: "database-agents-mcp-langchain",
+    date: "June 22, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=800&q=80",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQbotcpzfYJwup5fVXlooM7bPuG6Q_6nP8Af-ZJB558XCuJz0rOE1mJf_NUte_7dnNC3BiUamG_m7AH/pub",
+    deepResearch: true
+  },
+  {
     title: "Vector Storage Solutions for Confluence RAG",
     description: "A comprehensive comparative analysis of Chroma, FAISS, and Scikit-learn for building a knowledge base chatbot on hierarchical Confluence data. Explores the challenges of contextual integrity and advanced retrieval patterns for graph-like enterprise data structures.",
     slug: "vector-storage-confluence-rag",
-    date: "June 23, 2025",
+    date: "June 22, 2025",
     imageUrl: "https://writer.com/wp-content/uploads/2023/11/2023-11-Retrieval-augmented-generation-what-it-is-and-why-its-a-hot-topic-for-enterprise-AI-Blog-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRNp3AVzpmT2-wxQRg1Pzo8T5mufZuDibJ8peKXR6WldkPJHhuwxGOmeUgAH4FxmRqcsySRbxgBngYL/pub",
     deepResearch: true
