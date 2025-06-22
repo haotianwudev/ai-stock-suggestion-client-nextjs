@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Vector Storage Solutions for Confluence RAG",
+    description: "A comprehensive comparative analysis of Chroma, FAISS, and Scikit-learn for building a knowledge base chatbot on hierarchical Confluence data. Explores the challenges of contextual integrity and advanced retrieval patterns for graph-like enterprise data structures.",
+    slug: "vector-storage-confluence-rag",
+    date: "June 23, 2025",
+    imageUrl: "https://writer.com/wp-content/uploads/2023/11/2023-11-Retrieval-augmented-generation-what-it-is-and-why-its-a-hot-topic-for-enterprise-AI-Blog-1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRNp3AVzpmT2-wxQRg1Pzo8T5mufZuDibJ8peKXR6WldkPJHhuwxGOmeUgAH4FxmRqcsySRbxgBngYL/pub",
+    deepResearch: true
+  },
+  {
     title: "Decoding Stock Analysis EV/EBTIDA model using AI",
     description: "In this video, we're decoding the EV/EBITDA multiple, a favorite tool of professional investors. We're making this powerful valuation method simple, fun, and accessible for everyone.",
     slug: "ev-ebitda-multiple",

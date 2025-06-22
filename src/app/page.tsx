@@ -135,6 +135,7 @@ export default function Home() {
   const [showBookModal, setShowBookModal] = useState(false);
   const [bookPassword, setBookPassword] = useState("");
   const [bookError, setBookError] = useState("");
+  const [showAllArticles, setShowAllArticles] = useState(false);
   const router = useRouter();
   
   useEffect(() => {
@@ -447,7 +448,16 @@ export default function Home() {
             </div>
           )}
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {articles.filter(article => !article.pinned && !article.bookSummary).map((article) => (
+            {articles
+              .filter(article => !article.pinned && !article.bookSummary)
+              .sort((a, b) => {
+                // Parse dates and sort newest first
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateB.getTime() - dateA.getTime();
+              })
+              .slice(0, showAllArticles ? undefined : 12)
+              .map((article) => (
               <ArticleCard 
                 key={article.slug}
                 title={article.title}
@@ -464,6 +474,34 @@ export default function Home() {
               />
             ))}
           </div>
+          
+          {/* Show More/Less Button */}
+          {articles.filter(article => !article.pinned && !article.bookSummary).length > 12 && (
+            <div className="flex justify-center mt-8">
+              <Button
+                onClick={() => setShowAllArticles(!showAllArticles)}
+                variant="outline"
+                size="lg"
+                className="px-8 py-3"
+              >
+                {showAllArticles ? (
+                  <>
+                    Show Less Articles
+                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+                    </svg>
+                  </>
+                ) : (
+                  <>
+                    Show All Articles ({articles.filter(article => !article.pinned && !article.bookSummary).length})
+                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </section>
 
       </main>
