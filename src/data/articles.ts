@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Option Trader's Mindset: Think Like a Winner",
+    description: "A comprehensive interactive summary of Mark D. Wolfinger's essential guide to developing the psychological frameworks that separate successful option traders from the rest. Explore the critical mindsets for risk management, strategy selection, and trading discipline.",
+    slug: "option-traders-mindset-book-summary",
+    date: "June 25, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/810YBW3NSZL._SY522_.jpg",
+    bookSummary: true,
+    options: true
+  },
+  {
     title: "Database Agents with MCP and LangChain",
     description: "A comprehensive guide to architecting production-grade database agents using the Model Context Protocol (MCP) and LangGraph. Covers standardized tool communication, workflow orchestration, context provisioning strategies, and enterprise security considerations for AI-powered database interactions.",
     slug: "database-agents-mcp-langchain",
