@@ -16,10 +16,19 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The ARK Invest Enigma: Cathie Wood's Strategy Decoded",
+    description: "A comprehensive deep dive into ARK Invest's disruptive innovation philosophy, extreme performance cycles, and the critical debate surrounding Cathie Wood's high-conviction, high-risk approach. Analyzes the five core innovation platforms, performance patterns, notable successes and failures, and provides a balanced assessment of this venture capital-style strategy for public markets.",
+    slug: "ark-invest-cathie-wood-strategy-analysis",
+    date: "June 23, 2025",
+    imageUrl: "/images/agents/cathie_wood.png",
+    googleDoc: "https://docs.google.com/document/d/1u8XaaJ3oHt9-m6pTmt74nZGNbalQNLAukeDbRRd8MrU/edit?tab=t.0",
+    deepResearch: true
+  },
+  {
     title: "The Option Trader's Mindset: Think Like a Winner",
     description: "A comprehensive interactive summary of Mark D. Wolfinger's essential guide to developing the psychological frameworks that separate successful option traders from the rest. Explore the critical mindsets for risk management, strategy selection, and trading discipline.",
     slug: "option-traders-mindset-book-summary",
-    date: "June 25, 2025",
+    date: "June 23, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/810YBW3NSZL._SY522_.jpg",
     bookSummary: true,
     options: true
