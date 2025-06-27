@@ -18,7 +18,7 @@ export function StickyPodcastPlayer() {
         <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-500 to-green-600 text-white">
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-            <span className="font-semibold text-sm">SOPHIE's NotebookLM</span>
+            <span className="font-semibold text-sm">SOPHIE's Wall St Fireside Chat</span>
           </div>
           <div className="flex items-center space-x-1">
             <button
@@ -52,7 +52,7 @@ export function StickyPodcastPlayer() {
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
             className="rounded-b-lg"
-            title="SOPHIE's NotebookLM Podcast"
+            title="SOPHIE's Podcast"
           />
         </div>
       </div>

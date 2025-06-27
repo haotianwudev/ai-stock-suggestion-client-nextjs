@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Dual-Purpose Playbook: Confluence for Human and AI",
+    description: "A deep research guide to architecting high-performance Confluence knowledge bases that serve both human users and AI systems. Covers the 5 core principles (Architect, Atomize, Structure, Automate, Govern), implementation roadmap, and data-driven strategies for combating content decay while optimizing for AI retrieval-augmented generation.",
+    slug: "confluence-dual-purpose-playbook-human-ai-collaboration",
+    date: "June 27, 2025",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoj8tFunsULue4hENkNlDEFqeCMpqmwH0XPQ&s",
+    googleDoc: "https://docs.google.com/document/d/1OJ8dJDCetyLUlENiFTPWQaOgZmviRMhROQs304dPyZA/edit?tab=t.0",
+    deepResearch: true
+  },
+  {
     title: "The ARK Invest Enigma: Cathie Wood's Strategy Decoded",
     description: "A comprehensive deep dive into ARK Invest's disruptive innovation philosophy, extreme performance cycles, and the critical debate surrounding Cathie Wood's high-conviction, high-risk approach. Analyzes the five core innovation platforms, performance patterns, notable successes and failures, and provides a balanced assessment of this venture capital-style strategy for public markets.",
     slug: "ark-invest-cathie-wood-strategy-analysis",
