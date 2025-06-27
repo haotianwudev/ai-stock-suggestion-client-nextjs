@@ -195,42 +195,42 @@ export const GreeksTab = () => {
   };
 
   return (
-    <div className="py-4 space-y-8">
+    <div className="py-4 space-y-6 md:space-y-8">
       {/* Introduction */}
       <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">What Are Option Greeks?</CardTitle>
+        <CardHeader className="pb-4 md:pb-6">
+          <CardTitle className="text-xl md:text-2xl">What Are Option Greeks?</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p>
+          <p className="text-sm md:text-base leading-relaxed">
             The Option Greeks are a set of risk measures that quantify the sensitivity of an option's price to changes in underlying factors. 
             They provide a framework for understanding how an option's value might react to movements in stock price, volatility, time, and interest rates.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
             <Card>
-              <CardHeader>
-                <CardTitle className="text-base flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-green-500" />
-                  Call Option
+              <CardHeader className="pb-3 md:pb-4">
+                <CardTitle className="text-sm md:text-base flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <span>Call Option</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm">
+                <p className="text-xs md:text-sm leading-relaxed">
                   Gives the holder the <span className="font-semibold">right to buy</span> an underlying asset at a predetermined price.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
-              <CardHeader>
-                <CardTitle className="text-base flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-red-500" />
-                  Put Option
+              <CardHeader className="pb-3 md:pb-4">
+                <CardTitle className="text-sm md:text-base flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-red-500 flex-shrink-0" />
+                  <span>Put Option</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm">
+                <p className="text-xs md:text-sm leading-relaxed">
                   Gives the holder the <span className="font-semibold">right to sell</span> an underlying asset at a predetermined price.
                 </p>
               </CardContent>
@@ -241,7 +241,7 @@ export const GreeksTab = () => {
 
       {/* Delta Section */}
       <GreekSection
-        icon={<Target className="h-8 w-8 text-blue-500" />}
+        icon={<Target className="h-6 w-6 md:h-8 md:w-8 text-blue-500" />}
         title="Δ Delta"
         subtitle="The Speedometer of Your Option"
         description="Delta measures the expected change in an option's price for a $1 change in the price of the underlying asset. It represents the directional exposure of your option."
@@ -249,8 +249,8 @@ export const GreeksTab = () => {
         chartData={getDeltaChartData()}
         chartOptions={chartOptions}
         controlElement={
-          <div>
-            <label className="block text-sm font-medium mb-2">
+          <div className="space-y-2">
+            <label className="block text-xs md:text-sm font-medium">
               Underlying Price: <span className="font-bold text-green-500">${deltaStockPrice}</span>
             </label>
             <input
@@ -281,7 +281,7 @@ export const GreeksTab = () => {
 
       {/* Gamma Section */}
       <GreekSection
-        icon={<Zap className="h-8 w-8 text-yellow-500" />}
+        icon={<Zap className="h-6 w-6 md:h-8 md:w-8 text-yellow-500" />}
         title="Γ Gamma"
         subtitle="The Accelerator Pedal"
         description="Gamma measures the rate of change in an option's Delta for each $1 change in the underlying's price. It indicates the stability of your option's directional exposure."
@@ -289,8 +289,8 @@ export const GreeksTab = () => {
         chartData={getGammaChartData()}
         chartOptions={chartOptions}
         controlElement={
-          <div>
-            <label className="block text-sm font-medium mb-2">
+          <div className="space-y-2">
+            <label className="block text-xs md:text-sm font-medium">
               Days to Expiration: <span className="font-bold text-green-500">{gammaTime}</span>
             </label>
             <input
@@ -321,7 +321,7 @@ export const GreeksTab = () => {
 
       {/* Theta Section */}
       <GreekSection
-        icon={<Clock className="h-8 w-8 text-red-500" />}
+        icon={<Clock className="h-6 w-6 md:h-8 md:w-8 text-red-500" />}
         title="Θ Theta"
         subtitle="The Ticking Clock"
         description="Theta quantifies the rate at which an option's value declines as one day passes, all else being equal. It's the measure of time decay."
@@ -329,20 +329,22 @@ export const GreeksTab = () => {
         chartData={getThetaChartData()}
         chartOptions={thetaChartOptions}
         controlElement={
-          <div className="text-center">
-            <span className="text-sm font-medium mr-4">Moneyness:</span>
-            <div className="inline-flex rounded-md shadow-sm">
-              {['ATM', 'ITM', 'OTM'].map((type) => (
-                <Button
-                  key={type}
-                  variant={thetaMoneyness === type ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setThetaMoneyness(type)}
-                  className="rounded-none first:rounded-l-md last:rounded-r-md"
-                >
-                  {type}
-                </Button>
-              ))}
+          <div className="space-y-3">
+            <div className="text-center">
+              <span className="text-xs md:text-sm font-medium block mb-2 md:inline md:mr-4 md:mb-0">Moneyness:</span>
+              <div className="inline-flex rounded-md shadow-sm w-full sm:w-auto">
+                {['ATM', 'ITM', 'OTM'].map((type) => (
+                  <Button
+                    key={type}
+                    variant={thetaMoneyness === type ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setThetaMoneyness(type)}
+                    className="rounded-none first:rounded-l-md last:rounded-r-md flex-1 sm:flex-initial text-xs md:text-sm"
+                  >
+                    {type}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         }
@@ -364,7 +366,7 @@ export const GreeksTab = () => {
 
       {/* Vega Section */}
       <GreekSection
-        icon={<Activity className="h-8 w-8 text-purple-500" />}
+        icon={<Activity className="h-6 w-6 md:h-8 md:w-8 text-purple-500" />}
         title="ν Vega"
         subtitle="The Volatility Gauge"
         description="Vega measures the expected change in an option's price for a 1% change in implied volatility. It shows how sensitive your option is to changes in market uncertainty."
@@ -372,8 +374,8 @@ export const GreeksTab = () => {
         chartData={getVegaChartData()}
         chartOptions={vegaChartOptions}
         controlElement={
-          <div>
-            <label className="block text-sm font-medium mb-2">
+          <div className="space-y-2">
+            <label className="block text-xs md:text-sm font-medium">
               Days to Expiration: <span className="font-bold text-purple-600">{vegaTime} days</span>
             </label>
             <input
@@ -409,7 +411,7 @@ export const GreeksTab = () => {
 
       {/* Rho Section */}
       <GreekSection
-        icon={<Target className="h-8 w-8 text-indigo-500" />}
+        icon={<Target className="h-6 w-6 md:h-8 md:w-8 text-indigo-500" />}
         title="ρ Rho"
         subtitle="The Interest Rate Sensor"
         description="Rho measures the sensitivity of an option's price to a 1% change in the risk-free interest rate. Its impact is most significant for long-term options."
@@ -417,20 +419,22 @@ export const GreeksTab = () => {
         chartData={getRhoChartData()}
         chartOptions={rhoChartOptions}
         controlElement={
-          <div className="text-center">
-            <span className="text-sm font-medium text-muted-foreground mr-4">Option Type:</span>
-            <div className="inline-flex rounded-md shadow-sm">
-              {['Call', 'Put'].map((type) => (
-                <Button
-                  key={type}
-                  variant={rhoType === type ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setRhoType(type)}
-                  className="rounded-none first:rounded-l-md last:rounded-r-md"
-                >
-                  {type}
-                </Button>
-              ))}
+          <div className="space-y-3">
+            <div className="text-center">
+              <span className="text-xs md:text-sm font-medium text-muted-foreground block mb-2 md:inline md:mr-4 md:mb-0">Option Type:</span>
+              <div className="inline-flex rounded-md shadow-sm w-full sm:w-auto">
+                {['Call', 'Put'].map((type) => (
+                  <Button
+                    key={type}
+                    variant={rhoType === type ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setRhoType(type)}
+                    className="rounded-none first:rounded-l-md last:rounded-r-md flex-1 sm:flex-initial text-xs md:text-sm"
+                  >
+                    {type}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         }
@@ -460,8 +464,8 @@ export const GreeksTab = () => {
 
       {/* Educational Note */}
       <Card className="border-yellow-200">
-        <CardContent className="p-4 text-center">
-          <p className="text-sm text-muted-foreground">
+        <CardContent className="p-3 md:p-4 text-center">
+          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
             This application is for educational purposes only and does not constitute financial advice. 
             Option calculations are based on the Black-Scholes model and are theoretical.
           </p>

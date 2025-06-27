@@ -14,17 +14,17 @@ interface AccordionSectionProps {
 
 const AccordionSection = ({ title, content, isOpen, onToggle }: AccordionSectionProps) => (
   <Card>
-    <CardHeader className="cursor-pointer" onClick={onToggle}>
-      <CardTitle className="text-sm flex justify-between items-center">
-        <span>{title}</span>
-        <span className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+    <CardHeader className="cursor-pointer py-3 md:py-4" onClick={onToggle}>
+      <CardTitle className="text-xs md:text-sm flex justify-between items-center">
+        <span className="leading-tight">{title}</span>
+        <span className={`transform transition-transform flex-shrink-0 ml-2 ${isOpen ? 'rotate-180' : ''}`}>
           ▼
         </span>
       </CardTitle>
     </CardHeader>
     {isOpen && (
-      <CardContent>
-        <p className="text-sm text-muted-foreground">{content}</p>
+      <CardContent className="pt-0">
+        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{content}</p>
       </CardContent>
     )}
   </Card>
@@ -64,21 +64,21 @@ export const GreekSection = ({
   leftSide = true
 }: GreekSectionProps) => {
   const contentSide = (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       <Card>
-        <CardHeader>
-          <CardTitle className="text-3xl flex items-center gap-2">
-            {icon}
-            {title}
+        <CardHeader className="pb-3 md:pb-4">
+          <CardTitle className="text-2xl md:text-3xl flex items-center gap-2">
+            <span className="flex-shrink-0">{icon}</span>
+            <span>{title}</span>
           </CardTitle>
-          <CardDescription className="text-lg">{subtitle}</CardDescription>
+          <CardDescription className="text-base md:text-lg leading-tight">{subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>{description}</p>
+          <p className="text-sm md:text-base leading-relaxed">{description}</p>
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-2 md:space-y-3">
         {accordionData.map((accordion) => (
           <AccordionSection
             key={accordion.key}
@@ -94,20 +94,22 @@ export const GreekSection = ({
 
   const chartSide = (
     <Card>
-      <CardHeader>
-        <CardTitle>{chartTitle}</CardTitle>
+      <CardHeader className="pb-3 md:pb-4">
+        <CardTitle className="text-lg md:text-xl">{chartTitle}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="relative h-[300px]">
+      <CardContent className="space-y-3 md:space-y-4">
+        <div className="relative h-[250px] md:h-[300px] lg:h-[350px]">
           <Line data={chartData} options={chartOptions} />
         </div>
-        {controlElement}
+        <div className="pt-2">
+          {controlElement}
+        </div>
       </CardContent>
     </Card>
   );
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-start">
       {leftSide ? (
         <>
           {contentSide}

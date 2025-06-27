@@ -37,43 +37,63 @@ export default function OptionsPage() {
       <Header />
       
       <main className="flex-1">
-        <div className="container max-w-screen-xl mx-auto py-4 md:py-8">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-2">Options Education</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="container max-w-screen-xl mx-auto py-4 px-4 md:py-8 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2">Options Education</h1>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Master the fundamentals of options trading through interactive learning modules, 
               from basic concepts to advanced strategies.
             </p>
           </div>
 
           <Tabs defaultValue="when-to-trade" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="when-to-trade">When to Trade</TabsTrigger>
-              <TabsTrigger value="option-greeks">Option Greeks</TabsTrigger>
-              <TabsTrigger value="articles">Research Articles</TabsTrigger>
-              <TabsTrigger value="strategies">Strategies</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1">
+              <TabsTrigger 
+                value="when-to-trade" 
+                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+              >
+                When to Trade
+              </TabsTrigger>
+              <TabsTrigger 
+                value="option-greeks" 
+                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+              >
+                Option Greeks
+              </TabsTrigger>
+              <TabsTrigger 
+                value="articles" 
+                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+              >
+                Research Articles
+              </TabsTrigger>
+              <TabsTrigger 
+                value="strategies" 
+                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+              >
+                Strategies
+              </TabsTrigger>
             </TabsList>
             
-            <TabsContent value="when-to-trade" className="space-y-6 mt-6">
+            <TabsContent value="when-to-trade" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">When to Use Options</CardTitle>
-                  <CardDescription>
+                <CardHeader className="pb-4 md:pb-6">
+                  <CardTitle className="text-xl md:text-2xl">When to Use Options</CardTitle>
+                  <CardDescription className="text-sm md:text-base">
                     Understand the key scenarios where options can be an effective trading and investment tool.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 md:space-y-6">
                   {/* Use Case Cards */}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                     <Card className="border-green-200 bg-green-50/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <Shield className="h-5 w-5 text-green-600" />
-                          Hedging Risk
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <Shield className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
+                          <span className="leading-tight">Hedging Risk</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm">
+                        <p className="text-sm leading-relaxed">
                           Protect existing positions from adverse price movements. 
                           Buy puts to hedge long stock positions or calls to hedge short positions.
                         </p>
@@ -81,14 +101,14 @@ export default function OptionsPage() {
                     </Card>
 
                     <Card className="border-blue-200 bg-blue-50/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <TrendingUp className="h-5 w-5 text-blue-600" />
-                          Speculation with Leverage
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
+                          <span className="leading-tight">Speculation with Leverage</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm">
+                        <p className="text-sm leading-relaxed">
                           Control a larger position with less capital. 
                           Options provide leveraged exposure to price movements with defined risk.
                         </p>
@@ -96,14 +116,14 @@ export default function OptionsPage() {
                     </Card>
 
                     <Card className="border-purple-200 bg-purple-50/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <DollarSign className="h-5 w-5 text-purple-600" />
-                          Income Generation
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
+                          <span className="leading-tight">Income Generation</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm">
+                        <p className="text-sm leading-relaxed">
                           Sell covered calls or cash-secured puts to generate premium income 
                           on existing holdings or available cash.
                         </p>
@@ -111,29 +131,29 @@ export default function OptionsPage() {
                     </Card>
 
                     <Card className="border-orange-200 bg-orange-50/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <BarChart4 className="h-5 w-5 text-orange-600" />
-                          Volatility Betting
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <BarChart4 className="h-4 w-4 md:h-5 md:w-5 text-orange-600 flex-shrink-0" />
+                          <span className="leading-tight">Volatility Betting</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm">
+                        <p className="text-sm leading-relaxed">
                           Trade on your expectations of volatility changes rather than just price direction. 
                           Profit from volatility expansion or contraction.
                         </p>
                       </CardContent>
                     </Card>
 
-                    <Card className="border-indigo-200 bg-indigo-50/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <LineChart className="h-5 w-5 text-indigo-600" />
-                          Capital Efficiency
+                    <Card className="border-indigo-200 bg-indigo-50/50 sm:col-span-2 lg:col-span-1">
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <LineChart className="h-4 w-4 md:h-5 md:w-5 text-indigo-600 flex-shrink-0" />
+                          <span className="leading-tight">Capital Efficiency</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm">
+                        <p className="text-sm leading-relaxed">
                           Achieve similar exposure to stocks with less capital, 
                           freeing up funds for other investments or risk management.
                         </p>
@@ -143,18 +163,33 @@ export default function OptionsPage() {
 
                   {/* Warning Section */}
                   <Card className="border-red-200 bg-red-50/50">
-                    <CardHeader>
-                      <CardTitle className="text-lg text-red-700">
+                    <CardHeader className="pb-3 md:pb-4">
+                      <CardTitle className="text-base md:text-lg text-red-700">
                         ⚠️ When NOT to Use Options
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <div className="text-sm text-red-600 space-y-2">
-                        <p><strong>• As a "get rich quick" scheme:</strong> Options require skill and knowledge to use effectively.</p>
-                        <p><strong>• Without understanding the Greeks:</strong> Don't trade what you don't understand.</p>
-                        <p><strong>• When you can't afford the maximum loss:</strong> Options can expire worthless.</p>
-                        <p><strong>• Without a clear strategy:</strong> Random option buying often leads to losses.</p>
-                        <p><strong>• In illiquid options:</strong> Wide bid-ask spreads can hurt profitability.</p>
+                      <div className="text-sm text-red-600 space-y-3">
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                          <span className="font-semibold">• As a "get rich quick" scheme:</span>
+                          <span>Options require skill and knowledge to use effectively.</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                          <span className="font-semibold">• Without understanding the Greeks:</span>
+                          <span>Don't trade what you don't understand.</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                          <span className="font-semibold">• When you can't afford the maximum loss:</span>
+                          <span>Options can expire worthless.</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                          <span className="font-semibold">• Without a clear strategy:</span>
+                          <span>Random option buying often leads to losses.</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                          <span className="font-semibold">• In illiquid options:</span>
+                          <span>Wide bid-ask spreads can hurt profitability.</span>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -162,23 +197,23 @@ export default function OptionsPage() {
               </Card>
             </TabsContent>
             
-            <TabsContent value="option-greeks" className="mt-6">
+            <TabsContent value="option-greeks" className="mt-4 md:mt-6">
               <GreeksTab />
             </TabsContent>
             
-            <TabsContent value="articles" className="mt-6">
+            <TabsContent value="articles" className="mt-4 md:mt-6">
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl flex items-center gap-2">
-                    <BookOpen className="h-6 w-6" />
-                    Options Research Article Summaries
+                <CardHeader className="pb-4 md:pb-6">
+                  <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
+                    <span>Options Research Article Summaries</span>
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-sm md:text-base">
                     Comprehensive summaries of essential options trading books and research articles covering key concepts, strategies, and common pitfalls to avoid.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                  <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
                     {articles
                       .filter(article => article.options === true && !article.bookSummary)
                       .map((article) => (
@@ -199,7 +234,7 @@ export default function OptionsPage() {
                       ))}
                   </div>
                   {articles.filter(article => article.options === true && !article.bookSummary).length === 0 && (
-                    <p className="text-center text-muted-foreground py-8">
+                    <p className="text-center text-muted-foreground py-8 text-sm md:text-base">
                       No options articles available yet. Check back soon!
                     </p>
                   )}
@@ -207,14 +242,14 @@ export default function OptionsPage() {
               </Card>
             </TabsContent>
             
-            <TabsContent value="strategies" className="mt-6">
+            <TabsContent value="strategies" className="mt-4 md:mt-6">
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl flex items-center gap-2">
-                    <BarChart4 className="h-6 w-6" />
-                    Strategy Explorer
+                <CardHeader className="pb-4 md:pb-6">
+                  <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+                    <BarChart4 className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
+                    <span>Strategy Explorer</span>
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-sm md:text-base">
                     Explore a comprehensive taxonomy of common options strategies. Filter by market outlook and view risk profiles.
                   </CardDescription>
                 </CardHeader>

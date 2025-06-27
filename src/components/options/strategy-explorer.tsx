@@ -53,18 +53,32 @@ const PayoffChart = ({ strategy }: { strategy: any }) => {
 };
 
 const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => (
-    <div className="content-card p-6 mt-8 animate-fade-in">
-        <button onClick={onBack} className="mb-4 text-blue-600 hover:underline">&larr; Back to all strategies</button>
-        <h2 className="text-3xl font-bold">{strategy.name}</h2>
-        <p className="mt-2 text-gray-700">{strategy.description}</p>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            <div className="bg-gray-50 p-4 rounded-lg"><p className="text-sm font-medium text-gray-500">Risk / Reward</p><p className="text-lg font-semibold">{strategy.profile}</p></div>
-            <div className="bg-gray-50 p-4 rounded-lg"><p className="text-sm font-medium text-gray-500">Volatility View</p><p className="text-lg font-semibold">{strategy.volatility}</p></div>
-            <div className="bg-gray-50 p-4 rounded-lg"><p className="text-sm font-medium text-gray-500">Time Decay View</p><p className="text-lg font-semibold">{strategy.time}</p></div>
+    <div className="content-card p-4 md:p-6 mt-6 md:mt-8 animate-fade-in">
+        <button 
+            onClick={onBack} 
+            className="mb-4 text-blue-600 hover:underline text-sm md:text-base min-h-[44px] flex items-center"
+        >
+            &larr; Back to all strategies
+        </button>
+        <h2 className="text-2xl md:text-3xl font-bold leading-tight">{strategy.name}</h2>
+        <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed">{strategy.description}</p>
+        <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
+            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
+                <p className="text-xs md:text-sm font-medium text-gray-500">Risk / Reward</p>
+                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.profile}</p>
+            </div>
+            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
+                <p className="text-xs md:text-sm font-medium text-gray-500">Volatility View</p>
+                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.volatility}</p>
+            </div>
+            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
+                <p className="text-xs md:text-sm font-medium text-gray-500">Time Decay View</p>
+                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.time}</p>
+            </div>
         </div>
-        <div className="mt-8">
-            <h3 className="text-xl font-bold text-center">Risk Profile (Payoff Diagram)</h3>
-            <div className="chart-container mt-4"><PayoffChart strategy={strategy} /></div>
+        <div className="mt-6 md:mt-8">
+            <h3 className="text-lg md:text-xl font-bold text-center">Risk Profile (Payoff Diagram)</h3>
+            <div className="chart-container mt-4 h-[250px] md:h-[300px]"><PayoffChart strategy={strategy} /></div>
         </div>
     </div>
 );
@@ -81,31 +95,50 @@ export const StrategyExplorer = () => {
     }
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
             <div>
-                <h2 className="text-3xl font-bold text-gray-900">Strategy Explorer</h2>
-                <p className="mt-2 text-lg text-gray-600">This section provides a comprehensive taxonomy of common options strategies. Each strategy is designed for a specific market outlook. Use the filters to discover strategies based on your view of the market's direction and volatility, then click on a card to see a detailed breakdown and a dynamic risk profile graph.</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">Strategy Explorer</h2>
+                <p className="mt-2 text-sm md:text-lg text-gray-600 leading-relaxed">
+                    This section provides a comprehensive taxonomy of common options strategies. Each strategy is designed for a specific market outlook. 
+                    Use the filters to discover strategies based on your view of the market's direction and volatility, then tap on a card to see a detailed breakdown and a dynamic risk profile graph.
+                </p>
             </div>
-            <div className="flex flex-wrap gap-2 p-4 bg-gray-100 rounded-lg">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gray-100 rounded-lg">
                 {['All', 'Bullish', 'Bearish', 'Neutral', 'Volatility'].map(f => (
-                    <button key={f} onClick={() => setFilter(f)} className={`btn px-4 py-2 rounded-md font-semibold text-gray-700 ${filter === f ? 'btn-active' : 'bg-white'}`}>{f} { {Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] }</button>
+                    <button 
+                        key={f} 
+                        onClick={() => setFilter(f)} 
+                        className={`btn px-3 md:px-4 py-2 md:py-2 rounded-md font-semibold text-gray-700 text-sm md:text-base min-h-[44px] flex-1 sm:flex-initial transition-colors duration-200 ${
+                            filter === f ? 'btn-active bg-blue-600 text-white' : 'bg-white hover:bg-gray-50'
+                        }`}
+                    >
+                        {f} {{Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] || ''}
+                    </button>
                 ))}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {filteredStrategies.map(s => (
                     <div
                         key={s.id}
                         onClick={() => setSelectedId(s.id)}
-                        className="content-card p-6 cursor-pointer strategy-card border border-gray-200 bg-gray-50 hover:bg-gray-100 transition"
+                        className="content-card p-4 md:p-6 cursor-pointer strategy-card border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 rounded-lg min-h-[140px] flex flex-col"
                     >
-                        <h3 className="text-xl font-bold text-gray-900">{s.name}</h3>
-                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${ {
-                            Bullish: 'bg-green-100 text-green-800',
-                            Bearish: 'bg-red-100 text-red-800',
-                            Neutral: 'bg-yellow-100 text-yellow-800',
-                            Volatility: 'bg-blue-100 text-blue-800'
-                        }[s.category] }`}>{s.category}</span>
-                        <p className="mt-4 text-gray-600">{s.description.split('.')[0]}.</p>
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1">{s.name}</h3>
+                            <span className={`text-xs md:text-sm font-medium px-2 py-1 rounded-full inline-block self-start ${
+                                {
+                                    Bullish: 'bg-green-100 text-green-800',
+                                    Bearish: 'bg-red-100 text-red-800',
+                                    Neutral: 'bg-yellow-100 text-yellow-800',
+                                    Volatility: 'bg-blue-100 text-blue-800'
+                                }[s.category]
+                            }`}>
+                                {s.category}
+                            </span>
+                        </div>
+                        <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1">
+                            {s.description.split('.')[0]}.
+                        </p>
                     </div>
                 ))}
             </div>
