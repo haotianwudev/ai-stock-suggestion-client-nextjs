@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "5 Questions to AI to get RICH… Until You Wake Up",
+    description: "Are you asking AI for stock picks? You might be making a huge mistake. Everyone is talking about using AI to get rich in the stock market, but the truth is, most people are asking the WRONG questions. This video breaks down the 5 most dangerous questions you can ask an AI about investing - questions that seem smart but are actually traps that can lead to bad decisions and big losses.",
+    slug: "5-questions-to-ai-to-get-rich-until-you-wake-up",
+    date: "June 29, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=e0Z9Wz3KRlM&t=19s",
+    isVideo: true,
+    imageUrl: "/images/5 Questions to AI to get RICH… Until You Wake Up.jpg"
+  },
+  {
     title: "Dual-Purpose Playbook: Confluence for Human and AI",
     description: "A deep research guide to architecting high-performance Confluence knowledge bases that serve both human users and AI systems. Covers the 5 core principles (Architect, Atomize, Structure, Automate, Govern), implementation roadmap, and data-driven strategies for combating content decay while optimizing for AI retrieval-augmented generation.",
     slug: "confluence-dual-purpose-playbook-human-ai-collaboration",
