@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "ETFs Beyond SPY and QQQ",
+    description: "A comprehensive deep research analysis of advanced ETF alternatives to market-cap weighted giants SPY and QQQ. Explores income-focused strategies from dividend quality to options-based income generation, factor-based investing, and alternative weighting methodologies. Features interactive visual guide to strategic ETF selection for modern portfolios.",
+    slug: "alternative-etfs-beyond-spy-qqq",
+    date: "June 30, 2025",
+    imageUrl: "https://s.wsj.net/public/resources/images/IF-AD677_ACTIVE_M_20181004112557.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQUV9vciakDe7bjZP028JFEFflRog2KatsOC8DBD0acVNLoTg8XKKo865pdwh9ufFI5yPY13M3f2AwC/pub",
+    deepResearch: true
+  },
+  {
     title: "5 Questions to AI to get RICH… Until You Wake Up",
     description: "Are you asking AI for stock picks? You might be making a huge mistake. Everyone is talking about using AI to get rich in the stock market, but the truth is, most people are asking the WRONG questions. This video breaks down the 5 most dangerous questions you can ask an AI about investing - questions that seem smart but are actually traps that can lead to bad decisions and big losses.",
     slug: "5-questions-to-ai-to-get-rich-until-you-wake-up",
