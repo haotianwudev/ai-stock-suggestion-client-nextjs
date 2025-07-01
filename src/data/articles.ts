@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Stock Wipeout Probability Analysis",
+    description: "A comprehensive analytical report examining the surprisingly high probability of individual stock failure and complete investor wipeouts. Explores the skewed nature of stock returns, the mechanical processes of corporate failure, and why diversification is the only effective strategy for mitigating catastrophic loss risk.",
+    slug: "stock-wipeout-probability-analysis",
+    date: "July 1, 2025",
+    imageUrl: "https://images.timesnownews.com/thumb/msid-151515654,thumbsize-36610,width-1280,height-720,resizemode-75/151515654.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQYvgIJWPoZJERZkFykdWk9dWlE9CVN9FL6Gt-Con4fz9pzIDuleWi69clb19-KKItg1dWbAXl3GQAj/pub",
+    deepResearch: true
+  },
+  {
     title: "ETFs Beyond SPY and QQQ",
     description: "A comprehensive deep research analysis of advanced ETF alternatives to market-cap weighted giants SPY and QQQ. Explores income-focused strategies from dividend quality to options-based income generation, factor-based investing, and alternative weighting methodologies. Features interactive visual guide to strategic ETF selection for modern portfolios.",
     slug: "alternative-etfs-beyond-spy-qqq",
