@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Cruel Truth: Why Most Stocks Are a Bad Bet",
+    description: "Think picking winning stocks is easy? Think again. The cruel truth is that most stocks are a bad bet, and the S&P 500 is hiding a big secret. We break down why the odds are stacked against individual investors and reveal how the biggest companies always win the game. If you invest, you need to see this.",
+    slug: "cruel-truth-why-most-stocks-are-a-bad-bet",
+    date: "July 1, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=VsjpIv_gKEI",
+    isVideo: true,
+    imageUrl: "/images/Cruel truth Why Most Stocks Are a Bad Bet.jpg"
+  },
+  {
     title: "Stock Wipeout Probability Analysis",
     description: "A comprehensive analytical report examining the surprisingly high probability of individual stock failure and complete investor wipeouts. Explores the skewed nature of stock returns, the mechanical processes of corporate failure, and why diversification is the only effective strategy for mitigating catastrophic loss risk.",
     slug: "stock-wipeout-probability-analysis",
