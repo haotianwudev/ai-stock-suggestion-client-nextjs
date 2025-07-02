@@ -16,6 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Defensive and Offensive Rolling on Short Options",
+    description: "A comprehensive quantitative framework for managing option positions through defensive and offensive rolling strategies. Covers universal principles, decision triggers using Greeks, net credit mandates, and practical implementation guides for both put and call strategies. Features interactive visual components and real-world examples.",
+    slug: "strategic-framework-rolling-options-quantitative-approach",
+    date: "July 2, 2025",
+    imageUrl: "https://incomeshares.com/insights/list-images/19/19.-Rolling-Options-cover-image.webp",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSTKltePzIDadeG7XV_9boPEYxEe3apzPnmMOTV_wrn9XGG0JcEvLY3_FL0BlqpC-gUAX-ZUfE0eOGv/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Cruel Truth: Why Most Stocks Are a Bad Bet",
     description: "Think picking winning stocks is easy? Think again. The cruel truth is that most stocks are a bad bet, and the S&P 500 is hiding a big secret. We break down why the odds are stacked against individual investors and reveal how the biggest companies always win the game. If you invest, you need to see this.",
     slug: "cruel-truth-why-most-stocks-are-a-bad-bet",
