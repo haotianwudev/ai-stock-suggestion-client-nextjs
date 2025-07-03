@@ -15,6 +15,8 @@ import Image from "next/image";
 import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
 import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, BookOpen, Mic } from "lucide-react";
 import { ArticleCard } from "@/components/articles/article-card";
+import { ArticleFilter, getFilteredArticles } from "@/components/articles/article-filter";
+import type { ArticleFilter as ArticleFilterType } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
 import { useRouter } from "next/navigation";
 import { StickyPodcastPlayer } from "@/components/ui/sticky-podcast-player";
@@ -136,7 +138,14 @@ export default function Home() {
   const [bookPassword, setBookPassword] = useState("");
   const [bookError, setBookError] = useState("");
   const [showAllArticles, setShowAllArticles] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<ArticleFilterType>('all');
   const router = useRouter();
+  
+  // Reset show all articles when filter changes
+  const handleFilterChange = (filter: ArticleFilterType) => {
+    setSelectedFilter(filter);
+    setShowAllArticles(false);
+  };
   
   useEffect(() => {
     // Fetch real stock data on component mount
@@ -425,6 +434,14 @@ export default function Home() {
               Interactive Articles
             </h2>
           </div>
+          
+          {/* Article Filter */}
+          <div className="flex justify-center">
+            <ArticleFilter 
+              selectedFilter={selectedFilter} 
+              onFilterChange={handleFilterChange}
+            />
+          </div>
           {/* Pinned Article as Featured */}
           {articles.find(article => article.pinned && !article.bookSummary) && (
             <div className="mb-8 relative">
@@ -448,8 +465,8 @@ export default function Home() {
             </div>
           )}
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {articles
-              .filter(article => !article.pinned && !article.bookSummary)
+            {getFilteredArticles(articles, selectedFilter)
+              .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
               .sort((a, b) => {
                 // Parse dates and sort newest first
                 const dateA = new Date(a.date);
@@ -476,32 +493,35 @@ export default function Home() {
           </div>
           
           {/* Show More/Less Button */}
-          {articles.filter(article => !article.pinned && !article.bookSummary).length > 12 && (
-            <div className="flex justify-center mt-8">
-              <Button
-                onClick={() => setShowAllArticles(!showAllArticles)}
-                variant="outline"
-                size="lg"
-                className="px-8 py-3"
-              >
-                {showAllArticles ? (
-                  <>
-                    Show Less Articles
-                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    Show All Articles ({articles.filter(article => !article.pinned && !article.bookSummary).length})
-                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </>
-                )}
-              </Button>
-            </div>
-          )}
+          {(() => {
+            const filteredArticles = getFilteredArticles(articles, selectedFilter).filter(article => !article.pinned && !article.bookSummary);
+            return filteredArticles.length > 12 && (
+              <div className="flex justify-center mt-8">
+                <Button
+                  onClick={() => setShowAllArticles(!showAllArticles)}
+                  variant="outline"
+                  size="lg"
+                  className="px-8 py-3"
+                >
+                  {showAllArticles ? (
+                    <>
+                      Show Less Articles
+                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show All Articles ({filteredArticles.length})
+                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </>
+                  )}
+                </Button>
+              </div>
+            );
+          })()}
         </section>
 
       </main>
