@@ -2,10 +2,20 @@
 
 import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function StockAnalysisAIAgentPromptExample() {
   return (
     <div className="flex min-h-screen flex-col">
+      {/* Return to Home Button */}
+      <div className="flex items-center gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-900">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
+      
       <Header />
       <main className="flex-1 container py-8 max-w-2xl mx-auto">
         <article className="prose prose-neutral dark:prose-invert max-w-none">

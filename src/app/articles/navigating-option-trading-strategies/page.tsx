@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 export default function NavigatingOptionTradingStrategies() {
   useEffect(() => {
@@ -95,6 +97,15 @@ export default function NavigatingOptionTradingStrategies() {
       {/* Header */}
       <header className="bg-indigo-700 text-white p-6 shadow-md">
         <div className="container mx-auto">
+          <div className="flex items-center gap-4 mb-4">
+            <Link 
+              href="/"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-800 hover:bg-indigo-600 transition-colors duration-200 text-white font-medium"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Return to Home
+            </Link>
+          </div>
           <h1 className="text-4xl font-bold">Navigating Option Trading Strategies</h1>
         </div>
       </header>

@@ -1,8 +1,18 @@
 import React from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 export default function LosingMoneyWithOptionsCommonPitfalls() {
   return (
     <div className="bg-gray-900 text-gray-300 min-h-screen font-sans">
+      {/* Return to Home Button */}
+      <div className="flex items-center gap-4 mb-4 p-4">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
+
       {/* Main Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 

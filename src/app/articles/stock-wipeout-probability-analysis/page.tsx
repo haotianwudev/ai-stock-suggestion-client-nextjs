@@ -313,8 +313,25 @@ function NavigationSidebar() {
 
 // Main Article Component
 export default function StockWipeoutProbabilityAnalysis() {
+  const [activeSection, setActiveSection] = useState('infographic');
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Return to Home Button */}
+      <div className="flex items-center gap-4 mb-4 p-4">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
+
       {/* Deep Research Badge */}
       <div className="fixed top-4 left-4 z-50">
         <div className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">

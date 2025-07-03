@@ -4,6 +4,8 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 declare global {
   interface Window {
@@ -235,250 +237,261 @@ export default function DeepResearchTAvsMLTrading() {
   }, [chartLibLoaded]);
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-              <Script 
-          src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" 
-          strategy="afterInteractive" 
-          onLoad={() => setChartLibLoaded(true)} 
-        />
-      <main className="flex-1 antialiased bg-[#FDFBF8] text-gray-800">
-        <div className="container mx-auto px-6 py-12 max-w-6xl">
-          <header className="bg-white/80 backdrop-blur-md sticky top-0 z-10 shadow-sm rounded-xl mb-8">
-            <div className="flex flex-col md:flex-row justify-between items-center px-6 py-4">
-              <h1 className="text-2xl md:text-3xl font-bold text-[#A67B5B]">Technical Analysis vs. Machine Learning Trading</h1>
-              <nav className="mt-2 md:mt-0">
-                <ul className="flex space-x-6 text-sm font-medium">
-                  <li><a href="#comparison" className="hover:text-[#A67B5B] transition-colors">Comparison</a></li>
-                  <li><a href="#paradigms" className="hover:text-[#A67B5B] transition-colors">ML Paradigms</a></li>
-                  <li><a href="#synergy" className="hover:text-[#A67B5B] transition-colors">Synergy &amp; Future</a></li>
-                </ul>
-              </nav>
-            </div>
-          </header>
+    <>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+        strategy="beforeInteractive"
+        onLoad={() => setChartLibLoaded(true)}
+      />
+      
+      {/* Return to Home Button */}
+      <div className="flex items-center gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-900">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
 
-          {/* Intro Section */}
-          <section id="intro" className="text-center py-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Navigating Modern Markets</h2>
-            <p className="max-w-3xl mx-auto text-lg text-gray-600">
-              An interactive exploration of traditional Technical Analysis versus data-driven Machine Learning strategies. Discover the strengths, weaknesses, and future potential of each approach in today's complex financial landscape.
-            </p>
-          </section>
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1 antialiased bg-[#FDFBF8] text-gray-800">
+          <div className="container mx-auto px-6 py-12 max-w-6xl">
+            <header className="bg-white/80 backdrop-blur-md sticky top-0 z-10 shadow-sm rounded-xl mb-8">
+              <div className="flex flex-col md:flex-row justify-between items-center px-6 py-4">
+                <h1 className="text-2xl md:text-3xl font-bold text-[#A67B5B]">Technical Analysis vs. Machine Learning Trading</h1>
+                <nav className="mt-2 md:mt-0">
+                  <ul className="flex space-x-6 text-sm font-medium">
+                    <li><a href="#comparison" className="hover:text-[#A67B5B] transition-colors">Comparison</a></li>
+                    <li><a href="#paradigms" className="hover:text-[#A67B5B] transition-colors">ML Paradigms</a></li>
+                    <li><a href="#synergy" className="hover:text-[#A67B5B] transition-colors">Synergy &amp; Future</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
 
-          {/* Comparison Section */}
-          <section id="comparison" className="py-16">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900">Head-to-Head: TA vs. ML</h3>
-              <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">This section provides a direct comparison between Technical Analysis and Machine Learning across key attributes. The radar chart below offers a visual summary of their relative strengths, while the lists detail their core pros and cons. This allows for a quick, high-level understanding of where each methodology excels and falls short.</p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="chart-container mx-auto relative">
-                <canvas id="comparisonChart"></canvas>
-                {!chartLibLoaded && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
-                    <p className="text-gray-500">Loading chart...</p>
-                  </div>
-                )}
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                  <h4 className="text-xl font-semibold mb-3 text-green-700">Technical Analysis: Pros</h4>
-                  <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
-                    <li>Accessible and low-cost to start</li>
-                    <li>Provides intuitive visual framework</li>
-                    <li>Fast for simple, short-term decisions</li>
-                    <li>Offers clear rules for risk management</li>
-                    <li>Versatile across assets and timeframes</li>
-                  </ul>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                  <h4 className="text-xl font-semibold mb-3 text-red-700">Technical Analysis: Cons</h4>
-                  <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
-                    <li>Highly subjective interpretation</li>
-                    <li>Prone to false signals (whipsaws)</li>
-                    <li>Ignores fundamentals and news</li>
-                    <li>Limited scalability for complex analysis</li>
-                    <li>Vulnerable to over-optimization</li>
-                  </ul>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                  <h4 className="text-xl font-semibold mb-3 text-green-700">Machine Learning: Pros</h4>
-                  <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
-                    <li>Superior pattern recognition in complex data</li>
-                    <li>High speed and efficiency in execution</li>
-                    <li>Adapts to changing market conditions</li>
-                    <li>Emotion-free, objective decision-making</li>
-                    <li>Highly scalable across many assets</li>
-                  </ul>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                  <h4 className="text-xl font-semibold mb-3 text-red-700">Machine Learning: Cons</h4>
-                  <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
-                    <li>Heavy dependency on high-quality data</li>
-                    <li>High risk of overfitting to historical data</li>
-                    <li>Complex, costly, and requires expertise</li>
-                    <li>Interpretability issues ("black box")</li>
-                    <li>Vulnerable to system failures/glitches</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
+            {/* Intro Section */}
+            <section id="intro" className="text-center py-16">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Navigating Modern Markets</h2>
+              <p className="max-w-3xl mx-auto text-lg text-gray-600">
+                An interactive exploration of traditional Technical Analysis versus data-driven Machine Learning strategies. Discover the strengths, weaknesses, and future potential of each approach in today's complex financial landscape.
+              </p>
+            </section>
 
-          {/* ML Paradigms Section */}
-          <section id="paradigms" className="py-16 bg-gray-50 rounded-xl">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900">Exploring ML Paradigms</h3>
-              <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">Machine learning is not a monolith. It encompasses several distinct approaches, each suited for different tasks. This section provides a deep dive into the three primary paradigms used in trading. Use the tabs to explore how each one works, its applications, and its specific advantages and disadvantages in the financial markets.</p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <div className="flex justify-center mb-8 rounded-lg p-1 bg-[#EFEAE6]">
-                <button className="tab-btn tab-active w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="supervised">Supervised</button>
-                <button className="tab-btn tab-inactive w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="unsupervised">Unsupervised</button>
-                <button className="tab-btn tab-inactive w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="reinforcement">Reinforcement</button>
+            {/* Comparison Section */}
+            <section id="comparison" className="py-16">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-gray-900">Head-to-Head: TA vs. ML</h3>
+                <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">This section provides a direct comparison between Technical Analysis and Machine Learning across key attributes. The radar chart below offers a visual summary of their relative strengths, while the lists detail their core pros and cons. This allows for a quick, high-level understanding of where each methodology excels and falls short.</p>
               </div>
-              <div id="supervised" className="tab-content">
-                <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-                  <div>
-                    <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Supervised Learning</h4>
-                    <p className="text-sm text-gray-600 mb-4">Learns from labeled historical data to make predictions. The model is trained on inputs (e.g., indicators, price history) paired with known outputs (e.g., 'price went up').</p>
-                    <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Price trend prediction, sentiment analysis, risk assessment.</p>
-                    <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">Directly predictive, well-established algorithms.</p>
-                    <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Needs vast labeled data, prone to overfitting, struggles with novel market conditions.</p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
-                    <div className="flex items-center space-x-2">
-                      <div className="text-center">
-                        <div className="icon-box bg-blue-100 text-blue-600">📈</div>
-                        <p className="text-xs mt-1">Data + Label</p>
-                      </div>
-                      <div className="text-5xl font-thin text-gray-300">→</div>
-                      <div className="p-4 border-2 border-dashed border-gray-400 rounded-lg text-center">
-                        <p className="font-mono font-bold text-lg text-gray-700">Model(x)</p>
-                      </div>
-                      <div className="text-5xl font-thin text-gray-300">→</div>
-                      <div className="text-center">
-                        <div className="icon-box bg-green-100 text-green-600">🎯</div>
-                        <p className="text-xs mt-1">Prediction</p>
-                      </div>
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="chart-container mx-auto relative">
+                  <canvas id="comparisonChart"></canvas>
+                  {!chartLibLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+                      <p className="text-gray-500">Loading chart...</p>
                     </div>
-                    <p className="text-xs text-gray-500 mt-4 italic">Learning from a known answer key.</p>
+                  )}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h4 className="text-xl font-semibold mb-3 text-green-700">Technical Analysis: Pros</h4>
+                    <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                      <li>Accessible and low-cost to start</li>
+                      <li>Provides intuitive visual framework</li>
+                      <li>Fast for simple, short-term decisions</li>
+                      <li>Offers clear rules for risk management</li>
+                      <li>Versatile across assets and timeframes</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h4 className="text-xl font-semibold mb-3 text-red-700">Technical Analysis: Cons</h4>
+                    <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                      <li>Highly subjective interpretation</li>
+                      <li>Prone to false signals (whipsaws)</li>
+                      <li>Ignores fundamentals and news</li>
+                      <li>Limited scalability for complex analysis</li>
+                      <li>Vulnerable to over-optimization</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h4 className="text-xl font-semibold mb-3 text-green-700">Machine Learning: Pros</h4>
+                    <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                      <li>Superior pattern recognition in complex data</li>
+                      <li>High speed and efficiency in execution</li>
+                      <li>Adapts to changing market conditions</li>
+                      <li>Emotion-free, objective decision-making</li>
+                      <li>Highly scalable across many assets</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h4 className="text-xl font-semibold mb-3 text-red-700">Machine Learning: Cons</h4>
+                    <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                      <li>Heavy dependency on high-quality data</li>
+                      <li>High risk of overfitting to historical data</li>
+                      <li>Complex, costly, and requires expertise</li>
+                      <li>Interpretability issues ("black box")</li>
+                      <li>Vulnerable to system failures/glitches</li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div id="unsupervised" className="tab-content content-hidden">
-                <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-                  <div>
-                    <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Unsupervised Learning</h4>
-                    <p className="text-sm text-gray-600 mb-4">Finds hidden patterns or structures in unlabeled data. It groups data points without any predefined target.</p>
-                    <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Market regime detection, asset clustering, anomaly detection.</p>
-                    <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">No data labeling needed, discovers novel patterns.</p>
-                    <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Results can be hard to interpret, validation is difficult.</p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
-                    <div className="flex items-center space-x-2">
-                      <div className="flex space-x-1">
-                        <div className="w-4 h-4 rounded-full bg-red-400"></div>
-                        <div className="w-4 h-4 rounded-full bg-blue-400"></div>
-                        <div className="w-4 h-4 rounded-full bg-red-300"></div>
-                        <div className="w-4 h-4 rounded-full bg-yellow-400"></div>
-                        <div className="w-4 h-4 rounded-full bg-blue-300"></div>
-                      </div>
-                      <div className="text-5xl font-thin text-gray-300">→</div>
-                      <div className="p-4 border-2 border-dashed border-gray-400 rounded-lg text-center">
-                        <p className="font-mono font-bold text-lg text-gray-700">Cluster(x)</p>
-                      </div>
-                      <div className="text-5xl font-thin text-gray-300">→</div>
-                      <div className="flex space-x-2">
-                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-red-400"></div><div className="w-4 h-4 rounded-full bg-red-300"></div></div>
-                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-blue-400"></div><div className="w-4 h-4 rounded-full bg-blue-300"></div></div>
-                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-yellow-400"></div></div>
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-4 italic">Finding hidden groups in the data.</p>
-                  </div>
-                </div>
-              </div>
-              <div id="reinforcement" className="tab-content content-hidden">
-                <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-                  <div>
-                    <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Reinforcement Learning</h4>
-                    <p className="text-sm text-gray-600 mb-4">An 'agent' learns by interacting with an environment through trial and error, seeking to maximize a cumulative reward.</p>
-                    <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Dynamic strategy optimization, portfolio management, optimal execution.</p>
-                    <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">Optimizes for long-term goals, highly adaptive policies.</p>
-                    <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Needs vast interaction (sample inefficient), reward design is difficult.</p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
-                    <div className="flex items-center space-x-2">
-                      <div className="text-center">
-                        <div className="icon-box bg-purple-100 text-purple-600">🤖</div>
-                        <p className="text-xs mt-1">Agent</p>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <p className="text-xs">Action</p>
-                        <div className="text-2xl font-thin text-gray-400">→</div>
-                        <div className="text-2xl font-thin text-gray-400">←</div>
-                        <p className="text-xs">Reward/State</p>
-                      </div>
-                      <div className="text-center">
-                        <div className="icon-box bg-yellow-100 text-yellow-600">🌍</div>
-                        <p className="text-xs mt-1">Environment</p>
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-4 italic">Learning from consequences.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+            </section>
 
-          {/* Synergy Section */}
-          <section id="synergy" className="py-16">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900">Synergy: Can ML Replace TA?</h3>
-              <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">Rather than a replacement, the future points towards a powerful synergy. Machine Learning can augment, automate, and refine many traditional Technical Analysis functions. Click on the TA functions below to see how different ML paradigms can be applied, revealing a more nuanced relationship than simple substitution.</p>
-            </div>
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="trend">Trend Identification</button>
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="pattern">Pattern Recognition</button>
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="signal">Indicator Signals</button>
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="sr">Support/Resistance</button>
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="volatility">Volatility Assessment</button>
-                <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="volume">Volume Analysis</button>
+            {/* ML Paradigms Section */}
+            <section id="paradigms" className="py-16 bg-gray-50 rounded-xl">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-gray-900">Exploring ML Paradigms</h3>
+                <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">Machine learning is not a monolith. It encompasses several distinct approaches, each suited for different tasks. This section provides a deep dive into the three primary paradigms used in trading. Use the tabs to explore how each one works, its applications, and its specific advantages and disadvantages in the financial markets.</p>
               </div>
-              <div id="synergy-display" className="bg-white p-8 rounded-lg shadow-xl min-h-[250px] transition-all duration-300">
-                <p className="text-gray-500 text-center italic">Select a Technical Analysis function above to see how ML enhances it.</p>
+              <div className="max-w-4xl mx-auto">
+                <div className="flex justify-center mb-8 rounded-lg p-1 bg-[#EFEAE6]">
+                  <button className="tab-btn tab-active w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="supervised">Supervised</button>
+                  <button className="tab-btn tab-inactive w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="unsupervised">Unsupervised</button>
+                  <button className="tab-btn tab-inactive w-1/3 py-2 px-4 rounded-md text-sm font-semibold transition-all" data-tab="reinforcement">Reinforcement</button>
+                </div>
+                <div id="supervised" className="tab-content">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
+                    <div>
+                      <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Supervised Learning</h4>
+                      <p className="text-sm text-gray-600 mb-4">Learns from labeled historical data to make predictions. The model is trained on inputs (e.g., indicators, price history) paired with known outputs (e.g., 'price went up').</p>
+                      <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Price trend prediction, sentiment analysis, risk assessment.</p>
+                      <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">Directly predictive, well-established algorithms.</p>
+                      <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Needs vast labeled data, prone to overfitting, struggles with novel market conditions.</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
+                      <div className="flex items-center space-x-2">
+                        <div className="text-center">
+                          <div className="icon-box bg-blue-100 text-blue-600">📈</div>
+                          <p className="text-xs mt-1">Data + Label</p>
+                        </div>
+                        <div className="text-5xl font-thin text-gray-300">→</div>
+                        <div className="p-4 border-2 border-dashed border-gray-400 rounded-lg text-center">
+                          <p className="font-mono font-bold text-lg text-gray-700">Model(x)</p>
+                        </div>
+                        <div className="text-5xl font-thin text-gray-300">→</div>
+                        <div className="text-center">
+                          <div className="icon-box bg-green-100 text-green-600">🎯</div>
+                          <p className="text-xs mt-1">Prediction</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-4 italic">Learning from a known answer key.</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="unsupervised" className="tab-content content-hidden">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
+                    <div>
+                      <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Unsupervised Learning</h4>
+                      <p className="text-sm text-gray-600 mb-4">Finds hidden patterns or structures in unlabeled data. It groups data points without any predefined target.</p>
+                      <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Market regime detection, asset clustering, anomaly detection.</p>
+                      <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">No data labeling needed, discovers novel patterns.</p>
+                      <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Results can be hard to interpret, validation is difficult.</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
+                      <div className="flex items-center space-x-2">
+                        <div className="flex space-x-1">
+                          <div className="w-4 h-4 rounded-full bg-red-400"></div>
+                          <div className="w-4 h-4 rounded-full bg-blue-400"></div>
+                          <div className="w-4 h-4 rounded-full bg-red-300"></div>
+                          <div className="w-4 h-4 rounded-full bg-yellow-400"></div>
+                          <div className="w-4 h-4 rounded-full bg-blue-300"></div>
+                        </div>
+                        <div className="text-5xl font-thin text-gray-300">→</div>
+                        <div className="p-4 border-2 border-dashed border-gray-400 rounded-lg text-center">
+                          <p className="font-mono font-bold text-lg text-gray-700">Cluster(x)</p>
+                        </div>
+                        <div className="text-5xl font-thin text-gray-300">→</div>
+                        <div className="flex space-x-2">
+                          <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-red-400"></div><div className="w-4 h-4 rounded-full bg-red-300"></div></div>
+                          <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-blue-400"></div><div className="w-4 h-4 rounded-full bg-blue-300"></div></div>
+                          <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-yellow-400"></div></div>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-4 italic">Finding hidden groups in the data.</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="reinforcement" className="tab-content content-hidden">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
+                    <div>
+                      <h4 className="text-2xl font-bold text-[#A67B5B] mb-3">Reinforcement Learning</h4>
+                      <p className="text-sm text-gray-600 mb-4">An 'agent' learns by interacting with an environment through trial and error, seeking to maximize a cumulative reward.</p>
+                      <strong className="text-sm">Use Cases:</strong><p className="text-sm text-gray-600 mb-4">Dynamic strategy optimization, portfolio management, optimal execution.</p>
+                      <strong className="text-sm">Pros:</strong><p className="text-sm text-gray-600 mb-2">Optimizes for long-term goals, highly adaptive policies.</p>
+                      <strong className="text-sm">Cons:</strong><p className="text-sm text-gray-600">Needs vast interaction (sample inefficient), reward design is difficult.</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg h-full">
+                      <div className="flex items-center space-x-2">
+                        <div className="text-center">
+                          <div className="icon-box bg-purple-100 text-purple-600">🤖</div>
+                          <p className="text-xs mt-1">Agent</p>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <p className="text-xs">Action</p>
+                          <div className="text-2xl font-thin text-gray-400">→</div>
+                          <div className="text-2xl font-thin text-gray-400">←</div>
+                          <p className="text-xs">Reward/State</p>
+                        </div>
+                        <div className="text-center">
+                          <div className="icon-box bg-yellow-100 text-yellow-600">🌍</div>
+                          <p className="text-xs mt-1">Environment</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-4 italic">Learning from consequences.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* Google Doc Link */}
-          <div className="text-center mt-12">
-            <a
-              href="https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-lg"
-            >
-              Read Full Document
-            </a>
+            {/* Synergy Section */}
+            <section id="synergy" className="py-16">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-gray-900">Synergy: Can ML Replace TA?</h3>
+                <p className="mt-2 text-md text-gray-500 max-w-2xl mx-auto">Rather than a replacement, the future points towards a powerful synergy. Machine Learning can augment, automate, and refine many traditional Technical Analysis functions. Click on the TA functions below to see how different ML paradigms can be applied, revealing a more nuanced relationship than simple substitution.</p>
+              </div>
+              <div className="max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="trend">Trend Identification</button>
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="pattern">Pattern Recognition</button>
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="signal">Indicator Signals</button>
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="sr">Support/Resistance</button>
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="volatility">Volatility Assessment</button>
+                  <button className="synergy-btn p-3 bg-white rounded-lg shadow-md text-sm font-semibold border-2 border-transparent focus:border-[#A67B5B] focus:ring-2 focus:ring-[#A67B5B]/50" data-synergy="volume">Volume Analysis</button>
+                </div>
+                <div id="synergy-display" className="bg-white p-8 rounded-lg shadow-xl min-h-[250px] transition-all duration-300">
+                  <p className="text-gray-500 text-center italic">Select a Technical Analysis function above to see how ML enhances it.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Google Doc Link */}
+            <div className="text-center mt-12">
+              <a
+                href="https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-lg"
+              >
+                Read Full Document
+              </a>
+            </div>
           </div>
-        </div>
-      </main>
-      <Disclaimer />
-      <style jsx global>{`
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
-        @media (min-width: 768px) { .chart-container { height: 400px; } }
-        .tab-active { background-color: #A67B5B; color: #FFFFFF; }
-        .tab-inactive { background-color: #EFEAE6; color: #3D3D3D; }
-        .content-hidden { display: none; }
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .interactive-box { transition: all 0.3s ease; }
-        .interactive-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
-        .icon-box { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-      `}</style>
-    </div>
+        </main>
+        <Disclaimer />
+        <style jsx global>{`
+          .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+          @media (min-width: 768px) { .chart-container { height: 400px; } }
+          .tab-active { background-color: #A67B5B; color: #FFFFFF; }
+          .tab-inactive { background-color: #EFEAE6; color: #3D3D3D; }
+          .content-hidden { display: none; }
+          .fade-in { animation: fadeIn 0.5s ease-in-out; }
+          @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+          .interactive-box { transition: all 0.3s ease; }
+          .interactive-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+          .icon-box { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        `}</style>
+      </div>
+    </>
   );
 } 

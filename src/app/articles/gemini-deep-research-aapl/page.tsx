@@ -5,6 +5,8 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { useEffect, useRef } from "react";
 import Head from "next/head";
 import Script from "next/script";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 // Add Chart.js type declaration
 declare global {
@@ -263,8 +265,22 @@ export default function AppleInvestmentThesis() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js" strategy="afterInteractive" />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+        strategy="beforeInteractive"
+        onLoad={() => {
+          console.log("Chart.js loaded");
+        }}
+      />
       
+      {/* Return to Home Button */}
+      <div className="flex items-center gap-4 mb-4 p-4">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
+
       <main className="flex-1 antialiased bg-[#FDFBF6] text-[#4A4A4A]">
         <style jsx global>{`
           h1, h2, h3 {
