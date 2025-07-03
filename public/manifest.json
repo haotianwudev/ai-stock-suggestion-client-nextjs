@@ -1,0 +1,28 @@
+{
+  "name": "SOPHIE's Daddy Blog - Stock & Options Analysis",
+  "short_name": "SOPHIE's Daddy",
+  "description": "SOPHIE's Daddy Blog - Your go-to resource for stock analysis, options trading strategies, and investment education",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "education", "business"],
+  "related_applications": [],
+  "prefer_related_applications": false
+} 

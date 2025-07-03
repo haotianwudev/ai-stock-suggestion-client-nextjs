@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sophie-ai-finance.com
+
+# Sitemaps
+Sitemap: https://sophie-ai-finance.com/sitemap.xml

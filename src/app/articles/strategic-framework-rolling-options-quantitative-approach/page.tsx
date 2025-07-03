@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import Head from 'next/head';
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
 // --- Helper Components for UI ---
 
@@ -261,6 +264,9 @@ const NavigationSidebar = ({ activeSection, setActiveSection }: {
 
 export default function StrategicFrameworkRollingOptions() {
   const [activeSection, setActiveSection] = useState('introduction');
+  
+  // Get article data for SEO
+  const currentArticle = articles.find(article => article.slug === 'strategic-framework-rolling-options-quantitative-approach');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -283,8 +289,17 @@ export default function StrategicFrameworkRollingOptions() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
-      {/* Header with Return Button */}
+    <>
+      {/* SEO Components */}
+      {currentArticle && (
+        <>
+          <StructuredData article={currentArticle} />
+          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
+        </>
+      )}
+      
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
+        {/* Header with Return Button */}
       <div className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-4 mb-4">
@@ -730,8 +745,9 @@ export default function StrategicFrameworkRollingOptions() {
       
       <footer className="text-center mt-16 py-8 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
         <p>This comprehensive guide is based on quantitative research and market principles. Always consider your own risk tolerance, market thesis, and trading conditions before implementing any strategy.</p>
-        <p className="mt-2">&copy; 2025 SOPHIE AI Finance. Educational content for informational purposes only.</p>
+        <p className="mt-2">&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
       </footer>
     </div>
+    </>
   );
 } 

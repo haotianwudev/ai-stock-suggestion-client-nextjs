@@ -20,7 +20,7 @@ export function Header() {
                 className="object-cover"
               />
             </div>
-            <span className="inline-block font-bold text-xl">SOPHIE's Daddy's Blog</span>
+            <span className="inline-block font-bold text-xl">SOPHIE's Daddy Blog</span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-4">

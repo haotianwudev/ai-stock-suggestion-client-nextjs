@@ -1,10 +1,11 @@
-# AI Stock Suggestion Client - Cursor Rules
+# SOPHIE's Daddy Blog - Cursor Rules
 
 ## Article Creation Workflow
 
 ### 1. File Structure & Creation Process
 - Articles: `src/app/articles/[slug]/page.tsx` (kebab-case slugs)
 - Add to: `src/data/articles.ts` (at beginning for newest date)
+- SEO Components: Use `src/components/seo/` components for metadata
 
 ### 2. Article Interface
 ```typescript
@@ -19,6 +20,9 @@ interface Article {
   youtubeUrl?: string;   // Optional: Video content
   isVideo?: boolean;     // Optional: Video flag
   options?: boolean;     // Optional: Options trading
+  pinned?: boolean;      // Optional: Pin to top
+  bookSummary?: boolean; // Optional: Book summary flag
+  noSummary?: boolean;   // Optional: Skip summary
 }
 ```
 
@@ -36,6 +40,26 @@ import { ArrowLeft } from 'lucide-react';
 </div>
 ```
 
+- **SEO Components** (MANDATORY for all articles):
+```tsx
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+
+// In component
+const currentArticle = articles.find(article => article.slug === 'your-article-slug');
+
+// In return statement
+<>
+  {currentArticle && (
+    <>
+      <StructuredData article={currentArticle} />
+      <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
+    </>
+  )}
+  {/* Your content */}
+</>
+```
+
 - **Navigation sidebar** with smooth scrolling and IntersectionObserver
 - **Interactive components** with `'use client';` and React hooks
 
@@ -49,17 +73,21 @@ import { ArrowLeft } from 'lucide-react';
 - JSX arrows: `&rarr;` not `→`
 - Responsive design with Tailwind CSS
 - Educational disclaimers
+- **Footer branding**: `© 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.`
 
 ### 6. Flags Usage
 - `deepResearch: true` for comprehensive analysis
 - `options: true` for options trading content  
 - `isVideo: true` for video content
+- `bookSummary: true` for book summaries
+- `pinned: true` for featured articles
 
 ### 7. Content Categories
 - **Deep Research**: Comprehensive analysis with multiple sections, interactive elements
 - **Options Trading**: Put/call strategies, Greeks, volatility analysis
 - **Video Content**: YouTube integration with embedded players
 - **Stock Analysis**: Company-specific DCF models, valuation analysis
+- **Book Summaries**: Interactive summaries of trading/investment books
 
 ### 8. Technical Requirements
 - Use `'use client';` for interactive React components
@@ -67,24 +95,122 @@ import { ArrowLeft } from 'lucide-react';
 - Add proper TypeScript typing
 - Include responsive design for mobile/desktop
 - Use semantic HTML structure with proper heading hierarchy
+- **MANDATORY: Include SEO components on every article**
 
-### 9. Quality Standards
+### 9. SEO Implementation (CRITICAL)
+
+#### 9.1 Branding Standards
+- **Site Name**: "SOPHIE's Daddy Blog"
+- **Domain**: https://sophie-ai-finance.com
+- **Author**: "SOPHIE's Daddy Blog"
+- **Publisher**: "SOPHIE's Daddy Blog"
+- **Twitter Handle**: @sophies_daddy
+
+#### 9.2 Article SEO Pattern
+```tsx
+'use client';
+
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+
+export default function YourArticle() {
+  const currentArticle = articles.find(article => article.slug === 'your-slug');
+  
+  return (
+    <>
+      {/* SEO Components - MANDATORY */}
+      {currentArticle && (
+        <>
+          <StructuredData article={currentArticle} />
+          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
+        </>
+      )}
+      
+      {/* Your article content */}
+    </>
+  );
+}
+```
+
+#### 9.3 Metadata Requirements
+- **Title Format**: `Article Title | SOPHIE's Daddy Blog`
+- **Description**: Use article.description from articles.ts
+- **Keywords**: Include relevant SEO keywords based on content type
+- **Open Graph**: Automatic via SEO components
+- **Twitter Cards**: Automatic via SEO components
+- **Structured Data**: JSON-LD schema for articles
+
+#### 9.4 Image Requirements
+- **Article Images**: Prefer 1200x630 for social sharing
+- **Alt Text**: Descriptive and SEO-optimized
+- **Fallback**: Default to `/images/agents/SOPHIE.png`
+
+### 10. Quality Standards
 - Articles should be educational, not investment advice
 - Include proper disclaimers and risk warnings
 - Cite sources when using external research
 - Use professional language and formatting
 - Test all interactive features before publishing
+- **MANDATORY: Include SEO components on every new article**
 
-### 10. Common Patterns
+### 11. Common Patterns
 - Navigation sidebars with active highlighting
 - Strategy comparison boxes and tables
 - Risk callouts with warning styling
 - Research citations with external links
 - Interactive elements (calculators, charts) when appropriate
 
+### 12. SEO Automation
+- **Sitemap**: Auto-generated via `next-sitemap` on build
+- **Robots.txt**: Auto-generated with proper directives
+- **Structured Data**: Automatic via SEO components
+- **Social Meta**: Automatic via layout and article components
+
 ## General Development Guidelines
 - Always follow existing code patterns and conventions
 - Use TypeScript for type safety
 - Maintain responsive design principles
 - Follow the established component structure
-- Test thoroughly before implementing changes 
+- Test thoroughly before implementing changes
+- **CRITICAL: Every article MUST include SEO components**
+
+## SEO File Structure
+```
+src/
+├── components/
+│   └── seo/
+│       ├── structured-data.tsx     # JSON-LD schema components
+│       └── article-seo.tsx         # SEO helper functions
+├── app/
+│   ├── layout.tsx                  # Main SEO metadata
+│   └── articles/
+│       └── [article-name]/
+│           └── page.tsx            # Include SEO components
+└── data/
+    └── articles.ts                 # Article metadata
+
+public/
+├── sitemap.xml                     # Auto-generated
+├── robots.txt                      # Auto-generated
+└── manifest.json                   # PWA manifest
+
+Root:
+├── next-sitemap.config.js          # Sitemap configuration
+└── .cursorrules                    # This file
+```
+
+## Build Process
+1. **Development**: `npm run dev`
+2. **Build**: `npm run build` (auto-generates sitemap)
+3. **Deploy**: Sitemap and robots.txt included automatically
+
+## Quality Checklist for New Articles
+- [ ] Added to `src/data/articles.ts` at the beginning
+- [ ] Includes SEO components (`StructuredData` + `BreadcrumbStructuredData`)
+- [ ] Has proper Return to Home button
+- [ ] Uses correct badge positioning
+- [ ] Includes educational disclaimer
+- [ ] Footer has "SOPHIE's Daddy Blog" branding
+- [ ] Tests build process to ensure sitemap generation
+- [ ] Responsive design verified
+- [ ] Interactive elements tested 
