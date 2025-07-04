@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp } from "lucide-react";
 
 export default function AboutPage() {
-  const aiTools = [
+  const aiTools: Array<{name: string; rating: number; comment: string; link?: string}> = [
     { name: "Deepseek", rating: 4, comment: "Free and handy. API is cheap." },
     { name: "Gemini", rating: 5, comment: "Online search are fast." },
     { name: "Gemini Deep Research", rating: 5, comment: "Super long but fantastic reports" },
@@ -15,7 +16,7 @@ export default function AboutPage() {
     { name: "Obsidian", rating: 3, comment: "Too complicated..." },
     { name: "Chatwise", rating: 4, comment: "Local LLM client with MCP integrated." },
     { name: "Cursor", rating: 5, comment: "Vibe coding~~" },
-    { name: "Ollama", rating: 5, comment: "Local LLM" },
+    { name: "Ollama", rating: 5, comment: "Local LLM - Check out my cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
     { name: "Cline", rating: 3, comment: "Experience not as good as cursor." },
     { name: "Veo", rating: 3, comment: "I like the video made, but I do not know how to use it in finance topics." },
     { name: "VideoScribe", rating: 2, comment: "Too expensive. AI are not that smart." },
@@ -171,7 +172,15 @@ export default function AboutPage() {
                   <tbody>
                     {aiTools.map((tool, index) => (
                       <tr key={tool.name} className={`border-b ${index % 2 === 0 ? 'bg-gray-50/50' : ''}`}>
-                        <td className="py-3 px-2 font-medium">{tool.name}</td>
+                        <td className="py-3 px-2 font-medium">
+                          {tool.link ? (
+                            <Link href={tool.link} className="text-blue-600 hover:text-blue-800 hover:underline">
+                              {tool.name}
+                            </Link>
+                          ) : (
+                            tool.name
+                          )}
+                        </td>
                         <td className="py-3 px-2 text-center">
                           <div className="flex justify-center gap-1">
                             {renderStars(tool.rating)}
