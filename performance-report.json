@@ -1,0 +1,117 @@
+{
+  "bundleSize": {
+    "static": {
+      "totalSize": 2985241,
+      "fileCount": 69,
+      "formattedSize": "2.85 MB"
+    }
+  },
+  "recommendations": [],
+  "issues": [
+    {
+      "type": "Large Components",
+      "description": "Found components over 10KB that could benefit from code splitting",
+      "files": [
+        {
+          "path": "/src/components/options/greeks-tab.tsx",
+          "size": 18123,
+          "formattedSize": "17.7 KB"
+        },
+        {
+          "path": "/src/components/options/strategy-explorer.tsx",
+          "size": 14038,
+          "formattedSize": "13.71 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-agent-suggestions.tsx",
+          "size": 24039,
+          "formattedSize": "23.48 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-analysis-summary.tsx",
+          "size": 20337,
+          "formattedSize": "19.86 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-combined-info.tsx",
+          "size": 15146,
+          "formattedSize": "14.79 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-company-info.tsx",
+          "size": 15175,
+          "formattedSize": "14.82 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-fundamentals-analysis.tsx",
+          "size": 14125,
+          "formattedSize": "13.79 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-sentiment.tsx",
+          "size": 12474,
+          "formattedSize": "12.18 KB"
+        },
+        {
+          "path": "/src/components/stock/stock-technicals-analysis.tsx",
+          "size": 21420,
+          "formattedSize": "20.92 KB"
+        }
+      ],
+      "recommendation": "Consider lazy loading or breaking into smaller components"
+    },
+    {
+      "type": "Large Images",
+      "description": "Found images over 500KB that should be optimized",
+      "files": [
+        {
+          "path": "/public/images/agents/SOPHIE.png",
+          "size": 2781923,
+          "formattedSize": "2.65 MB"
+        },
+        {
+          "path": "/public/images/agents/ben_graham.png",
+          "size": 1661671,
+          "formattedSize": "1.58 MB"
+        },
+        {
+          "path": "/public/images/agents/cathie_wood.png",
+          "size": 2557385,
+          "formattedSize": "2.44 MB"
+        },
+        {
+          "path": "/public/images/agents/charlie_munger.png",
+          "size": 1937826,
+          "formattedSize": "1.85 MB"
+        },
+        {
+          "path": "/public/images/agents/stanley_druckenmiller.png",
+          "size": 2301302,
+          "formattedSize": "2.19 MB"
+        },
+        {
+          "path": "/public/images/agents/warren_buffett.png",
+          "size": 1704981,
+          "formattedSize": "1.63 MB"
+        },
+        {
+          "path": "/public/images/charlie-munger-ai-hedge-fund-thumbnail.png",
+          "size": 552721,
+          "formattedSize": "539.77 KB"
+        }
+      ],
+      "recommendation": "Use next/image with proper sizing and modern formats (WebP, AVIF)"
+    },
+    {
+      "type": "Heavy Dependencies",
+      "description": "Found heavy dependencies that could be optimized",
+      "files": [
+        "@apollo/client",
+        "chart.js",
+        "react-chartjs-2",
+        "recharts"
+      ],
+      "recommendation": "Consider lazy loading, tree shaking, or lighter alternatives"
+    }
+  ]
+}

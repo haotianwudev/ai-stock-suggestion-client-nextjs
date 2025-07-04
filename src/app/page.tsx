@@ -7,281 +7,53 @@ import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/components/icons";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowUpIcon, ArrowDownIcon, ExternalLinkIcon, TrendingUpIcon, InfoIcon, LineChart } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
-import { getGraphQLUri } from "@/lib/apollo/gql-config";
+import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
-import { StockCard, StockCardSkeleton } from "@/components/stock/stock-card";
 import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, BookOpen, Mic } from "lucide-react";
 import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles } from "@/components/articles/article-filter";
 import type { ArticleFilter as ArticleFilterType } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
 import { useRouter } from "next/navigation";
-import { StickyPodcastPlayer } from "@/components/ui/sticky-podcast-player";
 
-// Types for stock data
-interface StockData {
-  ticker: string;
-  name: string;
-  price: number;
-  change: number;
-  color: string;
-  sophieScore?: number;
-}
+// Lazy load heavy components
+const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
+const DynamicStickyPodcastPlayer = lazy(() => import("@/components/ui/sticky-podcast-player").then(module => ({ default: module.StickyPodcastPlayer })));
 
-interface BatchStockResponse {
-  ticker: string;
-  company: {
-    name: string;
-  };
-  prices: {
-    biz_date: string;
-    close: number;
-  }[];
-  latestSophieAnalysis?: {
-    overall_score: number;
-  };
-}
+// Loading skeletons
+const StockCardSkeleton = () => (
+  <div className="animate-pulse bg-gray-200 rounded-lg p-4 h-32"></div>
+);
 
-interface TopTickerResponse {
-  ticker: string;
-  score: number;
-}
-
-// GraphQL query for batch stock data
-const BATCH_STOCKS_QUERY = gql`
-  query GetBatchStocksWithDates($tickers: [String!]!, $startDate: String!, $endDate: String!) {
-    batchStocks(
-      tickers: $tickers
-      start_date: $startDate
-      end_date: $endDate
-    ) {
-      ticker
-      company {
-        name
-      }
-      prices {
-        biz_date
-        close
-      }
-      latestSophieAnalysis {
-        overall_score
-      }
-    }
-  }
-`;
-
-// Top tickers GraphQL query to get SOPHIE scores
-const GET_TOP_TICKERS = gql`
-  query GetTopTickers {
-    coveredTickers {
-      ticker
-      score
-    }
-  }
-`;
-
-// Color themes for each stock
-const stockColors = {
-  "AAPL": "from-blue-500 to-cyan-500",
-  "MSFT": "from-emerald-500 to-green-500",
-  "NVDA": "from-green-500 to-lime-500"
-};
-
-// Create Apollo client for direct use
-const createApolloClient = () => {
-  const graphqlUri = getGraphQLUri();
-  
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-      graphQLErrors.forEach(({ message, locations, path }) =>
-        console.error(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        ),
-      );
-    if (networkError) console.error(`[Network error]: ${networkError}`);
-  });
-
-  const httpLink = new HttpLink({
-    uri: graphqlUri,
-  });
-
-  return new ApolloClient({
-    link: from([errorLink, httpLink]),
-    cache: new InMemoryCache(),
-    defaultOptions: {
-      watchQuery: {
-        fetchPolicy: 'network-only',
-      },
-      query: {
-        fetchPolicy: 'network-only',
-      },
-    },
-  });
-};
-
-// Get score color based on the value - matching the analysis section
-function getScoreColor(score: number): string {
-  if (score >= 80) return 'from-green-500 to-emerald-600 border-green-300';
-  if (score >= 60) return 'from-blue-500 to-indigo-600 border-blue-300';
-  if (score >= 40) return 'from-yellow-500 to-amber-600 border-yellow-300';
-  return 'from-red-500 to-rose-600 border-red-300';
-}
+const StockDataSkeleton = () => (
+  <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+    {[1, 2, 3].map(i => (
+      <StockCardSkeleton key={i} />
+    ))}
+  </div>
+);
 
 export default function Home() {
-  const [stocks, setStocks] = useState<StockData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const TICKERS = ["AAPL", "MSFT", "NVDA"];
   const [showBookModal, setShowBookModal] = useState(false);
   const [bookPassword, setBookPassword] = useState("");
   const [bookError, setBookError] = useState("");
   const [showAllArticles, setShowAllArticles] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<ArticleFilterType>('all');
+  const [showStockData, setShowStockData] = useState(false);
   const router = useRouter();
+  
+  // Lazy load stock data after initial render
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowStockData(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
   
   // Reset show all articles when filter changes
   const handleFilterChange = (filter: ArticleFilterType) => {
     setSelectedFilter(filter);
     setShowAllArticles(false);
-  };
-  
-  useEffect(() => {
-    // Fetch real stock data on component mount
-    fetchStockData();
-  }, []);
-  
-  const fetchStockData = async () => {
-    try {
-      setIsLoading(true);
-      // Get current date for GraphQL query
-      const today = new Date();
-      const threeMonthsAgo = new Date();
-      threeMonthsAgo.setMonth(today.getMonth() - 3);
-      
-      const endDate = today.toISOString().split('T')[0];
-      const startDate = threeMonthsAgo.toISOString().split('T')[0];
-
-      // Create Apollo client for direct use
-      const client = createApolloClient();
-
-      // First, get the top tickers with scores
-      const topTickersResult = await client.query({
-        query: GET_TOP_TICKERS
-      });
-      
-      const topTickers = topTickersResult.data?.coveredTickers as TopTickerResponse[] || [];
-
-      // Execute batch query for all tickers at once
-      const result = await client.query({
-        query: BATCH_STOCKS_QUERY,
-        variables: { 
-          tickers: TICKERS, 
-          startDate, 
-          endDate 
-        }
-      });
-      
-      if (result.data?.batchStocks) {
-        // Transform the results
-        const batchResults = result.data.batchStocks;
-        const validStocks: StockData[] = [];
-        
-        TICKERS.forEach(ticker => {
-          // Find matching stock data in the response
-          const stockData = batchResults.find((stock: BatchStockResponse) => 
-            stock.ticker === ticker
-          );
-          
-          // Skip if no data found
-          if (!stockData || !stockData.prices || stockData.prices.length === 0) {
-            console.log(`No data found for ${ticker}, skipping`);
-            return;
-          }
-          
-          // Get latest price data
-          const prices = stockData.prices;
-          
-          // Sort prices by date to ensure correct order
-          const sortedPrices = [...prices].sort((a, b) => 
-            new Date(a.biz_date).getTime() - new Date(b.biz_date).getTime()
-          );
-          
-          const latestPrice = sortedPrices[sortedPrices.length - 1];
-          
-          // Find the price closest to 3 months ago
-          const threeMonthsAgo = new Date();
-          threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-          const threeMonthsAgoTime = threeMonthsAgo.getTime();
-          
-          let closestPriceIndex = 0;
-          let minTimeDiff = Infinity;
-          
-          sortedPrices.forEach((price, index) => {
-            const priceDate = new Date(price.biz_date);
-            const timeDiff = Math.abs(priceDate.getTime() - threeMonthsAgoTime);
-            if (timeDiff < minTimeDiff) {
-              minTimeDiff = timeDiff;
-              closestPriceIndex = index;
-            }
-          });
-          
-          const threeMonthPrice = sortedPrices[closestPriceIndex];
-          
-          // Skip if price data is invalid
-          if (!latestPrice || !latestPrice.close) {
-            console.log(`Invalid price data for ${ticker}, skipping`);
-            return;
-          }
-          
-          // Calculate percentage change over the period
-          let changePercent = 0;
-          if (threeMonthPrice && threeMonthPrice.close) {
-            changePercent = ((latestPrice.close - threeMonthPrice.close) / threeMonthPrice.close) * 100;
-          }
-          
-          // Get the SOPHIE score from the top tickers response (primary source)
-          const topTickerData = topTickers.find(t => t.ticker === ticker);
-          
-          // Only use the SOPHIE score from API if it exists and is a valid number
-          let sophieScore: number | undefined;
-          if (topTickerData && typeof topTickerData.score === 'number' && !isNaN(topTickerData.score)) {
-            sophieScore = topTickerData.score;
-          } else {
-            // Fallback to latestSophieAnalysis
-            const apiScore = stockData.latestSophieAnalysis?.overall_score;
-            if (typeof apiScore === 'number' && !isNaN(apiScore)) {
-              sophieScore = apiScore;
-            }
-          }
-          
-          const stockItem: StockData = {
-            ticker,
-            name: stockData.company?.name || ticker,
-            price: latestPrice.close,
-            change: changePercent,
-            color: stockColors[ticker as keyof typeof stockColors] || "from-blue-400 to-blue-600"
-          };
-          
-          // Only add sophieScore if we have a valid score from the API
-          if (sophieScore !== undefined) {
-            stockItem.sophieScore = sophieScore;
-          }
-          
-          validStocks.push(stockItem);
-        });
-        
-        // Only update state if we have valid stocks
-        if (validStocks.length > 0) {
-          setStocks(validStocks);
-        }
-      }
-    } catch (err) {
-      console.error("Error fetching from GraphQL:", err);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
@@ -300,6 +72,7 @@ export default function Home() {
                       width={96} 
                       height={96}
                       className="object-cover"
+                      priority
                     />
                   </div>
                 </Link>
@@ -384,8 +157,6 @@ export default function Home() {
                     Connect in Discord
                   </a>
                 </Button>
-
-                
                 
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/about">
@@ -393,37 +164,19 @@ export default function Home() {
                     Meet SOPHIE's Daddy
                   </Link>
                 </Button>
-
-
               </div>
             </div>
           </div>
         </section>
         
-        {/* Quick Access Stock Cards */}
+        {/* Quick Access Stock Cards - Lazy loaded */}
         <section className="container max-w-screen-xl mx-auto py-0 md:py-1 px-4">
-          {isLoading ? (
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
-              {[1, 2, 3].map(i => (
-                <StockCardSkeleton key={i} />
-              ))}
-            </div>
-          ) : stocks.length > 0 ? (
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
-              {stocks.map((stock) => (
-                <StockCard key={stock.ticker} stock={stock} />
-              ))}
-            </div>
+          {showStockData ? (
+            <Suspense fallback={<StockDataSkeleton />}>
+              <DynamicApolloComponents />
+            </Suspense>
           ) : (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="rounded-full bg-yellow-100 p-3 text-yellow-600 mb-4">
-                <InfoIcon className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-medium">No Stock Data Available</h3>
-              <p className="text-sm text-muted-foreground mt-2 max-w-md">
-                Unable to retrieve stock data at this time. Please check back later.
-              </p>
-            </div>
+            <StockDataSkeleton />
           )}
         </section>
         
@@ -442,6 +195,7 @@ export default function Home() {
               onFilterChange={handleFilterChange}
             />
           </div>
+          
           {/* Pinned Article as Featured */}
           {articles.find(article => article.pinned && !article.bookSummary) && (
             <div className="mb-8 relative">
@@ -464,6 +218,7 @@ export default function Home() {
               />
             </div>
           )}
+          
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {getFilteredArticles(articles, selectedFilter)
               .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
@@ -501,49 +256,22 @@ export default function Home() {
                   onClick={() => setShowAllArticles(!showAllArticles)}
                   variant="outline"
                   size="lg"
-                  className="px-8 py-3"
                 >
-                  {showAllArticles ? (
-                    <>
-                      Show Less Articles
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
-                      </svg>
-                    </>
-                  ) : (
-                    <>
-                      Show All Articles ({filteredArticles.length})
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </>
-                  )}
+                  {showAllArticles ? 'Show Less' : `Show All ${filteredArticles.length} Articles`}
                 </Button>
               </div>
             );
           })()}
         </section>
-
+        
+        {/* Disclaimer */}
+        <Disclaimer />
       </main>
-      <Disclaimer />
-      <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <div className="flex flex-col items-center md:items-start">
-            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-              © {new Date().getFullYear()} SOPHIE. All rights reserved.
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Stock analysis inspired and built on top of <a href="https://github.com/virattt/ai-hedge-fund" className="underline hover:text-primary">ai-hedge-fund</a>. SOPHIE's Daddy Blog is a completely free, open source, personal hobby website, running on free database, free server. Developer paid for data and AI cost all from public sources. The app is not intended to give any financial advise or use for any commercial purposes. Please leave a comment or send me an email if you like SOPHIE! Please check back soon!
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Contact: <a href="mailto:sophieaifinance@gmail.com" className="underline hover:text-primary">sophieaifinance@gmail.com</a>
-            </p>
-          </div>
-        </div>
-      </footer>
       
-      {/* Sticky Podcast Player */}
-      <StickyPodcastPlayer />
+      {/* Lazy load podcast player */}
+      <Suspense fallback={null}>
+        <DynamicStickyPodcastPlayer />
+      </Suspense>
     </div>
   );
 }
