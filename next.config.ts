@@ -72,9 +72,15 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Bundle analyzer configuration
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+// Bundle analyzer configuration (conditional import)
+let withBundleAnalyzer: any;
+try {
+  withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
+} catch (error) {
+  // Bundle analyzer not installed, use identity function
+  withBundleAnalyzer = (config: NextConfig) => config;
+}
 
 export default withBundleAnalyzer(nextConfig);
