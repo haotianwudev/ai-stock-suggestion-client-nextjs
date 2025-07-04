@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     images: ['/images/agents/SOPHIE.png'],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/images/favicon.png',
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
