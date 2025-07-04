@@ -123,7 +123,7 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
-    title: "Decoding Stock Analysis EV/EBTIDA model using AI",
+    title: "Decoding Stock Analysis EV/EBITDA model using AI",
     description: "In this video, we're decoding the EV/EBITDA multiple, a favorite tool of professional investors. We're making this powerful valuation method simple, fun, and accessible for everyone.",
     slug: "ev-ebitda-multiple",
     date: "June 22, 2025",
