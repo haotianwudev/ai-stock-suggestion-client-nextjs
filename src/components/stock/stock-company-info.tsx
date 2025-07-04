@@ -240,36 +240,36 @@ export function StockCompanyInfo({ company, prices, financialMetrics, className 
   const dividendInfo = getDividendInfo();
 
   return (
-    <Card className={cn("col-span-2", className)}>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-medium">Company Information</CardTitle>
+    <Card className={cn("w-full", className)}>
+      <CardHeader className="pb-2 sm:pb-3">
+        <CardTitle className="text-sm sm:text-base font-medium">Company Information</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-2">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Ticker</span>
-            <span className="font-medium">{company.ticker}</span>
+        <div className="grid gap-2 sm:gap-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Ticker</span>
+            <span className="text-sm sm:text-base font-medium text-right">{company.ticker}</span>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Name</span>
-            <span className="font-medium">{company.name}</span>
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Name</span>
+            <span className="text-sm sm:text-base font-medium text-right break-words">{company.name}</span>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Sector</span>
-            <span className="font-medium">{company.sector}</span>
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Sector</span>
+            <span className="text-sm sm:text-base font-medium text-right break-words">{company.sector}</span>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Industry</span>
-            <span className="font-medium">{company.industry}</span>
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Industry</span>
+            <span className="text-sm sm:text-base font-medium text-right break-words">{company.industry}</span>
           </div>
           {company.website_url && (
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-muted-foreground">Website</span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Website</span>
               <a 
                 href={company.website_url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center text-blue-500 hover:underline"
+                className="flex items-center text-blue-500 hover:underline text-sm"
               >
                 Visit Site <ExternalLinkIcon className="ml-1 h-3 w-3" />
               </a>
@@ -277,95 +277,95 @@ export function StockCompanyInfo({ company, prices, financialMetrics, className 
           )}
           
           {/* Market Statistics Section - Always displayed */}
-          <div className="mt-4 border-t pt-2">
+          <div className="mt-3 sm:mt-4 border-t pt-2 sm:pt-3">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm font-medium">Market Statistics</span>
+              <span className="text-sm sm:text-base font-medium">Market Statistics</span>
               {metrics?.latestDate && (
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs sm:text-sm text-muted-foreground">
                   As of {formatDate(metrics.latestDate)}
                 </span>
               )}
             </div>
           </div>
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Current Price</span>
-            <span className="font-medium">{metrics?.currentPrice ? formatCurrency(metrics.currentPrice) : 'N/A'}</span>
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Current Price</span>
+            <span className="text-sm sm:text-base font-medium text-right">{metrics?.currentPrice ? formatCurrency(metrics.currentPrice) : 'N/A'}</span>
           </div>
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Daily Range</span>
-            <span className="font-medium">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Daily Range</span>
+            <span className="text-sm sm:text-base font-medium text-right">
               {metrics?.dailyLow ? formatCurrency(metrics.dailyLow) : 'N/A'} - {metrics?.dailyHigh ? formatCurrency(metrics.dailyHigh) : 'N/A'}
             </span>
           </div>
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">52 Week Range</span>
-            <span className="font-medium">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">52 Week Range</span>
+            <span className="text-sm sm:text-base font-medium text-right">
               {metrics?.low52Week ? formatCurrency(metrics.low52Week) : 'N/A'} - {metrics?.high52Week ? formatCurrency(metrics.high52Week) : 'N/A'}
             </span>
           </div>
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Volume</span>
-            <span className="font-medium">{metrics?.dailyVolume ? formatLargeNumber(metrics.dailyVolume) : 'N/A'}</span>
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Volume</span>
+            <span className="text-sm sm:text-base font-medium text-right">{metrics?.dailyVolume ? formatLargeNumber(metrics.dailyVolume) : 'N/A'}</span>
           </div>
           
           {metrics?.averageVolume && (
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-muted-foreground">Avg. Volume</span>
-              <span className="font-medium">{formatLargeNumber(metrics.averageVolume)}</span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Avg. Volume</span>
+              <span className="text-sm sm:text-base font-medium text-right">{formatLargeNumber(metrics.averageVolume)}</span>
             </div>
           )}
           
           {metrics?.volatility && (
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-muted-foreground">Volatility</span>
-              <span className="font-medium">{formatPercent(metrics.volatility)}</span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Volatility</span>
+              <span className="text-sm sm:text-base font-medium text-right">{formatPercent(metrics.volatility)}</span>
             </div>
           )}
           
           {/* Financial Metrics Section */}
           {financialMetrics && (
             <>
-              <div className="mt-4 border-t pt-2">
+              <div className="mt-3 sm:mt-4 border-t pt-2 sm:pt-3">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium">Financial Metrics</span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-sm sm:text-base font-medium">Financial Metrics</span>
+                  <span className="text-xs sm:text-sm text-muted-foreground">
                     {formatReportDate()} ({financialMetrics.period})
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">Market Cap</span>
-                <span className="font-medium">{formatLargeNumber(financialMetrics.market_cap)}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Market Cap</span>
+                <span className="text-sm sm:text-base font-medium text-right">{formatLargeNumber(financialMetrics.market_cap)}</span>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">EPS</span>
-                <span className="font-medium">{formatCurrency(financialMetrics.earnings_per_share)}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">EPS</span>
+                <span className="text-sm sm:text-base font-medium text-right">{formatCurrency(financialMetrics.earnings_per_share)}</span>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">P/E Ratio</span>
-                <span className="font-medium">{financialMetrics.price_to_earnings_ratio?.toFixed(2) || 'N/A'}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/E Ratio</span>
+                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_earnings_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">P/B Ratio</span>
-                <span className="font-medium">{financialMetrics.price_to_book_ratio?.toFixed(2) || 'N/A'}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/B Ratio</span>
+                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_book_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">P/S Ratio</span>
-                <span className="font-medium">{financialMetrics.price_to_sales_ratio?.toFixed(2) || 'N/A'}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/S Ratio</span>
+                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_sales_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">Forward Dividend & Yield</span>
-                <span className="font-medium">
+              <div className="flex items-start justify-between gap-2">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Forward Dividend & Yield</span>
+                <span className="text-sm sm:text-base font-medium text-right">
                   {dividendInfo.forwardDividend !== "N/A" ? `$${dividendInfo.forwardDividend}` : "N/A"}
                   {dividendInfo.dividendYield !== "N/A" && dividendInfo.forwardDividend !== "N/A" 
                     ? ` (${dividendInfo.dividendYield})` 
