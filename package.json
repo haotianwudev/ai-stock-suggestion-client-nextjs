@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --no-lint",
+    "build:analyze": "ANALYZE=true next build --no-lint",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
+    "analyze": "node scripts/performance-analysis.js",
+    "perf": "npm run build && npm run analyze",
     "use:local-gql": "node scripts/switch-gql.js --local",
     "use:prod-gql": "node scripts/switch-gql.js --prod",
     "use:custom-gql": "node scripts/switch-gql.js --local --port"
@@ -37,6 +40,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.3.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -46,6 +50,7 @@
     "sharp": "^0.34.1",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.9",
-    "typescript": "^5"
+    "typescript": "^5",
+    "webpack-bundle-analyzer": "^4.10.1"
   }
 }
