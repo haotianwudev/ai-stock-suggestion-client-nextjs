@@ -151,35 +151,35 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
     tooltipContent: string;
   }) => (
     <Card>
-      <CardContent className="pt-6">
-        <div className="flex items-center justify-between mb-3">
+      <CardContent className="pt-4 sm:pt-6 px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2 sm:gap-0">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-full bg-muted">
+            <div className="p-1.5 sm:p-2 rounded-full bg-muted">
               {icon}
             </div>
-            <h3 className="text-lg font-bold">{title}</h3>
+            <h3 className="text-base sm:text-lg font-bold">{title}</h3>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-sm sm:text-base">
             <span className={`font-bold ${getSignalColor(signal)} capitalize`}>{signal}</span>
-            <span className="text-sm text-muted-foreground ml-1">({confidence}% confidence)</span>
+            <span className="text-xs sm:text-sm text-muted-foreground">({confidence}% confidence)</span>
           </div>
         </div>
         
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
           {tooltipContent}
         </p>
         
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
           {indicators.map((indicator, index) => (
             <div key={index} className="space-y-1">
               <div className="flex items-center gap-1">
                 <span className="text-sm font-medium">{indicator.label}</span>
               </div>
-              <div className={indicator.colorClass || ''}>
+              <div className={`text-sm sm:text-base break-words ${indicator.colorClass || ''}`}>
                 {typeof indicator.value === 'string' ? indicator.value : indicator.value.toFixed(2)}
               </div>
               {indicator.tooltip && (
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   {indicator.tooltip}
                 </p>
               )}
@@ -191,24 +191,24 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Price Chart */}
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Price Chart with Technical Indicators</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+      <div className="mb-4 sm:mb-6">
+        <h3 className="text-base sm:text-lg font-semibold mb-2">Price Chart with Technical Indicators</h3>
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
           Historical price data with EMAs (8, 21, 55) and Bollinger Bands overlaid
         </p>
         <StockChart prices={prices} />
       </div>
 
       {/* Overall Technical Signal */}
-      <div className="bg-card rounded-lg p-6 shadow-sm border">
-        <div className="flex justify-between items-center mb-3">
+      <div className="bg-card rounded-lg p-4 sm:p-6 shadow-sm border">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2 sm:gap-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-xl font-bold">Technical Analysis</h3>
+            <h3 className="text-lg sm:text-xl font-bold">Technical Analysis</h3>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Analysis Date:</span>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-muted-foreground">Analysis Date:</span>
             <span className="font-medium">{formatDateString(technicals.biz_date)}</span>
           </div>
         </div>
@@ -227,72 +227,72 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
           </div>
 
           {/* Strategy Overview Cards */}
-          <div className="grid md:grid-cols-5 gap-5 mt-8 mb-8">
-            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 mt-6 sm:mt-8 mb-6 sm:mb-8">
+            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
               <div className="mb-2 flex justify-center">
-                <div className="p-2 bg-background rounded-full shadow-inner">
+                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
                   {getStrategyIcon('trend')}
                 </div>
               </div>
-              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.trend_signal)}`}>
+              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.trend_signal)}`}>
                 {technicals.trend_signal.toUpperCase()}
               </div>
-              <div className="text-base font-semibold">Trend Following</div>
+              <div className="text-xs sm:text-base font-semibold">Trend Following</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
               <div className="mb-2 flex justify-center">
-                <div className="p-2 bg-background rounded-full shadow-inner">
+                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
                   {getStrategyIcon('mr')}
                 </div>
               </div>
-              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.mr_signal)}`}>
+              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.mr_signal)}`}>
                 {technicals.mr_signal.toUpperCase()}
               </div>
-              <div className="text-base font-semibold">Mean Reversion</div>
+              <div className="text-xs sm:text-base font-semibold">Mean Reversion</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
               <div className="mb-2 flex justify-center">
-                <div className="p-2 bg-background rounded-full shadow-inner">
+                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
                   {getStrategyIcon('momentum')}
                 </div>
               </div>
-              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
+              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
                 {technicals.momentum_signal.toUpperCase()}
               </div>
-              <div className="text-base font-semibold">Momentum</div>
+              <div className="text-xs sm:text-base font-semibold">Momentum</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
               <div className="mb-2 flex justify-center">
-                <div className="p-2 bg-background rounded-full shadow-inner">
+                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
                   {getStrategyIcon('volatility')}
                 </div>
               </div>
-              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
+              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
                 {technicals.volatility_signal.toUpperCase()}
               </div>
-              <div className="text-base font-semibold">Volatility</div>
+              <div className="text-xs sm:text-base font-semibold">Volatility</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
               <div className="mb-2 flex justify-center">
-                <div className="p-2 bg-background rounded-full shadow-inner">
+                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
                   {getStrategyIcon('stat_arb')}
                 </div>
               </div>
-              <div className={`text-lg font-extrabold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
+              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
                 {technicals.stat_arb_signal.toUpperCase()}
               </div>
-              <div className="text-base font-semibold">Statistical</div>
+              <div className="text-xs sm:text-base font-semibold">Statistical</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Strategy Detail Cards */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         {/* Trend Following */}
         <StrategyCard
           title="Trend Following"
@@ -304,7 +304,7 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
           indicators={[
             {
               label: "EMA Crossover",
-              value: `${technicals.ema_8.toFixed(2)} / ${technicals.ema_21.toFixed(2)} / ${technicals.ema_55.toFixed(2)}`,
+              value: `8d: ${technicals.ema_8.toFixed(2)} • 21d: ${technicals.ema_21.toFixed(2)} • 55d: ${technicals.ema_55.toFixed(2)}`,
               tooltip: "Exponential Moving Averages for 8, 21, and 55 days. When shorter EMAs cross above longer ones, it's bullish.",
               colorClass: technicals.ema_8 > technicals.ema_55 ? 'font-medium text-green-500' : technicals.ema_8 < technicals.ema_55 ? 'font-medium text-red-500' : ''
             },
@@ -316,7 +316,7 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
             },
             {
               label: "Directional Movement",
-              value: `+DI: ${technicals.di_plus.toFixed(2)} / -DI: ${technicals.di_minus.toFixed(2)}`,
+              value: `+DI: ${technicals.di_plus.toFixed(2)} • -DI: ${technicals.di_minus.toFixed(2)}`,
               tooltip: "Positive and negative directional indicators. When +DI > -DI, trend is bullish.",
               colorClass: technicals.di_plus > technicals.di_minus ? 'font-medium text-green-500' : 'font-medium text-red-500'
             },
@@ -346,12 +346,12 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
             },
             {
               label: "Bollinger Bands",
-              value: `Upper: ${technicals.bb_upper.toFixed(2)} / Lower: ${technicals.bb_lower.toFixed(2)}`,
+              value: `Upper: ${technicals.bb_upper.toFixed(2)} • Lower: ${technicals.bb_lower.toFixed(2)}`,
               tooltip: "Price bands that encompass typical volatility. Prices near the upper band may be overbought, while prices near the lower band may be oversold."
             },
             {
               label: "RSI",
-              value: `14d: ${technicals.rsi_14.toFixed(2)} / 28d: ${technicals.rsi_28.toFixed(2)}`,
+              value: `14d: ${technicals.rsi_14.toFixed(2)} • 28d: ${technicals.rsi_28.toFixed(2)}`,
               tooltip: "Relative Strength Index measures momentum. Values below 30 suggest oversold conditions (bullish), while values above 70 suggest overbought conditions (bearish).",
               colorClass: getRSIColor(technicals.rsi_14)
             },
