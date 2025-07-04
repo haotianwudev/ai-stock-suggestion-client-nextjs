@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Briefcase, BarChart, Zap, Shield, Gem, TrendingUp, DollarSign, ArrowRight, Sun, Moon, Info, ChevronsRight, Target, ExternalLink, Eye, FileText, TrendingDown } from 'lucide-react';
+import { ArrowLeft, Briefcase, BarChart, Zap, Shield, Gem, TrendingUp, DollarSign, ArrowRight, Sun, Moon, Info, ChevronsRight, Target, ExternalLink, Eye, FileText, TrendingDown, AlertTriangle } from 'lucide-react';
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
 // Deep Research badge component
 const DeepResearchBadge = () => (
@@ -452,6 +454,9 @@ const InteractiveETFGuide = () => {
 export default function AlternativeETFsPage() {
   const [activeSection, setActiveSection] = useState('overview');
 
+  // Get current article for SEO
+  const currentArticle = articles.find(article => article.slug === 'alternative-etfs-beyond-spy-qqq');
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['overview', 'interactive', 'methodology', 'conclusions', 'full-report'];
@@ -473,6 +478,14 @@ export default function AlternativeETFsPage() {
   }, []);
 
   return (
+    <>
+      {/* SEO Components - MANDATORY */}
+      {currentArticle && (
+        <>
+          <StructuredData article={currentArticle} />
+          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
+        </>
+      )}
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <DeepResearchBadge />
       
@@ -489,11 +502,14 @@ export default function AlternativeETFsPage() {
         </div>
 
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Alternative ETFs Beyond SPY and QQQ
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+            🚀 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Beyond SPY & QQQ</span>
           </h1>
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
+            The Strategic ETF Revolution
+          </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-            A Strategic Analysis of Advanced ETF Alternatives to Market-Cap Weighted Giants
+            Discover high-performance alternatives to traditional market-cap giants • Income-focused strategies • Factor-based investing • Risk-optimized portfolios
           </p>
         </div>
       </div>
@@ -728,20 +744,55 @@ export default function AlternativeETFsPage() {
         </div>
       </div>
 
-      {/* Disclaimer */}
+      {/* Enhanced Disclaimer Section */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-6">
+          <div className="flex items-start space-x-3">
+            <AlertTriangle className="h-6 w-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="text-lg font-bold text-red-900 dark:text-red-100 mb-2">
+                ⚠️ Not Financial Advice - Educational Content Only
+              </h3>
+              <div className="text-red-800 dark:text-red-200 space-y-2">
+                <p className="font-medium">
+                  This analysis is designed for educational purposes to help you understand different ETF strategies and their characteristics.
+                </p>
+                <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-lg">
+                  <p className="text-sm font-medium mb-1">Why This Matters:</p>
+                  <ul className="text-sm space-y-1">
+                    <li>• <strong>Personal Situation Varies:</strong> Your risk tolerance, time horizon, and financial goals are unique</li>
+                    <li>• <strong>Market Conditions Change:</strong> Past performance doesn't guarantee future results</li>
+                    <li>• <strong>Tax Implications:</strong> Different funds have varying tax consequences for your situation</li>
+                    <li>• <strong>Professional Guidance:</strong> Complex financial decisions benefit from qualified advisor consultation</li>
+                  </ul>
+                </div>
+                <p className="text-sm font-medium">
+                  Always conduct your own research and consider consulting with qualified financial professionals before making investment decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
       <div className="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-4xl mx-auto mb-4">
               <strong>Educational Disclaimer:</strong> This analysis is for educational and informational purposes only 
               and does not constitute investment advice. All data is based on historical performance and publicly available 
               information. Past performance does not guarantee future results. Always conduct your own research and consider 
               consulting with qualified financial professionals before making investment decisions. ETF performance, yields, 
               and metrics are subject to change and market conditions.
             </p>
+            <p className="text-sm text-gray-500 dark:text-gray-500">
+              © 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.
+            </p>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 } 
