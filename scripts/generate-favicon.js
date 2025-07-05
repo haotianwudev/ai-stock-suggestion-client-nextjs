@@ -4,28 +4,55 @@ const path = require('path');
 
 async function generateFavicon() {
   try {
-    // Create a new solid-color image (placeholder for your actual favicon generation)
+    // Path to input PNG file
+    const inputPath = path.join(__dirname, '../public/images/favicon.png');
     
     // Path to output favicon
     const outputPath = path.join(__dirname, '../public/favicon.ico');
     
-    // Create a 32x32 favicon (standard size)
-    await sharp({
-      create: { width: 32, height: 32, channels: 4, background: { r: 255, g: 165, b: 0, alpha: 1 } }
-    })
-    .toFile('temp-favicon.png');
+    // Check if input file exists
+    if (!fs.existsSync(inputPath)) {
+      throw new Error(`Input file not found: ${inputPath}`);
+    }
     
-    // Convert the PNG to ICO format
-    const data = await sharp('temp-favicon.png')
+    // Get the original image metadata
+    const metadata = await sharp(inputPath).metadata();
+    console.log(`Original image: ${metadata.width}x${metadata.height}`);
+    
+    // Create multiple sizes for ICO format
+    const sizes = [16, 32, 48];
+    const tempFiles = [];
+    
+    // Generate different sizes
+    for (const size of sizes) {
+      const tempFile = `temp-favicon-${size}.png`;
+      await sharp(inputPath)
+        .resize(size, size)
+        .png()
+        .toFile(tempFile);
+      tempFiles.push(tempFile);
+    }
+    
+    // For now, use the 32x32 version as the main favicon
+    // (Most modern browsers accept PNG data in ICO files)
+    const faviconData = await sharp(inputPath)
+      .resize(32, 32)
+      .png()
       .toBuffer();
     
-    // Write the buffer to the favicon.ico file
-    fs.writeFileSync(outputPath, data);
+    // Write the favicon
+    fs.writeFileSync(outputPath, faviconData);
     
-    // Clean up the temporary file
-    fs.unlinkSync('temp-favicon.png');
+    // Clean up temporary files
+    tempFiles.forEach(file => {
+      if (fs.existsSync(file)) {
+        fs.unlinkSync(file);
+      }
+    });
     
     console.log('Favicon successfully generated at:', outputPath);
+    console.log('Converted from:', inputPath);
+    console.log('Size: 32x32 pixels');
   } catch (error) {
     console.error('Error generating favicon:', error);
   }
