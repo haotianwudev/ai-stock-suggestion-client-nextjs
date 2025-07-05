@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Apple's Financial Health: When Traditional Metrics Mislead",
+    description: "Analysis of Apple's financial health covering liquidity, solvency, and cash flow metrics. Explains why Apple's seemingly problematic Current Ratio and Debt-to-Equity ratios are actually signs of sophisticated capital management strategy, powered by exceptional free cash flow generation.",
+    slug: "apple-financial-health-analysis-traditional-metrics-mislead",
+    date: "July 5, 2025",
+    imageUrl: "https://9to5mac.com/wp-content/uploads/sites/6/2024/06/apple-stock-up.jpg?quality=82&strip=all&w=1600",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRccf-SQJkhKgCofVPZy2FcdMznkDOr-vfA21IHzGmm1JId5dXqlWXGJT1U6UB71pwmZ3tPwsfZZaQv/pub",
+    deepResearch: true
+  },
+  {
     title: "Ollama Cheat Sheet",
     description: "An interactive cheat sheet for Ollama commands and advanced tips. Copy and print-friendly easy reference while working with local LLMs.",
     slug: "ollama-cheat-sheet-complete-command-reference",
