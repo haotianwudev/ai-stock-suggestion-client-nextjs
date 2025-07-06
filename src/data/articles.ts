@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Why Apple's financial health metrics a disaster? Financial Health using AI",
+    description: "Is Apple secretly in financial trouble? When you look at standard financial health metrics like the Current Ratio and Debt-to-Equity Ratio, the numbers look terrifying! But the truth is more surprising than you think.",
+    slug: "why-apple-financial-health-metrics-disaster-ai",
+    date: "July 6, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=qOzB4WtPRok",
+    isVideo: true,
+    imageUrl: "https://i9.ytimg.com/vi_webp/qOzB4WtPRok/mqdefault.webp?v=686912f3&sqp=CPTaqcMG&rs=AOn4CLDMngpzEJKvcxF-y9YoGOUppvCbWA"
+  },
+  {
     title: "Rich Dad, Poor Dad: Key Stories and Lessons in Financial Liberation",
     description: "An interactive book summary of Robert Kiyosaki's groundbreaking financial education classic. Explores the core stories that teach the fundamental difference between assets and liabilities, the importance of financial IQ, and how to make money work for you instead of working for money.",
     slug: "rich-dad-poor-dad-book-summary",
