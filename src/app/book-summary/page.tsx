@@ -79,6 +79,7 @@ export default function BookSummaryPage() {
                 isVideo={article.isVideo}
                 options={article.options}
                 noSummary={article.noSummary}
+                podcastUrl={article.podcastUrl}
               />
             ))}
           </div>

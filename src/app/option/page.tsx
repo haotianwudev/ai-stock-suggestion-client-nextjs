@@ -230,6 +230,7 @@ export default function OptionsPage() {
                           isVideo={article.isVideo}
                           options={article.options}
                           noSummary={article.noSummary}
+                          podcastUrl={article.podcastUrl}
                         />
                       ))}
                   </div>

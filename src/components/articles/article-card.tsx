@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Music } from "lucide-react";
 
 interface ArticleCardProps {
   title: string;
@@ -14,9 +14,10 @@ interface ArticleCardProps {
   isVideo?: boolean;
   options?: boolean;
   noSummary?: boolean;
+  podcastUrl?: string;
 }
 
-export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo, options, noSummary }: ArticleCardProps) {
+export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   return (
     <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
       <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
@@ -35,6 +36,11 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
             {isVideo && (
               <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
                 Video
+              </span>
+            )}
+            {podcastUrl && !isVideo && (
+              <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
+                Podcast
               </span>
             )}
             {options && (
@@ -75,6 +81,19 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   </a>
                 </>
               )}
+              {podcastUrl && (
+                <>
+                  <span className="mx-1">·</span>
+                  <a
+                    href={podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-green-700"
+                  >
+                    Podcast
+                  </a>
+                </>
+              )}
             </div>
             <CardDescription className="mb-2 text-sm text-muted-foreground line-clamp-5">
               {description}
@@ -103,6 +122,17 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"
                   >
                     Google Document
+                  </a>
+                )}
+                {podcastUrl && (
+                  <a
+                    href={podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
+                  >
+                    <Music className="mr-2 h-4 w-4" />
+                    Podcast
                   </a>
                 )}
                 {!noSummary && (

@@ -23,6 +23,7 @@ interface Article {
   pinned?: boolean;      // Optional: Pin to top
   bookSummary?: boolean; // Optional: Book summary flag
   noSummary?: boolean;   // Optional: Skip summary
+  podcastUrl?: string;   // Optional: Spotify podcast URL
 }
 ```
 
@@ -65,7 +66,8 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 
 ### 4. Badge Positioning
 - **"Deep Research"**: Top-left corner (purple)
-- **"Video"**: Top-right corner (red)  
+- **"Video"**: Top-right corner (red)
+- **"Podcast"**: Top-right corner (green) - when no video
 - **"Options"**: Bottom-right corner (orange-yellow)
 
 ### 5. Content Styling
@@ -81,11 +83,13 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 - `isVideo: true` for video content
 - `bookSummary: true` for book summaries
 - `pinned: true` for featured articles
+- `podcastUrl: "spotify-url"` for podcast episodes
 
 ### 7. Content Categories
 - **Deep Research**: Comprehensive analysis with multiple sections, interactive elements
 - **Options Trading**: Put/call strategies, Greeks, volatility analysis
 - **Video Content**: YouTube integration with embedded players
+- **Podcast Content**: Spotify podcast integration with dedicated buttons
 - **Stock Analysis**: Company-specific DCF models, valuation analysis
 - **Book Summaries**: Interactive summaries of trading/investment books
 
@@ -166,6 +170,49 @@ export default function YourArticle() {
 - **Structured Data**: Automatic via SEO components
 - **Social Meta**: Automatic via layout and article components
 
+### 13. Podcast Integration
+
+#### 13.1 Podcast URL Configuration
+- Add `podcastUrl: "https://open.spotify.com/episode/EPISODE_ID"` to article data
+- Use full Spotify episode URLs (not embed URLs)
+- Example: `podcastUrl: "https://open.spotify.com/episode/49kYVr5A7CQT31Un6Faeqp"`
+
+#### 13.2 Article Card Integration
+Podcasts automatically appear in ArticleCard with:
+- **Green "Podcast" badge**: Top-right corner of image (when no video)
+- **Metadata link**: Small "Podcast" link in article metadata
+- **Action button**: Prominent green "Podcast" button with music icon
+
+#### 13.3 Article Page Integration
+```tsx
+// Import Music icon
+import { Music } from 'lucide-react';
+
+// In call-to-action section
+{currentArticle?.podcastUrl && (
+  <a 
+    href={currentArticle.podcastUrl}
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+  >
+    <Music className="inline mr-2" />
+    Listen to Podcast
+  </a>
+)}
+```
+
+#### 13.4 Podcast Button Styling
+- **Primary**: Green background (`bg-green-600`) with white text
+- **Hover**: Darker green (`hover:bg-green-700`) with scale effect
+- **Icon**: Music icon from Lucide React
+- **Theme**: Consistent with Spotify branding
+
+#### 13.5 Badge Priority
+- Video badge takes priority over podcast badge
+- Only show podcast badge when `podcastUrl` exists and `isVideo` is false
+- Position: `absolute top-2 right-2` with green gradient
+
 ## General Development Guidelines
 - Always follow existing code patterns and conventions
 - Use TypeScript for type safety
@@ -213,4 +260,5 @@ Root:
 - [ ] Footer has "SOPHIE's Daddy Blog" branding
 - [ ] Tests build process to ensure sitemap generation
 - [ ] Responsive design verified
-- [ ] Interactive elements tested 
+- [ ] Interactive elements tested
+- [ ] Podcast integration (if applicable): badge, metadata link, and action button working 

@@ -12,9 +12,19 @@ export interface Article {
   pinned?: boolean;
   bookSummary?: boolean;
   noSummary?: boolean;
+  podcastUrl?: string;
 }
 
 export const articles: Article[] = [
+  {
+    title: "Rich Dad, Poor Dad: Key Stories and Lessons in Financial Liberation",
+    description: "An interactive book summary of Robert Kiyosaki's groundbreaking financial education classic. Explores the core stories that teach the fundamental difference between assets and liabilities, the importance of financial IQ, and how to make money work for you instead of working for money.",
+    slug: "rich-dad-poor-dad-book-summary",
+    date: "July 5, 2025",
+    imageUrl: "https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL._AC_UL232_SR232,232_.jpg",
+    bookSummary: true,
+    podcastUrl: "https://open.spotify.com/episode/49kYVr5A7CQT31Un6Faeqp"
+  },
   {
     title: "Apple's Financial Health: When Traditional Metrics Mislead",
     description: "Analysis of Apple's financial health covering liquidity, solvency, and cash flow metrics. Explains why Apple's seemingly problematic Current Ratio and Debt-to-Equity ratios are actually signs of sophisticated capital management strategy, powered by exceptional free cash flow generation.",

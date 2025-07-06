@@ -215,6 +215,7 @@ export default function Home() {
                 isVideo={articles.find(article => article.pinned && !article.bookSummary)!.isVideo}
                 options={articles.find(article => article.pinned && !article.bookSummary)!.options}
                 noSummary={articles.find(article => article.pinned && !article.bookSummary)!.noSummary}
+                podcastUrl={articles.find(article => article.pinned && !article.bookSummary)!.podcastUrl}
               />
             </div>
           )}
@@ -243,6 +244,7 @@ export default function Home() {
                 isVideo={article.isVideo}
                 options={article.options}
                 noSummary={article.noSummary}
+                podcastUrl={article.podcastUrl}
               />
             ))}
           </div>
