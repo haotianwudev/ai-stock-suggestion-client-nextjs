@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Transformers in Systematic Trading",
+    description: "Dive into the revolutionary Transformer architecture and its applications in systematic trading. Explores the core innovation of self-attention, adaptation for financial time series, forecasting capabilities, NLP integration for quantamental strategies, and factor generation. Includes model comparisons, challenges, and real-world case studies like Stockformer and Quantformer.",
+    slug: "transformer-systematic-trading-architecture-applications",
+    date: "July 7, 2025",
+    imageUrl: "https://img.decrypt.co/insecure/rs:fit:3840:0:0:0/plain/https://cdn.decrypt.co/wp-content/uploads/2025/01/Bright-lens-flares-streak-across-a-delicate-watercolor-painting-of-robotic-brain-schematics-translucent-washes-and-fluid-brushstrokes-create-vibrant-colors-and-a-luminous-effect-gID_7.jpg@webp",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgqBtNG9YooJB-mjzhcLqWaBZrc0DwNKquiBBh-MeWtW5OlWX2otOmyjD5k5v4F9_uFisnEgZmNpEG/pub",
+    deepResearch: true
+  },
+  {
     title: "Private Credit: Risks and Returns",
     description: "Analysis of the multi-trillion dollar private credit market, covering direct lending, mezzanine financing, distressed debt, and specialty finance. Explores the structural shifts post-2008 financial crisis, investment thesis, risk-return dynamics, and strategic considerations for sophisticated investors including family offices and high-net-worth individuals.",
     slug: "private-credit-risks-returns-deep-research-analysis",
