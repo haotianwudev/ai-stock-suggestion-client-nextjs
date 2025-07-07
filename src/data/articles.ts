@@ -17,10 +17,10 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    title: "Private Credit: Risks and Returns - Deep Research Analysis",
-    description: "A comprehensive analysis of the multi-trillion dollar private credit market, covering direct lending, mezzanine financing, distressed debt, and specialty finance. Explores the structural shifts post-2008 financial crisis, investment thesis, risk-return dynamics, and strategic considerations for sophisticated investors including family offices and high-net-worth individuals.",
+    title: "Private Credit: Risks and Returns",
+    description: "Analysis of the multi-trillion dollar private credit market, covering direct lending, mezzanine financing, distressed debt, and specialty finance. Explores the structural shifts post-2008 financial crisis, investment thesis, risk-return dynamics, and strategic considerations for sophisticated investors including family offices and high-net-worth individuals.",
     slug: "private-credit-risks-returns-deep-research-analysis",
-    date: "July 8, 2025",
+    date: "July 7, 2025",
     imageUrl: "https://media.licdn.com/dms/image/v2/D4E12AQExHbPyiFosVA/article-cover_image-shrink_720_1280/B4EZbAzwfSHcAI-/0/1746991518826?e=1757548800&v=beta&t=Gcm3CQdfQc8ZDcXgVh0b7jghPjFpbhNZw_HsmoExOzE",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTL-4DXuQPRjMxHwV8qPPSsUbO-VKHiKYXz7-YU2mf3VnQevnP3xf9EFrmDfI6L7Ea8sar6yHiJ9iAl/pub",
     deepResearch: true
