@@ -4,6 +4,7 @@ import { type StockValuation } from "@/lib/graphql/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, formatPercent } from "@/lib/utils";
+import { VideoTutorial } from "@/components/ui/video-tutorial";
 
 interface StockValuationProps {
   valuations: StockValuation[];
@@ -160,6 +161,28 @@ export function StockValuation({ valuations }: StockValuationProps) {
               <p className="text-sm text-muted-foreground mb-4 break-words hyphens-auto">
                 {METHOD_DESCRIPTIONS[valuation.valuation_method]}
               </p>
+
+              {/* DCF Video Tutorial Section */}
+              {valuation.valuation_method === "dcf" && (
+                <VideoTutorial
+                  title="DCF Tutorial: Step-by-Step Guide"
+                  description="Learn absolute valuation and how to build DCF model to derive intrinsic value from scratch."
+                  videoId="DEzMJY7dJ6o"
+                  startTime={6}
+                  className="mb-4"
+                />
+              )}
+
+              {/* EV/EBITDA Video Tutorial Section */}
+              {valuation.valuation_method === "ev_ebitda" && (
+                <VideoTutorial
+                  title="EV/EBITDA Tutorial: Complete Guide"
+                  description="Learn relative valuation and EV/EBITDA multiples that compares to historical values and peers."
+                  videoId="7_cJfQ_qKmM"
+                  startTime={15}
+                  className="mb-4"
+                />
+              )}
               
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">

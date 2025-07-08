@@ -225,11 +225,19 @@ import { Music } from 'lucide-react';
 ```
 src/
 ├── components/
-│   └── seo/
-│       ├── structured-data.tsx     # JSON-LD schema components
-│       └── article-seo.tsx         # SEO helper functions
+│   ├── seo/
+│   │   ├── structured-data.tsx     # JSON-LD schema components
+│   │   └── article-seo.tsx         # SEO helper functions
+│   ├── stock/
+│   │   ├── stock-fundamentals-analysis.tsx  # Financial Health + video
+│   │   └── stock-valuation.tsx     # DCF/EV-EBITDA + videos
+│   └── ui/
+│       └── video-tutorial.tsx      # Reusable video component
 ├── app/
 │   ├── layout.tsx                  # Main SEO metadata
+│   ├── stock/
+│   │   └── [ticker]/
+│   │       └── page.tsx            # Stock analysis pages
 │   └── articles/
 │       └── [article-name]/
 │           └── page.tsx            # Include SEO components
@@ -250,6 +258,66 @@ Root:
 1. **Development**: `npm run dev`
 2. **Build**: `npm run build` (auto-generates sitemap)
 3. **Deploy**: Sitemap and robots.txt included automatically
+
+## Video Tutorial Integration for Stock Analysis
+
+### 1. VideoTutorial Component
+- **Location**: `src/components/ui/video-tutorial.tsx`
+- **Purpose**: Reusable component for embedding educational YouTube videos
+- **Usage**: Stock analysis sections (Financial Health, DCF, EV/EBITDA, etc.)
+
+### 2. VideoTutorial Component Interface
+```tsx
+interface VideoTutorialProps {
+  title: string;           // Tutorial title (e.g., "DCF Tutorial: Step-by-Step Guide")
+  description: string;     // Educational description
+  videoId: string;        // YouTube video ID (not full URL)
+  startTime?: number;     // Optional start time in seconds
+  className?: string;     // Optional additional CSS classes
+}
+```
+
+### 3. Implementation Pattern
+```tsx
+import { VideoTutorial } from "@/components/ui/video-tutorial";
+
+// Example usage in stock analysis components
+{analysisMethod === "dcf" && (
+  <VideoTutorial
+    title="DCF Tutorial: Step-by-Step Guide"
+    description="Learn how to build a DCF model from scratch and understand the key assumptions."
+    videoId="DEzMJY7dJ6o"
+    startTime={6}
+    className="mb-4"
+  />
+)}
+```
+
+### 4. Video Tutorial Guidelines
+- **Hidden by Default**: Videos should not auto-play or be visible on page load
+- **Toggle Functionality**: Include "Show Video" / "Hide Video" button
+- **Contextual Placement**: Place tutorials within relevant analysis sections
+- **Educational Focus**: Videos should explain methodology, not provide investment advice
+- **Performance**: Videos only load when user chooses to view them
+
+### 5. Current Video Tutorials
+- **Financial Health**: https://www.youtube.com/watch?v=qOzB4WtPRok
+- **DCF Analysis (Absolute Valuation)**: https://www.youtube.com/watch?v=DEzMJY7dJ6o&t=6s
+- **EV/EBITDA Analysis (Relative Valuation)**: https://www.youtube.com/watch?v=7_cJfQ_qKmM&t=15s
+- **AI Agent Analysis**: https://www.youtube.com/watch?v=QkRPgEI5PZM
+
+### 6. Adding New Video Tutorials
+- Use the reusable VideoTutorial component
+- Extract video ID from YouTube URL (e.g., `DEzMJY7dJ6o` from `youtube.com/watch?v=DEzMJY7dJ6o`)
+- Add `startTime` prop if video should start at specific timestamp
+- Place within the relevant analysis method's conditional rendering
+- Follow consistent naming pattern: `[Method] Tutorial: [Description]`
+
+### 7. Design Standards
+- **Blue theme**: `bg-blue-50 dark:bg-blue-950/30` with blue borders
+- **Compact spacing**: `p-3`, `mb-2`, `mb-3` for reduced visual footprint
+- **Button styling**: Blue background with hover effects and transitions
+- **Responsive video**: `aspect-video` ratio with `max-w-2xl` constraint
 
 ## Quality Checklist for New Articles
 - [ ] Added to `src/data/articles.ts` at the beginning

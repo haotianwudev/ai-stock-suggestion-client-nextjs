@@ -3,6 +3,7 @@
 import { type StockFundamentals } from "@/lib/graphql/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { VideoTutorial } from "@/components/ui/video-tutorial";
 
 type SignalType = "bullish" | "neutral" | "bearish";
 
@@ -264,13 +265,43 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
           DIMENSION_DESCRIPTIONS.growth
         )}
         
-        {renderDimension(
-          "Financial Health", 
-          healthMetrics, 
-          fundamentals.health_score, 
-          fundamentals.health_signal,
-          DIMENSION_DESCRIPTIONS.health
-        )}
+        {/* Enhanced Financial Health Section with Video Tutorial */}
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-bold">Financial Health</h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className={`font-bold ${SIGNAL_COLORS[fundamentals.health_signal.toLowerCase() as SignalType]} capitalize`}>{fundamentals.health_signal}</span>
+                <span className="text-sm text-muted-foreground ml-1">({fundamentals.health_score}/3 metrics)</span>
+              </div>
+            </div>
+            
+            <p className="text-sm text-muted-foreground mb-4">
+              {DIMENSION_DESCRIPTIONS.health}
+            </p>
+            
+            {/* Video Tutorial Section */}
+            <VideoTutorial
+              title="Video Tutorial: Understanding Financial Health"
+              description="Understand how financial health metrics work and why they can sometimes be misleading."
+              videoId="qOzB4WtPRok"
+              className="mb-6"
+            />
+            
+            <div className="space-y-2 mb-4">
+              {healthMetrics.map(renderMetricRow)}
+            </div>
+
+            <div className="mt-2">
+              <Progress 
+                value={(fundamentals.health_score / 3) * 100} 
+                className="h-1.5" 
+              />
+            </div>
+          </CardContent>
+        </Card>
         
         {renderDimension(
           "Valuation", 

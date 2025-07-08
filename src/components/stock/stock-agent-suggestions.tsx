@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, ArrowLeft, User, Check, MessageSquare } from "lucide-react";
 import { StockAgentSuggestion } from "@/lib/graphql/types";
+import { VideoTutorial } from "@/components/ui/video-tutorial";
 
 // Base64 placeholder images (simple SVG circles with initials)
 const PLACEHOLDER_IMAGES: Record<string, string> = {
@@ -128,6 +129,14 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
         </div>
       </CardHeader>
       <CardContent>
+        {/* AI Agent Analysis Video Tutorial */}
+        <VideoTutorial
+          title="AI Agent Video Tutorial: How It Works"
+          description="Learn how AI agents analyze stocks using legendary investors' methodologies and decision-making frameworks."
+          videoId="QkRPgEI5PZM"
+          className="mb-6"
+        />
+
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6">
           {/* Section 1: Agent Selection (Left) - Made Smaller */}
           <div className="w-full lg:w-44 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible">
