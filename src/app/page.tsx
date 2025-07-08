@@ -223,12 +223,6 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {getFilteredArticles(articles, selectedFilter)
               .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
-              .sort((a, b) => {
-                // Parse dates and sort newest first
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
-                return dateB.getTime() - dateA.getTime();
-              })
               .slice(0, showAllArticles ? undefined : 12)
               .map((article) => (
               <ArticleCard 

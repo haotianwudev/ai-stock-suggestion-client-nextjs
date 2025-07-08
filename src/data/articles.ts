@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Transformer Stock Prediction: Comparative Analysis",
+    description: "Recent evidence comparing Transformer architectures against LSTM, GRU, and ARIMA models for financial time series forecasting. Analyzes when Transformers excel versus when traditional models outperform, featuring interactive research findings, model comparisons, and strategic recommendations for practitioners.",
+    slug: "transformer-stock-prediction-comparative-analysis",
+    date: "July 8, 2025",
+    imageUrl: "https://media.licdn.com/dms/image/v2/D5612AQE5ZfaaoK9PTA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710870673636?e=1757548800&v=beta&t=sk6R20VFBNmIza_r43BmcFs_sarUWSjwM7qyQRFRg5Q",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSkvFTJlpuwrDeezheZNTnmhlwyRtCyfR9W4DwSR5u76iBvQcSgzb48rpl86GtDe2wDFSDc1ZfapzoA/pub",
+    deepResearch: true
+  },
+  {
     title: "Transformers in Systematic Trading",
     description: "Dive into the revolutionary Transformer architecture and its applications in systematic trading. Explores the core innovation of self-attention, adaptation for financial time series, forecasting capabilities, NLP integration for quantamental strategies, and factor generation. Includes model comparisons, challenges, and real-world case studies like Stockformer and Quantformer.",
     slug: "transformer-systematic-trading-architecture-applications",
