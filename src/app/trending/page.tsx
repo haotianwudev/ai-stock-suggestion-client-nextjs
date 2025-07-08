@@ -289,9 +289,9 @@ export default function TrendingPage() {
       <main className="flex-1 container py-8">
         <div className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight">Trending Stocks</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Stock Analysis & Tutorials</h1>
             <p className="text-muted-foreground">
-              More stocks supported soon!
+              Pick a trending stock to see comprehensive analysis, AI agent suggestions, and tutorials.
             </p>
           </div>
           

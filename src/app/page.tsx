@@ -87,7 +87,7 @@ export default function Home() {
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link href="/trending">
                     <SearchIcon className="mr-2 h-4 w-4" />
-                    AI Stocks Analysis
+                    Stocks Analysis & Tutorials
                   </Link>
                 </Button>
                 
