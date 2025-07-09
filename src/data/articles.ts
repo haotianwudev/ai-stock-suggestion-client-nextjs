@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Structured Notes Demystified",
+    description: "Structured notes, the sophisticated investment tools favored by high-net-worth investors. Explores the hybrid debt-derivative structure, risk-reward profiles, types including autocallable and reverse convertible notes, issuer credit risk considerations, and comprehensive due diligence framework for evaluating these complex financial instruments.",
+    slug: "structured-notes-demystified-comprehensive-guide",
+    date: "July 9, 2025",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*mjramkDMFNaxTKSV.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
+    deepResearch: true
+  },
+  {
     title: "Transformer Stock Prediction: Comparative Analysis",
     description: "Recent evidence comparing Transformer architectures against LSTM, GRU, and ARIMA models for financial time series forecasting. Analyzes when Transformers excel versus when traditional models outperform, featuring interactive research findings, model comparisons, and strategic recommendations for practitioners.",
     slug: "transformer-stock-prediction-comparative-analysis",
