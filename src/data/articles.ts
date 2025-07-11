@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "AI Uncovers the Truth: Do Finfluencers nail the market?",
+    description: "Have you ever wondered if the \"finfluencers\" you see on YouTube and TikTok actually know what they're talking about? They sound so confident, but do their stock picks actually make you money? We're diving into some groundbreaking research to find out!",
+    slug: "ai-uncovers-truth-finfluencers-nail-market",
+    date: "July 11, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=qUDsz4wMhHU",
+    isVideo: true,
+    imageUrl: "/images/AI Uncovers the Truth Do Finfluencers nail market.jpg"
+  },
+  {
     title: "Tax-Efficient Option Writing and Common Pitfalls",
     description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
     slug: "tax-efficient-option-writing-comprehensive-guide",
