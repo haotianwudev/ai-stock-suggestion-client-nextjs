@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Tax-Efficient Option Writing and Common Pitfalls",
+    description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
+    slug: "tax-efficient-option-writing-comprehensive-guide",
+    date: "July 10, 2025",
+    imageUrl: "https://dariusforoux.com/wp-content/uploads/2021/06/more-options-more-happiness-1024x768.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Structured Notes Demystified",
     description: "Structured notes, the sophisticated investment tools favored by high-net-worth investors. Explores the hybrid debt-derivative structure, risk-reward profiles, types including autocallable and reverse convertible notes, issuer credit risk considerations, and comprehensive due diligence framework for evaluating these complex financial instruments.",
     slug: "structured-notes-demystified-comprehensive-guide",
