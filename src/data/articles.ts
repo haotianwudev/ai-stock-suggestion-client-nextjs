@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Personal Quant Trading Strategies",
+    description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
+    slug: "personal-quant-trading-strategies-independent-analysts",
+    date: "July 12, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
+    deepResearch: true
+  },
+  {
     title: "AI Uncovers the Truth: Do Finfluencers nail the market?",
     description: "Have you ever wondered if the \"finfluencers\" you see on YouTube and TikTok actually know what they're talking about? They sound so confident, but do their stock picks actually make you money? We're diving into some groundbreaking research to find out!",
     slug: "ai-uncovers-truth-finfluencers-nail-market",
