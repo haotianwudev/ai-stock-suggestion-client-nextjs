@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Options Trader's Toolkit",
+    description: "Blueprint for constructing a high-performance options trading ecosystem. Covers the five foundational pillars: execution platforms, analytical tools, decision support systems, information feeds, and performance tracking. Essential guide for Pro-Am traders seeking to build a professional-grade trading infrastructure.",
+    slug: "options-trader-toolkit-requirements",
+    date: "July 13, 2025",
+    imageUrl: "https://static.wixstatic.com/media/b22cff_0b301fcebf854ae592f90aad34fc46bf~mv2.png/v1/fill/w_280,h_280,al_c,lg_1,q_85,enc_avif,quality_auto/b22cff_0b301fcebf854ae592f90aad34fc46bf~mv2.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRO9VD_EYAJBbNPd0Cz3GNLJg39gPb31QeB3eXqIwlYZUbjS4zVFyYhglOr4CvGnUi4rPgklUKaPAE/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Personal Quant Trading Strategies",
     description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
     slug: "personal-quant-trading-strategies-independent-analysts",
