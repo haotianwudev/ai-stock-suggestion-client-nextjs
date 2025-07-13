@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Advanced Option Strategy: Earnings Volatility Selling",
+    description: "The earnings volatility selling option strategy, covering data-driven approaches to options trading before earnings announcements. Learn how to profit from IV crush using straddles and calendar spreads with proper risk management and position sizing techniques.",
+    slug: "earnings-volatility-selling-strategy-complete-guide",
+    date: "July 13, 2025",
+    imageUrl: "https://i0.wp.com/tejimandi.com/wp-content/uploads/2024/12/Effect-of-Corporate-Earnings-Reports-on-Stock-Prices-Blog.png?fit=1024%2C553&ssl=1",
+    bookSummary: true,
+    options: true,
+    deepResearch: false
+  },
+  {
     title: "Options Trader's Toolkit",
     description: "Blueprint for constructing a high-performance options trading ecosystem. Covers the five foundational pillars: execution platforms, analytical tools, decision support systems, information feeds, and performance tracking. Essential guide for Pro-Am traders seeking to build a professional-grade trading infrastructure.",
     slug: "options-trader-toolkit-requirements",
