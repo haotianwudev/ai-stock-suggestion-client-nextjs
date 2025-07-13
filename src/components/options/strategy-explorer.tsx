@@ -132,17 +132,19 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             </div>
         </div>
 
+        {/* Payoff Diagram - Show for ALL strategies */}
+        <div className="mt-6 md:mt-8">
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Risk Profile (Payoff Diagram)</h3>
+                <div className="chart-container h-[250px] md:h-[300px]">
+                    <PayoffChart strategy={strategy} />
+                </div>
+            </div>
+        </div>
+
         {/* Special expanded content for Wheel Strategy */}
         {strategy.id === 'wheel_strategy' && (
             <div className="mt-6 md:mt-8 space-y-6">
-                {/* Payoff Diagram */}
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Risk Profile (Payoff Diagram)</h3>
-                    <div className="chart-container h-[250px] md:h-[300px]">
-                        <PayoffChart strategy={strategy} />
-                    </div>
-                </div>
-
                 {/* Strategy Intuition */}
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                     <h3 className="text-lg font-bold text-slate-800 mb-3">🧠 Strategy Intuition</h3>
