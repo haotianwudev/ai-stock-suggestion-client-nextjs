@@ -22,11 +22,14 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
     <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
       <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
         {imageUrl && (
-          <div className="relative flex-shrink-0 w-full sm:w-28 h-40 sm:h-28 rounded-lg overflow-hidden bg-gray-100">
+          <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100">
             <img 
               src={imageUrl} 
               alt={title} 
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain hover:object-cover transition-all duration-300"
+              onError={(e) => {
+                e.currentTarget.className = "h-full w-full object-cover hover:object-contain transition-all duration-300";
+              }}
             />
             {deepResearch && (
               <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-xs text-white font-semibold shadow">

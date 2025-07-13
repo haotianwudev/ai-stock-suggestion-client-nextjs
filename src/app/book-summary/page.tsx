@@ -64,7 +64,7 @@ export default function BookSummaryPage() {
             </button>
           </form>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {bookArticles.map(article => (
               <ArticleCard
                 key={article.slug}

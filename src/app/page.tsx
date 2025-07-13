@@ -220,7 +220,7 @@ export default function Home() {
             </div>
           )}
           
-          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {getFilteredArticles(articles, selectedFilter)
               .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
               .slice(0, showAllArticles ? undefined : 12)
