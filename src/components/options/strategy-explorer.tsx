@@ -1,5 +1,10 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+// Register ChartJS components
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 // --- DATA STORE ---
 const data = {
@@ -16,40 +21,89 @@ const data = {
         { id: 'iron_condor', category: 'Neutral', name: 'Iron Condor', description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
         { id: 'long_straddle', category: 'Volatility', name: 'Long Straddle', description: "A bet on a large price move in either direction. Buy an at-the-money call and put. You profit if the stock makes a big move, up or down, covering the cost of both options.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
         { id: 'long_strangle', category: 'Volatility', name: 'Long Strangle', description: "A cheaper alternative to the long straddle. Buy an out-of-the-money call and put. Requires a larger price move to be profitable, but the initial cost is lower.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
+        { id: 'wheel_strategy', category: 'Bullish', name: 'Wheel Strategy (Triple Income)', description: "A systematic income-generating strategy creating three income sources: put premiums, call premiums, and dividends. Popular among income-focused traders for generating consistent returns of 7-15% annually when executed properly.", profile: 'Stock Risk, Triple Income', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
     ]
 };
 
 const PayoffChart = ({ strategy }: { strategy: any }) => {
-    const chartRef = useRef<HTMLCanvasElement>(null);
-    useEffect(() => {
-        if (!chartRef.current || typeof window === 'undefined' || !(window as any).Chart) return;
-        const ctx = chartRef.current.getContext('2d');
-        const stockPrice = 100, strike1 = 100, strike2 = 105, strike3 = 95, strike4 = 90, premium = 2.5;
-        const labels = Array.from({ length: 41 }, (_, i) => stockPrice - 20 + i);
-        let payoffData;
-        switch (strategy.id) {
-            case 'long_call': payoffData = labels.map(p => Math.max(0, p - strike1) - premium); break;
-            case 'bull_call_spread': payoffData = labels.map(p => Math.min(strike2 - strike1, Math.max(0, p - strike1)) - Math.max(0, p - strike2) - premium * 0.5); break;
-            case 'bull_put_spread': payoffData = labels.map(p => (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4)); break;
-            case 'covered_call': payoffData = labels.map(p => (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium))); break;
-            case 'sell_naked_put': payoffData = labels.map(p => (p >= strike1 ? premium : premium + (p - strike1))); break;
-            case 'long_put': payoffData = labels.map(p => Math.max(0, strike1 - p) - premium); break;
-            case 'bear_put_spread': payoffData = labels.map(p => Math.max(0, strike1 - p) - Math.max(0, strike3 - p) - premium * 0.5); break;
-            case 'bear_call_spread': payoffData = labels.map(p => (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1)); break;
-            case 'short_straddle': payoffData = labels.map(p => (premium * 2) - Math.abs(p - strike1)); break;
-            case 'iron_condor': payoffData = labels.map(p => 1.0 - Math.max(0, p - strike2) - Math.max(0, strike4 - p)); break;
-            case 'long_straddle': payoffData = labels.map(p => Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2)); break;
-            case 'long_strangle': payoffData = labels.map(p => Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5)); break;
-            default: payoffData = labels.map(() => 0);
+    const stockPrice = 100, strike1 = 100, strike2 = 105, strike3 = 95, strike4 = 90, premium = 2.5;
+    const labels = Array.from({ length: 41 }, (_, i) => stockPrice - 20 + i);
+    let payoffData;
+    
+    switch (strategy.id) {
+        case 'long_call': payoffData = labels.map(p => Math.max(0, p - strike1) - premium); break;
+        case 'bull_call_spread': payoffData = labels.map(p => Math.min(strike2 - strike1, Math.max(0, p - strike1)) - Math.max(0, p - strike2) - premium * 0.5); break;
+        case 'bull_put_spread': payoffData = labels.map(p => (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4)); break;
+        case 'covered_call': payoffData = labels.map(p => (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium))); break;
+        case 'sell_naked_put': payoffData = labels.map(p => (p >= strike1 ? premium : premium + (p - strike1))); break;
+        case 'long_put': payoffData = labels.map(p => Math.max(0, strike1 - p) - premium); break;
+        case 'bear_put_spread': payoffData = labels.map(p => Math.max(0, strike1 - p) - Math.max(0, strike3 - p) - premium * 0.5); break;
+        case 'bear_call_spread': payoffData = labels.map(p => (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1)); break;
+        case 'short_straddle': payoffData = labels.map(p => (premium * 2) - Math.abs(p - strike1)); break;
+        case 'iron_condor': payoffData = labels.map(p => 1.0 - Math.max(0, p - strike2) - Math.max(0, strike4 - p)); break;
+        case 'long_straddle': payoffData = labels.map(p => Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2)); break;
+        case 'long_strangle': payoffData = labels.map(p => Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5)); break;
+        case 'wheel_strategy': payoffData = labels.map(p => {
+            const putPremium = 2.0, callPremium = 1.5, stockBuyPrice = 97, callStrike = 105;
+            const totalPremium = putPremium + callPremium;
+            if (p <= stockBuyPrice) return totalPremium + (p - stockBuyPrice);
+            else if (p <= callStrike) return totalPremium + (p - stockBuyPrice);
+            else return totalPremium + (callStrike - stockBuyPrice);
+        }); break;
+        default: payoffData = labels.map(() => 0);
+    }
+
+    const hasProfit = payoffData.some((v: number) => v > 0);
+    
+    const chartData = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Profit / Loss',
+                data: payoffData,
+                borderColor: hasProfit ? '#10b981' : '#ef4444',
+                backgroundColor: hasProfit ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                pointRadius: 0,
+                tension: 0.1
+            },
+            {
+                label: 'Breakeven',
+                data: labels.map(() => 0),
+                borderColor: '#6b7280',
+                borderWidth: 2,
+                pointRadius: 0,
+                borderDash: [5, 5]
+            }
+        ]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    title: (items: any) => `Stock Price: $${items[0].label}`,
+                    label: (item: any) => `P/L: $${item.raw.toFixed(2)}`
+                }
+            }
+        },
+        scales: {
+            x: {
+                title: { display: true, text: 'Underlying Price at Expiration' },
+                grid: { color: 'rgba(200, 200, 200, 0.1)' }
+            },
+            y: {
+                title: { display: true, text: 'Profit / Loss' },
+                grid: { color: 'rgba(200, 200, 200, 0.1)' }
+            }
         }
-        const chart = new (window as any).Chart(ctx, {
-            type: 'line',
-            data: { labels, datasets: [ { label: 'Profit / Loss', data: payoffData, borderColor: payoffData.some((v: number) => v > 0) ? '#10b981' : '#ef4444', backgroundColor: payoffData.some((v: number) => v > 0) ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', borderWidth: 2, fill: true, pointRadius: 0, tension: 0.1 }, { type: 'line', label: 'Breakeven', data: labels.map(() => 0), borderColor: '#6b7280', borderWidth: 2, pointRadius: 0, borderDash: [5, 5] } ] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { title: (items: any) => `Stock Price: $${items[0].label}`, label: (item: any) => `P/L: $${item.raw.toFixed(2)}` } } }, scales: { x: { title: { display: true, text: 'Underlying Price at Expiration' }, grid: { color: 'rgba(200, 200, 200, 0.1)' } }, y: { title: { display: true, text: 'Profit / Loss' }, grid: { color: 'rgba(200, 200, 200, 0.1)' } } } }
-        });
-        return () => chart.destroy();
-    }, [strategy]);
-    return <canvas ref={chartRef} />;
+    };
+
+    return <Line data={chartData} options={options} />;
 };
 
 const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => (
@@ -62,6 +116,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
         </button>
         <h2 className="text-2xl md:text-3xl font-bold leading-tight">{strategy.name}</h2>
         <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed">{strategy.description}</p>
+        
         <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
             <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
                 <p className="text-xs md:text-sm font-medium text-gray-500">Risk / Reward</p>
@@ -76,10 +131,319 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                 <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.time}</p>
             </div>
         </div>
-        <div className="mt-6 md:mt-8">
-            <h3 className="text-lg md:text-xl font-bold text-center">Risk Profile (Payoff Diagram)</h3>
-            <div className="chart-container mt-4 h-[250px] md:h-[300px]"><PayoffChart strategy={strategy} /></div>
-        </div>
+
+        {/* Special expanded content for Wheel Strategy */}
+        {strategy.id === 'wheel_strategy' && (
+            <div className="mt-6 md:mt-8 space-y-6">
+                {/* Payoff Diagram */}
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Risk Profile (Payoff Diagram)</h3>
+                    <div className="chart-container h-[250px] md:h-[300px]">
+                        <PayoffChart strategy={strategy} />
+                    </div>
+                </div>
+
+                {/* Strategy Intuition */}
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 className="text-lg font-bold text-slate-800 mb-3">🧠 Strategy Intuition</h3>
+                    <div className="text-sm text-slate-700 space-y-4">
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">Core Concept:</h4>
+                            <p className="mb-2">The wheel strategy leverages <strong>time decay (theta)</strong> and <strong>implied volatility contraction</strong> to generate consistent income. You're essentially acting as an "insurance company" - collecting premiums from other traders who want to hedge their positions.</p>
+                            <p>The strategy works because <strong>most options expire worthless</strong> (approximately 80-90%), allowing you to keep the premium collected while managing the minority of positions that move against you.</p>
+                        </div>
+                        
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">Why It Works:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Time decay advantage:</strong> Options lose value daily, benefiting sellers</li>
+                                <li>• <strong>Volatility premium harvesting:</strong> IV often overstates actual movement</li>
+                                <li>• <strong>Probability mathematics:</strong> Selling 16-30 delta options gives ~70-84% win rate</li>
+                                <li>• <strong>Mean reversion tendency:</strong> Stocks often return to fair value over time</li>
+                            </ul>
+                        </div>
+
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">Triple Income Mechanism:</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+                                <div className="bg-green-100 p-2 rounded">
+                                    <p className="font-medium text-green-800">1. Put Premiums</p>
+                                    <p className="text-xs text-green-700">Collect income while waiting for good entry prices</p>
+                                </div>
+                                <div className="bg-blue-100 p-2 rounded">
+                                    <p className="font-medium text-blue-800">2. Call Premiums</p>
+                                    <p className="text-xs text-blue-700">Generate income from owned shares while waiting to sell</p>
+                                </div>
+                                <div className="bg-purple-100 p-2 rounded">
+                                    <p className="font-medium text-purple-800">3. Dividends</p>
+                                    <p className="text-xs text-purple-700">Bonus income from quality dividend-paying stocks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">Put-Call Parity & Mathematical Equivalence:</h4>
+                            <div className="mb-3">
+                                <p className="mb-2">The wheel strategy leverages <strong>put-call parity</strong>: <code className="bg-slate-200 px-1 rounded">C + X = P + S</code></p>
+                                <p className="mb-2">This means <strong>selling a covered call is mathematically equivalent to selling a cash-secured put</strong> at the same strike and expiration. The wheel combines both approaches:</p>
+                                <ul className="space-y-1 ml-4 text-xs">
+                                    <li>• <strong>Phase 1 (Put):</strong> Collect premium, potentially acquire shares at desired price</li>
+                                    <li>• <strong>Phase 2 (Call):</strong> Collect premium, potentially sell shares at desired price</li>
+                                    <li>• <strong>Continuous cycle:</strong> Seamlessly transitions between equivalent positions</li>
+                                </ul>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                                <div className="bg-green-100 p-3 rounded">
+                                    <h5 className="font-medium text-green-800 mb-1">✅ Pros of Combined Approach:</h5>
+                                    <ul className="text-xs text-green-700 space-y-1">
+                                        <li>• <strong>Flexible positioning:</strong> Always optimal premium collection</li>
+                                        <li>• <strong>Natural hedging:</strong> Losses in one phase offset by gains in another</li>
+                                        <li>• <strong>Consistent income:</strong> Premium collection in both market directions</li>
+                                        <li>• <strong>Assignment management:</strong> Structured approach to entries/exits</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-red-100 p-3 rounded">
+                                    <h5 className="font-medium text-red-800 mb-1">❌ Cons of Combined Approach:</h5>
+                                    <ul className="text-xs text-red-700 space-y-1">
+                                        <li>• <strong>Capital intensive:</strong> Requires large cash reserves</li>
+                                        <li>• <strong>Opportunity cost:</strong> Capital tied up in assignments</li>
+                                        <li>• <strong>Sequence risk:</strong> Poor timing can amplify losses</li>
+                                        <li>• <strong>Complexity:</strong> Requires active management and discipline</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">Why Called the "Wheel" Strategy:</h4>
+                            <p className="mb-2">The name "wheel" comes from the <strong>circular, repetitive nature</strong> of the strategy:</p>
+                            <div className="bg-slate-100 p-3 rounded-lg mt-2">
+                                <p className="text-center font-medium text-slate-800">💰 Sell Put → 📈 Get Assigned → 📞 Sell Call → 🎯 Get Called Away → 🔄 Repeat</p>
+                            </div>
+                            <p className="mt-2 text-xs">Like a wheel spinning, the strategy cycles continuously between these phases, generating income at each stage while managing risk through systematic position transitions.</p>
+                        </div>
+
+                        <div className="border-l-4 border-slate-300 pl-4">
+                            <h4 className="font-semibold text-slate-800 mb-2">When to Transition from Put to Call Writing:</h4>
+                            <div className="space-y-2">
+                                <div className="bg-orange-100 p-2 rounded">
+                                    <p className="font-medium text-orange-800 text-sm">🔄 Automatic Transition Triggers:</p>
+                                    <ul className="text-xs text-orange-700 space-y-1 ml-4 mt-1">
+                                        <li>• <strong>Put assignment:</strong> When your put expires ITM, you automatically own shares</li>
+                                        <li>• <strong>Early assignment:</strong> Rare but possible, especially near ex-dividend dates</li>
+                                        <li>• <strong>Voluntary assignment:</strong> You can choose to buy shares if put is profitable</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-blue-100 p-2 rounded">
+                                    <p className="font-medium text-blue-800 text-sm">⚡ Optimal Timing Considerations:</p>
+                                    <ul className="text-xs text-blue-700 space-y-1 ml-4 mt-1">
+                                        <li>• <strong>Immediately after assignment:</strong> Start selling calls the next trading day</li>
+                                        <li>• <strong>Strike selection:</strong> Choose call strike AT or ABOVE your cost basis</li>
+                                        <li>• <strong>Market conditions:</strong> Higher volatility = better call premiums</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Step-by-Step Trading Procedure */}
+                <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                    <h3 className="text-lg font-bold text-indigo-800 mb-3">📋 Step-by-Step Trading Procedure</h3>
+                    <div className="text-sm text-indigo-700 space-y-4">
+                        <div className="border-l-4 border-indigo-300 pl-4">
+                            <h4 className="font-semibold text-indigo-800">Phase 1: Cash-Secured Put Phase</h4>
+                            <ol className="list-decimal list-inside space-y-1 mt-2">
+                                <li><strong>Screen underliers:</strong> Select high-quality stocks/ETFs with good liquidity</li>
+                                <li><strong>Calculate position size:</strong> Determine appropriate capital allocation</li>
+                                <li><strong>Select strike:</strong> Choose appropriate delta put, typically OTM</li>
+                                <li><strong>Choose expiration:</strong> Select optimal time to expiration</li>
+                                <li><strong>Execute trade:</strong> Sell cash-secured put, collect premium</li>
+                            </ol>
+                        </div>
+                        
+                        <div className="border-l-4 border-indigo-300 pl-4">
+                            <h4 className="font-semibold text-indigo-800">Phase 2: Managing the Put</h4>
+                            <ol className="list-decimal list-inside space-y-1 mt-2">
+                                <li><strong>Monitor daily:</strong> Track P&L and delta changes</li>
+                                <li><strong>Profit taking:</strong> Close at predetermined profit targets</li>
+                                <li><strong>Rolling decision:</strong> If ATM, consider rolling out for net credit</li>
+                                <li><strong>Assignment preparation:</strong> Ensure sufficient cash if strike breached</li>
+                                <li><strong>Accept assignment:</strong> If put expires ITM, take delivery of shares</li>
+                            </ol>
+                        </div>
+
+                        <div className="border-l-4 border-indigo-300 pl-4">
+                            <h4 className="font-semibold text-indigo-800">Phase 3: Covered Call Phase</h4>
+                            <ol className="list-decimal list-inside space-y-1 mt-2">
+                                <li><strong>Calculate cost basis:</strong> Stock price - put premiums collected</li>
+                                <li><strong>Select call strike:</strong> AT or ABOVE cost basis (never below)</li>
+                                <li><strong>Choose expiration:</strong> Select optimal time to expiration</li>
+                                <li><strong>Execute trade:</strong> Sell covered call against owned shares</li>
+                            </ol>
+                        </div>
+
+                        <div className="border-l-4 border-indigo-300 pl-4">
+                            <h4 className="font-semibold text-indigo-800">Phase 4: Managing the Call</h4>
+                            <ol className="list-decimal list-inside space-y-1 mt-2">
+                                <li><strong>Monitor position:</strong> Track call's intrinsic value vs. time value</li>
+                                <li><strong>Profit taking:</strong> Close at predetermined profit targets</li>
+                                <li><strong>Rolling up/out:</strong> If profitable, roll to higher strike for credit</li>
+                                <li><strong>Assignment outcome:</strong> If called away, calculate total cycle profit</li>
+                                <li><strong>Cycle restart:</strong> Return to Phase 1 with new capital</li>
+                            </ol>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h3 className="text-lg font-bold text-green-800 mb-3">🎯 Best Practices</h3>
+                    <div className="text-sm text-green-700 space-y-3">
+                        <div>
+                            <h4 className="font-semibold text-green-800 mb-2">Option Selection:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• Use <strong>16-30 delta options</strong> for optimal risk/reward balance</li>
+                                <li>• Target <strong>7-45 DTE</strong> (Days to Expiration) for best premium collection</li>
+                                <li>• Aim for <strong>0.5-2.0% monthly premium</strong> returns</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-green-800 mb-2">Position Management:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Never sell calls below cost basis</strong> - guaranteed loss</li>
+                                <li>• <strong>Always collect net credit</strong> when rolling positions</li>
+                                <li>• Take profits at <strong>50% premium decay</strong> rather than holding to expiration</li>
+                                <li>• <strong>Roll at 21 DTE</strong> - avoid gamma risk near expiration</li>
+                                <li>• Roll ATM positions to avoid unwanted assignment</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-green-800 mb-2">Risk Management:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Position size appropriately</strong> - never risk more than 5-10% per trade</li>
+                                <li>• Only wheel stocks you're <strong>comfortable owning long-term</strong></li>
+                                <li>• Maintain sufficient cash reserves for potential assignments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h3 className="text-lg font-bold text-blue-800 mb-3">📊 Suitable Market Conditions</h3>
+                    <ul className="text-sm text-blue-700 space-y-2">
+                        <li>• <strong>Sideways to mildly bullish markets</strong> - wheel strategy thrives here</li>
+                        <li>• <strong>High implied volatility periods</strong> - generates better premium income</li>
+                        <li>• <strong>Stable trending markets</strong> - avoid during extreme volatility or crashes</li>
+                        <li>• Works best in <strong>bull markets or consolidation phases</strong></li>
+                    </ul>
+                </div>
+
+                <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                    <h3 className="text-lg font-bold text-purple-800 mb-3">🏆 Recommended Underliers</h3>
+                    <div className="text-sm text-purple-700 space-y-2">
+                        <p><strong>High-quality dividend stocks:</strong> AAPL, MSFT, GOOGL, AMZN, JNJ</p>
+                        <p><strong>Broad market ETFs:</strong> SPY, QQQ, IWM - provide diversification</p>
+                        <p><strong>Blue-chip stocks</strong> with strong fundamentals you'd want to own long-term</p>
+                        <p><strong>Avoid:</strong> Meme stocks, penny stocks, low-volume options, earnings-volatile stocks</p>
+                    </div>
+                </div>
+
+                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                    <h3 className="text-lg font-bold text-red-800 mb-3">⚠️ Common Pitfalls</h3>
+                    <div className="text-sm text-red-700 space-y-3">
+                        <div>
+                            <h4 className="font-semibold text-red-800 mb-2">Position Sizing Errors:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Overleveraging</strong> - using too much capital on single positions</li>
+                                <li>• <strong>Insufficient cash reserves</strong> - not preparing for assignment</li>
+                                <li>• <strong>Portfolio concentration</strong> - wheeling too many similar stocks</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-red-800 mb-2">Strike Selection Mistakes:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Chasing high premiums</strong> on risky, volatile stocks</li>
+                                <li>• <strong>Selling calls below cost basis</strong> - locking in guaranteed losses</li>
+                                <li>• <strong>Wrong delta selection</strong> - too high (&gt;30) or too low (&lt;16)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-red-800 mb-2">Management Failures:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>Not rolling ATM positions</strong> - letting yourself get assigned unnecessarily</li>
+                                <li>• <strong>Holding to expiration</strong> - ignoring profit-taking rules</li>
+                                <li>• <strong>Rolling for net debit</strong> - paying to extend losing positions</li>
+                                <li>• <strong>Ignoring market conditions</strong> - running wheel during bear markets</li>
+                                <li>• <strong>Emotional trading</strong> - abandoning systematic approach during stress</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <h3 className="text-lg font-bold text-yellow-800 mb-3">📈 Performance Metrics</h3>
+                    <div className="text-sm text-yellow-700 space-y-3">
+                        <div>
+                            <h4 className="font-semibold text-yellow-800 mb-2">Expected Returns:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>7-15% annually</strong> when executed properly (based on backtesting)</li>
+                                <li>• <strong>Higher returns in volatile markets</strong> due to elevated premium</li>
+                                <li>• <strong>Win rate:</strong> Approximately 70-84% based on delta selection</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-yellow-800 mb-2">Capital Requirements:</h4>
+                            <ul className="space-y-1 ml-4">
+                                <li>• <strong>High initial capital</strong> - requires cash to secure puts</li>
+                                <li>• <strong>Additional reserves</strong> - for potential stock assignments</li>
+                                <li>• <strong>Minimum $10,000+</strong> recommended for effective diversification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
+                    <h3 className="text-lg font-bold text-teal-800 mb-3">📚 Learn More Resources</h3>
+                    <div className="text-sm text-teal-700 space-y-3">
+                        <div>
+                            <h4 className="font-semibold text-teal-800 mb-2">Educational Content:</h4>
+                            <div className="space-y-1 ml-4">
+                                <a href="https://www.tastylive.com/news-insights/how-to-convert-a-short-put-into-a-covered-call" 
+                                   target="_blank" rel="noopener noreferrer" 
+                                   className="text-blue-600 hover:underline block">
+                                   • tastylive: Converting Short Put to Covered Call
+                                </a>
+                                <a href="https://optionalpha.com/blog/wheel-strategy" 
+                                   target="_blank" rel="noopener noreferrer" 
+                                   className="text-blue-600 hover:underline block">
+                                   • Option Alpha: Wheel Strategy Guide
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-teal-800 mb-2">Community & Tools:</h4>
+                            <div className="space-y-1 ml-4">
+                                <a href="https://www.reddit.com/r/Optionswheel/" 
+                                   target="_blank" rel="noopener noreferrer" 
+                                   className="text-blue-600 hover:underline block">
+                                   • Reddit: r/Optionswheel Community
+                                </a>
+                                <a href="https://yieldcollector.com/calculators" 
+                                   target="_blank" rel="noopener noreferrer" 
+                                   className="text-blue-600 hover:underline block">
+                                   • Yield Collector: Options Calculators & Tools
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
+
+
     </div>
 );
 
