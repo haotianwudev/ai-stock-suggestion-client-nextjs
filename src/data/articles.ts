@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Smart Beta: Guide to Systematic and Personal Strategies",
+    description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
+    slug: "smart-beta-systematic-personal-investing-strategies",
+    date: "July 15, 2025",
+    imageUrl: "https://www.justetf.com/images/news/202002-smart-beta-en.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub",
+    deepResearch: true
+  },
+  {
     title: "Essential Reading for Value Investors",
     description: "A curated collection of must-read books for value investors and deep thinkers. Features timeless wisdom on investing, finance, psychology, and life philosophy from legendary authors like Warren Buffett, Charlie Munger, Howard Marks, and Morgan Housel.",
     slug: "essential-reading-for-investors",
