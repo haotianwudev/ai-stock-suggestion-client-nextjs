@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Essential Reading for Value Investors",
+    description: "A curated collection of must-read books for value investors and deep thinkers. Features timeless wisdom on investing, finance, psychology, and life philosophy from legendary authors like Warren Buffett, Charlie Munger, Howard Marks, and Morgan Housel.",
+    slug: "essential-reading-for-investors",
+    date: "July 14, 2025",
+    imageUrl: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
+    deepResearch: false,
+    bookSummary: false,
+  },
+  {
     title: "Advanced Option Strategy: Earnings Volatility Selling",
     description: "The earnings volatility selling option strategy, covering data-driven approaches to options trading before earnings announcements. Learn how to profit from IV crush using straddles and calendar spreads with proper risk management and position sizing techniques.",
     slug: "earnings-volatility-selling-strategy-complete-guide",
