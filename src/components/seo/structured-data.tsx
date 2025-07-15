@@ -13,11 +13,11 @@ export function StructuredData({ article }: StructuredDataProps) {
     image: article.imageUrl || '/images/agents/SOPHIE.png',
     author: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Blog",
+      name: "SOPHIE's Daddy Quant Blog",
     },
     publisher: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Blog",
+      name: "SOPHIE's Daddy Quant Blog",
       logo: {
         '@type': 'ImageObject',
         url: '/images/agents/SOPHIE.png',

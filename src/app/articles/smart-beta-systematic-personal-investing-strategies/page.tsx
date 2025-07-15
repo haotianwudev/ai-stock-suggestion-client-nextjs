@@ -759,7 +759,7 @@ export default function SmartBetaGuide() {
 
         {/* Footer */}
         <footer className="bg-gray-800 text-white text-center p-6 mt-16">
-          <p>&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
+          <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
         </footer>
       </div>
     </>

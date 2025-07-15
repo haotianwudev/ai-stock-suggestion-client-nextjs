@@ -748,7 +748,7 @@ export default function EarningsVolatilitySellingStrategy() {
 
           {/* Footer */}
           <footer className="mt-16 text-center text-gray-500 dark:text-gray-400 text-sm">
-            <p>&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
           </footer>
         </div>
       </div>

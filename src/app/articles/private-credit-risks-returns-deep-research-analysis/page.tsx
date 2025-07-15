@@ -522,7 +522,7 @@ export default function PrivateCreditAnalysis() {
         {/* Footer */}
         <footer className="bg-gray-800 dark:bg-black text-white">
           <div className="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
             <p className="text-sm text-gray-400 mt-2">This analysis draws upon research from multiple sources including the Federal Reserve, IMF, and leading private credit managers. All data and analysis are current as of the publication date.</p>
           </div>
         </footer>

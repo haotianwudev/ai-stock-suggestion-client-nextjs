@@ -324,7 +324,7 @@ const Navbar = ({ page, setPage }: { page: string; setPage: (page: string) => vo
 const FooterComponent = () => (
     <footer className="bg-white border-t border-gray-200 mt-auto">
         <div className="container mx-auto py-8 px-4 text-center text-gray-500">
-            <p>&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
             <p className="text-sm mt-2">This website provides a summary based on public information and does not constitute financial advice.</p>
         </div>
     </footer>

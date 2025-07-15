@@ -745,7 +745,7 @@ export default function StrategicFrameworkRollingOptions() {
       
       <footer className="text-center mt-16 py-8 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
         <p>This comprehensive guide is based on quantitative research and market principles. Always consider your own risk tolerance, market thesis, and trading conditions before implementing any strategy.</p>
-        <p className="mt-2">&copy; 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.</p>
+        <p className="mt-2">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
       </footer>
     </div>
     </>

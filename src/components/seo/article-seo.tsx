@@ -22,14 +22,14 @@ export function generateArticleMetadata(article: Article): Metadata {
     'stock analysis',
     'investment education',
     'financial analysis',
-    "SOPHIE's Daddy Blog",
+    "SOPHIE's Daddy Quant Blog",
     ...(article.options ? ['options trading', 'put options', 'call options', 'options strategies', 'covered calls', 'cash secured puts'] : []),
     ...(article.deepResearch ? ['deep research', 'comprehensive analysis', 'detailed study'] : []),
     ...(article.isVideo ? ['video', 'educational video', 'YouTube'] : []),
     ...(article.bookSummary ? ['book summary', 'trading books', 'investment books'] : []),
   ];
 
-  const title = `${article.title} | SOPHIE's Daddy Blog`;
+  const title = `${article.title} | SOPHIE's Daddy Quant Blog`;
   const description = article.description;
   const url = `https://sophie-ai-finance.com/articles/${article.slug}`;
   const imageUrl = article.imageUrl || '/images/agents/SOPHIE.png';
@@ -38,9 +38,9 @@ export function generateArticleMetadata(article: Article): Metadata {
     title,
     description,
     keywords,
-    authors: [{ name: "SOPHIE's Daddy Blog" }],
-    creator: "SOPHIE's Daddy Blog",
-    publisher: "SOPHIE's Daddy Blog",
+    authors: [{ name: "SOPHIE's Daddy Quant Blog" }],
+    creator: "SOPHIE's Daddy Quant Blog",
+    publisher: "SOPHIE's Daddy Quant Blog",
     robots: 'index, follow',
     alternates: {
       canonical: url,
@@ -49,7 +49,7 @@ export function generateArticleMetadata(article: Article): Metadata {
       title,
       description,
       url,
-      siteName: "SOPHIE's Daddy Blog",
+      siteName: "SOPHIE's Daddy Quant Blog",
       images: [
         {
           url: imageUrl,
@@ -61,7 +61,7 @@ export function generateArticleMetadata(article: Article): Metadata {
       locale: 'en_US',
       type: 'article',
       publishedTime: new Date(article.date).toISOString(),
-      authors: ["SOPHIE's Daddy Blog"],
+      authors: ["SOPHIE's Daddy Quant Blog"],
       section: article.options ? 'Options Trading' : 'Stock Analysis',
       tags: keywords,
     },
@@ -91,11 +91,11 @@ export function createArticleJsonLd(article: Article) {
     image: article.imageUrl || '/images/agents/SOPHIE.png',
     author: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Blog",
+      name: "SOPHIE's Daddy Quant Blog",
     },
     publisher: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Blog",
+      name: "SOPHIE's Daddy Quant Blog",
       logo: {
         '@type': 'ImageObject',
         url: '/images/agents/SOPHIE.png',

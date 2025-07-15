@@ -401,7 +401,7 @@ export default function TransformerTradingArticle() {
         <footer className="bg-white border-t border-gray-200">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-gray-500">
-              © 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
             </p>
             <p className="text-xs text-gray-500 mt-2">
               This article provides a high-level interactive overview. For detailed analysis, formulas, and citations, please refer to the source research document.
