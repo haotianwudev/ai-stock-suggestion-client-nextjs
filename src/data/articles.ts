@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "How to Evaluate Stocks for Options Income Strategies",
+    description: "Covering the four analytical pillars for stock selection in income-generating options strategies: fundamental quality, technical posture, volatility environment, and market structure. Includes strategy-specific frameworks for Cash-Secured Puts, Covered Calls, Wheel Strategy, and Iron Condors.",
+    slug: "systematic-framework-evaluating-stocks-options-strategies",
+    date: "July 16, 2025",
+    imageUrl: "https://i.ytimg.com/vi/qXcBDgc9qzE/sddefault.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTmpYeZUn7bjRGhbU_hL_9ACVnCKT1bS7Xk9AcEKO6TDhOLW1yTDtStnjpWUinsLenw0JeogKTtCOg8/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Smart Beta: Guide to Systematic and Personal Strategies",
     description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
     slug: "smart-beta-systematic-personal-investing-strategies",

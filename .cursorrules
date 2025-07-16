@@ -1,4 +1,4 @@
-# SOPHIE's Daddy Blog - Cursor Rules
+# SOPHIE's Daddy Quant Blog - Cursor Rules
 
 ## Article Creation Workflow
 
@@ -75,7 +75,7 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 - JSX arrows: `&rarr;` not `→`
 - Responsive design with Tailwind CSS
 - Educational disclaimers
-- **Footer branding**: `© 2025 SOPHIE's Daddy Blog. Educational content for informational purposes only.`
+- **Footer branding**: `© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.`
 
 ### 6. Flags Usage
 - `deepResearch: true` for comprehensive analysis
@@ -104,10 +104,10 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 ### 9. SEO Implementation (CRITICAL)
 
 #### 9.1 Branding Standards
-- **Site Name**: "SOPHIE's Daddy Blog"
+- **Site Name**: "SOPHIE's Daddy Quant Blog"
 - **Domain**: https://sophie-ai-finance.com
-- **Author**: "SOPHIE's Daddy Blog"
-- **Publisher**: "SOPHIE's Daddy Blog"
+- **Author**: "SOPHIE's Daddy Quant Blog"
+- **Publisher**: "SOPHIE's Daddy Quant Blog"
 - **Twitter Handle**: @sophies_daddy
 
 #### 9.2 Article SEO Pattern
@@ -137,7 +137,7 @@ export default function YourArticle() {
 ```
 
 #### 9.3 Metadata Requirements
-- **Title Format**: `Article Title | SOPHIE's Daddy Blog`
+- **Title Format**: `Article Title | SOPHIE's Daddy Quant Blog`
 - **Description**: Use article.description from articles.ts
 - **Keywords**: Include relevant SEO keywords based on content type
 - **Open Graph**: Automatic via SEO components
@@ -325,7 +325,7 @@ import { VideoTutorial } from "@/components/ui/video-tutorial";
 - [ ] Has proper Return to Home button
 - [ ] Uses correct badge positioning
 - [ ] Includes educational disclaimer
-- [ ] Footer has "SOPHIE's Daddy Blog" branding
+- [ ] Footer has "SOPHIE's Daddy Quant Blog" branding
 - [ ] Tests build process to ensure sitemap generation
 - [ ] Responsive design verified
 - [ ] Interactive elements tested
