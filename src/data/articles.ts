@@ -17,11 +17,20 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "RAG Systems with Metadata-Driven Filtering",
+    description: "Blueprint for building production-grade RAG systems that fuse semantic search with structured metadata filtering. Covers advanced architectures, vector database optimization, hybrid search techniques, and implementation frameworks using LangChain and LlamaIndex for enterprise-scale applications.",
+    slug: "rag-metadata-filtering-advanced-architectures",
+    date: "July 17, 2025",
+    imageUrl: "https://www.ontotext.com/wp-content/uploads/2020/01/Metadata.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLBNWa20tXhfpdDaAtABII58DpPHFZ48Fy2arZ3pt31rLWx2YDwmODe_8sWeLWEWDvmvw9BBKfEk9G/pub",
+    deepResearch: true
+  },
+  {
     title: "How to Evaluate Stocks for Options Income Strategies",
     description: "Covering the four analytical pillars for stock selection in income-generating options strategies: fundamental quality, technical posture, volatility environment, and market structure. Includes strategy-specific frameworks for Cash-Secured Puts, Covered Calls, Wheel Strategy, and Iron Condors.",
     slug: "systematic-framework-evaluating-stocks-options-strategies",
     date: "July 16, 2025",
-    imageUrl: "https://i.ytimg.com/vi/qXcBDgc9qzE/sddefault.jpg",
+    imageUrl: "https://www.projectfinance.com/wp-content/uploads/2021/11/Stocks-vs-Options-CANVA-2.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTmpYeZUn7bjRGhbU_hL_9ACVnCKT1bS7Xk9AcEKO6TDhOLW1yTDtStnjpWUinsLenw0JeogKTtCOg8/pub",
     deepResearch: true,
     options: true
@@ -59,7 +68,7 @@ export const articles: Article[] = [
     description: "Blueprint for constructing a high-performance options trading ecosystem. Covers the five foundational pillars: execution platforms, analytical tools, decision support systems, information feeds, and performance tracking. Essential guide for Pro-Am traders seeking to build a professional-grade trading infrastructure.",
     slug: "options-trader-toolkit-requirements",
     date: "July 13, 2025",
-    imageUrl: "https://static.wixstatic.com/media/b22cff_0b301fcebf854ae592f90aad34fc46bf~mv2.png/v1/fill/w_280,h_280,al_c,lg_1,q_85,enc_avif,quality_auto/b22cff_0b301fcebf854ae592f90aad34fc46bf~mv2.png",
+    imageUrl: "https://orats.com/_next/image?url=https%3A%2F%2Foratsblog.s3.amazonaws.com%2F16dd72f7-e2b3-8021-9533-fbb394d39669.png&w=3840&q=75",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRO9VD_EYAJBbNPd0Cz3GNLJg39gPb31QeB3eXqIwlYZUbjS4zVFyYhglOr4CvGnUi4rPgklUKaPAE/pub",
     deepResearch: true,
     options: true
