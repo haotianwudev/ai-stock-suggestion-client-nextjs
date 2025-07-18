@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Research Paper: Technical Analysis Performance and Practice",
+    description: "Deep dive into the academic study revealing how institutional portfolio managers using technical analysis achieve superior performance, particularly in down markets. Explores the long-standing debate between academic skepticism and practitioner reality, featuring analysis of over 10,000 portfolios.",
+    slug: "technical-analysis-portfolio-management-performance-practice",
+    date: "July 18, 2025",
+    imageUrl: "https://blog.livetraders.com/wp-content/uploads/2024/04/42706fc7a1daa54764695979f1eeadd2.jpeg",
+    podcastUrl: "https://open.spotify.com/episode/3g5HcqbgHLCnqJrIyK4CTw",
+    deepResearch: true
+  },
+  {
     title: "RAG Systems with Metadata-Driven Filtering",
     description: "Blueprint for building production-grade RAG systems that fuse semantic search with structured metadata filtering. Covers advanced architectures, vector database optimization, hybrid search techniques, and implementation frameworks using LangChain and LlamaIndex for enterprise-scale applications.",
     slug: "rag-metadata-filtering-advanced-architectures",
