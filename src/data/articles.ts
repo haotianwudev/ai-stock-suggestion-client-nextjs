@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Research Reveals the Truth: Is Technical Analysis a Secret Weapon or Just Squiggly Lines?",
+    description: "Discover what the research really says about technical analysis. Is it a powerful tool used by institutional investors to beat the market, or just meaningless patterns? We dive into the data to separate fact from fiction and reveal the surprising truth about chart analysis.",
+    slug: "research-reveals-truth-technical-analysis-secret-weapon-squiggly-lines",
+    date: "July 19, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=AeIqXXreunA",
+    isVideo: true,
+    imageUrl: "https://i.ytimg.com/vi/AeIqXXreunA/hqdefault.jpg"
+  },
+  {
     title: "Research Paper: Technical Analysis Performance and Practice",
     description: "Deep dive into the academic study revealing how institutional portfolio managers using technical analysis achieve superior performance, particularly in down markets. Explores the long-standing debate between academic skepticism and practitioner reality, featuring analysis of over 10,000 portfolios.",
     slug: "technical-analysis-portfolio-management-performance-practice",
