@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Shield, TrendingUp, DollarSign, LineChart, BarChart4, BookOpen } from "lucide-react";
 import { GreeksTab } from "@/components/options/greeks-tab";
+import { OptionsViewer } from "@/components/options/options-viewer";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import {
@@ -46,8 +47,14 @@ export default function OptionsPage() {
             </p>
           </div>
 
-          <Tabs defaultValue="when-to-trade" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1">
+          <Tabs defaultValue="options-viewer" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1">
+              <TabsTrigger 
+                value="options-viewer" 
+                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+              >
+                Options Viewer
+              </TabsTrigger>
               <TabsTrigger 
                 value="when-to-trade" 
                 className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
@@ -73,6 +80,10 @@ export default function OptionsPage() {
                 Strategies
               </TabsTrigger>
             </TabsList>
+            
+            <TabsContent value="options-viewer" className="mt-4 md:mt-6">
+              <OptionsViewer />
+            </TabsContent>
             
             <TabsContent value="when-to-trade" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
               <Card>
