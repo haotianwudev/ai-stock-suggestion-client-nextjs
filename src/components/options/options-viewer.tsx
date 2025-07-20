@@ -160,10 +160,52 @@ export function OptionsViewer() {
     });
   };
 
-  const getMoneynessBadge = (moneyness: number) => {
-    if (moneyness < 0.95) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
-    if (moneyness > 1.05) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
-    return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+  // New function to format expiration as weeks/months
+  const formatExpirationTime = (daysToExpiration: number) => {
+    if (daysToExpiration <= 7) {
+      return `${daysToExpiration}d`;
+    } else if (daysToExpiration <= 30) {
+      const weeks = Math.round(daysToExpiration / 7);
+      return `${weeks}w`;
+    } else {
+      const months = Math.round(daysToExpiration / 30);
+      return `${months}m`;
+    }
+  };
+
+  // Calculate expiration time from actual expiration date
+  const calculateExpirationTime = (expirationDate: string) => {
+    const today = new Date();
+    const expiration = new Date(expirationDate);
+    const diffTime = expiration.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays <= 7) {
+      return `${diffDays}d`;
+    } else if (diffDays <= 30) {
+      const weeks = Math.round(diffDays / 7);
+      return `${weeks}w`;
+    } else {
+      const months = Math.round(diffDays / 30);
+      return `${months}m`;
+    }
+  };
+
+  const getMoneynessBadge = (moneyness: number, optionType: 'calls' | 'puts') => {
+    // FIXED LOGIC - swapped based on user feedback:
+    // For calls: ITM when stock price < strike (moneyness < 1), OTM when stock price > strike (moneyness > 1) 
+    // For puts: ITM when stock price > strike (moneyness > 1), OTM when stock price < strike (moneyness < 1)
+    
+    if (optionType === 'calls') {
+      if (moneyness < 0.95) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
+      if (moneyness > 1.05) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
+      return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+    } else {
+      // puts - opposite logic
+      if (moneyness > 1.05) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
+      if (moneyness < 0.95) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
+      return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+    }
   };
 
   return (
@@ -327,7 +369,9 @@ export function OptionsViewer() {
                     className="flex flex-col h-auto py-2 px-3"
                   >
                     <span className="text-xs">{formatDate(exp.expiration)}</span>
-                    <span className="text-xs opacity-75">{exp.expirationLabel} ({exp.daysToExpiration}d)</span>
+                    <span className="text-xs opacity-75">
+                      {calculateExpirationTime(exp.expiration)}
+                    </span>
                   </Button>
                 ))}
               </div>
@@ -396,10 +440,21 @@ function OptionsTable({ options, type }: OptionsTableProps) {
     }).format(value);
   };
 
-  const getMoneynessBadge = (moneyness: number) => {
-    if (moneyness < 0.95) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
-    if (moneyness > 1.05) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
-    return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+  const getMoneynessBadge = (moneyness: number, optionType: 'calls' | 'puts') => {
+    // FIXED LOGIC - swapped based on user feedback:
+    // For calls: ITM when stock price < strike (moneyness < 1), OTM when stock price > strike (moneyness > 1) 
+    // For puts: ITM when stock price > strike (moneyness > 1), OTM when stock price < strike (moneyness < 1)
+    
+    if (optionType === 'calls') {
+      if (moneyness < 0.95) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
+      if (moneyness > 1.05) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
+      return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+    } else {
+      // puts - opposite logic
+      if (moneyness > 1.05) return { label: 'ITM', class: 'bg-green-100 text-green-800' };
+      if (moneyness < 0.95) return { label: 'OTM', class: 'bg-red-100 text-red-800' };
+      return { label: 'ATM', class: 'bg-yellow-100 text-yellow-800' };
+    }
   };
 
   return (
@@ -410,33 +465,43 @@ function OptionsTable({ options, type }: OptionsTableProps) {
             <th className="text-left p-2">Strike</th>
             <th className="text-left p-2">Last Price</th>
             <th className="text-left p-2">Bid/Ask</th>
-            <th className="text-left p-2">IV</th>
+            <th className="text-left p-2">IV (YF/Bid/Mid/Ask)</th>
             <th className="text-left p-2">Delta</th>
+            <th className="text-left p-2">Moneyness</th>
             <th className="text-left p-2">Volume</th>
             <th className="text-left p-2">OI</th>
             <th className="text-left p-2">Type</th>
           </tr>
         </thead>
         <tbody>
-                     {sortedOptions.map((option) => {
-             const moneynessBadge = getMoneynessBadge(option.moneyness || 1);
-             return (
-               <tr key={option.contractSymbol} className="border-b hover:bg-gray-50">
-                                 <td className="p-2 font-medium">{formatCurrency(option.strike || 0)}</td>
-                 <td className="p-2">{formatCurrency(option.lastPrice || 0)}</td>
-                 <td className="p-2 text-xs">
-                   <div>{formatCurrency(option.bid || 0)}</div>
-                   <div>{formatCurrency(option.ask || 0)}</div>
-                 </td>
-                 <td className="p-2">
-                   <div>{option.impliedVolatilityMid ? (option.impliedVolatilityMid * 100).toFixed(1) + '%' : 'N/A'}</div>
-                   <div className="text-xs text-muted-foreground">
-                     YF: {option.impliedVolatilityYF ? (option.impliedVolatilityYF * 100).toFixed(1) + '%' : 'N/A'}
-                   </div>
-                 </td>
-                                 <td className="p-2">{(option.delta !== null && option.delta !== undefined) ? option.delta.toFixed(3) : 'N/A'}</td>
-                 <td className="p-2">{(option.volume !== null && option.volume !== undefined) ? option.volume.toLocaleString() : 'N/A'}</td>
-                 <td className="p-2">{(option.openInterest !== null && option.openInterest !== undefined) ? option.openInterest.toLocaleString() : 'N/A'}</td>
+          {sortedOptions.map((option) => {
+            const moneynessBadge = getMoneynessBadge(isNaN(option.moneyness || 0) ? 1 : option.moneyness || 1, type);
+            
+            // Format IV values in single line with 1 decimal place
+            const ivYF = (option.impliedVolatilityYF && !isNaN(option.impliedVolatilityYF)) ? (option.impliedVolatilityYF * 100).toFixed(1) : 'N/A';
+            const ivBid = (option.impliedVolatilityBid && !isNaN(option.impliedVolatilityBid)) ? (option.impliedVolatilityBid * 100).toFixed(1) : 'N/A';
+            const ivMid = (option.impliedVolatilityMid && !isNaN(option.impliedVolatilityMid)) ? (option.impliedVolatilityMid * 100).toFixed(1) : 'N/A';
+            const ivAsk = (option.impliedVolatilityAsk && !isNaN(option.impliedVolatilityAsk)) ? (option.impliedVolatilityAsk * 100).toFixed(1) : 'N/A';
+            const ivDisplay = `${ivYF}/${ivBid}/${ivMid}/${ivAsk}`;
+            
+            // Format bid/ask in single line
+            const bid = (option.bid && !isNaN(option.bid)) ? option.bid.toFixed(2) : 'N/A';
+                        const ask = (option.ask && !isNaN(option.ask)) ? option.ask.toFixed(2) : 'N/A';
+            const bidAskDisplay = `${bid}/${ask}`;
+            
+            // Format moneyness
+            const moneyness = (option.moneyness !== null && option.moneyness !== undefined && !isNaN(option.moneyness)) ? option.moneyness.toFixed(3) : 'N/A';
+            
+            return (
+              <tr key={option.contractSymbol} className="border-b hover:bg-gray-50">
+                <td className="p-2 font-medium">{formatCurrency(isNaN(option.strike) ? 0 : option.strike || 0)}</td>
+                <td className="p-2">{formatCurrency(isNaN(option.lastPrice) ? 0 : option.lastPrice || 0)}</td>
+                <td className="p-2 text-xs">{bidAskDisplay}</td>
+                <td className="p-2 text-xs">{ivDisplay}</td>
+                <td className="p-2">{(option.delta !== null && option.delta !== undefined && !isNaN(option.delta)) ? option.delta.toFixed(3) : 'N/A'}</td>
+                <td className="p-2">{moneyness}</td>
+                <td className="p-2">{(option.volume !== null && option.volume !== undefined && !isNaN(option.volume)) ? option.volume.toLocaleString() : 'N/A'}</td>
+                <td className="p-2">{(option.openInterest !== null && option.openInterest !== undefined && !isNaN(option.openInterest)) ? option.openInterest.toLocaleString() : 'N/A'}</td>
                 <td className="p-2">
                   <Badge className={moneynessBadge.class}>
                     {moneynessBadge.label}
