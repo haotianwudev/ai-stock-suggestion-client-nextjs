@@ -194,13 +194,6 @@ export default function SmartBetaGuide() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-6">
                   Smart beta represents a significant evolution in investment strategy, occupying a complex middle ground between traditional passive indexing and active management. This comprehensive analysis provides an exhaustive examination of smart beta strategies, their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.
                 </p>
-                <div className="flex flex-wrap gap-2 text-sm text-gray-500">
-                  <span>January 15, 2025</span>
-                  <span>•</span>
-                  <span>Deep Research Analysis</span>
-                  <span>•</span>
-                  <span>25 min read</span>
-                </div>
               </div>
             </div>
 
