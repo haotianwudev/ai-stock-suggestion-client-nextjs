@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Options Margin Rules",
+    description: "Master the complex world of options margin requirements with this comprehensive analysis of regulatory frameworks, calculation methodologies, and risk management strategies for sophisticated options traders.",
+    slug: "options-margin-rules-comprehensive-guide",
+    date: "July 21, 2025",
+    imageUrl: "https://public.com/wp-content/uploads/2024/01/Options-Margin-Requirements-1024x512.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRkgSKWmteb3rAkAZDnn2IZYgf5TmTnKg_ce5ZyPnRPdc1aGRK874Pf6_gNJ558APdD7vs8s3Hwl8N/pub",
+    deepResearch: true,
+    options: true,
+  },
+  {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
     description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
     slug: "stock-factor-models-comprehensive-guide",
