@@ -47,7 +47,7 @@ export default function OptionsPage() {
             </p>
           </div>
 
-          <Tabs defaultValue="options-viewer" className="w-full">
+          <Tabs defaultValue="strategies" className="w-full">
             <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1">
               <TabsTrigger 
                 value="options-viewer" 

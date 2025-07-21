@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { 
-  Search, 
+  Search,
   TrendingUp, 
   TrendingDown, 
   Activity, 
@@ -71,6 +71,14 @@ interface OptionsAPIResponse {
   expirationDates: ExpirationData[];
 }
 
+interface OverallMetrics {
+  putCallRatio: number;
+  putCallRatioVolume: number;
+  ivSkew30: number;
+  totalVolume: number;
+  totalOpenInterest: number;
+}
+
 export function OptionsViewer() {
   const [ticker, setTicker] = useState('');
   const [inputTicker, setInputTicker] = useState('');
@@ -79,6 +87,9 @@ export function OptionsViewer() {
   const [error, setError] = useState<string | null>(null);
   const [selectedExpiration, setSelectedExpiration] = useState<string>('');
   const [optionType, setOptionType] = useState<'calls' | 'puts'>('calls');
+  
+  // Available ticker options
+  const availableTickers = ['SPY', 'QQQ', '^SPX'];
 
   // Debug logging to see component state on mount
   console.log('OptionsViewer render - loading:', loading, 'data:', !!data, 'error:', !!error);
@@ -119,7 +130,12 @@ export function OptionsViewer() {
     }
   };
 
-  const handleSearch = () => {
+  const handleTickerSelect = (selectedTicker: string) => {
+    fetchOptionsData(selectedTicker);
+    setInputTicker(''); // Clear custom input when using predefined selection
+  };
+
+  const handleCustomSearch = () => {
     if (inputTicker.trim()) {
       fetchOptionsData(inputTicker.trim());
     }
@@ -138,6 +154,47 @@ export function OptionsViewer() {
     if (!data || !selectedExpiration) return null;
     return data.expirationDates.find(exp => exp.expiration === selectedExpiration);
   }, [data, selectedExpiration]);
+
+  // Calculate overall metrics
+  const overallMetrics = useMemo(() => {
+    if (!selectedExpirationData || !data) return null;
+
+    const { calls, puts } = selectedExpirationData;
+    
+    // Put-Call Ratio (Open Interest)
+    const totalCallOI = calls.reduce((sum, option) => sum + (option.openInterest || 0), 0);
+    const totalPutOI = puts.reduce((sum, option) => sum + (option.openInterest || 0), 0);
+    const putCallRatio = totalCallOI > 0 ? totalPutOI / totalCallOI : 0;
+
+    // Put-Call Ratio (Volume)
+    const totalCallVolume = calls.reduce((sum, option) => sum + (option.volume || 0), 0);
+    const totalPutVolume = puts.reduce((sum, option) => sum + (option.volume || 0), 0);
+    const putCallRatioVolume = totalCallVolume > 0 ? totalPutVolume / totalCallVolume : 0;
+
+    // IV Skew (30-delta puts vs calls) - simplified calculation
+    const atmPrice = data.stock.price;
+    const callsNearATM = calls.filter(c => Math.abs(c.strike - atmPrice) / atmPrice < 0.1);
+    const putsNearATM = puts.filter(p => Math.abs(p.strike - atmPrice) / atmPrice < 0.1);
+    
+    const avgCallIV = callsNearATM.length > 0 ? 
+      callsNearATM.reduce((sum, c) => sum + (c.impliedVolatilityYF || 0), 0) / callsNearATM.length : 0;
+    const avgPutIV = putsNearATM.length > 0 ? 
+      putsNearATM.reduce((sum, p) => sum + (p.impliedVolatilityYF || 0), 0) / putsNearATM.length : 0;
+    
+    const ivSkew30 = (avgPutIV - avgCallIV) * 100;
+
+    // Total metrics
+    const totalVolume = totalCallVolume + totalPutVolume;
+    const totalOpenInterest = totalCallOI + totalPutOI;
+
+    return {
+      putCallRatio,
+      putCallRatioVolume,
+      ivSkew30,
+      totalVolume,
+      totalOpenInterest
+    };
+  }, [selectedExpirationData, data]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -219,26 +276,58 @@ export function OptionsViewer() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-2 mb-4">
-            <Input
-              placeholder="Enter ticker symbol (e.g., SPY, AAPL, TSLA)"
-              value={inputTicker}
-              onChange={(e) => setInputTicker(e.target.value.toUpperCase())}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-              className="flex-1"
-            />
-            <Button onClick={handleSearch} disabled={loading}>
-              <Search className="h-4 w-4 mr-2" />
-              Search
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={handleRefresh} 
-              disabled={loading || !ticker || !data}
-              title={!data ? "Search for data first to enable refresh" : "Refresh current data"}
-            >
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-            </Button>
+          <div className="space-y-4">
+            {/* Combined Selection Row */}
+            <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+              {/* Quick Selection - Left Side */}
+              <div className="flex-1">
+                <label className="text-sm font-medium mb-3 block">Quick Select:</label>
+                <div className="flex flex-wrap gap-3">
+                  {availableTickers.map((tickerOption) => (
+                    <Button
+                      key={tickerOption}
+                      variant={ticker === tickerOption && !inputTicker ? "default" : "outline"}
+                      onClick={() => handleTickerSelect(tickerOption)}
+                      disabled={loading}
+                      className="min-w-[80px] h-12"
+                    >
+                      {tickerOption}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Custom Ticker Input - Right Side */}
+              <div className="lg:w-80">
+                <label className="text-sm font-medium mb-3 block">Or enter custom ticker:</label>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder="e.g., AAPL, TSLA"
+                    value={inputTicker}
+                    onChange={(e) => setInputTicker(e.target.value.toUpperCase())}
+                    onKeyPress={(e) => e.key === 'Enter' && handleCustomSearch()}
+                    className="w-32"
+                  />
+                  <Button onClick={handleCustomSearch} disabled={loading || !inputTicker.trim()} size="sm">
+                    <Search className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+            
+            {ticker && (
+              <div className="flex justify-end">
+                <Button 
+                  variant="outline" 
+                  onClick={handleRefresh} 
+                  disabled={loading || !data}
+                  title={!data ? "Load data first to enable refresh" : "Refresh current data"}
+                >
+                  <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+                  Refresh {ticker}
+                </Button>
+              </div>
+            )}
           </div>
 
           {error && (
@@ -252,7 +341,7 @@ export function OptionsViewer() {
             <Alert>
               <Info className="h-4 w-4" />
               <AlertDescription>
-                Enter a ticker symbol and click "Search" to load options data. No data is loaded automatically.
+                Use the quick select buttons (SPY, QQQ, ^SPX) or enter a custom ticker symbol to load options data.
               </AlertDescription>
             </Alert>
           )}
@@ -344,6 +433,45 @@ export function OptionsViewer() {
             </CardContent>
           </Card>
         </div>
+      )}
+
+      {/* Overall Options Metrics */}
+      {data && overallMetrics && selectedExpirationData && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Activity className="h-5 w-5" />
+              Options Market Metrics
+              <Badge variant="outline" className="ml-2">
+                {formatDate(selectedExpirationData.expiration)}
+              </Badge>
+            </CardTitle>
+          </CardHeader>
+                     <CardContent>
+             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+               <div className="text-center">
+                 <div className="text-sm text-muted-foreground">P/C Ratio (OI)</div>
+                 <div className="text-lg font-semibold">{overallMetrics.putCallRatio.toFixed(2)}</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-sm text-muted-foreground">P/C Ratio (Vol)</div>
+                 <div className="text-lg font-semibold">{overallMetrics.putCallRatioVolume.toFixed(2)}</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-sm text-muted-foreground">IV Skew</div>
+                 <div className="text-lg font-semibold">{overallMetrics.ivSkew30.toFixed(1)}%</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-sm text-muted-foreground">Total Volume</div>
+                 <div className="text-lg font-semibold">{overallMetrics.totalVolume.toLocaleString()}</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-sm text-muted-foreground">Total OI</div>
+                 <div className="text-lg font-semibold">{overallMetrics.totalOpenInterest.toLocaleString()}</div>
+               </div>
+             </div>
+           </CardContent>
+        </Card>
       )}
 
       {/* Options Chain */}
