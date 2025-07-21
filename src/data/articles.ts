@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
+    description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
+    slug: "stock-factor-models-comprehensive-guide",
+    date: "July 20, 2025",
+    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/03/factor-models-1.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub",
+    deepResearch: true
+  },
+  {
     title: "Research Reveals the Truth: Is Technical Analysis a Secret Weapon or Just Squiggly Lines?",
     description: "Discover what the research really says about technical analysis. Is it a powerful tool used by institutional investors to beat the market, or just meaningless patterns? We dive into the data to separate fact from fiction and reveal the surprising truth about chart analysis.",
     slug: "research-reveals-truth-technical-analysis-secret-weapon-squiggly-lines",
