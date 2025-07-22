@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Insider's Edge: Signal from Insider Trading",
+    description: "Explore the dual nature of insider trading, from legal disclosure requirements to market sentiment indicators. Learn how to interpret Form 4 filings, understand the predictive power of insider transactions, and recognize the evolving regulatory landscape.",
+    slug: "insiders-edge-comprehensive-analysis",
+    date: "July 22, 2025",
+    imageUrl: "https://www.ebc.com/upload/default/20250528/806a00c04c8081927a099beb608c075d.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrrtDQ12baE9z57X3EV_jUqM4PjUgqQyvbmTyFymeiLsIRGaxYXTKgAvaeKXYon2v379fYUgFZfFT9/pub",
+    deepResearch: true
+  },
+  {
     title: "Profiting with Iron Condor Options: Trade the Math, Not the Myth",
     description: "Master the Iron Condor strategy with this comprehensive book summary covering market-neutral trading, time decay profits, and the Greeks. Learn why successful options trading is about managing quantifiable factors, not predicting market direction.",
     slug: "profiting-iron-condor-options-book-summary",
