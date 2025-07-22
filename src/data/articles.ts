@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Profiting with Iron Condor Options: Trade the Math, Not the Myth",
+    description: "Master the Iron Condor strategy with this comprehensive book summary covering market-neutral trading, time decay profits, and the Greeks. Learn why successful options trading is about managing quantifiable factors, not predicting market direction.",
+    slug: "profiting-iron-condor-options-book-summary",
+    date: "July 22, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/4139vOZ8lOL._SY445_SX342_PQ35_.jpg",
+    bookSummary: true,
+    options: true,
+    podcastUrl: "https://open.spotify.com/episode/0kRp7YWw6p4F7xbRmZ1Mpn?si=OtrEHiDES7Ssz-dgY5GWNQ"
+  },
+  {
     title: "Options Margin Rules",
     description: "Master the complex world of options margin requirements with this comprehensive analysis of regulatory frameworks, calculation methodologies, and risk management strategies for sophisticated options traders.",
     slug: "options-margin-rules-comprehensive-guide",
