@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "India's Option Market and Jane Street",
+    description: "SEBI vs. Jane Street case and its sweeping implications for global finance. Explore how this landmark regulatory action exposed vulnerabilities in market structure, triggered reforms, and created a new paradigm for both institutional and retail investors.",
+    slug: "jane-street-precedent-market-manipulation",
+    date: "July 23, 2025",
+    imageUrl: "https://images.timesnownews.com/thumb/msid-152263498,thumbsize-87148,width-1280,height-720,resizemode-75/152263498.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSoGmmRVw9JQEKdSct9ASfyVHutJdnIWu4o0aLuE5dqg3ib_MLsK92YLdVS8C9CPaZuZWcNn_fkK5lA/pub",
+    deepResearch: true
+  },
+  {
     title: "The Insider's Edge: Signal from Insider Trading",
     description: "Explore the dual nature of insider trading, from legal disclosure requirements to market sentiment indicators. Learn how to interpret Form 4 filings, understand the predictive power of insider transactions, and recognize the evolving regulatory landscape.",
     slug: "insiders-edge-comprehensive-analysis",
