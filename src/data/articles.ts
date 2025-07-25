@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Meme Stock Phenomenon: Hype, Risk, and Strategy",
+    description: "An analytical guide to understanding the meme stock phenomenon, from viral social media campaigns to extreme volatility. Explore the July 2025 resurgence, risk management strategies, and the psychology behind retail trading frenzies.",
+    slug: "meme-stock-phenomenon-hype-risk-strategy",
+    date: "July 25, 2025",
+    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/05/Meme-Stocks.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQEDSJlZicJ4_mKk-kaRdGyB5X4dfJ1tbmRy2RMVKH59W0QLeyEh5l94CdZTlx936j-cSAzqFcyi1Mu/pub",
+    deepResearch: true
+  },
+  {
     title: "Important Metrics in Option Seller's Dashboard",
     description: "Master the art of options premium selling with comprehensive analysis of volatility metrics, Greeks management, and systematic execution frameworks for consistent income generation.",
     slug: "premium-sellers-dashboard-options-writing-guide",
