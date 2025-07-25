@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Important Metrics in Option Seller's Dashboard",
+    description: "Master the art of options premium selling with comprehensive analysis of volatility metrics, Greeks management, and systematic execution frameworks for consistent income generation.",
+    slug: "premium-sellers-dashboard-options-writing-guide",
+    date: "July 24, 2025",
+    imageUrl: "https://images.ctfassets.net/lnmc2aao6j57/6Y8Qu3bbrHWpTsf0LjRO2f/781a5a9199129f11405c5eaae8750d64/info-options_greeks-desktop.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTlj3cLw8CDOH3NueCQtVbDxBJn-USsOWyxsy7dQD6SlpuqNGDwsywkbEGuGdGPND0VnGsXQr8Z_yp-/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "India's Option Market and Jane Street",
     description: "SEBI vs. Jane Street case and its sweeping implications for global finance. Explore how this landmark regulatory action exposed vulnerabilities in market structure, triggered reforms, and created a new paradigm for both institutional and retail investors.",
     slug: "jane-street-precedent-market-manipulation",
