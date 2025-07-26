@@ -102,53 +102,77 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               {description}
             </CardDescription>
           </div>
-          <div className="flex gap-2 mt-1 mb-1">
-            {isVideo && youtubeUrl ? (
-              <a
-                href={youtubeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"
-              >
-                <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                Watch on YouTube
-              </a>
-            ) : (
-              <>
-                {googleDoc && (
+          {(() => {
+            // Count the number of buttons
+            const buttonCount = (isVideo && youtubeUrl ? 1 : 0) + 
+                               (googleDoc ? 1 : 0) + 
+                               (podcastUrl ? 1 : 0) + 
+                               (!noSummary ? 1 : 0);
+            
+            // Make Interactive Summary smaller when there are 3+ buttons
+            const summaryButtonClass = buttonCount >= 3 
+              ? "flex-shrink-0 w-auto px-3 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
+              : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm";
+            
+            return (
+              <div className="flex gap-2 mt-1 mb-1">
+                {isVideo && youtubeUrl ? (
                   <a
-                    href={googleDoc}
+                    href={youtubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"
+                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"
                   >
-                    Google Document
+                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Watch on YouTube
                   </a>
+                ) : (
+                  <>
+                    {googleDoc && (
+                      <a
+                        href={googleDoc}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"
+                      >
+                        Google Document
+                      </a>
+                    )}
+                    {podcastUrl && (
+                      <a
+                        href={podcastUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
+                      >
+                        <Music className="mr-2 h-4 w-4" />
+                        Podcast
+                      </a>
+                    )}
+                    {!noSummary && (
+                      <Link 
+                        href={`/articles/${slug}`} 
+                        className={summaryButtonClass}
+                      >
+                        {buttonCount >= 3 ? (
+                          <div className="text-center leading-tight">
+                            <div>Interactive</div>
+                            <div>Summary</div>
+                          </div>
+                        ) : (
+                          <>
+                            Interactive Summary <ArrowRight className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Link>
+                    )}
+                  </>
                 )}
-                {podcastUrl && (
-                  <a
-                    href={podcastUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
-                  >
-                    <Music className="mr-2 h-4 w-4" />
-                    Podcast
-                  </a>
-                )}
-                {!noSummary && (
-                  <Link 
-                    href={`/articles/${slug}`} 
-                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
-                  >
-                    Interactive Summary <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                )}
-              </>
-            )}
-          </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </Card>

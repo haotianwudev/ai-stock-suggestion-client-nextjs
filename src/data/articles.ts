@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Investor's Guide to Stablecoins: Profiting from Digital Dollars",
+    description: "A comprehensive analysis of stablecoin investing, covering the four types of stability mechanisms, yield generation strategies, regulatory frameworks, and risk management. Explore the interactive dashboard revealing the truth about digital dollar profits and pitfalls.",
+    slug: "investors-guide-stablecoins-profiting-digital-dollars",
+    date: "July 26, 2025",
+    imageUrl: "https://images.ctfassets.net/4ua9vnmkuhzj/ZK0LhMyfEklAbI4aGGGsc/aafa254021037ff7bc5984e1c6d10559/stablecoins-explained_1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSCy9C-tzrd2-uBRohPRJnOoXf-u_Km1c6HAzPEKZI5aPYqlLUY0_0O2EwJMDTtK8KpJkloRt-Fcz7i/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3lVDMCL8H5XfMnjEeFnNBe?si=cTBlIU61Qy6nWgLiw0HtyQ"
+  },
+  {
     title: "The Meme Stock Phenomenon: Hype, Risk, and Strategy",
     description: "An analytical guide to understanding the meme stock phenomenon, from viral social media campaigns to extreme volatility. Explore the July 2025 resurgence, risk management strategies, and the psychology behind retail trading frenzies.",
     slug: "meme-stock-phenomenon-hype-risk-strategy",
