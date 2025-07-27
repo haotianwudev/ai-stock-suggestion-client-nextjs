@@ -35,8 +35,8 @@ export default function BookSummaryPage() {
   const bookArticles = articles.filter(a => a.bookSummary);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-8">
-      <div className="w-full max-w-screen-xl bg-white rounded-lg shadow-lg p-8">
+    <div className="min-h-screen bg-white px-4 py-8">
+      <div className="w-full bg-white p-8">
         <div className="flex items-center gap-4 mb-4">
           <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
             <ArrowLeft className="mr-2 h-4 w-4" />
