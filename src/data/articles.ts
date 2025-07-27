@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Trend vs. Momentum in Technical Analysis",
+    description: "Master the core distinction between trend and momentum indicators in technical analysis. Learn how trend indicators chart market direction while momentum indicators measure the force behind price movements, with practical strategies for combining both approaches.",
+    slug: "trend-vs-momentum-technical-analysis-guide",
+    date: "July 27, 2025",
+    imageUrl: "https://www.toptradersunplugged.com/wp-content/uploads/2022/02/The-Difference-Between-Trend-Following-Momentum-A.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTi2rZ4bmlTH0EaEuc2mJNiiSDYZlXypCofMAqUnlsAz-G0jBBXbvgVpUk-aE4oI0L7i-vj3Cd0s0bz/pub",
+    deepResearch: true
+  },
+  {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
     description: "Master the Options Wheel strategy with this comprehensive book summary covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, and strategic rolling techniques.",
     slug: "ultimate-options-wheel-trading-plan-book-summary",
