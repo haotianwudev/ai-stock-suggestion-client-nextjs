@@ -4,6 +4,7 @@ import { InfoIcon, TrendingUp, TrendingDown, ArrowRight, Repeat, BarChart3, Arro
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { StockChart } from "@/components/stock/stock-chart";
+import { VideoTutorial } from "@/components/ui/video-tutorial";
 
 interface StockTechnicalsAnalysisProps {
   technicals: StockTechnicals | null;
@@ -216,6 +217,14 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
         <p className="text-sm text-muted-foreground mb-4">
           Technical analysis combines multiple quantitative trading strategies to generate signals based on price action and market statistics. It uses an ensemble approach with weighted signals from five different methodologies.
         </p>
+
+        {/* Technical Analysis Video Tutorial */}
+        <VideoTutorial
+          title="Technical Analysis Why and When it Works"
+          description="Dive deep into a surprising academic research paper to find out the truth. Does technical analysis actually work?."
+          videoId="AeIqXXreunA"
+          className="mb-6"
+        />
 
         <div className="flex flex-col space-y-4">
           <div className="flex items-center gap-2">
