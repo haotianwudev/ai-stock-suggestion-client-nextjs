@@ -17,8 +17,20 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    title: "The Investor's Guide to Stablecoins: Profiting from Digital Dollars",
-    description: "A comprehensive analysis of stablecoin investing, covering the four types of stability mechanisms, yield generation strategies, regulatory frameworks, and risk management. Explore the interactive dashboard revealing the truth about digital dollar profits and pitfalls.",
+    title: "Options Wheel Trading Plan: A Quantitative Approach",
+    description: "Master the Options Wheel strategy with this comprehensive book summary covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, and strategic rolling techniques.",
+    slug: "ultimate-options-wheel-trading-plan-book-summary",
+    date: "July 26, 2025",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*WBKi7KcTrLjzp9zj.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrNZ1-3VX4fwU3wlmIwgjvpUKbePjGbOAttYmqO1QTHlNDHjPUeA-hTC4SpWv-W4ZicYLR-eHB9Wek/pub",
+    deepResearch: true,
+    bookSummary: true,
+    options: true,
+    podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
+  },
+  {
+    title: "The Investor's Guide to Stablecoins",
+    description: "Analysis of stablecoin investing, covering the four types of stability mechanisms, yield generation strategies, regulatory frameworks, and risk management. Explore the interactive dashboard revealing the truth about digital dollar profits and pitfalls.",
     slug: "investors-guide-stablecoins-profiting-digital-dollars",
     date: "July 26, 2025",
     imageUrl: "https://images.ctfassets.net/4ua9vnmkuhzj/ZK0LhMyfEklAbI4aGGGsc/aafa254021037ff7bc5984e1c6d10559/stablecoins-explained_1.png",
