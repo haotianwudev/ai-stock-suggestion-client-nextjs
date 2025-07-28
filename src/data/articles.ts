@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Common Structured Note Features",
+    description: "An in-depth analysis of structured notes covering payoff profiles, risk-return trade-offs, and portfolio suitability. Explores protection mechanisms, autocallable features, yield enhancement strategies, and the critical risks that sophisticated investors must understand.",
+    slug: "structured-notes-institutional-grade-analysis",
+    date: "July 28, 2025",
+    imageUrl: "https://quadrawealth.com/articles/wp-content/uploads/2024/09/buffer.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTLsGO6BidcUZe8g7YnoKRHoaQzPCfb5JsNomJbFrA44Q4D7Tyx4eErksuh7mVA_ph6pccEOaL7JQIR/pub",
+    deepResearch: true
+  },
+  {
     title: "Trend vs. Momentum in Technical Analysis",
     description: "Master the core distinction between trend and momentum indicators in technical analysis. Learn how trend indicators chart market direction while momentum indicators measure the force behind price movements, with practical strategies for combining both approaches.",
     slug: "trend-vs-momentum-technical-analysis-guide",
