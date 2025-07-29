@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Machine Learning Framework for Index Option Writing",
+    description: "A comprehensive framework exploring the transition from traditional financial models to data-driven machine learning strategies for index option writing. Covers volatility forecasting, risk management, and the application of LSTM, GARCH, and reinforcement learning techniques to enhance income generation while managing asymmetric risks.",
+    slug: "algorithmic-advantage-machine-learning-index-options",
+    date: "July 29, 2025",
+    imageUrl: "https://i.ytimg.com/vi/tsdxkCMBWAQ/hqdefault.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTAkd7ZGnw5Il969nNJfLGothocw2rc6r9VbqC-ZBsoofC7zv0XJyW_pL7jxixO_yL1buiF2t0-3tW/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Common Structured Note Features",
     description: "An in-depth analysis of structured notes covering payoff profiles, risk-return trade-offs, and portfolio suitability. Explores protection mechanisms, autocallable features, yield enhancement strategies, and the critical risks that sophisticated investors must understand.",
     slug: "structured-notes-institutional-grade-analysis",
