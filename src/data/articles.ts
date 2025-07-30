@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Little Book of Behavioral Investing: How Not to Be Your Own Worst Enemy",
+    description: "An interactive book summary exploring the psychological biases that sabotage investment success. Learn how to overcome the X-system vs C-system battle in your brain, master pre-commitment strategies, and develop the contrarian mindset needed to beat your worst enemy - yourself.",
+    slug: "little-book-behavioral-investing-summary",
+    date: "July 30, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/51kAXhLvseL._SY425_.jpg",
+    bookSummary: true,
+    podcastUrl: "https://open.spotify.com/episode/6V7tDXMVVGPvqRangIB4iR?si=fsH5o18MRJWmxbT-JMxfVA"
+  },
+  {
     title: "Machine Learning Framework for Index Option Writing",
     description: "A comprehensive framework exploring the transition from traditional financial models to data-driven machine learning strategies for index option writing. Covers volatility forecasting, risk management, and the application of LSTM, GARCH, and reinforcement learning techniques to enhance income generation while managing asymmetric risks.",
     slug: "algorithmic-advantage-machine-learning-index-options",
