@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "How Hedge Funds Use Alternative Data for Alpha",
+    description: "Analysis of datasets used by hedge funds for alpha generation in long-short equity trading. Explores the accessibility gap between institutional and retail investors, covering alternative data sources, machine learning pipelines, and the industrial-scale infrastructure that creates formidable barriers to entry.",
+    slug: "hedge-fund-data-driven-edge-alpha-generation",
+    date: "July 31, 2025",
+    imageUrl: "https://s3-prod.pionline.com/s3fs-public/ONLINE_190539981_AR_0_BRYKXJELZTBE.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQAeRCVqt5_0WhENYxf9pjqHIu8lALTFyuCQAHaQrTVOGPJRl8msRMloUvT6tVfKzSKowYUq-tCvt-h/pub"
+  },
+  {
     title: "The Definitive backtrader Cheatsheet",
     description: "Master algorithmic trading with this comprehensive backtrader guide. From basic setup to advanced optimization techniques, learn everything you need to build, test, and deploy profitable trading strategies in Python.",
     slug: "definitive-backtrader-cheatsheet-guide",
