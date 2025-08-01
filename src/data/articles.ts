@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Advanced RAG and Context Engineering",
+    description: "A comprehensive deep dive into the evolution from prompt engineering to context engineering. Explores advanced RAG architectures, query transformation techniques, re-ranking strategies, and agentic systems that power production-grade AI applications.",
+    slug: "architectures-intelligence-advanced-rag-context-engineering",
+    date: "August 1, 2025",
+    imageUrl: "https://www.sundog-education.com/wp-content/uploads/2024/11/iStock-2150086022-2048x1365.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS4WNttd_CKQxFbfE2JTMFjkh0Sw0EJ4-8_n4QG5a77pQ01AMmOkfnVJKzt2_MCkDgc2b_Wn2TnBzBs/pub"
+  },
+  {
     title: "How Hedge Funds Use Alternative Data for Alpha",
     description: "Analysis of datasets used by hedge funds for alpha generation in long-short equity trading. Explores the accessibility gap between institutional and retail investors, covering alternative data sources, machine learning pipelines, and the industrial-scale infrastructure that creates formidable barriers to entry.",
     slug: "hedge-fund-data-driven-edge-alpha-generation",
