@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Diagonal Spread vs. Covered Call",
+    description: "A comprehensive book summary exploring the fundamental differences between diagonal spreads and covered calls. Covers capital efficiency, risk profiles, the Poor Man's Covered Call (PMCC), Greeks analysis, and strategic decision frameworks for options traders.",
+    slug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
+    date: "August 2, 2025",
+    imageUrl: "https://thetradinganalyst.com/wp-content/uploads/Diagonal_Spread.svg",
+    deepResearch: true,
+    options: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTp8O3f6sN5Q0eM06kjFAao-p3NWN6tpk_iZF-I32pAzpIVaE0Vt4cpmVluAlfqbyHPm8dy4xpHasCO/pub"
+  },
+  {
     title: "Advanced RAG and Context Engineering",
     description: "A comprehensive deep dive into the evolution from prompt engineering to context engineering. Explores advanced RAG architectures, query transformation techniques, re-ranking strategies, and agentic systems that power production-grade AI applications.",
     slug: "architectures-intelligence-advanced-rag-context-engineering",
