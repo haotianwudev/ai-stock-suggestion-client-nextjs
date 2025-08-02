@@ -17,6 +17,18 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Global Evidence on Covered Calls",
+    description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
+    slug: "covering-world-global-evidence-covered-calls",
+    date: "August 2, 2025",
+    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2024/03/What-is-the-covered-call-strategy.png",
+    deepResearch: true,
+    options: true,
+    bookSummary: true,
+    googleDoc: "https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls",
+    podcastUrl: "https://creators.spotify.com/pod/profile/sophies-daddy/episodes/Global-Evidence-on-Covered-Calls-e36bi3l"
+  },
+  {
     title: "Diagonal Spread vs. Covered Call",
     description: "A comprehensive book summary exploring the fundamental differences between diagonal spreads and covered calls. Covers capital efficiency, risk profiles, the Poor Man's Covered Call (PMCC), Greeks analysis, and strategic decision frameworks for options traders.",
     slug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
