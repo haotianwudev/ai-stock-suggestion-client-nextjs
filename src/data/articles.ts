@@ -26,7 +26,7 @@ export const articles: Article[] = [
     options: true,
     bookSummary: true,
     googleDoc: "https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls",
-    podcastUrl: "https://creators.spotify.com/pod/profile/sophies-daddy/episodes/Global-Evidence-on-Covered-Calls-e36bi3l"
+    podcastUrl: "https://open.spotify.com/episode/263ybvxDEthF1qi88ufKz7?si=0411f202e10b49cc"
   },
   {
     title: "Diagonal Spread vs. Covered Call",
