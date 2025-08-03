@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronUp, ChevronDown, DollarSign, Briefcase, Users, TrendingUp, AlertTriangle, ShieldCheck, Scale, FileText } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { ArrowLeft, ChevronUp, ChevronDown, DollarSign, Briefcase, Users, TrendingUp, AlertTriangle, ShieldCheck, Scale, FileText, Zap, Award } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
@@ -23,12 +23,7 @@ const valuationData = [
   { name: 'Snowflake (SNOW)', 'P/S Ratio': 24, marketCap: 75, revenueGrowth: 33 },
 ];
 
-const ipoData = [
-  { name: 'IPO Price', value: 33 },
-  { name: 'First Day Close', value: 115.50 },
-];
 
-const IPO_COLORS = ['#0d9488', '#14b8a6'];
 
 // Reusable Components
 const Section = ({ title, children, icon: Icon }) => (
@@ -89,10 +84,19 @@ const ProductCard = ({ title, description, icon }) => (
   </div>
 );
 
+const Highlight = ({ children }) => <span className="text-teal-500 dark:text-teal-400 font-semibold">{children}</span>;
+
 const RiskCard = ({ title, children }) => (
-  <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-r-lg">
+  <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-r-lg mt-4">
     <h4 className="font-bold text-red-800 dark:text-red-300">{title}</h4>
     <p className="text-red-700 dark:text-red-400">{children}</p>
+  </div>
+);
+
+const StrengthCard = ({ title, children }) => (
+  <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-4 rounded-r-lg mt-4">
+    <h4 className="font-bold text-green-800 dark:text-green-300">{title}</h4>
+    <p className="text-green-700 dark:text-green-400">{children}</p>
   </div>
 );
 
@@ -151,22 +155,28 @@ export default function FigmaIPOAnalysis() {
             <StatCard title="Q1'25 Revenue Growth" value="46% YoY" subtext="$228.2M Revenue" icon={Users} />
           </div>
 
-          <CollapsibleSection title="Executive Summary" icon={FileText}>
+          <Section title="Executive Summary" icon={FileText}>
             <p>
-              Figma's IPO was one of the most successful in recent history, reflecting its dominant market leadership, 
-              elite SaaS financial metrics, and a compelling growth story. The collapse of the $20B Adobe acquisition 
-              paradoxically fueled investor enthusiasm, arming Figma with a $1B termination fee and validating its 
-              strategic importance. However, the subsequent share price surge has resulted in a stratospheric valuation, 
-              creating a dilemma for investors. This analysis concludes that while Figma is an exceptional company, 
-              its current stock price is prohibitive, warranting a patient approach for a more favorable entry point.
+              Figma's IPO was one of the most successful in recent history, reflecting its <Highlight>dominant market leadership</Highlight>, 
+              elite SaaS financial metrics, and a compelling growth story. The collapse of the <Highlight>$20B Adobe acquisition</Highlight> 
+              paradoxically fueled investor enthusiasm, arming Figma with a <Highlight>$1B termination fee</Highlight> and validating its 
+              strategic importance. This created a "hero's narrative" that propelled its valuation far beyond the original offer.
             </p>
-          </CollapsibleSection>
+            <p className="mt-4">
+              The company's best-in-class <Highlight>Product-Led Growth (PLG)</Highlight> model has driven viral adoption, resulting in a 
+              financial profile characterized by rapid growth (~46%), exceptional gross margins (&gt;90%), and a world-class <Highlight>Net Dollar Retention of 132%</Highlight>. 
+              However, the subsequent share price surge has resulted in a stratospheric valuation, creating a dilemma for investors. 
+              This analysis concludes that while Figma is an exceptional company, its current stock price is prohibitive, warranting a 
+              patient approach for a more favorable entry point.
+            </p>
+          </Section>
 
           <Section title="Company Overview" icon={Briefcase}>
             <p className="mb-6">
               Founded in 2012, Figma revolutionized the design world by creating a web-based, collaborative platform. 
-              This "multiplayer" approach transformed isolated workflows into real-time, team-based creation, making 
-              Figma the core infrastructure for modern digital product development.
+              This <Highlight>"multiplayer" approach</Highlight> transformed isolated workflows into real-time, team-based creation, making 
+              Figma the core infrastructure for modern digital product development. Its business model is a masterclass in <Highlight>Product-Led Growth</Highlight>, 
+              where a generous free tier drives viral, bottom-up adoption within enterprises, which then convert to high-value contracts.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -189,8 +199,10 @@ export default function FigmaIPOAnalysis() {
 
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">The Strategic Pivot to AI</h3>
             <p>
-              At Config 2025, Figma unveiled a suite of AI-powered products to expand its capabilities and empower a 
-              broader user base, aiming to evolve from a design tool into an operating system for AI-driven creation.
+              At Config 2025, Figma unveiled a suite of AI-powered products to expand its capabilities and empower a broader user base. 
+              This strategic push aims to evolve Figma from a design tool into an <Highlight>operating system for AI-driven creation</Highlight>. 
+              New products like <Highlight>Figma Make</Highlight> (prompt-to-app) and <Highlight>Figma Sites</Highlight> (AI website builder) are 
+              designed to dramatically increase productivity and expand its Total Addressable Market.
             </p>
           </Section>
 
@@ -198,7 +210,8 @@ export default function FigmaIPOAnalysis() {
             <p className="mb-8">
               Figma exhibits an elite financial profile. While headline numbers in FY23 (+$1B Adobe fee) and FY24 
               (-$889M one-time stock compensation) were skewed, the underlying business shows a clear trend of high 
-              growth, exceptional margins, and emerging profitability, as seen in the "clean" Q1 2025 results.
+              growth, exceptional margins, and emerging profitability. The "clean" <Highlight>Q1 2025 results</Highlight> provide the 
+              clearest picture, showing a <Highlight>$44.9 million net income</Highlight> and a strong <Highlight>17% GAAP operating margin</Highlight>.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center">
@@ -243,63 +256,45 @@ export default function FigmaIPOAnalysis() {
           </Section>
 
           <Section title="The IPO Event" icon={TrendingUp}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <p>
-                  Demand for Figma's IPO was immense, with the offering reportedly <strong>40 times oversubscribed</strong>. 
-                  Priced at $33, the stock opened at $85 and closed its first day at $115.50, a <strong>250% increase</strong>. 
-                  This valued the company at nearly $68B, more than 3x Adobe's terminated offer.
-                </p>
-                <div className="mt-6 space-y-3">
-                  <p><strong>Ticker:</strong> FIG (NYSE)</p>
-                  <p><strong>Deal Size:</strong> ~$1.22 Billion</p>
-                  <p><strong>Governance:</strong> Dual-class structure; CEO Dylan Field controls <strong>~74%</strong> of voting power.</p>
-                  <p><strong>Lock-up Expiration:</strong> January 27, 2026 (180 days).</p>
-                </div>
-              </div>
-              <div style={{ width: '100%', height: 300 }}>
-                <ResponsiveContainer>
-                  <PieChart>
-                    <Pie 
-                      data={ipoData} 
-                      dataKey="value" 
-                      nameKey="name" 
-                      cx="50%" 
-                      cy="50%" 
-                      outerRadius={100} 
-                      label
-                    >
-                      {ipoData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={IPO_COLORS[index % IPO_COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
+            <p>
+              Demand for Figma's IPO was immense, with the offering reportedly <Highlight>40 times oversubscribed</Highlight>. 
+              After initially targeting a $25-$28 range, the deal was priced at <Highlight>$33 per share</Highlight>. The stock opened 
+              for trading at $85 and closed its first day at $115.50, a historic <Highlight>250% increase</Highlight>. This valued the 
+              company at nearly <Highlight>$68B</Highlight>, more than 3x Adobe's terminated offer.
+            </p>
+            
+            <div className="mt-6 space-y-4 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h4 className="text-xl font-bold text-gray-800 dark:text-gray-200">IPO Details at a Glance:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                <p><strong>Ticker:</strong> FIG (NYSE)</p>
+                <p><strong>Deal Size:</strong> ~$1.22 Billion</p>
+                <p><strong>Lead Underwriters:</strong> Morgan Stanley, Goldman Sachs</p>
+                <p><strong>Shares Offered:</strong> 36.9M (12.5M primary, 24.4M secondary)</p>
+                <p><strong>Governance:</strong> Dual-class; CEO Dylan Field controls <Highlight>~74%</Highlight> of voting power.</p>
+                <p><strong>Lock-up Expiration:</strong> <Highlight>January 27, 2026</Highlight> (180 days).</p>
               </div>
             </div>
           </Section>
 
           <Section title="The Adobe Saga: A Blessing in Disguise" icon={ShieldCheck}>
             <p>
-              In December 2023, Adobe's proposed $20B acquisition of Figma was terminated due to regulatory pressure. 
+              In December 2023, Adobe's proposed $20B acquisition of Figma was terminated due to regulatory pressure from the US, UK, and EU. 
               This seemingly negative event turned into a massive catalyst for Figma:
             </p>
-            <ul className="list-disc list-inside mt-4 space-y-2">
-              <li><strong>Ultimate Validation:</strong> The $20B price tag from the industry leader validated Figma's strategic importance.</li>
-              <li><strong>$1 Billion Windfall:</strong> A non-dilutive termination fee provided a massive capital injection to fund growth and AI development.</li>
-              <li><strong>Regulatory Moat:</strong> The failed deal now acts as a deterrent to other potential Big Tech acquirers, protecting Figma's independence.</li>
-              <li><strong>Hero's Narrative:</strong> The story of beating Goliath and achieving an even higher public valuation created powerful IPO hype.</li>
+            <ul className="list-disc list-inside mt-4 space-y-3">
+              <li><strong>Ultimate Validation:</strong> The <Highlight>$20B price tag</Highlight> from the industry leader validated Figma's strategic importance and market disruption.</li>
+              <li><strong>$1 Billion Windfall:</strong> A non-dilutive termination fee provided a massive capital injection to fund growth and AI development without giving up equity.</li>
+              <li><strong>Regulatory Moat:</strong> The failed deal now acts as a deterrent to other potential Big Tech acquirers, protecting Figma's independence and long-term strategy.</li>
+              <li><strong>Hero's Narrative:</strong> The story of beating Goliath and then achieving an even higher public valuation created powerful, invaluable IPO hype.</li>
             </ul>
           </Section>
 
           <Section title="Valuation: Paying for Perfection" icon={Scale}>
             <p className="mb-8">
-              The central challenge for investors is Figma's extreme valuation. Trading at a Price-to-Sales (P/S) 
-              multiple far exceeding its peers, the stock appears to have priced in years of flawless execution, 
-              leaving no margin for safety. The bull case hinges on Figma becoming a foundational "operating system 
-              for creativity," while the bear case points to the high risk of valuation compression.
+              The central challenge for investors is Figma's extreme valuation. Trading at a Price-to-Sales (P/S) multiple of around <Highlight>75x</Highlight>, 
+              the stock appears to have priced in years of flawless execution, leaving no margin for safety. This is dramatically higher than peers like 
+              Adobe (<Highlight>~6.5x P/S</Highlight>), Salesforce (<Highlight>~6.8x P/S</Highlight>), and even the fast-growing private company Canva (<Highlight>~12.3x P/S</Highlight>). 
+              The bull case hinges on Figma becoming a foundational "operating system for creativity," while the bear case points to the high risk of valuation compression.
             </p>
 
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
@@ -318,7 +313,7 @@ export default function FigmaIPOAnalysis() {
                       color: '#ffffff'
                     }}
                     labelStyle={{ fontWeight: 'bold' }}
-                    formatter={(value, name) => [`${value}x`, 'P/S Ratio']}
+                    formatter={(value) => [`${value}x`, 'P/S Ratio']}
                   />
                   <Legend />
                   <Bar dataKey="P/S Ratio" fill="#0d9488" />
@@ -327,15 +322,27 @@ export default function FigmaIPOAnalysis() {
             </div>
           </Section>
 
-          <Section title="Investment Thesis & Recommendation" icon={AlertTriangle}>
+          <Section title="Investment Thesis & Recommendation" icon={Award}>
             <p className="mb-6">
               Figma is a phenomenal, best-in-class company. However, the investment decision is a classic case of a 
               wonderful company at a formidable price. The current valuation presents the single greatest risk.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="space-y-4">
-                <h4 className="text-xl font-bold">Key Risks</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h4 className="text-xl font-bold mb-2">Key Strengths</h4>
+                <StrengthCard title="Market Dominance">
+                  Near-monopolistic position in the core UI/UX design market, having effectively displaced legacy competitors.
+                </StrengthCard>
+                <StrengthCard title="Elite Financials">
+                  A rare combination of 45%+ growth, &gt;90% gross margins, and emerging GAAP profitability.
+                </StrengthCard>
+                <StrengthCard title="Visionary Leadership">
+                  Founder-led with a clear vision for an AI-driven future and a proven track record of execution.
+                </StrengthCard>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">Key Risks</h4>
                 <RiskCard title="Valuation Risk">
                   Sky-high P/S multiple leaves no margin for safety and is vulnerable to correction.
                 </RiskCard>
@@ -346,15 +353,16 @@ export default function FigmaIPOAnalysis() {
                   Potential for significant selling pressure in January 2026.
                 </RiskCard>
               </div>
-              <div className="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 p-6 rounded-r-lg">
-                <h4 className="font-bold text-2xl text-teal-800 dark:text-teal-200 mb-2">Recommendation:</h4>
-                <p className="text-xl font-semibold text-teal-700 dark:text-teal-300">Place on Priority Watchlist</p>
-                <p className="mt-4 text-teal-600 dark:text-teal-400">
-                  The most logical course of action is patience. Await a market correction or a period of consolidation 
-                  that allows fundamentals to catch up to the stock price, creating a more attractive risk/reward 
-                  profile before initiating a position.
-                </p>
-              </div>
+            </div>
+
+            <div className="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 p-6 rounded-r-lg">
+              <h4 className="font-bold text-2xl text-teal-800 dark:text-teal-200 mb-2">Recommendation:</h4>
+              <p className="text-xl font-semibold text-teal-700 dark:text-teal-300">Place on Priority Watchlist</p>
+              <p className="mt-4 text-teal-600 dark:text-teal-400">
+                The most logical course of action is patience. Await a market correction or a period of consolidation 
+                that allows fundamentals to catch up to the stock price, creating a more attractive risk/reward 
+                profile before initiating a position.
+              </p>
             </div>
           </Section>
 
@@ -370,7 +378,8 @@ export default function FigmaIPOAnalysis() {
 
           {/* Footer */}
           <footer className="text-center mt-12 text-xs text-gray-400 dark:text-gray-500">
-            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>Disclaimer: This is a simulated analysis for illustrative purposes only and does not constitute financial advice. Data is sourced from public filings and news reports surrounding the Figma IPO in July/August 2025. All investments carry risk.</p>
+            <p className="mt-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
           </footer>
         </main>
       </div>
