@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Figma IPO Deep Dive: A Post-IPO Analysis of the Generational SaaS Company",
+    description: "A comprehensive post-IPO analysis of Figma's public debut, examining the company's elite SaaS metrics, stratospheric valuation, and the strategic implications of the failed Adobe acquisition. Explores the investment thesis, competitive positioning, and whether the current stock price offers attractive risk-adjusted returns.",
+    slug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
+    date: "August 3, 2025",
+    imageUrl: "https://www.pixartprinting.co.uk/blog/wp-content/uploads/2023/01/Figma.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTf2lM2OSqhbj1lS2_-tvppa_O7Rnwcp7q7uxMMOCD0sidUHqZgWO-DlIg9-hPD24px9cuo8Pv6ipZc/pub"
+  },
+  {
     title: "Global Evidence on Covered Calls",
     description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
     slug: "covering-world-global-evidence-covered-calls",
