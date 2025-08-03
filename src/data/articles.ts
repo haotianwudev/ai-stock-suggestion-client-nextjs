@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Fooled by Randomness: The Hidden Role of Chance in Life and Markets",
+    description: "An interactive book summary of Nassim Nicholas Taleb's groundbreaking work exploring how we consistently underestimate the role of chance in our lives. Learn about lucky fools, survivorship bias, skewness, and the Black Swan problem that shapes our understanding of success and failure in markets and life.",
+    slug: "fooled-by-randomness-book-summary",
+    date: "August 3, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/412MBJ9ojxL._SY466_.jpg",
+    bookSummary: true,
+    podcastUrl: "https://open.spotify.com/episode/7syUNZX0gWqBUGhZb2MmIE?si=chih4qoqQQyAHk2wci4LeA"
+  },
+  {
     title: "Figma IPO Deep Dive: A Post-IPO Analysis of the Generational SaaS Company",
     description: "A comprehensive post-IPO analysis of Figma's public debut, examining the company's elite SaaS metrics, stratospheric valuation, and the strategic implications of the failed Adobe acquisition. Explores the investment thesis, competitive positioning, and whether the current stock price offers attractive risk-adjusted returns.",
     slug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
