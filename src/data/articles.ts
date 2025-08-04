@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Druckenmiller Doctrine",
+    description: "An exploration of the macro titan who mastered the art of asymmetric returns, turning concentrated conviction into a 30-year, 30% average annual return without a single down year. Learn the four-pillar framework that enabled Stanley Druckenmiller's legendary performance through macro-centric analysis, concentrated betting, and psychological mastery.",
+    slug: "druckenmiller-doctrine-asymmetric-returns",
+    date: "August 4, 2025",
+    imageUrl: "/images/agents/stanley_druckenmiller.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQJdbfXhW73l8IPVbu9Q_gKLrQq9OI5LTh1Qns2SgDdVC4Va50krNsd-9Njwy7PUoEXaA1loFB4yO0U/pub"
+  },
+  {
     title: "Fooled by Randomness: The Hidden Role of Chance in Life and Markets",
     description: "An interactive book summary of Nassim Nicholas Taleb's groundbreaking work exploring how we consistently underestimate the role of chance in our lives. Learn about lucky fools, survivorship bias, skewness, and the Black Swan problem that shapes our understanding of success and failure in markets and life.",
     slug: "fooled-by-randomness-book-summary",

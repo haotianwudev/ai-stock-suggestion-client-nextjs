@@ -10,9 +10,8 @@ export function StickyPodcastPlayer() {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${
-      isExpanded ? 'w-96 h-80' : 'w-80 h-64'
-    } max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)]`}>
+    <div className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${isExpanded ? 'w-96 h-80' : 'w-80 h-64'
+      } max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)]`}>
       <div className="bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-500 to-green-600 text-white">
@@ -56,7 +55,7 @@ export function StickyPodcastPlayer() {
           />
         </div>
       </div>
-      
+
       {/* Show podcast button when hidden */}
       {!isVisible && (
         <button
