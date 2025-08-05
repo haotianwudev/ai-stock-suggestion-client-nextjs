@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Seasons of the Market: Calendar Anomalies and Trading Adages",
+    description: "Analysis of calendar-based market patterns including 'Sell in May', the January Effect, Santa Claus Rally, and September weakness. Examining which seasonal anomalies persist and why market timing based on calendar patterns remains a flawed strategy.",
+    slug: "seasons-market-calendar-anomalies-trading-adages",
+    date: "August 5, 2025",
+    imageUrl: "https://www.luxalgo.com/blog/content/images/size/w1280/format/webp/2025/04/image-19.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQaZMdRYj-8Ow0hd5jLxrtxpfaq6-VTpCUWoPYIH1bsWKlXeF5wHvXrsNfvEnRnn9Um5VA47tdCEJP2/pub"
+  },
+  {
     title: "The Druckenmiller Doctrine",
     description: "An exploration of the macro titan who mastered the art of asymmetric returns, turning concentrated conviction into a 30-year, 30% average annual return without a single down year. Learn the four-pillar framework that enabled Stanley Druckenmiller's legendary performance through macro-centric analysis, concentrated betting, and psychological mastery.",
     slug: "druckenmiller-doctrine-asymmetric-returns",
