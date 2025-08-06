@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, BarChart, Database, Users, TestTube, BrainCircuit, Scale, Building, Rocket, ChevronUp, ChevronDown } from 'lucide-react';
+import { ArrowLeft, BarChart, Database, Users, TestTube, BrainCircuit, Scale, Building, Rocket, ChevronUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -24,46 +24,28 @@ const Keyword = ({ children, color = 'blue' }: { children: React.ReactNode; colo
   return <span className={`font-semibold ${colorClasses[color]}`}>{children}</span>;
 };
 
-// Reusable Accordion/Collapsible Section Component
-const AccordionSection = ({ 
+// Simple Section Component (no accordion functionality)
+const Section = ({ 
   title, 
   icon, 
-  children, 
-  defaultOpen = false 
+  children
 }: { 
   title: string; 
   icon: React.ReactNode; 
   children: React.ReactNode; 
-  defaultOpen?: boolean;
 }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
   return (
-    <div className="border border-slate-200 dark:border-slate-700 rounded-xl mb-6 overflow-hidden transition-all duration-300 ease-in-out shadow-sm hover:shadow-lg">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center p-6 bg-white dark:bg-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-800"
-      >
-        <div className="flex items-center">
+    <div className="border border-slate-200 dark:border-slate-700 rounded-xl mb-6 overflow-hidden shadow-sm">
+      <div className="p-6 bg-white dark:bg-slate-800/50">
+        <div className="flex items-center mb-6">
           <div className="hidden sm:block mr-4 text-blue-500">
             {icon}
           </div>
-          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 text-left">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">
             {title}
           </h2>
         </div>
-        {isOpen ? (
-          <ChevronUp className="w-6 h-6 text-slate-500" />
-        ) : (
-          <ChevronDown className="w-6 h-6 text-slate-500" />
-        )}
-      </button>
-      <div
-        className={`transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-[15000px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="p-6 md:p-8 bg-white dark:bg-slate-900/70 border-t border-slate-200 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-900/70 p-6 md:p-8 rounded-lg border border-slate-200 dark:border-slate-700">
           {children}
         </div>
       </div>
@@ -90,20 +72,20 @@ const Table = ({
   data: string[][]; 
   caption: string;
 }) => (
-  <div className="my-8 overflow-x-auto">
-    <h4 className="text-md font-semibold text-center mb-2 text-slate-700 dark:text-slate-300">
+  <div className="my-8">
+    <h4 className="text-md font-semibold text-center mb-4 text-slate-700 dark:text-slate-300">
       {caption}
     </h4>
-    <div className="min-w-full inline-block align-middle">
-      <div className="overflow-hidden border border-slate-200 dark:border-slate-700 rounded-lg">
-        <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
+    <div className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full divide-y divide-slate-200 dark:divide-slate-700">
           <thead className="bg-slate-50 dark:bg-slate-800">
             <tr>
               {headers.map((header) => (
                 <th
                   key={header}
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider"
+                  className="px-3 md:px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider"
                 >
                   {header}
                 </th>
@@ -116,7 +98,7 @@ const Table = ({
                 {row.map((cell, cellIndex) => (
                   <td
                     key={cellIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    className="px-3 md:px-6 py-4 text-sm text-slate-600 dark:text-slate-300 break-words"
                   >
                     {cell}
                   </td>
@@ -132,10 +114,9 @@ const Table = ({
 
 // Section 1: The Modern Alpha Mandate
 const Section1 = () => (
-  <AccordionSection 
+  <Section 
     title="The Modern Alpha Mandate in Long-Short Equity" 
-    icon={<BarChart className="w-8 h-8"/>} 
-    defaultOpen={true}
+    icon={<BarChart className="w-8 h-8"/>}
   >
     <ContentBlock title="1.1 Anatomy of Long-Short Strategies">
       <p>
@@ -165,12 +146,12 @@ const Section1 = () => (
         As traditional information sources are rapidly priced into the market, their ability to generate alpha has diminished. The new frontier lies in the discovery and analysis of novel, non-traditional datasets, known as <Keyword color="teal">alternative data</Keyword>, to gain an informational advantage before it becomes common knowledge.
       </p>
     </ContentBlock>
-  </AccordionSection>
+  </Section>
 );
 
 // Section 2: The Retail Investor's Toolkit
 const Section2 = () => (
-  <AccordionSection title="The Retail Investor's Toolkit" icon={<Users className="w-8 h-8"/>}>
+  <Section title="The Retail Investor's Toolkit" icon={<Users className="w-8 h-8"/>}>
     <ContentBlock title="2.1 Foundational Datasets for Fundamental Analysis">
       <p>Retail investors have access to a wealth of free, public information:</p>
       <ul className="list-disc pl-5 space-y-2">
@@ -216,12 +197,12 @@ const Section2 = () => (
         ]}
       />
     </ContentBlock>
-  </AccordionSection>
+  </Section>
 );
 
 // Section 3: The Institutional Arsenal
 const Section3 = () => (
-  <AccordionSection title="The Institutional Arsenal: Proprietary & Alternative Datasets" icon={<Building className="w-8 h-8"/>}>
+  <Section title="The Institutional Arsenal: Proprietary & Alternative Datasets" icon={<Building className="w-8 h-8"/>}>
     <ContentBlock title="3.1 The Professional Gateway: Institutional Data Terminals">
       <p>The indispensable gateways to global financial markets, offering unparalleled data depth and connectivity:</p>
       <ul className="list-disc pl-5 space-y-2">
@@ -272,12 +253,12 @@ const Section3 = () => (
         ]}
       />
     </ContentBlock>
-  </AccordionSection>
+  </Section>
 );
 
 // Section 4: From Raw Data to Alpha
 const Section4 = () => (
-  <AccordionSection title="From Raw Data to Alpha: The Hedge Fund's Operational Framework" icon={<TestTube className="w-8 h-8"/>}>
+  <Section title="From Raw Data to Alpha: The Hedge Fund's Operational Framework" icon={<TestTube className="w-8 h-8"/>}>
     <ContentBlock title="4.1 The Modern Data-Driven Team: Quants and Data Scientists">
       <p>
         The modern quantitative hedge fund operates like a high-tech R&D lab, staffed by professionals with blended expertise in finance, statistics, and computer science. They possess skills in Python, R, C++, SQL, database management, <Keyword color="teal">machine learning</Keyword>, and deep financial domain knowledge.
@@ -333,12 +314,12 @@ const Section4 = () => (
         </li>
       </ul>
     </ContentBlock>
-  </AccordionSection>
+  </Section>
 );
 
 // Section 5: Conclusion
 const Section5 = () => (
-  <AccordionSection title="Conclusion and Future Outlook" icon={<Rocket className="w-8 h-8"/>}>
+  <Section title="Conclusion and Future Outlook" icon={<Rocket className="w-8 h-8"/>}>
     <ContentBlock title="5.1 The Widening Data Divide">
       <p>The institutional advantage is not merely informational but is fundamentally structural, financial, and technological. It can be summarized across three dimensions:</p>
       <ol className="list-decimal pl-5 space-y-2">
@@ -368,7 +349,7 @@ const Section5 = () => (
         </li>
       </ul>
     </ContentBlock>
-  </AccordionSection>
+  </Section>
 );
 
 // Main App Component
