@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Quantitative Support Level Modeling",
+    description: "Transforming traditional support level identification into a rigorous, quantitative framework. Explores algorithmic baselines, machine learning pipelines, feature engineering, and empirical validation for systematic trading strategies.",
+    slug: "quantitative-support-level-modeling-machine-learning",
+    date: "August 6, 2025",
+    imageUrl: "https://static2.sahmcapital.com/public/college/images/2023/09/04/905335423993978881.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQZmL_LmAMDLAhzil24nhvf7wb3MoOVgUYNI7VgjGzybyxBwepDs_rKXmuYPgnhNCGU-3gc1rQwoVrQ/pub"
+  },
+  {
     title: "Seasons of the Market: Calendar Anomalies and Trading Adages",
     description: "Analysis of calendar-based market patterns including 'Sell in May', the January Effect, Santa Claus Rally, and September weakness. Examining which seasonal anomalies persist and why market timing based on calendar patterns remains a flawed strategy.",
     slug: "seasons-market-calendar-anomalies-trading-adages",

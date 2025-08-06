@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { ArrowLeft, BarChart, Briefcase, Building, ShieldCheck, Skull, TrendingDown, Scale, AlertTriangle, CheckCircle, ExternalLink } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
 // Interactive Summary Component
 function StockWipeoutInfographic() {
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen font-sans">
-      <main className="container mx-auto px-4 py-8 md:py-16">
+    <div className="bg-gray-50 text-gray-800 font-sans">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
         
         {/* Header Section */}
         <header className="text-center mb-16 md:mb-24">
@@ -287,8 +289,8 @@ function NavigationSidebar() {
   };
 
   return (
-    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-xs">
+    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 hidden xl:block">
+      <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 w-56">
         <h3 className="font-bold text-sm text-gray-900 mb-3">Navigation</h3>
         <ul className="space-y-2">
           {sections.map(({ id, title }) => (
@@ -314,6 +316,7 @@ function NavigationSidebar() {
 // Main Article Component
 export default function StockWipeoutProbabilityAnalysis() {
   const [activeSection, setActiveSection] = useState('infographic');
+  const currentArticle = articles.find(article => article.slug === 'stock-wipeout-probability-analysis');
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -323,7 +326,19 @@ export default function StockWipeoutProbabilityAnalysis() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      {/* SEO Components - MANDATORY */}
+      {currentArticle && (
+        <>
+          <StructuredData article={currentArticle} />
+          <BreadcrumbStructuredData 
+            articleTitle={currentArticle.title} 
+            articleSlug={currentArticle.slug} 
+          />
+        </>
+      )}
+      
+      <div className="min-h-screen bg-gray-50">
       {/* Return to Home Button */}
       <div className="flex items-center gap-4 mb-4 p-4">
         <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
@@ -342,13 +357,30 @@ export default function StockWipeoutProbabilityAnalysis() {
       {/* Navigation Sidebar */}
       <NavigationSidebar />
 
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header with Return Button */}
         <div className="flex items-center gap-4 mb-8">
           <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Return to Home
           </Link>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="xl:hidden mb-8">
+          <details className="bg-white rounded-lg border border-gray-200 shadow-sm">
+            <summary className="px-4 py-3 font-medium text-gray-900 cursor-pointer hover:bg-gray-50 rounded-lg">
+              📋 Quick Navigation
+            </summary>
+            <div className="px-4 pb-4">
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <button onClick={() => document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' })} className="text-left px-2 py-1 rounded hover:bg-gray-50">Overview</button>
+                <button onClick={() => document.getElementById('statistics')?.scrollIntoView({ behavior: 'smooth' })} className="text-left px-2 py-1 rounded hover:bg-gray-50">Statistics</button>
+                <button onClick={() => document.getElementById('wipeout')?.scrollIntoView({ behavior: 'smooth' })} className="text-left px-2 py-1 rounded hover:bg-gray-50">Anatomy</button>
+                <button onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })} className="text-left px-2 py-1 rounded hover:bg-gray-50">Solution</button>
+              </div>
+            </div>
+          </details>
         </div>
 
         {/* Article Header */}
@@ -400,5 +432,6 @@ export default function StockWipeoutProbabilityAnalysis() {
         </div>
       </div>
     </div>
+    </>
   );
 } 
