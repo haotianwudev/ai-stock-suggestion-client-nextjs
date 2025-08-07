@@ -107,6 +107,25 @@ export default function CoveredCallSummaryPage() {
               </p>
             </section>
 
+            {/* YouTube Video Section */}
+            <section className="mb-12 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+              <h2 className="text-3xl font-semibold text-slate-800 mb-6 text-center">
+                NotebookLM AI Analysis
+              </h2>
+              <p className="text-lg text-slate-600 mb-6 text-center">
+                Watch how AI breaks down the complex research findings into actionable insights for covered call strategies.
+              </p>
+              <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
+                <iframe
+                  src="https://www.youtube.com/embed/ntqTDpKv5es"
+                  title="NotebookLM Analysis: Global Evidence on Covered Calls"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </section>
+
             <section>
               <h2 className="text-3xl font-semibold text-slate-800 mb-8 text-center">Key Themes & Important Findings</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
