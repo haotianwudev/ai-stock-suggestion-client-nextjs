@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "NotebookLM Uncovers the Nature of Covered Calls",
+    description: "AI-powered video on groundbreaking AQR research on covered call strategies across eleven global equity indexes. Discover key findings on performance attribution, risk decomposition, volatility risk premiums, and the surprising truth about this popular income strategy's global effectiveness beyond the S&P 500.",
+    slug: "notebooklm-uncovers-nature-covered-calls-global-research",
+    date: "August 7, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=ntqTDpKv5es",
+    isVideo: true,
+    imageUrl: "https://i.ytimg.com/vi/ntqTDpKv5es/hqdefault.jpg",
+    options: true
+  },
+  {
     title: "Quantitative Support Level Modeling",
     description: "Transforming traditional support level identification into a rigorous, quantitative framework. Explores algorithmic baselines, machine learning pipelines, feature engineering, and empirical validation for systematic trading strategies.",
     slug: "quantitative-support-level-modeling-machine-learning",
