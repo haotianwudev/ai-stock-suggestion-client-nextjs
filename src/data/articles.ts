@@ -27,6 +27,17 @@ export const articles: Article[] = [
     options: true
   },
   {
+    title: "Global Evidence on Covered Calls",
+    description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
+    slug: "covering-world-global-evidence-covered-calls",
+    date: "August 6, 2025",
+    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2024/03/What-is-the-covered-call-strategy.png",
+    deepResearch: true,
+    options: true,
+    googleDoc: "https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls",
+    podcastUrl: "https://open.spotify.com/episode/263ybvxDEthF1qi88ufKz7?si=0411f202e10b49cc"
+  },
+  {
     title: "Quantitative Support Level Modeling",
     description: "Transforming traditional support level identification into a rigorous, quantitative framework. Explores algorithmic baselines, machine learning pipelines, feature engineering, and empirical validation for systematic trading strategies.",
     slug: "quantitative-support-level-modeling-machine-learning",
@@ -70,17 +81,6 @@ export const articles: Article[] = [
     imageUrl: "https://www.pixartprinting.co.uk/blog/wp-content/uploads/2023/01/Figma.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTf2lM2OSqhbj1lS2_-tvppa_O7Rnwcp7q7uxMMOCD0sidUHqZgWO-DlIg9-hPD24px9cuo8Pv6ipZc/pub"
-  },
-  {
-    title: "Global Evidence on Covered Calls",
-    description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
-    slug: "covering-world-global-evidence-covered-calls",
-    date: "August 2, 2025",
-    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2024/03/What-is-the-covered-call-strategy.png",
-    deepResearch: true,
-    options: true,
-    googleDoc: "https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls",
-    podcastUrl: "https://open.spotify.com/episode/263ybvxDEthF1qi88ufKz7?si=0411f202e10b49cc"
   },
   {
     title: "Diagonal Spread vs. Covered Call",
