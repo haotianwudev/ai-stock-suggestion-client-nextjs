@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Unlocking Institutional Portfolios: A Strategic Guide to SEC Form 13F",
+    description: "Master the art of tracking institutional investors through SEC Form 13F filings. Learn how to decode quarterly holdings reports, identify high-conviction bets, and use smart money movements for idea generation while avoiding common pitfalls in this comprehensive deep research analysis.",
+    slug: "unlocking-institutional-portfolios-strategic-guide-sec-form-13f",
+    date: "August 8, 2025",
+    imageUrl: "https://m.foolcdn.com/media/dubs/images/form-13f-infographic.width-880.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR3Wim-IZxHF_CgRXgpA9v3TD6Y7p85z7WqkdsY_7PQfo8wfbpJPbrJe0XjVqLcUNgDk1ho7ExqJwey/pub"
+  },
+  {
     title: "NotebookLM Uncovers the Nature of Covered Calls",
     description: "AI-powered video on groundbreaking AQR research on covered call strategies across eleven global equity indexes. Discover key findings on performance attribution, risk decomposition, volatility risk premiums, and the surprising truth about this popular income strategy's global effectiveness beyond the S&P 500.",
     slug: "notebooklm-uncovers-nature-covered-calls-global-research",
