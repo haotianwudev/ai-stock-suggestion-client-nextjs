@@ -20,7 +20,7 @@ export const articles: Article[] = [
     title: "A Zero-Based Budgeting Guide for the Modern Quant Team",
     description: "A comprehensive guide to transforming your quantitative team from a cost center into an indispensable value driver through Zero-Based Budgeting principles and strategic justification frameworks.",
     slug: "strategic-cost-justification-modern-quant-team-zbb-guide",
-    date: "August 8, 2025",
+    date: "August 9, 2025",
     imageUrl: "https://www.techfunnel.com/wp-content/uploads/2024/08/Zero-Based-Budgeting.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSgopLy0far7WMxm8MamqpJ7R4sqytz5_iBqkyT1dj8ax2ONSLB7vE5tihfVDFC1xnOGKFB1fr4MWBF/pub",
     deepResearch: true
@@ -29,7 +29,7 @@ export const articles: Article[] = [
     title: "Unlocking SEC Form 13F",
     description: "Master the art of tracking institutional investors through SEC Form 13F filings. Learn how to decode quarterly holdings reports, identify high-conviction bets, and use smart money movements for idea generation while avoiding common pitfalls in this comprehensive deep research analysis.",
     slug: "unlocking-institutional-portfolios-strategic-guide-sec-form-13f",
-    date: "August 7, 2025",
+    date: "August 8, 2025",
     imageUrl: "https://m.foolcdn.com/media/dubs/images/form-13f-infographic.width-880.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR3Wim-IZxHF_CgRXgpA9v3TD6Y7p85z7WqkdsY_7PQfo8wfbpJPbrJe0XjVqLcUNgDk1ho7ExqJwey/pub"
