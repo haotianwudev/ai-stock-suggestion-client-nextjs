@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Architecting the Modern Trading Tool",
+    description: "A comprehensive system design for a low to mid-frequency equity portfolio management platform. Explores the architecture, technology, and strategy required to build a system that moves from data, to idea, to action with maximum speed and confidence.",
+    slug: "architecting-modern-hedge-fund-desk-system-design",
+    date: "August 11, 2025",
+    imageUrl: "https://www.avatrade.com/wp-content/uploads/2023/04/trading-history-1.png.webp",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSRiUI4Qd6UcOEDjuIqpL-P2d0PgZW54lSX_fT91rCAhGl08klg9GwFPKw4CHKJT4X_BJ8tJa-gqHK9/pub",
+    deepResearch: true
+  },
+  {
     title: "A Zero-Based Budgeting Guide for the Modern Quant Team",
     description: "A comprehensive guide to transforming your quantitative team from a cost center into an indispensable value driver through Zero-Based Budgeting principles and strategic justification frameworks.",
     slug: "strategic-cost-justification-modern-quant-team-zbb-guide",
