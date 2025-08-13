@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Copy Wall Street Legends' Homework from SEC Form 13F",
+    description: "Curious about what the world's most influential institutional investors are buying and selling? SEC Form 13F offers a quarterly glimpse into their portfolios, revealing what's often called 'smart money' plays. But how reliable is this data, and what doesn't it tell you?",
+    slug: "copy-wall-street-legends-homework-sec-form-13f",
+    date: "August 12, 2025",
+    youtubeUrl: "https://youtu.be/QpFSjEhKIaU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/QpFSjEhKIaU/maxresdefault.jpg"
+  },
+  {
     title: "Architecting the Modern Trading Tool",
     description: "A comprehensive system design for a low to mid-frequency equity portfolio management platform. Explores the architecture, technology, and strategy required to build a system that moves from data, to idea, to action with maximum speed and confidence.",
     slug: "architecting-modern-hedge-fund-desk-system-design",
