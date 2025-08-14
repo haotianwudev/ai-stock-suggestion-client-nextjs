@@ -23,7 +23,7 @@ export const articles: Article[] = [
     date: "August 14, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSj-Ys5Zam83336tHdL4TJXfe_vXIQ-yJyj89K5eg63u98H-zD9wsBrnFqBSPbUeuRRKusKng3nUK4r/pub",
     deepResearch: true,
-    imageUrl: "https://www.quiverquant.com/images/cto_rect_new.png"
+    imageUrl: "https://akfpartners.com//uploads/blog/CEO_CTO.jpg"
   },
   {
     title: "Copy Wall Street Legends' Homework from SEC Form 13F",
