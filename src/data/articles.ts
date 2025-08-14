@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading",
+    description: "A comprehensive guide for small-fund CTOs operating as player-coaches. Covers strategic mandate, build-buy-outsource calculus, mid-frequency trading architecture, modern tech stack, infrastructure choices, and FIX/data connectivity considerations.",
+    slug: "small-hedge-fund-cto-technology-leadership-quant-trading",
+    date: "August 14, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSj-Ys5Zam83336tHdL4TJXfe_vXIQ-yJyj89K5eg63u98H-zD9wsBrnFqBSPbUeuRRKusKng3nUK4r/pub",
+    deepResearch: true,
+    imageUrl: "https://www.quiverquant.com/images/cto_rect_new.png"
+  },
+  {
     title: "Copy Wall Street Legends' Homework from SEC Form 13F",
     description: "Curious about what the world's most influential institutional investors are buying and selling? SEC Form 13F offers a quarterly glimpse into their portfolios, revealing what's often called 'smart money' plays. But how reliable is this data, and what doesn't it tell you?",
     slug: "copy-wall-street-legends-homework-sec-form-13f",
