@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "LSTM in Systematic Trading",
+    description: "A comprehensive exploration of Long Short-Term Memory networks in quantitative finance. From architectural innovations solving the vanishing gradient problem to practical implementation challenges in systematic trading strategies, discover how LSTMs capture long-term dependencies in financial markets.",
+    slug: "lstm-systematic-trading-deep-dive-architecture-application-performance",
+    date: "August 15, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTaoVhyDF_TM8QgEYxETLGubMxtsCAVLDfxsjU_m8OCAjNTONPzmc2af44Pe6b9UQKSqfNg4YgAY9nU/pub",
+    deepResearch: true,
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*laH0_xXEkFE0lKJu54gkFQ.png"
+  },
+  {
     title: "The Architecture of Quantitative Insight: AQR's Research Legacy",
     description: "An interactive exploration of AQR Capital Management's foundational research that shaped modern quantitative investing. From the seminal Value and Momentum Everywhere to cutting-edge machine learning applications, discover how systematic factor investing evolved from academic theory to institutional practice.",
     slug: "architecture-quantitative-insight-aqr-research-legacy",
