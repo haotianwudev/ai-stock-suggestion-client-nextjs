@@ -17,10 +17,19 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Architecture of Quantitative Insight: AQR's Research Legacy",
+    description: "An interactive exploration of AQR Capital Management's foundational research that shaped modern quantitative investing. From the seminal Value and Momentum Everywhere to cutting-edge machine learning applications, discover how systematic factor investing evolved from academic theory to institutional practice.",
+    slug: "architecture-quantitative-insight-aqr-research-legacy",
+    date: "August 14, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_JV_qjhSYRA7pthINbLhOKrgCpkRDg8D4jgC8yGh-LObpjZvUMRstL1UyQ0Bed-jEU6LvFy-GtkXZ/pub",
+    deepResearch: true,
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cf/AQR_Capital_Management_Logo.png"
+  },
+  {
     title: "The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading",
     description: "A comprehensive guide for small-fund CTOs operating as player-coaches. Covers strategic mandate, build-buy-outsource calculus, mid-frequency trading architecture, modern tech stack, infrastructure choices, and FIX/data connectivity considerations.",
     slug: "small-hedge-fund-cto-technology-leadership-quant-trading",
-    date: "August 14, 2025",
+    date: "August 13, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSj-Ys5Zam83336tHdL4TJXfe_vXIQ-yJyj89K5eg63u98H-zD9wsBrnFqBSPbUeuRRKusKng3nUK4r/pub",
     deepResearch: true,
     imageUrl: "https://akfpartners.com//uploads/blog/CEO_CTO.jpg"
