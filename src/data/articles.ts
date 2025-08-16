@@ -26,6 +26,15 @@ export const articles: Article[] = [
     imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*laH0_xXEkFE0lKJu54gkFQ.png"
   },
   {
+    title: "The Worldly Wisdom of Charles T. Munger",
+    description: "Deep dive into Charlie Munger's mental models, investment philosophy, and practical wisdom from 'Poor Charlie's Almanack'. Learn the latticework of mental models that shaped one of history's greatest investors.",
+    slug: "worldly-wisdom-charles-munger-multidisciplinary-approach",
+    date: "August 15, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/51OakAzNcCL._SY445_SX342_ControlCacheEqualizer_.jpg",
+    bookSummary: true,
+    podcastUrl: "https://open.spotify.com/episode/0TWGtTKrOHqIrxFOvd8iZo?si=aUphGALNSei5PESB69tiWA",
+  },
+  {
     title: "The Architecture of Quantitative Insight: AQR's Research Legacy",
     description: "An interactive exploration of AQR Capital Management's foundational research that shaped modern quantitative investing. From the seminal Value and Momentum Everywhere to cutting-edge machine learning applications, discover how systematic factor investing evolved from academic theory to institutional practice.",
     slug: "architecture-quantitative-insight-aqr-research-legacy",
