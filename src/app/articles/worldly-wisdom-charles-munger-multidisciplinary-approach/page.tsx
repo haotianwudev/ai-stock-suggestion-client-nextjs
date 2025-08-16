@@ -105,6 +105,25 @@ export default function MungerWisdomArticle() {
             <p className="text-xl text-gray-600 mt-4">A Multidisciplinary Approach to Life, Learning, and Decision-Making</p>
           </div>
 
+          {/* YouTube Video Section */}
+          {
+            <div className="mb-12 bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Watch: Charlie Munger's Wisdom in Action</h2>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/5qiescI6ZiA?si=I2QcIBz1_3sMIMp9`}
+                  title="Charlie Munger Wisdom Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+                ></iframe>
+              </div>
+              <p className="text-gray-600 text-center mt-4">
+                Explore Charlie Munger's timeless wisdom and mental models in this comprehensive video discussion.
+              </p>
+            </div>
+          }
+
           <div className="bg-white rounded-lg shadow-md mb-8 sticky top-0 z-10">
             <nav className="flex justify-center p-2 space-x-1 md:space-x-4">
               <TabButton title="Introduction" isActive={activeTab === 'introduction'} onClick={() => setActiveTab('introduction')} />
@@ -122,17 +141,33 @@ export default function MungerWisdomArticle() {
             <h2 className="text-3xl font-bold mb-4">Continue Your Learning Journey</h2>
             <p className="text-xl mb-6">Dive deeper into Charlie Munger's wisdom with our podcast discussion</p>
             
-            {currentArticle?.podcastUrl && (
-              <a 
-                href={currentArticle.podcastUrl}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Music className="inline mr-2" />
-                Listen to Podcast
-              </a>
-            )}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {currentArticle?.youtubeUrl && (
+                <a 
+                  href={currentArticle.youtubeUrl}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
+                >
+                  <svg className="inline mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  Watch on YouTube
+                </a>
+              )}
+              
+              {currentArticle?.podcastUrl && (
+                <a 
+                  href={currentArticle.podcastUrl}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+                >
+                  <Music className="inline mr-2" />
+                  Listen to Podcast
+                </a>
+              )}
+            </div>
           </div>
         </main>
 
