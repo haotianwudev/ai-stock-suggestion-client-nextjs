@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Charlie Munger Method: Worldly Wisdom beyond Investment",
+    description: "Dive into the essential insights of Charles T. Munger, the legendary partner of Warren Buffett, with 'Poor Charlie's Almanack'. This acclaimed book compiles Munger's speeches, writings, and unique philosophies on life, learning, and decision-making, offering a refreshing rebuttal of conventional wisdom.",
+    slug: "charlie-munger-method-worldly-wisdom-beyond-investment",
+    date: "August 16, 2025",
+    youtubeUrl: "https://youtu.be/5qiescI6ZiA",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/5qiescI6ZiA/maxresdefault.jpg"
+  },
+  {
     title: "LSTM in Systematic Trading",
     description: "A comprehensive exploration of Long Short-Term Memory networks in quantitative finance. From architectural innovations solving the vanishing gradient problem to practical implementation challenges in systematic trading strategies, discover how LSTMs capture long-term dependencies in financial markets.",
     slug: "lstm-systematic-trading-deep-dive-architecture-application-performance",
