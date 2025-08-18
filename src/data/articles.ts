@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Mutual Funds vs ETFs: The Definitive Investment Guide",
+    description: "A comprehensive analysis of the key differences between mutual funds and ETFs, covering trading mechanisms, tax efficiency, costs, and strategic applications. Learn when to use each investment vehicle and how to build a hybrid portfolio that maximizes the strengths of both approaches.",
+    slug: "mutual-funds-vs-etfs-definitive-investment-guide",
+    date: "August 18, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vST0TMTGIMyJXP9CPCB8Hr-EMKCrs_wIhiHzvEB9kAvWohhT8WgdoacElpCdBh-Ubvn8jeLwpiHHuac/pub",
+    deepResearch: true,
+    imageUrl: "https://www.ebc.com/upload/default/20250729/f5335d106d980b8c9ab2ded24997d5d1.png"
+  },
+  {
     title: "Alibaba Group (BABA) Stock Analysis",
     description: "Comprehensive analysis of Alibaba Group examining its operational structure, financial health, competitive positioning, and strategic direction. The core investment thesis is that Alibaba presents a compelling, high-risk/high-reward opportunity with significant undervaluation relative to its intrinsic growth potential.",
     slug: "alibaba-baba-stock-analysis-complex-era-growth-risk",
