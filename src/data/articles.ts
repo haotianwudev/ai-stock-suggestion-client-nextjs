@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Alibaba Group (BABA) Stock Analysis",
+    description: "Comprehensive analysis of Alibaba Group examining its operational structure, financial health, competitive positioning, and strategic direction. The core investment thesis is that Alibaba presents a compelling, high-risk/high-reward opportunity with significant undervaluation relative to its intrinsic growth potential.",
+    slug: "alibaba-baba-stock-analysis-complex-era-growth-risk",
+    date: "August 17, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ7qPBtkFEqNmY63GX0LZf0ABP5o_5EKpkAZBUb7KNkFcrH_cZ8vrVbK1f0X7_9jrBhebAJKqvUW783/pub",
+    deepResearch: true,
+    imageUrl: "https://coincentral.com/wp-content/uploads/2025/04/Alibaba-1-1200x800.jpg"
+  },
+  {
     title: "The Charlie Munger Method: Worldly Wisdom beyond Investment",
     description: "Dive into the essential insights of Charles T. Munger, the legendary partner of Warren Buffett, with 'Poor Charlie's Almanack'. This acclaimed book compiles Munger's speeches, writings, and unique philosophies on life, learning, and decision-making, offering a refreshing rebuttal of conventional wisdom.",
     slug: "charlie-munger-method-worldly-wisdom-beyond-investment",
