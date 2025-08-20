@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The company with contradiction, is Alibaba now a good buy?",
+    description: "Dive deep into Alibaba Group Holding Ltd. (NYSE: BABA) with our comprehensive stock analysis! This video explores Alibaba's journey from a B2B portal to a global tech conglomerate, operating across e-commerce, cloud computing, logistics, and digital media. Discover why BABA presents a compelling, high-risk/high-reward investment opportunity, currently trading at a significant valuation discount compared to its global technology peers.",
+    slug: "alibaba-contradiction-company-good-buy-analysis",
+    date: "August 19, 2025",
+    youtubeUrl: "https://www.youtube.com/watch?v=dWNdmLn9dj0",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/dWNdmLn9dj0/maxresdefault.jpg"
+  },
+  {
     title: "Mutual Funds vs ETFs: The Definitive Investment Guide",
     description: "A comprehensive analysis of the key differences between mutual funds and ETFs, covering trading mechanisms, tax efficiency, costs, and strategic applications. Learn when to use each investment vehicle and how to build a hybrid portfolio that maximizes the strengths of both approaches.",
     slug: "mutual-funds-vs-etfs-definitive-investment-guide",
@@ -32,7 +41,8 @@ export const articles: Article[] = [
     date: "August 17, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ7qPBtkFEqNmY63GX0LZf0ABP5o_5EKpkAZBUb7KNkFcrH_cZ8vrVbK1f0X7_9jrBhebAJKqvUW783/pub",
     deepResearch: true,
-    imageUrl: "https://coincentral.com/wp-content/uploads/2025/04/Alibaba-1-1200x800.jpg"
+    imageUrl: "https://coincentral.com/wp-content/uploads/2025/04/Alibaba-1-1200x800.jpg",
+    podcastUrl: "https://open.spotify.com/episode/2U6YlRCryteyphZp3l86H4?si=E6s3Z5PyTbCP0stCrWJZSA",
   },
   {
     title: "The Charlie Munger Method: Worldly Wisdom beyond Investment",
