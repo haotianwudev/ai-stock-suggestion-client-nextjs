@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Unlock High Yields with Covered Call ETFs",
+    description: "A comprehensive deep dive into covered call ETF strategies, yields, and risks of popular funds like JEPI, JEPQ, GPIX, and the 'YLDs'. Understand the trade-offs, tax implications, and performance across market cycles before you invest in these high-yield income generators.",
+    slug: "unlock-high-yields-covered-call-etfs-deep-research",
+    date: "August 20, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnv05mwht-yG4oVg-uV3sUkofJ19paWaPDiZX1XZB9e1-q1AciHzo27IpULOftbIhDrxGnEXA0OZeh/pub",
+    deepResearch: true,
+    options: true,
+    imageUrl: "https://wyzeinvestors.com/wp-content/uploads/2024/03/Copx-32-1024x538.jpg"
+  },
+  {
     title: "The company with contradiction, is Alibaba now a good buy?",
     description: "Dive deep into Alibaba Group Holding Ltd. (NYSE: BABA) with our comprehensive stock analysis! This video explores Alibaba's journey from a B2B portal to a global tech conglomerate, operating across e-commerce, cloud computing, logistics, and digital media. Discover why BABA presents a compelling, high-risk/high-reward investment opportunity, currently trading at a significant valuation discount compared to its global technology peers.",
     slug: "alibaba-contradiction-company-good-buy-analysis",
@@ -60,7 +70,8 @@ export const articles: Article[] = [
     date: "August 15, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTaoVhyDF_TM8QgEYxETLGubMxtsCAVLDfxsjU_m8OCAjNTONPzmc2af44Pe6b9UQKSqfNg4YgAY9nU/pub",
     deepResearch: true,
-    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*laH0_xXEkFE0lKJu54gkFQ.png"
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*laH0_xXEkFE0lKJu54gkFQ.png",
+    podcastUrl: "https://open.spotify.com/episode/0B3DPu2vDn9PV8ksbRX6hY?si=5xoIEsEdT4uE1FXraVnmwg",
   },
   {
     title: "The Worldly Wisdom of Charles T. Munger",
