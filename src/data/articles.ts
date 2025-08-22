@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction",
+    description: "Stanley Druckenmiller's latest 13F filing reveals a dramatic $1B+ surge into U.S. equities, deep bets on the AI value chain, and bullish conviction on the American economy. Analyzing the legendary investor's strategic pivot.",
+    slug: "druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction",
+    date: "August 22, 2025",
+    imageUrl: "https://www.danielscrivner.com/content/images/size/w1200/format/webp/2025/06/Stanley-Druckenmiller_Default-1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRqQRKlSjvTCRVaoE8GVlCjRhsXZd3g2Yf3DTyD0im65mLouXTXowITkoO-jrVszxpF-YllnTx6MxTF/pub",
+    deepResearch: true,
+  },
+  {
     title: "Predict the unpredictable? LSTM in systematic trading",
     description: "Are you curious how cutting-edge AI is being used to navigate the complex world of finance? This video dives deep into Long Short-Term Memory (LSTM) Networks, a specialized type of Recurrent Neural Network (RNN), and their powerful application in systematic trading.",
     slug: "predict-unpredictable-lstm-systematic-trading",
