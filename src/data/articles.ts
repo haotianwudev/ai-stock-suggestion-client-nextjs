@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Predict the unpredictable? LSTM in systematic trading",
+    description: "Are you curious how cutting-edge AI is being used to navigate the complex world of finance? This video dives deep into Long Short-Term Memory (LSTM) Networks, a specialized type of Recurrent Neural Network (RNN), and their powerful application in systematic trading.",
+    slug: "predict-unpredictable-lstm-systematic-trading",
+    date: "August 21, 2025",
+    youtubeUrl: "https://youtu.be/smYKvopeg1Q",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/smYKvopeg1Q/maxresdefault.jpg"
+  },
+  {
     title: "Unlock High Yields with Covered Call ETFs",
     description: "A comprehensive deep dive into covered call ETF strategies, yields, and risks of popular funds like JEPI, JEPQ, GPIX, and the 'YLDs'. Understand the trade-offs, tax implications, and performance across market cycles before you invest in these high-yield income generators.",
     slug: "unlock-high-yields-covered-call-etfs-deep-research",
