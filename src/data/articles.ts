@@ -24,6 +24,7 @@ export const articles: Article[] = [
     imageUrl: "https://www.danielscrivner.com/content/images/size/w1200/format/webp/2025/06/Stanley-Druckenmiller_Default-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRqQRKlSjvTCRVaoE8GVlCjRhsXZd3g2Yf3DTyD0im65mLouXTXowITkoO-jrVszxpF-YllnTx6MxTF/pub",
     deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3Y4CSQuJTR2E5MlElySRY2?si=lZyC4AyyR8ieVp66FHXVig",
   },
   {
     title: "Predict the unpredictable? LSTM in systematic trading",

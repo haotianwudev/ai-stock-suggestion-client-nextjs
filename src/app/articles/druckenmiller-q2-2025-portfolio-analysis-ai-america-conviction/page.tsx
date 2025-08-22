@@ -5,7 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { useState } from 'react';
-import { ArrowUpRight, ArrowDownRight, TrendingUp, Plus, Minus, X, Briefcase, BarChart2, Zap, HeartPulse, Cpu, DollarSign, Building, Globe, Target, Scale, ShieldCheck, UserCheck } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, TrendingUp, Plus, Minus, X, Briefcase, BarChart2, Zap, HeartPulse, Cpu, DollarSign, Building, Globe, Target, Scale, ShieldCheck, UserCheck, Music } from 'lucide-react';
+import { only } from 'node:test';
 
 // --- MOCK DATA FROM THE REPORT ---
 const portfolioMetrics = {
@@ -152,10 +153,10 @@ const Header = () => (
           <Briefcase className="h-8 w-8 text-blue-600" />
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Druckenmiller's Q2 2025 Playbook</h1>
         </div>
-        <a 
-          href="https://www.sec.gov/edgar/searchedgar/companysearch" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://www.sec.gov/edgar/searchedgar/companysearch"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden sm:inline-block text-sm text-slate-500 hover:text-slate-900 transition-colors"
         >
           Source: 13F Filing
@@ -257,27 +258,27 @@ const PortfolioSnapshot = () => (
         <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">A decisive shift to offense, marked by a surge in capital and concentrated bets.</p>
       </div>
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard 
-          title="Total Market Value" 
-          value={portfolioMetrics.q2Value} 
-          change={portfolioMetrics.valueChange} 
-          changePercent={portfolioMetrics.valueChangePercent} 
-          icon={DollarSign} 
+        <MetricCard
+          title="Total Market Value"
+          value={portfolioMetrics.q2Value}
+          change={portfolioMetrics.valueChange}
+          changePercent={portfolioMetrics.valueChangePercent}
+          icon={DollarSign}
         />
-        <MetricCard 
-          title="Number of Holdings" 
-          value={portfolioMetrics.holdingsCountQ2} 
-          icon={Briefcase} 
+        <MetricCard
+          title="Number of Holdings"
+          value={portfolioMetrics.holdingsCountQ2}
+          icon={Briefcase}
         />
-        <MetricCard 
-          title="Top 10 Concentration" 
-          value={portfolioMetrics.top10Concentration} 
-          icon={BarChart2} 
+        <MetricCard
+          title="Top 10 Concentration"
+          value={portfolioMetrics.top10Concentration}
+          icon={BarChart2}
         />
-        <MetricCard 
-          title="Quarterly Turnover" 
-          value={portfolioMetrics.turnover} 
-          icon={Zap} 
+        <MetricCard
+          title="Quarterly Turnover"
+          value={portfolioMetrics.turnover}
+          icon={Zap}
         />
       </div>
       <div className="mt-16 max-w-4xl mx-auto">
@@ -345,7 +346,7 @@ const PortfolioSnapshot = () => (
 const ChangeCard = ({ item, type }) => {
   const isNewOrIncrease = type === 'new' || type === 'increase';
   const isExitOrDecrease = type === 'exit' || type === 'decrease';
-  
+
   return (
     <div className="bg-white p-4 rounded-lg border border-slate-200 space-y-2 shadow-sm">
       <div className="flex justify-between items-start">
@@ -538,13 +539,13 @@ export default function DruckenmillerQ2Analysis() {
       {currentArticle && (
         <>
           <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+          <BreadcrumbStructuredData
+            articleTitle={currentArticle.title}
+            articleSlug={currentArticle.slug}
           />
         </>
       )}
-      
+
       <div className="bg-white antialiased text-slate-800">
         {/* Return to Home Button */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -563,6 +564,15 @@ export default function DruckenmillerQ2Analysis() {
           </span>
         </div>
 
+        {/* Podcast Badge */}
+        {currentArticle?.podcastUrl && (
+          <div className="absolute top-4 right-4 z-10">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              Podcast
+            </span>
+          </div>
+        )}
+
         <Header />
         <main>
           <Hero />
@@ -573,6 +583,53 @@ export default function DruckenmillerQ2Analysis() {
           <MacroThemes />
           <HoldingsDeepDive />
         </main>
+
+        {/* Deep Research Paper Section */}
+        {currentArticle?.googleDoc && (
+          <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Access the Full Deep Research Paper
+              </h3>
+              <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
+                Get the complete analysis with detailed methodology, additional data tables, risk assessments, and comprehensive investment thesis behind Druckenmiller's Q2 2025 portfolio moves.
+              </p>
+              <a
+                href={currentArticle.googleDoc}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+              >
+                <Briefcase className="inline mr-2" />
+                Read Deep Research Paper
+              </a>
+            </div>
+          </section>
+        )}
+
+        {/* Podcast Section */}
+        {currentArticle?.podcastUrl && (
+          <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Listen to the Full Analysis
+              </h3>
+              <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+                Dive deeper into Druckenmiller's strategic moves with our comprehensive podcast discussion covering the macro themes, individual holdings analysis, and investment implications.
+              </p>
+              <a
+                href={currentArticle.podcastUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+              >
+                <Music className="inline mr-2" />
+                Listen to Podcast
+              </a>
+            </div>
+          </section>
+        )}
+
         <Footer />
       </div>
     </>
