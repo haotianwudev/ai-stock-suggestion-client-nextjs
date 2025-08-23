@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Druckenmiller's latest holdings analysis: Bold AI & Economic Bet",
+    description: "Legendary investor Stanley Druckenmiller's Duquesne Family Office made a dramatic strategic pivot in the second quarter of 2025, shifting from a defensive stance to an aggressively bullish outlook on the U.S. economy and key technological themes.",
+    slug: "druckenmiller-latest-holdings-analysis-bold-ai-economic-bet",
+    date: "August 23, 2025",
+    youtubeUrl: "https://youtu.be/AkHQPJ8K6Uo",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/AkHQPJ8K6Uo/maxresdefault.jpg"
+  },
+  {
     title: "Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction",
     description: "Stanley Druckenmiller's latest 13F filing reveals a dramatic $1B+ surge into U.S. equities, deep bets on the AI value chain, and bullish conviction on the American economy. Analyzing the legendary investor's strategic pivot.",
     slug: "druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction",
