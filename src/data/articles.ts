@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Automated Option Trading: A Comprehensive Guide",
+    description: "Master the five pillars of automated options trading systems: strategy development, optimization, risk management, capital allocation, and backtesting. Learn how options trading differs fundamentally from traditional algorithmic approaches.",
+    slug: "automated-option-trading-comprehensive-guide",
+    date: "August 23, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/41p88qR4I6L._SY466_.jpg",
+    bookSummary: true,
+    options: true,
+    podcastUrl: "https://open.spotify.com/episode/42DdyftsQTCF75VQQdwPPB?si=COx1i8lsSb-lFlYKKBMM4w"
+  },
+  {
     title: "Druckenmiller's latest holdings analysis: Bold AI & Economic Bet",
     description: "Legendary investor Stanley Druckenmiller's Duquesne Family Office made a dramatic strategic pivot in the second quarter of 2025, shifting from a defensive stance to an aggressively bullish outlook on the U.S. economy and key technological themes.",
     slug: "druckenmiller-latest-holdings-analysis-bold-ai-economic-bet",
