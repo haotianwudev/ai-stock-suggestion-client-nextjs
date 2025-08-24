@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Powell Pivot: Navigating Market Crosscurrents After the Fed's Easing Signal",
+    description: "Fed Chair Jerome Powell's dovish pivot signals a challenging situation of weakening labor markets versus persistent inflation. Historical analysis reveals the critical difference between insurance cuts and crisis responses, with today's hybrid environment demanding cautious, quality-focused investment strategies.",
+    slug: "powell-pivot-navigating-market-crosscurrents-fed-easing-signal",
+    date: "August 25, 2025",
+    imageUrl: "https://d1yhils6iwh5l5.cloudfront.net/charts/resized/125256/large/04.19.2024_Powell_Gump_cartoon.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRp5bduh9eC1MoSUf7Eyv4s23hXPDFH1DePgLGyz2nZayGbcv2_0WPgliBYVPVShSrgTa1rtBLA2J2N/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/596Xm3GAnJ38KmUnqOFYRi?si=wnt9GN5sQBKXbQmRcnT5SQ",
+  },
+  {
     title: "The Cassandra Pivot: Michael Burry's Q2 2025 Market Reversal Analysis",
     description: "Deep dive into Michael Burry's dramatic portfolio transformation from maximum bearishness in Q1 to targeted bullishness in Q2 2025. Analyzing his shift from macro-bear to micro-bull through detailed 13F filings and investment thesis breakdown.",
     slug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
