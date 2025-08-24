@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Cassandra Pivot: Michael Burry's Q2 2025 Market Reversal Analysis",
+    description: "Deep dive into Michael Burry's dramatic portfolio transformation from maximum bearishness in Q1 to targeted bullishness in Q2 2025. Analyzing his shift from macro-bear to micro-bull through detailed 13F filings and investment thesis breakdown.",
+    slug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
+    date: "August 24, 2025",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*CnFPdZBtX3PqVMG6EBvvkw.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTVoXgNCWd0DuULODI7qXh5u7315FCyNBIX4e4MR72ZNF_Rdd3AwmniONXIvLjruGi8-smNE3L5EBCm/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3x7U9f3UJjxOz56EuGgi4i?si=GcNPUDvsRsOXN2UTK-IwHw",
+  },
+  {
     title: "Automated Option Trading: A Comprehensive Guide",
     description: "Master the five pillars of automated options trading systems: strategy development, optimization, risk management, capital allocation, and backtesting. Learn how options trading differs fundamentally from traditional algorithmic approaches.",
     slug: "automated-option-trading-comprehensive-guide",
