@@ -15,7 +15,16 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [
+export const articles: Article[] = [  
+  {
+    title: "Fed Easing signal - Powell Pivot - Soft Landing or Deceptive Bull Trap in History",
+    description: "Dive deep into Federal Reserve Chair Jerome Powell's pivotal Jackson Hole speech on August 22, 2025, where he signaled a potential easing cycle for monetary policy. This highly anticipated address, interpreted by financial markets as a clear dovish pivot, sparked an immediate and powerful rally across major equity indices and a corresponding drop in short-term Treasury yields.",
+    slug: "powell-pivot",
+    date: "August 26, 2025",
+    youtubeUrl: "https://youtu.be/Wgib90X4FDM",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/Wgib90X4FDM/maxresdefault.jpg"
+  },
   {
     title: "The Powell Pivot: Navigating Market Crosscurrents After the Fed's Easing Signal",
     description: "Fed Chair Jerome Powell's dovish pivot signals a challenging situation of weakening labor markets versus persistent inflation. Historical analysis reveals the critical difference between insurance cuts and crisis responses, with today's hybrid environment demanding cautious, quality-focused investment strategies.",
@@ -25,6 +34,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRp5bduh9eC1MoSUf7Eyv4s23hXPDFH1DePgLGyz2nZayGbcv2_0WPgliBYVPVShSrgTa1rtBLA2J2N/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/596Xm3GAnJ38KmUnqOFYRi?si=wnt9GN5sQBKXbQmRcnT5SQ",
+  },
+  {
+    title: "Is nature of StableCoins Yield or Risk?",
+    description: "Dive into the complex world of stablecoins, the digital assets designed to bridge traditional finance and the burgeoning digital economy by mitigating crypto's notorious price volatility. With a market capitalization exceeding $250 billion, primarily pegged to the U.S. dollar, stablecoins have become a foundational pillar of the digital asset landscape, serving as \"digital dollars\" for various blockchain networks.",
+    slug: "is-nature-stablecoins-yield-or-risk",
+    date: "August 24, 2025",
+    youtubeUrl: "https://youtu.be/bWzpeYtU16Q",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/bWzpeYtU16Q/maxresdefault.jpg"
   },
   {
     title: "The Cassandra Pivot: Michael Burry's Q2 2025 Market Reversal Analysis",
