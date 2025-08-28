@@ -17,8 +17,19 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Beyond Leverage: Risk Parity Through Call Writing",
+    description: "Discover a sophisticated, non-leverage-based methodology for achieving true risk diversification by re-engineering asset risk profiles through options overlays. A comprehensive analysis of Equal Risk Contribution principles and call writing as risk transformation.",
+    slug: "beyond-leverage-risk-parity-call-writing",
+    date: "August 28, 2025",
+    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2021/02/Risk-Parity.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSd8wQidCZUfKg-fmOVm7mtGlq6mgKFVwOVhXrJyTkJ0OLZTOZwDxEXnILWVoqhqhDEUx1r_jtcmaN4/pub",
+    deepResearch: true,
+    bookSummary: true,
+    options: true
+  },
+  {
     title: "The Big Short Reversal: Michael Burry's latest Holdings, 13F Analysis",
-    description: "Known as The Cassandra for his ominous warnings and his legendary bet against the 2008 housing crisis, Michael Burry made a dramatic 180-degree turn in Q2 2025! After preparing for a "massive market storm" in Q1 with near-total liquidation of equities and huge bearish put options against Nvidia and Chinese tech giants, Burry has completely reversed course.",
+    description: "Known as The Cassandra for his ominous warnings and his legendary bet against the 2008 housing crisis, Michael Burry made a dramatic 180-degree turn in Q2 2025! After preparing for a massive market storm in Q1 with near-total liquidation of equities and huge bearish put options against Nvidia and Chinese tech giants, Burry has completely reversed course.",
     slug: "big-short-reversal",
     date: "August 27, 2025",
     youtubeUrl: "https://youtu.be/j7oFt5F_0Ik",
