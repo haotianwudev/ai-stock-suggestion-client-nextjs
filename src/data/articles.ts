@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Big Short Reversal: Michael Burry's latest Holdings, 13F Analysis",
+    description: "Known as The Cassandra for his ominous warnings and his legendary bet against the 2008 housing crisis, Michael Burry made a dramatic 180-degree turn in Q2 2025! After preparing for a "massive market storm" in Q1 with near-total liquidation of equities and huge bearish put options against Nvidia and Chinese tech giants, Burry has completely reversed course.",
+    slug: "big-short-reversal",
+    date: "August 27, 2025",
+    youtubeUrl: "https://youtu.be/j7oFt5F_0Ik",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/j7oFt5F_0Ik/maxresdefault.jpg"
+  },
+  {
     title: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
     description: "A comprehensive theoretical and computational analysis of the early exercise decision for rational investors. Explores Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method for determining optimal exercise strategies.",
     slug: "optimal-early-exercise-american-call-options-dividend-stocks",
