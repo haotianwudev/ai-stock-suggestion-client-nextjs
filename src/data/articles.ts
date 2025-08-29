@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Political Alpha: An Investor's Guide to Congressional Stock Trading",
+    description: "Deep dive into the extraordinary investment returns of select U.S. politicians, analyzing Nancy Pelosi's market-beating portfolio, Capitol Hill's top traders, and the strategic framework for tracking congressional stock disclosures. Explore the data, risks, and toolkit for political alpha generation.",
+    slug: "political-alpha-congressional-stock-trading-guide",
+    date: "August 28, 2025",
+    imageUrl: "https://suindependent.com/wp-content/uploads/2020/09/Pelosis_Image.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQXZifSiE46mzedCc2Go-dGoDPiMxZdeqNBy0nmGUncvRQkgiAu_w6Xxa1C5KFb716BIq_TACbZIlfe/pub",
+    deepResearch: true
+  },
+  {
     title: "Beyond Leverage: Risk Parity Through Call Writing",
     description: "Discover a sophisticated, non-leverage-based methodology for achieving true risk diversification by re-engineering asset risk profiles through options overlays. A comprehensive analysis of Equal Risk Contribution principles and call writing as risk transformation.",
     slug: "beyond-leverage-risk-parity-call-writing",
