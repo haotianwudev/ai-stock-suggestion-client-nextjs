@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Is Transformer the ultimate solution to Crack the Market? Transformer in Systematic Trading",
+    description: "Uncover how the groundbreaking Transformer architecture, the engine behind modern AI and Large Language Models (LLMs), is fundamentally reshaping systematic trading! This video delves into how this paradigm-shifting technology, originally designed for natural language processing, is now tackling the complex, noisy, and non-stationary domain of financial markets.",
+    slug: "transformer-in-systematic-trading",
+    date: "August 29, 2025",
+    youtubeUrl: "https://youtu.be/2JlReeYdFxA",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/2JlReeYdFxA/maxresdefault.jpg"
+  },
+  {
     title: "Political Alpha: An Investor's Guide to Congressional Stock Trading",
     description: "Deep dive into the extraordinary investment returns of select U.S. politicians, analyzing Nancy Pelosi's market-beating portfolio, Capitol Hill's top traders, and the strategic framework for tracking congressional stock disclosures. Explore the data, risks, and toolkit for political alpha generation.",
     slug: "political-alpha-congressional-stock-trading-guide",
