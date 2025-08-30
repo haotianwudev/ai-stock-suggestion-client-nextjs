@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "An Institutional Analysis of Long-Horizon Trend Regression",
+    description: "A comprehensive quantitative analysis translating technical analysis into institutional trading paradigms. Explores Time-Series Momentum (TSMOM), statistical foundations, and empirical evidence for long-term trend strategies across asset classes.",
+    slug: "institutional-analysis-long-horizon-trend-regression",
+    date: "August 30, 2025",
+    imageUrl: "https://www.fxcorporate.com/help/MS/NOTFIFO/IMG/IndicatorDescriptions/REGRESSION_Indicator.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSSQVdPywNv0_PO1HLFySWG9fjHR1CUWibQgPiUWW5xGTvdXqX1ZJ6iFJxxiMcmChrvLYIVcfOK32Gp/pub",
+    deepResearch: true
+  },
+  {
     title: "Is Transformer the ultimate solution to Crack the Market? Transformer in Systematic Trading",
     description: "Uncover how the groundbreaking Transformer architecture, the engine behind modern AI and Large Language Models (LLMs), is fundamentally reshaping systematic trading! This video delves into how this paradigm-shifting technology, originally designed for natural language processing, is now tackling the complex, noisy, and non-stationary domain of financial markets.",
     slug: "transformer-in-systematic-trading",
