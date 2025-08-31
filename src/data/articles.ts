@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Covered Calls vs Cash-Secured Puts",
+    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
+    slug: "covered-calls-vs-cash-secured-puts",
+    date: "August 31, 2025",
+    options: true,
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
+    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
+  },
+  {
     title: "An Institutional Analysis of Long-Horizon Trend Regression",
     description: "A comprehensive quantitative analysis translating technical analysis into institutional trading paradigms. Explores Time-Series Momentum (TSMOM), statistical foundations, and empirical evidence for long-term trend strategies across asset classes.",
     slug: "institutional-analysis-long-horizon-trend-regression",
@@ -797,16 +807,6 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRb2Opr7keDlhiUot7H3XkPkiBnZAusLebEM5o5hz-8Mp_skm58SjSDOTZlaYuTLINT7keGh4Njd5tO/pub",
     deepResearch: true,
     noSummary: true
-  },
-  {
-    title: "Covered Calls vs Cash-Secured Puts",
-    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
-    slug: "covered-calls-vs-cash-secured-puts",
-    date: "June 14, 2025",
-    options: true,
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
-    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
   },
   {
     title: "Options Strategy Selection:TA to ML",
