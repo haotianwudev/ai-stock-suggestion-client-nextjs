@@ -27,6 +27,15 @@ export const articles: Article[] = [
     imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
   },
   {
+    title: "Secret Similarity: Covered Call vs Cash Secured Put and the Wheel strategy!",
+    description: "Dive deep into the fascinating world of options trading with our comprehensive analysis of Covered Calls vs. Cash-Secured Puts! Many investors treat these as distinct strategies, but did you know they are theoretical equivalents based on put-call parity?",
+    slug: "secret-similary-call-put",
+    date: "August 30, 2025",
+    youtubeUrl: "https://youtu.be/fKpmR9DxYpk",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/fKpmR9DxYpk/maxresdefault.jpg"
+  },
+  {
     title: "An Institutional Analysis of Long-Horizon Trend Regression",
     description: "A comprehensive quantitative analysis translating technical analysis into institutional trading paradigms. Explores Time-Series Momentum (TSMOM), statistical foundations, and empirical evidence for long-term trend strategies across asset classes.",
     slug: "institutional-analysis-long-horizon-trend-regression",
