@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?",
+    description: "Deep dive into the unprecedented market dominance of the Magnificent Seven tech giants. Analyzing Q2 2025 earnings, AI monetization strategies, and the great bifurcation between AI enablers and application players in this comprehensive market analysis.",
+    slug: "magnificent-seven-ai-titans-bubble-analysis",
+    date: "September 1, 2025",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSXRngq-N5LBYfpRaU6UVvkJuWb9pS_hpfYRDFUhzyx_xjwERFq8atlCVgNGTziP-nbpnJZIOIMGeCz/pub",
+    podcastUrl: "https://open.spotify.com/episode/6qCKOJJoToJ8dyIPpsm3VD?si=i5QGuYwWQjeMKWyWS4oatg",
+    imageUrl: "https://www.amgnational.com/wp-content/uploads/2024/01/mag7stocks.jpg"
+  },
+  {
     title: "Covered Calls vs Cash-Secured Puts",
     description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
     slug: "covered-calls-vs-cash-secured-puts",
