@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Navigating the Turning Tide: A 2025 Macro Analysis",
+    description: "An in-depth analysis of the 2025 Dollar decline, U.S. equity resilience, and the emergence of a new macroeconomic paradigm driven by domestic policy uncertainty. Examining the historic inflection point that ended the dollar's 15-year bull cycle.",
+    slug: "navigating-turning-tide-2025-macro-analysis",
+    date: "September 2, 2025",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQVpe5KZsRlrz4ltqj9Ft_1TQXtt_iMQwMsO1BZbLu7GQ15RWpf9DmiUawMLt5FxfLtYhfX751xBGzL/pub",
+    podcastUrl: "https://open.spotify.com/episode/7vaRhwrGIphyPFvpFvfmkO?si=X2xbLImzQg-uvSb4Nte9oQ",
+    imageUrl: "https://otetmarkets.com/blog/wp-content/uploads/2025/04/9apr1_1.webp"
+  },
+  {
     title: "The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?",
     description: "Deep dive into the unprecedented market dominance of the Magnificent Seven tech giants. Analyzing Q2 2025 earnings, AI monetization strategies, and the great bifurcation between AI enablers and application players in this comprehensive market analysis.",
     slug: "magnificent-seven-ai-titans-bubble-analysis",
