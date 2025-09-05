@@ -17,24 +17,61 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations",
+    description: "A comprehensive analysis of the paradox facing investors: equity markets at all-time highs while the Federal Reserve initiates monetary easing. Explores strategic portfolio construction for an era of peak valuations, examining gold, fixed income, small-cap opportunities, and advanced option strategies.",
+    slug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
+    date: "September 6, 2025",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTibgOHZsgsi_1tVoG0LuoJtLUNgp7157pr-VSO4BJ7oYc2MnXCqYK2fcCZw-au_Dp-36z4He8utmVa/pub",
+    podcastUrl: "https://open.spotify.com/episode/4EWNW1t2lPBYrW95UOAgcN?si=pMrP8xj1R9SWh348nrUxsA",
+    imageUrl: "https://blog.tipranks.com/wp-content/uploads/2025/06/shutterstock_2118737363-1-750x406.jpg"
+  },
+  {
+    title: "Hedge Fund's Secret Edge -- The Data?",
+    description: "Ever wonder how hedge funds consistently find an edge in the market? It’s not just about genius stock picking—it’s a technological and financial arms race fought with data that is completely inaccessible to the average person. In this video, we pull back the curtain on the multi-million dollar data operations that give institutional investors their advantage and create a widening divide between them and retail traders.",
+    slug: "hedge-fund-edge-data",
+    date: "September 5, 2025",
+    youtubeUrl: "https://youtu.be/U5iJM-xrGLs",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/U5iJM-xrGLs/maxresdefault.jpg"
+  },
+  {
     title: "Navigating the Turning Tide: A 2025 Macro Analysis",
     description: "An in-depth analysis of the 2025 Dollar decline, U.S. equity resilience, and the emergence of a new macroeconomic paradigm driven by domestic policy uncertainty. Examining the historic inflection point that ended the dollar's 15-year bull cycle.",
     slug: "navigating-turning-tide-2025-macro-analysis",
-    date: "September 2, 2025",
+    date: "September 4, 2025",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQVpe5KZsRlrz4ltqj9Ft_1TQXtt_iMQwMsO1BZbLu7GQ15RWpf9DmiUawMLt5FxfLtYhfX751xBGzL/pub",
     podcastUrl: "https://open.spotify.com/episode/7vaRhwrGIphyPFvpFvfmkO?si=X2xbLImzQg-uvSb4Nte9oQ",
     imageUrl: "https://otetmarkets.com/blog/wp-content/uploads/2025/04/9apr1_1.webp"
   },
   {
+    title: "Did your US stock actually going up? The Great Divergence of 2025 US Stock vs Dollar",
+    description: "The first eight months of 2025 witnessed a historic shift in global financial markets! After a 15-year bull cycle, the U.S. Dollar experienced one of its most significant declines in over half a century, while the S&P 500 defied macroeconomic turbulence to reach new all-time highs.",
+    slug: "us-stock-vs-dollar",
+    date: "September 3, 2025",
+    youtubeUrl: "https://youtu.be/UWaJ6GyRoyo",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/UWaJ6GyRoyo/maxresdefault.jpg"
+  },
+  {
     title: "The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?",
     description: "Deep dive into the unprecedented market dominance of the Magnificent Seven tech giants. Analyzing Q2 2025 earnings, AI monetization strategies, and the great bifurcation between AI enablers and application players in this comprehensive market analysis.",
     slug: "magnificent-seven-ai-titans-bubble-analysis",
-    date: "September 1, 2025",
+    date: "September 2, 2025",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSXRngq-N5LBYfpRaU6UVvkJuWb9pS_hpfYRDFUhzyx_xjwERFq8atlCVgNGTziP-nbpnJZIOIMGeCz/pub",
     podcastUrl: "https://open.spotify.com/episode/6qCKOJJoToJ8dyIPpsm3VD?si=i5QGuYwWQjeMKWyWS4oatg",
     imageUrl: "https://www.amgnational.com/wp-content/uploads/2024/01/mag7stocks.jpg"
+  },
+  {
+    title: "Magnificent 7 Earnings , AI Revolution or Bubble? largest 7 stocks to measure downside risk",
+    description: "Are the Magnificent Seven leading a new industrial revolution or inflating an AI bubble ready to burst? In this video, we dive deep into the Q2 2025 earnings reports of Apple, Microsoft, Amazon, Alphabet, Meta Platforms, Nvidia, and Tesla to uncover the true state of their AI-fueled dominance.",
+    slug: "magnificent-seven-earnings",
+    date: "September 1, 2025",
+    youtubeUrl: "https://youtu.be/uG0l1ZBPPOE",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/uG0l1ZBPPOE/maxresdefault.jpg"
   },
   {
     title: "Covered Calls vs Cash-Secured Puts",
