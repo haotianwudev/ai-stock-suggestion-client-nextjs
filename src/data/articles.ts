@@ -17,6 +17,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Mastering the Market Cycle: Getting the Odds on Your Side",
+    description: "An interactive summary of Howard Marks' essential guide to understanding market behavior, cycles, and positioning for investment success through market extremes.",
+    slug: "mastering-market-cycle-howard-marks-summary",
+    date: "September 7, 2025",
+    imageUrl: "https://m.media-amazon.com/images/I/41QDeDcCxXL._SY445_SX342_ControlCacheEqualizer_.jpg",
+    bookSummary: true,
+  },
+  {
     title: "Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations",
     description: "A comprehensive analysis of the paradox facing investors: equity markets at all-time highs while the Federal Reserve initiates monetary easing. Explores strategic portfolio construction for an era of peak valuations, examining gold, fixed income, small-cap opportunities, and advanced option strategies.",
     slug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
