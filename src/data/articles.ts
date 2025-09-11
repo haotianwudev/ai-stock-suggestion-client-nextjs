@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Strategic Role of XGBoost in Systematic Trading: A 2025 Perspective",
+    description: "While complex models like LSTMs and Transformers gain prominence, XGBoost maintains a vital position in systematic trading. Exploring performance, problems, and positioning against deep learning in modern quantitative finance.",
+    slug: "strategic-role-xgboost-systematic-trading-2025",
+    date: "September 9, 2025",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSU2p81xP1Wm__2p9F9TSrH6ngHqT4KZpHrA3vFcYowTbyl6E-aKcHQfm9OotjHAe1HoorVlgdaB5-i/pub",
+    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2017/04/Forecasting-Markets-using-Gradient-Boosting-XGBoost.png"
+  },
+  {
     title: "Mastering the Market Cycle: Getting the Odds on Your Side",
     description: "An interactive summary of Howard Marks' essential guide to understanding market behavior, cycles, and positioning for investment success through market extremes.",
     slug: "mastering-market-cycle-howard-marks-summary",
