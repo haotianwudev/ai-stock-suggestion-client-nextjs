@@ -17,21 +17,48 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Is XGBoost(GBDT) still in the leading position in quantitative finance?",
+    description: "Are you a quantitative trader, portfolio manager, or machine learning enthusiast grappling with model selection in finance? This video dives deep into the strategic role of eXtreme Gradient Boosting (XGBoost) in systematic trading, offering a forward-looking perspective to 2025. We conduct an expert analysis, comparing XGBoost's unparalleled strengths with those of advanced deep learning architectures like Long Short-Term Memory (LSTM) networks and Transformers.",
+    slug: "xgboost-lead",
+    date: "September 12, 2025",
+    youtubeUrl: "https://youtu.be/6mXc-7dDLS0",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/6mXc-7dDLS0/maxresdefault.jpg"
+  },
+  {
     title: "The Strategic Role of XGBoost in Systematic Trading: A 2025 Perspective",
     description: "While complex models like LSTMs and Transformers gain prominence, XGBoost maintains a vital position in systematic trading. Exploring performance, problems, and positioning against deep learning in modern quantitative finance.",
     slug: "strategic-role-xgboost-systematic-trading-2025",
-    date: "September 9, 2025",
+    date: "September 11, 2025",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSU2p81xP1Wm__2p9F9TSrH6ngHqT4KZpHrA3vFcYowTbyl6E-aKcHQfm9OotjHAe1HoorVlgdaB5-i/pub",
     imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2017/04/Forecasting-Markets-using-Gradient-Boosting-XGBoost.png"
   },
   {
+    title: "Be Patient and Know Where You Are: Mastering the Market Cycle",
+    description: "Dive deep into the timeless wisdom of Howard Marks' Mastering the Market Cycle, a definitive guide that redefines the path to superior investment outcomes. Marks argues that consistent investment success doesn't come from predicting specific future events, but from profoundly understanding and strategically responding to the cyclical nature of economies, markets, and human psychology.",
+    slug: "master-cycle",
+    date: "September 10, 2025",
+    youtubeUrl: "https://youtu.be/iT8RowYimos",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/iT8RowYimos/maxresdefault.jpg"
+  },
+  {
     title: "Mastering the Market Cycle: Getting the Odds on Your Side",
     description: "An interactive summary of Howard Marks' essential guide to understanding market behavior, cycles, and positioning for investment success through market extremes.",
     slug: "mastering-market-cycle-howard-marks-summary",
-    date: "September 7, 2025",
+    date: "September 8, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/41QDeDcCxXL._SY445_SX342_ControlCacheEqualizer_.jpg",
     bookSummary: true,
+  },
+  {
+    title: "An easier path forward after Market Peak - Gold/Bond/Small Cap/Option Writing",
+    description: "The global investment landscape presents a rare and challenging paradox: equity markets are at or near all-time highs, yet the U.S. Federal Reserve is poised to begin a monetary easing cycle. This environment demands a strategic shift from passive, broad-market equity exposure to a more nuanced, actively managed, and deeply diversified portfolio centered on resilience.",
+    slug: "market-peak",
+    date: "September 7, 2025",
+    youtubeUrl: "https://youtu.be/7oFcs_pkygU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/7oFcs_pkygU/maxresdefault.jpg"
   },
   {
     title: "Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations",
