@@ -218,6 +218,7 @@ const NavigationSidebar = ({ activeSection, setActiveSection }: {
 }) => {
   const sections = [
     { id: 'introduction', label: 'Introduction' },
+    { id: 'deep-research-paper', label: 'Deep Research Paper' },
     { id: 'universal-principles', label: 'Universal Principles' },
     { id: 'defensive-rolling', label: 'Defensive Rolling' },
     { id: 'offensive-rolling', label: 'Offensive Rolling' },
@@ -270,7 +271,7 @@ export default function StrategicFrameworkRollingOptions() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['introduction', 'universal-principles', 'defensive-rolling', 'offensive-rolling', 'interactive-guide', 'decision-framework', 'pre-roll-checklist', 'advanced-concepts', 'practical-examples', 'conclusion'];
+      const sections = ['introduction', 'deep-research-paper', 'universal-principles', 'defensive-rolling', 'offensive-rolling', 'interactive-guide', 'decision-framework', 'pre-roll-checklist', 'advanced-concepts', 'practical-examples', 'conclusion'];
       
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -353,6 +354,48 @@ export default function StrategicFrameworkRollingOptions() {
                   <p className="text-blue-700 dark:text-blue-300">
                     To roll an options position is to simultaneously close an existing contract and open a new one on the same underlying security. This action allows a trader to alter the strike price, expiration date, or both.
                   </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Deep Research Paper Section */}
+            <section id="deep-research-paper" className="scroll-mt-8">
+              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl p-8 border border-purple-200 dark:border-purple-700">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-purple-800 dark:text-purple-200 mb-3">
+                      📚 Deep Research Paper Available
+                    </h3>
+                    <p className="text-purple-700 dark:text-purple-300 mb-4 leading-relaxed">
+                      This interactive guide is based on comprehensive quantitative research. For institutional-grade analysis, mathematical derivations, and advanced implementation strategies, access the full research paper.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a 
+                        href={currentArticle?.googleDoc}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Access Full Research Paper
+                      </a>
+                      <div className="text-sm text-purple-600 dark:text-purple-400 flex items-center">
+                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Includes: Greeks analysis, volatility modeling, backtesting results
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>

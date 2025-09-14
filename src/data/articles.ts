@@ -17,6 +17,25 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Art of Rolling Options - The Most Common Strategy to Save a Trade",
+    description: "Unlock the power of option rolling! This video offers a comprehensive guide to actively managing your options trades. We'll break down defensive rolls (like rolling down and out for puts and up and out for calls) to rescue challenged positions, emphasizing the crucial rule of always seeking a net credit to lower your breakeven. Learn about offensive rolls (like rolling up and out for profitable puts and down and out for calls) to maximize gains and optimize capital efficiency. Discover how to use Delta as a probability trigger and leverage Vega in varying implied volatility environments. Crucially, understand when to roll vs. close based on your original thesis and avoid costly psychological biases like loss aversion. Transform your options trading from passive to proactive!",
+    slug: "roll-option",
+    date: "September 14, 2025",
+    youtubeUrl: "https://youtu.be/q5FSpOKtcFM",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/q5FSpOKtcFM/maxresdefault.jpg"
+  },
+  {
+    title: "Defensive and Offensive Rolling on Short Options",
+    description: "A comprehensive quantitative framework for managing option positions through defensive and offensive rolling strategies. Covers universal principles, decision triggers using Greeks, net credit mandates, and practical implementation guides for both put and call strategies. Features interactive visual components and real-world examples.",
+    slug: "strategic-framework-rolling-options-quantitative-approach",
+    date: "September 13, 2025",
+    imageUrl: "https://incomeshares.com/insights/list-images/19/19.-Rolling-Options-cover-image.webp",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSTKltePzIDadeG7XV_9boPEYxEe3apzPnmMOTV_wrn9XGG0JcEvLY3_FL0BlqpC-gUAX-ZUfE0eOGv/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Is XGBoost(GBDT) still in the leading position in quantitative finance?",
     description: "Are you a quantitative trader, portfolio manager, or machine learning enthusiast grappling with model selection in finance? This video dives deep into the strategic role of eXtreme Gradient Boosting (XGBoost) in systematic trading, offering a forward-looking perspective to 2025. We conduct an expert analysis, comparing XGBoost's unparalleled strengths with those of advanced deep learning architectures like Long Short-Term Memory (LSTM) networks and Transformers.",
     slug: "xgboost-lead",
@@ -798,16 +817,6 @@ export const articles: Article[] = [
     imageUrl: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSHNybSnIYhdCeQmvHgIW4cLB-IxL1CgFwwci3Rrj9osF9wyZ9euAI9M0pxcvryx9uFhQa0iC61tLne/pub",
     deepResearch: true
-  },
-  {
-    title: "Defensive and Offensive Rolling on Short Options",
-    description: "A comprehensive quantitative framework for managing option positions through defensive and offensive rolling strategies. Covers universal principles, decision triggers using Greeks, net credit mandates, and practical implementation guides for both put and call strategies. Features interactive visual components and real-world examples.",
-    slug: "strategic-framework-rolling-options-quantitative-approach",
-    date: "July 2, 2025",
-    imageUrl: "https://incomeshares.com/insights/list-images/19/19.-Rolling-Options-cover-image.webp",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSTKltePzIDadeG7XV_9boPEYxEe3apzPnmMOTV_wrn9XGG0JcEvLY3_FL0BlqpC-gUAX-ZUfE0eOGv/pub",
-    deepResearch: true,
-    options: true
   },
   {
     title: "Cruel Truth: Why Most Stocks Are a Bad Bet",
