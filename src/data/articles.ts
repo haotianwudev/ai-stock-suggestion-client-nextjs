@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Mastering the S&P 500 Inclusion Anomaly: December 2025 Deep Research",
+    description: "A comprehensive analysis of the S&P 500 inclusion event-driven strategy for December 5, 2025. Deep dive into candidate screening, options strategies, risk management, and the modern index effect that creates temporary momentum opportunities for sophisticated traders.",
+    slug: "sp500-inclusion-anomaly-december-2025-deep-research",
+    date: "September 15, 2025",
+    imageUrl: "https://fastercapital.com/i/Index-inclusion--Indexhuggers--Riding-the-Wave-of-Inclusion--Strategies-for-Inclusion-Success.webp",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSkXerTQU28ElMzivvTOj3dRbhqfDHpLKjmGfhInEaJKMfdeArjQ8N2DWfLHsu_p40xzQv2J1-m5xSX/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "The Art of Rolling Options - The Most Common Strategy to Save a Trade",
     description: "Unlock the power of option rolling! This video offers a comprehensive guide to actively managing your options trades. We'll break down defensive rolls (like rolling down and out for puts and up and out for calls) to rescue challenged positions, emphasizing the crucial rule of always seeking a net credit to lower your breakeven. Learn about offensive rolls (like rolling up and out for profitable puts and down and out for calls) to maximize gains and optimize capital efficiency. Discover how to use Delta as a probability trigger and leverage Vega in varying implied volatility environments. Crucially, understand when to roll vs. close based on your original thesis and avoid costly psychological biases like loss aversion. Transform your options trading from passive to proactive!",
     slug: "roll-option",
