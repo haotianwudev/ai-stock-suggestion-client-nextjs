@@ -17,6 +17,24 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "From Viral Videos to Volatile Valuations: Can AI Algorithms Pick Your Next Stock?",
+    description: "A critical feasibility analysis of applying social media recommender systems to financial markets, revealing a fundamental conflict between engagement-driven logic and the principles of prudent investment. Explores the chasm between TikTok's algorithm and sound financial advisory systems.",
+    slug: "viral-videos-volatile-valuations-ai-algorithms-stock-picking",
+    date: "September 17, 2025",
+    imageUrl: "https://i.ytimg.com/vi/Gscelu22FWI/hq720.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrX4_X404giJLFmVnWcLanvOEVi3sAVtESKEfonVtcwjhAg8PKRuN4sWyKJMvHJqxRmyDVaomT06ec/pub",
+    deepResearch: true
+  },
+  {
+    title: "2025 Next S&P500 Inclusion: Easy Money to Play the Index Effect?",
+    description: "Unlock the secrets of trading S&P 500 index inclusions! This video breaks down the S&P 500 rebalancing process, a predictable quarterly event occurring in March, June, September, and December. Learn how the S&P Dow Jones Indices' Index Committee uses both quantitative criteria (market cap over $22.7 billion, positive GAAP earnings, liquidity, public float) and qualitative discretion (sector representation, avoiding volatile stocks) to select new constituents.",
+    slug: "index-effect",
+    date: "September 16, 2025",
+    youtubeUrl: "https://youtu.be/IMS-1JMTbc0",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/IMS-1JMTbc0/maxresdefault.jpg"
+  },
+  {
     title: "Mastering the S&P 500 Inclusion Anomaly: December 2025 Deep Research",
     description: "A comprehensive analysis of the S&P 500 inclusion event-driven strategy for December 5, 2025. Deep dive into candidate screening, options strategies, risk management, and the modern index effect that creates temporary momentum opportunities for sophisticated traders.",
     slug: "sp500-inclusion-anomaly-december-2025-deep-research",
