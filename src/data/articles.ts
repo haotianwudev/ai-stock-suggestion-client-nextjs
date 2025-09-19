@@ -17,6 +17,25 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Reinforcement Learning in Quantitative Trading: From Prediction to Optimal Action",
+    description: "An in-depth analysis of how RL is shifting the financial paradigm from static prediction to dynamic, adaptive policy optimization for superior alpha generation. Explores the fundamental evolution from asking 'What will the market do?' to 'What is the best action to take now?'",
+    slug: "reinforcement-learning-quantitative-trading-optimal-action",
+    date: "September 19, 2025",
+    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2025/05/Reinforcement-Learning-in-Trading.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSExzba-zReWxWXE_hTCwxq0j9H2Cf52KplQm5sP4LpcX_0Li2GK98Z-MOFPxuTp_bWp6HH8aW74wwm/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/5FXEMj6AWvKfGZAMYg69is?si=ykChirPwRROyOAY44wdMiQ"
+  },
+  {
+    title: "What will happen if your TikTok AI recommender help you Pick Stock?",
+    description: "Can a TikTok-style algorithm pick your next winning stock? 📈 Our analysis reveals why directly applying social media recommendation engines to financial markets is unviable, irresponsible, and fraught with systemic risk. Unlike social media's primary objective to maximize user engagement (watch time, likes, shares), legitimate financial systems aim to maximize risk-adjusted returns and meet client financial goals.",
+    slug: "tiktok-recommender",
+    date: "September 18, 2025",
+    youtubeUrl: "https://youtu.be/g3vVAfBu84c",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/g3vVAfBu84c/maxresdefault.jpg"
+  },
+  {
     title: "From Viral Videos to Volatile Valuations: Can AI Algorithms Pick Your Next Stock?",
     description: "A critical feasibility analysis of applying social media recommender systems to financial markets, revealing a fundamental conflict between engagement-driven logic and the principles of prudent investment. Explores the chasm between TikTok's algorithm and sound financial advisory systems.",
     slug: "viral-videos-volatile-valuations-ai-algorithms-stock-picking",
