@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { articles } from "@/data/articles";
 import { ArticleCard } from "@/components/articles/article-card";
+import { getFilteredArticles } from "@/components/articles/article-filter";
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -31,8 +32,8 @@ export default function BookSummaryPage() {
     }
   };
 
-  // Filter book summary articles
-  const bookArticles = articles.filter(a => a.bookSummary);
+  // Filter book summary articles (only show published articles)
+  const bookArticles = getFilteredArticles(articles, 'all').filter(a => a.bookSummary);
 
   return (
     <div className="min-h-screen bg-white px-4 py-8">

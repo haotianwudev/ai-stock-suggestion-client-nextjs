@@ -197,28 +197,31 @@ export default function Home() {
           </div>
           
           {/* Pinned Article as Featured */}
-          {articles.find(article => article.pinned && !article.bookSummary) && (
-            <div className="mb-8 relative">
-              <div className="absolute -top-3 left-3 z-10">
-                <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded shadow">Featured</span>
+          {(() => {
+            const pinnedArticle = getFilteredArticles(articles, 'all').find(article => article.pinned && !article.bookSummary);
+            return pinnedArticle && (
+              <div className="mb-8 relative">
+                <div className="absolute -top-3 left-3 z-10">
+                  <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded shadow">Featured</span>
+                </div>
+                <ArticleCard
+                  key={pinnedArticle.slug}
+                  title={pinnedArticle.title}
+                  description={pinnedArticle.description}
+                  slug={pinnedArticle.slug}
+                  date={pinnedArticle.date}
+                  imageUrl={pinnedArticle.imageUrl}
+                  googleDoc={pinnedArticle.googleDoc}
+                  deepResearch={pinnedArticle.deepResearch}
+                  youtubeUrl={pinnedArticle.youtubeUrl}
+                  isVideo={pinnedArticle.isVideo}
+                  options={pinnedArticle.options}
+                  noSummary={pinnedArticle.noSummary}
+                  podcastUrl={pinnedArticle.podcastUrl}
+                />
               </div>
-              <ArticleCard
-                key={articles.find(article => article.pinned && !article.bookSummary)!.slug}
-                title={articles.find(article => article.pinned && !article.bookSummary)!.title}
-                description={articles.find(article => article.pinned && !article.bookSummary)!.description}
-                slug={articles.find(article => article.pinned && !article.bookSummary)!.slug}
-                date={articles.find(article => article.pinned && !article.bookSummary)!.date}
-                imageUrl={articles.find(article => article.pinned && !article.bookSummary)!.imageUrl}
-                googleDoc={articles.find(article => article.pinned && !article.bookSummary)!.googleDoc}
-                deepResearch={articles.find(article => article.pinned && !article.bookSummary)!.deepResearch}
-                youtubeUrl={articles.find(article => article.pinned && !article.bookSummary)!.youtubeUrl}
-                isVideo={articles.find(article => article.pinned && !article.bookSummary)!.isVideo}
-                options={articles.find(article => article.pinned && !article.bookSummary)!.options}
-                noSummary={articles.find(article => article.pinned && !article.bookSummary)!.noSummary}
-                podcastUrl={articles.find(article => article.pinned && !article.bookSummary)!.podcastUrl}
-              />
-            </div>
-          )}
+            );
+          })()}
           
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {getFilteredArticles(articles, selectedFilter)

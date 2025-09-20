@@ -9,6 +9,7 @@ import { GreeksTab } from "@/components/options/greeks-tab";
 import { OptionsViewer } from "@/components/options/options-viewer";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
+import { getFilteredArticles } from "@/components/articles/article-filter";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -225,7 +226,7 @@ export default function OptionsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
-                    {articles
+                    {getFilteredArticles(articles, 'all')
                       .filter(article => article.options === true && !article.bookSummary)
                       .map((article) => (
                         <ArticleCard 
@@ -245,7 +246,7 @@ export default function OptionsPage() {
                         />
                       ))}
                   </div>
-                  {articles.filter(article => article.options === true && !article.bookSummary).length === 0 && (
+                  {getFilteredArticles(articles, 'all').filter(article => article.options === true && !article.bookSummary).length === 0 && (
                     <p className="text-center text-muted-foreground py-8 text-sm md:text-base">
                       No options articles available yet. Check back soon!
                     </p>

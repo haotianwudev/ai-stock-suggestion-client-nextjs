@@ -89,12 +89,38 @@ export function ArticleFilter({ selectedFilter, onFilterChange }: ArticleFilterP
   );
 }
 
+// Utility function to check if article date is in the future
+function isArticleDateInFuture(articleDate: string): boolean {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+  
+  const articleDateObj = new Date(articleDate);
+  articleDateObj.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+  
+  return articleDateObj > today;
+}
+
+// Utility function to check if running on localhost
+function isLocalhost(): boolean {
+  if (typeof window === 'undefined') return false;
+  const hostname = window.location.hostname;
+  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0';
+}
+
 // Dynamic filtering function - no more switch statements!
 export function getFilteredArticles(articles: any[], filter: ArticleFilter) {
-  if (filter === 'all') return articles;
+  // Skip date filtering on localhost for development
+  const shouldFilterByDate = !isLocalhost();
+  
+  // First filter out articles with future dates (unless on localhost)
+  const publishedArticles = shouldFilterByDate 
+    ? articles.filter(article => !isArticleDateInFuture(article.date))
+    : articles;
+  
+  if (filter === 'all') return publishedArticles;
   
   const config = FILTER_CONFIG[filter];
-  if (!config.property) return articles;
+  if (!config.property) return publishedArticles;
   
-  return articles.filter(article => article[config.property] === true);
+  return publishedArticles.filter(article => article[config.property] === true);
 } 
