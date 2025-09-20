@@ -86,7 +86,7 @@ export const articles: Article[] = [
     description: "A comprehensive analysis of the S&P 500 inclusion event-driven strategy for December 5, 2025. Deep dive into candidate screening, options strategies, risk management, and the modern index effect that creates temporary momentum opportunities for sophisticated traders.",
     slug: "sp500-inclusion-anomaly-december-2025-deep-research",
     date: "September 15, 2025",
-    imageUrl: "https://fastercapital.com/i/Index-inclusion--Indexhuggers--Riding-the-Wave-of-Inclusion--Strategies-for-Inclusion-Success.webp",
+    imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1366206397/image_1366206397.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSkXerTQU28ElMzivvTOj3dRbhqfDHpLKjmGfhInEaJKMfdeArjQ8N2DWfLHsu_p40xzQv2J1-m5xSX/pub",
     deepResearch: true,
     options: true
