@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The New Golden Age: A Structural Bull Market Analysis",
+    description: "An in-depth analysis of the reinforcing mega-trends—macroeconomic shifts, central bank accumulation, and geopolitical risk—propelling gold into a new era of sustained growth. Explores the anatomy of secular bull markets, the great accumulation by central banks, and institutional price projections reaching $4,000+.",
+    slug: "new-golden-age-structural-bull-market-analysis",
+    date: "September 22, 2025",
+    imageUrl: "https://www.owenanalytics.com.au/uploads/2024/20240315-Gold-31-year-itch/Gold-31-year-cycles-since-1860.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTjfbcosuMvAxfz_ZIVfHhN6nd11M2IM-5WyQIJj8c0SbvMgan8b_GiSu6xs6JP2WvF0g3NaTL-i5NC/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/7pZ0QZOAslpJ3NnEz3oinv?si=iqyzDKC9S2uqnxzveFKTFw"
+  },
+  {
     title: "Collar - Option Strategy for the ALL TIME HIGHS .. of anxiety.",
     description: "Are you holding significant unrealized profits but worried about market volatility or a potential correction? Learn how the Option Collar strategy can help you protect those gains while allowing for some continued upside participation, often at a minimal or zero net cost.",
     slug: "option-collar",
