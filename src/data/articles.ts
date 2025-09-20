@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Collar - Option Strategy for the ALL TIME HIGHS .. of anxiety.",
+    description: "Are you holding significant unrealized profits but worried about market volatility or a potential correction? Learn how the Option Collar strategy can help you protect those gains while allowing for some continued upside participation, often at a minimal or zero net cost.",
+    slug: "option-collar",
+    date: "September 21, 2025",
+    youtubeUrl: "https://youtu.be/AuBIzqvQdEw",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/AuBIzqvQdEw/maxresdefault.jpg"
+  },
+  {
     title: "Option Collar Strategy: Protect Gains, Define Risk",
     description: "A comprehensive deep research analysis of the option collar strategy for capital preservation. Explores the three-pillar structure, interactive payoff calculations, volatility skew implications, and advanced management techniques for hedging long positions at low or zero net cost.",
     slug: "option-collar-strategy-protect-gains-define-risk",
@@ -25,6 +34,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSzPjT1iXtsc_FpV97jUUsi5EGSB-2VXBn6ZxKgeoEmL49X78m0pPHBxiIZPRuHrslQQBicBIh1bcn6/pub",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "Reinforcement Learning in Systematic Trading -- Promising but SO HARD!",
+    description: "Dive deep into the revolutionary world of Reinforcement Learning (RL) and its transformative potential in quantitative trading! This video explores how RL is shifting the paradigm from static market prediction to dynamic, optimal decision-making in financial markets.",
+    slug: "reinforcement-learning",
+    date: "September 20, 2025",
+    youtubeUrl: "https://youtu.be/sSu4emL_mOU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/sSu4emL_mOU/maxresdefault.jpg"
   },
   {
     title: "Reinforcement Learning in Quantitative Trading: From Prediction to Optimal Action",
