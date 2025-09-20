@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Option Collar Strategy: Protect Gains, Define Risk",
+    description: "A comprehensive deep research analysis of the option collar strategy for capital preservation. Explores the three-pillar structure, interactive payoff calculations, volatility skew implications, and advanced management techniques for hedging long positions at low or zero net cost.",
+    slug: "option-collar-strategy-protect-gains-define-risk",
+    date: "September 20, 2025",
+    imageUrl: "hhttps://thetradinganalyst.com/wp-content/uploads/Protective_Collar-1.svg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSzPjT1iXtsc_FpV97jUUsi5EGSB-2VXBn6ZxKgeoEmL49X78m0pPHBxiIZPRuHrslQQBicBIh1bcn6/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Reinforcement Learning in Quantitative Trading: From Prediction to Optimal Action",
     description: "An in-depth analysis of how RL is shifting the financial paradigm from static prediction to dynamic, adaptive policy optimization for superior alpha generation. Explores the fundamental evolution from asking 'What will the market do?' to 'What is the best action to take now?'",
     slug: "reinforcement-learning-quantitative-trading-optimal-action",
