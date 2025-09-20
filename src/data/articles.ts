@@ -21,7 +21,7 @@ export const articles: Article[] = [
     description: "A comprehensive deep research analysis of the option collar strategy for capital preservation. Explores the three-pillar structure, interactive payoff calculations, volatility skew implications, and advanced management techniques for hedging long positions at low or zero net cost.",
     slug: "option-collar-strategy-protect-gains-define-risk",
     date: "September 20, 2025",
-    imageUrl: "hhttps://thetradinganalyst.com/wp-content/uploads/Protective_Collar-1.svg",
+    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/03/Collar-Options-Strategy.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSzPjT1iXtsc_FpV97jUUsi5EGSB-2VXBn6ZxKgeoEmL49X78m0pPHBxiIZPRuHrslQQBicBIh1bcn6/pub",
     deepResearch: true,
     options: true
