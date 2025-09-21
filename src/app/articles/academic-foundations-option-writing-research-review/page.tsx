@@ -168,8 +168,12 @@ const researchData = {
 };
 
 // --- Helper Components ---
-const Section = ({ id, title, content, sectionRef }) => (
-  <section id={id} ref={sectionRef} className="mb-12 py-8 scroll-mt-20">
+const Section = ({ id, title, content, onRef }) => (
+  <section 
+    id={id} 
+    ref={(el) => onRef(id, el)} 
+    className="mb-12 py-8 scroll-mt-20"
+  >
     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-500 pl-4">{title}</h2>
     <div
       className="prose prose-lg max-w-none text-gray-700 prose-h3:text-blue-600 prose-strong:text-gray-800 prose-a:text-blue-600"
@@ -233,9 +237,12 @@ export default function AcademicFoundationsOptionWriting() {
   const sectionRefs = useRef({});
   const currentArticle = articles.find(article => article.slug === 'academic-foundations-option-writing-research-review');
 
+  // Initialize refs for each section
   useEffect(() => {
     researchData.sections.forEach(section => {
-      sectionRefs.current[section.id] = React.createRef();
+      if (!sectionRefs.current[section.id]) {
+        sectionRefs.current[section.id] = null;
+      }
     });
   }, []);
 
@@ -251,17 +258,18 @@ export default function AcademicFoundationsOptionWriting() {
       { rootMargin: '-30% 0px -70% 0px', threshold: 0 }
     );
 
-    const currentRefs = sectionRefs.current;
-    Object.values(currentRefs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
+    // Observe all section elements
+    Object.entries(sectionRefs.current).forEach(([id, element]) => {
+      if (element) {
+        observer.observe(element);
       }
     });
 
     return () => {
-      Object.values(currentRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+      // Cleanup observer
+      Object.entries(sectionRefs.current).forEach(([id, element]) => {
+        if (element) {
+          observer.unobserve(element);
         }
       });
     };
@@ -350,7 +358,9 @@ export default function AcademicFoundationsOptionWriting() {
                   id={section.id}
                   title={section.title}
                   content={section.content}
-                  sectionRef={el => sectionRefs.current[section.id] = el}
+                  onRef={(id, el) => {
+                    sectionRefs.current[id] = el;
+                  }}
                 />
               ))}
             </div>
