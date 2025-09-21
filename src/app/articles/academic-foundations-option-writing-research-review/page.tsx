@@ -373,12 +373,14 @@ export default function AcademicFoundationsOptionWriting() {
                     Read Full Research Paper
                   </a>
                 )}
-                <Link 
-                  href="/articles/option-collar-strategy-protect-gains-define-risk"
+                <a 
+                  href="https://www.sophie-ai-finance.com/option"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
                 >
                   Explore Option Strategies
-                </Link>
+                </a>
               </div>
             </div>
 
