@@ -102,7 +102,10 @@ function isArticleDateInFuture(articleDate: string): boolean {
 
 // Utility function to check if running on localhost
 function isLocalhost(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') {
+    // Server-side: check NODE_ENV or assume localhost for development
+    return process.env.NODE_ENV === 'development';
+  }
   const hostname = window.location.hostname;
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0';
 }
