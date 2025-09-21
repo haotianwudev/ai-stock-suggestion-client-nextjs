@@ -27,6 +27,17 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/7pZ0QZOAslpJ3NnEz3oinv?si=iqyzDKC9S2uqnxzveFKTFw"
   },
   {
+    title: "The Academic Foundations of Option Writing",
+    description: "A comprehensive review of modern research on risk premia, strategy performance, and risk management in systematic option selling strategies.",
+    slug: "academic-foundations-option-writing-research-review",
+    date: "September 21, 2025",
+    imageUrl: "https://smartbulls.com/images/learn/option-writing.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQH0mb1siuXzDAZaPOwS2fjvmYIEzM-CqDOwDgZa0hsp7au8HeZbXUi4feyBPVfcwxnggelLmlMhbZJ/pub",
+    deepResearch: true,
+    bookSummary: true,
+    options: true
+  },
+  {
     title: "Collar - Option Strategy for the ALL TIME HIGHS .. of anxiety.",
     description: "Are you holding significant unrealized profits but worried about market volatility or a potential correction? Learn how the Option Collar strategy can help you protect those gains while allowing for some continued upside participation, often at a minimal or zero net cost.",
     slug: "option-collar",
