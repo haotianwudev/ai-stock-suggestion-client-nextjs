@@ -17,6 +17,25 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Anatomy of Speed: Modern Market Making in High-Frequency Trading",
+    description: "A comprehensive analytical report on the strategies, models, and alpha generation techniques in high-frequency trading environments. Explores the Avellaneda-Stoikov model, machine learning applications, and the technological infrastructure powering electronic market makers in the latency arms race.",
+    slug: "anatomy-of-speed-modern-market-making-hft",
+    date: "September 25, 2025",
+    imageUrl: "https://www.researchgate.net/profile/Peter-Gomber/publication/228261374/figure/fig1/AS:301941323255816@1448999829922/Market-making-and-HFT-17.png",
+    googleDoc: "https://docs.google.com/document/d/1SrDc269ZN9rFcwT5f8_9vFHU0rq7LPa4cUoIupNe9YI/edit?tab=t.0",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/6dDuoSLhtwNG3ve4D6Y21C?si=OqbYzPD9RWeC_UQQ0BDJ9Q"
+  },
+    {
+    title: "Smart Beta: Guide to Systematic and Personal Strategies",
+    description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
+    slug: "smart-beta-systematic-personal-investing-strategies",
+    date: "September 23, 2025",
+    imageUrl: "https://www.justetf.com/images/news/202002-smart-beta-en.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub",
+    deepResearch: true
+  },
+  {
     title: "The New Golden Age: A Structural Bull Market Analysis",
     description: "An in-depth analysis of the reinforcing mega-trends—macroeconomic shifts, central bank accumulation, and geopolitical risk—propelling gold into a new era of sustained growth. Explores the anatomy of secular bull markets, the great accumulation by central banks, and institutional price projections reaching $4,000+.",
     slug: "new-golden-age-structural-bull-market-analysis",
@@ -768,15 +787,6 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTmpYeZUn7bjRGhbU_hL_9ACVnCKT1bS7Xk9AcEKO6TDhOLW1yTDtStnjpWUinsLenw0JeogKTtCOg8/pub",
     deepResearch: true,
     options: true
-  },
-  {
-    title: "Smart Beta: Guide to Systematic and Personal Strategies",
-    description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
-    slug: "smart-beta-systematic-personal-investing-strategies",
-    date: "July 15, 2025",
-    imageUrl: "https://www.justetf.com/images/news/202002-smart-beta-en.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub",
-    deepResearch: true
   },
   {
     title: "Essential Reading for Value Investors",
