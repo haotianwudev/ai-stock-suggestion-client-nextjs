@@ -17,23 +17,50 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Market Making: How HFT hidden algorithms Run the Market!",
+    description: "Modern market making has fundamentally transformed from a human-centric floor activity into a technology-driven, electronic process. Today's Electronic Market Makers (EMMs), a specialized subset of High-Frequency Trading (HFT) firms, continuously provide liquidity by posting two-sided quotes (bid and ask) on electronic exchanges.",
+    slug: "market-making",
+    date: "September 27, 2025",
+    youtubeUrl: "https://youtu.be/waY0tFW49VY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/waY0tFW49VY/maxresdefault.jpg"
+  },
+  {
     title: "The Anatomy of Speed: Modern Market Making in High-Frequency Trading",
     description: "A comprehensive analytical report on the strategies, models, and alpha generation techniques in high-frequency trading environments. Explores the Avellaneda-Stoikov model, machine learning applications, and the technological infrastructure powering electronic market makers in the latency arms race.",
     slug: "anatomy-of-speed-modern-market-making-hft",
-    date: "September 25, 2025",
+    date: "September 26, 2025",
     imageUrl: "https://media.warriortrading.com/2016/12/Blog_MARKET_MAKER.jpg",
     googleDoc: "https://docs.google.com/document/d/1SrDc269ZN9rFcwT5f8_9vFHU0rq7LPa4cUoIupNe9YI/edit?tab=t.0",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6dDuoSLhtwNG3ve4D6Y21C?si=OqbYzPD9RWeC_UQQ0BDJ9Q"
   },
-    {
+  {
+    title: "Smart beta: Promise vs Reality - and the importance of naming",
+    description: "Smart beta represents a significant evolution in investment strategy, occupying a complex middle ground between traditional passive indexing and traditional active management. These strategies construct portfolios using rules-based, alternative weighting methodologies designed to capture specific factors historically associated with enhanced risk-adjusted returns.",
+    slug: "smart-beta",
+    date: "September 25, 2025",
+    youtubeUrl: "https://youtu.be/xZY-O9-4AUs",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/xZY-O9-4AUs/maxresdefault.jpg"
+  },
+  {
     title: "Smart Beta: Guide to Systematic and Personal Strategies",
     description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
     slug: "smart-beta-systematic-personal-investing-strategies",
-    date: "September 23, 2025",
+    date: "September 24, 2025",
     imageUrl: "https://www.justetf.com/images/news/202002-smart-beta-en.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub",
     deepResearch: true
+  },
+  {
+    title: "The Golden Age of Gold - Why the Rally? What's Next?",
+    description: "Gold has surged to unprecedented nominal highs, breaking well above $3,600 per troy ounce in 2024-2025, confirming the start of a new structural bull market. This sustained rally is not a transient event, but rather the result of a powerful, self-reinforcing confluence of three core mega-trends.",
+    slug: "golden-age-of-gold",
+    date: "September 23, 2025",
+    youtubeUrl: "https://youtu.be/XqG5CLOzmME",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/XqG5CLOzmME/maxresdefault.jpg"
   },
   {
     title: "The New Golden Age: A Structural Bull Market Analysis",
