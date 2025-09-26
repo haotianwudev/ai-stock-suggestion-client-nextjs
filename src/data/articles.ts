@@ -17,6 +17,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading",
+    description: "A comprehensive analysis of the psychological, technical, and structural pitfalls that trap options traders. Explores the Greeks, volatility dynamics, assignment risks, tax implications, and the critical differences between index and ETF options that can make or break trading strategies.",
+    slug: "navigating-minefield-options-trading-pitfalls",
+    date: "September 28, 2025",
+    imageUrl: "https://www.ibullssecurities.com/public/blogs/Common-Pitfalls-and-Mistakes-in-Options-Trading_1224pxX380px_1754374934.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTV1VQ5LmH7aDpgPpFc8YWPYlOUCn6LkyG1FPKvZW4dA8_iZbk8JeivrRwdz_3838Z4cvc6K9gkZxMA/pub",
+    deepResearch: true,
+    options: true,
+    podcastUrl: "https://open.spotify.com/episode/14n0jGIgcjphMbQGapz1kq?si=t4Yoo6ZdQj60_xLWd-sQ1A"
+  },
+  {
     title: "Market Making: How HFT hidden algorithms Run the Market!",
     description: "Modern market making has fundamentally transformed from a human-centric floor activity into a technology-driven, electronic process. Today's Electronic Market Makers (EMMs), a specialized subset of High-Frequency Trading (HFT) firms, continuously provide liquidity by posting two-sided quotes (bid and ask) on electronic exchanges.",
     slug: "market-making",
