@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations",
+    description: "An in-depth analysis of U.S. equity valuations following Fed Chair Powell's warning that the market is 'fairly highly valued.' Explores key valuation metrics, historical precedents, and strategic recommendations for navigating an expensive market environment.",
+    slug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
+    date: "September 29, 2025",
+    imageUrl: "https://www.memberswealthllc.com/hs-fs/hubfs/TimBlog.png?width=1920&name=TimBlog.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTjyvxENqOtjQHi2m54YPolNioEUyF7RS6KNOY_8DidzauE_opcghMRYhPH2DZfMX_RpYsrIpqNQvOH/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/0nWtIBzV7RVcvO0cGJk2Xj?si=xklHGT3vSCWBe3w2zO4cCA"
+  },
+  {
     title: "Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading",
     description: "A comprehensive analysis of the psychological, technical, and structural pitfalls that trap options traders. Explores the Greeks, volatility dynamics, assignment risks, tax implications, and the critical differences between index and ETF options that can make or break trading strategies.",
     slug: "navigating-minefield-options-trading-pitfalls",
