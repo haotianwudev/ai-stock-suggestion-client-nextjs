@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Navigating the Turning Point: 2025 Long-Term Fixed Income Market Analysis",
+    description: "An in-depth analysis of the 2025 long-term fixed income market, exploring the paradigm shift from price appreciation to income-driven returns. Examines high starting yields, Federal Reserve policy pivot, and strategic opportunities in a 'stagflation-lite' environment shaped by growth deceleration and persistent inflation.",
+    slug: "navigating-turning-point-2025-fixed-income-analysis",
+    date: "September 30, 2025",
+    imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1393144578/image_1393144578.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQrCZ4kHWWwxrk-J0ZOP1b7I_fucHXtVcnRLSDm0nnTAZB7iEMmqwtWGZ65vVIvamHkLQW2IfT7dJy4/pub",
+    deepResearch: true
+  },
+  {
     title: "Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations",
     description: "An in-depth analysis of U.S. equity valuations following Fed Chair Powell's warning that the market is 'fairly highly valued.' Explores key valuation metrics, historical precedents, and strategic recommendations for navigating an expensive market environment.",
     slug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
