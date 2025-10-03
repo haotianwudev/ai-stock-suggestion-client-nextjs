@@ -71,7 +71,7 @@ export const articles: Article[] = [
     slug: "anatomy-of-speed-modern-market-making-hft",
     date: "September 26, 2025",
     imageUrl: "https://media.warriortrading.com/2016/12/Blog_MARKET_MAKER.jpg",
-    googleDoc: "https://docs.google.com/document/d/1SrDc269ZN9rFcwT5f8_9vFHU0rq7LPa4cUoIupNe9YI/edit?tab=t.0",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQII0UWvpa1IRgnH8Pplp2pPeYf3OL1a-n00attBl1nt-Hv0bhmvIvIb-_UH5Ybnip4F5jO5uwlGn6p/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6dDuoSLhtwNG3ve4D6Y21C?si=OqbYzPD9RWeC_UQQ0BDJ9Q"
   },
