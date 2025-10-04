@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
+    description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
+    slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
+    date: "October 10, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
+  },
+  {
     title: "Volume Price Analysis: From Market Lore to Algorithmic Execution",
     description: "A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. Explores core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.",
     slug: "volume-price-analysis-market-lore-algorithmic-execution",
