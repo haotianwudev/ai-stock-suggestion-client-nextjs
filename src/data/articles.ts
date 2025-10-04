@@ -27,6 +27,15 @@ export const articles: Article[] = [
     options: true
   },
   {
+    title: "Unpack the BlackBox of Quantitative Hedge Funds Workflow",
+    description: "Dive into the systematic, data-driven workflow that defines the modern quantitative hedge fund. This sophisticated process is structured around four foundational pillars: Alpha Discovery, Portfolio Construction, Backtesting, and Execution. We dissect the entire lifecycle of a quantitative strategy, showing how raw information is transformed into risk-managed returns.",
+    slug: "hedge-fund-workflow",
+    date: "October 3, 2025",
+    youtubeUrl: "https://youtu.be/QQjvEWV9-WQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/QQjvEWV9-WQ/maxresdefault.jpg"
+  },
+  {
     title: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
     description: "An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.",
     slug: "anatomy-quant-fund-alpha-discovery-automated-execution",
@@ -35,6 +44,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSfuwe6YvcQpBwLBF8M8qbKNl4tF6Vdi5cgWgQoOuaCIi3X7EeiX6ryme22sB6QNV1rHCQgZ_SLZope/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5go6IpDzzcDSiqC6Q06uxI?si=CpaGEZk9Td-eQS4h1k2NFQ"
+  },
+  {
+    title: "Stagflation-Lite: Fixed Income Dilemma or Turning Point?",
+    description: "The year 2025 marks a significant turning point for the long-term fixed income market, transitioning into a new regime defined by historically high starting yields and the widely anticipated pivot of the Federal Reserve toward monetary easing. The central imperative for investors is to lock in these attractive yields before they decline.",
+    slug: "fixed-income",
+    date: "October 1, 2025",
+    youtubeUrl: "https://youtu.be/2xcK1hjcPfg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg"
   },
   {
     title: "Navigating the Turning Point: 2025 Long-Term Fixed Income Market Analysis",
@@ -46,6 +64,15 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "Powell's Warning: How the US Stock Market is fairly highly valued and what can you do?",
+    description: "An extensive analysis concluding that the U.S. stock market is in a state of extreme historical overvaluation as of September 2025. This assessment is grounded in multiple reliable metrics, including the Shiller P/E Ratio and the Buffett Indicator, both registering near all-time highs previously seen only before major market crashes.",
+    slug: "powell-warning",
+    date: "September 29, 2025",
+    youtubeUrl: "https://youtu.be/RckAyn0Ia3k",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/RckAyn0Ia3k/maxresdefault.jpg"
+  },
+  {
     title: "Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations",
     description: "An in-depth analysis of U.S. equity valuations following Fed Chair Powell's warning that the market is 'fairly highly valued.' Explores key valuation metrics, historical precedents, and strategic recommendations for navigating an expensive market environment.",
     slug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
@@ -54,6 +81,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTjyvxENqOtjQHi2m54YPolNioEUyF7RS6KNOY_8DidzauE_opcghMRYhPH2DZfMX_RpYsrIpqNQvOH/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/0nWtIBzV7RVcvO0cGJk2Xj?si=xklHGT3vSCWBe3w2zO4cCA"
+  },
+  {
+    title: "Navigating the Minefield: Common Pitfalls of Trading Options",
+    description: "Options are powerful contracts that inherently offer explosive profit and loss potential. Yet, even sophisticated traders can lose fortunes due to a combination of physical errors, technical blunders, and fundamental ignorance of option mechanics and market conditions.",
+    slug: "option-pitfalls",
+    date: "September 29, 2025",
+    youtubeUrl: "https://youtu.be/IvWGgDNQoUk",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/IvWGgDNQoUk/maxresdefault.jpg"
   },
   {
     title: "Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading",
