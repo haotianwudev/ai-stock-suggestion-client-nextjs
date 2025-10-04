@@ -17,6 +17,24 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Volume Price Analysis: From Market Lore to Algorithmic Execution",
+    description: "A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. Explores core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.",
+    slug: "volume-price-analysis-market-lore-algorithmic-execution",
+    date: "October 8, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQpo-HQmmBfl5iUqh54ez_4Y84C9y63TABJSQfNWJsHFcmm-7eoEABjLV-MZNJEiyXjIwsbcVE216CX/pub",
+    deepResearch: true,
+  },
+  {
+    title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
+    description: "A comprehensive analysis of the Russell 2000 index, exploring its construction methodology, valuation metrics, and role as America's premier small-cap benchmark. Examining the investment thesis, structural flaws, and comparison with alternative indices.",
+    slug: "russell-2000-small-cap-engine-deep-dive",
+    date: "October 6, 2025",
+    imageUrl: "https://media.realvision.com/wp/20220603151313/The-Russell-2000-Index.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQYdxrd83Nu3hc2lcNCwcu0pcYDR01GRak19dqdS0RPKyV9wIPNy_YioLUQ7sG5sbeX4O1iiva0-yoo/pub",
+    deepResearch: true,
+  },
+  {
     title: "Strategic Portfolio Management via Option Writing",
     description: "A comprehensive deep research analysis of cash-secured puts and covered calls as disciplined portfolio management tools. Explores the Greeks, strategic market entry/exit, risk management frameworks, and the psychology of systematic option writing for income generation and position management.",
     slug: "strategic-portfolio-management-option-writing",
