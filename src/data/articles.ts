@@ -21,7 +21,7 @@ export const articles: Article[] = [
     description: "A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. Explores core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.",
     slug: "volume-price-analysis-market-lore-algorithmic-execution",
     date: "October 8, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
+    imageUrl: "https://icrestmodels.com/storage/app/product/lH1xXgfzWGZgWLJm83e6Pew0qEkOvw45d6Py3Cd0.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQpo-HQmmBfl5iUqh54ez_4Y84C9y63TABJSQfNWJsHFcmm-7eoEABjLV-MZNJEiyXjIwsbcVE216CX/pub",
     deepResearch: true,
   },
