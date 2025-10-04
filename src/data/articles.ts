@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Strategic Portfolio Management via Option Writing",
+    description: "A comprehensive deep research analysis of cash-secured puts and covered calls as disciplined portfolio management tools. Explores the Greeks, strategic market entry/exit, risk management frameworks, and the psychology of systematic option writing for income generation and position management.",
+    slug: "strategic-portfolio-management-option-writing",
+    date: "October 4, 2025",
+    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/10/Options-Market.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTOrdqZPBCcH4OrKMlfCrf8WlDzYrTzCaA8xGJqp4tV9trw7p-FIrtxnHSjzD9VnMEZFumz_-TE-aDo/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
     description: "An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.",
     slug: "anatomy-quant-fund-alpha-discovery-automated-execution",
