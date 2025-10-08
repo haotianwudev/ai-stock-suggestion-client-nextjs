@@ -140,6 +140,24 @@ export default function VpaPage() {
                 <p className="text-lg text-slate-600">
                   This report provides a comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. We explore the core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.
                 </p>
+                
+                {currentArticle?.googleDoc && (
+                  <div className="mt-6 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
+                    <p className="text-indigo-800 font-medium mb-2">📊 Comprehensive VPA Research</p>
+                    <p className="text-indigo-700 text-sm mb-3">
+                      Access our detailed research document covering advanced VPA methodologies, quantitative backtesting frameworks, and institutional applications.
+                    </p>
+                    <a 
+                      href={currentArticle.googleDoc}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium text-sm transition-colors"
+                    >
+                      <BarChart className="w-4 h-4 mr-1" />
+                      Access Full VPA Research Document &rarr;
+                    </a>
+                  </div>
+                )}
               </section>
 
               <ArticleSection id="foundations" title="I. Foundations of Volume Price Analysis">
@@ -365,6 +383,27 @@ export default function VpaPage() {
                   </p>
                 </div>
               </ArticleSection>
+
+              {/* Call to Action */}
+              {currentArticle?.googleDoc && (
+                <section className="py-16 text-center">
+                  <div className="max-w-2xl mx-auto">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4">Master Volume Price Analysis</h3>
+                    <p className="text-slate-600 mb-8">
+                      Dive deeper into our comprehensive research covering advanced VPA techniques, quantitative validation methods, and machine learning applications in volume analysis.
+                    </p>
+                    <a 
+                      href={currentArticle.googleDoc}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
+                    >
+                      <BarChart className="inline mr-2" />
+                      Read Complete VPA Research
+                    </a>
+                  </div>
+                </section>
+              )}
 
               {/* Footer */}
               <footer className="mt-16 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
