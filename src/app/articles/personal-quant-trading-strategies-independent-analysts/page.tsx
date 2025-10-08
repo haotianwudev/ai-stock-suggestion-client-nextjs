@@ -482,6 +482,30 @@ export default function PersonalQuantTradingStrategies() {
                     <RoadmapSection />
                 </main>
 
+                {/* Google Doc Entry Point */}
+                {currentArticle?.googleDoc && (
+                    <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-t border-blue-200 py-12">
+                        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center justify-center mb-6">
+                                <BookOpen className="h-8 w-8 text-blue-600 mr-3" />
+                                <h3 className="text-2xl font-bold text-blue-900">Complete Research Document</h3>
+                            </div>
+                            <p className="text-blue-700 mb-8 text-lg">
+                                Access the full research document with detailed analysis, additional strategies, and comprehensive implementation guides.
+                            </p>
+                            <a 
+                                href={currentArticle.googleDoc}
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105 shadow-lg"
+                            >
+                                <BookOpen className="mr-3 h-5 w-5" />
+                                Read Full Research Document
+                            </a>
+                        </div>
+                    </div>
+                )}
+
                 {/* Educational Disclaimer */}
                 <div className="bg-yellow-50 border-t border-yellow-200 py-8 px-4">
                     <div className="max-w-4xl mx-auto text-center">

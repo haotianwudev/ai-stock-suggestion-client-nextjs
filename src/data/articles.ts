@@ -36,6 +36,15 @@ export const articles: Article[] = [
     deepResearch: true,
   },
   {
+    title: "Personal Quant Trading Strategies",
+    description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
+    slug: "personal-quant-trading-strategies-independent-analysts",
+    date: "October 7, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
+    deepResearch: true
+  },
+  {
     title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
     description: "A comprehensive analysis of the Russell 2000 index, exploring its construction methodology, valuation metrics, and role as America's premier small-cap benchmark. Examining the investment thesis, structural flaws, and comparison with alternative indices.",
     slug: "russell-2000-small-cap-engine-deep-dive",
@@ -957,15 +966,6 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRO9VD_EYAJBbNPd0Cz3GNLJg39gPb31QeB3eXqIwlYZUbjS4zVFyYhglOr4CvGnUi4rPgklUKaPAE/pub",
     deepResearch: true,
     options: true
-  },
-  {
-    title: "Personal Quant Trading Strategies",
-    description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
-    slug: "personal-quant-trading-strategies-independent-analysts",
-    date: "July 12, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
-    deepResearch: true
   },
   {
     title: "AI Uncovers the Truth: Do Finfluencers nail the market?",
