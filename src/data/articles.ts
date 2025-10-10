@@ -16,6 +16,17 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+    {
+    title: "Options Wheel Trading Plan: A Quantitative Approach",
+    description: "Master the Options Wheel strategy with this comprehensive guide covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, strategic rolling techniques, and advanced portfolio management through systematic option writing.",
+    slug: "options-wheel-trading-plan-quantitative-approach",
+    date: "October 11, 2025",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*WBKi7KcTrLjzp9zj.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrNZ1-3VX4fwU3wlmIwgjvpUKbePjGbOAttYmqO1QTHlNDHjPUeA-hTC4SpWv-W4ZicYLR-eHB9Wek/pub",
+    deepResearch: true,
+    options: true,
+    podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
+  },
   {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
     description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
@@ -812,18 +823,6 @@ export const articles: Article[] = [
     imageUrl: "https://www.toptradersunplugged.com/wp-content/uploads/2022/02/The-Difference-Between-Trend-Following-Momentum-A.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTi2rZ4bmlTH0EaEuc2mJNiiSDYZlXypCofMAqUnlsAz-G0jBBXbvgVpUk-aE4oI0L7i-vj3Cd0s0bz/pub",
     deepResearch: true
-  },
-  {
-    title: "Options Wheel Trading Plan: A Quantitative Approach",
-    description: "Master the Options Wheel strategy with this comprehensive book summary covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, and strategic rolling techniques.",
-    slug: "ultimate-options-wheel-trading-plan-book-summary",
-    date: "July 26, 2025",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*WBKi7KcTrLjzp9zj.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrNZ1-3VX4fwU3wlmIwgjvpUKbePjGbOAttYmqO1QTHlNDHjPUeA-hTC4SpWv-W4ZicYLR-eHB9Wek/pub",
-    deepResearch: true,
-    bookSummary: true,
-    options: true,
-    podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
   },
   {
     title: "The Investor's Guide to Stablecoins",
