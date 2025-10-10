@@ -16,7 +16,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
-    {
+  {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
     description: "Master the Options Wheel strategy with this comprehensive guide covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, strategic rolling techniques, and advanced portfolio management through systematic option writing.",
     slug: "options-wheel-trading-plan-quantitative-approach",
@@ -26,6 +26,15 @@ export const articles: Article[] = [
     deepResearch: true,
     options: true,
     podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
+  },
+    {
+    title: "Trade War Redux: Anatomy of the October 10th Market Shock",
+    description: "An in-depth analysis of the October 10, 2025 market shock that saw the S&P 500 fall 2.7% following renewed U.S.-China trade tensions. Explores the historical context of the trade war, geopolitical strategy, market psychology, and provides a disciplined investor's playbook for navigating volatility during times of heightened uncertainty.",
+    slug: "trade-war-redux-october-10-market-shock-analysis",
+    date: "October 10, 2025",
+    imageUrl: "https://scm.ncsu.edu/wp-content/uploads/sites/29/2019/11/Trade-Wars-16x9-2-1500x844.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjkJ8tUQs6z5rLNRsjtEhtGXajOgiYAeW-44bjqFAivgHrP7UJbi9DjwSSjDUbhIGtVWuY_GJfPZ6q/pub",
+    deepResearch: true
   },
   {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
