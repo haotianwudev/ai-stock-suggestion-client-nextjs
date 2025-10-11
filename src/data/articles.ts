@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Options Strategy to beat Black Swan and Grey Rhino",
+    description: "An in-depth analysis of the October 10, 2025 market downturn and a comprehensive framework for deploying options strategies to capitalize on the expected recovery. Explores Grey Rhino vs Black Swan events, volatility spikes, and strategic options deployment including cash-secured puts, bull put spreads, and LEAP calls.",
+    slug: "options-strategy-report-october-10-market-event",
+    date: "October 12, 2025",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjnmSNJPBN0qAsNoOuSRHFIWrtn5_o1lxNm1eIB1kwsWpwP9Yf6dDHIbEJjcmr9MDkZEdbjGW5iiSB/pub",
+    imageUrl: "https://engageeic.com/wp-content/uploads/2020/01/black-swans-grey-rhinos-1000x500-1-300x150.png",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
     description: "Master the Options Wheel strategy with this comprehensive guide covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, strategic rolling techniques, and advanced portfolio management through systematic option writing.",
     slug: "options-wheel-trading-plan-quantitative-approach",
@@ -27,7 +37,7 @@ export const articles: Article[] = [
     options: true,
     podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
   },
-    {
+  {
     title: "Trade War Redux: Anatomy of the October 10th Market Shock",
     description: "An in-depth analysis of the October 10, 2025 market shock that saw the S&P 500 fall 2.7% following renewed U.S.-China trade tensions. Explores the historical context of the trade war, geopolitical strategy, market psychology, and provides a disciplined investor's playbook for navigating volatility during times of heightened uncertainty.",
     slug: "trade-war-redux-october-10-market-shock-analysis",
