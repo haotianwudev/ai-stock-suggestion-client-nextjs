@@ -72,14 +72,7 @@ export default function FoundationalAssumptionsMLQuantTrading() {
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="mb-12">
-            <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80"
-              alt="Machine learning algorithms analyzing financial data"
-              className="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg"
-            />
-          </div>
+
 
           {/* Introduction */}
           <section className="prose prose-lg max-w-none mb-12">
@@ -158,14 +151,7 @@ export default function FoundationalAssumptionsMLQuantTrading() {
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-lg p-4 mb-6">
-              <img 
-                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80"
-                alt="Stock chart showing volatility clustering patterns"
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <p className="text-sm text-slate-500 mt-2 text-center">Example of volatility clustering in financial time series</p>
-            </div>
+
 
             <p className="text-slate-700 leading-relaxed mb-4">
               This behavior is formally captured by Autoregressive Conditional Heteroskedasticity (ARCH) models, 
