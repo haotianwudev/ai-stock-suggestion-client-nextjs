@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
+    description: "An exposé on the structural disadvantages faced by retail investors and the predatory strategies used by institutions to systematically harvest their capital through algorithmic trading, market manipulation, and information asymmetry.",
+    slug: "the-harvest-institutional-exploitation-retail-investors",
+    date: "October 14, 2025",
+    imageUrl: "https://i2.jueshifan.com/7b077d83/790e7e86/2701378041e9a81d9529.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQyCrOe1hCmGUSmlcsi60DB8nyD5MrntKZvHku-NSwREpcEzp1RZd9IpzkEYrKTdBeqy2CxNT1V5fYI/pub",
+    deepResearch: true
+  },
+  {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
     description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
     slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
