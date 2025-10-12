@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Assumptions of Machine Learning in Quantitative Trading",
+    description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
+    slug: "foundational-assumptions-machine-learning-quantitative-trading",
+    date: "October 16, 2025",
+    imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+  },
+  {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
     description: "An exposé on the structural disadvantages faced by retail investors and the predatory strategies used by institutions to systematically harvest their capital through algorithmic trading, market manipulation, and information asymmetry.",
     slug: "the-harvest-institutional-exploitation-retail-investors",
