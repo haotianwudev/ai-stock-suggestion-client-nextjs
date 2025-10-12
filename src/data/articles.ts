@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
+    description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
+    slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
+    date: "October 12, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
+  },
+  {
     title: "Options Strategy to beat Black Swan and Grey Rhino",
     description: "An in-depth analysis of the October 10, 2025 market downturn and a comprehensive framework for deploying options strategies to capitalize on the expected recovery. Explores Grey Rhino vs Black Swan events, volatility spikes, and strategic options deployment including cash-secured puts, bull put spreads, and LEAP calls.",
     slug: "options-strategy-report-october-10-market-event",
@@ -25,6 +35,15 @@ export const articles: Article[] = [
     imageUrl: "https://engageeic.com/wp-content/uploads/2020/01/black-swans-grey-rhinos-1000x500-1-300x150.png",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "The Wheel Strategy Ultimate Guide: Generate Triple Income & Acquire Stock Systematically",
+    description: "This video breaks down the Options Wheel Strategy, often referred to as the Triple Income Strategy, which is a systematic, rules-based process designed to generate consistent income and acquire high-quality equities at a discount.",
+    slug: "wheel-strategy",
+    date: "October 11, 2025",
+    youtubeUrl: "https://youtu.be/GGKItsjV-L8",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/GGKItsjV-L8/maxresdefault.jpg"
   },
   {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
@@ -38,6 +57,15 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
   },
   {
+    title: "S&P 500 Crashes 2.7% and Trade War again, what happened? What's Next?",
+    description: "On October 10, 2025, a sharp and unexpected escalation in U.S.-China trade hostilities abruptly shattered a period of market calm, culminating in the S&P 500's worst single-day performance since April. The catalyst was a dual shock: former U.S. President Donald Trump threatened a massive increase in tariffs on Chinese goods and signaled the cancellation of a crucial upcoming diplomatic meeting with Chinese President Xi",
+    slug: "trade-war-again",
+    date: "October 8, 2025",
+    youtubeUrl: "https://youtu.be/imLzlzT5u8I",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/imLzlzT5u8I/maxresdefault.jpg"
+  },
+  {
     title: "Trade War Redux: Anatomy of the October 10th Market Shock",
     description: "An in-depth analysis of the October 10, 2025 market shock that saw the S&P 500 fall 2.7% following renewed U.S.-China trade tensions. Explores the historical context of the trade war, geopolitical strategy, market psychology, and provides a disciplined investor's playbook for navigating volatility during times of heightened uncertainty.",
     slug: "trade-war-redux-october-10-market-shock-analysis",
@@ -47,14 +75,22 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
-    title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
-    description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
-    slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
-    date: "October 10, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub",
-    deepResearch: true,
-    podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
+    title: "Personal Quant Trading Strategies",
+    description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
+    slug: "personal-quant-trading-strategies-independent-analysts",
+    date: "October 9, 2025",
+    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
+    deepResearch: true
+  },
+  {
+    title: "Volume Price Analysis: Market Secret on Price Move",
+    description: "Learn Volume Price Analysis (VPA), a methodology rooted in the foundational work of Charles Dow and Richard Wyckoff, which analyzes the relationship between price action and trading volume to forecast market movements. VPA is built on three core laws, including the Law of Effort vs. Result, which helps distinguish genuine, sustained trends from temporary fluctuations by identifying when price movement is disproportionate to the trading volume",
+    slug: "volume-price-analysis",
+    date: "October 8, 2025",
+    youtubeUrl: "https://youtu.be/VjOsdoln7Bo",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/VjOsdoln7Bo/maxresdefault.jpg"
   },
   {
     title: "Volume Price Analysis: From Market Lore to Algorithmic Execution",
@@ -66,13 +102,13 @@ export const articles: Article[] = [
     deepResearch: true,
   },
   {
-    title: "Personal Quant Trading Strategies",
-    description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
-    slug: "personal-quant-trading-strategies-independent-analysts",
+    title: "The Russell 2000 EXPOSED: Small-Cap Investing, Hidden Costs, and The Quality Trap",
+    description: "The Russell 2000 Index serves as the preeminent benchmark for the U.S. small-capitalization equity market, tracking approximately 2,000 of the smallest publicly traded companies. Its performance is widely cited as a primary indicator of the health of smaller domestic companies and is often viewed as a barometer of the U.S. domestic economy.",
+    slug: "russell-2000",
     date: "October 7, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
-    deepResearch: true
+    youtubeUrl: "https://youtu.be/IX4E6eHmYaE",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/IX4E6eHmYaE/maxresdefault.jpg"
   },
   {
     title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
@@ -82,6 +118,15 @@ export const articles: Article[] = [
     imageUrl: "https://media.realvision.com/wp/20220603151313/The-Russell-2000-Index.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQYdxrd83Nu3hc2lcNCwcu0pcYDR01GRak19dqdS0RPKyV9wIPNy_YioLUQ7sG5sbeX4O1iiva0-yoo/pub",
     deepResearch: true,
+  },
+  {
+    title: "Strategic Investing using Options: Cash-Secured Puts (Buy Low) & Covered Calls (Sell High Income)",
+    description: "Options are powerful tools for disciplined portfolio management, moving beyond simple speculation toward a quantitative approach for managing equity positions. By writing (selling) options, investors can enforce price discipline and facilitate systematic market entry and exit. Successful option writing requires managing the stock's direction, the magnitude of its movement, and the timeframe",
+    slug: "strategic-investing-using-options",
+    date: "October 5, 2025",
+    youtubeUrl: "https://youtu.be/MVc-dVWEc4w",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/MVc-dVWEc4w/maxresdefault.jpg"
   },
   {
     title: "Strategic Portfolio Management via Option Writing",
