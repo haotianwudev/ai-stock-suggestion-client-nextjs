@@ -20,11 +20,20 @@ export const articles: Article[] = [
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
     slug: "foundational-assumptions-machine-learning-quantitative-trading",
-    date: "October 16, 2025",
+    date: "October 24, 2025",
     imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+  },
+  {
+    title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
+    description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
+    slug: "stock-factor-models-comprehensive-guide",
+    date: "October 16, 2025",
+    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/03/factor-models-1.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub",
+    deepResearch: true
   },
   {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
@@ -51,7 +60,7 @@ export const articles: Article[] = [
     slug: "options-strategy-report-october-10-market-event",
     date: "October 12, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjnmSNJPBN0qAsNoOuSRHFIWrtn5_o1lxNm1eIB1kwsWpwP9Yf6dDHIbEJjcmr9MDkZEdbjGW5iiSB/pub",
-    imageUrl: "https://engageeic.com/wp-content/uploads/2020/01/black-swans-grey-rhinos-1000x500-1-300x150.png",
+    imageUrl: "https://cf3.ppt-online.org/files3/slide/t/Tj4GaRfQ0JAL7YpncKd8ClIeWvs5m3irMxEy1t/slide-4.jpg",
     deepResearch: true,
     options: true
   },
@@ -973,15 +982,6 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRkgSKWmteb3rAkAZDnn2IZYgf5TmTnKg_ce5ZyPnRPdc1aGRK874Pf6_gNJ558APdD7vs8s3Hwl8N/pub",
     deepResearch: true,
     options: true,
-  },
-  {
-    title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
-    description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
-    slug: "stock-factor-models-comprehensive-guide",
-    date: "July 20, 2025",
-    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/03/factor-models-1.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub",
-    deepResearch: true
   },
   {
     title: "Research Reveals the Truth: Is Technical Analysis a Secret Weapon or Just Squiggly Lines?",
