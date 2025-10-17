@@ -15,7 +15,7 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [
+export const articles: Article[] = [  
   {
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
@@ -25,6 +25,16 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+  },
+  {
+    title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
+    description: "A comprehensive deep research analysis of the volatility smile phenomenon, exploring the failure of Black-Scholes assumptions, market psychology, and the economic implications of non-constant volatility in options pricing.",
+    slug: "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
+    date: "October 17, 2025",
+    imageUrl: "https://courseimg.futunn.com/2022121600006649899d33db0e8.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSrbL7cogay9R8XbO_N_6W1a61S7lk-PWSpfMXMrcUq53qvtkouBwAjXlfcLqgCjZPI0pC-GNqKN_Uj/pub",
+    deepResearch: true,
+    options: true
   },
   {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
