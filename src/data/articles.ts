@@ -15,7 +15,7 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [  
+export const articles: Article[] = [    
   {
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
@@ -25,6 +25,16 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+  },
+  {
+    title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
+    description: "A comprehensive deep research analysis of the VIX Index, exploring its calculation methodology, market sentiment interpretation, relationship with the S&P 500, and advanced applications for portfolio management and volatility trading strategies.",
+    slug: "vix-index-comprehensive-guide-market-volatility",
+    date: "October 19, 2025",
+    imageUrl: "https://www.avatrade.com/wp-content/uploads/2018/04/VIX_800x200.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRvMWp5V6VlPo-S5xxbxIO5usm8miwtVoITY4FbmdOpf4ZGEUsQFiU4WuTCZVO2ON0ZYeEeTq8zsnYm/pub",
+    deepResearch: true,
+    options: true
   },
   {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
