@@ -15,7 +15,17 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [    
+export const articles: Article[] = [
+  {
+    title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
+    description: "Master the institutional-grade framework for generating consistent income through vertical credit spreads. From theoretical foundations to practical implementation, this deep research guide covers strike selection, risk management, and advanced trade management techniques.",
+    slug: "vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling",
+    date: "October 26, 2025",
+    imageUrl: "https://cdn.prod.website-files.com/5d5e9565cfc85e43ba725a38/67be020ba846a6a43a890440_Bull%20Call%20Spread%20and%20.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTX5OTxEBDIL3oWyOJ_VY1iw1SLrcJl8tVvWxuAfaoVqUo467i0yGoX66RqXDO1En1gBGO38px-ZIWo/pub",
+    deepResearch: true,
+    options: true
+  },
   {
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
@@ -25,6 +35,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+  },
+  {
+    title: "The Insider's Edge: Signal from Insider Trading",
+    description: "Explore the dual nature of insider trading, from legal disclosure requirements to market sentiment indicators. Learn how to interpret Form 4 filings, understand the predictive power of insider transactions, and recognize the evolving regulatory landscape.",
+    slug: "insiders-edge-comprehensive-analysis",
+    date: "October 22, 2025",
+    imageUrl: "https://www.ebc.com/upload/default/20250528/806a00c04c8081927a099beb608c075d.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrrtDQ12baE9z57X3EV_jUqM4PjUgqQyvbmTyFymeiLsIRGaxYXTKgAvaeKXYon2v379fYUgFZfFT9/pub",
+    deepResearch: true
   },
   {
     title: "Decoding the VIX: The Market's Fear Gauge Explained",
@@ -39,7 +58,7 @@ export const articles: Article[] = [
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
     description: "A comprehensive deep research analysis of the VIX Index, exploring its calculation methodology, market sentiment interpretation, relationship with the S&P 500, and advanced applications for portfolio management and volatility trading strategies.",
     slug: "vix-index-comprehensive-guide-market-volatility",
-    date: "October 19, 2025",
+    date: "October 20, 2025",
     imageUrl: "https://www.avatrade.com/wp-content/uploads/2018/04/VIX_800x200.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRvMWp5V6VlPo-S5xxbxIO5usm8miwtVoITY4FbmdOpf4ZGEUsQFiU4WuTCZVO2ON0ZYeEeTq8zsnYm/pub",
     deepResearch: true,
@@ -49,7 +68,7 @@ export const articles: Article[] = [
     title: "The Volatility Smile Explained: What it can tell you is a lot!",
     description: "The Volatility Smile is the most profound empirical anomaly in derivatives pricing, representing the market's definitive rejection of the Black-Scholes-Merton (BSM) model's assumption of constant volatility.",
     slug: "volatility-smile",
-    date: "October 18, 2025",
+    date: "October 19, 2025",
     youtubeUrl: "https://youtu.be/p8nblr4NyNc",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/p8nblr4NyNc/maxresdefault.jpg"
@@ -58,7 +77,7 @@ export const articles: Article[] = [
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
     description: "A comprehensive deep research analysis of the volatility smile phenomenon, exploring the failure of Black-Scholes assumptions, market psychology, and the economic implications of non-constant volatility in options pricing.",
     slug: "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
-    date: "October 17, 2025",
+    date: "October 18, 2025",
     imageUrl: "https://courseimg.futunn.com/2022121600006649899d33db0e8.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSrbL7cogay9R8XbO_N_6W1a61S7lk-PWSpfMXMrcUq53qvtkouBwAjXlfcLqgCjZPI0pC-GNqKN_Uj/pub",
     deepResearch: true,
@@ -1026,15 +1045,6 @@ export const articles: Article[] = [
     date: "July 23, 2025",
     imageUrl: "https://images.timesnownews.com/thumb/msid-152263498,thumbsize-87148,width-1280,height-720,resizemode-75/152263498.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSoGmmRVw9JQEKdSct9ASfyVHutJdnIWu4o0aLuE5dqg3ib_MLsK92YLdVS8C9CPaZuZWcNn_fkK5lA/pub",
-    deepResearch: true
-  },
-  {
-    title: "The Insider's Edge: Signal from Insider Trading",
-    description: "Explore the dual nature of insider trading, from legal disclosure requirements to market sentiment indicators. Learn how to interpret Form 4 filings, understand the predictive power of insider transactions, and recognize the evolving regulatory landscape.",
-    slug: "insiders-edge-comprehensive-analysis",
-    date: "July 22, 2025",
-    imageUrl: "https://www.ebc.com/upload/default/20250528/806a00c04c8081927a099beb608c075d.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrrtDQ12baE9z57X3EV_jUqM4PjUgqQyvbmTyFymeiLsIRGaxYXTKgAvaeKXYon2v379fYUgFZfFT9/pub",
     deepResearch: true
   },
   {
