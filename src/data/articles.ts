@@ -27,6 +27,15 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
   },
   {
+    title: "Decoding the VIX: The Market's Fear Gauge Explained",
+    description: "The Cboe Volatility Index, universally known as the VIX, is far more than its popular nickname, the Fear Gauge.",
+    slug: "decode-vix",
+    date: "October 21, 2025",
+    youtubeUrl: "https://youtu.be/_NDyPBYkZxg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/_NDyPBYkZxg/maxresdefault.jpg"
+  },
+  {
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
     description: "A comprehensive deep research analysis of the VIX Index, exploring its calculation methodology, market sentiment interpretation, relationship with the S&P 500, and advanced applications for portfolio management and volatility trading strategies.",
     slug: "vix-index-comprehensive-guide-market-volatility",
@@ -35,6 +44,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRvMWp5V6VlPo-S5xxbxIO5usm8miwtVoITY4FbmdOpf4ZGEUsQFiU4WuTCZVO2ON0ZYeEeTq8zsnYm/pub",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "The Volatility Smile Explained: What it can tell you is a lot!",
+    description: "The Volatility Smile is the most profound empirical anomaly in derivatives pricing, representing the market's definitive rejection of the Black-Scholes-Merton (BSM) model's assumption of constant volatility.",
+    slug: "volatility-smile",
+    date: "October 18, 2025",
+    youtubeUrl: "https://youtu.be/p8nblr4NyNc",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/p8nblr4NyNc/maxresdefault.jpg"
   },
   {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
@@ -47,6 +65,15 @@ export const articles: Article[] = [
     options: true
   },
   {
+    title: "The Ultimate Guide to Factor Investing",
+    description: "Factor models are essential quantitative tools in modern finance, designed to decompose asset returns into systematic and idiosyncratic components. This video explores the intellectual progression of these models.",
+    slug: "factor-models",
+    date: "October 17, 2025",
+    youtubeUrl: "https://youtu.be/z32X0C5F5JE",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/z32X0C5F5JE/maxresdefault.jpg"
+  },
+  {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
     description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
     slug: "stock-factor-models-comprehensive-guide",
@@ -54,6 +81,15 @@ export const articles: Article[] = [
     imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/03/factor-models-1.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub",
     deepResearch: true
+  },
+  {
+    title: "The Harvest: Wall St Tactics Against Retail Investors-Speed, Manipulation, and Info Asymmetry",
+    description: "This video dissects the playbook large, professional institutional investors use to systematically exploit common retail investors, drawing on vast differences in resources, knowledge, and influence. The core theme is information asymmetry, where institutions possess significantly better market knowledge and access.",
+    slug: "harvest-investor",
+    date: "October 15, 2025",
+    youtubeUrl: "https://youtu.be/xMaKA2lIn8c",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/xMaKA2lIn8c/maxresdefault.jpg"
   },
   {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
@@ -65,14 +101,32 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "High Frequency Trading: The playground and players",
+    description: "Explore High-Frequency Trading (HFT), the apex of algorithmic trading defined by exceptionally high speeds and massive turnover rates. Success in this hyper-competitive domain is a dual arms race fought on two fronts: the physical quest for ultra-low latency and the intellectual race for algorithmic sophistication.",
+    slug: "high-frequency-trading",
+    date: "October 14, 2025",
+    youtubeUrl: "https://youtu.be/Zp-ZmWc1G3A",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/Zp-ZmWc1G3A/maxresdefault.jpg"
+  },
+  {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
     description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
     slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
-    date: "October 12, 2025",
+    date: "October 13, 2025",
     imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
+  },
+  {
+    title: "How to use Option Strategies to Beat Oct 10 Grey Rhino?",
+    description: "October 10 event is classified as a Grey Rhino—a known, high-impact threat (like recurring trade risks) that the complacent, overbought market chose to neglect. Because the sell-off was sentiment-driven rather than a systemic economic breakdown, the strategic thesis advocates for cautiously bullish opportunism.",
+    slug: "option-strategy-grey-rhino",
+    date: "October 13, 2025",
+    youtubeUrl: "https://youtu.be/UTPVKLS87zg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/UTPVKLS87zg/maxresdefault.jpg"
   },
   {
     title: "Options Strategy to beat Black Swan and Grey Rhino",
