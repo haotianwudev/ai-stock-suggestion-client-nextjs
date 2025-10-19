@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "Decoding the Options Market: Volume & Open Interest Analysis",
+    description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
+    slug: "decoding-options-market-volume-open-interest-analysis",
+    date: "October 30, 2025",
+    imageUrl: "https://blog.oihelper.com/wp-content/uploads/2025/05/oi-meaning-oihelper.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPVO8a1EpsE5aZcZLqLf2V8kABWtqnZfPCLuPclso4_uYCwca8wMn33AGgVmq2nGFrbws-eii0JMF3/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
     description: "An in-depth analysis of the indicators, strategies, and academic research behind trading the opening bell. Learn how to decode pre-market signals, understand market gaps, and develop systematic frameworks for opening trades.",
     slug: "quantitative-approach-predicting-market-direction-premarket-data",
