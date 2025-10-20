@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "A Quantitative Analyst's Guide to Volatility Forecasting",
+    description: "From GARCH to Deep Learning in Algorithmic Trading. A comprehensive deep research analysis exploring the evolution from econometric foundations to machine learning frontiers in volatility forecasting, examining deployment strategies, fundamental assumptions, and the challenges of extreme events in quantitative trading.",
+    slug: "quantitative-analyst-guide-volatility-forecasting",
+    date: "November 1, 2025",
+    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/06/Volatility-Clustering-1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRpFDZmT3ajgqPdW9nBkPpkyd-sRz2p9NtHYam2Na4CmC6WHteqCvB0UJoKH1eSpvmZWioTlHrLDoQU/pub",
+    deepResearch: true
+  },
+  {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
