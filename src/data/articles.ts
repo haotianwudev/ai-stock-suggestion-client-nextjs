@@ -1461,7 +1461,7 @@ export const articles: Article[] = [
   },
   {
     title: "Decoding AI Agent Stock Analyst",
-    description: "Can AI think like Charlie Munger? Join SOPHIE's Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
+    description: "Can AI think like Charlie Munger? Join SOPHIE Daddy to explore the AI-Hedge-Fund's \"Charlie Bot Munger\" agent and its Deep Research!",
     slug: "sophie-youtube-introduction",
     date: "June 4, 2025",
     imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",

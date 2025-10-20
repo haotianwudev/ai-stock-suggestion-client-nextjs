@@ -410,7 +410,7 @@ export default function PoliticalAlphaArticle() {
         {/* Footer */}
         <footer className="border-t border-gray-200 mt-24 bg-white">
           <div className="container mx-auto px-6 py-8 text-center text-gray-500">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

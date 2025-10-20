@@ -750,7 +750,7 @@ export default function BacktraderCheatsheetPage() {
 
         <footer className="bg-gray-100 mt-16 py-6 border-t border-gray-200">
           <div className="container mx-auto text-center text-gray-500 text-sm">
-            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

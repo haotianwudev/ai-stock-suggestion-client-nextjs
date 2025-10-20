@@ -381,7 +381,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                     {/* Footer */}
                     <footer className="text-center mt-12 pt-8 border-t border-gray-200">
                         <p className="text-gray-500 text-sm">
-                            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
                         </p>
                     </footer>
                 </div>

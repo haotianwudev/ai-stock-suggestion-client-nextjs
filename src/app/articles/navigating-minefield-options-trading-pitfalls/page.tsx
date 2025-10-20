@@ -379,7 +379,7 @@ export default function NavigatingMinefieldOptionsTrading() {
           {/* Footer */}
           <footer className="text-center mt-20 pt-10 border-t border-gray-200">
             <p className="text-sm text-gray-400">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </footer>
         </main>

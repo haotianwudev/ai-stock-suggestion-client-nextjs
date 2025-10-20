@@ -28,7 +28,7 @@ export default function OptionsStrategyReportOctober10() {
             <div className="flex justify-between items-center h-16">
               <div className="flex-shrink-0">
                 <Link href="/" className="text-xl font-bold text-slate-800">
-                  SOPHIE's Daddy Quant Blog
+                  SOPHIE Daddyuant Blog
                 </Link>
               </div>
               <div className="hidden md:block">
@@ -411,7 +411,7 @@ export default function OptionsStrategyReportOctober10() {
               All forms of options trading involve substantial risk. This report is provided for informational and educational purposes only and does not constitute a personalized investment recommendation or financial advice. Consult with a qualified financial professional before making any investment decisions.
             </p>
             <p className="mt-4 font-medium text-slate-600">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

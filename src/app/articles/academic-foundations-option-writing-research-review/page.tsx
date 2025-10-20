@@ -397,7 +397,7 @@ export default function AcademicFoundationsOptionWriting() {
             <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-500">
               <p>Research Synthesis by {researchData.author}</p>
               <p>Published: {researchData.date}</p>
-              <p className="mt-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+              <p className="mt-4">© 2025 SOPHIE Daddy Quant Blog. Educational content for informational purposes only.</p>
             </footer>
           </main>
         </div>

@@ -965,7 +965,7 @@ export default function UnlockingInstitutionalPortfolios() {
 
           {/* Footer */}
           <footer className="text-center text-slate-500 text-sm border-t border-slate-200 pt-8">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
           </footer>
         </div>
       </div>

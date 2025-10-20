@@ -475,7 +475,7 @@ export default function CoveredCallETFsDeepResearch() {
         <footer className="bg-gray-900 text-white py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-gray-400">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

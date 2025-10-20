@@ -532,7 +532,7 @@ export default function LSTMSystematicTradingArticle() {
         <footer className="bg-gray-100 border-t border-gray-200 mt-16">
           <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

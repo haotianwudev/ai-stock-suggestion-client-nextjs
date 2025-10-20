@@ -144,7 +144,7 @@ export function generateStockMetadata(
   stockData?: StockDetails
 ): Metadata {
   const companyName = company?.name || ticker;
-  const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE's Daddy Quant Blog`;
+  const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE Daddy Quant Blog`;
   const description = `Comprehensive analysis of ${ticker} (${companyName}) stock with AI-powered insights from SOPHIE. Technical analysis, fundamentals, sentiment analysis, and expert AI agent recommendations.`;
   const url = `https://sophie-ai-finance.com/stock/${ticker}`;
   const imageUrl = '/images/agents/SOPHIE.png';
@@ -170,9 +170,9 @@ export function generateStockMetadata(
     title,
     description,
     keywords,
-    authors: [{ name: "SOPHIE's Daddy Quant Blog" }],
-    creator: "SOPHIE's Daddy Quant Blog",
-    publisher: "SOPHIE's Daddy Quant Blog",
+    authors: [{ name: "SOPHIE Daddy Quant Blog" }],
+    creator: "SOPHIE Daddy Quant Blog",
+    publisher: "SOPHIE Daddy Quant Blog",
     robots: 'index, follow',
     alternates: {
       canonical: url,
@@ -181,7 +181,7 @@ export function generateStockMetadata(
       title,
       description,
       url,
-      siteName: "SOPHIE's Daddy Quant Blog",
+      siteName: "SOPHIE Daddy Quant Blog",
       images: [
         {
           url: imageUrl,
@@ -258,7 +258,7 @@ export function createOrganizationStructuredData() {
   const organizationData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: "SOPHIE's Daddy Quant Blog",
+    name: "SOPHIE Daddy Quant Blog",
     url: 'https://sophie-ai-finance.com',
     logo: 'https://sophie-ai-finance.com/images/agents/SOPHIE.png',
     description: 'AI-powered stock analysis and investment education platform featuring SOPHIE and legendary investor insights.',
@@ -302,7 +302,7 @@ export function createWebSiteStructuredData() {
   const websiteData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: "SOPHIE's Daddy Quant Blog",
+    name: "SOPHIE Daddy Quant Blog",
     url: 'https://sophie-ai-finance.com',
     description: 'AI-powered stock analysis and investment education platform',
     potentialAction: {
@@ -315,11 +315,11 @@ export function createWebSiteStructuredData() {
     },
     author: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Quant Blog",
+      name: "SOPHIE Daddy Quant Blog",
     },
     publisher: {
       '@type': 'Organization',
-      name: "SOPHIE's Daddy Quant Blog",
+      name: "SOPHIE Daddy Quant Blog",
     },
   };
 
@@ -386,7 +386,7 @@ export function generateEnhancedStockMetadata(
   stockData?: StockDetails
 ): Metadata {
   const companyName = company?.name || ticker;
-  const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE's Daddy Quant Blog`;
+  const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE Daddy Quant Blog`;
   const description = `${ticker} (${companyName}) comprehensive stock analysis with AI insights. Technical analysis, fundamentals, sentiment analysis, and expert recommendations. Updated ${new Date().toLocaleDateString()}.`;
   const url = `https://sophie-ai-finance.com/stock/${ticker}`;
   const imageUrl = '/images/agents/SOPHIE.png';
@@ -419,9 +419,9 @@ export function generateEnhancedStockMetadata(
     title,
     description,
     keywords,
-    authors: [{ name: "SOPHIE's Daddy Quant Blog" }],
-    creator: "SOPHIE's Daddy Quant Blog",
-    publisher: "SOPHIE's Daddy Quant Blog",
+    authors: [{ name: "SOPHIE Daddy Quant Blog" }],
+    creator: "SOPHIE Daddy Quant Blog",
+    publisher: "SOPHIE Daddy Quant Blog",
     robots: 'index, follow, max-image-preview:large',
     alternates: {
       canonical: url,
@@ -430,7 +430,7 @@ export function generateEnhancedStockMetadata(
       title,
       description,
       url,
-      siteName: "SOPHIE's Daddy Quant Blog",
+      siteName: "SOPHIE Daddy Quant Blog",
       images: [
         {
           url: imageUrl,
@@ -464,8 +464,8 @@ export function generateEnhancedStockMetadata(
       'content:language': 'en',
       'geo:region': 'US',
       'geo:placename': 'United States',
-      'content:author': "SOPHIE's Daddy Quant Blog",
-      'content:publisher': "SOPHIE's Daddy Quant Blog",
+      'content:author': "SOPHIE Daddy Quant Blog",
+      'content:publisher': "SOPHIE Daddy Quant Blog",
     },
   };
 } 

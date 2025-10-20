@@ -399,7 +399,7 @@ export default function ViralVideosVolatileValuations() {
 
         <footer className="bg-gray-100 border-t border-gray-200">
           <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="mt-2">This analysis is based on publicly available information and does not constitute financial advice.</p>
           </div>
         </footer>

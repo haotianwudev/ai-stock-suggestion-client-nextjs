@@ -490,7 +490,7 @@ Source: {file: 'doc2.pdf', page: 2}
 
             <footer className="text-center mt-20 pt-10 border-t border-gray-200 dark:border-gray-700">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
               </p>
             </footer>
           </div>

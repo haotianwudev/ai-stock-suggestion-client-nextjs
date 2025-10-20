@@ -505,7 +505,7 @@ export default function NavigatingRarifiedAir() {
         <footer className="bg-slate-900 text-white py-8">
           <div className="container mx-auto px-6 text-center">
             <p className="text-slate-300">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
             <p className="text-slate-400 text-sm mt-2">
               This analysis is for informational purposes only and does not constitute financial advice. Past performance is not indicative of future results.

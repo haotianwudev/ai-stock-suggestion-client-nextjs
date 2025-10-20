@@ -1,7 +1,7 @@
 {
-  "name": "SOPHIE's Daddy Quant Blog - Stock & Options Analysis",
-  "short_name": "SOPHIE's Daddy",
-  "description": "SOPHIE's Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education",
+  "name": "SOPHIE Daddy Quant Blog - Stock & Options Analysis",
+  "short_name": "SOPHIE Daddy",
+  "description": "SOPHIE Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

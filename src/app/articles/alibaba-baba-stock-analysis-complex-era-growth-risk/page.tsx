@@ -81,13 +81,13 @@ const Header = () => (
 
 const ExecutiveSummary = () => (
   <Card>
-    <SectionTitle 
-      title="Executive Summary" 
+    <SectionTitle
+      title="Executive Summary"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
-      } 
+      }
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
       <p>
@@ -102,13 +102,13 @@ const ExecutiveSummary = () => (
 
 const KeyMetrics = () => (
   <Card>
-    <SectionTitle 
-      title="Key Metrics at a Glance" 
+    <SectionTitle
+      title="Key Metrics at a Glance"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
         </svg>
-      } 
+      }
     />
     <div className="overflow-x-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -125,13 +125,13 @@ const KeyMetrics = () => (
 
 const CorporateDeepDive = () => (
   <Card>
-    <SectionTitle 
-      title="Corporate and Operational Deep Dive" 
+    <SectionTitle
+      title="Corporate and Operational Deep Dive"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
-      } 
+      }
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4">
       <p>
@@ -152,13 +152,13 @@ const CorporateDeepDive = () => (
 
 const FinancialAnalysis = () => (
   <Card>
-    <SectionTitle 
-      title="Comprehensive Financial Analysis" 
+    <SectionTitle
+      title="Comprehensive Financial Analysis"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-      } 
+      }
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4 mb-8">
       <p>
@@ -198,9 +198,8 @@ const FinancialAnalysis = () => (
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-right">
                 {row.fy2025}
               </td>
-              <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold text-right ${
-                row.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-              }`}>
+              <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold text-right ${row.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                }`}>
                 {row.change}
               </td>
             </tr>
@@ -213,13 +212,13 @@ const FinancialAnalysis = () => (
 
 const MarketPositioning = () => (
   <Card>
-    <SectionTitle 
-      title="Market Positioning and Competitive Gauntlet" 
+    <SectionTitle
+      title="Market Positioning and Competitive Gauntlet"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6H8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
         </svg>
-      } 
+      }
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4">
       <p>
@@ -234,13 +233,13 @@ const MarketPositioning = () => (
 
 const SwotAnalysis = () => (
   <Card>
-    <SectionTitle 
-      title="SWOT Analysis" 
+    <SectionTitle
+      title="SWOT Analysis"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-      } 
+      }
     />
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div className="bg-green-50 dark:bg-green-900/30 p-6 rounded-lg border-l-4 border-green-500">
@@ -284,13 +283,13 @@ const SwotAnalysis = () => (
 
 const Valuation = () => (
   <Card>
-    <SectionTitle 
-      title="Valuation Analysis" 
+    <SectionTitle
+      title="Valuation Analysis"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
-      } 
+      }
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4 mb-8">
       <p>
@@ -330,13 +329,13 @@ const Valuation = () => (
 
 const InvestmentThesis = () => (
   <Card>
-    <SectionTitle 
-      title="Investment Thesis & Conclusion" 
+    <SectionTitle
+      title="Investment Thesis & Conclusion"
       icon={
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-      } 
+      }
     />
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
@@ -371,7 +370,7 @@ const InvestmentThesis = () => (
 const Footer = () => (
   <footer className="text-center py-8 px-4 mt-8">
     <p className="text-sm text-gray-500 dark:text-gray-400">
-      © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+      © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
     </p>
   </footer>
 );
@@ -386,13 +385,13 @@ export default function AlibabaAnalysis() {
       {currentArticle && (
         <>
           <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+          <BreadcrumbStructuredData
+            articleTitle={currentArticle.title}
+            articleSlug={currentArticle.slug}
           />
         </>
       )}
-      
+
       <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
         <main className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Return to Home Button */}

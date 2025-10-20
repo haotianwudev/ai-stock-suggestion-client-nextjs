@@ -309,7 +309,7 @@ export default function VixIndexPage() {
                                 Ready to Master Volatility Trading?
                             </h3>
                             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                                Explore more advanced options strategies and quantitative analysis on SOPHIE's Daddy Quant Blog
+                                Explore more advanced options strategies and quantitative analysis on SOPHIE Daddyuant Blog
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 {currentArticle?.googleDoc && (
@@ -350,7 +350,7 @@ export default function VixIndexPage() {
                 </main>
 
                 <footer className="text-center py-6 text-gray-500 dark:text-gray-400 text-sm">
-                    <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                    <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                 </footer>
             </div>
         </>

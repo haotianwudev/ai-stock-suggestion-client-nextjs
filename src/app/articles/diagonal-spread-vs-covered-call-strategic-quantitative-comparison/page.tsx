@@ -448,7 +448,7 @@ export default function DiagonalSpreadVsCoveredCallPage() {
                             This analysis is for educational purposes only. Options trading involves significant risk.
                         </p>
                         <p className="text-sm text-gray-400 dark:text-gray-500">
-                            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
                         </p>
                     </footer>
                 </div>

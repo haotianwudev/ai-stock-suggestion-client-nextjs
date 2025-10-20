@@ -395,7 +395,7 @@ export default function StructuredNotesPage() {
         {/* Footer */}
         <footer className="bg-gray-900 text-gray-400 py-8 mt-16">
           <div className="container mx-auto px-4 text-center">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

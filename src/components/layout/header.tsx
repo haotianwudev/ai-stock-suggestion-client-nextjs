@@ -21,7 +21,7 @@ export function Header() {
               />
             </div>
             <span className="font-bold text-sm sm:text-lg lg:text-xl truncate">
-              SOPHIE's Daddy Quant Blog
+              SOPHIE Daddy Quant Blog
             </span>
           </Link>
         </div>

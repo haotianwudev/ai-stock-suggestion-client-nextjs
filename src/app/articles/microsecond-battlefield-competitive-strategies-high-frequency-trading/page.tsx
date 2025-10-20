@@ -349,7 +349,7 @@ export default function HFTPage() {
           {/* Footer */}
           <footer className="border-t border-gray-200 bg-white">
             <div className="container mx-auto px-6 py-8 text-center text-gray-500">
-              <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+              <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
               <p className="text-sm mt-2">A conceptual analysis based on public research into High-Frequency Trading strategies and technology.</p>
             </div>
           </footer>

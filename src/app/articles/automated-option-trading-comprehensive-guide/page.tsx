@@ -405,7 +405,7 @@ export default function AutomatedOptionTradingGuide() {
 
           {/* Footer */}
           <footer className="text-center text-gray-500 text-sm border-t border-gray-200 pt-8">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </footer>
         </div>
       </div>

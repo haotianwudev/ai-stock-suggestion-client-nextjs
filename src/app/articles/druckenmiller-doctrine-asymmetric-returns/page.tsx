@@ -435,7 +435,7 @@ export default function DruckenmillerDoctrine() {
           {/* Footer */}
           <footer className="bg-gray-800 text-white py-12">
             <div className="container mx-auto px-4 text-center">
-              <p className="text-lg mb-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+              <p className="text-lg mb-4">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
               <p className="text-gray-400">
                 Exploring the intersection of quantitative analysis, behavioral psychology, and market dynamics.
               </p>

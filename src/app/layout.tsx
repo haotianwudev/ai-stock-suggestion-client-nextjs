@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://sophie-ai-finance.com'),
   title: {
-    default: "SOPHIE's Daddy Quant Blog - Stock & Options Analysis",
-    template: "%s | SOPHIE's Daddy Quant Blog",
+    default: "SOPHIE Daddy Quant Blog - Stock & Options Analysis",
+    template: "%s | SOPHIE Daddy Quant Blog",
   },
-  description: "SOPHIE's Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education. Learn from detailed research, practical examples, and educational content.",
+  description: "SOPHIE Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education. Learn from detailed research, practical examples, and educational content.",
   keywords: [
     'stock analysis',
     'options trading',
@@ -30,30 +30,30 @@ export const metadata: Metadata = {
     'technical analysis',
     'fundamental analysis'
   ],
-  authors: [{ name: "SOPHIE's Daddy Quant Blog" }],
-  creator: "SOPHIE's Daddy Quant Blog",
-  publisher: "SOPHIE's Daddy Quant Blog",
+  authors: [{ name: "SOPHIE Daddy Quant Blog" }],
+  creator: "SOPHIE Daddy Quant Blog",
+  publisher: "SOPHIE Daddy Quant Blog",
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://sophie-ai-finance.com',
-    siteName: "SOPHIE's Daddy Quant Blog",
-    title: "SOPHIE's Daddy Quant Blog - Stock & Options Analysis",
-    description: "SOPHIE's Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education.",
+    siteName: "SOPHIE Daddy Quant Blog",
+    title: "SOPHIE Daddy Quant Blog - Stock & Options Analysis",
+    description: "SOPHIE Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education.",
     images: [
       {
         url: '/images/agents/SOPHIE.png',
         width: 1200,
         height: 630,
-        alt: "SOPHIE's Daddy Quant Blog Stock Analysis",
+        alt: "SOPHIE Daddy Quant Blog Stock Analysis",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "SOPHIE's Daddy Quant Blog - Stock & Options Analysis",
-    description: "SOPHIE's Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education.",
+    title: "SOPHIE Daddy Quant Blog - Stock & Options Analysis",
+    description: "SOPHIE Daddy Quant Blog - Your go-to resource for stock analysis, options trading strategies, and investment education.",
     images: ['/images/agents/SOPHIE.png'],
   },
   icons: {

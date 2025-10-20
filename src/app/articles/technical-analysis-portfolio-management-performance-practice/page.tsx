@@ -175,7 +175,7 @@ export default function TechnicalAnalysisPortfolioManagement() {
                       <div className="flex items-center justify-between">
                         <div>
                           <h3 className="text-lg font-semibold text-green-800 mb-2">🎧 Listen to the Podcast</h3>
-                          <p className="text-green-700">Dive deeper into this analysis with SOPHIE's Wall Street Fireside Chat podcast episode.</p>
+                          <p className="text-green-700">Dive deeper into this analysis with SOPHIE Wall Street Fireside Chat podcast episode.</p>
                         </div>
                         <a 
                           href={currentArticle.podcastUrl}
@@ -484,7 +484,7 @@ export default function TechnicalAnalysisPortfolioManagement() {
                   {currentArticle?.podcastUrl && (
                     <div className="mb-8 p-6 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg text-center">
                       <h3 className="text-xl font-bold mb-3">Want to Learn More?</h3>
-                      <p className="mb-4">Listen to the full discussion on SOPHIE's Wall Street Fireside Chat for deeper insights into this research.</p>
+                      <p className="mb-4">Listen to the full discussion on SOPHIE Wall Street Fireside Chat for deeper insights into this research.</p>
                       <a 
                         href={currentArticle.podcastUrl}
                         target="_blank" 
@@ -521,7 +521,7 @@ export default function TechnicalAnalysisPortfolioManagement() {
         {/* Footer */}
         <footer className="bg-gray-800 text-gray-300 py-8 mt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-sm">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="text-sm">© 2025 SOPHIE Daddy Quant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

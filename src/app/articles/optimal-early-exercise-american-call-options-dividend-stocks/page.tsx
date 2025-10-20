@@ -401,7 +401,7 @@ export default function OptimalEarlyExerciseArticle() {
         <footer className="bg-gray-900 text-white py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-sm opacity-75">
-              &copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              &copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

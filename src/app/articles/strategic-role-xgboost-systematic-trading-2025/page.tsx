@@ -208,7 +208,7 @@ export default function XGBoostSystematicTradingArticle() {
                         <div className="flex items-center justify-between h-16">
                             <div className="flex items-center">
                                 <Bot className="h-8 w-8 text-blue-600" />
-                                <span className="text-gray-900 font-bold ml-2 text-xl">SOPHIE's Daddy Quant Blog</span>
+                                <span className="text-gray-900 font-bold ml-2 text-xl">SOPHIE Daddyuant Blog</span>
                             </div>
 
                             {/* Desktop Menu */}
@@ -461,7 +461,7 @@ export default function XGBoostSystematicTradingArticle() {
                 {/* Footer */}
                 <footer className="bg-white border-t border-gray-200">
                     <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                        <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                        <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                         <p className="text-sm mt-2">This analysis is for educational purposes and should not be considered investment advice.</p>
                     </div>
                 </footer>

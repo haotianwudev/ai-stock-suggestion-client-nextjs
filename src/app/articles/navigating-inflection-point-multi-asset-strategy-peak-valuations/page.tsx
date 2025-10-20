@@ -399,7 +399,7 @@ export default function MarketAnalysisPage() {
 
       <footer className="bg-slate-900 text-slate-400 py-6">
         <div className="container mx-auto px-6 text-center text-sm">
-          <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+          <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           <p className="mt-2">
             This content is for informational purposes only and does not constitute financial advice. Consult with a professional financial advisor before making any investment decisions.
           </p>

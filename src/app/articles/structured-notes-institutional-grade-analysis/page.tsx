@@ -320,7 +320,7 @@ export default function StructuredNotesAnalysis() {
                     {/* Footer */}
                     <footer className="text-center mt-20 pt-8 border-t border-slate-200">
                         <p className="text-sm text-slate-500">
-                            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
                         </p>
                     </footer>
                 </main>

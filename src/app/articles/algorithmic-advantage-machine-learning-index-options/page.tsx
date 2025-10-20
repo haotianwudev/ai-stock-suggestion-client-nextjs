@@ -523,7 +523,7 @@ export default function AlgorithmicAdvantageArticle() {
                     {/* Footer */}
                     <footer className="bg-gray-100 border-t border-gray-200 py-8">
                         <div className="container mx-auto px-4 text-center text-gray-500">
-                            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                         </div>
                     </footer>
                 </div>

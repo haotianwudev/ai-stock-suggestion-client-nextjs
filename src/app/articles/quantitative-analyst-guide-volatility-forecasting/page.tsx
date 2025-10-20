@@ -337,7 +337,7 @@ const MainContent = () => {
 
         {/* Footer */}
         <footer className="mt-12 pt-8 border-t border-slate-200 text-center text-sm text-slate-600">
-          <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+          <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
         </footer>
       </div>
     </main>

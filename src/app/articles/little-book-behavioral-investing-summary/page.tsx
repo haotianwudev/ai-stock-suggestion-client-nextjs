@@ -371,7 +371,7 @@ export default function LittleBookBehavioralInvestingSummary() {
         <footer className="bg-white mt-16 py-8 border-t">
           <div className="container mx-auto px-6 text-center text-gray-500">
             <p>Summary based on "The Little Book of Behavioral Investing" by James Montier.</p>
-            <p className="text-sm mt-1">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="text-sm mt-1">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

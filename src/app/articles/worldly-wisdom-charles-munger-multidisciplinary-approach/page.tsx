@@ -175,7 +175,7 @@ export default function MungerWisdomArticle() {
         <footer className="bg-gray-800 text-white mt-12">
           <div className="container mx-auto px-4 py-8">
             <div className="text-center text-gray-400">
-              <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+              <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             </div>
           </div>
         </footer>

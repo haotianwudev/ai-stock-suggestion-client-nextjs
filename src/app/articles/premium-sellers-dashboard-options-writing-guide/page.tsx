@@ -467,7 +467,7 @@ export default function PremiumSellersDashboard() {
           {/* Footer */}
           <footer className="text-center mt-12 text-gray-500">
             <p>This page is a visual summary of options selling principles. Always conduct your own research and risk assessment.</p>
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </footer>
         </main>
       </div>

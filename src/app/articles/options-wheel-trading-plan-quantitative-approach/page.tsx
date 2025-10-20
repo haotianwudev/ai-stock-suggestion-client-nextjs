@@ -748,7 +748,7 @@ export default function OptionsWheelTradingPlan() {
 
                     {/* Footer */}
                     <footer className="text-center py-8 text-gray-500 text-sm border-t border-gray-200 mt-16">
-                        <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                        <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                         <div className="mt-4 space-y-2">
                             <p className="font-medium text-red-600">Risk Disclaimer</p>
                             <p>

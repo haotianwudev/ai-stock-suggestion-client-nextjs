@@ -239,7 +239,7 @@ export default function CoveredCallsVsCashSecuredPutsPage() {
                     </div>
 
                 <footer className="text-center mt-16 text-gray-600">
-                    <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                    <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                 </footer>
             </main>
         </div>

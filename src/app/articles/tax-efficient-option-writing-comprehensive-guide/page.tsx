@@ -333,7 +333,7 @@ export default function TaxEfficientOptionWritingPage() {
                 
                 {/* Footer */}
                 <footer className="text-center py-8 mt-12 border-t border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-500 dark:text-gray-400">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                    <p className="text-gray-500 dark:text-gray-400">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
                 </footer>
             </div>
         </>

@@ -517,7 +517,7 @@ export default function TransformerStockPredictionAnalysis() {
 
             <footer className="text-center mt-12 text-gray-500 text-sm">
                 <p>This is a visual summary of the provided research document. All findings are based on the cited studies.</p>
-                <p className="mt-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                <p className="mt-2">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             </footer>
           </div>
         </div>

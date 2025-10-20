@@ -359,7 +359,7 @@ export default function FixedIncomeReportPage() {
 
         {/* --- Footer --- */}
         <footer className="border-t border-gray-200 text-center py-8">
-          <p className="text-gray-500 text-sm">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+          <p className="text-gray-500 text-sm">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           <p className="text-gray-500 text-xs mt-2 max-w-2xl mx-auto">
             This content is for informational purposes only and does not constitute financial, investment, or tax advice. 
             Projections are based on publicly available market research and are subject to change. 

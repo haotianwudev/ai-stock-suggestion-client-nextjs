@@ -539,7 +539,7 @@ export default function OptionsTraderToolkitRequirements() {
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <p className="text-lg font-semibold mb-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="text-lg font-semibold mb-2">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="text-gray-400">
               Building the future of retail trading through education, analysis, and strategic thinking.
             </p>

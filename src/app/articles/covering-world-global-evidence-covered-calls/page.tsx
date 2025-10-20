@@ -243,7 +243,7 @@ export default function CoveredCallSummaryPage() {
 
           <footer className="text-center mt-10 py-4 border-t border-slate-200">
             <p className="text-sm text-slate-500">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
             <p className="text-sm text-slate-500 mt-1">
               Summary based on the research paper "Covering the world: global evidence on covered calls" by Israelov, Klein, and Tummala.

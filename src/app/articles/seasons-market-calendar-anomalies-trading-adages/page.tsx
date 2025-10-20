@@ -442,7 +442,7 @@ export default function SeasonsOfTheMarket() {
         
         <footer className="bg-slate-900 text-center py-6">
           <p className="text-sm text-slate-500">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
           </p>
         </footer>
       </div>

@@ -605,7 +605,7 @@ export default function Russell2000Page() {
         <footer className="bg-gray-800 dark:bg-black">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <p className="text-center text-base text-gray-400">
-              &copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              &copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
             <p className="text-center text-xs text-gray-500 mt-2">
               Last Updated: October 4, 2025, 8:27 AM EDT

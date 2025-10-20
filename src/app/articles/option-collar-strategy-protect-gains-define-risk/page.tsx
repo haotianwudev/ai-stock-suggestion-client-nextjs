@@ -512,7 +512,7 @@ export default function OptionCollarStrategyPage() {
         <footer className="border-t border-slate-200 mt-20 md:mt-32">
           <div className="container mx-auto px-6 py-8 text-center text-slate-500">
             <p>This information is for educational purposes only and does not constitute financial advice. Options trading involves significant risk and is not suitable for all investors.</p>
-            <p className="text-sm mt-2">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="text-sm mt-2">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>

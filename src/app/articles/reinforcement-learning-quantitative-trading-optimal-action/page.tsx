@@ -417,7 +417,7 @@ export default function ReinforcementLearningArticle() {
         {/* Footer */}
         <footer className="bg-slate-100 border-t border-slate-200">
           <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-slate-500">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="mt-2 text-sm">
               This analysis is for educational purposes only and does not constitute investment advice. 
               Trading involves substantial risk and may not be suitable for all investors.

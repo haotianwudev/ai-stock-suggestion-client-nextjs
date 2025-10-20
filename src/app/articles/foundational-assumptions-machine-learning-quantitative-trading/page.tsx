@@ -373,7 +373,7 @@ export default function FoundationalAssumptionsMLQuantTrading() {
           {/* Footer */}
           <footer className="mt-12 pt-8 border-t border-slate-200 text-center">
             <p className="text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </footer>
         </article>

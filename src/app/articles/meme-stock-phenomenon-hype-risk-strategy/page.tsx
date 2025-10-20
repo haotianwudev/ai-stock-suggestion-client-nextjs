@@ -299,7 +299,7 @@ export default function MemeStockPhenomenon() {
               Disclaimer: This information is for educational purposes only and not financial advice. Trading meme stocks is extremely risky and can result in the complete loss of your capital. Consult with a qualified financial professional before making any investment decisions.
             </p>
             <p className="text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </footer>
         </main>

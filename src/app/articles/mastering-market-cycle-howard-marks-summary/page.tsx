@@ -290,7 +290,7 @@ export default function MarketCycleSummaryPage() {
             </a>
             <div className="mt-8 pt-8 border-t border-slate-700">
               <p className="text-slate-400 text-sm">
-                © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
               </p>
             </div>
           </div>

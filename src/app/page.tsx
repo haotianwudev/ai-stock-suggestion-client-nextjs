@@ -161,7 +161,7 @@ export default function Home() {
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/about">
                     <Users className="mr-2 h-4 w-4" />
-                    Meet SOPHIE's Daddy
+                    Meet SOPHIE Daddy
                   </Link>
                 </Button>
               </div>

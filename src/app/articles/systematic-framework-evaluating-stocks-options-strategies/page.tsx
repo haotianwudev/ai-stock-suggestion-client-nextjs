@@ -183,7 +183,7 @@ export default function SystematicFrameworkOptionsStrategies() {
         {/* Footer */}
         <footer className="text-center mt-16 pt-8 border-t-2 border-gray-200">
           <p className="text-gray-500">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
           </p>
         </footer>
       </div>

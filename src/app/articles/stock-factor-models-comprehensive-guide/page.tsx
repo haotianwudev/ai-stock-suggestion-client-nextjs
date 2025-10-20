@@ -166,7 +166,7 @@ export default function StockFactorModelsGuide() {
 
             {/* Footer */}
             <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
-              <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+              <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             </footer>
           </div>
         </main>

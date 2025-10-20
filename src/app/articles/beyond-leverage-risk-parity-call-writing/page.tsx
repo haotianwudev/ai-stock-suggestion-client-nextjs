@@ -486,7 +486,7 @@ const Footer = () => (
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center mb-4 md:mb-0">
           <Scaling className="h-6 w-6 text-blue-600" />
-          <p className="ml-2 text-gray-600">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+          <p className="ml-2 text-gray-600">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
         </div>
         <div className="text-gray-500 text-sm">
           <p>A comprehensive analysis based on academic research in risk parity and options strategies.</p>

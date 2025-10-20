@@ -381,7 +381,7 @@ export default function Page() {
 
         <footer className="text-center p-6 mt-8 border-t border-slate-200 dark:border-slate-800">
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            &copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+            &copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
           </p>
         </footer>
       </div>

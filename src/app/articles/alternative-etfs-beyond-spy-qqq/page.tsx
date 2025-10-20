@@ -787,7 +787,7 @@ export default function AlternativeETFsPage() {
               and metrics are subject to change and market conditions.
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-500">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </div>

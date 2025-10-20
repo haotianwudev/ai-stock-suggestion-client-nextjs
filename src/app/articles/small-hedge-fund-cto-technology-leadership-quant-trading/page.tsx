@@ -201,7 +201,7 @@ export default function Page() {
 							</div>
 
 							<footer className="mt-24 text-center text-gray-500 text-sm">
-								<p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+								<p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
 							</footer>
                         </div>
                 </main>
@@ -209,5 +209,6 @@ export default function Page() {
 		</>
 	);
 }
+
 
 

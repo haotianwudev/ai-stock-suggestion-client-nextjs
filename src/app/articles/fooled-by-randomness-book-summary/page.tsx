@@ -264,7 +264,7 @@ export default function FooledByRandomnessBookSummary() {
         <footer className="bg-gray-900 text-white py-8">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <p className="text-gray-400">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+              © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

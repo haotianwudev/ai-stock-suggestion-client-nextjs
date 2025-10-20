@@ -379,7 +379,7 @@ export default function FigmaIPOAnalysis() {
           {/* Footer */}
           <footer className="text-center mt-12 text-xs text-gray-400 dark:text-gray-500">
             <p>Disclaimer: This is a simulated analysis for illustrative purposes only and does not constitute financial advice. Data is sourced from public filings and news reports surrounding the Figma IPO in July/August 2025. All investments carry risk.</p>
-            <p className="mt-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="mt-2">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </footer>
         </main>
       </div>

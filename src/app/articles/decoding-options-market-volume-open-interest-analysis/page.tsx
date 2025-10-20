@@ -309,7 +309,7 @@ export default function OptionsAnalysisPage() {
                 This analysis provides a framework for understanding options market data. Always perform your own due diligence and consider multiple factors before making any trading decisions.
               </p>
               <p className="text-sm text-gray-500 mt-4">
-                © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+                © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
               </p>
             </footer>
           </article>

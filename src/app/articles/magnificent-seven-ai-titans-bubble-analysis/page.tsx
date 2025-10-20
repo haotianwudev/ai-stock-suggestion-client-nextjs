@@ -350,7 +350,7 @@ export default function MagnificentSevenAnalysis() {
 
         <footer className="text-center py-8 mt-12 border-t border-gray-200">
           <p className="text-sm text-gray-500">Financial data is illustrative for Q2 2025 and for informational purposes only. S&P 500 weights are approximate.</p>
-          <p className="text-sm text-gray-500 mt-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+          <p className="text-sm text-gray-500 mt-2">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
         </footer>
       </div>
     </>

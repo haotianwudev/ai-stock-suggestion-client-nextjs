@@ -374,7 +374,7 @@ export default function InsidersEdgeComprehensiveAnalysis() {
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
           <div className="container mx-auto px-6 text-center">
-            <p className="text-lg mb-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p className="text-lg mb-4">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="text-gray-400">
               The information provided on this website is for educational purposes only and should not be considered financial or investment advice.
             </p>

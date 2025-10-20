@@ -454,7 +454,7 @@ const Footer = () => (
         <span className="ml-3 text-xl">Portfolio Systems Inc.</span>
       </a>
       <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-        © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+        © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
       </p>
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
         {/* Social media links can go here */}

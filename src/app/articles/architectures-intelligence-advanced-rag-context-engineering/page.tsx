@@ -323,7 +323,7 @@ export default function ArchitecturesOfIntelligence() {
 
           {/* Footer */}
           <footer className="mt-16 text-center text-gray-500 text-sm border-t border-gray-200 pt-8">
-            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </footer>
         </main>
       </div>

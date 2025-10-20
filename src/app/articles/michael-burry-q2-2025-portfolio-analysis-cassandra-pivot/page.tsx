@@ -552,7 +552,7 @@ export default function BurryAnalysis() {
 
         <footer className="bg-gray-200 border-t border-gray-300">
           <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="mt-1">Data sourced from Scion Asset Management's Q2 2025 13F filing. This is not financial advice.</p>
           </div>
         </footer>

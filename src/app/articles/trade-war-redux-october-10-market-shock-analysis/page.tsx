@@ -413,7 +413,7 @@ export default function TradeWarReduxAnalysis() {
         {/* Footer */}
         <footer className="bg-white border-t border-gray-200 py-8 mt-16">
           <div className="max-w-4xl mx-auto px-4 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="mt-2">
               This analysis examines the October 10, 2025 market shock within the broader context of U.S.-China trade relations.
             </p>

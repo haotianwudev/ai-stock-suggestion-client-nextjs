@@ -387,7 +387,7 @@ export default function OllamaCheatSheetArticle() {
           </main>
           
           <footer className="text-center mt-12 text-gray-500 print-footer">
-            <p>Created for easy reference. For more details, check the official Ollama documentation. &copy; 2025 SOPHIE's Daddy Quant Blog (sophie-ai-finance.com). Educational content for informational purposes only.</p>
+            <p>Created for easy reference. For more details, check the official Ollama documentation. &copy; 2025 SOPHIE Daddyuant Blog (sophie-ai-finance.com). Educational content for informational purposes only.</p>
           </footer>
         </div>
       </div>

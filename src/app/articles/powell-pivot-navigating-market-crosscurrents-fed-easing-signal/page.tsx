@@ -527,7 +527,7 @@ export default function PowellPivotArticle() {
         {/* Footer */}
         <footer className="bg-white border-t border-gray-200 py-8">
           <div className="container mx-auto px-4 text-center text-gray-500">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
             <p className="text-sm mt-2">
               This content is for informational purposes only and does not constitute financial advice.
             </p>

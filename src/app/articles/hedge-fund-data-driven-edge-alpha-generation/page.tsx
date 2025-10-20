@@ -470,7 +470,7 @@ export default function HedgeFundDataPage() {
 
         <footer className="bg-white dark:bg-slate-900/70 border-t border-slate-200 dark:border-slate-800 mt-12 py-6">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 dark:text-slate-400">
-            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
 

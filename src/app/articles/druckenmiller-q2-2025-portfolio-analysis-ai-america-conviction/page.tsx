@@ -524,7 +524,7 @@ const HoldingsDeepDive = () => {
 const Footer = () => (
   <footer className="bg-slate-100 border-t border-slate-200">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-slate-500">
-      <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+      <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
       <p className="text-xs mt-2">This is not investment advice. For informational purposes only.</p>
     </div>
   </footer>

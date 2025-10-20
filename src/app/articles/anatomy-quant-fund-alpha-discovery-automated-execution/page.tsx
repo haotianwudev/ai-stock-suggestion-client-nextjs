@@ -400,7 +400,7 @@ const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentTy
 const Footer = () => (
   <footer className="border-t border-gray-200 mt-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
-      <p className="text-sm">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+      <p className="text-sm">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
       <p className="text-xs mt-2">A conceptual interface for understanding the systematic hedge fund workflow. Not financial advice.</p>
     </div>
   </footer>

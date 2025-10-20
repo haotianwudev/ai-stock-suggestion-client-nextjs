@@ -98,7 +98,7 @@ export function StockAnalysisSummary({
     return "neutral";
   };
 
-  // Get background color for SOPHIE's comment bubble
+  // Get background color for SOPHIE comment bubble
   const getCommentBubbleStyle = (signal: string) => {
     switch (signal.toLowerCase()) {
       case 'bullish':
@@ -192,7 +192,7 @@ export function StockAnalysisSummary({
           </div>
         ) : (
           <div className="space-y-4 sm:space-y-6">
-            {/* SOPHIE's Commentary */}
+            {/* SOPHIE Commentary */}
             <div className={`relative rounded-lg border p-3 sm:p-4 ${commentStyle.background} ${commentStyle.border}`}>
               <div className="absolute -top-2 -left-2">
                 <div className={`rounded-full p-1 shadow-sm ${commentStyle.background} ${commentStyle.border}`}>

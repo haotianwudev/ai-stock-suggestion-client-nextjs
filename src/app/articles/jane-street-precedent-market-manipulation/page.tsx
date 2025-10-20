@@ -298,7 +298,7 @@ export default function JaneStreetPrecedentArticle() {
 
           {/* Footer */}
           <footer className="text-center py-8 text-gray-500 mt-8">
-            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
           </footer>
         </div>
       </div>
