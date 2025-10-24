@@ -17,13 +17,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    title: "A Quantitative Analyst's Guide to Volatility Forecasting",
-    description: "From GARCH to Deep Learning in Algorithmic Trading. A comprehensive deep research analysis exploring the evolution from econometric foundations to machine learning frontiers in volatility forecasting, examining deployment strategies, fundamental assumptions, and the challenges of extreme events in quantitative trading.",
-    slug: "quantitative-analyst-guide-volatility-forecasting",
+    title: "Assumptions of Machine Learning in Quantitative Trading",
+    description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
+    slug: "foundational-assumptions-machine-learning-quantitative-trading",
     date: "November 1, 2025",
-    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/06/Volatility-Clustering-1.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRpFDZmT3ajgqPdW9nBkPpkyd-sRz2p9NtHYam2Na4CmC6WHteqCvB0UJoKH1eSpvmZWioTlHrLDoQU/pub",
-    deepResearch: true
+    imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
   },
   {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
@@ -56,14 +57,13 @@ export const articles: Article[] = [
     options: true
   },
   {
-    title: "Assumptions of Machine Learning in Quantitative Trading",
-    description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
-    slug: "foundational-assumptions-machine-learning-quantitative-trading",
+    title: "A Quantitative Analyst's Guide to Volatility Forecasting",
+    description: "From GARCH to Deep Learning in Algorithmic Trading. A comprehensive deep research analysis exploring the evolution from econometric foundations to machine learning frontiers in volatility forecasting, examining deployment strategies, fundamental assumptions, and the challenges of extreme events in quantitative trading.",
+    slug: "quantitative-analyst-guide-volatility-forecasting",
     date: "October 24, 2025",
-    imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
-    deepResearch: true,
-    podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/06/Volatility-Clustering-1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRpFDZmT3ajgqPdW9nBkPpkyd-sRz2p9NtHYam2Na4CmC6WHteqCvB0UJoKH1eSpvmZWioTlHrLDoQU/pub",
+    deepResearch: true
   },
   {
     title: "The Insider's Edge: Signal from Insider Trading",
