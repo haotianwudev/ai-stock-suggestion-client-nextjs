@@ -15,26 +15,36 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [
+export const articles: Article[] = [  
   {
-    title: "Assumptions of Machine Learning in Quantitative Trading",
-    description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
-    slug: "foundational-assumptions-machine-learning-quantitative-trading",
-    date: "November 1, 2025",
-    imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
+    title: "The Architect's Guide to a Secure Retirement",
+    description: "A comprehensive data-driven framework for building and sustaining financial independence. From quantifying retirement targets using scientific calculations to mastering accumulation strategies, decumulation blueprints, and navigating financial headwinds with professional guidance.",
+    slug: "retirement-architect-guide-secure-retirement",
+    date: "November 2, 2025",
+    imageUrl: "https://1finance.co.in/magazine/wp-content/uploads/2023/07/miniature-model-senior-couple-standing-retirement-plan-report-scaled.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTSS7BoJthbapAwuz8BpFOwPKX0f1kcpPTj_o9xOuyW9I7lL3tZaVl_O6q0eBj6S1CKYM4aXihFraw/pub",
     deepResearch: true,
-    podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
+    podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw"
   },
   {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
-    date: "October 30, 2025",
+    date: "November 1, 2025",
     imageUrl: "https://blog.oihelper.com/wp-content/uploads/2025/05/oi-meaning-oihelper.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPVO8a1EpsE5aZcZLqLf2V8kABWtqnZfPCLuPclso4_uYCwca8wMn33AGgVmq2nGFrbws-eii0JMF3/pub",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "Assumptions of Machine Learning in Quantitative Trading",
+    description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
+    slug: "foundational-assumptions-machine-learning-quantitative-trading",
+    date: "October 30, 2025",
+    imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
   },
   {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
