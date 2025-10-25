@@ -60,7 +60,7 @@ export const articles: Article[] = [
     title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
     description: "Master the institutional-grade framework for generating consistent income through vertical credit spreads. From theoretical foundations to practical implementation, this deep research guide covers strike selection, risk management, and advanced trade management techniques.",
     slug: "vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling",
-    date: "October 26, 2025",
+    date: "October 25, 2025",
     imageUrl: "https://cdn.prod.website-files.com/5d5e9565cfc85e43ba725a38/67be020ba846a6a43a890440_Bull%20Call%20Spread%20and%20.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTX5OTxEBDIL3oWyOJ_VY1iw1SLrcJl8tVvWxuAfaoVqUo467i0yGoX66RqXDO1En1gBGO38px-ZIWo/pub",
     deepResearch: true,
