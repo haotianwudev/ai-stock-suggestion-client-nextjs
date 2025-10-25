@@ -57,6 +57,15 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ"
   },
   {
+    title: "Vertical Credit Spreads: The Defined-Risk Strategy for Selling Options Premium",
+    description: "This comprehensive analysis deconstructs the Vertical Credit Spread strategy, the cornerstone of modern options trading used for generating income with defined risk. Learn the fundamental architecture of the two main variants: the Bull Put Spread and the Bear Call Spread.",
+    slug: "vertical-spread",
+    date: "October 26, 2025",
+    youtubeUrl: "https://youtu.be/g5e-nZERjLE",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/g5e-nZERjLE/maxresdefault.jpg"
+  },
+  {
     title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
     description: "Master the institutional-grade framework for generating consistent income through vertical credit spreads. From theoretical foundations to practical implementation, this deep research guide covers strike selection, risk management, and advanced trade management techniques.",
     slug: "vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling",
@@ -67,6 +76,15 @@ export const articles: Article[] = [
     options: true
   },
   {
+    title: "The Quant's Guide to Volatility: From GARCH to Deep Learning LSTMs & Volatility Arbitrage",
+    description: "Volatility is a critical, latent construct that must be modeled and forecasted for robust quantitative strategies. This guide explores the evolution of financial volatility prediction for algorithmic trading.",
+    slug: "predict-volatility",
+    date: "October 25, 2025",
+    youtubeUrl: "https://youtu.be/zLKCTVTfvo4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/zLKCTVTfvo4/maxresdefault.jpg"
+  },
+  {
     title: "A Quantitative Analyst's Guide to Volatility Forecasting",
     description: "From GARCH to Deep Learning in Algorithmic Trading. A comprehensive deep research analysis exploring the evolution from econometric foundations to machine learning frontiers in volatility forecasting, examining deployment strategies, fundamental assumptions, and the challenges of extreme events in quantitative trading.",
     slug: "quantitative-analyst-guide-volatility-forecasting",
@@ -74,6 +92,15 @@ export const articles: Article[] = [
     imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/06/Volatility-Clustering-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRpFDZmT3ajgqPdW9nBkPpkyd-sRz2p9NtHYam2Na4CmC6WHteqCvB0UJoKH1eSpvmZWioTlHrLDoQU/pub",
     deepResearch: true
+  },
+  {
+    title: "The Insider's Edge: Decoding Form 4 Filings and the Secrets of Insider Trading",
+    description: "Uncover the powerful signals hidden in corporate financial disclosures. This video dissects the world of insider trading, clarifying the critical line between legal, transparent activity and illegal securities fraud.",
+    slug: "insider-trading",
+    date: "October 23, 2025",
+    youtubeUrl: "https://youtu.be/RpaZZsz5J5U",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/RpaZZsz5J5U/maxresdefault.jpg"
   },
   {
     title: "The Insider's Edge: Signal from Insider Trading",
