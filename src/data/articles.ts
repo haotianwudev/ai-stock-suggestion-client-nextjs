@@ -15,7 +15,17 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [  
+export const articles: Article[] = [
+  {
+    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
+    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
+    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
+    date: "November 3, 2025",
+    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
+    deepResearch: true,
+    options: true
+  },
   {
     title: "The Architect's Guide to a Secure Retirement",
     description: "A comprehensive data-driven framework for building and sustaining financial independence. From quantifying retirement targets using scientific calculations to mastering accumulation strategies, decumulation blueprints, and navigating financial headwinds with professional guidance.",
