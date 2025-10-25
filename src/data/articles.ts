@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "A Quantitative Analysis of Insurance Products for Retirement Security",
+    description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
+    slug: "quantitative-analysis-insurance-products-retirement-security",
+    date: "November 4, 2025",
+    imageUrl: "https://www.reliancenipponlife.com/media/3472/banner_08.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub",
+    deepResearch: true
+  },
+  {
     title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
     description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
     slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
