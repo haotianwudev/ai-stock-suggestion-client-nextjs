@@ -36,16 +36,6 @@ export const articles: Article[] = [
     options: true
   },
   {
-    title: "The Architect's Guide to a Secure Retirement",
-    description: "A comprehensive data-driven framework for building and sustaining financial independence. From quantifying retirement targets using scientific calculations to mastering accumulation strategies, decumulation blueprints, and navigating financial headwinds with professional guidance.",
-    slug: "retirement-architect-guide-secure-retirement",
-    date: "November 2, 2025",
-    imageUrl: "https://1finance.co.in/magazine/wp-content/uploads/2023/07/miniature-model-senior-couple-standing-retirement-plan-report-scaled.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTSS7BoJthbapAwuz8BpFOwPKX0f1kcpPTj_o9xOuyW9I7lL3tZaVl_O6q0eBj6S1CKYM4aXihFraw/pub",
-    deepResearch: true,
-    podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw"
-  },
-  {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
@@ -59,7 +49,7 @@ export const articles: Article[] = [
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
     slug: "foundational-assumptions-machine-learning-quantitative-trading",
-    date: "October 30, 2025",
+    date: "October 31, 2025",
     imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/machineLearning3.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub",
     deepResearch: true,
@@ -69,11 +59,21 @@ export const articles: Article[] = [
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
     description: "An in-depth analysis of the indicators, strategies, and academic research behind trading the opening bell. Learn how to decode pre-market signals, understand market gaps, and develop systematic frameworks for opening trades.",
     slug: "quantitative-approach-predicting-market-direction-premarket-data",
-    date: "October 28, 2025",
+    date: "October 29, 2025",
     imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/06/does-pre-market-determine-opening-price.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPeY1kvLzoeDaRR_X9fVjrY6LWj20hRuQJ6GVmnZVT8jxfATLeE-V1sr2ixhnJIZUJTsTTV_yXwHLL/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ"
+  },
+  {
+    title: "The Architect's Guide to a Secure Retirement",
+    description: "A comprehensive data-driven framework for building and sustaining financial independence. From quantifying retirement targets using scientific calculations to mastering accumulation strategies, decumulation blueprints, and navigating financial headwinds with professional guidance.",
+    slug: "retirement-architect-guide-secure-retirement",
+    date: "October 27, 2025",
+    imageUrl: "https://1finance.co.in/magazine/wp-content/uploads/2023/07/miniature-model-senior-couple-standing-retirement-plan-report-scaled.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTSS7BoJthbapAwuz8BpFOwPKX0f1kcpPTj_o9xOuyW9I7lL3tZaVl_O6q0eBj6S1CKYM4aXihFraw/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw"
   },
   {
     title: "Vertical Credit Spreads: The Defined-Risk Strategy for Selling Options Premium",
