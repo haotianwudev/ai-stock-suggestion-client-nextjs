@@ -17,6 +17,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
+    description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
+    slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
+    date: "November 7, 2025",
+    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
+    deepResearch: true,
+  },
+  {
     title: "The All Weather Strategy in a New Economic Climate",
     description: "An in-depth analysis of Ray Dalio's All Weather strategy, examining its resilience, relevance, and application for modern investors. Explores the four seasons framework, risk parity principles, historical performance, and strategic adaptations for today's inflationary environment.",
     slug: "all-weather-strategy-new-economic-climate",
