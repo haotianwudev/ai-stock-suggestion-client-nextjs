@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The All Weather Strategy in a New Economic Climate",
+    description: "An in-depth analysis of Ray Dalio's All Weather strategy, examining its resilience, relevance, and application for modern investors. Explores the four seasons framework, risk parity principles, historical performance, and strategic adaptations for today's inflationary environment.",
+    slug: "all-weather-strategy-new-economic-climate",
+    date: "November 5, 2025",
+    imageUrl: "https://mixprize.org/wp-content/uploads/2022/12/Ray-Dalios-All-Weather-Portfolio-1.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub",
+    deepResearch: true
+  },
+  {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
     description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
     slug: "quantitative-analysis-insurance-products-retirement-security",
