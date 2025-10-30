@@ -17,6 +17,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
+    description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
+    slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
+    date: "November 8, 2025",
+    imageUrl: "https://napkinfinance.com/wp-content/uploads/2020/12/NapkinFinance-TaxLossHarvesting-Napkin-10-05-20-v04.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
+  },
+  {
     title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
     description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
     slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
