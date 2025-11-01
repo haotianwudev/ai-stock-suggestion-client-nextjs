@@ -16,11 +16,12 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+
   {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
     description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
     slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
-    date: "November 8, 2025",
+    date: "November 13, 2025",
     imageUrl: "https://napkinfinance.com/wp-content/uploads/2020/12/NapkinFinance-TaxLossHarvesting-Napkin-10-05-20-v04.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
@@ -30,15 +31,25 @@ export const articles: Article[] = [
     title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
     description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
     slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
-    date: "November 7, 2025",
+    date: "November 11, 2025",
     imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
     deepResearch: true,
+  },  
+  {
+    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
+    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
+    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
+    date: "November 9, 2025",
+    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
+    deepResearch: true,
+    options: true
   },
   {
     title: "The All Weather Strategy in a New Economic Climate",
     description: "An in-depth analysis of Ray Dalio's All Weather strategy, examining its resilience, relevance, and application for modern investors. Explores the four seasons framework, risk parity principles, historical performance, and strategic adaptations for today's inflationary environment.",
     slug: "all-weather-strategy-new-economic-climate",
-    date: "November 5, 2025",
+    date: "November 7, 2025",
     imageUrl: "https://mixprize.org/wp-content/uploads/2022/12/Ray-Dalios-All-Weather-Portfolio-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub",
     deepResearch: true
@@ -47,20 +58,19 @@ export const articles: Article[] = [
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
     description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
     slug: "quantitative-analysis-insurance-products-retirement-security",
-    date: "November 4, 2025",
+    date: "November 5, 2025",
     imageUrl: "https://www.reliancenipponlife.com/media/3472/banner_08.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub",
     deepResearch: true
-  },
+  },  
   {
-    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
-    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
-    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
+    title: "High Altitude: Deconstructing the U.S. Stock Market Valuation",
+    description: "An in-depth analysis of U.S. equity valuations and the macroeconomic forces at play in late 2025. Examining elevated market metrics, Fed policy impacts, and the delicate equilibrium between supportive forces and significant risks.",
+    slug: "high-altitude-deconstructing-us-stock-market-valuation",
     date: "November 3, 2025",
-    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
-    deepResearch: true,
-    options: true
+    imageUrl: "https://www.brookings.edu/wp-content/uploads/2023/10/shutterstock_2207441063.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjopKgYRYinwE5rUu8W0BtQY9j_wT3aWkn6pP6q2NgZIHtSNcSHmFnp9iSFB4ng1rLfh-osGKVbYx5/pub",
+    deepResearch: true
   },
   {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
