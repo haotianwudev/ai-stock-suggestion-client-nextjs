@@ -73,6 +73,15 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "Options Trading Mastery: Decoding Volume & Open Interest (OI)",
+    description: "Volume (the market's pulse) and Open Interest (OI) (the market's population and capital commitment) are the most fundamental metrics for sophisticated options analysis. This video dives deep into their mechanics, explaining how they are related yet measure fundamentally different aspects of market dynamics.",
+    slug: "volume-oi",
+    date: "November 2, 2025",
+    youtubeUrl: "https://youtu.be/DOhaPf3eJXM",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/DOhaPf3eJXM/maxresdefault.jpg"
+  },
+  {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
@@ -81,6 +90,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPVO8a1EpsE5aZcZLqLf2V8kABWtqnZfPCLuPclso4_uYCwca8wMn33AGgVmq2nGFrbws-eii0JMF3/pub",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "The Quant Trap: Why 99% of Machine Learning Fail in Financial Trading",
+    description: "This report dissects why foundational ML assumptions (stationarity, I.I.D.) are fundamentally violated in quantitative finance due to stylized facts like volatility clustering and heavy tails.",
+    slug: "ml-assumption",
+    date: "October 31, 2025",
+    youtubeUrl: "https://youtu.be/pR821HLbl3c",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/pR821HLbl3c/maxresdefault.jpg"
   },
   {
     title: "Assumptions of Machine Learning in Quantitative Trading",
@@ -93,6 +111,15 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q"
   },
   {
+    title: "PRE-MARKET PREDICTION: How to Predict the Opening Gap Direction (Gap & Go vs. Fade)",
+    description: "Learn the expert framework for predicting the 9:30 a.m. market open by decoding crucial pre-market signals. The pre-market environment is defined by low liquidity and high volatility, making price signals challenging to interpret.",
+    slug: "pre-market-prediction",
+    date: "October 30, 2025",
+    youtubeUrl: "https://youtu.be/5WuCFfwFCd4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/5WuCFfwFCd4/maxresdefault.jpg"
+  },
+  {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
     description: "An in-depth analysis of the indicators, strategies, and academic research behind trading the opening bell. Learn how to decode pre-market signals, understand market gaps, and develop systematic frameworks for opening trades.",
     slug: "quantitative-approach-predicting-market-direction-premarket-data",
@@ -101,6 +128,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPeY1kvLzoeDaRR_X9fVjrY6LWj20hRuQJ6GVmnZVT8jxfATLeE-V1sr2ixhnJIZUJTsTTV_yXwHLL/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ"
+  },
+  {
+    title: "The Ultimate Retirement Blueprint: Master the IRA, The Bucket Strategy, & Social Security",
+    description: "Unlock the data-driven framework for building and sustaining financial independence. This video moves beyond simple heuristics to provide a scientific calculation for your retirement target, detailing the interconnected mechanics and limitations of the 25x, 4%, and 80% rules.",
+    slug: "retirement-plan",
+    date: "October 28, 2025",
+    youtubeUrl: "https://youtu.be/dZ5THqfE9ys",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/dZ5THqfE9ys/maxresdefault.jpg"
   },
   {
     title: "The Architect's Guide to a Secure Retirement",
