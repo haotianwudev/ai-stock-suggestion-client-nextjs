@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, Clock, Zap, DollarSign, AlertTriangle, BookOpen, Target, Shield } from 'lucide-react';
+import { ArrowLeft, TrendingUp, TrendingDown, Clock, Zap, DollarSign, AlertTriangle, BookOpen, Target, Shield, ExternalLink, FileText } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
@@ -334,7 +334,7 @@ export default function OptionGreeksArticle() {
         </div>
 
         {/* Grid container for the cards */}
-        <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <main className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
           {greeksData.map(greek => (
             <GreekCard key={greek.name} greek={greek} />
           ))}
@@ -399,6 +399,67 @@ export default function OptionGreeksArticle() {
                   Past performance does not guarantee future results. Always consult with a qualified 
                   financial advisor and understand the risks before trading options.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Deep Research Section */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-8 border border-purple-200">
+            <div className="flex items-start space-x-4">
+              <FileText className="w-8 h-8 text-purple-600 mt-1 flex-shrink-0" />
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                  Deep Research Analysis
+                  <span className="ml-3 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                    Comprehensive Study
+                  </span>
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  This comprehensive analysis draws from extensive research in options pricing theory, 
+                  behavioral finance, and quantitative trading strategies. The poetic approach to explaining 
+                  the Greeks makes complex mathematical concepts accessible while maintaining technical accuracy.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div className="bg-white rounded-lg p-4 border border-purple-100">
+                    <h3 className="font-semibold text-gray-900 mb-2">Research Methodology</h3>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Black-Scholes-Merton model analysis</li>
+                      <li>• Historical volatility studies</li>
+                      <li>• Market maker behavior patterns</li>
+                      <li>• Risk management frameworks</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-purple-100">
+                    <h3 className="font-semibold text-gray-900 mb-2">Practical Applications</h3>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Portfolio hedging strategies</li>
+                      <li>• Volatility trading techniques</li>
+                      <li>• Risk-adjusted position sizing</li>
+                      <li>• Multi-leg strategy construction</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {currentArticle?.googleDoc && (
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href={currentArticle.googleDoc}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Read Full Research Document
+                    </a>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      <span>Comprehensive analysis with detailed mathematical foundations and trading examples</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
