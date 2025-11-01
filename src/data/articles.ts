@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The Liquid Alternative Investment Guide: Beyond Traditional Stocks and Bonds",
+    description: "A comprehensive deep research analysis of liquid alternative investments including REITs, commodities, private markets via BDCs, and collectibles. Explores the diversification dilemma, performance comparisons, and strategic recommendations for incorporating alternatives into modern portfolios while avoiding common pitfalls.",
+    slug: "liquid-alternative-investment-guide-beyond-traditional-stocks-bonds",
+    date: "November 16, 2025",
+    imageUrl: "https://stratwealth.com/wp-content/uploads/2022/07/Alternatives-1900x1267.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSJ0pQR8oQpxN00XTYgknHfQIPMNHZpkQy3tXvuPu6dPm6_rJT4SLUidFexSX1K5Y6IIuWdz4uCodsF/pub",
+    deepResearch: true
+  },
+  {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
     description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
     slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
