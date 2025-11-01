@@ -47,9 +47,19 @@ export const articles: Article[] = [
     title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
     description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
     slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
-    date: "November 9, 2025",
+    date: "November 10, 2025",
     imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
+    title: "The Option Greeks: A Trader's Poetic Guide to Risk",
+    description: "A comprehensive deep research analysis of the five Option Greeks through poetry and practical application. Master Delta, Gamma, Theta, Vega, and Rho with intuitive explanations, trading strategies, and interactive visualizations that transform complex derivatives concepts into actionable trading knowledge.",
+    slug: "option-greeks-traders-poetic-guide-risk",
+    date: "November 9, 2025",
+    imageUrl: "https://s3.tradingview.com/q/q112iFtv_big.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub",
     deepResearch: true,
     options: true
   },
