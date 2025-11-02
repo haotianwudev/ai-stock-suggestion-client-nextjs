@@ -51,6 +51,7 @@ export const articles: Article[] = [
     date: "November 11, 2025",
     imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
     deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKESW7Dq4mBlsW4DdLHuIHbKVkWzGfnSOziCYzajJmpoHakKj8xNYckX1Fwmf93Bl7xZseew5GlQUk/pub",
   },  
   {
     title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",

@@ -564,6 +564,41 @@ export default function HighAltitudeMarketAnalysis() {
           </div>
         </main>
 
+        {/* Deep Research Section */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-6" id="section-deep-research">Deep Research: Academic Foundations & Market Microstructure</h2>
+          
+          <div className="bg-purple-50 border-l-4 border-purple-500 p-6 my-8 rounded-r-lg shadow-sm">
+            <h4 className="font-bold text-purple-800 text-xl mb-4 flex items-center">
+              <svg className="w-6 h-6 mr-3 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Deep Research Paper: U.S. Stock Market Valuation Analysis
+            </h4>
+            <p className="text-lg text-purple-900 mb-4">
+              Academic research findings and theoretical models that underpin U.S. equity market valuation, providing institutional-grade insights into macroeconomic drivers, valuation frameworks, and the complex equilibrium between monetary policy, corporate fundamentals, and market pricing.
+            </p>
+            {currentArticle?.googleDoc && (
+              <a 
+                href={currentArticle.googleDoc}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105"
+              >
+                <FileText className="mr-2 h-5 w-5" />
+                Access Deep Research Document
+              </a>
+            )}
+          </div>
+          
+          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8 rounded-r-lg">
+            <h4 className="font-bold text-yellow-800 text-lg mb-3">Research Disclaimer</h4>
+            <p className="text-yellow-900">
+              The academic research presented here is for educational purposes and represents ongoing areas of study. Market conditions, regulations, and trading technologies continue to evolve, potentially affecting the applicability of historical research findings.
+            </p>
+          </div>
+        </section>
+
         {/* --- Footer --- */}
         <footer className="bg-white border-t border-gray-200 mt-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
