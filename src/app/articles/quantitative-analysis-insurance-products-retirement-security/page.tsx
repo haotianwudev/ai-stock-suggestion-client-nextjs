@@ -541,6 +541,24 @@ export default function InsuranceProductsAnalysis() {
             </p>
           </Section>
 
+          {/* Deep Research Google Doc Link */}
+          {currentArticle?.googleDoc && (
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-xl my-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Your Deep Research</h3>
+              <p className="text-gray-600 mb-6">
+                Access the comprehensive research document with detailed analysis, additional data, and extended methodology.
+              </p>
+              <a 
+                href={currentArticle.googleDoc}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-purple-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105"
+              >
+                📄 Access Full Research Document
+              </a>
+            </div>
+          )}
+
           {/* --- Footer --- */}
           <footer className="mt-12 pt-8 border-t border-gray-200 text-center">
             <p className="text-sm text-gray-500">
