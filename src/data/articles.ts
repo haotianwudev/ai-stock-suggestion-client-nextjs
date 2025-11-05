@@ -16,6 +16,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  
   {
     title: "The Liquid Alternative Investment Guide: Beyond Traditional Stocks and Bonds",
     description: "A comprehensive deep research analysis of liquid alternative investments including REITs, commodities, private markets via BDCs, and collectibles. Explores the diversification dilemma, performance comparisons, and strategic recommendations for incorporating alternatives into modern portfolios while avoiding common pitfalls.",
@@ -83,10 +84,19 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot",
+    description: "A comprehensive deep research analysis of Scion Asset Management's strategic shift from bullish tech positions to a concentrated $1.1B short against AI leaders Nvidia and Palantir. Explores the 'circular financing' thesis, anti-bubble portfolio construction, and market implications of Burry's most concentrated bet since the 2008 housing crisis.",
+    slug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
+    date: "November 5, 2025",
+    imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/498541178/image_498541178.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfWqGZtTngKfDSSWb10w6DNozn1VdkYEB8McxhmEfYzvNmJQm-_ZQsGZxot5KzvhTgVWwXH-JX7sO2/pub",
+    deepResearch: true
+  },
+  {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
     description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
     slug: "quantitative-analysis-insurance-products-retirement-security",
-    date: "November 5, 2025",
+    date: "November 4, 2025",
     imageUrl: "https://www.reliancenipponlife.com/media/3472/banner_08.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub",
     deepResearch: true
