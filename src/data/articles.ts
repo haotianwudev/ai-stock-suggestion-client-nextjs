@@ -16,7 +16,6 @@ export interface Article {
 }
 
 export const articles: Article[] = [
-  
   {
     title: "The Liquid Alternative Investment Guide: Beyond Traditional Stocks and Bonds",
     description: "A comprehensive deep research analysis of liquid alternative investments including REITs, commodities, private markets via BDCs, and collectibles. Explores the diversification dilemma, performance comparisons, and strategic recommendations for incorporating alternatives into modern portfolios while avoiding common pitfalls.",
@@ -65,10 +64,19 @@ export const articles: Article[] = [
     options: true
   },
   {
+    title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
+    description: "A comprehensive deep research analysis of Tesla's fundamental disconnect between its auto business and AI/robotics valuation. Explores the strategic moats, existential threats from Chinese EVs, the stalled AI execution, and the binary investment thesis that makes TSLA a high-risk moonshot rather than an auto manufacturer.",
+    slug: "tesla-tsla-fundamental-dashboard-ai-binary-bet",
+    date: "November 9, 2025",
+    imageUrl: "https://web-cdn.markets.com/tesla_tsla_stock_price_003_1dcb4a1a07.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRZ4JaDN8SMc9WcOeCBvK_nP69iZotqfB0ZjAod9Rr0YCSk6ksZ-vXF7XQ_r9UDJOdYvmK-BjN2Zs2p/pub",
+    deepResearch: true
+  },
+  {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
     description: "A comprehensive deep research analysis of the five Option Greeks through poetry and practical application. Master Delta, Gamma, Theta, Vega, and Rho with intuitive explanations, trading strategies, and interactive visualizations that transform complex derivatives concepts into actionable trading knowledge.",
     slug: "option-greeks-traders-poetic-guide-risk",
-    date: "November 9, 2025",
+    date: "November 7, 2025",
     imageUrl: "https://s3.tradingview.com/q/q112iFtv_big.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub",
     deepResearch: true,
@@ -78,7 +86,7 @@ export const articles: Article[] = [
     title: "The All Weather Strategy in a New Economic Climate",
     description: "An in-depth analysis of Ray Dalio's All Weather strategy, examining its resilience, relevance, and application for modern investors. Explores the four seasons framework, risk parity principles, historical performance, and strategic adaptations for today's inflationary environment.",
     slug: "all-weather-strategy-new-economic-climate",
-    date: "November 7, 2025",
+    date: "November 6, 2025",
     imageUrl: "https://mixprize.org/wp-content/uploads/2022/12/Ray-Dalios-All-Weather-Portfolio-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub",
     deepResearch: true
