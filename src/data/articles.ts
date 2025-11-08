@@ -17,52 +17,62 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
+    description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
+    slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
+    date: "November 29, 2025",
+    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKESW7Dq4mBlsW4DdLHuIHbKVkWzGfnSOziCYzajJmpoHakKj8xNYckX1Fwmf93Bl7xZseew5GlQUk/pub",
+  },
+  {
+    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
+    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
+    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
+    date: "November 25, 2025",
+    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
+    deepResearch: true,
+    options: true
+  },
+  {
     title: "The Liquid Alternative Investment Guide: Beyond Traditional Stocks and Bonds",
     description: "A comprehensive deep research analysis of liquid alternative investments including REITs, commodities, private markets via BDCs, and collectibles. Explores the diversification dilemma, performance comparisons, and strategic recommendations for incorporating alternatives into modern portfolios while avoiding common pitfalls.",
     slug: "liquid-alternative-investment-guide-beyond-traditional-stocks-bonds",
-    date: "November 16, 2025",
+    date: "November 19, 2025",
     imageUrl: "https://stratwealth.com/wp-content/uploads/2022/07/Alternatives-1900x1267.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSJ0pQR8oQpxN00XTYgknHfQIPMNHZpkQy3tXvuPu6dPm6_rJT4SLUidFexSX1K5Y6IIuWdz4uCodsF/pub",
     deepResearch: true
-  },
-  {
-    title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
-    description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
-    slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
-    date: "November 15, 2025",
-    imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1426182282/image_1426182282.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPuWvOuMwO7xi43iRaR_lOYjXFHr3QDhVpt2jxNyyE2CRf97THUUkINfR6BLwGA3tveFPI3U2BR79U/pub",
-    deepResearch: true
-  },
+  },  
   {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
     description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
     slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
-    date: "November 13, 2025",
+    date: "November 17, 2025",
     imageUrl: "https://napkinfinance.com/wp-content/uploads/2020/12/NapkinFinance-TaxLossHarvesting-Napkin-10-05-20-v04.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
   },
   {
-    title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
-    description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
-    slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
-    date: "November 11, 2025",
-    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
+    title: "Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection",
+    description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
+    slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
+    date: "November 15, 2025",
+    imageUrl: "https://www.optionsplaybook.com/media/images/plays/short_straddle.png",
     deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKESW7Dq4mBlsW4DdLHuIHbKVkWzGfnSOziCYzajJmpoHakKj8xNYckX1Fwmf93Bl7xZseew5GlQUk/pub",
-  },  
-  {
-    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
-    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
-    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
-    date: "November 10, 2025",
-    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
-    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
     options: true
   },
+  {
+    title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
+    description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
+    slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
+    date: "November 11, 2025",
+    imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1426182282/image_1426182282.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPuWvOuMwO7xi43iRaR_lOYjXFHr3QDhVpt2jxNyyE2CRf97THUUkINfR6BLwGA3tveFPI3U2BR79U/pub",
+    deepResearch: true
+  },  
   {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
     description: "A comprehensive deep research analysis of Tesla's fundamental disconnect between its auto business and AI/robotics valuation. Explores the strategic moats, existential threats from Chinese EVs, the stalled AI execution, and the binary investment thesis that makes TSLA a high-risk moonshot rather than an auto manufacturer.",
