@@ -59,10 +59,19 @@ export const articles: Article[] = [
     description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
     slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
     date: "November 15, 2025",
-    imageUrl: "https://www.optionsplaybook.com/media/images/plays/short_straddle.png",
+    imageUrl: "https://ewotrader.com/wp-content/uploads/2025/06/img-straddle-v-strangle.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
     options: true
+  },
+  {
+    title: "Signal in the Noise: A Comprehensive Analysis of Filtering Techniques in Quantitative Trading",
+    description: "A deep dive into the mathematical and computational techniques used in quantitative finance to extract durable, predictive patterns from chaotic market data. Explores moving averages, Kalman filters, Butterworth filters, HP filters, and their synergy with machine learning for robust alpha generation.",
+    slug: "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
+    date: "November 13, 2025",
+    imageUrl: "https://kalmanfilter.net/img/OneD/Update.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub",
   },
   {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
