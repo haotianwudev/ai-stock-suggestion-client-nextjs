@@ -73,6 +73,15 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "Option Greeks' Poem: Mastering Delta, Gamma, Theta, Vega for Professional Risk Management",
+    description: "This expert guide explains Option Greeks—Delta (Δ), Gamma (Γ), Theta (θ), Vega (ν), and Rho (ρ)—which function as an indispensable dashboard for understanding option price sensitivity and managing risk. Learn the core principle and intuitive poem for each.",
+    slug: "option-greeks-poem",
+    date: "November 8, 2025",
+    youtubeUrl: "https://youtu.be/ZLUeCSLgw3Y",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/ZLUeCSLgw3Y/maxresdefault.jpg"
+  },
+  {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
     description: "A comprehensive deep research analysis of the five Option Greeks through poetry and practical application. Master Delta, Gamma, Theta, Vega, and Rho with intuitive explanations, trading strategies, and interactive visualizations that transform complex derivatives concepts into actionable trading knowledge.",
     slug: "option-greeks-traders-poetic-guide-risk",
@@ -81,6 +90,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub",
     deepResearch: true,
     options: true
+  },
+  {
+    title: "Ray Dalio's All Weather Strategy: Is risk parity still a holy grail or failed already today?",
+    description: "The All Weather strategy, developed by Ray Dalio and Bridgewater Associates, is a foundational shift in portfolio construction, moving away from prediction toward structural resilience. Its core is built on intellectual humility and the Risk Parity approach, ensuring no single economic environment or asset class dominates the portfolio's overall volatility. ",
+    slug: "all-weather-strategy",
+    date: "November 6, 2025",
+    youtubeUrl: "https://youtu.be/NCVI6IDwz2c",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/NCVI6IDwz2c/maxresdefault.jpg"
   },
   {
     title: "The All Weather Strategy in a New Economic Climate",
@@ -92,6 +110,15 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "Michael Burry's AI Short Shock the market: Circular Financing Against Nvidia & Palantir(Q3 2025 13F)",
+    description: "Q3 2025 portfolio shift executed by Michael Burry’s Scion Asset Management, totaling $1.38 billion in reported assets. This shift involved the complete liquidation of all bullish call options from the prior quarter and the establishment of a concentrated, two-part strategy.",
+    slug: "mike-burry-q32025",
+    date: "November 5, 2025",
+    youtubeUrl: "https://youtu.be/UAS_tTCbWD4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/UAS_tTCbWD4/maxresdefault.jpg"
+  },
+  {
     title: "The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot",
     description: "A comprehensive deep research analysis of Scion Asset Management's strategic shift from bullish tech positions to a concentrated $1.1B short against AI leaders Nvidia and Palantir. Explores the 'circular financing' thesis, anti-bubble portfolio construction, and market implications of Burry's most concentrated bet since the 2008 housing crisis.",
     slug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
@@ -101,6 +128,15 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "The Retirement Insurance: Are Annuities & LTC Worth the Cost?",
+    description: "Drawing on a quantitative analysis of retirement insurance products, this video breaks down the financial trade-offs of annuities, long-term care (LTC) insurance, and permanent life insurance (LIRP). These products are fundamentally tools for risk mitigation, not pure investments.",
+    slug: "retirement-insurance",
+    date: "November 4, 2025",
+    youtubeUrl: "https://youtu.be/W22VVkVoxEY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/W22VVkVoxEY/maxresdefault.jpg"
+  },
+  {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
     description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
     slug: "quantitative-analysis-insurance-products-retirement-security",
@@ -108,7 +144,16 @@ export const articles: Article[] = [
     imageUrl: "https://www.reliancenipponlife.com/media/3472/banner_08.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub",
     deepResearch: true
-  },  
+  },
+  {
+    title: "STOCKS AT ALL-TIME HIGHS: Why High Valuations Are Justified (But Precarious) in Late 2025",
+    description: "The U.S. stock market, with the S&P 500 near 6,900, is trading at historically elevated levels based on metrics like the CAPE ratio and the Buffett Indicator. This report deconstructs how this high altitude is supported by a unique macroeconomic confluence.",
+    slug: "market-pillars",
+    date: "November 3, 2025",
+    youtubeUrl: "https://youtu.be/UMgH4GiusZA",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/UMgH4GiusZA/maxresdefault.jpg"
+  },
   {
     title: "High Altitude: Deconstructing the U.S. Stock Market Valuation",
     description: "An in-depth analysis of U.S. equity valuations and the macroeconomic forces at play in late 2025. Examining elevated market metrics, Fed policy impacts, and the delicate equilibrium between supportive forces and significant risks.",
