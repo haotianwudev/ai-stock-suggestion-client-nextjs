@@ -8,7 +8,7 @@ const FILTER_CONFIG = {
   all: { label: 'All Articles', icon: '📚' },
   deepResearch: { label: 'Deep Research', icon: '🔍', property: 'deepResearch' },
   options: { label: 'Options Trading', icon: '📈', property: 'options' },
-  video: { label: 'Video Content', icon: '🎥', property: 'isVideo' },
+  video: { label: 'Youtube Video', icon: '🎥', property: 'isVideo' },
   // Easy to add new labels here:
   // ai: { label: 'AI Content', icon: '🤖', property: 'ai' },
   // crypto: { label: 'Crypto', icon: '₿', property: 'crypto' },

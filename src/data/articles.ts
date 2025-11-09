@@ -98,7 +98,8 @@ export const articles: Article[] = [
     date: "November 8, 2025",
     youtubeUrl: "https://youtu.be/ZLUeCSLgw3Y",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/ZLUeCSLgw3Y/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/ZLUeCSLgw3Y/maxresdefault.jpg",
+    options: true
   },
   {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
@@ -189,7 +190,8 @@ export const articles: Article[] = [
     date: "November 2, 2025",
     youtubeUrl: "https://youtu.be/DOhaPf3eJXM",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/DOhaPf3eJXM/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/DOhaPf3eJXM/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
@@ -265,7 +267,8 @@ export const articles: Article[] = [
     date: "October 26, 2025",
     youtubeUrl: "https://youtu.be/g5e-nZERjLE",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/g5e-nZERjLE/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/g5e-nZERjLE/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
@@ -413,7 +416,8 @@ export const articles: Article[] = [
     date: "October 13, 2025",
     youtubeUrl: "https://youtu.be/UTPVKLS87zg",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/UTPVKLS87zg/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/UTPVKLS87zg/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Options Strategy to beat Black Swan and Grey Rhino",
@@ -515,7 +519,8 @@ export const articles: Article[] = [
     date: "October 5, 2025",
     youtubeUrl: "https://youtu.be/MVc-dVWEc4w",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/MVc-dVWEc4w/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/MVc-dVWEc4w/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Strategic Portfolio Management via Option Writing",
@@ -590,7 +595,8 @@ export const articles: Article[] = [
     date: "September 29, 2025",
     youtubeUrl: "https://youtu.be/IvWGgDNQoUk",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/IvWGgDNQoUk/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/IvWGgDNQoUk/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading",
@@ -677,7 +683,8 @@ export const articles: Article[] = [
     date: "September 21, 2025",
     youtubeUrl: "https://youtu.be/AuBIzqvQdEw",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/AuBIzqvQdEw/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/AuBIzqvQdEw/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Option Collar Strategy: Protect Gains, Define Risk",
@@ -752,7 +759,8 @@ export const articles: Article[] = [
     date: "September 14, 2025",
     youtubeUrl: "https://youtu.be/q5FSpOKtcFM",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/q5FSpOKtcFM/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/q5FSpOKtcFM/maxresdefault.jpg",
+    options: true
   },
   {
     title: "Defensive and Offensive Rolling on Short Options",
@@ -891,7 +899,8 @@ export const articles: Article[] = [
     date: "August 30, 2025",
     youtubeUrl: "https://youtu.be/fKpmR9DxYpk",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/fKpmR9DxYpk/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/fKpmR9DxYpk/maxresdefault.jpg",
+    options: true
   },
   {
     title: "An Institutional Analysis of Long-Horizon Trend Regression",

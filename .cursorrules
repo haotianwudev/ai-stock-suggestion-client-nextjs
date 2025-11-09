@@ -17,7 +17,7 @@ interface Article {
   imageUrl?: string;     // Optional: Unsplash URLs
   googleDoc?: string;    // Optional: Source research
   deepResearch?: boolean; // Optional: Comprehensive analysis
-  youtubeUrl?: string;   // Optional: Video content
+  youtubeUrl?: string;   // Optional: Youtube Video
   isVideo?: boolean;     // Optional: Video flag
   options?: boolean;     // Optional: Options trading
   pinned?: boolean;      // Optional: Pin to top
@@ -80,7 +80,7 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 ### 6. Flags Usage
 - `deepResearch: true` for comprehensive analysis
 - `options: true` for options trading content  
-- `isVideo: true` for video content
+- `isVideo: true` for Youtube Video
 - `bookSummary: true` for book summaries
 - `pinned: true` for featured articles
 - `podcastUrl: "spotify-url"` for podcast episodes
@@ -88,7 +88,7 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 ### 7. Content Categories
 - **Deep Research**: Comprehensive analysis with multiple sections, interactive elements
 - **Options Trading**: Put/call strategies, Greeks, volatility analysis
-- **Video Content**: YouTube integration with embedded players
+- **Youtube Video**: YouTube integration with embedded players
 - **Podcast Content**: Spotify podcast integration with dedicated buttons
 - **Stock Analysis**: Company-specific DCF models, valuation analysis
 - **Book Summaries**: Interactive summaries of trading/investment books
