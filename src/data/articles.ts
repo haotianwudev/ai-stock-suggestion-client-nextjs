@@ -17,6 +17,17 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
+    description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
+    slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
+    date: "December 1, 2025",
+    imageUrl: "https://marketreview.com/wp-content/uploads/2019/11/writing-options.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
+    podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
+    options: true
+  },
+  {
     title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
     description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
     slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
