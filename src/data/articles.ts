@@ -85,6 +85,16 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub",
   },
   {
+    title: "The ETFs That CRUSH QQQ & VOO Returns. Are they Better Choices?",
+    description: "This video provides an institutional analysis of high-growth Exchange-Traded Funds (ETFs) that have historically delivered superior long-term returns compared to benchmarks like the Invesco QQQ Trust (QQQ) and S&P 500 trackers (VOO/SPY). ",
+    slug: "etf-other-than-qqq",
+    date: "November 12, 2025",
+    youtubeUrl: "https://youtu.be/WTQIQb1TLns",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/WTQIQb1TLns/maxresdefault.jpg",
+    options: true
+  },
+  {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
     description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
     slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
@@ -94,6 +104,16 @@ export const articles: Article[] = [
     deepResearch: true
   },
   {
+    title: "Warren Buffett's Final Letter: Good Bye Buffett! Is Birkshire a Good Buy?",
+    description: "Warren Buffett, 95, has formally transitioned out of his CEO role, releasing his final shareholder communication on November 10, 2025.",
+    slug: "warren-buffett-goodbuy",
+    date: "November 11, 2025",
+    youtubeUrl: "https://youtu.be/ptZstN8sTVQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/ptZstN8sTVQ/maxresdefault.jpg",
+    options: true
+  }, 
+  {
     title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
     description: "A comprehensive deep research analysis of Warren Buffett's 'goodbye letter,' the succession plan with Greg Abel as CEO, and Berkshire's $382B fortress balance sheet. Explores the triumvirate leadership structure, the insurance float model, and the investment thesis for the post-Buffett era.",
     slug: "buffett-legacy-berkshire-succession",
@@ -101,6 +121,16 @@ export const articles: Article[] = [
     imageUrl: "https://www.reinsurancene.ws/wp-content/uploads/2022/04/berkshire-hathway-warren-buffett.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub"
+  },
+  {
+    title: "Tesla's $8.5 Trillion AI Gamble: Why the 319x P/E Ratio Ignores the Auto Crisis",
+    description: "This quantitative report analyzes Tesla, Inc. (TSLA) following Q3 2025, revealing a severe disconnect between its fundamentals and its equity valuation. ",
+    slug: "tesla-plan",
+    date: "November 10, 2025",
+    youtubeUrl: "https://youtu.be/TcGcYSa-aSQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/TcGcYSa-aSQ/maxresdefault.jpg",
+    options: true
   },  
   {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
