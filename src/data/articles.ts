@@ -15,7 +15,7 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [
+export const articles: Article[] = [  
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
@@ -88,10 +88,19 @@ export const articles: Article[] = [
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
     description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
     slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
-    date: "November 11, 2025",
+    date: "November 12 2025",
     imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1426182282/image_1426182282.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPuWvOuMwO7xi43iRaR_lOYjXFHr3QDhVpt2jxNyyE2CRf97THUUkINfR6BLwGA3tveFPI3U2BR79U/pub",
     deepResearch: true
+  },
+  {
+    title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
+    description: "A comprehensive deep research analysis of Warren Buffett's 'goodbye letter,' the succession plan with Greg Abel as CEO, and Berkshire's $382B fortress balance sheet. Explores the triumvirate leadership structure, the insurance float model, and the investment thesis for the post-Buffett era.",
+    slug: "buffett-legacy-berkshire-succession",
+    date: "November 11, 2025",
+    imageUrl: "https://www.reinsurancene.ws/wp-content/uploads/2022/04/berkshire-hathway-warren-buffett.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub"
   },  
   {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
