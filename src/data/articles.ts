@@ -66,6 +66,16 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
   },
   {
+    title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
+    description: "A deep dive into Stanley Druckenmiller's Q3 2025 portfolio reveals a masterclass in aggressive rotation, high-conviction concentration, and macro insights influenced by a unique 'Duquesne-Treasury Corridor.' Explore the 63% turnover, massive healthcare bet, and the strategic implications of the Bessent connection.",
+    slug: "druckenmiller-q3-2025-rotation-conviction-bessent-edge",
+    date: "November 16, 2025",
+    imageUrl: "https://247wallst.com/wp-content/uploads/2021/07/imageForEntry11-B5Z.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrrx_N8DTUy7YUnat4IZ18LBBO1m0YJy0vZp6Dgv1dn9_QnOWBDjVrTYRQGX4Jt71XLAFyhJL5xbjA/pub",
+    podcastUrl: "https://open.spotify.com/episode/415h1tKoMHcPUHbdkNYxWW?si=LE96YtzTQkOVFl4Cv_tKag"
+  },
+  {
     title: "Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection",
     description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
     slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
