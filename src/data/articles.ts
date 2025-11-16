@@ -15,7 +15,8 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [  
+export const articles: Article[] = [
+    
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
@@ -26,6 +27,16 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
     podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
     options: true
+  },
+  {
+    title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
+    description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
+    slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
+    date: "November 30, 2025",
+    imageUrl: "https://napkinfinance.com/wp-content/uploads/2020/12/NapkinFinance-TaxLossHarvesting-Napkin-10-05-20-v04.jpg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
   },
   {
     title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
@@ -56,14 +67,13 @@ export const articles: Article[] = [
     deepResearch: true
   },  
   {
-    title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
-    description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
-    slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
-    date: "November 17, 2025",
-    imageUrl: "https://napkinfinance.com/wp-content/uploads/2020/12/NapkinFinance-TaxLossHarvesting-Napkin-10-05-20-v04.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
+    title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
+    description: "An exhaustive analysis of David Tepper's investment philosophy, legendary trades, and Q3 2025 portfolio moves. From his $7 billion 2009 crisis trade to his latest contrarian bets on Whirlpool and American Airlines, explore the four pillars of the Appaloosa doctrine and actionable lessons for investors.",
+    slug: "david-tepper-contrarian-master-q3-2025-portfolio",
+    date: "November 18, 2025",
+    imageUrl: "https://247wallst.com/wp-content/uploads/2021/07/imageForEntry20-aEz.jpg",
     deepResearch: true,
-    podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub"
   },
   {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
