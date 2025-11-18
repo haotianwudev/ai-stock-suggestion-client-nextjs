@@ -16,7 +16,16 @@ export interface Article {
 }
 
 export const articles: Article[] = [
-    
+  {
+    title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
+    description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
+    slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
+    date: "December 2, 2025",
+    imageUrl: "https://menthorq.com/wp-content/uploads/2025/09/VRP-for-SPX-1024x644.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
+    options: true
+  },    
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
