@@ -39,34 +39,6 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
   },
   {
-    title: "The QQQ Dossier: A Comprehensive Analysis of the Invesco QQQ Trust for the Modern Investor",
-    description: "An exhaustive deep-dive analysis examining QQQ's structure, performance, risks, and strategic alternatives. This comprehensive report reveals why QQQ's historical outperformance comes with significant hidden costs and behavioral traps for long-term investors.",
-    slug: "qqq-dossier-comprehensive-analysis-invesco-trust-modern-investor",
-    date: "November 29, 2025",
-    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/03/What-holding-does-the-QQQ-have.jpg",
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKESW7Dq4mBlsW4DdLHuIHbKVkWzGfnSOziCYzajJmpoHakKj8xNYckX1Fwmf93Bl7xZseew5GlQUk/pub",
-  },
-  {
-    title: "Capital Efficiency in a Roth IRA: A Strategic Analysis of Options, LEAPS, and Leverage",
-    description: "A comprehensive deep research analysis exploring the regulatory framework, strategic implementation, and risk management of capital-efficient strategies within Roth IRAs. From LEAPS stock replacement to defined-risk spreads, learn how to maximize growth potential while navigating IRS restrictions and brokerage limitations.",
-    slug: "capital-efficiency-roth-ira-strategic-analysis-options-leaps-leverage",
-    date: "November 25, 2025",
-    imageUrl: "https://www.strike.money/wp-content/uploads/2024/12/Why-LEAPs-Are-the-Best-Long-Term-Options-Strategy.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRmeQRXI5HIwsnlsCrCjIXoJfOoL8NIH-dMthOQkWwJY_3FKF9W-icM3mop5ZJESjts2gH_sLU0jTUj/pub",
-    deepResearch: true,
-    options: true
-  },
-  {
-    title: "The Liquid Alternative Investment Guide: Beyond Traditional Stocks and Bonds",
-    description: "A comprehensive deep research analysis of liquid alternative investments including REITs, commodities, private markets via BDCs, and collectibles. Explores the diversification dilemma, performance comparisons, and strategic recommendations for incorporating alternatives into modern portfolios while avoiding common pitfalls.",
-    slug: "liquid-alternative-investment-guide-beyond-traditional-stocks-bonds",
-    date: "November 19, 2025",
-    imageUrl: "https://stratwealth.com/wp-content/uploads/2022/07/Alternatives-1900x1267.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSJ0pQR8oQpxN00XTYgknHfQIPMNHZpkQy3tXvuPu6dPm6_rJT4SLUidFexSX1K5Y6IIuWdz4uCodsF/pub",
-    deepResearch: true
-  },  
-  {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
     description: "An exhaustive analysis of David Tepper's investment philosophy, legendary trades, and Q3 2025 portfolio moves. From his $7 billion 2009 crisis trade to his latest contrarian bets on Whirlpool and American Airlines, explore the four pillars of the Appaloosa doctrine and actionable lessons for investors.",
     slug: "david-tepper-contrarian-master-q3-2025-portfolio",
