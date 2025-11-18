@@ -65,7 +65,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/pGO7nYdHCT0",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/pGO7nYdHCT0/maxresdefault.jpg",
-    options: true
   },
   {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
@@ -83,7 +82,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/rXKGJGI4hvQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/rXKGJGI4hvQ/maxresdefault.jpg",
-    options: true
   },
   {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
@@ -121,7 +119,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/xtwugnNA6Ac",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/xtwugnNA6Ac/maxresdefault.jpg",
-    options: true
   },
   {
     title: "Signal in the Noise: A Comprehensive Analysis of Filtering Techniques in Quantitative Trading",
@@ -140,7 +137,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/WTQIQb1TLns",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/WTQIQb1TLns/maxresdefault.jpg",
-    options: true
   },
   {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
@@ -159,7 +155,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/ptZstN8sTVQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/ptZstN8sTVQ/maxresdefault.jpg",
-    options: true
   }, 
   {
     title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
@@ -178,7 +173,6 @@ export const articles: Article[] = [
     youtubeUrl: "https://youtu.be/TcGcYSa-aSQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/TcGcYSa-aSQ/maxresdefault.jpg",
-    options: true
   },  
   {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
