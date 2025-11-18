@@ -16,16 +16,8 @@ export interface Article {
 }
 
 export const articles: Article[] = [
-  {
-    title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
-    description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
-    slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
-    date: "December 2, 2025",
-    imageUrl: "https://menthorq.com/wp-content/uploads/2025/09/VRP-for-SPX-1024x644.png",
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
-    options: true
-  },    
+  
+   
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
@@ -46,6 +38,25 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
+  },
+  {
+    title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
+    description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
+    slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
+    date: "November 22, 2025",
+    imageUrl: "https://menthorq.com/wp-content/uploads/2025/09/VRP-for-SPX-1024x644.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
+    options: true
+  },   
+  {
+    title: "The Evolution of Deep Learning in Quantitative Trading: From MLPs to Transformers",
+    description: "A comprehensive technical survey charting the evolution from traditional econometric models to sophisticated deep neural networks in quantitative finance. Explores MLPs, LSTMs, CNNs, Autoencoders, Deep Reinforcement Learning, GNNs, and Transformers—analyzing their unique properties, applications in trading, and critical limitations in high-noise, non-stationary financial markets.",
+    slug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
+    date: "November 20, 2025",
+    imageUrl: "https://www.luxalgo.com/blog/content/images/2025/06/image-9-1.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub"
   },
   {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
