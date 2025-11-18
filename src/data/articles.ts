@@ -1,7 +1,7 @@
 export interface Article {
   title: string;
   description: string;
-  slug: string;
+  slug?: string;
   date: string;
   imageUrl?: string;
   googleDoc?: string;
@@ -59,6 +59,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub"
   },
   {
+    title: "David Tepper’s Barbell:  Q3 2025 Portfolio Dissection",
+    description: "Dive deep into David Tepper’s Q3 2025 portfolio moves, which reveal a perfect, modern synthesis of his contrarian career. Appaloosa Management deployed capital into a unique $7.38 billion barbell strategy, balancing high-growth technology bets with classic distressed bottom-fishing plays.",
+    date: "November 19, 2025",
+    youtubeUrl: "https://youtu.be/pGO7nYdHCT0",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/pGO7nYdHCT0/maxresdefault.jpg",
+    options: true
+  },
+  {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
     description: "An exhaustive analysis of David Tepper's investment philosophy, legendary trades, and Q3 2025 portfolio moves. From his $7 billion 2009 crisis trade to his latest contrarian bets on Whirlpool and American Airlines, explore the four pillars of the Appaloosa doctrine and actionable lessons for investors.",
     slug: "david-tepper-contrarian-master-q3-2025-portfolio",
@@ -66,6 +75,15 @@ export const articles: Article[] = [
     imageUrl: "https://247wallst.com/wp-content/uploads/2021/07/imageForEntry20-aEz.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub"
+  },
+  {
+    title: "Druckenmiller's Q32025 13F Major Shift: The Bessent Edge, AI Rotation, & 30% Healthcare Bet",
+    description: "Stanley Druckenmiller’s Duquesne Family Office Q3 2025 13F filing (for the period ending September 30, 2025) reveals a portfolio in aggressive transition, executing a classic, high-conviction investment philosophy. The portfolio saw an exceptionally high turnover rate of 63.27%.",
+    date: "November 17, 2025",
+    youtubeUrl: "https://youtu.be/rXKGJGI4hvQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/rXKGJGI4hvQ/maxresdefault.jpg",
+    options: true
   },
   {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
@@ -78,6 +96,15 @@ export const articles: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/415h1tKoMHcPUHbdkNYxWW?si=LE96YtzTQkOVFl4Cv_tKag"
   },
   {
+    title: "Profit from Time Decay & IV Crush: Mastering Short Straddles and Strangles",
+    description: "This comprehensive guide dissects the short straddle and short strangle, sophisticated options strategies designed to profit from the statistical tendency of implied volatility (IV) to consistently exceed realized volatility (RV)—a phenomenon known as the Volatility Risk Premium (VRP). ",
+    date: "November 16, 2025",
+    youtubeUrl: "https://youtu.be/AtRXXgVRtlk",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/AtRXXgVRtlk/maxresdefault.jpg",
+    options: true
+  },
+  {
     title: "Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection",
     description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
     slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
@@ -85,6 +112,15 @@ export const articles: Article[] = [
     imageUrl: "https://ewotrader.com/wp-content/uploads/2025/06/img-straddle-v-strangle.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
+    options: true
+  },
+  {
+    title: "Signal in the Noise: Quantitative Trading Filtering Techniques Explained",
+    description: "This video provides a comprehensive analysis of filtering techniques essential for quantitative trading, focusing on the fundamental challenge of separating meaningful information from random, irrelevant data in notoriously low signal-to-noise ratio (SNR) financial markets. ",
+    date: "November 14, 2025",
+    youtubeUrl: "https://youtu.be/xtwugnNA6Ac",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/xtwugnNA6Ac/maxresdefault.jpg",
     options: true
   },
   {
