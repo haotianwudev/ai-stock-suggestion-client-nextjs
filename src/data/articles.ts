@@ -16,8 +16,15 @@ export interface Article {
 }
 
 export const articles: Article[] = [
-  
-   
+  {
+    title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
+    description: "A comprehensive deep research analysis of WorldQuant's revolutionary 'Alpha Factory' system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.",
+    slug: "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
+    date: "December 2, 2025",
+    imageUrl: "https://si.wsj.net/public/resources/images/BF-AP653_WORLDQ_G_20170406061514.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfVUDR6-Tcq29BcC0ZoePDr5Q5ln5LFwY-o6Vj0aD3wGzjTyBPWOxGujq5sLSMSJ_ihykDy6QlwVuV/pub"
+  },
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
