@@ -17,6 +17,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
+    description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
+    slug: "comprehensive-guide-trusts-estate-planning",
+    date: "December 3, 2025",
+    imageUrl: "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1080,h_675/https://www.rachelbeohm.com/wp-content/uploads/2022/09/trust-u-yourself-1080x675.jpg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub"
+  },
+  {
     title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
     description: "A comprehensive deep research analysis of WorldQuant's revolutionary 'Alpha Factory' system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.",
     slug: "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
