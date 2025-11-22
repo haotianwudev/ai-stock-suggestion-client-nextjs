@@ -28,6 +28,7 @@ export default function AboutPage() {
     { name: "Render", rating: 4, comment: "Free server is a joke. 7 dollar server is OK." },
     { name: "CapCut", rating: 4, comment: "I use the AI subtitle, not that good" },
     { name: "QuantConnect", rating: 2, comment: "Server disconnect all the time" },
+    { name: "AWS Lambda", rating: 3, comment: "Not straightfoward enough to deploy" },
   ];
 
   const renderStars = (rating: number) => {
