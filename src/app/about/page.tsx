@@ -9,23 +9,24 @@ import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp } from "lucid
 
 export default function AboutPage() {
   const aiTools: Array<{name: string; rating: number; comment: string; link?: string}> = [
-    { name: "Deepseek", rating: 4, comment: "Free and handy. API is cheap." },
+    { name: "NotebookLM", rating: 5, comment: "Best AI tool ever!" },
     { name: "Gemini", rating: 5, comment: "Online search are fast." },
     { name: "Gemini Deep Research", rating: 5, comment: "Super long but fantastic reports" },
     { name: "Gems", rating: 3, comment: "Handy to have a context to LLM." },
+    { name: "Deepseek", rating: 4, comment: "Free and handy. API is cheap." },
     { name: "Obsidian", rating: 3, comment: "Too complicated..." },
     { name: "Chatwise", rating: 4, comment: "Local LLM client with MCP integrated." },
-    { name: "Cursor", rating: 5, comment: "Vibe coding~~" },
-    { name: "Ollama", rating: 5, comment: "Local LLM - Check out my cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
-    { name: "Cline", rating: 3, comment: "Experience not as good as cursor." },
+    { name: "Cursor", rating: 4, comment: "Expensive vibe coding~~" },
+    { name: "Kiro", rating: 4, comment: "Cheap vibe coding~~" },
+    { name: "Ollama", rating: 4, comment: "Local LLM - Check out my cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
+    { name: "Cline", rating: 2, comment: "Experience not as good as cursor." },
     { name: "Veo", rating: 3, comment: "I like the video made, but I do not know how to use it in finance topics." },
-    { name: "VideoScribe", rating: 2, comment: "Too expensive. AI are not that smart." },
-    { name: "NotebookLM", rating: 4, comment: "New way of learning." },
+    { name: "VideoScribe", rating: 3, comment: "Too expensive. AI is not that smart." },   
     { name: "Canvas", rating: 5, comment: "Knowledge -> Websites -> Knowledge" },
     { name: "Neon", rating: 5, comment: "Free PostgreSQL Database" },
-    { name: "Vercel", rating: 4, comment: "Free Next.js deployment. GraphQL server is having issue." },
+    { name: "Vercel", rating: 5, comment: "Free Next.js deployment. GraphQL server is having issue." },
     { name: "Render", rating: 4, comment: "Free server is a joke. 7 dollar server is OK." },
-    { name: "CapCut", rating: 4, comment: "I use the AI subtitle" },
+    { name: "CapCut", rating: 4, comment: "I use the AI subtitle, not that good" },
     { name: "QuantConnect", rating: 2, comment: "Server disconnect all the time" },
   ];
 
