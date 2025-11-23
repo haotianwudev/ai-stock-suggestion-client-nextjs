@@ -16,6 +16,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  
   {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
     description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
@@ -54,6 +55,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
+  },
+  {
+    title: "NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation",
+    description: "A comprehensive quantitative analysis of NVIDIA's Q3 FY26 earnings, exploring the 'pricing for perfection' phenomenon, Michael Burry's short thesis, the Blackwell supercycle, and strategic implications for retail investors navigating the AI semiconductor landscape.",
+    slug: "nvidia-deep-dive-crush-despite-beat-analyzing-valuation",
+    date: "November 23, 2025",
+    imageUrl: "https://i.imgur.com/bakZw7R.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub"
   },
   {
     title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
