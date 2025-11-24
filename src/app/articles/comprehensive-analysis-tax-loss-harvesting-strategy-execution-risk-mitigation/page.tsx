@@ -1,45 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Menu, X, BookOpen, Music } from 'lucide-react';
+import { ArrowLeft, CheckCircle, AlertTriangle, TrendingDown, Music, Search } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
-// Navigation Link Component
-const NavLink = ({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) => (
-  <a
-    href={href}
-    onClick={onClick}
-    className="block py-2.5 px-4 text-sm text-gray-300 hover:bg-slate-700 hover:text-white rounded-md transition-colors duration-150"
-  >
-    {children}
-  </a>
+// Tailwind utility class for content boxes
+const ContentBox = ({ title, children, icon: Icon, colorClass, borderClass = 'border-gray-200' }: { 
+  title: string; 
+  children: React.ReactNode; 
+  icon?: any; 
+  colorClass: string; 
+  borderClass?: string;
+}) => (
+  <div className={`p-6 bg-white rounded-xl shadow-lg border ${borderClass} mb-8`}>
+    <h3 className={`flex items-center text-xl font-bold mb-4 ${colorClass}`}>
+      {Icon && <Icon className="mr-3" />}
+      {title}
+    </h3>
+    <div className="text-lg text-gray-700 leading-relaxed space-y-4">
+      {children}
+    </div>
+  </div>
+);
+
+// Custom Bullet List component
+const BulletList = ({ children, color = 'rgb(4, 120, 87)' }: { children: React.ReactNode; color?: string }) => (
+  <ul className="list-none space-y-3 pl-0">
+    {React.Children.map(children, child => (
+      <li className="flex items-start text-gray-700">
+        <span 
+          className="h-2 w-2 rounded-full flex-shrink-0 mt-3 mr-3" 
+          style={{ backgroundColor: color }}
+        ></span>
+        <div className="flex-1">{child}</div>
+      </li>
+    ))}
+  </ul>
 );
 
 export default function TaxLossHarvestingArticle() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
   const currentArticle = articles.find(article => article.slug === 'comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation');
-
-  // Navigation items based on the document's main sections
-  const navItems = [
-    { id: "section-i", title: "I. The Strategic Imperative" },
-    { id: "section-ii", title: "II. Step-by-Step Execution" },
-    { id: "section-iii", title: "III. Navigating the Wash-Sale Rule" },
-    { id: "section-iv", title: "IV. The Art of Replacement" },
-    { id: "section-v", title: "V. Common Pitfalls" },
-    { id: "section-vi", title: "VI. Advanced Strategies" },
-    { id: "section-vii", title: "VII. Reporting and Compliance" },
-    { id: "section-viii", title: "VIII. Concluding Analysis" },
-  ];
-
-  // Close sidebar on mobile when a link is clicked
-  const handleNavLinkClick = () => {
-    if (isSidebarOpen) {
-      setIsSidebarOpen(false);
-    }
-  };
 
   return (
     <>
@@ -49,269 +51,247 @@ export default function TaxLossHarvestingArticle() {
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
             articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleSlug={currentArticle.slug || ''} 
           />
         </>
       )}
 
-      {/* Main background for the entire page */}
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-        {/* Header */}
-        <header className="fixed top-0 left-0 right-0 z-20 bg-slate-800 border-b border-slate-700 shadow-lg">
-          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo/Title */}
-              <div className="flex items-center space-x-3">
-                <BookOpen className="h-6 w-6 text-cyan-400" />
-                <span className="text-xl font-semibold text-white">Tax-Loss Harvesting</span>
-              </div>
+      <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
+        {/* Deep Research Badge */}
+        <div className="fixed top-4 left-4 z-50 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">
+          Deep Research
+        </div>
 
-              {/* Mobile Menu Button */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
-                  aria-label="Toggle navigation"
-                >
-                  {isSidebarOpen ? (
-                    <X className="h-6 w-6" />
-                  ) : (
-                    <Menu className="h-6 w-6" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </header>
+        {/* Podcast Badge */}
+        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">
+          Podcast
+        </div>
 
-        {/* Sidebar */}
-        <aside
-          className={`fixed top-0 left-0 z-10 w-64 h-full pt-16 bg-slate-800 border-r border-slate-700 transform ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 transition-transform duration-300 ease-in-out`}
-        >
-          <div className="h-full px-3 py-4 overflow-y-auto">
-            <nav className="space-y-1">
-              <h3 className="px-4 pt-2 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Sections
-              </h3>
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={handleNavLinkClick}
-                >
-                  {item.title}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        </aside>
-
-        {/* Mobile Overlay */}
-        {isSidebarOpen && (
-          <div
-            className="fixed inset-0 z-0 bg-black bg-opacity-50 md:hidden"
-            onClick={() => setIsSidebarOpen(false)}
-          ></div>
-        )}
-
-        {/* Main Content */}
-        <main className="pt-16 md:ml-64 bg-slate-50 min-h-screen">
-          {/* The article is now a "card" with a shadow, rounded corners, and padding */}
-          <article className="max-w-5xl mx-auto my-12 p-8 sm:p-12 bg-white rounded-xl shadow-2xl">
-            
-            {/* Return to Home Button */}
+        {/* --- Header --- */}
+        <header className="py-6 bg-white border-b border-gray-200 shadow-md">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4 mb-4">
               <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Return to Home
               </Link>
             </div>
-
-            {/* Badges */}
-            <div className="relative mb-8">
-              {/* Deep Research Badge - Top Left */}
-              <div className="absolute top-0 left-0 z-10">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-                  Deep Research
-                </span>
-              </div>
-              
-              {/* Podcast Badge - Top Right */}
-              <div className="absolute top-0 right-0 z-10">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
-                  Podcast
-                </span>
-              </div>
+            <div className="flex items-center space-x-4">
+              <TrendingDown className="h-8 w-8 text-blue-600" />
+              <h1 className="text-3xl font-extrabold text-gray-900">Tax-Loss Harvesting Strategies</h1>
             </div>
+          </div>
+        </header>
 
-            {/* Document Content Starts Here */}
-            <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-8 pb-4 border-b-2 border-indigo-500 mt-8">
-              A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation
-            </h1>
+        {/* --- Main Content Area --- */}
+        <main className="max-w-4xl mx-auto p-4 sm:p-8 lg:p-12">
+          {/* Hero Infographic Image */}
+          <section className="mb-12">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+              <img 
+                src="https://i.imgur.com/DeE8DHf.jpeg" 
+                alt="Tax-Loss Harvesting Strategy Infographic" 
+                className="w-full h-auto"
+              />
+            </div>
+          </section>
 
-            {/* Section I */}
-            <section id="section-i" className="scroll-mt-20">
-              <h2 className="text-2xl lg:text-3xl font-semibold text-slate-900 mt-12 mb-6 border-l-4 border-indigo-500 pl-4">
-                I. The Strategic Imperative of Tax-Loss Harvesting
-              </h2>
-              
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                Tax-loss harvesting represents a sophisticated portfolio management discipline that extends beyond simple, year-end tax reduction. It is a strategic practice designed to enhance an investor's after-tax returns by systematically managing the realization of capital gains and losses.<sup>[1, 2]</sup> When executed with precision, this strategy can generate significant value, often referred to as "tax alpha," by optimizing an investor's tax liabilities over the long term. This section will establish the foundational principles of tax-loss harvesting, detailing its core mechanisms, its quantifiable impact on portfolio returns, and the investor profiles best suited to benefit from its implementation.
-              </p>
+          {/* Introductory Box */}
+          <div className="p-8 bg-blue-50 border-l-4 border-blue-500 rounded-xl shadow-inner mb-10">
+            <p className="text-xl font-semibold text-blue-800">
+              Tax-loss harvesting is a <strong>strategic discipline</strong> designed to enhance after-tax returns by systematically managing the realization of capital gains and losses, often referred to as generating <strong>"tax alpha."</strong>
+            </p>
+          </div>
 
-              <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 mt-8 mb-4">
-                A. Defining the Strategy: Beyond Simple Tax Reduction
-              </h3>
-              
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                At its most fundamental level, tax-loss harvesting (TLH) is the practice of selling securities at a loss to offset capital gains taxes and, in certain circumstances, a limited amount of ordinary income.<sup>[3, 4, 5]</sup> The core actions are:
-              </p>
+          {/* --- Section I: Strategic Imperative --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            I. The Strategic Imperative
+          </h2>
+          
+          <ContentBox 
+            title="Core Mechanism" 
+            icon={CheckCircle} 
+            colorClass="text-green-700" 
+            borderClass="border-green-300"
+          >
+            <BulletList color="rgb(4, 120, 87)">
+              <p>The primary benefit is <strong>Tax Deferral</strong>, which acts as an interest-free loan from the government.</p>
+              <p>The deeper value is <strong>Tax Rate Arbitrage</strong>: offsetting high-tax income (like short-term gains) today in exchange for lower-taxed gains in the future.</p>
+              <p>You can use up to <strong>$3,000 annually</strong> of net losses to offset ordinary income (wages).</p>
+              <p>The strategy only applies to <strong>taxable investment accounts</strong> (brokerage accounts), NOT retirement accounts (IRAs, 401(k)s).</p>
+            </BulletList>
+          </ContentBox>
 
-              <ul className="list-disc pl-8 mb-6 space-y-3 text-gray-800 lg:text-lg marker:text-indigo-500">
-                <li>
-                  Intentionally realizing a capital loss from an asset that has depreciated in value within a taxable investment account.<sup>[3, 6]</sup>
-                </li>
-                <li>
-                  Reinvesting the proceeds into a{' '}
-                  <strong className="font-semibold text-indigo-600">different but similar</strong>{' '}
-                  asset to maintain the portfolio's strategic market exposure.<sup>[2, 7]</sup>
-                </li>
-              </ul>
-
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                This strategy is exclusively applicable to taxable investment accounts (e.g., individual or joint brokerage accounts). It is not relevant for tax-deferred or tax-advantaged retirement accounts such as traditional IRAs, Roth IRAs, or 401(k)s.<sup>[1, 4, 8]</sup> Within these retirement vehicles, investment growth is already tax-deferred or tax-free, and capital gains or losses are not realized for tax purposes upon the sale of a security. Therefore, there is no tax liability to offset, rendering the strategy inapplicable.<sup>[4, 6, 9]</sup>
-              </p>
-
-              <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 mt-8 mb-4">
-                B. The Core Mechanism: Tax Deferral and Rate Arbitrage
-              </h3>
-              
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                The primary function of tax-loss harvesting is{' '}
-                <strong className="font-semibold text-cyan-700">tax deferral</strong>. By realizing a loss to offset a gain, an investor postpones a tax liability that would have otherwise been due in the current year. This mechanism is often analogized to receiving an interest-free loan from the government, as the capital that would have been paid in taxes remains invested and can continue to compound.<sup>[3]</sup> When the replacement security is eventually sold, the deferred tax will become due. The reinvestment of proceeds from the harvested loss into a new asset lowers the cost basis of that new holding, which can result in a larger capital gain upon its eventual sale.<sup>[10, 11]</sup>
-              </p>
-
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                However, the more profound benefit often arises from{' '}
-                <strong className="font-semibold text-indigo-600">tax rate arbitrage</strong>.<sup>[3, 12]</sup> This occurs when a harvested loss is used to offset income that is taxed at a high rate in the present, in exchange for creating a future gain that will likely be taxed at a lower rate. Key examples include:
-              </p>
-
-              <ul className="list-disc pl-8 mb-6 space-y-3 text-gray-800 lg:text-lg marker:text-indigo-500">
-                <li>
-                  Offsetting high-tax{' '}
-                  <strong className="font-semibold text-slate-900">short-term capital gains</strong>{' '}
-                  (taxed as ordinary income).
-                </li>
-                <li>
-                  Offsetting up to{' '}
-                  <strong className="font-semibold text-slate-900">$3,000 of ordinary income</strong>, which is typically taxed at the highest rates.<sup>[4, 12]</sup>
-                </li>
-              </ul>
-
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                The value of this strategy extends even further when integrated with long-term estate and charitable planning. If the low-basis shares acquired through tax-loss harvesting are held until the owner's death, they pass to heirs with a "step-up" in basis to the fair market value at the date of death. This completely eliminates the deferred capital gains tax liability for the heirs.<sup>[12, 14]</sup> Alternatively, if these appreciated, low-basis shares are donated to a qualified charity, the investor may receive a tax deduction for the full market value of the shares, and neither the investor nor the charity pays capital gains tax on the appreciation. In these scenarios, a deferred tax liability is converted into a permanent tax elimination, representing the ultimate realization of value from a tax-loss harvesting strategy.<sup>[12]</sup>
-              </p>
-
-              <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 mt-8 mb-4">
-                C. Quantifying the "Tax Alpha": How TLH Enhances After-Tax Returns
-              </h3>
-              
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                <strong className="font-semibold text-cyan-700">"Tax alpha"</strong>{' '}
-                is the value added to a portfolio's return through the application of tax-efficient strategies.<sup>[3]</sup> Tax-loss harvesting is a primary generator of tax alpha. By reducing current tax liabilities, it frees up capital that can be immediately reinvested, allowing the full, pre-tax value of the portfolio to continue compounding.<sup>[5, 7, 15]</sup>
-              </p>
-
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                The direct financial benefit of a harvested loss is a function of the investor's marginal tax rate. For instance, consider an investor in a 35% combined federal and state marginal tax bracket who realizes a $25,000 short-term capital loss to offset a $20,000 short-term capital gain. This action saves $7,000 in taxes ($20,000 x 35%). The remaining $5,000 loss can be used to offset $3,000 of ordinary income, saving an additional $1,050 ($3,000 x 35%). The final $2,000 of the loss is carried forward to future years. The total immediate tax savings in this scenario is $8,050.<sup>[8]</sup> When this saved capital is reinvested over a long time horizon, the power of compounding can transform it into a substantial sum, effectively boosting the portfolio's overall after-tax return.<sup>[8]</sup>
-              </p>
-
-              <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 mt-8 mb-4">
-                D. Identifying the Ideal Candidate: Profiling Investors Who Benefit Most
-              </h3>
-              
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                While many investors can benefit from tax-loss harvesting, the strategy delivers the most significant impact to certain profiles:
-              </p>
-
-              <ul className="list-disc pl-8 mb-6 space-y-3 text-gray-800 lg:text-lg marker:text-indigo-500">
-                <li>
-                  Investors in{' '}
-                  <strong className="font-semibold text-indigo-600">high marginal tax brackets</strong>.<sup>[5]</sup>
-                </li>
-                <li>
-                  Individuals with{' '}
-                  <strong className="font-semibold text-slate-900">substantial taxable investment accounts</strong>.<sup>[13, 15, 16]</sup>
-                </li>
-                <li>
-                  Those who regularly realize{' '}
-                  <strong className="font-semibold text-slate-900">capital gains</strong>.
-                </li>
-                <li>
-                  Investors subject to the 3.8%{' '}
-                  <strong className="font-semibold text-slate-900">Net Investment Income Tax (NIIT)</strong>.<sup>[13]</sup>
-                </li>
-              </ul>
-
-              <p className="text-base lg:text-lg text-gray-800 leading-loose mb-6">
-                Conversely, tax-loss harvesting may offer limited or no benefit to certain investors. Those in the 0% long-term capital gains tax bracket, for example, should be cautious. Using a valuable capital loss to offset a long-term capital gain that was already tax-free would be an inefficient use of that tax asset.<sup>[1]</sup> The strategy's effectiveness is always contingent on the presence of a tax liability to reduce.
-              </p>
-            </section>
-
-            {/* Call-to-Action Section */}
-            <div className="my-12 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                  Continue Reading the Full Analysis
-                </h3>
-                <p className="text-lg text-gray-700 mb-6">
-                  This comprehensive guide covers step-by-step execution, wash-sale rule compliance, advanced strategies, and modern implementations. Access the complete research document for detailed insights.
+          {/* --- Section II: Step-by-Step Execution --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            II. Step-by-Step Execution Guide
+          </h2>
+          
+          <ContentBox 
+            title="Step-by-Step Process" 
+            icon={CheckCircle} 
+            colorClass="text-blue-700"
+            borderClass="border-blue-300"
+          >
+            <ol className="list-decimal pl-5 space-y-3">
+              <li className="font-semibold text-gray-800">
+                Identify Losses:
+                <p className="font-normal text-gray-600 ml-4 mt-1">
+                  Review taxable accounts for securities trading below their <strong>cost basis</strong>. A decline of 10% to 15% is a good threshold.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  {currentArticle?.googleDoc && (
-                    <a 
-                      href={currentArticle.googleDoc}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                    >
-                      <BookOpen className="inline mr-2" />
-                      Read Full Research
-                    </a>
-                  )}
-                  {currentArticle?.podcastUrl && (
-                    <a 
-                      href={currentArticle.podcastUrl}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                    >
-                      <Music className="inline mr-2" />
-                      Listen to Podcast
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+              </li>
+              <li className="font-semibold text-gray-800">
+                Execute the Sale (Optimize Basis):
+                <p className="font-normal text-gray-600 ml-4 mt-1">
+                  Use <strong>"specific identification"</strong> to ensure you sell the share lots with the highest cost basis. Avoid the default "FIFO" method.
+                </p>
+              </li>
+              <li className="font-semibold text-gray-800">
+                Reinvest Immediately (Replacement Mandate):
+                <p className="font-normal text-gray-600 ml-4 mt-1">
+                  Immediately reinvest the proceeds into a <strong>non-substantially identical</strong> security to maintain your target asset allocation and prevent being out of the market.
+                </p>
+              </li>
+              <li className="font-semibold text-gray-800">
+                Document and Report:
+                <p className="font-normal text-gray-600 ml-4 mt-1">
+                  Report realized gains and losses on <strong>IRS Form 8949</strong> and summarize the net result on <strong>Schedule D</strong>. Losses exceeding $3,000 are <strong>carried forward</strong> indefinitely.
+                </p>
+              </li>
+            </ol>
+          </ContentBox>
 
-            {/* Educational Disclaimer */}
-            <div className="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-              <div className="flex">
-                <div className="ml-3">
-                  <p className="text-sm text-yellow-700">
-                    <strong className="font-semibold">Educational Disclaimer:</strong> This content is for informational and educational purposes only. Tax-loss harvesting involves complex regulations and individual circumstances. Always consult with qualified tax and financial professionals before implementing any tax strategies. Past performance does not guarantee future results.
-                  </p>
-                </div>
+          {/* --- Section III: Wash-Sale Rule --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            III. Compliance and the Wash-Sale Rule
+          </h2>
+          
+          <ContentBox 
+            title="The Wash-Sale Rule Defined" 
+            icon={AlertTriangle} 
+            colorClass="text-red-700"
+            borderClass="border-red-400"
+          >
+            <p className="font-semibold text-red-800 bg-red-50 p-3 rounded-md">
+              You cannot claim a tax loss if you acquire the same or a <strong>"substantially identical"</strong> security within the <strong>61-day window</strong>.
+            </p>
+            <BulletList color="rgb(185, 28, 28)">
+              <p>The <strong>61-day window</strong> includes the 30 days <em>before</em> the sale, the day of the sale, and the 30 days <em>after</em> the sale.</p>
+              <p>The rule applies across <strong>ALL</strong> your accounts, including taxable accounts, <strong>IRAs, and 401(k)s</strong> (as well as spousal accounts).</p>
+              <p>If you violate the rule by repurchasing in an <strong>IRA</strong>, the loss is <strong>permanently forfeited</strong>.</p>
+            </BulletList>
+            <p className="mt-4 font-semibold">Consequence of Violation:</p>
+            <p className="text-gray-600">
+              The realized loss is <strong>disallowed</strong> in the current year, but the amount is <strong>added to the cost basis</strong> of the replacement security (deferring the tax, but not eliminating the loss's value).
+            </p>
+          </ContentBox>
+
+          {/* --- Section IV: The Art of Replacement --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            IV. Replacement Strategies (Avoiding "Substantially Identical")
+          </h2>
+          
+          <ContentBox 
+            title="Safe Replacement Framework" 
+            icon={CheckCircle} 
+            colorClass="text-purple-700" 
+            borderClass="border-purple-300"
+          >
+            <p className="font-semibold text-gray-800">For ETFs/Mutual Funds, rely on <strong>Index Divergence</strong>:</p>
+            <BulletList color="rgb(147, 51, 234)">
+              <p>Sell a fund tracking the S&P 500 and replace it with a fund tracking the <strong>Russell 1000</strong> or <strong>CRSP Total Stock Market</strong> index.</p>
+              <p>These track different benchmarks, making them non-identical, even if performance is highly correlated.</p>
+              <p className="text-red-600 font-semibold">
+                HIGH RISK: Do NOT swap ETFs from different managers that track the <strong>EXACT SAME INDEX</strong> (e.g., VOO to IVV). This is likely a wash sale.
+              </p>
+            </BulletList>
+            <p className="font-semibold text-gray-800 mt-6">For Individual Stocks:</p>
+            <p className="text-gray-600">
+              Replace the stock with shares of a <strong>direct competitor</strong> (e.g., selling Ford to buy General Motors). This is generally safe as they are different corporations.
+            </p>
+          </ContentBox>
+
+          {/* --- Section V: Common Pitfalls --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            V. Common Pitfalls and Strategic Missteps
+          </h2>
+          
+          <ContentBox 
+            title="Key Operational Pitfalls" 
+            icon={AlertTriangle} 
+            colorClass="text-orange-700"
+            borderClass="border-orange-300"
+          >
+            <BulletList color="rgb(234, 88, 12)">
+              <p><strong>Forgetting DRIPs:</strong> Automatic <strong>Dividend Reinvestment Plans</strong> (DRIPs) can repurchase shares within the 61-day window. <strong>Temporarily disable DRIPs</strong> for securities being harvested or their replacements.</p>
+              <p><strong>Ignoring State Taxes:</strong> Some states have different rules for loss limitations or carryforwards, which impacts the overall benefit.</p>
+              <p><strong>The Disposition Effect:</strong> Allowing emotion to override strategy—holding on to losers hoping for a recovery, instead of selling to capture the tax benefit.</p>
+              <p><strong>Ignoring Transaction Costs:</strong> Ensure the potential tax savings outweigh the combined trading costs of the sell/buy "round trip."</p>
+            </BulletList>
+          </ContentBox>
+
+          {/* --- Section VI: Advanced Strategies --- */}
+          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+            VI. Advanced Strategies and Automation
+          </h2>
+          
+          <ContentBox 
+            title="Automation & Next-Gen TLH" 
+            icon={CheckCircle} 
+            colorClass="text-teal-700"
+            borderClass="border-teal-300"
+          >
+            <BulletList color="rgb(13, 148, 136)">
+              <p><strong>"Always-On" Approach:</strong> Move away from year-end harvesting. Use a systematic, daily, or quarterly review to capture losses created by transient market volatility year-round.</p>
+              <p><strong>Direct Indexing:</strong> Instead of owning an ETF, own the individual stocks of the index. This allows for <strong>stock-level harvesting</strong>, capturing losses on specific underperforming stocks while the overall index remains flat or up.</p>
+              <p><strong>Robo-Advisors:</strong> Platforms like <strong>Wealthfront</strong> and <strong>Betterment</strong> automate the process entirely, continuously monitoring for opportunities and managing the wash-sale compliance.</p>
+            </BulletList>
+          </ContentBox>
+
+          {/* Call to Action - Google Doc & Podcast Links */}
+          <section>
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl text-center">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
+              <p className="text-slate-600 mb-6">
+                Dive deeper into the comprehensive research paper and listen to the podcast episode for detailed analysis and insights.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                {currentArticle?.googleDoc && (
+                  <a 
+                    href={currentArticle.googleDoc}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
+                  >
+                    <Search className="inline mr-2" />
+                    Read Full Research Paper
+                  </a>
+                )}
+                {currentArticle?.podcastUrl && (
+                  <a 
+                    href={currentArticle.podcastUrl}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+                  >
+                    <Music className="inline mr-2" />
+                    Listen to Podcast
+                  </a>
+                )}
               </div>
             </div>
-          </article>
+          </section>
         </main>
 
-        {/* Footer */}
-        <footer className="md:ml-64 border-t border-slate-700 bg-slate-800">
-          <div className="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+        {/* --- Footer --- */}
+        <footer className="border-t border-gray-200 bg-white mt-12">
+          <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm text-gray-500 mb-2">
+              <strong>Disclaimer:</strong> This report is for informational purposes only. Consult with a qualified financial or tax professional before making any investment decisions.
+            </p>
+            <p className="text-slate-600 text-sm font-medium">
+              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
+            </p>
           </div>
         </footer>
       </div>
