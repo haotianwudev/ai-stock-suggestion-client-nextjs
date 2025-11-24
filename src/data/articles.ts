@@ -15,7 +15,18 @@ export interface Article {
   podcastUrl?: string;
 }
 
-export const articles: Article[] = [
+// Helper function to generate slug from title
+function generateSlugFromTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .trim()
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .substring(0, 60); // Truncate to 60 characters
+}
+
+const rawArticles: Article[] = [
   
   {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
@@ -50,12 +61,20 @@ export const articles: Article[] = [
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
     description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
     slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
-    date: "November 30, 2025",
+    date: "November 24, 2025",
     imageUrl: "https://i.imgur.com/DeE8DHf.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg"
   },
+  {
+    title: "NVIDIA's PARADOX: The 'Perfect' Earnings That Sparked a Sell-Off",
+    description: "Despite delivering exemplary Q3 FY2026 financial results, including 57.01billion in revenue, NVIDIA experienced a significant pop-and-drop sequence, leading to a sharp sell-off of over 3%. ",
+    date: "November 23, 2025",
+    youtubeUrl: "https://youtu.be/hkpuKl-ucd4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/hkpuKl-ucd4/maxresdefault.jpg",
+  }, 
   {
     title: "NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation",
     description: "A comprehensive quantitative analysis of NVIDIA's Q3 FY26 earnings, exploring the 'pricing for perfection' phenomenon, Michael Burry's short thesis, the Blackwell supercycle, and strategic implications for retail investors navigating the AI semiconductor landscape.",
@@ -66,6 +85,15 @@ export const articles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub"
   },
   {
+    title: "The Volatility Risk Premium (VRP): How to Systematically Earn the Fear Premium by Selling Options",
+    description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
+    date: "November 22, 2025",
+    youtubeUrl: "https://youtu.be/eHu9X04D7Ss",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/eHu9X04D7Ss/maxresdefault.jpg",
+    options: true
+  }, 
+  {
     title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
     description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
     slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
@@ -74,6 +102,14 @@ export const articles: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
     options: true
+  },
+  {
+    title: "The Deep Learning Evolution in Quant Trading: From MLP to Transformers",
+    description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
+    date: "November 21, 2025",
+    youtubeUrl: "https://youtu.be/s0Z3pl8DFDA",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/s0Z3pl8DFDA/maxresdefault.jpg",
   },   
   {
     title: "The Evolution of Deep Learning in Quantitative Trading: From MLPs to Transformers",
@@ -1834,4 +1870,10 @@ export const articles: Article[] = [
     youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
     isVideo: true
   }
-]; 
+];
+
+// Post-process articles: add slug if missing
+export const articles = rawArticles.map(article => ({
+  ...article,
+  slug: article.slug || generateSlugFromTitle(article.title)
+})); 
