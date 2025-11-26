@@ -27,7 +27,6 @@ function generateSlugFromTitle(title: string): string {
 }
 
 const rawArticles: Article[] = [
-  
   {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
     description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
@@ -56,6 +55,15 @@ const rawArticles: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
     podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
     options: true
+  },
+  {
+    title: "Monte Carlo Simulation in Quantitative Finance: Stochastic Modeling, Risk Quantification, and Algorithmic Robustness",
+    description: "A comprehensive deep research analysis of Monte Carlo simulation as the cornerstone of modern quantitative finance. Explores stochastic differential equations, variance reduction techniques, risk management applications, and the critical limitations in capturing alpha—providing a rigorous framework for derivative pricing, VaR/CVaR calculation, and algorithmic strategy validation.",
+    slug: "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
+    date: "November 26, 2025",
+    imageUrl: "https://i.imgur.com/vGkVKOa.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQQKNAELVon2-aHvD3z3Kx8Y-ltrh9d8kLO4ZZRPfbO35-yGiYfvXuZn9Y3HNtuh18vT5-l0GNrGx81/pub"
   },
   {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
