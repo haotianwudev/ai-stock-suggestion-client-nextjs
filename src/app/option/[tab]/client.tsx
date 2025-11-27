@@ -11,7 +11,7 @@ import { GreeksTab } from "@/components/options/greeks-tab";
 import { OptionsViewer } from "@/components/options/options-viewer";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
-import { getFilteredArticles } from "@/components/articles/article-filter";
+import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -37,6 +37,76 @@ ChartJS.register(
 
 interface OptionsTabClientProps {
   tab: string;
+}
+
+// Options Articles Tab Component with Filtering
+function OptionsArticlesTab() {
+  const [searchText, setSearchText] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const availableLabels = getAllLabels();
+
+  const optionsArticles = getFilteredArticles(articles, searchText, selectedLabels)
+    .filter(article => article.options === true && !article.bookSummary);
+
+  return (
+    <Card>
+      <CardHeader className="pb-4 md:pb-6">
+        <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+          <BookOpen className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
+          <span>Options Research Articles</span>
+        </CardTitle>
+        <CardDescription className="text-sm md:text-base">
+          Comprehensive articles on options trading covering key concepts, strategies, and common pitfalls to avoid.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Filter Component */}
+        <ArticleFilter 
+          searchText={searchText}
+          onSearchChange={setSearchText}
+          selectedLabels={selectedLabels}
+          onLabelsChange={setSelectedLabels}
+          availableLabels={availableLabels}
+        />
+
+        {/* Articles Grid */}
+        <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
+          {optionsArticles.map((article) => (
+            <ArticleCard 
+              key={article.slug}
+              title={article.title}
+              description={article.description}
+              slug={article.slug}
+              date={article.date}
+              imageUrl={article.imageUrl}
+              googleDoc={article.googleDoc}
+              deepResearch={article.deepResearch}
+              youtubeUrl={article.youtubeUrl}
+              isVideo={article.isVideo}
+              options={article.options}
+              noSummary={article.noSummary}
+              podcastUrl={article.podcastUrl}
+            />
+          ))}
+        </div>
+
+        {/* No Results Message */}
+        {optionsArticles.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
+            <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
+          </div>
+        )}
+
+        {/* Results Count */}
+        {optionsArticles.length > 0 && (
+          <p className="text-sm text-muted-foreground text-center">
+            Showing {optionsArticles.length} article{optionsArticles.length !== 1 ? 's' : ''}
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
 }
 
 export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
@@ -235,45 +305,7 @@ export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
             </TabsContent>
             
             <TabsContent value="articles" className="mt-4 md:mt-6">
-              <Card>
-                <CardHeader className="pb-4 md:pb-6">
-                  <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
-                    <span>Options Research Article Summaries</span>
-                  </CardTitle>
-                  <CardDescription className="text-sm md:text-base">
-                    Comprehensive summaries of essential options trading books and research articles covering key concepts, strategies, and common pitfalls to avoid.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
-                    {getFilteredArticles(articles, 'all')
-                      .filter(article => article.options === true && !article.bookSummary)
-                      .map((article) => (
-                        <ArticleCard 
-                          key={article.slug}
-                          title={article.title}
-                          description={article.description}
-                          slug={article.slug}
-                          date={article.date}
-                          imageUrl={article.imageUrl}
-                          googleDoc={article.googleDoc}
-                          deepResearch={article.deepResearch}
-                          youtubeUrl={article.youtubeUrl}
-                          isVideo={article.isVideo}
-                          options={article.options}
-                          noSummary={article.noSummary}
-                          podcastUrl={article.podcastUrl}
-                        />
-                      ))}
-                  </div>
-                  {getFilteredArticles(articles, 'all').filter(article => article.options === true && !article.bookSummary).length === 0 && (
-                    <p className="text-center text-muted-foreground py-8 text-sm md:text-base">
-                      No options articles available yet. Check back soon!
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+              <OptionsArticlesTab />
             </TabsContent>
             
             <TabsContent value="strategies" className="mt-4 md:mt-6">

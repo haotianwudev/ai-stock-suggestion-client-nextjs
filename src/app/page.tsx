@@ -11,8 +11,7 @@ import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, BookOpen, Mic } from "lucide-react";
 import { ArticleCard } from "@/components/articles/article-card";
-import { ArticleFilter, getFilteredArticles } from "@/components/articles/article-filter";
-import type { ArticleFilter as ArticleFilterType } from "@/components/articles/article-filter";
+import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
 import { useRouter } from "next/navigation";
 
@@ -38,9 +37,13 @@ export default function Home() {
   const [bookPassword, setBookPassword] = useState("");
   const [bookError, setBookError] = useState("");
   const [showAllArticles, setShowAllArticles] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState<ArticleFilterType>('all');
+  const [searchText, setSearchText] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [showStockData, setShowStockData] = useState(false);
   const router = useRouter();
+  
+  // Get all predefined labels
+  const availableLabels = getAllLabels();
   
   // Lazy load stock data after initial render
   useEffect(() => {
@@ -50,9 +53,13 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
   
-  // Reset show all articles when filter changes
-  const handleFilterChange = (filter: ArticleFilterType) => {
-    setSelectedFilter(filter);
+  const handleSearchChange = (text: string) => {
+    setSearchText(text);
+    setShowAllArticles(false);
+  };
+  
+  const handleLabelsChange = (labels: string[]) => {
+    setSelectedLabels(labels);
     setShowAllArticles(false);
   };
 
@@ -197,24 +204,31 @@ export default function Home() {
         
         {/* Articles Section */}
         <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
-          <div className="flex flex-col items-center space-y-4 text-center">
+          <div className="flex flex-col items-center space-y-4 text-center mb-6">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Interactive Articles
             </h2>
+            <p className="text-muted-foreground text-sm max-w-2xl">
+              Explore {articles.filter(a => !a.bookSummary).length}+ articles on quantitative finance, options trading, and market analysis
+            </p>
           </div>
           
           {/* Article Filter */}
-          <div className="flex justify-center">
+          <div className="max-w-4xl mx-auto">
             <ArticleFilter 
-              selectedFilter={selectedFilter} 
-              onFilterChange={handleFilterChange}
+              searchText={searchText}
+              onSearchChange={handleSearchChange}
+              selectedLabels={selectedLabels}
+              onLabelsChange={handleLabelsChange}
+              availableLabels={availableLabels}
             />
           </div>
           
           {/* Pinned Article as Featured */}
           {(() => {
-            const pinnedArticle = getFilteredArticles(articles, 'all').find(article => article.pinned && !article.bookSummary);
-            return pinnedArticle && (
+            const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && !article.bookSummary);
+            const shouldShowPinned = searchText === '' && selectedLabels.length === 0;
+            return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
                 <div className="absolute -top-3 left-3 z-10">
                   <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded shadow">Featured</span>
@@ -239,7 +253,7 @@ export default function Home() {
           })()}
           
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            {getFilteredArticles(articles, selectedFilter)
+            {getFilteredArticles(articles, searchText, selectedLabels)
               .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
               .slice(0, showAllArticles ? undefined : 12)
               .map((article) => (
@@ -261,18 +275,32 @@ export default function Home() {
             ))}
           </div>
           
-          {/* Show More/Less Button */}
+          {/* Results Count and Show More/Less Button */}
           {(() => {
-            const filteredArticles = getFilteredArticles(articles, selectedFilter).filter(article => !article.pinned && !article.bookSummary);
-            return filteredArticles.length > 12 && (
-              <div className="flex justify-center mt-8">
-                <Button
-                  onClick={() => setShowAllArticles(!showAllArticles)}
-                  variant="outline"
-                  size="lg"
-                >
-                  {showAllArticles ? 'Show Less' : `Show All ${filteredArticles.length} Articles`}
-                </Button>
+            const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels)
+              .filter(article => !article.pinned && !article.bookSummary);
+            const displayedCount = showAllArticles ? filteredArticles.length : Math.min(12, filteredArticles.length);
+            
+            return (
+              <div className="flex flex-col items-center gap-4 mt-8">
+                <p className="text-sm text-muted-foreground">
+                  Showing {displayedCount} of {filteredArticles.length} articles
+                </p>
+                {filteredArticles.length > 12 && (
+                  <Button
+                    onClick={() => setShowAllArticles(!showAllArticles)}
+                    variant="outline"
+                    size="lg"
+                  >
+                    {showAllArticles ? 'Show Less' : `Show All ${filteredArticles.length} Articles`}
+                  </Button>
+                )}
+                {filteredArticles.length === 0 && (
+                  <div className="text-center py-12">
+                    <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
+                    <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
+                  </div>
+                )}
               </div>
             );
           })()}

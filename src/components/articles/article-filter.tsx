@@ -1,88 +1,92 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Filter } from "lucide-react";
-
-// Configuration-based approach for easy expansion
-const FILTER_CONFIG = {
-  all: { label: 'All Articles', icon: '📚' },
-  deepResearch: { label: 'Deep Research', icon: '🔍', property: 'deepResearch' },
-  options: { label: 'Options Trading', icon: '📈', property: 'options' },
-  video: { label: 'Youtube Video', icon: '🎥', property: 'isVideo' },
-  // Easy to add new labels here:
-  // ai: { label: 'AI Content', icon: '🤖', property: 'ai' },
-  // crypto: { label: 'Crypto', icon: '₿', property: 'crypto' },
-  // etfs: { label: 'ETFs', icon: '📊', property: 'etfs' },
-} as const;
-
-export type ArticleFilter = keyof typeof FILTER_CONFIG;
+import { Search, X } from "lucide-react";
 
 interface ArticleFilterProps {
-  selectedFilter: ArticleFilter;
-  onFilterChange: (filter: ArticleFilter) => void;
+  searchText: string;
+  onSearchChange: (text: string) => void;
+  selectedLabels: string[];
+  onLabelsChange: (labels: string[]) => void;
+  availableLabels: string[];
 }
 
-// Generate filter options dynamically from config
-const filterOptions = Object.entries(FILTER_CONFIG).map(([key, config]) => ({
-  value: key as ArticleFilter,
-  label: config.label,
-  icon: config.icon,
-}));
-
-export function ArticleFilter({ selectedFilter, onFilterChange }: ArticleFilterProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const selectedOption = filterOptions.find(option => option.value === selectedFilter);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
+export function ArticleFilter({ 
+  searchText,
+  onSearchChange,
+  selectedLabels,
+  onLabelsChange,
+  availableLabels
+}: ArticleFilterProps) {
+  const toggleLabel = (label: string) => {
+    if (selectedLabels.includes(label)) {
+      onLabelsChange(selectedLabels.filter(l => l !== label));
+    } else {
+      onLabelsChange([...selectedLabels, label]);
     }
+  };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  const clearAllFilters = () => {
+    onSearchChange('');
+    onLabelsChange([]);
+  };
+
+  const hasActiveFilters = searchText !== '' || selectedLabels.length > 0;
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-background border border-border rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors duration-200 min-w-[200px] justify-between"
-      >
-        <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4" />
-          <span className="text-sm font-medium">
-            {selectedOption?.icon} {selectedOption?.label}
-          </span>
+    <div className="w-full space-y-3">
+      {/* Search Bar */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Search articles by title or description..."
+            value={searchText}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="w-full pl-10 pr-10 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-sm"
+          />
+          {searchText && (
+            <button
+              onClick={() => onSearchChange('')}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
-        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
 
-      {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-full bg-background border border-border rounded-lg shadow-lg z-50">
-          <div className="py-2">
-            {filterOptions.map((option) => (
+        {/* Clear All Button */}
+        {hasActiveFilters && (
+          <button
+            onClick={clearAllFilters}
+            className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors duration-200 whitespace-nowrap"
+          >
+            <X className="h-4 w-4" />
+            <span>Clear All</span>
+          </button>
+        )}
+      </div>
+
+      {/* Label Filter Pills */}
+      {availableLabels.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {availableLabels.map((label) => {
+            const isSelected = selectedLabels.includes(label);
+            return (
               <button
-                key={option.value}
-                onClick={() => {
-                  onFilterChange(option.value);
-                  setIsOpen(false);
-                }}
-                className={`w-full flex items-center gap-2 px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors duration-200 ${
-                  selectedFilter === option.value ? 'bg-accent text-accent-foreground' : ''
+                key={label}
+                onClick={() => toggleLabel(label)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                  isSelected
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
-                <span>{option.icon}</span>
-                <span>{option.label}</span>
+                {label}
+                {isSelected && <X className="h-3 w-3" />}
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
       )}
     </div>
@@ -110,20 +114,50 @@ function isLocalhost(): boolean {
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0';
 }
 
-// Dynamic filtering function - no more switch statements!
-export function getFilteredArticles(articles: any[], filter: ArticleFilter) {
+// Get all available labels from the enum in a specific order
+export function getAllLabels(): string[] {
+  return [
+    "Deep Research",
+    "Options Trading", 
+    "Youtube",
+    "Podcast",
+    "Quantitative Finance",
+    "AI & Machine Learning",
+    "Stock Analysis"
+  ];
+}
+
+// Simplified filtering function with text search and label support
+export function getFilteredArticles(
+  articles: any[], 
+  searchText: string = '',
+  selectedLabels: string[] = []
+) {
   // Skip date filtering on localhost for development
   const shouldFilterByDate = !isLocalhost();
   
   // First filter out articles with future dates (unless on localhost)
-  const publishedArticles = shouldFilterByDate 
+  let filteredArticles = shouldFilterByDate 
     ? articles.filter(article => !isArticleDateInFuture(article.date))
     : articles;
   
-  if (filter === 'all') return publishedArticles;
+  // Apply text search
+  if (searchText.trim() !== '') {
+    const searchLower = searchText.toLowerCase();
+    filteredArticles = filteredArticles.filter(article => 
+      article.title.toLowerCase().includes(searchLower) ||
+      article.description.toLowerCase().includes(searchLower)
+    );
+  }
   
-  const config = FILTER_CONFIG[filter];
-  if (!config.property) return publishedArticles;
+  // Apply label filter
+  if (selectedLabels.length > 0) {
+    filteredArticles = filteredArticles.filter(article => {
+      if (!article.labels || !Array.isArray(article.labels)) return false;
+      // Article must have at least one of the selected labels
+      return selectedLabels.some(label => article.labels.includes(label));
+    });
+  }
   
-  return publishedArticles.filter(article => article[config.property] === true);
+  return filteredArticles;
 } 

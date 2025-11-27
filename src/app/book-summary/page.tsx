@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { articles } from "@/data/articles";
 import { ArticleCard } from "@/components/articles/article-card";
-import { getFilteredArticles } from "@/components/articles/article-filter";
+import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -11,6 +11,10 @@ export default function BookSummaryPage() {
   const [unlocked, setUnlocked] = useState(false);
   const [error, setError] = useState("");
   const [isLocal, setIsLocal] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  
+  const availableLabels = getAllLabels();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -32,8 +36,9 @@ export default function BookSummaryPage() {
     }
   };
 
-  // Filter book summary articles (only show published articles)
-  const bookArticles = getFilteredArticles(articles, 'all').filter(a => a.bookSummary);
+  // Filter book summary articles with search and labels
+  const bookArticles = getFilteredArticles(articles, searchText, selectedLabels)
+    .filter(a => a.bookSummary);
 
   return (
     <div className="min-h-screen bg-white px-4 py-8">
@@ -65,24 +70,53 @@ export default function BookSummaryPage() {
             </button>
           </form>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            {bookArticles.map(article => (
-              <ArticleCard
-                key={article.slug}
-                title={article.title}
-                description={article.description}
-                slug={article.slug}
-                date={article.date}
-                imageUrl={article.imageUrl}
-                googleDoc={article.googleDoc}
-                deepResearch={article.deepResearch}
-                youtubeUrl={article.youtubeUrl}
-                isVideo={article.isVideo}
-                options={article.options}
-                noSummary={article.noSummary}
-                podcastUrl={article.podcastUrl}
+          <div className="space-y-6">
+            {/* Filter Component */}
+            <div className="max-w-4xl mx-auto">
+              <ArticleFilter 
+                searchText={searchText}
+                onSearchChange={setSearchText}
+                selectedLabels={selectedLabels}
+                onLabelsChange={setSelectedLabels}
+                availableLabels={availableLabels}
               />
-            ))}
+            </div>
+
+            {/* Articles Grid */}
+            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+              {bookArticles.map(article => (
+                <ArticleCard
+                  key={article.slug}
+                  title={article.title}
+                  description={article.description}
+                  slug={article.slug}
+                  date={article.date}
+                  imageUrl={article.imageUrl}
+                  googleDoc={article.googleDoc}
+                  deepResearch={article.deepResearch}
+                  youtubeUrl={article.youtubeUrl}
+                  isVideo={article.isVideo}
+                  options={article.options}
+                  noSummary={article.noSummary}
+                  podcastUrl={article.podcastUrl}
+                />
+              ))}
+            </div>
+
+            {/* No Results Message */}
+            {bookArticles.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-lg text-muted-foreground">No book summaries found matching your filters.</p>
+                <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
+              </div>
+            )}
+
+            {/* Results Count */}
+            {bookArticles.length > 0 && (
+              <p className="text-sm text-muted-foreground text-center">
+                Showing {bookArticles.length} book summar{bookArticles.length !== 1 ? 'ies' : 'y'}
+              </p>
+            )}
           </div>
         )}
         {isLocal && (
