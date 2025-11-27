@@ -28,6 +28,15 @@ function generateSlugFromTitle(title: string): string {
 
 const rawArticles: Article[] = [
   {
+    title: "Monte Carlo Robustness Protocols: Stress-Testing Systematic Trading Strategies Against Sequence Risk and Overfitting",
+    description: "A comprehensive framework for validating quantitative trading strategies through Monte Carlo simulation. Explores IID Bootstrap, Block Bootstrap, Permutation, and Surrogate Data methods to quantify the Probability of Backtest Overfitting (PBO), estimate true drawdown distributions, and calculate Deflated Sharpe Ratios for robust strategy deployment.",
+    slug: "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
+    date: "December 5, 2025",
+    imageUrl: "https://i.imgur.com/2mKX2vD.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS8p38E8rMXs3x5o96emoQqgiNEokrC2RxsQncu0t8-8iv904RXUZzTyBoiVGqE_ZdM0FL7rUFvOe5V/pub"
+  },
+  {
     title: "Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research",
     description: "Target prices are not predictions—they are marketing tools. A forensic guide to TipRanks, Bloomberg, and the epistemology of Wall Street research. Explore the conflict engine, platform wars, leverage traps, and tactical strategies for the intelligent investor navigating analyst consensus.",
     slug: "decoding-analyst-consensus-target-prices-conflicts-epistemology",
