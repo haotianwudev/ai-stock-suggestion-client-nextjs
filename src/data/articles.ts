@@ -28,6 +28,15 @@ function generateSlugFromTitle(title: string): string {
 
 const rawArticles: Article[] = [
   {
+    title: "Monte Carlo Simulation in Quantitative Finance: Advanced Stochastic Modeling",
+    description: "An overview of the numerical techniques and stochastic models essential for pricing exotic derivatives and managing XVA risk. Explore jump-diffusion processes, stochastic volatility frameworks, and nested simulation for CVA.",
+    slug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+    date: "December 6, 2025",
+    imageUrl: "https://i.imgur.com/K3gkRdn.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSOjVWGG9ULZaVtdFEji9LVwKr7pXs_qFhg3MVchFt3fCvBLrWMichR0dm9ZPM_B_XKtFyP2mFE885v/pub",
+    deepResearch: true,
+  },
+  {
     title: "Monte Carlo Robustness Protocols: Stress-Testing Systematic Trading Strategies Against Sequence Risk and Overfitting",
     description: "A comprehensive framework for validating quantitative trading strategies through Monte Carlo simulation. Explores IID Bootstrap, Block Bootstrap, Permutation, and Surrogate Data methods to quantify the Probability of Backtest Overfitting (PBO), estimate true drawdown distributions, and calculate Deflated Sharpe Ratios for robust strategy deployment.",
     slug: "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
