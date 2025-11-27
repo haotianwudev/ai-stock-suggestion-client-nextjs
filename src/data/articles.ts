@@ -28,6 +28,16 @@ function generateSlugFromTitle(title: string): string {
 
 const rawArticles: Article[] = [
   {
+    title: "Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research",
+    description: "Target prices are not predictions—they are marketing tools. A forensic guide to TipRanks, Bloomberg, and the epistemology of Wall Street research. Explore the conflict engine, platform wars, leverage traps, and tactical strategies for the intelligent investor navigating analyst consensus.",
+    slug: "decoding-analyst-consensus-target-prices-conflicts-epistemology",
+    date: "December 4, 2025",
+    imageUrl: "https://i.imgur.com/8gDViiw.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT1TJ8aqQAjEejZm3IBAYvLW-BCXsfAsZpNyjevu38qHU2OMckyXkGxe7qUm_mMJxSTOoqia0fIcz-x/pub",
+    podcastUrl: "https://open.spotify.com/episode/6YJIf7dNTVTxiDFnGA4LLJ?si=enOoYGFmTTi0n_Z23tZ_Uw"
+  },
+  {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
     description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
     slug: "comprehensive-guide-trusts-estate-planning",
