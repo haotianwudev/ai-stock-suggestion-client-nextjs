@@ -106,7 +106,7 @@ const rawArticles: Article[] = [
     description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
     slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
     date: "November 22, 2025",
-    imageUrl: "https://menthorq.com/wp-content/uploads/2025/09/VRP-for-SPX-1024x644.png",
+    imageUrl: "https://i.imgur.com/ZSPRHKw.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
     options: true
@@ -124,7 +124,7 @@ const rawArticles: Article[] = [
     description: "A comprehensive technical survey charting the evolution from traditional econometric models to sophisticated deep neural networks in quantitative finance. Explores MLPs, LSTMs, CNNs, Autoencoders, Deep Reinforcement Learning, GNNs, and Transformers—analyzing their unique properties, applications in trading, and critical limitations in high-noise, non-stationary financial markets.",
     slug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
     date: "November 20, 2025",
-    imageUrl: "https://www.luxalgo.com/blog/content/images/2025/06/image-9-1.png",
+    imageUrl: "https://i.imgur.com/8ZF0tTX.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub"
   },
