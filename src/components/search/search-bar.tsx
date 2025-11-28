@@ -1,42 +1,148 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useLazyQuery } from "@apollo/client";
-import { SEARCH_STOCKS } from "@/lib/graphql/queries";
-import { SearchResult } from "@/lib/graphql/types";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { SearchIcon } from "@/components/icons";
+import { articles } from "@/data/articles";
+import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { getGraphQLUri } from "@/lib/apollo/gql-config";
+
+interface StockSearchResult {
+  ticker: string;
+  name: string;
+  type: 'stock';
+}
+
+interface ArticleSearchResult {
+  title: string;
+  slug: string;
+  description: string;
+  imageUrl?: string;
+  youtubeUrl?: string;
+  isVideo?: boolean;
+  type: 'article';
+}
+
+type SearchResult = StockSearchResult | ArticleSearchResult;
+
+// GraphQL query to search stocks
+const SEARCH_STOCKS_QUERY = gql`
+  query SearchStocks($query: String!) {
+    searchStocks(query: $query) {
+      ticker
+      name
+    }
+  }
+`;
+
+// Create Apollo client
+const createApolloClient = () => {
+  const graphqlUri = getGraphQLUri();
+  
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message }) =>
+        console.error(`[GraphQL error]: ${message}`),
+      );
+    if (networkError) console.error(`[Network error]: ${networkError}`);
+  });
+
+  const httpLink = new HttpLink({
+    uri: graphqlUri,
+  });
+
+  return new ApolloClient({
+    link: from([errorLink, httpLink]),
+    cache: new InMemoryCache(),
+  });
+};
 
 export function SearchBar() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
-  
-  const [searchStocks, { loading, data }] = useLazyQuery(SEARCH_STOCKS, {
-    variables: { query: debouncedSearchQuery },
-  });
-  
-  const searchResults = data?.searchStocks || [];
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-  useEffect(() => {
-    if (!debouncedSearchQuery) return;
-    searchStocks();
-  }, [debouncedSearchQuery, searchStocks]);
+  // Perform search
+  const performSearch = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setResults([]);
+      return;
+    }
 
+    setIsSearching(true);
+    const searchResults: SearchResult[] = [];
+
+    try {
+      // Search articles locally
+      const searchLower = query.toLowerCase();
+      const filteredArticles = articles
+        .filter(article => 
+          !article.bookSummary && 
+          (article.title.toLowerCase().includes(searchLower) ||
+           (article.description && article.description.toLowerCase().includes(searchLower)))
+        )
+        .slice(0, 5);
+      
+      filteredArticles.forEach(article => {
+        if (article.slug) {
+          searchResults.push({
+            title: article.title,
+            slug: article.slug,
+            description: article.description || '',
+            imageUrl: article.imageUrl,
+            youtubeUrl: article.youtubeUrl,
+            isVideo: article.isVideo,
+            type: 'article'
+          });
+        }
+      });
+
+      // Search stocks via GraphQL - requires at least 2 characters
+      if (query.length >= 2) {
+        try {
+          const client = createApolloClient();
+          const { data } = await client.query({
+            query: SEARCH_STOCKS_QUERY,
+            variables: { query: query.toUpperCase() }
+          });
+
+          if (data?.searchStocks) {
+            data.searchStocks.slice(0, 5).forEach((stock: any) => {
+              searchResults.push({
+                ticker: stock.ticker,
+                name: stock.name,
+                type: 'stock'
+              });
+            });
+          }
+        } catch (error) {
+          console.error("Stock search error:", error);
+        }
+      }
+
+      setResults(searchResults);
+    } catch (error) {
+      console.error("Search error:", error);
+    } finally {
+      setIsSearching(false);
+    }
+  }, []);
+
+  // Debounce search
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
+    const timer = setTimeout(() => {
+      performSearch(searchQuery);
     }, 300);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchQuery]);
+    return () => clearTimeout(timer);
+  }, [searchQuery, performSearch]);
 
+  // Keyboard shortcut
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -49,10 +155,24 @@ export function SearchBar() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelectStock = (ticker: string) => {
+  const handleSelect = (result: SearchResult) => {
     setOpen(false);
-    router.push(`/stock/${ticker}`);
+    setSearchQuery("");
+    if (result.type === 'article') {
+      // If it's a video article with YouTube URL, open YouTube directly
+      if (result.isVideo && result.youtubeUrl) {
+        window.open(result.youtubeUrl, '_blank');
+      } else {
+        router.push(`/articles/${result.slug}`);
+      }
+    } else {
+      router.push(`/stock/${result.ticker}`);
+    }
   };
+
+  // Group results by type
+  const stockResults = results.filter(r => r.type === 'stock') as StockSearchResult[];
+  const articleResults = results.filter(r => r.type === 'article') as ArticleSearchResult[];
 
   return (
     <>
@@ -62,7 +182,7 @@ export function SearchBar() {
         onClick={() => setOpen(true)}
       >
         <SearchIcon className="mr-2 h-4 w-4" />
-        <span className="hidden lg:inline-flex">Search Stock...</span>
+        <span className="hidden lg:inline-flex">Search...</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
@@ -70,26 +190,60 @@ export function SearchBar() {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
-          placeholder="Search stocks and options..."
+          placeholder="Search stocks or articles..."
           value={searchQuery}
           onValueChange={setSearchQuery}
         />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Investments">
-            {searchResults.map((stock: SearchResult) => (
-              <CommandItem
-                key={stock.ticker}
-                value={stock.ticker}
-                onSelect={() => handleSelectStock(stock.ticker)}
-              >
-                <div className="flex items-center">
-                  <span className="mr-2 font-bold">{stock.ticker}</span>
-                  <span className="text-sm text-muted-foreground">{stock.name}</span>
-                </div>
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          {isSearching ? (
+            <CommandEmpty>Searching...</CommandEmpty>
+          ) : results.length === 0 ? (
+            <CommandEmpty>No results found.</CommandEmpty>
+          ) : (
+            <>
+              {stockResults.length > 0 && (
+                <CommandGroup heading="Stocks">
+                  {stockResults.map((stock) => (
+                    <CommandItem
+                      key={stock.ticker}
+                      value={stock.ticker}
+                      onSelect={() => handleSelect(stock)}
+                    >
+                      <div className="flex items-center">
+                        <span className="mr-2 font-bold">{stock.ticker}</span>
+                        <span className="text-sm text-muted-foreground">{stock.name}</span>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
+              {articleResults.length > 0 && (
+                <CommandGroup heading="Articles">
+                  {articleResults.map((article) => (
+                    <CommandItem
+                      key={article.slug}
+                      value={article.slug}
+                      onSelect={() => handleSelect(article)}
+                    >
+                      <div className="flex items-center gap-3 w-full">
+                        {article.imageUrl && (
+                          <img 
+                            src={article.imageUrl} 
+                            alt={article.title}
+                            className="w-12 h-12 object-cover rounded flex-shrink-0"
+                          />
+                        )}
+                        <div className="flex flex-col flex-1 min-w-0">
+                          <span className="font-semibold text-sm truncate">{article.title}</span>
+                          <span className="text-xs text-muted-foreground line-clamp-1">{article.description}</span>
+                        </div>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
+            </>
+          )}
         </CommandList>
       </CommandDialog>
     </>

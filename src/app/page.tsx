@@ -4,16 +4,12 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SearchIcon } from "@/components/icons";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUpIcon, ArrowDownIcon, ExternalLinkIcon, TrendingUpIcon, InfoIcon, LineChart } from "lucide-react";
+import { LineChart, Users, BookOpen } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
-import { TrendingUp, Trophy, GraduationCap, LucideLineChart, Shield, Users, BookOpen, Mic } from "lucide-react";
 import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
-import { useRouter } from "next/navigation";
 
 // Lazy load heavy components
 const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
@@ -33,14 +29,10 @@ const StockDataSkeleton = () => (
 );
 
 export default function Home() {
-  const [showBookModal, setShowBookModal] = useState(false);
-  const [bookPassword, setBookPassword] = useState("");
-  const [bookError, setBookError] = useState("");
   const [showAllArticles, setShowAllArticles] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [showStockData, setShowStockData] = useState(false);
-  const router = useRouter();
   
   // Get all predefined labels
   const availableLabels = getAllLabels();
@@ -91,13 +83,6 @@ export default function Home() {
               </div>
               
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link href="/trending">
-                    <SearchIcon className="mr-2 h-4 w-4" />
-                    Stocks Analysis & Tutorials
-                  </Link>
-                </Button>
-                
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/option">
                     <LineChart className="mr-2 h-4 w-4" />
