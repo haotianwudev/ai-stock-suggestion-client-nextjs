@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { SearchIcon } from "@/components/icons";
 import { LineChart, Users, BookOpen } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
@@ -83,6 +84,13 @@ export default function Home() {
               </div>
               
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <Link href="/trending">
+                    <SearchIcon className="mr-2 h-4 w-4" />
+                    Stocks Analysis & Tutorials
+                  </Link>
+                </Button>
+                
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/option">
                     <LineChart className="mr-2 h-4 w-4" />
