@@ -1,0 +1,19 @@
+import { Article, generateSlugFromTitle, postprocessArticles } from './types';
+import { articles2025Q4 } from './2025-q4';
+import { articles2025Q3 } from './2025-q3';
+import { articles2025Q2 } from './2025-q2';
+
+// All articles combined
+const allArticlesRaw = [
+  ...articles2025Q4,
+  ...articles2025Q3,
+  ...articles2025Q2,
+];
+
+// Post-process all articles: add slug if missing and auto-generate labels from flags
+export const articles = postprocessArticles(
+  allArticlesRaw.map(article => ({
+    ...article,
+    slug: article.slug || generateSlugFromTitle(article.title)
+  }))
+);
