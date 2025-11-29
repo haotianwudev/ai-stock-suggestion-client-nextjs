@@ -28,7 +28,7 @@ export const articles2025Q4: Article[] = [
     description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
     slug: "comprehensive-guide-trusts-estate-planning",
     date: "December 8, 2025",
-    imageUrl: "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1080,h_675/https://www.rachelbeohm.com/wp-content/uploads/2022/09/trust-u-yourself-1080x675.jpg",
+    imageUrl: "https://i.imgur.com/mgkSY5y.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub",
   },

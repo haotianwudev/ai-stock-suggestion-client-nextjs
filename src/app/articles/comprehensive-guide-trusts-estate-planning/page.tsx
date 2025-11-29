@@ -130,6 +130,17 @@ export default function ComprehensiveGuideTrustsPage() {
             </div>
           </section>
 
+          {/* Hero Infographic - Below Title */}
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+              <img 
+                src="https://i.imgur.com/mgkSY5y.jpeg" 
+                alt="Comprehensive Guide to Trusts Infographic" 
+                className="w-full h-auto"
+              />
+            </div>
+          </section>
+
           {/* Section 1: Anatomy of a Trust */}
           <section id="anatomy" className="py-20 md:py-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
