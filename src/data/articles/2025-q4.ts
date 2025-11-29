@@ -1,6 +1,7 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2025Q4: Article[] = [
+
 {
     title: "Monte Carlo Simulation in Quantitative Finance: Advanced Stochastic Modeling",
     description: "An overview of the numerical techniques and stochastic models essential for pricing exotic derivatives and managing XVA risk. Explore jump-diffusion processes, stochastic volatility frameworks, and nested simulation for CVA.",
@@ -61,6 +62,17 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
     podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
     options: true,
+  },
+{
+    title: "Mastering the Volatility Risk Premium: A Comprehensive Guide to SPX Options Selling",
+    description: "An institutional-grade deep dive into selling SPX options to harvest the Volatility Risk Premium. Understand why institutions structurally overpay for protection, compare SPX vs XSP vs SPY instruments, master tax optimization with Section 1256, and discover the optimal strategy for your capital level and risk tolerance.",
+    slug: "mastering-volatility-risk-premium-spx-options-selling",
+    date: "November 29, 2025",
+    imageUrl: "https://i.imgur.com/Iz7lSu4.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSyPM4fIhPOPhOzvbO3SZ-PxzObursCGZzw8F93Wz2yA2eLmuAMSZ7lNHf7uFLeMp4wJe5N5pj9PQPT/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Monte Carlo Simulation in Quantitative Finance: Stochastic Modeling, Risk Quantification, and Algorithmic Robustness",
