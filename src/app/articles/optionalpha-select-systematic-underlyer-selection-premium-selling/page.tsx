@@ -103,6 +103,17 @@ export default function OptionAlphaSelectArticle() {
           </div>
         </header>
 
+        {/* Hero Infographic - Below Title */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <img 
+              src="https://i.imgur.com/zo6Tcpc.jpeg" 
+              alt="OptionAlpha Select Framework Infographic" 
+              className="w-full h-auto"
+            />
+          </div>
+        </section>
+
         {/* The Three Pillars Section */}
         <section id="pillars" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

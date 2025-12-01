@@ -58,6 +58,17 @@ export default function WorldQuantAlphaFactoryArticle() {
           A comprehensive deep research analysis of WorldQuant&apos;s revolutionary &quot;Alpha Factory&quot; system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.
         </p>
 
+        {/* Hero Infographic */}
+        <section className="mb-12">
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <img 
+              src="https://i.imgur.com/boJhFsQ.jpeg" 
+              alt="WorldQuant Alpha Factory Framework Infographic" 
+              className="w-full h-auto"
+            />
+          </div>
+        </section>
+
         {/* Executive Summary */}
         <ContentSection id="summary" title="Executive Summary">
           <div className="space-y-4">
