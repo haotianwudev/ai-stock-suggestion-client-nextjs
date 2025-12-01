@@ -25,7 +25,7 @@ export default function OptionAlphaSelectArticle() {
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
             articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleSlug={currentArticle.slug || ''} 
           />
         </>
       )}
