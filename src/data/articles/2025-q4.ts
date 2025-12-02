@@ -3,6 +3,18 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
+    title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
+    description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
+    slug: "calendar-spread-architecture-time-decay-options-trading",
+    date: "December 14, 2025",
+    imageUrl: "https://i.imgur.com/I4TjHJ7.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+
+{
     title: "Monte Carlo Simulation in Quantitative Finance: Advanced Stochastic Modeling",
     description: "An overview of the numerical techniques and stochastic models essential for pricing exotic derivatives and managing XVA risk. Explore jump-diffusion processes, stochastic volatility frameworks, and nested simulation for CVA.",
     slug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
