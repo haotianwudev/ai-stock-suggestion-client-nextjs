@@ -3,6 +3,17 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
+    title: "The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind",
+    description: "A comprehensive analysis of the Bessent Hypothesis examining how the Bank of Japan's rate hikes colliding with US Federal Reserve easing could trigger a historic unwind of the $20 trillion Yen Carry Trade. Explores the structural shift in global liquidity, the anatomy of the doom loop, and sector-specific implications for investors navigating this grey rhino event.",
+    slug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
+    date: "December 15, 2025",
+    imageUrl: "https://i.imgur.com/oyqfzgL.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRJOwkRSpdTDEXDsMu6BMhia2EkzosRPCqPAzGT-qofQgqNY4di6sosdDIzEZXszWip_TpA5-JAkbp8/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+
+{
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
     slug: "calendar-spread-architecture-time-decay-options-trading",
