@@ -3,6 +3,18 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
+    title: "Selling Long-Dated Put Options (LEAPs): Institutional Mechanics, Volatility Arbitrage, and the Retail Traps",
+    description: "A comprehensive analysis of LEAP puts as instruments for strategic acquisition and volatility arbitrage, distinct from short-term income strategies. Explores the Greek profile dominance of Vega over Theta, institutional applications from Buffett's acquisition strategy to dividend arbitrage counterparties, and the quantitative pitfalls of illiquidity, capital inefficiency, and the Vega time bomb that destroy retail value.",
+    slug: "selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage",
+    date: "December 18, 2025",
+    imageUrl: "https://i.imgur.com/nBdrqD7.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvTNTE3JeoNILFL-FzOK2gUHdhk3ZG7FJCcILRgbVNA9YX1kPEWexRtWBrotSq9eh9KNjUsMrLN6-p/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+
+{
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
     description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
     slug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
