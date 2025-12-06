@@ -335,7 +335,7 @@ export default function EarningsVolatilitySellingStrategy() {
                       <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
                         <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-3">High IV/RV Ratio</h4>
                         <p className="text-blue-700 dark:text-blue-400 text-sm">
-                          Implied volatility should be inflated relative to historical realized volatility (ideally ratio > 1.5).
+                          Implied volatility should be inflated relative to historical realized volatility (ideally ratio &gt; 1.5).
                         </p>
                       </div>
                       <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-lg">
@@ -678,7 +678,7 @@ export default function EarningsVolatilitySellingStrategy() {
                           ratio = thirty_day_iv / rv
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
-                          Values > 1.5 indicate overpriced volatility
+                          Values &gt; 1.5 indicate overpriced volatility
                         </p>
                       </div>
 

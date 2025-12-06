@@ -442,14 +442,14 @@ export default function EnhancingSellPutStrategy() {
                     <h5 className="font-semibold mb-1">IV Rank</h5>
                     <p className="text-sm text-gray-700">
                       Compares current IV to its 52-week high/low range (0-100 scale). 
-                      Target IV rank >50 for put selling opportunities.
+                      Target IV rank &gt;50 for put selling opportunities.
                     </p>
                   </div>
                   <div className="bg-gray-50 p-3 rounded">
                     <h5 className="font-semibold mb-1">IV Percentile</h5>
                     <p className="text-sm text-gray-700">
                       Percentage of days in past year IV was lower than today. 
-                      Seek IVP >70 for optimal put selling conditions.
+                      Seek IVP &gt;70 for optimal put selling conditions.
                     </p>
                   </div>
                 </div>

@@ -293,7 +293,7 @@ export default function VerticalCreditSpreadsGuide() {
                         <CheckCircle className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-semibold text-blue-900">Elevated IV Rank</h4>
-                          <p className="text-blue-800 text-sm">Use IV Rank screeners to find underlyings with current IV high relative to 52-week range (>30 minimum).</p>
+                          <p className="text-blue-800 text-sm">Use IV Rank screeners to find underlyings with current IV high relative to 52-week range (&gt;30 minimum).</p>
                         </div>
                       </div>
                     </div>

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --no-lint",
-    "build:analyze": "ANALYZE=true next build --no-lint",
+    "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
