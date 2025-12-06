@@ -3,6 +3,28 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
+    title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
+    description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
+    slug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
+    date: "December 17, 2025",
+    imageUrl: "https://i.imgur.com/OdLQOju.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRQMkTeGVs00ktOo8cKiUlFewzE1EV-U0eGsnTeTvJ_xsFIc2ildzvPZ9Qcky1W_-U9vjhDl90WpRUf/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+
+{
+    title: "ES & NQ Futures: The Engine Room of the Global Economy",
+    description: "A comprehensive technical guide to S&P 500 and Nasdaq-100 E-mini futures for investors, traders, and observers. Master contract specifications, the micro revolution democratizing futures access, market structure, critical pitfalls, and the strategic utility of futures as economic dashboard indicators.",
+    slug: "es-nq-futures-engine-room-global-economy",
+    date: "December 16, 2025",
+    imageUrl: "https://i.imgur.com/nwfwU8Q.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQTy8TWpAKFSFBnnKnfjHyPrupXR_D2I5khOcSy5WChcffYFrogZhvE3pUZ_ekwlf7QabBtCmJTcm4Z/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+
+{
     title: "The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind",
     description: "A comprehensive analysis of the Bessent Hypothesis examining how the Bank of Japan's rate hikes colliding with US Federal Reserve easing could trigger a historic unwind of the $20 trillion Yen Carry Trade. Explores the structural shift in global liquidity, the anatomy of the doom loop, and sector-specific implications for investors navigating this grey rhino event.",
     slug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
