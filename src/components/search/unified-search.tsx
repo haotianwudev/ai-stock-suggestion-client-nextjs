@@ -100,7 +100,13 @@ export function UnifiedSearch({ onResultsChange }: UnifiedSearchProps) {
         }
       });
 
+      // Show article results immediately (local search is instant)
+      setResults([...searchResults]);
+      setShowResults(true);
+      onResultsChange?.(searchResults.length > 0);
+
       // Search stocks via GraphQL - requires at least 2 characters
+      // This runs asynchronously and updates results when complete
       if (query.length >= 2) {
         try {
           const client = createApolloClient();
@@ -110,23 +116,24 @@ export function UnifiedSearch({ onResultsChange }: UnifiedSearchProps) {
           });
 
           if (data?.searchStocks) {
+            const stockResults: SearchResult[] = [];
             data.searchStocks.slice(0, 5).forEach((stock: any) => {
-              searchResults.push({
+              stockResults.push({
                 ticker: stock.ticker,
                 name: stock.name,
                 type: 'stock'
               });
             });
+            
+            // Add stock results to existing article results
+            setResults([...searchResults, ...stockResults]);
+            onResultsChange?.(searchResults.length + stockResults.length > 0);
           }
         } catch (error) {
           console.error("Stock search error:", error);
           // Continue with article results even if stock search fails
         }
       }
-
-      setResults(searchResults);
-      setShowResults(true);
-      onResultsChange?.(searchResults.length > 0);
     } catch (error) {
       console.error("Search error:", error);
     } finally {
