@@ -3,6 +3,17 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
+    title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
+    description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
+    slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
+    date: "December 26, 2025",
+    imageUrl: "https://i.imgur.com/zo6Tcpc.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
+    podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
+    options: true,
+  },
+{
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
     description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
     slug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
@@ -26,16 +37,18 @@ export const articles2025Q4: Article[] = [
   },
 
 {
-    title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
-    description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
-    slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
+    title: "The Single Leg Long Put: Asymmetric Utility in Options Trading",
+    description: "The definitive instrument for asymmetric utility. Master the art of profiting from decline and hedging catastrophic tail risk through single leg long puts. A comprehensive deep research analysis exploring the mechanics, Greeks, strategic motivations, market demographics, and the structural 'crash premium' that makes puts expensive.",
+    slug: "single-leg-put-strategy-asymmetric-utility",
     date: "December 20, 2025",
-    imageUrl: "https://i.imgur.com/zo6Tcpc.jpeg",
+    imageUrl: "https://i.imgur.com/a1a8zU5.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSUcNgYFVsQenDObEoDJiuX4Boe1m6rLmoIjARy2vh3LVlK44G2lZUiX4H7ZDDMydjcUlGodaPUbsLx/pub",
     deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
-    podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
+    podcastUrl: "https://open.spotify.com/episode/28qBfNSza5WcYKEsfdPbP1?si=7a3741854f374aeb",
     options: true,
+    labels: [ArticleLabel.QUANT],
   },
+
 {
     title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
     description: "A comprehensive deep research analysis of WorldQuant's revolutionary 'Alpha Factory' system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.",
