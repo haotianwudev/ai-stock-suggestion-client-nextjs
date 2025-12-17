@@ -13,7 +13,16 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
     options: true,
   },
-
+{
+    title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
+    description: "Web3 represents a fundamental paradigm shift towards a 'Read-Write-Own' internet built on blockchain, smart contracts, and cryptography. Explore how DeFi is transforming retail investors from passive consumers into active participants and co-owners of market infrastructure.",
+    slug: "web3-revolution-defi-retail-investors",
+    date: "December 24, 2025",
+    imageUrl: "https://i.imgur.com/YeKTkd4.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ8jmxTMBnLq-y9ucLNhiFO3uuc_-S0TNTRLluyg4uzUj0-rXtBMKKyW-aZn1LfoEvM4nZM5kC4meod/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML],
+  },
 {
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
     description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
