@@ -14,6 +14,16 @@ export const articles2025Q4: Article[] = [
     options: true,
   },
 {
+    title: "Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics",
+    description: "From Alpha generation to handling complex cash flows, understand the metrics that matter. Master Sharpe ratios, Sortino ratios, time-weighted vs money-weighted returns, and the art of benchmark selection for evaluating hedge fund strategies.",
+    slug: "measuring-immeasurable-hedge-fund-performance-metrics",
+    date: "December 26, 2025",
+    imageUrl: "https://i.imgur.com/wLwP2HW.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLF6YOjvadQ0NUUS0YvAYK1HmyAUtpS-iFVYbE3espsZOasOv5qjfkalz9X6pOqoDUSPDalwJiXdEB/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+{
     title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
     description: "Web3 represents a fundamental paradigm shift towards a 'Read-Write-Own' internet built on blockchain, smart contracts, and cryptography. Explore how DeFi is transforming retail investors from passive consumers into active participants and co-owners of market infrastructure.",
     slug: "web3-revolution-defi-retail-investors",
