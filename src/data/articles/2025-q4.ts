@@ -816,7 +816,8 @@ export const articles2025Q4: Article[] = [
     date: "October 11, 2025",
     youtubeUrl: "https://youtu.be/GGKItsjV-L8",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/GGKItsjV-L8/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/GGKItsjV-L8/maxresdefault.jpg",
+    options: true,
   },
 {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
