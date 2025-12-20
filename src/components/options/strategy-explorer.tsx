@@ -1,7 +1,8 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Strategy, getStrategyDetailComponent } from './strategies';
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -9,20 +10,20 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 // --- DATA STORE ---
 const data = {
     strategies: [
-        { id: 'long_call', category: 'Bullish', name: 'Long Call', description: "The most straightforward bullish strategy. Buy a call option expecting the underlying asset's price to rise significantly. Profit potential is unlimited, while risk is limited to the premium paid.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
-        { id: 'bull_call_spread', category: 'Bullish', name: 'Bull Call Spread', description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.", profile: 'Defined Risk, Defined Profit', volatility: 'Less sensitive to IV changes', time: 'Less sensitive to time decay' },
-        { id: 'bull_put_spread', category: 'Bullish', name: 'Bull Put Spread', description: "An income-generating bullish strategy. Sell a put and buy another put with a lower strike. You collect a credit and profit if the stock stays above the short put's strike. Risk and profit are defined.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'covered_call', category: 'Bullish', name: 'Covered Call Writing', description: "A conservative income strategy. Hold the underlying stock and sell a call option against it. You collect premium income and profit if the stock stays flat or rises moderately. Risk is similar to holding the stock, profit is capped by the call strike.", profile: 'Stock Risk, Limited Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'sell_naked_put', category: 'Bullish', name: 'Sell Naked Put', description: "A bullish income strategy. Sell a put option without holding cash or the underlying. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.", profile: 'Substantial Risk, Limited Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'long_put', category: 'Bearish', name: 'Long Put', description: "The most straightforward bearish strategy. Buy a put option expecting the underlying asset's price to fall significantly. Profit potential is substantial, risk is limited to the premium paid.", profile: 'Defined Risk, Substantial Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
-        { id: 'bear_put_spread', category: 'Bearish', name: 'Bear Put Spread', description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.", profile: 'Defined Risk, Defined Profit', volatility: 'Less sensitive to IV changes', time: 'Less sensitive to time decay' },
-        { id: 'bear_call_spread', category: 'Bearish', name: 'Bear Call Spread', description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'short_straddle', category: 'Neutral', name: 'Short Straddle', description: "A bet on low volatility. Sell an at-the-money call and put. You profit if the stock price stays very close to the strike price. Risk is theoretically unlimited.", profile: 'Unlimited Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'iron_condor', category: 'Neutral', name: 'Iron Condor', description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-        { id: 'long_straddle', category: 'Volatility', name: 'Long Straddle', description: "A bet on a large price move in either direction. Buy an at-the-money call and put. You profit if the stock makes a big move, up or down, covering the cost of both options.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
-        { id: 'long_strangle', category: 'Volatility', name: 'Long Strangle', description: "A cheaper alternative to the long straddle. Buy an out-of-the-money call and put. Requires a larger price move to be profitable, but the initial cost is lower.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
-        { id: 'wheel_strategy', category: 'Bullish', name: 'Wheel Strategy (Triple Income)', description: "A systematic income-generating strategy creating three income sources: put premiums, call premiums, and dividends. Popular among income-focused traders for generating consistent returns of 7-15% annually when executed properly.", profile: 'Stock Risk, Triple Income', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
-    ]
+        { id: 'long_call', category: 'Bullish' as const, name: 'Long Call', description: "The most straightforward bullish strategy. Buy a call option expecting the underlying asset's price to rise significantly. Profit potential is unlimited, while risk is limited to the premium paid.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
+        { id: 'bull_call_spread', category: 'Bullish' as const, name: 'Bull Call Spread', description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.", profile: 'Defined Risk, Defined Profit', volatility: 'Less sensitive to IV changes', time: 'Less sensitive to time decay' },
+        { id: 'bull_put_spread', category: 'Bullish' as const, name: 'Bull Put Spread', description: "An income-generating bullish strategy. Sell a put and buy another put with a lower strike. You collect a credit and profit if the stock stays above the short put's strike. Risk and profit are defined.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'covered_call', category: 'Bullish' as const, name: 'Covered Call Writing', description: "A conservative income strategy. Hold the underlying stock and sell a call option against it. You collect premium income and profit if the stock stays flat or rises moderately. Risk is similar to holding the stock, profit is capped by the call strike.", profile: 'Stock Risk, Limited Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'sell_naked_put', category: 'Bullish' as const, name: 'Sell Naked Put', description: "A bullish income strategy. Sell a put option without holding cash or the underlying. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.", profile: 'Substantial Risk, Limited Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'long_put', category: 'Bearish' as const, name: 'Long Put', description: "The most straightforward bearish strategy. Buy a put option expecting the underlying asset's price to fall significantly. Profit potential is substantial, risk is limited to the premium paid.", profile: 'Defined Risk, Substantial Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
+        { id: 'bear_put_spread', category: 'Bearish' as const, name: 'Bear Put Spread', description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.", profile: 'Defined Risk, Defined Profit', volatility: 'Less sensitive to IV changes', time: 'Less sensitive to time decay' },
+        { id: 'bear_call_spread', category: 'Bearish' as const, name: 'Bear Call Spread', description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'short_straddle', category: 'Neutral' as const, name: 'Short Straddle', description: "A bet on low volatility. Sell an at-the-money call and put. You profit if the stock price stays very close to the strike price. Risk is theoretically unlimited.", profile: 'Unlimited Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'iron_condor', category: 'Neutral' as const, name: 'Iron Condor', description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.", profile: 'Defined Risk, Defined Profit', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+        { id: 'long_straddle', category: 'Volatility' as const, name: 'Long Straddle', description: "A bet on a large price move in either direction. Buy an at-the-money call and put. You profit if the stock makes a big move, up or down, covering the cost of both options.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
+        { id: 'long_strangle', category: 'Volatility' as const, name: 'Long Strangle', description: "A cheaper alternative to the long straddle. Buy an out-of-the-money call and put. Requires a larger price move to be profitable, but the initial cost is lower.", profile: 'Defined Risk, Unlimited Profit', volatility: 'Benefits from rising IV (Long Vega)', time: 'Hurt by time decay (Short Theta)' },
+        { id: 'wheel_strategy', category: 'Bullish' as const, name: 'Wheel Strategy (Triple Income)', description: "A systematic income-generating strategy creating three income sources: put premiums, call premiums, and dividends. Popular among income-focused traders for generating consistent returns of 7-15% annually when executed properly.", profile: 'Stock Risk, Triple Income', volatility: 'Benefits from falling IV (Short Vega)', time: 'Benefits from time decay (Long Theta)' },
+    ] as Strategy[]
 };
 
 const PayoffChart = ({ strategy }: { strategy: any }) => {
@@ -107,7 +108,7 @@ const PayoffChart = ({ strategy }: { strategy: any }) => {
 };
 
 const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => (
-    <div className="content-card p-4 md:p-6 mt-6 md:mt-8 animate-fade-in">
+    <div className="animate-fade-in">
         <button 
             onClick={onBack} 
             className="mb-6 inline-flex items-center gap-2 px-4 py-2 text-sm md:text-base font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all duration-200 border border-blue-200 hover:border-blue-300"
@@ -118,31 +119,35 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             </svg>
             <span>Back to all strategies</span>
         </button>
-        <h2 className="text-2xl md:text-3xl font-bold leading-tight">{strategy.name}</h2>
-        <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed">{strategy.description}</p>
         
-        <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
-            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
-                <p className="text-xs md:text-sm font-medium text-gray-500">Risk / Reward</p>
-                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.profile}</p>
+        <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-6 md:p-8 rounded-xl border border-blue-200 shadow-lg mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">{strategy.name}</h2>
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed">{strategy.description}</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+                <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Risk / Reward</p>
+                <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.profile}</p>
             </div>
-            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
-                <p className="text-xs md:text-sm font-medium text-gray-500">Volatility View</p>
-                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.volatility}</p>
+            <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
+                <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Volatility View</p>
+                <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.volatility}</p>
             </div>
-            <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
-                <p className="text-xs md:text-sm font-medium text-gray-500">Time Decay View</p>
-                <p className="text-sm md:text-lg font-semibold leading-tight">{strategy.time}</p>
+            <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition-shadow">
+                <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Time Decay View</p>
+                <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.time}</p>
             </div>
         </div>
 
         {/* Payoff Diagram - Show for ALL strategies */}
-        <div className="mt-6 md:mt-8">
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Risk Profile (Payoff Diagram)</h3>
-                <div className="chart-container h-[250px] md:h-[300px]">
-                    <PayoffChart strategy={strategy} />
-                </div>
+        <div className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-gray-200">
+            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span className="text-2xl">📊</span>
+                Risk Profile (Payoff Diagram)
+            </h3>
+            <div className="chart-container h-[280px] md:h-[350px] bg-gray-50 rounded-lg p-4">
+                <PayoffChart strategy={strategy} />
             </div>
         </div>
 
@@ -509,49 +514,64 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
 
     return (
         <div className="space-y-6 md:space-y-8">
-            <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">Strategy Explorer</h2>
-                <p className="mt-2 text-sm md:text-lg text-gray-600 leading-relaxed">
-                    This section provides a comprehensive taxonomy of common options strategies. Each strategy is designed for a specific market outlook. 
-                    Use the filters to discover strategies based on your view of the market's direction and volatility, then tap on a card to see a detailed breakdown and a dynamic risk profile graph.
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 md:p-8 rounded-xl border border-blue-100">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">Strategy Explorer</h2>
+                <p className="text-sm md:text-lg text-gray-600 leading-relaxed">
+                    Explore a comprehensive taxonomy of options strategies. Each strategy is designed for a specific market outlook. 
+                    Use the filters below to discover strategies based on your view of the market's direction and volatility.
                 </p>
             </div>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gray-100 rounded-lg">
+            
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 shadow-sm">
                 {['All', 'Bullish', 'Bearish', 'Neutral', 'Volatility'].map(f => (
                     <button 
                         key={f} 
                         onClick={() => setFilter(f)} 
-                        className={`btn px-3 md:px-4 py-2 md:py-2 rounded-md font-semibold text-gray-700 text-sm md:text-base min-h-[44px] flex-1 sm:flex-initial transition-colors duration-200 ${
-                            filter === f ? 'btn-active bg-blue-600 text-white' : 'bg-white hover:bg-gray-50'
+                        className={`btn px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold text-sm md:text-base min-h-[44px] flex-1 sm:flex-initial transition-all duration-200 shadow-sm ${
+                            filter === f 
+                                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md transform scale-105' 
+                                : 'bg-white text-gray-700 hover:bg-gray-50 hover:shadow-md hover:scale-102'
                         }`}
                     >
-                        {f} {{Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] || ''}
+                        <span className="flex items-center justify-center gap-2">
+                            {f}
+                            <span className="text-lg">{{Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] || ''}</span>
+                        </span>
                     </button>
                 ))}
             </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {filteredStrategies.map(s => (
                     <div
                         key={s.id}
                         onClick={() => handleStrategyClick(s.id)}
-                        className="content-card p-4 md:p-6 cursor-pointer strategy-card border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 rounded-lg min-h-[140px] flex flex-col"
+                        className="group content-card p-5 md:p-6 cursor-pointer strategy-card border-2 border-gray-200 bg-white hover:border-blue-400 hover:shadow-xl transition-all duration-300 rounded-xl min-h-[160px] flex flex-col transform hover:-translate-y-1"
                     >
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                            <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1">{s.name}</h3>
-                            <span className={`text-xs md:text-sm font-medium px-2 py-1 rounded-full inline-block self-start ${
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1 group-hover:text-blue-600 transition-colors">{s.name}</h3>
+                            <span className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block self-start shadow-sm ${
                                 {
-                                    Bullish: 'bg-green-100 text-green-800',
-                                    Bearish: 'bg-red-100 text-red-800',
-                                    Neutral: 'bg-yellow-100 text-yellow-800',
-                                    Volatility: 'bg-blue-100 text-blue-800'
+                                    Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                    Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                    Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                    Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300'
                                 }[s.category]
                             }`}>
                                 {s.category}
                             </span>
                         </div>
-                        <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1">
+                        <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1 group-hover:text-gray-700 transition-colors">
                             {s.description.split('.')[0]}.
                         </p>
+                        <div className="mt-4 pt-3 border-t border-gray-100">
+                            <span className="text-xs font-medium text-blue-600 group-hover:text-blue-700 flex items-center gap-1">
+                                View Details
+                                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </span>
+                        </div>
                     </div>
                 ))}
             </div>
