@@ -564,14 +564,6 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                         <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1 group-hover:text-gray-700 transition-colors">
                             {s.description.split('.')[0]}.
                         </p>
-                        <div className="mt-4 pt-3 border-t border-gray-100">
-                            <span className="text-xs font-medium text-blue-600 group-hover:text-blue-700 flex items-center gap-1">
-                                View Details
-                                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </span>
-                        </div>
                     </div>
                 ))}
             </div>
