@@ -309,22 +309,7 @@ export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
             </TabsContent>
             
             <TabsContent value="strategies" className="mt-4 md:mt-6">
-              <Card>
-                <CardHeader className="pb-4 md:pb-6">
-                  <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-                    <BarChart4 className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
-                    <span>Strategy Explorer</span>
-                  </CardTitle>
-                  <CardDescription className="text-sm md:text-base">
-                    Explore a comprehensive taxonomy of common options strategies. Filter by market outlook and view risk profiles.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-white rounded-xl shadow p-4 md:p-8">
-                    <StrategyExplorer />
-                  </div>
-                </CardContent>
-              </Card>
+              <StrategyExplorer />
             </TabsContent>
           </Tabs>
         </div>
