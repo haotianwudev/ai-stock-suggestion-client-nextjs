@@ -37,6 +37,7 @@ ChartJS.register(
 
 interface OptionsTabClientProps {
   tab: string;
+  strategyId?: string;
 }
 
 // Options Articles Tab Component with Filtering
@@ -109,7 +110,7 @@ function OptionsArticlesTab() {
   );
 }
 
-export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
+export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(tab);
 
@@ -123,6 +124,16 @@ export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
     setActiveTab(value);
     const newUrl = `/option/${value}`;
     router.push(newUrl, { scroll: false });
+  };
+
+  // Handle strategy selection
+  const handleStrategySelect = (strategySlug: string) => {
+    router.push(`/option/strategies/${strategySlug}`, { scroll: true });
+  };
+
+  // Handle back from strategy detail
+  const handleStrategyBack = () => {
+    router.push('/option/strategies', { scroll: false });
   };
 
   return (
@@ -309,7 +320,11 @@ export default function OptionsTabClient({ tab }: OptionsTabClientProps) {
             </TabsContent>
             
             <TabsContent value="strategies" className="mt-4 md:mt-6">
-              <StrategyExplorer />
+              <StrategyExplorer 
+                selectedStrategyId={strategyId}
+                onStrategySelect={handleStrategySelect}
+                onBack={handleStrategyBack}
+              />
             </TabsContent>
           </Tabs>
         </div>

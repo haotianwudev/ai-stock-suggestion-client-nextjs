@@ -111,6 +111,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
         <button 
             onClick={onBack} 
             className="mb-4 text-blue-600 hover:underline text-sm md:text-base min-h-[44px] flex items-center"
+            aria-label="Back to all strategies"
         >
             &larr; Back to all strategies
         </button>
@@ -449,15 +450,58 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
     </div>
 );
 
-export const StrategyExplorer = () => {
+// Convert strategy ID to URL slug
+const strategyIdToSlug = (id: string): string => {
+    return id.replace(/_/g, '-');
+};
+
+// Convert URL slug to strategy ID
+const slugToStrategyId = (slug: string): string => {
+    return slug.replace(/-/g, '_');
+};
+
+interface StrategyExplorerProps {
+    selectedStrategyId?: string;
+    onStrategySelect?: (slug: string) => void;
+    onBack?: () => void;
+}
+
+export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack }: StrategyExplorerProps) => {
     const [filter, setFilter] = useState('All');
     const [selectedId, setSelectedId] = useState<string | null>(null);
+
+    // Sync with URL parameter
+    useEffect(() => {
+        if (selectedStrategyId) {
+            const strategyId = slugToStrategyId(selectedStrategyId);
+            setSelectedId(strategyId);
+        } else {
+            setSelectedId(null);
+        }
+    }, [selectedStrategyId]);
 
     const filteredStrategies = filter === 'All' ? data.strategies : data.strategies.filter(s => s.category === filter);
     const selectedStrategy = selectedId ? data.strategies.find(s => s.id === selectedId) : null;
 
+    const handleStrategyClick = (strategyId: string) => {
+        const slug = strategyIdToSlug(strategyId);
+        if (onStrategySelect) {
+            onStrategySelect(slug);
+        } else {
+            setSelectedId(strategyId);
+        }
+    };
+
+    const handleBack = () => {
+        if (onBack) {
+            onBack();
+        } else {
+            setSelectedId(null);
+        }
+    };
+
     if (selectedStrategy) {
-        return <StrategyDetail strategy={selectedStrategy} onBack={() => setSelectedId(null)} />;
+        return <StrategyDetail strategy={selectedStrategy} onBack={handleBack} />;
     }
 
     return (
@@ -486,7 +530,7 @@ export const StrategyExplorer = () => {
                 {filteredStrategies.map(s => (
                     <div
                         key={s.id}
-                        onClick={() => setSelectedId(s.id)}
+                        onClick={() => handleStrategyClick(s.id)}
                         className="content-card p-4 md:p-6 cursor-pointer strategy-card border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 rounded-lg min-h-[140px] flex flex-col"
                     >
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
