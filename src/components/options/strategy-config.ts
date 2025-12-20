@@ -23,7 +23,8 @@ export interface Strategy {
     volatility: string;
     time: string;
     payoffCalculator: PayoffCalculator;
-    youtubeId?: string;  // Simplified: just the video ID
+    youtubeId?: string;
+    payoffExplanation?: string;  // Explanation for the payoff diagram
 }
 
 // --- STRATEGY DATA ---
@@ -175,6 +176,7 @@ export const strategies: Strategy[] = [
             else if (p <= callStrike) return totalPremium + (p - stockBuyPrice);
             else return totalPremium + (callStrike - stockBuyPrice);
         },
-        youtubeId: 'GGKItsjV-L8'
+        youtubeId: 'GGKItsjV-L8',
+        payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing"
     },
 ];

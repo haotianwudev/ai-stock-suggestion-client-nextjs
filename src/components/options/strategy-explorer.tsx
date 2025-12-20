@@ -113,6 +113,15 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                 <span className="text-2xl">📊</span>
                                 Risk Profile (Payoff Diagram)
                             </h3>
+                            {strategy.payoffExplanation && (
+                                <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                                        <span className="font-semibold text-blue-700">💡 How to Read:</span>
+                                        <br />
+                                        {strategy.payoffExplanation}
+                                    </p>
+                                </div>
+                            )}
                             <div className="chart-container h-[280px] md:h-[350px] bg-gray-50 rounded-lg p-4">
                                 <PayoffChart strategy={strategy} />
                             </div>
@@ -145,6 +154,15 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                         <span className="text-2xl">📊</span>
                         Risk Profile (Payoff Diagram)
                     </h3>
+                    {strategy.payoffExplanation && (
+                        <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                            <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                                <span className="font-semibold text-blue-700">💡 How to Read:</span>
+                                <br />
+                                {strategy.payoffExplanation}
+                            </p>
+                        </div>
+                    )}
                     <div className="chart-container h-[280px] md:h-[350px] bg-gray-50 rounded-lg p-4">
                         <PayoffChart strategy={strategy} />
                     </div>
