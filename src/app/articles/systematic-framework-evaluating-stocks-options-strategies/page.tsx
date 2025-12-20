@@ -16,7 +16,7 @@ export default function SystematicFrameworkOptionsStrategies() {
       let current = '';
       
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = (section as HTMLElement).offsetTop;
         if (window.pageYOffset >= sectionTop - 200) {
           current = section.getAttribute('id') || '';
         }
@@ -41,7 +41,7 @@ export default function SystematicFrameworkOptionsStrategies() {
   return (
     <>
       {/* SEO Components */}
-      {currentArticle && (
+      {currentArticle && currentArticle.title && currentArticle.slug && (
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />

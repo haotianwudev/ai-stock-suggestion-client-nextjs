@@ -110,10 +110,13 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
     <div className="content-card p-4 md:p-6 mt-6 md:mt-8 animate-fade-in">
         <button 
             onClick={onBack} 
-            className="mb-4 text-blue-600 hover:underline text-sm md:text-base min-h-[44px] flex items-center"
+            className="mb-6 inline-flex items-center gap-2 px-4 py-2 text-sm md:text-base font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all duration-200 border border-blue-200 hover:border-blue-300"
             aria-label="Back to all strategies"
         >
-            &larr; Back to all strategies
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>Back to all strategies</span>
         </button>
         <h2 className="text-2xl md:text-3xl font-bold leading-tight">{strategy.name}</h2>
         <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed">{strategy.description}</p>
