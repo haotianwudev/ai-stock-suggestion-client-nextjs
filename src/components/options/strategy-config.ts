@@ -1,7 +1,7 @@
 // --- STRATEGY CONFIGURATION ---
 // Centralized configuration for all options strategies
 
-export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility';
+export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured';
 
 export interface PayoffParams {
     stockPrice: number;
@@ -16,7 +16,7 @@ export type PayoffCalculator = (price: number, params: PayoffParams) => number;
 
 export interface Strategy {
     id: string;
-    category: StrategyCategory;
+    category: StrategyCategory[];  // Changed to array to support multiple categories
     name: string;
     description: string;
     profile: string;
@@ -32,7 +32,7 @@ export interface Strategy {
 export const strategies: Strategy[] = [
     {
         id: 'long_call',
-        category: 'Bullish',
+        category: ['Bullish'],
         name: 'Long Call',
         description: "The most straightforward bullish strategy. Buy a call option expecting the underlying asset's price to rise significantly. Profit potential is unlimited, while risk is limited to the premium paid.",
         profile: 'Defined Risk, Unlimited Profit',
@@ -43,7 +43,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_call_spread',
-        category: 'Bullish',
+        category: ['Bullish'],
         name: 'Bull Call Spread',
         description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.",
         profile: 'Defined Risk, Defined Profit',
@@ -54,7 +54,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_put_spread',
-        category: 'Bullish',
+        category: ['Bullish', 'Income'],
         name: 'Bull Put Spread',
         description: "An income-generating bullish strategy. Sell a put and buy another put with a lower strike. You collect a credit and profit if the stock stays above the short put's strike. Risk and profit are defined.",
         profile: 'Defined Risk, Defined Profit',
@@ -65,7 +65,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'covered_call',
-        category: 'Bullish',
+        category: ['Bullish', 'Income'],
         name: 'Covered Call Writing',
         description: "A conservative income strategy. Hold the underlying stock and sell a call option against it. You collect premium income and profit if the stock stays flat or rises moderately. Risk is similar to holding the stock, profit is capped by the call strike.",
         profile: 'Stock Risk, Limited Profit',
@@ -76,7 +76,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'sell_naked_put',
-        category: 'Bullish',
+        category: ['Bullish', 'Income'],
         name: 'Sell Naked Put',
         description: "A bullish income strategy. Sell a put option without holding cash or the underlying. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.",
         profile: 'Substantial Risk, Limited Profit',
@@ -87,7 +87,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'long_put',
-        category: 'Bearish',
+        category: ['Bearish'],
         name: 'Long Put',
         description: "The most straightforward bearish strategy. Buy a put option expecting the underlying asset's price to fall significantly. Profit potential is substantial, risk is limited to the premium paid.",
         profile: 'Defined Risk, Substantial Profit',
@@ -98,7 +98,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_put_spread',
-        category: 'Bearish',
+        category: ['Bearish'],
         name: 'Bear Put Spread',
         description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.",
         profile: 'Defined Risk, Defined Profit',
@@ -109,7 +109,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_call_spread',
-        category: 'Bearish',
+        category: ['Bearish', 'Income'],
         name: 'Bear Call Spread',
         description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.",
         profile: 'Defined Risk, Defined Profit',
@@ -120,7 +120,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'short_straddle',
-        category: 'Neutral',
+        category: ['Neutral', 'Income'],
         name: 'Short Straddle',
         description: "A bet on low volatility. Sell an at-the-money call and put. You profit if the stock price stays very close to the strike price. Risk is theoretically unlimited.",
         profile: 'Unlimited Risk, Defined Profit',
@@ -131,7 +131,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'iron_condor',
-        category: 'Neutral',
+        category: ['Neutral', 'Income'],
         name: 'Iron Condor',
         description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.",
         profile: 'Defined Risk, Defined Profit',
@@ -142,7 +142,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'long_straddle',
-        category: 'Volatility',
+        category: ['Volatility'],
         name: 'Long Straddle',
         description: "A bet on a large price move in either direction. Buy an at-the-money call and put. You profit if the stock makes a big move, up or down, covering the cost of both options.",
         profile: 'Defined Risk, Unlimited Profit',
@@ -153,7 +153,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'long_strangle',
-        category: 'Volatility',
+        category: ['Volatility'],
         name: 'Long Strangle',
         description: "A cheaper alternative to the long straddle. Buy an out-of-the-money call and put. Requires a larger price move to be profitable, but the initial cost is lower.",
         profile: 'Defined Risk, Unlimited Profit',
@@ -164,7 +164,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'wheel_strategy',
-        category: 'Bullish',
+        category: ['Bullish', 'Income', 'Featured'],
         name: 'Wheel Strategy (Triple Income)',
         description: "A systematic income-generating strategy creating three income sources: put premiums, call premiums, and dividends. Popular among income-focused traders for generating consistent returns of 7-15% annually when executed properly.",
         profile: 'Stock Risk, Triple Income',

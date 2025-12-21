@@ -236,7 +236,7 @@ interface StrategyExplorerProps {
 }
 
 export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack }: StrategyExplorerProps) => {
-    const [filter, setFilter] = useState('All');
+    const [filter, setFilter] = useState('Featured');
     const [selectedId, setSelectedId] = useState<string | null>(null);
 
     // Sync with URL parameter
@@ -249,7 +249,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
         }
     }, [selectedStrategyId]);
 
-    const filteredStrategies = filter === 'All' ? strategies : strategies.filter(s => s.category === filter);
+    const filteredStrategies = filter === 'All' ? strategies : strategies.filter(s => s.category.includes(filter as any));
     const selectedStrategy = selectedId ? strategies.find(s => s.id === selectedId) : null;
 
     const handleStrategyClick = (strategyId: string) => {
@@ -284,7 +284,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
             </div>
             
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 shadow-sm">
-                {['All', 'Bullish', 'Bearish', 'Neutral', 'Volatility'].map(f => (
+                {['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income'].map(f => (
                     <button 
                         key={f} 
                         onClick={() => setFilter(f)} 
@@ -296,7 +296,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                     >
                         <span className="flex items-center justify-center gap-2">
                             {f}
-                            <span className="text-lg">{{Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡'}[f] || ''}</span>
+                            <span className="text-lg">{{Featured: '⭐', Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡', Income: '💰'}[f] || ''}</span>
                         </span>
                     </button>
                 ))}
@@ -311,16 +311,22 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                     >
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
                             <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1 group-hover:text-blue-600 transition-colors">{s.name}</h3>
-                            <span className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block self-start shadow-sm ${
-                                {
-                                    Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                    Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                    Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                    Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300'
-                                }[s.category]
-                            }`}>
-                                {s.category}
-                            </span>
+                            <div className="flex flex-wrap gap-1">
+                                {s.category.map((cat, index) => (
+                                    <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
+                                        {
+                                            Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
+                                            Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                            Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                            Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                            Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
+                                            Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
+                                        }[cat]
+                                    }`}>
+                                        {cat}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                         <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1 group-hover:text-gray-700 transition-colors">
                             {s.description.split('.')[0]}.
