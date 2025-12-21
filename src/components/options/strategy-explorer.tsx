@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { strategies, type Strategy, type PayoffParams } from './strategy-config';
+import { articles } from '@/data/articles';
+import { ArticleCard } from '@/components/articles/article-card';
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -169,6 +171,46 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                 </div>
             );
         })()}
+
+        {/* Related Articles Section */}
+        {strategy.relatedArticles && strategy.relatedArticles.length > 0 && (
+            <div className="mt-6">
+                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200 mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <span className="text-2xl">📚</span>
+                        Related Articles
+                    </h3>
+                    <p className="text-gray-600">
+                        Deep dive into this strategy with comprehensive research and analysis
+                    </p>
+                </div>
+                
+                <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
+                    {strategy.relatedArticles.map((slug: string) => {
+                        const article = articles.find(a => a.slug === slug);
+                        if (!article || !article.title || !article.slug) return null;
+                        
+                        return (
+                            <ArticleCard 
+                                key={article.slug}
+                                title={article.title}
+                                description={article.description}
+                                slug={article.slug}
+                                date={article.date}
+                                imageUrl={article.imageUrl}
+                                googleDoc={article.googleDoc}
+                                deepResearch={article.deepResearch}
+                                youtubeUrl={article.youtubeUrl}
+                                isVideo={article.isVideo}
+                                options={article.options}
+                                noSummary={article.noSummary}
+                                podcastUrl={article.podcastUrl}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        )}
 
         {/* Special expanded content for Wheel Strategy */}
         {strategy.id === 'wheel_strategy' && (

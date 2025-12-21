@@ -25,6 +25,7 @@ export interface Strategy {
     payoffCalculator: PayoffCalculator;
     youtubeId?: string;
     payoffExplanation?: string;  // Explanation for the payoff diagram
+    relatedArticles?: string[];  // Array of article slugs
 }
 
 // --- STRATEGY DATA ---
@@ -177,6 +178,7 @@ export const strategies: Strategy[] = [
             else return totalPremium + (callStrike - stockBuyPrice);
         },
         youtubeId: 'GGKItsjV-L8',
-        payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing"
+        payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
+        relatedArticles: ['options-wheel-trading-plan-quantitative-approach']
     },
 ];
