@@ -38,9 +38,182 @@ ChartJS.register(
 interface OptionsTabClientProps {
   tab: string;
   strategyId?: string;
+  subtopic?: string;
 }
 
-// Options Articles Tab Component with Filtering
+// Topics Tab Component with Sub-navigation
+function TopicsTab({ subtopic }: { subtopic?: string }) {
+  const router = useRouter();
+  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'when-to-trade');
+
+  // Update active subtopic when prop changes
+  useEffect(() => {
+    if (subtopic) {
+      setActiveSubtopic(subtopic);
+    }
+  }, [subtopic]);
+
+  // Handle subtopic change and update URL
+  const handleSubtopicChange = (value: string) => {
+    setActiveSubtopic(value);
+    const newUrl = `/option/topics/${value}`;
+    router.push(newUrl, { scroll: false });
+  };
+
+  // When to Trade Content
+  const WhenToTradeContent = () => (
+    <Card>
+      <CardHeader className="pb-4 md:pb-6">
+        <CardTitle className="text-xl md:text-2xl">When to Use Options</CardTitle>
+        <CardDescription className="text-sm md:text-base">
+          Understand the key scenarios where options can be an effective trading and investment tool.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4 md:space-y-6">
+        {/* Use Case Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          <Card className="border-green-200 bg-green-50/50">
+            <CardHeader className="pb-3 md:pb-4">
+              <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                <Shield className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
+                <span className="leading-tight">Hedging Risk</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed">
+                Protect existing positions from adverse price movements. 
+                Buy puts to hedge long stock positions or calls to hedge short positions.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-blue-200 bg-blue-50/50">
+            <CardHeader className="pb-3 md:pb-4">
+              <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
+                <span className="leading-tight">Speculation with Leverage</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed">
+                Control a larger position with less capital. 
+                Options provide leveraged exposure to price movements with defined risk.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-purple-200 bg-purple-50/50">
+            <CardHeader className="pb-3 md:pb-4">
+              <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
+                <span className="leading-tight">Income Generation</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed">
+                Sell covered calls or cash-secured puts to generate premium income 
+                on existing holdings or available cash.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-orange-200 bg-orange-50/50">
+            <CardHeader className="pb-3 md:pb-4">
+              <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                <BarChart4 className="h-4 w-4 md:h-5 md:w-5 text-orange-600 flex-shrink-0" />
+                <span className="leading-tight">Volatility Betting</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed">
+                Trade on your expectations of volatility changes rather than just price direction. 
+                Profit from volatility expansion or contraction.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-indigo-200 bg-indigo-50/50 sm:col-span-2 lg:col-span-1">
+            <CardHeader className="pb-3 md:pb-4">
+              <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                <LineChart className="h-4 w-4 md:h-5 md:w-5 text-indigo-600 flex-shrink-0" />
+                <span className="leading-tight">Capital Efficiency</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed">
+                Achieve similar exposure to stocks with less capital, 
+                freeing up funds for other investments or risk management.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Warning Section */}
+        <Card className="border-red-200 bg-red-50/50">
+          <CardHeader className="pb-3 md:pb-4">
+            <CardTitle className="text-base md:text-lg text-red-700">
+              ⚠️ When NOT to Use Options
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="text-sm text-red-600 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                <span className="font-semibold">• As a "get rich quick" scheme:</span>
+                <span>Options require skill and knowledge to use effectively.</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                <span className="font-semibold">• Without understanding the Greeks:</span>
+                <span>Don't trade what you don't understand.</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                <span className="font-semibold">• When you can't afford the maximum loss:</span>
+                <span>Options can expire worthless.</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                <span className="font-semibold">• Without a clear strategy:</span>
+                <span>Random option buying often leads to losses.</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-1">
+                <span className="font-semibold">• In illiquid options:</span>
+                <span>Wide bid-ask spreads can hurt profitability.</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </CardContent>
+    </Card>
+  );
+
+  return (
+    <div>
+      {/* Sub-navigation for Topics */}
+      <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t">
+          <TabsTrigger 
+            value="when-to-trade" 
+            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+          >
+            When to Trade
+          </TabsTrigger>
+          <TabsTrigger 
+            value="greeks" 
+            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+          >
+            Option Greeks
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="when-to-trade" className="mt-0">
+          <WhenToTradeContent />
+        </TabsContent>
+        
+        <TabsContent value="greeks" className="mt-0">
+          <GreeksTab />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
 function OptionsArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
@@ -110,7 +283,7 @@ function OptionsArticlesTab() {
   );
 }
 
-export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientProps) {
+export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsTabClientProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(tab);
 
@@ -122,8 +295,14 @@ export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientPr
   // Handle tab change and update URL
   const handleTabChange = (value: string) => {
     setActiveTab(value);
-    const newUrl = `/option/${value}`;
-    router.push(newUrl, { scroll: false });
+    if (value === 'topics') {
+      // For topics, use the subtopic or default to when-to-trade
+      const defaultSubtopic = subtopic || 'when-to-trade';
+      router.push(`/option/topics/${defaultSubtopic}`, { scroll: false });
+    } else {
+      const newUrl = `/option/${value}`;
+      router.push(newUrl, { scroll: false });
+    }
   };
 
   // Handle strategy selection
@@ -151,7 +330,7 @@ export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientPr
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1">
+            <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1">
               <TabsTrigger 
                 value="viewer" 
                 className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
@@ -159,16 +338,10 @@ export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientPr
                 Options Viewer
               </TabsTrigger>
               <TabsTrigger 
-                value="when-to-trade" 
+                value="topics" 
                 className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
               >
-                When to Trade
-              </TabsTrigger>
-              <TabsTrigger 
-                value="greeks" 
-                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
-              >
-                Option Greeks
+                Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
@@ -188,131 +361,8 @@ export default function OptionsTabClient({ tab, strategyId }: OptionsTabClientPr
               <OptionsViewer />
             </TabsContent>
             
-            <TabsContent value="when-to-trade" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
-              <Card>
-                <CardHeader className="pb-4 md:pb-6">
-                  <CardTitle className="text-xl md:text-2xl">When to Use Options</CardTitle>
-                  <CardDescription className="text-sm md:text-base">
-                    Understand the key scenarios where options can be an effective trading and investment tool.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4 md:space-y-6">
-                  {/* Use Case Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                    <Card className="border-green-200 bg-green-50/50">
-                      <CardHeader className="pb-3 md:pb-4">
-                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
-                          <Shield className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
-                          <span className="leading-tight">Hedging Risk</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed">
-                          Protect existing positions from adverse price movements. 
-                          Buy puts to hedge long stock positions or calls to hedge short positions.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-blue-200 bg-blue-50/50">
-                      <CardHeader className="pb-3 md:pb-4">
-                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
-                          <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
-                          <span className="leading-tight">Speculation with Leverage</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed">
-                          Control a larger position with less capital. 
-                          Options provide leveraged exposure to price movements with defined risk.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-purple-200 bg-purple-50/50">
-                      <CardHeader className="pb-3 md:pb-4">
-                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
-                          <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
-                          <span className="leading-tight">Income Generation</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed">
-                          Sell covered calls or cash-secured puts to generate premium income 
-                          on existing holdings or available cash.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-orange-200 bg-orange-50/50">
-                      <CardHeader className="pb-3 md:pb-4">
-                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
-                          <BarChart4 className="h-4 w-4 md:h-5 md:w-5 text-orange-600 flex-shrink-0" />
-                          <span className="leading-tight">Volatility Betting</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed">
-                          Trade on your expectations of volatility changes rather than just price direction. 
-                          Profit from volatility expansion or contraction.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-indigo-200 bg-indigo-50/50 sm:col-span-2 lg:col-span-1">
-                      <CardHeader className="pb-3 md:pb-4">
-                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
-                          <LineChart className="h-4 w-4 md:h-5 md:w-5 text-indigo-600 flex-shrink-0" />
-                          <span className="leading-tight">Capital Efficiency</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed">
-                          Achieve similar exposure to stocks with less capital, 
-                          freeing up funds for other investments or risk management.
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-
-                  {/* Warning Section */}
-                  <Card className="border-red-200 bg-red-50/50">
-                    <CardHeader className="pb-3 md:pb-4">
-                      <CardTitle className="text-base md:text-lg text-red-700">
-                        ⚠️ When NOT to Use Options
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="text-sm text-red-600 space-y-3">
-                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
-                          <span className="font-semibold">• As a "get rich quick" scheme:</span>
-                          <span>Options require skill and knowledge to use effectively.</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
-                          <span className="font-semibold">• Without understanding the Greeks:</span>
-                          <span>Don't trade what you don't understand.</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
-                          <span className="font-semibold">• When you can't afford the maximum loss:</span>
-                          <span>Options can expire worthless.</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
-                          <span className="font-semibold">• Without a clear strategy:</span>
-                          <span>Random option buying often leads to losses.</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-start gap-1">
-                          <span className="font-semibold">• In illiquid options:</span>
-                          <span>Wide bid-ask spreads can hurt profitability.</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="greeks" className="mt-4 md:mt-6">
-              <GreeksTab />
+            <TabsContent value="topics" className="mt-0">
+              <TopicsTab subtopic={subtopic} />
             </TabsContent>
             
             <TabsContent value="articles" className="mt-4 md:mt-6">

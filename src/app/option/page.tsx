@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 export default function OptionsPage() {
   const router = useRouter();
 
-  // Redirect to strategies tab by default
+  // Redirect to viewer tab by default
   useEffect(() => {
-    router.replace('/option/strategies');
+    router.replace('/option/viewer');
   }, [router]);
 
   return (

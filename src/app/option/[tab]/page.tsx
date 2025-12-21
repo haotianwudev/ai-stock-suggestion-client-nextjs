@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from './client';
 
-const validTabs = ['viewer', 'when-to-trade', 'greeks', 'articles', 'strategies'];
+const validTabs = ['viewer', 'topics', 'articles', 'strategies'];
 
 export async function generateMetadata({ params }: { params: Promise<{ tab: string }> }): Promise<Metadata> {
   const { tab } = await params;
@@ -17,15 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
       description: 'Interactive options chain viewer and analysis tool. Analyze real-time options data with advanced filtering and visualization capabilities.',
       keywords: ['options viewer', 'options chain', 'options analysis', 'trading tools', 'financial data'],
     },
-    'when-to-trade': {
-      title: 'When to Use Options | SOPHIE\'s Daddy Quant Blog',
-      description: 'Learn when options are the right trading tool. Understand key scenarios for hedging, speculation, income generation, and capital efficiency.',
-      keywords: ['when to use options', 'options trading', 'hedging strategies', 'options education', 'risk management'],
-    },
-    greeks: {
-      title: 'Option Greeks Calculator | SOPHIE\'s Daddy Quant Blog',
-      description: 'Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.',
-      keywords: ['option greeks', 'delta gamma theta', 'vega rho', 'options pricing', 'black scholes', 'options calculator'],
+    topics: {
+      title: 'Options Topics | SOPHIE\'s Daddy Quant Blog',
+      description: 'Explore essential options trading concepts including when to trade options and understanding the Greeks.',
+      keywords: ['options education', 'options topics', 'when to use options', 'option greeks', 'options fundamentals'],
     },
     articles: {
       title: 'Options Research Articles | SOPHIE\'s Daddy Quant Blog',
