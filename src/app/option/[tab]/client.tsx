@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { GreeksTab } from "@/components/options/greeks-tab";
 import { OptionsViewer } from "@/components/options/options-viewer";
+import { VRPContent } from "../topics/vrp";
+import { WhenToTradeContent } from "../topics/when-to-trade";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -189,7 +191,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t">
+        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t">
           <TabsTrigger 
             value="when-to-trade" 
             className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
@@ -202,6 +204,12 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           >
             Option Greeks
           </TabsTrigger>
+          <TabsTrigger 
+            value="vrp" 
+            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+          >
+            VRP
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="when-to-trade" className="mt-0">
@@ -210,6 +218,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="greeks" className="mt-0">
           <GreeksTab />
+        </TabsContent>
+        
+        <TabsContent value="vrp" className="mt-0">
+          <VRPContent />
         </TabsContent>
       </Tabs>
     </div>

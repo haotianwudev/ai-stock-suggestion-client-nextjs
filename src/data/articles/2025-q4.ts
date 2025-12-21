@@ -293,6 +293,7 @@ export const articles2025Q4: Article[] = [
     title: "The Volatility Risk Premium (VRP): How to Systematically Earn the Fear Premium by Selling Options",
     description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
     date: "November 22, 2025",
+    slug: "volatility-risk-premium-intro",
     youtubeUrl: "https://youtu.be/eHu9X04D7Ss",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/eHu9X04D7Ss/maxresdefault.jpg",
