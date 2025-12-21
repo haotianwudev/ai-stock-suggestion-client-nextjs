@@ -309,24 +309,46 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                         onClick={() => handleStrategyClick(s.id)}
                         className="group content-card p-5 md:p-6 cursor-pointer strategy-card border-2 border-gray-200 bg-white hover:border-blue-400 hover:shadow-xl transition-all duration-300 rounded-xl min-h-[160px] flex flex-col transform hover:-translate-y-1"
                     >
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
-                            <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1 group-hover:text-blue-600 transition-colors">{s.name}</h3>
-                            <div className="flex flex-wrap gap-1">
-                                {s.category.map((cat, index) => (
-                                    <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
-                                        {
-                                            Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
-                                            Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                            Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                            Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                            Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-                                            Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
-                                        }[cat]
-                                    }`}>
-                                        {cat}
-                                    </span>
-                                ))}
+                        <div className="flex flex-col gap-3 mb-3">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                                <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1 group-hover:text-blue-600 transition-colors">{s.name}</h3>
+                                {s.category.length <= 2 && (
+                                    <div className="flex flex-wrap gap-1">
+                                        {s.category.map((cat, index) => (
+                                            <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
+                                                {
+                                                    Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
+                                                    Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                                    Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                                    Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                                    Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
+                                                    Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
+                                                }[cat]
+                                            }`}>
+                                                {cat}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
+                            {s.category.length > 2 && (
+                                <div className="flex flex-wrap gap-1 justify-end">
+                                    {s.category.map((cat, index) => (
+                                        <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
+                                            {
+                                                Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
+                                                Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                                Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                                Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                                Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
+                                                Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
+                                            }[cat]
+                                        }`}>
+                                            {cat}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1 group-hover:text-gray-700 transition-colors">
                             {s.description.split('.')[0]}.
