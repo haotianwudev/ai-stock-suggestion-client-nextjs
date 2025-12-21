@@ -22,8 +22,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
     title: 'Option Greeks',
     description: 'Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.',
     videoUrl: 'https://youtu.be/ZLUeCSLgw3Y',
+    infographicUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
     relatedArticles: [
       "option-greeks-poem",
+      "option-greeks-traders-poetic-guide-risk",
     ]
   },
   

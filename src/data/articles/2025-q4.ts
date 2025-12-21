@@ -475,7 +475,7 @@ export const articles2025Q4: Article[] = [
     description: "A comprehensive deep research analysis of the five Option Greeks through poetry and practical application. Master Delta, Gamma, Theta, Vega, and Rho with intuitive explanations, trading strategies, and interactive visualizations that transform complex derivatives concepts into actionable trading knowledge.",
     slug: "option-greeks-traders-poetic-guide-risk",
     date: "November 7, 2025",
-    imageUrl: "https://s3.tradingview.com/q/q112iFtv_big.png",
+    imageUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub",
     deepResearch: true,
     options: true
