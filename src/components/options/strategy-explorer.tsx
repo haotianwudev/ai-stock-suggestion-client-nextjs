@@ -181,9 +181,6 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                         <span className="text-2xl">📚</span>
                         Related Articles
                     </h3>
-                    <p className="text-gray-600">
-                        Deep dive into this strategy with comprehensive research and analysis
-                    </p>
                 </div>
                 
                 <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">

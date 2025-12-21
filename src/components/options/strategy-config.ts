@@ -179,6 +179,6 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'GGKItsjV-L8',
         payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
-        relatedArticles: ['options-wheel-trading-plan-quantitative-approach']
+        relatedArticles: ["wheel-strategy",'options-wheel-trading-plan-quantitative-approach']
     },
 ];

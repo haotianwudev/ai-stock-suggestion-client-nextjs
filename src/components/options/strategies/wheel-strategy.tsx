@@ -2,11 +2,19 @@ import { StrategyDetailProps } from './types';
 
 export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
   return (
-    <div className="content-card p-4 md:p-6 mt-6 md:mt-8 animate-fade-in">
+    <div className="mt-6 space-y-6">
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200 mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <span className="text-2xl">📚</span>
+                Strategy Details
+            </h3>
+        </div>
       {/* Strategy Intuition */}
-      <div className="mt-6 md:mt-8 space-y-6">
-        <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-          <h3 className="text-lg font-bold text-slate-800 mb-3">🧠 Strategy Intuition</h3>
+        <div className="bg-slate-50 p-4 md:p-6 rounded-xl shadow-lg border border-slate-200">
+          <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">🧠</span>
+            Strategy Intuition
+          </h3>
           <div className="text-sm text-slate-700 space-y-4">
             <div className="border-l-4 border-slate-300 pl-4">
               <h4 className="font-semibold text-slate-800 mb-2">Core Concept:</h4>
@@ -110,8 +118,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Step-by-Step Trading Procedure */}
-        <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
-          <h3 className="text-lg font-bold text-indigo-800 mb-3">📋 Step-by-Step Trading Procedure</h3>
+        <div className="bg-indigo-50 p-4 md:p-6 rounded-xl shadow-lg border border-indigo-200">
+          <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">📋</span>
+            Step-by-Step Trading Procedure
+          </h3>
           <div className="text-sm text-indigo-700 space-y-4">
             <div className="border-l-4 border-indigo-300 pl-4">
               <h4 className="font-semibold text-indigo-800">Phase 1: Cash-Secured Put Phase</h4>
@@ -159,8 +170,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Best Practices */}
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-          <h3 className="text-lg font-bold text-green-800 mb-3">🎯 Best Practices</h3>
+        <div className="bg-green-50 p-4 md:p-6 rounded-xl shadow-lg border border-green-200">
+          <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">🎯</span>
+            Best Practices
+          </h3>
           <div className="text-sm text-green-700 space-y-3">
             <div>
               <h4 className="font-semibold text-green-800 mb-2">Option Selection:</h4>
@@ -192,8 +206,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Market Conditions */}
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-          <h3 className="text-lg font-bold text-blue-800 mb-3">📊 Suitable Market Conditions</h3>
+        <div className="bg-blue-50 p-4 md:p-6 rounded-xl shadow-lg border border-blue-200">
+          <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">📊</span>
+            Suitable Market Conditions
+          </h3>
           <ul className="text-sm text-blue-700 space-y-2">
             <li>• <strong>Sideways to mildly bullish markets</strong> - wheel strategy thrives here</li>
             <li>• <strong>High implied volatility periods</strong> - generates better premium income</li>
@@ -203,8 +220,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Recommended Underliers */}
-        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-          <h3 className="text-lg font-bold text-purple-800 mb-3">🏆 Recommended Underliers</h3>
+        <div className="bg-purple-50 p-4 md:p-6 rounded-xl shadow-lg border border-purple-200">
+          <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">🏆</span>
+            Recommended Underliers
+          </h3>
           <div className="text-sm text-purple-700 space-y-2">
             <p><strong>High-quality dividend stocks:</strong> AAPL, MSFT, GOOGL, AMZN, JNJ</p>
             <p><strong>Broad market ETFs:</strong> SPY, QQQ, IWM - provide diversification</p>
@@ -214,8 +234,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Common Pitfalls */}
-        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-          <h3 className="text-lg font-bold text-red-800 mb-3">⚠️ Common Pitfalls</h3>
+        <div className="bg-red-50 p-4 md:p-6 rounded-xl shadow-lg border border-red-200">
+          <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">⚠️</span>
+            Common Pitfalls
+          </h3>
           <div className="text-sm text-red-700 space-y-3">
             <div>
               <h4 className="font-semibold text-red-800 mb-2">Position Sizing Errors:</h4>
@@ -247,8 +270,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Performance Metrics */}
-        <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-          <h3 className="text-lg font-bold text-yellow-800 mb-3">📈 Performance Metrics</h3>
+        <div className="bg-yellow-50 p-4 md:p-6 rounded-xl shadow-lg border border-yellow-200">
+          <h3 className="text-xl font-bold text-yellow-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">📈</span>
+            Performance Metrics
+          </h3>
           <div className="text-sm text-yellow-700 space-y-3">
             <div>
               <h4 className="font-semibold text-yellow-800 mb-2">Expected Returns:</h4>
@@ -270,8 +296,11 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
         </div>
 
         {/* Learn More Resources */}
-        <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
-          <h3 className="text-lg font-bold text-teal-800 mb-3">📚 Learn More Resources</h3>
+        <div className="bg-teal-50 p-4 md:p-6 rounded-xl shadow-lg border border-teal-200">
+          <h3 className="text-xl font-bold text-teal-800 mb-4 flex items-center gap-2">
+            <span className="text-2xl">📚</span>
+            Learn More Resources
+          </h3>
           <div className="text-sm text-teal-700 space-y-3">
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Educational Content:</h4>
@@ -305,7 +334,6 @@ export const WheelStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) =
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
