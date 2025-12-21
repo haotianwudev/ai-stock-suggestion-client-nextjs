@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Shield, TrendingUp, DollarSign, LineChart, BarChart4, BookOpen } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { GreeksTab } from "@/components/options/greeks-tab";
 import { OptionsViewer } from "@/components/options/options-viewer";
 import { ArticleCard } from "@/components/articles/article-card";
@@ -322,11 +323,23 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
       <main className="flex-1">
         <div className="container max-w-screen-xl mx-auto py-4 px-4 md:py-8 md:px-6">
           <div className="text-center mb-6 md:mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Options Education</h1>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-              Master the fundamentals of options trading through interactive learning modules, 
-              from basic concepts to advanced strategies.
-            </p>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0">
+                <Image 
+                  src="/images/agents/SOPHIE.png"
+                  alt="SOPHIE AI Agent" 
+                  width={80} 
+                  height={80}
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+                  Options Education
+                </h1>
+                <p className="text-sm md:text-base text-purple-600 font-medium">SOPHIE Daddy Quant Blog</p>
+              </div>
+            </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
