@@ -16,7 +16,7 @@ export function GreeksContent() {
           {config.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 md:space-y-6">
+      <CardContent className="space-y-2 md:space-y-6">
         {/* Video Tutorial */}
         {config.videoUrl && (
           <VideoTutorial 
@@ -43,7 +43,7 @@ export function GreeksContent() {
         )}
 
         {/* Greeks Calculator Content */}
-        <div className="mt-6">
+        <div className="mt-3 md:mt-6">
           <GreeksTab />
         </div>
       </CardContent>

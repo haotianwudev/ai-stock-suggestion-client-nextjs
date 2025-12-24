@@ -16,7 +16,7 @@ export function WhenToTradeContent() {
           {config.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 md:space-y-6">
+      <CardContent className="space-y-2 md:space-y-6">
         {/* Video Tutorial */}
         {config.videoUrl && (
           <VideoTutorial 
@@ -43,9 +43,9 @@ export function WhenToTradeContent() {
         )}
 
         {/* Use Case Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-4">
           <Card className="border-green-200 bg-green-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <Shield className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
                 <span className="leading-tight">Hedging Risk</span>
@@ -60,7 +60,7 @@ export function WhenToTradeContent() {
           </Card>
 
           <Card className="border-blue-200 bg-blue-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
                 <span className="leading-tight">Speculation with Leverage</span>
@@ -75,7 +75,7 @@ export function WhenToTradeContent() {
           </Card>
 
           <Card className="border-purple-200 bg-purple-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
                 <span className="leading-tight">Income Generation</span>
@@ -90,7 +90,7 @@ export function WhenToTradeContent() {
           </Card>
 
           <Card className="border-orange-200 bg-orange-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <BarChart4 className="h-4 w-4 md:h-5 md:w-5 text-orange-600 flex-shrink-0" />
                 <span className="leading-tight">Volatility Betting</span>
@@ -105,7 +105,7 @@ export function WhenToTradeContent() {
           </Card>
 
           <Card className="border-indigo-200 bg-indigo-50/50 sm:col-span-2 lg:col-span-1">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <LineChart className="h-4 w-4 md:h-5 md:w-5 text-indigo-600 flex-shrink-0" />
                 <span className="leading-tight">Capital Efficiency</span>
@@ -122,13 +122,13 @@ export function WhenToTradeContent() {
 
         {/* Warning Section */}
         <Card className="border-red-200 bg-red-50/50">
-          <CardHeader className="pb-3 md:pb-4">
+          <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-red-700">
               ⚠️ When NOT to Use Options
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="text-sm text-red-600 space-y-3">
+          <CardContent className="space-y-2 md:space-y-3">
+            <div className="text-sm text-red-600 space-y-1.5 md:space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-start gap-1">
                 <span className="font-semibold">• As a "get rich quick" scheme:</span>
                 <span>Options require skill and knowledge to use effectively.</span>

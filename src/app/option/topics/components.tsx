@@ -23,7 +23,7 @@ export function VideoTutorial({ videoUrl, title = "Video Tutorial" }: VideoTutor
   if (!videoId) return null;
 
   return (
-    <div className="bg-gradient-to-r from-red-50 to-pink-50 p-6 rounded-xl border border-red-200 mb-6">
+    <div className="bg-gradient-to-r from-red-50 to-pink-50 p-3 md:p-6 rounded-xl border border-red-200 mb-3 md:mb-6">
       <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
         <span className="text-2xl">🎥</span>
         {title}
@@ -53,7 +53,7 @@ export function Infographic({ imageUrl, title = "Infographic", alt = "Educationa
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-xl border border-blue-200 mb-6">
+      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 md:p-6 rounded-xl border border-blue-200 mb-3 md:mb-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
           <span className="text-2xl">📊</span>
           {title}
@@ -103,14 +103,14 @@ export function RelatedArticles({ articleSlugs, title = "Related Articles" }: Re
 
   return (
     <>
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200 mb-6">
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-3 md:p-6 rounded-xl border border-indigo-200 mb-3 md:mb-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
           <span className="text-2xl">📚</span>
           {title}
         </h3>
       </div>
       
-      <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
+      <div className="grid gap-2 md:gap-6 grid-cols-1 lg:grid-cols-2">
         {articleSlugs.map((slug: string) => {
           const article = articles.find(a => a.slug === slug);
           if (!article || !article.title || !article.slug) return null;

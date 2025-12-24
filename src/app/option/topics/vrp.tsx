@@ -16,7 +16,7 @@ export function VRPContent() {
           {config.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 md:space-y-6">
+      <CardContent className="space-y-2 md:space-y-6">
         {/* Video Tutorial */}
         {config.videoUrl && (
           <VideoTutorial 
@@ -41,7 +41,7 @@ export function VRPContent() {
 
         {/* Core Concept */}
         <Card className="border-blue-200 bg-blue-50/50">
-          <CardHeader className="pb-3 md:pb-4">
+          <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-blue-700">
               📊 What is VRP?
             </CardTitle>
@@ -63,9 +63,9 @@ export function VRPContent() {
         </Card>
 
         {/* Why VRP Exists */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-4">
           <Card className="border-purple-200 bg-purple-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <Shield className="h-4 w-4 md:h-5 md:w-5 text-purple-600 flex-shrink-0" />
                 <span className="leading-tight">Insurance Premium</span>
@@ -80,7 +80,7 @@ export function VRPContent() {
           </Card>
 
           <Card className="border-orange-200 bg-orange-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-orange-600 flex-shrink-0" />
                 <span className="leading-tight">Fear Premium</span>
@@ -95,7 +95,7 @@ export function VRPContent() {
           </Card>
 
           <Card className="border-green-200 bg-green-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <BarChart4 className="h-4 w-4 md:h-5 md:w-5 text-green-600 flex-shrink-0" />
                 <span className="leading-tight">Supply & Demand</span>
@@ -110,7 +110,7 @@ export function VRPContent() {
           </Card>
 
           <Card className="border-indigo-200 bg-indigo-50/50">
-            <CardHeader className="pb-3 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
                 <LineChart className="h-4 w-4 md:h-5 md:w-5 text-indigo-600 flex-shrink-0" />
                 <span className="leading-tight">Behavioral Bias</span>
@@ -127,13 +127,13 @@ export function VRPContent() {
 
         {/* How to Harvest VRP */}
         <Card className="border-slate-200 bg-slate-50/50">
-          <CardHeader className="pb-3 md:pb-4">
+          <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg">
               💰 How to Harvest the VRP
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <CardContent className="space-y-1.5 md:space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1.5 md:gap-4">
               <div className="text-center p-4 bg-white rounded-lg border">
                 <div className="text-2xl mb-2">📈</div>
                 <h4 className="font-semibold text-sm mb-2">Covered Calls</h4>
@@ -161,13 +161,13 @@ export function VRPContent() {
 
         {/* Key Metrics */}
         <Card className="border-yellow-200 bg-yellow-50/50">
-          <CardHeader className="pb-3 md:pb-4">
+          <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-yellow-700">
               📊 Key VRP Metrics to Monitor
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-4 text-sm">
               <div>
                 <h5 className="font-semibold mb-2">IV Rank (IVR)</h5>
                 <p className="text-xs text-gray-600 mb-2">
@@ -210,13 +210,13 @@ export function VRPContent() {
 
         {/* Risks and Considerations */}
         <Card className="border-red-200 bg-red-50/50">
-          <CardHeader className="pb-3 md:pb-4">
+          <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-red-700">
               ⚠️ VRP Risks & Considerations
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <div className="text-sm text-red-600 space-y-3">
+            <div className="text-sm text-red-600 space-y-1.5 md:space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-start gap-1">
                 <span className="font-semibold">• Volatility Explosions:</span>
                 <span>VRP can turn negative during market crises (2008, 2020, etc.)</span>

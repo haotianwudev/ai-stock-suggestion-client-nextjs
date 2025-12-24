@@ -27,7 +27,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
   return (
     <>
       <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
-        <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
+        <div className="flex flex-col sm:flex-row gap-2 md:gap-3 p-2 md:p-3 pb-0">
           {imageUrl && (
             <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100 group">
               <img 
@@ -131,7 +131,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm";
             
             return (
-              <div className="flex gap-2 mt-1 mb-1">
+              <div className="flex gap-1.5 md:gap-2 mt-1 mb-1">
                 {isVideo && youtubeUrl ? (
                   <a
                     href={youtubeUrl}
