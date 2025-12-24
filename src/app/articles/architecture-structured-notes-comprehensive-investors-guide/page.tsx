@@ -513,19 +513,10 @@ export default function ArchitectureStructuredNotes() {
           </div>
 
           {/* Footer */}
-          <footer className="bg-white py-20 border-t border-slate-200">
+          <footer className="bg-white py-12 border-t border-slate-200">
             <div className="container mx-auto px-6 text-center">
               <div className="max-w-3xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Absolute Clarity is Required</h2>
-                <p className="text-slate-600 mb-10 leading-relaxed italic">
-                  "If you or your advisor cannot articulate every risk, cost, and potential payoff scenario with complete confidence, the correct course of action is simple: do not invest."
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <button className="px-10 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors shadow-xl shadow-slate-200 flex items-center gap-2">
-                    Download Technical Guide <ArrowRight size={20} />
-                  </button>
-                </div>
-                <div className="mt-16 pt-12 border-t border-slate-100 text-slate-400 text-xs tracking-wide">
+                <div className="text-slate-400 text-xs tracking-wide">
                   <div className="grid md:grid-cols-3 gap-8 text-left">
                     <div>
                       <h5 className="font-bold text-slate-900 mb-4 uppercase">Reference Materials</h5>
