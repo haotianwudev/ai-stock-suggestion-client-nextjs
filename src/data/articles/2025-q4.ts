@@ -1,7 +1,16 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2025Q4: Article[] = [
-
+{
+    title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
+    description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
+    slug: "architecture-structured-notes-comprehensive-investors-guide",
+    date: "December 29, 2025",
+    imageUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
+    labels: [ArticleLabel.QUANT],
+  },
 {
     title: "Strategic Options Utilization & Risk: A Comprehensive Framework for When to Deploy and When to Avoid Derivatives",
     description: "A comprehensive framework for understanding when to deploy options for hedging, income, and speculation—and crucially, when to avoid them to preserve capital. Master the anatomy of contracts, order mechanics, the Greeks, and strategic deployment across four pillars: hedging, income generation, speculation, and volatility trading.",
