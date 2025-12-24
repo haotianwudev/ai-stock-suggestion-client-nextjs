@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Shield, TrendingUp, DollarSign, LineChart, BarChart4, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -67,22 +67,24 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t">
+        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="when-to-trade" 
-            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            When to Trade
+            <span className="block sm:hidden">When</span>
+            <span className="hidden sm:block">When to Trade</span>
           </TabsTrigger>
           <TabsTrigger 
             value="greeks" 
-            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            Option Greeks
+            <span className="block sm:hidden">Greeks</span>
+            <span className="hidden sm:block">Option Greeks</span>
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
-            className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto data-[state=active]:bg-slate-200"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             VRP
           </TabsTrigger>
@@ -113,16 +115,16 @@ function OptionsArticlesTab() {
 
   return (
     <Card>
-      <CardHeader className="pb-4 md:pb-6">
-        <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-          <BookOpen className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
+      <CardHeader className="pb-3 md:pb-6">
+        <CardTitle className="text-lg md:text-2xl flex items-center gap-2">
+          <BookOpen className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
           <span>Options Research Articles</span>
         </CardTitle>
         <CardDescription className="text-sm md:text-base">
           Comprehensive articles on options trading covering key concepts, strategies, and common pitfalls to avoid.
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4 md:space-y-6">
         {/* Filter Component */}
         <ArticleFilter 
           searchText={searchText}
@@ -133,7 +135,7 @@ function OptionsArticlesTab() {
         />
 
         {/* Articles Grid */}
-        <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
           {optionsArticles.map((article) => (
             <ArticleCard 
               key={article.slug}
@@ -155,8 +157,8 @@ function OptionsArticlesTab() {
 
         {/* No Results Message */}
         {optionsArticles.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
+          <div className="text-center py-8 md:py-12">
+            <p className="text-base md:text-lg text-muted-foreground">No articles found matching your filters.</p>
             <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
           </div>
         )}
@@ -209,10 +211,10 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
       <Header />
       
       <main className="flex-1">
-        <div className="container max-w-screen-xl mx-auto py-4 px-4 md:py-8 md:px-6">
-          <div className="text-center mb-6 md:mb-8">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0">
+        <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
+          <div className="text-center mb-4 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+              <div className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0">
                 <Image 
                   src="/images/agents/SOPHIE.png"
                   alt="SOPHIE AI Agent" 
@@ -221,44 +223,46 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
                   className="object-cover"
                 />
               </div>
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
                   Options Education
                 </h1>
-                <p className="text-sm md:text-base text-purple-600 font-medium">SOPHIE Daddy Quant Blog</p>
+                <p className="text-xs sm:text-sm md:text-base text-purple-600 font-medium">SOPHIE Daddy Quant Blog</p>
               </div>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
               <TabsTrigger 
                 value="viewer" 
-                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                Options Viewer
+                <span className="block sm:hidden">Viewer</span>
+                <span className="hidden sm:block">Options Viewer</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="topics" 
-                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                Research Articles
+                <span className="block sm:hidden">Articles</span>
+                <span className="hidden sm:block">Research Articles</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="strategies" 
-                className="text-xs md:text-sm py-2 md:py-1.5 px-2 md:px-3 min-h-[44px] md:min-h-auto"
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
                 Strategies
               </TabsTrigger>
             </TabsList>
             
-            <TabsContent value="viewer" className="mt-4 md:mt-6">
+            <TabsContent value="viewer" className="mt-2 md:mt-6">
               <OptionsViewer />
             </TabsContent>
             
@@ -266,11 +270,11 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
               <TopicsTab subtopic={subtopic} />
             </TabsContent>
             
-            <TabsContent value="articles" className="mt-4 md:mt-6">
+            <TabsContent value="articles" className="mt-2 md:mt-6">
               <OptionsArticlesTab />
             </TabsContent>
             
-            <TabsContent value="strategies" className="mt-4 md:mt-6">
+            <TabsContent value="strategies" className="mt-2 md:mt-6">
               <StrategyExplorer 
                 selectedStrategyId={strategyId}
                 onStrategySelect={handleStrategySelect}

@@ -61,7 +61,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <section className="space-y-4 pb-2 pt-6 md:pb-4 md:pt-8 lg:py-8">
-          <div className="container max-w-screen-xl mx-auto px-4">
+          <div className="container max-w-screen-2xl mx-auto px-4">
             <div className="flex flex-col items-center gap-4 text-center max-w-[64rem] mx-auto">
               <div className="flex items-center gap-4">
                 <Link href="/about">
@@ -185,7 +185,7 @@ export default function Home() {
         </section>
         
         {/* Quick Access Stock Cards - Lazy loaded */}
-        <section className="container max-w-screen-xl mx-auto py-0 md:py-1 px-4">
+        <section className="container max-w-screen-2xl mx-auto py-0 md:py-1 px-4">
           {showStockData ? (
             <Suspense fallback={<StockDataSkeleton />}>
               <DynamicApolloComponents />
@@ -196,7 +196,7 @@ export default function Home() {
         </section>
         
         {/* Articles Section */}
-        <section className="container max-w-screen-xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
+        <section className="container max-w-screen-2xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
           <div className="flex flex-col items-center space-y-4 text-center mb-6">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Interactive Articles
