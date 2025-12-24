@@ -1,5 +1,10 @@
+"use client";
+
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
+import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
+import { useState } from "react";
+import { Maximize2 } from "lucide-react";
 
 interface VideoTutorialProps {
   videoUrl: string;
@@ -44,20 +49,47 @@ interface InfographicProps {
 }
 
 export function Infographic({ imageUrl, title = "Infographic", alt = "Educational Infographic" }: InfographicProps) {
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
+
   return (
-    <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-xl border border-blue-200 mb-6">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <span className="text-2xl">📊</span>
-        {title}
-      </h3>
-      <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-        <img 
-          src={imageUrl} 
-          alt={alt}
-          className="w-full h-auto"
-        />
+    <>
+      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-xl border border-blue-200 mb-6">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span className="text-2xl">📊</span>
+          {title}
+        </h3>
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group">
+          <img 
+            src={imageUrl} 
+            alt={alt}
+            className="w-full h-auto cursor-pointer transition-transform duration-200 group-hover:scale-[1.02]"
+            onClick={() => setIsFullScreenOpen(true)}
+          />
+          {/* Full-screen button overlay */}
+          <button
+            onClick={() => setIsFullScreenOpen(true)}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            title="View full screen"
+          >
+            <Maximize2 className="h-4 w-4" />
+          </button>
+          {/* Click hint */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+              Click to view full screen
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Full-screen image viewer */}
+      <FullScreenImageViewer
+        src={imageUrl}
+        alt={alt}
+        isOpen={isFullScreenOpen}
+        onClose={() => setIsFullScreenOpen(false)}
+      />
+    </>
   );
 }
 

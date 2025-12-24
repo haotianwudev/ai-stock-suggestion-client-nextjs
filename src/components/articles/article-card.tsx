@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Music } from "lucide-react";
+import { ArrowRight, Music, Maximize2 } from "lucide-react";
+import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
+import { useState } from "react";
 
 interface ArticleCardProps {
   title: string;
@@ -18,41 +22,53 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+
   return (
-    <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
-      <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
-        {imageUrl && (
-          <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100">
-            <img 
-              src={imageUrl} 
-              alt={title} 
-              className="h-full w-full object-contain hover:object-cover transition-all duration-300"
-              onError={(e) => {
-                e.currentTarget.className = "h-full w-full object-cover hover:object-contain transition-all duration-300";
-              }}
-            />
-            {deepResearch && (
-              <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-xs text-white font-semibold shadow">
-                Deep Research
-              </span>
-            )}
-            {isVideo && (
-              <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
-                Video
-              </span>
-            )}
-            {podcastUrl && !isVideo && (
-              <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
-                Podcast
-              </span>
-            )}
-            {options && (
-              <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
-                Options
-              </span>
-            )}
-          </div>
-        )}
+    <>
+      <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
+        <div className="flex flex-col sm:flex-row gap-3 p-3 pb-0">
+          {imageUrl && (
+            <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100 group">
+              <img 
+                src={imageUrl} 
+                alt={title} 
+                className="h-full w-full object-contain hover:object-cover transition-all duration-300 cursor-pointer"
+                onClick={() => setIsImageViewerOpen(true)}
+                onError={(e) => {
+                  e.currentTarget.className = "h-full w-full object-cover hover:object-contain transition-all duration-300 cursor-pointer";
+                }}
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={() => setIsImageViewerOpen(true)}
+                className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-3 w-3" />
+              </button>
+              {deepResearch && (
+                <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-xs text-white font-semibold shadow group-hover:left-12 transition-all duration-200">
+                  Deep Research
+                </span>
+              )}
+              {isVideo && (
+                <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
+                  Video
+                </span>
+              )}
+              {podcastUrl && !isVideo && (
+                <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
+                  Podcast
+                </span>
+              )}
+              {options && (
+                <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
+                  Options
+                </span>
+              )}
+            </div>
+          )}
         <div className="flex-1 flex flex-col justify-between min-w-0">
           <div>
             <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{title}</CardTitle>
@@ -176,5 +192,16 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
         </div>
       </div>
     </Card>
+
+    {/* Full-screen image viewer */}
+    {imageUrl && (
+      <FullScreenImageViewer
+        src={imageUrl}
+        alt={title}
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
+    )}
+  </>
   );
 } 

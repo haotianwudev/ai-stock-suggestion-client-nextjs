@@ -15,6 +15,7 @@ import { GreeksContent } from "../topics/greeks";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
+import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -177,6 +178,7 @@ function OptionsArticlesTab() {
 export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsTabClientProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(tab);
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   // Update active tab when prop changes
   useEffect(() => {
@@ -214,13 +216,17 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
         <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
           <div className="text-center mb-4 md:mb-8">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
-              <div className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0">
+              <div 
+                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0 cursor-pointer hover:shadow-lg transition-shadow duration-200 group"
+                onClick={() => setIsImageViewerOpen(true)}
+                title="Click to view full screen"
+              >
                 <Image 
                   src="/images/agents/SOPHIE.png"
                   alt="SOPHIE AI Agent" 
                   width={80} 
                   height={80}
-                  className="object-cover"
+                  className="object-cover group-hover:scale-110 transition-transform duration-200"
                 />
               </div>
               <div className="text-center sm:text-left">
@@ -284,6 +290,14 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
           </Tabs>
         </div>
       </main>
+      
+      {/* Full-screen image viewer for SOPHIE image */}
+      <FullScreenImageViewer
+        src="/images/agents/SOPHIE.png"
+        alt="SOPHIE AI Agent"
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
       
       <Disclaimer />
     </div>
