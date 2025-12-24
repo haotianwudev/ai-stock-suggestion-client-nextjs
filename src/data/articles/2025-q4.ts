@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2025Q4: Article[] = [
 {
+    title: "The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds",
+    description: "A comprehensive deep research analysis of the operational architecture powering modern volatility-focused hedge funds. From data hygiene and Greek attribution to algorithmic execution and AI-powered deep hedging, explore the systematic framework that transforms market volatility into alpha generation.",
+    slug: "industrialization-volatility-hedge-funds-operational-architecture",
+    date: "December 31, 2025",
+    imageUrl: "https://i.imgur.com/a3KxgF2.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRMLbZ3S8DmR7fwEHeXAXQFtvPrY7jU8fdv4ly-r_PF9AEXHngWzLib58pUtDRwAC9rZtY6gtbCHRvA/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+{
     title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
     description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
     slug: "architecture-structured-notes-comprehensive-investors-guide",
