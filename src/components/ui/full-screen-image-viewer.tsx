@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, RotateCw, Maximize2, RotateCcw } from 'lucide-react';
 import { Button } from './button';
 
@@ -14,6 +15,12 @@ interface FullScreenImageViewerProps {
 export function FullScreenImageViewer({ src, alt, isOpen, onClose }: FullScreenImageViewerProps) {
   const [rotation, setRotation] = useState(0);
   const [isPortrait, setIsPortrait] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted before rendering portal
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Check if screen is portrait and image would benefit from rotation
   useEffect(() => {
@@ -82,12 +89,22 @@ export function FullScreenImageViewer({ src, alt, isOpen, onClose }: FullScreenI
   // Auto-rotate suggestion for portrait screens
   const suggestRotation = isPortrait && rotation === 0;
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-[9999] bg-black bg-opacity-95 flex items-center justify-center">
+  const modalContent = (
+    <div 
+      className="fixed inset-0 z-[99999] bg-black bg-opacity-95 flex items-center justify-center"
+      style={{ 
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 99999
+      }}
+    >
       {/* Controls */}
-      <div className="absolute top-4 right-4 z-[10000] flex gap-2">
+      <div className="absolute top-4 right-4 z-[100000] flex gap-2">
         <Button
           variant="secondary"
           size="sm"
@@ -119,7 +136,7 @@ export function FullScreenImageViewer({ src, alt, isOpen, onClose }: FullScreenI
 
       {/* Rotation suggestion for portrait screens */}
       {suggestRotation && (
-        <div className="absolute top-4 left-4 z-[10000] bg-blue-600 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-2 animate-pulse">
+        <div className="absolute top-4 left-4 z-[100000] bg-blue-600 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-2 animate-pulse">
           <RotateCw className="h-4 w-4" />
           <span>Try rotating for better view</span>
         </div>
@@ -164,4 +181,7 @@ export function FullScreenImageViewer({ src, alt, isOpen, onClose }: FullScreenI
       </div>
     </div>
   );
+
+  // Render the modal content using a portal to document.body
+  return createPortal(modalContent, document.body);
 }

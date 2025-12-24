@@ -125,11 +125,6 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                                (podcastUrl ? 1 : 0) + 
                                (!noSummary ? 1 : 0);
             
-            // Make Interactive Summary smaller when there are 3+ buttons
-            const summaryButtonClass = buttonCount >= 3 
-              ? "flex-shrink-0 w-auto px-3 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
-              : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm";
-            
             return (
               <div className="flex gap-1.5 md:gap-2 mt-1 mb-1">
                 {isVideo && youtubeUrl ? (
@@ -151,9 +146,9 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         href={googleDoc}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"
+                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"}
                       >
-                        Google Document
+                        {buttonCount >= 3 ? "Google Doc" : "Google Document"}
                       </a>
                     )}
                     {podcastUrl && (
@@ -161,16 +156,19 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         href={podcastUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
+                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"}
                       >
-                        <Music className="mr-2 h-4 w-4" />
+                        <Music className="mr-1.5 h-4 w-4" />
                         Podcast
                       </a>
                     )}
                     {!noSummary && (
                       <Link 
                         href={`/articles/${slug}`} 
-                        className={summaryButtonClass}
+                        className={buttonCount >= 3 
+                          ? "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
+                          : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
+                        }
                       >
                         {buttonCount >= 3 ? (
                           <div className="text-center leading-tight">

@@ -58,23 +58,29 @@ export function Infographic({ imageUrl, title = "Infographic", alt = "Educationa
           <span className="text-2xl">📊</span>
           {title}
         </h3>
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group">
+        <div 
+          className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group cursor-pointer"
+          onClick={() => setIsFullScreenOpen(true)}
+        >
           <img 
             src={imageUrl} 
             alt={alt}
-            className="w-full h-auto cursor-pointer transition-transform duration-200 group-hover:scale-[1.02]"
-            onClick={() => setIsFullScreenOpen(true)}
+            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02] select-none pointer-events-none"
           />
           {/* Full-screen button overlay */}
           <button
-            onClick={() => setIsFullScreenOpen(true)}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsFullScreenOpen(true);
+            }}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
             title="View full screen"
+            type="button"
           >
             <Maximize2 className="h-4 w-4" />
           </button>
           {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
             <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
               Click to view full screen
             </div>
