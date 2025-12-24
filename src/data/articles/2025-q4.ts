@@ -36,6 +36,15 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
 {
+    title: "What is Web3: The Read-Write-Own Financial Revolution Explained",
+    description: "What is Web3, and how is it rewriting the rules of the global financial system? This video explores the shift from the centralized Read-Write era of Web 2.0 to the decentralized Read-Write-Own architecture of Web3.",
+    date: "December 25, 2025",
+    youtubeUrl: "https://youtu.be/aViyh1n08v4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/aViyh1n08v4/maxresdefault.jpg",
+    labels: [ArticleLabel.AI_ML],
+  },
+{
     title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
     description: "Web3 represents a fundamental paradigm shift towards a 'Read-Write-Own' internet built on blockchain, smart contracts, and cryptography. Explore how DeFi is transforming retail investors from passive consumers into active participants and co-owners of market infrastructure.",
     slug: "web3-revolution-defi-retail-investors",
@@ -46,6 +55,15 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.AI_ML],
   },
 {
+    title: "Understanding DSPX: Market Divergence and Volatility Decomposition",
+    description: "The Cboe S&P 500 Dispersion Index (DSPX) represents a paradigm shift in measuring market mechanics, moving beyond the systematic risk captured by the traditional VIX.",
+    date: "December 23, 2025",
+    youtubeUrl: "https://youtu.be/1tN9LuKi3Os",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/1tN9LuKi3Os/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
+{
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
     description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
     slug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
@@ -53,6 +71,16 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/OdLQOju.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRQMkTeGVs00ktOo8cKiUlFewzE1EV-U0eGsnTeTvJ_xsFIc2ildzvPZ9Qcky1W_-U9vjhDl90WpRUf/pub",
     deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+{
+    title: "Why are Put Options So Expensive?",
+    description: "In this deep dive into the Single Leg Long Put strategy, we unpack one of the most powerful yet misunderstood instruments in financial markets. Learn why the long put offers asymmetric utility with defined risk and potentially unlimited reward, and discover the structural forces that make these options expensive.",
+    date: "December 21, 2025",
+    youtubeUrl: "https://youtu.be/X2IJngJv4G0",
+    isVideo: true,
+    options: true,
+    imageUrl: "https://img.youtube.com/vi/X2IJngJv4G0/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
 {
@@ -67,7 +95,15 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-
+{
+    title: "Inside the Alpha Factory: How WorldQuant Industrialized Quant Trading",
+    description: "Discover how WorldQuant redefined quantitative investing by turning alpha from a rare skill into a mass-produced commodity. This video breaks down the Alpha Factory—an industrial-scale engine designed to mine millions of predictive signals.",
+    date: "December 19, 2025",
+    youtubeUrl: "https://youtu.be/L0aVoPLqcFw",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/L0aVoPLqcFw/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
 {
     title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
     description: "A comprehensive deep research analysis of WorldQuant's revolutionary 'Alpha Factory' system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.",
@@ -76,6 +112,15 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/boJhFsQ.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfVUDR6-Tcq29BcC0ZoePDr5Q5ln5LFwY-o6Vj0aD3wGzjTyBPWOxGujq5sLSMSJ_ihykDy6QlwVuV/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+{
+    title: "Mastering S&P 500 & Nasdaq Index Futures: ES & NQ",
+    description: "Dive deep into the arterial channels of the global financial markets: the E-mini S&P 500 (ES) and Nasdaq-100 (NQ) futures. This comprehensive guide analyzes the architecture of modern equity exposure, explaining how these instruments act as the world’s fear gauge and operate virtually 24 hours a day.",
+    date: "December 17, 2025",
+    youtubeUrl: "https://youtu.be/EbvI5T_P4Yg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/EbvI5T_P4Yg/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
 {
