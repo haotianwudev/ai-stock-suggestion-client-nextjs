@@ -733,15 +733,6 @@ export const articles2025Q3: Article[] = [
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
 {
-    title: "Common Structured Note Features",
-    description: "An in-depth analysis of structured notes covering payoff profiles, risk-return trade-offs, and portfolio suitability. Explores protection mechanisms, autocallable features, yield enhancement strategies, and the critical risks that sophisticated investors must understand.",
-    slug: "structured-notes-institutional-grade-analysis",
-    date: "July 28, 2025",
-    imageUrl: "https://quadrawealth.com/articles/wp-content/uploads/2024/09/buffer.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTLsGO6BidcUZe8g7YnoKRHoaQzPCfb5JsNomJbFrA44Q4D7Tyx4eErksuh7mVA_ph6pccEOaL7JQIR/pub",
-    deepResearch: true
-  },
-{
     title: "Trend vs. Momentum in Technical Analysis",
     description: "Master the core distinction between trend and momentum indicators in technical analysis. Learn how trend indicators chart market direction while momentum indicators measure the force behind price movements, with practical strategies for combining both approaches.",
     slug: "trend-vs-momentum-technical-analysis-guide",
@@ -893,15 +884,6 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub",
     deepResearch: true,
     options: true
-  },
-{
-    title: "Structured Notes Demystified",
-    description: "Structured notes, the sophisticated investment tools favored by high-net-worth investors. Explores the hybrid debt-derivative structure, risk-reward profiles, types including autocallable and reverse convertible notes, issuer credit risk considerations, and comprehensive due diligence framework for evaluating these complex financial instruments.",
-    slug: "structured-notes-demystified-comprehensive-guide",
-    date: "July 9, 2025",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*mjramkDMFNaxTKSV.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
-    deepResearch: true
   },
 {
     title: "Transformer Stock Prediction: Comparative Analysis",
