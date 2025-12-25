@@ -16,7 +16,7 @@ export const articles2026Q1: Article[] = [
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
     slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
-    date: "January 2, 2025",
+    date: "January 2, 2026",
     imageUrl: "https://i.imgur.com/zo6Tcpc.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
