@@ -1,21 +1,12 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
-  {
-    title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
-    description: "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
-    slug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
-    date: "January 20, 2026",
-    imageUrl: "https://i.imgur.com/i7pqdHp.jpeg",
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
-    labels: [ArticleLabel.QUANT],
-  },
+  
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
     slug: "calendar-spread-architecture-time-decay-options-trading",
-    date: "January 14, 2026",
+    date: "January 20, 2026",
     imageUrl: "https://i.imgur.com/I4TjHJ7.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub",
     deepResearch: true,
@@ -32,6 +23,16 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnzATQrIazGZVGeG8o1vP0Do4Y8eyQNKILjQClKUVcJEzmFaHfXhsvOOJQgz5S3w9sT3qgvucgM8wB/pub",
     podcastUrl: "https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg",
     options: true,
+  },
+  {
+    title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
+    description: "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
+    slug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
+    date: "January 14, 2026",
+    imageUrl: "https://i.imgur.com/i7pqdHp.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
+    labels: [ArticleLabel.QUANT],
   },
   {
     title: "The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds",
