@@ -1,7 +1,16 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
-  
+  {
+    title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
+    description: "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
+    slug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
+    date: "January 20, 2026",
+    imageUrl: "https://i.imgur.com/i7pqdHp.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
+    labels: [ArticleLabel.QUANT],
+  },
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",

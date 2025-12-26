@@ -950,15 +950,6 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://ollama.com/public/ollama.png"
   },
 {
-    title: "Bitcoin Deconstructed: Technology, Privacy, Practical Guide",
-    description: "A deep research analysis of Bitcoin covering its foundational principles, blockchain technology, network mechanics, privacy model, and practical trading guide. Explores the mathematical foundations, cryptographic security, transaction lifecycle, mining process, and essential security practices for navigating the Bitcoin ecosystem.",
-    slug: "bitcoin-deconstructed-comprehensive-analysis",
-    date: "July 3, 2025",
-    imageUrl: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=800&q=80",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSHNybSnIYhdCeQmvHgIW4cLB-IxL1CgFwwci3Rrj9osF9wyZ9euAI9M0pxcvryx9uFhQa0iC61tLne/pub",
-    deepResearch: true
-  },
-{
     title: "Cruel Truth: Why Most Stocks Are a Bad Bet",
     description: "Think picking winning stocks is easy? Think again. The cruel truth is that most stocks are a bad bet, and the S&P 500 is hiding a big secret. We break down why the odds are stacked against individual investors and reveal how the biggest companies always win the game. If you invest, you need to see this.",
     slug: "cruel-truth-why-most-stocks-are-a-bad-bet",
