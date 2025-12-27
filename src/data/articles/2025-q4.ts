@@ -3,16 +3,6 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
-    title: "The Efficient Frontier: Mathematical Foundations of Modern Portfolio Optimization",
-    description: "A comprehensive deep dive into the mathematics, constraints, and software architecture used by hedge funds to transform raw signals into optimal portfolios. From Markowitz mean-variance optimization to advanced hierarchical risk parity models.",
-    slug: "efficient-frontier-portfolio-optimization-mathematics",
-    date: "December 31, 2025",
-    imageUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPgw9iql2uq-7aQ7tLcsfYSZ7Ymv9m8rMZCYEQhpje8D6fs3R_0MVbdjUIXK6M67XrePgZEIHGW_LQ/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
-  },
-{
     title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
     description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
     slug: "architecture-structured-notes-comprehensive-investors-guide",
