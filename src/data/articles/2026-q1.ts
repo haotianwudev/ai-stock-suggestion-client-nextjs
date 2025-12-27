@@ -14,6 +14,17 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting",
+    description: "A comprehensive analysis of the Iron Condor strategy, exploring the mathematical edge through variance risk premium, optimal execution parameters, and defensive management techniques. Master the art of selling overpriced volatility while managing the Greeks and structural risks.",
+    slug: "iron-condor-quantitative-delta-neutral-premium-harvesting",
+    date: "January 16, 2026",
+    imageUrl: "https://i.imgur.com/jRhQhdm.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQWaG85W3EdnnL4ZeS-Ep3ugP2yUnla9PmPZ9ZP2n6XjkrlmpuBgHmbfYSjrkoLUe-Ljq9GO-WtzjgK/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
     description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
     slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
