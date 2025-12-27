@@ -1,25 +1,23 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, FileText, ExternalLink, TrendingUp, BarChart3, Calculator } from "lucide-react";
+import { FileText, ExternalLink, TrendingUp, BarChart3, Calculator } from "lucide-react";
 import { useState } from "react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { VideoTutorial } from "@/components/ui/video-tutorial";
+import { StudyGuide } from "@/components/ui/study-guide";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
+import { TopicConfig } from "./config";
 
-export function MonteCarloContent() {
+export function MonteCarloContent({ config }: { config?: TopicConfig }) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
-  // Get related articles with Monte Carlo or quantitative methods
-  const relatedArticles = articles.filter(article => 
-    article.title.toLowerCase().includes('monte carlo') ||
-    article.title.toLowerCase().includes('simulation') ||
-    article.title.toLowerCase().includes('risk') ||
-    article.labels?.some(label => label === 'Quantitative Finance')
-  ).slice(0, 4);
+  // Get related articles from config
+  const relatedArticles = config?.relatedArticles 
+    ? articles.filter(article => config.relatedArticles?.includes(article.slug || ''))
+    : [];
 
   return (
     <div className="space-y-4 md:space-y-8">
@@ -43,29 +41,35 @@ export function MonteCarloContent() {
         </CardHeader>
         
         <CardContent className="space-y-4 md:space-y-6">
-          {/* Key Concepts */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-            <div className="flex items-center gap-2 p-3 bg-white rounded-lg border border-blue-100">
-              <TrendingUp className="h-4 w-4 text-blue-600 flex-shrink-0" />
-              <span className="text-sm font-medium text-blue-900">Risk Assessment</span>
+          {/* Video Tutorial and Study Guide */}
+          {config?.videoUrl && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Study Guide */}
+              <div className="lg:col-span-1">
+                <StudyGuide
+                  title="Monte Carlo Study Guide"
+                  items={[
+                    "Understanding stochastic processes and random variables",
+                    "Monte Carlo simulation fundamentals and methodology",
+                    "Applications in derivative pricing and risk management",
+                    "Variance reduction techniques for efficiency",
+                    "Implementation in portfolio optimization",
+                    "Stress testing and scenario analysis",
+                    "Limitations and model validation considerations"
+                  ]}
+                />
+              </div>
+              
+              {/* Video */}
+              <div className="lg:col-span-2">
+                <VideoTutorial
+                  title="Monte Carlo Simulation in Finance"
+                  description="Learn the fundamentals of Monte Carlo methods and their applications in financial modeling and risk management."
+                  videoId={config.videoUrl.split('/').pop() || ''}
+                />
+              </div>
             </div>
-            <div className="flex items-center gap-2 p-3 bg-white rounded-lg border border-blue-100">
-              <BarChart3 className="h-4 w-4 text-blue-600 flex-shrink-0" />
-              <span className="text-sm font-medium text-blue-900">Portfolio Optimization</span>
-            </div>
-            <div className="flex items-center gap-2 p-3 bg-white rounded-lg border border-blue-100">
-              <Calculator className="h-4 w-4 text-blue-600 flex-shrink-0" />
-              <span className="text-sm font-medium text-blue-900">Derivative Pricing</span>
-            </div>
-          </div>
-
-          {/* Video Tutorial */}
-          <VideoTutorial
-            title="Monte Carlo Simulation in Finance"
-            description="Learn the fundamentals of Monte Carlo methods and their applications in financial modeling and risk management."
-            videoId="7ESK5SaP-bc"
-            className="mb-4"
-          />
+          )}
 
           {/* Infographic Section */}
           <div className="space-y-3">
@@ -74,13 +78,11 @@ export function MonteCarloContent() {
               className="relative rounded-xl overflow-hidden shadow-lg border border-blue-200 cursor-pointer group"
               onClick={() => setIsImageViewerOpen(true)}
             >
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Calculator className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                  <p className="text-blue-800 font-medium">Monte Carlo Simulation Infographic</p>
-                  <p className="text-blue-600 text-sm mt-2">Click to view detailed visualization</p>
-                </div>
-              </div>
+              <img 
+                src="https://i.imgur.com/vGkVKOa.jpeg" 
+                alt="Monte Carlo Simulation in Quantitative Finance" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
                 <Button variant="secondary" size="sm">
                   <ExternalLink className="h-4 w-4 mr-2" />
@@ -90,28 +92,6 @@ export function MonteCarloContent() {
             </div>
           </div>
 
-          {/* Applications */}
-          <div className="space-y-3">
-            <h3 className="text-lg md:text-xl font-semibold text-blue-900">Key Applications</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="p-4 bg-white rounded-lg border border-blue-100">
-                <h4 className="font-semibold text-blue-900 mb-2">Value at Risk (VaR)</h4>
-                <p className="text-sm text-blue-700">Calculate potential losses in portfolios under normal market conditions.</p>
-              </div>
-              <div className="p-4 bg-white rounded-lg border border-blue-100">
-                <h4 className="font-semibold text-blue-900 mb-2">Option Pricing</h4>
-                <p className="text-sm text-blue-700">Price complex derivatives and exotic options using simulation methods.</p>
-              </div>
-              <div className="p-4 bg-white rounded-lg border border-blue-100">
-                <h4 className="font-semibold text-blue-900 mb-2">Stress Testing</h4>
-                <p className="text-sm text-blue-700">Evaluate portfolio performance under extreme market scenarios.</p>
-              </div>
-              <div className="p-4 bg-white rounded-lg border border-blue-100">
-                <h4 className="font-semibold text-blue-900 mb-2">Asset Allocation</h4>
-                <p className="text-sm text-blue-700">Optimize portfolio weights using simulated return distributions.</p>
-              </div>
-            </div>
-          </div>
         </CardContent>
       </Card>
 
@@ -153,8 +133,8 @@ export function MonteCarloContent() {
 
       {/* Full-screen image viewer */}
       <FullScreenImageViewer
-        src="https://i.imgur.com/YourMonteCarloInfographic.jpeg"
-        alt="Monte Carlo Simulation Guide"
+        src="https://i.imgur.com/vGkVKOa.jpeg"
+        alt="Monte Carlo Simulation in Quantitative Finance"
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}
       />

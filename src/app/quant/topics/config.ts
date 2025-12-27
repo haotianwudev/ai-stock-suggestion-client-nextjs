@@ -11,12 +11,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
   'monte-carlo': {
     id: 'monte-carlo',
     title: 'Monte Carlo Simulation',
-    description: 'Master Monte Carlo methods for financial modeling, risk assessment, and portfolio optimization. Learn to simulate complex financial scenarios and price derivatives.',
-    videoUrl: 'https://youtu.be/7ESK5SaP-bc',
-    infographicUrl: "https://i.imgur.com/YourMonteCarloInfographic.jpeg",
+    description: 'Master Monte Carlo methods for financial modeling, risk assessment, and portfolio optimization. Learn to simulate complex financial scenarios and price derivatives using probabilistic approaches.',
+    videoUrl: 'https://youtu.be/5gA1ifx7wPg',
+    infographicUrl: "https://i.imgur.com/vGkVKOa.jpeg",
     relatedArticles: [
-      "monte-carlo-simulation-financial-modeling",
-      "risk-management-monte-carlo-methods",
+      "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
+      "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
+      "monte-carlo-advanced-stochastic-modeling-derivatives-cva"
     ]
   }
 };

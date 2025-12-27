@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MonteCarloContent } from "../topics/monte-carlo";
+import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "../algotrading/systematic-strategies";
 import { MachineLearningContent } from "../algotrading/machine-learning";
 import { BacktestingContent } from "../algotrading/backtesting";
@@ -57,7 +58,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         </TabsList>
         
         <TabsContent value="monte-carlo" className="mt-0">
-          <MonteCarloContent />
+          <MonteCarloContent config={getTopicConfig('monte-carlo') || undefined} />
         </TabsContent>
       </Tabs>
     </div>
