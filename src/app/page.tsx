@@ -99,6 +99,19 @@ export default function Home() {
                 </Button>
 
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Link href="/quant">
+                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 3v18h18"/>
+                      <path d="M7 12l3-3 3 3 5-5"/>
+                      <circle cx="12" cy="12" r="1"/>
+                      <circle cx="19" cy="7" r="1"/>
+                      <circle cx="10" cy="9" r="1"/>
+                    </svg>
+                    Quantitative Finance
+                  </Link>
+                </Button>
+
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/book-summary">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Premium Books

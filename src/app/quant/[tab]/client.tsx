@@ -1,0 +1,322 @@
+"use client";
+
+import { Header } from "@/components/layout/header";
+import { Disclaimer } from "@/components/ui/disclaimer";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Calculator } from "lucide-react";
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { MonteCarloContent } from "../topics/monte-carlo";
+import { SystematicStrategiesContent } from "../algotrading/systematic-strategies";
+import { MachineLearningContent } from "../algotrading/machine-learning";
+import { BacktestingContent } from "../algotrading/backtesting";
+import { ExecutionContent } from "../algotrading/execution";
+import { ArticleCard } from "@/components/articles/article-card";
+import { articles } from "@/data/articles";
+import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
+import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
+
+interface QuantTabClientProps {
+  tab: string;
+  subtopic?: string;
+}
+
+// Topics Tab Component with Sub-navigation
+function TopicsTab({ subtopic }: { subtopic?: string }) {
+  const router = useRouter();
+  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'monte-carlo');
+
+  // Update active subtopic when prop changes
+  useEffect(() => {
+    if (subtopic) {
+      setActiveSubtopic(subtopic);
+    }
+  }, [subtopic]);
+
+  // Handle subtopic change and update URL
+  const handleSubtopicChange = (value: string) => {
+    setActiveSubtopic(value);
+    const newUrl = `/quant/topics/${value}`;
+    router.push(newUrl, { scroll: false });
+  };
+
+  return (
+    <div>
+      {/* Sub-navigation for Topics */}
+      <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-1 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+          <TabsTrigger 
+            value="monte-carlo" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Monte Carlo</span>
+            <span className="hidden sm:block">Monte Carlo Simulation</span>
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="monte-carlo" className="mt-0">
+          <MonteCarloContent />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+// Algorithmic Trading Tab Component with Sub-navigation
+function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
+  const router = useRouter();
+  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'systematic-strategies');
+
+  // Update active subtopic when prop changes
+  useEffect(() => {
+    if (subtopic) {
+      setActiveSubtopic(subtopic);
+    }
+  }, [subtopic]);
+
+  // Handle subtopic change and update URL
+  const handleSubtopicChange = (value: string) => {
+    setActiveSubtopic(value);
+    const newUrl = `/quant/algotrading/${value}`;
+    router.push(newUrl, { scroll: false });
+  };
+
+  return (
+    <div>
+      {/* Sub-navigation for Algorithmic Trading */}
+      <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+          <TabsTrigger 
+            value="systematic-strategies" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Strategies</span>
+            <span className="hidden sm:block">Systematic</span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="machine-learning" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">ML</span>
+            <span className="hidden sm:block">Machine Learning</span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="backtesting" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Backtesting</span>
+            <span className="hidden sm:block">Backtesting</span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="execution" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Execution</span>
+            <span className="hidden sm:block">Execution</span>
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="systematic-strategies" className="mt-0">
+          <SystematicStrategiesContent />
+        </TabsContent>
+        
+        <TabsContent value="machine-learning" className="mt-0">
+          <MachineLearningContent />
+        </TabsContent>
+        
+        <TabsContent value="backtesting" className="mt-0">
+          <BacktestingContent />
+        </TabsContent>
+        
+        <TabsContent value="execution" className="mt-0">
+          <ExecutionContent />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+function QuantArticlesTab() {
+  const [searchText, setSearchText] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const availableLabels = getAllLabels();
+
+  // Filter articles with QUANT, AI_ML, or STOCK_ANALYSIS labels
+  const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
+    .filter(article => 
+      article.labels?.some((label: string) => 
+        label === 'Quantitative Finance' || 
+        label === 'AI & Machine Learning' || 
+        label === 'Stock Analysis'
+      )
+    );
+
+  return (
+    <Card>
+      <CardHeader className="pb-3 md:pb-6">
+        <CardTitle className="text-lg md:text-2xl flex items-center gap-2">
+          <Calculator className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
+          <span>Quantitative Finance Research Articles</span>
+        </CardTitle>
+        <CardDescription className="text-sm md:text-base">
+          Comprehensive articles on quantitative finance, machine learning applications, and algorithmic trading strategies.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4 md:space-y-6">
+        {/* Filter Component */}
+        <ArticleFilter 
+          searchText={searchText}
+          onSearchChange={setSearchText}
+          selectedLabels={selectedLabels}
+          onLabelsChange={setSelectedLabels}
+          availableLabels={availableLabels}
+        />
+
+        {/* Articles Grid */}
+        <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
+          {quantArticles.map((article) => (
+            <ArticleCard 
+              key={article.slug}
+              title={article.title}
+              description={article.description}
+              slug={article.slug}
+              date={article.date}
+              imageUrl={article.imageUrl}
+              googleDoc={article.googleDoc}
+              deepResearch={article.deepResearch}
+              youtubeUrl={article.youtubeUrl}
+              isVideo={article.isVideo}
+              options={article.options}
+              noSummary={article.noSummary}
+              podcastUrl={article.podcastUrl}
+            />
+          ))}
+        </div>
+
+        {/* No Results Message */}
+        {quantArticles.length === 0 && (
+          <div className="text-center py-8 md:py-12">
+            <p className="text-base md:text-lg text-muted-foreground">No articles found matching your filters.</p>
+            <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
+          </div>
+        )}
+
+        {/* Results Count */}
+        {quantArticles.length > 0 && (
+          <p className="text-sm text-muted-foreground text-center">
+            Showing {quantArticles.length} article{quantArticles.length !== 1 ? 's' : ''}
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState(tab);
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+
+  // Update active tab when prop changes
+  useEffect(() => {
+    setActiveTab(tab);
+  }, [tab]);
+
+  // Handle tab change and update URL
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    if (value === 'topics') {
+      // For topics, always default to monte-carlo
+      router.push(`/quant/topics/monte-carlo`, { scroll: false });
+    } else if (value === 'algotrading') {
+      // For algotrading, always default to systematic-strategies
+      router.push(`/quant/algotrading/systematic-strategies`, { scroll: false });
+    } else {
+      const newUrl = `/quant/${value}`;
+      router.push(newUrl, { scroll: false });
+    }
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      
+      <main className="flex-1">
+        <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
+          <div className="text-center mb-4 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+              <div 
+                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-blue-300 flex-shrink-0 cursor-pointer hover:shadow-lg transition-shadow duration-200 group"
+                onClick={() => setIsImageViewerOpen(true)}
+                title="Click to view full screen"
+              >
+                <Image 
+                  src="/images/agents/SOPHIE.png"
+                  alt="SOPHIE AI Agent" 
+                  width={80} 
+                  height={80}
+                  className="object-cover group-hover:scale-110 transition-transform duration-200"
+                />
+              </div>
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
+                  Quantitative Finance
+                </h1>
+                <p className="text-xs sm:text-sm md:text-base text-blue-600 font-medium">SOPHIE Daddy Quant Blog</p>
+              </div>
+            </div>
+          </div>
+
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+              <TabsTrigger 
+                value="topics" 
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+              >
+                Topics
+              </TabsTrigger>
+              <TabsTrigger 
+                value="algotrading" 
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+              >
+                <span className="block sm:hidden">Algo Trading</span>
+                <span className="hidden sm:block">Algorithmic Trading</span>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="articles" 
+                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+              >
+                <span className="block sm:hidden">Articles</span>
+                <span className="hidden sm:block">Research Articles</span>
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="topics" className="mt-0">
+              <TopicsTab subtopic={subtopic} />
+            </TabsContent>
+            
+            <TabsContent value="algotrading" className="mt-0">
+              <AlgoTradingTab subtopic={subtopic} />
+            </TabsContent>
+            
+            <TabsContent value="articles" className="mt-2 md:mt-6">
+              <QuantArticlesTab />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+      
+      {/* Full-screen image viewer for SOPHIE image */}
+      <FullScreenImageViewer
+        src="/images/agents/SOPHIE.png"
+        alt="SOPHIE AI Agent"
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
+      
+      <Disclaimer />
+    </div>
+  );
+}
