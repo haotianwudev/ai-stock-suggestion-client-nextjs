@@ -12,6 +12,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     id: 'when-to-trade',
     title: 'When to Use Options',
     description: 'Understand the key scenarios where options can be an effective trading and investment tool.',
+    videoUrl: 'https://youtu.be/brQbdu19cbw',
     infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",

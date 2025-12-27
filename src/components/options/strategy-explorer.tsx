@@ -6,6 +6,7 @@ import { strategies, type Strategy } from './strategy-config';
 import { articles } from '@/data/articles';
 import { ArticleCard } from '@/components/articles/article-card';
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
+import { IronCondorStrategyDetail } from './strategies/iron-condor';
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -213,6 +214,11 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
         {/* Special expanded content for Wheel Strategy */}
         {strategy.id === 'wheel_strategy' && (
             <WheelStrategyDetail strategy={strategy} onBack={onBack} />
+        )}
+
+        {/* Special expanded content for Iron Condor Strategy */}
+        {strategy.id === 'iron_condor' && (
+            <IronCondorStrategyDetail strategy={strategy} onBack={onBack} />
         )}
 
 

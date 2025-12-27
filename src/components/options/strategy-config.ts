@@ -131,7 +131,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'iron_condor',
-        category: ['Neutral', 'Income'],
+        category: ['Neutral', 'Income', 'Featured'],
         name: 'Iron Condor',
         description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.",
         profile: 'Defined Risk, Defined Profit',
@@ -139,6 +139,7 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike2, strike4 }) => 
             1.0 - Math.max(0, p - strike2) - Math.max(0, strike4 - p),
+        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"]
     },
     {
         id: 'long_straddle',
