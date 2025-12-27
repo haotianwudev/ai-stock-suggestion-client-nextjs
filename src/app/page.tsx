@@ -107,14 +107,14 @@ export default function Home() {
                       <circle cx="19" cy="7" r="1"/>
                       <circle cx="10" cy="9" r="1"/>
                     </svg>
-                    Quantitative Finance
+                    Quant Finance
                   </Link>
                 </Button>
 
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/book-summary">
                     <BookOpen className="mr-2 h-4 w-4" />
-                    Premium Books
+                    In Progress
                   </Link>
                 </Button>
 
@@ -144,22 +144,6 @@ export default function Home() {
                   </a>
                 </Button>
                 
-                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                  <a 
-                    href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-                      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-                      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-                      <line x1="12" y1="20" x2="12" y2="20" />
-                    </svg>
-                    Download Android App
-                  </a>
-                </Button>
-                
                 <Button asChild size="lg" className="w-full sm:w-auto bg-pink-500 hover:bg-pink-600 text-white">
                   <a 
                     href="https://space.bilibili.com/1485896958" 
@@ -183,6 +167,22 @@ export default function Home() {
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169-.185-.459-.185-.628 0l-2.24 2.24c-.169.169-.169.459 0 .628l2.24 2.24c.169.169.459.169.628 0 .169-.169.169-.459 0-.628L15.256 12l2.312-2.312c.169-.169.169-.459 0-.628zM8.432 15.84c.169.185.459.185.628 0l2.24-2.24c.169-.169.169-.459 0-.628l-2.24-2.24c-.169-.169-.459-.169-.628 0-.169.169-.169.459 0 .628L10.744 12l-2.312 2.312c-.169.169-.169.459 0 .628z"/>
                     </svg>
                     小红书互动加群
+                  </a>
+                </Button>
+
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <a 
+                    href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                      <line x1="12" y1="20" x2="12" y2="20" />
+                    </svg>
+                    Android App
                   </a>
                 </Button>
                 
