@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getAlgoTopicConfig } from '../config';
 import QuantTabClient from '../../[tab]/client';
 
-const validSubtopics = ['systematic-strategies', 'machine-learning', 'backtesting', 'execution'];
+const validSubtopics = ['systematic-strategies', 'machine-learning'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
   return {
     title,
     description,
-    keywords: ['algorithmic trading', topicConfig.title.toLowerCase(), 'systematic trading', 'backtesting', 'execution algorithms'],
+    keywords: ['algorithmic trading', topicConfig.title.toLowerCase(), 'systematic trading', 'machine learning'],
     openGraph: {
       title,
       description,

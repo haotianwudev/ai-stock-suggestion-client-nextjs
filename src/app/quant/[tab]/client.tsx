@@ -12,8 +12,6 @@ import { MonteCarloContent } from "../topics/monte-carlo";
 import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "../algotrading/systematic-strategies";
 import { MachineLearningContent } from "../algotrading/machine-learning";
-import { BacktestingContent } from "../algotrading/backtesting";
-import { ExecutionContent } from "../algotrading/execution";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -88,7 +86,7 @@ function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Algorithmic Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="systematic-strategies" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -103,20 +101,6 @@ function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">ML</span>
             <span className="hidden sm:block">Machine Learning</span>
           </TabsTrigger>
-          <TabsTrigger 
-            value="backtesting" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
-          >
-            <span className="block sm:hidden">Backtesting</span>
-            <span className="hidden sm:block">Backtesting</span>
-          </TabsTrigger>
-          <TabsTrigger 
-            value="execution" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
-          >
-            <span className="block sm:hidden">Execution</span>
-            <span className="hidden sm:block">Execution</span>
-          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="systematic-strategies" className="mt-0">
@@ -125,14 +109,6 @@ function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="machine-learning" className="mt-0">
           <MachineLearningContent />
-        </TabsContent>
-        
-        <TabsContent value="backtesting" className="mt-0">
-          <BacktestingContent />
-        </TabsContent>
-        
-        <TabsContent value="execution" className="mt-0">
-          <ExecutionContent />
         </TabsContent>
       </Tabs>
     </div>

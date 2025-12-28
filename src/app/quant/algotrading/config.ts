@@ -32,32 +32,6 @@ export const algoTopicsConfig: Record<string, AlgoTopicConfig> = {
       "machine-learning-portfolio-optimization",
       "neural-networks-financial-prediction",
     ]
-  },
-  
-  'backtesting': {
-    id: 'backtesting',
-    title: 'Backtesting & Validation',
-    description: 'Master backtesting methodologies, performance metrics, and validation techniques for algorithmic trading strategies.',
-    videoUrl: 'https://youtu.be/BacktestingVideoId',
-    infographicUrl: 'https://i.imgur.com/YourBacktestingInfographic.jpeg',
-    relatedArticles: [
-      "backtesting-trading-algorithms",
-      "performance-metrics-trading-strategies",
-      "overfitting-prevention-backtesting",
-    ]
-  },
-
-  'execution': {
-    id: 'execution',
-    title: 'Execution & Implementation',
-    description: 'Learn about trade execution algorithms, market microstructure, slippage management, and implementation shortfall.',
-    videoUrl: 'https://youtu.be/ExecutionVideoId',
-    infographicUrl: 'https://i.imgur.com/YourExecutionInfographic.jpeg',
-    relatedArticles: [
-      "algorithmic-execution-strategies",
-      "market-microstructure-trading",
-      "slippage-transaction-costs",
-    ]
   }
 };
 

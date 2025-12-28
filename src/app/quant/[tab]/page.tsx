@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
     },
     algotrading: {
       title: 'Algorithmic Trading | SOPHIE\'s Daddy Quant Blog',
-      description: 'Master algorithmic trading strategies, machine learning applications, backtesting methodologies, and execution algorithms.',
-      keywords: ['algorithmic trading', 'systematic trading', 'machine learning finance', 'backtesting', 'execution algorithms'],
+      description: 'Master algorithmic trading strategies and machine learning applications for systematic trading.',
+      keywords: ['algorithmic trading', 'systematic trading', 'machine learning finance', 'quantitative strategies'],
     },
     articles: {
       title: 'Quantitative Finance Research Articles | SOPHIE\'s Daddy Quant Blog',
