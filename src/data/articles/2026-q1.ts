@@ -1,7 +1,7 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
-  
+
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
@@ -53,6 +53,16 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/i7pqdHp.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
+    title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
+    description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
+    slug: "architecture-structured-notes-comprehensive-investors-guide",
+    date: "January 4, 2026",
+    imageUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
     labels: [ArticleLabel.QUANT],
   },
   {

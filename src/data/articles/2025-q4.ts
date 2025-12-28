@@ -3,13 +3,13 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q4: Article[] = [
 
 {
-    title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
-    description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
-    slug: "architecture-structured-notes-comprehensive-investors-guide",
+    title: "The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading",
+    description: "A comprehensive analysis of 2025's most market-moving events, from the DeepSeek efficiency shock to the gold super-cycle. Explore the tactical playbook that emerged from tariff threats, AI capex fatigue, and the death of linear market narratives.",
+    slug: "2025-financial-market-retrospective-seven-pivotal-events",
     date: "December 29, 2025",
-    imageUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+    imageUrl: "https://i.imgur.com/FlVMnGq.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub",
     deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
     labels: [ArticleLabel.QUANT],
   },
 {
