@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, ExternalLink, TrendingUp, BarChart3, Calculator } from "lucide-react";
+import { FileText, ExternalLink, Calculator } from "lucide-react";
 import { useState } from "react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { VideoTutorial } from "@/components/ui/video-tutorial";
@@ -33,7 +33,7 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
                 Monte Carlo Simulation
               </CardTitle>
               <CardDescription className="text-sm md:text-base text-blue-700">
-                Master Monte Carlo methods for financial modeling, risk assessment, and portfolio optimization. 
+                Master Monte Carlo methods for financial modeling, risk assessment, and portfolio robustness. 
                 Learn to simulate complex financial scenarios and price derivatives using probabilistic approaches.
               </CardDescription>
             </div>
@@ -47,15 +47,36 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
               {/* Study Guide */}
               <div className="lg:col-span-1">
                 <StudyGuide
-                  title="Monte Carlo Study Guide"
+                  title="Study Guide"
                   items={[
-                    "Understanding stochastic processes and random variables",
-                    "Monte Carlo simulation fundamentals and methodology",
-                    "Applications in derivative pricing and risk management",
-                    "Variance reduction techniques for efficiency",
-                    "Implementation in portfolio optimization",
-                    "Stress testing and scenario analysis",
-                    "Limitations and model validation considerations"
+                    {
+                      text: "Monte Carlo Simulation Overview",
+                      url: "https://www.sophie-ai-finance.com/articles/monte-carlo-simulation-quantitative-finance-stochastic-modeling"
+                    },
+                    {
+                      text: "[Youtube] Monte Carlo Simulation in Risk Management",
+                      url: "https://youtu.be/5gA1ifx7wPg"
+                    },
+                    {
+                      text: "Monte Carlo Simulation for Trading Robustness",
+                      url: "https://www.sophie-ai-finance.com/articles/monte-carlo-robustness-protocols-stress-testing-systematic-trading"
+                    },
+                    {
+                      text: "[Youtube] Monte Carlo Simulation for Quant Trading",
+                      url: "https://youtu.be/sA57KkA-v-Q"
+                    },
+                    {
+                      text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
+                      url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva"
+                    }, 
+                    {
+                      text: "[Youtube] Monte Carlo Simulation in Derivative Pricing and CVA",
+                      url: "https://youtu.be/nBAnWHAzD6I"
+                    },                   
+                    {
+                      text: "Portfolio Monte Carlo Simulation Tools",
+                      url: "https://www.portfoliovisualizer.com/monte-carlo-simulation"
+                    },
                   ]}
                 />
               </div>
@@ -63,7 +84,7 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
               {/* Video */}
               <div className="lg:col-span-2">
                 <VideoTutorial
-                  title="Monte Carlo Simulation in Finance"
+                  title="Video Overview"
                   description="Learn the fundamentals of Monte Carlo methods and their applications in financial modeling and risk management."
                   videoId={config.videoUrl.split('/').pop() || ''}
                 />
