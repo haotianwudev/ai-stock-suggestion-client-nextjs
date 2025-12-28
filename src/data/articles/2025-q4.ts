@@ -164,7 +164,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
 {
-    title: "Monte Carlo Simulation in Quantitative Finance: Advanced Stochastic Modeling",
+    title: "Monte Carlo Simulation for Derivative Pricing",
     description: "An overview of the numerical techniques and stochastic models essential for pricing exotic derivatives and managing XVA risk. Explore jump-diffusion processes, stochastic volatility frameworks, and nested simulation for CVA.",
     slug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
     date: "December 11, 2025",
@@ -239,7 +239,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
 {
-    title: "Monte Carlo Robustness Protocols: Stress-Testing Systematic Trading Strategies Against Sequence Risk and Overfitting",
+    title: "Monte Carlo Simulation for Quant Trading Robustness",
     description: "A comprehensive framework for validating quantitative trading strategies through Monte Carlo simulation. Explores IID Bootstrap, Block Bootstrap, Permutation, and Surrogate Data methods to quantify the Probability of Backtest Overfitting (PBO), estimate true drawdown distributions, and calculate Deflated Sharpe Ratios for robust strategy deployment.",
     slug: "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
     date: "December 3, 2025",
@@ -300,7 +300,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
 {
-    title: "Monte Carlo Simulation in Quantitative Finance: Stochastic Modeling, Risk Quantification, and Algorithmic Robustness",
+    title: "Monte Carlo Simulation for Quant Finance Overview",
     description: "A comprehensive deep research analysis of Monte Carlo simulation as the cornerstone of modern quantitative finance. Explores stochastic differential equations, variance reduction techniques, risk management applications, and the critical limitations in capturing alpha—providing a rigorous framework for derivative pricing, VaR/CVaR calculation, and algorithmic strategy validation.",
     slug: "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
     date: "November 26, 2025",
