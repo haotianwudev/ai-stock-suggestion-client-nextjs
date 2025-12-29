@@ -1,6 +1,7 @@
 "use client";
 
 import { Search, X } from "lucide-react";
+import { ArticleLabel } from "@/data/articles/types";
 
 interface ArticleFilterProps {
   searchText: string;
@@ -114,17 +115,9 @@ function isLocalhost(): boolean {
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0';
 }
 
-// Get all available labels from the enum in a specific order
+// Get all available labels from the enum dynamically
 export function getAllLabels(): string[] {
-  return [
-    "Deep Research",
-    "Options Trading", 
-    "Youtube",
-    "Podcast",
-    "Quantitative Finance",
-    "AI & Machine Learning",
-    "Stock Analysis"
-  ];
+  return Object.values(ArticleLabel);
 }
 
 // Simplified filtering function with text search and label support
