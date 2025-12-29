@@ -29,7 +29,7 @@ export function StudyGuide({
   if (items.length === 0) return null;
 
   const getItemIcon = (item: StudyGuideItem) => {
-    const mainIcon = <FileText className="hidden md:block h-4 w-4 text-blue-500" />;
+    const mainIcon = <FileText className="hidden md:h-4 w-4 text-blue-500" />;
     const hasAdditionalContent = item.videoUrl || item.visualGuideUrl;
 
     if (!hasAdditionalContent) {
@@ -39,12 +39,12 @@ export function StudyGuide({
     return (
       <div className="flex items-center gap-1">
         {mainIcon}
-        <div className="flex gap-0.5">
+        <div className="hidden md:flex gap-0.5">
           {item.videoUrl && (
-            <Play className="hidden md:block h-4 w-4 text-red-400" />
+            <Play className="h-4 w-4 text-red-400" />
           )}
           {item.visualGuideUrl && (
-            <Image className="hidden md:block h-4 w-4 text-purple-400" />
+            <Image className="h-4 w-4 text-purple-400" />
           )}
         </div>
       </div>
@@ -88,7 +88,6 @@ export function StudyGuide({
       <ul className="space-y-1 md:space-y-3">
         {items.map((item, index) => {
           const isSelected = selectedIndex === index;
-          const itemHasCustomContent = hasCustomContent(item);
           
           return (
             <li key={index} className="group">
@@ -103,18 +102,13 @@ export function StudyGuide({
                 
                 {/* Text content */}
                 <div className="flex-1 min-w-0 pr-2">
-                  <span className={`text-xs md:text-sm leading-relaxed font-medium transition-colors duration-200 block ${
+                  <span className={`text-sm leading-relaxed font-medium transition-colors duration-200 block ${
                     isSelected 
                       ? 'text-gray-900 dark:text-gray-100' 
                       : 'text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100'
                   }`}>
                     {item.text}
                   </span>
-                  {itemHasCustomContent && (
-                    <span className="text-xs text-blue-600 dark:text-blue-400 mt-1 block md:hidden">
-                      Tap to view content
-                    </span>
-                  )}
                 </div>
 
                 {/* URL Button - always show */}
