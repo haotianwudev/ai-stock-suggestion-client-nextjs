@@ -1,6 +1,6 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, TrendingUp, DollarSign, LineChart, BarChart4 } from "lucide-react";
-import { VideoTutorial, Infographic, RelatedArticles } from "./components";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
 
 export function WhenToTradeContent() {
@@ -8,41 +8,32 @@ export function WhenToTradeContent() {
   
   if (!config) return null;
 
-  return (
-    <Card>
-      <CardHeader className="pb-4 md:pb-6">
-        <CardTitle className="text-xl md:text-2xl">{config.title}</CardTitle>
-        <CardDescription className="text-sm md:text-base">
-          {config.description}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2 md:space-y-6">
-        {/* Video Tutorial */}
-        {config.videoUrl && (
-          <VideoTutorial 
-            videoUrl={config.videoUrl} 
-            title="Options Trading Tutorial"
-          />
-        )}
+  const heroColorScheme = {
+    border: "border-teal-200",
+    background: "bg-gradient-to-br from-teal-50 to-cyan-50",
+    iconBg: "bg-teal-100",
+    iconColor: "text-teal-600",
+    titleColor: "text-teal-900",
+    descriptionColor: "text-teal-700",
+    cardBg: "bg-white",
+    cardBorder: "border border-teal-100",
+    cardText: "text-teal-900",
+    badgeBg: "bg-teal-100",
+    badgeText: "text-teal-800",
+    sectionTitle: "text-teal-900"
+  };
 
-        {/* Infographic */}
-        {config.infographicUrl && (
-          <Infographic 
-            imageUrl={config.infographicUrl} 
-            title="Options Usage Guide"
-            alt="When to Use Options Infographic"
-          />
-        )}
+  const keyConceptsItems = [
+    { icon: <Shield className="h-4 w-4" />, text: "Risk Management" },
+    { icon: <TrendingUp className="h-4 w-4" />, text: "Leverage Control" },
+    { icon: <DollarSign className="h-4 w-4" />, text: "Income Generation" }
+  ];
 
-        {/* Related Articles */}
-        {config.relatedArticles && (
-          <RelatedArticles 
-            articleSlugs={config.relatedArticles}
-            title="Related Articles"
-          />
-        )}
-
-        {/* Use Case Cards */}
+  const contentSections = (
+    <>
+      {/* Use Case Cards */}
+      <div className="space-y-3">
+        <h3 className="text-lg md:text-xl font-semibold text-teal-900">Primary Use Cases</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-4">
           <Card className="border-green-200 bg-green-50/50">
             <CardHeader className="pb-2 md:pb-4">
@@ -119,12 +110,15 @@ export function WhenToTradeContent() {
             </CardContent>
           </Card>
         </div>
+      </div>
 
-        {/* Warning Section */}
+      {/* Warning Section */}
+      <div className="space-y-3">
+        <h3 className="text-lg md:text-xl font-semibold text-teal-900">When NOT to Use Options</h3>
         <Card className="border-red-200 bg-red-50/50">
           <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-red-700">
-              ⚠️ When NOT to Use Options
+              ⚠️ Important Warnings
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 md:space-y-3">
@@ -152,7 +146,20 @@ export function WhenToTradeContent() {
             </div>
           </CardContent>
         </Card>
-      </CardContent>
-    </Card>
+      </div>
+    </>
+  );
+
+  return (
+    <PageTemplate
+      config={config}
+      heroIcon={<Shield className="h-6 w-6 md:h-8 md:w-8" />}
+      heroColorScheme={heroColorScheme}
+      keyConceptsItems={keyConceptsItems}
+      contentSections={contentSections}
+      videoTitle="Options Trading Tutorial"
+      videoDescription="Understand the key scenarios where options can be an effective trading and investment tool."
+      infographicAlt="When to Use Options Infographic"
+    />
   );
 }

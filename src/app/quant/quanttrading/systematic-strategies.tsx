@@ -27,7 +27,7 @@ export function SystematicStrategiesContent() {
   const keyConceptsItems = [
     { icon: <TrendingUp className="h-4 w-4" />, text: "Momentum Strategies" },
     { icon: <BarChart3 className="h-4 w-4" />, text: "Mean Reversion" },
-    { icon: <Activity className="h-4 w-4" />, text: "Rule-Based Systems" }
+    { icon: <Activity className="h-4 w-4" />, text: "Smart Beta Factors" }
   ];
 
   const contentSections = (
@@ -45,12 +45,41 @@ export function SystematicStrategiesContent() {
             <p className="text-sm text-green-700">Profit from price reversals and statistical arbitrage opportunities.</p>
           </div>
           <div className="p-4 bg-white rounded-lg border border-green-100">
-            <h4 className="font-semibold text-green-900 mb-2">Factor Investing</h4>
-            <p className="text-sm text-green-700">Systematic exposure to risk factors like value, quality, and low volatility.</p>
+            <h4 className="font-semibold text-green-900 mb-2">Smart Beta Factors</h4>
+            <p className="text-sm text-green-700">Systematic exposure to risk factors like value, quality, momentum, and low volatility.</p>
           </div>
           <div className="p-4 bg-white rounded-lg border border-green-100">
             <h4 className="font-semibold text-green-900 mb-2">Statistical Arbitrage</h4>
             <p className="text-sm text-green-700">Exploit statistical relationships between correlated assets systematically.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Smart Beta Deep Dive */}
+      <div className="space-y-3">
+        <h3 className="text-lg md:text-xl font-semibold text-green-900">Smart Beta Factor Investing</h3>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <p className="text-sm text-green-800 mb-4">
+            Smart Beta combines the benefits of passive indexing with active management by systematically 
+            tilting portfolios toward specific risk factors that have historically delivered excess returns.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="bg-white p-3 rounded border border-green-100">
+              <h5 className="font-semibold text-green-900 mb-1">Value Factor</h5>
+              <p className="text-xs text-green-700">Low P/E, P/B ratios outperform over long term</p>
+            </div>
+            <div className="bg-white p-3 rounded border border-green-100">
+              <h5 className="font-semibold text-green-900 mb-1">Quality Factor</h5>
+              <p className="text-xs text-green-700">High ROE, low debt, stable earnings</p>
+            </div>
+            <div className="bg-white p-3 rounded border border-green-100">
+              <h5 className="font-semibold text-green-900 mb-1">Momentum Factor</h5>
+              <p className="text-xs text-green-700">Recent winners continue outperforming</p>
+            </div>
+            <div className="bg-white p-3 rounded border border-green-100">
+              <h5 className="font-semibold text-green-900 mb-1">Low Volatility</h5>
+              <p className="text-xs text-green-700">Lower risk stocks with better risk-adjusted returns</p>
+            </div>
           </div>
         </div>
       </div>
@@ -60,36 +89,11 @@ export function SystematicStrategiesContent() {
         <h3 className="text-lg md:text-xl font-semibold text-green-900">Implementation Framework</h3>
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary" className="bg-green-100 text-green-800">Signal Generation</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800">Factor Scoring</Badge>
           <Badge variant="secondary" className="bg-green-100 text-green-800">Portfolio Construction</Badge>
           <Badge variant="secondary" className="bg-green-100 text-green-800">Risk Management</Badge>
           <Badge variant="secondary" className="bg-green-100 text-green-800">Rebalancing Rules</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800">Performance Monitoring</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800">Transaction Costs</Badge>
-        </div>
-      </div>
-
-      {/* Best Practices */}
-      <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-green-900">Best Practices</h3>
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <ul className="space-y-2 text-sm text-green-800">
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-1">•</span>
-              <span>Define clear, objective rules for entry and exit signals</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-1">•</span>
-              <span>Implement robust risk management and position sizing</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-1">•</span>
-              <span>Account for transaction costs and market impact</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-600 mt-1">•</span>
-              <span>Regular strategy monitoring and performance attribution</span>
-            </li>
-          </ul>
+          <Badge variant="secondary" className="bg-green-100 text-green-800">Performance Attribution</Badge>
         </div>
       </div>
     </>
@@ -116,9 +120,7 @@ export function SystematicStrategiesContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Systematic Trading Strategies"
-      videoDescription="Learn how to build, test, and implement systematic trading strategies using quantitative methods and rule-based approaches."
-      infographicAlt="Systematic Trading Strategies Guide"
+      videoTitle="Video Tutorial"
       fallbackInfographic={fallbackInfographic}
     />
   );

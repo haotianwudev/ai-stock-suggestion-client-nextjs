@@ -6,41 +6,20 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
   'systematic-strategies': {
     id: 'systematic-strategies',
     title: 'Systematic Trading Strategies',
-    description: 'Learn rule-based trading approaches, momentum strategies, mean reversion, and systematic portfolio construction methods.',
-    //videoUrl: 'https://youtu.be/L0aVoPLqcFw',
-    //infographicUrl: 'https://i.imgur.com/YourSystematicStrategiesInfographic.jpeg',
+    description: 'Learn rule-based trading approaches, momentum strategies, mean reversion, smart beta factor investing, and systematic portfolio construction methods.',
+    videoUrl: 'https://youtu.be/xZY-O9-4AUs',
+    infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
-      "systematic-trading-strategies-quantitative-approach",
-      "quantitative-momentum-strategies",
-      "mean-reversion-trading-strategies",
+      "smart-beta-systematic-personal-investing-strategies",
     ],
     studyGuide: {
       title: "Study Guide",
       items: [
         {
-          text: "Systematic Trading Strategies Overview",
-          url: "https://www.sophie-ai-finance.com/articles/systematic-trading-strategies-quantitative-approach"
+          text: "Smart Beta & Systematic Personal Investing",
+          url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies"
         },
-        {
-          text: "[Youtube] Systematic Trading Fundamentals",
-          url: "https://youtu.be/L0aVoPLqcFw"
-        },
-        {
-          text: "Quantitative Momentum Strategies",
-          url: "https://www.sophie-ai-finance.com/articles/quantitative-momentum-strategies"
-        },
-        {
-          text: "Mean Reversion Trading Strategies",
-          url: "https://www.sophie-ai-finance.com/articles/mean-reversion-trading-strategies"
-        },
-        {
-          text: "Factor Investing and Smart Beta",
-          url: "https://www.investopedia.com/terms/f/factor-investing.asp"
-        },
-        {
-          text: "Statistical Arbitrage Techniques",
-          url: "https://www.quantstart.com/articles/statistical-arbitrage/"
-        }
+       
       ]
     }
   },
@@ -59,11 +38,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       title: "Study Guide",
       items: [
         {
-          text: "[Youtube] Deep Learning in Quant Trading",
+          text: "[Youtube] Deep Learning Evolution in Quant Trading",
           url: "https://youtu.be/s0Z3pl8DFDA"
         },
         {
-          text: "Deep Learning in Quant Trading",
+          text: "Deep Learning Evolution in Quant Trading",
           url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers"
         },
       ]

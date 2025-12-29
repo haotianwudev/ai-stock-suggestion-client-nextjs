@@ -11,7 +11,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",
-    ]
+    ],
+    studyGuide: {
+      title: "Study Guide",
+      items: [
+        {
+          text: "[Youtube] When to Trade, and When NOT to Trade",
+          url: "https://youtu.be/brQbdu19cbw"
+        },
+        {
+          text: "When to Trade, and When NOT to Trade",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-options-utilization-risk-comprehensive-framework"
+        },
+      ]
+    }
   },
   
   'greeks': {
@@ -48,7 +61,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "volatility-risk-premium-intro",
       'demystifying-volatility-risk-premium-theory-measurement-trading',
-    ]
+    ],
+    studyGuide: {
+      title: "Study Guide",
+      items: [
+        {
+          text: "[Youtube] VRP Overview",
+          url: "https://youtu.be/eHu9X04D7Ss"
+        },
+        {
+          text: "VRP Overview",
+          url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading"
+        },
+      ]
+    }
   }
 };
 

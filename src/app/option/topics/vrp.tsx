@@ -151,55 +151,6 @@ export function VRPContent() {
         </CardContent>
       </Card>
 
-      {/* Key Metrics */}
-      <Card className="border-yellow-200 bg-yellow-50/50">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg text-yellow-700">
-            📊 Key VRP Metrics to Monitor
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-4 text-sm">
-            <div>
-              <h5 className="font-semibold mb-2">IV Rank (IVR)</h5>
-              <p className="text-xs text-gray-600 mb-2">
-                Where current IV sits relative to its 52-week range. Higher IVR = better VRP opportunity.
-              </p>
-              <div className="bg-white p-2 rounded border text-xs font-mono">
-                IVR &gt; 50% = Good entry conditions
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-2">IV Percentile (IVP)</h5>
-              <p className="text-xs text-gray-600 mb-2">
-                Percentage of days in past year when IV was lower than today. Similar to IVR but different calculation.
-              </p>
-              <div className="bg-white p-2 rounded border text-xs font-mono">
-                IVP &gt; 70% = Premium rich environment
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-2">VIX Term Structure</h5>
-              <p className="text-xs text-gray-600 mb-2">
-                Shape of volatility curve across time. Contango (upward sloping) favors VRP harvesting.
-              </p>
-              <div className="bg-white p-2 rounded border text-xs font-mono">
-                VIX &lt; VIX3M = Contango structure
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-2">HV vs IV Spread</h5>
-              <p className="text-xs text-gray-600 mb-2">
-                Direct comparison of historical vs implied volatility. Larger spread = larger VRP.
-              </p>
-              <div className="bg-white p-2 rounded border text-xs font-mono">
-                IV - HV &gt; 5% = Significant premium
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
       {/* Risks and Considerations */}
       <Card className="border-red-200 bg-red-50/50">
         <CardHeader className="pb-2 md:pb-4">
