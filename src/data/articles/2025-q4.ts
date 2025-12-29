@@ -1,7 +1,17 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2025Q4: Article[] = [
-
+{
+    title: "Navigating the 2026 Shift: A Comprehensive Macro Economic Outlook",
+    description: "As we exit the post-pandemic recovery phase, 2026 presents a unique paradox: slowing growth meets sticky inflation. A comprehensive analysis of the Great Normalization, exploring stagflationary pressures, protectionist policies, and strategic investment positioning for the year ahead.",
+    slug: "navigating-2026-shift-comprehensive-macro-economic-outlook",
+    date: "December 31, 2025",
+    imageUrl: "https://i.imgur.com/uoz3V2q.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgVz7tn0HDMAVIzkJJHFXLaEuUmSv9Ag16gG1cAPbyIY4jx6sqbGZThKT3TbohbGwOM5TsDe8G1paF/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/5oRuR59t5LjAvMkxdAnGLu?si=cruOlJMpRP25yWdc5uti2A",
+    labels: [ArticleLabel.QUANT],
+  },
 {
     title: "The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading",
     description: "A comprehensive analysis of 2025's most market-moving events, from the DeepSeek efficiency shock to the gold super-cycle. Explore the tactical playbook that emerged from tariff threats, AI capex fatigue, and the death of linear market narratives.",

@@ -1,7 +1,7 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
-
+  
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
