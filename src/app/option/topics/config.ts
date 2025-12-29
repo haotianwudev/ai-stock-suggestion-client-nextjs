@@ -13,7 +13,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "strategic-options-utilization-risk-comprehensive-framework",
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "When to Trade, and When NOT to Trade",
@@ -36,7 +35,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "option-greeks-traders-poetic-guide-risk",
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "How to understand Greeks",
@@ -59,7 +57,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
       'demystifying-volatility-risk-premium-theory-measurement-trading',
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "VRP Deep Dive Analysis",

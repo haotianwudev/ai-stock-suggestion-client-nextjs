@@ -13,7 +13,7 @@ export interface BaseConfig {
   infographicUrl?: string;
   relatedArticles?: string[];
   studyGuide?: {
-    title: string;
+    title?: string;
     items: StudyGuideItem[];
   };
 }

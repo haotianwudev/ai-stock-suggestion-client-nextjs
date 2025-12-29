@@ -44,7 +44,6 @@ export function GreeksContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      infographicAlt="Option Greeks Visual Guide"
     />
   );
 }

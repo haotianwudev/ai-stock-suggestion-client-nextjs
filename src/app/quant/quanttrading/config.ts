@@ -13,7 +13,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "smart-beta-systematic-personal-investing-strategies",
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "Smart Beta & Systematic Personal Investing",
@@ -36,7 +35,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "deep-learning-evolution",
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "Deep Learning Evolution in Quant Trading",

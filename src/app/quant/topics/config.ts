@@ -18,7 +18,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "monte-carlo-advanced-stochastic-modeling-derivatives-cva"
     ],
     studyGuide: {
-      title: "Study Guide",
       items: [
         {
           text: "Monte Carlo Simulation Overview",

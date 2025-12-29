@@ -19,7 +19,7 @@ interface StudyGuideProps {
 }
 
 export function StudyGuide({ 
-  title = "Study Guide",
+  title = "Study Guide (click to select)",
   items,
   className = "",
   onItemSelect

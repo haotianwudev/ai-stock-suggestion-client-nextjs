@@ -27,7 +27,7 @@ export interface BaseConfig {
   infographicUrl?: string;
   relatedArticles?: string[];
   studyGuide?: {
-    title: string;
+    title?: string;
     items: StudyGuideItem[];
   };
 }
@@ -155,7 +155,7 @@ export function PageTemplate({
                   {config?.studyGuide && (
                     <div className="lg:col-span-1">
                       <StudyGuide
-                        title={config.studyGuide.title}
+                        title={config.studyGuide.title || "Study Guide (click to select)"}
                         items={config.studyGuide.items}
                         onItemSelect={handleStudyGuideItemSelect}
                       />

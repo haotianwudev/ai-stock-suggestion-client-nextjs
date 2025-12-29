@@ -120,7 +120,6 @@ export function SystematicStrategiesContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Video Tutorial"
       fallbackInfographic={fallbackInfographic}
     />
   );
