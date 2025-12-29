@@ -2,7 +2,7 @@
 
 interface VideoTutorialProps {
   title: string;
-  description: string;
+  description?: string;
   videoId: string;
   startTime?: number;
   className?: string;
@@ -23,9 +23,11 @@ export function VideoTutorial({
         <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
         <h4 className="font-semibold text-blue-800 dark:text-blue-200">{title}</h4>
       </div>
-      <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
-        {description}
-      </p>
+      {description && (
+        <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
+          {description}
+        </p>
+      )}
       <div className="relative aspect-video w-full">
         <iframe
           src={videoUrl}

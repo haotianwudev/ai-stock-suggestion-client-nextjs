@@ -193,8 +193,6 @@ export function VRPContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Volatility Risk Premium Tutorial"
-      videoDescription="Understanding the systematic edge in options markets where implied volatility consistently overstates realized volatility."
       infographicAlt="Volatility Risk Premium Visual Guide"
     />
   );

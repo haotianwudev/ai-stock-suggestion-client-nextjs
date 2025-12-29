@@ -157,8 +157,6 @@ export function WhenToTradeContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Options Trading Tutorial"
-      videoDescription="Understand the key scenarios where options can be an effective trading and investment tool."
       infographicAlt="When to Use Options Infographic"
     />
   );

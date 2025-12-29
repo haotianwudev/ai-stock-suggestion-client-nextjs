@@ -54,8 +54,6 @@ interface PageTemplateProps {
     text: string;
   }>;
   contentSections?: ReactNode;
-  videoTitle?: string;
-  videoDescription?: string;
   infographicAlt?: string;
   fallbackInfographic?: ReactNode;
   customVideoComponent?: ReactNode;
@@ -73,8 +71,6 @@ export function PageTemplate({
   heroColorScheme,
   keyConceptsItems = [],
   contentSections,
-  videoTitle,
-  videoDescription,
   infographicAlt = "Visual Guide",
   fallbackInfographic,
   customVideoComponent,
@@ -169,8 +165,7 @@ export function PageTemplate({
                   {/* Video */}
                   <div className={config?.studyGuide ? "lg:col-span-2" : "lg:col-span-3"}>
                     <VideoTutorial
-                      title={videoTitle || config?.title || ''}
-                      description={videoDescription || config?.description || ''}
+                      title="Video Tutorial"
                       videoId={currentVideoUrl.split('/').pop() || ''}
                     />
                   </div>

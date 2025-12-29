@@ -44,8 +44,6 @@ export function GreeksContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Option Greeks Tutorial"
-      videoDescription="Master option pricing through interactive Greek calculations and visualizations."
       infographicAlt="Option Greeks Visual Guide"
     />
   );

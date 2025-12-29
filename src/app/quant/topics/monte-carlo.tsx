@@ -74,8 +74,6 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Monte Carlo Simulation Overview"
-      videoDescription="Learn the fundamentals of Monte Carlo methods and their applications in financial modeling and risk management."
       infographicAlt="Monte Carlo Simulation in Quantitative Finance"
     />
   );

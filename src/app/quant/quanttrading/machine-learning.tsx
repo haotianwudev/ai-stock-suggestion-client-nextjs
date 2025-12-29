@@ -77,8 +77,6 @@ export function MachineLearningContent() {
       heroColorScheme={heroColorScheme}
       keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
-      videoTitle="Machine Learning in Finance"
-      videoDescription="Explore AI and machine learning applications in quantitative finance, from predictive modeling to algorithmic trading."
       infographicAlt="Machine Learning in Finance Guide"
     />
   );
