@@ -29,7 +29,7 @@ export function StudyGuide({
   if (items.length === 0) return null;
 
   const getItemIcon = (item: StudyGuideItem) => {
-    const mainIcon = <FileText className="h-4 w-4 text-blue-500" />;
+    const mainIcon = <FileText className="hidden md:block h-4 w-4 text-blue-500" />;
     const hasAdditionalContent = item.videoUrl || item.visualGuideUrl;
 
     if (!hasAdditionalContent) {
@@ -41,7 +41,7 @@ export function StudyGuide({
         {mainIcon}
         <div className="flex gap-0.5">
           {item.videoUrl && (
-            <Play className="h-4 w-4 text-red-400" />
+            <Play className="hidden md:block h-4 w-4 text-red-400" />
           )}
           {item.visualGuideUrl && (
             <Image className="hidden md:block h-4 w-4 text-purple-400" />
