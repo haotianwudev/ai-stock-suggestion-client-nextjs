@@ -108,10 +108,10 @@ export function PageTemplate({
   }, [config?.videoUrl, config?.infographicUrl]);
 
   return (
-    <div className="space-y-4 md:space-y-8 px-4 md:px-0">
+    <div className="space-y-4 md:space-y-8 px-1 md:px-0">
       {/* Hero Section */}
       <Card className={`${heroColorScheme.border} ${heroColorScheme.background}`}>
-        <CardHeader className="pb-3 md:pb-6 px-4 md:px-6">
+        <CardHeader className="pb-3 md:pb-6 px-2 md:px-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
             <div className={`p-2 md:p-3 ${heroColorScheme.iconBg} rounded-lg flex-shrink-0`}>
               <div className={`h-6 w-6 md:h-8 md:w-8 ${heroColorScheme.iconColor}`}>
@@ -129,7 +129,7 @@ export function PageTemplate({
           </div>
         </CardHeader>
         
-        <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
+        <CardContent className="space-y-4 md:space-y-6 px-2 md:px-6">
           {/* Key Concepts */}
           {showKeyConceptsSection && keyConceptsItems.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
@@ -223,8 +223,8 @@ export function PageTemplate({
       {showRelatedArticlesSection && relatedArticles.length > 0 && (
         <>
           {customRelatedArticlesComponent || (
-            <Card className="mx-4 md:mx-0">
-              <CardHeader className="px-4 md:px-6">
+            <Card className="mx-1 md:mx-0">
+              <CardHeader className="px-2 md:px-6">
                 <CardTitle className="text-lg md:text-xl flex items-center gap-2">
                   <FileText className="h-5 w-5 flex-shrink-0" />
                   <span>Related Articles</span>
@@ -233,7 +233,7 @@ export function PageTemplate({
                   Explore related topics and quantitative approaches
                 </CardDescription>
               </CardHeader>
-              <CardContent className="px-4 md:px-6">
+              <CardContent className="px-2 md:px-6">
                 <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
                   {relatedArticles.map((article) => (
                     <ArticleCard 
