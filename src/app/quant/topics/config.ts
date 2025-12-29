@@ -31,17 +31,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "Monte Carlo Simulation for Trading Robustness",
           url: "https://www.sophie-ai-finance.com/articles/monte-carlo-robustness-protocols-stress-testing-systematic-trading",
           videoUrl: "https://youtu.be/sA57KkA-v-Q",
+          visualGuideUrl: "https://i.imgur.com/2mKX2vD.jpeg",
           type: "article"
         },
         {
           text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
           url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
           videoUrl: "https://youtu.be/nBAnWHAzD6I",
+          visualGuideUrl: "https://i.imgur.com/K3gkRdn.jpeg",
           type: "article"
         },
         {
           text: "Portfolio Monte Carlo Simulation Tools",
-          url: "https://www.portfoliovisualizer.com/monte-carlo-simulation"
+          url: "https://www.portfoliovisualizer.com/monte-carlo-simulation",
+          type: "external"
         }
       ]
     }
