@@ -134,7 +134,7 @@ export function PageTemplate({
           {showKeyConceptsSection && keyConceptsItems.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
               {keyConceptsItems.map((item, index) => (
-                <div key={index} className={`flex items-center gap-2 p-3 ${heroColorScheme.cardBg} rounded-lg ${heroColorScheme.cardBorder} min-w-0`}>
+                <div key={index} className={`flex items-center gap-2 p-2 md:p-3 ${heroColorScheme.cardBg} rounded-lg ${heroColorScheme.cardBorder} min-w-0`}>
                   <div className={`h-4 w-4 ${heroColorScheme.iconColor} flex-shrink-0`}>
                     {item.icon}
                   </div>

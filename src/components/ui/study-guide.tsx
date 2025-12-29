@@ -80,12 +80,12 @@ export function StudyGuide({
   };
 
   return (
-    <div className={`p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg border border-blue-200 dark:border-blue-700 shadow-sm ${className}`}>
-      <div className="flex items-center gap-2 mb-3 md:mb-4">
+    <div className={`p-2 md:p-4 bg-white dark:bg-gray-800 rounded-lg border border-blue-200 dark:border-blue-700 shadow-sm ${className}`}>
+      <div className="flex items-center gap-2 mb-2 md:mb-4">
         <BookOpen className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
         <h3 className="font-semibold text-blue-800 dark:text-blue-200 text-sm md:text-base leading-tight">{title}</h3>
       </div>
-      <ul className="space-y-2 md:space-y-3">
+      <ul className="space-y-1 md:space-y-3">
         {items.map((item, index) => {
           const isSelected = selectedIndex === index;
           const itemHasCustomContent = hasCustomContent(item);
@@ -93,7 +93,7 @@ export function StudyGuide({
           return (
             <li key={index} className="group">
               <div 
-                className={`flex items-start md:items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg border transition-all duration-200 cursor-pointer touch-manipulation ${getItemTypeColor(item, index, isSelected)}`}
+                className={`flex items-start md:items-center gap-2 md:gap-3 p-1.5 md:p-3 rounded-lg border transition-all duration-200 cursor-pointer touch-manipulation ${getItemTypeColor(item, index, isSelected)}`}
                 onClick={() => handleItemClick(item, index)}
               >
                 {/* Icon */}
