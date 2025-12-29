@@ -100,7 +100,7 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
               onClick={() => setIsImageViewerOpen(true)}
             >
               <img 
-                src="https://i.imgur.com/vGkVKOa.jpeg" 
+                src={config?.infographicUrl} 
                 alt="Monte Carlo Simulation in Quantitative Finance" 
                 className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
               />
@@ -154,7 +154,7 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
 
       {/* Full-screen image viewer */}
       <FullScreenImageViewer
-        src="https://i.imgur.com/vGkVKOa.jpeg"
+        src={config?.infographicUrl || "https://i.imgur.com/vGkVKOa.jpeg"}
         alt="Monte Carlo Simulation in Quantitative Finance"
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}

@@ -9,18 +9,18 @@ import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer"
 import { VideoTutorial } from "@/components/ui/video-tutorial";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
+import { getQuantTopicConfig } from "./config";
 
 export function MachineLearningContent() {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
+  // Get configuration for machine learning
+  const config = getQuantTopicConfig('machine-learning');
+  
   // Get related articles with AI/ML labels
-  const relatedArticles = articles.filter(article => 
-    article.labels?.some((label: string) => label === 'AI & Machine Learning') ||
-    article.title.toLowerCase().includes('ai') ||
-    article.title.toLowerCase().includes('machine learning') ||
-    article.title.toLowerCase().includes('neural') ||
-    article.title.toLowerCase().includes('algorithm')
-  ).slice(0, 4);
+  const relatedArticles = config?.relatedArticles 
+    ? articles.filter(article => config.relatedArticles?.includes(article.slug || ''))
+    : [];
 
   return (
     <div className="space-y-4 md:space-y-8">
@@ -61,35 +61,36 @@ export function MachineLearningContent() {
           </div>
 
           {/* Video Tutorial */}
-          <VideoTutorial
-            title="AI-Powered Trading Algorithms"
-            description="Discover how artificial intelligence and machine learning are revolutionizing quantitative finance and quantitative trading strategies."
-            videoId="aViyh1n08v4"
-            className="mb-4"
-          />
+          {config?.videoUrl && (
+            <VideoTutorial
+              title="Systematic Trading Strategies"
+              description="Learn how to build, test, and implement systematic trading strategies using quantitative methods and rule-based approaches."
+              videoId={config.videoUrl.split('/').pop() || ''}
+            />
+          )}
 
           {/* Infographic Section */}
-          <div className="space-y-3">
-            <h3 className="text-lg md:text-xl font-semibold text-purple-900">Visual Guide</h3>
-            <div 
-              className="relative rounded-xl overflow-hidden shadow-lg border border-purple-200 cursor-pointer group"
-              onClick={() => setIsImageViewerOpen(true)}
-            >
-              <div className="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Brain className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                  <p className="text-purple-800 font-medium">ML in Finance Infographic</p>
-                  <p className="text-purple-600 text-sm mt-2">Click to view detailed visualization</p>
+          {config?.infographicUrl && (
+            <div className="space-y-3">
+              <h3 className="text-lg md:text-xl font-semibold text-green-900">Visual Guide</h3>
+              <div 
+                className="relative rounded-xl overflow-hidden shadow-lg border border-green-200 cursor-pointer group"
+                onClick={() => setIsImageViewerOpen(true)}
+              >
+                <img 
+                  src={config.infographicUrl} 
+                  alt="Systematic Trading Strategies Guide" 
+                  className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <Button variant="secondary" size="sm">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Full Screen
+                  </Button>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <Button variant="secondary" size="sm">
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  View Full Screen
-                </Button>
-              </div>
             </div>
-          </div>
+          ) }
 
           {/* Applications */}
           <div className="space-y-3">
@@ -167,7 +168,7 @@ export function MachineLearningContent() {
 
       {/* Full-screen image viewer */}
       <FullScreenImageViewer
-        src="https://i.imgur.com/YourMLInfographic.jpeg"
+        src={config?.infographicUrl || "https://i.imgur.com/YourMLInfographic.jpeg"}
         alt="Machine Learning in Finance Guide"
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}
