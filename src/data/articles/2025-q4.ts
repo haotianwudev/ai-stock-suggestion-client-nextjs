@@ -408,6 +408,7 @@ export const articles2025Q4: Article[] = [
     title: "The Deep Learning Evolution in Quant Trading: From MLP to Transformers",
     description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
     date: "November 21, 2025",
+    slug: "deep-learning-evolution",
     youtubeUrl: "https://youtu.be/s0Z3pl8DFDA",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/s0Z3pl8DFDA/maxresdefault.jpg",

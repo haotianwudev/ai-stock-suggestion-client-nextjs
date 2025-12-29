@@ -49,44 +49,23 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     id: 'machine-learning',
     title: 'Machine Learning in Finance',
     description: 'Explore AI and machine learning applications in quantitative finance. From predictive modeling to quantitative trading and risk assessment.',
-    //videoUrl: 'https://youtu.be/aViyh1n08v4',
-    //infographicUrl: "https://i.imgur.com/YourMLInfographic.jpeg",
+    videoUrl: 'https://youtu.be/s0Z3pl8DFDA',
+    infographicUrl: "https://i.imgur.com/8ZF0tTX.jpeg",
     relatedArticles: [
-      "ai-powered-trading-algorithms-deep-learning",
-      "machine-learning-portfolio-optimization",
-      "neural-networks-financial-prediction",
+      "evolution-deep-learning-quantitative-trading-mlps-transformers",
+      "deep-learning-evolution",
     ],
     studyGuide: {
       title: "Study Guide",
       items: [
         {
-          text: "AI-Powered Trading Algorithms",
-          url: "https://www.sophie-ai-finance.com/articles/ai-powered-trading-algorithms-deep-learning"
+          text: "[Youtube] Deep Learning in Quant Trading",
+          url: "https://youtu.be/s0Z3pl8DFDA"
         },
         {
-          text: "[Youtube] Machine Learning in Finance",
-          url: "https://youtu.be/aViyh1n08v4"
+          text: "Deep Learning in Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers"
         },
-        {
-          text: "Machine Learning Portfolio Optimization",
-          url: "https://www.sophie-ai-finance.com/articles/machine-learning-portfolio-optimization"
-        },
-        {
-          text: "Neural Networks for Financial Prediction",
-          url: "https://www.sophie-ai-finance.com/articles/neural-networks-financial-prediction"
-        },
-        {
-          text: "Reinforcement Learning in Trading",
-          url: "https://www.quantstart.com/articles/reinforcement-learning-for-trading/"
-        },
-        {
-          text: "Deep Learning for Finance",
-          url: "https://www.tensorflow.org/tutorials/structured_data/time_series"
-        },
-        {
-          text: "Sentiment Analysis for Trading",
-          url: "https://www.investopedia.com/articles/active-trading/041814/four-most-commonlyused-indicators-trend-trading.asp"
-        }
       ]
     }
   }
