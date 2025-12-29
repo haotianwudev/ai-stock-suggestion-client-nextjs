@@ -44,7 +44,7 @@ export function StudyGuide({
             <Play className="h-4 w-4 text-red-400" />
           )}
           {item.visualGuideUrl && (
-            <Image className="h-4 w-4 text-purple-400" />
+            <Image className="hidden md:block h-4 w-4 text-purple-400" />
           )}
         </div>
       </div>
