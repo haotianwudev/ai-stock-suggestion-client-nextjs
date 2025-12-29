@@ -13,6 +13,15 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.MARCO],
   },
 {
+    title: "2025 Market Rewind: A Chaotic Soft Landing",
+    description: "Join us for a forensic retrospective of 2025, the Year of the Great Pivot, where the financial markets violently ruptured from the trends of the early 2020s.",
+    date: "December 30, 2025",
+    youtubeUrl: "https://youtu.be/bt2O3ngqI_8",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/bt2O3ngqI_8/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
+  },
+{
     title: "The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading",
     description: "A comprehensive analysis of 2025's most market-moving events, from the DeepSeek efficiency shock to the gold super-cycle. Explore the tactical playbook that emerged from tariff threats, AI capex fatigue, and the death of linear market narratives.",
     slug: "2025-financial-market-retrospective-seven-pivotal-events",
@@ -21,6 +30,15 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub",
     deepResearch: true,
     labels: [ArticleLabel.MARCO],
+  },
+{
+    title: "Options Tutorial Year End Summary: When to Trade, and When NOT to Trade",
+    description: "Unlock the asymmetric power of options, from hedging portfolio risk to generating income with the Wheel strategy. This guide breaks down the critical difference between using options as insurance via protective puts versus leveraging capital through speculation.",
+    date: "December 28, 2025",
+    youtubeUrl: "https://youtu.be/brQbdu19cbw",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/brQbdu19cbw/maxresdefault.jpg",
+    options: true,
   },
 {
     title: "Strategic Options Utilization & Risk: A Comprehensive Framework for When to Deploy and When to Avoid Derivatives",
@@ -32,6 +50,15 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTn6HxDvyIGehEog6Bi9fyIWbL_rH1XLDOXdr4YjV2u6z2zpx59ouy0BtdCrv5DEb2486cnLp3EciYP/pub",
     podcastUrl: "https://open.spotify.com/episode/6HLhQ0jGswN8PR9CyHlRsu?si=53MGBBoDQYG5yV4pSw_RLg",
     options: true,
+  },
+{
+    title: "Measuring Strategy Performance Quantitatively",
+    description: "Is your fund manager actually skilled, or just benefiting from market timing? This video decodes the architecture of performance evaluation, explaining why raw percentage returns are meaningless without context. ",
+    date: "December 26, 2025",
+    youtubeUrl: "https://youtu.be/WBUxNZZzwnY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/WBUxNZZzwnY/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics",
