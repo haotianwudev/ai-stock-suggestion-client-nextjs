@@ -10,7 +10,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgVz7tn0HDMAVIzkJJHFXLaEuUmSv9Ag16gG1cAPbyIY4jx6sqbGZThKT3TbohbGwOM5TsDe8G1paF/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5oRuR59t5LjAvMkxdAnGLu?si=cruOlJMpRP25yWdc5uti2A",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading",
@@ -20,7 +20,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/FlVMnGq.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "Strategic Options Utilization & Risk: A Comprehensive Framework for When to Deploy and When to Avoid Derivatives",
@@ -32,7 +32,6 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTn6HxDvyIGehEog6Bi9fyIWbL_rH1XLDOXdr4YjV2u6z2zpx59ouy0BtdCrv5DEb2486cnLp3EciYP/pub",
     podcastUrl: "https://open.spotify.com/episode/6HLhQ0jGswN8PR9CyHlRsu?si=53MGBBoDQYG5yV4pSw_RLg",
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics",
@@ -51,7 +50,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/aViyh1n08v4",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/aViyh1n08v4/maxresdefault.jpg",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.AI_ML, ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
 {
     title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
@@ -61,7 +60,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/YeKTkd4.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ8jmxTMBnLq-y9ucLNhiFO3uuc_-S0TNTRLluyg4uzUj0-rXtBMKKyW-aZn1LfoEvM4nZM5kC4meod/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.AI_ML, ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
 {
     title: "Understanding DSPX: Market Divergence and Volatility Decomposition",
@@ -70,7 +69,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/1tN9LuKi3Os",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/1tN9LuKi3Os/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
@@ -80,7 +79,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/OdLQOju.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRQMkTeGVs00ktOo8cKiUlFewzE1EV-U0eGsnTeTvJ_xsFIc2ildzvPZ9Qcky1W_-U9vjhDl90WpRUf/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "Why are Put Options So Expensive?",
@@ -90,7 +89,6 @@ export const articles2025Q4: Article[] = [
     isVideo: true,
     options: true,
     imageUrl: "https://img.youtube.com/vi/X2IJngJv4G0/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Single Leg Long Put: Asymmetric Utility in Options Trading",
@@ -102,7 +100,6 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/28qBfNSza5WcYKEsfdPbP1?si=7a3741854f374aeb",
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Inside the Alpha Factory: How WorldQuant Industrialized Quant Trading",
@@ -130,7 +127,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/EbvI5T_P4Yg",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/EbvI5T_P4Yg/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "ES & NQ Futures: The Engine Room of the Global Economy",
@@ -140,7 +137,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/nwfwU8Q.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQTy8TWpAKFSFBnnKnfjHyPrupXR_D2I5khOcSy5WChcffYFrogZhvE3pUZ_ekwlf7QabBtCmJTcm4Z/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "The Buffett Option Strategy: Selling LEAP Puts",
@@ -150,7 +147,6 @@ export const articles2025Q4: Article[] = [
     isVideo: true,
     options: true,
     imageUrl: "https://img.youtube.com/vi/pdfm0osP4Ow/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Selling Long-Dated Put Options (LEAPs): Institutional Mechanics, Volatility Arbitrage, and the Retail Traps",
@@ -161,7 +157,6 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvTNTE3JeoNILFL-FzOK2gUHdhk3ZG7FJCcILRgbVNA9YX1kPEWexRtWBrotSq9eh9KNjUsMrLN6-p/pub",
     deepResearch: true,
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Monte Carlo Simulation for Quant Finance EP 3: Pricing the Unpriceable",
@@ -190,6 +185,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/_HHOkj3iFco",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/_HHOkj3iFco/maxresdefault.jpg",
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
@@ -199,6 +195,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/mgkSY5y.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub",
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "The Grey Rhino: How Japan’s Rate Hike & US QE Broke the Global Carry Trade (2025 Crisis)",
@@ -207,6 +204,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/zhCdnpC3eag",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/zhCdnpC3eag/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind",
@@ -216,6 +214,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/oyqfzgL.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRJOwkRSpdTDEXDsMu6BMhia2EkzosRPCqPAzGT-qofQgqNY4di6sosdDIzEZXszWip_TpA5-JAkbp8/pub",
     deepResearch: true,
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "The Secret Map of the Market: How Gamma Exposure (GEX) Controls Price",
@@ -265,7 +264,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/G3s64sExKpg",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/G3s64sExKpg/maxresdefault.jpg",
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
 {
     title: "Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research",
@@ -276,7 +275,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT1TJ8aqQAjEejZm3IBAYvLW-BCXsfAsZpNyjevu38qHU2OMckyXkGxe7qUm_mMJxSTOoqia0fIcz-x/pub",
     podcastUrl: "https://open.spotify.com/episode/6YJIf7dNTVTxiDFnGA4LLJ?si=enOoYGFmTTi0n_Z23tZ_Uw",
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
 {
     title: "Most popular income strategy: All about options on SPX and popular option writing ETFs",
@@ -286,7 +285,6 @@ export const articles2025Q4: Article[] = [
     isVideo: true,
     options: true,
     imageUrl: "https://img.youtube.com/vi/yThUZBJWKPM/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Mastering the Volatility Risk Premium: A Comprehensive Guide to SPX Options Selling",
@@ -297,7 +295,6 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSyPM4fIhPOPhOzvbO3SZ-PxzObursCGZzw8F93Wz2yA2eLmuAMSZ7lNHf7uFLeMp4wJe5N5pj9PQPT/pub",
     deepResearch: true,
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Monte Carlo Simulation for Quant Finance EP 1: Risk Management",
@@ -326,7 +323,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/DtF2uyr2Uus",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/DtF2uyr2Uus/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
@@ -337,7 +334,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "NVIDIA's PARADOX: The 'Perfect' Earnings That Sparked a Sell-Off",
@@ -346,7 +343,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/hkpuKl-ucd4",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/hkpuKl-ucd4/maxresdefault.jpg",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation",
@@ -356,7 +353,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/bakZw7R.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "The Volatility Risk Premium (VRP): How to Systematically Earn the Fear Premium by Selling Options",
@@ -366,7 +363,8 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/eHu9X04D7Ss",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/eHu9X04D7Ss/maxresdefault.jpg",
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
@@ -376,7 +374,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/ZSPRHKw.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub",
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Deep Learning Evolution in Quant Trading: From MLP to Transformers",
@@ -404,6 +403,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/pGO7nYdHCT0",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/pGO7nYdHCT0/maxresdefault.jpg",
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
@@ -413,7 +413,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://247wallst.com/wp-content/uploads/2021/07/imageForEntry20-aEz.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub",
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "Druckenmiller's Q32025 13F Major Shift: The Bessent Edge, AI Rotation, & 30% Healthcare Bet",
@@ -422,6 +422,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/rXKGJGI4hvQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/rXKGJGI4hvQ/maxresdefault.jpg",
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
@@ -432,7 +433,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrrx_N8DTUy7YUnat4IZ18LBBO1m0YJy0vZp6Dgv1dn9_QnOWBDjVrTYRQGX4Jt71XLAFyhJL5xbjA/pub",
     podcastUrl: "https://open.spotify.com/episode/415h1tKoMHcPUHbdkNYxWW?si=LE96YtzTQkOVFl4Cv_tKag",
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "Profit from Time Decay & IV Crush: Mastering Short Straddles and Strangles",
@@ -470,7 +471,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://kalmanfilter.net/img/OneD/Update.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The ETFs That CRUSH QQQ & VOO Returns. Are they Better Choices?",
@@ -480,6 +481,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/WTQIQb1TLns",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/WTQIQb1TLns/maxresdefault.jpg",
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
@@ -489,7 +491,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1426182282/image_1426182282.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPuWvOuMwO7xi43iRaR_lOYjXFHr3QDhVpt2jxNyyE2CRf97THUUkINfR6BLwGA3tveFPI3U2BR79U/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "Warren Buffett's Final Letter: Good Bye Buffett! Is Birkshire a Good Buy?",
@@ -499,6 +501,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/ptZstN8sTVQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/ptZstN8sTVQ/maxresdefault.jpg",
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
@@ -508,7 +511,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://www.reinsurancene.ws/wp-content/uploads/2022/04/berkshire-hathway-warren-buffett.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub",
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "Tesla's $8.5 Trillion AI Gamble: Why the 319x P/E Ratio Ignores the Auto Crisis",
@@ -518,6 +521,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/TcGcYSa-aSQ",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/TcGcYSa-aSQ/maxresdefault.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
@@ -527,7 +531,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://web-cdn.markets.com/tesla_tsla_stock_price_003_1dcb4a1a07.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRZ4JaDN8SMc9WcOeCBvK_nP69iZotqfB0ZjAod9Rr0YCSk6ksZ-vXF7XQ_r9UDJOdYvmK-BjN2Zs2p/pub",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Option Greeks' Poem: Mastering Delta, Gamma, Theta, Vega for Professional Risk Management",
@@ -537,7 +541,8 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/ZLUeCSLgw3Y",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/ZLUeCSLgw3Y/maxresdefault.jpg",
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
@@ -547,7 +552,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub",
     deepResearch: true,
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Ray Dalio's All Weather Strategy: Is risk parity still a holy grail or failed already today?",
@@ -556,7 +562,8 @@ export const articles2025Q4: Article[] = [
     date: "November 6, 2025",
     youtubeUrl: "https://youtu.be/NCVI6IDwz2c",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/NCVI6IDwz2c/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/NCVI6IDwz2c/maxresdefault.jpg",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.MARCO],
   },
 {
     title: "The All Weather Strategy in a New Economic Climate",
@@ -566,7 +573,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://mixprize.org/wp-content/uploads/2022/12/Ray-Dalios-All-Weather-Portfolio-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.MARCO],
   },
 {
     title: "Michael Burry's AI Short Shock the market: Circular Financing Against Nvidia & Palantir(Q3 2025 13F)",
@@ -575,7 +582,8 @@ export const articles2025Q4: Article[] = [
     date: "November 5, 2025",
     youtubeUrl: "https://youtu.be/UAS_tTCbWD4",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/UAS_tTCbWD4/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/UAS_tTCbWD4/maxresdefault.jpg",
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot",
@@ -585,7 +593,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/498541178/image_498541178.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfWqGZtTngKfDSSWb10w6DNozn1VdkYEB8McxhmEfYzvNmJQm-_ZQsGZxot5KzvhTgVWwXH-JX7sO2/pub",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.FORM13F],
   },
 {
     title: "The Retirement Insurance: Are Annuities & LTC Worth the Cost?",
@@ -594,7 +602,8 @@ export const articles2025Q4: Article[] = [
     date: "November 4, 2025",
     youtubeUrl: "https://youtu.be/W22VVkVoxEY",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/W22VVkVoxEY/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/W22VVkVoxEY/maxresdefault.jpg",
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
@@ -604,7 +613,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://www.reliancenipponlife.com/media/3472/banner_08.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "STOCKS AT ALL-TIME HIGHS: Why High Valuations Are Justified (But Precarious) in Late 2025",
@@ -613,7 +622,8 @@ export const articles2025Q4: Article[] = [
     date: "November 3, 2025",
     youtubeUrl: "https://youtu.be/UMgH4GiusZA",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/UMgH4GiusZA/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/UMgH4GiusZA/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "High Altitude: Deconstructing the U.S. Stock Market Valuation",
@@ -623,7 +633,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://www.brookings.edu/wp-content/uploads/2023/10/shutterstock_2207441063.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjopKgYRYinwE5rUu8W0BtQY9j_wT3aWkn6pP6q2NgZIHtSNcSHmFnp9iSFB4ng1rLfh-osGKVbYx5/pub",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "Options Trading Mastery: Decoding Volume & Open Interest (OI)",
@@ -652,7 +662,8 @@ export const articles2025Q4: Article[] = [
     date: "October 31, 2025",
     youtubeUrl: "https://youtu.be/pR821HLbl3c",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/pR821HLbl3c/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/pR821HLbl3c/maxresdefault.jpg",
+    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
 {
     title: "Assumptions of Machine Learning in Quantitative Trading",
@@ -672,7 +683,8 @@ export const articles2025Q4: Article[] = [
     date: "October 30, 2025",
     youtubeUrl: "https://youtu.be/5WuCFfwFCd4",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/5WuCFfwFCd4/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/5WuCFfwFCd4/maxresdefault.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
   },
 {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
@@ -683,7 +695,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPeY1kvLzoeDaRR_X9fVjrY6LWj20hRuQJ6GVmnZVT8jxfATLeE-V1sr2ixhnJIZUJTsTTV_yXwHLL/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
   },
 {
     title: "The Ultimate Retirement Blueprint: Master the IRA, The Bucket Strategy, & Social Security",
@@ -692,7 +704,8 @@ export const articles2025Q4: Article[] = [
     date: "October 28, 2025",
     youtubeUrl: "https://youtu.be/dZ5THqfE9ys",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/dZ5THqfE9ys/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/dZ5THqfE9ys/maxresdefault.jpg",
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "The Architect's Guide to a Secure Retirement",
@@ -703,7 +716,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTSS7BoJthbapAwuz8BpFOwPKX0f1kcpPTj_o9xOuyW9I7lL3tZaVl_O6q0eBj6S1CKYM4aXihFraw/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.FINANCE101],
   },
 {
     title: "Vertical Credit Spreads: The Defined-Risk Strategy for Selling Options Premium",
@@ -732,7 +745,8 @@ export const articles2025Q4: Article[] = [
     date: "October 25, 2025",
     youtubeUrl: "https://youtu.be/zLKCTVTfvo4",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/zLKCTVTfvo4/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/zLKCTVTfvo4/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
 {
     title: "A Quantitative Analyst's Guide to Volatility Forecasting",
@@ -751,7 +765,8 @@ export const articles2025Q4: Article[] = [
     date: "October 23, 2025",
     youtubeUrl: "https://youtu.be/RpaZZsz5J5U",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/RpaZZsz5J5U/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/RpaZZsz5J5U/maxresdefault.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "The Insider's Edge: Signal from Insider Trading",
@@ -770,7 +785,8 @@ export const articles2025Q4: Article[] = [
     date: "October 21, 2025",
     youtubeUrl: "https://youtu.be/_NDyPBYkZxg",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/_NDyPBYkZxg/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/_NDyPBYkZxg/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
@@ -780,7 +796,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://www.avatrade.com/wp-content/uploads/2018/04/VIX_800x200.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRvMWp5V6VlPo-S5xxbxIO5usm8miwtVoITY4FbmdOpf4ZGEUsQFiU4WuTCZVO2ON0ZYeEeTq8zsnYm/pub",
     deepResearch: true,
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Volatility Smile Explained: What it can tell you is a lot!",
@@ -789,7 +806,8 @@ export const articles2025Q4: Article[] = [
     date: "October 19, 2025",
     youtubeUrl: "https://youtu.be/p8nblr4NyNc",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/p8nblr4NyNc/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/p8nblr4NyNc/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
@@ -799,7 +817,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://courseimg.futunn.com/2022121600006649899d33db0e8.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSrbL7cogay9R8XbO_N_6W1a61S7lk-PWSpfMXMrcUq53qvtkouBwAjXlfcLqgCjZPI0pC-GNqKN_Uj/pub",
     deepResearch: true,
-    options: true
+    options: true,
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "The Ultimate Guide to Factor Investing",
@@ -808,7 +827,8 @@ export const articles2025Q4: Article[] = [
     date: "October 17, 2025",
     youtubeUrl: "https://youtu.be/z32X0C5F5JE",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/z32X0C5F5JE/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/z32X0C5F5JE/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
 {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
@@ -827,7 +847,8 @@ export const articles2025Q4: Article[] = [
     date: "October 15, 2025",
     youtubeUrl: "https://youtu.be/xMaKA2lIn8c",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/xMaKA2lIn8c/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/xMaKA2lIn8c/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
@@ -837,7 +858,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i2.jueshifan.com/7b077d83/790e7e86/2701378041e9a81d9529.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQyCrOe1hCmGUSmlcsi60DB8nyD5MrntKZvHku-NSwREpcEzp1RZd9IpzkEYrKTdBeqy2CxNT1V5fYI/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "High Frequency Trading: The playground and players",
@@ -846,7 +867,8 @@ export const articles2025Q4: Article[] = [
     date: "October 14, 2025",
     youtubeUrl: "https://youtu.be/Zp-ZmWc1G3A",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/Zp-ZmWc1G3A/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/Zp-ZmWc1G3A/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
 {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
@@ -907,7 +929,8 @@ export const articles2025Q4: Article[] = [
     date: "October 8, 2025",
     youtubeUrl: "https://youtu.be/imLzlzT5u8I",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/imLzlzT5u8I/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/imLzlzT5u8I/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "Trade War Redux: Anatomy of the October 10th Market Shock",
@@ -917,7 +940,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://scm.ncsu.edu/wp-content/uploads/sites/29/2019/11/Trade-Wars-16x9-2-1500x844.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjkJ8tUQs6z5rLNRsjtEhtGXajOgiYAeW-44bjqFAivgHrP7UJbi9DjwSSjDUbhIGtVWuY_GJfPZ6q/pub",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.MARCO],
   },
 {
     title: "Personal Quant Trading Strategies",

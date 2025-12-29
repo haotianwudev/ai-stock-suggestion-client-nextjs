@@ -11,7 +11,6 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub",
     deepResearch: true,
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
   {
     title: "The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting",
@@ -22,7 +21,6 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQWaG85W3EdnnL4ZeS-Ep3ugP2yUnla9PmPZ9ZP2n6XjkrlmpuBgHmbfYSjrkoLUe-Ljq9GO-WtzjgK/pub",
     deepResearch: true,
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
@@ -43,7 +41,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPgw9iql2uq-7aQ7tLcsfYSZ7Ymv9m8rMZCYEQhpje8D6fs3R_0MVbdjUIXK6M67XrePgZEIHGW_LQ/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT],
   },
   {
     title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
@@ -53,7 +51,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/i7pqdHp.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
   {
     title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
@@ -63,7 +61,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/kmqdUcW.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub",
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {
     title: "The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds",
