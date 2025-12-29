@@ -1,11 +1,6 @@
-export interface TopicConfig {
-  id: string;
-  title: string;
-  description: string;
-  videoUrl?: string;
-  infographicUrl?: string;
-  relatedArticles?: string[];
-}
+import { BaseConfig, StudyGuideItem } from "@/components/shared/config-types";
+
+export interface TopicConfig extends BaseConfig {}
 
 export const topicsConfig: Record<string, TopicConfig> = {
   'when-to-trade': {
@@ -28,7 +23,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "option-greeks-poem",
       "option-greeks-traders-poetic-guide-risk",
-    ]
+    ],
+    studyGuide: {
+      title: "Study Guide",
+      items: [
+        {
+          text: "[Youtube] Greeks Overview",
+          url: "https://youtu.be/ZLUeCSLgw3Y"
+        },
+        {
+          text: "How to understand Greeks",
+          url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk"
+        },
+      ]
+    }
   },
   
   'vrp': {

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { VideoTutorial, Infographic, RelatedArticles } from "./components";
+import { Calculator } from "lucide-react";
+import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
 import { GreeksTab } from "@/components/options/greeks-tab";
 
@@ -8,45 +8,45 @@ export function GreeksContent() {
   
   if (!config) return null;
 
+  const heroColorScheme = {
+    border: "border-orange-200",
+    background: "bg-gradient-to-br from-orange-50 to-amber-50",
+    iconBg: "bg-orange-100",
+    iconColor: "text-orange-600",
+    titleColor: "text-orange-900",
+    descriptionColor: "text-orange-700",
+    cardBg: "bg-white",
+    cardBorder: "border border-orange-100",
+    cardText: "text-orange-900",
+    badgeBg: "bg-orange-100",
+    badgeText: "text-orange-800",
+    sectionTitle: "text-orange-900"
+  };
+
+  const keyConceptsItems = [
+    { icon: <Calculator className="h-4 w-4" />, text: "Delta" },
+    { icon: <Calculator className="h-4 w-4" />, text: "Gamma" },
+    { icon: <Calculator className="h-4 w-4" />, text: "Theta" },
+    { icon: <Calculator className="h-4 w-4" />, text: "Vega" },
+    { icon: <Calculator className="h-4 w-4" />, text: "Rho" }
+  ];
+
+  const contentSections = (
+    <div className="mt-3 md:mt-6">
+      <GreeksTab />
+    </div>
+  );
+
   return (
-    <Card>
-      <CardHeader className="pb-4 md:pb-6">
-        <CardTitle className="text-xl md:text-2xl">{config.title}</CardTitle>
-        <CardDescription className="text-sm md:text-base">
-          {config.description}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-2 md:space-y-6">
-        {/* Video Tutorial */}
-        {config.videoUrl && (
-          <VideoTutorial 
-            videoUrl={config.videoUrl} 
-            title="Option Greeks Tutorial"
-          />
-        )}
-
-        {/* Infographic */}
-        {config.infographicUrl && (
-          <Infographic 
-            imageUrl={config.infographicUrl} 
-            title="Option Greeks Infographic"
-            alt="Option Greeks Visual Guide"
-          />
-        )}
-
-        {/* Related Articles */}
-        {config.relatedArticles && (
-          <RelatedArticles 
-            articleSlugs={config.relatedArticles}
-            title="Related Articles"
-          />
-        )}
-
-        {/* Greeks Calculator Content */}
-        <div className="mt-3 md:mt-6">
-          <GreeksTab />
-        </div>
-      </CardContent>
-    </Card>
+    <PageTemplate
+      config={config}
+      heroIcon={<Calculator className="h-6 w-6 md:h-8 md:w-8" />}
+      heroColorScheme={heroColorScheme}
+      keyConceptsItems={keyConceptsItems}
+      contentSections={contentSections}
+      videoTitle="Option Greeks Tutorial"
+      videoDescription="Master option pricing through interactive Greek calculations and visualizations."
+      infographicAlt="Option Greeks Visual Guide"
+    />
   );
 }
