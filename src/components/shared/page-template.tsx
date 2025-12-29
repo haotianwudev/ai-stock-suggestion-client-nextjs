@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, ExternalLink } from "lucide-react";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useEffect } from "react";
+import React from "react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { VideoTutorial } from "@/components/ui/video-tutorial";
 import { StudyGuide } from "@/components/ui/study-guide";
@@ -14,6 +15,9 @@ import { articles } from "@/data/articles";
 export interface StudyGuideItem {
   text: string;
   url: string;
+  videoUrl?: string;
+  visualGuideUrl?: string;
+  type?: 'article' | 'video' | 'external' | 'guide';
 }
 
 export interface BaseConfig {
@@ -83,11 +87,32 @@ export function PageTemplate({
   showRelatedArticlesSection = true
 }: PageTemplateProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState(config?.videoUrl || '');
+  const [currentInfographicUrl, setCurrentInfographicUrl] = useState(config?.infographicUrl || '');
   
   // Get related articles from config or fallback to empty array
   const relatedArticles = config?.relatedArticles 
     ? articles.filter(article => config.relatedArticles?.includes(article.slug || ''))
     : [];
+
+  // Handle study guide item selection
+  const handleStudyGuideItemSelect = (item: StudyGuideItem) => {
+    // Update video URL if the item has a custom video
+    if (item.videoUrl) {
+      setCurrentVideoUrl(item.videoUrl);
+    }
+    
+    // Update infographic URL if the item has a custom visual guide
+    if (item.visualGuideUrl) {
+      setCurrentInfographicUrl(item.visualGuideUrl);
+    }
+  };
+
+  // Reset to default when config changes
+  useEffect(() => {
+    setCurrentVideoUrl(config?.videoUrl || '');
+    setCurrentInfographicUrl(config?.infographicUrl || '');
+  }, [config?.videoUrl, config?.infographicUrl]);
 
   return (
     <div className="space-y-4 md:space-y-8">
@@ -127,26 +152,27 @@ export function PageTemplate({
           )}
 
           {/* Video Tutorial with Study Guide */}
-          {showVideoSection && config?.videoUrl && (
+          {showVideoSection && currentVideoUrl && (
             <>
               {customVideoComponent || (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                   {/* Study Guide */}
-                  {config.studyGuide && (
+                  {config?.studyGuide && (
                     <div className="lg:col-span-1">
                       <StudyGuide
                         title={config.studyGuide.title}
                         items={config.studyGuide.items}
+                        onItemSelect={handleStudyGuideItemSelect}
                       />
                     </div>
                   )}
                   
                   {/* Video */}
-                  <div className={config.studyGuide ? "lg:col-span-2" : "lg:col-span-3"}>
+                  <div className={config?.studyGuide ? "lg:col-span-2" : "lg:col-span-3"}>
                     <VideoTutorial
-                      title={videoTitle || config.title}
-                      description={videoDescription || config.description}
-                      videoId={config.videoUrl.split('/').pop() || ''}
+                      title={videoTitle || config?.title || ''}
+                      description={videoDescription || config?.description || ''}
+                      videoId={currentVideoUrl.split('/').pop() || ''}
                     />
                   </div>
                 </div>
@@ -158,7 +184,7 @@ export function PageTemplate({
           {showInfographicSection && (
             <>
               {customInfographicComponent || (
-                config?.infographicUrl ? (
+                currentInfographicUrl ? (
                   <div className="space-y-3">
                     <h3 className={`text-lg md:text-xl font-semibold ${heroColorScheme.sectionTitle}`}>Visual Guide</h3>
                     <div 
@@ -166,7 +192,7 @@ export function PageTemplate({
                       onClick={() => setIsImageViewerOpen(true)}
                     >
                       <img 
-                        src={config.infographicUrl} 
+                        src={currentInfographicUrl} 
                         alt={infographicAlt} 
                         className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
                       />
@@ -235,7 +261,7 @@ export function PageTemplate({
 
       {/* Full-screen image viewer */}
       <FullScreenImageViewer
-        src={config?.infographicUrl || ""}
+        src={currentInfographicUrl}
         alt={infographicAlt}
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}

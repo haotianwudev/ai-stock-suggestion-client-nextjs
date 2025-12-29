@@ -42,11 +42,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
       items: [
         {
           text: "[Youtube] Greeks Overview",
-          url: "https://youtu.be/ZLUeCSLgw3Y"
+          url: "https://youtu.be/ZLUeCSLgw3Y",
+          type: "video"
         },
         {
           text: "How to understand Greeks",
-          url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk"
+          url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk",
+          videoUrl: "https://youtu.be/specific-greeks-tutorial",
+          visualGuideUrl: "https://i.imgur.com/greeks-detailed-guide.jpeg",
+          type: "article"
+        },
+        {
+          text: "Interactive Greeks Calculator",
+          url: "https://www.optionsprofitcalculator.com/",
+          type: "external"
         },
       ]
     }
@@ -67,11 +76,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
       items: [
         {
           text: "[Youtube] VRP Overview",
-          url: "https://youtu.be/eHu9X04D7Ss"
+          url: "https://youtu.be/eHu9X04D7Ss",
+          type: "video"
         },
         {
-          text: "VRP Overview",
-          url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading"
+          text: "VRP Deep Dive Analysis",
+          url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading",
+          videoUrl: "https://youtu.be/vrp-deep-dive-tutorial",
+          visualGuideUrl: "https://i.imgur.com/vrp-detailed-analysis.jpeg",
+          type: "article"
+        },
+        {
+          text: "VRP Trading Strategies",
+          url: "https://www.tastytrade.com/concepts-strategies/volatility-risk-premium",
+          type: "guide"
         },
       ]
     }

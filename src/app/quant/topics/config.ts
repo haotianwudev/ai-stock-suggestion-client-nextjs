@@ -22,27 +22,22 @@ export const topicsConfig: Record<string, TopicConfig> = {
       items: [
         {
           text: "Monte Carlo Simulation Overview",
-          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-simulation-quantitative-finance-stochastic-modeling"
-        },
-        {
-          text: "[Youtube] Monte Carlo Simulation in Risk Management",
-          url: "https://youtu.be/5gA1ifx7wPg"
+          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-simulation-quantitative-finance-stochastic-modeling",
+          videoUrl: "https://youtu.be/5gA1ifx7wPg",
+          visualGuideUrl: "https://i.imgur.com/vGkVKOa.jpeg",
+          type: "article"
         },
         {
           text: "Monte Carlo Simulation for Trading Robustness",
-          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-robustness-protocols-stress-testing-systematic-trading"
-        },
-        {
-          text: "[Youtube] Monte Carlo Simulation for Quant Trading",
-          url: "https://youtu.be/sA57KkA-v-Q"
+          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-robustness-protocols-stress-testing-systematic-trading",
+          videoUrl: "https://youtu.be/sA57KkA-v-Q",
+          type: "article"
         },
         {
           text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
-          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva"
-        },
-        {
-          text: "[Youtube] Monte Carlo Simulation in Derivative Pricing and CVA",
-          url: "https://youtu.be/nBAnWHAzD6I"
+          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+          videoUrl: "https://youtu.be/nBAnWHAzD6I",
+          type: "article"
         },
         {
           text: "Portfolio Monte Carlo Simulation Tools",
