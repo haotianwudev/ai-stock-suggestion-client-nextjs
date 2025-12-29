@@ -1,11 +1,9 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, ExternalLink } from "lucide-react";
 import { useState, ReactNode, useEffect } from "react";
-import React from "react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { VideoTutorial } from "@/components/ui/video-tutorial";
 import { StudyGuide } from "@/components/ui/study-guide";
@@ -110,37 +108,37 @@ export function PageTemplate({
   }, [config?.videoUrl, config?.infographicUrl]);
 
   return (
-    <div className="space-y-4 md:space-y-8">
+    <div className="space-y-4 md:space-y-8 px-4 md:px-0">
       {/* Hero Section */}
       <Card className={`${heroColorScheme.border} ${heroColorScheme.background}`}>
-        <CardHeader className="pb-3 md:pb-6">
+        <CardHeader className="pb-3 md:pb-6 px-4 md:px-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
-            <div className={`p-2 md:p-3 ${heroColorScheme.iconBg} rounded-lg`}>
+            <div className={`p-2 md:p-3 ${heroColorScheme.iconBg} rounded-lg flex-shrink-0`}>
               <div className={`h-6 w-6 md:h-8 md:w-8 ${heroColorScheme.iconColor}`}>
                 {heroIcon}
               </div>
             </div>
-            <div className="flex-1">
-              <CardTitle className={`text-xl md:text-3xl ${heroColorScheme.titleColor} mb-2`}>
+            <div className="flex-1 min-w-0">
+              <CardTitle className={`text-xl md:text-3xl ${heroColorScheme.titleColor} mb-2 leading-tight`}>
                 {config?.title || "Loading..."}
               </CardTitle>
-              <CardDescription className={`text-sm md:text-base ${heroColorScheme.descriptionColor}`}>
+              <CardDescription className={`text-sm md:text-base ${heroColorScheme.descriptionColor} leading-relaxed`}>
                 {config?.description || "Loading description..."}
               </CardDescription>
             </div>
           </div>
         </CardHeader>
         
-        <CardContent className="space-y-4 md:space-y-6">
+        <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
           {/* Key Concepts */}
           {showKeyConceptsSection && keyConceptsItems.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
               {keyConceptsItems.map((item, index) => (
-                <div key={index} className={`flex items-center gap-2 p-3 ${heroColorScheme.cardBg} rounded-lg ${heroColorScheme.cardBorder}`}>
+                <div key={index} className={`flex items-center gap-2 p-3 ${heroColorScheme.cardBg} rounded-lg ${heroColorScheme.cardBorder} min-w-0`}>
                   <div className={`h-4 w-4 ${heroColorScheme.iconColor} flex-shrink-0`}>
                     {item.icon}
                   </div>
-                  <span className={`text-sm font-medium ${heroColorScheme.cardText}`}>{item.text}</span>
+                  <span className={`text-sm font-medium ${heroColorScheme.cardText} truncate`}>{item.text}</span>
                 </div>
               ))}
             </div>
@@ -150,10 +148,10 @@ export function PageTemplate({
           {showVideoSection && currentVideoUrl && (
             <>
               {customVideoComponent || (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div className="space-y-4 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-4">
                   {/* Study Guide */}
                   {config?.studyGuide && (
-                    <div className="lg:col-span-1">
+                    <div className="lg:col-span-1 order-2 lg:order-1">
                       <StudyGuide
                         title={config.studyGuide.title || "Study Guide (click to select)"}
                         items={config.studyGuide.items}
@@ -163,7 +161,7 @@ export function PageTemplate({
                   )}
                   
                   {/* Video */}
-                  <div className={config?.studyGuide ? "lg:col-span-2" : "lg:col-span-3"}>
+                  <div className={`${config?.studyGuide ? "lg:col-span-2" : "lg:col-span-3"} order-1 lg:order-2`}>
                     <VideoTutorial
                       title="Video Tutorial"
                       videoId={currentVideoUrl.split('/').pop() || ''}
@@ -182,19 +180,25 @@ export function PageTemplate({
                   <div className="space-y-3">
                     <h3 className={`text-lg md:text-xl font-semibold ${heroColorScheme.sectionTitle}`}>Visual Guide</h3>
                     <div 
-                      className={`relative rounded-xl overflow-hidden shadow-lg ${heroColorScheme.cardBorder} cursor-pointer group`}
+                      className={`relative rounded-xl overflow-hidden shadow-lg ${heroColorScheme.cardBorder} cursor-pointer group touch-manipulation`}
                       onClick={() => setIsImageViewerOpen(true)}
                     >
                       <img 
                         src={currentInfographicUrl} 
                         alt={infographicAlt} 
                         className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <Button variant="secondary" size="sm">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View Full Screen
+                        <Button variant="secondary" size="sm" className="text-xs md:text-sm">
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
+                          <span className="hidden sm:inline">View Full Screen</span>
+                          <span className="sm:hidden">Full Screen</span>
                         </Button>
+                      </div>
+                      {/* Mobile tap hint */}
+                      <div className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded opacity-70 sm:hidden">
+                        Tap to expand
                       </div>
                     </div>
                   </div>
@@ -209,7 +213,9 @@ export function PageTemplate({
           )}
 
           {/* Custom Content Sections */}
-          {contentSections}
+          <div className="space-y-4 md:space-y-6">
+            {contentSections}
+          </div>
         </CardContent>
       </Card>
 
@@ -217,17 +223,17 @@ export function PageTemplate({
       {showRelatedArticlesSection && relatedArticles.length > 0 && (
         <>
           {customRelatedArticlesComponent || (
-            <Card>
-              <CardHeader>
+            <Card className="mx-4 md:mx-0">
+              <CardHeader className="px-4 md:px-6">
                 <CardTitle className="text-lg md:text-xl flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
-                  Related Articles
+                  <FileText className="h-5 w-5 flex-shrink-0" />
+                  <span>Related Articles</span>
                 </CardTitle>
                 <CardDescription>
                   Explore related topics and quantitative approaches
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-4 md:px-6">
                 <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
                   {relatedArticles.map((article) => (
                     <ArticleCard 
