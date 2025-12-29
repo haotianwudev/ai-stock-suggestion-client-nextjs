@@ -17,7 +17,6 @@ export interface StudyGuideItem {
   url: string;
   videoUrl?: string;
   visualGuideUrl?: string;
-  type?: 'article' | 'video' | 'external' | 'guide';
 }
 
 export interface BaseConfig {

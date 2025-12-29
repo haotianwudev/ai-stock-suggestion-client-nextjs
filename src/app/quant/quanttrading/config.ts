@@ -17,7 +17,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       items: [
         {
           text: "Smart Beta & Systematic Personal Investing",
-          url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies"
+          url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
+          videoUrl: 'https://youtu.be/xZY-O9-4AUs',
         },
        
       ]
@@ -38,12 +39,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       title: "Study Guide",
       items: [
         {
-          text: "[Youtube] Deep Learning Evolution in Quant Trading",
-          url: "https://youtu.be/s0Z3pl8DFDA"
-        },
-        {
           text: "Deep Learning Evolution in Quant Trading",
-          url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers"
+          url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers",
+          videoUrl: "https://youtu.be/s0Z3pl8DFDA",
+          visualGuideUrl: "https://i.imgur.com/8ZF0tTX.jpeg",
         },
       ]
     }

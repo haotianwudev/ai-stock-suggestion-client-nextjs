@@ -9,7 +9,6 @@ interface StudyGuideItem {
   url: string;
   videoUrl?: string;
   visualGuideUrl?: string;
-  type?: 'article' | 'video' | 'external' | 'guide';
 }
 
 interface StudyGuideProps {
@@ -30,30 +29,16 @@ export function StudyGuide({
   if (items.length === 0) return null;
 
   const getItemIcon = (item: StudyGuideItem) => {
-    const getMainIcon = () => {
-      switch (item.type) {
-        case 'video':
-          return <Youtube className="h-4 w-4 text-red-500" />;
-        case 'guide':
-          return <Image className="h-4 w-4 text-purple-500" />;
-        case 'article':
-          return <FileText className="h-4 w-4 text-blue-500" />;
-        case 'external':
-          return <ExternalLink className="h-4 w-4 text-gray-500" />;
-        default:
-          return <FileText className="h-4 w-4 text-gray-500" />;
-      }
-    };
-
+    const mainIcon = <FileText className="h-4 w-4 text-blue-500" />;
     const hasAdditionalContent = item.videoUrl || item.visualGuideUrl;
 
     if (!hasAdditionalContent) {
-      return getMainIcon();
+      return mainIcon;
     }
 
     return (
       <div className="flex items-center gap-1">
-        {getMainIcon()}
+        {mainIcon}
         <div className="flex gap-0.5">
           {item.videoUrl && (
             <Youtube className="h-4 w-4 text-red-400" />
@@ -67,36 +52,9 @@ export function StudyGuide({
   };
 
   const getItemTypeColor = (item: StudyGuideItem, index: number, isSelected: boolean) => {
-    const baseColors = {
-      video: isSelected 
-        ? 'border-red-400 bg-red-100 dark:border-red-600 dark:bg-red-900/40' 
-        : 'border-red-200 hover:border-red-300 hover:bg-red-50 dark:border-red-800 dark:hover:border-red-600 dark:hover:bg-red-900/20',
-      guide: isSelected 
-        ? 'border-purple-400 bg-purple-100 dark:border-purple-600 dark:bg-purple-900/40' 
-        : 'border-purple-200 hover:border-purple-300 hover:bg-purple-50 dark:border-purple-800 dark:hover:border-purple-600 dark:hover:bg-purple-900/20',
-      article: isSelected 
-        ? 'border-blue-400 bg-blue-100 dark:border-blue-600 dark:bg-blue-900/40' 
-        : 'border-blue-200 hover:border-blue-300 hover:bg-blue-50 dark:border-blue-800 dark:hover:border-blue-600 dark:hover:bg-blue-900/20',
-      external: isSelected 
-        ? 'border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-700' 
-        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-800',
-      default: isSelected 
-        ? 'border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-700' 
-        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-800'
-    };
-
-    switch (item.type) {
-      case 'video':
-        return baseColors.video;
-      case 'guide':
-        return baseColors.guide;
-      case 'article':
-        return baseColors.article;
-      case 'external':
-        return baseColors.external;
-      default:
-        return baseColors.default;
-    }
+    return isSelected 
+      ? 'border-blue-400 bg-blue-100 dark:border-blue-600 dark:bg-blue-900/40' 
+      : 'border-blue-200 hover:border-blue-300 hover:bg-blue-50 dark:border-blue-800 dark:hover:border-blue-600 dark:hover:bg-blue-900/20';
   };
 
   const hasCustomContent = (item: StudyGuideItem) => {

@@ -3,7 +3,6 @@ export interface StudyGuideItem {
   url: string;
   videoUrl?: string;  // Optional custom video URL for this specific item
   visualGuideUrl?: string;  // Optional custom visual guide URL for this specific item
-  type?: 'article' | 'video' | 'external' | 'guide';  // Optional type for better styling
 }
 
 export interface BaseConfig {

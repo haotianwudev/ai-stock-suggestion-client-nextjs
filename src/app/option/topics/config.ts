@@ -16,12 +16,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       title: "Study Guide",
       items: [
         {
-          text: "[Youtube] When to Trade, and When NOT to Trade",
-          url: "https://youtu.be/brQbdu19cbw"
-        },
-        {
           text: "When to Trade, and When NOT to Trade",
-          url: "https://www.sophie-ai-finance.com/articles/strategic-options-utilization-risk-comprehensive-framework"
+          url: "https://www.sophie-ai-finance.com/articles/strategic-options-utilization-risk-comprehensive-framework",
+          videoUrl: "https://youtu.be/brQbdu19cbw",
+          visualGuideUrl: "https://i.imgur.com/ln9KdrO.jpeg",
         },
       ]
     }
@@ -41,21 +39,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       title: "Study Guide",
       items: [
         {
-          text: "[Youtube] Greeks Overview",
-          url: "https://youtu.be/ZLUeCSLgw3Y",
-          type: "video"
-        },
-        {
           text: "How to understand Greeks",
           url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk",
           videoUrl: "https://youtu.be/specific-greeks-tutorial",
-          visualGuideUrl: "https://i.imgur.com/greeks-detailed-guide.jpeg",
-          type: "article"
-        },
-        {
-          text: "Interactive Greeks Calculator",
-          url: "https://www.optionsprofitcalculator.com/",
-          type: "external"
+          visualGuideUrl: "https://i.imgur.com/greeks-detailed-guide.jpeg"
         },
       ]
     }
@@ -75,21 +62,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       title: "Study Guide",
       items: [
         {
-          text: "[Youtube] VRP Overview",
-          url: "https://youtu.be/eHu9X04D7Ss",
-          type: "video"
-        },
-        {
           text: "VRP Deep Dive Analysis",
           url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading",
-          videoUrl: "https://youtu.be/vrp-deep-dive-tutorial",
-          visualGuideUrl: "https://i.imgur.com/vrp-detailed-analysis.jpeg",
-          type: "article"
-        },
-        {
-          text: "VRP Trading Strategies",
-          url: "https://www.tastytrade.com/concepts-strategies/volatility-risk-premium",
-          type: "guide"
+          videoUrl: "https://youtu.be/eHu9X04D7Ss",
+          visualGuideUrl: "https://i.imgur.com/ZSPRHKw.jpeg"
         },
       ]
     }
