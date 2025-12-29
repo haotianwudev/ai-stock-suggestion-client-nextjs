@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import QuantTabClient from '@/app/quant/[tab]/client';
 
-const validTabs = ['topics', 'algotrading', 'articles'];
+const validTabs = ['topics', 'quanttrading', 'articles'];
 
 export async function generateMetadata({ params }: { params: Promise<{ tab: string }> }): Promise<Metadata> {
   const { tab } = await params;
@@ -17,10 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
       description: 'Explore essential quantitative finance concepts including Monte Carlo simulation and financial modeling techniques.',
       keywords: ['quantitative finance', 'monte carlo simulation', 'financial modeling', 'quant methods'],
     },
-    algotrading: {
-      title: 'Algorithmic Trading | SOPHIE\'s Daddy Quant Blog',
-      description: 'Master algorithmic trading strategies and machine learning applications for systematic trading.',
-      keywords: ['algorithmic trading', 'systematic trading', 'machine learning finance', 'quantitative strategies'],
+    quanttrading: {
+      title: 'Quantitative Trading | SOPHIE\'s Daddy Quant Blog',
+      description: 'Master quantitative trading strategies and machine learning applications for systematic trading.',
+      keywords: ['quantitative trading', 'systematic trading', 'machine learning finance', 'quantitative strategies'],
     },
     articles: {
       title: 'Quantitative Finance Research Articles | SOPHIE\'s Daddy Quant Blog',

@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MonteCarloContent } from "../topics/monte-carlo";
 import { getTopicConfig } from "../topics/config";
-import { SystematicStrategiesContent } from "../algotrading/systematic-strategies";
-import { MachineLearningContent } from "../algotrading/machine-learning";
+import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
+import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -63,8 +63,8 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
   );
 }
 
-// Algorithmic Trading Tab Component with Sub-navigation
-function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
+// Quantitative Trading Tab Component with Sub-navigation
+function QuantTradingTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
   const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'systematic-strategies');
 
@@ -78,13 +78,13 @@ function AlgoTradingTab({ subtopic }: { subtopic?: string }) {
   // Handle subtopic change and update URL
   const handleSubtopicChange = (value: string) => {
     setActiveSubtopic(value);
-    const newUrl = `/quant/algotrading/${value}`;
+    const newUrl = `/quant/quanttrading/${value}`;
     router.push(newUrl, { scroll: false });
   };
 
   return (
     <div>
-      {/* Sub-navigation for Algorithmic Trading */}
+      {/* Sub-navigation for Quantitative Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
         <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
@@ -138,7 +138,7 @@ function QuantArticlesTab() {
           <span>Quantitative Finance Research Articles</span>
         </CardTitle>
         <CardDescription className="text-sm md:text-base">
-          Comprehensive articles on quantitative finance, machine learning applications, and algorithmic trading strategies.
+          Comprehensive articles on quantitative finance, machine learning applications, and quantitative trading strategies.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 md:space-y-6">
@@ -207,9 +207,9 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
     if (value === 'topics') {
       // For topics, always default to monte-carlo
       router.push(`/quant/topics/monte-carlo`, { scroll: false });
-    } else if (value === 'algotrading') {
-      // For algotrading, always default to systematic-strategies
-      router.push(`/quant/algotrading/systematic-strategies`, { scroll: false });
+    } else if (value === 'quanttrading') {
+      // For quanttrading, always default to systematic-strategies
+      router.push(`/quant/quanttrading/systematic-strategies`, { scroll: false });
     } else {
       const newUrl = `/quant/${value}`;
       router.push(newUrl, { scroll: false });
@@ -255,11 +255,11 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
                 Topics
               </TabsTrigger>
               <TabsTrigger 
-                value="algotrading" 
+                value="quanttrading" 
                 className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                <span className="block sm:hidden">Algo Trading</span>
-                <span className="hidden sm:block">Algorithmic Trading</span>
+                <span className="block sm:hidden">Quant Trading</span>
+                <span className="hidden sm:block">Quantitative Trading</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
@@ -274,8 +274,8 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
               <TopicsTab subtopic={subtopic} />
             </TabsContent>
             
-            <TabsContent value="algotrading" className="mt-0">
-              <AlgoTradingTab subtopic={subtopic} />
+            <TabsContent value="quanttrading" className="mt-0">
+              <QuantTradingTab subtopic={subtopic} />
             </TabsContent>
             
             <TabsContent value="articles" className="mt-2 md:mt-6">

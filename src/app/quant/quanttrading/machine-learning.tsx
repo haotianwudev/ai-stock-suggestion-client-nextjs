@@ -36,7 +36,7 @@ export function MachineLearningContent() {
                 Machine Learning in Finance
               </CardTitle>
               <CardDescription className="text-sm md:text-base text-purple-700">
-                Explore AI and machine learning applications in quantitative finance. From algorithmic trading 
+                Explore AI and machine learning applications in quantitative finance. From quantitative trading 
                 to risk modeling, portfolio optimization, and predictive analytics using cutting-edge ML techniques.
               </CardDescription>
             </div>
@@ -56,14 +56,14 @@ export function MachineLearningContent() {
             </div>
             <div className="flex items-center gap-2 p-3 bg-white rounded-lg border border-purple-100">
               <Zap className="h-4 w-4 text-purple-600 flex-shrink-0" />
-              <span className="text-sm font-medium text-purple-900">Algorithmic Trading</span>
+              <span className="text-sm font-medium text-purple-900">Quantitative Trading</span>
             </div>
           </div>
 
           {/* Video Tutorial */}
           <VideoTutorial
             title="AI-Powered Trading Algorithms"
-            description="Discover how artificial intelligence and machine learning are revolutionizing quantitative finance and algorithmic trading strategies."
+            description="Discover how artificial intelligence and machine learning are revolutionizing quantitative finance and quantitative trading strategies."
             videoId="aViyh1n08v4"
             className="mb-4"
           />
