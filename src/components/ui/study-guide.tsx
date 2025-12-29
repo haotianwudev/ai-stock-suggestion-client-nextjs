@@ -29,7 +29,7 @@ export function StudyGuide({
   if (items.length === 0) return null;
 
   const getItemIcon = (item: StudyGuideItem) => {
-    const mainIcon = <FileText className="hidden md:h-4 w-4 text-blue-500" />;
+    const mainIcon = <FileText className="hidden md:block h-4 w-4 text-blue-500" />;
     const hasAdditionalContent = item.videoUrl || item.visualGuideUrl;
 
     if (!hasAdditionalContent) {
