@@ -41,6 +41,7 @@ export interface Strategy {
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
+//import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -204,6 +205,22 @@ export const strategies: Strategy[] = [
         relatedArticles: ["wheel-strategy",'options-wheel-trading-plan-quantitative-approach'],
         infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg',
         detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'leaps_put_selling',
+        category: ['Bullish', 'Income', 'Featured'],
+        name: 'LEAPS Put Selling',
+        description: "A sophisticated institutional strategy for selling long-dated put options (LEAPs) to generate premium income while potentially acquiring quality stocks at attractive prices. Focuses on volatility arbitrage and strategic acquisition rather than short-term income generation.",
+        profile: 'Substantial Risk, Premium Income',
+        volatility: 'Benefits from falling IV (Short Vega)',
+        time: 'Benefits from time decay (Long Theta)',
+        payoffCalculator: (p, { strike1, premium }) => 
+            (p >= strike1 ? premium : premium + (p - strike1)),
+        youtubeId: 'pdfm0osP4Ow',
+        payoffExplanation: "LEAPS put selling generates premium income upfront. If assigned, you acquire the stock at the strike price minus premium received.",
+        relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage"],
+        infographicUrl: 'https://i.imgur.com/nBdrqD7.jpeg',
+        //detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 
