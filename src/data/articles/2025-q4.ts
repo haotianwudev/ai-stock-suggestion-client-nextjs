@@ -247,6 +247,7 @@ export const articles2025Q4: Article[] = [
     title: "The Secret Map of the Market: How Gamma Exposure (GEX) Controls Price",
     description: "Stop trading blindly based on past price history and start looking at the invisible lines of support and resistance defined by institutional capital. In this video, we break down Gamma Exposure (GEX)—the metric that reveals the structural liability of Market Makers.",
     date: "December 6, 2025",
+    slug: "gex-secret",
     youtubeUrl: "https://youtu.be/t_5yWuxn0WY",
     isVideo: true,
     options: true,

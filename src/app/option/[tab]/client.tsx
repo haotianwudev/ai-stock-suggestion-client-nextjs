@@ -12,6 +12,7 @@ import { OptionsViewer } from "@/components/options/options-viewer";
 import { VRPContent } from "../topics/vrp";
 import { WhenToTradeContent } from "../topics/when-to-trade";
 import { GreeksContent } from "../topics/greeks";
+import { GEXContent } from "../topics/gex";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -68,7 +69,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="when-to-trade" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -89,6 +90,12 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           >
             VRP
           </TabsTrigger>
+          <TabsTrigger 
+            value="gex" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            GEX
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="when-to-trade" className="mt-0">
@@ -101,6 +108,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="vrp" className="mt-0">
           <VRPContent />
+        </TabsContent>
+        
+        <TabsContent value="gex" className="mt-0">
+          <GEXContent />
         </TabsContent>
       </Tabs>
     </div>

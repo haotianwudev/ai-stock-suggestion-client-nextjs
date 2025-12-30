@@ -66,6 +66,28 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
       ]
     }
+  },
+  
+  'gex': {
+    id: 'gex',
+    title: 'Gamma Exposure (GEX)',
+    description: 'Understanding how market makers\' gamma exposure influences market volatility and price movements, creating predictable trading patterns.',
+    videoUrl: 'https://youtu.be/t_5yWuxn0WY',
+    infographicUrl: 'https://i.imgur.com/4FiUTqH.jpeg',
+    relatedArticles: [
+      "gamma-exposure-gex-gps-market-volatility",
+      "gex-secret",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "GEX and Market Volatility Analysis",
+          url: "https://www.sophie-ai-finance.com/articles/gamma-exposure-gex-gps-market-volatility",
+          videoUrl: "https://youtu.be/t_5yWuxn0WY",
+          visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg"
+        },
+      ]
+    }
   }
 };
 
