@@ -209,7 +209,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'leaps_put_selling',
-        category: ['Bullish', 'Income', 'Featured'],
+        category: ['Bullish', 'Featured'],
         name: 'LEAPS Put Selling',
         description: "A sophisticated institutional strategy for selling long-dated put options (LEAPs) to generate premium income while potentially acquiring quality stocks at attractive prices. Focuses on volatility arbitrage and strategic acquisition rather than short-term income generation.",
         profile: 'Substantial Risk, Premium Income',
@@ -225,7 +225,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'collar_strategy',
-        category: ['Bullish', 'Income', 'Featured'],
+        category: ['Bullish', 'Featured'],
         name: 'Collar Strategy',
         description: "A defensive strategy combining stock ownership with protective puts and covered calls. Creates a 'collar' around your position with defined risk and reward. Often implemented at low or zero net cost, making it ideal for protecting gains in concentrated positions without selling shares.",
         profile: 'Defined Risk, Defined Profit',
