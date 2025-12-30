@@ -17,21 +17,49 @@ export const CollarStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) 
           Strategy Intuition
         </h3>
         <div className="text-sm text-slate-700 space-y-4">
+          <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
+            <h4 className="font-bold text-blue-900 mb-2">📋 Definition</h4>
+            <p className="text-blue-800">
+              A <strong>collar strategy</strong> is a three-legged options position that combines:
+            </p>
+            <ul className="list-disc list-inside mt-2 space-y-1 text-blue-800">
+              <li><strong>Long Stock Position:</strong> Own 100 shares of the underlying asset</li>
+              <li><strong>Long Protective Put:</strong> Buy an out-of-the-money put option (downside protection)</li>
+              <li><strong>Short Covered Call:</strong> Sell an out-of-the-money call option (income generation)</li>
+            </ul>
+            <p className="mt-2 text-blue-800">
+              This creates a "collar" around your stock position with <strong>defined maximum loss</strong> (put strike) 
+              and <strong>defined maximum profit</strong> (call strike).
+            </p>
+          </div>
+          
           <p>
-            The collar strategy is a <strong>defensive position</strong> that combines three components: owning the underlying stock, 
-            buying a protective put (insurance), and selling a covered call (income generation). This creates a "collar" around 
-            your position with defined maximum loss and maximum profit.
+            The collar strategy is fundamentally a <strong>defensive position</strong> designed for investors who want to 
+            protect existing gains in a stock position while maintaining some upside potential. It's particularly effective 
+            when you're bullish long-term but concerned about short-term volatility or market corrections.
           </p>
+          
           <p>
-            Think of it as <strong>portfolio insurance with a financing mechanism</strong>. The put option acts as insurance against 
-            downside moves, while the call option generates premium to help pay for that insurance. In many cases, you can create 
-            a "zero-cost collar" where the call premium received equals the put premium paid.
+            Think of it as <strong>portfolio insurance with a financing mechanism</strong>. The put option acts as insurance 
+            against downside moves below a certain level, while the call option generates premium income to help offset the 
+            cost of that insurance. In many cases, you can create a "zero-cost collar" where the call premium received 
+            approximately equals the put premium paid.
           </p>
+          
           <p>
-            The strategy is particularly popular among <strong>institutional investors and high-net-worth individuals</strong> who 
-            have concentrated stock positions and want to protect against downside risk without selling their shares (which might 
-            trigger significant tax consequences).
+            The strategy is particularly popular among <strong>institutional investors, corporate executives, and high-net-worth 
+            individuals</strong> who have concentrated stock positions and want to protect against downside risk without selling 
+            their shares (which might trigger significant tax consequences or violate insider trading restrictions).
           </p>
+          
+          <div className="bg-green-100 p-4 rounded-lg border border-green-200">
+            <h4 className="font-bold text-green-900 mb-2">💡 Key Insight</h4>
+            <p className="text-green-800">
+              The collar transforms an unlimited risk/unlimited reward stock position into a <strong>defined risk/defined reward</strong> 
+              position. You sacrifice unlimited upside potential in exchange for downside protection, creating a more predictable 
+              risk-return profile.
+            </p>
+          </div>
         </div>
       </div>
 

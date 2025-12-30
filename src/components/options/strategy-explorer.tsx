@@ -331,7 +331,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
             </div>
             
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 shadow-sm">
-                {['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income'].map(f => (
+                {['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income', 'Risk Defined'].map(f => (
                     <button 
                         key={f} 
                         onClick={() => setFilter(f)} 
@@ -343,7 +343,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                     >
                         <span className="flex items-center justify-center gap-2">
                             {f}
-                            <span className="text-lg">{{Featured: '⭐', Bullish: '🐂', Bearish: '🐻', Neutral: '😐', Volatility: '⚡', Income: '💰'}[f] || ''}</span>
+                            <span className="text-lg">{({'Featured': '⭐', 'Bullish': '🐂', 'Bearish': '🐻', 'Neutral': '😐', 'Volatility': '⚡', 'Income': '💰', 'Risk Defined': '🛡️'} as any)[f] || ''}</span>
                         </span>
                     </button>
                 ))}
@@ -363,14 +363,15 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                                     <div className="flex flex-wrap gap-1">
                                         {s.category.map((cat, index) => (
                                             <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
-                                                {
-                                                    Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
-                                                    Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                                    Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                                    Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                                    Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-                                                    Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
-                                                }[cat]
+                                                ({
+                                                    'Featured': 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
+                                                    'Bullish': 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                                    'Bearish': 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                                    'Neutral': 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                                    'Volatility': 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
+                                                    'Income': 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300',
+                                                    'Risk Defined': 'bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800 border border-slate-300'
+                                                } as any)[cat]
                                             }`}>
                                                 {cat}
                                             </span>
@@ -382,14 +383,15 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                                 <div className="flex flex-wrap gap-1 justify-end">
                                     {s.category.map((cat, index) => (
                                         <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
-                                            {
-                                                Featured: 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
-                                                Bullish: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                                Bearish: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                                Neutral: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                                Volatility: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-                                                Income: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300'
-                                            }[cat]
+                                            ({
+                                                'Featured': 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
+                                                'Bullish': 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
+                                                'Bearish': 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
+                                                'Neutral': 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
+                                                'Volatility': 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
+                                                'Income': 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300',
+                                                'Risk Defined': 'bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800 border border-slate-300'
+                                            } as any)[cat]
                                         }`}>
                                             {cat}
                                         </span>

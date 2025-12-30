@@ -20,18 +20,55 @@ export const LeapsPutStrategyDetail = ({ strategy, onBack }: StrategyDetailProps
           Strategy Intuition
         </h3>
         <div className="text-sm text-slate-700 space-y-4">
+          <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
+            <h4 className="font-bold text-blue-900 mb-2">📋 What are LEAPS?</h4>
+            <p className="text-blue-800 mb-2">
+              <strong>LEAPS</strong> stands for <strong>Long-term Equity Anticipation Securities</strong>. These are options contracts with expiration dates 
+              extending beyond one year, typically ranging from 12 to 39 months from the current date.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-blue-800">
+              <li><strong>Time Frame:</strong> 12+ months to expiration (vs. standard options: days to 12 months)</li>
+              <li><strong>Availability:</strong> Only available on highly liquid, large-cap stocks and major ETFs</li>
+              <li><strong>Expiration Cycle:</strong> Typically expire in January of each year</li>
+              <li><strong>Greek Characteristics:</strong> High Vega, low Theta, moderate Delta and Gamma</li>
+            </ul>
+          </div>
+
+          <div className="bg-purple-100 p-4 rounded-lg border border-purple-200">
+            <h4 className="font-bold text-purple-900 mb-2">🎯 LEAPS Put Selling Definition</h4>
+            <p className="text-purple-800">
+              <strong>LEAPS Put Selling</strong> involves selling (writing) long-dated put options to collect premium income while potentially 
+              acquiring quality stocks at predetermined prices. Unlike short-term put selling focused on income generation, 
+              LEAPS put selling is primarily a <strong>volatility arbitrage</strong> and <strong>strategic acquisition</strong> strategy.
+            </p>
+          </div>
+          
           <p>
-            <strong>LEAPS Put Selling</strong> is fundamentally different from short-term put selling. While retail traders often view it as "income generation," 
-            institutional players use it for <strong>volatility arbitrage</strong> and <strong>strategic acquisition</strong>.
+            The fundamental difference from regular put selling: <strong>Vega dominates Theta</strong> in long-dated options. 
+            You're not primarily collecting time decay (which is minimal for the first 12-18 months) - you're betting on 
+            <strong>volatility compression</strong> and positioning for potential stock acquisition at attractive prices.
           </p>
+          
           <p>
-            The key insight: <strong>Vega dominates Theta</strong> in long-dated options. You're not primarily collecting time decay - you're betting on 
-            volatility compression and positioning for potential stock acquisition at attractive prices.
+            This strategy transforms you from a premium collector into a <strong>volatility trader</strong> and <strong>patient capital allocator</strong>. 
+            The goal isn't quick income but rather exploiting volatility inefficiencies while maintaining optionality for strategic stock purchases.
           </p>
-          <div className="bg-purple-100 p-3 rounded-lg border-l-4 border-purple-500">
-            <p className="font-semibold text-purple-800">
-              Warren Buffett's Approach: Berkshire Hathaway has used this strategy to acquire positions in quality companies, 
-              effectively getting paid to wait for attractive entry prices.
+          
+          <div className="bg-green-100 p-4 rounded-lg border border-green-200">
+            <h4 className="font-bold text-green-900 mb-2">💡 Institutional Perspective</h4>
+            <p className="text-green-800">
+              <strong>Warren Buffett's Approach:</strong> Berkshire Hathaway has famously used this strategy to acquire positions in quality companies, 
+              effectively getting paid to wait for attractive entry prices. When Buffett sells puts on Coca-Cola or Apple, he's not seeking income - 
+              he's positioning for strategic acquisition while collecting volatility premium.
+            </p>
+          </div>
+          
+          <div className="bg-amber-100 p-4 rounded-lg border border-amber-200">
+            <h4 className="font-bold text-amber-900 mb-2">⚠️ Key Distinction</h4>
+            <p className="text-amber-800">
+              <strong>Retail vs. Institutional Mindset:</strong> Retail traders often view LEAPS put selling as "enhanced income generation," 
+              leading to poor position sizing and risk management. Institutions understand it's primarily a <strong>volatility trade</strong> 
+              with significant mark-to-market risk that requires substantial capital and patience.
             </p>
           </div>
         </div>

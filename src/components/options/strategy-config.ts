@@ -3,7 +3,7 @@
 
 import { ComponentType } from 'react';
 
-export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured';
+export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured' | 'Risk Defined';
 
 export interface PayoffParams {
     stockPrice: number;
@@ -49,7 +49,7 @@ import { DefaultStrategyDetail } from './strategies/default-strategy';
 export const strategies: Strategy[] = [
     {
         id: 'long_call',
-        category: ['Bullish'],
+        category: ['Bullish', 'Risk Defined'],
         name: 'Long Call',
         description: "The most straightforward bullish strategy. Buy a call option expecting the underlying asset's price to rise significantly. Profit potential is unlimited, while risk is limited to the premium paid.",
         profile: 'Defined Risk, Unlimited Profit',
@@ -60,7 +60,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_call_spread',
-        category: ['Bullish'],
+        category: ['Bullish', 'Risk Defined'],
         name: 'Bull Call Spread',
         description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.",
         profile: 'Defined Risk, Defined Profit',
@@ -71,7 +71,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_put_spread',
-        category: ['Bullish', 'Income'],
+        category: ['Bullish', 'Income', 'Risk Defined'],
         name: 'Bull Put Spread',
         description: "An income-generating bullish strategy. Sell a put and buy another put with a lower strike. You collect a credit and profit if the stock stays above the short put's strike. Risk and profit are defined.",
         profile: 'Defined Risk, Defined Profit',
@@ -119,7 +119,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_put_spread',
-        category: ['Bearish'],
+        category: ['Bearish', 'Risk Defined'],
         name: 'Bear Put Spread',
         description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.",
         profile: 'Defined Risk, Defined Profit',
@@ -130,7 +130,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_call_spread',
-        category: ['Bearish', 'Income'],
+        category: ['Bearish', 'Income', 'Risk Defined'],
         name: 'Bear Call Spread',
         description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.",
         profile: 'Defined Risk, Defined Profit',
@@ -152,14 +152,29 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'iron_condor',
-        category: ['Neutral', 'Income', 'Featured'],
+        category: ['Neutral', 'Income', 'Risk Defined', 'Featured'],
         name: 'Iron Condor',
         description: "A high-probability, risk-defined neutral strategy. Sell a bear call spread and a bull put spread. You define a price range and profit if the stock stays within it at expiration.",
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike2, strike4 }) => 
-            1.0 - Math.max(0, p - strike2) - Math.max(0, strike4 - p),
+        payoffCalculator: (p, { strike1, strike2, strike3, strike4, premium }) => {
+            // Iron Condor: Short put spread + Short call spread
+            // strike4 = 90 (long put), strike3 = 95 (short put), strike2 = 105 (short call), strike1 = 100 (not used for IC)
+            // For IC: Buy put at 90, Sell put at 95, Sell call at 105, Buy call at 110
+            const longCallStrike = strike2 + (strike3 - strike4); // 105 + (95-90) = 110
+            
+            // Put spread P&L: (short put premium - long put premium) - max(0, strike3 - p) + max(0, strike4 - p)
+            const putSpreadPnL = -Math.max(0, strike3 - p) + Math.max(0, strike4 - p);
+            
+            // Call spread P&L: (short call premium - long call premium) - max(0, p - strike2) + max(0, p - longCallStrike)
+            const callSpreadPnL = -Math.max(0, p - strike2) + Math.max(0, p - longCallStrike);
+            
+            // Net credit received (simplified as premium/2 for each spread)
+            const netCredit = premium * 0.8; // Typical IC collects about 80% of premium as credit
+            
+            return putSpreadPnL + callSpreadPnL + netCredit;
+        },
         relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         infographicUrl: 'https://i.imgur.com/jRhQhdm.jpeg',
         detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
@@ -225,7 +240,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'collar_strategy',
-        category: ['Bullish', 'Featured'],
+        category: ['Bullish', 'Risk Defined', 'Featured'],
         name: 'Collar Strategy',
         description: "A defensive strategy combining stock ownership with protective puts and covered calls. Creates a 'collar' around your position with defined risk and reward. Often implemented at low or zero net cost, making it ideal for protecting gains in concentrated positions without selling shares.",
         profile: 'Defined Risk, Defined Profit',
