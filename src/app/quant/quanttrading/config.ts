@@ -33,6 +33,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     relatedArticles: [
       "evolution-deep-learning-quantitative-trading-mlps-transformers",
       "deep-learning-evolution",
+      "foundational-assumptions-machine-learning-quantitative-trading",
+      "ml-assumption",
     ],
     studyGuide: {
       items: [
@@ -41,6 +43,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers",
           videoUrl: "https://youtu.be/s0Z3pl8DFDA",
           visualGuideUrl: "https://i.imgur.com/8ZF0tTX.jpeg",
+        },
+        {
+          text: "Assumptions of Machine Learning in Quantitative Trading",
+          url: "https://www.sophie-ai-finance.com/articles/foundational-assumptions-machine-learning-quantitative-trading",
+          videoUrl: "https://youtu.be/pR821HLbl3c",
+          visualGuideUrl: "https://i.imgur.com/Yq4MVgM.jpeg",
         },
       ]
     }
