@@ -41,7 +41,7 @@ export interface Strategy {
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
-//import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
+import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -218,9 +218,9 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? premium : premium + (p - strike1)),
         youtubeId: 'pdfm0osP4Ow',
         payoffExplanation: "LEAPS put selling generates premium income upfront. If assigned, you acquire the stock at the strike price minus premium received.",
-        relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage"],
+        relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage", "sell-leaps-put",],
         infographicUrl: 'https://i.imgur.com/nBdrqD7.jpeg',
-        //detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
+        detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 

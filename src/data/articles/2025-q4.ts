@@ -170,6 +170,7 @@ export const articles2025Q4: Article[] = [
 {
     title: "The Buffett Option Strategy: Selling LEAP Puts",
     description: "Most investors think selling options is just about collecting income through time decay, but selling long-term LEAP puts is a completely different animal. This video deconstructs the institutional mechanics of selling LEAP puts, explaining why they are mathematically the antithesis of the standard monthly income strategy.",
+    slug: "sell-leaps-put",
     date: "December 14, 2025",
     youtubeUrl: "https://youtu.be/pdfm0osP4Ow",
     isVideo: true,
