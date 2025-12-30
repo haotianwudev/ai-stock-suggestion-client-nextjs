@@ -2,9 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Music } from 'lucide-react';
+import { ArrowLeft, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Helper Components & Icons ---
 const ArrowUpRight = ({ className = "w-4 h-4" }) => (
@@ -46,6 +47,8 @@ export default function OptionCollarStrategyPage() {
     putPremium: 1.60,
     callPremium: 1.80,
   });
+
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -158,46 +161,86 @@ export default function OptionCollarStrategyPage() {
         <style>{`html { scroll-behavior: smooth; }`}</style>
 
         {/* Return to Home Button */}
-        <div className="flex items-center gap-4 mb-4 px-6 pt-6">
+        <div className="max-w-5xl mx-auto px-6 pt-8">
           <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Return to Home
           </Link>
         </div>
 
-        {/* Badges */}
-        <div className="relative px-6">
-          <div className="absolute top-0 left-6 z-10">
-            <span className="inline-block bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded">
-              Deep Research
-            </span>
-          </div>
-          <div className="absolute top-0 right-6 z-10">
-            <span className="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
-              Options
-            </span>
+        {/* Hero Section with Title */}
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            {/* Badges */}
+            <div className="absolute top-6 left-6 z-10">
+              <span className="inline-block bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded">
+                Deep Research
+              </span>
+            </div>
+            <div className="absolute top-6 right-6 z-10">
+              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
+                Options
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              Option Collar Strategy: Protect Gains, Define Risk
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+              A comprehensive deep research analysis of the option collar strategy for capital preservation. Explores the three-pillar structure, interactive payoff calculations, volatility skew implications, and advanced management techniques for hedging long positions at low or zero net cost.
+            </p>
           </div>
         </div>
 
-        {/* --- Header --- */}
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-slate-200">
-          <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
-            <h1 className="text-xl font-bold text-slate-900">Option Collar Strategy</h1>
-            <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
-              <a href="#calculator" className="hover:text-sky-600 transition-colors">Calculator</a>
-              <a href="#when-to-use" className="hover:text-sky-600 transition-colors">When to Use</a>
-              <a href="#management" className="hover:text-sky-600 transition-colors">Management</a>
-              <a href="#risks" className="hover:text-sky-600 transition-colors">Risks</a>
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        {currentArticle?.imageUrl && (
+          <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              onClick={() => setIsImageViewerOpen(true)}
+            >
+              <img 
+                src={currentArticle.imageUrl} 
+                alt="Option Collar Strategy Infographic" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsImageViewerOpen(true);
+                }}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+              {/* Click hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                  Click to view full screen
+                </div>
+              </div>
             </div>
-          </nav>
-        </header>
+          </section>
+        )}
 
-        <main className="container mx-auto px-6 py-12 md:py-20">
+        {/* Full-screen image viewer */}
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="Option Collar Strategy Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
+
+        <main className="max-w-5xl mx-auto px-6 py-16">
           {/* --- Hero Section --- */}
           <section className="text-center mb-20 md:mb-32">
-            <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
+            <h3 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
               Protect Gains. Define Risk.
-            </h2>
+            </h3>
             <p className="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto">
               The Option Collar is a powerful strategy for investors wanting to hedge against downturns, often at a low or zero net cost, without selling their long-term holdings.
             </p>
@@ -512,7 +555,7 @@ export default function OptionCollarStrategyPage() {
         <footer className="border-t border-slate-200 mt-20 md:mt-32">
           <div className="container mx-auto px-6 py-8 text-center text-slate-500">
             <p>This information is for educational purposes only and does not constitute financial advice. Options trading involves significant risk and is not suitable for all investors.</p>
-            <p className="text-sm mt-2">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+            <p className="text-sm mt-2">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>
