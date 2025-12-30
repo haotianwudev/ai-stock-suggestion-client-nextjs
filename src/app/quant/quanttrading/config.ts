@@ -50,6 +50,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/pR821HLbl3c",
           visualGuideUrl: "https://i.imgur.com/Yq4MVgM.jpeg",
         },
+        
       ]
     }
   }

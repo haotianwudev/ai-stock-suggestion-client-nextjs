@@ -64,6 +64,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/eHu9X04D7Ss",
           visualGuideUrl: "https://i.imgur.com/ZSPRHKw.jpeg"
         },
+        {
+          text: "Barchart Historical vs Implied Volatility",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
+        }
       ]
     }
   },
@@ -86,6 +90,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/t_5yWuxn0WY",
           visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg"
         },
+        {
+          text: "Barchart GEX viewer",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/gamma-exposure",
+        }
       ]
     }
   }
