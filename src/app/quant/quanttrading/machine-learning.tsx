@@ -24,11 +24,7 @@ export function MachineLearningContent() {
     sectionTitle: "text-purple-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <Brain className="h-4 w-4" />, text: "Neural Networks" },
-    { icon: <TrendingUp className="h-4 w-4" />, text: "Predictive Models" },
-    { icon: <Zap className="h-4 w-4" />, text: "Quantitative Trading" }
-  ];
+
 
   const contentSections = (
     <>
@@ -75,7 +71,6 @@ export function MachineLearningContent() {
       config={config}
       heroIcon={<Brain className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
       infographicAlt="Machine Learning in Finance Guide"
     />

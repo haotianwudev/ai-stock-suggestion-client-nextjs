@@ -21,11 +21,7 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
     sectionTitle: "text-blue-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <Calculator className="h-4 w-4" />, text: "Stochastic Modeling" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Risk Assessment" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Portfolio Optimization" }
-  ];
+
 
   const contentSections = (
     <>
@@ -72,7 +68,6 @@ export function MonteCarloContent({ config }: { config?: TopicConfig }) {
       config={config}
       heroIcon={<Calculator className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
       infographicAlt="Monte Carlo Simulation in Quantitative Finance"
     />

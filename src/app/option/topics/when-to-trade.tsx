@@ -23,11 +23,7 @@ export function WhenToTradeContent() {
     sectionTitle: "text-teal-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <Shield className="h-4 w-4" />, text: "Risk Management" },
-    { icon: <TrendingUp className="h-4 w-4" />, text: "Leverage Control" },
-    { icon: <DollarSign className="h-4 w-4" />, text: "Income Generation" }
-  ];
+
 
   const contentSections = (
     <>
@@ -155,7 +151,6 @@ export function WhenToTradeContent() {
       config={config}
       heroIcon={<Shield className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
       infographicAlt="When to Use Options Infographic"
     />

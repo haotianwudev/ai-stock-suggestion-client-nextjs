@@ -23,13 +23,7 @@ export function GreeksContent() {
     sectionTitle: "text-orange-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <Calculator className="h-4 w-4" />, text: "Delta" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Gamma" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Theta" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Vega" },
-    { icon: <Calculator className="h-4 w-4" />, text: "Rho" }
-  ];
+
 
   const contentSections = (
     <div className="mt-3 md:mt-6">
@@ -42,7 +36,6 @@ export function GreeksContent() {
       config={config}
       heroIcon={<Calculator className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
     />
   );

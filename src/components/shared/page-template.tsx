@@ -74,7 +74,7 @@ export function PageTemplate({
   customVideoComponent,
   customInfographicComponent,
   customRelatedArticlesComponent,
-  showKeyConceptsSection = true,
+  showKeyConceptsSection = false,
   showVideoSection = true,
   showInfographicSection = true,
   showRelatedArticlesSection = true

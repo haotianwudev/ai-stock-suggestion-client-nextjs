@@ -23,11 +23,7 @@ export function VRPContent() {
     sectionTitle: "text-purple-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <Shield className="h-4 w-4" />, text: "Insurance Premium" },
-    { icon: <TrendingUp className="h-4 w-4" />, text: "Fear Premium" },
-    { icon: <BarChart4 className="h-4 w-4" />, text: "Supply & Demand" }
-  ];
+
 
   const contentSections = (
     <>
@@ -191,7 +187,6 @@ export function VRPContent() {
       config={config}
       heroIcon={<Shield className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
       infographicAlt="Volatility Risk Premium Visual Guide"
     />

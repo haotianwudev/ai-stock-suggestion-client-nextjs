@@ -24,11 +24,7 @@ export function SystematicStrategiesContent() {
     sectionTitle: "text-green-900"
   };
 
-  const keyConceptsItems = [
-    { icon: <TrendingUp className="h-4 w-4" />, text: "Momentum Strategies" },
-    { icon: <BarChart3 className="h-4 w-4" />, text: "Mean Reversion" },
-    { icon: <Activity className="h-4 w-4" />, text: "Smart Beta Factors" }
-  ];
+
 
   const contentSections = (
     <>
@@ -118,7 +114,6 @@ export function SystematicStrategiesContent() {
       config={config}
       heroIcon={<Activity className="h-6 w-6 md:h-8 md:w-8" />}
       heroColorScheme={heroColorScheme}
-      keyConceptsItems={keyConceptsItems}
       contentSections={contentSections}
       fallbackInfographic={fallbackInfographic}
     />
