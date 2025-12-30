@@ -42,6 +42,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/specific-greeks-tutorial",
           visualGuideUrl: "https://i.imgur.com/greeks-detailed-guide.jpeg"
         },
+        {
+          text: "Barchart Volatility & Greeks",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-greeks",
+        }
       ]
     }
   },
