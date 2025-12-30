@@ -42,6 +42,7 @@ import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
+import { CollarStrategyDetail } from './strategies/collar-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -221,6 +222,23 @@ export const strategies: Strategy[] = [
         relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage", "sell-leaps-put",],
         infographicUrl: 'https://i.imgur.com/nBdrqD7.jpeg',
         detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'collar_strategy',
+        category: ['Bullish', 'Income', 'Featured'],
+        name: 'Collar Strategy',
+        description: "A defensive strategy combining stock ownership with protective puts and covered calls. Creates a 'collar' around your position with defined risk and reward. Often implemented at low or zero net cost, making it ideal for protecting gains in concentrated positions without selling shares.",
+        profile: 'Defined Risk, Defined Profit',
+        volatility: 'Mixed impact (Long Put Vega, Short Call Vega)',
+        time: 'Mixed impact (Short Put Theta, Long Call Theta)',
+        payoffCalculator: (p, { stockPrice, strike2, strike3 }) => {            
+            return p - stockPrice + Math.max(strike3 - p, 0) + -Math.max(p - strike2, 0);
+        },
+        youtubeId: 'AuBIzqvQdEw',
+        payoffExplanation: "The collar creates a defined range of outcomes. Maximum loss occurs if stock falls to put strike, maximum profit if stock rises to call strike.",
+        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar"],
+        infographicUrl: 'https://i.imgur.com/qmxFvJ5.jpeg',
+        detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 
