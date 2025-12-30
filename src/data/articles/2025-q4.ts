@@ -112,6 +112,7 @@ export const articles2025Q4: Article[] = [
     title: "Why are Put Options So Expensive?",
     description: "In this deep dive into the Single Leg Long Put strategy, we unpack one of the most powerful yet misunderstood instruments in financial markets. Learn why the long put offers asymmetric utility with defined risk and potentially unlimited reward, and discover the structural forces that make these options expensive.",
     date: "December 21, 2025",
+    slug: "put-expensive",
     youtubeUrl: "https://youtu.be/X2IJngJv4G0",
     isVideo: true,
     options: true,

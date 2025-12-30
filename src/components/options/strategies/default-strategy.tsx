@@ -1,4 +1,4 @@
-import { StrategyDetailProps } from './types';
+import { StrategyDetailProps } from '../strategy-config';
 
 export const DefaultStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
   return (

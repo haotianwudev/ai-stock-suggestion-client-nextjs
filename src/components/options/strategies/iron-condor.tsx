@@ -1,4 +1,4 @@
-import { StrategyDetailProps } from './types';
+import { StrategyDetailProps } from '../strategy-config';
 
 export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
   return (

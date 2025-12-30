@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Maximize2 } from 'lucide-react';
-import { strategies, type Strategy } from './strategy-config';
+import { strategies, type Strategy, getStrategyDetailComponent } from './strategy-config';
 import { articles } from '@/data/articles';
 import { ArticleCard } from '@/components/articles/article-card';
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { WheelStrategyDetail } from './strategies/wheel-strategy';
-import { IronCondorStrategyDetail } from './strategies/iron-condor';
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -178,7 +176,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                     </div>
                 );
             })()}
-            
+
             {/* Infographic Section - Display if available */}
             {strategy.infographicUrl && (
                 <section className="mb-6">
@@ -249,15 +247,11 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                 </div>
             )}
 
-            {/* Special expanded content for Wheel Strategy */}
-            {strategy.id === 'wheel_strategy' && (
-                <WheelStrategyDetail strategy={strategy} onBack={onBack} />
-            )}
-
-            {/* Special expanded content for Iron Condor Strategy */}
-            {strategy.id === 'iron_condor' && (
-                <IronCondorStrategyDetail strategy={strategy} onBack={onBack} />
-            )}
+            {/* Strategy Detail Component */}
+            {(() => {
+                const StrategyDetailComponent = getStrategyDetailComponent(strategy.id);
+                return <StrategyDetailComponent strategy={strategy} onBack={onBack} />;
+            })()}
 
             {/* Full-screen image viewer */}
             {strategy.infographicUrl && (

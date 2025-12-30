@@ -1,6 +1,8 @@
 // --- STRATEGY CONFIGURATION ---
 // Centralized configuration for all options strategies
 
+import { ComponentType } from 'react';
+
 export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured';
 
 export interface PayoffParams {
@@ -13,6 +15,11 @@ export interface PayoffParams {
 }
 
 export type PayoffCalculator = (price: number, params: PayoffParams) => number;
+
+export interface StrategyDetailProps {
+    strategy: Strategy;
+    onBack: () => void;
+}
 
 export interface Strategy {
     id: string;
@@ -27,7 +34,14 @@ export interface Strategy {
     payoffExplanation?: string;  // Explanation for the payoff diagram
     relatedArticles?: string[];  // Array of article slugs
     infographicUrl?: string;     // URL for strategy infographic
+    detailComponent?: ComponentType<StrategyDetailProps>; // Component for detailed view
 }
+
+// Import strategy detail components
+import { WheelStrategyDetail } from './strategies/wheel-strategy';
+import { IronCondorStrategyDetail } from './strategies/iron-condor';
+import { LongPutStrategyDetail } from './strategies/long-put-strategy';
+import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -88,7 +102,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'long_put',
-        category: ['Bearish'],
+        category: ['Bearish', 'Featured'],
         name: 'Long Put',
         description: "The most straightforward bearish strategy. Buy a put option expecting the underlying asset's price to fall significantly. Profit potential is substantial, risk is limited to the premium paid.",
         profile: 'Defined Risk, Substantial Profit',
@@ -96,6 +110,10 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, strike1 - p) - premium,
+        youtubeId: 'X2IJngJv4G0',
+        relatedArticles: ["single-leg-put-strategy-asymmetric-utility", "put-expensive",],
+        infographicUrl: 'https://i.imgur.com/a1a8zU5.jpeg',
+        detailComponent: LongPutStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'bear_put_spread',
@@ -140,7 +158,9 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike2, strike4 }) => 
             1.0 - Math.max(0, p - strike2) - Math.max(0, strike4 - p),
-        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"]
+        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
+        infographicUrl: 'https://i.imgur.com/jRhQhdm.jpeg',
+        detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'long_straddle',
@@ -182,6 +202,13 @@ export const strategies: Strategy[] = [
         youtubeId: 'GGKItsjV-L8',
         payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
         relatedArticles: ["wheel-strategy",'options-wheel-trading-plan-quantitative-approach'],
-        infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg'
+        infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg',
+        detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
+
+// --- UTILITY FUNCTIONS ---
+export const getStrategyDetailComponent = (strategyId: string) => {
+    const strategy = strategies.find(s => s.id === strategyId);
+    return strategy?.detailComponent || DefaultStrategyDetail;
+};
