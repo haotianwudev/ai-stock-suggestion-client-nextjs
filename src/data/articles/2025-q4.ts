@@ -945,7 +945,7 @@ export const articles2025Q4: Article[] = [
     description: "Master the Options Wheel strategy with this comprehensive guide covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, strategic rolling techniques, and advanced portfolio management through systematic option writing.",
     slug: "options-wheel-trading-plan-quantitative-approach",
     date: "October 11, 2025",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*WBKi7KcTrLjzp9zj.png",
+    imageUrl: "https://i.imgur.com/f1RFcNb.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrNZ1-3VX4fwU3wlmIwgjvpUKbePjGbOAttYmqO1QTHlNDHjPUeA-hTC4SpWv-W4ZicYLR-eHB9Wek/pub",
     deepResearch: true,
     options: true,

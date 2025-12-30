@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BookOpen, Music, Target, ShieldCheck, TrendingUp, BarChart3, AlertTriangle, CheckCircle, ArrowDownCircle, ArrowUpCircle, RefreshCw, DollarSign } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Music, Target, ShieldCheck, TrendingUp, BarChart3, AlertTriangle, CheckCircle, ArrowDownCircle, ArrowUpCircle, RefreshCw, DollarSign, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // Helper components for Icons
 const IconBookOpen = () => (
@@ -164,6 +165,7 @@ const WheelCycleVisualization = () => {
 };
 
 export default function OptionsWheelTradingPlan() {
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
     const currentArticle = articles.find(article => article.slug === 'options-wheel-trading-plan-quantitative-approach');
 
     // Data for the tables
@@ -209,7 +211,7 @@ export default function OptionsWheelTradingPlan() {
                     <StructuredData article={currentArticle} />
                     <BreadcrumbStructuredData
                         articleTitle={currentArticle.title}
-                        articleSlug={currentArticle.slug}
+                        articleSlug={currentArticle.slug || 'options-wheel-trading-plan-quantitative-approach'}
                     />
                 </>
             )}
@@ -263,6 +265,89 @@ export default function OptionsWheelTradingPlan() {
                     <main className="space-y-16">
                         {/* Interactive Wheel Cycle */}
                         <WheelCycleVisualization />
+
+                        {/* Graph Information Section */}
+                        {currentArticle?.imageUrl && (
+                            <section className="p-8 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl border border-blue-200 shadow-lg">
+                                <div className="text-center mb-8">
+                                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                                        <BarChart3 className="inline-block w-8 h-8 mr-3 text-indigo-600" />
+                                        Quantitative Analysis Framework
+                                    </h2>
+                                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                        Visual representation of the systematic approach to options wheel trading, including risk metrics, 
+                                        probability distributions, and performance analytics that guide strategic decision-making.
+                                    </p>
+                                </div>
+                                
+                                <div className="relative group">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+                                    <div 
+                                        className="relative bg-white p-6 rounded-lg shadow-xl cursor-pointer"
+                                        onClick={() => setIsImageViewerOpen(true)}
+                                    >
+                                        <img 
+                                            src={currentArticle.imageUrl} 
+                                            alt="Options Wheel Trading Plan Quantitative Framework"
+                                            className="w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                                            loading="lazy"
+                                        />
+                                        {/* Full-screen button overlay */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setIsImageViewerOpen(true);
+                                            }}
+                                            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                                            title="View full screen"
+                                        >
+                                            <Maximize2 className="h-4 w-4" />
+                                        </button>
+                                        {/* Click hint */}
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                                            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                                                Click to view full screen
+                                            </div>
+                                        </div>
+                                        <div className="mt-4 text-center">
+                                            <p className="text-sm text-gray-500 italic">
+                                                Comprehensive quantitative framework for systematic options wheel implementation
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-blue-200">
+                                        <div className="flex items-center mb-3">
+                                            <Target className="w-6 h-6 text-blue-600 mr-2" />
+                                            <h3 className="font-bold text-gray-900">Probability Analysis</h3>
+                                        </div>
+                                        <p className="text-gray-600 text-sm">
+                                            Statistical modeling of option expiration probabilities and expected outcomes based on delta positioning.
+                                        </p>
+                                    </div>
+                                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-blue-200">
+                                        <div className="flex items-center mb-3">
+                                            <DollarSign className="w-6 h-6 text-green-600 mr-2" />
+                                            <h3 className="font-bold text-gray-900">Income Optimization</h3>
+                                        </div>
+                                        <p className="text-gray-600 text-sm">
+                                            Systematic approach to maximizing premium collection while maintaining acceptable risk parameters.
+                                        </p>
+                                    </div>
+                                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-blue-200">
+                                        <div className="flex items-center mb-3">
+                                            <ShieldCheck className="w-6 h-6 text-purple-600 mr-2" />
+                                            <h3 className="font-bold text-gray-900">Risk Management</h3>
+                                        </div>
+                                        <p className="text-gray-600 text-sm">
+                                            Quantitative frameworks for position sizing, portfolio allocation, and systematic risk control.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        )}
 
                         {/* Section 1: Strategic Rationale */}
                         <section id="rationale" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
@@ -760,6 +845,14 @@ export default function OptionsWheelTradingPlan() {
                     </footer>
                 </div>
             </div>
+
+            {/* Full-screen image viewer */}
+            <FullScreenImageViewer
+                src={currentArticle?.imageUrl || ""}
+                alt="Options Wheel Trading Plan Quantitative Framework"
+                isOpen={isImageViewerOpen}
+                onClose={() => setIsImageViewerOpen(false)}
+            />
         </>
     );
 }
