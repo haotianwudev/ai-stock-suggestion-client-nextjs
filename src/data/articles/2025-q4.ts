@@ -933,7 +933,7 @@ export const articles2025Q4: Article[] = [
     slug: "options-strategy-report-october-10-market-event",
     date: "October 12, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjnmSNJPBN0qAsNoOuSRHFIWrtn5_o1lxNm1eIB1kwsWpwP9Yf6dDHIbEJjcmr9MDkZEdbjGW5iiSB/pub",
-    imageUrl: "https://cf3.ppt-online.org/files3/slide/t/Tj4GaRfQ0JAL7YpncKd8ClIeWvs5m3irMxEy1t/slide-4.jpg",
+    imageUrl: "https://i.imgur.com/pM6d7Cb.jpeg",
     deepResearch: true,
     options: true
   },
