@@ -630,7 +630,7 @@ export const articles2025Q3: Article[] = [
     description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
     slug: "covering-world-global-evidence-covered-calls",
     date: "August 7, 2025",
-    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2024/03/What-is-the-covered-call-strategy.png",
+    imageUrl: "https://i.imgur.com/jma3adu.jpeg",
     deepResearch: true,
     options: true,
     googleDoc: "https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls",
