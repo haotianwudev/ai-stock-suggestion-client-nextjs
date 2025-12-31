@@ -45,6 +45,8 @@ import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
 import { CollarStrategyDetail } from './strategies/collar-strategy';
 import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strategy';
 import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
+import { BullPutSpreadStrategyDetail } from './strategies/bull-put-spread-strategy';
+import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -73,7 +75,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_put_spread',
-        category: ['Bullish', 'Income', 'Risk Defined'],
+        category: ['Bullish', 'Income', 'Risk Defined', 'Featured'],
         name: 'Bull Put Spread',
         description: "An income-generating bullish strategy. Sell a put and buy another put with a lower strike. You collect a credit and profit if the stock stays above the short put's strike. Risk and profit are defined.",
         profile: 'Defined Risk, Defined Profit',
@@ -81,6 +83,11 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike3, strike4, premium }) => 
             (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4),
+        youtubeId: 'g5e-nZERjLE',
+        payoffExplanation: "Maximum profit occurs when the stock price stays above the short put strike at expiration. Maximum loss occurs when stock falls below the long put strike.",
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
+        infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
+        detailComponent: BullPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'covered_call',
@@ -132,7 +139,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_call_spread',
-        category: ['Bearish', 'Income', 'Risk Defined'],
+        category: ['Bearish', 'Income', 'Risk Defined', 'Featured'],
         name: 'Bear Call Spread',
         description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.",
         profile: 'Defined Risk, Defined Profit',
@@ -140,6 +147,11 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike1, strike3, premium }) => 
             (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1),
+        youtubeId: 'g5e-nZERjLE',
+        payoffExplanation: "Maximum profit occurs when the stock price stays below the short call strike at expiration. Maximum loss occurs when stock rises above the long call strike.",
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
+        infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
+        detailComponent: BearCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'short_straddle',
