@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
-const validSubtopics = ['when-to-trade', 'greeks', 'vrp', 'gex'];
+const validSubtopics = ['when-to-trade', 'greeks', 'vrp', 'gex', 'roll'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -31,6 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       title: 'Gamma Exposure (GEX) | SOPHIE\'s Daddy Quant Blog',
       description: 'Understanding how market makers\' gamma exposure influences market volatility and price movements, creating predictable trading patterns.',
       keywords: ['gamma exposure', 'GEX', 'market makers', 'volatility', 'options flow', 'gamma hedging'],
+    },
+    roll: {
+      title: 'Rolling Options Strategy | SOPHIE\'s Daddy Quant Blog',
+      description: 'Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers.',
+      keywords: ['rolling options', 'options management', 'defensive rolling', 'offensive rolling', 'options repair', 'Greeks triggers'],
     },
   };
 

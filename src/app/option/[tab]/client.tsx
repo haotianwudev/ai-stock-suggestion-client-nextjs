@@ -13,6 +13,7 @@ import { VRPContent } from "../topics/vrp";
 import { WhenToTradeContent } from "../topics/when-to-trade";
 import { GreeksContent } from "../topics/greeks";
 import { GEXContent } from "../topics/gex";
+import { RollContent } from "../topics/roll";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -69,7 +70,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="when-to-trade" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -83,6 +84,12 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           >
             <span className="block sm:hidden">Greeks</span>
             <span className="hidden sm:block">Option Greeks</span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="roll" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            Art of Roll
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
@@ -106,6 +113,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           <GreeksContent />
         </TabsContent>
         
+        <TabsContent value="roll" className="mt-0">
+          <RollContent />
+        </TabsContent>
+
         <TabsContent value="vrp" className="mt-0">
           <VRPContent />
         </TabsContent>

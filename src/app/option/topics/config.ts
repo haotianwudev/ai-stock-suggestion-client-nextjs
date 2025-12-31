@@ -100,6 +100,28 @@ export const topicsConfig: Record<string, TopicConfig> = {
         }
       ]
     }
+  },
+
+  'roll': {
+    id: 'roll',
+    title: 'Rolling Options',
+    description: 'Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers and Greeks-based decision making.',
+    videoUrl: 'https://youtu.be/q5FSpOKtcFM',
+    infographicUrl: 'https://i.imgur.com/yDVJgI0.jpeg',
+    relatedArticles: [
+      "strategic-framework-rolling-options-quantitative-approach",
+      "roll-option",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "Strategic Framework for Rolling Options",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-framework-rolling-options-quantitative-approach",
+          videoUrl: "https://youtu.be/q5FSpOKtcFM",
+          visualGuideUrl: "https://i.imgur.com/yDVJgI0.jpeg"
+        },
+      ]
+    }
   }
 };
 
