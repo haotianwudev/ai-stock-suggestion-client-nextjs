@@ -197,7 +197,6 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1366206397/image_1366206397.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSkXerTQU28ElMzivvTOj3dRbhqfDHpLKjmGfhInEaJKMfdeArjQ8N2DWfLHsu_p40xzQv2J1-m5xSX/pub",
     deepResearch: true,
-    options: true
   },
 {
     title: "The Art of Rolling Options - The Most Common Strategy to Save a Trade",
@@ -335,24 +334,24 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://img.youtube.com/vi/uG0l1ZBPPOE/maxresdefault.jpg"
   },
 {
-    title: "Covered Calls vs Cash-Secured Puts",
-    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
-    slug: "covered-calls-vs-cash-secured-puts",
-    date: "August 31, 2025",
-    options: true,
-    deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
-    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
-  },
-{
     title: "Secret Similarity: Covered Call vs Cash Secured Put and the Wheel strategy!",
     description: "Dive deep into the fascinating world of options trading with our comprehensive analysis of Covered Calls vs. Cash-Secured Puts! Many investors treat these as distinct strategies, but did you know they are theoretical equivalents based on put-call parity?",
     slug: "secret-similary-call-put",
-    date: "August 30, 2025",
+    date: "August 31, 2025",
     youtubeUrl: "https://youtu.be/fKpmR9DxYpk",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/fKpmR9DxYpk/maxresdefault.jpg",
     options: true
+  },
+{
+    title: "Covered Calls vs Cash-Secured Puts",
+    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
+    slug: "covered-calls-vs-cash-secured-puts",
+    date: "August 30, 2025",
+    options: true,
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
+    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
   },
 {
     title: "An Institutional Analysis of Long-Horizon Trend Regression",
@@ -409,7 +408,8 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://images.ctfassets.net/y88td1zx1ufe/4Nt7mUN5aR35lkugeDGcEs/6269a774b447afc8a793c8fe22e5ef6c/Early-Exercise.png?fm=webp",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSyaCeVDYd2vthBBVSCNlmVv1a5TTAGltlI8TcE5VKO1fPqBwFqZ3XrwJzgoYiUwm2RPGJ6a56XYzWd/pub",
     deepResearch: true,
-    options: true
+    options: true,
+    bookSummary: true,
   },
 {
     title: "Fed Easing signal - Powell Pivot - Soft Landing or Deceptive Bull Trap in History",
@@ -490,16 +490,6 @@ export const articles2025Q3: Article[] = [
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/smYKvopeg1Q/maxresdefault.jpg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
-  },
-{
-    title: "Unlock High Yields with Covered Call ETFs",
-    description: "A comprehensive deep dive into covered call ETF strategies, yields, and risks of popular funds like JEPI, JEPQ, GPIX, and the 'YLDs'. Understand the trade-offs, tax implications, and performance across market cycles before you invest in these high-yield income generators.",
-    slug: "unlock-high-yields-covered-call-etfs-deep-research",
-    date: "August 20, 2025",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSnv05mwht-yG4oVg-uV3sUkofJ19paWaPDiZX1XZB9e1-q1AciHzo27IpULOftbIhDrxGnEXA0OZeh/pub",
-    deepResearch: true,
-    options: true,
-    imageUrl: "https://wyzeinvestors.com/wp-content/uploads/2024/03/Copx-32-1024x538.jpg"
   },
 {
     title: "The company with contradiction, is Alibaba now a good buy?",
@@ -681,6 +671,7 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://thetradinganalyst.com/wp-content/uploads/Diagonal_Spread.svg",
     deepResearch: true,
     options: true,
+    bookSummary: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTp8O3f6sN5Q0eM06kjFAao-p3NWN6tpk_iZF-I32pAzpIVaE0Vt4cpmVluAlfqbyHPm8dy4xpHasCO/pub"
   },
 {

@@ -149,7 +149,7 @@ export default function OptimalEarlyExerciseArticle() {
   return (
     <>
       {/* SEO Components - MANDATORY */}
-      {currentArticle && (
+      {currentArticle && currentArticle.title && currentArticle.slug && (
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 

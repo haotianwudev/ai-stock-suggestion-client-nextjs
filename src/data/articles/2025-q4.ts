@@ -819,6 +819,7 @@ export const articles2025Q4: Article[] = [
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/_NDyPBYkZxg/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
+    options: true,
   },
 {
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
@@ -840,6 +841,7 @@ export const articles2025Q4: Article[] = [
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/p8nblr4NyNc/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
+    options: true,
   },
 {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",

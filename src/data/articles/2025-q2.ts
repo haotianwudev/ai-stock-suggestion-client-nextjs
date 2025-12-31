@@ -95,16 +95,6 @@ export const articles2025Q2: Article[] = [
     noSummary: true
   },
 {
-    title: "Options Strategy Selection:TA to ML",
-    description: "A comprehensive deep research article and interactive guide to systematic options strategy selection. Covers a taxonomy of options strategies, technical indicator signals, machine learning features, and quant evaluation metrics. Includes interactive strategy explorer, analyst toolkit, ML engine, and quant playbook. Full document and research links provided.",
-    slug: "deep-research-options-strategy-selection",
-    date: "June 13, 2025",
-    imageUrl: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYw1t12BokYTuE9Q3t5FngMQpAYDSrLfQVh5znjIbbwdDkDpaBpL77GPHJLMKrp_tS9gTU0paRCShO/pub",
-    deepResearch: true,
-    options: true
-  },
-{
     title: "Writing Naked Puts: A Complete Guide",
     description: "An interactive comprehensive guide to writing naked puts based on Mark D. Wolfinger's book. Learn the strategy, risk management, and practical implementation with an intuitive navigation system covering all aspects from basic concepts to advanced repair strategies.",
     slug: "writing-naked-puts-complete-interactive-guide",
@@ -112,16 +102,6 @@ export const articles2025Q2: Article[] = [
     imageUrl: "https://m.media-amazon.com/images/I/5165u8eVyZL._SY445_SX342_PQ35_.jpg",
     options: true,
     bookSummary: true
-  },
-{
-    title: "Sell Put Strategy: Advanced Techniques",
-    description: "A comprehensive deep research analysis of advanced put-selling techniques and strategic optimizations. Covers refined strategic objectives, cash-secured vs naked puts analysis, advanced risk management frameworks, position sizing methodologies, rolling strategies, and multi-leg structures like bull put spreads and the wheel strategy. Essential reading for traders seeking to elevate their put-selling methodology beyond basic execution.",
-    slug: "enhancing-sell-put-strategy",
-    date: "June 9, 2025",
-    imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTk9wrfRXDHiChW36eqp7876n9TpPKmhAUjzEIQ6MHV_ixFMD0eyHy5yKTezL_Oje4fZ_PZr6aV3P2N/pub",
-    deepResearch: true,
-    options: true
   },
 {
     title: "Decoding Stock Analysis DCF model using AI",
