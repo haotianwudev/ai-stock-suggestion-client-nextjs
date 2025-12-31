@@ -12,6 +12,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",
       "option-when-to-trade",
+      "tax-efficient-option-writing-comprehensive-guide",
+      "tax-efficient-option-writing",
+      "decoding-options-market-volume-open-interest-analysis",
+      "volume-oi",
     ],
     studyGuide: {
       items: [
@@ -21,6 +25,26 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/brQbdu19cbw",
           visualGuideUrl: "https://i.imgur.com/ln9KdrO.jpeg",
         },
+        {
+          text: "Tax-Efficient Option Writing and Common Pitfalls",
+          url: "https://www.sophie-ai-finance.com/articles/tax-efficient-option-writing-comprehensive-guide",
+          videoUrl: "https://youtu.be/PkibBIsGHzk",
+          visualGuideUrl: "https://i.imgur.com/SlyV2Jv.jpeg",
+        },
+        {
+          text: "Option Volume and Open Interest (OI)",
+          url: "https://www.sophie-ai-finance.com/articles/decoding-options-market-volume-open-interest-analysis",
+          videoUrl: "https://youtu.be/DOhaPf3eJXM",
+          visualGuideUrl: "https://i.imgur.com/asowAEM.jpeg",
+        },
+        {
+          text: "Barchart Option Chain",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/options"
+        },
+        {
+          text: "Yahoo Finance Option Chain",
+          url: "https://finance.yahoo.com/quote/%5ESPX/options/"
+        }
       ]
     }
   },
@@ -60,6 +84,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "volatility-risk-premium-intro",
       'demystifying-volatility-risk-premium-theory-measurement-trading',
+      "spx-option-underlyer",
+      "mastering-volatility-risk-premium-spx-options-selling"
     ],
     studyGuide: {
       items: [
@@ -68,6 +94,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading",
           videoUrl: "https://youtu.be/eHu9X04D7Ss",
           visualGuideUrl: "https://i.imgur.com/ZSPRHKw.jpeg"
+        },
+        {
+          text: "VRP on SPX",
+          url: "https://www.sophie-ai-finance.com/articles/mastering-volatility-risk-premium-spx-options-selling",
+          videoUrl: "https://youtu.be/yThUZBJWKPM",
+          visualGuideUrl: "https://i.imgur.com/Iz7lSu4.jpeg"
         },
         {
           text: "Barchart Historical vs Implied Volatility",
