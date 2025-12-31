@@ -1,341 +1,387 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { Shield, TrendingUp, BookOpen, AlertTriangle, FileText, ChevronsRight, XCircle } from 'lucide-react';
-
-// Helper component for section titles
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
-    <ChevronsRight className="w-6 h-6 mr-3 text-blue-500" />
-    {children}
-  </h2>
-);
-
-// Helper component for subsections
-const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-8">
-    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">{title}</h3>
-    <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
-      {children}
-    </div>
-  </div>
-);
-
-// Helper for info cards
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 h-full">
-    <div className="flex items-center mb-4">
-      <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
-        {icon}
-      </div>
-      <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{title}</h4>
-    </div>
-    <p className="text-gray-600 dark:text-gray-400">{children}</p>
-  </div>
-);
-
-// Helper for Tax Trap cards
-const TaxTrapCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 rounded-r-lg">
-        <div className="flex">
-            <div className="flex-shrink-0">
-                <XCircle className="h-6 w-6 text-red-600 dark:text-red-400 mr-4" />
-            </div>
-            <div>
-                <h4 className="text-lg font-bold text-red-800 dark:text-red-200">{title}</h4>
-                <p className="mt-2 text-red-700 dark:text-red-300">{children}</p>
-            </div>
-        </div>
-    </div>
-);
-
-// Tax Rate Table Component
-const TaxTable = ({ data, caption }: { data: any[]; caption: string }) => (
-    <div className="overflow-x-auto my-8">
-        <table className="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
-            <caption className="caption-bottom text-sm text-gray-500 dark:text-gray-400 mt-2 px-4 text-left">{caption}</caption>
-            <thead className="bg-gray-50 dark:bg-gray-700">
-                <tr>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Filing Status</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Taxable Income</th>
-                    <th className="py-3 px-4 text-center text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Short-Term Capital Gains Rate</th>
-                    <th className="py-3 px-4 text-center text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Long-Term Capital Gains Rate</th>
-                </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                {data.map((row, index) => (
-                    <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                        <td className="py-4 px-4 whitespace-nowrap font-medium text-gray-900 dark:text-gray-100">{row.status}</td>
-                        <td className="py-4 px-4 whitespace-nowrap text-gray-700 dark:text-gray-300">{row.income}</td>
-                        <td className="py-4 px-4 text-center text-gray-700 dark:text-gray-300">{row.shortTerm}</td>
-                        <td className="py-4 px-4 text-center text-green-600 dark:text-green-400 font-semibold">{row.longTerm}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-);
-
-// Comparison Table Component
-const ComparisonTable = ({ data, caption }: { data: any[]; caption: string }) => (
-    <div className="overflow-x-auto my-8">
-        <table className="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
-             <caption className="caption-bottom text-sm text-gray-500 dark:text-gray-400 mt-2 px-4 text-left">{caption}</caption>
-            <thead className="bg-gray-50 dark:bg-gray-700">
-                <tr>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Category</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">ETF Option (e.g., SPY)</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Index Option (e.g., SPX)</th>
-                </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                {data.map((row, index) => (
-                    <tr key={index} className={`hover:bg-gray-50 dark:hover:bg-gray-700/50 ${row.isHighlight ? 'bg-green-50 dark:bg-green-900/20' : ''}`}>
-                        <td className="py-4 px-4 whitespace-nowrap font-medium text-gray-900 dark:text-gray-100">{row.category}</td>
-                        <td className="py-4 px-4 whitespace-nowrap text-gray-700 dark:text-gray-300">{row.etf}</td>
-                        <td className="py-4 px-4 whitespace-nowrap text-gray-700 dark:text-gray-300">{row.index}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-);
-
-// Covered Call Table
-const CoveredCallTable = ({ data, caption }: { data: any[]; caption: string }) => (
-    <div className="overflow-x-auto my-8">
-        <table className="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
-             <caption className="caption-bottom text-sm text-gray-500 dark:text-gray-400 mt-2 px-4 text-left">{caption}</caption>
-            <thead className="bg-gray-50 dark:bg-gray-700">
-                <tr>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Call Type</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Call Moneyness</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Impact on Short-Term Stock Holding Period</th>
-                    <th className="py-3 px-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Strategic Implication</th>
-                </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                {data.map((row, index) => (
-                    <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                        <td className="py-4 px-4 whitespace-nowrap font-medium text-gray-900 dark:text-gray-100">{row.type}</td>
-                        <td className="py-4 px-4 whitespace-nowrap text-gray-700 dark:text-gray-300">{row.moneyness}</td>
-                        <td className="py-4 px-4 whitespace-nowrap text-red-600 dark:text-red-400 font-semibold">{row.impact}</td>
-                        <td className="py-4 px-4 text-gray-700 dark:text-gray-300">{row.implication}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-);
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { Shield, AlertTriangle, FileText, XCircle, Calculator, Target, DollarSign } from 'lucide-react';
+import { useState } from 'react';
 
 export default function TaxEfficientOptionWritingPage() {
     const currentArticle = articles.find(article => article.slug === 'tax-efficient-option-writing-comprehensive-guide');
-
-    const taxRates2024 = [
-        { status: 'Single', income: 'Up to $47,025', shortTerm: '10% - 12%', longTerm: '0%' },
-        { status: 'Single', income: '$47,026 to $100,525', shortTerm: '22%', longTerm: '15%' },
-        { status: 'Single', income: '$100,526 to $191,950', shortTerm: '24%', longTerm: '15%' },
-        { status: 'Single', income: '$191,951 to $243,725', shortTerm: '32%', longTerm: '15%' },
-        { status: 'Single', income: '$243,726 to $518,900', shortTerm: '35%', longTerm: '15%' },
-        { status: 'Single', income: 'Over $518,900', shortTerm: '37%', longTerm: '20%' },
-        { status: 'Married Filing Jointly', income: 'Up to $94,050', shortTerm: '10% - 12%', longTerm: '0%' },
-        { status: 'Married Filing Jointly', income: '$94,051 to $201,050', shortTerm: '22%', longTerm: '15%' },
-        { status: 'Married Filing Jointly', income: '$201,051 to $383,900', shortTerm: '24%', longTerm: '15%' },
-        { status: 'Married Filing Jointly', income: '$383,901 to $487,450', shortTerm: '32%', longTerm: '15%' },
-        { status: 'Married Filing Jointly', income: '$487,451 to $583,750', shortTerm: '35%', longTerm: '15%' },
-        { status: 'Married Filing Jointly', income: 'Over $583,750', shortTerm: '37%', longTerm: '20%' },
-    ];
-
-    const comparisonData = [
-        { category: 'Hypothetical Profit', etf: '$15,000', index: '$15,000' },
-        { category: 'Assumed Tax Bracket', etf: '35% Short-Term / 20% Long-Term', index: '35% Short-Term / 20% Long-Term' },
-        { category: 'Tax Treatment', etf: '100% Short-Term Capital Gain', index: '60% Long-Term / 40% Short-Term' },
-        { category: 'Tax Calculation', etf: '$15,000 × 35%', index: '($6,000 × 35%) + ($9,000 × 20%) = $2,100 + $1,800' },
-        { category: 'Total Federal Tax', etf: '$5,250', index: '$3,900' },
-        { category: 'After-Tax Profit', etf: '$9,750', index: '$11,100' },
-        { category: 'Tax Savings', etf: '', index: '$1,350', isHighlight: true },
-    ];
-
-    const coveredCallData = [
-        { type: 'Qualified', moneyness: 'Out-of-the-Money (OTM) or At-the-Money (ATM)', impact: 'Unaffected', implication: 'Safest strategy for preserving the path to long-term status.' },
-        { type: 'Qualified', moneyness: 'In-the-Money (ITM)', impact: 'Paused', implication: 'Halts progress toward long-term status for the duration of the short call.' },
-        { type: 'Non-Qualified', moneyness: 'Any (ITM or OTM)', impact: 'Reset to Zero', implication: 'Erases all accumulated holding period; the one-year clock restarts.' },
-    ];
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
     return (
         <>
             {/* SEO Components - MANDATORY */}
-            {currentArticle && (
+            {currentArticle && currentArticle.title && currentArticle.slug && (
                 <>
                     <StructuredData article={currentArticle} />
-                    <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
+                    <BreadcrumbStructuredData 
+                        articleTitle={currentArticle.title} 
+                        articleSlug={currentArticle.slug} 
+                    />
                 </>
             )}
             
-            <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
-                <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    {/* Return to Home Button */}
-                    <div className="flex items-center gap-4 mb-8">
-                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            Return to Home
-                        </Link>
+            {/* Return to Home Button */}
+            <div className="max-w-5xl mx-auto px-6 pt-8">
+                <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Return to Home
+                </Link>
+            </div>
+
+            {/* Hero Section */}
+            <div className="bg-white relative overflow-hidden border-b border-slate-100">
+                <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+                        Tax-Efficient Option Writing
+                    </h1>
+                    <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+                        Navigate the complex tax landscape of option writing with strategic insights on Section 1256 contracts, the 60/40 rule, and advanced tax optimization techniques.
+                    </p>
+                </div>
+            </div>
+
+            {/* Hero Infographic - Below Title with Full-Screen Capability */}
+            <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+                <div 
+                    className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                    onClick={() => setIsImageViewerOpen(true)}
+                >
+                    <img 
+                        src="https://i.imgur.com/SlyV2Jv.jpeg" 
+                        alt="Tax-Efficient Option Writing Strategy Infographic" 
+                        className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                    />
+                    {/* Full-screen button overlay */}
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsImageViewerOpen(true);
+                        }}
+                        className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                        title="View full screen"
+                    >
+                        <Maximize2 className="h-4 w-4" />
+                    </button>
+                    {/* Click hint */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                        <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                            Click to view full screen
+                        </div>
                     </div>
+                </div>
+            </section>
 
-                    <header className="text-center mb-16">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
-                            A Comprehensive Guide to Tax-Efficient Option Writing
-                        </h1>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Strategies for the Sophisticated Investor
-                        </p>
-                    </header>
+            {/* Full-screen image viewer */}
+            <FullScreenImageViewer
+                src="https://i.imgur.com/SlyV2Jv.jpeg"
+                alt="Tax-Efficient Option Writing Strategy Infographic"
+                isOpen={isImageViewerOpen}
+                onClose={() => setIsImageViewerOpen(false)}
+            />
 
-                    <div className="space-y-16">
-                        {/* Introduction Section */}
-                        <section>
-                            <SubSection title="The Option Writer's Tax Dilemma">
-                                <p>For the active investor, writing options can be a powerful tool for generating income, hedging positions, and expressing nuanced market views. However, these strategies carry a significant and often underestimated tax burden. The U.S. tax code, by its design, creates a substantial headwind for option writers operating in standard taxable brokerage accounts. The very nature of most option writing strategies—collecting premium on contracts with relatively short lifespans—means that resulting profits are almost invariably classified as short-term capital gains. These gains are taxed at ordinary income tax rates, which can be nearly double the preferential rates applied to long-term capital gains. This report serves as a comprehensive strategic roadmap for the sophisticated option writer to navigate and mitigate this inherent tax inefficiency.</p>
-                            </SubSection>
-                            <SubSection title="A Hierarchy of Tax Efficiency">
-                                 <p>Achieving tax efficiency in option writing is not a single action but a multi-layered strategy. This analysis will present a clear hierarchy of tactics, beginning with the most impactful and progressing to more complex and situational approaches. The framework starts with foundational product selection, which can fundamentally alter the tax character of every trade. It then moves to the defensive necessity of understanding and navigating the intricate and often punitive rules governing equity options, such as the straddle and wash sale rules. Finally, it synthesizes these concepts into proactive tax management techniques, including tax-loss harvesting and advanced status elections. By understanding this hierarchy, an investor can systematically enhance the after-tax returns of their option writing activities.</p>
-                            </SubSection>
-                             <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-500 p-6 rounded-r-lg mt-8">
-                                <div className="flex">
-                                    <div className="py-1"><AlertTriangle className="h-6 w-6 text-yellow-500 dark:text-yellow-400 mr-4" /></div>
-                                    <div>
-                                        <h4 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200">Disclaimer</h4>
-                                        <p className="text-yellow-700 dark:text-yellow-300 mt-2">The information contained in this report is for educational and informational purposes only and should not be construed as tax or investment advice. The tax laws and regulations concerning options and other derivatives are exceptionally complex, subject to change, and dependent on an individual's specific circumstances. The Internal Revenue Service (IRS) has the final authority on the interpretation of the U.S. Tax Code. It is imperative to consult with a qualified tax professional or financial advisor to understand the tax consequences of any investment strategy before implementation.</p>
+            {/* Main Content */}
+            <main className="max-w-5xl mx-auto px-6 py-16">
+                {/* Key Insights Cards */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Key Tax Optimization Strategies</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
+                            <div className="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                                <Calculator className="w-6 h-6 text-blue-600" />
+                            </div>
+                            <h3 className="text-xl font-bold text-blue-900 mb-4">Section 1256 Advantage</h3>
+                            <p className="text-blue-700 leading-relaxed">Index options (SPX, NDX) receive 60% long-term / 40% short-term tax treatment regardless of holding period, significantly reducing tax burden compared to ETF options.</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-100">
+                            <div className="bg-green-100 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                                <Shield className="w-6 h-6 text-green-600" />
+                            </div>
+                            <h3 className="text-xl font-bold text-green-900 mb-4">Avoid Tax Traps</h3>
+                            <p className="text-green-700 leading-relaxed">Navigate straddle rules, wash sale restrictions, and qualified covered call requirements to prevent loss deferrals and holding period resets.</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
+                            <div className="bg-purple-100 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                                <Target className="w-6 h-6 text-purple-600" />
+                            </div>
+                            <h3 className="text-xl font-bold text-purple-900 mb-4">Strategic Tax Management</h3>
+                            <p className="text-purple-700 leading-relaxed">Implement tax-loss harvesting, maintain detailed records, and consider advanced elections like Trader Tax Status for professional-level activity.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Tax Rate Comparison */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">The Tax Rate Reality</h2>
+                    <div className="bg-gradient-to-r from-red-50 to-orange-50 p-8 rounded-2xl border border-red-100 mb-8">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 className="text-xl font-bold text-red-900 mb-4">Standard Option Writing</h3>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between">
+                                        <span className="text-red-700">ETF Options (SPY, QQQ)</span>
+                                        <span className="font-bold text-red-900">37% Tax Rate</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-red-700">Short-term gains only</span>
+                                        <span className="font-bold text-red-900">No exemptions</span>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-
-                        {/* Section I */}
-                        <section>
-                            <SectionTitle>The Default Tax Landscape for Option Writers</SectionTitle>
-                            <SubSection title="The Primacy of Short-Term Capital Gains for Written Options">
-                                <p>The fundamental tax challenge for an option writer stems from a simple, unyielding rule: when a writer closes a short option position for a profit or allows the option to expire worthless, the gain is almost always treated as a short-term capital gain. This classification holds true regardless of how long the option contract was held open. A written option held for eleven months that expires worthless generates a short-term gain, just as one held for eleven days does.</p>
-                                <p>The rationale behind this treatment is that the IRS views the premium received from writing an option as income derived from a short-term obligation that is settled upon closing or expiration. This disparity underscores why proactive tax management is not merely beneficial but essential for a profitable option writing practice.</p>
-                            </SubSection>
-                            <SubSection title="Tax Treatment Upon Expiration, Closing, and Assignment">
-                                <div className="grid md:grid-cols-3 gap-6">
-                                    <InfoCard icon={<FileText className="w-6 h-6 text-blue-500"/>} title="Expiration">When a written option expires worthless, the entire premium collected is recognized as a short-term capital gain on the date of expiration.</InfoCard>
-                                    <InfoCard icon={<FileText className="w-6 h-6 text-blue-500"/>} title="Closing Transaction">If a writer buys-to-close their position, the difference between the premium received and the premium paid is a short-term capital gain or loss.</InfoCard>
-                                    <InfoCard icon={<FileText className="w-6 h-6 text-blue-500"/>} title="Assignment">Assignment is the exception. For a short call, the premium is added to the stock's sale proceeds, and the holding period of the stock determines the gain's character. For a short put, the premium reduces the cost basis of the acquired stock, with no immediate taxable event.</InfoCard>
-                                </div>
-                            </SubSection>
-                            <SubSection title="Comparative Analysis: 2024 Short-Term vs. Long-Term Capital Gains Rates">
-                                 <p>The strategic importance of navigating these rules is driven entirely by the significant difference in tax rates. Short-term capital gains are taxed as ordinary income, subjecting them to the same progressive brackets as wages and salary. Long-term gains benefit from separate, lower tax brackets. The table below illustrates the stark contrast for the 2024 tax year.</p>
-                                 <TaxTable data={taxRates2024} caption="Source: Data compiled from IRS publications. Rates do not include the 3.8% Net Investment Income Tax (NIIT) that may apply to higher-income investors." />
-                            </SubSection>
-                        </section>
-
-                        {/* Section II */}
-                        <section>
-                            <SectionTitle>The Section 1256 Advantage: The Premier Strategy</SectionTitle>
-                            <SubSection title="Defining Section 1256 Contracts: Beyond Standard Equities">
-                                <p>Section 1256 of the tax code designates a special class of financial instruments that receive unique and highly favorable tax treatment. For an option writer, the most important category is <strong>non-equity options</strong>, which includes options on broad-based stock market indexes. The critical distinction is that options on major indexes themselves—such as the S&P 500 Index (SPX), the Nasdaq 100 Index (NDX), and the Russell 2000 Index (RUT)—are classified as Section 1256 contracts. Conversely, options on the extremely popular ETFs that track these same indexes—such as SPY, QQQ, and IWM—do <strong>not</strong> qualify.</p>
-                            </SubSection>
-                            <SubSection title="The 60/40 Rule: A Powerful Blended Rate">
-                                <p>The cornerstone of the Section 1256 advantage is the "60/40 rule." This rule mandates that all capital gains and losses on these contracts, regardless of holding period, are automatically treated as <strong>60% long-term and 40% short-term</strong>. This creates a "blended" tax rate that is significantly lower than the rate for pure short-term gains. For an investor in the highest federal tax bracket (37% short-term, 20% long-term), the maximum tax rate on a Section 1256 gain is just 26.8%.</p>
-                                <ComparisonTable data={comparisonData} caption="This hypothetical example illustrates the powerful tax savings from choosing an index option over an ETF option." />
-                            </SubSection>
-                             <SubSection title="Mark-to-Market (MTM) Accounting & Strategic Advantages">
-                                 <p>Section 1256 contracts operate under a mark-to-market system, where open positions are treated as sold at their fair market value on the last business day of the tax year. While this means paying tax on unrealized gains, it provides enormous benefits for active traders:</p>
-                                 <ul className="list-disc list-inside space-y-3 mt-4 pl-4 text-gray-600 dark:text-gray-300">
-                                    <li><strong>Wash Sale Exemption:</strong> The complex wash sale rule (IRC §1091) does not apply to Section 1256 contracts. This allows for unrestricted loss harvesting and immediate repositioning without fear of the loss being disallowed.</li>
-                                    <li><strong>Straddle Rule Exemption:</strong> The punitive straddle loss deferral rules (IRC §1092) are inapplicable to straddles composed entirely of Section 1256 contracts, simplifying strategies like iron condors.</li>
-                                    <li><strong>Loss Carryback Provision:</strong> Net losses from Section 1256 contracts can be carried back up to three preceding tax years to offset prior Section 1256 gains, potentially resulting in an immediate tax refund—a benefit unavailable for standard securities.</li>
-                                 </ul>
-                            </SubSection>
-                        </section>
-
-                        {/* Section III */}
-                        <section>
-                            <SectionTitle>Navigating the Minefield: Straddles, Covered Calls, and Wash Sales</SectionTitle>
-                            <SubSection title="The Straddle Rules (IRC §1092): Preventing Artificial Loss Recognition">
-                                 <p>A straddle is any set of offsetting positions where one substantially diminishes the risk of the other. The IRS loss deferral rule prevents closing the losing leg of a straddle (e.g., in an SPY iron condor) to generate a tax loss while holding the profitable leg into the next year. The loss is deferred until the offsetting gain is also recognized, neutralizing the intended tax benefit.</p>
-                            </SubSection>
-                            <SubSection title="The Qualified Covered Call (QCC) Exception: A Safe Harbor with Nuances">
-                                 <p>A Qualified Covered Call (QCC) provides a safe harbor from the straddle rules but introduces critical complexities regarding the holding period of the underlying stock. To be "qualified," a call must have more than 30 days to expiration and not be "deep-in-the-money." Writing non-qualified calls or even in-the-money qualified calls can pause or completely reset the holding period clock required to achieve long-term capital gains on the stock, turning a simple income strategy into an active holding period management decision.</p>
-                                 <CoveredCallTable data={coveredCallData} caption={'This table outlines how writing covered calls on stock held one year or less ("Short-Term Stock") can impact its holding period.'}/>
-                            </SubSection>
-                            <SubSection title="The Wash Sale Rule (IRC §1091): A Trap for the Unwary">
-                                 <p>The wash sale rule disallows a loss on a security if a "substantially identical" one is acquired within a 61-day window. The IRS has not precisely defined "substantially identical" for options, creating ambiguity. While brokers typically do not flag rolling to a different strike or expiration as a wash sale (as they have different CUSIPs), the IRS could theoretically challenge this. The more an option behaves like the underlying security it replaces, the higher the audit risk, requiring traders to self-police their activities.</p>
-                            </SubSection>
-                        </section>
-                        
-                        {/* Section IV */}
-                        <section>
-                             <SectionTitle>Advanced Tax-Planning and Strategic Synthesis</SectionTitle>
-                             <SubSection title="Strategic Tax-Loss Harvesting (TLH)">
-                                <p>Tax-loss harvesting is the practice of selling investments at a loss to offset capital gains. For an option writer, this is a potent tool, as short-term losses can directly offset high-tax short-term gains. However, effective TLH with equity options requires careful navigation of the wash sale and straddle rules. Section 1256 contracts, being exempt from these rules, are far superior for frictionless loss harvesting, providing maximum flexibility.</p>
-                             </SubSection>
-                             <SubSection title="Trader Tax Status (TTS) and the Section 475 MTM Election">
-                                <p>For highly active, professional-level traders, qualifying for Trader Tax Status (TTS) and making a Section 475 mark-to-market election is an aggressive strategy. This converts capital gains and losses to ordinary income/loss, removing the $3,000 capital loss limitation. However, it also forfeits the favorable 60/40 treatment of Section 1256 contracts unless a complex "mixed" election is made. This is a highly complex maneuver that requires expert tax guidance.</p>
-                             </SubSection>
-                             <SubSection title="Record-Keeping and Reporting: Best Practices">
-                                 <p>Accurate tax reporting is the final, critical step. The burden of proof rests with the taxpayer, making meticulous record-keeping essential.</p>
-                                 <ul className="list-disc list-inside space-y-3 mt-4 pl-4 text-gray-600 dark:text-gray-300">
-                                     <li><strong>Form 8949:</strong> Used for reporting trades in stocks, ETFs, and their options. Adjustments for wash sales must be correctly coded here.</li>
-                                     <li><strong>Form 6781:</strong> Used exclusively for Section 1256 contracts. This form greatly simplifies reporting by automatically applying the 60/40 split to the aggregate net gain or loss.</li>
-                                     <li><strong>Best Practice:</strong> Maintain a personal, independent trading ledger to verify broker-provided 1099-B forms and ensure accurate calculations, especially for adjustments related to wash sales, straddles, or assignments.</li>
-                                 </ul>
-                             </SubSection>
-                        </section>
-
-                        {/* NEW SECTION: Key Tax Traps to Avoid */}
-                        <section>
-                            <SectionTitle>Key Tax Traps to Avoid</SectionTitle>
-                            <div className="space-y-6">
-                                <TaxTrapCard title="Don't Mistake ETF Options for Index Options">
-                                    This is the most common and costly error. Trading options on SPY, QQQ, or IWM results in 100% short-term capital gains. Trading the equivalent Section 1256 index options (SPX, NDX, RUT) provides the superior 60/40 blended tax rate and exemption from wash sale/straddle rules.
-                                </TaxTrapCard>
-                                <TaxTrapCard title="Don't Write Weekly Calls on Long-Term Stock Prospects">
-                                    Writing a non-qualified covered call (like a weekly with under 30 days to expiration) on stock you've held for less than a year will reset its holding period to zero. This single action can erase months of progress toward achieving favorable long-term capital gains status on the stock.
-                                </TaxTrapCard>
-                                <TaxTrapCard title="Don't Try to Game the Straddle Rule">
-                                    Avoid closing only the losing leg of a spread (like an iron condor) to harvest a tax loss while leaving the winning side open into the next year. The IRS will defer the loss until the gain is also recognized, completely neutralizing the intended tax benefit for the current year.
-                                </TaxTrapCard>
-                                 <TaxTrapCard title="Don't Carelessly Trigger Wash Sales">
-                                    After closing a position for a loss, avoid immediately opening a new one that is "substantially identical." While rolling options is common, be mindful that the IRS has broad discretion. A disallowed loss adds to the cost basis of the new position, deferring the tax benefit you hoped to realize.
-                                </TaxTrapCard>
-                                 <TaxTrapCard title="Don't Blindly Trust Your Broker's 1099-B">
-                                    Your broker's tax form is a helpful guide, but it may not be perfect. It won't track wash sales across your and a spouse's accounts, and complex adjustments for straddles or assignments can be miscalculated. The final responsibility for accuracy lies with you. Keep your own records.
-                                </TaxTrapCard>
-                            </div>
-                        </section>
-
-                        {/* Conclusion */}
-                        <section className="mt-20 pt-10 border-t border-gray-200 dark:border-gray-700">
-                            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">Conclusion & Key Recommendations</h2>
-                            <div className="space-y-8">
-                                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500">
-                                    <h3 className="font-bold text-xl text-blue-800 dark:text-blue-200 mb-2">The Prime Directive: Choose Your Product Wisely</h3>
-                                    <p className="text-blue-700 dark:text-blue-300">The single most powerful strategy is to favor trading Section 1256 contracts (e.g., options on SPX, NDX) over their ETF counterparts (SPY, QQQ). This accesses the favorable 60/40 blended tax rate and provides exemption from the wash sale and straddle rules, simplifying tax management and maximizing after-tax returns.</p>
-                                </div>
-                                <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
-                                    <h3 className="font-bold text-xl text-red-800 dark:text-red-200 mb-2">Master the Rules of Engagement for Equity Options</h3>
-                                    <p className="text-red-700 dark:text-red-300">When trading equity options, defensively master the straddle, qualified covered call (QCC), and wash sale rules. Understand that writing a non-qualified call (e.g., a weekly) on short-term stock resets its holding period to zero, jeopardizing long-term capital gains status. Avoid closing only the losing leg of a spread to prevent loss deferrals.</p>
-                                </div>
-                                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border-l-4 border-green-500">
-                                    <h3 className="font-bold text-xl text-green-800 dark:text-green-200 mb-2">Be a Proactive Tax Manager</h3>
-                                    <p className="text-green-700 dark:text-green-300">Integrate tax-loss harvesting into your routine, prioritizing the offset of high-tax short-term gains. Maintain meticulous, independent records to verify broker reports and ensure accurate tax filing. Partnering with a qualified tax advisor with expertise in securities is the ultimate strategy for compliance and optimization.</p>
+                            <div>
+                                <h3 className="text-xl font-bold text-green-900 mb-4">Section 1256 Optimization</h3>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between">
+                                        <span className="text-green-700">Index Options (SPX, NDX)</span>
+                                        <span className="font-bold text-green-900">26.8% Blended Rate</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-green-700">60/40 rule benefit</span>
+                                        <span className="font-bold text-green-900">Wash sale exempt</span>
+                                    </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                        <div className="mt-6 pt-6 border-t border-red-200">
+                            <div className="flex items-center justify-center">
+                                <DollarSign className="w-6 h-6 text-green-600 mr-2" />
+                                <span className="text-lg font-bold text-green-900">Potential Tax Savings: 27% reduction in tax burden</span>
+                            </div>
+                        </div>
                     </div>
-                </main>
-                
-                {/* Footer */}
-                <footer className="text-center py-8 mt-12 border-t border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-500 dark:text-gray-400">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-                </footer>
-            </div>
+                </section>
+
+                {/* Section 1256 Deep Dive */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Section 1256 Contracts: The Premier Strategy</h2>
+                    <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg">
+                        <div className="grid md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-4">Qualifying Contracts</h3>
+                                <ul className="space-y-3 text-slate-700">
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                        SPX (S&P 500 Index)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                        NDX (Nasdaq 100 Index)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                        RUT (Russell 2000 Index)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                        VIX (Volatility Index)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-4">Non-Qualifying (Standard Treatment)</h3>
+                                <ul className="space-y-3 text-slate-700">
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                                        SPY (SPDR S&P 500 ETF)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                                        QQQ (Invesco QQQ ETF)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                                        IWM (iShares Russell 2000 ETF)
+                                    </li>
+                                    <li className="flex items-center">
+                                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                                        Individual stock options
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="bg-blue-50 p-6 rounded-xl">
+                            <h4 className="font-bold text-blue-900 mb-3">The 60/40 Rule Calculation</h4>
+                            <p className="text-blue-800 mb-4">For a trader in the highest tax bracket with $15,000 profit:</p>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <p className="font-semibold text-blue-900">ETF Option (SPY):</p>
+                                    <p className="text-blue-800">$15,000 × 37% = $5,550 tax</p>
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-blue-900">Index Option (SPX):</p>
+                                    <p className="text-blue-800">($9,000 × 20%) + ($6,000 × 37%) = $4,020 tax</p>
+                                    <p className="font-bold text-green-600">Savings: $1,530 (27% reduction)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Tax Traps to Avoid */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Critical Tax Traps to Avoid</h2>
+                    <div className="space-y-6">
+                        <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
+                            <div className="flex">
+                                <XCircle className="h-6 w-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+                                <div>
+                                    <h4 className="text-lg font-bold text-red-800 mb-2">ETF vs Index Option Confusion</h4>
+                                    <p className="text-red-700">Trading SPY options instead of SPX options costs you the 60/40 tax benefit and wash sale exemptions. This single mistake can increase your tax burden by 27%.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
+                            <div className="flex">
+                                <XCircle className="h-6 w-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+                                <div>
+                                    <h4 className="text-lg font-bold text-red-800 mb-2">Covered Call Holding Period Reset</h4>
+                                    <p className="text-red-700">Writing non-qualified covered calls (under 30 days or deep ITM) on stock held less than one year resets the holding period to zero, destroying long-term capital gains eligibility.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
+                            <div className="flex">
+                                <XCircle className="h-6 w-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+                                <div>
+                                    <h4 className="text-lg font-bold text-red-800 mb-2">Straddle Loss Deferral</h4>
+                                    <p className="text-red-700">Closing only the losing leg of a spread while keeping the winning side open defers the loss until the gain is recognized, eliminating current-year tax benefits.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
+                            <div className="flex">
+                                <XCircle className="h-6 w-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+                                <div>
+                                    <h4 className="text-lg font-bold text-red-800 mb-2">Wash Sale Violations</h4>
+                                    <p className="text-red-700">Repurchasing "substantially identical" securities within 61 days of a loss disallows the deduction. While option rolling is generally safe, aggressive strategies risk IRS challenge.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Advanced Strategies */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Advanced Tax Optimization</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-100">
+                            <h3 className="text-xl font-bold text-green-900 mb-4">Tax-Loss Harvesting</h3>
+                            <ul className="space-y-3 text-green-700">
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2"></div>
+                                    Offset high-tax short-term gains with losses
+                                </li>
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2"></div>
+                                    Section 1256 contracts exempt from wash sale rules
+                                </li>
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2"></div>
+                                    Three-year loss carryback for Section 1256 losses
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
+                            <h3 className="text-xl font-bold text-purple-900 mb-4">Trader Tax Status</h3>
+                            <ul className="space-y-3 text-purple-700">
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 mt-2"></div>
+                                    Removes $3,000 capital loss limitation
+                                </li>
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 mt-2"></div>
+                                    Section 475 mark-to-market election available
+                                </li>
+                                <li className="flex items-start">
+                                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 mt-2"></div>
+                                    Requires substantial, regular trading activity
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Implementation Checklist */}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Implementation Checklist</h2>
+                    <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-900 mb-4">Immediate Actions</h3>
+                                <div className="space-y-3">
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Switch from ETF to index options (SPY → SPX)</span>
+                                    </label>
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Review covered call strategies for QCC compliance</span>
+                                    </label>
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Implement systematic tax-loss harvesting</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-900 mb-4">Long-term Planning</h3>
+                                <div className="space-y-3">
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Establish detailed record-keeping system</span>
+                                    </label>
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Consult qualified tax professional</span>
+                                    </label>
+                                    <label className="flex items-center">
+                                        <input type="checkbox" className="mr-3 w-4 h-4 text-blue-600" />
+                                        <span className="text-slate-700">Evaluate Trader Tax Status eligibility</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Disclaimer */}
+                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-xl mb-12">
+                    <div className="flex">
+                        <AlertTriangle className="h-6 w-6 text-yellow-500 mr-4 flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className="text-lg font-semibold text-yellow-800 mb-2">Important Disclaimer</h4>
+                            <p className="text-yellow-700">This content is for educational purposes only and should not be construed as tax or investment advice. Tax laws are complex and subject to change. Always consult with qualified tax and financial professionals before implementing any strategies discussed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Call to Action */}
+                {currentArticle?.googleDoc && (
+                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl text-center">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <a 
+                                href={currentArticle.googleDoc}
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
+                            >
+                                <FileText className="inline mr-2" />
+                                Read Full Research Paper
+                            </a>
+                        </div>
+                    </div>
+                )}
+            </main>
+            
+            {/* Footer */}
+            <footer className="text-center py-8 mt-12 border-t border-gray-200">
+                <p className="text-gray-500">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+            </footer>
         </>
     );
-} 
+}

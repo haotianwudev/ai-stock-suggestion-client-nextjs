@@ -233,7 +233,7 @@ export const articles2025Q3: Article[] = [
     description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
     slug: "tax-efficient-option-writing-comprehensive-guide",
     date: "September 12, 2025",
-    imageUrl: "https://dariusforoux.com/wp-content/uploads/2021/06/more-options-more-happiness-1024x768.png",
+    imageUrl: "https://i.imgur.com/SlyV2Jv.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub",
     deepResearch: true,
     options: true
