@@ -102,10 +102,10 @@ export const strategies: Strategy[] = [
         relatedArticles: ["notebooklm-uncovers-nature-covered-calls-global-research",],
     },
     {
-        id: 'sell_naked_put',
+        id: 'put_writing',
         category: ['Bullish', 'Income'],
-        name: 'Sell Naked Put',
-        description: "A bullish income strategy. Sell a put option without holding cash or the underlying. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.",
+        name: 'Put Writing',
+        description: "A bullish income strategy. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.",
         profile: 'Substantial Risk, Limited Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
