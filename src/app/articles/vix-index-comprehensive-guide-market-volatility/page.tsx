@@ -1,251 +1,609 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingUp, AlertTriangle, BarChart3, Target } from 'lucide-react';
+import { ArrowLeft, TrendingUp, AlertTriangle, BarChart3, Target, Maximize2, Activity, Shield, Eye, Zap, Calculator, TrendingDown } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
-// --- Helper Components for Styling ---
-const MainHeading = ({ children }: { children: React.ReactNode }) => (
-    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 text-center leading-tight">
-        {children}
-    </h1>
-);
-
-const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-    <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mt-12 mb-6 border-b-2 border-indigo-500 pb-2">
-        {children}
-    </h2>
-);
-
-const SubHeading = ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
-        {children}
-    </h3>
-);
-
-const Paragraph = ({ children }: { children: React.ReactNode }) => (
-    <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-        {children}
-    </p>
-);
-
-// InfoBox for highlighting key concepts
-const InfoBox = ({ children, type = 'info' }: { children: React.ReactNode; type?: 'info' | 'warning' | 'success' }) => {
-    const baseClasses = "p-5 rounded-xl my-6 shadow-md border-l-4";
-    const typeClasses = {
-        info: "bg-blue-50 dark:bg-blue-900/30 border-blue-500 text-blue-800 dark:text-blue-200",
-        warning: "bg-yellow-50 dark:bg-yellow-900/30 border-yellow-500 text-yellow-800 dark:text-yellow-200",
-        success: "bg-green-50 dark:bg-green-900/30 border-green-500 text-green-800 dark:text-green-200",
+// --- Modern Card Components ---
+const FeatureCard = ({ icon, title, description, color = "blue" }: { 
+    icon: React.ReactNode; 
+    title: string; 
+    description: string; 
+    color?: "blue" | "purple" | "green" | "orange" | "red" 
+}) => {
+    const colorClasses = {
+        blue: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 text-blue-900",
+        purple: "bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 text-purple-900",
+        green: "bg-gradient-to-br from-green-50 to-green-100 border-green-200 text-green-900",
+        orange: "bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 text-orange-900",
+        red: "bg-gradient-to-br from-red-50 to-red-100 border-red-200 text-red-900"
     };
 
-    return <div className={`${baseClasses} ${typeClasses[type]}`}>{children}</div>;
+    return (
+        <div className={`p-6 rounded-xl border-2 shadow-lg hover:shadow-xl transition-all duration-300 ${colorClasses[color]}`}>
+            <div className="flex items-center mb-3">
+                <div className="mr-3">{icon}</div>
+                <h3 className="text-lg font-bold">{title}</h3>
+            </div>
+            <p className="text-sm leading-relaxed">{description}</p>
+        </div>
+    );
 };
 
-// Highlighted text for key terms
+const MetricCard = ({ value, label, description, color = "blue" }: {
+    value: string;
+    label: string;
+    description: string;
+    color?: "blue" | "purple" | "green" | "orange" | "red"
+}) => {
+    const colorClasses = {
+        blue: "bg-blue-600 text-white",
+        purple: "bg-purple-600 text-white",
+        green: "bg-green-600 text-white",
+        orange: "bg-orange-600 text-white",
+        red: "bg-red-600 text-white"
+    };
+
+    return (
+        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300">
+            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${colorClasses[color]} mb-4`}>
+                <span className="text-2xl font-bold">{value}</span>
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{label}</h3>
+            <p className="text-sm text-gray-600">{description}</p>
+        </div>
+    );
+};
+
+const InfoBox = ({ children, type = 'info', icon }: { 
+    children: React.ReactNode; 
+    type?: 'info' | 'warning' | 'success' | 'tip';
+    icon?: React.ReactNode;
+}) => {
+    const typeClasses = {
+        info: "bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-300 text-blue-900",
+        warning: "bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-400 text-yellow-900",
+        success: "bg-gradient-to-r from-green-50 to-emerald-50 border-green-400 text-green-900",
+        tip: "bg-gradient-to-r from-purple-50 to-pink-50 border-purple-400 text-purple-900"
+    };
+
+    return (
+        <div className={`p-6 rounded-xl border-2 shadow-lg my-6 ${typeClasses[type]}`}>
+            {icon && (
+                <div className="flex items-center mb-3">
+                    <div className="mr-3">{icon}</div>
+                </div>
+            )}
+            {children}
+        </div>
+    );
+};
+
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-    <span className="font-bold text-indigo-600 dark:text-indigo-400">{children}</span>
+    <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">{children}</span>
 );
 
-const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
-    <div className="overflow-x-auto rounded-lg shadow-lg my-8">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-            <thead className="bg-gray-200 dark:bg-gray-700 text-xs uppercase text-gray-700 dark:text-gray-200">
-                <tr>
-                    {headers.map((header) => (
-                        <th key={header} scope="col" className="px-6 py-4 font-bold tracking-wider">
-                            {header}
-                        </th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((row, rowIndex) => (
-                    <tr key={rowIndex} className="border-b bg-white dark:border-gray-700 dark:bg-gray-800 even:bg-gray-50 dark:even:bg-gray-800/50 hover:bg-indigo-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
-                        {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} className="px-6 py-4">
-                                {cell}
-                            </td>
+const CompactTable = ({ headers, data, colorScheme = "blue" }: { 
+    headers: string[]; 
+    data: string[][]; 
+    colorScheme?: "blue" | "purple" | "green" | "orange" 
+}) => {
+    const colorClasses = {
+        blue: "bg-blue-600 text-white",
+        purple: "bg-purple-600 text-white", 
+        green: "bg-green-600 text-white",
+        orange: "bg-orange-600 text-white"
+    };
+
+    return (
+        <div className="overflow-x-auto rounded-xl shadow-lg my-6 border border-gray-200">
+            <table className="w-full text-sm">
+                <thead className={`${colorClasses[colorScheme]}`}>
+                    <tr>
+                        {headers.map((header) => (
+                            <th key={header} className="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
+                                {header}
+                            </th>
                         ))}
                     </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-);
+                </thead>
+                <tbody className="bg-white">
+                    {data.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            {row.map((cell, cellIndex) => (
+                                <td key={cellIndex} className="px-4 py-3 text-gray-700">
+                                    {cell}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
 
-// --- Section Components ---
+// --- Content Sections ---
 const Introduction = () => (
-    <section>
-        <SectionHeading>I. Introduction: Demystifying the Market's "Fear Gauge"</SectionHeading>
-        <Paragraph>
-            The Cboe Volatility Index, universally known by its ticker symbol VIX, has become one of the most closely watched indicators in modern finance. While it is popularly dubbed the "Fear Gauge" or "Fear Index," this moniker, though evocative, only scratches the surface of its true function and significance. The VIX is a sophisticated, real-time market index that represents the market's expectation of <Highlight>30-day forward-looking volatility</Highlight> for the S&P 500 Index (SPX). Its primary value lies in this predictive nature; it is not a record of past events but a dynamic, up-to-the-minute snapshot of anticipated future price movements.
-        </Paragraph>
+    <section className="space-y-8">
+        <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Understanding the VIX</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                The market's "Fear Gauge" is more sophisticated than its nickname suggests
+            </p>
+        </div>
 
-        <SubHeading>The VIX as a Forward-Looking Measure vs. Historical Volatility</SubHeading>
-        <Paragraph>
-            To grasp the utility of the VIX, it is essential to distinguish it from historical volatility. Historical, or "realized," volatility is a backward-looking metric. It is calculated by taking the standard deviation of past price movements over a specific period, providing a statistical measure of how much the market *has* fluctuated. The VIX, in contrast, measures <Highlight>implied volatility</Highlight> (IV). This is a forward-looking value inferred directly from the current market prices of SPX options.
-        </Paragraph>
+        <div className="grid md:grid-cols-3 gap-6">
+            <FeatureCard
+                icon={<Activity className="h-8 w-8 text-blue-600" />}
+                title="Forward-Looking"
+                description="Measures expected 30-day volatility, not historical price movements. It's a real-time snapshot of market anticipation."
+                color="blue"
+            />
+            <FeatureCard
+                icon={<Eye className="h-8 w-8 text-purple-600" />}
+                title="Implied Volatility"
+                description="Derived from SPX options prices - essentially the cost of insurance against market turbulence."
+                color="purple"
+            />
+            <FeatureCard
+                icon={<Calculator className="h-8 w-8 text-green-600" />}
+                title="Model-Free"
+                description="Uses actual market prices, not theoretical models like Black-Scholes. Pure market sentiment."
+                color="green"
+            />
+        </div>
 
-        <SubHeading>A Look Inside the Engine: How the VIX is Calculated</SubHeading>
-        <Paragraph>
-            The VIX calculation is mathematically complex but conceptually represents a weighted average of the prices of a wide range of SPX options. It specifically uses near-term, out-of-the-money puts and calls to gauge the market's collective forecast. Think of it as an "auction" for insurance: when demand for protection (options) is high, their prices rise, and thus the VIX increases. This is a model-free approach, meaning it doesn't rely on theoretical models like Black-Scholes, making it a pure reflection of market prices.
-        </Paragraph>
+        <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">The VIX Calculation Engine</h3>
+            <p className="text-gray-700 mb-4">
+                The VIX calculation is mathematically complex but conceptually represents a weighted average of the prices of a wide range of SPX options. 
+                It specifically uses near-term, out-of-the-money puts and calls to gauge the market's collective forecast.
+            </p>
+            <div className="bg-blue-50 rounded-lg p-6 mb-4">
+                <h4 className="font-bold text-blue-900 mb-3">How It Works: The Insurance Auction</h4>
+                <p className="text-blue-800 text-sm">
+                    Think of it as an "auction" for insurance: when demand for protection (options) is high, their prices rise, and thus the VIX increases. 
+                    This is a model-free approach, meaning it doesn't rely on theoretical models like Black-Scholes, making it a pure reflection of market prices.
+                </p>
+            </div>
+            <div className="bg-green-50 rounded-lg p-6">
+                <h4 className="font-bold text-green-900 mb-3">VIX Reading Interpretation</h4>
+                <p className="text-green-800 text-sm">
+                    A VIX reading of 20 implies that the market expects the S&P 500 to move within a range of <Highlight>plus or minus 20%</Highlight> over the next year, 
+                    with 68% probability (one standard deviation).
+                </p>
+            </div>
+        </div>
 
-        <InfoBox type="info">
-            <p className="font-bold mb-2">Key Takeaway:</p>
-            The VIX isn't measuring past price swings; it's measuring the <Highlight>cost of insurance against future price swings</Highlight>. A higher cost means the market anticipates more turbulence.
+        <InfoBox type="tip" icon={<Zap className="h-6 w-6 text-purple-600" />}>
+            <div className="font-bold text-lg mb-2">Key Insight</div>
+            <p>The VIX isn't measuring past price swings; it's measuring the <Highlight>cost of insurance against future price swings</Highlight>. Higher cost = more anticipated turbulence.</p>
         </InfoBox>
     </section>
 );
 
-const VixLevelsSentiment = () => {
-    const tableHeaders = ["VIX Level Range", "Market Sentiment & Environment", "Investor Behavior & Psychology", "Strategic Implication"];
-    const tableData = [
-        ["Below 15", "Deep Calm / Complacency", "Low demand for hedging; high confidence; potential for over-leveraging.", "Market may be vulnerable to unexpected shocks. Contrarians may consider adding hedges."],
-        ["15 - 20", "Normal / Stable", "Typical of a healthy bull market with standard optimism.", "Generally considered a stable environment for long-term equity exposure."],
-        ["20 - 30", "Heightened Uncertainty", "Fear is rising; investors begin actively seeking protection.", "Increased caution is warranted. Portfolio managers may begin reducing risk exposure."],
-        ["Above 30", "High Fear / Panic", "Significant market stress and turbulence. Widespread demand for downside protection.", "For contrarians, this signals a potential buying opportunity as fear peaks."]
+const VixLevels = () => {
+    const levelData = [
+        ["&lt; 15", "Deep Calm", "Complacency risk", "Consider hedges"],
+        ["15-20", "Normal", "Healthy bull market", "Standard exposure"],
+        ["20-30", "Uncertainty", "Rising fear", "Reduce risk"],
+        ["&gt; 30", "High Fear", "Panic conditions", "Contrarian opportunity"]
     ];
 
     return (
-        <section>
-            <SectionHeading>II. Decoding VIX Levels and Market Sentiment</SectionHeading>
-            <Paragraph>
-                The numerical value of the VIX provides a quantifiable estimate of expected market movement. A VIX reading of 20 implies that the market expects the S&P 500 to move within a range of <Highlight>plus or minus 20%</Highlight> over the next year, with 68% probability (one standard deviation).
-            </Paragraph>
+        <section className="space-y-8">
+            <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">VIX Levels Decoded</h2>
+                <p className="text-xl text-gray-600">What the numbers really mean for your portfolio</p>
+            </div>
 
-            <SubHeading>The VIX as a Contrarian Indicator</SubHeading>
-            <Paragraph>
-                One of the most powerful applications of the VIX is its use as a contrarian indicator, rooted in the adage: <Highlight>"When the VIX is high, it's time to buy. When the VIX is low, look out below!"</Highlight>. An extremely elevated VIX signifies widespread fear and potential market capitulation, often marking a buying opportunity. Conversely, an extremely low VIX indicates investor complacency, which can precede market downturns as systemic risk accumulates beneath the surface.
-            </Paragraph>
+            <div className="grid md:grid-cols-4 gap-6 mb-8">
+                <MetricCard
+                    value="<15"
+                    label="Complacency Zone"
+                    description="Market vulnerable to unexpected shocks. Time for defensive positioning."
+                    color="green"
+                />
+                <MetricCard
+                    value="15-20"
+                    label="Normal Range"
+                    description="Healthy market conditions with standard optimism levels."
+                    color="blue"
+                />
+                <MetricCard
+                    value="20-30"
+                    label="Caution Zone"
+                    description="Heightened uncertainty. Investors seeking protection."
+                    color="orange"
+                />
+                <MetricCard
+                    value="&gt;30"
+                    label="Fear Zone"
+                    description="High stress. Often marks contrarian buying opportunities."
+                    color="red"
+                />
+            </div>
 
-            <SubHeading>VIX Level Sentiment Guide</SubHeading>
-            <StyledTable headers={tableHeaders} data={tableData} />
+            <CompactTable 
+                headers={["VIX Level", "Market Sentiment", "Investor Behavior", "Strategy"]}
+                data={levelData}
+                colorScheme="blue"
+            />
+
+            <InfoBox type="success" icon={<TrendingUp className="h-6 w-6 text-green-600" />}>
+                <div className="font-bold text-lg mb-2">Contrarian Wisdom</div>
+                <p><Highlight>"When VIX is high, it's time to buy. When VIX is low, look out below!"</Highlight> Extreme readings often signal market reversals.</p>
+            </InfoBox>
         </section>
     );
 };
 
 const VixSp500Relationship = () => {
-    const tableHeaders = ["Event", "Date of VIX Peak", "Peak VIX Level", "Context & S&P 500 Action"];
-    const tableData = [
-        ["2008 Global Financial Crisis", "Nov 20, 2008", "80.86", "Lehman Brothers bankruptcy triggered a systemic credit freeze and severe bear market."],
-        ["U.S. Debt Downgrade", "Aug 8, 2011", "48.00", "S&P's downgrade of U.S. credit rating sparked fears over sovereign debt and caused a sharp decline."],
-        ["Brexit Referendum", "June 24, 2016", "25.80", "The unexpected \"Leave\" vote triggered profound uncertainty and a global market sell-off."],
-        ["COVID-19 Pandemic Crash", "Mar 16, 2020", "82.69", "Prospect of global economic shutdowns caused the fastest bear market decline in history."]
+    const historicalEvents = [
+        ["2008 Financial Crisis", "Nov 20, 2008", "80.86", "Lehman bankruptcy, credit freeze"],
+        ["U.S. Debt Downgrade", "Aug 8, 2011", "48.00", "S&P downgrade sparked fears"],
+        ["Brexit Vote", "June 24, 2016", "25.80", "Unexpected Leave vote"],
+        ["COVID-19 Crash", "Mar 16, 2020", "82.69", "Fastest bear market in history"]
     ];
 
     return (
-        <section>
-            <SectionHeading>III. The Intricate Dance: Analyzing the VIX and S&P 500 Relationship</SectionHeading>
+        <section className="space-y-8">
+            <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">VIX vs S&P 500</h2>
+                <p className="text-xl text-gray-600">The intricate dance of fear and greed</p>
+            </div>
 
-            <SubHeading>The Foundation: Understanding the Strong Inverse Correlation</SubHeading>
-            <Paragraph>
-                Historically, the VIX and the S&P 500 exhibit a strong negative correlation (typically between -0.70 and -0.90). This phenomenon, known as the <Highlight>asymmetric volatility feedback loop</Highlight>, is driven by investor psychology. When the S&P 500 declines, fear of further losses prompts a rush to purchase protective put options. This surge in demand inflates option premiums, which in turn fuels a spike in the VIX. When the market rises, this fear subsides, demand for puts diminishes, and the VIX naturally drifts lower.
-            </Paragraph>
+            <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">The Asymmetric Volatility Feedback Loop</h3>
+                <p className="text-gray-700 mb-6">
+                    Historically, the VIX and the S&P 500 exhibit a strong negative correlation (typically between -0.70 and -0.90). 
+                    This phenomenon, known as the <Highlight>asymmetric volatility feedback loop</Highlight>, is driven by investor psychology.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-red-50 rounded-lg p-6">
+                        <h4 className="font-bold text-red-900 mb-3">Market Decline Scenario</h4>
+                        <p className="text-red-800 text-sm">
+                            When the S&P 500 declines, fear of further losses prompts a rush to purchase protective put options. 
+                            This surge in demand inflates option premiums, which in turn fuels a spike in the VIX.
+                        </p>
+                    </div>
+                    <div className="bg-green-50 rounded-lg p-6">
+                        <h4 className="font-bold text-green-900 mb-3">Market Rise Scenario</h4>
+                        <p className="text-green-800 text-sm">
+                            When the market rises, fear subsides, demand for puts diminishes, and the VIX naturally drifts lower. 
+                            This creates the characteristic inverse relationship.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-            <SubHeading>When the Rules Bend: Scenarios of Positive Correlation</SubHeading>
-            <Paragraph>
-                Despite the strong inverse relationship, the VIX and S&P 500 move in the same direction on about 20% of trading days. This can happen in a few key scenarios:
-            </Paragraph>
-            <ul className="list-disc list-inside text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed pl-4 space-y-2">
-                <li><Highlight>Pre-Event Hedging:</Highlight> Before a major binary event like a Federal Reserve interest rate decision or a key inflation report, investors may buy protection (raising the VIX) even as the market drifts slightly higher in anticipation.</li>
-                <li><Highlight>Orderly Sell-offs:</Highlight> Sometimes the market can decline in a slow, methodical way without a sense of panic. In this case, the market falls, but the demand for "crash protection" doesn't spike, so the VIX can also fall or stay flat.</li>
-            </ul>
+            <div className="grid md:grid-cols-2 gap-8">
+                <FeatureCard
+                    icon={<TrendingDown className="h-8 w-8 text-red-600" />}
+                    title="Inverse Correlation (-0.70 to -0.90)"
+                    description="Typically -0.70 to -0.90 correlation. When markets fall, fear spikes as investors rush for protection."
+                    color="red"
+                />
+                <FeatureCard
+                    icon={<Activity className="h-8 w-8 text-orange-600" />}
+                    title="Positive Correlation (20% of days)"
+                    description="Sometimes they move together during pre-event hedging or orderly sell-offs without panic."
+                    color="orange"
+                />
+            </div>
 
-            <SubHeading>Historical VIX Spikes and Corresponding Market Events</SubHeading>
-            <StyledTable headers={tableHeaders} data={tableData} />
+            <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">When the Rules Bend: Positive Correlation Scenarios</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 rounded-lg p-6">
+                        <h4 className="font-bold text-blue-900 mb-3">Pre-Event Hedging</h4>
+                        <p className="text-blue-800 text-sm">
+                            Before major binary events like Federal Reserve decisions or key inflation reports, investors may buy protection 
+                            (raising the VIX) even as the market drifts slightly higher in anticipation.
+                        </p>
+                    </div>
+                    <div className="bg-purple-50 rounded-lg p-6">
+                        <h4 className="font-bold text-purple-900 mb-3">Orderly Sell-offs</h4>
+                        <p className="text-purple-800 text-sm">
+                            Sometimes the market can decline in a slow, methodical way without panic. The market falls, but demand for 
+                            "crash protection" doesn't spike, so the VIX can also fall or stay flat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <CompactTable 
+                headers={["Event", "Date", "Peak VIX", "Context"]}
+                data={historicalEvents}
+                colorScheme="purple"
+            />
+
+            <InfoBox type="warning" icon={<AlertTriangle className="h-6 w-6 text-yellow-600" />}>
+                <div className="font-bold text-lg mb-2">Asymmetric Volatility</div>
+                <p>Markets fall faster than they rise. Fear spreads quicker than greed, creating the <Highlight>volatility feedback loop</Highlight> that drives VIX spikes.</p>
+            </InfoBox>
         </section>
     );
 };
 
-const VixInvestorToolkit = () => (
-    <section>
-        <SectionHeading>IV. The VIX as an Investor's Toolkit</SectionHeading>
+const VixApplications = () => (
+    <section className="space-y-8">
+        <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Practical Applications</h2>
+            <p className="text-xl text-gray-600">How to use VIX in your investment toolkit</p>
+        </div>
 
-        <SubHeading>Using the VIX as a Real-Time Risk Barometer</SubHeading>
-        <Paragraph>
-            The VIX serves as an invaluable real-time barometer of market risk. A sharply rising VIX can be an early warning for investors to review their portfolio's risk exposure, perhaps by tightening stop-losses or reducing margin debt. More importantly, understanding that VIX spikes are often temporary, emotional overreactions can provide the psychological fortitude to <Highlight>avoid panic selling</Highlight> at market bottoms.
-        </Paragraph>
+        <div className="grid md:grid-cols-3 gap-6">
+            <FeatureCard
+                icon={<Shield className="h-8 w-8 text-blue-600" />}
+                title="Risk Barometer"
+                description="Monitor real-time market stress. Rising VIX = review portfolio risk, tighten stops, reduce leverage."
+                color="blue"
+            />
+            <FeatureCard
+                icon={<Target className="h-8 w-8 text-green-600" />}
+                title="Asset Allocation"
+                description="High VIX = defensive assets (bonds, gold). Low VIX = growth stocks, but watch for complacency."
+                color="green"
+            />
+            <FeatureCard
+                icon={<TrendingUp className="h-8 w-8 text-purple-600" />}
+                title="Market Timing"
+                description="Extreme levels signal reversals. VIX >40 often marks bottoms. VIX <15 suggests vulnerability."
+                color="purple"
+            />
+        </div>
 
-        <SubHeading>Informing Strategic and Tactical Asset Allocation</SubHeading>
-        <Paragraph>
-            The VIX provides clear signals for tactical shifts between "risk-on" and "risk-off" postures. A high and rising VIX environment suggests reducing exposure to high-beta equities and increasing allocations to defensive assets like Treasury bonds, gold, or consumer staples. Conversely, a low and stable VIX environment supports higher allocations to growth stocks and other risk assets, though it also signals a time for disciplined rebalancing to take profits.
-        </Paragraph>
+        <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Real-Time Risk Management</h3>
+            <p className="text-gray-700 mb-6">
+                The VIX serves as an invaluable real-time barometer of market risk. A sharply rising VIX can be an early warning 
+                for investors to review their portfolio's risk exposure, perhaps by tightening stop-losses or reducing margin debt.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-red-50 rounded-lg p-6">
+                    <h4 className="font-bold text-red-900 mb-3">High VIX Environment</h4>
+                    <ul className="text-red-800 text-sm space-y-2">
+                        <li>• Reduce exposure to high-beta equities</li>
+                        <li>• Increase allocations to Treasury bonds, gold</li>
+                        <li>• Consider consumer staples for defense</li>
+                        <li>• Tighten stop-losses on existing positions</li>
+                    </ul>
+                </div>
+                <div className="bg-green-50 rounded-lg p-6">
+                    <h4 className="font-bold text-green-900 mb-3">Low VIX Environment</h4>
+                    <ul className="text-green-800 text-sm space-y-2">
+                        <li>• Support higher allocations to growth stocks</li>
+                        <li>• Time for disciplined rebalancing</li>
+                        <li>• Take profits on risk assets</li>
+                        <li>• Watch for complacency signals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <SubHeading>Identifying Potential Market Tops and Bottoms</SubHeading>
-        <Paragraph>
-            While not a perfect timing tool, extreme VIX levels are powerful indicators of probable market reversals. Extreme spikes (e.g., VIX &gt; 40) often coincide with major market bottoms, as they represent peak fear and forced selling. Unusually low levels (e.g., VIX &lt; 15) for extended periods can signal that the market is overbought, complacent, and vulnerable to a correction.
-        </Paragraph>
+        <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Market Reversal Signals</h3>
+            <p className="text-gray-700 mb-6">
+                While not a perfect timing tool, extreme VIX levels are powerful indicators of probable market reversals.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-blue-50 rounded-lg p-6">
+                    <h4 className="font-bold text-blue-900 mb-3">Extreme Spikes (VIX &gt; 40)</h4>
+                    <p className="text-blue-800 text-sm">
+                        Often coincide with major market bottoms, as they represent peak fear and forced selling. 
+                        Understanding that VIX spikes are often temporary, emotional overreactions can provide the 
+                        psychological fortitude to avoid panic selling at market bottoms.
+                    </p>
+                </div>
+                <div className="bg-orange-50 rounded-lg p-6">
+                    <h4 className="font-bold text-orange-900 mb-3">Unusually Low Levels (VIX &lt; 15)</h4>
+                    <p className="text-orange-800 text-sm">
+                        Extended periods can signal that the market is overbought, complacent, and vulnerable to a correction. 
+                        This indicates investor complacency, which can precede market downturns as systemic risk accumulates.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        <InfoBox type="success">
-            <p className="font-bold mb-2">Pro-Tip:</p>
-            Don't just watch the VIX level; watch its <Highlight>rate of change</Highlight>. A sudden, sharp increase is often a more potent signal than a slow drift to the same level.
+        <InfoBox type="tip" icon={<Zap className="h-6 w-6 text-purple-600" />}>
+            <div className="font-bold text-lg mb-2">Pro Tip</div>
+            <p>Don't just watch VIX level - watch its <Highlight>rate of change</Highlight>. Sudden spikes are more powerful signals than gradual drifts.</p>
         </InfoBox>
     </section>
 );
 
-const AdvancedApplications = () => {
-    const tableHeaders = ["Instrument", "Underlying Basis", "Primary Use Case", "Key Risks & Considerations", "Target User"];
-    const tableData = [
-        ["VIX Futures (/VX)", "VIX Index (at settlement)", "Hedging, Speculation", "High leverage, margin requirements, contango/backwardation.", "Institutional, Professional Traders"],
-        ["VIX Options", "VIX Futures Contracts", "Hedging, Speculation (defined risk)", "Complex pricing, theta decay, priced off futures not spot VIX.", "Advanced Individual Traders"],
-        ["VIX ETPs (VXX, VIXY)", "VIX Futures Contracts", "Short-term tactical exposure", "Severe contango decay (performance drag), not a long-term hold.", "Retail, Tactical Traders"]
+const VixTrading = () => {
+    const tradingInstruments = [
+        ["VIX Futures", "VIX Index", "Hedging/Speculation", "High leverage, contango decay", "Institutional"],
+        ["VIX Options", "VIX Futures", "Defined risk trades", "Complex pricing, theta decay", "Advanced traders"],
+        ["VIX ETPs", "VIX Futures", "Tactical exposure", "Severe contango decay", "Retail/Tactical"]
     ];
 
     return (
-        <section>
-            <SectionHeading>V. Advanced Applications: Leveraging the VIX</SectionHeading>
-            <Paragraph>
-                For sophisticated investors, the VIX ecosystem offers derivative products for direct trading of volatility. It is crucial to understand that <Highlight>the VIX index itself is not a tradable asset</Highlight>. Exposure must be gained through products that track VIX futures.
-            </Paragraph>
+        <section className="space-y-8">
+            <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Trading the VIX</h2>
+                <p className="text-xl text-gray-600">Advanced strategies for volatility exposure</p>
+            </div>
 
-            <InfoBox type="warning">
-                <p className="font-bold mb-2">Critical Warning: Contango & Backwardation</p>
-                <p>VIX futures products are subject to the dynamics of the futures curve. Usually, the curve is in <Highlight>contango</Highlight> (future months' prices are higher than the current month). This creates a "roll cost" for long-volatility ETPs like VXX, leading to a steady decay in their value over time. In times of stress, the curve can flip to <Highlight>backwardation</Highlight> (future prices are lower), which benefits these products. This decay makes them unsuitable for long-term holding.</p>
+            <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Understanding VIX Derivatives</h3>
+                <p className="text-gray-700 mb-6">
+                    For sophisticated investors, the VIX ecosystem offers derivative products for direct trading of volatility. 
+                    It is crucial to understand that <Highlight>the VIX index itself is not a tradable asset</Highlight>. 
+                    Exposure must be gained through products that track VIX futures.
+                </p>
+                <div className="bg-blue-50 rounded-lg p-6">
+                    <h4 className="font-bold text-blue-900 mb-3">Key Point: No Direct VIX Trading</h4>
+                    <p className="text-blue-800 text-sm">
+                        You cannot buy or sell the VIX directly. All VIX exposure comes through derivatives like futures, 
+                        options on futures, or exchange-traded products that hold VIX futures.
+                    </p>
+                </div>
+            </div>
+
+            <InfoBox type="warning" icon={<AlertTriangle className="h-6 w-6 text-red-600" />}>
+                <div className="font-bold text-lg mb-2">Critical Warning: Contango Decay</div>
+                <p>VIX futures usually trade in <Highlight>contango</Highlight> (future prices &gt; current). This creates constant "roll cost" for ETPs like VXX, making them unsuitable for long-term holding. In times of stress, the curve can flip to <Highlight>backwardation</Highlight> (future prices lower), which benefits these products.</p>
             </InfoBox>
 
-            <SubHeading>Comparison of VIX Trading Instruments</SubHeading>
-            <StyledTable headers={tableHeaders} data={tableData} />
+            <CompactTable 
+                headers={["Instrument", "Underlying", "Use Case", "Key Risks", "Target User"]}
+                data={tradingInstruments}
+                colorScheme="orange"
+            />
 
-            <SubHeading>Hedging and Speculative Strategies with VIX Options</SubHeading>
-            <ul className="list-disc list-inside text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed pl-4 space-y-2">
-                <li><Highlight>Portfolio Hedge:</Highlight> An investor holding a large portfolio of stocks might buy VIX call options before an earnings season or economic report. If the market sells off sharply, the VIX will spike, and the value of the call options will increase, helping to offset some of the portfolio's losses.</li>
-                <li><Highlight>Selling Premium:</Highlight> When the VIX is historically high (e.g., VIX Rank &gt; 70%), traders might sell an out-of-the-money put credit spread on an instrument like VXX. This is a bet that volatility will either fall or stay the same, allowing the trader to collect the inflated option premium.</li>
-            </ul>
+            <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Practical Trading Strategies</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 rounded-lg p-6">
+                        <div className="flex items-center mb-3">
+                            <Shield className="h-6 w-6 text-blue-600 mr-2" />
+                            <h4 className="font-bold text-blue-900">Portfolio Hedge Strategy</h4>
+                        </div>
+                        <p className="text-blue-800 text-sm mb-3">
+                            An investor holding a large portfolio of stocks might buy VIX call options before an earnings season or economic report.
+                        </p>
+                        <div className="bg-blue-100 rounded p-3">
+                            <p className="text-blue-900 text-xs">
+                                <strong>Outcome:</strong> If the market sells off sharply, the VIX will spike, and the value of the call options 
+                                will increase, helping to offset some of the portfolio's losses.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="bg-green-50 rounded-lg p-6">
+                        <div className="flex items-center mb-3">
+                            <TrendingUp className="h-6 w-6 text-green-600 mr-2" />
+                            <h4 className="font-bold text-green-900">Premium Selling Strategy</h4>
+                        </div>
+                        <p className="text-green-800 text-sm mb-3">
+                            When the VIX is historically high (e.g., VIX Rank &gt; 70%), traders might sell an out-of-the-money put credit spread on VXX.
+                        </p>
+                        <div className="bg-green-100 rounded p-3">
+                            <p className="text-green-900 text-xs">
+                                <strong>Strategy:</strong> This is a bet that volatility will either fall or stay the same, 
+                                allowing the trader to collect the inflated option premium.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };
 
-const VixRankAndPercentile = () => (
-    <section>
-        <SectionHeading>VI. Contextualizing Volatility: VIX Rank and Percentile</SectionHeading>
-        <Paragraph>
-            To determine if the current VIX level is "high" or "low" in a historical context, traders use metrics like IV Rank and IV Percentile. These tools are crucial for implementing strategies based on volatility's powerful tendency toward <Highlight>mean reversion</Highlight> (the idea that it will eventually return to its historical average).
-        </Paragraph>
+const VixRankPercentile = () => (
+    <section className="space-y-8">
+        <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">VIX Rank & Percentile</h2>
+            <p className="text-xl text-gray-600">Context is everything in volatility trading</p>
+        </div>
 
-        <SubHeading>Defining IV Rank and Percentile</SubHeading>
-        <ul className="list-disc list-inside text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed pl-4 space-y-2">
-            <li><strong>IV Rank:</strong> Measures where the current VIX level stands in relation to its 52-week high-low range. The formula is: `(Current VIX - 52-Wk Low) / (52-Wk High - 52-Wk Low) * 100`. A rank of 100% means the VIX is at its yearly high.</li>
-            <li><strong>IV Percentile:</strong> Calculates the percentage of trading days over the past year on which the VIX was lower than its current level. A percentile of 90% means the current VIX is higher than it was on 90% of the days in the past year.</li>
-        </ul>
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">The Power of Mean Reversion</h3>
+            <p className="text-gray-700 mb-6">
+                To determine if the current VIX level is "high" or "low" in a historical context, traders use metrics like IV Rank and IV Percentile. 
+                These tools are crucial for implementing strategies based on volatility's powerful tendency toward <Highlight>mean reversion</Highlight> 
+                (the idea that it will eventually return to its historical average).
+            </p>
+        </div>
 
-        <SubHeading>Using VIX Rank to Assess Trading Opportunities</SubHeading>
-        <Paragraph>
-            A high VIX Rank (e.g., above 70%) suggests volatility is historically elevated and likely to revert lower. This makes it an attractive environment for strategies that profit from falling volatility, such as <Highlight>selling options (e.g., credit spreads, iron condors)</Highlight>, as the premium collected is rich. A low VIX Rank (e.g., below 30%) suggests volatility is subdued and "cheap," presenting a better opportunity to purchase volatility as a hedge (e.g., buying puts or VIX calls).
-        </Paragraph>
+        <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+                <div className="flex items-center mb-4">
+                    <div className="bg-blue-100 p-3 rounded-full mr-4">
+                        <Calculator className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">IV Rank</h3>
+                </div>
+                <p className="text-gray-600 mb-4">Where current VIX sits in 52-week range:</p>
+                <div className="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                    (Current VIX - 52W Low) / (52W High - 52W Low) × 100
+                </div>
+                <div className="bg-blue-50 rounded p-3">
+                    <p className="text-blue-800 text-xs">
+                        <strong>Example:</strong> A rank of 100% means the VIX is at its yearly high. 
+                        A rank of 0% means it's at its yearly low.
+                    </p>
+                </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+                <div className="flex items-center mb-4">
+                    <div className="bg-purple-100 p-3 rounded-full mr-4">
+                        <BarChart3 className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">IV Percentile</h3>
+                </div>
+                <p className="text-gray-600 mb-4">Percentage of days VIX was lower:</p>
+                <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                    <span className="text-sm text-gray-700">Calculates the percentage of trading days over the past year on which the VIX was lower than its current level.</span>
+                </div>
+                <div className="bg-purple-50 rounded p-3">
+                    <p className="text-purple-800 text-xs">
+                        <strong>Example:</strong> A percentile of 90% means the current VIX is higher than it was on 90% of the days in the past year.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Trading Applications</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-green-50 rounded-lg p-6">
+                    <div className="flex items-center mb-3">
+                        <TrendingUp className="h-6 w-6 text-green-600 mr-2" />
+                        <h4 className="font-bold text-green-900">High Rank (&gt; 70%)</h4>
+                    </div>
+                    <p className="text-green-800 text-sm mb-3">
+                        Volatility historically elevated and likely to revert lower. Great environment for selling premium strategies.
+                    </p>
+                    <div className="bg-green-100 rounded p-3">
+                        <p className="text-green-900 text-xs">
+                            <strong>Strategies:</strong> Credit spreads, iron condors, covered calls. 
+                            The premium collected is rich due to elevated volatility.
+                        </p>
+                    </div>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-6">
+                    <div className="flex items-center mb-3">
+                        <Shield className="h-6 w-6 text-blue-600 mr-2" />
+                        <h4 className="font-bold text-blue-900">Low Rank (&lt; 30%)</h4>
+                    </div>
+                    <p className="text-blue-800 text-sm mb-3">
+                        Volatility subdued and "cheap." Better opportunity to purchase volatility as a hedge.
+                    </p>
+                    <div className="bg-blue-100 rounded p-3">
+                        <p className="text-blue-900 text-xs">
+                            <strong>Strategies:</strong> Buying puts, VIX calls, long straddles. 
+                            Protection is relatively inexpensive.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <InfoBox type="success" icon={<Activity className="h-6 w-6 text-green-600" />}>
+            <div className="font-bold text-lg mb-2">Mean Reversion Power</div>
+            <p>Volatility has strong <Highlight>mean reversion tendency</Highlight>. High VIX Rank suggests future decline, low rank suggests potential increase.</p>
+        </InfoBox>
     </section>
 );
 
 // --- Main Page Component ---
 export default function VixIndexPage() {
     const currentArticle = articles.find(article => article.slug === 'vix-index-comprehensive-guide-market-volatility');
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
     return (
         <>
             {/* SEO Components - MANDATORY */}
-            {currentArticle && (
+            {currentArticle && currentArticle.title && currentArticle.slug && (
                 <>
                     <StructuredData article={currentArticle} />
                     <BreadcrumbStructuredData
@@ -256,9 +614,17 @@ export default function VixIndexPage() {
             )}
 
             <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
-                <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-                    <article className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 relative">
+                {/* Return to Home Button */}
+                <div className="max-w-5xl mx-auto px-6 pt-8">
+                    <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Return to Home
+                    </Link>
+                </div>
 
+                {/* Hero Section with Title */}
+                <div className="bg-white relative overflow-hidden border-b border-slate-100">
+                    <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
                         {/* Badges */}
                         <div className="absolute top-4 left-4">
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
@@ -274,42 +640,81 @@ export default function VixIndexPage() {
                             </span>
                         </div>
 
-                        {/* Return to Home Button */}
-                        <div className="flex items-center gap-4 mb-4 mt-12">
-                            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                                <ArrowLeft className="mr-2 h-4 w-4" />
-                                Return to Home
-                            </Link>
+                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+                            The VIX Index: A Comprehensive Guide
+                        </h1>
+                        <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+                            Understanding and Utilizing Market Volatility
+                        </p>
+                    </div>
+                </div>
+
+                {/* Hero Infographic - Below Title with Full-Screen Capability */}
+                {currentArticle?.imageUrl && (
+                    <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+                        <div 
+                            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                            onClick={() => setIsImageViewerOpen(true)}
+                        >
+                            <img 
+                                src={currentArticle.imageUrl} 
+                                alt="VIX Index Comprehensive Guide Infographic" 
+                                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                            />
+                            {/* Full-screen button overlay */}
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsImageViewerOpen(true);
+                                }}
+                                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                                title="View full screen"
+                            >
+                                <Maximize2 className="h-4 w-4" />
+                            </button>
+                            {/* Click hint */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                                    Click to view full screen
+                                </div>
+                            </div>
                         </div>
+                    </section>
+                )}
 
-                        <header>
-                            <MainHeading>The VIX Index: A Comprehensive Guide</MainHeading>
-                            <p className="text-center text-xl text-gray-500 dark:text-gray-400 mb-10">
-                                Understanding and Utilizing Market Volatility
-                            </p>
-                        </header>
+                {/* Full-screen image viewer */}
+                {currentArticle?.imageUrl && (
+                    <FullScreenImageViewer
+                        src={currentArticle.imageUrl}
+                        alt="VIX Index Comprehensive Guide Infographic"
+                        isOpen={isImageViewerOpen}
+                        onClose={() => setIsImageViewerOpen(false)}
+                    />
+                )}
 
+                {/* Main Content Starts Here */}
+                <main className="max-w-6xl mx-auto px-6 py-16">
+                    <div className="space-y-20">
                         <Introduction />
-                        <VixLevelsSentiment />
+                        <VixLevels />
                         <VixSp500Relationship />
-                        <VixInvestorToolkit />
-                        <AdvancedApplications />
-                        <VixRankAndPercentile />
+                        <VixApplications />
+                        <VixTrading />
+                        <VixRankPercentile />
 
-                        <section className="mt-16 text-center border-t dark:border-gray-700 pt-8">
-                            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Conclusion</h2>
-                            <Paragraph>
-                                The VIX is far more than a simple "fear gauge." It is an indispensable, multi-faceted tool that provides a real-time window into the market's collective emotional state and expectations for future turmoil. For the retail investor, it serves as a powerful sentiment and risk-management guide. For the advanced trader, it opens up a world of sophisticated hedging and speculative strategies. When understood and applied with the nuance it deserves, the VIX can provide a significant analytical edge in navigating the inherent uncertainty of financial markets.
-                            </Paragraph>
+                        {/* Conclusion */}
+                        <section className="text-center bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-12 shadow-lg">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-6">Master the Market's Fear Gauge</h2>
+                            <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                                The VIX is far more than a simple "fear gauge." It's an indispensable, multi-faceted tool providing real-time insight into market psychology and future volatility expectations. Whether you're managing risk, timing entries, or trading volatility directly, understanding the VIX gives you a significant analytical edge in navigating market uncertainty.
+                            </p>
                         </section>
 
                         {/* Call to Action */}
-                        <section className="mt-12 text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-8">
-                            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-                                Ready to Master Volatility Trading?
-                            </h3>
-                            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                                Explore more advanced options strategies and quantitative analysis on SOPHIE Daddyuant Blog
+                        <section className="text-center bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white shadow-xl">
+                            <h3 className="text-3xl font-bold mb-4">Ready to Master Volatility Trading?</h3>
+                            <p className="text-xl mb-8 opacity-90">
+                                Explore advanced options strategies and quantitative analysis
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 {currentArticle?.googleDoc && (
@@ -317,15 +722,15 @@ export default function VixIndexPage() {
                                         href={currentArticle.googleDoc}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
+                                        className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-bold rounded-lg text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
                                     >
-                                        <TrendingUp className="inline mr-2" />
+                                        <TrendingUp className="mr-2 h-5 w-5" />
                                         Read Full Research
                                     </a>
                                 )}
                                 <Link
                                     href="/"
-                                    className="inline-block bg-gray-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
+                                    className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300 transform hover:scale-105"
                                 >
                                     Explore More Articles
                                 </Link>
@@ -333,24 +738,17 @@ export default function VixIndexPage() {
                         </section>
 
                         {/* Educational Disclaimer */}
-                        <section className="mt-12 p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border-l-4 border-yellow-400">
-                            <div className="flex items-start">
-                                <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 mr-3 flex-shrink-0" />
-                                <div>
-                                    <h4 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-                                        Educational Disclaimer
-                                    </h4>
-                                    <p className="text-yellow-700 dark:text-yellow-300 text-sm leading-relaxed">
-                                        This content is for educational and informational purposes only. Options trading involves substantial risk and is not suitable for all investors. Past performance does not guarantee future results. The VIX and volatility trading strategies discussed carry significant risks including total loss of capital. Always consult with a qualified financial advisor before making investment decisions.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                    </article>
+                        <InfoBox type="warning" icon={<AlertTriangle className="h-6 w-6 text-yellow-600" />}>
+                            <div className="font-bold text-lg mb-2">Educational Disclaimer</div>
+                            <p className="text-sm leading-relaxed">
+                                This content is for educational and informational purposes only. Options trading involves substantial risk and is not suitable for all investors. Past performance does not guarantee future results. The VIX and volatility trading strategies discussed carry significant risks including total loss of capital. Always consult with a qualified financial advisor before making investment decisions.
+                            </p>
+                        </InfoBox>
+                    </div>
                 </main>
 
                 <footer className="text-center py-6 text-gray-500 dark:text-gray-400 text-sm">
-                    <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+                    <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
                 </footer>
             </div>
         </>
