@@ -2,28 +2,18 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Shield, Calculator, Target, AlertTriangle, CheckCircle, XCircle, HelpCircle, Calendar, Activity, Zap } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Shield, Calculator, Target, AlertTriangle, CheckCircle, XCircle, HelpCircle, Calendar, Activity, Zap, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function VerticalCreditSpreadsGuide() {
   const currentArticle = articles.find(article => article.slug === 'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling');
-  const [activeSection, setActiveSection] = useState('introduction');
-
-  const sections = [
-    { id: 'introduction', title: 'Introduction', icon: <TrendingUp className="w-5 h-5" /> },
-    { id: 'application', title: 'Strategic Application', icon: <Target className="w-5 h-5" /> },
-    { id: 'greeks', title: 'The Greeks', icon: <Calculator className="w-5 h-5" /> },
-    { id: 'underlyings', title: 'Choosing Underlyings', icon: <Activity className="w-5 h-5" /> },
-    { id: 'comparison', title: 'Comparative Analysis', icon: <Shield className="w-5 h-5" /> },
-    { id: 'architecture', title: 'Trade Architecture', icon: <Zap className="w-5 h-5" /> },
-    { id: 'walkthrough', title: 'Trade Walkthrough', icon: <CheckCircle className="w-5 h-5" /> },
-    { id: 'management', title: 'Trade Management', icon: <Calendar className="w-5 h-5" /> }
-  ];
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
     <>
-      {currentArticle && (
+      {currentArticle && currentArticle.title && currentArticle.slug && (
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
@@ -33,17 +23,13 @@ export default function VerticalCreditSpreadsGuide() {
         </>
       )}
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-4 py-4">
-              <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Return to Home
-              </Link>
-            </div>
-          </div>
+      <div className="min-h-screen bg-white">
+        {/* Return to Home Button */}
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
         </div>
 
         {/* Badges */}
@@ -60,90 +46,61 @@ export default function VerticalCreditSpreadsGuide() {
         </div>
 
         {/* Hero Section */}
-        <div className="relative py-16 sm:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Vertical Credit Spreads
-              </h1>
-              <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
-                A Comprehensive Guide to Defined-Risk Premium Selling
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  October 19, 2025
-                </span>
-                <span className="flex items-center gap-1">
-                  <Shield className="w-4 h-4" />
-                  Institutional Framework
-                </span>
-                <span className="flex items-center gap-1">
-                  <Target className="w-4 h-4" />
-                  Defined Risk Strategy
-                </span>
-              </div>
-            </div>
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              Vertical Credit Spreads
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+              A Comprehensive Guide to Defined-Risk Premium Selling
+            </p>
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-            <div className="flex flex-wrap gap-2">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    activeSection === section.id
-                      ? 'bg-blue-100 text-blue-800 border border-blue-200'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                  }`}
-                >
-                  {section.icon}
-                  {section.title}
-                </button>
-              ))}
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/CSlyJzU.jpeg" 
+              alt="Vertical Credit Spreads Strategy Infographic" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/CSlyJzU.jpeg"
+          alt="Vertical Credit Spreads Strategy Infographic"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24">
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Quick Navigation</h3>
-                  <nav className="space-y-2">
-                    {sections.map((section) => (
-                      <a
-                        key={section.id}
-                        href={`#${section.id}`}
-                        className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-                          activeSection === section.id
-                            ? 'bg-blue-50 text-blue-700 font-medium'
-                            : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                        }`}
-                        onClick={() => setActiveSection(section.id)}
-                      >
-                        {section.icon}
-                        {section.title}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="lg:col-span-3">
-              <div className="space-y-8">
+        <main className="max-w-5xl mx-auto px-6 py-16">
                 
                 {/* Introduction Section */}
-                <section id="introduction" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <TrendingUp className="w-8 h-8 text-blue-600" />
                     An Introduction to the Vertical Credit Spread
@@ -190,7 +147,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Strategic Application Section */}
-                <section id="application" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Target className="w-8 h-8 text-blue-600" />
                     Strategic Application and Environmental Factors
@@ -219,7 +176,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* The Greeks Section */}
-                <section id="greeks" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Calculator className="w-8 h-8 text-blue-600" />
                     Understanding the 'Greeks'
@@ -267,7 +224,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Choosing Underlyings Section */}
-                <section id="underlyings" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Activity className="w-8 h-8 text-blue-600" />
                     Choosing the Right Underlying
@@ -319,7 +276,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Comparison Table Section */}
-                <section id="comparison" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Shield className="w-8 h-8 text-blue-600" />
                     Comparative Analysis: Spreads vs. Naked Options
@@ -390,7 +347,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Trade Architecture Section */}
-                <section id="architecture" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Zap className="w-8 h-8 text-blue-600" />
                     The Architecture of the Trade: Strike and Width Selection
@@ -434,7 +391,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Trade Walkthrough Section */}
-                <section id="walkthrough" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <CheckCircle className="w-8 h-8 text-blue-600" />
                     A Practical Trade Walkthrough
@@ -499,7 +456,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </section>
 
                 {/* Trade Management Section */}
-                <section id="management" className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <Calendar className="w-8 h-8 text-blue-600" />
                     A Trader's Guide to Managing and Closing the Position
@@ -710,15 +667,12 @@ export default function VerticalCreditSpreadsGuide() {
                     )}
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </main>
 
         {/* Footer */}
         <footer className="bg-white border-t border-gray-200 py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+          <div className="max-w-5xl mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>
