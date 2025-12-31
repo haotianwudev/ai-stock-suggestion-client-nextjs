@@ -35,6 +35,7 @@ export const articles2025Q4: Article[] = [
     title: "Options Tutorial Year End Summary: When to Trade, and When NOT to Trade",
     description: "Unlock the asymmetric power of options, from hedging portfolio risk to generating income with the Wheel strategy. This guide breaks down the critical difference between using options as insurance via protective puts versus leveraging capital through speculation.",
     date: "December 28, 2025",
+    slug: "option-when-to-trade",
     youtubeUrl: "https://youtu.be/brQbdu19cbw",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/brQbdu19cbw/maxresdefault.jpg",
@@ -310,6 +311,7 @@ export const articles2025Q4: Article[] = [
 {
     title: "Most popular income strategy: All about options on SPX and popular option writing ETFs",
     description: "This video provides an institutional deep-dive into systematic option writing on the S&P 500 Index (SPX), a strategy based on harvesting the persistent Volatility Risk Premium (VRP). The VRP exists because implied volatility consistently overestimates realized volatility. We compare the three main instruments used to trade S&P 500 options: SPX, XSP, and SPY.",
+    slug: "spx-option-underlyer",
     date: "November 29, 2025",
     youtubeUrl: "https://youtu.be/yThUZBJWKPM",
     isVideo: true,

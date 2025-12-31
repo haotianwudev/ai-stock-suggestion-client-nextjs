@@ -11,6 +11,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",
+      "option-when-to-trade",
     ],
     studyGuide: {
       items: [
