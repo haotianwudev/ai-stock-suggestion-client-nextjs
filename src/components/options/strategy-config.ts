@@ -43,6 +43,8 @@ import { IronCondorStrategyDetail } from './strategies/iron-condor';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
 import { CollarStrategyDetail } from './strategies/collar-strategy';
+import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strategy';
+import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -104,7 +106,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'long_put',
-        category: ['Bearish', 'Featured'],
+        category: ['Bearish'],
         name: 'Long Put',
         description: "The most straightforward bearish strategy. Buy a put option expecting the underlying asset's price to fall significantly. Profit potential is substantial, risk is limited to the premium paid.",
         profile: 'Defined Risk, Substantial Profit',
@@ -149,6 +151,27 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             (premium * 2) - Math.abs(p - strike1),
+        youtubeId: 'AtRXXgVRtlk',
+        payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at expiration. Losses increase as price moves away from the strike in either direction.",
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
+        infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
+        detailComponent: ShortStraddleStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'short_strangle',
+        category: ['Neutral', 'Income', 'Featured'],
+        name: 'Short Strangle',
+        description: "A high-probability neutral strategy. Sell an out-of-the-money call and put at different strikes. You profit if the stock stays between the strikes, offering a wider profit zone than straddles.",
+        profile: 'Unlimited Risk, Defined Profit',
+        volatility: 'Benefits from falling IV (Short Vega)',
+        time: 'Benefits from time decay (Long Theta)',
+        payoffCalculator: (p, { strike2, strike3, premium }) => 
+            (premium * 1.5) - Math.max(0, p - strike2) - Math.max(0, strike3 - p),
+        youtubeId: 'AtRXXgVRtlk',
+        payoffExplanation: "Maximum profit occurs when the stock price stays between the put and call strikes at expiration. Losses increase as price moves beyond either strike.",
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
+        infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
+        detailComponent: ShortStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'iron_condor',

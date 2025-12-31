@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
-const validSubtopics = ['when-to-trade', 'greeks', 'vrp'];
+const validSubtopics = ['when-to-trade', 'greeks', 'vrp', 'gex'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -26,6 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       title: 'Volatility Risk Premium (VRP) | SOPHIE\'s Daddy Quant Blog',
       description: 'Master the systematic edge in options markets. Learn how implied volatility consistently overstates realized volatility and how to harvest this premium.',
       keywords: ['volatility risk premium', 'VRP', 'implied volatility', 'realized volatility', 'options selling', 'premium harvesting'],
+    },
+    gex: {
+      title: 'Gamma Exposure (GEX) | SOPHIE\'s Daddy Quant Blog',
+      description: 'Understanding how market makers\' gamma exposure influences market volatility and price movements, creating predictable trading patterns.',
+      keywords: ['gamma exposure', 'GEX', 'market makers', 'volatility', 'options flow', 'gamma hedging'],
     },
   };
 

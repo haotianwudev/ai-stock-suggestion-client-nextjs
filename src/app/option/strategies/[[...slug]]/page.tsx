@@ -39,6 +39,10 @@ const strategyMetadata: Record<string, { name: string; description: string }> = 
     name: 'Short Straddle',
     description: 'A bet on low volatility with unlimited risk and defined profit potential.',
   },
+  'short-strangle': {
+    name: 'Short Strangle',
+    description: 'A high-probability neutral strategy that profits from range-bound markets with a wider profit zone than straddles.',
+  },
   'iron-condor': {
     name: 'Iron Condor',
     description: 'A high-probability, risk-defined neutral strategy that profits from range-bound markets.',
