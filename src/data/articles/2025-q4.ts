@@ -1041,7 +1041,7 @@ export const articles2025Q4: Article[] = [
     description: "A comprehensive deep research analysis of cash-secured puts and covered calls as disciplined portfolio management tools. Explores the Greeks, strategic market entry/exit, risk management frameworks, and the psychology of systematic option writing for income generation and position management.",
     slug: "strategic-portfolio-management-option-writing",
     date: "October 4, 2025",
-    imageUrl: "https://wallstreetmojo-files.s3.ap-south-1.amazonaws.com/2023/10/Options-Market.png",
+    imageUrl: "https://i.imgur.com/KQi3yt5.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTOrdqZPBCcH4OrKMlfCrf8WlDzYrTzCaA8xGJqp4tV9trw7p-FIrtxnHSjzD9VnMEZFumz_-TE-aDo/pub",
     deepResearch: true,
     options: true

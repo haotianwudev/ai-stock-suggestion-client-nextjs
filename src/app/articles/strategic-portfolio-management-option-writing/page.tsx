@@ -1,12 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, ShieldCheck, ArrowDownCircle, ArrowUpCircle, AlertTriangle, ListChecks, Target, BrainCircuit, BookOpen, Scaling, BarChart3, UserCheck, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, ArrowDownCircle, ArrowUpCircle, AlertTriangle, ListChecks, Target, BrainCircuit, BookOpen, Scaling, BarChart3, UserCheck, CheckCircle, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { useState } from 'react';
 
 export default function StrategicPortfolioManagementOptionWriting() {
   const currentArticle = articles.find(article => article.slug === 'strategic-portfolio-management-option-writing');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
     <div>
@@ -73,6 +76,49 @@ export default function StrategicPortfolioManagementOptionWriting() {
             </p>
           </div>
         </div>
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        {currentArticle?.imageUrl && (
+          <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              onClick={() => setIsImageViewerOpen(true)}
+            >
+              <img 
+                src={currentArticle.imageUrl} 
+                alt="Strategic Portfolio Management Option Writing Infographic" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsImageViewerOpen(true);
+                }}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+              {/* Click hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                  Click to view full screen
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Full-screen image viewer */}
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="Strategic Portfolio Management Option Writing Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Strategy Matrix */}
