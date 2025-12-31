@@ -684,7 +684,7 @@ export const articles2025Q4: Article[] = [
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
     date: "November 1, 2025",
-    imageUrl: "https://blog.oihelper.com/wp-content/uploads/2025/05/oi-meaning-oihelper.jpg",
+    imageUrl: "https://i.imgur.com/asowAEM.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPVO8a1EpsE5aZcZLqLf2V8kABWtqnZfPCLuPclso4_uYCwca8wMn33AGgVmq2nGFrbws-eii0JMF3/pub",
     deepResearch: true,
     options: true
