@@ -213,7 +213,7 @@ export const articles2025Q3: Article[] = [
     description: "A comprehensive quantitative framework for managing option positions through defensive and offensive rolling strategies. Covers universal principles, decision triggers using Greeks, net credit mandates, and practical implementation guides for both put and call strategies. Features interactive visual components and real-world examples.",
     slug: "strategic-framework-rolling-options-quantitative-approach",
     date: "September 13, 2025",
-    imageUrl: "https://incomeshares.com/insights/list-images/19/19.-Rolling-Options-cover-image.webp",
+    imageUrl: "https://i.imgur.com/yDVJgI0.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSTKltePzIDadeG7XV_9boPEYxEe3apzPnmMOTV_wrn9XGG0JcEvLY3_FL0BlqpC-gUAX-ZUfE0eOGv/pub",
     deepResearch: true,
     options: true

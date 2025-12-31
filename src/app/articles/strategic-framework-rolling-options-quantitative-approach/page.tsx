@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Maximize2 } from 'lucide-react';
 import Head from 'next/head';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Helper Components for UI ---
 
@@ -211,83 +212,15 @@ const UniversalPrinciples = () => (
     </Card>
 );
 
-// Navigation component
-const NavigationSidebar = ({ activeSection, setActiveSection }: { 
-  activeSection: string; 
-  setActiveSection: (section: string) => void 
-}) => {
-  const sections = [
-    { id: 'introduction', label: 'Introduction' },
-    { id: 'deep-research-paper', label: 'Deep Research Paper' },
-    { id: 'universal-principles', label: 'Universal Principles' },
-    { id: 'defensive-rolling', label: 'Defensive Rolling' },
-    { id: 'offensive-rolling', label: 'Offensive Rolling' },
-    { id: 'interactive-guide', label: 'Interactive Guide' },
-    { id: 'decision-framework', label: 'Decision Framework' },
-    { id: 'pre-roll-checklist', label: 'Pre-Roll Checklist' },
-    { id: 'advanced-concepts', label: 'Advanced Concepts' },
-    { id: 'practical-examples', label: 'Practical Examples' },
-    { id: 'conclusion', label: 'Conclusion' }
-  ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
-    }
-  };
-
-  return (
-    <div className="sticky top-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
-      <h3 className="font-bold text-lg mb-4 text-gray-800 dark:text-gray-200">Navigation</h3>
-      <ul className="space-y-2">
-        {sections.map(section => (
-          <li key={section.id}>
-            <button
-              onClick={() => scrollToSection(section.id)}
-              className={`w-full text-left px-3 py-2 rounded transition-colors ${
-                activeSection === section.id
-                  ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                  : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400'
-              }`}
-            >
-              {section.label}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+// Navigation component - REMOVED per steering rules
 
 // --- Main App Component ---
 
 export default function StrategicFrameworkRollingOptions() {
-  const [activeSection, setActiveSection] = useState('introduction');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
   // Get article data for SEO
   const currentArticle = articles.find(article => article.slug === 'strategic-framework-rolling-options-quantitative-approach');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['introduction', 'deep-research-paper', 'universal-principles', 'defensive-rolling', 'offensive-rolling', 'interactive-guide', 'decision-framework', 'pre-roll-checklist', 'advanced-concepts', 'practical-examples', 'conclusion'];
-      
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
@@ -300,44 +233,78 @@ export default function StrategicFrameworkRollingOptions() {
       )}
       
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
-        {/* Header with Return Button */}
-      <div className="bg-white dark:bg-gray-800 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-          
-          {/* Badges */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
-              Deep Research
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
-              Options Trading
-            </span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 dark:text-white mb-4">
-            A Strategic Framework for Rolling Short Option Positions
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-            A quantitative approach to managing option positions through defensive and offensive rolling strategies
-          </p>
+        {/* Return to Home Button */}
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Navigation Sidebar */}
-          <div className="lg:col-span-1">
-            <NavigationSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+        {/* Hero Section with Title */}
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            {/* Badges */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+                Deep Research
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+                Options Trading
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              A Strategic Framework for Rolling Short Option Positions
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+              A quantitative approach to managing option positions through defensive and offensive rolling strategies
+            </p>
           </div>
+        </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3 space-y-12">
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/yDVJgI0.jpeg" 
+              alt="Strategic Framework for Rolling Options - Comprehensive Visual Guide" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/yDVJgI0.jpeg"
+          alt="Strategic Framework for Rolling Options - Comprehensive Visual Guide"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
+
+        {/* Main Content */}
+        <main className="max-w-5xl mx-auto px-6 py-16">
+          <div className="space-y-12">
             
             {/* Introduction */}
             <section id="introduction" className="scroll-mt-8">
@@ -783,14 +750,13 @@ export default function StrategicFrameworkRollingOptions() {
             </section>
 
           </div>
-        </div>
-      </div>
+        </main>
       
-      <footer className="text-center mt-16 py-8 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
-        <p>This comprehensive guide is based on quantitative research and market principles. Always consider your own risk tolerance, market thesis, and trading conditions before implementing any strategy.</p>
-        <p className="mt-2">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-      </footer>
-    </div>
+        <footer className="text-center mt-16 py-8 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+          <p>This comprehensive guide is based on quantitative research and market principles. Always consider your own risk tolerance, market thesis, and trading conditions before implementing any strategy.</p>
+          <p className="mt-2">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+        </footer>
+      </div>
     </>
   );
 } 
