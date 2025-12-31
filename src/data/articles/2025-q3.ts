@@ -219,6 +219,26 @@ export const articles2025Q3: Article[] = [
     options: true
   },
 {
+    title: "Tax Efficient Option Writing: less tax is Alpha!",
+    description: "Are you an active option writer frustrated by high taxes on your profits? The U.S. tax code often classifies option writing gains as short-term capital gains, which are taxed at ordinary income rates – potentially nearly double the preferential rates for long-term gains! ",
+    slug: "tax-efficient-option-writing",
+    date: "September 13, 2025",
+    youtubeUrl: "https://youtu.be/PkibBIsGHzk",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/PkibBIsGHzk/maxresdefault.jpg",
+    options: true
+  },
+{
+    title: "Tax-Efficient Option Writing and Common Pitfalls",
+    description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
+    slug: "tax-efficient-option-writing-comprehensive-guide",
+    date: "September 12, 2025",
+    imageUrl: "https://dariusforoux.com/wp-content/uploads/2021/06/more-options-more-happiness-1024x768.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub",
+    deepResearch: true,
+    options: true
+  },
+{
     title: "Is XGBoost(GBDT) still in the leading position in quantitative finance?",
     description: "Are you a quantitative trader, portfolio manager, or machine learning enthusiast grappling with model selection in finance? This video dives deep into the strategic role of eXtreme Gradient Boosting (XGBoost) in systematic trading, offering a forward-looking perspective to 2025. We conduct an expert analysis, comparing XGBoost's unparalleled strengths with those of advanced deep learning architectures like Long Short-Term Memory (LSTM) networks and Transformers.",
     slug: "xgboost-lead",
@@ -713,17 +733,6 @@ export const articles2025Q3: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6V7tDXMVVGPvqRangIB4iR?si=fsH5o18MRJWmxbT-JMxfVA"
   },
 {
-    title: "Machine Learning Framework for Index Option Writing",
-    description: "A comprehensive framework exploring the transition from traditional financial models to data-driven machine learning strategies for index option writing. Covers volatility forecasting, risk management, and the application of LSTM, GARCH, and reinforcement learning techniques to enhance income generation while managing asymmetric risks.",
-    slug: "algorithmic-advantage-machine-learning-index-options",
-    date: "July 29, 2025",
-    imageUrl: "https://i.ytimg.com/vi/tsdxkCMBWAQ/hqdefault.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRTAkd7ZGnw5Il969nNJfLGothocw2rc6r9VbqC-ZBsoofC7zv0XJyW_pL7jxixO_yL1buiF2t0-3tW/pub",
-    deepResearch: true,
-    options: true,
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
-  },
-{
     title: "Trend vs. Momentum in Technical Analysis",
     description: "Master the core distinction between trend and momentum indicators in technical analysis. Learn how trend indicators chart market direction while momentum indicators measure the force behind price movements, with practical strategies for combining both approaches.",
     slug: "trend-vs-momentum-technical-analysis-guide",
@@ -752,16 +761,6 @@ export const articles2025Q3: Article[] = [
     deepResearch: true
   },
 {
-    title: "Important Metrics in Option Seller's Dashboard",
-    description: "Master the art of options premium selling with comprehensive analysis of volatility metrics, Greeks management, and systematic execution frameworks for consistent income generation.",
-    slug: "premium-sellers-dashboard-options-writing-guide",
-    date: "July 24, 2025",
-    imageUrl: "https://images.ctfassets.net/lnmc2aao6j57/6Y8Qu3bbrHWpTsf0LjRO2f/781a5a9199129f11405c5eaae8750d64/info-options_greeks-desktop.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTlj3cLw8CDOH3NueCQtVbDxBJn-USsOWyxsy7dQD6SlpuqNGDwsywkbEGuGdGPND0VnGsXQr8Z_yp-/pub",
-    deepResearch: true,
-    options: true
-  },
-{
     title: "India's Option Market and Jane Street",
     description: "SEBI vs. Jane Street case and its sweeping implications for global finance. Explore how this landmark regulatory action exposed vulnerabilities in market structure, triggered reforms, and created a new paradigm for both institutional and retail investors.",
     slug: "jane-street-precedent-market-manipulation",
@@ -779,16 +778,6 @@ export const articles2025Q3: Article[] = [
     bookSummary: true,
     options: true,
     podcastUrl: "https://open.spotify.com/episode/0kRp7YWw6p4F7xbRmZ1Mpn?si=OtrEHiDES7Ssz-dgY5GWNQ"
-  },
-{
-    title: "Options Margin Rules",
-    description: "Master the complex world of options margin requirements with this comprehensive analysis of regulatory frameworks, calculation methodologies, and risk management strategies for sophisticated options traders.",
-    slug: "options-margin-rules-comprehensive-guide",
-    date: "July 21, 2025",
-    imageUrl: "https://public.com/wp-content/uploads/2024/01/Options-Margin-Requirements-1024x512.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRkgSKWmteb3rAkAZDnn2IZYgf5TmTnKg_ce5ZyPnRPdc1aGRK874Pf6_gNJ558APdD7vs8s3Hwl8N/pub",
-    deepResearch: true,
-    options: true,
   },
 {
     title: "Research Reveals the Truth: Is Technical Analysis a Secret Weapon or Just Squiggly Lines?",
@@ -819,16 +808,6 @@ export const articles2025Q3: Article[] = [
     deepResearch: true
   },
 {
-    title: "How to Evaluate Stocks for Options Income Strategies",
-    description: "Covering the four analytical pillars for stock selection in income-generating options strategies: fundamental quality, technical posture, volatility environment, and market structure. Includes strategy-specific frameworks for Cash-Secured Puts, Covered Calls, Wheel Strategy, and Iron Condors.",
-    slug: "systematic-framework-evaluating-stocks-options-strategies",
-    date: "July 16, 2025",
-    imageUrl: "https://www.projectfinance.com/wp-content/uploads/2021/11/Stocks-vs-Options-CANVA-2.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTmpYeZUn7bjRGhbU_hL_9ACVnCKT1bS7Xk9AcEKO6TDhOLW1yTDtStnjpWUinsLenw0JeogKTtCOg8/pub",
-    deepResearch: true,
-    options: true
-  },
-{
     title: "Essential Reading for Value Investors",
     description: "A curated collection of must-read books for value investors and deep thinkers. Features timeless wisdom on investing, finance, psychology, and life philosophy from legendary authors like Warren Buffett, Charlie Munger, Howard Marks, and Morgan Housel.",
     slug: "essential-reading-for-investors",
@@ -848,16 +827,6 @@ export const articles2025Q3: Article[] = [
     deepResearch: false
   },
 {
-    title: "Options Trader's Toolkit",
-    description: "Blueprint for constructing a high-performance options trading ecosystem. Covers the five foundational pillars: execution platforms, analytical tools, decision support systems, information feeds, and performance tracking. Essential guide for Pro-Am traders seeking to build a professional-grade trading infrastructure.",
-    slug: "options-trader-toolkit-requirements",
-    date: "July 13, 2025",
-    imageUrl: "https://orats.com/_next/image?url=https%3A%2F%2Foratsblog.s3.amazonaws.com%2F16dd72f7-e2b3-8021-9533-fbb394d39669.png&w=3840&q=75",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTRO9VD_EYAJBbNPd0Cz3GNLJg39gPb31QeB3eXqIwlYZUbjS4zVFyYhglOr4CvGnUi4rPgklUKaPAE/pub",
-    deepResearch: true,
-    options: true
-  },
-{
     title: "AI Uncovers the Truth: Do Finfluencers nail the market?",
     description: "Have you ever wondered if the \"finfluencers\" you see on YouTube and TikTok actually know what they're talking about? They sound so confident, but do their stock picks actually make you money? We're diving into some groundbreaking research to find out!",
     slug: "ai-uncovers-truth-finfluencers-nail-market",
@@ -865,16 +834,6 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://www.youtube.com/watch?v=qUDsz4wMhHU",
     isVideo: true,
     imageUrl: "/images/AI Uncovers the Truth Do Finfluencers nail market.jpg"
-  },
-{
-    title: "Tax-Efficient Option Writing and Common Pitfalls",
-    description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
-    slug: "tax-efficient-option-writing-comprehensive-guide",
-    date: "July 10, 2025",
-    imageUrl: "https://dariusforoux.com/wp-content/uploads/2021/06/more-options-more-happiness-1024x768.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub",
-    deepResearch: true,
-    options: true
   },
 {
     title: "Transformer Stock Prediction: Comparative Analysis",
