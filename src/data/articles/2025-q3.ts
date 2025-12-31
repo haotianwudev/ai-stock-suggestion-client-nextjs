@@ -620,7 +620,7 @@ export const articles2025Q3: Article[] = [
     description: "AI-powered video on groundbreaking AQR research on covered call strategies across eleven global equity indexes. Discover key findings on performance attribution, risk decomposition, volatility risk premiums, and the surprising truth about this popular income strategy's global effectiveness beyond the S&P 500.",
     slug: "notebooklm-uncovers-nature-covered-calls-global-research",
     date: "August 8, 2025",
-    youtubeUrl: "https://www.youtube.com/watch?v=ntqTDpKv5es",
+    youtubeUrl: "https://youtu.be/ntqTDpKv5es",
     isVideo: true,
     imageUrl: "https://i.ytimg.com/vi/ntqTDpKv5es/hqdefault.jpg",
     options: true
