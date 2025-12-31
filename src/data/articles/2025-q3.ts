@@ -46,7 +46,7 @@ export const articles2025Q3: Article[] = [
     description: "A comprehensive analysis of the psychological, technical, and structural pitfalls that trap options traders. Explores the Greeks, volatility dynamics, assignment risks, tax implications, and the critical differences between index and ETF options that can make or break trading strategies.",
     slug: "navigating-minefield-options-trading-pitfalls",
     date: "September 28, 2025",
-    imageUrl: "https://www.ibullssecurities.com/public/blogs/Common-Pitfalls-and-Mistakes-in-Options-Trading_1224pxX380px_1754374934.jpg",
+    imageUrl: "https://i.imgur.com/Sbugskc.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTV1VQ5LmH7aDpgPpFc8YWPYlOUCn6LkyG1FPKvZW4dA8_iZbk8JeivrRwdz_3838Z4cvc6K9gkZxMA/pub",
     deepResearch: true,
     options: true,
