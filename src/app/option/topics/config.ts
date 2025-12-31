@@ -101,6 +101,9 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
       "decode-vix",
       "vix-index-comprehensive-guide-market-volatility",
+      "predict-volatility",
+      "quantitative-analyst-guide-volatility-forecasting",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
@@ -115,6 +118,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/vix-index-comprehensive-guide-market-volatility",
           videoUrl: "https://youtu.be/_NDyPBYkZxg",
           visualGuideUrl: "https://i.imgur.com/cKQBMh7.jpeg"
+        },
+        {
+          text: "Using Machine Learning to Predict Volatility",
+          url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
+          videoUrl: "https://youtu.be/zLKCTVTfvo4",
+          visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
         },
         {
           text: "Yahoo Finance VIX Chart",
@@ -138,7 +147,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "volatility-risk-premium-intro",
       'demystifying-volatility-risk-premium-theory-measurement-trading',
       "spx-option-underlyer",
-      "mastering-volatility-risk-premium-spx-options-selling"
+      "mastering-volatility-risk-premium-spx-options-selling",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
