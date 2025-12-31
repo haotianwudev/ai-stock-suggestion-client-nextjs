@@ -12,6 +12,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",
       "option-when-to-trade",
+      "navigating-minefield-options-trading-pitfalls",
+      "option-pitfalls",
       "tax-efficient-option-writing-comprehensive-guide",
       "tax-efficient-option-writing",
       "decoding-options-market-volume-open-interest-analysis",
@@ -24,6 +26,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/strategic-options-utilization-risk-comprehensive-framework",
           videoUrl: "https://youtu.be/brQbdu19cbw",
           visualGuideUrl: "https://i.imgur.com/ln9KdrO.jpeg",
+        },
+        {
+          text: "Common Pitfalls of Trading Options",
+          url: "https://www.sophie-ai-finance.com/articles/navigating-minefield-options-trading-pitfalls",
+          videoUrl: "https://youtu.be/IvWGgDNQoUk",
+          visualGuideUrl: "https://i.imgur.com/Sbugskc.jpeg",
         },
         {
           text: "Tax-Efficient Option Writing and Common Pitfalls",
