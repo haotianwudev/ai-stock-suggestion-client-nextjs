@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingDown, Clock, Activity, ShieldAlert, Scale, AlertTriangle, CheckCircle, BookOpen, Zap, Layers, BarChart2, ArrowRightLeft, Music } from 'lucide-react';
+import { ArrowLeft, TrendingDown, Clock, Activity, ShieldAlert, Scale, AlertTriangle, CheckCircle, BookOpen, Zap, Layers, BarChart2, ArrowRightLeft, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function ShortVolatilityGuide() {
   const currentArticle = articles.find(article => article.slug === 'mastering-short-volatility-straddles-strangles-systematic-premium-collection');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const Section = ({ children, id }: { children: React.ReactNode; id?: string }) => (
     <section id={id} className="mb-12">
@@ -34,7 +36,7 @@ export default function ShortVolatilityGuide() {
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
             articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleSlug={currentArticle.slug!} 
           />
         </>
       )}
@@ -85,6 +87,49 @@ export default function ShortVolatilityGuide() {
             </div>
           </div>
         </div>
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        {currentArticle?.imageUrl && (
+          <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              onClick={() => setIsImageViewerOpen(true)}
+            >
+              <img 
+                src={currentArticle.imageUrl} 
+                alt="Short Volatility Strategy Infographic" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsImageViewerOpen(true);
+                }}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+              {/* Click hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                  Click to view full screen
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Full-screen image viewer */}
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="Short Volatility Strategy Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
 
         {/* Main Content */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

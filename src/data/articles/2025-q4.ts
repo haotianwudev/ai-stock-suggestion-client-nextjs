@@ -480,7 +480,7 @@ export const articles2025Q4: Article[] = [
     description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
     slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
     date: "November 15, 2025",
-    imageUrl: "https://ewotrader.com/wp-content/uploads/2025/06/img-straddle-v-strangle.jpg",
+    imageUrl: "https://i.imgur.com/ZCwIYbv.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
     options: true
