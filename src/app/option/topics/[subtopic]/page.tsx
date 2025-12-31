@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
-const validSubtopics = ['option101', 'greeks', 'vrp', 'gex', 'roll'];
+const validSubtopics = ['option101', 'greeks', 'volatility', 'vrp', 'gex', 'roll'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -21,6 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       title: 'Option Greeks Calculator | SOPHIE\'s Daddy Quant Blog',
       description: 'Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.',
       keywords: ['option greeks', 'delta gamma theta', 'vega rho', 'options pricing', 'black scholes', 'options calculator'],
+    },
+    volatility: {
+      title: 'Volatility Analysis | SOPHIE\'s Daddy Quant Blog',
+      description: 'Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.',
+      keywords: ['volatility', 'volatility smile', 'implied volatility', 'historical volatility', 'market structure', 'black scholes failure', 'volatility skew'],
     },
     vrp: {
       title: 'Volatility Risk Premium (VRP) | SOPHIE\'s Daddy Quant Blog',

@@ -91,6 +91,43 @@ export const topicsConfig: Record<string, TopicConfig> = {
     }
   },
   
+  'volatility': {
+    id: 'volatility',
+    title: 'Volatility',
+    description: 'Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.',
+    videoUrl: 'https://youtu.be/p8nblr4NyNc',
+    relatedArticles: [
+      "volatility-smile",
+      "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
+      "decode-vix",
+      "vix-index-comprehensive-guide-market-volatility",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "The Volatility Smile",
+          url: "https://www.sophie-ai-finance.com/articles/volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
+          videoUrl: "https://youtu.be/p8nblr4NyNc",
+          visualGuideUrl: "https://i.imgur.com/vBYRuhI.jpeg"
+        },
+        {
+          text: "The VIX Index",
+          url: "https://www.sophie-ai-finance.com/articles/vix-index-comprehensive-guide-market-volatility",
+          videoUrl: "https://youtu.be/_NDyPBYkZxg",
+          visualGuideUrl: "https://i.imgur.com/cKQBMh7.jpeg"
+        },
+        {
+          text: "Yahoo Finance VIX Chart",
+          url: "https://finance.yahoo.com/quote/%5EVIX/"
+        },
+        {
+          text: "Barchart Volatility Charts",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts"
+        }
+      ]
+    }
+  },
+  
   'vrp': {
     id: 'vrp',
     title: 'Volatility Risk Premium (VRP)',

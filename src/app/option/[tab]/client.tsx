@@ -14,6 +14,7 @@ import { Option101Content } from "../topics/option101";
 import { GreeksContent } from "../topics/greeks";
 import { GEXContent } from "../topics/gex";
 import { RollContent } from "../topics/roll";
+import { VolatilityContent } from "../topics/volatility";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -70,7 +71,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="option101" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -90,6 +91,12 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             Art of Roll
+          </TabsTrigger>
+          <TabsTrigger 
+            value="volatility" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            Volatility
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
@@ -115,6 +122,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="roll" className="mt-0">
           <RollContent />
+        </TabsContent>
+
+        <TabsContent value="volatility" className="mt-0">
+          <VolatilityContent />
         </TabsContent>
 
         <TabsContent value="vrp" className="mt-0">
