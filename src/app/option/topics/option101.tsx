@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
 
-export function WhenToTradeContent() {
-  const config = getTopicConfig('when-to-trade');
+export function Option101Content() {
+  const config = getTopicConfig('option101');
   
   if (!config) return null;
 

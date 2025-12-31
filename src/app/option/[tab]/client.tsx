@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { OptionsViewer } from "@/components/options/options-viewer";
 import { VRPContent } from "../topics/vrp";
-import { WhenToTradeContent } from "../topics/when-to-trade";
+import { Option101Content } from "../topics/option101";
 import { GreeksContent } from "../topics/greeks";
 import { GEXContent } from "../topics/gex";
 import { RollContent } from "../topics/roll";
@@ -50,7 +50,7 @@ interface OptionsTabClientProps {
 // Topics Tab Component with Sub-navigation
 function TopicsTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
-  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'when-to-trade');
+  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'option101');
 
   // Update active subtopic when prop changes
   useEffect(() => {
@@ -72,11 +72,11 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
         <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
-            value="when-to-trade" 
+            value="option101" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">When</span>
-            <span className="hidden sm:block">When to Trade</span>
+            <span className="block sm:hidden">Option 101</span>
+            <span className="hidden sm:block">Option 101</span>
           </TabsTrigger>
           <TabsTrigger 
             value="greeks" 
@@ -105,8 +105,8 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="when-to-trade" className="mt-0">
-          <WhenToTradeContent />
+        <TabsContent value="option101" className="mt-0">
+          <Option101Content />
         </TabsContent>
         
         <TabsContent value="greeks" className="mt-0">
@@ -211,8 +211,8 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === 'topics') {
-      // For topics, use the subtopic or default to when-to-trade
-      const defaultSubtopic = subtopic || 'when-to-trade';
+      // For topics, use the subtopic or default to option101
+      const defaultSubtopic = subtopic || 'option101';
       router.push(`/option/topics/${defaultSubtopic}`, { scroll: false });
     } else {
       const newUrl = `/option/${value}`;

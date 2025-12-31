@@ -3,9 +3,9 @@ import { BaseConfig, StudyGuideItem } from "@/components/shared/config-types";
 export interface TopicConfig extends BaseConfig {}
 
 export const topicsConfig: Record<string, TopicConfig> = {
-  'when-to-trade': {
-    id: 'when-to-trade',
-    title: 'When to Use Options',
+  'option101': {
+    id: 'option101',
+    title: 'Options 101',
     description: 'Understand the key scenarios where options can be an effective trading and investment tool.',
     videoUrl: 'https://youtu.be/brQbdu19cbw',
     infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",

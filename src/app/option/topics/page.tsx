@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 export default function OptionsTopicsPage() {
   const router = useRouter();
 
-  // Redirect to when-to-trade subtopic by default
+  // Redirect to option101 subtopic by default
   useEffect(() => {
-    router.replace('/option/topics/when-to-trade');
+    router.replace('/option/topics/option101');
   }, [router]);
 
   return null;

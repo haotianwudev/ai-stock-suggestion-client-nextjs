@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 export default function OptionsPage() {
   const router = useRouter();
 
-  // Redirect to topics tab by default
+  // Redirect to option101 topic by default
   useEffect(() => {
-    router.replace('/option/topics');
+    router.replace('/option/topics/option101');
   }, [router]);
 
   return (

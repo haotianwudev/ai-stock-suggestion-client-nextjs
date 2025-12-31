@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
-const validSubtopics = ['when-to-trade', 'greeks', 'vrp', 'gex', 'roll'];
+const validSubtopics = ['option101', 'greeks', 'vrp', 'gex', 'roll'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -12,10 +12,10 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
   }
   
   const metadataMap: Record<string, Metadata> = {
-    'when-to-trade': {
-      title: 'When to Use Options | SOPHIE\'s Daddy Quant Blog',
+    'option101': {
+      title: 'Options 101 | SOPHIE\'s Daddy Quant Blog',
       description: 'Learn when options are the right trading tool. Understand key scenarios for hedging, speculation, income generation, and capital efficiency.',
-      keywords: ['when to use options', 'options trading', 'hedging strategies', 'options education', 'risk management'],
+      keywords: ['options 101', 'options basics', 'when to use options', 'options trading', 'hedging strategies', 'options education', 'risk management'],
     },
     greeks: {
       title: 'Option Greeks Calculator | SOPHIE\'s Daddy Quant Blog',
