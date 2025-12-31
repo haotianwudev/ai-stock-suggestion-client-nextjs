@@ -1,190 +1,14 @@
-"use client";
-import React from 'react';
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, FileText } from 'lucide-react';
+import { ArrowLeft, FileText, Maximize2, TrendingUp, DollarSign, Target } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-
-// Section Component - displays content without hiding
-interface SectionProps {
-    title: string;
-    children: React.ReactNode;
-}
-const Section = ({ title, children }: SectionProps) => {
-    return (
-        <section className="border-b border-gray-300 last:border-b-0">
-            <div className="py-6 px-6">
-                <h2 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6">{title}</h2>
-                <div>{children}</div>
-            </div>
-        </section>
-    );
-};
-
-// Table Component for easy styling (light theme)
-interface StyledTableProps {
-    headers: string[];
-    data: string[][];
-}
-const StyledTable = ({ headers, data }: StyledTableProps) => (
-    <div className="overflow-x-auto my-6">
-        <table className="min-w-full bg-white border border-gray-300 shadow-sm">
-            <thead>
-                <tr>
-                    {headers.map((header: string, index: number) => (
-                        <th key={index} className="py-3 px-4 bg-gray-100 border-b border-gray-300 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">{header}</th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((row: string[], rowIndex: number) => (
-                    <tr key={rowIndex} className="hover:bg-gray-50 transition-colors">
-                        {row.map((cell: string, cellIndex: number) => (
-                            <td key={cellIndex} className="py-3 px-4 border-b border-gray-200 text-gray-700">{cell}</td>
-                        ))}
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-);
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function CoveredCallsVsCashSecuredPutsPage() {
     const currentArticle = articles.find(article => article.slug === 'covered-calls-vs-cash-secured-puts');
-
-    const sections = [
-        {
-            title: "Introduction",
-            content: (
-                <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>Covered call writing and cash-secured put writing represent two of the most foundational and widely utilized income-generating strategies in the world of options trading. At first glance, they appear to be distinct operations catering to different investor objectives. However, a deeper investigation reveals a fascinating paradox.</p>
-                    <p>Grounded in the fundamental principle of put-call parity, these two strategies are, in fact, theoretical equivalents. When structured with identical strike prices and expiration dates, they exhibit identical risk and reward profiles. Their profit-and-loss diagrams are superimposable, a mathematical proof that they are merely two sides of the same strategic coin.</p>
-                    <p>Yet, in practice, the selection is anything but. The theoretical identity of the strategies shatters upon contact with the frictions and realities of the market. This page provides an exhaustive analysis of this equivalence-divergence dichotomy, exploring the mechanics, theoretical links, practical differences, and psychological factors that define these two powerful strategies.</p>
-                </div>
-            )
-        },
-        {
-            title: "Deconstructing the Strategies",
-            content: (
-                <div className="space-y-6 text-gray-700 prose max-w-none">
-                    <h4 className="text-lg font-bold text-blue-600">1.1 The Covered Call: Generating Income on an Existing Asset</h4>
-                    <p>The covered call is one of the most popular options strategies, particularly among investors who hold long-term stock positions and wish to enhance their returns. The primary objectives are income generation, obtaining a partial downside hedge, and creating a strategic exit point.</p>
-                    <h4 className="text-lg font-bold text-blue-600">1.2 The Cash-Secured Put: Getting Paid to Buy a Desired Asset</h4>
-                    <p>The cash-secured put is an income strategy that also serves as a disciplined method for acquiring stock at a potentially lower price. The primary motivations are to acquire a desired stock at a discount or to generate income from cash reserves while waiting for an entry point.</p>
-                    <StyledTable 
-                        headers={["Feature", "Covered Call", "Cash-Secured Put"]}
-                        data={[
-                            ["Prerequisite", "Own 100 shares of underlying stock", "Have sufficient cash to buy 100 shares at strike price"],
-                            ["Action", "Sell one call option per 100 shares owned", "Sell one put option and set aside cash collateral"],
-                            ["Obligation", "To SELL shares at the strike price if assigned", "To BUY shares at the strike price if assigned"],
-                            ["Primary Goal(s)", "Generate income on existing holdings; strategic exit", "Acquire stock at a discount; generate income on cash"],
-                            ["Ideal Market Outlook", "Neutral to slightly bullish", "Neutral to bullish (or slightly bearish short-term)"],
-                            ["Result of Assignment", "Stock position becomes a cash position", "Cash position becomes a stock position"]
-                        ]}
-                    />
-                </div>
-            )
-        },
-        {
-            title: "The Principle of Synthetic Equivalence: Put-Call Parity",
-            content: (
-                 <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>While the mechanics and investor motivations appear distinct, they are linked by a foundational principle: put-call parity. This principle reveals that, under specific conditions, the two strategies are synthetically equivalent, possessing identical risk-reward profiles.</p>
-                    <p>The put-call parity formula is:</p>
-                    <div className="bg-gray-100 p-4 rounded-lg text-center my-4 border">
-                        <p className="text-lg font-mono text-gray-800">C + PV(K) = P + S</p>
-                    </div>
-                    <p>By rearranging this formula, we can prove that a covered call ($S - C$) is synthetically equivalent to a cash-secured put ($PV(K) - P$). This means their risk/reward profiles, including max profit, max loss, and breakeven points, are identical.</p>
-                     <StyledTable 
-                        headers={["Metric", "Covered Call Formula", "Cash-Secured Put Formula", "Result"]}
-                        data={[
-                            ["P/L Graph Shape", "Slopes down to the left, flat to the right", "Slopes down to the left, flat to the right", "Identical"],
-                            ["Maximum Profit", "(K - S_buy) + C_prem", "P_prem", "Identical*"],
-                            ["Maximum Loss", "S_buy - C_prem", "K - P_prem", "Identical*"],
-                            ["Breakeven Point", "S_buy - C_prem", "K - P_prem", "Identical*"],
-                        ]}
-                    />
-                    <p className="text-sm text-gray-600">*Assuming same strike K, stock purchase price S_buy = K, and parity-adjusted premiums.</p>
-                </div>
-            )
-        },
-        {
-            title: "The Practical Divergence: Why They Are Not the Same Trade",
-            content: (
-                <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>While theoretically equivalent, the strategies diverge significantly in real-world application due to capital requirements, transaction costs, dividend treatment, and tax implications.</p>
-                     <StyledTable 
-                        headers={["Aspect", "Covered Call", "Cash-Secured Put"]}
-                        data={[
-                            ["Capital Requirement", "High: Cost of 100 shares (or 50% on margin)", "Lower: Cash to secure put (can be much less with portfolio margin)"],
-                            ["Transaction Costs", "Potentially higher (2+ transactions to open/close)", "Potentially lower (1 transaction to open/close)"],
-                            ["Bid-Ask Spreads", "Can be wide for equivalent ITM calls", "Typically tighter for equivalent OTM puts"],
-                            ["Dividend Treatment", "Receives dividend directly", "Compensated with higher premium; no direct dividend"],
-                            ["Early Assignment Risk", "High risk around ex-dividend dates for ITM calls", "Low risk (generally not a concern for the writer)"],
-                            ["Tax on Assignment", "Taxable event: triggers sale of stock", "Not a taxable event: establishes cost basis for new stock"],
-                            ["Interest on Collateral", "No (capital is in stock)", "Yes (cash collateral can earn interest)"],
-                            ["Brokerage Approval", "Widely available, lower approval level", "Often requires a higher level of trading approval"]
-                        ]}
-                    />
-                </div>
-            )
-        },
-        {
-            title: "The Assignment Event: A Critical Point of Divergence",
-            content: (
-                <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>The moment of option assignment is where the paths diverge most dramatically. One is an exit event, the other an entry event.</p>
-                     <StyledTable 
-                        headers={["Aspect", "Covered Call Assignment", "Cash-Secured Put Assignment"]}
-                        data={[
-                           ["Obligation", "Sell 100 shares at strike price", "Buy 100 shares at strike price"],
-                           ["Resulting Position", "Long stock position becomes a cash position (exposure terminated)", "Cash collateral position becomes a long stock position (exposure initiated)"],
-                           ["Cash Flow", "Inflow of cash equal to (Strike Price × 100)", "Outflow of cash equal to (Strike Price × 100)"],
-                           ["Strategic Implication", "Forced exit from a position, upside capped, opportunity cost realized", "Forced entry into a position, potentially at a price above current market value"],
-                           ["Next Logical Step", "Decide whether to re-purchase the stock or deploy cash elsewhere", "Decide whether to hold the new stock, sell it, or write covered calls on it (e.g., 'The Wheel')"]
-                        ]}
-                    />
-                </div>
-            )
-        },
-        {
-            title: "The Human Element: Psychological and Behavioral Biases",
-            content: (
-                 <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>Financial decisions are filtered through the lens of human psychology. Cognitive biases create a significant gap between how the two strategies exist on paper and how they are experienced.</p>
-                    <ul className="list-disc list-inside space-y-2">
-                        <li><b>Framing Effect:</b> Covered calls are framed as "enhancing an asset," which feels safer than "selling insurance" (selling a put). This perception is often reinforced by brokerage permission levels.</li>
-                        <li><b>Loss Aversion:</b> While the financial loss from a stock decline is identical, the psychological experience differs. Closing a losing covered call feels like "selling at a reduced loss," while closing a losing put feels like "buying back a contract for a loss," which can be more psychologically painful.</li>
-                        <li><b>Regret:</b> The primary regret for a covered call writer is opportunity cost—missing a massive rally. For a put writer, the regret is one of inaction (not buying sooner), which is often less potent.</li>
-                    </ul>
-                </div>
-            )
-        },
-        {
-            title: "Strategic Implementation & Decision Framework",
-            content: (
-                <div className="space-y-4 text-gray-700 prose max-w-none">
-                    <p>The choice between the two is not about which is universally superior, but which is the most fit-for-purpose given a specific set of goals, constraints, and market conditions.</p>
-                    <h4 className="text-lg font-bold text-blue-600">The "Wheel" Strategy</h4>
-                    <p>This popular strategy explicitly links the two: Sell cash-secured puts until assigned, then sell covered calls on the newly acquired stock. If the stock is called away, return to selling puts. This creates a continuous income-generating cycle.</p>
-                    <h4 className="text-lg font-bold text-blue-600">Decision-Making Matrix</h4>
-                     <StyledTable 
-                        headers={["If your primary goal is...", "The more direct strategy is...", "Key Rationale"]}
-                        data={[
-                           ["Generate income on existing stock holdings", "Covered Call", "This strategy is specifically designed to enhance the yield of assets already in the portfolio."],
-                           ["Acquire a desired stock at a lower price", "Cash-Secured Put", "The strategy's core purpose is to enter a stock position at an effective price below the current market."],
-                           ["Maximize capital efficiency and RoC", "Cash-Secured Put", "Requires less capital, especially in a margin account, leading to higher potential returns on the capital deployed."],
-                           ["Maximize tax efficiency (deferring gains)", "Cash-Secured Put", "Assignment results in a stock purchase (not a taxable event), whereas a covered call assignment forces a taxable sale."],
-                           ["Capture stock dividends directly", "Covered Call", "Only the owner of the stock receives the dividend payment."],
-                           ["Trade in a basic retirement account (IRA)", "Covered Call", "Covered call writing is almost universally permitted, while cash-secured put selling may require higher approval levels or not be allowed by some brokers."],
-                           ["Minimize transaction costs", "Cash-Secured Put", "Often involves a single transaction with a more liquid OTM option."],
-                           ["Align with a 'safer' psychological frame", "Covered Call", "The framing of 'enhancing an asset' is often perceived as less risky and more intuitive than 'selling an obligation.'"]
-                        ]}
-                    />
-                </div>
-            )
-        },
-    ];
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
     return (
         <>
@@ -193,56 +17,291 @@ export default function CoveredCallsVsCashSecuredPutsPage() {
                 <>
                     <StructuredData article={currentArticle} />
                     <BreadcrumbStructuredData 
-                        articleTitle={currentArticle.title} 
-                        articleSlug={currentArticle.slug} 
+                        articleTitle={currentArticle.title || ''} 
+                        articleSlug={currentArticle.slug || ''} 
                     />
                 </>
             )}
             
-            <div className="bg-white text-gray-900 min-h-screen font-sans">
-                <main className="container mx-auto px-4 py-8 md:py-16">
-                    <div className="flex items-center gap-4 mb-4">
-                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            Return to Home
-                        </Link>
+            {/* Return to Home Button */}
+            <div className="max-w-5xl mx-auto px-6 pt-8">
+                <div className="flex items-center gap-4 mb-4">
+                    <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Return to Home
+                    </Link>
+                    {currentArticle?.googleDoc && (
+                        <a 
+                            href={currentArticle.googleDoc}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 transition-colors duration-200 text-white font-medium"
+                        >
+                            <FileText className="mr-2 h-4 w-4" />
+                            Full Research Paper
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            {/* Hero Section */}
+            <div className="bg-white relative overflow-hidden border-b border-slate-100">
+                <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+                        Covered Calls vs Cash-Secured Puts
+                    </h1>
+                    <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+                        Theoretical equivalence meets practical divergence. Discover why these mathematically identical strategies create vastly different trading experiences.
+                    </p>
+                </div>
+            </div>
+
+            {/* Hero Infographic - Below Title with Full-Screen Capability */}
+            <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+                <div 
+                    className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                    onClick={() => setIsImageViewerOpen(true)}
+                >
+                    <img 
+                        src="https://i.imgur.com/otXoq7h.jpeg" 
+                        alt="Covered Calls vs Cash-Secured Puts Strategy Comparison" 
+                        className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                    />
+                    {/* Full-screen button overlay */}
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsImageViewerOpen(true);
+                        }}
+                        className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                        title="View full screen"
+                    >
+                        <Maximize2 className="h-4 w-4" />
+                    </button>
+                    {/* Click hint */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                        <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                            Click to view full screen
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Full-screen image viewer */}
+            <FullScreenImageViewer
+                src="https://i.imgur.com/otXoq7h.jpeg"
+                alt="Covered Calls vs Cash-Secured Puts Strategy Comparison"
+                isOpen={isImageViewerOpen}
+                onClose={() => setIsImageViewerOpen(false)}
+            />
+
+            {/* Main Content */}
+            <main className="max-w-5xl mx-auto px-6 py-16">
+                
+                {/* Key Insights Section */}
+                <section className="mb-16">
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
+                            <TrendingUp className="h-8 w-8 text-blue-600 mb-4" />
+                            <h3 className="text-lg font-semibold text-blue-900 mb-2">Theoretical Equivalence</h3>
+                            <p className="text-blue-700 text-sm">Put-call parity proves these strategies have identical risk/reward profiles when properly structured.</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100">
+                            <DollarSign className="h-8 w-8 text-green-600 mb-4" />
+                            <h3 className="text-lg font-semibold text-green-900 mb-2">Practical Differences</h3>
+                            <p className="text-green-700 text-sm">Capital requirements, tax treatment, and transaction costs create significant real-world divergence.</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100">
+                            <Target className="h-8 w-8 text-purple-600 mb-4" />
+                            <h3 className="text-lg font-semibold text-purple-900 mb-2">Strategic Choice</h3>
+                            <p className="text-purple-700 text-sm">Selection depends on your goals: income enhancement vs. strategic entry positioning.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Strategy Mechanics */}
+                <section className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Strategy Mechanics</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 className="text-xl font-semibold text-slate-900 mb-4">Covered Call</h3>
+                            <div className="space-y-3 text-slate-700">
+                                <p><strong>Position:</strong> Own 100 shares + Sell 1 call option</p>
+                                <p><strong>Goal:</strong> Generate income on existing holdings</p>
+                                <p><strong>Obligation:</strong> Sell shares at strike if assigned</p>
+                                <p><strong>Ideal Market:</strong> Neutral to slightly bullish</p>
+                                <p><strong>Assignment Result:</strong> Stock → Cash position</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 className="text-xl font-semibold text-slate-900 mb-4">Cash-Secured Put</h3>
+                            <div className="space-y-3 text-slate-700">
+                                <p><strong>Position:</strong> Cash collateral + Sell 1 put option</p>
+                                <p><strong>Goal:</strong> Acquire stock at discount or generate income</p>
+                                <p><strong>Obligation:</strong> Buy shares at strike if assigned</p>
+                                <p><strong>Ideal Market:</strong> Neutral to bullish</p>
+                                <p><strong>Assignment Result:</strong> Cash → Stock position</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Put-Call Parity */}
+                <section className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">The Mathematical Truth: Put-Call Parity</h2>
+                    <div className="bg-gradient-to-r from-slate-50 to-blue-50 p-8 rounded-xl border border-slate-200">
+                        <div className="text-center mb-6">
+                            <div className="bg-white p-4 rounded-lg inline-block border border-slate-300">
+                                <p className="text-2xl font-mono text-slate-800">C + PV(K) = P + S</p>
+                            </div>
+                        </div>
+                        <p className="text-slate-700 text-center max-w-3xl mx-auto">
+                            This fundamental equation proves that a covered call (S - C) is synthetically equivalent to a cash-secured put (PV(K) - P). 
+                            Their profit/loss diagrams are identical when using the same strike price and expiration.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Practical Differences Table */}
+                <section className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Where Theory Meets Reality</h2>
+                    <div className="overflow-x-auto">
+                        <table className="w-full bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr className="bg-slate-50">
+                                    <th className="py-4 px-6 text-left text-sm font-semibold text-slate-700 border-b border-slate-200">Factor</th>
+                                    <th className="py-4 px-6 text-left text-sm font-semibold text-slate-700 border-b border-slate-200">Covered Call</th>
+                                    <th className="py-4 px-6 text-left text-sm font-semibold text-slate-700 border-b border-slate-200">Cash-Secured Put</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 px-6 font-medium text-slate-900 border-b border-slate-100">Capital Required</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">High (100 shares)</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Lower (cash collateral)</td>
+                                </tr>
+                                <tr className="hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 px-6 font-medium text-slate-900 border-b border-slate-100">Dividend Treatment</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Direct receipt</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Priced into premium</td>
+                                </tr>
+                                <tr className="hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 px-6 font-medium text-slate-900 border-b border-slate-100">Tax on Assignment</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Taxable sale event</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Establishes cost basis</td>
+                                </tr>
+                                <tr className="hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 px-6 font-medium text-slate-900 border-b border-slate-100">Early Assignment Risk</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">High (ex-dividend dates)</td>
+                                    <td className="py-4 px-6 text-slate-700 border-b border-slate-100">Low</td>
+                                </tr>
+                                <tr className="hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 px-6 font-medium text-slate-900">Psychological Frame</td>
+                                    <td className="py-4 px-6 text-slate-700">"Enhancing an asset"</td>
+                                    <td className="py-4 px-6 text-slate-700">"Selling insurance"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {/* Decision Framework */}
+                <section className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Strategic Decision Framework</h2>
+                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-xl border border-amber-200">
+                        <h3 className="text-xl font-semibold text-amber-900 mb-6">Choose Covered Calls When:</h3>
+                        <ul className="space-y-2 text-amber-800">
+                            <li>• You already own the underlying stock</li>
+                            <li>• You want to generate income on existing holdings</li>
+                            <li>• You're comfortable with potential upside limitation</li>
+                            <li>• You want to receive dividends directly</li>
+                            <li>• You're trading in a basic retirement account</li>
+                        </ul>
+                    </div>
+                    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-xl border border-emerald-200 mt-6">
+                        <h3 className="text-xl font-semibold text-emerald-900 mb-6">Choose Cash-Secured Puts When:</h3>
+                        <ul className="space-y-2 text-emerald-800">
+                            <li>• You want to acquire stock at a lower price</li>
+                            <li>• You're seeking capital efficiency (higher ROC)</li>
+                            <li>• You want to defer taxable events</li>
+                            <li>• You have cash earning interest as collateral</li>
+                            <li>• You're implementing "The Wheel" strategy</li>
+                        </ul>
+                    </div>
+                </section>
+
+                {/* The Wheel Strategy */}
+                <section className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">The Wheel: Connecting Both Strategies</h2>
+                    <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                        <div className="grid md:grid-cols-3 gap-6">
+                            <div className="text-center">
+                                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-blue-600">1</span>
+                                </div>
+                                <h4 className="font-semibold text-slate-900 mb-2">Sell Cash-Secured Puts</h4>
+                                <p className="text-sm text-slate-600">Generate income while waiting for assignment</p>
+                            </div>
+                            <div className="text-center">
+                                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-green-600">2</span>
+                                </div>
+                                <h4 className="font-semibold text-slate-900 mb-2">Get Assigned Stock</h4>
+                                <p className="text-sm text-slate-600">Acquire shares at your chosen strike price</p>
+                            </div>
+                            <div className="text-center">
+                                <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-purple-600">3</span>
+                                </div>
+                                <h4 className="font-semibold text-slate-900 mb-2">Sell Covered Calls</h4>
+                                <p className="text-sm text-slate-600">Generate income on your new stock position</p>
+                            </div>
+                        </div>
+                        <div className="text-center mt-8">
+                            <p className="text-slate-600">If called away, return to step 1. This creates a continuous income-generating cycle.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Risk Warnings */}
+                <section className="mb-16">
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+                        <h3 className="text-lg font-semibold text-red-900 mb-4">⚠️ Important Risk Considerations</h3>
+                        <ul className="space-y-2 text-red-800 text-sm">
+                            <li>• Both strategies involve unlimited downside risk if the underlying stock declines significantly</li>
+                            <li>• Covered calls cap your upside potential - you'll miss out on gains above the strike price</li>
+                            <li>• Cash-secured puts may force you to buy stock at above-market prices</li>
+                            <li>• Early assignment can disrupt your strategy, especially around dividend dates</li>
+                            <li>• Options trading requires approval and understanding of complex mechanics</li>
+                        </ul>
+                    </div>
+                </section>
+
+                {/* Call to Action */}
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl text-center">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4">Continue Your Options Education</h3>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         {currentArticle?.googleDoc && (
                             <a 
                                 href={currentArticle.googleDoc}
-                                target="_blank"
+                                target="_blank" 
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 transition-colors duration-200 text-white font-medium"
+                                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
                             >
-                                <FileText className="mr-2 h-4 w-4" />
-                                Full Google Doc
+                                <FileText className="inline mr-2" />
+                                Read Full Research Paper
                             </a>
                         )}
                     </div>
-                    <header className="text-center mb-12">
-                        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
-                            Covered Calls vs. Cash-Secured Puts
-                        </h1>
-                        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                            A Comprehensive Analysis of Theoretical Equivalence and Practical Divergence
-                        </p>
-                    </header>
-                    
-                    <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200">
-                        {sections.map((section, index) => (
-                            <Section 
-                                key={index}
-                                title={section.title}
-                            >
-                                {section.content}
-                            </Section>
-                        ))}
-                    </div>
+                </div>
 
-                <footer className="text-center mt-16 text-gray-600">
-                    <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-                </footer>
             </main>
-        </div>
+
+            {/* Footer */}
+            <footer className="bg-slate-50 border-t border-slate-200 py-8">
+                <div className="max-w-5xl mx-auto px-6 text-center">
+                    <p className="text-slate-600">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
+                </div>
+            </footer>
         </>
     );
-} 
+}

@@ -371,7 +371,7 @@ export const articles2025Q3: Article[] = [
     options: true,
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub",
-    imageUrl: "https://www.prospertrading.com/wp-content/uploads/2019/03/Options-961x641.jpg"
+    imageUrl: "https://i.imgur.com/otXoq7h.jpeg"
   },
 {
     title: "An Institutional Analysis of Long-Horizon Trend Regression",
