@@ -14,6 +14,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "option-when-to-trade",
       "navigating-minefield-options-trading-pitfalls",
       "option-pitfalls",
+      "options-strategy-report-october-10-market-event",
+      "option-strategy-grey-rhino",
       "tax-efficient-option-writing-comprehensive-guide",
       "tax-efficient-option-writing",
       "decoding-options-market-volume-open-interest-analysis",
@@ -32,6 +34,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/navigating-minefield-options-trading-pitfalls",
           videoUrl: "https://youtu.be/IvWGgDNQoUk",
           visualGuideUrl: "https://i.imgur.com/Sbugskc.jpeg",
+        },
+        {
+          text: "Option Strategies for Market Shock",
+          url: "https://www.sophie-ai-finance.com/articles/options-strategy-report-october-10-market-event",
+          videoUrl: "https://youtu.be/UTPVKLS87zg",
+          visualGuideUrl: "https://i.imgur.com/pM6d7Cb.jpeg",
         },
         {
           text: "Tax-Efficient Option Writing and Common Pitfalls",
