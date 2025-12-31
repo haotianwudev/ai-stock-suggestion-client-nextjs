@@ -47,13 +47,15 @@ import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strateg
 import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
 import { BullPutSpreadStrategyDetail } from './strategies/bull-put-spread-strategy';
 import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
+import { CoveredCallStrategyDetail } from './strategies/covered-call-strategy';
+import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
     {
         id: 'long_call',
-        category: ['Bullish', 'Risk Defined'],
+        category: ['Bullish'],
         name: 'Long Call',
         description: "The most straightforward bullish strategy. Buy a call option expecting the underlying asset's price to rise significantly. Profit potential is unlimited, while risk is limited to the premium paid.",
         profile: 'Defined Risk, Unlimited Profit',
@@ -64,7 +66,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_call_spread',
-        category: ['Bullish', 'Risk Defined'],
+        category: ['Bullish'],
         name: 'Bull Call Spread',
         description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.",
         profile: 'Defined Risk, Defined Profit',
@@ -91,26 +93,35 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'covered_call',
-        category: ['Bullish', 'Income'],
+        category: ['Bullish', 'Income', 'Featured'],
         name: 'Covered Call Writing',
-        description: "A conservative income strategy. Hold the underlying stock and sell a call option against it. You collect premium income and profit if the stock stays flat or rises moderately. Risk is similar to holding the stock, profit is capped by the call strike.",
+        description: "A conservative income strategy combining stock ownership with call option sales. Generate 1-3% monthly premium income while maintaining dividend rights. Popular among income-focused investors and as part of the Wheel Strategy. Risk is similar to stock ownership with capped upside potential.",
         profile: 'Stock Risk, Limited Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { stockPrice, strike1, premium }) => 
             (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium)),
-        relatedArticles: ["notebooklm-uncovers-nature-covered-calls-global-research",],
+        youtubeId: 'fKpmR9DxYpk',
+        payoffExplanation: "Maximum profit occurs when stock price equals or exceeds the call strike at expiration. Profit is capped at strike price plus premium received.",
+        relatedArticles: ["covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
+        detailComponent: CoveredCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'put_writing',
         category: ['Bullish', 'Income'],
-        name: 'Put Writing',
-        description: "A bullish income strategy. You collect premium and profit if the stock stays above the strike. Risk is substantial if the stock falls sharply, profit is limited to the premium received.",
+        name: 'Put Writing (Cash-Secured & Naked)',
+        description: "A versatile income strategy with two variants: cash-secured (conservative) and naked (leveraged). Sell put options to generate premium income while positioning for potential stock acquisition at attractive prices. Core component of the Wheel Strategy and systematic premium collection programs.",
         profile: 'Substantial Risk, Limited Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             (p >= strike1 ? premium : premium + (p - strike1)),
+        youtubeId: 'fKpmR9DxYpk',
+        payoffExplanation: "Maximum profit occurs when stock price stays above the put strike at expiration. Maximum loss occurs when stock falls to zero (minus premium received).",
+        relatedArticles: ["covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
+        detailComponent: PutWritingStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'long_put',
@@ -129,7 +140,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_put_spread',
-        category: ['Bearish', 'Risk Defined'],
+        category: ['Bearish'],
         name: 'Bear Put Spread',
         description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.",
         profile: 'Defined Risk, Defined Profit',
@@ -156,7 +167,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'short_straddle',
-        category: ['Neutral', 'Income'],
+        category: ['Neutral', 'Income', 'Featured'],
         name: 'Short Straddle',
         description: "A bet on low volatility. Sell an at-the-money call and put. You profit if the stock price stays very close to the strike price. Risk is theoretically unlimited.",
         profile: 'Unlimited Risk, Defined Profit',
@@ -172,7 +183,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'short_strangle',
-        category: ['Neutral', 'Income', 'Featured'],
+        category: ['Neutral', 'Income'],
         name: 'Short Strangle',
         description: "A high-probability neutral strategy. Sell an out-of-the-money call and put at different strikes. You profit if the stock stays between the strikes, offering a wider profit zone than straddles.",
         profile: 'Unlimited Risk, Defined Profit',
@@ -254,13 +265,13 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'GGKItsjV-L8',
         payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
-        relatedArticles: ["wheel-strategy",'options-wheel-trading-plan-quantitative-approach', "spx-option-underlyer", "mastering-volatility-risk-premium-spx-options-selling"],
+        relatedArticles: ["covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
         infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg',
         detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'leaps_put_selling',
-        category: ['Bullish', 'Featured'],
+        category: ['Bullish'],
         name: 'LEAPS Put Selling',
         description: "A sophisticated institutional strategy for selling long-dated put options (LEAPs) to generate premium income while potentially acquiring quality stocks at attractive prices. Focuses on volatility arbitrage and strategic acquisition rather than short-term income generation.",
         profile: 'Substantial Risk, Premium Income',
