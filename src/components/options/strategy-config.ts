@@ -85,7 +85,7 @@ export const strategies: Strategy[] = [
             (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4),
         youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price stays above the short put strike at expiration. Maximum loss occurs when stock falls below the long put strike.",
-        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling", "vertical-spread",],
         infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
         detailComponent: BullPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -99,6 +99,7 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { stockPrice, strike1, premium }) => 
             (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium)),
+        relatedArticles: ["notebooklm-uncovers-nature-covered-calls-global-research",],
     },
     {
         id: 'sell_naked_put',
@@ -139,7 +140,7 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_call_spread',
-        category: ['Bearish', 'Income', 'Risk Defined', 'Featured'],
+        category: ['Bearish', 'Income', 'Risk Defined'],
         name: 'Bear Call Spread',
         description: "An income-generating bearish strategy. Sell a call and buy another with a higher strike. You collect a credit and profit if the stock stays below the short call's strike.",
         profile: 'Defined Risk, Defined Profit',
@@ -149,7 +150,7 @@ export const strategies: Strategy[] = [
             (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1),
         youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price stays below the short call strike at expiration. Maximum loss occurs when stock rises above the long call strike.",
-        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling", "vertical-spread",],
         infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
         detailComponent: BearCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -165,7 +166,7 @@ export const strategies: Strategy[] = [
             (premium * 2) - Math.abs(p - strike1),
         youtubeId: 'AtRXXgVRtlk',
         payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at expiration. Losses increase as price moves away from the strike in either direction.",
-        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection", "short-straddle-strangle"],
         infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
         detailComponent: ShortStraddleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -181,7 +182,7 @@ export const strategies: Strategy[] = [
             (premium * 1.5) - Math.max(0, p - strike2) - Math.max(0, strike3 - p),
         youtubeId: 'AtRXXgVRtlk',
         payoffExplanation: "Maximum profit occurs when the stock price stays between the put and call strikes at expiration. Losses increase as price moves beyond either strike.",
-        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection", "short-straddle-strangle"],
         infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
         detailComponent: ShortStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },

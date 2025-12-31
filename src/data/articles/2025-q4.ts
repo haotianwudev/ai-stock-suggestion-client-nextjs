@@ -469,6 +469,7 @@ export const articles2025Q4: Article[] = [
 {
     title: "Profit from Time Decay & IV Crush: Mastering Short Straddles and Strangles",
     description: "This comprehensive guide dissects the short straddle and short strangle, sophisticated options strategies designed to profit from the statistical tendency of implied volatility (IV) to consistently exceed realized volatility (RV)—a phenomenon known as the Volatility Risk Premium (VRP). ",
+    slug: "short-straddle-strangle",
     date: "November 16, 2025",
     youtubeUrl: "https://youtu.be/AtRXXgVRtlk",
     isVideo: true,
