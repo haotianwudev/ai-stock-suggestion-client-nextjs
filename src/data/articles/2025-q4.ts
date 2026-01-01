@@ -1066,7 +1066,7 @@ export const articles2025Q4: Article[] = [
     description: "An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.",
     slug: "anatomy-quant-fund-alpha-discovery-automated-execution",
     date: "October 2, 2025",
-    imageUrl: "https://hedgefundalpha.com/wp-content/uploads/2023/10/HedgeFundAlpha.jpg",
+    imageUrl: "https://i.imgur.com/rUsDCw7.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSfuwe6YvcQpBwLBF8M8qbKNl4tF6Vdi5cgWgQoOuaCIi3X7EeiX6ryme22sB6QNV1rHCQgZ_SLZope/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5go6IpDzzcDSiqC6Q06uxI?si=CpaGEZk9Td-eQS4h1k2NFQ",

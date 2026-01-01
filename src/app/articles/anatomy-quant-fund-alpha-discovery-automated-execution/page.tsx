@@ -1,12 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, Briefcase, Play, Bot, Zap, Cpu, Search, Scale, TestTube, ChevronsRight, Target, Telescope, Atom, Infinity, BarChart, FileText, ShieldCheck, TrendingUp, Code2, ListChecks, Music } from 'lucide-react';
+import { ArrowLeft, BrainCircuit, Briefcase, Play, Bot, Zap, Cpu, Search, Scale, TestTube, ChevronsRight, Target, Telescope, Atom, Infinity, BarChart, FileText, ShieldCheck, TrendingUp, Code2, ListChecks, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { useState } from 'react';
 
 export default function QuantWorkflowPage() {
   const currentArticle = articles.find(article => article.slug === 'anatomy-quant-fund-alpha-discovery-automated-execution');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
   const Highlight = ({ children }: { children: React.ReactNode }) => (
     <span className="font-semibold text-blue-600">{children}</span>
@@ -15,7 +18,7 @@ export default function QuantWorkflowPage() {
   return (
     <>
       {/* SEO Components - MANDATORY */}
-      {currentArticle && (
+      {currentArticle && currentArticle.title && currentArticle.slug && (
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
@@ -26,10 +29,86 @@ export default function QuantWorkflowPage() {
       )}
       
       <div className="bg-gray-50 text-gray-800 font-sans">
-        <Header />
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <HeroSection />
-          <div className="space-y-24">
+        {/* Return to Home Button */}
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
+        </div>
+
+        {/* Hero Section with Title */}
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          {/* Badges */}
+          <div className="absolute top-8 left-6 z-20">
+            <span className="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Deep Research
+            </span>
+          </div>
+          <div className="absolute top-8 right-6 z-20">
+            <span className="inline-block bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Podcast
+            </span>
+          </div>
+          
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              The Anatomy of a Quant Fund
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+              An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. 
+              Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction 
+              with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.
+            </p>
+          </div>
+        </div>
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        {currentArticle?.imageUrl && (
+          <section className="max-w-5xl mx-auto px-6 pt-8 pb-4">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              onClick={() => setIsImageViewerOpen(true)}
+            >
+              <img 
+                src={currentArticle.imageUrl} 
+                alt="Quant Fund Workflow Infographic" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsImageViewerOpen(true);
+                }}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+              {/* Click hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                  Click to view full screen
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Full-screen image viewer */}
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="Quant Fund Workflow Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
+
+        {/* Main Content Starts Here */}
+        <main className="max-w-5xl mx-auto px-6 py-8">
+          <div className="space-y-6">
             <AlphaGenerationSection Highlight={Highlight} />
             <PortfolioConstructionSection Highlight={Highlight} />
             <BacktestingSection Highlight={Highlight} />
@@ -39,7 +118,7 @@ export default function QuantWorkflowPage() {
           </div>
           
           {/* Call to Action Section */}
-          <div className="mt-16 text-center bg-white rounded-xl p-8 shadow-lg border border-gray-200">
+          <div className="mt-8 text-center bg-white rounded-xl p-6 shadow-lg border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Explore More Quantitative Finance Content
             </h2>
@@ -78,57 +157,6 @@ export default function QuantWorkflowPage() {
   );
 }
 
-// Header Component
-const Header = () => (
-  <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between h-16">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-          <div className="flex items-center space-x-3">
-            <Zap className="h-7 w-7 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900 tracking-tight">QuantFlow</span>
-          </div>
-        </div>
-        <nav className="hidden md:flex items-center space-x-6">
-          <a href="#alpha" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">Alpha</a>
-          <a href="#portfolio" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">Portfolio</a>
-          <a href="#backtesting" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">Backtesting</a>
-          <a href="#execution" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">Execution</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-);
-
-// Hero Section Component
-const HeroSection = () => (
-  <section className="text-center py-16 sm:py-24 relative">
-    {/* Badges */}
-    <div className="absolute top-0 left-0">
-      <span className="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-        Deep Research
-      </span>
-    </div>
-    <div className="absolute top-0 right-0">
-      <span className="inline-block bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-        Podcast
-      </span>
-    </div>
-    
-    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tighter mb-4">
-      The Anatomy of a Quant Fund
-    </h1>
-    <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed mb-8">
-      Explore the end-to-end systematic workflow that transforms complex data into market-neutral returns, 
-      from initial idea generation to automated, low-latency execution.
-    </p>
-  </section>
-);
-
 // Section Component Wrapper
 const WorkflowSection = ({ 
   id, 
@@ -143,15 +171,15 @@ const WorkflowSection = ({
   subtitle: string;
   children: React.ReactNode;
 }) => (
-  <section id={id} className="py-12">
-    <div className="text-center mb-12">
-      <div className="inline-block p-4 bg-blue-100 border border-blue-200 rounded-full mb-4">
+  <section id={id} className="py-4">
+    <div className="text-center mb-6">
+      <div className="inline-block p-3 bg-blue-100 border border-blue-200 rounded-full mb-3">
         {icon}
       </div>
-      <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{title}</h2>
-      <p className="text-md text-blue-600 font-semibold">{subtitle}</p>
+      <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{title}</h2>
+      <p className="text-sm text-blue-600 font-semibold">{subtitle}</p>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {children}
     </div>
   </section>
@@ -315,15 +343,15 @@ const ExecutionSection = ({ Highlight }: { Highlight: React.ComponentType<{ chil
 
 // Technology Stack Section
 const TechnologyStackSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
-  <section id="tech-stack" className="py-12">
-    <div className="text-center mb-12">
-      <div className="inline-block p-4 bg-blue-100 border border-blue-200 rounded-full mb-4">
-        <Code2 className="h-8 w-8 text-blue-600" />
+  <section id="tech-stack" className="py-4">
+    <div className="text-center mb-6">
+      <div className="inline-block p-3 bg-blue-100 border border-blue-200 rounded-full mb-3">
+        <Code2 className="h-6 w-6 text-blue-600" />
       </div>
-      <h2 className="text-3xl font-bold text-gray-900 tracking-tight">The Technology Stack</h2>
-      <p className="text-md text-blue-600 font-semibold">The Infrastructure Powering a Modern Quant Fund</p>
+      <h2 className="text-2xl font-bold text-gray-900 tracking-tight">The Technology Stack</h2>
+      <p className="text-sm text-blue-600 font-semibold">The Infrastructure Powering a Modern Quant Fund</p>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <TechCard title="Languages">
         <ul className="text-sm text-gray-600 list-disc list-inside space-y-2 text-left">
           <li><Highlight>Python</Highlight>: Dominant for research, data analysis, and model prototyping (Pandas, NumPy, Scikit-learn).</li>
@@ -399,9 +427,8 @@ const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentTy
 // Footer Component
 const Footer = () => (
   <footer className="border-t border-gray-200 mt-20">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
-      <p className="text-sm">&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-      <p className="text-xs mt-2">A conceptual interface for understanding the systematic hedge fund workflow. Not financial advice.</p>
+    <div className="max-w-5xl mx-auto px-6 py-8 text-center text-gray-500">
+      <p className="text-sm">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
     </div>
   </footer>
 );
