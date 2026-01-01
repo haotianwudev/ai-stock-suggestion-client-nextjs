@@ -109,6 +109,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/QQjvEWV9-WQ",
           visualGuideUrl: "https://i.imgur.com/rUsDCw7.jpeg",
         },
+        {
+          text: "WorldQuant Alpha Factory",
+          url: "https://www.sophie-ai-finance.com/articles/worldquant-alpha-factory-industrialized-quantitative-signal-generation",
+          videoUrl: "https://youtu.be/L0aVoPLqcFw",
+          visualGuideUrl: "https://i.imgur.com/boJhFsQ.jpeg",
+        },
       ]
     }
   }

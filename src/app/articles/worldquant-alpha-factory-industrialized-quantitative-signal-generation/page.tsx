@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Factory, Users, FileText } from 'lucide-react';
+import { ArrowLeft, Factory, Users, FileText, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 const ContentSection = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
   <section id={id} className="mb-16 scroll-mt-24">
@@ -15,6 +16,8 @@ const ContentSection = ({ id, title, children }: { id: string; title: string; ch
 );
 
 export default function WorldQuantAlphaFactoryArticle() {
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  
   const currentArticle = articles.find(
     (article) => article.slug === 'worldquant-alpha-factory-industrialized-quantitative-signal-generation'
   );
@@ -60,12 +63,32 @@ export default function WorldQuantAlphaFactoryArticle() {
 
         {/* Hero Infographic */}
         <section className="mb-12">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
             <img 
               src="https://i.imgur.com/boJhFsQ.jpeg" 
               alt="WorldQuant Alpha Factory Framework Infographic" 
-              className="w-full h-auto"
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
             />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
+            </div>
           </div>
         </section>
 
@@ -265,6 +288,14 @@ export default function WorldQuantAlphaFactoryArticle() {
           <p>&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
         </footer>
       </main>
+      
+      {/* Full-screen image viewer */}
+      <FullScreenImageViewer
+        src="https://i.imgur.com/boJhFsQ.jpeg"
+        alt="WorldQuant Alpha Factory Framework Infographic"
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
     </div>
   );
 }
