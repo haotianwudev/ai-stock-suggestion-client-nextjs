@@ -1,7 +1,6 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
-  
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
     description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
@@ -11,6 +10,16 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub",
     deepResearch: true,
     options: true,
+  },
+  {
+    title: "Systematic vs. Model Quantitative Trading: The Evolution of Algorithmic Finance",
+    description: "A comprehensive deep dive into the fundamental differences between traditional systematic trading and modern model-based quantitative approaches. From deterministic rule-based strategies to probabilistic machine learning models, explore how algorithmic trading has evolved and where the industry is heading.",
+    slug: "systematic-vs-model-quantitative-trading-evolution",
+    date: "January 22, 2026",
+    imageUrl: "https://i.imgur.com/1HBWYfN.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSX2D-OpfAaOa901lFoIpi8XfiHSjO8pLOpsQ5N578oik1dLwwDp49i_LSk2DDTV8kgORTpKnF9Jn0w/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
   {
     title: "The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds",

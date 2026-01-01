@@ -10,6 +10,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     videoUrl: 'https://youtu.be/z32X0C5F5JE',
     infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
+      "systematic-vs-model-quantitative-trading-evolution",
       "smart-beta",
       "smart-beta-systematic-personal-investing-strategies",
       "factor-models",
@@ -18,6 +19,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     ],
     studyGuide: {
       items: [
+        {
+          text: "Systematic Trading vs Machine Learning Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/systematic-vs-model-quantitative-trading-evolution",
+          visualGuideUrl: "https://i.imgur.com/1HBWYfN.jpeg",
+        },
         {
           text: "Smart Beta",
           url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
