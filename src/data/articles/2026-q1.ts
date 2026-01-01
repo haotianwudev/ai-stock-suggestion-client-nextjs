@@ -84,4 +84,13 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
     options: true,
   },
+  {
+    title: "2026 Market Outlook: Surviving Stagflation Lite, The AI Energy Wall & The OBBBA Tax Shock",
+    description: "The global economy is hitting a pivotal inflection point in 2026. This video breaks down the regime of Stagflation Lite, where growth remains resilient but inflation stays stubbornly above target due to the new One Big Beautiful Bill Act (OBBBA) and aggressive tariff policies.",
+    date: "January 1, 2026",
+    youtubeUrl: "https://youtu.be/oY2XSiVxYtQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/oY2XSiVxYtQ/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
+  },
 ];
