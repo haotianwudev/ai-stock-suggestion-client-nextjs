@@ -241,7 +241,7 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
           <div className="text-sm text-teal-700 space-y-3">
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Tier 1 - Best Liquidity:</h4>
-              <p><strong>SPY, QQQ, IWM:</strong> Tight spreads, high volume, European-style settlement</p>
+              <p><strong>SPX, XSP, NDX:</strong> Tight spreads, high volume, European-style settlement</p>
             </div>
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Tier 2 - Good Options:</h4>
