@@ -249,7 +249,7 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
             </div>
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Individual Stocks (Advanced):</h4>
-              <p><strong>AAPL, MSFT, GOOGL, AMZN:</strong> High volume, but watch dividend risk</p>
+              <p><strong>AAPL, MSFT, GOOGL, AMZN:</strong> High volume, but watch dividend risk and news shock</p>
             </div>
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Avoid:</h4>
