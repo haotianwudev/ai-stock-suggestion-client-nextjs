@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Repeat, Scale, ShieldCheck, Target, BookOpen, BrainCircuit, ChevronsUp, ChevronsDown, DollarSign, BarChart, Briefcase, ChevronDown, Lightbulb, CheckCircle, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Repeat, Scale, ShieldCheck, Target, BookOpen, BrainCircuit, ChevronsUp, ChevronsDown, DollarSign, BarChart, Briefcase, ChevronDown, Lightbulb, CheckCircle, AlertTriangle, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // TypeScript interfaces for component props
 interface CardProps {
@@ -425,6 +426,7 @@ const RoadmapSection = () => (
 
 export default function PersonalQuantTradingStrategies() {
     const currentArticle = articles.find(article => article.slug === 'personal-quant-trading-strategies-independent-analysts');
+    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -475,6 +477,40 @@ export default function PersonalQuantTradingStrategies() {
                     </div>
                     
                     <HeroSection />
+                    
+                    {/* Hero Infographic - Below Title with Full-Screen Capability */}
+                    {currentArticle?.imageUrl && (
+                        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+                            <div 
+                                className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                                onClick={() => setIsImageViewerOpen(true)}
+                            >
+                                <img 
+                                    src={currentArticle.imageUrl} 
+                                    alt="Personal Quant Trading Strategies Infographic" 
+                                    className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                                />
+                                {/* Full-screen button overlay */}
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsImageViewerOpen(true);
+                                    }}
+                                    className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                                    title="View full screen"
+                                >
+                                    <Maximize2 className="h-4 w-4" />
+                                </button>
+                                {/* Click hint */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                                    <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                                        Click to view full screen
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    )}
+                    
                     <ArenaSection />
                     <StrategiesSection />
                     <ToolkitSection />
@@ -524,9 +560,19 @@ export default function PersonalQuantTradingStrategies() {
                 {/* Footer */}
                 <footer className="bg-white border-t border-gray-200">
                     <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                        <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+                        <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
                     </div>
                 </footer>
+                
+                {/* Full-screen image viewer */}
+                {currentArticle?.imageUrl && (
+                    <FullScreenImageViewer
+                        src={currentArticle.imageUrl}
+                        alt="Personal Quant Trading Strategies Infographic"
+                        isOpen={isImageViewerOpen}
+                        onClose={() => setIsImageViewerOpen(false)}
+                    />
+                )}
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     relatedArticles: [
       "smart-beta",
       "smart-beta-systematic-personal-investing-strategies",
+      "personal-quant-trading-strategies-independent-analysts",
     ],
     studyGuide: {
       items: [
@@ -20,6 +21,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
           videoUrl: 'https://youtu.be/xZY-O9-4AUs',
           visualGuideUrl: "https://i.imgur.com/CWJK4x1.jpeg",
+        },
+        {
+          text: "Rule Based Strategies",
+          url: "https://www.sophie-ai-finance.com/articles/personal-quant-trading-strategies-independent-analysts",
+          visualGuideUrl: "https://i.imgur.com/JbYaRHq.jpeg",
         },
        
       ]

@@ -986,7 +986,7 @@ export const articles2025Q4: Article[] = [
     description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
     slug: "personal-quant-trading-strategies-independent-analysts",
     date: "October 9, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_Quantitative_Trading_c50e8dd739.png",
+    imageUrl: "https://i.imgur.com/JbYaRHq.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
