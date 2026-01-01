@@ -2,14 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronUp, Menu, X, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, ChevronUp, Maximize2, CheckCircle, XCircle } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function SmartBetaGuide() {
   const currentArticle = articles.find(article => article.slug === 'smart-beta-systematic-personal-investing-strategies');
   const [activeSection, setActiveSection] = useState('');
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   // Navigation sections
   const sections = [
@@ -41,14 +42,6 @@ export default function SmartBetaGuide() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsNavOpen(false);
-  };
 
   // Scroll to top functionality
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -133,69 +126,74 @@ export default function SmartBetaGuide() {
       )}
 
       <div className="min-h-screen bg-gray-50">
-        {/* Header with Navigation */}
-        <header className="bg-white shadow-sm sticky top-0 z-40">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Return to Home
-              </Link>
-              
-              {/* Mobile menu button */}
-              <button 
-                onClick={() => setIsNavOpen(!isNavOpen)}
-                className="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100"
-              >
-                {isNavOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
+        {/* Return to Home Button */}
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
+        </div>
+
+        {/* Hero Section with Title */}
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            {/* Deep Research Badge */}
+            <div className="absolute top-4 left-4">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
+                Deep Research
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
+              Smart Beta: A Comprehensive Guide to Systematic and Personal Investing Strategies
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+              Smart beta represents a significant evolution in investment strategy, occupying a complex middle ground between traditional passive indexing and active management. This comprehensive analysis provides an exhaustive examination of smart beta strategies, their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.
+            </p>
+          </div>
+        </div>
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/CWJK4x1.jpeg" 
+              alt="Smart Beta Investment Strategy Infographic" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
             </div>
           </div>
-        </header>
+        </section>
 
-        <div className="container mx-auto px-4 py-8 flex gap-8">
-          {/* Sidebar Navigation */}
-          <aside className={`${isNavOpen ? 'block' : 'hidden'} md:block w-64 flex-shrink-0`}>
-            <div className="sticky top-24 bg-white rounded-lg shadow-md p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Table of Contents</h3>
-              <nav className="space-y-2">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
-                      activeSection === section.id 
-                        ? 'bg-blue-100 text-blue-700 font-medium' 
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`}
-                  >
-                    {section.shortTitle}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </aside>
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/CWJK4x1.jpeg"
+          alt="Smart Beta Investment Strategy Infographic"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
 
-          {/* Main Content */}
-          <main className="flex-1 max-w-4xl">
-            {/* Hero Section */}
-            <div className="relative bg-white rounded-lg shadow-md p-8 mb-8">
-              {/* Deep Research Badge */}
-              <div className="absolute top-4 left-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-                  Deep Research
-                </span>
-              </div>
-              
-              <div className="pt-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Smart Beta: A Comprehensive Guide to Systematic and Personal Investing Strategies
-                </h1>
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                  Smart beta represents a significant evolution in investment strategy, occupying a complex middle ground between traditional passive indexing and active management. This comprehensive analysis provides an exhaustive examination of smart beta strategies, their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.
-                </p>
-              </div>
-            </div>
+        {/* Main Content */}
+        <main className="max-w-5xl mx-auto px-6 py-16">
 
             {/* Section 1: Deconstructing Smart Beta */}
             <section id="deconstructing" className="mb-16 scroll-mt-20">
@@ -737,8 +735,24 @@ export default function SmartBetaGuide() {
                 </div>
               </div>
             </div>
+
+            {/* Continue Learning Section */}
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                {currentArticle?.googleDoc && (
+                  <a 
+                    href={currentArticle.googleDoc}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
+                  >
+                    📄 Read Full Research Paper
+                  </a>
+                )}
+              </div>
+            </div>
           </main>
-        </div>
 
         {/* Scroll to Top Button */}
         {showScrollTop && (
@@ -752,7 +766,7 @@ export default function SmartBetaGuide() {
 
         {/* Footer */}
         <footer className="bg-gray-800 text-white text-center p-6 mt-16">
-          <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+          <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
         </footer>
       </div>
     </>

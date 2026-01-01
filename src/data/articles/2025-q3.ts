@@ -89,7 +89,7 @@ export const articles2025Q3: Article[] = [
     description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
     slug: "smart-beta-systematic-personal-investing-strategies",
     date: "September 24, 2025",
-    imageUrl: "https://www.justetf.com/images/news/202002-smart-beta-en.png",
+    imageUrl: "https://i.imgur.com/CWJK4x1.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT],

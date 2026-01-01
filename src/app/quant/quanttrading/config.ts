@@ -10,6 +10,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     videoUrl: 'https://youtu.be/xZY-O9-4AUs',
     infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
+      "smart-beta",
       "smart-beta-systematic-personal-investing-strategies",
     ],
     studyGuide: {
@@ -18,6 +19,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Smart Beta & Systematic Personal Investing",
           url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
           videoUrl: 'https://youtu.be/xZY-O9-4AUs',
+          visualGuideUrl: "https://i.imgur.com/CWJK4x1.jpeg",
         },
        
       ]
