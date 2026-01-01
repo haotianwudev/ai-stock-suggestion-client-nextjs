@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calculator } from "lucide-react";
+import { Calculator, BookOpen } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -144,9 +144,10 @@ function QuantArticlesTab() {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const availableLabels = getAllLabels();
 
-  // Filter articles with QUANT, AI_ML, or STOCK_ANALYSIS labels
+  // Filter articles with QUANT label only, excluding bookSummary
   const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
     .filter(article => 
+      !article.bookSummary && 
       article.labels?.some((label: string) => 
         label === 'Quantitative Finance'
       )
@@ -156,11 +157,11 @@ function QuantArticlesTab() {
     <Card>
       <CardHeader className="pb-3 md:pb-6">
         <CardTitle className="text-lg md:text-2xl flex items-center gap-2">
-          <Calculator className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
+          <BookOpen className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
           <span>Quantitative Finance Research Articles</span>
         </CardTitle>
         <CardDescription className="text-sm md:text-base">
-          Comprehensive articles on quantitative finance, machine learning applications, and quantitative trading strategies.
+          Comprehensive articles on quantitative finance covering mathematical models, algorithms, and systematic trading approaches.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 md:space-y-6">
