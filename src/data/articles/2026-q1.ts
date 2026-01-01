@@ -59,7 +59,7 @@ export const articles2026Q1: Article[] = [
     description: "Mastering Principal Component Analysis (PCA) to decode the complex movements of the Fixed Income yield curve. Learn how to transform 30+ correlated yields into 3 independent factors for superior risk management and alpha generation.",
     slug: "geometry-of-rates-pca-fixed-income-markets",
     date: "January 8, 2026",
-    imageUrl: "https://i.imgur.com/peD1xEo.jpeg",
+    imageUrl: "https://i.imgur.com/XEfr0iF.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSQfXX8zzU5lBWRDTUFOC_kXK31Ew8kznQVN6kOAfQy4avLLo3s7FgbTpttXcnPrV-jfj8XdB5XyTIZ/pub",
     labels: [ArticleLabel.QUANT],

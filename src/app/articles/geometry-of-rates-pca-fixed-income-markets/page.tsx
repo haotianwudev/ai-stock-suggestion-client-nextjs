@@ -64,7 +64,7 @@ export default function GeometryOfRatesArticle() {
             onClick={() => setIsImageViewerOpen(true)}
           >
             <img 
-              src="https://i.imgur.com/peD1xEo.jpeg" 
+              src="https://i.imgur.com/XEfr0iF.jpeg" 
               alt="PCA Fixed Income Markets Infographic" 
               className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
             />
@@ -90,7 +90,7 @@ export default function GeometryOfRatesArticle() {
 
         {/* Full-screen image viewer */}
         <FullScreenImageViewer
-          src="https://i.imgur.com/peD1xEo.jpeg"
+          src="https://i.imgur.com/XEfr0iF.jpeg"
           alt="PCA Fixed Income Markets Infographic"
           isOpen={isImageViewerOpen}
           onClose={() => setIsImageViewerOpen(false)}
