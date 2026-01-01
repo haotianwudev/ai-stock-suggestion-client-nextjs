@@ -66,6 +66,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     relatedArticles: [
       "strategy-performance",
       "measuring-immeasurable-hedge-fund-performance-metrics",
+      "definitive-backtrader-cheatsheet-guide",
     ],
     studyGuide: {
       items: [
@@ -74,6 +75,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/measuring-immeasurable-hedge-fund-performance-metrics",
           videoUrl: "https://youtu.be/WBUxNZZzwnY",
           visualGuideUrl: "https://i.imgur.com/wLwP2HW.jpeg",
+        },
+        {
+          text: "Backtrader Cheatsheet",
+          url: "https://www.sophie-ai-finance.com/articles/definitive-backtrader-cheatsheet-guide",
+          visualGuideUrl: "https://i.imgur.com/hHbVXLF.jpeg",
         },
       ]
     }
