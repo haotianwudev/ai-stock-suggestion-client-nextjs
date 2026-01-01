@@ -7,20 +7,28 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     id: 'systematic-strategies',
     title: 'Systematic Trading Strategies',
     description: 'Learn rule-based trading approaches, momentum strategies, mean reversion, smart beta factor investing, and systematic portfolio construction methods.',
-    videoUrl: 'https://youtu.be/xZY-O9-4AUs',
+    videoUrl: 'https://youtu.be/z32X0C5F5JE',
     infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
       "smart-beta",
       "smart-beta-systematic-personal-investing-strategies",
+      "factor-models",
+      "stock-factor-models-comprehensive-guide",
       "personal-quant-trading-strategies-independent-analysts",
     ],
     studyGuide: {
       items: [
         {
-          text: "Smart Beta & Systematic Personal Investing",
+          text: "Smart Beta",
           url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
           videoUrl: 'https://youtu.be/xZY-O9-4AUs',
           visualGuideUrl: "https://i.imgur.com/CWJK4x1.jpeg",
+        },
+        {
+          text: "Stock Factor Models",
+          url: "https://www.sophie-ai-finance.com/articles/stock-factor-models-comprehensive-guide",
+          videoUrl: 'https://youtu.be/z32X0C5F5JE',
+          visualGuideUrl: "https://i.imgur.com/ZkYTvd0.jpeg",
         },
         {
           text: "Rule Based Strategies",
