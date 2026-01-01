@@ -8,7 +8,8 @@ export const articles2025Q2: Article[] = [
     date: "June 30, 2025",
     imageUrl: "https://s.wsj.net/public/resources/images/IF-AD677_ACTIVE_M_20181004112557.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQUV9vciakDe7bjZP028JFEFflRog2KatsOC8DBD0acVNLoTg8XKKo865pdwh9ufFI5yPY13M3f2AwC/pub",
-    deepResearch: true
+    deepResearch: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
 {
     title: "5 Questions to AI to get RICH… Until You Wake Up",
@@ -17,7 +18,8 @@ export const articles2025Q2: Article[] = [
     date: "June 29, 2025",
     youtubeUrl: "https://www.youtube.com/watch?v=e0Z9Wz3KRlM&t=19s",
     isVideo: true,
-    imageUrl: "/images/5 Questions to AI to get RICH… Until You Wake Up.jpg"
+    imageUrl: "/images/5 Questions to AI to get RICH… Until You Wake Up.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
   },
 {
     title: "Dual-Purpose Playbook: Confluence for Human and AI",
@@ -26,7 +28,8 @@ export const articles2025Q2: Article[] = [
     date: "June 27, 2025",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoj8tFunsULue4hENkNlDEFqeCMpqmwH0XPQ&s",
     googleDoc: "https://docs.google.com/document/d/1OJ8dJDCetyLUlENiFTPWQaOgZmviRMhROQs304dPyZA/edit?tab=t.0",
-    deepResearch: true
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML],
   },
 {
     title: "The ARK Invest Enigma: Cathie Wood's Strategy Decoded",
@@ -36,7 +39,7 @@ export const articles2025Q2: Article[] = [
     imageUrl: "/images/agents/cathie_wood.png",
     googleDoc: "https://docs.google.com/document/d/1u8XaaJ3oHt9-m6pTmt74nZGNbalQNLAukeDbRRd8MrU/edit?tab=t.0",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FORM13F],
   },
 {
     title: "The Option Trader's Mindset: Think Like a Winner",
@@ -54,7 +57,8 @@ export const articles2025Q2: Article[] = [
     date: "June 22, 2025",
     imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQbotcpzfYJwup5fVXlooM7bPuG6Q_6nP8Af-ZJB558XCuJz0rOE1mJf_NUte_7dnNC3BiUamG_m7AH/pub",
-    deepResearch: true
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML],
   },
 {
     title: "Vector Storage Solutions for Confluence RAG",
@@ -63,7 +67,8 @@ export const articles2025Q2: Article[] = [
     date: "June 22, 2025",
     imageUrl: "https://writer.com/wp-content/uploads/2023/11/2023-11-Retrieval-augmented-generation-what-it-is-and-why-its-a-hot-topic-for-enterprise-AI-Blog-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRNp3AVzpmT2-wxQRg1Pzo8T5mufZuDibJ8peKXR6WldkPJHhuwxGOmeUgAH4FxmRqcsySRbxgBngYL/pub",
-    deepResearch: true
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML],
   },
 {
     title: "Decoding Stock Analysis EV/EBITDA model using AI",
@@ -72,7 +77,8 @@ export const articles2025Q2: Article[] = [
     date: "June 22, 2025",
     imageUrl: "/images/Decoding Stock Analysis – EVEBTIDA model using AI.jpg",
     youtubeUrl: "https://www.youtube.com/watch?v=7_cJfQ_qKmM",
-    isVideo: true
+    isVideo: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "MSFT: EV/EBITDA vs DCF",
@@ -92,7 +98,8 @@ export const articles2025Q2: Article[] = [
     imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRb2Opr7keDlhiUot7H3XkPkiBnZAusLebEM5o5hz-8Mp_skm58SjSDOTZlaYuTLINT7keGh4Njd5tO/pub",
     deepResearch: true,
-    noSummary: true
+    noSummary: true,
+    labels: [ArticleLabel.AI_ML],
   },
 {
     title: "Writing Naked Puts: A Complete Guide",
@@ -110,7 +117,8 @@ export const articles2025Q2: Article[] = [
     date: "June 8, 2025",
     imageUrl: "/images/Decoding Stock Analysis - DCF model using AI.jpg",
     youtubeUrl: "https://www.youtube.com/watch?v=DEzMJY7dJ6o",
-    isVideo: true
+    isVideo: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Options Losing Money:Common Pitfalls",
@@ -147,7 +155,8 @@ export const articles2025Q2: Article[] = [
     date: "June 2, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub",
     deepResearch: true,
-    imageUrl: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=800&q=80",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
 {
     title: "Gemini Deep Research on AAPL",
@@ -156,14 +165,16 @@ export const articles2025Q2: Article[] = [
     date: "May 31, 2025",
     imageUrl: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1000",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRxLdxU6sD0jgrNS_o0oMDXkYBHaotgVCj7Olli85c5P-YBIBHjH_cwF8pe01zuh_4R85NlBZram6WY/pub",
-    deepResearch: true
+    deepResearch: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Stock Analysis AI Agent Prompt Example",
     description: `A full prompt and data example for a Charlie Munger-style AI stock analysis agent. Includes all rules, mental models, and a real JSON analysis for AAPL.\n\nPrompt:\n\nYou are a Charlie Munger AI agent, making investment decisions using his principles:\n\n1. Focus on the quality and predictability of the business.\n2. Rely on mental models from multiple disciplines to analyze investments.\n3. Look for strong, durable competitive advantages (moats).\n4. Emphasize long-term thinking and patience.\n5. Value management integrity and competence.\n6. Prioritize businesses with high returns on invested capital.\n7. Pay a fair price for wonderful businesses.\n8. Never overpay, always demand a margin of safety.\n9. Avoid complexity and businesses you don't understand.\n10. "Invert, always invert" - focus on avoiding stupidity rather than seeking brilliance.\n\nRules:\n- Praise businesses with predictable, consistent operations and cash flows.\n- Value businesses with high ROIC and pricing power.\n- Prefer simple businesses with understandable economics.\n- Admire management with skin in the game and shareholder-friendly capital allocation.\n- Focus on long-term economics rather than short-term metrics.\n- Be skeptical of businesses with rapidly changing dynamics or excessive share dilution.\n- Avoid excessive leverage or financial engineering.\n- Provide a rational, data-driven recommendation (bullish, bearish, or neutral).\n\nWhen providing your reasoning, be thorough and specific by:\n1. Explaining the key factors that influenced your decision the most (both positive and negative)\n2. Applying at least 2-3 specific mental models or disciplines to explain your thinking\n3. Providing quantitative evidence where relevant (e.g., specific ROIC values, margin trends)\n4. Citing what you would "avoid" in your analysis (invert the problem)\n5. Using Charlie Munger's direct, pithy conversational style in your explanation\n\nTask:\nBased on the following analysis, create a Munger-style investment signal.\n\nAnalysis Data for AAPL:\n\n{\n  "AAPL": {\n    "signal": "neutral",\n    "score": 7.06,\n    "max_score": 10,\n    "moat_analysis": {\n      "score": 8.89,\n      "details": "Excellent ROIC: >15% in 10/10 periods; Good pricing power: Average gross margin 45.0%; Low capital requirements: Avg capex 2.7% of revenue; Invests in R&D, building intellectual property; Significant goodwill/intangible assets, suggesting brand value or IP"\n    },\n    "management_analysis": {\n      "score": 5.0,\n      "details": "Good cash conversion: FCF/NI ratio of 1.04; Moderate debt level: D/E ratio of 1.47; Acceptable cash position: Cash/Revenue ratio of 0.07; No recorded insider transactions; Shareholder-friendly: Reducing share count over time"\n    },\n    "predictability_analysis": {\n      "score": 9.0,\n      "details": "Moderately predictable revenue: 0.4% avg growth with some volatility; Highly predictable operations: Operating income positive in all periods; Highly predictable margins: 30.4% avg with minimal volatility; Highly predictable cash generation: Positive FCF in all periods"\n    },\n    "valuation_analysis": {\n      "score": 3.0,\n      "details": "Fair value: 3.3% FCF yield; Expensive: 50.3% premium to reasonable value; Stable to growing FCF supports valuation",\n      "intrinsic_value_range": {\n        "conservative": 1023700000000.0,\n        "reasonable": 1535550000000.0,\n        "optimistic": 2047400000000.0\n      },\n      "fcf_yield": 0.033,\n      "normalized_fcf": 102370000000.0\n    },\n    "news_sentiment": "Qualitative review of 100 recent news items would be needed"\n  }\n}\n\nReturn the trading signal in this JSON format:\n\n{\n  "signal": "bullish/bearish/neutral",\n  "confidence": float (0-100),\n  "reasoning": "string"\n}`,
     slug: "stock-analysis-ai-agent-prompt-example",
     date: "May 31, 2025",
-    imageUrl: "/images/agents/charlie_munger.png"
+    imageUrl: "/images/agents/charlie_munger.png",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
   },
 {
     title: "Decoding AI Agent Stock Analyst",
@@ -172,6 +183,7 @@ export const articles2025Q2: Article[] = [
     date: "June 4, 2025",
     imageUrl: "/images/charlie-munger-ai-hedge-fund-thumbnail.png",
     youtubeUrl: "https://www.youtube.com/watch?v=QkRPgEI5PZM",
-    isVideo: true
+    isVideo: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
   }
 ];

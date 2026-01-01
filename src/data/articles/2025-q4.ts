@@ -997,7 +997,8 @@ export const articles2025Q4: Article[] = [
     date: "October 8, 2025",
     youtubeUrl: "https://youtu.be/VjOsdoln7Bo",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/VjOsdoln7Bo/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/VjOsdoln7Bo/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Volume Price Analysis: From Market Lore to Algorithmic Execution",
@@ -1007,7 +1008,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://icrestmodels.com/storage/app/product/lH1xXgfzWGZgWLJm83e6Pew0qEkOvw45d6Py3Cd0.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQpo-HQmmBfl5iUqh54ez_4Y84C9y63TABJSQfNWJsHFcmm-7eoEABjLV-MZNJEiyXjIwsbcVE216CX/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT],
+    labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "The Russell 2000 EXPOSED: Small-Cap Investing, Hidden Costs, and The Quality Trap",
@@ -1016,7 +1017,8 @@ export const articles2025Q4: Article[] = [
     date: "October 7, 2025",
     youtubeUrl: "https://youtu.be/IX4E6eHmYaE",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/IX4E6eHmYaE/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/IX4E6eHmYaE/maxresdefault.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
 {
     title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
@@ -1026,7 +1028,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://media.realvision.com/wp/20220603151313/The-Russell-2000-Index.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQYdxrd83Nu3hc2lcNCwcu0pcYDR01GRak19dqdS0RPKyV9wIPNy_YioLUQ7sG5sbeX4O1iiva0-yoo/pub",
     deepResearch: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
 {
     title: "Strategic Investing using Options: Cash-Secured Puts (Buy Low) & Covered Calls (Sell High Income)",
@@ -1055,7 +1057,8 @@ export const articles2025Q4: Article[] = [
     date: "October 3, 2025",
     youtubeUrl: "https://youtu.be/QQjvEWV9-WQ",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/QQjvEWV9-WQ/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/QQjvEWV9-WQ/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
 {
     title: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
@@ -1075,6 +1078,7 @@ export const articles2025Q4: Article[] = [
     date: "October 1, 2025",
     youtubeUrl: "https://youtu.be/2xcK1hjcPfg",
     isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg"
+    imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg",
+    labels: [ArticleLabel.MARCO],
   }
 ];
