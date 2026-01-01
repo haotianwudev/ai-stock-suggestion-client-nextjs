@@ -41,7 +41,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/personal-quant-trading-strategies-independent-analysts",
           visualGuideUrl: "https://i.imgur.com/JbYaRHq.jpeg",
         },
-       
+        {
+          text: "Portfolio Optimization",
+          url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
+          visualGuideUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
+        },
       ]
     }
   },
@@ -72,7 +76,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/pR821HLbl3c",
           visualGuideUrl: "https://i.imgur.com/Yq4MVgM.jpeg",
         },
-        
+        {
+          text: "Volatility Forecasting",
+          url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
+          videoUrl: "https://youtu.be/zLKCTVTfvo4",
+          visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
+        },
       ]
     }
   },
