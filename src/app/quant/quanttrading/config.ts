@@ -63,6 +63,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "ml-assumption",
       "quantitative-analyst-guide-volatility-forecasting",
       "predict-volatility",
+      "xgboost-lead",
+      "strategic-role-xgboost-systematic-trading-2025",
       "lstm-systematic-trading-deep-dive-architecture-application-performance",
       "predict-unpredictable-lstm-systematic-trading",
       "transformer-in-systematic-trading",
@@ -87,6 +89,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
           videoUrl: "https://youtu.be/zLKCTVTfvo4",
           visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
+        },
+        {
+          text: "Boosted Tree in Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-role-xgboost-systematic-trading-2025",
+          videoUrl: "https://youtu.be/6mXc-7dDLS0",
+          visualGuideUrl: "https://i.imgur.com/5HSxp3O.jpeg",
         },
         {
           text: "LSTM in Quant Trading",

@@ -265,7 +265,7 @@ export const articles2025Q3: Article[] = [
     date: "September 11, 2025",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSU2p81xP1Wm__2p9F9TSrH6ngHqT4KZpHrA3vFcYowTbyl6E-aKcHQfm9OotjHAe1HoorVlgdaB5-i/pub",
-    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2017/04/Forecasting-Markets-using-Gradient-Boosting-XGBoost.png",
+    imageUrl: "https://i.imgur.com/5HSxp3O.jpeg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
 {
