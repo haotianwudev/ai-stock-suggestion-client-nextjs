@@ -875,7 +875,7 @@ export const articles2025Q4: Article[] = [
     description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
     slug: "stock-factor-models-comprehensive-guide",
     date: "October 16, 2025",
-    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/03/factor-models-1.jpg",
+    imageUrl: "https://i.imgur.com/ZkYTvd0.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
