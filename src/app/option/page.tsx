@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 export default function OptionsPage() {
   const router = useRouter();
 
-  // Redirect to option101 topic by default
+  // Redirect to strategies tab by default
   useEffect(() => {
-    router.replace('/option/topics/option101');
+    router.replace('/option/strategies');
   }, [router]);
 
   return (
@@ -22,7 +22,7 @@ export default function OptionsPage() {
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">Redirecting...</h1>
             <p className="text-base md:text-lg text-muted-foreground">
-              Taking you to the Options Education page.
+              Taking you to the Options Strategies page.
             </p>
           </div>
         </div>

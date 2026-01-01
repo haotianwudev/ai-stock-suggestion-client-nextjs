@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 export default function QuantPage() {
   const router = useRouter();
 
-  // Redirect to topics tab by default
+  // Redirect to quanttrading tab by default
   useEffect(() => {
-    router.replace('/quant/topics/monte-carlo');
+    router.replace('/quant/quanttrading');
   }, [router]);
 
   return (
@@ -22,7 +22,7 @@ export default function QuantPage() {
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">Redirecting...</h1>
             <p className="text-base md:text-lg text-muted-foreground">
-              Taking you to the Quantitative Finance Education page.
+              Taking you to the Quantitative Trading page.
             </p>
           </div>
         </div>
