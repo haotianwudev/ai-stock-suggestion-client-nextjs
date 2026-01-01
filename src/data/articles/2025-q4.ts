@@ -134,6 +134,7 @@ export const articles2025Q4: Article[] = [
 {
     title: "Inside the Alpha Factory: How WorldQuant Industrialized Quant Trading",
     description: "Discover how WorldQuant redefined quantitative investing by turning alpha from a rare skill into a mass-produced commodity. This video breaks down the Alpha Factory—an industrial-scale engine designed to mine millions of predictive signals.",
+    slug: "worldquant-alpha-factor",
     date: "December 19, 2025",
     youtubeUrl: "https://youtu.be/L0aVoPLqcFw",
     isVideo: true,

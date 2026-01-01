@@ -100,6 +100,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     relatedArticles: [
       "hedge-fund-workflow",
       "anatomy-quant-fund-alpha-discovery-automated-execution",
+      "worldquant-alpha-factor",
+      "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
     ],
     studyGuide: {
       items: [
