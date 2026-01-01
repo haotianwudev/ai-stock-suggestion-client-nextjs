@@ -124,9 +124,7 @@ function QuantArticlesTab() {
   const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
     .filter(article => 
       article.labels?.some((label: string) => 
-        label === 'Quantitative Finance' || 
-        label === 'AI & Machine Learning' || 
-        label === 'Stock Analysis'
+        label === 'Quantitative Finance'
       )
     );
 
