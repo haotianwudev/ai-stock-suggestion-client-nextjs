@@ -71,42 +71,44 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="option101" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Option 101</span>
-            <span className="hidden sm:block">Option 101</span>
+            <span className="block md:hidden">101</span>
+            <span className="hidden md:block">Option 101</span>
           </TabsTrigger>
           <TabsTrigger 
             value="greeks" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Greeks</span>
-            <span className="hidden sm:block">Option Greeks</span>
+            <span className="block md:hidden">Greeks</span>
+            <span className="hidden md:block">Option Greeks</span>
           </TabsTrigger>
           <TabsTrigger 
             value="roll" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            Art of Roll
+            <span className="block md:hidden">Roll</span>
+            <span className="hidden md:block">Art of Roll</span>
           </TabsTrigger>
           <TabsTrigger 
             value="volatility" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            Volatility
+            <span className="block md:hidden">Vol</span>
+            <span className="hidden md:block">Volatility</span>
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             VRP
           </TabsTrigger>
           <TabsTrigger 
             value="gex" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             GEX
           </TabsTrigger>
@@ -272,30 +274,30 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+            <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
               <TabsTrigger 
                 value="viewer" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                <span className="block sm:hidden">Viewer</span>
-                <span className="hidden sm:block">Options Viewer</span>
+                <span className="block md:hidden">Viewer</span>
+                <span className="hidden md:block">Options Viewer</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="topics" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                <span className="block sm:hidden">Articles</span>
-                <span className="hidden sm:block">Research Articles</span>
+                <span className="block md:hidden">Articles</span>
+                <span className="hidden md:block">Research Articles</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="strategies" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
                 Strategies
               </TabsTrigger>
