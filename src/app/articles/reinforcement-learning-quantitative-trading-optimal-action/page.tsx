@@ -1,16 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BrainCircuit, TrendingUp, Shuffle, Bot, GanttChartSquare, Scale, BookOpen, Atom, AlertTriangle, Lightbulb, TestTube2, ChevronsRight, Eye, Layers, Package, Brain, FunctionSquare, Trophy, Beaker, Music } from 'lucide-react';
-import React from 'react';
+import { ArrowLeft, ArrowRight, BrainCircuit, TrendingUp, Shuffle, Bot, GanttChartSquare, Scale, BookOpen, Atom, AlertTriangle, Lightbulb, TestTube2, ChevronsRight, Eye, Layers, Package, Brain, FunctionSquare, Trophy, Beaker, Music, Maximize2 } from 'lucide-react';
+import React, { useState } from 'react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable UI Components (Light Theme) ---
 const Section = ({ id, title, subtitle, children, bgColor = 'bg-white' }) => (
-  <section id={id} className={`py-16 md:py-24 px-4 sm:px-6 lg:px-8 ${bgColor}`}>
+  <section id={id} className={`py-8 md:py-12 px-4 sm:px-6 lg:px-8 ${bgColor}`}>
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-14">
+      <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">{title}</h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-slate-600">{subtitle}</p>
       </div>
@@ -103,7 +104,7 @@ const ComparisonTable = () => {
 
 // --- Page Sections (Light Theme & Expanded Content) ---
 const HeroSection = () => (
-  <div className="relative overflow-hidden bg-white pt-24 pb-32 sm:pt-32 sm:pb-40">
+  <div className="relative overflow-hidden bg-white pt-16 pb-20 sm:pt-20 sm:pb-24">
     <div className="absolute inset-0 bg-grid-slate-200/[0.25] [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0))]"></div>
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
@@ -113,12 +114,6 @@ const HeroSection = () => (
       <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-slate-600">
         An in-depth analysis of how RL is shifting the financial paradigm from static prediction to dynamic, adaptive policy optimization for superior alpha generation.
       </p>
-      <div className="mt-10">
-        <a href="#paradigm-shift" className="bg-cyan-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-cyan-700 transition-all duration-300 inline-flex items-center">
-          Begin Analysis
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </a>
-      </div>
     </div>
   </div>
 );
@@ -315,6 +310,7 @@ const FutureDirectionsSection = () => (
 
 export default function ReinforcementLearningArticle() {
   const currentArticle = articles.find(article => article.slug === 'reinforcement-learning-quantitative-trading-optimal-action');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
     <>
@@ -367,6 +363,50 @@ export default function ReinforcementLearningArticle() {
 
         <main>
           <HeroSection />
+          
+          {/* Hero Infographic - Below Title with Full-Screen Capability */}
+          {currentArticle?.imageUrl && (
+            <section className="max-w-5xl mx-auto px-6 pt-6 pb-4">
+              <div 
+                className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                onClick={() => setIsImageViewerOpen(true)}
+              >
+                <img 
+                  src={currentArticle.imageUrl} 
+                  alt="Reinforcement Learning in Quantitative Trading Infographic" 
+                  className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+                {/* Full-screen button overlay */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsImageViewerOpen(true);
+                  }}
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                  title="View full screen"
+                >
+                  <Maximize2 className="h-4 w-4" />
+                </button>
+                {/* Click hint */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                  <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                    Click to view full screen
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Full-screen image viewer */}
+          {currentArticle?.imageUrl && (
+            <FullScreenImageViewer
+              src={currentArticle.imageUrl}
+              alt="Reinforcement Learning in Quantitative Trading Infographic"
+              isOpen={isImageViewerOpen}
+              onClose={() => setIsImageViewerOpen(false)}
+            />
+          )}
+          
           <ParadigmShiftSection />
           <ApplicationsSection />
           <StrengthsSection />
@@ -376,7 +416,7 @@ export default function ReinforcementLearningArticle() {
           <FutureDirectionsSection />
           
           {/* Call to Action Section */}
-          <section className="py-16 bg-slate-50">
+          <section className="py-8 bg-slate-50">
             <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">
                 Dive Deeper into Reinforcement Learning

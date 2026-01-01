@@ -162,7 +162,7 @@ export const articles2025Q3: Article[] = [
     description: "An in-depth analysis of how RL is shifting the financial paradigm from static prediction to dynamic, adaptive policy optimization for superior alpha generation. Explores the fundamental evolution from asking 'What will the market do?' to 'What is the best action to take now?'",
     slug: "reinforcement-learning-quantitative-trading-optimal-action",
     date: "September 19, 2025",
-    imageUrl: "https://d1rwhvwstyk9gu.cloudfront.net/2025/05/Reinforcement-Learning-in-Trading.png",
+    imageUrl: "https://i.imgur.com/UCv1dCZ.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSExzba-zReWxWXE_hTCwxq0j9H2Cf52KplQm5sP4LpcX_0Li2GK98Z-MOFPxuTp_bWp6HH8aW74wwm/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5FXEMj6AWvKfGZAMYg69is?si=ykChirPwRROyOAY44wdMiQ",

@@ -69,6 +69,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "predict-unpredictable-lstm-systematic-trading",
       "transformer-in-systematic-trading",
       "transformer-systematic-trading-architecture-applications",
+      "reinforcement-learning",
+      "reinforcement-learning-quantitative-trading-optimal-action",
     ],
     studyGuide: {
       items: [
@@ -107,6 +109,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/transformer-systematic-trading-architecture-applications",
           videoUrl: "https://youtu.be/2JlReeYdFxA",
           visualGuideUrl: "https://i.imgur.com/Ee6p93j.jpeg",
+        },
+        {
+          text: "Reinforcement Learning in Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/reinforcement-learning-quantitative-trading-optimal-action",
+          videoUrl: "https://youtu.be/sSu4emL_mOU",
+          visualGuideUrl: "https://i.imgur.com/UCv1dCZ.jpeg",
         },
       ]
     }
