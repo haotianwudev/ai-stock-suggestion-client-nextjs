@@ -65,6 +65,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "predict-volatility",
       "lstm-systematic-trading-deep-dive-architecture-application-performance",
       "predict-unpredictable-lstm-systematic-trading",
+      "transformer-in-systematic-trading",
+      "transformer-systematic-trading-architecture-applications",
     ],
     studyGuide: {
       items: [
@@ -91,6 +93,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/lstm-systematic-trading-deep-dive-architecture-application-performance",
           videoUrl: "https://youtu.be/smYKvopeg1Q",
           visualGuideUrl: "https://i.imgur.com/pldvBTi.jpeg",
+        },
+        {
+          text: "Transformer in Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/transformer-systematic-trading-architecture-applications",
+          videoUrl: "https://youtu.be/2JlReeYdFxA",
+          visualGuideUrl: "https://i.imgur.com/Ee6p93j.jpeg",
         },
       ]
     }
