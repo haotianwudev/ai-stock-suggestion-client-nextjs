@@ -61,6 +61,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "deep-learning-evolution",
       "foundational-assumptions-machine-learning-quantitative-trading",
       "ml-assumption",
+      "quantitative-analyst-guide-volatility-forecasting",
+      "predict-volatility",
+      "lstm-systematic-trading-deep-dive-architecture-application-performance",
+      "predict-unpredictable-lstm-systematic-trading",
     ],
     studyGuide: {
       items: [
@@ -81,6 +85,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
           videoUrl: "https://youtu.be/zLKCTVTfvo4",
           visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
+        },
+        {
+          text: "LSTM in Quant Trading",
+          url: "https://www.sophie-ai-finance.com/articles/lstm-systematic-trading-deep-dive-architecture-application-performance",
+          videoUrl: "https://youtu.be/smYKvopeg1Q",
+          visualGuideUrl: "https://i.imgur.com/pldvBTi.jpeg",
         },
       ]
     }
@@ -145,7 +155,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Alternative Data for trading",
           url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
-          videoUrl: "https://youtu.be/L0aVoPLqcFw",
+          videoUrl: "https://youtu.be/U5iJM-xrGLs",
           visualGuideUrl: "https://i.imgur.com/EOSdL9d.jpeg",
         },
       ]

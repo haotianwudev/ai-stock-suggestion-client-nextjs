@@ -596,7 +596,7 @@ export const articles2025Q3: Article[] = [
     date: "August 15, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTaoVhyDF_TM8QgEYxETLGubMxtsCAVLDfxsjU_m8OCAjNTONPzmc2af44Pe6b9UQKSqfNg4YgAY9nU/pub",
     deepResearch: true,
-    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/1*laH0_xXEkFE0lKJu54gkFQ.png",
+    imageUrl: "https://i.imgur.com/pldvBTi.jpeg",
     podcastUrl: "https://open.spotify.com/episode/0B3DPu2vDn9PV8ksbRX6hY?si=5xoIEsEdT4uE1FXraVnmwg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
