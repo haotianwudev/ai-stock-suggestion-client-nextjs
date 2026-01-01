@@ -333,7 +333,7 @@ export const articles2025Q3: Article[] = [
     description: "Analysis of datasets used by hedge funds for alpha generation in long-short equity trading. Explores the accessibility gap between institutional and retail investors, covering alternative data sources, machine learning pipelines, and the industrial-scale infrastructure that creates formidable barriers to entry.",
     slug: "hedge-fund-data-driven-edge-alpha-generation",
     date: "September 4, 2025",
-    imageUrl: "https://s3-prod.pionline.com/s3fs-public/ONLINE_190539981_AR_0_BRYKXJELZTBE.jpg",
+    imageUrl: "https://i.imgur.com/EOSdL9d.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQAeRCVqt5_0WhENYxf9pjqHIu8lALTFyuCQAHaQrTVOGPJRl8msRMloUvT6tVfKzSKowYUq-tCvt-h/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],

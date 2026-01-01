@@ -125,6 +125,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "anatomy-quant-fund-alpha-discovery-automated-execution",
       "worldquant-alpha-factor",
       "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
+      "hedge-fund-edge-data",
+      "hedge-fund-data-driven-edge-alpha-generation",
     ],
     studyGuide: {
       items: [
@@ -139,6 +141,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/worldquant-alpha-factory-industrialized-quantitative-signal-generation",
           videoUrl: "https://youtu.be/L0aVoPLqcFw",
           visualGuideUrl: "https://i.imgur.com/boJhFsQ.jpeg",
+        },
+        {
+          text: "Alternative Data for trading",
+          url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
+          videoUrl: "https://youtu.be/L0aVoPLqcFw",
+          visualGuideUrl: "https://i.imgur.com/EOSdL9d.jpeg",
         },
       ]
     }
