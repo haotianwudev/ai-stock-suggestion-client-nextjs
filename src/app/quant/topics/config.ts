@@ -43,6 +43,34 @@ export const topicsConfig: Record<string, TopicConfig> = {
         }
       ]
     }
+  },
+  'statistical-analysis': {
+    id: 'statistical-analysis',
+    title: 'Statistical Analysis',
+    description: 'Master advanced statistical methods for financial markets including Principal Component Analysis (PCA), factor modeling, and dimensionality reduction. Learn to decode complex market relationships and build robust quantitative models.',
+    videoUrl: 'https://youtu.be/FgakZw6K1QQ', // PCA Explained video as placeholder
+    infographicUrl: "https://i.imgur.com/peD1xEo.jpeg",
+    relatedArticles: [
+      "geometry-of-rates-pca-fixed-income-markets"
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "The Geometry of Rates: Principal Component Analysis in Fixed Income",
+          url: "https://www.sophie-ai-finance.com/articles/geometry-of-rates-pca-fixed-income-markets",
+          visualGuideUrl: "https://i.imgur.com/peD1xEo.jpeg",
+          videoUrl: "https://youtu.be/FgakZw6K1QQ"
+        },
+        {
+          text: "Correlation Matrix Analysis Tools",
+          url: "https://www.portfoliovisualizer.com/factor-analysis"
+        },
+        {
+          text: "Python PCA Implementation Guide",
+          url: "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+        },
+      ]
+    }
   }
 };
 

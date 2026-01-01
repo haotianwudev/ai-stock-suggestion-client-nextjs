@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MonteCarloContent } from "../topics/monte-carlo";
+import { StatisticalAnalysisContent } from "../topics/statistical-analysis";
 import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
 import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
@@ -47,7 +48,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-1 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="monte-carlo" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -55,10 +56,21 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">Monte Carlo</span>
             <span className="hidden sm:block">Monte Carlo Simulation</span>
           </TabsTrigger>
+          <TabsTrigger 
+            value="statistical-analysis" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Statistics</span>
+            <span className="hidden sm:block">Statistical Analysis</span>
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="monte-carlo" className="mt-0">
           <MonteCarloContent config={getTopicConfig('monte-carlo') || undefined} />
+        </TabsContent>
+        
+        <TabsContent value="statistical-analysis" className="mt-0">
+          <StatisticalAnalysisContent />
         </TabsContent>
       </Tabs>
     </div>
