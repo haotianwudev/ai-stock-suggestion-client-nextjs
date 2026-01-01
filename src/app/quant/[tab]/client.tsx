@@ -13,6 +13,7 @@ import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
 import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
 import { BacktestContent } from "@/app/quant/quanttrading/backtest";
+import { TradingSystemContent } from "@/app/quant/quanttrading/trading-system";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -87,7 +88,7 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Quantitative Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="systematic-strategies" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -109,6 +110,13 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">Backtest</span>
             <span className="hidden sm:block">Backtesting</span>
           </TabsTrigger>
+          <TabsTrigger 
+            value="trading-system" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">System</span>
+            <span className="hidden sm:block">Trading System</span>
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="systematic-strategies" className="mt-0">
@@ -121,6 +129,10 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="backtest" className="mt-0">
           <BacktestContent />
+        </TabsContent>
+        
+        <TabsContent value="trading-system" className="mt-0">
+          <TradingSystemContent />
         </TabsContent>
       </Tabs>
     </div>

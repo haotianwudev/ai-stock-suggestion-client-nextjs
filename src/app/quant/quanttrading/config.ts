@@ -83,6 +83,28 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
       ]
     }
+  },
+
+  'trading-system': {
+    id: 'trading-system',
+    title: 'Trading System Architecture',
+    description: 'Explore the complete anatomy of quantitative trading systems. From alpha discovery through machine learning to automated execution, understand how modern quant funds operate end-to-end.',
+    videoUrl: 'https://youtu.be/QQjvEWV9-WQ',
+    infographicUrl: 'https://i.imgur.com/rUsDCw7.jpeg',
+    relatedArticles: [
+      "hedge-fund-workflow",
+      "anatomy-quant-fund-alpha-discovery-automated-execution",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
+          url: "https://sophie-ai-finance.com/articles/anatomy-quant-fund-alpha-discovery-automated-execution",
+          videoUrl: "https://youtu.be/QQjvEWV9-WQ",
+          visualGuideUrl: "https://i.imgur.com/rUsDCw7.jpeg",
+        },
+      ]
+    }
   }
 };
 
