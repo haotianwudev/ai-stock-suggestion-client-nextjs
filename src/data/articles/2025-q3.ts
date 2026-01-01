@@ -759,7 +759,7 @@ export const articles2025Q3: Article[] = [
     description: "Master algorithmic trading with this comprehensive backtrader guide. From basic setup to advanced optimization techniques, learn everything you need to build, test, and deploy profitable trading strategies in Python.",
     slug: "definitive-backtrader-cheatsheet-guide",
     date: "July 30, 2025",
-    imageUrl: "https://i0.wp.com/algojem.com/wp-content/uploads/2024/09/image-89.png?resize=800%2C450&ssl=1",
+    imageUrl: "https://i.imgur.com/hHbVXLF.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTaw73N8uwy5Af2dhof_XI86yHb46mTpEVEUaca1e3u8EAE7CmIRRlRi22kM7ZvfmDIyvUr6lhG12ML/pub",
     labels: [ArticleLabel.QUANT],
