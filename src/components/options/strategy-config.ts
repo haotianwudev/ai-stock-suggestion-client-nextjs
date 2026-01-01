@@ -222,7 +222,8 @@ export const strategies: Strategy[] = [
             
             return putSpreadPnL + callSpreadPnL + netCredit;
         },
-        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
+        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting", "iron-condor",],
+        youtubeId: 'LC1qM2ps6NY',
         infographicUrl: 'https://i.imgur.com/jRhQhdm.jpeg',
         detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
     },

@@ -75,6 +75,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {
+    title: "Mastering Iron Condor Options: Bet on Nothing Happened",
+    description: "Discover the mechanics of the Iron Condor, a market-neutral options strategy designed to generate profit through time decay (Theta) and volatility contraction rather than predicting market direction. ",
+    date: "January 3, 2026",
+    slug: "iron-condor",
+    youtubeUrl: "https://youtu.be/LC1qM2ps6NY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/LC1qM2ps6NY/maxresdefault.jpg",
+    options: true,
+  },
+  {
     title: "The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting",
     description: "A comprehensive analysis of the Iron Condor strategy, exploring the mathematical edge through variance risk premium, optimal execution parameters, and defensive management techniques. Master the art of selling overpriced volatility while managing the Greeks and structural risks.",
     slug: "iron-condor-quantitative-delta-neutral-premium-harvesting",
