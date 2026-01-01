@@ -161,6 +161,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
       "hedge-fund-edge-data",
       "hedge-fund-data-driven-edge-alpha-generation",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
