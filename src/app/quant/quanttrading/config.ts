@@ -71,7 +71,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Measuring the Immeasurable: Hedge Fund Performance Metrics",
+          text: "Strategy Performance Metrics",
           url: "https://www.sophie-ai-finance.com/articles/measuring-immeasurable-hedge-fund-performance-metrics",
           videoUrl: "https://youtu.be/WBUxNZZzwnY",
           visualGuideUrl: "https://i.imgur.com/wLwP2HW.jpeg",
@@ -98,7 +98,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
+          text: "Quantitative Trading Workflow",
           url: "https://sophie-ai-finance.com/articles/anatomy-quant-fund-alpha-discovery-automated-execution",
           videoUrl: "https://youtu.be/QQjvEWV9-WQ",
           visualGuideUrl: "https://i.imgur.com/rUsDCw7.jpeg",
