@@ -94,7 +94,7 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             <span className="block sm:hidden">Strategies</span>
-            <span className="hidden sm:block">Systematic/Rule Based</span>
+            <span className="hidden sm:block">Systematic/Factors</span>
           </TabsTrigger>
           <TabsTrigger 
             value="machine-learning" 
