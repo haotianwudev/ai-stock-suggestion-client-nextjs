@@ -55,6 +55,28 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         
       ]
     }
+  },
+
+  'backtest': {
+    id: 'backtest',
+    title: 'Backtesting & Performance Analysis',
+    description: 'Master the art of strategy validation through rigorous backtesting. Learn performance metrics, risk assessment, and how to avoid common pitfalls in quantitative strategy evaluation.',
+    videoUrl: 'https://youtu.be/WBUxNZZzwnY',
+    infographicUrl: 'https://i.imgur.com/wLwP2HW.jpeg',
+    relatedArticles: [
+      "strategy-performance",
+      "measuring-immeasurable-hedge-fund-performance-metrics",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "Measuring the Immeasurable: Hedge Fund Performance Metrics",
+          url: "https://www.sophie-ai-finance.com/articles/measuring-immeasurable-hedge-fund-performance-metrics",
+          videoUrl: "https://youtu.be/WBUxNZZzwnY",
+          visualGuideUrl: "https://i.imgur.com/wLwP2HW.jpeg",
+        },
+      ]
+    }
   }
 };
 

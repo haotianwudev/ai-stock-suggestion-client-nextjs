@@ -56,6 +56,7 @@ export const articles2025Q4: Article[] = [
     title: "Measuring Strategy Performance Quantitatively",
     description: "Is your fund manager actually skilled, or just benefiting from market timing? This video decodes the architecture of performance evaluation, explaining why raw percentage returns are meaningless without context. ",
     date: "December 26, 2025",
+    slug: "strategy-performance",
     youtubeUrl: "https://youtu.be/WBUxNZZzwnY",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/WBUxNZZzwnY/maxresdefault.jpg",
