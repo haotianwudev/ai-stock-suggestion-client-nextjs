@@ -182,6 +182,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "microsecond-battlefield-competitive-strategies-high-frequency-trading",
       "market-making",
       "anatomy-of-speed-modern-market-making-hft",
+      "harvest-investor",
+      "the-harvest-institutional-exploitation-retail-investors",
     ],
     studyGuide: {
       items: [
@@ -214,6 +216,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
           videoUrl: "https://youtu.be/U5iJM-xrGLs",
           visualGuideUrl: "https://i.imgur.com/EOSdL9d.jpeg",
+        },
+        {
+          text: "The Institutional Playbook for Exploiting the Common Investor",
+          url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
+          videoUrl: "https://youtu.be/xMaKA2lIn8c",
+          visualGuideUrl: "https://i.imgur.com/4qzGj8K.jpeg",
         },
         {
           text: "Filtering Techniques Explained",
