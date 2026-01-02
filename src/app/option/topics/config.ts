@@ -20,6 +20,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "tax-efficient-option-writing",
       "decoding-options-market-volume-open-interest-analysis",
       "volume-oi",
+      "index-effect",
+      "sp500-inclusion-anomaly-december-2025-deep-research",
     ],
     studyGuide: {
       items: [
@@ -52,6 +54,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/decoding-options-market-volume-open-interest-analysis",
           videoUrl: "https://youtu.be/DOhaPf3eJXM",
           visualGuideUrl: "https://i.imgur.com/asowAEM.jpeg",
+        },
+        {
+          text: "Index Inclusion",
+          url: "https://www.sophie-ai-finance.com/articles/sp500-inclusion-anomaly-december-2025-deep-research",
+          videoUrl: "https://youtu.be/IMS-1JMTbc0",
+          visualGuideUrl: "https://i.imgur.com/tJfTSLl.jpeg",
         },
         {
           text: "Barchart Option Chain",

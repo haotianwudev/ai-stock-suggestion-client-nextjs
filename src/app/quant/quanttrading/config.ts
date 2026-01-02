@@ -20,6 +20,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "volume-price-analysis-market-lore-algorithmic-execution",
       "pre-market-prediction",
       "quantitative-approach-predicting-market-direction-premarket-data",
+      "index-effect",
+      "sp500-inclusion-anomaly-december-2025-deep-research",
     ],
     studyGuide: {
       items: [
@@ -48,6 +50,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Volume Price Analysis",
           url: "https://www.sophie-ai-finance.com/articles/volume-price-analysis-market-lore-algorithmic-execution",
+          videoUrl: 'https://youtu.be/VjOsdoln7Bo',
           visualGuideUrl: "https://i.imgur.com/gy3HaKW.jpeg",
         },
         {
@@ -58,7 +61,14 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Pre-market Prediction",
           url: "https://www.sophie-ai-finance.com/articles/quantitative-approach-predicting-market-direction-premarket-data",
+          videoUrl: "https://youtu.be/5WuCFfwFCd4",
           visualGuideUrl: "https://i.imgur.com/jwesLgi.jpeg",
+        },
+        {
+          text: "Index Inclusion",
+          url: "https://www.sophie-ai-finance.com/articles/sp500-inclusion-anomaly-december-2025-deep-research",
+          videoUrl: "https://youtu.be/IMS-1JMTbc0",
+          visualGuideUrl: "https://i.imgur.com/tJfTSLl.jpeg",
         },
       ]
     }
