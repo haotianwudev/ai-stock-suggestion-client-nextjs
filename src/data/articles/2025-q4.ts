@@ -916,7 +916,7 @@ export const articles2025Q4: Article[] = [
     description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
     slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
     date: "October 13, 2025",
-    imageUrl: "https://marktech-images.mstock.com/MACM-CMS/Assets/What_is_High_Frequency_Trading_HFT_7f0818c48f.png",
+    imageUrl: "https://i.imgur.com/1HIyqvy.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",

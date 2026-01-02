@@ -2,12 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Zap, Cpu, BrainCircuit, Bot, BarChart2, Shield, Search, TrendingUp, Network, Server, HardDrive, Atom, Users, Landmark, Building, Award, Rocket, Telescope, Database, Scaling, Music } from 'lucide-react';
+import { ArrowLeft, Zap, Cpu, BrainCircuit, Bot, BarChart2, Shield, Search, TrendingUp, Network, Server, HardDrive, Atom, Users, Landmark, Building, Award, Rocket, Telescope, Database, Scaling, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function HFTPage() {
   const [activeSection, setActiveSection] = useState('introduction');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const currentArticle = articles.find(article => article.slug === 'microsecond-battlefield-competitive-strategies-high-frequency-trading');
 
@@ -170,6 +172,39 @@ export default function HFTPage() {
                 </p>
               </div>
             </section>
+
+            {/* Hero Infographic - Below Title with Full-Screen Capability */}
+            {currentArticle?.imageUrl && (
+              <section className="max-w-5xl mx-auto px-6 pb-8">
+                <div 
+                  className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+                  onClick={() => setIsImageViewerOpen(true)}
+                >
+                  <img 
+                    src={currentArticle.imageUrl} 
+                    alt="High-Frequency Trading Competitive Strategies Infographic" 
+                    className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+                  />
+                  {/* Full-screen button overlay */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsImageViewerOpen(true);
+                    }}
+                    className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                    title="View full screen"
+                  >
+                    <Maximize2 className="h-4 w-4" />
+                  </button>
+                  {/* Click hint */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                    <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                      Click to view full screen
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
 
             {/* Introduction */}
             <section id="introduction" className="py-16 scroll-mt-20">
@@ -354,6 +389,16 @@ export default function HFTPage() {
             </div>
           </footer>
         </div>
+
+        {/* Full-screen image viewer */}
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="High-Frequency Trading Competitive Strategies Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
       </div>
     </>
   );

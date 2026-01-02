@@ -171,6 +171,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "quant-filters",
       "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
+      "high-frequency-trading",
+      "microsecond-battlefield-competitive-strategies-high-frequency-trading",
     ],
     studyGuide: {
       items: [
@@ -179,6 +181,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://sophie-ai-finance.com/articles/anatomy-quant-fund-alpha-discovery-automated-execution",
           videoUrl: "https://youtu.be/QQjvEWV9-WQ",
           visualGuideUrl: "https://i.imgur.com/rUsDCw7.jpeg",
+        },
+        {
+          text: "High Frequency Trading",
+          url: "https://sophie-ai-finance.com/articles/microsecond-battlefield-competitive-strategies-high-frequency-trading",
+          videoUrl: "https://youtu.be/Zp-ZmWc1G3A",
+          visualGuideUrl: "https://i.imgur.com/1HIyqvy.jpeg",
         },
         {
           text: "WorldQuant Alpha Factory",
