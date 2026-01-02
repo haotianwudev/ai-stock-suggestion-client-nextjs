@@ -85,8 +85,9 @@ export function StudyGuide({
         <BookOpen className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
         <h3 className="font-semibold text-blue-800 dark:text-blue-200 text-sm md:text-base leading-tight">{title}</h3>
       </div>
-      <ul className="space-y-1 md:space-y-3">
-        {items.map((item, index) => {
+      <div className="max-h-[400px] md:max-h-[500px] overflow-y-auto scrollbar-thin">
+        <ul className="space-y-1 md:space-y-3 pr-1">
+          {items.map((item, index) => {
           const isSelected = selectedIndex === index;
           
           return (
@@ -127,6 +128,7 @@ export function StudyGuide({
           );
         })}
       </ul>
+      </div>
     </div>
   );
 }
