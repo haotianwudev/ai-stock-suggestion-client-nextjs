@@ -15,7 +15,9 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "smart-beta-systematic-personal-investing-strategies",
       "factor-models",
       "stock-factor-models-comprehensive-guide",
+      "volume-price-analysis",
       "personal-quant-trading-strategies-independent-analysts",
+      "volume-price-analysis-market-lore-algorithmic-execution",
       "pre-market-prediction",
       "quantitative-approach-predicting-market-direction-premarket-data",
     ],
@@ -42,6 +44,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Rule Based Strategies",
           url: "https://www.sophie-ai-finance.com/articles/personal-quant-trading-strategies-independent-analysts",
           visualGuideUrl: "https://i.imgur.com/JbYaRHq.jpeg",
+        },
+        {
+          text: "Volume Price Analysis",
+          url: "https://www.sophie-ai-finance.com/articles/volume-price-analysis-market-lore-algorithmic-execution",
+          visualGuideUrl: "https://i.imgur.com/gy3HaKW.jpeg",
         },
         {
           text: "Portfolio Optimization",

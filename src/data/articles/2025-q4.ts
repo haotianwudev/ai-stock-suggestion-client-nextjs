@@ -1008,7 +1008,7 @@ export const articles2025Q4: Article[] = [
     description: "A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. Explores core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.",
     slug: "volume-price-analysis-market-lore-algorithmic-execution",
     date: "October 7, 2025",
-    imageUrl: "https://icrestmodels.com/storage/app/product/lH1xXgfzWGZgWLJm83e6Pew0qEkOvw45d6Py3Cd0.png",
+    imageUrl: "https://i.imgur.com/gy3HaKW.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQpo-HQmmBfl5iUqh54ez_4Y84C9y63TABJSQfNWJsHFcmm-7eoEABjLV-MZNJEiyXjIwsbcVE216CX/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
