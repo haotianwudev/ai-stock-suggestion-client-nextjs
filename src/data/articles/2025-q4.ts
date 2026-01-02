@@ -728,7 +728,7 @@ export const articles2025Q4: Article[] = [
     description: "An in-depth analysis of the indicators, strategies, and academic research behind trading the opening bell. Learn how to decode pre-market signals, understand market gaps, and develop systematic frameworks for opening trades.",
     slug: "quantitative-approach-predicting-market-direction-premarket-data",
     date: "October 29, 2025",
-    imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/06/does-pre-market-determine-opening-price.jpg",
+    imageUrl: "https://i.imgur.com/jwesLgi.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSPeY1kvLzoeDaRR_X9fVjrY6LWj20hRuQJ6GVmnZVT8jxfATLeE-V1sr2ixhnJIZUJTsTTV_yXwHLL/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ",

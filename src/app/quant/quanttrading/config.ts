@@ -16,6 +16,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "factor-models",
       "stock-factor-models-comprehensive-guide",
       "personal-quant-trading-strategies-independent-analysts",
+      "pre-market-prediction",
+      "quantitative-approach-predicting-market-direction-premarket-data",
     ],
     studyGuide: {
       items: [
@@ -45,6 +47,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Portfolio Optimization",
           url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
           visualGuideUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
+        },
+        {
+          text: "Pre-market Prediction",
+          url: "https://www.sophie-ai-finance.com/articles/quantitative-approach-predicting-market-direction-premarket-data",
+          visualGuideUrl: "https://i.imgur.com/jwesLgi.jpeg",
         },
       ]
     }
