@@ -186,7 +186,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/EOSdL9d.jpeg",
         },
         {
-          text: "Quantitative Trading Filtering Techniques Explained",
+          text: "Filtering Techniques Explained",
           url: "https://www.sophie-ai-finance.com/articles/signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
           videoUrl: "https://youtu.be/xtwugnNA6Ac",
           visualGuideUrl: "https://i.imgur.com/w5OLmL3.jpeg",
