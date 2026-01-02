@@ -180,6 +180,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
       "high-frequency-trading",
       "microsecond-battlefield-competitive-strategies-high-frequency-trading",
+      "market-making",
+      "anatomy-of-speed-modern-market-making-hft",
     ],
     studyGuide: {
       items: [
@@ -194,6 +196,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://sophie-ai-finance.com/articles/microsecond-battlefield-competitive-strategies-high-frequency-trading",
           videoUrl: "https://youtu.be/Zp-ZmWc1G3A",
           visualGuideUrl: "https://i.imgur.com/1HIyqvy.jpeg",
+        },
+        {
+          text: "Modern Market Making in HFT",
+          url: "https://sophie-ai-finance.com/articles/anatomy-of-speed-modern-market-making-hft",
+          videoUrl: "https://youtu.be/waY0tFW49VY",
+          visualGuideUrl: "https://i.imgur.com/WZbpiQT.jpeg",
         },
         {
           text: "WorldQuant Alpha Factory",

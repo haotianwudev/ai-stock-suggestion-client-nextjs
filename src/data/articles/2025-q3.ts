@@ -68,7 +68,7 @@ export const articles2025Q3: Article[] = [
     description: "A comprehensive analytical report on the strategies, models, and alpha generation techniques in high-frequency trading environments. Explores the Avellaneda-Stoikov model, machine learning applications, and the technological infrastructure powering electronic market makers in the latency arms race.",
     slug: "anatomy-of-speed-modern-market-making-hft",
     date: "September 26, 2025",
-    imageUrl: "https://media.warriortrading.com/2016/12/Blog_MARKET_MAKER.jpg",
+    imageUrl: "https://i.imgur.com/WZbpiQT.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQII0UWvpa1IRgnH8Pplp2pPeYf3OL1a-n00attBl1nt-Hv0bhmvIvIb-_UH5Ybnip4F5jO5uwlGn6p/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6dDuoSLhtwNG3ve4D6Y21C?si=OqbYzPD9RWeC_UQQ0BDJ9Q",

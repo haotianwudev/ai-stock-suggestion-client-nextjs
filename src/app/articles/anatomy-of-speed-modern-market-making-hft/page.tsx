@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, Server, Zap, Scale, ShieldCheck, TrendingUp, AlertTriangle, SlidersHorizontal, Music } from 'lucide-react';
+import { ArrowLeft, BrainCircuit, Server, Zap, Scale, ShieldCheck, TrendingUp, AlertTriangle, SlidersHorizontal, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // Interactive Components
 const InteractiveSpreadCalculator = () => {
@@ -167,6 +168,7 @@ const LatencyVisualization = () => {
 
 export default function AnatomyOfSpeedArticle() {
   const currentArticle = articles.find(article => article.slug === 'anatomy-of-speed-modern-market-making-hft');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const hftInfraData = [
     ["Hardware", "Co-located Servers", "Reduces network latency to microseconds by placing systems in the same data center as the exchange."],
@@ -197,27 +199,24 @@ export default function AnatomyOfSpeedArticle() {
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleTitle={currentArticle?.title || ''} 
+            articleSlug={currentArticle?.slug || ''} 
           />
         </>
       )}
 
       <div className="min-h-screen bg-gray-50">
         {/* Header with Return Button */}
-        <div className="bg-white border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <div className="flex items-center gap-4 mb-4">
-              <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Return to Home
-              </Link>
-            </div>
-          </div>
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
         </div>
 
-        {/* Badges */}
-        <div className="relative">
+        {/* Hero Section */}
+        <div className="bg-white relative overflow-hidden border-b border-slate-100">
+          {/* Badges */}
           <div className="absolute top-4 left-4 z-10">
             <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
               Deep Research
@@ -228,34 +227,70 @@ export default function AnatomyOfSpeedArticle() {
               Podcast
             </span>
           </div>
-        </div>
-
-        {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 pb-24">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          
+          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
               The Anatomy of Speed: Modern Market Making in High-Frequency Trading
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
               An analytical report on strategies, models, and alpha generation in high-frequency trading environments where microseconds determine profitability.
             </p>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-slate-500 mt-6">
               Published on {currentArticle?.date} | Deep Research Analysis
             </div>
           </div>
         </div>
 
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/WZbpiQT.jpeg" 
+              alt="High-Frequency Trading Infrastructure Infographic" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/WZbpiQT.jpeg"
+          alt="High-Frequency Trading Infrastructure Infographic"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
+
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto px-6 py-12 space-y-16">
+        <main className="max-w-5xl mx-auto px-6 py-16">
           
           {/* Section 1: Principles of Market Making */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 1</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Principles of Market Making</h2>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
                 <div className="flex items-center mb-4">
                   <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
@@ -307,21 +342,21 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Section 2: HFT Ecosystem */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 2</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">The High-Frequency Trading Ecosystem</h2>
             </div>
             
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-8">
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-6">
               <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto">
                 High-Frequency Trading (HFT) is a type of algorithmic trading characterized by high speeds, high turnover rates, and high order-to-trade ratios. Electronic Market Makers (EMMs) are a subset of HFT firms whose primary strategy is providing liquidity. The entire ecosystem is built on the foundation of minimizing latency—the time delay in data transmission and processing.
               </p>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">The Latency Arms Race: Infrastructure Stack</h3>
+            <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">The Latency Arms Race: Infrastructure Stack</h3>
             
-            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-8">
+            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-6">
               <table className="w-full text-left">
                 <thead className="bg-gray-50">
                   <tr>
@@ -346,20 +381,20 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Section 3: Quantitative Models */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 3</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Quantitative Models for Optimal Quoting</h2>
             </div>
             
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-12">
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">The Avellaneda-Stoikov Model</h3>
               <p className="text-gray-600">
                 A foundational model in modern market making, it provides a mathematical framework for determining the optimal bid and ask quotes by balancing the need to earn the spread against the risks of holding inventory. It introduces the concepts of a "reservation price" (the firm's true valuation) and an optimal spread around it.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 mb-8">
+            <div className="grid lg:grid-cols-2 gap-6 mb-6">
               <div className="bg-white rounded-lg p-6 border border-gray-200">
                 <h4 className="text-lg font-semibold text-blue-700 mb-4">Reservation Price (r)</h4>
                 <div className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
@@ -385,7 +420,7 @@ export default function AnatomyOfSpeedArticle() {
               </div>
             </div>
 
-            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-8">
+            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-6">
               <table className="w-full text-left">
                 <thead className="bg-gray-50">
                   <tr>
@@ -408,13 +443,13 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Section 4: Risk Control */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 4</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Advanced Inventory & Risk Control</h2>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
                 <div className="flex items-center mb-4">
                   <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
@@ -442,14 +477,14 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Section 5: Machine Learning & Alpha */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 5</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Machine Learning & The Pursuit of Alpha</h2>
             </div>
             
-            <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">How Machine Learning is Applied</h3>
-            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-12">
+            <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">How Machine Learning is Applied</h3>
+            <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-8">
               <table className="w-full text-left">
                 <thead className="bg-gray-50">
                   <tr>
@@ -470,8 +505,8 @@ export default function AnatomyOfSpeedArticle() {
               </table>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">How to Generate Alpha (α)</h3>
-            <div className="grid md:grid-cols-3 gap-8">
+            <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">How to Generate Alpha (α)</h3>
+            <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
                 <div className="flex items-center mb-4">
                   <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
@@ -511,8 +546,8 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Section 6: Conclusion */}
-          <section>
-            <div className="text-center mb-12">
+          <section className="mb-12">
+            <div className="text-center mb-8">
               <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 6</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Synthesis & Future Trajectories</h2>
             </div>
@@ -525,7 +560,7 @@ export default function AnatomyOfSpeedArticle() {
           </section>
 
           {/* Call to Action */}
-          <section className="text-center py-12">
+          <section className="text-center py-8">
             <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Explore Further</h3>
               <p className="text-gray-600 mb-6">
@@ -569,12 +604,12 @@ export default function AnatomyOfSpeedArticle() {
               </div>
             </div>
           </div>
-        </div>
+        </main>
 
         {/* Footer */}
         <footer className="bg-white border-t border-gray-200 mt-16">
-          <div className="max-w-4xl mx-auto px-6 py-8 text-center text-gray-500">
-            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
+          <div className="max-w-5xl mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
           </div>
         </footer>
       </div>
