@@ -386,26 +386,11 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
                    className="text-blue-600 hover:underline block">
                    • Deep Research: Iron Condor Quantitative Analysis
                 </a>
-                <a href="https://www.tastylive.com/news-insights/iron-condor-options-strategy" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • tastylive: Iron Condor Strategy Guide
-                </a>
-                <a href="https://optionalpha.com/blog/iron-condor" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • Option Alpha: Iron Condor Mechanics
-                </a>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Research & Backtesting:</h4>
               <div className="space-y-1 ml-4">
-                <a href="https://www.cboe.com/education/resources/concepts-and-strategies/iron-condor" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • CBOE: Iron Condor Education
-                </a>
                 <a href="https://www.reddit.com/r/thetagang/" 
                    target="_blank" rel="noopener noreferrer" 
                    className="text-blue-600 hover:underline block">
