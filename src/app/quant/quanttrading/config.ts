@@ -162,6 +162,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "hedge-fund-edge-data",
       "hedge-fund-data-driven-edge-alpha-generation",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "quant-filters",
+      "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
     ],
     studyGuide: {
       items: [
@@ -182,6 +184,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
           videoUrl: "https://youtu.be/U5iJM-xrGLs",
           visualGuideUrl: "https://i.imgur.com/EOSdL9d.jpeg",
+        },
+        {
+          text: "Quantitative Trading Filtering Techniques Explained",
+          url: "https://www.sophie-ai-finance.com/articles/signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
+          videoUrl: "https://youtu.be/xtwugnNA6Ac",
+          visualGuideUrl: "https://i.imgur.com/w5OLmL3.jpeg",
         },
       ]
     }
