@@ -219,7 +219,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
         {
           text: "The Institutional Playbook for Exploiting the Common Investor",
-          url: "https://www.sophie-ai-finance.com/articles/hedge-fund-data-driven-edge-alpha-generation",
+          url: "https://www.sophie-ai-finance.com/articles/the-harvest-institutional-exploitation-retail-investors",
           videoUrl: "https://youtu.be/xMaKA2lIn8c",
           visualGuideUrl: "https://i.imgur.com/4qzGj8K.jpeg",
         },
