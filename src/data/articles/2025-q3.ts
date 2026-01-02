@@ -401,16 +401,6 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://i.imgur.com/otXoq7h.jpeg"
   },
 {
-    title: "An Institutional Analysis of Long-Horizon Trend Regression",
-    description: "A comprehensive quantitative analysis translating technical analysis into institutional trading paradigms. Explores Time-Series Momentum (TSMOM), statistical foundations, and empirical evidence for long-term trend strategies across asset classes.",
-    slug: "institutional-analysis-long-horizon-trend-regression",
-    date: "August 30, 2025",
-    imageUrl: "https://www.fxcorporate.com/help/MS/NOTFIFO/IMG/IndicatorDescriptions/REGRESSION_Indicator.png",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSSQVdPywNv0_PO1HLFySWG9fjHR1CUWibQgPiUWW5xGTvdXqX1ZJ6iFJxxiMcmChrvLYIVcfOK32Gp/pub",
-    deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
-  },
-{
     title: "Is Transformer the ultimate solution to Crack the Market? Transformer in Systematic Trading",
     description: "Uncover how the groundbreaking Transformer architecture, the engine behind modern AI and Large Language Models (LLMs), is fundamentally reshaping systematic trading! This video delves into how this paradigm-shifting technology, originally designed for natural language processing, is now tackling the complex, noisy, and non-stationary domain of financial markets.",
     slug: "transformer-in-systematic-trading",
@@ -619,6 +609,7 @@ export const articles2025Q3: Article[] = [
     deepResearch: true,
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cf/AQR_Capital_Management_Logo.png",
     labels: [ArticleLabel.QUANT],
+    bookSummary: true,
   },
 {
     title: "The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading",
@@ -649,16 +640,6 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSRiUI4Qd6UcOEDjuIqpL-P2d0PgZW54lSX_fT91rCAhGl08klg9GwFPKw4CHKJT4X_BJ8tJa-gqHK9/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
-  },
-{
-    title: "A Zero-Based Budgeting Guide for the Modern Quant Team",
-    description: "A comprehensive guide to transforming your quantitative team from a cost center into an indispensable value driver through Zero-Based Budgeting principles and strategic justification frameworks.",
-    slug: "strategic-cost-justification-modern-quant-team-zbb-guide",
-    date: "August 10, 2025",
-    imageUrl: "https://www.techfunnel.com/wp-content/uploads/2024/08/Zero-Based-Budgeting.jpg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSgopLy0far7WMxm8MamqpJ7R4sqytz5_iBqkyT1dj8ax2ONSLB7vE5tihfVDFC1xnOGKFB1fr4MWBF/pub",
-    deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
 {
     title: "Unlocking SEC Form 13F",
