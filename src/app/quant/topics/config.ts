@@ -79,6 +79,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/eK2moYsTJrE',
     infographicUrl: "https://i.imgur.com/kmqdUcW.jpeg",
     relatedArticles: [
+      "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
       "structured-notes",
       "architecture-structured-notes-comprehensive-investors-guide",
       "monte-carlo-simulation-3",
@@ -97,6 +98,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
           videoUrl: "https://youtu.be/nBAnWHAzD6I",
           visualGuideUrl: "https://i.imgur.com/K3gkRdn.jpeg",
+        },
+        {
+          text: "Stochastic Calculus and Ito's Lemma",
+          url: "https://www.sophie-ai-finance.com/articles/stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
+          visualGuideUrl: "https://i.imgur.com/Gmd3y5O.jpeg",
         },
       ]
     }
