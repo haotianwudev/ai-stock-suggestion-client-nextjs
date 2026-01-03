@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MonteCarloContent } from "../topics/monte-carlo";
 import { StatisticalAnalysisContent } from "../topics/statistical-analysis";
+import { DerivativesPricingContent } from "../topics/derivatives-pricing";
 import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
 import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
@@ -48,7 +49,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="monte-carlo" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -63,6 +64,13 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">Statistics</span>
             <span className="hidden sm:block">Statistical Analysis</span>
           </TabsTrigger>
+          <TabsTrigger 
+            value="derivatives-pricing" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Derivatives</span>
+            <span className="hidden sm:block">Derivatives Pricing</span>
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="monte-carlo" className="mt-0">
@@ -71,6 +79,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="statistical-analysis" className="mt-0">
           <StatisticalAnalysisContent />
+        </TabsContent>
+        
+        <TabsContent value="derivatives-pricing" className="mt-0">
+          <DerivativesPricingContent />
         </TabsContent>
       </Tabs>
     </div>

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTopicConfig } from '../config';
 import QuantTabClient from '@/app/quant/[tab]/client';
 
-const validSubtopics = ['monte-carlo', 'statistical-analysis'];
+const validSubtopics = ['monte-carlo', 'statistical-analysis', 'derivatives-pricing'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;

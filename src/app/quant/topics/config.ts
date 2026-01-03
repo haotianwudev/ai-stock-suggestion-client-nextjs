@@ -71,6 +71,34 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
       ]
     }
+  },
+  'derivatives-pricing': {
+    id: 'derivatives-pricing',
+    title: 'Derivatives Pricing',
+    description: 'Master the mathematical foundations of derivatives pricing including Black-Scholes models, structured products, and complex financial instruments. Learn to value options, bonds, and hybrid securities using advanced quantitative methods.',
+    videoUrl: 'https://youtu.be/eK2moYsTJrE',
+    infographicUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+    relatedArticles: [
+      "architecture-structured-notes-comprehensive-investors-guide",
+      "monte-carlo-simulation-3",
+      "monte-carlo-advanced-stochastic-modeling-derivatives-cva"
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "Structured Notes",
+          url: "https://www.sophie-ai-finance.com/articles/architecture-structured-notes-comprehensive-investors-guide",
+          visualGuideUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+          videoUrl: "https://youtu.be/eK2moYsTJrE"
+        },
+        {
+          text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
+          url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+          videoUrl: "https://youtu.be/nBAnWHAzD6I",
+          visualGuideUrl: "https://i.imgur.com/K3gkRdn.jpeg",
+        },
+      ]
+    }
   }
 };
 
