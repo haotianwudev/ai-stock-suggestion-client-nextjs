@@ -168,7 +168,15 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/definitive-backtrader-cheatsheet-guide",
           visualGuideUrl: "https://i.imgur.com/hHbVXLF.jpeg",
         },
-      ]
+        {
+          text: "Backtest with AI",
+          url: "https://app.statisfund.com",
+        },
+        {
+          text: "Portfolio Visualizer",
+          url: "https://www.portfoliovisualizer.com/",
+        },    
+      ],    
     }
   },
 
