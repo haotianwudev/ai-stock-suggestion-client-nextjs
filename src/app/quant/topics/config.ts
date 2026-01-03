@@ -79,6 +79,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/eK2moYsTJrE',
     infographicUrl: "https://i.imgur.com/kmqdUcW.jpeg",
     relatedArticles: [
+      "structured-notes",
       "architecture-structured-notes-comprehensive-investors-guide",
       "monte-carlo-simulation-3",
       "monte-carlo-advanced-stochastic-modeling-derivatives-cva"

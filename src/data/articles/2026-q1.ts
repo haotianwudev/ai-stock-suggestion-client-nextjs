@@ -75,6 +75,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
   {
+    title: "Structured Notes Demystified: The Swiss Army Knife of Investing or a Hidden Risk?",
+    description: " In this video, we deconstruct these complex hybrid securities, which combine a zero-coupon bond with a derivative package to create custom payoffs,. We break down the three main categories—Growth, Income, and Protection.",
+    slug: "structured-notes",
+    date: "January 5, 2026",
+    youtubeUrl: "https://youtu.be/eK2moYsTJrE",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/eK2moYsTJrE/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
     description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
     slug: "architecture-structured-notes-comprehensive-investors-guide",
