@@ -48,6 +48,7 @@ import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strateg
 import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
 import { BullPutSpreadStrategyDetail } from './strategies/bull-put-spread-strategy';
 import { BullCallSpreadStrategyDetail } from './strategies/bull-call-spread-strategy';
+import { BearPutSpreadStrategyDetail } from './strategies/bear-put-spread-strategy';
 import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
 import { CoveredCallStrategyDetail } from './strategies/covered-call-strategy';
 import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
@@ -159,14 +160,27 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bear_put_spread',
-        category: ['Bearish'],
+        category: ['Bearish', 'Risk Defined'],
         name: 'Bear Put Spread',
         description: "A moderately bearish strategy. Buy a put and sell another put with a lower strike. This reduces cost and risk, but caps profit. Ideal for moderate price decreases.",
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Less sensitive to IV changes',
         time: 'Less sensitive to time decay',
-        payoffCalculator: (p, { strike1, strike3, premium }) => 
-            Math.max(0, strike1 - p) - Math.max(0, strike3 - p) - premium * 0.5,
+        payoffCalculator: (p, { strike1, strike3, premium }) => {
+            // Bear Put Spread: Buy put at strike1 (higher), sell put at strike3 (lower)
+            // Premium represents the net debit paid (long put premium - short put premium)
+            const longPutPayoff = Math.max(0, strike1 - p);
+            const shortPutPayoff = -Math.max(0, strike3 - p);
+            const netDebit = premium;
+            
+            // Total P&L = Long Put Payoff + Short Put Payoff - Net Debit Paid
+            return longPutPayoff + shortPutPayoff - netDebit;
+        },
+        youtubeId: 'g5e-nZERjLE',
+        payoffExplanation: "Maximum profit occurs when the stock price equals or falls below the short put strike at expiration. Maximum loss occurs when stock stays above the long put strike.",
+        relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
+        infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
+        detailComponent: BearPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'bear_call_spread',
