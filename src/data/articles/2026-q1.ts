@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Mechanics of Alpha: From Raw Data to Realized Returns",
+    description: "A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading. Master the Fundamental Law of Active Management, implementation shortfall, and the reality of backtest overfitting.",
+    slug: "mechanics-of-alpha-raw-data-realized-returns",
+    date: "March 4, 2026",
+    imageUrl: "https://i.imgur.com/Yqby0EQ.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQHFLko0mhbWoY7S4TltwfgTsrd05KfEJn3Lfwrr7q7GOszNxaoMFHqEzWX1Hm14m5RisTM7U0Evz4N/pub",
+    labels: [ArticleLabel.QUANT],
+    bookSummary: true,
+  },
+  {
     title: "The Microstructure of Intraday Option Speculation: Mechanics, Strategies, and Structural Risks",
     description: "An exhaustive analysis of the option day trading ecosystem, deconstructing 0DTE contracts, Gamma Exposure (GEX), and the structural asymmetry between retail traders and institutional market makers.",
     slug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
