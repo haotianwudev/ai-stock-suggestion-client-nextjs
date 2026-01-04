@@ -52,6 +52,8 @@ import { BearPutSpreadStrategyDetail } from './strategies/bear-put-spread-strate
 import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
 import { CoveredCallStrategyDetail } from './strategies/covered-call-strategy';
 import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
+import { LongStraddleStrategyDetail } from './strategies/long-straddle-strategy';
+import { LongStrangleStrategyDetail } from './strategies/long-strangle-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 
 // --- STRATEGY DATA ---
@@ -89,7 +91,7 @@ export const strategies: Strategy[] = [
             // Total P&L = Long Call Payoff + Short Call Payoff - Net Debit Paid
             return longCallPayoff + shortCallPayoff - netDebit;
         },
-        youtubeId: 'g5e-nZERjLE',
+        //youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price equals or exceeds the short call strike at expiration. Maximum loss occurs when stock stays below the long call strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
@@ -176,7 +178,7 @@ export const strategies: Strategy[] = [
             // Total P&L = Long Put Payoff + Short Put Payoff - Net Debit Paid
             return longPutPayoff + shortPutPayoff - netDebit;
         },
-        youtubeId: 'g5e-nZERjLE',
+        //youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price equals or falls below the short put strike at expiration. Maximum loss occurs when stock stays above the long put strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
@@ -270,6 +272,11 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2),
+        //youtubeId: 'AtRXXgVRtlk',
+        payoffExplanation: "Maximum profit occurs when the stock price moves significantly away from the strike price in either direction. Maximum loss occurs when stock price equals the strike price at expiration.",
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
+        infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
+        detailComponent: LongStraddleStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'long_strangle',
@@ -281,6 +288,11 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike2, strike3, premium }) => 
             Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5),
+        //youtubeId: 'AtRXXgVRtlk',
+        payoffExplanation: "Maximum profit occurs when the stock price moves significantly beyond either the call or put strike. Maximum loss occurs when stock price stays between the two strikes at expiration.",
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
+        infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
+        detailComponent: LongStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'wheel_strategy',
