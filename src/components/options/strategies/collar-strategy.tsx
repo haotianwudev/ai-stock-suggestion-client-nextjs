@@ -230,16 +230,13 @@ export const CollarStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) 
           <div>
             <h4 className="font-semibold mb-2">Further Reading</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="https://www.cboe.com/education/resource-library/concepts/collar-strategy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CBOE: Collar Strategy Guide</a></li>
               <li><a href="https://www.investopedia.com/terms/c/collar.asp" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Investopedia: Collar Definition</a></li>
-              <li><a href="https://www.optionseducation.org/strategies/all-strategies/collar" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Industry Council: Collar</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Tools & Calculators</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li><a href="https://www.optionsprofitcalculator.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Profit Calculator</a></li>
-              <li><a href="https://www.cboe.com/tools/profit-loss-calculator" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CBOE Profit/Loss Calculator</a></li>
             </ul>
           </div>
         </div>

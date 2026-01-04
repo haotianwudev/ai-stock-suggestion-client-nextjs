@@ -398,16 +398,12 @@ export const BullPutSpreadStrategyDetail = ({ strategy, onBack }: StrategyDetail
             <h4 className="font-semibold mb-2">Recommended Reading</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li><a href="/articles/vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling" className="text-blue-600 hover:underline">Vertical Credit Spreads: Comprehensive Guide</a></li>
-              <li><a href="https://www.cboe.com/education/resource-library/concepts/bull-put-spread" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CBOE: Bull Put Spread Strategy</a></li>
-              <li><a href="https://www.tastytrade.com/definitions/bull-put-spread" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Tastytrade: Bull Put Spread Mechanics</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Tools & Analysis</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="/option/viewer" className="text-blue-600 hover:underline">Options Viewer - Analyze Probability</a></li>
               <li><a href="https://www.optionsprofitcalculator.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Profit Calculator</a></li>
-              <li><a href="https://www.barchart.com/stocks/quotes/$SPX/options" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Barchart: Options Chain Analysis</a></li>
             </ul>
           </div>
         </div>

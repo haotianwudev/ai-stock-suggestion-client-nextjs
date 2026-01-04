@@ -331,20 +331,6 @@ export const LeapsPutStrategyDetail = ({ strategy, onBack }: StrategyDetailProps
                   Berkshire Hathaway Annual Letters
                 </a> - Warren Buffett's approach to put selling
               </li>
-              <li>
-                <a href="https://www.cboe.com/education/tools-and-calculators/" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-teal-600 hover:text-teal-800 underline">
-                  CBOE Options Calculator
-                </a> - For analyzing Greeks and payoffs
-              </li>
-              <li>
-                <a href="https://www.ivolatility.com/" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-teal-600 hover:text-teal-800 underline">
-                  IVolatility.com
-                </a> - Volatility analysis and historical data
-              </li>
             </ul>
           </div>
           <div className="bg-white p-3 rounded-lg border border-teal-100">

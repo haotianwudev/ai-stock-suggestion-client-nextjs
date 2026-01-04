@@ -41,6 +41,7 @@ export interface Strategy {
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
+import { LongCallStrategyDetail } from './strategies/long-call-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
 import { CollarStrategyDetail } from './strategies/collar-strategy';
 import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strategy';
@@ -63,6 +64,10 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, p - strike1) - premium,
+        //youtubeId: 'X2IJngJv4G0',
+        relatedArticles: ["single-leg-long-call-asymmetric-leverage-options-trading"],
+        infographicUrl: 'https://i.imgur.com/A6ChN1u.jpeg',
+        detailComponent: LongCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'bull_call_spread',

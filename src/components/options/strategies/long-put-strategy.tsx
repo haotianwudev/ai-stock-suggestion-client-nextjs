@@ -411,40 +411,10 @@ export const LongPutStrategyDetail = ({ strategy, onBack }: StrategyDetailProps)
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Recommended Reading:</h4>
               <div className="space-y-1 ml-4">
-                <a href="https://www.cboe.com/education/options-strategies/long-put" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • CBOE: Long Put Strategy Guide
-                </a>
                 <a href="https://www.optionsplaybook.com/option-strategies/long-put/" 
                    target="_blank" rel="noopener noreferrer" 
                    className="text-blue-600 hover:underline block">
                    • Options Playbook: Long Put Mechanics
-                </a>
-                <a href="https://www.tastylive.com/news-insights/long-puts-vs-short-calls" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • tastylive: Long Puts vs Short Calls Analysis
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-teal-800 mb-2">Advanced Topics:</h4>
-              <div className="space-y-1 ml-4">
-                <a href="https://www.volatilitytrading.com/put-call-parity" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • Put-Call Parity and Synthetic Positions
-                </a>
-                <a href="https://www.quantstart.com/articles/volatility-skew-trading" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • Volatility Skew and Put Premium Analysis
-                </a>
-                <a href="https://www.riskpremia.com/tail-risk-hedging" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • Tail Risk Hedging with Long Puts
                 </a>
               </div>
             </div>
@@ -455,16 +425,6 @@ export const LongPutStrategyDetail = ({ strategy, onBack }: StrategyDetailProps)
                    target="_blank" rel="noopener noreferrer" 
                    className="text-blue-600 hover:underline block">
                    • Options Profit Calculator
-                </a>
-                <a href="https://www.ivolatility.com/calc/" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • IV Rank and Percentile Tools
-                </a>
-                <a href="https://www.barchart.com/options/volatility-skew" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-blue-600 hover:underline block">
-                   • Volatility Skew Analysis Tools
                 </a>
               </div>
             </div>

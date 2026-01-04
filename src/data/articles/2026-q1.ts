@@ -40,7 +40,6 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT9UoDlmtwwKvTpbZLGXM4JlrXZlVpVCmDi6F-I111n_qnOaK6fE-ROfroHlfZS8xQ4YwFuiLoC628-/pub",
     deepResearch: true,
     options: true,
-    labels: [ArticleLabel.QUANT],
   },
   {
     title: "The Efficient Frontier: Mathematical Foundations of Modern Portfolio Optimization",

@@ -451,15 +451,12 @@ export const CoveredCallStrategyDetail = ({ strategy, onBack }: StrategyDetailPr
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li><a href="/articles/covered-calls-vs-cash-secured-puts" className="text-blue-600 hover:underline">Covered Calls vs Cash-Secured Puts: Complete Comparison</a></li>
               <li><a href="/articles/wheel-strategy" className="text-blue-600 hover:underline">The Wheel Strategy: Triple Income Generation</a></li>
-              <li><a href="https://www.cboe.com/education/resource-library/concepts/covered-call" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CBOE: Covered Call Strategy Guide</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Tools & Analysis</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="/option/viewer" className="text-blue-600 hover:underline">Options Viewer - Analyze Covered Calls</a></li>
               <li><a href="https://www.optionsprofitcalculator.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Profit Calculator</a></li>
-              <li><a href="https://www.barchart.com/stocks/quotes/$SPX/options" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Barchart: Options Chain Analysis</a></li>
             </ul>
           </div>
         </div>

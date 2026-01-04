@@ -314,14 +314,11 @@ export const ShortStraddleStrategyDetail = ({ strategy, onBack }: StrategyDetail
             <h4 className="font-semibold mb-2">Recommended Reading</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li><a href="/articles/mastering-short-volatility-straddles-strangles-systematic-premium-collection" className="text-blue-600 hover:underline">Mastering Short Volatility: Straddles & Strangles</a></li>
-              <li><a href="https://www.cboe.com/education/resource-library/concepts/short-straddle" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CBOE: Short Straddle Strategy</a></li>
-              <li><a href="https://www.tastytrade.com/definitions/short-straddle" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Tastytrade: Short Straddle Mechanics</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Tools & Analysis</h4>
             <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="/option/viewer" className="text-blue-600 hover:underline">Options Viewer - Analyze Greeks</a></li>
               <li><a href="https://www.optionsprofitcalculator.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Profit Calculator</a></li>
               <li><a href="https://www.barchart.com/stocks/quotes/$SPX/volatility-greeks" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Barchart: Volatility & Greeks</a></li>
             </ul>
