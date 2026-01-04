@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading",
+    description: "Master the strategic architecture of defined-risk trading. Stop gambling on naked options and start financing your directional views with mathematical precision. A comprehensive guide to bull call spreads, bear put spreads, and the mathematics of advantage.",
+    slug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
+    date: "January 4, 2026",
+    imageUrl: "https://i.imgur.com/yndWCwP.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSFUCr-eIksR12Xk1XQRKnzaXyW86hVVupvOVi7ILRO04o-6Jxfj_KpWDzbtqkLw_rqYWtcJvMDvHAo/pub",
+    deepResearch: true,
+    options: true,
+  },
+  {
     title: "The Stochastic Calculus of Finance: A Comprehensive Treatise on Itô's Lemma",
     description: "A comprehensive treatise on Itô's Lemma: the mathematical bridge between the smooth world of Newton and the jagged reality of financial markets. Master the fundamental theorem that transforms stochastic differential equations into the Black-Scholes framework.",
     slug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
