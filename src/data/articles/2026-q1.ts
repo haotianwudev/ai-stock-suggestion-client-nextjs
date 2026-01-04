@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Mastering Volatility: The Definitive Guide to Long Straddles and Strangles",
+    description: "The definitive technical guide to trading volatility as an asset class. Master the physics of implied vs realized volatility, the Greeks that drive profit, and the professional lifecycle management of Long Straddles and Strangles. From IV Crush mechanics to Gamma Scalping algorithms.",
+    slug: "mastering-volatility-definitive-guide-long-straddles-strangles",
+    date: "February 13, 2026",
+    imageUrl: "https://i.imgur.com/HE2Hr58.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT7OK7jlI96YietOEyDQcgKD1k--5WbrNy2FPkldCsq91RcCkcyOlLtn1g-qdS1hfZouQMTfjzq7TlA/pub",
+    deepResearch: true,
+    options: true,
+  },
+  {
     title: "Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading",
     description: "Master the strategic architecture of defined-risk trading. Stop gambling on naked options and start financing your directional views with mathematical precision. A comprehensive guide to bull call spreads, bear put spreads, and the mathematics of advantage.",
     slug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
