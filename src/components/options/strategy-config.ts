@@ -47,6 +47,7 @@ import { CollarStrategyDetail } from './strategies/collar-strategy';
 import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strategy';
 import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
 import { BullPutSpreadStrategyDetail } from './strategies/bull-put-spread-strategy';
+import { BullCallSpreadStrategyDetail } from './strategies/bull-call-spread-strategy';
 import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
 import { CoveredCallStrategyDetail } from './strategies/covered-call-strategy';
 import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
@@ -71,14 +72,27 @@ export const strategies: Strategy[] = [
     },
     {
         id: 'bull_call_spread',
-        category: ['Bullish'],
+        category: ['Bullish', 'Risk Defined'],
         name: 'Bull Call Spread',
         description: "A moderately bullish strategy. Buy a call and sell another call with a higher strike price. This reduces the cost and risk, but also caps profit. Ideal for moderate price increases.",
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Less sensitive to IV changes',
         time: 'Less sensitive to time decay',
-        payoffCalculator: (p, { strike1, strike2, premium }) => 
-            Math.min(strike2 - strike1, Math.max(0, p - strike1)) - Math.max(0, p - strike2) - premium * 0.5,
+        payoffCalculator: (p, { strike1, strike2, premium }) => {
+            // Bull Call Spread: Buy call at strike1 (lower), sell call at strike2 (higher)
+            // Premium represents the net debit paid (long call premium - short call premium)
+            const longCallPayoff = Math.max(0, p - strike1);
+            const shortCallPayoff = -Math.max(0, p - strike2);
+            const netDebit = premium;
+            
+            // Total P&L = Long Call Payoff + Short Call Payoff - Net Debit Paid
+            return longCallPayoff + shortCallPayoff - netDebit;
+        },
+        youtubeId: 'g5e-nZERjLE',
+        payoffExplanation: "Maximum profit occurs when the stock price equals or exceeds the short call strike at expiration. Maximum loss occurs when stock stays below the long call strike.",
+        relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
+        infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
+        detailComponent: BullCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
     {
         id: 'bull_put_spread',

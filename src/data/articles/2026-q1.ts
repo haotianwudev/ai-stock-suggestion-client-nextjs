@@ -5,7 +5,7 @@ export const articles2026Q1: Article[] = [
     title: "Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading",
     description: "Master the strategic architecture of defined-risk trading. Stop gambling on naked options and start financing your directional views with mathematical precision. A comprehensive guide to bull call spreads, bear put spreads, and the mathematics of advantage.",
     slug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
-    date: "January 4, 2026",
+    date: "February 7, 2026",
     imageUrl: "https://i.imgur.com/yndWCwP.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSFUCr-eIksR12Xk1XQRKnzaXyW86hVVupvOVi7ILRO04o-6Jxfj_KpWDzbtqkLw_rqYWtcJvMDvHAo/pub",
     deepResearch: true,
