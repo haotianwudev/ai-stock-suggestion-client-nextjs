@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
+    description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
+    slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
+    date: "January 4, 2026",
+    imageUrl: "https://i.imgur.com/AmiHclK.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSSjTnFPfVd2dtnBvN8DK9CQSzZJw8sjIhA0Fpa0196LiNG_fA-G-1YMvttNH2B-SLurcoPo-dk1fOb/pub",
+    labels: [ArticleLabel.QUANT],
+    bookSummary: true,
+  },
+  {
     title: "Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing",
     description: "Deconstruct the 'Defined Outcome' trade and learn how to engineer your own risk profile using Options, ETFs, and Structured Notes. Master the Put Spread Collar mechanics, understand the trade-offs between upside caps and downside buffers, and navigate the critical differences between ETFs and Structured Notes.",
     slug: "mastering-buffered-yield-strategies-defined-outcome-investing",
@@ -64,6 +75,7 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub",
     deepResearch: true,
     options: true,
+    bookSummary: true,
   },
   {
     title: "Systematic vs. Model Quantitative Trading: The Evolution of Algorithmic Finance",
