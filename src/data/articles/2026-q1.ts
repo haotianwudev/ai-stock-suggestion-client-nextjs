@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread as a Probability Microscope",
+    description: "Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices. From the Breeden-Litzenberger theorem to trading applications.",
+    slug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
+    date: "February 15, 2026",
+    imageUrl: "https://i.imgur.com/LniOyTx.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0hoTCPZAZHBK10zyii4olAh-qRG8D-vknfTHSW1GxmugspE3OKsBHB6vYIg_78UaXNgM_H_Rri8Br/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+    bookSummary: true,
+  },
+  {
     title: "Mastering Volatility: The Definitive Guide to Long Straddles and Strangles",
     description: "The definitive technical guide to trading volatility as an asset class. Master the physics of implied vs realized volatility, the Greeks that drive profit, and the professional lifecycle management of Long Straddles and Strangles. From IV Crush mechanics to Gamma Scalping algorithms.",
     slug: "mastering-volatility-definitive-guide-long-straddles-strangles",
