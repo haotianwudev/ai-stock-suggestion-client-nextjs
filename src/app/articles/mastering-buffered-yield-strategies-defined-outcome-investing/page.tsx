@@ -8,7 +8,14 @@ import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/struc
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable UI Components ---
-const Section = ({ title, icon: Icon, children, color = "indigo" }) => {
+interface SectionProps {
+  title: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  children: React.ReactNode;
+  color?: "indigo" | "emerald" | "rose" | "amber" | "blue" | "violet";
+}
+
+const Section = ({ title, icon: Icon, children, color = "indigo" }: SectionProps) => {
   const colorClasses = {
     indigo: "border-l-4 border-indigo-500 bg-white",
     emerald: "border-l-4 border-emerald-500 bg-white",
@@ -42,7 +49,12 @@ const Section = ({ title, icon: Icon, children, color = "indigo" }) => {
   );
 };
 
-const Badge = ({ children, color = "slate" }) => {
+interface BadgeProps {
+  children: React.ReactNode;
+  color?: "green" | "red" | "blue" | "amber" | "slate" | "violet";
+}
+
+const Badge = ({ children, color = "slate" }: BadgeProps) => {
   const styles = {
     green: "bg-emerald-100 text-emerald-800",
     red: "bg-rose-100 text-rose-800",
@@ -220,7 +232,7 @@ const TradeDecomposer = () => {
   const cap = 14.5; // Estimated Cap
 
   // Formatters
-  const currency = (n) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+  const currency = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
 
   // Strike Calculations
   const putLongStrike = price;
@@ -657,8 +669,8 @@ export default function BufferedYieldStrategiesArticle() {
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleTitle={currentArticle.title || 'Mastering Buffered Yield Strategies'} 
+            articleSlug={currentArticle.slug || 'mastering-buffered-yield-strategies-defined-outcome-investing'} 
           />
         </>
       )}
