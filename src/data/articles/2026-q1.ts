@@ -5,11 +5,12 @@ export const articles2026Q1: Article[] = [
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
-    date: "January 4, 2026",
+    date: "February 26, 2026",
     imageUrl: "https://i.imgur.com/AmiHclK.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSSjTnFPfVd2dtnBvN8DK9CQSzZJw8sjIhA0Fpa0196LiNG_fA-G-1YMvttNH2B-SLurcoPo-dk1fOb/pub",
     labels: [ArticleLabel.QUANT],
+    options: true,
     bookSummary: true,
   },
   {
