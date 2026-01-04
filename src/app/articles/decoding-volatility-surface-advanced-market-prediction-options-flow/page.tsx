@@ -8,19 +8,37 @@ import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/struc
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Components ---
-const Section = ({ children, className = "" }) => (
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const Section = ({ children, className = "" }: SectionProps) => (
   <section className={`py-16 px-4 md:px-8 max-w-6xl mx-auto ${className}`}>
     {children}
   </section>
 );
 
-const GradientText = ({ children, from = "from-violet-600", to = "to-indigo-600" }) => (
+interface GradientTextProps {
+  children: React.ReactNode;
+  from?: string;
+  to?: string;
+}
+
+const GradientText = ({ children, from = "from-violet-600", to = "to-indigo-600" }: GradientTextProps) => (
   <span className={`bg-clip-text text-transparent bg-gradient-to-r ${from} ${to} font-bold`}>
     {children}
   </span>
 );
 
-const Card = ({ title, icon: Icon, children, accentColor = "indigo" }) => {
+interface CardProps {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  children: React.ReactNode;
+  accentColor?: "indigo" | "emerald" | "rose" | "amber" | "blue" | "violet";
+}
+
+const Card = ({ title, icon: Icon, children, accentColor = "indigo" }: CardProps) => {
   const colorMap = {
     indigo: "border-l-indigo-500 shadow-indigo-100",
     emerald: "border-l-emerald-500 shadow-emerald-100",
@@ -45,7 +63,13 @@ const Card = ({ title, icon: Icon, children, accentColor = "indigo" }) => {
   );
 };
 
-const MetricBadge = ({ label, value, trend }) => (
+interface MetricBadgeProps {
+  label: string;
+  value: string;
+  trend: "bullish" | "bearish" | "neutral";
+}
+
+const MetricBadge = ({ label, value, trend }: MetricBadgeProps) => (
   <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col items-center justify-center text-center w-full">
     <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{label}</span>
     <span className="text-lg font-bold text-slate-800 my-1">{value}</span>
@@ -59,7 +83,17 @@ const MetricBadge = ({ label, value, trend }) => (
   </div>
 );
 
-const SignalTable = ({ rows }) => (
+interface SignalTableRow {
+  condition: string;
+  implication: string;
+  type: "bullish" | "bearish" | "neutral";
+}
+
+interface SignalTableProps {
+  rows: SignalTableRow[];
+}
+
+const SignalTable = ({ rows }: SignalTableProps) => (
   <div className="mt-4 border border-slate-100 rounded-lg overflow-hidden text-sm">
     <table className="w-full">
       <thead className="bg-slate-50 text-slate-500">
@@ -323,8 +357,8 @@ export default function VolatilitySurfaceArticle() {
         <>
           <StructuredData article={currentArticle} />
           <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+            articleTitle={currentArticle.title || 'Decoding the Volatility Surface'} 
+            articleSlug={currentArticle.slug || 'decoding-volatility-surface-advanced-market-prediction-options-flow'} 
           />
         </>
       )}
