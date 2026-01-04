@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing",
+    description: "Deconstruct the 'Defined Outcome' trade and learn how to engineer your own risk profile using Options, ETFs, and Structured Notes. Master the Put Spread Collar mechanics, understand the trade-offs between upside caps and downside buffers, and navigate the critical differences between ETFs and Structured Notes.",
+    slug: "mastering-buffered-yield-strategies-defined-outcome-investing",
+    date: "February 20, 2026",
+    imageUrl: "https://i.imgur.com/2I6QQmG.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRFymm4041wNHJCk1t0g_qlHaPRV9v1ZVnSpMeZhpgOKuDsDIRG1nU0VcPhfJJnGy_WyDDWl2IR4zEQ/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+    bookSummary: true,
+  },
+  {
     title: "Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread as a Probability Microscope",
     description: "Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices. From the Breeden-Litzenberger theorem to trading applications.",
     slug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
