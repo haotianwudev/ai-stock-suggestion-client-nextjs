@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Microstructure of Intraday Option Speculation: Mechanics, Strategies, and Structural Risks",
+    description: "An exhaustive analysis of the option day trading ecosystem, deconstructing 0DTE contracts, Gamma Exposure (GEX), and the structural asymmetry between retail traders and institutional market makers.",
+    slug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
+    date: "February 28, 2026",
+    imageUrl: "https://i.imgur.com/vQoeqIu.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR7q9V8ZnPc4Xral63NfryOYdp3rDx0hLjdz3Wqpz6VlZphBUHCpdhxFei2RdXYGa2oFArScgA4iEDn/pub",
+    options: true,
+    labels: [ArticleLabel.QUANT],
+    bookSummary: true,
+  },
+  {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",

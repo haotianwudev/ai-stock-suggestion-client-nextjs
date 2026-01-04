@@ -1,0 +1,695 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, TrendingUp, Activity, Clock, AlertTriangle, ShieldAlert, Brain, Target, Zap, MousePointer2, Search, ArrowRight, Briefcase, Ghost, RefreshCw, Anchor, Wind, Server, Database, Layers, Network, XCircle, Maximize2 } from 'lucide-react';
+import { articles } from '@/data/articles';
+import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+
+export default function MicrostructureIntradayOptionSpeculation() {
+  const currentArticle = articles.find(article => article.slug === 'microstructure-intraday-option-speculation-mechanics-strategies-risks');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+
+  const introData = {
+    title: "The Microstructure of Intraday Option Speculation",
+    subtitle: "Mechanics, Strategies, and Structural Risks",
+    summary: "An exhaustive analysis of the option day trading ecosystem, deconstructing 0DTE contracts, Gamma Exposure (GEX), and the structural asymmetry between retail traders and institutional market makers.",
+    stats: [
+      { label: "Retail Volume", value: "40%+", sub: "of daily total" },
+      { label: "Contracts", value: "15B+", sub: "annual volume" },
+      { label: "Avg Hold Time", value: "< 30m", sub: "for 0DTE scalps" }
+    ]
+  };
+
+  return (
+    <>
+      {/* SEO Components - MANDATORY */}
+      {currentArticle && (
+        <>
+          <StructuredData article={currentArticle} />
+          <BreadcrumbStructuredData 
+            articleTitle={currentArticle.title} 
+            articleSlug={currentArticle.slug || ''} 
+          />
+        </>
+      )}
+
+      {/* Return to Home Button */}
+      <div className="max-w-5xl mx-auto px-6 pt-8">
+        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Return to Home
+        </Link>
+      </div>
+
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-white pt-20 pb-16 lg:pt-32 lg:pb-24">
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full" />
+          <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-100 to-transparent rounded-tr-full" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100">
+            <TrendingUp className="w-4 h-4 mr-2" />
+            Advanced Market Mechanics
+          </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
+            Option <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Alpha & Risk</span>
+          </h1>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed">
+            {introData.summary}
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+            {introData.stats.map((stat, idx) => (
+              <div key={idx} className="flex flex-col p-6 bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <dt className="order-2 mt-2 text-lg leading-6 font-medium text-slate-500">{stat.label}</dt>
+                <dd className="order-1 text-4xl font-extrabold text-slate-900">{stat.value}</dd>
+                <div className="order-3 mt-1 text-xs text-slate-400 font-medium uppercase tracking-wider">{stat.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Infographic - Below Title with Full-Screen Capability */}
+      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+        <div 
+          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+          onClick={() => setIsImageViewerOpen(true)}
+        >
+          <img 
+            src="https://i.imgur.com/vQoeqIu.jpeg" 
+            alt="Intraday Option Speculation Infographic" 
+            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+          />
+          {/* Full-screen button overlay */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsImageViewerOpen(true);
+            }}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+            title="View full screen"
+          >
+            <Maximize2 className="h-4 w-4" />
+          </button>
+          {/* Click hint */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+              Click to view full screen
+            </div>
+          </div>
+        </div>
+        <div 
+          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+          onClick={() => setIsImageViewerOpen(true)}
+        >
+          <img 
+            src="https://i.imgur.com/8rvCF1r.jpeg" 
+            alt="Intraday Option Speculation Infographic" 
+            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+          />
+          {/* Full-screen button overlay */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsImageViewerOpen(true);
+            }}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+            title="View full screen"
+          >
+            <Maximize2 className="h-4 w-4" />
+          </button>
+          {/* Click hint */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+              Click to view full screen
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-screen image viewer */}
+      <FullScreenImageViewer
+        src="https://i.imgur.com/vQoeqIu.jpeg"
+        alt="Intraday Option Speculation Infographic"
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Greeks Section */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 border border-slate-100 mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Theoretical Framework</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Greeks</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {[
+              {
+                symbol: "Δ", name: "Delta", role: "The Lever",
+                desc: "Rate of change of option price vs. underlying price. A 0.50 Delta call moves $0.50 for every $1.00 move in the stock. In 0DTE, Delta can flip from 0.10 to 0.90 in minutes.",
+                color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-200"
+              },
+              {
+                symbol: "Γ", name: "Gamma", role: "The Accelerant",
+                desc: "Rate of change of Delta. This is the 'risk' engine. In the final hours of trading, Gamma becomes vertical, turning small stock moves into 500%+ option swings.",
+                color: "text-purple-600", bg: "bg-purple-50", border: "border-purple-200"
+              },
+              {
+                symbol: "Θ", name: "Theta", role: "The Decay",
+                desc: "Time decay. For 0DTE, Theta is aggressive. If the stock goes sideways for 10 minutes, the option can lose 10-15% of its value purely due to time.",
+                color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200"
+              },
+              {
+                symbol: "V", name: "Vanna", role: "IV Sensitivity",
+                desc: "How Delta changes as Volatility changes. When the market drops, IV spikes, boosting put values faster than math would predict (Vanna tailwind).",
+                color: "text-teal-600", bg: "bg-teal-50", border: "border-teal-200"
+              },
+              {
+                symbol: "C", name: "Charm", role: "Delta Decay",
+                desc: "The change in Delta over time. As expiration nears, OTM deltas vanish to 0 and ITM deltas snap to 1. This creates 'pinning' behavior.",
+                color: "text-pink-600", bg: "bg-pink-50", border: "border-pink-200"
+              }
+            ].map((greek, idx) => (
+              <div key={idx} className={`relative p-6 rounded-2xl border-2 ${greek.border} ${greek.bg} transition-all hover:-translate-y-1 duration-300 hover:shadow-lg`}>
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`text-4xl font-serif font-bold ${greek.color}`}>{greek.symbol}</span>
+                  <span className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wider bg-white/60 ${greek.color}`}>
+                    {greek.role}
+                  </span>
+                </div>
+                <h3 className={`text-xl font-bold mb-2 ${greek.color}`}>{greek.name}</h3>
+                <p className="text-slate-700 text-sm leading-relaxed">{greek.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Lifecycle Timeline */}
+        <div className="py-24 bg-slate-50 border-y border-slate-200 rounded-3xl mb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Timing is Everything</h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Intraday Lifecycle</p>
+            </div>
+            <div className="relative">
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 hidden md:block"></div>
+              <div className="space-y-12 relative">
+                {[
+                  {
+                    time: "09:30 - 09:50", phase: "The Volatility Open / Shakeout",
+                    desc: "Market orders flood the system. Spreads are wide. IV is artificially high due to uncertainty.",
+                    dealerImperative: "Absorb initial liquidity, widen spreads to protect against directional risk.",
+                    retailTrap: "Buying calls at the bell (paying max IV) only to see price rise but option value drop (IV Crush).",
+                    action: "NO ENTRY. Observe the opening range.", volatility: "Extreme", risk: "Critical"
+                  },
+                  {
+                    time: "09:50 - 10:30", phase: "Institutional Trend Set",
+                    desc: "Initial balance is formed. Institutions begin executing large VWAP orders.",
+                    dealerImperative: "Hedge delta exposure from the open. Establish walls.",
+                    retailTrap: "Fading the first strong move (assuming it's a fakeout) when it's actually institutional buying.",
+                    action: "Trade the breakout of the initial 20m range.", volatility: "High", risk: "Medium"
+                  },
+                  {
+                    time: "10:30 - 11:30", phase: "The European Close / Reversal",
+                    desc: "European markets close (11:30 ET). Liquidity shifts often cause a counter-trend move.",
+                    dealerImperative: "Rebalance hedges as global liquidity drops.",
+                    retailTrap: "Chasing the morning trend just as it exhausts due to EU volume leaving.",
+                    action: "Tighten stops on morning runners. Watch for reversal patterns.", volatility: "Medium", risk: "Medium"
+                  },
+                  {
+                    time: "11:30 - 13:30", phase: "The Theta Kill Zone (Lunch)",
+                    desc: "Volume drops ~40%. Price often chops in a tight range.",
+                    dealerImperative: "Collect Theta. Keep price pinned to burn OTM options.",
+                    retailTrap: "Over-trading the chop. Getting 'chopped up' in a $0.50 range while options lose 20% value.",
+                    action: "CASH IS A POSITION. Do not hold 0DTEs here.", volatility: "Low", risk: "High (Theta)"
+                  },
+                  {
+                    time: "13:30 - 15:00", phase: "The Bond Close / Pre-Power Hour",
+                    desc: "Bond market closes (2-3pm ET). Yield moves can trigger equity flows.",
+                    dealerImperative: "Position for end-of-day gamma moves.",
+                    retailTrap: "Falling asleep after lunch and missing the breakout of the 'Lunch Box'.",
+                    action: "Identify the new range formed during lunch. Prepare for breakout.", volatility: "Rising", risk: "Medium"
+                  },
+                  {
+                    time: "15:00 - 15:50", phase: "Power Hour / Gamma Squeeze",
+                    desc: "Dealers must hedge ITM options aggressively. One-way moves are common.",
+                    dealerImperative: "Chase delta. If price rises, buy more stock (squeezing shorts).",
+                    retailTrap: "Counter-trend trading (trying to catch the top) during a gamma squeeze.",
+                    action: "Ride the momentum or stay out. Do not fade.", volatility: "Extreme", risk: "High"
+                  },
+                  {
+                    time: "15:50 - 16:00", phase: "MOC Madness (Gambling)",
+                    desc: "Market On Close imbalances publish. Pure noise.",
+                    dealerImperative: "Flat position. Close out risk.",
+                    retailTrap: "Holding a position hoping for a miracle save.",
+                    action: "FLAT. Close all intraday positions.", volatility: "Random", risk: "Gambling"
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="relative flex flex-col md:flex-row gap-8 items-start group">
+                    <div className="md:w-32 flex-shrink-0 flex md:justify-end items-center z-10">
+                      <div className={`border-2 font-bold px-4 py-2 rounded-xl text-sm shadow-sm whitespace-nowrap transition-colors ${
+                        item.risk === 'Critical' || item.risk === 'Gambling' 
+                          ? 'bg-red-50 border-red-500 text-red-700' 
+                          : 'bg-white border-indigo-500 text-indigo-700'
+                      }`}>
+                        {item.time}
+                      </div>
+                    </div>
+                    <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 relative hover:shadow-md transition-shadow">
+                      <div className="absolute top-6 -left-2 w-4 h-4 bg-white rotate-45 border-l border-b border-slate-200 hidden md:block"></div>
+                      <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2">
+                        <h3 className="text-xl font-bold text-slate-900">{item.phase}</h3>
+                        <div className="flex gap-2">
+                          <span className="text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-600 flex items-center">
+                            <Activity className="w-3 h-3 mr-1" />
+                            Vol: {item.volatility}
+                          </span>
+                          <span className={`text-xs font-bold px-2 py-1 rounded flex items-center ${
+                            item.risk.includes('High') || item.risk.includes('Critical') || item.risk.includes('Gambling')
+                              ? 'bg-red-100 text-red-700' 
+                              : 'bg-yellow-100 text-yellow-700'
+                          }`}>
+                            <AlertTriangle className="w-3 h-3 mr-1" />
+                            {item.risk}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="text-slate-600 mb-6 italic border-l-4 border-slate-200 pl-4">{item.desc}</p>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                          <div className="flex items-center mb-2">
+                            <Briefcase className="w-4 h-4 text-slate-500 mr-2" />
+                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Dealer Imperative</span>
+                          </div>
+                          <p className="text-sm text-slate-800">{item.dealerImperative}</p>
+                        </div>
+                        <div className="bg-red-50 p-4 rounded-xl border border-red-100">
+                          <div className="flex items-center mb-2">
+                            <Ghost className="w-4 h-4 text-red-500 mr-2" />
+                            <span className="text-xs font-bold text-red-500 uppercase tracking-wider">The Retail Trap</span>
+                          </div>
+                          <p className="text-sm text-red-900">{item.retailTrap}</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-start">
+                        <Target className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5 mr-3" />
+                        <p className="text-sm font-medium text-slate-800">
+                          <span className="text-indigo-600 font-bold">Recommended Action:</span> {item.action}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* GEX Logic Section */}
+        <div className="py-24 mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">The Dealer Hedging Loop</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">GEX Masterclass</p>
+          </div>
+          <div className="mb-12">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto text-center leading-relaxed">
+              GEX (Gamma Exposure) tells us how Market Makers are positioned. Because they must remain "Delta Neutral," their hedging activity creates predictable feedback loops in the market. <br />
+              <span className="font-bold text-indigo-600">You are trading against their necessity.</span>
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {[
+              {
+                title: "Positive Gamma Regime", subtitle: "The Shock Absorber",
+                condition: "Dealers are LONG options (Long Gamma)", behavior: "Counter-Cyclical Hedging",
+                loop: [
+                  { trigger: "Price Rises 📈", reaction: "Dealers SELL stock to lock profit", effect: "Price pushed down" },
+                  { trigger: "Price Falls 📉", reaction: "Dealers BUY stock to cover", effect: "Price pushed up" }
+                ],
+                outcome: "Mean Reversion, Low Volatility, 'Chop'", color: "emerald", icon: <Anchor className="w-6 h-6" />
+              },
+              {
+                title: "Negative Gamma Regime", subtitle: "The Accelerant",
+                condition: "Dealers are SHORT options (Short Gamma)", behavior: "Pro-Cyclical Hedging",
+                loop: [
+                  { trigger: "Price Rises 📈", reaction: "Dealers BUY stock to hedge loss", effect: "Price spikes higher (Squeeze)" },
+                  { trigger: "Price Falls 📉", reaction: "Dealers SELL stock to hedge loss", effect: "Price crashes lower" }
+                ],
+                outcome: "Trend Acceleration, High Volatility, 'Crash Risk'", color: "rose", icon: <Wind className="w-6 h-6" />
+              }
+            ].map((regime, idx) => (
+              <div key={idx} className={`rounded-3xl p-8 border-2 ${
+                regime.color === 'emerald' 
+                  ? 'bg-emerald-50 border-emerald-200' 
+                  : 'bg-rose-50 border-rose-200'
+              } relative overflow-hidden`}>
+                <div className="flex items-center justify-between mb-6 relative z-10">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-3 rounded-xl bg-white shadow-sm ${
+                      regime.color === 'emerald' ? 'text-emerald-600' : 'text-rose-600'
+                    }`}>
+                      {regime.icon}
+                    </div>
+                    <div>
+                      <h3 className={`text-2xl font-bold ${
+                        regime.color === 'emerald' ? 'text-emerald-900' : 'text-rose-900'
+                      }`}>
+                        {regime.title}
+                      </h3>
+                      <p className={`font-medium ${
+                        regime.color === 'emerald' ? 'text-emerald-700' : 'text-rose-700'
+                      }`}>
+                        {regime.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white/80 rounded-xl p-6 mb-6 backdrop-blur-sm border border-white/50 relative z-10">
+                  <div className="mb-4">
+                    <span className="text-xs font-bold uppercase opacity-50 block">Condition</span>
+                    <p className="font-medium text-slate-900">{regime.condition}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase opacity-50 block">Market Effect</span>
+                    <p className="font-medium text-slate-900">{regime.outcome}</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-3 relative z-10">
+                  <span className="text-xs font-bold uppercase tracking-widest opacity-60 ml-1">The Feedback Loop</span>
+                  {regime.loop.map((step, i) => (
+                    <div key={i} className="flex items-center bg-white rounded-lg p-4 shadow-sm border border-slate-100">
+                      <div className="flex-1">
+                        <span className="font-bold text-slate-800 text-sm block">{step.trigger}</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-slate-400 mx-2" />
+                      <div className="flex-1">
+                        <span className={`font-bold text-sm block ${
+                          regime.color === 'emerald' ? 'text-emerald-600' : 'text-rose-600'
+                        }`}>
+                          {step.reaction}
+                        </span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-slate-400 mx-2" />
+                      <div className="flex-1 text-right">
+                        <span className="font-medium text-slate-600 text-xs block">{step.effect}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* GEX Glossary */}
+          <div className="bg-slate-900 rounded-3xl p-8 lg:p-12 text-white mb-16 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              {[
+                {
+                  term: "Call Wall", def: "Strike with largest Net Positive Gamma.",
+                  implication: "Major Resistance. Dealers are heavily long calls here and will sell stock aggressively if price approaches, capping the upside."
+                },
+                {
+                  term: "Put Wall", def: "Strike with largest Net Negative Gamma (usually).",
+                  implication: "Major Support. Dealers are short puts here. However, if price breaks BELOW the Put Wall, dealers must sell into the hole, causing a crash."
+                },
+                {
+                  term: "Zero Gamma Flip", def: "The price level where Net GEX shifts from Positive to Negative.",
+                  implication: "The Volatility Trigger. Above = Stable. Below = Volatile. Crossing this line is a major trading signal."
+                }
+              ].map((level, idx) => (
+                <div key={idx} className="relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Target className="w-6 h-6 text-indigo-400" />
+                    <h4 className="text-xl font-bold text-white">{level.term}</h4>
+                  </div>
+                  <p className="text-indigo-200 text-sm mb-4 font-mono border-l-2 border-indigo-500 pl-3">{level.def}</p>
+                  <p className="text-slate-300 text-sm leading-relaxed">{level.implication}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* GEX Trading Playbook */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+            <div className="bg-slate-50 px-8 py-6 border-b border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center">
+                <Briefcase className="w-5 h-5 mr-3 text-indigo-600" />
+                The GEX Trading Playbook
+              </h3>
+              <p className="text-slate-500 text-sm mt-1">If the market is here, trade like this.</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="bg-slate-50/50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500 font-semibold">
+                    <th className="px-8 py-4">GEX Environment</th>
+                    <th className="px-8 py-4">Market Mood</th>
+                    <th className="px-8 py-4">Best Strategy</th>
+                    <th className="px-8 py-4">Stop Loss Profile</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {[
+                    {
+                      metric: "High Positive GEX", environment: "Stuck in Mud", strategy: "Iron Condors / Credit Spreads",
+                      tactic: "Sell resistance, Buy support. Fade breakouts.", stopLoss: "Wide (allow for noise)"
+                    },
+                    {
+                      metric: "Zero Gamma Flip", environment: "The Transition", strategy: "Straddles / Directional Lottos",
+                      tactic: "Wait for the break. Volatility often explodes here.", stopLoss: "Tight (if it fakes, get out)"
+                    },
+                    {
+                      metric: "Deep Negative GEX", environment: "Free Fall / Rocket", strategy: "Long Puts / Long Calls (Debit)",
+                      tactic: "Buy strength, sell weakness. DO NOT FADE.", stopLoss: "Trailing (let runners run)"
+                    }
+                  ].map((row, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-8 py-6 font-bold text-indigo-900">{row.metric}</td>
+                      <td className="px-8 py-6">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          {row.environment}
+                        </span>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="text-sm font-bold text-slate-900">{row.strategy}</div>
+                        <div className="text-xs text-slate-500 mt-1">{row.tactic}</div>
+                      </td>
+                      <td className="px-8 py-6 text-sm text-slate-600">{row.stopLoss}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {/* Structural Asymmetry Section */}
+        <div className="py-24 mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Why The House Wins</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Structural Asymmetry</p>
+          </div>
+          <p className="text-center text-xl text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed">
+            This is not a "level playing field." Institutional infrastructure is designed to exploit the specific latency, data, and order routing inefficiencies of retail traders.
+          </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+            {[
+              {
+                title: "The Latency Arbitrage", icon: <Zap className="w-6 h-6 text-yellow-500" />,
+                retail: "See price on screen → Click Buy → Internet → Broker → Wholesaler. Total: ~200-500ms.",
+                institution: "Co-located server sees price → Algo fires. Total: < 10 microseconds.",
+                impact: "You are buying a 'stale' price. The HFT sees the order coming and can front-run the liquidity."
+              },
+              {
+                title: "Data Fidelity (SIP vs. Direct)", icon: <Database className="w-6 h-6 text-blue-500" />,
+                retail: "Consolidated Tape (SIP). Aggregates data from all exchanges. Delayed and simplified.",
+                institution: "Direct Proprietary Feeds. Raw data from every exchange instantly. Includes full depth of book (Level 3).",
+                impact: "You are trading with a foggy map. They have GPS and radar."
+              },
+              {
+                title: "Order Routing (PFOF)", icon: <Layers className="w-6 h-6 text-purple-500" />,
+                retail: "Broker sells your order to a Wholesaler (Market Maker) for profit. You rarely hit the lit exchange.",
+                institution: "Direct Market Access (DMA). Routes intelligently to find hidden liquidity or capture rebates.",
+                impact: "Conflict of Interest. The wholesaler wants to maximize their spread capture, not your execution quality."
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50 hover:border-indigo-200 transition-colors">
+                <div className="bg-slate-50 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
+                <div className="space-y-6">
+                  <div className="relative pl-6 border-l-2 border-slate-200">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider absolute -top-2 left-6">Retail Reality</span>
+                    <p className="text-sm text-slate-600 mt-2">{item.retail}</p>
+                  </div>
+                  <div className="relative pl-6 border-l-2 border-indigo-500">
+                    <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider absolute -top-2 left-6">Institutional Reality</span>
+                    <p className="text-sm text-slate-900 mt-2 font-medium">{item.institution}</p>
+                  </div>
+                  <div className="bg-red-50 p-4 rounded-xl text-sm text-red-800 border border-red-100">
+                    <span className="font-bold block mb-1">The Impact:</span>
+                    {item.impact}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trade Journey Visualization */}
+          <div className="bg-slate-900 rounded-3xl p-8 lg:p-12 text-white overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <Network className="w-64 h-64" />
+            </div>
+            <h3 className="text-2xl font-bold mb-10 text-center relative z-10">The Journey of a Trade</h3>
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 relative z-10">
+              <div className="flex flex-col items-center text-center max-w-[200px]">
+                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-blue-500/50">
+                  <MousePointer2 className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-bold text-lg">You Click</h4>
+                <p className="text-xs text-slate-400 mt-2">Mobile App / Web</p>
+              </div>
+              <ArrowRight className="w-6 h-6 text-slate-600 hidden lg:block" />
+              
+              <div className="flex flex-col items-center text-center max-w-[200px]">
+                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-600">
+                  <Briefcase className="w-8 h-8 text-slate-300" />
+                </div>
+                <h4 className="font-bold text-lg">Broker</h4>
+                <p className="text-xs text-slate-400 mt-2">Routes Order</p>
+              </div>
+              <ArrowRight className="w-6 h-6 text-red-500 hidden lg:block" />
+              
+              <div className="relative">
+                <div className="absolute -top-4 -right-4 bg-red-600 text-xs font-bold px-2 py-1 rounded text-white animate-pulse">PFOF Zone</div>
+                <div className="flex flex-col items-center text-center max-w-[200px] bg-slate-800 p-6 rounded-2xl border border-red-900/50">
+                  <div className="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mb-4 text-red-500">
+                    <Ghost className="w-8 h-8" />
+                  </div>
+                  <h4 className="font-bold text-lg text-red-400">Wholesaler</h4>
+                  <p className="text-xs text-slate-400 mt-2">HFT / Market Maker</p>
+                  <p className="text-[10px] text-slate-500 mt-2 italic">"Internalizes" order or front-runs on exchange</p>
+                </div>
+              </div>
+              <ArrowRight className="w-6 h-6 text-slate-600 hidden lg:block" />
+              
+              <div className="flex flex-col items-center text-center max-w-[200px] opacity-50">
+                <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-slate-700">
+                  <Server className="w-8 h-8 text-slate-500" />
+                </div>
+                <h4 className="font-bold text-lg">Lit Exchange</h4>
+                <p className="text-xs text-slate-500 mt-2">NYSE / NASDAQ</p>
+                <p className="text-[10px] text-slate-600 mt-1">Retail rarely reaches here directly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Risk Analysis Section */}
+        <div className="bg-slate-900 text-white py-24 rounded-3xl mb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-base text-red-400 font-semibold tracking-wide uppercase">The Psychological Toll</h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">Why "Breakeven" is a Loss</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6">The "Tilt" Cycle</h3>
+                <p className="text-slate-400 mb-8 leading-relaxed">
+                  Option day trading triggers the same neural pathways as gambling. The variance (huge wins, huge losses) creates an intermittent reinforcement schedule, the most addictive pattern known in behavioral psychology.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { title: "FOMO Entry", desc: "Chasing a green candle. Entry is too late, risk is undefined." },
+                    { title: "The Freeze", desc: "Trade goes red immediately. Trader refuses to cut, hoping for a bounce (Loss Aversion)." },
+                    { title: "Revenge", desc: "Stop loss hit. Trader immediately doubles size on the next trade to \"make it back\"." }
+                  ].map((step, idx) => (
+                    <div key={idx} className="flex">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-red-900/50 flex items-center justify-center border border-red-700 text-red-400 font-bold">
+                        {idx + 1}
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-bold text-white">{step.title}</h4>
+                        <p className="text-slate-400 text-sm">{step.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+                <h4 className="font-bold text-lg text-purple-400 mb-6">The Mathematical Ruin</h4>
+                <div className="space-y-4">
+                  {[
+                    { label: "Win Rate Needed to Breakeven (1:1 R/R)", value: "55-60%", color: "text-white" },
+                    { label: "Impact of Bid-Ask Spread", value: "-10% Edge", color: "text-red-400" },
+                    { label: "Impact of Commission/Fees", value: "-$1.30 / Round Trip", color: "text-red-400" }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex justify-between items-center pb-4 border-b border-slate-700">
+                      <span className="text-slate-300">{item.label}</span>
+                      <span className={`font-mono font-bold ${item.color}`}>{item.value}</span>
+                    </div>
+                  ))}
+                  <div className="pt-4">
+                    <p className="text-sm text-slate-400 italic">"In a zero-sum game with transaction costs, the average active trader must lose money."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Conclusion */}
+        <div className="bg-white py-20 border-t border-slate-200 rounded-3xl mb-24">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <ShieldAlert className="w-16 h-16 text-indigo-600 mx-auto mb-6" />
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">The Verdict</h2>
+            <p className="text-xl text-slate-600 leading-relaxed mb-8">
+              For the common investor, option day trading represents a structural misallocation of capital. The convergence of mathematical disadvantage, structural inequity, and psychological liability creates a barrier to success that is statistically insurmountable.
+            </p>
+            <div className="inline-block p-6 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
+              <p className="font-medium text-slate-900 mb-2">Better Alternatives:</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">Low Cost Index Funds</span>
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">The Wheel Strategy (Selling Theta)</span>
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">Leaps (Deep ITM)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action - Google Doc Link */}
+        {currentArticle?.googleDoc && (
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href={currentArticle.googleDoc}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
+              >
+                <Brain className="inline mr-2" />
+                Read Full Research Paper
+              </a>
+            </div>
+          </div>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <p className="text-slate-400 text-sm text-center max-w-2xl">
+            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only. Based on "The Microstructure of Intraday Option Speculation" (2025). This data is for educational purposes only and does not constitute financial advice. Trading options involves significant risk and is not suitable for all investors.
+          </p>
+        </div>
+      </footer>
+    </>
+  );
+}
