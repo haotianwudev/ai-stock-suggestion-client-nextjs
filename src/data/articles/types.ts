@@ -11,6 +11,7 @@ export enum ArticleLabel {
   FORM13F = "13F Analysis",
   CRYPTO = "Crypto",
   FINANCE101 = "Finance 101",
+  BOOK = "Book Review",
 }
 
 export interface Article {

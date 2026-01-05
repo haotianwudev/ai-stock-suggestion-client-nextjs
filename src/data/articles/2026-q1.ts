@@ -2,16 +2,6 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
-    title: "The Gift of the Phantom Trader: Mastering the Psychology of Winning Through Losing",
-    description: "A comprehensive analysis of Art Simpson's legendary trading philosophy from the Futures Magazine forums. Learn the three laws of survival, the 3:2:1 pyramiding ratio, and why successful trading is about superior behavior modification, not superior knowledge.",
-    slug: "gift-phantom-trader-psychology-winning-through-losing",
-    date: "March 8, 2026",
-    imageUrl: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1677810192i/21884038.jpg",
-    premiumContent: true,
-    podcastUrl: "https://open.spotify.com/episode/2ORmIbJViUDfjCtGVjFBDE?si=dM7h7ODCTwOlZPznIZfYiw",
-    labels: [ArticleLabel.QUANT],
-  },
-  {
     title: "The Mechanics of Alpha: From Raw Data to Realized Returns",
     description: "A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading. Master the Fundamental Law of Active Management, implementation shortfall, and the reality of backtest overfitting.",
     slug: "mechanics-of-alpha-raw-data-realized-returns",
@@ -120,6 +110,15 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSX2D-OpfAaOa901lFoIpi8XfiHSjO8pLOpsQ5N578oik1dLwwDp49i_LSk2DDTV8kgORTpKnF9Jn0w/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
+    title: "The Gift of the Phantom Trader: Mastering the Psychology of Winning Through Losing",
+    description: "A comprehensive analysis of Art Simpson's legendary trading philosophy from the Futures Magazine forums. Learn the three laws of survival, the 3:2:1 pyramiding ratio, and why successful trading is about superior behavior modification, not superior knowledge.",
+    slug: "gift-phantom-trader-psychology-winning-through-losing",
+    date: "January 18, 2026",
+    imageUrl: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1677810192i/21884038.jpg",
+    podcastUrl: "https://open.spotify.com/episode/2ORmIbJViUDfjCtGVjFBDE?si=dM7h7ODCTwOlZPznIZfYiw",
+    labels: [ArticleLabel.QUANT, ArticleLabel.BOOK],
   },
   {
     title: "The Single-Leg Long Call: Mastering Asymmetric Leverage in Options Trading",
