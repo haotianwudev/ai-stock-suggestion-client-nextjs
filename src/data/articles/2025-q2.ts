@@ -47,7 +47,7 @@ export const articles2025Q2: Article[] = [
     slug: "option-traders-mindset-book-summary",
     date: "June 23, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/810YBW3NSZL._SY522_.jpg",
-    bookSummary: true,
+    premiumContent: true,
     options: true
   },
 {
@@ -108,7 +108,7 @@ export const articles2025Q2: Article[] = [
     date: "June 10, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/5165u8eVyZL._SY445_SX342_PQ35_.jpg",
     options: true,
-    bookSummary: true
+    premiumContent: true
   },
 {
     title: "Decoding Stock Analysis DCF model using AI",
@@ -127,7 +127,7 @@ export const articles2025Q2: Article[] = [
     date: "June 7, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/7153sgbC9sL._SY522_.jpg",
     options: true,
-    bookSummary: true
+    premiumContent: true
   },
 {
     title: "DCF Valuation Analysis of Google",
@@ -146,7 +146,7 @@ export const articles2025Q2: Article[] = [
     date: "June 5, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/41Eq0i5hoQL._PQ35_.jpg",
     options: true,
-    bookSummary: true
+    premiumContent: true
   },
 {
     title: "Technical Analysis vs ML Trading",

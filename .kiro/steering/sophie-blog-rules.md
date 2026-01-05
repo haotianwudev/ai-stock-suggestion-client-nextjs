@@ -74,7 +74,7 @@ interface Article {
   isVideo?: boolean;     // Optional: Video flag
   options?: boolean;     // Optional: Options trading
   pinned?: boolean;      // Optional: Pin to top
-  bookSummary?: boolean; // Optional: Book summary flag
+  premiumContent?: boolean; // Optional: Book summary flag
   noSummary?: boolean;   // Optional: Skip summary
   podcastUrl?: string;   // Optional: Spotify podcast URL
   labels?: ArticleLabel[]; // Optional: Custom labels for filtering

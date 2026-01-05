@@ -5,7 +5,7 @@ import { ArrowLeft, Music, User, TrendingUp, AlertTriangle, Target, Brain } from
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
-export default function FooledByRandomnessBookSummary() {
+export default function FooledByRandomnesspremiumContent() {
   const currentArticle = articles.find(article => article.slug === 'fooled-by-randomness-book-summary');
 
   return (

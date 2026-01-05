@@ -25,7 +25,7 @@ export interface Article {
   isVideo?: boolean;
   options?: boolean;
   pinned?: boolean;
-  bookSummary?: boolean;
+  premiumContent?: boolean;
   noSummary?: boolean;
   podcastUrl?: string;
   labels?: ArticleLabel[]; // Array of predefined labels for filtering

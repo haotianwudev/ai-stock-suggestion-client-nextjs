@@ -161,7 +161,7 @@ Automatically generated based on article flags:
 - `options: true` → adds options trading keywords
 - `deepResearch: true` → adds research keywords
 - `isVideo: true` → adds video keywords
-- `bookSummary: true` → adds book summary keywords
+- `premiumContent: true` → adds Premium Content keywords
 
 ### **Open Graph Properties**
 - `og:title`: Article title with branding

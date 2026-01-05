@@ -6,7 +6,7 @@ import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/a
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
-export default function BookSummaryPage() {
+export default function premiumContentPage() {
   const [input, setInput] = useState("");
   const [unlocked, setUnlocked] = useState(false);
   const [error, setError] = useState("");
@@ -38,7 +38,7 @@ export default function BookSummaryPage() {
 
   // Filter book summary articles with search and labels
   const bookArticles = getFilteredArticles(articles, searchText, selectedLabels)
-    .filter(a => a.bookSummary);
+    .filter(a => a.premiumContent);
 
   return (
     <div className="min-h-screen bg-white px-4 py-8">

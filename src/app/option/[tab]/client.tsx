@@ -147,7 +147,7 @@ function OptionsArticlesTab() {
   const availableLabels = getAllLabels();
 
   const optionsArticles = getFilteredArticles(articles, searchText, selectedLabels)
-    .filter(article => article.options === true && !article.bookSummary);
+    .filter(article => article.options === true && !article.premiumContent);
 
   return (
     <Card>

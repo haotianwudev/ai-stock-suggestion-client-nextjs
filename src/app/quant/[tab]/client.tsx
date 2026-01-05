@@ -168,10 +168,10 @@ function QuantArticlesTab() {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const availableLabels = getAllLabels();
 
-  // Filter articles with QUANT label only, excluding bookSummary
+  // Filter articles with QUANT label only, excluding premiumContent
   const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
     .filter(article => 
-      !article.bookSummary && 
+      !article.premiumContent && 
       article.labels?.some((label: string) => 
         label === 'Quantitative Finance'
       )

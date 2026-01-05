@@ -77,7 +77,7 @@ const FAQItem = ({ question, answer }) => (
   </div>
 );
 
-export default function ProfitingIronCondorOptionsBookSummary() {
+export default function ProfitingIronCondorOptionspremiumContent() {
   const currentArticle = articles.find(article => article.slug === 'profiting-iron-condor-options-book-summary');
 
   const navLinks = [

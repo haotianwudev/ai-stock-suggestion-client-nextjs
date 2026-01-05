@@ -26,7 +26,7 @@ export function generateArticleMetadata(article: Article): Metadata {
     ...(article.options ? ['options trading', 'put options', 'call options', 'options strategies', 'covered calls', 'cash secured puts'] : []),
     ...(article.deepResearch ? ['deep research', 'comprehensive analysis', 'detailed study'] : []),
     ...(article.isVideo ? ['video', 'educational video', 'YouTube'] : []),
-    ...(article.bookSummary ? ['book summary', 'trading books', 'investment books'] : []),
+    ...(article.premiumContent ? ['book summary', 'trading books', 'investment books'] : []),
   ];
 
   const title = `${article.title} | SOPHIE Daddy Quant Blog`;

@@ -21,7 +21,7 @@ interface Article {
   isVideo?: boolean;     // Optional: Video flag
   options?: boolean;     // Optional: Options trading
   pinned?: boolean;      // Optional: Pin to top
-  bookSummary?: boolean; // Optional: Book summary flag
+  premiumContent?: boolean; // Optional: Premium Content flag
   noSummary?: boolean;   // Optional: Skip summary
   podcastUrl?: string;   // Optional: Spotify podcast URL
 }
@@ -81,7 +81,7 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 - `deepResearch: true` for comprehensive analysis
 - `options: true` for options trading content  
 - `isVideo: true` for Youtube Video
-- `bookSummary: true` for book summaries
+- `premiumContent: true` for Premium Content
 - `pinned: true` for featured articles
 - `podcastUrl: "spotify-url"` for podcast episodes
 

@@ -81,7 +81,7 @@ export function SearchBar() {
     const searchLower = query.toLowerCase();
     const filteredArticles = articles
       .filter(article => 
-        !article.bookSummary && 
+        !article.premiumContent && 
         (article.title.toLowerCase().includes(searchLower) ||
          (article.description && article.description.toLowerCase().includes(searchLower)))
       )

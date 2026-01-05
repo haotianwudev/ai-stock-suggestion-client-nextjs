@@ -215,7 +215,7 @@ export default function Home() {
               Interactive Articles
             </h2>
             <p className="text-muted-foreground text-sm max-w-2xl">
-              Explore {articles.filter(a => !a.bookSummary).length}+ articles on quantitative finance, options trading, and market analysis
+              Explore {articles.filter(a => !a.premiumContent).length}+ articles on quantitative finance, options trading, and market analysis
             </p>
           </div>
           
@@ -232,7 +232,7 @@ export default function Home() {
           
           {/* Pinned Article as Featured */}
           {(() => {
-            const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && !article.bookSummary);
+            const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && !article.premiumContent);
             const shouldShowPinned = searchText === '' && selectedLabels.length === 0;
             return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
@@ -260,7 +260,7 @@ export default function Home() {
           
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {getFilteredArticles(articles, searchText, selectedLabels)
-              .filter(article => !article.pinned && !article.bookSummary) // Exclude pinned articles and book summaries (premium content)
+              .filter(article => !article.pinned && !article.premiumContent) // Exclude pinned articles and book summaries (premium content)
               .slice(0, showAllArticles ? undefined : 12)
               .map((article) => (
               <ArticleCard 
@@ -284,7 +284,7 @@ export default function Home() {
           {/* Results Count and Show More/Less Button */}
           {(() => {
             const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels)
-              .filter(article => !article.pinned && !article.bookSummary);
+              .filter(article => !article.pinned && !article.premiumContent);
             const displayedCount = showAllArticles ? filteredArticles.length : Math.min(12, filteredArticles.length);
             
             return (
