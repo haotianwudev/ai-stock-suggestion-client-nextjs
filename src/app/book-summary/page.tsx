@@ -49,10 +49,10 @@ export default function premiumContentPage() {
             Return to Home
           </Link>
         </div>
-        <h1 className="text-2xl font-bold mb-6 text-center">Book Summaries</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">Premium Content</h1>
         {!unlocked ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-6 max-w-md mx-auto">
-            <label htmlFor="password" className="font-medium">Enter password to view book summaries:</label>
+            <label htmlFor="password" className="font-medium">Enter password to view premium content:</label>
             <input
               id="password"
               type="password"
@@ -106,7 +106,7 @@ export default function premiumContentPage() {
             {/* No Results Message */}
             {bookArticles.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">No book summaries found matching your filters.</p>
+                <p className="text-lg text-muted-foreground">No premium content found matching your filters.</p>
                 <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
               </div>
             )}

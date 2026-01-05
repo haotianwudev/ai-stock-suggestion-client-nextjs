@@ -260,8 +260,7 @@ export default function Home() {
           
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {getFilteredArticles(articles, searchText, selectedLabels)
-              .filter(article => !article.pinned && !article.premiumContent) // Exclude pinned articles and book summaries (premium content)
-              .slice(0, showAllArticles ? undefined : 12)
+              .filter(article => !article.pinned && !article.premiumContent) 
               .map((article) => (
               <ArticleCard 
                 key={article.slug}
