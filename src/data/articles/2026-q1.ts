@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Trader's Guide to Futures Specials: Market Structure Anomalies",
+    description: "A comprehensive analysis of structural anomalies in futures markets - from the 'Widowmaker' spread to negative oil prices. Understanding the physics of time, delivery mechanics, and embedded options that define alpha opportunities and catastrophic risks.",
+    slug: "traders-guide-futures-specials-market-structure-anomalies",
+    date: "March 6, 2026",
+    imageUrl: "https://i.imgur.com/ayrGomS.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT_mzSEAKA9GA1BbGn0c78m6y9wQK45RB2_stYCkyK38OiYNelGd7hwFhNC_Cy_d0-tqafXEE6RrKVU/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Mechanics of Alpha: From Raw Data to Realized Returns",
     description: "A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading. Master the Fundamental Law of Active Management, implementation shortfall, and the reality of backtest overfitting.",
     slug: "mechanics-of-alpha-raw-data-realized-returns",
