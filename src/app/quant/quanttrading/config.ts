@@ -202,6 +202,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "anatomy-of-speed-modern-market-making-hft",
       "harvest-investor",
       "the-harvest-institutional-exploitation-retail-investors",
+      "vol-hedge-fund",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
@@ -228,6 +230,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/worldquant-alpha-factory-industrialized-quantitative-signal-generation",
           videoUrl: "https://youtu.be/L0aVoPLqcFw",
           visualGuideUrl: "https://i.imgur.com/boJhFsQ.jpeg",
+        },
+        {
+          text: "Volatility Hedge Fund",
+          url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
+          videoUrl: "https://youtu.be/B4tJwZriwdY",
+          visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
         },
         {
           text: "Alternative Data for trading",

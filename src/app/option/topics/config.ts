@@ -112,6 +112,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "predict-volatility",
       "quantitative-analyst-guide-volatility-forecasting",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "vol-hedge-fund",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
@@ -132,6 +134,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
           videoUrl: "https://youtu.be/zLKCTVTfvo4",
           visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
+        },
+        {
+          text: "Volatility Hedge Fund",
+          url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
+          videoUrl: "https://youtu.be/B4tJwZriwdY",
+          visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
         },
         {
           text: "Yahoo Finance VIX Chart",
@@ -157,6 +165,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "spx-option-underlyer",
       "mastering-volatility-risk-premium-spx-options-selling",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "vol-hedge-fund",
+      "industrialization-volatility-hedge-funds-operational-architecture",
     ],
     studyGuide: {
       items: [
@@ -171,6 +181,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/mastering-volatility-risk-premium-spx-options-selling",
           videoUrl: "https://youtu.be/yThUZBJWKPM",
           visualGuideUrl: "https://i.imgur.com/Iz7lSu4.jpeg"
+        },
+        {
+          text: "Volatility Hedge Fund",
+          url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
+          videoUrl: "https://youtu.be/B4tJwZriwdY",
+          visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
         },
         {
           text: "Barchart Historical vs Implied Volatility",

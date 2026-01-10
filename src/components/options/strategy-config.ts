@@ -125,7 +125,7 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium)),
         youtubeId: 'fKpmR9DxYpk',
         payoffExplanation: "Maximum profit occurs when stock price equals or exceeds the call strike at expiration. Profit is capped at strike price plus premium received.",
-        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
         infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
         detailComponent: CoveredCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -141,7 +141,7 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? premium : premium + (p - strike1)),
         youtubeId: 'fKpmR9DxYpk',
         payoffExplanation: "Maximum profit occurs when stock price stays above the put strike at expiration. Maximum loss occurs when stock falls to zero (minus premium received).",
-        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
         infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
         detailComponent: PutWritingStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -311,7 +311,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'GGKItsjV-L8',
         payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
-        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
         infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg',
         detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
     },

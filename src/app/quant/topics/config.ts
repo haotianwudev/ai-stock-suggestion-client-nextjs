@@ -51,6 +51,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/FgakZw6K1QQ', // PCA Explained video as placeholder
     infographicUrl: "https://i.imgur.com/XEfr0iF.jpeg",
     relatedArticles: [
+      "pca-yield-curve",
       "geometry-of-rates-pca-fixed-income-markets"
     ],
     studyGuide: {
