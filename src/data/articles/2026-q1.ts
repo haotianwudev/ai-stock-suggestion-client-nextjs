@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
+    description: "A deep dive into the algorithmic mechanics of tax-aware portfolio construction, SPX tracking optimization, and factor risk models. Master the quantitative edge of Direct Indexing through convex optimization, HIFO accounting, and systematic tax alpha generation.",
+    slug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
+    date: "March 10, 2026",
+    imageUrl: "https://i.imgur.com/OkRNq43.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTvljZrshxDFDlkAlZpmsXOdG3RgENp4yOAsvzzdnbsn8zV3OoIC_Zp5SBNcDfc4tbTnKdM8oYdTlO9/pub",
+    labels: [ArticleLabel.QUANT],
+    premiumContent: true,
+  },
+  {
     title: "The Trader's Guide to Futures Specials: Market Structure Anomalies",
     description: "A comprehensive analysis of structural anomalies in futures markets - from the 'Widowmaker' spread to negative oil prices. Understanding the physics of time, delivery mechanics, and embedded options that define alpha opportunities and catastrophic risks.",
     slug: "traders-guide-futures-specials-market-structure-anomalies",
