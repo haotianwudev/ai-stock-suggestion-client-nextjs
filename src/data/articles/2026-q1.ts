@@ -102,6 +102,16 @@ export const articles2026Q1: Article[] = [
     options: true,
   },
   {
+    title: "Prediction Markets: The Financialization of Truth - Complete Trading Guide",
+    description: "Comprehensive analysis of prediction markets from Kalshi to Polymarket. Learn market mechanics, strategic trading approaches, risk management, and how to profit from the financialization of information.",
+    slug: "prediction-markets-financialization-truth-complete-trading-guide",
+    date: "February 5, 2026",
+    imageUrl: "https://i.imgur.com/YjJeuYv.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSXf92wAcdJkEfpVseiimMiTO1H21h-wDIexjRlJtN7IRVe-pvdBJFYpnrDP-W3WNXGFQbSFMN86wvw/pub",
+    labels: [ArticleLabel.FINANCE101],
+  },
+  {
     title: "The Stochastic Calculus of Finance: A Comprehensive Treatise on Itô's Lemma",
     description: "A comprehensive treatise on Itô's Lemma: the mathematical bridge between the smooth world of Newton and the jagged reality of financial markets. Master the fundamental theorem that transforms stochastic differential equations into the Black-Scholes framework.",
     slug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
