@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Risk Prism: Master the Architecture of Modern Factor Models",
+    description: "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.",
+    slug: "risk-prism-architecture-modern-factor-models",
+    date: "March 18, 2026",
+    imageUrl: "https://i.imgur.com/QwAjISy.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTuTqNeMwbdsuLweI7FQ8Q2YsySZgOF3butIT8z4aWJFgkY411IpOR3fZ_5Mzwp3ZrQdfuhuFbRmn3V/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Strategic vs. Tactical Asset Allocation: A Comprehensive Investment Framework",
     description: "A deep-dive tutorial for investors. Learn how to build a portfolio baseline, when to deviate for profit, and how to use math to hold managers accountable. Master the fundamentals of Strategic Asset Allocation (SAA) as your investment anchor, understand Tactical Asset Allocation (TAA) for generating alpha, and discover Performance Attribution Analysis to separate skill from luck.",
     slug: "strategic-tactical-asset-allocation-comprehensive-guide",
