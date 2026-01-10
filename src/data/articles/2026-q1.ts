@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Strategic vs. Tactical Asset Allocation: A Comprehensive Investment Framework",
+    description: "A deep-dive tutorial for investors. Learn how to build a portfolio baseline, when to deviate for profit, and how to use math to hold managers accountable. Master the fundamentals of Strategic Asset Allocation (SAA) as your investment anchor, understand Tactical Asset Allocation (TAA) for generating alpha, and discover Performance Attribution Analysis to separate skill from luck.",
+    slug: "strategic-tactical-asset-allocation-comprehensive-guide",
+    date: "March 16, 2026",
+    imageUrl: "https://i.imgur.com/MhIheV4.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTj9XeBdjtG42lMy5GLYdWDGfYnWYUnqjhbT830U0VIPp414WEFwI4oDc-avkRo6VzjXnMKkXbMXVwk/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds",
     description: "A comprehensive technical deep-dive into the architecture, data infrastructure, machine learning pipelines, and risk management systems that power modern quantitative hedge funds. From bitemporal data lakes to high-frequency execution algorithms.",
     slug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
