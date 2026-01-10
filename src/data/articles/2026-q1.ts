@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds",
+    description: "A comprehensive technical deep-dive into the architecture, data infrastructure, machine learning pipelines, and risk management systems that power modern quantitative hedge funds. From bitemporal data lakes to high-frequency execution algorithms.",
+    slug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
+    date: "March 14, 2026",
+    imageUrl: "https://i.imgur.com/HOYib16.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ9mI9EreI3DcLppjSc9Nta-obinwUtD3Q-YiOlzA40p2D5n96XqE1iJUNdJf3fhNSPqdZpjUAedo8G/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/5Y61EqMZsWWp7ieYepXgqI?si=DpB5TEsvSaekOWbnbHoxmA",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Black-Litterman Model: Bridging Mathematical Rigor and Human Intuition in Modern Portfolio Management",
     description: "A comprehensive deep dive into the Black-Litterman model, exploring its mathematical foundations, institutional applications, and modern extensions. From Goldman Sachs' original framework to AI-powered implementations.",
     slug: "black-litterman-model-comprehensive-guide-portfolio-optimization",

@@ -175,3 +175,18 @@
 .dark .scrollbar-thumb-blue-300 {
   scrollbar-color: rgb(37 99 235) rgb(30 58 138);
 }
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
