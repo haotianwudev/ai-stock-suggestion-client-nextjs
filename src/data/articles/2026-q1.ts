@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Black-Litterman Model: Bridging Mathematical Rigor and Human Intuition in Modern Portfolio Management",
+    description: "A comprehensive deep dive into the Black-Litterman model, exploring its mathematical foundations, institutional applications, and modern extensions. From Goldman Sachs' original framework to AI-powered implementations.",
+    slug: "black-litterman-model-comprehensive-guide-portfolio-optimization",
+    date: "March 12, 2026",
+    imageUrl: "https://i.imgur.com/8ZPnGNY.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRO-mwJw_xO0yvtYlnOgLaMkV4D7j0CWXtBjUnD2qFlBtW45EX47dm5KxVTAnajRv7sGTTilCBu1JGu/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
     description: "A deep dive into the algorithmic mechanics of tax-aware portfolio construction, SPX tracking optimization, and factor risk models. Master the quantitative edge of Direct Indexing through convex optimization, HIFO accounting, and systematic tax alpha generation.",
     slug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
