@@ -48,7 +48,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     id: 'statistical-analysis',
     title: 'Statistical Analysis',
     description: 'Master advanced statistical methods for financial markets including Principal Component Analysis (PCA), factor modeling, and dimensionality reduction. Learn to decode complex market relationships and build robust quantitative models.',
-    videoUrl: 'https://youtu.be/FgakZw6K1QQ', // PCA Explained video as placeholder
+    videoUrl: 'https://youtu.be/WL_YzTImNzs', // PCA Explained video as placeholder
     infographicUrl: "https://i.imgur.com/XEfr0iF.jpeg",
     relatedArticles: [
       "pca-yield-curve",
@@ -60,7 +60,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "The Geometry of Rates: Principal Component Analysis in Fixed Income",
           url: "https://www.sophie-ai-finance.com/articles/geometry-of-rates-pca-fixed-income-markets",
           visualGuideUrl: "https://i.imgur.com/XEfr0iF.jpeg",
-          videoUrl: "https://youtu.be/FgakZw6K1QQ"
+          videoUrl: "https://youtu.be/WL_YzTImNzs"
+        },
+        {
+          text: "StatQuest: PCA",
+          url: "https://youtu.be/FgakZw6K1QQ",
+          videoUrl: "https://youtu.be/FgakZw6K1QQ",
         },
         {
           text: "Correlation Matrix Analysis Tools",
