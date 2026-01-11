@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Autocallable Strategy: Engineered Yield for Sideways Markets",
+    description: "A comprehensive technical guide to autocallable structured products - understanding the barrier mechanics, pricing components, and implementation strategies for generating yield in flat market environments.",
+    slug: "autocallable-strategy-engineered-yield-sideways-markets",
+    date: "March 22, 2026",
+    imageUrl: "https://i.imgur.com/4Fy8XfA.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSoKurJnFKx4rZVC1M0nbeFdNuxggoEjTBDczAnayVOgQRSZCP9Dn3iSLci1sOg-Mz2AodB5g_L_Teg/pub",
+    labels: [ArticleLabel.QUANT],
+    premiumContent: true,
+  },
+  {
     title: "The Mechanics of ESG Investing: A Technical Guide to Environmental, Social, and Governance Factors",
     description: "A comprehensive technical guide to ESG investing frameworks, regulations, and valuation models. From MSCI ratings methodology to EU taxonomy compliance, master the data-driven discipline that evaluates risks and opportunities unaccounted for in traditional financial statements.",
     slug: "mechanics-esg-investing-technical-guide",
