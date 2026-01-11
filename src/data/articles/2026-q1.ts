@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
+    description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
+    slug: "integer-optimization-finance-continuous-theory-discrete-execution",
+    date: "March 26, 2026",
+    imageUrl: "https://i.imgur.com/X2ORuTr.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRc5rvy2ycjR18wGsAnoUW96GUowVh9sGB8PtTHNv0fcqqZQC27gZ-tRb4SyzgwTrwcKOGgL8zKjXnA/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Architecture of Risk: From Barra to the Factor Zoo",
     description: "A comprehensive deep dive into modern quantitative finance and risk decomposition. From the foundational Barra Factor Model to the explosion of academic factors, explore how risk models shape portfolio construction and the mathematical engines behind industry giants like MSCI Barra, Axioma, and Northfield.",
     slug: "risk-factor-architecture",
