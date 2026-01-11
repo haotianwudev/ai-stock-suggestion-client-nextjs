@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Mechanics of ESG Investing: A Technical Guide to Environmental, Social, and Governance Factors",
+    description: "A comprehensive technical guide to ESG investing frameworks, regulations, and valuation models. From MSCI ratings methodology to EU taxonomy compliance, master the data-driven discipline that evaluates risks and opportunities unaccounted for in traditional financial statements.",
+    slug: "mechanics-esg-investing-technical-guide",
+    date: "March 20, 2026",
+    imageUrl: "https://i.imgur.com/OorqUE7.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTLWfgxIXq47fyr1MBaIkrfykgNMUHXumXdao-_Ca07gRyFsRx-kBLC9QQBV4ZREKiIk77uTh-G1Zcg/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "The Risk Prism: Master the Architecture of Modern Factor Models",
     description: "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.",
     slug: "risk-prism-architecture-modern-factor-models",
