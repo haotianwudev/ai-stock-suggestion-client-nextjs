@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Science of Robust Alpha: Eliminating Overfitting Through Rigorous Statistical Validation",
+    description: "A comprehensive masterclass on Financial Machine Learning (FML) - the adversarial environment where prediction changes the outcome. Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive the low signal-to-noise ratio of financial markets.",
+    slug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
+    date: "March 28, 2026",
+    imageUrl: "https://i.imgur.com/N9P4ssC.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSUUpjNVcy7QXkm3f8FiUFQhoUcMFQ4fsbBscDsiCJwD-GAwuL9r8JWF_qBliMT25tfZyaGghLIIc5v/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
     description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
     slug: "integer-optimization-finance-continuous-theory-discrete-execution",
