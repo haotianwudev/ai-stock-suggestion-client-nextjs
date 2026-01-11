@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Architecture of Risk: From Barra to the Factor Zoo",
+    description: "A comprehensive deep dive into modern quantitative finance and risk decomposition. From the foundational Barra Factor Model to the explosion of academic factors, explore how risk models shape portfolio construction and the mathematical engines behind industry giants like MSCI Barra, Axioma, and Northfield.",
+    slug: "risk-factor-architecture",
+    date: "March 24, 2026",
+    imageUrl: "https://i.imgur.com/FEtgiqM.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQqcYZ5VgrcuuVGQby-CskCWPCeALEGH8ANWLvNvLjerstiDaG-UfDMVEkm1BGJquqKalmzO8LwgUcq/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Autocallable Strategy: Engineered Yield for Sideways Markets",
     description: "A comprehensive technical guide to autocallable structured products - understanding the barrier mechanics, pricing components, and implementation strategies for generating yield in flat market environments.",
     slug: "autocallable-strategy-engineered-yield-sideways-markets",
