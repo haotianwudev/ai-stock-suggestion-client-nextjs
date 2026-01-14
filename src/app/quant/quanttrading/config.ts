@@ -7,9 +7,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     id: 'systematic-strategies',
     title: 'Systematic Trading Strategies',
     description: 'Learn rule-based trading approaches, momentum strategies, mean reversion, smart beta factor investing, and systematic portfolio construction methods.',
-    videoUrl: 'https://youtu.be/z32X0C5F5JE',
+    videoUrl: 'https://youtu.be/72sh2YIWD8U',
     infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
+      "systematic-vs-quant-trading",
       "systematic-vs-model-quantitative-trading-evolution",
       "smart-beta",
       "smart-beta-systematic-personal-investing-strategies",
@@ -29,6 +30,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Systematic Trading vs Machine Learning Quant Trading",
           url: "https://www.sophie-ai-finance.com/articles/systematic-vs-model-quantitative-trading-evolution",
           visualGuideUrl: "https://i.imgur.com/1HBWYfN.jpeg",
+          videoUrl: 'https://youtu.be/72sh2YIWD8U',
         },
         {
           text: "Smart Beta",
