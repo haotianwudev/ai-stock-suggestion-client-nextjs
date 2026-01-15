@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
+    description: "A comprehensive quantitative analysis of Credit Default Swaps from bilateral insurance mechanics to advanced Greeks. Master hazard rates, the Credit Triangle, Big Bang standardization, CS01 risk sensitivities, and professional stress testing frameworks used by institutional credit desks.",
+    slug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
+    date: "March 30, 2026",
+    imageUrl: "https://i.imgur.com/WIPaOHg.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQDeN8UpiAhmjE-D60KP0-ciLOETGRICEt31ob9PBMwgwlv9u3ZxKAKRrYXNeFfU3FkWO_Fb9y9RqPB/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Science of Robust Alpha: Eliminating Overfitting Through Rigorous Statistical Validation",
     description: "A comprehensive masterclass on Financial Machine Learning (FML) - the adversarial environment where prediction changes the outcome. Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive the low signal-to-noise ratio of financial markets.",
     slug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
