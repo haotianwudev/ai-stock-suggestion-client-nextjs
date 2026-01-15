@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Structured Finance 2026: Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models",
+    description: "Master the mechanics of credit enhancement and stochastic valuation in structured finance. A comprehensive institutional research framework covering RMBS, CMBS, and ABS pricing models, structural waterfalls, prepayment models, and the quantitative engineering behind modern securitization.",
+    slug: "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
+    date: "April 3, 2026",
+    imageUrl: "https://i.imgur.com/I51V5fc.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRft1oC9m7K8E-PutUjquQCV9fYj2AmEUhhB-3srky9Y8uEEnap8Y61Ug3oPInz9oik6zQcdqpGg5O7/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Black-Scholes Analytics: The Laboratory Axioms of Option Pricing",
     description: "A comprehensive masterclass on the Black-Scholes-Merton model - from the stochastic engine of Itô's Lemma to the risk-neutral measure transformation. Master the mathematical axioms, Greek sensitivities, trader heuristics, and structural limitations of the standard ruler for pricing uncertainty.",
     slug: "black-scholes-analytics-laboratory-axioms-option-pricing",
