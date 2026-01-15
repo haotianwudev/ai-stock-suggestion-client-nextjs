@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Black-Scholes Analytics: The Laboratory Axioms of Option Pricing",
+    description: "A comprehensive masterclass on the Black-Scholes-Merton model - from the stochastic engine of Itô's Lemma to the risk-neutral measure transformation. Master the mathematical axioms, Greek sensitivities, trader heuristics, and structural limitations of the standard ruler for pricing uncertainty.",
+    slug: "black-scholes-analytics-laboratory-axioms-option-pricing",
+    date: "April 1, 2026",
+    imageUrl: "https://i.imgur.com/VVQWBaJ.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ3D_1alifzLfFgLskOD56Bsooyb68NrCNFQAGXkopqzG3jCXKxUIrh4_lG5AFktsJikfurbfbVWM82/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
     description: "A comprehensive quantitative analysis of Credit Default Swaps from bilateral insurance mechanics to advanced Greeks. Master hazard rates, the Credit Triangle, Big Bang standardization, CS01 risk sensitivities, and professional stress testing frameworks used by institutional credit desks.",
     slug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
