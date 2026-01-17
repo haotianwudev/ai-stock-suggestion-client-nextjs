@@ -68,8 +68,8 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, p - strike1) - premium,
-        //youtubeId: 'X2IJngJv4G0',
-        relatedArticles: ["single-leg-long-call-asymmetric-leverage-options-trading"],
+        youtubeId: 'JldPgH31X3U',
+        relatedArticles: ["long-call-strategy", "single-leg-long-call-asymmetric-leverage-options-trading"],
         infographicUrl: 'https://i.imgur.com/A6ChN1u.jpeg',
         detailComponent: LongCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
