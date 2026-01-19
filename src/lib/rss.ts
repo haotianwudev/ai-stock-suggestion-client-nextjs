@@ -62,9 +62,6 @@ function generateRSSItem(article: Article): string {
   }
   
   // Add links to additional resources
-  if (article.googleDoc) {
-    contentDescription += `\n\n📄 Full Research Paper: ${article.googleDoc}`;
-  }
   if (article.youtubeUrl) {
     contentDescription += `\n\n🎥 Watch Video: ${article.youtubeUrl}`;
   }
@@ -85,7 +82,6 @@ function generateRSSItem(article: Article): string {
         <p>${escapeXml(article.description)}</p>
         ${article.imageUrl ? `<img src="${article.imageUrl}" alt="${escapeXml(article.title)}" style="max-width: 100%; height: auto;" />` : ''}
         ${contentTypes.length > 0 ? `<p><strong>Content Features:</strong> ${contentTypes.join(' • ')}</p>` : ''}
-        ${article.googleDoc ? `<p><a href="${article.googleDoc}" target="_blank">📄 Read Full Research Paper</a></p>` : ''}
         ${article.youtubeUrl ? `<p><a href="${article.youtubeUrl}" target="_blank">🎥 Watch Video Tutorial</a></p>` : ''}
         ${article.podcastUrl ? `<p><a href="${article.podcastUrl}" target="_blank">🎧 Listen to Podcast</a></p>` : ''}
         <p><strong>Topics:</strong> ${keywords.slice(0, 8).join(', ')}</p>
