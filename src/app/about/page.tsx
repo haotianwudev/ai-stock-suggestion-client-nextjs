@@ -153,6 +153,60 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
+          {/* Tools & Resources Section */}
+          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50/50 to-indigo-50/50">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Code2 className="h-6 w-6 text-blue-600" />
+                Tools & Resources
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg text-blue-700 mb-6 text-center">
+                Here are some useful tools and resources I've built for the community:
+              </p>
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+                <Link
+                  href="/rss"
+                  className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200 font-medium text-center"
+                >
+                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 11a9 9 0 0 1 9 9" />
+                    <path d="M4 4a16 16 0 0 1 16 16" />
+                    <circle cx="5" cy="19" r="1" />
+                  </svg>
+                  RSS Feeds
+                </Link>
+
+                <Link
+                  href="/seo-audit"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium text-center"
+                >
+                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
+                  SEO Audit
+                </Link>
+                
+                <a
+                  href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium text-center"
+                >
+                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                    <line x1="12" y1="20" x2="12" y2="20" />
+                  </svg>
+                  Android App
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* AI Toolkit Section */}
           <Card>
             <CardHeader>

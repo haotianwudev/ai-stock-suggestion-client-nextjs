@@ -1,5 +1,10 @@
 import { articles } from '@/data/articles';
 import { Article } from '@/data/articles/types';
+import { 
+  getAllPublishedArticles, 
+  getPublishedArticleStats,
+  isArticlePublished 
+} from './article-utils';
 
 export interface SEOAuditResult {
   score: number;
@@ -144,8 +149,11 @@ export function auditSiteSEO(): SEOAuditResult {
   let totalScore = 0;
   let articleCount = 0;
 
-  // Audit each article
-  articles.forEach(article => {
+  // Get published articles using shared utility
+  const publishedArticles = getAllPublishedArticles();
+
+  // Audit each published article
+  publishedArticles.forEach(article => {
     const articleAudit = auditArticleSEO(article);
     totalScore += articleAudit.score;
     articleCount++;
@@ -155,11 +163,11 @@ export function auditSiteSEO(): SEOAuditResult {
   const averageScore = articleCount > 0 ? totalScore / articleCount : 0;
 
   // Site-wide analysis
-  const totalArticles = articles.length;
-  const articlesWithImages = articles.filter(a => a.imageUrl).length;
-  const deepResearchArticles = articles.filter(a => a.deepResearch).length;
-  const videoArticles = articles.filter(a => a.isVideo).length;
-  const podcastArticles = articles.filter(a => a.podcastUrl).length;
+  const totalArticles = publishedArticles.length;
+  const articlesWithImages = publishedArticles.filter(a => a.imageUrl).length;
+  const deepResearchArticles = publishedArticles.filter(a => a.deepResearch).length;
+  const videoArticles = publishedArticles.filter(a => a.isVideo).length;
+  const podcastArticles = publishedArticles.filter(a => a.podcastUrl).length;
 
   // Content diversity analysis
   const imagePercentage = (articlesWithImages / totalArticles) * 100;
@@ -186,7 +194,7 @@ export function auditSiteSEO(): SEOAuditResult {
   }
 
   // Publication frequency analysis
-  const recentArticles = articles.filter(article => {
+  const recentArticles = publishedArticles.filter(article => {
     const articleDate = new Date(article.date);
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
     return articleDate >= thirtyDaysAgo;
@@ -220,33 +228,31 @@ export function auditSiteSEO(): SEOAuditResult {
 
 // Get SEO insights for content planning
 export function getSEOInsights() {
+  // Use shared utility for published article stats
+  const stats = getPublishedArticleStats();
+  
+  // Get published articles for label distribution
+  const publishedArticles = getAllPublishedArticles();
+  
   const insights = {
-    totalArticles: articles.length,
+    totalArticles: stats.total,
     contentTypes: {
-      deepResearch: articles.filter(a => a.deepResearch).length,
-      videos: articles.filter(a => a.isVideo).length,
-      podcasts: articles.filter(a => a.podcastUrl).length,
-      options: articles.filter(a => a.options).length,
-      premium: articles.filter(a => a.premiumContent).length,
+      deepResearch: stats.deepResearch,
+      videos: stats.videos,
+      podcasts: stats.podcasts,
+      options: stats.options,
+      premium: stats.premium,
     },
     recentContent: {
-      last7Days: articles.filter(a => {
-        const articleDate = new Date(a.date);
-        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-        return articleDate >= sevenDaysAgo;
-      }).length,
-      last30Days: articles.filter(a => {
-        const articleDate = new Date(a.date);
-        const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-        return articleDate >= thirtyDaysAgo;
-      }).length,
+      last7Days: stats.recent7Days,
+      last30Days: stats.recent30Days,
     },
     imageOptimization: {
-      withImages: articles.filter(a => a.imageUrl).length,
-      withoutImages: articles.filter(a => !a.imageUrl).length,
-      percentage: Math.round((articles.filter(a => a.imageUrl).length / articles.length) * 100),
+      withImages: stats.withImages,
+      withoutImages: stats.total - stats.withImages,
+      percentage: Math.round((stats.withImages / stats.total) * 100),
     },
-    labelDistribution: articles.reduce((acc, article) => {
+    labelDistribution: publishedArticles.reduce((acc, article) => {
       if (article.labels) {
         article.labels.forEach(label => {
           acc[label] = (acc[label] || 0) + 1;
@@ -264,7 +270,10 @@ export function checkDuplicateContent(): Array<{title: string, articles: Article
   const duplicates: Array<{title: string, articles: Article[]}> = [];
   const titleMap = new Map<string, Article[]>();
 
-  articles.forEach(article => {
+  // Use shared utility for published articles
+  const publishedArticles = getAllPublishedArticles();
+
+  publishedArticles.forEach(article => {
     const normalizedTitle = article.title.toLowerCase().trim();
     if (!titleMap.has(normalizedTitle)) {
       titleMap.set(normalizedTitle, []);

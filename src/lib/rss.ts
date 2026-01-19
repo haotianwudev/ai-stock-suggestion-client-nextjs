@@ -1,5 +1,11 @@
-import { articles } from '@/data/articles';
 import { Article } from '@/data/articles/types';
+import { 
+  getPublishedArticlesSorted, 
+  getPublishedArticlesByCategory, 
+  getArticleUrl, 
+  getArticleCategories, 
+  generateSEOKeywords 
+} from './article-utils';
 
 // RSS feed configuration
 const SITE_URL = 'https://sophie-ai-finance.com';
@@ -28,80 +34,14 @@ function formatRSSDate(dateString: string): string {
   return date.toUTCString();
 }
 
-// Helper function to generate article URL
-function getArticleUrl(article: Article): string {
-  return `${SITE_URL}/articles/${article.slug}`;
-}
-
-// Helper function to get article categories from labels
-function getArticleCategories(article: Article): string[] {
-  const categories: string[] = [];
-  
-  // Add labels as categories
-  if (article.labels) {
-    categories.push(...article.labels);
-  }
-  
-  // Add type-based categories
-  if (article.deepResearch) categories.push('Deep Research');
-  if (article.options) categories.push('Options Trading');
-  if (article.isVideo) categories.push('Video Content');
-  if (article.podcastUrl) categories.push('Podcast');
-  if (article.premiumContent) categories.push('Premium Content');
-  
-  return [...new Set(categories)]; // Remove duplicates
-}
-
-// Helper function to generate SEO-optimized keywords from article
-function generateSEOKeywords(article: Article): string[] {
-  const keywords: string[] = [];
-  
-  // Base keywords
-  keywords.push('quantitative finance', 'investment analysis', 'financial education');
-  
-  // Content-specific keywords
-  if (article.options) {
-    keywords.push('options trading', 'derivatives', 'volatility trading', 'options strategies');
-  }
-  if (article.deepResearch) {
-    keywords.push('financial research', 'market analysis', 'investment research');
-  }
-  if (article.isVideo) {
-    keywords.push('financial education video', 'trading tutorial', 'investment tutorial');
-  }
-  if (article.podcastUrl) {
-    keywords.push('finance podcast', 'investment podcast', 'trading podcast');
-  }
-  
-  // Label-based keywords
-  if (article.labels) {
-    article.labels.forEach(label => {
-      switch (label) {
-        case 'Quantitative Finance':
-          keywords.push('quant trading', 'algorithmic trading', 'mathematical finance');
-          break;
-        case 'AI & Machine Learning':
-          keywords.push('AI trading', 'machine learning finance', 'algorithmic strategies');
-          break;
-        case 'Stock Analysis':
-          keywords.push('equity analysis', 'stock valuation', 'fundamental analysis');
-          break;
-        case 'Macro Views':
-          keywords.push('macroeconomic analysis', 'market outlook', 'economic trends');
-          break;
-        case 'Crypto':
-          keywords.push('cryptocurrency', 'bitcoin analysis', 'blockchain finance');
-          break;
-      }
-    });
-  }
-  
-  return [...new Set(keywords)]; // Remove duplicates
+// Helper function to generate article URL for RSS
+function getArticleUrlForRSS(article: Article): string {
+  return getArticleUrl(article, SITE_URL);
 }
 
 // Generate RSS item for a single article
 function generateRSSItem(article: Article): string {
-  const url = getArticleUrl(article);
+  const url = getArticleUrlForRSS(article);
   const categories = getArticleCategories(article);
   const keywords = generateSEOKeywords(article);
   const pubDate = formatRSSDate(article.date);
@@ -170,12 +110,10 @@ function generateRSSItem(article: Article): string {
 // Generate complete RSS feed
 export function generateRSSFeed(): string {
   const buildDate = new Date().toUTCString();
-  const latestArticleDate = articles.length > 0 ? formatRSSDate(articles[0].date) : buildDate;
   
-  // Sort articles by date (newest first) and take the most recent 50
-  const sortedArticles = [...articles]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 50);
+  // Get published articles sorted by date (newest first) and take the most recent 50
+  const sortedArticles = getPublishedArticlesSorted().slice(0, 50);
+  const latestArticleDate = sortedArticles.length > 0 ? formatRSSDate(sortedArticles[0].date) : buildDate;
   
   const rssItems = sortedArticles.map(generateRSSItem).join('\n');
   
@@ -236,19 +174,15 @@ export function generateRSSFeed(): string {
 
 // Generate RSS feed for specific categories/labels
 export function generateCategoryRSSFeed(categoryFilter: string): string {
-  const filteredArticles = articles.filter(article => {
-    const categories = getArticleCategories(article);
-    return categories.some(cat => cat.toLowerCase().includes(categoryFilter.toLowerCase()));
-  });
+  // Get published articles for the specific category, sorted by date
+  const filteredArticles = getPublishedArticlesByCategory(categoryFilter)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 25);
   
   const buildDate = new Date().toUTCString();
   const latestArticleDate = filteredArticles.length > 0 ? formatRSSDate(filteredArticles[0].date) : buildDate;
   
-  const sortedArticles = [...filteredArticles]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 25);
-  
-  const rssItems = sortedArticles.map(generateRSSItem).join('\n');
+  const rssItems = filteredArticles.map(generateRSSItem).join('\n');
   
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 

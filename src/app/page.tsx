@@ -171,40 +171,6 @@ export default function Home() {
                 </Button>
 
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                  <a 
-                    href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-                      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-                      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-                      <line x1="12" y1="20" x2="12" y2="20" />
-                    </svg>
-                    Android App
-                  </a>
-                </Button>
-                
-                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                  <Link href="/rss">
-                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 11a9 9 0 0 1 9 9" />
-                      <path d="M4 4a16 16 0 0 1 16 16" />
-                      <circle cx="5" cy="19" r="1" />
-                    </svg>
-                    RSS Feeds
-                  </Link>
-                </Button>
-
-                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                  <Link href="/seo-audit">
-                    <Search className="mr-2 h-4 w-4" />
-                    SEO Audit
-                  </Link>
-                </Button>
-                
-                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/about">
                     <Users className="mr-2 h-4 w-4" />
                     Meet SOPHIE Daddy

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://sophie-ai-finance.com', // Replace with your actual domain
+  siteUrl: 'https://sophie-ai-finance.com',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -29,6 +29,9 @@ module.exports = {
       priority = 1.0;
       changefreq = 'daily';
     } else if (path.startsWith('/articles/')) {
+      // Articles get different priorities based on type
+      // This will be handled by the Next.js build process
+      // which only generates pages for published articles
       priority = 0.9;
       changefreq = 'weekly';
     } else if (path.startsWith('/stock/')) {
@@ -40,6 +43,12 @@ module.exports = {
     } else if (path === '/rss' || path.startsWith('/rss/')) {
       priority = 0.6;
       changefreq = 'daily';
+    } else if (path === '/seo-audit') {
+      priority = 0.5;
+      changefreq = 'weekly';
+    } else if (path === '/about') {
+      priority = 0.8;
+      changefreq = 'monthly';
     }
 
     return {

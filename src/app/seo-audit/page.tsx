@@ -6,6 +6,7 @@ import { ArrowLeft, CheckCircle, AlertTriangle, Info, TrendingUp, BarChart3, Sea
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { auditSiteSEO, auditArticleSEO, getSEOInsights, checkDuplicateContent, SEOAuditResult, SEOIssue } from '@/lib/seo-audit';
+import { getAllPublishedArticles } from '@/lib/article-utils';
 import { articles } from '@/data/articles';
 
 export default function SEOAuditPage() {
@@ -231,9 +232,9 @@ export default function SEOAuditPage() {
         {selectedTab === 'articles' && (
           <div className="space-y-6">
             <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Article SEO Analysis</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Article SEO Analysis (Published Only)</h3>
               <div className="space-y-4">
-                {articles.slice(0, 10).map(article => {
+                {getAllPublishedArticles().slice(0, 10).map(article => {
                   const audit = auditArticleSEO(article);
                   return (
                     <div key={article.slug} className="border border-slate-200 rounded-lg p-4">
