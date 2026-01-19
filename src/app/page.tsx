@@ -34,6 +34,7 @@ export default function Home() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [showStockData, setShowStockData] = useState(false);
+  const [copyButtonText, setCopyButtonText] = useState('Copy RSS Feed');
   
   // Get all predefined labels
   const availableLabels = getAllLabels();
@@ -54,6 +55,22 @@ export default function Home() {
   const handleLabelsChange = (labels: string[]) => {
     setSelectedLabels(labels);
     setShowAllArticles(false);
+  };
+
+  const handleCopyRSSFeed = async () => {
+    try {
+      await navigator.clipboard.writeText('https://www.sophie-ai-finance.com/rss.xml');
+      setCopyButtonText('Copied!');
+      setTimeout(() => {
+        setCopyButtonText('Copy RSS Feed');
+      }, 2000);
+    } catch (err) {
+      // Fallback for browsers that don't support clipboard API
+      setCopyButtonText('RSS URL Copied');
+      setTimeout(() => {
+        setCopyButtonText('Copy RSS Feed');
+      }, 2000);
+    }
   };
 
   return (
@@ -170,6 +187,27 @@ export default function Home() {
                   </a>
                 </Button>
 
+                <Button 
+                  onClick={handleCopyRSSFeed}
+                  size="lg" 
+                  variant="outline" 
+                  className={`w-full sm:w-auto transition-colors duration-200 ${
+                    copyButtonText === 'Copied!' ? 'bg-orange-50 border-orange-300 text-orange-700' : 'border-orange-300 text-orange-700 hover:bg-orange-50'
+                  }`}
+                >
+                  <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    {copyButtonText === 'Copied!' ? (
+                      <path d="M20 6L9 17l-5-5"/>
+                    ) : (
+                      <>
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                      </>
+                    )}
+                  </svg>
+                  {copyButtonText}
+                </Button>
+                
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link href="/about">
                     <Users className="mr-2 h-4 w-4" />
