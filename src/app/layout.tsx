@@ -64,6 +64,14 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code', // Add your Google Search Console verification code
   },
+  alternates: {
+    types: {
+      'application/rss+xml': [
+        { url: '/rss.xml', title: "SOPHIE's Daddy Quant Blog - All Articles" },
+        { url: '/feed.xml', title: "SOPHIE's Daddy Quant Blog - RSS Feed" },
+      ],
+    },
+  },
 };
 
 export default function RootLayout({

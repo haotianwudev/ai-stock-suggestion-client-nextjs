@@ -7,3 +7,5 @@ Host: https://sophie-ai-finance.com
 
 # Sitemaps
 Sitemap: https://sophie-ai-finance.com/sitemap.xml
+Sitemap: https://sophie-ai-finance.com/rss.xml
+Sitemap: https://sophie-ai-finance.com/feed.xml

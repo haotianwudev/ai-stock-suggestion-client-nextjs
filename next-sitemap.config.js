@@ -11,6 +11,8 @@ module.exports = {
     ],
     additionalSitemaps: [
       'https://sophie-ai-finance.com/sitemap.xml',
+      'https://sophie-ai-finance.com/rss.xml',
+      'https://sophie-ai-finance.com/feed.xml',
     ],
   },
   exclude: ['/api/*'],
@@ -35,6 +37,9 @@ module.exports = {
     } else if (path.startsWith('/option')) {
       priority = 0.8;
       changefreq = 'weekly';
+    } else if (path === '/rss' || path.startsWith('/rss/')) {
+      priority = 0.6;
+      changefreq = 'daily';
     }
 
     return {

@@ -5,7 +5,7 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/components/icons";
-import { LineChart, Users, BookOpen } from "lucide-react";
+import { LineChart, Users, BookOpen, Search } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
@@ -184,6 +184,24 @@ export default function Home() {
                     </svg>
                     Android App
                   </a>
+                </Button>
+                
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Link href="/rss">
+                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 11a9 9 0 0 1 9 9" />
+                      <path d="M4 4a16 16 0 0 1 16 16" />
+                      <circle cx="5" cy="19" r="1" />
+                    </svg>
+                    RSS Feeds
+                  </Link>
+                </Button>
+
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Link href="/seo-audit">
+                    <Search className="mr-2 h-4 w-4" />
+                    SEO Audit
+                  </Link>
                 </Button>
                 
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
