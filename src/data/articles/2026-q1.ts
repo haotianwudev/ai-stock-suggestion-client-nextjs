@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Quantifying Intraday Alpha: The U-Curve Volatility Engine and Institutional Flow Dynamics",
+    description: "A research-driven exploration into how timing, volume clusters, and liquidity cycles dictate price action. Master the U-Curve phenomenon and align your execution with global institutional flows for superior market timing and risk-adjusted returns.",
+    slug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
+    date: "April 5, 2026",
+    imageUrl: "https://i.imgur.com/C6fWtuH.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQXuQlk71kH8nP3E5s2CTHan--24DHJMjIYaUfIYuuxJZHnB4ELHTyqqlNSL6BIYFG18QSClxIaPema/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Structured Finance 2026: Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models",
     description: "Master the mechanics of credit enhancement and stochastic valuation in structured finance. A comprehensive institutional research framework covering RMBS, CMBS, and ABS pricing models, structural waterfalls, prepayment models, and the quantitative engineering behind modern securitization.",
     slug: "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
