@@ -23,6 +23,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "quantitative-approach-predicting-market-direction-premarket-data",
       "index-effect",
       "sp500-inclusion-anomaly-december-2025-deep-research",
+      "portfolio-optimization",
+      "efficient-frontier-portfolio-optimization-mathematics",
     ],
     studyGuide: {
       items: [
@@ -58,6 +60,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Portfolio Optimization",
           url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
+          videoUrl: "https://youtu.be/_XSExYXACic",
           visualGuideUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
         },
         {

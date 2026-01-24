@@ -82,14 +82,22 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "option-greeks-poem",
       "option-greeks-traders-poetic-guide-risk",
+      "black-scholes-option-pricing",
+      "black-scholes-analytics-laboratory-axioms-option-pricing",
     ],
     studyGuide: {
       items: [
         {
           text: "How to understand Greeks",
           url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk",
-          videoUrl: "https://youtu.be/specific-greeks-tutorial",
-          visualGuideUrl: "https://i.imgur.com/greeks-detailed-guide.jpeg"
+          videoUrl: "https://youtu.be/ZLUeCSLgw3Y",
+          visualGuideUrl: "https://i.imgur.com/Fre6XfJ.jpeg"
+        },
+        {
+          text: "Black Scholes Model and Risk Neutral Pricing",
+          url: "https://www.sophie-ai-finance.com/articles/black-scholes-analytics-laboratory-axioms-option-pricing",
+          videoUrl: "https://youtu.be/BfU9H60nepI",
+          visualGuideUrl: "https://i.imgur.com/VVQWBaJ.jpeg"
         },
         {
           text: "Barchart Volatility & Greeks",

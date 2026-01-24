@@ -82,17 +82,25 @@ export const topicsConfig: Record<string, TopicConfig> = {
     id: 'derivatives-pricing',
     title: 'Derivatives Pricing',
     description: 'Master the mathematical foundations of derivatives pricing including Black-Scholes models, structured products, and complex financial instruments. Learn to value options, bonds, and hybrid securities using advanced quantitative methods.',
-    videoUrl: 'https://youtu.be/eK2moYsTJrE',
-    infographicUrl: "https://i.imgur.com/kmqdUcW.jpeg",
+    videoUrl: 'https://youtu.be/BfU9H60nepI',
+    infographicUrl: "https://i.imgur.com/VVQWBaJ.jpeg",
     relatedArticles: [
       "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
       "structured-notes",
       "architecture-structured-notes-comprehensive-investors-guide",
       "monte-carlo-simulation-3",
-      "monte-carlo-advanced-stochastic-modeling-derivatives-cva"
+      "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+      "black-scholes-option-pricing",
+      "black-scholes-analytics-laboratory-axioms-option-pricing",
     ],
     studyGuide: {
       items: [
+        {
+          text: "Black Scholes Model and Risk Neutral Pricing",
+          url: "https://www.sophie-ai-finance.com/articles/black-scholes-analytics-laboratory-axioms-option-pricing",
+          videoUrl: "https://youtu.be/BfU9H60nepI",
+          visualGuideUrl: "https://i.imgur.com/VVQWBaJ.jpeg"
+        },
         {
           text: "Structured Notes",
           url: "https://www.sophie-ai-finance.com/articles/architecture-structured-notes-comprehensive-investors-guide",
