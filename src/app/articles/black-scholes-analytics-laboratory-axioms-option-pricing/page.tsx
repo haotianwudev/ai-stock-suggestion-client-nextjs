@@ -221,7 +221,7 @@ export default function BlackScholesAnalytics() {
               colorClass="bg-blue-100 text-blue-600"
               footer="Stochastic Constraint"
             >
-              Assumes returns are <strong>Normally Distributed</strong>, meaning price levels follow a <strong>Lognormal Distribution</strong>. This prevents prices from dropping below zero (limited liability) and accounts for the compounding nature of financial growth.
+              Assumes returns are <strong>Normally Distributed</strong>, meaning price levels follow a <strong>Lognormal Distribution</strong>. This prevents prices from dropping below zero (limited liability) and accounts for the compounding nature of financial growth. The mathematical form is dS = μS dt + σS dW, where μ is the drift rate and σ is the volatility parameter. This ensures that percentage changes, not absolute changes, are normally distributed—a crucial distinction that captures the multiplicative nature of financial returns.
             </DetailCard>
             <DetailCard 
               title="Continuous Liquidity" 
@@ -229,7 +229,7 @@ export default function BlackScholesAnalytics() {
               colorClass="bg-emerald-100 text-emerald-600"
               footer="Execution Theory"
             >
-              The model assumes you can buy or sell any quantity of an asset instantly without moving the market price (zero slippage). It further assumes zero transaction costs and zero taxes, enabling infinitesimal re-hedging.
+              The model assumes you can buy or sell any quantity of an asset instantly without moving the market price (zero slippage). It further assumes zero transaction costs and zero taxes, enabling infinitesimal re-hedging. This &quot;perfect liquidity&quot; assumption allows for continuous delta-hedging, where traders can adjust their positions instantaneously as the underlying moves. In reality, bid-ask spreads, market impact, and transaction costs create friction that professional traders must account for through more sophisticated models.
             </DetailCard>
             <DetailCard 
               title="Static Volatility" 
@@ -237,7 +237,27 @@ export default function BlackScholesAnalytics() {
               colorClass="bg-amber-100 text-amber-600"
               footer="Parameter Axiom"
             >
-              Volatility (σ) and interest rates (r) are assumed to be constant and known throughout the life of the option. This is the model&apos;s most famous simplification, leading to the creation of the &quot;Volatility Surface&quot; in practice.
+              Volatility (σ) and interest rates (r) are assumed to be constant and known throughout the life of the option. This is the model&apos;s most famous simplification, leading to the creation of the &quot;Volatility Surface&quot; in practice. Real-world volatility clusters (high vol periods followed by high vol) and exhibits mean reversion. Interest rates also fluctuate, creating additional risk factors. Modern practitioners use stochastic volatility models (Heston, SABR) and term structure models to address these limitations.
+            </DetailCard>
+          </div>
+          
+          {/* Additional Axioms */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <DetailCard 
+              title="No Dividends (Original)" 
+              icon={Wallet} 
+              colorClass="bg-purple-100 text-purple-600"
+              footer="Cash Flow Assumption"
+            >
+              The original Black-Scholes model assumed no dividend payments during the option&apos;s life. This was later extended by Merton to include continuous dividend yields, adjusting the forward price to S₀e^(-qT) where q is the dividend yield. For discrete dividends, practitioners often use binomial trees or adjust the stock price by the present value of expected dividends.
+            </DetailCard>
+            <DetailCard 
+              title="European Exercise" 
+              icon={Clock} 
+              colorClass="bg-rose-100 text-rose-600"
+              footer="Exercise Constraint"
+            >
+              The model applies only to European-style options that can only be exercised at expiration. American options, which can be exercised early, require more complex numerical methods like binomial/trinomial trees or finite difference methods. Early exercise is optimal for American puts when they are deep in-the-money, and for American calls on dividend-paying stocks just before ex-dividend dates.
             </DetailCard>
           </div>
         </section>
@@ -259,12 +279,25 @@ export default function BlackScholesAnalytics() {
                 <h4 className="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
                   <Anchor className="w-5 h-5 text-indigo-600" /> The Discounted Martingale
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  In this world, the discounted stock price is a &quot;fair game.&quot; The best estimate of its future discounted value is today&apos;s price.
+                <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  In this world, the discounted stock price is a &quot;fair game.&quot; The best estimate of its future discounted value is today&apos;s price. This martingale property is the foundation of risk-neutral pricing.
                 </p>
                 <div className="mt-4 p-3 bg-slate-50 rounded-xl text-center">
                   <MathRenderer formula={"S_0 = e^{-rT} \\mathbb{E}^Q [ S_T ]"} />
                 </div>
+                <p className="text-xs text-slate-400 mt-3 italic">
+                  This equation states that today&apos;s stock price equals the discounted expected future price under the risk-neutral measure Q.
+                </p>
+              </div>
+              
+              {/* Additional Risk-Neutral Concepts */}
+              <div className="p-6 bg-indigo-50 border border-indigo-200 rounded-2xl">
+                <h4 className="text-lg font-bold text-indigo-800 mb-3 flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-indigo-600" /> Market Completeness
+                </h4>
+                <p className="text-sm text-indigo-700 leading-relaxed">
+                  A complete market allows any payoff to be replicated through dynamic trading of the underlying and risk-free bond. This replication argument eliminates arbitrage opportunities and uniquely determines option prices. The key insight: if two portfolios have identical payoffs, they must have identical prices to prevent risk-free profit.
+                </p>
               </div>
             </div>
             <div className="bg-slate-900 p-8 rounded-3xl shadow-2xl text-white">
@@ -276,14 +309,21 @@ export default function BlackScholesAnalytics() {
                   <span className="text-[10px] text-slate-500 font-bold block mb-3 uppercase">Physical World (P)</span>
                   <MathRenderer formula={"dS_t = \\mu S_t dt + \\sigma S_t dW_t"} className="text-2xl text-rose-400" />
                   <p className="text-[10px] text-slate-500 mt-3 italic">
-                    Drift (μ) includes the risk premium investors demand for holding the stock.
+                    Drift (μ) includes the risk premium investors demand for holding the stock. This reflects actual investor preferences and risk aversion.
                   </p>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl border border-white/10">
                   <span className="text-[10px] text-emerald-400 font-bold block mb-3 uppercase">Risk-Neutral World (Q)</span>
                   <MathRenderer formula={"dS_t = r S_t dt + \\sigma S_t dW_t^Q"} className="text-2xl text-emerald-400" />
                   <p className="text-[10px] text-emerald-400/60 mt-3 italic">
-                    The drift is fixed to the risk-free rate (r). Preferences are deleted.
+                    The drift is fixed to the risk-free rate (r). Preferences are deleted. All assets grow at the risk-free rate on average.
+                  </p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                  <span className="text-[10px] text-blue-400 font-bold block mb-3 uppercase">The Bridge: Girsanov</span>
+                  <MathRenderer formula={"\\frac{dQ}{dP} = \\exp\\left(-\\frac{\\mu - r}{\\sigma}W_T - \\frac{1}{2}\\left(\\frac{\\mu - r}{\\sigma}\\right)^2 T\\right)"} className="text-lg text-blue-400" />
+                  <p className="text-[10px] text-blue-400/60 mt-3 italic">
+                    The Radon-Nikodym derivative transforms probabilities, making the discounted stock price a martingale.
                   </p>
                 </div>
               </div>
@@ -310,10 +350,13 @@ export default function BlackScholesAnalytics() {
                     <h4 className="text-2xl font-black tracking-tight">Girsanov Theorem</h4>
                   </div>
                   <p className="text-sm text-slate-500 leading-relaxed mb-6">
-                    Girsanov allows us to change the probability measure. It provides the &quot;Radon-Nikodym derivative,&quot; which acts as a filter that re-weights path probabilities so the weighted drift exactly equals r.
+                    Girsanov allows us to change the probability measure. It provides the &quot;Radon-Nikodym derivative,&quot; which acts as a filter that re-weights path probabilities so the weighted drift exactly equals r. This theorem is the mathematical foundation that transforms the physical measure (with risk premium μ) into the risk-neutral measure (with drift r).
                   </p>
                 </div>
-                <MathRenderer formula={"L_T = \\frac{dQ}{dP} = \\exp\\left( -\\int \\theta dW_t - \\frac{1}{2} \\int \\theta^2 dt \\right)"} displayMode={true} />
+                <div className="space-y-4">
+                  <MathRenderer formula={"L_T = \\frac{dQ}{dP} = \\exp\\left( -\\int \\theta dW_t - \\frac{1}{2} \\int \\theta^2 dt \\right)"} displayMode={true} />
+                  <p className="text-xs text-slate-400 italic">Where θ = (μ-r)/σ is the market price of risk</p>
+                </div>
               </div>
               <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                 <div>
@@ -324,12 +367,17 @@ export default function BlackScholesAnalytics() {
                     <h4 className="text-2xl font-black tracking-tight">Feynman-Kac Identity</h4>
                   </div>
                   <p className="text-sm text-slate-500 leading-relaxed mb-6">
-                    The link between finance and physics. It proves that the solution to a Heat Equation (PDE) is the same as the expectation of a random process. This is why Monte Carlo simulation works.
+                    The link between finance and physics. It proves that the solution to a Heat Equation (PDE) is the same as the expectation of a random process. This is why Monte Carlo simulation works—we can either solve the PDE numerically or simulate thousands of random paths and average the payoffs.
                   </p>
                 </div>
-                <MathRenderer formula={"f(x,t) = \\mathbb{E}^Q \\left[ e^{-r(T-t)} \\Phi(S_T) \\mid S_t = x \\right]"} displayMode={true} />
+                <div className="space-y-4">
+                  <MathRenderer formula={"f(x,t) = \\mathbb{E}^Q \\left[ e^{-r(T-t)} \\Phi(S_T) \\mid S_t = x \\right]"} displayMode={true} />
+                  <p className="text-xs text-slate-400 italic">Where Φ(S_T) is the option payoff at expiration</p>
+                </div>
               </div>
             </div>
+            
+            {/* Itô's Lemma - Enhanced */}
             <div className="p-8 bg-white rounded-3xl border border-slate-200 flex flex-col lg:flex-row gap-10 items-center">
               <div className="lg:w-1/2">
                 <div className="flex items-center gap-3 mb-6">
@@ -339,12 +387,43 @@ export default function BlackScholesAnalytics() {
                   <h4 className="text-2xl font-black tracking-tight">Itô&apos;s Lemma</h4>
                 </div>
                 <p className="text-slate-600 text-base leading-relaxed mb-4 font-light">
-                  In the stochastic world, change happens in the second order. Because (dW)² = dt, we get an extra term representing the &quot;convexity&quot; of the payoff—this is the source of Gamma.
+                  In the stochastic world, change happens in the second order. Because (dW)² = dt, we get an extra term representing the &quot;convexity&quot; of the payoff—this is the source of Gamma. This quadratic variation term is what distinguishes stochastic calculus from ordinary calculus.
                 </p>
+                <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+                  <h5 className="font-bold text-emerald-800 mb-2 text-sm">Key Insight</h5>
+                  <p className="text-xs text-emerald-700 leading-relaxed">
+                    The ½σ²S²∂²f/∂S² term captures the &quot;convexity premium&quot; - the value created by the option&apos;s non-linear payoff structure. This is why options have time value even when at-the-money.
+                  </p>
+                </div>
               </div>
               <div className="lg:w-1/2 overflow-x-auto bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
                 <MathRenderer formula={"df = \\left( \\frac{\\partial f}{\\partial t} + rS\\frac{\\partial f}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 f}{\\partial S^2} \\right)dt + \\sigma S \\frac{\\partial f}{\\partial S} dW_t"} displayMode={true} className="text-base" />
+                <div className="mt-4 grid grid-cols-3 gap-2 text-xs">
+                  <div className="p-2 bg-blue-100 rounded text-blue-800">
+                    <strong>Theta</strong><br/>Time decay
+                  </div>
+                  <div className="p-2 bg-green-100 rounded text-green-800">
+                    <strong>Delta</strong><br/>Price sensitivity
+                  </div>
+                  <div className="p-2 bg-purple-100 rounded text-purple-800">
+                    <strong>Gamma</strong><br/>Convexity
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* Black-Scholes PDE */}
+            <div className="p-8 bg-slate-900 text-white rounded-3xl shadow-2xl">
+              <h4 className="text-2xl font-black mb-6 text-center text-white">The Black-Scholes Partial Differential Equation</h4>
+              <p className="text-slate-300 text-center mb-8 leading-relaxed">
+                Applying Itô&apos;s Lemma to the option value f(S,t) and using the no-arbitrage condition yields the famous PDE:
+              </p>
+              <div className="bg-white/10 p-6 rounded-2xl border border-white/20 text-center">
+                <MathRenderer formula={"\\frac{\\partial f}{\\partial t} + rS\\frac{\\partial f}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 f}{\\partial S^2} = rf"} displayMode={true} className="text-xl text-white" />
+              </div>
+              <p className="text-xs text-slate-400 text-center mt-4 italic">
+                Subject to boundary conditions: f(S,T) = max(S-K,0) for a call option
+              </p>
             </div>
           </div>
         </section>
@@ -361,36 +440,87 @@ export default function BlackScholesAnalytics() {
             <div className="bg-white p-8 rounded-3xl border border-slate-200">
               <h4 className="text-2xl font-black mb-6 text-slate-800 tracking-tight">The Lognormal Integral</h4>
               <p className="text-slate-600 text-base leading-relaxed mb-8 font-light">
-                We define the Call price as the discounted average of payoffs above strike K. Integrating against the density f(S<sub>T</sub>) reveals the internal weights N(d₁) and N(d₂).
+                We define the Call price as the discounted average of payoffs above strike K. Integrating against the density f(S<sub>T</sub>) reveals the internal weights N(d₁) and N(d₂). The key insight is that we&apos;re computing a conditional expectation over the region where S<sub>T</sub> &gt; K.
               </p>
               <MathBlockContainer 
                 formula={"C = e^{-rT} \\int_{K}^{\\infty} (S_T - K) f(S_T) dS_T"} 
                 label="The Core Expectation"
-                subtext="We perform a change of variable to transform this into a Standard Normal Integral."
+                subtext="We perform a change of variable to transform this into a Standard Normal Integral using the fact that ln(S_T) ~ N(ln(S_0) + (r-σ²/2)T, σ²T)."
               />
-              <div className="grid md:grid-cols-2 gap-8">
+              
+              {/* Step-by-step derivation */}
+              <div className="grid md:grid-cols-2 gap-8 mt-8">
+                <div className="space-y-4">
+                  <h5 className="font-bold text-slate-800 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                    <Binary className="w-4 h-4 text-emerald-600" /> Step 1: Substitution
+                  </h5>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Let X = ln(S<sub>T</sub>/S<sub>0</sub>). Then X ~ N((r-σ²/2)T, σ²T), and we can rewrite the integral in terms of the standard normal distribution.
+                  </p>
+                  <div className="p-4 bg-emerald-50 rounded-xl">
+                    <MathRenderer formula={"X = \\ln\\left(\\frac{S_T}{S_0}\\right) \\sim N\\left(\\left(r-\\frac{\\sigma^2}{2}\\right)T, \\sigma^2 T\\right)"} displayMode={true} />
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h5 className="font-bold text-slate-800 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                    <Binary className="w-4 h-4 text-emerald-600" /> Step 2: Integration by Parts
+                  </h5>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    The integral splits into two parts: the stock-weighted probability N(d₁) and the strike-weighted probability N(d₂). This decomposition reveals the economic meaning of each term.
+                  </p>
+                  <div className="p-4 bg-emerald-50 rounded-xl">
+                    <MathRenderer formula={"\\int S_T \\phi(z) dz - K \\int \\phi(z) dz"} displayMode={true} />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8 mt-8">
                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
                   <h5 className="font-bold text-indigo-600 mb-3 flex items-center gap-2 uppercase text-xs tracking-widest">
                     <Search className="w-4 h-4" /> The N(d₁) Weight
                   </h5>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    Representing the stock-weighted probability of exercise. Physically, this is the <strong>Delta</strong> (Δ), the amount of stock required to replicate the option.
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                    Representing the stock-weighted probability of exercise. Physically, this is the <strong>Delta</strong> (Δ), the amount of stock required to replicate the option. It&apos;s the probability of finishing ITM, weighted by the stock price.
                   </p>
+                  <div className="p-3 bg-white rounded-lg">
+                    <MathRenderer formula={"d_1 = \\frac{\\ln(S_0/K) + (r + \\sigma^2/2)T}{\\sigma\\sqrt{T}}"} displayMode={true} />
+                  </div>
                 </div>
                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
                   <h5 className="font-bold text-rose-600 mb-3 flex items-center gap-2 uppercase text-xs tracking-widest">
                     <Search className="w-4 h-4" /> The N(d₂) Weight
                   </h5>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    The simple, risk-neutral probability that the option finishes in-the-money. This is the likelihood you will actually pay the strike price K.
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                    The simple, risk-neutral probability that the option finishes in-the-money. This is the likelihood you will actually pay the strike price K. Note that d₂ = d₁ - σ√T.
                   </p>
+                  <div className="p-3 bg-white rounded-lg">
+                    <MathRenderer formula={"d_2 = \\frac{\\ln(S_0/K) + (r - \\sigma^2/2)T}{\\sigma\\sqrt{T}}"} displayMode={true} />
+                  </div>
                 </div>
               </div>
             </div>
+            
+            {/* The Final Formula */}
             <MathBlockContainer 
               formula={"C = S_0 N(d_1) - K e^{-rT} N(d_2)"} 
               label="The Black-Scholes-Merton Result"
+              subtext="This elegant formula encapsulates the entire theory of option pricing in a single equation."
             />
+            
+            {/* Put-Call Parity */}
+            <div className="p-8 bg-indigo-50 border border-indigo-200 rounded-3xl">
+              <h4 className="text-2xl font-black mb-4 text-indigo-900 tracking-tight">Put-Call Parity</h4>
+              <p className="text-indigo-800 text-base leading-relaxed mb-6">
+                The relationship between call and put prices is not derived from Black-Scholes but from pure arbitrage arguments. It must hold regardless of the pricing model used.
+              </p>
+              <div className="bg-white p-6 rounded-2xl text-center">
+                <MathRenderer formula={"C - P = S_0 - Ke^{-rT}"} displayMode={true} className="text-2xl text-indigo-900" />
+                <p className="text-sm text-indigo-600 mt-4">
+                  This means: Long Call + Short Put = Long Forward Contract
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -406,27 +536,79 @@ export default function BlackScholesAnalytics() {
             <GreekCard 
               name="Delta" 
               symbol={"\\Delta"} 
-              description="The speed. Sensitivity to stock price changes." 
+              description="The speed. Sensitivity to stock price changes. For calls: 0 < Δ < 1, for puts: -1 < Δ < 0." 
               impact="Hedge Ratio" 
             />
             <GreekCard 
               name="Gamma" 
               symbol={"\\Gamma"} 
-              description="The acceleration. Sensitivity of Delta to stock price." 
+              description="The acceleration. Sensitivity of Delta to stock price. Always positive for long options, highest ATM." 
               impact="Path Risk" 
             />
             <GreekCard 
               name="Theta" 
               symbol={"\\Theta"} 
-              description="The time bleed. Daily loss of value due to expiry." 
+              description="The time bleed. Daily loss of value due to expiry. Accelerates as expiration approaches." 
               impact="Time Decay" 
             />
             <GreekCard 
               name="Vega" 
               symbol={"\\nu"} 
-              description="The uncertainty risk. Sensitivity to market fear (IV)." 
+              description="The uncertainty risk. Sensitivity to market fear (IV). Highest for ATM options with time remaining." 
               impact="Uncertainty" 
             />
+          </div>
+          
+          {/* Additional Greeks */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <GreekCard 
+              name="Rho" 
+              symbol={"\\rho"} 
+              description="Interest rate sensitivity. More important for longer-dated options and deep ITM calls." 
+              impact="Rate Risk" 
+            />
+            <GreekCard 
+              name="Vanna" 
+              symbol={"\\frac{\\partial^2 V}{\\partial S \\partial \\sigma}"} 
+              description="Cross-derivative: sensitivity of Delta to volatility changes. Second-order Greek." 
+              impact="Vol-Spot Risk" 
+            />
+            <GreekCard 
+              name="Charm" 
+              symbol={"\\frac{\\partial^2 V}{\\partial S \\partial t}"} 
+              description="Delta decay: how Delta changes with time passage. Critical for dynamic hedging." 
+              impact="Delta Decay" 
+            />
+          </div>
+
+          {/* Greeks Relationships */}
+          <div className="mt-8 p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
+            <h4 className="text-2xl font-black mb-6 text-slate-800 tracking-tight">Greek Relationships & Hedging</h4>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h5 className="font-bold text-amber-600 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                  <Activity className="w-4 h-4" /> Delta-Gamma Hedging
+                </h5>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Delta hedging requires continuous rebalancing. Gamma measures how much your Delta hedge will be &quot;wrong&quot; for a given move. High Gamma positions need frequent rehedging.
+                </p>
+                <div className="p-4 bg-amber-50 rounded-xl">
+                  <MathRenderer formula={"\\text{P&L} \\approx \\Delta \\cdot \\Delta S + \\frac{1}{2} \\Gamma \\cdot (\\Delta S)^2"} displayMode={true} />
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <h5 className="font-bold text-rose-600 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                  <Clock className="w-4 h-4" /> Theta-Gamma Relationship
+                </h5>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  For a delta-neutral position, Theta and Gamma are related through the Black-Scholes PDE. You &quot;pay&quot; Theta to &quot;own&quot; Gamma.
+                </p>
+                <div className="p-4 bg-rose-50 rounded-xl">
+                  <MathRenderer formula={"\\Theta + \\frac{1}{2}\\sigma^2 S^2 \\Gamma + rS\\Delta = r \\cdot \\text{Portfolio Value}"} displayMode={true} />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -478,11 +660,14 @@ export default function BlackScholesAnalytics() {
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  For an At-The-Money (ATM) straddle, the Black-Scholes complex math collapses into a linear function of Price (S) and Volatility (σ).
+                  For an At-The-Money (ATM) straddle, the Black-Scholes complex math collapses into a linear function of Price (S) and Volatility (σ). This provides instant position sizing and risk assessment.
                 </p>
                 <div className="bg-slate-900 p-6 rounded-2xl text-center shadow-2xl">
                   <MathRenderer formula={"\\text{Straddle Price} \\approx 0.8 \\cdot S \\cdot \\sigma \\cdot \\sqrt{T}"} displayMode={true} className="text-emerald-400" />
                   <p className="text-[10px] text-slate-500 mt-4 italic">&quot;This provides the cost of the &apos;Uncertainty Envelope&apos; instantly.&quot;</p>
+                  <div className="mt-4 p-3 bg-emerald-900/20 rounded-lg">
+                    <p className="text-xs text-emerald-300">Example: $100 stock, 25% IV, 30 days → Straddle ≈ $100 × 0.25 × √(30/365) × 0.8 ≈ $5.70</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -522,7 +707,7 @@ export default function BlackScholesAnalytics() {
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Traders use Delta (Δ) as a <strong>raw probability proxy</strong>. A 25-delta call is treated as having a 25% chance of finishing in-the-money.
+                  Traders use Delta (Δ) as a <strong>raw probability proxy</strong>. A 25-delta call is treated as having a 25% chance of finishing in-the-money. This heuristic works because N(d₂) ≈ Delta for ATM options.
                 </p>
                 <div className="space-y-3">
                   <div className="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
@@ -531,8 +716,17 @@ export default function BlackScholesAnalytics() {
                   </div>
                   <div className="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <span className="text-sm font-bold text-slate-800 uppercase tracking-tight">50 Delta Call</span>
-                    <span className="text-sm font-black text-blue-600 uppercase tracking-tight">50/50 Coin Flip</span>
+                    <span className="text-sm font-black text-green-600 uppercase tracking-tight">At-The-Money</span>
                   </div>
+                  <div className="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span className="text-sm font-bold text-slate-800 uppercase tracking-tight">84 Delta Call</span>
+                    <span className="text-sm font-black text-purple-600 uppercase tracking-tight">1-Std Dev ITM</span>
+                  </div>
+                </div>
+                <div className="mt-4 p-4 bg-blue-50 rounded-xl">
+                  <p className="text-xs text-blue-700 font-medium">
+                    <strong>Pro Tip:</strong> The 25-delta put and 25-delta call define the &quot;1-standard deviation&quot; wings used in risk reversal strategies.
+                  </p>
                 </div>
               </div>
             </div>
@@ -558,6 +752,144 @@ export default function BlackScholesAnalytics() {
               </div>
             </div>
           </div>
+
+          {/* Additional Heuristics */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-purple-50 text-purple-500 rounded-xl shadow-inner">
+                  <Clock className="w-8 h-8" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase tracking-tighter">Weekend Effect</h4>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Calendar Time vs. Trading Time</span>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                Options decay over calendar time, not trading time. A Friday-to-Monday passage costs 3 days of Theta, but the market is only open 1 day. This creates predictable patterns in option pricing around weekends and holidays.
+              </p>
+              <div className="p-4 bg-purple-50 rounded-xl">
+                <p className="text-xs text-purple-700 font-medium">
+                  <strong>Trading Insight:</strong> Short-dated options often see accelerated decay on Fridays as weekend risk is priced in.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-teal-50 text-teal-500 rounded-xl shadow-inner">
+                  <Target className="w-8 h-8" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase tracking-tighter">Pin Risk</h4>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Expiration Magnetism</span>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                Stock prices tend to &quot;pin&quot; to strike prices at expiration due to delta hedging flows. Market makers who are short options will buy stock as it approaches the strike (to hedge their short delta), creating support/resistance.
+              </p>
+              <div className="p-4 bg-teal-50 rounded-xl">
+                <p className="text-xs text-teal-700 font-medium">
+                  <strong>Gamma Squeeze:</strong> When large amounts of call options are in-the-money, dealers must buy stock to hedge, amplifying upward moves.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* New Section: Modern Extensions */}
+        <section>
+          <SectionHeader 
+            icon={Cpu} 
+            title="Modern Extensions & Practical Applications" 
+            subtitle="How Black-Scholes evolved to meet real-world trading demands."
+            color="border-purple-600 text-purple-900" 
+          />
+          <div className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <DetailCard 
+                title="Stochastic Volatility Models" 
+                icon={Wind} 
+                colorClass="bg-purple-100 text-purple-600"
+                footer="Heston, SABR, Local Vol"
+              >
+                Modern models treat volatility as a random variable with its own dynamics. The Heston model adds a second stochastic process for volatility, while SABR models the forward price and volatility jointly. These capture the volatility smile and term structure more accurately.
+              </DetailCard>
+              <DetailCard 
+                title="Jump Diffusion Models" 
+                icon={Zap} 
+                colorClass="bg-orange-100 text-orange-600"
+                footer="Merton Jump-Diffusion"
+              >
+                Merton&apos;s extension adds sudden price jumps to the geometric Brownian motion. This better captures crash risk and explains why out-of-the-money puts trade at higher implied volatilities. The model includes jump frequency, jump size distribution, and jump timing.
+              </DetailCard>
+            </div>
+
+            <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
+              <h4 className="text-2xl font-black mb-6 text-slate-800 tracking-tight">Numerical Methods & Implementation</h4>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="p-6 bg-blue-50 rounded-2xl border border-blue-200">
+                  <h5 className="font-bold text-blue-800 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                    <Binary className="w-4 h-4" /> Binomial Trees
+                  </h5>
+                  <p className="text-sm text-blue-700 leading-relaxed mb-3">
+                    Cox-Ross-Rubinstein trees discretize the continuous process into up/down moves. Perfect for American options and path-dependent payoffs.
+                  </p>
+                  <div className="text-xs text-blue-600 font-mono bg-blue-100 p-2 rounded">
+                    u = e^(σ√Δt), d = 1/u
+                  </div>
+                </div>
+
+                <div className="p-6 bg-green-50 rounded-2xl border border-green-200">
+                  <h5 className="font-bold text-green-800 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                    <Activity className="w-4 h-4" /> Monte Carlo
+                  </h5>
+                  <p className="text-sm text-green-700 leading-relaxed mb-3">
+                    Simulate thousands of price paths and average the payoffs. Excellent for exotic options and high-dimensional problems.
+                  </p>
+                  <div className="text-xs text-green-600 font-mono bg-green-100 p-2 rounded">
+                    S(T) = S₀ × e^((r-σ²/2)T + σ√T×Z)
+                  </div>
+                </div>
+
+                <div className="p-6 bg-rose-50 rounded-2xl border border-rose-200">
+                  <h5 className="font-bold text-rose-800 mb-3 flex items-center gap-2 uppercase text-sm tracking-widest">
+                    <Layers className="w-4 h-4" /> Finite Difference
+                  </h5>
+                  <p className="text-sm text-rose-700 leading-relaxed mb-3">
+                    Solve the Black-Scholes PDE directly using numerical grids. Handles complex boundary conditions and early exercise features.
+                  </p>
+                  <div className="text-xs text-rose-600 font-mono bg-rose-100 p-2 rounded">
+                    Explicit, Implicit, Crank-Nicolson
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 bg-gradient-to-r from-indigo-900 to-purple-900 text-white rounded-3xl shadow-2xl">
+              <h4 className="text-2xl font-black mb-6 text-center">The Practitioner&apos;s Toolkit</h4>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h5 className="font-bold text-indigo-300 mb-4 uppercase text-sm tracking-widest">Market Making</h5>
+                  <ul className="space-y-2 text-sm text-indigo-100">
+                    <li>• Delta-neutral inventory management</li>
+                    <li>• Gamma scalping for profit extraction</li>
+                    <li>• Volatility surface interpolation</li>
+                    <li>• Risk limits and position sizing</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 className="font-bold text-purple-300 mb-4 uppercase text-sm tracking-widest">Portfolio Management</h5>
+                  <ul className="space-y-2 text-sm text-purple-100">
+                    <li>• Volatility forecasting models</li>
+                    <li>• Correlation trading strategies</li>
+                    <li>• Tail risk hedging programs</li>
+                    <li>• Dynamic hedging algorithms</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Section 7: Limitations */}
@@ -576,7 +908,7 @@ export default function BlackScholesAnalytics() {
                 colorClass="bg-rose-100 text-rose-600"
                 footer="Statistical Bias"
               >
-                Real market returns have &quot;Heavy Tails.&quot; The model assumes a 10-sigma crash happens once every 10 billion years; in the real &quot;Territory,&quot; these events happen almost every decade.
+                Real market returns have &quot;Heavy Tails.&quot; The model assumes a 10-sigma crash happens once every 10 billion years; in the real &quot;Territory,&quot; these events happen almost every decade. The normal distribution underestimates extreme events by orders of magnitude. This is why VIX spikes to 80+ during crises, not the 20-30 that normal distributions would predict.
               </DetailCard>
               <DetailCard 
                 title="Gap & Liquidity Risk" 
@@ -584,22 +916,71 @@ export default function BlackScholesAnalytics() {
                 colorClass="bg-amber-100 text-amber-600"
                 footer="Execution Failure"
               >
-                The model assumes prices move continuously. In reality, markets <strong>Gap</strong> overnight from $100 to $80. A delta-hedger cannot adjust their position mid-gap, leading to &quot;Jump Risk&quot; bankruptcy.
+                The model assumes prices move continuously. In reality, markets <strong>Gap</strong> overnight from $100 to $80. A delta-hedger cannot adjust their position mid-gap, leading to &quot;Jump Risk&quot; bankruptcy. This is particularly dangerous for short option positions during earnings announcements or geopolitical events.
               </DetailCard>
             </div>
+            
+            {/* Additional Limitations */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <DetailCard 
+                title="Stochastic Volatility" 
+                icon={Wind} 
+                colorClass="bg-purple-100 text-purple-600"
+                footer="Parameter Instability"
+              >
+                Volatility is not constant—it clusters, mean-reverts, and correlates with price movements. The &quot;volatility smile&quot; exists because traders know the model is wrong and adjust prices accordingly. Modern models like Heston and SABR attempt to capture this stochastic nature.
+              </DetailCard>
+              <DetailCard 
+                title="Transaction Costs" 
+                icon={Wallet} 
+                colorClass="bg-blue-100 text-blue-600"
+                footer="Friction Reality"
+              >
+                Real trading involves bid-ask spreads, commissions, and market impact. High-frequency delta hedging becomes prohibitively expensive. This creates &quot;hedging bands&quot; where traders only rehedge when Delta moves beyond certain thresholds, introducing basis risk.
+              </DetailCard>
+              <DetailCard 
+                title="Interest Rate Risk" 
+                icon={TrendingUp} 
+                colorClass="bg-green-100 text-green-600"
+                footer="Rate Sensitivity"
+              >
+                Interest rates are not constant, especially for longer-dated options. Changes in the yield curve affect option values through Rho, and the correlation between rates and stock prices creates additional complexity that the basic model ignores.
+              </DetailCard>
+            </div>
+            
             <div className="p-10 bg-white rounded-3xl border-2 border-slate-100 shadow-sm relative overflow-hidden group hover:border-indigo-500 transition-colors">
               <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
                 <div className="lg:w-1/2">
                   <h4 className="text-2xl font-black mb-3">The Volatility Smile</h4>
-                  <p className="text-slate-500 text-base leading-relaxed">
+                  <p className="text-slate-500 text-base leading-relaxed mb-6">
                     Professional traders don&apos;t quote options in dollars; they quote them in &quot;Volatility points.&quot; The <strong>Smile</strong> is the map of how much the model is currently underestimating the probability of extreme events.
                   </p>
+                  <div className="space-y-3">
+                    <div className="flex justify-between p-3 bg-slate-50 rounded-xl">
+                      <span className="text-sm font-bold text-slate-800">OTM Puts</span>
+                      <span className="text-sm text-rose-600">Higher IV (Crash Protection)</span>
+                    </div>
+                    <div className="flex justify-between p-3 bg-slate-50 rounded-xl">
+                      <span className="text-sm font-bold text-slate-800">ATM Options</span>
+                      <span className="text-sm text-blue-600">Baseline IV</span>
+                    </div>
+                    <div className="flex justify-between p-3 bg-slate-50 rounded-xl">
+                      <span className="text-sm font-bold text-slate-800">OTM Calls</span>
+                      <span className="text-sm text-green-600">Lower IV (Momentum Bias)</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="lg:w-1/2 p-8 bg-indigo-900 rounded-2xl text-white shadow-xl">
                   <h5 className="font-bold text-indigo-400 mb-3 uppercase text-xs tracking-widest">Masterclass Takeaway</h5>
-                  <p className="text-sm text-indigo-100 leading-relaxed italic">
+                  <p className="text-sm text-indigo-100 leading-relaxed italic mb-4">
                     &quot;Black-Scholes is the first map of a random world. It is flawed, elegant, and essential. It doesn&apos;t tell you the price; it tells you the language of value.&quot;
                   </p>
+                  <div className="p-4 bg-white/10 rounded-xl border border-white/20">
+                    <h6 className="text-xs font-bold text-indigo-300 mb-2">Modern Usage</h6>
+                    <p className="text-xs text-indigo-200 leading-relaxed">
+                      Today, Black-Scholes serves as the &quot;numeraire&quot; for option pricing—a common language that allows traders to compare the relative cheapness of different options by converting prices to implied volatilities.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

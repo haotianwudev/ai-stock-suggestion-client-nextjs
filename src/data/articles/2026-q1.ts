@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Investment Clock Framework: Quantitative Guide to Macro Regime Detection",
+    description: "A comprehensive technical analysis of the Investment Clock—a quantitative framework for tactical asset allocation through growth and inflation cycle identification. Includes implementation methodology, statistical validation, and modern market adaptations.",
+    slug: "investment-clock-framework-quantitative-macro-regime-detection",
+    date: "April 9, 2026",
+    imageUrl: "https://i.imgur.com/E1ZKfSA.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS9gMIeiFuK5XIja_s9U8khIB3TkEIjEdbQP-594sa6kcBJzz3UR2i8ihEtVXZBVe03m04rWYPRcfg1/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
     title: "Modeling Expected Returns: The Quantitative Foundation of Modern Portfolio Theory",
     description: "A comprehensive deep dive into the mathematical frameworks for estimating expected returns, from classical CAPM to advanced machine learning approaches. Explore the precision paradox, Black-Litterman evolution, and practical implementation strategies.",
     slug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
