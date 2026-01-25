@@ -266,16 +266,18 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
 
   'asset-allocation': {
     id: 'asset-allocation',
-    title: 'Strategic Asset Allocation',
-    description: 'Master quantitative frameworks for strategic asset allocation and wealth preservation. Learn modern portfolio theory, risk parity, and systematic rebalancing strategies for long-term wealth building.',
+    title: 'Asset Allocation & Portfolio Construction',
+    description: 'Comprehensive guide to asset allocation strategies, portfolio optimization, and performance attribution. Master SAA, TAA, risk parity, factor investing, and quantitative portfolio construction techniques.',
     videoUrl: 'https://youtu.be/IvgZO_QcUJs',
     infographicUrl: 'https://i.imgur.com/CrXmbad.jpeg',
     relatedArticles: [
       "strategic-asset-allocation",
       "strategic-asset-allocation-quantitative-framework-wealth-preservation",
       "strategic-tactical-asset-allocation-comprehensive-guide",
+      "portfolio-optimization",
       "efficient-frontier-portfolio-optimization-mathematics",
       "black-litterman-model-comprehensive-guide-portfolio-optimization",
+      "all-weather-strategy",
       "all-weather-strategy-new-economic-climate",
       "beyond-leverage-risk-parity-call-writing",
     ],
@@ -302,20 +304,13 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/black-litterman-model-comprehensive-guide-portfolio-optimization",
         },
         {
-          text: "All Weather Strategy",
+          text: "All Weather Strategy (Risk Parity)",
           url: "https://www.sophie-ai-finance.com/articles/all-weather-strategy-new-economic-climate",
-        },
-        {
-          text: "Risk Parity Strategies",
-          url: "https://www.sophie-ai-finance.com/articles/beyond-leverage-risk-parity-call-writing",
+          videoUrl: "https://youtu.be/NCVI6IDwz2c",
         },
         {
           text: "Portfolio Visualizer Tool",
           url: "https://www.portfoliovisualizer.com/",
-        },
-        {
-          text: "Asset Allocation Calculator",
-          url: "https://www.portfoliovisualizer.com/asset-class-correlations",
         },
       ]
     }
