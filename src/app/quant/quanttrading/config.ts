@@ -262,6 +262,63 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
       ]
     }
+  },
+
+  'asset-allocation': {
+    id: 'asset-allocation',
+    title: 'Strategic Asset Allocation',
+    description: 'Master quantitative frameworks for strategic asset allocation and wealth preservation. Learn modern portfolio theory, risk parity, and systematic rebalancing strategies for long-term wealth building.',
+    videoUrl: 'https://youtu.be/IvgZO_QcUJs',
+    infographicUrl: 'https://i.imgur.com/CrXmbad.jpeg',
+    relatedArticles: [
+      "strategic-asset-allocation",
+      "strategic-asset-allocation-quantitative-framework-wealth-preservation",
+      "strategic-tactical-asset-allocation-comprehensive-guide",
+      "efficient-frontier-portfolio-optimization-mathematics",
+      "black-litterman-model-comprehensive-guide-portfolio-optimization",
+      "all-weather-strategy-new-economic-climate",
+      "beyond-leverage-risk-parity-call-writing",
+    ],
+    studyGuide: {
+      items: [
+        {
+          text: "Strategic Asset Allocation Framework",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-asset-allocation-quantitative-framework-wealth-preservation",
+          videoUrl: "https://youtu.be/IvgZO_QcUJs",
+          visualGuideUrl: "https://i.imgur.com/CrXmbad.jpeg",
+        },
+        {
+          text: "Strategic vs Tactical Asset Allocation",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-tactical-asset-allocation-comprehensive-guide",
+        },
+        {
+          text: "Efficient Frontier & Portfolio Optimization",
+          url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
+          videoUrl: "https://youtu.be/_XSExYXACic",
+          visualGuideUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
+        },
+        {
+          text: "Black-Litterman Model",
+          url: "https://www.sophie-ai-finance.com/articles/black-litterman-model-comprehensive-guide-portfolio-optimization",
+        },
+        {
+          text: "All Weather Strategy",
+          url: "https://www.sophie-ai-finance.com/articles/all-weather-strategy-new-economic-climate",
+        },
+        {
+          text: "Risk Parity Strategies",
+          url: "https://www.sophie-ai-finance.com/articles/beyond-leverage-risk-parity-call-writing",
+        },
+        {
+          text: "Portfolio Visualizer Tool",
+          url: "https://www.portfoliovisualizer.com/",
+        },
+        {
+          text: "Asset Allocation Calculator",
+          url: "https://www.portfoliovisualizer.com/asset-class-correlations",
+        },
+      ]
+    }
   }
 };
 
