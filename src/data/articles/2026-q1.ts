@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Modeling Expected Returns: The Quantitative Foundation of Modern Portfolio Theory",
+    description: "A comprehensive deep dive into the mathematical frameworks for estimating expected returns, from classical CAPM to advanced machine learning approaches. Explore the precision paradox, Black-Litterman evolution, and practical implementation strategies.",
+    slug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+    date: "April 7, 2026",
+    imageUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTuvo-o0S4giC6cDaVEbctBMw_tEh0sXvvQs0Y-ATeACH97qbGJs7UPBp3n8ROQiCmaWuNuqA1TQQZ6/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Quantifying Intraday Alpha: The U-Curve Volatility Engine and Institutional Flow Dynamics",
     description: "A research-driven exploration into how timing, volume clusters, and liquidity cycles dictate price action. Master the U-Curve phenomenon and align your execution with global institutional flows for superior market timing and risk-adjusted returns.",
     slug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
