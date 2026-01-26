@@ -148,6 +148,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     relatedArticles: [
       "strategy-performance",
       "measuring-immeasurable-hedge-fund-performance-metrics",
+      "strategic-tactical-asset-allocation-comprehensive-guide",
       "definitive-backtrader-cheatsheet-guide",
     ],
     studyGuide: {
@@ -157,6 +158,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/measuring-immeasurable-hedge-fund-performance-metrics",
           videoUrl: "https://youtu.be/WBUxNZZzwnY",
           visualGuideUrl: "https://i.imgur.com/wLwP2HW.jpeg",
+        },
+        {
+          text: "Performance Attribution",
+          visualGuideUrl: "https://i.imgur.com/MhIheV4.jpeg",
+          url: "https://www.sophie-ai-finance.com/articles/strategic-tactical-asset-allocation-comprehensive-guide",
         },
         {
           text: "Backtrader Cheatsheet",
@@ -284,6 +290,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
         {
           text: "Strategic vs Tactical Asset Allocation",
+          visualGuideUrl: "https://i.imgur.com/MhIheV4.jpeg",
           url: "https://www.sophie-ai-finance.com/articles/strategic-tactical-asset-allocation-comprehensive-guide",
         },
         {
