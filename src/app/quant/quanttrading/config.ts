@@ -5,26 +5,24 @@ export interface QuantTopicConfig extends BaseConfig {}
 export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
   'systematic-strategies': {
     id: 'systematic-strategies',
-    title: 'Systematic Trading Strategies',
-    description: 'Learn rule-based trading approaches, momentum strategies, mean reversion, smart beta factor investing, and systematic portfolio construction methods.',
+    title: 'Systematic & Rule-Based Trading',
+    description: 'Learn systematic trading approaches using rule-based strategies, momentum systems, mean reversion, factor models, and algorithmic signal generation without machine learning complexity.',
     videoUrl: 'https://youtu.be/72sh2YIWD8U',
     infographicUrl: 'https://i.imgur.com/1HBWYfN.jpeg',
     relatedArticles: [
       "systematic-vs-quant-trading",
       "systematic-vs-model-quantitative-trading-evolution",
-      "smart-beta",
-      "smart-beta-systematic-personal-investing-strategies",
       "factor-models",
       "stock-factor-models-comprehensive-guide",
       "volume-price-analysis",
-      "personal-quant-trading-strategies-independent-analysts",
       "volume-price-analysis-market-lore-algorithmic-execution",
+      "personal-quant-trading-strategies-independent-analysts",
       "pre-market-prediction",
       "quantitative-approach-predicting-market-direction-premarket-data",
       "index-effect",
       "sp500-inclusion-anomaly-december-2025-deep-research",
-      "portfolio-optimization",
-      "efficient-frontier-portfolio-optimization-mathematics",
+      
+      "seasons-market-calendar-anomalies-trading-adages",
     ],
     studyGuide: {
       items: [
@@ -33,12 +31,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/systematic-vs-model-quantitative-trading-evolution",
           visualGuideUrl: "https://i.imgur.com/1HBWYfN.jpeg",
           videoUrl: 'https://youtu.be/72sh2YIWD8U',
-        },
-        {
-          text: "Smart Beta",
-          url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
-          videoUrl: 'https://youtu.be/xZY-O9-4AUs',
-          visualGuideUrl: "https://i.imgur.com/CWJK4x1.jpeg",
         },
         {
           text: "Stock Factor Models",
@@ -58,22 +50,20 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/gy3HaKW.jpeg",
         },
         {
-          text: "Portfolio Optimization",
-          url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
-          videoUrl: "https://youtu.be/_XSExYXACic",
-          visualGuideUrl: "https://i.imgur.com/7fzYQ0K.jpeg",
-        },
-        {
-          text: "Pre-market Prediction",
+          text: "Pre-market Prediction Strategies",
           url: "https://www.sophie-ai-finance.com/articles/quantitative-approach-predicting-market-direction-premarket-data",
           videoUrl: "https://youtu.be/5WuCFfwFCd4",
           visualGuideUrl: "https://i.imgur.com/jwesLgi.jpeg",
         },
         {
-          text: "Index Inclusion",
+          text: "Index Inclusion Effects",
           url: "https://www.sophie-ai-finance.com/articles/sp500-inclusion-anomaly-december-2025-deep-research",
           videoUrl: "https://youtu.be/IMS-1JMTbc0",
           visualGuideUrl: "https://i.imgur.com/tJfTSLl.jpeg",
+        },
+        {
+          text: "Calendar Anomalies & Seasonal Patterns",
+          url: "https://www.sophie-ai-finance.com/articles/seasons-market-calendar-anomalies-trading-adages",
         },
       ]
     }
@@ -266,8 +256,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
 
   'asset-allocation': {
     id: 'asset-allocation',
-    title: 'Asset Allocation & Portfolio Construction',
-    description: 'Comprehensive guide to asset allocation strategies, portfolio optimization, and performance attribution. Master SAA, TAA, risk parity, factor investing, and quantitative portfolio construction techniques.',
+    title: 'Portfolio Construction & Asset Allocation',
+    description: 'Master portfolio construction techniques including strategic/tactical asset allocation, smart beta factor investing, risk parity, portfolio optimization, and quantitative wealth management frameworks.',
     videoUrl: 'https://youtu.be/IvgZO_QcUJs',
     infographicUrl: 'https://i.imgur.com/CrXmbad.jpeg',
     relatedArticles: [
@@ -280,6 +270,9 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "all-weather-strategy",
       "all-weather-strategy-new-economic-climate",
       "beyond-leverage-risk-parity-call-writing",
+      "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+      "investment-clock-framework-quantitative-macro-regime-detection",
+      "stock-factor-models-comprehensive-guide",
     ],
     studyGuide: {
       items: [
@@ -294,6 +287,18 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/strategic-tactical-asset-allocation-comprehensive-guide",
         },
         {
+          text: "Smart Beta Factor Investing",
+          url: "https://www.sophie-ai-finance.com/articles/smart-beta-systematic-personal-investing-strategies",
+          videoUrl: 'https://youtu.be/xZY-O9-4AUs',
+          visualGuideUrl: "https://i.imgur.com/CWJK4x1.jpeg",
+        },
+        {
+          text: "Stock Factor Models",
+          url: "https://www.sophie-ai-finance.com/articles/stock-factor-models-comprehensive-guide",
+          videoUrl: 'https://youtu.be/z32X0C5F5JE',
+          visualGuideUrl: "https://i.imgur.com/ZkYTvd0.jpeg",
+        },
+        {
           text: "Efficient Frontier & Portfolio Optimization",
           url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
           videoUrl: "https://youtu.be/_XSExYXACic",
@@ -301,12 +306,23 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
         {
           text: "Black-Litterman Model",
+          visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
           url: "https://www.sophie-ai-finance.com/articles/black-litterman-model-comprehensive-guide-portfolio-optimization",
         },
         {
           text: "All Weather Strategy (Risk Parity)",
           url: "https://www.sophie-ai-finance.com/articles/all-weather-strategy-new-economic-climate",
           videoUrl: "https://youtu.be/NCVI6IDwz2c",
+        },
+        {
+          text: "Modeling Expected Returns",
+          visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
+          url: "https://www.sophie-ai-finance.com/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+        },
+        {
+          text: "Investment Clock Framework",
+          visualGuideUrl: "https://i.imgur.com/E1ZKfSA.jpeg",
+          url: "https://www.sophie-ai-finance.com/articles/investment-clock-framework-quantitative-macro-regime-detection",
         },
         {
           text: "Portfolio Visualizer Tool",

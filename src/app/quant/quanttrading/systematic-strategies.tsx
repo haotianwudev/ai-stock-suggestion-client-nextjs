@@ -24,57 +24,52 @@ export function SystematicStrategiesContent() {
     sectionTitle: "text-green-900"
   };
 
-
-
   const contentSections = (
     <>
-      {/* Strategy Types */}
+      {/* Core Strategy Types */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-green-900">Core Strategy Types</h3>
+        <h3 className="text-lg md:text-xl font-semibold text-green-900">Rule-Based Strategy Types</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="p-3 md:p-4 bg-white rounded-lg border border-green-100">
-            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Momentum Strategies</h4>
-            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Capitalize on trending markets and price momentum patterns using systematic rules.</p>
+            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Momentum Systems</h4>
+            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Systematic rules to capture trending markets and price momentum patterns without discretionary decisions.</p>
           </div>
           <div className="p-3 md:p-4 bg-white rounded-lg border border-green-100">
             <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Mean Reversion</h4>
-            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Profit from price reversals and statistical arbitrage opportunities.</p>
+            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Algorithmic approaches to profit from price reversals and statistical arbitrage opportunities.</p>
           </div>
           <div className="p-3 md:p-4 bg-white rounded-lg border border-green-100">
-            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Smart Beta Factors</h4>
-            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Systematic exposure to risk factors like value, quality, momentum, and low volatility.</p>
+            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Factor Models</h4>
+            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Systematic exposure to risk factors using quantitative scoring and ranking systems.</p>
           </div>
           <div className="p-3 md:p-4 bg-white rounded-lg border border-green-100">
-            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Statistical Arbitrage</h4>
-            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Exploit statistical relationships between correlated assets systematically.</p>
+            <h4 className="font-semibold text-green-900 mb-2 text-sm md:text-base">Calendar Effects</h4>
+            <p className="text-xs md:text-sm text-green-700 leading-relaxed">Exploit seasonal patterns and calendar anomalies through systematic timing rules.</p>
           </div>
         </div>
       </div>
 
-      {/* Smart Beta Deep Dive */}
+      {/* Systematic Approach Framework */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-green-900">Smart Beta Factor Investing</h3>
+        <h3 className="text-lg md:text-xl font-semibold text-green-900">Systematic Trading Framework</h3>
         <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4">
           <p className="text-xs md:text-sm text-green-800 mb-4 leading-relaxed">
-            Smart Beta combines the benefits of passive indexing with active management by systematically 
-            tilting portfolios toward specific risk factors that have historically delivered excess returns.
+            Systematic trading removes emotional bias by following predefined rules and algorithms. 
+            Unlike machine learning approaches, these strategies use transparent, interpretable rules 
+            that can be easily understood and implemented by individual traders.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div className="bg-white p-3 rounded border border-green-100">
-              <h5 className="font-semibold text-green-900 mb-1 text-sm">Value Factor</h5>
-              <p className="text-xs text-green-700 leading-relaxed">Low P/E, P/B ratios outperform over long term</p>
+              <h5 className="font-semibold text-green-900 mb-1 text-sm">Signal Generation</h5>
+              <p className="text-xs text-green-700 leading-relaxed">Clear rules for entry/exit signals</p>
             </div>
             <div className="bg-white p-3 rounded border border-green-100">
-              <h5 className="font-semibold text-green-900 mb-1 text-sm">Quality Factor</h5>
-              <p className="text-xs text-green-700 leading-relaxed">High ROE, low debt, stable earnings</p>
+              <h5 className="font-semibold text-green-900 mb-1 text-sm">Risk Management</h5>
+              <p className="text-xs text-green-700 leading-relaxed">Systematic position sizing and stops</p>
             </div>
             <div className="bg-white p-3 rounded border border-green-100">
-              <h5 className="font-semibold text-green-900 mb-1 text-sm">Momentum Factor</h5>
-              <p className="text-xs text-green-700 leading-relaxed">Recent winners continue outperforming</p>
-            </div>
-            <div className="bg-white p-3 rounded border border-green-100">
-              <h5 className="font-semibold text-green-900 mb-1 text-sm">Low Volatility</h5>
-              <p className="text-xs text-green-700 leading-relaxed">Lower risk stocks with better risk-adjusted returns</p>
+              <h5 className="font-semibold text-green-900 mb-1 text-sm">Execution Rules</h5>
+              <p className="text-xs text-green-700 leading-relaxed">Automated order management</p>
             </div>
           </div>
         </div>
@@ -82,14 +77,14 @@ export function SystematicStrategiesContent() {
 
       {/* Implementation Framework */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-green-900">Implementation Framework</h3>
+        <h3 className="text-lg md:text-xl font-semibold text-green-900">Implementation Components</h3>
         <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Signal Generation</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Factor Scoring</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Portfolio Construction</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Risk Management</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Rebalancing Rules</Badge>
-          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Performance Attribution</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Rule Definition</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Signal Processing</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Backtesting</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Risk Controls</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Performance Tracking</Badge>
+          <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">Regime Detection</Badge>
         </div>
       </div>
     </>

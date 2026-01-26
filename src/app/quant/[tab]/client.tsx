@@ -118,8 +118,15 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             value="systematic-strategies" 
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Strategies</span>
-            <span className="hidden sm:block">Systematic/Factors</span>
+            <span className="block sm:hidden">Systematic</span>
+            <span className="hidden sm:block">Systematic</span>
+          </TabsTrigger>
+          <TabsTrigger 
+            value="asset-allocation" 
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Portfolio</span>
+            <span className="hidden sm:block">Portfolio</span>
           </TabsTrigger>
           <TabsTrigger 
             value="machine-learning" 
@@ -142,17 +149,14 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">System</span>
             <span className="hidden sm:block">Trading System</span>
           </TabsTrigger>
-          <TabsTrigger 
-            value="asset-allocation" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
-          >
-            <span className="block sm:hidden">Assets</span>
-            <span className="hidden sm:block">Asset Allocation</span>
-          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="systematic-strategies" className="mt-0">
           <SystematicStrategiesContent />
+        </TabsContent>
+        
+        <TabsContent value="asset-allocation" className="mt-0">
+          <AssetAllocationContent />
         </TabsContent>
         
         <TabsContent value="machine-learning" className="mt-0">
@@ -165,10 +169,6 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="trading-system" className="mt-0">
           <TradingSystemContent />
-        </TabsContent>
-        
-        <TabsContent value="asset-allocation" className="mt-0">
-          <AssetAllocationContent />
         </TabsContent>
       </Tabs>
     </div>
