@@ -264,6 +264,16 @@ export const articles2026Q1: Article[] = [
     premiumContent: true,
   },
   {
+    title: "The Overfitting Illusion in Quant Trading",
+    description: `Did your trading strategy show a perfect equity curve in the backtest only to collapse the moment you went live? You are likely a victim of the "In-Sample Illusion," a phenomenon where a model memorizes historical noise rather than learning a predictive signal.`,
+    slug: "overfitting-illusion",
+    date: "January 29, 2026",
+    youtubeUrl: "https://youtu.be/PvE1DqLAxGU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/PvE1DqLAxGU/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Science of Robust Alpha: Eliminating Overfitting Through Rigorous Statistical Validation",
     description: "A comprehensive masterclass on Financial Machine Learning (FML) - the adversarial environment where prediction changes the outcome. Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive the low signal-to-noise ratio of financial markets.",
     slug: "science-robust-alpha-eliminating-overfitting-statistical-validation",

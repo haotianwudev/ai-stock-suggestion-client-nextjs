@@ -21,7 +21,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "quantitative-approach-predicting-market-direction-premarket-data",
       "index-effect",
       "sp500-inclusion-anomaly-december-2025-deep-research",
-      
       "seasons-market-calendar-anomalies-trading-adages",
     ],
     studyGuide: {
@@ -80,6 +79,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "deep-learning-evolution",
       "foundational-assumptions-machine-learning-quantitative-trading",
       "ml-assumption",
+      "overfitting-illusion",
+      "science-robust-alpha-eliminating-overfitting-statistical-validation",
       "quantitative-analyst-guide-volatility-forecasting",
       "predict-volatility",
       "xgboost-lead",
@@ -98,6 +99,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/evolution-deep-learning-quantitative-trading-mlps-transformers",
           videoUrl: "https://youtu.be/s0Z3pl8DFDA",
           visualGuideUrl: "https://i.imgur.com/8ZF0tTX.jpeg",
+        },
+        {
+          text: "Battle the Overfitting",
+          url: "https://www.sophie-ai-finance.com/articles/science-robust-alpha-eliminating-overfitting-statistical-validation",
+          videoUrl: "https://youtu.be/PvE1DqLAxGU",
+          visualGuideUrl: "https://i.imgur.com/N9P4ssC.jpeg",
         },
         {
           text: "Assumptions of Machine Learning in Quantitative Trading",
