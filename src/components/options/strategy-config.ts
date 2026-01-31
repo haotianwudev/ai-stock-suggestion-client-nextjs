@@ -369,7 +369,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'i1OT9W7xp9w',
         payoffExplanation: "The strategy creates a defined range of outcomes. Maximum loss occurs if stock falls below the buffer limit (short put strike), maximum profit if stock rises to the cap (short call strike).",
-        relatedArticles: ["mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
+        relatedArticles: ["buffered-strategy", "mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
         infographicUrl: 'https://i.imgur.com/2I6QQmG.jpeg',
         detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>
     },

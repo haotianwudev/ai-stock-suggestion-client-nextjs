@@ -252,6 +252,17 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.FINANCE101],
   },
   {
+    title: "Stop Losing Money? The Truth About Buffered Option Strategy and related products",
+    description: `Are you looking for a way to participate in stock market gains while contractually limiting your losses? In this video, we dive deep into "Buffered Yield Strategies"—investments designed to reshape your risk profile by truncating downside tail risk in exchange for a capped upside.`,
+    slug: "buffered-strategy",
+    date: "January 31, 2026",
+    youtubeUrl: "https://youtu.be/i1OT9W7xp9w",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/i1OT9W7xp9w/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+    options: true,
+  },
+  {
     title: "Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing",
     description: "Deconstruct the 'Defined Outcome' trade and learn how to engineer your own risk profile using Options, ETFs, and Structured Notes. Master the Put Spread Collar mechanics, understand the trade-offs between upside caps and downside buffers, and navigate the critical differences between ETFs and Structured Notes.",
     slug: "mastering-buffered-yield-strategies-defined-outcome-investing",
@@ -261,7 +272,6 @@ export const articles2026Q1: Article[] = [
     deepResearch: true,
     options: true,
     labels: [ArticleLabel.QUANT],
-    premiumContent: true,
   },
   {
     title: "The Overfitting Illusion in Quant Trading",
