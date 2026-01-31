@@ -55,6 +55,7 @@ import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
 import { LongStraddleStrategyDetail } from './strategies/long-straddle-strategy';
 import { LongStrangleStrategyDetail } from './strategies/long-strangle-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
+import { BufferedStrategyDetail } from './strategies/buffered-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -347,6 +348,30 @@ export const strategies: Strategy[] = [
         relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar"],
         infographicUrl: 'https://i.imgur.com/qmxFvJ5.jpeg',
         detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'buffered_strategy',
+        category: ['Risk Defined', 'Income', 'Featured'],
+        name: 'Buffered Strategy (Defined Outcome)',
+        description: "A sophisticated defined outcome strategy that trades upside potential for downside protection. Combines stock ownership with a protective put spread collar to create a 'buffer' that absorbs the first X% of losses while capping gains at a predetermined level. Popular in ETF form for retirement planning and risk management.",
+        profile: 'Defined Risk, Defined Profit',
+        volatility: 'Mixed impact (Long Put Vega, Short Call/Put Vega)',
+        time: 'Mixed impact (Long Put Theta, Short Call/Put Theta)',
+        payoffCalculator: (p, { stockPrice, strike1, strike2, strike3 }) => {
+            // Buffered Strategy: Long Stock + Long Put (strike1) + Short Put (strike3) + Short Call (strike2)
+            // stockPrice = initial stock price, strike1 = protective put, strike2 = short call (cap), strike3 = short put (buffer limit)
+            const stockPnL = p - stockPrice;
+            const longPutPnL = Math.max(0, strike1 - p);
+            const shortPutPnL = -Math.max(0, strike3 - p);
+            const shortCallPnL = -Math.max(0, p - strike2);
+            
+            return stockPnL + longPutPnL + shortPutPnL + shortCallPnL;
+        },
+        youtubeId: 'i1OT9W7xp9w',
+        payoffExplanation: "The strategy creates a defined range of outcomes. Maximum loss occurs if stock falls below the buffer limit (short put strike), maximum profit if stock rises to the cap (short call strike).",
+        relatedArticles: ["mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
+        infographicUrl: 'https://i.imgur.com/2I6QQmG.jpeg',
+        detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 
