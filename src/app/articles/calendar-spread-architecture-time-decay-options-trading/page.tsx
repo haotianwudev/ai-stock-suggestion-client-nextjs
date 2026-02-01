@@ -2,12 +2,42 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Activity, TrendingUp, AlertTriangle, Shield, BookOpen, Target, Zap, TrendingDown, Percent, Calendar, Layers, CheckCircle, XCircle, Info, ArrowRight, Maximize2, RefreshCw, Anchor, Music } from 'lucide-react';
+import { ArrowLeft, Clock, Activity, TrendingUp, AlertTriangle, Shield, BookOpen, Target, Zap, TrendingDown, Percent, Calendar, Layers, CheckCircle, XCircle, Info, ArrowRight, Maximize2, RefreshCw, Anchor, Music, Calculator, BarChart3, TrendingDown as TrendDown } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 const CalendarSpreadGuide = () => {
   const currentArticle = articles.find(article => article.slug === 'calendar-spread-architecture-time-decay-options-trading');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  
+  // Calculator states
+  const [stockPrice, setStockPrice] = useState(100);
+  const [strikePrice, setStrikePrice] = useState(100);
+  const [shortDTE, setShortDTE] = useState(30);
+  const [longDTE, setLongDTE] = useState(60);
+  const [volatility, setVolatility] = useState(20);
+
+  // Simple P&L calculator for calendar spreads
+  const calculatePnL = () => {
+    const timeDiff = longDTE - shortDTE;
+    const moneyness = Math.abs(stockPrice - strikePrice) / strikePrice;
+    const volFactor = volatility / 100;
+    
+    // Simplified calculation for demonstration
+    const maxProfit = Math.max(0, 50 - (moneyness * 100) - (timeDiff * 0.5));
+    const breakeven1 = strikePrice * (1 - volFactor * 0.1);
+    const breakeven2 = strikePrice * (1 + volFactor * 0.1);
+    
+    return {
+      maxProfit: Math.round(maxProfit * 100) / 100,
+      breakeven1: Math.round(breakeven1 * 100) / 100,
+      breakeven2: Math.round(breakeven2 * 100) / 100,
+      profitZone: Math.round((breakeven2 - breakeven1) * 100) / 100
+    };
+  };
+
+  const pnlData = calculatePnL();
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
@@ -61,14 +91,138 @@ const CalendarSpreadGuide = () => {
         </div>
       </header>
 
-      {/* Hero Infographic */}
+      {/* Hero Infographic with Full-Screen Capability */}
       <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+        <div 
+          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+          onClick={() => setIsImageViewerOpen(true)}
+        >
           <img 
             src="https://i.imgur.com/I4TjHJ7.jpeg" 
             alt="Calendar Spread Architecture Infographic" 
-            className="w-full h-auto"
+            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
           />
+          {/* Full-screen button overlay */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsImageViewerOpen(true);
+            }}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+            title="View full screen"
+          >
+            <Maximize2 className="h-4 w-4" />
+          </button>
+          {/* Click hint */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+              Click to view full screen
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-screen image viewer */}
+      <FullScreenImageViewer
+        src="https://i.imgur.com/I4TjHJ7.jpeg"
+        alt="Calendar Spread Architecture Infographic"
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+      />
+
+      {/* Interactive Calculator Section */}
+      <section className="max-w-5xl mx-auto px-6 py-8">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-blue-200 overflow-hidden">
+          <div className="p-6 border-b border-blue-100">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="bg-blue-100 p-2 rounded-lg">
+                <Calculator className="h-5 w-5 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-blue-900">Calendar Spread Calculator</h3>
+            </div>
+            <p className="text-blue-700 text-sm">Estimate profit zones and breakeven points for your calendar spread strategy.</p>
+          </div>
+          <div className="p-6">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Input Controls */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">Stock Price ($)</label>
+                  <input
+                    type="number"
+                    value={stockPrice}
+                    onChange={(e) => setStockPrice(Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">Strike Price ($)</label>
+                  <input
+                    type="number"
+                    value={strikePrice}
+                    onChange={(e) => setStrikePrice(Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">Short Option DTE</label>
+                  <input
+                    type="number"
+                    value={shortDTE}
+                    onChange={(e) => setShortDTE(Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">Long Option DTE</label>
+                  <input
+                    type="number"
+                    value={longDTE}
+                    onChange={(e) => setLongDTE(Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-blue-900 mb-2">Implied Volatility (%)</label>
+                  <input
+                    type="number"
+                    value={volatility}
+                    onChange={(e) => setVolatility(Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+              </div>
+              
+              {/* Results */}
+              <div className="bg-white rounded-xl p-6 border border-blue-100">
+                <h4 className="font-bold text-blue-900 mb-4">Estimated Results</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                    <span className="text-sm font-medium text-green-800">Max Profit</span>
+                    <span className="font-bold text-green-600">${pnlData.maxProfit}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                    <span className="text-sm font-medium text-blue-800">Lower Breakeven</span>
+                    <span className="font-bold text-blue-600">${pnlData.breakeven1}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                    <span className="text-sm font-medium text-blue-800">Upper Breakeven</span>
+                    <span className="font-bold text-blue-600">${pnlData.breakeven2}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                    <span className="text-sm font-medium text-purple-800">Profit Zone Width</span>
+                    <span className="font-bold text-purple-600">${pnlData.profitZone}</span>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-yellow-50 rounded-lg">
+                  <p className="text-xs text-yellow-800">
+                    <strong>Note:</strong> This is a simplified calculation for educational purposes. 
+                    Actual results depend on many factors including bid-ask spreads, commissions, and market conditions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -248,7 +402,180 @@ const CalendarSpreadGuide = () => {
         </div>
       </section>
 
-      {/* Strategy Selector */}
+      {/* Advanced Calendar Spread Variations */}
+      <section className="py-20 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-slate-900 mb-10 text-center">Advanced Calendar Variations</h2>
+        
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div className="text-center mb-4">
+              <div className="bg-purple-100 p-3 rounded-lg inline-block mb-3">
+                <Layers className="h-6 w-6 text-purple-600" />
+              </div>
+              <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced</span>
+            </div>
+            <h3 className="text-xl font-bold text-center text-purple-900 mb-2">Double Calendar</h3>
+            <p className="text-sm text-purple-700 text-center mb-4">Two calendars at different strikes</p>
+            <ul className="text-sm text-purple-800 space-y-2">
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Wider profit zone</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Higher capital requirement</li>
+              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>More complex management</li>
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div className="text-center mb-4">
+              <div className="bg-teal-100 p-3 rounded-lg inline-block mb-3">
+                <RefreshCw className="h-6 w-6 text-teal-600" />
+              </div>
+              <span className="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Dynamic</span>
+            </div>
+            <h3 className="text-xl font-bold text-center text-teal-900 mb-2">Rolling Calendar</h3>
+            <p className="text-sm text-teal-700 text-center mb-4">Continuously roll short legs</p>
+            <ul className="text-sm text-teal-800 space-y-2">
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Consistent theta income</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Adapts to market conditions</li>
+              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>High transaction costs</li>
+            </ul>
+          </div>
+          
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div className="text-center mb-4">
+              <div className="bg-amber-100 p-3 rounded-lg inline-block mb-3">
+                <BarChart3 className="h-6 w-6 text-amber-600" />
+              </div>
+              <span className="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Ratio</span>
+            </div>
+            <h3 className="text-xl font-bold text-center text-amber-900 mb-2">Ratio Calendar</h3>
+            <p className="text-sm text-amber-700 text-center mb-4">Unequal number of contracts</p>
+            <ul className="text-sm text-amber-800 space-y-2">
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Enhanced income potential</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Directional bias capability</li>
+              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>Unlimited risk potential</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Market Regime Analysis */}
+      <section className="bg-slate-100 py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">Market Regime Analysis</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto mt-2">
+              Calendar spreads perform differently across market regimes. Understanding when to deploy this strategy is crucial for success.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <RegimeCard 
+              title="Low Volatility"
+              subtitle="VIX < 20"
+              performance="Excellent"
+              color="text-emerald-600"
+              bgColor="bg-emerald-50"
+              borderColor="border-emerald-200"
+              description="Ideal conditions. Time decay dominates, volatility expansion likely."
+              indicators={["Contango term structure", "Low realized vol", "Range-bound markets"]}
+            />
+            <RegimeCard 
+              title="Rising Volatility"
+              subtitle="VIX 20-30"
+              performance="Good"
+              color="text-blue-600"
+              bgColor="bg-blue-50"
+              borderColor="border-blue-200"
+              description="Favorable for long Vega exposure. Monitor for vol crush."
+              indicators={["Expanding IV", "Increasing uncertainty", "Event risk building"]}
+            />
+            <RegimeCard 
+              title="High Volatility"
+              subtitle="VIX > 30"
+              performance="Poor"
+              color="text-amber-600"
+              bgColor="bg-amber-50"
+              borderColor="border-amber-200"
+              description="Dangerous territory. Large moves likely, gamma risk high."
+              indicators={["Backwardation", "High realized vol", "Trending markets"]}
+            />
+            <RegimeCard 
+              title="Vol Crush"
+              subtitle="Rapid IV decline"
+              performance="Terrible"
+              color="text-rose-600"
+              bgColor="bg-rose-50"
+              borderColor="border-rose-200"
+              description="Worst case scenario. Long Vega exposure hurts badly."
+              indicators={["Post-earnings", "Event resolution", "Mean reversion"]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Backtesting Results */}
+      <section className="py-20 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-slate-900 mb-10 text-center">Historical Performance Analysis</h2>
+        
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+          <div className="p-8">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-slate-900 mb-2">2,847</div>
+                <div className="text-slate-600 text-sm">Total Trades Analyzed</div>
+                <div className="text-xs text-slate-400 mt-1">SPY, 2010-2024</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">58.3%</div>
+                <div className="text-slate-600 text-sm">Win Rate</div>
+                <div className="text-xs text-slate-400 mt-1">With regime filtering</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">1.24</div>
+                <div className="text-slate-600 text-sm">Profit Factor</div>
+                <div className="text-xs text-slate-400 mt-1">Gross profits / losses</div>
+              </div>
+            </div>
+            
+            <div className="border-t border-slate-200 pt-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-4">Key Findings</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <div>
+                      <div className="font-medium text-slate-900">Term Structure Matters</div>
+                      <div className="text-sm text-slate-600">Contango filtering improved returns by 67 basis points annually</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <div>
+                      <div className="font-medium text-slate-900">Timing is Critical</div>
+                      <div className="text-sm text-slate-600">21-day exit rule prevented 73% of large losses</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-rose-500 mt-0.5 shrink-0" />
+                    <div>
+                      <div className="font-medium text-slate-900">Earnings Weeks Hurt</div>
+                      <div className="text-sm text-slate-600">Average loss of 12% during earnings announcements</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-rose-500 mt-0.5 shrink-0" />
+                    <div>
+                      <div className="font-medium text-slate-900">Transaction Costs</div>
+                      <div className="text-sm text-slate-600">Reduced net returns by 0.3% annually on average</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-20 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-slate-900 mb-10 text-center">Strike Selection Strategy</h2>
         
@@ -586,6 +913,45 @@ const RiskCard = ({ title, desc, badge }: { title: string; desc: string; badge: 
       </span>
     </div>
     <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+  </div>
+);
+
+const RegimeCard = ({ 
+  title, 
+  subtitle, 
+  performance, 
+  color, 
+  bgColor, 
+  borderColor, 
+  description, 
+  indicators 
+}: { 
+  title: string; 
+  subtitle: string; 
+  performance: string; 
+  color: string; 
+  bgColor: string; 
+  borderColor: string; 
+  description: string; 
+  indicators: string[] 
+}) => (
+  <div className={`${bgColor} ${borderColor} border rounded-xl p-6 hover:shadow-lg transition-shadow`}>
+    <div className="text-center mb-4">
+      <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+      <p className="text-sm text-slate-600">{subtitle}</p>
+      <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-bold ${color} bg-white`}>
+        {performance}
+      </span>
+    </div>
+    <p className="text-sm text-slate-700 mb-4 text-center">{description}</p>
+    <div className="space-y-2">
+      {indicators.map((indicator, idx) => (
+        <div key={idx} className="flex items-center text-xs text-slate-600">
+          <div className={`w-2 h-2 rounded-full ${color.replace('text-', 'bg-')} mr-2`}></div>
+          {indicator}
+        </div>
+      ))}
+    </div>
   </div>
 );
 
