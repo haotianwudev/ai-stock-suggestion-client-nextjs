@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Convergence Analysis in Quantitative Finance: From Measure Theory to Market Reality",
+    description: "A comprehensive exploration of functional analysis and convergence modes in quantitative finance. From Banach spaces to stochastic calculus, understand how mathematical limits shape derivative pricing, risk management, and computational methods.",
+    slug: "convergence-analysis-quantitative-finance-measure-theory",
+    date: "April 11, 2026",
+    imageUrl: "https://i.imgur.com/4ZQR4Ri.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTkHO4z-6dJegqMb2UHTZduNYLGW3xQzwPiAzN359fnDG5ZCDF23zmQLGMiakcQiz7XBDW7Ci0WfYO8/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Investment Clock Framework: Quantitative Guide to Macro Regime Detection",
     description: "A comprehensive technical analysis of the Investment Clock—a quantitative framework for tactical asset allocation through growth and inflation cycle identification. Includes implementation methodology, statistical validation, and modern market adaptations.",
     slug: "investment-clock-framework-quantitative-macro-regime-detection",
