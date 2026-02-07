@@ -56,6 +56,7 @@ import { LongStraddleStrategyDetail } from './strategies/long-straddle-strategy'
 import { LongStrangleStrategyDetail } from './strategies/long-strangle-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 import { BufferedStrategyDetail } from './strategies/buffered-strategy';
+import { CalendarSpreadStrategyDetail } from './strategies/calendar-spread-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -372,6 +373,39 @@ export const strategies: Strategy[] = [
         relatedArticles: ["buffered-strategy", "mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
         infographicUrl: 'https://i.imgur.com/2I6QQmG.jpeg',
         detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'calendar_spread',
+        category: ['Neutral', 'Income', 'Featured'],
+        name: 'Calendar Spread (Time Spread)',
+        description: "A sophisticated volatility and time decay strategy that profits from differential theta decay between near-term and long-term options. Sell a short-dated option and buy a longer-dated option at the same strike, creating a position that benefits from time decay acceleration in the front month while maintaining long-term exposure.",
+        profile: 'Defined Risk, Variable Profit',
+        volatility: 'Benefits from rising IV in back month (Long Vega)',
+        time: 'Benefits from time decay differential (Long Theta)',
+        payoffCalculator: (p, { strike1, premium }) => {
+            // Calendar Spread: Sell near-term option, buy longer-term option at same strike
+            // P&L at front month expiration
+            // Front month value at expiration (for call calendar)
+            const frontMonthValue = Math.max(0, p - strike1);
+            
+            // Back month retains time value + intrinsic value
+            // Simplified: back month worth more when stock near strike (max time value)
+            const distanceFromStrike = Math.abs(p - strike1);
+            const backMonthIntrinsic = Math.max(0, p - strike1);
+            const backMonthTimeValue = Math.max(0, 3 - distanceFromStrike * 0.3); // Time value peaks at ATM
+            const backMonthValue = backMonthIntrinsic + backMonthTimeValue;
+            
+            // P&L = Back Month Value - Front Month Value - Initial Net Debit
+            // Initial net debit is approximated as premium * 0.4 (back month costs more than front month credit)
+            const netDebit = premium * 0.4;
+            
+            return backMonthValue - frontMonthValue - netDebit;
+        },
+        youtubeId: '83U-tqsVHdY',
+        payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at front month expiration. The back month option retains maximum time value while the front month expires worthless.",
+        relatedArticles: ["calendar-spread","calendar-spread-architecture-time-decay-options-trading"],
+        infographicUrl: 'https://i.imgur.com/I4TjHJ7.jpeg',
+        detailComponent: CalendarSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 
