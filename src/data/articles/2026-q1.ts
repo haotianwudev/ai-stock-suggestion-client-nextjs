@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Ontology of Value: Financial Data Classification and Lifecycle Management",
+    description: "A comprehensive interactive guide to financial data classification, architecture, and lifecycle management. Understanding the DNA of modern capital markets through Product Masters, Entity hierarchies, transaction lifecycles, and the three books of record.",
+    slug: "ontology-of-value-financial-data-classification-lifecycle-management",
+    date: "April 13, 2026",
+    imageUrl: "https://i.imgur.com/V1PQ2CD.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQGp0PHylrqWO7YPiCzMkBLKg0UEq3VBbpgmtKdjn1J4o9zWb8SSAMC0ivgh79Nk1F6tAc0FoIkaqwT/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "Convergence Analysis in Quantitative Finance: From Measure Theory to Market Reality",
     description: "A comprehensive exploration of functional analysis and convergence modes in quantitative finance. From Banach spaces to stochastic calculus, understand how mathematical limits shape derivative pricing, risk management, and computational methods.",
     slug: "convergence-analysis-quantitative-finance-measure-theory",
