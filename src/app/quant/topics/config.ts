@@ -15,7 +15,9 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "monte-carlo-simulation-2",
       "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
       "monte-carlo-simulation-3",
-      "monte-carlo-advanced-stochastic-modeling-derivatives-cva"
+      "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+      "convergence-analysis-quantitative-finance-measure-theory",
+      "convergence-quant-modeling",
     ],
     studyGuide: {
       items: [
@@ -36,6 +38,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
           videoUrl: "https://youtu.be/nBAnWHAzD6I",
           visualGuideUrl: "https://i.imgur.com/K3gkRdn.jpeg",
+        },
+        {
+          text: "Application of Convergence",
+          url: "https://www.sophie-ai-finance.com/articles/convergence-analysis-quantitative-finance-measure-theory",
+          videoUrl: "https://youtu.be/p38CVckTJqU",
+          visualGuideUrl: "https://i.imgur.com/4ZQR4Ri.jpeg",
         },
         {
           text: "Portfolio Monte Carlo Simulation Tools",

@@ -232,6 +232,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Quant Finance Deep Dive: Convergence, Stability, and the Math Analysis",
+    description: `This video explores the rigorous mathematical foundations of quantitative finance, detailing how convergence in functional spaces (L1, L2) determines the validity of pricing models and risk metrics. `,
+    slug: "convergence-quant-modeling",
+    date: "February 10, 2026",
+    youtubeUrl: "https://youtu.be/p38CVckTJqU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/p38CVckTJqU/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Convergence Analysis in Quantitative Finance: From Measure Theory to Market Reality",
     description: "A comprehensive exploration of functional analysis and convergence modes in quantitative finance. From Banach spaces to stochastic calculus, understand how mathematical limits shape derivative pricing, risk management, and computational methods.",
     slug: "convergence-analysis-quantitative-finance-measure-theory",
