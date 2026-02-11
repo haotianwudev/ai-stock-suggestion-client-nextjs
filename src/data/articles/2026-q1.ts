@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Quantitative Analysis of Tail Risk: CBOE SKEW and Nations SkewDex Deep Dive",
+    description: "A comprehensive deep dive into CBOE SKEW and Nations SkewDex. Understanding the geometry of market fear beyond the VIX through model-free skewness estimation, fixed-strike parameterization, and the Vanna Crush mechanics that fuel market rallies.",
+    slug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+    date: "April 15, 2026",
+    imageUrl: "https://i.imgur.com/l4YH9xQ.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTpMdTpkBDga5kYybZZ9q8C8UfxTupRUqTadAoUxDzu1mJheLbmkRw3wTzr9hMNDVufuCx1C0XbA4zI/pub",
+    labels: [ArticleLabel.QUANT],
+    options: true,
+  },
+  {
     title: "The Ontology of Value: Financial Data Classification and Lifecycle Management",
     description: "A comprehensive interactive guide to financial data classification, architecture, and lifecycle management. Understanding the DNA of modern capital markets through Product Masters, Entity hierarchies, transaction lifecycles, and the three books of record.",
     slug: "ontology-of-value-financial-data-classification-lifecycle-management",
