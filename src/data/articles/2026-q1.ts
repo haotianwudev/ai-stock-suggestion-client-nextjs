@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "The Dark Index (DIX): Understanding Why Short is Long in Modern Market Microstructure",
+    description: "A comprehensive deep dive into the Dark Index (DIX) and the counterintuitive 'Short is Long' hypothesis. Master the quantitative architecture of dark pool liquidity, market maker rebates, and how institutional accumulation manifests as short volume in off-exchange trading.",
+    slug: "dark-index-dix-understanding-short-is-long-market-microstructure",
+    date: "April 17, 2026",
+    imageUrl: "https://i.imgur.com/yLBeGqi.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTM93Om5IFkYPuuTJAqjGA2deUVnLl1rU2dYGJMqgp6fbphvvL9RRTUl2dN6YC2gNZ5ucwpcYrRqfK1/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Quantitative Analysis of Tail Risk: CBOE SKEW and Nations SkewDex Deep Dive",
     description: "A comprehensive deep dive into CBOE SKEW and Nations SkewDex. Understanding the geometry of market fear beyond the VIX through model-free skewness estimation, fixed-strike parameterization, and the Vanna Crush mechanics that fuel market rallies.",
     slug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
