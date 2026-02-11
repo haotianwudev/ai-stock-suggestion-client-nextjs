@@ -100,6 +100,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
       "black-scholes-option-pricing",
       "black-scholes-analytics-laboratory-axioms-option-pricing",
+      "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
     ],
     studyGuide: {
       items: [
@@ -114,6 +115,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/architecture-structured-notes-comprehensive-investors-guide",
           visualGuideUrl: "https://i.imgur.com/kmqdUcW.jpeg",
           videoUrl: "https://youtu.be/eK2moYsTJrE"
+        },
+        {
+          text: "Structured Products",
+          url: "https://www.sophie-ai-finance.com/articles/structured-finance-2026-rmbs-cmbs-abs-pricing-models",
+          visualGuideUrl: "https://i.imgur.com/I51V5fc.jpeg",
         },
         {
           text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
