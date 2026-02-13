@@ -240,7 +240,6 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR7q9V8ZnPc4Xral63NfryOYdp3rDx0hLjdz3Wqpz6VlZphBUHCpdhxFei2RdXYGa2oFArScgA4iEDn/pub",
     options: true,
     labels: [ArticleLabel.QUANT],
-    premiumContent: true,
   },
   {
     title: "Structured Finance 2026: Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models",
