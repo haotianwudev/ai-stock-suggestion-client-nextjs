@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
+    description: "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models, explore how machine learning transforms static betas into dynamic prediction engines.",
+    slug: "factor-models-machine-learning-risk-alpha-prediction",
+    date: "April 19, 2026",
+    imageUrl: "https://i.imgur.com/2IxVlfz.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvFX2gTL7En0J50TFBwoxXRgmU-NLEVUs3ybELK5FQqr_wqwmdSdGMaSfxoAYwMOx6VbWU_uINXPEo/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Dark Index (DIX): Understanding Why Short is Long in Modern Market Microstructure",
     description: "A comprehensive deep dive into the Dark Index (DIX) and the counterintuitive 'Short is Long' hypothesis. Master the quantitative architecture of dark pool liquidity, market maker rebates, and how institutional accumulation manifests as short volume in off-exchange trading.",
     slug: "dark-index-dix-understanding-short-is-long-market-microstructure",
