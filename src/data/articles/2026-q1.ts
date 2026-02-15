@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Order Flow Anomalies: Sweeps, Footprint Mechanics, and Institutional Traps",
+    description: "A deep analysis of market microstructure anomalies including intermarket sweeps, footprint chart mechanics, and the AMD framework. Distinguish genuine institutional accumulation from engineered liquidity events through sub-millisecond order flow analysis.",
+    slug: "order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
+    date: "April 21, 2026",
+    imageUrl: "https://i.imgur.com/enU8l7J.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR4nfxQ-YoNoap6b1usLn_sAix7uX7k8vmkpRvmWcwtBA3U7NOq3eCIcrMYjlMbDwhbsBJsqmhj2_U_/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
     description: "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models, explore how machine learning transforms static betas into dynamic prediction engines.",
     slug: "factor-models-machine-learning-risk-alpha-prediction",
