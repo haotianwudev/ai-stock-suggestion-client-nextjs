@@ -101,6 +101,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "black-scholes-option-pricing",
       "black-scholes-analytics-laboratory-axioms-option-pricing",
       "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
+      "abs-cmbs-rmbs",
     ],
     studyGuide: {
       items: [
@@ -120,6 +121,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "Structured Products",
           url: "https://www.sophie-ai-finance.com/articles/structured-finance-2026-rmbs-cmbs-abs-pricing-models",
           visualGuideUrl: "https://i.imgur.com/I51V5fc.jpeg",
+          videoUrl: "https://youtu.be/vpiIPto8Mao",
         },
         {
           text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
