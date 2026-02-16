@@ -287,6 +287,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "all-weather-strategy-new-economic-climate",
       "beyond-leverage-risk-parity-call-writing",
       "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+      "investment-clock",
       "investment-clock-framework-quantitative-macro-regime-detection",
       "stock-factor-models-comprehensive-guide",
     ],
@@ -340,6 +341,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Investment Clock Framework",
           visualGuideUrl: "https://i.imgur.com/E1ZKfSA.jpeg",
+          videoUrl: "https://youtu.be/ns0nlaE74Ac",
           url: "https://www.sophie-ai-finance.com/articles/investment-clock-framework-quantitative-macro-regime-detection",
         },
         {

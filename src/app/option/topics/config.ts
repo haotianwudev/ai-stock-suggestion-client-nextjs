@@ -213,6 +213,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "gamma-exposure-gex-gps-market-volatility",
       "gex-secret",
+      "microstructure-intraday-option-speculation-mechanics-strategies-risks",
+      "option-0dte",
     ],
     studyGuide: {
       items: [
@@ -221,6 +223,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/gamma-exposure-gex-gps-market-volatility",
           videoUrl: "https://youtu.be/t_5yWuxn0WY",
           visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg"
+        },
+        {
+          text: "0DTE",
+          url: "https://www.sophie-ai-finance.com/articles/microstructure-intraday-option-speculation-mechanics-strategies-risks",
+          videoUrl: "https://youtu.be/94XcRcFfnxo",
+          visualGuideUrl: "https://i.imgur.com/vQoeqIu.jpeg",
         },
         {
           text: "Barchart GEX viewer",
