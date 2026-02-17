@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+    description: "A comprehensive deep dive into the geometry of market risk and the volatility surface. Master the Total Derivative, Shadow Delta, Skew Stickiness Ratio (SSR), and how to calculate true Greeks that account for the dynamic relationship between spot price and implied volatility.",
+    slug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+    date: "April 21, 2026",
+    imageUrl: "https://i.imgur.com/mdZbOrt.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTIzysU4MWyeLHq6BjGaKHWPXMzitt3htTXZ-J-KHfdQN0eKzx5b-xWYCsfSzriuwjubNJiTCW5vO44/pub",
+    labels: [ArticleLabel.QUANT],
+    options: true,
+  },
+  {
     title: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
     description: "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models, explore how machine learning transforms static betas into dynamic prediction engines.",
     slug: "factor-models-machine-learning-risk-alpha-prediction",
