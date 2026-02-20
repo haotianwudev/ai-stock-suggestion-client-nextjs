@@ -209,7 +209,7 @@ export default function MacroEconomicOutlook2026() {
             </div>
             <div className="bg-white p-6 rounded-3xl shadow-xl shadow-amber-100/50 border border-amber-50">
               <div className="text-amber-500 mb-2"><DollarSign size={32}/></div>
-              <div className="text-4xl font-black text-slate-800">$2.9k</div>
+              <div className="text-4xl font-black text-slate-800">$4.5-5k</div>
               <div className="text-sm font-medium text-slate-500">Gold Target /oz</div>
             </div>
             <div className="bg-white p-6 rounded-3xl shadow-xl shadow-emerald-100/50 border border-emerald-50">
@@ -339,8 +339,8 @@ export default function MacroEconomicOutlook2026() {
                     <Badge color="amber">Strong Buy</Badge>
                   </div>
                   <h3 className="text-2xl font-bold text-amber-900 mb-2">Gold Forecast</h3>
-                  <div className="text-5xl font-black text-amber-600 mb-4">$2,950</div>
-                  <p className="text-amber-800/80 font-medium">Gold remains steady but historically high. Central bank buying (China/India) puts a floor under the price.</p>
+                  <div className="text-5xl font-black text-amber-600 mb-4">$4,500-5,000</div>
+                  <p className="text-amber-800/80 font-medium">Gold poised for significant upside. Central bank buying (China/India) and geopolitical tensions drive strong demand.</p>
                 </div>
                 <div className="mt-8 pt-6 border-t border-amber-200/50">
                   <p className="text-sm text-amber-700 font-semibold mb-2">Key Drivers:</p>
