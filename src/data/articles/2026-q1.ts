@@ -239,7 +239,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/ZmUUSF8.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQMOUcMpYBhtjgtEm8CHiUV1pBkeyI9quH0WaT-ReDFJp4QZrGlcvx3E2wD4pRH9_495FIXTPjZ72YX/pub",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
+    labels: [ArticleLabel.STOCK_ANALYSIS],
   },
   {
     title: "Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading",
