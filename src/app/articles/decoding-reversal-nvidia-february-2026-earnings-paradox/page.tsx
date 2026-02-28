@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingDown, Cpu, LineChart, AlertTriangle, Activity, Briefcase, Users, Globe, BookOpen, Target, Zap, ShieldAlert, Music } from 'lucide-react';
+import { ArrowLeft, TrendingDown, Cpu, LineChart, AlertTriangle, Activity, Briefcase, Users, Globe, BookOpen, Target, Zap, ShieldAlert, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable UI Components ---
 const Hero = () => (
@@ -131,6 +132,7 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows }) => (
 // --- Main Application ---
 export default function NvidiaEarningsParadoxArticle() {
   const currentArticle = articles.find(article => article.slug === 'decoding-reversal-nvidia-february-2026-earnings-paradox');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
     <>
@@ -155,6 +157,43 @@ export default function NvidiaEarningsParadoxArticle() {
         </div>
 
         <Hero />
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/ZmUUSF8.jpeg" 
+              alt="Nvidia February 2026 Earnings Analysis Infographic" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/ZmUUSF8.jpeg"
+          alt="Nvidia February 2026 Earnings Analysis Infographic"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
 
         <main>
           {/* Section 1 */}
