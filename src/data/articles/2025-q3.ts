@@ -879,16 +879,6 @@ export const articles2025Q3: Article[] = [
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
 {
-    title: "Private Credit: Risks and Returns",
-    description: "Analysis of the multi-trillion dollar private credit market, covering direct lending, mezzanine financing, distressed debt, and specialty finance. Explores the structural shifts post-2008 financial crisis, investment thesis, risk-return dynamics, and strategic considerations for sophisticated investors including family offices and high-net-worth individuals.",
-    slug: "private-credit-risks-returns-deep-research-analysis",
-    date: "July 6, 2025",
-    imageUrl: "https://media.licdn.com/dms/image/v2/D4E12AQExHbPyiFosVA/article-cover_image-shrink_720_1280/B4EZbAzwfSHcAI-/0/1746991518826?e=1757548800&v=beta&t=Gcm3CQdfQc8ZDcXgVh0b7jghPjFpbhNZw_HsmoExOzE",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTL-4DXuQPRjMxHwV8qPPSsUbO-VKHiKYXz7-YU2mf3VnQevnP3xf9EFrmDfI6L7Ea8sar6yHiJ9iAl/pub",
-    deepResearch: true,
-    labels: [ArticleLabel.FINANCE101],
-  },
-{
     title: "Why Apple's financial health metrics a disaster? Financial Health using AI",
     description: "Is Apple secretly in financial trouble? When you look at standard financial health metrics like the Current Ratio and Debt-to-Equity Ratio, the numbers look terrifying! But the truth is more surprising than you think.",
     slug: "why-apple-financial-health-metrics-disaster-ai",
