@@ -20,6 +20,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "pre-market-prediction",
       "quantitative-approach-predicting-market-direction-premarket-data",
       "index-effect",
+      "intraday-u-shape",
+      "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
       "sp500-inclusion-anomaly-december-2025-deep-research",
       "seasons-market-calendar-anomalies-trading-adages",
     ],
@@ -41,6 +43,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Rule Based Strategies",
           url: "https://www.sophie-ai-finance.com/articles/personal-quant-trading-strategies-independent-analysts",
           visualGuideUrl: "https://i.imgur.com/JbYaRHq.jpeg",
+          videoUrl: 'https://youtu.be/72sh2YIWD8U',
         },
         {
           text: "Volume Price Analysis",
@@ -53,6 +56,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/quantitative-approach-predicting-market-direction-premarket-data",
           videoUrl: "https://youtu.be/5WuCFfwFCd4",
           visualGuideUrl: "https://i.imgur.com/jwesLgi.jpeg",
+        },
+        {
+          text: "Intra-day price movement",
+          url: "https://www.sophie-ai-finance.com/articles/quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
+          videoUrl: "https://youtu.be/ij2nWJXmb04",
+          visualGuideUrl: "https://i.imgur.com/C6fWtuH.jpeg",
         },
         {
           text: "Index Inclusion Effects",

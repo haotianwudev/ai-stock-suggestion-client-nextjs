@@ -93,6 +93,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/BfU9H60nepI',
     infographicUrl: "https://i.imgur.com/VVQWBaJ.jpeg",
     relatedArticles: [
+      "ito-lemma",
       "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
       "structured-notes",
       "architecture-structured-notes-comprehensive-investors-guide",
@@ -131,6 +132,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
         {
           text: "Stochastic Calculus and Ito's Lemma",
+          videoUrl: "https://youtu.be/3-RdnIsr3f4",
           url: "https://www.sophie-ai-finance.com/articles/stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
           visualGuideUrl: "https://i.imgur.com/Gmd3y5O.jpeg",
         },

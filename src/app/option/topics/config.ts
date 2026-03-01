@@ -122,6 +122,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "vol-hedge-fund",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "nvdia-q4-2025",
+      "decoding-reversal-nvidia-february-2026-earnings-paradox",
     ],
     studyGuide: {
       items: [
@@ -148,6 +150,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
           videoUrl: "https://youtu.be/B4tJwZriwdY",
           visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
+        },
+        {
+          text: "Example: NVDA IV Crush and Gamma Flip",
+          url: "https://www.sophie-ai-finance.com/articles/decoding-reversal-nvidia-february-2026-earnings-paradox",
+          videoUrl: "https://youtu.be/vuTmzLnjfYc",
+          visualGuideUrl: "https://i.imgur.com/ZmUUSF8.jpeg",
         },
         {
           text: "Yahoo Finance VIX Chart",
@@ -215,6 +223,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "gex-secret",
       "microstructure-intraday-option-speculation-mechanics-strategies-risks",
       "option-0dte",
+      "nvdia-q4-2025",
+      "decoding-reversal-nvidia-february-2026-earnings-paradox",
     ],
     studyGuide: {
       items: [
@@ -229,6 +239,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/microstructure-intraday-option-speculation-mechanics-strategies-risks",
           videoUrl: "https://youtu.be/94XcRcFfnxo",
           visualGuideUrl: "https://i.imgur.com/vQoeqIu.jpeg",
+        },
+        {
+          text: "Example: NVDA IV Crush and Gamma Flip",
+          url: "https://www.sophie-ai-finance.com/articles/decoding-reversal-nvidia-february-2026-earnings-paradox",
+          videoUrl: "https://youtu.be/vuTmzLnjfYc",
+          visualGuideUrl: "https://i.imgur.com/ZmUUSF8.jpeg",
         },
         {
           text: "Barchart GEX viewer",

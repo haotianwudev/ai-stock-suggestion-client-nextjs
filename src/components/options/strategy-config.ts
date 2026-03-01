@@ -93,7 +93,7 @@ export const strategies: Strategy[] = [
             // Total P&L = Long Call Payoff + Short Call Payoff - Net Debit Paid
             return longCallPayoff + shortCallPayoff - netDebit;
         },
-        //youtubeId: 'g5e-nZERjLE',
+        youtubeId: 'OZh8KnJobic',
         payoffExplanation: "Maximum profit occurs when the stock price equals or exceeds the short call strike at expiration. Maximum loss occurs when stock stays below the long call strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
@@ -180,7 +180,7 @@ export const strategies: Strategy[] = [
             // Total P&L = Long Put Payoff + Short Put Payoff - Net Debit Paid
             return longPutPayoff + shortPutPayoff - netDebit;
         },
-        //youtubeId: 'g5e-nZERjLE',
+        youtubeId: 'OZh8KnJobic',
         payoffExplanation: "Maximum profit occurs when the stock price equals or falls below the short put strike at expiration. Maximum loss occurs when stock stays above the long put strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         infographicUrl: 'https://i.imgur.com/yndWCwP.jpeg',
