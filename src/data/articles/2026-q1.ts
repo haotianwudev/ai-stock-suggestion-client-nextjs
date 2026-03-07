@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Beyond Black-Scholes: Advanced Quantitative Pricing Models",
+    description: "A comprehensive guide to advanced quantitative pricing models and semi-analytical frameworks that drive modern mathematical finance. Covers stochastic volatility (Heston, SABR, SVI), jump-diffusion, Lévy processes, interest rate models (Vasicek, CIR, Hull-White), and the integration of AI in model calibration.",
+    slug: "beyond-black-scholes",
+    date: "April 23, 2026",
+    imageUrl: "https://i.imgur.com/yjdtBGR.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRvrZWWikO-WOXDkGTqrdgoIO5aQiDmG-bD1K-HfneWJ92coZrsQfvuVwDzfHJMbGDA5TOq7QtGV4HA/pub",
+    labels: [ArticleLabel.QUANT],
+    options: true,
+  },
+  {
     title: "Institutional High-Frequency Trading & Market Manipulation",
     description: "An exhaustive educational deconstruction of regulatory frameworks, quantitative strategies, and the contemporary Jane Street paradigm. Examines the fine line between legally permissible algorithmic arbitrage and prohibited market manipulation across equities, options, digital assets, and commodities.",
     slug: "institutional-hft-market-manipulation-regulatory-framework",
