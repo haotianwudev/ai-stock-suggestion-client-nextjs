@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Institutional High-Frequency Trading & Market Manipulation",
+    description: "An exhaustive educational deconstruction of regulatory frameworks, quantitative strategies, and the contemporary Jane Street paradigm. Examines the fine line between legally permissible algorithmic arbitrage and prohibited market manipulation across equities, options, digital assets, and commodities.",
+    slug: "institutional-hft-market-manipulation-regulatory-framework",
+    date: "April 22, 2026",
+    imageUrl: "https://i.imgur.com/UjnivYW.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTQ_AgA7p0yQFFKOSaqea7262X6g25ZnB4sL303BzJ2Ek7fIB3aCd8Xu4GBWpqTTBAL4J3lStQ66SDK/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
     description: "A comprehensive deep dive into the geometry of market risk and the volatility surface. Master the Total Derivative, Shadow Delta, Skew Stickiness Ratio (SSR), and how to calculate true Greeks that account for the dynamic relationship between spot price and implied volatility.",
     slug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
