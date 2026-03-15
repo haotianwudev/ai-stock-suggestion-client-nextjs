@@ -140,6 +140,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Claude Code Financial Cheatsheet",
+    description: "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows. Master CLI execution flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for building institutional-grade algorithmic trading systems.",
+    slug: "claude-code-financial-cheatsheet-enterprise-reference",
+    date: "March 26, 2026",
+    imageUrl: "https://i.imgur.com/nc54SVr.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKlh2hpEDIyjcw7VARLg-6m7hjsAtyEDLJlZ75LkWywZIkAkgl7KD-TTj9n1jqQeVTHEBNOlVIFt1Y/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+  },
+  {
     title: "Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration",
     description: "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards. Master state synchronization without re-render jank, implement secure bi-directional LLM interactions, and evaluate open-source frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.",
     slug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
