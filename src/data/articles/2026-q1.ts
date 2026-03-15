@@ -140,6 +140,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration",
+    description: "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards. Master state synchronization without re-render jank, implement secure bi-directional LLM interactions, and evaluate open-source frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.",
+    slug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
+    date: "March 24, 2026",
+    imageUrl: "https://i.imgur.com/EMfMO9X.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSywyhcvXBr6cIzQ-9ftPxtdvhNHHiz7_M_5GsQ5zFQBuXx1hyhCzmUco_0DcIO5JN9vBzHQho_j9v1/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+  },
+  {
     title: "The Risk Prism: Master the Architecture of Modern Factor Models",
     description: "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.",
     slug: "risk-prism-architecture-modern-factor-models",
