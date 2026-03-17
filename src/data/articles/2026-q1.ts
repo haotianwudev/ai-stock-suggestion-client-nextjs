@@ -140,6 +140,17 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "The Evolution of Autonomous Execution: From Legacy Function Calling to Agentic Skills-Based Harnesses",
+    description: "A comprehensive technical deep-dive into the evolution of AI tool-calling architectures in quantitative finance. From legacy JSON function calling and Model Context Protocol (MCP) to programmatic Turing-complete code execution and modern agent harnesses with skills-based context management.",
+    slug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
+    date: "March 26, 2026",
+    imageUrl: "https://i.imgur.com/A4Qz5GY.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vREwLPbeeZpEgh7kfYl8auX_3t2UxdBa5Hj8-eaYe1xx9vciC342fXq4uRcD8wBx_OaMuyScnQZovbs/pub",
+    deepResearch: true,
+    podcastUrl: "https://open.spotify.com/episode/0oVm5Mi3VdzfWayL1FsBWO?si=yKLaXDLET_28sH-ReIDomQ",
+    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+  },
+  {
     title: "Claude Code Financial Cheatsheet",
     description: "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows. Master CLI execution flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for building institutional-grade algorithmic trading systems.",
     slug: "claude-code-financial-cheatsheet-enterprise-reference",
