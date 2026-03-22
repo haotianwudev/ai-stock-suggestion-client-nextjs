@@ -274,9 +274,9 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2),
-        //youtubeId: 'AtRXXgVRtlk',
+        youtubeId: '3UfLDV7Y8Ps',
         payoffExplanation: "Maximum profit occurs when the stock price moves significantly away from the strike price in either direction. Maximum loss occurs when stock price equals the strike price at expiration.",
-        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles", "long-straddle-strangle",],
         infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
         detailComponent: LongStraddleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -290,9 +290,9 @@ export const strategies: Strategy[] = [
         time: 'Hurt by time decay (Short Theta)',
         payoffCalculator: (p, { strike2, strike3, premium }) => 
             Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5),
-        //youtubeId: 'AtRXXgVRtlk',
+        youtubeId: '3UfLDV7Y8Ps',
         payoffExplanation: "Maximum profit occurs when the stock price moves significantly beyond either the call or put strike. Maximum loss occurs when stock price stays between the two strikes at expiration.",
-        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles", "long-straddle-strangle",],
         infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
         detailComponent: LongStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },

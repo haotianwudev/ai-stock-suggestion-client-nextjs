@@ -103,6 +103,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "black-scholes-analytics-laboratory-axioms-option-pricing",
       "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
       "abs-cmbs-rmbs",
+      "autocallable-snowball-notes",
+      "autocallable-strategy-engineered-yield-sideways-markets",
+      "solution-beyond-black-scholes",
+      "beyond-black-scholes",
     ],
     studyGuide: {
       items: [
@@ -125,6 +129,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/vpiIPto8Mao",
         },
         {
+          text: "Autocallable & Snowball Notes",
+          videoUrl: "https://youtu.be/Y2zHP9umJXo",
+          url: "https://www.sophie-ai-finance.com/articles/autocallable-strategy-engineered-yield-sideways-markets",
+          visualGuideUrl: "https://i.imgur.com/4Fy8XfA.jpeg",
+        },
+        {
           text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
           url: "https://www.sophie-ai-finance.com/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva",
           videoUrl: "https://youtu.be/nBAnWHAzD6I",
@@ -135,6 +145,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/3-RdnIsr3f4",
           url: "https://www.sophie-ai-finance.com/articles/stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
           visualGuideUrl: "https://i.imgur.com/Gmd3y5O.jpeg",
+        },
+        {
+          text: "Pricing Models with closed form solutions",
+          videoUrl: "https://youtu.be/zS43HPjsDtc",
+          url: "https://www.sophie-ai-finance.com/articles/beyond-black-scholes",
+          visualGuideUrl: "https://i.imgur.com/yjdtBGR.jpeg",
         },
       ]
     }

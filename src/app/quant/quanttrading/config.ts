@@ -24,6 +24,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
       "sp500-inclusion-anomaly-december-2025-deep-research",
       "seasons-market-calendar-anomalies-trading-adages",
+      "order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
+      "order-flow-anomalies",
+      "traders-guide-futures-specials-market-structure-anomalies",
+      "future-trading-basic",
     ],
     studyGuide: {
       items: [
@@ -68,6 +72,18 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/sp500-inclusion-anomaly-december-2025-deep-research",
           videoUrl: "https://youtu.be/IMS-1JMTbc0",
           visualGuideUrl: "https://i.imgur.com/tJfTSLl.jpeg",
+        },
+        {
+          text: "Order Flow Anomalies: Sweeps and Traps",
+          url: "https://www.sophie-ai-finance.com/articles/order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
+          videoUrl: "https://youtu.be/NqY0oXpdsX8",
+          visualGuideUrl: "https://i.imgur.com/enU8l7J.jpeg",
+        },
+        {
+          text: "Futures Trading Basics",
+          url: "https://www.sophie-ai-finance.com/articles/traders-guide-futures-specials-market-structure-anomalies",
+          videoUrl: "https://youtu.be/bC2Fb6yIOlA",
+          visualGuideUrl: "https://i.imgur.com/ayrGomS.jpeg",
         },
         {
           text: "Calendar Anomalies & Seasonal Patterns",
@@ -223,6 +239,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "the-harvest-institutional-exploitation-retail-investors",
       "vol-hedge-fund",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "jane-st-paradigm",
+      "institutional-hft-market-manipulation-regulatory-framework",
     ],
     studyGuide: {
       items: [
@@ -274,6 +292,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/xtwugnNA6Ac",
           visualGuideUrl: "https://i.imgur.com/w5OLmL3.jpeg",
         },
+        {
+          text: "Jane Street",
+          url: "https://www.sophie-ai-finance.com/articles/institutional-hft-market-manipulation-regulatory-framework",
+          videoUrl: "https://youtu.be/eIpC4b_4cAM",
+          visualGuideUrl: "https://i.imgur.com/UjnivYW.jpeg",
+        },
       ]
     }
   },
@@ -299,6 +323,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "investment-clock",
       "investment-clock-framework-quantitative-macro-regime-detection",
       "stock-factor-models-comprehensive-guide",
+      "expected-return",
+      "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
     ],
     studyGuide: {
       items: [
@@ -325,6 +351,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/stock-factor-models-comprehensive-guide",
           videoUrl: 'https://youtu.be/z32X0C5F5JE',
           visualGuideUrl: "https://i.imgur.com/ZkYTvd0.jpeg",
+        },
+        {
+          text: "Expected Returns",
+          url: "https://www.sophie-ai-finance.com/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+          videoUrl: "https://youtu.be/i0WiCcwcsFs",
+          visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
         },
         {
           text: "Efficient Frontier & Portfolio Optimization",

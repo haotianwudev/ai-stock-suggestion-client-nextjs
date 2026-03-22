@@ -124,6 +124,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "nvdia-q4-2025",
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
+      "volatility-skew-index",
+      "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
     ],
     studyGuide: {
       items: [
@@ -138,6 +140,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/vix-index-comprehensive-guide-market-volatility",
           videoUrl: "https://youtu.be/_NDyPBYkZxg",
           visualGuideUrl: "https://i.imgur.com/cKQBMh7.jpeg"
+        },
+        {
+          text: "Volatility Skew",
+          url: "https://www.sophie-ai-finance.com/articles/quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+          videoUrl: "https://youtu.be/2LL3GzaFPWw",
+          visualGuideUrl: "https://i.imgur.com/l4YH9xQ.jpeg",
         },
         {
           text: "Using Machine Learning to Predict Volatility",
