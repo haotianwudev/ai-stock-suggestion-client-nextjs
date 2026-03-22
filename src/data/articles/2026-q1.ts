@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Option Volatility Modeling: Calibration Dynamics, Mathematical Frameworks, and Modern Market Applications",
+    description: "A comprehensive masterclass exploring the evolution from Black-Scholes to modern volatility surfaces. Master SVI parametric models, Dupire local volatility, Heston stochastic volatility, hybrid LSV architectures, rough volatility frontiers, and deep learning applications for derivative pricing.",
+    slug: "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+    date: "June 27, 2026",
+    imageUrl: "https://i.imgur.com/UAZud6k.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRbztb-HljbwFF4wtunQxdUTQXMVOIb3gj-Z1lhfoAj7TB8uCYIJI2SLpa19BNgWPmETxbr3wegqHz-/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
     description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
     slug: "integer-optimization-finance-continuous-theory-discrete-execution",

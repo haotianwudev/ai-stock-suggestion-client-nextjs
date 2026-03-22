@@ -319,7 +319,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "all-weather-strategy",
       "all-weather-strategy-new-economic-climate",
       "beyond-leverage-risk-parity-call-writing",
-      "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
       "investment-clock",
       "investment-clock-framework-quantitative-macro-regime-detection",
       "stock-factor-models-comprehensive-guide",
@@ -353,12 +352,6 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/ZkYTvd0.jpeg",
         },
         {
-          text: "Expected Returns",
-          url: "https://www.sophie-ai-finance.com/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
-          videoUrl: "https://youtu.be/i0WiCcwcsFs",
-          visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
-        },
-        {
           text: "Efficient Frontier & Portfolio Optimization",
           url: "https://www.sophie-ai-finance.com/articles/efficient-frontier-portfolio-optimization-mathematics",
           videoUrl: "https://youtu.be/_XSExYXACic",
@@ -377,6 +370,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Modeling Expected Returns",
           visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
+          videoUrl: "https://youtu.be/i0WiCcwcsFs",
           url: "https://www.sophie-ai-finance.com/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
         },
         {
