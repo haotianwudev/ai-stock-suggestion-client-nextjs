@@ -15,7 +15,7 @@ export const articles2026Q2: Article[] = [
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
     description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
     slug: "integer-optimization-finance-continuous-theory-discrete-execution",
-    date: "June 26, 2026",
+    date: "June 25, 2026",
     imageUrl: "https://i.imgur.com/X2ORuTr.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRc5rvy2ycjR18wGsAnoUW96GUowVh9sGB8PtTHNv0fcqqZQC27gZ-tRb4SyzgwTrwcKOGgL8zKjXnA/pub",
