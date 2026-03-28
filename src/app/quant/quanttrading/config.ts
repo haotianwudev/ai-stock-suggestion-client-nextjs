@@ -324,6 +324,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "stock-factor-models-comprehensive-guide",
       "expected-return",
       "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+      "risk-prism-architecture-modern-factor-models",
+      "diversification-deep-dive-factor-based-risk-models",
     ],
     studyGuide: {
       items: [
@@ -372,6 +374,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
           videoUrl: "https://youtu.be/i0WiCcwcsFs",
           url: "https://www.sophie-ai-finance.com/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+        },
+        {
+          text: "Risk Model",
+          url: "https://www.sophie-ai-finance.com/articles/risk-prism-architecture-modern-factor-models",
+          videoUrl: "https://youtu.be/UNmo7ERzI8o",
+          visualGuideUrl: "https://i.imgur.com/QwAjISy.jpeg",
         },
         {
           text: "Investment Clock Framework",
