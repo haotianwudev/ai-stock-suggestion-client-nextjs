@@ -23,6 +23,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "The Diversification Deep Dive: Factor-Based Risk Models",
+    description: `This video explores factor-based approaches to portfolio diversification, breaking down modern risk models that decompose market exposure into systematic drivers for superior risk management and alpha generation.`,
+    slug: "diversification-deep-dive-factor-based-risk-models",
+    date: "March 27, 2026",
+    youtubeUrl: "https://youtu.be/UNmo7ERzI8o",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/UNmo7ERzI8o/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Risk Prism: Master the Architecture of Modern Factor Models",
     description: "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.",
     slug: "risk-prism-architecture-modern-factor-models",
@@ -33,6 +43,16 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Claude Code in Finance",
+    description: `A practical walkthrough of using Claude Code in quantitative finance workflows, covering CLI usage, sub-agent patterns, and building institutional-grade algorithmic trading systems.`,
+    slug: "claude-code-in-finance",
+    date: "March 25, 2026",
+    youtubeUrl: "https://youtu.be/NUwRqNkxbY8",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/NUwRqNkxbY8/maxresdefault.jpg",
+    labels: [ArticleLabel.AI_ML],
+  },
+  {
     title: "Claude Code Financial Cheatsheet",
     description: "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows. Master CLI execution flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for building institutional-grade algorithmic trading systems.",
     slug: "claude-code-financial-cheatsheet-enterprise-reference",
@@ -40,7 +60,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://i.imgur.com/nc54SVr.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKlh2hpEDIyjcw7VARLg-6m7hjsAtyEDLJlZ75LkWywZIkAkgl7KD-TTj9n1jqQeVTHEBNOlVIFt1Y/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.AI_ML],
   },
   {
     title: "Market Mechanics and Structural Anomalies in Futures Trading",
