@@ -105,6 +105,16 @@ export const articles2026Q2: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {
+    title: "A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility",
+    description: "Exploring the microstructural foundations of order flow, market impact, and volatility through a unified mathematical framework. Based on breakthrough research by Muhle-Karbe et al., this deep dive reveals how a single structural statistic binds together long memory, square-root scaling, and rough volatility.",
+    slug: "unified-theory-market-dynamics-order-flow-impact-volatility",
+    date: "April 7, 2026",
+    imageUrl: "https://i.imgur.com/FaKCNB2.jpeg",
+    googleDoc: "https://arxiv.org/abs/2601.23172",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
