@@ -315,13 +315,13 @@ export default function UnifiedTheoryMarketDynamics() {
               <span className="px-4 py-2 bg-slate-800 rounded-full border border-slate-700">No-Arbitrage Constraints</span>
             </div>
             
-            {/* Continue Learning & Paper Information */}
-            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-left">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">Continue Learning</h3>
+            {/* Continue Learning & Paper Attribution */}
+            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Continue Learning</h3>
               
               {/* CTA Button */}
               {currentArticle?.googleDoc && (
-                <div className="text-center mb-8">
+                <div className="mb-8">
                   <a 
                     href={currentArticle.googleDoc}
                     target="_blank" 
@@ -334,51 +334,23 @@ export default function UnifiedTheoryMarketDynamics() {
                 </div>
               )}
 
-              {/* Paper Details */}
-              <div className="border-t border-slate-700 pt-6">
-                <h4 className="text-lg font-bold text-white mb-4 text-center">Research Paper Details</h4>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <span className="text-slate-400 font-semibold">Title:</span>
-                    <p className="text-slate-300 mt-1">&quot;A unified theory of order flow, market impact, and volatility&quot;</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">Authors:</span>
-                    <p className="text-slate-300 mt-1">Johannes Muhle-Karbe, Youssef Ouazzani Chahdi, Mathieu Rosenbaum, Grégoire Szymanski</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">Published:</span>
-                    <p className="text-slate-300 mt-1">arXiv:2601.23172 [q-fin.ST]</p>
-                    <p className="text-slate-400 text-xs mt-1">Submitted: 30 Jan 2026 (v1), Last revised: 2 Feb 2026 (v2)</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">Subjects:</span>
-                    <p className="text-slate-300 mt-1">Statistical Finance (q-fin.ST); Probability (math.PR); Mathematical Finance (q-fin.MF); Trading and Market Microstructure (q-fin.TR); Applications (stat.AP)</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">MSC Classes:</span>
-                    <p className="text-slate-300 mt-1">60F05, 60G22, 60G55, 62P05, 91G15, 91G80</p>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">DOI:</span>
-                    <p className="text-slate-300 mt-1">
-                      <a 
-                        href="https://doi.org/10.48550/arXiv.2601.23172" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-indigo-400 hover:text-indigo-300 underline"
-                      >
-                        https://doi.org/10.48550/arXiv.2601.23172
-                      </a>
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t border-slate-700">
-                    <span className="text-slate-400 font-semibold">Abstract:</span>
-                    <p className="text-slate-400 text-xs italic mt-2">
-                      We propose a microstructural model for the order flow in financial markets that distinguishes between core orders and reaction flow, both modeled as Hawkes processes. This model has a natural scaling limit that reconciles a number of salient empirical properties: persistent signed order flow, rough trading volume and volatility, and power-law market impact. In our framework, all these quantities are pinned down by a single statistic, which measures the persistence of the core flow.
-                    </p>
-                  </div>
-                </div>
+              {/* Paper Attribution */}
+              <div className="border-t border-slate-700 pt-6 text-sm">
+                <p className="text-slate-300 mb-3">
+                  This article is based on the groundbreaking research:
+                </p>
+                <p className="text-white font-semibold mb-2">
+                  &quot;A unified theory of order flow, market impact, and volatility&quot;
+                </p>
+                <p className="text-slate-400 mb-4">
+                  by Johannes Muhle-Karbe, Youssef Ouazzani Chahdi, Mathieu Rosenbaum, and Grégoire Szymanski
+                </p>
+                <p className="text-slate-400 text-xs">
+                  arXiv:2601.23172 [q-fin.ST] • Submitted: 30 Jan 2026 • Last revised: 2 Feb 2026
+                </p>
+                <p className="text-slate-500 text-xs mt-4 italic">
+                  We extend our deepest gratitude to the authors for their exceptional contribution to quantitative finance and market microstructure theory.
+                </p>
               </div>
             </div>
 
