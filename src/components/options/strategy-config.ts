@@ -57,6 +57,7 @@ import { LongStrangleStrategyDetail } from './strategies/long-strangle-strategy'
 import { DefaultStrategyDetail } from './strategies/default-strategy';
 import { BufferedStrategyDetail } from './strategies/buffered-strategy';
 import { CalendarSpreadStrategyDetail } from './strategies/calendar-spread-strategy';
+import { ButterflySpreadStrategyDetail } from './strategies/butterfly-spread-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -406,6 +407,43 @@ export const strategies: Strategy[] = [
         relatedArticles: ["calendar-spread","calendar-spread-architecture-time-decay-options-trading"],
         infographicUrl: 'https://i.imgur.com/I4TjHJ7.jpeg',
         detailComponent: CalendarSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'butterfly_spread',
+        category: ['Neutral', 'Risk Defined', 'Featured'],
+        name: 'Butterfly Spread',
+        description: "A sophisticated neutral strategy that profits from minimal price movement and volatility contraction. Combines a bull spread and bear spread at three strike prices, creating a 'tent-shaped' payoff with maximum profit at the middle strike. Used for precision trading and volatility surface analysis.",
+        profile: 'Defined Risk, Defined Profit',
+        volatility: 'Benefits from falling IV (Short Vega)',
+        time: 'Mixed impact - benefits near middle strike',
+        payoffCalculator: (p, { strike1, strike2, strike3, premium }) => {
+            // Long Call Butterfly with strike mapping from explorer:
+            // strike3 = 95 (lower), strike1 = 100 (middle/ATM), strike2 = 105 (upper)
+            const lowerStrike = strike3;  // 95
+            const middleStrike = strike1; // 100 - PEAK HERE
+            const upperStrike = strike2;  // 105
+            
+            const wingWidth = middleStrike - lowerStrike; // 5
+            const netDebit = wingWidth * 0.3; // Net debit paid
+            const maxProfit = wingWidth - netDebit; // Max profit at middleStrike (100)
+            
+            // Create symmetric tent with sharp peak at middleStrike (100)
+            if (p <= lowerStrike) {
+                return -netDebit;
+            } else if (p <= middleStrike) {
+                // Ascending: slope = +1
+                return (p - lowerStrike) - netDebit;
+            } else if (p <= upperStrike) {
+                // Descending: slope = -1 (symmetric)
+                return maxProfit - (p - middleStrike);
+            } else {
+                return -netDebit;
+            }
+        },
+        youtubeId: 'KG66_1FnRSg',
+        payoffExplanation: "Maximum profit occurs when the stock price equals the middle strike at expiration. Maximum loss is limited to the net debit paid. The payoff diagram resembles a butterfly's wings.",
+        relatedArticles: ["unlocking-volatility-surface-risk-neutral-densities-butterfly-spread"],
+        detailComponent: ButterflySpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 

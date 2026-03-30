@@ -12,6 +12,17 @@ export const articles2026Q1: Article[] = [
     labels: [ArticleLabel.AI_ML],
   },
   {
+    title: "Mastering Butterfly Spreads: Extracting Market Probability and Risk-Neutral Density",
+    description: `Explore how butterfly spreads serve as a mathematical tool to extract market probabilities and risk-neutral densities from option prices, grounded in the Breeden-Litzenberger theorem.`,
+    slug: "butterfly-spreads-risk-neutral-density",
+    date: "March 29, 2026",
+    youtubeUrl: "https://youtu.be/KG66_1FnRSg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/KG66_1FnRSg/maxresdefault.jpg",
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread as a Probability Microscope",
     description: "Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices. From the Breeden-Litzenberger theorem to trading applications.",
     slug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",

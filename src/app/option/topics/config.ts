@@ -84,6 +84,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "option-greeks-traders-poetic-guide-risk",
       "black-scholes-option-pricing",
       "black-scholes-analytics-laboratory-axioms-option-pricing",
+      "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
+      "butterfly-spreads-risk-neutral-density",
     ],
     studyGuide: {
       items: [
@@ -102,7 +104,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Barchart Volatility & Greeks",
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-greeks",
-        }
+        },
+        {
+          text: "Risk-Neutral Densities",
+          url: "https://www.sophie-ai-finance.com/articles/unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
+          videoUrl: "https://youtu.be/KG66_1FnRSg",
+          visualGuideUrl: "https://i.imgur.com/LniOyTx.jpeg",
+        },
       ]
     }
   },
