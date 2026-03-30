@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Navigating the Bull-to-Bear Regime Shift: Quantitative Signals and Systematic Strategies",
+    description: "A deep-dive tutorial into quantitative signals, systematic factor rotation, and convexity monetization during transitional market phases. Master VIX term structure analysis, breadth deterioration metrics, and options strategies for defending portfolios during regime changes.",
+    slug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
+    date: "June 30, 2026",
+    imageUrl: "https://i.imgur.com/zwJ2vHQ.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRcLKSYPoEPL2Jc1s5-ZGIPp5MAGKbwzI3wP2MOrNV0q8JKQSt5DVMbfCenWIxJk94NzwNhfOkUI4mb/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Architecting Agentic AI in Quantitative Finance & Wealth Management",
     description: "Unlike foundational LLMs that function as passive co-pilots, agentic AI systems possess autonomous reasoning, dynamic tool invocation, state persistence, and goal-directed execution. This comprehensive guide explores the paradigm shift from traditional AI to autonomous agents in finance.",
     slug: "architecting-agentic-ai-quantitative-finance-wealth-management",
