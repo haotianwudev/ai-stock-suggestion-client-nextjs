@@ -233,10 +233,10 @@ export default function InvestmentClockFramework() {
                 <div className="bg-neutral-50 p-4 rounded-xl">
                   <h6 className="font-semibold text-xs uppercase tracking-wide text-neutral-400 mb-2">Key Indicators</h6>
                   <ul className="text-xs text-neutral-600 space-y-1">
-                    <li>• OECD Composite Leading Indicator (CLI)</li>
-                    <li>• ISM Manufacturing PMI</li>
-                    <li>• Employment trends and wage growth</li>
-                    <li>• Corporate earnings momentum</li>
+                    <li>• OECD CLI — USALOLITONOSTSAM (50%, leading)</li>
+                    <li>• Industrial Production — INDPRO (20%, coincident)</li>
+                    <li>• Initial Jobless Claims — ICSA, inverted (15%, leading)</li>
+                    <li>• Unemployment Rate — UNRATE, inverted (15%, lagging)</li>
                   </ul>
                 </div>
               </div>
@@ -252,10 +252,9 @@ export default function InvestmentClockFramework() {
                 <div className="bg-neutral-50 p-4 rounded-xl">
                   <h6 className="font-semibold text-xs uppercase tracking-wide text-neutral-400 mb-2">Key Indicators</h6>
                   <ul className="text-xs text-neutral-600 space-y-1">
-                    <li>• Core CPI (excluding food & energy)</li>
-                    <li>• PCE Price Index (Fed's preferred measure)</li>
-                    <li>• Wage inflation and unit labor costs</li>
-                    <li>• Inflation expectations (5Y5Y forward)</li>
+                    <li>• Core CPI YoY — CPILFESL, 12m % change (40%, lagging)</li>
+                    <li>• Core CPI MoM Annualized — CPILFESL, compound (30%, real-time)</li>
+                    <li>• Capacity Utilization — TCU (30%, leading pressure)</li>
                   </ul>
                 </div>
               </div>
@@ -384,16 +383,16 @@ export default function InvestmentClockFramework() {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {[
                   { 
-                    step: "Data Harvesting", 
-                    icon: <Layers />, 
-                    desc: "Extract OECD Leading Indicators (CLI) for Growth and YoY Core CPI for Inflation. Use 'Amplitude Adjusted' CLI to identify rate-of-change transitions.",
-                    details: "The OECD CLI provides a 6-month forward-looking view of economic activity, while Core CPI strips out volatile food and energy components. Data frequency should be monthly with at least 10 years of history for robust statistical analysis."
+                    step: "Data Harvesting",
+                    icon: <Layers />,
+                    desc: "Fetch multi-timeframe signals from FRED: OECD CLI (USALOLITONOSTSAM, 50%), INDPRO (20%), inv. ICSA (15%), inv. UNRATE (15%) for Growth; CPI YoY (40%), CPI MoM annualized (30%), TCU (30%) for Inflation.",
+                    details: "Growth blends leading (CLI, jobless claims), coincident (industrial production), and lagging (unemployment) signals. Inflation blends lagging (CPI YoY), real-time (CPI MoM annualized), and leading (capacity utilization) signals. Weekly ICSA is averaged to monthly. All series need 10+ years for warm-up."
                   },
                   { 
-                    step: "Normalization", 
-                    icon: <Settings />, 
-                    desc: "Apply a Rolling Z-Score (12-36 months) to both variables. This accounts for structural shifts across different economic decades.",
-                    details: "Z-score normalization ensures comparability across different economic regimes. A 24-month rolling window balances sensitivity to recent changes while maintaining statistical stability. Values beyond ±2 standard deviations indicate extreme conditions."
+                    step: "Normalization",
+                    icon: <Settings />,
+                    desc: "Apply Exponential Rolling Z-Score (span=24 months) to each signal. Recent data is weighted more heavily, adapting quickly to regime shifts.",
+                    details: "EWM Z-score uses exponential weighting (~12-month halflife) instead of equal-weight rolling windows. This avoids HP-filter end-point bias where the most recent 12-24 months are unreliable. Values beyond ±2 standard deviations indicate extreme conditions."
                   },
                   { 
                     step: "Phase Mapping", 
@@ -651,22 +650,28 @@ export default function InvestmentClockFramework() {
                 </h4>
                 <div className="bg-neutral-50 p-6 rounded-xl mb-6 font-mono text-sm">
                   <div className="text-center mb-4">
-                    <strong>Z<sub>growth</sub> = (CLI<sub>t</sub> - μ<sub>CLI</sub>) / σ<sub>CLI</sub></strong>
+                    <strong>Z(x<sub>t</sub>) = (x<sub>t</sub> - EWM_μ) / EWM_σ</strong>
+                  </div>
+                  <div className="text-center text-xs text-neutral-500 mb-4">
+                    EWM span = 24 months (~12-month halflife)
+                  </div>
+                  <div className="text-center mb-2">
+                    <strong>growth_z = 0.50·Z(CLI) + 0.20·Z(INDPRO) + 0.15·Z(-ICSA) + 0.15·Z(-UNRATE)</strong>
                   </div>
                   <div className="text-center">
-                    <strong>Z<sub>inflation</sub> = (CPI<sub>t</sub> - μ<sub>CPI</sub>) / σ<sub>CPI</sub></strong>
+                    <strong>inflation_z = 0.40·Z(CPI_YoY) + 0.30·Z(CPI_MoM_ann) + 0.30·Z(TCU)</strong>
                   </div>
                 </div>
                 <p className="text-sm text-neutral-600 leading-relaxed mb-4">
-                  Where CLI is the OECD Composite Leading Indicator (amplitude adjusted) and CPI is year-over-year core inflation. Rolling windows of 24-36 months provide optimal sensitivity to regime changes.
+                  Each FRED series is normalized using an exponential-weighted moving Z-score (span=24). Recent data is weighted more heavily than older observations, enabling faster adaptation to regime shifts without HP-filter end-point bias.
                 </p>
                 <div className="space-y-3">
                   <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <h6 className="font-semibold text-green-900 text-xs mb-1">Parameter Selection</h6>
+                    <h6 className="font-semibold text-green-900 text-xs mb-1">Why Exponential Weighting?</h6>
                     <ul className="text-xs text-green-700 space-y-1">
-                      <li>• 24-month window: Higher sensitivity, more noise</li>
-                      <li>• 36-month window: Lower sensitivity, more stability</li>
-                      <li>• Optimal: 30-month rolling average for most markets</li>
+                      <li>• No end-point bias (HP filters distort latest 12-24 months)</li>
+                      <li>• ~12-month halflife adapts to post-shock regimes quickly</li>
+                      <li>• Multi-timeframe signal blending (leading + coincident + lagging)</li>
                     </ul>
                   </div>
                 </div>
@@ -858,9 +863,9 @@ export default function InvestmentClockFramework() {
                     Data Sources
                   </h6>
                   <ul className="space-y-3 text-xs font-bold text-neutral-500 uppercase tracking-widest">
-                    <li className="text-neutral-400">OECD CLI (Amplitude)</li>
-                    <li className="text-neutral-400">Core CPI YoY</li>
-                    <li className="text-neutral-400">Fed Funds Rate</li>
+                    <li className="text-neutral-400">OECD CLI (USALOLITONOSTSAM)</li>
+                    <li className="text-neutral-400">INDPRO / ICSA / UNRATE</li>
+                    <li className="text-neutral-400">Core CPI YoY + MoM / TCU</li>
                   </ul>
                 </div>
                 <div className="space-y-4">

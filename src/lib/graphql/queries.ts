@@ -227,4 +227,58 @@ export const GET_STOCK_AGENT_SUGGESTIONS = gql`
     }
   }
 `;
-*/ 
+*/
+
+export const GET_INVESTMENT_CLOCK = gql`
+  query GetInvestmentClock {
+    investmentClock {
+      current {
+        bizDate
+        finalPhase
+        phaseConfidence
+        phaseDirection
+        reasoning
+        outlook
+        keyIndicators
+        risks
+        bestAsset
+        recommendedSectors
+        geminiResearchSummary
+        phaseProbabilities { phase probability }
+        monitoringTriggers { indicator threshold meaning }
+        sectorRationale { etf rationale }
+      }
+      latestData {
+        bizDate
+        growthZScore
+        inflationZScore
+        dataPhase
+        clockAngle
+        gdpValue
+        cpiValue
+        indproValue
+        tcuValue
+        unrateValue
+        cliValue
+        icsaValue
+        cpiYoy
+        cpiMomAnn
+        t5yieValue
+        ppiYoy
+        gdpYoyPct
+        cpiYoyPct
+        indproYoyPct
+        cliYoyChange
+        icsaYoyPct
+        unrateYoyChange
+      }
+      history {
+        bizDate
+        growthZScore
+        inflationZScore
+        dataPhase
+        clockAngle
+      }
+    }
+  }
+`; 

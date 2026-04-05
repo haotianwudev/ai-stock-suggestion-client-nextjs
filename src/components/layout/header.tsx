@@ -30,6 +30,12 @@ export function Header() {
           <div className="w-32 sm:w-40 md:w-48 lg:w-auto lg:flex-1 lg:max-w-md">
             <SearchBar />
           </div>
+          <Link
+            href="/investment-clock"
+            className="hidden sm:inline-flex items-center text-xs font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+          >
+            Macro Clock
+          </Link>
           <ThemeToggle />
         </div>
       </div>

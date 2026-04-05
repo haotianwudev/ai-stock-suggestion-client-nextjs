@@ -15,6 +15,7 @@ import { articles } from "@/data/articles";
 // Lazy load heavy components
 const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
 const DynamicStickyPodcastPlayer = lazy(() => import("@/components/ui/sticky-podcast-player").then(module => ({ default: module.StickyPodcastPlayer })));
+const DynamicClockWidget = lazy(() => import("@/components/investment-clock/clock-widget").then(m => ({ default: m.InvestmentClockWidget })));
 
 // Loading skeletons
 const StockCardSkeleton = () => (
@@ -237,6 +238,15 @@ export default function Home() {
           )}
         </section>
         
+        {/* Investment Clock Widget */}
+        <section className="container max-w-screen-2xl mx-auto py-4 px-4">
+          <div className="max-w-3xl mx-auto">
+            <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-64" />}>
+              <DynamicClockWidget />
+            </Suspense>
+          </div>
+        </section>
+
         {/* Articles Section */}
         <section className="container max-w-screen-2xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
           <div className="flex flex-col items-center space-y-4 text-center mb-6">

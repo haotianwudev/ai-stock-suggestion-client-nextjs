@@ -197,4 +197,68 @@ export interface SophieAnalysis {
   model_display_name: string;
   created_at: string;
   updated_at: string;
-} 
+}
+
+export interface InvestmentClockDataPoint {
+  bizDate: string;
+  growthZScore: number;
+  inflationZScore: number;
+  dataPhase: string;
+  clockAngle: number;
+  gdpValue?: number;
+  cpiValue?: number;
+  indproValue?: number;
+  tcuValue?: number;
+  unrateValue?: number;
+  cliValue?: number;
+  icsaValue?: number;
+  cpiYoy?: number;
+  cpiMomAnn?: number;
+  t5yieValue?: number;
+  ppiYoy?: number;
+  gdpYoyPct?: number;
+  cpiYoyPct?: number;
+  indproYoyPct?: number;
+  cliYoyChange?: number;
+  icsaYoyPct?: number;
+  unrateYoyChange?: number;
+}
+
+export interface PhaseProbability {
+  phase: string;
+  probability: number;
+}
+
+export interface MonitoringTrigger {
+  indicator: string;
+  threshold: string;
+  meaning: string;
+}
+
+export interface SectorRationale {
+  etf: string;
+  rationale: string;
+}
+
+export interface InvestmentClockEvaluation {
+  bizDate: string;
+  finalPhase: string;
+  phaseConfidence?: number;
+  phaseDirection?: string;
+  reasoning?: string;
+  outlook?: string;
+  keyIndicators?: string[];
+  risks?: string[];
+  bestAsset?: string;
+  recommendedSectors?: string[];
+  geminiResearchSummary?: string;
+  phaseProbabilities?: PhaseProbability[];
+  monitoringTriggers?: MonitoringTrigger[];
+  sectorRationale?: SectorRationale[];
+}
+
+export interface InvestmentClockResult {
+  current?: InvestmentClockEvaluation;
+  latestData?: InvestmentClockDataPoint;
+  history: InvestmentClockDataPoint[];
+}
