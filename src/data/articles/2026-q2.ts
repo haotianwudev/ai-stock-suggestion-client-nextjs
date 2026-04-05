@@ -148,6 +148,16 @@ export const articles2026Q2: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Research Paper: Unifying Theory of Order Flow, Market Impact & Rough Volatility",
+    description: `This video walks through the breakthrough research by Muhle-Karbe et al. linking order flow, market impact, and rough volatility through a single structural statistic — bridging microstructure and stochastic volatility theory.`,
+    slug: "order-flow-market-impact-rough-volatility",
+    date: "April 6, 2026",
+    youtubeUrl: "https://youtu.be/wF1vaW8WwzU",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/wF1vaW8WwzU/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility",
     description: "Exploring the microstructural foundations of order flow, market impact, and volatility through a unified mathematical framework. Based on breakthrough research by Muhle-Karbe et al., this deep dive reveals how a single structural statistic binds together long memory, square-root scaling, and rough volatility.",
     slug: "unified-theory-market-dynamics-order-flow-impact-volatility",

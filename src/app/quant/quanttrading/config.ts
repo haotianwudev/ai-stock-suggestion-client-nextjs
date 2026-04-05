@@ -30,6 +30,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "future-trading-basic",
       "navigating-bull-to-bear-regime-shift-quantitative-signals",
       "institutional-investors-spot-survive-market-crash",
+      "unified-theory-market-dynamics-order-flow-impact-volatility",
+      "order-flow-market-impact-rough-volatility",
     ],
     studyGuide: {
       items: [
@@ -96,6 +98,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/navigating-bull-to-bear-regime-shift-quantitative-signals",
           videoUrl: "https://youtu.be/A16B5cx3_yc",
           visualGuideUrl: "https://i.imgur.com/zwJ2vHQ.jpeg",
+        },
+        {
+          text: "Research Paper: A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility",
+          url: "https://www.sophie-ai-finance.com/articles/unified-theory-market-dynamics-order-flow-impact-volatility",
+          videoUrl: "https://youtu.be/wF1vaW8WwzU",
+          visualGuideUrl: "https://i.imgur.com/FaKCNB2.jpeg",
         },
       ]
     }
