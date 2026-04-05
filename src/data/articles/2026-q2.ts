@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Architecting Alpha: The Evolution of RAG in Quantitative Finance",
+    description: "A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future of the enterprise knowledge bank. From naive RAG to multi-agent topologies and the Galaxy convergence architecture.",
+    slug: "architecting-alpha-rag-evolution-quantitative-finance",
+    date: "July 25, 2026",
+    imageUrl: "https://i.imgur.com/lE7Zs7q.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTMoewDaZMbmE0mQCsj3kvX4aWKQUUdC6RiqidkcNwC9Purx3FIhKzuPC8yWTQE__njyUPqOy8cxJ4x/pub",
+    labels: [ArticleLabel.AI_ML],
+  },
+  {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
     description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
     slug: "integer-optimization-finance-continuous-theory-discrete-execution",
