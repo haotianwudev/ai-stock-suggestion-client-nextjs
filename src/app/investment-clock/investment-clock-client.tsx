@@ -126,8 +126,8 @@ export function InvestmentClockClient() {
         <Badge className={`ml-auto border text-sm px-3 py-1 font-semibold ${phaseColor}`}>
           {displayPhase}
         </Badge>
-        {latestData?.bizDate && (
-          <span className="text-xs text-muted-foreground">{latestData.bizDate}</span>
+        {(evaluation?.bizDate ?? latestData?.bizDate) && (
+          <span className="text-xs text-muted-foreground">{evaluation?.bizDate ?? latestData?.bizDate}</span>
         )}
       </div>
 
