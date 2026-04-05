@@ -22,6 +22,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "volume-oi",
       "index-effect",
       "sp500-inclusion-anomaly-december-2025-deep-research",
+      "navigating-bull-to-bear-regime-shift-quantitative-signals",
+      "institutional-investors-spot-survive-market-crash",
     ],
     studyGuide: {
       items: [
@@ -68,7 +70,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Yahoo Finance Option Chain",
           url: "https://finance.yahoo.com/quote/%5ESPX/options/"
-        }
+        },
+        {
+          text: "Bull-to-Bear Regime Shift",
+          url: "https://www.sophie-ai-finance.com/articles/navigating-bull-to-bear-regime-shift-quantitative-signals",
+          videoUrl: "https://youtu.be/A16B5cx3_yc",
+          visualGuideUrl: "https://i.imgur.com/zwJ2vHQ.jpeg",
+        },
       ]
     }
   },

@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q1: Article[] = [
   {
+    title: "Build Next-Gen AI Financial Dashboards: Generative UI & LLM Copilots",
+    description: `This video walks through building next-generation AI financial dashboards using Generative UI patterns and LLM copilots, covering frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.`,
+    slug: "ai-financial-dashboards-generative-ui-llm-copilots",
+    date: "March 31, 2026",
+    youtubeUrl: "https://youtu.be/qb-JRu3ezzs",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/qb-JRu3ezzs/maxresdefault.jpg",
+    labels: [ArticleLabel.AI_ML],
+  },
+  {
     title: "Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration",
     description: "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards. Master state synchronization without re-render jank, implement secure bi-directional LLM interactions, and evaluate open-source frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.",
     slug: "building-interactive-financial-copilots-generative-ui-state-synchronization",

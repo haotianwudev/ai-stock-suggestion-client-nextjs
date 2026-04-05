@@ -28,6 +28,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "order-flow-anomalies",
       "traders-guide-futures-specials-market-structure-anomalies",
       "future-trading-basic",
+      "navigating-bull-to-bear-regime-shift-quantitative-signals",
+      "institutional-investors-spot-survive-market-crash",
     ],
     studyGuide: {
       items: [
@@ -89,10 +91,16 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Calendar Anomalies & Seasonal Patterns",
           url: "https://www.sophie-ai-finance.com/articles/seasons-market-calendar-anomalies-trading-adages",
         },
+        {
+          text: "Bull-to-Bear Regime Shift",
+          url: "https://www.sophie-ai-finance.com/articles/navigating-bull-to-bear-regime-shift-quantitative-signals",
+          videoUrl: "https://youtu.be/A16B5cx3_yc",
+          visualGuideUrl: "https://i.imgur.com/zwJ2vHQ.jpeg",
+        },
       ]
     }
   },
-  
+
   'machine-learning': {
     id: 'machine-learning',
     title: 'Machine Learning in Finance',
@@ -183,6 +191,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "asset-allocation-performance-attribution",
       "strategic-tactical-asset-allocation-comprehensive-guide",
       "definitive-backtrader-cheatsheet-guide",
+      "mechanics-of-alpha-raw-data-realized-returns",
+      "backtest-lie-quant-strategies-fail",
     ],
     studyGuide: {
       items: [
@@ -210,8 +220,14 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Portfolio Visualizer",
           url: "https://www.portfoliovisualizer.com/",
-        },    
-      ],    
+        },
+        {
+          text: "Backtest Lie",
+          url: "https://www.sophie-ai-finance.com/articles/mechanics-of-alpha-raw-data-realized-returns",
+          videoUrl: "https://youtu.be/rv_9yM5vn6k",
+          visualGuideUrl: "https://i.imgur.com/Yqby0EQ.jpeg",
+        },
+      ],
     }
   },
 
