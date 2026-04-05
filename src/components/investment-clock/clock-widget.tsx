@@ -46,8 +46,8 @@ export function InvestmentClockWidget() {
       <div className={`rounded-xl border-2 ${styles.border} ${styles.bg} px-3 py-2 sm:px-4 sm:py-2 transition-all hover:shadow-lg hover:scale-[1.01]`}>
         <div className="flex items-center gap-3 sm:gap-5">
 
-          {/* Clock — fixed width, never wraps */}
-          <div className="shrink-0">
+          {/* Clock — responsive width */}
+          <div className="shrink-0 w-[150px] sm:w-[220px]">
             <ClockFace clockAngle={clockAngle} phase={phase} size={270} />
           </div>
 
@@ -112,8 +112,8 @@ export function InvestmentClockWidget() {
               {evaluation?.bestAsset && (
                 <span>Asset: <span className={`font-semibold ${styles.text}`}>{evaluation.bestAsset}</span></span>
               )}
-              {latestData?.bizDate && (
-                <span className="hidden sm:inline">As of {latestData.bizDate}</span>
+              {(evaluation?.bizDate ?? latestData?.bizDate) && (
+                <span className="hidden sm:inline">As of {evaluation?.bizDate ?? latestData?.bizDate}</span>
               )}
             </div>
           </div>

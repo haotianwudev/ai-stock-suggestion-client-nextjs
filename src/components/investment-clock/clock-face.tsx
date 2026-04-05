@@ -272,10 +272,8 @@ export function ClockFace({ clockAngle, phase, size = 320 }: ClockFaceProps) {
   return (
     <svg
       ref={svgRef}
-      width={size}
-      height={size}
       viewBox={`-${pad} -${pad} ${size + pad * 2} ${size + pad * 2}`}
-      className="mx-auto drop-shadow-md"
+      className="mx-auto drop-shadow-md w-full h-auto"
     />
   );
 }

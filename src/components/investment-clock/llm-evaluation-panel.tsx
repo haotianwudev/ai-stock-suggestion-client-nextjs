@@ -182,9 +182,9 @@ export function LlmEvaluationPanel({ evaluation }: LlmEvaluationPanelProps) {
             </p>
             <div className="space-y-2">
               {evaluation.monitoringTriggers!.map(({ indicator, threshold, meaning }, i) => (
-                <div key={i} className="flex gap-3 text-sm">
+                <div key={i} className="flex flex-col gap-0.5 sm:flex-row sm:gap-3 text-sm">
                   <div className="shrink-0">
-                    <span className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded border">
+                    <span className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded border whitespace-normal break-words">
                       {threshold}
                     </span>
                   </div>
