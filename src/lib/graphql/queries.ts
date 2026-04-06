@@ -229,6 +229,28 @@ export const GET_STOCK_AGENT_SUGGESTIONS = gql`
 `;
 */
 
+export const GET_QUANT_TRENDING = gql`
+  query GetQuantTrending($source: String, $limit: Int) {
+    quantTrending(source: $source, limit: $limit) {
+      items {
+        id
+        source
+        title
+        url
+        description
+        author
+        heatScore
+        rawScore
+        tags
+        publishedAt
+        fetchedAt
+      }
+      lastUpdated
+      total
+    }
+  }
+`;
+
 export const GET_INVESTMENT_CLOCK = gql`
   query GetInvestmentClock {
     investmentClock {

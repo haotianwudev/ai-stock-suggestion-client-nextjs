@@ -262,3 +262,23 @@ export interface InvestmentClockResult {
   latestData?: InvestmentClockDataPoint;
   history: InvestmentClockDataPoint[];
 }
+
+export interface QuantTrendingItem {
+  id: number;
+  source: string;
+  title: string;
+  url: string;
+  description?: string;
+  author?: string;
+  heatScore: number;
+  rawScore: number;
+  tags: string[];
+  publishedAt?: string;
+  fetchedAt: string;
+}
+
+export interface QuantTrendingResult {
+  items: QuantTrendingItem[];
+  lastUpdated?: string;
+  total: number;
+}
