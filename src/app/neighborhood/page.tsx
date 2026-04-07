@@ -29,7 +29,15 @@ const neighborhoodSites: NeighborhoodSite[] = [
     url: "https://theta.md",
     description: "A curated knowledge base for options traders and quant practitioners. Covers options theory, volatility, Greeks, and systematic strategies with clean, well-structured markdown content.",
     tags: ["Options", "Volatility", "Greeks", "Systematic"],
-    category: "blog",
+    category: "research",
+    featured: true,
+  },
+  {
+    name: "SqueezeMetrics DIX",
+    url: "https://squeezemetrics.com/monitor/dix",
+    description: "The Dark Index (DIX) tracks dark pool short volume as a contrarian sentiment indicator. When dark pool participants are heavily shorting, it often signals institutional accumulation — a unique window into smart money positioning.",
+    tags: ["Dark Pool", "Sentiment", "Market Structure", "GEX", "Options Flow"],
+    category: "data",
     featured: true,
   },
 ];
