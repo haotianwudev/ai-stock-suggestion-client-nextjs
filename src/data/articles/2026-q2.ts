@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Structural Dynamics of the U.S. Dollar: Hegemony, De-dollarization, and Global Macro Strategy",
+    description: "An institutional framework exploring the conflicting paradigms of dollar hegemony and de-dollarization. From the Dollar Milkshake Theory to Triffin's Dilemma, master quantitative forecasting models, global macro execution playbooks, and the leading indicators that signal a structural regime shift in the world's reserve currency.",
+    slug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
+    date: "July 26, 2026",
+    imageUrl: "https://i.imgur.com/JoigFq7.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfHaLGxEDxEEBOl3klVyZwLesY5HIn8oqlEVtqoYfnoOzZXnsBdwsc5qv37breB-4V2dTo_v9aYRie/pub",
+    labels: [ArticleLabel.MARCO, ArticleLabel.QUANT],
+  },
+  {
     title: "Architecting Alpha: The Evolution of RAG in Quantitative Finance",
     description: "A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future of the enterprise knowledge bank. From naive RAG to multi-agent topologies and the Galaxy convergence architecture.",
     slug: "architecting-alpha-rag-evolution-quantitative-finance",
