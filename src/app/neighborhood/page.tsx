@@ -13,6 +13,7 @@ export interface NeighborhoodSite {
   tags: string[];
   category: 'blog' | 'tool' | 'research' | 'community' | 'data';
   featured?: boolean;
+  imageUrl?: string;
 }
 
 const categoryConfig: Record<NeighborhoodSite['category'], { label: string; color: string; icon: React.ReactNode }> = {
@@ -27,10 +28,11 @@ const neighborhoodSites: NeighborhoodSite[] = [
   {
     name: "Theta.md",
     url: "https://theta.md",
-    description: "A curated knowledge base for options traders and quant practitioners. Covers options theory, volatility, Greeks, and systematic strategies with clean, well-structured markdown content.",
-    tags: ["Options", "Volatility", "Greeks", "Systematic"],
+    description: "An independent quant research platform with a falsification-first approach. Their supply chain signal work demonstrates how naive cross-industry correlations (69% hit rate) collapse to statistical insignificance (55%, p=0.416) once industry beta, SOX index, and FX factors are controlled — a masterclass in separating real alpha from noise.",
+    tags: ["Supply Chain", "Signal Isolation", "Multi-Factor", "Cross-Industry", "Options"],
     category: "research",
     featured: true,
+    imageUrl: "https://i.imgur.com/vqAxsnD.png",
   },
   {
     name: "SqueezeMetrics DIX",
@@ -39,6 +41,7 @@ const neighborhoodSites: NeighborhoodSite[] = [
     tags: ["Dark Pool", "Sentiment", "Market Structure", "GEX", "Options Flow"],
     category: "data",
     featured: true,
+    imageUrl: "https://i.imgur.com/CHqsRTd.png",
   },
 ];
 
@@ -47,7 +50,16 @@ function SiteCard({ site }: { site: NeighborhoodSite }) {
 
   return (
     <a href={site.url} target="_blank" rel="noopener noreferrer" className="block group">
-      <Card className={`h-full transition-all duration-200 hover:shadow-md hover:border-blue-300 cursor-pointer ${site.featured ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 to-white' : ''}`}>
+      <Card className={`h-full transition-all duration-200 hover:shadow-md hover:border-blue-300 cursor-pointer overflow-hidden ${site.featured ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 to-white' : ''}`}>
+        {site.imageUrl && (
+          <div className="overflow-hidden border-b border-slate-100">
+            <img
+              src={site.imageUrl}
+              alt={`${site.name} preview`}
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.03]"
+            />
+          </div>
+        )}
         <CardHeader className="pb-2">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">

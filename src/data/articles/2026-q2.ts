@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Theta.md: Cross-Industry Supply Chain Signal Analysis",
+    description: "An independent quant platform tackling one of finance's hardest problems — isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation, the Bullwhip Effect, and asymmetric information pricing frameworks.",
+    slug: "supply-chain",
+    date: "April 06, 2026",
+    imageUrl: "https://i.imgur.com/vqAxsnD.png",
+    googleDoc: "https://www.theta.md/supply-chain",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Structural Dynamics of the U.S. Dollar: Hegemony, De-dollarization, and Global Macro Strategy",
     description: "An institutional framework exploring the conflicting paradigms of dollar hegemony and de-dollarization. From the Dollar Milkshake Theory to Triffin's Dilemma, master quantitative forecasting models, global macro execution playbooks, and the leading indicators that signal a structural regime shift in the world's reserve currency.",
     slug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
