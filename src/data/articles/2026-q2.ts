@@ -5,7 +5,7 @@ export const articles2026Q2: Article[] = [
     title: "Theta.md: Cross-Industry Supply Chain Signal Analysis",
     description: "An independent quant platform tackling one of finance's hardest problems — isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation, the Bullwhip Effect, and asymmetric information pricing frameworks.",
     slug: "supply-chain",
-    date: "April 06, 2026",
+    date: "July 26, 2026",
     imageUrl: "https://i.imgur.com/vqAxsnD.png",
     googleDoc: "https://www.theta.md/supply-chain",
     deepResearch: true,
