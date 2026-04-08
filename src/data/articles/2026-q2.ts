@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Decoding the Bond Term Premium: Fixed Income Dynamics, Pricing Models, and Portfolio Strategy",
+    description: "A mathematically rigorous analysis of the bond term premium — from the ACM affine term structure model and its failure modes to the post-2022 regime shift, AI-driven fiscal supply shocks, and actionable portfolio positioning frameworks for navigating duration risk.",
+    slug: "bond-term-premium-fixed-income-dynamics-pricing-models",
+    date: "July 26, 2026",
+    imageUrl: "https://i.imgur.com/zfZtnkj.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTbRxbkchJvVvKsDovVzkemlqRhOWeTrCFecWHTfLcEf_drPN8V6G_F1FRkdzW-lcReScrj0Ndx-wmk/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
     title: "Theta.md: Cross-Industry Supply Chain Signal Analysis",
     description: "An independent quant platform tackling one of finance's hardest problems — isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation, the Bullwhip Effect, and asymmetric information pricing frameworks.",
     slug: "supply-chain",
