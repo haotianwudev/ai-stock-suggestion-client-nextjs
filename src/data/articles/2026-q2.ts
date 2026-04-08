@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Conformal Prediction for Portfolio Risk: Beyond VaR",
+    description: "A distribution-free, mathematically rigorous alternative to standard VaR models. Master conformal prediction mechanics, Conformal Risk Control (CRC), Regime-Weighted Conformal (RWC), and how to build adaptive capital allocation systems that survive non-stationary markets and regime changes.",
+    slug: "conformal-prediction-portfolio-risk-var",
+    date: "July 26, 2026",
+    imageUrl: "https://i.imgur.com/RYfA2e2.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQB2s8oQpqLAmTM2Qqx_yZtPub5kEoOpUqCPvmbbB-uUvrXXBsOqmWV_QpqF3zo0mKO7kRDIW0KmJ-_/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Decoding the Bond Term Premium: Fixed Income Dynamics, Pricing Models, and Portfolio Strategy",
     description: "A mathematically rigorous analysis of the bond term premium — from the ACM affine term structure model and its failure modes to the post-2022 regime shift, AI-driven fiscal supply shocks, and actionable portfolio positioning frameworks for navigating duration risk.",
     slug: "bond-term-premium-fixed-income-dynamics-pricing-models",

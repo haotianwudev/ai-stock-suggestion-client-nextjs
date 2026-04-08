@@ -148,35 +148,95 @@ export default function BondTermPremiumPage() {
       <main className="max-w-4xl mx-auto px-6 pb-24">
 
         {/* Section 1 – Executive Summary */}
-        <Section icon={BookOpen} title="Executive Summary" gradient="from-blue-500 to-cyan-400">
-          <p>
-            The bond term premium represents the excess yield investors demand for holding long-duration
-            sovereign debt rather than rolling over short-term risk-free instruments. This report provides
-            an exhaustive, mathematically rigorous analysis of the term premium, dissecting its theoretical
-            foundations, econometric modeling, macroeconomic drivers, and strategic applications in fixed
-            income portfolio management.
-          </p>
-          <p>
-            While the pure expectations hypothesis posits that long-term yields merely reflect anticipated
-            policy rates, modern affine term structure models — specifically the Adrian-Crump-Moench (ACM)
-            framework — prove that term premia account for the bulk of yield curve variance.
-          </p>
-          <p>
-            Between 2010 and 2022, unprecedented quantitative easing and depressed inflation volatility
-            compressed term premia into negative territory, distorting standard asset allocation models.
-            However, the post-2022 macroeconomic regime shift, characterized by sticky inflation, aggressive
-            monetary tightening, and a return to positive equity-bond correlations, catalyzed a structural
-            resurgence in duration compensation.
-          </p>
-          <p>
-            Looking forward, persistent fiscal deficits and a massive artificial intelligence capital
-            expenditure cycle threaten to flood the market with long-duration supply, structurally anchoring
-            the term premium higher over the 2026–2030 horizon. This dynamic requires institutional and
-            retail investors alike to fundamentally rethink duration exposure, curve positioning, and
-            cross-sector allocations spanning nominal Treasuries, inflation-protected securities, and
-            mortgage-backed assets.
-          </p>
-        </Section>
+        <section className="bg-white rounded-3xl shadow-sm border border-slate-200/60 overflow-hidden mb-12 relative">
+          {/* Top accent bar */}
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400" />
+
+          {/* Watermark icon */}
+          <div className="absolute bottom-0 right-0 opacity-[0.04] pointer-events-none">
+            <BookOpen size={280} strokeWidth={0.5} className="text-slate-900" />
+          </div>
+
+          <div className="relative p-8 md:p-12">
+            {/* Header */}
+            <div className="flex items-center gap-4 mb-10">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white shadow-md">
+                <BookOpen size={32} strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-blue-500 text-xs font-bold uppercase tracking-widest mb-1">Overview</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">Executive Summary</h2>
+              </div>
+            </div>
+
+            {/* Lead paragraph */}
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-10 border-l-4 border-cyan-400 pl-5 bg-cyan-50/50 py-4 pr-4 rounded-r-xl">
+              The bond term premium represents the excess yield investors demand for holding long-duration
+              sovereign debt rather than rolling over short-term risk-free instruments. This report provides
+              a mathematically rigorous analysis of the term premium — dissecting its theoretical foundations,
+              econometric modeling, macroeconomic drivers, and strategic portfolio applications.
+            </p>
+
+            {/* Key insight cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+              {[
+                {
+                  label: 'Model',
+                  value: 'ACM Framework',
+                  sub: 'Adrian-Crump-Moench affine term structure model',
+                  bg: 'bg-blue-50 border-blue-200',
+                  labelColor: 'text-blue-600',
+                  valueColor: 'text-blue-900',
+                  subColor: 'text-blue-700',
+                },
+                {
+                  label: 'Anomaly Period',
+                  value: '2010 – 2022',
+                  sub: 'Term premia compressed to historic lows near −1.50%',
+                  bg: 'bg-rose-50 border-rose-200',
+                  labelColor: 'text-rose-600',
+                  valueColor: 'text-rose-900',
+                  subColor: 'text-rose-700',
+                },
+                {
+                  label: 'Forward Outlook',
+                  value: '1.00% – 1.50%',
+                  sub: 'Structural premium range forecast for 2026–2030',
+                  bg: 'bg-emerald-50 border-emerald-200',
+                  labelColor: 'text-emerald-600',
+                  valueColor: 'text-emerald-900',
+                  subColor: 'text-emerald-700',
+                },
+              ].map((card, i) => (
+                <div key={i} className={`${card.bg} border rounded-2xl p-5`}>
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${card.labelColor}`}>{card.label}</p>
+                  <p className={`text-xl font-bold mb-2 ${card.valueColor}`}>{card.value}</p>
+                  <p className={`text-xs leading-relaxed ${card.subColor}`}>{card.sub}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Key findings bullets */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                { icon: '📐', label: 'Theory', text: 'Pure expectations hypothesis is empirically rejected — risk-averse investors demand explicit compensation for duration and inflation uncertainty.' },
+                { icon: '📉', label: 'QE Era (2010–2022)', text: 'Central banks extracted duration risk via QE, mechanically pushing term premia to −1.50%. Bonds acted as reliable equity hedges, suppressing required compensation.' },
+                { icon: '🔄', label: 'Regime Shift (Post-2022)', text: 'Sticky inflation and aggressive tightening flipped equity-bond correlations positive, catalyzing a structural resurgence in duration compensation.' },
+                { icon: '🤖', label: 'AI Supply Shock', text: '$3T–$5T in AI capex financing floods fixed income markets with long-dated paper, requiring higher yields to attract buyers.' },
+                { icon: '🏛️', label: 'Fiscal Dominance', text: 'U.S. primary deficits near 3.5% of GDP combined with QT create a persistent supply-demand imbalance resolved only through higher risk premia.' },
+                { icon: '🎯', label: 'Forward Outlook', text: 'Term premium forecast to settle structurally at 1.00%–1.50% through 2026–2030, restoring the traditional upward-sloping yield curve.' },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
+                  <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">{item.label}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Section 2 – Theoretical Genesis */}
         <Section icon={Landmark} title="1. Foundation: Theoretical Genesis" gradient="from-violet-500 to-purple-500">
