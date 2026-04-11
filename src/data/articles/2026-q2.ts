@@ -2,6 +2,27 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Advanced Options Collar Strategies: Structural Mechanics, Tradeoffs, and Institutional Applications",
+    description: "A comprehensive masterclass on options collar variants used by institutional portfolio managers and corporate treasurers. From the standard zero-cost collar and ratio collar mechanics to participating collars, three-way seagull structures, and temporal rolling strategies for dynamic risk management.",
+    slug: "advanced-options-collar-strategies-structural-mechanics-tradeoffs",
+    date: "July 28, 2026",
+    imageUrl: "https://i.imgur.com/zTybep1.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRLg5ohobRMkcpjopkV1_2MboEZjKQeWc0hbXwIBkJBVSei6QhJdXJNOR3o0WtOZcWKF8UtavALdg56/pub",
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
+    title: "Structured Liquidity & Hedging: Equity Collars and Prepaid Variable Share Forwards",
+    description: "A comprehensive masterclass on navigating concentrated wealth using Equity Collars and Prepaid Variable Share Forwards (PVSFs). From zero-cost collar architecture and variable settlement algorithms to IRC Section 1259 constructive sale rules, SEC Form 4 disclosure requirements, and the landmark McKelvey litigation.",
+    slug: "structured-liquidity-hedging-equity-collars-pvsf",
+    date: "July 27, 2026",
+    imageUrl: "https://i.imgur.com/RlerYGZ.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ7W9TR-5FXitlZiUfOer_4LWAfdEbzuh10uLX1Hta8eew5apemBl6--5-XXLOaTp4FAEtfyLEgF-hR/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "Conformal Prediction for Portfolio Risk: Beyond VaR",
     description: "A distribution-free, mathematically rigorous alternative to standard VaR models. Master conformal prediction mechanics, Conformal Risk Control (CRC), Regime-Weighted Conformal (RWC), and how to build adaptive capital allocation systems that survive non-stationary markets and regime changes.",
     slug: "conformal-prediction-portfolio-risk-var",
