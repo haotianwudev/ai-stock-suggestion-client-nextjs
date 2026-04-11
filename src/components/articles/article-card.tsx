@@ -13,6 +13,7 @@ interface ArticleCardProps {
   date: string;
   imageUrl?: string;
   googleDoc?: string;
+  websiteUrl?: string;
   deepResearch?: boolean;
   youtubeUrl?: string;
   isVideo?: boolean;
@@ -21,7 +22,7 @@ interface ArticleCardProps {
   podcastUrl?: string;
 }
 
-export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
+export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
@@ -113,6 +114,19 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   </a>
                 </>
               )}
+              {websiteUrl && (
+                <>
+                  <span className="mx-1">·</span>
+                  <a
+                    href={websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-blue-700"
+                  >
+                    Website
+                  </a>
+                </>
+              )}
             </div>
             <CardDescription className="mb-2 text-sm text-muted-foreground line-clamp-5">
               {description}
@@ -122,6 +136,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
             // Count the number of buttons
             const buttonCount = (isVideo && youtubeUrl ? 1 : 0) + 
                                (googleDoc ? 1 : 0) + 
+                               (websiteUrl ? 1 : 0) +
                                (podcastUrl ? 1 : 0) + 
                                (!noSummary ? 1 : 0);
             
@@ -160,6 +175,16 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                       >
                         <Music className="mr-1.5 h-4 w-4" />
                         Podcast
+                      </a>
+                    )}
+                    {websiteUrl && (
+                      <a
+                        href={websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm"}
+                      >
+                        Go to Website
                       </a>
                     )}
                     {!noSummary && (

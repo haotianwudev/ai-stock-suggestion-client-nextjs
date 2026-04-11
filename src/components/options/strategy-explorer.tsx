@@ -240,6 +240,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                     options={article.options}
                                     noSummary={article.noSummary}
                                     podcastUrl={article.podcastUrl}
+                                    websiteUrl={article.websiteUrl}
                                 />
                             );
                         })}

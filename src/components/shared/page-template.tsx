@@ -250,6 +250,7 @@ export function PageTemplate({
                       options={article.options}
                       noSummary={article.noSummary}
                       podcastUrl={article.podcastUrl}
+                      websiteUrl={article.websiteUrl}
                     />
                   ))}
                 </div>

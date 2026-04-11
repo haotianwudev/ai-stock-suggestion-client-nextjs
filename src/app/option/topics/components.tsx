@@ -136,6 +136,7 @@ export function RelatedArticles({ articleSlugs, title = "Related Articles" }: Re
               options={article.options}
               noSummary={article.noSummary}
               podcastUrl={article.podcastUrl}
+              websiteUrl={article.websiteUrl}
             />
           );
         })}

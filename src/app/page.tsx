@@ -296,6 +296,7 @@ export default function Home() {
                   options={pinnedArticle.options}
                   noSummary={pinnedArticle.noSummary}
                   podcastUrl={pinnedArticle.podcastUrl}
+                  websiteUrl={pinnedArticle.websiteUrl}
                 />
               </div>
             );
@@ -319,6 +320,7 @@ export default function Home() {
                 options={article.options}
                 noSummary={article.noSummary}
                 podcastUrl={article.podcastUrl}
+                websiteUrl={article.websiteUrl}
               />
             ))}
           </div>

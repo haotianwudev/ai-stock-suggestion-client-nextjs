@@ -21,6 +21,7 @@ export interface Article {
   date: string;
   imageUrl?: string;
   googleDoc?: string;
+  websiteUrl?: string;   // External tool / product page — renders a "Go to Website" button
   deepResearch?: boolean;
   youtubeUrl?: string;
   isVideo?: boolean;

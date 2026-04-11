@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Investment Clock: Live Macroeconomic Cycle Tracker",
+    description: "Track the US economy's position in real-time using the Merrill Lynch Investment Clock framework. Powered by FRED data and AI evaluation, this live tool maps Growth and Inflation Z-scores to identify the current phase — Reflation, Recovery, Overheat, or Stagflation — and surfaces the optimal asset allocation and sector rotation for each regime.",
+    slug: "investment-clock-website",
+    date: "July 26, 2026",
+    imageUrl: "https://i.imgur.com/TnhLYe5.png",
+    websiteUrl: "https://www.sophie-ai-finance.com/investment-clock",
+    deepResearch: true,
+    noSummary: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
     title: "Conformal Prediction for Portfolio Risk: Beyond VaR",
     description: "A distribution-free, mathematically rigorous alternative to standard VaR models. Master conformal prediction mechanics, Conformal Risk Control (CRC), Regime-Weighted Conformal (RWC), and how to build adaptive capital allocation systems that survive non-stationary markets and regime changes.",
     slug: "conformal-prediction-portfolio-risk-var",
