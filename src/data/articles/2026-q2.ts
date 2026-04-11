@@ -19,6 +19,7 @@ export const articles2026Q2: Article[] = [
     date: "July 27, 2026",
     imageUrl: "https://i.imgur.com/RlerYGZ.png",
     deepResearch: true,
+    options: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ7W9TR-5FXitlZiUfOer_4LWAfdEbzuh10uLX1Hta8eew5apemBl6--5-XXLOaTp4FAEtfyLEgF-hR/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
