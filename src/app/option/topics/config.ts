@@ -249,6 +249,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "option-0dte",
       "nvdia-q4-2025",
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
+      "dark-index-dix-understanding-short-is-long-market-microstructure",
+      "dark-index-dix-tracking-smart-money",
     ],
     studyGuide: {
       items: [
@@ -273,7 +275,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Barchart GEX viewer",
           url: "https://www.barchart.com/stocks/quotes/$SPX/gamma-exposure",
-        }
+        },
+        {
+          text: "The Dark Index (DIX)",
+          url: "https://www.sophie-ai-finance.com/articles/dark-index-dix-understanding-short-is-long-market-microstructure",
+          videoUrl: "https://youtu.be/f5yZ7wdjEOY",
+          visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
+        },
       ]
     }
   },

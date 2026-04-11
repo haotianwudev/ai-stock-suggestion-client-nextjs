@@ -32,6 +32,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "institutional-investors-spot-survive-market-crash",
       "unified-theory-market-dynamics-order-flow-impact-volatility",
       "order-flow-market-impact-rough-volatility",
+      "dark-index-dix-understanding-short-is-long-market-microstructure",
+      "dark-index-dix-tracking-smart-money",
     ],
     studyGuide: {
       items: [
@@ -104,6 +106,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/unified-theory-market-dynamics-order-flow-impact-volatility",
           videoUrl: "https://youtu.be/wF1vaW8WwzU",
           visualGuideUrl: "https://i.imgur.com/FaKCNB2.jpeg",
+        },
+        {
+          text: "The Dark Index (DIX)",
+          url: "https://www.sophie-ai-finance.com/articles/dark-index-dix-understanding-short-is-long-market-microstructure",
+          videoUrl: "https://youtu.be/f5yZ7wdjEOY",
+          visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
         },
       ]
     }
