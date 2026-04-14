@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Primacy of Domain Knowledge in Quantitative Finance",
+    description: "An exhaustive exploration of modern quantitative finance principles asserting that deep financial domain expertise and market intuition are the indispensable cornerstones of successful quantitative research. From market microstructure feature engineering to vertical AI alignment and FinDPO frameworks.",
+    slug: "primacy-domain-knowledge-quantitative-finance",
+    date: "July 29, 2026",
+    imageUrl: "https://i.imgur.com/2bafea7d-b7d5-410a-a81a-af6c9f2ec4a6",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT_og9NfAgJ9t77BRrhJIIVM82DnqIIw1MWwplsGj2q8eRy9XPa5f-8sKBhyRAOmW686-ccHhjQcOSS/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Advanced Options Collar Strategies: Structural Mechanics, Tradeoffs, and Institutional Applications",
     description: "A comprehensive masterclass on options collar variants used by institutional portfolio managers and corporate treasurers. From the standard zero-cost collar and ratio collar mechanics to participating collars, three-way seagull structures, and temporal rolling strategies for dynamic risk management.",
     slug: "advanced-options-collar-strategies-structural-mechanics-tradeoffs",
