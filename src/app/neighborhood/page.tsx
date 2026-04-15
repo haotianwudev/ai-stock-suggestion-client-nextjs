@@ -5,6 +5,8 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { Globe, ExternalLink, BookOpen, TrendingUp, Brain, BarChart2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ArticleCard } from "@/components/articles/article-card";
+import { articles } from "@/data/articles";
 
 export interface NeighborhoodSite {
   name: string;
@@ -14,6 +16,7 @@ export interface NeighborhoodSite {
   category: 'blog' | 'tool' | 'research' | 'community' | 'data';
   featured?: boolean;
   imageUrl?: string;
+  selectedArticles?: string[];
 }
 
 const categoryConfig: Record<NeighborhoodSite['category'], { label: string; color: string; icon: React.ReactNode }> = {
@@ -33,6 +36,10 @@ const neighborhoodSites: NeighborhoodSite[] = [
     category: "research",
     featured: true,
     imageUrl: "https://i.imgur.com/vqAxsnD.png",
+    selectedArticles: [
+      "trading-wires-supply-chain-quant-signals",
+      "supply-chain",
+    ],
   },
   {
     name: "SqueezeMetrics DIX",
@@ -42,15 +49,25 @@ const neighborhoodSites: NeighborhoodSite[] = [
     category: "data",
     featured: true,
     imageUrl: "https://i.imgur.com/CHqsRTd.png",
+    selectedArticles: [
+      "dark-index-dix-tracking-smart-money",
+      "dark-index-dix-understanding-short-is-long-market-microstructure",
+    ],
   },
 ];
 
-function SiteCard({ site }: { site: NeighborhoodSite }) {
+function NeighborhoodEntry({ site }: { site: NeighborhoodSite }) {
   const cat = categoryConfig[site.category];
+  const relatedArticles = site.selectedArticles
+    ? site.selectedArticles
+        .map(slug => articles.find(a => a.slug === slug))
+        .filter((a): a is NonNullable<typeof a> => a !== undefined)
+    : [];
 
   return (
-    <a href={site.url} target="_blank" rel="noopener noreferrer" className="block group">
-      <Card className={`h-full transition-all duration-200 hover:shadow-md hover:border-blue-300 cursor-pointer overflow-hidden ${site.featured ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 to-white' : ''}`}>
+    <Card className={`overflow-hidden ${site.featured ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 to-white' : ''}`}>
+      {/* Clickable site header */}
+      <a href={site.url} target="_blank" rel="noopener noreferrer" className="block group">
         {site.imageUrl && (
           <div className="overflow-hidden border-b border-slate-100">
             <img
@@ -90,8 +107,35 @@ function SiteCard({ site }: { site: NeighborhoodSite }) {
           </div>
           <p className="text-xs text-blue-500 truncate">{site.url}</p>
         </CardContent>
-      </Card>
-    </a>
+      </a>
+
+      {/* Related articles inside the card */}
+      {relatedArticles.length > 0 && (
+        <div className="border-t border-slate-100 px-4 pb-4 pt-3 space-y-3">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Related Articles</h3>
+          <div className="space-y-3">
+            {relatedArticles.map(article => (
+              <ArticleCard
+                key={article.slug}
+                title={article.title}
+                description={article.description}
+                slug={article.slug}
+                date={article.date}
+                imageUrl={article.imageUrl}
+                googleDoc={article.googleDoc}
+                websiteUrl={article.websiteUrl}
+                deepResearch={article.deepResearch}
+                youtubeUrl={article.youtubeUrl}
+                isVideo={article.isVideo}
+                options={article.options}
+                noSummary={article.noSummary}
+                podcastUrl={article.podcastUrl}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </Card>
   );
 }
 
@@ -122,8 +166,12 @@ export default function NeighborhoodPage() {
           {featured.length > 0 && (
             <div className="space-y-3 mb-8">
               <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Featured</h2>
-              <div className="grid gap-3 md:gap-4 grid-cols-1 md:grid-cols-2">
-                {featured.map(site => <SiteCard key={site.url} site={site} />)}
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                {featured.map(site => (
+                  <div key={site.url} className="w-full md:w-1/2">
+                    <NeighborhoodEntry site={site} />
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -132,8 +180,8 @@ export default function NeighborhoodPage() {
           {rest.length > 0 && (
             <div className="space-y-3">
               <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">All Sites</h2>
-              <div className="grid gap-3 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {rest.map(site => <SiteCard key={site.url} site={site} />)}
+              <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {rest.map(site => <NeighborhoodEntry key={site.url} site={site} />)}
               </div>
             </div>
           )}
