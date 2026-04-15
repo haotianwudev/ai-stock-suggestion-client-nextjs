@@ -42,6 +42,19 @@ const neighborhoodSites: NeighborhoodSite[] = [
     ],
   },
   {
+    name: "The Gift of the Phantom Trader",
+    url: "https://tradertom.com/resource/the-phantom-of-the-pits/",
+    description: "The original writings of the 'Phantom of the Pits' — a legendary anonymous floor trader whose insights were chronicled by Art Simpson on the Futures Magazine forums in the late 1990s. A timeless masterclass on why trading success is about superior behavior modification, not superior knowledge.",
+    tags: ["Trading Psychology", "Risk Management", "Behavior", "Floor Trading", "Classic"],
+    category: "research",
+    featured: true,
+    imageUrl: "https://i.imgur.com/UAA2o4e.png",
+    selectedArticles: [
+      "phantom-trader",
+      "gift-phantom-trader-psychology-winning-through-losing",
+    ],
+  },
+  {
     name: "SqueezeMetrics DIX",
     url: "https://squeezemetrics.com/monitor/dix",
     description: "The Dark Index (DIX) tracks dark pool short volume as a contrarian sentiment indicator. When dark pool participants are heavily shorting, it often signals institutional accumulation — a unique window into smart money positioning.",
@@ -119,7 +132,7 @@ function NeighborhoodEntry({ site }: { site: NeighborhoodSite }) {
                 key={article.slug}
                 title={article.title}
                 description={article.description}
-                slug={article.slug}
+                slug={article.slug ?? ''}
                 date={article.date}
                 imageUrl={article.imageUrl}
                 googleDoc={article.googleDoc}
@@ -166,11 +179,9 @@ export default function NeighborhoodPage() {
           {featured.length > 0 && (
             <div className="space-y-3 mb-8">
               <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Featured</h2>
-              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
                 {featured.map(site => (
-                  <div key={site.url} className="w-full md:w-1/2">
-                    <NeighborhoodEntry site={site} />
-                  </div>
+                  <NeighborhoodEntry key={site.url} site={site} />
                 ))}
               </div>
             </div>
@@ -180,7 +191,7 @@ export default function NeighborhoodPage() {
           {rest.length > 0 && (
             <div className="space-y-3">
               <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">All Sites</h2>
-              <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 items-start">
                 {rest.map(site => <NeighborhoodEntry key={site.url} site={site} />)}
               </div>
             </div>
