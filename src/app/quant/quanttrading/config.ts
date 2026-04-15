@@ -34,6 +34,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "order-flow-market-impact-rough-volatility",
       "dark-index-dix-understanding-short-is-long-market-microstructure",
       "dark-index-dix-tracking-smart-money",
+      "supply-chain",
+      "trading-wires-supply-chain-quant-signals",
     ],
     studyGuide: {
       items: [
@@ -112,6 +114,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/dark-index-dix-understanding-short-is-long-market-microstructure",
           videoUrl: "https://youtu.be/f5yZ7wdjEOY",
           visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
+        },
+        {
+          text: "Supply Chain Quant Trading Signals",
+          url: "https://www.sophie-ai-finance.com/articles/supply-chain",
+          videoUrl: "https://youtu.be/TQLZWeYUYyQ",
+          visualGuideUrl: "https://i.imgur.com/vqAxsnD.png",
         },
       ]
     }

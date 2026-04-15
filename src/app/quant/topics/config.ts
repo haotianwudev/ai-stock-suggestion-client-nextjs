@@ -107,6 +107,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "autocallable-strategy-engineered-yield-sideways-markets",
       "solution-beyond-black-scholes",
       "beyond-black-scholes",
+      "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+      "volatility-model-evolution-svi-dupire-heston",
     ],
     studyGuide: {
       items: [
@@ -151,6 +153,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/zS43HPjsDtc",
           url: "https://www.sophie-ai-finance.com/articles/beyond-black-scholes",
           visualGuideUrl: "https://i.imgur.com/yjdtBGR.jpeg",
+        },
+        {
+          text: "Option Volatility Modeling: SVI, Dupire and Heston",
+          url: "https://www.sophie-ai-finance.com/articles/option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+          videoUrl: "https://youtu.be/EjaO4UaVLJA",
+          visualGuideUrl: "https://i.imgur.com/UAZud6k.jpeg",
         },
       ]
     }

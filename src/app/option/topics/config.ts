@@ -142,6 +142,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
       "volatility-skew-index",
       "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+      "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+      "volatility-model-evolution-svi-dupire-heston",
     ],
     studyGuide: {
       items: [
@@ -188,7 +190,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Barchart Volatility Charts",
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts"
-        }
+        },
+        {
+          text: "Option Volatility Modeling: SVI, Dupire and Heston",
+          url: "https://www.sophie-ai-finance.com/articles/option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+          videoUrl: "https://youtu.be/EjaO4UaVLJA",
+          visualGuideUrl: "https://i.imgur.com/UAZud6k.jpeg",
+        },
       ]
     }
   },
