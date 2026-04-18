@@ -303,6 +303,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
     relatedArticles: [
       "strategic-framework-rolling-options-quantitative-approach",
       "roll-option",
+      "advanced-option-rolling-mechanics",
+      "art-rolling-options-hidden-trap",
     ],
     studyGuide: {
       items: [
@@ -311,6 +313,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/strategic-framework-rolling-options-quantitative-approach",
           videoUrl: "https://youtu.be/q5FSpOKtcFM",
           visualGuideUrl: "https://i.imgur.com/yDVJgI0.jpeg"
+        },
+        {
+          text: "Advanced Option Rolling Mechanics",
+          url: "https://www.sophie-ai-finance.com/articles/advanced-option-rolling-mechanics",
+          videoUrl: "https://youtu.be/2L_UPaxTy_c",
+          visualGuideUrl: "https://i.imgur.com/ORf3wI2.jpeg",
         },
       ]
     }
