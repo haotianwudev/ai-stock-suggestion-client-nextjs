@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Model Context Protocol in Quantitative Finance: System Architecture, State Management, and Agent Design",
+    description: "A comprehensive guide to the Model Context Protocol (MCP) — the open standard transforming how LLMs integrate with quantitative finance systems. From algorithmic backtesting automation and massive dataset handling to stateful session memory, zero-trust security, and UX engineering for autonomous AI agents.",
+    slug: "model-context-protocol-quantitative-finance",
+    date: "July 30, 2026",
+    imageUrl: "https://i.imgur.com/d1fcUzy.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vScLUqi2s9JY-4AM3YeJDQsZw2zEs--j9ocLVE_BPdWL8jaxTCrlavQF3OFJ0Tds9NM8HnEi0caTv2a/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Primacy of Domain Knowledge in Quantitative Finance",
     description: "An exhaustive exploration of modern quantitative finance principles asserting that deep financial domain expertise and market intuition are the indispensable cornerstones of successful quantitative research. From market microstructure feature engineering to vertical AI alignment and FinDPO frameworks.",
     slug: "primacy-domain-knowledge-quantitative-finance",
