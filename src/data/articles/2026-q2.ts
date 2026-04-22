@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Seagull Spread: Strategic Architecture, Volatility Skew Arbitrage, and Institutional Implementation",
+    description: "A comprehensive institutional tutorial on the Seagull spread — a sophisticated three-legged options strategy that finances directional speculation through volatility skew arbitrage. Master structural mechanics, Greeks dynamics, payoff profiles, and risk mitigation protocols used by corporate treasurers and portfolio managers.",
+    slug: "seagull-spread-options-strategy-architecture",
+    date: "July 31, 2026",
+    imageUrl: "https://i.imgur.com/rqjZ3CX.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRD1HCouShPrarMmWICgkJDqpK0OlpaS9l8M8GNsbgXqJhv6YGz_yU3pjS5p2MEojO0vg1XI1fqqp7x/pub",
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Model Context Protocol in Quantitative Finance: System Architecture, State Management, and Agent Design",
     description: "A comprehensive guide to the Model Context Protocol (MCP) — the open standard transforming how LLMs integrate with quantitative finance systems. From algorithmic backtesting automation and massive dataset handling to stateful session memory, zero-trust security, and UX engineering for autonomous AI agents.",
     slug: "model-context-protocol-quantitative-finance",
