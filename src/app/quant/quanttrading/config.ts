@@ -356,6 +356,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "portfolio-optimization",
       "efficient-frontier-portfolio-optimization-mathematics",
       "black-litterman-model-comprehensive-guide-portfolio-optimization",
+      "black-litterman-model-explained-theory-trillions",
       "all-weather-strategy",
       "all-weather-strategy-new-economic-climate",
       "beyond-leverage-risk-parity-call-writing",
@@ -366,6 +367,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
       "risk-prism-architecture-modern-factor-models",
       "diversification-deep-dive-factor-based-risk-models",
+      "investment-clock-website",
+      "quantitative-guide-calculate-investment-clock",
     ],
     studyGuide: {
       items: [
@@ -401,7 +404,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         },
         {
           text: "Black-Litterman Model",
-          visualGuideUrl: "https://i.imgur.com/5ZI6OUm.jpeg",
+          visualGuideUrl: "https://i.imgur.com/8ZPnGNY.jpeg",
+          videoUrl: "https://youtu.be/fhMyv0I69LQ",
           url: "https://www.sophie-ai-finance.com/articles/black-litterman-model-comprehensive-guide-portfolio-optimization",
         },
         {
@@ -426,6 +430,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/E1ZKfSA.jpeg",
           videoUrl: "https://youtu.be/ns0nlaE74Ac",
           url: "https://www.sophie-ai-finance.com/articles/investment-clock-framework-quantitative-macro-regime-detection",
+        },
+        {
+          text: "Investment Clock Methodology",
+          url: "https://www.sophie-ai-finance.com/articles/investment-clock-website",
+          videoUrl: "https://youtu.be/Zzi1cuaPs7M",
+          visualGuideUrl: "https://i.imgur.com/TnhLYe5.png",
         },
         {
           text: "Portfolio Visualizer Tool",
