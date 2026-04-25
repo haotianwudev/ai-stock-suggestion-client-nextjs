@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms",
+    description: "The historical evolution from rigid mean-variance frameworks to flexible information-theoretic paradigms. Explore the deep intuition of the Entropy Pooling framework and its mapping to the classical Black-Litterman model.",
+    slug: "entropy-methods-portfolio-construction",
+    date: "July 31, 2026",
+    imageUrl: "https://i.imgur.com/Z5gEhMV.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT1N3B_Cxx8Wzptmp_k9xFa98JeH1AvFTQ7UOBQ3HEyWzo94CPBo7dRPbqS3oIuD5b28C0Zey2fCYug/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
     description: "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models, explore how machine learning transforms static betas into dynamic prediction engines.",
     slug: "factor-models-machine-learning-risk-alpha-prediction",
@@ -16,7 +26,7 @@ export const articles2026Q2: Article[] = [
     description: "An exhaustive exploration of modern quantitative finance principles asserting that deep financial domain expertise and market intuition are the indispensable cornerstones of successful quantitative research. From market microstructure feature engineering to vertical AI alignment and FinDPO frameworks.",
     slug: "primacy-domain-knowledge-quantitative-finance",
     date: "July 29, 2026",
-    imageUrl: "https://i.imgur.com/2bafea7d-b7d5-410a-a81a-af6c9f2ec4a6",
+    imageUrl: "https://i.imgur.com/pHGOcTD.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT_og9NfAgJ9t77BRrhJIIVM82DnqIIw1MWwplsGj2q8eRy9XPa5f-8sKBhyRAOmW686-ccHhjQcOSS/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
