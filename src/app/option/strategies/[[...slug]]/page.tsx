@@ -59,6 +59,10 @@ const strategyMetadata: Record<string, { name: string; description: string }> = 
     name: 'Wheel Strategy (Triple Income)',
     description: 'A systematic income-generating strategy creating three income sources: put premiums, call premiums, and dividends.',
   },
+  'seagull-spread': {
+    name: 'Seagull Spread',
+    description: 'A three-legged options strategy that finances directional speculation through volatility skew arbitrage.',
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {

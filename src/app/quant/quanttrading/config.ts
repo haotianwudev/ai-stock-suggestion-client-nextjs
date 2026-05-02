@@ -281,6 +281,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "jane-st-paradigm",
       "institutional-hft-market-manipulation-regulatory-framework",
+      "ontology-of-value-financial-data-classification-lifecycle-management",
+      "decoding-finances-dna-data-architecture",
     ],
     studyGuide: {
       items: [
@@ -337,6 +339,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/institutional-hft-market-manipulation-regulatory-framework",
           videoUrl: "https://youtu.be/eIpC4b_4cAM",
           visualGuideUrl: "https://i.imgur.com/UjnivYW.jpeg",
+        },
+        {
+          text: "The Ontology of Value: Financial Data Classification and Lifecycle Management",
+          url: "https://www.sophie-ai-finance.com/articles/ontology-of-value-financial-data-classification-lifecycle-management",
+          videoUrl: "https://youtu.be/r4DG-C7B0yw",
+          visualGuideUrl: "https://i.imgur.com/V1PQ2CD.jpeg",
         },
       ]
     }

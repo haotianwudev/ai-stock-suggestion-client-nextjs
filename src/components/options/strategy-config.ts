@@ -58,6 +58,7 @@ import { DefaultStrategyDetail } from './strategies/default-strategy';
 import { BufferedStrategyDetail } from './strategies/buffered-strategy';
 import { CalendarSpreadStrategyDetail } from './strategies/calendar-spread-strategy';
 import { ButterflySpreadStrategyDetail } from './strategies/butterfly-spread-strategy';
+import { SeagullSpreadStrategyDetail } from './strategies/seagull-spread-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -347,7 +348,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'AuBIzqvQdEw',
         payoffExplanation: "The collar creates a defined range of outcomes. Maximum loss occurs if stock falls to put strike, maximum profit if stock rises to call strike.",
-        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar"],
+        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar", "structured-liquidity-hedging-equity-collars-pvsf", "paper-billionaire-collar-pvsf"],
         infographicUrl: 'https://i.imgur.com/qmxFvJ5.jpeg',
         detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -444,6 +445,22 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Maximum profit occurs when the stock price equals the middle strike at expiration. Maximum loss is limited to the net debit paid. The payoff diagram resembles a butterfly's wings.",
         relatedArticles: ["unlocking-volatility-surface-risk-neutral-densities-butterfly-spread"],
         detailComponent: ButterflySpreadStrategyDetail as ComponentType<StrategyDetailProps>
+    },
+    {
+        id: 'seagull_spread',
+        category: ['Bullish', 'Income', 'Risk Defined'],
+        name: 'Seagull Spread',
+        description: "A three-legged options strategy that finances directional speculation through volatility skew arbitrage. Combines buying a call spread with selling an OTM put to create near-zero-cost directional exposure. Popular among institutional traders and corporate treasurers for risk-defined hedging.",
+        profile: 'Defined Risk, Capped Profit',
+        volatility: 'Benefits from falling IV (Short Vega)',
+        time: 'Benefits from time decay (Long Theta)',
+        payoffCalculator: (p, { strike1, strike2, strike3, premium }) =>
+            Math.max(0, p - strike1) - Math.max(0, p - strike2) - Math.max(0, strike3 - p) - premium,
+        youtubeId: 'DGOML4Zpt5E',
+        payoffExplanation: "Maximum profit occurs when the stock price rises to the short call strike. Loss occurs below the short put strike. Profit is capped at the spread between the two call strikes.",
+        relatedArticles: ["seagull-spread-options-strategy-architecture", "mastering-seagull-spread-no-free-lunch"],
+        infographicUrl: 'https://i.imgur.com/rqjZ3CX.png',
+        detailComponent: SeagullSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
 ];
 
