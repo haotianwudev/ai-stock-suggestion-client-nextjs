@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, BookOpen, Calculator, TrendingUp, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, BookOpen, Calculator, TrendingUp, AlertTriangle, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // Helper component for icons
 const Icon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
@@ -57,13 +58,13 @@ const ChartIcon = () => (
 // Reusable component for section titles
 const SectionTitle = ({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) => (
   <div className="mb-12">
-    <div className="flex items-center mb-4">
-      <div className="bg-indigo-100 text-indigo-600 p-3 rounded-full mr-4">
+    <div className="flex items-center gap-5 mb-6">
+      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-4 rounded-2xl shadow-lg">
         {icon}
       </div>
       <div>
-        <h2 className="text-3xl font-bold text-gray-800">{title}</h2>
-        <p className="text-lg text-gray-500">{subtitle}</p>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{title}</h2>
+        <p className="text-lg text-gray-600 mt-1">{subtitle}</p>
       </div>
     </div>
     <hr className="border-gray-200" />
@@ -72,26 +73,26 @@ const SectionTitle = ({ icon, title, subtitle }: { icon: React.ReactNode; title:
 
 // Reusable component for content cards
 const ContentCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+  <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 mb-8 hover:shadow-xl transition-shadow duration-300">
     {children}
   </div>
 );
 
 // Component to render mathematical formulas
 const Formula = ({ children }: { children: React.ReactNode }) => (
-  <div className="my-4 p-4 bg-gray-50 border-l-4 border-indigo-500 rounded-r-lg overflow-x-auto">
-    <code className="text-gray-700 font-mono text-sm md:text-base">{children}</code>
+  <div className="my-6 p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-500 rounded-r-xl overflow-x-auto shadow-sm">
+    <div className="text-gray-800 text-base md:text-lg font-semibold text-center italic">{children}</div>
   </div>
 );
 
 // Component for styled tables
 const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
-  <div className="overflow-x-auto my-6 rounded-lg border border-gray-200">
+  <div className="overflow-x-auto my-8 rounded-xl border border-gray-200 shadow-md">
     <table className="min-w-full divide-y divide-gray-200 bg-white">
-      <thead className="bg-gray-50">
+      <thead className="bg-gradient-to-r from-indigo-50 to-purple-50">
         <tr>
           {headers.map((header, index) => (
-            <th key={index} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th key={index} scope="col" className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
               {header}
             </th>
           ))}
@@ -99,9 +100,9 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
         {data.map((row, rowIndex) => (
-          <tr key={rowIndex} className="hover:bg-gray-50 transition-colors duration-200">
+          <tr key={rowIndex} className="hover:bg-indigo-50/30 transition-colors duration-200">
             {row.map((cell, cellIndex) => (
-              <td key={cellIndex} className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+              <td key={cellIndex} className="px-6 py-4 text-sm text-gray-700">
                 {cell}
               </td>
             ))}
@@ -114,17 +115,17 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
 
 // Component for highlighting text
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-  <strong className="font-semibold text-indigo-600">{children}</strong>
+  <strong className="font-semibold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded">{children}</strong>
 );
 
 // Risk Warning Component
 const RiskWarning = () => (
-  <div className="bg-red-50 border-l-4 border-red-400 p-6 my-8 rounded-r-lg">
+  <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 my-8 rounded-r-xl shadow-md">
     <div className="flex items-start">
-      <AlertTriangle className="h-6 w-6 text-red-400 mr-3 mt-1 flex-shrink-0" />
+      <AlertTriangle className="h-6 w-6 text-red-500 mr-3 mt-1 flex-shrink-0" />
       <div>
-        <h3 className="text-lg font-semibold text-red-800 mb-2">Risk Warning</h3>
-        <p className="text-red-700 text-sm leading-relaxed">
+        <h3 className="text-lg font-bold text-red-900 mb-2">Risk Warning</h3>
+        <p className="text-red-800 text-sm leading-relaxed">
           Options trading involves substantial risk and is not suitable for all investors. Early exercise decisions can result in significant losses. 
           The theoretical models presented here make assumptions that may not hold in real market conditions. Always consult with a qualified 
           financial advisor before making investment decisions.
@@ -136,8 +137,9 @@ const RiskWarning = () => (
 
 export default function OptimalEarlyExerciseArticle() {
   const currentArticle = articles.find(article => article.slug === 'optimal-early-exercise-american-call-options-dividend-stocks');
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
-  const table1Headers = ["Scenario", "Stock Price ($S$)", "Strike ($K$)", "Intrinsic Value ($S-K$)", "Dividend ($D$)", "Option Price ($C$)", "Time Value ($C - (S-K)$)", "Decision (Is $D >$ Time Value?)"];
+  const table1Headers = ["Scenario", "Stock Price (S)", "Strike (K)", "Intrinsic Value (S−K)", "Dividend (D)", "Option Price (C)", "Time Value (C − (S−K))", "Decision (Is D > Time Value?)"];
   const table1Data = [
     ["1. Out-of-the-Money", "$95", "$100", "$0", "$2.00", "$3.50", "$3.50", "HOLD ($2.00 < 3.50)"],
     ["2. At-the-Money", "$100", "$100", "$0", "$2.00", "$6.00", "$6.00", "HOLD ($2.00 < 6.00)"],
@@ -159,48 +161,83 @@ export default function OptimalEarlyExerciseArticle() {
         </>
       )}
 
-      <div className="bg-gray-50 font-sans text-gray-800 antialiased min-h-screen">
-        {/* Header with Return Button */}
-        <div className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center gap-4 mb-4">
-              <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Return to Home
-              </Link>
-            </div>
-          </div>
+      <div className="bg-[#FAFAFC] font-sans text-gray-800 antialiased min-h-screen">
+        {/* Return to Home Button */}
+        <div className="max-w-5xl mx-auto px-6 pt-8">
+          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Return to Home
+          </Link>
         </div>
 
-        {/* Badges */}
-        <div className="relative">
-          {/* Deep Research Badge - Top Left */}
-          <div className="absolute top-4 left-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-              <BookOpen className="w-3 h-3 mr-1" />
-              Deep Research
-            </span>
-          </div>
+        {/* Hero Section */}
+        <header className="relative pt-24 pb-20 px-6 overflow-hidden">
+          <div className="absolute top-[-20%] left-[-10%] w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
           
-          {/* Options Badge - Bottom Right */}
-          <div className="absolute bottom-4 right-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Options
-            </span>
-          </div>
-        </div>
-
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          {/* Header Section */}
-          <header className="text-center mb-20">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+          <div className="max-w-5xl mx-auto text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 font-semibold text-sm mb-8">
+              <BookOpen size={16} /> Deep Research
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-indigo-900 to-gray-900 leading-tight mb-6">
               Optimal Early Exercise of American Call Options on Dividend-Paying Stocks
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light">
               A comprehensive theoretical and computational analysis of the early exercise decision for rational investors.
             </p>
-          </header>
+          </div>
+        </header>
+
+        {/* Hero Infographic - Below Title with Full-Screen Capability */}
+        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+            onClick={() => setIsImageViewerOpen(true)}
+          >
+            <img 
+              src="https://i.imgur.com/yYUhUcF.jpeg" 
+              alt="Optimal Early Exercise Decision Framework" 
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Full-screen button overlay */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsImageViewerOpen(true);
+              }}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+              title="View full screen"
+            >
+              <Maximize2 className="h-4 w-4" />
+            </button>
+            {/* Click hint */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Click to view full screen
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full-screen image viewer */}
+        <FullScreenImageViewer
+          src="https://i.imgur.com/yYUhUcF.jpeg"
+          alt="Optimal Early Exercise Decision Framework"
+          isOpen={isImageViewerOpen}
+          onClose={() => setIsImageViewerOpen(false)}
+        />
+
+        {/* Badges */}
+        <div className="max-w-5xl mx-auto px-6 flex justify-end gap-2 mb-8">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
+            <TrendingUp className="w-3 h-3 mr-1" />
+            Options
+          </span>
+        </div>
+
+        <main className="max-w-5xl mx-auto px-6 pb-24 relative z-10">
 
           <RiskWarning />
 
@@ -252,15 +289,19 @@ export default function OptimalEarlyExerciseArticle() {
                   the time value of the option to be forfeited. This condition is most likely met when the option is <Highlight>deep in-the-money</Highlight>, 
                   where its time value is minimal.
                 </p>
-                <Formula>Dividend (D) &gt; Time Value of the Call Option</Formula>
+                <Formula>
+                  <span>Dividend (<em>D</em>) &gt; Time Value of the Call Option</span>
+                </Formula>
                 <p>
                   If exercise is optimal, it should be done <Highlight>immediately prior to the stock going ex-dividend</Highlight>. 
-                  This maximizes the time value preserved up to that point. There exists a critical stock price, S*, where an investor is indifferent 
+                  This maximizes the time value preserved up to that point. There exists a critical stock price, <em>S*</em>, where an investor is indifferent 
                   between exercising and holding. It is found by solving:
                 </p>
-                <Formula>S* - K = C_european(S* - D, T-t_d)</Formula>
+                <Formula>
+                  <span><em>S*</em> − <em>K</em> = <em>C</em><sub>european</sub>(<em>S*</em> − <em>D</em>, <em>T</em> − <em>t<sub>d</sub></em>)</span>
+                </Formula>
                 <p>
-                  If the current stock price S &gt; S*, <Highlight>early exercise is the optimal action</Highlight>. 
+                  If the current stock price <em>S</em> &gt; <em>S*</em>, <Highlight>early exercise is the optimal action</Highlight>. 
                   The following table illustrates this decision process.
                 </p>
                 <h4 className="font-semibold text-gray-700 pt-4">Table 1: Early Exercise Decision Matrix</h4>
@@ -278,18 +319,24 @@ export default function OptimalEarlyExerciseArticle() {
                 </p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>
-                    <b>Scenario 1 (Hold):</b> Value the option as a European call on an adjusted stock price S' = S - PV(D), held to original expiration.
-                    <Formula>C_hold = BS(S', K, T, r, sigma)</Formula>
+                    <b>Scenario 1 (Hold):</b> Value the option as a European call on an adjusted stock price <em>S&apos;</em> = <em>S</em> − PV(<em>D</em>), held to original expiration.
+                    <Formula>
+                      <span><em>C</em><sub>hold</sub> = BS(<em>S&apos;</em>, <em>K</em>, <em>T</em>, <em>r</em>, <em>σ</em>)</span>
+                    </Formula>
                   </li>
                   <li>
-                    <b>Scenario 2 (Exercise):</b> Value the option as a European call that expires just before the ex-dividend date, t_d.
-                    <Formula>C_exercise_timing = BS(S, K, t_d, r, sigma)</Formula>
+                    <b>Scenario 2 (Exercise):</b> Value the option as a European call that expires just before the ex-dividend date, <em>t<sub>d</sub></em>.
+                    <Formula>
+                      <span><em>C</em><sub>exercise_timing</sub> = BS(<em>S</em>, <em>K</em>, <em>t<sub>d</sub></em>, <em>r</em>, <em>σ</em>)</span>
+                    </Formula>
                   </li>
                 </ul>
                 <p>
-                  The American call's value is the <Highlight>maximum of these two scenarios</Highlight>, modeling the rational investor's choice.
+                  The American call&apos;s value is the <Highlight>maximum of these two scenarios</Highlight>, modeling the rational investor&apos;s choice.
                 </p>
-                <Formula>C_american ~ max(C_hold, C_exercise_timing)</Formula>
+                <Formula>
+                  <span><em>C</em><sub>american</sub> ≈ max(<em>C</em><sub>hold</sub>, <em>C</em><sub>exercise_timing</sub>)</span>
+                </Formula>
               </div>
             </ContentCard>
           </section>
@@ -309,11 +356,13 @@ export default function OptimalEarlyExerciseArticle() {
                   <Highlight>Monte Carlo simulation</Highlight> models uncertainty by generating thousands of possible future price paths for an asset. 
                   For options, we simulate stock prices using <Highlight>Geometric Brownian Motion (GBM)</Highlight> in a <Highlight>risk-neutral world</Highlight>.
                 </p>
-                <Formula>S_(t+delta_t) = S_t * exp((r - 0.5*sigma^2)*delta_t + sigma*epsilon*sqrt(delta_t))</Formula>
+                <Formula>
+                  <span><em>S</em><sub><em>t</em>+Δ<em>t</em></sub> = <em>S<sub>t</sub></em> × exp((<em>r</em> − 0.5<em>σ</em>²)Δ<em>t</em> + <em>σε</em>√Δ<em>t</em>)</span>
+                </Formula>
                 <p>
                   The challenge is that simulation is <Highlight>forward-looking</Highlight>, while the American option decision requires <Highlight>backward induction</Highlight>. 
                   The <Highlight>Longstaff-Schwartz Method (LSM)</Highlight> solves this. It works backward from maturity, using least-squares regression at each step 
-                  to estimate the option's "<Highlight>continuation value</Highlight>" (the expected value of holding it). It then compares this to the immediate 
+                  to estimate the option&apos;s "<Highlight>continuation value</Highlight>" (the expected value of holding it). It then compares this to the immediate 
                   exercise value to determine the optimal strategy for each simulated path.
                 </p>
               </div>
@@ -323,15 +372,19 @@ export default function OptimalEarlyExerciseArticle() {
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 6: Estimating the Confidence of Early Exercise</h3>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  We can rigorously define the "Confidence of Early Exercise" as the estimated <Highlight>risk-neutral probability</Highlight> that exercising early 
+                  We can rigorously define the &quot;Confidence of Early Exercise&quot; as the estimated <Highlight>risk-neutral probability</Highlight> that exercising early 
                   is the optimal strategy. This is calculated directly from the LSM simulation results as the proportion of paths where exercise was deemed optimal:
                 </p>
-                <Formula>P_exercise = N_exercise / N_total</Formula>
+                <Formula>
+                  <span><em>P</em><sub>exercise</sub> = <em>N</em><sub>exercise</sub> / <em>N</em><sub>total</sub></span>
+                </Formula>
                 <p>
-                  Where N_exercise is the number of simulated paths where LSM determined exercise was optimal at the ex-dividend date. 
+                  Where <em>N</em><sub>exercise</sub> is the number of simulated paths where LSM determined exercise was optimal at the ex-dividend date. 
                   To quantify the uncertainty of this estimate, we construct a 95% <Highlight>confidence interval</Highlight>:
                 </p>
-                <Formula>P_exercise +/- 1.96 * sqrt((P_exercise * (1 - P_exercise)) / N_total)</Formula>
+                <Formula>
+                  <span><em>P</em><sub>exercise</sub> ± 1.96 × √[(<em>P</em><sub>exercise</sub> × (1 − <em>P</em><sub>exercise</sub>)) / <em>N</em><sub>total</sub>]</span>
+                </Formula>
                 <p>
                   This provides a statistically robust range for the true probability of early exercise. A high probability (e.g., 99%) gives a trader strong confidence, 
                   while a probability near 50% indicates the decision is highly uncertain.
@@ -372,36 +425,44 @@ export default function OptimalEarlyExerciseArticle() {
           </section>
 
           {/* Call to Action */}
-          <div className="mt-20 text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-12 rounded-2xl">
-            <h2 className="text-3xl font-bold mb-4">Ready to Master Options Theory?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Dive deeper into quantitative finance with our comprehensive research library
-            </p>
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-indigo-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 mr-4"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-            <Link 
-              href="/"
-              className="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-white hover:text-indigo-600 transition-colors duration-300 transform hover:scale-105"
-            >
-              Explore More Articles
-            </Link>
+          <div className="mt-20 p-10 bg-gradient-to-br from-indigo-900 to-purple-900 rounded-[3rem] shadow-xl text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+            <div className="relative z-10 flex flex-col items-center text-center">
+              <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl mb-6 inline-block">
+                <BookOpen size={32} className="text-indigo-300" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Ready to Master Options Theory?</h2>
+              <p className="text-xl mb-8 text-indigo-100 font-light max-w-2xl">
+                Dive deeper into quantitative finance with our comprehensive research library
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {currentArticle?.googleDoc && (
+                  <a 
+                    href={currentArticle.googleDoc}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-white text-indigo-900 font-bold py-4 px-8 rounded-full text-lg hover:bg-indigo-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
+                    <BookOpen className="mr-2 h-5 w-5" />
+                    Read Full Research Paper
+                  </a>
+                )}
+                <Link 
+                  href="/"
+                  className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300 transform hover:scale-105"
+                >
+                  Explore More Articles
+                </Link>
+              </div>
+            </div>
           </div>
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-sm opacity-75">
-              &copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
+        <footer className="bg-gray-900 text-gray-300 py-12 mt-24">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <p className="text-sm">
+              &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
             </p>
           </div>
         </footer>

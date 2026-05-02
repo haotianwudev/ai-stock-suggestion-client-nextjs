@@ -2,6 +2,27 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
+    description: "A comprehensive theoretical and computational analysis of the early exercise decision for rational investors. Explores Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method for determining optimal exercise strategies.",
+    slug: "optimal-early-exercise-american-call-options-dividend-stocks",
+    date: "June 25, 2026",
+    imageUrl: "https://i.imgur.com/yYUhUcF.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSyaCeVDYd2vthBBVSCNlmVv1a5TTAGltlI8TcE5VKO1fPqBwFqZ3XrwJzgoYiUwm2RPGJ6a56XYzWd/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
+    title: "Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction",
+    description: "A quantitative framework for identifying structural vulnerabilities in systematic strategies and building regime-aware portfolios. Master Minimum Regime Performance (MRP), the Winner's Curse in momentum, and how to construct portfolios that survive hostile macroeconomic environments.",
+    slug: "strategy-decay-factor-fragility-regime-aware-portfolio-construction",
+    date: "June 25, 2026",
+    imageUrl: "https://i.imgur.com/Uy48v6o.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQu42JJI4PlB8yjnB95qdkk8yOIC6tVvlrWkwtEVylWMzfFA2Jl56TDudeGJPKKKCmoHoGnb-hM7RkM/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
     description: "Discover why signal generation is only half the battle, and how mathematics dictates your long-term survival in financial markets. From Bell Labs to Wall Street, master the logarithmic utility function, Merton Fraction, and why institutions never trade Full Kelly.",
     slug: "kelly-criterion-optimal-position-sizing-information-theory",

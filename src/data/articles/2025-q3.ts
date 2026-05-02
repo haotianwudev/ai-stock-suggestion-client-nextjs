@@ -455,18 +455,6 @@ export const articles2025Q3: Article[] = [
     labels: [ArticleLabel.FORM13F],
   },
 {
-    title: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
-    description: "A comprehensive theoretical and computational analysis of the early exercise decision for rational investors. Explores Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method for determining optimal exercise strategies.",
-    slug: "optimal-early-exercise-american-call-options-dividend-stocks",
-    date: "August 27, 2025",
-    imageUrl: "https://images.ctfassets.net/y88td1zx1ufe/4Nt7mUN5aR35lkugeDGcEs/6269a774b447afc8a793c8fe22e5ef6c/Early-Exercise.png?fm=webp",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSyaCeVDYd2vthBBVSCNlmVv1a5TTAGltlI8TcE5VKO1fPqBwFqZ3XrwJzgoYiUwm2RPGJ6a56XYzWd/pub",
-    deepResearch: true,
-    options: true,
-    premiumContent: true,
-    labels: [ArticleLabel.QUANT],
-  },
-{
     title: "Fed Easing signal - Powell Pivot - Soft Landing or Deceptive Bull Trap in History",
     description: "Dive deep into Federal Reserve Chair Jerome Powell's pivotal Jackson Hole speech on August 22, 2025, where he signaled a potential easing cycle for monetary policy. This highly anticipated address, interpreted by financial markets as a clear dovish pivot, sparked an immediate and powerful rally across major equity indices and a corresponding drop in short-term Treasury yields.",
     slug: "powell-pivot",
