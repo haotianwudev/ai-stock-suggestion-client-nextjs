@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
+    description: "Discover why signal generation is only half the battle, and how mathematics dictates your long-term survival in financial markets. From Bell Labs to Wall Street, master the logarithmic utility function, Merton Fraction, and why institutions never trade Full Kelly.",
+    slug: "kelly-criterion-optimal-position-sizing-information-theory",
+    date: "June 20, 2026",
+    imageUrl: "https://i.imgur.com/m9AINNC.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYRSb1Buipf_L70N9WiFFK8giTqIcy6v_i7iOH9Q7QUBiYxutn8fhCvs0Ky7WoMcUjy2MVPQyBmGdD/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
