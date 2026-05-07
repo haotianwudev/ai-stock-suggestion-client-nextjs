@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Autonomous AI Agents: The Architecture of Harness Engineering",
+    description: "In the hyper-competitive landscape of quantitative finance, raw LLMs are fundamentally ill-equipped for rigorous, fault-intolerant environments. The competitive moat has shifted to the operational infrastructure that wraps around them: The Harness. Explore execution runtimes, secure sandboxes, memory compaction, authorization fabrics, and the recursive autonomy of skills calling skills.",
+    slug: "autonomous-ai-agents-architecture-harness-engineering",
+    date: "July 5, 2026",
+    imageUrl: "https://i.imgur.com/xYCDApY.png",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQqSaOZmRIneROTf2i0eKsycU1dWr096q_TxAsohj4AZc2G7UXEM2K6DnZYzfn5cVlkqCs1jjTGCiX_/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Architecture of Interoperability: Agent-to-Agent Protocols in Financial Multi-Agent Systems",
     description: "A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, and orchestrating autonomous AI in modern finance. Explore capability advertising, stateful collaboration, opacity architecture, and the broader protocol stack (MCP, ACP, AGP) powering the next generation of financial infrastructure.",
     slug: "architecture-interoperability-agent-protocols-financial-systems",
