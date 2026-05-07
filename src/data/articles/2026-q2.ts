@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Architecture of Interoperability: Agent-to-Agent Protocols in Financial Multi-Agent Systems",
+    description: "A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, and orchestrating autonomous AI in modern finance. Explore capability advertising, stateful collaboration, opacity architecture, and the broader protocol stack (MCP, ACP, AGP) powering the next generation of financial infrastructure.",
+    slug: "architecture-interoperability-agent-protocols-financial-systems",
+    date: "June 30, 2026",
+    imageUrl: "https://i.imgur.com/dEJdLqp.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTN5PUOMtjL6XbesvfYCt6JQDTSAxQfoIMN1X0AQwdXUbT0vcGRrSeF73i8_RDFlfe3dgKMYlGXV-k4/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
     description: "A comprehensive theoretical and computational analysis of the early exercise decision for rational investors. Explores Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method for determining optimal exercise strategies.",
     slug: "optimal-early-exercise-american-call-options-dividend-stocks",
