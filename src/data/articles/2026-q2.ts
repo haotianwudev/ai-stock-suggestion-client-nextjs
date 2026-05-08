@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
+    description: "The modern edge lies not in the blind selling of insurance, but in the rigorous decomposition of the VRP into its constituent, orthogonal components. Master the dissection of moneyness, term structure, and correlation to target structural inefficiencies driven by non-economic flows.",
+    slug: "decomposing-volatility-risk-premium-structural-arbitrage",
+    date: "July 10, 2026",
+    imageUrl: "https://i.imgur.com/R0dykvd.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQtvD2dDGh4qpYyNaLb4YHG6Jga1fCkpXS4wKyfkv0JztdmUxgJoP23TLoSm22pYIb6eApKo-9drVCl/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Autonomous AI Agents: The Architecture of Harness Engineering",
     description: "In the hyper-competitive landscape of quantitative finance, raw LLMs are fundamentally ill-equipped for rigorous, fault-intolerant environments. The competitive moat has shifted to the operational infrastructure that wraps around them: The Harness. Explore execution runtimes, secure sandboxes, memory compaction, authorization fabrics, and the recursive autonomy of skills calling skills.",
     slug: "autonomous-ai-agents-architecture-harness-engineering",
