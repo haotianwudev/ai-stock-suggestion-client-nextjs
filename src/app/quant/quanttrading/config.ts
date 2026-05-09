@@ -377,6 +377,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "diversification-deep-dive-factor-based-risk-models",
       "investment-clock-website",
       "quantitative-guide-calculate-investment-clock",
+      "integer-optimization-finance-continuous-theory-discrete-execution",
+      "discrete-frontier-integer-optimization",
     ],
     studyGuide: {
       items: [
@@ -448,6 +450,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Portfolio Visualizer Tool",
           url: "https://www.portfoliovisualizer.com/",
+        },
+        {
+          text: "Integer Optimization in Finance",
+          url: "https://www.sophie-ai-finance.com/articles/integer-optimization-finance-continuous-theory-discrete-execution",
+          videoUrl: "https://youtu.be/MY8LRTrnPKk",
+          visualGuideUrl: "https://i.imgur.com/X2ORuTr.jpeg",
         },
       ]
     }

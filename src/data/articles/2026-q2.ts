@@ -188,6 +188,16 @@ export const articles2026Q2: Article[] = [
     options: true,
   },
   {
+    title: "Decoding the Bond Term Premium: The End of the Negative Era",
+    description: `This video explores the structural shift in the bond term premium — from a decade of negative compression under QE to a new regime driven by sticky inflation, fiscal deficits, and AI infrastructure supply flooding the long-duration market.`,
+    slug: "bond-term-premium-end-negative-era",
+    date: "May 7, 2026",
+    youtubeUrl: "https://youtu.be/qp4ElDhvLr8",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/qp4ElDhvLr8/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
     title: "Decoding the Bond Term Premium: Fixed Income Dynamics, Pricing Models, and Portfolio Strategy",
     description: "A mathematically rigorous analysis of the bond term premium — from the ACM affine term structure model and its failure modes to the post-2022 regime shift, AI-driven fiscal supply shocks, and actionable portfolio positioning frameworks for navigating duration risk.",
     slug: "bond-term-premium-fixed-income-dynamics-pricing-models",
@@ -196,6 +206,16 @@ export const articles2026Q2: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTbRxbkchJvVvKsDovVzkemlqRhOWeTrCFecWHTfLcEf_drPN8V6G_F1FRkdzW-lcReScrj0Ndx-wmk/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
+    title: "The Discrete Frontier: How Integer Optimization is Reshaping Quantitative Finance",
+    description: `This video explores the paradigm shift toward Integer Optimization and Mixed-Integer Programming (MIP), which bridges the gap between theoretical optimality and operational reality in real-world finance governed by discrete constraints.`,
+    slug: "discrete-frontier-integer-optimization",
+    date: "May 5, 2026",
+    youtubeUrl: "https://youtu.be/MY8LRTrnPKk",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/MY8LRTrnPKk/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
   {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",

@@ -60,7 +60,9 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: "https://i.imgur.com/XEfr0iF.jpeg",
     relatedArticles: [
       "pca-yield-curve",
-      "geometry-of-rates-pca-fixed-income-markets"
+      "geometry-of-rates-pca-fixed-income-markets",
+      "bond-term-premium-fixed-income-dynamics-pricing-models",
+      "bond-term-premium-end-negative-era",
     ],
     studyGuide: {
       items: [
@@ -82,6 +84,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Python PCA Implementation Guide",
           url: "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+        },
+        {
+          text: "Decoding the Bond Term Premium",
+          url: "https://www.sophie-ai-finance.com/articles/bond-term-premium-fixed-income-dynamics-pricing-models",
+          videoUrl: "https://youtu.be/qp4ElDhvLr8",
+          visualGuideUrl: "https://i.imgur.com/zfZtnkj.jpeg",
         },
       ]
     }
