@@ -77,7 +77,7 @@ export default function PrimacyDomainKnowledgePage() {
   const currentArticle = articles.find(a => a.slug === 'primacy-domain-knowledge-quantitative-finance');
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
-  const infographicUrl = 'https://i.imgur.com/2bafea7d-b7d5-410a-a81a-af6c9f2ec4a6';
+  const infographicUrl = 'https://i.imgur.com/pHGOcTD.png';
   const googleDocUrl = 'https://docs.google.com/document/d/e/2PACX-1vT_og9NfAgJ9t77BRrhJIIVM82DnqIIw1MWwplsGj2q8eRy9XPa5f-8sKBhyRAOmW686-ccHhjQcOSS/pub';
 
   return (
