@@ -36,6 +36,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "dark-index-dix-tracking-smart-money",
       "supply-chain",
       "trading-wires-supply-chain-quant-signals",
+      "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
+      "factor-models-tax-loss-harvesting",
     ],
     studyGuide: {
       items: [
@@ -120,6 +122,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/supply-chain",
           videoUrl: "https://youtu.be/TQLZWeYUYyQ",
           visualGuideUrl: "https://i.imgur.com/vqAxsnD.png",
+        },
+        {
+          text: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
+          url: "https://www.sophie-ai-finance.com/articles/direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
+          videoUrl: "https://youtu.be/kVwOEbM-okw",
+          visualGuideUrl: "https://i.imgur.com/OkRNq43.jpeg",
         },
       ]
     }
@@ -283,6 +291,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "institutional-hft-market-manipulation-regulatory-framework",
       "ontology-of-value-financial-data-classification-lifecycle-management",
       "decoding-finances-dna-data-architecture",
+      "alpha-factory-technical-blueprint-quantitative-hedge-funds",
+      "inside-alpha-factory-quant-hedge-fund",
     ],
     studyGuide: {
       items: [
@@ -346,6 +356,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/r4DG-C7B0yw",
           visualGuideUrl: "https://i.imgur.com/V1PQ2CD.jpeg",
         },
+        {
+          text: "The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds",
+          url: "https://www.sophie-ai-finance.com/articles/alpha-factory-technical-blueprint-quantitative-hedge-funds",
+          videoUrl: "https://youtu.be/tV8_MOdpPVQ",
+          visualGuideUrl: "https://i.imgur.com/HOYib16.jpeg",
+        },
       ]
     }
   },
@@ -379,6 +395,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "quantitative-guide-calculate-investment-clock",
       "integer-optimization-finance-continuous-theory-discrete-execution",
       "discrete-frontier-integer-optimization",
+      "factor-models-machine-learning-risk-alpha-prediction",
+      "quant-factor-models-alpha-vs-beta",
     ],
     studyGuide: {
       items: [
@@ -456,6 +474,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/integer-optimization-finance-continuous-theory-discrete-execution",
           videoUrl: "https://youtu.be/MY8LRTrnPKk",
           visualGuideUrl: "https://i.imgur.com/X2ORuTr.jpeg",
+        },
+        {
+          text: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
+          url: "https://www.sophie-ai-finance.com/articles/factor-models-machine-learning-risk-alpha-prediction",
+          videoUrl: "https://youtu.be/3FS6Yqd-zDU",
+          visualGuideUrl: "https://i.imgur.com/2IxVlfz.jpeg",
         },
       ]
     }

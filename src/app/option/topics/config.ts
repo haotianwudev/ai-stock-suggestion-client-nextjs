@@ -144,6 +144,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
       "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
       "volatility-model-evolution-svi-dupire-heston",
+      "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+      "vol-surface-sticky-delta-sticky-strike",
     ],
     studyGuide: {
       items: [
@@ -197,10 +199,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/EjaO4UaVLJA",
           visualGuideUrl: "https://i.imgur.com/UAZud6k.jpeg",
         },
+        {
+          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+          url: "https://www.sophie-ai-finance.com/articles/sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+          videoUrl: "https://youtu.be/LgSXvwCOy0o",
+          visualGuideUrl: "https://i.imgur.com/mdZbOrt.jpeg",
+        },
       ]
     }
   },
-  
+
   'vrp': {
     id: 'vrp',
     title: 'Volatility Risk Premium (VRP)',

@@ -63,6 +63,10 @@ const strategyMetadata: Record<string, { name: string; description: string }> = 
     name: 'Seagull Spread',
     description: 'A three-legged options strategy that finances directional speculation through volatility skew arbitrage.',
   },
+  'collar-strategy': {
+    name: 'Collar Strategy',
+    description: 'A defensive strategy combining stock ownership with protective puts and covered calls to define risk and reward around a position.',
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {

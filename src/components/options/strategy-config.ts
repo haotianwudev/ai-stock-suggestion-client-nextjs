@@ -348,7 +348,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'AuBIzqvQdEw',
         payoffExplanation: "The collar creates a defined range of outcomes. Maximum loss occurs if stock falls to put strike, maximum profit if stock rises to call strike.",
-        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar", "structured-liquidity-hedging-equity-collars-pvsf", "paper-billionaire-collar-pvsf"],
+        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar", "structured-liquidity-hedging-equity-collars-pvsf", "paper-billionaire-collar-pvsf", "advanced-options-collar-strategies-structural-mechanics-tradeoffs", "advanced-options-collars-downside"],
         infographicUrl: 'https://i.imgur.com/qmxFvJ5.jpeg',
         detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
     },

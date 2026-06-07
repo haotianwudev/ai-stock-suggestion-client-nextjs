@@ -63,6 +63,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "geometry-of-rates-pca-fixed-income-markets",
       "bond-term-premium-fixed-income-dynamics-pricing-models",
       "bond-term-premium-end-negative-era",
+      "advanced-dynamics-correlation-quantitative-finance",
+      "illusion-stability-correlation-quant-finance",
+      "conformal-prediction-portfolio-risk-var",
+      "conformal-prediction-vs-traditional-var",
     ],
     studyGuide: {
       items: [
@@ -91,6 +95,18 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/qp4ElDhvLr8",
           visualGuideUrl: "https://i.imgur.com/zfZtnkj.jpeg",
         },
+        {
+          text: "Advanced Dynamics of Correlation in Quantitative Finance",
+          url: "https://www.sophie-ai-finance.com/articles/advanced-dynamics-correlation-quantitative-finance",
+          videoUrl: "https://youtu.be/NC4QwRw8rAA",
+          visualGuideUrl: "https://i.imgur.com/ycDz0qo.png",
+        },
+        {
+          text: "Conformal Prediction for Portfolio Risk: Beyond VaR",
+          url: "https://www.sophie-ai-finance.com/articles/conformal-prediction-portfolio-risk-var",
+          videoUrl: "https://youtu.be/HP6o-90qKos",
+          visualGuideUrl: "https://i.imgur.com/RYfA2e2.jpeg",
+        },
       ]
     }
   },
@@ -117,6 +133,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "beyond-black-scholes",
       "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
       "volatility-model-evolution-svi-dupire-heston",
+      "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+      "vol-surface-sticky-delta-sticky-strike",
+      "unpacking-cds-granular-deep-dive-credit-default-swaps",
+      "cds-mechanics-valuation-cs01",
     ],
     studyGuide: {
       items: [
@@ -167,6 +187,18 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
           videoUrl: "https://youtu.be/EjaO4UaVLJA",
           visualGuideUrl: "https://i.imgur.com/UAZud6k.jpeg",
+        },
+        {
+          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+          url: "https://www.sophie-ai-finance.com/articles/sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+          videoUrl: "https://youtu.be/LgSXvwCOy0o",
+          visualGuideUrl: "https://i.imgur.com/mdZbOrt.jpeg",
+        },
+        {
+          text: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
+          url: "https://www.sophie-ai-finance.com/articles/unpacking-cds-granular-deep-dive-credit-default-swaps",
+          videoUrl: "https://youtu.be/EtDXXSIffTQ",
+          visualGuideUrl: "https://i.imgur.com/WIPaOHg.jpeg",
         },
       ]
     }
