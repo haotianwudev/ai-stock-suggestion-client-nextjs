@@ -397,6 +397,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "discrete-frontier-integer-optimization",
       "factor-models-machine-learning-risk-alpha-prediction",
       "quant-factor-models-alpha-vs-beta",
+      "entropy-methods-portfolio-construction",
+      "perfect-portfolio-quest-markowitz-entropy",
     ],
     studyGuide: {
       items: [
@@ -480,6 +482,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/factor-models-machine-learning-risk-alpha-prediction",
           videoUrl: "https://youtu.be/3FS6Yqd-zDU",
           visualGuideUrl: "https://i.imgur.com/2IxVlfz.jpeg",
+        },
+        {
+          text: "Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms",
+          url: "https://www.sophie-ai-finance.com/articles/entropy-methods-portfolio-construction",
+          videoUrl: "https://youtu.be/gr4Z7fOsVk0",
+          visualGuideUrl: "https://i.imgur.com/Z5gEhMV.png",
         },
       ]
     }
