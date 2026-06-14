@@ -2,6 +2,26 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
+    description: "A comprehensive, step-by-step breakdown of the scale, strategic utility, and quantitative mechanics driving the modern $22 trillion ETF ecosystem. From AUM growth and trading velocity to the exodus from vanilla beta, tax alpha advantages, and the arbitrage engine of market microstructure.",
+    slug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
+    date: "July 2, 2026",
+    imageUrl: "https://i.imgur.com/86LNDeM.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSSXAWeHw3zu-ykv2MmCcHn2vZpSzvfM7IsGKkZMMUL97lHIADyni5CM9EYoW_KcnjOLxLT159SGbxN/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
+    title: "The Mathematics & Microstructure of the Cboe VIX",
+    description: "A comprehensive quantitative guide to the VIX — from stochastic variance replication and discrete approximation to market microstructure dynamics, derivatives ecosystems, and the August 2024 liquidity shock. Master the fear gauge beyond the headlines.",
+    slug: "mathematics-microstructure-cboe-vix",
+    date: "July 1, 2026",
+    imageUrl: "https://i.imgur.com/7aefF0v.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSTq5-n3aNC0BQjj0NR4eK-VCSKorx8m6KUv9rE_4YlkTjcdDj725nSQusUAPUObFv8juT7qq2Wmf1W/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
     description: "The modern edge lies not in the blind selling of insurance, but in the rigorous decomposition of the VRP into its constituent, orthogonal components. Master the dissection of moneyness, term structure, and correlation to target structural inefficiencies driven by non-economic flows.",
     slug: "decomposing-volatility-risk-premium-structural-arbitrage",
