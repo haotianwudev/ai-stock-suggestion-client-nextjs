@@ -2,6 +2,26 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation",
+    description: "A comprehensive quantitative analysis of market crash mechanics — from institutional warnings and valuation overheating to options microstructure dynamics (Gamma, Vanna, Charm), volatility feedback effects, and strategic Crisis Alpha positioning through VIX convexity and trend-following strategies.",
+    slug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
+    date: "July 5, 2026",
+    imageUrl: "https://i.imgur.com/sjnGt0w.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRMBFOALOOKtuFDR_qczy4Uy0sgLQvy8NTp8rQPB8H95g6gcGCtn6FmXHaZZlnstnNk7MyGvEaymabx/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.MARCO],
+  },
+  {
+    title: "Alibaba Group (BABA) Drawdown: Quantitative Analysis of Idiosyncratic Shocks, Factor Exposures, and Volatility Dynamics",
+    description: "A comprehensive quantitative analysis of Alibaba's severe multi-sigma equity drawdown as of June 2026. Explores statistical return modeling, geopolitical risk premiums, market microstructure dynamics, fundamental factor deterioration, and the mathematical frameworks underlying the catastrophic repricing event.",
+    slug: "alibaba-baba-quantitative-analysis-drawdown-factor-exposures",
+    date: "July 3, 2026",
+    imageUrl: "https://i.imgur.com/PzNP608.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQZXcKOapD6h8pFqRd6Ra7V1osh8VMKm6BadHkjk4nnjSqCB6dgiLci81dbwHzD8pXZh5-N1G_bK-l6/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.STOCK_ANALYSIS],
+  },
+  {
     title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
     description: "A comprehensive, step-by-step breakdown of the scale, strategic utility, and quantitative mechanics driving the modern $22 trillion ETF ecosystem. From AUM growth and trading velocity to the exodus from vanilla beta, tax alpha advantages, and the arbitrage engine of market microstructure.",
     slug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
