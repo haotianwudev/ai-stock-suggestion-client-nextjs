@@ -225,6 +225,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "definitive-backtrader-cheatsheet-guide",
       "mechanics-of-alpha-raw-data-realized-returns",
       "backtest-lie-quant-strategies-fail",
+      "strategy-decay-factor-fragility-regime-aware-portfolio-construction",
+      "strategy-decay-mrp-decompose",
     ],
     studyGuide: {
       items: [
@@ -258,6 +260,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/mechanics-of-alpha-raw-data-realized-returns",
           videoUrl: "https://youtu.be/rv_9yM5vn6k",
           visualGuideUrl: "https://i.imgur.com/Yqby0EQ.jpeg",
+        },
+        {
+          text: "Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction",
+          url: "https://www.sophie-ai-finance.com/articles/strategy-decay-factor-fragility-regime-aware-portfolio-construction",
+          videoUrl: "https://youtu.be/oD_Ki-sDNzM",
+          visualGuideUrl: "https://i.imgur.com/Uy48v6o.png",
         },
       ],
     }

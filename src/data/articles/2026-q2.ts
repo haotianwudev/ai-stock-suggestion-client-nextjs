@@ -2,16 +2,6 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
-    title: "The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation",
-    description: "A comprehensive quantitative analysis of market crash mechanics — from institutional warnings and valuation overheating to options microstructure dynamics (Gamma, Vanna, Charm), volatility feedback effects, and strategic Crisis Alpha positioning through VIX convexity and trend-following strategies.",
-    slug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
-    date: "July 5, 2026",
-    imageUrl: "https://i.imgur.com/sjnGt0w.jpeg",
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRMBFOALOOKtuFDR_qczy4Uy0sgLQvy8NTp8rQPB8H95g6gcGCtn6FmXHaZZlnstnNk7MyGvEaymabx/pub",
-    deepResearch: true,
-    labels: [ArticleLabel.MARCO],
-  },
-  {
     title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
     description: "A comprehensive, step-by-step breakdown of the scale, strategic utility, and quantitative mechanics driving the modern $22 trillion ETF ecosystem. From AUM growth and trading velocity to the exodus from vanilla beta, tax alpha advantages, and the arbitrage engine of market microstructure.",
     slug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
@@ -54,10 +44,21 @@ export const articles2026Q2: Article[] = [
     options: true,
   },
   {
+    title: "The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation",
+    description: "A comprehensive quantitative analysis of market crash mechanics — from institutional warnings and valuation overheating to options microstructure dynamics (Gamma, Vanna, Charm), volatility feedback effects, and strategic Crisis Alpha positioning through VIX convexity and trend-following strategies.",
+    slug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
+    date: "June 26, 2026",
+    imageUrl: "https://i.imgur.com/sjnGt0w.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRMBFOALOOKtuFDR_qczy4Uy0sgLQvy8NTp8rQPB8H95g6gcGCtn6FmXHaZZlnstnNk7MyGvEaymabx/pub",
+    deepResearch: true,
+    options: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
     description: "Discover why signal generation is only half the battle, and how mathematics dictates your long-term survival in financial markets. From Bell Labs to Wall Street, master the logarithmic utility function, Merton Fraction, and why institutions never trade Full Kelly.",
     slug: "kelly-criterion-optimal-position-sizing-information-theory",
-    date: "June 22, 2026",
+    date: "June 23, 2026",
     imageUrl: "https://i.imgur.com/m9AINNC.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYRSb1Buipf_L70N9WiFFK8giTqIcy6v_i7iOH9Q7QUBiYxutn8fhCvs0Ky7WoMcUjy2MVPQyBmGdD/pub",
@@ -75,6 +76,16 @@ export const articles2026Q2: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "The Reason Alibaba (BABA) Stock is Collapsing in 2026: Quant Analysis",
+    description: `This video delivers a quantitative analysis of Alibaba's catastrophic 2026 stock collapse — examining idiosyncratic shocks, geopolitical risk premiums, factor exposure deterioration, and the market microstructure dynamics driving BABA's multi-sigma drawdown.`,
+    slug: "alibaba-baba-collapsing-2026-quant-analysis",
+    date: "June 19, 2026",
+    youtubeUrl: "https://youtu.be/OQ4VLc6UcCs",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/OQ4VLc6UcCs/maxresdefault.jpg",
+    labels: [ArticleLabel.STOCK_ANALYSIS],
+  },
+  {
     title: "Alibaba Group (BABA) Drawdown: Quantitative Analysis of Idiosyncratic Shocks, Factor Exposures, and Volatility Dynamics",
     description: "A comprehensive quantitative analysis of Alibaba's severe multi-sigma equity drawdown as of June 2026. Explores statistical return modeling, geopolitical risk premiums, market microstructure dynamics, fundamental factor deterioration, and the mathematical frameworks underlying the catastrophic repricing event.",
     slug: "alibaba-baba-quantitative-analysis-drawdown-factor-exposures",
@@ -83,6 +94,16 @@ export const articles2026Q2: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQZXcKOapD6h8pFqRd6Ra7V1osh8VMKm6BadHkjk4nnjSqCB6dgiLci81dbwHzD8pXZh5-N1G_bK-l6/pub",
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS],
+  },
+  {
+    title: "Research Article Decompose: Strategy Decay & Minimum Regime Performance (MRP)",
+    description: `This video decomposes the deep research article on strategy decay and Minimum Regime Performance (MRP) — breaking down how systematic strategies deteriorate across hostile macro regimes and the quantitative frameworks for building regime-aware portfolios that survive structural drawdowns.`,
+    slug: "strategy-decay-mrp-decompose",
+    date: "June 17, 2026",
+    youtubeUrl: "https://youtu.be/oD_Ki-sDNzM",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/oD_Ki-sDNzM/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
   {
     title: "Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction",
