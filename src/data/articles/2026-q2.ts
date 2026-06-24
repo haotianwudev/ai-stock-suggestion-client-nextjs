@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Pricing of Cross-Border Dual-Listed Equities",
+    description: "Exploring liquidity premia, arbitrage constraints, and the persistent Chinese AH Premium Puzzle. A deep dive into why the Law of One Price is systematically violated in global markets through quantitative finance models.",
+    slug: "pricing-cross-border-dual-listed-equities",
+    date: "July 4, 2026",
+    imageUrl: "https://i.imgur.com/uCMbiP8.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSlps3VVwZRPj9F3lTniY0May4HrDzprH8cTc6JyXpHdWmRsXdUwA0gX6lStUOgEMmVid86CjmXyy9m/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
     description: "A comprehensive, step-by-step breakdown of the scale, strategic utility, and quantitative mechanics driving the modern $22 trillion ETF ecosystem. From AUM growth and trading velocity to the exodus from vanilla beta, tax alpha advantages, and the arbitrage engine of market microstructure.",
     slug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
