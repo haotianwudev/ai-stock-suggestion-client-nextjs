@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Architecting Autonomous Quantitative Agents: A Comprehensive Guide to the LangChain Ecosystem",
+    description: "A comprehensive guide to the modern LangChain ecosystem. Build stateful, reliable, and secure multi-agent systems for financial modeling—without writing endless code. From LangChain frameworks to Deep Agents harness and MCP connectivity.",
+    slug: "architecting-autonomous-quantitative-agents-langchain-ecosystem",
+    date: "July 5, 2026",
+    imageUrl: "https://i.imgur.com/2jjdEFS.jpeg",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQnDE6aAIAQqmLqO41KXQ7-23I0Sk1Z66HSpwZaMbGMLuo3XXKrKgHO8qICTMP4e6cu4TqFELuCbRvx/pub",
+    deepResearch: true,
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Pricing of Cross-Border Dual-Listed Equities",
     description: "Exploring liquidity premia, arbitrage constraints, and the persistent Chinese AH Premium Puzzle. A deep dive into why the Law of One Price is systematically violated in global markets through quantitative finance models.",
     slug: "pricing-cross-border-dual-listed-equities",
