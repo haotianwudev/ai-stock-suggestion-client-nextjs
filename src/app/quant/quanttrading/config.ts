@@ -38,6 +38,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "trading-wires-supply-chain-quant-signals",
       "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
       "factor-models-tax-loss-harvesting",
+      "kelly-criterion-optimal-position-sizing-information-theory",
+      "kelly-criterion-position-sizing",
     ],
     studyGuide: {
       items: [
@@ -128,6 +130,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
           videoUrl: "https://youtu.be/kVwOEbM-okw",
           visualGuideUrl: "https://i.imgur.com/OkRNq43.jpeg",
+        },
+        {
+          text: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
+          url: "https://www.sophie-ai-finance.com/articles/kelly-criterion-optimal-position-sizing-information-theory",
+          videoUrl: "https://youtu.be/lLaqaSzIlP4",
+          visualGuideUrl: "https://i.imgur.com/m9AINNC.jpeg",
         },
       ]
     }

@@ -267,6 +267,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
       "dark-index-dix-understanding-short-is-long-market-microstructure",
       "dark-index-dix-tracking-smart-money",
+      "june-2026-cross-asset-contagion",
+      "overheat-cool-down-markets-plunge",
     ],
     studyGuide: {
       items: [
@@ -298,6 +300,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/f5yZ7wdjEOY",
           visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
         },
+        {
+          text: "The June 2026 Cross-Asset Contagion",
+          url: "https://www.sophie-ai-finance.com/articles/june-2026-cross-asset-contagion",
+          videoUrl: "https://youtu.be/o9cu-VKCgY4",
+          visualGuideUrl: "https://i.imgur.com/sAw080Q.jpeg",
+        },
       ]
     }
   },
@@ -313,6 +321,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "roll-option",
       "advanced-option-rolling-mechanics",
       "art-rolling-options-hidden-trap",
+      "optimal-early-exercise-american-call-options-dividend-stocks",
+      "american-call-options-early-exercise",
+      "kelly-criterion-optimal-position-sizing-information-theory",
+      "kelly-criterion-position-sizing",
     ],
     studyGuide: {
       items: [
@@ -327,6 +339,18 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/advanced-option-rolling-mechanics",
           videoUrl: "https://youtu.be/2L_UPaxTy_c",
           visualGuideUrl: "https://i.imgur.com/ORf3wI2.jpeg",
+        },
+        {
+          text: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
+          url: "https://www.sophie-ai-finance.com/articles/optimal-early-exercise-american-call-options-dividend-stocks",
+          videoUrl: "https://youtu.be/v8iVbeIxVRc",
+          visualGuideUrl: "https://i.imgur.com/yYUhUcF.jpeg",
+        },
+        {
+          text: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
+          url: "https://www.sophie-ai-finance.com/articles/kelly-criterion-optimal-position-sizing-information-theory",
+          videoUrl: "https://youtu.be/lLaqaSzIlP4",
+          visualGuideUrl: "https://i.imgur.com/m9AINNC.jpeg",
         },
       ]
     }

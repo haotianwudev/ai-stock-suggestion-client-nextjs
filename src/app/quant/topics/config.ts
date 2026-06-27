@@ -137,6 +137,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "vol-surface-sticky-delta-sticky-strike",
       "unpacking-cds-granular-deep-dive-credit-default-swaps",
       "cds-mechanics-valuation-cs01",
+      "optimal-early-exercise-american-call-options-dividend-stocks",
+      "american-call-options-early-exercise",
     ],
     studyGuide: {
       items: [
@@ -199,6 +201,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/unpacking-cds-granular-deep-dive-credit-default-swaps",
           videoUrl: "https://youtu.be/EtDXXSIffTQ",
           visualGuideUrl: "https://i.imgur.com/WIPaOHg.jpeg",
+        },
+        {
+          text: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
+          url: "https://www.sophie-ai-finance.com/articles/optimal-early-exercise-american-call-options-dividend-stocks",
+          videoUrl: "https://youtu.be/v8iVbeIxVRc",
+          visualGuideUrl: "https://i.imgur.com/yYUhUcF.jpeg",
         },
       ]
     }
