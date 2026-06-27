@@ -267,7 +267,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
       "dark-index-dix-understanding-short-is-long-market-microstructure",
       "dark-index-dix-tracking-smart-money",
-      "june-2026-cross-asset-contagion",
+      "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
       "overheat-cool-down-markets-plunge",
     ],
     studyGuide: {
@@ -301,10 +301,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
         },
         {
-          text: "The June 2026 Cross-Asset Contagion",
-          url: "https://www.sophie-ai-finance.com/articles/june-2026-cross-asset-contagion",
+          text: "What happened in Markets Plunge?",
+          url: "https://www.sophie-ai-finance.com/articles/anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
           videoUrl: "https://youtu.be/o9cu-VKCgY4",
-          visualGuideUrl: "https://i.imgur.com/sAw080Q.jpeg",
+          visualGuideUrl: "https://i.imgur.com/sjnGt0w.jpeg",
         },
       ]
     }

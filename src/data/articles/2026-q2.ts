@@ -1,7 +1,6 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
-  
   {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
@@ -63,17 +62,7 @@ export const articles2026Q2: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQnDE6aAIAQqmLqO41KXQ7-23I0Sk1Z66HSpwZaMbGMLuo3XXKrKgHO8qICTMP4e6cu4TqFELuCbRvx/pub",
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
-  },
-  {
-    title: "From Overheat to sudden Cool Down: What happened in Markets Plunge?",
-    description: `This video examines the June 2026 market plunge — tracing the transition from overheated macro conditions to sudden cross-asset contagion through quantitative deleveraging and systemic risk frameworks.`,
-    slug: "overheat-cool-down-markets-plunge",
-    date: "June 29, 2026",
-    youtubeUrl: "https://youtu.be/o9cu-VKCgY4",
-    isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/o9cu-VKCgY4/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
-  },
+  },  
   {
     title: "The June 2026 Cross-Asset Contagion",
     description: "A comprehensive breakdown of macroeconomic catalysts, quantitative deleveraging, and the terminal phase of market overheating. Explore how uncorrelated assets collapsed simultaneously through rigorous structural analysis of Fed policy shifts, geopolitical resolution, and market microstructure vulnerabilities.",
@@ -82,6 +71,16 @@ export const articles2026Q2: Article[] = [
     imageUrl: "https://i.imgur.com/sAw080Q.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS-Gd42WQ1__Nif8Mr6vhdJrLDlS3nGDMe_MGzGgQseEg8ZuSVyUZEOg_W-R1IGERryqZ4N0ZDKaYYc/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
+    title: "From Overheat to sudden Cool Down: What happened in Markets Plunge?",
+    description: `This video examines the June 2026 market plunge — tracing the transition from overheated macro conditions to sudden cross-asset contagion through quantitative deleveraging and systemic risk frameworks.`,
+    slug: "overheat-cool-down-markets-plunge",
+    date: "June 27, 2026",
+    youtubeUrl: "https://youtu.be/o9cu-VKCgY4",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/o9cu-VKCgY4/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
   },
   {
