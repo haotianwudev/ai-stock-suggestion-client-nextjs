@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "Quantitative Foundations of Long-Short Equity Portfolios",
+    description: "A comprehensive quantitative guide to the architecture of long-short equity strategies — from the Fundamental Law of Active Management and structural paradigms (market-neutral vs. 130/30) to factor models, the quant research workflow, and portfolio optimization via convex programming.",
+    slug: "quantitative-foundations-long-short-equity-portfolios",
+    date: "July 26, 2026",
+    imageUrl: "https://i.imgur.com/euE0o4Q.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmLhoOJleFcGU-iDE5xPb0k_o2PMHR3GpWMLe0OGkyROJdNKDtvAbQvKNFi69iMxoqJ96mG7eb1Laa/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
     description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
