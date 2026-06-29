@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q2: Article[] = [
   {
+    title: "The Anatomy of a Transient Shock: Deconstructing Stagflation Fears and the 2026 Disinflationary Trend",
+    description: "A comprehensive macroeconomic analysis of the 2026 energy shock, inflation paradox, and structural resilience. Explores why stagflation fears were premature, how the Strait of Hormuz crisis created transient volatility, and why falling breakeven inflation rates validate the disinflationary trajectory despite geopolitical chaos.",
+    slug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
+    date: "June 28, 2026",
+    imageUrl: "https://i.imgur.com/33a4e31c.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSZ3hTYpbnqCtwVfqcHGD2AqeIfuYoSbaU7842Hp92T1x9i3bGn3Gt47QC4BW0GCn4dZW-WKl16dOiC/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+  },
+  {
     title: "Quantitative Foundations of Long-Short Equity Portfolios",
     description: "A comprehensive quantitative guide to the architecture of long-short equity strategies — from the Fundamental Law of Active Management and structural paradigms (market-neutral vs. 130/30) to factor models, the quant research workflow, and portfolio optimization via convex programming.",
     slug: "quantitative-foundations-long-short-equity-portfolios",
