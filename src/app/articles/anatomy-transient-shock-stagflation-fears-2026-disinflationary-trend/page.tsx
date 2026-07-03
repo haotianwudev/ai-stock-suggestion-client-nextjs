@@ -112,7 +112,7 @@ export default function TransientShockArticle() {
           onClick={() => setIsImageViewerOpen(true)}
         >
           <img 
-            src="https://i.imgur.com/33a4e31c.jpeg" 
+            src="https://i.imgur.com/nGzDLC9.png" 
             alt="Transient Shock Infographic - Energy Crisis and Disinflationary Analysis" 
             className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
           />
