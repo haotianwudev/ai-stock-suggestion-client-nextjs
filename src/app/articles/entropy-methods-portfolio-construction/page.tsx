@@ -92,43 +92,47 @@ export default function EntropyMethodsPortfolioConstruction() {
         </header>
 
         {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8 -mt-16 relative z-20">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/571492cb-b307-42aa-b6db-253bf3e093b3.jpeg" 
-              alt="Entropy Methods in Portfolio Construction Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
+        {currentArticle?.imageUrl && (
+          <section className="max-w-5xl mx-auto px-6 pt-12 pb-8 -mt-16 relative z-20">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              onClick={() => setIsImageViewerOpen(true)}
             >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
+              <img 
+                src={currentArticle.imageUrl}
+                alt="Entropy Methods in Portfolio Construction Infographic" 
+                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+              {/* Full-screen button overlay */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsImageViewerOpen(true);
+                }}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                title="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
+              {/* Click hint */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
+                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                  Click to view full screen
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/571492cb-b307-42aa-b6db-253bf3e093b3.jpeg"
-          alt="Entropy Methods in Portfolio Construction Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
+        {currentArticle?.imageUrl && (
+          <FullScreenImageViewer
+            src={currentArticle.imageUrl}
+            alt="Entropy Methods in Portfolio Construction Infographic"
+            isOpen={isImageViewerOpen}
+            onClose={() => setIsImageViewerOpen(false)}
+          />
+        )}
 
         {/* Main Content Area */}
         <main className="max-w-5xl mx-auto px-6 lg:px-8 py-16 space-y-24">
