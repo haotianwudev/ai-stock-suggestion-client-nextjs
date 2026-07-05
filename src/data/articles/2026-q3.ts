@@ -2,6 +2,26 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Quantitative Trading of Mean Reversion: Factor Models, Execution Dynamics, and Rigorous Research Practices",
+    description: "A comprehensive deep dive into statistical arbitrage and mean reversion trading. Master factor models from CAPM to Fama-French Five-Factor, advanced extraction via IPCA and deep learning, Ornstein-Uhlenbeck frameworks, execution dynamics with the square-root law, and rigorous research practices to prevent overfitting.",
+    slug: "quantitative-trading-mean-reversion-factor-models-execution-dynamics",
+    date: "August 4, 2026",
+    imageUrl: "https://i.imgur.com/UYlEArc.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSK4rFGjYnaD1bcaqxVqER3XZLyvMyJXBxYfUxHd5YA19779S_j4zjTIVPnc4SxDqqIl9FogEmPBfpf/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
+    title: "Architecting AI Agent Testing in Quantitative Finance",
+    description: "Master the robust evaluation frameworks required to deploy autonomous financial agents safely, utilizing the LangChain and LangGraph ecosystems. From unit testing and trajectory validation to LLM-as-a-judge evaluation and domain-specific benchmarking.",
+    slug: "architecting-ai-agent-testing-quantitative-finance",
+    date: "July 30, 2026",
+    imageUrl: "https://i.imgur.com/tFpP7o5.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQcPHZeL7cqAsc-vana14vl4oRiZ_T9c5sEfE-ZX2Yhvh860zzx4WVZes1gQIB2FFPBF5Uc-qv2-Rsl/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",
     description: "A comprehensive deep dive into ETF mechanics — from regulatory frameworks and the dual-market architecture to tax efficiency via the heartbeat trade, execution strategies for low-liquidity ETFs, volatility decay in leveraged products, and the USO contango anomaly.",
     slug: "architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks",
