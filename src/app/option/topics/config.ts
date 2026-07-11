@@ -223,6 +223,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "vol-hedge-fund",
       "industrialization-volatility-hedge-funds-operational-architecture",
+      "decomposing-volatility-risk-premium-structural-arbitrage",
+      "quant-edge-alpha-generation",
     ],
     studyGuide: {
       items: [
@@ -247,7 +249,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Barchart Historical vs Implied Volatility",
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
-        }
+        },
+        {
+          text: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
+          url: "https://www.sophie-ai-finance.com/articles/decomposing-volatility-risk-premium-structural-arbitrage",
+          videoUrl: "https://youtu.be/tP1HJuVzuZU",
+          visualGuideUrl: "https://i.imgur.com/R0dykvd.jpeg",
+        },
       ]
     }
   },

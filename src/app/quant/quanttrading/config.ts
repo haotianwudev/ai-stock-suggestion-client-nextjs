@@ -40,6 +40,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "factor-models-tax-loss-harvesting",
       "kelly-criterion-optimal-position-sizing-information-theory",
       "kelly-criterion-position-sizing",
+      "pricing-cross-border-dual-listed-equities",
+      "liquidity-premium-ah-share-gap-puzzle",
     ],
     studyGuide: {
       items: [
@@ -136,6 +138,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/kelly-criterion-optimal-position-sizing-information-theory",
           videoUrl: "https://youtu.be/lLaqaSzIlP4",
           visualGuideUrl: "https://i.imgur.com/m9AINNC.jpeg",
+        },
+        {
+          text: "The Pricing of Cross-Border Dual-Listed Equities",
+          url: "https://www.sophie-ai-finance.com/articles/pricing-cross-border-dual-listed-equities",
+          videoUrl: "https://youtu.be/dbnmFlVnOQQ",
+          visualGuideUrl: "https://i.imgur.com/uCMbiP8.jpeg",
         },
       ]
     }
@@ -415,6 +423,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "quant-factor-models-alpha-vs-beta",
       "entropy-methods-portfolio-construction",
       "perfect-portfolio-quest-markowitz-entropy",
+      "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
+      "trillion-dollar-etf-engine",
     ],
     studyGuide: {
       items: [
@@ -504,6 +514,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/entropy-methods-portfolio-construction",
           videoUrl: "https://youtu.be/gr4Z7fOsVk0",
           visualGuideUrl: "https://i.imgur.com/Z5gEhMV.png",
+        },
+        {
+          text: "Dynamics of the Global ETF Market",
+          url: "https://www.sophie-ai-finance.com/articles/dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
+          videoUrl: "https://youtu.be/KXLmOi9HV9o",
+          visualGuideUrl: "https://i.imgur.com/86LNDeM.jpeg",
         },
       ]
     }
