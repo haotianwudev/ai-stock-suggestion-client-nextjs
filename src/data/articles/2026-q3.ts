@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Advanced GitLab SDLC for Quantitative Development: CI/CD Best Practices",
+    description: "A comprehensive guide to managing Git version control and CI/CD pipelines specifically tailored for quantitative engineering. Master branching strategies, Jupyter notebook workflows, data versioning with DVC, performance testing, and continuous compliance for financial systems.",
+    slug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
+    date: "August 10, 2026",
+    imageUrl: "https://i.imgur.com/g45Lazn.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSsekdP5by9yDaBjsooMo5iksGBE2zMRBf9UfhlaFUmHLffTmAdg5vMVISetYwYn55AHCHYi6YdQUb4/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Quantitative Trading of Mean Reversion: Factor Models, Execution Dynamics, and Rigorous Research Practices",
     description: "A comprehensive deep dive into statistical arbitrage and mean reversion trading. Master factor models from CAPM to Fama-French Five-Factor, advanced extraction via IPCA and deep learning, Ornstein-Uhlenbeck frameworks, execution dynamics with the square-root law, and rigorous research practices to prevent overfitting.",
     slug: "quantitative-trading-mean-reversion-factor-models-execution-dynamics",
