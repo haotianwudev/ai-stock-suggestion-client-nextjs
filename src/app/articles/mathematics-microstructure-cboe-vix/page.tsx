@@ -7,9 +7,11 @@ import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
-const Formula = ({ equation }: { equation: string }) => (
-  <div className="bg-slate-50 border border-slate-200 text-slate-800 p-5 rounded-xl font-mono overflow-x-auto my-6 text-sm sm:text-base shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
-    {equation}
+const Formula = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-slate-50 border border-slate-200 text-slate-800 p-5 rounded-xl overflow-x-auto my-6 text-base sm:text-lg shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] leading-relaxed">
+    <div className="flex items-center justify-center">
+      {children}
+    </div>
   </div>
 );
 
@@ -154,9 +156,13 @@ export default function VIXMathematicsArticle() {
                     <strong className="text-slate-900">The Continuous Diffusion Process</strong>
                   </div>
                   <p className="text-slate-600 mb-3">
-                    Assuming an asset price <span className="font-mono text-pink-600">S_t</span> follows a continuous diffusion process:
+                    Assuming an asset price <span className="font-mono text-pink-600">S<sub>t</sub></span> follows a continuous diffusion process:
                   </p>
-                  <Formula equation="dS_t / S_t = μ_t dt + σ_t dW_t" />
+                  <Formula>
+                    <span className="font-serif text-lg">
+                      dS<sub>t</sub> / S<sub>t</sub> = μ<sub>t</sub> dt + σ<sub>t</sub> dW<sub>t</sub>
+                    </span>
+                  </Formula>
                 </li>
                 <li className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
                   <div className="flex items-center gap-3 mb-2">
@@ -166,7 +172,11 @@ export default function VIXMathematicsArticle() {
                   <p className="text-slate-600 mb-3">
                     Applying Ito's Lemma to the natural logarithm of the asset price, and subtracting it from the standard percentage return, neatly isolates the variance:
                   </p>
-                  <Formula equation="dS_t / S_t - d(ln S_t) = 1/2 σ_t² dt" />
+                  <Formula>
+                    <span className="font-serif text-lg">
+                      dS<sub>t</sub> / S<sub>t</sub> − d(ln S<sub>t</sub>) = ½ σ<sub>t</sub><sup>2</sup> dt
+                    </span>
+                  </Formula>
                 </li>
                 <li className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
                   <div className="flex items-center gap-3 mb-2">
@@ -176,14 +186,18 @@ export default function VIXMathematicsArticle() {
                   <p className="text-slate-600 mb-3">
                     Integrating this formula over a defined time horizon (from 0 to T) gives the total realized variance:
                   </p>
-                  <Formula equation="V = ∫_0^T σ_t² dt = 2 ∫_0^T (dS_t / S_t) - 2 ln(S_T / S_0)" />
+                  <Formula>
+                    <span className="font-serif text-lg">
+                      V = ∫<sub>0</sub><sup>T</sup> σ<sub>t</sub><sup>2</sup> dt = 2 ∫<sub>0</sub><sup>T</sup> (dS<sub>t</sub> / S<sub>t</sub>) − 2 ln(S<sub>T</sub> / S<sub>0</sub>)
+                    </span>
+                  </Formula>
                 </li>
               </ul>
               <HighlightCard 
                 title="The Log Contract & 1/K² Weighting" 
                 icon={Lightbulb} 
                 color="#d946ef"
-                content="The integral proves that realized variance can be replicated using a dynamic trading strategy (1/S_t shares) and a static short position in a theoretical 'log contract'. To synthesize this log contract, a continuous strip of out-of-the-money options is used. Every option must be weighted inversely proportional to the square of its strike price (1/K²). This precise weighting maintains a constant aggregate dollar gamma across the entire portfolio, isolating the exposure strictly to realized volatility."
+                content="The integral proves that realized variance can be replicated using a dynamic trading strategy (1/Sₜ shares) and a static short position in a theoretical 'log contract'. To synthesize this log contract, a continuous strip of out-of-the-money options is used. Every option must be weighted inversely proportional to the square of its strike price (1/K²). This precise weighting maintains a constant aggregate dollar gamma across the entire portfolio, isolating the exposure strictly to realized volatility."
               />
             </div>
           </section>
@@ -202,7 +216,11 @@ export default function VIXMathematicsArticle() {
                 <Bullet colorClass="bg-emerald-500">The methodology utilizes a generalized variance formula for a single expiration strip.</Bullet>
                 <Bullet colorClass="bg-emerald-500">It exclusively selects out-of-the-money (OTM) calls and puts to formulate the replication.</Bullet>
               </ul>
-              <Formula equation="σ² = (2/T) Σ_i [ (ΔK_i / K_i²) × e^{RT} × Q(K_i) ] - (1/T) [ F / K_0 - 1 ]²" />
+              <Formula>
+                <span className="font-serif text-lg">
+                  σ<sup>2</sup> = (2/T) Σ<sub>i</sub> [ (ΔK<sub>i</sub> / K<sub>i</sub><sup>2</sup>) × e<sup>RT</sup> × Q(K<sub>i</sub>) ] − (1/T) [ F / K<sub>0</sub> − 1 ]<sup>2</sup>
+                </span>
+              </Formula>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -218,9 +236,9 @@ export default function VIXMathematicsArticle() {
                   </p>
                 </div>
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <h4 className="font-bold text-slate-900 mb-2">3. Option Weighting (ΔK_i / K_i²)</h4>
+                  <h4 className="font-bold text-slate-900 mb-2">3. Option Weighting (ΔK<sub>i</sub> / K<sub>i</sub><sup>2</sup>)</h4>
                   <p className="text-sm text-slate-600">
-                    Each option's mid-quote Q(K_i) is scaled by half the distance to adjacent strikes (ΔK_i) and divided by the square of its strike to establish the required constant-gamma replication matrix.
+                    Each option's mid-quote Q(K<sub>i</sub>) is scaled by half the distance to adjacent strikes (ΔK<sub>i</sub>) and divided by the square of its strike to establish the required constant-gamma replication matrix.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -237,7 +255,11 @@ export default function VIXMathematicsArticle() {
               <p>
                 The VIX calculates "near-term" (23+ days) and "next-term" (less than 37 days) variance points. It minute-by-minute interpolates between these to maintain a strictly constant 30-day target:
               </p>
-              <Formula equation="VIX = 100 × √{ [ T_1 σ_1² + T_2 σ_2² ] × (N_365 / N_30) }" />
+              <Formula>
+                <span className="font-serif text-lg">
+                  VIX = 100 × √{ [ T<sub>1</sub> σ<sub>1</sub><sup>2</sup> + T<sub>2</sub> σ<sub>2</sub><sup>2</sup> ] × (N<sub>365</sub> / N<sub>30</sub>) }
+                </span>
+              </Formula>
             </div>
           </section>
 
@@ -432,10 +454,10 @@ export default function VIXMathematicsArticle() {
                     <strong>Zero-Bid Evasion:</strong> Panic bidding for exceptionally deep OTM puts (down to 1,400 strike) circumvented the calculation's zero-bid termination rule.
                   </li>
                   <li>
-                    <strong>Liquidity Collapse:</strong> Market makers withdrew, causing put mid-quotes <span className="font-mono bg-red-100 px-1 rounded">Q(K_i)</span> to swell massively. A 3,500 strike put jumped from $0.70 to $50.25.
+                    <strong>Liquidity Collapse:</strong> Market makers withdrew, causing put mid-quotes <span className="font-serif">Q(K<sub>i</sub>)</span> to swell massively. A 3,500 strike put jumped from $0.70 to $50.25.
                   </li>
                   <li>
-                    <strong>Weighting Magnification:</strong> The <span className="font-mono bg-red-100 px-1 rounded">1/K²</span> weighting heavily multiplied these inflated mid-quotes, catapulting the index mechanically.
+                    <strong>Weighting Magnification:</strong> The <span className="font-serif">1/K<sup>2</sup></span> weighting heavily multiplied these inflated mid-quotes, catapulting the index mechanically.
                   </li>
                 </ul>
                 <p className="mt-6 font-semibold text-red-900 italic">
