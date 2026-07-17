@@ -160,7 +160,7 @@ export default function VIXMathematicsArticle() {
                   </p>
                   <Formula>
                     <span className="font-serif text-lg">
-                      dS<sub>t</sub> / S<sub>t</sub> = μ<sub>t</sub> dt + σ<sub>t</sub> dW<sub>t</sub>
+                      dS<sub>t</sub> / S<sub>t</sub> = &mu;<sub>t</sub> dt + &sigma;<sub>t</sub> dW<sub>t</sub>
                     </span>
                   </Formula>
                 </li>
@@ -174,7 +174,7 @@ export default function VIXMathematicsArticle() {
                   </p>
                   <Formula>
                     <span className="font-serif text-lg">
-                      dS<sub>t</sub> / S<sub>t</sub> − d(ln S<sub>t</sub>) = ½ σ<sub>t</sub><sup>2</sup> dt
+                      dS<sub>t</sub> / S<sub>t</sub> &minus; d(ln S<sub>t</sub>) = &frac12; &sigma;<sub>t</sub><sup>2</sup> dt
                     </span>
                   </Formula>
                 </li>
@@ -188,7 +188,7 @@ export default function VIXMathematicsArticle() {
                   </p>
                   <Formula>
                     <span className="font-serif text-lg">
-                      V = ∫<sub>0</sub><sup>T</sup> σ<sub>t</sub><sup>2</sup> dt = 2 ∫<sub>0</sub><sup>T</sup> (dS<sub>t</sub> / S<sub>t</sub>) − 2 ln(S<sub>T</sub> / S<sub>0</sub>)
+                      V = &int;<sub>0</sub><sup>T</sup> &sigma;<sub>t</sub><sup>2</sup> dt = 2 &int;<sub>0</sub><sup>T</sup> (dS<sub>t</sub> / S<sub>t</sub>) &minus; 2 ln(S<sub>T</sub> / S<sub>0</sub>)
                     </span>
                   </Formula>
                 </li>
@@ -218,7 +218,7 @@ export default function VIXMathematicsArticle() {
               </ul>
               <Formula>
                 <span className="font-serif text-lg">
-                  σ<sup>2</sup> = (2/T) Σ<sub>i</sub> [ (ΔK<sub>i</sub> / K<sub>i</sub><sup>2</sup>) × e<sup>RT</sup> × Q(K<sub>i</sub>) ] − (1/T) [ F / K<sub>0</sub> − 1 ]<sup>2</sup>
+                  &sigma;<sup>2</sup> = (2/T) &Sigma;<sub>i</sub> [ (&Delta;K<sub>i</sub> / K<sub>i</sub><sup>2</sup>) &times; e<sup>RT</sup> &times; Q(K<sub>i</sub>) ] &minus; (1/T) [ F / K<sub>0</sub> &minus; 1 ]<sup>2</sup>
                 </span>
               </Formula>
               
@@ -236,9 +236,9 @@ export default function VIXMathematicsArticle() {
                   </p>
                 </div>
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <h4 className="font-bold text-slate-900 mb-2">3. Option Weighting (ΔK<sub>i</sub> / K<sub>i</sub><sup>2</sup>)</h4>
+                  <h4 className="font-bold text-slate-900 mb-2">3. Option Weighting (&Delta;K<sub>i</sub> / K<sub>i</sub><sup>2</sup>)</h4>
                   <p className="text-sm text-slate-600">
-                    Each option's mid-quote Q(K<sub>i</sub>) is scaled by half the distance to adjacent strikes (ΔK<sub>i</sub>) and divided by the square of its strike to establish the required constant-gamma replication matrix.
+                    Each option's mid-quote Q(K<sub>i</sub>) is scaled by half the distance to adjacent strikes (&Delta;K<sub>i</sub>) and divided by the square of its strike to establish the required constant-gamma replication matrix.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
@@ -257,7 +257,7 @@ export default function VIXMathematicsArticle() {
               </p>
               <Formula>
                 <span className="font-serif text-lg">
-                  VIX = 100 × √{ [ T<sub>1</sub> σ<sub>1</sub><sup>2</sup> + T<sub>2</sub> σ<sub>2</sub><sup>2</sup> ] × (N<sub>365</sub> / N<sub>30</sub>) }
+                  VIX = 100 &times; &radic;&#123; [ T<sub>1</sub> &sigma;<sub>1</sub><sup>2</sup> + T<sub>2</sub> &sigma;<sub>2</sub><sup>2</sup> ] &times; (N<sub>365</sub> / N<sub>30</sub>) &#125;
                 </span>
               </Formula>
             </div>
