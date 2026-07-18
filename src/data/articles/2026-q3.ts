@@ -74,6 +74,16 @@ export const articles2026Q3: Article[] = [
     labels: [ArticleLabel.QUANT],
   },
   {
+    title: "Long-Short Equity Portfolio: Hedge Fund Favorite Strategy",
+    description: `This video breaks down the long-short equity portfolio, a hedge fund favorite strategy — covering market-neutral and 130/30 structures, factor models, and portfolio optimization.`,
+    slug: "long-short-equity-portfolio-hedge-fund",
+    date: "July 17, 2026",
+    youtubeUrl: "https://youtu.be/-gVI9UIGoeQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/-gVI9UIGoeQ/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "Quantitative Foundations of Long-Short Equity Portfolios",
     description: "A comprehensive quantitative guide to the architecture of long-short equity strategies — from the Fundamental Law of Active Management and structural paradigms (market-neutral vs. 130/30) to factor models, the quant research workflow, and portfolio optimization via convex programming.",
     slug: "quantitative-foundations-long-short-equity-portfolios",
@@ -82,6 +92,16 @@ export const articles2026Q3: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQmLhoOJleFcGU-iDE5xPb0k_o2PMHR3GpWMLe0OGkyROJdNKDtvAbQvKNFi69iMxoqJ96mG7eb1Laa/pub",
     labels: [ArticleLabel.QUANT],
+  },
+  {
+    title: "How to Build a Testing Framework for Quant AI Trading Agents",
+    description: `This video walks through how to build a testing framework for quantitative AI trading agents — covering unit testing, trajectory validation, and LLM-as-a-judge evaluation with the LangChain and LangGraph ecosystems.`,
+    slug: "testing-framework-ai-trading-agents",
+    date: "July 14, 2026",
+    youtubeUrl: "https://youtu.be/Bl3v2F2jAjg",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/Bl3v2F2jAjg/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
   {
     title: "Architecting AI Agent Testing in Quantitative Finance",

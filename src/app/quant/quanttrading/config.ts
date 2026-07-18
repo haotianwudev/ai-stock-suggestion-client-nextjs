@@ -42,6 +42,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "kelly-criterion-position-sizing",
       "pricing-cross-border-dual-listed-equities",
       "liquidity-premium-ah-share-gap-puzzle",
+      "quantitative-foundations-long-short-equity-portfolios",
+      "long-short-equity-portfolio-hedge-fund",
     ],
     studyGuide: {
       items: [
@@ -144,6 +146,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/pricing-cross-border-dual-listed-equities",
           videoUrl: "https://youtu.be/dbnmFlVnOQQ",
           visualGuideUrl: "https://i.imgur.com/uCMbiP8.jpeg",
+        },
+        {
+          text: "Quantitative Foundations of Long-Short Equity Portfolios",
+          url: "https://www.sophie-ai-finance.com/articles/quantitative-foundations-long-short-equity-portfolios",
+          videoUrl: "https://youtu.be/-gVI9UIGoeQ",
+          visualGuideUrl: "https://i.imgur.com/euE0o4Q.jpeg",
         },
       ]
     }
