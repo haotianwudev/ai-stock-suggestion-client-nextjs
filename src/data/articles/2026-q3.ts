@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Systemic Fragility & Quantitative Contagion: The 2026 South Korean Equity Crisis",
+    description: "An in-depth analysis of the 2026 South Korean Equity Crisis, exploring the toxic convergence of retail leverage, market microstructure, and global factor rotation. Examines how single-stock leveraged ETFs, extreme index concentration, and mechanical feedback loops created a catastrophic deleveraging cascade.",
+    slug: "systemic-fragility-quantitative-contagion-2026-korean-crisis",
+    date: "August 10, 2026",
+    imageUrl: "https://i.imgur.com/Ig72p7X.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTX9eVoBRIL9uIPZ7L_sMw-so9M8hOnX2gxtSfLPw9AI3fVmessmcU1bICtUcErwxyoXy0gxlRs86k_/pub",
+    podcastUrl: "https://open.spotify.com/episode/76JjEn7iVPAMGXn5vVrNAC?si=dUTgD8OFTr2EJniD0Qw3uQ",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",
     description: "A comprehensive deep dive into ETF mechanics — from regulatory frameworks and the dual-market architecture to tax efficiency via the heartbeat trade, execution strategies for low-liquidity ETFs, volatility decay in leveraged products, and the USO contango anomaly.",
     slug: "architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks",
