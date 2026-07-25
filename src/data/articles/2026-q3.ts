@@ -2,6 +2,16 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance",
+    description: "A comprehensive technical guide to building agentic RAG systems that integrate LangChain with custom proprietary wikis. Master multi-hop reasoning, mathematical chunking strategies, LangGraph workflows, and hierarchical swarm architectures for high-stakes quantitative finance and mathematical modeling.",
+    slug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
+    date: "August 10, 2026",
+    imageUrl: "https://i.imgur.com/mdTAlcA.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRRGHdhwwkgxYFefJSj0B94I6KZ9dWLXDDA9hJlBApcHr0C9SPHuR46zouMwqC-S5-DaPoUobsOTXpe/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",
     description: "A comprehensive deep dive into ETF mechanics — from regulatory frameworks and the dual-market architecture to tax efficiency via the heartbeat trade, execution strategies for low-liquidity ETFs, volatility decay in leveraged products, and the USO contango anomaly.",
     slug: "architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks",
