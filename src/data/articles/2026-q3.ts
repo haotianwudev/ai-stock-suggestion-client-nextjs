@@ -2,6 +2,26 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "The Repo Market & Dollar Funding: Mechanics, Strategies, and Systemic Risks",
+    description: "A comprehensive deep dive into the $1 trillion daily engine of global finance. Master the mechanics of repurchase agreements, SOFR benchmark transition, Treasury basis trades with 56-to-1 leverage, Fed standing facilities, and the systemic vulnerabilities exposed in September 2019 and March 2020 liquidity crises.",
+    slug: "repo-market-dollar-funding-mechanics-strategies-systemic-risks",
+    date: "August 20, 2026",
+    imageUrl: "https://i.imgur.com/846937f5.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vROL_pfgkMnc4Vk1YN8DzCrDRYpCynn644w3IbMEtRsfQn3_uM430aD3w4-GZY2JKboC3MloI_Q0Dno/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
+    title: "Advancements in Formulaic Alpha Mining: Deep Search Mechanics, Application Strategies, and Statistical Robustness",
+    description: "A comprehensive deep dive into automated alpha discovery through Deep Reinforcement Learning and Monte Carlo Tree Search. Master the mechanics of formulaic alpha generation, risk-seeking policy gradients, signal diversity enforcement, and the critical statistical deflation techniques needed to separate genuine structural inefficiencies from backtest overfitting.",
+    slug: "advancements-formulaic-alpha-mining-deep-search-mechanics",
+    date: "August 15, 2026",
+    imageUrl: "https://i.imgur.com/FaYqMkm.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR_-Z3OuYhw2uj9r_4H_-JisNtFvG5jIKVAKT_bw2RGxO09AWjIFAFCw99_QtESFl_ZGcW6a1NvdOpx/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance",
     description: "A comprehensive technical guide to building agentic RAG systems that integrate LangChain with custom proprietary wikis. Master multi-hop reasoning, mathematical chunking strategies, LangGraph workflows, and hierarchical swarm architectures for high-stakes quantitative finance and mathematical modeling.",
     slug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
