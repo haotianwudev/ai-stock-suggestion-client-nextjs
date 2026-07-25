@@ -146,6 +146,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "volatility-model-evolution-svi-dupire-heston",
       "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
       "vol-surface-sticky-delta-sticky-strike",
+      "mathematics-microstructure-cboe-vix",
+      "math-microstructure-vix",
     ],
     studyGuide: {
       items: [
@@ -205,6 +207,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/LgSXvwCOy0o",
           visualGuideUrl: "https://i.imgur.com/mdZbOrt.jpeg",
         },
+        {
+          text: "The Mathematics & Microstructure of the Cboe VIX",
+          url: "https://www.sophie-ai-finance.com/articles/mathematics-microstructure-cboe-vix",
+          videoUrl: "https://youtu.be/IXumgPJ5D-A",
+          visualGuideUrl: "https://i.imgur.com/7aefF0v.jpeg",
+        },
       ]
     }
   },
@@ -225,6 +233,8 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "industrialization-volatility-hedge-funds-operational-architecture",
       "decomposing-volatility-risk-premium-structural-arbitrage",
       "quant-edge-alpha-generation",
+      "mastering-spx-option-selling-strategies-variance-risk-premium",
+      "systematic-spx-option-selling",
     ],
     studyGuide: {
       items: [
@@ -256,10 +266,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/tP1HJuVzuZU",
           visualGuideUrl: "https://i.imgur.com/R0dykvd.jpeg",
         },
+        {
+          text: "Mastering SPX Option Selling Strategies: A Quantitative Guide to Harvesting the Variance Risk Premium",
+          url: "https://www.sophie-ai-finance.com/articles/mastering-spx-option-selling-strategies-variance-risk-premium",
+          videoUrl: "https://youtu.be/uWmPazdgV4Q",
+          visualGuideUrl: "https://i.imgur.com/ihkmf5U.jpeg",
+        },
       ]
     }
   },
-  
+
   'gex': {
     id: 'gex',
     title: 'Gamma Exposure (GEX)',
