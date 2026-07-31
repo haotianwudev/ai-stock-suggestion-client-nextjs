@@ -325,6 +325,8 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       "decoding-finances-dna-data-architecture",
       "alpha-factory-technical-blueprint-quantitative-hedge-funds",
       "inside-alpha-factory-quant-hedge-fund",
+      "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
+      "sdlc-quantitative-development-guide",
     ],
     studyGuide: {
       items: [
@@ -393,6 +395,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.sophie-ai-finance.com/articles/alpha-factory-technical-blueprint-quantitative-hedge-funds",
           videoUrl: "https://youtu.be/tV8_MOdpPVQ",
           visualGuideUrl: "https://i.imgur.com/HOYib16.jpeg",
+        },
+        {
+          text: "Advanced GitLab SDLC for Quantitative Development",
+          url: "https://www.sophie-ai-finance.com/articles/advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
+          videoUrl: "https://youtu.be/mXnjiHQ2ycY",
+          visualGuideUrl: "https://i.imgur.com/g45Lazn.jpeg",
         },
       ]
     }

@@ -63,6 +63,16 @@ export const articles2026Q3: Article[] = [
     options: true,
   },
   {
+    title: "SDLC for Quantitative Development: The Complete Guide",
+    description: `This video walks through the complete software development lifecycle for quantitative finance teams — from version control and CI/CD to testing and deployment best practices.`,
+    slug: "sdlc-quantitative-development-guide",
+    date: "July 31, 2026",
+    youtubeUrl: "https://youtu.be/mXnjiHQ2ycY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/mXnjiHQ2ycY/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
     title: "Advanced GitLab SDLC for Quantitative Development: CI/CD Best Practices",
     description: "A comprehensive guide to managing Git version control and CI/CD pipelines specifically tailored for quantitative engineering. Master branching strategies, Jupyter notebook workflows, data versioning with DVC, performance testing, and continuous compliance for financial systems.",
     slug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
@@ -71,6 +81,16 @@ export const articles2026Q3: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSsekdP5by9yDaBjsooMo5iksGBE2zMRBf9UfhlaFUmHLffTmAdg5vMVISetYwYn55AHCHYi6YdQUb4/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+  },
+  {
+    title: "The 2026 Korean Equity Crisis: How Leverage & AI Broke the KOSPI",
+    description: `This video breaks down the 2026 Korean equity crisis, examining how retail leverage and AI-driven trading dynamics combined to crash the KOSPI.`,
+    slug: "korean-equity-crisis-leverage-ai-kospi",
+    date: "July 28, 2026",
+    youtubeUrl: "https://youtu.be/OB4lqey_8f8",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/OB4lqey_8f8/maxresdefault.jpg",
+    labels: [ArticleLabel.QUANT],
   },
   {
     title: "Systemic Fragility & Quantitative Contagion: The 2026 South Korean Equity Crisis",
