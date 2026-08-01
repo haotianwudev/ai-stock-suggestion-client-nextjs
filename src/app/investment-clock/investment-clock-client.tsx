@@ -18,6 +18,7 @@ const RELATED_ARTICLE_SLUGS = [
   "investment-clock-framework-quantitative-macro-regime-detection",
   "investment-clock",
   "navigating-bull-to-bear-regime-shift-quantitative-signals",
+  "quantitative-guide-calculate-investment-clock",
 ];
 
 const PHASE_COLORS: Record<string, string> = {
@@ -334,6 +335,12 @@ export function InvestmentClockClient() {
         videoId="ns0nlaE74Ac"
         title="Mastering the Investment Clock: What is the time now?"
         description="Learn how to map the economic cycle using Growth and Inflation signals to identify the four phases: Reflation, Recovery, Overheat, and Stagflation — and what assets to hold in each."
+      />
+
+      <VideoTutorial
+        videoId="Zzi1cuaPs7M"
+        title="A Quantitative Guide to Calculate The Investment Clock"
+        description="A quantitative walkthrough for calculating the Investment Clock — using FRED data to derive Growth and Inflation Z-scores that pinpoint the current macro regime phase for optimal asset allocation."
       />
 
       {/* Related Articles */}
