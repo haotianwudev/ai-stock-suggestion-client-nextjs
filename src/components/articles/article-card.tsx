@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Music, Maximize2 } from "lucide-react";
+import { ArrowRight, Music, Maximize2, PlayCircle, ImageIcon } from "lucide-react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { useState } from "react";
+import { youtubeThumbnailUrl } from "@/lib/youtube";
 
 interface ArticleCardProps {
   title: string;
@@ -24,16 +25,22 @@ interface ArticleCardProps {
 
 export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  // Consolidated card: an article with an attached YouTube video can toggle its
+  // thumbnail between the article infographic and the video thumbnail.
+  const hasAttachedVideo = Boolean(youtubeUrl) && !isVideo;
+  const videoThumbnail = hasAttachedVideo ? youtubeThumbnailUrl(youtubeUrl!) : null;
+  const [showVideoThumb, setShowVideoThumb] = useState(false);
+  const displayImageUrl = hasAttachedVideo && showVideoThumb && videoThumbnail ? videoThumbnail : imageUrl;
 
   return (
     <>
       <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
         <div className="flex flex-col sm:flex-row gap-2 md:gap-3 p-2 md:p-3 pb-0">
-          {imageUrl && (
+          {displayImageUrl && (
             <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100 group">
-              <img 
-                src={imageUrl} 
-                alt={title} 
+              <img
+                src={displayImageUrl}
+                alt={title}
                 className="h-full w-full object-contain hover:object-cover transition-all duration-300 cursor-pointer"
                 onClick={() => setIsImageViewerOpen(true)}
                 onError={(e) => {
@@ -53,12 +60,12 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   Deep Research
                 </span>
               )}
-              {isVideo && (
+              {(isVideo || hasAttachedVideo) && (
                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
                   Video
                 </span>
               )}
-              {podcastUrl && !isVideo && (
+              {podcastUrl && !isVideo && !hasAttachedVideo && (
                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
                   Podcast
                 </span>
@@ -67,6 +74,20 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
                   Options
                 </span>
+              )}
+              {/* Toggle chip: swap between infographic and YouTube thumbnail */}
+              {hasAttachedVideo && videoThumbnail && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowVideoThumb((prev) => !prev);
+                  }}
+                  className="absolute bottom-2 left-2 inline-flex items-center gap-1 px-2 py-1 rounded bg-black/60 hover:bg-black/80 text-white text-[10px] font-medium shadow transition-colors z-10 touch-manipulation"
+                  title={showVideoThumb ? "Show infographic" : "Show video thumbnail"}
+                >
+                  {showVideoThumb ? <ImageIcon className="h-3 w-3" /> : <PlayCircle className="h-3 w-3" />}
+                  {showVideoThumb ? "Infographic" : "Video"}
+                </button>
               )}
             </div>
           )}
@@ -134,14 +155,15 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
           </div>
           {(() => {
             // Count the number of buttons
-            const buttonCount = (isVideo && youtubeUrl ? 1 : 0) + 
-                               (googleDoc ? 1 : 0) + 
+            const buttonCount = (isVideo && youtubeUrl ? 1 : 0) +
+                               (googleDoc ? 1 : 0) +
                                (websiteUrl ? 1 : 0) +
-                               (podcastUrl ? 1 : 0) + 
+                               (podcastUrl ? 1 : 0) +
+                               (hasAttachedVideo ? 1 : 0) +
                                (!noSummary ? 1 : 0);
-            
+
             return (
-              <div className="flex gap-1.5 md:gap-2 mt-1 mb-1">
+              <div className="flex flex-wrap gap-1.5 md:gap-2 mt-1 mb-1">
                 {isVideo && youtubeUrl ? (
                   <a
                     href={youtubeUrl}
@@ -156,6 +178,19 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   </a>
                 ) : (
                   <>
+                    {hasAttachedVideo && (
+                      <a
+                        href={youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"}
+                      >
+                        <svg className="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        {buttonCount >= 3 ? "YouTube" : "Watch on YouTube"}
+                      </a>
+                    )}
                     {googleDoc && (
                       <a
                         href={googleDoc}
@@ -217,9 +252,9 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
     </Card>
 
     {/* Full-screen image viewer */}
-    {imageUrl && (
+    {displayImageUrl && (
       <FullScreenImageViewer
-        src={imageUrl}
+        src={displayImageUrl}
         alt={title}
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}

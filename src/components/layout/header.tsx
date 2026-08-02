@@ -36,6 +36,12 @@ export function Header() {
           >
             Macro Clock
           </Link>
+          <Link
+            href="/wiki"
+            className="hidden sm:inline-flex items-center text-xs font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+          >
+            Wiki
+          </Link>
           <ThemeToggle />
         </div>
       </div>

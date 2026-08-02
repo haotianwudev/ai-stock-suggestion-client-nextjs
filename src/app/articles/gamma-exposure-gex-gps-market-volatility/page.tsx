@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Activity, Shield, Anchor, Zap, BarChart3, ArrowRight, Info, Layers, MousePointerClick } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { TrendingUp, Shield, Anchor, Zap, BarChart3, ArrowRight, Info, Layers, MousePointerClick } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
+import { MathBlock, InlineMath } from '@/components/articles/math';
 
 // --- Components ---
 const Badge = ({ children, color = "blue" }: { children: React.ReactNode; color?: string }) => {
@@ -77,8 +76,8 @@ const ConceptVisualizer = () => {
             <button
               onClick={() => setActiveTab('positive')}
               className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all ${
-                activeTab === 'positive' 
-                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200' 
+                activeTab === 'positive'
+                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200'
                   : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
               }`}
             >
@@ -87,8 +86,8 @@ const ConceptVisualizer = () => {
             <button
               onClick={() => setActiveTab('negative')}
               className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all ${
-                activeTab === 'negative' 
-                  ? 'bg-rose-500 text-white shadow-lg shadow-rose-200' 
+                activeTab === 'negative'
+                  ? 'bg-rose-500 text-white shadow-lg shadow-rose-200'
                   : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
               }`}
             >
@@ -97,8 +96,8 @@ const ConceptVisualizer = () => {
           </div>
         </div>
         <div className={`p-10 lg:p-14 flex flex-col justify-center text-white transition-colors duration-500 ${
-          activeTab === 'positive' 
-            ? 'bg-gradient-to-br from-emerald-500 to-teal-600' 
+          activeTab === 'positive'
+            ? 'bg-gradient-to-br from-emerald-500 to-teal-600'
             : 'bg-gradient-to-br from-rose-500 to-orange-600'
         }`}>
           {activeTab === 'positive' ? (
@@ -140,113 +139,17 @@ const ConceptVisualizer = () => {
 
 // --- Main Application ---
 export default function GammaExposureArticle() {
-  const currentArticle = articles.find(article => article.slug === 'gamma-exposure-gex-gps-market-volatility');
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'gamma-exposure-gex-gps-market-volatility'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-700">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Badges */}
-        <div className="absolute top-20 left-4 z-40">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-            Deep Research
-          </span>
-        </div>
-
-        <div className="absolute top-20 right-4 z-40">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-            Options
-          </span>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white border-b border-slate-100">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
-          <div className="max-w-6xl mx-auto px-6 pt-24 pb-20">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              <div className="lg:w-1/2 space-y-6">
-                <Badge color="purple">Advanced Market Structure</Badge>
-                <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
-                  Gamma <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Exposure</span>
-                </h1>
-                <p className="text-xl text-slate-600 leading-relaxed">
-                  The &quot;GPS&quot; of market volatility. GEX measures how Market Makers are positioned and reveals hidden support, resistance, and potential for explosive moves.
-                </p>
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <div className="flex items-center px-6 py-3 text-slate-600 font-medium">
-                    <Activity className="w-5 h-5 mr-2 text-indigo-500" />
-                    Real-time Calculations
-                  </div>
-                </div>
-              </div>
-              <div className="lg:w-1/2 relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-60"></div>
-                <div className="relative bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
-                  {/* Decorative Chart UI */}
-                  <div className="flex justify-between items-end mb-4 border-b border-slate-100 pb-4">
-                    <div>
-                      <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Total Gamma</div>
-                      <div className="text-3xl font-bold text-indigo-600">$4.2B</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs text-emerald-500 font-bold bg-emerald-50 px-2 py-1 rounded">+1.2% Day</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div className="h-full w-3/4 bg-emerald-400 rounded-full"></div>
-                    </div>
-                    <div className="flex justify-between text-xs text-slate-500">
-                      <span>Call Gamma (Resistance)</span>
-                      <span>75%</span>
-                    </div>
-                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div className="h-full w-1/4 bg-rose-400 rounded-full"></div>
-                    </div>
-                    <div className="flex justify-between text-xs text-slate-500">
-                      <span>Put Gamma (Support)</span>
-                      <span>25%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-            <img 
-              src="https://i.imgur.com/4FiUTqH.jpeg" 
-              alt="Gamma Exposure Infographic" 
-              className="w-full h-auto"
-            />
-          </div>
-        </section>
-
-        <main className="max-w-6xl mx-auto px-6 py-20">
+    <ArticleFrame
+      slug="gamma-exposure-gex-gps-market-volatility"
+      infographicUrls={["https://i.imgur.com/4FiUTqH.jpeg"]}
+    >
+      <div className="bg-slate-50 font-sans text-slate-900 -mx-4 sm:-mx-6 px-4 sm:px-6 py-12">
+        <div className="max-w-6xl mx-auto">
           {/* Core Logic */}
-          <SectionHeading 
+          <SectionHeading
             icon={Layers}
-            title="The Core Logic" 
+            title="The Core Logic"
             subtitle="To understand GEX, you must understand the role of the Market Maker. They are the liquidity providers who must stay 'Delta Neutral' to survive."
           />
 
@@ -283,9 +186,9 @@ export default function GammaExposureArticle() {
           <ConceptVisualizer />
 
           {/* Key Levels */}
-          <SectionHeading 
+          <SectionHeading
             icon={BarChart3}
-            title="Important Price Levels" 
+            title="Important Price Levels"
             subtitle="GEX highlights invisible walls on the chart where market positioning is most concentrated."
           />
 
@@ -299,11 +202,11 @@ export default function GammaExposureArticle() {
               </p>
               <ul className="text-sm text-slate-500 space-y-2">
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-rose-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-rose-400" />
                   MMs sell stock here to hedge calls.
                 </li>
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-rose-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-rose-400" />
                   Price often stalls or pins here.
                 </li>
               </ul>
@@ -318,11 +221,11 @@ export default function GammaExposureArticle() {
               </p>
               <ul className="text-sm text-slate-500 space-y-2">
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-emerald-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-emerald-400" />
                   MMs often buy back hedges here.
                 </li>
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-emerald-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-emerald-400" />
                   Hard to break without news.
                 </li>
               </ul>
@@ -337,11 +240,11 @@ export default function GammaExposureArticle() {
               </p>
               <ul className="text-sm text-slate-500 space-y-2">
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-amber-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-amber-400" />
                   Above = Stability (Mean Reversion).
                 </li>
                 <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-amber-400" /> 
+                  <ArrowRight className="w-4 h-4 mr-2 mt-0.5 text-amber-400" />
                   Below = Volatility (Momentum).
                 </li>
               </ul>
@@ -357,37 +260,38 @@ export default function GammaExposureArticle() {
               </svg>
             </div>
 
-            <div className="relative z-10 grid lg:grid-cols-2 gap-16">
-              <div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Strategies for the Common Investor</h2>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                  You don&apos;t need to be a quant to use GEX. It primarily answers one question: <strong>&quot;Should I bet on the range holding, or the range breaking?&quot;</strong>
-                </p>
-                <div className="flex items-center space-x-4">
-                  <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
-                  <span className="text-sm font-medium tracking-widest uppercase text-slate-400">Tactical Playbook</span>
+            <div className="relative">
+              <div className="mb-12 text-center max-w-2xl mx-auto">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-white/10 rounded-2xl border border-white/20">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
                 </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Trading Regime Playbooks</h2>
+                <p className="text-lg text-slate-300 leading-relaxed">
+                  Adjust your strategy based on the prevailing Gamma regime.
+                </p>
               </div>
 
-              <div>
-                <StrategyCard 
-                  title="Mean Reversion Trading" 
+              <div className="max-w-3xl mx-auto">
+                <StrategyCard
+                  title="Mean Reversion Trading"
                   regime="Positive Gamma"
                   color="green"
                   action="Sell volatility. Look for dips to buy and rips to sell. Markets are likely to respect support and resistance levels."
                   risk="Risk: A massive news event that breaks the 'stickiness'."
                 />
 
-                <StrategyCard 
-                  title="Momentum & Breakouts" 
+                <StrategyCard
+                  title="Momentum & Breakouts"
                   regime="Negative Gamma"
                   color="red"
                   action="Buy options or directional futures. Use tight trailing stops. Don't fight the trend; the market is slippery."
                   risk="Risk: Whipsaws are common, but moves are fast."
                 />
 
-                <StrategyCard 
-                  title="The OpEx Pin" 
+                <StrategyCard
+                  title="The OpEx Pin"
                   regime="High Open Interest"
                   color="blue"
                   action="Approaching Friday expiration, price often gravitates toward strikes with massive Gamma (Call Walls)."
@@ -399,19 +303,17 @@ export default function GammaExposureArticle() {
 
           {/* Mathematical Foundation Section */}
           <div className="mt-24 mb-16">
-            <SectionHeading 
+            <SectionHeading
               icon={Layers}
-              title="The Mathematical Foundation" 
+              title="The Mathematical Foundation"
               subtitle="Understanding the quantitative mechanics behind Gamma Exposure calculations."
             />
 
             <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-12 border border-slate-100">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Core GEX Formula</h3>
-              
+
               <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-8">
-                <p className="text-center text-lg font-mono text-slate-800 mb-4">
-                  GEX = Σ (Gamma × Open Interest × Contract Multiplier × Spot Price)
-                </p>
+                <MathBlock math="\text{GEX} = \sum \left( \Gamma \times \text{OI} \times M \times S \right)" />
                 <p className="text-sm text-slate-600 text-center">
                   Where the sum is taken across all strikes and expirations
                 </p>
@@ -422,7 +324,9 @@ export default function GammaExposureArticle() {
                   <h4 className="text-lg font-bold text-slate-800 mb-3">Key Components:</h4>
                   <ul className="space-y-3 text-slate-600">
                     <li className="flex items-start">
-                      <span className="font-bold text-indigo-600 mr-2">Γ (Gamma):</span>
+                      <span className="font-bold text-indigo-600 mr-2 flex-shrink-0">
+                        <InlineMath math="\Gamma \text{ (Gamma):}" />
+                      </span>
                       <span>The rate of change of Delta with respect to the underlying price. Measures how fast the hedge ratio changes.</span>
                     </li>
                     <li className="flex items-start">
@@ -446,8 +350,8 @@ export default function GammaExposureArticle() {
                     Market Makers are typically <strong>short gamma</strong> when they sell options to retail traders:
                   </p>
                   <ul className="space-y-2 text-indigo-800">
-                    <li>• <strong>Positive GEX:</strong> MMs are short calls &rarr; stabilizing hedging flows</li>
-                    <li>• <strong>Negative GEX:</strong> MMs are short puts &rarr; destabilizing hedging flows</li>
+                    <li>&bull; <strong>Positive GEX:</strong> MMs are short calls &rarr; stabilizing hedging flows</li>
+                    <li>&bull; <strong>Negative GEX:</strong> MMs are short puts &rarr; destabilizing hedging flows</li>
                   </ul>
                 </div>
 
@@ -457,9 +361,7 @@ export default function GammaExposureArticle() {
                     <p className="text-slate-700 mb-4">
                       SPX trading at 4,500 with 10,000 contracts of OI at the 4,500 strike call with Gamma = 0.05:
                     </p>
-                    <p className="font-mono text-sm text-slate-800 mb-2">
-                      GEX = 0.05 × 10,000 × 100 × 4,500 = $225,000,000
-                    </p>
+                    <MathBlock math="\text{GEX} = 0.05 \times 10{,}000 \times 100 \times 4{,}500 = \$225{,}000{,}000" />
                     <p className="text-sm text-slate-600">
                       This means for every 1-point move in SPX, MMs must hedge $225M worth of exposure.
                     </p>
@@ -469,41 +371,15 @@ export default function GammaExposureArticle() {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-16 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Educational Disclaimer */}
-          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg my-12">
-            <h4 className="font-bold text-amber-900 mb-2">Educational Disclaimer</h4>
+          {/* Educational Note specific to this article's derived-metric caveat */}
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg mt-12">
+            <h4 className="font-bold text-amber-900 mb-2">A Note on GEX</h4>
             <p className="text-amber-800 text-sm">
-              This content is for educational purposes only. GEX is a derived metric and should be used in conjunction with other analysis. Options trading involves substantial risk and is not suitable for all investors. Past performance does not guarantee future results.
+              GEX is a derived metric and should be used in conjunction with other analysis, not as a standalone signal.
             </p>
           </div>
-        </main>
-
-        <footer className="bg-white border-t border-slate-200 py-12">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <p className="text-slate-500 mb-4">© 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p className="text-sm text-slate-400">
-              GEX is a derived metric and should be used in conjunction with other analysis.
-            </p>
-          </div>
-        </footer>
+        </div>
       </div>
-    </>
+    </ArticleFrame>
   );
 }
