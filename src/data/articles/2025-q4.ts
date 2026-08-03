@@ -268,6 +268,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQt5lOaJ_vhjHD6NbGJ5SGZhyLONQADFnfZli8z0ayeZyyhryfJk9k3cjRTttGmrF2kJPeik1Jmj3Bg/pub",
     deepResearch: true,
     options: true,
+    youtubeUrl: "https://youtu.be/t_5yWuxn0WY",
     labels: [ArticleLabel.QUANT],
   },
 {
