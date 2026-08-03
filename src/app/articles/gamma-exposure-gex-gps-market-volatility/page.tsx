@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArticleFrame } from '@/components/articles/article-frame';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { FormulaPanel, LevelLadder } from '@/components/articles/article-visuals';
 
 const Jargon = ({ term, definition }: { term: string; definition: string }) => {
@@ -119,6 +119,12 @@ export default function GammaExposureArticle() {
 
           </div>
         </section>
+
+        <InfographicSlot
+          src="https://i.imgur.com/4FiUTqH.jpeg"
+          alt="Gamma Exposure (GEX)"
+          label="Featured Infographic"
+        />
 
         <section className="mb-12">
           <h2 className="font-serif text-3xl text-gray-900 dark:text-white mb-6">Calculating Gamma Exposure</h2>
