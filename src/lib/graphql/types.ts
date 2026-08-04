@@ -282,3 +282,53 @@ export interface QuantTrendingResult {
   lastUpdated?: string;
   total: number;
 }
+
+export interface ForumCategory {
+  id: string;
+  slug: string;
+  name: string;
+  description?: string;
+  sortOrder: number;
+}
+
+export interface ForumThread {
+  id: string;
+  categoryId?: string;
+  categorySlug?: string;
+  contentType?: string;
+  contentSlug?: string;
+  title: string;
+  authorId?: string;
+  authorDisplayName?: string;
+  authorAvatarUrl?: string;
+  status: string;
+  pinned: boolean;
+  locked: boolean;
+  createdAt: string;
+  updatedAt: string;
+  postCount: number;
+}
+
+export interface ForumThreadList {
+  items: ForumThread[];
+  totalCount: number;
+}
+
+export interface ForumPost {
+  id: string;
+  threadId: string;
+  parentPostId?: string;
+  authorId: string;
+  authorDisplayName?: string;
+  authorAvatarUrl?: string;
+  body: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  editedAt?: string;
+}
+
+export interface ForumPostList {
+  items: ForumPost[];
+  totalCount: number;
+}

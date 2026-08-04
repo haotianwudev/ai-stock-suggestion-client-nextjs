@@ -12,6 +12,7 @@ import { youtubeEmbedUrl, youtubeThumbnailUrl } from "@/lib/youtube";
 import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/wiki";
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
+import { CommentSection } from "@/components/comments/comment-section";
 
 interface ArticleFrameProps {
   /** Slug of the article entry in src/data/articles — the frame looks up all metadata from it. */
@@ -21,6 +22,7 @@ interface ArticleFrameProps {
    * forces one to the top of the page. */
   children: React.ReactNode;
   hideWikiTab?: boolean;
+  hideComments?: boolean;
   titleOverride?: string;
   descriptionOverride?: string;
   /**
@@ -347,6 +349,7 @@ export function ArticleFrame({
   slug,
   children,
   hideWikiTab = false,
+  hideComments = false,
   titleOverride,
   descriptionOverride,
   additionalDisclaimer,
@@ -458,6 +461,12 @@ export function ArticleFrame({
             <article className="max-w-5xl mx-auto">{children}</article>
           )}
         </div>
+
+        {!hideComments && (
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <CommentSection contentSlug={currentArticle.slug || slug} title={title} />
+          </div>
+        )}
 
         {/* Educational Disclaimer — universal text is always shown and reused verbatim across
             every article; additionalDisclaimer appends article-specific wording, it never

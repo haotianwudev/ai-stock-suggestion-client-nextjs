@@ -251,6 +251,126 @@ export const GET_QUANT_TRENDING = gql`
   }
 `;
 
+export const GET_FORUM_CATEGORIES = gql`
+  query GetForumCategories {
+    forumCategories {
+      id
+      slug
+      name
+      description
+      sortOrder
+    }
+  }
+`;
+
+const FORUM_THREAD_FIELDS = `
+  id
+  categoryId
+  categorySlug
+  contentType
+  contentSlug
+  title
+  authorId
+  authorDisplayName
+  authorAvatarUrl
+  status
+  pinned
+  locked
+  createdAt
+  updatedAt
+  postCount
+`;
+
+export const GET_FORUM_THREADS = gql`
+  query GetForumThreads($categorySlug: String, $limit: Int, $offset: Int) {
+    forumThreads(categorySlug: $categorySlug, limit: $limit, offset: $offset) {
+      items {
+        ${FORUM_THREAD_FIELDS}
+      }
+      totalCount
+    }
+  }
+`;
+
+export const GET_FORUM_THREAD = gql`
+  query GetForumThread($id: ID!) {
+    forumThread(id: $id) {
+      ${FORUM_THREAD_FIELDS}
+    }
+  }
+`;
+
+export const GET_ARTICLE_COMMENTS = gql`
+  query GetArticleComments($contentSlug: String!) {
+    articleComments(contentSlug: $contentSlug) {
+      ${FORUM_THREAD_FIELDS}
+    }
+  }
+`;
+
+const FORUM_POST_FIELDS = `
+  id
+  threadId
+  parentPostId
+  authorId
+  authorDisplayName
+  authorAvatarUrl
+  body
+  status
+  createdAt
+  updatedAt
+  editedAt
+`;
+
+export const GET_FORUM_POSTS = gql`
+  query GetForumPosts($threadId: ID!, $limit: Int, $offset: Int) {
+    forumPosts(threadId: $threadId, limit: $limit, offset: $offset) {
+      items {
+        ${FORUM_POST_FIELDS}
+      }
+      totalCount
+    }
+  }
+`;
+
+export const CREATE_FORUM_THREAD = gql`
+  mutation CreateForumThread($categoryId: ID!, $title: String!, $body: String!) {
+    createForumThread(categoryId: $categoryId, title: $title, body: $body) {
+      ${FORUM_THREAD_FIELDS}
+    }
+  }
+`;
+
+export const POST_COMMENT = gql`
+  mutation PostComment($contentSlug: String!, $title: String!, $body: String!) {
+    postComment(contentSlug: $contentSlug, title: $title, body: $body) {
+      ${FORUM_POST_FIELDS}
+    }
+  }
+`;
+
+export const REPLY_TO_POST = gql`
+  mutation ReplyToPost($threadId: ID!, $parentPostId: ID, $body: String!) {
+    replyToPost(threadId: $threadId, parentPostId: $parentPostId, body: $body) {
+      ${FORUM_POST_FIELDS}
+    }
+  }
+`;
+
+export const EDIT_POST = gql`
+  mutation EditPost($id: ID!, $body: String!) {
+    editPost(id: $id, body: $body) {
+      ${FORUM_POST_FIELDS}
+    }
+  }
+`;
+
+export const DELETE_POST = gql`
+  mutation DeletePost($id: ID!) {
+    deletePost(id: $id)
+  }
+`;
+
 export const GET_INVESTMENT_CLOCK = gql`
   query GetInvestmentClock {
     investmentClock {

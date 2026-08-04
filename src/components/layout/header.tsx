@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SearchBar } from "@/components/search/search-bar";
+import { AuthStatus } from "@/components/auth/auth-status";
 
 export function Header() {
   return (
@@ -43,6 +44,7 @@ export function Header() {
             Wiki
           </Link>
           <ThemeToggle />
+          <AuthStatus />
         </div>
       </div>
     </header>

@@ -2,8 +2,11 @@
 
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { setContext } from "@apollo/client/link/context";
 import { useMemo } from "react";
 import { getGraphQLUri } from "./gql-config";
+import { createClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
 
 export function ApolloWrapper({ children }: { children: React.ReactNode }) {
   const client = useMemo(() => {
@@ -47,6 +50,23 @@ export function ApolloWrapper({ children }: { children: React.ReactNode }) {
       },
     });
 
+    // Attaches the current Supabase session's access token, if any, so
+    // auth-aware resolvers (Query.me, forum mutations) can identify the
+    // caller. Runs per-operation, unlike the rest of this client which is
+    // built once on mount.
+    const authLink = setContext(async (_, { headers }) => {
+      if (!isSupabaseConfigured) return { headers };
+      const supabase = createClient();
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      return {
+        headers: {
+          ...headers,
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      };
+    });
+
     // Optimized cache configuration
     const cache = new InMemoryCache({
       typePolicies: {
@@ -67,7 +87,7 @@ export function ApolloWrapper({ children }: { children: React.ReactNode }) {
     });
 
     return new ApolloClient({
-      link: from([errorLink, httpLink]),
+      link: from([errorLink, authLink, httpLink]),
       cache,
       defaultOptions: {
         watchQuery: {
