@@ -12,6 +12,15 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "option-strategy/vix",
+    title: "Cboe Volatility Index (VIX)",
+    articleSlug: "mathematics-microstructure-cboe-vix",
+    date: "2026-07-24",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive quantitative guide to the VIX — from stochastic variance replication and discrete approximation to market microstructure dynamics, derivatives ecosystems, and the August 2024 liquidity shock.",
+  },
+  {
     path: "option-strategy/gex",
     title: "Gamma Exposure (GEX)",
     articleSlug: "gamma-exposure-gex-gps-market-volatility",

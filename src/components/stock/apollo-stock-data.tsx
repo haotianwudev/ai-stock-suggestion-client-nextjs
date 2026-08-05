@@ -108,10 +108,13 @@ const createApolloClient = () => {
   });
 };
 
-export default function ApolloStockData() {
+export default function ApolloStockData({ compact = false }: { compact?: boolean }) {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const TICKERS = ["AAPL", "MSFT", "NVDA"];
+  const gridClass = compact
+    ? "grid gap-2 grid-cols-1 min-[480px]:grid-cols-3"
+    : "grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto";
   
   useEffect(() => {
     // Fetch real stock data on component mount
@@ -252,7 +255,7 @@ export default function ApolloStockData() {
 
   if (isLoading) {
     return (
-      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+      <div className={gridClass}>
         {[1, 2, 3].map(i => (
           <StockCardSkeleton key={i} />
         ))}
@@ -275,9 +278,9 @@ export default function ApolloStockData() {
   }
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl mx-auto">
+    <div className={gridClass}>
       {stocks.map((stock) => (
-        <StockCard key={stock.ticker} stock={stock} />
+        <StockCard key={stock.ticker} stock={stock} compact={compact} />
       ))}
     </div>
   );

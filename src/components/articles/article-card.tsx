@@ -56,7 +56,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 <Maximize2 className="h-3 w-3" />
               </button>
               {deepResearch && (
-                <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-xs text-white font-semibold shadow group-hover:left-12 transition-all duration-200">
+                <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-xs text-primary-foreground font-semibold shadow group-hover:left-12 transition-all duration-200">
                   Deep Research
                 </span>
               )}
@@ -103,7 +103,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     href={googleDoc}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-purple-700"
+                    className="underline hover:text-primary"
                   >
                     Google Doc
                   </a>
@@ -156,7 +156,6 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
           {(() => {
             // Count the number of buttons
             const buttonCount = (isVideo && youtubeUrl ? 1 : 0) +
-                               (googleDoc ? 1 : 0) +
                                (websiteUrl ? 1 : 0) +
                                (podcastUrl ? 1 : 0) +
                                (hasAttachedVideo ? 1 : 0) +
@@ -183,22 +182,12 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         href={youtubeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"}
+                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"
                       >
-                        <svg className="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                         </svg>
-                        {buttonCount >= 3 ? "YouTube" : "Watch on YouTube"}
-                      </a>
-                    )}
-                    {googleDoc && (
-                      <a
-                        href={googleDoc}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-sm"}
-                      >
-                        {buttonCount >= 3 ? "Google Doc" : "Google Document"}
+                        <span className="truncate">YouTube</span>
                       </a>
                     )}
                     {podcastUrl && (
@@ -206,10 +195,10 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         href={podcastUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"}
+                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
                       >
-                        <Music className="mr-1.5 h-4 w-4" />
-                        Podcast
+                        <Music className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" />
+                        <span className="truncate">Podcast</span>
                       </a>
                     )}
                     {websiteUrl && (
@@ -217,29 +206,18 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         href={websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={buttonCount >= 3 ? "flex-shrink-0 inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm" : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm"}
+                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm"
                       >
-                        Go to Website
+                        <span className="truncate">Website</span>
                       </a>
                     )}
                     {!noSummary && (
                       <Link 
                         href={`/articles/${slug}`} 
-                        className={buttonCount >= 3 
-                          ? "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
-                          : "flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg border border-purple-400 text-purple-800 font-semibold bg-white hover:bg-purple-50 transition-colors text-sm"
-                        }
+                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg border border-primary/40 text-primary font-semibold bg-card hover:bg-accent transition-colors text-sm"
                       >
-                        {buttonCount >= 3 ? (
-                          <div className="text-center leading-tight">
-                            <div>Interactive</div>
-                            <div>Summary</div>
-                          </div>
-                        ) : (
-                          <>
-                            Interactive Summary <ArrowRight className="ml-2 h-4 w-4" />
-                          </>
-                        )}
+                        <span className="truncate">Read Article</span>
+                        <ArrowRight className="ml-1.5 h-4 w-4 shrink-0 hidden sm:block" />
                       </Link>
                     )}
                   </>

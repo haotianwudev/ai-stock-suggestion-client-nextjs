@@ -14,6 +14,7 @@ interface StockData {
 interface StockCardProps {
   stock: StockData;
   loading?: boolean;
+  compact?: boolean;
 }
 
 // Get score color based on the value - matching the analysis section
@@ -56,7 +57,35 @@ export function StockCardSkeleton() {
   );
 }
 
-export function StockCard({ stock }: StockCardProps) {
+export function StockCard({ stock, compact = false }: StockCardProps) {
+  if (compact) {
+    return (
+      <Link href={`/stock/${stock.ticker}`} className="group">
+        <Card className="overflow-hidden transition-all hover:shadow-lg">
+          <div className={`h-1 bg-gradient-to-r ${stock.color || "from-blue-400 to-blue-600"}`}></div>
+          <div className="p-2 flex items-center justify-between gap-2">
+            <div className="min-w-0">
+              <CardTitle className="text-base font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">{stock.ticker}</CardTitle>
+              <div className="text-sm font-bold">${stock.price.toFixed(2)}</div>
+              <div className={`flex items-center text-xs font-medium ${stock.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                {stock.change >= 0 ? <ArrowUpIcon className="h-3 w-3 mr-0.5" /> : <ArrowDownIcon className="h-3 w-3 mr-0.5" />}
+                {stock.change.toFixed(2)}%
+              </div>
+            </div>
+            {stock.sophieScore !== undefined && (
+              <div
+                title="SOPHIE Score"
+                className={`shrink-0 w-9 h-9 rounded-md border-2 shadow-md flex items-center justify-center bg-gradient-to-br ${getScoreColor(stock.sophieScore)}`}
+              >
+                <span className="text-sm font-bold text-white">{stock.sophieScore}</span>
+              </div>
+            )}
+          </div>
+        </Card>
+      </Link>
+    );
+  }
+
   return (
     <Link href={`/stock/${stock.ticker}`} className="group">
       <Card className="overflow-hidden transition-all hover:shadow-lg">
@@ -67,13 +96,13 @@ export function StockCard({ stock }: StockCardProps) {
               <CardTitle className="text-2xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">{stock.ticker}</CardTitle>
               <CardDescription className="text-sm font-medium truncate max-w-[180px] text-gray-600 dark:text-gray-400">{stock.name}</CardDescription>
             </div>
-            
+
             <div className="space-y-1">
               <div className="flex items-baseline">
                 <div className="text-xl font-bold">${stock.price.toFixed(2)}</div>
                 <div className="text-xs text-muted-foreground ml-2">close price</div>
               </div>
-              
+
               <div className="flex items-center">
                 <div className={`flex items-center font-medium ${stock.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {stock.change >= 0 ? <ArrowUpIcon className="h-3 w-3 mr-1" /> : <ArrowDownIcon className="h-3 w-3 mr-1" />}
@@ -83,12 +112,12 @@ export function StockCard({ stock }: StockCardProps) {
               </div>
             </div>
           </div>
-          
+
           {/* SOPHIE Score - show loading state if score not available */}
           <div className="ml-2 flex items-center">
             <div className="relative">
               {stock.sophieScore !== undefined ? (
-                <div 
+                <div
                   className={`
                     w-14 h-14 rounded-md border-2 shadow-md flex items-center justify-center
                     bg-gradient-to-br ${getScoreColor(stock.sophieScore)}

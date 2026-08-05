@@ -147,7 +147,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
       "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
       "vol-surface-sticky-delta-sticky-strike",
       "mathematics-microstructure-cboe-vix",
-      "math-microstructure-vix",
     ],
     studyGuide: {
       items: [
