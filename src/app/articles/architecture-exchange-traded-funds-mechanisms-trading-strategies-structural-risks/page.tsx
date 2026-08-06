@@ -344,7 +344,6 @@ export default function ETFArchitecturePage() {
   return (
     <ArticleFrame slug="architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks">
       <InfographicSlot 
-        src="https://i.imgur.com/Zqkw18n.png" 
         alt="ETF Architecture Infographic" 
         label="Ecosystem Overview"
       />

@@ -97,7 +97,6 @@ export default function Form13FMicrostructureArticle() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
         <InfographicSlot
-          src="https://i.imgur.com/XRlmzzc.jpeg"
           alt="Form 13F Microstructure Infographic"
         />
 

@@ -1,15 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import {
-  ArrowLeft, ShieldCheck, TrendingUp, AlertCircle, Scale,
+  ShieldCheck, TrendingUp, AlertCircle, Scale,
   Landmark, FileText, Lock, DollarSign, Activity, BookOpen,
   ExternalLink, Maximize2,
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // ─── Reusable Components ──────────────────────────────────────────────────────
 
@@ -130,87 +127,12 @@ const ComparisonTable = () => (
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function StructuredLiquidityHedgingPage() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(a => a.slug === 'structured-liquidity-hedging-equity-collars-pvsf');
-  const infographicUrl = 'https://i.imgur.com/RlerYGZ.png';
   const googleDocUrl = 'https://docs.google.com/document/d/e/2PACX-1vQ7W9TR-5FXitlZiUfOer_4LWAfdEbzuh10uLX1Hta8eew5apemBl6--5-XXLOaTp4FAEtfyLEgF-hR/pub';
 
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug!}
-          />
-        </>
-      )}
+    <ArticleFrame slug="structured-liquidity-hedging-equity-collars-pvsf">
+      <InfographicSlot alt="PVSF Infographic" />
 
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-
-        {/* Return to Home */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link
-            href="/"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero */}
-        <header className="bg-gradient-to-br from-indigo-600 via-blue-600 to-sky-500 text-white py-24 px-6 relative overflow-hidden mt-6">
-          <div className="absolute top-0 right-0 p-12 opacity-10">
-            <Activity size={400} />
-          </div>
-          <div className="max-w-5xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-sm font-semibold mb-6">
-              <BookOpen size={16} /> Advanced Financial Engineering Tutorial
-            </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-              Structured Liquidity<br />&amp; Hedging
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto font-light">
-              A comprehensive masterclass on navigating concentrated wealth using Equity Collars
-              and Prepaid Variable Share Forwards (PVSFs).
-            </p>
-          </div>
-        </header>
-
-        {/* Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img
-              src={infographicUrl}
-              alt="Structured Liquidity & Hedging Infographic"
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src={infographicUrl}
-          alt="Structured Liquidity & Hedging Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         {/* Main Content */}
         <main className="max-w-5xl mx-auto px-6 py-16">
@@ -425,39 +347,7 @@ export default function StructuredLiquidityHedgingPage() {
             </div>
           </SectionCard>
 
-          {/* Google Doc CTA */}
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Read the Full Research Paper</h3>
-            <p className="text-slate-600 mb-6">
-              Access the complete analysis including advanced structuring mechanics, tax optimization
-              strategies, and institutional case studies.
-            </p>
-            <a
-              href={googleDocUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              <ExternalLink size={20} />
-              Read Full Research Paper
-            </a>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-800 text-sm leading-relaxed">
-            <strong className="block mb-1">Educational Disclaimer</strong>
-            This article is for informational and educational purposes only. It does not constitute
-            financial, tax, or legal advice. Equity collars, PVSFs, and related instruments involve
-            complex tax and regulatory considerations. Always consult qualified financial, tax, and
-            legal professionals before implementing any structured finance strategy.
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-12 text-center">
-          <p>© 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

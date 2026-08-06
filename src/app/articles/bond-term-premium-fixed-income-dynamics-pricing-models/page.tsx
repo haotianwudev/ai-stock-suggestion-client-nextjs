@@ -1,16 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowLeft, BookOpen, Landmark, Settings, BarChart3, Target,
   AlertTriangle, History, Cpu, CheckSquare, TrendingUp, LineChart,
   CheckCircle2, FileText, ExternalLink
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 import { Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // ─── Reusable Components ───────────────────────────────────────────────────────
 
@@ -59,92 +56,9 @@ const MinorHeading = ({ children }: { children: React.ReactNode }) => (
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 
 export default function BondTermPremiumPage() {
-  const currentArticle = articles.find(
-    (a) => a.slug === 'bond-term-premium-fixed-income-dynamics-pricing-models'
-  );
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const infographicUrl = 'https://i.imgur.com/zfZtnkj.jpeg';
-  const googleDocUrl =
-    'https://docs.google.com/document/d/e/2PACX-1vTbRxbkchJvVvKsDovVzkemlqRhOWeTrCFecWHTfLcEf_drPN8V6G_F1FRkdzW-lcReScrj0Ndx-wmk/pub';
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans relative selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug!}
-          />
-        </>
-      )}
-
-      {/* Decorative background */}
-      <div className="absolute top-0 w-full h-[500px] bg-gradient-to-br from-blue-100/50 via-indigo-50/50 to-teal-50/50 -z-10" />
-      <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[100px] -z-10" />
-      <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-teal-200/40 rounded-full mix-blend-multiply filter blur-[100px] -z-10" />
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="pt-16 pb-16 px-6 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-sm font-medium text-slate-600 mb-8">
-          <TrendingUp size={16} className="text-indigo-500" />
-          Interactive Fixed Income Tutorial
-        </div>
-        <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600 tracking-tight mb-6 leading-tight">
-          Decoding the Bond <br /> Term Premium
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed">
-          A Comprehensive Analysis of Fixed Income Dynamics, Pricing Models, and Portfolio Strategy
-        </p>
-      </header>
-
-      {/* Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pb-12">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src={infographicUrl}
-            alt="Bond Term Premium Infographic"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src={infographicUrl}
-        alt="Bond Term Premium Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
+    <ArticleFrame slug="bond-term-premium-fixed-income-dynamics-pricing-models">
+      <InfographicSlot alt="Bond Term Premium Infographic" />
       <main className="max-w-4xl mx-auto px-6 pb-24">
 
         {/* Section 1 – Executive Summary */}
@@ -623,41 +537,7 @@ export default function BondTermPremiumPage() {
           </div>
         </Section>
 
-        {/* Google Doc CTA */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Read the Full Research Paper</h3>
-          <p className="text-slate-600 mb-6">
-            Access the complete deep-dive document with extended mathematical derivations, model comparisons,
-            and institutional-grade portfolio frameworks.
-          </p>
-          <a
-            href={googleDocUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-800 transition-colors duration-300 transform hover:scale-105"
-          >
-            <FileText size={20} />
-            Open Research Paper
-            <ExternalLink size={16} />
-          </a>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
-          <strong>Educational Disclaimer:</strong> This article is for informational and educational
-          purposes only. It does not constitute investment advice, financial guidance, or a recommendation
-          to buy or sell any security. All investments involve risk, including the possible loss of
-          principal. Past performance is not indicative of future results.
-        </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-12 text-center text-slate-500">
-        <p className="flex items-center justify-center gap-2">
-          <LineChart size={18} />
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, ShieldAlert, BarChart2, Zap, ArrowRight, Info, PieChart, Activity, Search, Layers, Unlock, AlertTriangle, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { BookOpen, TrendingUp, ShieldAlert, BarChart2, Zap, ArrowRight, Info, PieChart, Activity, Search, Layers, Unlock, AlertTriangle, FileText } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const Section = ({ title, icon: Icon, children, color = "indigo" }: { 
@@ -108,83 +105,10 @@ const InsightBadge = ({ type, text }: {
 
 // --- Main Application ---
 export default function DarkIndexTutorial() {
-  const currentArticle = articles.find(article => article.slug === 'dark-index-dix-understanding-short-is-long-market-microstructure');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const [isSecondImageViewerOpen, setIsSecondImageViewerOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <header className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white pt-20 pb-24 px-6 md:px-12 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-pink-500 rounded-full mix-blend-overlay filter blur-3xl opacity-50"></div>
-        </div>
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-bold tracking-wider mb-6">
-            QUANTITATIVE MARKET MICROSTRUCTURE
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-            The Dark Index <span className="text-indigo-200">(DIX)</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl leading-relaxed">
-            A deep dive into why <span className="font-semibold text-white border-b-2 border-emerald-400">Short is Long</span>. Understanding how dark pool liquidity, market maker rebates, and regulatory quirks reveal the hidden accumulation of smart money.
-          </p>
-        </div>
-      </header>
-
-      {/* Hero Infographic */}
-      {currentArticle?.imageUrl && (
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8 -mt-16 relative z-20">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative bg-white"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src={currentArticle.imageUrl} 
-              alt="Dark Index (DIX) Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Full-screen image viewer */}
-      {currentArticle?.imageUrl && (
-        <FullScreenImageViewer
-          src={currentArticle.imageUrl}
-          alt="Dark Index (DIX) Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-      )}
-
-      {/* Main Content Container */}
-      <main className="max-w-5xl mx-auto px-6 pb-24">
+    <ArticleFrame slug="dark-index-dix-understanding-short-is-long-market-microstructure">
+      <InfographicSlot alt="Dark Index (DIX) Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
         {/* Intro Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 mb-12 border-t-8 border-indigo-500">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -711,30 +635,7 @@ export default function DarkIndexTutorial() {
           </div>
         </Section>
 
-        {/* Call to Action - Google Doc */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* Footer */}
-        <footer className="text-center text-slate-400 pt-12 border-t border-slate-200">
-          <p className="mb-2">Based on research by SqueezeMetrics & "Dark Index (DIX) Research and Analysis"</p>
-          <p className="text-xs opacity-60">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
       </main>
-    </div>
+    </ArticleFrame>
   );
 }

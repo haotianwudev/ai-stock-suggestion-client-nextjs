@@ -45,7 +45,7 @@ const KeyTakeaway = ({ children }: { children: React.ReactNode }) => (
 
 const EvolutionSection = () => (
   <section className="py-12 relative">
-    <InfographicSlot src="https://i.imgur.com/UYlEArc.png" alt="Quantitative Trading Mean Reversion Infographic" />
+    <InfographicSlot alt="Quantitative Trading Mean Reversion Infographic" />
     <Card className="mt-8">
       <SectionHeading 
         title="1. Evolution of Statistical Arbitrage" 

@@ -20,6 +20,7 @@ export interface Article {
   slug?: string;
   date: string;
   imageUrl?: string;
+  infographicUrl?: string; // shown by <InfographicSlot> in the article body; distinct from imageUrl (article-card thumbnail, which becomes the YouTube thumbnail once a video is attached)
   googleDoc?: string;
   websiteUrl?: string;   // External tool / product page — renders a "Go to Website" button
   deepResearch?: boolean;

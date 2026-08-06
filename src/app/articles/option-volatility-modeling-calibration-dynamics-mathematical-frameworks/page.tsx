@@ -1,12 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, Calculator, LineChart, TrendingUp, Activity, Layers, Zap, BrainCircuit, ShieldCheck, Info, AlertTriangle, Lightbulb, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { Maximize2 } from 'lucide-react';
+import React from 'react';
+import { BookOpen, Calculator, LineChart, TrendingUp, Activity, Layers, Zap, BrainCircuit, ShieldCheck, Info, AlertTriangle, Lightbulb, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Shared Components --- //
 const MathBlock = ({ children }: { children: React.ReactNode }) => (
@@ -78,92 +74,12 @@ const Section = ({ title, icon: Icon, gradient, children }: { title: string; ico
 
 // --- Main Application --- //
 export default function OptionVolatilityModelingArticle() {
-  const currentArticle = articles.find(article => article.slug === 'option-volatility-modeling-calibration-dynamics-mathematical-frameworks');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="option-volatility-modeling-calibration-dynamics-mathematical-frameworks">
+      <InfographicSlot alt="Option Volatility Modeling Infographic" />
 
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Header / Hero Section */}
-      <div className="relative overflow-hidden bg-slate-50 pt-24 pb-32 border-b border-slate-200/60">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-          {/* Decorative glowing blobs */}
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[100%] rounded-full bg-gradient-to-br from-indigo-300/30 to-purple-300/30 blur-3xl mix-blend-multiply"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[100%] rounded-full bg-gradient-to-br from-emerald-300/30 to-teal-200/30 blur-3xl mix-blend-multiply"></div>
-        </div>
-        <div className="relative max-w-5xl mx-auto px-4 text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm text-sm font-bold text-indigo-600 mb-8 uppercase tracking-wider">
-            <Zap size={16} className="text-amber-500" />
-            Quantitative Finance Tutorial
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 mb-6 tracking-tight drop-shadow-sm">
-            Option Volatility Modeling
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 font-light max-w-3xl leading-relaxed">
-            A comprehensive masterclass exploring calibration dynamics, mathematical frameworks, and modern market applications for derivative pricing.
-          </p>
-        </div>
-      </div>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/UAZud6k.jpeg" 
-            alt="Option Volatility Modeling Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/UAZud6k.jpeg"
-        alt="Option Volatility Modeling Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content Container */}
-      <main className="max-w-5xl mx-auto px-4 py-16">
+      {/* Main Content Start */}
+      <main className="max-w-4xl mx-auto px-6 pb-20 mt-12 relative z-10">
 
         {/* SECTION 1: Introduction */}
         <Section title="The Volatility Surface Paradigm" icon={BookOpen} gradient="from-blue-500 to-indigo-600">
@@ -450,38 +366,7 @@ export default function OptionVolatilityModelingArticle() {
           </p>
         </Section>
 
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col items-center">
-          <Activity size={32} className="text-indigo-500 mb-6 opacity-50" />
-          <p className="text-lg">Option Volatility Modeling Tutorial</p>
-          <p className="text-sm mt-2 font-light max-w-xl mx-auto opacity-70">
-            Synthesized from advanced quantitative research concerning the evolution, mathematical dynamics, and modern calibration paradigms of implied and stochastic volatility models.
-          </p>
-          <p className="text-sm mt-6 opacity-60">
-            © 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

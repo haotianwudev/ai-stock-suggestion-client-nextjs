@@ -10,14 +10,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/5gA1ifx7wPg',
     infographicUrl: "https://i.imgur.com/vGkVKOa.jpeg",
     relatedArticles: [
-      "monte-carlo-simulation-1",
       "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
-      "monte-carlo-simulation-2",
       "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
-      "monte-carlo-simulation-3",
       "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
       "convergence-analysis-quantitative-finance-measure-theory",
-      "convergence-quant-modeling",
     ],
     studyGuide: {
       items: [
@@ -59,14 +55,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/WL_YzTImNzs', // PCA Explained video as placeholder
     infographicUrl: "https://i.imgur.com/XEfr0iF.jpeg",
     relatedArticles: [
-      "pca-yield-curve",
       "geometry-of-rates-pca-fixed-income-markets",
       "bond-term-premium-fixed-income-dynamics-pricing-models",
-      "bond-term-premium-end-negative-era",
       "advanced-dynamics-correlation-quantitative-finance",
-      "illusion-stability-correlation-quant-finance",
       "conformal-prediction-portfolio-risk-var",
-      "conformal-prediction-vs-traditional-var",
     ],
     studyGuide: {
       items: [
@@ -117,28 +109,17 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/BfU9H60nepI',
     infographicUrl: "https://i.imgur.com/VVQWBaJ.jpeg",
     relatedArticles: [
-      "ito-lemma",
       "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
-      "structured-notes",
       "architecture-structured-notes-comprehensive-investors-guide",
-      "monte-carlo-simulation-3",
       "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
-      "black-scholes-option-pricing",
       "black-scholes-analytics-laboratory-axioms-option-pricing",
       "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
-      "abs-cmbs-rmbs",
-      "autocallable-snowball-notes",
       "autocallable-strategy-engineered-yield-sideways-markets",
-      "solution-beyond-black-scholes",
       "beyond-black-scholes",
       "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
-      "volatility-model-evolution-svi-dupire-heston",
       "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
-      "vol-surface-sticky-delta-sticky-strike",
       "unpacking-cds-granular-deep-dive-credit-default-swaps",
-      "cds-mechanics-valuation-cs01",
       "optimal-early-exercise-american-call-options-dividend-stocks",
-      "american-call-options-early-exercise",
     ],
     studyGuide: {
       items: [

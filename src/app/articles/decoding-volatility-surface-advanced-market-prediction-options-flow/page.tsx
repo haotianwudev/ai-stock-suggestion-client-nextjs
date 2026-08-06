@@ -392,7 +392,6 @@ export default function VolatilitySurfaceArticle() {
 
           {/* Infographic — placed inline after the intro, where it supports the argument */}
           <InfographicSlot
-            src="https://i.imgur.com/AmiHclK.jpeg"
             alt="Volatility Surface Infographic"
             label="Featured Infographic"
           />

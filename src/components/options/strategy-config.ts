@@ -73,7 +73,7 @@ export const strategies: Strategy[] = [
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, p - strike1) - premium,
         youtubeId: 'JldPgH31X3U',
-        relatedArticles: ["long-call-strategy", "single-leg-long-call-asymmetric-leverage-options-trading"],
+        relatedArticles: ["single-leg-long-call-asymmetric-leverage-options-trading"],
         infographicUrl: 'https://i.imgur.com/A6ChN1u.jpeg',
         detailComponent: LongCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -113,7 +113,7 @@ export const strategies: Strategy[] = [
             (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4),
         youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price stays above the short put strike at expiration. Maximum loss occurs when stock falls below the long put strike.",
-        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling", "vertical-spread",],
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
         detailComponent: BullPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -129,7 +129,7 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium)),
         youtubeId: 'fKpmR9DxYpk',
         payoffExplanation: "Maximum profit occurs when stock price equals or exceeds the call strike at expiration. Profit is capped at strike price plus premium received.",
-        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
         detailComponent: CoveredCallStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -145,7 +145,7 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? premium : premium + (p - strike1)),
         youtubeId: 'fKpmR9DxYpk',
         payoffExplanation: "Maximum profit occurs when stock price stays above the put strike at expiration. Maximum loss occurs when stock falls to zero (minus premium received).",
-        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         infographicUrl: 'https://i.imgur.com/otXoq7h.jpeg',
         detailComponent: PutWritingStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -160,7 +160,7 @@ export const strategies: Strategy[] = [
         payoffCalculator: (p, { strike1, premium }) => 
             Math.max(0, strike1 - p) - premium,
         youtubeId: 'X2IJngJv4G0',
-        relatedArticles: ["single-leg-put-strategy-asymmetric-utility", "put-expensive",],
+        relatedArticles: ["single-leg-put-strategy-asymmetric-utility"],
         infographicUrl: 'https://i.imgur.com/a1a8zU5.jpeg',
         detailComponent: LongPutStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -200,7 +200,7 @@ export const strategies: Strategy[] = [
             (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1),
         youtubeId: 'g5e-nZERjLE',
         payoffExplanation: "Maximum profit occurs when the stock price stays below the short call strike at expiration. Maximum loss occurs when stock rises above the long call strike.",
-        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling", "vertical-spread",],
+        relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         infographicUrl: 'https://i.imgur.com/CSlyJzU.jpeg',
         detailComponent: BearCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -216,7 +216,7 @@ export const strategies: Strategy[] = [
             (premium * 2) - Math.abs(p - strike1),
         youtubeId: 'AtRXXgVRtlk',
         payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at expiration. Losses increase as price moves away from the strike in either direction.",
-        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection", "short-straddle-strangle"],
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
         detailComponent: ShortStraddleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -232,7 +232,7 @@ export const strategies: Strategy[] = [
             (premium * 1.5) - Math.max(0, p - strike2) - Math.max(0, strike3 - p),
         youtubeId: 'AtRXXgVRtlk',
         payoffExplanation: "Maximum profit occurs when the stock price stays between the put and call strikes at expiration. Losses increase as price moves beyond either strike.",
-        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection", "short-straddle-strangle"],
+        relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         infographicUrl: 'https://i.imgur.com/ZCwIYbv.jpeg',
         detailComponent: ShortStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -261,7 +261,7 @@ export const strategies: Strategy[] = [
             
             return putSpreadPnL + callSpreadPnL + netCredit;
         },
-        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting", "iron-condor",],
+        relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         youtubeId: 'LC1qM2ps6NY',
         infographicUrl: 'https://i.imgur.com/jRhQhdm.jpeg',
         detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
@@ -278,7 +278,7 @@ export const strategies: Strategy[] = [
             Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2),
         youtubeId: '3UfLDV7Y8Ps',
         payoffExplanation: "Maximum profit occurs when the stock price moves significantly away from the strike price in either direction. Maximum loss occurs when stock price equals the strike price at expiration.",
-        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles", "long-straddle-strangle",],
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
         detailComponent: LongStraddleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -294,7 +294,7 @@ export const strategies: Strategy[] = [
             Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5),
         youtubeId: '3UfLDV7Y8Ps',
         payoffExplanation: "Maximum profit occurs when the stock price moves significantly beyond either the call or put strike. Maximum loss occurs when stock price stays between the two strikes at expiration.",
-        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles", "long-straddle-strangle",],
+        relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         infographicUrl: 'https://i.imgur.com/HE2Hr58.jpeg',
         detailComponent: LongStrangleStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -315,7 +315,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'GGKItsjV-L8',
         payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
-        relatedArticles: ["wheel-stock", "optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "secret-similary-call-put", "covering-world-global-evidence-covered-calls", "notebooklm-uncovers-nature-covered-calls-global-research", "strategic-portfolio-management-option-writing", "strategic-investing-using-options", "options-wheel-trading-plan-quantitative-approach", "wheel-strategy", "mastering-volatility-risk-premium-spx-options-selling", "spx-option-underlyer"],
+        relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         infographicUrl: 'https://i.imgur.com/f1RFcNb.jpeg',
         detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -331,7 +331,7 @@ export const strategies: Strategy[] = [
             (p >= strike1 ? premium : premium + (p - strike1)),
         youtubeId: 'pdfm0osP4Ow',
         payoffExplanation: "LEAPS put selling generates premium income upfront. If assigned, you acquire the stock at the strike price minus premium received.",
-        relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage", "sell-leaps-put",],
+        relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage"],
         infographicUrl: 'https://i.imgur.com/nBdrqD7.jpeg',
         detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -348,7 +348,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'AuBIzqvQdEw',
         payoffExplanation: "The collar creates a defined range of outcomes. Maximum loss occurs if stock falls to put strike, maximum profit if stock rises to call strike.",
-        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "option-collar", "structured-liquidity-hedging-equity-collars-pvsf", "paper-billionaire-collar-pvsf", "advanced-options-collar-strategies-structural-mechanics-tradeoffs", "advanced-options-collars-downside"],
+        relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "structured-liquidity-hedging-equity-collars-pvsf", "advanced-options-collar-strategies-structural-mechanics-tradeoffs"],
         infographicUrl: 'https://i.imgur.com/qmxFvJ5.jpeg',
         detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -372,7 +372,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: 'i1OT9W7xp9w',
         payoffExplanation: "The strategy creates a defined range of outcomes. Maximum loss occurs if stock falls below the buffer limit (short put strike), maximum profit if stock rises to the cap (short call strike).",
-        relatedArticles: ["buffered-strategy", "mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
+        relatedArticles: ["mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
         infographicUrl: 'https://i.imgur.com/2I6QQmG.jpeg',
         detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -405,7 +405,7 @@ export const strategies: Strategy[] = [
         },
         youtubeId: '83U-tqsVHdY',
         payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at front month expiration. The back month option retains maximum time value while the front month expires worthless.",
-        relatedArticles: ["calendar-spread","calendar-spread-architecture-time-decay-options-trading"],
+        relatedArticles: ["calendar-spread-architecture-time-decay-options-trading"],
         infographicUrl: 'https://i.imgur.com/I4TjHJ7.jpeg',
         detailComponent: CalendarSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },
@@ -458,7 +458,7 @@ export const strategies: Strategy[] = [
             Math.max(0, p - strike1) - Math.max(0, p - strike2) - Math.max(0, strike3 - p) - premium,
         youtubeId: 'DGOML4Zpt5E',
         payoffExplanation: "Maximum profit occurs when the stock price rises to the short call strike. Loss occurs below the short put strike. Profit is capped at the spread between the two call strikes.",
-        relatedArticles: ["seagull-spread-options-strategy-architecture", "mastering-seagull-spread-no-free-lunch"],
+        relatedArticles: ["seagull-spread-options-strategy-architecture"],
         infographicUrl: 'https://i.imgur.com/rqjZ3CX.png',
         detailComponent: SeagullSpreadStrategyDetail as ComponentType<StrategyDetailProps>
     },

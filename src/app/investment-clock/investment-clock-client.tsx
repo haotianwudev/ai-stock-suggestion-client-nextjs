@@ -16,9 +16,7 @@ import { articles } from "@/data/articles";
 
 const RELATED_ARTICLE_SLUGS = [
   "investment-clock-framework-quantitative-macro-regime-detection",
-  "investment-clock",
   "navigating-bull-to-bear-regime-shift-quantitative-signals",
-  "quantitative-guide-calculate-investment-clock",
 ];
 
 const PHASE_COLORS: Record<string, string> = {
@@ -346,7 +344,7 @@ export function InvestmentClockClient() {
       {/* Related Articles */}
       {(() => {
         const relatedArticles = articles.filter(a =>
-          RELATED_ARTICLE_SLUGS.includes(a.slug || "") && a.slug !== "investment-clock"
+          RELATED_ARTICLE_SLUGS.includes(a.slug || "")
         );
         if (relatedArticles.length === 0) return null;
         return (

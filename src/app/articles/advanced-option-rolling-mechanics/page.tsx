@@ -1,16 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import {
-  ArrowLeft, Calculator, Clock, TrendingUp, Layers, Settings,
+  Calculator, Clock, TrendingUp, Layers, Settings,
   BookOpen, AlertTriangle, Info, CheckCircle2, TrendingDown,
-  Activity, FileText, ExternalLink, LineChart
+  Activity, FileText, ExternalLink, LineChart, Maximize2
 } from 'lucide-react';
-import { Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // ─── Reusable Components ───────────────────────────────────────────────────────
 
@@ -115,98 +111,10 @@ const DataTable = ({ headers, rows }: TableProps) => (
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 
 export default function AdvancedOptionRollingMechanicsPage() {
-  const currentArticle = articles.find(
-    (a) => a.slug === 'advanced-option-rolling-mechanics'
-  );
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const infographicUrl = 'https://i.imgur.com/ORf3wI2.jpeg';
-  const googleDocUrl =
-    'https://docs.google.com/document/d/e/2PACX-1vT-SnXJi9qeOfAVZWqlvFEcgZ3e7SKLOu9B8J17hL2dKNGT4pUeOhM3Kui9AIUihDFWQ9zkVb5B93ZU/pub';
-
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-indigo-200 selection:text-indigo-900">
-      {/* SEO */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug!}
-          />
-        </>
-      )}
-
-      {/* Decorative background blobs */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/10 blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-purple-400/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] rounded-full bg-pink-400/10 blur-[120px]" />
-      </div>
-
-      {/* Return to Home */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="relative z-10 pt-24 pb-16 px-6 text-center max-w-5xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-indigo-600 font-semibold text-sm mb-8 shadow-sm">
-          <BookOpen size={16} />
-          <span>Interactive Masterclass</span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight">
-          Advanced Option{' '}
-          <GradientText className="from-indigo-600 via-purple-600 to-pink-600">
-            Rolling Mechanics
-          </GradientText>
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Mathematical Frameworks, Volatility Surface Dynamics, and Systematic Implementation for the modern options trader.
-        </p>
-      </header>
-
-      {/* Infographic */}
-      <section className="relative z-10 max-w-5xl mx-auto px-6 pb-12">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src={infographicUrl}
-            alt="Advanced Option Rolling Mechanics Infographic"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src={infographicUrl}
-        alt="Advanced Option Rolling Mechanics Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="relative z-10 max-w-5xl mx-auto px-6 pb-16">
+    <ArticleFrame slug="advanced-option-rolling-mechanics">
+      <InfographicSlot alt="Advanced Option Rolling Mechanics Infographic" />
+      <main className="relative z-10 max-w-5xl mx-auto px-6 pb-16 pt-12">
 
         {/* Module 1 */}
         <SectionCard icon={Calculator} title="Module 1: Roll P&L Accounting" gradient="from-blue-500 to-cyan-400">
@@ -481,41 +389,7 @@ export default function AdvancedOptionRollingMechanicsPage() {
           </p>
         </section>
 
-        {/* Google Doc CTA */}
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Read the Full Research Paper</h3>
-          <p className="text-slate-600 mb-6">
-            Access the complete deep-dive document with extended mathematical derivations, volatility surface
-            analysis, and systematic implementation frameworks.
-          </p>
-          <a
-            href={googleDocUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-800 transition-colors duration-300 transform hover:scale-105"
-          >
-            <FileText size={20} />
-            Open Research Paper
-            <ExternalLink size={16} />
-          </a>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
-          <strong>Educational Disclaimer:</strong> This article is for informational and educational purposes
-          only. It does not constitute investment advice, financial guidance, or a recommendation to buy or
-          sell any security. All investments involve risk, including the possible loss of principal. Past
-          performance is not indicative of future results.
-        </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-12 text-center text-slate-500 relative z-10">
-        <p className="flex items-center justify-center gap-2">
-          <LineChart size={18} />
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

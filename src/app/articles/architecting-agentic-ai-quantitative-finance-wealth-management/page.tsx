@@ -1,91 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, TrendingUp, ShieldCheck, Layers, GitMerge, Users, Code, Database, Activity, Cpu, Briefcase, Zap, Target, Network, Server, LineChart, Eye, AlertOctagon, ChevronRight, Maximize2, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { BrainCircuit, TrendingUp, ShieldCheck, Layers, GitMerge, Users, Code, Database, Activity, Cpu, Briefcase, Zap, Target, Network, Server, LineChart, Eye, AlertOctagon, ChevronRight, Maximize2, FileText } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function AgenticAIArchitectureArticle() {
-  const currentArticle = articles.find(article => article.slug === 'architecting-agentic-ai-quantitative-finance-wealth-management');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-7xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* HERO SECTION */}
-        <header className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-emerald-50 py-24 sm:py-32">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-8">
-              <BrainCircuit className="w-4 h-4" />
-              <span>Tutorial: The Paradigm Shift to Agentic AI</span>
-            </div>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-              Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-500">Agentic AI</span> in<br />
-              Quant Finance & Wealth Management
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl leading-8 text-slate-600 max-w-3xl mx-auto">
-              Unlike foundational LLMs that function as passive co-pilots, agentic AI systems possess autonomous reasoning, dynamic tool invocation, state persistence, and goal-directed execution.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-7xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/FXxn1Cs.jpeg" 
-              alt="Agentic AI Architecture Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/FXxn1Cs.jpeg"
-          alt="Agentic AI Architecture Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
+    <ArticleFrame slug="architecting-agentic-ai-quantitative-finance-wealth-management">
+      <InfographicSlot alt="Agentic AI Architecture Infographic" />
 
         {/* STATS SECTION */}
         <section className="py-12 bg-white border-y border-slate-200">
@@ -422,41 +345,7 @@ export default function AgenticAIArchitectureArticle() {
           </div>
         </section>
 
-        {/* CALL TO ACTION - GOOGLE DOC */}
-        <div className="bg-gradient-to-r from-indigo-50 to-emerald-50 py-16 my-8">
-          <div className="mx-auto max-w-4xl px-6 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <p className="text-slate-600 mb-6">
-              Dive deeper into the technical architecture and implementation details
-            </p>
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="h-5 w-5" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* FOOTER / CONCLUSION */}
-        <footer className="bg-slate-900 py-16 text-center">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Synthesizing the Future</h2>
-            <p className="text-slate-300 leading-relaxed text-lg">
-              The transition toward agentic AI is evolving from human-directed analysis to autonomous ecosystems capable of sub-millisecond precision. Success requires prioritizing architectural discipline, modular skill design, and reconciliation nodes over raw model capabilities. With universal standards like MCP and robust governance, agentic AI is poised to redefine alpha generation at scale.
-            </p>
-            <div className="mt-10 pt-10 border-t border-slate-800 text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }
 

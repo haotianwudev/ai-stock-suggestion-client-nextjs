@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingDown, Activity, Users, CreditCard, LineChart, ShieldAlert, Zap, History, Target, BarChart3, AlertTriangle, ArrowRight, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingDown, Activity, Users, CreditCard, LineChart, ShieldAlert, Zap, History, Target, BarChart3, AlertTriangle, ArrowRight, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // Reusable UI Components
 const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: { icon: React.ElementType; title: string; subtitle?: string; colorClass: string }) => (
@@ -25,103 +22,10 @@ const Card = ({ children, className = "" }: { children: React.ReactNode; classNa
 );
 
 export default function NavigatingBullToBearRegimeShift() {
-  const currentArticle = articles.find(article => article.slug === 'navigating-bull-to-bear-regime-shift-quantitative-signals');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900 pb-20">
-        {/* Return to Home Button */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="relative overflow-hidden bg-white border-b border-gray-200">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 opacity-70 z-0"></div>
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-          
-          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-6 uppercase tracking-wider">
-              Quantitative Analysis Tutorial
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-700 to-pink-600 mb-6 leading-tight">
-              Navigating the Bull-to-Bear <br className="hidden md:block" /> Regime Shift
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed">
-              A deep-dive tutorial into quantitative signals, systematic factor rotation, and convexity monetization during transitional market phases.
-            </p>
-          </div>
-
-          {/* Badges */}
-          <div className="absolute top-4 left-4 z-20">
-            <span className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg">
-              Deep Research
-            </span>
-          </div>
-          <div className="absolute bottom-4 right-4 z-20">
-            <span className="inline-block px-3 py-1 bg-gradient-to-r from-orange-400 to-yellow-500 text-white text-xs font-bold rounded-full shadow-lg">
-              Options
-            </span>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/zwJ2vHQ.jpeg" 
-              alt="Bull-to-Bear Regime Shift Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/zwJ2vHQ.jpeg"
-          alt="Bull-to-Bear Regime Shift Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 mt-16">
+    <ArticleFrame slug="navigating-bull-to-bear-regime-shift-quantitative-signals">
+      <InfographicSlot alt="Bull-to-Bear Regime Shift Infographic" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 mt-16 pb-20">
           {/* 1. Theoretical Framework */}
           <section>
             <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
@@ -466,31 +370,7 @@ export default function NavigatingBullToBearRegimeShift() {
           </section>
         </div>
 
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 text-center max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="mt-24 border-t border-gray-200 bg-white py-12">
-          <div className="max-w-6xl mx-auto px-4 text-center text-gray-500">
-            <p>© 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p className="text-sm mt-2">Based on &quot;Market Transition Trading Strategies Analysis&quot;</p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

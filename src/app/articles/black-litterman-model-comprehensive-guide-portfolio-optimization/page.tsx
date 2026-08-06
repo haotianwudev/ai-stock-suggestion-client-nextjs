@@ -1,16 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Scale, Brain, ShieldCheck, Globe, Server, Activity, AlertTriangle, CheckCircle, ArrowRight, BookOpen, PieChart, Users, Layers, Terminal, Zap, Building2, Briefcase, GitMerge, Network, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Scale, Brain, ShieldCheck, Globe, Server, Activity, AlertTriangle, CheckCircle, ArrowRight, BookOpen, PieChart, Users, Layers, Terminal, Zap, Building2, Briefcase, GitMerge, Network, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function BlackLittermanGuide() {
-  const currentArticle = articles.find(article => article.slug === 'black-litterman-model-comprehensive-guide-portfolio-optimization');
   const [activeSection, setActiveSection] = useState('intro');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -76,82 +71,8 @@ export default function BlackLittermanGuide() {
   );
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="bg-white pt-20 pb-16 px-6 lg:px-12 border-b border-slate-200 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-indigo-50 to-transparent pointer-events-none" />
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold mb-6">
-              <BookOpen size={16} />
-              <span>Quantitative Finance Research</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
-              The Black-Litterman <span className="text-indigo-600">Model</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-              A comprehensive guide to bridging the gap between mathematical rigor and human intuition in modern portfolio management.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/8ZPnGNY.jpeg" 
-              alt="Black-Litterman Model Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/8ZPnGNY.jpeg"
-          alt="Black-Litterman Model Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
+    <ArticleFrame slug="black-litterman-model-comprehensive-guide-portfolio-optimization">
+      <InfographicSlot alt="Black-Litterman Model Infographic" />
 
         <main className="max-w-5xl mx-auto px-6 py-16 space-y-24">
           {/* 1. Introduction */}
@@ -815,39 +736,7 @@ export default function BlackLittermanGuide() {
             </table>
           </section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-12 px-6 text-center">
-          <div className="max-w-4xl mx-auto">
-            <p className="mb-4 text-lg font-medium text-slate-200">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <div className="flex justify-center gap-4 text-xs uppercase tracking-widest">
-              <span>React</span>
-              <span>•</span>
-              <span>Tailwind</span>
-              <span>•</span>
-              <span>Analysis</span>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

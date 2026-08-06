@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Leaf, Users, Scale, BarChart3, AlertTriangle, Globe, TrendingUp, ShieldCheck, BookOpen, Info, CheckCircle, XCircle, FileText, Target, Zap, Activity, Filter, PieChart, Megaphone, Thermometer, Droplets, Trees, Briefcase, HeartHandshake, Smartphone, Gavel, Vote, Lock, Landmark, Calendar, Database, Layers, Search, Cpu, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { Leaf, Users, Scale, BarChart3, AlertTriangle, Globe, TrendingUp, ShieldCheck, BookOpen, Info, CheckCircle, XCircle, FileText, Target, Zap, Activity, Filter, PieChart, Megaphone, Thermometer, Droplets, Trees, Briefcase, HeartHandshake, Smartphone, Gavel, Vote, Lock, Landmark, Calendar, Database, Layers, Search, Cpu, Maximize2, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Component Interfaces ---
 interface SectionHeaderProps {
@@ -146,95 +143,10 @@ const Badge: React.FC<BadgeProps> = ({ text, color }) => (
 );
 
 export default function ESGTutorial() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'mechanics-esg-investing-technical-guide');
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-gray-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-gray-200 pt-24 pb-20 px-6 lg:px-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-60"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-50 rounded-full blur-3xl -ml-20 -mb-20 opacity-60"></div>
-          <div className="max-w-4xl mx-auto relative z-10 text-center">
-            <Badge text="Advanced Tutorial" color="bg-indigo-100 text-indigo-700" />
-            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mt-6 mb-6 tracking-tight leading-tight">
-              The Mechanics of <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">ESG Investing</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              A technical guide to Environmental, Social, and Governance factors: Frameworks, Regulations, and Valuation Models.
-            </p>
-            <div className="flex justify-center gap-6 text-sm font-medium text-gray-500">
-              <span className="flex items-center gap-2">
-                <BookOpen size={18} className="text-indigo-500"/> 15 min read
-              </span>
-              <span className="flex items-center gap-2">
-                <Activity size={18} className="text-teal-500"/> Level: Intermediate
-              </span>
-              <span className="flex items-center gap-2">
-                <Globe size={18} className="text-blue-500"/> Global Scope
-              </span>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/OorqUE7.jpeg" 
-              alt="ESG Investing Framework Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/OorqUE7.jpeg"
-          alt="ESG Investing Framework Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-4xl mx-auto px-6 py-16 space-y-24">
+    <ArticleFrame slug="mechanics-esg-investing-technical-guide">
+      <InfographicSlot alt="ESG Investing Framework Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
           {/* 1. Introduction */}
           <section>
             <div className="prose prose-lg text-gray-600 max-w-none">
@@ -974,26 +886,8 @@ export default function ESGTutorial() {
             </div>
           </section>
 
-          {/* Continue Learning Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
           {/* Footer */}
-          <footer className="border-t border-gray-200 pt-12 pb-24">
+          <footer className="border-t border-gray-200 pt-12 pb-12">
             <div className="bg-gray-900 text-gray-300 rounded-2xl p-8 md:p-12">
               <h2 className="text-2xl font-bold text-white mb-6">Summary Checklist</h2>
               <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -1012,16 +906,6 @@ export default function ESGTutorial() {
             </div>
           </footer>
         </main>
-
-        {/* Footer Branding */}
-        <footer className="bg-slate-900 text-slate-300 py-8 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

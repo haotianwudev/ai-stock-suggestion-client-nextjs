@@ -1,18 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import {
-  ArrowLeft, ArrowRight, BookOpen, TrendingUp, TrendingDown, DollarSign,
-  Globe, Activity, AlertTriangle, Clock, Zap, Target, BarChart3, ShieldAlert, Scale
+  ArrowRight, BookOpen, TrendingUp, TrendingDown, DollarSign,
+  Globe, Activity, AlertTriangle, Clock, Zap, Target, BarChart3, ShieldAlert, Scale, Maximize2
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const SLUG = 'structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy';
-const INFOGRAPHIC = 'https://i.imgur.com/JoigFq7.jpeg';
 
 // --- Data ---
 const dxyData = [
@@ -71,71 +66,10 @@ const HighlightBox = ({ title, children, color }: { title?: string; children: Re
 };
 
 export default function USDollarArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(a => a.slug === SLUG);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug || ''} />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-
-        {/* Return to Home */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero */}
-        <header className="relative bg-gradient-to-br from-indigo-900 via-blue-900 to-indigo-800 text-white overflow-hidden pb-32 pt-16 px-6 md:px-12 mt-6">
-          <div className="absolute inset-0 opacity-10 mix-blend-overlay" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cubes.png')" }}></div>
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-indigo-500 rounded-full blur-[120px] opacity-40 mix-blend-screen"></div>
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-              <BookOpen size={16} className="text-blue-300" />
-              <span className="text-sm font-semibold tracking-wider text-blue-100 uppercase">Macroeconomic Deep Research</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-              Structural Dynamics of the{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">U.S. Dollar</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl leading-relaxed font-light">
-              An institutional framework exploring conflicting paradigms of dollar hegemony, quantitative forecasting, and global macro trade execution.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8 -mt-20 relative z-20">
-          <div
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img src={INFOGRAPHIC} alt="U.S. Dollar Structural Dynamics Infographic" className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]" />
-            <button
-              onClick={e => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">Click to view full screen</div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer src={INFOGRAPHIC} alt="U.S. Dollar Structural Dynamics Infographic" isOpen={isImageViewerOpen} onClose={() => setIsImageViewerOpen(false)} />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 py-12">
+    <ArticleFrame slug={SLUG}>
+      <InfographicSlot alt="U.S. Dollar Structural Dynamics Infographic" />
+      <main className="max-w-5xl mx-auto px-6 py-12">
 
           {/* Section 1: Foundation */}
           <SectionCard id="foundation" title="The Foundation: Conflicting Paradigms" icon={Scale} gradient="from-violet-500 to-fuchsia-500">
@@ -372,35 +306,7 @@ export default function USDollarArticle() {
             </div>
           </SectionCard>
 
-          {/* Google Doc CTA */}
-          {currentArticle?.googleDoc && (
-            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Read the Full Research Paper</h3>
-              <p className="text-slate-600 mb-6">Access the complete institutional-grade analysis with extended data, citations, and methodology.</p>
-              <a
-                href={currentArticle.googleDoc}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <ArrowRight className="mr-2" />
-                Read Full Research Paper
-              </a>
-            </div>
-          )}
-
-          {/* Disclaimer */}
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-sm text-amber-800">
-            <strong className="block mb-1">Educational Disclaimer</strong>
-            This article is for informational and educational purposes only. It does not constitute investment advice, financial advice, or a recommendation to buy or sell any security. All data and analysis are illustrative. Consult a qualified financial professional before making investment decisions.
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm font-medium">
-          <p>&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

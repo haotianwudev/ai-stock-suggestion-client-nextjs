@@ -1,16 +1,13 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { 
   ShieldCheck, TrendingUp, Zap, Target, Scale, AlertTriangle, ArrowRightLeft, Info,
   Calculator, Activity, Layers, Percent, Clock, BarChart3, Dna, Flame, Gavel, ShieldAlert,
   GitMerge, Divide, Maximize2, ChevronRight, BookOpen, Briefcase, Globe, Database, 
   FileText, Search, Compass, ArrowLeft
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // Global promise to ensure KaTeX is only loaded once
 let katexPromise: Promise<any> | null = null;
@@ -127,82 +124,9 @@ const Card = ({ title, icon: Icon, children, color = "blue" }: {
 };
 
 export default function UnpackingCDSArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'unpacking-cds-granular-deep-dive-credit-default-swaps');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#fcfdfe] text-slate-900 font-sans p-6 md:p-12 lg:p-24 pb-48">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto mb-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Header */}
-        <header className="max-w-6xl mx-auto mb-20 text-center relative pt-20">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-400 rounded-full blur-[140px] opacity-10 -z-10"></div>
-          <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-blue-50 text-blue-700 font-bold text-sm uppercase tracking-widest mb-10 border border-blue-100 shadow-sm">
-            <Activity size={18} /> Quantitative Finance Masterclass
-          </div>
-          <h1 className="text-7xl md:text-9xl font-black mb-10 tracking-tighter text-slate-900 leading-[0.85]">
-            Unpacking <span className="text-blue-600">CDS</span>
-          </h1>
-          <p className="text-2xl md:text-3xl text-slate-500 max-w-4xl mx-auto leading-relaxed font-medium">
-            A granular deep-dive into the mechanics of Credit Default Swaps, from bilateral insurance to advanced quantitative Greeks.
-          </p>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto mb-20">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/WIPaOHg.jpeg" 
-              alt="Credit Default Swaps Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/WIPaOHg.jpeg"
-          alt="Credit Default Swaps Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-5xl mx-auto">
+    <ArticleFrame slug="unpacking-cds-granular-deep-dive-credit-default-swaps">
+      <InfographicSlot alt="Credit Default Swaps Infographic" />
           {/* Module 1: Foundational Intuition (DEEP DIVE) */}
           <section>
             <SectionHeader 
@@ -1667,42 +1591,6 @@ export default function UnpackingCDSArticle() {
             </Card>
           </section>
 
-          {/* Continue Learning Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        <footer className="mt-40 py-24 border-t border-slate-200 text-center">
-          <div className="flex justify-center gap-10 mb-10 text-slate-300">
-            <FileText size={40} />
-            <Activity size={40} />
-            <TrendingUp size={40} />
-          </div>
-          <p className="text-slate-400 text-xl font-black uppercase tracking-tighter">
-            Advanced Quantitative Research Group
-          </p>
-          <p className="text-slate-300 text-[10px] mt-4 tracking-[0.5em] uppercase font-black">
-            Confidential Institutional Framework — © 2026
-          </p>
-          <p className="text-slate-500 text-sm mt-8">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

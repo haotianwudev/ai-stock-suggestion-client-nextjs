@@ -1,19 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, AlertTriangle, Network, Workflow, Database, TrendingUp, BarChart3, Binary, ShieldCheck, Zap, BrainCircuit, Layers, Cpu, CheckCircle2, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-
-const ARTICLE_SLUG = 'architecting-alpha-rag-evolution-quantitative-finance';
-const INFOGRAPHIC_URL = 'https://i.imgur.com/lE7Zs7q.jpeg';
-const GOOGLE_DOC_URL = 'https://docs.google.com/document/d/e/2PACX-1vTMoewDaZMbmE0mQCsj3kvX4aWKQUUdC6RiqidkcNwC9Purx3FIhKzuPC8yWTQE__njyUPqOy8cxJ4x/pub';
-
-const GradientText = ({ children, gradient }: { children: React.ReactNode; gradient: string }) => (
-  <span className={`text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>{children}</span>
-);
+import React from 'react';
+import { BookOpen, AlertTriangle, Network, Workflow, Database, TrendingUp, BarChart3, Binary, ShieldCheck, Zap, BrainCircuit, Layers, Cpu, CheckCircle2, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const Card = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
   <div className={`bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 ${className}`}>
@@ -31,87 +20,10 @@ const SectionHeader = ({ icon: Icon, gradient, title }: { icon: React.ElementTyp
 );
 
 export default function ArchitectingAlphaRAG() {
-  const currentArticle = articles.find(a => a.slug === ARTICLE_SLUG);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug!} />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#FAFAFC] font-sans text-slate-700">
-        {/* Deep Research Badge */}
-        <div className="fixed top-4 left-4 z-50">
-          <div className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Deep Research
-          </div>
-        </div>
-
-        {/* Return to Home */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero */}
-        <header className="relative pt-16 pb-16 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full overflow-hidden -z-10 opacity-40">
-            <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[80%] rounded-full bg-gradient-to-br from-purple-200 to-fuchsia-100 blur-3xl mix-blend-multiply" />
-            <div className="absolute top-[10%] -right-[10%] w-[50%] h-[80%] rounded-full bg-gradient-to-br from-blue-200 to-cyan-100 blur-3xl mix-blend-multiply" />
-          </div>
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
-              Architecting Alpha:<br />
-              <GradientText gradient="from-purple-600 via-fuchsia-500 to-pink-500">The Evolution of RAG</GradientText>
-              <br />in Quant Finance
-            </h1>
-            <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed max-w-3xl mx-auto">
-              A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future of the enterprise knowledge bank.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pb-12">
-          <div
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img
-              src={INFOGRAPHIC_URL}
-              alt="RAG Evolution in Quantitative Finance Infographic"
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src={INFOGRAPHIC_URL}
-          alt="RAG Evolution in Quantitative Finance Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 pb-16 space-y-16">
+    <ArticleFrame slug="architecting-alpha-rag-evolution-quantitative-finance">
+      <InfographicSlot alt="RAG Evolution in Quantitative Finance Infographic" />
+      <main className="max-w-5xl mx-auto px-6 pb-16 pt-12 space-y-16">
 
           {/* Section 1: Why RAG is Imperative */}
           <section>
@@ -342,35 +254,7 @@ export default function ArchitectingAlphaRAG() {
             </Card>
           </section>
 
-          {/* Call to Action / Google Doc */}
-          <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-xl text-center border border-purple-100">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Read the Full Research Paper</h3>
-            <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
-              Access the complete deep-dive research document covering all architectural patterns, benchmark data, and implementation frameworks for RAG in quantitative finance.
-            </p>
-            <a
-              href={GOOGLE_DOC_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-purple-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              Read Full Research Paper
-            </a>
-          </div>
-
-          {/* Educational Disclaimer */}
-          <div className="p-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg">
-            <p className="text-sm text-amber-700">
-              <strong>Educational Content:</strong> This analysis is for educational and informational purposes only. The techniques and architectures discussed require careful implementation and testing in production environments. Always validate approaches with your specific use case and data.
-            </p>
-          </div>
-
-          {/* Footer */}
-          <footer className="text-center text-gray-500 text-sm border-t border-gray-200 pt-8">
-            <p>© 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </footer>
         </main>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

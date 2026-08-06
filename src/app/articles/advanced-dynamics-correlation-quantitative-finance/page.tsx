@@ -1,17 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import {
-  ArrowLeft, BookOpen, Network, FunctionSquare, Layers,
+  Network, FunctionSquare, Layers,
   BarChart2, TrendingUp, FileBox, Globe, Activity,
-  FileText, ExternalLink, LineChart, Info, AlertTriangle,
-  ShieldAlert, Zap
+  Info, AlertTriangle, ShieldAlert, Zap
 } from 'lucide-react';
-import { Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // ─── Reusable Components ───────────────────────────────────────────────────────
 
@@ -119,409 +114,294 @@ const DataTable = ({ headers, rows }: TableProps) => (
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 
 export default function AdvancedDynamicsCorrelationPage() {
-  const slug = 'advanced-dynamics-correlation-quantitative-finance';
-  const currentArticle = articles.find((a) => a.slug === slug);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const infographicUrl = 'https://i.imgur.com/ycDz0qo.png';
-  const googleDocUrl =
-    'https://docs.google.com/document/d/e/2PACX-1vSEYxpyY--TFxWss-89VeGEn8Vnidts-JkZDDpc78T8DU3LuWcwuCEDPFLtmOzlMiXxkQituKupKvzJ/pub';
-
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-indigo-200 selection:text-indigo-900">
-      {/* SEO */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug!}
-          />
-        </>
-      )}
+    <ArticleFrame slug="advanced-dynamics-correlation-quantitative-finance">
+      <InfographicSlot alt="Advanced Dynamics of Correlation in Quantitative Finance Infographic" />
 
-      {/* Decorative background blobs */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-indigo-400/10 blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-fuchsia-400/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] rounded-full bg-blue-400/10 blur-[120px]" />
-      </div>
-
-      {/* Return to Home */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="relative z-10 pt-24 pb-16 px-6 text-center max-w-5xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-indigo-600 font-semibold text-sm mb-8 shadow-sm">
-          <BookOpen size={16} />
-          <span>Quantitative Finance Tutorial Series</span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight">
-          Advanced Dynamics of{' '}
-          <GradientText className="from-indigo-600 via-purple-600 to-fuchsia-600">
-            Correlation
-          </GradientText>
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Theoretical Frameworks, Pricing Models, and Market Applications. A comprehensive guide to understanding dependency between multiple random variables in modern capital markets.
-        </p>
-      </header>
-
-      {/* Infographic */}
-      <section className="relative z-10 max-w-5xl mx-auto px-6 pb-12">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src={infographicUrl}
-            alt="Advanced Dynamics of Correlation in Quantitative Finance Infographic"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src={infographicUrl}
-        alt="Advanced Dynamics of Correlation in Quantitative Finance Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="relative z-10 max-w-5xl mx-auto px-6 pb-16">
-
-        {/* Section 1: Introduction */}
-        <SectionCard icon={Network} title="Introduction to the Paradigm of Dependency" gradient="from-indigo-500 to-indigo-600">
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">Foundational Framework:</strong> Correlation represents the core mathematical framework for understanding dependency between multiple random variables in quantitative finance.</li>
-            <li><strong className="text-slate-800">Evolution from Classical Paradigms:</strong> Traditional frameworks focused heavily on isolating single-asset risk (standalone variance). Modern markets fundamentally require a transition toward multivariate dependency structures.</li>
-            <li>
-              <strong className="text-slate-800">Critical Applications:</strong> Robust modeling of asset co-movement is unequivocally necessary for:
-              <ul className="list-[circle] pl-6 mt-2 space-y-1 text-slate-500">
-                <li>Multi-asset derivative valuation</li>
-                <li>Institutional portfolio optimization</li>
-                <li>Dispersion trading strategies</li>
-                <li>Systemic risk calculations</li>
-              </ul>
-            </li>
-            <li><strong className="text-slate-800">The Flaw of Separability:</strong> Historically, risk was treated as &ldquo;separable,&rdquo; assuming a portfolio&apos;s sensitivity to one risk factor remained independent of another. This is no longer a valid assumption.</li>
-          </ul>
-          <Callout title="Key Insight" type="info">
-            The relentless proliferation of highly customized derivative products and the persistent recurrence of violent systemic market shocks have thoroughly invalidated the assumption of static, separable correlation.
-          </Callout>
-        </SectionCard>
-
-        {/* Section 2: Statistical Foundations */}
-        <SectionCard icon={FunctionSquare} title="Statistical Foundations &amp; Typologies" gradient="from-rose-500 to-rose-600">
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">Core Definition:</strong> A correlation coefficient is a descriptive statistic that quantifies the strength and direction of a relationship, strictly bounded within the interval <strong>[-1, 1]</strong>.</li>
-          </ul>
-
-          <SubHeading>The Pearson Correlation Coefficient</SubHeading>
-          <p>
-            The most prevalent measure of dependency, measuring the noisiness and direction of a strictly <em>linear</em> relationship between two variables, X and Y.
-          </p>
-
-          <MathBlock
-            formula="ρ(X,Y) = Cov(X,Y) / (σ_X · σ_Y)"
-            description="Pearson Correlation Coefficient — normalizes covariance by the product of standard deviations"
-          />
-
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">Scale Invariance:</strong> Dividing the covariance by the product of standard deviations normalizes the values, allowing direct comparisons across highly disparate asset classes.</li>
-            <li><strong className="text-slate-800">Crucial Limitation:</strong> The Pearson coefficient is sensitive <em>solely</em> to linear relationships. Two variables can possess a Pearson correlation of zero while simultaneously being deeply dependent through a nonlinear function.</li>
-            <li><strong className="text-slate-800">Rank-Based Alternatives:</strong> Due to Pearson&apos;s limitations, rank-based metrics like Spearman&apos;s rho and Kendall&apos;s tau are frequently utilized to capture non-linear, monotonic dependencies.</li>
-          </ul>
-        </SectionCard>
-
-        {/* Section 3: Portfolio Theory */}
-        <SectionCard icon={Layers} title="Portfolio Theory and Diversification" gradient="from-emerald-500 to-teal-500">
-          <p>
-            A portfolio&apos;s total standard deviation is not just a weighted average of individual asset volatilities; it is critically dependent on cross-asset correlations.
-          </p>
-
-          <MathBlock
-            formula="σ²_p = Σᵢ Σⱼ wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ"
-            description="Portfolio Variance Formula — the full covariance matrix drives total portfolio risk"
-          />
-
-          <SubHeading>The Illusion of Static Negative Correlation</SubHeading>
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">The Traditional Assumption:</strong> High-grade sovereign bonds historically provided negative correlation to equities, protecting portfolios during market stress.</li>
-            <li><strong className="text-slate-800">The Regime Shift Reality:</strong> Asset correlations are not static laws of physics. During transitions into high-inflation environments, nominal yields shift higher to combat inflation, devastating both bond prices and equity valuations simultaneously.</li>
-            <li><strong className="text-slate-800">Evaporation of Diversification:</strong> Consequently, the correlation between stocks and bonds can shift from negative to positive, destroying diversification benefits exactly when they are needed most.</li>
-          </ul>
-
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-              <h4 className="font-bold text-emerald-700 flex items-center gap-2 mb-3">
-                <ShieldAlert size={18} /> Central Counterparty Margining
-              </h4>
-              <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                <li>Institutions hold large portfolios of single-name Credit Default Swaps (CDS).</li>
-                <li>Static margin calculations become compromised during regime shifts.</li>
-                <li>This exposes clearinghouses to massive uncollateralized systemic credit events.</li>
-              </ul>
-            </div>
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-              <h4 className="font-bold text-emerald-700 flex items-center gap-2 mb-3">
-                <Activity size={18} /> Systemic Risk
-              </h4>
-              <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                <li>Failing to account for correlation regime shifts results in severe underestimation of portfolio risk.</li>
-                <li>It directly impacts Initial Margin (IM) requirements.</li>
-                <li>It fundamentally skews Value-at-Risk (VaR) and Expected Shortfall (ES).</li>
-              </ul>
-            </div>
-          </div>
-        </SectionCard>
-
-        {/* Section 4: Realized vs Implied */}
-        <SectionCard icon={BarChart2} title="Realized vs. Option-Implied Correlation" gradient="from-amber-500 to-orange-500">
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">Realized Correlation:</strong> A historical, backward-looking observation of actual asset co-movement over a specific time window.</li>
-            <li><strong className="text-slate-800">Implied Correlation (The Q-Measure):</strong> A forward-looking, risk-neutral market expectation reverse-engineered from option pricing models.</li>
-          </ul>
-
-          <SubHeading>The 4 Stylized Facts of Realized Index Correlation</SubHeading>
-          <div className="space-y-4 mb-8">
-            {[
-              {
-                title: "Asymmetric Spikes During Stress",
-                desc: "In declining markets, liquidity providers widen spreads and indiscriminate selling forces stocks to fall in tandem (e.g., S&P 500 correlation spiked to 0.85 in March 2020).",
-              },
-              {
-                title: "Dispersion During Market Calm",
-                desc: "During bullish stability, asset prices move based on idiosyncratic, company-specific fundamentals, causing correlation to drop.",
-              },
-              {
-                title: "The Volatility Link",
-                desc: "There is an inexorable, positive mathematical linkage between correlation and market volatility.",
-              },
-              {
-                title: "The Absolute Ceiling",
-                desc: "By strict mathematical definition, realized correlation possesses an absolute ceiling and can never exceed 100% (1.0).",
-              },
-            ].map((fact, i) => (
-              <div key={i} className="flex gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
-                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-amber-200 text-amber-800 rounded-full font-bold text-sm">
-                  {i + 1}
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-800">{fact.title}</h4>
-                  <p className="text-slate-600 text-sm mt-1">{fact.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <SubHeading>Calculating Implied Correlation</SubHeading>
-          <ul className="list-disc pl-5 space-y-3">
-            <li>It is isolated by comparing the implied volatility of a broad market index against a weighted basket of the implied volatilities of its single-stock constituents.</li>
-            <li>High index option premiums relative to single-stock options mathematically indicate an elevated expectation of implied correlation.</li>
-          </ul>
-        </SectionCard>
-
-        {/* Section 5: CRP & Dispersion Trading */}
-        <SectionCard icon={TrendingUp} title="Correlation Risk Premium (CRP) &amp; Dispersion Trading" gradient="from-blue-500 to-cyan-500">
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">The CRP Gap:</strong> There is a persistent structural gap between average implied correlations (historically higher) and realized correlations (historically lower).</li>
-            <li><strong className="text-slate-800">The Cost of Insurance:</strong> The CRP acts as an insurance premium that market participants pay to hedge against unanticipated, systemic surges in correlation.</li>
-            <li><strong className="text-slate-800">Aversion to Contagion:</strong> Investors are inherently averse to correlation risk because diversification breaks down entirely during market crashes — creating a &ldquo;no-place-to-hide&rdquo; scenario.</li>
-          </ul>
-
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm mt-6">
-            <h3 className="text-lg font-bold text-blue-800 flex items-center gap-2 mb-4">
-              <Zap size={20} /> Mechanics of Dispersion Trading
-            </h3>
-            <ul className="list-disc pl-5 text-sm text-slate-700 space-y-3 mb-5">
-              <li>Quantitative hedge funds deploy capital to exploit this negative CRP by systematically selling rich implied correlation.</li>
-              <li><strong>The Trade Setup:</strong> A trader sells index options (a short straddle) while simultaneously buying a weighted basket of options on the constituent stocks (long straddles).</li>
+      {/* Section 1: Introduction */}
+      <SectionCard icon={Network} title="Introduction to the Paradigm of Dependency" gradient="from-indigo-500 to-indigo-600">
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">Foundational Framework:</strong> Correlation represents the core mathematical framework for understanding dependency between multiple random variables in quantitative finance.</li>
+          <li><strong className="text-slate-800">Evolution from Classical Paradigms:</strong> Traditional frameworks focused heavily on isolating single-asset risk (standalone variance). Modern markets fundamentally require a transition toward multivariate dependency structures.</li>
+          <li>
+            <strong className="text-slate-800">Critical Applications:</strong> Robust modeling of asset co-movement is unequivocally necessary for:
+            <ul className="list-[circle] pl-6 mt-2 space-y-1 text-slate-500">
+              <li>Multi-asset derivative valuation</li>
+              <li>Institutional portfolio optimization</li>
+              <li>Dispersion trading strategies</li>
+              <li>Systemic risk calculations</li>
             </ul>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-blue-100">
-                <div className="mt-1 w-3 h-3 rounded-full bg-emerald-500 shrink-0" />
-                <div>
-                  <strong className="text-slate-800">High Dispersion Scenario (The Win):</strong>
-                  <p className="text-slate-600 text-sm mt-1">Realized correlation remains low. Individual stocks disperse in different directions. The aggregate index stays flat, allowing the short straddle to profit via theta decay, while the long individual stock straddles gain intrinsic value.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-blue-100">
-                <div className="mt-1 w-3 h-3 rounded-full bg-rose-500 shrink-0" />
-                <div>
-                  <strong className="text-slate-800">High Correlation Scenario (The Loss):</strong>
-                  <p className="text-slate-600 text-sm mt-1">A macro shock causes all stocks to plummet simultaneously. The massive directional move in the index destroys the short straddle, causing severe overall portfolio losses.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionCard>
+          </li>
+          <li><strong className="text-slate-800">The Flaw of Separability:</strong> Historically, risk was treated as &ldquo;separable,&rdquo; assuming a portfolio&apos;s sensitivity to one risk factor remained independent of another. This is no longer a valid assumption.</li>
+        </ul>
+        <Callout title="Key Insight" type="info">
+          The relentless proliferation of highly customized derivative products and the persistent recurrence of violent systemic market shocks have thoroughly invalidated the assumption of static, separable correlation.
+        </Callout>
+      </SectionCard>
 
-        {/* Section 6: Correlation-Sensitive Instruments */}
-        <SectionCard icon={FileBox} title="Correlation-Sensitive Financial Instruments" gradient="from-purple-500 to-pink-500">
-          <ul className="list-disc pl-5 space-y-3">
-            <li>Financial engineering has largely moved beyond plain vanilla risk toward complex, non-separable risk profiles.</li>
-            <li>In these products, a shift in one underlying risk factor directly and dynamically alters the price sensitivity to another factor.</li>
-          </ul>
+      {/* Section 2: Statistical Foundations */}
+      <SectionCard icon={FunctionSquare} title="Statistical Foundations &amp; Typologies" gradient="from-rose-500 to-rose-600">
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">Core Definition:</strong> A correlation coefficient is a descriptive statistic that quantifies the strength and direction of a relationship, strictly bounded within the interval <strong>[-1, 1]</strong>.</li>
+        </ul>
 
-          <DataTable
-            headers={["Derivative Class", "Risk Factors", "Mechanism & Exposure"]}
-            rows={[
-              [
-                "Differential (Diff) Swaps",
-                "Domestic & Foreign Floating Rates",
-                "Cross-currency basis trades executed against a fixed notional. The dealer's exposure is strictly tied to the future correlation between the two rates.",
-              ],
-              [
-                "Quanto Swaps / Options",
-                "Foreign Equity Index & FX Rate",
-                "Provides foreign equity returns with zero FX risk for the buyer. The dealer assumes complex cross-gamma risk driven entirely by local correlation dynamics.",
-              ],
-              [
-                "Spread Options",
-                "Asset 1 & Asset 2",
-                "Written directly on the price difference between two assets. Valuation relies intensely on instantaneous covariance and correlation tracking.",
-              ],
-              [
-                "Basket Options",
-                "Multiple Equities, FX, etc.",
-                "Options settled on the average price of a basket. Pricing these requires constructing and managing a full, multi-dimensional covariance matrix.",
-              ],
-            ]}
-          />
-        </SectionCard>
+        <SubHeading>The Pearson Correlation Coefficient</SubHeading>
+        <p>
+          The most prevalent measure of dependency, measuring the noisiness and direction of a strictly <em>linear</em> relationship between two variables, X and Y.
+        </p>
 
-        {/* Section 7: Dynamic Econometric & Copula Modeling */}
-        <SectionCard icon={Globe} title="Dynamic Econometric &amp; Copula Modeling" gradient="from-teal-500 to-cyan-600">
-          <ul className="list-disc pl-5 space-y-3">
-            <li>Static historical covariance matrices (Constant Conditional Correlation) are structurally inadequate for modern crisis risk management.</li>
-            <li>Econometricians deploy highly sophisticated models to accurately capture time-varying, dynamic market behavior.</li>
-          </ul>
+        <MathBlock
+          formula="ρ(X,Y) = Cov(X,Y) / (σ_X · σ_Y)"
+          description="Pearson Correlation Coefficient — normalizes covariance by the product of standard deviations"
+        />
 
-          <div className="grid md:grid-cols-2 gap-6 my-8">
-            <div className="p-6 border border-teal-100 rounded-2xl bg-teal-50 shadow-sm">
-              <h4 className="font-bold text-teal-800 text-lg mb-3">DCC Frameworks</h4>
-              <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
-                <li><strong>Dynamic Conditional Correlation (DCC):</strong> Shapes time-varying correlation utilizing a GARCH procedure.</li>
-                <li>Decouples univariate volatility estimation from correlation matrix estimation.</li>
-                <li>Successfully resolves &ldquo;dimensionality curses&rdquo; in large portfolio calculations.</li>
-                <li>Advanced variants (like GJR-DCC) can model asymmetric leverage effects.</li>
-              </ul>
-            </div>
-            <div className="p-6 border border-teal-100 rounded-2xl bg-teal-50 shadow-sm">
-              <h4 className="font-bold text-teal-800 text-lg mb-3">Stochastic Correlation</h4>
-              <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
-                <li><strong>Regime-Switching DCC:</strong> Employs latent Markov chains to model shifts between distinct market states (e.g., normal &ldquo;tranquil&rdquo; markets vs. high-volatility &ldquo;crisis&rdquo; markets).</li>
-                <li><strong>True Stochastic Models:</strong> Introduce entirely independent mathematical randomness directly into the underlying dependency generator.</li>
-              </ul>
-            </div>
-          </div>
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">Scale Invariance:</strong> Dividing the covariance by the product of standard deviations normalizes the values, allowing direct comparisons across highly disparate asset classes.</li>
+          <li><strong className="text-slate-800">Crucial Limitation:</strong> The Pearson coefficient is sensitive <em>solely</em> to linear relationships. Two variables can possess a Pearson correlation of zero while simultaneously being deeply dependent through a nonlinear function.</li>
+          <li><strong className="text-slate-800">Rank-Based Alternatives:</strong> Due to Pearson&apos;s limitations, rank-based metrics like Spearman&apos;s rho and Kendall&apos;s tau are frequently utilized to capture non-linear, monotonic dependencies.</li>
+        </ul>
+      </SectionCard>
 
-          <SubHeading>Copula Functions &amp; Tail Dependence</SubHeading>
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-slate-800">Sklar&apos;s Theorem:</strong> Copulas map the joint distribution of multiple variables while perfectly preserving their unique, individual marginal distributions.</li>
-            <li><strong className="text-slate-800">Quantifying Extremes:</strong> They explicitly quantify <strong>tail dependence</strong> — the statistical probability of extreme joint movements occurring simultaneously.</li>
-          </ul>
+      {/* Section 3: Portfolio Theory */}
+      <SectionCard icon={Layers} title="Portfolio Theory and Diversification" gradient="from-emerald-500 to-teal-500">
+        <p>
+          A portfolio&apos;s total standard deviation is not just a weighted average of individual asset volatilities; it is critically dependent on cross-asset correlations.
+        </p>
 
-          <DataTable
-            headers={["Copula Type", "Tail Characteristics & Applications"]}
-            rows={[
-              [
-                "Gaussian",
-                "Zero tail dependence. Dangerously over-optimistic for VaR and systemic crash modeling. It assumes that extreme joint events are virtually impossible.",
-              ],
-              [
-                "Student-t",
-                "Exhibits symmetric tail dependence driven by degrees of freedom. Treats massive joint crashes and massive joint rallies as equally probable outcomes.",
-              ],
-              [
-                "Clayton",
-                "Features strong lower tail dependence (and zero upper). It perfectly models equity portfolios, which tend to crash together violently but rarely rally together with the same coordinated intensity.",
-              ],
-              [
-                "Gumbel",
-                "Features strong upper tail dependence. Frequently applied to commodity markets where simultaneous physical supply shocks can cause multiple assets to spike concurrently.",
-              ],
-            ]}
-          />
-        </SectionCard>
+        <MathBlock
+          formula="σ²_p = Σᵢ Σⱼ wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ"
+          description="Portfolio Variance Formula — the full covariance matrix drives total portfolio risk"
+        />
 
-        {/* Section 8: Synthesis */}
-        <SectionCard icon={Activity} title="Synthesis: Evolution of Dependency" gradient="from-fuchsia-500 to-purple-600">
-          <ul className="list-disc pl-5 space-y-4">
-            <li><strong className="text-slate-800">Macroeconomic Transitions:</strong> The financial landscape has shifted from an environment where illiquidity carried a stable premium to one where liquidity itself is the market&apos;s scarcest asset. This catalyzes a profound evolution in correlation measurement.</li>
-            <li>
-              <strong className="text-slate-800">The Illiquidity Trap:</strong> Integrating deeply illiquid private credit alongside highly liquid equities creates severe structural risks for multi-asset managed accounts.
-              <ul className="list-[circle] pl-6 mt-2 space-y-2 text-sm text-slate-500">
-                <li>When liquid markets crash, capital cannot exit private structures.</li>
-                <li>This forces immediate, cascading liquidations across the remaining liquid asset classes.</li>
-                <li>This mechanical selling functionally drives realized correlation to a perfect 1.0.</li>
-              </ul>
-            </li>
-          </ul>
+        <SubHeading>The Illusion of Static Negative Correlation</SubHeading>
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">The Traditional Assumption:</strong> High-grade sovereign bonds historically provided negative correlation to equities, protecting portfolios during market stress.</li>
+          <li><strong className="text-slate-800">The Regime Shift Reality:</strong> Asset correlations are not static laws of physics. During transitions into high-inflation environments, nominal yields shift higher to combat inflation, devastating both bond prices and equity valuations simultaneously.</li>
+          <li><strong className="text-slate-800">Evaporation of Diversification:</strong> Consequently, the correlation between stocks and bonds can shift from negative to positive, destroying diversification benefits exactly when they are needed most.</li>
+        </ul>
 
-          <div className="p-6 bg-fuchsia-50 border-l-4 border-fuchsia-500 mt-8 rounded-r-xl shadow-sm">
-            <h4 className="font-bold text-fuchsia-900 text-lg mb-3">The Ultimate Conclusion</h4>
-            <ul className="list-disc pl-5 space-y-2 text-slate-800 font-medium">
-              <li>Correlation is undeniably the most mathematically complex and systemically consequential parameter in quantitative finance.</li>
-              <li>Financial assets co-move nonlinearly and asymmetrically in reality.</li>
-              <li>This paradigm has forced the permanent evolution of financial mathematics toward dynamic regime-switching models, tail-dependent copulas, and advanced algorithms.</li>
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <h4 className="font-bold text-emerald-700 flex items-center gap-2 mb-3">
+              <ShieldAlert size={18} /> Central Counterparty Margining
+            </h4>
+            <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
+              <li>Institutions hold large portfolios of single-name Credit Default Swaps (CDS).</li>
+              <li>Static margin calculations become compromised during regime shifts.</li>
+              <li>This exposes clearinghouses to massive uncollateralized systemic credit events.</li>
             </ul>
           </div>
-        </SectionCard>
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <h4 className="font-bold text-emerald-700 flex items-center gap-2 mb-3">
+              <Activity size={18} /> Systemic Risk
+            </h4>
+            <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
+              <li>Failing to account for correlation regime shifts results in severe underestimation of portfolio risk.</li>
+              <li>It directly impacts Initial Margin (IM) requirements.</li>
+              <li>It fundamentally skews Value-at-Risk (VaR) and Expected Shortfall (ES).</li>
+            </ul>
+          </div>
+        </div>
+      </SectionCard>
 
-        {/* Google Doc CTA */}
-        <div className="bg-gradient-to-r from-indigo-50 to-fuchsia-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Read the Full Research Paper</h3>
-          <p className="text-slate-600 mb-6">
-            Access the complete deep-dive document with extended mathematical derivations, copula modeling frameworks, and advanced econometric applications.
-          </p>
-          <a
-            href={googleDocUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-800 transition-colors duration-300 transform hover:scale-105"
-          >
-            <FileText size={20} />
-            Open Research Paper
-            <ExternalLink size={16} />
-          </a>
+      {/* Section 4: Realized vs Implied */}
+      <SectionCard icon={BarChart2} title="Realized vs. Option-Implied Correlation" gradient="from-amber-500 to-orange-500">
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">Realized Correlation:</strong> A historical, backward-looking observation of actual asset co-movement over a specific time window.</li>
+          <li><strong className="text-slate-800">Implied Correlation (The Q-Measure):</strong> A forward-looking, risk-neutral market expectation reverse-engineered from option pricing models.</li>
+        </ul>
+
+        <SubHeading>The 4 Stylized Facts of Realized Index Correlation</SubHeading>
+        <div className="space-y-4 mb-8">
+          {[
+            {
+              title: "Asymmetric Spikes During Stress",
+              desc: "In declining markets, liquidity providers widen spreads and indiscriminate selling forces stocks to fall in tandem (e.g., S&P 500 correlation spiked to 0.85 in March 2020).",
+            },
+            {
+              title: "Dispersion During Market Calm",
+              desc: "During bullish stability, asset prices move based on idiosyncratic, company-specific fundamentals, causing correlation to drop.",
+            },
+            {
+              title: "The Volatility Link",
+              desc: "There is an inexorable, positive mathematical linkage between correlation and market volatility.",
+            },
+            {
+              title: "The Absolute Ceiling",
+              desc: "By strict mathematical definition, realized correlation possesses an absolute ceiling and can never exceed 100% (1.0).",
+            },
+          ].map((fact, i) => (
+            <div key={i} className="flex gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-amber-200 text-amber-800 rounded-full font-bold text-sm">
+                {i + 1}
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-800">{fact.title}</h4>
+                <p className="text-slate-600 text-sm mt-1">{fact.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Disclaimer */}
-        <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
-          <strong>Educational Disclaimer:</strong> This article is for informational and educational purposes only. It does not constitute investment advice, financial guidance, or a recommendation to buy or sell any security. All investments involve risk, including the possible loss of principal. Past performance is not indicative of future results.
-        </div>
-      </main>
+        <SubHeading>Calculating Implied Correlation</SubHeading>
+        <ul className="list-disc pl-5 space-y-3">
+          <li>It is isolated by comparing the implied volatility of a broad market index against a weighted basket of the implied volatilities of its single-stock constituents.</li>
+          <li>High index option premiums relative to single-stock options mathematically indicate an elevated expectation of implied correlation.</li>
+        </ul>
+      </SectionCard>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-12 text-center text-slate-500 relative z-10">
-        <p className="flex items-center justify-center gap-2">
-          <LineChart size={18} />
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+      {/* Section 5: CRP & Dispersion Trading */}
+      <SectionCard icon={TrendingUp} title="Correlation Risk Premium (CRP) &amp; Dispersion Trading" gradient="from-blue-500 to-cyan-500">
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">The CRP Gap:</strong> There is a persistent structural gap between average implied correlations (historically higher) and realized correlations (historically lower).</li>
+          <li><strong className="text-slate-800">The Cost of Insurance:</strong> The CRP acts as an insurance premium that market participants pay to hedge against unanticipated, systemic surges in correlation.</li>
+          <li><strong className="text-slate-800">Aversion to Contagion:</strong> Investors are inherently averse to correlation risk because diversification breaks down entirely during market crashes — creating a &ldquo;no-place-to-hide&rdquo; scenario.</li>
+        </ul>
+
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm mt-6">
+          <h3 className="text-lg font-bold text-blue-800 flex items-center gap-2 mb-4">
+            <Zap size={20} /> Mechanics of Dispersion Trading
+          </h3>
+          <ul className="list-disc pl-5 text-sm text-slate-700 space-y-3 mb-5">
+            <li>Quantitative hedge funds deploy capital to exploit this negative CRP by systematically selling rich implied correlation.</li>
+            <li><strong>The Trade Setup:</strong> A trader sells index options (a short straddle) while simultaneously buying a weighted basket of options on the constituent stocks (long straddles).</li>
+          </ul>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-blue-100">
+              <div className="mt-1 w-3 h-3 rounded-full bg-emerald-500 shrink-0" />
+              <div>
+                <strong className="text-slate-800">High Dispersion Scenario (The Win):</strong>
+                <p className="text-slate-600 text-sm mt-1">Realized correlation remains low. Individual stocks disperse in different directions. The aggregate index stays flat, allowing the short straddle to profit via theta decay, while the long individual stock straddles gain intrinsic value.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-blue-100">
+              <div className="mt-1 w-3 h-3 rounded-full bg-rose-500 shrink-0" />
+              <div>
+                <strong className="text-slate-800">High Correlation Scenario (The Loss):</strong>
+                <p className="text-slate-600 text-sm mt-1">A macro shock causes all stocks to plummet simultaneously. The massive directional move in the index destroys the short straddle, causing severe overall portfolio losses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionCard>
+
+      {/* Section 6: Correlation-Sensitive Instruments */}
+      <SectionCard icon={FileBox} title="Correlation-Sensitive Financial Instruments" gradient="from-purple-500 to-pink-500">
+        <ul className="list-disc pl-5 space-y-3">
+          <li>Financial engineering has largely moved beyond plain vanilla risk toward complex, non-separable risk profiles.</li>
+          <li>In these products, a shift in one underlying risk factor directly and dynamically alters the price sensitivity to another factor.</li>
+        </ul>
+
+        <DataTable
+          headers={["Derivative Class", "Risk Factors", "Mechanism & Exposure"]}
+          rows={[
+            [
+              "Differential (Diff) Swaps",
+              "Domestic & Foreign Floating Rates",
+              "Cross-currency basis trades executed against a fixed notional. The dealer's exposure is strictly tied to the future correlation between the two rates.",
+            ],
+            [
+              "Quanto Swaps / Options",
+              "Foreign Equity Index & FX Rate",
+              "Provides foreign equity returns with zero FX risk for the buyer. The dealer assumes complex cross-gamma risk driven entirely by local correlation dynamics.",
+            ],
+            [
+              "Spread Options",
+              "Asset 1 & Asset 2",
+              "Written directly on the price difference between two assets. Valuation relies intensely on instantaneous covariance and correlation tracking.",
+            ],
+            [
+              "Basket Options",
+              "Multiple Equities, FX, etc.",
+              "Options settled on the average price of a basket. Pricing these requires constructing and managing a full, multi-dimensional covariance matrix.",
+            ],
+          ]}
+        />
+      </SectionCard>
+
+      {/* Section 7: Dynamic Econometric & Copula Modeling */}
+      <SectionCard icon={Globe} title="Dynamic Econometric &amp; Copula Modeling" gradient="from-teal-500 to-cyan-600">
+        <ul className="list-disc pl-5 space-y-3">
+          <li>Static historical covariance matrices (Constant Conditional Correlation) are structurally inadequate for modern crisis risk management.</li>
+          <li>Econometricians deploy highly sophisticated models to accurately capture time-varying, dynamic market behavior.</li>
+        </ul>
+
+        <div className="grid md:grid-cols-2 gap-6 my-8">
+          <div className="p-6 border border-teal-100 rounded-2xl bg-teal-50 shadow-sm">
+            <h4 className="font-bold text-teal-800 text-lg mb-3">DCC Frameworks</h4>
+            <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
+              <li><strong>Dynamic Conditional Correlation (DCC):</strong> Shapes time-varying correlation utilizing a GARCH procedure.</li>
+              <li>Decouples univariate volatility estimation from correlation matrix estimation.</li>
+              <li>Successfully resolves &ldquo;dimensionality curses&rdquo; in large portfolio calculations.</li>
+              <li>Advanced variants (like GJR-DCC) can model asymmetric leverage effects.</li>
+            </ul>
+          </div>
+          <div className="p-6 border border-teal-100 rounded-2xl bg-teal-50 shadow-sm">
+            <h4 className="font-bold text-teal-800 text-lg mb-3">Stochastic Correlation</h4>
+            <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
+              <li><strong>Regime-Switching DCC:</strong> Employs latent Markov chains to model shifts between distinct market states (e.g., normal &ldquo;tranquil&rdquo; markets vs. high-volatility &ldquo;crisis&rdquo; markets).</li>
+              <li><strong>True Stochastic Models:</strong> Introduce entirely independent mathematical randomness directly into the underlying dependency generator.</li>
+            </ul>
+          </div>
+        </div>
+
+        <SubHeading>Copula Functions &amp; Tail Dependence</SubHeading>
+        <ul className="list-disc pl-5 space-y-3">
+          <li><strong className="text-slate-800">Sklar&apos;s Theorem:</strong> Copulas map the joint distribution of multiple variables while perfectly preserving their unique, individual marginal distributions.</li>
+          <li><strong className="text-slate-800">Quantifying Extremes:</strong> They explicitly quantify <strong>tail dependence</strong> — the statistical probability of extreme joint movements occurring simultaneously.</li>
+        </ul>
+
+        <DataTable
+          headers={["Copula Type", "Tail Characteristics & Applications"]}
+          rows={[
+            [
+              "Gaussian",
+              "Zero tail dependence. Dangerously over-optimistic for VaR and systemic crash modeling. It assumes that extreme joint events are virtually impossible.",
+            ],
+            [
+              "Student-t",
+              "Exhibits symmetric tail dependence driven by degrees of freedom. Treats massive joint crashes and massive joint rallies as equally probable outcomes.",
+            ],
+            [
+              "Clayton",
+              "Features strong lower tail dependence (and zero upper). It perfectly models equity portfolios, which tend to crash together violently but rarely rally together with the same coordinated intensity.",
+            ],
+            [
+              "Gumbel",
+              "Features strong upper tail dependence. Frequently applied to commodity markets where simultaneous physical supply shocks can cause multiple assets to spike concurrently.",
+            ],
+          ]}
+        />
+      </SectionCard>
+
+      {/* Section 8: Synthesis */}
+      <SectionCard icon={Activity} title="Synthesis: Evolution of Dependency" gradient="from-fuchsia-500 to-purple-600">
+        <ul className="list-disc pl-5 space-y-4">
+          <li><strong className="text-slate-800">Macroeconomic Transitions:</strong> The financial landscape has shifted from an environment where illiquidity carried a stable premium to one where liquidity itself is the market&apos;s scarcest asset. This catalyzes a profound evolution in correlation measurement.</li>
+          <li>
+            <strong className="text-slate-800">The Illiquidity Trap:</strong> Integrating deeply illiquid private credit alongside highly liquid equities creates severe structural risks for multi-asset managed accounts.
+            <ul className="list-[circle] pl-6 mt-2 space-y-2 text-sm text-slate-500">
+              <li>When liquid markets crash, capital cannot exit private structures.</li>
+              <li>This forces immediate, cascading liquidations across the remaining liquid asset classes.</li>
+              <li>This mechanical selling functionally drives realized correlation to a perfect 1.0.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div className="p-6 bg-fuchsia-50 border-l-4 border-fuchsia-500 mt-8 rounded-r-xl shadow-sm">
+          <h4 className="font-bold text-fuchsia-900 text-lg mb-3">The Ultimate Conclusion</h4>
+          <ul className="list-disc pl-5 space-y-2 text-slate-800 font-medium">
+            <li>Correlation is undeniably the most mathematically complex and systemically consequential parameter in quantitative finance.</li>
+            <li>Financial assets co-move nonlinearly and asymmetrically in reality.</li>
+            <li>This paradigm has forced the permanent evolution of financial mathematics toward dynamic regime-switching models, tail-dependent copulas, and advanced algorithms.</li>
+          </ul>
+        </div>
+      </SectionCard>
+
+      {/* Disclaimer */}
+      <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
+        <strong>Educational Disclaimer:</strong> This article is for informational and educational purposes only. It does not constitute investment advice, financial guidance, or a recommendation to buy or sell any security. All investments involve risk, including the possible loss of principal. Past performance is not indicative of future results.
+      </div>
+    </ArticleFrame>
   );
 }

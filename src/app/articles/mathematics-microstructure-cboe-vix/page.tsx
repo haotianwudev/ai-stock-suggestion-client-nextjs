@@ -36,7 +36,7 @@ export default function VIXMathematicsArticle() {
     <ArticleFrame slug="mathematics-microstructure-cboe-vix">
       <div className="space-y-16">
         {/* Infographic at the top of the body (moved here from hero) */}
-        <InfographicSlot src="https://i.imgur.com/7aefF0v.jpeg" alt="VIX Mathematics Infographic" />
+        <InfographicSlot alt="VIX Mathematics Infographic" />
 
         {/* Section 1: Intro */}
         <section className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200">

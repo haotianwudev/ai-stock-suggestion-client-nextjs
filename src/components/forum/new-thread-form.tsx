@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { CREATE_FORUM_THREAD, GET_FORUM_THREADS } from "@/lib/graphql/queries";
 import { ForumThread } from "@/lib/graphql/types";
 import { useUser } from "@/hooks/use-user";
+import { canCommentInCategory } from "@/lib/forum";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,7 +31,7 @@ export function NewThreadForm({
   categorySlug: string;
 }) {
   const router = useRouter();
-  const { user, loading: userLoading } = useUser();
+  const { user, profile, loading: userLoading } = useUser();
   const [open, setOpen] = useState(false);
   const [createThread] = useMutation<{ createForumThread: ForumThread }>(CREATE_FORUM_THREAD, {
     refetchQueries: [
@@ -52,6 +53,15 @@ export function NewThreadForm({
         <span>Sign in to start a discussion.</span>
         <LoginButton />
       </div>
+    );
+  }
+
+  if (!canCommentInCategory(profile?.tier ?? 1, categorySlug)) {
+    return (
+      <p className="rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
+        Starting a discussion is reserved for premium members right now — this tier isn&apos;t open yet, stay
+        tuned.
+      </p>
     );
   }
 

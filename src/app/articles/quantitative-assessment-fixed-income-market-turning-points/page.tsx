@@ -166,7 +166,7 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
         </section>
 
         {/* Infographic placed after macro intro, before Yield Curve section */}
-        <InfographicSlot src="https://i.imgur.com/UcGCi44.png" alt="Fixed-Income Market Analysis Infographic" />
+        <InfographicSlot alt="Fixed-Income Market Analysis Infographic" />
 
         {/* Section 2: Yield Curve Dynamics */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">

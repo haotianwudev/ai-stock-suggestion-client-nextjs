@@ -9,12 +9,14 @@ import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
 import { useUser } from "@/hooks/use-user";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
+import { getTierName } from "@/lib/tiers";
 import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -92,7 +94,10 @@ export function ProfileSettingsClient() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Profile settings</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          Profile settings
+          <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={submit} className="space-y-6">
@@ -151,7 +156,8 @@ export function ProfileSettingsClient() {
               <span className="font-medium">I&apos;m subscribed to the SOPHIE YouTube channel</span>
               <br />
               <span className="text-muted-foreground">
-                This unlocks every article automatically. We don&apos;t verify this — it&apos;s the honor system.
+                Promotes you to {getTierName(2)} and unlocks every article automatically. We don&apos;t
+                verify this — it&apos;s the honor system.
               </span>
             </span>
           </label>

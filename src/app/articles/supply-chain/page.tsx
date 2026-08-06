@@ -1,16 +1,12 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
 import {
-  ArrowLeft, Maximize2, AlertCircle, ExternalLink,
+  AlertCircle, ExternalLink,
   Activity, BarChart3, TrendingUp, Cpu, Globe,
   Zap, Network, Shield, AlertTriangle, BookOpen,
   Lightbulb, Calculator, Clock, CheckCircle2
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 
@@ -80,76 +76,26 @@ const MathFormula = () => (
 );
 
 export default function ArticlePage() {
-  const currentArticle = articles.find(a => a.slug === 'supply-chain');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug}
-          />
-        </>
-      )}
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-
-        <header className="pt-20 pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl opacity-20 pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute top-10 right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-64 h-64 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-          </div>
-
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-semibold text-sm mb-6 border border-indigo-100 shadow-sm">
-              <BookOpen size={16} /> Featured Independent Quant Research
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
-              <a href="https://www.theta.md/supply-chain" target="_blank" rel="noopener noreferrer" className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-600 hover:from-indigo-600 hover:via-purple-500 hover:to-pink-500 transition-all">
-                Theta.md: Cross-Industry <br className="hidden md:block" /> Supply Chain Signal Analysis
-              </a>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              An independent quant platform tackling one of finance&apos;s hardest problems &mdash; isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation and falsification-first methodology.
-            </p>
-          </div>
-        </header>
-
-        {/* Theta.md Platform Screenshot */}
-        <section className="max-w-5xl mx-auto px-6 pb-8">
-          <a href="https://www.theta.md/supply-chain" target="_blank" rel="noopener noreferrer" className="block group">
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-indigo-200 relative hover:shadow-xl transition-shadow">
-              <img
-                src="https://i.imgur.com/vqAxsnD.png"
-                alt="Theta.md Supply Chain Analysis Platform"
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.01]"
-              />
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                <div className="flex items-center gap-2 text-white text-sm font-medium">
-                  <ExternalLink size={16} />
-                  <span>Explore the live platform at theta.md/supply-chain</span>
-                </div>
+    <ArticleFrame slug="supply-chain">
+      <div className="w-full flex justify-center py-8 bg-slate-900/5 px-6">
+        <a href="https://www.theta.md/supply-chain" target="_blank" rel="noopener noreferrer" className="block max-w-5xl w-full group">
+          <div className="rounded-2xl overflow-hidden shadow-lg border border-indigo-200 relative hover:shadow-xl transition-shadow w-full">
+            <img
+              src="https://i.imgur.com/vqAxsnD.png"
+              alt="Theta.md Supply Chain Analysis Platform"
+              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.01]"
+            />
+            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+              <div className="flex items-center gap-2 text-white text-sm font-medium">
+                <ExternalLink size={16} />
+                <span>Explore the live platform at theta.md/supply-chain</span>
               </div>
             </div>
-          </a>
-        </section>
-
-
-        {/* Article Body */}
-        <main className="max-w-5xl mx-auto px-6 md:px-12 pb-24 space-y-20 relative z-10">
+          </div>
+        </a>
+      </div>
+      <main className="max-w-5xl mx-auto px-6 md:px-12 pb-24 space-y-20 relative z-10">
 
           {/* Module 1: Quantitative Methodologies */}
           <section>
@@ -414,49 +360,7 @@ export default function ArticlePage() {
           </div>
         </div>
 
-        {/* CTA: Theta.md */}
-        <div className="max-w-4xl mx-auto px-6 py-12">
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl border border-indigo-200 text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <Globe className="text-indigo-600" size={24} />
-              <h3 className="text-xl font-bold text-indigo-900">Explore Theta.md&apos;s Supply Chain Research</h3>
-            </div>
-            <p className="text-slate-600 mb-6">Built by an independent quant, Theta.md provides rigorous cross-industry supply chain signal analysis with multi-factor validation &mdash; the kind of systematic, falsification-first research that institutional investors need.</p>
-            <a
-              href="https://www.theta.md/supply-chain"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200"
-            >
-              <ExternalLink size={18} />
-              Visit Theta.md Supply Chain
-            </a>
-          </div>
-        </div>
-
-        {/* Risk Warning */}
-        <div className="max-w-4xl mx-auto px-6 pb-8">
-          <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
-              <div>
-                <h3 className="font-semibold text-red-800 mb-1">Important Disclosure</h3>
-                <p className="text-red-700 text-sm">
-                  This article is for educational purposes only and does not constitute investment advice.
-                  Always consult with qualified professionals before making investment decisions.
-                  The information presented is based on public research and represents an analysis of supply chain signal methodologies.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Footer */}
-      <footer className="max-w-5xl mx-auto px-6 py-8 border-t border-slate-200 text-center text-slate-500 text-sm">
-        &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-      </footer>
-    </>
+      </main>
+    </ArticleFrame>
   );
 }

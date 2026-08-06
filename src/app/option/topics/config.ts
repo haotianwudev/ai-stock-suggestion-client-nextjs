@@ -11,19 +11,12 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",
     relatedArticles: [
       "strategic-options-utilization-risk-comprehensive-framework",
-      "option-when-to-trade",
       "navigating-minefield-options-trading-pitfalls",
-      "option-pitfalls",
       "options-strategy-report-october-10-market-event",
-      "option-strategy-grey-rhino",
       "tax-efficient-option-writing-comprehensive-guide",
-      "tax-efficient-option-writing",
       "decoding-options-market-volume-open-interest-analysis",
-      "volume-oi",
-      "index-effect",
       "sp500-inclusion-anomaly-december-2025-deep-research",
       "navigating-bull-to-bear-regime-shift-quantitative-signals",
-      "institutional-investors-spot-survive-market-crash",
     ],
     studyGuide: {
       items: [
@@ -88,12 +81,9 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/ZLUeCSLgw3Y',
     infographicUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
     relatedArticles: [
-      "option-greeks-poem",
       "option-greeks-traders-poetic-guide-risk",
-      "black-scholes-option-pricing",
       "black-scholes-analytics-laboratory-axioms-option-pricing",
       "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
-      "butterfly-spreads-risk-neutral-density",
     ],
     studyGuide: {
       items: [
@@ -129,23 +119,14 @@ export const topicsConfig: Record<string, TopicConfig> = {
     description: 'Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.',
     videoUrl: 'https://youtu.be/p8nblr4NyNc',
     relatedArticles: [
-      "volatility-smile",
       "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
-      "decode-vix",
       "vix-index-comprehensive-guide-market-volatility",
-      "predict-volatility",
       "quantitative-analyst-guide-volatility-forecasting",
       "industrialization-volatility-hedge-funds-operational-architecture",
-      "vol-hedge-fund",
-      "industrialization-volatility-hedge-funds-operational-architecture",
-      "nvdia-q4-2025",
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
-      "volatility-skew-index",
       "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
       "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
-      "volatility-model-evolution-svi-dupire-heston",
       "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
-      "vol-surface-sticky-delta-sticky-strike",
       "mathematics-microstructure-cboe-vix",
     ],
     studyGuide: {
@@ -223,17 +204,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
     videoUrl: 'https://youtu.be/eHu9X04D7Ss',
     infographicUrl: 'https://i.imgur.com/ZSPRHKw.jpeg',
     relatedArticles: [
-      "volatility-risk-premium-intro",
       'demystifying-volatility-risk-premium-theory-measurement-trading',
-      "spx-option-underlyer",
       "mastering-volatility-risk-premium-spx-options-selling",
       "industrialization-volatility-hedge-funds-operational-architecture",
-      "vol-hedge-fund",
-      "industrialization-volatility-hedge-funds-operational-architecture",
       "decomposing-volatility-risk-premium-structural-arbitrage",
-      "quant-edge-alpha-generation",
       "mastering-spx-option-selling-strategies-variance-risk-premium",
-      "systematic-spx-option-selling",
     ],
     studyGuide: {
       items: [
@@ -283,15 +258,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: 'https://i.imgur.com/4FiUTqH.jpeg',
     relatedArticles: [
       "gamma-exposure-gex-gps-market-volatility",
-      "gex-secret",
       "microstructure-intraday-option-speculation-mechanics-strategies-risks",
-      "option-0dte",
-      "nvdia-q4-2025",
       "decoding-reversal-nvidia-february-2026-earnings-paradox",
       "dark-index-dix-understanding-short-is-long-market-microstructure",
-      "dark-index-dix-tracking-smart-money",
       "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
-      "overheat-cool-down-markets-plunge",
     ],
     studyGuide: {
       items: [
@@ -341,13 +311,9 @@ export const topicsConfig: Record<string, TopicConfig> = {
     infographicUrl: 'https://i.imgur.com/yDVJgI0.jpeg',
     relatedArticles: [
       "strategic-framework-rolling-options-quantitative-approach",
-      "roll-option",
       "advanced-option-rolling-mechanics",
-      "art-rolling-options-hidden-trap",
       "optimal-early-exercise-american-call-options-dividend-stocks",
-      "american-call-options-early-exercise",
       "kelly-criterion-optimal-position-sizing-information-theory",
-      "kelly-criterion-position-sizing",
     ],
     studyGuide: {
       items: [

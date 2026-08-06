@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { 
-  ArrowLeft,
   BrainCircuit, 
   TrendingUp, 
   FunctionSquare, 
@@ -16,19 +14,10 @@ import {
   Target,
   Zap,
   Activity,
-  BarChart4,
-  BookOpen,
-  Maximize2
+  BarChart4
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-
-const GradientText = ({ children, from = 'from-blue-600', to = 'to-purple-600' }: { children: React.ReactNode; from?: string; to?: string }) => (
-  <span className={`bg-gradient-to-r ${from} ${to} bg-clip-text text-transparent font-extrabold`}>
-    {children}
-  </span>
-);
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { MathBlock } from '@/components/articles/math';
 
 const SectionHeading = ({ title, icon: Icon, color = 'text-blue-600', bg = 'bg-blue-100' }: { title: string; icon: React.ComponentType<{ size?: number; strokeWidth?: number }>; color?: string; bg?: string }) => (
   <div className="flex items-center gap-4 mb-8">
@@ -41,15 +30,6 @@ const SectionHeading = ({ title, icon: Icon, color = 'text-blue-600', bg = 'bg-b
   </div>
 );
 
-const MathBlock = ({ equation, description }: { equation: string; description?: string }) => (
-  <div className="my-6 bg-slate-50 border-l-4 border-indigo-500 rounded-r-2xl p-6 shadow-sm overflow-x-auto">
-    <code className="text-lg md:text-xl font-mono text-indigo-700 whitespace-nowrap">
-      {equation}
-    </code>
-    {description && <p className="mt-3 text-sm text-slate-500 font-medium">{description}</p>}
-  </div>
-);
-
 const FoundationSection = () => {
   return (
     <section className="py-16">
@@ -57,7 +37,7 @@ const FoundationSection = () => {
       
       <div className="prose prose-lg text-slate-600 max-w-none mb-10">
         <p>
-          In quantitative investment theory, an <strong>"alpha"</strong> is a predictive mathematical model that transforms raw financial data into a directional signal indicating expected future excess returns. The popularization of formulaic alphas is attributed to quant funds like WorldQuant, who championed generating immense libraries of simple, interpretable signals (e.g., Zura Kakushadze's <em>101 Formulaic Alphas</em>).
+          In quantitative investment theory, an <strong>&ldquo;alpha&rdquo;</strong> is a predictive mathematical model that transforms raw financial data into a directional signal indicating expected future excess returns. The popularization of formulaic alphas is attributed to quant funds like WorldQuant, who championed generating immense libraries of simple, interpretable signals (e.g., Zura Kakushadze&apos;s <em>101 Formulaic Alphas</em>).
         </p>
         <p>
           Formulaic alphas are explicit, algebraic expressions (e.g., <code>Rank(Correlation(Close, Volume, 10))</code>) acting as highly condensed feature engineering pipelines. But why do top funds prefer these over modern Deep Learning?
@@ -137,10 +117,10 @@ const MechanicsSection = () => {
           Unlike standard RL that optimizes for average outcomes, quantitative finance is governed by extreme outliers. An MCTS agent must employ a risk-seeking policy optimizing for the extreme right tail (best-case performance).
         </p>
         
-        <MathBlock 
-          equation="∇J_risk(θ; α) = (1 / αB) * Σ [R(τ) - R_α] * 1_{R(τ) ≥ R_α} * ∇_θ log(p(τ|θ))" 
-          description="The network learns to exclusively emit structural patterns of highly profitable alphas (top 1-α quantile), entirely ignoring syntactic structures that lead to mediocre returns."
-        />
+        <MathBlock math="\nabla J_{\text{risk}}(\theta; \alpha) = \frac{1}{\alpha B} \sum [R(\tau) - R_\alpha] \cdot 1_{\{R(\tau) \ge R_\alpha\}} \cdot \nabla_\theta \log(p(\tau|\theta))" />
+        <p className="mt-3 text-sm text-slate-400 font-medium">
+          The network learns to exclusively emit structural patterns of highly profitable alphas (top 1-α quantile), entirely ignoring syntactic structures that lead to mediocre returns.
+        </p>
       </div>
     </section>
   );
@@ -173,7 +153,7 @@ const ApplicationSection = () => {
             <p className="text-slate-600 text-sm mb-4">
               Modern implementations eschew Pearson correlation for <strong>Spearman Rank Correlation</strong> to mitigate outlier distortion and capture monotonic relationships.
             </p>
-            <MathBlock equation="IC = SpearmanRankCorr(Alpha_t, Returns_{t+1})" />
+            <MathBlock math="\text{IC} = \text{SpearmanRankCorr}(\text{Alpha}_t, \text{Returns}_{t+1})" />
           </div>
         </div>
 
@@ -183,10 +163,10 @@ const ApplicationSection = () => {
             <p className="text-teal-800 mb-6">
               To force the agent to discover orthogonal information rather than trivial variations of the same factor, researchers utilize a Mutual Information Coefficient (MutIC) penalty.
             </p>
-            <MathBlock 
-              equation="Adjusted IC = IC_raw - λ(Σ MutIC_{candidate, i} / k)" 
-              description="If a candidate relies on existing mechanistic logic, its Adjusted IC drops precipitously, signaling the agent to abandon that search branch."
-            />
+            <MathBlock math="\text{Adjusted IC} = \text{IC}_{\text{raw}} - \lambda \left( \frac{\sum \text{MutIC}_{\text{candidate}, i}}{k} \right)" />
+            <p className="mt-3 text-sm text-teal-700 font-medium">
+              If a candidate relies on existing mechanistic logic, its Adjusted IC drops precipitously, signaling the agent to abandon that search branch.
+            </p>
           </div>
         </div>
       </div>
@@ -220,10 +200,10 @@ const RisksSection = () => {
           <p className="text-slate-300 mb-6 text-sm">
             DSR mathematically adjusts the performance metrics by accounting for non-normal return distributions (skewness/kurtosis) and the exact number of independent trials (N).
           </p>
-          <MathBlock 
-            equation="DSR = Z[ (SR - SR_0)√{T-1} / √{1 - γ_3SR + ...} ]" 
-            description="A DSR metric > 0.95 indicates 95% confidence that the alpha is a genuine structural inefficiency, not a statistical fluke."
-          />
+          <MathBlock math="\text{DSR} = Z\left[ \frac{(\text{SR} - \text{SR}_0)\sqrt{T-1}}{\sqrt{1 - \gamma_3 \text{SR} + \dots}} \right]" />
+          <p className="mt-3 text-sm text-slate-400 font-medium">
+            A DSR metric &gt; 0.95 indicates 95% confidence that the alpha is a genuine structural inefficiency, not a statistical fluke.
+          </p>
         </div>
       </div>
     </section>
@@ -264,142 +244,18 @@ const SynthesisSection = () => {
   );
 };
 
-// Simple fallback icon for the Hero
-function SparklesIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-    </svg>
-  );
-}
-
 export default function FormulicAlphaMiningArticle() {
-  const currentArticle = articles.find(article => article.slug === 'advancements-formulaic-alpha-mining-deep-search-mechanics');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-        {/* Decorative Background Elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-blue-400/10 blur-[120px]" />
-          <div className="absolute top-[20%] -right-[10%] w-[30%] h-[50%] rounded-full bg-purple-400/10 blur-[100px]" />
-          <div className="absolute -bottom-[10%] left-[20%] w-[50%] h-[30%] rounded-full bg-emerald-400/10 blur-[120px]" />
-        </div>
-
-        <div className="relative z-10">
-          {/* Return to Home Button */}
-          <div className="max-w-6xl mx-auto px-6 pt-8">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-
-          {/* Hero Header */}
-          <header className="mb-20 text-center space-y-6 px-6 py-12 md:py-24">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-sm font-medium text-slate-600 mb-4">
-              <SparklesIcon className="text-amber-500 w-4 h-4" /> Comprehensive Interactive Tutorial
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight max-w-5xl mx-auto">
-              Advancements in <br />
-              <GradientText>Formulaic Alpha Mining</GradientText>
-            </h1>
-            <p className="max-w-3xl mx-auto text-xl md:text-2xl text-slate-500 leading-relaxed">
-              Deep Search Mechanics, Application Strategies, and Statistical Robustness for the Modern Quantitative Researcher.
-            </p>
-          </header>
-
-          {/* Hero Infographic */}
-          {currentArticle?.imageUrl && (
-            <section className="max-w-6xl mx-auto px-6 pb-8">
-              <div 
-                className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-                onClick={() => setIsImageViewerOpen(true)}
-              >
-                <img 
-                  src={currentArticle.imageUrl} 
-                  alt="Formulaic Alpha Mining Infographic" 
-                  className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-                />
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsImageViewerOpen(true);
-                  }}
-                  className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                  title="View full screen"
-                >
-                  <Maximize2 className="h-4 w-4" />
-                </button>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                  <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                    Click to view full screen
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* Full-screen image viewer */}
-          {currentArticle?.imageUrl && (
-            <FullScreenImageViewer
-              src={currentArticle.imageUrl}
-              alt="Formulaic Alpha Mining Infographic"
-              isOpen={isImageViewerOpen}
-              onClose={() => setIsImageViewerOpen(false)}
-            />
-          )}
-
-          {/* Sections */}
-          <main className="space-y-8 bg-white/40 backdrop-blur-3xl rounded-[3rem] p-6 md:p-12 max-w-6xl mx-auto shadow-2xl border border-white/60">
-            <FoundationSection />
-            <MechanicsSection />
-            <ApplicationSection />
-            <RisksSection />
-            <SynthesisSection />
-          </main>
-
-          {/* Footer with Google Doc Link */}
-          <footer className="mt-20 text-center text-slate-400 pb-12 px-6">
-            <div className="max-w-3xl mx-auto">
-              <p className="mb-4 font-medium text-slate-700">The automated discovery of formulaic alphas represents a fusion of mathematical rigor and computational power.</p>
-              <p className="text-sm mb-6">By decomposing the search space and enforcing statistical deflation, quantitative researchers can systematically harvest genuine structural inefficiencies while avoiding the pitfalls of data-snooping bias.</p>
-              
-              {/* Google Doc Link */}
-              {currentArticle?.googleDoc && (
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-                  <a 
-                    href={currentArticle.googleDoc}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                  >
-                    <BookOpen className="inline mr-2" />
-                    Read Full Research Paper
-                  </a>
-                </div>
-              )}
-
-              <p className="flex items-center justify-center gap-2 text-xs text-slate-400 mt-8">
-                © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-              </p>
-            </div>
-          </footer>
-        </div>
+    <ArticleFrame slug="advancements-formulaic-alpha-mining-deep-search-mechanics">
+      <InfographicSlot alt="Formulaic Alpha Mining Infographic" />
+      
+      <div className="max-w-4xl mx-auto">
+        <FoundationSection />
+        <MechanicsSection />
+        <ApplicationSection />
+        <RisksSection />
+        <SynthesisSection />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

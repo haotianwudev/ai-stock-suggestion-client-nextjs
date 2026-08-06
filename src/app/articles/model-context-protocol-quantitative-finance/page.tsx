@@ -1,16 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowLeft, Activity, Database, ShieldCheck, Cpu, Layers, Code,
   Zap, Server, LayoutDashboard, Terminal, CheckCircle2, AlertCircle,
   ExternalLink, FileText,
 } from 'lucide-react';
 import { Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // ─── Reusable Components ───────────────────────────────────────────────────────
 
@@ -128,96 +125,9 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => (
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 
 export default function McpQuantFinancePage() {
-  const currentArticle = articles.find(
-    (a) => a.slug === 'model-context-protocol-quantitative-finance'
-  );
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const infographicUrl = 'https://i.imgur.com/d1fcUzy.png';
-  const googleDocUrl =
-    'https://docs.google.com/document/d/e/2PACX-1vScLUqi2s9JY-4AM3YeJDQsZw2zEs--j9ocLVE_BPdWL8jaxTCrlavQF3OFJ0Tds9NM8HnEi0caTv2a/pub';
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-      {/* SEO */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug!}
-          />
-        </>
-      )}
-
-      {/* Decorative background */}
-      <div className="absolute top-0 w-full h-[500px] bg-gradient-to-br from-indigo-50/80 via-sky-50/60 to-emerald-50/60 -z-10" />
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-200/40 rounded-full mix-blend-multiply filter blur-[100px] -z-10" />
-      <div className="absolute top-12 -left-12 w-72 h-72 bg-emerald-200/40 rounded-full mix-blend-multiply filter blur-[100px] -z-10" />
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="pt-16 pb-16 px-6 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm text-sm font-semibold text-indigo-600 mb-8">
-          <Zap size={16} fill="currentColor" />
-          Interactive Protocol Tutorial
-        </div>
-        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-          Model Context Protocol in{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-500">
-            Quantitative Finance
-          </span>
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed">
-          A comprehensive guide to System Architecture, State Management, and Interactive Agent Design
-          for financial enterprise ecosystems.
-        </p>
-      </header>
-
-      {/* Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pb-12">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src={infographicUrl}
-            alt="Model Context Protocol in Quantitative Finance Infographic"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src={infographicUrl}
-        alt="Model Context Protocol in Quantitative Finance Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
+    <ArticleFrame slug="model-context-protocol-quantitative-finance">
+      <InfographicSlot alt="Model Context Protocol in Quantitative Finance Infographic" />
       <main className="max-w-5xl mx-auto px-6 pb-24">
 
         {/* Intro */}
@@ -523,41 +433,6 @@ async with client:
           </div>
         </Section>
 
-        {/* Google Doc CTA */}
-        <div className="bg-gradient-to-r from-indigo-50 to-emerald-50 p-8 rounded-2xl border border-indigo-100 text-center">
-          <h3 className="text-2xl font-bold text-slate-800 mb-3">Read the Full Research Paper</h3>
-          <p className="text-slate-600 mb-6 max-w-xl mx-auto">
-            Access the complete deep-dive document covering MCP architecture, implementation patterns,
-            and enterprise deployment strategies for quantitative finance.
-          </p>
-          <a
-            href={googleDocUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors duration-300 transform hover:scale-105"
-          >
-            <FileText size={20} />
-            Read Full Research Paper
-            <ExternalLink size={16} />
-          </a>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="mt-12 p-6 bg-slate-100 rounded-2xl border border-slate-200 text-sm text-slate-500 text-center">
-          <p>
-            This article is for educational and informational purposes only. It does not constitute
-            investment advice or a recommendation to buy or sell any financial instrument.
-          </p>
-        </div>
-
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-12 text-center text-slate-500">
-        <p className="font-medium">
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

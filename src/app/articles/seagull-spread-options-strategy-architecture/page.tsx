@@ -1,12 +1,8 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import { ArrowLeft, Maximize2, BookOpen, TrendingUp, TrendingDown, Globe, ShieldAlert, Activity, Clock, Percent, AlertTriangle, CheckCircle, XCircle, BarChart, Layers, Zap, DollarSign, Scale, LineChart, ExternalLink } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { useState } from 'react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { LucideIcon } from 'lucide-react';
 
 interface CardProps {
@@ -94,9 +90,6 @@ const PayoffDiagram = () => {
 };
 
 export default function SeagullSpreadArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'seagull-spread-options-strategy-architecture');
-
   const greeks = [
     {
       name: 'Delta (&Delta;)',
@@ -164,94 +157,10 @@ export default function SeagullSpreadArticle() {
       pro: 'Capitalizes aggressively on the equity volatility smirk by selling heavily inflated OTM puts to seamlessly fund long positions.',
       con: 'Highly sensitive to sudden, adverse spikes in implied volatility (Negative Vega).'
     },
-    {
-      attribute: 'Hedging Utility',
-      pro: 'Provides a low-cost, continuous, structural hedge for long-term equity portfolios against standard market drawdowns.',
-      con: 'Offers absolutely zero protection against catastrophic "Black Swan" events that breach the short option\'s strike price.'
-    }
-  ];
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug || 'seagull-spread-options-strategy-architecture'}
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative bg-gradient-to-br from-indigo-50 via-white to-fuchsia-50 pt-16 pb-24 px-6 overflow-hidden border-b border-indigo-100">
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-40">
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-fuchsia-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-            <div className="absolute top-48 -left-24 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-1/2 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-          </div>
-          <div className="max-w-5xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-6 border border-indigo-200">
-              <BookOpen className="w-4 h-4" /> Comprehensive Institutional Tutorial
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-fuchsia-600">Seagull Spread</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Strategic Architecture, Volatility Skew Arbitrage, and Institutional Equity Implementation.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img
-              src="https://i.imgur.com/rqjZ3CX.png"
-              alt="Seagull Spread Strategy Architecture"
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/rqjZ3CX.png"
-          alt="Seagull Spread Strategy Architecture"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-24 relative z-20 -mt-16">
+    <ArticleFrame slug="seagull-spread-options-strategy-architecture">
+      <InfographicSlot alt="Seagull Spread Options Strategy Infographic" />
+      <main className="max-w-5xl mx-auto px-6 pb-24">
           {/* Introduction */}
           <section>
             <Card className="shadow-xl shadow-indigo-100/50 border-t-4 border-t-indigo-500">
@@ -529,31 +438,7 @@ export default function SeagullSpreadArticle() {
             </div>
           </section>
 
-          {/* Call to Action - Google Doc Link */}
-          <section className="pb-16">
-            <div className="bg-gradient-to-r from-indigo-50 to-fuchsia-50 p-8 rounded-xl my-8 text-center border border-indigo-100">
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Continue Learning</h3>
-              <p className="text-slate-600 mb-6 max-w-2xl mx-auto">Access the complete research paper with detailed mathematical derivations, institutional case studies, and advanced implementation frameworks.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="https://docs.google.com/document/d/e/2PACX-1vRD1HCouShPrarMmWICgkJDqpK0OlpaS9l8M8GNsbgXqJhv6YGz_yU3pjS5p2MEojO0vg1XI1fqqp7x/pub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  Read Full Research Paper
-                </a>
-              </div>
-            </div>
-          </section>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
-          <p className="text-sm">&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

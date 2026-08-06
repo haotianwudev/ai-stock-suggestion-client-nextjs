@@ -58,6 +58,7 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
           submitLabel="Reply"
           disabled={thread.locked}
           disabledMessage="This discussion is locked."
+          categorySlug={thread.categorySlug}
           onSubmit={async (body) => {
             await replyToPost({ variables: { threadId: thread.id, parentPostId: null, body } });
           }}

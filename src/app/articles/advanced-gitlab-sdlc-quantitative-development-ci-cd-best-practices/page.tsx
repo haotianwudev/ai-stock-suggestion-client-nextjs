@@ -114,7 +114,6 @@ export default function AdvancedGitLabSDLCArticle() {
       </Section>
 
       <InfographicSlot
-        src="https://i.imgur.com/g45Lazn.jpeg"
         alt="GitLab SDLC for Quantitative Development — workflow infographic"
       />
 

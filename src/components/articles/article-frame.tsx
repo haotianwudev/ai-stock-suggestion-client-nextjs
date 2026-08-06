@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, X } from "lucide-react";
 import { articles } from "@/data/articles";
-import { ArticleLabel } from "@/data/articles/types";
+import { Article, ArticleLabel } from "@/data/articles/types";
 import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data";
 import { Header } from "@/components/layout/header";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
@@ -58,27 +58,53 @@ function SlotKicker({ icon: Icon, label, tone }: { icon: React.ElementType; labe
   );
 }
 
+// Exposes the current article (looked up once, by ArticleFrame itself) to body
+// content nested inside it — e.g. InfographicSlot reads `infographicUrl` off of
+// this instead of every page.tsx re-deriving the same `articles.find(...)` lookup.
+const CurrentArticleContext = createContext<Article | null>(null);
+
+export function useCurrentArticle(): Article | null {
+  return useContext(CurrentArticleContext);
+}
+
 /**
  * Import and place inline wherever an infographic naturally fits the article's own
  * argument (e.g. mid-way through, next to the section it illustrates) — not forced
  * to a fixed top/bottom slot by the frame.
+ *
+ * `src` is optional — omit it to use the current article's `infographicUrl` from
+ * the registry (the standard path for anything written after this field existed).
+ * Pass it explicitly only for an article with multiple distinct infographics, since
+ * the registry only holds one.
  */
 export function InfographicSlot({
   src,
   alt,
   label = "Featured Infographic",
 }: {
-  src: string;
+  src?: string;
   alt: string;
   label?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const currentArticle = useCurrentArticle();
+  const resolvedSrc = src ?? currentArticle?.infographicUrl;
+
+  if (!resolvedSrc) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        `InfographicSlot: no src provided and no infographicUrl set on the current article (alt="${alt}").`
+      );
+    }
+    return null;
+  }
+
   return (
     <div className="max-w-5xl mx-auto my-8 sm:my-10">
       <SlotKicker icon={ImageIcon} label={label} tone="accent" />
       <div className="relative group rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800">
         <img
-          src={src}
+          src={resolvedSrc}
           alt={alt}
           loading="lazy"
           className="w-full h-auto object-contain cursor-pointer"
@@ -92,7 +118,7 @@ export function InfographicSlot({
           <Maximize2 className="h-4 w-4" />
         </button>
       </div>
-      <FullScreenImageViewer src={src} alt={alt} isOpen={open} onClose={() => setOpen(false)} />
+      <FullScreenImageViewer src={resolvedSrc} alt={alt} isOpen={open} onClose={() => setOpen(false)} />
     </div>
   );
 }
@@ -440,33 +466,35 @@ export function ArticleFrame({
             so video/paper/wiki stay reachable without leaving the article's scroll
             position. */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
-          {hasPanel ? (
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-              <article>
-                {hasVideo ? (
-                  <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
-                ) : (
-                  children
-                )}
-              </article>
-              <aside className="lg:sticky lg:top-24 space-y-4">
-                <Link
-                  href="/"
-                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  Return to Home
-                </Link>
-                {hasVideo && <VideoCard youtubeUrl={currentArticle.youtubeUrl!} title={title} />}
-                {hasPaper && (
-                  <PaperCard googleDoc={currentArticle.googleDoc!} onExpand={() => setPaperOpen(true)} />
-                )}
-                {hasWiki && wikiEntry && <WikiCard entry={wikiEntry} onExpand={() => setWikiOpen(true)} />}
-              </aside>
-            </div>
-          ) : (
-            <article className="max-w-5xl mx-auto">{children}</article>
-          )}
+          <CurrentArticleContext.Provider value={currentArticle}>
+            {hasPanel ? (
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
+                <article>
+                  {hasVideo ? (
+                    <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
+                  ) : (
+                    children
+                  )}
+                </article>
+                <aside className="lg:sticky lg:top-24 space-y-4">
+                  <Link
+                    href="/"
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Return to Home
+                  </Link>
+                  {hasVideo && <VideoCard youtubeUrl={currentArticle.youtubeUrl!} title={title} />}
+                  {hasPaper && (
+                    <PaperCard googleDoc={currentArticle.googleDoc!} onExpand={() => setPaperOpen(true)} />
+                  )}
+                  {hasWiki && wikiEntry && <WikiCard entry={wikiEntry} onExpand={() => setWikiOpen(true)} />}
+                </aside>
+              </div>
+            ) : (
+              <article className="max-w-5xl mx-auto">{children}</article>
+            )}
+          </CurrentArticleContext.Provider>
         </div>
 
         {!hideComments && (

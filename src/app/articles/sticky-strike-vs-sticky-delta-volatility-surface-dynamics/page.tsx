@@ -1,17 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { ArrowLeft, Maximize2, BookOpen, Anchor, Activity, TrendingUp, AlertTriangle, Calculator, Sigma, CheckCircle2, XCircle, Layers, Scale, Search, MoveRight, ArrowRight } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine, ResponsiveContainer } from 'recharts';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function StickyStrikeVsDeltaArticle() {
-  const currentArticle = articles.find(article => article.slug === 'sticky-strike-vs-sticky-delta-volatility-surface-dynamics');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  
   // Simulator state
   const [spot, setSpot] = useState(100);
   const [skewSlope, setSkewSlope] = useState(-0.2);
@@ -33,79 +27,8 @@ export default function StickyStrikeVsDeltaArticle() {
   });
 
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <div className="flex gap-3 mb-6">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
-              Deep Research
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
-              Options Trading
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Sticky Strike vs. Sticky Delta
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            Understanding the hidden dynamics of the volatility surface. Why your Greeks might be wrong, and how to fix them using the <span className="font-semibold text-slate-900">Skew Stickiness Ratio</span>.
-          </p>
-        </div>
-      </div>
-
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/mdZbOrt.jpeg" 
-            alt="Sticky Strike vs Sticky Delta Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src="https://i.imgur.com/mdZbOrt.jpeg"
-        alt="Sticky Strike vs Sticky Delta Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
+    <ArticleFrame slug="sticky-strike-vs-sticky-delta-volatility-surface-dynamics">
+      <InfographicSlot alt="Sticky Strike vs Sticky Delta Infographic" />
       <main className="max-w-5xl mx-auto px-6 py-16">
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
@@ -588,31 +511,6 @@ export default function StickyStrikeVsDeltaArticle() {
           </div>
         </section>
       </main>
-
-      {currentArticle?.googleDoc && (
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <p className="text-slate-600 mb-6">
-            Dive deeper into the mathematics and implementation details in the full research paper.
-          </p>
-          <a 
-            href={currentArticle.googleDoc}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-          >
-            Read Full Research Paper
-          </a>
-        </div>
-      )}
-
-      <footer className="bg-slate-900 text-slate-400 py-12 px-6 mt-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </div>
-      </footer>
-    </>
+    </ArticleFrame>
   );
 }

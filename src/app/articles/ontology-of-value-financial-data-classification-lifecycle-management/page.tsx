@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Database, Shield, Globe, Layers, Activity, PieChart, TrendingUp, AlertTriangle, Server, FileText, CheckCircle, ArrowRight, Calculator, Clock, Briefcase, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { Database, Shield, Globe, Layers, Activity, PieChart, TrendingUp, AlertTriangle, Server, FileText, CheckCircle, ArrowRight, Calculator, Clock, Briefcase, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: string; subtitle: string; icon: React.ElementType; colorClass: string }) => (
@@ -45,55 +42,10 @@ const DetailList = ({ items }: { items: Array<{ label: string; text: string }> }
 );
 
 export default function OntologyOfValueArticle() {
-  const currentArticle = articles.find(article => article.slug === 'ontology-of-value-financial-data-classification-lifecycle-management');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Deep Research Badge */}
-        <div className="absolute top-8 left-8 z-20">
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-purple-600 text-white shadow-lg">
-            Deep Research
-          </span>
-        </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-slate-200 py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
-          <div className="max-w-4xl mx-auto relative z-10">
-            <div className="inline-flex items-center justify-center p-3 bg-indigo-50 rounded-full mb-6 text-indigo-700">
-              <Database size={32} />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-              The Ontology of Value
-            </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              A comprehensive interactive guide to financial data classification, architecture, and lifecycle management. Understanding the DNA of modern capital markets.
-            </p>
-          </div>
-        </header>
-
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+    <ArticleFrame slug="ontology-of-value-financial-data-classification-lifecycle-management">
+      <InfographicSlot alt="Ontology of Value Infographic" />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
           
           {/* Introduction */}
           <section className="max-w-5xl mx-auto">
@@ -1173,33 +1125,7 @@ export default function OntologyOfValueArticle() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="border-t border-slate-200 pt-12 pb-20 text-center text-slate-500">
-            <FileText className="mx-auto mb-4 text-slate-300" size={32}/>
-            <p className="mb-2">Based on "The Ontology of Value" Report.</p>
-            <p className="text-sm">Designed for Financial Operations & Engineering Professionals.</p>
-            <p className="text-sm mt-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </footer>
         </main>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

@@ -379,6 +379,7 @@ export const ME = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      tier
     }
   }
 `;
@@ -391,6 +392,7 @@ export const UPDATE_PROFILE = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      tier
     }
   }
 `;
@@ -403,6 +405,7 @@ export const SET_YOUTUBE_SUBSCRIBED = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      tier
     }
   }
 `;

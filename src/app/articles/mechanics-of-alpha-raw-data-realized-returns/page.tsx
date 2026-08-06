@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, AlertTriangle, Activity, BarChart2, Layers, CheckCircle, XCircle, ArrowRight, Brain, Shield, Target, Maximize2, Minimize2, Code, Scissors, Filter, Database, Zap, Clock, PieChart, Dices, Scale, RefreshCw, GitMerge, ScatterChart, Grid, Sun, CloudRain, TrendingDown, DollarSign, Anchor, Briefcase, Lock, Search, EyeOff, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React, { useState, useMemo, useRef } from 'react';
+import { BookOpen, TrendingUp, AlertTriangle, Activity, BarChart2, Layers, CheckCircle, XCircle, ArrowRight, Brain, Shield, Target, Maximize2, Minimize2, Code, Scissors, Filter, Database, Zap, Clock, PieChart, Dices, Scale, RefreshCw, GitMerge, ScatterChart, Grid, Sun, CloudRain, TrendingDown, DollarSign, Anchor, Briefcase, Lock, Search, EyeOff, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- TypeScript Interfaces ---
 interface SectionHeaderProps {
@@ -265,139 +262,10 @@ const PHackingSimulator: React.FC = () => {
 
 // --- Main Application ---
 export default function MechanicsOfAlphaPage(): React.ReactElement {
-  const [scrolled, setScrolled] = useState<number>(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState<boolean>(false);
-
-  const currentArticle = articles.find(article => article.slug === 'mechanics-of-alpha-raw-data-realized-returns');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
-      setScrolled(Number(scroll));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || 'The Mechanics of Alpha'} 
-            articleSlug={currentArticle.slug || 'mechanics-of-alpha-raw-data-realized-returns'} 
-          />
-        </>
-      )}
-
-      {/* Progress Bar */}
-      <div 
-        className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-50 transition-all duration-300" 
-        style={{ width: `${scrolled * 100}%` }} 
-      />
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <header className="relative overflow-hidden bg-white pb-20 pt-24 border-b border-slate-100">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
-        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-50 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
-        <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-rose-50 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
-        
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold mb-8 tracking-wide uppercase border border-indigo-100 shadow-sm">
-              <BookOpen size={16} />
-              Interactive Quant Guide
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-              The Mechanics of <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Alpha</span>
-            </h1>
-            <p className="text-xl text-slate-600 mb-12 leading-relaxed max-w-2xl mx-auto">
-              From raw data to realized returns. A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading.
-            </p>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/Yqby0EQ.jpeg" 
-            alt="The Mechanics of Alpha Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/cCSiNGE.jpeg" 
-            alt="The Mechanics of Alpha Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/Yqby0EQ.jpeg"
-        alt="The Mechanics of Alpha Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
+    <ArticleFrame slug="mechanics-of-alpha-raw-data-realized-returns">
+      <InfographicSlot alt="The Mechanics of Alpha Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
         {/* SECTION 1: Theoretical Foundations */}
         <section id="theory">
           <SectionHeader 
@@ -637,30 +505,7 @@ def purged_kfold_split(dates, n_splits=5, embargo_pct=0.01):
           </ExpandableDeepDive>
         </section>
 
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
       </main>
-
-      <footer className="bg-white border-t border-slate-200 py-12">
-        <div className="container mx-auto px-6 text-center text-slate-500 text-sm">
-          <p className="mb-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

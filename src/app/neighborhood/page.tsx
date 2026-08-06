@@ -37,7 +37,6 @@ const neighborhoodSites: NeighborhoodSite[] = [
     featured: true,
     imageUrl: "https://i.imgur.com/vqAxsnD.png",
     selectedArticles: [
-      "trading-wires-supply-chain-quant-signals",
       "supply-chain",
     ],
   },
@@ -50,7 +49,6 @@ const neighborhoodSites: NeighborhoodSite[] = [
     featured: true,
     imageUrl: "https://i.imgur.com/UAA2o4e.png",
     selectedArticles: [
-      "phantom-trader",
       "gift-phantom-trader-psychology-winning-through-losing",
     ],
   },
@@ -63,7 +61,6 @@ const neighborhoodSites: NeighborhoodSite[] = [
     featured: true,
     imageUrl: "https://i.imgur.com/CHqsRTd.png",
     selectedArticles: [
-      "dark-index-dix-tracking-smart-money",
       "dark-index-dix-understanding-short-is-long-market-microstructure",
     ],
   },

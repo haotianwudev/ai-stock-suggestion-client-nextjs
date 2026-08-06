@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BarChart3, Binary, BookOpen, BrainCircuit, Calculator, CheckCircle2, Code2, Coins, Cpu, Database, FileSpreadsheet, Globe, Layers, Layout, Library, Lightbulb, LineChart, Lock, Network, PieChart, Scale, Server, Settings, Sigma, Target, Terminal, TrendingUp, Workflow, Zap, AlertTriangle, Cloud, Container, Box, Atom, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 const Section = ({ title, icon: Icon, children, colorClass, gradientClass, id }: {
@@ -111,10 +108,6 @@ const Formula = ({ tex, displayMode = true }: { tex: string; displayMode?: boole
 };
 
 export default function IntegerOptimizationArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  
-  const currentArticle = articles.find(article => article.slug === 'integer-optimization-finance-continuous-theory-discrete-execution');
-
   // Load Katex Scripts on mount
   useEffect(() => {
     const loadKatex = () => {
@@ -145,131 +138,9 @@ export default function IntegerOptimizationArticle() {
   }, []);
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900 pb-20">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white mb-12">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50 opacity-90"></div>
-          
-          {/* Animated Background Blobs */}
-          <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse animation-delay-2000"></div>
-
-          <div className="relative max-w-7xl mx-auto px-6 py-24 sm:py-32 flex flex-col items-center text-center z-10">
-            <div className="mb-6 inline-flex items-center px-4 py-2 rounded-full border border-indigo-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-              <Binary className="w-4 h-4 text-indigo-600 mr-2" />
-              <span className="text-sm font-semibold text-indigo-600 tracking-wide uppercase">Quantitative Research Series</span>
-            </div>
-
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900">
-              Integer Optimization<br />in Finance
-            </h1>
-
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-light">
-              From continuous theory to discrete execution. How <span className="font-semibold text-indigo-600">Mixed-Integer Programming (MIP)</span> solves the NP-Hard problems of real-world trading.
-            </p>
-
-            <div className="mt-10 flex gap-4 text-sm font-medium text-slate-500">
-              <div className="flex items-center">
-                <CheckCircle2 className="w-4 h-4 mr-1 text-green-500" /> Portfolio Construction
-              </div>
-              <div className="flex items-center">
-                <CheckCircle2 className="w-4 h-4 mr-1 text-green-500" /> Tax Management
-              </div>
-              <div className="flex items-center">
-                <CheckCircle2 className="w-4 h-4 mr-1 text-green-500" /> Arbitrage
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/X2ORuTr.jpeg" 
-              alt="Integer Optimization in Finance Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/uxp6Frj.jpeg" 
-              alt="Integer Optimization in Finance Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/X2ORuTr.jpeg"
-          alt="Integer Optimization in Finance Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-7xl mx-auto px-6">
+    <ArticleFrame slug="integer-optimization-finance-continuous-theory-discrete-execution">
+      <InfographicSlot alt="Integer Optimization in Finance Infographic" />
+      <main className="max-w-7xl mx-auto px-6">
           {/* 1. The Core Problem */}
           <div className="grid md:grid-cols-12 gap-8 mb-20">
             <div className="md:col-span-7 bg-white rounded-3xl p-10 shadow-lg border border-indigo-50 relative overflow-hidden group">
@@ -876,45 +747,7 @@ export default function IntegerOptimizationArticle() {
             </div>
           </div>
 
-          {/* Continue Learning Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="border-t border-slate-200 pt-12 pb-8">
-            <div className="flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm">
-              <div className="flex items-center mb-4 md:mb-0">
-                <Library className="w-4 h-4 mr-2" />
-                <span>Finance & Optimization Research Group</span>
-              </div>
-              <div className="flex space-x-8">
-                <a href="#" className="hover:text-indigo-600 transition-colors">Papers</a>
-                <a href="#" className="hover:text-indigo-600 transition-colors">Benchmarks</a>
-                <a href="#" className="hover:text-indigo-600 transition-colors">Datasets</a>
-              </div>
-            </div>
-          </footer>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-50 border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
-          <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </div>
-    </>
+      </main>
+    </ArticleFrame>
   );
 }

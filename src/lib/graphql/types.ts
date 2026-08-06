@@ -289,6 +289,7 @@ export interface User {
   displayName?: string | null;
   avatarUrl?: string | null;
   youtubeSubscribed: boolean;
+  tier: number;
 }
 
 export interface ForumCategory {

@@ -17,7 +17,7 @@ import {
 const NAV_LINKS = [
   { href: "/investment-clock", label: "Macro Clock", icon: Clock },
   { href: "/wiki", label: "Wiki", icon: BookOpen },
-  { href: "/forum", label: "Forum", icon: MessagesSquare },
+  { href: "/forum/site-feedback", label: "Feedback", icon: MessagesSquare },
 ];
 
 export function Header() {

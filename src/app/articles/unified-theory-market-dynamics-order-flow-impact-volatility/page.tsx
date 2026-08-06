@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Layers, Activity, Zap, BarChart3, BookOpen, Cpu, Scale, LineChart, Network, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Layers, Activity, Zap, BarChart3, BookOpen, Cpu, Scale, LineChart, Network, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable UI Components ---
 const Section = ({ title, icon: Icon, children, bgClass = "bg-white" }: {
@@ -65,95 +62,10 @@ const Formula = ({ equation, description }: { equation: string; description: str
 
 // --- Main Application ---
 export default function UnifiedTheoryMarketDynamics() {
-  const currentArticle = articles.find(article => article.slug === 'unified-theory-market-dynamics-order-flow-impact-volatility');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative pt-32 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-          {/* Colorful Background Blurs */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 bg-slate-50">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-300/40 blur-3xl"></div>
-            <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-200/40 blur-3xl"></div>
-            <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[60%] rounded-full bg-pink-200/40 blur-3xl"></div>
-          </div>
-
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-sm text-indigo-700 font-semibold text-sm mb-8">
-              <BookOpen size={16} />
-              <span>Interactive Tutorial</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-purple-900 tracking-tight mb-8 leading-tight">
-              A Unified Theory of <br className="hidden md:block"/> Market Dynamics
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
-              Exploring the Microstructural Foundations of Order Flow, Market Impact, and Volatility. Based on the breakthrough research by Muhle-Karbe et al.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        {currentArticle?.imageUrl && (
-          <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => setIsImageViewerOpen(true)}
-            >
-              <img 
-                src={currentArticle.imageUrl} 
-                alt="Unified Theory of Market Dynamics Infographic" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsImageViewerOpen(true);
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Full-screen image viewer */}
-        {currentArticle?.imageUrl && (
-          <FullScreenImageViewer
-            src={currentArticle.imageUrl}
-            alt="Unified Theory of Market Dynamics Infographic"
-            isOpen={isImageViewerOpen}
-            onClose={() => setIsImageViewerOpen(false)}
-          />
-        )}
-
+    <ArticleFrame slug="unified-theory-market-dynamics-order-flow-impact-volatility">
+      <InfographicSlot alt="Unified Theory of Market Dynamics Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12">
         {/* Section 1 */}
         <Section title="The Fragmentation of Theory" icon={Network} bgClass="bg-white/60 backdrop-blur-lg">
           <p>The evolution of quantitative finance has long been marked by a fundamental dichotomy. On one side, macroscopic asset pricing models (rooted in Bachelier and Black-Scholes) rely on the assumption that price processes are semi-martingales. This reflects the absence of arbitrage and limits return predictability.</p>
@@ -315,51 +227,27 @@ export default function UnifiedTheoryMarketDynamics() {
               <span className="px-4 py-2 bg-slate-800 rounded-full border border-slate-700">No-Arbitrage Constraints</span>
             </div>
             
-            {/* Continue Learning & Paper Attribution */}
-            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Continue Learning</h3>
-              
-              {/* CTA Button */}
-              {currentArticle?.googleDoc && (
-                <div className="mb-8">
-                  <a 
-                    href={currentArticle.googleDoc}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                  >
-                    <BookOpen className="inline mr-2" />
-                    Read Full Research Paper
-                  </a>
-                </div>
-              )}
-
-              {/* Paper Attribution */}
-              <div className="border-t border-slate-700 pt-6 text-sm">
-                <p className="text-slate-300 mb-3">
-                  This article is based on the groundbreaking research:
-                </p>
-                <p className="text-white font-semibold mb-2">
-                  &quot;A unified theory of order flow, market impact, and volatility&quot;
-                </p>
-                <p className="text-slate-400 mb-4">
-                  by Johannes Muhle-Karbe, Youssef Ouazzani Chahdi, Mathieu Rosenbaum, and Grégoire Szymanski
-                </p>
-                <p className="text-slate-400 text-xs">
-                  arXiv:2601.23172 [q-fin.ST] • Submitted: 30 Jan 2026 • Last revised: 2 Feb 2026
-                </p>
-                <p className="text-slate-500 text-xs mt-4 italic">
-                  We extend our deepest gratitude to the authors for their exceptional contribution to quantitative finance and market microstructure theory.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 text-slate-400 text-sm">
-              © 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
+            {/* Paper Attribution */}
+            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-sm">
+              <p className="text-slate-300 mb-3">
+                This article is based on the groundbreaking research:
+              </p>
+              <p className="text-white font-semibold mb-2">
+                &quot;A unified theory of order flow, market impact, and volatility&quot;
+              </p>
+              <p className="text-slate-400 mb-4">
+                by Johannes Muhle-Karbe, Youssef Ouazzani Chahdi, Mathieu Rosenbaum, and Grégoire Szymanski
+              </p>
+              <p className="text-slate-400 text-xs">
+                arXiv:2601.23172 [q-fin.ST] • Submitted: 30 Jan 2026 • Last revised: 2 Feb 2026
+              </p>
+              <p className="text-slate-500 text-xs mt-4 italic">
+                We extend our deepest gratitude to the authors for their exceptional contribution to quantitative finance and market microstructure theory.
+              </p>
             </div>
           </div>
         </footer>
-      </div>
-    </>
+      </main>
+    </ArticleFrame>
   );
 }
