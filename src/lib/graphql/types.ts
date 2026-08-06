@@ -283,6 +283,14 @@ export interface QuantTrendingResult {
   total: number;
 }
 
+export interface User {
+  id: string;
+  email?: string;
+  displayName?: string | null;
+  avatarUrl?: string | null;
+  youtubeSubscribed: boolean;
+}
+
 export interface ForumCategory {
   id: string;
   slug: string;

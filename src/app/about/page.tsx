@@ -105,10 +105,10 @@ export default function AboutPage() {
                   Completely Free
                 </Badge>
                 <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 px-6 py-3 text-xl font-semibold">
-                  No Logins Required
+                  Login Optional
                 </Badge>
                 <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 px-6 py-3 text-xl font-semibold">
-                  No Subscriptions
+                  No Paid Subscriptions
                 </Badge>
               </div>
               <p className="italic text-muted-foreground">
@@ -148,6 +148,19 @@ export default function AboutPage() {
                 </p>
                 <p className="text-lg text-green-600">
                   Please leave me a comment in any forms, so that I know you've been here.
+                </p>
+                <p className="text-base text-green-600">
+                  Want to support the site? The easiest way is to{" "}
+                  <a
+                    href="https://www.youtube.com/@SOPHIEAIFinance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline hover:text-green-800"
+                  >
+                    subscribe on YouTube
+                  </a>{" "}
+                  — <Link href="/settings/profile" className="font-semibold underline hover:text-green-800">log in and confirm it on your profile</Link>{" "}
+                  to unlock articles going forward. A tip jar for direct financial support is on the way too — stay tuned.
                 </p>
               </div>
             </CardContent>

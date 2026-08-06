@@ -1,17 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { 
-  BookOpen, Building2, TrendingUp, Layers, 
+  Building2, TrendingUp, Layers, 
   ArrowRightLeft, Activity, ShieldAlert, Zap,
-  Briefcase, LineChart, AlertTriangle, Scale, Clock, DollarSign, ArrowLeft, Maximize2, ExternalLink
+  Briefcase, LineChart, AlertTriangle, Scale, Clock
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
-const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }) => (
+const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: { icon: any, title: string, subtitle?: string, colorClass: string }) => (
   <div className="mb-8">
     <div className={`inline-flex p-3 rounded-2xl ${colorClass} mb-4`}>
       <Icon className="w-8 h-8" />
@@ -23,53 +20,16 @@ const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }) => (
   </div>
 );
 
-const Card = ({ children, className = "" }) => (
+const Card = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <div className={`bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8 hover:shadow-md transition-shadow duration-300 ${className}`}>
     {children}
   </div>
 );
 
-const InfoPill = ({ text, color = "bg-slate-100 text-slate-700" }) => (
+const InfoPill = ({ text, color = "bg-slate-100 text-slate-700" }: { text: string, color?: string }) => (
   <span className={`px-3 py-1 rounded-full text-sm font-medium ${color}`}>
     {text}
   </span>
-);
-
-const Hero = () => (
-  <header className="relative bg-slate-50">
-    <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-      <div className="absolute top-40 -left-40 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-40 left-20 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
-    </div>
-    
-    <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-      {/* Return to Home Button */}
-      <div className="mb-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-      
-      {/* Title Section */}
-      <div className="pt-16 pb-20 text-center">
-        <div className="inline-flex items-center space-x-2 bg-white rounded-full px-4 py-2 shadow-sm border border-slate-200 mb-8">
-          <BookOpen className="w-4 h-4 text-indigo-500" />
-          <span className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Interactive Masterclass</span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
-          The Architecture of <br className="hidden md:block"/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
-            Exchange-Traded Funds
-          </span>
-        </h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
-          From simple index trackers to highly complex vehicles encompassing active management, leveraged derivatives, and alternative asset classes. Understand the mechanics, trading strategies, and structural risks.
-        </p>
-      </div>
-    </div>
-  </header>
 );
 
 const GenesisSection = () => (
@@ -86,10 +46,10 @@ const GenesisSection = () => (
         <div>
           <h3 className="text-2xl font-bold text-slate-900 mb-4">Regulatory Foundations</h3>
           <p className="text-slate-700 leading-relaxed mb-4">
-            Historically, launching an ETF required an individual "exemptive order" under the Investment Company Act of 1940, a notoriously slow process taking 12 to 18 months.
+            Historically, launching an ETF required an individual &ldquo;exemptive order&rdquo; under the Investment Company Act of 1940, a notoriously slow process taking 12 to 18 months.
           </p>
           <p className="text-slate-700 leading-relaxed mb-6">
-            The landscape transformed in September 2019 with <strong className="text-slate-900">SEC Rule 6c-11 (The "ETF Rule")</strong>. It created a consistent framework permitting open-end ETFs to operate without individualized orders, provided they meet core conditions:
+            The landscape transformed in September 2019 with <strong className="text-slate-900">SEC Rule 6c-11 (The &ldquo;ETF Rule&rdquo;)</strong>. It created a consistent framework permitting open-end ETFs to operate without individualized orders, provided they meet core conditions:
           </p>
           <ul className="space-y-3">
             {[
@@ -180,7 +140,7 @@ const ActivePassiveSection = () => (
           <div className="bg-pink-50 p-4 rounded-xl border border-pink-100 mb-4">
             <h4 className="font-semibold text-pink-900 mb-2">The ANT Solution</h4>
             <p className="text-sm text-pink-800">
-              Daily transparency risks "front-running". <strong>Active Non-Transparent (ANT)</strong> ETFs publish a "proxy basket" to protect intellectual property while allowing market makers to price efficiently.
+              Daily transparency risks &ldquo;front-running&rdquo;. <strong>Active Non-Transparent (ANT)</strong> ETFs publish a &ldquo;proxy basket&rdquo; to protect intellectual property while allowing market makers to price efficiently.
             </p>
           </div>
         </Card>
@@ -286,7 +246,7 @@ const TaxAndRebalanceSection = () => (
         </h3>
         <Card className="bg-rose-50 border-rose-100">
           <p className="text-slate-800 mb-4">
-            Index reconstitution creates predictable "sunshine trading." Because changes are announced in advance, hedge funds <strong>front-run</strong> passive ETFs. 
+            Index reconstitution creates predictable &ldquo;sunshine trading.&rdquo; Because changes are announced in advance, hedge funds <strong>front-run</strong> passive ETFs. 
           </p>
           <ul className="list-disc pl-5 space-y-2 text-slate-700">
             <li>New index entrants rise ~67 bps before rebalance due to front-running.</li>
@@ -311,11 +271,10 @@ const TradingStrategiesSection = () => (
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-        {/* Tactics */}
         <div>
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Tactics for Low-Liquidity ETFs</h3>
           <p className="text-slate-600 mb-6">
-            An ETF's true liquidity is determined by its underlying securities, not its secondary volume. However, poor execution destroys returns.
+            An ETF&apos;s true liquidity is determined by its underlying securities, not its secondary volume. However, poor execution destroys returns.
           </p>
           
           <div className="space-y-4">
@@ -336,7 +295,6 @@ const TradingStrategiesSection = () => (
           </div>
         </div>
 
-        {/* Volatility Decay */}
         <div>
           <h3 className="text-2xl font-bold text-slate-900 mb-6">The Volatility Decay Trap</h3>
           <p className="text-slate-600 mb-6">
@@ -366,7 +324,6 @@ const TradingStrategiesSection = () => (
         </div>
       </div>
       
-      {/* USO Anomaly */}
       <div className="bg-rose-50 border-l-4 border-rose-500 p-6 md:p-8 rounded-r-3xl">
         <h3 className="text-2xl font-bold text-rose-900 mb-4 flex items-center">
           <AlertTriangle className="w-6 h-6 mr-3 text-rose-600" />
@@ -376,7 +333,7 @@ const TradingStrategiesSection = () => (
           Commodity ETFs like USO use futures contracts. Rolling expiring contracts into higher-priced next-month contracts (<strong>Contango</strong>) creates a persistent negative roll yield.
         </p>
         <p className="text-rose-800">
-          In April 2020, extreme oil oversupply pushed futures into "super-contango" (prices went negative to -$37.63). USO swelled with retail cash, hit regulatory position limits, and was forced to halt creations and buy contracts far down the futures curve. <strong className="text-rose-900">Result: It completely decoupled from the spot price of oil</strong>, trading at a massive premium to an impaired NAV, eventually requiring an 8-for-1 reverse split.
+          In April 2020, extreme oil oversupply pushed futures into &ldquo;super-contango&rdquo; (prices went negative to -$37.63). USO swelled with retail cash, hit regulatory position limits, and was forced to halt creations and buy contracts far down the futures curve. <strong className="text-rose-900">Result: It completely decoupled from the spot price of oil</strong>, trading at a massive premium to an impaired NAV, eventually requiring an 8-for-1 reverse split.
         </p>
       </div>
     </div>
@@ -384,107 +341,18 @@ const TradingStrategiesSection = () => (
 );
 
 export default function ETFArchitecturePage() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks');
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-        <Hero />
-
-        {/* Hero Infographic with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/Zqkw18n.png" 
-              alt="ETF Architecture Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/Zqkw18n.png"
-          alt="ETF Architecture Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <GenesisSection />
-        <ActivePassiveSection />
-        <DualMarketSection />
-        <TaxAndRebalanceSection />
-        <TradingStrategiesSection />
-
-        {/* Call to Action - Google Doc Link */}
-        {currentArticle?.googleDoc && (
-          <section className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-              <p className="text-lg text-gray-600 mb-8">
-                Dive deeper into the quantitative mechanics and regulatory frameworks with the full research paper.
-              </p>
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105 shadow-lg"
-              >
-                <ExternalLink className="mr-2 h-5 w-5" />
-                Read Full Research Paper
-              </a>
-            </div>
-          </section>
-        )}
-
-        {/* Conclusion */}
-        <footer className="bg-slate-900 py-16 text-center text-slate-400">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-800 mb-6">
-              <Briefcase className="w-8 h-8 text-indigo-400" />
-            </div>
-            <h2 className="text-2xl font-bold text-white mb-4">Mastering the Ecosystem</h2>
-            <p className="mb-8 leading-relaxed">
-              The ETF wrapper is a multi-trillion-dollar nexus of global finance. However, it cannot mask the inherent risks of its underlying constituents. By understanding primary market mechanics, liquidity profiles, tax efficiencies, and the mathematical flaws of leveraged derivatives, investors can construct highly optimized, goal-driven portfolios.
-            </p>
-            <div className="pt-8 border-t border-slate-800 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+    <ArticleFrame slug="architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks">
+      <InfographicSlot 
+        src="https://i.imgur.com/Zqkw18n.png" 
+        alt="ETF Architecture Infographic" 
+        label="Ecosystem Overview"
+      />
+      <GenesisSection />
+      <ActivePassiveSection />
+      <DualMarketSection />
+      <TaxAndRebalanceSection />
+      <TradingStrategiesSection />
+    </ArticleFrame>
   );
 }

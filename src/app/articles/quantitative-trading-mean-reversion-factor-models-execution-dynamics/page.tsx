@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Maximize2 } from 'lucide-react';
+import React from 'react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { MathBlock, InlineMath } from '@/components/articles/math';
 import { 
   TrendingUp, 
   BarChart2, 
@@ -13,12 +13,8 @@ import {
   ShieldCheck,
   BookOpen,
   CheckCircle,
-  Zap,
-  Info
+  Zap
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 const SectionHeading = ({ title, icon: Icon, gradient }: { title: string; icon: React.ElementType; gradient: string }) => (
   <div className="flex items-center gap-3 mb-6">
@@ -37,19 +33,6 @@ const Card = ({ children, className = "" }: { children: React.ReactNode; classNa
   </div>
 );
 
-const MathDisplay = ({ formula, description }: { formula: React.ReactNode; description?: string }) => (
-  <div className="my-6 rounded-2xl overflow-hidden border border-indigo-100 bg-indigo-50/50 shadow-inner">
-    <div className="p-4 bg-white font-mono text-lg text-center text-indigo-900 border-b border-indigo-100 overflow-x-auto">
-      {formula}
-    </div>
-    {description && (
-      <div className="p-3 text-sm text-indigo-700 bg-indigo-50 text-center font-medium">
-        {description}
-      </div>
-    )}
-  </div>
-);
-
 const KeyTakeaway = ({ children }: { children: React.ReactNode }) => (
   <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100 flex gap-4 items-start">
     <Zap className="text-amber-500 shrink-0 mt-1" size={24} />
@@ -61,8 +44,9 @@ const KeyTakeaway = ({ children }: { children: React.ReactNode }) => (
 );
 
 const EvolutionSection = () => (
-  <section className="py-16 relative">
-    <Card>
+  <section className="py-12 relative">
+    <InfographicSlot src="https://i.imgur.com/UYlEArc.png" alt="Quantitative Trading Mean Reversion Infographic" />
+    <Card className="mt-8">
       <SectionHeading 
         title="1. Evolution of Statistical Arbitrage" 
         icon={TrendingUp} 
@@ -73,7 +57,7 @@ const EvolutionSection = () => (
           Statistical arbitrage (stat arb) is a heavily quantitative framework that exploits temporary pricing inefficiencies across diversified portfolios. Originating in the 1980s with pairs trading, it relies on isolating idiosyncratic components of asset returns by neutralizing market and factor risks.
         </p>
         <p className="mb-4">
-          Once isolated, these residual prices often exhibit <strong>mean-reverting characteristics</strong>—drifting away from, and eventually returning to, a long-term historical equilibrium.
+          Once isolated, these residual prices often exhibit <strong>mean-reverting characteristics</strong>&mdash;drifting away from, and eventually returning to, a long-term historical equilibrium.
         </p>
         <div className="grid md:grid-cols-2 gap-6 my-8">
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
@@ -95,7 +79,7 @@ const EvolutionSection = () => (
 );
 
 const FactorsSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card>
       <SectionHeading 
         title="2. Major Factors in Quant Trading" 
@@ -107,18 +91,14 @@ const FactorsSection = () => (
           Factor investing targets quantifiable traits that explain cross-sectional variation in expected returns, shifting away from discretionary stock picking. It evolved from the single-factor CAPM (Market Risk) to the Fama-French Three-Factor and eventually Five-Factor models.
         </p>
         
-        <MathDisplay 
-          formula={
-            <span>
-              R<sub>i,t</sub> - R<sub>f,t</sub> = α<sub>i</sub> + β<sub>1</sub>(R<sub>m,t</sub> - R<sub>f,t</sub>) + β<sub>2</sub>(SMB) + β<sub>3</sub>(HML) + β<sub>4</sub>(RMW) + β<sub>5</sub>(CMA) + ε<sub>i,t</sub>
-            </span>
-          }
-          description="The Fama-French Five-Factor Time-Series Regression Equation"
-        />
+        <div className="my-6">
+          <MathBlock math="R_{i,t} - R_{f,t} = \alpha_i + \beta_1(R_{m,t} - R_{f,t}) + \beta_2(SMB) + \beta_3(HML) + \beta_4(RMW) + \beta_5(CMA) + \varepsilon_{i,t}" />
+          <div className="text-center text-sm text-slate-500 mt-2 font-medium">The Fama-French Five-Factor Time-Series Regression Equation</div>
+        </div>
       </div>
 
       <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-        <table className="w-full text-left border-collapse">
+        <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr className="bg-emerald-50 border-b border-emerald-100">
               <th className="p-4 font-bold text-emerald-900">Factor</th>
@@ -164,7 +144,7 @@ const FactorsSection = () => (
 );
 
 const AdvancedModelingSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card>
       <SectionHeading 
         title="3. Advanced Extraction Models" 
@@ -203,7 +183,7 @@ const AdvancedModelingSection = () => (
 );
 
 const OrnsteinUhlenbeckSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card>
       <SectionHeading 
         title="4. The Ornstein-Uhlenbeck Framework" 
@@ -215,22 +195,18 @@ const OrnsteinUhlenbeckSection = () => (
           To systematically trade the extracted factor-neutral residual, quants model the cumulative residual as an <strong>Ornstein-Uhlenbeck (OU) process</strong>. It balances a deterministic drift pulling toward a mean, and a continuous random shock preventing permanent equilibrium.
         </p>
 
-        <MathDisplay 
-          formula={
-            <span>
-              dX<sub>t</sub> = κ(μ - X<sub>t</sub>)dt + σ dW<sub>t</sub>
-            </span>
-          }
-          description="Continuous-Time Stochastic Differential Equation (SDE)"
-        />
+        <div className="my-6">
+          <MathBlock math="dX_t = \kappa(\mu - X_t)dt + \sigma dW_t" />
+          <div className="text-center text-sm text-slate-500 mt-2 font-medium">Continuous-Time Stochastic Differential Equation (SDE)</div>
+        </div>
 
         <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 my-6">
           <h4 className="font-bold text-slate-800 mb-4">The s-score (Avellaneda-Lee Framework)</h4>
           <p className="text-sm text-slate-600 mb-4">
             Standardizes trading signals across assets by measuring the distance of the residual from its equilibrium mean, scaled by standard deviation.
           </p>
-          <div className="bg-white border border-rose-100 rounded-xl p-4 text-center font-mono text-rose-700 shadow-sm overflow-x-auto">
-            s<sub>mod,i</sub> = (X<sub>i,t</sub> - μ<sub>i</sub>) / σ<sub>eq,i</sub> - α<sub>i</sub> / (κ<sub>i</sub>σ<sub>eq,i</sub>)
+          <div className="bg-white border border-rose-100 rounded-xl p-4 shadow-sm overflow-x-auto text-rose-700">
+            <MathBlock math="s_{mod,i} = \frac{X_{i,t} - \mu_i}{\sigma_{eq,i}} - \frac{\alpha_i}{\kappa_i\sigma_{eq,i}}" />
           </div>
           <ul className="mt-4 space-y-2 text-sm text-slate-600">
             <li className="flex items-center gap-2"><CheckCircle size={16} className="text-emerald-500"/> <strong>Entry:</strong> Open trade when |s-score| &gt; 1.25.</li>
@@ -243,7 +219,7 @@ const OrnsteinUhlenbeckSection = () => (
 );
 
 const BiasesSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card className="bg-gradient-to-br from-amber-50 to-orange-50/20 border-amber-100">
       <SectionHeading 
         title="5. The Marriott-Pope Effect" 
@@ -266,7 +242,7 @@ const BiasesSection = () => (
 );
 
 const ExecutionSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card>
       <SectionHeading 
         title="6. Execution Dynamics" 
@@ -275,21 +251,17 @@ const ExecutionSection = () => (
       />
       <div className="prose prose-lg text-slate-600 max-w-none">
         <p>
-          Mean-reversion alpha is fragile. Transaction costs—slippage and market impact—can easily destroy a profitable backtest. When an algorithm executes a large order, it consumes liquidity and moves the price against itself.
+          Mean-reversion alpha is fragile. Transaction costs&mdash;slippage and market impact&mdash;can easily destroy a profitable backtest. When an algorithm executes a large order, it consumes liquidity and moves the price against itself.
         </p>
         
         <h3 className="text-xl font-bold text-slate-800 mt-8 mb-4">The Square-Root Law of Market Impact</h3>
         <p>
           Slippage is proportional to the asset&apos;s volatility and the square root of the normalized order size.
         </p>
-        <MathDisplay 
-          formula={
-            <span>
-              Δp = Y · σ · √(Q / V)
-            </span>
-          }
-          description="Where Q = Total order quantity, V = Average daily volume"
-        />
+        <div className="my-6">
+          <MathBlock math="\Delta p = Y \cdot \sigma \cdot \sqrt{\frac{Q}{V}}" />
+          <div className="text-center text-sm text-slate-500 mt-2 font-medium">Where Q = Total order quantity, V = Average daily volume</div>
+        </div>
         <KeyTakeaway>
           The concave nature of the square-root function acts as a strict capacity ceiling. Scaling AUM exponentially increases execution costs, degrading net alpha. Algorithms must balance temporary impact (immediate liquidity costs) against timing risk (mispricing correcting before order completion).
         </KeyTakeaway>
@@ -299,7 +271,7 @@ const ExecutionSection = () => (
 );
 
 const ResearchSection = () => (
-  <section className="py-16 relative">
+  <section className="py-12 relative">
     <Card>
       <SectionHeading 
         title="7. Rigorous Research Practices" 
@@ -308,7 +280,7 @@ const ResearchSection = () => (
       />
       <div className="prose prose-lg text-slate-600 max-w-none">
         <p className="lead text-xl text-slate-500 mb-8">
-          The most pervasive failure point in quantitative finance is backtest overfitting—fine-tuning parameters to historical noise.
+          The most pervasive failure point in quantitative finance is backtest overfitting&mdash;fine-tuning parameters to historical noise.
         </p>
 
         <div className="space-y-6">
@@ -341,141 +313,34 @@ const ResearchSection = () => (
   </section>
 );
 
-export default function QuantitativeTradingMeanReversion() {
-  const currentArticle = articles.find(article => article.slug === 'quantitative-trading-mean-reversion-factor-models-execution-dynamics');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
+export default function ArticlePage() {
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="quantitative-trading-mean-reversion-factor-models-execution-dynamics">
+      <EvolutionSection />
+      <FactorsSection />
+      <AdvancedModelingSection />
+      <OrnsteinUhlenbeckSection />
+      <BiasesSection />
+      <ExecutionSection />
+      <ResearchSection />
 
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section with Title */}
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-slate-50 blur-3xl opacity-50"></div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-500/30 text-sm font-semibold mb-8 backdrop-blur-md">
-            <Info size={16} />
-            Comprehensive Educational Tutorial
+      {/* Conclusion */}
+      <section className="py-12">
+        <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 text-indigo-800 opacity-30">
+            <Activity size={200} />
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Quantitative Trading of Mean Reversion
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            Factor Models, Execution Dynamics, and the Rigorous Research Practices required to build resilient statistical arbitrage systems.
-          </p>
-        </div>
-      </div>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/UYlEArc.png" 
-            alt="Quantitative Trading Mean Reversion Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-6">The Pinnacle of Alpha Generation</h2>
+            <p className="text-lg leading-relaxed text-indigo-200 mb-4">
+              Elite quantitative practitioners must navigate advanced econometrics, transaction constraints, and the gauntlet of overfitting prevention to extract true market-neutral alpha.
+            </p>
+            <p className="text-base text-slate-400">
+              Based on academic research and institutional quantitative frameworks.
+            </p>
           </div>
         </div>
       </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/UYlEArc.png"
-        alt="Quantitative Trading Mean Reversion Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content Starts Here */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12 relative z-20 bg-slate-50 pb-20">
-        <EvolutionSection />
-        <FactorsSection />
-        <AdvancedModelingSection />
-        <OrnsteinUhlenbeckSection />
-        <BiasesSection />
-        <ExecutionSection />
-        <ResearchSection />
-
-        {/* Conclusion */}
-        <section className="py-16">
-          <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 text-indigo-800 opacity-30">
-              <Activity size={200} />
-            </div>
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-6">The Pinnacle of Alpha Generation</h2>
-              <p className="text-lg leading-relaxed text-indigo-200 mb-4">
-                Elite quantitative practitioners must navigate advanced econometrics, transaction constraints, and the gauntlet of overfitting prevention to extract true market-neutral alpha.
-              </p>
-              <p className="text-base text-slate-400">
-                Based on academic research and institutional quantitative frameworks.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Call to Action - Google Doc Link */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {currentArticle?.googleDoc && (
-            <a 
-              href={currentArticle.googleDoc}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              Read Full Research Paper
-            </a>
-          )}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 px-6 mt-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm">
-            © 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </div>
-      </footer>
-    </>
+    </ArticleFrame>
   );
 }

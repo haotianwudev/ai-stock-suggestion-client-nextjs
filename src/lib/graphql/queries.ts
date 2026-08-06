@@ -371,6 +371,42 @@ export const DELETE_POST = gql`
   }
 `;
 
+export const ME = gql`
+  query Me {
+    me {
+      id
+      email
+      displayName
+      avatarUrl
+      youtubeSubscribed
+    }
+  }
+`;
+
+export const UPDATE_PROFILE = gql`
+  mutation UpdateProfile($displayName: String!, $avatarUrl: String!) {
+    updateProfile(displayName: $displayName, avatarUrl: $avatarUrl) {
+      id
+      email
+      displayName
+      avatarUrl
+      youtubeSubscribed
+    }
+  }
+`;
+
+export const SET_YOUTUBE_SUBSCRIBED = gql`
+  mutation SetYoutubeSubscribed($subscribed: Boolean!) {
+    setYoutubeSubscribed(subscribed: $subscribed) {
+      id
+      email
+      displayName
+      avatarUrl
+      youtubeSubscribed
+    }
+  }
+`;
+
 export const GET_INVESTMENT_CLOCK = gql`
   query GetInvestmentClock {
     investmentClock {

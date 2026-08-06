@@ -1,22 +1,19 @@
-'use client';
+﻿'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { 
-  LineChart, 
-  TrendingUp, 
-  AlertCircle, 
-  Target, 
-  BarChart3, 
-  BookOpen, 
-  ShieldCheck, 
+import React from 'react';
+import {
+  LineChart,
+  TrendingUp,
+  AlertCircle,
+  Target,
+  BarChart3,
+  BookOpen,
+  ShieldCheck,
   Activity,
-  Lightbulb
+  Lightbulb,
 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { MathBlock, InlineMath } from '@/components/articles/math';
 
 const economicData = [
   { indicator: 'Real GDP Growth (%)', q2prev: '2.1', q2new: '2.1', q3new: '2.2', q4new: '1.6', q1new: '1.9' },
@@ -35,10 +32,10 @@ const yieldData = [
 ];
 
 const termPremiumData = [
-  { model: 'ACM (NY Fed)', startYear: '1961', survey: 'No', expRate5to10: '4.34%', expRateNext10: '4.59%', implied10y: '0.46%' },
-  { model: 'CR (SF Fed)', startYear: '1987', survey: 'No', expRate5to10: '3.18%', expRateNext10: '3.69%', implied10y: '1.37%' },
-  { model: 'KW (Fed Board)', startYear: '1987', survey: 'Yes', expRate5to10: '4.48%', expRateNext10: '4.61%', implied10y: '0.39%' },
-  { model: 'Blue Chip Survey', startYear: 'N/A', survey: 'Yes', expRate5to10: '2.65%', expRateNext10: '3.06%', implied10y: '2.00%' },
+  { model: 'ACM (NY Fed)', startYear: '1961', survey: 'No', expRate5to10: '4.34%', implied10y: '0.46%' },
+  { model: 'CR (SF Fed)', startYear: '1987', survey: 'No', expRate5to10: '3.18%', implied10y: '1.37%' },
+  { model: 'KW (Fed Board)', startYear: '1987', survey: 'Yes', expRate5to10: '4.48%', implied10y: '0.39%' },
+  { model: 'Blue Chip Survey', startYear: 'N/A', survey: 'Yes', expRate5to10: '2.65%', implied10y: '2.00%' },
 ];
 
 const creditData = [
@@ -85,11 +82,11 @@ const TutorialCallout = ({ title, children, color = 'blue' }: { title: string; c
   );
 };
 
-const SectionHeader = ({ icon: Icon, title, gradient, subtitle }: { 
-  icon: React.ElementType; 
-  title: string; 
-  gradient: string; 
-  subtitle?: string 
+const SectionHeader = ({ icon: Icon, title, gradient, subtitle }: {
+  icon: React.ElementType;
+  title: string;
+  gradient: string;
+  subtitle?: string;
 }) => (
   <div className="mb-8">
     <div className="flex items-center gap-4 mb-3">
@@ -103,97 +100,19 @@ const SectionHeader = ({ icon: Icon, title, gradient, subtitle }: {
 );
 
 export default function QuantitativeAssessmentFixedIncomeArticle() {
-  const currentArticle = articles.find(article => article.slug === 'quantitative-assessment-fixed-income-market-turning-points');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="quantitative-assessment-fixed-income-market-turning-points">
+      <div className="space-y-16">
 
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <header className="relative bg-white border-b border-slate-100 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-50" />
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 rounded-full bg-gradient-to-br from-indigo-200 to-purple-200 blur-3xl opacity-50 mix-blend-multiply" />
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-80 h-80 rounded-full bg-gradient-to-tr from-blue-200 to-cyan-200 blur-3xl opacity-50 mix-blend-multiply" />
-        
-        <div className="relative max-w-5xl mx-auto px-6 py-24 z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-6">
-            <Activity size={16} /> Research Report & Tutorial
-          </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-            Quantitative Assessment of the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Fixed-Income Market</span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-            Identifying Turning Points in the Macroeconomic Cycle. A detailed walkthrough of macroeconomic data, yield curve dynamics, term premiums, and credit risk.
-          </p>
-        </div>
-      </header>
-
-      {/* Hero Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/UcGCi44.png" 
-            alt="Fixed-Income Market Analysis Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/UcGCi44.png"
-        alt="Fixed-Income Market Analysis Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <main className="max-w-5xl mx-auto px-6 py-16 space-y-24">
-        
-        {/* Introduction and Macroeconomic Context */}
+        {/* Section 1: Introduction and Macroeconomic Context */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-          <SectionHeader 
-            icon={BookOpen} 
-            title="Introduction and Macroeconomic Context" 
+          <SectionHeader
+            icon={BookOpen}
+            title="Introduction and Macroeconomic Context"
             subtitle="Evaluating the stall speed of the economy and sticky inflation."
-            gradient="from-blue-500 to-cyan-500" 
+            gradient="from-blue-500 to-cyan-500"
           />
-          
+
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
             <p>
               The global fixed-income market has traversed one of the most protracted and punishing bear markets in modern financial history. Driven by a post-pandemic inflationary shock, aggressive central bank tightening, and structural shifts in global supply chains, bond investors have endured unprecedented drawdowns.
@@ -201,8 +120,8 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
             <p>
               As of the third quarter of 2026, the macroeconomic environment is exhibiting classic late-cycle characteristics. Economic growth is decelerating to a stall speed, inflation has retreated from its peak (albeit remaining somewhat sticky), and the monetary policy reaction function has transitioned from aggressive tightening to a contentious, hawkish pause.
             </p>
-            
-            <TutorialCallout title="Tutorial Note: What is a 'Hawkish Pause'?" color="blue">
+
+            <TutorialCallout title="Tutorial Note: What is a Hawkish Pause?" color="blue">
               In monetary policy, a <strong>hawk</strong> favors higher interest rates to fight inflation, while a <strong>dove</strong> favors lower rates to stimulate growth. A <em>hawkish pause</em> means the central bank has stopped raising rates for now, but explicitly threatens to raise them again if inflation persists, effectively keeping financial conditions tight.
             </TutorialCallout>
 
@@ -239,21 +158,24 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
                 Source: Federal Reserve Bank of Philadelphia, Survey of Professional Forecasters, July 2026.
               </div>
             </div>
-            
+
             <p className="mt-6">
-              While growth is stalling, inflation remains a persistent friction point. The Personal Consumption Expenditures (PCE) price index rose 3.7 percent year-over-year in June 2026. This dichotomy—a stalling real economy coupled with sticky inflation—has forced the Federal Reserve into a complex holding pattern (target range 3.50 to 3.75 percent).
+              While growth is stalling, inflation remains a persistent friction point. The Personal Consumption Expenditures (PCE) price index rose 3.7 percent year-over-year in June 2026. This dichotomy&mdash;a stalling real economy coupled with sticky inflation&mdash;has forced the Federal Reserve into a complex holding pattern (target range 3.50 to 3.75 percent).
             </p>
           </div>
         </section>
 
-        {/* Yield Curve Dynamics */}
+        {/* Infographic placed after macro intro, before Yield Curve section */}
+        <InfographicSlot src="https://i.imgur.com/UcGCi44.png" alt="Fixed-Income Market Analysis Infographic" />
+
+        {/* Section 2: Yield Curve Dynamics */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
-           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50 rounded-full blur-3xl opacity-50 -z-10" />
-           <SectionHeader 
-            icon={TrendingUp} 
-            title="Yield Curve Dynamics: The Anatomy of a Steepening" 
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50 rounded-full blur-3xl opacity-50 -z-10" />
+          <SectionHeader
+            icon={TrendingUp}
+            title="Yield Curve Dynamics: The Anatomy of a Steepening"
             subtitle="Diagnosing turning points through the term structure of interest rates."
-            gradient="from-purple-500 to-pink-500" 
+            gradient="from-purple-500 to-pink-500"
           />
 
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
@@ -302,13 +224,13 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
           </div>
         </section>
 
-        {/* Term Premium */}
+        {/* Section 3: Term Premium */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-          <SectionHeader 
-            icon={BarChart3} 
-            title="The Term Premium" 
+          <SectionHeader
+            icon={BarChart3}
+            title="The Term Premium"
             subtitle="Decomposing Long-Term Interest Rate Risk."
-            gradient="from-emerald-500 to-teal-500" 
+            gradient="from-emerald-500 to-teal-500"
           />
 
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
@@ -316,17 +238,13 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
               The analytical framework for understanding curve movement relies heavily on the decomposition of the long-term yield into its constituent parts. The yield on an n-period bond can be mathematically expressed as:
             </p>
 
-            <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl my-6 text-center text-xl text-emerald-900 shadow-inner">
-              <div className="font-mono">
-                y<sub>t</sub><sup>(n)</sup> = (1 / n) Σ E<sub>t</sub>[r<sub>t+i</sub>] + TP<sub>t</sub><sup>(n)</sup>
-              </div>
-            </div>
+            <MathBlock math="y_t^{(n)} = \frac{1}{n} \sum_{i=0}^{n-1} \mathbb{E}_t[r_{t+i}] + TP_t^{(n)}" />
 
             <TutorialCallout title="Tutorial Note: Breaking Down the Formula" color="green">
               <ul className="list-disc pl-5 space-y-2 mt-2">
-                <li><strong>y<sub>t</sub><sup>(n)</sup>:</strong> The current yield of a long-term bond (e.g., 10-year Treasury).</li>
-                <li><strong>E<sub>t</sub>[r<sub>t+i</sub>]:</strong> The market&apos;s expectation of future short-term interest rates.</li>
-                <li><strong>TP<sub>t</sub><sup>(n)</sup> (Term Premium):</strong> The extra &quot;juice&quot; or compensation investors demand for locking up their money for a long time instead of just rolling over short-term bills.</li>
+                <li><strong><InlineMath math="y_t^{(n)}" />:</strong> The current yield of a long-term bond (e.g., 10-year Treasury).</li>
+                <li><strong><InlineMath math="\mathbb{E}_t[r_{t+i}]" />:</strong> The market&apos;s expectation of future short-term interest rates.</li>
+                <li><strong><InlineMath math="TP_t^{(n)}" /> (Term Premium):</strong> The extra compensation investors demand for locking up their money long-term instead of rolling over short-term bills.</li>
               </ul>
               <p className="mt-2 text-sm italic">If expectations for short rates are flat, any rise in long-term yields is driven by the Term Premium expanding.</p>
             </TutorialCallout>
@@ -342,7 +260,7 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
                     <th className="p-4">Model / Survey Name</th>
                     <th className="p-4">Sample Start</th>
                     <th className="p-4">Survey Data?</th>
-                    <th className="p-4">Exp. Rate (5-10 Yrs)</th>
+                    <th className="p-4">Exp. Rate (5&ndash;10 Yrs)</th>
                     <th className="p-4">Implied 10-Year TP</th>
                   </tr>
                 </thead>
@@ -366,13 +284,13 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
           </div>
         </section>
 
-        {/* Neutral Rate r* */}
+        {/* Section 4: Neutral Rate r* */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
-          <SectionHeader 
-            icon={Target} 
-            title="The Neutral Rate of Interest (r*)" 
+          <SectionHeader
+            icon={Target}
+            title="The Neutral Rate of Interest (r*)"
             subtitle="Understanding the new equilibrium for monetary policy."
-            gradient="from-amber-400 to-orange-500" 
+            gradient="from-amber-400 to-orange-500"
           />
 
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
@@ -381,14 +299,14 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
             </p>
 
             <TutorialCallout title="Tutorial Note: What is r*?" color="amber">
-              <strong>r*</strong> is the &quot;Goldilocks&quot; interest rate. It&apos;s the theoretical rate where the economy is operating at full potential without overheating (inflation) or freezing up (recession). It is the anchor for where central bank rates should eventually settle in the long run.
+              <strong>r*</strong> is the &ldquo;Goldilocks&rdquo; interest rate&mdash;the theoretical rate where the economy operates at full potential without overheating (inflation) or freezing up (recession). It is the anchor for where central bank rates should eventually settle in the long run.
             </TutorialCallout>
 
             <p>
-              During the previous decade, r* was widely estimated to be near zero in real terms, implying a nominal neutral rate of approximately 2.0 to 2.5 percent. However, structural economic changes over the past several years suggest that r* has drifted significantly higher. The massive capital expenditure required for AI infrastructure, supply chain reconfiguration, and structural fiscal deficits have fundamentally altered capital demand.
+              During the previous decade, r* was widely estimated to be near zero in real terms, implying a nominal neutral rate of approximately 2.0 to 2.5 percent. However, structural economic changes suggest r* has drifted significantly higher. The massive capital expenditure required for AI infrastructure, supply chain reconfiguration, and structural fiscal deficits have fundamentally altered capital demand.
             </p>
             <p>
-              If the real neutral rate has risen to 1.0 or 1.5 percent, the nominal neutral rate would sit between 3.0 and 4.0 percent. This explains why the U.S. economy managed to expand at 1.5% in Q2 2026 despite &quot;high&quot; rates—the rates weren&apos;t actually that restrictive compared to the new r*.
+              If the real neutral rate has risen to 1.0 or 1.5 percent, the nominal neutral rate would sit between 3.0 and 4.0 percent. This explains why the U.S. economy managed to expand at 1.5% in Q2 2026 despite &ldquo;high&rdquo; rates&mdash;the rates were not actually that restrictive compared to the new r*.
             </p>
             <p className="font-semibold text-slate-900 border-l-4 border-amber-500 pl-4 py-2 bg-amber-50/50 rounded-r-lg">
               Quantitative Implication: Investors waiting for the 10-year Treasury yield to plummet back to the 1.5 to 2.0 percent levels seen in the prior decade are ignoring the upward shift in the macroeconomic equilibrium.
@@ -396,28 +314,28 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
           </div>
         </section>
 
-        {/* Credit Risk: The OAS Anomaly */}
+        {/* Section 5: Credit Risk: The OAS Anomaly */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-          <SectionHeader 
-            icon={AlertCircle} 
-            title="Credit Risk: The OAS Anomaly" 
+          <SectionHeader
+            icon={AlertCircle}
+            title="Credit Risk: The OAS Anomaly"
             subtitle="Divergence between stalling macro data and corporate valuations."
-            gradient="from-rose-500 to-red-600" 
+            gradient="from-rose-500 to-red-600"
           />
 
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
             <p>
-              To confirm a true macroeconomic turning point that favors safe-haven fixed income, quantitative strategists look for confirmation in the credit markets. Specifically, a stalling economy should trigger a widening of credit spreads as the probability of corporate defaults rises. 
+              To confirm a true macroeconomic turning point that favors safe-haven fixed income, quantitative strategists look for confirmation in the credit markets. Specifically, a stalling economy should trigger a widening of credit spreads as the probability of corporate defaults rises.
             </p>
             <p>
               The ICE BofA US High Yield Index <strong>Option-Adjusted Spread (OAS)</strong> is the premier metric for real-time pricing of corporate default and liquidity risk.
             </p>
 
             <TutorialCallout title="Tutorial Note: Option-Adjusted Spread (OAS)" color="rose">
-              Think of OAS as the &quot;danger premium.&quot; It&apos;s the extra yield you get for buying a risky corporate bond instead of a super-safe U.S. Treasury, adjusted for embedded options (like the company&apos;s right to buy the bond back early). 
-              <br/><br/>
-              <strong>Low OAS (e.g., &lt; 300 bps):</strong> Market thinks everything is perfect. High complacency.<br/>
-              <strong>High OAS (e.g., &gt; 600 bps):</strong> Panic. Market expects mass bankruptcies.
+              Think of OAS as the &ldquo;danger premium.&rdquo; It&apos;s the extra yield you get for buying a risky corporate bond instead of a super-safe U.S. Treasury, adjusted for embedded options.
+              <br /><br />
+              <strong>Low OAS (&lt; 300 bps):</strong> Market thinks everything is fine. High complacency.<br />
+              <strong>High OAS (&gt; 600 bps):</strong> Panic. Market expects mass bankruptcies.
             </TutorialCallout>
 
             <div className="overflow-x-auto rounded-xl border border-slate-200 my-8">
@@ -449,13 +367,13 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
           </div>
         </section>
 
-        {/* Quantitative Technicals */}
+        {/* Section 6: Quantitative Technicals */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-          <SectionHeader 
-            icon={LineChart} 
-            title="Quantitative Technicals" 
+          <SectionHeader
+            icon={LineChart}
+            title="Quantitative Technicals"
             subtitle="Moving Averages and Volatility (MOVE Index)."
-            gradient="from-cyan-500 to-blue-600" 
+            gradient="from-cyan-500 to-blue-600"
           />
 
           <div className="prose prose-slate max-w-none text-slate-700 text-lg leading-relaxed space-y-6">
@@ -475,18 +393,18 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
             </div>
 
             <p>
-              For a quantitative strategist to declare that the bear market is definitively over, the 10-year Treasury yield must decisively break and close below its 200-DMA, accompanied by a contraction in the <strong>ICE BofA MOVE Index</strong> (the &quot;VIX of bonds&quot;, measuring implied volatility). Until this happens, the market remains in a contested transitional phase.
+              For a quantitative strategist to declare that the bear market is definitively over, the 10-year Treasury yield must decisively break and close below its 200-DMA, accompanied by a contraction in the <strong>ICE BofA MOVE Index</strong> (the &ldquo;VIX of bonds&rdquo;, measuring implied volatility). Until this happens, the market remains in a contested transitional phase.
             </p>
           </div>
         </section>
 
-        {/* Strategic Implications */}
+        {/* Section 7: Strategic Implications & Portfolio Construction */}
         <section className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-          <SectionHeader 
-            icon={ShieldCheck} 
-            title="Strategic Implications & Portfolio Construction" 
+          <SectionHeader
+            icon={ShieldCheck}
+            title="Strategic Implications &amp; Portfolio Construction"
             subtitle="Synthesizing quantitative metrics for actionable strategy."
-            gradient="from-indigo-500 to-purple-600" 
+            gradient="from-indigo-500 to-purple-600"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -499,14 +417,14 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
                 Because the term premium is expanding due to fiscal dominance, long-term bonds carry embedded supply risk. This severely compromises the negative correlation between stocks and bonds that forms the bedrock of traditional 60/40 portfolios.
               </p>
             </div>
-            
+
             <div className="bg-gradient-to-b from-purple-50 to-white border border-purple-100 p-6 rounded-2xl shadow-sm">
               <h3 className="text-xl font-bold text-purple-900 mb-3 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">2</span>
-                Curve Twists & Barbell Strategies
+                Curve Twists &amp; Barbell Strategies
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                The middle of the yield curve presents the most attractive quantitative profile. A barbell strategy—concentrating duration in the 2-year to 5-year sector while maintaining a small allocation to ultra-long maturities—optimizes risk-adjusted return.
+                The middle of the yield curve presents the most attractive quantitative profile. A barbell strategy&mdash;concentrating duration in the 2-year to 5-year sector while maintaining a small allocation to ultra-long maturities&mdash;optimizes risk-adjusted return.
               </p>
             </div>
 
@@ -535,46 +453,13 @@ export default function QuantitativeAssessmentFixedIncomeArticle() {
             </p>
             <div className="bg-white/10 p-6 rounded-xl border border-white/20 mt-6 backdrop-blur-sm">
               <p className="text-white font-medium italic m-0">
-                &quot;The ultimate conclusion is that the fixed-income market has reached a turning point in its function, shifting from a source of duration-induced capital destruction to a reliable engine of high-carry income. Investors today are locking in structurally higher real yields in an economy that is steadily exhausting its post-pandemic momentum.&quot;
+                &ldquo;The ultimate conclusion is that the fixed-income market has reached a turning point in its function, shifting from a source of duration-induced capital destruction to a reliable engine of high-carry income. Investors today are locking in structurally higher real yields in an economy that is steadily exhausting its post-pandemic momentum.&rdquo;
               </p>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-            </div>
-          </div>
-        )}
-        
-      </main>
-
-      <footer className="py-8 text-center text-slate-500 text-sm border-t border-slate-200">
-        <p>&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-      </footer>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

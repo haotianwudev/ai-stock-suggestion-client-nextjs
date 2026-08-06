@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, Activity, BarChart2, Brain, AlertTriangle, Zap, Layers, Search, ArrowRight, Target, Gauge, ArrowUpRight, ArrowDownRight, Scale, Anchor, MoveRight, Calculator, History, MousePointerClick, Lightbulb, DollarSign, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Activity, BarChart2, Brain, AlertTriangle, Zap, Layers, Search, ArrowRight, Gauge, ArrowUpRight, Scale, Anchor, MoveRight, Calculator, History, MousePointerClick, Lightbulb } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 interface SectionProps {
@@ -94,7 +91,7 @@ interface SignalTableProps {
 }
 
 const SignalTable = ({ rows }: SignalTableProps) => (
-  <div className="mt-4 border border-slate-100 rounded-lg overflow-hidden text-sm">
+  <div className="mt-4 border border-slate-100 rounded-lg overflow-x-auto text-sm">
     <table className="w-full">
       <thead className="bg-slate-50 text-slate-500">
         <tr>
@@ -139,14 +136,12 @@ const InteractiveSkewViz = () => {
         return { 
           title: "Skew Flattening (Complacency)", 
           desc: "Demand for Puts wanes. Traders sell Puts to finance Longs. The curve flattens as fear evaporates.",
-          signal: "Trend Confirmation but Risk of Reversal.",
           color: "text-blue-600"
         };
       case 'mania':
         return { 
           title: "Forward Skew (Mania/Squeeze)", 
-          desc: "Call panic. Speculators buy OTM calls for leverage. Dealers short gamma must hike Call IV. Right tail becomes 'fatter'.",
-          signal: "Melt-Up / Extreme Instability.",
+          desc: "Call panic. Speculators buy OTM calls for leverage. Dealers short gamma must hike Call IV. Right tail becomes &lsquo;fatter&rsquo;.",
           color: "text-rose-600"
         };
       case 'normal':
@@ -154,7 +149,6 @@ const InteractiveSkewViz = () => {
         return { 
           title: "The Smirk (Standard)", 
           desc: "Crash Phobia. OTM Puts trade at a premium to Calls. The market pays for downside insurance.",
-          signal: "Normal Market Function.",
           color: "text-slate-600"
         };
     }
@@ -347,83 +341,12 @@ const RegimeVisualizer = () => {
 };
 
 export default function VolatilitySurfaceArticle() {
-  const currentArticle = articles.find(article => article.slug === 'decoding-volatility-surface-advanced-market-prediction-options-flow');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || 'Decoding the Volatility Surface'} 
-            articleSlug={currentArticle.slug || 'decoding-volatility-surface-advanced-market-prediction-options-flow'} 
-          />
-        </>
-      )}
-
+    <ArticleFrame
+      slug="decoding-volatility-surface-advanced-market-prediction-options-flow"
+      additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. The volatility metrics described (skew, GEX, PCR) are derived indicators and should be used as one input among many, not as standalone trading signals."
+    >
       <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm font-semibold tracking-wide">
-              ADVANCED MARKET MECHANICS
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              Decoding the <br />
-              <GradientText>Volatility Surface</GradientText>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-              Market prediction isn't magic; it's math. By reading the 3D map of implied volatility, we can separate sustainable trends from fragile bubbles and leverage-fueled manias.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/AmiHclK.jpeg" 
-              alt="Volatility Surface Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/AmiHclK.jpeg"
-          alt="Volatility Surface Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         {/* Main Content */}
         <main className="max-w-5xl mx-auto px-6 py-16">
@@ -440,7 +363,7 @@ export default function VolatilitySurfaceArticle() {
                     <Layers size={16} />
                   </div>
                   <div>
-                    <strong className="text-slate-900">It's a Living Organism:</strong> The surface "breathes" with market sentiment. It doesn't just react to price; it anticipates it.
+                    <strong className="text-slate-900">It&apos;s a Living Organism:</strong> The surface &ldquo;breathes&rdquo; with market sentiment. It doesn&apos;t just react to price; it anticipates it.
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -448,7 +371,7 @@ export default function VolatilitySurfaceArticle() {
                     <Brain size={16} />
                   </div>
                   <div>
-                    <strong className="text-slate-900">The Pricing of Tails:</strong> It tells us how expensive "insurance" (Puts) is relative to "lottery tickets" (Calls).
+                    <strong className="text-slate-900">The Pricing of Tails:</strong> It tells us how expensive &ldquo;insurance&rdquo; (Puts) is relative to &ldquo;lottery tickets&rdquo; (Calls).
                   </div>
                 </li>
               </ul>
@@ -467,6 +390,13 @@ export default function VolatilitySurfaceArticle() {
             </div>
           </Section>
 
+          {/* Infographic — placed inline after the intro, where it supports the argument */}
+          <InfographicSlot
+            src="https://i.imgur.com/AmiHclK.jpeg"
+            alt="Volatility Surface Infographic"
+            label="Featured Infographic"
+          />
+
           {/* 2. The Morphology of Skew */}
           <div id="morphology" className="bg-slate-100 py-20 border-y border-slate-200 -mx-6 px-6">
             <Section>
@@ -476,7 +406,7 @@ export default function VolatilitySurfaceArticle() {
                 </div>
                 <h2 className="text-4xl font-bold text-slate-900 mb-4">The Morphology of Skew</h2>
                 <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-                  In equity markets, the "Smirk" is standard due to crash phobia. But when sentiment shifts, the shape warps. This warping is your early warning system.
+                  In equity markets, the &ldquo;Smirk&rdquo; is standard due to crash phobia. But when sentiment shifts, the shape warps. This warping is your early warning system.
                 </p>
               </div>
               
@@ -496,14 +426,14 @@ export default function VolatilitySurfaceArticle() {
                       Historical Context: 1987
                     </div>
                     <p className="text-sm leading-relaxed">
-                      Before 1987, the volatility smile was often flat (Log-normal). After the '87 crash—where correlations went to 1 and liquidity vanished—the market developed <strong>"Crash Phobia."</strong> OTM Puts now structurally command a significant premium (higher IV) over OTM Calls. This "Smirk" is the baseline for all equity markets.
+                      Before 1987, the volatility smile was often flat (Log-normal). After the &apos;87 crash&mdash;where correlations went to 1 and liquidity vanished&mdash;the market developed <strong>&ldquo;Crash Phobia.&rdquo;</strong> OTM Puts now structurally command a significant premium (higher IV) over OTM Calls. This &ldquo;Smirk&rdquo; is the baseline for all equity markets.
                     </p>
                   </div>
                   
                   <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-bold text-slate-800">1. Skew Flattening (Complacency)</h4>
-                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-mono">25d Put ≈ 25d Call</span>
+                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-mono">25d Put &asymp; 25d Call</span>
                     </div>
                     <p className="text-sm text-slate-600 mb-3">
                       As a bull market matures, the demand for downside protection wanes. Traders become emboldened, selling puts to finance long positions.
@@ -520,11 +450,11 @@ export default function VolatilitySurfaceArticle() {
                       <span className="text-xs bg-rose-100 text-rose-700 px-2 py-1 rounded font-mono">Call IV &gt; Put IV</span>
                     </div>
                     <p className="text-sm text-slate-600 mb-3">
-                      Seen in "Meme Stocks" or Oil supply shocks. Speculators aggressively buy OTM calls. Market makers are short these calls (short gamma) and must raise prices/IV to compensate for unlimited upside risk.
+                      Seen in &ldquo;Meme Stocks&rdquo; or Oil supply shocks. Speculators aggressively buy OTM calls. Market makers are short these calls (short gamma) and must raise prices/IV to compensate for unlimited upside risk.
                     </p>
                     <div className="flex items-center gap-2 text-xs font-semibold text-rose-600 bg-rose-50 px-3 py-2 rounded">
                       <Zap className="w-4 h-4" />
-                      Implication: "Melt-Up" scenario. Probability density shifts right.
+                      Implication: &ldquo;Melt-Up&rdquo; scenario. Probability density shifts right.
                     </div>
                   </div>
                 </div>
@@ -540,7 +470,7 @@ export default function VolatilitySurfaceArticle() {
               </div>
               <h2 className="text-4xl font-bold text-slate-900">Dynamic Volatility Rules</h2>
               <p className="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
-                Does the market believe the rally? When price moves, the volatility curve doesn't just sit still—it shifts based on whether traders are anchoring to price or moneyness.
+                Does the market believe the rally? When price moves, the volatility curve doesn&apos;t just sit still&mdash;it shifts based on whether traders are anchoring to price or moneyness.
               </p>
             </div>
 
@@ -554,18 +484,18 @@ export default function VolatilitySurfaceArticle() {
                   <div className="p-2 bg-indigo-50 rounded-lg">
                     <Lightbulb className="w-6 h-6 text-indigo-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800">The "Landmark" Analogy</h3>
+                  <h3 className="text-xl font-bold text-slate-800">The &ldquo;Landmark&rdquo; Analogy</h3>
                 </div>
                 <p className="text-slate-600 mb-4">
                   <strong>Sticky Strike</strong> is like a landmark on a map. Strike 4200 is a physical location.
                 </p>
                 <p className="text-sm text-slate-500 italic mb-6">
-                  "I don't care where the car (stock price) goes. That tree (Strike 4200) is always 15 feet tall (15% Vol)."
+                  &ldquo;I don&apos;t care where the car (stock price) goes. That tree (Strike 4200) is always 15 feet tall (15% Vol).&rdquo;
                 </p>
                 <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-300">
-                  <h4 className="text-sm font-bold text-slate-700 mb-1">Trader's Monologue</h4>
+                  <h4 className="text-sm font-bold text-slate-700 mb-1">Trader&apos;s Monologue</h4>
                   <p className="text-xs text-slate-600">
-                    "We are rallying to 4100, but I don't believe it. I'm not going to mark up the 4200 calls just because we are closer. That level is still low risk to me. The market will mean-revert."
+                    &ldquo;We are rallying to 4100, but I don&apos;t believe it. I&apos;m not going to mark up the 4200 calls just because we are closer. That level is still low risk to me. The market will mean-revert.&rdquo;
                   </p>
                 </div>
               </div>
@@ -575,18 +505,18 @@ export default function VolatilitySurfaceArticle() {
                   <div className="p-2 bg-emerald-50 rounded-lg">
                     <MoveRight className="w-6 h-6 text-emerald-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800">The "Shadow" Analogy</h3>
+                  <h3 className="text-xl font-bold text-slate-800">The &ldquo;Shadow&rdquo; Analogy</h3>
                 </div>
                 <p className="text-slate-600 mb-4">
-                  <strong>Sticky Delta</strong> is like a shadow cast by the stock. It moves *with* the stock.
+                  <strong>Sticky Delta</strong> is like a shadow cast by the stock. It moves with the stock.
                 </p>
                 <p className="text-sm text-slate-500 italic mb-6">
-                  "The shape of fear follows the price. 10% OTM is always 10% OTM, and it always commands a premium."
+                  &ldquo;The shape of fear follows the price. 10% OTM is always 10% OTM, and it always commands a premium.&rdquo;
                 </p>
                 <div className="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-400">
-                  <h4 className="text-sm font-bold text-emerald-800 mb-1">Trader's Monologue</h4>
+                  <h4 className="text-sm font-bold text-emerald-800 mb-1">Trader&apos;s Monologue</h4>
                   <p className="text-xs text-emerald-700">
-                    "This rally is real. The 'fear' bucket (ATM Vol) is moving higher with the price. I need to keep buying 25-delta calls, so I'll pay up for them even as the strikes get higher."
+                    &ldquo;This rally is real. The &apos;fear&apos; bucket (ATM Vol) is moving higher with the price. I need to keep buying 25-delta calls, so I&apos;ll pay up for them even as the strikes get higher.&rdquo;
                   </p>
                 </div>
               </div>
@@ -639,19 +569,19 @@ export default function VolatilitySurfaceArticle() {
                 </div>
                 <div className="p-8">
                   <p className="text-slate-600 mb-6 font-medium">
-                    The IV curve moves horizontally with the stock price. Volatility is pinned to "Moneyness" (e.g., 5% OTM), not a fixed number.
+                    The IV curve moves horizontally with the stock price. Volatility is pinned to &ldquo;Moneyness&rdquo; (e.g., 5% OTM), not a fixed number.
                   </p>
                   <div className="space-y-4">
                     <div className="bg-slate-50 p-4 rounded-lg">
                       <div className="text-sm font-bold text-slate-700 mb-1">The Mechanics</div>
                       <p className="text-sm text-slate-500">
-                        The curve is attached to the stock. As Spot rises, the entire curve shifts right. A fixed strike (4200) gets "run over" by the shifting curve.
+                        The curve is attached to the stock. As Spot rises, the entire curve shifts right. A fixed strike (4200) gets &ldquo;run over&rdquo; by the shifting curve.
                       </p>
                     </div>
                     <div className="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
                       <div className="text-sm font-bold text-emerald-800 mb-1">Interpretation</div>
                       <p className="text-sm text-emerald-900">
-                        <strong>Acceptance / Trending.</strong> The market believes the new price level is valid. The "fear bucket" (ATM Vol) travels with the price.
+                        <strong>Acceptance / Trending.</strong> The market believes the new price level is valid. The &ldquo;fear bucket&rdquo; (ATM Vol) travels with the price.
                       </p>
                     </div>
                   </div>
@@ -669,24 +599,24 @@ export default function VolatilitySurfaceArticle() {
                   <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-violet-100 text-violet-700 text-xs font-bold uppercase">
                     <Gauge className="w-3 h-3" /> Dashboard
                   </div>
-                  <h2 className="text-4xl font-bold text-slate-900 mb-2">The Trader's Compass</h2>
+                  <h2 className="text-4xl font-bold text-slate-900 mb-2">The Trader&apos;s Compass</h2>
                   <p className="text-slate-600 text-lg">High-frequency indicators to reveal Smart Money positioning.</p>
                 </div>
                 <div className="hidden md:block text-right">
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Data Source</span>
-                  <div className="text-sm font-semibold text-slate-800">Options Chain, Greeks & OI</div>
+                  <div className="text-sm font-semibold text-slate-800">Options Chain, Greeks &amp; OI</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Card title="25Δ Risk Reversal" icon={Scale} accentColor="emerald">
+                <Card title="25&Delta; Risk Reversal" icon={Scale} accentColor="emerald">
                   <div className="flex items-center justify-between mb-4">
                     <div className="font-mono text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">
                       Formula: IV(Call) - IV(Put)
                     </div>
                   </div>
                   <p className="text-sm mb-4 leading-relaxed">
-                    The "tilt" of the market. This metric tells us which tail is fatter. Are institutions paying up for protection (Puts) or chasing leverage (Calls)?
+                    The &ldquo;tilt&rdquo; of the market. This metric tells us which tail is fatter. Are institutions paying up for protection (Puts) or chasing leverage (Calls)?
                   </p>
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <MetricBadge label="Bullish Signal" value="Rising / Positive" trend="bullish" />
@@ -697,7 +627,7 @@ export default function VolatilitySurfaceArticle() {
                       <ArrowUpRight className="w-4 h-4" /> Pro Insight: Divergence
                     </h4>
                     <p className="text-xs text-emerald-700 leading-snug">
-                      If the S&P 500 is flat, but the Risk Reversal is steadily rising (becoming less negative), "Smart Money" is quietly removing hedges. A breakout is often imminent.
+                      If the S&amp;P 500 is flat, but the Risk Reversal is steadily rising (becoming less negative), &ldquo;Smart Money&rdquo; is quietly removing hedges. A breakout is often imminent.
                     </p>
                   </div>
                 </Card>
@@ -728,13 +658,13 @@ export default function VolatilitySurfaceArticle() {
                     </div>
                   </div>
                   <p className="text-sm mb-4">
-                    Adjusts the skew for VIX levels. This is the "Truth Serum" for a rally. It tells us if investors are nervous or complacent.
+                    Adjusts the skew for VIX levels. This is the &ldquo;Truth Serum&rdquo; for a rally. It tells us if investors are nervous or complacent.
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <div className="mt-1 min-w-[8px] h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-800">"Wall of Worry" (Healthy)</h4>
+                        <h4 className="text-sm font-bold text-slate-800">&ldquo;Wall of Worry&rdquo; (Healthy)</h4>
                         <p className="text-xs text-slate-500">
                           Market Rallies + Skew Steepens (More Negative). Investors are buying stocks but nervously hedging downside. The rally has fuel.
                         </p>
@@ -743,7 +673,7 @@ export default function VolatilitySurfaceArticle() {
                     <div className="flex items-start gap-3">
                       <div className="mt-1 min-w-[8px] h-2 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.5)]"></div>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-800">"Euphoria" (Fragile)</h4>
+                        <h4 className="text-sm font-bold text-slate-800">&ldquo;Euphoria&rdquo; (Fragile)</h4>
                         <p className="text-xs text-slate-500">
                           Market Rallies + Skew Flattens. No one expects a drop. Protection is cheap because no one wants it. A top is near.
                         </p>
@@ -764,17 +694,17 @@ export default function VolatilitySurfaceArticle() {
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div className="bg-violet-50 p-3 rounded-lg text-center">
                       <div className="text-violet-600 font-bold text-sm mb-1">Positive GEX</div>
-                      <div className="text-xs text-slate-600">"Shock Absorbers" <br/> Dealers buy dips & sell rips.</div>
+                      <div className="text-xs text-slate-600">&ldquo;Shock Absorbers&rdquo; <br/> Dealers buy dips &amp; sell rips.</div>
                       <div className="mt-2 text-[10px] uppercase font-bold text-violet-400">Low Volatility</div>
                     </div>
                     <div className="bg-rose-50 p-3 rounded-lg text-center">
                       <div className="text-rose-600 font-bold text-sm mb-1">Negative GEX</div>
-                      <div className="text-xs text-slate-600">"Accelerants" <br/> Dealers sell into drops.</div>
+                      <div className="text-xs text-slate-600">&ldquo;Accelerants&rdquo; <br/> Dealers sell into drops.</div>
                       <div className="mt-2 text-[10px] uppercase font-bold text-rose-400">High Volatility</div>
                     </div>
                   </div>
                   <div className="text-xs text-slate-500 italic border-t border-slate-100 pt-3">
-                    *The "Flip Line" is the price level where GEX switches from positive to negative. Crossing it often triggers turbulence.
+                    *The &ldquo;Flip Line&rdquo; is the price level where GEX switches from positive to negative. Crossing it often triggers turbulence.
                   </div>
                 </Card>
               </div>
@@ -787,8 +717,8 @@ export default function VolatilitySurfaceArticle() {
               <Brain className="w-16 h-16 mx-auto text-indigo-200 mb-6" />
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Synthesizing the Signal</h2>
               <p className="text-indigo-100 text-lg md:text-xl max-w-3xl mx-auto mb-10">
-                A sustainable Bull Market isn't just price going up. It requires a <strong>Sticky Delta</strong> regime (belief in the trend) combined with a <strong>Healthy Skew</strong> (continued hedging). <br/><br/>
-                If you see Price rising, but Skew flattening to zero and PCR Open Interest diverging... <strong>take profit.</strong>
+                A sustainable Bull Market isn&apos;t just price going up. It requires a <strong>Sticky Delta</strong> regime (belief in the trend) combined with a <strong>Healthy Skew</strong> (continued hedging). <br/><br/>
+                If you see Price rising, but Skew flattening to zero and PCR Open Interest diverging&hellip; <strong>take profit.</strong>
               </p>
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-6 py-3 rounded-full text-sm font-semibold border border-white/30 hover:bg-white/30 transition-all cursor-default">
                 <Zap className="w-4 h-4 text-amber-300" />
@@ -796,44 +726,8 @@ export default function VolatilitySurfaceArticle() {
               </div>
             </div>
           </Section>
-
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <DollarSign className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-12 text-center">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="flex justify-center gap-6 mb-8">
-              <Activity className="hover:text-white transition-colors cursor-pointer" />
-              <BarChart2 className="hover:text-white transition-colors cursor-pointer" />
-              <Layers className="hover:text-white transition-colors cursor-pointer" />
-            </div>
-            <p className="text-sm">
-              Educational content for quantitative analysis. Not financial advice. <br/>
-              The Volatility Surface is dynamic; past performance does not guarantee future results.
-            </p>
-            <p className="mt-8 text-xs text-slate-600">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

@@ -13,6 +13,7 @@ import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/w
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
 import { CommentSection } from "@/components/comments/comment-section";
+import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 
 interface ArticleFrameProps {
   /** Slug of the article entry in src/data/articles — the frame looks up all metadata from it. */
@@ -441,7 +442,13 @@ export function ArticleFrame({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
           {hasPanel ? (
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-              <article>{children}</article>
+              <article>
+                {hasVideo ? (
+                  <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
+                ) : (
+                  children
+                )}
+              </article>
               <aside className="lg:sticky lg:top-24 space-y-4">
                 <Link
                   href="/"
