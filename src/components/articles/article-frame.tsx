@@ -423,11 +423,20 @@ export function ArticleFrame({
   const [wikiOpen, setWikiOpen] = useState(false);
   const currentIndex = articles.findIndex((a) => a.slug === slug);
   const currentArticle = currentIndex >= 0 ? articles[currentIndex] : undefined;
-  // `articles` is newest-first, so the next index is the older (Previous) article
-  // and the previous index is the newer (Next) article. Out-of-range indices just
-  // resolve to undefined, which ArticleNavLinks already treats as "no link".
-  const previousArticle = articles[currentIndex + 1];
-  const nextArticle = articles[currentIndex - 1];
+  // `articles` is newest-first, so walking toward higher indices finds older
+  // (Previous) articles and lower indices finds newer (Next) ones. Legacy
+  // isVideo/noSummary entries have no page at /articles/{slug} (they're a
+  // video-only or external-link card, never migrated to their own route), so
+  // skip past them rather than linking somewhere that 404s.
+  const findAdjacentArticle = (step: 1 | -1) => {
+    for (let i = currentIndex + step; i >= 0 && i < articles.length; i += step) {
+      const candidate = articles[i];
+      if (!candidate.isVideo && !candidate.noSummary) return candidate;
+    }
+    return undefined;
+  };
+  const previousArticle = currentIndex >= 0 ? findAdjacentArticle(1) : undefined;
+  const nextArticle = currentIndex >= 0 ? findAdjacentArticle(-1) : undefined;
 
   if (!currentArticle) {
     return (

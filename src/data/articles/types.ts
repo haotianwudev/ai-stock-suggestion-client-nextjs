@@ -7,7 +7,7 @@ export enum ArticleLabel {
   QUANT = "Quantitative Finance",
   AI_ML = "AI & Machine Learning",
   STOCK_ANALYSIS = "Stock Analysis",
-  MARCO = "Macro Views",
+  MACRO = "Macro Views",
   FORM13F = "13F Analysis",
   CRYPTO = "Crypto",
   FINANCE101 = "Finance 101",

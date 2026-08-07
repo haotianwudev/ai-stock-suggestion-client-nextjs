@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Shield, Users, BookOpen, Target, Zap, Activity, AlertTriangle, BarChart2, DollarSign, Clock, ArrowRight, Percent, TrendingDown, CheckCircle, XCircle, AlertCircle, Layers, Search, BarChart, PieChart, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Shield, Users, Target, Zap, Activity, AlertTriangle, BarChart2, BarChart, DollarSign, Clock, ArrowRight, Percent, TrendingDown, CheckCircle, XCircle, AlertCircle, Layers, Search, PieChart } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 interface SectionHeaderProps {
@@ -70,112 +67,14 @@ const ComparisonRow = ({ metric, retail, institutional }: ComparisonRowProps) =>
 );
 
 export default function SingleLegLongCallArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'single-leg-long-call-asymmetric-leverage-options-trading');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'single-leg-long-call-asymmetric-leverage-options-trading'} 
-      />
-      <div className="min-h-screen bg-gray-50 font-sans text-gray-800 selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
+    <ArticleFrame slug="single-leg-long-call-asymmetric-leverage-options-trading">
+      <div className="max-w-4xl mx-auto mb-16">
+        <InfographicSlot alt="Single-Leg Long Call Strategy Infographic" />
+      </div>
 
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white pb-12">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-white opacity-80"></div>
-          <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs uppercase tracking-widest mb-8 shadow-sm">
-              <BookOpen className="w-4 h-4" />
-              Advanced Options Strategy
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-8 leading-tight">
-              The Single-Leg <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Long Call</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed mb-12">
-              Master the art of <span className="font-bold text-gray-900">Asymmetric Leverage</span>. Learn why retail traders lose with calls while institutions use them for risk management and capital efficiency.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-indigo-500 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Zap className="w-6 h-6 text-indigo-600" />
-                  <h3 className="font-bold text-lg">Convexity</h3>
-                </div>
-                <p className="text-sm text-gray-600">Fixed downside risk with theoretically unbounded upside potential.</p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-purple-500 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Layers className="w-6 h-6 text-purple-600" />
-                  <h3 className="font-bold text-lg">Leverage (Lambda)</h3>
-                </div>
-                <p className="text-sm text-gray-600">Control large notional value with a fraction of the capital (No margin loans).</p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-emerald-500 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Shield className="w-6 h-6 text-emerald-600" />
-                  <h3 className="font-bold text-lg">Defined Risk</h3>
-                </div>
-                <p className="text-sm text-gray-600">Unlike shorting or selling naked puts, you can never lose more than the premium.</p>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/A6ChN1u.jpeg" 
-              alt="Single-Leg Long Call Strategy Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/A6ChN1u.jpeg"
-          alt="Single-Leg Long Call Strategy Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-        {/* Main Content */}
-        <main className="max-w-6xl mx-auto px-6 py-16 space-y-32">
-          {/* Section 1: Theory */}
+      <div className="max-w-6xl mx-auto space-y-32">
+        {/* Section 1: Theory */}
           <section>
             <SectionHeader 
               icon={TrendingUp} 
@@ -903,42 +802,14 @@ export default function SingleLegLongCallArticle() {
               </div>
             </div>
           </section>
-        </main>
-
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-white py-20 mt-20">
-          <div className="max-w-5xl mx-auto px-6 text-center">
+          {/* Conclusion */}
+          <section className="bg-slate-900 text-white p-12 rounded-3xl text-center mb-16 shadow-lg">
             <h2 className="text-3xl font-bold mb-6">Conclusion</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
               The single-leg long call is a potent tool when wielded with precision. Align with the physics of the market: buy Deep ITM to mimic stock, enter on Volatility Contraction, and respect the "Sweet Spot" of 45 DTE. Avoid the retail lottery ticket mentality. Treat options as a business, not a casino.
             </p>
-            <div className="inline-flex items-center gap-2 text-indigo-400 font-semibold border border-indigo-900 bg-indigo-900/20 px-6 py-3 rounded-full text-sm">
-              <span>Research ID: 6f983b39-8e3e-4c0a-bbaf-c93c8669a8a0</span>
-            </div>
-            <div className="mt-8 text-sm text-gray-500">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+          </section>
+        </div>
+    </ArticleFrame>
   );
 }

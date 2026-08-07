@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { TrendingUp, Activity, AlertTriangle, DollarSign, Clock, BarChart2, Shield, Users, Zap, BookOpen, Target, ArrowLeft, ArrowRight, CheckCircle, XCircle, TrendingDown, ChevronDown, ChevronUp, Brain, Thermometer, Scale, Maximize2, Minimize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 // --- Components ---
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
   <div className="mb-12 text-center">
@@ -242,9 +240,7 @@ const StrategyDetail = ({ strategy }: { strategy?: StrategyData }) => {
   );
 };
 
-export default function MasteringVolatilityArticle() {
-  const currentArticle = articles.find(article => article.slug === 'mastering-volatility-definitive-guide-long-straddles-strangles');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+export default function ArticlePage() {
   const [activeStrategy, setActiveStrategy] = useState('straddle');
   const [comparisonSelection, setComparisonSelection] = useState('straddle');
 
@@ -360,54 +356,12 @@ export default function MasteringVolatilityArticle() {
   };
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug || ''}
-          />
-        </>
-      )}
-
-      <div className="bg-slate-50 min-h-screen text-slate-800 font-sans selection:bg-purple-200">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white border-b border-slate-200">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-white opacity-70"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          
-          <div className="container mx-auto px-6 pt-32 pb-24 relative z-10 text-center">
-            <div className="inline-block px-4 py-2 mb-8 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold tracking-wide uppercase border border-indigo-200 shadow-sm">
-              Advanced Derivatives Guide
-            </div>
-          <div className="max-w-6xl mx-auto relative z-10">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide">Options Architecture</span>
-              <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold uppercase tracking-wide">Ref: Derivatives Manual</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-              Mastering <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Volatility</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-              The definitive technical guide to trading volatility as an asset class. Master the physics of implied vs realized volatility, the Greeks that drive profit, and the professional lifecycle management of Long Straddles and Strangles.
-            </p>
-          </div>
-          </div>
-        </header>
-
+    <ArticleFrame slug="mastering-volatility-definitive-guide-long-straddles-strangles">
           {/* 1. The Physics of Volatility */}
           <section className="py-24">
+            <div className="max-w-4xl mx-auto mb-16">
+              <InfographicSlot alt="Mastering Volatility: Straddles and Strangles Overview" />
+            </div>
             <SectionTitle subtitle="To trade volatility, you must understand the tension between Expectation (IV) and Reality (RV).">
               The Physics of Volatility
             </SectionTitle>
@@ -878,24 +832,6 @@ export default function MasteringVolatilityArticle() {
             </div>
           </section>
 
-          {/* Call to Action Section */}
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

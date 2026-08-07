@@ -1,103 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, Shield, Activity, AlertTriangle, Layers, GitMerge, BarChart2, Calculator, Database, CheckCircle2, Maximize2, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Shield, Activity, AlertTriangle, Layers, GitMerge, BarChart2, Calculator, Database } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function GeometryOfRatesArticle() {
-  const currentArticle = articles.find(article => article.slug === 'geometry-of-rates-pca-fixed-income-markets');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <>
-      {/* SEO Components */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'geometry-of-rates-pca-fixed-income-markets'} 
-      />
+    <ArticleFrame slug="geometry-of-rates-pca-fixed-income-markets">
+      <div className="max-w-4xl mx-auto mb-16 px-6">
+        <InfographicSlot alt="PCA Fixed Income Markets Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white pb-24 pt-16 lg:pb-32 lg:pt-24 border-b border-slate-200">
-          <div className="absolute inset-0 z-0 opacity-30">
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-200 rounded-full blur-3xl mix-blend-multiply animate-blob"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-32 left-20 w-96 h-96 bg-pink-200 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-4000"></div>
-          </div>
-          
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-semibold mb-6">
-              <Activity className="w-4 h-4" />
-              <span>Quantitative Finance Tutorial</span>
-            </div>
-            
-            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-6 pb-2">
-              The Geometry of Rates
-            </h1>
-            
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Mastering Principal Component Analysis (PCA) to decode the complex movements of the Fixed Income yield curve.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/XEfr0iF.jpeg" 
-              alt="PCA Fixed Income Markets Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/XEfr0iF.jpeg"
-          alt="PCA Fixed Income Markets Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content Container */}
-        <main className="max-w-4xl mx-auto px-6 py-12 space-y-24">
+      <div className="max-w-4xl mx-auto px-6 space-y-24">
           {/* Section 1: The Dimensionality Challenge */}
           <Section 
             id="dimensionality"
@@ -448,39 +362,8 @@ export default function GeometryOfRatesArticle() {
             </div>
           </Section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-12 mt-12">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <BookOpen className="w-8 h-8 text-slate-300 mx-auto mb-4" />
-            <p className="text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-            <p className="text-slate-400 text-xs mt-2">
-              This content is for educational purposes and does not constitute investment advice.
-            </p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }
 

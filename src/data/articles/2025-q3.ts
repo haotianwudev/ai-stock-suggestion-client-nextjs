@@ -9,7 +9,7 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1393144578/image_1393144578.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQrCZ4kHWWwxrk-J0ZOP1b7I_fucHXtVcnRLSDm0nnTAZB7iEMmqwtWGZ65vVIvamHkLQW2IfT7dJy4/pub",
     deepResearch: true,
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "Powell's Warning: How the US Stock Market is fairly highly valued and what can you do?",
@@ -19,7 +19,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/RckAyn0Ia3k",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/RckAyn0Ia3k/maxresdefault.jpg",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.MARCO],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.MACRO],
   },
 {
     title: "Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations",
@@ -30,7 +30,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTjyvxENqOtjQHi2m54YPolNioEUyF7RS6KNOY_8DidzauE_opcghMRYhPH2DZfMX_RpYsrIpqNQvOH/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/0nWtIBzV7RVcvO0cGJk2Xj?si=xklHGT3vSCWBe3w2zO4cCA",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.MARCO],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.MACRO],
   },
 {
     title: "Navigating the Minefield: Common Pitfalls of Trading Options",
@@ -102,7 +102,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/XqG5CLOzmME",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/XqG5CLOzmME/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "The New Golden Age: A Structural Bull Market Analysis",
@@ -113,7 +113,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTjfbcosuMvAxfz_ZIVfHhN6nd11M2IM-5WyQIJj8c0SbvMgan8b_GiSu6xs6JP2WvF0g3NaTL-i5NC/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/7pZ0QZOAslpJ3NnEz3oinv?si=iqyzDKC9S2uqnxzveFKTFw",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "The Academic Foundations of Option Writing",
@@ -278,7 +278,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/iT8RowYimos",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/iT8RowYimos/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.MACRO, ArticleLabel.FINANCE101],
   },
 {
     title: "Mutual Funds vs ETFs: The Definitive Investment Guide",
@@ -297,7 +297,7 @@ export const articles2025Q3: Article[] = [
     date: "September 8, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/41QDeDcCxXL._SY445_SX342_ControlCacheEqualizer_.jpg",
     premiumContent: true,
-    labels: [ArticleLabel.MARCO, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.MACRO, ArticleLabel.FINANCE101],
   },
 {
     title: "An easier path forward after Market Peak - Gold/Bond/Small Cap/Option Writing",
@@ -307,7 +307,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/7oFcs_pkygU",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/7oFcs_pkygU/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations",
@@ -318,7 +318,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTibgOHZsgsi_1tVoG0LuoJtLUNgp7157pr-VSO4BJ7oYc2MnXCqYK2fcCZw-au_Dp-36z4He8utmVa/pub",
     podcastUrl: "https://open.spotify.com/episode/4EWNW1t2lPBYrW95UOAgcN?si=pMrP8xj1R9SWh348nrUxsA",
     imageUrl: "https://blog.tipranks.com/wp-content/uploads/2025/06/shutterstock_2118737363-1-750x406.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "Hedge Fund's Secret Edge -- The Data?",
@@ -349,7 +349,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQVpe5KZsRlrz4ltqj9Ft_1TQXtt_iMQwMsO1BZbLu7GQ15RWpf9DmiUawMLt5FxfLtYhfX751xBGzL/pub",
     podcastUrl: "https://open.spotify.com/episode/7vaRhwrGIphyPFvpFvfmkO?si=X2xbLImzQg-uvSb4Nte9oQ",
     imageUrl: "https://otetmarkets.com/blog/wp-content/uploads/2025/04/9apr1_1.webp",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "Did your US stock actually going up? The Great Divergence of 2025 US Stock vs Dollar",
@@ -359,7 +359,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/UWaJ6GyRoyo",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/UWaJ6GyRoyo/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?",
@@ -370,7 +370,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSXRngq-N5LBYfpRaU6UVvkJuWb9pS_hpfYRDFUhzyx_xjwERFq8atlCVgNGTziP-nbpnJZIOIMGeCz/pub",
     podcastUrl: "https://open.spotify.com/episode/6qCKOJJoToJ8dyIPpsm3VD?si=i5QGuYwWQjeMKWyWS4oatg",
     imageUrl: "https://www.amgnational.com/wp-content/uploads/2024/01/mag7stocks.jpg",
-    labels: [ArticleLabel.MARCO, ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Magnificent 7 Earnings , AI Revolution or Bubble? largest 7 stocks to measure downside risk",
@@ -380,7 +380,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/uG0l1ZBPPOE",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/uG0l1ZBPPOE/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO, ArticleLabel.STOCK_ANALYSIS],
+    labels: [ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
   },
 {
     title: "Secret Similarity: Covered Call vs Cash Secured Put and the Wheel strategy!",
@@ -462,7 +462,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/Wgib90X4FDM",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/Wgib90X4FDM/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "The Powell Pivot: Navigating Market Crosscurrents After the Fed's Easing Signal",
@@ -473,7 +473,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRp5bduh9eC1MoSUf7Eyv4s23hXPDFH1DePgLGyz2nZayGbcv2_0WPgliBYVPVShSrgTa1rtBLA2J2N/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/596Xm3GAnJ38KmUnqOFYRi?si=wnt9GN5sQBKXbQmRcnT5SQ",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
 {
     title: "Is nature of StableCoins Yield or Risk?",

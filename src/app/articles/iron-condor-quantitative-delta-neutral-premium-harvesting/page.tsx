@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, ShieldAlert, Clock, Activity, Target, AlertTriangle, DollarSign, BarChart2, Layers, Info, ChevronDown, ChevronUp, Briefcase, Zap, RefreshCw, PieChart, Calculator, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Clock, Activity, Target, AlertTriangle, BarChart2, Layers, Info, Briefcase, Zap, RefreshCw, PieChart, Calculator } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // Simple SVG Payoff Diagram Component
 const PayoffDiagram = () => (
@@ -107,92 +104,13 @@ const StrategyBlock = ({ title, content, type = "neutral" }: StrategyBlockProps)
 );
 
 export default function IronCondorArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'iron-condor-quantitative-delta-neutral-premium-harvesting');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100">
-      {/* SEO Components - MANDATORY */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'iron-condor-quantitative-delta-neutral-premium-harvesting'} 
-      />
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
+    <ArticleFrame slug="iron-condor-quantitative-delta-neutral-premium-harvesting">
+      <div className="max-w-5xl mx-auto mb-16 px-6">
+        <InfographicSlot alt="Iron Condor Strategy Infographic" />
       </div>
 
-      {/* Hero Section */}
-      <header className="bg-white border-b border-slate-200 pt-20 pb-16 px-6 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium mb-6">
-            <Activity size={16} /> Quantitative Derivatives Strategy
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6">
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Iron Condor</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed">
-            A defined-risk, delta-neutral strategy exploiting structural pricing inefficiencies in implied volatility.
-          </p>
-        </div>
-        {/* Abstract Background Shapes */}
-        <div className="absolute top-10 right-0 -mr-20 opacity-5">
-          <svg width="400" height="400" viewBox="0 0 200 200">
-            <path fill="#4f46e5" d="M45,-76.3C58.9,-69.3,71.4,-59.1,81.1,-46.8C90.8,-34.5,97.8,-20.1,96.5,-6.1C95.1,7.9,85.5,21.5,75.1,33.5C64.7,45.5,53.5,55.9,41.2,63.6C28.8,71.3,15.3,76.3,1.1,74.4C-13.1,72.5,-28,63.7,-41.6,53.8C-55.2,43.9,-67.5,32.9,-75.6,19.3C-83.7,5.7,-87.6,-10.5,-83.4,-24.8C-79.1,-39.1,-66.7,-51.5,-53.4,-58.8C-40.1,-66.1,-25.9,-68.3,-11.9,-69.5C2.1,-70.7,28.2,-70.9,45,-76.3Z" transform="translate(100 100)" />
-          </svg>
-        </div>
-      </header>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/jRhQhdm.jpeg" 
-            alt="Iron Condor Strategy Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/jRhQhdm.jpeg"
-        alt="Iron Condor Strategy Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <main className="max-w-5xl mx-auto px-6 py-12 space-y-24">
+      <div className="max-w-5xl mx-auto px-6 space-y-24">
         {/* Executive Summary */}
         <section>
           <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
@@ -567,29 +485,7 @@ export default function IronCondorArticle() {
           </div>
         </section>
 
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <DollarSign className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="text-center text-slate-400 text-sm pb-12">
-          <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </main>
-    </div>
+      </div>
+    </ArticleFrame>
   );
 }

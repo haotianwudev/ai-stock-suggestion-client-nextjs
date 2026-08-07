@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Building2, TrendingDown, Shield, AlertTriangle, Calculator, Layers, DollarSign, BarChart3, Activity, Clock, CheckCircle, PieChart, Target } from 'lucide-react';
+import { Building2, TrendingDown, Shield, AlertTriangle, Calculator, Layers, DollarSign, BarChart3, Activity, Clock, CheckCircle, PieChart, Target, FileText } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---

@@ -278,7 +278,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://img.youtube.com/vi/ns0nlaE74Ac/maxresdefault.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS9gMIeiFuK5XIja_s9U8khIB3TkEIjEdbQP-594sa6kcBJzz3UR2i8ihEtVXZBVe03m04rWYPRcfg1/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "The Microstructure of Intraday Option Speculation: Mechanics, Strategies, and Structural Risks",
@@ -364,7 +364,7 @@ export const articles2026Q1: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQZbpHYYw2xCg7jD70n5sb6qq_2AwW_DNovrrnGka_bq7EHgR_lZqvdzQw2MQSRWXhESfMFmienmVq6/pub",
     podcastUrl: "https://open.spotify.com/episode/0fDjR6VCgc9924gZdUIUKL?si=O01JreneQZ23xeSO4BA_Wg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
   {
     title: "Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing",
@@ -433,7 +433,9 @@ export const articles2026Q1: Article[] = [
     description: "A comprehensive analysis of Art Simpson's legendary trading philosophy from the Futures Magazine forums. Learn the three laws of survival, the 3:2:1 pyramiding ratio, and why successful trading is about superior behavior modification, not superior knowledge.",
     slug: "gift-phantom-trader-psychology-winning-through-losing",
     date: "January 20, 2026",
-    imageUrl: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1677810192i/21884038.jpg",
+    youtubeUrl: "https://youtu.be/0WJ0fJ0a2HY",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/0WJ0fJ0a2HY/maxresdefault.jpg",
     podcastUrl: "https://open.spotify.com/episode/2ORmIbJViUDfjCtGVjFBDE?si=dM7h7ODCTwOlZPznIZfYiw",
     labels: [ArticleLabel.FINANCE101, ArticleLabel.BOOK],
   },
@@ -447,7 +449,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://img.youtube.com/vi/c-w-bpkPqh8/maxresdefault.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSq7Sk8anwR5Ha3IkXVHRtj2t7gL7nL2TB47awnkCCJSCxJm2I-LBzojbSJx4lSfFWVP-hMdUrA87V8/pub",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
   {
     title: "The Single-Leg Long Call: Mastering Asymmetric Leverage in Options Trading",

@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BookOpen, TrendingUp, ShieldAlert, BarChart2, Zap, ArrowRight, Info, PieChart, Activity, Search, Layers, Unlock, AlertTriangle, FileText } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable Components ---
 const Section = ({ title, icon: Icon, children, color = "indigo" }: { 
@@ -105,6 +106,7 @@ const InsightBadge = ({ type, text }: {
 
 // --- Main Application ---
 export default function DarkIndexTutorial() {
+  const [isSecondImageViewerOpen, setIsSecondImageViewerOpen] = useState(false);
   return (
     <ArticleFrame slug="dark-index-dix-understanding-short-is-long-market-microstructure">
       <InfographicSlot alt="Dark Index (DIX) Infographic" />

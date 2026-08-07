@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Database, Shield, Globe, Layers, Activity, PieChart, TrendingUp, AlertTriangle, Server, FileText, CheckCircle, ArrowRight, Calculator, Clock, Briefcase, Maximize2 } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable Components ---
 const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: string; subtitle: string; icon: React.ElementType; colorClass: string }) => (
@@ -42,6 +43,7 @@ const DetailList = ({ items }: { items: Array<{ label: string; text: string }> }
 );
 
 export default function OntologyOfValueArticle() {
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   return (
     <ArticleFrame slug="ontology-of-value-financial-data-classification-lifecycle-management">
       <InfographicSlot alt="Ontology of Value Infographic" />

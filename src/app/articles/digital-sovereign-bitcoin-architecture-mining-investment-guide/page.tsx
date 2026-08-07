@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Bitcoin, Database, Cpu, Shield, Globe, TrendingUp, Unlock, Scale, FileText, Zap, Server, Users, Eye, Lock, Pickaxe, Briefcase, Search, ShoppingBag, Shuffle, Fingerprint, Ticket, Hash, Dices, Binary, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { Database, Ticket, Pickaxe, Eye, Globe, TrendingUp, Users, Scale, Server, Key, Lock, ChevronRight, FileText, Hash, Zap, Bitcoin, Fingerprint, Briefcase, Search, ShoppingBag, Shield, Shuffle } from 'lucide-react';
 
 const Section = ({ title, icon: Icon, color, bgInfo, children }: {
   title: string;
@@ -71,85 +68,13 @@ const TableRow = ({ label, value }: {
 );
 
 export default function BitcoinGuide() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'digital-sovereign-bitcoin-architecture-mining-investment-guide');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'digital-sovereign-bitcoin-architecture-mining-investment-guide'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-orange-100 selection:text-orange-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              The Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Sovereign</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-              A comprehensive interactive tutorial on Bitcoin's architecture, mining mechanics, privacy, and investment ecosystem.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/i7pqdHp.jpeg" 
-              alt="Bitcoin Architecture Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/i7pqdHp.jpeg"
-          alt="Bitcoin Architecture Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-8">
+    <ArticleFrame slug="digital-sovereign-bitcoin-architecture-mining-investment-guide">
+      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+        <InfographicSlot alt="Bitcoin Architecture Infographic" />
+      </section>
+      
+      <div className="max-w-5xl mx-auto px-6 py-8 space-y-8">
           {/* 1. Architecture */}
           <Section 
             title="Architecture & Mechanics" 
@@ -564,33 +489,7 @@ export default function BitcoinGuide() {
             </div>
           </Section>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        <footer className="bg-slate-900 text-slate-400 py-12 text-center">
-          <div className="max-w-4xl mx-auto px-4">
-            <Bitcoin className="mx-auto mb-4 text-orange-500" size={32} />
-            <p className="mb-4">Data based on "Bitcoin: A Comprehensive Analysis (2025)"</p>
-            <p className="text-xs text-slate-600">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

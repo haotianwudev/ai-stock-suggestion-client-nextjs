@@ -1,90 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function VolatilityHedgeFundsArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'industrialization-volatility-hedge-funds-operational-architecture');
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'industrialization-volatility-hedge-funds-operational-architecture'} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
+    <ArticleFrame slug="industrialization-volatility-hedge-funds-operational-architecture">
+      <div className="max-w-4xl mx-auto mb-16 px-6">
+        <InfographicSlot alt="Volatility Hedge Fund Architecture Infographic" />
       </div>
 
-      {/* Hero Section with Title */}
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            The Industrialization of <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Volatility</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            Deconstructing the operational architecture of a modern volatility-focused hedge fund. A deep dive into data hygiene, Greek attribution, and algorithmic execution.
-          </p>
-        </div>
-      </div>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/a3KxgF2.jpeg" 
-            alt="Volatility Hedge Fund Architecture Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/a3KxgF2.jpeg"
-        alt="Volatility Hedge Fund Architecture Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
+      <div className="max-w-5xl mx-auto px-6">
         
         {/* Introduction */}
         <section className="mb-16">
@@ -512,37 +439,7 @@ export default function VolatilityHedgeFundsArticle() {
           </div>
         </section>
 
-        {/* Continue Learning Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                📄 Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-50 py-12 px-6 border-t border-slate-200">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-slate-500 text-sm mb-2">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-          <p className="text-slate-400 text-xs">
-            This analysis is for educational purposes and does not constitute investment advice. 
-            Volatility trading involves substantial risk and may not be suitable for all investors.
-          </p>
-        </div>
-      </footer>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

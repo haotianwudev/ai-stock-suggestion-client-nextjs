@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { ArrowLeft, TrendingUp, AlertTriangle, History, Zap, DollarSign, Cpu, Activity, BookOpen, ArrowDownRight, ShieldAlert, BarChart4, Layers, Search, Globe, ChevronDown, ChevronUp, Brain, Scale, Clock, AlertOctagon, Anchor, Umbrella, Crosshair, MessageCircle, Users, MousePointerClick, Music } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -305,138 +305,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ month, title, event, icon: 
 );
 // --- Main Application ---
 export default function GreatDecouplingArticle() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const currentArticle = articles.find(article => article.slug === 'great-decoupling-2026-asset-bubble-mathematical-analysis');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
-      setScrollProgress(Number(scroll));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle?.title || ''} 
-            articleSlug={currentArticle?.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#faf9f6] text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Scroll Indicator */}
-        <div 
-          className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 z-50 transition-all duration-300" 
-          style={{ width: `${scrollProgress * 100}%` }} 
-        />
-
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="great-decoupling-2026-asset-bubble-mathematical-analysis">
+      <div className="max-w-5xl mx-auto font-sans bg-transparent text-slate-800">
+        <div className="mt-8 mb-12">
+          <InfographicSlot alt="The Great Decoupling Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-slate-200 pt-28 pb-20 px-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50/80 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-rose-50/80 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
-          
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold uppercase tracking-wider mb-6">
-                  <Activity size={14} /> Global Macro Strategy • Q1 2026
-                </div>
-                <h1 className="text-5xl md:text-7xl font-serif font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
-                  The Great <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">Decoupling</span>
-                </h1>
-              </div>
-              <div className="md:text-right max-w-md">
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light">
-                  Why the 2026 asset bubble is mathematically distinct from 2000 and 2008, and why the "soft landing" narrative is masking systemic credit fragility.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 border-t border-slate-100 pt-8">
-              <div className="space-y-1">
-                <div className="text-slate-400 text-xs uppercase font-bold">S&P 500</div>
-                <div className="text-2xl font-bold text-indigo-900">6,850</div>
-                <div className="text-green-500 text-xs font-mono">+22% YTD</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-slate-400 text-xs uppercase font-bold">Nvidia</div>
-                <div className="text-2xl font-bold text-indigo-900">$185</div>
-                <div className="text-green-500 text-xs font-mono">P/E 52x</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-slate-400 text-xs uppercase font-bold">US 10Y Yield</div>
-                <div className="text-2xl font-bold text-rose-600">4.85%</div>
-                <div className="text-rose-500 text-xs font-mono">Cycle High</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-slate-400 text-xs uppercase font-bold">VIX</div>
-                <div className="text-2xl font-bold text-slate-900">11.2</div>
-                <div className="text-slate-400 text-xs font-mono">Complacent</div>
-              </div>
-            </div>
-          </div>
-        </header>
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/6DhOGFs.jpeg" 
-              alt="The Great Decoupling Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/6DhOGFs.jpeg"
-          alt="The Great Decoupling Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-32">
+        <main className="space-y-32">
           {/* Introduction */}
           <section>
             <div className="grid md:grid-cols-3 gap-12">
@@ -914,31 +789,8 @@ export default function GreatDecouplingArticle() {
             </div>
           </section>
           {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-8 px-6 text-center">
-          <p className="text-sm">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </footer>
+          </main>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

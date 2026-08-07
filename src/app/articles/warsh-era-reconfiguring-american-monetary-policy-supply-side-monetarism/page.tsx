@@ -3,9 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, TrendingDown, TrendingUp, User, Landmark, Briefcase, AlertTriangle, BookOpen, DollarSign, BarChart2, ShieldAlert, ArrowRight, Activity, Zap, Globe, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 interface CardProps {
   children: React.ReactNode;
@@ -59,63 +57,13 @@ const StatCard = ({ label, value, subtext, type = "neutral" }: StatCardProps) =>
 };
 
 export default function KevinWarshAnalysis() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  
-  // Find current article for SEO
-  const currentArticle = articles.find(article => 
-    article.slug === 'warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism'
-  );
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <>
-      {/* SEO Components */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism'} 
-      />
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-teal-100">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-slate-200">
-          <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="flex items-center gap-2 font-bold text-xl text-slate-900">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-900 to-teal-600 rounded-lg flex items-center justify-center text-white font-serif">W</div>
-              <span>Warsh Era Analysis</span>
-            </div>
-            <div className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">REPORT ID: b9f7f87e</div>
-          </div>
-        </header>
-
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-20">
+    <ArticleFrame slug="warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism">
           {/* Executive Summary Hero */}
-          <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white shadow-2xl">
+          <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white shadow-2xl mt-8 mb-12">
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
             <div className="relative p-12 md:p-16">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-teal-300 mb-6">
-                <Activity size={16} />
-                <span>Strategic Pivot: Jan 30, 2026</span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                The Reconfiguration of <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-300">American Monetary Policy</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed">
-                The nomination of Kevin Warsh as Federal Reserve Chair marks a definitive inflection point. We are moving from "financial dominance" to a "barbell" strategy of aggressive rate cuts paired with balance sheet destruction.
-              </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl">
                   <div className="text-amber-400 font-bold mb-1">Regime Change</div>
@@ -494,63 +442,10 @@ export default function KevinWarshAnalysis() {
             </div>
           </section>
 
-          {/* Strategic Infographic - Visual Summary of Key Concepts */}
-          <section className="max-w-5xl mx-auto px-6 py-12">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 text-teal-600 font-bold uppercase tracking-wider text-sm mb-2">
-                <BarChart2 size={16} />
-                <span>Visual Analysis</span>
-              </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">The Warsh Framework: A Complete Overview</h2>
-              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                This comprehensive infographic synthesizes Warsh's background, policy framework, market implications, and strategic positioning into a single visual reference.
-              </p>
-            </div>
-            
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => setIsImageViewerOpen(true)}
-            >
-              <img 
-                src="https://i.imgur.com/gz1986l.jpeg" 
-                alt="Kevin Warsh Fed Analysis Infographic - Complete Framework Overview" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              {/* Full-screen button overlay */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsImageViewerOpen(true);
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              {/* Click hint */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
-            
-            {/* Context Note */}
-            <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 text-center">
-              <p className="text-sm text-blue-800">
-                <strong>Reference Guide:</strong> Use this infographic as a quick reference while reading the detailed analysis below. 
-                It consolidates the key elements of Warsh's nomination, policy framework, and market implications.
-              </p>
-            </div>
-          </section>
-
-          {/* Full-screen image viewer */}
-          <FullScreenImageViewer
-            src="https://i.imgur.com/gz1986l.jpeg"
-            alt="Kevin Warsh Fed Analysis Infographic - Complete Framework Overview"
-            isOpen={isImageViewerOpen}
-            onClose={() => setIsImageViewerOpen(false)}
-          />
+      {/* Strategic Infographic - Visual Summary of Key Concepts */}
+      <section className="max-w-5xl mx-auto py-12">
+        <InfographicSlot alt="Kevin Warsh Fed Analysis Infographic - Complete Framework Overview" />
+      </section>
 
           {/* Section 3: Market Autopsy */}
           <section className="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
@@ -1207,42 +1102,6 @@ export default function KevinWarshAnalysis() {
             </div>
           </section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="border-t border-slate-200 pt-12 pb-6 text-center text-slate-500 text-sm">
-            <p className="mb-2">Analysis based on market data as of January 30, 2026.</p>
-            <p>© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </footer>
-        </main>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

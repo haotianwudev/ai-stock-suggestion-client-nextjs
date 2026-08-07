@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { ArrowLeft, PieChart, TrendingUp, Activity, Target, Search, BarChart2, BookOpen, ArrowRight, Shield, Layers, CheckCircle, HelpCircle, AlertTriangle, Briefcase, Zap, RefreshCw, Scale, TrendingDown, DollarSign, Clock, Umbrella, Anchor, Globe, Cpu, BarChart, Thermometer, Calculator, Info, Music, Maximize2 } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -425,110 +425,13 @@ const AttributionCalculator = () => {
 };
 
 export default function StrategicTacticalAssetAllocation() {
-  const currentArticle = articles.find(article => article.slug === 'strategic-tactical-asset-allocation-comprehensive-guide');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'strategic-tactical-asset-allocation-comprehensive-guide'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900 pb-20">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="strategic-tactical-asset-allocation-comprehensive-guide">
+      <div className="max-w-5xl mx-auto font-sans bg-transparent">
+        <div className="mt-8 mb-12">
+          <InfographicSlot alt="Strategic vs Tactical Asset Allocation Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative bg-white overflow-hidden border-b border-slate-200">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-50 to-transparent"></div>
-          <div className="max-w-6xl mx-auto px-6 pt-20 pb-24 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-bold mb-8 uppercase tracking-wider">
-              <BookOpen size={16} />
-              <span>Investment Management 101</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight tracking-tight">
-              Strategic vs. Tactical <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Asset Allocation</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed mb-12">
-              A deep-dive tutorial for investors. Learn how to build a portfolio baseline, when to deviate for profit, and how to use math to hold managers accountable.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
-              <div className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-indigo-500">
-                <div className="text-indigo-600 font-bold mb-1 flex items-center gap-2">
-                  <Target size={18}/> Strategic (SAA)
-                </div>
-                <div className="text-sm text-slate-500">The long-term policy mix designed for your risk tolerance.</div>
-              </div>
-              <div className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-orange-500">
-                <div className="text-orange-600 font-bold mb-1 flex items-center gap-2">
-                  <Activity size={18}/> Tactical (TAA)
-                </div>
-                <div className="text-sm text-slate-500">Active shifts to exploit short-term market inefficiencies.</div>
-              </div>
-              <div className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-blue-500">
-                <div className="text-blue-600 font-bold mb-1 flex items-center gap-2">
-                  <Search size={18}/> Attribution
-                </div>
-                <div className="text-sm text-slate-500">Mathematical analysis of where returns actually came from.</div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/MhIheV4.jpeg" 
-              alt="Strategic vs Tactical Asset Allocation Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/MhIheV4.jpeg"
-          alt="Strategic vs Tactical Asset Allocation Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-32">
+        <main className="space-y-32">
           {/* Section 1: Strategic Asset Allocation */}
           <section>
             <SectionHeading icon={Target} color="text-indigo-600" bg="bg-indigo-50">
@@ -1216,40 +1119,9 @@ export default function StrategicTacticalAssetAllocation() {
           </section>
 
           {/* Call to Action */}
-          <section className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </section>
+          
         </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-16">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-full mb-8 text-indigo-400 shadow-sm border border-slate-100">
-              <TrendingUp size={32} />
-            </div>
-            <h3 className="font-bold text-slate-800 text-xl mb-4">Investment Education Series</h3>
-            <p className="text-slate-500 mb-8 max-w-lg mx-auto leading-relaxed">
-              This tutorial is for educational purposes only. Asset allocation does not guarantee profit or protect against loss in declining markets.
-            </p>
-            <div className="text-sm text-slate-400 font-medium">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

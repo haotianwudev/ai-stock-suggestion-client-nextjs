@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Scale, AlertTriangle, Vote, Brain, Activity, BookOpen, Lightbulb, Cpu, MousePointer, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Scale, AlertTriangle, Vote, Brain, Activity, BookOpen, Lightbulb, Cpu, MousePointer, Maximize2, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const GuideData = {
   intro: {
@@ -276,89 +273,12 @@ const SectionCard = ({ section }: { section: any }) => {
 };
 
 export default function PredictionMarketsGuide() {
-  const currentArticle = articles.find(article => article.slug === 'prediction-markets-financialization-truth-complete-trading-guide');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#FDFDFD] text-slate-900 font-sans selection:bg-yellow-200">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="relative overflow-hidden bg-white border-b border-slate-100">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-rose-500" />
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 text-slate-600 font-semibold text-xs uppercase tracking-widest mb-8 border border-slate-200">
-              <BookOpen className="w-4 h-4" />
-              Strategic Research 2026
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-slate-900">
-              Prediction Markets
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              From political betting to economic hedging. <br/>
-              <span className="text-slate-400 text-lg mt-4 block">A deep-dive tutorial on mechanics, strategy, and risk.</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/YjJeuYv.jpeg" 
-              alt="Prediction Markets Complete Guide Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/YjJeuYv.jpeg"
-          alt="Prediction Markets Complete Guide Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content Area */}
-        <main className="max-w-5xl mx-auto px-6 py-12">
+    <ArticleFrame slug="prediction-markets-financialization-truth-complete-trading-guide">
           {/* Intro Card */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <InfographicSlot alt="Prediction Markets Complete Guide Infographic" />
+          </div>
           <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-12 mb-16 shadow-2xl shadow-slate-200 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
             <div className="relative z-10">
@@ -380,38 +300,6 @@ export default function PredictionMarketsGuide() {
             ))}
           </div>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="mt-24 text-center pb-12">
-            <div className="inline-flex items-center justify-center p-8 bg-slate-50 rounded-2xl border border-slate-100 w-full mb-8">
-              <div className="text-left max-w-lg">
-                <h4 className="font-bold text-slate-900 mb-2">Research Disclaimer</h4>
-                <p className="text-sm text-slate-500">
-                  This guide is for educational purposes only. Prediction markets involve a high degree of risk and the potential for the loss of principal. Past performance of specific strategies (e.g., 'French Whale') does not guarantee future results.
-                </p>
-              </div>
-            </div>
-            <p className="text-slate-400 text-sm">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </footer>
-        </main>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

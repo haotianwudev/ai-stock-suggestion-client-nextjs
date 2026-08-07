@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, Target, Cpu, Zap, AlertTriangle, Calculator, LineChart, Layers, Info, Maximize2, Shield, Globe, History, Activity, Terminal, CheckCircle, Wind, Thermometer, Repeat, ChevronRight, Binary, Dices, Clock, Flame, TrendingDown, Scaling, Box, Search, ShieldCheck, Microscope, Map, Anchor, Gem, Wallet, Percent, MoveRight, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { BookOpen, TrendingUp, Target, Cpu, Zap, AlertTriangle, Calculator, LineChart, Layers, Info, Maximize2, Shield, Globe, History, Activity, Terminal, CheckCircle, Wind, Thermometer, Repeat, ChevronRight, Binary, Dices, Clock, Flame, TrendingDown, Scaling, Box, Search, ShieldCheck, Microscope, Map, Anchor, Gem, Wallet, Percent, MoveRight, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 /**
  * Enhanced MathRenderer Component
@@ -104,9 +101,6 @@ const GreekCard = ({ name, symbol, description, impact }: { name: string; symbol
 );
 
 export default function BlackScholesAnalytics() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'black-scholes-analytics-laboratory-axioms-option-pricing');
-
   useEffect(() => {
     if (!document.getElementById('katex-css')) {
       const link = document.createElement('link');
@@ -125,88 +119,12 @@ export default function BlackScholesAnalytics() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FC] text-slate-900 font-sans selection:bg-indigo-100">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
+    <ArticleFrame slug="black-scholes-analytics-laboratory-axioms-option-pricing">
+      <div className="max-w-4xl mx-auto mb-16">
+        <InfographicSlot alt="Black-Scholes Analytics Infographic" />
       </div>
 
-      {/* Deep Research Badge */}
-      <div className="absolute top-8 left-8 z-20">
-        <div className="bg-purple-600 text-white px-4 py-2 rounded-lg font-bold text-sm shadow-lg">
-          Deep Research
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <header className="relative bg-white pt-20 pb-16 px-8 border-b border-slate-200 overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-[900px] h-[900px] bg-indigo-50 rounded-full blur-[160px] opacity-40" />
-        <div className="max-w-5xl mx-auto relative z-10 text-center lg:text-left">
-          <div className="inline-flex items-center gap-3 px-4 py-2 mb-8 text-xs font-black tracking-[0.3em] text-indigo-600 uppercase bg-indigo-50 rounded-full shadow-sm border border-indigo-100">
-            <Microscope className="w-4 h-4" /> Quantitative Finance Portal
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-black text-slate-900 mb-8 leading-[0.9] tracking-tighter">
-            Black <span className="text-indigo-600">Scholes</span><br/>
-            <span className="text-slate-200">Analytics.</span>
-          </h1>
-          <p className="text-xl lg:text-2xl text-slate-400 leading-relaxed max-w-4xl font-light italic">
-            "The standard ruler for pricing the uncertainty of time."
-          </p>
-        </div>
-      </header>
-
-      {/* Hero Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-8 pb-4">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/VVQWBaJ.jpeg" 
-            alt="Black-Scholes Analytics Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src="https://i.imgur.com/VVQWBaJ.jpeg"
-        alt="Black-Scholes Analytics Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
-        {/* Section 1: Detailed Axioms */}
+      {/* Section 1: Detailed Axioms */}
         <section>
           <SectionHeader 
             icon={History} 
@@ -987,47 +905,6 @@ export default function BlackScholesAnalytics() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white py-16 px-10 border-t border-slate-100 mt-20">
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-2xl">
-              BS
-            </div>
-            <div>
-              <span className="font-black tracking-tighter text-3xl block">SOPHIE&apos;s Daddy Quant Blog</span>
-              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Quantitative Finance Portal</span>
-            </div>
-          </div>
-          <div className="text-center lg:text-right">
-            <p className="text-slate-400 text-base font-light italic mb-3 max-w-md">
-              &quot;Standardizing the Uncertainty of the Future.&quot;
-            </p>
-            <p className="text-[11px] text-slate-300 uppercase tracking-[0.4em] font-black">
-              © 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

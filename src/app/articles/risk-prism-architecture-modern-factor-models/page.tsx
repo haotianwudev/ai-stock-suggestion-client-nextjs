@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Shield, TrendingUp, Activity, Globe, Brain, Newspaper, Scale, Target, Zap, Search, Box, Layers, BarChart2, Lock, Unlock, Users, Cpu, BookOpen, Anchor, DollarSign, Percent, Briefcase, Sprout, Waves, ShieldCheck, Minimize2, Tag, AlertTriangle, GitMerge, Database, Grid, CheckCircle, XCircle, Filter, Sliders, ArrowRight, PieChart, Music, Maximize2 } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
-
+import { articles } from '@/data/articles';
 // --- UI Components ---
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 ${className}`}>
@@ -123,6 +123,7 @@ const factorData = [
 
 export default function RiskArchitectureArticle() {
   const [activeModelTab, setActiveModelTab] = useState('barra');
+  const currentArticle = articles.find(article => article.slug === 'risk-prism-architecture-modern-factor-models');
   
   return (
     <ArticleFrame slug="risk-prism-architecture-modern-factor-models">

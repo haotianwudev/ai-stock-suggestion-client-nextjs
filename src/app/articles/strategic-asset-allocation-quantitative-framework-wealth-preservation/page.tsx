@@ -1,97 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { ArrowLeft, TrendingUp, ShieldCheck, BarChart3, Globe, Coins, Scale, Briefcase, Building2, ArrowRightLeft, Info, ChevronRight, Calculator, Zap, Target, Compass, Layers, Percent, AlertTriangle, BookOpen, PieChart, Activity, ZapOff, UserCheck, Lock, Flame, Dna, History, FileText, Maximize2, Music } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 export default function StrategicAssetAllocationArticle() {
-  const currentArticle = articles.find(article => article.slug === 'strategic-asset-allocation-quantitative-framework-wealth-preservation');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 selection:bg-blue-100 pb-24">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="strategic-asset-allocation-quantitative-framework-wealth-preservation">
+      <div className="max-w-6xl mx-auto font-sans bg-transparent">
+        <div className="mt-8 mb-12">
+          <InfographicSlot alt="Strategic Asset Allocation Framework Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white border-b border-slate-200 pt-24 pb-32 px-6">
-          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[120px] opacity-70"></div>
-          <div className="absolute bottom-0 left-0 -ml-24 -mb-24 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[100px] opacity-70"></div>
-          <div className="max-w-5xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold tracking-widest uppercase mb-10 shadow-xl">
-              <Dna className="w-3 h-3 mr-2 text-emerald-400" />
-              Institutional Research Portal 2026
-            </div>
-            <h1 className="text-6xl md:text-8xl font-[900] tracking-tighter text-slate-900 mb-8 leading-[0.95]">
-              Strategic Asset <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">Allocation</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
-              A quantitative framework for multi-generational wealth preservation, regime-based optimization, and institutional-grade tax alpha.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/CrXmbad.jpeg" 
-              alt="Strategic Asset Allocation Framework Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/CrXmbad.jpeg"
-          alt="Strategic Asset Allocation Framework Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-6xl mx-auto mt-20 px-6 space-y-40">
+        <main className="space-y-40">
           {/* Module 1: Human Capital & The Wealth Lifecycle */}
           <section id="objectives">
             <div className="flex flex-col md:flex-row md:items-end gap-4 mb-12">
@@ -1513,71 +1436,7 @@ export default function StrategicAssetAllocationArticle() {
             </div>
           </section>
         </main>
-
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="max-w-6xl mx-auto px-6 mt-32 border-t border-slate-200 pt-20">
-          <div className="flex flex-col md:flex-row justify-between gap-12 items-start mb-20">
-            <div className="max-w-sm">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-black tracking-tighter">SAA Masterclass</span>
-              </div>
-              <p className="text-sm text-slate-400 leading-relaxed italic">
-                "Strategic Asset Allocation is a discipline, not a prediction. The goal is a portfolio that provides survival in the 1% scenario while delivering growth in the 99% scenario."
-              </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
-              <div>
-                <h5 className="font-bold text-slate-900 text-sm mb-4">Core Frameworks</h5>
-                <ul className="text-xs text-slate-400 space-y-3">
-                  <li>Human Capital</li>
-                  <li>Black-Litterman</li>
-                  <li>Risk Parity</li>
-                  <li>Asset Location</li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="font-bold text-slate-900 text-sm mb-4">Institutional Alpha</h5>
-                <ul className="text-xs text-slate-400 space-y-3">
-                  <li>PFIC / QEF Strategy</li>
-                  <li>Private Assets</li>
-                  <li>Sequence Risk</li>
-                  <li>Tax-Loss Alpha</li>
-                </ul>
-              </div>
-              <div className="col-span-2 md:col-span-1">
-                <h5 className="font-bold text-slate-900 text-sm mb-4">Contact & Inquiries</h5>
-                <p className="text-[10px] text-slate-400 leading-relaxed">
-                  Portal maintained by the Institutional Strategic Research Department. Updated for January 2026.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="text-center text-[10px] text-slate-400 border-t border-slate-100 py-10">
-            © 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

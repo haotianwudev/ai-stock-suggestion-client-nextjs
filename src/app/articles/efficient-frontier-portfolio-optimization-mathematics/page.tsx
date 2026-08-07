@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Shield, Activity, Layers, Settings, Cpu, Database, Code, Target, PieChart, ArrowRight, Maximize2, Minimize2, Zap, Globe, GitBranch, Terminal, Anchor, Share2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Shield, Activity, Layers, Settings, Cpu, Database, Code, Target, PieChart, ArrowRight, Maximize2, Minimize2, Zap, Globe, GitBranch, Terminal, Anchor, Share2, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 interface SectionHeaderProps {
@@ -127,94 +124,15 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ number, title, desc }) => (
 export default function EfficientFrontierArticle() {
   const [activeTab, setActiveTab] = useState('mvo');
   const [activeConstraint, setActiveConstraint] = useState('cardinality');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const currentArticle = articles.find(article => article.slug === 'efficient-frontier-portfolio-optimization-mathematics');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
 
   return (
-    <>
-      {/* SEO Components */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'efficient-frontier-portfolio-optimization-mathematics'} 
-      />
+    <ArticleFrame slug="efficient-frontier-portfolio-optimization-mathematics">
+      <div className="max-w-4xl mx-auto mb-16">
+        <InfographicSlot alt="Portfolio Optimization Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-white font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white">
-          <div className="absolute inset-0 z-0 opacity-40">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4"></div>
-          </div>
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <div className="max-w-5xl">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-semibold mb-8 shadow-xl">
-                <Terminal className="w-4 h-4 mr-2 text-emerald-400" />
-                Quant Research Series
-              </div>
-              <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight leading-[1.1]">
-                The Efficient <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Frontier</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-500 leading-relaxed max-w-3xl font-light">
-                A deep dive into the mathematics, constraints, and software architecture used by hedge funds to transform raw signals into optimal portfolios.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/7fzYQ0K.jpeg" 
-              alt="Portfolio Optimization Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/7fzYQ0K.jpeg"
-          alt="Portfolio Optimization Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-          {/* Section 0: The Workflow */}
+      <div className="max-w-6xl mx-auto space-y-16">
+        {/* Section 0: The Workflow */}
           <section className="py-4">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">The Quantitative Production Line</h2>
@@ -670,36 +588,7 @@ prob.solve(solver=cp.ECOS)`} />
             </div>
           </section>
 
-          {/* Call to Action Section */}
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-5 lg:p-6 rounded-xl text-center">
-            <h3 className="text-xl lg:text-2xl font-bold text-gray-800 mb-3">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg text-base hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Database className="mr-2 h-4 w-4" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        <footer className="bg-slate-900 py-8 lg:py-12 border-t border-slate-800 text-slate-400 mt-12">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <div className="mb-4 flex justify-center space-x-6">
-              <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6 hover:text-white transition-colors" />
-              <Database className="w-5 h-5 lg:w-6 lg:h-6 hover:text-white transition-colors" />
-              <Code className="w-5 h-5 lg:w-6 lg:h-6 hover:text-white transition-colors" />
-            </div>
-            <p className="text-sm font-light">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, ShieldCheck, TrendingUp, CircleDollarSign, Layers, Activity, AlertTriangle, ArrowRight, Info, ChevronDown, Lock, Zap, HelpCircle, Clock, Briefcase, Skull, Maximize2, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ShieldCheck, TrendingUp, CircleDollarSign, Layers, Activity, AlertTriangle, Info, Zap, HelpCircle, Clock, Briefcase, Skull } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 const Card = ({ title, icon: Icon, color, children }: { 
@@ -36,15 +33,8 @@ const SectionHeading = ({ children, subtitle, centered = false }: {
 );
 
 export default function ArchitectureStructuredNotes() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('protection');
   
-  const currentArticle = articles.find(article => article.slug === 'architecture-structured-notes-comprehensive-investors-guide');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   const categories: Record<string, {
     title: string;
     icon: React.ComponentType<any>;
@@ -76,88 +66,12 @@ export default function ArchitectureStructuredNotes() {
   };
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'architecture-structured-notes-comprehensive-investors-guide'} 
-      />
+    <ArticleFrame slug="architecture-structured-notes-comprehensive-investors-guide">
+      <div className="max-w-4xl mx-auto mb-16 px-6">
+        <InfographicSlot alt="Structured Notes Architecture Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative py-24 overflow-hidden bg-white">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-50 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-3xl">
-              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-50 rounded-full">Comprehensive Investor's Guide</span>
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-                The Architecture of <span className="text-indigo-600">Structured Notes</span>
-              </h1>
-              <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
-                Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all hover:scale-105 shadow-lg shadow-indigo-200 flex items-center gap-2">
-                  Get Started <ArrowRight size={20} />
-                </button>
-                <div className="flex items-center gap-4 ml-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-slate-900">$194B</div>
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">2024 Issuance</div>
-                  </div>
-                  <div className="w-px h-8 bg-slate-200"></div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-slate-900">80-90%</div>
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Bond Component</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/kmqdUcW.jpeg" 
-              alt="Structured Notes Architecture Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <main className="container mx-auto px-6">
+      <div className="container mx-auto px-6">
           {/* Asset Comparison Table */}
           <section className="py-20 bg-white">
             <SectionHeading centered subtitle="Understanding where Structured Notes sit in the asset class spectrum.">
@@ -494,60 +408,7 @@ export default function ArchitectureStructuredNotes() {
             </div>
           </section>
 
-          {/* Continue Learning Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="bg-white py-12 border-t border-slate-200">
-            <div className="container mx-auto px-6 text-center">
-              <div className="max-w-3xl mx-auto">
-                <div className="text-slate-400 text-xs tracking-wide">
-                  <div className="grid md:grid-cols-3 gap-8 text-left">
-                    <div>
-                      <h5 className="font-bold text-slate-900 mb-4 uppercase">Reference Materials</h5>
-                      <ul className="space-y-2">
-                        <li>FINRA Alert: Principal Protection</li>
-                        <li>SEC Investor Bulletin: Structured Notes</li>
-                        <li>IRS Original Issue Discount Rules</li>
-                      </ul>
-                    </div>
-                    <div className="md:col-span-2">
-                      <h5 className="font-bold text-slate-900 mb-4 uppercase">Legal Notice</h5>
-                      <p className="leading-loose">
-                        Structured notes are complex financial instruments that are not suitable for all investors. This guide provides an educational framework based on historical analysis and regulatory bulletins. Any investment decision should be made in consultation with a qualified financial advisor after reviewing the official prospectus and pricing supplement for the specific security.
-                      </p>
-                    </div>
-                  </div>
-                  <p className="mt-12 text-center">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </main>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/kmqdUcW.jpeg"
-          alt="Structured Notes Architecture Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

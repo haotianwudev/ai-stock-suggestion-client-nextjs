@@ -1,11 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Ghost, TrendingUp, ShieldAlert, Brain, ArrowRight, Activity, Clock, Target, Zap, BookOpen, Scale, Users, Lightbulb, CheckCircle2, XCircle, Music, FileText, Maximize2, Download } from 'lucide-react';
+import { Ghost, TrendingUp, ShieldAlert, Brain, ArrowRight, Activity, Clock, Target, Zap, BookOpen, Scale, Users, Lightbulb, CheckCircle2, XCircle, Music, Download } from 'lucide-react';
 import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function PhantomTrader() {
   const [activeRule, setActiveRule] = useState<number | null>(null);
@@ -70,88 +68,12 @@ export default function PhantomTrader() {
   ];
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="gift-phantom-trader-psychology-winning-through-losing">
+      <div className="max-w-4xl mx-auto mb-16">
+        <InfographicSlot url="https://i.imgur.com/2t7ko8v.jpeg" alt="The Gift of the Phantom Trader Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white pt-24 pb-32 border-b border-slate-100">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-400 via-violet-500 to-emerald-400"></div>
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-50 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute top-48 -left-24 w-72 h-72 bg-rose-50 rounded-full blur-3xl opacity-50"></div>
-          <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium mb-8">
-              <Ghost className="w-4 h-4" />
-              <span>Based on "Phantom of the Pits"</span>
-            </div>
-            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight mb-8 text-slate-900">
-              The Gift of the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Phantom Trader</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed">
-              Successful trading is not a function of superior knowledge, but of <span className="text-slate-900 font-semibold underline decoration-wavy decoration-indigo-300 decoration-2">superior behavior modification</span>.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/2t7ko8v.jpeg" 
-              alt="The Gift of the Phantom Trader Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/2t7ko8v.jpeg"
-          alt="The Gift of the Phantom Trader Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 py-8">
+      <div className="max-w-5xl mx-auto">
           {/* Origins & Credibility */}
           <section className="py-12 bg-white border-b border-slate-100 rounded-2xl mb-8">
             <div className="max-w-4xl mx-auto px-6 text-center">
@@ -478,23 +400,7 @@ export default function PhantomTrader() {
               )}
             </div>
           </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-12 px-6">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 text-slate-900 font-bold text-lg">
-              <Ghost className="w-6 h-6 text-indigo-600" />
-              <span>Phantom Trader</span>
-            </div>
-            <div className="text-slate-500 text-sm text-center md:text-right">
-              <p>Synthesized from "Phantom of the Pits" & "The Phantom's Gift".</p>
-              <p className="mt-1">Insights originally from Futures Magazine "Futures Talk" Forum.</p>
-              <p className="mt-2">© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            </div>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

@@ -12,6 +12,186 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "options/iron-condor",
+    title: "The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting",
+    articleSlug: "iron-condor-quantitative-delta-neutral-premium-harvesting",
+    date: "2026-01-02",
+    labels: [ArticleLabel.OPTIONS, ArticleLabel.QUANT],
+    summary:
+      "A comprehensive analysis of the Iron Condor strategy, exploring the mathematical edge through variance risk premium, optimal execution parameters, and defensive management techniques. Master the art of selling overpriced volatility while managing the Greeks and structural risks.",
+  },
+  {
+    path: "quant/architecture-structured-notes",
+    title: "The Architecture of Structured Notes",
+    articleSlug: "architecture-structured-notes-comprehensive-investors-guide",
+    date: "2026-01-04",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    summary:
+      "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
+  },
+  {
+    path: "quant/geometry-of-rates",
+    title: "The Geometry of Rates: Principal Component Analysis in Modern Fixed Income Markets",
+    articleSlug: "geometry-of-rates-pca-fixed-income-markets",
+    date: "2026-01-06",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Mastering Principal Component Analysis (PCA) to decode the complex movements of the Fixed Income yield curve. Learn how to transform 30+ correlated yields into 3 independent factors for superior risk management and alpha generation.",
+  },
+  {
+    path: "crypto/bitcoin",
+    title: "The Digital Sovereign (Bitcoin Architecture)",
+    articleSlug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
+    date: "2026-01-12",
+    labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
+    summary:
+      "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
+  },
+  {
+    path: "quant/industrialization-volatility",
+    title: "The Industrialization of Volatility",
+    articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
+    date: "2026-01-08",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive deep research analysis of the operational architecture powering modern volatility-focused hedge funds. From data hygiene and Greek attribution to algorithmic execution and AI-powered deep hedging, explore the systematic framework that transforms market volatility into alpha generation.",
+  },
+  {
+    path: "stock-analysis/optionalpha-select",
+    title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
+    articleSlug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
+    date: "2026-01-10",
+    labels: [ArticleLabel.STOCK_ANALYSIS],
+    summary:
+      "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
+  },
+  {
+    path: "quant/systematic-vs-model",
+    title: "Systematic vs. Model Quantitative Trading",
+    articleSlug: "systematic-vs-model-quantitative-trading-evolution",
+    date: "2026-01-14",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    summary:
+      "A comprehensive deep dive into the fundamental differences between traditional systematic trading and modern model-based quantitative approaches. From deterministic rule-based strategies to probabilistic machine learning models, explore how algorithmic trading has evolved and where the industry is heading.",
+  },
+  {
+    path: "macro/great-decoupling-2026",
+    title: "The Great Decoupling (2026 Macro Analysis)",
+    articleSlug: "great-decoupling-2026-asset-bubble-mathematical-analysis",
+    date: "2026-08-07",
+    labels: [ArticleLabel.MACRO],
+    summary:
+      "A deep dive into the 2026 'Everything Bubble', exploring the Four Pillars of Collapse, the Private Credit Minsky Moment, and scenario predictions ranging from a soft landing to a deflationary crash.",
+  },
+  {
+    path: "option-strategy/single-leg-long-call",
+    title: "The Single-Leg Long Call",
+    articleSlug: "single-leg-long-call-asymmetric-leverage-options-trading",
+    date: "2026-01-16",
+    labels: [ArticleLabel.OPTIONS, ArticleLabel.QUANT],
+    summary:
+      "Master the art of asymmetric leverage with the single-leg long call. Learn why retail traders lose with calls while institutions use them for risk management and capital efficiency. From convexity theory to strike selection strategies.",
+  },
+  {
+    path: "finance101/gift-phantom-trader-psychology-winning-through-losing",
+    title: "The Gift of the Phantom Trader",
+    articleSlug: "gift-phantom-trader-psychology-winning-through-losing",
+    date: "2026-01-20",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.BOOK],
+    summary:
+      "A comprehensive analysis of Art Simpson's legendary trading philosophy from the Futures Magazine forums. Learn the three laws of survival, the 3:2:1 pyramiding ratio, and why successful trading is about superior behavior modification, not superior knowledge.",
+  },
+  {
+    path: "quant/saa-framework",
+    title: "Strategic Asset Allocation Quantitative Framework",
+    articleSlug: "strategic-asset-allocation-quantitative-framework-wealth-preservation",
+    date: "2026-08-07",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive guide to the institutional quantitative framework for Strategic Asset Allocation (SAA). Explores Human Capital integration, macroeconomic regime transitions (Growth & Inflation), and portfolio optimization mathematics like the Black-Litterman model.",
+  },
+  {
+    path: "quant/efficient-frontier-portfolio-optimization-mathematics",
+    title: "The Efficient Frontier",
+    articleSlug: "efficient-frontier-portfolio-optimization-mathematics",
+    date: "2026-01-22",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive deep dive into the mathematics, constraints, and software architecture used by hedge funds to transform raw signals into optimal portfolios. From Markowitz mean-variance optimization to advanced hierarchical risk parity models.",
+  },
+  {
+    path: "quant/black-scholes-analytics-laboratory-axioms-option-pricing",
+    title: "Black-Scholes Analytics",
+    articleSlug: "black-scholes-analytics-laboratory-axioms-option-pricing",
+    date: "2026-01-24",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive masterclass on the Black-Scholes-Merton model - from the stochastic engine of Itô's Lemma to the risk-neutral measure transformation. Master the mathematical axioms, Greek sensitivities, trader heuristics, and structural limitations of the standard ruler for pricing uncertainty.",
+  },
+  {
+    path: "quant/science-robust-alpha-eliminating-overfitting-statistical-validation",
+    title: "The Science of Robust Alpha",
+    articleSlug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
+    date: "2026-01-28",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    summary:
+      "A comprehensive masterclass on Financial Machine Learning (FML). Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive extreme low signal-to-noise environments.",
+  },
+  {
+    path: "quant/asset-allocation",
+    title: "Strategic & Tactical Asset Allocation",
+    articleSlug: "strategic-tactical-asset-allocation-comprehensive-guide",
+    date: "2026-08-07",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive guide to the two primary frameworks for managing asset allocation: Strategic Asset Allocation (SAA) and Tactical Asset Allocation (TAA). Explores modern portfolio theory, sector rotation, and performance attribution analysis.",
+  },
+  {
+    path: "quant/mastering-buffered-yield-strategies-defined-outcome-investing",
+    title: "Mastering Buffered Yield Strategies",
+    articleSlug: "mastering-buffered-yield-strategies-defined-outcome-investing",
+    date: "2026-01-30",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Deconstruct the 'Defined Outcome' trade and learn how to engineer your own risk profile using Options, ETFs, and Structured Notes. Master the Put Spread Collar mechanics, understand the trade-offs between upside caps and downside buffers, and navigate the critical differences between ETFs and Structured Notes.",
+  },
+  {
+    path: "macro/warsh-era",
+    title: "The Warsh Era",
+    articleSlug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
+    date: "2026-02-01",
+    labels: [ArticleLabel.MACRO],
+    summary:
+      "A comprehensive analysis of Kevin Warsh's nomination as Federal Reserve Chair and the paradigm shift from financial dominance to supply-side monetarism.",
+  },
+  {
+    path: "quant/prediction-markets-financialization-truth-complete-trading-guide",
+    title: "Prediction Markets Complete Trading Guide",
+    articleSlug: "prediction-markets-financialization-truth-complete-trading-guide",
+    date: "2026-02-03",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Comprehensive analysis of prediction markets from Kalshi to Polymarket. Learn market mechanics, strategic trading approaches, risk management, and how to profit from the financialization of information.",
+  },
+  {
+    path: "option-strategy/calendar-spreads",
+    title: "Calendar Spread Architecture",
+    articleSlug: "calendar-spread-architecture-time-decay-options-trading",
+    date: "2026-02-07",
+    labels: [ArticleLabel.OPTIONS],
+    summary:
+      "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, and quantitative reality of trading calendars.",
+  },
+  {
+    path: "quant/convergence-analysis-quantitative-finance-measure-theory",
+    title: "Convergence Analysis in Quantitative Finance",
+    articleSlug: "convergence-analysis-quantitative-finance-measure-theory",
+    date: "2026-02-09",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive exploration of functional analysis and convergence modes in quantitative finance. From Banach spaces to stochastic calculus, understand how mathematical limits shape derivative pricing, risk management, and computational methods.",
+  },
+  {
     path: "finance101/li-lu-himalaya",
     title: "Li Lu: Masterclass in Value Investing",
     articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
@@ -79,7 +259,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Investment Clock Framework",
     articleSlug: "investment-clock-framework-quantitative-macro-regime-detection",
     date: "2026-02-15",
-    labels: [ArticleLabel.MARCO, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
     summary:
       "A comprehensive technical analysis of the Investment Clock—a quantitative framework for tactical asset allocation through growth and inflation cycle identification. Includes implementation methodology, statistical validation, and modern market adaptations.",
   },
@@ -385,7 +565,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Structural Dynamics of the U.S. Dollar",
     articleSlug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
     date: "2026-04-21",
-    labels: [ArticleLabel.MARCO, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
     summary:
       "An institutional framework exploring conflicting paradigms of dollar hegemony, quantitative forecasting, and global macro trade execution.",
   },
@@ -448,7 +628,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Decoding the Bond Term Premium",
     articleSlug: "bond-term-premium-fixed-income-dynamics-pricing-models",
     date: "2026-05-06",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
     summary:
       "A comprehensive analysis of fixed income dynamics, pricing models, and portfolio strategy regarding the bond term premium.",
   },
@@ -628,7 +808,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Cross-Asset Contagion",
     articleSlug: "june-2026-cross-asset-contagion",
     date: "2026-06-28",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
     summary:
       "A comprehensive breakdown of macroeconomic catalysts, quantitative deleveraging, and the terminal phase of market overheating. Explore how uncorrelated assets collapsed simultaneously through rigorous structural analysis of Fed policy shifts, geopolitical resolution, and market microstructure vulnerabilities.",
   },
@@ -682,7 +862,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Transient Shock & Disinflation",
     articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
     date: "2026-07-05",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
     summary:
       "A macroeconomic analysis of the 2026 energy shock, exploring why the Strait of Hormuz crisis failed to trigger stagflation. Highlights structural economic resilience, the collapse of breakeven inflation rates, and the hawkish pivot known as the 'Warsh Effect' that reinforced a disinflationary trend.",
   },
@@ -781,7 +961,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Fixed-Income Market Turning Points",
     articleSlug: "quantitative-assessment-fixed-income-market-turning-points",
     date: "2026-08-10",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
     summary:
       "A quantitative framework for identifying structural turning points in fixed-income markets — covering yield curve dynamics, term premium decomposition, the neutral rate (r*), OAS credit spread analysis, and technical signals for bear-market termination.",
   },

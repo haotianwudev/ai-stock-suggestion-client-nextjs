@@ -65,7 +65,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/UcGCi44.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTiJIPSoFj9za65qjVvLGuvIzjsbbwFYw31dQhFS3eNF-M_YGfuxuUurhoGaJXLDu7DcuK-XpfnOIiJ/pub",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
   {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",
@@ -225,7 +225,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/nGzDLC9.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSZ3hTYpbnqCtwVfqcHGD2AqeIfuYoSbaU7842Hp92T1x9i3bGn3Gt47QC4BW0GCn4dZW-WKl16dOiC/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",

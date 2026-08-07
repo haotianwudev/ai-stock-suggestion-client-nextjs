@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, BrainCircuit, Scale, Activity, Search, BookOpen, Code, AlertTriangle, Zap, BarChart2, PieChart, ArrowRight, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, BrainCircuit, Activity, Search, BookOpen, Code, AlertTriangle, Zap, BarChart2, ArrowRight } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -75,92 +72,14 @@ const ComparisonRow = ({ metric, trad, quant }: ComparisonRowProps) => (
 );
 
 export default function SystematicVsModelQuantitativeTrading() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'systematic-vs-model-quantitative-trading-evolution');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'systematic-vs-model-quantitative-trading-evolution'} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="systematic-vs-model-quantitative-trading-evolution">
+      <div className="max-w-4xl mx-auto mb-16">
+        <InfographicSlot alt="Systematic vs Model Quantitative Trading Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-purple-200">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="relative bg-white overflow-hidden border-b border-slate-100">
-          <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-500/20 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 rounded-full bg-gradient-to-tr from-purple-400/20 to-pink-500/20 blur-3xl"></div>
-          
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-medium text-sm mb-6 border border-indigo-100">
-              <BookOpen size={16} />
-              <span>Interactive Trading Research Tutorial</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-8 pb-2">
-              Systematic vs. <br/>Model Quantitative
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed">
-              A deep dive into the evolution of algorithmic trading. From hard-coded logic to stochastic probability models.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/1HBWYfN.jpeg" 
-              alt="Systematic vs Model Quantitative Trading Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/1HBWYfN.jpeg"
-          alt="Systematic vs Model Quantitative Trading Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 py-16">
-          {/* Core Definitions */}
+      <div className="max-w-5xl mx-auto py-16">
+        {/* Core Definitions */}
           <Section>
             <div className="grid md:grid-cols-2 gap-12">
               {/* Traditional Systematic */}
@@ -450,31 +369,7 @@ def model_strategy(asset_a, asset_b):
             </div>
           </Section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-100 py-12 text-center text-slate-400 border-t border-slate-200">
-          <p className="mb-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          <p className="text-sm">Generated for Educational Purposes • React • Tailwind • Lucide</p>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

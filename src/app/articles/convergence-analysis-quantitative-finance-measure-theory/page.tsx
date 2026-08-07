@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { ArrowLeft, BookOpen, TrendingUp, Activity, AlertTriangle, Sigma, Scale, Cpu, ShieldCheck, ArrowRight, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: {
@@ -71,108 +68,13 @@ const ConceptCard = ({ title, content, badge }: {
 
 // --- Main Component ---
 export default function ConvergenceAnalysisArticle() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'convergence-analysis-quantitative-finance-measure-theory');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      if (windowHeight > 0) {
-        setScrollProgress(totalScroll / windowHeight);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#FAFAFA] text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Progress Bar */}
-        <div 
-          className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 transition-all duration-100" 
-          style={{ width: `${scrollProgress * 100}%` }} 
-        />
-
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <header className="relative py-24 px-6 md:px-12 lg:px-24 bg-white border-b border-slate-200 overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50 to-transparent opacity-50 pointer-events-none" />
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="inline-block px-3 py-1 mb-4 bg-indigo-50 text-indigo-700 rounded-full text-xs font-bold tracking-widest uppercase border border-indigo-100">
-              Interactive Research Module
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 font-serif leading-tight">
-              Convergence Analysis in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Quantitative Finance</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-light">
-              From the rigorous foundations of measure theory to the practical pricing of derivatives. Understanding how mathematical limits shape financial reality.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/4ZQR4Ri.jpeg" 
-              alt="Convergence Analysis in Quantitative Finance Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/4ZQR4Ri.jpeg"
-          alt="Convergence Analysis in Quantitative Finance Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-5xl mx-auto px-6 md:px-12 lg:px-24 py-16 space-y-32">
+    <ArticleFrame slug="convergence-analysis-quantitative-finance-measure-theory">
           {/* Section 1: Introduction */}
           <section>
+            <div className="max-w-4xl mx-auto mb-16">
+              <InfographicSlot alt="Convergence Analysis in Quantitative Finance Infographic" />
+            </div>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-serif font-bold mb-6 text-slate-800">The Analytic Bedrock</h2>
@@ -959,46 +861,6 @@ export default function ConvergenceAnalysisArticle() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          {currentArticle?.googleDoc && (
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-                {currentArticle.podcastUrl && (
-                  <a 
-                    href={currentArticle.podcastUrl}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                  >
-                    <Music className="inline mr-2" />
-                    Listen to Podcast
-                  </a>
-                )}
-              </div>
-            </div>
-          )}
-        </main>
-
-        <footer className="bg-slate-900 text-slate-400 py-12 text-center">
-          <div className="max-w-4xl mx-auto px-6">
-            <p className="mb-4 text-lg text-slate-300 font-serif">
-              &quot;The practitioner who ignores these convergence nuances risks deploying models that are unstable.&quot;
-            </p>
-            <p className="text-sm opacity-50">Based on research into Convergence Analysis in Functional Spaces & Measure Theory.</p>
-            <p className="text-sm mt-4">© 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

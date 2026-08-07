@@ -11,7 +11,7 @@ export const articles2026Q2: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS-Gd42WQ1__Nif8Mr6vhdJrLDlS3nGDMe_MGzGgQseEg8ZuSVyUZEOg_W-R1IGERryqZ4N0ZDKaYYc/pub",
     youtubeUrl: "https://youtu.be/i-s0lWdK8LE",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation",
@@ -258,7 +258,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/zfZtnkj.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTbRxbkchJvVvKsDovVzkemlqRhOWeTrCFecWHTfLcEf_drPN8V6G_F1FRkdzW-lcReScrj0Ndx-wmk/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
@@ -344,7 +344,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/JoigFq7.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfHaLGxEDxEEBOl3klVyZwLesY5HIn8oqlEVtqoYfnoOzZXnsBdwsc5qv37breB-4V2dTo_v9aYRie/pub",
-    labels: [ArticleLabel.MARCO, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
   },
   {
     title: "A Quantitative Guide to Calculate The Investment Clock",
@@ -354,7 +354,7 @@ export const articles2026Q2: Article[] = [
     youtubeUrl: "https://youtu.be/Zzi1cuaPs7M",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/Zzi1cuaPs7M/maxresdefault.jpg",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "Investment Clock: Live Macroeconomic Cycle Tracker",
@@ -365,7 +365,7 @@ export const articles2026Q2: Article[] = [
     websiteUrl: "https://www.sophie-ai-finance.com/investment-clock",
     deepResearch: true,
     noSummary: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.MARCO],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
   },
   {
     title: "Advanced Option Rolling Mechanics: Mathematical Frameworks, Volatility Surface Dynamics, and Systematic Implementation",

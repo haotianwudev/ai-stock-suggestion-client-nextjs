@@ -1,12 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, AlertTriangle, CheckCircle, Brain, Target, Shield, FlaskConical, Lightbulb, TrendingUp, Cpu, ChevronRight, Info, BarChart3, Binary, Layers, Search, GraduationCap, History, Settings, Database, Activity, Code, Terminal, FunctionSquare, ArrowRightLeft, Gauge, Zap, Globe, Waves, ZapOff, Scale, Stethoscope, Filter, LineChart, FileSearch, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { Maximize2 } from 'lucide-react';
+import { BookOpen, AlertTriangle, CheckCircle, Brain, Target, Shield, FlaskConical, Lightbulb, TrendingUp, Cpu, ChevronRight, Info, BarChart3, Binary, Layers, Search, GraduationCap, History, Settings, Database, Activity, Code, Terminal, FunctionSquare, ArrowRightLeft, Gauge, Zap, Globe, Waves, ZapOff, Scale, Stethoscope, Filter, LineChart, FileSearch, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 /**
  * --- ROBUST MATH COMPONENT ---
@@ -201,11 +197,6 @@ const StyledTable: React.FC<StyledTableProps> = ({ headers, rows, title, dark = 
 
 /** --- MAIN APPLICATION --- */
 export default function ScienceRobustAlpha() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const currentArticle = articles.find(article => article.slug === 'science-robust-alpha-eliminating-overfitting-statistical-validation');
-
   useEffect(() => {
     // Load KaTeX CSS
     if (!document.getElementById('katex-css')) {
@@ -223,125 +214,14 @@ export default function ScienceRobustAlpha() {
       script.async = true;
       document.body.appendChild(script);
     }
-
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.pageYOffset / totalScroll) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="bg-white min-h-screen font-sans text-gray-900">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'science-robust-alpha-eliminating-overfitting-statistical-validation'} 
-          />
-        </>
-      )}
-
-      {/* Progress Line */}
-      <div className="fixed top-0 left-0 w-full h-1.5 z-[100] bg-gray-50">
-        <div 
-          className="h-full bg-gradient-to-r from-blue-600 via-indigo-500 to-amber-500" 
-          style={{ width: `${scrollProgress}%` }} 
-        />
+    <ArticleFrame slug="science-robust-alpha-eliminating-overfitting-statistical-validation">
+      <div className="max-w-4xl mx-auto mb-16 space-y-8">
+        <InfographicSlot alt="The Science of Robust Alpha Infographic 1" />
+        <InfographicSlot src="https://i.imgur.com/4vYMkDI.jpeg" alt="The Science of Robust Alpha Infographic 2" />
       </div>
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Header */}
-      <header className="relative py-24 md:py-32 bg-slate-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-100/30 skew-x-12 transform origin-top translate-x-32" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600 text-white font-bold text-xs uppercase tracking-widest mb-8">
-            <GraduationCap className="w-4 h-4" /> Comprehensive ML Masterclass
-          </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-6 leading-[1.1]">
-            The Science of <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-              Robust Alpha
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-            Eliminating overfitting through rigorous statistical validation and technical signal extraction.
-          </p>
-        </div>
-      </header>
-
-      {/* Hero Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/N9P4ssC.jpeg" 
-            alt="The Science of Robust Alpha Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/4vYMkDI.jpeg" 
-            alt="The Science of Robust Alpha Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src="https://i.imgur.com/N9P4ssC.jpeg"
-        alt="The Science of Robust Alpha Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
 
       {/* Module 1: The Paradigm */}
       <ModuleSection title="I. The Financial ML Paradigm" icon={BookOpen} color="blue">
@@ -663,38 +543,6 @@ for t in timestamps:
         </div>
       </ModuleSection>
 
-      {/* Call-to-Action Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {currentArticle?.googleDoc && (
-            <a 
-              href={currentArticle.googleDoc}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              <BookOpen className="inline mr-2" />
-              Read Full Research Paper
-            </a>
-          )}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="py-20 text-center bg-slate-50 border-t border-slate-100">
-        <div className="container mx-auto px-6">
-          <p className="text-slate-400 text-sm italic mb-4">
-            "Overfitting is the default state. Your only edge is the rigor of your process."
-          </p>
-          <div className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">
-            Research Series 2.6.1 • Academic Distribution
-          </div>
-          <div className="text-xs text-slate-400 mt-4">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </div>
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

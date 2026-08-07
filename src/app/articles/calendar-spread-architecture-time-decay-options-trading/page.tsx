@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+// Next/Link removed
 import { ArrowLeft, Clock, Activity, TrendingUp, AlertTriangle, Shield, BookOpen, Target, Zap, TrendingDown, Percent, Calendar, Layers, CheckCircle, XCircle, Info, ArrowRight, Maximize2, RefreshCw, Anchor, Music, Calculator, BarChart3, TrendingDown as TrendDown } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const CalendarSpreadGuide = () => {
-  const currentArticle = articles.find(article => article.slug === 'calendar-spread-architecture-time-decay-options-trading');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  
+  
   
   // Calculator states
   const [stockPrice, setStockPrice] = useState(100);
@@ -40,95 +38,10 @@ const CalendarSpreadGuide = () => {
   const pnlData = calculatePnL();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Badges */}
-      <div className="absolute top-8 left-8 z-20">
-        <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-          Deep Research
-        </span>
-      </div>
-      <div className="absolute top-8 right-8 z-20">
-        <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-          Options Trading
-        </span>
-      </div>
-
-      {/* Hero Section */}
-      <header className="relative overflow-hidden bg-white border-b border-slate-200">
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500"></div>
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute top-1/2 -left-24 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-        <div className="max-w-5xl mx-auto px-6 py-20 relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold mb-6 border border-indigo-100">
-            <Layers size={14} />
-            <span>Options Strategy Series</span>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Calendar Spread</span> Architecture
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed">
-            A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Long time, long volatility.
-          </p>
-        </div>
-      </header>
-
-      {/* Hero Infographic with Full-Screen Capability */}
+    <ArticleFrame slug="calendar-spread-architecture-time-decay-options-trading">
       <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/I4TjHJ7.jpeg" 
-            alt="Calendar Spread Architecture Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
+        <InfographicSlot alt="Calendar Spread Architecture Infographic" />
       </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/I4TjHJ7.jpeg"
-        alt="Calendar Spread Architecture Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
 
       {/* Interactive Calculator Section */}
       <section className="max-w-5xl mx-auto px-6 py-8">
@@ -826,45 +739,7 @@ const CalendarSpreadGuide = () => {
         </div>
       </section>
 
-      {/* Call to Action - Google Doc */}
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 max-w-5xl mx-auto text-center">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {currentArticle?.googleDoc && (
-            <a 
-              href={currentArticle.googleDoc}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              <BookOpen className="inline mr-2" />
-              Read Full Research Paper
-            </a>
-          )}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-12 px-6 mt-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-          <div>
-            <h4 className="font-bold text-slate-900 mb-4">Summary</h4>
-            <ul className="space-y-2 text-slate-600 text-sm">
-              <li>• Best for: Low volatility, range-bound markets</li>
-              <li>• Key Metric: Net Positive Theta</li>
-              <li>• Asset Class: Indices (SPX) preferred over Stocks</li>
-            </ul>
-          </div>
-          <div className="text-right text-slate-500 text-sm">
-            <p className="mb-2">Synthesized from ORATS, Spintwig, and CBOE research.</p>
-            <p className="opacity-70 italic">Disclaimer: Options trading involves substantial risk of loss. This is for educational purposes only.</p>
-          </div>
-        </div>
-        <div className="text-center mt-8 text-slate-500 text-sm">
-          © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 };
 

@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Shield, TrendingUp, DollarSign, Activity, Layers, Lock, BarChart3, PieChart, AlertTriangle, CheckCircle, Info, BookOpen, Calculator, Clock, MousePointerClick, XCircle, ArrowRight, Settings, Scale, FileText, Banknote, Calendar, RefreshCw, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { Shield, TrendingUp, DollarSign, Activity, Layers, Lock, BarChart3, PieChart, AlertTriangle, CheckCircle, Info, BookOpen, Calculator, Clock, MousePointerClick, XCircle, ArrowRight, Settings, Scale, FileText, Banknote, Calendar, RefreshCw, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable UI Components ---
 interface SectionProps {
@@ -659,89 +656,11 @@ const ScenarioTable = () => {
 };
 
 export default function BufferedYieldStrategiesArticle() {
-  const currentArticle = articles.find(article => article.slug === 'mastering-buffered-yield-strategies-defined-outcome-investing');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || 'Mastering Buffered Yield Strategies'} 
-            articleSlug={currentArticle.slug || 'mastering-buffered-yield-strategies-defined-outcome-investing'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-900 pb-32">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Header */}
-        <div className="bg-white border-b border-slate-200 pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold tracking-wide mb-8 shadow-sm border border-indigo-100">
-              <BookOpen size={16} />
-              <span>ADVANCED STRATEGY GUIDE</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight">
-              Mastering <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-rose-500">Buffered Yield Strategies</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Deconstruct the "Defined Outcome" trade. Learn how to engineer your own risk profile using Options, ETFs, and Structured Notes.
-            </p>
+    <ArticleFrame slug="mastering-buffered-yield-strategies-defined-outcome-investing">
+          <div className="max-w-4xl mx-auto mb-16">
+            <InfographicSlot alt="Buffered Yield Strategies Infographic" />
           </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/2I6QQmG.jpeg" 
-              alt="Buffered Yield Strategies Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/2I6QQmG.jpeg"
-          alt="Buffered Yield Strategies Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content Container */}
-        <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-10 space-y-12">
           {/* Executive Summary */}
           <div className="bg-white rounded-2xl shadow-xl p-10 border border-slate-100">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">What is a Buffered Strategy?</h2>
@@ -906,41 +825,6 @@ export default function BufferedYieldStrategiesArticle() {
             </div>
           </Section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 py-16 mt-20">
-          <div className="max-w-5xl mx-auto px-4 text-center">
-            <div className="flex justify-center items-center gap-2 mb-6 text-indigo-400 font-bold text-xl">
-              <Shield size={24} />
-              <span>SOPHIE's Daddy Quant Blog</span>
-            </div>
-            <p className="mb-8 text-slate-500 max-w-xl mx-auto">
-              This educational tool simplifies complex derivative strategies. Always consult a prospectus before trading ETFs or Structured Notes.
-            </p>
-            <div className="mt-12 text-xs text-slate-600">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

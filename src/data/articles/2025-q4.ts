@@ -1,7 +1,16 @@
 import { Article, ArticleLabel } from './types';
 
 export const articles2025Q4: Article[] = [
-{
+  {
+    title: "2026 Market Outlook: Surviving Stagflation Lite, The AI Energy Wall & The OBBBA Tax Shock",
+    description: "The global economy is hitting a pivotal inflection point in 2026. This video breaks down the regime of Stagflation Lite, where growth remains resilient but inflation stays stubbornly above target due to the new One Big Beautiful Bill Act (OBBBA) and aggressive tariff policies.",
+    date: "January 1, 2026",
+    youtubeUrl: "https://youtu.be/oY2XSiVxYtQ",
+    isVideo: true,
+    imageUrl: "https://img.youtube.com/vi/oY2XSiVxYtQ/maxresdefault.jpg",
+    labels: [ArticleLabel.MACRO],
+  },
+  {
     title: "Navigating the 2026 Shift: A Comprehensive Macro Economic Outlook",
     description: "As we exit the post-pandemic recovery phase, 2026 presents a unique paradox: slowing growth meets sticky inflation. A comprehensive analysis of the Great Normalization, exploring stagflationary pressures, protectionist policies, and strategic investment positioning for the year ahead.",
     slug: "navigating-2026-shift-comprehensive-macro-economic-outlook",
@@ -10,18 +19,18 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgVz7tn0HDMAVIzkJJHFXLaEuUmSv9Ag16gG1cAPbyIY4jx6sqbGZThKT3TbohbGwOM5TsDe8G1paF/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5oRuR59t5LjAvMkxdAnGLu?si=cruOlJMpRP25yWdc5uti2A",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "2025 Market Rewind: A Chaotic Soft Landing",
     description: "Join us for a forensic retrospective of 2025, the Year of the Great Pivot, where the financial markets violently ruptured from the trends of the early 2020s.",
     date: "December 30, 2025",
     youtubeUrl: "https://youtu.be/bt2O3ngqI_8",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/bt2O3ngqI_8/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading",
     description: "A comprehensive analysis of 2025's most market-moving events, from the DeepSeek efficiency shock to the gold super-cycle. Explore the tactical playbook that emerged from tariff threats, AI capex fatigue, and the death of linear market narratives.",
     slug: "2025-financial-market-retrospective-seven-pivotal-events",
@@ -29,9 +38,9 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/FlVMnGq.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub",
     deepResearch: true,
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "Options Tutorial Year End Summary: When to Trade, and When NOT to Trade",
     description: "Unlock the asymmetric power of options, from hedging portfolio risk to generating income with the Wheel strategy. This guide breaks down the critical difference between using options as insurance via protective puts versus leveraging capital through speculation.",
     date: "December 28, 2025",
@@ -41,7 +50,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/brQbdu19cbw/maxresdefault.jpg",
     options: true,
   },
-{
+  {
     title: "Strategic Options Utilization & Risk: A Comprehensive Framework for When to Deploy and When to Avoid Derivatives",
     description: "A comprehensive framework for understanding when to deploy options for hedging, income, and speculation—and crucially, when to avoid them to preserve capital. Master the anatomy of contracts, order mechanics, the Greeks, and strategic deployment across four pillars: hedging, income generation, speculation, and volatility trading.",
     slug: "strategic-options-utilization-risk-comprehensive-framework",
@@ -52,7 +61,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6HLhQ0jGswN8PR9CyHlRsu?si=53MGBBoDQYG5yV4pSw_RLg",
     options: true,
   },
-{
+  {
     title: "Measuring Strategy Performance Quantitatively",
     description: "Is your fund manager actually skilled, or just benefiting from market timing? This video decodes the architecture of performance evaluation, explaining why raw percentage returns are meaningless without context. ",
     date: "December 26, 2025",
@@ -62,7 +71,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/WBUxNZZzwnY/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics",
     description: "From Alpha generation to handling complex cash flows, understand the metrics that matter. Master Sharpe ratios, Sortino ratios, time-weighted vs money-weighted returns, and the art of benchmark selection for evaluating hedge fund strategies.",
     slug: "measuring-immeasurable-hedge-fund-performance-metrics",
@@ -72,7 +81,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLF6YOjvadQ0NUUS0YvAYK1HmyAUtpS-iFVYbE3espsZOasOv5qjfkalz9X6pOqoDUSPDalwJiXdEB/pub",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "What is Web3: The Read-Write-Own Financial Revolution Explained",
     description: "What is Web3, and how is it rewriting the rules of the global financial system? This video explores the shift from the centralized Read-Write era of Web 2.0 to the decentralized Read-Write-Own architecture of Web3.",
     date: "December 24, 2025",
@@ -81,7 +90,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/aViyh1n08v4/maxresdefault.jpg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
     description: "Web3 represents a fundamental paradigm shift towards a 'Read-Write-Own' internet built on blockchain, smart contracts, and cryptography. Explore how DeFi is transforming retail investors from passive consumers into active participants and co-owners of market infrastructure.",
     slug: "web3-revolution-defi-retail-investors",
@@ -91,7 +100,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.AI_ML, ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Understanding DSPX: Market Divergence and Volatility Decomposition",
     description: "The Cboe S&P 500 Dispersion Index (DSPX) represents a paradigm shift in measuring market mechanics, moving beyond the systematic risk captured by the traditional VIX.",
     date: "December 23, 2025",
@@ -100,7 +109,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/1tN9LuKi3Os/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
     description: "While VIX measures how much the market fears a storm, DSPX measures how differently the ships are steering. A comprehensive deep research analysis of the Cboe S&P 500 Dispersion Index—the critical metric for understanding implied correlation, idiosyncratic risk, and the opportunity landscape for stock pickers versus passive indexers.",
     slug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
@@ -110,7 +119,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Why are Put Options So Expensive?",
     description: "In this deep dive into the Single Leg Long Put strategy, we unpack one of the most powerful yet misunderstood instruments in financial markets. Learn why the long put offers asymmetric utility with defined risk and potentially unlimited reward, and discover the structural forces that make these options expensive.",
     date: "December 21, 2025",
@@ -120,7 +129,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     imageUrl: "https://img.youtube.com/vi/X2IJngJv4G0/maxresdefault.jpg",
   },
-{
+  {
     title: "The Single Leg Long Put: Asymmetric Utility in Options Trading",
     description: "The definitive instrument for asymmetric utility. Master the art of profiting from decline and hedging catastrophic tail risk through single leg long puts. A comprehensive deep research analysis exploring the mechanics, Greeks, strategic motivations, market demographics, and the structural 'crash premium' that makes puts expensive.",
     slug: "single-leg-put-strategy-asymmetric-utility",
@@ -131,7 +140,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/28qBfNSza5WcYKEsfdPbP1?si=7a3741854f374aeb",
     options: true,
   },
-{
+  {
     title: "Inside the Alpha Factory: How WorldQuant Industrialized Quant Trading",
     description: "Discover how WorldQuant redefined quantitative investing by turning alpha from a rare skill into a mass-produced commodity. This video breaks down the Alpha Factory—an industrial-scale engine designed to mine millions of predictive signals.",
     slug: "worldquant-alpha-factor",
@@ -141,7 +150,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/L0aVoPLqcFw/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
     description: "A comprehensive deep research analysis of WorldQuant's revolutionary 'Alpha Factory' system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.",
     slug: "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
@@ -151,7 +160,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfVUDR6-Tcq29BcC0ZoePDr5Q5ln5LFwY-o6Vj0aD3wGzjTyBPWOxGujq5sLSMSJ_ihykDy6QlwVuV/pub",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Mastering S&P 500 & Nasdaq Index Futures: ES & NQ",
     description: "Dive deep into the arterial channels of the global financial markets: the E-mini S&P 500 (ES) and Nasdaq-100 (NQ) futures. This comprehensive guide analyzes the architecture of modern equity exposure, explaining how these instruments act as the world’s fear gauge and operate virtually 24 hours a day.",
     date: "December 17, 2025",
@@ -160,7 +169,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/EbvI5T_P4Yg/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "ES & NQ Futures: The Engine Room of the Global Economy",
     description: "A comprehensive technical guide to S&P 500 and Nasdaq-100 E-mini futures for investors, traders, and observers. Master contract specifications, the micro revolution democratizing futures access, market structure, critical pitfalls, and the strategic utility of futures as economic dashboard indicators.",
     slug: "es-nq-futures-engine-room-global-economy",
@@ -170,7 +179,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "The Buffett Option Strategy: Selling LEAP Puts",
     description: "Most investors think selling options is just about collecting income through time decay, but selling long-term LEAP puts is a completely different animal. This video deconstructs the institutional mechanics of selling LEAP puts, explaining why they are mathematically the antithesis of the standard monthly income strategy.",
     slug: "sell-leaps-put",
@@ -180,7 +189,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     imageUrl: "https://img.youtube.com/vi/pdfm0osP4Ow/maxresdefault.jpg",
   },
-{
+  {
     title: "Selling Long-Dated Put Options (LEAPs): Institutional Mechanics, Volatility Arbitrage, and the Retail Traps",
     description: "A comprehensive analysis of LEAP puts as instruments for strategic acquisition and volatility arbitrage, distinct from short-term income strategies. Explores the Greek profile dominance of Vega over Theta, institutional applications from Buffett's acquisition strategy to dividend arbitrage counterparties, and the quantitative pitfalls of illiquidity, capital inefficiency, and the Vega time bomb that destroy retail value.",
     slug: "selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage",
@@ -190,7 +199,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
   },
-{
+  {
     title: "Monte Carlo Simulation for Quant Finance EP 3: Pricing the Unpriceable",
     description: "Dive into the mathematical engine of modern quantitative finance: Monte Carlo simulation. While closed-form models like Black-Scholes work for vanilla options, they fail when handling the complex features of exotic derivatives. ",
     date: "December 12, 2025",
@@ -200,7 +209,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/nBAnWHAzD6I/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Monte Carlo Simulation for Derivative Pricing",
     description: "An overview of the numerical techniques and stochastic models essential for pricing exotic derivatives and managing XVA risk. Explore jump-diffusion processes, stochastic volatility frameworks, and nested simulation for CVA.",
     slug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
@@ -210,7 +219,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Trusts Explained: Revocable vs. Irrevocable, Costs, & Why You Need One",
     description: "Think trusts are only for the ultra-wealthy? Think again. A trust is a powerful estate planning tool that offers benefits far beyond what a simple will can provide. In this video, we break down exactly how trusts work, the key differences between Revocable and Irrevocable trusts, and how to determine if you need one to protect your family and assets.",
     date: "December 10, 2025",
@@ -219,7 +228,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/_HHOkj3iFco/maxresdefault.jpg",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
     description: "Master the power of trusts—a dynamic framework for managing, protecting, and transferring wealth across generations. Explore the anatomy of trusts, revocable vs. irrevocable structures, specialized trust types, strategic advantages, and practical implementation guidance for securing your financial legacy.",
     slug: "comprehensive-guide-trusts-estate-planning",
@@ -229,16 +238,16 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "The Grey Rhino: How Japan’s Rate Hike & US QE Broke the Global Carry Trade (2025 Crisis)",
     description: "As the global financial architecture shifts in late 2025, a structural rupture is underway. This video analyzes the Grey Rhino—the collision of Japanese policy normalization and US monetary re-expansion.",
     date: "December 8, 2025",
     youtubeUrl: "https://youtu.be/zhCdnpC3eag",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/zhCdnpC3eag/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind",
     description: "A comprehensive analysis of the Bessent Hypothesis examining how the Bank of Japan's rate hikes colliding with US Federal Reserve easing could trigger a historic unwind of the $20 trillion Yen Carry Trade. Explores the structural shift in global liquidity, the anatomy of the doom loop, and sector-specific implications for investors navigating this grey rhino event.",
     slug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
@@ -246,9 +255,9 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://i.imgur.com/oyqfzgL.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRJOwkRSpdTDEXDsMu6BMhia2EkzosRPCqPAzGT-qofQgqNY4di6sosdDIzEZXszWip_TpA5-JAkbp8/pub",
     deepResearch: true,
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "The Secret Map of the Market: How Gamma Exposure (GEX) Controls Price",
     description: "Stop trading blindly based on past price history and start looking at the invisible lines of support and resistance defined by institutional capital. In this video, we break down Gamma Exposure (GEX)—the metric that reveals the structural liability of Market Makers.",
     date: "December 6, 2025",
@@ -259,7 +268,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/t_5yWuxn0WY/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Gamma Exposure (GEX): The GPS of Market Volatility",
     description: "The definitive guide to understanding Gamma Exposure—the hidden force that determines whether markets stabilize or explode. Learn how Market Makers' hedging flows create invisible support and resistance levels, and master the strategies to trade positive vs negative gamma regimes.",
     slug: "gamma-exposure-gex-gps-market-volatility",
@@ -271,7 +280,7 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/t_5yWuxn0WY",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Monte Carlo Simulation EP2: Trading Robustness Validation",
     description: "Is your trading strategy actually robust, or did it just get lucky on a single historical path? In this video, we explore the epistemological crisis of backtesting and why relying on a single equity curve often leads to overfitting and future failure,. We dive deep into Monte Carlo simulations to stress-test your algorithms against thousands of alternative market realities.",
     date: "December 4, 2025",
@@ -281,7 +290,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/sA57KkA-v-Q/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Monte Carlo Simulation for Quant Trading Robustness",
     description: "A comprehensive framework for validating quantitative trading strategies through Monte Carlo simulation. Explores IID Bootstrap, Block Bootstrap, Permutation, and Surrogate Data methods to quantify the Probability of Backtest Overfitting (PBO), estimate true drawdown distributions, and calculate Deflated Sharpe Ratios for robust strategy deployment.",
     slug: "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
@@ -291,7 +300,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS8p38E8rMXs3x5o96emoQqgiNEokrC2RxsQncu0t8-8iv904RXUZzTyBoiVGqE_ZdM0FL7rUFvOe5V/pub",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Can you TRUST Analyst Ratings (Buy/Hold/Sell)  on Wall Street?",
     description: "The sell-side equity research ecosystem serves as a critical information intermediary in public markets, yet it is inherently conflicted. This video explores the structural biases, quantitative limitations, and strategic utility of analyst ratings and price targets.",
     date: "December 2, 2025",
@@ -300,7 +309,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/G3s64sExKpg/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research",
     description: "Target prices are not predictions—they are marketing tools. A forensic guide to TipRanks, Bloomberg, and the epistemology of Wall Street research. Explore the conflict engine, platform wars, leverage traps, and tactical strategies for the intelligent investor navigating analyst consensus.",
     slug: "decoding-analyst-consensus-target-prices-conflicts-epistemology",
@@ -311,7 +320,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6YJIf7dNTVTxiDFnGA4LLJ?si=enOoYGFmTTi0n_Z23tZ_Uw",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Most popular income strategy: All about options on SPX and popular option writing ETFs",
     description: "This video provides an institutional deep-dive into systematic option writing on the S&P 500 Index (SPX), a strategy based on harvesting the persistent Volatility Risk Premium (VRP). The VRP exists because implied volatility consistently overestimates realized volatility. We compare the three main instruments used to trade S&P 500 options: SPX, XSP, and SPY.",
     slug: "spx-option-underlyer",
@@ -321,7 +330,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     imageUrl: "https://img.youtube.com/vi/yThUZBJWKPM/maxresdefault.jpg",
   },
-{
+  {
     title: "Mastering the Volatility Risk Premium: A Comprehensive Guide to SPX Options Selling",
     description: "An institutional-grade deep dive into selling SPX options to harvest the Volatility Risk Premium. Understand why institutions structurally overpay for protection, compare SPX vs XSP vs SPY instruments, master tax optimization with Section 1256, and discover the optimal strategy for your capital level and risk tolerance.",
     slug: "mastering-volatility-risk-premium-spx-options-selling",
@@ -331,7 +340,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
   },
-{
+  {
     title: "Monte Carlo Simulation for Quant Finance EP 1: Risk Management",
     description: "Monte Carlo Simulation (MCS) is a numerical technique devised to estimate the possible outcomes of an uncertain event by accounting for random variables. It was developed by mathematicians Stanislaw Ulam and John Von Neumann and is named after the famous Monaco casino, symbolizing the element of chance inherent in the calculations.",
     date: "November 27, 2025",
@@ -341,7 +350,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/5gA1ifx7wPg/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Monte Carlo Simulation for Quant Finance Overview",
     description: "A comprehensive deep research analysis of Monte Carlo simulation as the cornerstone of modern quantitative finance. Explores stochastic differential equations, variance reduction techniques, risk management applications, and the critical limitations in capturing alpha—providing a rigorous framework for derivative pricing, VaR/CVaR calculation, and algorithmic strategy validation.",
     slug: "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
@@ -351,7 +360,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQQKNAELVon2-aHvD3z3Kx8Y-ltrh9d8kLO4ZZRPfbO35-yGiYfvXuZn9Y3HNtuh18vT5-l0GNrGx81/pub",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Tax-Loss Harvesting Strategy Explained: Cut Taxes, Boost Returns, and Avoid the Wash-Sale Rule",
     description: "Learn the strategic imperative of Tax-Loss Harvesting (TLH), a sophisticated portfolio management discipline designed to enhance an investor's after-tax returns. TLH is the practice of intentionally selling securities at a loss in taxable investment accounts to offset capital gains taxes and up to $3,000 of ordinary income. ",
     date: "November 25, 2025",
@@ -360,7 +369,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/DtF2uyr2Uus/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
     description: "A comprehensive deep research analysis of tax-loss harvesting as a sophisticated portfolio management discipline. Explores strategic implementation, wash-sale rule compliance, replacement security selection, and advanced techniques including direct indexing and automated execution for maximizing after-tax returns.",
     slug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
@@ -371,7 +380,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "NVIDIA's PARADOX: The 'Perfect' Earnings That Sparked a Sell-Off",
     description: "Despite delivering exemplary Q3 FY2026 financial results, including 57.01billion in revenue, NVIDIA experienced a significant pop-and-drop sequence, leading to a sharp sell-off of over 3%. ",
     date: "November 23, 2025",
@@ -380,7 +389,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/hkpuKl-ucd4/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation",
     description: "A comprehensive quantitative analysis of NVIDIA's Q3 FY26 earnings, exploring the 'pricing for perfection' phenomenon, Michael Burry's short thesis, the Blackwell supercycle, and strategic implications for retail investors navigating the AI semiconductor landscape.",
     slug: "nvidia-deep-dive-crush-despite-beat-analyzing-valuation",
@@ -390,7 +399,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub",
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "The Volatility Risk Premium (VRP): How to Systematically Earn the Fear Premium by Selling Options",
     description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
     date: "November 22, 2025",
@@ -401,7 +410,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
     description: "A comprehensive deep research analysis of the Volatility Risk Premium (VRP)—the persistent tendency for implied volatility to exceed realized volatility. Explores the economic foundations, academic research, quantitative measurement techniques, and practical harvesting strategies from retail vertical spreads to institutional variance swaps.",
     slug: "demystifying-volatility-risk-premium-theory-measurement-trading",
@@ -412,7 +421,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Deep Learning Evolution in Quant Trading: From MLP to Transformers",
     description: "This technical survey charts the evolution of deep learning (DL) in quantitative trading, starting from traditional linear econometric models like ARIMA and GARCH, which failed to capture market non-linearity.",
     date: "November 21, 2025",
@@ -422,7 +431,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/s0Z3pl8DFDA/maxresdefault.jpg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Evolution of Deep Learning in Quantitative Trading: From MLPs to Transformers",
     description: "A comprehensive technical survey charting the evolution from traditional econometric models to sophisticated deep neural networks in quantitative finance. Explores MLPs, LSTMs, CNNs, Autoencoders, Deep Reinforcement Learning, GNNs, and Transformers—analyzing their unique properties, applications in trading, and critical limitations in high-noise, non-stationary financial markets.",
     slug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
@@ -432,7 +441,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
-{
+  {
     title: "David Tepper’s Barbell:  Q3 2025 Portfolio Dissection",
     description: "Dive deep into David Tepper’s Q3 2025 portfolio moves, which reveal a perfect, modern synthesis of his contrarian career. Appaloosa Management deployed capital into a unique $7.38 billion barbell strategy, balancing high-growth technology bets with classic distressed bottom-fishing plays.",
     date: "November 19, 2025",
@@ -441,7 +450,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/pGO7nYdHCT0/maxresdefault.jpg",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
     description: "An exhaustive analysis of David Tepper's investment philosophy, legendary trades, and Q3 2025 portfolio moves. From his $7 billion 2009 crisis trade to his latest contrarian bets on Whirlpool and American Airlines, explore the four pillars of the Appaloosa doctrine and actionable lessons for investors.",
     slug: "david-tepper-contrarian-master-q3-2025-portfolio",
@@ -451,7 +460,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "Druckenmiller's Q32025 13F Major Shift: The Bessent Edge, AI Rotation, & 30% Healthcare Bet",
     description: "Stanley Druckenmiller’s Duquesne Family Office Q3 2025 13F filing (for the period ending September 30, 2025) reveals a portfolio in aggressive transition, executing a classic, high-conviction investment philosophy. The portfolio saw an exceptionally high turnover rate of 63.27%.",
     date: "November 17, 2025",
@@ -460,7 +469,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/rXKGJGI4hvQ/maxresdefault.jpg",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
     description: "A deep dive into Stanley Druckenmiller's Q3 2025 portfolio reveals a masterclass in aggressive rotation, high-conviction concentration, and macro insights influenced by a unique 'Duquesne-Treasury Corridor.' Explore the 63% turnover, massive healthcare bet, and the strategic implications of the Bessent connection.",
     slug: "druckenmiller-q3-2025-rotation-conviction-bessent-edge",
@@ -471,7 +480,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/415h1tKoMHcPUHbdkNYxWW?si=LE96YtzTQkOVFl4Cv_tKag",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "Profit from Time Decay & IV Crush: Mastering Short Straddles and Strangles",
     description: "This comprehensive guide dissects the short straddle and short strangle, sophisticated options strategies designed to profit from the statistical tendency of implied volatility (IV) to consistently exceed realized volatility (RV)—a phenomenon known as the Volatility Risk Premium (VRP). ",
     slug: "short-straddle-strangle",
@@ -481,7 +490,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/AtRXXgVRtlk/maxresdefault.jpg",
     options: true
   },
-{
+  {
     title: "Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection",
     description: "A comprehensive quantitative framework for profiting from the Volatility Risk Premium through short straddles and strangles. Master the Greeks, position sizing, optimal market conditions, and defensive adjustments for harvesting theta decay while managing gamma risk in systematic options selling strategies.",
     slug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
@@ -491,7 +500,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
     options: true
   },
-{
+  {
     title: "Signal in the Noise: Quantitative Trading Filtering Techniques Explained",
     description: "This video provides a comprehensive analysis of filtering techniques essential for quantitative trading, focusing on the fundamental challenge of separating meaningful information from random, irrelevant data in notoriously low signal-to-noise ratio (SNR) financial markets. ",
     date: "November 14, 2025",
@@ -501,7 +510,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/xtwugnNA6Ac/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Signal in the Noise: A Comprehensive Analysis of Filtering Techniques in Quantitative Trading",
     description: "A deep dive into the mathematical and computational techniques used in quantitative finance to extract durable, predictive patterns from chaotic market data. Explores moving averages, Kalman filters, Butterworth filters, HP filters, and their synergy with machine learning for robust alpha generation.",
     slug: "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
@@ -511,7 +520,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The ETFs That CRUSH QQQ & VOO Returns. Are they Better Choices?",
     description: "This video provides an institutional analysis of high-growth Exchange-Traded Funds (ETFs) that have historically delivered superior long-term returns compared to benchmarks like the Invesco QQQ Trust (QQQ) and S&P 500 trackers (VOO/SPY). ",
     slug: "etf-other-than-qqq",
@@ -521,7 +530,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/WTQIQb1TLns/maxresdefault.jpg",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
     description: "An institutional analysis of high-growth ETF alternatives to QQQ and VOO/SPY, exploring the trade-offs between performance and risk. Examines concentration risk, narrative traps, and the popularity paradox that keeps investors anchored to traditional benchmarks despite superior alternatives.",
     slug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
@@ -531,7 +540,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Warren Buffett's Final Letter: Good Bye Buffett! Is Birkshire a Good Buy?",
     description: "Warren Buffett, 95, has formally transitioned out of his CEO role, releasing his final shareholder communication on November 10, 2025.",
     slug: "warren-buffett-goodbuy",
@@ -541,7 +550,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/ptZstN8sTVQ/maxresdefault.jpg",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
     description: "A comprehensive deep research analysis of Warren Buffett's 'goodbye letter,' the succession plan with Greg Abel as CEO, and Berkshire's $382B fortress balance sheet. Explores the triumvirate leadership structure, the insurance float model, and the investment thesis for the post-Buffett era.",
     slug: "buffett-legacy-berkshire-succession",
@@ -551,7 +560,7 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "Tesla's $8.5 Trillion AI Gamble: Why the 319x P/E Ratio Ignores the Auto Crisis",
     description: "This quantitative report analyzes Tesla, Inc. (TSLA) following Q3 2025, revealing a severe disconnect between its fundamentals and its equity valuation. ",
     slug: "tesla-plan",
@@ -561,7 +570,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/TcGcYSa-aSQ/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
     description: "A comprehensive deep research analysis of Tesla's fundamental disconnect between its auto business and AI/robotics valuation. Explores the strategic moats, existential threats from Chinese EVs, the stalled AI execution, and the binary investment thesis that makes TSLA a high-risk moonshot rather than an auto manufacturer.",
     slug: "tesla-tsla-fundamental-dashboard-ai-binary-bet",
@@ -571,7 +580,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "Option Greeks' Poem: Mastering Delta, Gamma, Theta, Vega for Professional Risk Management",
     description: "This expert guide explains Option Greeks—Delta (Δ), Gamma (Γ), Theta (θ), Vega (ν), and Rho (ρ)—which function as an indispensable dashboard for understanding option price sensitivity and managing risk. Learn the core principle and intuitive poem for each.",
     slug: "option-greeks-poem",
@@ -582,7 +591,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
     description: "A comprehensive deep research analysis of the five Option Greeks through poetry and practical application. Master Delta, Gamma, Theta, Vega, and Rho with intuitive explanations, trading strategies, and interactive visualizations that transform complex derivatives concepts into actionable trading knowledge.",
     slug: "option-greeks-traders-poetic-guide-risk",
@@ -593,7 +602,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Ray Dalio's All Weather Strategy: Is risk parity still a holy grail or failed already today?",
     description: "The All Weather strategy, developed by Ray Dalio and Bridgewater Associates, is a foundational shift in portfolio construction, moving away from prediction toward structural resilience. Its core is built on intellectual humility and the Risk Parity approach, ensuring no single economic environment or asset class dominates the portfolio's overall volatility. ",
     slug: "all-weather-strategy",
@@ -601,9 +610,9 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/NCVI6IDwz2c",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/NCVI6IDwz2c/maxresdefault.jpg",
-    labels: [ArticleLabel.FINANCE101, ArticleLabel.MARCO],
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.MACRO],
   },
-{
+  {
     title: "The All Weather Strategy in a New Economic Climate",
     description: "An in-depth analysis of Ray Dalio's All Weather strategy, examining its resilience, relevance, and application for modern investors. Explores the four seasons framework, risk parity principles, historical performance, and strategic adaptations for today's inflationary environment.",
     slug: "all-weather-strategy-new-economic-climate",
@@ -611,9 +620,9 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://mixprize.org/wp-content/uploads/2022/12/Ray-Dalios-All-Weather-Portfolio-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub",
     deepResearch: true,
-    labels: [ArticleLabel.FINANCE101, ArticleLabel.MARCO],
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.MACRO],
   },
-{
+  {
     title: "Michael Burry's AI Short Shock the market: Circular Financing Against Nvidia & Palantir(Q3 2025 13F)",
     description: "Q3 2025 portfolio shift executed by Michael Burry’s Scion Asset Management, totaling $1.38 billion in reported assets. This shift involved the complete liquidation of all bullish call options from the prior quarter and the establishment of a concentrated, two-part strategy.",
     slug: "mike-burry-q32025",
@@ -623,7 +632,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/UAS_tTCbWD4/maxresdefault.jpg",
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot",
     description: "A comprehensive deep research analysis of Scion Asset Management's strategic shift from bullish tech positions to a concentrated $1.1B short against AI leaders Nvidia and Palantir. Explores the 'circular financing' thesis, anti-bubble portfolio construction, and market implications of Burry's most concentrated bet since the 2008 housing crisis.",
     slug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
@@ -633,7 +642,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FORM13F],
   },
-{
+  {
     title: "The Retirement Insurance: Are Annuities & LTC Worth the Cost?",
     description: "Drawing on a quantitative analysis of retirement insurance products, this video breaks down the financial trade-offs of annuities, long-term care (LTC) insurance, and permanent life insurance (LIRP). These products are fundamentally tools for risk mitigation, not pure investments.",
     slug: "retirement-insurance",
@@ -643,7 +652,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/W22VVkVoxEY/maxresdefault.jpg",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
     description: "A comprehensive deep research analysis of annuities, long-term care insurance, and permanent life insurance as retirement solutions. Explores cost structures, performance potential, strategic utility, and the critical trade-offs between insurance protection and investment opportunity cost in building a secure retirement.",
     slug: "quantitative-analysis-insurance-products-retirement-security",
@@ -653,7 +662,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "STOCKS AT ALL-TIME HIGHS: Why High Valuations Are Justified (But Precarious) in Late 2025",
     description: "The U.S. stock market, with the S&P 500 near 6,900, is trading at historically elevated levels based on metrics like the CAPE ratio and the Buffett Indicator. This report deconstructs how this high altitude is supported by a unique macroeconomic confluence.",
     slug: "market-pillars",
@@ -661,9 +670,9 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/UMgH4GiusZA",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/UMgH4GiusZA/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "High Altitude: Deconstructing the U.S. Stock Market Valuation",
     description: "An in-depth analysis of U.S. equity valuations and the macroeconomic forces at play in late 2025. Examining elevated market metrics, Fed policy impacts, and the delicate equilibrium between supportive forces and significant risks.",
     slug: "high-altitude-deconstructing-us-stock-market-valuation",
@@ -671,9 +680,9 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://www.brookings.edu/wp-content/uploads/2023/10/shutterstock_2207441063.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRjopKgYRYinwE5rUu8W0BtQY9j_wT3aWkn6pP6q2NgZIHtSNcSHmFnp9iSFB4ng1rLfh-osGKVbYx5/pub",
     deepResearch: true,
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "Options Trading Mastery: Decoding Volume & Open Interest (OI)",
     description: "Volume (the market's pulse) and Open Interest (OI) (the market's population and capital commitment) are the most fundamental metrics for sophisticated options analysis. This video dives deep into their mechanics, explaining how they are related yet measure fundamentally different aspects of market dynamics.",
     slug: "volume-oi",
@@ -683,7 +692,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/DOhaPf3eJXM/maxresdefault.jpg",
     options: true
   },
-{
+  {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
     description: "A comprehensive deep research analysis of options market mechanics, exploring the trinity of price, volume, and open interest. Learn how to decode market sentiment through Put/Call ratios, identify unusual options activity, and leverage structural support/resistance levels created by options positioning.",
     slug: "decoding-options-market-volume-open-interest-analysis",
@@ -693,7 +702,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true
   },
-{
+  {
     title: "The Quant Trap: Why 99% of Machine Learning Fail in Financial Trading",
     description: "This report dissects why foundational ML assumptions (stationarity, I.I.D.) are fundamentally violated in quantitative finance due to stylized facts like volatility clustering and heavy tails.",
     slug: "ml-assumption",
@@ -703,7 +712,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/pR821HLbl3c/maxresdefault.jpg",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
-{
+  {
     title: "Assumptions of Machine Learning in Quantitative Trading",
     description: "A comprehensive analysis of how traditional ML assumptions break down in financial markets, examining non-stationarity, volatility clustering, and fat tails that make quantitative trading uniquely challenging.",
     slug: "foundational-assumptions-machine-learning-quantitative-trading",
@@ -714,7 +723,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
   },
-{
+  {
     title: "PRE-MARKET PREDICTION: How to Predict the Opening Gap Direction (Gap & Go vs. Fade)",
     description: "Learn the expert framework for predicting the 9:30 a.m. market open by decoding crucial pre-market signals. The pre-market environment is defined by low liquidity and high volatility, making price signals challenging to interpret.",
     slug: "pre-market-prediction",
@@ -724,7 +733,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/5WuCFfwFCd4/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
   },
-{
+  {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
     description: "An in-depth analysis of the indicators, strategies, and academic research behind trading the opening bell. Learn how to decode pre-market signals, understand market gaps, and develop systematic frameworks for opening trades.",
     slug: "quantitative-approach-predicting-market-direction-premarket-data",
@@ -735,7 +744,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Ultimate Retirement Blueprint: Master the IRA, The Bucket Strategy, & Social Security",
     description: "Unlock the data-driven framework for building and sustaining financial independence. This video moves beyond simple heuristics to provide a scientific calculation for your retirement target, detailing the interconnected mechanics and limitations of the 25x, 4%, and 80% rules.",
     slug: "retirement-plan",
@@ -745,7 +754,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/dZ5THqfE9ys/maxresdefault.jpg",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "The Architect's Guide to a Secure Retirement",
     description: "A comprehensive data-driven framework for building and sustaining financial independence. From quantifying retirement targets using scientific calculations to mastering accumulation strategies, decumulation blueprints, and navigating financial headwinds with professional guidance.",
     slug: "retirement-architect-guide-secure-retirement",
@@ -756,7 +765,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw",
     labels: [ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Vertical Credit Spreads: The Defined-Risk Strategy for Selling Options Premium",
     description: "This comprehensive analysis deconstructs the Vertical Credit Spread strategy, the cornerstone of modern options trading used for generating income with defined risk. Learn the fundamental architecture of the two main variants: the Bull Put Spread and the Bear Call Spread.",
     slug: "vertical-spread",
@@ -766,7 +775,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/g5e-nZERjLE/maxresdefault.jpg",
     options: true
   },
-{
+  {
     title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
     description: "Master the institutional-grade framework for generating consistent income through vertical credit spreads. From theoretical foundations to practical implementation, this deep research guide covers strike selection, risk management, and advanced trade management techniques.",
     slug: "vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling",
@@ -776,7 +785,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true
   },
-{
+  {
     title: "The Quant's Guide to Volatility: From GARCH to Deep Learning LSTMs & Volatility Arbitrage",
     description: "Volatility is a critical, latent construct that must be modeled and forecasted for robust quantitative strategies. This guide explores the evolution of financial volatility prediction for algorithmic trading.",
     slug: "predict-volatility",
@@ -787,7 +796,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     options: true,
   },
-{
+  {
     title: "A Quantitative Analyst's Guide to Volatility Forecasting",
     description: "From GARCH to Deep Learning in Algorithmic Trading. A comprehensive deep research analysis exploring the evolution from econometric foundations to machine learning frontiers in volatility forecasting, examining deployment strategies, fundamental assumptions, and the challenges of extreme events in quantitative trading.",
     slug: "quantitative-analyst-guide-volatility-forecasting",
@@ -798,7 +807,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     options: true,
   },
-{
+  {
     title: "The Insider's Edge: Decoding Form 4 Filings and the Secrets of Insider Trading",
     description: "Uncover the powerful signals hidden in corporate financial disclosures. This video dissects the world of insider trading, clarifying the critical line between legal, transparent activity and illegal securities fraud.",
     slug: "insider-trading",
@@ -808,7 +817,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/RpaZZsz5J5U/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "The Insider's Edge: Signal from Insider Trading",
     description: "Explore the dual nature of insider trading, from legal disclosure requirements to market sentiment indicators. Learn how to interpret Form 4 filings, understand the predictive power of insider transactions, and recognize the evolving regulatory landscape.",
     slug: "insiders-edge-comprehensive-analysis",
@@ -818,7 +827,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "Decoding the VIX: The Market's Fear Gauge Explained",
     description: "The Cboe Volatility Index, universally known as the VIX, is far more than its popular nickname, the Fear Gauge.",
     slug: "decode-vix",
@@ -829,7 +838,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
     options: true,
   },
-{
+  {
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
     description: "A comprehensive deep research analysis of the VIX Index, exploring its calculation methodology, market sentiment interpretation, relationship with the S&P 500, and advanced applications for portfolio management and volatility trading strategies.",
     slug: "vix-index-comprehensive-guide-market-volatility",
@@ -840,7 +849,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Volatility Smile Explained: What it can tell you is a lot!",
     description: "The Volatility Smile is the most profound empirical anomaly in derivatives pricing, representing the market's definitive rejection of the Black-Scholes-Merton (BSM) model's assumption of constant volatility.",
     slug: "volatility-smile",
@@ -851,7 +860,7 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT],
     options: true,
   },
-{
+  {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
     description: "A comprehensive deep research analysis of the volatility smile phenomenon, exploring the failure of Black-Scholes assumptions, market psychology, and the economic implications of non-constant volatility in options pricing.",
     slug: "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
@@ -862,7 +871,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Ultimate Guide to Factor Investing",
     description: "Factor models are essential quantitative tools in modern finance, designed to decompose asset returns into systematic and idiosyncratic components. This video explores the intellectual progression of these models.",
     slug: "factor-models",
@@ -872,7 +881,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/z32X0C5F5JE/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
     description: "Theoretical foundations and practical applications of stock factor models. From APT and Fama-French to modern multi-factor frameworks, explore how quantitative professionals use factor investing to enhance diversification, manage risk, and generate alpha.",
     slug: "stock-factor-models-comprehensive-guide",
@@ -882,7 +891,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "The Harvest: Wall St Tactics Against Retail Investors-Speed, Manipulation, and Info Asymmetry",
     description: "This video dissects the playbook large, professional institutional investors use to systematically exploit common retail investors, drawing on vast differences in resources, knowledge, and influence. The core theme is information asymmetry, where institutions possess significantly better market knowledge and access.",
     slug: "harvest-investor",
@@ -892,7 +901,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/xMaKA2lIn8c/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
     description: "An exposé on the structural disadvantages faced by retail investors and the predatory strategies used by institutions to systematically harvest their capital through algorithmic trading, market manipulation, and information asymmetry.",
     slug: "the-harvest-institutional-exploitation-retail-investors",
@@ -902,7 +911,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "High Frequency Trading: The playground and players",
     description: "Explore High-Frequency Trading (HFT), the apex of algorithmic trading defined by exceptionally high speeds and massive turnover rates. Success in this hyper-competitive domain is a dual arms race fought on two fronts: the physical quest for ultra-low latency and the intellectual race for algorithmic sophistication.",
     slug: "high-frequency-trading",
@@ -912,7 +921,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/Zp-ZmWc1G3A/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
-{
+  {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
     description: "An in-depth analysis of the competitive strategies, machine learning applications, and technological arms race defining High-Frequency Trading. Explores the dual arms race between physical latency optimization and algorithmic sophistication, examining market making, arbitrage strategies, liquidity detection, and the titans dominating this microsecond battlefield.",
     slug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
@@ -923,7 +932,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
-{
+  {
     title: "How to use Option Strategies to Beat Oct 10 Grey Rhino?",
     description: "October 10 event is classified as a Grey Rhino—a known, high-impact threat (like recurring trade risks) that the complacent, overbought market chose to neglect. Because the sell-off was sentiment-driven rather than a systemic economic breakdown, the strategic thesis advocates for cautiously bullish opportunism.",
     slug: "option-strategy-grey-rhino",
@@ -933,7 +942,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/UTPVKLS87zg/maxresdefault.jpg",
     options: true
   },
-{
+  {
     title: "Options Strategy to beat Black Swan and Grey Rhino",
     description: "An in-depth analysis of the October 10, 2025 market downturn and a comprehensive framework for deploying options strategies to capitalize on the expected recovery. Explores Grey Rhino vs Black Swan events, volatility spikes, and strategic options deployment including cash-secured puts, bull put spreads, and LEAP calls.",
     slug: "options-strategy-report-october-10-market-event",
@@ -943,7 +952,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true
   },
-{
+  {
     title: "The Wheel Strategy Ultimate Guide: Generate Triple Income & Acquire Stock Systematically",
     description: "This video breaks down the Options Wheel Strategy, often referred to as the Triple Income Strategy, which is a systematic, rules-based process designed to generate consistent income and acquire high-quality equities at a discount.",
     slug: "wheel-strategy",
@@ -953,7 +962,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/GGKItsjV-L8/maxresdefault.jpg",
     options: true,
   },
-{
+  {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
     description: "Master the Options Wheel strategy with this comprehensive guide covering stock selection protocols, risk management frameworks, and cyclical income generation. Learn the quantitative rules for cash-secured puts, covered calls, strategic rolling techniques, and advanced portfolio management through systematic option writing.",
     slug: "options-wheel-trading-plan-quantitative-approach",
@@ -964,7 +973,7 @@ export const articles2025Q4: Article[] = [
     options: true,
     podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg"
   },
-{
+  {
     title: "S&P 500 Crashes 2.7% and Trade War again, what happened? What's Next?",
     description: "On October 10, 2025, a sharp and unexpected escalation in U.S.-China trade hostilities abruptly shattered a period of market calm, culminating in the S&P 500's worst single-day performance since April. The catalyst was a dual shock: former U.S. President Donald Trump threatened a massive increase in tariffs on Chinese goods and signaled the cancellation of a crucial upcoming diplomatic meeting with Chinese President Xi",
     slug: "trade-war-again",
@@ -972,9 +981,9 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/imLzlzT5u8I",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/imLzlzT5u8I/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "Trade War Redux: Anatomy of the October 10th Market Shock",
     description: "An in-depth analysis of the October 10, 2025 market shock that saw the S&P 500 fall 2.7% following renewed U.S.-China trade tensions. Explores the historical context of the trade war, geopolitical strategy, market psychology, and provides a disciplined investor's playbook for navigating volatility during times of heightened uncertainty.",
     slug: "trade-war-redux-october-10-market-shock-analysis",
@@ -982,9 +991,9 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://scm.ncsu.edu/wp-content/uploads/sites/29/2019/11/Trade-Wars-16x9-2-1500x844.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQjkJ8tUQs6z5rLNRsjtEhtGXajOgiYAeW-44bjqFAivgHrP7UJbi9DjwSSjDUbhIGtVWuY_GJfPZ6q/pub",
     deepResearch: true,
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   },
-{
+  {
     title: "Personal Quant Trading Strategies",
     description: "Quantitative trading strategies designed specifically for independent analysts. Explores momentum and trend-following systems, contrarian mean reversion strategies, volatility selling techniques, and the essential toolkit for competing in modern markets where individual traders can leverage their unique advantages.",
     slug: "personal-quant-trading-strategies-independent-analysts",
@@ -994,7 +1003,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
   },
-{
+  {
     title: "Volume Price Analysis: Market Secret on Price Move",
     description: "Learn Volume Price Analysis (VPA), a methodology rooted in the foundational work of Charles Dow and Richard Wyckoff, which analyzes the relationship between price action and trading volume to forecast market movements. VPA is built on three core laws, including the Law of Effort vs. Result, which helps distinguish genuine, sustained trends from temporary fluctuations by identifying when price movement is disproportionate to the trading volume",
     slug: "volume-price-analysis",
@@ -1004,7 +1013,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/VjOsdoln7Bo/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "Volume Price Analysis: From Market Lore to Algorithmic Execution",
     description: "A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms. Explores core indicators, strategic time horizons, quantitative validation, and the increasing role of automation in leveraging volume as a predictive tool.",
     slug: "volume-price-analysis-market-lore-algorithmic-execution",
@@ -1014,7 +1023,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
   },
-{
+  {
     title: "The Russell 2000 EXPOSED: Small-Cap Investing, Hidden Costs, and The Quality Trap",
     description: "The Russell 2000 Index serves as the preeminent benchmark for the U.S. small-capitalization equity market, tracking approximately 2,000 of the smallest publicly traded companies. Its performance is widely cited as a primary indicator of the health of smaller domestic companies and is often viewed as a barometer of the U.S. domestic economy.",
     slug: "russell-2000",
@@ -1024,7 +1033,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/IX4E6eHmYaE/maxresdefault.jpg",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
     description: "A comprehensive analysis of the Russell 2000 index, exploring its construction methodology, valuation metrics, and role as America's premier small-cap benchmark. Examining the investment thesis, structural flaws, and comparison with alternative indices.",
     slug: "russell-2000-small-cap-engine-deep-dive",
@@ -1034,7 +1043,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
   },
-{
+  {
     title: "Strategic Investing using Options: Cash-Secured Puts (Buy Low) & Covered Calls (Sell High Income)",
     description: "Options are powerful tools for disciplined portfolio management, moving beyond simple speculation toward a quantitative approach for managing equity positions. By writing (selling) options, investors can enforce price discipline and facilitate systematic market entry and exit. Successful option writing requires managing the stock's direction, the magnitude of its movement, and the timeframe",
     slug: "strategic-investing-using-options",
@@ -1044,7 +1053,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/MVc-dVWEc4w/maxresdefault.jpg",
     options: true
   },
-{
+  {
     title: "Strategic Portfolio Management via Option Writing",
     description: "A comprehensive deep research analysis of cash-secured puts and covered calls as disciplined portfolio management tools. Explores the Greeks, strategic market entry/exit, risk management frameworks, and the psychology of systematic option writing for income generation and position management.",
     slug: "strategic-portfolio-management-option-writing",
@@ -1054,7 +1063,7 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true
   },
-{
+  {
     title: "Unpack the BlackBox of Quantitative Hedge Funds Workflow",
     description: "Dive into the systematic, data-driven workflow that defines the modern quantitative hedge fund. This sophisticated process is structured around four foundational pillars: Alpha Discovery, Portfolio Construction, Backtesting, and Execution. We dissect the entire lifecycle of a quantitative strategy, showing how raw information is transformed into risk-managed returns.",
     slug: "hedge-fund-workflow",
@@ -1064,7 +1073,7 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/QQjvEWV9-WQ/maxresdefault.jpg",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
-{
+  {
     title: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
     description: "An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.",
     slug: "anatomy-quant-fund-alpha-discovery-automated-execution",
@@ -1075,7 +1084,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/5go6IpDzzcDSiqC6Q06uxI?si=CpaGEZk9Td-eQS4h1k2NFQ",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
-{
+  {
     title: "Stagflation-Lite: Fixed Income Dilemma or Turning Point?",
     description: "The year 2025 marks a significant turning point for the long-term fixed income market, transitioning into a new regime defined by historically high starting yields and the widely anticipated pivot of the Federal Reserve toward monetary easing. The central imperative for investors is to lock in these attractive yields before they decline.",
     slug: "fixed-income",
@@ -1083,6 +1092,6 @@ export const articles2025Q4: Article[] = [
     youtubeUrl: "https://youtu.be/2xcK1hjcPfg",
     isVideo: true,
     imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg",
-    labels: [ArticleLabel.MARCO],
+    labels: [ArticleLabel.MACRO],
   }
 ];

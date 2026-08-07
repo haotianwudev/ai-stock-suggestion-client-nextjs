@@ -1,13 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, Shield, Activity, Layers, BarChart3, ArrowRight, CheckCircle, AlertTriangle, PieChart, DollarSign, Repeat, AlertOctagon, Target, Zap, Brain, HelpCircle, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { BookOpen, TrendingUp, Shield, Activity, Layers, BarChart3, ArrowRight, CheckCircle, AlertTriangle, PieChart, DollarSign, Repeat, AlertOctagon, Target, Zap, Brain, HelpCircle } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function OptionAlphaSelectArticle() {
-  const currentArticle = articles.find(article => article.slug === 'optionalpha-select-systematic-underlyer-selection-premium-selling');
   const [activePillar, setActivePillar] = useState('quality');
 
   const scrollToSection = (id: string) => {
@@ -18,102 +15,12 @@ export default function OptionAlphaSelectArticle() {
   };
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="optionalpha-select-systematic-underlyer-selection-premium-selling">
+      <div className="max-w-4xl mx-auto mb-16 px-6">
+        <InfographicSlot alt="OptionAlpha Select Framework Infographic" />
+      </div>
 
-      <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
-        {/* Return to Home Button */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-        </div>
-
-        {/* Badges */}
-        <div className="absolute top-24 left-8 z-20">
-          <span className="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Deep Research
-          </span>
-        </div>
-        <div className="absolute top-24 right-8 z-20">
-          <span className="inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Podcast
-          </span>
-        </div>
-        <div className="absolute bottom-8 right-8 z-20">
-          <span className="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Options
-          </span>
-        </div>
-
-        {/* Navigation */}
-        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16 items-center">
-              <div className="flex items-center">
-                <Layers className="h-8 w-8 text-indigo-600" />
-                <span className="ml-2 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">OptionAlpha Select</span>
-              </div>
-              <div className="hidden md:flex space-x-6">
-                <button onClick={() => scrollToSection('pillars')} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">The 3 Pillars</button>
-                <button onClick={() => scrollToSection('strategies')} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Strategies</button>
-                <button onClick={() => scrollToSection('research')} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Research</button>
-                <button onClick={() => scrollToSection('behavior')} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Behavioral Edge</button>
-                <button onClick={() => scrollToSection('screening')} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Screening</button>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 opacity-80"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 font-medium text-sm mb-6">
-                Systematic Framework v2.0
-              </div>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-                The Dual Mandate of <span className="text-indigo-600">Premium Selling</span>
-              </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                Sustainable success in option selling isn't about chasing the highest premiums. It requires a disciplined adherence to finding <strong>high-quality assets</strong> that also possess <strong>favorable option market characteristics</strong>.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button onClick={() => scrollToSection('pillars')} className="px-8 py-4 bg-indigo-600 text-white rounded-full font-medium shadow-lg hover:bg-indigo-700 transition-all transform hover:-translate-y-1 flex items-center">
-                  Explore the Framework <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-                <button onClick={() => scrollToSection('research')} className="px-8 py-4 bg-white text-indigo-600 border-2 border-indigo-100 rounded-full font-medium hover:border-indigo-300 transition-all">
-                  View Quantitative Data
-                </button>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-            <img 
-              src="https://i.imgur.com/zo6Tcpc.jpeg" 
-              alt="OptionAlpha Select Framework Infographic" 
-              className="w-full h-auto"
-            />
-          </div>
-        </section>
-
+      <div className="w-full">
         {/* The Three Pillars Section */}
         <section id="pillars" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -695,50 +602,7 @@ export default function OptionAlphaSelectArticle() {
           </div>
         </section>
 
-        {/* Call to Action Section */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-7xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.podcastUrl && (
-              <a 
-                href={currentArticle.podcastUrl}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Music className="inline mr-2" />
-                Listen to Podcast
-              </a>
-            )}
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="bg-slate-950 py-16 text-center border-t border-slate-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Layers className="h-12 w-12 text-indigo-500 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-white mb-6">OptionAlpha Select</h2>
-            <p className="text-slate-400 max-w-md mx-auto mb-8 leading-relaxed">
-              A disciplined, systematic framework for premium selling based on quantitative and fundamental research. Designed for longevity, not get-rich-quick schemes.
-            </p>
-            <div className="pt-8 border-t border-slate-900 text-slate-600 text-sm flex flex-col gap-2">
-              <p>Based on "Systematic Underlyer Selection for Premium-Selling Strategies" Report</p>
-              <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            </div>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }
