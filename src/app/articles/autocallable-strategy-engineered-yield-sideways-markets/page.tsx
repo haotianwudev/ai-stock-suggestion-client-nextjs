@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, Minus, ShieldAlert, DollarSign, Activity, Layers, ArrowRight, AlertTriangle, CheckCircle, XCircle, BookOpen, Zap, PieChart, Clock, BarChart2, Lock, Unlock, RefreshCcw, Scale, Plus, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, TrendingDown, Minus, ShieldAlert, DollarSign, Activity, Layers, ArrowRight, AlertTriangle, CheckCircle, XCircle, BookOpen, Zap, PieChart, Clock, BarChart2, Lock, Unlock, RefreshCcw, Scale, Plus, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 interface SectionProps {
@@ -235,30 +232,9 @@ const MathComponent = () => (
 
 // --- Main Page ---
 export default function AutocallableGuide() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'autocallable-strategy-engineered-yield-sideways-markets');
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'autocallable-strategy-engineered-yield-sideways-markets'} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-      {/* Hero Section */}
+    <ArticleFrame slug="autocallable-strategy-engineered-yield-sideways-markets">
+      <InfographicSlot alt="Autocallable Strategy Infographic" />
       <header className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white pt-24 pb-32 px-6">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -288,45 +264,6 @@ export default function AutocallableGuide() {
           </div>
         </div>
       </header>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/4Fy8XfA.jpeg" 
-            alt="Autocallable Strategy Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/4Fy8XfA.jpeg"
-        alt="Autocallable Strategy Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
       {/* Intro Stats/Hook */}
       <div className="max-w-6xl mx-auto -mt-16 relative z-20 px-4">
         <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
@@ -950,35 +887,6 @@ export default function AutocallableGuide() {
           </div>
         </div>
       </Section>
-
-      {/* Continue Learning Section with Google Doc Link */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {currentArticle?.googleDoc && (
-            <a 
-              href={currentArticle.googleDoc}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              <BookOpen className="inline mr-2" />
-              Read Full Research Paper
-            </a>
-          )}
-        </div>
-      </div>
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <BookOpen className="w-8 h-8 mx-auto text-indigo-500 mb-6" />
-          <h3 className="text-white text-lg font-bold mb-4">Strategic Summary</h3>
-          <p className="mb-8">Autocallables are powerful tools for monetizing the "fear premium" in muddle-through markets. However, they replace market risk with "cliff risk". Use them to replace equity exposure, never to replace safe bonds.</p>
-          <div className="text-xs text-slate-600">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </div>
-        </div>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

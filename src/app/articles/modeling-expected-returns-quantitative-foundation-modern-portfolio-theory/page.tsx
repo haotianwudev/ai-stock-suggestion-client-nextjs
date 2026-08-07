@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, ShieldAlert, Cpu, BarChart3, BrainCircuit, History, Target, Calculator, Zap, BookOpen, ArrowRight, Info, Layers, Activity, Search, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, ShieldAlert, Cpu, BarChart3, BrainCircuit, History, Target, Calculator, Zap, BookOpen, ArrowRight, Info, Layers, Activity, Search, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // Math Rendering Component (using KaTeX CDN)
 const Math = ({ formula, display = false, className = "" }: { formula: string; display?: boolean; className?: string }) => {
@@ -91,12 +88,7 @@ const FormulaBox = ({ formula, label, color = "indigo" }: {
 );
 
 export default function ModelingExpectedReturnsArticle() {
-  const [activeSection, setActiveSection] = useState('intro');
   const [isKaTeXLoaded, setIsKaTeXLoaded] = useState(false);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const [isSecondImageViewerOpen, setIsSecondImageViewerOpen] = useState(false);
-
-  const currentArticle = articles.find(article => article.slug === 'modeling-expected-returns-quantitative-foundation-modern-portfolio-theory');
   const secondInfographicUrl = "https://i.imgur.com/21wKTRQ.jpeg";
 
   useEffect(() => {
@@ -112,22 +104,6 @@ export default function ModelingExpectedReturnsArticle() {
     script.async = true;
     script.onload = () => setIsKaTeXLoaded(true);
     document.head.appendChild(script);
-
-    const handleScroll = () => {
-      const sections = ['intro', 'modeling', 'risk', 'evolution', 'ai', 'investor'];
-      const current = sections.find(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top >= -100 && rect.top <= 300;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (!isKaTeXLoaded) {
@@ -142,106 +118,14 @@ export default function ModelingExpectedReturnsArticle() {
   }
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || 'Modeling Expected Returns'} 
-            articleSlug={currentArticle.slug || 'modeling-expected-returns-quantitative-foundation-modern-portfolio-theory'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-indigo-100">
-        {/* Return to Home Button */}
-        <div className="max-w-6xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame
+      slug="modeling-expected-returns-quantitative-foundation-modern-portfolio-theory"
+      additionalDisclaimer="The mathematical models discussed are simplified representations for educational understanding. Always consult with qualified financial professionals before making investment decisions."
+    >
+      <div className="max-w-6xl mx-auto px-6 py-16 space-y-40 font-sans text-slate-900 bg-transparent">
+        <div className="-mb-24">
+          <InfographicSlot alt="Modeling Expected Returns Infographic" />
         </div>
-
-        {/* Floating Navigation */}
-        <nav className="fixed left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-50">
-          {['intro', 'modeling', 'risk', 'evolution', 'ai', 'investor'].map((id) => (
-            <a 
-              key={id} 
-              href={`#${id}`}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeSection === id 
-                  ? 'bg-indigo-600 scale-150 shadow-[0_0_15px_rgba(79,70,229,0.5)]' 
-                  : 'bg-slate-300 hover:bg-slate-400'
-              }`}
-              title={id}
-            />
-          ))}
-        </nav>
-
-        {/* Hero Section */}
-        <header id="intro" className="relative pt-32 pb-24 px-6 overflow-hidden bg-slate-50">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(79,70,229,0.1),transparent)] pointer-events-none"></div>
-          <div className="max-w-6xl mx-auto relative z-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs uppercase tracking-widest mb-6">
-              Advanced Quantitative Tutorial
-            </span>
-            <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
-              Modeling <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-500">
-                Expected Returns
-              </span>
-            </h1>
-            <p className="text-2xl text-slate-600 max-w-3xl font-light leading-relaxed">
-              Uncovering the stochastic heart of modern portfolio management. Learn how to derive, blend, and forecast future wealth.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        {currentArticle?.imageUrl && (
-          <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => setIsImageViewerOpen(true)}
-            >
-              <img 
-                src={currentArticle.imageUrl} 
-                alt="Modeling Expected Returns Infographic" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              {/* Full-screen button overlay */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsImageViewerOpen(true);
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              {/* Click hint */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Full-screen image viewer */}
-        {currentArticle?.imageUrl && (
-          <FullScreenImageViewer
-            src={currentArticle.imageUrl}
-            alt="Modeling Expected Returns Infographic"
-            isOpen={isImageViewerOpen}
-            onClose={() => setIsImageViewerOpen(false)}
-          />
-        )}
-
-        <main className="max-w-6xl mx-auto px-6 py-16 space-y-40">
           {/* Section 1: The Precision Paradox */}
           <section id="modeling">
             <SectionHeader 
@@ -924,42 +808,12 @@ export default function ModelingExpectedReturnsArticle() {
                 for modeling expected returns across different market regimes and asset classes.
               </p>
             </div>
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => setIsSecondImageViewerOpen(true)}
-            >
-              <img 
-                src={secondInfographicUrl} 
-                alt="Advanced Expected Return Methodologies Infographic" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              {/* Full-screen button overlay */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsSecondImageViewerOpen(true);
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              {/* Click hint */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
+            <InfographicSlot 
+              src={secondInfographicUrl} 
+              alt="Advanced Expected Return Methodologies Infographic" 
+              label="Advanced Methodologies"
+            />
           </section>
-
-          {/* Full-screen image viewer for second infographic */}
-          <FullScreenImageViewer
-            src={secondInfographicUrl}
-            alt="Advanced Expected Return Methodologies Infographic"
-            isOpen={isSecondImageViewerOpen}
-            onClose={() => setIsSecondImageViewerOpen(false)}
-          />
 
           {/* Section 4: Machine Learning */}
           <section id="ai" className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white overflow-hidden relative border-t-8 border-violet-500">
@@ -1672,48 +1526,7 @@ export default function ModelingExpectedReturnsArticle() {
               </div>
             </div>
           </section>
-        </main>
-
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        <footer className="bg-slate-950 text-white py-32 px-6">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-            <div className="max-w-md">
-              <div className="flex items-center gap-3 text-3xl font-black mb-6">
-                <TrendingUp className="text-indigo-500" size={32} />
-                QuantTheory <span className="text-indigo-500">Pro</span>
-              </div>
-              <p className="text-slate-500 leading-relaxed text-lg">
-                Empowering capital allocators with the mathematical rigor of institutional asset management.
-              </p>
-            </div>
-            <div className="text-slate-500 text-sm">
-              <div className="p-6 border border-slate-800 rounded-2xl bg-slate-900/50 italic mb-8">
-                "Expected return is not a destination, but a guide for the journey under uncertainty."
-              </div>
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-700">
-                &copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

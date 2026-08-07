@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
 import {
   ArrowLeft,
   Maximize2,
@@ -17,9 +15,7 @@ import {
   ArrowRight,
   BarChart2,
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Shared UI Components ---
 
@@ -152,88 +148,18 @@ const ModelCard = ({
 // --- Page ---
 
 export default function ArticlePage() {
-  const currentArticle = articles.find((a) => a.slug === 'beyond-black-scholes');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-        </>
-      )}
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link
-          href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-semibold mb-8">
-            <BookOpen size={16} />
-            Advanced Quantitative Finance
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Beyond Black-Scholes
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            A comprehensive guide to the advanced quantitative pricing models and semi-analytical frameworks that drive
-            modern mathematical finance.
-          </p>
+    <ArticleFrame
+      slug="beyond-black-scholes"
+      additionalDisclaimer="The mathematical models discussed are simplified representations for educational understanding. Always consult with qualified financial professionals before making investment decisions."
+    >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 text-slate-700 font-sans bg-transparent">
+        <div className="mb-12">
+          <InfographicSlot alt="Beyond Black-Scholes Infographic" />
         </div>
-      </div>
 
-      {/* Hero Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src="https://i.imgur.com/yjdtBGR.jpeg"
-            alt="Beyond Black-Scholes Infographic"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src="https://i.imgur.com/yjdtBGR.jpeg"
-        alt="Beyond Black-Scholes Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Article Body */}
-      <main className="bg-slate-50 min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-
-          {/* Introduction */}
-          <p className="text-lg text-slate-700 leading-relaxed mb-6">
+        {/* Introduction */}
+        <p className="text-lg text-slate-700 leading-relaxed mb-6">
             The publication of the Black-Scholes-Merton option pricing formula in 1973 represents the foundational
             cornerstone of modern quantitative finance. By demonstrating that the theoretical value of a European option
             could be uniquely determined through a dynamic hedging strategy, the framework established a monumental
@@ -810,53 +736,7 @@ Bond Price:  P(t, T) = A(t, T) · exp(-B(t, T) · r_{t})`}
             </div>
           </div>
 
-        </div>
-
-        {/* Google Doc CTA */}
-        <div className="max-w-4xl mx-auto px-6 py-12">
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl border border-indigo-200 text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <BookOpen className="text-indigo-600" size={24} />
-              <h3 className="text-xl font-bold text-indigo-900">Full Research Report</h3>
-            </div>
-            <p className="text-slate-600 mb-6">
-              Access the complete deep research report on Advanced Quantitative Pricing Models with extended
-              derivations, proofs, and supplementary material.
-            </p>
-            <a
-              href="https://docs.google.com/document/d/e/2PACX-1vRvrZWWikO-WOXDkGTqrdgoIO5aQiDmG-bD1K-HfneWJ92coZrsQfvuVwDzfHJMbGDA5TOq7QtGV4HA/pub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200"
-            >
-              <ExternalLink size={18} />
-              Read Full Research Report
-            </a>
-          </div>
-        </div>
-
-        {/* Risk Disclaimer */}
-        <div className="max-w-4xl mx-auto px-6 pb-8">
-          <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
-              <div>
-                <h3 className="font-semibold text-red-800 mb-1">Important Disclosure</h3>
-                <p className="text-red-700 text-sm">
-                  This article is for educational purposes only and does not constitute financial or investment advice.
-                  The mathematical models discussed are simplified representations for educational understanding.
-                  Always consult with qualified financial professionals before making investment decisions.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="max-w-5xl mx-auto px-6 py-8 border-t border-slate-200 text-center text-slate-500 text-sm">
-        &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-      </footer>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

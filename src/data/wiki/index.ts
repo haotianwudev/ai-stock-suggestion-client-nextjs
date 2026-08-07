@@ -12,6 +12,294 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "finance101/li-lu-himalaya",
+    title: "Li Lu: Masterclass in Value Investing",
+    articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
+    date: "2026-03-05",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.STOCK_ANALYSIS],
+    summary:
+      "An in-depth look at the investment philosophy of Li Lu, Charlie Munger's sole outside manager, exploring his extreme portfolio concentration and investigative diligence.",
+  },
+  {
+    path: "options/vertical-debit-spreads",
+    title: "Vertical Debit Spreads: Strategic Architecture",
+    articleSlug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
+    date: "2026-03-01",
+    labels: [ArticleLabel.OPTIONS],
+    summary:
+      "A comprehensive guide to why professionals trade defined-risk vertical debit spreads, covering the mathematics of advantage, the Greeks edge, and critical pre-flight checklists.",
+  },
+  {
+    path: "equities/nvidia-earnings-paradox",
+    title: "The Nvidia Earnings Paradox (Feb 2026)",
+    articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
+    date: "2026-02-28",
+    labels: [ArticleLabel.STOCK_ANALYSIS],
+    summary:
+      "A deep dive into why Nvidia's perfect Q4 2026 earnings report resulted in a violent intraday sell-off, driven by IV crush, negative gamma, and institutional positioning.",
+  },
+  {
+    path: "macro/private-credit-architecture",
+    title: "Private Credit Architecture & Vulnerabilities",
+    articleSlug: "architecture-private-credit-structural-mechanics-vulnerabilities",
+    date: "2026-02-12",
+    labels: [ArticleLabel.MACRO],
+    summary:
+      "An exploration of the multi-trillion-dollar Private Credit market, focusing on the architecture of Direct Lending, systemic risks, and the implications of covenant-lite loans and retailization.",
+  },
+  {
+    path: "quant/expected-returns-modeling",
+    title: "Modeling Expected Returns & Portfolio Theory",
+    articleSlug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+    date: "2026-02-11",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A deep dive into the evolution of return modeling, from the precision paradox of discounted cash flows to the Bayesian elegance of the Black-Litterman framework.",
+  },
+  {
+    path: "quant/structured-finance",
+    title: "Structured Finance 2026",
+    articleSlug: "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
+    date: "2026-02-12",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models. Master the mechanics of credit enhancement and stochastic valuation in structured finance.",
+  },
+  {
+    path: "quant/intraday-option-speculation",
+    title: "The Microstructure of Intraday Option Speculation",
+    articleSlug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
+    date: "2026-02-13",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "An exhaustive analysis of the option day trading ecosystem, deconstructing 0DTE contracts, Gamma Exposure (GEX), and the structural asymmetry between retail traders and institutional market makers.",
+  },
+  {
+    path: "macro/investment-clock-framework",
+    title: "The Investment Clock Framework",
+    articleSlug: "investment-clock-framework-quantitative-macro-regime-detection",
+    date: "2026-02-15",
+    labels: [ArticleLabel.MARCO, ArticleLabel.QUANT],
+    summary:
+      "A comprehensive technical analysis of the Investment Clock—a quantitative framework for tactical asset allocation through growth and inflation cycle identification. Includes implementation methodology, statistical validation, and modern market adaptations.",
+  },
+  {
+    path: "quant/stochastic-calculus-itos-lemma",
+    title: "The Stochastic Calculus of Finance (Itô's Lemma)",
+    articleSlug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
+    date: "2026-02-17",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive treatise on Itô's Lemma: the mathematical bridge between the smooth world of Newton and the jagged reality of financial markets. Master the fundamental theorem that transforms stochastic differential equations into the Black-Scholes framework.",
+  },
+  {
+    path: "quant/intraday-alpha-u-curve",
+    title: "Intraday Alpha and the U-Curve Volatility Engine",
+    articleSlug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
+    date: "2026-02-19",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A quantitative analysis of the U-Curve phenomenon in trading volume and volatility, exploring the mathematical framework and institutional flow dynamics that dictate intraday price action.",
+  },
+  {
+    path: "ai-ml/agentic-rag-langchain",
+    title: "Agentic RAG with LangChain",
+    articleSlug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
+    date: "2026-08-15",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    summary:
+      "A technical guide to building agentic RAG systems that integrate LangChain with custom proprietary wikis — multi-hop reasoning, math-aware chunking, LangGraph workflows, and hierarchical agent swarms for quantitative finance.",
+  },
+  {
+    path: "form-13f/coattail-investing",
+    title: "Mastering Coattail Investing",
+    articleSlug: "mastering-coattail-investing-sec-form-13f-analysis",
+    date: "2026-02-21",
+    labels: [ArticleLabel.FORM13F],
+    summary:
+      "A comprehensive tutorial on decoding institutional disclosures, avoiding latency traps, and following the Apex Allocators. Master the art of coattail investing through SEC Form 13F analysis and manager typology.",
+  },
+  {
+    path: "form-13f/stanley-druckenmiller-duquesne",
+    title: "The Duquesne Paradigm",
+    articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
+    date: "2026-02-23",
+    labels: [ArticleLabel.FORM13F],
+    summary:
+      "Decoding Stanley Druckenmiller's $4.5B portfolio shift. A tutorial on macro-investing, the 'Warsh Effect,' and the pivot from AI hardware to energy infrastructure in the new economic regime.",
+  },
+  {
+    path: "form-13f/li-lu-himalaya-capital",
+    title: "Masterclass of Li Lu",
+    articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
+    date: "2026-02-25",
+    labels: [ArticleLabel.FORM13F],
+    summary:
+      "A comprehensive deep dive into Li Lu's investment philosophy, the four pillars of value investing, and the extreme portfolio concentration strategy that built Himalaya Capital into a multi-decade compounding machine.",
+  },
+  {
+    path: "option-strategy/vertical-debit-spreads",
+    title: "Vertical Debit Spreads",
+    articleSlug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
+    date: "2026-02-27",
+    labels: [ArticleLabel.OPTIONS],
+    summary:
+      "Master the strategic architecture of defined-risk trading. A comprehensive guide to bull call spreads, bear put spreads, volatility regimes, the 70/30 strike selection rule, and the mathematics of advantage over naked options.",
+  },
+  {
+    path: "stock-analysis/nvidia-earnings-paradox",
+    title: "Nvidia's Feb 2026 Earnings Paradox",
+    articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
+    date: "2026-03-01",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
+    summary:
+      "An exhaustive, multi-disciplinary tutorial analyzing the complex market mechanics, macroeconomic headwinds, and structural forces that drove NVDA's severe post-earnings sell-off despite unprecedented fundamental success. Master the IV Crush, Gamma Flip, and institutional de-grossing dynamics.",
+  },
+  {
+    path: "macro/private-credit",
+    title: "Architecture of Private Credit",
+    articleSlug: "architecture-private-credit-structural-mechanics-vulnerabilities",
+    date: "2026-03-03",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    summary:
+      "A comprehensive deep dive into the trillion-dollar private credit market. From direct lending mechanics to the retailization of illiquidity, explore the structural vulnerabilities, Wall Street realignment, and systemic risks in the shadow banking system.",
+  },
+  {
+    path: "quant/modeling-expected-returns",
+    title: "Modeling Expected Returns",
+    articleSlug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
+    date: "2026-03-05",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive deep dive into the mathematical frameworks for estimating expected returns, from classical CAPM to advanced machine learning approaches. Explores the precision paradox, Black-Litterman evolution, and practical implementation strategies.",
+  },
+  {
+    path: "option-strategy/tail-risk-skew",
+    title: "Quantitative Analysis of Tail Risk",
+    articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+    date: "2026-03-07",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive deep dive into CBOE SKEW and Nations SkewDex. Understanding the geometry of market fear beyond the VIX through model-free skewness estimation, fixed-strike parameterization, and the Vanna Crush mechanics that fuel market rallies.",
+  },
+  {
+    path: "quant/advanced-pricing-models",
+    title: "Advanced Quantitative Pricing Models",
+    articleSlug: "beyond-black-scholes",
+    date: "2026-03-09",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive guide to advanced quantitative pricing models bridging the gap between empirical reality and theoretical pricing via stochastic variance, discontinuous jumps, and affine term structures.",
+  },
+  {
+    path: "quant/navigating-bull-to-bear",
+    title: "Bull-to-Bear Regime Shifts",
+    articleSlug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
+    date: "2026-04-03",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A deep-dive tutorial into quantitative signals, systematic factor rotation, and convexity monetization during transitional market phases.",
+  },
+  {
+    path: "quant/institutional-hft",
+    title: "Institutional HFT & Market Manipulation",
+    articleSlug: "institutional-hft-market-manipulation-regulatory-framework",
+    date: "2026-03-16",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A deconstruction of regulatory frameworks, quantitative strategies, and the Jane Street paradigm, exploring the boundary between algorithmic arbitrage and market manipulation.",
+  },
+  {
+    path: "quant/order-flow-anomalies",
+    title: "Order Flow Anomalies",
+    articleSlug: "order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
+    date: "2026-03-11",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A deep analysis of market microstructure anomalies including intermarket sweeps, footprint chart mechanics, and the AMD framework to distinguish genuine accumulation from traps.",
+  },
+  {
+    path: "quant/autocallable-strategy-engineered-yield-sideways-markets",
+    title: "The Autocallable Strategy: Engineered Yield for Sideways Markets",
+    articleSlug: "autocallable-strategy-engineered-yield-sideways-markets",
+    date: "2026-03-14",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive technical guide to autocallable structured products and barrier mechanics.",
+  },
+  {
+    path: "quant/institutional-hft-market-manipulation-regulatory-framework",
+    title: "Institutional High-Frequency Trading & Market Manipulation",
+    articleSlug: "institutional-hft-market-manipulation-regulatory-framework",
+    date: "2026-03-16",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "An exhaustive educational deconstruction of regulatory frameworks, quantitative strategies, and the contemporary Jane Street paradigm.",
+  },
+  {
+    path: "ai-ml/evolution-autonomous-execution-function-calling-agentic-harnesses",
+    title: "The Evolution of Autonomous Execution",
+    articleSlug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
+    date: "2026-03-18",
+    labels: [ArticleLabel.AI_ML],
+    summary:
+      "A comprehensive technical deep-dive into the evolution of AI tool-calling architectures in quantitative finance.",
+  },
+  {
+    path: "quant/mastering-volatility-definitive-guide-long-straddles-strangles",
+    title: "Mastering Volatility",
+    articleSlug: "mastering-volatility-definitive-guide-long-straddles-strangles",
+    date: "2026-03-20",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "The definitive technical guide to trading volatility as an asset class.",
+  },
+  {
+    path: "quant/traders-guide-futures-specials-market-structure-anomalies",
+    title: "The Trader's Guide to Futures Specials",
+    articleSlug: "traders-guide-futures-specials-market-structure-anomalies",
+    date: "2026-03-22",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "A comprehensive analysis of structural anomalies in futures markets - from the 'Widowmaker' spread to negative oil prices.",
+  },
+  {
+    path: "ai-ml/claude-code-financial-cheatsheet-enterprise-reference",
+    title: "Claude Code Financial Cheatsheet",
+    articleSlug: "claude-code-financial-cheatsheet-enterprise-reference",
+    date: "2026-03-24",
+    labels: [ArticleLabel.AI_ML],
+    summary:
+      "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows.",
+  },
+  {
+    path: "quant/risk-prism-architecture-modern-factor-models",
+    title: "The Risk Prism",
+    articleSlug: "risk-prism-architecture-modern-factor-models",
+    date: "2026-03-26",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers.",
+  },
+  {
+    path: "quant/unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
+    title: "Unlocking the Volatility Surface",
+    articleSlug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
+    date: "2026-03-28",
+    labels: [ArticleLabel.QUANT],
+    summary:
+      "Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread to extract market probabilities.",
+  },
+  {
+    path: "ai-ml/building-interactive-financial-copilots-generative-ui-state-synchronization",
+    title: "Building Interactive Financial Copilots",
+    articleSlug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
+    date: "2026-03-30",
+    labels: [ArticleLabel.AI_ML],
+    summary:
+      "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards.",
+  },
+  {
     path: "quant/mechanics-of-alpha-raw-data-realized-returns",
     title: "The Mechanics of Alpha",
     articleSlug: "mechanics-of-alpha-raw-data-realized-returns",

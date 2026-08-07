@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, AlertTriangle, DollarSign, Clock, Database, Zap, Coffee, Activity, Layers, BookOpen, Anchor, Box, Droplet, Flame, Scale, Calendar, Search, ArrowRight, RefreshCw, Sun, Snowflake, BarChart2, Lock, Unlock, Truck, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, TrendingDown, AlertTriangle, DollarSign, Clock, Database, Zap, Coffee, Activity, Layers, BookOpen, Anchor, Box, Droplet, Flame, Scale, Calendar, Search, ArrowRight, RefreshCw, Sun, Snowflake, BarChart2, Lock, Unlock, Truck, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: {
@@ -115,7 +112,6 @@ export default function FuturesSpecialsArticle() {
   const [activeTab, setActiveTab] = useState('contango');
   const [activeTreasury, setActiveTreasury] = useState('otr');
   const [activeDeliveryStep, setActiveDeliveryStep] = useState('pos_day');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   // Color Palette
   const colors = {
@@ -127,91 +123,10 @@ export default function FuturesSpecialsArticle() {
     micro: '#8B5CF6',     // Violet
   };
 
-  const currentArticle = articles.find(article => article.slug === 'traders-guide-futures-specials-market-structure-anomalies');
-
-  if (!currentArticle) {
-    return <div>Article not found</div>;
-  }
-
   return (
-    <>
-      {/* SEO Components */}
-      <StructuredData article={currentArticle} />
-      <BreadcrumbStructuredData 
-        articleTitle={currentArticle.title} 
-        articleSlug={currentArticle.slug || 'traders-guide-futures-specials-market-structure-anomalies'} 
-      />
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900 pb-20">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* --- HERO SECTION --- */}
-        <header className="bg-white pt-24 pb-20 px-6 lg:px-24 border-b border-slate-200 shadow-sm relative overflow-hidden">
-          {/* Abstract Background Shapes */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-50 rounded-full blur-3xl -mr-20 -mt-20 opacity-60"></div>
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-fuchsia-50 rounded-full blur-3xl -ml-20 -mb-20 opacity-60"></div>
-          
-          <div className="max-w-6xl mx-auto relative z-10">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide">Advanced Market Structure</span>
-              <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold uppercase tracking-wide">Ref: Trader's Manual</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-              The Trader's Guide to <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Futures Specials</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-              Markets are not perfectly efficient. They are constrained by <strong>logistics</strong>, <strong>storage</strong>, and <strong>math</strong>. This document details the structural anomalies—from the "Widowmaker" spread to negative oil—that define alpha and ruin.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/ayrGomS.jpeg" 
-              alt="Futures Specials Market Structure Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/ayrGomS.jpeg"
-          alt="Futures Specials Market Structure Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        <main className="max-w-6xl mx-auto px-6 lg:px-24 py-16 space-y-32">
+    <ArticleFrame slug="traders-guide-futures-specials-market-structure-anomalies">
+      <InfographicSlot alt="Futures Specials Market Structure Infographic" />
+      <main className="max-w-4xl mx-auto px-6 lg:px-24 py-16 space-y-32">
           {/* --- SECTION 1: TERM STRUCTURE --- */}
           <section>
             <SectionHeader 
@@ -1113,34 +1028,7 @@ export default function FuturesSpecialsArticle() {
             </div>
           </footer>
 
-          {/* Call-to-Action Section with Google Doc Link */}
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-300 py-12 px-6">
-          <div className="max-w-6xl mx-auto text-center">
-            <p className="text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

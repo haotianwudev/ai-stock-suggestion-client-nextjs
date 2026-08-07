@@ -1,12 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, Activity, BarChart2, GitMerge, Zap, ArrowRight, Target, Layers, Brain, AlertTriangle, Code, Scale, Clock, Minimize2, Shield, Briefcase, RefreshCw, CheckCircle2, Anchor, Feather, Crosshair, Eye, EyeOff, Globe, Sigma, Divide, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { Maximize2 } from 'lucide-react';
+import { BookOpen, TrendingUp, Activity, BarChart2, GitMerge, Zap, ArrowRight, Target, Layers, Brain, AlertTriangle, Code, Scale, Clock, Minimize2, Shield, Briefcase, RefreshCw, CheckCircle2, Anchor, Feather, Crosshair, Eye, EyeOff, Globe, Sigma, Divide, Music } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Utility Components ---
 const MathFraction = ({ num, den }: { num: React.ReactNode; den: React.ReactNode }) => (
@@ -33,111 +29,11 @@ const MathEq = ({ children, block = false }: { children: React.ReactNode; block?
 export default function ImpliedDistributionsTutor() {
   const [variant, setVariant] = useState('call');
   const [tradingTab, setTradingTab] = useState('skew');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
-  const currentArticle = articles.find(article => article.slug === 'unlocking-volatility-surface-risk-neutral-densities-butterfly-spread');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              Unlocking the <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-fuchsia-600">Volatility Surface</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-              Master the theoretical framework of <strong>Risk-Neutral Densities (RND)</strong>. Learn how to use the <strong>Butterfly Spread</strong> not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/LniOyTx.jpeg" 
-              alt="Volatility Surface and Risk-Neutral Densities Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/QbjJofS.jpeg" 
-              alt="Volatility Surface and Risk-Neutral Densities Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/2I6QQmG.jpeg"
-          alt="Volatility Surface and Risk-Neutral Densities Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-        {/* Main Content Starts Here */}
-        <main className="max-w-5xl mx-auto px-6 py-16">
+    <ArticleFrame slug="unlocking-volatility-surface-risk-neutral-densities-butterfly-spread">
+      <InfographicSlot alt="Volatility Surface and Risk-Neutral Densities Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
           {/* Section 1: The Epistemology of Price */}
           <section>
             <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -1033,50 +929,8 @@ export default function ImpliedDistributionsTutor() {
             </div>
           </section>
 
-          {/* Continue Learning Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
 
-          {/* Conclusion */}
-          <footer className="bg-indigo-900 text-indigo-100 rounded-3xl p-8 md:p-16 mt-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-fuchsia-500 rounded-full blur-[128px] opacity-30"></div>
-            <div className="relative z-10 text-center">
-              <div className="inline-block p-4 rounded-full bg-indigo-800 mb-6">
-                <Brain size={32} className="text-indigo-300" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Probability Microscope</h2>
-              <p className="max-w-3xl mx-auto text-lg leading-relaxed mb-8 text-indigo-200">
-                The Butterfly Spread is more than a trade; it is a measuring device. By observing the price of the butterfly across different strikes, we trace the silhouette of the market's expectations. While others trade price, the advanced practitioner trades the <em>distribution</em> of price.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-indigo-300">
-                <span className="px-4 py-2 bg-indigo-950/50 rounded-full border border-indigo-700/50">Implied Volatility</span>
-                <span className="px-4 py-2 bg-indigo-950/50 rounded-full border border-indigo-700/50">Risk Neutral Density</span>
-                <span className="px-4 py-2 bg-indigo-950/50 rounded-full border border-indigo-700/50">Stochastic Calculus</span>
-                <span className="px-4 py-2 bg-indigo-950/50 rounded-full border border-indigo-700/50">Quantitative Finance</span>
-              </div>
-            </div>
-          </footer>
-
-          <div className="text-center text-slate-400 text-xs py-12 flex flex-col gap-2">
-            <p>© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p>Calculations assume European options and frictionless markets.</p>
-          </div>
         </main>
-      </div>
-    </>
+    </ArticleFrame>
   );
 }

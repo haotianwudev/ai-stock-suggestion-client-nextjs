@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Zap, Globe, AlertTriangle, BookOpen, Cpu, Landmark, PieChart, Activity, ShieldAlert, Search, Users, Clock, Scale, EyeOff, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Zap, Globe, AlertTriangle, BookOpen, Landmark, PieChart, Activity, Search, Users, Clock, Scale, EyeOff } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 const Section = ({ children, className = "", id = "" }: { children: React.ReactNode; className?: string; id?: string }) => (
@@ -99,101 +96,12 @@ const HoldingRow = ({ rank, name, ticker, allocation, type }: { rank: number; na
 );
 
 export default function DuquesneParadigmArticle() {
-  const currentArticle = articles.find(article => article.slug === 'duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025');
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = totalScroll / windowHeight;
-      setScrollProgress(scroll);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-purple-200 selection:text-purple-900">
-        {/* Progress Bar */}
-        <div 
-          className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 transition-all duration-300 ease-out" 
-          style={{ width: `${scrollProgress * 100}%` }} 
-        />
-
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025">
+      <div className="bg-transparent font-sans text-slate-900">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Duquesne Portfolio Analysis Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-slate-50 pt-24 pb-20 md:pt-32 md:pb-28">
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]"></div>
-          <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
-            <div className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
-              Q4 2025 Filing Analysis
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-              The Duquesne <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Paradigm</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed">
-              Decoding Stanley Druckenmiller's $4.5B portfolio shift: A tutorial on macro-investing, the "Warsh Effect," and the pivot from AI hardware to energy infrastructure.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/sde80uK.jpeg" 
-              alt="Duquesne Portfolio Analysis Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/sde80uK.jpeg"
-          alt="Duquesne Portfolio Analysis Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         {/* Intro Context */}
         <Section>
@@ -602,34 +510,7 @@ export default function DuquesneParadigmArticle() {
           </TutorialTip>
         </Section>
 
-        {/* Call to Action */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="bg-slate-50 border-t border-slate-200 py-12 mt-24">
-          <div className="max-w-5xl mx-auto px-6 text-center">
-            <p className="text-slate-500 font-medium mb-2">Research based on Q4 2025 13F Filings & Public Analysis</p>
-            <p className="text-slate-400 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

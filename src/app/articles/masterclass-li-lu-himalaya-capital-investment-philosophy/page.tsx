@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, BookOpen, Globe, ShieldAlert, PieChart, Users, Award, AlertTriangle, Briefcase, Maximize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, BookOpen, Globe, ShieldAlert, PieChart, Users, Award, AlertTriangle, Briefcase } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Data Models ---
 const portfolioData = [
@@ -44,86 +41,12 @@ const philosophyPillars = [
 ];
 
 export default function LiLuMasterclass() {
-  const currentArticle = articles.find(article => article.slug === 'masterclass-li-lu-himalaya-capital-investment-philosophy');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-200 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="masterclass-li-lu-himalaya-capital-investment-philosophy">
+      <div className="bg-transparent font-sans">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Li Lu Investment Philosophy Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-32 px-6 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div className="absolute top-32 right-12 w-80 h-80 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div className="absolute -bottom-24 left-1/2 w-96 h-96 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          </div>
-          <div className="max-w-5xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/40 text-indigo-800 font-semibold tracking-wide text-sm mb-8 shadow-sm">
-              <Award className="w-4 h-4" />
-              Himalaya Capital Management
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-              The Masterclass of <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">Li Lu</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-light">
-              A deep-dive tutorial into the philosophy, portfolio architecture, and multi-decade compounding machine built by one of the greatest contemporary value investors.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/TToEct5.jpeg" 
-              alt="Li Lu Investment Philosophy Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/TToEct5.jpeg"
-          alt="Li Lu Investment Philosophy Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         {/* Biography Section */}
         <section className="py-24 px-6 bg-white">
@@ -381,34 +304,7 @@ export default function LiLuMasterclass() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center max-w-5xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 py-12 text-center text-slate-400">
-          <div className="max-w-4xl mx-auto px-6">
-            <Award className="w-8 h-8 mx-auto mb-6 text-slate-600" />
-            <p className="text-sm">"True value investing requires an investor to be comfortable operating entirely isolated from consensus."</p>
-            <p className="text-xs mt-4 opacity-50">Educational Material based on Himalaya Capital Q4 2025 Disclosures & Biographical Data.</p>
-            <p className="text-xs mt-6 opacity-50">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

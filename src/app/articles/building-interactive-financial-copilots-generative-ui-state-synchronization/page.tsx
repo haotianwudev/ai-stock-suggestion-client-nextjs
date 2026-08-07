@@ -1,17 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Maximize2 } from 'lucide-react';
 import {
   LineChart, Database, ShieldCheck, Cpu, Layers,
   Code2, Zap, Lock, Braces, ArrowRight, Server, ShieldAlert,
   Search, TableProperties, Terminal, CheckCircle2, XCircle,
   LayoutTemplate, ExternalLink
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable UI Components ---
 const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: {
@@ -90,89 +85,10 @@ const ComparisonTable = ({ headers, rows }: { headers: string[]; rows: (string |
 );
 
 export default function FinancialCopilotArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(
-    article => article.slug === 'building-interactive-financial-copilots-generative-ui-state-synchronization'
-  );
-
-  const infographicUrl = "https://i.imgur.com/EMfMO9X.png";
-
   return (
-    <div className="min-h-screen bg-[#FAFAFC] font-sans text-slate-900">
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug || 'building-interactive-financial-copilots-generative-ui-state-synchronization'}
-          />
-        </>
-      )}
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="relative pt-16 pb-20 overflow-hidden border-b border-slate-200 bg-white mt-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white -z-0"></div>
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center mb-6 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-semibold text-sm shadow-sm">
-            <Terminal className="w-4 h-4 mr-2" />
-            Advanced Architectural Masterclass
-          </div>
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-bold rounded-full uppercase tracking-wider">Deep Research</span>
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full uppercase tracking-wider">AI &amp; Machine Learning</span>
-            <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full uppercase tracking-wider">March 15, 2026</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-800 mb-6 tracking-tight leading-[1.1]">
-            Building Interactive<br />Financial Copilots
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-light">
-            A comprehensive deep-dive on designing Generative UIs, mastering state synchronization without re-render jank, and implementing secure, bi-directional LLM interactions for institutional-grade financial dashboards.
-          </p>
-        </div>
-      </header>
-
-      {/* Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img
-            src={infographicUrl}
-            alt="Building Interactive Financial Copilots - Architecture Overview"
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src={infographicUrl}
-        alt="Building Interactive Financial Copilots - Architecture Overview"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <main className="max-w-5xl mx-auto px-6 py-16 space-y-24">
+    <ArticleFrame slug="building-interactive-financial-copilots-generative-ui-state-synchronization">
+      <InfographicSlot alt="Building Interactive Financial Copilots - Architecture Overview" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
 
         {/* Section 1: Paradigm Shift */}
         <section className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-indigo-100/50 border border-indigo-50 relative overflow-hidden">
@@ -760,35 +676,7 @@ function DashboardControls() {
           </p>
         </section>
 
-        {/* Google Doc CTA */}
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-2xl border border-indigo-100 text-center">
-          <h3 className="text-2xl font-bold text-slate-800 mb-4">Read the Full Research Paper</h3>
-          <p className="text-slate-600 mb-6 max-w-2xl mx-auto">Access the complete academic research document with full citations, extended framework comparisons, and detailed implementation references.</p>
-          <a
-            href="https://docs.google.com/document/d/e/2PACX-1vSywyhcvXBr6cIzQ-9ftPxtdvhNHHiz7_M_5GsQ5zFQBuXx1hyhCzmUco_0DcIO5JN9vBzHQho_j9v1/pub"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-800 transition-colors duration-300"
-          >
-            <ExternalLink className="inline mr-2 h-5 w-5" />
-            Read Full Research Paper
-          </a>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-          <p className="text-slate-500 text-sm leading-relaxed">
-            This article is for educational and informational purposes only. It does not constitute financial, investment, or legal advice. All code examples are illustrative and should be reviewed by qualified engineers before production deployment.
-          </p>
-        </div>
-
       </main>
-
-      <footer className="max-w-5xl mx-auto px-6 mt-8 text-center border-t border-slate-200 pt-10 pb-16">
-        <p className="text-slate-500 text-sm">
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

@@ -1,96 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, Shield, DollarSign, AlertTriangle, Activity, Clock, BarChart2, Target, CheckCircle, XCircle, BookOpen, ArrowRight, Info, Scale, Percent, Divide, Layers, CheckSquare, HelpCircle, MousePointer, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, TrendingDown, Shield, DollarSign, AlertTriangle, Activity, Clock, BarChart2, Target, CheckCircle, ArrowRight, Scale, Layers, CheckSquare, XCircle } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function VerticalDebitSpreads() {
-  const currentArticle = articles.find(article => article.slug === 'vertical-debit-spreads-strategic-architecture-defined-risk-trading');
   const [activeScenario, setActiveScenario] = useState('A');
   const [mathTab, setMathTab] = useState('financials');
   const [checklistStep, setChecklistStep] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'vertical-debit-spreads-strategic-architecture-defined-risk-trading'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="vertical-debit-spreads-strategic-architecture-defined-risk-trading">
+      <div className="bg-transparent font-sans text-slate-800">
+        <div className="max-w-6xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Vertical Debit Spreads Strategy Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-indigo-100 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-          <div className="max-w-6xl mx-auto px-6 py-24 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold mb-8 border border-indigo-100 shadow-sm animate-fadeIn">
-              <BookOpen size={16} />
-              <span>Options Strategy Masterclass</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight">
-              Vertical <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Debit Spreads</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              The strategic architecture of defined-risk trading. Stop gambling on naked options. Start financing your directional views with mathematical precision.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/yndWCwP.jpeg" 
-              alt="Vertical Debit Spreads Strategy Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <MousePointer className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/yndWCwP.jpeg"
-          alt="Vertical Debit Spreads Strategy Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         <main className="max-w-6xl mx-auto px-6 py-16 space-y-32">
           {/* Introduction Section */}
@@ -813,32 +737,9 @@ export default function VerticalDebitSpreads() {
               </div>
             </div>
           </section>
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="text-center text-slate-400 pb-12 pt-8 border-t border-slate-200">
-            <p className="mb-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p className="text-sm">Not financial advice. Options trading involves substantial risk.</p>
-          </footer>
         </main>
       </div>
-    </>
+    </ArticleFrame>
   );
 }
 

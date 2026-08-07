@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, X } from "lucide-react";
 import { articles } from "@/data/articles";
 import { Article, ArticleLabel } from "@/data/articles/types";
 import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data";
@@ -159,6 +159,44 @@ function VideoCard({ youtubeUrl, title }: { youtubeUrl: string; title: string })
           </button>
         )}
       </div>
+    </div>
+  );
+}
+
+// Sits directly below "Return to Home" — previousArticle is the chronologically
+// older entry (next index, since `articles` is newest-first), nextArticle is newer
+// (previous index). Either side is omitted when there's no adjacent article.
+function ArticleNavLinks({
+  previousArticle,
+  nextArticle,
+}: {
+  previousArticle?: Article;
+  nextArticle?: Article;
+}) {
+  if (!previousArticle && !nextArticle) return null;
+  const linkClass =
+    "flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] text-sm shadow-sm transition-colors";
+  const kickerClass = "block text-[10px] uppercase tracking-wide text-gray-400 dark:text-gray-500 font-semibold";
+  return (
+    <div className="flex flex-col gap-2">
+      {previousArticle && (
+        <Link href={`/articles/${previousArticle.slug}`} className={linkClass}>
+          <ArrowLeft className="h-4 w-4 shrink-0" />
+          <span className="min-w-0">
+            <span className={kickerClass}>Previous</span>
+            <span className="block truncate font-medium">{previousArticle.title}</span>
+          </span>
+        </Link>
+      )}
+      {nextArticle && (
+        <Link href={`/articles/${nextArticle.slug}`} className={`${linkClass} justify-end text-right`}>
+          <span className="min-w-0">
+            <span className={kickerClass}>Next</span>
+            <span className="block truncate font-medium">{nextArticle.title}</span>
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0" />
+        </Link>
+      )}
     </div>
   );
 }
@@ -383,7 +421,13 @@ export function ArticleFrame({
 }: ArticleFrameProps) {
   const [paperOpen, setPaperOpen] = useState(false);
   const [wikiOpen, setWikiOpen] = useState(false);
-  const currentArticle = articles.find((a) => a.slug === slug);
+  const currentIndex = articles.findIndex((a) => a.slug === slug);
+  const currentArticle = currentIndex >= 0 ? articles[currentIndex] : undefined;
+  // `articles` is newest-first, so the next index is the older (Previous) article
+  // and the previous index is the newer (Next) article. Out-of-range indices just
+  // resolve to undefined, which ArticleNavLinks already treats as "no link".
+  const previousArticle = articles[currentIndex + 1];
+  const nextArticle = articles[currentIndex - 1];
 
   if (!currentArticle) {
     return (
@@ -418,7 +462,7 @@ export function ArticleFrame({
         {/* Return to Home — only shown up here when there's no support-material panel
             to hold it; when the panel exists it moves there instead (see below). */}
         {!hasPanel && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 flex flex-col gap-2 items-start">
             <Link
               href="/"
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
@@ -426,6 +470,9 @@ export function ArticleFrame({
               <ArrowLeft className="h-4 w-4" />
               Return to Home
             </Link>
+            <div className="w-full max-w-md">
+              <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
+            </div>
           </div>
         )}
 
@@ -484,6 +531,7 @@ export function ArticleFrame({
                     <ArrowLeft className="h-4 w-4" />
                     Return to Home
                   </Link>
+                  <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
                   {hasVideo && <VideoCard youtubeUrl={currentArticle.youtubeUrl!} title={title} />}
                   {hasPaper && (
                     <PaperCard googleDoc={currentArticle.googleDoc!} onExpand={() => setPaperOpen(true)} />

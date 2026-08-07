@@ -157,6 +157,8 @@ export default function SeagullSpreadArticle() {
       pro: 'Capitalizes aggressively on the equity volatility smirk by selling heavily inflated OTM puts to seamlessly fund long positions.',
       con: 'Highly sensitive to sudden, adverse spikes in implied volatility (Negative Vega).'
     },
+  ];
+
   return (
     <ArticleFrame slug="seagull-spread-options-strategy-architecture">
       <InfographicSlot alt="Seagull Spread Options Strategy Infographic" />

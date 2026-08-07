@@ -1,12 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Clock, TrendingUp, TrendingDown, BarChart3, Zap, ShieldAlert, Target, Info, ArrowRight, MousePointer2, Users, Activity, Anchor, BookOpen, Scale, ZapOff, LineChart, Brain, Timer, Crosshair, Repeat, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { Maximize2 } from 'lucide-react';
+import { Clock, BarChart3, Zap, ShieldAlert, Target, ArrowRight, Users, Activity, Anchor, BookOpen, Scale, ZapOff, LineChart, Brain, Timer, Crosshair, Repeat } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`bg-white rounded-2xl shadow-sm border border-slate-100 p-8 ${className}`}>
@@ -49,9 +45,7 @@ const SectionHeading = ({ icon: Icon, title, subtitle, colorClass = "text-blue-6
 );
 
 export default function QuantifyingIntradayAlpha() {
-  const currentArticle = articles.find(article => article.slug === 'quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow');
   const [activeSlot, setActiveSlot] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const matrixData = [
     {
@@ -122,80 +116,11 @@ export default function QuantifyingIntradayAlpha() {
   ];
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow'} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow">
+      <div className="bg-transparent font-sans">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Intraday Alpha U-Curve Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative overflow-hidden bg-white border-b border-slate-200 pt-24 pb-32 px-6">
-          <div className="max-w-6xl mx-auto relative z-10">
-            <Badge color="indigo">Microstructure Research 2026</Badge>
-            <h1 className="mt-8 text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter">
-              QUANTIFYING <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">INTRADAY ALPHA</span>
-            </h1>
-            <p className="mt-8 text-xl text-slate-500 max-w-2xl leading-relaxed">
-              A research-driven exploration into how timing, volume clusters, and liquidity cycles dictate price action. Master the "U-Curve" and align your execution with global institutional flows.
-            </p>
-          </div>
-          <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-blue-50 rounded-full blur-[120px] opacity-60 pointer-events-none" />
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/C6fWtuH.jpeg" 
-              alt="Intraday Alpha U-Curve Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/C6fWtuH.jpeg"
-          alt="Intraday Alpha U-Curve Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         <main className="max-w-6xl mx-auto py-24 px-6 space-y-40">
           {/* Section 1: The Theory of the U-Curve */}
@@ -673,69 +598,11 @@ export default function QuantifyingIntradayAlpha() {
             </div>
           </section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        <footer className="bg-slate-900 py-24 px-6 text-white relative overflow-hidden">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-            <div className="max-w-md">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-                  <BarChart3 size={24} />
-                </div>
-                <span className="font-black text-2xl tracking-tighter uppercase">
-                  SOPHIE's Daddy Quant<span className="text-blue-500">.</span>
-                </span>
-              </div>
-              <p className="text-slate-400 leading-relaxed mb-8">
-                Empowering investors with institutional-grade market microstructure research and temporal data analysis.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-16 text-[10px] uppercase font-bold tracking-widest">
-              <div className="space-y-4">
-                <h5 className="text-blue-500">Research</h5>
-                <ul className="space-y-2 text-slate-400">
-                  <li>Order Flow</li>
-                  <li>Gamma Analysis</li>
-                  <li>VWAP Models</li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <h5 className="text-blue-500">Legal</h5>
-                <ul className="space-y-2 text-slate-400">
-                  <li>Risk Policy</li>
-                  <li>Data Sources</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-slate-800 text-[10px] text-slate-500 uppercase font-bold tracking-[0.2em] flex flex-col md:flex-row justify-between">
-            <span>© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</span>
-            <span>Not financial advice. Trade at your own risk.</span>
-          </div>
-          {/* Footer Decor */}
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
-        </footer>
 
         {/* Tailwind safelist for dynamic color classes */}
         <div className="hidden border-rose-500 border-blue-500 border-amber-500 border-indigo-500 border-emerald-500 text-rose-600 text-blue-600 text-amber-600 text-indigo-600 text-emerald-600 bg-rose-500 bg-blue-500 bg-amber-500 bg-indigo-500 bg-emerald-500" />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

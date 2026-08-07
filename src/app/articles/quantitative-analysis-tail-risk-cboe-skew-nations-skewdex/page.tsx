@@ -1,11 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Activity, BookOpen, Code, BarChart2, AlertTriangle, ArrowRight, Zap, Layers, Divide, Sigma, GitCommit, Clock, CheckCircle, XCircle, Brain, MousePointer, Maximize2, ExternalLink } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Activity, BookOpen, Code, BarChart2, AlertTriangle, ArrowRight, Zap, Layers, Divide, Sigma, GitCommit, Clock, CheckCircle, XCircle, Brain, MousePointer, Maximize2, ExternalLink } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Components ---
 const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: string; subtitle: string; icon: React.ElementType; colorClass: string }) => (
@@ -79,96 +75,16 @@ const StrategyCard = ({ title, signal, action, color, icon: Icon }: { title: str
 
 // --- Main Component ---
 export default function MarketSkewTutorial() {
-  const currentArticle = articles.find(article => article.slug === 'quantitative-analysis-tail-risk-cboe-skew-nations-skewdex');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-gray-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      {/* SEO Components */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <header className="bg-white border-b border-gray-200 py-20 px-4 md:px-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-50 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/4"></div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-semibold mb-6">
-            <Activity size={16} />
-            <span>Advanced Market Mechanics</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Quantitative Analysis of <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-600">Tail Risk</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed mb-8">
-            A comprehensive deep dive into <span className="font-semibold text-gray-900">CBOE SKEW</span> and <span className="font-semibold text-gray-900">Nations SkewDex</span>. Understanding the geometry of market fear beyond the VIX.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm font-medium text-gray-500">
-            <span className="flex items-center gap-1"><Clock size={16}/> 25 min read</span>
-            <span className="flex items-center gap-1"><Code size={16}/> Python Included</span>
-            <span className="flex items-center gap-1"><Brain size={16}/> Advanced Level</span>
-          </div>
+    <ArticleFrame
+      slug="quantitative-analysis-tail-risk-cboe-skew-nations-skewdex"
+      additionalDisclaimer="The mathematical models discussed are simplified representations for educational understanding. Always consult with qualified financial professionals before making investment decisions."
+    >
+      <div className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-24 bg-transparent selection:bg-indigo-100 selection:text-indigo-900 font-sans">
+        <div className="-mb-12">
+          <InfographicSlot alt="Market Skew Analysis Infographic" />
         </div>
-      </header>
 
-      {/* Hero Infographic */}
-      {currentArticle?.imageUrl && (
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src={currentArticle.imageUrl} 
-              alt="Market Skew Analysis Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Full-screen image viewer */}
-      {currentArticle?.imageUrl && (
-        <FullScreenImageViewer
-          src={currentArticle.imageUrl}
-          alt="Market Skew Analysis Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-      )}
-
-      {/* Main Content Container */}
-      <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-24">
         {/* 1. Introduction */}
         <section>
           <SectionHeader 
@@ -1162,32 +1078,7 @@ example_calculation()`} />
           </Card>
         </section>
 
-        {/* Call to Action */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-indigo-50 to-rose-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <ExternalLink className="mr-2 h-5 w-5" />
-                Read Full Research Paper
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* Footer */}
-        <footer className="border-t border-gray-200 py-12 text-center text-gray-500">
-          <p className="mb-2">© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          <p className="text-xs max-w-lg mx-auto">
-            Disclaimer: This content is for educational purposes only. Trading options involves significant risk. None of the strategies discussed constitute financial advice.
-          </p>
-        </footer>
-      </main>
-    </div>
+      </div>
+    </ArticleFrame>
   );
 }

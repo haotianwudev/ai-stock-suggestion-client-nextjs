@@ -1,15 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Activity, Clock, AlertTriangle, ShieldAlert, Brain, Target, Zap, MousePointer2, Search, ArrowRight, Briefcase, Ghost, RefreshCw, Anchor, Wind, Server, Database, Layers, Network, XCircle, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, Activity, AlertTriangle, ShieldAlert, Target, Zap, MousePointer2, ArrowRight, Briefcase, Ghost, Anchor, Wind, Server, Database, Layers, Network } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function MicrostructureIntradayOptionSpeculation() {
-  const currentArticle = articles.find(article => article.slug === 'microstructure-intraday-option-speculation-mechanics-strategies-risks');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const introData = {
     title: "The Microstructure of Intraday Option Speculation",
@@ -23,124 +18,42 @@ export default function MicrostructureIntradayOptionSpeculation() {
   };
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-white pt-20 pb-16 lg:pt-32 lg:pb-24">
-        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full" />
-          <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-100 to-transparent rounded-tr-full" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100">
-            <TrendingUp className="w-4 h-4 mr-2" />
-            Advanced Market Mechanics
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
-            Option <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Alpha & Risk</span>
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed">
-            {introData.summary}
-          </p>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {introData.stats.map((stat, idx) => (
-              <div key={idx} className="flex flex-col p-6 bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <dt className="order-2 mt-2 text-lg leading-6 font-medium text-slate-500">{stat.label}</dt>
-                <dd className="order-1 text-4xl font-extrabold text-slate-900">{stat.value}</dd>
-                <div className="order-3 mt-1 text-xs text-slate-400 font-medium uppercase tracking-wider">{stat.sub}</div>
-              </div>
-            ))}
+    <ArticleFrame slug="microstructure-intraday-option-speculation-mechanics-strategies-risks">
+      <div className="bg-transparent font-sans">
+        <div className="relative overflow-hidden bg-white pt-20 pb-16 lg:pt-32 lg:pb-24">
+          <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+            <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full" />
+            <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-100 to-transparent rounded-tr-full" />
           </div>
-        </div>
-      </div>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/vQoeqIu.jpeg" 
-            alt="Intraday Option Speculation Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100">
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Advanced Market Mechanics
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
+              Option <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Alpha & Risk</span>
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed">
+              {introData.summary}
+            </p>
+            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+              {introData.stats.map((stat, idx) => (
+                <div key={idx} className="flex flex-col p-6 bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <dt className="order-2 mt-2 text-lg leading-6 font-medium text-slate-500">{stat.label}</dt>
+                  <dd className="order-1 text-4xl font-extrabold text-slate-900">{stat.value}</dd>
+                  <div className="order-3 mt-1 text-xs text-slate-400 font-medium uppercase tracking-wider">{stat.sub}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/8rvCF1r.jpeg" 
-            alt="Intraday Option Speculation Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
+
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Intraday Option Speculation Infographic" />
         </div>
-      </section>
 
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/vQoeqIu.jpeg"
-        alt="Intraday Option Speculation Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Greeks Section */}
         <div className="bg-white rounded-3xl shadow-xl p-8 border border-slate-100 mb-24">
           <div className="text-center mb-16">
@@ -663,33 +576,8 @@ export default function MicrostructureIntradayOptionSpeculation() {
           </div>
         </div>
 
-        {/* Call to Action - Google Doc Link */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Brain className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            </div>
-          </div>
-        )}
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <p className="text-slate-400 text-sm text-center max-w-2xl">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only. Based on "The Microstructure of Intraday Option Speculation" (2025). This data is for educational purposes only and does not constitute financial advice. Trading options involves significant risk and is not suitable for all investors.
-          </p>
-        </div>
-      </footer>
-    </>
+        </main>
+      </div>
+    </ArticleFrame>
   );
 }

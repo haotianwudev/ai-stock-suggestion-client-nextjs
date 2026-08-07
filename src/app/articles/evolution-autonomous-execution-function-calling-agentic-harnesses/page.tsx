@@ -1,17 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import {
-  ArrowLeft, Maximize2, ExternalLink, Music,
+  Maximize2, ExternalLink, Music,
   Brain, FileJson, Network, Terminal, Cpu, TrendingUp, ShieldCheck, Database,
   Zap, Activity, ChevronRight, Code, Layers, Globe, Clock, Search, Lock,
   RefreshCw, LineChart, FileBarChart, Users, Calculator, BookOpen, Lightbulb,
   Rocket, Target, GitMerge, Box
 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 const SLUG = 'evolution-autonomous-execution-function-calling-agentic-harnesses';
 const GOOGLE_DOC = 'https://docs.google.com/document/d/e/2PACX-1vREwLPbeeZpEgh7kfYl8auX_3t2UxdBa5Hj8-eaYe1xx9vciC342fXq4uRcD8wBx_OaMuyScnQZovbs/pub';
@@ -89,68 +87,29 @@ const ComparisonTable = ({ headers, rows }: { headers: string[]; rows: string[][
 );
 
 export default function EvolutionAutonomousExecution() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(a => a.slug === SLUG);
-
+  const currentArticle = articles.find((a) => a.slug === SLUG);
   return (
-    <div className="min-h-screen bg-[#fafafa] font-sans text-slate-800 selection:bg-blue-200 selection:text-blue-900 pb-24">
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={SLUG} />
-        </>
-      )}
-
-      {/* Return to Home */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="bg-white border-b border-slate-200 pt-28 pb-20 px-6 relative overflow-hidden mt-6">
-        <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-[80px] pointer-events-none" />
-        <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-tr from-emerald-400/20 to-cyan-500/20 rounded-full blur-[80px] pointer-events-none" />
-        <div className="max-w-5xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-bold text-xs tracking-widest uppercase mb-8 border border-slate-200 shadow-sm">
-            <Activity className="w-4 h-4 text-blue-600" />
-            <span>Interactive Technical Tutorial</span>
+    <ArticleFrame slug={SLUG}>
+      <InfographicSlot alt="Evolution of Autonomous Execution Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
+        {/* Hero */}
+        <header className="bg-white border-b border-slate-200 pt-28 pb-20 px-6 relative overflow-hidden mt-6">
+          <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-tr from-emerald-400/20 to-cyan-500/20 rounded-full blur-[80px] pointer-events-none" />
+          <div className="max-w-5xl mx-auto relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-bold text-xs tracking-widest uppercase mb-8 border border-slate-200 shadow-sm">
+              <Activity className="w-4 h-4 text-blue-600" />
+              <span>Interactive Technical Tutorial</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
+              The Evolution of <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600">Autonomous Execution</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
+              From Legacy Function Calling to Agentic Skills-Based Harnesses in Quantitative Finance.
+            </p>
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
-            The Evolution of <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600">Autonomous Execution</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            From Legacy Function Calling to Agentic Skills-Based Harnesses in Quantitative Finance.
-          </p>
-        </div>
-      </header>
-
-      {/* Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img src={INFOGRAPHIC} alt="Evolution of Autonomous Execution Infographic" className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]" />
-          <button
-            onClick={(e) => { e.stopPropagation(); setIsImageViewerOpen(true); }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">Click to view full screen</div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer src={INFOGRAPHIC} alt="Evolution of Autonomous Execution Infographic" isOpen={isImageViewerOpen} onClose={() => setIsImageViewerOpen(false)} />
-
-      <main className="max-w-5xl mx-auto px-6 space-y-32 mt-20">
+        </header>
 
         {/* Intro */}
         <section className="prose prose-lg prose-slate max-w-none text-slate-600 bg-white p-10 rounded-3xl shadow-sm border border-slate-200">
@@ -1242,19 +1201,7 @@ async function processUserRequest(userPrompt: string, messageHistory: any[]) {
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-          <p className="text-slate-500 text-sm leading-relaxed">
-            This article is for educational and informational purposes only. It does not constitute financial, investment, or legal advice. All code examples are illustrative and should be reviewed by qualified engineers before production deployment.
-          </p>
-        </div>
       </div>
-
-      <footer className="max-w-5xl mx-auto px-6 mt-8 text-center border-t border-slate-200 pt-10 pb-16">
-        <p className="text-slate-500 text-sm">
-          &copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </p>
-      </footer>
-    </div>
+    </ArticleFrame>
   );
 }

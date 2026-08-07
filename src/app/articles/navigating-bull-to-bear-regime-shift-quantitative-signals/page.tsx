@@ -32,7 +32,7 @@ export default function NavigatingBullToBearRegimeShift() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
               <h2 className="text-3xl font-bold mb-4">The Theoretical Framework</h2>
               <p className="text-lg text-blue-100 leading-relaxed mb-6">
-                Financial markets do not operate in a permanent state of equilibrium. The transition from a mature, low-volatility bull market to a structural bear market is a "phase transition." During this time, long-established statistical relationships and correlations systematically break down.
+                Financial markets do not operate in a permanent state of equilibrium. The transition from a mature, low-volatility bull market to a structural bear market is a &ldquo;phase transition.&rdquo; During this time, long-established statistical relationships and correlations systematically break down.
               </p>
               <div className="bg-white/10 p-6 rounded-xl border border-white/20 backdrop-blur-sm">
                 <h3 className="text-xl font-semibold mb-2 flex items-center">
@@ -236,7 +236,7 @@ export default function NavigatingBullToBearRegimeShift() {
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold mb-3">The Kelly Criterion & Fractional Kelly</h3>
                   <p className="text-slate-300 mb-4">
-                    Trading at "Full Kelly" in financial markets is inherently dangerous due to non-stationary distributions and fat tails. Quantitative managers universally employ <strong>Fractional Kelly</strong> (Half or Quarter) to reduce portfolio variance and probability of ruin.
+                    Trading at &ldquo;Full Kelly&rdquo; in financial markets is inherently dangerous due to non-stationary distributions and fat tails. Quantitative managers universally employ <strong>Fractional Kelly</strong> (Half or Quarter) to reduce portfolio variance and probability of ruin.
                   </p>
                   <div className="inline-block bg-slate-800 border border-slate-700 rounded-lg p-4 font-mono text-emerald-300 text-lg shadow-inner">
                     f* = (bp - q) / b
@@ -368,8 +368,6 @@ export default function NavigatingBullToBearRegimeShift() {
               </div>
             </div>
           </section>
-        </div>
-
       </div>
     </ArticleFrame>
   );

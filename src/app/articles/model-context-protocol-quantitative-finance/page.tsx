@@ -432,7 +432,7 @@ async with client:
             </div>
           </div>
         </Section>
-
+      </main>
     </ArticleFrame>
   );
 }

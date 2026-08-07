@@ -1,13 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { ArrowLeft, Activity, BarChart2, Layers, TrendingUp, Zap, AlertTriangle, Eye, Database, Cpu, ShieldAlert, ArrowRight, Target, Anchor, Ghost, Maximize2, Minimize2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
-// --- Components ---
 const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: { icon: React.ElementType; title: string; subtitle: string; colorClass: string }) => (
   <div className="mb-8 border-b border-slate-200 pb-4">
     <div className={`flex items-center gap-3 mb-2 ${colorClass}`}>
@@ -85,94 +81,15 @@ const ComparisonTable = () => (
   </div>
 );
 
-// --- Main Application ---
+
 export default function OrderFlowTutorial() {
-  const currentArticle = articles.find(article => article.slug === 'order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('https://i.imgur.com/enU8l7J.jpeg');
-
-  const openImageViewer = (imageUrl: string) => {
-    setCurrentImage(imageUrl);
-    setIsImageViewerOpen(true);
-  };
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps">
+      <div className="space-y-24">
 
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
+          <InfographicSlot alt="Order Flow Anomalies Infographic" />
 
-        {/* Hero Section */}
-        <header className="bg-white border-b border-slate-200 pt-20 pb-16 px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium mb-6">
-              <Activity size={16} />
-              <span>Market Microstructure Series</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-              Order Flow <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">Anomalies</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-              A deep analysis of sweeps, footprint mechanics, and institutional traps. Distinguish genuine accumulation from engineered liquidity events.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => openImageViewer('https://i.imgur.com/enU8l7J.jpeg')}
-          >
-            <img 
-              src="https://i.imgur.com/enU8l7J.jpeg" 
-              alt="Order Flow Anomalies Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                openImageViewer('https://i.imgur.com/enU8l7J.jpeg');
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src={currentImage}
-          alt="Order Flow Analysis"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-24">
-          {/* 1. Introduction */}
+{/* 1. Introduction */}
           <section>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -198,7 +115,7 @@ export default function OrderFlowTutorial() {
                   Exchanges process trillions of shares daily. HFT firms exploit tiny speed advantages (microseconds) to front-run institutional orders across fragmented venues. Co-location services place servers physically next to exchange matching engines, reducing latency to under 100 microseconds.
                 </InfoCard>
                 <InfoCard title="Data Blindness" icon={Eye} accentColor="slate">
-                  Traditional OHLC charts hide the "volumetric distribution" of transactions. They show <em>where</em> price went, but not <em>how</em> hard it fought to get there. A 5-point rally on 100 shares tells a very different story than the same move on 10,000 shares.
+                  Traditional OHLC charts hide the &ldquo;volumetric distribution&rdquo; of transactions. They show <em>where</em> price went, but not <em>how</em> hard it fought to get there. A 5-point rally on 100 shares tells a very different story than the same move on 10,000 shares.
                 </InfoCard>
                 <InfoCard title="Market Fragmentation" icon={Layers} accentColor="slate">
                   U.S. equities trade across 16+ lit exchanges plus dozens of dark pools. Options trade on 17 exchanges. This fragmentation creates arbitrage opportunities and makes it difficult to see the complete picture of institutional flow without sophisticated data aggregation.
@@ -219,7 +136,7 @@ export default function OrderFlowTutorial() {
             <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-xl mb-8">
               <h3 className="text-lg font-bold text-amber-900 mb-3">What Makes a Sweep Different?</h3>
               <p className="text-slate-700 leading-relaxed">
-                A sweep order is not just a large order—it's an order that explicitly bypasses the normal price-time priority rules. Under Regulation NMS, brokers must route orders to the exchange offering the best price (NBBO). An <strong>Intermarket Sweep Order (ISO)</strong> allows the trader to simultaneously execute across multiple exchanges at different prices, "sweeping" through multiple price levels instantly.
+                A sweep order is not just a large order&mdash;it&apos;s an order that explicitly bypasses the normal price-time priority rules. Under Regulation NMS, brokers must route orders to the exchange offering the best price (NBBO). An <strong>Intermarket Sweep Order (ISO)</strong> allows the trader to simultaneously execute across multiple exchanges at different prices, &ldquo;sweeping&rdquo; through multiple price levels instantly.
               </p>
               <p className="text-slate-700 leading-relaxed mt-3">
                 This behavior signals extreme urgency: the trader values speed and certainty of execution over price optimization. In options markets, sweeps often precede major volatility events or indicate informed positioning ahead of catalysts.
@@ -233,10 +150,10 @@ export default function OrderFlowTutorial() {
                   <h3 className="text-xl font-bold text-slate-900">Equity ISOs: Walking the Book</h3>
                 </div>
                 <p className="text-slate-600 mb-6 leading-relaxed text-sm">
-                  Institutional algorithms use <strong>Intermarket Sweep Orders (ISO)</strong> to bypass standard routing protections. Unlike standard orders that wait for the best price, an ISO commands the exchange to "execute immediately at any price."
+                  Institutional algorithms use <strong>Intermarket Sweep Orders (ISO)</strong> to bypass standard routing protections. Unlike standard orders that wait for the best price, an ISO commands the exchange to &ldquo;execute immediately at any price.&rdquo;
                 </p>
                 <p className="text-slate-600 mb-6 leading-relaxed text-sm">
-                  When a large institution needs to establish or exit a position quickly—perhaps ahead of a news event or to rebalance a portfolio—they cannot afford to wait for the market to naturally absorb their order. The ISO allows them to "walk the book," consuming liquidity at progressively worse prices until the entire order is filled.
+                  When a large institution needs to establish or exit a position quickly&mdash;perhaps ahead of a news event or to rebalance a portfolio&mdash;they cannot afford to wait for the market to naturally absorb their order. The ISO allows them to &ldquo;walk the book,&rdquo; consuming liquidity at progressively worse prices until the entire order is filled.
                 </p>
                 <div className="bg-slate-50 p-5 rounded-xl mb-6 border border-slate-100">
                   <h4 className="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
@@ -253,7 +170,7 @@ export default function OrderFlowTutorial() {
                     </li>
                     <li className="flex gap-3 text-xs text-slate-600">
                       <div className="w-8 text-center font-mono font-bold text-slate-400">2ms</div>
-                      <span>Price "gaps" up. Passive sellers were skipped (Walked the Book).</span>
+                      <span>Price &ldquo;gaps&rdquo; up. Passive sellers were skipped (Walked the Book).</span>
                     </li>
                     <li className="flex gap-3 text-xs text-slate-600">
                       <div className="w-8 text-center font-mono font-bold text-slate-400">3ms</div>
@@ -282,7 +199,7 @@ export default function OrderFlowTutorial() {
                   <div className="flex items-start gap-3 p-3 bg-violet-50 rounded-lg border border-violet-100">
                     <div className="mt-1"><Zap size={16} className="text-violet-600" /></div>
                     <div>
-                      <h4 className="font-bold text-violet-900 text-sm">The "Vanilla" Sweep (Directional)</h4>
+                      <h4 className="font-bold text-violet-900 text-sm">The &ldquo;Vanilla&rdquo; Sweep (Directional)</h4>
                       <p className="text-xs text-violet-800 mt-1">
                         A single contract (e.g., AAPL 150C) swept across 12 exchanges simultaneously. <br/>
                         <strong>Signal:</strong> Pure panic buying or selling. Often precedes major price moves.
@@ -324,13 +241,13 @@ export default function OrderFlowTutorial() {
                     If <span className="text-white font-bold">Vol &lt; OI</span>, it may just be closing/covering an old trade.
                   </p>
                   <p className="text-slate-400 text-xs mt-3 italic">
-                    Pro Tip: Check OI from the previous day. Intraday OI updates are delayed, so compare today's volume to yesterday's OI for the most accurate signal.
+                    Pro Tip: Check OI from the previous day. Intraday OI updates are delayed, so compare today&apos;s volume to yesterday&apos;s OI for the most accurate signal.
                   </p>
                 </div>
                 <div className="border-l-2 border-amber-500 pl-4">
                   <h4 className="font-bold text-amber-400 text-sm mb-2 uppercase tracking-wide">2. Time & Moneyness</h4>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    <strong>Weekly OTM (Out-of-the-money)</strong> sweeps indicate extreme urgency and "gamma" chasing.<br/>
+                    <strong>Weekly OTM (Out-of-the-money)</strong> sweeps indicate extreme urgency and &ldquo;gamma&rdquo; chasing.<br/>
                     <strong>Leaps (1yr+)</strong> indicate long-term investment, not a tactical trade signal.
                   </p>
                   <p className="text-slate-400 text-xs mt-3 italic">
@@ -358,7 +275,7 @@ export default function OrderFlowTutorial() {
                 <Eye size={20} /> Reading Between the Lines
               </h4>
               <p className="text-slate-700 text-sm leading-relaxed mb-3">
-                The execution method reveals as much as the direction. A massive call sweep executed via ISO across 12 exchanges signals panic buying—someone needs exposure NOW and is willing to pay any price. Compare this to a similar-sized order executed via VWAP algo over 2 hours, which suggests accumulation without urgency.
+                The execution method reveals as much as the direction. A massive call sweep executed via ISO across 12 exchanges signals panic buying&mdash;someone needs exposure NOW and is willing to pay any price. Compare this to a similar-sized order executed via VWAP algo over 2 hours, which suggests accumulation without urgency.
               </p>
               <p className="text-slate-700 text-sm leading-relaxed">
                 Professional traders use this information to gauge conviction. High urgency + large size + technical breakout = high probability setup. Low urgency + large size + mid-range = likely hedging or rebalancing.
@@ -384,7 +301,7 @@ export default function OrderFlowTutorial() {
                     A standard candlestick only shows High, Low, Open, and Close. The Footprint Chart splits the bar to show volume traded at the <span className="text-rose-400 font-bold">BID</span> (Sellers initiating) and the <span className="text-emerald-400 font-bold">ASK</span> (Buyers initiating) at every price tick.
                   </p>
                   <p className="text-slate-300 mb-6 leading-relaxed text-sm">
-                    This granular view reveals the true battle between buyers and sellers. When aggressive buyers hit the ask, they're saying "I need to buy NOW at any price." When aggressive sellers hit the bid, they're saying "I need to sell NOW." The balance of this aggression determines short-term price direction.
+                    This granular view reveals the true battle between buyers and sellers. When aggressive buyers hit the ask, they&apos;re saying &ldquo;I need to buy NOW at any price.&rdquo; When aggressive sellers hit the bid, they&apos;re saying &ldquo;I need to sell NOW.&rdquo; The balance of this aggression determines short-term price direction.
                   </p>
                   <div className="flex gap-4">
                     <div className="px-4 py-2 bg-slate-800 rounded border border-slate-700">
@@ -449,10 +366,10 @@ export default function OrderFlowTutorial() {
                   <h3 className="text-xl font-bold text-slate-900">Stacked Imbalances</h3>
                 </div>
                 <p className="text-slate-600 mb-4 text-sm">
-                  An imbalance occurs when the diagonal volume difference exceeds ~300%. When these stack vertically (3+ in a row), they create a "Brick Wall."
+                  An imbalance occurs when the diagonal volume difference exceeds ~300%. When these stack vertically (3+ in a row), they create a &ldquo;Brick Wall.&rdquo;
                 </p>
                 <p className="text-slate-600 mb-4 text-sm">
-                  Stacked imbalances represent zones where one side completely dominated. These zones act as magnets—price tends to revisit them because they represent unfinished business or trapped traders.
+                  Stacked imbalances represent zones where one side completely dominated. These zones act as magnets&mdash;price tends to revisit them because they represent unfinished business or trapped traders.
                 </p>
                 <ul className="space-y-3 mb-6">
                   <li className="flex gap-3 text-sm text-slate-700">
@@ -486,7 +403,7 @@ export default function OrderFlowTutorial() {
                     Price moves up because limit orders (liquidity) are thin, NOT because buying is strong. The negative delta proves aggressive sellers are actually present, absorbing the move.
                   </p>
                   <p className="text-xs text-rose-700 leading-relaxed mt-2">
-                    Think of it as a "fake breakout." Price makes a new high, retail traders chase, but institutions are selling into the rally. When the buying exhausts, price collapses back down, trapping the late buyers.
+                    Think of it as a &ldquo;fake breakout.&rdquo; Price makes a new high, retail traders chase, but institutions are selling into the rally. When the buying exhausts, price collapses back down, trapping the late buyers.
                   </p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 mb-4">
@@ -511,7 +428,7 @@ export default function OrderFlowTutorial() {
                 <div>
                   <h4 className="font-bold text-emerald-700 mb-2 flex items-center gap-2">Finished Auction</h4>
                   <p className="text-slate-600 mb-4 text-sm">
-                    Characterized by a "zero print" at the extreme (e.g., 0 x 20). This signals <strong>Exhaustion</strong>. No more aggressive participants are willing to trade at this price. The market must reverse to find liquidity.
+                    Characterized by a &ldquo;zero print&rdquo; at the extreme (e.g., 0 x 20). This signals <strong>Exhaustion</strong>. No more aggressive participants are willing to trade at this price. The market must reverse to find liquidity.
                   </p>
                   <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-100 mb-3">
                     <p className="text-xs text-emerald-800 font-mono">
@@ -521,7 +438,7 @@ export default function OrderFlowTutorial() {
                     </p>
                   </div>
                   <p className="text-slate-600 text-xs leading-relaxed">
-                    This is the "end of the road." All willing sellers at this price have been exhausted. Price must either reverse or consolidate until new sellers appear.
+                    This is the &ldquo;end of the road.&rdquo; All willing sellers at this price have been exhausted. Price must either reverse or consolidate until new sellers appear.
                   </p>
                   <div className="h-1 bg-emerald-200 w-full mt-2"></div>
                 </div>
@@ -530,7 +447,7 @@ export default function OrderFlowTutorial() {
                 <div>
                   <h4 className="font-bold text-amber-700 mb-2 flex items-center gap-2">Unfinished Auction</h4>
                   <p className="text-slate-600 mb-4 text-sm">
-                    Significant volume on both sides at the extreme high/low (e.g., 50 x 50). The auction was interrupted. Price acts as a <strong>Magnet</strong> and will likely revisit this level to clean up the "unfinished business."
+                    Significant volume on both sides at the extreme high/low (e.g., 50 x 50). The auction was interrupted. Price acts as a <strong>Magnet</strong> and will likely revisit this level to clean up the &ldquo;unfinished business.&rdquo;
                   </p>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-100 mb-3">
                     <p className="text-xs text-amber-800 font-mono">
@@ -554,13 +471,13 @@ export default function OrderFlowTutorial() {
                   </p>
                   <div className="bg-blue-50 p-3 rounded-lg border border-blue-100 mb-3">
                     <p className="text-xs text-blue-800 font-mono">
-                      Yesterday's POC: $149.75<br/>
-                      Today's Range: $150.25-$151.00<br/>
+                      Yesterday&apos;s POC: $149.75<br/>
+                      Today&apos;s Range: $150.25-$151.00<br/>
                       <span className="text-blue-700 font-bold">→ Naked POC = Magnet</span>
                     </p>
                   </div>
                   <p className="text-slate-600 text-xs leading-relaxed">
-                    The POC represents "fair value"—where the most trading occurred. Naked POCs from previous sessions act as magnets because they represent unfinished business at the most liquid price level.
+                    The POC represents &ldquo;fair value&rdquo;&mdash;where the most trading occurred. Naked POCs from previous sessions act as magnets because they represent unfinished business at the most liquid price level.
                   </p>
                   <div className="h-1 bg-blue-200 w-full mt-2"></div>
                 </div>
@@ -569,33 +486,7 @@ export default function OrderFlowTutorial() {
           </section>
 
           {/* Second Infographic */}
-          <section className="max-w-5xl mx-auto px-6 py-12">
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => openImageViewer('https://i.imgur.com/eP2genA.jpeg')}
-            >
-              <img 
-                src="https://i.imgur.com/eP2genA.jpeg" 
-                alt="Order Flow Analysis Framework" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openImageViewer('https://i.imgur.com/eP2genA.jpeg');
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
-          </section>
+          <InfographicSlot src="https://i.imgur.com/eP2genA.jpeg" alt="Order Flow Analysis Framework" />
 
           {/* 4. Anomalies & Traps */}
           <section>
@@ -609,7 +500,7 @@ export default function OrderFlowTutorial() {
             <div className="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-xl mb-8">
               <h3 className="text-lg font-bold text-rose-900 mb-3">The Liquidity Illusion</h3>
               <p className="text-slate-700 leading-relaxed">
-                Not all liquidity is real. Modern markets are plagued by phantom liquidity—orders that appear on the book but vanish when tested. Understanding these anomalies is critical to avoiding traps and identifying genuine institutional positioning.
+                Not all liquidity is real. Modern markets are plagued by phantom liquidity&mdash;orders that appear on the book but vanish when tested. Understanding these anomalies is critical to avoiding traps and identifying genuine institutional positioning.
               </p>
             </div>
 
@@ -627,7 +518,7 @@ export default function OrderFlowTutorial() {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <p className="text-slate-300 leading-relaxed mb-4">
-                        Institutions slice massive orders to hide intent. Only a "tip" shows on the book. As soon as it's filled, it refills instantly.
+                        Institutions slice massive orders to hide intent. Only a &ldquo;tip&rdquo; shows on the book. As soon as it&apos;s filled, it refills instantly.
                       </p>
                       <p className="text-slate-300 leading-relaxed mb-4 text-sm">
                         An iceberg order might show 100 shares on the bid at $150.00, but behind it is a hidden 10,000 share order. Each time the visible 100 shares are filled, another 100 instantly appears. This creates the illusion of infinite liquidity at that price level.
@@ -635,10 +526,10 @@ export default function OrderFlowTutorial() {
                       <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
                         <h4 className="font-bold text-emerald-400 text-sm mb-1">Visual Signature:</h4>
                         <p className="text-slate-400 text-sm">
-                          Heavy aggressive selling (Red Delta) but <strong>price does not drop</strong>. The bid is "absorbing" the flow.
+                          Heavy aggressive selling (Red Delta) but <strong>price does not drop</strong>. The bid is &ldquo;absorbing&rdquo; the flow.
                         </p>
                         <p className="text-slate-400 text-xs mt-2">
-                          You'll see 5,000 shares hit the bid, but price only drops 1 cent. This is impossible unless there's a massive hidden order absorbing the selling pressure.
+                          You&apos;ll see 5,000 shares hit the bid, but price only drops 1 cent. This is impossible unless there&apos;s a massive hidden order absorbing the selling pressure.
                         </p>
                       </div>
                     </div>
@@ -648,12 +539,12 @@ export default function OrderFlowTutorial() {
                         <ol className="text-sm space-y-2 text-slate-300 list-decimal list-inside">
                           <li>Retail sells aggressively into support.</li>
                           <li>Iceberg absorbs all sell orders (accumulation).</li>
-                          <li>Sellers become "trapped" at the bottom.</li>
+                          <li>Sellers become &ldquo;trapped&rdquo; at the bottom.</li>
                           <li>Institution lifts the offer; trapped shorts cover (buy), fueling the reversal.</li>
                           <li>Price rallies sharply as short covering creates a squeeze.</li>
                         </ol>
                         <p className="text-slate-400 text-xs mt-3 italic">
-                          This is the classic "bear trap." Retail sees weakness and sells, but institutions are quietly accumulating. When the selling exhausts, the reversal is violent.
+                          This is the classic &ldquo;bear trap.&rdquo; Retail sees weakness and sells, but institutions are quietly accumulating. When the selling exhausts, the reversal is violent.
                         </p>
                       </div>
                     </div>
@@ -671,7 +562,7 @@ export default function OrderFlowTutorial() {
                     <strong>Signature:</strong> Cancelled within milliseconds of price approach. 10-50x larger than genuine orders.
                   </p>
                   <p className="mt-3 text-xs text-slate-600 leading-relaxed">
-                    <strong>Example:</strong> A trader places a 50,000 share bid at $150.00 to create the illusion of support. As price approaches $150.00, the order is canceled. This tricks other traders into thinking there's strong buying interest, when in reality it's a trap.
+                    <strong>Example:</strong> A trader places a 50,000 share bid at $150.00 to create the illusion of support. As price approaches $150.00, the order is canceled. This tricks other traders into thinking there&apos;s strong buying interest, when in reality it&apos;s a trap.
                   </p>
                   <p className="mt-3 text-xs text-rose-700 font-bold">
                     Note: Spoofing is illegal under the Dodd-Frank Act. Traders have been fined millions and imprisoned for this practice.
@@ -735,10 +626,10 @@ export default function OrderFlowTutorial() {
             <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-xl mb-8">
               <h3 className="text-lg font-bold text-indigo-900 mb-3">The Institutional Playbook</h3>
               <p className="text-slate-700 leading-relaxed">
-                The AMD framework describes the three-phase cycle of institutional positioning. Understanding where you are in this cycle is the difference between trading with the "smart money" and becoming their exit liquidity.
+                The AMD framework describes the three-phase cycle of institutional positioning. Understanding where you are in this cycle is the difference between trading with the &ldquo;smart money&rdquo; and becoming their exit liquidity.
               </p>
               <p className="text-slate-700 leading-relaxed mt-3 text-sm">
-                This framework applies across all timeframes—from intraday scalping to multi-month position building. The key is recognizing the behavioral signatures of each phase through order flow analysis.
+                This framework applies across all timeframes&mdash;from intraday scalping to multi-month position building. The key is recognizing the behavioral signatures of each phase through order flow analysis.
               </p>
             </div>
 
@@ -778,7 +669,7 @@ export default function OrderFlowTutorial() {
                   <div className="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-4 font-bold">M</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">Manipulation (The Trap)</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                    Rapid, violent expansions designed to trigger stops and emotions. This is the "shakeout" or "stop hunt."
+                    Rapid, violent expansions designed to trigger stops and emotions. This is the &ldquo;shakeout&rdquo; or &ldquo;stop hunt.&rdquo;
                   </p>
                   <ul className="text-xs space-y-2 text-slate-500">
                     <li className="flex items-start gap-2">
@@ -862,7 +753,7 @@ export default function OrderFlowTutorial() {
                   <div>
                     <h4 className="font-bold text-blue-400 mb-1">Week 3-4: Distribution</h4>
                     <p className="text-slate-300 text-sm">
-                      SPY rallies to $452 (new high). Retail chases the breakout. But footprint shows negative delta at the highs—institutions are selling into the rally. When the buying exhausts, SPY collapses back to $445. Trapped buyers at $450-$452 panic sell, fueling the drop.
+                      SPY rallies to $452 (new high). Retail chases the breakout. But footprint shows negative delta at the highs&mdash;institutions are selling into the rally. When the buying exhausts, SPY collapses back to $445. Trapped buyers at $450-$452 panic sell, fueling the drop.
                     </p>
                   </div>
                 </div>
@@ -880,7 +771,7 @@ export default function OrderFlowTutorial() {
                 </div>
                 <div className="bg-white p-4 rounded-lg border border-rose-200">
                   <h5 className="font-bold text-rose-700 mb-2">Avoid the Manipulation</h5>
-                  <p className="text-slate-600 text-xs">Don't chase breakouts or breakdowns. Wait for the reversal. Look for exhaustion signals (zero prints, delta divergence).</p>
+                  <p className="text-slate-600 text-xs">Don&apos;t chase breakouts or breakdowns. Wait for the reversal. Look for exhaustion signals (zero prints, delta divergence).</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border border-blue-200">
                   <h5 className="font-bold text-blue-700 mb-2">Exit During Distribution</h5>
@@ -889,49 +780,7 @@ export default function OrderFlowTutorial() {
               </div>
             </div>
           </section>
-
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  Read Full Research Paper
-                </a>
-              )}
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="border-t border-slate-200 pt-12 pb-24 text-center">
-            <p className="text-slate-400 text-sm mb-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p className="text-slate-400 text-xs mb-4">
-              This article is for educational purposes only and does not constitute investment advice. Order flow analysis requires specialized tools and expertise. Always conduct your own research and consult with a qualified financial advisor.
-            </p>
-            <div className="flex justify-center gap-4 text-slate-300">
-              <Database size={20} />
-              <Activity size={20} />
-              <BarChart2 size={20} />
-            </div>
-          </footer>
-        </main>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

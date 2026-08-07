@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Maximize2, BookOpen, Clock, ShieldAlert, TrendingUp, Users, Activity, Search, Database, CheckCircle, XCircle, ArrowRight, PieChart, DollarSign, Briefcase, Target, Cpu, Globe, Layers, Scale } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { BookOpen, Clock, ShieldAlert, TrendingUp, Users, Activity, Search, CheckCircle, XCircle, PieChart, Briefcase, Target, Cpu, Globe, Layers, Scale } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const Badge = ({ children, color = "blue" }: { children: React.ReactNode; color?: string }) => {
   const colors: Record<string, string> = {
@@ -133,78 +130,12 @@ const ConflictCard = ({ stock, bull, bear, bullThesis, bearThesis }: {
 );
 
 export default function CoattailInvestingArticle() {
-  const currentArticle = articles.find(article => article.slug === 'mastering-coattail-investing-sec-form-13f-analysis');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <div className="flex gap-3 mb-6">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
-              Deep Research
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Mastering Coattail Investing
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            A comprehensive tutorial on decoding institutional disclosures, avoiding latency traps, and following the "Apex Allocators."
-          </p>
+    <ArticleFrame slug="mastering-coattail-investing-sec-form-13f-analysis">
+      <div className="bg-transparent font-sans">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Mastering Coattail Investing Infographic" />
         </div>
-      </div>
-
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/G61x9kE.jpeg" 
-            alt="Mastering Coattail Investing Infographic" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FullScreenImageViewer
-        src="https://i.imgur.com/G61x9kE.jpeg"
-        alt="Mastering Coattail Investing Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
 
       <main className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         {/* Introduction & Mechanics */}
@@ -458,39 +389,8 @@ export default function CoattailInvestingArticle() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <BookOpen className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            </div>
-          </div>
-        )}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 py-12 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-400 mb-4">
-            Based on the research paper: "Institutional Disclosures and Coattail Strategies: An Exhaustive Analysis of SEC Form 13F (Feb 2026)"
-          </p>
-          <p className="text-slate-600 text-sm">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-          <p className="text-slate-600 text-sm mt-2">
-            Disclaimer: 13F filings are historical data. This guide is for educational purposes only and does not constitute financial advice. Past performance of institutional managers is not indicative of future returns.
-          </p>
-        </div>
-      </footer>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

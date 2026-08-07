@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, Landmark, TrendingUp, Users, AlertCircle, Activity, ShieldAlert, Gavel, Network, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { BookOpen, Landmark, TrendingUp, Users, AlertCircle, Activity, ShieldAlert, Gavel, Network } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable UI Components ---
 const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: { 
@@ -61,87 +58,14 @@ const DefinitionBox = ({ term, definition, color = "blue" }: {
 
 // --- Main Application ---
 export default function PrivateCreditArchitecture() {
-  const currentArticle = articles.find(article => article.slug === 'architecture-private-credit-structural-mechanics-vulnerabilities');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame
+      slug="architecture-private-credit-structural-mechanics-vulnerabilities"
+    >
+      <div className="max-w-5xl mx-auto space-y-24 py-16 px-6 md:px-12 bg-transparent">
+        <div className="-mb-8">
+          <InfographicSlot alt="Private Credit Architecture Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 text-white py-24 px-6 md:px-12 overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-sm font-semibold tracking-wider uppercase mb-6 border border-white/30">
-              Deep Research
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tighter">
-              The Architecture of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">Private Credit</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl leading-relaxed font-light">
-              Structural Mechanics, Emerging Vulnerabilities, and Systemic Implications in a Trillion-Dollar Asset Class.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/KPFe21I.jpeg" 
-              alt="Private Credit Architecture Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {currentArticle?.imageUrl && (
-          <FullScreenImageViewer
-            src={currentArticle.imageUrl}
-            alt="Private Credit Architecture Infographic"
-            isOpen={isImageViewerOpen}
-            onClose={() => setIsImageViewerOpen(false)}
-          />
-        )}
-
-        <main className="max-w-5xl mx-auto space-y-24 py-16 px-6 md:px-12">
           {/* 1. Introduction */}
           <section>
             <SectionHeading 
@@ -687,33 +611,7 @@ export default function PrivateCreditArchitecture() {
             </p>
           </section>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-500 mt-12">
-          <p className="text-sm">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          <p className="text-xs mt-2">
-            Based on the research report: "The Architecture of Private Credit: Structural Mechanics, Emerging Vulnerabilities, and Systemic Implications"
-          </p>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

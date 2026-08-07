@@ -1,31 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingDown, Cpu, LineChart, AlertTriangle, Activity, Briefcase, Users, Globe, BookOpen, Target, Zap, ShieldAlert, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingDown, Cpu, LineChart, AlertTriangle, Activity, Briefcase, Users, Globe, Target, Zap, ShieldAlert } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable UI Components ---
-const Hero = () => (
-  <header className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-24 px-6 border-b border-indigo-100">
-    <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-purple-200 via-transparent to-transparent"></div>
-    <div className="max-w-5xl mx-auto relative z-10">
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-6">
-        <BookOpen className="w-4 h-4" />
-        Financial Case Study Tutorial
-      </div>
-      <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-        Decoding the Reversal: <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Nvidia's Feb 2026 Earnings</span>
-      </h1>
-      <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
-        An exhaustive, multi-disciplinary tutorial analyzing the complex market mechanics, macroeconomic headwinds, and structural forces that drove NVDA's severe post-earnings sell-off despite unprecedented fundamental success.
-      </p>
-    </div>
-  </header>
-);
 
 interface SectionProps {
   title: string;
@@ -131,69 +110,14 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows }) => (
 
 // --- Main Application ---
 export default function NvidiaEarningsParadoxArticle() {
-  const currentArticle = articles.find(article => article.slug === 'decoding-reversal-nvidia-february-2026-earnings-paradox');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-indigo-200 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame
+      slug="decoding-reversal-nvidia-february-2026-earnings-paradox"
+    >
+      <div className="bg-transparent font-sans text-slate-900">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Nvidia February 2026 Earnings Analysis Infographic" />
         </div>
-
-        <Hero />
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/ZmUUSF8.jpeg" 
-              alt="Nvidia February 2026 Earnings Analysis Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/ZmUUSF8.jpeg"
-          alt="Nvidia February 2026 Earnings Analysis Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         <main>
           {/* Section 1 */}
@@ -413,43 +337,8 @@ export default function NvidiaEarningsParadoxArticle() {
             </div>
           </Section>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 text-center max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        <footer className="bg-slate-900 py-12 px-6 text-center text-slate-400 border-t-4 border-indigo-500">
-          <div className="max-w-4xl mx-auto">
-            <p className="mb-4">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-            <p className="text-sm opacity-70">This educational report was compiled for tutorial purposes outlining systemic market mechanics.</p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

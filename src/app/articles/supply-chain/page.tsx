@@ -1,12 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import {
   AlertCircle, ExternalLink,
   Activity, BarChart3, TrendingUp, Cpu, Globe,
   Zap, Network, Shield, AlertTriangle, BookOpen,
-  Lightbulb, Calculator, Clock, CheckCircle2
+  Lightbulb, Calculator, Clock, CheckCircle2, Maximize2
 } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 
 // --- Reusable Components ---
 
@@ -76,6 +78,7 @@ const MathFormula = () => (
 );
 
 export default function ArticlePage() {
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   return (
     <ArticleFrame slug="supply-chain">
       <div className="w-full flex justify-center py-8 bg-slate-900/5 px-6">
@@ -343,8 +346,6 @@ export default function ArticlePage() {
               </p>
             </TutorialCard>
           </section>
-
-        </main>
 
         {/* Synthesis Footer */}
         <div className="bg-slate-900 text-slate-300 py-12 px-6 md:px-12 mt-12 border-t-4 border-indigo-500">

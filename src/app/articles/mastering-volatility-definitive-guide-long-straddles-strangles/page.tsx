@@ -2,11 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Activity, AlertTriangle, DollarSign, Clock, BarChart2, Shield, Users, Zap, BookOpen, Target, ArrowRight, CheckCircle, XCircle, TrendingDown, ChevronDown, ChevronUp, Brain, Thermometer, Scale, Maximize2, Minimize2, Music } from 'lucide-react';
+import { TrendingUp, Activity, AlertTriangle, DollarSign, Clock, BarChart2, Shield, Users, Zap, BookOpen, Target, ArrowLeft, ArrowRight, CheckCircle, XCircle, TrendingDown, ChevronDown, ChevronUp, Brain, Thermometer, Scale, Maximize2, Minimize2, Music } from 'lucide-react';
 import { articles } from '@/data/articles';
 import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-
 // --- Components ---
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
   <div className="mb-12 text-center">
@@ -367,9 +365,9 @@ export default function MasteringVolatilityArticle() {
       {currentArticle && (
         <>
           <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+          <BreadcrumbStructuredData
+            articleTitle={currentArticle.title}
+            articleSlug={currentArticle.slug || ''}
           />
         </>
       )}
@@ -393,54 +391,21 @@ export default function MasteringVolatilityArticle() {
             <div className="inline-block px-4 py-2 mb-8 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold tracking-wide uppercase border border-indigo-200 shadow-sm">
               Advanced Derivatives Guide
             </div>
-            <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tight text-slate-900 leading-tight">
-              Mastering <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Volatility</span>
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide">Options Architecture</span>
+              <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold uppercase tracking-wide">Ref: Derivatives Manual</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+              Mastering <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Volatility</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              The definitive technical guide to Long Straddles, Strangles, and trading Volatility as an asset class.
+            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
+              The definitive technical guide to trading volatility as an asset class. Master the physics of implied vs realized volatility, the Greeks that drive profit, and the professional lifecycle management of Long Straddles and Strangles.
             </p>
+          </div>
           </div>
         </header>
 
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/HE2Hr58.jpeg" 
-              alt="Mastering Volatility Trading Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/HE2Hr58.jpeg"
-          alt="Mastering Volatility Trading Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-5xl mx-auto px-6 py-16">
           {/* 1. The Physics of Volatility */}
           <section className="py-24">
             <SectionTitle subtitle="To trade volatility, you must understand the tension between Expectation (IV) and Reality (RV).">
@@ -930,34 +895,6 @@ export default function MasteringVolatilityArticle() {
               )}
             </div>
           </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 py-16 text-center border-t border-slate-800">
-          <div className="container mx-auto px-6">
-            <BookOpen className="mx-auto text-indigo-500 mb-6" size={48} />
-            <h2 className="text-3xl font-bold text-white mb-8">Ready to Trade Volatility?</h2>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400 mb-12">
-              <span className="px-5 py-2 bg-slate-800 rounded-full border border-slate-700 hover:border-indigo-500 transition-colors">
-                Study IV Rank
-              </span>
-              <span className="px-5 py-2 bg-slate-800 rounded-full border border-slate-700 hover:border-indigo-500 transition-colors">
-                Check Earnings Calendar
-              </span>
-              <span className="px-5 py-2 bg-slate-800 rounded-full border border-slate-700 hover:border-indigo-500 transition-colors">
-                Paper Trade First
-              </span>
-            </div>
-            <div className="text-slate-600 text-xs max-w-lg mx-auto leading-relaxed">
-              <strong>Disclaimer:</strong> Options trading involves significant risk and is not suitable for all investors. 
-              You can lose 100% of your capital. This guide is for educational visualization purposes only and does not 
-              constitute financial advice.
-            </div>
-            <div className="mt-8 text-slate-500 text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </div>
-          </div>
-        </footer>
       </div>
     </>
   );

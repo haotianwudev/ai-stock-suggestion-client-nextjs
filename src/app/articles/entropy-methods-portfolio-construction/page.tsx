@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TrendingUp, Network, BarChart4, Layers, CheckCircle2, AlertTriangle, Lightbulb, Cpu } from 'lucide-react';
+import { TrendingUp, Network, BarChart4, Layers, CheckCircle2, AlertTriangle, Lightbulb, Cpu, Activity } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function EntropyMethodsPortfolioConstruction() {

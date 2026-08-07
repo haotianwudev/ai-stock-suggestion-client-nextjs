@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Building2, TrendingDown, Shield, AlertTriangle, Calculator, Layers, DollarSign, BarChart3, Activity, Clock, CheckCircle, Maximize2, FileText, PieChart, Target } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { Building2, TrendingDown, Shield, AlertTriangle, Calculator, Layers, DollarSign, BarChart3, Activity, Clock, CheckCircle, PieChart, Target } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: string; subtitle: string; icon: React.ElementType; colorClass: string }) => (
@@ -45,39 +42,15 @@ const DetailList = ({ items }: { items: Array<{ label: string; text: string }> }
 );
 
 export default function StructuredFinanceArticle() {
-  const currentArticle = articles.find(article => article.slug === 'structured-finance-2026-rmbs-cmbs-abs-pricing-models');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || ''} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
+    <ArticleFrame slug="structured-finance-2026-rmbs-cmbs-abs-pricing-models">
       <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Deep Research Badge */}
         <div className="absolute top-8 left-8 z-20">
           <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-purple-600 text-white shadow-lg">
             Deep Research
           </span>
         </div>
 
-        {/* Hero Section */}
         <header className="bg-white border-b border-slate-200 py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
           <div className="max-w-4xl mx-auto relative z-10">
@@ -93,41 +66,9 @@ export default function StructuredFinanceArticle() {
           </div>
         </header>
 
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/I51V5fc.jpeg" 
-              alt="Structured Finance 2026 - RMBS, CMBS, ABS Framework" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <FullScreenImageViewer
-          src="https://i.imgur.com/I51V5fc.jpeg"
-          alt="Structured Finance 2026 - RMBS, CMBS, ABS Framework"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Structured Finance 2026 - RMBS, CMBS, ABS Framework" />
+        </div>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
           
@@ -981,47 +922,8 @@ export default function StructuredFinanceArticle() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Educational Disclaimer */}
-          <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="text-amber-600 mt-1 shrink-0" size={24} />
-              <div>
-                <h3 className="text-lg font-bold text-amber-900 mb-2">Educational Content Disclaimer</h3>
-                <p className="text-sm text-amber-800 leading-relaxed">
-                  This article is for educational and informational purposes only. It does not constitute investment advice, financial advice, trading advice, or any other sort of advice. Structured finance products involve significant risks including credit risk, interest rate risk, prepayment risk, and liquidity risk. Past performance is not indicative of future results. Always conduct your own research and consult with qualified financial professionals before making investment decisions.
-                </p>
-              </div>
-            </div>
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-300 py-12 px-4 sm:px-6 lg:px-8 mt-24">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, Activity, GitBranch, Zap, BookOpen, Sigma, Divide, ArrowRight, Anchor, Layers, FunctionSquare, RefreshCw, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, Activity, GitBranch, Zap, Sigma, Divide, ArrowRight, Anchor, Layers, FunctionSquare, RefreshCw } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Helper: Brownian Motion Generator ---
 const generateBrownianPath = (steps = 100) => {
@@ -134,89 +131,12 @@ const SimulationWidget = () => {
 };
 
 export default function ItosLemmaArticle() {
-  const currentArticle = articles.find(article => article.slug === 'stochastic-calculus-finance-itos-lemma-comprehensive-treatise');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="stochastic-calculus-finance-itos-lemma-comprehensive-treatise">
+      <div className="bg-transparent font-sans">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Itô's Lemma Comprehensive Infographic" />
         </div>
-
-        {/* Hero Section */}
-        <header className="relative bg-white overflow-hidden pb-16 pt-24 md:pt-32 px-6 border-b border-slate-100">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500"></div>
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute top-48 -left-24 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-          
-          <div className="max-w-5xl mx-auto relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-indigo-50 text-indigo-700 font-medium text-sm tracking-wide border border-indigo-100">
-              <BookOpen size={14} /> Quantitative Finance Series
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-              The Stochastic Calculus <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">of Finance</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed">
-              A comprehensive treatise on <span className="font-semibold text-slate-800">Itô's Lemma</span>: the mathematical bridge between the smooth world of Newton and the jagged reality of financial markets.
-            </p>
-          </div>
-        </header>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/Gmd3y5O.jpeg" 
-              alt="Itô's Lemma Comprehensive Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/Gmd3y5O.jpeg"
-          alt="Itô's Lemma Comprehensive Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
 
         <main className="max-w-4xl mx-auto px-6 py-16 space-y-24">
           {/* 1. Introduction */}
@@ -565,35 +485,8 @@ export default function ItosLemmaArticle() {
             </div>
           </section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="text-center text-slate-400 text-sm pb-12">
-            <div className="flex justify-center gap-4 mb-4">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-75"></span>
-              <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse delay-150"></span>
-            </div>
-            <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </footer>
         </main>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

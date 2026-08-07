@@ -1,16 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Clock, TrendingUp, TrendingDown, Zap, ShieldAlert, BarChart3, LineChart, Layers, AlertCircle, Info, DollarSign, Briefcase, Flame, Wind, Target, Settings, Scale, Activity, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { TrendingUp, TrendingDown, Zap, ShieldAlert, BarChart3, LineChart, Layers, AlertCircle, Info, Briefcase, Flame, Wind, Target, Settings, Scale, Activity } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function InvestmentClockFramework() {
-  const currentArticle = articles.find(article => article.slug === 'investment-clock-framework-quantitative-macro-regime-detection');
   const [activePhase, setActivePhase] = useState(0);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const phases = [
     {
@@ -89,36 +84,8 @@ export default function InvestmentClockFramework() {
   };
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/E1ZKfSA.jpeg"
-        alt="Investment Clock Framework Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      <div className="min-h-screen bg-neutral-50 font-sans text-neutral-900 selection:bg-indigo-100">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
+    <ArticleFrame slug="investment-clock-framework-quantitative-macro-regime-detection">
+      <div className="bg-transparent font-sans">
         <header className="py-24 px-6 bg-white border-b border-neutral-200 relative overflow-hidden">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
             <div>
@@ -169,36 +136,9 @@ export default function InvestmentClockFramework() {
           </div>
         </header>
 
-        {/* Hero Infographic */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/E1ZKfSA.jpeg" 
-              alt="Investment Clock Framework Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+          <InfographicSlot alt="Investment Clock Framework Infographic" />
+        </div>
 
         <main className="max-w-7xl mx-auto px-6 py-16 space-y-32">
           {/* Section 1: The Core Research */}
@@ -807,85 +747,8 @@ export default function InvestmentClockFramework() {
             </div>
           </section>
 
-          {/* Call-to-Action Section */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <DollarSign className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
         </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-neutral-200 py-24 px-6 mt-32">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
-              <div className="max-w-xs">
-                <div className="flex items-center gap-2 mb-6">
-                  <Clock className="w-8 h-8 text-indigo-600" />
-                  <span className="font-bold text-2xl uppercase tracking-tighter">
-                    Investment <span className="text-neutral-400 font-light">Clock</span>
-                  </span>
-                </div>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  A quantitative framework for tactical asset allocation. This tutorial serves as a technical whitepaper for macroeconomic regime detection.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-20">
-                <div className="space-y-4">
-                  <h6 className="font-black text-[10px] uppercase tracking-[0.3em] text-neutral-300">
-                    Sections
-                  </h6>
-                  <ul className="space-y-3 text-xs font-bold text-neutral-500 uppercase tracking-widest">
-                    <li onClick={() => scrollTo('theory')} className="hover:text-indigo-600 cursor-pointer transition-colors">
-                      Framework
-                    </li>
-                    <li onClick={() => scrollTo('phases')} className="hover:text-indigo-600 cursor-pointer transition-colors">
-                      Phase Deep-Dive
-                    </li>
-                    <li onClick={() => scrollTo('quant')} className="hover:text-indigo-600 cursor-pointer transition-colors">
-                      Implementation
-                    </li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h6 className="font-black text-[10px] uppercase tracking-[0.3em] text-neutral-300">
-                    Data Sources
-                  </h6>
-                  <ul className="space-y-3 text-xs font-bold text-neutral-500 uppercase tracking-widest">
-                    <li className="text-neutral-400">OECD CLI (USALOLITONOSTSAM)</li>
-                    <li className="text-neutral-400">INDPRO / ICSA / UNRATE</li>
-                    <li className="text-neutral-400">Core CPI YoY + MoM / TCU</li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h6 className="font-black text-[10px] uppercase tracking-[0.3em] text-neutral-300">
-                    Classification
-                  </h6>
-                  <p className="text-[10px] text-neutral-400 font-medium leading-relaxed uppercase tracking-widest">
-                    Quantitative Finance<br/>
-                    Macro Strategy<br/>
-                    Regime Detection
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase text-neutral-300 tracking-[0.3em]">
-              <div>© 2026 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</div>
-            </div>
-          </div>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

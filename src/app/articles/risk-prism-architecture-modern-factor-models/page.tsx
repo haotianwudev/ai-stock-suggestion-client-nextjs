@@ -1,11 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Shield, TrendingUp, Activity, Globe, Brain, Newspaper, Scale, Target, Zap, Search, Box, Layers, BarChart2, Lock, Unlock, Users, Cpu, BookOpen, Anchor, DollarSign, Percent, Briefcase, Sprout, Waves, ShieldCheck, Minimize2, Tag, AlertTriangle, GitMerge, Database, Grid, CheckCircle, XCircle, Filter, Sliders, ArrowRight, PieChart, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { Shield, TrendingUp, Activity, Globe, Brain, Newspaper, Scale, Target, Zap, Search, Box, Layers, BarChart2, Lock, Unlock, Users, Cpu, BookOpen, Anchor, DollarSign, Percent, Briefcase, Sprout, Waves, ShieldCheck, Minimize2, Tag, AlertTriangle, GitMerge, Database, Grid, CheckCircle, XCircle, Filter, Sliders, ArrowRight, PieChart, Music, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- UI Components ---
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -126,90 +123,16 @@ const factorData = [
 
 export default function RiskArchitectureArticle() {
   const [activeModelTab, setActiveModelTab] = useState('barra');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   
-  const currentArticle = articles.find(article => article.slug === 'risk-prism-architecture-modern-factor-models');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              The Architecture of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Risk</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-              From the Barra Factor Model to the "Factor Zoo." A comprehensive guide to modern quantitative finance and risk decomposition.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/FEtgiqM.jpeg" 
-              alt="The Architecture of Risk - Factor Model Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src="https://i.imgur.com/FEtgiqM.jpeg"
-          alt="The Architecture of Risk - Factor Model Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-6 py-16">
-          {/* 1. Hero Section */}
-          <header className="relative overflow-hidden bg-white pb-20 pt-24 border-b border-slate-200 rounded-3xl mb-20">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-rose-500"></div>
-            <div className="max-w-7xl mx-auto px-6 text-center">
-              <Badge color="indigo">Deep Dive Research</Badge>
+    <ArticleFrame slug="risk-prism-architecture-modern-factor-models">
+      <InfographicSlot alt="The Architecture of Risk - Factor Model Infographic" />
+      <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
+        {/* 1. Hero Section */}
+        <header className="relative overflow-hidden bg-white pb-20 pt-24 border-b border-slate-200 rounded-3xl mb-20">
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-rose-500"></div>
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <Badge color="indigo">Deep Dive Research</Badge>
               
               {/* Quick Stats Grid */}
               <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
@@ -758,15 +681,8 @@ export default function RiskArchitectureArticle() {
               )}
             </div>
           </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-50 border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
-          <p className="mb-2">Reference Research: MSCI Barra USE4 Methodology, Axioma Robust Risk Model Handbook.</p>
-          <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </div>
-    </>
+      </main>
+    </ArticleFrame>
   );
 }
 
