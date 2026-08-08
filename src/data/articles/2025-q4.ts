@@ -651,14 +651,4 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     youtubeUrl: "https://youtu.be/QQjvEWV9-WQ",
   },
-  {
-    title: "Stagflation-Lite: Fixed Income Dilemma or Turning Point?",
-    description: "The year 2025 marks a significant turning point for the long-term fixed income market, transitioning into a new regime defined by historically high starting yields and the widely anticipated pivot of the Federal Reserve toward monetary easing. The central imperative for investors is to lock in these attractive yields before they decline.",
-    slug: "fixed-income",
-    date: "October 1, 2025",
-    youtubeUrl: "https://youtu.be/2xcK1hjcPfg",
-    isVideo: true,
-    imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg",
-    labels: [ArticleLabel.MACRO],
-  }
 ];
