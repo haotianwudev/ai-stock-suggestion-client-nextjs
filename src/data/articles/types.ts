@@ -12,6 +12,7 @@ export enum ArticleLabel {
   CRYPTO = "Crypto",
   FINANCE101 = "Finance 101",
   BOOK = "Book Review",
+  PREMIUM = "Premium",
 }
 
 export interface Article {
@@ -55,6 +56,7 @@ export function postprocessArticles(articles: Article[]): Article[] {
     if (article.options) autoLabels.push(ArticleLabel.OPTIONS);
     if (article.isVideo) autoLabels.push(ArticleLabel.VIDEO);
     if (article.podcastUrl) autoLabels.push(ArticleLabel.PODCAST);
+    if (article.premiumContent) autoLabels.push(ArticleLabel.PREMIUM);
     
     // Merge with existing labels (if any) and remove duplicates
     const existingLabels = article.labels || [];

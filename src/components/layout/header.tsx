@@ -39,7 +39,8 @@ export function Header() {
               />
             </div>
             <span className="font-bold text-sm sm:text-lg lg:text-xl truncate">
-              SOPHIE
+              <span className="sm:hidden">SOPHIE</span>
+              <span className="hidden sm:inline">SOPHIE Daddy Quant Blog</span>
             </span>
           </Link>
         </div>
