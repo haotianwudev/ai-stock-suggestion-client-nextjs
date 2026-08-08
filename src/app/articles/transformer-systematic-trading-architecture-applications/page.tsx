@@ -1,16 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, DollarSign, BarChart, TestTube, Newspaper, Forward, GitCompareArrows, Cpu, Scale, GanttChartSquare, AlertTriangle, CheckCircle, XCircle, Layers, TrendingUp, ShieldCheck, FileText, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { BrainCircuit, BarChart, TestTube, Forward, GitCompareArrows, Cpu, Scale, GanttChartSquare, AlertTriangle, CheckCircle, XCircle, Layers, TrendingUp, ShieldCheck, FileText } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Helper Components ---
 
 const Section = ({ children, id, className = '' }: { children: React.ReactNode; id: string; className?: string }) => (
-  <section id={id} className={`py-12 md:py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
+  <section id={id} className={`py-12 md:py-20 px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8 ${className}`}>
     <div className="max-w-5xl mx-auto">
       {children}
     </div>
@@ -43,83 +39,12 @@ const Formula = ({ children }: { children: React.ReactNode }) => (
 
 // --- Page Sections ---
 
-const Hero = () => (
-  <div className="relative text-center py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-     <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_#e5e7eb_1px,_transparent_0)] [background-size:1.5rem_1.5rem] [mask-image:linear-gradient(to_bottom,white_5%,transparent_100%)]"></div>
-     <div className="relative z-10 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 mb-4 tracking-tighter">
-            Transformers in Systematic Trading
-        </h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            A deep dive into the revolutionary architecture, its adaptation for financial markets, and its practical applications in creating alpha.
-        </p>
-        <div className="mt-8 flex justify-center gap-4">
-            <a href="#architecture" className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg border-2 border-blue-600">
-                Explore Architecture
-            </a>
-            <a href="#applications" className="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition-colors duration-300 border-2 border-blue-600">
-                View Applications
-            </a>
-        </div>
-    </div>
-  </div>
-);
-
-const HeroInfographic = ({ isImageViewerOpen, setIsImageViewerOpen }: { isImageViewerOpen: boolean; setIsImageViewerOpen: (open: boolean) => void }) => {
-  const currentArticle = articles.find(article => article.slug === 'transformer-systematic-trading-architecture-applications');
-  
-  if (!currentArticle?.imageUrl) return null;
-
-  return (
-    <>
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src={currentArticle.imageUrl} 
-            alt="Transformers in Systematic Trading - Architecture Overview" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src={currentArticle.imageUrl}
-        alt="Transformers in Systematic Trading - Architecture Overview"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-    </>
-  );
-};
-
 const Architecture = () => (
     <Section id="architecture">
         <SectionTitle>Part I: The Transformer Architecture</SectionTitle>
         <div className="space-y-8 max-w-4xl mx-auto">
             <p className="text-lg text-gray-700 text-center">
-                Introduced in "Attention Is All You Need," the Transformer revolutionized sequence modeling by dispensing with recurrence and relying solely on a powerful <strong className="font-semibold text-gray-800">self-attention</strong> mechanism. This enabled massive parallelization and a superior understanding of global context, paving the way for modern LLMs.
+                Introduced in &ldquo;Attention Is All You Need,&rdquo; the Transformer revolutionized sequence modeling by dispensing with recurrence and relying solely on a powerful <strong className="font-semibold text-gray-800">self-attention</strong> mechanism. This enabled massive parallelization and a superior understanding of global context, paving the way for modern LLMs.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
                 <Card icon={<GitCompareArrows className="h-6 w-6 text-cyan-600" />} title="Self-Attention">
@@ -155,13 +80,13 @@ const Adaptation = () => (
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card icon={<BarChart className="h-6 w-6 text-cyan-600" />} title="Patching">
-                    Continuous time series are segmented into smaller windows or "patches." Each patch is treated as a single token, converting the continuous data into a sequence the Transformer can process.
+                    Continuous time series are segmented into smaller windows or &ldquo;patches.&rdquo; Each patch is treated as a single token, converting the continuous data into a sequence the Transformer can process.
                 </Card>
                 <Card icon={<TestTube className="h-6 w-6 text-cyan-600" />} title="Feature Engineering">
                     Inputs are rarely raw prices. They are high-dimensional vectors including OHLCV, technical indicators (RSI, MACD), and other derived metrics to provide rich context about the market state.
                 </Card>
                 <Card icon={<AlertTriangle className="h-6 w-6 text-cyan-600" />} title="The 'X-former' Menagerie">
-                    To combat the vanilla Transformer's quadratic complexity (O(L²)), specialized models like Informer (ProbSparse Attention) and Autoformer (Auto-Correlation) were developed for efficiency in long-sequence forecasting.
+                    To combat the vanilla Transformer&apos;s quadratic complexity (O(L²)), specialized models like Informer (ProbSparse Attention) and Autoformer (Auto-Correlation) were developed for efficiency in long-sequence forecasting.
                 </Card>
             </div>
         </div>
@@ -195,25 +120,25 @@ const Applications = () => (
         <div className="mb-16">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><FileText className="h-8 w-8 mr-3 text-cyan-600" />The Alpha in the Alphabet: Quantifying the Narrative</h3>
              <p className="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto">
-                Transformers' native strength in NLP provides a mechanism to systematically extract alpha from the vast sea of unstructured text data that drives market narratives, bridging the historical divide between quantitative and fundamental analysis.
+                Transformers&apos; native strength in NLP provides a mechanism to systematically extract alpha from the vast sea of unstructured text data that drives market narratives, bridging the historical divide between quantitative and fundamental analysis.
             </p>
             <div className="grid md:grid-cols-2 gap-8 items-start">
                  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                    <h4 className="text-xl font-semibold text-cyan-700 mb-3">The "Quantamental" Bridge</h4>
+                    <h4 className="text-xl font-semibold text-cyan-700 mb-3">The &ldquo;Quantamental&rdquo; Bridge</h4>
                     <p className="text-gray-600">Models like FinBERT act as a translator, converting news headlines and reports into numerical sentiment scores. This structured data is then fed into forecasting models, allowing a system to learn relationships between news events and subsequent price movements, creating strategies that systematically trade on narratives.</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                     <h4 className="text-xl font-semibold text-cyan-700 mb-3">Beyond Simple Sentiment</h4>
-                    <p className="text-gray-600">Advanced applications extend to topic modeling (identifying themes like "inflation concerns" in news) and semantic search, dramatically accelerating the research process that underpins both discretionary and systematic trading.</p>
+                    <p className="text-gray-600">Advanced applications extend to topic modeling (identifying themes like &ldquo;inflation concerns&rdquo; in news) and semantic search, dramatically accelerating the research process that underpins both discretionary and systematic trading.</p>
                 </div>
             </div>
         </div>
-        
+
         {/* --- Factor Generation Section --- */}
         <div>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><BrainCircuit className="h-8 w-8 mr-3 text-cyan-600" />Factor Generation: The New Frontier</h3>
             <p className="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto">
-                The most sophisticated application involves moving beyond prediction to creation. This approach elegantly solves the "black box" problem, a major barrier to institutional adoption.
+                The most sophisticated application involves moving beyond prediction to creation. This approach elegantly solves the &ldquo;black box&rdquo; problem, a major barrier to institutional adoption.
             </p>
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                 <h4 className="text-xl font-semibold text-cyan-700 mb-6 text-center">The Factor Generation Process</h4>
@@ -226,7 +151,7 @@ const Applications = () => (
                     <li className="ml-6">
                         <span className="absolute flex items-center justify-center w-6 h-6 bg-cyan-100 rounded-full -left-3 ring-8 ring-white">2</span>
                         <h5 className="font-semibold text-gray-800">The Output</h5>
-                        <p className="text-gray-600">Instead of a "buy/sell" signal, the model outputs a single numerical score for each stock—the AI-generated "factor."</p>
+                        <p className="text-gray-600">Instead of a &ldquo;buy/sell&rdquo; signal, the model outputs a single numerical score for each stock&mdash;the AI-generated &ldquo;factor.&rdquo;</p>
                     </li>
                     <li className="ml-6">
                         <span className="absolute flex items-center justify-center w-6 h-6 bg-cyan-100 rounded-full -left-3 ring-8 ring-white">3</span>
@@ -241,7 +166,7 @@ const Applications = () => (
                 </ol>
                 <div className="mt-8 pt-6 border-t border-gray-200">
                     <h5 className="text-lg font-semibold text-gray-800 text-center">Why This Matters</h5>
-                    <p className="text-gray-600 text-center mt-2">This modular approach contains the model's complexity within the factor generation step. Risk managers can then work with the familiar, statistically-analyzable factor, lowering the barrier to adoption and blending AI power with rigorous, industry-standard risk management.</p>
+                    <p className="text-gray-600 text-center mt-2">This modular approach contains the model&apos;s complexity within the factor generation step. Risk managers can then work with the familiar, statistically-analyzable factor, lowering the barrier to adoption and blending AI power with rigorous, industry-standard risk management.</p>
                 </div>
             </div>
         </div>
@@ -297,8 +222,8 @@ const Comparison = () => (
                     </tr>
                     <tr className="hover:bg-gray-50 transition-colors">
                         <td className="p-4 border-b-0 border-gray-200 text-gray-800 font-semibold">Interpretability</td>
-                        <td className="p-4 border-b-0 border-gray-200 text-gray-600">Low ("black box," attention maps help)</td>
-                        <td className="p-4 border-b-0 border-gray-200 text-gray-600">Low ("black box")</td>
+                        <td className="p-4 border-b-0 border-gray-200 text-gray-600">Low (&ldquo;black box,&rdquo; attention maps help)</td>
+                        <td className="p-4 border-b-0 border-gray-200 text-gray-600">Low (&ldquo;black box&rdquo;)</td>
                         <td className="p-4 border-b-0 border-gray-200 text-gray-600">Moderate (feature importance)</td>
                     </tr>
                 </tbody>
@@ -323,7 +248,7 @@ const Challenges = () => (
                 <h3 className="text-2xl font-semibold text-red-800 mb-4">Cons & Difficulties</h3>
                 <ul className="space-y-3">
                     <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Overfitting Risk:</strong> High model capacity makes it easy to memorize historical noise instead of a true signal.</span></li>
-                    <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Interpretability:</strong> The "black box" nature poses significant risk management and compliance challenges.</span></li>
+                    <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Interpretability:</strong> The &ldquo;black box&rdquo; nature poses significant risk management and compliance challenges.</span></li>
                     <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Cost & Data:</strong> Data-hungry and computationally expensive, requiring massive datasets and powerful GPUs.</span></li>
                 </ul>
             </div>
@@ -354,113 +279,25 @@ const CaseStudies = () => (
     </Section>
 );
 
-const Navigation = () => {
-  const sections = [
-    { id: 'architecture', label: 'Architecture' },
-    { id: 'adaptation', label: 'Financial Adaptation' },
-    { id: 'applications', label: 'Trading Applications' },
-    { id: 'comparison', label: 'Model Comparisons' },
-    { id: 'challenges', label: 'Challenges' },
-    { id: 'casestudies', label: 'Case Studies' }
-  ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="inline-flex items-center px-3 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium text-sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-          <div className="hidden md:flex space-x-8">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="text-gray-700 hover:text-cyan-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-              >
-                {section.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
 export default function TransformerTradingArticle() {
-  const currentArticle = articles.find(article => article.slug === 'transformer-systematic-trading-architecture-applications');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-        </>
-      )}
-      
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <div className="bg-gray-50 text-gray-800 font-sans">
-        <main>
-          <Hero />
-          <HeroInfographic isImageViewerOpen={isImageViewerOpen} setIsImageViewerOpen={setIsImageViewerOpen} />
+    <ArticleFrame slug="transformer-systematic-trading-architecture-applications">
+      <div className="max-w-5xl mx-auto px-4 text-gray-800">
+        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+          A deep dive into the revolutionary architecture, its adaptation for financial markets, and its practical applications in creating alpha.
+        </p>
+
+        <InfographicSlot alt="Transformers in Systematic Trading - Architecture Overview" />
+
+        <div className="mt-12">
           <Architecture />
           <Adaptation />
           <Applications />
           <Comparison />
           <Challenges />
           <CaseStudies />
-          
-          {/* Call to Action */}
-          <Section id="cta" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Dive Deeper into the Research</h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto">
-                Explore the complete technical analysis with detailed mathematical foundations, citations, and comprehensive case studies.
-              </p>
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-white text-cyan-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Document
-                </a>
-              )}
-            </div>
-          </Section>
-        </main>
-        
-        {/* Footer */}
-        <footer className="bg-white border-t border-gray-200">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-gray-500">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-            <p className="text-xs text-gray-500 mt-2">
-              This article provides a high-level interactive overview. For detailed analysis, formulas, and citations, please refer to the source research document.
-            </p>
-          </div>
-        </footer>
+        </div>
       </div>
-    </>
+    </ArticleFrame>
   );
-} 
+}

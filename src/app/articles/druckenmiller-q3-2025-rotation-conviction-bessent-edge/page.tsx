@@ -1,23 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import {
-  Menu, X, TrendingUp, Target, FlaskConical, Globe, DollarSign, Brain,
-  Lightbulb, ShieldCheck, Zap, Eye, BarChart2, RefreshCw, Search, ArrowDown,
-  PieChart, ShieldOff, TrendingDown, MessageSquare, ArrowLeft, Music, FileText
+  TrendingUp, Target, FlaskConical, Globe, DollarSign, Brain,
+  Lightbulb, ShieldCheck, Zap, Eye, BarChart2, RefreshCw, Search,
+  PieChart, ShieldOff, TrendingDown, MessageSquare
 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 /*----------------------------------------------------------------------
   Reusable UI Components
 ----------------------------------------------------------------------*/
 
-const InfoCard = ({ icon, title, children, color = 'blue' }: { 
-  icon: React.ReactNode; 
-  title: string; 
-  children: React.ReactNode; 
+const InfoCard = ({ icon, title, children, color = 'blue' }: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
   color?: string;
 }) => {
   const colorClasses: Record<string, string> = {
@@ -56,9 +54,9 @@ const InfoCard = ({ icon, title, children, color = 'blue' }: {
 const QuoteBlock = ({ children, source }: { children: React.ReactNode; source?: string }) => (
   <blockquote className="my-8 p-6 rounded-xl bg-blue-50 border-l-4 border-blue-500">
     <p className="text-xl italic font-medium text-blue-900 leading-relaxed">
-      "{children}"
+      &ldquo;{children}&rdquo;
     </p>
-    {source && <cite className="block mt-4 text-right text-slate-600 not-italic">— {source}</cite>}
+    {source && <cite className="block mt-4 text-right text-slate-600 not-italic">&mdash; {source}</cite>}
   </blockquote>
 );
 
@@ -69,7 +67,7 @@ const SectionWrapper = ({ id, title, subtitle, children, className = 'bg-white' 
   children: React.ReactNode;
   className?: string;
 }) => (
-  <section id={id} className={`py-20 sm:py-28 ${className}`}>
+  <section id={id} className={`py-16 ${className}`}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto text-center mb-16">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">{title}</h2>
@@ -83,20 +81,20 @@ const SectionWrapper = ({ id, title, subtitle, children, className = 'bg-white' 
 const ChangeCell = ({ value, prefix = '' }: { value: any; prefix?: string }) => {
   const isPositive = value && (value > 0 || (typeof value === 'string' && value.startsWith('+')));
   const isNegative = value && (value < 0 || (typeof value === 'string' && value.startsWith('-')));
-  
+
   let className = "text-slate-900";
   let formattedValue = `${prefix}${value}`;
-  
+
   if (isPositive) {
     className = "text-green-600 font-medium";
     formattedValue = typeof value === 'string' ? value : `+${prefix}${value.toFixed(2)}`;
   }
-  
+
   if (isNegative) {
     className = "text-red-600 font-medium";
     formattedValue = typeof value === 'string' ? value : `-${prefix}${Math.abs(value).toFixed(2)}`;
   }
-  
+
   return <td className={`px-5 py-4 whitespace-nowrap text-sm ${className}`}>{formattedValue}</td>;
 };
 
@@ -104,91 +102,14 @@ const ChangeCell = ({ value, prefix = '' }: { value: any; prefix?: string }) => 
   Main Page Sections
 ----------------------------------------------------------------------*/
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const navItems = [
-    { name: 'Analysis (The "What")', href: '#section-what' },
-    { name: 'Sectors', href: '#section-sectors' },
-    { name: 'Thesis (The "Why")', href: '#section-why' },
-    { name: 'Risks', href: '#section-risks' },
-    { name: 'Philosophy', href: '#section-philosophy' },
-    { name: 'Context', href: '#section-nexus' },
-    { name: 'Lessons', href: '#section-lessons' },
-  ];
-
-  return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center">
-            <DollarSign className="w-8 h-8 text-blue-600" />
-            <span className="ml-2 text-2xl font-bold text-slate-900">Druckenmiller Digest</span>
-          </div>
-          
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navItems.map((item) => (
-              <a key={item.name} href={item.href} className="font-medium text-slate-600 hover:text-blue-600 transition-colors">
-                {item.name}
-              </a>
-            ))}
-          </div>
-          
-          <div className="flex items-center md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} type="button" className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
-              <span className="sr-only">Open main menu</span>
-              {!isOpen ? <Menu className="block h-6 w-6" /> : <X className="block h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
-      
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden border-t border-slate-200`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {navItems.map((item) => (
-            <a key={item.name} href={item.href} onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">
-              {item.name}
-            </a>
-          ))}
-        </div>
-      </div>
-    </header>
-  );
-};
-
-const Hero = () => (
-  <section className="relative bg-gradient-to-b from-white to-slate-50 pt-24 pb-32 sm:pt-32 sm:pb-40">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold text-blue-700 bg-blue-100 mb-6">
-          Q3 2025 13F Filing Analysis
-        </span>
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight">
-          The Q3 2025 Thesis: Rotation, Conviction, & the Bessent Edge
-        </h1>
-        <p className="mt-8 text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto">
-          A deep dive into Stanley Druckenmiller's Q3 2025 portfolio reveals a masterclass in aggressive rotation, 
-          high-conviction concentration, and macro insights influenced by a unique "Duquesne-Treasury Corridor."
-        </p>
-        <div className="mt-12">
-          <a href="#section-what" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-blue-600 text-white text-lg font-semibold shadow-lg hover:bg-blue-700 transition-colors">
-            Explore the Analysis
-            <ArrowDown className="w-5 h-5 ml-2" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 const SectionPortfolioAnalysis = () => (
   <SectionWrapper id="section-what" title='I. Portfolio Analysis (The "What")' subtitle="A quantitative breakdown of the Duquesne Family Office's Q3 2025 13F filing." className="bg-slate-50">
     <div className="space-y-16">
       <div className="bg-white p-8 rounded-2xl shadow-xl">
         <h3 className="text-3xl font-semibold text-slate-900 mb-6 text-center">Portfolio Architecture: Q3 vs. Q2 2025</h3>
         <p className="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-8">
-          The portfolio's value remained stable, but a 63.27% turnover rate reveals a complete "re-underwriting" of positions. 
-          This is a strategy of active management and aggressive rotation, not "buy and hold." The concentration is extreme: 
+          The portfolio&apos;s value remained stable, but a 63.27% turnover rate reveals a complete &ldquo;re-underwriting&rdquo; of positions.
+          This is a strategy of active management and aggressive rotation, not &ldquo;buy and hold.&rdquo; The concentration is extreme:
           the top 10 holdings now make up 53.93% of the entire portfolio, up from a lower concentration in Q2.
         </p>
         <div className="overflow-x-auto rounded-lg border border-slate-200">
@@ -234,8 +155,8 @@ const SectionPortfolioAnalysis = () => (
       <div className="bg-white p-8 rounded-2xl shadow-xl">
         <h3 className="text-3xl font-semibold text-slate-900 mb-6 text-center">Top 10 Holdings: The Core Convictions</h3>
         <p className="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-8">
-          The portfolio is extraordinarily concentrated. The top 3 healthcare names (NTRA, INSM, TEVA) alone represent 
-          nearly 30% of the entire portfolio, a massive "bet the ranch" move on three *uncorrelated* theses.
+          The portfolio is extraordinarily concentrated. The top 3 healthcare names (NTRA, INSM, TEVA) alone represent
+          nearly 30% of the entire portfolio, a massive &ldquo;bet the ranch&rdquo; move on three *uncorrelated* theses.
         </p>
         <div className="overflow-x-auto rounded-lg border border-slate-200">
           <table className="min-w-full divide-y divide-slate-200">
@@ -344,8 +265,8 @@ const SectionSectorAllocation = () => (
       <div>
         <h3 className="text-3xl font-semibold text-slate-900 mb-6">Q3 2025 vs. Q2 2025</h3>
         <p className="text-lg text-slate-600 mb-8">
-          In Q2, the portfolio was heavily weighted towards Information Technology. In Q3, that capital was aggressively 
-          rotated out of Tech and redeployed into a massive, concentrated Healthcare bet. Tech exposure was cut by more 
+          In Q2, the portfolio was heavily weighted towards Information Technology. In Q3, that capital was aggressively
+          rotated out of Tech and redeployed into a massive, concentrated Healthcare bet. Tech exposure was cut by more
           than half, while Healthcare exposure more than doubled, becoming by far the largest sector.
         </p>
         <div className="overflow-x-auto rounded-lg border border-slate-200">
@@ -393,7 +314,7 @@ const SectionSectorAllocation = () => (
           <div className="text-center">
             <PieChart className="w-24 h-24 text-slate-400 mx-auto" />
             <p className="mt-2 text-sm text-slate-500 max-w-xs">
-              This visual would show Healthcare as the dominant ~38.5% slice, with Tech, Comms, and Industrials as 
+              This visual would show Healthcare as the dominant ~38.5% slice, with Tech, Comms, and Industrials as
               smaller, secondary allocations.
             </p>
           </div>
@@ -407,24 +328,24 @@ const SectionThesis = () => (
   <SectionWrapper id="section-why" title='III. Decoding the Thesis (The "Why")' subtitle="Reverse-engineering the macro and micro themes behind the quarter's key trades." className="bg-slate-50">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <InfoCard title="Theme 1: The Great AI Rotation" icon={<RefreshCw className="w-8 h-8" />} color="blue">
-        Exiting first-wave, high-valuation AI (MSFT, NVDA) and rotating capital into "cheaper," second-wave utility 
-        plays (AMZN, META, GOOGL). This is a bet on the long-term *platform implementers* (AWS, Google Cloud, Meta's 
-        Ad Engine) over the initial "hype" stocks, while anchoring the core AI thesis in TSM.
+        Exiting first-wave, high-valuation AI (MSFT, NVDA) and rotating capital into &ldquo;cheaper,&rdquo; second-wave utility
+        plays (AMZN, META, GOOGL). This is a bet on the long-term *platform implementers* (AWS, Google Cloud, Meta&apos;s
+        Ad Engine) over the initial &ldquo;hype&rdquo; stocks, while anchoring the core AI thesis in TSM.
       </InfoCard>
       <InfoCard title="Theme 2: 'Being a Pig' in Healthcare" icon={<FlaskConical className="w-8 h-8" />} color="green">
-        A massive, ~38.5% sector bet composed of three *uncorrelated* theses: a technology platform (Natera's genetic 
-        testing leadership), a binary drug catalyst (Insmed's Phase 3 data for its lung disease drug), and a 
-        value/special-situation play (Teva's GLP-1 generic potential).
+        A massive, ~38.5% sector bet composed of three *uncorrelated* theses: a technology platform (Natera&apos;s genetic
+        testing leadership), a binary drug catalyst (Insmed&apos;s Phase 3 data for its lung disease drug), and a
+        value/special-situation play (Teva&apos;s GLP-1 generic potential).
       </InfoCard>
       <InfoCard title="Theme 3: The Macro 'Bessent Tell'" icon={<Globe className="w-8 h-8" />} color="indigo">
-        A large new position in the Emerging Markets ETF (EEM). This is a pure macro trade on a weakening U.S. dollar 
-        and a "global growth" recovery, likely informed by his unique insight into the U.S. Treasury's policy path and 
+        A large new position in the Emerging Markets ETF (EEM). This is a pure macro trade on a weakening U.S. dollar
+        and a &ldquo;global growth&rdquo; recovery, likely informed by his unique insight into the U.S. Treasury&apos;s policy path and
         the need to manage the U.S. deficit (which a weaker USD helps).
       </InfoCard>
       <InfoCard title="Theme 4: The Speculative Sleeve" icon={<Zap className="w-8 h-8" />} color="purple">
-        Small (1-2%) asymmetric bets on disruptive, high-growth companies like Figure Technologies (FIGR) and Stubhub 
-        (STUB). These are low-risk (small size) but 100x potential "home run" tickets on the future of capital markets 
-        (FIGR) and the "experience economy" (STUB).
+        Small (1-2%) asymmetric bets on disruptive, high-growth companies like Figure Technologies (FIGR) and Stubhub
+        (STUB). These are low-risk (small size) but 100x potential &ldquo;home run&rdquo; tickets on the future of capital markets
+        (FIGR) and the &ldquo;experience economy&rdquo; (STUB).
       </InfoCard>
     </div>
   </SectionWrapper>
@@ -434,18 +355,18 @@ const SectionRisks = () => (
   <SectionWrapper id="section-risks" title="IV. Risks & Alternative Views" subtitle="A strong thesis must be tested. What if the Q3 analysis is wrong?" className="bg-white">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <InfoCard title="Risk 1: Concentration Catastrophe" icon={<ShieldOff className="w-8 h-8" />} color="red">
-        The ~30% bet on three healthcare names is a massive "key-man risk" on a few company-specific events. A failed 
-        drug trial (INSM) or regulatory setback (NTRA) could wipe out a significant portion of the quarter's gains. 
+        The ~30% bet on three healthcare names is a massive &ldquo;key-man risk&rdquo; on a few company-specific events. A failed
+        drug trial (INSM) or regulatory setback (NTRA) could wipe out a significant portion of the quarter&apos;s gains.
         This is the opposite of diversification.
       </InfoCard>
       <InfoCard title="Risk 2: The Macro Head-Fake" icon={<TrendingDown className="w-8 h-8" />} color="yellow">
-        The EEM (Emerging Markets) trade relies heavily on a weakening USD and a dovish Fed. If U.S. inflation remains 
-        sticky, forcing the Fed to stay "higher for longer," the USD could *strengthen*, crushing the EEM position and 
+        The EEM (Emerging Markets) trade relies heavily on a weakening USD and a dovish Fed. If U.S. inflation remains
+        sticky, forcing the Fed to stay &ldquo;higher for longer,&rdquo; the USD could *strengthen*, crushing the EEM position and
         hurting global growth.
       </InfoCard>
       <InfoCard title="Alt View: 'Bessent Edge' is Narrative" icon={<MessageSquare className="w-8 h-8" />} color="indigo">
-        The "Duquesne-Treasury Corridor" is a compelling story, but it may be narrative fallacy. The more straightforward 
-        explanation is that Druckenmiller and Bessent are simply two smart investors trained in the same (Soros) system, 
+        The &ldquo;Duquesne-Treasury Corridor&rdquo; is a compelling story, but it may be narrative fallacy. The more straightforward
+        explanation is that Druckenmiller and Bessent are simply two smart investors trained in the same (Soros) system,
         arriving at similar conclusions independently.
       </InfoCard>
     </div>
@@ -456,20 +377,20 @@ const SectionPhilosophy = () => (
   <SectionWrapper id="section-philosophy" title="V. The Philosophical Context" subtitle="The Q3 2025 filing is a perfect execution of Druckenmiller's core investment framework." className="bg-slate-50">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <InfoCard title='"Preservation of Capital and Home Runs"' icon={<ShieldCheck className="w-8 h-8" />} color="blue">
-        The 63.27% turnover *is* capital preservation—he's preserving gains by selling winners (MSFT) and cutting losers. 
+        The 63.27% turnover *is* capital preservation&mdash;he&apos;s preserving gains by selling winners (MSFT) and cutting losers.
         The ~30% healthcare bet *is* the hunt for home runs. The Q3 portfolio is a perfect illustration of this dual focus.
       </InfoCard>
       <InfoCard title='"Top-Down" Trumps "Bottom-Up"' icon={<BarChart2 className="w-8 h-8" />} color="indigo">
-        The EEM buy, the AI rotation, the *timing* of the healthcare bet—these are not bottom-up earnings plays. They 
+        The EEM buy, the AI rotation, the *timing* of the healthcare bet&mdash;these are not bottom-up earnings plays. They
         are top-down macro calls on liquidity (Fed policy), valuation cycles (AI hype vs. utility), and global capital flows.
       </InfoCard>
       <InfoCard title="Mental Flexibility in Action" icon={<Brain className="w-8 h-8" />} color="purple">
-        The 33 exits, including profitable, "great" companies like MSFT and NVDA, show a complete lack of ego. The Q3 
-        sale of these "winners" is the perfect example. His high turnover is a *feature*, allowing him to "wipe the slate clean."
+        The 33 exits, including profitable, &ldquo;great&rdquo; companies like MSFT and NVDA, show a complete lack of ego. The Q3
+        sale of these &ldquo;winners&rdquo; is the perfect example. His high turnover is a *feature*, allowing him to &ldquo;wipe the slate clean.&rdquo;
       </InfoCard>
       <InfoCard title='"Be a Pig"' icon={<TrendingUp className="w-8 h-8" />} color="green">
-        This portfolio rejects "di-worsification." The 53.93% top-10 concentration is the physical manifestation of his 
-        advice: "if you really see it, put all your eggs in one basket and watch the basket very carefully."
+        This portfolio rejects &ldquo;di-worsification.&rdquo; The 53.93% top-10 concentration is the physical manifestation of his
+        advice: &ldquo;if you really see it, put all your eggs in one basket and watch the basket very carefully.&rdquo;
       </InfoCard>
     </div>
   </SectionWrapper>
@@ -480,19 +401,19 @@ const SectionNexus = () => (
     <div className="max-w-4xl mx-auto text-lg text-slate-700 leading-relaxed space-y-8">
       <div>
         <h3 className="text-3xl font-semibold text-slate-900 mb-4">
-          The Soros Legacy: Learning to "Go for the Jugular"
+          The Soros Legacy: Learning to &ldquo;Go for the Jugular&rdquo;
         </h3>
         <p className="mb-6">
-          Druckenmiller's time with George Soros, culminating in the 1992 pound short, taught him one crucial lesson: 
-          when you have high conviction, your sizing must be massive. Soros taught him to move from a "ridiculous" small 
+          Druckenmiller&apos;s time with George Soros, culminating in the 1992 pound short, taught him one crucial lesson:
+          when you have high conviction, your sizing must be massive. Soros taught him to move from a &ldquo;ridiculous&rdquo; small
           bet to a 200%-of-net-worth trade.
         </p>
         <QuoteBlock source="George Soros (via Druckenmiller)">
-          It's not whether you're right or wrong... but how much money you make when you're right and how much you lose 
-          when you're wrong.
+          It&apos;s not whether you&apos;re right or wrong... but how much money you make when you&apos;re right and how much you lose
+          when you&apos;re wrong.
         </QuoteBlock>
         <p>
-          The ~30% healthcare bet in Q3 2025 is the direct application of this "go for the jugular" philosophy. It's a 
+          The ~30% healthcare bet in Q3 2025 is the direct application of this &ldquo;go for the jugular&rdquo; philosophy. It&apos;s a
           high-conviction, asymmetric bet where the upside (e.g., a successful drug trial) is multiples of the downside.
         </p>
       </div>
@@ -504,23 +425,23 @@ const SectionNexus = () => (
           The Bessent Connection: The Duquesne-Treasury Corridor
         </h3>
         <p className="mb-6">
-          If Soros explains the *past*, U.S. Treasury Secretary Scott Bessent explains the *present*. Bessent, 
-          Druckenmiller's former colleague and fellow macro investor, now manages U.S. fiscal policy. This isn't just a 
-          friendship; it's an institutional connection, with a former Duquesne managing director now advising Bessent at Treasury.
+          If Soros explains the *past*, U.S. Treasury Secretary Scott Bessent explains the *present*. Bessent,
+          Druckenmiller&apos;s former colleague and fellow macro investor, now manages U.S. fiscal policy. This isn&apos;t just a
+          friendship; it&apos;s an institutional connection, with a former Duquesne managing director now advising Bessent at Treasury.
         </p>
         <p className="mb-6">
-          This "Bessent Edge" provides a shared worldview, not "insider information." Druckenmüller understands *how* 
-          the Treasury will think and act because he was trained by the same mentor (Soros) and worked alongside Bessent 
-          for years. They share a "macro language."
+          This &ldquo;Bessent Edge&rdquo; provides a shared worldview, not &ldquo;insider information.&rdquo; Druckenmiller understands *how*
+          the Treasury will think and act because he was trained by the same mentor (Soros) and worked alongside Bessent
+          for years. They share a &ldquo;macro language.&rdquo;
         </p>
         <ul className="space-y-4 list-disc list-inside">
           <li className="ml-4">
-            <strong className="text-slate-900">The EEM Buy:</strong> A front-running of the inevitable policy path (a 
+            <strong className="text-slate-900">The EEM Buy:</strong> A front-running of the inevitable policy path (a
             weaker USD) that Bessent, a currency specialist, knows is necessary to manage the U.S. deficit.
           </li>
           <li className="ml-4">
-            <strong className="text-slate-900">The AI Rotation:</strong> Aligns perfectly with Bessent's public 
-            industrial policy to solve the tech labor bottleneck, directly benefiting the large-scale platforms (AMZN, 
+            <strong className="text-slate-900">The AI Rotation:</strong> Aligns perfectly with Bessent&apos;s public
+            industrial policy to solve the tech labor bottleneck, directly benefiting the large-scale platforms (AMZN,
             GOOGL, META).
           </li>
         </ul>
@@ -533,49 +454,32 @@ const SectionLessons = () => (
   <SectionWrapper id="section-lessons" title="VII. Synthesis: Lessons for the Investor" subtitle="Actionable, philosophical principles to distill from the Druckenmiller masterclass." className="bg-slate-50">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <InfoCard title="1. Conviction > Diversification" icon={<Target className="w-8 h-8" />} color="blue">
-        Challenge "di-worsification." If deep research provides an asymmetric thesis, have the courage to make the 
-        position meaningful. Don't let your best ideas be diluted to mediocrity.
+        Challenge &ldquo;di-worsification.&rdquo; If deep research provides an asymmetric thesis, have the courage to make the
+        position meaningful. Don&apos;t let your best ideas be diluted to mediocrity.
       </InfoCard>
       <InfoCard title="2. Mental Flexibility (No Ego)" icon={<Brain className="w-8 h-8" />} color="purple">
-        Your true genius is not your "calls" but your "folds." The stock doesn't know you own it. Be willing to sell a 
+        Your true genius is not your &ldquo;calls&rdquo; but your &ldquo;folds.&rdquo; The stock doesn&apos;t know you own it. Be willing to sell a
         winner (MSFT) if a better idea (TEVA) comes along. Capital preservation is about redeployment.
       </InfoCard>
       <InfoCard title="3. Find Your Edge (And Mentor)" icon={<Search className="w-8 h-8" />} color="indigo">
-        Druckenmiller's framework was built by Soros. His edge is a shared macro view with the Treasury. You won't win 
+        Druckenmiller&apos;s framework was built by Soros. His edge is a shared macro view with the Treasury. You won&apos;t win
         with consensus info. Find a unique, non-consensus insight and cultivate it.
       </InfoCard>
       <InfoCard title="4. Invest in the 18-Month Horizon" icon={<Eye className="w-8 h-8" />} color="green">
-        "Never, ever invest in the present." The market has already priced in today's news. Ask: "What will the 
-        conventional wisdom be in two years, and how is it different from today?" He's buying Teva not for today, but 
+        &ldquo;Never, ever invest in the present.&rdquo; The market has already priced in today&apos;s news. Ask: &ldquo;What will the
+        conventional wisdom be in two years, and how is it different from today?&rdquo; He&apos;s buying Teva not for today, but
         for its 2027 generic pipeline.
       </InfoCard>
       <InfoCard title="5. 'It's the Liquidity, Stupid'" icon={<DollarSign className="w-8 h-8" />} color="blue">
-        "Earnings don't move the overall market; it's the Federal Reserve..." Focus on central banks and the movement 
+        &ldquo;Earnings don&apos;t move the overall market; it&apos;s the Federal Reserve...&rdquo; Focus on central banks and the movement
         of liquidity. Before asking if a company is cheap, ask what the Fed and Treasury will do next.
       </InfoCard>
       <InfoCard title="6. The Synthesis" icon={<Lightbulb className="w-8 h-8" />} color="purple">
-        The ultimate lesson: Combine a top-down macro view (Liquidity) with deep, bottom-up conviction (Home Runs), and 
+        The ultimate lesson: Combine a top-down macro view (Liquidity) with deep, bottom-up conviction (Home Runs), and
         execute with ruthless, ego-less flexibility (Capital Preservation).
       </InfoCard>
     </div>
   </SectionWrapper>
-);
-
-const Footer = () => (
-  <footer className="bg-slate-900">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="flex flex-col md:flex-row justify-between items-center">
-        <div className="flex items-center mb-6 md:mb-0">
-          <DollarSign className="w-8 h-8 text-blue-500" />
-          <span className="ml-2 text-2xl font-bold text-white">Druckenmiller Digest</span>
-        </div>
-        <p className="text-slate-400 text-center md:text-right">
-          Analysis based on public Q3 2025 13F filings.<br />
-          This is a conceptual website for informational purposes only.
-        </p>
-      </div>
-    </div>
-  </footer>
 );
 
 /*----------------------------------------------------------------------
@@ -583,97 +487,20 @@ const Footer = () => (
 ----------------------------------------------------------------------*/
 
 export default function DruckenmillerQ32025Article() {
-  const currentArticle = articles.find(article => article.slug === 'druckenmiller-q3-2025-rotation-conviction-bessent-edge');
-
   return (
-    <>
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <div className="flex items-center justify-between mb-4">
-            <Link 
-              href="/" 
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-            
-            <div className="flex gap-2">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-purple-100 text-purple-800">
-                Deep Research
-              </span>
-              {currentArticle?.podcastUrl && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
-                  Podcast
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="antialiased bg-white font-sans text-slate-700">
-          <Header />
-          <main>
-            <Hero />
-            <SectionPortfolioAnalysis />
-            <SectionSectorAllocation />
-            <SectionThesis />
-            <SectionRisks />
-            <SectionPhilosophy />
-            <SectionNexus />
-            <SectionLessons />
-          </main>
-          <Footer />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <footer className="bg-slate-900 text-white py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-slate-400">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
+    <ArticleFrame
+      slug="druckenmiller-q3-2025-rotation-conviction-bessent-edge"
+      additionalDisclaimer="Specific portfolio percentages and figures in this analysis are illustrative and based on public 13F filing concepts; verify exact figures against official SEC filings before relying on them."
+    >
+      <div className="text-slate-700">
+        <SectionPortfolioAnalysis />
+        <SectionSectorAllocation />
+        <SectionThesis />
+        <SectionRisks />
+        <SectionPhilosophy />
+        <SectionNexus />
+        <SectionLessons />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

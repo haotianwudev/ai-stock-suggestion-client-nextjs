@@ -1,10 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, ShieldCheck, Cpu, Database, Layers, BarChart2, GitBranch, GanttChartSquare, Server, Lock, ArrowRight, CheckCircle, XCircle, Briefcase, DollarSign, BrainCircuit, Target, Scale, Zap, KeyRound, FileLock2, Code, Activity } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { Cpu, Database, Layers, BarChart2, GitBranch, GanttChartSquare, Server, ShieldCheck, ArrowRight, Briefcase, DollarSign, BrainCircuit, Target, Zap, KeyRound, FileLock2, Code, Activity } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // HELPER COMPONENTS =======================================================
 
@@ -41,24 +38,8 @@ const Card = ({ icon, title, description }) => (
 
 const Hero = () => (
   <section id="home" className="text-gray-600 bg-white body-font">
-    <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-      <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-        <h1 className="title-font sm:text-5xl text-4xl mb-4 font-extrabold text-slate-900">
-          Architecting the Modern<br className="hidden lg:inline-block" /> <span className="text-cyan-600">Hedge Fund Desk</span>
-        </h1>
-        <p className="mb-8 leading-relaxed text-lg">
-          A comprehensive system design for a low to mid-frequency equity portfolio management platform. This site explores the architecture, technology, and strategy required to build a system that moves from data, to idea, to action with maximum speed and confidence.
-        </p>
-        <div className="flex justify-center">
-          <a href="#architecture" className="inline-flex text-white bg-cyan-600 border-0 py-2 px-6 focus:outline-none hover:bg-cyan-700 rounded text-lg transition-colors">
-            Explore the Design
-          </a>
-          <a href="#contact" className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg transition-colors">
-            Contact Us
-          </a>
-        </div>
-      </div>
-      <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+    <div className="container mx-auto flex px-5 py-16 justify-center">
+      <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full">
         <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
           <div className="flex items-center mb-6">
             <Briefcase className="w-8 h-8 text-cyan-500 mr-4" />
@@ -163,9 +144,9 @@ const SystemArchitecture = () => (
           <span className="text-gray-500">Scalability</span>
           <span className="ml-auto text-slate-900">Moderate, with clear path to Microservices</span>
         </div>
-        <h2 className="text-slate-900 text-2xl title-font font-medium mt-8 mb-4">Central Nervous System: EDA, CQRS & Event Sourcing</h2>
+        <h2 className="text-slate-900 text-2xl title-font font-medium mt-8 mb-4">Central Nervous System: EDA, CQRS &amp; Event Sourcing</h2>
         <p className="leading-relaxed mb-4 text-gray-600">
-          An <strong>Event-Driven Architecture (EDA)</strong> using Apache Kafka acts as the system's core communication backbone, decoupling components. This is enhanced by <strong>CQRS</strong> (Command Query Responsibility Segregation), which separates the write and read operations, and <strong>Event Sourcing</strong>, which stores every state change as an immutable event. This combination creates a highly auditable, scalable, and resilient system where the event log serves as the ultimate, verifiable system of truth.
+          An <strong>Event-Driven Architecture (EDA)</strong> using Apache Kafka acts as the system&apos;s core communication backbone, decoupling components. This is enhanced by <strong>CQRS</strong> (Command Query Responsibility Segregation), which separates the write and read operations, and <strong>Event Sourcing</strong>, which stores every state change as an immutable event. This combination creates a highly auditable, scalable, and resilient system where the event log serves as the ultimate, verifiable system of truth.
         </p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
           <div className="flex items-center">
@@ -255,53 +236,53 @@ const DataArchitecture = () => (
 
 const TechStack = () => {
   const stack = [
-    { 
-      name: 'Java', 
-      category: 'Backend', 
-      icon: <Cpu className="w-8 h-8"/>, 
-      reason: "For core services, risk engines, and APIs. Its strong typing, concurrency features, and mature ecosystem provide a balance of performance and long-term robustness." 
+    {
+      name: 'Java',
+      category: 'Backend',
+      icon: <Cpu className="w-8 h-8"/>,
+      reason: "For core services, risk engines, and APIs. Its strong typing, concurrency features, and mature ecosystem provide a balance of performance and long-term robustness."
     },
-    { 
-      name: 'Python', 
-      category: 'Quants', 
-      icon: <BrainCircuit className="w-8 h-8"/>, 
-      reason: "The lingua franca for quantitative research, backtesting, and data science, leveraging libraries like NumPy, Pandas, and PyPortfolioOpt for rapid iteration." 
+    {
+      name: 'Python',
+      category: 'Quants',
+      icon: <BrainCircuit className="w-8 h-8"/>,
+      reason: "The lingua franca for quantitative research, backtesting, and data science, leveraging libraries like NumPy, Pandas, and PyPortfolioOpt for rapid iteration."
     },
-    { 
-      name: 'C++', 
-      category: 'Low-Latency', 
-      icon: <Zap className="w-8 h-8"/>, 
-      reason: "Used surgically for performance-critical components like the FIX engine, where direct memory control and minimal latency for execution data are paramount." 
+    {
+      name: 'C++',
+      category: 'Low-Latency',
+      icon: <Zap className="w-8 h-8"/>,
+      reason: "Used surgically for performance-critical components like the FIX engine, where direct memory control and minimal latency for execution data are paramount."
     },
-    { 
-      name: 'React & Next.js', 
-      category: 'Frontend', 
-      icon: <Layers className="w-8 h-8"/>, 
-      reason: "For building a highly performant, data-intensive web UI. Paired with a specialized grid library like Ext JS for handling large, real-time datasets." 
+    {
+      name: 'React & Next.js',
+      category: 'Frontend',
+      icon: <Layers className="w-8 h-8"/>,
+      reason: "For building a highly performant, data-intensive web UI. Paired with a specialized grid library like Ext JS for handling large, real-time datasets."
     },
-    { 
-      name: 'Kafka', 
-      category: 'Data Pipeline', 
-      icon: <GitBranch className="w-8 h-8"/>, 
-      reason: "The de facto standard for real-time, distributed event streaming, forming the system's asynchronous, decoupled communication backbone." 
+    {
+      name: 'Kafka',
+      category: 'Data Pipeline',
+      icon: <GitBranch className="w-8 h-8"/>,
+      reason: "The de facto standard for real-time, distributed event streaming, forming the system's asynchronous, decoupled communication backbone."
     },
-    { 
-      name: 'PostgreSQL', 
-      category: 'Database', 
-      icon: <Database className="w-8 h-8"/>, 
-      reason: "A mature, reliable RDBMS for transactional data like trades and positions, ensuring ACID compliance and data consistency for the system of record." 
+    {
+      name: 'PostgreSQL',
+      category: 'Database',
+      icon: <Database className="w-8 h-8"/>,
+      reason: "A mature, reliable RDBMS for transactional data like trades and positions, ensuring ACID compliance and data consistency for the system of record."
     },
-    { 
-      name: 'TimescaleDB', 
-      category: 'Database', 
-      icon: <BarChart2 className="w-8 h-8"/>, 
-      reason: "A high-performance time-series database extension for PostgreSQL, optimized for storing and querying vast amounts of time-stamped market data efficiently." 
+    {
+      name: 'TimescaleDB',
+      category: 'Database',
+      icon: <BarChart2 className="w-8 h-8"/>,
+      reason: "A high-performance time-series database extension for PostgreSQL, optimized for storing and querying vast amounts of time-stamped market data efficiently."
     },
-    { 
-      name: 'OpenAPI', 
-      category: 'API', 
-      icon: <Briefcase className="w-8 h-8"/>, 
-      reason: "For designing and documenting REST APIs in a disciplined, API-first approach, enabling parallel development and automated testing." 
+    {
+      name: 'OpenAPI',
+      category: 'API',
+      icon: <Briefcase className="w-8 h-8"/>,
+      reason: "For designing and documenting REST APIs in a disciplined, API-first approach, enabling parallel development and automated testing."
     },
   ];
 
@@ -329,7 +310,7 @@ const TechStack = () => {
 
 const Security = () => {
   const securityGroups = [
-    { 
+    {
       title: "Authentication & Access Control",
       icon: <KeyRound className="w-8 h-8 text-cyan-500" />,
       items: [
@@ -338,7 +319,7 @@ const Security = () => {
         "OAuth 2.0 for securing API endpoints with short-lived tokens."
       ]
     },
-    { 
+    {
       title: "Data Protection",
       icon: <FileLock2 className="w-8 h-8 text-cyan-500" />,
       items: [
@@ -347,7 +328,7 @@ const Security = () => {
         "Secure key management using a dedicated service like AWS KMS."
       ]
     },
-    { 
+    {
       title: "Application Security",
       icon: <Code className="w-8 h-8 text-cyan-500" />,
       items: [
@@ -356,7 +337,7 @@ const Security = () => {
         "Continuous dependency scanning for third-party libraries."
       ]
     },
-    { 
+    {
       title: "Audit & Monitoring",
       icon: <Activity className="w-8 h-8 text-cyan-500" />,
       items: [
@@ -419,7 +400,7 @@ const Implementation = () => {
   return (
     <Section id="roadmap" title="Implementation Roadmap" subtitle="Strategic Outlook">
       <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-center text-gray-600 mb-16">
-        For a 'Build' decision, a phased, incremental implementation is critical to manage risk and deliver value early. This approach avoids a 'big bang' release, allowing for continuous user feedback and adaptation throughout the development lifecycle.
+        For a &lsquo;Build&rsquo; decision, a phased, incremental implementation is critical to manage risk and deliver value early. This approach avoids a &lsquo;big bang&rsquo; release, allowing for continuous user feedback and adaptation throughout the development lifecycle.
       </p>
       <div className="container mx-auto">
         <div className="relative wrap overflow-hidden p-10 h-full">
@@ -446,70 +427,20 @@ const Implementation = () => {
   );
 };
 
-const Footer = () => (
-  <footer id="contact" className="text-gray-600 bg-gray-50 body-font border-t border-gray-200">
-    <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-      <a className="flex title-font font-medium items-center md:justify-start justify-center text-slate-900">
-        <Scale className="w-10 h-10 text-white p-2 bg-cyan-600 rounded-full" />
-        <span className="ml-3 text-xl">Portfolio Systems Inc.</span>
-      </a>
-      <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-        © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
-      </p>
-      <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-        {/* Social media links can go here */}
-      </span>
-    </div>
-  </footer>
-);
-
 // MAIN APP COMPONENT ======================================================
 
 export default function ArchitectingModernHedgeFundDesk() {
-  const currentArticle = articles.find(article => article.slug === 'architecting-modern-hedge-fund-desk-system-design');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-      
-      <div className="bg-white">
-        {/* Return to Home Button */}
-        <div className="container mx-auto px-4 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-          
-          {/* Deep Research Badge */}
-          <div className="absolute top-4 left-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-              Deep Research
-            </span>
-          </div>
-        </div>
-
-        <main>
-          <Hero />
-          <CoreArchitecture />
-          <SystemArchitecture />
-          <DataArchitecture />
-          <TechStack />
-          <Security />
-          <Implementation />
-        </main>
-        <Footer />
+    <ArticleFrame slug="architecting-modern-hedge-fund-desk-system-design">
+      <div className="bg-white -mx-4 sm:-mx-6 lg:-mx-8">
+        <Hero />
+        <CoreArchitecture />
+        <SystemArchitecture />
+        <DataArchitecture />
+        <TechStack />
+        <Security />
+        <Implementation />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

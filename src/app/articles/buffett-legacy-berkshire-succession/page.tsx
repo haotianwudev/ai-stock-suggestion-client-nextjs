@@ -1,20 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Menu, X, FileText, Users, DollarSign, Shield, TrendingUp, BarChart, CheckCircle, XCircle, Gift, Building, Anchor, Zap, BookOpen, Quote, Briefcase, PiggyBank, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-
-// --- Data from the Document ---
-const navItems = [
-  { name: 'The "Goodbye" Letter', href: '#section-1', icon: FileText },
-  { name: 'The Succession', href: '#section-2', icon: Users },
-  { name: 'Current Status', href: '#section-3', icon: BarChart },
-  { name: 'The Berkshire Model', href: '#section-4', icon: Building },
-  { name: 'Investment Thesis', href: '#section-5', icon: TrendingUp },
-  { name: 'Conclusion: The Legacy', href: '#section-6', icon: Gift },
-];
+import React from 'react';
+import { Users, DollarSign, Shield, TrendingUp, CheckCircle, XCircle, Gift, Building, Anchor, Zap, BookOpen, Quote, Briefcase, PiggyBank } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 const table1Data = {
   headers: ['Business Segment', 'Q3 2025 Operating Earnings', 'Year-over-Year Change', 'Key Drivers'],
@@ -48,7 +36,6 @@ const table3Data = {
   ],
 };
 
-// --- Reusable Components ---
 const StatCard = ({ title, value, icon, color }: { title: string; value: string; icon: any; color: { bg: string; text: string } }) => {
   const IconComponent = icon;
   return (
@@ -127,115 +114,17 @@ const KeyQuote = ({ children, citation }: { children: React.ReactNode; citation:
   </blockquote>
 );
 
-const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
-  return (
-    <>
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
-          onClick={() => setIsOpen(false)}
-        ></div>
-      )}
-
-      {/* Sidebar */}
-      <nav
-        className={`fixed top-0 left-0 h-full bg-white shadow-2xl w-72 z-30 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:translate-x-0 md:top-0 md:h-screen md:z-10`}
-      >
-        <div className="flex justify-between items-center p-6 border-b border-gray-200">
-          <h1 className="text-2xl font-bold text-blue-700">Buffett&apos;s Legacy</h1>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="md:hidden text-gray-500 hover:text-gray-800"
-          >
-            <X size={24} />
-          </button>
-        </div>
-        <ul className="py-6 space-y-2">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <li key={item.name} className="px-4">
-                <a
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-600 font-medium hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 group"
-                >
-                  <Icon className="text-gray-400 group-hover:text-blue-600" size={20} />
-                  <span>{item.name}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </>
-  );
-};
-
-// --- Main App Component ---
 export default function BuffettLegacyArticle() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'buffett-legacy-berkshire-succession');
-
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-
-      {/* Header (Mobile) */}
-      <header className="sticky top-0 bg-white shadow-md p-4 flex justify-between items-center md:hidden z-10">
-        <h1 className="text-xl font-bold text-blue-700">Buffett&apos;s Legacy</h1>
-        <button
-          onClick={() => setIsSidebarOpen(true)}
-          className="text-gray-700 hover:text-blue-600"
-        >
-          <Menu size={28} />
-        </button>
-      </header>
-
-      {/* Main Content */}
-      <main className="md:ml-72 p-6 md:p-12 lg:p-16 max-w-7xl mx-auto">
-        {/* Deep Research Badge */}
-        <div className="absolute top-4 left-4 md:left-80 z-10">
-          <span className="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Deep Research
-          </span>
-        </div>
-
-        {/* Return to Home Button */}
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Article Title */}
-        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-          The End of an Era: Warren Buffett&apos;s Legacy and Berkshire Hathaway&apos;s Succession
-        </h1>
-
-        <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-          A comprehensive analysis of Warren Buffett&apos;s &quot;goodbye letter,&quot; the succession plan with Greg Abel as CEO, and Berkshire&apos;s $382B fortress balance sheet. Exploring the triumvirate leadership structure, the insurance float model, and the investment thesis for the post-Buffett era.
-        </p>
-
+    <ArticleFrame
+      slug="buffett-legacy-berkshire-succession"
+      additionalDisclaimer="This analysis is for informational and educational purposes only and should not be considered investment advice. Investing in securities involves risk, including the potential loss of principal."
+    >
+      <div className="max-w-4xl mx-auto px-4 text-gray-800">
         {/* Section 1: The "Goodbye" Letter */}
         <ContentSection id="section-1" title="The End of an Era: The 'Goodbye' Letter">
           <p>
-            Warren Buffett&apos;s &quot;goodbye letter&quot; marks a pivotal moment, signaling his transition from CEO to &quot;Chairman of the Culture.&quot; He announced he is &quot;going quiet,&quot; ending his famous annual report and meeting Q&A, and replacing them with a more philosophical annual Thanksgiving message.
+            Warren Buffett&apos;s &quot;goodbye letter&quot; marks a pivotal moment, signaling his transition from CEO to &quot;Chairman of the Culture.&quot; He announced he is &quot;going quiet,&quot; ending his famous annual report and meeting Q&amp;A, and replacing them with a more philosophical annual Thanksgiving message.
           </p>
 
           <KeyQuote citation="Warren Buffett, Thanksgiving Message">
@@ -281,7 +170,7 @@ export default function BuffettLegacyArticle() {
               <span className="font-semibold">Greg Abel (CEO):</span> Full command of all operating companies and the final say on capital allocation.
             </li>
             <li>
-              <span className="font-semibold">Todd Combs & Ted Weschler (Co-CIOs):</span> Manage multi-billion-dollar public stock portfolios.
+              <span className="font-semibold">Todd Combs &amp; Ted Weschler (Co-CIOs):</span> Manage multi-billion-dollar public stock portfolios.
             </li>
             <li>
               <span className="font-semibold">Warren Buffett (Chairman):</span> Provides board-level oversight and cultural guardianship.
@@ -366,10 +255,6 @@ export default function BuffettLegacyArticle() {
             Berkshire Hathaway is not a mutual fund; it is a conglomerate holding company. Its primary assets are the 60+ businesses it owns 100%, like BNSF and GEICO. The stock portfolio is only one part of the business.
           </p>
 
-          <div className="my-8 p-6 bg-gray-100 border border-gray-300 rounded-lg text-center text-gray-500 italic shadow-inner">
-            [Visual Diagram: The Berkshire Hathaway Insurance Float Model]
-          </div>
-
           <div className="my-8">
             <InfoCard
               title="The Secret Weapon: Insurance Float"
@@ -395,7 +280,7 @@ export default function BuffettLegacyArticle() {
         {/* Section 5: Investment Thesis */}
         <ContentSection id="section-5" title="Investment Thesis: Is Berkshire a 'Good Buy'?">
           <p>
-            The market&apos;s emotional reaction to Buffett&apos;s exit has created a classic value opportunity. The stock has underperformed the S&P 500 significantly, even as operating earnings have surged.
+            The market&apos;s emotional reaction to Buffett&apos;s exit has created a classic value opportunity. The stock has underperformed the S&amp;P 500 significantly, even as operating earnings have surged.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-8">
@@ -462,37 +347,7 @@ export default function BuffettLegacyArticle() {
             The &quot;Oracle&quot; is &quot;going quiet,&quot; but he leaves behind an institution. For the common investor, Berkshire remains a &quot;buy and hold&quot; vehicle offering ETF-like diversification, a fortress balance sheet, and a management team aligned with their interests.
           </p>
         </ContentSection>
-
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Educational Disclaimer */}
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md my-8">
-          <p className="text-sm text-gray-700">
-            <span className="font-bold">Educational Disclaimer:</span> This analysis is for informational and educational purposes only and should not be considered investment advice. Investing in securities involves risk, including the potential loss of principal. Past performance does not guarantee future results. Always conduct your own research and consult with a qualified financial advisor before making investment decisions.
-          </p>
-        </div>
-
-        {/* Footer */}
-        <footer className="border-t border-gray-200 pt-8 mt-16 text-center text-gray-500">
-          <p>&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </main>
-    </div>
+      </div>
+    </ArticleFrame>
   );
 }

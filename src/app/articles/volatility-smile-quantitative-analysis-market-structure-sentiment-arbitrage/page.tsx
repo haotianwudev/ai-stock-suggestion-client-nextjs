@@ -1,18 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, AlertTriangle, BarChart3, Target, Maximize2, Activity, Calculator, Eye, Zap, Brain, TrendingDown, Shield } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { TrendingUp, AlertTriangle, BarChart3, Target, Activity, Calculator, Eye, Zap, Brain, TrendingDown, Shield } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
-// --- Modern Card Components ---
-const FeatureCard = ({ icon, title, description, color = "blue" }: { 
-    icon: React.ReactNode; 
-    title: string; 
-    description: string; 
-    color?: "blue" | "purple" | "green" | "orange" | "red" | "cyan" 
+const FeatureCard = ({ icon, title, description, color = "blue" }: {
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+    color?: "blue" | "purple" | "green" | "orange" | "red" | "cyan"
 }) => {
     const colorClasses = {
         blue: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 text-blue-900",
@@ -34,8 +30,8 @@ const FeatureCard = ({ icon, title, description, color = "blue" }: {
     );
 };
 
-const InfoBox = ({ children, type = 'info', icon }: { 
-    children: React.ReactNode; 
+const InfoBox = ({ children, type = 'info', icon }: {
+    children: React.ReactNode;
     type?: 'info' | 'warning' | 'success' | 'tip';
     icon?: React.ReactNode;
 }) => {
@@ -62,14 +58,14 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
     <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">{children}</span>
 );
 
-const CompactTable = ({ headers, data, colorScheme = "blue" }: { 
-    headers: string[]; 
-    data: string[][]; 
+const CompactTable = ({ headers, data, colorScheme = "blue" }: {
+    headers: string[];
+    data: string[][];
     colorScheme?: "blue" | "purple" | "green" | "orange" | "cyan"
 }) => {
     const colorClasses = {
         blue: "bg-blue-600 text-white",
-        purple: "bg-purple-600 text-white", 
+        purple: "bg-purple-600 text-white",
         green: "bg-green-600 text-white",
         orange: "bg-orange-600 text-white",
         cyan: "bg-cyan-600 text-white"
@@ -129,17 +125,14 @@ const MetricCard = ({ value, label, description, color = "blue" }: {
     );
 };
 
-// Original components from the previous version
 const VolatilitySmileChart = () => (
     <div className="my-10 p-6 bg-white rounded-xl shadow-xl border border-gray-200">
-        <h4 className="font-bold text-xl mb-4 text-gray-800 text-center">Volatility Smile & Skew Patterns</h4>
+        <h4 className="font-bold text-xl mb-4 text-gray-800 text-center">Volatility Smile &amp; Skew Patterns</h4>
         <div className="w-full" style={{ aspectRatio: '16/9' }}>
             <svg viewBox="0 0 400 250" className="w-full h-full" aria-labelledby="chartTitle">
                 <title id="chartTitle">A chart showing the volatility smile and skew patterns.</title>
-                {/* Axes */}
                 <line x1="40" y1="220" x2="380" y2="220" stroke="#9ca3af" strokeWidth="1.5" />
                 <line x1="40" y1="220" x2="40" y2="30" stroke="#9ca3af" strokeWidth="1.5" />
-                {/* Ticks and Labels */}
                 <text x="35" y="235" textAnchor="end" fontSize="10" fill="#4b5563">Low IV</text>
                 <text x="35" y="40" textAnchor="end" fontSize="10" fill="#4b5563">High IV</text>
                 <text x="40" y="240" textAnchor="middle" fontSize="10" fill="#4b5563">OTM Put</text>
@@ -147,17 +140,15 @@ const VolatilitySmileChart = () => (
                 <text x="380" y="240" textAnchor="middle" fontSize="10" fill="#4b5563">OTM Call</text>
                 <text x="210" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#111827">Implied Volatility (σ)</text>
                 <text x="390" y="225" textAnchor="end" fontSize="12" fontWeight="bold" fill="#111827">Strike Price (K)</text>
-                {/* Smile Curve */}
                 <path d="M 60 100 Q 210 200, 360 100" stroke="#06b6d4" fill="none" strokeWidth="2.5" strokeLinecap="round"/>
                 <text x="300" y="80" fontSize="12" fill="#06b6d4" fontWeight="bold">Smile</text>
-                {/* Skew Curve */}
                 <path d="M 60 60 Q 180 150, 360 180" stroke="#f59e0b" fill="none" strokeWidth="2.5" strokeLinecap="round"/>
                 <text x="100" y="55" fontSize="12" fill="#f59e0b" fontWeight="bold">Skew (Smirk)</text>
             </svg>
         </div>
         <p className="text-center text-sm text-gray-600 mt-4">
-            Visual representation of a symmetrical <span className="text-cyan-600 font-semibold">volatility smile</span> (common in FX markets) 
-            and the asymmetrical <span className="text-amber-600 font-semibold">volatility skew/smirk</span> (dominant in equity markets), 
+            Visual representation of a symmetrical <span className="text-cyan-600 font-semibold">volatility smile</span> (common in FX markets)
+            and the asymmetrical <span className="text-amber-600 font-semibold">volatility skew/smirk</span> (dominant in equity markets),
             which reflects higher demand for downside protection.
         </p>
     </div>
@@ -175,11 +166,10 @@ const ParityFormula = () => (
     </div>
 );
 
-// --- Content Sections ---
 const Introduction = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">The Market's Rejection of Black-Scholes</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">The Market&apos;s Rejection of Black-Scholes</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 How the volatility smile reveals the true nature of market risk and investor psychology
             </p>
@@ -209,23 +199,23 @@ const Introduction = () => (
         <div className="bg-white rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">The Theoretical Foundation</h3>
             <p className="text-gray-700 mb-6">
-                The study of stock options pricing is fundamentally a study of how markets quantify and price uncertainty. 
-                At the heart of this endeavor lies the concept of <Highlight>implied volatility</Highlight>, a metric that serves as 
-                the market's collective forecast of future price fluctuations.
+                The study of stock options pricing is fundamentally a study of how markets quantify and price uncertainty.
+                At the heart of this endeavor lies the concept of <Highlight>implied volatility</Highlight>, a metric that serves as
+                the market&apos;s collective forecast of future price fluctuations.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-cyan-50 rounded-lg p-6">
                     <h4 className="font-bold text-cyan-900 mb-3">Implied Volatility Definition</h4>
                     <p className="text-cyan-800 text-sm">
-                        Formally defined as the unique value of the volatility parameter, sigma (σ), which, when input into an option pricing model, 
-                        yields a theoretical price equal to its observed market price. Practitioners perform reverse engineering: 
+                        Formally defined as the unique value of the volatility parameter, sigma (σ), which, when input into an option pricing model,
+                        yields a theoretical price equal to its observed market price. Practitioners perform reverse engineering:
                         take market price as given and solve for the volatility using iterative methods like Newton-Raphson.
                     </p>
                 </div>
                 <div className="bg-purple-50 rounded-lg p-6">
                     <h4 className="font-bold text-purple-900 mb-3">Black-Scholes Prediction</h4>
                     <p className="text-purple-800 text-sm">
-                        If BSM were perfect, implied volatility should be identical for all options on the same underlying, 
+                        If BSM were perfect, implied volatility should be identical for all options on the same underlying,
                         irrespective of strike price or expiration. Plotting IV against strikes would produce a completely flat, horizontal line.
                     </p>
                 </div>
@@ -234,12 +224,12 @@ const Introduction = () => (
 
         <InfoBox type="tip" icon={<Brain className="h-6 w-6 text-purple-600" />}>
             <div className="font-bold text-lg mb-2">Core Insight</div>
-            <p>The volatility smile is the market's <Highlight>mathematical signature</Highlight> of non-constant volatility and non-normal returns. It's not a bug - it's a feature revealing true market dynamics.</p>
+            <p>The volatility smile is the market&apos;s <Highlight>mathematical signature</Highlight> of non-constant volatility and non-normal returns. It&apos;s not a bug - it&apos;s a feature revealing true market dynamics.</p>
         </InfoBox>
 
         <div className="bg-white rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Black-Scholes vs Market Reality</h3>
-            <CompactTable 
+            <CompactTable
                 headers={["BSM Assumption", "Market Reality", "Evidence"]}
                 data={[
                     ["Constant Volatility", "Stochastic, strike-dependent volatility", "Volatility smile/skew patterns"],
@@ -298,7 +288,7 @@ const SmilePatterns = () => (
 
         <InfoBox type="warning" icon={<AlertTriangle className="h-6 w-6 text-yellow-600" />}>
             <div className="font-bold text-lg mb-2">Post-1987 Crash Effect</div>
-            <p>The equity volatility skew became pronounced after Black Monday 1987, creating permanent <Highlight>"crash-o-phobia"</Highlight> and structural demand for downside protection.</p>
+            <p>The equity volatility skew became pronounced after Black Monday 1987, creating permanent <Highlight>&ldquo;crash-o-phobia&rdquo;</Highlight> and structural demand for downside protection.</p>
         </InfoBox>
 
         <VolatilitySmileChart />
@@ -315,22 +305,22 @@ const MarketForces = () => (
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">The Statistical Foundation</h3>
             <p className="text-gray-700 mb-6">
-                The volatility smile is not random but a systematic pattern rooted in the fundamental properties of asset returns 
-                and investor behavior. Its existence can be deconstructed into three primary causal layers: the statistical failure 
+                The volatility smile is not random but a systematic pattern rooted in the fundamental properties of asset returns
+                and investor behavior. Its existence can be deconstructed into three primary causal layers: the statistical failure
                 of the log-normal distribution, the economic forces driven by investor psychology, and the structural frictions of market microstructure.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-red-50 rounded-lg p-6">
                     <h4 className="font-bold text-red-900 mb-3">Skew and Implied Skewness</h4>
                     <p className="text-red-800 text-sm">
-                        The downward-sloping volatility skew is the direct manifestation of <Highlight>negative skewness</Highlight> in the implied PDF. 
+                        The downward-sloping volatility skew is the direct manifestation of <Highlight>negative skewness</Highlight> in the implied PDF.
                         This means the market assigns a significantly higher probability to large, negative price moves (crashes) than to large positive ones.
                     </p>
                 </div>
                 <div className="bg-purple-50 rounded-lg p-6">
                     <h4 className="font-bold text-purple-900 mb-3">Smile and Implied Kurtosis</h4>
                     <p className="text-purple-800 text-sm">
-                        The U-shape of a symmetrical smile implies a <Highlight>leptokurtic</Highlight> PDF—a distribution with "fat tails." 
+                        The U-shape of a symmetrical smile implies a <Highlight>leptokurtic</Highlight> PDF&mdash;a distribution with &ldquo;fat tails.&rdquo;
                         This means the market assigns a higher probability to extreme outcomes than a normal distribution would suggest.
                     </p>
                 </div>
@@ -344,7 +334,7 @@ const MarketForces = () => (
                     <h3 className="text-xl font-bold text-gray-900">Demand Side: Fear Premium</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                    The 1987 crash instilled a lasting <Highlight>"crash-o-phobia,"</Highlight> creating structural demand for portfolio insurance.
+                    The 1987 crash instilled a lasting <Highlight>&ldquo;crash-o-phobia,&rdquo;</Highlight> creating structural demand for portfolio insurance.
                 </p>
                 <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start">
@@ -405,14 +395,14 @@ const MarketForces = () => (
                 <div className="bg-green-50 rounded-lg p-6">
                     <h4 className="font-bold text-green-900 mb-3">Jump-Diffusion Models</h4>
                     <p className="text-green-800 text-sm">
-                        <strong>Merton Model:</strong> Incorporates sudden, discontinuous jumps in asset prices, especially around news events. 
+                        <strong>Merton Model:</strong> Incorporates sudden, discontinuous jumps in asset prices, especially around news events.
                         This jump risk contributes to fat tails in the return distribution.
                     </p>
                 </div>
                 <div className="bg-purple-50 rounded-lg p-6">
                     <h4 className="font-bold text-purple-900 mb-3">Local Volatility</h4>
                     <p className="text-purple-800 text-sm">
-                        <strong>Dupire Model:</strong> Makes volatility a deterministic function of spot price and time, 
+                        <strong>Dupire Model:</strong> Makes volatility a deterministic function of spot price and time,
                         calibrated to match the entire volatility surface.
                     </p>
                 </div>
@@ -438,7 +428,7 @@ const MarketForces = () => (
 const TradingImplications = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trading & Risk Management</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trading &amp; Risk Management</h2>
             <p className="text-xl text-gray-600">Practical applications for sophisticated investors</p>
         </div>
 
@@ -466,27 +456,27 @@ const TradingImplications = () => (
         <div className="bg-white rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">The Smile as Market Sentiment Barometer</h3>
             <p className="text-gray-700 mb-6">
-                The shape of the smile provides a rich, real-time snapshot of the market's collective fears and expectations.
+                The shape of the smile provides a rich, real-time snapshot of the market&apos;s collective fears and expectations.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-amber-50 rounded-lg p-6">
                     <h4 className="font-bold text-amber-900 mb-3">Steep Negative Skew</h4>
                     <p className="text-amber-800 text-sm">
-                        Indicates high "fear," strong demand for downside protection, and high perceived crash risk. 
+                        Indicates high &ldquo;fear,&rdquo; strong demand for downside protection, and high perceived crash risk.
                         Often seen during market stress periods.
                     </p>
                 </div>
                 <div className="bg-cyan-50 rounded-lg p-6">
                     <h4 className="font-bold text-cyan-900 mb-3">Pronounced Symmetrical Smile</h4>
                     <p className="text-cyan-800 text-sm">
-                        Suggests the market anticipates a large price move but is uncertain about the direction 
+                        Suggests the market anticipates a large price move but is uncertain about the direction
                         (e.g., ahead of an earnings announcement or major economic event).
                     </p>
                 </div>
                 <div className="bg-green-50 rounded-lg p-6">
                     <h4 className="font-bold text-green-900 mb-3">Flattening Skew/Smile</h4>
                     <p className="text-green-800 text-sm">
-                        Can signal market complacency or a reduction in the perceived risk of extreme events. 
+                        Can signal market complacency or a reduction in the perceived risk of extreme events.
                         May indicate overconfidence in market stability.
                     </p>
                 </div>
@@ -496,10 +486,10 @@ const TradingImplications = () => (
         <div className="bg-white rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Advanced Risk Management: Beyond Delta</h3>
             <p className="text-gray-700 mb-6">
-                The smile introduces "smile risk." A trader who is perfectly delta-hedged is still making an unhedged bet on the 
-                stability of the smile's shape. To manage this, practitioners rely on higher-order risk sensitivities.
+                The smile introduces &ldquo;smile risk.&rdquo; A trader who is perfectly delta-hedged is still making an unhedged bet on the
+                stability of the smile&apos;s shape. To manage this, practitioners rely on higher-order risk sensitivities.
             </p>
-            <CompactTable 
+            <CompactTable
                 headers={["Greek", "Measures", "Application"]}
                 data={[
                     ["Vega", "IV sensitivity", "Overall volatility exposure"],
@@ -537,7 +527,7 @@ const TradingImplications = () => (
                     <ul className="text-purple-800 text-sm space-y-2">
                         <li>• Volatility surface modeling</li>
                         <li>• Greeks calculation engines</li>
-                        <li>• P&L attribution systems</li>
+                        <li>• P&amp;L attribution systems</li>
                         <li>• Scenario analysis tools</li>
                     </ul>
                 </div>
@@ -552,13 +542,13 @@ const TradingImplications = () => (
         <div className="bg-white rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Put-Call Parity: The Unifying Principle</h3>
             <p className="text-gray-700 mb-6">
-                Despite different market forces affecting puts and calls, their prices are bound by a fundamental no-arbitrage relationship. 
+                Despite different market forces affecting puts and calls, their prices are bound by a fundamental no-arbitrage relationship.
                 This ensures that implied volatility for puts and calls with the same strike and expiration must be identical.
             </p>
             <ParityFormula />
             <p className="text-gray-700 mt-6">
-                This relationship prevents separate volatility smiles for puts and calls, creating a unified curve that reflects 
-                the market's true assessment of risk across all strike prices. While market forces create the overall shape of the smile, 
+                This relationship prevents separate volatility smiles for puts and calls, creating a unified curve that reflects
+                the market&apos;s true assessment of risk across all strike prices. While market forces create the overall shape of the smile,
                 put-call parity ensures that for any given strike, the smile is a single, unified curve.
             </p>
         </div>
@@ -566,158 +556,28 @@ const TradingImplications = () => (
 );
 
 export default function VolatilitySmileAnalysis() {
-    const currentArticle = articles.find(article => article.slug === 'volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage');
-    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
     return (
-        <>
-            {/* SEO Components - MANDATORY */}
-            {currentArticle && currentArticle.title && currentArticle.slug && (
-                <>
-                    <StructuredData article={currentArticle} />
-                    <BreadcrumbStructuredData
-                        articleTitle={currentArticle.title}
-                        articleSlug={currentArticle.slug}
-                    />
-                </>
-            )}
+        <ArticleFrame
+            slug="volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage"
+            additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. Volatility smile arbitrage strategies require sophisticated mathematical modeling and significant capital."
+        >
+            <div className="max-w-4xl mx-auto px-4 text-gray-900">
+                <InfographicSlot alt="Volatility Smile Quantitative Analysis Infographic" />
 
-            <div className="bg-gray-50 min-h-screen font-sans">
-                {/* Return to Home Button */}
-                <div className="max-w-6xl mx-auto px-6 pt-8">
-                    <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                        <ArrowLeft className="mr-2 h-4 w-4" />
-                        Return to Home
-                    </Link>
-                </div>
+                <div className="space-y-20">
+                    <Introduction />
+                    <SmilePatterns />
+                    <MarketForces />
+                    <TradingImplications />
 
-                {/* Hero Section with Title */}
-                <div className="bg-white relative overflow-hidden border-b border-slate-100">
-                    <div className="max-w-6xl mx-auto px-6 pt-24 pb-20 relative z-10">
-                        {/* Badges */}
-                        <div className="absolute top-4 left-4">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                <BarChart3 className="w-3 h-3 mr-1" />
-                                Deep Research
-                            </span>
-                        </div>
-
-                        <div className="absolute top-4 right-4">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                                <Target className="w-3 h-3 mr-1" />
-                                Options
-                            </span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-                            The Volatility Smile
-                        </h1>
-                        <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-4xl font-light">
-                            A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage
+                    <section className="text-center bg-gradient-to-br from-gray-50 to-purple-50 rounded-2xl p-12 shadow-lg">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">The Smile Reveals Market Truth</h2>
+                        <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                            The volatility smile is the market&apos;s definitive rejection of Black-Scholes assumptions. It&apos;s a sophisticated pricing mechanism that captures the true nature of market risk: non-normal returns, crash fears, and the complex interplay of supply and demand in options markets. Understanding the smile is essential for modern quantitative finance.
                         </p>
-                    </div>
-                </div>
-
-                {/* Hero Infographic - Below Title with Full-Screen Capability */}
-                {currentArticle?.imageUrl && (
-                    <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
-                        <div 
-                            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-                            onClick={() => setIsImageViewerOpen(true)}
-                        >
-                            <img 
-                                src={currentArticle.imageUrl} 
-                                alt="Volatility Smile Quantitative Analysis Infographic" 
-                                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-                            />
-                            {/* Full-screen button overlay */}
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsImageViewerOpen(true);
-                                }}
-                                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                                title="View full screen"
-                            >
-                                <Maximize2 className="h-4 w-4" />
-                            </button>
-                            {/* Click hint */}
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                                    Click to view full screen
-                                </div>
-                            </div>
-                        </div>
                     </section>
-                )}
-
-                {/* Full-screen image viewer */}
-                {currentArticle?.imageUrl && (
-                    <FullScreenImageViewer
-                        src={currentArticle.imageUrl}
-                        alt="Volatility Smile Quantitative Analysis Infographic"
-                        isOpen={isImageViewerOpen}
-                        onClose={() => setIsImageViewerOpen(false)}
-                    />
-                )}
-
-                {/* Main Content Starts Here */}
-                <main className="max-w-6xl mx-auto px-6 py-16">
-                    <div className="space-y-20">
-                        <Introduction />
-                        <SmilePatterns />
-                        <MarketForces />
-                        <TradingImplications />
-
-                        {/* Conclusion */}
-                        <section className="text-center bg-gradient-to-br from-gray-50 to-purple-50 rounded-2xl p-12 shadow-lg">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-6">The Smile Reveals Market Truth</h2>
-                            <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                                The volatility smile is the market's definitive rejection of Black-Scholes assumptions. It's a sophisticated pricing mechanism that captures the true nature of market risk: non-normal returns, crash fears, and the complex interplay of supply and demand in options markets. Understanding the smile is essential for modern quantitative finance.
-                            </p>
-                        </section>
-
-                        {/* Call to Action */}
-                        <section className="text-center bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl p-12 text-white shadow-xl">
-                            <h3 className="text-3xl font-bold mb-4">Master Advanced Options Theory</h3>
-                            <p className="text-xl mb-8 opacity-90">
-                                Dive deeper into quantitative finance and volatility modeling
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                {currentArticle?.googleDoc && (
-                                    <a
-                                        href={currentArticle.googleDoc}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-bold rounded-lg text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                                    >
-                                        <TrendingUp className="mr-2 h-5 w-5" />
-                                        Read Full Research
-                                    </a>
-                                )}
-                                <Link
-                                    href="/"
-                                    className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
-                                >
-                                    Explore More Articles
-                                </Link>
-                            </div>
-                        </section>
-
-                        {/* Educational Disclaimer */}
-                        <InfoBox type="warning" icon={<AlertTriangle className="h-6 w-6 text-yellow-600" />}>
-                            <div className="font-bold text-lg mb-2">Educational Disclaimer</div>
-                            <p className="text-sm leading-relaxed">
-                                This content is for educational and informational purposes only. Options trading involves substantial risk and is not suitable for all investors. Volatility smile arbitrage strategies require sophisticated mathematical modeling and significant capital. Past performance does not guarantee future results. Always consult with a qualified financial advisor before making investment decisions.
-                            </p>
-                        </InfoBox>
-                    </div>
-                </main>
-
-                <footer className="text-center py-6 text-gray-500 text-sm">
-                    <p>&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-                </footer>
+                </div>
             </div>
-        </>
+        </ArticleFrame>
     );
 }

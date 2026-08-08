@@ -1,93 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft, Maximize2, FileText, TrendingUp, BarChart3, Target, Shield, Zap } from 'lucide-react';
-import { useState } from 'react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { FileText, TrendingUp, BarChart3, Target, Shield, Zap } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { Badge } from '@/components/ui/badge';
 
 export default function StockFactorModelsGuide() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'stock-factor-models-comprehensive-guide');
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="stock-factor-models-comprehensive-guide">
+      <div className="max-w-4xl mx-auto px-4 text-slate-900">
+        <InfographicSlot alt="Stock Factor Models Framework" />
 
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <div className="flex items-center gap-3 mb-6">
-            <Badge className="bg-purple-100 text-purple-800 border-purple-200">Deep Research</Badge>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Stock Factor Models
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            Decomposing returns, managing risk, and finding alpha through systematic factor investing frameworks.
-          </p>
-        </div>
-      </div>
-
-      {/* Hero Infographic */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/ZkYTvd0.jpeg" 
-            alt="Stock Factor Models Framework" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/ZkYTvd0.jpeg"
-        alt="Stock Factor Models Framework"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        
         {/* Conceptual Framework */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
@@ -96,13 +18,13 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Conceptual Framework</h2>
           </div>
-          
+
           <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-xl border border-indigo-200 mb-8">
             <p className="text-lg text-indigo-800 mb-6 leading-relaxed">
-              Factor models serve as quantitative tools providing a structured framework for decomposing security returns into constituent drivers. 
+              Factor models serve as quantitative tools providing a structured framework for decomposing security returns into constituent drivers.
               They operate on the premise that asset returns comprise two components: systematic (driven by common factors) and idiosyncratic (asset-specific).
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-4 rounded-lg border border-indigo-100">
                 <h4 className="font-semibold text-indigo-900 mb-2">Style Factors</h4>
@@ -128,7 +50,7 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Evolution from Single to Multi-Factor</h2>
           </div>
-          
+
           <div className="space-y-6">
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl border border-amber-200">
               <h3 className="text-xl font-semibold text-amber-900 mb-4">CAPM Limitations</h3>
@@ -150,11 +72,11 @@ export default function StockFactorModelsGuide() {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-xl font-semibold text-green-900 mb-4">Multi-Factor Revolution</h3>
               <p className="text-green-800 mb-4">
-                Multi-factor models increased explanatory power to over 90%, reframing "noise" as distinct, compensable risk factors. 
+                Multi-factor models increased explanatory power to over 90%, reframing &ldquo;noise&rdquo; as distinct, compensable risk factors.
                 This paradigm shift moved from managing assets to managing exposures.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -174,7 +96,7 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Arbitrage Pricing Theory (APT)</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
               <h3 className="text-xl font-semibold text-blue-900 mb-3">Core Principle</h3>
@@ -188,7 +110,7 @@ export default function StockFactorModelsGuide() {
                 Where E(Ri) is expected return, Rf is risk-free rate, β represents factor sensitivities, and RP are risk premiums.
               </p>
             </div>
-            
+
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100">
               <h3 className="text-xl font-semibold text-purple-900 mb-3">Key Assumptions</h3>
               <ul className="space-y-3 text-purple-700">
@@ -258,21 +180,20 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">The Fama-French Dynasty</h2>
           </div>
-          
+
           <div className="space-y-8">
-            {/* Three-Factor Model */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-xl font-semibold text-green-900 mb-4">Three-Factor Model (1992)</h3>
               <p className="text-green-800 mb-4">
-                Fama and French addressed CAPM's empirical failings by adding size and value factors, increasing explanatory power to over 90%.
+                Fama and French addressed CAPM&apos;s empirical failings by adding size and value factors, increasing explanatory power to over 90%.
               </p>
-              
+
               <div className="bg-white p-4 rounded-lg border border-green-200 mb-4">
                 <code className="text-sm text-green-800">
                   Rit - Rft = αit + β1(RMt - Rft) + β2SMBt + β3HMLt + εit
                 </code>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-green-100">
                   <h4 className="font-semibold text-green-900 text-sm mb-1">Market (Rm - Rf)</h4>
@@ -289,7 +210,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Four-Factor Model */}
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
               <h3 className="text-xl font-semibold text-purple-900 mb-4">Carhart Four-Factor Model (1997)</h3>
               <p className="text-purple-800 mb-4">
@@ -301,13 +221,12 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Five-Factor Model */}
             <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl border border-orange-200">
               <h3 className="text-xl font-semibold text-orange-900 mb-4">Five-Factor Model (2015)</h3>
               <p className="text-orange-800 mb-4">
                 Fama and French added profitability and investment factors, finding that value (HML) often becomes redundant.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-orange-100">
                   <h4 className="font-semibold text-orange-900 text-sm mb-1">Profitability (RMW)</h4>
@@ -318,10 +237,10 @@ export default function StockFactorModelsGuide() {
                   <p className="text-orange-700 text-xs">Conservative Minus Aggressive - low vs high investment</p>
                 </div>
               </div>
-              
+
               <div className="mt-4 p-3 bg-orange-100 rounded-lg border border-orange-200">
                 <p className="text-orange-800 text-sm">
-                  <strong>Key Finding:</strong> The five-factor model "unbundles" the value signal into profitability and investment drivers, 
+                  <strong>Key Finding:</strong> The five-factor model &ldquo;unbundles&rdquo; the value signal into profitability and investment drivers,
                   providing more economically intuitive explanations for stock returns.
                 </p>
               </div>
@@ -337,9 +256,8 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Common Equity Factors</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {/* Value Factor */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
               <h3 className="text-lg font-semibold text-blue-900 mb-3">Value Factor</h3>
               <p className="text-blue-700 text-sm mb-4">Stocks trading at low valuations relative to fundamentals</p>
@@ -351,7 +269,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Size Factor */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-lg font-semibold text-green-900 mb-3">Size Factor</h3>
               <p className="text-green-700 text-sm mb-4">Small-cap stocks historically outperform large-cap</p>
@@ -362,7 +279,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Momentum Factor */}
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
               <h3 className="text-lg font-semibold text-purple-900 mb-3">Momentum Factor</h3>
               <p className="text-purple-700 text-sm mb-4">Stocks with strong recent performance continue outperforming</p>
@@ -373,7 +289,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Quality Factor */}
             <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border border-orange-200">
               <h3 className="text-lg font-semibold text-orange-900 mb-3">Quality Factor</h3>
               <p className="text-orange-700 text-sm mb-4">Companies with strong fundamentals and stable earnings</p>
@@ -385,7 +300,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Low Volatility Factor */}
             <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-xl border border-teal-200">
               <h3 className="text-lg font-semibold text-teal-900 mb-3">Low Volatility</h3>
               <p className="text-teal-700 text-sm mb-4">Lower-risk stocks often deliver superior risk-adjusted returns</p>
@@ -396,7 +310,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Profitability Factor */}
             <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-200">
               <h3 className="text-lg font-semibold text-red-900 mb-3">Profitability</h3>
               <p className="text-red-700 text-sm mb-4">Companies with higher profitability metrics outperform</p>
@@ -440,9 +353,8 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Factor Construction Mechanics</h2>
           </div>
-          
+
           <div className="space-y-8">
-            {/* Long-Short Methodology */}
             <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200">
               <h3 className="text-xl font-semibold text-indigo-900 mb-4">Long-Short Portfolio Methodology</h3>
               <p className="text-indigo-800 mb-4">
@@ -460,13 +372,12 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Fama-French Construction */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-xl font-semibold text-green-900 mb-4">Fama-French 2x3 Sort Procedure</h3>
               <p className="text-green-800 mb-4">
                 The iconic SMB and HML factors use independent sorting along size and value dimensions.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                 <div className="bg-white p-4 rounded-lg border border-green-100">
                   <h4 className="font-semibold text-green-900 mb-2">Size Sort</h4>
@@ -495,7 +406,7 @@ export default function StockFactorModelsGuide() {
                   <div className="bg-green-200 p-2 rounded text-center text-green-800">Big Neutral</div>
                   <div className="bg-green-200 p-2 rounded text-center text-green-800">Big Value</div>
                 </div>
-                
+
                 <div className="mt-4 space-y-2">
                   <div className="bg-green-50 p-3 rounded border border-green-200">
                     <code className="text-sm text-green-800">SMB = (Small Growth + Small Neutral + Small Value)/3 - (Big Growth + Big Neutral + Big Value)/3</code>
@@ -507,7 +418,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Factor Construction Summary Table */}
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Factor Construction Reference</h3>
               <div className="overflow-x-auto">
@@ -542,7 +452,7 @@ export default function StockFactorModelsGuide() {
                     <tr className="border-b border-slate-200">
                       <td className="py-2 font-medium">Quality (QMJ)</td>
                       <td className="py-2">High-quality stocks</td>
-                      <td className="py-2">Low-quality ("junk")</td>
+                      <td className="py-2">Low-quality (&ldquo;junk&rdquo;)</td>
                       <td className="py-2">ROE, ROA, leverage, payout</td>
                     </tr>
                     <tr>
@@ -566,11 +476,10 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Applications in Modern Portfolio Management</h2>
           </div>
-          
+
           <div className="space-y-8">
-            {/* Portfolio Construction */}
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-200">
-              <h3 className="text-xl font-semibold text-emerald-900 mb-4">Portfolio Construction & Optimization</h3>
+              <h3 className="text-xl font-semibold text-emerald-900 mb-4">Portfolio Construction &amp; Optimization</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-emerald-800 mb-3">Smart Beta Implementation</h4>
@@ -593,9 +502,8 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Risk Management */}
             <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-200">
-              <h3 className="text-xl font-semibold text-red-900 mb-4">Risk Management & Decomposition</h3>
+              <h3 className="text-xl font-semibold text-red-900 mb-4">Risk Management &amp; Decomposition</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-red-800 mb-3">Risk Decomposition</h4>
@@ -609,7 +517,7 @@ export default function StockFactorModelsGuide() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-red-800 mb-3">Stress Testing & Scenarios</h4>
+                  <h4 className="font-semibold text-red-800 mb-3">Stress Testing &amp; Scenarios</h4>
                   <ul className="space-y-2 text-red-700 text-sm">
                     <li>• Factor-specific shock analysis</li>
                     <li>• Cascading impact modeling</li>
@@ -620,13 +528,12 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Performance Attribution */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
               <h3 className="text-xl font-semibold text-blue-900 mb-4">Performance Attribution</h3>
               <p className="text-blue-800 mb-4">
                 Factor models decompose active returns to distinguish systematic factor exposures (beta) from manager skill (alpha).
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-blue-100">
                   <h4 className="font-semibold text-blue-900 mb-2">Time-Series Regression</h4>
@@ -648,7 +555,7 @@ export default function StockFactorModelsGuide() {
                 <h4 className="font-semibold text-blue-900 mb-2">Attribution Components</h4>
                 <ul className="space-y-1 text-blue-800 text-sm">
                   <li>• <strong>Factor Returns:</strong> Performance from systematic exposures</li>
-                  <li>• <strong>Selection Returns:</strong> Manager's security selection skill</li>
+                  <li>• <strong>Selection Returns:</strong> Manager&apos;s security selection skill</li>
                   <li>• <strong>Interaction Effects:</strong> Timing of factor exposures</li>
                   <li>• <strong>Residual Alpha:</strong> Unexplained outperformance</li>
                 </ul>
@@ -663,16 +570,16 @@ export default function StockFactorModelsGuide() {
             <div className="p-3 bg-amber-100 rounded-xl">
               <Shield className="h-6 w-6 text-amber-600" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">The "Factor Zoo" Challenge</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">The &ldquo;Factor Zoo&rdquo; Challenge</h2>
           </div>
-          
+
           <div className="space-y-6">
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl border border-amber-200">
               <h3 className="text-xl font-semibold text-amber-900 mb-4">Factor Proliferation Problem</h3>
               <p className="text-amber-800 mb-4">
                 Over 315 factors documented in academic literature (Harvey, Liu, Zhu 2016), raising concerns about data snooping and statistical significance.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-amber-100">
                   <h4 className="font-semibold text-amber-900 mb-2">Data Snooping Issues</h4>
@@ -753,16 +660,15 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Data Sources for Factor Analysis</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* Academic Libraries */}
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-xl border border-cyan-200">
               <h3 className="text-xl font-semibold text-cyan-900 mb-4">Free Academic Libraries (Gold Standard)</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-cyan-100">
                   <h4 className="font-semibold text-cyan-900 mb-2">Kenneth French Data Library</h4>
                   <ul className="space-y-1 text-cyan-700 text-sm">
-                    <li>• Fama-French 3 & 5-factor returns</li>
+                    <li>• Fama-French 3 &amp; 5-factor returns</li>
                     <li>• Carhart momentum factor</li>
                     <li>• Industry portfolios</li>
                     <li>• International market data</li>
@@ -782,7 +688,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Low-Cost APIs */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-xl font-semibold text-green-900 mb-4">Low-Cost APIs for Raw Data</h3>
               <div className="overflow-x-auto">
@@ -798,14 +703,14 @@ export default function StockFactorModelsGuide() {
                   <tbody className="text-green-700">
                     <tr className="border-b border-green-200">
                       <td className="py-2 font-medium">Alpha Vantage</td>
-                      <td className="py-2">Market & Fundamental</td>
+                      <td className="py-2">Market &amp; Fundamental</td>
                       <td className="py-2">Global stocks, forex</td>
                       <td className="py-2">Free tier, $50/mo premium</td>
                     </tr>
                     <tr className="border-b border-green-200">
                       <td className="py-2 font-medium">Tiingo</td>
-                      <td className="py-2">Market & Fundamental</td>
-                      <td className="py-2">US & Chinese stocks</td>
+                      <td className="py-2">Market &amp; Fundamental</td>
+                      <td className="py-2">US &amp; Chinese stocks</td>
                       <td className="py-2">Free tier, $30/mo+</td>
                     </tr>
                     <tr className="border-b border-green-200">
@@ -817,7 +722,7 @@ export default function StockFactorModelsGuide() {
                     <tr>
                       <td className="py-2 font-medium">FRED</td>
                       <td className="py-2">Macroeconomic</td>
-                      <td className="py-2">US & International</td>
+                      <td className="py-2">US &amp; International</td>
                       <td className="py-2">Free</td>
                     </tr>
                   </tbody>
@@ -825,24 +730,23 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Software Tools */}
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
               <h3 className="text-xl font-semibold text-purple-900 mb-4">Open-Source Analysis Tools</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-purple-100">
                   <h4 className="font-semibold text-purple-900 mb-2">Python Libraries</h4>
                   <ul className="space-y-1 text-purple-700 text-sm">
-                    <li>• <strong>pandas:</strong> Data manipulation & analysis</li>
-                    <li>• <strong>statsmodels:</strong> Statistical modeling & regression</li>
+                    <li>• <strong>pandas:</strong> Data manipulation &amp; analysis</li>
+                    <li>• <strong>statsmodels:</strong> Statistical modeling &amp; regression</li>
                     <li>• <strong>PyAnomaly:</strong> 200+ firm characteristics</li>
-                    <li>• <strong>Alphalens:</strong> Factor analysis & IC</li>
+                    <li>• <strong>Alphalens:</strong> Factor analysis &amp; IC</li>
                     <li>• <strong>Zipline:</strong> Backtesting framework</li>
                   </ul>
                 </div>
                 <div className="bg-white p-4 rounded-lg border border-purple-100">
                   <h4 className="font-semibold text-purple-900 mb-2">R Libraries</h4>
                   <ul className="space-y-1 text-purple-700 text-sm">
-                    <li>• <strong>Tidyverse:</strong> Data wrangling & visualization</li>
+                    <li>• <strong>Tidyverse:</strong> Data wrangling &amp; visualization</li>
                     <li>• <strong>FactorAnalytics:</strong> Factor model analysis</li>
                     <li>• <strong>frenchdata:</strong> Kenneth French data access</li>
                     <li>• <strong>PerformanceAnalytics:</strong> Portfolio metrics</li>
@@ -860,17 +764,16 @@ export default function StockFactorModelsGuide() {
             <div className="p-3 bg-indigo-100 rounded-xl">
               <Zap className="h-6 w-6 text-indigo-600" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Advanced Considerations & Future Directions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Advanced Considerations &amp; Future Directions</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* Factor Decay */}
             <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200">
-              <h3 className="text-xl font-semibold text-indigo-900 mb-4">Factor Decay & Rebalancing</h3>
+              <h3 className="text-xl font-semibold text-indigo-900 mb-4">Factor Decay &amp; Rebalancing</h3>
               <p className="text-indigo-800 mb-4">
                 Factor exposures decay over time as company characteristics and stock prices change, requiring strategic rebalancing decisions.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-4 rounded-lg border border-indigo-100">
                   <h4 className="font-semibold text-indigo-900 mb-2">Fast Decay</h4>
@@ -896,9 +799,8 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Machine Learning Integration */}
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-200">
-              <h3 className="text-xl font-semibold text-emerald-900 mb-4">Machine Learning & Factor Investing</h3>
+              <h3 className="text-xl font-semibold text-emerald-900 mb-4">Machine Learning &amp; Factor Investing</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-emerald-800 mb-3">Current Applications</h4>
@@ -921,7 +823,6 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Institutional Providers */}
             <div className="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-xl border border-slate-200">
               <h3 className="text-xl font-semibold text-slate-900 mb-4">Institutional-Grade Providers</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -954,15 +855,14 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Practical Implementation Challenges</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* Transaction Costs */}
             <div className="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-200">
               <h3 className="text-xl font-semibold text-red-900 mb-4">Transaction Cost Impact</h3>
               <p className="text-red-800 mb-4">
                 Academic factor returns assume zero transaction costs, but real-world implementation faces significant friction that can erode theoretical premiums.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-red-100">
                   <h4 className="font-semibold text-red-900 mb-2">Direct Costs</h4>
@@ -983,7 +883,7 @@ export default function StockFactorModelsGuide() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="mt-4 p-4 bg-red-100 rounded-lg border border-red-200">
                 <h4 className="font-semibold text-red-900 mb-2">Cost Mitigation Strategies</h4>
                 <ul className="space-y-1 text-red-800 text-sm">
@@ -995,13 +895,12 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Capacity and Crowding */}
             <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border border-orange-200">
-              <h3 className="text-xl font-semibold text-orange-900 mb-4">Capacity Constraints & Factor Crowding</h3>
+              <h3 className="text-xl font-semibold text-orange-900 mb-4">Capacity Constraints &amp; Factor Crowding</h3>
               <p className="text-orange-800 mb-4">
                 As factor investing becomes mainstream, capacity constraints and crowding effects can diminish factor premiums through arbitrage.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-4 rounded-lg border border-orange-100">
                   <h4 className="font-semibold text-orange-900 mb-2">Market Cap Constraints</h4>
@@ -1018,13 +917,12 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Regime Dependency */}
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
-              <h3 className="text-xl font-semibold text-purple-900 mb-4">Regime Dependency & Time-Varying Returns</h3>
+              <h3 className="text-xl font-semibold text-purple-900 mb-4">Regime Dependency &amp; Time-Varying Returns</h3>
               <p className="text-purple-800 mb-4">
                 Factor premiums exhibit significant time variation, with extended periods of underperformance testing investor patience.
               </p>
-              
+
               <div className="bg-white p-4 rounded-lg border border-purple-100 mb-4">
                 <h4 className="font-semibold text-purple-900 mb-3">Historical Drawdown Periods</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -1032,7 +930,7 @@ export default function StockFactorModelsGuide() {
                     <p className="text-purple-700 mb-1"><strong>Value Factor:</strong></p>
                     <ul className="text-purple-600 text-xs space-y-1">
                       <li>• 1998-2000: Tech bubble (-40% drawdown)</li>
-                      <li>• 2007-2020: "Lost decade" for value</li>
+                      <li>• 2007-2020: &ldquo;Lost decade&rdquo; for value</li>
                       <li>• Growth dominance in low-rate environment</li>
                     </ul>
                   </div>
@@ -1046,7 +944,7 @@ export default function StockFactorModelsGuide() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-purple-100 p-4 rounded-lg border border-purple-200">
                 <h4 className="font-semibold text-purple-900 mb-2">Regime-Aware Implementation</h4>
                 <ul className="space-y-1 text-purple-800 text-sm">
@@ -1066,17 +964,16 @@ export default function StockFactorModelsGuide() {
             <div className="p-3 bg-teal-100 rounded-xl">
               <TrendingUp className="h-6 w-6 text-teal-600" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Factor Timing & Valuation</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Factor Timing &amp; Valuation</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* Factor Valuation Metrics */}
             <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-xl border border-teal-200">
               <h3 className="text-xl font-semibold text-teal-900 mb-4">Factor Valuation Metrics</h3>
               <p className="text-teal-800 mb-4">
                 Just as individual stocks can be cheap or expensive, factors themselves exhibit valuation cycles that may predict future returns.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-teal-100">
                   <h4 className="font-semibold text-teal-900 mb-3">Valuation Spread Analysis</h4>
@@ -1084,7 +981,7 @@ export default function StockFactorModelsGuide() {
                     <li>• Compare P/E ratios: Value vs Growth portfolios</li>
                     <li>• Historical percentile rankings</li>
                     <li>• Cross-sectional dispersion measures</li>
-                    <li>• Factor "cheapness" indicators</li>
+                    <li>• Factor &ldquo;cheapness&rdquo; indicators</li>
                   </ul>
                 </div>
                 <div className="bg-white p-4 rounded-lg border border-teal-100">
@@ -1097,23 +994,22 @@ export default function StockFactorModelsGuide() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="mt-4 p-4 bg-teal-100 rounded-lg border border-teal-200">
                 <p className="text-teal-800 text-sm">
-                  <strong>Research Finding:</strong> Factors trading at extreme valuations (top/bottom decile) 
+                  <strong>Research Finding:</strong> Factors trading at extreme valuations (top/bottom decile)
                   show mean reversion over 3-5 year horizons, suggesting tactical timing opportunities.
                 </p>
               </div>
             </div>
 
-            {/* Dynamic Factor Allocation */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
               <h3 className="text-xl font-semibold text-blue-900 mb-4">Dynamic Factor Allocation Strategies</h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                 <div className="bg-white p-4 rounded-lg border border-blue-100">
                   <h4 className="font-semibold text-blue-900 mb-2">Valuation-Based Timing</h4>
-                  <p className="text-blue-700 text-sm mb-2">Overweight factors when "cheap" relative to history</p>
+                  <p className="text-blue-700 text-sm mb-2">Overweight factors when &ldquo;cheap&rdquo; relative to history</p>
                   <div className="bg-blue-50 p-2 rounded text-xs text-blue-800">
                     Example: Increase value allocation when value-growth P/E spread &gt; 80th percentile
                   </div>
@@ -1148,15 +1044,14 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Cross-Asset Factor Investing</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* Multi-Asset Factors */}
             <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl border border-violet-200">
               <h3 className="text-xl font-semibold text-violet-900 mb-4">Universal Factor Premiums</h3>
               <p className="text-violet-800 mb-4">
                 Many equity factors exhibit similar patterns across asset classes, suggesting common risk or behavioral drivers.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white p-4 rounded-lg border border-violet-100">
                   <h4 className="font-semibold text-violet-900 mb-2 text-sm">Fixed Income</h4>
@@ -1197,10 +1092,9 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* Factor Correlation Across Assets */}
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-200">
               <h3 className="text-xl font-semibold text-emerald-900 mb-4">Cross-Asset Factor Correlations</h3>
-              
+
               <div className="bg-white p-4 rounded-lg border border-emerald-100 mb-4">
                 <h4 className="font-semibold text-emerald-900 mb-3">Correlation Patterns</h4>
                 <div className="overflow-x-auto">
@@ -1251,7 +1145,7 @@ export default function StockFactorModelsGuide() {
               <div className="bg-emerald-100 p-4 rounded-lg border border-emerald-200">
                 <h4 className="font-semibold text-emerald-900 mb-2">Diversification Benefits</h4>
                 <p className="text-emerald-800 text-sm">
-                  Moderate correlations (0.15-0.45) suggest meaningful diversification benefits from cross-asset factor investing, 
+                  Moderate correlations (0.15-0.45) suggest meaningful diversification benefits from cross-asset factor investing,
                   while still capturing common risk premiums across markets.
                 </p>
               </div>
@@ -1267,15 +1161,14 @@ export default function StockFactorModelsGuide() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">ESG Integration with Factor Models</h2>
           </div>
-          
+
           <div className="space-y-6">
-            {/* ESG as Quality Factor */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
               <h3 className="text-xl font-semibold text-green-900 mb-4">ESG as Enhanced Quality Factor</h3>
               <p className="text-green-800 mb-4">
                 ESG metrics often correlate with traditional quality measures, potentially enhancing factor model explanatory power.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-4 rounded-lg border border-green-100">
                   <h4 className="font-semibold text-green-900 mb-2">Environmental</h4>
@@ -1307,10 +1200,9 @@ export default function StockFactorModelsGuide() {
               </div>
             </div>
 
-            {/* ESG Factor Construction */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
               <h3 className="text-xl font-semibold text-blue-900 mb-4">ESG Factor Construction Approaches</h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg border border-blue-100">
                   <h4 className="font-semibold text-blue-900 mb-3">Integration Methods</h4>
@@ -1331,46 +1223,18 @@ export default function StockFactorModelsGuide() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="mt-4 p-4 bg-blue-100 rounded-lg border border-blue-200">
                 <h4 className="font-semibold text-blue-900 mb-2">Research Findings</h4>
                 <p className="text-blue-800 text-sm">
-                  Academic studies suggest ESG integration can enhance risk-adjusted returns, particularly during market stress periods, 
+                  Academic studies suggest ESG integration can enhance risk-adjusted returns, particularly during market stress periods,
                   while maintaining factor exposures and diversification benefits.
                 </p>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Continue Learning */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-8">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-slate-600">
-            © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-          </p>
-        </div>
-      </footer>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

@@ -1,10 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft, ArrowRight, CheckCircle, XCircle, ChevronDown, ChevronUp, TrendingUp, TrendingDown, HelpCircle, Music } from 'lucide-react';
-import React, { useState } from 'react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArrowRight, ChevronDown, ChevronUp, TrendingUp, TrendingDown, HelpCircle } from 'lucide-react';
+import { useState } from 'react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper component for section titles
 const SectionTitle = ({ children }) => (
@@ -57,7 +55,7 @@ const ExecutiveSummary = () => (
         <SectionTitle>1.0 Executive Summary</SectionTitle>
         <P>This report provides a comprehensive comparative analysis of two distinct options trading strategies: the covered call and the diagonal spread. The fundamental difference lies in their core objectives and structural underpinnings.</P>
         <P>The covered call is primarily an income-generation and yield-enhancement strategy applied to an existing long stock position. It involves trading away potential upside appreciation for a fixed, upfront premium.</P>
-        <P>In contrast, the diagonal spread is a versatile, multi-leg options strategy used to construct a capital-efficient position based on a directional or volatility-based market forecast. A key bridge is the "Poor Man's Covered Call" (PMCC), a diagonal spread that synthetically replicates a covered call with significantly lower capital.</P>
+        <P>In contrast, the diagonal spread is a versatile, multi-leg options strategy used to construct a capital-efficient position based on a directional or volatility-based market forecast. A key bridge is the &ldquo;Poor Man&apos;s Covered Call&rdquo; (PMCC), a diagonal spread that synthetically replicates a covered call with significantly lower capital.</P>
         <P>Key distinctions emerge in capital efficiency, risk profiles (defined vs. stock risk), and their opposing reactions to implied volatility (Vega). While both benefit from time decay (Theta), they do so through different mechanisms.</P>
     </Card>
 );
@@ -71,8 +69,8 @@ const StrategyStructures = () => (
                 <P>A foundational strategy constructed from a long position in an asset and a short call option on that same asset.</P>
                 <ul className="list-none space-y-3">
                     <ListItem><strong>Core Components:</strong> Own at least 100 shares of a stock and sell one call option against those shares.</ListItem>
-                    <ListItem><strong>The "Covered" Mechanism:</strong> The obligation to deliver shares is fully collateralized by the shares owned, distinguishing it from a high-risk "naked" call.</ListItem>
-                    <ListItem><strong>"Buy-Write" Variation:</strong> Refers to simultaneously buying the stock and selling the call option in a single transaction.</ListItem>
+                    <ListItem><strong>The &ldquo;Covered&rdquo; Mechanism:</strong> The obligation to deliver shares is fully collateralized by the shares owned, distinguishing it from a high-risk &ldquo;naked&rdquo; call.</ListItem>
+                    <ListItem><strong>&ldquo;Buy-Write&rdquo; Variation:</strong> Refers to simultaneously buying the stock and selling the call option in a single transaction.</ListItem>
                 </ul>
             </div>
             <div>
@@ -80,8 +78,8 @@ const StrategyStructures = () => (
                 <P>An advanced strategy using two options of the same type with different strike prices and different expiration dates.</P>
                 <ul className="list-none space-y-3">
                     <ListItem><strong>Hybrid Nature:</strong> Combines elements of a vertical spread (different strikes) and a horizontal spread (different expirations).</ListItem>
-                    <ListItem><strong>Etymology:</strong> The name "diagonal" comes from the options' placement on a standard quote grid.</ListItem>
-                    <ListItem><strong>Standard Construction:</strong> A "long" diagonal is established for a net debit, buying a longer-term option and selling a shorter-term option.</ListItem>
+                    <ListItem><strong>Etymology:</strong> The name &ldquo;diagonal&rdquo; comes from the options&apos; placement on a standard quote grid.</ListItem>
+                    <ListItem><strong>Standard Construction:</strong> A &ldquo;long&rdquo; diagonal is established for a net debit, buying a longer-term option and selling a shorter-term option.</ListItem>
                     <ListItem><strong>Key Variations:</strong> Includes Bull Call Diagonals, Bear Put Diagonals, and even credit diagonals for different market outlooks.</ListItem>
                 </ul>
             </div>
@@ -100,7 +98,7 @@ const CoreObjectives = () => (
                     <ListItem><strong>Primary Objective:</strong> Generate a consistent stream of income by collecting the option premium.</ListItem>
                     <ListItem><strong>Secondary Objectives:</strong> Cost basis reduction and serving as a targeted exit strategy.</ListItem>
                     <ListItem><strong>Ideal Market Outlook:</strong> Neutral to moderately bullish. The ideal scenario is for the stock to remain stable or rise modestly, but not above the strike price.</ListItem>
-                    <ListItem><strong>Risk Note:</strong> While often called "conservative," it retains the full downside risk of stock ownership, minus the small premium received.</ListItem>
+                    <ListItem><strong>Risk Note:</strong> While often called &ldquo;conservative,&rdquo; it retains the full downside risk of stock ownership, minus the small premium received.</ListItem>
                 </ul>
             </div>
             <div>
@@ -108,7 +106,7 @@ const CoreObjectives = () => (
                 <P>A strategic tool for expressing a nuanced market view with defined risk.</P>
                 <ul className="list-none space-y-3">
                     <ListItem><strong>Primary Objective:</strong> Establish a defined-risk directional position that profits from a moderate, gradual price move and differential time decay (theta).</ListItem>
-                    <ListItem><strong>Secondary Objective:</strong> Capitalize on an increase in implied volatility (IV), as it's a net long vega position.</ListItem>
+                    <ListItem><strong>Secondary Objective:</strong> Capitalize on an increase in implied volatility (IV), as it&apos;s a net long vega position.</ListItem>
                     <ListItem><strong>Ideal Market Outlook:</strong> A moderately directional market (bullish for calls, bearish for puts) with low or rising implied volatility.</ListItem>
                 </ul>
             </div>
@@ -118,8 +116,8 @@ const CoreObjectives = () => (
 
 const PMCCSection = () => (
     <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-blue-900">
-        <SectionTitle>4.0 The "Poor Man's Covered Call" (PMCC)</SectionTitle>
-        <P>The PMCC is the most direct comparison point—a popular application of a long call diagonal debit spread designed to synthetically replicate a traditional covered call.</P>
+        <SectionTitle>4.0 The &ldquo;Poor Man&apos;s Covered Call&rdquo; (PMCC)</SectionTitle>
+        <P>The PMCC is the most direct comparison point&mdash;a popular application of a long call diagonal debit spread designed to synthetically replicate a traditional covered call.</P>
 
         <SubTitle>4.1 Defining the PMCC</SubTitle>
         <P>It replaces the expensive 100 shares of stock with a cheaper, long-dated, deep in-the-money (ITM) call option (often a LEAPS). Against this long call, a shorter-term, out-of-the-money (OTM) call is sold to generate income.</P>
@@ -136,7 +134,7 @@ const PMCCSection = () => (
                     <tr>
                         <th className="p-4 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">Metric</th>
                         <th className="p-4 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">Traditional Covered Call</th>
-                        <th className="p-4 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">Poor Man's Covered Call (PMCC)</th>
+                        <th className="p-4 border-b-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">Poor Man&apos;s Covered Call (PMCC)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -174,7 +172,7 @@ const PMCCSection = () => (
             </table>
         </div>
 
-        <P className="mt-6 italic">A PMCC is not just a "cheap covered call"; it's a leveraged, defined-risk trade on an asset the trader doesn't own, with its own unique management requirements and trade-offs (like no dividends).</P>
+        <P className="mt-6 italic">A PMCC is not just a &ldquo;cheap covered call&rdquo;; it&apos;s a leveraged, defined-risk trade on an asset the trader doesn&apos;t own, with its own unique management requirements and trade-offs (like no dividends).</P>
     </Card>
 );
 
@@ -205,15 +203,15 @@ const QuantitativeAnalysis = () => (
 const GreeksSection = () => (
     <Card>
         <SectionTitle>6.0 The Role of the Greeks</SectionTitle>
-        <P>Understanding the "Greeks" reveals fundamental differences in how these strategies react to market conditions.</P>
+        <P>Understanding the &ldquo;Greeks&rdquo; reveals fundamental differences in how these strategies react to market conditions.</P>
 
         <Accordion title="Time Decay (Theta)">
-            <P><strong>Covered Call (Positive Theta):</strong> As a net seller of an option, the position benefits directly from time decay as the short call's value erodes.</P>
+            <P><strong>Covered Call (Positive Theta):</strong> As a net seller of an option, the position benefits directly from time decay as the short call&apos;s value erodes.</P>
             <P><strong>Diagonal Spread (Net Positive Theta):</strong> The position profits from *differential decay*. The short-term option sold loses value much faster than the long-term option bought, resulting in a net benefit from the passage of time.</P>
         </Accordion>
 
         <Accordion title="Implied Volatility (Vega)">
-            <P><strong>Covered Call (Negative Vega):</strong> The position is net short vega. It benefits when implied volatility (IV) falls. The ideal entry is when IV is high, allowing the seller to collect a large premium and profit from a "vega crush".</P>
+            <P><strong>Covered Call (Negative Vega):</strong> The position is net short vega. It benefits when implied volatility (IV) falls. The ideal entry is when IV is high, allowing the seller to collect a large premium and profit from a &ldquo;vega crush&rdquo;.</P>
             <P><strong>Diagonal Spread (Positive Vega):</strong> The position is net long vega. It benefits when implied volatility (IV) rises. The ideal entry is when IV is low, allowing the trader to enter cheaply and profit from a potential expansion in volatility.</P>
         </Accordion>
 
@@ -269,7 +267,7 @@ const PositionManagement = () => (
                 <SubTitle>7.1 Managing the Covered Call</SubTitle>
                 <P>Management revolves around handling assignment risk and adjusting the position.</P>
                 <ul className="list-none space-y-3">
-                    <ListItem><strong>Assignment Risk:</strong> The primary risk is having shares "called away," especially near an ex-dividend date.</ListItem>
+                    <ListItem><strong>Assignment Risk:</strong> The primary risk is having shares &ldquo;called away,&rdquo; especially near an ex-dividend date.</ListItem>
                     <ListItem><strong>Rolling Strategies:</strong> The main adjustment technique. Involves closing the current short call and opening a new one: rolling up for more upside, down for more premium, or out in time to continue the strategy.</ListItem>
                 </ul>
             </div>
@@ -341,118 +339,28 @@ const Synthesis = () => (
                 Concluding Expert Insight
             </h4>
             <P className="!mb-0 text-xl italic">
-                A <strong className="text-blue-600 dark:text-blue-400">covered call</strong> is a tactic to enhance an existing asset. A <strong className="text-green-600 dark:text-green-400">diagonal spread</strong> is a strategy to create a new, synthetic, and capital-efficient position. The choice is not about which is "better," but which is the right tool for your specific objectives, capital, and risk tolerance.
+                A <strong className="text-blue-600 dark:text-blue-400">covered call</strong> is a tactic to enhance an existing asset. A <strong className="text-green-600 dark:text-green-400">diagonal spread</strong> is a strategy to create a new, synthetic, and capital-efficient position. The choice is not about which is &ldquo;better,&rdquo; but which is the right tool for your specific objectives, capital, and risk tolerance.
             </P>
         </div>
     </Card>
 );
 
 export default function DiagonalSpreadVsCoveredCallPage() {
-    const currentArticle = articles.find(article => article.slug === 'diagonal-spread-vs-covered-call-strategic-quantitative-comparison');
-
     return (
-        <>
-            {/* SEO Components - MANDATORY */}
-            {currentArticle && (
-                <>
-                    <StructuredData article={currentArticle} />
-                    <BreadcrumbStructuredData
-                        articleTitle={currentArticle.title}
-                        articleSlug={currentArticle.slug}
-                    />
-                </>
-            )}
-
-            <div className="bg-gray-100 dark:bg-gray-900 min-h-screen font-sans">
-                <div className="container mx-auto p-4 md:p-8">
-                    {/* Return to Home Button */}
-                    <div className="flex items-center gap-4 mb-4">
-                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            Return to Home
-                        </Link>
-                    </div>
-
-                    {/* Badges */}
-                    <div className="relative mb-8">
-                        {/* Deep Research Badge - Top Left */}
-                        <div className="absolute top-0 left-0 z-10">
-                            <span className="inline-block bg-purple-600 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-                                Deep Research
-                            </span>
-                        </div>
-
-                        {/* Options Badge - Bottom Right */}
-                        <div className="absolute bottom-0 right-0 z-10">
-                            <span className="inline-block bg-gradient-to-r from-orange-400 to-yellow-500 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-                                Options
-                            </span>
-                        </div>
-
-                        {/* Book Summary Badge - Top Right */}
-                        <div className="absolute top-0 right-0 z-10">
-                            <span className="inline-block bg-indigo-600 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-                                Book Summary
-                            </span>
-                        </div>
-                    </div>
-
-                    <header className="text-center mb-12 pt-8">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-                            Diagonal Spread vs. Covered Call
-                        </h1>
-                        <p className="text-xl text-gray-500 dark:text-gray-400">
-                            A Comprehensive Strategic and Quantitative Comparison
-                        </p>
-                    </header>
-
-                    <main className="space-y-12">
-                        <ExecutiveSummary />
-                        <StrategyStructures />
-                        <CoreObjectives />
-                        <PMCCSection />
-                        <QuantitativeAnalysis />
-                        <GreeksSection />
-                        <PositionManagement />
-                        <Synthesis />
-                    </main>
-
-                    {/* Call to Action Section */}
-                    <div className="mt-16 text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-xl shadow-2xl">
-                        <h2 className="text-3xl font-bold mb-4">Master Advanced Options Strategies</h2>
-                        <p className="text-xl mb-6">
-                            Ready to implement these sophisticated trading techniques? Explore our comprehensive options education resources.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <Link
-                                href="/"
-                                className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-                            >
-                                Explore More Strategies
-                            </Link>
-                            {currentArticle?.googleDoc && (
-                                <a
-                                    href={currentArticle.googleDoc}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                                >
-                                    Read Full Research
-                                </a>
-                            )}
-                        </div>
-                    </div>
-
-                    <footer className="text-center mt-16 py-6 border-t border-gray-300 dark:border-gray-700">
-                        <p className="text-gray-500 dark:text-gray-400 mb-2">
-                            This analysis is for educational purposes only. Options trading involves significant risk.
-                        </p>
-                        <p className="text-sm text-gray-400 dark:text-gray-500">
-                            © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
-                        </p>
-                    </footer>
-                </div>
+        <ArticleFrame
+            slug="diagonal-spread-vs-covered-call-strategic-quantitative-comparison"
+            additionalDisclaimer="Options trading involves significant risk."
+        >
+            <div className="space-y-12">
+                <ExecutiveSummary />
+                <StrategyStructures />
+                <CoreObjectives />
+                <PMCCSection />
+                <QuantitativeAnalysis />
+                <GreeksSection />
+                <PositionManagement />
+                <Synthesis />
             </div>
-        </>
+        </ArticleFrame>
     );
 }

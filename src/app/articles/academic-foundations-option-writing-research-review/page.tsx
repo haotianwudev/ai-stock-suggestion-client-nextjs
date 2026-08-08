@@ -1,12 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
-// --- Helper: Icon SVGs for the sidebar ---
+// --- Helper: Icon SVGs ---
 const ICONS = {
   abstract: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>,
   vrp: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8a6 6 0 0 0-8.4-5.2"></path><path d="M6.3 18a6 6 0 0 1 8.4-5.2"></path></svg>,
@@ -20,10 +16,6 @@ const ICONS = {
 
 // --- Data: Content from the research paper ---
 const researchData = {
-  title: "The Academic Foundations of Option Writing",
-  subtitle: "A Review of Modern Research on Risk Premia, Strategy Performance, and Risk Management",
-  author: "Dr. Evelyn Reed, CFA",
-  date: "September 7, 2025",
   keyTakeaways: [
     { title: "The Primacy of the VRP", text: "Systematic option selling is profitable due to the Variance Risk Premium, which compensates sellers for providing market insurance." },
     { title: "Empirical Outperformance", text: "Net premium-selling strategies have historically generated superior risk-adjusted returns compared to buying options or holding the underlying asset alone." },
@@ -168,12 +160,8 @@ const researchData = {
 };
 
 // --- Helper Components ---
-const Section = ({ id, title, content, onRef }) => (
-  <section 
-    id={id} 
-    ref={(el) => onRef(id, el)} 
-    className="mb-12 py-8 scroll-mt-20"
-  >
+const Section = ({ id, title, content }: { id: string; title: string; content: string }) => (
+  <section id={id} className="mb-12">
     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-500 pl-4">{title}</h2>
     <div
       className="prose prose-lg max-w-none text-gray-700 prose-h3:text-blue-600 prose-strong:text-gray-800 prose-a:text-blue-600"
@@ -182,43 +170,7 @@ const Section = ({ id, title, content, onRef }) => (
   </section>
 );
 
-const Sidebar = ({ sections, activeSection, setActiveSection }) => {
-  const handleClick = (e, id) => {
-    e.preventDefault();
-    setActiveSection(id);
-    document.querySelector(`#${id}`).scrollIntoView({
-      behavior: 'smooth'
-    });
-  };
-
-  return (
-    <aside className="w-full md:w-1/4 lg:w-1/5 xl:w-1/6 md:sticky md:top-0 md:h-screen p-8 md:overflow-y-auto bg-gray-50/80 backdrop-blur-sm border-r border-gray-200">
-      <h2 className="text-sm font-bold uppercase text-gray-500 tracking-widest mb-6">Contents</h2>
-      <nav>
-        <ul className="space-y-1">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <a
-                href={`#${section.id}`}
-                onClick={(e) => handleClick(e, section.id)}
-                className={`flex items-center space-x-3 px-4 py-2 rounded-lg transition-all duration-200 ease-in-out text-gray-600 hover:bg-gray-200 hover:text-gray-800 ${
-                  activeSection === section.id ? 'bg-blue-100 text-blue-600 font-semibold' : ''
-                }`}
-              >
-                <span className={activeSection === section.id ? 'text-blue-500' : 'text-gray-400'}>
-                  {section.icon}
-                </span>
-                <span>{section.title}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </aside>
-  );
-};
-
-const KeyTakeaways = ({ takeaways }) => (
+const KeyTakeaways = ({ takeaways }: { takeaways: { title: string; text: string }[] }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-6 mb-16 shadow-sm">
     <h3 className="text-xl font-bold text-gray-800 mb-4">Key Research Findings</h3>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -233,175 +185,24 @@ const KeyTakeaways = ({ takeaways }) => (
 );
 
 export default function AcademicFoundationsOptionWriting() {
-  const [activeSection, setActiveSection] = useState(researchData.sections[0].id);
-  const sectionRefs = useRef({});
-  const currentArticle = articles.find(article => article.slug === 'academic-foundations-option-writing-research-review');
-
-  // Initialize refs for each section
-  useEffect(() => {
-    researchData.sections.forEach(section => {
-      if (!sectionRefs.current[section.id]) {
-        sectionRefs.current[section.id] = null;
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -70% 0px', threshold: 0 }
-    );
-
-    // Observe all section elements
-    Object.entries(sectionRefs.current).forEach(([id, element]) => {
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
-      // Cleanup observer
-      Object.entries(sectionRefs.current).forEach(([id, element]) => {
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
-  }, []);
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="academic-foundations-option-writing-research-review">
+      <div className="max-w-4xl mx-auto px-4 text-gray-700">
+        <p className="text-xl text-gray-500 mb-8">A Review of Modern Research on Risk Premia, Strategy Performance, and Risk Management</p>
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        html {
-          scroll-behavior: smooth;
-          font-family: 'Inter', sans-serif;
-        }
-        body {
-          background-color: #f9fafb; /* bg-gray-50 */
-        }
-      `}</style>
+        <KeyTakeaways takeaways={researchData.keyTakeaways} />
 
-      <div className="min-h-screen bg-gray-50">
-        {/* Return to Home Button */}
-        <div className="bg-white border-b border-gray-200 px-4 py-4">
-          <div className="max-w-7xl mx-auto">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-        </div>
-
-        {/* Badges */}
-        <div className="relative">
-          {/* Deep Research Badge - Top Left */}
-          <div className="absolute top-4 left-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-              Deep Research
-            </span>
-          </div>
-          
-          {/* Options Badge - Bottom Right */}
-          <div className="absolute bottom-4 right-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-              Options
-            </span>
-          </div>
-
-          {/* Book Summary Badge - Top Right */}
-          <div className="absolute top-4 right-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 border border-indigo-200">
-              Book Summary
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row bg-gray-50 text-gray-700">
-          <Sidebar 
-            sections={researchData.sections} 
-            activeSection={activeSection} 
-            setActiveSection={setActiveSection} 
-          />
-          
-          <main className="w-full md:w-3/4 lg:w-4/5 xl:w-5/6 p-8 md:p-12 lg:p-16">
-            <header className="mb-12">
-              <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-3 leading-tight">
-                {researchData.title}
-              </h1>
-              <p className="text-xl text-gray-500">{researchData.subtitle}</p>
-            </header>
-
-            <KeyTakeaways takeaways={researchData.keyTakeaways} />
-
-            <div>
-              {researchData.sections.map(section => (
-                <Section
-                  key={section.id}
-                  id={section.id}
-                  title={section.title}
-                  content={section.content}
-                  onRef={(id, el) => {
-                    sectionRefs.current[id] = el;
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Call to Action */}
-            <div className="mt-16 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Continue Your Options Education</h3>
-              <p className="text-gray-700 mb-6">
-                This research synthesis provides the academic foundation for understanding option writing strategies. 
-                Explore our practical guides and interactive tools to apply these concepts in your trading.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {currentArticle?.googleDoc && (
-                  <a 
-                    href={currentArticle.googleDoc}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                  >
-                    Read Full Research Paper
-                  </a>
-                )}
-                <a 
-                  href="https://www.sophie-ai-finance.com/option"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  Explore Option Strategies
-                </a>
-              </div>
-            </div>
-
-            <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-500">
-              <p>Research Synthesis by {researchData.author}</p>
-              <p>Published: {researchData.date}</p>
-              <p className="mt-4">© 2025 SOPHIE Daddy Quant Blog. Educational content for informational purposes only.</p>
-            </footer>
-          </main>
+        <div>
+          {researchData.sections.map(section => (
+            <Section
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              content={section.content}
+            />
+          ))}
         </div>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

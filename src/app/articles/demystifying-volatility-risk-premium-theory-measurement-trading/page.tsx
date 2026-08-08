@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, TrendingUp, ShieldAlert, Activity, Brain, DollarSign, AlertTriangle, Sigma, Scale, History, ChevronDown, ChevronUp, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { useState } from 'react';
+import { BookOpen, TrendingUp, ShieldAlert, Activity, Brain, DollarSign, AlertTriangle, Sigma, Scale, History, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- MOCK DATA (only comparison data remains) ---
 const strategyComparison = [
@@ -55,33 +53,7 @@ const ExpandableCard = ({ title, icon: Icon, children, defaultOpen = false }: an
 // --- CONTENT SECTIONS ---
 const HomeContent = () => (
   <div className="bg-slate-50/50">
-    {/* Enhanced Hero */}
-    <div className="relative overflow-hidden bg-white border-b border-slate-200">
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-25"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
-        <div className="max-w-5xl">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4 leading-tight">
-            Demystifying the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 animate-gradient-x">Volatility Risk Premium</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-500 leading-relaxed">
-            The persistent tendency for <strong>Implied Volatility</strong> (market fear) to exceed subsequent <strong>Realized Volatility</strong> (actual market movement).
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Hero Infographic Image */}
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-12 relative z-10">
-      <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-        <img 
-          src="https://i.imgur.com/ZSPRHKw.jpeg" 
-          alt="Volatility Risk Premium Infographic" 
-          className="w-full h-auto"
-        />
-      </div>
-    </section>
-
-    {/* Key Concepts Grid (Enhanced detail) */}
+    {/* Key Concepts Grid */}
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="p-8 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/40">
@@ -90,7 +62,7 @@ const HomeContent = () => (
           </div>
           <h3 className="text-2xl font-bold text-slate-900 mb-3">Historical Magnitude</h3>
           <p className="text-slate-600 leading-relaxed">
-            The average VRP spread over the S&P 500 has consistently averaged <strong>4 to 5 annualized percentage points</strong> since 1990. 
+            The average VRP spread over the S&amp;P 500 has consistently averaged <strong>4 to 5 annualized percentage points</strong> since 1990.
           </p>
         </div>
 
@@ -122,7 +94,7 @@ const TheoryContent = () => (
   <section id="theory" className="bg-slate-50 py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading title="Deep Theory & Drivers" subtitle="Why The Premium Persists" icon={Brain} color="indigo" />
-      
+
       <div className="space-y-6">
         <ExpandableCard title="1. Risk-Based Explanations (Rational)" icon={ShieldAlert} defaultOpen={true}>
           <p>In classical finance, <strong>VRP</strong> is not a &quot;free lunch&quot; but fair compensation for bearing undiversifiable risk. This compensation is necessary because short-volatility strategies expose the seller to specific, unhedgeable risks.</p>
@@ -158,7 +130,7 @@ const CalculationContent = () => (
   <section id="calculation" className="bg-white py-12 border-y border-slate-100">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading title="Math & Models" subtitle="Quantifying the Premium" icon={Sigma} color="violet" />
-      
+
       <div className="grid gap-8">
         {/* Simple Definition (Enhanced RV detail) */}
         <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
@@ -204,7 +176,7 @@ const StrategiesContent = () => (
   <section id="strategies" className="bg-slate-50 py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading title="Strategies & Risks" subtitle="Harvesting The Premium" icon={TrendingUp} color="emerald" />
-      
+
       {/* Strategy Comparison Table */}
       <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-12">
         <div className="p-8 pb-4">
@@ -229,8 +201,8 @@ const StrategiesContent = () => (
                   <td className="px-6 py-4 text-slate-600">{strat.risk}</td>
                   <td className="px-6 py-4 text-slate-600 hidden md:table-cell">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      strat.complexity === 'Low' ? 'bg-emerald-100 text-emerald-800' : 
-                      strat.complexity === 'Medium' ? 'bg-amber-100 text-amber-800' : 
+                      strat.complexity === 'Low' ? 'bg-emerald-100 text-emerald-800' :
+                      strat.complexity === 'Medium' ? 'bg-amber-100 text-amber-800' :
                       'bg-rose-100 text-rose-800'
                     }`}>
                       {strat.complexity}
@@ -288,7 +260,7 @@ const StrategiesContent = () => (
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="prose prose-rose">
-            <p>On <strong>Feb 5, 2018</strong>, the S&P 500 dropped ~4%. This triggered massive end-of-day rebalancing by leveraged VIX exchange-traded products (<strong>ETPs</strong>) that were structurally short volatility (e.g., XIV).</p>
+            <p>On <strong>Feb 5, 2018</strong>, the S&amp;P 500 dropped ~4%. This triggered massive end-of-day rebalancing by leveraged VIX exchange-traded products (<strong>ETPs</strong>) that were structurally short volatility (e.g., XIV).</p>
             <p>These ETPs were forced to <strong>buy VIX futures</strong> in a liquidity panic. This drove the VIX index from ~16 to ~34 in minutes after market close.</p>
             <p className="font-bold">The outcome: The XIV fund lost ~96% of its value in one hour and was liquidated. This event demonstrated the crucial difference between the theoretical VRP edge and the immense structural risk of leveraged short-vol products.</p>
           </div>
@@ -319,7 +291,7 @@ const ResearchContent = () => (
   <section id="research" className="bg-white py-12 border-y border-slate-100">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading title="Literature Review" subtitle="Seminal Academic Work" icon={BookOpen} color="blue" />
-      
+
       <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
         {/* Paper 1 */}
         <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
@@ -328,7 +300,7 @@ const ResearchContent = () => (
           </div>
           <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
             <div className="flex items-center justify-between space-x-2 mb-1">
-              <h3 className="font-bold text-slate-900">Carr & Wu (2009)</h3>
+              <h3 className="font-bold text-slate-900">Carr &amp; Wu (2009)</h3>
               <time className="font-mono text-xs text-slate-500">RFS</time>
             </div>
             <div className="text-indigo-600 font-medium text-sm mb-3">&quot;Variance Risk Premia&quot;</div>
@@ -375,104 +347,21 @@ const ResearchContent = () => (
 );
 
 export default function VolatilityRiskPremiumArticle() {
-  const currentArticle = articles.find(article => article.slug === 'demystifying-volatility-risk-premium-theory-measurement-trading');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-800">
-        <style>{`
-          @keyframes gradient-x {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-          .animate-gradient-x {
-            background-size: 200% auto;
-            animation: gradient-x 5s ease infinite;
-          }
-          /* Styling for deep-linking/scrolling */
-          section:target {
-            scroll-margin-top: 20px; /* Offset for smooth scroll targets */
-          }
-        `}</style>
-
-        {/* Return to Home Button */}
-        <div className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
+    <ArticleFrame
+      slug="demystifying-volatility-risk-premium-theory-measurement-trading"
+      additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors."
+    >
+      <div className="text-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <InfographicSlot alt="Volatility Risk Premium Infographic" />
         </div>
-
-        {/* Deep Research Badge */}
-        <div className="absolute top-20 left-4 z-50">
-          <div className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">
-            Deep Research
-          </div>
-        </div>
-
-        {/* Options Badge */}
-        <div className="fixed bottom-4 right-4 z-50">
-          <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">
-            Options
-          </div>
-        </div>
-
-        <main className="animate-in fade-in duration-300">
-          <HomeContent />
-          <TheoryContent />
-          <CalculationContent />
-          <StrategiesContent />
-          <ResearchContent />
-        </main>
-
-        {/* Call-to-Action Section with Google Doc and Podcast Links */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl my-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <BookOpen className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <footer className="bg-white py-8 border-t border-slate-200 text-center text-slate-500 text-sm">
-          © 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
-        </footer>
+        <HomeContent />
+        <TheoryContent />
+        <CalculationContent />
+        <StrategiesContent />
+        <ResearchContent />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

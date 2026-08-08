@@ -1,12 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { useState } from 'react';
-import { ArrowUpRight, ArrowDownRight, TrendingUp, Plus, Minus, X, Briefcase, BarChart2, Zap, HeartPulse, Cpu, DollarSign, Building, Globe, Target, Scale, ShieldCheck, UserCheck, Music } from 'lucide-react';
-import { only } from 'node:test';
+import { ArrowUpRight, ArrowDownRight, TrendingUp, Plus, Minus, X, Briefcase, BarChart2, Zap, HeartPulse, Cpu, DollarSign, Building, Globe, Target, Scale, ShieldCheck, UserCheck } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // --- MOCK DATA FROM THE REPORT ---
 const portfolioMetrics = {
@@ -145,48 +141,12 @@ const holdingsDeepDive = [
 ];
 
 // --- COMPONENTS ---
-const Header = () => (
-  <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-200">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between h-16">
-        <div className="flex items-center space-x-3">
-          <Briefcase className="h-8 w-8 text-blue-600" />
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Druckenmiller's Q2 2025 Playbook</h1>
-        </div>
-        <a
-          href="https://www.sec.gov/edgar/searchedgar/companysearch"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:inline-block text-sm text-slate-500 hover:text-slate-900 transition-colors"
-        >
-          Source: 13F Filing
-        </a>
-      </div>
-    </div>
-  </header>
-);
-
-const Hero = () => (
-  <section className="py-20 sm:py-24 lg:py-32 bg-white text-slate-900">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p className="text-base font-semibold text-blue-600 tracking-wider">Duquesne Family Office | Q2 2025 Analysis</p>
-      <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">An Aggressive Pivot to AI & America</h2>
-      <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-slate-600">Stanley Druckenmiller's latest 13F filing reveals a dramatic shift: a billion-dollar surge into U.S. equities, a deep bet on the AI value chain, and a bullish outlook on the entire American economy.</p>
-      <div className="mt-10">
-        <a href="#snapshot" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-lg shadow-blue-500/20">
-          Explore the Portfolio
-        </a>
-      </div>
-    </div>
-  </section>
-);
-
 const Introduction = () => (
-  <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200 rounded-2xl">
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Architect: Stanley Druckenmiller</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">One of history's most successful investors, whose strategy is a unique blend of top-down macro analysis and aggressive, high-conviction betting.</p>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">One of history&apos;s most successful investors, whose strategy is a unique blend of top-down macro analysis and aggressive, high-conviction betting.</p>
       </div>
       <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div className="space-y-4 text-slate-700">
@@ -195,7 +155,7 @@ const Introduction = () => (
             <h4 className="text-2xl font-bold text-slate-900">Duquesne Family Office</h4>
           </div>
           <p>After a legendary career, including his famous partnership with George Soros and a 30-year track record at Duquesne Capital averaging <strong>30% annual returns with no down years</strong>, Druckenmiller converted his firm into a family office in 2010.</p>
-          <p>Today, Duquesne manages his personal wealth, deploying capital with the same principles that defined his career: mental flexibility, rigorous risk management, and the courage to "go for the jugular" when an opportunity arises. The firm's 13F filings are among the most closely watched in finance, offering a glimpse into the mind of a macro master.</p>
+          <p>Today, Duquesne manages his personal wealth, deploying capital with the same principles that defined his career: mental flexibility, rigorous risk management, and the courage to &ldquo;go for the jugular&rdquo; when an opportunity arises. The firm&apos;s 13F filings are among the most closely watched in finance, offering a glimpse into the mind of a macro master.</p>
         </div>
         <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
           <h4 className="text-xl font-bold text-slate-900 text-center">Core Investment Principles</h4>
@@ -252,7 +212,7 @@ const MetricCard = ({ title, value, change, changePercent, icon: Icon }) => (
 
 const PortfolioSnapshot = () => (
   <section id="snapshot" className="py-20 sm:py-24 bg-white">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Q2 Portfolio Snapshot</h3>
         <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">A decisive shift to offense, marked by a surge in capital and concentrated bets.</p>
@@ -283,7 +243,7 @@ const PortfolioSnapshot = () => (
       </div>
       <div className="mt-16 max-w-4xl mx-auto">
         <h4 className="text-2xl font-bold text-slate-900 text-center mb-8">Q1 vs Q2 Comparison</h4>
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200">
             <thead>
               <tr>
@@ -368,7 +328,7 @@ const ChangeCard = ({ item, type }) => {
 
 const PortfolioChanges = () => (
   <section className="py-20 sm:py-24 bg-slate-50">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Anatomy of a Reshuffle</h3>
         <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">High-conviction buys and strategic exits funded a fundamental portfolio overhaul.</p>
@@ -409,10 +369,10 @@ const PortfolioChanges = () => (
 
 const DruckenmillerDoctrine = () => (
   <section className="py-20 sm:py-24 bg-white">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Druckenmiller Doctrine</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Understanding the core principles behind the legendary investor's strategy.</p>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Understanding the core principles behind the legendary investor&apos;s strategy.</p>
       </div>
       <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {druckenmillerDoctrine.map((principle) => (
@@ -431,7 +391,7 @@ const DruckenmillerDoctrine = () => (
 
 const MacroThemes = () => (
   <section className="py-20 sm:py-24 bg-slate-50">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Big Picture: Dominant Macro Themes</h3>
         <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Decoding the powerful, interconnected themes driving the new portfolio.</p>
@@ -490,10 +450,10 @@ const HoldingsDeepDive = () => {
 
   return (
     <section className="py-20 sm:py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Deep Dive: Key Holdings</h3>
-          <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Examining the investment thesis behind the portfolio's most significant positions.</p>
+          <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Examining the investment thesis behind the portfolio&apos;s most significant positions.</p>
         </div>
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {holdingsDeepDive.map((holding) => (
@@ -521,117 +481,17 @@ const HoldingsDeepDive = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="bg-slate-100 border-t border-slate-200">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-slate-500">
-      <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-      <p className="text-xs mt-2">This is not investment advice. For informational purposes only.</p>
-    </div>
-  </footer>
-);
-
 export default function DruckenmillerQ2Analysis() {
-  const currentArticle = articles.find(article => article.slug === 'druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug}
-          />
-        </>
-      )}
-
-      <div className="bg-white antialiased text-slate-800">
-        {/* Return to Home Button */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-        </div>
-
-        {/* Deep Research Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-            Deep Research
-          </span>
-        </div>
-
-        {/* Podcast Badge */}
-        {currentArticle?.podcastUrl && (
-          <div className="absolute top-4 right-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-              Podcast
-            </span>
-          </div>
-        )}
-
-        <Header />
-        <main>
-          <Hero />
-          <Introduction />
-          <PortfolioSnapshot />
-          <PortfolioChanges />
-          <DruckenmillerDoctrine />
-          <MacroThemes />
-          <HoldingsDeepDive />
-        </main>
-
-        {/* Deep Research Paper Section */}
-        {currentArticle?.googleDoc && (
-          <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Access the Full Deep Research Paper
-              </h3>
-              <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-                Get the complete analysis with detailed methodology, additional data tables, risk assessments, and comprehensive investment thesis behind Druckenmiller's Q2 2025 portfolio moves.
-              </p>
-              <a
-                href={currentArticle.googleDoc}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Briefcase className="inline mr-2" />
-                Read Deep Research Paper
-              </a>
-            </div>
-          </section>
-        )}
-
-        {/* Podcast Section */}
-        {currentArticle?.podcastUrl && (
-          <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Listen to the Full Analysis
-              </h3>
-              <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-                Dive deeper into Druckenmiller's strategic moves with our comprehensive podcast discussion covering the macro themes, individual holdings analysis, and investment implications.
-              </p>
-              <a
-                href={currentArticle.podcastUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Music className="inline mr-2" />
-                Listen to Podcast
-              </a>
-            </div>
-          </section>
-        )}
-
-        <Footer />
+    <ArticleFrame slug="druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction">
+      <div className="bg-white antialiased text-slate-800 -mx-4 sm:-mx-6 lg:-mx-8">
+        <Introduction />
+        <PortfolioSnapshot />
+        <PortfolioChanges />
+        <DruckenmillerDoctrine />
+        <MacroThemes />
+        <HoldingsDeepDive />
       </div>
-    </>
+    </ArticleFrame>
   );
 }

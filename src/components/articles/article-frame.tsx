@@ -151,7 +151,19 @@ function VideoCard({ youtubeUrl, title }: { youtubeUrl: string; title: string })
             aria-label={`Play video: ${title}`}
           >
             {thumbnailUrl && (
-              <img src={thumbnailUrl} alt={title} loading="lazy" className="w-full h-full object-cover" />
+              <img
+                src={thumbnailUrl}
+                alt={title}
+                loading="lazy"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Not every video has a maxresdefault thumbnail; hqdefault is effectively always available.
+                  const fallback = thumbnailUrl.replace('/maxresdefault.jpg', '/hqdefault.jpg');
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
+              />
             )}
             <div className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors flex items-center justify-center">
               <PlayCircle className="w-12 h-12 text-white drop-shadow-lg" />

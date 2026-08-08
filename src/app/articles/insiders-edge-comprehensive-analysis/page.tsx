@@ -1,11 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft, BookOpen, Info, BarChart, AlertTriangle, Landmark, Beaker } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import React from 'react';
+import { BookOpen, Info, BarChart, Landmark, Beaker } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
-// Helper components for icons to avoid extra dependencies
 const InfoIcon = () => (
   <div className="p-3 bg-blue-100 text-blue-600 rounded-xl">
     <Info className="h-6 w-6" />
@@ -36,26 +34,23 @@ const BookOpenIcon = () => (
   </div>
 );
 
-// Sub-components
-const Section = ({ id, title, icon, children }) => (
+const Section = ({ id, title, icon, children }: { id: string; title: string; icon: React.ReactNode; children: React.ReactNode }) => (
   <section id={id} className="py-8">
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-        <div className="p-8 sm:p-10">
-          <div className="flex items-center mb-8">
-            <span className="mr-5">{icon}</span>
-            <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
-          </div>
-          <div className="prose prose-lg max-w-none text-gray-700">
-            {children}
-          </div>
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div className="p-8 sm:p-10">
+        <div className="flex items-center mb-8">
+          <span className="mr-5">{icon}</span>
+          <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
+        </div>
+        <div className="prose prose-lg max-w-none text-gray-700">
+          {children}
         </div>
       </div>
     </div>
   </section>
 );
 
-const StyledTable = ({ title, headers, rows }) => (
+const StyledTable = ({ title, headers, rows }: { title?: string; headers: string[]; rows: string[][] }) => (
   <div className="my-10 overflow-x-auto">
     {title && <h3 className="text-xl font-semibold text-gray-800 mb-4">{title}</h3>}
     <div className="shadow-md rounded-lg bg-white border border-gray-200">
@@ -72,7 +67,7 @@ const StyledTable = ({ title, headers, rows }) => (
             <tr key={rowIndex} className="hover:bg-gray-50 transition-colors">
               {row.map((cell, cellIndex) => (
                 <td key={cellIndex} className={`px-6 py-4 whitespace-normal text-sm ${cellIndex === 0 ? 'font-medium text-gray-900' : 'text-gray-600'}`}
-                  dangerouslySetInnerHTML={{ __html: cell }}/>
+                  dangerouslySetInnerHTML={{ __html: cell }} />
               ))}
             </tr>
           ))}
@@ -82,7 +77,7 @@ const StyledTable = ({ title, headers, rows }) => (
   </div>
 );
 
-const Subsection = ({ title, content, bullets = [] }) => (
+const Subsection = ({ title, content, bullets = [] }: { title: string; content?: string; bullets?: string[] }) => (
   <div className="p-6 bg-gray-50 rounded-xl border border-gray-200 mb-6">
     <h4 className="font-semibold text-blue-600 mb-2 text-lg">{title}</h4>
     {content && <p className="mb-3 text-gray-600" dangerouslySetInnerHTML={{ __html: content }}></p>}
@@ -97,29 +92,16 @@ const Subsection = ({ title, content, bullets = [] }) => (
 );
 
 export default function InsidersEdgeComprehensiveAnalysis() {
-  const currentArticle = articles.find(article => article.slug === 'insiders-edge-comprehensive-analysis');
-
-  const navLinks = [
-    { href: '#introduction', label: 'Introduction' },
-    { href: '#legal-landscape', label: 'Legal Landscape' },
-    { href: '#sentiment-indicator', label: 'Market Sentiment' },
-    { href: '#landmark-cases', label: 'Landmark Cases' },
-    { href: '#advanced-concepts', label: 'Advanced Concepts' },
-  ];
-
-  // Report data structure
   const reportData = {
-    title: "The Insider's Edge",
-    subtitle: "A Comprehensive Analysis of Insider Trading, Transparency, and Market Sentiment",
     sections: [
-      { 
-        id: "introduction", 
-        title: "Introduction", 
+      {
+        id: "introduction",
+        title: "Introduction",
         icon: <BookOpenIcon />,
-        content: `Insider trading occupies a unique and often misunderstood position in the financial lexicon. The term itself carries a dual meaning, describing both a <strong>legitimate, regulated market activity</strong> and a notorious form of <strong>financial fraud</strong>. On one hand, legal insider trading occurs daily as corporate executives, directors, and major shareholders buy and sell stock in their own companies, a practice essential for executive compensation, portfolio management, and corporate signaling. These transactions, when properly disclosed, offer a window into the perspectives of those with the most intimate knowledge of a company's operations and prospects. On the other hand, illegal insider trading involves the exploitation of <span class='text-blue-600 font-semibold'>confidential, price-sensitive information</span> to gain an unfair advantage, an act that fundamentally undermines market integrity and investor confidence.` 
+        content: `Insider trading occupies a unique and often misunderstood position in the financial lexicon. The term itself carries a dual meaning, describing both a <strong>legitimate, regulated market activity</strong> and a notorious form of <strong>financial fraud</strong>. On one hand, legal insider trading occurs daily as corporate executives, directors, and major shareholders buy and sell stock in their own companies, a practice essential for executive compensation, portfolio management, and corporate signaling. These transactions, when properly disclosed, offer a window into the perspectives of those with the most intimate knowledge of a company's operations and prospects. On the other hand, illegal insider trading involves the exploitation of <span class='text-blue-600 font-semibold'>confidential, price-sensitive information</span> to gain an unfair advantage, an act that fundamentally undermines market integrity and investor confidence.`
       },
-      { 
-        id: "legal-landscape", 
+      {
+        id: "legal-landscape",
         title: "The Legal and Regulatory Landscape",
         icon: <InfoIcon />,
         subsections: [
@@ -231,156 +213,67 @@ export default function InsidersEdgeComprehensiveAnalysis() {
   };
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
+    <ArticleFrame
+      slug="insiders-edge-comprehensive-analysis"
+      additionalDisclaimer="Misuse of material non-public information can result in severe legal penalties including fines and imprisonment. This article does not constitute legal or investment advice."
+    >
+      <div className="max-w-4xl mx-auto px-4 text-gray-900">
+        <Section id="introduction" title={reportData.sections[0].title} icon={reportData.sections[0].icon}>
+          <p className="mb-6" dangerouslySetInnerHTML={{ __html: reportData.sections[0].content as string }}></p>
+        </Section>
+
+        <Section id="legal-landscape" title={reportData.sections[1].title} icon={reportData.sections[1].icon}>
+          <div className="space-y-8 mt-8">
+            {reportData.sections[1].subsections!.map((sub, index) => (
+              <Subsection
+                key={index}
+                title={sub.title}
+                content={sub.content}
+                bullets={sub.bullets || []}
+              />
+            ))}
+          </div>
+          <StyledTable
+            title={reportData.sections[1].table!.title}
+            headers={reportData.sections[1].table!.headers}
+            rows={reportData.sections[1].table!.rows}
           />
-        </>
-      )}
+        </Section>
 
-      <div className="min-h-screen bg-gray-100">
-        {/* Return to Home Button */}
-        <div className="container mx-auto px-6 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
+        <Section id="sentiment-indicator" title={reportData.sections[2].title} icon={reportData.sections[2].icon}>
+          <div className="space-y-8 mt-8">
+            {reportData.sections[2].subsections!.map((sub, index) => (
+              <Subsection
+                key={index}
+                title={sub.title}
+                content={sub.content}
+                bullets={sub.bullets || []}
+              />
+            ))}
           </div>
-        </div>
+        </Section>
 
-        {/* Deep Research Badge - Top Left */}
-        <div className="relative">
-          <div className="absolute top-4 left-4 z-10">
-            <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-              Deep Research
-            </span>
+        <Section id="landmark-cases" title={reportData.sections[3].title} icon={reportData.sections[3].icon}>
+          <StyledTable
+            title={reportData.sections[3].table!.title}
+            headers={reportData.sections[3].table!.headers}
+            rows={reportData.sections[3].table!.rows}
+          />
+        </Section>
+
+        <Section id="advanced-concepts" title={reportData.sections[4].title} icon={reportData.sections[4].icon}>
+          <div className="space-y-8 mt-8">
+            {reportData.sections[4].subsections!.map((sub, index) => (
+              <Subsection
+                key={index}
+                title={sub.title}
+                content={sub.content}
+                bullets={sub.bullets || []}
+              />
+            ))}
           </div>
-        </div>
-
-        {/* Header */}
-        <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
-          <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="text-2xl font-bold text-gray-900 flex items-center">
-              <BarChart className="text-blue-600 mr-2" />
-              Insider Trading Analysis
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <a key={link.href} href={link.href} className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300">
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        </header>
-
-        <main>
-          {/* Hero Section */}
-          <section className="relative text-gray-900 text-center py-20 md:py-32 px-4 overflow-hidden bg-white">
-            <div className="absolute inset-0 bg-grid-gray-200 [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
-            <div className="relative z-10 container mx-auto">
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500">
-                {reportData.title}
-              </h1>
-              <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-600">
-                {reportData.subtitle}
-              </p>
-            </div>
-          </section>
-
-          {/* Introduction Section */}
-          <Section id="introduction" title={reportData.sections[0].title} icon={reportData.sections[0].icon}>
-            <p className="mb-6" dangerouslySetInnerHTML={{ __html: reportData.sections[0].content }}></p>
-          </Section>
-
-          {/* Legal Landscape Section */}
-          <Section id="legal-landscape" title={reportData.sections[1].title} icon={reportData.sections[1].icon}>
-            <div className="space-y-8 mt-8">
-              {reportData.sections[1].subsections.map((sub, index) => (
-                <Subsection 
-                  key={index}
-                  title={sub.title}
-                  content={sub.content}
-                  bullets={sub.bullets || []}
-                />
-              ))}
-            </div>
-            <StyledTable 
-              title={reportData.sections[1].table.title} 
-              headers={reportData.sections[1].table.headers} 
-              rows={reportData.sections[1].table.rows} 
-            />
-          </Section>
-
-          {/* Market Sentiment Section */}
-          <Section id="sentiment-indicator" title={reportData.sections[2].title} icon={reportData.sections[2].icon}>
-            <div className="space-y-8 mt-8">
-              {reportData.sections[2].subsections.map((sub, index) => (
-                <Subsection 
-                  key={index}
-                  title={sub.title}
-                  content={sub.content}
-                  bullets={sub.bullets || []}
-                />
-              ))}
-            </div>
-          </Section>
-
-          {/* Landmark Cases Section */}
-          <Section id="landmark-cases" title={reportData.sections[3].title} icon={reportData.sections[3].icon}>
-            <StyledTable 
-              title={reportData.sections[3].table.title} 
-              headers={reportData.sections[3].table.headers} 
-              rows={reportData.sections[3].table.rows} 
-            />
-          </Section>
-
-          {/* Advanced Concepts Section */}
-          <Section id="advanced-concepts" title={reportData.sections[4].title} icon={reportData.sections[4].icon}>
-            <div className="space-y-8 mt-8">
-              {reportData.sections[4].subsections.map((sub, index) => (
-                <Subsection 
-                  key={index}
-                  title={sub.title}
-                  content={sub.content}
-                  bullets={sub.bullets || []}
-                />
-              ))}
-            </div>
-          </Section>
-
-          {/* Risk Warning */}
-          <section className="py-12 bg-red-50 border-l-4 border-red-500 max-w-5xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
-            <div className="flex items-start">
-              <AlertTriangle className="text-red-500 mr-4 mt-1 flex-shrink-0" size={24} />
-              <div>
-                <h3 className="text-lg font-semibold text-red-800 mb-2">Important Disclosure</h3>
-                <p className="text-red-700">
-                  This article is for educational purposes only and does not constitute legal or investment advice. 
-                  Always consult with qualified professionals before making investment decisions based on insider trading information.
-                  Misuse of material non-public information can result in severe legal penalties including fines and imprisonment.
-                </p>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="container mx-auto px-6 text-center">
-            <p className="text-lg mb-4">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-            <p className="text-gray-400">
-              The information provided on this website is for educational purposes only and should not be considered financial or investment advice.
-            </p>
-          </div>
-        </footer>
+        </Section>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

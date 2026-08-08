@@ -1,134 +1,31 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BarChart, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 export default function VpaPage() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const currentArticle = articles.find(article => article.slug === 'volume-price-analysis-market-lore-algorithmic-execution');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title || 'Volume Price Analysis: From Market Lore to Algorithmic Execution'} 
-            articleSlug={currentArticle.slug || 'volume-price-analysis-market-lore-algorithmic-execution'} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="volume-price-analysis-market-lore-algorithmic-execution">
+      <div className="max-w-4xl mx-auto px-4 text-slate-900">
+        <InfographicSlot alt="Volume Price Analysis Comprehensive Guide" />
 
-      {/* Return to Home Button */}
-      <div className="max-w-5xl mx-auto px-6 pt-8">
-        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return to Home
-        </Link>
-      </div>
-
-      {/* Deep Research Badge */}
-      <div className="absolute top-4 left-4 z-10">
-        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-          Deep Research
-        </span>
-      </div>
-
-      {/* Hero Section */}
-      <div className="bg-white relative overflow-hidden border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Volume Price Analysis: From Market Lore to Algorithmic Execution
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-            A comprehensive examination of Volume Price Analysis (VPA), tracing its evolution from the foundational principles of market pioneers like Dow and Wyckoff to its modern applications in institutional trading and advanced machine learning algorithms.
-          </p>
-        </div>
-      </div>
-
-      {/* Hero Infographic - Below Title with Full-Screen Capability */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8">
-        <div 
-          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-          onClick={() => setIsImageViewerOpen(true)}
-        >
-          <img 
-            src="https://i.imgur.com/gy3HaKW.jpeg" 
-            alt="Volume Price Analysis Comprehensive Guide" 
-            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-          />
-          {/* Full-screen button overlay */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsImageViewerOpen(true);
-            }}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-            title="View full screen"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
-          {/* Click hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-              Click to view full screen
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/gy3HaKW.jpeg"
-        alt="Volume Price Analysis Comprehensive Guide"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        
         {/* Introduction */}
         <section className="mb-16">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-slate-700 leading-relaxed mb-8">
-              Volume Price Analysis (VPA) is a methodology that seeks to understand and forecast market movements by examining the relationship between price action and trading volume. It operates on the premise that volume is the fuel that drives the market, revealing the conviction and participation behind price moves. By analyzing volume, a trader can distinguish between genuine, sustainable trends driven by institutional "smart money" and deceptive, temporary fluctuations designed to trap retail participants.
+              Volume Price Analysis (VPA) is a methodology that seeks to understand and forecast market movements by examining the relationship between price action and trading volume. It operates on the premise that volume is the fuel that drives the market, revealing the conviction and participation behind price moves. By analyzing volume, a trader can distinguish between genuine, sustainable trends driven by institutional &ldquo;smart money&rdquo; and deceptive, temporary fluctuations designed to trap retail participants.
             </p>
-            
-            {currentArticle?.googleDoc && (
-              <div className="mt-8 p-6 bg-indigo-50 border border-indigo-200 rounded-xl">
-                <p className="text-indigo-800 font-semibold mb-2 text-lg">📊 Comprehensive VPA Research</p>
-                <p className="text-indigo-700 mb-4">
-                  Access our detailed research document covering advanced VPA methodologies, quantitative backtesting frameworks, and institutional applications.
-                </p>
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
-                >
-                  <BarChart className="w-5 h-5 mr-2" />
-                  Access Full VPA Research Document &rarr;
-                </a>
-              </div>
-            )}
           </div>
         </section>
 
         {/* Foundations Section */}
         <section className="mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-8">Foundations of Volume Price Analysis</h2>
-          
+
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-semibold text-slate-800 mb-4">The Intellectual Lineage: Dow and Wyckoff</h3>
               <p className="text-lg text-slate-700 mb-6">The conceptual framework of VPA evolved over more than a century:</p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
                   <h4 className="font-bold text-blue-900 text-lg mb-3">Charles Dow</h4>
@@ -136,11 +33,11 @@ export default function VpaPage() {
                     A foundational tenet of Dow Theory is that <strong>volume must confirm the trend</strong>. In a healthy uptrend, volume should expand as prices rise and diminish during pullbacks. A new high on weak volume is a warning sign that the trend lacks conviction.
                   </p>
                 </div>
-                
+
                 <div className="bg-green-50 p-6 rounded-xl border border-green-200">
                   <h4 className="font-bold text-green-900 text-lg mb-3">Richard Wyckoff</h4>
                   <p className="text-green-800">
-                    Around 1910, Wyckoff codified these observations into a detailed methodology. He viewed the market as being controlled by a single composite operator, and his goal was to decipher this operator's intentions through price and volume.
+                    Around 1910, Wyckoff codified these observations into a detailed methodology. He viewed the market as being controlled by a single composite operator, and his goal was to decipher this operator&apos;s intentions through price and volume.
                   </p>
                 </div>
               </div>
@@ -153,7 +50,7 @@ export default function VpaPage() {
                     <p className="text-indigo-800"><strong>Markup:</strong> The subsequent uptrend, where demand is in control.</p>
                   </div>
                   <div>
-                    <p className="text-indigo-800 mb-2"><strong>Distribution:</strong> A sideways range where smart money sells its positions. Characterized by high-volume "upthrusts" that fail to hold gains.</p>
+                    <p className="text-indigo-800 mb-2"><strong>Distribution:</strong> A sideways range where smart money sells its positions. Characterized by high-volume &ldquo;upthrusts&rdquo; that fail to hold gains.</p>
                     <p className="text-indigo-800"><strong>Markdown:</strong> The resulting downtrend as supply overwhelms demand.</p>
                   </div>
                 </div>
@@ -169,14 +66,14 @@ export default function VpaPage() {
                     When demand exceeds supply, prices rise. When supply exceeds demand, prices fall. VPA uses volume to gauge the intensity of this balance. A wide price spread on high volume shows a clear winner; a narrow spread on high volume indicates a fierce battle at a key level.
                   </p>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
                   <h4 className="font-bold text-lg text-indigo-700 mb-3">Law of Cause and Effect</h4>
                   <p className="text-slate-700">
                     A trend (the effect) is preceded by a cause (a period of accumulation or distribution in a trading range). The volume traded within that cause (the trading range) determines the magnitude of the subsequent trend.
                   </p>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
                   <h4 className="font-bold text-lg text-indigo-700 mb-3">Law of Effort vs. Result</h4>
                   <p className="text-slate-700">
@@ -190,7 +87,7 @@ export default function VpaPage() {
 
         {/* Practitioner's Toolkit */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">The Practitioner's Toolkit</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-8">The Practitioner&apos;s Toolkit</h2>
           <p className="text-lg text-slate-700 mb-8">
             Practitioners rely on a specialized set of indicators to quantify and visualize the relationship between price and volume, transforming raw data into actionable intelligence.
           </p>
@@ -205,7 +102,7 @@ export default function VpaPage() {
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Indicator</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Type</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Interpretation & Use Case</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Interpretation &amp; Use Case</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
@@ -254,19 +151,19 @@ export default function VpaPage() {
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
                   <h4 className="font-bold text-blue-900 mb-3">Breakout Validation</h4>
                   <p className="text-blue-800">
-                    A genuine breakout from a consolidation range must occur on a significant surge in volume (at least 150% of the average). A low-volume breakout is a red flag for a "false move" or bull trap.
+                    A genuine breakout from a consolidation range must occur on a significant surge in volume (at least 150% of the average). A low-volume breakout is a red flag for a &ldquo;false move&rdquo; or bull trap.
                   </p>
                 </div>
-                
+
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
-                  <h4 className="font-bold text-green-900 mb-3">Reversal Detection (Climaxes & Absorption)</h4>
+                  <h4 className="font-bold text-green-900 mb-3">Reversal Detection (Climaxes &amp; Absorption)</h4>
                   <p className="text-green-800">
                     A <strong>Buying Climax</strong> occurs after a prolonged uptrend, marked by a massive volume spike and a wide price bar that closes poorly, indicating distribution. Conversely, <strong>Absorption</strong> happens at support, where high volume is met with a narrow price range, showing that large buyers are absorbing all the selling pressure.
                   </p>
                 </div>
-                
+
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
-                  <h4 className="font-bold text-purple-900 mb-3">The "No Supply" / "No Demand" Signal</h4>
+                  <h4 className="font-bold text-purple-900 mb-3">The &ldquo;No Supply&rdquo; / &ldquo;No Demand&rdquo; Signal</h4>
                   <p className="text-purple-800">
                     After a pullback in an uptrend, a very low-volume down bar (No Supply) signals that selling pressure is exhausted, providing a low-risk entry point. The opposite is true for a No Demand bar in a downtrend.
                   </p>
@@ -277,26 +174,26 @@ export default function VpaPage() {
             <div>
               <h3 className="text-2xl font-semibold text-slate-800 mb-6">Effective Time Horizons</h3>
               <blockquote className="border-l-4 border-slate-300 pl-6 italic text-slate-600 text-lg mb-6">
-                "The principles of VPA are fractal; they apply equally to a 1-minute chart as they do to a monthly chart. The key is to match the horizon to the trading style."
+                &ldquo;The principles of VPA are fractal; they apply equally to a 1-minute chart as they do to a monthly chart. The key is to match the horizon to the trading style.&rdquo;
               </blockquote>
-              
+
               <div className="space-y-4">
                 <div className="bg-white p-6 rounded-xl shadow-md border border-slate-200">
                   <h4 className="font-bold text-slate-900 mb-2">Day Trading (1-15 min charts)</h4>
                   <p className="text-slate-700">
-                    Focus is on VWAP. A common strategy is to buy pullbacks to the VWAP in an uptrending stock, looking for price to be "accepted" above this level.
+                    Focus is on VWAP. A common strategy is to buy pullbacks to the VWAP in an uptrending stock, looking for price to be &ldquo;accepted&rdquo; above this level.
                   </p>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                  <h4 className="font-bold text-slate-900 mb-2">Swing Trading (4-hour & Daily charts)</h4>
+                  <h4 className="font-bold text-slate-900 mb-2">Swing Trading (4-hour &amp; Daily charts)</h4>
                   <p className="text-slate-700">
-                    Look for Wyckoffian accumulation/distribution patterns over several weeks. A confirmed "Spring" (a false breakdown below support on high volume that quickly reverses) can be a powerful multi-day entry signal.
+                    Look for Wyckoffian accumulation/distribution patterns over several weeks. A confirmed &ldquo;Spring&rdquo; (a false breakdown below support on high volume that quickly reverses) can be a powerful multi-day entry signal.
                   </p>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                  <h4 className="font-bold text-slate-900 mb-2">Long-Term Investing (Weekly & Monthly charts)</h4>
+                  <h4 className="font-bold text-slate-900 mb-2">Long-Term Investing (Weekly &amp; Monthly charts)</h4>
                   <p className="text-slate-700">
                     Analyze volume trends over years. A stock that bases for months on a weekly chart with a steadily rising OBV is signaling quiet institutional accumulation before a major markup phase.
                   </p>
@@ -310,15 +207,15 @@ export default function VpaPage() {
         <section className="mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-8">Empirical Validation and Quantitative Backtesting</h2>
           <p className="text-lg text-slate-700 mb-8">
-            While often viewed as a discretionary art, VPA's core tenets are increasingly validated by academic research and quantitative analysis. Studies in market microstructure confirm that volume contains significant predictive information for future returns, volatility, and liquidity.
+            While often viewed as a discretionary art, VPA&apos;s core tenets are increasingly validated by academic research and quantitative analysis. Studies in market microstructure confirm that volume contains significant predictive information for future returns, volatility, and liquidity.
           </p>
 
           <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-xl border border-slate-200 mb-8">
             <h3 className="text-2xl font-semibold text-slate-800 mb-6">Measuring Effectiveness Quantitatively</h3>
             <p className="text-slate-700 mb-6">
-              To move from theory to practice, any VPA-based strategy must be rigorously backtested. This involves programming the strategy's rules and running them on historical data to simulate performance. Key considerations include accounting for transaction costs, slippage, and avoiding lookahead bias.
+              To move from theory to practice, any VPA-based strategy must be rigorously backtested. This involves programming the strategy&apos;s rules and running them on historical data to simulate performance. Key considerations include accounting for transaction costs, slippage, and avoiding lookahead bias.
             </p>
-            
+
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <table className="w-full">
                 <thead className="bg-slate-100">
@@ -361,24 +258,24 @@ export default function VpaPage() {
           <p className="text-lg text-slate-700 mb-8">
             VPA principles are not just for retail traders; they are deeply embedded in professional and institutional trading, often in highly quantitative and automated forms.
           </p>
-          
+
           <div className="grid gap-6">
             <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200">
               <h3 className="font-bold text-indigo-900 text-lg mb-3">Execution Algorithms</h3>
               <p className="text-indigo-800">
-                The industry-standard VWAP algorithm is a direct application of VPA. Its entire purpose is to break up a large order and execute it in line with the stock's natural volume profile throughout the day to minimize market impact. This is VPA used defensively.
+                The industry-standard VWAP algorithm is a direct application of VPA. Its entire purpose is to break up a large order and execute it in line with the stock&apos;s natural volume profile throughout the day to minimize market impact. This is VPA used defensively.
               </p>
             </div>
-            
+
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
-              <h3 className="font-bold text-green-900 text-lg mb-3">Tracking "Smart Money"</h3>
+              <h3 className="font-bold text-green-900 text-lg mb-3">Tracking &ldquo;Smart Money&rdquo;</h3>
               <p className="text-green-800">
                 Quantitative funds and hedge fund analysts build proprietary models to detect institutional activity. They analyze tick data to identify volume signatures of large block trades, even those hidden in dark pools, to front-run or follow major players.
               </p>
             </div>
-            
+
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
-              <h3 className="font-bold text-purple-900 text-lg mb-3">Market Making & Liquidity Provision</h3>
+              <h3 className="font-bold text-purple-900 text-lg mb-3">Market Making &amp; Liquidity Provision</h3>
               <p className="text-purple-800">
                 Market makers on options desks use volume profile to identify key gamma exposure levels. High volume nodes represent areas where there is significant open interest, which can act as price pins or accelerators upon a breakout.
               </p>
@@ -392,7 +289,7 @@ export default function VpaPage() {
           <p className="text-lg text-slate-700 mb-8">
             Machine learning (ML) and deep learning (DL) are revolutionizing VPA, moving it from a qualitative art to a quantitative science. These techniques can identify complex, non-linear patterns in price and volume data that are invisible to the human eye.
           </p>
-          
+
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
               <h3 className="font-bold text-slate-900 text-lg mb-3">Feature Engineering</h3>
@@ -400,25 +297,25 @@ export default function VpaPage() {
                 Success in ML trading models heavily depends on creating informative features. Volume-derived features are consistently among the most predictive. Examples include: volume momentum (rate of change), volume acceleration, up/down volume ratios, and the ratio of current volume to its short and long-term moving averages.
               </p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
               <h3 className="font-bold text-slate-900 text-lg mb-3">Supervised Learning for Prediction</h3>
               <p className="text-slate-700">
                 Models like Gradient Boosting Machines (XGBoost) and neural networks are trained on historical data to predict future price movements (e.g., will the price be higher in 5 bars?). Volume features are critical inputs for these models to learn the context of price action.
               </p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
-              <h3 className="font-bold text-slate-900 text-lg mb-3">Deep Learning (LSTM & CNN)</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-3">Deep Learning (LSTM &amp; CNN)</h3>
               <p className="text-slate-700">
-                Long Short-Term Memory (LSTM) networks are ideal for time-series data as they can "remember" long sequences of past price/volume action. This allows them to recognize the development of complex Wyckoffian phases over time. Convolutional Neural Networks (CNNs) can be used to treat charts as images, identifying VPA patterns visually.
+                Long Short-Term Memory (LSTM) networks are ideal for time-series data as they can &ldquo;remember&rdquo; long sequences of past price/volume action. This allows them to recognize the development of complex Wyckoffian phases over time. Convolutional Neural Networks (CNNs) can be used to treat charts as images, identifying VPA patterns visually.
               </p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
               <h3 className="font-bold text-slate-900 text-lg mb-3">Unsupervised Learning for Regime Detection</h3>
               <p className="text-slate-700">
-                Clustering algorithms can analyze multi-dimensional volume and volatility data to automatically identify and classify different market regimes (e.g., 'low-volume consolidation,' 'high-volume breakout,' 'volatile distribution') without prior labels, allowing strategies to adapt dynamically.
+                Clustering algorithms can analyze multi-dimensional volume and volatility data to automatically identify and classify different market regimes (e.g., &lsquo;low-volume consolidation,&rsquo; &lsquo;high-volume breakout,&rsquo; &lsquo;volatile distribution&rsquo;) without prior labels, allowing strategies to adapt dynamically.
               </p>
             </div>
           </div>
@@ -435,7 +332,7 @@ export default function VpaPage() {
             <div>
               <h3 className="text-2xl font-semibold text-slate-800 mb-4">Challenges and Considerations</h3>
               <p className="text-lg text-slate-700">
-                VPA is not a "holy grail." Its application requires significant screen time, patience, and a probabilistic mindset. Signals can be ambiguous, and the modern market structure with high-frequency trading and dark pools can sometimes distort volume data. It is a discretionary skill that demands continuous learning and adaptation.
+                VPA is not a &ldquo;holy grail.&rdquo; Its application requires significant screen time, patience, and a probabilistic mindset. Signals can be ambiguous, and the modern market structure with high-frequency trading and dark pools can sometimes distort volume data. It is a discretionary skill that demands continuous learning and adaptation.
               </p>
             </div>
 
@@ -452,31 +349,7 @@ export default function VpaPage() {
             </div>
           </div>
         </section>
-
-        {/* Call to Action */}
-        {currentArticle?.googleDoc && (
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl my-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Master Volume Price Analysis</h3>
-            <p className="text-gray-700 mb-6">
-              Dive deeper into our comprehensive research covering advanced VPA techniques, quantitative validation methods, and machine learning applications in volume analysis.
-            </p>
-            <a 
-              href={currentArticle.googleDoc}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
-            >
-              <BarChart className="inline mr-2" />
-              Read Complete VPA Research
-            </a>
-          </div>
-        )}
-
-        {/* Footer */}
-        <footer className="mt-16 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
-          <p>© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </main>
-    </>
+      </div>
+    </ArticleFrame>
   );
 }

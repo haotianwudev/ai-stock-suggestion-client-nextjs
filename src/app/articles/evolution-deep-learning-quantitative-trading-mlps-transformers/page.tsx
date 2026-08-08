@@ -1,17 +1,13 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import { ArrowLeft, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Content Components ---
 const AbstractContent = () => (
   <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border-l-4 border-blue-600">
     <h2 className="text-3xl font-bold mb-4 text-gray-900">Abstract</h2>
     <p className="text-base text-gray-700 leading-relaxed">
-      This report surveys the evolution of deep learning in quantitative trading, from traditional econometric models to sophisticated neural architectures. We analyze MLPs, RNNs, LSTMs, CNNs, Autoencoders, DRL, GNNs, and Transformers—examining their unique properties, trading applications, and critical limitations in high-noise, non-stationary financial markets.
+      This report surveys the evolution of deep learning in quantitative trading, from traditional econometric models to sophisticated neural architectures. We analyze MLPs, RNNs, LSTMs, CNNs, Autoencoders, DRL, GNNs, and Transformers&mdash;examining their unique properties, trading applications, and critical limitations in high-noise, non-stationary financial markets.
     </p>
   </div>
 );
@@ -19,7 +15,7 @@ const AbstractContent = () => (
 const Section1Content = () => (
   <>
     <h2 className="text-2xl font-bold mb-4 text-gray-900">1. From Linear Econometrics to Non-Linear Machine Learning</h2>
-    
+
     <div className="grid md:grid-cols-3 gap-4 mb-6">
       <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
         <h3 className="font-bold text-lg text-gray-800 mb-2">Econometric Models</h3>
@@ -27,25 +23,25 @@ const Section1Content = () => (
         <p className="text-xs text-green-600">✓ Interpretable, statistical rigor</p>
         <p className="text-xs text-red-600">✗ Linear assumptions fail</p>
       </div>
-      
+
       <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
         <h3 className="font-bold text-lg text-gray-800 mb-2">Classical ML</h3>
         <p className="text-sm text-gray-700 mb-2">SVM, Random Forests</p>
         <p className="text-xs text-green-600">✓ Non-linear, feature importance</p>
         <p className="text-xs text-red-600">✗ No temporal awareness</p>
       </div>
-      
+
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-300">
         <h3 className="font-bold text-lg text-blue-800 mb-2">MLPs</h3>
         <p className="text-sm text-gray-700 mb-2">Multi-Layer Perceptrons</p>
         <p className="text-xs text-green-600">✓ Universal approximator</p>
-        <p className="text-xs text-red-600">✗ Treats time as "bag of features"</p>
+        <p className="text-xs text-red-600">✗ Treats time as &ldquo;bag of features&rdquo;</p>
       </div>
     </div>
-    
+
     <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
       <p className="text-sm font-semibold text-purple-800">Key Insight:</p>
-      <p className="text-sm text-gray-700 mt-1">MLPs solve non-linearity but ignore sequential order—critical flaw for time-series data.</p>
+      <p className="text-sm text-gray-700 mt-1">MLPs solve non-linearity but ignore sequential order&mdash;critical flaw for time-series data.</p>
     </div>
   </>
 );
@@ -53,15 +49,15 @@ const Section1Content = () => (
 const Section2Content = () => (
   <>
     <h2 className="text-2xl font-bold mb-4 text-gray-900">2. Modeling Time: Recurrent Architectures</h2>
-    
+
     <div className="grid md:grid-cols-2 gap-4 mb-6">
       <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
         <h3 className="font-bold text-lg text-orange-800 mb-3">RNNs</h3>
-        <p className="text-sm text-gray-700 mb-2"><strong>Innovation:</strong> Hidden state "memory"</p>
+        <p className="text-sm text-gray-700 mb-2"><strong>Innovation:</strong> Hidden state &ldquo;memory&rdquo;</p>
         <p className="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Vanishing gradients</p>
         <p className="text-xs text-red-600">Memory limited to few time steps</p>
       </div>
-      
+
       <div className="bg-green-50 p-4 rounded-lg border border-green-300">
         <h3 className="font-bold text-lg text-green-800 mb-3">LSTMs</h3>
         <p className="text-sm text-gray-700 mb-2"><strong>Innovation:</strong> Gating mechanism (input, output, forget gates)</p>
@@ -69,11 +65,11 @@ const Section2Content = () => (
         <p className="text-xs text-green-600">Dominant 2010s architecture</p>
       </div>
     </div>
-    
+
     <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
       <p className="text-sm font-semibold text-red-800">LSTM Limitations in Finance:</p>
       <ul className="text-sm text-gray-700 mt-2 space-y-1">
-        <li>• <strong>Non-Stationarity:</strong> Memory becomes "obsolete" during regime shifts</li>
+        <li>• <strong>Non-Stationarity:</strong> Memory becomes &ldquo;obsolete&rdquo; during regime shifts</li>
         <li>• <strong>Overfitting:</strong> Memorizes noise in low SNR markets</li>
         <li>• <strong>Sequential Bottleneck:</strong> Cannot parallelize training</li>
       </ul>
@@ -84,22 +80,22 @@ const Section2Content = () => (
 const Section3Content = () => (
   <>
     <h2 className="text-2xl font-bold mb-4 text-gray-900">3. Novel Data Representations</h2>
-    
+
     <div className="space-y-4">
       <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
         <h3 className="font-bold text-lg text-indigo-800 mb-2">CNNs: Market-as-Image</h3>
         <p className="text-sm text-gray-700 mb-2"><strong>Applications:</strong></p>
         <ul className="text-sm text-gray-700 space-y-1 ml-4">
           <li>1. Chart pattern recognition (candlestick images)</li>
-          <li>2. "Factor pictures" (100 factors × 60 days as 2D image)</li>
+          <li>2. &ldquo;Factor pictures&rdquo; (100 factors × 60 days as 2D image)</li>
         </ul>
         <p className="text-xs text-red-600 mt-2">✗ Arbitrary representation, black box</p>
       </div>
-      
+
       <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
         <h3 className="font-bold text-lg text-teal-800 mb-2">Autoencoders: Non-Linear PCA</h3>
         <p className="text-sm text-gray-700 mb-2"><strong>Function:</strong> Encoder compresses → Latent space → Decoder reconstructs</p>
-        <p className="text-sm text-gray-700"><strong>Use:</strong> Feature extraction & denoising for downstream models</p>
+        <p className="text-sm text-gray-700"><strong>Use:</strong> Feature extraction &amp; denoising for downstream models</p>
         <p className="text-xs text-green-600 mt-2">✓ Unsupervised learning, signal extraction</p>
       </div>
     </div>
@@ -108,8 +104,8 @@ const Section3Content = () => (
 
 const Section4Content = () => (
   <>
-    <h2 className="text-2xl font-bold mb-4 text-gray-900">4. The New Frontier: Systems & Agents</h2>
-    
+    <h2 className="text-2xl font-bold mb-4 text-gray-900">4. The New Frontier: Systems &amp; Agents</h2>
+
     <div className="grid md:grid-cols-2 gap-4">
       <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-300">
         <h3 className="font-bold text-lg text-yellow-800 mb-3">Deep Reinforcement Learning</h3>
@@ -117,10 +113,10 @@ const Section4Content = () => (
         <p className="text-sm text-gray-700 mb-2">Agent learns policy to maximize reward (PnL/Sharpe)</p>
         <div className="mt-3 pt-3 border-t border-yellow-200">
           <p className="text-xs font-semibold text-red-700">Critical Barrier: Sim-to-Real Gap</p>
-          <p className="text-xs text-gray-600">Requires perfect market simulator—unrealistic</p>
+          <p className="text-xs text-gray-600">Requires perfect market simulator&mdash;unrealistic</p>
         </div>
       </div>
-      
+
       <div className="bg-pink-50 p-4 rounded-lg border border-pink-300">
         <h3 className="font-bold text-lg text-pink-800 mb-3">Graph Neural Networks</h3>
         <p className="text-sm text-gray-700 mb-2"><strong>Paradigm:</strong> Market-as-System</p>
@@ -137,27 +133,27 @@ const Section4Content = () => (
 const Section5Content = () => (
   <>
     <h2 className="text-2xl font-bold mb-4 text-gray-900">5. Current Apex: Transformers</h2>
-    
+
     <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-5 rounded-xl border border-purple-200 mb-4">
       <h3 className="font-bold text-lg text-purple-800 mb-3">Core Innovation: Self-Attention Mechanism</h3>
-      <p className="text-sm text-gray-700 mb-2">Direct access to all past time steps simultaneously—learns which events matter regardless of distance</p>
+      <p className="text-sm text-gray-700 mb-2">Direct access to all past time steps simultaneously&mdash;learns which events matter regardless of distance</p>
       <p className="text-sm font-semibold text-green-700">✓ Parallelizable (solves LSTM bottleneck)</p>
     </div>
-    
+
     <div className="grid md:grid-cols-2 gap-4 mb-4">
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h4 className="font-semibold text-base text-blue-800 mb-2">Application 1: Time-Series</h4>
         <p className="text-sm text-gray-700">Temporal Fusion Transformer (TFT)</p>
         <p className="text-xs text-gray-600 mt-1">State-of-the-art, interpretable attention</p>
       </div>
-      
+
       <div className="bg-green-50 p-4 rounded-lg border border-green-200">
         <h4 className="font-semibold text-base text-green-800 mb-2">Application 2: NLP Revolution</h4>
         <p className="text-sm text-gray-700">FinBERT for sentiment analysis</p>
         <p className="text-xs text-gray-600 mt-1">Unlocks alternative data (news, social media)</p>
       </div>
     </div>
-    
+
     <div className="grid md:grid-cols-2 gap-4">
       <div className="bg-green-50 p-3 rounded-lg">
         <p className="text-xs font-semibold text-green-800 mb-1">Advantages</p>
@@ -182,7 +178,7 @@ const Section5Content = () => (
 const Section6Content = () => (
   <>
     <h2 className="text-2xl font-bold mb-4 text-gray-900">6. Roadmap: Becoming a Deep Learning Quant</h2>
-    
+
     <div className="grid md:grid-cols-2 gap-4 mb-6">
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h4 className="font-semibold text-base text-blue-800 mb-2">Domain 1: Quant Finance</h4>
@@ -192,7 +188,7 @@ const Section6Content = () => (
           <li>• Portfolio Theory, Risk Management</li>
         </ul>
       </div>
-      
+
       <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
         <h4 className="font-semibold text-base text-purple-800 mb-2">Domain 2: ML/CS</h4>
         <ul className="text-sm text-gray-700 space-y-1">
@@ -202,7 +198,7 @@ const Section6Content = () => (
         </ul>
       </div>
     </div>
-    
+
     <div className="space-y-3">
       {[
         { num: 1, title: 'Foundations', desc: 'Math, finance theory, understand alpha & risk' },
@@ -348,121 +344,49 @@ const Table2Content = () => (
 
 // --- Main Component ---
 export default function DeepLearningQuantTradingArticle() {
-  const currentArticle = articles.find(
-    (article) => article.slug === 'evolution-deep-learning-quantitative-trading-mlps-transformers'
-  );
-
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-        </>
-      )}
+    <ArticleFrame slug="evolution-deep-learning-quantitative-trading-mlps-transformers">
+      <div className="max-w-5xl mx-auto px-4 text-gray-800">
+        <InfographicSlot alt="Evolution of Deep Learning in Quantitative Trading Infographic" />
 
-      <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-blue-50 font-sans">
-        <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Return to Home Button */}
-          <div className="flex items-center gap-4 mb-6">
-            <Link
-              href="/"
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
+        <div className="space-y-8">
+          <section id="abstract">
+            <AbstractContent />
+          </section>
 
-          {/* Article Container */}
-          <article className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-            {/* Deep Research Badge */}
-            {currentArticle?.deepResearch && (
-              <div className="absolute top-8 left-8 z-10">
-                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-600 text-white shadow-lg">
-                  Deep Research
-                </span>
-              </div>
-            )}
+          <section id="section-1">
+            <Section1Content />
+          </section>
 
-            {/* Hero Infographic */}
-            <section className="relative">
-              <div className="w-full">
-                <img 
-                  src="https://i.imgur.com/8ZF0tTX.jpeg" 
-                  alt="Evolution of Deep Learning in Quantitative Trading Infographic" 
-                  className="w-full h-auto"
-                />
-              </div>
-            </section>
+          <section id="section-2">
+            <Section2Content />
+          </section>
 
-            {/* Article Content */}
-            <div className="p-6 lg:p-10 space-y-8">
-              <section id="abstract">
-                <AbstractContent />
-              </section>
+          <section id="section-3">
+            <Section3Content />
+          </section>
 
-              <section id="section-1">
-                <Section1Content />
-              </section>
+          <section id="section-4">
+            <Section4Content />
+          </section>
 
-              <section id="section-2">
-                <Section2Content />
-              </section>
+          <section id="section-5">
+            <Section5Content />
+          </section>
 
-              <section id="section-3">
-                <Section3Content />
-              </section>
+          <section id="section-6">
+            <Section6Content />
+          </section>
 
-              <section id="section-4">
-                <Section4Content />
-              </section>
+          <section id="table-1">
+            <Table1Content />
+          </section>
 
-              <section id="section-5">
-                <Section5Content />
-              </section>
-
-              <section id="section-6">
-                <Section6Content />
-              </section>
-
-              <section id="table-1">
-                <Table1Content />
-              </section>
-
-              <section id="table-2">
-                <Table2Content />
-              </section>
-            </div>
-          </article>
-
-          {/* Call to Action - Google Doc Link */}
-          {currentArticle?.googleDoc && (
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl my-8 text-center shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href={currentArticle.googleDoc}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research Paper
-                </a>
-              </div>
-            </div>
-          )}
-
-          {/* Footer */}
-          <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-            <p className="text-sm">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </footer>
-        </main>
+          <section id="table-2">
+            <Table2Content />
+          </section>
+        </div>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

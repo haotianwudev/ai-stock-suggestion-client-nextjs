@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, Fragment } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, Settings, LineChart, TestTube2, SlidersHorizontal, BookOpen, Check, Clipboard, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { useState, Fragment } from 'react';
+import { BrainCircuit, Settings, LineChart, TestTube2, SlidersHorizontal, BookOpen, Check, Clipboard, Maximize2 } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Component to render icons by name ---
 interface IconProps {
@@ -481,7 +478,7 @@ interface CodeBlockProps {
   title: string;
 }
 
-const CodeBlock = ({ code, language, title }: CodeBlockProps) => {
+const CodeBlock = ({ code, title }: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -575,11 +572,11 @@ const Section = ({ title, content, list, codeBlocks, table }: SectionProps) => (
       {title}
     </h3>
     {content && content.map((p, i) => (
-      <p 
-        key={i} 
-        className="text-gray-700 mb-6 leading-relaxed text-lg" 
-        dangerouslySetInnerHTML={{ 
-          __html: p.replace(/`([^`]+)`/g, '<code class="bg-indigo-100 text-indigo-800 font-mono px-3 py-1 rounded-md text-sm font-semibold">$1</code>') 
+      <p
+        key={i}
+        className="text-gray-700 mb-6 leading-relaxed text-lg"
+        dangerouslySetInnerHTML={{
+          __html: p.replace(/`([^`]+)`/g, '<code class="bg-indigo-100 text-indigo-800 font-mono px-3 py-1 rounded-md text-sm font-semibold">$1</code>')
         }}
       />
     ))}
@@ -601,213 +598,50 @@ const Section = ({ title, content, list, codeBlocks, table }: SectionProps) => (
 );
 
 export default function BacktraderCheatsheetPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-
-  const currentArticle = articles.find(article => article.slug === 'definitive-backtrader-cheatsheet-guide');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || 'definitive-backtrader-cheatsheet-guide'} 
-          />
-        </>
-      )}
+    <ArticleFrame
+      slug="definitive-backtrader-cheatsheet-guide"
+      additionalDisclaimer="Trading involves substantial risk and may not be suitable for all investors. Past performance does not guarantee future results."
+    >
+      <InfographicSlot alt="Backtrader Cheatsheet Infographic" />
 
-      <div className="bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 text-gray-800 min-h-screen font-sans">
-        {/* Return to Home Button */}
-        <div className="max-w-6xl mx-auto px-6 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
+      {/* Introduction Section */}
+      <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-2xl shadow-xl border border-indigo-100 p-10 mb-12">
+        <div className="text-center mb-8">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+            Master Python Algorithmic Trading with backtrader
+          </h2>
+          <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+            This comprehensive cheatsheet covers everything you need to know about backtrader, the powerful Python framework for algorithmic trading. From basic setup to advanced optimization techniques, you&apos;ll learn how to build, test, and deploy profitable trading strategies with confidence.
+          </p>
         </div>
-
-        {/* Deep Research Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-            Deep Research
-          </span>
-        </div>
-
-        {/* Hero Section with Title */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          <div className="max-w-6xl mx-auto px-6 pt-16 pb-12 relative z-10">
-            <div className="flex items-center space-x-4 mb-8">
-              <div className="bg-indigo-100 p-4 rounded-2xl">
-                <Icon name="BookOpen" className="text-indigo-600" size={40} />
-              </div>
-              <div>
-                <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
-                  {cheatsheetData.title}
-                </h1>
-                <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-4xl font-light mt-4">
-                  Master algorithmic trading with this comprehensive backtrader guide. From basic setup to advanced optimization techniques, learn everything you need to build, test, and deploy profitable trading strategies in Python.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src={currentArticle?.imageUrl || "https://i.imgur.com/hHbVXLF.jpeg"} 
-              alt="Backtrader Cheatsheet Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Full-screen image viewer */}
-        <FullScreenImageViewer
-          src={currentArticle?.imageUrl || "https://i.imgur.com/hHbVXLF.jpeg"}
-          alt="Backtrader Cheatsheet Infographic"
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-        />
-
-        {/* Introduction Section */}
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-2xl shadow-xl border border-indigo-100 p-10 mb-12">
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                Master Python Algorithmic Trading with backtrader
-              </h2>
-              <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                This comprehensive cheatsheet covers everything you need to know about backtrader, the powerful Python framework for algorithmic trading. From basic setup to advanced optimization techniques, you'll learn how to build, test, and deploy profitable trading strategies with confidence.
-              </p>
-            </div>
-            <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">!</span>
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <p className="text-blue-800 font-medium">
-                    <strong>Educational Disclaimer:</strong> This content is for educational purposes only and does not constitute investment advice. Trading involves substantial risk and may not be suitable for all investors. Past performance does not guarantee future results.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-6 pb-16">
-          {cheatsheetData.parts.map(part => {
-            return (
-              <div key={part.id} id={part.id} className="mb-20">
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                  {/* Part Header */}
-                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-8">
-                    <div className="flex items-center space-x-4">
-                      <div className="bg-white/20 p-4 rounded-xl">
-                        <Icon name={part.Icon as string} size={32} className="text-white" />
-                      </div>
-                      <h2 className="text-3xl font-bold text-white tracking-tight">
-                        {part.title}
-                      </h2>
-                    </div>
-                  </div>
-                  
-                  {/* Part Content */}
-                  <div className="p-8">
-                    {part.sections.map((section, i) => <Section key={i} {...section} />)}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-12 text-center relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 bg-black/10"></div>
-            <div className="absolute top-0 left-0 w-full h-full">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full"></div>
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h3 className="text-4xl font-bold text-white mb-6">
-                Ready to Build Your Trading System?
-              </h3>
-              <p className="text-xl text-indigo-100 mb-10 max-w-3xl mx-auto leading-relaxed">
-                This cheatsheet provides the foundation for mastering backtrader. Start building your own algorithmic trading strategies and take your quantitative analysis to the next level.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                {currentArticle?.googleDoc && (
-                  <a 
-                    href={currentArticle.googleDoc}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-white text-indigo-600 font-bold py-4 px-8 rounded-2xl text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl"
-                  >
-                    <span className="mr-3 text-2xl">📄</span>
-                    View Full Research Document
-                  </a>
-                )}
-                <Link 
-                  href="/"
-                  className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-2xl text-lg hover:bg-white hover:text-indigo-600 transition-all duration-300 transform hover:scale-105"
-                >
-                  <span className="mr-3 text-2xl">🏠</span>
-                  Explore More Articles
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <footer className="bg-gradient-to-r from-gray-800 to-gray-900 mt-20 py-8 border-t border-gray-700">
-          <div className="max-w-6xl mx-auto text-center text-gray-300">
-            <p className="text-lg">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
       </div>
-    </>
+
+      {/* Main Content */}
+      {cheatsheetData.parts.map(part => {
+        return (
+          <div key={part.id} id={part.id} className="mb-20">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              {/* Part Header */}
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-8">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-white/20 p-4 rounded-xl">
+                    <Icon name={part.Icon as string} size={32} className="text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-white tracking-tight">
+                    {part.title}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Part Content */}
+              <div className="p-8">
+                {part.sections.map((section, i) => <Section key={i} {...section} />)}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </ArticleFrame>
   );
 }

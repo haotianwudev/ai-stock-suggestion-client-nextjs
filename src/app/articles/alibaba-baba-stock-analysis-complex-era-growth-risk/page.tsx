@@ -1,10 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // --- Helper Components for UI ---
 // Icon component for section headers
@@ -68,17 +65,6 @@ const competitorData = [
 ];
 
 // --- Main Components ---
-const Header = () => (
-  <header className="text-center py-12 px-4">
-    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
-      Alibaba Group (BABA) Stock Analysis
-    </h1>
-    <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-      Navigating a Complex New Era of Growth and Risk
-    </p>
-  </header>
-);
-
 const ExecutiveSummary = () => (
   <Card>
     <SectionTitle
@@ -91,10 +77,10 @@ const ExecutiveSummary = () => (
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
       <p>
-        This report provides a comprehensive analysis of Alibaba Group Holding Ltd. (NYSE: BABA), examining its operational structure, financial health, competitive positioning, and strategic direction. The core investment thesis is that Alibaba presents a compelling, high-risk/high-reward opportunity. The company's stock appears significantly undervalued relative to its intrinsic growth potential and its global technology peers. This valuation discount is a direct consequence of persistent geopolitical risks stemming from US-China relations and the long-term impact of China's domestic regulatory crackdown on its technology sector.
+        This report provides a comprehensive analysis of Alibaba Group Holding Ltd. (NYSE: BABA), examining its operational structure, financial health, competitive positioning, and strategic direction. The core investment thesis is that Alibaba presents a compelling, high-risk/high-reward opportunity. The company&apos;s stock appears significantly undervalued relative to its intrinsic growth potential and its global technology peers. This valuation discount is a direct consequence of persistent geopolitical risks stemming from US-China relations and the long-term impact of China&apos;s domestic regulatory crackdown on its technology sector.
       </p>
       <p>
-        The primary catalysts for a material re-rating of the stock are threefold: the successful execution of its "AI-driven" strategy, the sustained operational turnaround in its core e-commerce business, and a stabilization of the regulatory and geopolitical environment. For investors with a suitable risk tolerance and a long-term investment horizon, the current valuation may offer an attractive entry point into a dominant technology franchise at a historically significant discount.
+        The primary catalysts for a material re-rating of the stock are threefold: the successful execution of its &ldquo;AI-driven&rdquo; strategy, the sustained operational turnaround in its core e-commerce business, and a stabilization of the regulatory and geopolitical environment. For investors with a suitable risk tolerance and a long-term investment horizon, the current valuation may offer an attractive entry point into a dominant technology franchise at a historically significant discount.
       </p>
     </div>
   </Card>
@@ -139,7 +125,7 @@ const CorporateDeepDive = () => (
       </p>
       <h4 className="font-semibold text-gray-800 dark:text-white">Core Business Units:</h4>
       <ul>
-        <li><strong>Taobao and Tmall Group (TTG):</strong> The primary profit engine, including China's largest C2C (Taobao) and B2C (Tmall) marketplaces.</li>
+        <li><strong>Taobao and Tmall Group (TTG):</strong> The primary profit engine, including China&apos;s largest C2C (Taobao) and B2C (Tmall) marketplaces.</li>
         <li><strong>Cloud Intelligence Group:</strong> The key growth engine, housing Alibaba Cloud (Aliyun), a market leader in Asia for cloud infrastructure and AI services.</li>
         <li><strong>Alibaba International Digital Commerce (AIDC):</strong> Spearheads global expansion with platforms like AliExpress, Lazada, and Trendyol.</li>
         <li><strong>Cainiao Smart Logistics Network:</strong> The data-driven logistics backbone of the ecosystem.</li>
@@ -162,7 +148,7 @@ const FinancialAnalysis = () => (
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4 mb-8">
       <p>
-        Alibaba's financials show a resilient, profitable core, a strong balance sheet, and a strategy of heavy investment in future growth. For FY2025, total revenues grew 6% to $137.3B, with GAAP net income surging 77% to $17.4B, partly due to investment gains. The company maintains a formidable net cash position of $50.5 billion and a low Debt-to-Equity ratio.
+        Alibaba&apos;s financials show a resilient, profitable core, a strong balance sheet, and a strategy of heavy investment in future growth. For FY2025, total revenues grew 6% to $137.3B, with GAAP net income surging 77% to $17.4B, partly due to investment gains. The company maintains a formidable net cash position of $50.5 billion and a low Debt-to-Equity ratio.
       </p>
       <p>
         A key point is the 53% decline in FY2025 free cash flow (FCF), which is a direct result of a massive, deliberate surge in capital expenditures for cloud and AI infrastructure. This investment is crucial for long-term competitive positioning and is already validated by the 18% revenue growth in the Cloud Intelligence segment.
@@ -293,7 +279,7 @@ const Valuation = () => (
     />
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-4 mb-8">
       <p>
-        Alibaba's stock trades at a stark and persistent discount to its global technology peers like Amazon and Tencent, often termed a "geopolitical discount." While it trades at a premium to domestic rival JD.com, this is justified by its superior high-margin marketplace model. Multiple intrinsic value models suggest the stock is significantly undervalued, with a potential upside of 25% or more to reach its fair value.
+        Alibaba&apos;s stock trades at a stark and persistent discount to its global technology peers like Amazon and Tencent, often termed a &ldquo;geopolitical discount.&rdquo; While it trades at a premium to domestic rival JD.com, this is justified by its superior high-margin marketplace model. Multiple intrinsic value models suggest the stock is significantly undervalued, with a potential upside of 25% or more to reach its fair value.
       </p>
     </div>
     <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
@@ -342,7 +328,7 @@ const InvestmentThesis = () => (
         <h4 className="font-bold text-xl text-green-600 dark:text-green-400 mb-3">The Bull Case</h4>
         <div className="prose dark:prose-invert text-gray-600 dark:text-gray-300 space-y-2">
           <p>
-            Built on a compelling valuation discount, tangible results from the "AI-driven" pivot (accelerating cloud growth), and a stabilizing regulatory environment. A new, aggressive capital return policy provides further support.
+            Built on a compelling valuation discount, tangible results from the &ldquo;AI-driven&rdquo; pivot (accelerating cloud growth), and a stabilizing regulatory environment. A new, aggressive capital return policy provides further support.
           </p>
         </div>
       </div>
@@ -350,7 +336,7 @@ const InvestmentThesis = () => (
         <h4 className="font-bold text-xl text-red-600 dark:text-red-400 mb-3">The Bear Case</h4>
         <div className="prose dark:prose-invert text-gray-600 dark:text-gray-300 space-y-2">
           <p>
-            Dominated by risks outside the company's control: a severe downturn in the Chinese economy, escalating US-China tech tensions (especially semiconductor restrictions), and relentless domestic competition that could permanently erode margins.
+            Dominated by risks outside the company&apos;s control: a severe downturn in the Chinese economy, escalating US-China tech tensions (especially semiconductor restrictions), and relentless domestic competition that could permanently erode margins.
           </p>
         </div>
       </div>
@@ -367,60 +353,18 @@ const InvestmentThesis = () => (
   </Card>
 );
 
-const Footer = () => (
-  <footer className="text-center py-8 px-4 mt-8">
-    <p className="text-sm text-gray-500 dark:text-gray-400">
-      © 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.
-    </p>
-  </footer>
-);
-
 // --- Main App Component ---
 export default function AlibabaAnalysis() {
-  const currentArticle = articles.find(article => article.slug === 'alibaba-baba-stock-analysis-complex-era-growth-risk');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData
-            articleTitle={currentArticle.title}
-            articleSlug={currentArticle.slug}
-          />
-        </>
-      )}
-
-      <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
-        <main className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Return to Home Button */}
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-
-          {/* Deep Research Badge */}
-          <div className="absolute top-4 left-4 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
-              Deep Research
-            </span>
-          </div>
-
-          <Header />
-          <ExecutiveSummary />
-          <KeyMetrics />
-          <CorporateDeepDive />
-          <FinancialAnalysis />
-          <MarketPositioning />
-          <Valuation />
-          <SwotAnalysis />
-          <InvestmentThesis />
-        </main>
-        <Footer />
-      </div>
-    </>
+    <ArticleFrame slug="alibaba-baba-stock-analysis-complex-era-growth-risk">
+      <ExecutiveSummary />
+      <KeyMetrics />
+      <CorporateDeepDive />
+      <FinancialAnalysis />
+      <MarketPositioning />
+      <Valuation />
+      <SwotAnalysis />
+      <InvestmentThesis />
+    </ArticleFrame>
   );
 }

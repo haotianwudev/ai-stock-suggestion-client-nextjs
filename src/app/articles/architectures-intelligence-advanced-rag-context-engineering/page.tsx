@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, ChevronDown, Database, Brain, Zap, Settings, Target, RefreshCw } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { useState } from 'react';
+import { ChevronDown, Database, Brain, Zap, Settings, Target, RefreshCw } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper component for colored keyword highlighting
 const Highlight = ({ children, color }: { children: React.ReactNode; color: string }) => {
@@ -80,8 +78,6 @@ const CollapsibleSection = ({ title, children, icon }: { title: string; children
 };
 
 export default function ArchitecturesOfIntelligence() {
-  const currentArticle = articles.find(article => article.slug === 'architectures-intelligence-advanced-rag-context-engineering');
-
   // Data for the tables
   const chunkingStrategiesData = {
     headers: ["Strategy", "Core Mechanism", "Pros", "Cons", "Ideal Use Cases"],
@@ -127,206 +123,130 @@ export default function ArchitecturesOfIntelligence() {
   };
 
   return (
-    <>
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame
+      slug="architectures-intelligence-advanced-rag-context-engineering"
+      additionalDisclaimer="The techniques and architectures discussed require careful implementation and testing in production environments. Always validate approaches with your specific use case and data."
+    >
+      <CollapsibleSection
+        title="The Evolution: From Prompting to Context Engineering"
+        icon={<Brain className="w-6 h-6 text-blue-600" />}
+      >
+        <h3>Defining the Modern AI Stack</h3>
+        <p>Production-grade AI systems are more than an API call. Foundational models are powerful but have key limitations:</p>
+        <ul>
+          <li><Highlight color="amber">Static Knowledge:</Highlight> Information is frozen in time, leading to outdated or &ldquo;hallucinated&rdquo; responses.</li>
+          <li><Highlight color="amber">Lack of Specificity:</Highlight> They lack proprietary, domain-specific knowledge (e.g., your company&apos;s internal docs).</li>
+          <li><Highlight color="amber">High Cost of Retraining:</Highlight> Fine-tuning is prohibitively expensive and slow for continuous updates.</li>
+        </ul>
+        <p><Highlight color="fuchsia">Retrieval-Augmented Generation (RAG)</Highlight> is the architectural solution, dynamically providing the LLM with up-to-date, external knowledge at inference time.</p>
 
-      <div className="bg-gray-50 text-gray-800 min-h-screen font-sans" style={{
-        backgroundImage: 'radial-gradient(#d1d5db 0.5px, transparent 0.5px)', 
-        backgroundSize: '15px 15px'
-      }}>
-        {/* Deep Research Badge */}
-        <div className="fixed top-4 left-4 z-50">
-          <div className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Deep Research
-          </div>
-        </div>
-
-        <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Return to Home Button */}
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-
-          {/* Header */}
-          <header className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-fuchsia-500 via-blue-500 to-teal-500">
-              Architectures of Intelligence
-            </h1>
-            <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
-              A deep dive into the <Highlight color="teal">Prompt</Highlight> and <Highlight color="blue">Context Engineering</Highlight> techniques that power advanced <Highlight color="fuchsia">Retrieval-Augmented Generation</Highlight> systems.
-            </p>
-          </header>
-
-          <CollapsibleSection 
-            title="The Evolution: From Prompting to Context Engineering" 
-            icon={<Brain className="w-6 h-6 text-blue-600" />}
-          >
-            <h3>Defining the Modern AI Stack</h3>
-            <p>Production-grade AI systems are more than an API call. Foundational models are powerful but have key limitations:</p>
+        <h3>From Prompt Engineering to Context Engineering</h3>
+        <p>The field has matured from a narrow focus on prompts to a holistic architectural discipline.</p>
+        <ul>
+          <li><Highlight color="teal">Prompt Engineering:</Highlight> The art of designing a single textual input to guide an AI. Essential, but insufficient for complex, stateful applications.</li>
+          <li><Highlight color="blue">Context Engineering:</Highlight> The science of designing systems to provide the LLM with the right information, tools, and memory. It&apos;s about architecting <Highlight color="blue">what the model knows</Highlight>. This engineered context is a dynamic composite of:
             <ul>
-              <li><Highlight color="amber">Static Knowledge:</Highlight> Information is frozen in time, leading to outdated or "hallucinated" responses.</li>
-              <li><Highlight color="amber">Lack of Specificity:</Highlight> They lack proprietary, domain-specific knowledge (e.g., your company's internal docs).</li>
-              <li><Highlight color="amber">High Cost of Retraining:</Highlight> Fine-tuning is prohibitively expensive and slow for continuous updates.</li>
+              <li>System Instructions (Persona, Goals)</li>
+              <li>Chat History (Short-term memory)</li>
+              <li>Retrieved Information (Long-term memory via RAG)</li>
+              <li>Tool Definitions & API Responses</li>
             </ul>
-            <p><Highlight color="fuchsia">Retrieval-Augmented Generation (RAG)</Highlight> is the architectural solution, dynamically providing the LLM with up-to-date, external knowledge at inference time.</p>
+          </li>
+        </ul>
+        <p>This reframes AI development as a systems design problem, where failures are often <Highlight color="amber">context failures</Highlight>, not model failures.</p>
+      </CollapsibleSection>
 
-            <h3>From Prompt Engineering to Context Engineering</h3>
-            <p>The field has matured from a narrow focus on prompts to a holistic architectural discipline.</p>
-            <ul>
-              <li><Highlight color="teal">Prompt Engineering:</Highlight> The art of designing a single textual input to guide an AI. Essential, but insufficient for complex, stateful applications.</li>
-              <li><Highlight color="blue">Context Engineering:</Highlight> The science of designing systems to provide the LLM with the right information, tools, and memory. It's about architecting <Highlight color="blue">what the model knows</Highlight>. This engineered context is a dynamic composite of:
-                <ul>
-                  <li>System Instructions (Persona, Goals)</li>
-                  <li>Chat History (Short-term memory)</li>
-                  <li>Retrieved Information (Long-term memory via RAG)</li>
-                  <li>Tool Definitions & API Responses</li>
-                </ul>
-              </li>
-            </ul>
-            <p>This reframes AI development as a systems design problem, where failures are often <Highlight color="amber">context failures</Highlight>, not model failures.</p>
-          </CollapsibleSection>
+      <CollapsibleSection
+        title="Pre-Retrieval: Optimizing the Knowledge Corpus"
+        icon={<Database className="w-6 h-6 text-teal-600" />}
+      >
+        <h3>The Critical Role of Document Chunking</h3>
+        <p>Chunking is splitting large documents into smaller, semantically meaningful snippets. The core challenge is balancing <Highlight color="lime">precision</Highlight> (small chunks for specific queries) and <Highlight color="lime">context</Highlight> (large chunks to preserve meaning). The ideal chunk is large enough to be coherent but small enough to be topically focused.</p>
 
-          <CollapsibleSection 
-            title="Pre-Retrieval: Optimizing the Knowledge Corpus" 
-            icon={<Database className="w-6 h-6 text-teal-600" />}
-          >
-            <h3>The Critical Role of Document Chunking</h3>
-            <p>Chunking is splitting large documents into smaller, semantically meaningful snippets. The core challenge is balancing <Highlight color="lime">precision</Highlight> (small chunks for specific queries) and <Highlight color="lime">context</Highlight> (large chunks to preserve meaning). The ideal chunk is large enough to be coherent but small enough to be topically focused.</p>
-            
-            <StyledTable headers={chunkingStrategiesData.headers} rows={chunkingStrategiesData.rows} />
+        <StyledTable headers={chunkingStrategiesData.headers} rows={chunkingStrategiesData.rows} />
 
-            <h3>Embedding Strategies for Semantic Fidelity</h3>
-            <p>Embedding converts text chunks into numerical vectors. The choice of embedding model is critical (see MTEB leaderboard). An advanced technique is <Highlight color="blue">Contextual Embeddings</Highlight>, where an LLM generates a summary of a chunk's surrounding context *before* embedding, dramatically improving retrieval performance by enriching the vector with necessary context.</p>
-          </CollapsibleSection>
+        <h3>Embedding Strategies for Semantic Fidelity</h3>
+        <p>Embedding converts text chunks into numerical vectors. The choice of embedding model is critical (see MTEB leaderboard). An advanced technique is <Highlight color="blue">Contextual Embeddings</Highlight>, where an LLM generates a summary of a chunk&apos;s surrounding context *before* embedding, dramatically improving retrieval performance by enriching the vector with necessary context.</p>
+      </CollapsibleSection>
 
-          <CollapsibleSection 
-            title="Enhancing Retrieval: Advanced Query Transformation" 
-            icon={<Zap className="w-6 h-6 text-amber-600" />}
-          >
-            <p>User queries are often ambiguous. Query transformation uses an LLM to refine the user's query <Highlight color="amber">before</Highlight> retrieval to bridge the "vocabulary gap."</p>
-            
-            <StyledTable headers={queryTransformationData.headers} rows={queryTransformationData.rows} />
-          </CollapsibleSection>
+      <CollapsibleSection
+        title="Enhancing Retrieval: Advanced Query Transformation"
+        icon={<Zap className="w-6 h-6 text-amber-600" />}
+      >
+        <p>User queries are often ambiguous. Query transformation uses an LLM to refine the user&apos;s query <Highlight color="amber">before</Highlight> retrieval to bridge the &ldquo;vocabulary gap.&rdquo;</p>
 
-          <CollapsibleSection 
-            title="Post-Retrieval: Curation and Refinement" 
-            icon={<Target className="w-6 h-6 text-purple-600" />}
-          >
-            <h3>The "Lost in the Middle" Problem</h3>
-            <p>LLMs recall information at the beginning and end of a long context window far better than information in the middle. This positional bias can cause the model to ignore relevant retrieved documents.</p>
-            <ul>
-              <li><strong>The Solution:</strong> <Highlight color="lime">Context Re-ranking</Highlight>. A re-ranker scores each document for relevance, then reorders them to place the most important ones at the start and end of the context, moving them into the LLM's attentional "spotlight".</li>
-            </ul>
+        <StyledTable headers={queryTransformationData.headers} rows={queryTransformationData.rows} />
+      </CollapsibleSection>
 
-            <h3>Re-ranking for Precision</h3>
-            <p>A two-stage process to balance speed and accuracy:</p>
-            <ol>
-              <li><strong>First-Stage Retriever:</strong> Fast, optimized for <Highlight color="lime">recall</Highlight> (finds all potential candidates).</li>
-              <li><strong>Second-Stage Re-ranker:</strong> Slower, more powerful model optimized for <Highlight color="lime">precision</Highlight> (sorts the truly relevant documents to the top).</li>
-            </ol>
+      <CollapsibleSection
+        title="Post-Retrieval: Curation and Refinement"
+        icon={<Target className="w-6 h-6 text-purple-600" />}
+      >
+        <h3>The &ldquo;Lost in the Middle&rdquo; Problem</h3>
+        <p>LLMs recall information at the beginning and end of a long context window far better than information in the middle. This positional bias can cause the model to ignore relevant retrieved documents.</p>
+        <ul>
+          <li><strong>The Solution:</strong> <Highlight color="lime">Context Re-ranking</Highlight>. A re-ranker scores each document for relevance, then reorders them to place the most important ones at the start and end of the context, moving them into the LLM&apos;s attentional &ldquo;spotlight&rdquo;.</li>
+        </ul>
 
-            <StyledTable headers={rerankersData.headers} rows={rerankersData.rows} />
-          </CollapsibleSection>
+        <h3>Re-ranking for Precision</h3>
+        <p>A two-stage process to balance speed and accuracy:</p>
+        <ol>
+          <li><strong>First-Stage Retriever:</strong> Fast, optimized for <Highlight color="lime">recall</Highlight> (finds all potential candidates).</li>
+          <li><strong>Second-Stage Re-ranker:</strong> Slower, more powerful model optimized for <Highlight color="lime">precision</Highlight> (sorts the truly relevant documents to the top).</li>
+        </ol>
 
-          <CollapsibleSection 
-            title="The Augmentation Stage: Advanced Prompting for RAG" 
-            icon={<Settings className="w-6 h-6 text-orange-600" />}
-          >
-            <h3>Structuring the Augmented Prompt</h3>
-            <p>A well-structured prompt uses delimiters (e.g., XML tags like `&lt;context&gt;`) to help the LLM distinguish between system instructions, retrieved context, and the user query. Formatting the context itself by numbering chunks or prepending metadata also improves clarity.</p>
+        <StyledTable headers={rerankersData.headers} rows={rerankersData.rows} />
+      </CollapsibleSection>
 
-            <StyledTable headers={promptTemplatesData.headers} rows={promptTemplatesData.rows} />
+      <CollapsibleSection
+        title="The Augmentation Stage: Advanced Prompting for RAG"
+        icon={<Settings className="w-6 h-6 text-orange-600" />}
+      >
+        <h3>Structuring the Augmented Prompt</h3>
+        <p>A well-structured prompt uses delimiters (e.g., XML tags like `&lt;context&gt;`) to help the LLM distinguish between system instructions, retrieved context, and the user query. Formatting the context itself by numbering chunks or prepending metadata also improves clarity.</p>
 
-            <h3>The Power of Instructional Phrasing</h3>
-            <ul>
-              <li><strong>Grounding:</strong> Explicitly instruct the model to base its answer <Highlight color="amber">only</Highlight> on the provided documents.</li>
-              <li><strong>Handling Uncertainty:</strong> Give the model a safe "escape hatch." Instead of "do not hallucinate," provide a positive directive: "If the information is not in the documents, state that it is unavailable."</li>
-              <li><strong>Explaining the "Why":</strong> Explaining the rationale behind an instruction (e.g., "Be concise *because the user needs a summary*") improves compliance.</li>
-            </ul>
-          </CollapsibleSection>
+        <StyledTable headers={promptTemplatesData.headers} rows={promptTemplatesData.rows} />
 
-          <CollapsibleSection 
-            title="Agentic RAG: Self-Correction and Critique Loops" 
-            icon={<RefreshCw className="w-6 h-6 text-fuchsia-600" />}
-          >
-            <h3>Moving Beyond Linear Pipelines</h3>
-            <p>Advanced RAG moves beyond linear pipelines (`retrieve &rarr; augment &rarr; generate`) to cyclical, agentic systems. This requires modeling the process as a <Highlight color="blue">state machine</Highlight> or graph, where the system can loop back and self-correct (e.g., rewrite a query if retrieval fails). Frameworks like <Highlight color="teal">LangGraph</Highlight> facilitate building these complex flows.</p>
+        <h3>The Power of Instructional Phrasing</h3>
+        <ul>
+          <li><strong>Grounding:</strong> Explicitly instruct the model to base its answer <Highlight color="amber">only</Highlight> on the provided documents.</li>
+          <li><strong>Handling Uncertainty:</strong> Give the model a safe &ldquo;escape hatch.&rdquo; Instead of &ldquo;do not hallucinate,&rdquo; provide a positive directive: &ldquo;If the information is not in the documents, state that it is unavailable.&rdquo;</li>
+          <li><strong>Explaining the &ldquo;Why&rdquo;:</strong> Explaining the rationale behind an instruction (e.g., &ldquo;Be concise *because the user needs a summary*&rdquo;) improves compliance.</li>
+        </ul>
+      </CollapsibleSection>
 
-            <h3>Key Agentic Techniques</h3>
-            <ul>
-              <li><Highlight color="fuchsia">Corrective RAG (CRAG):</Highlight> Introduces a lightweight "retrieval evaluator" that acts as a quality gate. If retrieved docs are irrelevant, it triggers a corrective action, like a web search.</li>
-              <li><Highlight color="fuchsia">SELF-RAG:</Highlight> A framework where the LLM controls its own process by generating special "reflection tokens" to decide if retrieval is needed, grade document relevance, and critique its own generated sentences for factual support.</li>
-            </ul>
+      <CollapsibleSection
+        title="Agentic RAG: Self-Correction and Critique Loops"
+        icon={<RefreshCw className="w-6 h-6 text-fuchsia-600" />}
+      >
+        <h3>Moving Beyond Linear Pipelines</h3>
+        <p>Advanced RAG moves beyond linear pipelines (`retrieve &rarr; augment &rarr; generate`) to cyclical, agentic systems. This requires modeling the process as a <Highlight color="blue">state machine</Highlight> or graph, where the system can loop back and self-correct (e.g., rewrite a query if retrieval fails). Frameworks like <Highlight color="teal">LangGraph</Highlight> facilitate building these complex flows.</p>
 
-            <h3>The Core Loop: Generate &rarr; Critique &rarr; Refine</h3>
-            <p>This iterative cycle is the future of reliable AI. The model produces a draft, which is then evaluated (by the LLM itself or an external tool like a code interpreter). The feedback is used to generate an improved response.</p>
-          </CollapsibleSection>
+        <h3>Key Agentic Techniques</h3>
+        <ul>
+          <li><Highlight color="fuchsia">Corrective RAG (CRAG):</Highlight> Introduces a lightweight &ldquo;retrieval evaluator&rdquo; that acts as a quality gate. If retrieved docs are irrelevant, it triggers a corrective action, like a web search.</li>
+          <li><Highlight color="fuchsia">SELF-RAG:</Highlight> A framework where the LLM controls its own process by generating special &ldquo;reflection tokens&rdquo; to decide if retrieval is needed, grade document relevance, and critique its own generated sentences for factual support.</li>
+        </ul>
 
-          <CollapsibleSection 
-            title="Conclusion and Strategic Recommendations" 
-            icon={<Brain className="w-6 h-6 text-blue-600" />}
-          >
-            <h3>A Unified Framework for RAG Optimization</h3>
-            <p>The optimal RAG architecture is a holistic system following a multi-stage pipeline with embedded feedback loops: <Highlight color="lime">Pre-Retrieval &rarr; Retrieval &rarr; Post-Retrieval &rarr; Generation &rarr; Refinement</Highlight>.</p>
+        <h3>The Core Loop: Generate &rarr; Critique &rarr; Refine</h3>
+        <p>This iterative cycle is the future of reliable AI. The model produces a draft, which is then evaluated (by the LLM itself or an external tool like a code interpreter). The feedback is used to generate an improved response.</p>
+      </CollapsibleSection>
 
-            <h3>Recommendations for Practitioners (Tiered Approach)</h3>
-            <ul>
-              <li><strong>Level 1 (Baseline RAG):</strong> Simple pipeline for proofs-of-concept.</li>
-              <li><strong>Level 2 (Optimized Retrieval RAG):</strong> Adds a <Highlight color="lime">re-ranker</Highlight> and <Highlight color="teal">query transformation</Highlight>. Ideal for most production systems.</li>
-              <li><strong>Level 3 (Advanced Context RAG):</strong> Adds <Highlight color="blue">context compression</Highlight> and advanced reasoning patterns like <Highlight color="teal">Chain-of-Thought</Highlight>.</li>
-              <li><strong>Level 4 (Agentic RAG):</strong> Implements <Highlight color="fuchsia">self-correction loops</Highlight> for mission-critical applications requiring maximum reliability.</li>
-            </ul>
-          </CollapsibleSection>
+      <CollapsibleSection
+        title="Conclusion and Strategic Recommendations"
+        icon={<Brain className="w-6 h-6 text-blue-600" />}
+      >
+        <h3>A Unified Framework for RAG Optimization</h3>
+        <p>The optimal RAG architecture is a holistic system following a multi-stage pipeline with embedded feedback loops: <Highlight color="lime">Pre-Retrieval &rarr; Retrieval &rarr; Post-Retrieval &rarr; Generation &rarr; Refinement</Highlight>.</p>
 
-          {/* Call to Action */}
-          <div className="mt-16 text-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Ready to Build Production-Grade RAG Systems?</h2>
-            <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              This comprehensive guide provides the foundation for architecting intelligent systems that go beyond simple prompt engineering to true context engineering.
-            </p>
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105 mr-4"
-              >
-                Read Full Research Document
-              </a>
-            )}
-          </div>
-
-          {/* Educational Disclaimer */}
-          <div className="mt-12 p-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg">
-            <div className="flex">
-              <div className="ml-3">
-                <p className="text-sm text-amber-700">
-                  <strong>Educational Content:</strong> This analysis is for educational and informational purposes only. 
-                  The techniques and architectures discussed require careful implementation and testing in production environments. 
-                  Always validate approaches with your specific use case and data.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="mt-16 text-center text-gray-500 text-sm border-t border-gray-200 pt-8">
-            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-          </footer>
-        </main>
-      </div>
-    </>
+        <h3>Recommendations for Practitioners (Tiered Approach)</h3>
+        <ul>
+          <li><strong>Level 1 (Baseline RAG):</strong> Simple pipeline for proofs-of-concept.</li>
+          <li><strong>Level 2 (Optimized Retrieval RAG):</strong> Adds a <Highlight color="lime">re-ranker</Highlight> and <Highlight color="teal">query transformation</Highlight>. Ideal for most production systems.</li>
+          <li><strong>Level 3 (Advanced Context RAG):</strong> Adds <Highlight color="blue">context compression</Highlight> and advanced reasoning patterns like <Highlight color="teal">Chain-of-Thought</Highlight>.</li>
+          <li><strong>Level 4 (Agentic RAG):</strong> Implements <Highlight color="fuchsia">self-correction loops</Highlight> for mission-critical applications requiring maximum reliability.</li>
+        </ul>
+      </CollapsibleSection>
+    </ArticleFrame>
   );
 }

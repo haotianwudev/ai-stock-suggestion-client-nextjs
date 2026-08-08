@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, DollarSign, Activity, AlertTriangle, Cpu, Globe, ShieldAlert, BarChart3, PieChart, ArrowRight, BrainCircuit, Layers, Users, Scale, Zap, Lock, Search, Clock, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { TrendingUp, Activity, AlertTriangle, ShieldAlert, ArrowRight, BrainCircuit, Layers, Scale, Zap, Lock, Search } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 // --- Reusable Components ---
 const SectionHeader = ({ title, subtitle, icon: Icon, color = "blue" }: { title: string; subtitle: string; icon: any; color?: string }) => (
@@ -46,9 +44,9 @@ const InsightBox = ({ title, children, type = "info" }: { title: string; childre
     success: "bg-emerald-50 border-emerald-100 text-emerald-900",
     warning: "bg-amber-50 border-amber-100 text-amber-900",
   };
-  
+
   const Icon = type === 'risk' ? AlertTriangle : type === 'success' ? TrendingUp : type === 'warning' ? Zap : Search;
-  
+
   return (
     <div className={`p-5 rounded-xl border ${colors[type]} mb-4`}>
       <div className="flex items-center gap-2 mb-2 font-bold">
@@ -64,73 +62,15 @@ const InsightBox = ({ title, children, type = "info" }: { title: string; childre
 
 // --- Main Application ---
 export default function NvidiaDeepDive() {
-  const currentArticle = articles.find(article => article.slug === 'nvidia-deep-dive-crush-despite-beat-analyzing-valuation');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
+    <ArticleFrame
+      slug="nvidia-deep-dive-crush-despite-beat-analyzing-valuation"
+      additionalDisclaimer="This analysis reflects a point-in-time snapshot following Q3 FY26 earnings; NVIDIA's price, valuation multiples, and market conditions will have changed materially since publication."
+    >
+      <div className="max-w-7xl mx-auto px-4 text-slate-900">
+        <InfographicSlot alt="NVIDIA Market Analysis Infographic" />
 
-      <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900">
-        {/* Deep Research Badge */}
-        <div className="fixed top-4 left-4 z-50 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm">
-          Deep Research
-        </div>
-
-        {/* Hero Section */}
-        <header className="bg-white border-b border-slate-200 sticky top-0 z-40 bg-opacity-90 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Return to Home
-              </Link>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-emerald-200 shadow-lg">
-                  <Cpu size={24} />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
-                    NVDA <span className="text-slate-400 font-light">Research</span>
-                  </h1>
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-6 text-sm">
-              <div className="hidden md:block text-right">
-                <p className="text-slate-500 font-medium">Last Price</p>
-                <p className="font-bold text-slate-900 text-lg">
-                  $145.89 <span className="text-rose-500 text-sm font-medium">(-2.4%)</span>
-                </p>
-              </div>
-              <div className="hidden md:block text-right">
-                <p className="text-slate-500 font-medium">Market Cap</p>
-                <p className="font-bold text-slate-900 text-lg">$3.62 T</p>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
-          {/* Hero Infographic Image */}
-          <section>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-              <img 
-                src="https://i.imgur.com/bakZw7R.jpeg" 
-                alt="NVIDIA Market Analysis Infographic" 
-                className="w-full h-auto"
-              />
-            </div>
-          </section>
-
+        <div className="space-y-16">
           {/* 1. Executive Summary & Market Reaction */}
           <section>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -142,18 +82,18 @@ export default function NvidiaDeepDive() {
                       <Activity size={12} /> Post-Earnings Analysis
                     </div>
                     <h2 className="text-4xl font-extrabold mb-6 leading-tight">
-                      Why the "Crush" Despite the Beat?
+                      Why the &ldquo;Crush&rdquo; Despite the Beat?
                     </h2>
-                    
+
                     <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                      NVIDIA delivered a "beat and raise" quarter, yet the stock sold off. This phenomenon is classic <strong>"pricing for perfection."</strong> When a company is valued at roughly 30x forward sales, merely beating estimates isn't enough—the <em>magnitude</em> of the beat must accelerate. It didn't.
+                      NVIDIA delivered a &ldquo;beat and raise&rdquo; quarter, yet the stock sold off. This phenomenon is classic <strong>&ldquo;pricing for perfection.&rdquo;</strong> When a company is valued at roughly 30x forward sales, merely beating estimates isn&apos;t enough&mdash;the <em>magnitude</em> of the beat must accelerate. It didn&apos;t.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <InsightBox type="warning" title="The Whisper Number Gap">
-                        Analysts expected $55B. The "Whisper Number" (buy-side expectation) was closer to $57B. NVDA hit $57.01B. Technically a beat, but essentially "in-line" for aggressive hedge funds.
+                        Analysts expected $55B. The &ldquo;Whisper Number&rdquo; (buy-side expectation) was closer to $57B. NVDA hit $57.01B. Technically a beat, but essentially &ldquo;in-line&rdquo; for aggressive hedge funds.
                       </InsightBox>
                       <InsightBox type="risk" title="Guidance Deceleration">
-                        Q4 Revenue guidance of $37.5B implies growth slowing to "only" 70% YoY, down from triple digits. The Law of Large Numbers is finally kicking in.
+                        Q4 Revenue guidance of $37.5B implies growth slowing to &ldquo;only&rdquo; 70% YoY, down from triple digits. The Law of Large Numbers is finally kicking in.
                       </InsightBox>
                     </div>
                   </div>
@@ -167,7 +107,7 @@ export default function NvidiaDeepDive() {
                   <MetricRow label="Data Center" value="$30.8 B" subtext="+112% YoY" type="good" />
                   <MetricRow label="Gross Margin" value="74.6%" subtext="-110 bps QoQ" type="bad" />
                   <MetricRow label="Net Income" value="$19.3 B" subtext="+109% YoY" type="good" />
-                  
+
                   <div className="mt-6 pt-4 border-t border-slate-100">
                     <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-2">Sentiment Score</p>
                     <div className="w-full bg-slate-100 rounded-full h-2 mb-1">
@@ -186,13 +126,13 @@ export default function NvidiaDeepDive() {
 
           {/* 2. Fundamentals & Quantitative Analysis */}
           <section>
-            <SectionHeader 
-              title="Quantitative Fundamentals" 
-              subtitle="Financial Health & Valuation Metrics" 
-              icon={Scale} 
-              color="indigo" 
+            <SectionHeader
+              title="Quantitative Fundamentals"
+              subtitle="Financial Health & Valuation Metrics"
+              icon={Scale}
+              color="indigo"
             />
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <Card>
                 <div className="text-slate-500 text-sm font-medium mb-1">P/E Ratio (Fwd)</div>
@@ -259,7 +199,7 @@ export default function NvidiaDeepDive() {
                       <td className="px-6 py-4 font-medium text-slate-900">Inventory Turnover</td>
                       <td className="px-6 py-4 text-amber-600 font-bold">3.2x</td>
                       <td className="px-6 py-4 text-slate-500">5.5x</td>
-                      <td className="px-6 py-4 text-slate-600">Slowing. Indicates "WIP" (Work in Progress) buildup for Blackwell launch.</td>
+                      <td className="px-6 py-4 text-slate-600">Slowing. Indicates &ldquo;WIP&rdquo; (Work in Progress) buildup for Blackwell launch.</td>
                     </tr>
                     <tr className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4 font-medium text-slate-900">Gross Margin</td>
@@ -275,24 +215,24 @@ export default function NvidiaDeepDive() {
 
           {/* 3. The "Big Short" & Michael Burry Analysis */}
           <section>
-            <SectionHeader 
-              title="The Bear Case: Is it a Bubble?" 
-              subtitle="Analyzing Michael Burry & The Short Thesis" 
-              icon={ShieldAlert} 
-              color="rose" 
+            <SectionHeader
+              title="The Bear Case: Is it a Bubble?"
+              subtitle="Analyzing Michael Burry & The Short Thesis"
+              icon={ShieldAlert}
+              color="rose"
             />
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 space-y-6">
                 <InsightBox type="risk" title="Burry's Thesis: The Circular Revenue Problem">
                   <p className="mb-3">
-                    Michael Burry (Scion Asset Management) compares NVDA to Cisco in 2000. His core argument rests on <strong>"Vendor Financing"</strong>:
+                    Michael Burry (Scion Asset Management) compares NVDA to Cisco in 2000. His core argument rests on <strong>&ldquo;Vendor Financing&rdquo;</strong>:
                   </p>
                   <ul className="list-disc pl-5 space-y-2 text-rose-900">
                     <li>Big Tech (MSFT, GOOGL) invests billions into AI startups (e.g., CoreWeave).</li>
                     <li>These startups use that cash immediately to buy H100 chips from NVIDIA.</li>
                     <li>
-                      <strong>The Result:</strong> Revenue is being "manufactured" by the same capital circulating in a loop, rather than coming from sustainable end-user demand. If VC funding dries up, the loop breaks.
+                      <strong>The Result:</strong> Revenue is being &ldquo;manufactured&rdquo; by the same capital circulating in a loop, rather than coming from sustainable end-user demand. If VC funding dries up, the loop breaks.
                     </li>
                   </ul>
                 </InsightBox>
@@ -304,15 +244,15 @@ export default function NvidiaDeepDive() {
                   </h3>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-bold text-slate-700 text-sm">1. The "Air Pocket" Risk</h4>
+                      <h4 className="font-bold text-slate-700 text-sm">1. The &ldquo;Air Pocket&rdquo; Risk</h4>
                       <p className="text-sm text-slate-600">
-                        As customers wait for the new <strong>Blackwell (B200)</strong> chips, they may pause orders for the current <strong>Hopper (H100)</strong> chips. This transition period often causes a temporary revenue dip (an "air pocket") that the market hates.
+                        As customers wait for the new <strong>Blackwell (B200)</strong> chips, they may pause orders for the current <strong>Hopper (H100)</strong> chips. This transition period often causes a temporary revenue dip (an &ldquo;air pocket&rdquo;) that the market hates.
                       </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-700 text-sm">2. CSP Indigestion</h4>
                       <p className="text-sm text-slate-600">
-                        Cloud Service Providers (CSPs) like Azure and AWS are spending $50B+ annually on Capex. Wall Street is asking: "Where is the ROI?" If AI software revenue doesn't materialize soon, CSPs will cut chip orders.
+                        Cloud Service Providers (CSPs) like Azure and AWS are spending $50B+ annually on Capex. Wall Street is asking: &ldquo;Where is the ROI?&rdquo; If AI software revenue doesn&apos;t materialize soon, CSPs will cut chip orders.
                       </p>
                     </div>
                   </div>
@@ -352,7 +292,7 @@ export default function NvidiaDeepDive() {
                     </div>
                   </div>
                   <p className="mt-4 text-xs text-slate-500 italic">
-                    Smart money often sells into strength ("feeding the ducks") while retail investors buy the hype.
+                    Smart money often sells into strength (&ldquo;feeding the ducks&rdquo;) while retail investors buy the hype.
                   </p>
                 </Card>
 
@@ -361,7 +301,7 @@ export default function NvidiaDeepDive() {
                   <div className="text-3xl font-bold text-slate-900">1.2%</div>
                   <p className="text-xs text-slate-500 mb-4">of Float</p>
                   <div className="text-sm text-slate-600">
-                    Despite the noise, actual short interest is incredibly low. Shorting NVDA has been a "widow maker" trade. Burry is using Puts (options), which limits risk, rather than shorting stock directly.
+                    Despite the noise, actual short interest is incredibly low. Shorting NVDA has been a &ldquo;widow maker&rdquo; trade. Burry is using Puts (options), which limits risk, rather than shorting stock directly.
                   </div>
                 </Card>
               </div>
@@ -370,13 +310,13 @@ export default function NvidiaDeepDive() {
 
           {/* 4. Strategic Outlook & Retail Prep */}
           <section>
-            <SectionHeader 
-              title="Investor Playbook" 
-              subtitle="How to navigate the volatility" 
-              icon={BrainCircuit} 
-              color="emerald" 
+            <SectionHeader
+              title="Investor Playbook"
+              subtitle="How to navigate the volatility"
+              icon={BrainCircuit}
+              color="emerald"
             />
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl border border-slate-200 p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-4">The Blackwell Supercycle</h3>
@@ -388,7 +328,7 @@ export default function NvidiaDeepDive() {
                     <div>
                       <h4 className="font-bold text-slate-800">Supply Constrained</h4>
                       <p className="text-sm text-slate-600">
-                        Jensen Huang confirmed Blackwell is "sold out" well into 2025. This provides high revenue visibility (a floor for the stock).
+                        Jensen Huang confirmed Blackwell is &ldquo;sold out&rdquo; well into 2025. This provides high revenue visibility (a floor for the stock).
                       </p>
                     </div>
                   </div>
@@ -416,7 +356,7 @@ export default function NvidiaDeepDive() {
                     <strong>1. Avoid Weekly Options:</strong> IV (Implied Volatility) is too high. You are overpaying for premiums.
                   </p>
                   <p>
-                    <strong>2. The "Barbell" Approach:</strong> Hold 80% in index funds, 20% in semi-conductors. Don't go "all in" on NVDA at $3.5T market cap.
+                    <strong>2. The &ldquo;Barbell&rdquo; Approach:</strong> Hold 80% in index funds, 20% in semi-conductors. Don&apos;t go &ldquo;all in&rdquo; on NVDA at $3.5T market cap.
                   </p>
                   <p>
                     <strong>3. Watch the 50-day SMA:</strong> If NVDA breaks below the 50-day Moving Average (~$128), algorithmic selling will trigger. That is the buy zone for long-term holders.
@@ -429,45 +369,8 @@ export default function NvidiaDeepDive() {
               </div>
             </div>
           </section>
-
-          {/* Call to Action - Google Doc Link */}
-          <section>
-            <div className="bg-gradient-to-r from-blue-50 to-emerald-50 p-8 rounded-xl text-center">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-              <p className="text-slate-600 mb-6">
-                Dive deeper into the comprehensive research paper for detailed analysis, charts, and institutional insights.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                {currentArticle?.googleDoc && (
-                  <a 
-                    href={currentArticle.googleDoc}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                  >
-                    <Search className="inline mr-2" />
-                    Read Full Research Paper
-                  </a>
-                )}
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer className="bg-slate-100 border-t border-slate-200 mt-12 py-12">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <p className="text-slate-500 text-sm mb-2">
-              <strong>Disclaimer:</strong> This is an educational visualization based on public financial data and news sentiment.
-            </p>
-            <p className="text-slate-400 text-xs">
-              Not financial advice. Sources: NVDA Investor Relations, SEC Filings (10-Q), Bloomberg, 13F Filings.
-            </p>
-            <p className="text-slate-600 text-sm mt-4 font-medium">
-              © 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.
-            </p>
-          </div>
-        </footer>
+        </div>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

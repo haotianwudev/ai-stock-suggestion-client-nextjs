@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, ChevronsDown, ChevronsUp, BookOpen, BarChart2, Music } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { useState } from 'react';
+import { ChevronsDown, ChevronsUp, BookOpen, BarChart2 } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper function to generate a unique ID for keys
 const uniqueId = () => `id-${Math.random().toString(36).substr(2, 9)}`;
@@ -279,102 +277,33 @@ const AccordionItem = ({ theme, isOpen, onToggle }) => {
 
 export default function LittleBookBehavioralInvestingSummary() {
   const [openId, setOpenId] = useState('theme-1');
-  const currentArticle = articles.find(article => article.slug === 'little-book-behavioral-investing-summary');
 
   const handleToggle = (id) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
+    <ArticleFrame slug="little-book-behavioral-investing-summary">
+      {/* Executive Summary Section */}
+      <section className="mb-16 bg-white p-8 rounded-xl shadow-xl border-t-4 border-blue-600">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Executive Summary</h2>
+        <p className="text-gray-700 leading-relaxed text-lg">{executiveSummary.content}</p>
+      </section>
 
-      <div className="bg-gray-100 min-h-screen font-sans">
-        {/* Return to Home Button */}
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
+      {/* Key Themes Section */}
+      <section>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Key Themes & Most Important Ideas</h2>
+        <div>
+          {keyThemes.map(theme => (
+            <AccordionItem
+              key={theme.id}
+              theme={theme}
+              isOpen={openId === theme.id}
+              onToggle={() => handleToggle(theme.id)}
+            />
+          ))}
         </div>
-
-        {/* Header */}
-        <header className="bg-white shadow-lg sticky top-0 z-10">
-          <div className="container mx-auto px-6 py-5">
-            <div className="flex justify-between items-start">
-              <div>
-                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">The Little Book of Behavioral Investing</h1>
-                <p className="text-lg text-gray-600 mt-1">How Not to Be Your Own Worst Enemy</p>
-              </div>
-              {/* Book Summary Badge */}
-              <div className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                Book Summary
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <main className="container mx-auto px-6 py-10">
-          {/* Executive Summary Section */}
-          <section className="mb-16 bg-white p-8 rounded-xl shadow-xl border-t-4 border-blue-600">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Executive Summary</h2>
-            <p className="text-gray-700 leading-relaxed text-lg">{executiveSummary.content}</p>
-          </section>
-
-          {/* Key Themes Section */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Key Themes & Most Important Ideas</h2>
-            <div>
-              {keyThemes.map(theme => (
-                <AccordionItem
-                  key={theme.id}
-                  theme={theme}
-                  isOpen={openId === theme.id}
-                  onToggle={() => handleToggle(theme.id)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Call to Action Section */}
-          <section className="bg-white p-8 rounded-xl shadow-xl border-t-4 border-green-600 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Continue Your Learning Journey</h2>
-            <p className="text-gray-700 mb-6 text-lg">
-              Ready to dive deeper into behavioral investing? Listen to our detailed podcast discussion of this essential book.
-            </p>
-            
-            {currentArticle?.podcastUrl && (
-              <a 
-                href={currentArticle.podcastUrl}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <Music className="inline mr-2" />
-                Listen to Podcast
-              </a>
-            )}
-          </section>
-        </main>
-
-        <footer className="bg-white mt-16 py-8 border-t">
-          <div className="container mx-auto px-6 text-center text-gray-500">
-            <p>Summary based on "The Little Book of Behavioral Investing" by James Montier.</p>
-            <p className="text-sm mt-1">© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-          </div>
-        </footer>
-      </div>
-    </>
+      </section>
+    </ArticleFrame>
   );
 }

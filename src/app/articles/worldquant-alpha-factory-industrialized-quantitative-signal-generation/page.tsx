@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Factory, Users, FileText, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import React from 'react';
+import { Factory, Users } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const ContentSection = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
   <section id={id} className="mb-16 scroll-mt-24">
@@ -16,81 +13,10 @@ const ContentSection = ({ id, title, children }: { id: string; title: string; ch
 );
 
 export default function WorldQuantAlphaFactoryArticle() {
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  
-  const currentArticle = articles.find(
-    (article) => article.slug === 'worldquant-alpha-factory-industrialized-quantitative-signal-generation'
-  );
-
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      {/* SEO Components */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug || ''} 
-          />
-        </>
-      )}
-
-      {/* Main Content */}
-      <main className="p-6 md:p-12 lg:p-16 max-w-7xl mx-auto">
-        {/* Deep Research Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Deep Research
-          </span>
-        </div>
-
-        {/* Return to Home Button */}
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Article Title */}
-        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-          The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation
-        </h1>
-
-        <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-          A comprehensive deep research analysis of WorldQuant&apos;s revolutionary &quot;Alpha Factory&quot; system—an industrial-scale platform designed to mass-produce predictive signals. Explores the crowdsourced BRAIN platform, the strategic solution to alpha decay through diversification, and the paradigm shift from finding brilliant strategies to manufacturing disposable, uncorrelated alphas at exponential scale.
-        </p>
-
-        {/* Hero Infographic */}
-        <section className="mb-12">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-            onClick={() => setIsImageViewerOpen(true)}
-          >
-            <img 
-              src="https://i.imgur.com/boJhFsQ.jpeg" 
-              alt="WorldQuant Alpha Factory Framework Infographic" 
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            {/* Full-screen button overlay */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsImageViewerOpen(true);
-              }}
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-              title="View full screen"
-            >
-              <Maximize2 className="h-4 w-4" />
-            </button>
-            {/* Click hint */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-              <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                Click to view full screen
-              </div>
-            </div>
-          </div>
-        </section>
+    <ArticleFrame slug="worldquant-alpha-factory-industrialized-quantitative-signal-generation">
+      <div className="max-w-5xl mx-auto px-4 text-gray-800">
+        <InfographicSlot alt="WorldQuant Alpha Factory Framework Infographic" />
 
         {/* Executive Summary */}
         <ContentSection id="summary" title="Executive Summary">
@@ -130,7 +56,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </p>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Answering the Investment Question: Access to WorldQuant Funds</h3>
-          
+
           <p>
             This reframes the entire challenge of asset management. The goal is no longer to find a single, brilliant strategy, but to build an industrial factory capable of manufacturing, testing, and cataloging predictive signals at scale. This &quot;industrial&quot; paradigm treats alphas as building blocks, or commodities, that are interchangeable and, most importantly, disposable. As will be detailed, this concept of disposability is the firm&apos;s strategic solution to the single greatest threat in quantitative investing: alpha decay. The factory exists, by design, because its individual products are expected to fail.
           </p>
@@ -153,7 +79,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </p>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Effectiveness of Individual Alphas</h3>
-          
+
           <p>
             The &quot;101 Formulaic Alphas&quot; from 2016 are the best public examples. However, given the reality of alpha decay, it is highly probable that most, if not all, of these specific 101 signals are no longer effective. Public forums with users who have attempted to implement them often report that &quot;none of these work any more&quot;.
           </p>
@@ -165,7 +91,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </div>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Effectiveness of the Factory Model</h3>
-          
+
           <p>
             The effectiveness of the <em>factory</em> is measured by its ability to <em>combat decay</em> by <em>continuously producing new, diversified signals</em>.
           </p>
@@ -188,7 +114,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </p>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">External Research and Validation</h3>
-          
+
           <p>
             The 2016 Kakushadze paper was a landmark <em>conceptual</em> validation. Its effectiveness was not in providing 101 timeless signals, but in:
           </p>
@@ -224,7 +150,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </p>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Strengths</h3>
-          
+
           <ul className="list-disc list-inside text-lg text-gray-700 mb-6 pl-4 space-y-3">
             <li>
               <strong>Scalability and Cost:</strong> The crowdsourcing model provides a level of research scale (250,000+ users) and idea generation that is impossible to achieve with a traditional in-house talent model.
@@ -241,7 +167,7 @@ export default function WorldQuantAlphaFactoryArticle() {
           </ul>
 
           <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Challenges and Caveats</h3>
-          
+
           <ul className="list-disc list-inside text-lg text-gray-700 mb-6 pl-4 space-y-3">
             <li>
               <strong>Multiple Testing Bias:</strong> The very nature of &quot;mining for signals in large datasets&quot; makes the process &quot;prone to multiple testing bias and false discoveries&quot;. The firm&apos;s success is therefore heavily dependent on an extremely rigorous, internal, out-of-sample validation process to distinguish true signals from &quot;overfitted&quot; noise.
@@ -264,38 +190,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             </p>
           </div>
         </ContentSection>
-
-        {/* Call-to-Action Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl my-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Continue Learning</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {currentArticle?.googleDoc && (
-              <a 
-                href={currentArticle.googleDoc}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-              >
-                <FileText className="inline mr-2" />
-                Read Full Research Paper
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="border-t border-gray-200 pt-8 mt-16 text-center text-gray-500">
-          <p>&copy; 2025 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.</p>
-        </footer>
-      </main>
-      
-      {/* Full-screen image viewer */}
-      <FullScreenImageViewer
-        src="https://i.imgur.com/boJhFsQ.jpeg"
-        alt="WorldQuant Alpha Factory Framework Infographic"
-        isOpen={isImageViewerOpen}
-        onClose={() => setIsImageViewerOpen(false)}
-      />
-    </div>
+      </div>
+    </ArticleFrame>
   );
 }

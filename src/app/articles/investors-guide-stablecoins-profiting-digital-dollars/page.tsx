@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Music } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, BarController, PointElement, LineElement, ScatterController, BubbleController, Title, Tooltip, Legend, ArcElement, DoughnutController } from 'chart.js';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, PointElement, LineElement, ScatterController, BubbleController, Title, Tooltip, Legend, ArcElement, DoughnutController);
 
@@ -132,12 +129,12 @@ const checklistData = {
 const NavItem = ({ section, activeSection, setActiveSection, children, icon }) => (
     <button
         onClick={() => setActiveSection(section)}
-        className={`flex items-center w-full text-left px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${activeSection === section
+        className={`flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap ${activeSection === section
                 ? 'bg-slate-800 text-white shadow-lg'
-                : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                : 'text-slate-600 bg-white hover:bg-slate-100 border border-slate-200'
             }`}
     >
-        <span className="mr-3 text-lg">{icon}</span>
+        <span className="mr-2 text-lg">{icon}</span>
         {children}
     </button>
 );
@@ -376,7 +373,6 @@ const RiskReturnChart = () => {
 // Main Section Components
 const WelcomeSection = ({ setActiveSection }) => (
     <div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4">The Investor's Guide to Stablecoins</h1>
         <p className="text-lg text-slate-600 max-w-3xl mb-8">
             An interactive analysis of profiting from digital dollars, understanding the inherent risks, and navigating the new era of regulation.
             This guide translates a comprehensive report into an explorable experience.
@@ -403,7 +399,7 @@ const TypesSection = () => {
         <div>
             <SectionTitle>A Taxonomy of Stablecoins</SectionTitle>
             <SectionSubtitle>
-                Understand the different engines of stability. The mechanism used to maintain the price peg is the most critical differentiator and directly determines an asset's risk profile.
+                Understand the different engines of stability. The mechanism used to maintain the price peg is the most critical differentiator and directly determines an asset&apos;s risk profile.
             </SectionSubtitle>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -450,7 +446,7 @@ const ProfitSection = () => {
 
     return (
         <div>
-            <SectionTitle>The Investor's Playbook</SectionTitle>
+            <SectionTitle>The Investor&apos;s Playbook</SectionTitle>
             <SectionSubtitle>
                 Profit from stablecoins is not from appreciation (they are designed to be stable), but from earning yield.
                 This yield is compensation for the risks you take on external platforms.
@@ -533,9 +529,9 @@ const RiskSection = () => {
                     </button>
                     {showUstCaseStudy && (
                         <div className="mt-4 text-sm text-slate-600 space-y-2">
-                            <p><strong className="text-slate-700">Flawed Mechanism:</strong> An algorithmic link to LUNA token was meant to maintain the peg. Selling UST forced hyper-inflation of LUNA, creating a "death spiral."</p>
-                            <p><strong className="text-slate-700">Unsustainable Yield:</strong> The Anchor Protocol's artificial ~20% APY created massive, concentrated demand for UST, making the entire ecosystem a single point of failure.</p>
-                            <p><strong className="text-slate-700">The Aftermath:</strong> Within a week, UST was worthless and LUNA's price fell to zero, destroying investor wealth and leading to the failure of major crypto firms.</p>
+                            <p><strong className="text-slate-700">Flawed Mechanism:</strong> An algorithmic link to LUNA token was meant to maintain the peg. Selling UST forced hyper-inflation of LUNA, creating a &ldquo;death spiral.&rdquo;</p>
+                            <p><strong className="text-slate-700">Unsustainable Yield:</strong> The Anchor Protocol&apos;s artificial ~20% APY created massive, concentrated demand for UST, making the entire ecosystem a single point of failure.</p>
+                            <p><strong className="text-slate-700">The Aftermath:</strong> Within a week, UST was worthless and LUNA&apos;s price fell to zero, destroying investor wealth and leading to the failure of major crypto firms.</p>
                         </div>
                     )}
                 </SectionCard>
@@ -620,7 +616,6 @@ const ChecklistSection = () => {
 // Main App Component
 export default function StablecoinGuide() {
     const [activeSection, setActiveSection] = useState('welcome');
-    const currentArticle = articles.find(article => article.slug === 'investors-guide-stablecoins-profiting-digital-dollars');
 
     const renderSection = () => {
         switch (activeSection) {
@@ -642,136 +637,42 @@ export default function StablecoinGuide() {
     };
 
     return (
-        <>
-            {/* SEO Components - MANDATORY */}
-            {currentArticle && (
-                <>
-                    <StructuredData article={currentArticle} />
-                    <BreadcrumbStructuredData
-                        articleTitle={currentArticle.title}
-                        articleSlug={currentArticle.slug}
-                    />
-                </>
-            )}
+        <ArticleFrame
+            slug="investors-guide-stablecoins-profiting-digital-dollars"
+            additionalDisclaimer="Stablecoin investments carry significant risks including total loss of principal."
+        >
+            <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-in-out;
+        }
+      `}</style>
 
-            <div className="bg-slate-100 font-sans antialiased text-slate-800" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <style>{`
-          @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fade-in {
-            animation: fade-in 0.5s ease-in-out;
-          }
-        `}</style>
+            <nav className="flex flex-wrap gap-2 mb-10">
+                <NavItem section="welcome" activeSection={activeSection} setActiveSection={setActiveSection} icon="👋">
+                    Welcome
+                </NavItem>
+                <NavItem section="types" activeSection={activeSection} setActiveSection={setActiveSection} icon="⚙️">
+                    Types of Coins
+                </NavItem>
+                <NavItem section="profit" activeSection={activeSection} setActiveSection={setActiveSection} icon="📈">
+                    Profit Playbook
+                </NavItem>
+                <NavItem section="risk" activeSection={activeSection} setActiveSection={setActiveSection} icon="⚠️">
+                    Risk Analysis
+                </NavItem>
+                <NavItem section="regulation" activeSection={activeSection} setActiveSection={setActiveSection} icon="🏛️">
+                    Regulation Hub
+                </NavItem>
+                <NavItem section="checklist" activeSection={activeSection} setActiveSection={setActiveSection} icon="✅">
+                    Investor Checklist
+                </NavItem>
+            </nav>
 
-                {/* Return to Home Button */}
-                <div className="bg-white border-b border-slate-200 px-6 py-4">
-                    <div className="flex items-center gap-4 mb-4">
-                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            Return to Home
-                        </Link>
-                    </div>
-
-                    {/* Badges */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                            Deep Research
-                        </span>
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            Podcast
-                        </span>
-                    </div>
-                </div>
-
-                <div className="flex min-h-screen">
-                    {/* Sidebar Navigation */}
-                    <aside className="w-64 bg-slate-900 text-white p-6 hidden lg:flex flex-col">
-                        <h1 className="text-2xl font-bold mb-1">Stablecoin</h1>
-                        <p className="text-sm text-slate-400 mb-12">Interactive Guide</p>
-
-                        <nav className="space-y-2">
-                            <NavItem section="welcome" activeSection={activeSection} setActiveSection={setActiveSection} icon="👋">
-                                Welcome
-                            </NavItem>
-                            <NavItem section="types" activeSection={activeSection} setActiveSection={setActiveSection} icon="⚙️">
-                                Types of Coins
-                            </NavItem>
-                            <NavItem section="profit" activeSection={activeSection} setActiveSection={setActiveSection} icon="📈">
-                                Profit Playbook
-                            </NavItem>
-                            <NavItem section="risk" activeSection={activeSection} setActiveSection={setActiveSection} icon="⚠️">
-                                Risk Analysis
-                            </NavItem>
-                            <NavItem section="regulation" activeSection={activeSection} setActiveSection={setActiveSection} icon="🏛️">
-                                Regulation Hub
-                            </NavItem>
-                            <NavItem section="checklist" activeSection={activeSection} setActiveSection={setActiveSection} icon="✅">
-                                Investor Checklist
-                            </NavItem>
-                        </nav>
-                    </aside>
-
-                    {/* Main Content */}
-                    <main className="flex-1 p-6 sm:p-8 md:p-12 overflow-y-auto">
-                        {renderSection()}
-
-                        {/* Call to Action Section */}
-                        <div className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center">
-                            <h3 className="text-2xl font-bold mb-4">Ready to Dive Deeper?</h3>
-                            <p className="text-lg mb-6">
-                                Explore the full research document and listen to our detailed podcast discussion on stablecoin investing strategies.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                {currentArticle?.googleDoc && (
-                                    <a
-                                        href={currentArticle.googleDoc}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-                                    >
-                                        📄 Read Full Research
-                                    </a>
-                                )}
-                                {currentArticle?.podcastUrl && (
-                                    <a
-                                        href={currentArticle.podcastUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                                    >
-                                        <Music className="inline mr-2" />
-                                        Listen to Podcast
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Educational Disclaimer */}
-                        <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                            <div className="flex">
-                                <div className="flex-shrink-0">
-                                    <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div className="ml-3">
-                                    <p className="text-sm text-yellow-700">
-                                        <strong>Educational Disclaimer:</strong> This content is for informational purposes only and does not constitute investment advice.
-                                        Stablecoin investments carry significant risks including total loss of principal. Always conduct your own research and consult with qualified financial advisors.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Footer */}
-                        <footer className="mt-12 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
-                            <p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-                        </footer>
-                    </main>
-                </div>
-            </div>
-        </>
+            {renderSection()}
+        </ArticleFrame>
     );
 }

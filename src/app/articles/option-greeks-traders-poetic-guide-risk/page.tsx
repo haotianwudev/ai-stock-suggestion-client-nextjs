@@ -1,12 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, TrendingUp, TrendingDown, Clock, Zap, DollarSign, AlertTriangle, BookOpen, Target, Shield, ExternalLink, FileText } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { TrendingUp, TrendingDown, Clock, Zap, DollarSign, AlertTriangle, BookOpen, Shield, FileText } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
-// Type definitions
 interface GreekData {
   name: string;
   symbol: string;
@@ -26,7 +22,6 @@ interface GreekData {
   };
 }
 
-// Expanded data from the document, now with bullet points
 const greeksData: GreekData[] = [
   {
     name: "Delta",
@@ -178,15 +173,11 @@ A boring number, but it stays afoot.`,
   }
 ];
 
-/**
- * A single card component to display a Greek's full details.
- */
 const GreekCard = ({ greek }: { greek: GreekData }) => {
   const { colorClasses } = greek;
-  
+
   return (
     <div className={`rounded-xl shadow-lg p-6 md:p-8 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1.5 border-t-4 bg-white ${colorClasses.border} ${colorClasses.shadow}`}>
-      {/* Card Header: Symbol + Name */}
       <div className="flex items-center mb-5">
         <span className={`text-5xl font-bold mr-4 ${colorClasses.text}`} style={{textShadow: `0 0 10px var(--tw-shadow-color)`}}>
           {greek.symbol}
@@ -196,14 +187,12 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
         </h2>
       </div>
 
-      {/* Poem Content */}
       <p className="text-lg text-gray-800 leading-relaxed whitespace-pre-line font-mono italic mb-6">
         {greek.poem}
       </p>
 
       <hr className="my-4 md:my-6" />
 
-      {/* Intuition Section */}
       <div className="mb-6">
         <h3 className={`text-xl font-semibold mb-2 ${colorClasses.text}`}>
           Intuition
@@ -211,8 +200,7 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
         <p className="text-gray-700 leading-relaxed mb-3">
           {greek.intuition.summary}
         </p>
-        
-        {/* Render Theta Decay Chart */}
+
         {greek.name === "Theta" && (
           <div className="my-4 p-4 bg-gray-50 rounded-lg border">
             <p className="text-center text-sm font-medium text-gray-700 mb-2">
@@ -223,7 +211,7 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
             </p>
           </div>
         )}
-        
+
         <ul className="list-disc list-outside pl-5 space-y-2 text-gray-700">
           {greek.intuition.bullets.map((bullet: string, index: number) => (
             <li key={`intuition-${index}`}>{bullet}</li>
@@ -231,7 +219,6 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
         </ul>
       </div>
 
-      {/* Trading Section */}
       <div>
         <h3 className={`text-xl font-semibold mb-2 ${colorClasses.text}`}>
           Trading Applications
@@ -249,83 +236,27 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
   );
 };
 
-/**
- * Main application component.
- */
 export default function OptionGreeksArticle() {
-  const currentArticle = articles.find(article => article.slug === 'option-greeks-traders-poetic-guide-risk');
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-
-      {/* Main container with light theme and responsive padding */}
-      <div className="min-h-screen bg-gray-50 text-gray-900 p-8 md:p-12 font-sans">
-        {/* Return to Home Button */}
-        <div className="flex items-center gap-4 mb-4">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
-        </div>
-
-        {/* Badges */}
-        <div className="relative mb-8">
-          {/* Deep Research Badge - Top Left */}
-          <div className="absolute top-0 left-0 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-              <BookOpen className="w-3 h-3 mr-1" />
-              Deep Research
-            </span>
-          </div>
-          
-          {/* Options Badge - Bottom Right */}
-          <div className="absolute bottom-0 right-0 z-10">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-              <Target className="w-3 h-3 mr-1" />
-              Options
-            </span>
-          </div>
-        </div>
-
-        {/* Page Header */}
-        <header className="text-center mb-16 max-w-3xl mx-auto pt-12">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-red-600">
-            The Option Greeks
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mt-4">
-            A Trader's Poetic Guide to Risk
-          </p>
-          <p className="text-lg text-gray-700 mt-6 leading-relaxed">
-            Master the five fundamental risk measures that govern options pricing through intuitive poetry, 
-            practical trading applications, and comprehensive analysis. Transform complex derivatives mathematics 
-            into actionable trading knowledge.
-          </p>
-        </header>
-
+    <ArticleFrame
+      slug="option-greeks-traders-poetic-guide-risk"
+      additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. The Greeks are theoretical models that may not perfectly predict actual price movements."
+    >
+      <div className="max-w-4xl mx-auto px-4 text-gray-800">
         {/* Introduction Section */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="mb-12">
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-200">
             <div className="flex items-start space-x-4">
               <Shield className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Understanding the Greeks</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  The Option Greeks are mathematical measures that quantify how an option's price changes in response to various factors. 
+                  The Option Greeks are mathematical measures that quantify how an option&apos;s price changes in response to various factors.
                   They are essential tools for risk management, position sizing, and strategic decision-making in options trading.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  Each Greek measures a different dimension of risk: <strong>Delta</strong> (directional exposure), 
-                  <strong>Gamma</strong> (delta stability), <strong>Theta</strong> (time decay), 
+                  Each Greek measures a different dimension of risk: <strong>Delta</strong> (directional exposure),{' '}
+                  <strong>Gamma</strong> (delta stability), <strong>Theta</strong> (time decay),{' '}
                   <strong>Vega</strong> (volatility sensitivity), and <strong>Rho</strong> (interest rate risk).
                 </p>
               </div>
@@ -334,14 +265,14 @@ export default function OptionGreeksArticle() {
         </div>
 
         {/* Grid container for the cards */}
-        <main className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {greeksData.map(greek => (
             <GreekCard key={greek.name} greek={greek} />
           ))}
-        </main>
+        </div>
 
         {/* Key Takeaways Section */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="mb-12">
           <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 border border-green-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <AlertTriangle className="w-6 h-6 text-green-600 mr-3" />
@@ -386,26 +317,8 @@ export default function OptionGreeksArticle() {
           </div>
         </div>
 
-        {/* Risk Warning */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-            <div className="flex items-start space-x-3">
-              <AlertTriangle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-lg font-semibold text-red-800 mb-2">Risk Disclosure</h3>
-                <p className="text-red-700 text-sm leading-relaxed">
-                  Options trading involves substantial risk and is not suitable for all investors. 
-                  The Greeks are theoretical models that may not perfectly predict actual price movements. 
-                  Past performance does not guarantee future results. Always consult with a qualified 
-                  financial advisor and understand the risks before trading options.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Deep Research Section */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="mb-12">
           <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-8 border border-purple-200">
             <div className="flex items-start space-x-4">
               <FileText className="w-8 h-8 text-purple-600 mt-1 flex-shrink-0" />
@@ -417,12 +330,12 @@ export default function OptionGreeksArticle() {
                   </span>
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  This comprehensive analysis draws from extensive research in options pricing theory, 
-                  behavioral finance, and quantitative trading strategies. The poetic approach to explaining 
+                  This comprehensive analysis draws from extensive research in options pricing theory,
+                  behavioral finance, and quantitative trading strategies. The poetic approach to explaining
                   the Greeks makes complex mathematical concepts accessible while maintaining technical accuracy.
                 </p>
-                
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+
+                <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-4 border border-purple-100">
                     <h3 className="font-semibold text-gray-900 mb-2">Research Methodology</h3>
                     <ul className="text-sm text-gray-700 space-y-1">
@@ -442,35 +355,11 @@ export default function OptionGreeksArticle() {
                     </ul>
                   </div>
                 </div>
-
-                {currentArticle?.googleDoc && (
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href={currentArticle.googleDoc}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Read Full Research Document
-                    </a>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <BookOpen className="w-4 h-4 mr-2" />
-                      <span>Comprehensive analysis with detailed mathematical foundations and trading examples</span>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="text-center mt-16 text-gray-500 border-t border-gray-200 pt-8">
-          <p className="mb-2">© 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-          <p className="text-sm">This analysis is not financial advice and is intended for educational purposes only.</p>
-        </footer>
       </div>
-    </>
+    </ArticleFrame>
   );
 }

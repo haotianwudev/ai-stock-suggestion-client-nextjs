@@ -1,110 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, FileText, Terminal, Database, Cloud, Copy, Check, Sparkles, Globe, Printer } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { useState } from 'react';
+import { FileText, Terminal, Database, Cloud, Copy, Check, Sparkles, Globe } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
-// Component to handle print-specific CSS rules
-const PrintStyles = () => (
-  <style jsx={true} global={true}>{`
-    @media print {
-      @page {
-        size: A4;
-        margin: 0.5cm;
-      }
-      * {
-        font-size: 11px !important;
-        line-height: 1.2 !important;
-      }
-      html, body {
-        background-color: #fff !important;
-        color: #000 !important;
-      }
-      .container {
-        max-width: none !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-      .print-header {
-        font-size: 20px !important;
-        margin-bottom: 12px !important;
-        text-align: center;
-      }
-      header img {
-        height: 32px !important;
-        margin-bottom: 8px !important;
-      }
-      .print-section-title {
-        font-size: 14px !important;
-        margin-bottom: 8px !important;
-        margin-top: 12px !important;
-      }
-      .command-card {
-        page-break-inside: avoid;
-        margin-bottom: 6px !important;
-        padding: 8px !important;
-        border: 1px solid #ddd !important;
-      }
-      .command-card-command {
-        color: #000 !important;
-        background-color: #f3f4f6 !important;
-        font-size: 10px !important;
-        padding: 3px 5px !important;
-        margin-bottom: 3px !important;
-      }
-      .command-card-description {
-        font-size: 10px !important;
-        margin-bottom: 3px !important;
-      }
-      .command-card-example-code {
-        color: #000 !important;
-        font-size: 9px !important;
-      }
-      .command-card-example-label {
-        font-size: 10px !important;
-        margin-bottom: 1px !important;
-      }
-      .command-card-example-container {
-        padding: 3px !important;
-        background-color: #f3f4f6 !important;
-      }
-      .print-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 8px !important;
-        width: 100% !important;
-      }
-      .print-footer {
-        font-size: 8px !important;
-        margin-top: 12px !important;
-        text-align: center;
-      }
-      a {
-        color: #000 !important;
-        text-decoration: none;
-      }
-      a[href^="http"]:after {
-        content: " (" attr(href) ")";
-        font-size: 6px !important;
-        font-weight: normal;
-        color: #333;
-      }
-      .print-hide {
-        display: none !important;
-      }
-    }
-  `}</style>
-);
-
-// Section Component
 function CheatSheetSection({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-6 flex items-center print-section-title">
-        <span className="print-hide">{icon}</span>
+      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
+        {icon}
         {title}
       </h2>
       {children}
@@ -112,7 +16,6 @@ function CheatSheetSection({ title, icon, children }: { title: string; icon: Rea
   );
 }
 
-// Command Card Component
 function CommandCard({ command, description, example, isLinkList = false }: { command: string; description: string; example: string; isLinkList?: boolean }) {
   const [copied, setCopied] = useState(false);
 
@@ -134,77 +37,74 @@ function CommandCard({ command, description, example, isLinkList = false }: { co
 
   const renderExample = () => {
     if (isLinkList) {
-        const links = example.split('\n');
-        return (
-            <div className="flex flex-col space-y-2">
-                {links.map((link: string, i: number) => (
-                    <a 
-                        key={i} 
-                        href={`https://${link}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-green-600 font-mono text-sm hover:underline flex items-center"
-                    >
-                        <Globe className="w-3 h-3 mr-2 print:hidden" />
-                        {link}
-                    </a>
-                ))}
-            </div>
-        )
+      const links = example.split('\n');
+      return (
+        <div className="flex flex-col space-y-2">
+          {links.map((link: string, i: number) => (
+            <a
+              key={i}
+              href={`https://${link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 dark:text-green-400 font-mono text-sm hover:underline flex items-center"
+            >
+              <Globe className="w-3 h-3 mr-2" />
+              {link}
+            </a>
+          ))}
+        </div>
+      );
     }
     return (
-        <code className="text-green-700 font-mono text-sm whitespace-pre-wrap break-words command-card-example-code">
-            {example}
-        </code>
+      <code className="text-green-700 dark:text-green-400 font-mono text-sm whitespace-pre-wrap break-words">
+        {example}
+      </code>
     );
-  }
+  };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5 flex flex-col justify-between shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-shadow duration-300 print:shadow-none print:border-gray-400 command-card">
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 flex flex-col justify-between shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-shadow duration-300">
       <div>
         <div className="flex justify-between items-start mb-3">
-          <code className="text-blue-600 font-mono bg-gray-100 px-2 py-1 rounded text-sm sm:text-base break-words command-card-command">
+          <code className="text-blue-600 dark:text-blue-400 font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm sm:text-base break-words">
             {command}
           </code>
           <button
             onClick={() => handleCopy(command)}
-            className={`p-2 rounded-md transition-colors duration-200 print-hide ${
+            className={`p-2 rounded-md transition-colors duration-200 ${
               copied
                 ? 'bg-green-500 text-white'
-                : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
             aria-label="Copy command"
           >
             {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
           </button>
         </div>
-        <p className="text-gray-600 text-sm mb-4 command-card-description">{description}</p>
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{description}</p>
       </div>
       <div>
-        <h4 className="font-semibold text-gray-500 text-sm mb-1 command-card-example-label">
+        <h4 className="font-semibold text-gray-500 dark:text-gray-400 text-sm mb-1">
           {isLinkList ? "Links:" : "Example:"}
         </h4>
-        <div className="flex justify-between items-center bg-gray-100 rounded p-2 command-card-example-container">
-            {renderExample()}
-            {!isLinkList && (
-              <button
-                  onClick={() => handleCopy(example)}
-                  className="ml-2 p-1.5 rounded-md bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700 transition-colors print-hide"
-                  aria-label="Copy example"
-              >
-                  <Copy className="w-4 h-4" />
-              </button>
-            )}
+        <div className="flex justify-between items-center bg-gray-100 dark:bg-gray-700/50 rounded p-2">
+          {renderExample()}
+          {!isLinkList && (
+            <button
+              onClick={() => handleCopy(example)}
+              className="ml-2 p-1.5 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+              aria-label="Copy example"
+            >
+              <Copy className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-// Main Article Component
 export default function OllamaCheatSheetArticle() {
-  const currentArticle = articles.find(article => article.slug === 'ollama-cheat-sheet-complete-command-reference');
-
   const cheatSheetData = [
     {
       category: 'Model Management',
@@ -247,14 +147,14 @@ export default function OllamaCheatSheetArticle() {
           example: 'ollama run llama3 "What is the capital of France?"',
         },
         {
-            command: '/set verbose',
-            description: 'Inside a chat, toggles verbose mode to see more details.',
-            example: '/set verbose'
+          command: '/set verbose',
+          description: 'Inside a chat, toggles verbose mode to see more details.',
+          example: '/set verbose'
         },
         {
-            command: '/show info',
-            description: 'Inside a chat, shows information about the current model.',
-            example: '/show info'
+          command: '/show info',
+          description: 'Inside a chat, shows information about the current model.',
+          example: '/show info'
         },
       ],
     },
@@ -294,11 +194,11 @@ export default function OllamaCheatSheetArticle() {
           example: 'ollama serve',
         },
         {
-          command: 'curl http://localhost:11434/api/generate -d \'{ ... }\'',
+          command: "curl http://localhost:11434/api/generate -d '{ ... }'",
           description: 'Use the API to generate a response. (Check docs for JSON).',
           example: `curl http://localhost:11434/api/generate -d '{ "model": "llama3", "prompt": "Why is the sky blue?" }'`,
         },
-         {
+        {
           command: 'curl http://localhost:11434/api/tags',
           description: 'Fetches the list of local models via the API.',
           example: `curl http://localhost:11434/api/tags`,
@@ -321,7 +221,7 @@ export default function OllamaCheatSheetArticle() {
         },
         {
           command: 'Important Websites',
-          description: 'Official resources for documentation, updates, community tools, and SOPHIE\'s Daddy Blog.',
+          description: "Official resources for documentation, updates, community tools, and SOPHIE's Daddy Blog.",
           example: 'ollama.com\ngithub.com/ollama/ollama\nopenwebui.com\nsophie-ai-finance.com',
         },
       ],
@@ -329,68 +229,24 @@ export default function OllamaCheatSheetArticle() {
   ];
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-        </>
-      )}
-      
-      <div className="bg-gray-50 text-gray-800 min-h-screen font-sans">
-        <PrintStyles />
-        <div className="container mx-auto p-4 sm:p-6 lg:p-8">
-          {/* Return to Home Button */}
-          <div className="flex items-center gap-4 mb-4 print-hide">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
-          </div>
-
-          <header className="text-center mb-8 sm:mb-12 print:mb-6">
-            <div className="flex justify-center items-center mb-4">
-              <img 
-                src="https://ollama.com/public/ollama.png" 
-                alt="Ollama Logo" 
-                className="h-16 w-auto"
-              />
+    <ArticleFrame slug="ollama-cheat-sheet-complete-command-reference">
+      <div className="space-y-12">
+        {cheatSheetData.map((section, index) => (
+          <CheatSheetSection key={index} title={section.category} icon={section.icon}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {section.commands.map((cmd, cmdIndex) => (
+                <CommandCard
+                  key={cmdIndex}
+                  command={cmd.command}
+                  description={cmd.description}
+                  example={cmd.example}
+                  isLinkList={cmd.command === 'Important Websites'}
+                />
+              ))}
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2 print-header">Ollama Cheat Sheet</h1>
-            <p className="text-lg text-gray-600 print-hide">Your quick guide to Ollama commands and advanced usage.</p>
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-200 print-hide"
-            >
-              <Printer className="mr-2 h-4 w-4" />
-              Print Cheat Sheet
-            </button>
-          </header>
-
-          <main className="space-y-12 print:space-y-8">
-            {cheatSheetData.map((section, index) => (
-              <CheatSheetSection key={index} title={section.category} icon={section.icon}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 print-grid">
-                  {section.commands.map((cmd, cmdIndex) => (
-                    <CommandCard
-                      key={cmdIndex}
-                      command={cmd.command}
-                      description={cmd.description}
-                      example={cmd.example}
-                      isLinkList={cmd.command === 'Important Websites'}
-                    />
-                  ))}
-                </div>
-              </CheatSheetSection>
-            ))}
-          </main>
-          
-          <footer className="text-center mt-12 text-gray-500 print-footer">
-            <p>Created for easy reference. For more details, check the official Ollama documentation. &copy; 2025 SOPHIE Daddyuant Blog (sophie-ai-finance.com). Educational content for informational purposes only.</p>
-          </footer>
-        </div>
+          </CheatSheetSection>
+        ))}
       </div>
-    </>
+    </ArticleFrame>
   );
-} 
+}

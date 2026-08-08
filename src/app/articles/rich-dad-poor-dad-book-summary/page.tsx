@@ -1,15 +1,7 @@
 'use client';
 
-import { ArrowRight, ArrowLeft, BookOpen, BrainCircuit, Briefcase, DollarSign, Home, TrendingUp, Users, Award, Lightbulb, AlertTriangle, Music } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-
-// Type definitions
-interface SectionTitleProps {
-  children: React.ReactNode;
-}
+import { BookOpen, BrainCircuit, Briefcase, DollarSign, Home, TrendingUp, Users, Award, Lightbulb, AlertTriangle } from 'lucide-react';
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 interface StoryCardProps {
   icon: React.ReactNode;
@@ -18,14 +10,12 @@ interface StoryCardProps {
   lesson: string;
 }
 
-// Helper component for section titles
-const SectionTitle = ({ children }: SectionTitleProps) => (
+const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-12 text-center">
     {children}
   </h2>
 );
 
-// Helper component for story cards
 const StoryCard = ({ icon, title, story, lesson }: StoryCardProps) => (
   <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out overflow-hidden transform hover:-translate-y-2">
     <div className="p-8">
@@ -52,10 +42,7 @@ const StoryCard = ({ icon, title, story, lesson }: StoryCardProps) => (
   </div>
 );
 
-// Main Page Component
 export default function RichDadPoorDadSummary() {
-  const currentArticle = articles.find(article => article.slug === 'rich-dad-poor-dad-book-summary');
-
   const stories = [
     {
       icon: <Users size={28} />,
@@ -120,142 +107,49 @@ export default function RichDadPoorDadSummary() {
   ];
 
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-        </>
-      )}
-      
-      <div className="bg-gray-50 dark:bg-gray-900 min-h-screen font-sans">
-        {/* Return to Home Button */}
-        <div className="container mx-auto px-6 pt-8">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Return to Home
-            </Link>
+    <ArticleFrame
+      slug="rich-dad-poor-dad-book-summary"
+      additionalDisclaimer="This summary is for educational purposes only and does not constitute financial advice. The original book contains additional insights and context not covered here."
+    >
+      {/* Introduction Section */}
+      <section className="mb-16 text-center max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">A Tale of Two Mindsets</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          &ldquo;Rich Dad, Poor Dad&rdquo; is not just a book; it&apos;s a fundamental shift in perspective. Robert Kiyosaki&apos;s journey, guided by two distinct father figures, reveals a powerful truth: financial well-being isn&apos;t about how much you earn, but about how much you understand money. Below are the pivotal stories that illustrate the core philosophy of making money work for you.
+        </p>
+      </section>
+
+      {/* Key Stories Section */}
+      <section className="mb-16">
+        <SectionTitle>The Stories That Teach</SectionTitle>
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-10">
+          {stories.map((story, index) => (
+            <StoryCard key={index} {...story} />
+          ))}
+        </div>
+      </section>
+
+      {/* Core Concepts Section */}
+      <section>
+        <SectionTitle>The Core Philosophy</SectionTitle>
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+            <DollarSign className="mx-auto text-green-500 w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Assets vs. Liabilities</h3>
+            <p className="text-gray-600 dark:text-gray-400">An <span className="font-bold text-green-600 dark:text-green-400">asset</span> puts money in your pocket. A <span className="font-bold text-red-600 dark:text-red-400">liability</span> takes money out. The rich acquire assets; the poor and middle class acquire liabilities they think are assets.</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+            <BrainCircuit className="mx-auto text-blue-500 w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Financial IQ</h3>
+            <p className="text-gray-600 dark:text-gray-400">It&apos;s not about being smart, it&apos;s about being financially smart. This requires knowledge of accounting, investing, markets, and law. It&apos;s about how much you keep, not how much you make.</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+            <TrendingUp className="mx-auto text-indigo-500 w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Work to Learn</h3>
+            <p className="text-gray-600 dark:text-gray-400">Don&apos;t work for money; work to learn new skills. Job security is a thing of the past. Skill security&mdash;especially in sales, marketing, and communication&mdash;is the new path to financial freedom.</p>
           </div>
         </div>
-
-        <main>
-          {/* Hero Section */}
-          <section className="relative text-center py-24 md:py-32 bg-gradient-to-br from-blue-600 to-indigo-800 text-white overflow-hidden">
-            <div className="absolute inset-0 bg-black opacity-20"></div>
-            <div className="container mx-auto px-6 relative z-10">
-              <div className="absolute top-4 left-4">
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-600 text-white">
-                  <BookOpen className="w-4 h-4 mr-1" />
-                  Book Summary
-                </div>
-              </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight">Rich Dad, Poor Dad</h1>
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-200">Key Stories and Lessons in Financial Liberation</p>
-            </div>
-          </section>
-
-          {/* Podcast CTA Section */}
-          {currentArticle?.podcastUrl && (
-            <section className="py-12 bg-green-50 dark:bg-green-900/20">
-              <div className="container mx-auto px-6">
-                <div className="max-w-4xl mx-auto text-center">
-                  <div className="flex items-center justify-center mb-4">
-                    <Music className="w-8 h-8 text-green-600 dark:text-green-400 mr-3" />
-                    <h2 className="text-2xl md:text-3xl font-bold text-green-800 dark:text-green-200">Listen First, Then Read</h2>
-                  </div>
-                  <p className="text-lg text-green-700 dark:text-green-300 mb-6 leading-relaxed">
-                    Start your financial education journey with our podcast discussion on "Financial Literacy and the Rat Race" - then dive into the key stories below.
-                  </p>
-                  <a 
-                    href={currentArticle.podcastUrl}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105 shadow-lg"
-                  >
-                    <Music className="inline mr-2" />
-                    Listen to Podcast First
-                  </a>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* Introduction Section */}
-          <section className="py-20 md:py-24">
-              <div className="container mx-auto px-6">
-                  <div className="max-w-4xl mx-auto text-center">
-                      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">A Tale of Two Mindsets</h2>
-                      <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                          "Rich Dad, Poor Dad" is not just a book; it's a fundamental shift in perspective. Robert Kiyosaki's journey, guided by two distinct father figures, reveals a powerful truth: financial well-being isn't about how much you earn, but about how much you understand money. Below are the pivotal stories that illustrate the core philosophy of making money work for you.
-                      </p>
-                  </div>
-              </div>
-          </section>
-
-          {/* Key Stories Section */}
-          <section className="py-20 md:py-24 bg-gray-100 dark:bg-gray-900/70">
-            <div className="container mx-auto px-6">
-              <SectionTitle>The Stories That Teach</SectionTitle>
-              <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-10">
-                {stories.map((story, index) => (
-                  <StoryCard key={index} {...story} />
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Core Concepts Section */}
-          <section className="py-20 md:py-24">
-              <div className="container mx-auto px-6">
-                  <SectionTitle>The Core Philosophy</SectionTitle>
-                  <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 text-center">
-                      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-                          <DollarSign className="mx-auto text-green-500 w-16 h-16 mb-4"/>
-                          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Assets vs. Liabilities</h3>
-                          <p className="text-gray-600 dark:text-gray-400">An <span className="font-bold text-green-600 dark:text-green-400">asset</span> puts money in your pocket. A <span className="font-bold text-red-600 dark:text-red-400">liability</span> takes money out. The rich acquire assets; the poor and middle class acquire liabilities they think are assets.</p>
-                      </div>
-                      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-                          <BrainCircuit className="mx-auto text-blue-500 w-16 h-16 mb-4"/>
-                          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Financial IQ</h3>
-                          <p className="text-gray-600 dark:text-gray-400">It's not about being smart, it's about being financially smart. This requires knowledge of accounting, investing, markets, and law. It's about how much you keep, not how much you make.</p>
-                      </div>
-                      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-                          <TrendingUp className="mx-auto text-indigo-500 w-16 h-16 mb-4"/>
-                          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Work to Learn</h3>
-                          <p className="text-gray-600 dark:text-gray-400">Don't work for money; work to learn new skills. Job security is a thing of the past. Skill security—especially in sales, marketing, and communication—is the new path to financial freedom.</p>
-                      </div>
-                  </div>
-              </div>
-          </section>
-
-          {/* Educational Disclaimer */}
-          <section className="py-12 bg-yellow-50 dark:bg-yellow-900/20">
-            <div className="container mx-auto px-6">
-              <div className="max-w-4xl mx-auto text-center">
-                <div className="flex items-center justify-center mb-4">
-                  <AlertTriangle className="w-6 h-6 text-yellow-600 dark:text-yellow-400 mr-2" />
-                  <h3 className="text-xl font-bold text-yellow-800 dark:text-yellow-200">Educational Content</h3>
-                </div>
-                <p className="text-yellow-700 dark:text-yellow-300 leading-relaxed">
-                  This summary is for educational purposes only and does not constitute financial advice. Please consult with qualified financial professionals before making investment decisions. The original book contains additional insights and context not covered in this summary.
-                </p>
-              </div>
-            </div>
-          </section>
-
-
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-gray-800 dark:bg-black text-gray-400 py-8">
-          <div className="container mx-auto px-6 text-center">
-            <p>&copy; 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-            <p className="text-sm mt-2">This is an unofficial summary and analysis inspired by the book "Rich Dad, Poor Dad" by Robert T. Kiyosaki.</p>
-          </div>
-        </footer>
-      </div>
-    </>
+      </section>
+    </ArticleFrame>
   );
-} 
+}

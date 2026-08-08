@@ -1,169 +1,42 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, Briefcase, Play, Bot, Zap, Cpu, Search, Scale, TestTube, ChevronsRight, Target, Telescope, Atom, Infinity, BarChart, FileText, ShieldCheck, TrendingUp, Code2, ListChecks, Music, Maximize2 } from 'lucide-react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { useState } from 'react';
+import { BrainCircuit, Briefcase, Play, Zap, Cpu, Search, Scale, TestTube, ChevronsRight, Target, Telescope, Atom, Infinity, BarChart, ShieldCheck, TrendingUp, Code2, ListChecks } from 'lucide-react';
+import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+
+const Highlight = ({ children }: { children: React.ReactNode }) => (
+  <span className="font-semibold text-blue-600">{children}</span>
+);
 
 export default function QuantWorkflowPage() {
-  const currentArticle = articles.find(article => article.slug === 'anatomy-quant-fund-alpha-discovery-automated-execution');
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  
-  const Highlight = ({ children }: { children: React.ReactNode }) => (
-    <span className="font-semibold text-blue-600">{children}</span>
-  );
-
   return (
-    <>
-      {/* SEO Components - MANDATORY */}
-      {currentArticle && currentArticle.title && currentArticle.slug && (
-        <>
-          <StructuredData article={currentArticle} />
-          <BreadcrumbStructuredData 
-            articleTitle={currentArticle.title} 
-            articleSlug={currentArticle.slug} 
-          />
-        </>
-      )}
-      
-      <div className="bg-gray-50 text-gray-800 font-sans">
-        {/* Return to Home Button */}
-        <div className="max-w-5xl mx-auto px-6 pt-8">
-          <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Return to Home
-          </Link>
+    <ArticleFrame slug="anatomy-quant-fund-alpha-discovery-automated-execution">
+      <div className="max-w-5xl mx-auto px-4 text-slate-900">
+        <p className="text-xl text-slate-700 leading-relaxed mb-8">
+          An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.
+        </p>
+
+        <InfographicSlot alt="Quant Fund Workflow Infographic" />
+
+        <div className="space-y-6 mt-12">
+          <AlphaGenerationSection />
+          <PortfolioConstructionSection />
+          <BacktestingSection />
+          <ExecutionSection />
+          <TechnologyStackSection />
+          <PerpetualChallengeSection />
         </div>
-
-        {/* Hero Section with Title */}
-        <div className="bg-white relative overflow-hidden border-b border-slate-100">
-          {/* Badges */}
-          <div className="absolute top-8 left-6 z-20">
-            <span className="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-              Deep Research
-            </span>
-          </div>
-          <div className="absolute top-8 right-6 z-20">
-            <span className="inline-block bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-              Podcast
-            </span>
-          </div>
-          
-          <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 relative z-10">
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8 tracking-tight">
-              The Anatomy of a Quant Fund
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
-              An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. 
-              Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction 
-              with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.
-            </p>
-          </div>
-        </div>
-
-        {/* Hero Infographic - Below Title with Full-Screen Capability */}
-        {currentArticle?.imageUrl && (
-          <section className="max-w-5xl mx-auto px-6 pt-8 pb-4">
-            <div 
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-              onClick={() => setIsImageViewerOpen(true)}
-            >
-              <img 
-                src={currentArticle.imageUrl} 
-                alt="Quant Fund Workflow Infographic" 
-                className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-              {/* Full-screen button overlay */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsImageViewerOpen(true);
-                }}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-              {/* Click hint */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                  Click to view full screen
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Full-screen image viewer */}
-        {currentArticle?.imageUrl && (
-          <FullScreenImageViewer
-            src={currentArticle.imageUrl}
-            alt="Quant Fund Workflow Infographic"
-            isOpen={isImageViewerOpen}
-            onClose={() => setIsImageViewerOpen(false)}
-          />
-        )}
-
-        {/* Main Content Starts Here */}
-        <main className="max-w-5xl mx-auto px-6 py-8">
-          <div className="space-y-6">
-            <AlphaGenerationSection Highlight={Highlight} />
-            <PortfolioConstructionSection Highlight={Highlight} />
-            <BacktestingSection Highlight={Highlight} />
-            <ExecutionSection Highlight={Highlight} />
-            <TechnologyStackSection Highlight={Highlight} />
-            <PerpetualChallengeSection Highlight={Highlight} />
-          </div>
-          
-          {/* Call to Action Section */}
-          <div className="mt-8 text-center bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Explore More Quantitative Finance Content
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Dive deeper into systematic trading strategies, risk management techniques, and the latest developments in quantitative finance.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {currentArticle?.googleDoc && (
-                <a 
-                  href={currentArticle.googleDoc}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <FileText className="inline mr-2" />
-                  Read Full Research
-                </a>
-              )}
-              {currentArticle?.podcastUrl && (
-                <a 
-                  href={currentArticle.podcastUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
-                >
-                  <Music className="inline mr-2" />
-                  Listen to Podcast
-                </a>
-              )}
-            </div>
-          </div>
-        </main>
-        <Footer />
       </div>
-    </>
+    </ArticleFrame>
   );
 }
 
 // Section Component Wrapper
-const WorkflowSection = ({ 
-  id, 
-  icon, 
-  title, 
-  subtitle, 
-  children 
+const WorkflowSection = ({
+  id,
+  icon,
+  title,
+  subtitle,
+  children
 }: {
   id: string;
   icon: React.ReactNode;
@@ -186,10 +59,10 @@ const WorkflowSection = ({
 );
 
 // Info Card Component with bullet points
-const InfoCard = ({ 
-  icon, 
-  title, 
-  children 
+const InfoCard = ({
+  icon,
+  title,
+  children
 }: {
   icon: React.ReactNode;
   title: string;
@@ -207,7 +80,7 @@ const InfoCard = ({
 );
 
 // Part 1: Alpha Generation
-const AlphaGenerationSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const AlphaGenerationSection = () => (
   <WorkflowSection
     id="alpha"
     icon={<BrainCircuit className="h-8 w-8 text-blue-600" />}
@@ -224,7 +97,7 @@ const AlphaGenerationSection = ({ Highlight }: { Highlight: React.ComponentType<
 
     <InfoCard icon={<Atom className="h-5 w-5" />} title="Feature Engineering">
       <ul className="list-disc list-inside space-y-2">
-        <li>Raw data is cleaned, normalized, and transformed into meaningful predictive variables known as <Highlight>"alpha factors"</Highlight>.</li>
+        <li>Raw data is cleaned, normalized, and transformed into meaningful predictive variables known as <Highlight>&ldquo;alpha factors&rdquo;</Highlight>.</li>
         <li>Examples include creating momentum indicators, volatility forecasts, or ratios from fundamental data.</li>
         <li>This is often the most time-consuming step, requiring significant <Highlight>domain expertise</Highlight> and creativity.</li>
       </ul>
@@ -234,14 +107,14 @@ const AlphaGenerationSection = ({ Highlight }: { Highlight: React.ComponentType<
       <ul className="list-disc list-inside space-y-2">
         <li>A suite of ML models is tested for predictive power, including <Highlight>XGBoost</Highlight>, LightGBM, and Deep Learning models like <Highlight>LSTMs</Highlight> for time-series.</li>
         <li>Models are rigorously trained on a historical dataset and validated on a separate <Highlight>out-of-sample</Highlight> dataset to prevent <Highlight>overfitting</Highlight>.</li>
-        <li>Techniques like <Highlight>cross-validation</Highlight> are employed to ensure the model's robustness and generalizability to new market data.</li>
+        <li>Techniques like <Highlight>cross-validation</Highlight> are employed to ensure the model&apos;s robustness and generalizability to new market data.</li>
       </ul>
     </InfoCard>
   </WorkflowSection>
 );
 
 // Part 2: Portfolio Construction
-const PortfolioConstructionSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const PortfolioConstructionSection = () => (
   <WorkflowSection
     id="portfolio"
     icon={<Briefcase className="h-8 w-8 text-blue-600" />}
@@ -252,7 +125,7 @@ const PortfolioConstructionSection = ({ Highlight }: { Highlight: React.Componen
       <ul className="list-disc list-inside space-y-2">
         <li>Signals from the model are used to form a <Highlight>market-neutral</Highlight> portfolio.</li>
         <li>Top-ranked assets are bought (<Highlight>long positions</Highlight>), while bottom-ranked assets are sold short (<Highlight>short positions</Highlight>).</li>
-        <li>The goal is to generate returns from stock-picking skill (<Highlight>alpha</Highlight>) regardless of the overall market's direction.</li>
+        <li>The goal is to generate returns from stock-picking skill (<Highlight>alpha</Highlight>) regardless of the overall market&apos;s direction.</li>
       </ul>
     </InfoCard>
 
@@ -267,7 +140,7 @@ const PortfolioConstructionSection = ({ Highlight }: { Highlight: React.Componen
     <InfoCard icon={<Target className="h-5 w-5" />} title="Optimal Position Sizing">
       <ul className="list-disc list-inside space-y-2">
         <li>Position sizes are determined algorithmically based on a set of constraints and objectives.</li>
-        <li>Inputs include the alpha signal's strength, the asset's expected volatility, and its correlation with other assets.</li>
+        <li>Inputs include the alpha signal&apos;s strength, the asset&apos;s expected volatility, and its correlation with other assets.</li>
         <li>Techniques like <Highlight>mean-variance optimization</Highlight> are used to construct the most efficient portfolio possible.</li>
       </ul>
     </InfoCard>
@@ -275,7 +148,7 @@ const PortfolioConstructionSection = ({ Highlight }: { Highlight: React.Componen
 );
 
 // Part 3: Backtesting
-const BacktestingSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const BacktestingSection = () => (
   <WorkflowSection
     id="backtesting"
     icon={<TestTube className="h-8 w-8 text-blue-600" />}
@@ -308,7 +181,7 @@ const BacktestingSection = ({ Highlight }: { Highlight: React.ComponentType<{ ch
 );
 
 // Part 4: Execution
-const ExecutionSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const ExecutionSection = () => (
   <WorkflowSection
     id="execution"
     icon={<Play className="h-8 w-8 text-blue-600" />}
@@ -325,7 +198,7 @@ const ExecutionSection = ({ Highlight }: { Highlight: React.ComponentType<{ chil
 
     <InfoCard icon={<Zap className="h-5 w-5" />} title="Algorithmic Execution">
       <ul className="list-disc list-inside space-y-2">
-        <li>Large "parent" orders are broken into smaller "child" orders to minimize <Highlight>market impact</Highlight>.</li>
+        <li>Large &ldquo;parent&rdquo; orders are broken into smaller &ldquo;child&rdquo; orders to minimize <Highlight>market impact</Highlight>.</li>
         <li>Execution algorithms like <Highlight>VWAP</Highlight> (Volume-Weighted Average Price) and <Highlight>TWAP</Highlight> (Time-Weighted Average Price) are used to trade stealthily.</li>
         <li>More advanced algorithms adapt to market conditions in real-time.</li>
       </ul>
@@ -342,7 +215,7 @@ const ExecutionSection = ({ Highlight }: { Highlight: React.ComponentType<{ chil
 );
 
 // Technology Stack Section
-const TechnologyStackSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const TechnologyStackSection = () => (
   <section id="tech-stack" className="py-4">
     <div className="text-center mb-6">
       <div className="inline-block p-3 bg-blue-100 border border-blue-200 rounded-full mb-3">
@@ -391,7 +264,7 @@ const TechCard = ({ title, children }: { title: string; children: React.ReactNod
 );
 
 // Part 5: The Perpetual Challenge
-const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentType<{ children: React.ReactNode }> }) => (
+const PerpetualChallengeSection = () => (
   <WorkflowSection
     id="challenge"
     icon={<Infinity className="h-8 w-8 text-blue-600" />}
@@ -400,7 +273,7 @@ const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentTy
   >
     <InfoCard icon={<Zap className="h-5 w-5" />} title="Alpha Decay">
       <ul className="list-disc list-inside space-y-2">
-        <li>The core challenge is <Highlight>"alpha decay"</Highlight>—the natural erosion of a strategy's effectiveness as markets adapt.</li>
+        <li>The core challenge is <Highlight>&ldquo;alpha decay&rdquo;</Highlight>&mdash;the natural erosion of a strategy&apos;s effectiveness as markets adapt.</li>
         <li>As signals become well-known or crowded, their predictive power diminishes over time.</li>
         <li>This necessitates a continuous, proactive research effort to find new sources of alpha.</li>
       </ul>
@@ -408,7 +281,7 @@ const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentTy
 
     <InfoCard icon={<Telescope className="h-5 w-5" />} title="The Research Pipeline">
       <ul className="list-disc list-inside space-y-2">
-        <li>Top funds operate as <Highlight>"alpha factories,"</Highlight> with an industrial-grade research and development process.</li>
+        <li>Top funds operate as <Highlight>&ldquo;alpha factories,&rdquo;</Highlight> with an industrial-grade research and development process.</li>
         <li>They build a scalable infrastructure for continuously generating, testing, and deploying new, uncorrelated strategies.</li>
         <li>The focus is on the <Highlight>repeatability of the process</Highlight>, not on a single magic algorithm.</li>
       </ul>
@@ -422,13 +295,4 @@ const PerpetualChallengeSection = ({ Highlight }: { Highlight: React.ComponentTy
       </ul>
     </InfoCard>
   </WorkflowSection>
-);
-
-// Footer Component
-const Footer = () => (
-  <footer className="border-t border-gray-200 mt-20">
-    <div className="max-w-5xl mx-auto px-6 py-8 text-center text-gray-500">
-      <p className="text-sm">&copy; 2025 SOPHIE's Daddy Quant Blog. Educational content for informational purposes only.</p>
-    </div>
-  </footer>
 );

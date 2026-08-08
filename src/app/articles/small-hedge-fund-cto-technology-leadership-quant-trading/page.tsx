@@ -1,16 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import React from 'react';
-import { articles } from '@/data/articles';
-import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-
-// (No sidebar/navigation icons; simplified single-column layout)
+import { ArticleFrame } from '@/components/articles/article-frame';
 
 // --- CONTENT DATA (summary extracted for web) ---
 const contentData = {
-	title: 'The Small Hedge Fund CTO: A Comprehensive Guide',
 	parts: [
 		{
 			partTitle: 'Part I: The Strategic Mandate of the Hedge Fund CTO',
@@ -157,58 +150,17 @@ const ContentSection = ({ section }: { section: any }) => (
 	</div>
 );
 
-// Sidebar removed for a simple, single-column article layout
-
 export default function Page() {
-    const currentArticle = articles.find(a => a.slug === 'small-hedge-fund-cto-technology-leadership-quant-trading');
-
 	return (
-		<>
-			{currentArticle && (
-				<>
-					<StructuredData article={currentArticle} />
-					<BreadcrumbStructuredData articleTitle={currentArticle.title} articleSlug={currentArticle.slug} />
-				</>
-			)}
-            <div className="bg-gray-50 font-sans text-gray-900 antialiased">
-                <main className="p-6 lg:p-12">
-						<div className="max-w-4xl mx-auto">
-							<div className="flex items-center gap-4 mb-4">
-								<Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
-									<ArrowLeft className="mr-2 h-4 w-4" />
-									Return to Home
-								</Link>
-								<span className="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded shadow ml-2">Deep Research</span>
-							</div>
-							<header className="mb-12">
-								<h1 className="text-5xl font-extrabold tracking-tight text-gray-900 mb-2">{contentData.title}</h1>
-								<p className="text-xl text-gray-500">Technology Leadership in Quantitative Trading</p>
-							</header>
-
-							{contentData.parts.map((part: any, partIndex: number) => (
-								<div key={partIndex} className="mb-12">
-									<h2 className="text-sm font-bold text-teal-600 uppercase tracking-widest mb-8 pb-2 border-b-2 border-teal-200">{part.partTitle}</h2>
-									{part.sections.map((section: any) => (
-										<ContentSection key={section.id} section={section} />
-									))}
-								</div>
-							))}
-
-							<div className="text-center mt-12">
-								{currentArticle?.googleDoc && (
-									<a href={currentArticle.googleDoc} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow hover:from-purple-700 hover:to-indigo-700 transition-colors text-lg">Read Full Document</a>
-								)}
-							</div>
-
-							<footer className="mt-24 text-center text-gray-500 text-sm">
-								<p>© 2025 SOPHIE Daddyuant Blog. Educational content for informational purposes only.</p>
-							</footer>
-                        </div>
-                </main>
-			</div>
-		</>
+		<ArticleFrame slug="small-hedge-fund-cto-technology-leadership-quant-trading">
+			{contentData.parts.map((part: any, partIndex: number) => (
+				<div key={partIndex} className="mb-12">
+					<h2 className="text-sm font-bold text-teal-600 uppercase tracking-widest mb-8 pb-2 border-b-2 border-teal-200">{part.partTitle}</h2>
+					{part.sections.map((section: any) => (
+						<ContentSection key={section.id} section={section} />
+					))}
+				</div>
+			))}
+		</ArticleFrame>
 	);
 }
-
-
-

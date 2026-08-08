@@ -44,6 +44,14 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 className="h-full w-full object-contain hover:object-cover transition-all duration-300 cursor-pointer"
                 onClick={() => setIsImageViewerOpen(true)}
                 onError={(e) => {
+                  // Not every video has a maxresdefault thumbnail; hqdefault is effectively always available.
+                  const fallback = displayImageUrl.includes('/maxresdefault.jpg')
+                    ? displayImageUrl.replace('/maxresdefault.jpg', '/hqdefault.jpg')
+                    : null;
+                  if (fallback && e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback;
+                    return;
+                  }
                   e.currentTarget.className = "h-full w-full object-cover hover:object-contain transition-all duration-300 cursor-pointer";
                 }}
               />
