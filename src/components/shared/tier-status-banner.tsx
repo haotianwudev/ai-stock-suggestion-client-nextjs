@@ -7,7 +7,7 @@ import { getTierName, nextLikeMilestone } from "@/lib/tiers";
 import { cn } from "@/lib/utils";
 
 /**
- * Transient "how to rank up" status line -- shows for 3s then fades and
+ * Transient "how to rank up" status line -- shows for 10s then fades and
  * unmounts, re-triggered whenever the underlying profile stats change (e.g.
  * right after a like/subscribe action bumps likedCount or tier).
  */
@@ -18,8 +18,8 @@ export function TierStatusBanner({ profile }: { profile: Profile | null }) {
   useEffect(() => {
     setVisible(true);
     setDismissed(false);
-    const fadeTimer = setTimeout(() => setVisible(false), 3000);
-    const removeTimer = setTimeout(() => setDismissed(true), 3500);
+    const fadeTimer = setTimeout(() => setVisible(false), 10000);
+    const removeTimer = setTimeout(() => setDismissed(true), 10500);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);

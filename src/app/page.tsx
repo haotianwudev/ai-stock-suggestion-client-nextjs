@@ -12,6 +12,7 @@ import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/a
 import { articles } from "@/data/articles";
 import { useUser } from "@/hooks/use-user";
 import { canAccessPremiumContent } from "@/lib/tiers";
+import { InstallAppButton } from "@/components/ui/install-app-button";
 
 // Lazy load heavy components
 const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
@@ -224,6 +225,7 @@ export default function Home() {
                   >
                     {rssCopied ? <Check className="h-4 w-4" /> : <Rss className="h-4 w-4" />}
                   </button>
+                  <InstallAppButton />
                   <span className="mx-1 h-4 w-px bg-border hidden sm:block" />
                   <Link
                     href="/about"
