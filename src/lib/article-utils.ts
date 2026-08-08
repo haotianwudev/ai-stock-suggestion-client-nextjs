@@ -1,5 +1,8 @@
 import { articles } from '@/data/articles';
 import { Article } from '@/data/articles/types';
+import { BaseConfig, ResolvedStudyGuideItem, StudyGuideItem } from '@/components/shared/config-types';
+import { Strategy } from '@/components/options/strategy-config';
+import { extractYouTubeId } from '@/lib/youtube';
 
 /**
  * Shared utility functions for article filtering and processing
@@ -89,6 +92,96 @@ export function getArticleUrl(article: Article, baseUrl: string = 'https://sophi
   }
   // For regular articles, link to the article page
   return `${baseUrl}/articles/${article.slug}`;
+}
+
+// Look up a single article by slug — shared by the study-guide/topic-media resolvers below
+// and anywhere else that needs one article instead of a filtered list.
+export function getArticleBySlug(slug: string): Article | undefined {
+  return articles.find(article => article.slug === slug);
+}
+
+// Resolves a topic's studyGuide item against the article registry: when `articleSlug` is set,
+// url/videoUrl/visualGuideUrl are derived from that article instead of being hand-duplicated in
+// the topic config. Explicit fields on the item still win. Returns null (and warns in dev) for a
+// stale articleSlug so callers can filter it out rather than rendering a broken link.
+export function resolveStudyGuideItem(item: StudyGuideItem): ResolvedStudyGuideItem | null {
+  if (item.articleSlug) {
+    const article = getArticleBySlug(item.articleSlug);
+    if (!article) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(`resolveStudyGuideItem: no article found for articleSlug "${item.articleSlug}"`);
+      }
+      return null;
+    }
+    return {
+      text: item.text ?? article.title,
+      // Always the article page itself (not getArticleUrl's youtube-redirect-for-video-articles
+      // behavior) — matches the convention every existing studyGuide item already used.
+      url: item.url ?? `https://www.sophie-ai-finance.com/articles/${article.slug}`,
+      videoUrl: item.videoUrl ?? article.youtubeUrl,
+      visualGuideUrl: item.visualGuideUrl ?? article.infographicUrl,
+    };
+  }
+
+  if (!item.url) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(`resolveStudyGuideItem: item "${item.text}" has neither articleSlug nor url`);
+    }
+    return null;
+  }
+
+  return {
+    text: item.text ?? '',
+    url: item.url,
+    videoUrl: item.videoUrl,
+    visualGuideUrl: item.visualGuideUrl,
+  };
+}
+
+export function resolveStudyGuideItems(items: StudyGuideItem[]): ResolvedStudyGuideItem[] {
+  return items
+    .map(resolveStudyGuideItem)
+    .filter((item): item is ResolvedStudyGuideItem => item !== null);
+}
+
+// Resolves a topic's hero video/infographic: when `primaryArticleSlug` is set, the fields fall
+// back to that article's youtubeUrl/infographicUrl instead of being hand-duplicated in the config.
+export function resolveTopicMedia(config: BaseConfig): { videoUrl?: string; infographicUrl?: string } {
+  if (!config.primaryArticleSlug) {
+    return { videoUrl: config.videoUrl, infographicUrl: config.infographicUrl };
+  }
+  const article = getArticleBySlug(config.primaryArticleSlug);
+  return {
+    videoUrl: config.videoUrl ?? article?.youtubeUrl,
+    infographicUrl: config.infographicUrl ?? article?.infographicUrl,
+  };
+}
+
+// A topic's "Related Articles" list, derived rather than hand-maintained: every article slug
+// worth showing already appears as primaryArticleSlug or a studyGuide item's articleSlug, so a
+// separate relatedArticles array in the config would just be a third copy of the same list.
+// Order: primaryArticleSlug first (if any), then studyGuide items in their curated order,
+// deduped, dropping any articleSlug that doesn't resolve to a real article.
+export function resolveRelatedArticleSlugs(config: BaseConfig): string[] {
+  const slugs: string[] = [];
+  if (config.primaryArticleSlug) slugs.push(config.primaryArticleSlug);
+  for (const item of config.studyGuide?.items ?? []) {
+    if (item.articleSlug) slugs.push(item.articleSlug);
+  }
+  return [...new Set(slugs)].filter((slug) => getArticleBySlug(slug) !== undefined);
+}
+
+// Same idea as resolveTopicMedia, for options/strategy-config.ts: a strategy's youtubeId/
+// infographicUrl fall back to its primaryArticleSlug's article when not given explicitly.
+export function resolveStrategyMedia(strategy: Strategy): { youtubeId?: string; infographicUrl?: string } {
+  if (!strategy.primaryArticleSlug) {
+    return { youtubeId: strategy.youtubeId, infographicUrl: strategy.infographicUrl };
+  }
+  const article = getArticleBySlug(strategy.primaryArticleSlug);
+  return {
+    youtubeId: strategy.youtubeId ?? (article?.youtubeUrl ? extractYouTubeId(article.youtubeUrl) ?? undefined : undefined),
+    infographicUrl: strategy.infographicUrl ?? article?.infographicUrl,
+  };
 }
 
 // Get article categories (used by RSS, SEO, etc.)

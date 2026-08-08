@@ -8,27 +8,8 @@ import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer"
 import { VideoTutorial } from "@/components/ui/video-tutorial";
 import { StudyGuide } from "@/components/ui/study-guide";
 import { ArticleCard } from "@/components/articles/article-card";
-import { articles } from "@/data/articles";
-
-export interface StudyGuideItem {
-  text: string;
-  url: string;
-  videoUrl?: string;
-  visualGuideUrl?: string;
-}
-
-export interface BaseConfig {
-  id: string;
-  title: string;
-  description: string;
-  videoUrl?: string;
-  infographicUrl?: string;
-  relatedArticles?: string[];
-  studyGuide?: {
-    title?: string;
-    items: StudyGuideItem[];
-  };
-}
+import { resolveStudyGuideItems, resolveTopicMedia, resolveRelatedArticleSlugs, getArticleBySlug } from "@/lib/article-utils";
+import { BaseConfig, ResolvedStudyGuideItem } from "@/components/shared/config-types";
 
 interface PageTemplateProps {
   config?: BaseConfig | null;
@@ -79,22 +60,28 @@ export function PageTemplate({
   showInfographicSection = true,
   showRelatedArticlesSection = true
 }: PageTemplateProps) {
+  const topicMedia = config ? resolveTopicMedia(config) : {};
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const [currentVideoUrl, setCurrentVideoUrl] = useState(config?.videoUrl || '');
-  const [currentInfographicUrl, setCurrentInfographicUrl] = useState(config?.infographicUrl || '');
-  
-  // Get related articles from config or fallback to empty array
-  const relatedArticles = config?.relatedArticles 
-    ? articles.filter(article => config.relatedArticles?.includes(article.slug || ''))
+  const [currentVideoUrl, setCurrentVideoUrl] = useState(topicMedia.videoUrl || '');
+  const [currentInfographicUrl, setCurrentInfographicUrl] = useState(topicMedia.infographicUrl || '');
+
+  // Related articles are derived from primaryArticleSlug + studyGuide, not a separately
+  // maintained list — see resolveRelatedArticleSlugs in lib/article-utils.ts.
+  const relatedArticles = config
+    ? resolveRelatedArticleSlugs(config)
+        .map(getArticleBySlug)
+        .filter((article): article is NonNullable<typeof article> => article !== undefined)
     : [];
 
+  const studyGuideItems = config?.studyGuide ? resolveStudyGuideItems(config.studyGuide.items) : [];
+
   // Handle study guide item selection
-  const handleStudyGuideItemSelect = (item: StudyGuideItem) => {
+  const handleStudyGuideItemSelect = (item: ResolvedStudyGuideItem) => {
     // Update video URL if the item has a custom video
     if (item.videoUrl) {
       setCurrentVideoUrl(item.videoUrl);
     }
-    
+
     // Update infographic URL if the item has a custom visual guide
     if (item.visualGuideUrl) {
       setCurrentInfographicUrl(item.visualGuideUrl);
@@ -103,9 +90,9 @@ export function PageTemplate({
 
   // Reset to default when config changes
   useEffect(() => {
-    setCurrentVideoUrl(config?.videoUrl || '');
-    setCurrentInfographicUrl(config?.infographicUrl || '');
-  }, [config?.videoUrl, config?.infographicUrl]);
+    setCurrentVideoUrl(topicMedia.videoUrl || '');
+    setCurrentInfographicUrl(topicMedia.infographicUrl || '');
+  }, [topicMedia.videoUrl, topicMedia.infographicUrl]);
 
   return (
     <div className="space-y-4 md:space-y-8 px-1 md:px-0">
@@ -154,7 +141,7 @@ export function PageTemplate({
                     <div className="lg:col-span-1 order-2 lg:order-1">
                       <StudyGuide
                         title={config.studyGuide.title || "Study Guide (click to select)"}
-                        items={config.studyGuide.items}
+                        items={studyGuideItems}
                         onItemSelect={handleStudyGuideItemSelect}
                       />
                     </div>

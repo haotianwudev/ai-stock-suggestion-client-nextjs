@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, Layers, TrendingUp, X } from "lucide-react";
 import { articles } from "@/data/articles";
 import { Article, ArticleLabel } from "@/data/articles/types";
 import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data";
@@ -14,6 +14,7 @@ import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
 import { CommentSection } from "@/components/comments/comment-section";
 import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
+import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
 
 interface ArticleFrameProps {
   /** Slug of the article entry in src/data/articles — the frame looks up all metadata from it. */
@@ -211,6 +212,38 @@ function ArticleNavLinks({
       )}
     </div>
   );
+}
+
+// Backlinks into other parts of the site that reference this article (topic curricula, strategy
+// pages) — computed from those configs via getTopicsForArticle/getStrategiesForArticle, so this
+// article doesn't need its own separate "where am I referenced" config. TopicsCard/StrategiesCard
+// below are thin wrappers supplying the icon + label for their respective link set.
+function LinksCard({ icon, label, links }: { icon: React.ElementType; label: string; links: TopicLink[] }) {
+  return (
+    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
+      <SlotKicker icon={icon} label={label} tone="accent" />
+      <div className="flex flex-col gap-2">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="inline-flex items-center justify-between gap-2 text-sm font-medium px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
+          >
+            {link.title}
+            <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TopicsCard({ links }: { links: TopicLink[] }) {
+  return <LinksCard icon={Layers} label="Related Topics" links={links} />;
+}
+
+function StrategiesCard({ links }: { links: TopicLink[] }) {
+  return <LinksCard icon={TrendingUp} label="Related Strategies" links={links} />;
 }
 
 function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () => void }) {
@@ -471,7 +504,11 @@ export function ArticleFrame({
   const hasVideo = Boolean(currentArticle.youtubeUrl);
   const hasPaper = Boolean(currentArticle.googleDoc);
   const hasWiki = !hideWikiTab && Boolean(wikiEntry);
-  const hasPanel = hasVideo || hasPaper || hasWiki;
+  const topicLinks = getTopicsForArticle(currentArticle.slug || slug);
+  const hasTopics = topicLinks.length > 0;
+  const strategyLinks = getStrategiesForArticle(currentArticle.slug || slug);
+  const hasStrategies = strategyLinks.length > 0;
+  const hasPanel = hasVideo || hasPaper || hasWiki || hasTopics || hasStrategies;
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
@@ -553,6 +590,8 @@ export function ArticleFrame({
                     Return to Home
                   </Link>
                   <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
+                  {hasTopics && <TopicsCard links={topicLinks} />}
+                  {hasStrategies && <StrategiesCard links={strategyLinks} />}
                   {hasVideo && <VideoCard youtubeUrl={currentArticle.youtubeUrl!} title={title} />}
                   {hasPaper && (
                     <PaperCard googleDoc={currentArticle.googleDoc!} onExpand={() => setPaperOpen(true)} />

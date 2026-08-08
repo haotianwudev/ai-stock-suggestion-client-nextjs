@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Maximize2 } from 'lucide-react';
-import { strategies, type Strategy, getStrategyDetailComponent } from './strategy-config';
+import { strategies, type Strategy, getStrategyDetailComponent, strategyIdToSlug, slugToStrategyId } from './strategy-config';
 import { articles } from '@/data/articles';
 import { ArticleCard } from '@/components/articles/article-card';
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
+import { resolveStrategyMedia } from '@/lib/article-utils';
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -73,6 +74,7 @@ const PayoffChart = ({ strategy }: { strategy: Strategy }) => {
 
 const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => {
     const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+    const media = resolveStrategyMedia(strategy);
 
     return (
         <div className="animate-fade-in">
@@ -109,7 +111,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
 
             {/* Payoff Diagram and Video Section */}
             {(() => {
-                const hasVideo = strategy.youtubeId;
+                const hasVideo = media.youtubeId;
 
                 if (hasVideo) {
                     return (
@@ -143,7 +145,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                 <div className="relative w-full h-[280px] md:h-[350px] bg-gray-50 rounded-lg overflow-hidden">
                                     <iframe
                                         className="absolute top-0 left-0 w-full h-full"
-                                        src={`https://www.youtube.com/embed/${strategy.youtubeId}`}
+                                        src={`https://www.youtube.com/embed/${media.youtubeId}`}
                                         title={`${strategy.name} Tutorial`}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
@@ -178,14 +180,14 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             })()}
 
             {/* Infographic Section - Display if available */}
-            {strategy.infographicUrl && (
+            {media.infographicUrl && (
                 <section className="mb-6">
-                    <div 
+                    <div
                         className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
                         onClick={() => setIsImageViewerOpen(true)}
                     >
-                        <img 
-                            src={strategy.infographicUrl} 
+                        <img
+                            src={media.infographicUrl}
                             alt={`${strategy.name} Strategy Infographic`} 
                             className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
                         />
@@ -255,9 +257,9 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             })()}
 
             {/* Full-screen image viewer */}
-            {strategy.infographicUrl && (
+            {media.infographicUrl && (
                 <FullScreenImageViewer
-                    src={strategy.infographicUrl}
+                    src={media.infographicUrl}
                     alt={`${strategy.name} Strategy Infographic`}
                     isOpen={isImageViewerOpen}
                     onClose={() => setIsImageViewerOpen(false)}
@@ -265,16 +267,6 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             )}
         </div>
     );
-};
-
-// Convert strategy ID to URL slug
-const strategyIdToSlug = (id: string): string => {
-    return id.replace(/_/g, '-');
-};
-
-// Convert URL slug to strategy ID
-const slugToStrategyId = (slug: string): string => {
-    return slug.replace(/-/g, '_');
 };
 
 interface StrategyExplorerProps {

@@ -3,13 +3,7 @@
 import { BookOpen, ExternalLink, FileText, Play, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
-interface StudyGuideItem {
-  text: string;
-  url: string;
-  videoUrl?: string;
-  visualGuideUrl?: string;
-}
+import { ResolvedStudyGuideItem as StudyGuideItem } from "@/components/shared/config-types";
 
 interface StudyGuideProps {
   title?: string;

@@ -3,101 +3,69 @@ import { BaseConfig, StudyGuideItem } from "@/components/shared/config-types";
 export interface TopicConfig extends BaseConfig {}
 
 export const topicsConfig: Record<string, TopicConfig> = {
-  'option101': {
-    id: 'option101',
-    title: 'Options 101',
-    description: 'Understand the key scenarios where options can be an effective trading and investment tool.',
-    videoUrl: 'https://youtu.be/brQbdu19cbw',
-    infographicUrl: "https://i.imgur.com/ln9KdrO.jpeg",
-    relatedArticles: [
-      "strategic-options-utilization-risk-comprehensive-framework",
-      "navigating-minefield-options-trading-pitfalls",
-      "options-strategy-report-october-10-market-event",
-      "tax-efficient-option-writing-comprehensive-guide",
-      "decoding-options-market-volume-open-interest-analysis",
-      "sp500-inclusion-anomaly-december-2025-deep-research",
-      "navigating-bull-to-bear-regime-shift-quantitative-signals",
-    ],
+  "option101": {
+    id: "option101",
+    title: "Options 101",
+    description: "Understand the key scenarios where options can be an effective trading and investment tool.",
+    primaryArticleSlug: "strategic-options-utilization-risk-comprehensive-framework",
     studyGuide: {
       items: [
         {
           text: "When to Trade, and When NOT to Trade",
-          url: "https://www.sophie-ai-finance.com/articles/strategic-options-utilization-risk-comprehensive-framework",
-          videoUrl: "https://youtu.be/brQbdu19cbw",
-          visualGuideUrl: "https://i.imgur.com/ln9KdrO.jpeg",
+          articleSlug: "strategic-options-utilization-risk-comprehensive-framework",
         },
         {
           text: "Common Pitfalls of Trading Options",
-          url: "https://www.sophie-ai-finance.com/articles/navigating-minefield-options-trading-pitfalls",
-          videoUrl: "https://youtu.be/IvWGgDNQoUk",
-          visualGuideUrl: "https://i.imgur.com/Sbugskc.jpeg",
+          articleSlug: "navigating-minefield-options-trading-pitfalls",
         },
         {
           text: "Option Strategies for Market Shock",
-          url: "https://www.sophie-ai-finance.com/articles/options-strategy-report-october-10-market-event",
-          videoUrl: "https://youtu.be/UTPVKLS87zg",
-          visualGuideUrl: "https://i.imgur.com/pM6d7Cb.jpeg",
+          articleSlug: "options-strategy-report-october-10-market-event",
         },
         {
           text: "Tax-Efficient Option Writing and Common Pitfalls",
-          url: "https://www.sophie-ai-finance.com/articles/tax-efficient-option-writing-comprehensive-guide",
-          videoUrl: "https://youtu.be/PkibBIsGHzk",
-          visualGuideUrl: "https://i.imgur.com/SlyV2Jv.jpeg",
+          articleSlug: "tax-efficient-option-writing-comprehensive-guide",
         },
         {
           text: "Option Volume and Open Interest (OI)",
-          url: "https://www.sophie-ai-finance.com/articles/decoding-options-market-volume-open-interest-analysis",
-          videoUrl: "https://youtu.be/DOhaPf3eJXM",
-          visualGuideUrl: "https://i.imgur.com/asowAEM.jpeg",
+          articleSlug: "decoding-options-market-volume-open-interest-analysis",
         },
         {
           text: "Index Inclusion",
-          url: "https://www.sophie-ai-finance.com/articles/sp500-inclusion-anomaly-december-2025-deep-research",
-          videoUrl: "https://youtu.be/IMS-1JMTbc0",
-          visualGuideUrl: "https://i.imgur.com/tJfTSLl.jpeg",
+          articleSlug: "sp500-inclusion-anomaly-december-2025-deep-research",
         },
         {
           text: "Barchart Option Chain",
-          url: "https://www.barchart.com/stocks/quotes/$SPX/options"
+          url: "https://www.barchart.com/stocks/quotes/$SPX/options",
         },
         {
           text: "Yahoo Finance Option Chain",
-          url: "https://finance.yahoo.com/quote/%5ESPX/options/"
+          url: "https://finance.yahoo.com/quote/%5ESPX/options/",
         },
         {
           text: "Bull-to-Bear Regime Shift",
-          url: "https://www.sophie-ai-finance.com/articles/navigating-bull-to-bear-regime-shift-quantitative-signals",
-          videoUrl: "https://youtu.be/A16B5cx3_yc",
-          visualGuideUrl: "https://i.imgur.com/zwJ2vHQ.jpeg",
+          articleSlug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
         },
       ]
     }
   },
-  
-  'greeks': {
-    id: 'greeks',
-    title: 'Option Greeks',
-    description: 'Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.',
-    videoUrl: 'https://youtu.be/ZLUeCSLgw3Y',
+
+  "greeks": {
+    id: "greeks",
+    title: "Option Greeks",
+    description: "Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.",
+    videoUrl: "https://youtu.be/ZLUeCSLgw3Y",
     infographicUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
-    relatedArticles: [
-      "option-greeks-traders-poetic-guide-risk",
-      "black-scholes-analytics-laboratory-axioms-option-pricing",
-      "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
-    ],
     studyGuide: {
       items: [
         {
           text: "How to understand Greeks",
-          url: "https://www.sophie-ai-finance.com/articles/option-greeks-traders-poetic-guide-risk",
-          videoUrl: "https://youtu.be/ZLUeCSLgw3Y",
-          visualGuideUrl: "https://i.imgur.com/Fre6XfJ.jpeg"
+          articleSlug: "option-greeks-traders-poetic-guide-risk",
+          visualGuideUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
         },
         {
           text: "Black Scholes Model and Risk Neutral Pricing",
-          url: "https://www.sophie-ai-finance.com/articles/black-scholes-analytics-laboratory-axioms-option-pricing",
-          videoUrl: "https://youtu.be/BfU9H60nepI",
-          visualGuideUrl: "https://i.imgur.com/VVQWBaJ.jpeg"
+          articleSlug: "black-scholes-analytics-laboratory-axioms-option-pricing",
         },
         {
           text: "Barchart Volatility & Greeks",
@@ -105,130 +73,85 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
         {
           text: "Risk-Neutral Densities",
-          url: "https://www.sophie-ai-finance.com/articles/unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
-          videoUrl: "https://youtu.be/KG66_1FnRSg",
-          visualGuideUrl: "https://i.imgur.com/LniOyTx.jpeg",
-        },
-      ]
-    }
-  },
-  
-  'volatility': {
-    id: 'volatility',
-    title: 'Volatility',
-    description: 'Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.',
-    videoUrl: 'https://youtu.be/p8nblr4NyNc',
-    relatedArticles: [
-      "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
-      "vix-index-comprehensive-guide-market-volatility",
-      "quantitative-analyst-guide-volatility-forecasting",
-      "industrialization-volatility-hedge-funds-operational-architecture",
-      "decoding-reversal-nvidia-february-2026-earnings-paradox",
-      "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
-      "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
-      "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
-      "mathematics-microstructure-cboe-vix",
-    ],
-    studyGuide: {
-      items: [
-        {
-          text: "The Volatility Smile",
-          url: "https://www.sophie-ai-finance.com/articles/volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
-          videoUrl: "https://youtu.be/p8nblr4NyNc",
-          visualGuideUrl: "https://i.imgur.com/vBYRuhI.jpeg"
-        },
-        {
-          text: "The VIX Index",
-          url: "https://www.sophie-ai-finance.com/articles/vix-index-comprehensive-guide-market-volatility",
-          videoUrl: "https://youtu.be/_NDyPBYkZxg",
-          visualGuideUrl: "https://i.imgur.com/cKQBMh7.jpeg"
-        },
-        {
-          text: "Volatility Skew",
-          url: "https://www.sophie-ai-finance.com/articles/quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
-          videoUrl: "https://youtu.be/2LL3GzaFPWw",
-          visualGuideUrl: "https://i.imgur.com/l4YH9xQ.jpeg",
-        },
-        {
-          text: "Using Machine Learning to Predict Volatility",
-          url: "https://www.sophie-ai-finance.com/articles/quantitative-analyst-guide-volatility-forecasting",
-          videoUrl: "https://youtu.be/zLKCTVTfvo4",
-          visualGuideUrl: "https://i.imgur.com/EE4Ch15.jpeg",
-        },
-        {
-          text: "Volatility Hedge Fund",
-          url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
-          videoUrl: "https://youtu.be/B4tJwZriwdY",
-          visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
-        },
-        {
-          text: "Example: NVDA IV Crush and Gamma Flip",
-          url: "https://www.sophie-ai-finance.com/articles/decoding-reversal-nvidia-february-2026-earnings-paradox",
-          videoUrl: "https://youtu.be/vuTmzLnjfYc",
-          visualGuideUrl: "https://i.imgur.com/ZmUUSF8.jpeg",
-        },
-        {
-          text: "Yahoo Finance VIX Chart",
-          url: "https://finance.yahoo.com/quote/%5EVIX/"
-        },
-        {
-          text: "Barchart Volatility Charts",
-          url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts"
-        },
-        {
-          text: "Option Volatility Modeling: SVI, Dupire and Heston",
-          url: "https://www.sophie-ai-finance.com/articles/option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
-          videoUrl: "https://youtu.be/EjaO4UaVLJA",
-          visualGuideUrl: "https://i.imgur.com/UAZud6k.jpeg",
-        },
-        {
-          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
-          url: "https://www.sophie-ai-finance.com/articles/sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
-          videoUrl: "https://youtu.be/LgSXvwCOy0o",
-          visualGuideUrl: "https://i.imgur.com/mdZbOrt.jpeg",
-        },
-        {
-          text: "The Mathematics & Microstructure of the Cboe VIX",
-          url: "https://www.sophie-ai-finance.com/articles/mathematics-microstructure-cboe-vix",
-          videoUrl: "https://youtu.be/IXumgPJ5D-A",
-          visualGuideUrl: "https://i.imgur.com/7aefF0v.jpeg",
+          articleSlug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
         },
       ]
     }
   },
 
-  'vrp': {
-    id: 'vrp',
-    title: 'Volatility Risk Premium (VRP)',
-    description: 'Understanding the systematic edge in options markets where implied volatility consistently overstates realized volatility.',
-    videoUrl: 'https://youtu.be/eHu9X04D7Ss',
-    infographicUrl: 'https://i.imgur.com/ZSPRHKw.jpeg',
-    relatedArticles: [
-      'demystifying-volatility-risk-premium-theory-measurement-trading',
-      "mastering-volatility-risk-premium-spx-options-selling",
-      "industrialization-volatility-hedge-funds-operational-architecture",
-      "decomposing-volatility-risk-premium-structural-arbitrage",
-      "mastering-spx-option-selling-strategies-variance-risk-premium",
-    ],
+  "volatility": {
+    id: "volatility",
+    title: "Volatility",
+    description: "Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.",
+    primaryArticleSlug: "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
+    studyGuide: {
+      items: [
+        {
+          text: "The Volatility Smile",
+          articleSlug: "volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage",
+        },
+        {
+          text: "The VIX Index",
+          articleSlug: "vix-index-comprehensive-guide-market-volatility",
+        },
+        {
+          text: "Volatility Skew",
+          articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+        },
+        {
+          text: "Using Machine Learning to Predict Volatility",
+          articleSlug: "quantitative-analyst-guide-volatility-forecasting",
+        },
+        {
+          text: "Volatility Hedge Fund",
+          articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
+        },
+        {
+          text: "Example: NVDA IV Crush and Gamma Flip",
+          articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
+        },
+        {
+          text: "Yahoo Finance VIX Chart",
+          url: "https://finance.yahoo.com/quote/%5EVIX/",
+        },
+        {
+          text: "Barchart Volatility Charts",
+          url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
+        },
+        {
+          text: "Option Volatility Modeling: SVI, Dupire and Heston",
+          articleSlug: "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
+        },
+        {
+          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+          articleSlug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
+        },
+        {
+          text: "The Mathematics & Microstructure of the Cboe VIX",
+          articleSlug: "mathematics-microstructure-cboe-vix",
+        },
+      ]
+    }
+  },
+
+  "vrp": {
+    id: "vrp",
+    title: "Volatility Risk Premium (VRP)",
+    description: "Understanding the systematic edge in options markets where implied volatility consistently overstates realized volatility.",
+    primaryArticleSlug: "demystifying-volatility-risk-premium-theory-measurement-trading",
     studyGuide: {
       items: [
         {
           text: "VRP Deep Dive Analysis",
-          url: "https://www.sophie-ai-finance.com/articles/demystifying-volatility-risk-premium-theory-measurement-trading",
-          videoUrl: "https://youtu.be/eHu9X04D7Ss",
-          visualGuideUrl: "https://i.imgur.com/ZSPRHKw.jpeg"
+          articleSlug: "demystifying-volatility-risk-premium-theory-measurement-trading",
         },
         {
           text: "VRP on SPX",
-          url: "https://www.sophie-ai-finance.com/articles/mastering-volatility-risk-premium-spx-options-selling",
-          videoUrl: "https://youtu.be/yThUZBJWKPM",
-          visualGuideUrl: "https://i.imgur.com/Iz7lSu4.jpeg"
+          articleSlug: "mastering-volatility-risk-premium-spx-options-selling",
         },
         {
           text: "Volatility Hedge Fund",
-          url: "https://www.sophie-ai-finance.com/articles/industrialization-volatility-hedge-funds-operational-architecture",
-          videoUrl: "https://youtu.be/B4tJwZriwdY",
-          visualGuideUrl: "https://i.imgur.com/a3KxgF2.jpeg",
+          articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
         },
         {
           text: "Barchart Historical vs Implied Volatility",
@@ -236,52 +159,36 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
         {
           text: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
-          url: "https://www.sophie-ai-finance.com/articles/decomposing-volatility-risk-premium-structural-arbitrage",
-          videoUrl: "https://youtu.be/tP1HJuVzuZU",
-          visualGuideUrl: "https://i.imgur.com/R0dykvd.jpeg",
+          articleSlug: "decomposing-volatility-risk-premium-structural-arbitrage",
         },
         {
           text: "Mastering SPX Option Selling Strategies: A Quantitative Guide to Harvesting the Variance Risk Premium",
-          url: "https://www.sophie-ai-finance.com/articles/mastering-spx-option-selling-strategies-variance-risk-premium",
-          videoUrl: "https://youtu.be/uWmPazdgV4Q",
-          visualGuideUrl: "https://i.imgur.com/ihkmf5U.jpeg",
+          articleSlug: "mastering-spx-option-selling-strategies-variance-risk-premium",
         },
       ]
     }
   },
 
-  'gex': {
-    id: 'gex',
-    title: 'Gamma Exposure (GEX)',
-    description: 'Understanding how market makers\' gamma exposure influences market volatility and price movements, creating predictable trading patterns.',
-    videoUrl: 'https://youtu.be/t_5yWuxn0WY',
-    infographicUrl: 'https://i.imgur.com/4FiUTqH.jpeg',
-    relatedArticles: [
-      "gamma-exposure-gex-gps-market-volatility",
-      "microstructure-intraday-option-speculation-mechanics-strategies-risks",
-      "decoding-reversal-nvidia-february-2026-earnings-paradox",
-      "dark-index-dix-understanding-short-is-long-market-microstructure",
-      "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
-    ],
+  "gex": {
+    id: "gex",
+    title: "Gamma Exposure (GEX)",
+    description: "Understanding how market makers' gamma exposure influences market volatility and price movements, creating predictable trading patterns.",
+    videoUrl: "https://youtu.be/t_5yWuxn0WY",
+    infographicUrl: "https://i.imgur.com/4FiUTqH.jpeg",
     studyGuide: {
       items: [
         {
           text: "GEX and Market Volatility Analysis",
-          url: "https://www.sophie-ai-finance.com/articles/gamma-exposure-gex-gps-market-volatility",
-          videoUrl: "https://youtu.be/t_5yWuxn0WY",
-          visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg"
+          articleSlug: "gamma-exposure-gex-gps-market-volatility",
+          visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg",
         },
         {
           text: "0DTE",
-          url: "https://www.sophie-ai-finance.com/articles/microstructure-intraday-option-speculation-mechanics-strategies-risks",
-          videoUrl: "https://youtu.be/94XcRcFfnxo",
-          visualGuideUrl: "https://i.imgur.com/vQoeqIu.jpeg",
+          articleSlug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
         },
         {
           text: "Example: NVDA IV Crush and Gamma Flip",
-          url: "https://www.sophie-ai-finance.com/articles/decoding-reversal-nvidia-february-2026-earnings-paradox",
-          videoUrl: "https://youtu.be/vuTmzLnjfYc",
-          visualGuideUrl: "https://i.imgur.com/ZmUUSF8.jpeg",
+          articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
         },
         {
           text: "Barchart GEX viewer",
@@ -289,61 +196,42 @@ export const topicsConfig: Record<string, TopicConfig> = {
         },
         {
           text: "The Dark Index (DIX)",
-          url: "https://www.sophie-ai-finance.com/articles/dark-index-dix-understanding-short-is-long-market-microstructure",
-          videoUrl: "https://youtu.be/f5yZ7wdjEOY",
-          visualGuideUrl: "https://i.imgur.com/yLBeGqi.jpeg",
+          articleSlug: "dark-index-dix-understanding-short-is-long-market-microstructure",
         },
         {
           text: "What happened in Markets Plunge?",
-          url: "https://www.sophie-ai-finance.com/articles/anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
-          videoUrl: "https://youtu.be/o9cu-VKCgY4",
-          visualGuideUrl: "https://i.imgur.com/sjnGt0w.jpeg",
+          articleSlug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
         },
       ]
     }
   },
 
-  'roll': {
-    id: 'roll',
-    title: 'Rolling Options',
-    description: 'Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers and Greeks-based decision making.',
-    videoUrl: 'https://youtu.be/q5FSpOKtcFM',
-    infographicUrl: 'https://i.imgur.com/yDVJgI0.jpeg',
-    relatedArticles: [
-      "strategic-framework-rolling-options-quantitative-approach",
-      "advanced-option-rolling-mechanics",
-      "optimal-early-exercise-american-call-options-dividend-stocks",
-      "kelly-criterion-optimal-position-sizing-information-theory",
-    ],
+  "roll": {
+    id: "roll",
+    title: "Rolling Options",
+    description: "Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers and Greeks-based decision making.",
+    primaryArticleSlug: "strategic-framework-rolling-options-quantitative-approach",
     studyGuide: {
       items: [
         {
           text: "Strategic Framework for Rolling Options",
-          url: "https://www.sophie-ai-finance.com/articles/strategic-framework-rolling-options-quantitative-approach",
-          videoUrl: "https://youtu.be/q5FSpOKtcFM",
-          visualGuideUrl: "https://i.imgur.com/yDVJgI0.jpeg"
+          articleSlug: "strategic-framework-rolling-options-quantitative-approach",
         },
         {
           text: "Advanced Option Rolling Mechanics",
-          url: "https://www.sophie-ai-finance.com/articles/advanced-option-rolling-mechanics",
-          videoUrl: "https://youtu.be/2L_UPaxTy_c",
-          visualGuideUrl: "https://i.imgur.com/ORf3wI2.jpeg",
+          articleSlug: "advanced-option-rolling-mechanics",
         },
         {
           text: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
-          url: "https://www.sophie-ai-finance.com/articles/optimal-early-exercise-american-call-options-dividend-stocks",
-          videoUrl: "https://youtu.be/v8iVbeIxVRc",
-          visualGuideUrl: "https://i.imgur.com/yYUhUcF.jpeg",
+          articleSlug: "optimal-early-exercise-american-call-options-dividend-stocks",
         },
         {
           text: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
-          url: "https://www.sophie-ai-finance.com/articles/kelly-criterion-optimal-position-sizing-information-theory",
-          videoUrl: "https://youtu.be/lLaqaSzIlP4",
-          visualGuideUrl: "https://i.imgur.com/m9AINNC.jpeg",
+          articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
         },
       ]
     }
-  }
+  },
 };
 
 export function getTopicConfig(topicId: string): TopicConfig | null {
