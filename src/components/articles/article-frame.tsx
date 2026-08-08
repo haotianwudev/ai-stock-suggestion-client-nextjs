@@ -15,6 +15,7 @@ import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/w
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
 import { CommentSection } from "@/components/comments/comment-section";
+import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
 import { useUser } from "@/hooks/use-user";
 import { getTierName, tierUnlockMessage } from "@/lib/tiers";
@@ -683,7 +684,13 @@ export function ArticleFrame({
           <CurrentArticleContext.Provider value={currentArticle}>
             {hasPanel ? (
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-                <article>{children}</article>
+                <article>
+                  {hasVideo ? (
+                    <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
+                  ) : (
+                    children
+                  )}
+                </article>
                 <aside className="lg:sticky lg:top-24 space-y-4">
                   <Link
                     href="/"
