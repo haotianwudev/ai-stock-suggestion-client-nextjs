@@ -250,16 +250,20 @@ export default function Home() {
                 <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-64" />}>
                   <DynamicClockWidget />
                 </Suspense>
-                <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-24" />}>
-                  <DynamicTrendingWidget />
-                </Suspense>
-                {showStockData ? (
-                  <Suspense fallback={<CompactStockSkeleton />}>
-                    <DynamicApolloComponents compact />
+                <div className="hidden sm:block">
+                  <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-24" />}>
+                    <DynamicTrendingWidget />
                   </Suspense>
-                ) : (
-                  <CompactStockSkeleton />
-                )}
+                </div>
+                <div className="hidden sm:block">
+                  {showStockData ? (
+                    <Suspense fallback={<CompactStockSkeleton />}>
+                      <DynamicApolloComponents compact />
+                    </Suspense>
+                  ) : (
+                    <CompactStockSkeleton />
+                  )}
+                </div>
               </div>
             </div>
           </div>
