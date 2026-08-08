@@ -379,6 +379,7 @@ export const ME = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      likedCount
       tier
     }
   }
@@ -392,6 +393,7 @@ export const UPDATE_PROFILE = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      likedCount
       tier
     }
   }
@@ -405,8 +407,37 @@ export const SET_YOUTUBE_SUBSCRIBED = gql`
       displayName
       avatarUrl
       youtubeSubscribed
+      likedCount
       tier
     }
+  }
+`;
+
+export const MY_LIKED_ARTICLES = gql`
+  query MyLikedArticles {
+    myLikedArticleSlugs
+  }
+`;
+
+export const MY_BOOKMARKED_ARTICLES = gql`
+  query MyBookmarkedArticles {
+    myBookmarkedArticleSlugs
+  }
+`;
+
+export const ATTEST_LIKED = gql`
+  mutation AttestLiked($articleSlug: String!) {
+    attestLiked(articleSlug: $articleSlug) {
+      wasNewLike
+      likedCount
+      tier
+    }
+  }
+`;
+
+export const TOGGLE_BOOKMARK = gql`
+  mutation ToggleBookmark($articleSlug: String!) {
+    toggleBookmark(articleSlug: $articleSlug)
   }
 `;
 

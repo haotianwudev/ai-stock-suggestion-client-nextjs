@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTopicConfig } from '../../topics/config';
 import StockTabClient from '../../trending/client';
 
-const validSubtopics = ['macro-analysis', 'wealth-planning', 'finance-101'];
+const validSubtopics = ['macro-analysis', 'wealth-planning', 'finance-101', 'books'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;

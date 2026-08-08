@@ -333,6 +333,12 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
       ]
     }
   },
+
+  "books": {
+    id: "books",
+    title: "Books",
+    description: "Curated summaries of quant-focused books — systematic trading, factor investing, and quantitative research, distilled from cover to cover. Coming soon.",
+  },
 };
 
 export function getQuantTopicConfig(topicId: string): QuantTopicConfig | null {

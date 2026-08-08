@@ -32,6 +32,7 @@ export const isAdminConfigured = Boolean(
 
 export interface AdminUser {
   id: string;
+  email: string | null;
   display_name: string | null;
   avatar_url: string | null;
   tier: number;

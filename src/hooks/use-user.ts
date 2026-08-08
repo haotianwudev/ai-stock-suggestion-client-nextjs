@@ -14,6 +14,7 @@ export interface Profile {
   displayName: string | null;
   avatarUrl: string | null;
   youtubeSubscribed: boolean;
+  likedCount: number;
   tier: number;
 }
 
@@ -60,6 +61,7 @@ export function useUser() {
         null,
       avatarUrl: me?.avatarUrl ?? DEFAULT_AVATAR_URL,
       youtubeSubscribed: me?.youtubeSubscribed ?? false,
+      likedCount: me?.likedCount ?? 0,
       tier: me?.tier ?? 1,
     };
   }

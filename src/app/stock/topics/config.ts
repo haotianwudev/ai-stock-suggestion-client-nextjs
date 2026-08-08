@@ -297,17 +297,13 @@ export const topicsConfig: Record<string, TopicConfig> = {
   "finance-101": {
     id: "finance-101",
     title: "Finance 101",
-    description: "Foundational finance for every investor — trading psychology, market structure and manipulation, ESG and prediction markets, an introduction to crypto, and the classic books every investor should read.",
+    description: "Foundational finance for every investor — trading psychology, market structure and manipulation, ESG and prediction markets, and an introduction to crypto.",
     primaryArticleSlug: "prediction-markets-financialization-truth-complete-trading-guide",
     studyGuide: {
       items: [
         {
           text: "Prediction Markets",
           articleSlug: "prediction-markets-financialization-truth-complete-trading-guide",
-        },
-        {
-          text: "The Phantom Trader",
-          articleSlug: "gift-phantom-trader-psychology-winning-through-losing",
         },
         {
           text: "The Meme Stock Phenomenon",
@@ -337,13 +333,28 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "Guide to Stablecoins",
           articleSlug: "investors-guide-stablecoins-profiting-digital-dollars",
         },
+      ]
+    }
+  },
+
+  "books": {
+    id: "books",
+    title: "Books",
+    description: "Curated summaries of the books worth actually reading — trading psychology, behavioral investing, and personal finance, distilled from cover to cover.",
+    primaryArticleSlug: "gift-phantom-trader-psychology-winning-through-losing",
+    studyGuide: {
+      items: [
         {
-          text: "Fooled by Randomness",
-          articleSlug: "fooled-by-randomness-book-summary",
+          text: "The Phantom Trader (Jan 2026)",
+          articleSlug: "gift-phantom-trader-psychology-winning-through-losing",
         },
         {
           text: "The Little Book of Behavioral Investing",
           articleSlug: "little-book-behavioral-investing-summary",
+        },
+        {
+          text: "Fooled by Randomness",
+          articleSlug: "fooled-by-randomness-book-summary",
         },
         {
           text: "Rich Dad, Poor Dad",

@@ -7,12 +7,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
+import { useState } from "react";
 import { useUser } from "@/hooks/use-user";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { getTierName } from "@/lib/tiers";
+import { getTierName, tierUnlockMessage } from "@/lib/tiers";
 import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
+import { TierUpDialog } from "@/components/shared/tier-up-dialog";
+import { TierStatusBanner } from "@/components/shared/tier-status-banner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -28,6 +31,7 @@ type FormValues = z.infer<typeof schema>;
 
 export function ProfileSettingsClient() {
   const { user, profile, loading } = useUser();
+  const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [updateProfile, { loading: saving }] = useMutation<{ updateProfile: MeResult }>(
     UPDATE_PROFILE,
     { refetchQueries: [{ query: ME }] }
@@ -84,8 +88,21 @@ export function ProfileSettingsClient() {
 
   const toggleYoutubeSubscribed = async (subscribed: boolean) => {
     try {
-      await setYoutubeSubscribed({ variables: { subscribed } });
-      toast.success(subscribed ? "Thanks for subscribing!" : "Updated.");
+      const prevTier = profile?.tier ?? 1;
+      const { data } = await setYoutubeSubscribed({ variables: { subscribed } });
+      if (!subscribed) {
+        toast.success("Updated.");
+        return;
+      }
+      const newTier = data?.setYoutubeSubscribed.tier ?? prevTier;
+      if (newTier > prevTier) {
+        setCongrats({
+          title: `You're now ${getTierName(newTier)}!`,
+          description: tierUnlockMessage(newTier) ?? "Keep it up!",
+        });
+      } else {
+        setCongrats({ title: "Thanks for subscribing!", description: "We really appreciate it." });
+      }
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong.");
     }
@@ -98,6 +115,7 @@ export function ProfileSettingsClient() {
           Profile settings
           <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>
         </CardTitle>
+        <TierStatusBanner profile={profile} />
       </CardHeader>
       <CardContent>
         <form onSubmit={submit} className="space-y-6">
@@ -161,8 +179,18 @@ export function ProfileSettingsClient() {
               </span>
             </span>
           </label>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Liked {profile?.likedCount ?? 0} video{(profile?.likedCount ?? 0) === 1 ? "" : "s"} on YouTube —
+            hit the &quot;Like on YouTube&quot; button on any article to rank up further.
+          </p>
         </div>
       </CardContent>
+      <TierUpDialog
+        open={!!congrats}
+        onOpenChange={(open) => !open && setCongrats(null)}
+        title={congrats?.title ?? ""}
+        description={congrats?.description ?? ""}
+      />
     </Card>
   );
 }

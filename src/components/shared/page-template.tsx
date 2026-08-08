@@ -10,7 +10,7 @@ import { StudyGuide } from "@/components/ui/study-guide";
 import { ArticleCard } from "@/components/articles/article-card";
 import { resolveStudyGuideItems, resolveTopicMedia, resolveRelatedArticleSlugs, getArticleBySlug } from "@/lib/article-utils";
 import { BaseConfig, ResolvedStudyGuideItem } from "@/components/shared/config-types";
-import { TopicAccessGate, FREE_TOPIC_IDS } from "@/components/shared/topic-access-gate";
+import { TopicAccessGate, FREE_TOPIC_IDS, PREMIUM_TOPIC_IDS } from "@/components/shared/topic-access-gate";
 
 interface PageTemplateProps {
   config?: BaseConfig | null;
@@ -78,6 +78,9 @@ export function PageTemplate({
 
   // Every topic is tier-2-gated except one free preview per section (see FREE_TOPIC_IDS).
   const isGatedTopic = !!config?.id && !FREE_TOPIC_IDS.includes(config.id);
+  // Premium topics (see PREMIUM_TOPIC_IDS) are held to a stricter tier-4-only bar with no
+  // self-attest bypass — always gated regardless of FREE_TOPIC_IDS.
+  const isPremiumTopic = !!config?.id && PREMIUM_TOPIC_IDS.includes(config.id);
 
   // Handle study guide item selection
   const handleStudyGuideItemSelect = (item: ResolvedStudyGuideItem) => {
@@ -121,7 +124,7 @@ export function PageTemplate({
         </CardHeader>
         
         <CardContent className="space-y-4 md:space-y-6 px-2 md:px-6">
-        <TopicAccessGate enabled={isGatedTopic}>
+        <TopicAccessGate enabled={isGatedTopic || isPremiumTopic} strictTierOnly={isPremiumTopic}>
         <>
           {/* Key Concepts */}
           {showKeyConceptsSection && keyConceptsItems.length > 0 && (
@@ -216,7 +219,7 @@ export function PageTemplate({
 
       {/* Related Articles */}
       {showRelatedArticlesSection && relatedArticles.length > 0 && (
-        <TopicAccessGate enabled={isGatedTopic}>
+        <TopicAccessGate enabled={isGatedTopic || isPremiumTopic} strictTierOnly={isPremiumTopic}>
           {customRelatedArticlesComponent || (
             <Card className="mx-1 md:mx-0">
               <CardHeader className="px-2 md:px-6">

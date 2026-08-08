@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
-const validSubtopics = ['option101', 'greeks', 'volatility', 'vrp', 'gex', 'roll'];
+const validSubtopics = ['option101', 'greeks', 'volatility', 'vrp', 'gex', 'roll', 'books'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -41,6 +41,11 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       title: 'Rolling Options Strategy',
       description: 'Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers.',
       keywords: ['rolling options', 'options management', 'defensive rolling', 'offensive rolling', 'options repair', 'Greeks triggers'],
+    },
+    books: {
+      title: 'Options Books',
+      description: 'Curated summaries of options-focused books — trading mindset, and strategy-specific deep dives like the Iron Condor and diagonal spreads, distilled from cover to cover.',
+      keywords: ['options books', 'iron condor book', 'options trading psychology', 'diagonal spread', 'book summary'],
     },
   };
 

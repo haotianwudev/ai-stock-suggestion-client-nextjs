@@ -33,3 +33,42 @@ export const MIN_TOPIC_TIER = 2;
 export function canAccessTopicContentByTier(tier: number): boolean {
   return tier >= MIN_TOPIC_TIER;
 }
+
+// Honor-system rank-up ladder driven by liked_count (see attestLiked in
+// server/src/db/engagement.js and setYoutubeSubscribed in server/src/db/auth.js
+// -- keep both in sync). No verification that they liked it on YouTube, but
+// idempotent per video: liking N distinct paired-video articles is trusted as
+// N likes. Ladder stops at tier 7; 8-9 stay manual-only (see profiles.tier
+// comment in the profile_tier migration).
+export interface LikeTierStep {
+  tier: number;
+  likesNeeded: number;
+  alsoNeedsSubscribe?: boolean;
+}
+export const LIKE_TIER_LADDER: LikeTierStep[] = [
+  { tier: 3, likesNeeded: 1, alsoNeedsSubscribe: true },
+  { tier: 4, likesNeeded: 5 },
+  { tier: 5, likesNeeded: 25 },
+  { tier: 6, likesNeeded: 100 },
+  { tier: 7, likesNeeded: 200 },
+];
+
+/** The next rung above `tier` on the like ladder, or null once past tier 7. */
+export function nextLikeMilestone(tier: number): LikeTierStep | null {
+  return LIKE_TIER_LADDER.find((step) => step.tier > tier) ?? null;
+}
+
+/** What (if anything) a given tier unlocks, for congrats copy. Null when the
+ * tier is a rank-only milestone with no feature behind it yet (5-7). */
+export function tierUnlockMessage(tier: number): string | null {
+  switch (tier) {
+    case 2:
+      return "Topic pages are now unlocked.";
+    case 3:
+      return "Comments are now unlocked.";
+    case 4:
+      return "Premium articles are now unlocked.";
+    default:
+      return null;
+  }
+}

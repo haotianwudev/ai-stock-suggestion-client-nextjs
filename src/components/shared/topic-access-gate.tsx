@@ -4,11 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
-import { Youtube } from "lucide-react";
+import { Youtube, Lock } from "lucide-react";
 import { useUser } from "@/hooks/use-user";
 import { ME, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
-import { canAccessTopicContentByTier } from "@/lib/tiers";
+import { canAccessTopicContentByTier, MIN_PREMIUM_TIER, getTierName } from "@/lib/tiers";
 
 export const SOPHIE_YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@SOPHIEAIFinance";
 
@@ -22,21 +22,30 @@ export const FREE_TOPIC_IDS = [
   "macro-analysis",
 ];
 
+// Topics held to a stricter bar than the rest: tier 4+ only, no honor-system YouTube-subscribe
+// bypass. Currently just the cross-section Books topic.
+export const PREMIUM_TOPIC_IDS = ["books"];
+
 /**
  * Gates topic-page content (video/study guide/infographic/related articles) behind tier 2+ or,
- * same honor-system bypass as YoutubeSubscribeGate uses for premium articles, a logged-in reader
- * self-attesting they're subscribed on YouTube. Unlike YoutubeSubscribeGate this isn't tied to
- * one specific video, so the primary CTA opens the channel itself rather than a video.
+ * same honor-system self-attestation the Watch card's Like button uses, a logged-in reader
+ * self-attesting they're subscribed on YouTube. Unlike the Watch card's per-video like, this
+ * isn't tied to one specific video, so the primary CTA opens the channel itself rather than a video.
  *
  * `enabled` lets callers pass every topic through unconditionally and only have this gate
  * actually apply to non-free topics (see FREE_TOPIC_IDS) — when false, children render as-is,
  * skipping the loading/auth check entirely so free topics never flash a gate.
+ *
+ * `strictTierOnly` (see PREMIUM_TOPIC_IDS) raises the bar to `MIN_PREMIUM_TIER` and removes the
+ * self-attest/click-through bypass entirely — access is tier alone, no honor system.
  */
 export function TopicAccessGate({
   enabled,
+  strictTierOnly = false,
   children,
 }: {
   enabled: boolean;
+  strictTierOnly?: boolean;
   children: React.ReactNode;
 }) {
   const { user, profile, loading } = useUser();
@@ -48,8 +57,54 @@ export function TopicAccessGate({
   if (!enabled) return <>{children}</>;
   if (loading) return null;
 
-  const hasAccess = canAccessTopicContentByTier(profile?.tier ?? 1) || (!!user && !!profile?.youtubeSubscribed);
-  if (hasAccess || unlocked) return <>{children}</>;
+  const tier = profile?.tier ?? 1;
+  const hasAccess = strictTierOnly
+    ? tier >= MIN_PREMIUM_TIER
+    : canAccessTopicContentByTier(tier) || (!!user && !!profile?.youtubeSubscribed);
+  if (hasAccess || (!strictTierOnly && unlocked)) return <>{children}</>;
+
+  // Blur ramps in starting ~1/3 of the way down instead of covering the content from
+  // the very top, so readers get a real, readable lead-in before hitting the gate.
+  const blurMask =
+    "linear-gradient(to bottom, transparent 0%, transparent 33%, black 55%, black 100%)";
+
+  if (strictTierOnly) {
+    return (
+      <div className="relative max-h-[640px] overflow-hidden">
+        <div aria-hidden className="pointer-events-none select-none">
+          {children}
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-0 backdrop-blur-md"
+          style={{ maskImage: blurMask, WebkitMaskImage: blurMask }}
+        />
+        <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-b from-transparent from-33% via-white/85 via-60% to-white dark:via-gray-950/85 dark:to-gray-950">
+          <div className="flex flex-col items-center text-center gap-4 pb-10 px-6 max-w-md">
+            <div className="flex items-center justify-center size-14 rounded-full bg-amber-600/10 text-amber-600 dark:text-amber-500">
+              <Lock className="size-7" />
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {getTierName(MIN_PREMIUM_TIER)}+ access required
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                This topic is reserved for {getTierName(MIN_PREMIUM_TIER)} tier and above — there&apos;s no self-serve unlock for it.
+              </p>
+            </div>
+            {!user && (
+              <Link
+                href="/settings/profile"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm shadow-sm transition-colors"
+              >
+                Log in
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const confirmSubscribed = async () => {
     try {
@@ -60,11 +115,6 @@ export function TopicAccessGate({
       toast.error(e instanceof Error ? e.message : "Something went wrong.");
     }
   };
-
-  // Blur ramps in starting ~1/3 of the way down instead of covering the content from
-  // the very top, so readers get a real, readable lead-in before hitting the gate.
-  const blurMask =
-    "linear-gradient(to bottom, transparent 0%, transparent 33%, black 55%, black 100%)";
 
   return (
     <div className="relative max-h-[640px] overflow-hidden">

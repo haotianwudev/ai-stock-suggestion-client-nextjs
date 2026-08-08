@@ -42,10 +42,6 @@ export function Finance101Content() {
             <h4 className="font-semibold text-rose-900 mb-2">New Frontiers</h4>
             <p className="text-sm text-rose-700">ESG investing, prediction markets, and an introduction to Bitcoin, DeFi, and stablecoins.</p>
           </div>
-          <div className="p-4 bg-white rounded-lg border border-rose-100">
-            <h4 className="font-semibold text-rose-900 mb-2">Essential Reading</h4>
-            <p className="text-sm text-rose-700">The classic books every investor should read, from behavioral finance to financial independence.</p>
-          </div>
         </div>
       </div>
 
@@ -54,7 +50,6 @@ export function Finance101Content() {
         <h3 className="text-lg md:text-xl font-semibold text-rose-900">Core Concepts</h3>
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary" className="bg-rose-100 text-rose-800">Trading Psychology</Badge>
-          <Badge variant="secondary" className="bg-rose-100 text-rose-800">Behavioral Finance</Badge>
           <Badge variant="secondary" className="bg-rose-100 text-rose-800">ESG Investing</Badge>
           <Badge variant="secondary" className="bg-rose-100 text-rose-800">Crypto Basics</Badge>
           <Badge variant="secondary" className="bg-rose-100 text-rose-800">Prediction Markets</Badge>

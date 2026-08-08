@@ -2,7 +2,9 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, Layers, TrendingUp, X } from "lucide-react";
+import { useMutation, useQuery } from "@apollo/client";
+import { toast } from "sonner";
+import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, Layers, TrendingUp, X, Bookmark, ThumbsUp } from "lucide-react";
 import { articles } from "@/data/articles";
 import { Article, ArticleLabel } from "@/data/articles/types";
 import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data";
@@ -13,8 +15,18 @@ import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/w
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
 import { CommentSection } from "@/components/comments/comment-section";
-import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
+import { useUser } from "@/hooks/use-user";
+import { getTierName, tierUnlockMessage } from "@/lib/tiers";
+import { TierUpDialog } from "@/components/shared/tier-up-dialog";
+import { TierStatusBanner } from "@/components/shared/tier-status-banner";
+import {
+  MY_LIKED_ARTICLES,
+  MY_BOOKMARKED_ARTICLES,
+  ATTEST_LIKED,
+  TOGGLE_BOOKMARK,
+} from "@/lib/graphql/queries";
+import { LikeResult } from "@/lib/graphql/types";
 
 interface ArticleFrameProps {
   /** Slug of the article entry in src/data/articles — the frame looks up all metadata from it. */
@@ -126,10 +138,71 @@ export function InfographicSlot({
 
 // Persistent, sticky mini-player — stays mounted and playing in the right panel while
 // the reader scrolls the main column, so watching and reading aren't mutually exclusive.
-function VideoCard({ youtubeUrl, title }: { youtubeUrl: string; title: string }) {
+// Like/bookmark live here (not a content-blocking gate) since every article's fully
+// readable once you're past Tier 2 anyway -- this is just the natural place to act on
+// the video you're already looking at.
+function VideoCard({ youtubeUrl, title, articleSlug }: { youtubeUrl: string; title: string; articleSlug: string }) {
   const [playing, setPlaying] = useState(false);
+  const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
+  const { user, profile } = useUser();
   const embedUrl = youtubeEmbedUrl(youtubeUrl);
   const thumbnailUrl = youtubeThumbnailUrl(youtubeUrl);
+
+  const { data: likedData } = useQuery<{ myLikedArticleSlugs: string[] }>(MY_LIKED_ARTICLES, {
+    skip: !user,
+  });
+  const { data: bookmarkedData } = useQuery<{ myBookmarkedArticleSlugs: string[] }>(
+    MY_BOOKMARKED_ARTICLES,
+    { skip: !user }
+  );
+  const liked = likedData?.myLikedArticleSlugs.includes(articleSlug) ?? false;
+  const bookmarked = bookmarkedData?.myBookmarkedArticleSlugs.includes(articleSlug) ?? false;
+
+  const [attestLiked] = useMutation<{ attestLiked: LikeResult }>(ATTEST_LIKED, {
+    refetchQueries: [{ query: MY_LIKED_ARTICLES }],
+  });
+  const [toggleBookmark, { loading: bookmarking }] = useMutation<{ toggleBookmark: boolean }>(
+    TOGGLE_BOOKMARK,
+    { refetchQueries: [{ query: MY_BOOKMARKED_ARTICLES }] }
+  );
+
+  const likeOnYoutube = () => {
+    // window.open must run synchronously in the click handler, before any
+    // await -- otherwise popup blockers treat it as not user-initiated.
+    window.open(youtubeUrl, "_blank", "noopener,noreferrer");
+    if (!user || liked) return;
+    const prevTier = profile?.tier ?? 1;
+    attestLiked({ variables: { articleSlug } })
+      .then(({ data }) => {
+        const result = data?.attestLiked;
+        if (!result?.wasNewLike) return;
+        if (result.tier > prevTier) {
+          setCongrats({
+            title: `You're now ${getTierName(result.tier)}!`,
+            description: tierUnlockMessage(result.tier) ?? "Keep it up!",
+          });
+        } else {
+          toast.success(`Liked! (${result.likedCount} video${result.likedCount === 1 ? "" : "s"} liked so far)`);
+        }
+      })
+      .catch((e) => {
+        toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      });
+  };
+
+  const handleBookmark = () => {
+    if (!user) {
+      toast.error("Sign in to bookmark articles.");
+      return;
+    }
+    toggleBookmark({ variables: { articleSlug } })
+      .then(({ data }) => {
+        toast.success(data?.toggleBookmark ? "Bookmarked." : "Bookmark removed.");
+      })
+      .catch((e) => {
+        toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      });
+  };
 
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
@@ -172,6 +245,42 @@ function VideoCard({ youtubeUrl, title }: { youtubeUrl: string; title: string })
           </button>
         )}
       </div>
+      <div className="p-4 pt-3 flex items-center gap-2">
+        <button
+          onClick={likeOnYoutube}
+          className={`flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            liked
+              ? "bg-red-600/10 text-red-600 dark:text-red-500"
+              : "bg-red-600 hover:bg-red-700 text-white"
+          }`}
+        >
+          <ThumbsUp className="size-4" fill={liked ? "currentColor" : "none"} />
+          {liked ? "Liked" : "Like on YouTube"}
+        </button>
+        <button
+          onClick={handleBookmark}
+          disabled={bookmarking}
+          aria-label={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+          className={`inline-flex items-center justify-center size-9 rounded-lg border transition-colors disabled:opacity-50 ${
+            bookmarked
+              ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
+              : "border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
+          }`}
+        >
+          <Bookmark className="size-4" fill={bookmarked ? "currentColor" : "none"} />
+        </button>
+      </div>
+      {user && (
+        <div className="px-4 pb-4">
+          <TierStatusBanner profile={profile} />
+        </div>
+      )}
+      <TierUpDialog
+        open={!!congrats}
+        onOpenChange={(open) => !open && setCongrats(null)}
+        title={congrats?.title ?? ""}
+        description={congrats?.description ?? ""}
+      />
     </div>
   );
 }
@@ -574,13 +683,7 @@ export function ArticleFrame({
           <CurrentArticleContext.Provider value={currentArticle}>
             {hasPanel ? (
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-                <article>
-                  {hasVideo ? (
-                    <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
-                  ) : (
-                    children
-                  )}
-                </article>
+                <article>{children}</article>
                 <aside className="lg:sticky lg:top-24 space-y-4">
                   <Link
                     href="/"
@@ -592,7 +695,13 @@ export function ArticleFrame({
                   <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
                   {hasTopics && <TopicsCard links={topicLinks} />}
                   {hasStrategies && <StrategiesCard links={strategyLinks} />}
-                  {hasVideo && <VideoCard youtubeUrl={currentArticle.youtubeUrl!} title={title} />}
+                  {hasVideo && (
+                    <VideoCard
+                      youtubeUrl={currentArticle.youtubeUrl!}
+                      title={title}
+                      articleSlug={currentArticle.slug || slug}
+                    />
+                  )}
                   {hasPaper && (
                     <PaperCard googleDoc={currentArticle.googleDoc!} onExpand={() => setPaperOpen(true)} />
                   )}

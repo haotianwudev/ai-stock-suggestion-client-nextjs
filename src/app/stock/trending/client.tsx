@@ -19,6 +19,7 @@ import { EtfMutualFundContent } from "../topics/etf-mutual-fund";
 import { MacroAnalysisContent } from "../topics/macro-analysis";
 import { WealthPlanningContent } from "../topics/wealth-planning";
 import { Finance101Content } from "../topics/finance-101";
+import { BooksContent } from "../topics/books";
 
 // TypeScript interfaces
 interface StockData {
@@ -49,7 +50,7 @@ interface BatchStockResponse {
 // Tabs keeps inactive TabsContent mounted, and StockTabClient's handleTabChange only knows the
 // currently-active subtopic from whichever tab you're navigating *away* from).
 const STOCK_ANALYSIS_SUBTOPICS = ['stock-analysis', '13f-analysis', 'etf-mutual-fund'];
-const INVESTMENT_SUBTOPICS = ['macro-analysis', 'wealth-planning', 'finance-101'];
+const INVESTMENT_SUBTOPICS = ['macro-analysis', 'wealth-planning', 'finance-101', 'books'];
 
 interface TopTickerResponse {
   ticker: string;
@@ -403,7 +404,7 @@ function InvestmentTab({ subtopic }: { subtopic?: string }) {
   return (
     <div>
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger
             value="macro-analysis"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -425,6 +426,13 @@ function InvestmentTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">101</span>
             <span className="hidden sm:block">Finance 101</span>
           </TabsTrigger>
+          <TabsTrigger
+            value="books"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Books</span>
+            <span className="hidden sm:block">Books</span>
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="macro-analysis" className="mt-0">
@@ -437,6 +445,10 @@ function InvestmentTab({ subtopic }: { subtopic?: string }) {
 
         <TabsContent value="finance-101" className="mt-0">
           <Finance101Content />
+        </TabsContent>
+
+        <TabsContent value="books" className="mt-0">
+          <BooksContent />
         </TabsContent>
       </Tabs>
     </div>

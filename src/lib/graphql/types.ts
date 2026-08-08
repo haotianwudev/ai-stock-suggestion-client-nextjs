@@ -289,6 +289,13 @@ export interface User {
   displayName?: string | null;
   avatarUrl?: string | null;
   youtubeSubscribed: boolean;
+  likedCount: number;
+  tier: number;
+}
+
+export interface LikeResult {
+  wasNewLike: boolean;
+  likedCount: number;
   tier: number;
 }
 

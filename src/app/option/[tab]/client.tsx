@@ -15,6 +15,7 @@ import { GreeksContent } from "../topics/greeks";
 import { GEXContent } from "../topics/gex";
 import { RollContent } from "../topics/roll";
 import { VolatilityContent } from "../topics/volatility";
+import { BooksContent } from "../topics/books";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -73,7 +74,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 md:grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger 
             value="option101" 
             className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -108,11 +109,17 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
           >
             VRP
           </TabsTrigger>
-          <TabsTrigger 
-            value="gex" 
+          <TabsTrigger
+            value="gex"
             className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             GEX
+          </TabsTrigger>
+          <TabsTrigger
+            value="books"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            Books
           </TabsTrigger>
         </TabsList>
         
@@ -138,6 +145,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
         
         <TabsContent value="gex" className="mt-0">
           <GEXContent />
+        </TabsContent>
+
+        <TabsContent value="books" className="mt-0">
+          <BooksContent />
         </TabsContent>
       </Tabs>
     </div>

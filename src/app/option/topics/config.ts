@@ -27,10 +27,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "losing-money-with-options-common-pitfalls",
         },
         {
-          text: "The Option Trader's Mindset",
-          articleSlug: "option-traders-mindset-book-summary",
-        },
-        {
           text: "Option Strategies for Market Shock",
           articleSlug: "options-strategy-report-october-10-market-event",
         },
@@ -201,10 +197,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "Earnings Volatility Selling",
           articleSlug: "earnings-volatility-selling-strategy-complete-guide",
         },
-        {
-          text: "Profiting with Iron Condor Options",
-          articleSlug: "profiting-iron-condor-options-book-summary",
-        },
       ]
     }
   },
@@ -262,16 +254,35 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "advanced-option-rolling-mechanics",
         },
         {
-          text: "Diagonal Spread vs. Covered Call",
-          articleSlug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
-        },
-        {
           text: "Optimal Early Exercise of American Calls",
           articleSlug: "optimal-early-exercise-american-call-options-dividend-stocks",
         },
         {
           text: "The Kelly Criterion: Optimal Position Sizing",
           articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
+        },
+      ]
+    }
+  },
+
+  "books": {
+    id: "books",
+    title: "Books",
+    description: "Curated summaries of options-focused books — trading mindset, and strategy-specific deep dives like the Iron Condor and diagonal spreads, distilled from cover to cover.",
+    primaryArticleSlug: "option-traders-mindset-book-summary",
+    studyGuide: {
+      items: [
+        {
+          text: "The Option Trader's Mindset",
+          articleSlug: "option-traders-mindset-book-summary",
+        },
+        {
+          text: "Profiting with Iron Condor Options",
+          articleSlug: "profiting-iron-condor-options-book-summary",
+        },
+        {
+          text: "Diagonal Spread vs. Covered Call",
+          articleSlug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
         },
       ]
     }
