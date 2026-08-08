@@ -9,7 +9,9 @@ import { AuthStatus } from "@/components/auth/auth-status";
 import { WelcomeGate } from "@/components/auth/welcome-gate";
 import { RegisterServiceWorker } from "@/components/pwa/register-service-worker";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/hooks/use-user";
+import { getTierName } from "@/lib/tiers";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +26,7 @@ const NAV_LINKS = [
 ];
 
 export function Header() {
-  const { profile } = useUser();
+  const { user, profile } = useUser();
   const isAdmin = profile?.tier === 9;
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
@@ -103,7 +105,13 @@ export function Header() {
                   </Link>
                 </DropdownMenuItem>
               )}
-              <div className="flex items-center justify-between px-2 py-2 mt-2 border-t sm:hidden">
+              {user && profile && (
+                <div className="flex items-center justify-between px-2 py-2 mt-2 border-t sm:hidden">
+                  <span className="text-sm font-medium">Rank</span>
+                  <Badge variant="outline">{getTierName(profile.tier)}</Badge>
+                </div>
+              )}
+              <div className="flex items-center justify-between px-2 py-2 border-t sm:hidden">
                 <span className="text-sm font-medium">Theme</span>
                 <ThemeToggle />
               </div>
@@ -113,6 +121,11 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
+          {user && profile && (
+            <Badge variant="outline" className="hidden sm:inline-flex whitespace-nowrap">
+              {getTierName(profile.tier)}
+            </Badge>
+          )}
           <div className="hidden sm:block">
             <ThemeToggle />
           </div>
