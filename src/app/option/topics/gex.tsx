@@ -1,10 +1,22 @@
 'use client';
 
-import { Zap, TrendingUp, BarChart4, Target, AlertTriangle } from "lucide-react";
+import { Zap, TrendingUp, BarChart4, Target, AlertTriangle, Shield, RefreshCw, Compass, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
+
+function ChapterHeading({ number, title, colorClass }: { number: number; title: string; colorClass: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className={`flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full ${colorClass} text-white text-xs md:text-sm font-bold flex-shrink-0`}>
+        {number}
+      </span>
+      <h3 className="text-lg md:text-xl font-semibold text-orange-900">{title}</h3>
+    </div>
+  );
+}
 
 export function GEXContent() {
   const config = getTopicConfig('gex');
@@ -28,14 +40,10 @@ export function GEXContent() {
 
   const contentSections = (
     <>
-      {/* Core Concept */}
-      <Card className="border-blue-200 bg-blue-50/50">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg text-blue-700">
-            ⚡ What is GEX?
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
+      {/* 1. What is GEX? */}
+      <ChapterHeading number={1} title="What is GEX?" colorClass="bg-orange-600" />
+      <Card className="border-blue-200 bg-blue-50/50 ml-8 md:ml-9">
+        <CardContent className="pt-4 space-y-3">
           <p className="text-sm leading-relaxed">
             <strong>Gamma Exposure (GEX)</strong> measures the aggregate gamma position of market makers across all options. 
             It reveals how market makers must hedge their positions, directly influencing market volatility and price action.
@@ -51,8 +59,9 @@ export function GEXContent() {
         </CardContent>
       </Card>
 
-      {/* GEX Mechanics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-4">
+      {/* 2. GEX Mechanics */}
+      <ChapterHeading number={2} title="GEX Mechanics" colorClass="bg-orange-600" />
+      <div className="ml-8 md:ml-9 grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-4">
         <Card className="border-green-200 bg-green-50/50">
           <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg flex items-center gap-2">
@@ -126,14 +135,10 @@ export function GEXContent() {
         </Card>
       </div>
 
-      {/* Trading Applications */}
-      <Card className="border-slate-200 bg-slate-50/50">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg">
-            📊 GEX Trading Applications
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-1.5 md:space-y-4">
+      {/* 3. GEX Trading Applications */}
+      <ChapterHeading number={3} title="GEX Trading Applications" colorClass="bg-orange-600" />
+      <Card className="border-slate-200 bg-slate-50/50 ml-8 md:ml-9">
+        <CardContent className="pt-4 space-y-1.5 md:space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-1.5 md:gap-4">
             <div className="text-center p-4 bg-white rounded-lg border">
               <div className="text-2xl mb-2">🎯</div>
@@ -160,14 +165,10 @@ export function GEXContent() {
         </CardContent>
       </Card>
 
-      {/* Market Maker Hedging */}
-      <Card className="border-yellow-200 bg-yellow-50/50">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg text-yellow-700">
-            🔄 Market Maker Hedging Mechanics
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
+      {/* 4. Market Maker Hedging Mechanics */}
+      <ChapterHeading number={4} title="Market Maker Hedging Mechanics" colorClass="bg-orange-600" />
+      <Card className="border-yellow-200 bg-yellow-50/50 ml-8 md:ml-9">
+        <CardContent className="pt-4 space-y-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <h4 className="font-semibold text-sm text-green-700">When Long Gamma (Positive GEX)</h4>
@@ -189,14 +190,10 @@ export function GEXContent() {
         </CardContent>
       </Card>
 
-      {/* Key GEX Concepts */}
-      <Card className="border-teal-200 bg-teal-50/50">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg text-teal-700">
-            🔑 Key GEX Concepts
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
+      {/* 5. Key GEX Concepts */}
+      <ChapterHeading number={5} title="Key GEX Concepts" colorClass="bg-orange-600" />
+      <Card className="border-teal-200 bg-teal-50/50 ml-8 md:ml-9">
+        <CardContent className="pt-4 space-y-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-3">
               <div>
@@ -234,14 +231,15 @@ export function GEXContent() {
         </CardContent>
       </Card>
 
-      {/* Risks and Limitations */}
-      <Card className="border-red-200 bg-red-50/50">
+      {/* 6. Risks and Limitations */}
+      <ChapterHeading number={6} title="Risks &amp; Limitations" colorClass="bg-red-500" />
+      <Card className="border-red-200 bg-red-50/50 ml-8 md:ml-9">
         <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="text-base md:text-lg text-red-700">
-            ⚠️ GEX Limitations & Risks
+          <CardTitle className="text-base md:text-lg text-red-700 flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4 flex-shrink-0" /> Where GEX Analysis Breaks Down
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-3 pt-0">
           <div className="text-sm text-red-600 space-y-1.5 md:space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-start gap-1">
               <span className="font-semibold">• Data Quality:</span>
@@ -266,6 +264,49 @@ export function GEXContent() {
           </div>
         </CardContent>
       </Card>
+
+      {/* 7. Related & Advanced Topics */}
+      <ChapterHeading number={7} title="Related &amp; Advanced Topics" colorClass="bg-orange-600" />
+      <div className="ml-8 md:ml-9 space-y-3">
+        <div className="flex gap-2">
+          <Shield className="h-4 w-4 text-orange-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <h4 className="font-semibold text-orange-900 text-sm md:text-base">Volatility Risk Premium</h4>
+            <p className="text-xs md:text-sm text-orange-700 leading-relaxed mt-1">
+              GEX describes dealer hedging flows; VRP describes why premium sellers have an edge on average — the two
+              interact directly, since dealer positioning is a byproduct of who's selling that premium — see{" "}
+              <Link href="/option/topics/vrp" className="underline underline-offset-2 hover:text-orange-900 inline-flex items-center gap-0.5">
+                VRP <ArrowRight className="h-3 w-3" />
+              </Link>.
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <RefreshCw className="h-4 w-4 text-orange-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <h4 className="font-semibold text-orange-900 text-sm md:text-base">The Greeks</h4>
+            <p className="text-xs md:text-sm text-orange-700 leading-relaxed mt-1">
+              GEX is built entirely from aggregated gamma — a solid grip on what gamma actually measures makes GEX
+              much more intuitive — see{" "}
+              <Link href="/option/topics/greeks" className="underline underline-offset-2 hover:text-orange-900 inline-flex items-center gap-0.5">
+                Greeks <ArrowRight className="h-3 w-3" />
+              </Link>.
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <Compass className="h-4 w-4 text-orange-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <h4 className="font-semibold text-orange-900 text-sm md:text-base">Options 101</h4>
+            <p className="text-xs md:text-sm text-orange-700 leading-relaxed mt-1">
+              New to options? Build the fundamentals before diving into dealer positioning — see{" "}
+              <Link href="/option/topics/option101" className="underline underline-offset-2 hover:text-orange-900 inline-flex items-center gap-0.5">
+                Options 101 <ArrowRight className="h-3 w-3" />
+              </Link>.
+            </p>
+          </div>
+        </div>
+      </div>
     </>
   );
 

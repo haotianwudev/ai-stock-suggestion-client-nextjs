@@ -1,9 +1,21 @@
 'use client';
 
-import { PieChart, TrendingUp, Shield, Target, BarChart3, Activity, Layers } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { PieChart, TrendingUp, Shield, Target, Layers, AlertTriangle, Compass, Globe, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 import { PageTemplate } from "@/components/shared/page-template";
 import { getQuantTopicConfig } from "./config";
+
+function ChapterHeading({ number, title, colorClass }: { number: number; title: string; colorClass: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className={`flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full ${colorClass} text-white text-xs md:text-sm font-bold flex-shrink-0`}>
+        {number}
+      </span>
+      <h3 className="text-lg md:text-xl font-semibold text-blue-900">{title}</h3>
+    </div>
+  );
+}
 
 export function AssetAllocationContent() {
   // Get configuration for asset allocation
@@ -26,10 +38,10 @@ export function AssetAllocationContent() {
 
   const contentSections = (
     <>
-      {/* Asset Allocation Approaches */}
+      {/* 1. Allocation Approaches */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Asset Allocation Approaches</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ChapterHeading number={1} title="Allocation Approaches" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="p-4 bg-white rounded-lg border border-blue-100">
             <div className="flex items-center gap-2 mb-2">
               <Target className="h-4 w-4 text-blue-600" />
@@ -85,10 +97,10 @@ export function AssetAllocationContent() {
         </div>
       </div>
 
-      {/* Smart Beta Deep Dive */}
+      {/* 2. Smart Beta Factor Investing */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Smart Beta Factor Investing</h3>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4">
+        <ChapterHeading number={2} title="Smart Beta Factor Investing" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4">
           <p className="text-xs md:text-sm text-blue-800 mb-4 leading-relaxed">
             Smart Beta combines the benefits of passive indexing with active management by systematically 
             tilting portfolios toward specific risk factors that have historically delivered excess returns.
@@ -114,10 +126,10 @@ export function AssetAllocationContent() {
         </div>
       </div>
 
-      {/* Portfolio Optimization Techniques */}
+      {/* 3. Portfolio Optimization Techniques */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Portfolio Optimization Techniques</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <ChapterHeading number={3} title="Portfolio Optimization Techniques" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 md:grid-cols-3 gap-3">
           <div className="p-4 bg-white rounded-lg border border-blue-100">
             <h4 className="font-semibold text-blue-900 mb-2">Mean-Variance Optimization</h4>
             <ul className="text-sm text-blue-700 space-y-1">
@@ -157,16 +169,59 @@ export function AssetAllocationContent() {
         </div>
       </div>
 
-      {/* Implementation Framework */}
+      {/* 4. Common Pitfalls */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Implementation Framework</h3>
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Asset Selection</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Weight Optimization</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Risk Budgeting</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Rebalancing Rules</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Performance Attribution</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs">Factor Exposure</Badge>
+        <ChapterHeading number={4} title="Common Pitfalls" colorClass="bg-red-500" />
+        <Card className="border-red-200 bg-red-50/50 ml-8 md:ml-9">
+          <CardContent className="pt-4 space-y-2.5">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-1 text-xs md:text-sm text-red-700">
+              <span className="font-semibold flex-shrink-0">MVO's estimation-error sensitivity:</span>
+              <span>Mean-variance optimization is notoriously sensitive to small errors in expected-return inputs —
+                tiny changes can flip the "optimal" portfolio dramatically, which is exactly the instability the
+                Black-Litterman model was built to fix.</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-start gap-1 text-xs md:text-sm text-red-700">
+              <span className="font-semibold flex-shrink-0">Chasing recent performance:</span>
+              <span>Tactical shifts made after a factor or asset class has already run hot tend to buy in late —
+                the same behavioral trap that hurts individual stock-pickers, just at the portfolio level.</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-start gap-1 text-xs md:text-sm text-red-700">
+              <span className="font-semibold flex-shrink-0">Rebalancing costs &amp; tax drag:</span>
+              <span>Frequent rebalancing to stay perfectly on-target generates transaction costs and, in taxable
+                accounts, realized capital gains — the "optimal" weights on paper aren't optimal after those frictions.</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 5. Related & Advanced Topics */}
+      <div className="space-y-3">
+        <ChapterHeading number={5} title="Related & Advanced Topics" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 space-y-3">
+          <div className="flex gap-2">
+            <Compass className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-blue-900 text-sm md:text-base">Systematic Strategies</h4>
+              <p className="text-xs md:text-sm text-blue-700 leading-relaxed mt-1">
+                For combining multiple systematic strategies into one diversified system — see{" "}
+                <Link href="/quant/quanttrading/systematic-strategies" className="underline underline-offset-2 hover:text-blue-900 inline-flex items-center gap-0.5">
+                  Systematic Strategies <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Globe className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-blue-900 text-sm md:text-base">Macro Analysis</h4>
+              <p className="text-xs md:text-sm text-blue-700 leading-relaxed mt-1">
+                Tactical allocation shifts (TAA) are driven by macro regime views — see{" "}
+                <Link href="/stock/investment/macro-analysis" className="underline underline-offset-2 hover:text-blue-900 inline-flex items-center gap-0.5">
+                  Macro Analysis <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>

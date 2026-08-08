@@ -1,7 +1,19 @@
-import { Shield, TrendingUp, DollarSign, LineChart, BarChart4 } from "lucide-react";
+import { Shield, TrendingUp, DollarSign, LineChart, BarChart4, BookOpenCheck, Compass, Zap, RefreshCw, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
+
+function ChapterHeading({ number, title, colorClass }: { number: number; title: string; colorClass: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className={`flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full ${colorClass} text-white text-xs md:text-sm font-bold flex-shrink-0`}>
+        {number}
+      </span>
+      <h3 className="text-lg md:text-xl font-semibold text-teal-900">{title}</h3>
+    </div>
+  );
+}
 
 export function Option101Content() {
   const config = getTopicConfig('option101');
@@ -27,10 +39,48 @@ export function Option101Content() {
 
   const contentSections = (
     <>
-      {/* Use Case Cards */}
+      {/* 1. The Basics */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-teal-900">Primary Use Cases</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-4">
+        <ChapterHeading number={1} title="The Basics" colorClass="bg-teal-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <Card className="border-teal-100">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm md:text-base flex items-center gap-2">
+                <BookOpenCheck className="h-4 w-4 text-teal-600 flex-shrink-0" /> Calls &amp; Puts
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs md:text-sm text-teal-700 leading-relaxed">
+                A <strong>call</strong> gives its buyer the right (not obligation) to <em>buy</em> 100 shares at a fixed
+                <strong> strike price</strong> on or before <strong>expiration</strong>. A <strong>put</strong> gives the
+                right to <em>sell</em> at that strike instead. The buyer pays a <strong>premium</strong> upfront for
+                that right; the seller collects the premium and takes on the obligation if exercised.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="border-teal-100">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm md:text-base flex items-center gap-2">
+                <Zap className="h-4 w-4 text-teal-600 flex-shrink-0" /> ITM / ATM / OTM
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs md:text-sm text-teal-700 leading-relaxed">
+                An option is <strong>in-the-money (ITM)</strong> if exercising it right now would be profitable,
+                <strong> at-the-money (ATM)</strong> if the strike sits right at the current price, and
+                <strong> out-of-the-money (OTM)</strong> if exercising would be worthless. Premium is split between
+                <strong> intrinsic value</strong> (the ITM amount) and <strong>time value</strong> (everything else,
+                which decays to zero by expiration).
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* 2. Primary Use Cases */}
+      <div className="space-y-3">
+        <ChapterHeading number={2} title="Primary Use Cases" colorClass="bg-teal-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-4">
           <Card className="border-green-200 bg-green-50/50">
             <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-base md:text-lg flex items-center gap-2">
@@ -108,10 +158,10 @@ export function Option101Content() {
         </div>
       </div>
 
-      {/* Warning Section */}
+      {/* 3. When NOT to Use Options */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-teal-900">When NOT to Use Options</h3>
-        <Card className="border-red-200 bg-red-50/50">
+        <ChapterHeading number={3} title="When NOT to Use Options" colorClass="bg-red-500" />
+        <Card className="border-red-200 bg-red-50/50 ml-8 md:ml-9">
           <CardHeader className="pb-2 md:pb-4">
             <CardTitle className="text-base md:text-lg text-red-700">
               ⚠️ Important Warnings
@@ -142,6 +192,50 @@ export function Option101Content() {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      {/* 4. Related & Advanced Topics */}
+      <div className="space-y-3">
+        <ChapterHeading number={4} title="Related &amp; Advanced Topics" colorClass="bg-teal-600" />
+        <div className="ml-8 md:ml-9 space-y-3">
+          <div className="flex gap-2">
+            <Compass className="h-4 w-4 text-teal-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-teal-900 text-sm md:text-base">The Greeks</h4>
+              <p className="text-xs md:text-sm text-teal-700 leading-relaxed mt-1">
+                Once the basics click, the Greeks (Delta, Gamma, Theta, Vega) explain exactly how an option's price
+                reacts to changes in the underlying — see{" "}
+                <Link href="/option/topics/greeks" className="underline underline-offset-2 hover:text-teal-900 inline-flex items-center gap-0.5">
+                  Greeks <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Zap className="h-4 w-4 text-teal-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-teal-900 text-sm md:text-base">Volatility Risk Premium</h4>
+              <p className="text-xs md:text-sm text-teal-700 leading-relaxed mt-1">
+                For why option sellers have a structural statistical edge on average — see{" "}
+                <Link href="/option/topics/vrp" className="underline underline-offset-2 hover:text-teal-900 inline-flex items-center gap-0.5">
+                  VRP <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <RefreshCw className="h-4 w-4 text-teal-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-teal-900 text-sm md:text-base">Rolling &amp; Adjustments</h4>
+              <p className="text-xs md:text-sm text-teal-700 leading-relaxed mt-1">
+                For what to do when an open position moves against you instead of closing at a loss — see{" "}
+                <Link href="/option/topics/roll" className="underline underline-offset-2 hover:text-teal-900 inline-flex items-center gap-0.5">
+                  Rolling Options <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

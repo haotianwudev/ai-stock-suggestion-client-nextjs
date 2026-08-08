@@ -1,9 +1,21 @@
 'use client';
 
-import { RotateCcw } from "lucide-react";
+import { RotateCcw, Compass, Shield, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { PageTemplate } from "@/components/shared/page-template";
 import { getTopicConfig } from "./config";
+
+function ChapterHeading({ number, title, colorClass }: { number: number; title: string; colorClass: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className={`flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full ${colorClass} text-white text-xs md:text-sm font-bold flex-shrink-0`}>
+        {number}
+      </span>
+      <h3 className="text-lg md:text-xl font-semibold text-blue-900">{title}</h3>
+    </div>
+  );
+}
 
 export function RollContent() {
   const config = getTopicConfig('roll');
@@ -29,10 +41,10 @@ export function RollContent() {
   // Define custom content sections
   const contentSections = (
     <>
-      {/* Rolling Types */}
+      {/* 1. Types of Rolling */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Types of Rolling</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ChapterHeading number={1} title="Types of Rolling" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="bg-white border border-blue-100 rounded-lg p-4">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -65,10 +77,10 @@ export function RollContent() {
         </div>
       </div>
 
-      {/* Universal Principles */}
+      {/* 2. Universal Principles */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Universal Principles</h3>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <ChapterHeading number={2} title="Universal Principles" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -109,10 +121,10 @@ export function RollContent() {
         </div>
       </div>
 
-      {/* Decision Framework */}
+      {/* 3. Decision Framework */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Decision Framework</h3>
-        <div className="bg-white border border-blue-100 rounded-lg overflow-hidden">
+        <ChapterHeading number={3} title="Decision Framework" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 bg-white border border-blue-100 rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead className="bg-blue-50">
@@ -157,10 +169,10 @@ export function RollContent() {
         </div>
       </div>
 
-      {/* Greeks as Triggers */}
+      {/* 4. Greeks as Decision Triggers */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Greeks as Decision Triggers</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ChapterHeading number={4} title="Greeks as Decision Triggers" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="bg-white border border-blue-100 rounded-lg p-4">
             <h4 className="font-semibold text-blue-800 mb-2">Delta Triggers</h4>
             <p className="text-sm text-gray-600 mb-2">
@@ -187,15 +199,47 @@ export function RollContent() {
         </div>
       </div>
 
-      {/* Implementation Framework */}
+      {/* 5. Related & Advanced Topics */}
       <div className="space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold text-blue-900">Implementation</h3>
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800">Quantitative Triggers</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800">Risk Management</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800">Capital Efficiency</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800">Greeks Analysis</Badge>
-          <Badge variant="secondary" className="bg-blue-100 text-blue-800">Volatility Timing</Badge>
+        <ChapterHeading number={5} title="Related &amp; Advanced Topics" colorClass="bg-blue-600" />
+        <div className="ml-8 md:ml-9 space-y-3">
+          <div className="flex gap-2">
+            <Compass className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-blue-900 text-sm md:text-base">The Greeks</h4>
+              <p className="text-xs md:text-sm text-blue-700 leading-relaxed mt-1">
+                Delta and Vega drive every rolling decision above — for the underlying definitions, see{" "}
+                <Link href="/option/topics/greeks" className="underline underline-offset-2 hover:text-blue-900 inline-flex items-center gap-0.5">
+                  Greeks <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Zap className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-blue-900 text-sm md:text-base">Volatility Risk Premium</h4>
+              <p className="text-xs md:text-sm text-blue-700 leading-relaxed mt-1">
+                Rolling for credit is a way of continuing to harvest VRP on a challenged position rather than exiting
+                — see{" "}
+                <Link href="/option/topics/vrp" className="underline underline-offset-2 hover:text-blue-900 inline-flex items-center gap-0.5">
+                  VRP <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Shield className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-blue-900 text-sm md:text-base">Options 101</h4>
+              <p className="text-xs md:text-sm text-blue-700 leading-relaxed mt-1">
+                New to options? Build the fundamentals before managing challenged positions — see{" "}
+                <Link href="/option/topics/option101" className="underline underline-offset-2 hover:text-blue-900 inline-flex items-center gap-0.5">
+                  Options 101 <ArrowRight className="h-3 w-3" />
+                </Link>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
