@@ -7,6 +7,7 @@ import {
   Briefcase, LineChart, AlertTriangle, Scale, Clock
 } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { cn } from '@/lib/utils';
 
 const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: { icon: any, title: string, subtitle?: string, colorClass: string }) => (
   <div className="mb-8">
@@ -21,7 +22,7 @@ const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: { icon: any
 );
 
 const Card = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-  <div className={`bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8 hover:shadow-md transition-shadow duration-300 ${className}`}>
+  <div className={cn("bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8 hover:shadow-md transition-shadow duration-300", className)}>
     {children}
   </div>
 );
