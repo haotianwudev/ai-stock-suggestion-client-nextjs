@@ -375,9 +375,11 @@ export default function Home() {
       </main>
 
       {/* Lazy load podcast player */}
-      <Suspense fallback={null}>
-        <DynamicStickyPodcastPlayer />
-      </Suspense>
+      <div className="hidden sm:block">
+        <Suspense fallback={null}>
+          <DynamicStickyPodcastPlayer />
+        </Suspense>
+      </div>
     </div>
   );
 }

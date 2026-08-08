@@ -39,13 +39,13 @@ export function Header() {
               />
             </div>
             <span className="font-bold text-sm sm:text-lg lg:text-xl truncate">
-              SOPHIE Daddy Quant Blog
+              SOPHIE
             </span>
           </Link>
         </div>
 
-        <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-          <div className="w-32 sm:w-40 md:w-48 lg:w-auto lg:flex-1 lg:max-w-md">
+        <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+          <div className="hidden sm:block w-40 md:w-48 lg:w-auto lg:flex-1 lg:max-w-md">
             <SearchBar />
           </div>
 
@@ -78,7 +78,10 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-56">
+              <div className="px-2 py-2 mb-2 sm:hidden">
+                <SearchBar />
+              </div>
               {NAV_LINKS.map((link) => (
                 <DropdownMenuItem key={link.href} asChild>
                   <Link href={link.href} className="flex items-center gap-2">
@@ -95,11 +98,22 @@ export function Header() {
                   </Link>
                 </DropdownMenuItem>
               )}
+              <div className="flex items-center justify-between px-2 py-2 mt-2 border-t sm:hidden">
+                <span className="text-sm font-medium">Theme</span>
+                <ThemeToggle />
+              </div>
+              <div className="flex items-center px-2 py-2 border-t sm:hidden">
+                <AuthStatus />
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <ThemeToggle />
-          <AuthStatus />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+          <div className="hidden sm:block">
+            <AuthStatus />
+          </div>
         </div>
       </div>
     </header>
