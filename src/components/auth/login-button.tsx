@@ -1,25 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/client";
+import { AuthDialog } from "@/components/auth/auth-dialog";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 
 export function LoginButton() {
+  const [open, setOpen] = useState(false);
   if (!isSupabaseConfigured) return null;
 
-  async function handleSignIn() {
-    const supabase = createClient();
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  }
-
   return (
-    <Button variant="outline" size="sm" onClick={handleSignIn}>
-      Sign in
-    </Button>
+    <>
+      <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+        Sign in
+      </Button>
+      <AuthDialog open={open} onOpenChange={setOpen} />
+    </>
   );
 }
