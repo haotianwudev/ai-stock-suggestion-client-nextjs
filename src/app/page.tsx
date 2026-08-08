@@ -31,10 +31,10 @@ const CompactStockSkeleton = () => (
 // Core feature pillars shown under the hero
 const FEATURE_PILLARS = [
   {
-    href: "/stock",
-    icon: TrendingUp,
-    title: "Stock & Investment",
-    description: "AI-assisted analysis of trending stocks",
+    href: "/quant",
+    icon: Sigma,
+    title: "Quant Finance",
+    description: "Quantitative models and market research",
   },
   {
     href: "/option",
@@ -43,10 +43,10 @@ const FEATURE_PILLARS = [
     description: "Options strategy research and trade ideas",
   },
   {
-    href: "/quant",
-    icon: Sigma,
-    title: "Quant Finance",
-    description: "Quantitative models and market research",
+    href: "/stock",
+    icon: TrendingUp,
+    title: "Stock & Investment",
+    description: "AI-assisted analysis of trending stocks",
   },
   {
     href: "/neighborhood",

@@ -8,9 +8,11 @@ import { useEffect } from 'react';
 export default function StockPage() {
   const router = useRouter();
 
-  // Redirect to trending tab by default
+  // Default to the Investment tab rather than Trending Stocks — Trending Stocks does a live
+  // GraphQL fetch (skeleton loading state), which is a worse landing experience than the
+  // Investment tab's static content.
   useEffect(() => {
-    router.replace('/stock/trending');
+    router.replace('/stock/investment/macro-analysis');
   }, [router]);
 
   return (

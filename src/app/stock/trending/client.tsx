@@ -44,6 +44,13 @@ interface BatchStockResponse {
   };
 }
 
+// Valid subtopics per tab — used to guard against a `subtopic` value from one tab leaking into
+// the other (both StockAnalysisTab and InvestmentTab receive the same `subtopic` prop since Radix
+// Tabs keeps inactive TabsContent mounted, and StockTabClient's handleTabChange only knows the
+// currently-active subtopic from whichever tab you're navigating *away* from).
+const STOCK_ANALYSIS_SUBTOPICS = ['stock-analysis', '13f-analysis', 'etf-mutual-fund'];
+const INVESTMENT_SUBTOPICS = ['macro-analysis', 'wealth-planning', 'finance-101'];
+
 interface TopTickerResponse {
   ticker: string;
   score: number;
@@ -314,10 +321,12 @@ function TrendingStocksTab() {
 // alongside the Investment tab rather than being one item inside it.
 function StockAnalysisTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
-  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'stock-analysis');
+  const [activeSubtopic, setActiveSubtopic] = useState(
+    subtopic && STOCK_ANALYSIS_SUBTOPICS.includes(subtopic) ? subtopic : 'stock-analysis'
+  );
 
   useEffect(() => {
-    if (subtopic) {
+    if (subtopic && STOCK_ANALYSIS_SUBTOPICS.includes(subtopic)) {
       setActiveSubtopic(subtopic);
     }
   }, [subtopic]);
@@ -375,10 +384,12 @@ function StockAnalysisTab({ subtopic }: { subtopic?: string }) {
 // stock research (Macro Analysis, Wealth & Planning, Finance 101).
 function InvestmentTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
-  const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'macro-analysis');
+  const [activeSubtopic, setActiveSubtopic] = useState(
+    subtopic && INVESTMENT_SUBTOPICS.includes(subtopic) ? subtopic : 'macro-analysis'
+  );
 
   useEffect(() => {
-    if (subtopic) {
+    if (subtopic && INVESTMENT_SUBTOPICS.includes(subtopic)) {
       setActiveSubtopic(subtopic);
     }
   }, [subtopic]);
@@ -449,10 +460,13 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === 'stock-analysis') {
-      const defaultSubtopic = subtopic || 'stock-analysis';
+      // `subtopic` is whatever was active on the *previous* tab — only reuse it here if it's
+      // actually a valid Stock Analysis subtopic, otherwise it can leak in a value like
+      // "macro-analysis" from the Investment tab and 404.
+      const defaultSubtopic = subtopic && STOCK_ANALYSIS_SUBTOPICS.includes(subtopic) ? subtopic : 'stock-analysis';
       router.push(`/stock/stock-analysis/${defaultSubtopic}`, { scroll: false });
     } else if (value === 'investment') {
-      const defaultSubtopic = subtopic || 'macro-analysis';
+      const defaultSubtopic = subtopic && INVESTMENT_SUBTOPICS.includes(subtopic) ? subtopic : 'macro-analysis';
       router.push(`/stock/investment/${defaultSubtopic}`, { scroll: false });
     } else {
       router.push('/stock/trending', { scroll: false });
