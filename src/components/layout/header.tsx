@@ -7,6 +7,7 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SearchBar } from "@/components/search/search-bar";
 import { AuthStatus } from "@/components/auth/auth-status";
 import { WelcomeGate } from "@/components/auth/welcome-gate";
+import { RegisterServiceWorker } from "@/components/pwa/register-service-worker";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/use-user";
 import {
@@ -28,6 +29,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <WelcomeGate />
+      <RegisterServiceWorker />
       <div className="container mx-auto flex h-14 sm:h-16 max-w-screen-2xl items-center px-4 sm:px-6">
         <div className="flex items-center flex-1 min-w-0">
           <Link href="/" className="flex items-center space-x-2 min-w-0">
