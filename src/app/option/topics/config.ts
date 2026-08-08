@@ -15,8 +15,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "strategic-options-utilization-risk-comprehensive-framework",
         },
         {
+          text: "Navigating Option Trading Strategies",
+          articleSlug: "navigating-option-trading-strategies",
+        },
+        {
           text: "Common Pitfalls of Trading Options",
           articleSlug: "navigating-minefield-options-trading-pitfalls",
+        },
+        {
+          text: "Losing Money with Options",
+          articleSlug: "losing-money-with-options-common-pitfalls",
+        },
+        {
+          text: "The Option Trader's Mindset",
+          articleSlug: "option-traders-mindset-book-summary",
         },
         {
           text: "Option Strategies for Market Shock",
@@ -27,8 +39,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "tax-efficient-option-writing-comprehensive-guide",
         },
         {
+          text: "Writing Naked Puts: A Complete Guide",
+          articleSlug: "writing-naked-puts-complete-interactive-guide",
+        },
+        {
           text: "Option Volume and Open Interest (OI)",
           articleSlug: "decoding-options-market-volume-open-interest-analysis",
+        },
+        {
+          text: "Automated Option Trading",
+          articleSlug: "automated-option-trading-comprehensive-guide",
         },
         {
           text: "Index Inclusion",
@@ -99,6 +119,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
         },
         {
+          text: "DSPX: Market Divergence Index",
+          articleSlug: "dspx-measure-market-divergence-cboe-sp500-dispersion-index",
+        },
+        {
           text: "Volatility Forecasting",
           articleSlug: "quantitative-analyst-guide-volatility-forecasting",
         },
@@ -117,6 +141,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Barchart Volatility Charts",
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
+        },
+        {
+          text: "Decoding the Volatility Surface",
+          articleSlug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
         },
         {
           text: "SVI, Dupire & Heston Models",
@@ -146,6 +174,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "demystifying-volatility-risk-premium-theory-measurement-trading",
         },
         {
+          text: "Academic Foundations of Option Writing",
+          articleSlug: "academic-foundations-option-writing-research-review",
+        },
+        {
           text: "VRP on SPX",
           articleSlug: "mastering-volatility-risk-premium-spx-options-selling",
         },
@@ -164,6 +196,14 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Mastering SPX Option Selling Strategies",
           articleSlug: "mastering-spx-option-selling-strategies-variance-risk-premium",
+        },
+        {
+          text: "Earnings Volatility Selling",
+          articleSlug: "earnings-volatility-selling-strategy-complete-guide",
+        },
+        {
+          text: "Profiting with Iron Condor Options",
+          articleSlug: "profiting-iron-condor-options-book-summary",
         },
       ]
     }
@@ -220,6 +260,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Advanced Option Rolling Mechanics",
           articleSlug: "advanced-option-rolling-mechanics",
+        },
+        {
+          text: "Diagonal Spread vs. Covered Call",
+          articleSlug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
         },
         {
           text: "Optimal Early Exercise of American Calls",

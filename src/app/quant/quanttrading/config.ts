@@ -24,6 +24,14 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           videoUrl: "https://youtu.be/72sh2YIWD8U",
         },
         {
+          text: "Mean Reversion Trading",
+          articleSlug: "quantitative-trading-mean-reversion-factor-models-execution-dynamics",
+        },
+        {
+          text: "Formulaic Alpha Mining",
+          articleSlug: "advancements-formulaic-alpha-mining-deep-search-mechanics",
+        },
+        {
           text: "Volume Price Analysis",
           articleSlug: "volume-price-analysis-market-lore-algorithmic-execution",
         },
@@ -98,6 +106,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Deep Learning Evolution",
           articleSlug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
+        },
+        {
+          text: "Technical Analysis vs ML Trading",
+          articleSlug: "deep-research-ta-vs-ml-trading",
         },
         {
           text: "Assumptions of ML in Quant Trading",
@@ -220,6 +232,18 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "The Ontology of Value",
           articleSlug: "ontology-of-value-financial-data-classification-lifecycle-management",
+        },
+        {
+          text: "AQR's Research Legacy",
+          articleSlug: "architecture-quantitative-insight-aqr-research-legacy",
+        },
+        {
+          text: "The Small Hedge Fund CTO",
+          articleSlug: "small-hedge-fund-cto-technology-leadership-quant-trading",
+        },
+        {
+          text: "Architecting the Modern Trading Desk",
+          articleSlug: "architecting-modern-hedge-fund-desk-system-design",
         },
         {
           text: "Advanced GitLab SDLC",

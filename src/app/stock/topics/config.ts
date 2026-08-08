@@ -39,6 +39,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "trend-vs-momentum-technical-analysis-guide",
         },
         {
+          text: "Technical Analysis: Performance & Practice",
+          articleSlug: "technical-analysis-portfolio-management-performance-practice",
+        },
+        {
           text: "Quantitative Support Level Modeling",
           articleSlug: "quantitative-support-level-modeling-machine-learning",
         },
@@ -51,8 +55,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "tesla-tsla-fundamental-dashboard-ai-binary-bet",
         },
         {
+          text: "Alibaba: Stock Analysis (Aug 2025)",
+          articleSlug: "alibaba-baba-stock-analysis-complex-era-growth-risk",
+        },
+        {
+          text: "Alibaba: Drawdown Analysis (Jun 2026)",
+          articleSlug: "alibaba-baba-quantitative-analysis-drawdown-factor-exposures",
+        },
+        {
           text: "Figma IPO Deep Dive (Aug 2025)",
           articleSlug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
+        },
+        {
+          text: "The 2026 Mega-IPO Convergence (Jun 2026)",
+          articleSlug: "2026-mega-ipo-convergence-market-analysis-systemic-risk",
         },
         {
           text: "Stock Wipeout Probability Analysis",
@@ -129,12 +145,32 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "navigating-2026-shift-comprehensive-macro-economic-outlook",
         },
         {
+          text: "The Powell Pivot (Aug 2025)",
+          articleSlug: "powell-pivot-navigating-market-crosscurrents-fed-easing-signal",
+        },
+        {
+          text: "The Magnificent Seven Bubble? (Sep 2025)",
+          articleSlug: "magnificent-seven-ai-titans-bubble-analysis",
+        },
+        {
+          text: "Navigating the Turning Tide (Sep 2025)",
+          articleSlug: "navigating-turning-tide-2025-macro-analysis",
+        },
+        {
           text: "The Multi-Asset Inflection Point (Sep 2025)",
           articleSlug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
         },
         {
           text: "The Market Cycle (Howard Marks)",
           articleSlug: "mastering-market-cycle-howard-marks-summary",
+        },
+        {
+          text: "The New Golden Age (Sep 2025)",
+          articleSlug: "new-golden-age-structural-bull-market-analysis",
+        },
+        {
+          text: "Rarified Air: US Valuations (Sep 2025)",
+          articleSlug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
         },
         {
           text: "2025 Fixed Income Turning Point (Sep 2025)",
@@ -145,8 +181,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "trade-war-redux-october-10-market-shock-analysis",
         },
         {
+          text: "High Altitude: US Valuations (Nov 2025)",
+          articleSlug: "high-altitude-deconstructing-us-stock-market-valuation",
+        },
+        {
           text: "Grey Rhino: Yen Carry Trade (Dec 2025)",
           articleSlug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
+        },
+        {
+          text: "ES & NQ Futures (Dec 2025)",
+          articleSlug: "es-nq-futures-engine-room-global-economy",
         },
         {
           text: "The 2025 Financial Market Retrospective (Dec 2025)",
@@ -171,6 +215,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "The Transient Shock (Jul 2026)",
           articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
+        },
+        {
+          text: "2026 Fixed Income Turning Points (Aug 2026)",
+          articleSlug: "quantitative-assessment-fixed-income-market-turning-points",
         },
       ]
     }
