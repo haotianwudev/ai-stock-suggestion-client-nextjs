@@ -37,7 +37,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/alphabet-googl-dcf-interactive-valuation",
-    title: "DCF Valuation Analysis of Google",
+    title: "DCF Valuation Analysis of Google (Jun 2025)",
     articleSlug: "interactive-alphabet-googl-valuation-analysis",
     date: "2025-06-06",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -61,7 +61,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/microsoft-msft-ev-ebitda-vs-dcf",
-    title: "MSFT: EV/EBITDA vs DCF",
+    title: "MSFT: EV/EBITDA vs DCF (Jun 2025)",
     articleSlug: "deep-research-microsoft-valuation-analysis",
     date: "2025-06-21",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -133,7 +133,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/apple-financial-health-metrics-mislead",
-    title: "Apple's Financial Health: When Traditional Metrics Mislead",
+    title: "Apple's Financial Health (Jul 2025)",
     articleSlug: "apple-financial-health-analysis-traditional-metrics-mislead",
     date: "2025-07-05",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -253,7 +253,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/figma-ipo-post-ipo-analysis",
-    title: "Figma (NYSE: FIG): A Post-IPO Deep Dive into the Generational SaaS Company",
+    title: "Figma: A Post-IPO Deep Dive (Aug 2025)",
     articleSlug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
     date: "2025-08-03",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -269,7 +269,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/druckenmiller-doctrine-asymmetric-returns",
-    title: "The Druckenmiller Doctrine: Mastering Asymmetric Returns",
+    title: "The Druckenmiller Doctrine (Aug 2025)",
     articleSlug: "druckenmiller-doctrine-asymmetric-returns",
     date: "2025-08-04",
     labels: [ArticleLabel.FORM13F],
@@ -285,7 +285,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "quant/quantitative-support-level-modeling",
-    title: "Quantitative Support Level Modeling: From Heuristic to Machine Learning",
+    title: "Quantitative Support Level Modeling",
     articleSlug: "quantitative-support-level-modeling-machine-learning",
     date: "2025-08-06",
     labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
@@ -301,7 +301,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/13f-manager-profiles-idea-generation-guide",
-    title: "Unlocking Institutional Portfolios: A Strategic Guide to SEC Form 13F",
+    title: "Unlocking SEC Form 13F",
     articleSlug: "unlocking-institutional-portfolios-strategic-guide-sec-form-13f",
     date: "2025-08-09",
     labels: [ArticleLabel.FORM13F, ArticleLabel.FINANCE101],
@@ -333,7 +333,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "finance101/charlie-munger-worldly-wisdom",
-    title: "The Worldly Wisdom of Charles T. Munger",
+    title: "The Worldly Wisdom of Munger (Aug 2025)",
     articleSlug: "worldly-wisdom-charles-munger-multidisciplinary-approach",
     date: "2025-08-15",
     labels: [ArticleLabel.FINANCE101, ArticleLabel.FORM13F],
@@ -373,7 +373,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/burry-q2-2025-cassandra-pivot",
-    title: "The Cassandra Pivot: Reading Michael Burry's Q2 2025 13F",
+    title: "The Cassandra Pivot (Q2 2025)",
     articleSlug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
     date: "2025-08-24",
     labels: [ArticleLabel.FORM13F],
@@ -399,7 +399,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/congressional-stock-trading-political-alpha",
-    title: "Political Alpha: Tracking Congressional Stock Trading",
+    title: "Political Alpha (Aug 2025)",
     articleSlug: "political-alpha-congressional-stock-trading-guide",
     date: "2025-08-28",
     labels: [ArticleLabel.FORM13F, ArticleLabel.FINANCE101],
@@ -453,7 +453,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/multi-asset-strategy-peak-valuations",
-    title: "Multi-Asset Strategy for Peak Valuations and Monetary Easing",
+    title: "Multi-Asset Strategy for Peak Valuations and Monetary Easing (Sep 2025)",
     articleSlug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
     date: "2025-09-06",
     labels: [ArticleLabel.MACRO],
@@ -462,7 +462,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/howard-marks-mastering-market-cycle",
-    title: "Howard Marks: Mastering the Market Cycle",
+    title: "Howard Marks: Mastering the Market Cycle (Sep 2025)",
     articleSlug: "mastering-market-cycle-howard-marks-summary",
     date: "2025-09-08",
     labels: [ArticleLabel.MACRO, ArticleLabel.FINANCE101],
@@ -651,7 +651,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/geopolitical-shock-market-drawdown-playbook",
-    title: "Trading Geopolitical Shocks: Historical Precedent and an Investor Playbook",
+    title: "Trading Geopolitical Shocks: Historical Precedent and an Investor Playbook (Oct 2025)",
     articleSlug: "trade-war-redux-october-10-market-shock-analysis",
     date: "2025-10-10",
     labels: [ArticleLabel.MACRO],
@@ -723,7 +723,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/insider-trading-signal-form4",
-    title: "Reading Insider Trading: Form 4 Filings as a Market Sentiment Signal",
+    title: "Insider Trading: Form 4 Filings",
     articleSlug: "insiders-edge-comprehensive-analysis",
     date: "2025-10-22",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -804,7 +804,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/burry-circular-financing-ai-short-thesis",
-    title: "Reading a 13F: Michael Burry's Circular Financing Thesis Against AI",
+    title: "Burry's Circular Financing Thesis (Nov 2025)",
     articleSlug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
     date: "2025-11-05",
     labels: [ArticleLabel.FORM13F],
@@ -831,7 +831,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/tesla-ai-binary-bet-valuation",
-    title: "Tesla's AI Binary Bet: When a Stock Valuation Detaches From Its Core Business",
+    title: "Tesla's AI Binary Bet (Nov 2025)",
     articleSlug: "tesla-tsla-fundamental-dashboard-ai-binary-bet",
     date: "2025-11-09",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -840,7 +840,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form13f/berkshire-succession-insurance-float-model",
-    title: "Berkshire's Succession: Greg Abel, Insurance Float, and the Conglomerate Model",
+    title: "Berkshire's Succession (Nov 2025)",
     articleSlug: "buffett-legacy-berkshire-succession",
     date: "2025-11-11",
     labels: [ArticleLabel.FORM13F],
@@ -885,7 +885,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form-13f/david-tepper-appaloosa-q3-2025",
-    title: "David Tepper: The Contrarian Master — Q3 2025 Portfolio",
+    title: "The Contrarian Master (Q3 2025)",
     articleSlug: "david-tepper-contrarian-master-q3-2025-portfolio",
     date: "2025-11-18",
     labels: [ArticleLabel.FORM13F],
@@ -912,7 +912,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/nvidia-crush-despite-beat",
-    title: "NVIDIA: Why the Stock Fell Despite Beating Estimates",
+    title: "NVIDIA: The Crush Despite the Beat (Nov 2025)",
     articleSlug: "nvidia-deep-dive-crush-despite-beat-analyzing-valuation",
     date: "2025-11-23",
     labels: [ArticleLabel.STOCK_ANALYSIS],
@@ -948,7 +948,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "stock-analysis/analyst-consensus-target-prices",
-    title: "Decoding the Analyst Consensus: Target Prices & Conflicts",
+    title: "Decoding the Analyst Consensus",
     articleSlug: "decoding-analyst-consensus-target-prices-conflicts-epistemology",
     date: "2025-12-01",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
@@ -966,7 +966,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/grey-rhino-yen-carry-trade",
-    title: "The Grey Rhino: Yen Carry Trade Unwind",
+    title: "The Grey Rhino: Yen Carry Trade Unwind (Dec 2025)",
     articleSlug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
     date: "2025-12-07",
     labels: [ArticleLabel.MACRO],
@@ -1227,7 +1227,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/warsh-era",
-    title: "The Warsh Era",
+    title: "The Warsh Era (Feb 2026)",
     articleSlug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
     date: "2026-02-01",
     labels: [ArticleLabel.MACRO],
@@ -1263,7 +1263,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "finance101/li-lu-himalaya",
-    title: "Li Lu: Masterclass in Value Investing",
+    title: "Li Lu: Masterclass in Value Investing (Mar 2026)",
     articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
     date: "2026-03-05",
     labels: [ArticleLabel.FINANCE101, ArticleLabel.STOCK_ANALYSIS],
@@ -1371,7 +1371,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form-13f/stanley-druckenmiller-duquesne",
-    title: "The Duquesne Paradigm",
+    title: "The Duquesne Paradigm (Feb 2026)",
     articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
     date: "2026-02-23",
     labels: [ArticleLabel.FORM13F],
@@ -1380,7 +1380,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "form-13f/li-lu-himalaya-capital",
-    title: "Masterclass of Li Lu",
+    title: "Masterclass of Li Lu (Feb 2026)",
     articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
     date: "2026-02-25",
     labels: [ArticleLabel.FORM13F],
@@ -1632,7 +1632,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "quant/structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
-    title: "Structural Dynamics of the U.S. Dollar",
+    title: "Structural Dynamics of the U.S. Dollar (Apr 2026)",
     articleSlug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
     date: "2026-04-21",
     labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
@@ -1929,7 +1929,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "macro/transient-shock",
-    title: "The Transient Shock & Disinflation",
+    title: "The Transient Shock & Disinflation (Jul 2026)",
     articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
     date: "2026-07-05",
     labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],

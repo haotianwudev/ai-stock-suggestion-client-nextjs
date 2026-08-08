@@ -11,7 +11,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Systematic Trading vs Machine Learning Quant Trading",
+          text: "Systematic vs. ML Quant Trading",
           articleSlug: "systematic-vs-model-quantitative-trading-evolution",
         },
         {
@@ -36,11 +36,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
         },
         {
-          text: "Index Inclusion Effects",
-          articleSlug: "sp500-inclusion-anomaly-december-2025-deep-research",
-        },
-        {
-          text: "Order Flow Anomalies: Sweeps and Traps",
+          text: "Order Flow Anomalies",
           articleSlug: "order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
         },
         {
@@ -48,7 +44,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "traders-guide-futures-specials-market-structure-anomalies",
         },
         {
-          text: "Calendar Anomalies & Seasonal Patterns",
+          text: "Index Inclusion Effects",
+          articleSlug: "sp500-inclusion-anomaly-december-2025-deep-research",
+        },
+        {
+          text: "Calendar Anomalies",
           articleSlug: "seasons-market-calendar-anomalies-trading-adages",
         },
         {
@@ -56,32 +56,32 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
         },
         {
-          text: "Research Paper: A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility",
-          articleSlug: "unified-theory-market-dynamics-order-flow-impact-volatility",
-        },
-        {
           text: "The Dark Index (DIX)",
           articleSlug: "dark-index-dix-understanding-short-is-long-market-microstructure",
         },
         {
-          text: "Supply Chain Quant Trading Signals",
+          text: "A Unified Theory of Market Dynamics",
+          articleSlug: "unified-theory-market-dynamics-order-flow-impact-volatility",
+        },
+        {
+          text: "Supply Chain Trading Signals",
           articleSlug: "supply-chain",
           visualGuideUrl: "https://i.imgur.com/vqAxsnD.png",
         },
         {
-          text: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
+          text: "Direct Indexing & Tax-Loss Harvesting",
           articleSlug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
         },
         {
-          text: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
+          text: "The Kelly Criterion: Optimal Position Sizing",
           articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
         },
         {
-          text: "The Pricing of Cross-Border Dual-Listed Equities",
+          text: "Cross-Border Dual-Listed Equities",
           articleSlug: "pricing-cross-border-dual-listed-equities",
         },
         {
-          text: "Quantitative Foundations of Long-Short Equity Portfolios",
+          text: "Long-Short Equity Portfolios",
           articleSlug: "quantitative-foundations-long-short-equity-portfolios",
         },
       ]
@@ -96,16 +96,16 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Deep Learning Evolution in Quant Trading",
+          text: "Deep Learning Evolution",
           articleSlug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
+        },
+        {
+          text: "Assumptions of ML in Quant Trading",
+          articleSlug: "foundational-assumptions-machine-learning-quantitative-trading",
         },
         {
           text: "Battle the Overfitting",
           articleSlug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
-        },
-        {
-          text: "Assumptions of Machine Learning in Quantitative Trading",
-          articleSlug: "foundational-assumptions-machine-learning-quantitative-trading",
         },
         {
           text: "Volatility Forecasting",
@@ -163,7 +163,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "mechanics-of-alpha-raw-data-realized-returns",
         },
         {
-          text: "Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction",
+          text: "Strategy Decay & Factor Fragility",
           articleSlug: "strategy-decay-factor-fragility-regime-aware-portfolio-construction",
         },
       ]
@@ -194,6 +194,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
         },
         {
+          text: "Alpha Factory Blueprint",
+          articleSlug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
+        },
+        {
           text: "Volatility Hedge Fund",
           articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
         },
@@ -202,11 +206,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "hedge-fund-data-driven-edge-alpha-generation",
         },
         {
-          text: "The Institutional Playbook for Exploiting the Common Investor",
+          text: "The Institutional Playbook",
           articleSlug: "the-harvest-institutional-exploitation-retail-investors",
         },
         {
-          text: "Filtering Techniques Explained",
+          text: "Filtering Techniques",
           articleSlug: "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
         },
         {
@@ -214,15 +218,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "institutional-hft-market-manipulation-regulatory-framework",
         },
         {
-          text: "The Ontology of Value: Financial Data Classification and Lifecycle Management",
+          text: "The Ontology of Value",
           articleSlug: "ontology-of-value-financial-data-classification-lifecycle-management",
         },
         {
-          text: "The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds",
-          articleSlug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
-        },
-        {
-          text: "Advanced GitLab SDLC for Quantitative Development",
+          text: "Advanced GitLab SDLC",
           articleSlug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
         },
       ]
@@ -253,7 +253,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "stock-factor-models-comprehensive-guide",
         },
         {
-          text: "Efficient Frontier & Portfolio Optimization",
+          text: "The Efficient Frontier",
           articleSlug: "efficient-frontier-portfolio-optimization-mathematics",
         },
         {
@@ -265,7 +265,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "all-weather-strategy-new-economic-climate",
         },
         {
-          text: "Beyond Leverage: Risk Parity Through Call Writing",
+          text: "Risk Parity Through Call Writing",
           articleSlug: "beyond-leverage-risk-parity-call-writing",
         },
         {
@@ -295,11 +295,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "integer-optimization-finance-continuous-theory-discrete-execution",
         },
         {
-          text: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
+          text: "Factor Models in Machine Learning",
           articleSlug: "factor-models-machine-learning-risk-alpha-prediction",
         },
         {
-          text: "Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms",
+          text: "Entropy Methods in Portfolio Construction",
           articleSlug: "entropy-methods-portfolio-construction",
         },
         {

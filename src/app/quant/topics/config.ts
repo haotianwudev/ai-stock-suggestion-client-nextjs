@@ -15,11 +15,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "monte-carlo-simulation-quantitative-finance-stochastic-modeling",
         },
         {
-          text: "Monte Carlo Simulation for Trading Robustness",
+          text: "Monte Carlo for Trading Robustness",
           articleSlug: "monte-carlo-robustness-protocols-stress-testing-systematic-trading",
         },
         {
-          text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
+          text: "Monte Carlo for Derivative Pricing",
           articleSlug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
         },
         {
@@ -27,7 +27,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "convergence-analysis-quantitative-finance-measure-theory",
         },
         {
-          text: "Portfolio Monte Carlo Simulation Tools",
+          text: "Monte Carlo Simulation Tools",
           url: "https://www.portfoliovisualizer.com/monte-carlo-simulation",
         },
       ]
@@ -42,7 +42,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Geometry of Rates: Principal Component Analysis in Fixed Income",
+          text: "The Geometry of Rates: PCA in Fixed Income",
           articleSlug: "geometry-of-rates-pca-fixed-income-markets",
         },
         {
@@ -51,23 +51,23 @@ export const topicsConfig: Record<string, TopicConfig> = {
           videoUrl: "https://youtu.be/FgakZw6K1QQ",
         },
         {
-          text: "Correlation Matrix Analysis Tools",
-          url: "https://www.portfoliovisualizer.com/factor-analysis",
+          text: "Python PCA Guide",
+          url: "https://scikit-learn.org/stable/modules/decomposition.html#pca",
         },
         {
-          text: "Python PCA Implementation Guide",
-          url: "https://scikit-learn.org/stable/modules/decomposition.html#pca",
+          text: "Advanced Dynamics of Correlation",
+          articleSlug: "advanced-dynamics-correlation-quantitative-finance",
+        },
+        {
+          text: "Correlation Matrix Tools",
+          url: "https://www.portfoliovisualizer.com/factor-analysis",
         },
         {
           text: "Decoding the Bond Term Premium",
           articleSlug: "bond-term-premium-fixed-income-dynamics-pricing-models",
         },
         {
-          text: "Advanced Dynamics of Correlation in Quantitative Finance",
-          articleSlug: "advanced-dynamics-correlation-quantitative-finance",
-        },
-        {
-          text: "Conformal Prediction for Portfolio Risk: Beyond VaR",
+          text: "Conformal Prediction: Beyond VaR",
           articleSlug: "conformal-prediction-portfolio-risk-var",
         },
       ]
@@ -82,8 +82,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Black Scholes Model and Risk Neutral Pricing",
+          text: "Black-Scholes Model",
           articleSlug: "black-scholes-analytics-laboratory-axioms-option-pricing",
+        },
+        {
+          text: "Stochastic Calculus and Ito's Lemma",
+          articleSlug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
+        },
+        {
+          text: "Closed-Form Pricing Models",
+          articleSlug: "beyond-black-scholes",
         },
         {
           text: "Structured Notes",
@@ -98,31 +106,23 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "autocallable-strategy-engineered-yield-sideways-markets",
         },
         {
-          text: "Monte Carlo Simulation for Derivative Pricing and Simulation Models",
+          text: "Monte Carlo for Derivative Pricing",
           articleSlug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
         },
         {
-          text: "Stochastic Calculus and Ito's Lemma",
-          articleSlug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
-        },
-        {
-          text: "Pricing Models with closed form solutions",
-          articleSlug: "beyond-black-scholes",
-        },
-        {
-          text: "Option Volatility Modeling: SVI, Dupire and Heston",
+          text: "SVI, Dupire & Heston Models",
           articleSlug: "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
         },
         {
-          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+          text: "Sticky Strike vs. Sticky Delta",
           articleSlug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
         },
         {
-          text: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
+          text: "Unpacking CDS: Credit Default Swaps",
           articleSlug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
         },
         {
-          text: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
+          text: "Optimal Early Exercise of American Calls",
           articleSlug: "optimal-early-exercise-american-call-options-dividend-stocks",
         },
       ]
@@ -137,23 +137,23 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Evolution of Autonomous Execution: Function Calling to Agentic Harnesses",
+          text: "The Evolution of Autonomous Execution",
           articleSlug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
         },
         {
-          text: "The Architecture of Harness Engineering",
+          text: "Harness Engineering Architecture",
           articleSlug: "autonomous-ai-agents-architecture-harness-engineering",
         },
         {
-          text: "Model Context Protocol in Quantitative Finance",
+          text: "Model Context Protocol",
           articleSlug: "model-context-protocol-quantitative-finance",
         },
         {
-          text: "Agent-to-Agent Protocols in Multi-Agent Financial Systems",
+          text: "Agent-to-Agent Protocols in Finance",
           articleSlug: "architecture-interoperability-agent-protocols-financial-systems",
         },
         {
-          text: "The Evolution of RAG in Quantitative Finance",
+          text: "The Evolution of RAG",
           articleSlug: "architecting-alpha-rag-evolution-quantitative-finance",
         },
         {
@@ -161,7 +161,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "architectures-intelligence-advanced-rag-context-engineering",
         },
         {
-          text: "RAG Systems with Metadata-Driven Filtering",
+          text: "RAG with Metadata Filtering",
           articleSlug: "rag-metadata-filtering-advanced-architectures",
         },
         {
@@ -169,11 +169,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "database-agents-mcp-langchain",
         },
         {
-          text: "Agentic Retrieval Systems with LangChain",
+          text: "Agentic Retrieval with LangChain",
           articleSlug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
         },
         {
-          text: "Architecting Autonomous Quantitative Agents",
+          text: "Architecting Autonomous Agents",
           articleSlug: "architecting-autonomous-quantitative-agents-langchain-ecosystem",
         },
         {
@@ -181,7 +181,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "architecting-agentic-ai-quantitative-finance-wealth-management",
         },
         {
-          text: "Building Interactive Financial Copilots",
+          text: "Interactive Financial Copilots",
           articleSlug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
         },
         {
@@ -204,43 +204,43 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Risk Prism: Architecture of Modern Factor Models",
+          text: "The Risk Prism: Factor Models",
           articleSlug: "risk-prism-architecture-modern-factor-models",
         },
         {
-          text: "Conformal Prediction for Portfolio Risk: Beyond VaR",
+          text: "Conformal Prediction: Beyond VaR",
           articleSlug: "conformal-prediction-portfolio-risk-var",
         },
         {
-          text: "Advanced Dynamics of Correlation in Quantitative Finance",
+          text: "Advanced Dynamics of Correlation",
           articleSlug: "advanced-dynamics-correlation-quantitative-finance",
         },
         {
-          text: "Quantitative Analysis of Tail Risk: CBOE SKEW",
+          text: "Tail Risk: CBOE SKEW",
           articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
         },
         {
-          text: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
+          text: "Unpacking CDS: Credit Default Swaps",
           articleSlug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
         },
         {
-          text: "The Infrastructure of Counterparty Credit Risk",
+          text: "Counterparty Credit Risk",
           articleSlug: "infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release",
         },
         {
-          text: "The Repo Market & Dollar Funding: Systemic Risks",
+          text: "The Repo Market & Dollar Funding",
           articleSlug: "repo-market-dollar-funding-mechanics-strategies-systemic-risks",
         },
         {
-          text: "The Architecture of Private Credit: Emerging Vulnerabilities",
+          text: "The Architecture of Private Credit",
           articleSlug: "architecture-private-credit-structural-mechanics-vulnerabilities",
         },
         {
-          text: "Form 13F Disclosures: Copycat Economics and Systemic Risk",
+          text: "Form 13F Disclosures and Systemic Risk",
           articleSlug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",
         },
         {
-          text: "Example: Systemic Fragility — the 2026 South Korean Equity Crisis",
+          text: "Example: The 2026 South Korean Equity Crisis",
           articleSlug: "systemic-fragility-quantitative-contagion-2026-korean-crisis",
         },
         {

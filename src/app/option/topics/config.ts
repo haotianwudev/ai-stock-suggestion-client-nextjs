@@ -23,7 +23,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "options-strategy-report-october-10-market-event",
         },
         {
-          text: "Tax-Efficient Option Writing and Common Pitfalls",
+          text: "Tax-Efficient Option Writing",
           articleSlug: "tax-efficient-option-writing-comprehensive-guide",
         },
         {
@@ -64,7 +64,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
         },
         {
-          text: "Black Scholes Model and Risk Neutral Pricing",
+          text: "Black-Scholes Model",
           articleSlug: "black-scholes-analytics-laboratory-axioms-option-pricing",
         },
         {
@@ -99,7 +99,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
         },
         {
-          text: "Using Machine Learning to Predict Volatility",
+          text: "Volatility Forecasting",
           articleSlug: "quantitative-analyst-guide-volatility-forecasting",
         },
         {
@@ -119,15 +119,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
         },
         {
-          text: "Option Volatility Modeling: SVI, Dupire and Heston",
+          text: "SVI, Dupire & Heston Models",
           articleSlug: "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
         },
         {
-          text: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
+          text: "Sticky Strike vs. Sticky Delta",
           articleSlug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
         },
         {
-          text: "The Mathematics & Microstructure of the Cboe VIX",
+          text: "Cboe VIX Microstructure",
           articleSlug: "mathematics-microstructure-cboe-vix",
         },
       ]
@@ -158,11 +158,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.barchart.com/stocks/quotes/$SPX/volatility-charts",
         },
         {
-          text: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
+          text: "Decomposing the Volatility Risk Premium",
           articleSlug: "decomposing-volatility-risk-premium-structural-arbitrage",
         },
         {
-          text: "Mastering SPX Option Selling Strategies: A Quantitative Guide to Harvesting the Variance Risk Premium",
+          text: "Mastering SPX Option Selling Strategies",
           articleSlug: "mastering-spx-option-selling-strategies-variance-risk-premium",
         },
       ]
@@ -222,11 +222,11 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "advanced-option-rolling-mechanics",
         },
         {
-          text: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
+          text: "Optimal Early Exercise of American Calls",
           articleSlug: "optimal-early-exercise-american-call-options-dividend-stocks",
         },
         {
-          text: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
+          text: "The Kelly Criterion: Optimal Position Sizing",
           articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
         },
       ]

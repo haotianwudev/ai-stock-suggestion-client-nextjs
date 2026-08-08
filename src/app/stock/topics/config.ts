@@ -11,27 +11,27 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Decoding the Analyst Consensus: Target Prices & Conflicts",
+          text: "Decoding the Analyst Consensus",
           articleSlug: "decoding-analyst-consensus-target-prices-conflicts-epistemology",
         },
         {
-          text: "Decoding Stock Analysis: DCF Model Using AI",
+          text: "DCF Model Using AI",
           articleSlug: "decoding-stock-analysis-dcf-model-using-ai",
         },
         {
-          text: "MSFT: EV/EBITDA vs DCF",
+          text: "MSFT: EV/EBITDA vs DCF (Jun 2025)",
           articleSlug: "deep-research-microsoft-valuation-analysis",
         },
         {
-          text: "DCF Valuation Analysis of Google",
+          text: "DCF Valuation Analysis of Google (Jun 2025)",
           articleSlug: "interactive-alphabet-googl-valuation-analysis",
         },
         {
-          text: "Apple's Financial Health: When Traditional Metrics Mislead",
+          text: "Apple's Financial Health (Jul 2025)",
           articleSlug: "apple-financial-health-analysis-traditional-metrics-mislead",
         },
         {
-          text: "The Insider's Edge: Signal from Insider Trading",
+          text: "The Insider's Edge",
           articleSlug: "insiders-edge-comprehensive-analysis",
         },
         {
@@ -43,15 +43,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "quantitative-support-level-modeling-machine-learning",
         },
         {
-          text: "NVIDIA Deep Dive: Why the Crush Despite the Beat?",
+          text: "NVIDIA: The Crush Despite the Beat (Nov 2025)",
           articleSlug: "nvidia-deep-dive-crush-despite-beat-analyzing-valuation",
         },
         {
-          text: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
+          text: "Tesla: The AI Binary Bet (Nov 2025)",
           articleSlug: "tesla-tsla-fundamental-dashboard-ai-binary-bet",
         },
         {
-          text: "Figma IPO Deep Dive",
+          text: "Figma IPO Deep Dive (Aug 2025)",
           articleSlug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
         },
         {
@@ -70,7 +70,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Mastering Coattail Investing: SEC Form 13F Analysis",
+          text: "Mastering Coattail Investing",
           articleSlug: "mastering-coattail-investing-sec-form-13f-analysis",
         },
         {
@@ -78,39 +78,39 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "unlocking-institutional-portfolios-strategic-guide-sec-form-13f",
         },
         {
-          text: "The Masterclass of Li Lu: Himalaya Capital",
+          text: "Li Lu: Himalaya Capital (Feb 2026)",
           articleSlug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
         },
         {
-          text: "The Duquesne Paradigm: Druckenmiller's Q4 2025 Shift",
-          articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
-        },
-        {
-          text: "The Druckenmiller Doctrine: Asymmetric Returns",
+          text: "The Druckenmiller Doctrine (Aug 2025)",
           articleSlug: "druckenmiller-doctrine-asymmetric-returns",
         },
         {
-          text: "The Cassandra Pivot: Michael Burry's Q2 2025 Reversal",
+          text: "Druckenmiller's Q4 2025 Shift",
+          articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
+        },
+        {
+          text: "Burry's Q2 2025 Reversal",
           articleSlug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
         },
         {
-          text: "The AI Antithesis: Michael Burry's Q3 2025 Pivot",
+          text: "Burry's Q3 2025 Pivot",
           articleSlug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
         },
         {
-          text: "David Tepper: The Contrarian Master",
+          text: "David Tepper: The Contrarian Master (Nov 2025)",
           articleSlug: "david-tepper-contrarian-master-q3-2025-portfolio",
         },
         {
-          text: "Warren Buffett's Legacy and Berkshire's Succession",
+          text: "Buffett's Legacy and Succession (Nov 2025)",
           articleSlug: "buffett-legacy-berkshire-succession",
         },
         {
-          text: "The Worldly Wisdom of Charles T. Munger",
+          text: "The Worldly Wisdom of Munger (Aug 2025)",
           articleSlug: "worldly-wisdom-charles-munger-multidisciplinary-approach",
         },
         {
-          text: "Political Alpha: Congressional Stock Trading",
+          text: "Political Alpha (Aug 2025)",
           articleSlug: "political-alpha-congressional-stock-trading-guide",
         },
       ]
@@ -125,52 +125,52 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Navigating the 2026 Shift: Comprehensive Macro Outlook",
+          text: "The 2026 Macro Outlook (Dec 2025)",
           articleSlug: "navigating-2026-shift-comprehensive-macro-economic-outlook",
         },
         {
-          text: "A Quantitative Guide to Calculate the Investment Clock",
-          articleSlug: "quantitative-guide-calculate-investment-clock",
-        },
-        {
-          text: "Structural Dynamics of the U.S. Dollar",
-          articleSlug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
-        },
-        {
-          text: "The Warsh Era: American Monetary Policy",
-          articleSlug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
-        },
-        {
-          text: "The Grey Rhino: Yen Carry Trade Unwind",
-          articleSlug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
-        },
-        {
-          text: "The Anatomy of a Transient Shock: 2026 Stagflation Fears",
-          articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
-        },
-        {
-          text: "The Great Decoupling: 2026 Asset Bubble Analysis",
-          articleSlug: "great-decoupling-2026-asset-bubble-mathematical-analysis",
-        },
-        {
-          text: "Navigating the Turning Point: 2025 Fixed Income Analysis",
-          articleSlug: "navigating-turning-point-2025-fixed-income-analysis",
-        },
-        {
-          text: "Mastering the Market Cycle (Howard Marks)",
-          articleSlug: "mastering-market-cycle-howard-marks-summary",
-        },
-        {
-          text: "Navigating the Inflection Point: Multi-Asset Strategy",
+          text: "The Multi-Asset Inflection Point (Sep 2025)",
           articleSlug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
         },
         {
-          text: "Trade War Redux: October 10th Market Shock",
+          text: "The Market Cycle (Howard Marks)",
+          articleSlug: "mastering-market-cycle-howard-marks-summary",
+        },
+        {
+          text: "2025 Fixed Income Turning Point (Sep 2025)",
+          articleSlug: "navigating-turning-point-2025-fixed-income-analysis",
+        },
+        {
+          text: "Trade War Redux (Oct 2025)",
           articleSlug: "trade-war-redux-october-10-market-shock-analysis",
         },
         {
-          text: "The 2025 Financial Market Retrospective",
+          text: "Grey Rhino: Yen Carry Trade (Dec 2025)",
+          articleSlug: "grey-rhino-monetary-divergence-yen-carry-trade-unwind",
+        },
+        {
+          text: "The 2025 Financial Market Retrospective (Dec 2025)",
           articleSlug: "2025-financial-market-retrospective-seven-pivotal-events",
+        },
+        {
+          text: "The Great Decoupling (Jan 2026)",
+          articleSlug: "great-decoupling-2026-asset-bubble-mathematical-analysis",
+        },
+        {
+          text: "The Warsh Era (Feb 2026)",
+          articleSlug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
+        },
+        {
+          text: "Calculating the Investment Clock (Apr 2026)",
+          articleSlug: "quantitative-guide-calculate-investment-clock",
+        },
+        {
+          text: "U.S. Dollar Dynamics (Apr 2026)",
+          articleSlug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
+        },
+        {
+          text: "The Transient Shock (Jul 2026)",
+          articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
         },
       ]
     }
@@ -184,15 +184,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Architecture of Exchange-Traded Funds",
+          text: "ETF Architecture",
           articleSlug: "architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks",
         },
         {
-          text: "Mutual Funds vs ETFs: The Definitive Investment Guide",
+          text: "Mutual Funds vs ETFs",
           articleSlug: "mutual-funds-vs-etfs-definitive-investment-guide",
         },
         {
-          text: "Beyond the Benchmarks: High-Growth ETF Alternatives to QQQ and VOO",
+          text: "ETF Alternatives to QQQ and VOO",
           articleSlug: "beyond-benchmarks-high-growth-etf-alternatives-qqq-voo",
         },
         {
@@ -204,7 +204,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "russell-2000-small-cap-engine-deep-dive",
         },
         {
-          text: "Dynamics of the Global ETF Market",
+          text: "The Global ETF Market",
           articleSlug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
         },
       ]
@@ -219,27 +219,27 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "A Comprehensive Guide to Trusts: Estate Planning",
+          text: "Trusts & Estate Planning",
           articleSlug: "comprehensive-guide-trusts-estate-planning",
         },
         {
-          text: "The Architect's Guide to a Secure Retirement",
+          text: "Building a Secure Retirement",
           articleSlug: "retirement-architect-guide-secure-retirement",
         },
         {
-          text: "Insurance Products for Retirement Security",
+          text: "Insurance for Retirement Security",
           articleSlug: "quantitative-analysis-insurance-products-retirement-security",
         },
         {
-          text: "Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
+          text: "Tax-Loss Harvesting: Strategy & Execution",
           articleSlug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
         },
         {
-          text: "Direct Indexing & Algorithmic Tax-Loss Harvesting",
+          text: "Direct Indexing & Tax-Loss Harvesting",
           articleSlug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
         },
         {
-          text: "Strategic Asset Allocation for Wealth Preservation",
+          text: "Wealth Preservation Allocation",
           articleSlug: "strategic-asset-allocation-quantitative-framework-wealth-preservation",
         },
       ]
@@ -254,15 +254,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "Prediction Markets: The Financialization of Truth",
+          text: "Prediction Markets",
           articleSlug: "prediction-markets-financialization-truth-complete-trading-guide",
         },
         {
-          text: "The Gift of the Phantom Trader: Trading Psychology",
+          text: "The Phantom Trader",
           articleSlug: "gift-phantom-trader-psychology-winning-through-losing",
         },
         {
-          text: "The Meme Stock Phenomenon: Hype, Risk, and Strategy",
+          text: "The Meme Stock Phenomenon",
           articleSlug: "meme-stock-phenomenon-hype-risk-strategy",
         },
         {
@@ -278,15 +278,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "mechanics-esg-investing-technical-guide",
         },
         {
-          text: "The Digital Sovereign: Bitcoin's Architecture",
+          text: "The Digital Sovereign",
           articleSlug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
         },
         {
-          text: "The Web3 Revolution: Deconstructing DeFi",
+          text: "The Web3 Revolution",
           articleSlug: "web3-revolution-defi-retail-investors",
         },
         {
-          text: "The Investor's Guide to Stablecoins",
+          text: "Guide to Stablecoins",
           articleSlug: "investors-guide-stablecoins-profiting-digital-dollars",
         },
         {
