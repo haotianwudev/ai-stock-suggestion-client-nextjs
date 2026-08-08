@@ -5,12 +5,10 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-// The Stock Analysis page moved to /stock/trending as part of the /stock section
-// redesign (own topics config alongside /option and /quant). This redirect keeps
-// existing bookmarks and external links to /trending working.
-export default function TrendingPage() {
+export default function StockPage() {
   const router = useRouter();
 
+  // Redirect to trending tab by default
   useEffect(() => {
     router.replace('/stock/trending');
   }, [router]);

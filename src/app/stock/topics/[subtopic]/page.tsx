@@ -1,33 +1,33 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTopicConfig } from '../config';
-import QuantTabClient from '@/app/quant/[tab]/client';
+import StockTabClient from '../../trending/client';
 
-const validSubtopics = ['monte-carlo', 'statistical-analysis', 'derivatives-pricing', 'ai-in-quant', 'risk-management'];
+const validSubtopics = ['13f-analysis', 'macro-analysis', 'etf-mutual-fund', 'wealth-planning', 'finance-101'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
-  
+
   if (!validSubtopics.includes(subtopic)) {
     return {};
   }
-  
+
   const topicConfig = getTopicConfig(subtopic);
   if (!topicConfig) {
     return {};
   }
-  
-  const title = `${topicConfig.title} | Quantitative Finance | SOPHIE's Daddy Quant Blog`;
+
+  const title = `${topicConfig.title} | Stock Analysis | SOPHIE's Daddy Quant Blog`;
   const description = topicConfig.description;
-  
+
   return {
     title,
     description,
-    keywords: ['quantitative finance', topicConfig.title.toLowerCase(), 'quant methods', 'financial modeling', 'algorithmic trading'],
+    keywords: ['stock analysis', topicConfig.title.toLowerCase(), '13F filings', 'macro analysis', 'institutional investors'],
     openGraph: {
       title,
       description,
-      url: `https://sophie-ai-finance.com/quant/topics/${subtopic}`,
+      url: `https://sophie-ai-finance.com/stock/topics/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -38,17 +38,17 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/quant/topics/${subtopic}`,
+      canonical: `https://sophie-ai-finance.com/stock/topics/${subtopic}`,
     },
   };
 }
 
-export default async function QuantSubtopicPage({ params }: { params: Promise<{ subtopic: string }> }) {
+export default async function StockSubtopicPage({ params }: { params: Promise<{ subtopic: string }> }) {
   const { subtopic } = await params;
-  
+
   if (!validSubtopics.includes(subtopic)) {
     notFound();
   }
 
-  return <QuantTabClient tab="topics" subtopic={subtopic} />;
+  return <StockTabClient tab="topics" subtopic={subtopic} />;
 }

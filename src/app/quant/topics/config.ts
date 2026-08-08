@@ -128,6 +128,132 @@ export const topicsConfig: Record<string, TopicConfig> = {
       ]
     }
   },
+
+  "ai-in-quant": {
+    id: "ai-in-quant",
+    title: "AI in Quant",
+    description: "Explore how large language models and autonomous AI agents are reshaping quantitative finance — from Retrieval-Augmented Generation and the Model Context Protocol to multi-agent architectures, agentic harnesses, and rigorous agent testing.",
+    primaryArticleSlug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
+    studyGuide: {
+      items: [
+        {
+          text: "The Evolution of Autonomous Execution: Function Calling to Agentic Harnesses",
+          articleSlug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
+        },
+        {
+          text: "The Architecture of Harness Engineering",
+          articleSlug: "autonomous-ai-agents-architecture-harness-engineering",
+        },
+        {
+          text: "Model Context Protocol in Quantitative Finance",
+          articleSlug: "model-context-protocol-quantitative-finance",
+        },
+        {
+          text: "Agent-to-Agent Protocols in Multi-Agent Financial Systems",
+          articleSlug: "architecture-interoperability-agent-protocols-financial-systems",
+        },
+        {
+          text: "The Evolution of RAG in Quantitative Finance",
+          articleSlug: "architecting-alpha-rag-evolution-quantitative-finance",
+        },
+        {
+          text: "Advanced RAG and Context Engineering",
+          articleSlug: "architectures-intelligence-advanced-rag-context-engineering",
+        },
+        {
+          text: "RAG Systems with Metadata-Driven Filtering",
+          articleSlug: "rag-metadata-filtering-advanced-architectures",
+        },
+        {
+          text: "Database Agents with MCP and LangChain",
+          articleSlug: "database-agents-mcp-langchain",
+        },
+        {
+          text: "Agentic Retrieval Systems with LangChain",
+          articleSlug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
+        },
+        {
+          text: "Architecting Autonomous Quantitative Agents",
+          articleSlug: "architecting-autonomous-quantitative-agents-langchain-ecosystem",
+        },
+        {
+          text: "Agentic AI in Wealth Management",
+          articleSlug: "architecting-agentic-ai-quantitative-finance-wealth-management",
+        },
+        {
+          text: "Building Interactive Financial Copilots",
+          articleSlug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
+        },
+        {
+          text: "Architecting AI Agent Testing",
+          articleSlug: "architecting-ai-agent-testing-quantitative-finance",
+        },
+        {
+          text: "The Primacy of Domain Knowledge",
+          articleSlug: "primacy-domain-knowledge-quantitative-finance",
+        },
+      ]
+    }
+  },
+
+  "risk-management": {
+    id: "risk-management",
+    title: "Risk Management",
+    description: "Master the quantitative frameworks behind portfolio and systemic risk — factor risk models, correlation dynamics, tail risk, counterparty credit exposure, and the structural vulnerabilities that turn localized shocks into market-wide contagion.",
+    primaryArticleSlug: "risk-prism-architecture-modern-factor-models",
+    studyGuide: {
+      items: [
+        {
+          text: "The Risk Prism: Architecture of Modern Factor Models",
+          articleSlug: "risk-prism-architecture-modern-factor-models",
+        },
+        {
+          text: "Conformal Prediction for Portfolio Risk: Beyond VaR",
+          articleSlug: "conformal-prediction-portfolio-risk-var",
+        },
+        {
+          text: "Advanced Dynamics of Correlation in Quantitative Finance",
+          articleSlug: "advanced-dynamics-correlation-quantitative-finance",
+        },
+        {
+          text: "Quantitative Analysis of Tail Risk: CBOE SKEW",
+          articleSlug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
+        },
+        {
+          text: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
+          articleSlug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
+        },
+        {
+          text: "The Infrastructure of Counterparty Credit Risk",
+          articleSlug: "infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release",
+        },
+        {
+          text: "The Repo Market & Dollar Funding: Systemic Risks",
+          articleSlug: "repo-market-dollar-funding-mechanics-strategies-systemic-risks",
+        },
+        {
+          text: "The Architecture of Private Credit: Emerging Vulnerabilities",
+          articleSlug: "architecture-private-credit-structural-mechanics-vulnerabilities",
+        },
+        {
+          text: "Form 13F Disclosures: Copycat Economics and Systemic Risk",
+          articleSlug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",
+        },
+        {
+          text: "Example: Systemic Fragility — the 2026 South Korean Equity Crisis",
+          articleSlug: "systemic-fragility-quantitative-contagion-2026-korean-crisis",
+        },
+        {
+          text: "Example: The June 2026 Cross-Asset Contagion",
+          articleSlug: "june-2026-cross-asset-contagion",
+        },
+        {
+          text: "Example: SpaceX Mega-IPO Systemic Risk Analysis",
+          articleSlug: "spacex-public-market-integration-systemic-risk-analysis",
+        },
+      ]
+    }
+  },
 };
 
 export function getTopicConfig(topicId: string): TopicConfig | null {

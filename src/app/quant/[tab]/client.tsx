@@ -11,6 +11,8 @@ import Image from 'next/image';
 import { MonteCarloContent } from "../topics/monte-carlo";
 import { StatisticalAnalysisContent } from "../topics/statistical-analysis";
 import { DerivativesPricingContent } from "../topics/derivatives-pricing";
+import { AiInQuantContent } from "../topics/ai-in-quant";
+import { RiskManagementContent } from "../topics/risk-management";
 import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
 import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
@@ -52,40 +54,62 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
-          <TabsTrigger 
-            value="monte-carlo" 
+        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+          <TabsTrigger
+            value="monte-carlo"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             <span className="block sm:hidden">Monte Carlo</span>
             <span className="hidden sm:block">Monte Carlo Simulation</span>
           </TabsTrigger>
-          <TabsTrigger 
-            value="statistical-analysis" 
+          <TabsTrigger
+            value="statistical-analysis"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             <span className="block sm:hidden">Statistics</span>
             <span className="hidden sm:block">Statistical Analysis</span>
           </TabsTrigger>
-          <TabsTrigger 
-            value="derivatives-pricing" 
+          <TabsTrigger
+            value="derivatives-pricing"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             <span className="block sm:hidden">Derivatives</span>
             <span className="hidden sm:block">Derivatives Pricing</span>
           </TabsTrigger>
+          <TabsTrigger
+            value="ai-in-quant"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">AI</span>
+            <span className="hidden sm:block">AI in Quant</span>
+          </TabsTrigger>
+          <TabsTrigger
+            value="risk-management"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Risk</span>
+            <span className="hidden sm:block">Risk Management</span>
+          </TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="monte-carlo" className="mt-0">
           <MonteCarloContent config={getTopicConfig('monte-carlo') || undefined} />
         </TabsContent>
-        
+
         <TabsContent value="statistical-analysis" className="mt-0">
           <StatisticalAnalysisContent />
         </TabsContent>
-        
+
         <TabsContent value="derivatives-pricing" className="mt-0">
           <DerivativesPricingContent />
+        </TabsContent>
+
+        <TabsContent value="ai-in-quant" className="mt-0">
+          <AiInQuantContent />
+        </TabsContent>
+
+        <TabsContent value="risk-management" className="mt-0">
+          <RiskManagementContent />
         </TabsContent>
       </Tabs>
     </div>
@@ -144,8 +168,8 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">Backtest</span>
             <span className="hidden sm:block">Backtesting</span>
           </TabsTrigger>
-          <TabsTrigger 
-            value="trading-system" 
+          <TabsTrigger
+            value="trading-system"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
             <span className="block sm:hidden">System</span>
