@@ -17,3 +17,11 @@ export const TIER_NAMES: Record<number, string> = {
 export function getTierName(tier: number): string {
   return TIER_NAMES[tier] ?? TIER_NAMES[1];
 }
+
+/** Tier required to view articles flagged with `premiumContent: true`. */
+export const MIN_PREMIUM_TIER = 4;
+
+/** Returns true when the given tier is allowed to read premium articles. */
+export function canAccessPremiumContent(tier: number): boolean {
+  return tier >= MIN_PREMIUM_TIER;
+}

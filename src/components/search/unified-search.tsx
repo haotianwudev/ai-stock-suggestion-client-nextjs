@@ -7,6 +7,8 @@ import { articles } from "@/data/articles";
 import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
+import { useUser } from "@/hooks/use-user";
+import { canAccessPremiumContent } from "@/lib/tiers";
 
 interface UnifiedSearchProps {
   onResultsChange?: (hasResults: boolean) => void;
@@ -65,6 +67,8 @@ export function UnifiedSearch({ onResultsChange }: UnifiedSearchProps) {
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const router = useRouter();
+  const { profile } = useUser();
+  const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
 
   // Debounced search function
   const performSearch = useCallback(async (query: string) => {
@@ -82,7 +86,7 @@ export function UnifiedSearch({ onResultsChange }: UnifiedSearchProps) {
     const searchLower = query.toLowerCase();
     const filteredArticles = articles
       .filter(article => 
-        !article.premiumContent && 
+        (canViewPremium || !article.premiumContent) && 
         (article.title.toLowerCase().includes(searchLower) ||
          (article.description && article.description.toLowerCase().includes(searchLower)))
       )
@@ -134,7 +138,7 @@ export function UnifiedSearch({ onResultsChange }: UnifiedSearchProps) {
         // Continue with article results even if stock search fails
       }
     }
-  }, [onResultsChange]);
+  }, [onResultsChange, canViewPremium]);
 
   // Debounce search
   useEffect(() => {

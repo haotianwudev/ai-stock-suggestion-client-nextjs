@@ -4,12 +4,14 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LineChart, Users, BookOpen, Globe, TrendingUp, Sigma, Rss, Check } from "lucide-react";
+import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
+import { useUser } from "@/hooks/use-user";
+import { canAccessPremiumContent } from "@/lib/tiers";
 
 // Lazy load heavy components
 const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
@@ -104,6 +106,10 @@ export default function Home() {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [showStockData, setShowStockData] = useState(false);
   const [rssCopied, setRssCopied] = useState(false);
+
+  const { profile } = useUser();
+  const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
+  const isAdmin = profile?.tier === 9;
 
   // Get all predefined labels
   const availableLabels = getAllLabels();
@@ -226,13 +232,16 @@ export default function Home() {
                     <Users className="h-3.5 w-3.5" />
                     Meet SOPHIE Daddy
                   </Link>
-                  <Link
-                    href="/book-summary"
-                    className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <BookOpen className="h-3.5 w-3.5" />
-                    Admin
-                  </Link>
+                  {isAdmin && (
+                    <Link
+                      href="/admin"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
+                    >
+                      <Crown className="h-3.5 w-3.5" />
+                      Admin
+                    </Link>
+                  )}
+
                 </div>
               </div>
 
@@ -263,7 +272,7 @@ export default function Home() {
               Interactive Articles
             </h2>
             <p className="text-muted-foreground text-sm max-w-2xl">
-              Explore {articles.filter(a => !a.premiumContent).length}+ articles on quantitative finance, options trading, and market analysis
+              Explore {articles.filter(a => canViewPremium ? true : !a.premiumContent).length}+ articles on quantitative finance, options trading, and market analysis
             </p>
           </div>
 
@@ -280,7 +289,7 @@ export default function Home() {
 
           {/* Pinned Article as Featured */}
           {(() => {
-            const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && !article.premiumContent);
+            const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && (canViewPremium || !article.premiumContent));
             const shouldShowPinned = searchText === '' && selectedLabels.length === 0;
             return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
@@ -309,7 +318,7 @@ export default function Home() {
 
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {getFilteredArticles(articles, searchText, selectedLabels)
-              .filter(article => !article.pinned && !article.premiumContent)
+              .filter(article => !article.pinned && (canViewPremium || !article.premiumContent))
               .map((article) => (
                 <ArticleCard
                   key={article.slug}
@@ -333,7 +342,7 @@ export default function Home() {
           {/* Results Count and Show More/Less Button */}
           {(() => {
             const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels)
-              .filter(article => !article.pinned && !article.premiumContent);
+              .filter(article => !article.pinned && (canViewPremium || !article.premiumContent));
             const displayedCount = showAllArticles ? filteredArticles.length : Math.min(12, filteredArticles.length);
 
             return (

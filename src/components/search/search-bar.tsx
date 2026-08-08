@@ -9,6 +9,8 @@ import { articles } from "@/data/articles";
 import { ApolloClient, InMemoryCache, HttpLink, from, gql } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { getGraphQLUri } from "@/lib/apollo/gql-config";
+import { useUser } from "@/hooks/use-user";
+import { canAccessPremiumContent } from "@/lib/tiers";
 
 interface StockSearchResult {
   ticker: string;
@@ -66,6 +68,8 @@ export function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const { profile } = useUser();
+  const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
 
   // Perform search
   const performSearch = useCallback(async (query: string) => {
@@ -81,10 +85,9 @@ export function SearchBar() {
     const searchLower = query.toLowerCase();
     const filteredArticles = articles
       .filter(article => 
-        !article.premiumContent && 
+        (canViewPremium || !article.premiumContent) && 
         (article.title.toLowerCase().includes(searchLower) ||
-         (article.description && article.description.toLowerCase().includes(searchLower)))
-      )
+         (article.description && article.description.toLowerCase().includes(searchLower))))
       .slice(0, 5);
     
     filteredArticles.forEach(article => {
@@ -132,7 +135,7 @@ export function SearchBar() {
         console.error("Stock search error:", error);
       }
     }
-  }, []);
+  }, [canViewPremium]);
 
   // Debounce search
   useEffect(() => {

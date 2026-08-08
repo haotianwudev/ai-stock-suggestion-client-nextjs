@@ -18,6 +18,8 @@ import { VolatilityContent } from "../topics/volatility";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
+import { useUser } from "@/hooks/use-user";
+import { canAccessPremiumContent } from "@/lib/tiers";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import {
   Chart as ChartJS,
@@ -145,9 +147,11 @@ function OptionsArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const availableLabels = getAllLabels();
+  const { profile } = useUser();
+  const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
 
   const optionsArticles = getFilteredArticles(articles, searchText, selectedLabels)
-    .filter(article => article.options === true && !article.premiumContent);
+    .filter(article => article.options === true && (canViewPremium || !article.premiumContent));
 
   return (
     <Card>

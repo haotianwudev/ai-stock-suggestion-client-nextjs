@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Clock, BookOpen, MessagesSquare } from "lucide-react";
+import { Menu, Clock, BookOpen, MessagesSquare, Crown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SearchBar } from "@/components/search/search-bar";
 import { AuthStatus } from "@/components/auth/auth-status";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/hooks/use-user";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +22,8 @@ const NAV_LINKS = [
 ];
 
 export function Header() {
+  const { profile } = useUser();
+  const isAdmin = profile?.tier === 9;
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container mx-auto flex h-14 sm:h-16 max-w-screen-2xl items-center px-4 sm:px-6">
@@ -57,6 +60,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors whitespace-nowrap"
+              >
+                <Crown className="h-3 w-3" />
+                Admin
+              </Link>
+            )}
           </nav>
 
           {/* Mobile nav menu */}
@@ -75,6 +87,14 @@ export function Header() {
                   </Link>
                 </DropdownMenuItem>
               ))}
+              {isAdmin && (
+                <DropdownMenuItem asChild>
+                  <Link href="/admin" className="flex items-center gap-2 font-semibold text-purple-600 dark:text-purple-400">
+                    <Crown className="h-4 w-4" />
+                    Admin
+                  </Link>
+                </DropdownMenuItem>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
 

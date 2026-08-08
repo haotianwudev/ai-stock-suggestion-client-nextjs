@@ -21,6 +21,8 @@ import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
+import { useUser } from "@/hooks/use-user";
+import { canAccessPremiumContent } from "@/lib/tiers";
 
 interface QuantTabClientProps {
   tab: string;
@@ -179,12 +181,14 @@ function QuantArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const availableLabels = getAllLabels();
+  const { profile } = useUser();
+  const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
 
-  // Filter articles with QUANT label only, excluding premiumContent
+  // Filter articles with QUANT label only, gating premiumContent by tier
   const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
-    .filter(article => 
-      !article.premiumContent && 
-      article.labels?.some((label: string) => 
+    .filter(article =>
+      (canViewPremium || !article.premiumContent) &&
+      article.labels?.some((label: string) =>
         label === 'Quantitative Finance'
       )
     );

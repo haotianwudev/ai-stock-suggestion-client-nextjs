@@ -188,7 +188,6 @@ export const articles2025Q3: Article[] = [
     date: "September 8, 2025",
     imageUrl: "https://img.youtube.com/vi/iT8RowYimos/maxresdefault.jpg",
     youtubeUrl: "https://youtu.be/iT8RowYimos",
-    premiumContent: true,
     labels: [ArticleLabel.MACRO, ArticleLabel.FINANCE101],
   },
   {
@@ -364,7 +363,6 @@ export const articles2025Q3: Article[] = [
     date: "August 15, 2025",
     imageUrl: "https://img.youtube.com/vi/5qiescI6ZiA/maxresdefault.jpg",
     youtubeUrl: "https://youtu.be/5qiescI6ZiA",
-    premiumContent: true,
     podcastUrl: "https://open.spotify.com/episode/0TWGtTKrOHqIrxFOvd8iZo?si=aUphGALNSei5PESB69tiWA",
     labels: [ArticleLabel.FINANCE101, ArticleLabel.FORM13F],
   },
