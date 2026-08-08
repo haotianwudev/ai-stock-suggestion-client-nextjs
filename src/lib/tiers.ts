@@ -25,3 +25,11 @@ export const MIN_PREMIUM_TIER = 4;
 export function canAccessPremiumContent(tier: number): boolean {
   return tier >= MIN_PREMIUM_TIER;
 }
+
+/** Tier required to view non-default topic pages (see TopicAccessGate). */
+export const MIN_TOPIC_TIER = 2;
+
+/** Returns true when the tier alone (no YouTube-subscription bypass) unlocks topic pages. */
+export function canAccessTopicContentByTier(tier: number): boolean {
+  return tier >= MIN_TOPIC_TIER;
+}

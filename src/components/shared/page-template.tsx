@@ -10,6 +10,7 @@ import { StudyGuide } from "@/components/ui/study-guide";
 import { ArticleCard } from "@/components/articles/article-card";
 import { resolveStudyGuideItems, resolveTopicMedia, resolveRelatedArticleSlugs, getArticleBySlug } from "@/lib/article-utils";
 import { BaseConfig, ResolvedStudyGuideItem } from "@/components/shared/config-types";
+import { TopicAccessGate, FREE_TOPIC_IDS } from "@/components/shared/topic-access-gate";
 
 interface PageTemplateProps {
   config?: BaseConfig | null;
@@ -75,6 +76,9 @@ export function PageTemplate({
 
   const studyGuideItems = config?.studyGuide ? resolveStudyGuideItems(config.studyGuide.items) : [];
 
+  // Every topic is tier-2-gated except one free preview per section (see FREE_TOPIC_IDS).
+  const isGatedTopic = !!config?.id && !FREE_TOPIC_IDS.includes(config.id);
+
   // Handle study guide item selection
   const handleStudyGuideItemSelect = (item: ResolvedStudyGuideItem) => {
     // Update video URL if the item has a custom video
@@ -117,6 +121,8 @@ export function PageTemplate({
         </CardHeader>
         
         <CardContent className="space-y-4 md:space-y-6 px-2 md:px-6">
+        <TopicAccessGate enabled={isGatedTopic}>
+        <>
           {/* Key Concepts */}
           {showKeyConceptsSection && keyConceptsItems.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
@@ -203,12 +209,14 @@ export function PageTemplate({
           <div className="space-y-4 md:space-y-6">
             {contentSections}
           </div>
+        </>
+        </TopicAccessGate>
         </CardContent>
       </Card>
 
       {/* Related Articles */}
       {showRelatedArticlesSection && relatedArticles.length > 0 && (
-        <>
+        <TopicAccessGate enabled={isGatedTopic}>
           {customRelatedArticlesComponent || (
             <Card className="mx-1 md:mx-0">
               <CardHeader className="px-2 md:px-6">
@@ -223,7 +231,7 @@ export function PageTemplate({
               <CardContent className="px-2 md:px-6">
                 <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
                   {relatedArticles.map((article) => (
-                    <ArticleCard 
+                    <ArticleCard
                       key={article.slug || ''}
                       title={article.title}
                       description={article.description}
@@ -244,7 +252,7 @@ export function PageTemplate({
               </CardContent>
             </Card>
           )}
-        </>
+        </TopicAccessGate>
       )}
 
       {/* Full-screen image viewer */}
