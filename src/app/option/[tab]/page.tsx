@@ -13,33 +13,36 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
   
   const metadataMap: Record<string, Metadata> = {
     viewer: {
-      title: 'Options Viewer | SOPHIE\'s Daddy Quant Blog',
+      title: 'Options Viewer',
       description: 'Interactive options chain viewer and analysis tool. Analyze real-time options data with advanced filtering and visualization capabilities.',
       keywords: ['options viewer', 'options chain', 'options analysis', 'trading tools', 'financial data'],
     },
     topics: {
-      title: 'Options Topics | SOPHIE\'s Daddy Quant Blog',
+      title: 'Options Topics',
       description: 'Explore essential options trading concepts including when to trade options and understanding the Greeks.',
       keywords: ['options education', 'options topics', 'when to use options', 'option greeks', 'options fundamentals'],
     },
     articles: {
-      title: 'Options Research Articles | SOPHIE\'s Daddy Quant Blog',
+      title: 'Options Research Articles',
       description: 'Comprehensive summaries of essential options trading books and research articles covering key concepts, strategies, and common pitfalls to avoid.',
       keywords: ['options research', 'options trading articles', 'options education', 'trading strategies', 'options analysis'],
     },
     strategies: {
-      title: 'Options Strategies Explorer | SOPHIE\'s Daddy Quant Blog',
+      title: 'Options Strategies Explorer',
       description: 'Explore a comprehensive taxonomy of common options strategies. Filter by market outlook and view risk profiles for various trading scenarios.',
       keywords: ['options strategies', 'options trading', 'covered calls', 'protective puts', 'spreads', 'straddles', 'strangles'],
     },
   };
 
   const baseMetadata = metadataMap[tab] || metadataMap.strategies;
-  
+  // openGraph/twitter titles aren't run through the root layout's title template, so they
+  // need the site-name suffix spelled out explicitly (unlike the top-level `title` below).
+  const fullTitle = `${baseMetadata.title || 'Options Education'} | SOPHIE's Daddy Quant Blog`;
+
   return {
     ...baseMetadata,
     openGraph: {
-      title: baseMetadata.title || 'Options Education | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
       url: `https://sophie-ai-finance.com/option/${tab}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
     },
     twitter: {
       card: 'summary_large_image',
-      title: baseMetadata.title || 'Options Education | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
       site: '@sophies_daddy',
     },

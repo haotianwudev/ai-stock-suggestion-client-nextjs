@@ -311,7 +311,7 @@ function TrendingStocksTab() {
 
 // Stock Analysis Tab — its own sub-navigation for the stock-research-focused topics
 // (Stock Analysis, 13F Analysis, ETF & Mutual Fund), promoted to a top-level tab
-// alongside the generic Topics tab rather than being one item inside it.
+// alongside the Investment tab rather than being one item inside it.
 function StockAnalysisTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
   const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'stock-analysis');
@@ -371,9 +371,9 @@ function StockAnalysisTab({ subtopic }: { subtopic?: string }) {
   );
 }
 
-// Topics Tab Component with Sub-navigation — the broader topics not specific to
+// Investment Tab Component with Sub-navigation — the broader topics not specific to
 // stock research (Macro Analysis, Wealth & Planning, Finance 101).
-function TopicsTab({ subtopic }: { subtopic?: string }) {
+function InvestmentTab({ subtopic }: { subtopic?: string }) {
   const router = useRouter();
   const [activeSubtopic, setActiveSubtopic] = useState(subtopic || 'macro-analysis');
 
@@ -385,7 +385,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
 
   const handleSubtopicChange = (value: string) => {
     setActiveSubtopic(value);
-    const newUrl = `/stock/topics/${value}`;
+    const newUrl = `/stock/investment/${value}`;
     router.push(newUrl, { scroll: false });
   };
 
@@ -451,9 +451,9 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
     if (value === 'stock-analysis') {
       const defaultSubtopic = subtopic || 'stock-analysis';
       router.push(`/stock/stock-analysis/${defaultSubtopic}`, { scroll: false });
-    } else if (value === 'topics') {
+    } else if (value === 'investment') {
       const defaultSubtopic = subtopic || 'macro-analysis';
-      router.push(`/stock/topics/${defaultSubtopic}`, { scroll: false });
+      router.push(`/stock/investment/${defaultSubtopic}`, { scroll: false });
     } else {
       router.push('/stock/trending', { scroll: false });
     }
@@ -505,10 +505,10 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
                 Stock Analysis
               </TabsTrigger>
               <TabsTrigger
-                value="topics"
+                value="investment"
                 className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
               >
-                Topics
+                Investment
               </TabsTrigger>
             </TabsList>
 
@@ -520,8 +520,8 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
               <StockAnalysisTab subtopic={subtopic} />
             </TabsContent>
 
-            <TabsContent value="topics" className="mt-0">
-              <TopicsTab subtopic={subtopic} />
+            <TabsContent value="investment" className="mt-0">
+              <InvestmentTab subtopic={subtopic} />
             </TabsContent>
           </Tabs>
         </div>

@@ -13,43 +13,46 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
   
   const metadataMap: Record<string, Metadata> = {
     'option101': {
-      title: 'Options 101 | SOPHIE\'s Daddy Quant Blog',
+      title: 'Options 101',
       description: 'Learn when options are the right trading tool. Understand key scenarios for hedging, speculation, income generation, and capital efficiency.',
       keywords: ['options 101', 'options basics', 'when to use options', 'options trading', 'hedging strategies', 'options education', 'risk management'],
     },
     greeks: {
-      title: 'Option Greeks Calculator | SOPHIE\'s Daddy Quant Blog',
+      title: 'Option Greeks Calculator',
       description: 'Master option pricing through interactive Greek calculations and visualizations. Learn Delta, Gamma, Theta, Vega, and Rho with real-time examples.',
       keywords: ['option greeks', 'delta gamma theta', 'vega rho', 'options pricing', 'black scholes', 'options calculator'],
     },
     volatility: {
-      title: 'Volatility Analysis | SOPHIE\'s Daddy Quant Blog',
+      title: 'Volatility Analysis',
       description: 'Deep dive into volatility concepts including the volatility smile, market structure analysis, and how volatility patterns reveal investor psychology and market dynamics.',
       keywords: ['volatility', 'volatility smile', 'implied volatility', 'historical volatility', 'market structure', 'black scholes failure', 'volatility skew'],
     },
     vrp: {
-      title: 'Volatility Risk Premium (VRP) | SOPHIE\'s Daddy Quant Blog',
+      title: 'Volatility Risk Premium (VRP)',
       description: 'Master the systematic edge in options markets. Learn how implied volatility consistently overstates realized volatility and how to harvest this premium.',
       keywords: ['volatility risk premium', 'VRP', 'implied volatility', 'realized volatility', 'options selling', 'premium harvesting'],
     },
     gex: {
-      title: 'Gamma Exposure (GEX) | SOPHIE\'s Daddy Quant Blog',
+      title: 'Gamma Exposure (GEX)',
       description: 'Understanding how market makers\' gamma exposure influences market volatility and price movements, creating predictable trading patterns.',
       keywords: ['gamma exposure', 'GEX', 'market makers', 'volatility', 'options flow', 'gamma hedging'],
     },
     roll: {
-      title: 'Rolling Options Strategy | SOPHIE\'s Daddy Quant Blog',
+      title: 'Rolling Options Strategy',
       description: 'Master the strategic framework for rolling short option positions through defensive and offensive techniques. Learn when to roll, close, or hold using quantitative triggers.',
       keywords: ['rolling options', 'options management', 'defensive rolling', 'offensive rolling', 'options repair', 'Greeks triggers'],
     },
   };
 
   const baseMetadata = metadataMap[subtopic];
-  
+  // openGraph/twitter titles aren't run through the root layout's title template, so they
+  // need the site-name suffix spelled out explicitly (unlike the top-level `title` below).
+  const fullTitle = `${baseMetadata.title || 'Options Topics'} | SOPHIE's Daddy Quant Blog`;
+
   return {
     ...baseMetadata,
     openGraph: {
-      title: baseMetadata.title || 'Options Topics | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
       url: `https://sophie-ai-finance.com/option/topics/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
@@ -57,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     },
     twitter: {
       card: 'summary_large_image',
-      title: baseMetadata.title || 'Options Topics | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
       site: '@sophies_daddy',
     },

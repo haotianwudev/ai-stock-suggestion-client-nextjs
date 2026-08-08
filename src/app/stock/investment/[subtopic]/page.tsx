@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTopicConfig } from '../config';
+import { getTopicConfig } from '../../topics/config';
 import StockTabClient from '../../trending/client';
 
-const validSubtopics = ['13f-analysis', 'macro-analysis', 'etf-mutual-fund', 'wealth-planning', 'finance-101'];
+const validSubtopics = ['macro-analysis', 'wealth-planning', 'finance-101'];
 
 export async function generateMetadata({ params }: { params: Promise<{ subtopic: string }> }): Promise<Metadata> {
   const { subtopic } = await params;
@@ -17,38 +17,39 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     return {};
   }
 
-  const title = `${topicConfig.title} | Stock Analysis | SOPHIE's Daddy Quant Blog`;
+  const title = `${topicConfig.title} | Investment`;
+  const fullTitle = `${title} | SOPHIE's Daddy Quant Blog`;
   const description = topicConfig.description;
 
   return {
     title,
     description,
-    keywords: ['stock analysis', topicConfig.title.toLowerCase(), '13F filings', 'macro analysis', 'institutional investors'],
+    keywords: ['investment', topicConfig.title.toLowerCase(), 'macro analysis', 'wealth planning', 'finance 101'],
     openGraph: {
-      title,
+      title: fullTitle,
       description,
-      url: `https://sophie-ai-finance.com/stock/topics/${subtopic}`,
+      url: `https://sophie-ai-finance.com/stock/investment/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/stock/topics/${subtopic}`,
+      canonical: `https://sophie-ai-finance.com/stock/investment/${subtopic}`,
     },
   };
 }
 
-export default async function StockSubtopicPage({ params }: { params: Promise<{ subtopic: string }> }) {
+export default async function InvestmentSubtopicPage({ params }: { params: Promise<{ subtopic: string }> }) {
   const { subtopic } = await params;
 
   if (!validSubtopics.includes(subtopic)) {
     notFound();
   }
 
-  return <StockTabClient tab="topics" subtopic={subtopic} />;
+  return <StockTabClient tab="investment" subtopic={subtopic} />;
 }

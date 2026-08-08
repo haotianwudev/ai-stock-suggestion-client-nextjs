@@ -14,13 +14,13 @@ const TOPIC_SOURCES: Array<{ basePath: string; configs: Record<string, BaseConfi
   { basePath: "/option/topics", configs: optionTopicsConfig },
   { basePath: "/quant/topics", configs: quantTopicsConfig },
   { basePath: "/quant/quanttrading", configs: quantTradingTopicsConfig },
-  { basePath: "/stock/topics", configs: stockTopicsConfig },
+  { basePath: "/stock/investment", configs: stockTopicsConfig },
 ];
 
 // A few topic ids live at a route other than `${basePath}/${topic.id}` — e.g.
 // stock-analysis/13f-analysis/etf-mutual-fund are defined in stock/topics/config.ts
-// (basePath "/stock/topics") for data colocation, but are routed under the dedicated
-// "/stock/stock-analysis" tab rather than the generic "/stock/topics" tab.
+// (basePath "/stock/investment") for data colocation, but are routed under the
+// dedicated "/stock/stock-analysis" tab rather than the generic "/stock/investment" tab.
 const TOPIC_HREF_OVERRIDES: Record<string, string> = {
   "stock-analysis": "/stock/stock-analysis/stock-analysis",
   "13f-analysis": "/stock/stock-analysis/13f-analysis",

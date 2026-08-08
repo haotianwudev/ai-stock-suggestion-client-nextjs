@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     return {};
   }
 
-  const title = `${topicConfig.title} | Stock Analysis | SOPHIE's Daddy Quant Blog`;
+  const title = `${topicConfig.title} | Stock Analysis`;
+  const fullTitle = `${title} | SOPHIE's Daddy Quant Blog`;
   const description = topicConfig.description;
 
   return {
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     description,
     keywords: ['stock analysis', topicConfig.title.toLowerCase(), '13F filings', 'ETF', 'institutional investors'],
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: `https://sophie-ai-finance.com/stock/stock-analysis/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       site: '@sophies_daddy',
     },

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import StockTabClient from './client';
 
 export const metadata: Metadata = {
-  title: 'Trending Stocks & Tutorials | Stock & Investment | SOPHIE\'s Daddy Quant Blog',
+  title: 'Trending Stocks & Tutorials | Stock & Investment',
   description: 'Pick a trending stock to see comprehensive analysis, AI agent suggestions, and tutorials.',
   keywords: ['stock analysis', 'trending stocks', 'stock tutorials', 'AI stock analysis'],
   openGraph: {

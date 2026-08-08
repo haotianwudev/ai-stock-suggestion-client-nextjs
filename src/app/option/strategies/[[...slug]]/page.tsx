@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
   if (strategyId && strategyMetadata[strategyId]) {
     const strategy = strategyMetadata[strategyId];
     return {
-      title: `${strategy.name} Strategy | SOPHIE's Daddy Quant Blog`,
+      title: `${strategy.name} Strategy`,
       description: strategy.description,
       keywords: ['options strategies', 'options trading', strategy.name.toLowerCase(), 'trading strategies', 'options education'],
       openGraph: {
@@ -97,10 +97,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
       },
     };
   }
-  
+
   // Default metadata for strategies overview
   return {
-    title: 'Options Strategies Explorer | SOPHIE\'s Daddy Quant Blog',
+    title: 'Options Strategies Explorer',
     description: 'Explore a comprehensive taxonomy of common options strategies. Filter by market outlook and view risk profiles for various trading scenarios.',
     keywords: ['options strategies', 'options trading', 'covered calls', 'protective puts', 'spreads', 'straddles', 'strangles'],
     openGraph: {

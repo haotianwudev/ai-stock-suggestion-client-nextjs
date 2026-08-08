@@ -17,15 +17,16 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     return {};
   }
   
-  const title = `${topicConfig.title} | Quantitative Trading | SOPHIE's Daddy Quant Blog`;
+  const title = `${topicConfig.title} | Quantitative Trading`;
+  const fullTitle = `${title} | SOPHIE's Daddy Quant Blog`;
   const description = topicConfig.description;
-  
+
   return {
     title,
     description,
     keywords: ['quantitative trading', topicConfig.title.toLowerCase(), 'systematic trading', 'machine learning'],
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: `https://sophie-ai-finance.com/quant/quanttrading/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       site: '@sophies_daddy',
     },

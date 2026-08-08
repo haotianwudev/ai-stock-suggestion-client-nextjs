@@ -13,28 +13,31 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
   
   const metadataMap: Record<string, Metadata> = {
     topics: {
-      title: 'Quantitative Finance Topics | SOPHIE\'s Daddy Quant Blog',
+      title: 'Quantitative Finance Topics',
       description: 'Explore essential quantitative finance concepts including Monte Carlo simulation and financial modeling techniques.',
       keywords: ['quantitative finance', 'monte carlo simulation', 'financial modeling', 'quant methods'],
     },
     quanttrading: {
-      title: 'Quantitative Trading | SOPHIE\'s Daddy Quant Blog',
+      title: 'Quantitative Trading',
       description: 'Master quantitative trading strategies and machine learning applications for systematic trading.',
       keywords: ['quantitative trading', 'systematic trading', 'machine learning finance', 'quantitative strategies'],
     },
     articles: {
-      title: 'Quantitative Finance Research Articles | SOPHIE\'s Daddy Quant Blog',
+      title: 'Quantitative Finance Research Articles',
       description: 'Comprehensive research articles covering quantitative finance, machine learning applications, and financial modeling.',
       keywords: ['quantitative finance research', 'quant articles', 'machine learning finance', 'financial modeling'],
     },
   };
 
   const baseMetadata = metadataMap[tab] || metadataMap.topics;
-  
+  // openGraph/twitter titles aren't run through the root layout's title template, so they
+  // need the site-name suffix spelled out explicitly (unlike the top-level `title` below).
+  const fullTitle = `${baseMetadata.title || 'Quantitative Finance Education'} | SOPHIE's Daddy Quant Blog`;
+
   return {
     ...baseMetadata,
     openGraph: {
-      title: baseMetadata.title || 'Quantitative Finance Education | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master quantitative finance fundamentals',
       url: `https://sophie-ai-finance.com/quant/${tab}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
@@ -42,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
     },
     twitter: {
       card: 'summary_large_image',
-      title: baseMetadata.title || 'Quantitative Finance Education | SOPHIE\'s Daddy Quant Blog',
+      title: fullTitle,
       description: baseMetadata.description || 'Master quantitative finance fundamentals',
       site: '@sophies_daddy',
     },
