@@ -23,6 +23,41 @@ The 2026 South Korean Equity Crisis was one of the most severe localized market 
 - **ADR Dislocation** — During the crisis, SK Hynix&apos;s Nasdaq-listed ADRs diverged more than 50% above the Seoul common price due to regulatory conversion limits that prevented arbitrage.
 - **Quantitative Factor Rotation** — The crisis catalyzed a global style rotation: capital fled the crowded Momentum factor (high-beta AI winners) and rotated into the Quality factor (low-leverage, high-ROIC companies).
 
+## Section Summaries
+
+### 1. Introduction & Executive Summary
+In mid-2026, the KOSPI collapsed 25% following a parabolic AI-driven supercycle. This was a market microstructure crisis driven by retail leverage, index concentration, and the launch of single-stock leveraged ETFs.
+
+### 2. Historical Context: A Legacy of Retail Leverage
+Years of regulatory whiplash—from the 2023 CFD crisis and 2024 ELS losses to the 2025 short-selling ban—fostered a deep-seated structural appetite for complex derivatives and removed critical market friction layers.
+
+### 3. The 2026 AI Supercycle & Index Concentration
+The AI revolution drove global capital into High-Bandwidth Memory (HBM). Samsung Electronics and SK Hynix subsequently grew to represent over 50% of the entire KOSPI, rendering the national index structurally brittle.
+
+### 4. Options Frenzy & Retail Leverage Accumulation
+Retail investors engineered explosive velocity through margin debt, reaching $26 billion by June 2026. This accumulation of leverage transformed the market into a fragile glass floor.
+
+### 5. Catalyst of Instability: Single-Stock Leveraged ETFs
+The regulatory approval of 2x leveraged ETFs on Samsung and SK Hynix at peak valuations provided the catalyst. The mathematical certainty of negative compounding (volatility decay) devastated long-term holders.
+
+### 6. Quantitative Mechanics & Feedback Loops
+ETF daily rebalancing and short gamma hedging created synthetic supply and demand that forcefully dictated price action. The sheer velocity of these mechanical flows triggered the Korea Exchange "sidecar" a record 37 times.
+
+### 7. The Margin Call Storm & July Collapse
+Triggered by rising rates, global AI capex doubts, and geopolitical tensions, brokerages executed massive forced reverse trades. Over 1.2 million accounts faced margin calls, accelerating the vicious deleveraging cycle.
+
+### 8. Global Spillover & ADR Dislocation
+The domestic collapse disrupted SK Hynix's massive U.S. ADR listing, creating an un-arbitrageable 50% premium over the Seoul common stock and dragging down global semiconductor indices.
+
+### 9. Global Quantitative Factor Rotation
+The crisis spurred a massive flight from the crowded Momentum factor (high-beta AI winners) toward the Quality factor (the "Quant Safety Trade"), marked by low leverage and stable cash flows.
+
+### 10. Regulatory Interventions
+The Financial Services Commission (FSC) intervened by halting new leveraged ETF listings, tripling minimum margin requirements, enforcing LP accountability, and banning aggressive marketing.
+
+### 11. Core Lessons for Quantitative Finance
+The crisis emphasized that leverage distorts fundamental analysis, extreme index concentration creates systemic weapons of financial destruction, and quant models must pivot dynamically to defensive factors during deleveraging events.
+
 ## Historical Precursors
 
 | Year | Event | Loss |
