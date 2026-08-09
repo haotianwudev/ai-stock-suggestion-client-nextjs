@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
@@ -41,13 +41,23 @@ export function YoutubeSubscribeGate({
   children: React.ReactNode;
 }) {
   const { user, profile, loading } = useUser();
-  const [unlocked, setUnlocked] = useState(false);
+  const [unlocked, setUnlocked] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("youtube_unlocked") === "true";
+    }
+    return false;
+  });
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [setYoutubeSubscribed, { loading: confirming }] = useMutation<{
     setYoutubeSubscribed: MeResult;
   }>(SET_YOUTUBE_SUBSCRIBED, { refetchQueries: [{ query: ME }] });
 
-  if (loading) return null;
+  useEffect(() => {
+    if (profile?.youtubeSubscribed && typeof window !== "undefined") {
+      localStorage.setItem("youtube_unlocked", "true");
+    }
+  }, [profile?.youtubeSubscribed]);
+
   const showGate = !profile?.youtubeSubscribed && !unlocked;
 
   const confirmSubscribed = async () => {
@@ -55,6 +65,8 @@ export function YoutubeSubscribeGate({
       const prevTier = profile?.tier ?? 1;
       const { data } = await setYoutubeSubscribed({ variables: { subscribed: true } });
       setUnlocked(true);
+      if (typeof window !== "undefined") localStorage.setItem("youtube_unlocked", "true");
+      
       const newTier = data?.setYoutubeSubscribed.tier ?? prevTier;
       if (newTier > prevTier) {
         setCongrats({
@@ -103,6 +115,7 @@ export function YoutubeSubscribeGate({
                 onClick={() => {
                   window.open(videoUrl, "_blank", "noopener,noreferrer");
                   setUnlocked(true);
+                  if (typeof window !== "undefined") localStorage.setItem("youtube_unlocked", "true");
                 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-sm shadow-sm transition-colors"
               >
@@ -113,7 +126,9 @@ export function YoutubeSubscribeGate({
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-600">
                   or
                 </span>
-                {user ? (
+                {loading ? (
+                  <div className="h-[44px] w-[260px] rounded-xl bg-gray-200 dark:bg-gray-800 animate-pulse" />
+                ) : user ? (
                   <button
                     onClick={confirmSubscribed}
                     disabled={confirming}
