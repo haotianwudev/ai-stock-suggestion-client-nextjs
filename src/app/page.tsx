@@ -391,6 +391,37 @@ export default function Home() {
           })()}
         </section>
 
+        {/* What this app is — public, no-login explanation of purpose and of what
+            Google sign-in receives. Required for Google OAuth app verification. */}
+        <section className="container max-w-screen-2xl mx-auto py-8 md:py-12 border-t border-border px-4">
+          <div className="max-w-3xl mx-auto space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
+            <p className="text-sm md:text-base text-muted-foreground">
+              SOPHIE is a free quantitative finance research and education platform. Every article,
+              video, podcast episode, and market tool on this site is free to read — no account
+              required.
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground">
+              An optional free account adds community features: bookmarking articles, joining forum
+              discussions, and managing your profile.
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground">
+              Signing in with Google is one optional way to create that account. SOPHIE receives only
+              your name, email address, and profile picture, used solely to create your profile and
+              attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other
+              Google data.
+            </p>
+            <div className="flex items-center gap-4 pt-1">
+              <Link href="/privacy" className="text-sm font-medium text-primary hover:underline">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm font-medium text-primary hover:underline">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Disclaimer */}
         <Disclaimer />
       </main>
