@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ApolloWrapper } from "@/lib/apollo/apollo-wrapper";
+import { UserProvider } from "@/hooks/use-user";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -105,7 +106,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ApolloWrapper>
-            {children}
+            <UserProvider>
+              {children}
+            </UserProvider>
           </ApolloWrapper>
           <Toaster />
         </ThemeProvider>

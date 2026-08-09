@@ -2,345 +2,250 @@
 
 import React from 'react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
-import { MathBlock, InlineMath } from '@/components/articles/math';
-import { 
-  TrendingUp, 
-  BarChart2, 
-  Cpu, 
-  Activity, 
-  AlertTriangle, 
-  ShoppingCart, 
-  ShieldCheck,
-  BookOpen,
-  CheckCircle,
-  Zap
-} from 'lucide-react';
-
-const SectionHeading = ({ title, icon: Icon, gradient }: { title: string; icon: React.ElementType; gradient: string }) => (
-  <div className="flex items-center gap-3 mb-6">
-    <div className={`p-3 rounded-2xl bg-gradient-to-br ${gradient} text-white shadow-lg`}>
-      <Icon size={28} />
-    </div>
-    <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">
-      {title}
-    </h2>
-  </div>
-);
-
-const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 p-6 md:p-8 ${className}`}>
-    {children}
-  </div>
-);
-
-const KeyTakeaway = ({ children }: { children: React.ReactNode }) => (
-  <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100 flex gap-4 items-start">
-    <Zap className="text-amber-500 shrink-0 mt-1" size={24} />
-    <div className="text-amber-900 font-medium leading-relaxed">
-      <span className="font-bold text-amber-700 block mb-1">Key Takeaway</span>
-      {children}
-    </div>
-  </div>
-);
-
-const EvolutionSection = () => (
-  <section className="py-12 relative">
-    <InfographicSlot alt="Quantitative Trading Mean Reversion Infographic" />
-    <Card className="mt-8">
-      <SectionHeading 
-        title="1. Evolution of Statistical Arbitrage" 
-        icon={TrendingUp} 
-        gradient="from-blue-500 to-cyan-500" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none">
-        <p className="mb-4">
-          Statistical arbitrage (stat arb) is a heavily quantitative framework that exploits temporary pricing inefficiencies across diversified portfolios. Originating in the 1980s with pairs trading, it relies on isolating idiosyncratic components of asset returns by neutralizing market and factor risks.
-        </p>
-        <p className="mb-4">
-          Once isolated, these residual prices often exhibit <strong>mean-reverting characteristics</strong>&mdash;drifting away from, and eventually returning to, a long-term historical equilibrium.
-        </p>
-        <div className="grid md:grid-cols-2 gap-6 my-8">
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-            <h4 className="font-bold text-slate-800 flex items-center gap-2 mb-3">
-              <BookOpen size={20} className="text-blue-500"/> The Past: Distance Metrics
-            </h4>
-            <p className="text-sm">Early strategies relied on simple squared Euclidean distances between historical prices (e.g., Gatev et al., 2006). These generated huge early returns but suffered severe alpha decay as markets became efficient, culminating in the 2007 &quot;quant quake.&quot;</p>
-          </div>
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-            <h4 className="font-bold text-slate-800 flex items-center gap-2 mb-3">
-              <Cpu size={20} className="text-blue-500"/> The Present: Advanced Models
-            </h4>
-            <p className="text-sm">Modern stat arb relies on highly sophisticated, multi-asset factor models utilizing deep learning architectures, strict transaction cost constraints, and rigorous validation to prevent overfitting.</p>
-          </div>
-        </div>
-      </div>
-    </Card>
-  </section>
-);
-
-const FactorsSection = () => (
-  <section className="py-12 relative">
-    <Card>
-      <SectionHeading 
-        title="2. Major Factors in Quant Trading" 
-        icon={BarChart2} 
-        gradient="from-emerald-500 to-teal-500" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none mb-8">
-        <p>
-          Factor investing targets quantifiable traits that explain cross-sectional variation in expected returns, shifting away from discretionary stock picking. It evolved from the single-factor CAPM (Market Risk) to the Fama-French Three-Factor and eventually Five-Factor models.
-        </p>
-        
-        <div className="my-6">
-          <MathBlock math="R_{i,t} - R_{f,t} = \alpha_i + \beta_1(R_{m,t} - R_{f,t}) + \beta_2(SMB) + \beta_3(HML) + \beta_4(RMW) + \beta_5(CMA) + \varepsilon_{i,t}" />
-          <div className="text-center text-sm text-slate-500 mt-2 font-medium">The Fama-French Five-Factor Time-Series Regression Equation</div>
-        </div>
-      </div>
-
-      <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-        <table className="w-full text-left border-collapse min-w-[600px]">
-          <thead>
-            <tr className="bg-emerald-50 border-b border-emerald-100">
-              <th className="p-4 font-bold text-emerald-900">Factor</th>
-              <th className="p-4 font-bold text-emerald-900">Acronym</th>
-              <th className="p-4 font-bold text-emerald-900">Economic Rationale</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100 text-sm md:text-base">
-            <tr className="hover:bg-slate-50 transition-colors">
-              <td className="p-4 font-semibold text-slate-800">Market Risk</td>
-              <td className="p-4"><span className="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-mono text-xs">Rm - Rf</span></td>
-              <td className="p-4 text-slate-600">Baseline compensation for bearing general equity market risk.</td>
-            </tr>
-            <tr className="hover:bg-slate-50 transition-colors">
-              <td className="p-4 font-semibold text-slate-800">Size</td>
-              <td className="p-4"><span className="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-mono text-xs">SMB</span></td>
-              <td className="p-4 text-slate-600">Small Minus Big. Smaller firms are less liquid and carry higher distress risk, demanding a premium.</td>
-            </tr>
-            <tr className="hover:bg-slate-50 transition-colors">
-              <td className="p-4 font-semibold text-slate-800">Value</td>
-              <td className="p-4"><span className="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-mono text-xs">HML</span></td>
-              <td className="p-4 text-slate-600">High Minus Low. Undervalued companies correct upward due to mean reversion in sentiment.</td>
-            </tr>
-            <tr className="hover:bg-slate-50 transition-colors">
-              <td className="p-4 font-semibold text-slate-800">Profitability</td>
-              <td className="p-4"><span className="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-mono text-xs">RMW</span></td>
-              <td className="p-4 text-slate-600">Robust Minus Weak. Highly profitable firms with stable earnings are less susceptible to shocks.</td>
-            </tr>
-            <tr className="hover:bg-slate-50 transition-colors">
-              <td className="p-4 font-semibold text-slate-800">Investment</td>
-              <td className="p-4"><span className="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md font-mono text-xs">CMA</span></td>
-              <td className="p-4 text-slate-600">Conservative Minus Aggressive. Firms that overinvest tend to misallocate capital.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <KeyTakeaway>
-        Beyond Fama-French, modern funds heavily blend <strong>Momentum</strong> (winning assets keep winning, acting as a counterbalance to mean reversion) and <strong>Low Volatility / Quality</strong> factors to maximize risk-adjusted returns across shifting economic regimes.
-      </KeyTakeaway>
-    </Card>
-  </section>
-);
-
-const AdvancedModelingSection = () => (
-  <section className="py-12 relative">
-    <Card>
-      <SectionHeading 
-        title="3. Advanced Extraction Models" 
-        icon={Cpu} 
-        gradient="from-violet-500 to-fuchsia-500" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none mb-6">
-        <p>
-          Traditional extraction uses static PCA, decomposing returns into systematic and idiosyncratic (residual) components. The residual portfolio holds zero beta to the selected risks, insulating it from macro shocks and making it mean-reverting. However, static loadings contradict dynamic corporate reality.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="border border-violet-100 bg-violet-50/30 rounded-3xl p-6">
-          <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center text-violet-600 mb-4">
-            <Activity size={24} />
-          </div>
-          <h3 className="text-xl font-bold text-violet-900 mb-2">IPCA (Instrumented PCA)</h3>
-          <p className="text-sm text-slate-600">
-            Introduces observable firm characteristics as instrumental variables to estimate <em>time-varying</em> factor loadings. It successfully maps characteristics to either risk factor exposures (beta) or anomaly intercepts (alpha).
-          </p>
-        </div>
-        
-        <div className="border border-fuchsia-100 bg-fuchsia-50/30 rounded-3xl p-6">
-          <div className="w-12 h-12 bg-fuchsia-100 rounded-xl flex items-center justify-center text-fuchsia-600 mb-4">
-            <Zap size={24} />
-          </div>
-          <h3 className="text-xl font-bold text-fuchsia-900 mb-2">Deep Learning &amp; Attention</h3>
-          <p className="text-sm text-slate-600">
-            Bypasses the traditional two-step process. Attention Factor Models use CNNs and transformers to jointly learn tradable factors and portfolio policies in a single step, explicitly maximizing out-of-sample Sharpe ratios after transaction costs.
-          </p>
-        </div>
-      </div>
-    </Card>
-  </section>
-);
-
-const OrnsteinUhlenbeckSection = () => (
-  <section className="py-12 relative">
-    <Card>
-      <SectionHeading 
-        title="4. The Ornstein-Uhlenbeck Framework" 
-        icon={Activity} 
-        gradient="from-rose-500 to-pink-500" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none">
-        <p>
-          To systematically trade the extracted factor-neutral residual, quants model the cumulative residual as an <strong>Ornstein-Uhlenbeck (OU) process</strong>. It balances a deterministic drift pulling toward a mean, and a continuous random shock preventing permanent equilibrium.
-        </p>
-
-        <div className="my-6">
-          <MathBlock math="dX_t = \kappa(\mu - X_t)dt + \sigma dW_t" />
-          <div className="text-center text-sm text-slate-500 mt-2 font-medium">Continuous-Time Stochastic Differential Equation (SDE)</div>
-        </div>
-
-        <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 my-6">
-          <h4 className="font-bold text-slate-800 mb-4">The s-score (Avellaneda-Lee Framework)</h4>
-          <p className="text-sm text-slate-600 mb-4">
-            Standardizes trading signals across assets by measuring the distance of the residual from its equilibrium mean, scaled by standard deviation.
-          </p>
-          <div className="bg-white border border-rose-100 rounded-xl p-4 shadow-sm overflow-x-auto text-rose-700">
-            <MathBlock math="s_{mod,i} = \frac{X_{i,t} - \mu_i}{\sigma_{eq,i}} - \frac{\alpha_i}{\kappa_i\sigma_{eq,i}}" />
-          </div>
-          <ul className="mt-4 space-y-2 text-sm text-slate-600">
-            <li className="flex items-center gap-2"><CheckCircle size={16} className="text-emerald-500"/> <strong>Entry:</strong> Open trade when |s-score| &gt; 1.25.</li>
-            <li className="flex items-center gap-2"><CheckCircle size={16} className="text-rose-500"/> <strong>Exit:</strong> Close short at 0.75; Close long at -0.50.</li>
-          </ul>
-        </div>
-      </div>
-    </Card>
-  </section>
-);
-
-const BiasesSection = () => (
-  <section className="py-12 relative">
-    <Card className="bg-gradient-to-br from-amber-50 to-orange-50/20 border-amber-100">
-      <SectionHeading 
-        title="5. The Marriott-Pope Effect" 
-        icon={AlertTriangle} 
-        gradient="from-amber-500 to-orange-500" 
-      />
-      <div className="prose prose-lg text-slate-700 max-w-none">
-        <p>
-          Empirical estimation of the mean-reversion speed via Ordinary Least Squares (OLS) in finite samples has a severe flaw. The OLS estimate of the autoregressive coefficient is <strong>inherently biased downward</strong>.
-        </p>
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-amber-200 my-4 text-amber-900 font-medium">
-          Because the coefficient is depressed, the calculated mean-reversion speed is biased upwards. The model &quot;hallucinates&quot; that the residual will revert much faster than it actually will.
-        </div>
-        <p>
-          This causes algorithms to falsely categorize slow-reverting assets as highly profitable fast opportunities, triggering premature time-stop exits and resulting in devastating realized losses. Advanced practitioners use non-linear corrections or bootstrap methods to debias estimators.
-        </p>
-      </div>
-    </Card>
-  </section>
-);
-
-const ExecutionSection = () => (
-  <section className="py-12 relative">
-    <Card>
-      <SectionHeading 
-        title="6. Execution Dynamics" 
-        icon={ShoppingCart} 
-        gradient="from-cyan-500 to-blue-500" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none">
-        <p>
-          Mean-reversion alpha is fragile. Transaction costs&mdash;slippage and market impact&mdash;can easily destroy a profitable backtest. When an algorithm executes a large order, it consumes liquidity and moves the price against itself.
-        </p>
-        
-        <h3 className="text-xl font-bold text-slate-800 mt-8 mb-4">The Square-Root Law of Market Impact</h3>
-        <p>
-          Slippage is proportional to the asset&apos;s volatility and the square root of the normalized order size.
-        </p>
-        <div className="my-6">
-          <MathBlock math="\Delta p = Y \cdot \sigma \cdot \sqrt{\frac{Q}{V}}" />
-          <div className="text-center text-sm text-slate-500 mt-2 font-medium">Where Q = Total order quantity, V = Average daily volume</div>
-        </div>
-        <KeyTakeaway>
-          The concave nature of the square-root function acts as a strict capacity ceiling. Scaling AUM exponentially increases execution costs, degrading net alpha. Algorithms must balance temporary impact (immediate liquidity costs) against timing risk (mispricing correcting before order completion).
-        </KeyTakeaway>
-      </div>
-    </Card>
-  </section>
-);
-
-const ResearchSection = () => (
-  <section className="py-12 relative">
-    <Card>
-      <SectionHeading 
-        title="7. Rigorous Research Practices" 
-        icon={ShieldCheck} 
-        gradient="from-fuchsia-500 to-pink-600" 
-      />
-      <div className="prose prose-lg text-slate-600 max-w-none">
-        <p className="lead text-xl text-slate-500 mb-8">
-          The most pervasive failure point in quantitative finance is backtest overfitting&mdash;fine-tuning parameters to historical noise.
-        </p>
-
-        <div className="space-y-6">
-          <div className="flex gap-4">
-            <div className="mt-1"><div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold">1</div></div>
-            <div>
-              <h4 className="font-bold text-slate-800 text-lg">Winsorization &amp; Outliers</h4>
-              <p className="text-sm text-slate-600 mt-1">Returns have fat tails. Winsorization mitigates outliers by capping them at specific percentiles (e.g., 5th and 95th) rather than deleting them, preserving time-series continuity while dampening black-swan distortions.</p>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <div className="mt-1"><div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold">2</div></div>
-            <div>
-              <h4 className="font-bold text-slate-800 text-lg">Combinatorial Purged Cross-Validation (CPCV)</h4>
-              <p className="text-sm text-slate-600 mt-1">Standard cross-validation leaks future information in financial time series. CPCV fixes this via <strong>Purging</strong> (removing overlapping training data) and <strong>Embargoing</strong> (implementing a dead-zone after test sets) to generate true out-of-sample distributions.</p>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <div className="mt-1"><div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold">3</div></div>
-            <div>
-              <h4 className="font-bold text-slate-800 text-lg">Deflated Sharpe Ratio (DSR)</h4>
-              <p className="text-sm text-slate-600 mt-1">Corrects the traditional Sharpe Ratio for non-normality (skewness/kurtosis) and selection bias (multiple testing). If a strategy&apos;s DSR falls below a 95% threshold, it is rejected as a statistical illusion.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Card>
-  </section>
-);
+import { Jargon, ComparisonGrid, ComparisonCard, FormulaPanel } from '@/components/articles/article-visuals';
 
 export default function ArticlePage() {
   return (
     <ArticleFrame slug="quantitative-trading-mean-reversion-factor-models-execution-dynamics">
-      <EvolutionSection />
-      <FactorsSection />
-      <AdvancedModelingSection />
-      <OrnsteinUhlenbeckSection />
-      <BiasesSection />
-      <ExecutionSection />
-      <ResearchSection />
-
-      {/* Conclusion */}
-      <section className="py-12">
-        <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 text-indigo-800 opacity-30">
-            <Activity size={200} />
-          </div>
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-6">The Pinnacle of Alpha Generation</h2>
-            <p className="text-lg leading-relaxed text-indigo-200 mb-4">
-              Elite quantitative practitioners must navigate advanced econometrics, transaction constraints, and the gauntlet of overfitting prevention to extract true market-neutral alpha.
-            </p>
-            <p className="text-base text-slate-400">
-              Based on academic research and institutional quantitative frameworks.
-            </p>
-          </div>
+      <div className="max-w-5xl mx-auto space-y-12 text-slate-800 dark:text-slate-200">
+        
+        {/* Key Takeaways */}
+        <div className="bg-white dark:bg-gray-900 border border-[#A8672E]/30 dark:border-[#D08F52]/30 rounded-xl p-6 shadow-sm mb-12">
+          <h3 className="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-current flex-none" />
+            Key Takeaways
+          </h3>
+          <ul className="list-disc pl-5 space-y-2 text-sm md:text-base">
+            <li>Modern stat arb moves beyond static PCA to dynamic IPCA and Deep Learning attention models.</li>
+            <li>Execution costs (slippage and market impact) scale non-linearly via the Square-Root Law of Market Impact, creating a strict capacity ceiling.</li>
+            <li>Overfitting is the most pervasive failure point; robust research requires strict use of Winsorization, CPCV, and the Deflated Sharpe Ratio.</li>
+            <li>The Marriott-Pope effect causes OLS to downward-bias the autoregressive coefficient in finite samples, making mean reversion appear faster than reality.</li>
+          </ul>
         </div>
-      </section>
+
+        {/* Section: Evolution of Statistical Arbitrage */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">Evolution of Statistical Arbitrage</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Statistical arbitrage (stat arb) is a heavily quantitative framework that exploits temporary pricing inefficiencies across diversified portfolios. Originating in the 1980s with pairs trading, it relies on isolating idiosyncratic components of asset returns by neutralizing market and factor risks.
+            </p>
+            <p>
+              Once isolated, these residual prices often exhibit <strong>mean-reverting characteristics</strong>—drifting away from, and eventually returning to, a long-term historical equilibrium.
+            </p>
+            
+            <ComparisonGrid>
+              <ComparisonCard title="The Past: Distance Metrics" tone="neg">
+                Early strategies relied on simple squared Euclidean distances between historical prices (e.g., Gatev et al., 2006). These generated huge early returns but suffered severe alpha decay as markets became efficient, culminating in the 2007 "quant quake."
+              </ComparisonCard>
+              <ComparisonCard title="The Present: Advanced Models" tone="pos">
+                Modern stat arb relies on highly sophisticated, multi-asset factor models utilizing deep learning architectures, strict transaction cost constraints, and rigorous validation to prevent overfitting.
+              </ComparisonCard>
+            </ComparisonGrid>
+          </div>
+        </section>
+
+        <InfographicSlot alt="Quantitative Trading Mean Reversion Infographic" />
+
+        {/* Section: Major Factors in Quant Trading */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">Major Factors in Quant Trading</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Factor investing targets quantifiable traits that explain cross-sectional variation in expected returns, shifting away from discretionary stock picking. It evolved from the single-factor CAPM (Market Risk) to the <Jargon term="Fama-French Five-Factor Model" definition="A model explaining asset returns based on Market Risk, Size, Value, Profitability, and Investment factors." />.
+            </p>
+            
+            <div className="my-8">
+              <FormulaPanel 
+                title="The Fama-French Five-Factor Regression"
+                formula="R_{i,t} - R_{f,t} = \alpha_i + \beta_1(R_{m,t} - R_{f,t}) + \beta_2(SMB) + \beta_3(HML) + \beta_4(RMW) + \beta_5(CMA) + \varepsilon_{i,t}" 
+              />
+            </div>
+
+            <div className="overflow-x-auto my-8">
+              <table className="w-full text-left text-sm whitespace-nowrap">
+                <thead className="border-b border-gray-200 dark:border-gray-800">
+                  <tr>
+                    <th className="py-3 px-4 font-serif font-normal text-gray-500 dark:text-gray-400">Factor</th>
+                    <th className="py-3 px-4 font-serif font-normal text-gray-500 dark:text-gray-400">Acronym</th>
+                    <th className="py-3 px-4 font-serif font-normal text-gray-500 dark:text-gray-400">Economic Rationale</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Market Risk</td>
+                    <td className="py-3 px-4 font-mono text-[#A8672E] dark:text-[#D08F52]">Rm - Rf</td>
+                    <td className="py-3 px-4 whitespace-normal text-slate-600 dark:text-slate-300">Baseline compensation for bearing general equity market risk.</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Size</td>
+                    <td className="py-3 px-4 font-mono text-[#A8672E] dark:text-[#D08F52]">SMB</td>
+                    <td className="py-3 px-4 whitespace-normal text-slate-600 dark:text-slate-300">Small Minus Big. Smaller firms are less liquid and carry higher distress risk, demanding a premium.</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Value</td>
+                    <td className="py-3 px-4 font-mono text-[#A8672E] dark:text-[#D08F52]">HML</td>
+                    <td className="py-3 px-4 whitespace-normal text-slate-600 dark:text-slate-300">High Minus Low. Undervalued companies correct upward due to mean reversion in sentiment.</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Profitability</td>
+                    <td className="py-3 px-4 font-mono text-[#A8672E] dark:text-[#D08F52]">RMW</td>
+                    <td className="py-3 px-4 whitespace-normal text-slate-600 dark:text-slate-300">Robust Minus Weak. Highly profitable firms with stable earnings are less susceptible to shocks.</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">Investment</td>
+                    <td className="py-3 px-4 font-mono text-[#A8672E] dark:text-[#D08F52]">CMA</td>
+                    <td className="py-3 px-4 whitespace-normal text-slate-600 dark:text-slate-300">Conservative Minus Aggressive. Firms that overinvest tend to misallocate capital.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <p className="border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 py-2 mt-4 text-slate-600 dark:text-slate-400">
+              Beyond Fama-French, modern funds heavily blend <strong>Momentum</strong> (winning assets keep winning, acting as a counterbalance to mean reversion) and <strong>Low Volatility / Quality</strong> factors to maximize risk-adjusted returns across shifting economic regimes.
+            </p>
+          </div>
+        </section>
+
+        {/* Section: Advanced Extraction Models */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">Advanced Extraction Models</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Traditional extraction uses static PCA, decomposing returns into systematic and idiosyncratic (residual) components. The residual portfolio holds zero beta to the selected risks, insulating it from macro shocks and making it mean-reverting. However, static loadings contradict dynamic corporate reality.
+            </p>
+
+            <ComparisonGrid>
+              <ComparisonCard title="IPCA (Instrumented PCA)" tone="pos">
+                Introduces observable firm characteristics as instrumental variables to estimate <em>time-varying</em> factor loadings. It successfully maps characteristics to either risk factor exposures (beta) or anomaly intercepts (alpha).
+              </ComparisonCard>
+              <ComparisonCard title="Deep Learning & Attention" tone="pos">
+                Bypasses the traditional two-step process. Attention Factor Models use CNNs and transformers to jointly learn tradable factors and portfolio policies in a single step, explicitly maximizing out-of-sample Sharpe ratios after transaction costs.
+              </ComparisonCard>
+            </ComparisonGrid>
+          </div>
+        </section>
+
+        {/* Section: The Ornstein-Uhlenbeck Framework */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">The Ornstein-Uhlenbeck Framework</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              To systematically trade the extracted factor-neutral residual, quants model the cumulative residual as an <Jargon term="Ornstein-Uhlenbeck (OU) process" definition="A stochastic process modeling mean-reverting behavior, balancing deterministic drift with continuous random shocks." />. It balances a deterministic drift pulling toward a mean, and a continuous random shock preventing permanent equilibrium.
+            </p>
+
+            <div className="my-8">
+              <FormulaPanel 
+                title="Continuous-Time Stochastic Differential Equation"
+                formula="dX_t = \kappa(\mu - X_t)dt + \sigma dW_t" 
+                legend="X = residual, κ = speed of reversion, μ = equilibrium mean, σ = volatility, dW = Wiener process (noise)"
+              />
+            </div>
+
+            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200">The s-score (Avellaneda-Lee Framework)</h3>
+            <p>
+              Standardizes trading signals across assets by measuring the distance of the residual from its equilibrium mean, scaled by standard deviation.
+            </p>
+
+            <div className="my-8">
+              <FormulaPanel 
+                formula="s_{mod,i} = \frac{X_{i,t} - \mu_i}{\sigma_{eq,i}} - \frac{\alpha_i}{\kappa_i\sigma_{eq,i}}" 
+              />
+            </div>
+
+            <ul className="list-disc pl-5 mt-4 space-y-2 text-slate-600 dark:text-slate-300">
+              <li><strong>Entry:</strong> Open trade when |s-score| &gt; 1.25.</li>
+              <li><strong>Exit:</strong> Close short at 0.75; Close long at -0.50.</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Section: The Marriott-Pope Effect */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">The Marriott-Pope Effect</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Empirical estimation of the mean-reversion speed via Ordinary Least Squares (OLS) in finite samples has a severe flaw. The OLS estimate of the autoregressive coefficient is <strong>inherently biased downward</strong>.
+            </p>
+            <p className="border-l-4 border-[#BC4128] dark:border-[#E2694A] pl-4 py-2 text-[#BC4128] dark:text-[#E2694A]">
+              Because the coefficient is depressed, the calculated mean-reversion speed is biased upwards. The model "hallucinates" that the residual will revert much faster than it actually will.
+            </p>
+            <p>
+              This causes algorithms to falsely categorize slow-reverting assets as highly profitable fast opportunities, triggering premature time-stop exits and resulting in devastating realized losses. Advanced practitioners use non-linear corrections or bootstrap methods to debias estimators.
+            </p>
+          </div>
+        </section>
+
+        {/* Section: Execution Dynamics */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">Execution Dynamics</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Mean-reversion alpha is fragile. Transaction costs—slippage and market impact—can easily destroy a profitable backtest. When an algorithm executes a large order, it consumes liquidity and moves the price against itself.
+            </p>
+            
+            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200">The Square-Root Law of Market Impact</h3>
+            <p>
+              Slippage is proportional to the asset's volatility and the square root of the normalized order size.
+            </p>
+            
+            <div className="my-8">
+              <FormulaPanel 
+                formula="\Delta p = Y \cdot \sigma \cdot \sqrt{\frac{Q}{V}}" 
+                legend="Q = Total order quantity, V = Average daily volume, Y = Constant, σ = Volatility"
+              />
+            </div>
+            
+            <p className="border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 py-2 mt-4 text-slate-600 dark:text-slate-400">
+              The concave nature of the square-root function acts as a strict capacity ceiling. Scaling AUM exponentially increases execution costs, degrading net alpha. Algorithms must balance temporary impact (immediate liquidity costs) against timing risk (mispricing correcting before order completion).
+            </p>
+          </div>
+        </section>
+
+        {/* Section: Rigorous Research Practices */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">Rigorous Research Practices</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p className="text-xl text-[#BC4128] dark:text-[#E2694A] mb-8">
+              The most pervasive failure point in quantitative finance is backtest overfitting—fine-tuning parameters to historical noise.
+            </p>
+
+            <ul className="space-y-6 list-none p-0">
+              <li className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                <strong className="font-serif text-xl block mb-2 text-[#A8672E] dark:text-[#D08F52]">Winsorization &amp; Outliers</strong>
+                Returns have fat tails. Winsorization mitigates outliers by capping them at specific percentiles (e.g., 5th and 95th) rather than deleting them, preserving time-series continuity while dampening black-swan distortions.
+              </li>
+              <li className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                <strong className="font-serif text-xl block mb-2 text-[#A8672E] dark:text-[#D08F52]">Combinatorial Purged Cross-Validation (CPCV)</strong>
+                Standard cross-validation leaks future information in financial time series. CPCV fixes this via <strong>Purging</strong> (removing overlapping training data) and <strong>Embargoing</strong> (implementing a dead-zone after test sets) to generate true out-of-sample distributions.
+              </li>
+              <li className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                <strong className="font-serif text-xl block mb-2 text-[#A8672E] dark:text-[#D08F52]">Deflated Sharpe Ratio (DSR)</strong>
+                Corrects the traditional Sharpe Ratio for non-normality (skewness/kurtosis) and selection bias (multiple testing). If a strategy's DSR falls below a 95% threshold, it is rejected as a statistical illusion.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Conclusion */}
+        <section>
+          <h2 className="font-serif text-3xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">The Pinnacle of Alpha Generation</h2>
+          
+          <div className="space-y-4 text-lg leading-relaxed">
+            <p>
+              Elite quantitative practitioners must navigate advanced econometrics, transaction constraints, and the gauntlet of overfitting prevention to extract true market-neutral alpha. Based on academic research and institutional quantitative frameworks.
+            </p>
+          </div>
+        </section>
+
+      </div>
     </ArticleFrame>
   );
 }

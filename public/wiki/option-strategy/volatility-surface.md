@@ -37,6 +37,23 @@ $$
 \text{PCR (Volume)} = \frac{\text{Put Volume}}{\text{Call Volume}}, \quad \text{PCR (OI)} = \frac{\text{Put Open Interest}}{\text{Call Open Interest}}
 $$
 
+## Section Summaries
+
+### What is the Surface?
+The volatility surface maps fear and greed (Implied Volatility) against Strike Price and Time to Maturity. It acts as a living organism that anticipates price movements by revealing how expensive downside insurance is relative to upside lottery tickets.
+
+### The Morphology of Skew
+The shape of the curve warps predictably with market sentiment. The baseline is "The Smirk" (Crash Phobia). When demand for puts drops, the curve flattens (Complacency). If speculators aggressively buy calls, the curve forms a Forward Skew (Mania), acting as an early warning system.
+
+### Dynamic Volatility Rules
+When price moves, the curve's reaction reveals the market's underlying belief. "Sticky Strike" anchors IV to fixed price levels, implying disbelief and mean reversion. "Sticky Delta" anchors IV to moneyness, shifting the curve with the stock, indicating acceptance of the new trend.
+
+### The Trader's Compass
+Key high-frequency indicators reveal smart money positioning: 25Δ Risk Reversal shows the market's tilt, Put-Call Ratio separates retail volume from institutional open interest, Normalized Skew acts as a truth serum adjusting for VIX, and Gamma Exposure (GEX) dictates whether dealers will stabilize or amplify volatility.
+
+### Synthesizing the Signal
+A sustainable bull market requires both a Sticky Delta regime (trend belief) and a Healthy Skew (active hedging). A rising price accompanied by flattening skew and diverging PCR OI is a strong signal to take profit.
+
 ## Key Takeaways
 
 - The volatility surface is a **real-time sentiment map** — it encodes the market's probability density for future prices across all strikes and maturities simultaneously.

@@ -42,6 +42,29 @@ $$
 \Delta p = Y \cdot \sigma \cdot \sqrt{\frac{Q}{V}}
 $$
 
+## Section Summaries
+
+### Evolution of Statistical Arbitrage
+Statistical arbitrage isolates idiosyncratic components of asset returns by neutralizing risks. Early models used basic distance metrics, but modern approaches use sophisticated multi-asset factor models and deep learning.
+
+### Major Factors in Quant Trading
+Factor models like Fama-French Five-Factor quantify return drivers (Market Risk, Size, Value, Profitability, Investment). Modern funds also blend Momentum and Low Volatility/Quality to maximize risk-adjusted returns.
+
+### Advanced Extraction Models
+Traditional PCA assumes static loadings. Modern models use IPCA (Instrumented PCA) for time-varying loadings based on firm characteristics, and Deep Learning (Attention Factor Models) to jointly learn factors and policies directly.
+
+### The Ornstein-Uhlenbeck Framework
+Models the cumulative factor-neutral residual as a stochastic process balancing a deterministic mean-reverting drift and random shocks. The s-score standardizes trading signals for disciplined entry/exit rules.
+
+### The Marriott-Pope Effect
+OLS estimation of mean-reversion speed is downward-biased in finite samples. This causes models to "hallucinate" faster reversion than reality, leading to premature exits and realized losses if not properly debiased.
+
+### Execution Dynamics
+Transaction costs can easily destroy mean-reversion alpha. The Square-Root Law of Market Impact dictates that slippage scales with the square root of normalized order size, placing a strict capacity ceiling on AUM.
+
+### Rigorous Research Practices
+Backtest overfitting is prevented using Winsorization (managing fat tails without deleting data), CPCV (removing data leakage), and the Deflated Sharpe Ratio (adjusting for selection bias and non-normality).
+
 ## Key Takeaways
 - Modern extraction moves beyond static PCA to dynamic IPCA and Deep Learning attention models to jointly learn tradable factors and portfolio policies.
 - Execution costs (slippage and market impact) can easily destroy mean-reversion alpha, requiring strict management against the Square-Root Law of Market Impact.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { useQuery } from "@apollo/client";
 import { createClient } from "@/lib/supabase/client";
@@ -18,7 +18,25 @@ export interface Profile {
   tier: number;
 }
 
-export function useUser() {
+interface UserContextValue {
+  user: SupabaseUser | null;
+  profile: Profile | null;
+  loading: boolean;
+  signOut: () => Promise<void>;
+  refetchProfile: () => void;
+}
+
+const UserContext = createContext<UserContextValue | null>(null);
+
+/**
+ * Mounted once at the app root (see layout.tsx). Every `useUser()` call site
+ * (~20 across the app, several co-mounted on a single article page — Header,
+ * VideoCard, useBookmarks, YoutubeSubscribeGate, forum composer) used to run
+ * its own Supabase auth check + `ME` GraphQL/DB profile query independently.
+ * Centralizing it here means that work happens once per page load instead of
+ * once per consumer.
+ */
+export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -30,8 +48,12 @@ export function useUser() {
 
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user ?? null);
+    // getSession() reads the locally-stored session without a network round
+    // trip to Supabase's Auth server; the server independently re-verifies
+    // the JWT (via JWKS) on every authenticated GraphQL request anyway, so a
+    // second network-validated getUser() call here would be redundant.
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
       setAuthLoading(false);
     });
 
@@ -72,11 +94,21 @@ export function useUser() {
     await supabase.auth.signOut();
   }
 
-  return {
+  const value: UserContextValue = {
     user,
     profile,
     loading: authLoading || (!!user && profileLoading && !data),
     signOut,
     refetchProfile: refetch,
   };
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+}
+
+export function useUser(): UserContextValue {
+  const ctx = useContext(UserContext);
+  if (!ctx) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return ctx;
 }
