@@ -5,7 +5,58 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp } from "lucide-react";
+import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp, Trophy } from "lucide-react";
+import {
+  TIER_NAMES,
+  getTierName,
+  MIN_TOPIC_TIER,
+  MIN_COMMENT_TIER,
+  MIN_PREMIUM_TIER,
+  LIKE_TIER_LADDER,
+} from "@/lib/tiers";
+
+// Derived from the tier constants rather than written out by hand, so this table
+// can't drift from what the gates actually enforce.
+const TIER_PERKS: Record<number, string> = {
+  1: "Bookmarks",
+  [MIN_TOPIC_TIER]: "Topic pages & study guides",
+  [MIN_COMMENT_TIER]: "Comments & forum posts",
+  [MIN_PREMIUM_TIER]: "Premium articles",
+  5: "Coming later",
+  6: "Coming later",
+  7: "Coming later",
+  8: "Coming later",
+  9: "Admin",
+};
+
+// DONATION_TIER_LADDER mirrors real server logic (server/src/db/donations.js,
+// live Stripe webhook), but there's no donate button in the client yet -- so it's
+// deliberately left out of tierHowTo below rather than advertising an action
+// readers can't actually take. Wire it back in once a donate flow ships.
+function tierHowTo(tier: number): string {
+  if (tier === 1) return "Default when you create a free account";
+  if (tier === MIN_TOPIC_TIER) return "Subscribe to the SOPHIE YouTube channel";
+
+  const likeStep = LIKE_TIER_LADDER.find((step) => step.tier === tier);
+  if (likeStep) {
+    return (
+      `Like ${likeStep.likesNeeded} paired video${likeStep.likesNeeded === 1 ? "" : "s"}` +
+      (likeStep.alsoNeedsSubscribe ? " while subscribed" : "")
+    );
+  }
+
+  return "Awarded manually";
+}
+
+const TIER_ROWS = Object.keys(TIER_NAMES)
+  .map(Number)
+  .sort((a, b) => a - b)
+  .map((tier) => ({
+    tier,
+    name: getTierName(tier),
+    how: tierHowTo(tier),
+    unlocks: TIER_PERKS[tier] ?? null,
+  }));
 
 export default function AboutPage() {
   const aiTools: Array<{name: string; rating: number; comment: string; link?: string}> = [
@@ -163,6 +214,69 @@ export default function AboutPage() {
                   to unlock articles going forward. A tip jar for direct financial support is on the way too — stay tuned.
                 </p>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Membership Tiers Section */}
+          <Card className="mb-8 border-2 border-amber-200 bg-gradient-to-br from-amber-50/50 to-yellow-50/50">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Trophy className="h-6 w-6 text-amber-600" />
+                Membership Tiers
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-lg leading-relaxed">
+                Reading SOPHIE is free and open — no account needed for the home page, the article
+                library, or the market tools. Just signing in earns your first rank and unlocks
+                bookmarks, and each rank above that unlocks more — topic pages, comments, and
+                premium articles. Ranks 5-8 are earned the same way but don&apos;t unlock anything
+                yet; that&apos;s coming later.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-amber-200 text-left">
+                      <th className="py-2 pr-4 font-semibold">Tier</th>
+                      <th className="py-2 pr-4 font-semibold">Rank</th>
+                      <th className="py-2 pr-4 font-semibold">How to reach it</th>
+                      <th className="py-2 font-semibold">Unlocks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {TIER_ROWS.map((row) => (
+                      <tr key={row.tier} className="border-b border-amber-100 align-top">
+                        <td className="py-2 pr-4 font-mono text-amber-700">{row.tier}</td>
+                        <td className="py-2 pr-4 font-medium whitespace-nowrap">{row.name}</td>
+                        <td className="py-2 pr-4 text-slate-600">{row.how}</td>
+                        <td className="py-2">
+                          {row.unlocks === "Coming later" ? (
+                            <span className="text-slate-400 italic">Coming later</span>
+                          ) : row.unlocks === "Admin" ? (
+                            <Badge className="whitespace-nowrap bg-purple-600 hover:bg-purple-600 text-white">
+                              Admin
+                            </Badge>
+                          ) : row.unlocks ? (
+                            <Badge variant="secondary" className="whitespace-nowrap">
+                              {row.unlocks}
+                            </Badge>
+                          ) : (
+                            <span className="text-slate-400">Rank only</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-slate-600">
+                Likes and subscriptions run on the honor system — I don&apos;t verify them, and
+                likes count once per video, not per click. Ranks only ever go up: earning one a
+                second way never lowers a rank you already have. The single exception is
+                un-subscribing on YouTube, which drops {getTierName(MIN_TOPIC_TIER)} back to{" "}
+                {getTierName(1)} and leaves anything higher untouched. Supporting with a donation
+                will unlock ranks too — that&apos;s coming soon.
+              </p>
             </CardContent>
           </Card>
 

@@ -1,7 +1,13 @@
-// Mirrors the tier semantics on the server (profiles.tier, 1-9). Only 1, 2, and
-// 9 are reachable today -- 3-8 are named placeholders for tiers that don't
-// have a feature behind them yet (see MIN_COMMENT_TIER in
-// server/src/resolvers/forum.js and PostComposer/NewThreadForm on the client).
+// Mirrors the tier semantics on the server (profiles.tier, 1-9). Tiers 1-4 are
+// reachable today: 2-3 via the YouTube subscribe attestation
+// (server/src/db/auth.js), 3-4 via the like ladder (server/src/db/engagement.js).
+// Tiers 5-8 sit on the same like ladder (and a donation ladder that's built
+// server-side but has no client entry point yet -- see DONATION_TIER_LADDER)
+// but don't unlock a feature yet; they're rank-only until something is built
+// for them. Tier 9 (Head Quant) is functionally the admin role (see ADMIN_TIER
+// in app/admin/client.tsx and isAdmin checks in header.tsx/page.tsx), granted
+// manually, not earned -- keep the display name as-is, it's shown as a rank
+// badge to users, not just in the admin panel.
 export const TIER_NAMES: Record<number, string> = {
   1: "Intern",
   2: "Analyst",
@@ -25,6 +31,10 @@ export const MIN_PREMIUM_TIER = 4;
 export function canAccessPremiumContent(tier: number): boolean {
   return tier >= MIN_PREMIUM_TIER;
 }
+
+/** Tier required to comment or post in the forum. Mirrors MIN_COMMENT_TIER in
+ * server/src/resolvers/forum.js -- keep both in sync. */
+export const MIN_COMMENT_TIER = 3;
 
 /** Tier required to view non-default topic pages (see TopicAccessGate). */
 export const MIN_TOPIC_TIER = 2;
@@ -51,6 +61,21 @@ export const LIKE_TIER_LADDER: LikeTierStep[] = [
   { tier: 5, likesNeeded: 25 },
   { tier: 6, likesNeeded: 100 },
   { tier: 7, likesNeeded: 200 },
+];
+
+// Cumulative donation totals that promote a supporter, independent of the like
+// ladder above. Mirrors the CASE in server/src/db/donations.js -- keep both in
+// sync. Promotion is one-way (GREATEST), so donating never lowers a tier earned
+// another way, and the ladder stops at 7 like the engagement one.
+export interface DonationTierStep {
+  tier: number;
+  minCents: number;
+}
+export const DONATION_TIER_LADDER: DonationTierStep[] = [
+  { tier: 4, minCents: 999 },
+  { tier: 5, minCents: 2999 },
+  { tier: 6, minCents: 9999 },
+  { tier: 7, minCents: 19999 },
 ];
 
 /** The next rung above `tier` on the like ladder, or null once past tier 7. */
