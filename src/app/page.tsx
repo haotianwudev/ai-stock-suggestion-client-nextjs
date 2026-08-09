@@ -397,13 +397,20 @@ export default function Home() {
           <div className="max-w-3xl mx-auto space-y-4">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
             <p className="text-sm md:text-base text-muted-foreground">
-              SOPHIE is a free quantitative finance research and education platform. Every article,
-              video, podcast episode, and market tool on this site is free to read — no account
-              required.
+              SOPHIE is a quantitative finance research and education platform — market analysis,
+              options strategy research, and investing education, published as articles, videos, and
+              podcast episodes.
             </p>
             <p className="text-sm md:text-base text-muted-foreground">
-              An optional free account adds community features: bookmarking articles, joining forum
-              discussions, and managing your profile.
+              <span className="font-medium text-foreground">Browsing is open to everyone.</span>{" "}
+              This home page, the article library, and the live market tools are publicly accessible
+              with no account and no sign-in.
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground">
+              <span className="font-medium text-foreground">A free account unlocks member
+              content.</span>{" "}
+              Signing in lets you bookmark articles, join forum discussions, open topic study guides,
+              and read premium articles reserved for subscribers and supporters of the channel.
             </p>
             <p className="text-sm md:text-base text-muted-foreground">
               Signing in with Google is one optional way to create that account. SOPHIE receives only

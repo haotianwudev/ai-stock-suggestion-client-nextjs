@@ -213,7 +213,8 @@ export function AuthDialog({
         <DialogHeader>
           <DialogTitle>Sign in to Sophie</DialogTitle>
           <DialogDescription>
-            Sign in or create an account to comment and post in the forum.
+            Browsing SOPHIE is free and open — an account unlocks member content: comments and forum
+            posts, topic study guides, and premium articles for subscribers and supporters.
           </DialogDescription>
         </DialogHeader>
 
