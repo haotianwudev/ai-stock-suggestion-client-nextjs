@@ -90,9 +90,9 @@ export default function SP500InclusionAnomaly() {
 
   const getProbabilityClass = (probability: string) => {
     switch (probability.toLowerCase()) {
-      case 'high': return 'bg-green-100 text-green-800 border-green-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'high': return 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 text-[#1D8A70] dark:text-[#3CBF9C] border-[#1D8A70]/30 dark:border-[#3CBF9C]/30';
+      case 'medium': return 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] border-[#A8672E]/30 dark:border-[#D08F52]/30';
+      default: return 'bg-gray-100 dark:bg-gray-800 text-gray-800 border-gray-200 dark:border-gray-700';
     }
   };
 
@@ -101,26 +101,32 @@ export default function SP500InclusionAnomaly() {
       slug="sp500-inclusion-anomaly-december-2025-deep-research"
       additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. The S&P 500 inclusion process is subject to committee discretion, and no candidate is guaranteed inclusion."
     >
-      <div className="max-w-5xl mx-auto px-4">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
-          A comprehensive analysis of the event-driven strategy for the December 5, 2025 S&amp;P 500 rebalance.
-        </p>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-900 dark:text-gray-100">
+        <div className="mb-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
+          <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
+          <ul className="space-y-3">
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The modern S&amp;P 500 inclusion effect is a short-term momentum trade&mdash;not the permanent 7-9% re-rating it used to be&mdash;driven by retail speculation and ETF flows that fade after the inclusion date.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Five candidates are screened for the December 5, 2025 rebalance, with Pure Storage and Cheniere Energy assessed as highest-probability.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Bull put spreads often outperform bull call spreads here since they profit from both directional momentum and the post-announcement IV crush.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Snub risk runs 20-30% even for qualified candidates&mdash;diversifying across a 2-4 name basket with 2-3% position sizing is the professional approach.</span></li>
+          </ul>
+        </div>
 
         <InfographicSlot alt="S&P 500 Inclusion Anomaly Analysis Infographic" />
 
         {/* Executive Summary */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8 mb-12 mt-12 shadow-lg">
-          <h2 className="text-3xl font-bold text-blue-900 mb-6 flex items-center">
+        <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 mb-12 mt-12 shadow-lg">
+          <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-6 flex items-center">
             <Target className="mr-3 h-7 w-7" />
             Executive Summary
           </h2>
-          <div className="prose prose-blue max-w-none">
-            <p className="text-blue-800 leading-relaxed text-lg">
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
               The S&amp;P 500 inclusion anomaly represents one of the most reliable event-driven trading opportunities in modern markets.
               Our analysis for the December 5, 2025 rebalance identifies five high-probability candidates and provides a comprehensive
               framework for capitalizing on the temporary momentum created by index fund rebalancing and retail speculation.
             </p>
-            <p className="text-blue-800 leading-relaxed mt-4 text-lg">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4 text-lg">
               <strong>Key Insight:</strong> The modern index effect is no longer about permanent re-rating but about riding intense,
               temporary buying pressure that peaks at announcement and fades by inclusion date.
             </p>
@@ -129,35 +135,35 @@ export default function SP500InclusionAnomaly() {
 
         {/* The Modern Index Effect */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center">
-            <ChartBar className="mr-4 h-8 w-8 text-blue-600" />
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-8 flex items-center">
+            <ChartBar className="mr-4 h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />
             Understanding the Modern Index Effect
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-10">
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Historical Context</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-4">Historical Context</h3>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                 Historically, S&amp;P 500 inclusion generated a permanent 7-9% excess return as passive funds were forced buyers.
                 This created a structural arbitrage opportunity that academic literature extensively documented.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Modern Reality</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-4">Modern Reality</h3>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                 Today&apos;s effect is primarily a short-term momentum event driven by retail sentiment and ETF inflows.
                 The announcement acts as validation and catalyst, creating temporary buying pressure that fades post-inclusion.
               </p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-yellow-50 via-orange-50 to-red-50 border border-yellow-200 rounded-2xl p-8 shadow-lg">
+          <div className="bg-gradient-to-r bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border border-[#A8672E]/30 dark:border-[#D08F52]/30 rounded-2xl p-8 shadow-lg">
             <div className="flex items-start">
-              <Zap className="h-8 w-8 text-yellow-600 mt-1 mr-4 flex-shrink-0" />
+              <Zap className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52] mt-1 mr-4 flex-shrink-0" />
               <div>
-                <h3 className="text-2xl font-semibold text-yellow-900 mb-3">The Volatility Crush Opportunity</h3>
-                <p className="text-yellow-800 leading-relaxed text-lg">
+                <h3 className="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mb-3">The Volatility Crush Opportunity</h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                   Speculation inflates option prices (Implied Volatility) before the announcement. After the event,
                   this IV collapses dramatically. Sophisticated traders structure positions to profit from this &ldquo;IV crush&rdquo;
                   while maintaining directional exposure to the underlying momentum.
@@ -169,46 +175,46 @@ export default function SP500InclusionAnomaly() {
 
         {/* Candidate Analysis */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center">
-            <Target className="mr-4 h-8 w-8 text-green-600" />
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-8 flex items-center">
+            <Target className="mr-4 h-8 w-8 text-[#1D8A70] dark:text-[#3CBF9C]" />
             December 2025 Candidate Watchlist
           </h2>
 
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
                 <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
                   <tr>
-                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Company
                     </th>
-                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Investment Rationale
                     </th>
-                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Risk Profile
                     </th>
-                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
+                    <th className="px-8 py-5 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                       Probability
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
                   {candidates.map((candidate, index) => (
                     <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
                       <td className="px-8 py-6 whitespace-nowrap">
-                        <div className="text-lg font-bold text-gray-900">
+                        <div className="text-lg font-bold text-gray-900 dark:text-white">
                           {candidate.name} ({candidate.ticker})
                         </div>
-                        <div className="text-sm text-gray-500 font-medium">{candidate.sector}</div>
-                        <div className="text-sm text-gray-500 mt-2">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">{candidate.sector}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                           MCap: {candidate.marketCap}B | Beta: {candidate.beta}
                         </div>
                       </td>
-                      <td className="px-8 py-6 text-sm text-gray-700 max-w-xs leading-relaxed">
+                      <td className="px-8 py-6 text-sm text-gray-700 dark:text-gray-300 max-w-xs leading-relaxed">
                         {candidate.rationale}
                       </td>
-                      <td className="px-8 py-6 text-sm text-gray-700 max-w-xs leading-relaxed">
+                      <td className="px-8 py-6 text-sm text-gray-700 dark:text-gray-300 max-w-xs leading-relaxed">
                         {candidate.risk}
                       </td>
                       <td className="px-8 py-6 whitespace-nowrap">
@@ -223,9 +229,9 @@ export default function SP500InclusionAnomaly() {
             </div>
           </div>
 
-          <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4">Screening Methodology</h3>
-            <div className="grid md:grid-cols-2 gap-6 text-blue-800">
+          <div className="mt-8 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg">
+            <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-4">Screening Methodology</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-300">
               <div>
                 <strong className="text-lg">Quantitative Screens:</strong>
                 <ul className="list-disc list-inside mt-3 space-y-2 text-base">
@@ -250,8 +256,8 @@ export default function SP500InclusionAnomaly() {
 
         {/* Strategy Framework */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center">
-            <Zap className="mr-4 h-8 w-8 text-purple-600" />
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-8 flex items-center">
+            <Zap className="mr-4 h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />
             Options Strategy Framework
           </h2>
 
@@ -261,8 +267,8 @@ export default function SP500InclusionAnomaly() {
                 onClick={() => setSelectedStrategy('bull-call')}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                   selectedStrategy === 'bull-call'
-                    ? 'bg-purple-600 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md'
+                    ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white shadow-lg transform scale-105'
+                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-md'
                 }`}
               >
                 Bull Call Spread
@@ -271,8 +277,8 @@ export default function SP500InclusionAnomaly() {
                 onClick={() => setSelectedStrategy('bull-put')}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                   selectedStrategy === 'bull-put'
-                    ? 'bg-purple-600 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md'
+                    ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white shadow-lg transform scale-105'
+                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-md'
                 }`}
               >
                 Bull Put Spread
@@ -281,23 +287,23 @@ export default function SP500InclusionAnomaly() {
                 onClick={() => setSelectedStrategy('basket')}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                   selectedStrategy === 'basket'
-                    ? 'bg-purple-600 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md'
+                    ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white shadow-lg transform scale-105'
+                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-md'
                 }`}
               >
                 Basket Approach
               </button>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-xl">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-xl">
               {selectedStrategy === 'bull-call' && (
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Bull Call Spread (Debit Strategy)</h3>
+                  <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-6">Bull Call Spread (Debit Strategy)</h3>
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Structure</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Structure</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; Buy ATM or slightly OTM call</li>
                           <li>&bull; Sell higher strike call (same expiration)</li>
                           <li>&bull; Net debit to enter position</li>
@@ -305,8 +311,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Risk/Reward Profile</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Risk/Reward Profile</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; Max Loss: Net premium paid</li>
                           <li>&bull; Max Gain: Strike difference - premium</li>
                           <li>&bull; Breakeven: Long strike + net premium</li>
@@ -314,8 +320,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                     </div>
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-                      <p className="text-yellow-800 text-base">
+                    <div className="bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border border-[#A8672E]/30 dark:border-[#D08F52]/30 rounded-xl p-6">
+                      <p className="text-gray-700 dark:text-gray-300 text-base">
                         <strong>Key Consideration:</strong> While this strategy profits from upward price movement,
                         it suffers from the post-announcement IV crush. Best suited for high-conviction,
                         high-probability candidates where directional movement outweighs volatility concerns.
@@ -327,12 +333,12 @@ export default function SP500InclusionAnomaly() {
 
               {selectedStrategy === 'bull-put' && (
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Bull Put Spread (Credit Strategy)</h3>
+                  <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-6">Bull Put Spread (Credit Strategy)</h3>
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Structure</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Structure</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; Sell ATM or slightly OTM put</li>
                           <li>&bull; Buy lower strike put (same expiration)</li>
                           <li>&bull; Net credit received</li>
@@ -340,8 +346,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Advantages</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Advantages</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; Benefits from IV crush</li>
                           <li>&bull; Positive theta decay</li>
                           <li>&bull; Immediate credit received</li>
@@ -349,8 +355,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                     </div>
-                    <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                      <p className="text-green-800 text-base">
+                    <div className="bg-[#1D8A70]/5 dark:bg-[#3CBF9C]/10 border border-[#1D8A70]/30 dark:border-[#3CBF9C]/30 rounded-xl p-6">
+                      <p className="text-gray-700 dark:text-gray-300 text-base">
                         <strong>Preferred Strategy:</strong> Often superior for this high-volatility event as it
                         profits from both directional movement and the inevitable IV crush post-announcement.
                         The dual profit mechanism makes it particularly attractive for inclusion plays.
@@ -362,12 +368,12 @@ export default function SP500InclusionAnomaly() {
 
               {selectedStrategy === 'basket' && (
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Diversified Basket Approach</h3>
+                  <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-6">Diversified Basket Approach</h3>
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Portfolio Construction</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Portfolio Construction</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; 2-4 high-probability candidates</li>
                           <li>&bull; Equal or probability-weighted positions</li>
                           <li>&bull; Diversified across sectors when possible</li>
@@ -375,8 +381,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-3 text-lg">Risk Mitigation</h4>
-                        <ul className="text-gray-700 space-y-2 text-base">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Risk Mitigation</h4>
+                        <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-base">
                           <li>&bull; Reduces single-stock &ldquo;snub risk&rdquo;</li>
                           <li>&bull; Smooths return profile</li>
                           <li>&bull; Professional institutional approach</li>
@@ -384,8 +390,8 @@ export default function SP500InclusionAnomaly() {
                         </ul>
                       </div>
                     </div>
-                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                      <p className="text-blue-800 text-base">
+                    <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
+                      <p className="text-gray-700 dark:text-gray-300 text-base">
                         <strong>Professional Approach:</strong> Institutional traders typically build baskets
                         rather than betting on single names. This approach acknowledges that predicting exact
                         inclusions is difficult, but the overall effect is reliable across a diversified portfolio.
@@ -400,41 +406,41 @@ export default function SP500InclusionAnomaly() {
 
         {/* Timeline */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center">
-            <Calendar className="mr-4 h-8 w-8 text-indigo-600" />
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-8 flex items-center">
+            <Calendar className="mr-4 h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />
             Critical Event Timeline
           </h2>
 
-          <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
+          <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
             {timelineSteps.map((step, stepIdx) => (
               <div key={step.name} className={`relative ${stepIdx !== timelineSteps.length - 1 ? 'pb-12' : ''}`}>
                 {stepIdx !== timelineSteps.length - 1 && (
-                  <div className="absolute left-5 top-5 -ml-px mt-0.5 h-full w-1 bg-gradient-to-b from-indigo-300 to-gray-300" />
+                  <div className="absolute left-5 top-5 -ml-px mt-0.5 h-full w-1 bg-gradient-to-b from-[#A8672E]/40 dark:from-[#D08F52]/40 to-gray-300 dark:to-gray-700" />
                 )}
                 <div className="relative flex items-start group">
                   <span className="h-11 flex items-center">
                     <span className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 transition-all duration-200 ${
                       step.status === 'current'
-                        ? 'bg-indigo-600 border-indigo-600 shadow-lg'
-                        : 'bg-white border-gray-300 group-hover:border-indigo-400'
+                        ? 'bg-[#A8672E] dark:bg-[#D08F52] border-[#A8672E] dark:border-[#D08F52] shadow-lg'
+                        : 'bg-white dark:bg-gray-900 border-gray-300 group-hover:border-[#A8672E] dark:group-hover:border-[#D08F52]'
                     }`}>
                       {step.status === 'current' ? (
-                        <span className="h-3 w-3 bg-white rounded-full" />
+                        <span className="h-3 w-3 bg-white dark:bg-gray-900 rounded-full" />
                       ) : (
-                        <span className="h-3 w-3 bg-transparent rounded-full group-hover:bg-indigo-200" />
+                        <span className="h-3 w-3 bg-transparent rounded-full group-hover:bg-[#A8672E]/30 dark:group-hover:bg-[#D08F52]/30" />
                       )}
                     </span>
                   </span>
                   <div className="ml-6 min-w-0 flex-1">
                     <div className="flex items-center justify-between">
                       <span className={`text-lg font-bold ${
-                        step.status === 'current' ? 'text-indigo-700' : 'text-gray-700'
+                        step.status === 'current' ? 'text-[#A8672E] dark:text-[#D08F52]' : 'text-gray-700 dark:text-gray-300'
                       }`}>
                         {step.name}
                       </span>
-                      <span className="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">{step.date}</span>
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">{step.date}</span>
                     </div>
-                    <span className="text-gray-600 mt-2 block text-base leading-relaxed">{step.description}</span>
+                    <span className="text-gray-600 dark:text-gray-400 mt-2 block text-base leading-relaxed">{step.description}</span>
                   </div>
                 </div>
               </div>
@@ -444,35 +450,35 @@ export default function SP500InclusionAnomaly() {
 
         {/* Risk Management */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center">
-            <ShieldCheck className="mr-4 h-8 w-8 text-red-600" />
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-8 flex items-center">
+            <ShieldCheck className="mr-4 h-8 w-8 text-[#BC4128] dark:text-[#E2694A]" />
             Risk Management Framework
           </h2>
 
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <AlertTriangle className="mr-3 h-6 w-6 text-red-500" />
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-xl">
+              <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-6 flex items-center">
+                <AlertTriangle className="mr-3 h-6 w-6 text-[#BC4128] dark:text-[#E2694A]" />
                 Primary Risks
               </h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Snub Risk</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Snub Risk</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     The primary risk is a candidate not being selected. Historical snub rate is approximately
                     20-30% for seemingly qualified candidates. Diversification is the key mitigation strategy.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Timing Risk</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Timing Risk</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Entering too early subjects positions to general market volatility. Entering too late
                     means paying elevated premiums with limited upside potential.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Liquidity Risk</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Liquidity Risk</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Some candidates may have limited options liquidity, leading to wide bid-ask spreads
                     and difficult execution, especially during volatile periods.
                   </p>
@@ -480,29 +486,29 @@ export default function SP500InclusionAnomaly() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <ShieldCheck className="mr-3 h-6 w-6 text-green-500" />
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-xl">
+              <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-6 flex items-center">
+                <ShieldCheck className="mr-3 h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C]" />
                 Mitigation Strategies
               </h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Portfolio Diversification</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Portfolio Diversification</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Build positions across 2-4 high-probability candidates to reduce single-stock risk.
                     This professional approach smooths returns and improves risk-adjusted performance.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Position Sizing</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Position Sizing</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Limit individual positions to 2-3% of portfolio value. The strategy should be viewed
                     as a tactical allocation, not a core holding.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Exit Discipline</h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3 text-lg">Exit Discipline</h4>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Establish clear profit-taking levels (typically 50-75% of maximum gain) and stick to
                     the timeline. Avoid the temptation to hold through inclusion date.
                   </p>
@@ -514,33 +520,33 @@ export default function SP500InclusionAnomaly() {
 
         {/* Key Takeaways */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border border-blue-200 rounded-2xl p-10 shadow-xl">
-            <h2 className="text-3xl font-bold text-blue-900 mb-8">Key Strategic Takeaways</h2>
+          <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-10 shadow-xl">
+            <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-8">Key Strategic Takeaways</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">1</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>Modern Effect:</strong> The S&amp;P 500 inclusion anomaly is now primarily a short-term momentum event,
                     not a permanent re-rating opportunity.
                   </p>
                 </div>
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">2</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>IV Crush Advantage:</strong> Bull put spreads often outperform bull call spreads due to
                     their ability to profit from both directional movement and volatility collapse.
                   </p>
                 </div>
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">3</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>Timing is Critical:</strong> Peak momentum occurs in the 1-2 days following the announcement.
                     Holding through inclusion date typically destroys value.
                   </p>
@@ -548,28 +554,28 @@ export default function SP500InclusionAnomaly() {
               </div>
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">4</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>Diversification Essential:</strong> Professional approach requires building baskets
                     of 2-4 candidates to mitigate single-stock snub risk.
                   </p>
                 </div>
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">5</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>Risk Management:</strong> Position sizing should be conservative (2-3% of portfolio)
                     with clear exit discipline and profit-taking targets.
                   </p>
                 </div>
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-white text-sm font-bold">6</span>
                   </div>
-                  <p className="text-blue-800 text-base leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                     <strong>Candidate Quality:</strong> Focus on large-cap, profitable companies in under-represented
                     sectors with strong fundamentals and adequate liquidity.
                   </p>

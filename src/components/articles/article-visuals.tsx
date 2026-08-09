@@ -1,4 +1,81 @@
+import { useState } from "react";
 import { MathBlock } from "@/components/articles/math";
+
+/**
+ * Inline jargon term with a dashed-underline hover/focus tooltip.
+ * Shared across article bodies so the tooltip markup/behavior stays consistent
+ * instead of being redefined per-article.
+ */
+export function Jargon({ term, definition }: { term: string; definition: string }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <span
+      className="relative inline-block cursor-help"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+      onFocus={() => setIsVisible(true)}
+      onBlur={() => setIsVisible(false)}
+    >
+      <span
+        className="border-b border-dashed border-[#A8672E] dark:border-[#D08F52] text-[#A8672E] dark:text-[#D08F52] transition-colors"
+        tabIndex={0}
+      >
+        {term}
+      </span>
+      {isVisible && (
+        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 shadow-xl rounded-md border border-gray-200 dark:border-gray-700 z-10 pointer-events-none font-sans text-left">
+          {definition}
+          <svg className="absolute text-white dark:text-gray-800 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xmlSpace="preserve">
+            <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+          </svg>
+        </span>
+      )}
+    </span>
+  );
+}
+
+const comparisonTone = {
+  pos: {
+    border: "border-[#1D8A70]/30 dark:border-[#3CBF9C]/30",
+    text: "text-[#1D8A70] dark:text-[#3CBF9C]",
+    borderB: "border-[#1D8A70]/20 dark:border-[#3CBF9C]/20",
+  },
+  neg: {
+    border: "border-[#BC4128]/30 dark:border-[#E2694A]/30",
+    text: "text-[#BC4128] dark:text-[#E2694A]",
+    borderB: "border-[#BC4128]/20 dark:border-[#E2694A]/20",
+  },
+} as const;
+
+/**
+ * Two-column-grid wrapper for a paired comparison (regime A vs regime B, before/after).
+ * Pair with two <ComparisonCard> children, one per side.
+ */
+export function ComparisonGrid({ children }: { children: React.ReactNode }) {
+  return <div className="grid md:grid-cols-2 gap-6">{children}</div>;
+}
+
+export function ComparisonCard({
+  title,
+  tone,
+  children,
+}: {
+  title: string;
+  tone: keyof typeof comparisonTone;
+  children: React.ReactNode;
+}) {
+  const s = comparisonTone[tone];
+  return (
+    <div className={`bg-white dark:bg-gray-900 border ${s.border} rounded-xl p-6 shadow-sm`}>
+      <h3 className={`font-serif text-xl ${s.text} mb-4 border-b ${s.borderB} pb-2 flex items-center gap-2`}>
+        <span className="w-2 h-2 rounded-full bg-current flex-none" />
+        {title}
+      </h3>
+      <div className="space-y-4 text-sm md:text-base">{children}</div>
+    </div>
+  );
+}
 
 interface WorkedExample {
   label: string;

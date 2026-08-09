@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ArticleFrame } from '@/components/articles/article-frame';
+import { Jargon } from '@/components/articles/article-visuals';
 
 // --- SVG ICON COMPONENTS ---
 const TrendingUpIcon = ({ className }: { className?: string }) => (
@@ -52,7 +53,7 @@ const valuationMetrics = [
     delta: "+131%",
     implication: "Strongly Overvalued",
     icon: TrendingUpIcon,
-    color: "red"
+    tone: "neg" as const,
   },
   {
     name: "Buffett Indicator",
@@ -62,7 +63,7 @@ const valuationMetrics = [
     delta: "+158%",
     implication: "Strongly Overvalued",
     icon: LandmarkIcon,
-    color: "red"
+    tone: "neg" as const,
   },
   {
     name: "S&P 500 Trailing P/E",
@@ -72,7 +73,7 @@ const valuationMetrics = [
     delta: "+33% to +59%",
     implication: "Overvalued",
     icon: TrendingUpIcon,
-    color: "orange"
+    tone: "caution" as const,
   },
   {
     name: "Earnings Yield Gap",
@@ -82,7 +83,7 @@ const valuationMetrics = [
     delta: "Negative Spread",
     implication: "Bonds More Attractive",
     icon: TrendingDownIcon,
-    color: "red"
+    tone: "neg" as const,
   },
 ];
 
@@ -118,7 +119,7 @@ const investmentPrinciples = [
   },
   {
     title: "Emphasize Value and Quality",
-    content: "In an expensive market, seek a 'margin of safety' by investing in companies trading below their intrinsic worth. Look for low P/E ratios, strong free cash flow (the cash a company generates after accounting for capital expenditures), and sustainable dividends. Prioritize 'quality'—companies with strong balance sheets, low debt, and durable competitive advantages ('moats'), which allow them to maintain profitability over the long term."
+    content: "In an expensive market, seek a margin of safety by investing in companies trading below their intrinsic worth. Look for low P/E ratios, strong free cash flow (the cash a company generates after accounting for capital expenditures), and sustainable dividends. Prioritize quality—companies with strong balance sheets, low debt, and durable competitive advantages (moats), which allow them to maintain profitability over the long term."
   },
   {
     title: "Bolster Defensive Positioning",
@@ -130,7 +131,7 @@ const investmentPrinciples = [
   },
   {
     title: "Employ Systematic Investing",
-    content: "Use dollar-cost averaging (DCA) by investing a fixed amount at regular intervals, regardless of market highs or lows. This strategy removes the dangerous emotion of trying to 'time the market.' It automatically buys more shares when prices are low and fewer when they are high, lowering your average cost basis over time and mitigating the risk of deploying a large lump sum at a market peak."
+    content: "Use dollar-cost averaging (DCA) by investing a fixed amount at regular intervals, regardless of market highs or lows. This strategy removes the dangerous emotion of trying to time the market. It automatically buys more shares when prices are low and fewer when they are high, lowering your average cost basis over time and mitigating the risk of deploying a large lump sum at a market peak."
   }
 ];
 
@@ -159,45 +160,43 @@ interface MetricCardProps {
     delta: string;
     implication: string;
     icon: React.ComponentType<{ className?: string }>;
-    color: string;
+    tone: "neg" | "caution";
   };
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ metric }) => {
-  const colorClasses = {
-    red: {
-      bg: 'bg-red-50 border-red-200',
-      text: 'text-red-700',
-      iconBg: 'bg-red-100',
-      deltaText: 'text-red-600',
-    },
-    orange: {
-      bg: 'bg-orange-50 border-orange-200',
-      text: 'text-orange-700',
-      iconBg: 'bg-orange-100',
-      deltaText: 'text-orange-600',
-    },
-  };
+const toneClasses = {
+  neg: {
+    bg: 'bg-[#BC4128]/5 dark:bg-[#E2694A]/10 border-[#BC4128]/30 dark:border-[#E2694A]/30',
+    text: 'text-[#BC4128] dark:text-[#E2694A]',
+    iconBg: 'bg-[#BC4128]/10 dark:bg-[#E2694A]/15',
+  },
+  caution: {
+    bg: 'bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-[#A8672E]/30 dark:border-[#D08F52]/30',
+    text: 'text-[#A8672E] dark:text-[#D08F52]',
+    iconBg: 'bg-[#A8672E]/10 dark:bg-[#D08F52]/15',
+  },
+} as const;
 
-  const classes = colorClasses[metric.color as keyof typeof colorClasses] || colorClasses.red;
+const MetricCard: React.FC<MetricCardProps> = ({ metric }) => {
+  const classes = toneClasses[metric.tone];
 
   return (
-    <div className={`rounded-2xl p-6 border ${classes.bg} flex flex-col justify-between h-full shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}>
+    <div className={`rounded-xl p-6 border ${classes.bg} flex flex-col justify-between h-full shadow-sm`}>
       <div>
         <div className="flex items-start justify-between">
-          <h3 className="text-lg font-semibold text-slate-900">{metric.name}</h3>
+          <h3 className="font-serif text-lg text-gray-900 dark:text-white">{metric.name}</h3>
           <div className={`p-2 rounded-full ${classes.iconBg}`}>
             <metric.icon className={`h-6 w-6 ${classes.text}`} />
           </div>
         </div>
-        <p className="text-sm text-slate-600 mt-2">{metric.description}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{metric.description}</p>
       </div>
       <div className="mt-6">
         <p className={`text-sm font-medium ${classes.text}`}>{metric.implication}</p>
-        <p className="text-4xl font-bold text-slate-900 mt-1">{metric.currentValue}</p>
-        <div className="flex justify-between items-baseline mt-2 text-slate-500">
-          <p>vs. <span className="font-semibold text-slate-600">{metric.historicalMean}</span> mean</p>
-          <p className={`font-semibold text-sm ${classes.deltaText}`}>{metric.delta}</p>
+        <p className="text-3xl font-mono tabular-nums font-bold text-gray-900 dark:text-white mt-1">{metric.currentValue}</p>
+        <div className="flex justify-between items-baseline mt-2 text-gray-500 dark:text-gray-400 text-sm">
+          <p>vs. <span className="font-mono tabular-nums font-semibold text-gray-700 dark:text-gray-300">{metric.historicalMean}</span> mean</p>
+          <p className={`font-mono tabular-nums font-semibold ${classes.text}`}>{metric.delta}</p>
         </div>
       </div>
     </div>
@@ -206,36 +205,36 @@ const MetricCard: React.FC<MetricCardProps> = ({ metric }) => {
 
 interface AccordionItemProps {
   title: string;
-  content: string;
+  content: React.ReactNode;
   isOpen: boolean;
   onClick: () => void;
   showDefensiveSectors?: boolean;
 }
 
 const AccordionItem: React.FC<AccordionItemProps> = ({ title, content, isOpen, onClick, showDefensiveSectors }) => (
-  <div className="border-b border-slate-200">
+  <div className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
     <button
       className="w-full flex justify-between items-center text-left py-5 px-6"
       onClick={onClick}
     >
-      <span className="text-lg font-semibold text-slate-800">{title}</span>
+      <span className="font-serif text-lg text-gray-900 dark:text-white">{title}</span>
       <ChevronDownIcon
-        className={`h-6 w-6 text-slate-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+        className={`h-5 w-5 text-gray-500 dark:text-gray-400 transition-transform duration-300 flex-none ${isOpen ? 'rotate-180' : ''}`}
       />
     </button>
     <div
       className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
     >
       <div className="overflow-hidden">
-        <div className="pb-5 px-6 text-slate-600">
+        <div className="pb-5 px-6 text-gray-600 dark:text-gray-400">
           <p>{content}</p>
           {showDefensiveSectors && (
-            <div className="mt-4 space-y-4">
+            <div className="mt-4 space-y-3">
               {defensiveSectors.map((sector, index) => (
-                <div key={index} className="p-4 bg-slate-100 rounded-lg border border-slate-200">
-                  <h4 className="font-semibold text-blue-700">{sector.name}</h4>
-                  <p className="text-sm text-slate-600 mt-1">{sector.rationale}</p>
-                  <p className="text-xs text-slate-500 mt-2">e.g., {sector.companies}</p>
+                <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h4 className="font-serif text-[#A8672E] dark:text-[#D08F52]">{sector.name}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{sector.rationale}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">e.g., {sector.companies}</p>
                 </div>
               ))}
             </div>
@@ -255,87 +254,105 @@ export default function NavigatingRarifiedAir() {
 
   return (
     <ArticleFrame slug="navigating-rarified-air-quantitative-analysis-us-market-valuations">
-      <div className="max-w-5xl mx-auto px-4">
-        <p className="text-lg text-slate-700 leading-relaxed mb-2 text-center max-w-3xl mx-auto">
-          An analysis of U.S. equity valuations following Fed Chair Powell&apos;s warning that the market is &ldquo;fairly highly valued.&rdquo;
-        </p>
-        <p className="text-sm text-slate-500 text-center mb-16">
-          Analysis based on statements from September 2025
-        </p>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-900 dark:text-gray-100 font-sans">
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-8">Analysis based on statements from September 2025</p>
+
+        {/* Key Takeaways */}
+        <section className="mb-12">
+          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
+            <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+                <span>Fed Chair Powell&apos;s September 2025 &ldquo;fairly highly valued&rdquo; remark echoes Greenspan&apos;s 1996 &ldquo;irrational exuberance&rdquo; warning&mdash;verbal intervention, not policy action.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+                <span>Four independent valuation metrics&mdash;Shiller CAPE, the Buffett Indicator, trailing P/E, and the earnings yield gap&mdash;all point to historical overvaluation.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+                <span>Prior valuation peaks (1929, 1999, 2007) were followed by flat-to-negative long-term real returns as valuations mean-reverted.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+                <span>A counter-case exists: Magnificent Seven earnings quality, a structurally lower-rate world, and a leaner S&amp;P 500 composition could justify a higher plateau.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+                <span>Recommended posture: disciplined rebalancing, value/quality tilt, defensive sectors, geographic diversification, and systematic (DCA) investing&mdash;not panic.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
 
         {/* Powell Quote Section */}
-        <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">The Powell Pronouncement</h2>
-          <blockquote className="relative border-l-4 border-blue-500 pl-6">
-            <p className="text-xl italic text-slate-800">
+        <section className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 mb-12">
+          <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-6">The Powell Pronouncement</h2>
+          <blockquote className="relative border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-6">
+            <p className="text-xl italic text-gray-800 dark:text-gray-200">
               &ldquo;By many measures, U.S. equity prices are fairly highly valued.&rdquo;
             </p>
-            <footer className="mt-4 text-slate-500">
+            <footer className="mt-4 text-gray-500 dark:text-gray-400">
               &mdash; Jerome Powell, Federal Reserve Chair, September 2025
             </footer>
           </blockquote>
-          <div className="mt-6 text-slate-600 space-y-4">
+          <div className="mt-6 text-gray-600 dark:text-gray-400 space-y-4">
             <p>
-              Powell&apos;s remarks function as &ldquo;jawboning&rdquo;&mdash;a form of verbal intervention to influence market expectations without direct policy action. This echoes Alan Greenspan&apos;s famous 1996 &ldquo;irrational exuberance&rdquo; warning during the dot-com bubble, signaling official concern over speculative froth.
+              Powell&apos;s remarks function as <Jargon term="jawboning" definition="Verbal intervention by policymakers intended to influence market expectations without taking direct policy action." />&mdash;this echoes Alan Greenspan&apos;s famous 1996 &ldquo;irrational exuberance&rdquo; warning during the dot-com bubble, signaling official concern over speculative froth.
             </p>
             <p>
-              The Fed faces a difficult &ldquo;two-sided risk&rdquo;: easing monetary policy too soon could reignite inflation, but keeping it restrictive for too long risks derailing the economy and labor market. Powell&apos;s statement subtly communicates that the &ldquo;Fed Put&rdquo;&mdash;the market&apos;s implicit belief that the Fed will always step in to prevent a crash&mdash;is not unconditional, especially while inflation remains a concern.
+              The Fed faces a difficult two-sided risk: easing monetary policy too soon could reignite inflation, but keeping it restrictive for too long risks derailing the economy and labor market. Powell&apos;s statement subtly communicates that the <Jargon term="Fed Put" definition="The market's implicit belief that the Federal Reserve will always step in with rate cuts or liquidity to prevent a serious crash." /> is not unconditional, especially while inflation remains a concern.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* Quantitative Analysis Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              A Quantitative Assessment
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-              Key metrics unanimously signal a market in a state of historical overvaluation.
-            </p>
-          </div>
+        <section className="mb-12">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-2">A Quantitative Assessment</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl">
+            Key metrics unanimously signal a market in a state of historical overvaluation.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {valuationMetrics.map((metric, index) => (
               <MetricCard key={index} metric={metric} />
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Historical Precedent Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              The &ldquo;Lost Decade&rdquo; Phenomenon
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
-              History shows a powerful tendency for valuations to &ldquo;mean revert.&rdquo; When markets reach extreme peaks, subsequent long-term returns are often flat or negative as valuations compress back toward their historical averages.
-            </p>
-          </div>
+        <section className="mb-12">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-2">
+            The &ldquo;Lost Decade&rdquo; Phenomenon
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl">
+            History shows a powerful tendency for valuations to <Jargon term="mean revert" definition="The tendency for a metric that has moved to an extreme to gradually return toward its long-run historical average." />. When markets reach extreme peaks, subsequent long-term returns are often flat or negative as valuations compress back toward their historical averages.
+          </p>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left bg-white rounded-lg shadow-md border border-slate-200">
-              <thead className="border-b border-slate-200 bg-slate-100">
+            <table className="w-full text-left bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+              <thead className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
                 <tr>
-                  <th className="p-4 text-sm font-semibold text-slate-600">Market Peak</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600">Shiller P/E at Peak</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 text-right">1-Year Real Return</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 text-right">5-Year Ann. Real Return</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 text-right">10-Year Ann. Real Return</th>
+                  <th className="p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Market Peak</th>
+                  <th className="p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Shiller P/E at Peak</th>
+                  <th className="p-4 text-sm font-semibold text-gray-600 dark:text-gray-400 text-right">1-Year Real Return</th>
+                  <th className="p-4 text-sm font-semibold text-gray-600 dark:text-gray-400 text-right">5-Year Ann. Real Return</th>
+                  <th className="p-4 text-sm font-semibold text-gray-600 dark:text-gray-400 text-right">10-Year Ann. Real Return</th>
                 </tr>
               </thead>
               <tbody>
                 {historicalData.map((row, index) => (
-                  <tr key={index} className={`border-b border-slate-200 last:border-b-0 ${row.peak === 'Sep 2025' ? 'bg-blue-50' : 'hover:bg-slate-50'}`}>
-                    <td className="p-4 font-semibold text-slate-800">{row.peak}</td>
-                    <td className="p-4 text-slate-600">{row.shillerPE}</td>
-                    <td className={`p-4 font-mono text-right ${row.return1.startsWith('-') ? 'text-red-600' : row.return1 === '?' ? 'text-slate-400' : 'text-green-600'}`}>
+                  <tr key={index} className={`border-b border-gray-200 dark:border-gray-700 last:border-b-0 ${row.peak === 'Sep 2025' ? 'bg-[#A8672E]/5 dark:bg-[#D08F52]/10' : ''}`}>
+                    <td className="p-4 font-semibold text-gray-800 dark:text-gray-200">{row.peak}</td>
+                    <td className="p-4 font-mono tabular-nums text-gray-600 dark:text-gray-400">{row.shillerPE}</td>
+                    <td className={`p-4 font-mono tabular-nums text-right ${row.return1.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : row.return1 === '?' ? 'text-gray-400 dark:text-gray-600' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                       {row.return1}
                     </td>
-                    <td className={`p-4 font-mono text-right ${row.return5.startsWith('-') ? 'text-red-600' : row.return5 === '?' ? 'text-slate-400' : 'text-green-600'}`}>
+                    <td className={`p-4 font-mono tabular-nums text-right ${row.return5.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : row.return5 === '?' ? 'text-gray-400 dark:text-gray-600' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                       {row.return5}
                     </td>
-                    <td className={`p-4 font-mono text-right ${row.return10.startsWith('-') ? 'text-red-600' : row.return10 === '?' ? 'text-slate-400' : 'text-green-600'}`}>
+                    <td className={`p-4 font-mono tabular-nums text-right ${row.return10.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : row.return10 === '?' ? 'text-gray-400 dark:text-gray-600' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                       {row.return10}
                     </td>
                   </tr>
@@ -343,20 +360,18 @@ export default function NavigatingRarifiedAir() {
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
         {/* Strategic Recommendations */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              Strategic Recommendations
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-              An actionable playbook for the prudent investor in a challenging landscape.
-            </p>
-          </div>
+        <section className="mb-12">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-2">
+            Strategic Recommendations
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl">
+            An actionable playbook for the prudent investor in a challenging landscape.
+          </p>
 
-          <div className="bg-white rounded-xl border border-slate-200 shadow-lg">
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
             {investmentPrinciples.map((principle, index) => (
               <AccordionItem
                 key={index}
@@ -368,41 +383,39 @@ export default function NavigatingRarifiedAir() {
               />
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Counter-Arguments */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              The Counter-Argument
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-              To maintain a balanced view, it&apos;s crucial to consider arguments for why today&apos;s high valuations might be justified.
-            </p>
-          </div>
+        <section className="mb-12">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-2">
+            The Counter-Argument
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl">
+            To maintain a balanced view, it&apos;s crucial to consider arguments for why today&apos;s high valuations might be justified.
+          </p>
 
-          <div className="grid md:grid-cols-1 gap-8">
+          <div className="grid gap-4">
             {counterArguments.map((arg, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-                <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
-                  <ShieldCheckIcon className="h-5 w-5 text-blue-600" />
+              <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white flex items-center gap-2">
+                  <ShieldCheckIcon className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] flex-none" />
                   {arg.title}
                 </h3>
-                <p className="mt-2 text-slate-600">{arg.content}</p>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">{arg.content}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Conclusion */}
-        <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+        <section className="max-w-3xl">
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-4">
             Conclusion: A Call for Discipline
           </h2>
-          <p className="mt-6 text-lg text-slate-600">
+          <p className="text-gray-600 dark:text-gray-400">
             While compelling arguments exist to justify current valuations, the weight of historical evidence suggests profound risks. The present environment does not call for panic, but for a rational, disciplined shift in strategy. Success in the coming years will likely belong not to those who chase momentum, but to those who build a resilient framework on the enduring principles of diversification, value, quality, and systematic discipline.
           </p>
-        </div>
+        </section>
       </div>
     </ArticleFrame>
   );

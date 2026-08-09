@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { BrainCircuit, Zap, Scale, ShieldCheck, TrendingUp, AlertTriangle, SlidersHorizontal } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { Jargon, FormulaPanel } from '@/components/articles/article-visuals';
 
 // Interactive Components
 const InteractiveSpreadCalculator = () => {
@@ -32,98 +33,54 @@ const InteractiveSpreadCalculator = () => {
 
   const results = calculateSpread();
 
+  const fields: { key: keyof typeof params; label: string; step?: string }[] = [
+    { key: 'midPrice', label: 'Mid Price ($)' },
+    { key: 'inventory', label: 'Inventory Position' },
+    { key: 'riskAversion', label: 'Risk Aversion (γ)', step: '0.01' },
+    { key: 'volatility', label: 'Volatility (σ)', step: '0.01' },
+    { key: 'timeToExpiry', label: 'Time to Expiry', step: '0.1' },
+    { key: 'orderFlow', label: 'Order Flow (κ)', step: '0.1' },
+  ];
+
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-      <h4 className="text-xl font-bold text-blue-700 mb-4">Interactive Avellaneda-Stoikov Calculator</h4>
+    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+      <h4 className="font-serif text-xl text-gray-900 dark:text-white mb-4">Interactive Avellaneda-Stoikov Calculator</h4>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Mid Price ($)</label>
+      <div className="grid md:grid-cols-2 gap-x-6 gap-y-4">
+        {fields.map((field) => (
+          <div key={field.key}>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{field.label}</label>
             <input
               type="number"
-              value={params.midPrice}
-              onChange={(e) => setParams({...params, midPrice: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              step={field.step}
+              value={params[field.key]}
+              onChange={(e) => setParams({ ...params, [field.key]: parseFloat(e.target.value) || 0 })}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#A8672E] dark:focus:ring-[#D08F52]"
             />
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Inventory Position</label>
-            <input
-              type="number"
-              value={params.inventory}
-              onChange={(e) => setParams({...params, inventory: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Risk Aversion (γ)</label>
-            <input
-              type="number"
-              step="0.01"
-              value={params.riskAversion}
-              onChange={(e) => setParams({...params, riskAversion: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Volatility (σ)</label>
-            <input
-              type="number"
-              step="0.01"
-              value={params.volatility}
-              onChange={(e) => setParams({...params, volatility: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Time to Expiry</label>
-            <input
-              type="number"
-              step="0.1"
-              value={params.timeToExpiry}
-              onChange={(e) => setParams({...params, timeToExpiry: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Order Flow (κ)</label>
-            <input
-              type="number"
-              step="0.1"
-              value={params.orderFlow}
-              onChange={(e) => setParams({...params, orderFlow: parseFloat(e.target.value) || 0})}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-        <h5 className="font-semibold text-blue-800 mb-2">Calculated Results:</h5>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <span className="text-gray-600">Reservation Price:</span>
-            <div className="font-bold text-blue-700">${results.reservationPrice}</div>
-          </div>
-          <div>
-            <span className="text-gray-600">Bid Price:</span>
-            <div className="font-bold text-green-700">${results.bidPrice}</div>
-          </div>
-          <div>
-            <span className="text-gray-600">Ask Price:</span>
-            <div className="font-bold text-red-700">${results.askPrice}</div>
-          </div>
-          <div>
-            <span className="text-gray-600">Total Spread:</span>
-            <div className="font-bold text-purple-700">${results.totalSpread}</div>
+      <div className="mt-6 rounded-lg overflow-hidden">
+        <div className="bg-[#14171B] dark:bg-[#05070A] p-4">
+          <h5 className="font-sans text-xs uppercase tracking-wider text-gray-400 mb-3">Calculated Results</h5>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <span className="text-gray-400">Reservation Price</span>
+              <div className="font-mono tabular-nums font-bold text-[#D08F52]">${results.reservationPrice}</div>
+            </div>
+            <div>
+              <span className="text-gray-400">Bid Price</span>
+              <div className="font-mono tabular-nums font-bold text-white">${results.bidPrice}</div>
+            </div>
+            <div>
+              <span className="text-gray-400">Ask Price</span>
+              <div className="font-mono tabular-nums font-bold text-white">${results.askPrice}</div>
+            </div>
+            <div>
+              <span className="text-gray-400">Total Spread</span>
+              <div className="font-mono tabular-nums font-bold text-white">${results.totalSpread}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -133,35 +90,39 @@ const InteractiveSpreadCalculator = () => {
 
 const LatencyVisualization = () => {
   const latencyData = [
-    { component: "Co-located Servers", latency: "10-50", unit: "μs", color: "bg-green-500" },
-    { component: "FPGAs/ASICs", latency: "100-500", unit: "ns", color: "bg-blue-500" },
-    { component: "Microwave/Laser", latency: "4-8", unit: "ms", color: "bg-purple-500" },
-    { component: "Kernel Bypass", latency: "1-5", unit: "μs", color: "bg-orange-500" }
+    { component: "Co-located Servers", latency: "10-50", unit: "μs" },
+    { component: "FPGAs/ASICs", latency: "100-500", unit: "ns" },
+    { component: "Microwave/Laser", latency: "4-8", unit: "ms" },
+    { component: "Kernel Bypass", latency: "1-5", unit: "μs" }
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-      <h4 className="text-xl font-bold text-gray-800 mb-4">Latency Comparison: The Speed Hierarchy</h4>
-      <div className="space-y-4">
+    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+      <h4 className="font-serif text-xl text-gray-900 dark:text-white mb-4">Latency Comparison: The Speed Hierarchy</h4>
+      <div className="space-y-3">
         {latencyData.map((item, index) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <div className="flex items-center space-x-3">
-              <div className={`w-4 h-4 rounded ${item.color}`}></div>
-              <span className="font-medium text-gray-800">{item.component}</span>
+              <div className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
+              <span className="font-medium text-gray-800 dark:text-gray-200">{item.component}</span>
             </div>
-            <div className="text-right">
-              <span className="text-lg font-bold text-gray-900">{item.latency}</span>
-              <span className="text-sm text-gray-600 ml-1">{item.unit}</span>
+            <div className="text-right font-mono tabular-nums">
+              <span className="text-lg font-bold text-gray-900 dark:text-white">{item.latency}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">{item.unit}</span>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-4 text-sm text-gray-600">
+      <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
         <strong>Note:</strong> μs = microseconds, ns = nanoseconds, ms = milliseconds
       </div>
     </div>
   );
 };
+
+const SectionHeading = ({ children }: { children: React.ReactNode }) => (
+  <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white text-center mb-8">{children}</h2>
+);
 
 export default function AnatomyOfSpeedArticle() {
   const hftInfraData = [
@@ -191,65 +152,71 @@ export default function AnatomyOfSpeedArticle() {
       slug="anatomy-of-speed-modern-market-making-hft"
       additionalDisclaimer="High-frequency trading and market making involve substantial risks and require significant capital, technology infrastructure, and regulatory compliance."
     >
-      <div className="max-w-5xl mx-auto px-4 text-gray-800">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
-          An analytical report on strategies, models, and alpha generation in high-frequency trading environments where microseconds determine profitability.
-        </p>
-
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-900 dark:text-gray-100 font-sans">
         <InfographicSlot alt="High-Frequency Trading Infrastructure Infographic" />
 
-        {/* Section 1: Principles of Market Making */}
-        <section className="mb-12 mt-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 1</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Principles of Market Making</h2>
+        {/* Key Takeaways */}
+        <section className="mb-12 mt-8">
+          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
+            <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
+            <ul className="space-y-3">
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Market makers profit from the bid-ask spread while managing <Jargon term="inventory risk" definition="The risk that a market maker's current position devalues before it can be offloaded." /> and <Jargon term="adverse selection" definition="The risk of unknowingly trading with a better-informed counterparty who anticipates a price move." />.</span></li>
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The latency arms race spans co-located servers (μs), FPGAs/ASICs (ns), and microwave/laser links (ms) between exchanges.</span></li>
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The Avellaneda-Stoikov model provides the mathematical baseline for optimal quoting, balancing inventory risk against adverse selection.</span></li>
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Machine learning extends the edge: micro-price prediction, volatility forecasting, order-flow analysis, and reinforcement-learning execution.</span></li>
+            </ul>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+        {/* Section 1: Principles of Market Making */}
+        <section className="mb-12">
+          <SectionHeading>Principles of Market Making</SectionHeading>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <Scale className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">The Economic Function</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">The Economic Function</h3>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Market makers are designated liquidity providers who stand ready to both buy and sell a particular security on a continuous basis, ensuring a fair and orderly market.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <TrendingUp className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">Profit from the Spread</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">Profit from the Spread</h3>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 The primary profit is the bid-ask spread. By buying at the lower bid price and selling at the higher ask price, market makers are compensated for taking on risk.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">The Electronic Revolution</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">The Electronic Revolution</h3>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 The shift from physical trading floors to electronic order books, catalyzed by regulations like Reg NMS, fragmented liquidity but also created the high-speed environment where EMMs thrive.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <AlertTriangle className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">Core Risks</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">Core Risks</h3>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Market makers face two primary risks: <strong>Inventory Risk</strong> (holding a position that devalues) and <strong>Adverse Selection</strong> (unknowingly trading with an informed party who anticipates a price move).
               </p>
             </div>
@@ -258,34 +225,31 @@ export default function AnatomyOfSpeedArticle() {
 
         {/* Section 2: HFT Ecosystem */}
         <section className="mb-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 2</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">The High-Frequency Trading Ecosystem</h2>
-          </div>
+          <SectionHeading>The High-Frequency Trading Ecosystem</SectionHeading>
 
-          <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-6">
-            <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto">
+          <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm mb-6">
+            <p className="text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto">
               High-Frequency Trading (HFT) is a type of algorithmic trading characterized by high speeds, high turnover rates, and high order-to-trade ratios. Electronic Market Makers (EMMs) are a subset of HFT firms whose primary strategy is providing liquidity. The entire ecosystem is built on the foundation of minimizing latency&mdash;the time delay in data transmission and processing.
             </p>
           </div>
 
-          <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">The Latency Arms Race: Infrastructure Stack</h3>
+          <h3 className="font-serif text-xl text-gray-900 dark:text-white text-center mb-4">The Latency Arms Race: Infrastructure Stack</h3>
 
-          <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-6">
+          <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 mb-6">
             <table className="w-full text-left">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-800/50">
                 <tr>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Category</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Component</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Function & Impact on Latency</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Category</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Component</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Function &amp; Impact on Latency</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                 {hftInfraData.map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 text-gray-700 text-sm font-medium">{row[0]}</td>
-                    <td className="px-6 py-4 text-gray-700 text-sm">{row[1]}</td>
-                    <td className="px-6 py-4 text-gray-700 text-sm">{row[2]}</td>
+                  <tr key={index}>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300 text-sm font-medium">{row[0]}</td>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300 text-sm">{row[1]}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-400 text-sm">{row[2]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -297,57 +261,41 @@ export default function AnatomyOfSpeedArticle() {
 
         {/* Section 3: Quantitative Models */}
         <section className="mb-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 3</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Quantitative Models for Optimal Quoting</h2>
-          </div>
+          <SectionHeading>Quantitative Models for Optimal Quoting</SectionHeading>
 
-          <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">The Avellaneda-Stoikov Model</h3>
-            <p className="text-gray-600">
-              A foundational model in modern market making, it provides a mathematical framework for determining the optimal bid and ask quotes by balancing the need to earn the spread against the risks of holding inventory. It introduces the concepts of a &ldquo;reservation price&rdquo; (the firm&apos;s true valuation) and an optimal spread around it.
+          <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm mb-6">
+            <h3 className="font-serif text-xl text-gray-900 dark:text-white mb-3">The Avellaneda-Stoikov Model</h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              A foundational model in modern market making, it provides a mathematical framework for determining the optimal bid and ask quotes by balancing the need to earn the spread against the risks of holding inventory. It introduces the concepts of a <Jargon term="reservation price" definition="A market maker's internal, inventory-adjusted 'fair' price, skewed away from the public mid-price to manage risk." /> (the firm&apos;s true valuation) and an optimal spread around it.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6 mb-6">
-            <div className="bg-white rounded-lg p-6 border border-gray-200">
-              <h4 className="text-lg font-semibold text-blue-700 mb-4">Reservation Price (r)</h4>
-              <div className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
-                <code className="text-indigo-700 text-sm">
-                  r(s, q, t) = s - q · γ · σ² · (T - t)
-                </code>
-              </div>
-              <p className="text-gray-600 text-sm">
-                This is the firm&apos;s internal, &ldquo;fair&rdquo; price. It skews away from the public mid-price (s) to manage inventory. If inventory (q) is high, &lsquo;r&rsquo; is lowered to attract sellers and discourage buyers, and vice-versa.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border border-gray-200">
-              <h4 className="text-lg font-semibold text-blue-700 mb-4">Optimal Spread (δª + δᵇ)</h4>
-              <div className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
-                <code className="text-indigo-700 text-sm">
-                  = γ·σ²·(T-t) + (2/γ)·ln(1 + γ/κ)
-                </code>
-              </div>
-              <p className="text-gray-600 text-sm">
-                This determines the total width of the spread around &lsquo;r&rsquo;. The first term accounts for inventory risk (widening with volatility), while the second term accounts for adverse selection (narrowing in liquid markets).
-              </p>
-            </div>
+          <div className="grid lg:grid-cols-2 gap-4 mb-6">
+            <FormulaPanel
+              title="Reservation Price"
+              formula="r(s, q, t) = s - q \cdot \gamma \cdot \sigma^2 \cdot (T - t)"
+              legend="s = mid-price · q = inventory · γ = risk aversion · σ² = volatility · (T-t) = time remaining"
+            />
+            <FormulaPanel
+              title="Optimal Spread"
+              formula="\delta^a + \delta^b = \gamma \sigma^2 (T-t) + \frac{2}{\gamma}\ln\left(1 + \frac{\gamma}{\kappa}\right)"
+              legend="First term: inventory risk (widens with volatility). Second term: adverse selection (narrows in liquid markets, κ = order flow)."
+            />
           </div>
 
-          <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-6">
+          <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 mb-6">
             <table className="w-full text-left">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-800/50">
                 <tr>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Parameter</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Description & Intuition</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Parameter</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Description &amp; Intuition</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                 {asModelParams.map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 text-gray-700 text-sm font-medium">{row[0]}</td>
-                    <td className="px-6 py-4 text-gray-700 text-sm">{row[1]}</td>
+                  <tr key={index}>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300 text-sm font-mono">{row[0]}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-400 text-sm">{row[1]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -359,32 +307,29 @@ export default function AnatomyOfSpeedArticle() {
 
         {/* Section 4: Risk Control */}
         <section className="mb-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 4</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Advanced Inventory & Risk Control</h2>
-          </div>
+          <SectionHeading>Advanced Inventory &amp; Risk Control</SectionHeading>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">Quote & Inventory Control</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">Quote &amp; Inventory Control</h3>
               </div>
-              <p className="text-gray-600">
-                Effective risk management relies on dynamically adjusting quotes. Key techniques include <strong>Quote Skewing</strong> (asymmetrically shifting the spread based on inventory), <strong>Quote Sizing</strong> (offering more size on the side you want to trade), and setting hard <strong>Max Position Limits</strong>.
+              <p className="text-gray-600 dark:text-gray-400">
+                Effective risk management relies on dynamically adjusting quotes. Key techniques include <Jargon term="Quote Skewing" definition="Asymmetrically shifting the bid/ask spread away from the mid-price based on current inventory, to encourage trades that reduce risk." /> (asymmetrically shifting the spread based on inventory), <strong>Quote Sizing</strong> (offering more size on the side you want to trade), and setting hard <strong>Max Position Limits</strong>.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <AlertTriangle className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">Handling Adverse Selection</h3>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-white">Handling Adverse Selection</h3>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 The core risk: trading with someone who knows more. This is mitigated by widening spreads during high volatility, reducing size, and using predictive models to forecast price moves before they happen. If a trend is detected, the strategy may switch from passive quoting to active inventory liquidation.
               </p>
             </div>
@@ -393,82 +338,76 @@ export default function AnatomyOfSpeedArticle() {
 
         {/* Section 5: Machine Learning & Alpha */}
         <section className="mb-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 5</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Machine Learning & The Pursuit of Alpha</h2>
-          </div>
+          <SectionHeading>Machine Learning &amp; The Pursuit of Alpha</SectionHeading>
 
-          <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">How Machine Learning is Applied</h3>
-          <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 mb-8">
+          <h3 className="font-serif text-xl text-gray-900 dark:text-white text-center mb-4">How Machine Learning is Applied</h3>
+          <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
             <table className="w-full text-left">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-800/50">
                 <tr>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Application</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Technique</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-blue-800 uppercase tracking-wider">Objective</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Application</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Technique</th>
+                  <th className="px-6 py-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Objective</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                 {mlApplicationsData.map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 text-gray-700 text-sm font-medium">{row[0]}</td>
-                    <td className="px-6 py-4 text-gray-700 text-sm">{row[1]}</td>
-                    <td className="px-6 py-4 text-gray-700 text-sm">{row[2]}</td>
+                  <tr key={index}>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300 text-sm font-medium">{row[0]}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-400 text-sm">{row[1]}</td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-400 text-sm">{row[2]}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">How to Generate Alpha (α)</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+          <h3 className="font-serif text-xl text-gray-900 dark:text-white text-center mb-4">How to Generate Alpha (α)</h3>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <SlidersHorizontal className="h-6 w-6" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800">Feature Engineering</h4>
+                <h4 className="font-serif text-lg text-gray-900 dark:text-white">Feature Engineering</h4>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Alpha starts with data. Features are engineered from raw limit order book (LOB) data, such as order book imbalance, trade intensity, and volatility clusters, to feed predictive models.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <BrainCircuit className="h-6 w-6" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800">Market Microstructure Alpha</h4>
+                <h4 className="font-serif text-lg text-gray-900 dark:text-white">Market Microstructure Alpha</h4>
               </div>
-              <p className="text-gray-600">
-                This alpha is generated not from predicting the fundamental value, but from exploiting the mechanics of the market itself&mdash;like queue position dynamics, rebate arbitrage, and detecting &ldquo;iceberg&rdquo; orders.
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                This alpha is generated not from predicting the fundamental value, but from exploiting the mechanics of the market itself&mdash;like queue position dynamics, rebate arbitrage, and detecting <Jargon term="iceberg orders" definition="Large orders split into smaller visible chunks to hide the true order size from the rest of the market." />.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex items-center mb-4">
-                <div className="p-2 bg-blue-100 rounded-md mr-4 text-blue-600">
+                <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-md mr-4 text-[#A8672E] dark:text-[#D08F52]">
                   <Scale className="h-6 w-6" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800">Statistical Arbitrage</h4>
+                <h4 className="font-serif text-lg text-gray-900 dark:text-white">Statistical Arbitrage</h4>
               </div>
-              <p className="text-gray-600">
-                A classic alpha strategy. ML models identify pairs or baskets of securities that are historically cointegrated. The strategy trades on temporary divergences, betting on their statistical &ldquo;reversion to the mean.&rdquo;
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                A classic alpha strategy. ML models identify pairs or baskets of securities that are historically <Jargon term="cointegrated" definition="Two or more price series that individually wander randomly but maintain a statistically stable long-run relationship with each other." />. The strategy trades on temporary divergences, betting on their statistical &ldquo;reversion to the mean.&rdquo;
               </p>
             </div>
           </div>
         </section>
 
         {/* Section 6: Conclusion */}
-        <section className="mb-12">
-          <div className="text-center mb-8">
-            <span className="text-sm font-bold text-blue-600 bg-blue-100 rounded-full px-3 py-1 mb-2 inline-block">SECTION 6</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Synthesis & Future Trajectories</h2>
-          </div>
+        <section className="mb-4">
+          <SectionHeading>Synthesis &amp; Future Trajectories</SectionHeading>
 
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
-            <p className="text-lg text-gray-700 text-center">
+          <div className="bg-gray-50 dark:bg-gray-800/50 p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700">
+            <p className="text-gray-600 dark:text-gray-400 text-center">
               Modern market making is a hyper-competitive synthesis of quantitative finance, high-performance computing, and machine learning. The &ldquo;alpha&rdquo; frontier is constantly shifting towards more sophisticated predictive models and the direct application of AI, like reinforcement learning, into the trading logic. While technology perpetually advances, the fundamental economic function&mdash;providing liquidity to the market&mdash;endures as the core principle.
             </p>
           </div>

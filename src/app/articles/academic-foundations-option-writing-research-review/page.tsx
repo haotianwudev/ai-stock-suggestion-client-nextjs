@@ -33,26 +33,28 @@ const researchData = {
       id: "section-1",
       title: "The Variance Risk Premium",
       icon: ICONS.vrp,
-      content: `<div class="bg-gray-100 p-6 rounded-lg mb-8 border border-gray-200">
-        <h4 class="text-lg font-semibold text-gray-800 mb-4">Visualizing the Variance Risk Premium (VRP)</h4>
-        <div class="w-full text-sm text-gray-600">
-          <svg viewBox="0 0 400 200" class="w-full h-auto">
-            <line x1="30" y1="180" x2="380" y2="180" stroke="#9ca3af" stroke-width="1"></line>
-            <line x1="30" y1="20" x2="30" y2="180" stroke="#9ca3af" stroke-width="1"></line>
-            <text x="15" y="25" font-size="12" fill="#6b7280" style="transform: rotate(-90deg) translate(-100px, 0px);">Volatility</text>
-            <text x="190" y="195" font-size="12" fill="#6b7280">Time</text>
-            <path d="M 40 100 Q 120 40, 200 90 T 360 80" stroke="#3b82f6" stroke-width="2" fill="none" stroke-dasharray="4"></path>
-            <text x="45" y="95" font-size="12" fill="#3b82f6" font-weight="bold">Implied Volatility</text>
-            <path d="M 40 130 Q 120 110, 200 130 T 360 110" stroke="#10b981" stroke-width="2" fill="none"></path>
-            <text x="45" y="145" font-size="12" fill="#10b981" font-weight="bold">Realized Volatility</text>
-            <path d="M200,90 L200,130" stroke="#ef4444" stroke-width="1.5"></path>
-            <text x="205" y="115" font-size="12" fill="#ef4444" font-weight="bold">VRP</text>
-          </svg>
-          <p class="mt-2 text-center">The VRP is the spread between the consistently higher priced implied volatility and the subsequently observed realized volatility.</p>
+      content: `<div class="rounded-xl overflow-hidden mb-8 shadow-lg">
+        <div class="bg-[#14171B] dark:bg-[#05070A] p-6">
+          <h4 class="font-sans text-xs uppercase tracking-wider text-gray-400 mb-4">Visualizing the Variance Risk Premium (VRP)</h4>
+          <div class="w-full text-sm text-gray-300">
+            <svg viewBox="0 0 400 200" class="w-full h-auto">
+              <line x1="30" y1="180" x2="380" y2="180" stroke="#4b5563" stroke-width="1"></line>
+              <line x1="30" y1="20" x2="30" y2="180" stroke="#4b5563" stroke-width="1"></line>
+              <text x="15" y="25" font-size="12" fill="#9ca3af" style="transform: rotate(-90deg) translate(-100px, 0px);">Volatility</text>
+              <text x="190" y="195" font-size="12" fill="#9ca3af">Time</text>
+              <path d="M 40 100 Q 120 40, 200 90 T 360 80" stroke="#D08F52" stroke-width="2" fill="none" stroke-dasharray="4"></path>
+              <text x="45" y="95" font-size="12" fill="#D08F52" font-weight="bold">Implied Volatility</text>
+              <path d="M 40 130 Q 120 110, 200 130 T 360 110" stroke="#3CBF9C" stroke-width="2" fill="none"></path>
+              <text x="45" y="145" font-size="12" fill="#3CBF9C" font-weight="bold">Realized Volatility</text>
+              <path d="M200,90 L200,130" stroke="#E2694A" stroke-width="1.5"></path>
+              <text x="205" y="115" font-size="12" fill="#E2694A" font-weight="bold">VRP</text>
+            </svg>
+            <p class="mt-2 text-center text-gray-400">The VRP is the spread between the consistently higher priced implied volatility and the subsequently observed realized volatility.</p>
+          </div>
         </div>
       </div>
       <p>The practice of option writing is underpinned by a robust empirical phenomenon: the Variance Risk Premium (VRP). This premium is the theoretical cornerstone explaining why, on average, systematically selling options has been a profitable endeavor. It is not an arbitrage opportunity but rather compensation for bearing a specific, often unhedgeable, risk.</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">1.1 Defining the Variance Risk Premium</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">Defining the Variance Risk Premium</h3>
       <p>The VRP represents the difference between the market's expectation of future variance (implied volatility) and the subsequent realized variance. Empirically, implied volatility is systematically higher than realized volatility across most assets and time periods [1]. This positive spread means option sellers, over time, collect more premium than needed to compensate for the actual volatility, resulting in a positive expected return.</p>`
     },
     {
@@ -64,35 +66,35 @@ const researchData = {
         <table class="w-full text-left border-collapse">
           <thead>
             <tr>
-              <th class="border-b-2 p-4 text-sm font-semibold text-gray-700">Strategy</th>
-              <th class="border-b-2 p-4 text-sm font-semibold text-gray-700">Description</th>
-              <th class="border-b-2 p-4 text-sm font-semibold text-gray-700">Typical Return Profile</th>
-              <th class="border-b-2 p-4 text-sm font-semibold text-gray-700">Primary Risk</th>
+              <th class="border-b-2 border-gray-300 dark:border-gray-700 p-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Strategy</th>
+              <th class="border-b-2 border-gray-300 dark:border-gray-700 p-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Description</th>
+              <th class="border-b-2 border-gray-300 dark:border-gray-700 p-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Typical Return Profile</th>
+              <th class="border-b-2 border-gray-300 dark:border-gray-700 p-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Primary Risk</th>
             </tr>
           </thead>
-          <tbody class="bg-white">
+          <tbody class="bg-white dark:bg-gray-900">
             <tr>
-              <td class="border-b p-4 font-medium text-gray-900">Covered Call (Buy-Write)</td>
-              <td class="border-b p-4 text-gray-600">Long underlying stock + short out-of-the-money call option.</td>
-              <td class="border-b p-4 text-gray-600">Lower volatility, capped upside, partially hedged downside.</td>
-              <td class="border-b p-4 text-gray-600">Significant stock depreciation.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 font-medium text-gray-900 dark:text-white">Covered Call (Buy-Write)</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Long underlying stock + short out-of-the-money call option.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Lower volatility, capped upside, partially hedged downside.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Significant stock depreciation.</td>
             </tr>
             <tr>
-              <td class="border-b p-4 font-medium text-gray-900">Cash-Secured Put</td>
-              <td class="border-b p-4 text-gray-600">Short out-of-the-money put option, collateralized by cash.</td>
-              <td class="border-b p-4 text-gray-600">Similar to a covered call, collects premium for willingness to buy.</td>
-              <td class="border-b p-4 text-gray-600">Assignment on a falling stock.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 font-medium text-gray-900 dark:text-white">Cash-Secured Put</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Short out-of-the-money put option, collateralized by cash.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Similar to a covered call, collects premium for willingness to buy.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Assignment on a falling stock.</td>
             </tr>
             <tr>
-              <td class="border-b p-4 font-medium text-gray-900">Short Strangle</td>
-              <td class="border-b p-4 text-gray-600">Short out-of-the-money call and put options.</td>
-              <td class="border-b p-4 text-gray-600">High probability of small profit, profits from low volatility.</td>
-              <td class="border-b p-4 text-gray-600">Large, theoretically unlimited loss from sharp price moves.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 font-medium text-gray-900 dark:text-white">Short Strangle</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Short out-of-the-money call and put options.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">High probability of small profit, profits from low volatility.</td>
+              <td class="border-b border-gray-200 dark:border-gray-800 p-4 text-gray-600 dark:text-gray-400">Large, theoretically unlimited loss from sharp price moves.</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">2.1 A Comprehensive Comparison: Hemler and Miller</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">A Comprehensive Comparison: Hemler and Miller</h3>
       <p>Hemler and Miller provide one of the most comprehensive academic comparisons of multiple options-based strategies applied to individual stocks.[12, 13, 24, 25] They examined five strategies on a portfolio of ten widely-held stocks. The results were powerful: across all risk-adjusted measures (Sharpe, Sortino, etc.), strategies that involved a net selling of option premium systematically outperformed those involving a net purchase. The performance ranking consistently placed the Covered Combination (net seller of two options) first and the Protective Put (net buyer of one option) last. This effectively isolates the impact of premium collection as the dominant driver of excess risk-adjusted returns.</p>`
     },
     {
@@ -100,9 +102,9 @@ const researchData = {
       title: "Indexes vs. Equities",
       icon: ICONS.indexes,
       content: `<p>The academic literature makes a clear and critical distinction between writing options on broad-market indexes versus individual stocks. The differences stem from structural characteristics, market microstructure, and the divergent motivations of market participants.</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">3.1 Divergent Trader Behavior and Motivations</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">Divergent Trader Behavior and Motivations</h3>
       <p>Research from Lemmon and Ni (2014) shows the <strong>index options market</strong> is dominated by sophisticated institutions using options for <strong>hedging</strong>. This creates a persistent, structural demand for portfolio insurance, which is a primary driver of the VRP.[30] In contrast, the <strong>individual stock options market</strong> sees more participation from retail investors, whose motivation is more geared towards <strong>speculation</strong>, often driven by sentiment and chasing past returns.[30]</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">3.2 Implications for Pricing and Performance</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">Implications for Pricing and Performance</h3>
       <p>These differences mean that writing index options is a purer method of harvesting the structural, institutional-driven VRP. Writing options on individual stocks involves harvesting a VRP that is a composite of the structural premium plus an additional premium driven by behavioral biases and retail sentiment. Research by Broadie, Chernov, and Johannes (2007) reinforces this, finding that the high returns from selling index puts are largely fair compensation for bearing the significant tail risk of a market crash, which is precisely the risk institutions are paying to avoid.[33]</p>`
     },
     {
@@ -114,7 +116,7 @@ const researchData = {
         <li><strong>Short Gamma:</strong> Losses accelerate as the underlying asset moves against the position, forcing a dynamic hedger to "buy high and sell low."</li>
         <li><strong>Short Vega:</strong> The position loses value when implied volatility increases, which typically happens during a market crisis, compounding losses.</li>
       </ul>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">4.1 Emerging Research on Economical Hedging</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">Emerging Research on Economical Hedging</h3>
       <p>A promising stream of recent research focuses on more economical hedges. One surprisingly robust heuristic involves creating a portfolio of the "cheapest" available put options on liquid individual equities.[36, 39] The mechanism behind this is the <strong>asymmetry of correlation</strong>. During normal times, these stocks have low correlation, mitigating portfolio drag. During a systemic crash, correlations spike towards one, and the cheap, idiosyncratic puts pay off simultaneously, providing an effective and cost-efficient hedge.[36] This represents a paradigm shift from buying a single, expensive, "perfect" hedge to constructing a diversified portfolio of cheap, "imperfect" hedges.</p>`
     },
     {
@@ -122,9 +124,9 @@ const researchData = {
       title: "The Evolving Landscape",
       icon: ICONS.landscape,
       content: `<p>The frontier of options research is advancing towards new pricing frameworks and the integration of behavioral finance.</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">5.1 A New Paradigm: The "Top-Down" Framework</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">A New Paradigm: The "Top-Down" Framework</h3>
       <p>In their 2020 paper, Carr and Wu propose a revolutionary "top-down" valuation framework.[41, 43, 44] Instead of starting with the unobservable dynamics of the underlying asset (the "bottom-up" approach), this framework starts with an observable option contract and its implied volatility. It links the option's fair value directly to its P&L attribution (delta, gamma, vega risks). This decentralized approach tightly integrates pricing with the practical reality of risk management and has been shown to generate significantly better pricing performance than existing models.[44]</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">5.2 The Growing Influence of Behavioral Finance</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">The Growing Influence of Behavioral Finance</h3>
       <p>A growing body of evidence suggests that behavioral biases, particularly investor overconfidence, play a significant role in option pricing.[45] Research finds that overconfidence leads to higher trading volume, which contributes to larger mispricings, especially in stocks with high retail interest. This suggests that option writers may not only be harvesting the structural VRP but also collecting a premium for accommodating the behavioral biases of sentiment-driven traders.[45]</p>`
     },
     {
@@ -132,9 +134,9 @@ const researchData = {
       title: "Synthesis and Conclusion",
       icon: ICONS.synthesis,
       content: `<p>The academic literature provides a clear and compelling narrative about the risks and rewards of selling options.</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">6.1 An Expert's Synthesis</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">An Expert's Synthesis</h3>
       <p>A successful option writing strategy is the active management of an insurance portfolio. It requires a systematic approach, a deep understanding of the negatively skewed risk profile, a sophisticated and cost-effective hedging program, and an awareness of market dynamics and potential premium compression from strategy saturation.</p>
-      <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">6.2 Unresolved Questions for Future Research</h3>
+      <h3 class="font-serif text-xl text-[#A8672E] dark:text-[#D08F52] mt-6 mb-3">Unresolved Questions for Future Research</h3>
       <p>Open questions for future research include: the nature of the VRP in new asset classes like cryptocurrencies; the impact of AI and machine learning on forecasting and hedging; the long-term effects of the "retailization" of option writing on the premium itself; and the further integration of behavioral and rational models into a unified pricing framework.</p>`
     },
     {
@@ -142,7 +144,7 @@ const researchData = {
       title: "References",
       icon: ICONS.references,
       content: `<p>This review is a synthesis of findings from numerous academic papers. The key foundational and recent works that inform this analysis are listed below. The bracketed numbers correspond to citations within the text.</p>
-      <ol class="list-decimal list-inside mt-4 space-y-3 text-gray-600">
+      <ol class="list-decimal list-inside mt-4 space-y-3 text-gray-600 dark:text-gray-400 marker:text-[#A8672E] dark:marker:text-[#D08F52]">
         <li><strong>[1] Carr, P., & Wu, L. (2009).</strong> <em>Variance Risk Premia.</em> The Review of Financial Studies, 22(3), 1311-1341.</li>
         <li><strong>[2, 4] Bakshi, G., & Kapadia, N. (2003a).</strong> <em>Delta-Hedged Gains and the Negative Market Volatility Risk Premium.</em> The Journal of Business, 76(4), 527-566.</li>
         <li><strong>[5] Bekaert, G., Engstrom, E., & Ermolov, A. (2022).</strong> <em>The Variance Risk Premium in Equilibrium Models.</em> Journal of Financial Economics, 145(2), 263-287.</li>
@@ -160,24 +162,30 @@ const researchData = {
 };
 
 // --- Helper Components ---
-const Section = ({ id, title, content }: { id: string; title: string; content: string }) => (
-  <section id={id} className="mb-12">
-    <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-500 pl-4">{title}</h2>
+const Section = ({ id, title, icon, content }: { id: string; title: string; icon: React.ReactNode; content: string }) => (
+  <section id={id} className="mb-10">
+    <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-6 flex items-center gap-3 border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4">
+      <span className="text-[#A8672E] dark:text-[#D08F52] flex-none">{icon}</span>
+      {title}
+    </h2>
     <div
-      className="prose prose-lg max-w-none text-gray-700 prose-h3:text-blue-600 prose-strong:text-gray-800 prose-a:text-blue-600"
+      className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 prose-headings:font-serif prose-h3:text-[#A8672E] dark:prose-h3:text-[#D08F52] prose-strong:text-gray-900 dark:prose-strong:text-white prose-a:text-[#A8672E] dark:prose-a:text-[#D08F52]"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   </section>
 );
 
 const KeyTakeaways = ({ takeaways }: { takeaways: { title: string; text: string }[] }) => (
-  <div className="bg-white border border-gray-200 rounded-xl p-6 mb-16 shadow-sm">
-    <h3 className="text-xl font-bold text-gray-800 mb-4">Key Research Findings</h3>
+  <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8 mb-12">
+    <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Research Findings</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {takeaways.map((item, index) => (
-        <div key={index}>
-          <p className="font-semibold text-gray-800 mb-1">{item.title}</p>
-          <p className="text-gray-600">{item.text}</p>
+        <div key={index} className="flex items-start">
+          <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span>
+          <div>
+            <p className="font-semibold text-gray-900 dark:text-white mb-1">{item.title}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">{item.text}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -187,8 +195,7 @@ const KeyTakeaways = ({ takeaways }: { takeaways: { title: string; text: string 
 export default function AcademicFoundationsOptionWriting() {
   return (
     <ArticleFrame slug="academic-foundations-option-writing-research-review">
-      <div className="max-w-4xl mx-auto px-4 text-gray-700">
-        <p className="text-xl text-gray-500 mb-8">A Review of Modern Research on Risk Premia, Strategy Performance, and Risk Management</p>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-900 dark:text-gray-100 font-sans">
 
         <KeyTakeaways takeaways={researchData.keyTakeaways} />
 
@@ -198,6 +205,7 @@ export default function AcademicFoundationsOptionWriting() {
               key={section.id}
               id={section.id}
               title={section.title}
+              icon={section.icon}
               content={section.content}
             />
           ))}

@@ -10,12 +10,18 @@ const Card = ({ children, className = '' }: { children: React.ReactNode; classNa
   </div>
 );
 
-const CardHeader = ({ title, subtitle, icon, color = 'gray' }: { title: string; subtitle: string; icon: string; color?: string }) => (
-  <div className={`p-6 bg-${color}-500 dark:bg-${color}-700 text-white`}>
+const cardHeaderTone = {
+  red: 'bg-[#BC4128] dark:bg-[#BC4128]',
+  green: 'bg-[#1D8A70] dark:bg-[#1D8A70]',
+  blue: 'bg-[#A8672E] dark:bg-[#A8672E]',
+} as const;
+
+const CardHeader = ({ title, subtitle, icon, color = 'blue' }: { title: string; subtitle: string; icon: string; color?: keyof typeof cardHeaderTone }) => (
+  <div className={`p-6 ${cardHeaderTone[color]} text-white`}>
     <div className="flex items-center space-x-4">
       <div className="text-3xl">{icon}</div>
       <div>
-        <h3 className="text-2xl font-bold">{title}</h3>
+        <h3 className="font-serif text-2xl">{title}</h3>
         <p className="text-sm opacity-90">{subtitle}</p>
       </div>
     </div>
@@ -31,7 +37,7 @@ const CardBody = ({ children }: { children: React.ReactNode }) => (
 const InfoRow = ({ label, value, className = '' }: { label: string; value: string; className?: string }) => (
   <div className={`flex justify-between items-start py-2 border-b border-gray-200 dark:border-gray-700 ${className}`}>
     <p className="font-semibold text-gray-700 dark:text-gray-300 w-2/5">{label}</p>
-    <p className="text-gray-600 dark:text-gray-400 text-right w-3/5">{value}</p>
+    <p className="font-mono tabular-nums text-gray-600 dark:text-gray-400 text-right w-3/5">{value}</p>
   </div>
 );
 
@@ -43,16 +49,16 @@ const RationaleBox = ({ children, title = "Rationale" }: { children: React.React
 );
 
 const CriticalDecisionBox = ({ children, title = "Critical Decision" }: { children: React.ReactNode; title?: string }) => (
-    <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/40 border-l-4 border-amber-500 rounded-r-lg">
-        <h4 className="font-bold text-amber-800 dark:text-amber-300 mb-2">{title}</h4>
-        <p className="text-sm text-amber-700 dark:text-amber-400">{children}</p>
+    <div className="mt-4 p-4 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] rounded-r-lg">
+        <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">{title}</h4>
+        <p className="text-sm text-gray-700 dark:text-gray-300">{children}</p>
     </div>
 );
 
 const AdvancedRuleBox = ({ children, title = "Advanced Rules" }: { children: React.ReactNode; title?: string }) => (
-    <div className="mt-4 p-4 bg-sky-50 dark:bg-sky-900/40 border-l-4 border-sky-500 rounded-r-lg">
-        <h4 className="font-bold text-sky-800 dark:text-sky-300 mb-2">{title}</h4>
-        <p className="text-sm text-sky-700 dark:text-sky-400">{children}</p>
+    <div className="mt-4 p-4 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] rounded-r-lg">
+        <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">{title}</h4>
+        <p className="text-sm text-gray-700 dark:text-gray-300">{children}</p>
     </div>
 );
 
@@ -152,7 +158,7 @@ const OffensiveCallRoll = () => (
 );
 
 const UniversalPrinciples = () => (
-    <Card className="md:col-span-2 lg:col-span-4 bg-gray-50 dark:bg-gray-900 border border-blue-500">
+    <Card className="md:col-span-2 lg:col-span-4 bg-gray-50 dark:bg-gray-900 border border-[#A8672E]/30 dark:border-[#D08F52]/30">
         <CardHeader
             title="Universal Rolling Principles"
             subtitle="The Non-Negotiable Rules for All Rolls"
@@ -162,7 +168,7 @@ const UniversalPrinciples = () => (
         <CardBody>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <h4 className="font-bold text-lg text-blue-600 dark:text-blue-400 mb-2">1. Thesis Validity Check</h4>
+                    <h4 className="font-bold text-lg text-[#A8672E] dark:text-[#D08F52] mb-2">Thesis Validity Check</h4>
                     <p className="text-gray-600 dark:text-gray-400">
                         <strong>Ask:</strong> Is my original reason for this trade still valid?
                         <br />
@@ -170,7 +176,7 @@ const UniversalPrinciples = () => (
                     </p>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg text-red-600 dark:text-red-400 mb-2">2. The Net Credit Mandate (Defense)</h4>
+                    <h4 className="font-bold text-lg text-[#BC4128] dark:text-[#E2694A] mb-2">The Net Credit Mandate (Defense)</h4>
                     <p className="text-gray-600 dark:text-gray-400">
                         <strong>Ask:</strong> Am I getting paid to take on this new risk?
                         <br />
@@ -178,7 +184,7 @@ const UniversalPrinciples = () => (
                     </p>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg text-yellow-600 dark:text-yellow-400 mb-2">3. Volatility (Vega) Awareness</h4>
+                    <h4 className="font-bold text-lg text-[#A8672E] dark:text-[#D08F52] mb-2">Volatility (Vega) Awareness</h4>
                     <p className="text-gray-600 dark:text-gray-400">
                         <strong>Ask:</strong> Is the volatility environment helping me?
                         <br />
@@ -186,7 +192,7 @@ const UniversalPrinciples = () => (
                     </p>
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg text-purple-600 dark:text-purple-400 mb-2">4. DTE & Gamma Risk</h4>
+                    <h4 className="font-bold text-lg text-[#A8672E] dark:text-[#D08F52] mb-2">DTE & Gamma Risk</h4>
                     <p className="text-gray-600 dark:text-gray-400">
                         <strong>Ask:</strong> Am I too close to expiration?
                         <br />
@@ -194,7 +200,7 @@ const UniversalPrinciples = () => (
                     </p>
                 </div>
                  <div className="md:col-span-2">
-                    <h4 className="font-bold text-lg text-teal-600 dark:text-teal-400 mb-2">5. Capital Efficiency Question</h4>
+                    <h4 className="font-bold text-lg text-[#A8672E] dark:text-[#D08F52] mb-2">Capital Efficiency Question</h4>
                     <p className="text-gray-600 dark:text-gray-400">
                         <strong>Ask:</strong> Is this the best use of my capital right now?
                         <br />
@@ -214,18 +220,14 @@ export default function StrategicFrameworkRollingOptions() {
       slug="strategic-framework-rolling-options-quantitative-approach"
       additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors."
     >
-      <div className="max-w-5xl mx-auto px-4 text-gray-900 dark:text-gray-100">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
-          A quantitative approach to managing option positions through defensive and offensive rolling strategies.
-        </p>
-
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-900 dark:text-gray-100">
         <InfographicSlot alt="Strategic Framework for Rolling Options - Comprehensive Visual Guide" />
 
         <div className="space-y-12 mt-12">
 
           {/* Introduction */}
           <section id="introduction" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Introduction</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Introduction</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 The management of an options position throughout its lifecycle is as critical as the initial trade selection. Among the various management techniques available to a trader, &ldquo;rolling&rdquo; a position stands out as a uniquely flexible tool for adapting to changing market conditions.
@@ -233,9 +235,9 @@ export default function StrategicFrameworkRollingOptions() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 At its core, rolling is a tactical maneuver that allows a trader to modify the terms of an existing position without fully exiting the trade. This comprehensive guide explores the foundational principles that govern all rolling decisions, creating the theoretical bedrock for specific defensive and offensive strategies.
               </p>
-              <div className="bg-blue-50 dark:bg-blue-900/40 border-l-4 border-blue-500 p-4 my-6">
-                <h4 className="font-bold text-blue-800 dark:text-blue-200 mb-2">What is Rolling?</h4>
-                <p className="text-blue-700 dark:text-blue-300">
+              <div className="bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-4 my-6">
+                <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">What is Rolling?</h4>
+                <p className="text-gray-700 dark:text-gray-300">
                   To roll an options position is to simultaneously close an existing contract and open a new one on the same underlying security. This action allows a trader to alter the strike price, expiration date, or both.
                 </p>
               </div>
@@ -244,20 +246,20 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Universal Principles Interactive Section */}
           <section id="universal-principles" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Universal Principles</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Universal Principles</h2>
             <UniversalPrinciples />
           </section>
 
           {/* Defensive Rolling */}
           <section id="defensive-rolling" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Defensive Rolling: Managing Challenged Positions</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Defensive Rolling: Managing Challenged Positions</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert mb-8">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Defensive rolling is a reactive strategy employed when a position is challenged by adverse price movement in the underlying asset. It is a tactic born of necessity, used when a trade is losing or at risk of assignment.
               </p>
-              <div className="bg-red-50 dark:bg-red-900/40 border-l-4 border-red-500 p-4 my-6">
-                <h4 className="font-bold text-red-800 dark:text-red-200 mb-2">Key Objectives</h4>
-                <ul className="text-red-700 dark:text-red-300 list-disc list-inside">
+              <div className="bg-[#BC4128]/5 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 my-6">
+                <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Key Objectives</h4>
+                <ul className="text-gray-700 dark:text-gray-300 list-disc list-inside">
                   <li>Risk mitigation and loss management</li>
                   <li>Buying more time for the original thesis to play out</li>
                   <li>Lowering the breakeven point of the trade</li>
@@ -269,14 +271,14 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Offensive Rolling */}
           <section id="offensive-rolling" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Offensive Rolling: Optimizing Profitable Positions</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Offensive Rolling: Optimizing Profitable Positions</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert mb-8">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Offensive rolling is a proactive strategy executed when a position is performing well and is profitable. The goals here are not of survival but of optimization.
               </p>
-              <div className="bg-green-50 dark:bg-green-900/40 border-l-4 border-green-500 p-4 my-6">
-                <h4 className="font-bold text-green-800 dark:text-green-200 mb-2">Key Objectives</h4>
-                <ul className="text-green-700 dark:text-green-300 list-disc list-inside">
+              <div className="bg-[#1D8A70]/5 dark:bg-[#3CBF9C]/10 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-4 my-6">
+                <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Key Objectives</h4>
+                <ul className="text-gray-700 dark:text-gray-300 list-disc list-inside">
                   <li>Lock in existing gains while extending profit potential</li>
                   <li>Improve capital efficiency</li>
                   <li>Reset the trade&apos;s risk-reward profile</li>
@@ -288,14 +290,14 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Interactive Guide */}
           <section id="interactive-guide" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-white">
+            <h2 className="font-serif text-2xl md:text-3xl mb-8 text-center text-gray-900 dark:text-white">
               Interactive Rolling Strategy Guide
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Put Options Section */}
               <div className="lg:col-span-1">
-                <h3 className="text-2xl font-bold mb-4 text-center border-b-2 border-green-500 pb-2">Short Put Strategies</h3>
+                <h3 className="font-serif text-xl mb-4 text-center border-b-2 border-[#1D8A70] dark:border-[#3CBF9C] pb-2">Short Put Strategies</h3>
                 <div className="grid grid-cols-1 gap-8 mt-6">
                   <DefensivePutRoll />
                   <OffensivePutRoll />
@@ -304,7 +306,7 @@ export default function StrategicFrameworkRollingOptions() {
 
               {/* Call Options Section */}
               <div className="lg:col-span-1">
-                <h3 className="text-2xl font-bold mb-4 text-center border-b-2 border-red-500 pb-2">Short Call Strategies</h3>
+                <h3 className="font-serif text-xl mb-4 text-center border-b-2 border-[#BC4128] dark:border-[#E2694A] pb-2">Short Call Strategies</h3>
                 <div className="grid grid-cols-1 gap-8 mt-6">
                   <DefensiveCallRoll />
                   <OffensiveCallRoll />
@@ -315,7 +317,7 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Decision Framework */}
           <section id="decision-framework" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Decision Framework: Roll, Close, or Hold?</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Decision Framework: Roll, Close, or Hold?</h2>
 
             <div className="prose prose-lg max-w-none dark:prose-invert mb-8">
               <p className="text-gray-600 dark:text-gray-300 mb-6">
@@ -331,51 +333,51 @@ export default function StrategicFrameworkRollingOptions() {
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Scenario</th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Thesis</th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">Optimal Action</th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Optimal Action</th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Rationale</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Stock moves against, strike breached</td>
-                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Intact</span></td>
+                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#1D8A70]/10 text-[#1D8A70] dark:bg-[#3CBF9C]/10 dark:text-[#3CBF9C]">Intact</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Losing</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Defensive Roll (Credit)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Defensive Roll (Credit)</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Thesis holds; collect credit to lower breakeven</td>
                     </tr>
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Stock moves against, strike breached</td>
-                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Broken</span></td>
+                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#BC4128]/10 text-[#BC4128] dark:bg-[#E2694A]/10 dark:text-[#E2694A]">Broken</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Losing</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Close Position</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Close Position</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Reason for trade is gone. Accept loss</td>
                     </tr>
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Position hits max loss (2-3x credit)</td>
                       <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">Irrelevant</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Max Loss</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Close Position</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Close Position</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Enforce risk management. Prevent catastrophic loss</td>
                     </tr>
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Stock moves strongly in favor</td>
-                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Intact</span></td>
+                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#1D8A70]/10 text-[#1D8A70] dark:bg-[#3CBF9C]/10 dark:text-[#3CBF9C]">Intact</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Profitable (&gt;80%)</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Offensive Roll (Credit)</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Offensive Roll (Credit)</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Redeploy capital efficiently at better strike</td>
                     </tr>
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Slightly profitable/flat near expiry</td>
-                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Intact</span></td>
+                      <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#1D8A70]/10 text-[#1D8A70] dark:bg-[#3CBF9C]/10 dark:text-[#3CBF9C]">Intact</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Near Breakeven</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Hold or Roll Out</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Hold or Roll Out</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Let theta work or roll for more time if credit available</td>
                     </tr>
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Deeply OTM near expiry</td>
                       <td className="px-6 py-4 whitespace-nowrap"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">Irrelevant</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">Losing (near max)</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-cyan-600 dark:text-cyan-400">Let Expire / Close</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#A8672E] dark:text-[#D08F52]">Let Expire / Close</td>
                       <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">Unlikely to recover. Avoid transaction costs</td>
                     </tr>
                   </tbody>
@@ -383,16 +385,16 @@ export default function StrategicFrameworkRollingOptions() {
               </div>
             </div>
 
-            <div className="mt-8 bg-amber-50 dark:bg-amber-900/40 border-l-4 border-amber-500 p-6">
-              <h3 className="font-bold text-amber-800 dark:text-amber-200 mb-2">The 80% Rule for Offensive Rolls</h3>
-              <p className="text-amber-700 dark:text-amber-300 text-sm">
+            <div className="mt-8 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6">
+              <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">The 80% Rule for Offensive Rolls</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 A widely used rule of thumb is to consider rolling when you&apos;ve captured <strong>80% or more</strong> of the initial premium. At this point, the remaining profit may not justify the risk or capital being used.
               </p>
             </div>
 
-            <div className="mt-6 bg-red-50 dark:bg-red-900/40 border-l-4 border-red-500 p-6">
-              <h3 className="font-bold text-red-800 dark:text-red-200 mb-2">Maximum Loss Rule</h3>
-              <p className="text-red-700 dark:text-red-300 text-sm">
+            <div className="mt-6 bg-[#BC4128]/5 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6">
+              <h3 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Maximum Loss Rule</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 When a position reaches a loss of <strong>2-3x the initial credit received</strong>, it should be closed regardless of thesis validity. This prevents catastrophic losses and enforces disciplined risk management.
               </p>
             </div>
@@ -400,7 +402,7 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Pre-Roll Checklist */}
           <section id="pre-roll-checklist" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Pre-Roll Checklist</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Pre-Roll Checklist</h2>
 
             <div className="prose prose-lg max-w-none dark:prose-invert mb-8">
               <p className="text-gray-600 dark:text-gray-300 mb-6">
@@ -411,7 +413,7 @@ export default function StrategicFrameworkRollingOptions() {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -423,7 +425,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -435,7 +437,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -447,7 +449,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -459,7 +461,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -471,7 +473,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -483,7 +485,7 @@ export default function StrategicFrameworkRollingOptions() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-600 text-white flex items-center justify-center mr-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center mr-4">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
@@ -499,11 +501,11 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Advanced Concepts */}
           <section id="advanced-concepts" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Advanced Rolling Concepts</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Advanced Rolling Concepts</h2>
 
             <div className="space-y-8">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold mb-4 text-purple-600 dark:text-purple-400">The Greeks as Decision Triggers</h3>
+                <h3 className="font-serif text-lg mb-4 text-[#A8672E] dark:text-[#D08F52]">The Greeks as Decision Triggers</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold mb-2">Delta Triggers</h4>
@@ -531,13 +533,13 @@ export default function StrategicFrameworkRollingOptions() {
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold mb-4 text-orange-600 dark:text-orange-400">Capital Allocation Perspective</h3>
+                <h3 className="font-serif text-lg mb-4 text-[#A8672E] dark:text-[#D08F52]">Capital Allocation Perspective</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Every roll decision should be viewed through the lens of capital allocation. When a trade is challenged, ask yourself: &ldquo;Is rolling this position the absolute best use of this capital right now, compared to every other potential trade in the market?&rdquo;
                 </p>
-                <div className="bg-orange-50 dark:bg-orange-900/40 border-l-4 border-orange-500 p-4">
-                  <h4 className="font-bold text-orange-800 dark:text-orange-200 mb-2">Critical Question</h4>
-                  <p className="text-orange-700 dark:text-orange-300 text-sm">
+                <div className="bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-4">
+                  <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">Critical Question</h4>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
                     Rolling is not about saving an old trade&mdash;it&apos;s about making a new one. Evaluate the rolled position as if you were entering it fresh today.
                   </p>
                 </div>
@@ -547,11 +549,11 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Practical Examples */}
           <section id="practical-examples" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Practical Examples</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Practical Examples</h2>
 
             <div className="space-y-8">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">Defensive Put Roll Example</h3>
+                <h3 className="font-serif text-lg mb-4 text-[#BC4128] dark:text-[#E2694A]">Defensive Put Roll Example</h3>
                 <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     <strong>Scenario:</strong> You sold a $100 put on XYZ stock for $2.00 premium, expecting the stock to stay above $100.
@@ -559,14 +561,14 @@ export default function StrategicFrameworkRollingOptions() {
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 border border-red-200 dark:border-red-800 rounded">
-                    <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Poor Decision</h4>
+                  <div className="p-4 border border-[#BC4128]/30 dark:border-[#E2694A]/30 rounded">
+                    <h4 className="font-semibold text-[#BC4128] dark:text-[#E2694A] mb-2">Poor Decision</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       Close the $100 put for $5.50 loss and sell a $95 put for $3.00, resulting in a net debit of $2.50.
                     </p>
                   </div>
-                  <div className="p-4 border border-green-200 dark:border-green-800 rounded">
-                    <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Good Decision</h4>
+                  <div className="p-4 border border-[#1D8A70]/30 dark:border-[#3CBF9C]/30 rounded">
+                    <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Good Decision</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       Roll to a $95 put in the next monthly cycle for a net credit of $0.50, lowering your breakeven to $97.50.
                     </p>
@@ -575,15 +577,15 @@ export default function StrategicFrameworkRollingOptions() {
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold mb-4 text-green-600 dark:text-green-400">Offensive Put Roll Example</h3>
+                <h3 className="font-serif text-lg mb-4 text-[#1D8A70] dark:text-[#3CBF9C]">Offensive Put Roll Example</h3>
                 <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     <strong>Scenario:</strong> You sold a $100 put for $2.00. The stock rallies to $110, and your put is now worth $0.20
                     with 30 days remaining. You&apos;ve captured 90% of the maximum profit.
                   </p>
                 </div>
-                <div className="p-4 border border-green-200 dark:border-green-800 rounded">
-                  <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Optimal Strategy</h4>
+                <div className="p-4 border border-[#1D8A70]/30 dark:border-[#3CBF9C]/30 rounded">
+                  <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Optimal Strategy</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                     Close the $100 put for $0.20 and sell a $105 put in the next cycle for $2.50, netting $2.30 in additional premium.
                   </p>
@@ -597,15 +599,15 @@ export default function StrategicFrameworkRollingOptions() {
 
           {/* Conclusion */}
           <section id="conclusion" className="scroll-mt-8">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Conclusion</h2>
+            <h2 className="font-serif text-2xl md:text-3xl mb-6 text-gray-900 dark:text-white">Conclusion</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Rolling options is both an art and a science, requiring a delicate balance of technical knowledge, market awareness, and emotional discipline. The framework presented here provides the foundational principles that should guide every rolling decision.
               </p>
 
-              <div className="bg-blue-50 dark:bg-blue-900/40 border-l-4 border-blue-500 p-6 my-8">
-                <h3 className="font-bold text-blue-800 dark:text-blue-200 mb-4">Key Takeaways</h3>
-                <ul className="text-blue-700 dark:text-blue-300 space-y-2">
+              <div className="bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 my-8">
+                <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-4">Key Takeaways</h3>
+                <ul className="text-gray-700 dark:text-gray-300 space-y-2">
                   <li>✓ Always roll for a net credit in defensive situations</li>
                   <li>✓ Only roll if your original thesis remains intact</li>
                   <li>✓ Use Delta and DTE as objective triggers for management</li>

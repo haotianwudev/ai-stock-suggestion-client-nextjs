@@ -10,17 +10,17 @@ const Section = ({ id, title, subtitle, children, icon: Icon }: {
   children: React.ReactNode;
   icon?: React.ComponentType<{ className?: string }>;
 }) => (
-  <section id={id} className="py-16 even:bg-gray-50 -mx-4 px-4 sm:-mx-6 sm:px-6">
+  <section id={id} className="py-16 even:bg-gray-50 dark:even:bg-gray-900/50 -mx-4 px-4 sm:-mx-6 sm:px-6">
     <div className="max-w-4xl mx-auto text-center">
       <div className="flex justify-center items-center mb-6">
-        <div className="p-4 bg-white rounded-full border-2 border-sky-500 shadow-md">
-          {Icon && <Icon className="w-8 h-8 text-sky-600" />}
+        <div className="p-4 bg-white dark:bg-gray-900 rounded-full border-2 border-[#A8672E] dark:border-[#D08F52] shadow-md">
+          {Icon && <Icon className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}
         </div>
       </div>
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">{title}</h2>
-      <p className="mt-4 text-lg text-gray-600">{subtitle}</p>
+      <h2 className="font-serif text-2xl sm:text-3xl text-gray-900 dark:text-white">{title}</h2>
+      <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">{subtitle}</p>
     </div>
-    <div className="mt-12 max-w-4xl mx-auto prose prose-lg text-gray-700 prose-headings:text-sky-700 prose-a:text-sky-600 prose-strong:text-gray-900">
+    <div className="mt-12 max-w-4xl mx-auto prose prose-lg dark:prose-invert text-gray-700 dark:text-gray-300 prose-headings:font-serif prose-headings:text-[#A8672E] dark:prose-headings:text-[#D08F52] prose-a:text-[#A8672E] dark:prose-a:text-[#D08F52] prose-strong:text-gray-900 dark:prose-strong:text-white">
       {children}
     </div>
   </section>
@@ -29,22 +29,22 @@ const Section = ({ id, title, subtitle, children, icon: Icon }: {
 const StyledTable = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
   <div className="not-prose my-12 overflow-x-auto">
     <div className="inline-block min-w-full align-middle">
-      <div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 rounded-xl border border-gray-200">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-100">
+      <div className="overflow-hidden shadow-lg ring-1 ring-black/5 dark:ring-white/10 rounded-xl border border-gray-200 dark:border-gray-700">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+          <thead className="bg-gray-100 dark:bg-gray-800">
             <tr>
               {headers.map((header) => (
-                <th key={header} scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                <th key={header} scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white sm:pl-6">
                   {header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-800 bg-white dark:bg-gray-900">
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-gray-50/50 transition-colors">
+              <tr key={rowIndex} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="py-4 pl-4 pr-3 text-sm text-gray-600 sm:pl-6" dangerouslySetInnerHTML={{ __html: cell }}></td>
+                  <td key={cellIndex} className="py-4 pl-4 pr-3 text-sm text-gray-600 dark:text-gray-400 sm:pl-6" dangerouslySetInnerHTML={{ __html: cell }}></td>
                 ))}
               </tr>
             ))}
@@ -60,12 +60,12 @@ const DetailCard = ({ icon: Icon, title, children }: {
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition-shadow not-prose">
-    <h3 className="text-lg font-bold text-sky-700 flex items-center">
-      <Icon className="mr-3 text-sky-600"/>
+  <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-shadow not-prose">
+    <h3 className="font-serif text-lg text-[#A8672E] dark:text-[#D08F52] flex items-center">
+      <Icon className="mr-3 text-[#A8672E] dark:text-[#D08F52]"/>
       {title}
     </h3>
-    <p className="text-gray-600 mt-2 text-sm">{children}</p>
+    <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">{children}</p>
   </div>
 );
 
@@ -92,12 +92,21 @@ export default function ViralVideosVolatileValuations() {
   return (
     <ArticleFrame slug="viral-videos-volatile-valuations-ai-algorithms-stock-picking">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <p className="mt-2 text-xl md:text-2xl font-semibold text-gray-700">
+        <p className="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-12">
           Can the algorithm that picks your next video also pick your next stock?
         </p>
-        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mt-6 mb-12">
-          A critical feasibility analysis of applying social media recommender systems to financial markets, revealing a fundamental conflict between engagement-driven logic and the principles of prudent investment.
-        </p>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 mb-4 text-left">
+        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
+          <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
+          <ul className="space-y-3">
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Social platforms optimize for engagement (watch time, virality); financial advice must optimize for risk-adjusted returns&mdash;these objectives are structurally, not just superficially, different.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>A viral stock recommendation doesn&apos;t signal success the way a viral video does&mdash;it creates a speculative bubble that distorts fundamental value.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>Fiduciary duty, explainability requirements, and systemic-risk exposure make an engagement-first recommender legally and practically unworkable in finance.</span></li>
+            <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The viable path is descriptive/educational augmentation&mdash;risk simulators, financial literacy tools, bias analysis&mdash;not a &ldquo;stock recommender&rdquo; built on social-media logic.</span></li>
+          </ul>
+        </div>
       </div>
 
       <div className="text-left">
@@ -121,9 +130,9 @@ export default function ViralVideosVolatileValuations() {
 
           <p><strong>Key Takeaway:</strong> This model is a closed-loop system. It observes user behavior, recommends content to maximize that behavior (e.g., watch time), and then learns from the results. Its &ldquo;success&rdquo; is measured in seconds and clicks, not in long-term value or correctness. This fundamental design, optimized for attention, presents a stark contrast to the requirements of a financial system where outcomes have real-world monetary consequences.</p>
 
-          <div className="mt-8 not-prose bg-sky-50 border-l-4 border-sky-500 p-6 rounded-r-lg">
-            <h4 className="font-bold text-sky-800">The &ldquo;For You&rdquo; Page Feedback Loop</h4>
-            <p className="text-sm text-sky-700 mt-2">A user&apos;s &ldquo;For You&rdquo; page is a constantly evolving feedback loop. A slight hesitation on a video is a signal. A re-watch is a strong positive signal. A quick swipe-away is a strong negative one. The algorithm learns and adapts in real-time, making it incredibly effective at personalizing content to hold attention, but also susceptible to creating echo chambers.</p>
+          <div className="mt-8 not-prose bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg">
+            <h4 className="font-serif text-[#A8672E] dark:text-[#D08F52]">The &ldquo;For You&rdquo; Page Feedback Loop</h4>
+            <p className="text-sm text-[#A8672E] dark:text-[#D08F52] mt-2">A user&apos;s &ldquo;For You&rdquo; page is a constantly evolving feedback loop. A slight hesitation on a video is a signal. A re-watch is a strong positive signal. A quick swipe-away is a strong negative one. The algorithm learns and adapts in real-time, making it incredibly effective at personalizing content to hold attention, but also susceptible to creating echo chambers.</p>
           </div>
         </Section>
 
@@ -153,9 +162,9 @@ export default function ViralVideosVolatileValuations() {
             </DetailCard>
           </div>
 
-          <div className="mt-8 not-prose bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg">
-            <h4 className="font-bold text-purple-800">The Human-in-the-Loop Imperative</h4>
-            <p className="text-sm text-purple-700 mt-2">Unlike a social media feed, financial ML systems almost always operate with a &ldquo;human-in-the-loop.&rdquo; A portfolio manager, risk officer, or compliance analyst must understand, approve, and ultimately be accountable for the model&apos;s output. This provides a crucial layer of oversight, context, and ethical judgment that is absent in fully automated content curation.</p>
+          <div className="mt-8 not-prose bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg">
+            <h4 className="font-serif text-[#A8672E] dark:text-[#D08F52]">The Human-in-the-Loop Imperative</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-2">Unlike a social media feed, financial ML systems almost always operate with a &ldquo;human-in-the-loop.&rdquo; A portfolio manager, risk officer, or compliance analyst must understand, approve, and ultimately be accountable for the model&apos;s output. This provides a crucial layer of oversight, context, and ethical judgment that is absent in fully automated content curation.</p>
           </div>
         </Section>
 

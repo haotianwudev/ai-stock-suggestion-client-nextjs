@@ -136,28 +136,33 @@ const Section = ({ children, className = '', id }: { children: React.ReactNode; 
 
 const SectionTitle = ({ icon: Icon, title }: { icon: React.ComponentType<{ className?: string }>; title: string }) => (
   <div className="flex items-center gap-4 mb-8 md:mb-12">
-    <div className="bg-blue-100 p-3 rounded-lg text-blue-600">
+    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-3 rounded-lg text-[#A8672E] dark:text-[#D08F52]">
       <Icon className="w-8 h-8" />
     </div>
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight">{title}</h2>
+    <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white">{title}</h2>
   </div>
 );
 
 const Card = ({ title, content, className = '' }: { title: string; content: string; className?: string }) => (
-  <div className={`bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${className}`}>
-    <h3 className="font-semibold text-lg text-blue-600 mb-2">{title}</h3>
-    <p className="text-gray-600 leading-relaxed">{content}</p>
+  <div className={`bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm ${className}`}>
+    <h3 className="font-serif text-lg text-[#A8672E] dark:text-[#D08F52] mb-2">{title}</h3>
+    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{content}</p>
   </div>
 );
 
 export default function XGBoostSystematicTradingArticle() {
   return (
     <ArticleFrame slug="strategic-role-xgboost-systematic-trading-2025">
-      <div className="text-gray-800">
-        <div className="max-w-5xl mx-auto px-4">
-          <p className="text-xl text-slate-600 leading-relaxed mb-8">
-            {paperContent.executiveSummary}
-          </p>
+      <div className="font-sans text-gray-900 dark:text-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
+            <h2 className="font-serif text-2xl text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
+            <ul className="space-y-3">
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>XGBoost remains vital in 2025 despite the rise of LSTMs and Transformers&mdash;its edge is exceptional performance on structured, feature-rich prediction tasks.</span></li>
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The strongest firms use a unified toolkit: XGBoost for feature-driven prediction, deep learning for raw sequential data.</span></li>
+              <li className="flex items-start"><span className="text-[#A8672E] dark:text-[#D08F52] mr-3 font-bold">&bull;</span><span>The most potent alpha comes from hybrid architectures that combine both paradigms rather than treating the choice as either/or.</span></li>
+            </ul>
+          </div>
 
           <InfographicSlot alt="XGBoost Systematic Trading Strategy Infographic" />
         </div>
@@ -167,7 +172,7 @@ export default function XGBoostSystematicTradingArticle() {
           {paperContent.sections[0] && (
             <>
               <SectionTitle icon={paperContent.sections[0].icon} title={paperContent.sections[0].title} />
-              <p className="text-lg text-gray-600 max-w-3xl mb-12">{paperContent.sections[0].summary}</p>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mb-8">{paperContent.sections[0].summary}</p>
               <div className="grid md:grid-cols-2 gap-6">
                 {paperContent.sections[0].points?.map((point, index) => (
                   <Card key={index} title={point.title} content={point.content} />
@@ -178,19 +183,19 @@ export default function XGBoostSystematicTradingArticle() {
         </Section>
 
         {/* Core Competencies Section */}
-        <Section id="competencies" className="bg-gray-100">
+        <Section id="competencies" className="bg-gray-50 dark:bg-gray-900/50">
           {paperContent.sections[1] && (
             <>
               <SectionTitle icon={paperContent.sections[1].icon} title={paperContent.sections[1].title} />
-              <p className="text-lg text-gray-600 max-w-3xl mb-12">{paperContent.sections[1].summary}</p>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mb-8">{paperContent.sections[1].summary}</p>
               <div className="grid lg:grid-cols-3 gap-8">
                 {paperContent.sections[1].examples?.map((example, index) => (
-                  <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <h3 className="font-bold text-xl text-blue-600 mb-3">{example.title}</h3>
-                    <p className="text-gray-600 mb-4 flex-grow">{example.description}</p>
-                    <div className="mt-auto pt-4 border-t border-gray-200">
-                      <p className="text-sm text-gray-500 font-mono">Example Scenario:</p>
-                      <p className="text-sm text-gray-700">{example.scenario}</p>
+                  <div key={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 flex flex-col shadow-sm">
+                    <h3 className="font-serif text-lg text-[#A8672E] dark:text-[#D08F52] mb-3">{example.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 flex-grow">{example.description}</p>
+                    <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-mono">Example Scenario:</p>
+                      <p className="text-sm text-gray-700 dark:text-gray-300">{example.scenario}</p>
                     </div>
                   </div>
                 ))}
@@ -204,7 +209,7 @@ export default function XGBoostSystematicTradingArticle() {
           {paperContent.sections[2] && (
             <>
               <SectionTitle icon={paperContent.sections[2].icon} title={paperContent.sections[2].title} />
-              <p className="text-lg text-gray-600 max-w-3xl mb-12">{paperContent.sections[2].summary}</p>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mb-8">{paperContent.sections[2].summary}</p>
 
               <div className="grid lg:grid-cols-3 gap-8 mb-12">
                 {paperContent.sections[2].points?.map((point, index) => (
@@ -213,12 +218,12 @@ export default function XGBoostSystematicTradingArticle() {
               </div>
 
               {paperContent.sections[2].comparisonTable && (
-                <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr>
                         {paperContent.sections[2].comparisonTable.headers.map(header => (
-                          <th key={header} className="p-4 border-b-2 border-gray-200 bg-gray-50 text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                          <th key={header} className="p-4 border-b-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                             {header}
                           </th>
                         ))}
@@ -226,9 +231,9 @@ export default function XGBoostSystematicTradingArticle() {
                     </thead>
                     <tbody>
                       {paperContent.sections[2].comparisonTable.rows.map((row, rowIndex) => (
-                        <tr key={rowIndex} className="border-b border-gray-200 last:border-b-0">
+                        <tr key={rowIndex} className="border-b border-gray-200 dark:border-gray-800 last:border-b-0">
                           {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} className={`p-4 ${cellIndex === 0 ? 'font-semibold text-blue-700' : 'text-gray-600'}`}>
+                            <td key={cellIndex} className={`p-4 ${cellIndex === 0 ? 'font-mono font-semibold text-[#A8672E] dark:text-[#D08F52]' : 'font-mono text-gray-600 dark:text-gray-400'}`}>
                               {cell}
                             </td>
                           ))}
@@ -243,7 +248,7 @@ export default function XGBoostSystematicTradingArticle() {
         </Section>
 
         {/* Hybrid Architecture Section */}
-        <Section id="hybrid" className="bg-gray-100">
+        <Section id="hybrid" className="bg-gray-50 dark:bg-gray-900/50">
           {paperContent.sections[3] && (
             <>
               <SectionTitle icon={paperContent.sections[3].icon} title={paperContent.sections[3].title} />
@@ -253,12 +258,12 @@ export default function XGBoostSystematicTradingArticle() {
                   <div className="space-y-6">
                     {paperContent.sections[3].example?.steps?.map((step, index) => (
                       <div key={index} className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl">
+                        <div className="flex-shrink-0 w-12 h-12 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-xl">
                           {index + 1}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-lg text-gray-800">{step.name}</h4>
-                          <p className="text-gray-600">{step.detail}</p>
+                          <h4 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{step.name}</h4>
+                          <p className="text-gray-600 dark:text-gray-400">{step.detail}</p>
                         </div>
                       </div>
                     ))}
@@ -267,28 +272,28 @@ export default function XGBoostSystematicTradingArticle() {
 
                 {paperContent.sections[3].example && (
                   <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-                    <h3 className="font-bold text-xl text-blue-600 mb-4 text-center">{paperContent.sections[3].example.title}</h3>
+                    <h3 className="font-serif text-lg text-[#A8672E] dark:text-[#D08F52] mb-4 text-center">{paperContent.sections[3].example.title}</h3>
                     <div className="flex flex-col items-center space-y-4">
-                      <div className="text-center p-4 bg-gray-100 rounded-lg w-full">
-                        <p className="text-sm text-gray-500">Input</p>
-                        <p className="font-semibold text-gray-800">Raw Time Series Data</p>
+                      <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg w-full">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Input</p>
+                        <p className="font-semibold text-gray-900 dark:text-gray-100">Raw Time Series Data</p>
                       </div>
-                      <ChevronsDown className="w-6 h-6 text-gray-400" />
-                      <div className="text-center p-4 bg-purple-100 rounded-lg w-full border border-purple-200">
-                        <p className="text-sm text-purple-600">Stage 1: LSTM</p>
-                        <p className="font-semibold text-gray-800">Temporal Feature Extraction</p>
+                      <ChevronsDown className="w-6 h-6 text-gray-400 dark:text-gray-500" />
+                      <div className="text-center p-4 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 rounded-lg w-full border border-[#A8672E]/30 dark:border-[#D08F52]/30">
+                        <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">Stage 1: LSTM</p>
+                        <p className="font-semibold text-gray-900 dark:text-gray-100">Temporal Feature Extraction</p>
                       </div>
                       <div className="flex justify-center w-full relative my-2">
-                        <span className="text-4xl text-gray-400 absolute -top-4">+</span>
+                        <span className="text-4xl text-gray-400 dark:text-gray-500 absolute -top-4">+</span>
                       </div>
-                      <div className="text-center p-4 bg-gray-100 rounded-lg w-full mt-4">
-                        <p className="text-sm text-gray-500">Input</p>
-                        <p className="font-semibold text-gray-800">Static Features (On-chain, Macro)</p>
+                      <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg w-full mt-4">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Input</p>
+                        <p className="font-semibold text-gray-900 dark:text-gray-100">Static Features (On-chain, Macro)</p>
                       </div>
-                      <ChevronsDown className="w-6 h-6 text-gray-400" />
-                      <div className="text-center p-4 bg-blue-100 rounded-lg w-full border border-blue-200">
-                        <p className="text-sm text-blue-600">Stage 2: XGBoost</p>
-                        <p className="font-semibold text-gray-800">Final Prediction</p>
+                      <ChevronsDown className="w-6 h-6 text-gray-400 dark:text-gray-500" />
+                      <div className="text-center p-4 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 rounded-lg w-full border border-[#A8672E]/30 dark:border-[#D08F52]/30">
+                        <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">Stage 2: XGBoost</p>
+                        <p className="font-semibold text-gray-900 dark:text-gray-100">Final Prediction</p>
                       </div>
                     </div>
                   </div>
@@ -303,7 +308,7 @@ export default function XGBoostSystematicTradingArticle() {
           {paperContent.sections[4] && (
             <>
               <SectionTitle icon={paperContent.sections[4].icon} title={paperContent.sections[4].title} />
-              <p className="text-lg text-gray-600 max-w-3xl mb-12">{paperContent.sections[4].summary}</p>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mb-8">{paperContent.sections[4].summary}</p>
               <div className="grid md:grid-cols-3 gap-8">
                 {paperContent.sections[4].recommendations?.map((rec, index) => (
                   <Card key={index} title={rec.title} content={rec.content} />

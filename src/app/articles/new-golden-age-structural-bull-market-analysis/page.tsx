@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { ArticleFrame } from '@/components/articles/article-frame';
+import { Jargon } from '@/components/articles/article-visuals';
 
 // --- ICONS (SVG components) ---
 const DollarSign = (props: React.SVGProps<SVGSVGElement>) => (
@@ -165,7 +166,7 @@ const AnimatedSection = ({ children, className = '', id = '' }: { children: Reac
 
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode; subtitle: string }) => (
   <div className="text-center mb-12">
-    <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{children}</h2>
+    <h2 className="font-serif text-4xl md:text-5xl text-white tracking-tight">{children}</h2>
     <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">{subtitle}</p>
   </div>
 );
@@ -178,13 +179,13 @@ const HistoricalPhases = () => (
       </SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {historicalPhasesData.map((phase, index) => (
-          <div key={index} className="bg-gray-800 border border-amber-500/20 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/10">
-            <h3 className="text-xl font-bold text-amber-400">{phase.title}</h3>
+          <div key={index} className="bg-gray-800 border border-[#D08F52]/20 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#D08F52]/10">
+            <h3 className="text-xl font-serif text-[#D08F52]">{phase.title}</h3>
             <p className="mt-4 text-gray-300">{phase.description}</p>
           </div>
         ))}
       </div>
-      <div className="mt-12 text-center text-amber-300 bg-amber-900/20 border border-amber-500/30 rounded-lg p-6 max-w-4xl mx-auto">
+      <div className="mt-12 text-center text-[#D08F52] bg-[#D08F52]/10 border border-[#D08F52]/30 rounded-lg p-6 max-w-4xl mx-auto">
         <p className="text-xl font-semibold">
           The 2024 Breakout: A technical confirmation of a new bull market, completing a decade-long pattern and signaling the start of a new upward cycle fueled by unprecedented sovereign demand.
         </p>
@@ -201,11 +202,11 @@ const MacroDrivers = () => (
       </SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {macroDriversData.map((driver, index) => (
-          <div key={index} className="text-center p-8 bg-gray-900 rounded-lg border border-gray-700 hover:border-amber-400 transition-colors">
-            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-amber-500/10 mx-auto mb-6">
-              <driver.icon className="h-8 w-8 text-amber-400" />
+          <div key={index} className="text-center p-8 bg-gray-900 rounded-lg border border-gray-700 hover:border-[#D08F52] transition-colors">
+            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#D08F52]/10 mx-auto mb-6">
+              <driver.icon className="h-8 w-8 text-[#D08F52]" />
             </div>
-            <h3 className="text-2xl font-bold text-white">{driver.title}</h3>
+            <h3 className="text-2xl font-serif text-white">{driver.title}</h3>
             <p className="mt-4 text-gray-400">{driver.description}</p>
           </div>
         ))}
@@ -223,15 +224,15 @@ const DemandPillars = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div className="bg-gray-800 p-8 rounded-lg">
           <div className="flex items-center mb-4">
-            <Landmark className="h-8 w-8 text-amber-400 mr-4"/>
-            <h3 className="text-3xl font-bold text-white">The Great Accumulation</h3>
+            <Landmark className="h-8 w-8 text-[#D08F52] mr-4"/>
+            <h3 className="text-3xl font-serif text-white">The Great Accumulation</h3>
           </div>
           <p className="text-gray-300 mb-6">
             Global central banks are acquiring gold at a record pace, led by emerging markets. This strategic shift towards de-dollarization and &ldquo;sanctions-proofing&rdquo; reserves has created a new, price-insensitive floor for the market, fundamentally altering its structure.
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-sm">
-              <thead className="border-b border-amber-500/30 font-medium text-amber-300">
+              <thead className="border-b border-[#D08F52]/30 font-sans font-medium text-[#D08F52]">
                 <tr>
                   <th scope="col" className="px-4 py-3">Country</th>
                   <th scope="col" className="px-4 py-3 text-right">2022</th>
@@ -240,14 +241,14 @@ const DemandPillars = () => (
                   <th scope="col" className="px-4 py-3 text-right">2025 (Q1)</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-300">
+              <tbody className="text-gray-300 font-mono tabular-nums">
                 {centralBankData.map(row => (
                   <tr key={row.country} className="border-b border-gray-700 transition-colors hover:bg-gray-700/50">
-                    <td className="whitespace-nowrap px-4 py-3 font-medium">{row.country}</td>
-                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2022 === 'number' && row.y2022 < 0 ? 'text-red-400' : ''}`}>{row.y2022}</td>
-                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2023 === 'number' && row.y2023 < 0 ? 'text-red-400' : ''}`}>{row.y2023}</td>
-                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2024 === 'number' && row.y2024 < 0 ? 'text-red-400' : ''}`}>{row.y2024}</td>
-                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2025 === 'number' && row.y2025 < 0 ? 'text-red-400' : ''}`}>{row.y2025}</td>
+                    <td className="whitespace-nowrap px-4 py-3 font-sans font-medium">{row.country}</td>
+                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2022 === 'number' && row.y2022 < 0 ? 'text-[#E2694A]' : ''}`}>{row.y2022}</td>
+                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2023 === 'number' && row.y2023 < 0 ? 'text-[#E2694A]' : ''}`}>{row.y2023}</td>
+                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2024 === 'number' && row.y2024 < 0 ? 'text-[#E2694A]' : ''}`}>{row.y2024}</td>
+                    <td className={`whitespace-nowrap px-4 py-3 text-right ${typeof row.y2025 === 'number' && row.y2025 < 0 ? 'text-[#E2694A]' : ''}`}>{row.y2025}</td>
                   </tr>
                 ))}
               </tbody>
@@ -257,23 +258,23 @@ const DemandPillars = () => (
         </div>
         <div className="bg-gray-800 p-8 rounded-lg">
           <div className="flex items-center mb-4">
-            <Globe className="h-8 w-8 text-amber-400 mr-4"/>
-            <h3 className="text-3xl font-bold text-white">Persistent Geopolitical Risk</h3>
+            <Globe className="h-8 w-8 text-[#D08F52] mr-4"/>
+            <h3 className="text-3xl font-serif text-white">Persistent Geopolitical Risk</h3>
           </div>
           <p className="text-gray-300">
             Today&apos;s global landscape is defined by protracted, systemic conflicts&mdash;from Eastern Europe to the Middle East and U.S.-China rivalry. This has embedded a permanent risk premium into gold&apos;s price, moving it beyond a temporary safe-haven asset to a core strategic holding for investors and nations alike.
           </p>
           <div className="mt-6 space-y-4">
             <div className="flex items-start">
-              <Shield className="h-6 w-6 text-amber-500 mt-1 mr-3 flex-shrink-0" />
+              <Shield className="h-6 w-6 text-[#D08F52] mt-1 mr-3 flex-shrink-0" />
               <p><strong className="text-white">Drives Safe-Haven Demand:</strong> Investors seek protection from volatility in equity and bond markets.</p>
             </div>
             <div className="flex items-start">
-              <Shield className="h-6 w-6 text-amber-500 mt-1 mr-3 flex-shrink-0" />
+              <Shield className="h-6 w-6 text-[#D08F52] mt-1 mr-3 flex-shrink-0" />
               <p><strong className="text-white">Reinforces De-Dollarization:</strong> Central banks are compelled to accumulate neutral, sanction-proof assets.</p>
             </div>
             <div className="flex items-start">
-              <Shield className="h-6 w-6 text-amber-500 mt-1 mr-3 flex-shrink-0" />
+              <Shield className="h-6 w-6 text-[#D08F52] mt-1 mr-3 flex-shrink-0" />
               <p><strong className="text-white">Fuels Inflation:</strong> Supply chain disruptions and tariffs contribute to the inflationary pressures that make gold attractive.</p>
             </div>
           </div>
@@ -291,22 +292,22 @@ const RetailResurgence = () => (
       </SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
         <div className="bg-gray-900 p-8 rounded-lg border border-gray-700">
-          <Users className="h-10 w-10 text-amber-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white">The Costco Effect</h3>
+          <Users className="h-10 w-10 text-[#D08F52] mx-auto mb-4" />
+          <h3 className="text-2xl font-serif text-white">The Costco Effect</h3>
           <p className="mt-2 text-gray-400">
             Major retailers like Costco selling gold bars signifies a mainstream shift. It removes barriers to entry, signaling gold as a consumer good and a viable savings vehicle for the masses.
           </p>
         </div>
         <div className="bg-gray-900 p-8 rounded-lg border border-gray-700">
-          <TrendingUp className="h-10 w-10 text-amber-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white">Digital Gold & Fintech</h3>
+          <TrendingUp className="h-10 w-10 text-[#D08F52] mx-auto mb-4" />
+          <h3 className="text-2xl font-serif text-white">Digital Gold & Fintech</h3>
           <p className="mt-2 text-gray-400">
             Apps and platforms offering fractional ownership of physical gold have democratized access. This allows younger, tech-savvy investors to build positions with minimal capital.
           </p>
         </div>
         <div className="bg-gray-900 p-8 rounded-lg border border-gray-700">
-          <Shield className="h-10 w-10 text-amber-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white">A Hedge for Millennials</h3>
+          <Shield className="h-10 w-10 text-[#D08F52] mx-auto mb-4" />
+          <h3 className="text-2xl font-serif text-white">A Hedge for Millennials</h3>
           <p className="mt-2 text-gray-400">
             Faced with inflation, housing unaffordability, and market volatility, younger generations are turning to gold as a tangible, long-term store of value outside the traditional financial system.
           </p>
@@ -324,7 +325,7 @@ const GoldVsEquities = () => (
       </SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h3 className="text-3xl font-bold text-white mb-4">A Turning Point for Portfolios</h3>
+          <h3 className="text-3xl font-serif text-white mb-4">A Turning Point for Portfolios</h3>
           <p className="text-gray-300 mb-4">
             For over a decade, equities, led by the S&amp;P 500, have been the undisputed leader in portfolio returns. However, the S&amp;P 500-to-Gold ratio, a key indicator of relative value, has peaked and begun to trend downwards. This signals a potential long-term rotation of capital from overvalued equities into undervalued hard assets like gold.
           </p>
@@ -332,28 +333,30 @@ const GoldVsEquities = () => (
             While equities face headwinds from high valuations and potential economic slowdowns, gold is supported by strong fundamental drivers. This makes gold not just a defensive hedge, but a competitive asset for capital appreciation in the current environment.
           </p>
         </div>
-        <div className="bg-gray-800 p-6 rounded-lg border border-amber-500/20">
-          <h3 className="text-xl font-bold text-white mb-4 text-center">Comparative Asset Class Performance (Annualized Returns)</h3>
-          <table className="min-w-full text-center text-sm">
-            <thead className="border-b border-amber-500/30 font-medium text-amber-300">
-              <tr>
-                <th scope="col" className="px-4 py-3 text-left">Asset Class</th>
-                <th scope="col" className="px-4 py-3">1 Year</th>
-                <th scope="col" className="px-4 py-3">5 Years</th>
-                <th scope="col" className="px-4 py-3">10 Years</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-200">
-              {assetPerformanceData.map(row => (
-                <tr key={row.asset} className="border-b border-gray-700 transition-colors hover:bg-gray-700/60">
-                  <td className="whitespace-nowrap px-4 py-3 font-medium text-left">{row.asset}</td>
-                  <td className={`whitespace-nowrap px-4 py-3 text-lg font-semibold ${row.asset === 'Gold' ? 'text-green-400' : ''}`}>{row.year1}</td>
-                  <td className="whitespace-nowrap px-4 py-3">{row.year5}</td>
-                  <td className="whitespace-nowrap px-4 py-3">{row.year10}</td>
+        <div className="bg-gray-800 p-6 rounded-lg border border-[#D08F52]/20">
+          <h3 className="text-xl font-serif text-white mb-4 text-center">Comparative Asset Class Performance (Annualized Returns)</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-center text-sm font-mono tabular-nums">
+              <thead className="border-b border-[#D08F52]/30 font-sans font-medium text-[#D08F52]">
+                <tr>
+                  <th scope="col" className="px-4 py-3 text-left">Asset Class</th>
+                  <th scope="col" className="px-4 py-3">1 Year</th>
+                  <th scope="col" className="px-4 py-3">5 Years</th>
+                  <th scope="col" className="px-4 py-3">10 Years</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-gray-200">
+                {assetPerformanceData.map(row => (
+                  <tr key={row.asset} className="border-b border-gray-700 transition-colors hover:bg-gray-700/60">
+                    <td className="whitespace-nowrap px-4 py-3 font-semibold text-left">{row.asset}</td>
+                    <td className={`whitespace-nowrap px-4 py-3 text-lg font-semibold ${row.asset === 'Gold' ? 'text-[#3CBF9C]' : ''}`}>{row.year1}</td>
+                    <td className="whitespace-nowrap px-4 py-3">{row.year5}</td>
+                    <td className="whitespace-nowrap px-4 py-3">{row.year10}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <p className="text-xs text-gray-500 mt-4 text-center">Note: Past performance is not indicative of future results. Data as of year-end 2024.</p>
         </div>
       </div>
@@ -369,7 +372,7 @@ const ForwardOutlook = () => (
       </SectionTitle>
       <div className="max-w-4xl mx-auto overflow-x-auto bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
         <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-amber-500/30 font-medium text-amber-300">
+          <thead className="border-b border-[#D08F52]/30 font-medium text-[#D08F52]">
             <tr>
               <th scope="col" className="px-4 py-3">Institution</th>
               <th scope="col" className="px-4 py-3">Forecast Horizon</th>
@@ -381,14 +384,14 @@ const ForwardOutlook = () => (
               <tr key={row.institution} className="border-b border-gray-700 transition-colors hover:bg-gray-800/60">
                 <td className="whitespace-nowrap px-4 py-3 font-bold">{row.institution}</td>
                 <td className="whitespace-nowrap px-4 py-3">{row.horizon}</td>
-                <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-lg text-amber-400">{row.target}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-right font-mono tabular-nums font-semibold text-lg text-[#D08F52]">{row.target}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <div className="mt-12 text-center text-gray-300 bg-gray-900 border border-gray-700 rounded-lg p-6 max-w-4xl mx-auto">
-        <h4 className="text-2xl font-bold text-white mb-4">Key Signposts for Investors</h4>
+        <h4 className="text-2xl font-serif text-white mb-4">Key Signposts for Investors</h4>
         <p className="text-gray-400 mb-6">While the outlook is overwhelmingly bullish, investors should monitor these critical metrics:</p>
         <ul className="text-left grid grid-cols-1 sm:grid-cols-2 gap-4">
           <li className="p-2 bg-gray-800/50 rounded">Federal Reserve Communications & Dot Plot</li>
@@ -408,10 +411,16 @@ export default function NewGoldenAgeAnalysis() {
       additionalDisclaimer="Gold investments carry risks including price volatility, storage costs, and market fluctuations."
     >
       <div className="bg-black text-gray-200 font-sans antialiased rounded-2xl overflow-hidden">
-        <div className="text-center px-4 sm:px-6 lg:px-8 pt-12 pb-4">
-          <p className="max-w-2xl mx-auto text-lg text-gray-300">
-            An analysis of the reinforcing mega-trends&mdash;macroeconomic shifts, central bank accumulation, and geopolitical risk&mdash;propelling gold into a new era of sustained growth.
-          </p>
+        <div className="px-4 sm:px-6 lg:px-8 pt-12 pb-4">
+          <div className="max-w-4xl mx-auto bg-gray-900 border border-[#D08F52]/20 rounded-xl p-6 md:p-8">
+            <h2 className="font-serif text-2xl text-white mb-4">Key Takeaways</h2>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start"><span className="text-[#D08F52] mr-3 font-bold">&bull;</span><span>Gold&apos;s decade-long &ldquo;cup and handle&rdquo; consolidation broke out in 2024, technically confirming a new secular bull phase.</span></li>
+              <li className="flex items-start"><span className="text-[#D08F52] mr-3 font-bold">&bull;</span><span>Negative real rates, stagflation risk, and a $300T+ global debt supercycle form a favorable macro trifecta for non-yielding gold.</span></li>
+              <li className="flex items-start"><span className="text-[#D08F52] mr-3 font-bold">&bull;</span><span>Central banks bought over 1,000 tonnes/year in 2022-2024, led by China and Poland&mdash;a price-insensitive, <Jargon term="de-dollarization" definition="The strategic diversification of national reserves away from U.S.-dollar-denominated assets, often into gold, to reduce exposure to dollar policy and sanctions risk." />-driven demand floor.</span></li>
+              <li className="flex items-start"><span className="text-[#D08F52] mr-3 font-bold">&bull;</span><span>Major institutions (JPMorgan, UBS, ANZ) forecast ~$3,900-$4,000/oz by mid-2026, alongside a retail resurgence via fractional and physical gold access.</span></li>
+            </ul>
+          </div>
         </div>
 
         <HistoricalPhases />
