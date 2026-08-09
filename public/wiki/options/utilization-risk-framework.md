@@ -51,4 +51,5 @@ Options are a tool for transferring or taking on risk, not a shortcut to outsize
 ## Related Reading
 
 - [Strategic Options Utilization & Risk: A Comprehensive Framework](/articles/strategic-options-utilization-risk-comprehensive-framework) — full article with contract anatomy, order mechanics, the Greeks, and the strategy decision framework.
+- [Watch on YouTube](https://youtu.be/brQbdu19cbw)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTn6HxDvyIGehEog6Bi9fyIWbL_rH1XLDOXdr4YjV2u6z2zpx59ouy0BtdCrv5DEb2486cnLp3EciYP/pub)

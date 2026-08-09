@@ -48,4 +48,5 @@ Public Market Equivalent methods extend this to private funds: **Kaplan-Schoar P
 ## Related Reading
 
 - [Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics](/articles/measuring-immeasurable-hedge-fund-performance-metrics) — full article with the complete metric formulas, drawdown framework, attribution models, and stress-testing scenarios.
+- [Watch on YouTube](https://youtu.be/WBUxNZZzwnY)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSLF6YOjvadQ0NUUS0YvAYK1HmyAUtpS-iFVYbE3espsZOasOv5qjfkalz9X6pOqoDUSPDalwJiXdEB/pub)

@@ -11,6 +11,7 @@ import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
 import { useUser } from "@/hooks/use-user";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 import { canAccessPremiumContent } from "@/lib/tiers";
 import { InstallAppButton } from "@/components/ui/install-app-button";
 
@@ -105,10 +106,12 @@ export default function Home() {
   const [showAllArticles, setShowAllArticles] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const [bookmarkedOnly, setBookmarkedOnly] = useState(false);
   const [showStockData, setShowStockData] = useState(false);
   const [rssCopied, setRssCopied] = useState(false);
 
   const { profile } = useUser();
+  const { bookmarkedSlugs } = useBookmarks();
   const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
   const isAdmin = profile?.tier === 9;
 
@@ -130,6 +133,11 @@ export default function Home() {
 
   const handleLabelsChange = (labels: string[]) => {
     setSelectedLabels(labels);
+    setShowAllArticles(false);
+  };
+
+  const handleBookmarkedOnlyChange = (value: boolean) => {
+    setBookmarkedOnly(value);
     setShowAllArticles(false);
   };
 
@@ -290,13 +298,15 @@ export default function Home() {
               selectedLabels={selectedLabels}
               onLabelsChange={handleLabelsChange}
               availableLabels={availableLabels}
+              bookmarkedOnly={bookmarkedOnly}
+              onBookmarkedOnlyChange={handleBookmarkedOnlyChange}
             />
           </div>
 
           {/* Pinned Article as Featured */}
           {(() => {
             const pinnedArticle = getFilteredArticles(articles, '', []).find(article => article.pinned && (canViewPremium || !article.premiumContent));
-            const shouldShowPinned = searchText === '' && selectedLabels.length === 0;
+            const shouldShowPinned = searchText === '' && selectedLabels.length === 0 && !bookmarkedOnly;
             return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
                 <div className="absolute -top-3 left-3 z-10">
@@ -323,7 +333,7 @@ export default function Home() {
           })()}
 
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            {getFilteredArticles(articles, searchText, selectedLabels)
+            {getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
               .filter(article => !article.pinned && (canViewPremium || !article.premiumContent))
               .map((article) => (
                 <ArticleCard
@@ -347,7 +357,7 @@ export default function Home() {
 
           {/* Results Count and Show More/Less Button */}
           {(() => {
-            const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels)
+            const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
               .filter(article => !article.pinned && (canViewPremium || !article.premiumContent));
             const displayedCount = showAllArticles ? filteredArticles.length : Math.min(12, filteredArticles.length);
 

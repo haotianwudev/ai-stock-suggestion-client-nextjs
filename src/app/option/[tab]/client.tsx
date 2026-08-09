@@ -20,6 +20,7 @@ import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { useUser } from "@/hooks/use-user";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 import { canAccessPremiumContent } from "@/lib/tiers";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import {
@@ -157,11 +158,13 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
 function OptionsArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const [bookmarkedOnly, setBookmarkedOnly] = useState(false);
   const availableLabels = getAllLabels();
   const { profile } = useUser();
   const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
+  const { bookmarkedSlugs } = useBookmarks();
 
-  const optionsArticles = getFilteredArticles(articles, searchText, selectedLabels)
+  const optionsArticles = getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
     .filter(article => article.options === true && (canViewPremium || !article.premiumContent));
 
   return (
@@ -177,12 +180,14 @@ function OptionsArticlesTab() {
       </CardHeader>
       <CardContent className="space-y-4 md:space-y-6">
         {/* Filter Component */}
-        <ArticleFilter 
+        <ArticleFilter
           searchText={searchText}
           onSearchChange={setSearchText}
           selectedLabels={selectedLabels}
           onLabelsChange={setSelectedLabels}
           availableLabels={availableLabels}
+          bookmarkedOnly={bookmarkedOnly}
+          onBookmarkedOnlyChange={setBookmarkedOnly}
         />
 
         {/* Articles Grid */}

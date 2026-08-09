@@ -25,6 +25,7 @@ import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { useUser } from "@/hooks/use-user";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 import { canAccessPremiumContent } from "@/lib/tiers";
 
 interface QuantTabClientProps {
@@ -216,12 +217,14 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
 function QuantArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const [bookmarkedOnly, setBookmarkedOnly] = useState(false);
   const availableLabels = getAllLabels();
   const { profile } = useUser();
   const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
+  const { bookmarkedSlugs } = useBookmarks();
 
   // Filter articles with QUANT label only, gating premiumContent by tier
-  const quantArticles = getFilteredArticles(articles, searchText, selectedLabels)
+  const quantArticles = getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
     .filter(article =>
       (canViewPremium || !article.premiumContent) &&
       article.labels?.some((label: string) =>
@@ -242,12 +245,14 @@ function QuantArticlesTab() {
       </CardHeader>
       <CardContent className="space-y-4 md:space-y-6">
         {/* Filter Component */}
-        <ArticleFilter 
+        <ArticleFilter
           searchText={searchText}
           onSearchChange={setSearchText}
           selectedLabels={selectedLabels}
           onLabelsChange={setSelectedLabels}
           availableLabels={availableLabels}
+          bookmarkedOnly={bookmarkedOnly}
+          onBookmarkedOnlyChange={setBookmarkedOnly}
         />
 
         {/* Articles Grid */}

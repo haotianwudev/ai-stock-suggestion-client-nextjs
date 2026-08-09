@@ -18,14 +18,13 @@ import { CommentSection } from "@/components/comments/comment-section";
 import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
 import { useUser } from "@/hooks/use-user";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 import { getTierName, tierUnlockMessage } from "@/lib/tiers";
 import { TierUpDialog } from "@/components/shared/tier-up-dialog";
 import { TierStatusBanner } from "@/components/shared/tier-status-banner";
 import {
   MY_LIKED_ARTICLES,
-  MY_BOOKMARKED_ARTICLES,
   ATTEST_LIKED,
-  TOGGLE_BOOKMARK,
 } from "@/lib/graphql/queries";
 import { LikeResult } from "@/lib/graphql/types";
 
@@ -152,20 +151,13 @@ function VideoCard({ youtubeUrl, title, articleSlug }: { youtubeUrl: string; tit
   const { data: likedData } = useQuery<{ myLikedArticleSlugs: string[] }>(MY_LIKED_ARTICLES, {
     skip: !user,
   });
-  const { data: bookmarkedData } = useQuery<{ myBookmarkedArticleSlugs: string[] }>(
-    MY_BOOKMARKED_ARTICLES,
-    { skip: !user }
-  );
   const liked = likedData?.myLikedArticleSlugs.includes(articleSlug) ?? false;
-  const bookmarked = bookmarkedData?.myBookmarkedArticleSlugs.includes(articleSlug) ?? false;
+  const { isBookmarked, toggleBookmark: toggleBookmarkSlug, bookmarking } = useBookmarks();
+  const bookmarked = isBookmarked(articleSlug);
 
   const [attestLiked] = useMutation<{ attestLiked: LikeResult }>(ATTEST_LIKED, {
     refetchQueries: [{ query: MY_LIKED_ARTICLES }],
   });
-  const [toggleBookmark, { loading: bookmarking }] = useMutation<{ toggleBookmark: boolean }>(
-    TOGGLE_BOOKMARK,
-    { refetchQueries: [{ query: MY_BOOKMARKED_ARTICLES }] }
-  );
 
   const likeOnYoutube = () => {
     // window.open must run synchronously in the click handler, before any
@@ -191,19 +183,7 @@ function VideoCard({ youtubeUrl, title, articleSlug }: { youtubeUrl: string; tit
       });
   };
 
-  const handleBookmark = () => {
-    if (!user) {
-      toast.error("Sign in to bookmark articles.");
-      return;
-    }
-    toggleBookmark({ variables: { articleSlug } })
-      .then(({ data }) => {
-        toast.success(data?.toggleBookmark ? "Bookmarked." : "Bookmark removed.");
-      })
-      .catch((e) => {
-        toast.error(e instanceof Error ? e.message : "Something went wrong.");
-      });
-  };
+  const handleBookmark = () => toggleBookmarkSlug(articleSlug);
 
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">

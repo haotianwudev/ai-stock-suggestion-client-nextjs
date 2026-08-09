@@ -63,6 +63,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           url: "https://www.portfoliovisualizer.com/factor-analysis",
         },
         {
+          text: "Causal Inference in Finance",
+          articleSlug: "structural-revolution-quantitative-finance",
+        },
+        {
           text: "Decoding the Bond Term Premium",
           articleSlug: "bond-term-premium-fixed-income-dynamics-pricing-models",
         },

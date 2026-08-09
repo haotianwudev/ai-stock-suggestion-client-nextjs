@@ -287,6 +287,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
         },
         {
+          text: "Tax Mechanics & Behavioral Finance",
+          articleSlug: "strategic-wealth-considerations-tax-and-behavioral-finance",
+        },
+        {
           text: "Wealth Preservation Allocation",
           articleSlug: "strategic-asset-allocation-quantitative-framework-wealth-preservation",
         },

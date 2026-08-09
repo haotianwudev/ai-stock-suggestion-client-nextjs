@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Strategic Wealth Considerations: Tax Mechanics, Asset Location, and Behavioral Finance",
+    description: "A practitioner's guide to the tax mechanics most wealth plans miss: the de minimis trap that turns municipal bond gains into ordinary income, the Free Dividend Fallacy distorting yield-seeking behavior, phantom income traps from TIPS and the new OBBBA gambling-loss cap, and how Donor-Advised Funds and Qualified Charitable Distributions turn philanthropy into precision tax defense.",
+    slug: "strategic-wealth-considerations-tax-and-behavioral-finance",
+    date: "August 28, 2026",
+    imageUrl: "https://i.imgur.com/8mIAdD3.jpeg",
+    infographicUrl: "https://i.imgur.com/8mIAdD3.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSzRJelwSmt6ZmYZsW15UR6XEhT6h4lwU5ebDYLTGeLm9BQF5EVBPP4yggTIHxVYprjvRWtRLQ2T7xJ/pub",
+    labels: [ArticleLabel.FINANCE101],
+  },
+  {
     title: "The Infrastructure of Counterparty Credit Risk: Margin, WCL, Excess, Shortfall, and Release",
     description: "A comprehensive deep dive into the mathematical frameworks governing credit extension across Prime Brokerage and UHNW Wealth Management. Master Regulation T vs Portfolio Margin, Worst Case Loss stress grids, House Excess liquidity constraints, forced liquidation mechanics, and the systemic importance of precise margin release calculations.",
     slug: "infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release",
@@ -66,6 +77,17 @@ export const articles2026Q3: Article[] = [
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTiJIPSoFj9za65qjVvLGuvIzjsbbwFYw31dQhFS3eNF-M_YGfuxuUurhoGaJXLDu7DcuK-XpfnOIiJ/pub",
     labels: [ArticleLabel.MACRO],
+  },
+  {
+    title: "The Structural Revolution in Quantitative Finance",
+    description: "A comprehensive deep dive into the shift from correlational to causal finance — covering Double Machine Learning for unbiased parameter estimation, Deep IV for unobserved confounding, causal discovery algorithms (NOTEARS, LiNGAM, PC/FCI) for learning market structure directly from data, and the Interventional Covariance Matrix as a causally-robust replacement for the Pearson correlation matrix in portfolio construction.",
+    slug: "structural-revolution-quantitative-finance",
+    date: "August 8, 2026",
+    imageUrl: "https://i.imgur.com/gsS0XT4.jpeg",
+    infographicUrl: "https://i.imgur.com/gsS0XT4.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQkzf2BRMxk6r75pn0EGCnRjDO1LGBI-wHNPNMWl6GOAwhxvX3JFRs9fa8ODDiWDWCxDd4YIyTQ48D7/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
   },
   {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",

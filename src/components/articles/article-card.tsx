@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Music, Maximize2, PlayCircle, ImageIcon } from "lucide-react";
+import { ArrowRight, Music, Maximize2, PlayCircle, ImageIcon, Bookmark } from "lucide-react";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { useState } from "react";
 import { youtubeThumbnailUrl } from "@/lib/youtube";
+import { useBookmarks } from "@/hooks/use-bookmarks";
 
 interface ArticleCardProps {
   title: string;
@@ -25,6 +26,8 @@ interface ArticleCardProps {
 
 export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  const { isBookmarked, toggleBookmark, bookmarking } = useBookmarks();
+  const bookmarked = isBookmarked(slug);
   // Consolidated card: an article with an attached YouTube video can toggle its
   // thumbnail between the article infographic and the video thumbnail.
   const hasAttachedVideo = Boolean(youtubeUrl) && !isVideo;
@@ -101,7 +104,26 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
           )}
         <div className="flex-1 flex flex-col justify-between min-w-0">
           <div>
-            <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{title}</CardTitle>
+            <div className="flex items-start justify-between gap-2">
+              <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{title}</CardTitle>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleBookmark(slug);
+                }}
+                disabled={bookmarking}
+                aria-label={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+                title={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+                className={`shrink-0 inline-flex items-center justify-center size-7 rounded-lg border transition-colors disabled:opacity-50 ${
+                  bookmarked
+                    ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
+                    : "border-border text-muted-foreground hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
+                }`}
+              >
+                <Bookmark className="size-3.5" fill={bookmarked ? "currentColor" : "none"} />
+              </button>
+            </div>
             <div className="flex items-center text-xs text-muted-foreground mb-1 gap-2">
               <span>{date}</span>
               {googleDoc && (

@@ -1,7 +1,8 @@
 "use client";
 
-import { Search, X } from "lucide-react";
+import { Search, X, Bookmark } from "lucide-react";
 import { ArticleLabel } from "@/data/articles/types";
+import { useUser } from "@/hooks/use-user";
 
 interface ArticleFilterProps {
   searchText: string;
@@ -9,15 +10,21 @@ interface ArticleFilterProps {
   selectedLabels: string[];
   onLabelsChange: (labels: string[]) => void;
   availableLabels: string[];
+  bookmarkedOnly: boolean;
+  onBookmarkedOnlyChange: (bookmarkedOnly: boolean) => void;
 }
 
-export function ArticleFilter({ 
+export function ArticleFilter({
   searchText,
   onSearchChange,
   selectedLabels,
   onLabelsChange,
-  availableLabels
+  availableLabels,
+  bookmarkedOnly,
+  onBookmarkedOnlyChange
 }: ArticleFilterProps) {
+  const { user } = useUser();
+
   const toggleLabel = (label: string) => {
     if (selectedLabels.includes(label)) {
       onLabelsChange(selectedLabels.filter(l => l !== label));
@@ -29,9 +36,10 @@ export function ArticleFilter({
   const clearAllFilters = () => {
     onSearchChange('');
     onLabelsChange([]);
+    onBookmarkedOnlyChange(false);
   };
 
-  const hasActiveFilters = searchText !== '' || selectedLabels.length > 0;
+  const hasActiveFilters = searchText !== '' || selectedLabels.length > 0 || bookmarkedOnly;
 
   return (
     <div className="w-full space-y-3">
@@ -69,8 +77,22 @@ export function ArticleFilter({
       </div>
 
       {/* Label Filter Pills */}
-      {availableLabels.length > 0 && (
+      {(availableLabels.length > 0 || user) && (
         <div className="flex flex-wrap gap-2">
+          {user && (
+            <button
+              onClick={() => onBookmarkedOnlyChange(!bookmarkedOnly)}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                bookmarkedOnly
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+              }`}
+            >
+              <Bookmark className="h-3 w-3" fill={bookmarkedOnly ? "currentColor" : "none"} />
+              Bookmarked
+              {bookmarkedOnly && <X className="h-3 w-3" />}
+            </button>
+          )}
           {availableLabels.map((label) => {
             const isSelected = selectedLabels.includes(label);
             return (
@@ -120,11 +142,13 @@ export function getAllLabels(): string[] {
   return Object.values(ArticleLabel);
 }
 
-// Simplified filtering function with text search and label support
+// Simplified filtering function with text search, label, and bookmarked-only support
 export function getFilteredArticles(
-  articles: any[], 
+  articles: any[],
   searchText: string = '',
-  selectedLabels: string[] = []
+  selectedLabels: string[] = [],
+  bookmarkedSlugs: string[] = [],
+  bookmarkedOnly: boolean = false
 ) {
   // Skip date filtering on localhost for development
   const shouldFilterByDate = !isLocalhost();
@@ -151,6 +175,13 @@ export function getFilteredArticles(
       return selectedLabels.some(label => article.labels.includes(label));
     });
   }
-  
+
+  // Apply bookmarked-only filter
+  if (bookmarkedOnly) {
+    filteredArticles = filteredArticles.filter(article =>
+      article.slug && bookmarkedSlugs.includes(article.slug)
+    );
+  }
+
   return filteredArticles;
-} 
+}

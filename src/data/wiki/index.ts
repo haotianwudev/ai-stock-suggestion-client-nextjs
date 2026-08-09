@@ -12,6 +12,22 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/causal-inference-finance",
+    title: "Causal Inference in Finance",
+    articleSlug: "structural-revolution-quantitative-finance",
+    date: "2026-08-08",
+    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    summary: "Why correlation-only factor mining structurally fails across regime changes, and how Double Machine Learning, Deep IV, causal discovery (NOTEARS, LiNGAM, PC/FCI), and the Interventional Covariance Matrix replace it with causally-robust structure.",
+  },
+  {
+    path: "finance101/wealth-preservation-tax-strategies",
+    title: "Advanced Wealth Preservation",
+    articleSlug: "strategic-wealth-considerations-tax-and-behavioral-finance",
+    date: "2026-08-08",
+    labels: [ArticleLabel.FINANCE101],
+    summary: "The de minimis trap that flips municipal bond gains from capital-gains to ordinary-income rates, the Free Dividend Fallacy, phantom income from TIPS and the new OBBBA gambling-loss cap, and how DAFs and QCDs turn philanthropy into precision tax defense.",
+  },
+  {
     path: "stock-analysis/apple-aapl-quality-vs-price-neutral-thesis",
     title: "Gemini Deep Research on AAPL",
     articleSlug: "gemini-deep-research-aapl",
