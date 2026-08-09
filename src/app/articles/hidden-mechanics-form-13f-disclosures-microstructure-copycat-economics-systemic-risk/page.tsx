@@ -1,7 +1,8 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { ComparisonGrid, ComparisonCard } from '@/components/articles/article-visuals';
 import {
   TrendingUp,
   AlertTriangle,
@@ -70,19 +71,19 @@ interface InsightPillProps {
 
 const InsightPill = ({ label, value, trend = 'neutral' }: InsightPillProps) => {
   const colors = {
-    up: 'text-emerald-700 bg-emerald-50 border-emerald-200',
-    down: 'text-rose-700 bg-rose-50 border-rose-200',
-    neutral: 'text-slate-700 bg-slate-50 border-slate-200',
+    up: 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50',
+    down: 'text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/50',
+    neutral: 'text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800',
   };
 
   const Icon = trend === 'up' ? ArrowUpRight : trend === 'down' ? ArrowDownRight : Clock;
 
   return (
-    <div className={`flex flex-col p-3 rounded-lg border ${colors[trend]} transition-all`}>
-      <span className="text-xs font-semibold uppercase tracking-wider opacity-75 mb-1">{label}</span>
+    <div className={`flex flex-col p-4 rounded-xl border ${colors[trend]} transition-all min-w-0`}>
+      <span className="text-xs font-semibold uppercase tracking-wider opacity-75 mb-1 truncate">{label}</span>
       <div className="flex items-center gap-2">
-        <Icon className="w-4 h-4" />
-        <span className="text-lg font-bold">{value}</span>
+        <Icon className="w-5 h-5 shrink-0" />
+        <span className="text-xl font-bold truncate">{value}</span>
       </div>
     </div>
   );
@@ -94,270 +95,278 @@ export default function Form13FMicrostructureArticle() {
       slug="hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk"
       additionalDisclaimer="13F filings are public SEC disclosures subject to a 45-day delay. Data presented is illustrative of aggregate academic findings and hypothetical scenarios; it does not represent real-time or forward-looking investment advice."
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="pb-24">
+        <InfographicSlot alt="Form 13F Microstructure Infographic" />
 
-        <InfographicSlot
-          alt="Form 13F Microstructure Infographic"
-        />
-
-        {/* Intro Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-1 lg:col-span-2 space-y-4">
-            <p className="text-lg text-slate-600 leading-relaxed">
-              The convergence of mandated 45-day disclosure deadlines and High-Frequency Trading (HFT) has
-              fundamentally altered market microstructure. Form 13F filings, required for institutional managers
-              with over $100M in qualifying assets, create predictable information asymmetries that sophisticated
-              algorithms exploit within milliseconds.
-            </p>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              This article dissects the microstructural mechanics of 13F disclosures&mdash;from algorithmic XML
-              parsing in ~70ms to the systemic risks of Form SHO integration arriving in late 2026.
-            </p>
-          </div>
-
-          <div className="col-span-1">
-            <div className="p-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white border-none shadow-xl rounded-xl">
-              <h2 className="font-semibold text-lg flex items-center gap-2 mb-4">
-                <AlertTriangle className="w-5 h-5 text-amber-400" />
-                TL;DR Key Findings
-              </h2>
-              <ul className="space-y-3 text-sm text-slate-300">
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-indigo-400 shrink-0" />
-                  <span>HFT algorithms parse 13F XMLs in <strong>~70ms</strong>, creating microsecond volatility spikes.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-indigo-400 shrink-0" />
-                  <span>Smart copycat strategies generate <strong>5.5% to 6.7%</strong> annual excess returns.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-indigo-400 shrink-0" />
-                  <span>Disclosing funds suffer a <strong>~2.6%</strong> annual performance drag due to predatory front-running.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Volatility Section */}
-        <section id="volatility" className="scroll-mt-12">
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-indigo-50 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-indigo-600" />
-              </div>
-              <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Market Volatility Around Filing Dates</h2>
-            </div>
-            <p className="text-slate-500 ml-11">How algorithmic parsing and human copycats drive short-term price action.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-semibold mb-6 flex items-center justify-between">
-                <span>Intraday Volatility &amp; Volume Spike (T=0)</span>
-                <span className="text-xs font-normal text-slate-500 bg-slate-100 px-2 py-1 rounded">Hypothetical Aggregate</span>
-              </h3>
-              <div className="h-72 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={volatilityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                    <YAxis yAxisId="left" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                    <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                    <RechartsTooltip
-                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                    />
-                    <Legend iconType="circle" />
-                    <ReferenceLine x={0} yAxisId="left" stroke="#ef4444" strokeDasharray="3 3" label={{ position: 'top', value: 'Filing Day', fill: '#ef4444', fontSize: 12 }} />
-                    <Line yAxisId="left" type="monotone" dataKey="volatility" stroke="#6366f1" strokeWidth={3} dot={{ r: 4, fill: '#6366f1', strokeWidth: 0 }} activeDot={{ r: 6 }} name="Volatility Index" />
-                    <Line yAxisId="right" type="stepAfter" dataKey="volume" stroke="#cbd5e1" strokeWidth={2} dot={false} name="Trading Volume" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="prose prose-slate max-w-none text-slate-600">
-                <p>
+        <div className="max-w-4xl mx-auto">
+          {/* Intro Section */}
+          <section className="py-16">
+            <div className="flex flex-col lg:flex-row gap-12">
+              <div className="lg:w-2/3 space-y-6 min-w-0">
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                   The convergence of mandated 45-day disclosure deadlines and High-Frequency Trading (HFT) has
-                  fundamentally altered market microstructure.
+                  fundamentally altered market microstructure. Form 13F filings, required for institutional managers
+                  with over $100M in qualifying assets, create predictable information asymmetries that sophisticated
+                  algorithms exploit within milliseconds.
                 </p>
-                <p>
-                  Algorithms consume the SEC&apos;s XML data instantaneously. Parsing libraries extract CUSIPs,
-                  share counts, and values in milliseconds. This creates <strong>latency arbitrage</strong>&mdash;algorithms
-                  trade on material changes before human analysts can read the filing.
-                </p>
-                <p>
-                  While HFT aids price discovery normally, during &ldquo;crowded trades&rdquo;, it amplifies volatility.
-                  Sudden algorithmic accumulation causes rapid order cancellations and directional price spikes.
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                  This article dissects the microstructural mechanics of 13F disclosures&mdash;from algorithmic XML
+                  parsing in ~70ms to the systemic risks of Form SHO integration arriving in late 2026.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <InsightPill label="Abnormal Return (T+1)" value="+2.0%" trend="up" />
-                <InsightPill label="HFT Parse Time" value="70 ms" trend="neutral" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Copycatting Section */}
-        <section id="copycatting" className="scroll-mt-12">
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-indigo-50 rounded-lg">
-                <Search className="w-6 h-6 text-indigo-600" />
-              </div>
-              <h2 className="text-3xl font-bold text-slate-800 tracking-tight">The Economics of Institutional Copycatting</h2>
-            </div>
-            <p className="text-slate-500 ml-11">Piggybacking on alpha and the drag it creates on originating funds.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="col-span-1 lg:col-span-1 space-y-6">
-              <p className="text-slate-600">
-                Active managers monitor peers. Digital footprint analysis on EDGAR servers proves that viewing a
-                competitor&apos;s 13F increases the likelihood of replicating their trades by 50%.
-              </p>
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
-                <h4 className="font-semibold text-amber-900 mb-2 flex items-center gap-2">
-                  <ShieldAlert className="w-5 h-5" />
-                  The Originator&apos;s Tax
-                </h4>
-                <p className="text-sm text-amber-800">
-                  Mandatory disclosure forces funds to reveal trade secrets. Human copycats induce an average annual
-                  performance loss of <strong>2.56% to 2.7%</strong> on the disclosing fund, primarily during
-                  incomplete &ldquo;first-buy&rdquo; accumulations.
-                </p>
+              <div className="lg:w-1/3 min-w-0">
+                <div className="p-6 bg-[#14171B] dark:bg-[#05070A] text-white border-none shadow-xl rounded-3xl h-full">
+                  <h2 className="font-serif text-xl flex items-center gap-2 mb-6">
+                    <AlertTriangle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
+                    TL;DR Key Findings
+                  </h2>
+                  <ul className="space-y-4 text-sm text-slate-300">
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>HFT algorithms parse 13F XMLs in <strong>~70ms</strong>, creating microsecond volatility spikes.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>Smart copycat strategies generate <strong>5.5% to 6.7%</strong> annual excess returns.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>Disclosing funds suffer a <strong>~2.6%</strong> annual performance drag due to predatory front-running.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
+          </section>
 
-            <div className="col-span-1 lg:col-span-2">
-              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                <h3 className="text-lg font-semibold mb-6">Annualized Alpha by Copycat Strategy</h3>
-                <div className="h-64 w-full">
+          {/* Volatility Section */}
+          <section id="volatility" className="py-16 border-t border-slate-200 dark:border-slate-800 scroll-mt-12">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Market Volatility Around Filing Dates</h2>
+              </div>
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-2xl">How algorithmic parsing and human copycats drive short-term price action.</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 min-w-0">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center justify-between">
+                  <span>Intraday Volatility &amp; Volume Spike (T=0)</span>
+                </h3>
+                <div className="h-72 w-full min-w-0">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={copycatPerformanceData} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#e2e8f0" />
-                      <XAxis type="number" tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} unit="%" />
-                      <YAxis dataKey="strategy" type="category" width={140} tick={{ fill: '#475569', fontSize: 12, fontWeight: 500 }} axisLine={false} tickLine={false} />
-                      <RechartsTooltip cursor={{ fill: '#f8fafc' }} contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                      <Bar dataKey="returns" name="Excess Returns (%)" radius={[0, 4, 4, 0]}>
-                        {copycatPerformanceData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
-                        ))}
-                      </Bar>
-                    </BarChart>
+                    <LineChart data={volatilityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" strokeOpacity={0.5} />
+                      <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                      <YAxis yAxisId="left" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                      <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                      <RechartsTooltip
+                        contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', backgroundColor: 'var(--tw-prose-body)' }}
+                      />
+                      <Legend iconType="circle" />
+                      <ReferenceLine x={0} yAxisId="left" stroke="#ef4444" strokeDasharray="3 3" label={{ position: 'top', value: 'Filing Day', fill: '#ef4444', fontSize: 12 }} />
+                      <Line yAxisId="left" type="monotone" dataKey="volatility" stroke="#A8672E" strokeWidth={3} dot={{ r: 4, fill: '#A8672E', strokeWidth: 0 }} activeDot={{ r: 6 }} name="Volatility Index" />
+                      <Line yAxisId="right" type="stepAfter" dataKey="volume" stroke="#94a3b8" strokeWidth={2} dot={false} name="Trading Volume" />
+                    </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Strategic Evasion Section */}
-        <section id="evasion" className="scroll-mt-12">
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-indigo-50 rounded-lg">
-                <EyeOff className="w-6 h-6 text-indigo-600" />
+              <div className="space-y-8 min-w-0">
+                <div className="prose prose-lg text-slate-600 dark:text-slate-400 max-w-none">
+                  <p>
+                    The convergence of mandated 45-day disclosure deadlines and High-Frequency Trading (HFT) has
+                    fundamentally altered market microstructure.
+                  </p>
+                  <p>
+                    Algorithms consume the SEC's XML data instantaneously. Parsing libraries extract CUSIPs,
+                    share counts, and values in milliseconds. This creates <strong>latency arbitrage</strong>&mdash;algorithms
+                    trade on material changes before human analysts can read the filing.
+                  </p>
+                  <p>
+                    While HFT aids price discovery normally, during "crowded trades", it amplifies volatility.
+                    Sudden algorithmic accumulation causes rapid order cancellations and directional price spikes.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <InsightPill label="Abnormal Return (T+1)" value="+2.0%" trend="up" />
+                  <InsightPill label="HFT Parse Time" value="70 ms" trend="neutral" />
+                </div>
               </div>
-              <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Strategic Evasion &amp; Q2 2026 Examples</h2>
             </div>
-            <p className="text-slate-500 ml-11">How managers hide trades and what to watch for in the upcoming filings.</p>
-          </div>
+          </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-800">Confidential Treatment &amp; Restatements</h3>
-              <p className="text-slate-600">
-                To combat front-running, managers utilize Confidential Treatment Requests (CTRs) to hide ongoing
-                accumulations for up to a year. Alternatively, they may use strategic restatements (amending
-                intentionally misreported initial filings) once a position is secure.
-              </p>
-              <div className="flex items-center gap-3 bg-indigo-50 text-indigo-900 p-4 rounded-lg border border-indigo-100">
-                <Info className="w-6 h-6 shrink-0" />
-                <p className="text-sm">
-                  <strong>Did you know?</strong> Prompt 13F restatements correcting &ldquo;errors&rdquo; generate an
-                  annualized equivalent alpha of <strong>9.13%</strong>, proving they deliberately withheld valuable data.
+          {/* Copycatting Section */}
+          <section id="copycatting" className="py-16 border-t border-slate-200 dark:border-slate-800 scroll-mt-12">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                  <Search className="w-6 h-6" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Economics of Institutional Copycatting</h2>
+              </div>
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-2xl">Piggybacking on alpha and the drag it creates on originating funds.</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="col-span-1 lg:col-span-1 space-y-8 min-w-0">
+                <p className="text-slate-600 dark:text-slate-400 prose prose-lg">
+                  Active managers monitor peers. Digital footprint analysis on EDGAR servers proves that viewing a
+                  competitor's 13F increases the likelihood of replicating their trades by 50%.
                 </p>
+                <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-6 min-w-0">
+                  <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-3 flex items-center gap-2">
+                    <ShieldAlert className="w-5 h-5" />
+                    The Originator's Tax
+                  </h4>
+                  <p className="text-sm text-rose-800 dark:text-rose-200/80 leading-relaxed">
+                    Mandatory disclosure forces funds to reveal trade secrets. Human copycats induce an average annual
+                    performance loss of <strong>2.56% to 2.7%</strong> on the disclosing fund, primarily during
+                    incomplete "first-buy" accumulations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="col-span-1 lg:col-span-2 min-w-0">
+                <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 h-full min-w-0">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-8">Annualized Alpha by Copycat Strategy</h3>
+                  <div className="h-64 w-full min-w-0">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={copycatPerformanceData} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#e2e8f0" strokeOpacity={0.5} />
+                        <XAxis type="number" tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} unit="%" />
+                        <YAxis dataKey="strategy" type="category" width={140} tick={{ fill: '#475569', fontSize: 12, fontWeight: 500 }} axisLine={false} tickLine={false} />
+                        <RechartsTooltip cursor={{ fill: '#f8fafc' }} contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                        <Bar dataKey="returns" name="Excess Returns (%)" radius={[0, 4, 4, 0]}>
+                          {copycatPerformanceData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
 
-            <div className="bg-white rounded-xl shadow-sm border border-indigo-200 shadow-indigo-100/50 overflow-hidden">
-              <div className="bg-indigo-600 p-4 text-white">
-                <h4 className="font-bold">
-                  Case Study: Berkshire Hathaway vs. Chubb (CB)
-                </h4>
-                <p className="text-indigo-100 text-sm mt-1">A textbook execution of CTR and subsequent market impact.</p>
+          {/* Strategic Evasion Section */}
+          <section id="evasion" className="py-16 border-t border-slate-200 dark:border-slate-800 scroll-mt-12">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                  <EyeOff className="w-6 h-6" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Strategic Evasion &amp; Q2 2026 Examples</h2>
               </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
-                    <tr>
-                      <th className="px-4 py-3">Quarter</th>
-                      <th className="px-4 py-3">Shares (M)</th>
-                      <th className="px-4 py-3">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {berkshireChubbData.map((row, idx) => (
-                      <tr key={idx} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
-                        <td className="px-4 py-3 font-medium text-slate-900">{row.quarter}</td>
-                        <td className="px-4 py-3 text-slate-600">{row.shares || '—'}</td>
-                        <td className="px-4 py-3">
-                          <span className={`px-2 py-1 rounded text-xs font-medium ${
-                            row.status.includes('Confidential') ? 'bg-slate-100 text-slate-600' :
-                            row.status.includes('Reveal') ? 'bg-amber-100 text-amber-800' :
-                            row.status.includes('Aggressive') ? 'bg-emerald-100 text-emerald-800' :
-                            'bg-indigo-50 text-indigo-700'
-                          }`}>
-                            {row.status}
-                          </span>
-                        </td>
+              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-2xl">How managers hide trades and what to watch for in the upcoming filings.</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+              <div className="space-y-6 min-w-0">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Confidential Treatment &amp; Restatements</h3>
+                <div className="prose prose-lg text-slate-600 dark:text-slate-400 max-w-none">
+                  <p>
+                    To combat front-running, managers utilize Confidential Treatment Requests (CTRs) to hide ongoing
+                    accumulations for up to a year. Alternatively, they may use strategic restatements (amending
+                    intentionally misreported initial filings) once a position is secure.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-300 p-6 rounded-2xl border border-amber-200 dark:border-amber-900/50 min-w-0">
+                  <Info className="w-6 h-6 shrink-0 mt-1" />
+                  <p className="text-sm leading-relaxed">
+                    <strong>Did you know?</strong> Prompt 13F restatements correcting "errors" generate an
+                    annualized equivalent alpha of <strong>9.13%</strong>, proving they deliberately withheld valuable data.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden min-w-0 flex flex-col">
+                <div className="bg-[#A8672E] dark:bg-[#D08F52] p-6 text-white shrink-0">
+                  <h4 className="font-bold text-lg font-serif">
+                    Case Study: Berkshire Hathaway vs. Chubb (CB)
+                  </h4>
+                  <p className="text-[#A8672E]/10 dark:text-[#D08F52]/10 mt-1 text-white/80">A textbook execution of CTR and subsequent market impact.</p>
+                </div>
+                <div className="overflow-x-auto flex-1 min-w-0">
+                  <table className="w-full text-sm text-left whitespace-nowrap">
+                    <thead className="text-xs text-slate-500 dark:text-slate-400 uppercase bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                      <tr>
+                        <th className="px-6 py-4">Quarter</th>
+                        <th className="px-6 py-4">Shares (M)</th>
+                        <th className="px-6 py-4">Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="bg-slate-50 p-4 border-t border-slate-200 text-sm text-slate-700">
-                <strong>Q2 2026 Watch:</strong> Will mid-August filings show Berkshire resuming accumulation after
-                Q1&apos;s pause, or pivoting? Watch for shifts in their massive $348B cash pile.
-              </div>
-            </div>
-          </div>
-
-          {/* Systemic Risks */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-8 text-white shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <FileText className="w-32 h-32" />
-            </div>
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4">Systemic Risks &amp; Form SHO Integration (Late 2026)</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-indigo-300 mb-2">The Options Blindspot</h4>
-                  <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                    13Fs require notional value disclosure but hide strike prices, expirations, and leverage. The
-                    recent unwinding of massive undisclosed put-option exposure by technology hedge funds highlighted
-                    how this opacity prevents risk managers from distinguishing between prudent hedges and dangerous,
-                    leveraged directional bets.
-                  </p>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50">
+                      {berkshireChubbData.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/20">
+                          <td className="px-6 py-4 font-medium text-slate-900 dark:text-slate-300">{row.quarter}</td>
+                          <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{row.shares || '—'}</td>
+                          <td className="px-6 py-4">
+                            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                              row.status.includes('Confidential') ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' :
+                              row.status.includes('Reveal') ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300' :
+                              row.status.includes('Aggressive') ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' :
+                              'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+                            }`}>
+                              {row.status}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-emerald-300 mb-2">Form SHO Implementation</h4>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    With the SEC&apos;s Rule 13f-2 (Form SHO) compliance taking effect in early 2026, the Q2 2026
-                    reporting cycle will be among the first where algorithms synthesize 13F (Longs) with Form SHO
-                    (Shorts). This creates a &ldquo;Net Arbitrage Trading&rdquo; metric, significantly increasing
-                    parsing complexity and potential volatility.
-                  </p>
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 border-t border-slate-200 dark:border-slate-800 text-sm text-slate-700 dark:text-slate-300 shrink-0">
+                  <strong>Q2 2026 Watch:</strong> Will mid-August filings show Berkshire resuming accumulation after
+                  Q1's pause, or pivoting? Watch for shifts in their massive $348B cash pile.
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
+            {/* Systemic Risks */}
+            <div className="bg-[#14171B] dark:bg-[#05070A] rounded-3xl p-10 md:p-12 text-white relative overflow-hidden shadow-2xl min-w-0">
+              <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+              <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                <FileText className="w-48 h-48" />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold mb-8 font-serif tracking-tight">Systemic Risks &amp; Form SHO Integration (Late 2026)</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div>
+                    <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 text-lg">
+                      <span className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></span>
+                      The Options Blindspot
+                    </h4>
+                    <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                      13Fs require notional value disclosure but hide strike prices, expirations, and leverage. The
+                      recent unwinding of massive undisclosed put-option exposure by technology hedge funds highlighted
+                      how this opacity prevents risk managers from distinguishing between prudent hedges and dangerous,
+                      leveraged directional bets.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#D08F52] dark:text-[#A8672E] mb-4 flex items-center gap-2 text-lg">
+                      <span className="w-2 h-2 rounded-full bg-[#D08F52] dark:bg-[#A8672E]"></span>
+                      Form SHO Implementation
+                    </h4>
+                    <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                      With the SEC's Rule 13f-2 (Form SHO) compliance taking effect in early 2026, the Q2 2026
+                      reporting cycle will be among the first where algorithms synthesize 13F (Longs) with Form SHO
+                      (Shorts). This creates a "Net Arbitrage Trading" metric, significantly increasing
+                      parsing complexity and potential volatility.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </ArticleFrame>
   );

@@ -664,7 +664,7 @@ export function ArticleFrame({
           <CurrentArticleContext.Provider value={currentArticle}>
             {hasPanel ? (
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-                <article>
+                <article className="min-w-0">
                   {hasVideo ? (
                     <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
                   ) : (

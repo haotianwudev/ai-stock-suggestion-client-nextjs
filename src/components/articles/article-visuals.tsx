@@ -46,6 +46,11 @@ const comparisonTone = {
     text: "text-[#BC4128] dark:text-[#E2694A]",
     borderB: "border-[#BC4128]/20 dark:border-[#E2694A]/20",
   },
+  neutral: {
+    border: "border-[#A8672E]/30 dark:border-[#D08F52]/30",
+    text: "text-[#A8672E] dark:text-[#D08F52]",
+    borderB: "border-[#A8672E]/20 dark:border-[#D08F52]/20",
+  },
 } as const;
 
 /**
@@ -59,20 +64,38 @@ export function ComparisonGrid({ children }: { children: React.ReactNode }) {
 export function ComparisonCard({
   title,
   tone,
+  type,
+  items,
   children,
 }: {
   title: string;
-  tone: keyof typeof comparisonTone;
-  children: React.ReactNode;
+  tone?: keyof typeof comparisonTone;
+  type?: keyof typeof comparisonTone;
+  items?: string[];
+  children?: React.ReactNode;
 }) {
-  const s = comparisonTone[tone];
+  const actualTone = tone ?? type ?? "neutral";
+  const s = comparisonTone[actualTone];
   return (
     <div className={`bg-white dark:bg-gray-900 border ${s.border} rounded-xl p-6 shadow-sm`}>
       <h3 className={`font-serif text-xl ${s.text} mb-4 border-b ${s.borderB} pb-2 flex items-center gap-2`}>
         <span className="w-2 h-2 rounded-full bg-current flex-none" />
         {title}
       </h3>
-      <div className="space-y-4 text-sm md:text-base">{children}</div>
+      <div className="space-y-4 text-sm md:text-base">
+        {items ? (
+          <ul className="space-y-2">
+            {items.map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-current opacity-50 flex-none" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          children
+        )}
+      </div>
     </div>
   );
 }
@@ -87,7 +110,7 @@ interface WorkedExample {
 interface FormulaPanelProps {
   title?: string;
   formula: string;
-  legend?: string;
+  legend?: string | { label: string; value: string }[];
   example?: WorkedExample;
 }
 
@@ -103,7 +126,24 @@ export function FormulaPanel({ title = "Core Exposure Formula", formula, legend,
       <div className="bg-[#14171B] dark:bg-[#05070A] p-6 min-w-[600px]">
         <h4 className="font-sans text-xs uppercase tracking-wider text-gray-400 mb-3">{title}</h4>
         <MathBlock math={formula} className="text-white text-lg" />
-        {legend && <p className="font-sans text-xs text-gray-400 mt-2">{legend}</p>}
+        
+        {legend && (
+          <div className="mt-4 border-t border-gray-800 pt-3">
+            {typeof legend === 'string' ? (
+              <p className="font-sans text-xs text-gray-400">{legend}</p>
+            ) : (
+              <div className="space-y-1">
+                {legend.map((item, idx) => (
+                  <div key={idx} className="font-mono text-xs text-gray-300 flex items-baseline gap-2">
+                    <span className="text-[#A8672E] dark:text-[#D08F52] w-12 text-right">{item.label}</span>
+                    <span className="text-gray-500">=</span>
+                    <span>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {example && (
           <div className={legend ? "mt-6" : "mt-2"}>

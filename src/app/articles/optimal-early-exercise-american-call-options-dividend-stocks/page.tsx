@@ -1,113 +1,10 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, Calculator, TrendingUp, AlertTriangle } from 'lucide-react';
+import { BookOpen, Calculator, TrendingUp, AlertTriangle, ChevronRight, Activity, LineChart, Cpu } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 import { MathBlock, InlineMath } from '@/components/articles/math';
-
-// Reusable component for section titles
-const SectionTitle = ({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) => (
-  <div className="mb-12">
-    <div className="flex items-center gap-5 mb-6">
-      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-4 rounded-2xl shadow-lg">
-        {icon}
-      </div>
-      <div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{title}</h2>
-        <p className="text-lg text-gray-600 mt-1">{subtitle}</p>
-      </div>
-    </div>
-    <hr className="border-gray-200" />
-  </div>
-);
-
-// Reusable component for content cards
-const ContentCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 mb-8 hover:shadow-xl transition-shadow duration-300">
-    {children}
-  </div>
-);
-
-// Component for styled tables
-const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
-  <div className="overflow-x-auto my-8 rounded-xl border border-gray-200 shadow-md">
-    <table className="min-w-full divide-y divide-gray-200 bg-white">
-      <thead className="bg-gradient-to-r from-indigo-50 to-purple-50">
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index} scope="col" className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-              {header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex} className="hover:bg-indigo-50/30 transition-colors duration-200">
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex} className="px-6 py-4 text-sm text-gray-700">
-                {cell}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
-
-// Component for highlighting text
-const Highlight = ({ children }: { children: React.ReactNode }) => (
-  <strong className="font-semibold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded">{children}</strong>
-);
-
-// Helper component for icons
-const Icon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    {children}
-  </svg>
-);
-
-const BookOpenIcon = () => (
-  <Icon>
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-  </Icon>
-);
-
-const CalculatorIcon = () => (
-  <Icon>
-    <rect x="4" y="2" width="16" height="20" rx="2" />
-    <line x1="8" y1="6" x2="16" y2="6" />
-    <line x1="16" y1="14" x2="16" y2="18" />
-    <path d="M16 10h.01" />
-    <path d="M12 10h.01" />
-    <path d="M8 10h.01" />
-    <path d="M12 14h.01" />
-    <path d="M8 14h.01" />
-    <path d="M12 18h.01" />
-    <path d="M8 18h.01" />
-  </Icon>
-);
-
-const ChartIcon = () => (
-  <Icon>
-    <line x1="18" y1="20" x2="18" y2="10" />
-    <line x1="12" y1="20" x2="12" y2="4" />
-    <line x1="6" y1="20" x2="6" y2="14" />
-  </Icon>
-);
+import { ComparisonGrid, ComparisonCard, FormulaPanel, Jargon } from '@/components/articles/article-visuals';
 
 export default function OptimalEarlyExerciseArticle() {
   const table1Headers = ["Scenario", "Stock Price (S)", "Strike (K)", "Intrinsic Value (S−K)", "Dividend (D)", "Option Price (C)", "Time Value (C − (S−K))", "Decision (Is D > Time Value?)"];
@@ -124,175 +21,269 @@ export default function OptimalEarlyExerciseArticle() {
       slug="optimal-early-exercise-american-call-options-dividend-stocks" 
       additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. Early exercise decisions can result in significant losses. The theoretical models presented here make assumptions that may not hold in real market conditions. Always consult with a qualified financial advisor before making investment decisions."
     >
-      <div className="space-y-12">
+      <div className="pb-24">
         <InfographicSlot alt="Optimal Early Exercise Decision Framework" />
 
-        {/* Part I: Theoretical Framework */}
-        <section id="part1">
-          <SectionTitle 
-            icon={<BookOpenIcon />}
-            title="Part I: The Theoretical Framework"
-            subtitle="Establishing the fundamental principles for the early exercise decision."
-          />
+        <div className="max-w-4xl mx-auto">
+          {/* Key Takeaways */}
+          <section className="py-16">
+            <div className="flex flex-col lg:flex-row gap-12 mb-12">
+              <div className="lg:w-2/3 space-y-6 min-w-0">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                    <BookOpen className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Theoretical Framework</h2>
+                </div>
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                  The premium of an option is composed of two distinct components: intrinsic value and time value. 
+                  Understanding this is fundamental to the early exercise decision.
+                </p>
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                  When an investor exercises an option, any remaining time value is immediately and irrevocably forfeited. 
+                  This is why it is never optimal to exercise an American call option on a non-dividend-paying stock. 
+                  It is always more profitable to sell the option on the open market, as a buyer will pay for its remaining time value.
+                </p>
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                  The entire framework changes when the stock pays a discrete cash dividend. On the ex-dividend date, 
+                  the stock price is expected to fall by the dividend amount. Since option holders do not receive dividends, they face a critical trade-off: 
+                  hold the option and suffer a capital loss, or exercise to capture the dividend but forfeit all remaining time value. 
+                  This conflict is the sole economic rationale for considering early exercise.
+                </p>
+              </div>
 
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 1: The Economics of the Early Exercise Decision</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                The premium of an option is composed of two distinct components: <Highlight>intrinsic value</Highlight> and <Highlight>time value</Highlight>. 
-                Understanding this is fundamental to the early exercise decision.
-              </p>
-              <ul className="list-disc list-inside space-y-3 pl-4">
-                <li>
-                  <Highlight>Intrinsic Value:</Highlight> The immediate profit from exercise, expressed as <InlineMath math="\max(S - K, 0)" />. 
-                  An option with positive intrinsic value is &ldquo;<Highlight>in-the-money</Highlight>&rdquo; (ITM).
-                </li>
-                <li>
-                  <Highlight>Time Value:</Highlight> The premium exceeding intrinsic value. It is the price of *potential*, 
-                  representing the value of the &ldquo;<Highlight>option to wait</Highlight>&rdquo;. It captures both <Highlight>volatility value</Highlight> (potential for future gains) 
-                  and <Highlight>interest rate value</Highlight> (interest earned on deferred capital).
-                </li>
-              </ul>
-              <p>
-                When an investor exercises an option, any remaining <Highlight>time value is immediately and irrevocably forfeited</Highlight>. 
-                This is why it is <Highlight>never optimal to exercise an American call option on a non-dividend-paying stock</Highlight>. 
-                It is always more profitable to sell the option on the open market, as a buyer will pay for its remaining time value.
-              </p>
-              <p>
-                The entire framework changes when the stock pays a <Highlight>discrete cash dividend</Highlight>. On the ex-dividend date, 
-                the stock price is expected to fall by the dividend amount. Since option holders do not receive dividends, they face a critical trade-off: 
-                hold the option and suffer a capital loss, or exercise to capture the dividend but forfeit all remaining time value. 
-                This conflict is the <Highlight>sole economic rationale</Highlight> for considering early exercise.
-              </p>
+              <div className="lg:w-1/3 min-w-0">
+                <div className="p-6 bg-[#14171B] dark:bg-[#05070A] text-white border-none shadow-xl rounded-3xl h-full">
+                  <h2 className="font-serif text-xl flex items-center gap-2 mb-6">
+                    <Activity className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
+                    Key Takeaways
+                  </h2>
+                  <ul className="space-y-4 text-sm text-slate-300">
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>Never early-exercise American call options on non-dividend paying stocks—you forfeit remaining time value.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>Exercise is only optimal if the dividend exceeds the remaining time value of the call.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
+                      <span>The Longstaff-Schwartz Method uses backward induction to handle the early exercise decision in Monte Carlo simulations.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </ContentCard>
 
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 2: The Decision Rule and the Critical Stock Price</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                A rational investor should exercise an American call option early if, and only if, the dividend to be gained is greater than 
-                the time value of the option to be forfeited. This condition is most likely met when the option is <Highlight>deep in-the-money</Highlight>, 
-                where its time value is minimal.
-              </p>
-              <MathBlock math="D > \text{Time Value of the Call Option}" />
-              <p>
-                If exercise is optimal, it should be done <Highlight>immediately prior to the stock going ex-dividend</Highlight>. 
-                This maximizes the time value preserved up to that point. There exists a critical stock price, <InlineMath math="S^*" />, where an investor is indifferent 
-                between exercising and holding. It is found by solving:
-              </p>
-              <MathBlock math="S^* - K = C_{\text{European}}(S^* - D, T - t_d)" />
-              <p>
-                If the current stock price <InlineMath math="S > S^*" />, <Highlight>early exercise is the optimal action</Highlight>. 
-                The following table illustrates this decision process.
-              </p>
-              <h4 className="font-semibold text-gray-700 pt-4">Table 1: Early Exercise Decision Matrix</h4>
-              <StyledTable headers={table1Headers} data={table1Data} />
+            <ComparisonGrid>
+              <ComparisonCard
+                title="Intrinsic Value"
+                type="pos"
+                items={[
+                  "The immediate profit from exercise, expressed as max(S - K, 0).",
+                  "An option with positive intrinsic value is 'in-the-money' (ITM)."
+                ]}
+              />
+              <ComparisonCard
+                title="Time Value"
+                type="pos"
+                items={[
+                  "The premium exceeding intrinsic value. It is the price of potential.",
+                  "Captures volatility value (future gains) and interest rate value (interest on deferred capital)."
+                ]}
+              />
+            </ComparisonGrid>
+          </section>
+
+          {/* Section 2: Decision Rule */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Calculator className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Decision Rule &amp; Critical Stock Price</h2>
             </div>
-          </ContentCard>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              A rational investor should exercise an American call option early if, and only if, the dividend to be gained is greater than 
+              the time value of the option to be forfeited. This condition is most likely met when the option is deep in-the-money, 
+              where its time value is minimal.
+            </p>
 
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 3: Applying the Black-Scholes Framework: Black&apos;s Approximation</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                The standard <Highlight>Black-Scholes-Merton (BSM) model</Highlight> is for European options and doesn&apos;t natively handle early exercise 
-                or discrete dividends. Fischer Black proposed a &ldquo;<Highlight>pseudo-American</Highlight>&rdquo; valuation method that approximates the American call&apos;s 
-                value by comparing two scenarios:
-              </p>
-              <ul className="list-disc list-inside space-y-2 pl-4">
-                <li>
-                  <b>Scenario 1 (Hold):</b> Value the option as a European call on an adjusted stock price <InlineMath math="S' = S - \text{PV}(D)" />, held to original expiration.
-                  <MathBlock math="C_{\text{hold}} = BS(S', K, T, r, \sigma)" />
-                </li>
-                <li>
-                  <b>Scenario 2 (Exercise):</b> Value the option as a European call that expires just before the ex-dividend date, <InlineMath math="t_d" />.
-                  <MathBlock math="C_{\text{exercise\_timing}} = BS(S, K, t_d, r, \sigma)" />
-                </li>
-              </ul>
-              <p>
-                The American call&apos;s value is the <Highlight>maximum of these two scenarios</Highlight>, modeling the rational investor&apos;s choice.
-              </p>
-              <MathBlock math="C_{\text{American}} \approx \max(C_{\text{hold}}, C_{\text{exercise\_timing}})" />
+            <FormulaPanel 
+              title="Early Exercise Condition"
+              formula="D > \\text{Time Value of Call}"
+            />
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed my-8">
+              If exercise is optimal, it should be done immediately prior to the stock going ex-dividend. 
+              This maximizes the time value preserved up to that point. There exists a critical stock price, S*, where an investor is indifferent 
+              between exercising and holding. It is found by solving:
+            </p>
+
+            <FormulaPanel 
+              title="Critical Stock Price (Indifference Point)"
+              formula="S^* - K = C_{\\text{European}}(S^* - D, T - t_d)"
+            />
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mt-8 mb-6">
+              If the current stock price <InlineMath math="S > S^*" />, early exercise is the optimal action. 
+              The following table illustrates this decision process.
+            </p>
+
+            <div className="overflow-x-auto my-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm min-w-0">
+              <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-gray-900">
+                <thead className="bg-slate-50 dark:bg-slate-900/50">
+                  <tr>
+                    {table1Headers.map((header, index) => (
+                      <th key={index} scope="col" className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
+                  {table1Data.map((row, rowIndex) => (
+                    <tr key={rowIndex} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors duration-200">
+                      {row.map((cell, cellIndex) => (
+                        <td key={cellIndex} className={`px-6 py-4 text-sm ${
+                          cell.startsWith("EXERCISE") ? "text-[#1D8A70] dark:text-[#3CBF9C] font-bold" : 
+                          cell.startsWith("HOLD") ? "text-slate-800 dark:text-slate-200 font-bold" : ""
+                        }`}>
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </ContentCard>
-        </section>
+          </section>
 
-        {/* Part II: Monte Carlo Simulation */}
-        <section id="part2" className="mt-20">
-          <SectionTitle 
-            icon={<CalculatorIcon />}
-            title="Part II: Monte Carlo Simulation"
-            subtitle="Estimating early exercise confidence with computational methods."
-          />
-
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 4 & 5: Simulation and the Longstaff-Schwartz Method</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                <Highlight>Monte Carlo simulation</Highlight> models uncertainty by generating thousands of possible future price paths for an asset. 
-                For options, we simulate stock prices using <Highlight>Geometric Brownian Motion (GBM)</Highlight> in a <Highlight>risk-neutral world</Highlight>.
-              </p>
-              <MathBlock math="S_{t+\Delta t} = S_t \exp\left( \left( r - \frac{1}{2}\sigma^2 \right)\Delta t + \sigma \varepsilon \sqrt{\Delta t} \right)" />
-              <p>
-                The challenge is that simulation is <Highlight>forward-looking</Highlight>, while the American option decision requires <Highlight>backward induction</Highlight>. 
-                The <Highlight>Longstaff-Schwartz Method (LSM)</Highlight> solves this. It works backward from maturity, using least-squares regression at each step 
-                to estimate the option&apos;s &ldquo;<Highlight>continuation value</Highlight>&rdquo; (the expected value of holding it). It then compares this to the immediate 
-                exercise value to determine the optimal strategy for each simulated path.
-              </p>
+          {/* Section 3: BSM & Black's Approximation */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <LineChart className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Applying the Black-Scholes Framework</h2>
             </div>
-          </ContentCard>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              The standard Black-Scholes-Merton (BSM) model is for European options and doesn't natively handle early exercise 
+              or discrete dividends. Fischer Black proposed a "pseudo-American" valuation method that approximates the American call's 
+              value by comparing two scenarios:
+            </p>
 
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 6: Estimating the Confidence of Early Exercise</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                We can rigorously define the &quot;Confidence of Early Exercise&quot; as the estimated <Highlight>risk-neutral probability</Highlight> that exercising early 
-                is the optimal strategy. This is calculated directly from the LSM simulation results as the proportion of paths where exercise was deemed optimal:
-              </p>
-              <MathBlock math="P_{\text{exercise}} = \frac{N_{\text{exercise}}}{N_{\text{total}}}" />
-              <p>
-                Where <InlineMath math="N_{\text{exercise}}" /> is the number of simulated paths where LSM determined exercise was optimal at the ex-dividend date. 
-                To quantify the uncertainty of this estimate, we construct a 95% <Highlight>confidence interval</Highlight>:
-              </p>
-              <MathBlock math="P_{\text{exercise}} \pm 1.96 \times \sqrt{\frac{P_{\text{exercise}}(1 - P_{\text{exercise}})}{N_{\text{total}}}}" />
-              <p>
-                This provides a statistically robust range for the true probability of early exercise. A high probability (e.g., 99%) gives a trader strong confidence, 
-                while a probability near 50% indicates the decision is highly uncertain.
-              </p>
+            <div className="space-y-6 mb-8">
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-4 text-lg">Scenario 1 (Hold)</h4>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">Value the option as a European call on an adjusted stock price <InlineMath math="S' = S - \text{PV}(D)" />, held to original expiration.</p>
+                <div className="px-3 py-1.5 rounded-xl font-mono text-sm font-bold inline-flex bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-transparent">
+                  <InlineMath math="C_{\text{hold}} = BS(S', K, T, r, \sigma)" />
+                </div>
+              </div>
+              
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-4 text-lg">Scenario 2 (Exercise)</h4>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">Value the option as a European call that expires just before the ex-dividend date, <InlineMath math="t_d" />.</p>
+                <div className="px-3 py-1.5 rounded-xl font-mono text-sm font-bold inline-flex bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-transparent">
+                  <InlineMath math="C_{\text{exercise\_timing}} = BS(S, K, t_d, r, \sigma)" />
+                </div>
+              </div>
             </div>
-          </ContentCard>
-        </section>
 
-        {/* Part III: Synthesis */}
-        <section id="part3" className="mt-20">
-          <SectionTitle 
-            icon={<ChartIcon />}
-            title="Part III: Synthesis and Critical Analysis"
-            subtitle="Integrating models and understanding their limitations."
-          />
+            <FormulaPanel 
+              title="Black's Approximation"
+              formula="C_{\\text{American}} \\approx \\max(C_{\\text{hold}}, C_{\\text{exercise\\_timing}})"
+              legend={[
+                { label: "Result", value: "The American call's value is the maximum of these two scenarios, modeling the rational investor's choice." }
+              ]}
+            />
+          </section>
 
-          <ContentCard>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Section 7: Integrated Decision-Making and Model Limitations</h3>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Black&apos;s Approximation and LSM simulation are <Highlight>complementary tools</Highlight>. An analyst can use the former for a quick assessment 
-                and the latter for a deep, probabilistic analysis. It&apos;s crucial to acknowledge the models&apos; assumptions:
-              </p>
-              <ul className="list-disc list-inside space-y-3 pl-4">
-                <li>
-                  <b>Geometric Brownian Motion (GBM):</b> The assumption of constant volatility is a major simplification. 
-                  Real-world volatility is itself stochastic, leading to phenomena like the &ldquo;<Highlight>volatility smile</Highlight>&rdquo;.
-                </li>
-                <li>
-                  <b>Longstaff-Schwartz Method (LSM):</b> The accuracy is sensitive to the choice of <Highlight>basis functions</Highlight> and the number of time steps. 
-                  However, its true power lies in overcoming the &ldquo;<Highlight>curse of dimensionality</Highlight>.&rdquo; While models like binomial trees become computationally 
-                  impractical for options on multiple assets, Monte Carlo methods are largely independent of the problem&apos;s dimensionality. 
-                  This makes LSM an <Highlight>enabling technology</Highlight> in modern quantitative finance.
-                </li>
-              </ul>
+          {/* Section 4: Monte Carlo Simulation */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Monte Carlo Simulation &amp; Longstaff-Schwartz</h2>
             </div>
-          </ContentCard>
-        </section>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              Monte Carlo simulation models uncertainty by generating thousands of possible future price paths for an asset. 
+              For options, we simulate stock prices using Geometric Brownian Motion (GBM) in a risk-neutral world.
+            </p>
+
+            <FormulaPanel 
+              formula="S_{t+\\Delta t} = S_t \\exp\\left( \\left( r - \\frac{1}{2}\\sigma^2 \\right)\\Delta t + \\sigma \\varepsilon \\sqrt{\\Delta t} \\right)"
+            />
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed my-8">
+              The challenge is that simulation is <Jargon term="Forward-Looking">starts at t=0 and models paths into the future</Jargon>, while the American option decision requires <Jargon term="Backward Induction">working backwards from expiration to determine optimal early exercise boundaries at each prior step</Jargon>. 
+              The Longstaff-Schwartz Method (LSM) solves this. It works backward from maturity, using least-squares regression at each step 
+              to estimate the option's continuation value (the expected value of holding it). It then compares this to the immediate 
+              exercise value to determine the optimal strategy for each simulated path.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-6 font-serif">Estimating the Confidence of Early Exercise</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              We can rigorously define the "Confidence of Early Exercise" as the estimated risk-neutral probability that exercising early 
+              is the optimal strategy. This is calculated directly from the LSM simulation results as the proportion of paths where exercise was deemed optimal:
+            </p>
+
+            <FormulaPanel 
+              formula="P_{\\text{exercise}} = \\frac{N_{\\text{exercise}}}{N_{\\text{total}}}"
+              legend={[
+                { label: "N_exercise", value: "Number of simulated paths where LSM determined exercise was optimal at the ex-dividend date" }
+              ]}
+            />
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed my-8">
+              To quantify the uncertainty of this estimate, we construct a 95% confidence interval. A high probability (e.g., 99%) gives a trader strong confidence, 
+              while a probability near 50% indicates the decision is highly uncertain.
+            </p>
+
+            <FormulaPanel 
+              formula="P_{\\text{exercise}} \\pm 1.96 \\times \\sqrt{\\frac{P_{\\text{exercise}}(1 - P_{\\text{exercise}})}{N_{\\text{total}}}}"
+            />
+          </section>
+
+          {/* Section 5: Synthesis */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Synthesis and Critical Analysis</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              Black's Approximation and LSM simulation are complementary tools. An analyst can use the former for a quick assessment 
+              and the latter for a deep, probabilistic analysis. It's crucial to acknowledge the models' assumptions:
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 min-w-0">
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-3 text-lg">Geometric Brownian Motion (GBM)</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  The assumption of constant volatility is a major simplification. 
+                  Real-world volatility is itself stochastic, leading to phenomena like the volatility smile.
+                </p>
+              </div>
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-3 text-lg">Longstaff-Schwartz Method (LSM)</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Its true power lies in overcoming the "curse of dimensionality." While models like binomial trees become computationally 
+                  impractical for options on multiple assets, Monte Carlo methods are largely independent of the problem's dimensionality. 
+                  This makes LSM an enabling technology in modern quantitative finance.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </ArticleFrame>
   );
