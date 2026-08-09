@@ -7,8 +7,9 @@ import {
   generateSEOKeywords 
 } from './article-utils';
 
+import { SITE_URL } from './site';
+
 // RSS feed configuration
-const SITE_URL = 'https://sophie-ai-finance.com';
 const SITE_NAME = "SOPHIE's Daddy Quant Blog";
 const SITE_DESCRIPTION = 'Advanced quantitative finance, options trading strategies, and market analysis for sophisticated investors';
 const SITE_AUTHOR = "SOPHIE's Daddy Quant Blog";

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     openGraph: {
       title: fullTitle,
       description,
-      url: `https://sophie-ai-finance.com/quant/topics/${subtopic}`,
+      url: `https://www.sophie-ai-finance.com/quant/topics/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/quant/topics/${subtopic}`,
+      canonical: `https://www.sophie-ai-finance.com/quant/topics/${subtopic}`,
     },
   };
 }

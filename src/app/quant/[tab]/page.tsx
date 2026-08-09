@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
     openGraph: {
       title: fullTitle,
       description: baseMetadata.description || 'Master quantitative finance fundamentals',
-      url: `https://sophie-ai-finance.com/quant/${tab}`,
+      url: `https://www.sophie-ai-finance.com/quant/${tab}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/quant/${tab}`,
+      canonical: `https://www.sophie-ai-finance.com/quant/${tab}`,
     },
   };
 }

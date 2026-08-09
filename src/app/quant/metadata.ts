@@ -7,7 +7,7 @@ export const quantMetadata: Metadata = {
   openGraph: {
     title: 'Quantitative Finance Education | SOPHIE\'s Daddy Quant Blog',
     description: 'Master quantitative finance concepts including Monte Carlo simulation, machine learning applications, and quantitative trading strategies.',
-    url: 'https://sophie-ai-finance.com/quant',
+    url: 'https://www.sophie-ai-finance.com/quant',
     siteName: 'SOPHIE\'s Daddy Quant Blog',
     type: 'website',
   },
@@ -18,6 +18,6 @@ export const quantMetadata: Metadata = {
     site: '@sophies_daddy',
   },
   alternates: {
-    canonical: 'https://sophie-ai-finance.com/quant',
+    canonical: 'https://www.sophie-ai-finance.com/quant',
   },
 };

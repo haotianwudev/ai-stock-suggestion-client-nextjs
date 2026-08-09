@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
     openGraph: {
       title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
-      url: `https://sophie-ai-finance.com/option/${tab}`,
+      url: `https://www.sophie-ai-finance.com/option/${tab}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tab: stri
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/option/${tab}`,
+      canonical: `https://www.sophie-ai-finance.com/option/${tab}`,
     },
   };
 }

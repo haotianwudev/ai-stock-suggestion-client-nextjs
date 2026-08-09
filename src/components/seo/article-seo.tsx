@@ -31,7 +31,7 @@ export function generateArticleMetadata(article: Article): Metadata {
 
   const title = `${article.title} | SOPHIE Daddy Quant Blog`;
   const description = article.description;
-  const url = `https://sophie-ai-finance.com/articles/${article.slug}`;
+  const url = `https://www.sophie-ai-finance.com/articles/${article.slug}`;
   const imageUrl = article.imageUrl || '/images/agents/SOPHIE.png';
 
   return {
@@ -105,7 +105,7 @@ export function createArticleJsonLd(article: Article) {
     dateModified: new Date(article.date).toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://sophie-ai-finance.com/articles/${article.slug}`,
+      '@id': `https://www.sophie-ai-finance.com/articles/${article.slug}`,
     },
     articleSection: article.options ? 'Options Trading' : 'Stock Analysis',
     keywords: [

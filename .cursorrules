@@ -105,7 +105,7 @@ const currentArticle = articles.find(article => article.slug === 'your-article-s
 
 #### 9.1 Branding Standards
 - **Site Name**: "SOPHIE Daddy Quant Blog"
-- **Domain**: https://sophie-ai-finance.com
+- **Domain**: https://www.sophie-ai-finance.com
 - **Author**: "SOPHIE Daddy Quant Blog"
 - **Publisher**: "SOPHIE Daddy Quant Blog"
 - **Twitter Handle**: @sophies_daddy

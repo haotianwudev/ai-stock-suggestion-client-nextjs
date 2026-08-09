@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
     openGraph: {
       title: fullTitle,
       description: baseMetadata.description || 'Master options trading fundamentals',
-      url: `https://sophie-ai-finance.com/option/topics/${subtopic}`,
+      url: `https://www.sophie-ai-finance.com/option/topics/${subtopic}`,
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subtopic:
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: `https://sophie-ai-finance.com/option/topics/${subtopic}`,
+      canonical: `https://www.sophie-ai-finance.com/option/topics/${subtopic}`,
     },
   };
 }

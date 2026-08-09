@@ -334,7 +334,7 @@ studyGuide: {
     },
     {
       text: "How to understand Greeks",
-      url: "https://sophie-ai-finance.com/article",
+      url: "https://www.sophie-ai-finance.com/article",
       videoUrl: "https://youtu.be/detailed-tutorial",      // Custom video for this item
       visualGuideUrl: "https://i.imgur.com/detailed.jpg"  // Custom infographic for this item
     },

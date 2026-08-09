@@ -3,9 +3,9 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://sophie-ai-finance.com
+Host: https://www.sophie-ai-finance.com
 
 # Sitemaps
-Sitemap: https://sophie-ai-finance.com/sitemap.xml
-Sitemap: https://sophie-ai-finance.com/rss.xml
-Sitemap: https://sophie-ai-finance.com/feed.xml
+Sitemap: https://www.sophie-ai-finance.com/sitemap.xml
+Sitemap: https://www.sophie-ai-finance.com/rss.xml
+Sitemap: https://www.sophie-ai-finance.com/feed.xml

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Trending Stocks & Tutorials | Stock & Investment | SOPHIE\'s Daddy Quant Blog',
     description: 'Pick a trending stock to see comprehensive analysis, AI agent suggestions, and tutorials.',
-    url: 'https://sophie-ai-finance.com/stock/trending',
+    url: 'https://www.sophie-ai-finance.com/stock/trending',
     siteName: 'SOPHIE\'s Daddy Quant Blog',
     type: 'website',
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     site: '@sophies_daddy',
   },
   alternates: {
-    canonical: 'https://sophie-ai-finance.com/stock/trending',
+    canonical: 'https://www.sophie-ai-finance.com/stock/trending',
   },
 };
 

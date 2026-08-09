@@ -87,7 +87,7 @@ export function StockStructuredData({ ticker, company, stockData }: StockStructu
     }),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://sophie-ai-finance.com/stock/${ticker}`,
+      '@id': `https://www.sophie-ai-finance.com/stock/${ticker}`,
     },
   };
 
@@ -113,19 +113,19 @@ export function StockBreadcrumbStructuredData({ ticker, companyName }: StockBrea
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://sophie-ai-finance.com',
+        item: 'https://www.sophie-ai-finance.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Stock Analysis',
-        item: 'https://sophie-ai-finance.com/#stock-analysis',
+        item: 'https://www.sophie-ai-finance.com/#stock-analysis',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${ticker} - ${companyName || 'Stock Analysis'}`,
-        item: `https://sophie-ai-finance.com/stock/${ticker}`,
+        item: `https://www.sophie-ai-finance.com/stock/${ticker}`,
       },
     ],
   };
@@ -146,7 +146,7 @@ export function generateStockMetadata(
   const companyName = company?.name || ticker;
   const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE Daddy Quant Blog`;
   const description = `Comprehensive analysis of ${ticker} (${companyName}) stock with AI-powered insights from SOPHIE. Technical analysis, fundamentals, sentiment analysis, and expert AI agent recommendations.`;
-  const url = `https://sophie-ai-finance.com/stock/${ticker}`;
+  const url = `https://www.sophie-ai-finance.com/stock/${ticker}`;
   const imageUrl = '/images/agents/SOPHIE.png';
 
   const keywords = [
@@ -259,8 +259,8 @@ export function createOrganizationStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: "SOPHIE Daddy Quant Blog",
-    url: 'https://sophie-ai-finance.com',
-    logo: 'https://sophie-ai-finance.com/images/agents/SOPHIE.png',
+    url: 'https://www.sophie-ai-finance.com',
+    logo: 'https://www.sophie-ai-finance.com/images/agents/SOPHIE.png',
     description: 'AI-powered stock analysis and investment education platform featuring SOPHIE and legendary investor insights.',
     foundingDate: '2025',
     sameAs: [
@@ -270,7 +270,7 @@ export function createOrganizationStructuredData() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      url: 'https://sophie-ai-finance.com',
+      url: 'https://www.sophie-ai-finance.com',
     },
     areaServed: 'Worldwide',
     hasOfferCatalog: {
@@ -303,13 +303,13 @@ export function createWebSiteStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: "SOPHIE Daddy Quant Blog",
-    url: 'https://sophie-ai-finance.com',
+    url: 'https://www.sophie-ai-finance.com',
     description: 'AI-powered stock analysis and investment education platform',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://sophie-ai-finance.com/stock/{search_term_string}',
+        urlTemplate: 'https://www.sophie-ai-finance.com/stock/{search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -343,7 +343,7 @@ export function createNavigationStructuredData() {
         position: 1,
         item: {
           '@type': 'WebPage',
-          '@id': 'https://sophie-ai-finance.com',
+          '@id': 'https://www.sophie-ai-finance.com',
           name: 'Home',
           description: 'AI-powered stock analysis and investment education',
         },
@@ -353,7 +353,7 @@ export function createNavigationStructuredData() {
         position: 2,
         item: {
           '@type': 'WebPage',
-          '@id': 'https://sophie-ai-finance.com/trending',
+          '@id': 'https://www.sophie-ai-finance.com/trending',
           name: 'Trending Stocks',
           description: 'Currently trending stocks and market analysis',
         },
@@ -363,7 +363,7 @@ export function createNavigationStructuredData() {
         position: 3,
         item: {
           '@type': 'WebPage',
-          '@id': 'https://sophie-ai-finance.com/option',
+          '@id': 'https://www.sophie-ai-finance.com/option',
           name: 'Options Trading',
           description: 'Options trading strategies and analysis',
         },
@@ -388,7 +388,7 @@ export function generateEnhancedStockMetadata(
   const companyName = company?.name || ticker;
   const title = `${ticker} Stock Analysis - ${companyName} | SOPHIE Daddy Quant Blog`;
   const description = `${ticker} (${companyName}) comprehensive stock analysis with AI insights. Technical analysis, fundamentals, sentiment analysis, and expert recommendations. Updated ${new Date().toLocaleDateString()}.`;
-  const url = `https://sophie-ai-finance.com/stock/${ticker}`;
+  const url = `https://www.sophie-ai-finance.com/stock/${ticker}`;
   const imageUrl = '/images/agents/SOPHIE.png';
   
   const currentPrice = stockData?.prices && stockData.prices.length > 0 

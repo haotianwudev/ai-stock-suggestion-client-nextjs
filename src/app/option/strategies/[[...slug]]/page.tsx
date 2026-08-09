@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
       openGraph: {
         title: `${strategy.name} Strategy | SOPHIE's Daddy Quant Blog`,
         description: strategy.description,
-        url: `https://sophie-ai-finance.com/option/strategies/${strategyId}`,
+        url: `https://www.sophie-ai-finance.com/option/strategies/${strategyId}`,
         siteName: 'SOPHIE\'s Daddy Quant Blog',
         type: 'website',
       },
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
         site: '@sophies_daddy',
       },
       alternates: {
-        canonical: `https://sophie-ai-finance.com/option/strategies/${strategyId}`,
+        canonical: `https://www.sophie-ai-finance.com/option/strategies/${strategyId}`,
       },
     };
   }
@@ -106,7 +106,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
     openGraph: {
       title: 'Options Strategies Explorer | SOPHIE\'s Daddy Quant Blog',
       description: 'Explore a comprehensive taxonomy of common options strategies.',
-      url: 'https://sophie-ai-finance.com/option/strategies',
+      url: 'https://www.sophie-ai-finance.com/option/strategies',
       siteName: 'SOPHIE\'s Daddy Quant Blog',
       type: 'website',
     },
@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
       site: '@sophies_daddy',
     },
     alternates: {
-      canonical: 'https://sophie-ai-finance.com/option/strategies',
+      canonical: 'https://www.sophie-ai-finance.com/option/strategies',
     },
   };
 }

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://sophie-ai-finance.com',
+  siteUrl: 'https://www.sophie-ai-finance.com',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -10,9 +10,9 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://sophie-ai-finance.com/sitemap.xml',
-      'https://sophie-ai-finance.com/rss.xml',
-      'https://sophie-ai-finance.com/feed.xml',
+      'https://www.sophie-ai-finance.com/sitemap.xml',
+      'https://www.sophie-ai-finance.com/rss.xml',
+      'https://www.sophie-ai-finance.com/feed.xml',
     ],
   },
   exclude: ['/api/*'],

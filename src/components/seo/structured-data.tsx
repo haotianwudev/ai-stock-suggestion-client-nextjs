@@ -27,7 +27,7 @@ export function StructuredData({ article }: StructuredDataProps) {
     dateModified: new Date(article.date).toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://sophie-ai-finance.com/articles/${article.slug}`,
+      '@id': `https://www.sophie-ai-finance.com/articles/${article.slug}`,
     },
     articleSection: article.options ? 'Options Trading' : 'Stock Analysis',
     keywords: [
@@ -77,19 +77,19 @@ export function BreadcrumbStructuredData({ articleTitle, articleSlug }: Breadcru
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://sophie-ai-finance.com',
+        item: 'https://www.sophie-ai-finance.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Articles',
-        item: 'https://sophie-ai-finance.com/#articles',
+        item: 'https://www.sophie-ai-finance.com/#articles',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: articleTitle,
-        item: `https://sophie-ai-finance.com/articles/${articleSlug}`,
+        item: `https://www.sophie-ai-finance.com/articles/${articleSlug}`,
       },
     ],
   };

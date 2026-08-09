@@ -3,6 +3,7 @@ import { Article } from '@/data/articles/types';
 import { BaseConfig, ResolvedStudyGuideItem, StudyGuideItem } from '@/components/shared/config-types';
 import { Strategy } from '@/components/options/strategy-config';
 import { extractYouTubeId } from '@/lib/youtube';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * Shared utility functions for article filtering and processing
@@ -85,7 +86,7 @@ export function getPublishedArticleStats() {
 }
 
 // Generate article URL (used by RSS, sitemap, etc.)
-export function getArticleUrl(article: Article, baseUrl: string = 'https://sophie-ai-finance.com'): string {
+export function getArticleUrl(article: Article, baseUrl: string = SITE_URL): string {
   // For video articles, link directly to YouTube
   if (article.isVideo && article.youtubeUrl) {
     return article.youtubeUrl;
