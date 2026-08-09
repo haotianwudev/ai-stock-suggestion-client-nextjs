@@ -17,8 +17,8 @@ const Section = ({ title, subtitle, children, className = "", id = "" }: Section
   <section id={id} className={`py-16 px-4 md:px-8 ${className}`}>
     <div className="max-w-6xl mx-auto">
       <div className="mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">{title}</h2>
-        {subtitle && <p className="text-lg text-slate-600 max-w-2xl mx-auto">{subtitle}</p>}
+        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white mb-4">{title}</h2>
+        {subtitle && <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">{subtitle}</p>}
       </div>
       {children}
     </div>
@@ -34,16 +34,16 @@ interface CardProps {
 
 const Card = ({ title, icon: Icon, children, color = "blue" }: CardProps) => {
   const colorClasses: Record<string, string> = {
-    blue: "bg-blue-50 border-blue-200 text-blue-800 icon-blue-600",
-    emerald: "bg-emerald-50 border-emerald-200 text-emerald-800 icon-emerald-600",
-    rose: "bg-rose-50 border-rose-200 text-rose-800 icon-rose-600",
-    amber: "bg-amber-50 border-amber-200 text-amber-800 icon-amber-600",
-    violet: "bg-violet-50 border-violet-200 text-violet-800 icon-violet-600",
-    indigo: "bg-indigo-50 border-indigo-200 text-indigo-800 icon-indigo-600",
+    blue: "bg-blue-50 border-blue-200 text-blue-800 icon-blue-600 dark:bg-blue-900/10 dark:border-blue-900/30 dark:text-blue-100",
+    emerald: "bg-emerald-50 border-emerald-200 text-emerald-800 icon-emerald-600 dark:bg-emerald-900/10 dark:border-emerald-900/30 dark:text-emerald-100",
+    rose: "bg-rose-50 border-rose-200 text-rose-800 icon-rose-600 dark:bg-rose-900/10 dark:border-rose-900/30 dark:text-rose-100",
+    amber: "bg-amber-50 border-amber-200 text-amber-800 icon-amber-600 dark:bg-amber-900/10 dark:border-amber-900/30 dark:text-amber-100",
+    violet: "bg-violet-50 border-violet-200 text-violet-800 icon-violet-600 dark:bg-violet-900/10 dark:border-violet-900/30 dark:text-violet-100",
+    indigo: "bg-indigo-50 border-indigo-200 text-indigo-800 icon-indigo-600 dark:bg-indigo-900/10 dark:border-indigo-900/30 dark:text-indigo-100",
   };
   
   const selected = colorClasses[color] || colorClasses.blue;
-  const iconColor = selected.split(" ").find((c: string) => c.startsWith("icon-"))?.replace("icon-", "text-") || "text-blue-600";
+  const iconColor = selected.split(" ").find((c: string) => c.startsWith("icon-"))?.replace("icon-", "text-") || "text-blue-600 dark:text-blue-400";
   
   return (
     <div className={`p-6 rounded-2xl border-2 hover:shadow-lg transition-shadow duration-300 ${selected.split(" icon-")[0]} h-full flex flex-col`}>
@@ -51,7 +51,7 @@ const Card = ({ title, icon: Icon, children, color = "blue" }: CardProps) => {
         {Icon && <Icon className={`w-8 h-8 ${iconColor}`} />}
         <h3 className="text-xl font-bold">{title}</h3>
       </div>
-      <div className="text-slate-700 leading-relaxed text-sm md:text-base flex-grow">
+      <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base flex-grow">
         {children}
       </div>
     </div>
@@ -75,7 +75,7 @@ const ScenarioVisualizer = () => {
       label: "Bull Market",
       desc: "Stock rallies early. The product 'Autocalls' (terminates) immediately.",
       outcome: "Principal + Coupon returned. Reinvestment Risk.",
-      colors: { bg: 'bg-emerald-50', border: 'border-emerald-500', text: 'text-emerald-900', dot: 'bg-emerald-500', stroke: '#10b981' },
+      colors: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', border: 'border-emerald-500 dark:border-emerald-500/50', text: 'text-emerald-900 dark:text-emerald-300', dot: 'bg-emerald-500', stroke: '#10b981' },
       events: [
         { month: 1, price: 102, text: "Above Coupon Barrier: Coupon Paid" },
         { month: 2, price: 108, text: "Above Autocall Barrier: TERMINATED" }
@@ -86,7 +86,7 @@ const ScenarioVisualizer = () => {
       label: "Sideways Market",
       desc: "Stock fluctuates but stays within the 'Goldilocks' zone.",
       outcome: "Max Yield achieved. All coupons paid. Principal returned.",
-      colors: { bg: 'bg-blue-50', border: 'border-blue-500', text: 'text-blue-900', dot: 'bg-blue-500', stroke: '#3b82f6' },
+      colors: { bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'border-blue-500 dark:border-blue-500/50', text: 'text-blue-900 dark:text-blue-300', dot: 'bg-blue-500', stroke: '#3b82f6' },
       events: [
         { month: 3, price: 92, text: "Quarter 1: Coupon Paid" },
         { month: 6, price: 90, text: "Quarter 2: Coupon Paid" },
@@ -99,7 +99,7 @@ const ScenarioVisualizer = () => {
       label: "Bear Market",
       desc: "Stock crashes below the protection barrier (Knock-In).",
       outcome: "Capital Erosion. Loss matches stock performance 1:1.",
-      colors: { bg: 'bg-rose-50', border: 'border-rose-500', text: 'text-rose-900', dot: 'bg-rose-500', stroke: '#f43f5e' },
+      colors: { bg: 'bg-rose-50 dark:bg-rose-900/20', border: 'border-rose-500 dark:border-rose-500/50', text: 'text-rose-900 dark:text-rose-300', dot: 'bg-rose-500', stroke: '#f43f5e' },
       events: [
         { month: 4, price: 55, text: "Knock-In Breached! Protection Lost." },
         { month: 12, price: 35, text: "Maturity: Receive stock worth $35" }
@@ -116,18 +116,18 @@ const ScenarioVisualizer = () => {
     return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
   }).join(' ');
   return (
-    <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm transition-all duration-500">
+    <div className="bg-white dark:bg-[#14171B] p-6 rounded-3xl border border-slate-200 dark:border-white/10 shadow-sm transition-all duration-500">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-        <h3 className="text-xl font-bold flex items-center gap-2 text-slate-800">
-          <Activity className="w-6 h-6 text-indigo-600" /> Payoff Simulator
+        <h3 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-white">
+          <Activity className="w-6 h-6 text-indigo-600 dark:text-indigo-400" /> Payoff Simulator
         </h3>
-        <div className="flex bg-slate-100 p-1 rounded-lg mt-4 md:mt-0">
+        <div className="flex bg-slate-100 dark:bg-slate-800/50 p-1 rounded-lg mt-4 md:mt-0">
           {(Object.keys(scenarios) as Array<keyof typeof scenarios>).map(key => (
             <button
               key={key}
               onClick={() => setScenario(key)}
               className={`px-4 py-2 rounded-md text-sm font-bold transition-all ${
-                scenario === key ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-indigo-500'
+                scenario === key ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400'
               }`}
             >
               {scenarios[key].label}
@@ -139,10 +139,10 @@ const ScenarioVisualizer = () => {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Chart Area */}
         <div className="flex-1 relative">
-          <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto bg-slate-50 rounded-xl border border-slate-100">
+          <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto bg-slate-50 dark:bg-black/30 rounded-xl border border-slate-100 dark:border-white/5">
             {/* Grid Lines */}
             {[30, 60, 90, 120].map(y => (
-              <line key={y} x1={padding} y1={getY(y)} x2={width-padding} y2={getY(y)} stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4 4" />
+              <line key={y} x1={padding} y1={getY(y)} x2={width-padding} y2={getY(y)} stroke="currentColor" className="text-slate-200 dark:text-white/10" strokeWidth="1" strokeDasharray="4 4" />
             ))}
 
             {/* Barriers */}
@@ -160,7 +160,7 @@ const ScenarioVisualizer = () => {
 
             {/* Data Points */}
             {current.points.map((p, i) => (
-              <circle key={i} cx={getX(i, current.points.length)} cy={getY(p)} r="4" className="fill-white stroke-slate-400 stroke-2" />
+              <circle key={i} cx={getX(i, current.points.length)} cy={getY(p)} r="4" className="fill-white dark:fill-[#14171B] stroke-slate-400 dark:stroke-slate-500 stroke-2" />
             ))}
           </svg>
         </div>
@@ -171,32 +171,32 @@ const ScenarioVisualizer = () => {
             <p className={`text-sm opacity-80 mt-1 ${current.colors.text}`}>{current.desc}</p>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <h5 className="font-bold text-slate-700 text-sm mb-3 uppercase tracking-wide flex items-center gap-2">
+          <div className="bg-slate-50 dark:bg-black/30 p-4 rounded-xl border border-slate-200 dark:border-white/10">
+            <h5 className="font-bold text-slate-700 dark:text-slate-300 text-sm mb-3 uppercase tracking-wide flex items-center gap-2">
               <Clock className="w-4 h-4" /> Timeline
             </h5>
             <div className="space-y-4 relative pl-2">
               {/* Timeline Line */}
-              <div className="absolute top-2 left-[11px] bottom-2 w-0.5 bg-slate-200"></div>
+              <div className="absolute top-2 left-[11px] bottom-2 w-0.5 bg-slate-200 dark:bg-white/10"></div>
               {current.events.map((e, i) => (
                 <div key={i} className="flex gap-3 relative">
-                  <div className={`w-2.5 h-2.5 rounded-full mt-1.5 border-2 border-white shadow-sm shrink-0 ${current.colors.dot} z-10`}></div>
+                  <div className={`w-2.5 h-2.5 rounded-full mt-1.5 border-2 border-white dark:border-[#14171B] shadow-sm shrink-0 ${current.colors.dot} z-10`}></div>
                   <div>
-                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Price: {e.price}%</div>
-                    <div className="text-sm font-semibold text-slate-700 leading-tight">{e.text}</div>
+                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Price: {e.price}%</div>
+                    <div className="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight">{e.text}</div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="text-center p-3 rounded-lg font-bold text-sm bg-slate-800 text-white shadow-lg">
+          <div className="text-center p-3 rounded-lg font-bold text-sm bg-slate-800 dark:bg-white text-white dark:text-slate-900 shadow-lg">
             Result: {current.outcome}
           </div>
         </div>
       </div>
 
-      <p className="mt-6 text-xs text-slate-400 text-center flex justify-center items-center gap-2">
+      <p className="mt-6 text-xs text-slate-400 dark:text-slate-500 text-center flex justify-center items-center gap-2">
         <CheckCircle className="w-3 h-3" />
         Simulated based on standard market conditions. Past performance is not indicative of future results.
       </p>
@@ -266,21 +266,21 @@ export default function AutocallableGuide() {
       </header>
       {/* Intro Stats/Hook */}
       <div className="max-w-6xl mx-auto -mt-16 relative z-20 px-4">
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+        <div className="bg-white dark:bg-[#14171B] rounded-3xl shadow-xl border border-slate-100 dark:border-white/10 p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-white/10">
           <div className="text-center py-4">
-            <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Market Context</div>
-            <div className="text-2xl font-bold text-slate-800">"Muddle Through"</div>
-            <p className="text-slate-500 text-sm mt-2">Optimal when markets are flat or slightly bearish.</p>
+            <div className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">Market Context</div>
+            <div className="text-2xl font-bold text-slate-800 dark:text-white">"Muddle Through"</div>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">Optimal when markets are flat or slightly bearish.</p>
           </div>
           <div className="text-center py-4">
-            <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Risk Profile</div>
-            <div className="text-2xl font-bold text-slate-800">Short Volatility</div>
-            <p className="text-slate-500 text-sm mt-2">Profits from the fear premium (IV &gt; RV).</p>
+            <div className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">Risk Profile</div>
+            <div className="text-2xl font-bold text-slate-800 dark:text-white">Short Volatility</div>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">Profits from the fear premium (IV &gt; RV).</p>
           </div>
           <div className="text-center py-4">
-            <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Key Mechanism</div>
-            <div className="text-2xl font-bold text-slate-800">Barrier Options</div>
-            <p className="text-slate-500 text-sm mt-2">Down-and-In Puts create the "Cliff Risk".</p>
+            <div className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">Key Mechanism</div>
+            <div className="text-2xl font-bold text-slate-800 dark:text-white">Barrier Options</div>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">Down-and-In Puts create the "Cliff Risk".</p>
           </div>
         </div>
       </div>
@@ -353,72 +353,72 @@ export default function AutocallableGuide() {
         </div>
       </Section>
       {/* NEW: Pros vs Cons Matrix */}
-      <Section title="Pros & Cons Analysis" subtitle="A balanced view of why investors use them and where they get burned." className="bg-white">
+      <Section title="Pros & Cons Analysis" subtitle="A balanced view of why investors use them and where they get burned." className="bg-white dark:bg-black/20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Pros */}
-          <div className="bg-emerald-50/50 rounded-2xl p-8 border border-emerald-100">
+          <div className="bg-emerald-50/50 dark:bg-emerald-900/10 rounded-2xl p-8 border border-emerald-100 dark:border-emerald-500/20">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-emerald-100 p-3 rounded-full">
-                <CheckCircle className="w-6 h-6 text-emerald-600" />
+              <div className="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-full">
+                <CheckCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold text-emerald-900">The Advantages</h3>
+              <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">The Advantages</h3>
             </div>
             <ul className="space-y-4">
               <li className="flex gap-3">
-                <span className="font-bold text-emerald-600">High Yield:</span>
-                <span className="text-slate-700">Offers 8-15% coupons even when interest rates or dividend yields are low (1-3%).</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">High Yield:</span>
+                <span className="text-slate-700 dark:text-slate-300">Offers 8-15% coupons even when interest rates or dividend yields are low (1-3%).</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-bold text-emerald-600">Defined Buffer:</span>
-                <span className="text-slate-700">Protection against moderate market declines (e.g., market drops 30%, you still get 100% principal).</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">Defined Buffer:</span>
+                <span className="text-slate-700 dark:text-slate-300">Protection against moderate market declines (e.g., market drops 30%, you still get 100% principal).</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-bold text-emerald-600">Lower Volatility:</span>
-                <span className="text-slate-700">Due to the coupon structure, the note's market value often fluctuates less than the underlying stock (until the barrier is neared).</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">Lower Volatility:</span>
+                <span className="text-slate-700 dark:text-slate-300">Due to the coupon structure, the note's market value often fluctuates less than the underlying stock (until the barrier is neared).</span>
               </li>
             </ul>
           </div>
 
           {/* Cons */}
-          <div className="bg-rose-50/50 rounded-2xl p-8 border border-rose-100">
+          <div className="bg-rose-50/50 dark:bg-rose-900/10 rounded-2xl p-8 border border-rose-100 dark:border-rose-500/20">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-rose-100 p-3 rounded-full">
-                <XCircle className="w-6 h-6 text-rose-600" />
+              <div className="bg-rose-100 dark:bg-rose-900/30 p-3 rounded-full">
+                <XCircle className="w-6 h-6 text-rose-600 dark:text-rose-400" />
               </div>
-              <h3 className="text-2xl font-bold text-rose-900">The Disadvantages</h3>
+              <h3 className="text-2xl font-bold text-rose-900 dark:text-rose-100">The Disadvantages</h3>
             </div>
             <ul className="space-y-4">
               <li className="flex gap-3">
-                <span className="font-bold text-rose-600">Capped Upside:</span>
-                <span className="text-slate-700">If the market rallies 50%, you only get your coupon. Opportunity cost is high in bull markets.</span>
+                <span className="font-bold text-rose-600 dark:text-rose-400">Capped Upside:</span>
+                <span className="text-slate-700 dark:text-slate-300">If the market rallies 50%, you only get your coupon. Opportunity cost is high in bull markets.</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-bold text-rose-600">Credit Risk:</span>
-                <span className="text-slate-700">You are lending to the bank. If the issuer (e.g., Lehman Brothers) goes bankrupt, you lose everything, regardless of market performance.</span>
+                <span className="font-bold text-rose-600 dark:text-rose-400">Credit Risk:</span>
+                <span className="text-slate-700 dark:text-slate-300">You are lending to the bank. If the issuer (e.g., Lehman Brothers) goes bankrupt, you lose everything, regardless of market performance.</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-bold text-rose-600">Illiquidity:</span>
-                <span className="text-slate-700">Hard to sell before maturity. Secondary market spreads are wide and punitive.</span>
+                <span className="font-bold text-rose-600 dark:text-rose-400">Illiquidity:</span>
+                <span className="text-slate-700 dark:text-slate-300">Hard to sell before maturity. Secondary market spreads are wide and punitive.</span>
               </li>
             </ul>
           </div>
         </div>
       </Section>
       {/* NEW: Lifecycle Timeline */}
-      <div className="bg-slate-50 py-16 px-4">
+      <div className="bg-slate-50 dark:bg-black/30 py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Lifecycle of an Autocallable</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-800 dark:text-white">Lifecycle of an Autocallable</h2>
           <div className="relative">
             {/* Line */}
-            <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-1 bg-indigo-200 transform md:-translate-x-1/2"></div>
+            <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-1 bg-indigo-200 dark:bg-indigo-900/50 transform md:-translate-x-1/2"></div>
 
             {/* Step 1 */}
             <div className="relative flex flex-col md:flex-row items-center mb-12">
               <div className="md:w-1/2 md:pr-12 md:text-right pl-16 md:pl-0">
-                <h3 className="text-xl font-bold text-indigo-900">Trade Date (T=0)</h3>
-                <p className="text-slate-600">Strike prices are set. You deposit cash. The "Zero Coupon Bond" is purchased and Options are sold.</p>
+                <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100">Trade Date (T=0)</h3>
+                <p className="text-slate-600 dark:text-slate-300">Strike prices are set. You deposit cash. The "Zero Coupon Bond" is purchased and Options are sold.</p>
               </div>
-              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-indigo-600 rounded-full border-4 border-white flex items-center justify-center transform md:-translate-x-1/2 z-10">
+              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-indigo-600 dark:bg-indigo-500 rounded-full border-4 border-white dark:border-[#14171B] flex items-center justify-center transform md:-translate-x-1/2 z-10">
                 <Lock className="w-5 h-5 text-white" />
               </div>
               <div className="md:w-1/2 md:pl-12 hidden md:block"></div>
@@ -427,22 +427,22 @@ export default function AutocallableGuide() {
             {/* Step 2 */}
             <div className="relative flex flex-col md:flex-row items-center mb-12">
               <div className="md:w-1/2 md:pr-12 hidden md:block"></div>
-              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-white border-4 border-indigo-200 rounded-full flex items-center justify-center transform md:-translate-x-1/2 z-10">
+              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-white dark:bg-[#14171B] border-4 border-indigo-200 dark:border-indigo-500/50 rounded-full flex items-center justify-center transform md:-translate-x-1/2 z-10">
                 <RefreshCcw className="w-5 h-5 text-indigo-400" />
               </div>
               <div className="md:w-1/2 md:pl-12 pl-16 md:pl-0">
-                <h3 className="text-xl font-bold text-indigo-900">Observation Dates</h3>
-                <p className="text-slate-600">Quarterly or Monthly checks. <br/>1. Is Price &gt; Autocall? &rarr; <strong>Terminate & Pay.</strong><br/>2. Is Price &gt; Coupon Barrier? &rarr; <strong>Pay Coupon.</strong><br/>3. Else &rarr; <strong>No Pay (Store in Memory).</strong></p>
+                <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100">Observation Dates</h3>
+                <p className="text-slate-600 dark:text-slate-300">Quarterly or Monthly checks. <br/>1. Is Price &gt; Autocall? &rarr; <strong>Terminate & Pay.</strong><br/>2. Is Price &gt; Coupon Barrier? &rarr; <strong>Pay Coupon.</strong><br/>3. Else &rarr; <strong>No Pay (Store in Memory).</strong></p>
               </div>
             </div>
 
             {/* Step 3 */}
             <div className="relative flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 md:pr-12 md:text-right pl-16 md:pl-0">
-                <h3 className="text-xl font-bold text-indigo-900">Maturity (Final Observation)</h3>
-                <p className="text-slate-600">The moment of truth.<br/>- Above Barrier? Full Principal + Coupons.<br/>- Below Barrier? <strong>Physical Delivery of shares.</strong> Realized loss.</p>
+                <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100">Maturity (Final Observation)</h3>
+                <p className="text-slate-600 dark:text-slate-300">The moment of truth.<br/>- Above Barrier? Full Principal + Coupons.<br/>- Below Barrier? <strong>Physical Delivery of shares.</strong> Realized loss.</p>
               </div>
-              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-indigo-900 rounded-full border-4 border-white flex items-center justify-center transform md:-translate-x-1/2 z-10">
+              <div className="absolute left-2 md:left-1/2 w-12 h-12 bg-indigo-900 dark:bg-indigo-800 rounded-full border-4 border-white dark:border-[#14171B] flex items-center justify-center transform md:-translate-x-1/2 z-10">
                 <Unlock className="w-5 h-5 text-white" />
               </div>
               <div className="md:w-1/2 md:pl-12 hidden md:block"></div>
@@ -451,49 +451,49 @@ export default function AutocallableGuide() {
         </div>
       </div>
       {/* NEW: The Pricing Factors */}
-      <Section title="The Hidden Levers: Pricing" subtitle="Why do coupons change? Understanding the two main inputs." className="bg-white">
+      <Section title="The Hidden Levers: Pricing" subtitle="Why do coupons change? Understanding the two main inputs." className="bg-white dark:bg-black/20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-white/10">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-xl text-slate-700">Interest Rates</h3>
+              <h3 className="font-bold text-xl text-slate-700 dark:text-white">Interest Rates</h3>
               <Scale className="w-6 h-6 text-blue-500" />
             </div>
-            <div className="h-2 w-full bg-slate-200 rounded-full mb-4 overflow-hidden">
+            <div className="h-2 w-full bg-slate-200 dark:bg-white/10 rounded-full mb-4 overflow-hidden">
               <div className="h-full bg-blue-500 w-3/4"></div>
             </div>
-            <p className="text-slate-600"><strong>High Rates = Higher Coupons.</strong><br/>When rates are high (e.g., 5%), the Zero Coupon Bond component is cheaper to buy. This leaves <em>more</em> leftover budget to buy derivatives, allowing banks to offer juicy 12%+ yields.</p>
+            <p className="text-slate-600 dark:text-slate-300"><strong>High Rates = Higher Coupons.</strong><br/>When rates are high (e.g., 5%), the Zero Coupon Bond component is cheaper to buy. This leaves <em>more</em> leftover budget to buy derivatives, allowing banks to offer juicy 12%+ yields.</p>
           </div>
 
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-white/10">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-xl text-slate-700">Volatility (VIX)</h3>
+              <h3 className="font-bold text-xl text-slate-700 dark:text-white">Volatility (VIX)</h3>
               <BarChart2 className="w-6 h-6 text-rose-500" />
             </div>
-            <div className="h-2 w-full bg-slate-200 rounded-full mb-4 overflow-hidden">
+            <div className="h-2 w-full bg-slate-200 dark:bg-white/10 rounded-full mb-4 overflow-hidden">
               <div className="h-full bg-rose-500 w-2/3"></div>
             </div>
-            <p className="text-slate-600"><strong>High Volatility = Higher Coupons.</strong><br/>You are <em>selling</em> a Put option. When fear (VIX) is high, Put options are expensive. You get paid more premium for selling them, which translates to a higher coupon yield for you.</p>
+            <p className="text-slate-600 dark:text-slate-300"><strong>High Volatility = Higher Coupons.</strong><br/>You are <em>selling</em> a Put option. When fear (VIX) is high, Put options are expensive. You get paid more premium for selling them, which translates to a higher coupon yield for you.</p>
           </div>
         </div>
       </Section>
 
       {/* NEW: The Worst-Of Feature */}
-      <div className="bg-amber-50 py-16 px-4 border-y border-amber-100">
+      <div className="bg-amber-50 dark:bg-amber-950/20 py-16 px-4 border-y border-amber-100 dark:border-amber-900/30">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-start gap-6">
-            <div className="p-4 bg-amber-100 rounded-xl hidden md:block">
-              <Layers className="w-8 h-8 text-amber-600" />
+            <div className="p-4 bg-amber-100 dark:bg-amber-900/40 rounded-xl hidden md:block">
+              <Layers className="w-8 h-8 text-amber-600 dark:text-amber-400" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-amber-900 mb-4">The "Worst-Of" Trap (Correlation Risk)</h2>
-              <p className="text-lg text-amber-900/80 mb-6">Most modern notes are linked to a basket of 3 stocks (e.g., TSLA, NVDA, AAPL) or indices (SPX, RTY, SX5E). This drastically increases the yield, but also the risk.</p>
-              <div className="bg-white p-6 rounded-xl border border-amber-200 shadow-sm">
-                <h4 className="font-bold text-slate-800 mb-2">How it works:</h4>
-                <p className="text-slate-600 mb-4">Your return is determined solely by the <strong>worst performing asset</strong> in the basket.</p>
+              <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100 mb-4">The "Worst-Of" Trap (Correlation Risk)</h2>
+              <p className="text-lg text-amber-900/80 dark:text-amber-100/80 mb-6">Most modern notes are linked to a basket of 3 stocks (e.g., TSLA, NVDA, AAPL) or indices (SPX, RTY, SX5E). This drastically increases the yield, but also the risk.</p>
+              <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-amber-200 dark:border-amber-900/50 shadow-sm">
+                <h4 className="font-bold text-slate-800 dark:text-white mb-2">How it works:</h4>
+                <p className="text-slate-600 dark:text-slate-300 mb-4">Your return is determined solely by the <strong>worst performing asset</strong> in the basket.</p>
                 <div className="grid grid-cols-3 gap-2 text-center text-sm font-mono">
-                  <div className="bg-emerald-100 p-2 rounded text-emerald-800">AAPL: +10%</div>
-                  <div className="bg-emerald-100 p-2 rounded text-emerald-800">NVDA: +5%</div>
-                  <div className="bg-rose-100 p-2 rounded text-rose-800 border-2 border-rose-500">TSLA: -45%</div>
+                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded text-emerald-800 dark:text-emerald-400">AAPL: +10%</div>
+                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded text-emerald-800 dark:text-emerald-400">NVDA: +5%</div>
+                  <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded text-rose-800 dark:text-rose-400 border-2 border-rose-500">TSLA: -45%</div>
                 </div>
                 <p className="mt-4 text-sm text-rose-600 font-bold">Result: Even though 2/3 stocks are up, the note breaches the barrier because TSLA is down 45%. You lose capital.</p>
               </div>
@@ -502,118 +502,118 @@ export default function AutocallableGuide() {
         </div>
       </div>
       {/* Section 2: Under the Hood */}
-      <div className="bg-slate-100 py-16 px-4 md:px-8">
+      <div className="bg-slate-100 dark:bg-black/50 py-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Decomposing the "Black Box"</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">An autocallable isn't magic; it's a balanced equation. To understand the yield, follow the money. We engineer the return by stripping the product into three distinct financial instruments.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Decomposing the "Black Box"</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">An autocallable isn't magic; it's a balanced equation. To understand the yield, follow the money. We engineer the return by stripping the product into three distinct financial instruments.</p>
           </div>
 
           {/* The Financial Engineering Equation Visual */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-12">
-            <h3 className="text-xl font-bold text-slate-800 mb-8 border-b border-slate-100 pb-4">The Funding Equation: How 10% Yield is Created</h3>
+          <div className="bg-white dark:bg-[#14171B] rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-white/10 mb-12">
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-8 border-b border-slate-100 dark:border-white/10 pb-4">The Funding Equation: How 10% Yield is Created</h3>
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               {/* Left: Sources */}
               <div className="flex-1 space-y-4">
-                <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">Sources of Funds</div>
+                <div className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Sources of Funds</div>
                 
                 {/* Principal */}
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex justify-between items-center group hover:border-indigo-300 transition-all">
+                <div className="bg-slate-50 dark:bg-black/40 p-4 rounded-xl border border-slate-200 dark:border-white/10 flex justify-between items-center group hover:border-indigo-300 transition-all">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+                    <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
                       <DollarSign className="w-5 h-5"/>
                     </div>
                     <div>
-                      <div className="font-bold text-slate-700">Investor Principal</div>
-                      <div className="text-xs text-slate-500">Your initial investment</div>
+                      <div className="font-bold text-slate-700 dark:text-slate-300">Investor Principal</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">Your initial investment</div>
                     </div>
                   </div>
-                  <div className="font-mono font-bold text-slate-800">$100.00</div>
+                  <div className="font-mono font-bold text-slate-800 dark:text-white">$100.00</div>
                 </div>
 
                 {/* Plus Icon */}
                 <div className="flex justify-center">
-                  <div className="bg-slate-200 rounded-full p-1">
-                    <Plus className="w-4 h-4 text-slate-500"/>
+                  <div className="bg-slate-200 dark:bg-slate-800 rounded-full p-1">
+                    <Plus className="w-4 h-4 text-slate-500 dark:text-slate-400"/>
                   </div>
                 </div>
 
                 {/* The Short Put */}
-                <div className="bg-rose-50 p-4 rounded-xl border border-rose-100 flex justify-between items-center relative overflow-hidden group hover:shadow-md transition-all">
+                <div className="bg-rose-50 dark:bg-rose-900/10 p-4 rounded-xl border border-rose-100 dark:border-rose-900/30 flex justify-between items-center relative overflow-hidden group hover:shadow-md transition-all">
                   <div className="absolute top-0 left-0 w-1 h-full bg-rose-500"></div>
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-rose-100 text-rose-600 rounded-lg">
+                    <div className="p-2 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-lg">
                       <TrendingDown className="w-5 h-5"/>
                     </div>
                     <div>
-                      <div className="font-bold text-rose-800">Short Put Premium</div>
-                      <div className="text-xs text-rose-600/80">Selling downside risk (The "Engine")</div>
+                      <div className="font-bold text-rose-800 dark:text-rose-300">Short Put Premium</div>
+                      <div className="text-xs text-rose-600/80 dark:text-rose-400/80">Selling downside risk (The "Engine")</div>
                     </div>
                   </div>
-                  <div className="font-mono font-bold text-rose-700">+$6.50</div>
+                  <div className="font-mono font-bold text-rose-700 dark:text-rose-400">+$6.50</div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
-                  <span className="font-bold text-slate-600">Total Available Cash</span>
-                  <span className="font-mono font-bold text-emerald-600 text-lg">$106.50</span>
+                <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10 flex justify-between items-center">
+                  <span className="font-bold text-slate-600 dark:text-slate-300">Total Available Cash</span>
+                  <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 text-lg">$106.50</span>
                 </div>
               </div>
               {/* Center: Arrow */}
-              <div className="hidden lg:flex items-center justify-center text-slate-300">
+              <div className="hidden lg:flex items-center justify-center text-slate-300 dark:text-slate-600">
                 <ArrowRight className="w-8 h-8" />
               </div>
 
               {/* Right: Uses */}
               <div className="flex-1 space-y-4">
-                <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">Uses of Funds (Allocations)</div>
+                <div className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Uses of Funds (Allocations)</div>
                 
                 {/* Bond */}
-                <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 flex justify-between items-center group hover:shadow-md transition-all">
+                <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30 flex justify-between items-center group hover:shadow-md transition-all">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+                    <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg">
                       <Lock className="w-5 h-5"/>
                     </div>
                     <div>
-                      <div className="font-bold text-emerald-900">Zero Coupon Bond</div>
-                      <div className="text-xs text-emerald-700/80">Guarantees $100 back at maturity</div>
+                      <div className="font-bold text-emerald-900 dark:text-emerald-300">Zero Coupon Bond</div>
+                      <div className="text-xs text-emerald-700/80 dark:text-emerald-400/80">Guarantees $100 back at maturity</div>
                     </div>
                   </div>
-                  <div className="font-mono font-bold text-slate-700">-$94.00</div>
+                  <div className="font-mono font-bold text-slate-700 dark:text-slate-300">-$94.00</div>
                 </div>
 
                 {/* Minus Icon */}
                 <div className="flex justify-center">
-                  <div className="bg-slate-200 rounded-full p-1">
-                    <Plus className="w-4 h-4 text-slate-500"/>
+                  <div className="bg-slate-200 dark:bg-slate-800 rounded-full p-1">
+                    <Plus className="w-4 h-4 text-slate-500 dark:text-slate-400"/>
                   </div>
                 </div>
 
                 {/* Digital Option */}
-                <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex justify-between items-center group hover:shadow-md transition-all">
+                <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30 flex justify-between items-center group hover:shadow-md transition-all">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
                       <Zap className="w-5 h-5"/>
                     </div>
                     <div>
-                      <div className="font-bold text-blue-900">Digital Call Structure</div>
-                      <div className="text-xs text-blue-700/80">Pays the coupon if barrier holds</div>
+                      <div className="font-bold text-blue-900 dark:text-blue-300">Digital Call Structure</div>
+                      <div className="text-xs text-blue-700/80 dark:text-blue-400/80">Pays the coupon if barrier holds</div>
                     </div>
                   </div>
-                  <div className="font-mono font-bold text-slate-700">-$10.50</div>
+                  <div className="font-mono font-bold text-slate-700 dark:text-slate-300">-$10.50</div>
                 </div>
 
                 {/* Bank Fee */}
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex justify-between items-center opacity-70">
+                <div className="bg-slate-50 dark:bg-[#14171B] p-4 rounded-xl border border-slate-200 dark:border-white/10 flex justify-between items-center opacity-70">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-slate-200 text-slate-600 rounded-lg">
+                    <div className="p-2 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-lg">
                       <PieChart className="w-5 h-5"/>
                     </div>
                     <div>
-                      <div className="font-bold text-slate-700">Bank Fees/Margin</div>
-                      <div className="text-xs text-slate-500">Issuer profit</div>
+                      <div className="font-bold text-slate-700 dark:text-slate-300">Bank Fees/Margin</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-500">Issuer profit</div>
                     </div>
                   </div>
-                  <div className="font-mono font-bold text-slate-700">-$2.00</div>
+                  <div className="font-mono font-bold text-slate-700 dark:text-slate-300">-$2.00</div>
                 </div>
               </div>
             </div>
@@ -621,33 +621,33 @@ export default function AutocallableGuide() {
           {/* Component Deep Dive Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Component 1 */}
-            <div className="bg-white p-6 rounded-2xl border-t-4 border-emerald-500 shadow-sm hover:-translate-y-1 transition-transform">
-              <div className="h-12 w-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 text-emerald-600">
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border-t-4 border-emerald-500 dark:border-emerald-600 shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="h-12 w-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mb-4 text-emerald-600 dark:text-emerald-400">
                 <ShieldAlert className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">1. The Anchor</h4>
-              <div className="text-xs font-bold text-emerald-600 uppercase tracking-wide mb-3">Zero Coupon Bond</div>
-              <p className="text-slate-600 text-sm leading-relaxed">This is the safety belt. The bank takes ~$90-95 of your money and buys a safe bond that will grow back to $100 by maturity. This ensures that—absent a barrier breach—you get your principal back.</p>
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">1. The Anchor</h4>
+              <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-3">Zero Coupon Bond</div>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">This is the safety belt. The bank takes ~$90-95 of your money and buys a safe bond that will grow back to $100 by maturity. This ensures that—absent a barrier breach—you get your principal back.</p>
             </div>
 
             {/* Component 2 */}
-            <div className="bg-white p-6 rounded-2xl border-t-4 border-rose-500 shadow-sm hover:-translate-y-1 transition-transform">
-              <div className="h-12 w-12 bg-rose-100 rounded-xl flex items-center justify-center mb-4 text-rose-600">
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border-t-4 border-rose-500 dark:border-rose-600 shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="h-12 w-12 bg-rose-100 dark:bg-rose-900/30 rounded-xl flex items-center justify-center mb-4 text-rose-600 dark:text-rose-400">
                 <TrendingDown className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">2. The Engine</h4>
-              <div className="text-xs font-bold text-rose-600 uppercase tracking-wide mb-3">Short Put Option</div>
-              <p className="text-slate-600 text-sm leading-relaxed">The source of yield. You agree to take ownership of the stock if it crashes (Knock-In). By taking this risk, you "sell" volatility to the bank, generating the cash needed to buy the fancy coupons.</p>
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">2. The Engine</h4>
+              <div className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide mb-3">Short Put Option</div>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">The source of yield. You agree to take ownership of the stock if it crashes (Knock-In). By taking this risk, you "sell" volatility to the bank, generating the cash needed to buy the fancy coupons.</p>
             </div>
 
             {/* Component 3 */}
-            <div className="bg-white p-6 rounded-2xl border-t-4 border-blue-500 shadow-sm hover:-translate-y-1 transition-transform">
-              <div className="h-12 w-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-blue-600">
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border-t-4 border-blue-500 dark:border-blue-600 shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="h-12 w-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
                 <Layers className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">3. The Payout</h4>
-              <div className="text-xs font-bold text-blue-600 uppercase tracking-wide mb-3">Digital Barrier Options</div>
-              <p className="text-slate-600 text-sm leading-relaxed">The feature. The bank uses the cash from the Put to buy a "binary" option. It pays $X if the stock is above Level Y. This creates the "all or nothing" coupon behavior.</p>
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">3. The Payout</h4>
+              <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-3">Digital Barrier Options</div>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">The feature. The bank uses the cash from the Put to buy a "binary" option. It pays $X if the stock is above Level Y. This creates the "all or nothing" coupon behavior.</p>
             </div>
           </div>
 
@@ -658,18 +658,18 @@ export default function AutocallableGuide() {
         </div>
       </div>
       {/* Section 3: The Dangerous Feedback Loop */}
-      <Section title="The Systemic Risk: Vanna & Volga" subtitle="" className="bg-white">
+      <Section title="The Systemic Risk: Vanna & Volga" subtitle="" className="bg-white dark:bg-black/20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="order-2 md:order-1 p-8 bg-rose-50 rounded-3xl border border-rose-100">
-            <h3 className="text-xl font-bold text-rose-800 mb-4">The "Crash Accelerator"</h3>
-            <p className="text-rose-900/80 mb-4">When you buy a note, the dealer is on the other side. They are <strong>Long Volatility</strong> at the barrier. </p>
-            <p className="text-rose-900/80 mb-4"><strong>Calm Markets:</strong> Dealers sell volatility, suppressing the VIX.</p>
-            <p className="text-rose-900/80 font-semibold"><strong>Crash Markets:</strong> As price drops near the barrier, dealers must hedge by SELLING the underlying stock. The more it drops, the more they sell. This creates a feedback loop that accelerated the March 2020 crash.</p>
+          <div className="order-2 md:order-1 p-8 bg-rose-50 dark:bg-rose-950/20 rounded-3xl border border-rose-100 dark:border-rose-900/30">
+            <h3 className="text-xl font-bold text-rose-800 dark:text-rose-300 mb-4">The "Crash Accelerator"</h3>
+            <p className="text-rose-900/80 dark:text-rose-100/80 mb-4">When you buy a note, the dealer is on the other side. They are <strong>Long Volatility</strong> at the barrier. </p>
+            <p className="text-rose-900/80 dark:text-rose-100/80 mb-4"><strong>Calm Markets:</strong> Dealers sell volatility, suppressing the VIX.</p>
+            <p className="text-rose-900/80 dark:text-rose-100/80 font-semibold"><strong>Crash Markets:</strong> As price drops near the barrier, dealers must hedge by SELLING the underlying stock. The more it drops, the more they sell. This creates a feedback loop that accelerated the March 2020 crash.</p>
           </div>
           <div className="order-1 md:order-2">
-            <h3 className="text-2xl font-bold mb-4">Why Markets Feel "Pinned"</h3>
-            <p className="text-slate-600 leading-relaxed mb-6">Trillions of dollars in autocallables act as a gravity well. In normal markets, dealer hedging dampens volatility ("buy the dip, sell the rip"). But when the dam breaks (the Knock-In barrier), that same hedging exacerbates the flood.</p>
-            <div className="flex items-center gap-2 text-indigo-600 font-semibold cursor-pointer hover:underline">
+            <h3 className="text-2xl font-bold mb-4 dark:text-white">Why Markets Feel "Pinned"</h3>
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">Trillions of dollars in autocallables act as a gravity well. In normal markets, dealer hedging dampens volatility ("buy the dip, sell the rip"). But when the dam breaks (the Knock-In barrier), that same hedging exacerbates the flood.</p>
+            <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold cursor-pointer hover:underline">
               <span>Read about the "Vanna Trap"</span>
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -731,52 +731,52 @@ export default function AutocallableGuide() {
         </div>
       </div>
       {/* Section 5: DIY Tutorial */}
-      <Section title="Tutorial: The DIY 'Jade Lizard'" subtitle="Build your own 'Autocallable' note with zero upside risk and high probability of profit." className="bg-indigo-50">
+      <Section title="Tutorial: The DIY 'Jade Lizard'" subtitle="Build your own 'Autocallable' note with zero upside risk and high probability of profit." className="bg-indigo-50 dark:bg-indigo-950/20">
         {/* Visualizer for Jade Lizard */}
-        <div className="mb-12 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-indigo-100">
+        <div className="mb-12 bg-white dark:bg-[#14171B] rounded-3xl p-6 md:p-8 shadow-sm border border-indigo-100 dark:border-indigo-900/30">
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-indigo-900 mb-2">The Payoff Diagram</h3>
-              <p className="text-slate-600 mb-6 text-sm">Unlike a standard Short Strangle where you have unlimited loss on both sides, the Jade Lizard creates a "risk-free" zone to the upside. As long as your <strong>Total Credit &gt; Call Spread Width</strong>, you cannot lose money on a rally.</p>
-              <div className="relative h-64 w-full bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
+              <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-300 mb-2">The Payoff Diagram</h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm">Unlike a standard Short Strangle where you have unlimited loss on both sides, the Jade Lizard creates a "risk-free" zone to the upside. As long as your <strong>Total Credit &gt; Call Spread Width</strong>, you cannot lose money on a rally.</p>
+              <div className="relative h-64 w-full bg-slate-50 dark:bg-[#1A1D24] rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden">
                 {/* Custom SVG Payoff */}
                 <svg viewBox="0 0 400 250" className="w-full h-full">
                   {/* Zero Line */}
-                  <line x1="0" y1="180" x2="400" y2="180" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="4 4" />
-                  <text x="10" y="175" className="text-[10px] fill-slate-400 font-mono">P/L = $0</text>
+                  <line x1="0" y1="180" x2="400" y2="180" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="4 4" className="dark:stroke-slate-700" />
+                  <text x="10" y="175" className="text-[10px] fill-slate-400 dark:fill-slate-500 font-mono">P/L = $0</text>
 
                   {/* Payoff Line */}
-                  <polyline points="0,250 100,50 250,50 300,150 400,150" fill="none" stroke="#4f46e5" strokeWidth="4" strokeLinejoin="round" />
+                  <polyline points="0,250 100,50 250,50 300,150 400,150" fill="none" stroke="#4f46e5" strokeWidth="4" strokeLinejoin="round" className="dark:stroke-indigo-400" />
 
                   {/* Zones */}
-                  <circle cx="100" cy="50" r="6" className="fill-indigo-600" />
-                  <text x="80" y="40" className="text-[10px] fill-indigo-800 font-bold">Short Put</text>
+                  <circle cx="100" cy="50" r="6" className="fill-indigo-600 dark:fill-indigo-400" />
+                  <text x="80" y="40" className="text-[10px] fill-indigo-800 dark:fill-indigo-300 font-bold">Short Put</text>
 
-                  <circle cx="250" cy="50" r="6" className="fill-indigo-600" />
-                  <text x="230" y="40" className="text-[10px] fill-indigo-800 font-bold">Short Call</text>
+                  <circle cx="250" cy="50" r="6" className="fill-indigo-600 dark:fill-indigo-400" />
+                  <text x="230" y="40" className="text-[10px] fill-indigo-800 dark:fill-indigo-300 font-bold">Short Call</text>
 
-                  <circle cx="300" cy="150" r="6" className="fill-emerald-500" />
-                  <text x="280" y="200" className="text-[10px] fill-emerald-700 font-bold">Long Call</text>
+                  <circle cx="300" cy="150" r="6" className="fill-emerald-500 dark:fill-emerald-400" />
+                  <text x="280" y="200" className="text-[10px] fill-emerald-700 dark:fill-emerald-400 font-bold">Long Call</text>
 
                   {/* Annotation: The Profit Trap */}
                   <rect x="110" y="60" width="130" height="110" fill="url(#diagonal-stripes)" opacity="0.1" />
-                  <text x="175" y="110" textAnchor="middle" className="text-xs fill-indigo-900 font-bold">"The Income Zone"</text>
+                  <text x="175" y="110" textAnchor="middle" className="text-xs fill-indigo-900 dark:fill-indigo-300 font-bold">"The Income Zone"</text>
 
                   {/* Annotation: The Safety Net */}
-                  <text x="350" y="140" textAnchor="middle" className="text-[10px] fill-emerald-600 font-bold">Guaranteed Profit</text>
-                  <text x="350" y="152" textAnchor="middle" className="text-[9px] fill-slate-500">(Credit - Width)</text>
+                  <text x="350" y="140" textAnchor="middle" className="text-[10px] fill-emerald-600 dark:fill-emerald-400 font-bold">Guaranteed Profit</text>
+                  <text x="350" y="152" textAnchor="middle" className="text-[9px] fill-slate-500 dark:fill-slate-400">(Credit - Width)</text>
 
                   {/* Defs for pattern */}
                   <defs>
                     <pattern id="diagonal-stripes" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                      <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="#4f46e5" strokeWidth="1" />
+                      <path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="#4f46e5" strokeWidth="1" className="dark:stroke-indigo-400" />
                     </pattern>
                   </defs>
                 </svg>
               </div>
             </div>
             {/* Rules Box */}
-            <div className="w-full md:w-1/3 bg-indigo-900 text-indigo-100 p-6 rounded-2xl">
+            <div className="w-full md:w-1/3 bg-indigo-900 dark:bg-indigo-950 text-indigo-100 p-6 rounded-2xl border border-transparent dark:border-indigo-800/50">
               <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-yellow-400" /> Golden Rules
               </h4>
@@ -801,26 +801,26 @@ export default function AutocallableGuide() {
         {/* Step-by-Step Guide */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-slate-800">Construction Manual</h3>
-            <div className="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center font-bold text-rose-600 shrink-0">1</div>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Construction Manual</h3>
+            <div className="flex gap-4 p-4 bg-white dark:bg-[#14171B] rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+              <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center font-bold text-rose-600 dark:text-rose-400 shrink-0">1</div>
               <div>
-                <h5 className="font-bold text-slate-800">The Funding Leg (Short Put)</h5>
-                <p className="text-sm text-slate-600 mt-1">Sell a Put at roughly <strong>30 Delta</strong>. This defines your "Knock-In" level. If stock stays above this, you keep all profit.</p>
+                <h5 className="font-bold text-slate-800 dark:text-white">The Funding Leg (Short Put)</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">Sell a Put at roughly <strong>30 Delta</strong>. This defines your "Knock-In" level. If stock stays above this, you keep all profit.</p>
               </div>
             </div>
-            <div className="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600 shrink-0">2</div>
+            <div className="flex gap-4 p-4 bg-white dark:bg-[#14171B] rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+              <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center font-bold text-indigo-600 dark:text-indigo-400 shrink-0">2</div>
               <div>
-                <h5 className="font-bold text-slate-800">The Ceiling (Short Call)</h5>
-                <p className="text-sm text-slate-600 mt-1">Sell a Call at roughly <strong>30 Delta</strong>. This caps your upside but adds significant premium to the pot.</p>
+                <h5 className="font-bold text-slate-800 dark:text-white">The Ceiling (Short Call)</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">Sell a Call at roughly <strong>30 Delta</strong>. This caps your upside but adds significant premium to the pot.</p>
               </div>
             </div>
-            <div className="flex gap-4 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600 shrink-0">3</div>
+            <div className="flex gap-4 p-4 bg-white dark:bg-[#14171B] rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+              <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center font-bold text-emerald-600 dark:text-emerald-400 shrink-0">3</div>
               <div>
-                <h5 className="font-bold text-slate-800">The Protection (Long Call)</h5>
-                <p className="text-sm text-slate-600 mt-1">Buy a Call roughly $2 to $5 higher than your Short Call. This creates the "Spread". <br/><span className="text-xs text-rose-500 font-bold mt-1 block">CRITICAL: The cost of this wing must be less than the extra credit you received.</span></p>
+                <h5 className="font-bold text-slate-800 dark:text-white">The Protection (Long Call)</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">Buy a Call roughly $2 to $5 higher than your Short Call. This creates the "Spread". <br/><span className="text-xs text-rose-500 font-bold mt-1 block">CRITICAL: The cost of this wing must be less than the extra credit you received.</span></p>
               </div>
             </div>
           </div>
@@ -869,20 +869,20 @@ export default function AutocallableGuide() {
           </div>
         </div>
         {/* Management Strategy */}
-        <div className="mt-12 pt-12 border-t border-indigo-200">
-          <h3 className="text-xl font-bold text-indigo-900 mb-6 text-center">How to Manage the Trade</h3>
+        <div className="mt-12 pt-12 border-t border-indigo-200 dark:border-indigo-900/30">
+          <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-6 text-center">How to Manage the Trade</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl border-l-4 border-emerald-500 shadow-sm">
-              <h5 className="font-bold text-slate-800 mb-2">Scenario A: Sideways</h5>
-              <p className="text-sm text-slate-600"><strong>Action:</strong> Do nothing. Let Theta (time decay) eat the value of the options you sold. Close at 50% max profit.</p>
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border-l-4 border-emerald-500 shadow-sm">
+              <h5 className="font-bold text-slate-800 dark:text-white mb-2">Scenario A: Sideways</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-300"><strong>Action:</strong> Do nothing. Let Theta (time decay) eat the value of the options you sold. Close at 50% max profit.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border-l-4 border-amber-500 shadow-sm">
-              <h5 className="font-bold text-slate-800 mb-2">Scenario B: Rally</h5>
-              <p className="text-sm text-slate-600"><strong>Action:</strong> Celebrate. You have no risk. The Call Spread will lose value, but the Put goes to zero. You keep the difference.</p>
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border-l-4 border-amber-500 shadow-sm">
+              <h5 className="font-bold text-slate-800 dark:text-white mb-2">Scenario B: Rally</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-300"><strong>Action:</strong> Celebrate. You have no risk. The Call Spread will lose value, but the Put goes to zero. You keep the difference.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border-l-4 border-rose-500 shadow-sm">
-              <h5 className="font-bold text-slate-800 mb-2">Scenario C: Crash</h5>
-              <p className="text-sm text-slate-600"><strong>Action:</strong> Roll the Call Spread down. Since the stock dropped, the Calls are worthless. Buy them back cheap, and sell new ones closer to the stock price to collect more credit.</p>
+            <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border-l-4 border-rose-500 shadow-sm">
+              <h5 className="font-bold text-slate-800 dark:text-white mb-2">Scenario C: Crash</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-300"><strong>Action:</strong> Roll the Call Spread down. Since the stock dropped, the Calls are worthless. Buy them back cheap, and sell new ones closer to the stock price to collect more credit.</p>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ function parseMath(line: string): string {
 const MathBox = ({ title, block }: { title?: string; block: string }) => {
   const lines = block.split('\n');
   return (
-    <div className="bg-slate-900 text-emerald-300 p-5 rounded-2xl my-6 shadow-xl overflow-x-auto border border-slate-700">
+    <div className="bg-slate-900 dark:bg-[#14171B] text-emerald-300 p-5 rounded-2xl my-6 shadow-xl overflow-x-auto border border-slate-700 dark:border-white/10">
       {title && (
         <div className="flex items-center gap-2 text-slate-400 text-xs mb-3 uppercase tracking-widest font-semibold">
           <Activity size={14} />
@@ -71,11 +71,11 @@ const Callout = ({
   color?: string;
 }) => {
   const colors: Record<string, string> = {
-    blue: 'bg-blue-50 border-blue-500 text-blue-900',
-    amber: 'bg-amber-50 border-amber-500 text-amber-900',
-    rose: 'bg-rose-50 border-rose-500 text-rose-900',
-    emerald: 'bg-emerald-50 border-emerald-500 text-emerald-900',
-    purple: 'bg-purple-50 border-purple-500 text-purple-900',
+    blue: 'bg-blue-50 dark:bg-blue-950/20 border-blue-500 text-blue-900 dark:text-blue-300',
+    amber: 'bg-amber-50 dark:bg-amber-950/20 border-amber-500 text-amber-900 dark:text-amber-300',
+    rose: 'bg-rose-50 dark:bg-rose-950/20 border-rose-500 text-rose-900 dark:text-rose-300',
+    emerald: 'bg-emerald-50 dark:bg-emerald-950/20 border-emerald-500 text-emerald-900 dark:text-emerald-300',
+    purple: 'bg-purple-50 dark:bg-purple-950/20 border-purple-500 text-purple-900 dark:text-purple-300',
   };
   const iconColors: Record<string, string> = {
     blue: 'text-blue-500',
@@ -98,11 +98,11 @@ const Callout = ({
 const SectionHeading = ({ children, badge }: { children: React.ReactNode; badge?: string }) => (
   <div className="mb-8 mt-16">
     {badge && (
-      <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-3">
+      <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
         {badge}
       </span>
     )}
-    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">{children}</h2>
+    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">{children}</h2>
     <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-4" />
   </div>
 );
@@ -122,25 +122,25 @@ const ModelCard = ({
   icon: React.ElementType;
   gradient: string;
 }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-slate-100 flex flex-col h-full group">
+  <div className="bg-white dark:bg-[#14171B] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-slate-100 dark:border-white/10 flex flex-col h-full group">
     <div
       className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${gradient} text-white shadow-md transform group-hover:scale-110 transition-transform`}
     >
       <Icon size={24} />
     </div>
-    <h3 className="text-xl font-bold text-slate-800 mb-3">{title}</h3>
-    <p className="text-slate-600 text-sm mb-4 flex-grow leading-relaxed">
-      <strong className="text-slate-800">Objective:</strong> {objective}
+    <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{title}</h3>
+    <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-grow leading-relaxed">
+      <strong className="text-slate-800 dark:text-white">Objective:</strong> {objective}
     </p>
     {derivatives && (
-      <div className="text-slate-600 text-sm mb-4 leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-100">
-        <strong className="text-slate-800 block mb-1">Target Derivatives:</strong>
+      <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed bg-slate-50 dark:bg-white/5 p-3 rounded-lg border border-slate-100 dark:border-white/10">
+        <strong className="text-slate-800 dark:text-white block mb-1">Target Derivatives:</strong>
         {derivatives}
       </div>
     )}
-    <div className="pt-4 border-t border-slate-100 mt-auto">
-      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Representative Models</p>
-      <p className="text-sm font-medium text-indigo-600">{models}</p>
+    <div className="pt-4 border-t border-slate-100 dark:border-white/10 mt-auto">
+      <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">Representative Models</p>
+      <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400">{models}</p>
     </div>
   </div>
 );
@@ -153,13 +153,13 @@ export default function ArticlePage() {
       slug="beyond-black-scholes"
       additionalDisclaimer="The mathematical models discussed are simplified representations for educational understanding. Always consult with qualified financial professionals before making investment decisions."
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 text-slate-700 font-sans bg-transparent">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 text-slate-700 dark:text-slate-300 font-sans bg-transparent">
         <div className="mb-12">
           <InfographicSlot alt="Beyond Black-Scholes Infographic" />
         </div>
 
         {/* Introduction */}
-        <p className="text-lg text-slate-700 leading-relaxed mb-6">
+        <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
             The publication of the Black-Scholes-Merton option pricing formula in 1973 represents the foundational
             cornerstone of modern quantitative finance. By demonstrating that the theoretical value of a European option
             could be uniquely determined through a dynamic hedging strategy, the framework established a monumental
@@ -182,24 +182,24 @@ export default function ArticlePage() {
           {/* Classification */}
           <SectionHeading badge="Taxonomy">Classification of Advanced Models</SectionHeading>
 
-          <p className="text-slate-700 mb-6 leading-relaxed">
+          <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
             To navigate the expansive landscape of post-Black-Scholes quantitative finance, it is essential to
             establish a rigorous taxonomy based on the specific empirical anomalies each model seeks to address, the
             underlying mathematical processes, and the target derivative classes.
           </p>
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 mb-10">
-            <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+          <div className="bg-white dark:bg-[#14171B] rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-white/10 mb-10">
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
               <BookOpen size={22} className="text-indigo-500" />
               Classification by Mathematical Framework
             </h3>
-            <div className="space-y-6 text-slate-700">
+            <div className="space-y-6 text-slate-700 dark:text-slate-300">
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 font-bold">
                   1
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-lg mb-1">Continuous Diffusion Extensions</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg mb-1">Continuous Diffusion Extensions</h4>
                   <p className="leading-relaxed">
                     Maintain continuous price paths but introduce additional stochastic state variables. Examples
                     include modeling variance itself as a mean-reverting process (Heston) or modeling interest rates
@@ -209,11 +209,11 @@ export default function ArticlePage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 flex items-center justify-center flex-shrink-0 font-bold">
                   2
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-lg mb-1">Discontinuous / Jump Processes</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg mb-1">Discontinuous / Jump Processes</h4>
                   <p className="leading-relaxed">
                     Abandon purely continuous paths to allow for sudden, macroscopic price shocks. This includes
                     Jump-Diffusion (Merton) and pure jump L&eacute;vy processes (Variance Gamma). These are vital for
@@ -223,11 +223,11 @@ export default function ArticlePage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 font-bold">
                   3
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-lg mb-1">Local &amp; Implied Models</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg mb-1">Local &amp; Implied Models</h4>
                   <p className="leading-relaxed">
                     Models like Dupire&apos;s Local Volatility or the SABR model derive their dynamics directly from
                     the market&apos;s implied volatility surface, ensuring perfect calibration to liquid vanilla
@@ -238,7 +238,7 @@ export default function ArticlePage() {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-slate-800 mb-6">Application by Asset &amp; Derivative Class</h3>
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Application by Asset &amp; Derivative Class</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             <ModelCard
@@ -278,7 +278,7 @@ export default function ArticlePage() {
           {/* Math Foundations */}
           <SectionHeading badge="Core Mechanics">The Mathematical Foundation</SectionHeading>
 
-          <p className="text-slate-700 leading-relaxed mb-8">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
             Moving beyond Black-Scholes requires sophisticated mathematical machinery. When we relax the assumption of
             constant volatility or continuous price paths, the standard Black-Scholes PDE either breaks down or becomes
             impossible to solve analytically. Quantitative finance relies on three core pillars to establish
@@ -287,14 +287,14 @@ export default function ArticlePage() {
 
           <div className="space-y-8 mb-12">
             {/* Pillar 1 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-indigo-50 rounded-lg text-indigo-600 flex-shrink-0">
+                <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg text-indigo-600 dark:text-indigo-400 flex-shrink-0">
                   <Layers size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">1. The Feynman-Kac Theorem</h3>
-                  <p className="text-slate-700 leading-relaxed mb-4">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">1. The Feynman-Kac Theorem</h3>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                     The Feynman-Kac formula is the vital bridge connecting stochastic differential equations (SDEs) to
                     deterministic PDEs. It proves that solving a complex parabolic PDE is mathematically equivalent to
                     calculating the conditional expectation of a payoff under the risk-neutral measure{' '}
@@ -304,7 +304,7 @@ export default function ArticlePage() {
                     title="Feynman-Kac Expectation"
                     block={`V(t, x) = E^{Q} [ exp(-∫_{t}^{T} r(s) ds) · Payoff(X_{T}) | X_{t} = x ]`}
                   />
-                  <p className="text-sm text-slate-500 italic">
+                  <p className="text-sm text-slate-500 dark:text-slate-400 italic">
                     This theorem shifts the quant&apos;s job from solving impossible PDEs to evaluating expected
                     values of random paths under Q.
                   </p>
@@ -313,16 +313,16 @@ export default function ArticlePage() {
             </div>
 
             {/* Pillar 2 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-emerald-50 rounded-lg text-emerald-600 flex-shrink-0">
+                <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-400 flex-shrink-0">
                   <Activity size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">
                     2. Affine Jump-Diffusions &amp; The OU Process
                   </h3>
-                  <p className="text-slate-700 leading-relaxed mb-4">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                     <strong>Affine Models</strong> are a class where the drift and variance are strictly linear
                     (affine) functions of the state variables, enabling closed-form characteristic functions. The most
                     famous building block is the <strong>Ornstein-Uhlenbeck (OU) Process</strong> &mdash; used in the
@@ -341,15 +341,15 @@ E[x_{t}]   = x_{0} e^{-θt} + μ(1 - e^{-θt})
 Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
                   />
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
-                    <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
-                      <strong className="text-emerald-800">θ (Speed):</strong> How fast the variable snaps back to
+                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-emerald-400">θ (Speed):</strong> How fast the variable snaps back to
                       the mean.
                     </div>
-                    <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
-                      <strong className="text-emerald-800">μ (Level):</strong> The long-term mean equilibrium.
+                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-emerald-400">μ (Level):</strong> The long-term mean equilibrium.
                     </div>
-                    <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
-                      <strong className="text-emerald-800">σ (Vol):</strong> The magnitude of random shocks.
+                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-emerald-400">σ (Vol):</strong> The magnitude of random shocks.
                     </div>
                   </div>
                 </div>
@@ -357,16 +357,16 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
             </div>
 
             {/* Pillar 3 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-purple-50 rounded-lg text-purple-600 flex-shrink-0">
+                <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400 flex-shrink-0">
                   <Lightbulb size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">
                     3. Characteristic Functions &amp; Fourier Inversion
                   </h3>
-                  <p className="text-slate-700 leading-relaxed mb-4">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                     For complex models like Heston, the probability density function (PDF) of the future asset price
                     is completely unknown. However, because Heston is affine, its{' '}
                     <strong>Characteristic Function</strong> (the Fourier transform of the PDF) has a closed-form
@@ -376,7 +376,7 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
                     title="Exponential Affine Characteristic Function"
                     block={`φ(u, t) = E^{Q}[ e^{iu·X_{T}} | F_{t} ] = exp( A(u, τ) + B(u, τ)^{⊤} · X_{t} )`}
                   />
-                  <p className="text-slate-700 leading-relaxed mt-4 mb-2">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mt-4 mb-2">
                     Once &phi;(u) is known, the{' '}
                     <strong>Carr-Madan Fast Fourier Transform (FFT)</strong> technique inverts it to extract option
                     prices via a single fast numerical integral.
@@ -386,7 +386,7 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
                     evaluate one Fourier integral:
                     <br />
                     <br />
-                    <code className="bg-purple-100/50 px-3 py-2 rounded block text-center font-mono text-sm tracking-wide">
+                    <code className="bg-purple-100/50 dark:bg-purple-900/30 dark:text-purple-300 px-3 py-2 rounded block text-center font-mono text-sm tracking-wide">
                       C(K, T) = S·P₁ &minus; K·e^(-rT)·P₂
                     </code>
                     <br />
@@ -401,20 +401,20 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
           {/* Stochastic Volatility */}
           <SectionHeading badge="Volatility Dynamics">Stochastic Volatility Models</SectionHeading>
 
-          <p className="text-slate-700 leading-relaxed mb-8">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
             Stochastic volatility (SV) models abandon the Black-Scholes assumption of constant volatility, instead
             treating variance as a random process with its own source of risk. This naturally generates the implied
             volatility smile and skew observed in equity, FX, and commodity markets.
           </p>
 
           {/* Heston */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-8 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
               1
             </span>
             The Heston Model (1993)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             The Heston model assumes that the instantaneous variance follows a CIR mean-reverting stochastic process.
             Crucially, the Brownian motions driving the asset price and its variance are correlated, which
             mathematically produces the leverage effect (skewness).
@@ -429,7 +429,7 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <ul className="space-y-3 text-slate-700 bg-slate-50 p-6 rounded-xl border border-slate-100">
+            <ul className="space-y-3 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-100 dark:border-white/10">
               <li className="flex gap-2">
                 <ArrowRight size={18} className="text-blue-500 mt-1 flex-shrink-0" />
                 <span>
@@ -455,16 +455,16 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
                 </span>
               </li>
             </ul>
-            <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl flex flex-col justify-center">
-              <h4 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 p-6 rounded-xl flex flex-col justify-center">
+              <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-2 flex items-center gap-2">
                 <AlertTriangle size={18} className="text-blue-500" />
                 The Feller Condition
               </h4>
-              <p className="text-sm text-blue-800 mb-3">
+              <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
                 To prevent the variance process from reaching zero (becoming deterministic), parameters must satisfy
                 the Feller boundary condition:
               </p>
-              <code className="bg-white/60 text-blue-900 px-3 py-2 rounded font-mono text-center block font-bold border border-blue-200">
+              <code className="bg-white/60 dark:bg-black/40 text-blue-900 dark:text-blue-300 px-3 py-2 rounded font-mono text-center block font-bold border border-blue-200 dark:border-blue-900/30">
                 2a·v̄ &gt; η²
               </code>
             </div>
@@ -474,7 +474,7 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
             Because Heston is an affine process, the log-price characteristic function takes the form:
             <br />
             <br />
-            <code className="font-mono text-sm block bg-blue-100/50 p-2 rounded tracking-wide">
+            <code className="font-mono text-sm block bg-blue-100/50 dark:bg-blue-900/30 dark:text-blue-300 p-2 rounded tracking-wide">
               φ(u) = exp( C(u,τ)·v̄ + D(u,τ)·V_t + iu·x_t )
             </code>
             <br />
@@ -483,13 +483,13 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           </Callout>
 
           {/* SABR */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
               2
             </span>
             The SABR Model (2002)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             Stochastic Alpha, Beta, Rho (SABR) is the industry standard for interest rate derivatives (swaptions,
             caps) and FX options. Unlike Heston, SABR models the forward price directly and is primarily used for
             interpolating the implied volatility smile rather than pricing dynamic exotic options.
@@ -503,21 +503,21 @@ dα_{t} = ν α_{t} dW_{2,t}               // Lognormal stochastic vol process
 Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           />
 
-          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-6">
-            <h4 className="font-bold text-slate-800 mb-3">The Backbone Parameter (&beta;)</h4>
-            <p className="text-slate-600 text-sm mb-4">
+          <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm mb-6">
+            <h4 className="font-bold text-slate-800 dark:text-white mb-3">The Backbone Parameter (&beta;)</h4>
+            <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
               The &beta; parameter controls the relationship between the ATM volatility and the forward rate level
               (the &ldquo;backbone&rdquo;).
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-              <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                <strong className="text-slate-900">&beta; = 1:</strong> Lognormal (Stochastic Black model)
+              <div className="p-3 bg-slate-50 dark:bg-[#14171B] rounded border border-slate-100 dark:border-white/10">
+                <strong className="text-slate-900 dark:text-white">&beta; = 1:</strong> Lognormal (Stochastic Black model)
               </div>
-              <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                <strong className="text-slate-900">&beta; = 0:</strong> Normal (Stochastic Bachelier model)
+              <div className="p-3 bg-slate-50 dark:bg-[#14171B] rounded border border-slate-100 dark:border-white/10">
+                <strong className="text-slate-900 dark:text-white">&beta; = 0:</strong> Normal (Stochastic Bachelier model)
               </div>
-              <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                <strong className="text-slate-900">0 &lt; &beta; &lt; 1:</strong> CEV / Displaced Diffusion
+              <div className="p-3 bg-slate-50 dark:bg-[#14171B] rounded border border-slate-100 dark:border-white/10">
+                <strong className="text-slate-900 dark:text-white">0 &lt; &beta; &lt; 1:</strong> CEV / Displaced Diffusion
               </div>
             </div>
           </div>
@@ -527,7 +527,7 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
             the Black-Scholes formula, an explicit analytical equation for implied lognormal volatility is extracted:
             <br />
             <br />
-            <code className="font-mono text-sm block bg-blue-100/50 p-2 rounded tracking-wide">
+            <code className="font-mono text-sm block bg-blue-100/50 dark:bg-blue-900/30 dark:text-blue-300 p-2 rounded tracking-wide">
               σ_impl(K, F) ≈ α · f(F, K, β, ρ, ν)
             </code>
             <br />
@@ -536,13 +536,13 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           </Callout>
 
           {/* SVI */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
               3
             </span>
             Stochastic Volatility Inspired (SVI)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             Jim Gatheral&apos;s SVI (2004) is a purely static parameterization of the implied total variance slice.
             It mathematically guarantees the absence of static arbitrage (butterfly arbitrage) when fitted correctly
             and is heavily used in equity index volatility surface construction.
@@ -558,15 +558,15 @@ where  k = ln(K/F)  is the log-moneyness`}
           {/* Jumps */}
           <SectionHeading badge="Discontinuous Paths">Jump-Diffusion &amp; L&eacute;vy Processes</SectionHeading>
 
-          <p className="text-slate-700 leading-relaxed mb-8">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
             Continuous diffusion models require time to generate large price movements, systematically underestimating
             sudden structural shocks. Jump models introduce discontinuous mathematics to address this.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-6 border-t-4 border-rose-400 shadow-md rounded-b-xl">
-              <h4 className="text-lg font-bold text-slate-800 mb-2">Merton&apos;s Jump-Diffusion</h4>
-              <p className="text-sm text-slate-600 mb-4">
+            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-rose-400 dark:border-rose-900/50 shadow-md rounded-b-xl">
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Merton&apos;s Jump-Diffusion</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                 Superimposes a Poisson process onto Brownian motion. Jumps are normally distributed. Prices are
                 computed via an infinite series of Black-Scholes formulas weighted by Poisson probabilities.
               </p>
@@ -575,9 +575,9 @@ where  k = ln(K/F)  is the log-moneyness`}
                 block={`dS_{t} / S_{t-} = (r - λk̄) dt + σ dW_{t} + (J_{t} - 1) dN_{t}`}
               />
             </div>
-            <div className="bg-white p-6 border-t-4 border-rose-500 shadow-md rounded-b-xl">
-              <h4 className="text-lg font-bold text-slate-800 mb-2">Kou Double Exponential</h4>
-              <p className="text-sm text-slate-600 mb-4">
+            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-rose-500 dark:border-rose-900/50 shadow-md rounded-b-xl">
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Kou Double Exponential</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                 Uses an asymmetric Laplace distribution for jumps. Its mathematical memoryless property allows
                 closed-form solutions for complex exotic barrier options.
               </p>
@@ -608,7 +608,7 @@ where  k = ln(K/F)  is the log-moneyness`}
           {/* Interest Rates */}
           <SectionHeading badge="Term Structure">Interest Rate &amp; Fixed Income Models</SectionHeading>
 
-          <p className="text-slate-700 leading-relaxed mb-8">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
             Unlike equity models that simulate a tradable asset price directly, short-rate models simulate the
             evolution of the instantaneous interest rate r_t. The price of any zero-coupon bond P(t,T) is then
             derived as the risk-neutral expectation of the discount factor.
@@ -620,13 +620,13 @@ where  k = ln(K/F)  is the log-moneyness`}
           />
 
           {/* Vasicek */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
               1
             </span>
             The Vasicek Model (1977)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             Vasicek introduced the concept of mean-reversion to financial modeling using the Ornstein-Uhlenbeck (OU)
             process. It assumes rates are pulled towards a long-term average, preventing them from rising to infinity
             over long horizons.
@@ -647,13 +647,13 @@ Yield:       R(t, T) = -(1 / (T - t)) · ln P(t, T)`}
           </Callout>
 
           {/* CIR */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
               2
             </span>
             Cox-Ingersoll-Ross (CIR) Model (1985)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             To solve the negative rate problem, CIR modified the diffusion term to be proportional to the square root
             of the interest rate. As rates approach zero, volatility scales down to zero and the positive drift pushes
             the rate back up. This results in a non-central chi-squared distribution for rates.
@@ -666,28 +666,28 @@ Yield:       R(t, T) = -(1 / (T - t)) · ln P(t, T)`}
 Bond Price:  P(t, T) = A(t, T) · exp(-B(t, T) · r_{t})`}
           />
 
-          <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-xl mb-6">
-            <h4 className="font-bold text-emerald-900 mb-2 flex items-center gap-2">
+          <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900/30 p-6 rounded-xl mb-6">
+            <h4 className="font-bold text-emerald-900 dark:text-emerald-400 mb-2 flex items-center gap-2">
               <Activity size={18} className="text-emerald-500" />
               Feller Condition for Strictly Positive Rates
             </h4>
-            <p className="text-sm text-emerald-800 mb-3">
+            <p className="text-sm text-emerald-800 dark:text-emerald-300 mb-3">
               If the parameters satisfy the condition below, the interest rate r_t will never reach zero and remains
               strictly positive:
             </p>
-            <code className="bg-white/60 text-emerald-900 px-3 py-2 rounded font-mono text-center block font-bold border border-emerald-200">
+            <code className="bg-white/60 dark:bg-black/40 text-emerald-900 dark:text-emerald-300 px-3 py-2 rounded font-mono text-center block font-bold border border-emerald-200 dark:border-emerald-900/30">
               2ab &gt; &sigma;²
             </code>
           </div>
 
           {/* Hull-White */}
-          <h3 className="text-2xl font-bold text-slate-800 mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
               3
             </span>
             The Hull-White Model (Extended Vasicek)
           </h3>
-          <p className="text-slate-700 leading-relaxed mb-4">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             Vasicek and CIR are &ldquo;equilibrium models&rdquo; &mdash; their yield curves are generated from
             parameters and usually fail to match the actual market yield curve. The Hull-White model introduces a
             time-dependent drift &theta;(t) to create a no-arbitrage model that perfectly calibrates to the observed

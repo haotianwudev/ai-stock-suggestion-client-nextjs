@@ -1,237 +1,136 @@
 'use client';
 
-import React, { useState } from 'react';
-import {
-  ArrowLeft, Activity, Database, ShieldCheck, Cpu, Layers, Code,
-  Zap, Server, LayoutDashboard, Terminal, CheckCircle2, AlertCircle,
-  ExternalLink, FileText,
-} from 'lucide-react';
-import { Maximize2 } from 'lucide-react';
+import React from 'react';
+import { Activity, Database, ShieldCheck, Cpu, Layers, Code, Zap, Server, LayoutDashboard, Terminal, CheckCircle2, AlertCircle, AlertTriangle } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
-
-// ─── Reusable Components ───────────────────────────────────────────────────────
-
-const colorMap: Record<string, string> = {
-  indigo: 'text-indigo-600 bg-indigo-50 border-indigo-100',
-  emerald: 'text-emerald-600 bg-emerald-50 border-emerald-100',
-  rose: 'text-rose-600 bg-rose-50 border-rose-100',
-  amber: 'text-amber-600 bg-amber-50 border-amber-100',
-  sky: 'text-sky-600 bg-sky-50 border-sky-100',
-  violet: 'text-violet-600 bg-violet-50 border-violet-100',
-};
-
-const Section = ({
-  title,
-  icon: Icon,
-  children,
-  color = 'indigo',
-}: {
-  title: string;
-  icon: React.ElementType;
-  children: React.ReactNode;
-  color?: string;
-}) => {
-  const headerColors = colorMap[color] || colorMap.indigo;
-  const [bg, border, iconText] = headerColors.split(' ');
-  return (
-    <section className="mb-16 bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-      <div className={`px-8 py-6 border-b flex items-center gap-4 ${bg} ${border}`}>
-        <div className={`p-3 bg-white rounded-xl shadow-sm ${iconText}`}>
-          <Icon size={28} strokeWidth={2.5} />
-        </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">{title}</h2>
-      </div>
-      <div className="p-8 md:p-10 space-y-6 text-slate-600 leading-relaxed text-lg">
-        {children}
-      </div>
-    </section>
-  );
-};
-
-const Card = ({
-  title,
-  description,
-  highlight,
-  color = 'blue',
-}: {
-  title: string;
-  description: string;
-  highlight?: string;
-  color?: string;
-}) => {
-  const bgColors: Record<string, string> = {
-    blue: 'bg-blue-50 border-blue-200',
-    green: 'bg-emerald-50 border-emerald-200',
-    orange: 'bg-orange-50 border-orange-200',
-    purple: 'bg-purple-50 border-purple-200',
-  };
-  const textColors: Record<string, string> = {
-    blue: 'text-blue-700',
-    green: 'text-emerald-700',
-    orange: 'text-orange-700',
-    purple: 'text-purple-700',
-  };
-  return (
-    <div className={`p-6 rounded-2xl border ${bgColors[color]} hover:-translate-y-1 transition-transform duration-300`}>
-      <h3 className={`text-xl font-bold mb-3 ${textColors[color]}`}>{title}</h3>
-      <p className="text-slate-700 mb-4">{description}</p>
-      {highlight && (
-        <div className="mt-auto inline-block px-3 py-1 bg-white rounded-full text-sm font-semibold shadow-sm text-slate-600">
-          {highlight}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const Callout = ({
-  title,
-  children,
-  type = 'info',
-}: {
-  title: string;
-  children: React.ReactNode;
-  type?: 'info' | 'warning' | 'success';
-}) => {
-  const styles: Record<string, string> = {
-    info: 'border-blue-300 bg-blue-50 text-blue-900',
-    warning: 'border-amber-300 bg-amber-50 text-amber-900',
-    success: 'border-emerald-300 bg-emerald-50 text-emerald-900',
-  };
-  const Icon = type === 'warning' ? AlertCircle : CheckCircle2;
-  return (
-    <div className={`p-6 rounded-2xl border-l-4 ${styles[type]}`}>
-      <div className="flex items-center gap-3 mb-2 font-bold">
-        <Icon size={20} />
-        <h4>{title}</h4>
-      </div>
-      <div className="text-opacity-90">{children}</div>
-    </div>
-  );
-};
-
-const CodeBlock = ({ code, language }: { code: string; language: string }) => (
-  <div className="rounded-2xl overflow-hidden bg-slate-900 shadow-lg my-6">
-    <div className="flex items-center px-4 py-2 bg-slate-800 text-slate-400 text-xs font-mono border-b border-slate-700">
-      <Terminal size={14} className="mr-2" />
-      {language.toUpperCase()}
-    </div>
-    <pre className="p-6 overflow-x-auto text-sm font-mono text-emerald-300 leading-relaxed">
-      <code>{code}</code>
-    </pre>
-  </div>
-);
-
-// ─── Main Page ─────────────────────────────────────────────────────────────────
+import { ComparisonGrid, ComparisonCard } from '@/components/articles/article-visuals';
 
 export default function McpQuantFinancePage() {
   return (
     <ArticleFrame slug="model-context-protocol-quantitative-finance">
-      <InfographicSlot alt="Model Context Protocol in Quantitative Finance Infographic" />
-      <main className="max-w-5xl mx-auto px-6 pb-24">
+      <div className="pb-24">
+        <InfographicSlot alt="Model Context Protocol in Quantitative Finance Infographic" />
 
-        {/* Intro */}
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-12 mb-16 text-slate-600 leading-relaxed text-lg space-y-6">
-          <p className="text-xl text-slate-800 font-medium">
-            The integration of Large Language Models (LLMs) into quantitative finance, enterprise trading
-            systems, and rigorous data analysis environments has historically been constrained by the
-            profound fragmentation of application programming interfaces (APIs).
-          </p>
-          <p>
-            Often characterized metaphorically as the <strong>&ldquo;USB-C for AI agents,&rdquo;</strong> MCP
-            operates as an open, standardized protocol that standardizes the integration of external context.
-            While LSP (Language Server Protocol) is primarily a reactive system responding to explicit human
-            inputs, MCP is fundamentally agent-centric — designed to support autonomous workflows where
-            language models must reason, select appropriate tools, and iteratively chain actions together to
-            achieve complex analytical objectives.
-          </p>
-          <Callout title="The ROI of MCP in Finance" type="success">
-            Financial institutions deploying MCP have reported remarkable outcomes, including average
-            productivity gains of 20% resulting from AI automation, with certain organizations recording a
-            333% return on investment over a three-year horizon. It transforms AI deployment from a severe
-            compliance vulnerability into a rigorously managed, zero-trust system.
-          </Callout>
-        </div>
-
-        {/* Section 1 – Ecosystem & Workflow */}
-        <Section title="Ecosystem &amp; Workflow Automation" icon={Activity} color="indigo">
-          <p>
-            The deployment of MCP within quantitative finance necessitates profound, low-latency integration
-            with existing algorithmic trading libraries, time-series data feeds, and institutional execution
-            engines.
-          </p>
-
-          <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-6">
-            Algorithmic Backtesting Frameworks
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card
-              color="blue"
-              title="VectorBT"
-              description="Array-based architecture, fully vectorized utilizing NumPy and Numba for Just-In-Time (JIT) compilation."
-              highlight="Massive parameter sweeps"
-            />
-            <Card
-              color="green"
-              title="Zipline"
-              description="Event-driven simulation engine, historically aligned with the Quantopian ecosystem. Simulates realistic slippage."
-              highlight="Live-trading transition"
-            />
-            <Card
-              color="purple"
-              title="Backtrader"
-              description="Event-driven, highly flexible framework boasting extensive built-in technical indicator support."
-              highlight="Multi-indicator building"
-            />
-          </div>
-
-          <p className="mt-6">
-            Through an MCP interface, an LLM can be instructed to conduct an entire quantitative lifecycle.
-            Advanced skills enable the implementation of standardized performance metrics, calculating Sharpe
-            ratios, maximum drawdowns, and executing rigorous out-of-sample walk-forward analyses.
-          </p>
-        </Section>
-
-        {/* Section 2 – Massive Datasets */}
-        <Section title="Architecting for Scale: Massive Datasets" icon={Database} color="emerald">
-          <p>
-            Perhaps the most formidable architectural challenge is mitigating the strict constraints of the
-            language model context window. Financial data payloads can instantly exhaust available tokens.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
-            <div>
-              <h4 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-3">
-                <Layers size={20} className="text-emerald-500" />
-                Context Compaction
-              </h4>
-              <p className="text-base">
-                Servers must prioritize highly compact contexts. When returning wide schemas, servers
-                implement automated downsampling, pagination hints, and intelligent truncation. A critical
-                best practice is explicit &ldquo;result provenance&rdquo; metadata.
-              </p>
+        <div className="max-w-4xl mx-auto">
+          {/* Intro */}
+          <section className="py-16">
+            <p className="text-xl text-slate-800 dark:text-slate-200 font-medium leading-relaxed mb-6">
+              The integration of Large Language Models (LLMs) into quantitative finance, enterprise trading
+              systems, and rigorous data analysis environments has historically been constrained by the
+              profound fragmentation of application programming interfaces (APIs).
+            </p>
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              Often characterized metaphorically as the <strong>"USB-C for AI agents,"</strong> MCP
+              operates as an open, standardized protocol that standardizes the integration of external context.
+              While LSP (Language Server Protocol) is primarily a reactive system responding to explicit human
+              inputs, MCP is fundamentally agent-centric — designed to support autonomous workflows where
+              language models must reason, select appropriate tools, and iteratively chain actions together to
+              achieve complex analytical objectives.
+            </p>
+            <div className="p-6 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl flex gap-4 my-6 shadow-sm">
+              <CheckCircle2 className="shrink-0 mt-1 text-emerald-600 dark:text-emerald-400" size={24} />
+              <div>
+                <h4 className="font-bold text-emerald-900 dark:text-emerald-300 mb-2 font-serif text-xl">The ROI of MCP in Finance</h4>
+                <p className="text-emerald-800 dark:text-emerald-200 leading-relaxed">
+                  Financial institutions deploying MCP have reported remarkable outcomes, including average
+                  productivity gains of 20% resulting from AI automation, with certain organizations recording a
+                  333% return on investment over a three-year horizon. It transforms AI deployment from a severe
+                  compliance vulnerability into a rigorously managed, zero-trust system.
+                </p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-3">
-                <Code size={20} className="text-emerald-500" />
-                The Surrogate File Pattern
-              </h4>
-              <p className="text-base">
-                Instead of returning a monolithic, gigabyte-sized result string, the tool writes it to a
-                local file or object storage and returns a highly compressed response to the LLM with
-                instructions to use a specialized <code className="bg-slate-100 px-1 rounded">read_chunk</code> tool.
-              </p>
-            </div>
-          </div>
+          </section>
 
-          <h3 className="text-2xl font-bold text-slate-800 mt-10 mb-4">Streaming Partial Updates</h3>
-          <p>
-            For long-running models such as Monte Carlo simulations, MCP supports incremental streaming via
-            standard Server-Sent Events (SSE) or WebSockets to transmit partial results.
-          </p>
-          <CodeBlock
-            language="json"
-            code={`{
+          {/* Section 1 – Ecosystem & Workflow */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Activity className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Ecosystem & Workflow Automation</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              The deployment of MCP within quantitative finance necessitates profound, low-latency integration
+              with existing algorithmic trading libraries, time-series data feeds, and institutional execution
+              engines.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6 font-serif">Algorithmic Backtesting Frameworks</h3>
+            
+            <ComparisonGrid>
+              <ComparisonCard title="VectorBT" tone="neutral">
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Massive parameter sweeps</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Array-based architecture, fully vectorized utilizing NumPy and Numba for Just-In-Time (JIT) compilation.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Zipline" tone="neutral">
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Live-trading transition</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Event-driven simulation engine, historically aligned with the Quantopian ecosystem. Simulates realistic slippage.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Backtrader" tone="neutral">
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Multi-indicator building</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Event-driven, highly flexible framework boasting extensive built-in technical indicator support.</p>
+              </ComparisonCard>
+            </ComparisonGrid>
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mt-10">
+              Through an MCP interface, an LLM can be instructed to conduct an entire quantitative lifecycle.
+              Advanced skills enable the implementation of standardized performance metrics, calculating Sharpe
+              ratios, maximum drawdowns, and executing rigorous out-of-sample walk-forward analyses.
+            </p>
+          </section>
+
+          {/* Section 2 – Massive Datasets */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Database className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Architecting for Scale: Massive Datasets</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              Perhaps the most formidable architectural challenge is mitigating the strict constraints of the
+              language model context window. Financial data payloads can instantly exhaust available tokens.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mt-8 mb-10">
+              <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3">
+                  <Layers size={20} className="text-emerald-500" />
+                  Context Compaction
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400">
+                  Servers must prioritize highly compact contexts. When returning wide schemas, servers
+                  implement automated downsampling, pagination hints, and intelligent truncation. A critical
+                  best practice is explicit "result provenance" metadata.
+                </p>
+              </div>
+              <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3">
+                  <Code size={20} className="text-emerald-500" />
+                  The Surrogate File Pattern
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400">
+                  Instead of returning a monolithic, gigabyte-sized result string, the tool writes it to a
+                  local file or object storage and returns a highly compressed response to the LLM with
+                  instructions to use a specialized <code className="bg-slate-200 dark:bg-slate-800 px-1 rounded text-sm text-indigo-600 dark:text-indigo-400">read_chunk</code> tool.
+                </p>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6 font-serif">Streaming Partial Updates</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              For long-running models such as Monte Carlo simulations, MCP supports incremental streaming via
+              standard Server-Sent Events (SSE) or WebSockets to transmit partial results.
+            </p>
+            
+            <div className="bg-slate-900 rounded-xl overflow-hidden mb-10 border border-slate-800">
+              <div className="bg-slate-800 px-4 py-2 text-xs font-mono text-slate-400 border-b border-slate-700 flex items-center gap-2">
+                <Terminal size={14} /> JSON
+              </div>
+              <pre className="p-6 text-sm font-mono text-emerald-300 overflow-x-auto">
+{`{
   "jsonrpc": "2.0",
   "method": "tool/resultChunk",
   "params": {
@@ -244,78 +143,89 @@ export default function McpQuantFinancePage() {
     "elapsedMs": 2450
   }
 }`}
-          />
-        </Section>
-
-        {/* Section 3 – Stateful Architecture */}
-        <Section title="Stateful Architecture &amp; Memory" icon={Server} color="rose">
-          <p>
-            Unlike traditional REST APIs, advanced AI workflows require profound continuity. An AI agent
-            tasked with conducting a forensic audit must retain memory and learn dynamically over sessions
-            spanning hours.
-          </p>
-
-          <div className="flex flex-col md:flex-row gap-6 mt-8">
-            <div className="flex-1 bg-white border border-rose-100 p-6 rounded-2xl shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500">
-                <Cpu size={64} />
-              </div>
-              <h4 className="text-xl font-bold text-rose-700 mb-3">L1: Process-Bound Memory</h4>
-              <p className="text-base relative z-10">
-                Data is stored directly within the MCP server&apos;s active process memory utilizing
-                dictionaries or local variables. Provides ultra-fast, sub-millisecond retrieval times.
-                However, it is ephemeral — data is lost if the server process restarts.
-              </p>
+              </pre>
             </div>
-            <div className="flex-1 bg-rose-600 text-white p-6 rounded-2xl shadow-md relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 text-white">
-                <Layers size={64} />
+          </section>
+
+          {/* Section 3 – Stateful Architecture */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Server className="w-6 h-6" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">L2: Distributed Multi-Graph</h4>
-              <p className="text-base text-rose-100 relative z-10">
-                Migrates state to external, distributed caching layers (Redis / Vector DBs). Advanced
-                servers like MemCP bifurcate storage into &ldquo;Memory&rdquo; (insights) and
-                &ldquo;Contexts&rdquo; (massive artifacts), routing the model back to relevant files and
-                optimizing token burn.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Stateful Architecture & Memory</h2>
             </div>
-          </div>
-        </Section>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              Unlike traditional REST APIs, advanced AI workflows require profound continuity. An AI agent
+              tasked with conducting a forensic audit must retain memory and learn dynamically over sessions
+              spanning hours.
+            </p>
 
-        {/* Section 4 – Session-Aware Primitives */}
-        <Section title="Session-Aware Primitives" icon={Cpu} color="amber">
-          <p>
-            Successful stateful connection unlocks three extraordinarily powerful client capabilities:{' '}
-            <strong>Elicitation</strong>, <strong>Sampling</strong>, and{' '}
-            <strong>Progress Notifications</strong>.
-          </p>
+            <ComparisonGrid>
+              <ComparisonCard title="L1: Process-Bound Memory" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300">Data is stored directly within the MCP server's active process memory utilizing dictionaries or local variables. Provides ultra-fast, sub-millisecond retrieval times. However, it is ephemeral — data is lost if the server process restarts.</p>
+              </ComparisonCard>
+              <ComparisonCard title="L2: Distributed Multi-Graph" tone="pos">
+                <p className="text-sm text-slate-700 dark:text-slate-300">Migrates state to external, distributed caching layers (Redis / Vector DBs). Advanced servers like MemCP bifurcate storage into "Memory" (insights) and "Contexts" (massive artifacts), routing the model back to relevant files and optimizing token burn.</p>
+              </ComparisonCard>
+            </ComparisonGrid>
+          </section>
 
-          <div className="space-y-6 mt-8">
-            <Callout title="1. Elicitation: Human-in-the-Loop" type="info">
-              Enables an MCP server to pause execution mid-tool call to proactively request structured
-              input or explicit authorization from the human user. Used for confirming live market orders
-              or OAuth2 flows.
-            </Callout>
+          {/* Section 4 – Session-Aware Primitives */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Session-Aware Primitives</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              Successful stateful connection unlocks three extraordinarily powerful client capabilities: <strong>Elicitation</strong>, <strong>Sampling</strong>, and <strong>Progress Notifications</strong>.
+            </p>
 
-            <Callout title="2. Sampling: Reversing Dependencies" type="info">
-              Allows the server to tap into the intelligence of the client&apos;s already-connected LLM.
-              The client controls which model to deploy, distributing operational costs and allowing for
-              sophisticated nested agentic loops.
-            </Callout>
+            <div className="space-y-6 mt-8">
+              <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
+                <AlertCircle className="shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={24} />
+                <div>
+                  <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-xl">1. Elicitation: Human-in-the-Loop</h4>
+                  <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
+                    Enables an MCP server to pause execution mid-tool call to proactively request structured
+                    input or explicit authorization from the human user. Used for confirming live market orders
+                    or OAuth2 flows.
+                  </p>
+                </div>
+              </div>
 
-            <div className="p-6 bg-amber-50 rounded-2xl border border-amber-200">
-              <h4 className="font-bold text-amber-900 flex items-center gap-2 mb-3">
-                <Activity size={20} />
-                3. Progress Notifications
-              </h4>
-              <p className="text-base text-amber-800 mb-4">
-                The MCP specification provides native, optional progress tracking for long-running
-                operations. The client intercepts these asynchronous emissions to render real-time
-                progress bars.
-              </p>
-              <CodeBlock
-                language="python"
-                code={`# Example of setting an MCP progress handler
+              <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
+                <AlertCircle className="shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={24} />
+                <div>
+                  <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-xl">2. Sampling: Reversing Dependencies</h4>
+                  <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
+                    Allows the server to tap into the intelligence of the client's already-connected LLM.
+                    The client controls which model to deploy, distributing operational costs and allowing for
+                    sophisticated nested agentic loops.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 mt-8">
+                <h4 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3 text-xl font-serif">
+                  <Activity size={20} className="text-emerald-500" />
+                  3. Progress Notifications
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  The MCP specification provides native, optional progress tracking for long-running
+                  operations. The client intercepts these asynchronous emissions to render real-time
+                  progress bars.
+                </p>
+                <div className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                  <div className="bg-slate-800 px-4 py-2 text-xs font-mono text-slate-400 border-b border-slate-700 flex items-center gap-2">
+                    <Terminal size={14} /> PYTHON
+                  </div>
+                  <pre className="p-6 text-sm font-mono text-emerald-300 overflow-x-auto">
+{`# Example of setting an MCP progress handler
 async def progress_handler(
     progress: float,
     total: float | None,
@@ -331,95 +241,98 @@ async with client:
         {"iterations": 100000},
         progress_handler=progress_handler
     )`}
-              />
+                  </pre>
+                </div>
+              </div>
             </div>
-          </div>
-        </Section>
+          </section>
 
-        {/* Section 5 – Zero-Trust Security */}
-        <Section title="Zero-Trust Security &amp; Kubernetes" icon={ShieldCheck} color="violet">
-          <p>
-            MCP servers represent a critical node within modern enterprise architectures. If a malicious
-            actor compromises an MCP server, they gain indirect control over tool execution.
-          </p>
-
-          <h3 className="text-xl font-bold text-slate-800 mt-8 mb-4">Tool Capability Modeling</h3>
-          <ul className="space-y-3 mb-10 list-disc list-inside text-slate-700">
-            <li>
-              <strong>Read vs. Write Segregation:</strong> Explicit separation to prevent accidental data
-              modification. Tools must operate in read-only mode by default.
-            </li>
-            <li>
-              <strong>Strict Resource Limits:</strong> Bound by CPU, memory, and execution time limits to
-              prevent resource exhaustion (e.g., aggressive query timeouts).
-            </li>
-            <li>
-              <strong>Explicit Side Effects Validation:</strong> Tools must assume permission checks have
-              already occurred at the server boundary.
-            </li>
-          </ul>
-
-          <h3 className="text-xl font-bold text-slate-800 mb-4">
-            K8s Transport Dilemma: WebSockets vs SSE
-          </h3>
-          <div className="overflow-x-auto rounded-xl border border-violet-100 shadow-sm">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-violet-50 text-violet-900 border-b border-violet-100">
-                <tr>
-                  <th className="p-4 font-bold">Protocol</th>
-                  <th className="p-4 font-bold">Directionality</th>
-                  <th className="p-4 font-bold">K8s Ingress Complexity</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white text-slate-700 divide-y divide-violet-50">
-                <tr>
-                  <td className="p-4 font-semibold">HTTP + SSE</td>
-                  <td className="p-4">Unidirectional (Server &rarr; Client); requires separate POSTs.</td>
-                  <td className="p-4 text-rose-600 font-medium">High; vulnerable to round-robin issues.</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-semibold">Streamable HTTP</td>
-                  <td className="p-4">Bidirectional (via GET/POST).</td>
-                  <td className="p-4 text-rose-600 font-medium">High; requires precise session tracking.</td>
-                </tr>
-                <tr className="bg-emerald-50 text-emerald-900">
-                  <td className="p-4 font-bold flex items-center gap-2">
-                    <CheckCircle2 size={16} /> WebSockets
-                  </td>
-                  <td className="p-4 font-medium">
-                    Fully Bidirectional over a persistent TCP connection.
-                  </td>
-                  <td className="p-4 font-medium">Low; connection fixed to a single pod.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </Section>
-
-        {/* Section 6 – UX Engineering */}
-        <Section title="UX Engineering for &lsquo;Slow AI&rsquo;" icon={LayoutDashboard} color="sky">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            <div>
-              <p className="mb-6">
-                The traditional software expectation of immediate, highly consistent UI is upended by the
-                non-deterministic, asynchronous batch processing nature of LLMs — categorized as{' '}
-                <strong>&ldquo;Slow AI&rdquo;</strong>.
-              </p>
-              <Callout title="The 'Zombie UX'" type="warning">
-                Waiting extended periods generates acute psychological anxiety. UX must explicitly embrace{' '}
-                <strong>task handoff</strong>. The UI must release its &ldquo;hostage&rdquo; state,
-                allowing analysts to navigate away while the agent computes in the background.
-              </Callout>
+          {/* Section 5 – Zero-Trust Security */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Zero-Trust Security & Kubernetes</h2>
             </div>
-            <div className="bg-slate-800 p-8 rounded-2xl text-slate-300 shadow-lg border border-slate-700">
-              <h4 className="text-white font-bold mb-4 text-lg border-b border-slate-700 pb-2">
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+              MCP servers represent a critical node within modern enterprise architectures. If a malicious
+              actor compromises an MCP server, they gain indirect control over tool execution.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-6 font-serif">Tool Capability Modeling</h3>
+            <ul className="space-y-4 list-disc list-inside text-lg text-slate-600 dark:text-slate-400 mb-10">
+              <li><strong>Read vs. Write Segregation:</strong> Explicit separation to prevent accidental data modification. Tools must operate in read-only mode by default.</li>
+              <li><strong>Strict Resource Limits:</strong> Bound by CPU, memory, and execution time limits to prevent resource exhaustion (e.g., aggressive query timeouts).</li>
+              <li><strong>Explicit Side Effects Validation:</strong> Tools must assume permission checks have already occurred at the server boundary.</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">K8s Transport Dilemma: WebSockets vs SSE</h3>
+            <div className="overflow-x-auto bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 mb-10 p-4">
+              <table className="w-full text-sm text-left">
+                <thead className="text-slate-500 font-semibold uppercase tracking-wider border-b border-slate-200 dark:border-slate-700">
+                  <tr>
+                    <th className="pb-3">Protocol</th>
+                    <th className="pb-3">Directionality</th>
+                    <th className="pb-3">K8s Ingress Complexity</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+                  <tr>
+                    <td className="py-4 font-bold text-slate-800 dark:text-slate-200">HTTP + SSE</td>
+                    <td className="py-4 text-slate-600 dark:text-slate-400">Unidirectional (Server &rarr; Client); requires separate POSTs.</td>
+                    <td className="py-4 font-bold text-rose-600">High; vulnerable to round-robin issues.</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 font-bold text-slate-800 dark:text-slate-200">Streamable HTTP</td>
+                    <td className="py-4 text-slate-600 dark:text-slate-400">Bidirectional (via GET/POST).</td>
+                    <td className="py-4 font-bold text-rose-600">High; requires precise session tracking.</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mt-3">
+                      <CheckCircle2 size={16} /> WebSockets
+                    </td>
+                    <td className="py-4 text-emerald-600 dark:text-emerald-400">Fully Bidirectional over a persistent TCP connection.</td>
+                    <td className="py-4 font-bold text-emerald-600 dark:text-emerald-400">Low; connection fixed to a single pod.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Section 6 – UX Engineering */}
+          <section className="py-16 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <LayoutDashboard className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">6. UX Engineering for "Slow AI"</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              The traditional software expectation of immediate, highly consistent UI is upended by the
+              non-deterministic, asynchronous batch processing nature of LLMs — categorized as <strong>"Slow AI"</strong>.
+            </p>
+
+            <div className="p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl flex gap-4 shadow-sm mb-10">
+              <AlertTriangle className="shrink-0 mt-1 text-amber-600 dark:text-amber-400" size={24} />
+              <div>
+                <h4 className="font-bold text-amber-900 dark:text-amber-300 mb-2 font-serif text-xl">The 'Zombie UX'</h4>
+                <p className="text-amber-800 dark:text-amber-200 leading-relaxed">
+                  Waiting extended periods generates acute psychological anxiety. UX must explicitly embrace <strong>task handoff</strong>. The UI must release its "hostage" state, allowing analysts to navigate away while the agent computes in the background.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 p-8 rounded-2xl text-slate-300 shadow-lg border border-slate-800">
+              <h4 className="text-white font-bold mb-4 text-lg border-b border-slate-700 pb-2 font-serif">
                 Conceptual Breadcrumbs
               </h4>
-              <p className="text-sm leading-relaxed mb-6">
-                The system must provide early, progressive glimpses into the AI&apos;s active reasoning
-                process.
+              <p className="text-sm leading-relaxed mb-6 text-slate-400">
+                The system must provide early, progressive glimpses into the AI's active reasoning process.
               </p>
-              <div className="space-y-3 font-mono text-xs">
+              <div className="space-y-3 font-mono text-sm">
                 <div className="text-emerald-400 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   [Progress: 40%] Analyzing covariance matrices...
@@ -430,9 +343,10 @@ async with client:
                 </div>
               </div>
             </div>
-          </div>
-        </Section>
-      </main>
+          </section>
+
+        </div>
+      </div>
     </ArticleFrame>
   );
 }

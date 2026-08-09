@@ -5,20 +5,20 @@ import { Clock, BarChart3, Zap, ShieldAlert, Target, ArrowRight, Users, Activity
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-white rounded-2xl shadow-sm border border-slate-100 p-8 ${className}`}>
+  <div className={`bg-white dark:bg-[#14171B] rounded-2xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10 p-8 ${className}`}>
     {children}
   </div>
 );
 
 const Badge = ({ children, color = "blue" }: { children: React.ReactNode; color?: string }) => {
   const colors: Record<string, string> = {
-    blue: "bg-blue-50 text-blue-600 border-blue-100",
-    emerald: "bg-emerald-50 text-emerald-600 border-emerald-100",
-    rose: "bg-rose-50 text-rose-600 border-rose-100",
-    amber: "bg-amber-50 text-amber-600 border-amber-100",
-    indigo: "bg-indigo-50 text-indigo-600 border-indigo-100",
-    slate: "bg-slate-50 text-slate-600 border-slate-200",
-    violet: "bg-violet-50 text-violet-600 border-violet-100",
+    blue: "bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-900/40",
+    emerald: "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-900/40",
+    rose: "bg-rose-50 text-rose-600 border-rose-100 dark:bg-rose-900/30 dark:text-rose-400 dark:border-rose-900/40",
+    amber: "bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-900/40",
+    indigo: "bg-indigo-50 text-indigo-600 border-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 dark:border-indigo-900/40",
+    slate: "bg-slate-50 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700",
+    violet: "bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-900/30 dark:text-violet-400 dark:border-violet-900/40",
   };
   return (
     <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${colors[color] || colors.blue}`}>
@@ -27,7 +27,7 @@ const Badge = ({ children, color = "blue" }: { children: React.ReactNode; color?
   );
 };
 
-const SectionHeading = ({ icon: Icon, title, subtitle, colorClass = "text-blue-600" }: {
+const SectionHeading = ({ icon: Icon, title, subtitle, colorClass = "text-blue-600 dark:text-blue-400" }: {
   icon: React.ComponentType<{ size: number }>;
   title: string;
   subtitle: string;
@@ -35,12 +35,12 @@ const SectionHeading = ({ icon: Icon, title, subtitle, colorClass = "text-blue-6
 }) => (
   <div className="mb-12">
     <div className="flex items-center gap-4 mb-4">
-      <div className={`p-3 rounded-xl bg-white shadow-sm border border-slate-100 ${colorClass}`}>
+      <div className={`p-3 rounded-xl bg-white dark:bg-[#14171B] shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10 ${colorClass}`}>
         <Icon size={28} />
       </div>
-      <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">{title}</h2>
+      <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">{title}</h2>
     </div>
-    <p className="text-slate-500 text-xl max-w-3xl leading-relaxed">{subtitle}</p>
+    <p className="text-slate-500 dark:text-slate-400 text-xl max-w-3xl leading-relaxed">{subtitle}</p>
   </div>
 );
 
@@ -117,7 +117,7 @@ export default function QuantifyingIntradayAlpha() {
 
   return (
     <ArticleFrame slug="quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow">
-      <div className="bg-transparent font-sans">
+      <div className="bg-transparent font-sans dark:text-slate-300">
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
           <InfographicSlot alt="Intraday Alpha U-Curve Infographic" />
         </div>
@@ -133,20 +133,20 @@ export default function QuantifyingIntradayAlpha() {
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               <div className="space-y-8">
                 <div className="prose prose-slate">
-                  <h3 className="text-2xl font-bold text-slate-800">Why the 'U' Exists</h3>
-                  <p className="text-slate-600 leading-relaxed text-lg">
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Why the 'U' Exists</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
                     The concentration of volume at the open and close is not accidental—it is driven by <strong>Information Asymmetry</strong> and <strong>Institutional Mandates</strong>.
                   </p>
                 </div>
                 <div className="grid gap-6">
                   <Card className="hover:shadow-md transition-shadow">
                     <div className="flex gap-4">
-                      <div className="shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                      <div className="shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400">
                         <BookOpen size={24} />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg mb-2">The Information Hypothesis</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">
+                        <h4 className="font-bold text-lg mb-2 dark:text-white">The Information Hypothesis</h4>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                           During the overnight session, new information accumulates. The first 30–60 minutes represent the market's "aggressive reconciliation" of this data. Informed traders trade early to capitalize on private info before it is fully reflected.
                         </p>
                       </div>
@@ -154,12 +154,12 @@ export default function QuantifyingIntradayAlpha() {
                   </Card>
                   <Card className="hover:shadow-md transition-shadow">
                     <div className="flex gap-4">
-                      <div className="shrink-0 w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600">
+                      <div className="shrink-0 w-12 h-12 bg-indigo-100 dark:bg-indigo-900/20 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400">
                         <Scale size={24} />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg mb-2">The Rebalancing Hypothesis</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">
+                        <h4 className="font-bold text-lg mb-2 dark:text-white">The Rebalancing Hypothesis</h4>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                           Passive funds (ETFs/Mutual Funds) must execute trades close to the official closing price to minimize tracking error. This creates a massive surge in the final 30 minutes.
                         </p>
                       </div>
@@ -208,48 +208,48 @@ export default function QuantifyingIntradayAlpha() {
             />
             <div className="grid md:grid-cols-3 gap-8">
               <div className="space-y-6">
-                <h4 className="text-xl font-bold flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-sm">1</span>
+                <h4 className="text-xl font-bold dark:text-white flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm">1</span>
                   The First 15 Minutes
                 </h4>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   <strong>"The Amateur Hour."</strong> Markets are flooded with retail orders. Volatility is high, but the signal-to-noise ratio is low. Research indicates price direction here is only a 45% predictor of the daily trend.
                 </p>
-                <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">
-                  <p className="text-xs font-bold text-amber-800 uppercase mb-2 italic">Pro Tip</p>
-                  <p className="text-xs text-amber-700">
+                <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-100 dark:border-amber-900/30">
+                  <p className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase mb-2 italic">Pro Tip</p>
+                  <p className="text-xs text-amber-700 dark:text-amber-400">
                     Avoid entering trades between 9:30 and 9:45. Slippage and "whipsaws" peak as market makers adjust spreads.
                   </p>
                 </div>
               </div>
               <div className="space-y-6">
-                <h4 className="text-xl font-bold flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">2</span>
+                <h4 className="text-xl font-bold dark:text-white flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">2</span>
                   The 10:00 AM Pivot
                 </h4>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   <strong>Institutional Confirmation.</strong> Major economic data is released. Institutional desks begin executing parent orders. This is often where the intraday low or high is established.
                 </p>
                 <ul className="space-y-2">
-                  <li className="text-xs text-slate-500 flex items-center gap-2">
-                    <ArrowRight size={12} className="text-blue-500" /> Watch for "Gap Fills" at this time.
+                  <li className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <ArrowRight size={12} className="text-blue-500 dark:text-blue-400" /> Watch for "Gap Fills" at this time.
                   </li>
-                  <li className="text-xs text-slate-500 flex items-center gap-2">
-                    <ArrowRight size={12} className="text-blue-500" /> Key time for Mean Reversion trades.
+                  <li className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <ArrowRight size={12} className="text-blue-500 dark:text-blue-400" /> Key time for Mean Reversion trades.
                   </li>
                 </ul>
               </div>
               <div className="space-y-6">
-                <h4 className="text-xl font-bold flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">3</span>
+                <h4 className="text-xl font-bold dark:text-white flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm">3</span>
                   The 10:30 Trend Set
                 </h4>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   <strong>The True Trend.</strong> Breaking the high/low of the first hour has an 80% statistical probability of continuation until the European close (11:30 AM).
                 </p>
-                <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
-                  <p className="text-xs font-bold text-emerald-800 uppercase mb-2">The Golden Rule</p>
-                  <p className="text-xs text-emerald-700">
+                <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
+                  <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase mb-2">The Golden Rule</p>
+                  <p className="text-xs text-emerald-700 dark:text-emerald-400">
                     "Amateurs open the market; Professionals close the first hour."
                   </p>
                 </div>
@@ -258,14 +258,14 @@ export default function QuantifyingIntradayAlpha() {
           </section>
 
           {/* Section 3: Midday Trap */}
-          <section className="bg-slate-50 rounded-[48px] p-12 md:p-24 border border-slate-200">
+          <section className="bg-slate-50 dark:bg-[#14171B] rounded-[48px] p-12 md:p-24 border border-slate-200 dark:border-white/10">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
                 <Badge color="rose">Critical Risk Warning</Badge>
-                <h2 className="mt-6 text-4xl font-bold mb-6 leading-tight">
+                <h2 className="mt-6 text-4xl font-bold mb-6 leading-tight dark:text-white">
                   Navigating the Midday "Liquidity Desert"
                 </h2>
-                <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
                   Between 11:30 AM and 2:00 PM ET, liquidity dries up. This period is dominated by <strong>Passive Execution Algos</strong> and <strong>Predatory HFTs</strong> exploiting thin order books.
                 </p>
                 <div className="grid gap-4">
@@ -274,35 +274,35 @@ export default function QuantifyingIntradayAlpha() {
                     { icon: Anchor, title: "VWAP Magnetism", text: "Price often drifts toward the Volume Weighted Average Price (VWAP) as algos passively execute child orders." },
                     { icon: Target, title: "Stop Hunting", text: "Algos 'ping' levels to trigger retail stops, pushing price enough to generate liquidity." }
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white shadow-sm border border-slate-100">
-                      <div className="text-rose-500">
+                    <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-black/40 shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
+                      <div className="text-rose-500 dark:text-rose-400">
                         <item.icon size={24} />
                       </div>
                       <div>
-                        <h5 className="font-bold text-slate-800">{item.title}</h5>
-                        <p className="text-sm text-slate-500">{item.text}</p>
+                        <h5 className="font-bold text-slate-800 dark:text-white">{item.title}</h5>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">{item.text}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="relative">
-                <div className="bg-white p-8 rounded-3xl shadow-2xl border border-slate-200">
+                <div className="bg-white dark:bg-[#14171B] p-8 rounded-3xl shadow-2xl dark:shadow-none border border-slate-200 dark:border-white/10">
                   <div className="flex items-center justify-between mb-8">
                     <span className="text-xs font-bold text-slate-400">MICROSTRUCTURE ANALYSIS</span>
                     <span className="text-[10px] font-bold text-rose-500 uppercase">High Risk Zone</span>
                   </div>
                   <div className="space-y-6">
-                    <div className="flex justify-between items-center text-sm border-b pb-4">
-                      <span className="text-slate-500 font-medium">Spreads Widening</span>
-                      <span className="text-rose-600 font-bold">+24%</span>
+                    <div className="flex justify-between items-center text-sm border-b dark:border-slate-800 pb-4">
+                      <span className="text-slate-500 dark:text-slate-400 font-medium">Spreads Widening</span>
+                      <span className="text-rose-600 dark:text-rose-400 font-bold">+24%</span>
                     </div>
-                    <div className="flex justify-between items-center text-sm border-b pb-4">
-                      <span className="text-slate-500 font-medium">Algorithmic Dominance</span>
-                      <span className="text-blue-600 font-bold">92% of Flow</span>
+                    <div className="flex justify-between items-center text-sm border-b dark:border-slate-800 pb-4">
+                      <span className="text-slate-500 dark:text-slate-400 font-medium">Algorithmic Dominance</span>
+                      <span className="text-blue-600 dark:text-blue-400 font-bold">92% of Flow</span>
                     </div>
                     <div className="pt-4">
-                      <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                         <div className="h-full bg-rose-500 w-[85%]" />
                       </div>
                       <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase">Probability of False Breakout</p>
@@ -335,7 +335,7 @@ export default function QuantifyingIntradayAlpha() {
                   <div className="p-8 space-y-8">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h5 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
                           <Timer size={18} className="text-indigo-500" />
                           3:50 PM ET Deadline
                         </h5>
@@ -344,7 +344,7 @@ export default function QuantifyingIntradayAlpha() {
                         </p>
                       </div>
                       <div>
-                        <h5 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
                           <Repeat size={18} className="text-indigo-500" />
                           Passive Index Flow
                         </h5>
@@ -353,7 +353,7 @@ export default function QuantifyingIntradayAlpha() {
                         </p>
                       </div>
                     </div>
-                    <div className="pt-6 border-t border-slate-100">
+                    <div className="pt-6 border-t border-slate-100 dark:border-slate-800">
                       <div className="flex items-center gap-4 mb-4">
                         <Badge color="indigo">Gamma Trigger</Badge>
                         <span className="text-xs font-bold text-slate-400 uppercase">Options Expiry Impact</span>
@@ -367,15 +367,15 @@ export default function QuantifyingIntradayAlpha() {
               </div>
               {/* Sidebar Stats & Conclusions */}
               <div className="lg:col-span-5 space-y-6">
-                <Card className="bg-white border-l-4 border-l-indigo-500">
-                  <h4 className="font-bold text-lg mb-3">The 3:30 PM Drift Phenomenon</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                <Card className="bg-white dark:bg-[#14171B] border-l-4 border-l-indigo-500">
+                  <h4 className="font-bold text-lg mb-3 dark:text-white">The 3:30 PM Drift Phenomenon</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                     Institutional traders 'anticipate' the MOC imbalance. If the morning trend was strong, 'Smart Money' will often bid up the stock ahead of the 3:50 PM release, creating a localized trend that retail rarely participates in.
                   </p>
                 </Card>
-                <Card className="bg-white border-l-4 border-l-emerald-500">
-                  <h4 className="font-bold text-lg mb-3 text-emerald-700">Swing Trade Alpha</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                <Card className="bg-white dark:bg-[#14171B] border-l-4 border-l-emerald-500">
+                  <h4 className="font-bold text-lg mb-3 text-emerald-700 dark:text-emerald-400">Swing Trade Alpha</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                     Data suggests stocks closing at their <strong>absolute high of the day</strong> (HOD) at 4:00 PM have a statistically significant edge for a 'Gap Up' the next morning. It signals that institutions were willing to buy all available liquidity at any price.
                   </p>
                 </Card>
@@ -409,7 +409,7 @@ export default function QuantifyingIntradayAlpha() {
                 />
               </div>
               <div className="flex gap-2 pb-14">
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-400 border px-3 py-1.5 rounded-lg bg-white uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-400 border dark:border-white/10 px-3 py-1.5 rounded-lg bg-white dark:bg-[#14171B] uppercase tracking-widest">
                   <Timer size={14} className="text-violet-500" /> Live Strategy Logic
                 </div>
               </div>
@@ -422,8 +422,8 @@ export default function QuantifyingIntradayAlpha() {
                     onClick={() => setActiveSlot(idx)}
                     className={`w-full text-left p-6 rounded-2xl transition-all duration-300 border-2 ${
                       activeSlot === idx 
-                        ? `bg-white border-${item.color}-500 shadow-xl scale-[1.02] z-10` 
-                        : 'bg-transparent border-transparent hover:bg-slate-100 text-slate-500'
+                        ? `bg-white dark:bg-[#14171B] border-${item.color}-500 shadow-xl dark:shadow-none scale-[1.02] z-10` 
+                        : 'bg-transparent border-transparent hover:bg-slate-100 dark:hover:bg-slate-900/40 text-slate-500'
                     }`}
                   >
                     <div className="flex justify-between items-center mb-1">
@@ -435,7 +435,7 @@ export default function QuantifyingIntradayAlpha() {
                       {activeSlot === idx && <div className={`w-2 h-2 rounded-full bg-${item.color}-500 animate-pulse`} />}
                     </div>
                     <h4 className={`text-xl font-black ${
-                      activeSlot === idx ? 'text-slate-900' : 'text-slate-400'
+                      activeSlot === idx ? 'text-slate-900 dark:text-white' : 'text-slate-400'
                     }`}>
                       {item.title}
                     </h4>
@@ -443,10 +443,10 @@ export default function QuantifyingIntradayAlpha() {
                 ))}
               </div>
               <div className="lg:col-span-8">
-                <div className="bg-white rounded-[32px] border border-slate-200 shadow-2xl p-8 md:p-12 relative overflow-hidden min-h-[600px]">
+                <div className="bg-white dark:bg-[#14171B] rounded-[32px] border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-none p-8 md:p-12 relative overflow-hidden min-h-[600px]">
                   <div className="absolute top-0 right-0 p-8 flex flex-col items-end">
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Volume Intensity</div>
-                    <div className="w-48 h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="w-48 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                       <div 
                         className={`h-full transition-all duration-1000 bg-${matrixData[activeSlot].color}-500`}
                         style={{ width: `${matrixData[activeSlot].intensity}%` }}
@@ -458,7 +458,7 @@ export default function QuantifyingIntradayAlpha() {
                       <Badge color={matrixData[activeSlot].color}>{matrixData[activeSlot].phase}</Badge>
                       <Badge color="slate">Risk: {matrixData[activeSlot].risk}</Badge>
                     </div>
-                    <h3 className={`text-5xl font-black mb-6 text-slate-900 leading-tight`}>
+                    <h3 className={`text-5xl font-black mb-6 text-slate-900 dark:text-white leading-tight`}>
                       {matrixData[activeSlot].title}
                     </h3>
                     <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-2xl">
@@ -467,29 +467,29 @@ export default function QuantifyingIntradayAlpha() {
                     <div className="grid md:grid-cols-2 gap-10">
                       <div className="space-y-8">
                         <div>
-                          <h5 className="flex items-center gap-2 text-sm font-black text-slate-900 uppercase tracking-widest mb-4">
-                            <Users size={18} className="text-blue-500" /> Participant Mix
+                          <h5 className="flex items-center gap-2 text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest mb-4">
+                            <Users size={18} className="text-blue-500 dark:text-blue-400" /> Participant Mix
                           </h5>
-                          <p className="text-slate-600 font-medium">{matrixData[activeSlot].participants}</p>
+                          <p className="text-slate-600 dark:text-slate-300 font-medium">{matrixData[activeSlot].participants}</p>
                         </div>
                         <div>
-                          <h5 className="flex items-center gap-2 text-sm font-black text-slate-900 uppercase tracking-widest mb-4">
+                          <h5 className="flex items-center gap-2 text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest mb-4">
                             <Crosshair size={18} className="text-emerald-500" /> Primary Strategy
                           </h5>
-                          <p className={`text-lg font-bold text-${matrixData[activeSlot].color}-600`}>
+                          <p className={`text-lg font-bold text-${matrixData[activeSlot].color}-600 dark:text-${matrixData[activeSlot].color}-400`}>
                             {matrixData[activeSlot].strategy}
                           </p>
                         </div>
                       </div>
-                      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                        <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b pb-4">
+                      <div className="bg-slate-50 dark:bg-slate-900/20 rounded-2xl p-6 border border-slate-100 dark:border-slate-800">
+                        <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b dark:border-slate-800 pb-4">
                           Operational Protocol
                         </h5>
                         <div className="space-y-4">
                           <div className="space-y-2">
                             <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Do This:</p>
                             {matrixData[activeSlot].do.map((item, i) => (
-                              <div key={i} className="flex items-center gap-2 text-sm text-slate-700 font-semibold">
+                              <div key={i} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 font-semibold">
                                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> {item}
                               </div>
                             ))}
@@ -497,7 +497,7 @@ export default function QuantifyingIntradayAlpha() {
                           <div className="space-y-2 pt-4">
                             <p className="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Avoid This:</p>
                             {matrixData[activeSlot].dont.map((item, i) => (
-                              <div key={i} className="flex items-center gap-2 text-sm text-slate-700 font-semibold">
+                              <div key={i} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 font-semibold">
                                 <div className="w-1.5 h-1.5 rounded-full bg-rose-500" /> {item}
                               </div>
                             ))}
@@ -521,26 +521,26 @@ export default function QuantifyingIntradayAlpha() {
             />
             <div className="grid lg:grid-cols-2 gap-12">
               <Card>
-                <h4 className="text-xl font-bold mb-4 text-purple-900">Volume Distribution Model</h4>
-                <div className="bg-slate-50 p-4 rounded-lg mb-4 font-mono text-sm">
-                  <div className="text-slate-700">V(t) = α₁e^(-β₁t) + α₂e^(-β₂(T-t)) + γ</div>
-                  <div className="text-xs text-slate-500 mt-2">
+                <h4 className="text-xl font-bold mb-4 text-purple-900 dark:text-purple-400">Volume Distribution Model</h4>
+                <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg mb-4 font-mono text-sm">
+                  <div className="text-slate-700 dark:text-slate-300">V(t) = α₁e^(-β₁t) + α₂e^(-β₂(T-t)) + γ</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                     Where: V(t) = volume at time t, T = session length, α₁,α₂ = amplitude parameters, β₁,β₂ = decay rates, γ = baseline volume
                   </div>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   This exponential decay model captures the U-shaped volume profile, with high activity at market open (first term) and close (second term), plus a constant baseline representing midday activity.
                 </p>
               </Card>
               <Card>
-                <h4 className="text-xl font-bold mb-4 text-purple-900">Volatility Clustering Index</h4>
-                <div className="bg-slate-50 p-4 rounded-lg mb-4 font-mono text-sm">
-                  <div className="text-slate-700">VCI = σ₁₅ₘᵢₙ / σₘᵢddₐy × 100</div>
-                  <div className="text-xs text-slate-500 mt-2">
+                <h4 className="text-xl font-bold mb-4 text-purple-900 dark:text-purple-400">Volatility Clustering Index</h4>
+                <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg mb-4 font-mono text-sm">
+                  <div className="text-slate-700 dark:text-slate-300">VCI = σ₁₅ₘᵢₙ / σₘᵢddₐy × 100</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                     Where: σ₁₅ₘᵢₙ = volatility in first 15 minutes, σₘᵢddₐy = midday volatility (11:30-14:00)
                   </div>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   The VCI typically ranges from 200-400, indicating that opening volatility is 2-4x higher than midday levels. Values above 300 suggest extreme information asymmetry.
                 </p>
               </Card>
@@ -548,13 +548,13 @@ export default function QuantifyingIntradayAlpha() {
           </section>
 
           {/* Risk Management Framework */}
-          <section className="bg-gradient-to-br from-red-50 to-orange-50 rounded-[48px] p-12 md:p-24 border border-red-100">
+          <section className="bg-gradient-to-br from-red-50 dark:from-red-900/20 to-orange-50 dark:to-orange-900/20 rounded-[48px] p-12 md:p-24 border border-red-100 dark:border-red-900/30">
             <div className="text-center mb-16">
               <Badge color="rose">Risk Management</Badge>
-              <h2 className="mt-6 text-4xl font-bold mb-6 leading-tight text-red-900">
+              <h2 className="mt-6 text-4xl font-bold mb-6 leading-tight text-red-900 dark:text-red-400">
                 The Intraday Risk Framework
               </h2>
-              <p className="text-red-700 text-lg max-w-3xl mx-auto leading-relaxed">
+              <p className="text-red-700 dark:text-red-300 text-lg max-w-3xl mx-auto leading-relaxed">
                 Understanding when NOT to trade is as important as knowing when to enter. This framework provides quantitative guardrails for intraday execution.
               </p>
             </div>
@@ -562,37 +562,37 @@ export default function QuantifyingIntradayAlpha() {
               <Card className="border-l-4 border-l-red-500">
                 <div className="flex items-center gap-3 mb-4">
                   <ShieldAlert className="text-red-500" size={24} />
-                  <h4 className="font-bold text-lg text-red-900">Volume Threshold</h4>
+                  <h4 className="font-bold text-lg text-red-900 dark:text-red-400">Volume Threshold</h4>
                 </div>
                 <p className="text-slate-600 text-sm mb-4">
                   Avoid trading when 5-minute volume drops below 50% of the 20-day average. This indicates thin liquidity and increased slippage risk.
                 </p>
-                <div className="bg-red-50 p-3 rounded-lg">
-                  <p className="text-xs font-bold text-red-800">Rule: V₅ₘᵢₙ &lt; 0.5 × V̄₂₀d → No Trade</p>
+                <div className="bg-red-50 dark:bg-red-900/40 p-3 rounded-lg">
+                  <p className="text-xs font-bold text-red-800 dark:text-red-300">Rule: V₅ₘᵢₙ &lt; 0.5 × V̄₂₀d → No Trade</p>
                 </div>
               </Card>
               <Card className="border-l-4 border-l-amber-500">
                 <div className="flex items-center gap-3 mb-4">
                   <Clock className="text-amber-500" size={24} />
-                  <h4 className="font-bold text-lg text-amber-900">Time-Based Filters</h4>
+                  <h4 className="font-bold text-lg text-amber-900 dark:text-amber-400">Time-Based Filters</h4>
                 </div>
                 <p className="text-slate-600 text-sm mb-4">
                   Implement time-based position sizing: 100% during power hour, 50% during trend engine, 25% during liquidity desert.
                 </p>
-                <div className="bg-amber-50 p-3 rounded-lg">
-                  <p className="text-xs font-bold text-amber-800">Rule: Position Size = f(Time, VCI, Spread)</p>
+                <div className="bg-amber-50 dark:bg-amber-900/40 p-3 rounded-lg">
+                  <p className="text-xs font-bold text-amber-800 dark:text-amber-300">Rule: Position Size = f(Time, VCI, Spread)</p>
                 </div>
               </Card>
               <Card className="border-l-4 border-l-blue-500">
                 <div className="flex items-center gap-3 mb-4">
-                  <Target className="text-blue-500" size={24} />
-                  <h4 className="font-bold text-lg text-blue-900">Spread Monitoring</h4>
+                  <Target className="text-blue-500 dark:text-blue-400" size={24} />
+                  <h4 className="font-bold text-lg text-blue-900 dark:text-blue-400">Spread Monitoring</h4>
                 </div>
                 <p className="text-slate-600 text-sm mb-4">
                   Monitor bid-ask spreads continuously. Spreads widening beyond 2x normal indicate market stress and reduced execution quality.
                 </p>
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <p className="text-xs font-bold text-blue-800">Rule: Spread &gt; 2 × Normal → Reduce Size</p>
+                <div className="bg-blue-50 dark:bg-blue-900/40 p-3 rounded-lg">
+                  <p className="text-xs font-bold text-blue-800 dark:text-blue-300">Rule: Spread &gt; 2 × Normal → Reduce Size</p>
                 </div>
               </Card>
             </div>
@@ -601,7 +601,7 @@ export default function QuantifyingIntradayAlpha() {
         </main>
 
         {/* Tailwind safelist for dynamic color classes */}
-        <div className="hidden border-rose-500 border-blue-500 border-amber-500 border-indigo-500 border-emerald-500 text-rose-600 text-blue-600 text-amber-600 text-indigo-600 text-emerald-600 bg-rose-500 bg-blue-500 bg-amber-500 bg-indigo-500 bg-emerald-500" />
+        <div className="hidden border-rose-500 border-blue-500 border-amber-500 border-indigo-500 border-emerald-500 text-rose-600 text-blue-600 text-amber-600 text-indigo-600 text-emerald-600 bg-rose-500 bg-blue-500 bg-amber-500 bg-indigo-500 bg-emerald-500 dark:text-rose-400 dark:text-blue-400 dark:text-amber-400 dark:text-indigo-400 dark:text-emerald-400" />
       </div>
     </ArticleFrame>
   );

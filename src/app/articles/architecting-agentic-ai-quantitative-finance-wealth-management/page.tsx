@@ -1,447 +1,348 @@
 'use client';
 
 import React from 'react';
-import { BrainCircuit, TrendingUp, ShieldCheck, Layers, GitMerge, Users, Code, Database, Activity, Cpu, Briefcase, Zap, Target, Network, Server, LineChart, Eye, AlertOctagon, ChevronRight, Maximize2, FileText } from 'lucide-react';
+import { BrainCircuit, TrendingUp, ShieldCheck, Layers, GitMerge, Users, Code, Database, Activity, Cpu, Briefcase, Zap, Target, Network, Server, LineChart, Eye, AlertOctagon, CheckCircle } from 'lucide-react';
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
+import { ComparisonGrid, ComparisonCard } from '@/components/articles/article-visuals';
 
 export default function AgenticAIArchitectureArticle() {
-
   return (
     <ArticleFrame slug="architecting-agentic-ai-quantitative-finance-wealth-management">
-      <InfographicSlot alt="Agentic AI Architecture Infographic" />
+      <div className="pb-24">
+        <InfographicSlot alt="Agentic AI Architecture Infographic" />
+        
+        <div className="max-w-4xl mx-auto">
+          {/* STATS SECTION */}
+          <section className="py-16">
+            <ComparisonGrid>
+              <ComparisonCard title="Funding" tone="pos">
+                <p className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">73%</p>
+                <p className="text-sm text-slate-700 dark:text-slate-300">of tech incubator VC funding (Jan '24 - Jun '25) went to agentic AI startups.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Market Expansion" tone="pos">
+                <p className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">815%</p>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Projected market expansion for AI agents in financial services by 2030.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Time Reduction" tone="neutral">
+                <p className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">25-30%</p>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Reduction in time required to gather data and generate analytical reports.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Productivity" tone="neutral">
+                <p className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">35%</p>
+                <p className="text-sm text-slate-700 dark:text-slate-300">Overall operational productivity gains driven by autonomous specialized agents.</p>
+              </ComparisonCard>
+            </ComparisonGrid>
+          </section>
 
-        {/* STATS SECTION */}
-        <section className="py-12 bg-white border-y border-slate-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              <StatCard value="73%" label="of tech incubator VC funding (Jan '24 - Jun '25) went to agentic AI startups." color="text-indigo-600" />
-              <StatCard value="815%" label="Projected market expansion for AI agents in financial services by 2030." color="text-emerald-600" />
-              <StatCard value="25-30%" label="Reduction in time required to gather data and generate analytical reports." color="text-amber-500" />
-              <StatCard value="35%" label="Overall operational productivity gains driven by autonomous specialized agents." color="text-purple-600" />
-            </div>
-          </div>
-        </section>
+          <div className="w-full border-t border-slate-200 dark:border-slate-800" />
 
-        {/* SPECIALIZED SKILLS - QUANT FINANCE */}
-        <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <SectionHeader 
-              title="Specialized AI Agent Skills" 
-              subtitle="Bridging semantic reasoning with deterministic execution"
-              description="An agent's effectiveness is entirely dependent upon its 'skills'—modular programmatic capabilities. Agents must never perform math via neural networks; they must select and parameterize deterministic skills."
-            />
-
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <LineChart className="text-indigo-500 w-8 h-8" />
-                Quantitative Finance & Algorithmic Trading
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <SkillCard 
-                  title="Statistical Arbitrage & Signals"
-                  icon={<Target className="w-6 h-6 text-emerald-500" />}
-                  content="Identifying market inefficiencies by running cointegration tests (Johansen, ADF) for mean-reverting pairs, calculating half-lives, and utilizing technical indicators like MACD, RSI, and Bollinger Bands."
-                  color="bg-emerald-50 border-emerald-100"
-                />
-                <SkillCard 
-                  title="Derivatives Pricing & Modeling"
-                  icon={<Activity className="w-6 h-6 text-blue-500" />}
-                  content="Evaluating complex instruments by executing Black-Scholes equations, constructing binomial trees, and running Monte Carlo simulations for exotic derivatives and Greeks calculations."
-                  color="bg-blue-50 border-blue-100"
-                />
-                <SkillCard 
-                  title="Comprehensive Backtesting"
-                  icon={<Server className="w-6 h-6 text-purple-500" />}
-                  content="Ingesting historical data (Alpha Vantage, Yahoo) for event-driven simulations. Calculates Sharpe/Calmar ratios, max drawdown, and dynamically models slippage, commissions, and market impact."
-                  color="bg-purple-50 border-purple-100"
-                />
-                <SkillCard 
-                  title="Risk & Microstructure Analytics"
-                  icon={<AlertOctagon className="w-6 h-6 text-amber-500" />}
-                  content="Calculating Value at Risk (VaR), stress testing, scenario analysis, and managing correlations. For HFT, analyzing order books and optimizing latency for sub-millisecond execution (<1ms)."
-                  color="bg-amber-50 border-amber-100"
-                />
+          {/* SPECIALIZED SKILLS - QUANT FINANCE */}
+          <section className="py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <BrainCircuit className="w-6 h-6" />
               </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Specialized AI Agent Skills</h2>
             </div>
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              An agent's effectiveness is entirely dependent upon its 'skills'—modular programmatic capabilities. Agents must never perform math via neural networks; they must select and parameterize deterministic skills.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif flex items-center gap-3">
+              <LineChart className="text-indigo-500 w-8 h-8" />
+              Quantitative Finance & Algorithmic Trading
+            </h3>
+            
+            <ComparisonGrid>
+              <ComparisonCard title="Statistical Arbitrage & Signals" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  Identifying market inefficiencies by running cointegration tests (Johansen, ADF) for mean-reverting pairs, calculating half-lives, and utilizing technical indicators like MACD, RSI, and Bollinger Bands.
+                </p>
+              </ComparisonCard>
+              <ComparisonCard title="Derivatives Pricing & Modeling" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  Evaluating complex instruments by executing Black-Scholes equations, constructing binomial trees, and running Monte Carlo simulations for exotic derivatives and Greeks calculations.
+                </p>
+              </ComparisonCard>
+              <ComparisonCard title="Comprehensive Backtesting" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  Ingesting historical data (Alpha Vantage, Yahoo) for event-driven simulations. Calculates Sharpe/Calmar ratios, max drawdown, and dynamically models slippage, commissions, and market impact.
+                </p>
+              </ComparisonCard>
+              <ComparisonCard title="Risk & Microstructure Analytics" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  Calculating Value at Risk (VaR), stress testing, scenario analysis, and managing correlations. For HFT, analyzing order books and optimizing latency for sub-millisecond execution.
+                </p>
+              </ComparisonCard>
+            </ComparisonGrid>
 
             {/* WEALTH MANAGEMENT & ALT DATA */}
-            <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <div className="grid md:grid-cols-2 gap-8 mt-12">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 font-serif">
                   <Briefcase className="text-teal-500 w-6 h-6" />
-                  Wealth Management & Optimization
+                  Wealth Management
                 </h3>
                 <ul className="space-y-6">
-                  <ListItem title="Automated Portfolio Optimization">
-                    Consolidates fragmented account data. Compares allocations against target models and dynamically applies constraints (e.g., avoiding liquidation of legacy holdings) to generate precise execution lists.
-                  </ListItem>
-                  <ListItem title="Continuous Tax-Loss Harvesting (TLH)">
-                    Monitors portfolios 24/7/365 to offset realized gains. Selects optimal tax lots and ensures the portfolio remains in a correlated, tax-neutral posture without triggering wash-sale violations.
-                  </ListItem>
-                  <ListItem title="Hyper-Personalized Client Profiling">
-                    Synthesizes portfolio data with macro-economic news. Autonomously drafts customized communications quantifying the impact of events (like geopolitical shifts) for human advisor review.
-                  </ListItem>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">Automated Portfolio Optimization</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Consolidates fragmented account data. Compares allocations against target models and dynamically applies constraints to generate precise execution lists.
+                    </p>
+                  </li>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">Continuous Tax-Loss Harvesting (TLH)</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Monitors portfolios 24/7/365 to offset realized gains. Selects optimal tax lots and ensures the portfolio remains in a correlated, tax-neutral posture without triggering wash-sale violations.
+                    </p>
+                  </li>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">Hyper-Personalized Client Profiling</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Synthesizes portfolio data with macro-economic news. Autonomously drafts customized communications quantifying the impact of events for human advisor review.
+                    </p>
+                  </li>
                 </ul>
               </div>
 
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 font-serif">
                   <Eye className="text-fuchsia-500 w-6 h-6" />
-                  Alternative Data Ingestion
+                  Alternative Data
                 </h3>
-                <p className="text-slate-600 mb-6">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">
                   Processing the "Four Vs" (Volume, Velocity, Variety, Veracity) of non-traditional data to extract actionable insights.
                 </p>
                 <ul className="space-y-6">
-                  <ListItem title="Computer Vision Skills">
-                    Parsing satellite imagery to estimate agricultural yields, monitor urban development, or track shipping port activity.
-                  </ListItem>
-                  <ListItem title="Consumer Behavior Analysis">
-                    Processing anonymized credit card data, app downloads, and web traffic for precise retail demand forecasting ("nowcasting").
-                  </ListItem>
-                  <ListItem title="NLP & Evaluation Frameworks">
-                    Monitoring global sentiment, parsing regulatory filings, and assessing alt-data for alpha potential, historical depth, and privacy compliance before integration.
-                  </ListItem>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">Computer Vision Skills</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Parsing satellite imagery to estimate agricultural yields, monitor urban development, or track shipping port activity.
+                    </p>
+                  </li>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">Consumer Behavior Analysis</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Processing anonymized credit card data, app downloads, and web traffic for precise retail demand forecasting ("nowcasting").
+                    </p>
+                  </li>
+                  <li>
+                    <strong className="block text-slate-900 dark:text-white font-semibold mb-1">NLP & Evaluation Frameworks</strong>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                      Monitoring global sentiment, parsing regulatory filings, and assessing alt-data for alpha potential, historical depth, and privacy compliance before integration.
+                    </p>
+                  </li>
                 </ul>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* ARCHITECTURAL BEST PRACTICES */}
-        <section className="py-24 bg-indigo-900 text-indigo-50">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white tracking-tight sm:text-4xl mb-4">Architectural Best Practices</h2>
-              <p className="text-lg text-indigo-200 max-w-2xl mx-auto">
-                Escaping the "demo trap" by moving away from monolithic prompts to robust, modular, and governed environments.
-              </p>
+          <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+
+          {/* ARCHITECTURAL BEST PRACTICES */}
+          <section className="py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Architectural Best Practices</h2>
             </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              Escaping the "demo trap" by moving away from monolithic prompts to robust, modular, and governed environments.
+            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="bg-indigo-800/50 rounded-2xl p-8 border border-indigo-700">
-                <Layers className="w-10 h-10 text-emerald-400 mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-4">Decoupling Logic & Modularizing</h3>
-                <p className="text-indigo-100 mb-4 leading-relaxed">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
+                <Layers className="w-10 h-10 text-emerald-500 mb-4" />
+                <h3 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4 font-serif">Decoupling Logic & Modularizing</h3>
+                <p className="text-indigo-800 dark:text-indigo-200 mb-4 leading-relaxed">
                   Monolithic prompts exhaust context windows, causing reasoning drift and hallucinations. The industry best practice is a strict shift toward <strong>explicit task-decoupling</strong>.
                 </p>
-                <ul className="space-y-3 text-indigo-200">
+                <ul className="space-y-3 text-indigo-800 dark:text-indigo-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <Zap className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
                     Cognitive logic is separated from tool execution infrastructure.
                   </li>
                   <li className="flex items-start gap-2">
-                    <Zap className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
                     Skills are discrete, pluggable modules registered in a central tool registry.
                   </li>
                   <li className="flex items-start gap-2">
-                    <Zap className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
                     Tools filter and return compressed JSON to maximize token efficiency.
                   </li>
                   <li className="flex items-start gap-2">
-                    <Zap className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
                     Namespaces define boundaries to prevent overlapping tool capabilities.
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-indigo-800/50 rounded-2xl p-8 border border-indigo-700">
-                <ShieldCheck className="w-10 h-10 text-amber-400 mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-4">Security, Compliance & Guardrails</h3>
-                <p className="text-indigo-100 mb-4 leading-relaxed">
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
+                <AlertOctagon className="w-10 h-10 text-amber-500 mb-4" />
+                <h3 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4 font-serif">Security & Guardrails</h3>
+                <p className="text-indigo-800 dark:text-indigo-200 mb-4 leading-relaxed">
                   Agents introduce enterprise risks like prompt injection and machine identity compromise. Comprehensive <strong>Agent Identity Governance (AIG)</strong> is required.
                 </p>
-                <ul className="space-y-3 text-indigo-200">
+                <ul className="space-y-3 text-indigo-800 dark:text-indigo-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" /> 
                     Enforces Principle of Least Privilege via ABAC and OAuth2/OIDC.
                   </li>
                   <li className="flex items-start gap-2">
-                    <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" /> 
                     Explicit automated "kill switches" driven by real-time telemetry and aggregate portfolio limits.
                   </li>
                   <li className="flex items-start gap-2">
-                    <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" /> 
                     Monitoring "Decision Turn Count" (consecutive autonomous actions) to trigger safety protocols.
                   </li>
                 </ul>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* ORCHESTRATORS */}
-        <section className="py-24 bg-white relative">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <SectionHeader 
-              title="Building Financial Orchestrators" 
-              subtitle="Multi-agent patterns, routing, and conflict resolution"
-              description="A single agent is insufficient. Value is realized through multi-agent orchestration where diverse agents coordinate, delegate, and synthesize information using specific patterns."
-            />
+          <div className="w-full border-t border-slate-200 dark:border-slate-800" />
 
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <PatternCard 
-                title="Sequential / Chain Pattern"
-                desc="Linear, deterministic pipeline. Agent A passes state to Agent B without dynamic routing."
-                useCase="Standardized compliance reporting, ETL pipelines, sequential KYC."
-                color="border-blue-200 bg-blue-50"
-                icon={<Network className="text-blue-500 w-6 h-6" />}
-              />
-              <PatternCard 
-                title="Concurrent / Parallel Pattern"
-                desc="Tasks dispatched simultaneously. Orchestrator waits for the slowest branch before merging outputs."
-                useCase="Institutional stock analysis (technical, fundamental, and alt-data simultaneously)."
-                color="border-emerald-200 bg-emerald-50"
-                icon={<Layers className="text-emerald-500 w-6 h-6" />}
-              />
-              <PatternCard 
-                title="Orchestrator-Worker Pattern"
-                desc="Hierarchical design. Central supervisor decomposes problems and routes sub-tasks to workers."
-                useCase="Portfolio rebalancing (Risk-Check, Equity-Optimizer, Trade-Executor agents)."
-                color="border-purple-200 bg-purple-50"
-                icon={<Cpu className="text-purple-500 w-6 h-6" />}
-              />
-              <PatternCard 
-                title="Evaluator-Optimizer (Loop)"
-                desc="Iterative cycle between a generator and a critic agent enforcing strict rubrics."
-                useCase="Drafting highly regulated client communications (enforcing SEC/FINRA standards)."
-                color="border-amber-200 bg-amber-50"
-                icon={<GitMerge className="text-amber-500 w-6 h-6" />}
-              />
-              <PatternCard 
-                title="Graph-Based Routing (DAGs)"
-                desc="Complex, non-linear workflows with infinite state persistence and conditional loops."
-                useCase="Autonomous claims adjudication and loan application processing."
-                color="border-rose-200 bg-rose-50"
-                icon={<BrainCircuit className="text-rose-500 w-6 h-6" />}
-              />
+          {/* ORCHESTRATORS */}
+          <section className="py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Network className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Building Financial Orchestrators</h2>
             </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              A single agent is insufficient. Value is realized through multi-agent orchestration where diverse agents coordinate, delegate, and synthesize information using specific patterns.
+            </p>
 
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <ComparisonGrid>
+              <ComparisonCard title="Sequential / Chain Pattern" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">Linear, deterministic pipeline. Agent A passes state to Agent B without dynamic routing.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400"><strong>Use Case:</strong> Standardized compliance reporting, ETL pipelines, sequential KYC.</p>
+              </ComparisonCard>
+              <ComparisonCard title="Concurrent / Parallel Pattern" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">Tasks dispatched simultaneously. Orchestrator waits for the slowest branch before merging outputs.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400"><strong>Use Case:</strong> Institutional stock analysis (technical, fundamental, and alt-data simultaneously).</p>
+              </ComparisonCard>
+              <ComparisonCard title="Orchestrator-Worker Pattern" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">Hierarchical design. Central supervisor decomposes problems and routes sub-tasks to workers.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400"><strong>Use Case:</strong> Portfolio rebalancing (Risk-Check, Equity-Optimizer, Trade-Executor agents).</p>
+              </ComparisonCard>
+              <ComparisonCard title="Evaluator-Optimizer (Loop)" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">Iterative cycle between a generator and a critic agent enforcing strict rubrics.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400"><strong>Use Case:</strong> Drafting highly regulated client communications (enforcing SEC/FINRA standards).</p>
+              </ComparisonCard>
+              <ComparisonCard title="Graph-Based Routing (DAGs)" tone="neutral">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">Complex, non-linear workflows with infinite state persistence and conditional loops.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400"><strong>Use Case:</strong> Autonomous claims adjudication and loan application processing.</p>
+              </ComparisonCard>
+            </ComparisonGrid>
+
+            <div className="grid md:grid-cols-2 gap-12 mt-12">
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                  <GitMerge className="text-indigo-600 w-6 h-6" /> 
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 font-serif">
+                  <GitMerge className="text-indigo-500 w-6 h-6" /> 
                   Resolving Conflict & State
                 </h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                   Agents will generate conflicting outputs (e.g., technical agent says buy, macro agent says sell). Advanced systems use a <strong>Team of Rivals</strong> architecture with a <strong>Reconciliation Node</strong>.
                 </p>
-                <ul className="space-y-2 text-sm text-slate-600 list-disc pl-5 mb-6">
+                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 mb-6">
                   <li><strong>Format validation:</strong> Ensuring dates/currencies conform to database schemas.</li>
-                  <li><strong>Cross-field consistency:</strong> Applying deterministic rules (Assets = Liabilities + Equity).</li>
+                  <li><strong>Cross-field consistency:</strong> Applying deterministic rules.</li>
                   <li><strong>Source grounding:</strong> Verifying figures have direct evidence in telemetry.</li>
                 </ul>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   State is maintained in an external database (e.g., PostgreSQL with vector search, LanceDB) rather than appending strings to a prompt, avoiding "context collapse."
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                  <Users className="text-teal-600 w-6 h-6" /> 
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 font-serif">
+                  <Users className="text-teal-500 w-6 h-6" /> 
                   Human-in-the-Loop (HITL)
                 </h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                   HITL is triggered based on <strong>Product Risk</strong> rather than Model Confidence. Even if an agent is 99% confident, liquidating a massive position mandates human review.
                 </p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   Effective workflows target a 10-15% escalation rate. Orchestrators use pause/resume functions. When an exposure limit breaches, the state serializes and routes to a human operator. Their feedback is then captured as proprietary training data to refine vector routing and system robustness.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* THE SOFTWARE TOOLKIT */}
-        <section className="py-24 bg-slate-50 border-t border-slate-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <SectionHeader 
-              title="The Software Toolkit" 
-              subtitle="Bridging cognitive AI with deterministic infrastructure"
-              description="The development of enterprise-grade financial agents requires a specialized stack comprising quantitative libraries, frameworks, standardized protocols, and execution APIs."
-            />
+          <div className="w-full border-t border-slate-200 dark:border-slate-800" />
 
-            <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Toolkit 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-blue-100 text-blue-600 rounded-lg">
-                    <Code className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">Python Libraries</h3>
-                </div>
-                <ul className="space-y-4">
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">QuantLib:</strong> Industry standard for pricing derivatives, fixed-income analysis, and yield curves.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">TA-Lib & Pandas-ta:</strong> Vectorized implementations of 150+ technical indicators.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">Zipline & Backtrader:</strong> Event-driven backtesting, realistic broker simulations preventing look-ahead bias.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">PyFolio & Riskfolio-Lib:</strong> Mean-variance optimization, risk parity, and performance attribution.
-                  </li>
+          {/* THE SOFTWARE TOOLKIT */}
+          <section className="py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
+                <Code className="w-6 h-6" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Software Toolkit</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+              The development of enterprise-grade financial agents requires a specialized stack comprising quantitative libraries, frameworks, standardized protocols, and execution APIs.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
+                  <Code className="text-blue-500 w-5 h-5" /> Python Libraries
+                </h3>
+                <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                  <li><strong className="text-slate-900 dark:text-white">QuantLib:</strong> Industry standard for pricing derivatives, fixed-income analysis, and yield curves.</li>
+                  <li><strong className="text-slate-900 dark:text-white">TA-Lib & Pandas-ta:</strong> Vectorized implementations of 150+ technical indicators.</li>
+                  <li><strong className="text-slate-900 dark:text-white">Zipline & Backtrader:</strong> Event-driven backtesting, realistic broker simulations preventing look-ahead bias.</li>
+                  <li><strong className="text-slate-900 dark:text-white">PyFolio & Riskfolio-Lib:</strong> Mean-variance optimization, risk parity, and performance attribution.</li>
                 </ul>
               </div>
 
-              {/* Toolkit 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-purple-100 text-purple-600 rounded-lg">
-                    <Network className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">Multi-Agent Frameworks</h3>
-                </div>
-                <ul className="space-y-4">
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">LangGraph:</strong> State-centric, graph-based (DAGs) for fine-grained control, state persistence, and HITL.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">CrewAI:</strong> Role-based collaboration mimicking human teams, built-in state via LanceDB and Pydantic.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">BeeAI:</strong> Uses "Requirement Agents" for strictly enforcing compliance boundaries.
-                  </li>
-                  <li className="text-slate-600">
-                    <strong className="text-slate-900">Pure Python:</strong> Minimalist transparent `while` loops for ReAct cycles to avoid framework bloat.
-                  </li>
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
+                  <Network className="text-purple-500 w-5 h-5" /> Multi-Agent Frameworks
+                </h3>
+                <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                  <li><strong className="text-slate-900 dark:text-white">LangGraph:</strong> State-centric, graph-based (DAGs) for fine-grained control, state persistence, and HITL.</li>
+                  <li><strong className="text-slate-900 dark:text-white">CrewAI:</strong> Role-based collaboration mimicking human teams, built-in state via LanceDB and Pydantic.</li>
+                  <li><strong className="text-slate-900 dark:text-white">BeeAI:</strong> Uses "Requirement Agents" for strictly enforcing compliance boundaries.</li>
+                  <li><strong className="text-slate-900 dark:text-white">Pure Python:</strong> Minimalist transparent `while` loops for ReAct cycles to avoid framework bloat.</li>
                 </ul>
               </div>
 
-              {/* Toolkit 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg">
-                    <Database className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">Model Context Protocol (MCP)</h3>
-                </div>
-                <p className="text-slate-600 leading-relaxed mb-4">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
+                  <Database className="text-emerald-500 w-5 h-5" /> Model Context Protocol (MCP)
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                   The "USB-C of AI." An open standard by Anthropic using a JSON-RPC 2.0 transport layer. It provides a universal language for LLMs to securely communicate with external telemetry.
                 </p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Exposes Tools, Resources, and Prompts. Allows agents to query deterministic data from <strong>Alpha Vantage</strong>, <strong>FactSet</strong>, and <strong>Bloomberg B-PIPE</strong> natively, drastically reducing hallucinations.
                 </p>
               </div>
 
-              {/* Toolkit 4 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-rose-100 text-rose-600 rounded-lg">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">Live Market APIs & FIX</h3>
-                </div>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  <strong className="text-slate-900">Alpaca:</strong> Modern REST/WebSocket APIs for algorithmic testing, margin management, and crypto trading.
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
+                  <Zap className="text-rose-500 w-5 h-5" /> Live Market APIs & FIX
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  <strong className="text-slate-900 dark:text-white">Alpaca:</strong> Modern REST/WebSocket APIs for algorithmic testing, margin management, and crypto trading.
                 </p>
-                <p className="text-slate-600 leading-relaxed">
-                  <strong className="text-slate-900">FIX Protocol:</strong> The universal messaging standard for high-frequency, global cross-asset execution. Agents use FIX engine wrappers (QuickFIX) to connect to brokers like <strong>Interactive Brokers (IBKR)</strong>. A dedicated "Execution Agent" encapsulates this legacy plumbing complexity.
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  <strong className="text-slate-900 dark:text-white">FIX Protocol:</strong> The universal messaging standard for high-frequency, global cross-asset execution. Agents use FIX engine wrappers (QuickFIX) to connect to brokers like Interactive Brokers.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+        </div>
+      </div>
     </ArticleFrame>
-  );
-}
-
-// -------------------------------------------------------------
-// UI COMPONENTS
-// -------------------------------------------------------------
-
-interface SectionHeaderProps {
-  title: string;
-  subtitle: string;
-  description: string;
-}
-
-function SectionHeader({ title, subtitle, description }: SectionHeaderProps) {
-  return (
-    <div className="text-center max-w-3xl mx-auto">
-      <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase">{subtitle}</h2>
-      <p className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{title}</p>
-      <p className="mt-4 text-lg text-slate-600">{description}</p>
-    </div>
-  );
-}
-
-interface StatCardProps {
-  value: string;
-  label: string;
-  color: string;
-}
-
-function StatCard({ value, label, color }: StatCardProps) {
-  return (
-    <div className="flex flex-col p-6 text-center rounded-2xl bg-slate-50 border border-slate-100">
-      <dt className="order-2 mt-4 text-sm font-medium leading-6 text-slate-500">{label}</dt>
-      <dd className={`order-1 text-5xl font-extrabold tracking-tight ${color}`}>{value}</dd>
-    </div>
-  );
-}
-
-interface SkillCardProps {
-  title: string;
-  icon: React.ReactNode;
-  content: string;
-  color: string;
-}
-
-function SkillCard({ title, icon, content, color }: SkillCardProps) {
-  return (
-    <div className={`p-6 rounded-2xl border ${color} transition duration-300 hover:shadow-md`}>
-      <div className="flex items-center gap-4 mb-4">
-        {icon}
-        <h4 className="text-lg font-bold text-slate-900">{title}</h4>
-      </div>
-      <p className="text-slate-700 text-sm leading-relaxed">{content}</p>
-    </div>
-  );
-}
-
-interface ListItemProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-function ListItem({ title, children }: ListItemProps) {
-  return (
-    <li className="flex items-start gap-3">
-      <div className="mt-1">
-        <ChevronRight className="w-5 h-5 text-indigo-500" />
-      </div>
-      <div>
-        <strong className="block text-slate-900 font-semibold mb-1">{title}</strong>
-        <p className="text-slate-600 text-sm leading-relaxed">{children}</p>
-      </div>
-    </li>
-  );
-}
-
-interface PatternCardProps {
-  title: string;
-  desc: string;
-  useCase: string;
-  color: string;
-  icon: React.ReactNode;
-}
-
-function PatternCard({ title, desc, useCase, color, icon }: PatternCardProps) {
-  return (
-    <div className={`p-6 rounded-xl border ${color} flex flex-col h-full`}>
-      <div className="flex items-center gap-3 mb-3">
-        {icon}
-        <h4 className="font-bold text-slate-900">{title}</h4>
-      </div>
-      <p className="text-sm text-slate-700 mb-4 flex-grow">{desc}</p>
-      <div className="bg-white/60 p-3 rounded-lg text-xs text-slate-800 font-medium">
-        <span className="text-slate-500 block mb-1 uppercase tracking-wider text-[10px]">Ideal Use Case</span>
-        {useCase}
-      </div>
-    </div>
   );
 }

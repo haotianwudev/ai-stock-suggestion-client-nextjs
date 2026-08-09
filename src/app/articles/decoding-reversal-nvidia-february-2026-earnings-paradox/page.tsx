@@ -33,7 +33,7 @@ const Section: React.FC<SectionProps> = ({ title, icon: Icon, colorTheme, childr
   };
 
   return (
-    <section className={`py-16 px-6 md:px-12 border-b ${themes[colorTheme]}`}>
+    <section className={`py-16 px-6 md:px-12 border-b dark:border-slate-800 ${themes[colorTheme]}`}>
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-3 rounded-2xl shadow-sm ${iconColors[colorTheme]}`}>
@@ -41,7 +41,7 @@ const Section: React.FC<SectionProps> = ({ title, icon: Icon, colorTheme, childr
           </div>
           <h2 className="text-3xl font-bold">{title}</h2>
         </div>
-        <div className="text-lg text-slate-700 leading-relaxed space-y-6">
+        <div className="text-lg text-slate-700 dark:text-slate-400 dark:text-slate-300 leading-relaxed space-y-6">
           {children}
         </div>
       </div>
@@ -82,22 +82,22 @@ interface DataTableProps {
 }
 
 const DataTable: React.FC<DataTableProps> = ({ headers, rows }) => (
-  <div className="my-8 overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+  <div className="my-8 overflow-x-auto rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm bg-white dark:bg-[#14171B]">
     <table className="w-full text-left border-collapse">
       <thead>
-        <tr className="bg-slate-50 border-b border-slate-200">
+        <tr className="bg-slate-50 dark:bg-[#14171B] border-b border-slate-200 dark:border-white/10">
           {headers.map((h, i) => (
-            <th key={i} className="px-6 py-4 font-semibold text-slate-700 text-sm uppercase tracking-wider">
+            <th key={i} className="px-6 py-4 font-semibold text-slate-700 dark:text-slate-400 dark:text-slate-300 text-sm uppercase tracking-wider">
               {h}
             </th>
           ))}
         </tr>
       </thead>
-      <tbody className="divide-y divide-slate-100">
+      <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
         {rows.map((row, i) => (
-          <tr key={i} className="hover:bg-slate-50 transition-colors">
+          <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
             {row.map((cell, j) => (
-              <td key={j} className={`px-6 py-4 text-slate-600 ${j === 0 ? 'font-medium text-slate-800' : ''}`}>
+              <td key={j} className={`px-6 py-4 text-slate-600 dark:text-slate-400 ${j === 0 ? 'font-medium text-slate-800 dark:text-white' : ''}`}>
                 {cell}
               </td>
             ))}
@@ -114,7 +114,7 @@ export default function NvidiaEarningsParadoxArticle() {
     <ArticleFrame
       slug="decoding-reversal-nvidia-february-2026-earnings-paradox"
     >
-      <div className="bg-transparent font-sans text-slate-900">
+      <div className="bg-transparent font-sans text-slate-900 dark:text-slate-300">
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
           <InfographicSlot alt="Nvidia February 2026 Earnings Analysis Infographic" />
         </div>
@@ -270,14 +270,14 @@ export default function NvidiaEarningsParadoxArticle() {
 
           {/* Section 11 & 12 */}
           <Section title="11 & 12. Comprehensive Driver Synthesis & Risk Assessment" icon={ShieldAlert} colorTheme="amber">
-            <div className="bg-white p-8 rounded-2xl border border-amber-200 shadow-sm mb-8">
-              <h3 className="text-2xl font-bold mb-4 text-amber-900 border-b border-amber-100 pb-2">
+            <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl border border-amber-200 dark:border-amber-900/30 shadow-sm dark:shadow-none mb-8">
+              <h3 className="text-2xl font-bold mb-4 text-amber-900 dark:text-amber-400 border-b border-amber-100 dark:border-amber-900/30 pb-2">
                 The Ultimate Driver: A Confluence of Mechanics
               </h3>
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="text-lg text-slate-700 dark:text-slate-400 dark:text-slate-300 mb-4">
                 The severe drop was <strong>not</strong> caused by a fundamental failure. Nvidia's business execution remains historically unprecedented. Instead, the major driver was a "perfect storm" of market structure mechanics and institutional positioning acting in sequence:
               </p>
-              <ol className="list-decimal pl-6 space-y-3 text-slate-700 font-medium">
+              <ol className="list-decimal pl-6 space-y-3 text-slate-700 dark:text-slate-400 dark:text-slate-300 font-medium">
                 <li><strong>The Catalyst (IV Crush):</strong> Post-earnings volatility collapse instantly devalued options premiums, forcing dealer hedging unwinds.</li>
                 <li><strong>The Accelerant (Negative Gamma):</strong> Price drooped below the critical $182.81 gamma flip point, forcing market makers to short the stock to remain delta-neutral.</li>
                 <li><strong>The Institutional Execution (De-grossing):</strong> Hedge funds utilized the pristine earnings print as peak liquidity to exit crowded long-AI trades and cover legacy software shorts.</li>
@@ -285,51 +285,51 @@ export default function NvidiaEarningsParadoxArticle() {
               </ol>
             </div>
 
-            <h3 className="text-2xl font-bold mt-10 mb-6 text-slate-900">
+            <h3 className="text-2xl font-bold mt-10 mb-6 text-slate-900 dark:text-white">
               Multi-Angle Risk Assessment (Fiscal 2027)
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white rounded-xl shadow-sm border-t-4 border-indigo-500">
-                <div className="flex items-center gap-2 mb-3 text-indigo-700">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-indigo-500">
+                <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-400">
                   <Briefcase className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Institutional & Factor Risk</h4>
                 </div>
-                <ul className="space-y-3 text-slate-600 text-sm">
+                <ul className="space-y-3 text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>Factor Exposure Unwinding:</strong> NVDA is highly concentrated in "Momentum" and "Growth" quantitative factors. If macroeconomic conditions favor a "Value" rotation, systematic funds will mechanically reduce exposure.</li>
                   <li><strong>Hedge Fund Short Purposes:</strong> While outright shorting is risky, institutions use NVDA as a proxy hedge against broader semiconductor/AI infrastructure indices, suppressing upside velocity.</li>
                   <li><strong>De-grossing Vulnerability:</strong> Due to its massive daily trading volume, NVDA serves as an ATM for the market. When funds need to reduce gross leverage, they sell their most liquid winners first.</li>
                 </ul>
               </div>
 
-              <div className="p-6 bg-white rounded-xl shadow-sm border-t-4 border-emerald-500">
-                <div className="flex items-center gap-2 mb-3 text-emerald-700">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-emerald-500">
+                <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-400">
                   <TrendingDown className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Fundamental & Structural Risk</h4>
                 </div>
-                <ul className="space-y-3 text-slate-600 text-sm">
+                <ul className="space-y-3 text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>The "ROI Wall":</strong> Hyperscalers (Meta, MSFT, Google) have committed ~$602B to capex. If consumer/enterprise software monetization fails to catch up, infrastructure orders will freeze abruptly.</li>
                   <li><strong>Margin Erosion:</strong> Peaking at a 75.0% gross margin is unsustainable long-term. TSMC's 15% CoWoS price hikes and HBM3E memory supply constraints will eventually squeeze unit economics.</li>
                   <li><strong>The Osborne Effect:</strong> The premature announcement of the "Vera Rubin" platform may incentivize customers to delay current Blackwell purchases, creating a revenue air-pocket.</li>
                 </ul>
               </div>
 
-              <div className="p-6 bg-white rounded-xl shadow-sm border-t-4 border-rose-500">
-                <div className="flex items-center gap-2 mb-3 text-rose-700">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-rose-500">
+                <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-400">
                   <Users className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Sentiment & Retail Risk</h4>
                 </div>
-                <ul className="space-y-3 text-slate-600 text-sm">
+                <ul className="space-y-3 text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>Narrative Exhaustion:</strong> The "AI Halo" is priced to perfection at roughly 40x forward earnings. When a flawless earnings beat results in a 5% drop, it signals peak retail sentiment and induces psychological fatigue.</li>
                   <li><strong>Retail Float Retention:</strong> Retail investors hold a historically massive portion of the float. A rapid pivot from "buy the dip" mentalities to capital preservation can create non-linear downside vacuums.</li>
                 </ul>
               </div>
 
-              <div className="p-6 bg-white rounded-xl shadow-sm border-t-4 border-slate-600">
-                <div className="flex items-center gap-2 mb-3 text-slate-700">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-slate-600">
+                <div className="flex items-center gap-2 mb-3 text-slate-700 dark:text-slate-400">
                   <Globe className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Macro & Geopolitical Risk</h4>
                 </div>
-                <ul className="space-y-3 text-slate-600 text-sm">
+                <ul className="space-y-3 text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>Index Beta Concentration:</strong> With an outsized weighting in the S&P 500 and Nasdaq 100, NVDA is highly susceptible to macro shocks (e.g., unexpected inflation data, interest rate spikes).</li>
                   <li><strong>Regulatory & Tariffs:</strong> The fallout from recent tariff and geopolitical policy shifts creates broad market volatility, while ongoing US export controls permanently sever key revenue channels.</li>
                 </ul>

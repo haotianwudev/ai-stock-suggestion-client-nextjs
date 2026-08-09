@@ -25,7 +25,7 @@ function ParadigmShiftSection() {
       <ComparisonGrid>
         <ComparisonCard
           title="The Ceiling of Standard RAG"
-          type="con"
+          tone="neg"
           items={[
             "Linear, single-shot, deterministic pipeline.",
             "Fails at multi-hop reasoning (e.g., synthesizing baseline VaR with emerging market addendums).",
@@ -35,7 +35,7 @@ function ParadigmShiftSection() {
         />
         <ComparisonCard
           title="The Agentic RAG Control Loop"
-          type="pro"
+          tone="pos"
           items={[
             "Operates as a continuous control loop (Retrieve → Reason → Decide → Act).",
             "Autonomously evaluates evidence, rewrites queries, and decomposes problems.",

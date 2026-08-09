@@ -19,30 +19,30 @@ export default function MicrostructureIntradayOptionSpeculation() {
 
   return (
     <ArticleFrame slug="microstructure-intraday-option-speculation-mechanics-strategies-risks">
-      <div className="bg-transparent font-sans">
-        <div className="relative overflow-hidden bg-white pt-20 pb-16 lg:pt-32 lg:pb-24">
+      <div className="bg-transparent font-sans dark:text-slate-300">
+        <div className="relative overflow-hidden bg-white dark:bg-transparent pt-20 pb-16 lg:pt-32 lg:pb-24">
           <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-            <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full" />
-            <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-100 to-transparent rounded-tr-full" />
+            <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-100 dark:from-blue-900/20 to-transparent rounded-bl-full" />
+            <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-100 dark:from-purple-900/20 to-transparent rounded-tr-full" />
           </div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 mb-6 border border-indigo-100">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-400 mb-6 border border-indigo-100 dark:border-indigo-900/30">
               <TrendingUp className="w-4 h-4 mr-2" />
               Advanced Market Mechanics
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">
               Option <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Alpha & Risk</span>
             </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed">
+            <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
               {introData.summary}
             </p>
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
               {introData.stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col p-6 bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group">
+                <div key={idx} className="flex flex-col p-6 bg-white dark:bg-slate-900/40 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-white/10 relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <dt className="order-2 mt-2 text-lg leading-6 font-medium text-slate-500">{stat.label}</dt>
-                  <dd className="order-1 text-4xl font-extrabold text-slate-900">{stat.value}</dd>
-                  <div className="order-3 mt-1 text-xs text-slate-400 font-medium uppercase tracking-wider">{stat.sub}</div>
+                  <dt className="order-2 mt-2 text-lg leading-6 font-medium text-slate-500 dark:text-slate-400">{stat.label}</dt>
+                  <dd className="order-1 text-4xl font-extrabold text-slate-900 dark:text-white">{stat.value}</dd>
+                  <div className="order-3 mt-1 text-xs text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider">{stat.sub}</div>
                 </div>
               ))}
             </div>
@@ -55,61 +55,61 @@ export default function MicrostructureIntradayOptionSpeculation() {
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Greeks Section */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 border border-slate-100 mb-24">
+        <div className="bg-white dark:bg-[#14171B] rounded-3xl shadow-xl dark:shadow-none p-8 border border-slate-100 dark:border-white/10 mb-24">
           <div className="text-center mb-16">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Theoretical Framework</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Greeks</p>
+            <h2 className="text-base text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase">Theoretical Framework</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">The Greeks</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {[
               {
                 symbol: "Δ", name: "Delta", role: "The Lever",
                 desc: "Rate of change of option price vs. underlying price. A 0.50 Delta call moves $0.50 for every $1.00 move in the stock. In 0DTE, Delta can flip from 0.10 to 0.90 in minutes.",
-                color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-200"
+                color: "text-blue-600", bg: "bg-blue-50 dark:bg-blue-900/20", border: "border-blue-200 dark:border-blue-900/30"
               },
               {
                 symbol: "Γ", name: "Gamma", role: "The Accelerant",
                 desc: "Rate of change of Delta. This is the 'risk' engine. In the final hours of trading, Gamma becomes vertical, turning small stock moves into 500%+ option swings.",
-                color: "text-purple-600", bg: "bg-purple-50", border: "border-purple-200"
+                color: "text-purple-600", bg: "bg-purple-50 dark:bg-purple-900/20", border: "border-purple-200 dark:border-purple-900/30"
               },
               {
                 symbol: "Θ", name: "Theta", role: "The Decay",
                 desc: "Time decay. For 0DTE, Theta is aggressive. If the stock goes sideways for 10 minutes, the option can lose 10-15% of its value purely due to time.",
-                color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200"
+                color: "text-orange-600", bg: "bg-orange-50 dark:bg-orange-900/20", border: "border-orange-200 dark:border-orange-900/30"
               },
               {
                 symbol: "V", name: "Vanna", role: "IV Sensitivity",
                 desc: "How Delta changes as Volatility changes. When the market drops, IV spikes, boosting put values faster than math would predict (Vanna tailwind).",
-                color: "text-teal-600", bg: "bg-teal-50", border: "border-teal-200"
+                color: "text-teal-600", bg: "bg-teal-50 dark:bg-teal-900/20", border: "border-teal-200 dark:border-teal-900/30"
               },
               {
                 symbol: "C", name: "Charm", role: "Delta Decay",
                 desc: "The change in Delta over time. As expiration nears, OTM deltas vanish to 0 and ITM deltas snap to 1. This creates 'pinning' behavior.",
-                color: "text-pink-600", bg: "bg-pink-50", border: "border-pink-200"
+                color: "text-pink-600", bg: "bg-pink-50 dark:bg-pink-900/20", border: "border-pink-200 dark:border-pink-900/30"
               }
             ].map((greek, idx) => (
               <div key={idx} className={`relative p-6 rounded-2xl border-2 ${greek.border} ${greek.bg} transition-all hover:-translate-y-1 duration-300 hover:shadow-lg`}>
                 <div className="flex items-center justify-between mb-4">
                   <span className={`text-4xl font-serif font-bold ${greek.color}`}>{greek.symbol}</span>
-                  <span className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wider bg-white/60 ${greek.color}`}>
+                  <span className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wider bg-white/60 dark:bg-black/20 ${greek.color}`}>
                     {greek.role}
                   </span>
                 </div>
                 <h3 className={`text-xl font-bold mb-2 ${greek.color}`}>{greek.name}</h3>
-                <p className="text-slate-700 text-sm leading-relaxed">{greek.desc}</p>
+                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{greek.desc}</p>
               </div>
             ))}
           </div>
         </div>
         {/* Lifecycle Timeline */}
-        <div className="py-24 bg-slate-50 border-y border-slate-200 rounded-3xl mb-24">
+        <div className="py-24 bg-slate-50 dark:bg-[#14171B] border-y border-slate-200 dark:border-white/10 dark:border-white/10 rounded-3xl mb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Timing is Everything</h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Intraday Lifecycle</p>
+              <h2 className="text-base text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase">Timing is Everything</h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">The Intraday Lifecycle</p>
             </div>
             <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 hidden md:block"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 hidden md:block"></div>
               <div className="space-y-12 relative">
                 {[
                   {
@@ -166,52 +166,52 @@ export default function MicrostructureIntradayOptionSpeculation() {
                     <div className="md:w-32 flex-shrink-0 flex md:justify-end items-center z-10">
                       <div className={`border-2 font-bold px-4 py-2 rounded-xl text-sm shadow-sm whitespace-nowrap transition-colors ${
                         item.risk === 'Critical' || item.risk === 'Gambling' 
-                          ? 'bg-red-50 border-red-500 text-red-700' 
-                          : 'bg-white border-indigo-500 text-indigo-700'
+                          ? 'bg-red-50 dark:bg-red-900/20 border-red-500 dark:border-red-900/30 text-red-700 dark:text-red-400' 
+                          : 'bg-white dark:bg-black/40 border-indigo-500 dark:border-indigo-900/30 text-indigo-700 dark:text-indigo-400'
                       }`}>
                         {item.time}
                       </div>
                     </div>
-                    <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 relative hover:shadow-md transition-shadow">
-                      <div className="absolute top-6 -left-2 w-4 h-4 bg-white rotate-45 border-l border-b border-slate-200 hidden md:block"></div>
+                    <div className="flex-1 bg-white dark:bg-[#14171B] rounded-2xl p-6 shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10 dark:border-white/10 relative hover:shadow-md dark:hover:shadow-none transition-shadow">
+                      <div className="absolute top-6 -left-2 w-4 h-4 bg-white dark:bg-[#14171B] rotate-45 border-l border-b border-slate-200 dark:border-white/10 dark:border-white/10 hidden md:block"></div>
                       <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2">
-                        <h3 className="text-xl font-bold text-slate-900">{item.phase}</h3>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.phase}</h3>
                         <div className="flex gap-2">
-                          <span className="text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-600 flex items-center">
+                          <span className="text-xs font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center">
                             <Activity className="w-3 h-3 mr-1" />
                             Vol: {item.volatility}
                           </span>
                           <span className={`text-xs font-bold px-2 py-1 rounded flex items-center ${
                             item.risk.includes('High') || item.risk.includes('Critical') || item.risk.includes('Gambling')
-                              ? 'bg-red-100 text-red-700' 
-                              : 'bg-yellow-100 text-yellow-700'
+                              ? 'bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400' 
+                              : 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400'
                           }`}>
                             <AlertTriangle className="w-3 h-3 mr-1" />
                             {item.risk}
                           </span>
                         </div>
                       </div>
-                      <p className="text-slate-600 mb-6 italic border-l-4 border-slate-200 pl-4">{item.desc}</p>
+                      <p className="text-slate-600 dark:text-slate-400 mb-6 italic border-l-4 border-slate-200 dark:border-white/10 dark:border-white/10 pl-4">{item.desc}</p>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div className="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-100 dark:border-white/10">
                           <div className="flex items-center mb-2">
-                            <Briefcase className="w-4 h-4 text-slate-500 mr-2" />
-                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Dealer Imperative</span>
+                            <Briefcase className="w-4 h-4 text-slate-500 dark:text-slate-400 mr-2" />
+                            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Dealer Imperative</span>
                           </div>
-                          <p className="text-sm text-slate-800">{item.dealerImperative}</p>
+                          <p className="text-sm text-slate-800 dark:text-slate-300">{item.dealerImperative}</p>
                         </div>
-                        <div className="bg-red-50 p-4 rounded-xl border border-red-100">
+                        <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl border border-red-100 dark:border-red-900/30">
                           <div className="flex items-center mb-2">
-                            <Ghost className="w-4 h-4 text-red-500 mr-2" />
-                            <span className="text-xs font-bold text-red-500 uppercase tracking-wider">The Retail Trap</span>
+                            <Ghost className="w-4 h-4 text-red-500 dark:text-red-400 mr-2" />
+                            <span className="text-xs font-bold text-red-500 dark:text-red-400 uppercase tracking-wider">The Retail Trap</span>
                           </div>
-                          <p className="text-sm text-red-900">{item.retailTrap}</p>
+                          <p className="text-sm text-red-900 dark:text-red-300">{item.retailTrap}</p>
                         </div>
                       </div>
-                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-start">
+                      <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10 flex items-start">
                         <Target className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5 mr-3" />
-                        <p className="text-sm font-medium text-slate-800">
-                          <span className="text-indigo-600 font-bold">Recommended Action:</span> {item.action}
+                        <p className="text-sm font-medium text-slate-800 dark:text-slate-300">
+                          <span className="text-indigo-600 dark:text-indigo-400 font-bold">Recommended Action:</span> {item.action}
                         </p>
                       </div>
                     </div>
@@ -224,8 +224,8 @@ export default function MicrostructureIntradayOptionSpeculation() {
         {/* GEX Logic Section */}
         <div className="py-24 mb-24">
           <div className="text-center mb-16">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">The Dealer Hedging Loop</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">GEX Masterclass</p>
+            <h2 className="text-base text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase">The Dealer Hedging Loop</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">GEX Masterclass</p>
           </div>
           <div className="mb-12">
             <p className="text-lg text-slate-600 max-w-3xl mx-auto text-center leading-relaxed">
@@ -257,24 +257,24 @@ export default function MicrostructureIntradayOptionSpeculation() {
             ].map((regime, idx) => (
               <div key={idx} className={`rounded-3xl p-8 border-2 ${
                 regime.color === 'emerald' 
-                  ? 'bg-emerald-50 border-emerald-200' 
-                  : 'bg-rose-50 border-rose-200'
+                  ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-900/30' 
+                  : 'bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-900/30'
               } relative overflow-hidden`}>
                 <div className="flex items-center justify-between mb-6 relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 rounded-xl bg-white shadow-sm ${
-                      regime.color === 'emerald' ? 'text-emerald-600' : 'text-rose-600'
+                    <div className={`p-3 rounded-xl bg-white dark:bg-black/40 shadow-sm dark:shadow-none ${
+                      regime.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                     }`}>
                       {regime.icon}
                     </div>
                     <div>
                       <h3 className={`text-2xl font-bold ${
-                        regime.color === 'emerald' ? 'text-emerald-900' : 'text-rose-900'
+                        regime.color === 'emerald' ? 'text-emerald-900 dark:text-emerald-400' : 'text-rose-900 dark:text-rose-400'
                       }`}>
                         {regime.title}
                       </h3>
                       <p className={`font-medium ${
-                        regime.color === 'emerald' ? 'text-emerald-700' : 'text-rose-700'
+                        regime.color === 'emerald' ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'
                       }`}>
                         {regime.subtitle}
                       </p>
@@ -282,28 +282,28 @@ export default function MicrostructureIntradayOptionSpeculation() {
                   </div>
                 </div>
                 
-                <div className="bg-white/80 rounded-xl p-6 mb-6 backdrop-blur-sm border border-white/50 relative z-10">
+                <div className="bg-white/80 dark:bg-black/20 rounded-xl p-6 mb-6 backdrop-blur-sm border border-white/50 dark:border-white/10 relative z-10">
                   <div className="mb-4">
                     <span className="text-xs font-bold uppercase opacity-50 block">Condition</span>
-                    <p className="font-medium text-slate-900">{regime.condition}</p>
+                    <p className="font-medium text-slate-900 dark:text-white">{regime.condition}</p>
                   </div>
                   <div>
                     <span className="text-xs font-bold uppercase opacity-50 block">Market Effect</span>
-                    <p className="font-medium text-slate-900">{regime.outcome}</p>
+                    <p className="font-medium text-slate-900 dark:text-white">{regime.outcome}</p>
                   </div>
                 </div>
                 
                 <div className="space-y-3 relative z-10">
                   <span className="text-xs font-bold uppercase tracking-widest opacity-60 ml-1">The Feedback Loop</span>
                   {regime.loop.map((step, i) => (
-                    <div key={i} className="flex items-center bg-white rounded-lg p-4 shadow-sm border border-slate-100">
+                    <div key={i} className="flex items-center bg-white dark:bg-[#14171B] rounded-lg p-4 shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                       <div className="flex-1">
-                        <span className="font-bold text-slate-800 text-sm block">{step.trigger}</span>
+                        <span className="font-bold text-slate-800 dark:text-slate-300 text-sm block">{step.trigger}</span>
                       </div>
                       <ArrowRight className="w-4 h-4 text-slate-400 mx-2" />
                       <div className="flex-1">
                         <span className={`font-bold text-sm block ${
-                          regime.color === 'emerald' ? 'text-emerald-600' : 'text-rose-600'
+                          regime.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                         }`}>
                           {step.reaction}
                         </span>
@@ -349,25 +349,25 @@ export default function MicrostructureIntradayOptionSpeculation() {
           </div>
 
           {/* GEX Trading Playbook */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
-            <div className="bg-slate-50 px-8 py-6 border-b border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center">
+          <div className="bg-white dark:bg-[#14171B] rounded-3xl border border-slate-200 dark:border-white/10 dark:border-white/10 overflow-hidden shadow-sm dark:shadow-none">
+            <div className="bg-slate-50 dark:bg-slate-900/40 px-8 py-6 border-b border-slate-200 dark:border-white/10 dark:border-white/10">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center">
                 <Briefcase className="w-5 h-5 mr-3 text-indigo-600" />
                 The GEX Trading Playbook
               </h3>
-              <p className="text-slate-500 text-sm mt-1">If the market is here, trade like this.</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">If the market is here, trade like this.</p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-slate-50/50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500 font-semibold">
+                  <tr className="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-white/10 dark:border-white/10 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
                     <th className="px-8 py-4">GEX Environment</th>
                     <th className="px-8 py-4">Market Mood</th>
                     <th className="px-8 py-4">Best Strategy</th>
                     <th className="px-8 py-4">Stop Loss Profile</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-slate-100 dark:divide-white/10">
                   {[
                     {
                       metric: "High Positive GEX", environment: "Stuck in Mud", strategy: "Iron Condors / Credit Spreads",
@@ -382,16 +382,16 @@ export default function MicrostructureIntradayOptionSpeculation() {
                       tactic: "Buy strength, sell weakness. DO NOT FADE.", stopLoss: "Trailing (let runners run)"
                     }
                   ].map((row, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                      <td className="px-8 py-6 font-bold text-indigo-900">{row.metric}</td>
+                    <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                      <td className="px-8 py-6 font-bold text-indigo-900 dark:text-indigo-400">{row.metric}</td>
                       <td className="px-8 py-6">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300">
                           {row.environment}
                         </span>
                       </td>
                       <td className="px-8 py-6">
-                        <div className="text-sm font-bold text-slate-900">{row.strategy}</div>
-                        <div className="text-xs text-slate-500 mt-1">{row.tactic}</div>
+                        <div className="text-sm font-bold text-slate-900 dark:text-white">{row.strategy}</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{row.tactic}</div>
                       </td>
                       <td className="px-8 py-6 text-sm text-slate-600">{row.stopLoss}</td>
                     </tr>
@@ -404,8 +404,8 @@ export default function MicrostructureIntradayOptionSpeculation() {
         {/* Structural Asymmetry Section */}
         <div className="py-24 mb-24">
           <div className="text-center mb-16">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Why The House Wins</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">The Structural Asymmetry</p>
+            <h2 className="text-base text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase">Why The House Wins</h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">The Structural Asymmetry</p>
           </div>
           <p className="text-center text-xl text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed">
             This is not a "level playing field." Institutional infrastructure is designed to exploit the specific latency, data, and order routing inefficiencies of retail traders.
@@ -432,21 +432,21 @@ export default function MicrostructureIntradayOptionSpeculation() {
                 impact: "Conflict of Interest. The wholesaler wants to maximize their spread capture, not your execution quality."
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50 hover:border-indigo-200 transition-colors">
-                <div className="bg-slate-50 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+              <div key={idx} className="bg-white dark:bg-[#14171B] rounded-3xl p-8 border border-slate-200 dark:border-white/10 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-none hover:border-indigo-200 dark:hover:border-indigo-900/50 transition-colors">
+                <div className="bg-slate-50 dark:bg-slate-900/40 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
                 <div className="space-y-6">
-                  <div className="relative pl-6 border-l-2 border-slate-200">
+                  <div className="relative pl-6 border-l-2 border-slate-200 dark:border-white/10">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider absolute -top-2 left-6">Retail Reality</span>
                     <p className="text-sm text-slate-600 mt-2">{item.retail}</p>
                   </div>
                   <div className="relative pl-6 border-l-2 border-indigo-500">
                     <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider absolute -top-2 left-6">Institutional Reality</span>
-                    <p className="text-sm text-slate-900 mt-2 font-medium">{item.institution}</p>
+                    <p className="text-sm text-slate-900 dark:text-white mt-2 font-medium">{item.institution}</p>
                   </div>
-                  <div className="bg-red-50 p-4 rounded-xl text-sm text-red-800 border border-red-100">
+                  <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-sm text-red-800 dark:text-red-300 border border-red-100 dark:border-red-900/30">
                     <span className="font-bold block mb-1">The Impact:</span>
                     {item.impact}
                   </div>
@@ -478,27 +478,27 @@ export default function MicrostructureIntradayOptionSpeculation() {
                 <h4 className="font-bold text-lg">Broker</h4>
                 <p className="text-xs text-slate-400 mt-2">Routes Order</p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-500 hidden lg:block" />
+              <ArrowRight className="w-6 h-6 text-red-500 dark:text-red-400 hidden lg:block" />
               
               <div className="relative">
                 <div className="absolute -top-4 -right-4 bg-red-600 text-xs font-bold px-2 py-1 rounded text-white animate-pulse">PFOF Zone</div>
                 <div className="flex flex-col items-center text-center max-w-[200px] bg-slate-800 p-6 rounded-2xl border border-red-900/50">
-                  <div className="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mb-4 text-red-500">
+                  <div className="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mb-4 text-red-500 dark:text-red-400">
                     <Ghost className="w-8 h-8" />
                   </div>
                   <h4 className="font-bold text-lg text-red-400">Wholesaler</h4>
                   <p className="text-xs text-slate-400 mt-2">HFT / Market Maker</p>
-                  <p className="text-[10px] text-slate-500 mt-2 italic">"Internalizes" order or front-runs on exchange</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 italic">"Internalizes" order or front-runs on exchange</p>
                 </div>
               </div>
               <ArrowRight className="w-6 h-6 text-slate-600 hidden lg:block" />
               
               <div className="flex flex-col items-center text-center max-w-[200px] opacity-50">
                 <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-slate-700">
-                  <Server className="w-8 h-8 text-slate-500" />
+                  <Server className="w-8 h-8 text-slate-500 dark:text-slate-400" />
                 </div>
                 <h4 className="font-bold text-lg">Lit Exchange</h4>
-                <p className="text-xs text-slate-500 mt-2">NYSE / NASDAQ</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">NYSE / NASDAQ</p>
                 <p className="text-[10px] text-slate-600 mt-1">Retail rarely reaches here directly</p>
               </div>
             </div>
@@ -558,19 +558,19 @@ export default function MicrostructureIntradayOptionSpeculation() {
         </div>
 
         {/* Conclusion */}
-        <div className="bg-white py-20 border-t border-slate-200 rounded-3xl mb-24">
+        <div className="bg-white py-20 border-t border-slate-200 dark:border-white/10 rounded-3xl mb-24">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <ShieldAlert className="w-16 h-16 text-indigo-600 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">The Verdict</h2>
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">The Verdict</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
               For the common investor, option day trading represents a structural misallocation of capital. The convergence of mathematical disadvantage, structural inequity, and psychological liability creates a barrier to success that is statistically insurmountable.
             </p>
-            <div className="inline-block p-6 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
-              <p className="font-medium text-slate-900 mb-2">Better Alternatives:</p>
+            <div className="inline-block p-6 bg-slate-50 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+              <p className="font-medium text-slate-900 dark:text-white mb-2">Better Alternatives:</p>
               <div className="flex flex-wrap gap-3 justify-center">
-                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">Low Cost Index Funds</span>
-                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">The Wheel Strategy (Selling Theta)</span>
-                <span className="bg-white px-3 py-1 rounded border border-slate-200 text-sm text-slate-600">Leaps (Deep ITM)</span>
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 dark:border-white/10 text-sm text-slate-600">Low Cost Index Funds</span>
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 dark:border-white/10 text-sm text-slate-600">The Wheel Strategy (Selling Theta)</span>
+                <span className="bg-white px-3 py-1 rounded border border-slate-200 dark:border-white/10 text-sm text-slate-600">Leaps (Deep ITM)</span>
               </div>
             </div>
           </div>
