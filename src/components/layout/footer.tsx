@@ -1,0 +1,31 @@
+import Link from "next/link";
+
+const FOOTER_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/forum/site-feedback", label: "Feedback" },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t bg-white dark:bg-slate-900 dark:border-slate-800 py-8">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col items-center gap-3 text-center">
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          {FOOTER_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} SOPHIE Daddy Quant Blog. Educational content for informational purposes only.
+        </p>
+      </div>
+    </footer>
+  );
+}

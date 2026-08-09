@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -393,6 +394,8 @@ export default function Home() {
         {/* Disclaimer */}
         <Disclaimer />
       </main>
+
+      <Footer />
 
       {/* Lazy load podcast player */}
       <div className="hidden sm:block">
