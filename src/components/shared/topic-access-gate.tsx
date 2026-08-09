@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
@@ -26,6 +26,54 @@ export const FREE_TOPIC_IDS = [
 // bypass. Currently just the cross-section Books topic.
 export const PREMIUM_TOPIC_IDS = ["books"];
 
+// Signed-out readers have no profile to persist `youtubeSubscribed` to, so their self-attested
+// unlock lives in localStorage instead. Kept in a module-level store rather than component state
+// for two reasons: a topic page mounts more than one gate (main content + related articles, see
+// page-template.tsx) and they must unlock together, and the unlock has to survive navigation —
+// the gate copy promises it "unlocks topics going forward".
+const UNLOCK_STORAGE_KEY = "sophie:topic-unlocked";
+const unlockListeners = new Set<() => void>();
+let unlockedCache: boolean | null = null;
+
+function getUnlockSnapshot(): boolean {
+  if (unlockedCache !== null) return unlockedCache;
+  if (typeof window === "undefined") return false;
+  try {
+    unlockedCache = window.localStorage.getItem(UNLOCK_STORAGE_KEY) === "1";
+  } catch {
+    // Private mode / storage disabled — fall back to a per-session unlock.
+    unlockedCache = false;
+  }
+  return unlockedCache;
+}
+
+// Server render never has the unlock, so hydration always starts locked and settles after mount.
+function getUnlockServerSnapshot(): boolean {
+  return false;
+}
+
+function subscribeToUnlock(onChange: () => void): () => void {
+  unlockListeners.add(onChange);
+  return () => {
+    unlockListeners.delete(onChange);
+  };
+}
+
+/** Records the self-attested unlock and notifies every mounted gate. */
+export function persistTopicUnlock(): void {
+  unlockedCache = true;
+  try {
+    window.localStorage.setItem(UNLOCK_STORAGE_KEY, "1");
+  } catch {
+    // Unlock still applies for this session even when it can't be written.
+  }
+  unlockListeners.forEach((notify) => notify());
+}
+
+function useTopicUnlocked(): boolean {
+  return useSyncExternalStore(subscribeToUnlock, getUnlockSnapshot, getUnlockServerSnapshot);
+}
+
 /**
  * Gates topic-page content (video/study guide/infographic/related articles) behind tier 2+ or,
  * same honor-system self-attestation the Watch card's Like button uses, a logged-in reader
@@ -49,7 +97,7 @@ export function TopicAccessGate({
   children: React.ReactNode;
 }) {
   const { user, profile, loading } = useUser();
-  const [unlocked, setUnlocked] = useState(false);
+  const unlocked = useTopicUnlocked();
   const [setYoutubeSubscribed, { loading: confirming }] = useMutation<{
     setYoutubeSubscribed: MeResult;
   }>(SET_YOUTUBE_SUBSCRIBED, { refetchQueries: [{ query: ME }] });
@@ -109,7 +157,7 @@ export function TopicAccessGate({
   const confirmSubscribed = async () => {
     try {
       await setYoutubeSubscribed({ variables: { subscribed: true } });
-      setUnlocked(true);
+      persistTopicUnlock();
       toast.success("Thanks for subscribing!");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong.");
@@ -142,7 +190,7 @@ export function TopicAccessGate({
           <button
             onClick={() => {
               window.open(SOPHIE_YOUTUBE_CHANNEL_URL, "_blank", "noopener,noreferrer");
-              setUnlocked(true);
+              persistTopicUnlock();
             }}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-sm shadow-sm transition-colors"
           >
