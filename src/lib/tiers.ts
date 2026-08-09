@@ -3,10 +3,10 @@ import type { TranslationKey } from "@/lib/i18n/strings";
 // Mirrors the tier semantics on the server (profiles.tier, 1-9). Tiers 1-4 are
 // reachable today: 2-3 via the YouTube subscribe attestation
 // (server/src/db/auth.js), 3-4 via the like ladder (server/src/db/engagement.js).
-// Tiers 5-8 sit on the same like ladder (and a donation ladder that's built
-// server-side but has no client entry point yet -- see DONATION_TIER_LADDER)
-// but don't unlock a feature yet; they're rank-only until something is built
-// for them. Tier 9 (Head Quant) is functionally the admin role (see ADMIN_TIER
+// Tiers 5-7 are reachable via the like ladder or the donation ladder (see
+// DONATION_TIER_LADDER, wired into /donate) as concierge perks fulfilled
+// manually. Tier 8 stays rank-only until something is built for it. Tier 9
+// (Head Quant) is functionally the admin role (see ADMIN_TIER
 // in app/admin/client.tsx and isAdmin checks in header.tsx/page.tsx), granted
 // manually, not earned -- keep the display name as-is, it's shown as a rank
 // badge to users, not just in the admin panel.
@@ -113,10 +113,16 @@ export function nextLikeMilestone(tier: number): LikeTierStep | null {
   return LIKE_TIER_LADDER.find((step) => step.tier > tier) ?? null;
 }
 
+/** The next rung above `tier` on the donation ladder, or null once past tier 7. */
+export function nextDonationMilestone(tier: number): DonationTierStep | null {
+  return DONATION_TIER_LADDER.find((step) => step.tier > tier) ?? null;
+}
+
 /** Translation key for what (if anything) a given tier unlocks, for congrats copy --
- * callers resolve it via useLanguage()'s t(). Null when the tier is a rank-only
- * milestone with no feature behind it yet (5-7). Mirrors tierUnlock.* in
- * lib/i18n/strings.ts -- keep both in sync. */
+ * callers resolve it via useLanguage()'s t(). Tiers 5-7 are concierge perks fulfilled
+ * manually (not self-serve, see DONATION_TIER_LADDER) -- their copy points at Feedback
+ * as the "reach out" channel rather than a dedicated contact form. Mirrors tierUnlock.*
+ * in lib/i18n/strings.ts -- keep both in sync. */
 export function tierUnlockKey(tier: number): TranslationKey | null {
   switch (tier) {
     case 2:
@@ -125,6 +131,12 @@ export function tierUnlockKey(tier: number): TranslationKey | null {
       return "tierUnlock.comments";
     case 4:
       return "tierUnlock.premiumAndVideoPlatform";
+    case 5:
+      return "tierUnlock.pageReview";
+    case 6:
+      return "tierUnlock.customVideo";
+    case 7:
+      return "tierUnlock.quantNeighborhoodPage";
     default:
       return null;
   }

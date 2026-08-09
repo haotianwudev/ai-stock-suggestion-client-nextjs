@@ -290,6 +290,7 @@ export interface User {
   avatarUrl?: string | null;
   youtubeSubscribed: boolean;
   likedCount: number;
+  donatedCents: number;
   tier: number;
   preferredVideoSource: string;
 }
@@ -298,6 +299,10 @@ export interface LikeResult {
   wasNewLike: boolean;
   likedCount: number;
   tier: number;
+}
+
+export interface DonationCheckoutResult {
+  checkoutUrl: string;
 }
 
 export interface ForumCategory {

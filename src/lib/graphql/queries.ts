@@ -380,6 +380,7 @@ export const ME = gql`
       avatarUrl
       youtubeSubscribed
       likedCount
+      donatedCents
       tier
       preferredVideoSource
     }
@@ -395,6 +396,7 @@ export const UPDATE_PROFILE = gql`
       avatarUrl
       youtubeSubscribed
       likedCount
+      donatedCents
       tier
       preferredVideoSource
     }
@@ -410,6 +412,7 @@ export const SET_YOUTUBE_SUBSCRIBED = gql`
       avatarUrl
       youtubeSubscribed
       likedCount
+      donatedCents
       tier
       preferredVideoSource
     }
@@ -456,6 +459,14 @@ export const ATTEST_LIKED = gql`
 export const TOGGLE_BOOKMARK = gql`
   mutation ToggleBookmark($articleSlug: String!) {
     toggleBookmark(articleSlug: $articleSlug)
+  }
+`;
+
+export const CREATE_DONATION_CHECKOUT = gql`
+  mutation CreateDonationCheckout($amountCents: Int!) {
+    createDonationCheckout(amountCents: $amountCents) {
+      checkoutUrl
+    }
   }
 `;
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Clock, BookOpen, MessagesSquare, Crown, User, LogOut } from "lucide-react";
+import { Menu, Clock, BookOpen, MessagesSquare, Crown, User, LogOut, HeartHandshake } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { LanguageToggle } from "@/components/layout/language-toggle";
 import { SearchBar } from "@/components/search/search-bar";
@@ -30,6 +30,7 @@ export function Header() {
     { href: "/investment-clock", label: t("header.navMacroClock"), icon: Clock },
     { href: "/wiki", label: t("header.navWiki"), icon: BookOpen },
     { href: "/forum/site-feedback", label: t("header.navFeedback"), icon: MessagesSquare },
+    { href: "/donate", label: t("header.navDonate"), icon: HeartHandshake },
   ];
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">

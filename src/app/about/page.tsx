@@ -13,6 +13,7 @@ import {
   MIN_COMMENT_TIER,
   MIN_PREMIUM_TIER,
   LIKE_TIER_LADDER,
+  DONATION_TIER_LADDER,
 } from "@/lib/tiers";
 
 // Derived from the tier constants rather than written out by hand, so this table
@@ -22,17 +23,15 @@ const TIER_PERKS: Record<number, string> = {
   [MIN_TOPIC_TIER]: "Topic pages & study guides",
   [MIN_COMMENT_TIER]: "Comments & forum posts",
   [MIN_PREMIUM_TIER]: "Premium articles & preferred video platform",
-  5: "Coming later",
-  6: "Coming later",
-  7: "Coming later",
+  5: "1:1 page review",
+  6: "Help creating a video",
+  7: "A dedicated Quant Neighborhood page",
   8: "Coming later",
   9: "Admin",
 };
 
 // DONATION_TIER_LADDER mirrors real server logic (server/src/db/donations.js,
-// live Stripe webhook), but there's no donate button in the client yet -- so it's
-// deliberately left out of tierHowTo below rather than advertising an action
-// readers can't actually take. Wire it back in once a donate flow ships.
+// live Stripe webhook) and now has a client entry point at /donate.
 function tierHowTo(tier: number): string {
   if (tier === 1) return "Default when you create a free account";
   if (tier === MIN_TOPIC_TIER) return "Subscribe to the SOPHIE YouTube channel";
@@ -43,6 +42,11 @@ function tierHowTo(tier: number): string {
       `Like ${likeStep.likesNeeded} paired video${likeStep.likesNeeded === 1 ? "" : "s"}` +
       (likeStep.alsoNeedsSubscribe ? " while subscribed" : "")
     );
+  }
+
+  const donationStep = DONATION_TIER_LADDER.find((step) => step.tier === tier);
+  if (donationStep) {
+    return `Donate $${(donationStep.minCents / 100).toFixed(2)}+ total`;
   }
 
   return "Awarded manually";
@@ -211,7 +215,12 @@ export default function AboutPage() {
                     subscribe on YouTube
                   </a>{" "}
                   — <Link href="/settings/profile" className="font-semibold underline hover:text-green-800">log in and confirm it on your profile</Link>{" "}
-                  to unlock articles going forward. A tip jar for direct financial support is on the way too — stay tuned.
+                  to unlock articles going forward. Prefer to{" "}
+                  <Link href="/donate" className="font-semibold underline hover:text-green-800">
+                    donate directly
+                  </Link>
+                  ? It promotes your tier immediately — $9.99+ unlocks premium articles, and higher tiers get
+                  a page review, a custom video, or a dedicated page in the Quant Neighborhood.
                 </p>
               </div>
             </CardContent>

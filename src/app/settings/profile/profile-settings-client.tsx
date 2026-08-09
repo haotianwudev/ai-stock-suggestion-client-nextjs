@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { Crown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -287,6 +288,19 @@ export function ProfileSettingsClient() {
               plural: (profile?.likedCount ?? 0) === 1 ? "" : "s",
             })}
           </p>
+
+          <div className="mt-6 border-t pt-6">
+            <p className="text-sm font-medium">Support the site directly</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Donated ${((profile?.donatedCents ?? 0) / 100).toFixed(2)} total — donations promote your tier
+              immediately and never expire.
+            </p>
+            <Link href="/donate">
+              <Button variant="outline" size="sm" className="mt-3">
+                Donate
+              </Button>
+            </Link>
+          </div>
         </CardContent>
       </Card>
 

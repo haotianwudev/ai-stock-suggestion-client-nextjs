@@ -15,6 +15,7 @@ export interface Profile {
   avatarUrl: string | null;
   youtubeSubscribed: boolean;
   likedCount: number;
+  donatedCents: number;
   tier: number;
   preferredVideoSource: "youtube" | "bilibili";
 }
@@ -85,6 +86,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       avatarUrl: me?.avatarUrl ?? DEFAULT_AVATAR_URL,
       youtubeSubscribed: me?.youtubeSubscribed ?? false,
       likedCount: me?.likedCount ?? 0,
+      donatedCents: me?.donatedCents ?? 0,
       tier: me?.tier ?? 1,
       preferredVideoSource: me?.preferredVideoSource === "bilibili" ? "bilibili" : "youtube",
     };
