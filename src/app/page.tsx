@@ -185,6 +185,10 @@ export default function Home() {
                 <p className="text-lg md:text-xl text-muted-foreground">
                   SOPHIE Daddy Quant Blog
                 </p>
+                <p className="max-w-xl text-sm md:text-base text-muted-foreground">
+                  AI-assisted personal blog and youtubes on investment research and education — quantitative analysis, options
+                  strategies, and stock insights.
+                </p>
 
                 {/* Core feature shortcuts */}
                 <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full">
@@ -227,8 +231,8 @@ export default function Home() {
                     aria-label="Copy RSS Feed URL"
                     title={rssCopied ? "Copied!" : "Copy RSS Feed URL"}
                     className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${rssCopied
-                        ? "border-primary/40 text-primary bg-accent"
-                        : "border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-accent"
+                      ? "border-primary/40 text-primary bg-accent"
+                      : "border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-accent"
                       }`}
                   >
                     {rssCopied ? <Check className="h-4 w-4" /> : <Rss className="h-4 w-4" />}
