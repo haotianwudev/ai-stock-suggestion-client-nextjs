@@ -58,7 +58,7 @@ export function YoutubeSubscribeGate({
     }
   }, [profile?.youtubeSubscribed]);
 
-  const showGate = !profile?.youtubeSubscribed && !unlocked;
+  const showGate = !loading && !profile?.youtubeSubscribed && !unlocked;
 
   const confirmSubscribed = async () => {
     try {
