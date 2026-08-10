@@ -13,13 +13,13 @@ import { StatisticalAnalysisContent } from "../topics/statistical-analysis";
 import { DerivativesPricingContent } from "../topics/derivatives-pricing";
 import { AiInQuantContent } from "../topics/ai-in-quant";
 import { RiskManagementContent } from "../topics/risk-management";
+import { BooksContent } from "../topics/books";
 import { getTopicConfig } from "../topics/config";
 import { SystematicStrategiesContent } from "@/app/quant/quanttrading/systematic-strategies";
 import { MachineLearningContent } from "@/app/quant/quanttrading/machine-learning";
 import { BacktestContent } from "@/app/quant/quanttrading/backtest";
 import { TradingSystemContent } from "@/app/quant/quanttrading/trading-system";
 import { AssetAllocationContent } from "@/app/quant/quanttrading/asset-allocation";
-import { BooksContent as QuantTradingBooksContent } from "@/app/quant/quanttrading/books";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
@@ -56,7 +56,7 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger
             value="monte-carlo"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -92,6 +92,13 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">Risk</span>
             <span className="hidden sm:block">Risk Management</span>
           </TabsTrigger>
+          <TabsTrigger
+            value="books"
+            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+          >
+            <span className="block sm:hidden">Books</span>
+            <span className="hidden sm:block">Books</span>
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="monte-carlo" className="mt-0">
@@ -112,6 +119,10 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
 
         <TabsContent value="risk-management" className="mt-0">
           <RiskManagementContent />
+        </TabsContent>
+
+        <TabsContent value="books" className="mt-0">
+          <BooksContent />
         </TabsContent>
       </Tabs>
     </div>
@@ -141,7 +152,7 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Quantitative Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger
             value="systematic-strategies"
             className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
@@ -177,37 +188,26 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
             <span className="block sm:hidden">System</span>
             <span className="hidden sm:block">Trading System</span>
           </TabsTrigger>
-          <TabsTrigger
-            value="books"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
-          >
-            <span className="block sm:hidden">Books</span>
-            <span className="hidden sm:block">Books</span>
-          </TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="systematic-strategies" className="mt-0">
           <SystematicStrategiesContent />
         </TabsContent>
-        
+
         <TabsContent value="asset-allocation" className="mt-0">
           <AssetAllocationContent />
         </TabsContent>
-        
+
         <TabsContent value="machine-learning" className="mt-0">
           <MachineLearningContent />
         </TabsContent>
-        
+
         <TabsContent value="backtest" className="mt-0">
           <BacktestContent />
         </TabsContent>
-        
+
         <TabsContent value="trading-system" className="mt-0">
           <TradingSystemContent />
-        </TabsContent>
-
-        <TabsContent value="books" className="mt-0">
-          <QuantTradingBooksContent />
         </TabsContent>
       </Tabs>
     </div>

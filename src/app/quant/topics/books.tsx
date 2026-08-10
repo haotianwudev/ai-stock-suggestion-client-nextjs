@@ -4,7 +4,7 @@ import { BookOpen, LineChart, Layers, Brain, Compass, ArrowRight } from "lucide-
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageTemplate } from "@/components/shared/page-template";
-import { getQuantTopicConfig } from "./config";
+import { getTopicConfig } from "./config";
 
 function ChapterHeading({ number, title, colorClass }: { number: number; title: string; colorClass: string }) {
   return (
@@ -19,7 +19,7 @@ function ChapterHeading({ number, title, colorClass }: { number: number; title: 
 
 export function BooksContent() {
   // Get configuration for books
-  const config = getQuantTopicConfig('books');
+  const config = getTopicConfig('books');
 
   const heroColorScheme = {
     border: "border-rose-200",
