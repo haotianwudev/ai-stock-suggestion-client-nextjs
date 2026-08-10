@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
@@ -32,6 +32,14 @@ import { TierUpDialog } from "@/components/shared/tier-up-dialog";
  * this gate stays a pure content gate and doesn't double-count likes.
  * Subscribing still bumps tier and pops the congrats dialog, same as
  * /settings/profile.
+ *
+ * The anonymous click-through unlock is plain component state, not
+ * localStorage -- deliberately, so it resets on reload/every new visit
+ * instead of becoming a permanent no-login bypass. `profile.youtubeSubscribed`
+ * (read fresh via useUser(), already a single shared query -- see
+ * hooks/use-user.tsx -- so there's no cost to reading it directly) is the only
+ * unlock that's meant to persist, and it already does, server-side, tied to
+ * the account rather than the browser.
  */
 export function YoutubeSubscribeGate({
   videoUrl,
@@ -41,22 +49,11 @@ export function YoutubeSubscribeGate({
   children: React.ReactNode;
 }) {
   const { user, profile, loading } = useUser();
-  const [unlocked, setUnlocked] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("youtube_unlocked") === "true";
-    }
-    return false;
-  });
+  const [unlocked, setUnlocked] = useState(false);
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [setYoutubeSubscribed, { loading: confirming }] = useMutation<{
     setYoutubeSubscribed: MeResult;
   }>(SET_YOUTUBE_SUBSCRIBED, { refetchQueries: [{ query: ME }] });
-
-  useEffect(() => {
-    if (profile?.youtubeSubscribed && typeof window !== "undefined") {
-      localStorage.setItem("youtube_unlocked", "true");
-    }
-  }, [profile?.youtubeSubscribed]);
 
   const showGate = !loading && !profile?.youtubeSubscribed && !unlocked;
 
@@ -65,8 +62,7 @@ export function YoutubeSubscribeGate({
       const prevTier = profile?.tier ?? 1;
       const { data } = await setYoutubeSubscribed({ variables: { subscribed: true } });
       setUnlocked(true);
-      if (typeof window !== "undefined") localStorage.setItem("youtube_unlocked", "true");
-      
+
       const newTier = data?.setYoutubeSubscribed.tier ?? prevTier;
       if (newTier > prevTier) {
         setCongrats({
@@ -115,7 +111,6 @@ export function YoutubeSubscribeGate({
                 onClick={() => {
                   window.open(videoUrl, "_blank", "noopener,noreferrer");
                   setUnlocked(true);
-                  if (typeof window !== "undefined") localStorage.setItem("youtube_unlocked", "true");
                 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-sm shadow-sm transition-colors"
               >

@@ -27,29 +27,18 @@ export const FREE_TOPIC_IDS = [
 export const PREMIUM_TOPIC_IDS = ["books"];
 
 // Signed-out readers have no profile to persist `youtubeSubscribed` to, so their self-attested
-// unlock lives in localStorage instead. Kept in a module-level store rather than component state
-// for two reasons: a topic page mounts more than one gate (main content + related articles, see
-// page-template.tsx) and they must unlock together, and the unlock has to survive navigation —
-// the gate copy promises it "unlocks topics going forward".
-const UNLOCK_STORAGE_KEY = "sophie:topic-unlocked";
+// unlock is a module-level (not localStorage) in-memory flag instead — shared across every
+// mounted gate, since a topic page renders more than one (main content + related articles, see
+// page-template.tsx) and they must unlock together. Deliberately NOT persisted to storage: it
+// resets on reload or a new tab, so a click-through can never become a permanent no-login bypass
+// (see the article gate below for the same rule and why). It does survive client-side navigation
+// between topics for the rest of the browsing session, matching "unlocks topics going forward"
+// in the gate copy below.
 const unlockListeners = new Set<() => void>();
-let unlockedCache: boolean | null = null;
+let unlocked = false;
 
 function getUnlockSnapshot(): boolean {
-  if (unlockedCache !== null) return unlockedCache;
-  if (typeof window === "undefined") return false;
-  try {
-    unlockedCache = window.localStorage.getItem(UNLOCK_STORAGE_KEY) === "1";
-  } catch {
-    // Private mode / storage disabled — fall back to a per-session unlock.
-    unlockedCache = false;
-  }
-  return unlockedCache;
-}
-
-// Server render never has the unlock, so hydration always starts locked and settles after mount.
-function getUnlockServerSnapshot(): boolean {
-  return false;
+  return unlocked;
 }
 
 function subscribeToUnlock(onChange: () => void): () => void {
@@ -59,19 +48,14 @@ function subscribeToUnlock(onChange: () => void): () => void {
   };
 }
 
-/** Records the self-attested unlock and notifies every mounted gate. */
+/** Records the self-attested unlock for this browsing session and notifies every mounted gate. */
 export function persistTopicUnlock(): void {
-  unlockedCache = true;
-  try {
-    window.localStorage.setItem(UNLOCK_STORAGE_KEY, "1");
-  } catch {
-    // Unlock still applies for this session even when it can't be written.
-  }
+  unlocked = true;
   unlockListeners.forEach((notify) => notify());
 }
 
 function useTopicUnlocked(): boolean {
-  return useSyncExternalStore(subscribeToUnlock, getUnlockSnapshot, getUnlockServerSnapshot);
+  return useSyncExternalStore(subscribeToUnlock, getUnlockSnapshot, getUnlockSnapshot);
 }
 
 /**
