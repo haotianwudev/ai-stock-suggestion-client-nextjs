@@ -253,6 +253,7 @@ export default function Home() {
 
                 {/* Compact social/utility row */}
                 <div className="flex items-center gap-2 flex-wrap justify-center lg:justify-start">
+                  <InstallAppButton />
                   {SOCIAL_LINKS.map((social) => (
                     <a
                       key={social.href}
@@ -277,7 +278,6 @@ export default function Home() {
                   >
                     {rssCopied ? <Check className="h-4 w-4" /> : <Rss className="h-4 w-4" />}
                   </button>
-                  <InstallAppButton />
                   <span className="mx-1 h-4 w-px bg-border hidden sm:block" />
                   <Link
                     href="/about"
