@@ -47,7 +47,7 @@ const Latex: React.FC<LatexProps> = ({ formula, displayMode = false }) => {
   return (
     <span 
       ref={containerRef} 
-      className={`${!rendered ? "font-mono italic text-blue-500/50" : ""} max-w-full overflow-hidden inline-block align-middle`}
+      className={`${!rendered ? "font-mono italic text-[#A8672E] dark:text-[#D08F52]/50" : ""} max-w-full overflow-hidden inline-block align-middle`}
     >
       {!rendered && (displayMode ? `\\[ ${formula} \\]` : `\\( ${formula} \\)`)}
     </span>
@@ -66,12 +66,12 @@ interface MathDisplayProps {
 const MathDisplay: React.FC<MathDisplayProps> = ({ formula, label }) => (
   <div className="w-full my-6 flex flex-col items-center">
     {label && (
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400 mb-3">
+      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8672E] dark:text-[#D08F52] mb-3">
         {label}
       </span>
     )}
-    <div className="bg-blue-50/50 border border-blue-100 rounded-3xl p-6 md:p-8 w-full max-w-full flex justify-center shadow-inner overflow-hidden">
-      <div className="text-sm sm:text-base md:text-xl lg:text-2xl text-blue-900 max-w-full text-center">
+    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 border border-blue-100 rounded-3xl p-6 md:p-8 w-full max-w-full flex justify-center shadow-inner overflow-hidden">
+      <div className="text-sm sm:text-base md:text-xl lg:text-2xl text-[#A8672E] dark:text-[#D08F52] max-w-full text-center">
         <Latex formula={formula} displayMode={true} />
       </div>
     </div>
@@ -89,11 +89,11 @@ interface ModuleSectionProps {
 
 const ModuleSection: React.FC<ModuleSectionProps> = ({ children, title, icon: Icon, color, id }) => {
   const colorMap = {
-    blue: "bg-blue-600 shadow-blue-200",
-    indigo: "bg-indigo-600 shadow-indigo-200",
+    blue: "bg-[#A8672E] dark:bg-[#D08F52] shadow-blue-200",
+    indigo: "bg-[#A8672E] dark:bg-[#D08F52] shadow-indigo-200",
     amber: "bg-amber-500 shadow-amber-200",
-    rose: "bg-rose-500 shadow-rose-200",
-    emerald: "bg-emerald-500 shadow-emerald-200",
+    rose: "bg-[#BC4128] dark:bg-[#E2694A] shadow-rose-200",
+    emerald: "bg-[#1D8A70] dark:bg-[#3CBF9C] shadow-emerald-200",
     purple: "bg-purple-600 shadow-purple-200",
     yellow: "bg-yellow-400 shadow-yellow-200"
   };
@@ -109,7 +109,7 @@ const ModuleSection: React.FC<ModuleSectionProps> = ({ children, title, icon: Ic
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
               Tutorial Module
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight font-serif">
               {title}
             </h2>
           </div>
@@ -131,12 +131,12 @@ interface GridBoxProps {
 const GridBox: React.FC<GridBoxProps> = ({ children, title, icon: Icon, className = "", theme = "light" }) => (
   <div className={`rounded-3xl p-8 transition-all duration-300 ${
     theme === 'light' 
-      ? 'bg-white border border-gray-100 shadow-sm hover:shadow-md' 
+      ? 'bg-white dark:bg-[#0A0D14] border border-gray-100 shadow-sm hover:shadow-md' 
       : 'bg-slate-900 text-white shadow-2xl'
   } ${className}`}>
     {title && (
       <h3 className={`text-xl font-bold mb-4 flex items-center gap-2 ${
-        theme === 'light' ? 'text-gray-800' : 'text-blue-400'
+        theme === 'light' ? 'text-gray-800' : 'text-[#A8672E] dark:text-[#D08F52]'
       }`}>
         {Icon && <Icon className="w-5 h-5" />}
         {title}
@@ -159,7 +159,7 @@ interface StyledTableProps {
 
 const StyledTable: React.FC<StyledTableProps> = ({ headers, rows, title, dark = false }) => (
   <div className={`my-10 overflow-hidden rounded-2xl border ${
-    dark ? 'border-slate-700 bg-slate-800 text-white' : 'border-gray-200 bg-white shadow-sm'
+    dark ? 'border-slate-700 bg-slate-800 text-white' : 'border-gray-200 bg-white dark:bg-[#0A0D14] shadow-sm'
   }`}>
     {title && (
       <div className={`px-6 py-4 border-b font-bold ${
@@ -183,7 +183,7 @@ const StyledTable: React.FC<StyledTableProps> = ({ headers, rows, title, dark = 
         </thead>
         <tbody className={`divide-y ${dark ? 'divide-slate-700' : 'divide-gray-100'}`}>
           {rows.map((row, i) => (
-            <tr key={i} className={dark ? 'hover:bg-slate-700/50' : 'hover:bg-blue-50/30'}>
+            <tr key={i} className={dark ? 'hover:bg-slate-700/50' : 'hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10/30'}>
               {row.map((cell, j) => (
                 <td key={j} className="p-4 text-xs leading-relaxed" dangerouslySetInnerHTML={{ __html: cell }} />
               ))}
@@ -228,15 +228,15 @@ export default function ScienceRobustAlpha() {
         <div className="space-y-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-800">Finance: The "Final Boss" of Machine Learning</h3>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 font-serif">Finance: The "Final Boss" of Machine Learning</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 Standard Machine Learning (SML) was designed for static environments. <strong>Financial Machine Learning (FML)</strong> operates in a non-cooperative, adversarial environment where prediction changes the outcome.
               </p>
               <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 text-blue-600 font-bold text-sm bg-blue-50 px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 text-[#A8672E] dark:text-[#D08F52] font-bold text-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10 px-4 py-2 rounded-full">
                   <ArrowRightLeft className="w-4 h-4" /> Adversarial
                 </div>
-                <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm bg-indigo-50 px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 text-[#A8672E] dark:text-[#D08F52] font-bold text-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10 px-4 py-2 rounded-full">
                   <Globe className="w-4 h-4" /> Global Scale
                 </div>
                 <div className="flex items-center gap-2 text-purple-600 font-bold text-sm bg-purple-50 px-4 py-2 rounded-full">
@@ -245,25 +245,25 @@ export default function ScienceRobustAlpha() {
               </div>
             </div>
             <GridBox theme="dark" className="border-slate-800">
-              <h4 className="text-blue-400 font-bold mb-4 uppercase tracking-widest text-xs">
+              <h4 className="text-[#A8672E] dark:text-[#D08F52] font-bold mb-4 uppercase tracking-widest text-xs">
                 <Activity className="w-4 h-4" /> The Core Conflict
               </h4>
               <p className="text-slate-300 italic mb-4">
                 "In computer vision, the cat does not turn into a dog because you identified it. In finance, identify a pattern and it reacts and disappears."
               </p>
-              <div className="h-1 w-20 bg-blue-600 rounded-full" />
+              <div className="h-1 w-20 bg-[#A8672E] dark:bg-[#D08F52] rounded-full" />
             </GridBox>
           </div>
 
-          <div className="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
-            <h4 className="font-bold text-slate-800 mb-6 text-xl">Standard ML vs. Financial ML</h4>
+          <div className="p-8 bg-white dark:bg-[#0A0D14] rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
+            <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-6 text-xl">Standard ML vs. Financial ML</h4>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-slate-100">
+                  <tr className="border-b border-slate-100 dark:border-slate-800">
                     <th className="pb-4 font-bold text-xs uppercase tracking-widest text-slate-400">Feature</th>
-                    <th className="pb-4 font-bold text-xs uppercase tracking-widest text-blue-600">Standard ML</th>
-                    <th className="pb-4 font-bold text-xs uppercase tracking-widest text-indigo-600">Financial ML</th>
+                    <th className="pb-4 font-bold text-xs uppercase tracking-widest text-[#A8672E] dark:text-[#D08F52]">Standard ML</th>
+                    <th className="pb-4 font-bold text-xs uppercase tracking-widest text-[#A8672E] dark:text-[#D08F52]">Financial ML</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
@@ -276,8 +276,8 @@ export default function ScienceRobustAlpha() {
                   ].map((row, i) => (
                     <tr key={i} className="group">
                       <td className="py-4 text-sm font-bold text-slate-500">{row[0]}</td>
-                      <td className="py-4 text-sm text-slate-700">{row[1]}</td>
-                      <td className="py-4 text-sm text-slate-900 font-medium group-hover:text-indigo-600 transition-colors">{row[2]}</td>
+                      <td className="py-4 text-sm text-slate-700 dark:text-slate-300">{row[1]}</td>
+                      <td className="py-4 text-sm text-slate-900 font-medium group-hover:text-[#A8672E] dark:text-[#D08F52] transition-colors">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -294,10 +294,10 @@ export default function ScienceRobustAlpha() {
               </ul>
             </GridBox>
             <div className="space-y-6">
-              <div className="bg-indigo-600 rounded-[2.5rem] p-8 text-white shadow-xl">
-                <Gauge className="w-10 h-10 mb-4 text-indigo-300" />
+              <div className="bg-[#A8672E] dark:bg-[#D08F52] rounded-[2.5rem] p-8 text-white shadow-xl">
+                <Gauge className="w-10 h-10 mb-4 text-[#A8672E] dark:text-[#D08F52]" />
                 <h4 className="font-bold text-xl mb-2 text-white">Alpha Decay</h4>
-                <p className="text-xs text-indigo-100 leading-relaxed">Shelf-life is measured in weeks. Requires Regime Detection.</p>
+                <p className="text-xs text-[#A8672E] dark:text-[#D08F52] leading-relaxed">Shelf-life is measured in weeks. Requires Regime Detection.</p>
               </div>
             </div>
           </div>
@@ -316,15 +316,15 @@ export default function ScienceRobustAlpha() {
       <ModuleSection title="II. The Data Singularity" icon={AlertTriangle} color="amber" id="singularity">
         <div className="space-y-16">
           <div className="max-w-3xl">
-            <p className="text-xl text-slate-600 leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
               Low signal, unstable dynamics, and extreme scarcity create a "Perfect Storm" for overfitting.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900">The SNR Hurricane</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-3xl font-black text-slate-900 font-serif">The SNR Hurricane</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 SNR is often below 0.05. Powerful models mistake the hurricane for the whisper.
               </p>
             </div>
@@ -338,7 +338,7 @@ export default function ScienceRobustAlpha() {
 
           <div className="p-8 md:p-12 bg-slate-900 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
             <div className="relative z-10">
-              <h3 className="text-3xl font-black mb-8 text-amber-400">Deep Dive: The Stationarity-Memory Dilemma</h3>
+              <h3 className="text-3xl font-black mb-8 text-amber-400 font-serif">Deep Dive: The Stationarity-Memory Dilemma</h3>
               <div className="grid lg:grid-cols-5 gap-12">
                 <div className="lg:col-span-3 space-y-6">
                   <p className="text-slate-300 leading-relaxed">
@@ -362,20 +362,20 @@ export default function ScienceRobustAlpha() {
         <div className="space-y-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900 leading-tight">Beyond Binary Returns</h3>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <h3 className="text-3xl font-black text-slate-900 leading-tight font-serif">Beyond Binary Returns</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 Traditional "sign-based" labeling ignores the path. Elite quants use dynamic barriers that account for risk and time-decay.
               </p>
               <div className="flex gap-4">
-                <div className="bg-indigo-50 px-4 py-2 rounded-xl text-indigo-700 font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 px-4 py-2 rounded-xl text-[#A8672E] dark:text-[#D08F52] font-bold text-xs uppercase tracking-wider flex items-center gap-2">
                   <Stethoscope className="w-4 h-4" /> Path Dependent
                 </div>
-                <div className="bg-blue-50 px-4 py-2 rounded-xl text-blue-700 font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 px-4 py-2 rounded-xl text-[#A8672E] dark:text-[#D08F52] font-bold text-xs uppercase tracking-wider flex items-center gap-2">
                   <Filter className="w-4 h-4" /> Noise Filter
                 </div>
               </div>
             </div>
-            <GridBox title="The Dynamic Stop" icon={Activity} className="border-indigo-100 bg-indigo-50/20">
+            <GridBox title="The Dynamic Stop" icon={Activity} className="border-indigo-100 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/20">
               <p className="text-sm">
                 Barriers should be scaled by <strong>trailing volatility</strong> (<Latex formula="\\sigma_t" />). This ensures the model isn't "shaken out" by normal market noise.
               </p>
@@ -383,10 +383,10 @@ export default function ScienceRobustAlpha() {
           </div>
 
           <div className="bg-slate-900 rounded-[3rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px]" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52]/10 blur-[100px]" />
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-3xl font-black mb-6 text-indigo-300 tracking-tight">Triple Barrier Method</h3>
+                <h3 className="text-3xl font-black mb-6 text-[#A8672E] dark:text-[#D08F52] tracking-tight font-serif">Triple Barrier Method</h3>
                 <ul className="space-y-6">
                   {[
                     { t: "Upper Barrier (pt)", d: "Profit Target reached (+1 label)", c: "border-indigo-500", val: "y_t = 1" },
@@ -396,7 +396,7 @@ export default function ScienceRobustAlpha() {
                     <li key={i} className={`border-l-4 pl-6 ${item.c} p-2 rounded-r-xl`}>
                       <div className="flex justify-between items-center mb-1">
                         <span className="font-bold text-white">{item.t}</span>
-                        <code className="text-[10px] text-indigo-400 bg-indigo-900/50 px-2 py-0.5 rounded">{item.val}</code>
+                        <code className="text-[10px] text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E] dark:bg-[#D08F52]/50 px-2 py-0.5 rounded">{item.val}</code>
                       </div>
                       <span className="text-sm text-slate-400">{item.d}</span>
                     </li>
@@ -404,7 +404,7 @@ export default function ScienceRobustAlpha() {
                 </ul>
               </div>
               <div className="space-y-6">
-                <div className="bg-slate-800/50 rounded-2xl p-6 font-mono text-xs text-indigo-200 border border-slate-700">
+                <div className="bg-slate-800/50 rounded-2xl p-6 font-mono text-xs text-[#A8672E] dark:text-[#D08F52] border border-slate-700">
                   <span className="text-slate-500 block mb-4 border-b border-slate-700 pb-2">
                     <Terminal className="w-4 h-4 inline mr-2" /> triple_barrier.py
                   </span>
@@ -422,19 +422,19 @@ for t in timestamps:
 
           <div className="grid lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900">Meta-Labeling: The Master Stroke</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-slate-900 font-serif">Meta-Labeling: The Master Stroke</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Introducing a "Secondary Model" that asks: <em>"Given the current context, should I follow the Primary signal?"</em>
               </p>
-              <div className="p-6 bg-blue-50 rounded-3xl border border-blue-100">
-                <h4 className="font-bold text-blue-900 text-sm mb-2 text-blue-900">The Binary Choice</h4>
-                <p className="text-xs text-blue-800/70">
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-3xl border border-blue-100">
+                <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] text-sm mb-2 text-[#A8672E] dark:text-[#D08F52]">The Binary Choice</h4>
+                <p className="text-xs text-[#A8672E] dark:text-[#D08F52]/70">
                   Predicts binary 0 or 1: <strong>Pass</strong> or <strong>Trade</strong>.
                 </p>
               </div>
             </div>
             <div className="lg:col-span-7">
-              <GridBox title="The Workflow" icon={Layers} className="bg-white border-slate-200">
+              <GridBox title="The Workflow" icon={Layers} className="bg-white dark:bg-[#0A0D14] border-slate-200 dark:border-slate-800">
                 <ol className="space-y-4">
                   {[
                     { s: "1. Primary Signal", d: "Generate a 'Side' (+1 or -1)." },
@@ -443,8 +443,8 @@ for t in timestamps:
                     { s: "4. Training", d: "Train ML model to predict these labels." }
                   ].map((step, i) => (
                     <li key={i} className="flex gap-4 group">
-                      <span className="text-indigo-600 font-black text-lg">{i + 1}</span>
-                      <p className="text-sm text-slate-600">
+                      <span className="text-[#A8672E] dark:text-[#D08F52] font-black text-lg">{i + 1}</span>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">
                         <strong>{step.s}:</strong> {step.d}
                       </p>
                     </li>
@@ -460,20 +460,20 @@ for t in timestamps:
       <ModuleSection title="IV. Detection & Statistical Armor" icon={Shield} color="rose" id="armor">
         <div className="space-y-12">
           <div className="max-w-3xl">
-            <p className="text-xl text-slate-600 leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
               Backtests are often "mirages." Statistical Armor is required to deflate performance claims.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900">Deflating the Sharpe Ratio</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-3xl font-black text-slate-900 font-serif">Deflating the Sharpe Ratio</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 The <strong>Deflated Sharpe Ratio (DSR)</strong> corrects for selection bias and non-normal returns.
               </p>
-              <GridBox className="bg-rose-50 border-rose-100">
-                <h4 className="font-bold text-rose-900 mb-2">The Multi-Testing Sinkhole</h4>
-                <p className="text-sm text-rose-800/80">
+              <GridBox className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-100">
+                <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">The Multi-Testing Sinkhole</h4>
+                <p className="text-sm text-[#BC4128] dark:text-[#E2694A]/80">
                   If you test 100 random noise signals, one will look good. DSR adjusts for this luck.
                 </p>
               </GridBox>
@@ -486,13 +486,13 @@ for t in timestamps:
             </div>
           </div>
 
-          <div className="p-8 md:p-12 bg-white rounded-[3rem] border border-slate-100 shadow-sm">
+          <div className="p-8 md:p-12 bg-white dark:bg-[#0A0D14] rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-5 space-y-6">
-                <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                  <FileSearch className="w-6 h-6 text-rose-500" /> Feature Importance: MDA vs MDI
+                <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2 font-serif">
+                  <FileSearch className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" /> Feature Importance: MDA vs MDI
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                   Avoid the <strong>MDI Trap</strong> (In-Sample). Use <strong>Mean Decrease Accuracy (MDA)</strong> (Out-of-Sample) to find true signals.
                 </p>
               </div>
@@ -513,8 +513,8 @@ for t in timestamps:
 
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900">Elastic Net Shield</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-3xl font-black text-slate-900 font-serif">Elastic Net Shield</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Regularization penalizes large weights to force model humility.
               </p>
             </div>
@@ -534,7 +534,7 @@ for t in timestamps:
                 { s: "3. CPCV", d: "Test all Train/Test paths." }
               ].map((step, i) => (
                 <div key={i} className="p-4 border border-slate-700 rounded-2xl">
-                  <span className="text-blue-400 font-bold text-xs uppercase mb-2 block">{step.s}</span>
+                  <span className="text-[#A8672E] dark:text-[#D08F52] font-bold text-xs uppercase mb-2 block">{step.s}</span>
                   <p className="text-xs text-slate-400">{step.d}</p>
                 </div>
               ))}

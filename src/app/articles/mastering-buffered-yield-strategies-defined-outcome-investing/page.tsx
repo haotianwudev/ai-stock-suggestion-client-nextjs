@@ -14,32 +14,32 @@ interface SectionProps {
 
 const Section = ({ title, icon: Icon, children, color = "indigo" }: SectionProps) => {
   const colorClasses = {
-    indigo: "border-l-4 border-indigo-500 bg-white",
-    emerald: "border-l-4 border-emerald-500 bg-white",
-    rose: "border-l-4 border-rose-500 bg-white",
-    amber: "border-l-4 border-amber-500 bg-white",
-    blue: "border-l-4 border-blue-500 bg-white",
-    violet: "border-l-4 border-violet-500 bg-white",
+    indigo: "border-l-4 border-indigo-500 bg-white dark:bg-[#0A0D14]",
+    emerald: "border-l-4 border-emerald-500 bg-white dark:bg-[#0A0D14]",
+    rose: "border-l-4 border-rose-500 bg-white dark:bg-[#0A0D14]",
+    amber: "border-l-4 border-amber-500 bg-white dark:bg-[#0A0D14]",
+    blue: "border-l-4 border-blue-500 bg-white dark:bg-[#0A0D14]",
+    violet: "border-l-4 border-violet-500 bg-white dark:bg-[#0A0D14]",
   };
 
   const textColors = {
-    indigo: "text-indigo-700",
-    emerald: "text-emerald-700",
-    rose: "text-rose-700",
+    indigo: "text-[#A8672E] dark:text-[#D08F52]",
+    emerald: "text-[#1D8A70] dark:text-[#3CBF9C]",
+    rose: "text-[#BC4128] dark:text-[#E2694A]",
     amber: "text-amber-700",
-    blue: "text-blue-700",
+    blue: "text-[#A8672E] dark:text-[#D08F52]",
     violet: "text-violet-700",
   };
 
   return (
     <div className={`mb-12 rounded-xl shadow-sm p-8 ${colorClasses[color]} transition-all hover:shadow-md`}>
-      <div className="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+      <div className="flex items-center gap-3 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
         <div className={`p-2 rounded-lg ${textColors[color]} bg-opacity-10 bg-current`}>
           <Icon size={28} />
         </div>
         <h2 className={`text-2xl font-bold ${textColors[color]}`}>{title}</h2>
       </div>
-      <div className="text-slate-600 leading-relaxed space-y-6">
+      <div className="text-slate-600 dark:text-slate-400 leading-relaxed space-y-6">
         {children}
       </div>
     </div>
@@ -53,11 +53,11 @@ interface BadgeProps {
 
 const Badge = ({ children, color = "slate" }: BadgeProps) => {
   const styles = {
-    green: "bg-emerald-100 text-emerald-800",
-    red: "bg-rose-100 text-rose-800",
-    blue: "bg-blue-100 text-blue-800",
+    green: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]",
+    red: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]",
+    blue: "bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52]",
     amber: "bg-amber-100 text-amber-800",
-    slate: "bg-slate-100 text-slate-800",
+    slate: "bg-slate-100 text-slate-800 dark:text-slate-200",
     violet: "bg-violet-100 text-violet-800",
   };
 
@@ -98,7 +98,7 @@ const PayoffVisualizer = () => {
   let zoneDesc = "Direct 1:1 participation";
 
   if (marketReturn < -bufferSize) {
-    zoneColor = "text-rose-500";
+    zoneColor = "text-[#BC4128] dark:text-[#E2694A]";
     zoneName = "Downside Risk";
     zoneDesc = "Buffer exceeded. You take losses 1:1 from here.";
   } else if (marketReturn < 0) {
@@ -106,7 +106,7 @@ const PayoffVisualizer = () => {
     zoneName = "Protected Zone";
     zoneDesc = "Losses are fully absorbed by the options.";
   } else if (marketReturn > capSize) {
-    zoneColor = "text-emerald-500";
+    zoneColor = "text-[#1D8A70] dark:text-[#3CBF9C]";
     zoneName = "Capped Zone";
     zoneDesc = "Maximum profit reached. Upside is forfeited.";
   }
@@ -128,8 +128,8 @@ const PayoffVisualizer = () => {
       {/* Controls Header */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6 border-b border-slate-800 pb-6">
         <div>
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Activity className="text-indigo-400" size={20}/>
+          <h3 className="text-lg font-bold text-white flex items-center gap-2 font-serif">
+            <Activity className="text-[#A8672E] dark:text-[#D08F52]" size={20}/>
             Payoff Simulator
           </h3>
           <p className="text-slate-400 text-xs mt-1">Adjust market conditions to see reaction.</p>
@@ -142,7 +142,7 @@ const PayoffVisualizer = () => {
               key={b}
               onClick={() => setBufferSize(b)}
               className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${
-                bufferSize === b ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+                bufferSize === b ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white shadow-lg' : 'text-slate-400 hover:text-white'
               }`}
             >
               {b}% Buffer
@@ -191,7 +191,7 @@ const PayoffVisualizer = () => {
 
           <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-emerald-500">
             <div className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Your Return</div>
-            <div className={`text-3xl font-mono font-bold ${strategyReturn >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+            <div className={`text-3xl font-mono font-bold ${strategyReturn >= 0 ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
               {strategyReturn > 0 ? '+' : ''}{strategyReturn.toFixed(1)}%
             </div>
           </div>
@@ -242,19 +242,19 @@ const TradeDecomposer = () => {
       <div className="bg-gradient-to-br from-violet-50 to-indigo-50 border border-violet-100 p-6 rounded-xl">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
-            <h3 className="text-lg font-bold text-violet-900 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-violet-900 flex items-center gap-2 font-serif">
               <Calculator size={20}/>
               Strategy Builder
             </h3>
             <p className="text-sm text-violet-700">Enter your asset price to calculate the option legs.</p>
           </div>
-          <div className="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm border border-violet-100">
+          <div className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] p-2 rounded-lg shadow-sm border border-violet-100">
             <label className="text-xs font-bold text-slate-500 uppercase">Underlying Price ($)</label>
             <input 
               type="number" 
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              className="w-24 font-mono text-lg font-bold text-slate-800 border-none focus:ring-0 text-right"
+              className="w-24 font-mono text-lg font-bold text-slate-800 dark:text-slate-200 border-none focus:ring-0 text-right"
             />
           </div>
         </div>
@@ -268,19 +268,19 @@ const TradeDecomposer = () => {
         <div className="space-y-4">
           {/* LEG 1: The Asset */}
           <div className="relative pl-0 md:pl-16">
-            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-slate-200 rounded-full items-center justify-center text-xs font-bold text-slate-600 z-10">1</div>
-            <div className="bg-white border-2 border-slate-200 rounded-xl p-5 hover:border-slate-300 transition-colors flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-slate-200 rounded-full items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 z-10">1</div>
+            <div className="bg-white dark:bg-[#0A0D14] border-2 border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-slate-300 transition-colors flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-slate-100 rounded-lg text-slate-600">
+                <div className="p-3 bg-slate-100 rounded-lg text-slate-600 dark:text-slate-400">
                   <Layers size={20}/>
                 </div>
                 <div>
-                  <div className="font-bold text-slate-800">Long Asset Exposure</div>
+                  <div className="font-bold text-slate-800 dark:text-slate-200">Long Asset Exposure</div>
                   <div className="text-xs text-slate-500">Buy 100 Shares of SPY</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-xl font-mono font-bold text-slate-800">{currency(price)}</div>
+                <div className="text-xl font-mono font-bold text-slate-800 dark:text-slate-200">{currency(price)}</div>
                 <Badge color="slate">Delta 1.0</Badge>
               </div>
             </div>
@@ -288,20 +288,20 @@ const TradeDecomposer = () => {
 
           {/* LEG 2: The Floor */}
           <div className="relative pl-0 md:pl-16">
-            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-indigo-200 rounded-full items-center justify-center text-xs font-bold text-indigo-700 z-10">2</div>
-            <div className="bg-white border-2 border-indigo-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#A8672E] dark:bg-[#D08F52] rounded-full items-center justify-center text-xs font-bold text-[#A8672E] dark:text-[#D08F52] z-10">2</div>
+            <div className="bg-white dark:bg-[#0A0D14] border-2 border-indigo-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-indigo-50 rounded-lg text-indigo-600">
+                <div className="p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg text-[#A8672E] dark:text-[#D08F52]">
                   <Shield size={20}/>
                 </div>
                 <div>
-                  <div className="font-bold text-indigo-900">Buy Put (The Floor)</div>
-                  <div className="text-xs text-indigo-700">Protects from this price downwards</div>
+                  <div className="font-bold text-[#A8672E] dark:text-[#D08F52]">Buy Put (The Floor)</div>
+                  <div className="text-xs text-[#A8672E] dark:text-[#D08F52]">Protects from this price downwards</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-xl font-mono font-bold text-indigo-700">Strike: {currency(putLongStrike)}</div>
-                <div className="text-xs text-rose-500 font-bold">Expensive (Debit)</div>
+                <div className="text-xl font-mono font-bold text-[#A8672E] dark:text-[#D08F52]">Strike: {currency(putLongStrike)}</div>
+                <div className="text-xs text-[#BC4128] dark:text-[#E2694A] font-bold">Expensive (Debit)</div>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ const TradeDecomposer = () => {
           {/* LEG 3: The Limit */}
           <div className="relative pl-0 md:pl-16">
             <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-amber-200 rounded-full items-center justify-center text-xs font-bold text-amber-700 z-10">3</div>
-            <div className="bg-white border-2 border-amber-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+            <div className="bg-white dark:bg-[#0A0D14] border-2 border-amber-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-amber-50 rounded-lg text-amber-600">
                   <ArrowRight size={20}/>
@@ -321,27 +321,27 @@ const TradeDecomposer = () => {
               </div>
               <div className="text-right">
                 <div className="text-xl font-mono font-bold text-amber-700">Strike: {currency(putShortStrike)}</div>
-                <div className="text-xs text-emerald-500 font-bold">Funds Trade (Credit)</div>
+                <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Funds Trade (Credit)</div>
               </div>
             </div>
           </div>
 
           {/* LEG 4: The Cap */}
           <div className="relative pl-0 md:pl-16">
-            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-emerald-200 rounded-full items-center justify-center text-xs font-bold text-emerald-700 z-10">4</div>
-            <div className="bg-white border-2 border-emerald-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+            <div className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full items-center justify-center text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] z-10">4</div>
+            <div className="bg-white dark:bg-[#0A0D14] border-2 border-emerald-100 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-emerald-50 rounded-lg text-emerald-600">
+                <div className="p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-lg text-[#1D8A70] dark:text-[#3CBF9C]">
                   <Lock size={20}/>
                 </div>
                 <div>
-                  <div className="font-bold text-emerald-900">Sell Call (The Cap)</div>
-                  <div className="text-xs text-emerald-700">Limits profits above this price</div>
+                  <div className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Sell Call (The Cap)</div>
+                  <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C]">Limits profits above this price</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-xl font-mono font-bold text-emerald-700">Strike: {currency(callShortStrike)}</div>
-                <div className="text-xs text-emerald-500 font-bold">Funds Trade (Credit)</div>
+                <div className="text-xl font-mono font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Strike: {currency(callShortStrike)}</div>
+                <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Funds Trade (Credit)</div>
               </div>
             </div>
           </div>
@@ -349,19 +349,19 @@ const TradeDecomposer = () => {
       </div>
 
       {/* Critical Risks Panel */}
-      <div className="mt-8 bg-rose-50 border border-rose-100 rounded-xl p-6">
-        <h4 className="font-bold text-rose-900 flex items-center gap-2 mb-4">
+      <div className="mt-8 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-rose-100 rounded-xl p-6">
+        <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A] flex items-center gap-2 mb-4">
           <AlertTriangle size={18} />
           Critical DIY Warning: American vs. European Options
         </h4>
         <div className="grid md:grid-cols-2 gap-6 text-sm">
           <div>
-            <strong className="block text-rose-800 mb-1">Standard Options (SPY/Stocks)</strong>
-            <p className="text-rose-700">These are <strong>American Style</strong>. They can be exercised <em>any time</em> before expiration. If your Short Call goes deep ITM, you might get assigned early, forcing you to sell your shares and breaking the hedge before maturity.</p>
+            <strong className="block text-[#BC4128] dark:text-[#E2694A] mb-1">Standard Options (SPY/Stocks)</strong>
+            <p className="text-[#BC4128] dark:text-[#E2694A]">These are <strong>American Style</strong>. They can be exercised <em>any time</em> before expiration. If your Short Call goes deep ITM, you might get assigned early, forcing you to sell your shares and breaking the hedge before maturity.</p>
           </div>
           <div>
-            <strong className="block text-rose-800 mb-1">Index Options (SPX/XSP)</strong>
-            <p className="text-rose-700">These are <strong>European Style</strong>. They can only be exercised at expiration. This is crucial for this strategy to work safely. Buffered ETFs use FLEX options (European) to guarantee the outcome.</p>
+            <strong className="block text-[#BC4128] dark:text-[#E2694A] mb-1">Index Options (SPX/XSP)</strong>
+            <p className="text-[#BC4128] dark:text-[#E2694A]">These are <strong>European Style</strong>. They can only be exercised at expiration. This is crucial for this strategy to work safely. Buffered ETFs use FLEX options (European) to guarantee the outcome.</p>
           </div>
         </div>
       </div>
@@ -380,7 +380,7 @@ const DetailedComparison = () => {
           <button 
             onClick={() => setActiveTab('etf')}
             className={`px-8 py-3 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
-              activeTab === 'etf' ? 'bg-white text-emerald-700 shadow-sm ring-1 ring-black/5' : 'text-slate-500 hover:text-slate-700'
+              activeTab === 'etf' ? 'bg-white dark:bg-[#0A0D14] text-[#1D8A70] dark:text-[#3CBF9C] shadow-sm ring-1 ring-black/5' : 'text-slate-500 hover:text-slate-700 dark:text-slate-300'
             }`}
           >
             <BarChart3 size={16} />
@@ -389,7 +389,7 @@ const DetailedComparison = () => {
           <button 
             onClick={() => setActiveTab('note')}
             className={`px-8 py-3 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
-              activeTab === 'note' ? 'bg-white text-indigo-700 shadow-sm ring-1 ring-black/5' : 'text-slate-500 hover:text-slate-700'
+              activeTab === 'note' ? 'bg-white dark:bg-[#0A0D14] text-[#A8672E] dark:text-[#D08F52] shadow-sm ring-1 ring-black/5' : 'text-slate-500 hover:text-slate-700 dark:text-slate-300'
             }`}
           >
             <Banknote size={16} />
@@ -400,114 +400,114 @@ const DetailedComparison = () => {
 
       {/* Content Area */}
       {activeTab === 'etf' ? (
-        <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-8 animate-fadeIn">
-          <h3 className="text-xl font-bold text-emerald-900 mb-4 flex items-center gap-2">
-            <CheckCircle className="text-emerald-500" />
+        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-emerald-100 rounded-xl p-8 animate-fadeIn">
+          <h3 className="text-xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-4 flex items-center gap-2 font-serif">
+            <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C]" />
             The Modern Standard: Buffered ETFs
           </h3>
-          <p className="text-emerald-800 mb-8 leading-relaxed">
+          <p className="text-[#1D8A70] dark:text-[#3CBF9C] mb-8 leading-relaxed">
             Exchange Traded Funds have democratized this strategy. They wrap the complex option logic inside a regulated, transparent, and liquid shell. This is the preferred vehicle for 99% of retail investors and advisors.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-emerald-100/50">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <Shield size={16} className="text-emerald-500"/> Bankruptcy Remote
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border border-emerald-100/50">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <Shield size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Bankruptcy Remote
               </div>
-              <p className="text-sm text-slate-600">Your assets are held in a trust (State Street/US Bank). If the issuer (e.g., Innovator/First Trust) fails, your money is safe. You own the underlying assets.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Your assets are held in a trust (State Street/US Bank). If the issuer (e.g., Innovator/First Trust) fails, your money is safe. You own the underlying assets.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-emerald-100/50">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <TrendingUp size={16} className="text-emerald-500"/> Daily Liquidity
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border border-emerald-100/50">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <TrendingUp size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Daily Liquidity
               </div>
-              <p className="text-sm text-slate-600">Trade it like Apple stock. Get in and out instantly at fair market value (NAV). No lock-up periods.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Trade it like Apple stock. Get in and out instantly at fair market value (NAV). No lock-up periods.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-emerald-100/50">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <FileText size={16} className="text-emerald-500"/> Tax Efficiency
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border border-emerald-100/50">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <FileText size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Tax Efficiency
               </div>
-              <p className="text-sm text-slate-600">Many utilize "FLEX Options" ensuring Section 1256 treatment (60% Long Term / 40% Short Term capital gains rates), regardless of holding period.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Many utilize "FLEX Options" ensuring Section 1256 treatment (60% Long Term / 40% Short Term capital gains rates), regardless of holding period.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-emerald-100/50">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <MousePointerClick size={16} className="text-emerald-500"/> Democratized Access
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border border-emerald-100/50">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <MousePointerClick size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Democratized Access
               </div>
-              <p className="text-sm text-slate-600">No minimum investment beyond the price of 1 share (~$30-40). Accessible to everyone, not just accredited investors.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">No minimum investment beyond the price of 1 share (~$30-40). Accessible to everyone, not just accredited investors.</p>
             </div>
           </div>
         </div>
       ) : (
-        <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-8 animate-fadeIn">
-          <h3 className="text-xl font-bold text-indigo-900 mb-4 flex items-center gap-2">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-indigo-100 rounded-xl p-8 animate-fadeIn">
+          <h3 className="text-xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 font-serif">
             <AlertTriangle className="text-amber-500" />
             The Legacy Product: Structured Notes
           </h3>
-          <p className="text-indigo-800 mb-8 leading-relaxed">
+          <p className="text-[#A8672E] dark:text-[#D08F52] mb-8 leading-relaxed">
             Debt instruments issued by banks. While they offer powerful customization for High Net Worth individuals, they are fraught with credit and liquidity risks often overlooked by retail investors.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <AlertTriangle size={16} className="text-rose-500"/> Credit Risk
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <AlertTriangle size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Credit Risk
               </div>
-              <p className="text-sm text-slate-600">You are an <strong>unsecured creditor</strong>. If the bank (Issuer) fails, you lose 100%. See: Lehman Brothers 2008. You do not own the underlying options.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">You are an <strong>unsecured creditor</strong>. If the bank (Issuer) fails, you lose 100%. See: Lehman Brothers 2008. You do not own the underlying options.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <Lock size={16} className="text-rose-500"/> Liquidity Lock-up
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <Lock size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Liquidity Lock-up
               </div>
-              <p className="text-sm text-slate-600">Designed to be held to maturity. Selling early often incurs significant penalties or "markdowns" by the trading desk. Your capital is stuck.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Designed to be held to maturity. Selling early often incurs significant penalties or "markdowns" by the trading desk. Your capital is stuck.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-amber-400">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-amber-400">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
                 <DollarSign size={16} className="text-amber-500"/> Opaque Pricing
               </div>
-              <p className="text-sm text-slate-600">Fees are "embedded" in the structure. You don't see an expense ratio, but you get worse terms (Caps) to pay the bank's commission.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Fees are "embedded" in the structure. You don't see an expense ratio, but you get worse terms (Caps) to pay the bank's commission.</p>
             </div>
-            <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-emerald-400">
-              <div className="font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <Settings size={16} className="text-emerald-500"/> Customization (The Pro)
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-emerald-400">
+              <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                <Settings size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Customization (The Pro)
               </div>
-              <p className="text-sm text-slate-600">If you have $5M, you can ask a bank for a bespoke note: "I want Apple stock with a 20% buffer." ETFs cannot offer single-stock customization.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">If you have $5M, you can ask a bank for a bespoke note: "I want Apple stock with a 20% buffer." ETFs cannot offer single-stock customization.</p>
             </div>
           </div>
         </div>
       )}
 
       {/* Feature Comparison Table */}
-      <div className="overflow-hidden border rounded-xl border-slate-200 shadow-sm mt-8">
-        <table className="w-full text-sm text-left text-slate-600">
-          <thead className="text-xs text-slate-700 uppercase bg-slate-50 border-b border-slate-200">
+      <div className="overflow-hidden border rounded-xl border-slate-200 dark:border-slate-800 shadow-sm mt-8">
+        <table className="w-full text-sm text-left text-slate-600 dark:text-slate-400">
+          <thead className="text-xs text-slate-700 dark:text-slate-300 uppercase bg-slate-50 dark:bg-[#14171B] border-b border-slate-200 dark:border-slate-800">
             <tr>
               <th className="px-6 py-4">Feature</th>
-              <th className="px-6 py-4 text-emerald-700 bg-emerald-50/30 font-bold border-l border-slate-200">Buffered ETF</th>
-              <th className="px-6 py-4 text-indigo-700 bg-indigo-50/30 font-bold border-l border-slate-200">Structured Note</th>
+              <th className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/30 font-bold border-l border-slate-200 dark:border-slate-800">Buffered ETF</th>
+              <th className="px-6 py-4 text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/30 font-bold border-l border-slate-200 dark:border-slate-800">Structured Note</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
-            <tr className="bg-white hover:bg-slate-50 transition-colors">
+            <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-bold text-slate-900">Credit Risk</td>
-              <td className="px-6 py-4 text-emerald-600 font-bold border-l border-slate-100">None (Asset Backed)</td>
-              <td className="px-6 py-4 text-rose-500 font-bold border-l border-slate-100">High (Issuer Default)</td>
+              <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] font-bold border-l border-slate-100 dark:border-slate-800">None (Asset Backed)</td>
+              <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold border-l border-slate-100 dark:border-slate-800">High (Issuer Default)</td>
             </tr>
-            <tr className="bg-white hover:bg-slate-50 transition-colors">
+            <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-bold text-slate-900">Liquidity</td>
-              <td className="px-6 py-4 text-emerald-600 font-bold border-l border-slate-100">Intraday (Exchange)</td>
-              <td className="px-6 py-4 text-rose-500 font-bold border-l border-slate-100">None / Penalties</td>
+              <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] font-bold border-l border-slate-100 dark:border-slate-800">Intraday (Exchange)</td>
+              <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold border-l border-slate-100 dark:border-slate-800">None / Penalties</td>
             </tr>
-            <tr className="bg-white hover:bg-slate-50 transition-colors">
+            <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-bold text-slate-900">Tax Treatment</td>
-              <td className="px-6 py-4 border-l border-slate-100">Usually 1256 (60/40 Split)</td>
-              <td className="px-6 py-4 border-l border-slate-100">Ordinary Income / Debt</td>
+              <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Usually 1256 (60/40 Split)</td>
+              <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Ordinary Income / Debt</td>
             </tr>
-            <tr className="bg-white hover:bg-slate-50 transition-colors">
+            <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-bold text-slate-900">Transparency</td>
-              <td className="px-6 py-4 border-l border-slate-100">Daily Holdings</td>
-              <td className="px-6 py-4 text-amber-500 font-medium border-l border-slate-100">Black Box</td>
+              <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Daily Holdings</td>
+              <td className="px-6 py-4 text-amber-500 font-medium border-l border-slate-100 dark:border-slate-800">Black Box</td>
             </tr>
-            <tr className="bg-white hover:bg-slate-50 transition-colors">
+            <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-bold text-slate-900">Cost Structure</td>
-              <td className="px-6 py-4 border-l border-slate-100">Explicit Expense Ratio (~0.80%)</td>
-              <td className="px-6 py-4 border-l border-slate-100">Hidden Spread (~2-4%)</td>
+              <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Explicit Expense Ratio (~0.80%)</td>
+              <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Hidden Spread (~2-4%)</td>
             </tr>
           </tbody>
         </table>
@@ -533,16 +533,16 @@ const CycleVisualizer = () => {
   if (pctChange < -5) status = "good_entry";
 
   return (
-    <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+    <div className="bg-slate-50 dark:bg-[#14171B] border border-slate-200 dark:border-slate-800 rounded-xl p-6">
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div>
-          <h4 className="font-bold text-slate-800 flex items-center gap-2">
+          <h4 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
             <Clock size={18} className="text-amber-600"/>
             Mid-Cycle Entry Simulator
           </h4>
           <p className="text-xs text-slate-500 mt-1">Move slider to change current price relative to Start Date.</p>
         </div>
-        <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 font-mono text-sm font-bold">
+        <div className="bg-white dark:bg-[#0A0D14] px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 font-mono text-sm font-bold">
           Current Price: ${currentPrice} ({pctChange > 0 ? '+' : ''}{pctChange.toFixed(1)}%)
         </div>
       </div>
@@ -550,12 +550,12 @@ const CycleVisualizer = () => {
       {/* Visual Timeline Bar */}
       <div className="relative h-12 bg-slate-200 rounded-full mb-8 flex items-center px-2">
         {/* Buffer Zone */}
-        <div className="absolute left-0 h-full bg-rose-200 rounded-l-full flex items-center pl-4 text-xs font-bold text-rose-700 opacity-50" style={{width: '20%'}}>
+        <div className="absolute left-0 h-full bg-[#BC4128] dark:bg-[#E2694A] rounded-l-full flex items-center pl-4 text-xs font-bold text-[#BC4128] dark:text-[#E2694A] opacity-50" style={{width: '20%'}}>
           Buffer
         </div>
 
         {/* Cap Zone */}
-        <div className="absolute right-0 h-full bg-emerald-100 rounded-r-full flex items-center justify-end pr-4 text-xs font-bold text-emerald-700 opacity-50" style={{width: '20%'}}>
+        <div className="absolute right-0 h-full bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-r-full flex items-center justify-end pr-4 text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] opacity-50" style={{width: '20%'}}>
           Cap
         </div>
 
@@ -574,31 +574,31 @@ const CycleVisualizer = () => {
 
         {/* Labels */}
         <div className="absolute -bottom-6 left-[20%] -translate-x-1/2 text-xs font-bold text-slate-400">$85</div>
-        <div className="absolute -bottom-6 left-[50%] -translate-x-1/2 text-xs font-bold text-slate-800">Start ($100)</div>
+        <div className="absolute -bottom-6 left-[50%] -translate-x-1/2 text-xs font-bold text-slate-800 dark:text-slate-200">Start ($100)</div>
         <div className="absolute -bottom-6 left-[80%] -translate-x-1/2 text-xs font-bold text-slate-400">$115</div>
       </div>
 
       {/* Data Readout */}
       <div className="grid grid-cols-2 gap-4">
-        <div className={`p-4 rounded-lg border-2 ${remainingCap < 3 ? 'bg-rose-50 border-rose-100' : 'bg-white border-slate-100'}`}>
+        <div className={`p-4 rounded-lg border-2 ${remainingCap < 3 ? 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-100' : 'bg-white dark:bg-[#0A0D14] border-slate-100 dark:border-slate-800'}`}>
           <div className="text-xs text-slate-500 uppercase font-bold">Upside Remaining</div>
-          <div className={`text-2xl font-bold ${remainingCap < 3 ? 'text-rose-600' : 'text-emerald-600'}`}>
+          <div className={`text-2xl font-bold ${remainingCap < 3 ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
             {remainingCap.toFixed(2)}%
           </div>
-          {remainingCap < 3 && <div className="text-[10px] text-rose-500 font-bold mt-1">Warning: Very low upside</div>}
+          {remainingCap < 3 && <div className="text-[10px] text-[#BC4128] dark:text-[#E2694A] font-bold mt-1">Warning: Very low upside</div>}
         </div>
 
-        <div className={`p-4 rounded-lg border-2 ${distanceToBuffer > -5 ? 'bg-rose-50 border-rose-100' : 'bg-white border-slate-100'}`}>
+        <div className={`p-4 rounded-lg border-2 ${distanceToBuffer > -5 ? 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-100' : 'bg-white dark:bg-[#0A0D14] border-slate-100 dark:border-slate-800'}`}>
           <div className="text-xs text-slate-500 uppercase font-bold">Drop Before Protection</div>
-          <div className={`text-2xl font-bold ${distanceToBuffer > -5 ? 'text-rose-600' : 'text-slate-700'}`}>
+          <div className={`text-2xl font-bold ${distanceToBuffer > -5 ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-slate-700 dark:text-slate-300'}`}>
             {distanceToBuffer.toFixed(2)}%
           </div>
-          {pctChange > 5 && <div className="text-[10px] text-rose-500 font-bold mt-1">You absorb the first {pctChange.toFixed(1)}% of losses!</div>}
+          {pctChange > 5 && <div className="text-[10px] text-[#BC4128] dark:text-[#E2694A] font-bold mt-1">You absorb the first {pctChange.toFixed(1)}% of losses!</div>}
         </div>
       </div>
 
       {/* Slider Input */}
-      <div className="mt-6 pt-6 border-t border-slate-100">
+      <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
         <input 
           type="range" 
           min="80" 
@@ -627,28 +627,28 @@ const ScenarioTable = () => {
   ];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm mt-6">
+    <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mt-6">
       <table className="w-full text-sm text-left">
-        <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+        <thead className="text-xs text-slate-500 uppercase bg-slate-50 dark:bg-[#14171B] border-b border-slate-200 dark:border-slate-800">
           <tr>
-            <th className="px-6 py-4 font-bold text-slate-700">S&P 500 Return</th>
-            <th className="px-6 py-4 text-indigo-600 bg-indigo-50/50">Buffer 15% (Typical)</th>
-            <th className="px-6 py-4 text-emerald-600 bg-emerald-50/50">Buffer 30% (Deep)</th>
+            <th className="px-6 py-4 font-bold text-slate-700 dark:text-slate-300">S&P 500 Return</th>
+            <th className="px-6 py-4 text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50">Buffer 15% (Typical)</th>
+            <th className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50">Buffer 30% (Deep)</th>
             <th className="px-6 py-4 text-slate-500">Unhedged (SPY)</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
           {scenarios.map((row, idx) => (
-            <tr key={idx} className="bg-white hover:bg-slate-50 transition-colors">
+            <tr key={idx} className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               <td className="px-6 py-4 font-medium text-slate-900">{row.market}</td>
-              <td className="px-6 py-4 font-bold text-indigo-700 bg-indigo-50/30">{row.buffer15}</td>
-              <td className="px-6 py-4 font-bold text-emerald-700 bg-emerald-50/30">{row.buffer30}</td>
+              <td className="px-6 py-4 font-bold text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/30">{row.buffer15}</td>
+              <td className="px-6 py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/30">{row.buffer30}</td>
               <td className="px-6 py-4 text-slate-500">{row.plain}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="bg-slate-50 p-3 text-xs text-slate-500 text-center">
+      <div className="bg-slate-50 dark:bg-[#14171B] p-3 text-xs text-slate-500 text-center">
         *Assumes strategy is held for the full outcome period (usually 1 year). Interim pricing will vary.
       </div>
     </div>
@@ -662,10 +662,10 @@ export default function BufferedYieldStrategiesArticle() {
             <InfographicSlot alt="Buffered Yield Strategies Infographic" />
           </div>
           {/* Executive Summary */}
-          <div className="bg-white rounded-2xl shadow-xl p-10 border border-slate-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">What is a Buffered Strategy?</h2>
-            <p className="text-lg leading-relaxed text-slate-700 mb-6">
-              A Buffered Strategy (or "Defined Outcome" strategy) is an investment approach that explicitly defines the range of possible returns over a specific period. Unlike traditional investing, where your range of outcomes is infinite (and terrifying), here you trade <span className="font-semibold text-rose-600">Upside Potential</span> (the Cap) to fund <span className="font-semibold text-emerald-600">Downside Protection</span> (the Buffer).
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl p-10 border border-slate-100 dark:border-slate-800">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4 font-serif">What is a Buffered Strategy?</h2>
+            <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+              A Buffered Strategy (or "Defined Outcome" strategy) is an investment approach that explicitly defines the range of possible returns over a specific period. Unlike traditional investing, where your range of outcomes is infinite (and terrifying), here you trade <span className="font-semibold text-[#BC4128] dark:text-[#E2694A]">Upside Potential</span> (the Cap) to fund <span className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">Downside Protection</span> (the Buffer).
             </p>
             <div className="flex flex-wrap gap-3">
               <Badge color="blue">Hedging</Badge>
@@ -679,7 +679,7 @@ export default function BufferedYieldStrategiesArticle() {
           <Section title="1. Visualizing the Payoff" icon={PieChart} color="indigo">
             <p>Before diving into the math, it is crucial to understand the geometry of the trade. Use the simulator below to understand how the <strong>Buffer</strong> shields you and the <strong>Cap</strong> limits you.</p>
             <PayoffVisualizer />
-            <p className="mt-4 text-sm bg-indigo-50 p-4 rounded text-indigo-800">
+            <p className="mt-4 text-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded text-[#A8672E] dark:text-[#D08F52]">
               <strong>Key Takeaway:</strong> You are effectively insuring your house (portfolio) against a fire (market crash), but paying for that insurance by giving up the possibility of winning the lottery (massive bull run).
             </p>
           </Section>
@@ -700,17 +700,17 @@ export default function BufferedYieldStrategiesArticle() {
             <p className="mb-4">How does this actually perform in the real world? Let's compare a standard "15% Buffer" strategy against holding the S&P 500 (SPY) directly.</p>
             <ScenarioTable />
             <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
-                <h4 className="font-bold text-emerald-900 mb-2">When does it WIN?</h4>
-                <ul className="text-sm text-emerald-800 space-y-2 list-disc list-inside">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-5 rounded-xl border border-emerald-100">
+                <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">When does it WIN?</h4>
+                <ul className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] space-y-2 list-disc list-inside">
                   <li><strong>Sideways Markets:</strong> Market is flat (+2%). You make +2%. You lost nothing on insurance cost.</li>
                   <li><strong>Moderate Bears:</strong> Market drops -10%. You lose 0%. You outperformed by 1000 basis points.</li>
                   <li><strong>The "Slow Bleed":</strong> Market drifts down -5% a year. You stay flat.</li>
                 </ul>
               </div>
-              <div className="bg-rose-50 p-5 rounded-xl border border-rose-100">
-                <h4 className="font-bold text-rose-900 mb-2">When does it LOSE?</h4>
-                <ul className="text-sm text-rose-800 space-y-2 list-disc list-inside">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-5 rounded-xl border border-rose-100">
+                <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">When does it LOSE?</h4>
+                <ul className="text-sm text-[#BC4128] dark:text-[#E2694A] space-y-2 list-disc list-inside">
                   <li><strong>Raging Bull Markets:</strong> Market rips +25%. You are capped at +15%. You underperform significantly (FOMO).</li>
                   <li><strong>Catastrophic Crash:</strong> Market drops -50%. With a 15% buffer, you still lose -35%. It softens the blow, but doesn't eliminate risk.</li>
                 </ul>
@@ -729,11 +729,11 @@ export default function BufferedYieldStrategiesArticle() {
             <div className="space-y-8">
               {/* Subsection: The Timing Trap */}
               <div>
-                <h3 className="font-bold text-xl text-slate-800 mb-4 flex items-center gap-2">
+                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 font-serif">
                   <Calendar className="text-amber-500" />
                   The "Outcome Period" Trap
                 </h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                   Buffered strategies are <strong>path-dependent</strong>. The 15% protection is calculated based on the ETF's price on day 1 of the cycle. If you buy "Mid-Cycle" (e.g., 6 months in), your risk profile is completely different.
                 </p>
                 <div className="bg-amber-50 border-l-4 border-amber-500 p-4 text-sm text-amber-800 mb-6">
@@ -742,16 +742,16 @@ export default function BufferedYieldStrategiesArticle() {
                 <CycleVisualizer />
               </div>
 
-              <div className="border-t border-slate-200 my-8"></div>
+              <div className="border-t border-slate-200 dark:border-slate-800 my-8"></div>
 
               {/* Subsection: Dividend Drag */}
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="md:col-span-2">
-                  <h3 className="font-bold text-xl text-slate-800 mb-4 flex items-center gap-2">
-                    <XCircle className="text-rose-500" />
+                  <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 font-serif">
+                    <XCircle className="text-[#BC4128] dark:text-[#E2694A]" />
                     The Hidden Cost: Dividends
                   </h3>
-                  <p className="text-slate-600 mb-4">
+                  <p className="text-slate-600 dark:text-slate-400 mb-4">
                     Standard S&P 500 ETFs (VOO/SPY) pay ~1.5% in dividends annually. Buffered strategies typically <strong>do not pay dividends</strong>. Why? Because the dividends are used internally to pay for the options (buying the puts).
                   </p>
                   <p className="text-sm text-slate-500 italic">
@@ -765,14 +765,14 @@ export default function BufferedYieldStrategiesArticle() {
                 </div>
               </div>
 
-              <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+              <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-start gap-4">
-                  <div className="p-2 bg-blue-100 rounded text-blue-600">
+                  <div className="p-2 bg-[#A8672E] dark:bg-[#D08F52] rounded text-[#A8672E] dark:text-[#D08F52]">
                     <RefreshCw size={20}/>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-800 text-sm mb-1">The Annual Reset</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">The Annual Reset</h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                       Every year, the options expire. The ETF manager "rolls" into new contracts. This creates a new Cap and Buffer based on current volatility (VIX). If VIX is low, your new Cap might be disappointingly low (e.g., 8%).
                     </p>
                   </div>
@@ -785,39 +785,39 @@ export default function BufferedYieldStrategiesArticle() {
           <Section title="6. Final Verdict: Pros & Cons" icon={Activity} color="blue">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-4 flex items-center gap-2 font-serif">
                   <CheckCircle/> The Good
                 </h3>
                 <ul className="space-y-3">
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-emerald-500 font-bold">1.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">1.</div>
                     <div><strong>Psychological Safety:</strong> Knowing you can't lose the first 15% allows investors to stay invested during scary headlines.</div>
                   </li>
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-emerald-500 font-bold">2.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">2.</div>
                     <div><strong>Sequence of Return Risk:</strong> Critical for retirees. It mitigates the risk of a crash right after retirement.</div>
                   </li>
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-emerald-500 font-bold">3.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">3.</div>
                     <div><strong>Bond Alternative:</strong> In a world where bonds and stocks correlate (fall together), this offers a non-correlated risk profile.</div>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-4 flex items-center gap-2 font-serif">
                   <XCircle/> The Bad
                 </h3>
                 <ul className="space-y-3">
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-rose-500 font-bold">1.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#BC4128] dark:text-[#E2694A] font-bold">1.</div>
                     <div><strong>Capped Upside:</strong> If the market rallies 30% after a crash (V-shaped recovery), you will severely underperform.</div>
                   </li>
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-rose-500 font-bold">2.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#BC4128] dark:text-[#E2694A] font-bold">2.</div>
                     <div><strong>Complexity:</strong> Understanding outcome periods, caps, and resets requires active monitoring. It is not "set and forget."</div>
                   </li>
-                  <li className="flex gap-3 text-slate-700 text-sm">
-                    <div className="w-6 flex-shrink-0 text-rose-500 font-bold">3.</div>
+                  <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                    <div className="w-6 flex-shrink-0 text-[#BC4128] dark:text-[#E2694A] font-bold">3.</div>
                     <div><strong>No Free Lunch:</strong> You are paying for safety with opportunity cost. Over 20 years, unhedged equity usually wins.</div>
                   </li>
                 </ul>

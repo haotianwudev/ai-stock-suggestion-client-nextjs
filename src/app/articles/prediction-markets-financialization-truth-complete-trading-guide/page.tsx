@@ -173,26 +173,26 @@ const GuideData = {
 const SectionCard = ({ section }: { section: any }) => {
   const getColorClasses = (color: string) => {
     const maps: Record<string, string> = {
-      blue: "bg-blue-50 border-blue-200 text-blue-900",
-      indigo: "bg-indigo-50 border-indigo-200 text-indigo-900",
+      blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-[#A8672E] dark:text-[#D08F52]",
+      indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-indigo-200 text-[#A8672E] dark:text-[#D08F52]",
       purple: "bg-purple-50 border-purple-200 text-purple-900",
-      emerald: "bg-emerald-50 border-emerald-200 text-emerald-900",
+      emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-[#1D8A70] dark:text-[#3CBF9C]",
       orange: "bg-orange-50 border-orange-200 text-orange-900",
-      red: "bg-red-50 border-red-200 text-red-900",
-      rose: "bg-rose-50 border-rose-200 text-rose-900",
+      red: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-red-200 text-[#BC4128] dark:text-[#E2694A]",
+      rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-[#BC4128] dark:text-[#E2694A]",
     };
     return maps[color] || maps.blue;
   };
 
   const getBadgeColor = (color: string) => {
     const maps: Record<string, string> = {
-      blue: "bg-blue-100 text-blue-700",
-      indigo: "bg-indigo-100 text-indigo-700",
+      blue: "bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52]",
+      indigo: "bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52]",
       purple: "bg-purple-100 text-purple-700",
-      emerald: "bg-emerald-100 text-emerald-700",
+      emerald: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]",
       orange: "bg-orange-100 text-orange-700",
-      red: "bg-red-100 text-red-700",
-      rose: "bg-rose-100 text-rose-700",
+      red: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]",
+      rose: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]",
     };
     return maps[color] || maps.blue;
   };
@@ -209,7 +209,7 @@ const SectionCard = ({ section }: { section: any }) => {
               Module {section.id.toUpperCase().slice(0, 3)}
             </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold mb-2">{section.title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 font-serif">{section.title}</h2>
           <p className="text-lg opacity-80 font-medium">{section.subtitle}</p>
         </div>
       </div>
@@ -217,7 +217,7 @@ const SectionCard = ({ section }: { section: any }) => {
       <div className="px-6 sm:px-8 pb-8 pt-0 border-t border-black/5">
         {/* Pro Tip Box */}
         {section.proTip && (
-          <div className="mt-8 bg-white/50 border border-white p-4 rounded-xl flex gap-4 items-start shadow-sm">
+          <div className="mt-8 bg-white dark:bg-[#0A0D14]/50 border border-white p-4 rounded-xl flex gap-4 items-start shadow-sm">
             <div className="p-2 bg-yellow-100 text-yellow-700 rounded-lg shrink-0">
               <Lightbulb className="w-5 h-5" />
             </div>
@@ -232,18 +232,18 @@ const SectionCard = ({ section }: { section: any }) => {
 
         <div className="grid grid-cols-1 gap-6">
           {section.details.map((detail: any, idx: number) => (
-            <div key={idx} className="bg-white/60 p-6 rounded-2xl shadow-sm border border-white/50 backdrop-blur-sm hover:shadow-md transition-shadow">
-              <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-slate-800">
+            <div key={idx} className="bg-white dark:bg-[#0A0D14]/60 p-6 rounded-2xl shadow-sm border border-white/50 backdrop-blur-sm hover:shadow-md transition-shadow">
+              <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-slate-800 dark:text-slate-200 font-serif">
                 <MousePointer className="w-4 h-4 opacity-50" />
                 {detail.head}
               </h3>
-              <p className="text-slate-600 leading-relaxed whitespace-pre-line">{detail.text}</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{detail.text}</p>
             </div>
           ))}
         </div>
 
         {section.table && (
-          <div className="mt-8 overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-white/40">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-white dark:bg-[#0A0D14]/40">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
                 <thead className={`text-xs uppercase ${getBadgeColor(section.color)}`}>
@@ -253,13 +253,13 @@ const SectionCard = ({ section }: { section: any }) => {
                     ))}
                   </tr>
                 </thead>
-                <tbody className="bg-white/80">
+                <tbody className="bg-white dark:bg-[#0A0D14]/80">
                   {section.table.rows.map((row: string[], i: number) => (
-                    <tr key={i} className="border-b border-black/5 last:border-0 hover:bg-white">
-                      <td className="px-6 py-4 font-bold text-slate-700">{row[0]}</td>
-                      <td className="px-6 py-4 text-slate-600">{row[1]}</td>
-                      <td className="px-6 py-4 text-slate-600">{row[2]}</td>
-                      {row[3] && <td className="px-6 py-4 text-slate-600">{row[3]}</td>}
+                    <tr key={i} className="border-b border-black/5 last:border-0 hover:bg-white dark:bg-[#0A0D14]">
+                      <td className="px-6 py-4 font-bold text-slate-700 dark:text-slate-300">{row[0]}</td>
+                      <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{row[1]}</td>
+                      <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{row[2]}</td>
+                      {row[3] && <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{row[3]}</td>}
                     </tr>
                   ))}
                 </tbody>
@@ -280,15 +280,15 @@ export default function PredictionMarketsGuide() {
             <InfographicSlot alt="Prediction Markets Complete Guide Infographic" />
           </div>
           <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-12 mb-16 shadow-2xl shadow-slate-200 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52] rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider border border-indigo-500/30">
+                <span className="px-3 py-1 rounded-full bg-[#A8672E] dark:bg-[#D08F52]/20 text-[#A8672E] dark:text-[#D08F52] text-xs font-bold uppercase tracking-wider border border-indigo-500/30">
                   {GuideData.intro.badge}
                 </span>
-                <TrendingUp className="w-5 h-5 text-indigo-400" />
+                <TrendingUp className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
-              <h2 className="text-3xl font-bold mb-6">{GuideData.intro.title}</h2>
+              <h2 className="text-3xl font-bold mb-6 font-serif">{GuideData.intro.title}</h2>
               <p className="text-lg text-slate-300 leading-relaxed font-light">{GuideData.intro.content}</p>
             </div>
           </div>

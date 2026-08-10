@@ -65,12 +65,12 @@ interface TimelineItemProps {
 
 // --- Components ---
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, icon: Icon, colorClass }) => (
-  <div className="mb-10 border-b-2 border-slate-100 pb-6">
+  <div className="mb-10 border-b-2 border-slate-100 dark:border-slate-800 pb-6">
     <div className={`flex items-center gap-3 mb-3 ${colorClass}`}>
-      <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+      <div className="p-3 bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
         <Icon size={32} />
       </div>
-      <h2 className="text-4xl font-bold font-serif text-slate-800">{title}</h2>
+      <h2 className="text-4xl font-bold font-serif text-slate-800 dark:text-slate-200">{title}</h2>
     </div>
     <p className="text-xl text-slate-500 font-medium max-w-2xl leading-relaxed">{subtitle}</p>
   </div>
@@ -80,10 +80,10 @@ const DeepDive: React.FC<DeepDiveProps> = ({ title, children, color = "blue" }) 
   const [isOpen, setIsOpen] = useState(false);
   
   const colors = {
-    blue: "bg-blue-50 border-blue-200 text-blue-800",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-[#A8672E] dark:text-[#D08F52]",
     amber: "bg-amber-50 border-amber-200 text-amber-800",
-    rose: "bg-rose-50 border-rose-200 text-rose-800",
-    emerald: "bg-emerald-50 border-emerald-200 text-emerald-800",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-[#BC4128] dark:text-[#E2694A]",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-[#1D8A70] dark:text-[#3CBF9C]",
     cyan: "bg-cyan-50 border-cyan-200 text-cyan-800",
   };
 
@@ -100,25 +100,25 @@ const DeepDive: React.FC<DeepDiveProps> = ({ title, children, color = "blue" }) 
         {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
       </button>
       {isOpen && (
-        <div className="bg-white p-6 text-slate-600 leading-relaxed border-t border-slate-100 animate-fadeIn">
+        <div className="bg-white dark:bg-[#0A0D14] p-6 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 animate-fadeIn">
           {children}
         </div>
       )}
     </div>
   );
 };
-const SimpleBarChart: React.FC<SimpleBarChartProps> = ({ data, maxVal, color = "bg-blue-500" }) => (
-  <div className="space-y-4 w-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-    <h4 className="font-bold text-slate-700 mb-4 border-b pb-2">Historical Comparison</h4>
+const SimpleBarChart: React.FC<SimpleBarChartProps> = ({ data, maxVal, color = "bg-[#A8672E] dark:bg-[#D08F52]" }) => (
+  <div className="space-y-4 w-full bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+    <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-4 border-b pb-2">Historical Comparison</h4>
     {data.map((item, index) => (
       <div key={index} className="flex flex-col">
         <div className="flex justify-between text-sm mb-1">
-          <span className="font-semibold text-slate-700">{item.label}</span>
+          <span className="font-semibold text-slate-700 dark:text-slate-300">{item.label}</span>
           <span className="font-mono text-slate-500">{item.value}</span>
         </div>
         <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
           <div 
-            className={`h-full rounded-full transition-all duration-1000 ${item.highlight ? 'bg-rose-500' : color}`}
+            className={`h-full rounded-full transition-all duration-1000 ${item.highlight ? 'bg-[#BC4128] dark:bg-[#E2694A]' : color}`}
             style={{ width: `${(parseFloat(item.value) / maxVal) * 100}%` }}
           />
         </div>
@@ -129,13 +129,13 @@ const SimpleBarChart: React.FC<SimpleBarChartProps> = ({ data, maxVal, color = "
 );
 
 const MetricBox: React.FC<MetricBoxProps> = ({ label, value, subtext, alert = false }) => (
-  <div className={`p-5 rounded-xl ${alert ? 'bg-red-50 border border-red-100 shadow-red-100' : 'bg-white border border-slate-200'} shadow-sm flex flex-col justify-between h-full`}>
+  <div className={`p-5 rounded-xl ${alert ? 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-100 shadow-red-100' : 'bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800'} shadow-sm flex flex-col justify-between h-full`}>
     <div>
       <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{label}</div>
-      <div className={`text-4xl font-extrabold ${alert ? 'text-red-600' : 'text-slate-800'} tracking-tight`}>{value}</div>
+      <div className={`text-4xl font-extrabold ${alert ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-slate-800 dark:text-slate-200'} tracking-tight`}>{value}</div>
     </div>
-    <div className="text-sm text-slate-500 mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
-      {alert && <AlertTriangle size={14} className="text-red-500" />}
+    <div className="text-sm text-slate-500 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
+      {alert && <AlertTriangle size={14} className="text-[#BC4128] dark:text-[#E2694A]" />}
       {subtext}
     </div>
   </div>
@@ -193,20 +193,20 @@ const HistoricalEraSelector: React.FC = () => {
     amber: "bg-amber-100 text-amber-800 border-amber-200",
     orange: "bg-orange-100 text-orange-800 border-orange-200",
     purple: "bg-purple-100 text-purple-800 border-purple-200",
-    rose: "bg-rose-100 text-rose-800 border-rose-200",
+    rose: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A] border-rose-200",
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-      <div className="flex border-b border-slate-100 overflow-x-auto">
+    <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="flex border-b border-slate-100 dark:border-slate-800 overflow-x-auto">
         {Object.keys(eras).map((year) => (
           <button
             key={year}
             onClick={() => setActiveEra(year as '1929' | '1987' | '2000' | '2008')}
             className={`flex-1 py-4 px-6 text-sm font-bold transition-all whitespace-nowrap ${
               activeEra === year 
-                ? 'bg-slate-50 text-indigo-600 border-b-2 border-indigo-600' 
-                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'
+                ? 'bg-slate-50 dark:bg-[#14171B] text-[#A8672E] dark:text-[#D08F52] border-b-2 border-indigo-600' 
+                : 'text-slate-500 hover:bg-slate-50 dark:bg-[#14171B] hover:text-slate-700 dark:text-slate-300'
             }`}
           >
             {year}: {eras[year as keyof typeof eras].title}
@@ -216,7 +216,7 @@ const HistoricalEraSelector: React.FC = () => {
       
       <div className="p-8">
         <div className="flex items-center gap-4 mb-6">
-          <h3 className="text-3xl font-serif font-bold text-slate-800">{activeEra}: {current.subtitle}</h3>
+          <h3 className="text-3xl font-serif font-bold text-slate-800 dark:text-slate-200">{activeEra}: {current.subtitle}</h3>
           <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${colorClasses[current.color]}`}>
             {current.metric}
           </span>
@@ -228,18 +228,18 @@ const HistoricalEraSelector: React.FC = () => {
         </blockquote>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-slate-50 p-6 rounded-xl border border-slate-100">
-            <h4 className="flex items-center gap-2 font-bold text-slate-700 mb-3 text-sm uppercase tracking-wide">
+          <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+            <h4 className="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-300 mb-3 text-sm uppercase tracking-wide">
               <History size={16} /> The Mechanism of Collapse
             </h4>
-            <p className="text-slate-600 leading-relaxed text-sm">{current.mechanism}</p>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{current.mechanism}</p>
           </div>
           
-          <div className="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-            <h4 className="flex items-center gap-2 font-bold text-indigo-800 mb-3 text-sm uppercase tracking-wide">
+          <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-xl border border-indigo-100">
+            <h4 className="flex items-center gap-2 font-bold text-[#A8672E] dark:text-[#D08F52] mb-3 text-sm uppercase tracking-wide">
               <Activity size={16} /> The 2026 Parallel
             </h4>
-            <p className="text-indigo-900 leading-relaxed text-sm font-medium">{current.parallel}</p>
+            <p className="text-[#A8672E] dark:text-[#D08F52] leading-relaxed text-sm font-medium">{current.parallel}</p>
           </div>
         </div>
       </div>
@@ -249,14 +249,14 @@ const HistoricalEraSelector: React.FC = () => {
 // --- Psychology Components ---
 
 const BiasCard: React.FC<BiasCardProps> = ({ icon: Icon, title, desc, example }) => (
-  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100 hover:border-purple-200 transition-colors">
+  <div className="bg-slate-50 dark:bg-[#14171B] p-5 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-purple-200 transition-colors">
     <div className="flex items-start gap-3 mb-3">
-      <div className="p-2 bg-white rounded-lg shadow-sm text-purple-600">
+      <div className="p-2 bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm text-purple-600">
         <Icon size={20} />
       </div>
-      <h4 className="font-bold text-slate-800 mt-1">{title}</h4>
+      <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-1">{title}</h4>
     </div>
-    <p className="text-sm text-slate-600 mb-3 leading-relaxed">{desc}</p>
+    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">{desc}</p>
     <div className="bg-purple-100/50 p-2 rounded text-xs text-purple-800 font-medium">
       <strong>2026 Example:</strong> {example}
     </div>
@@ -265,9 +265,9 @@ const BiasCard: React.FC<BiasCardProps> = ({ icon: Icon, title, desc, example })
 // --- Prediction Components ---
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ probability, title, type, description, outcome }) => {
   const typeColors = {
-    optimistic: "bg-emerald-500",
+    optimistic: "bg-[#1D8A70] dark:bg-[#3CBF9C]",
     base: "bg-amber-500",
-    pessimistic: "bg-rose-600"
+    pessimistic: "bg-[#BC4128] dark:bg-[#E2694A]"
   };
 
   return (
@@ -284,7 +284,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ probability, title, type, d
       <p className="text-slate-400 text-sm mb-4 leading-relaxed">{description}</p>
       
       <div className="pt-4 border-t border-slate-700">
-        <strong className="text-indigo-400 text-xs uppercase tracking-wide">Outcome:</strong>
+        <strong className="text-[#A8672E] dark:text-[#D08F52] text-xs uppercase tracking-wide">Outcome:</strong>
         <p className="text-slate-300 text-sm font-medium mt-1">{outcome}</p>
       </div>
     </div>
@@ -294,10 +294,10 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ probability, title, type, d
 const TimelineItem: React.FC<TimelineItemProps> = ({ month, title, event, icon: Icon }) => (
   <div className="relative pl-8 pb-8 border-l border-slate-700 last:border-0 last:pb-0">
     <div className="absolute -left-[20px] top-0 bg-slate-900 p-2 rounded-full border border-slate-600">
-      <Icon size={16} className="text-indigo-400" />
+      <Icon size={16} className="text-[#A8672E] dark:text-[#D08F52]" />
     </div>
     <div>
-      <span className="text-xs font-mono text-indigo-400 mb-1 block uppercase">{month}</span>
+      <span className="text-xs font-mono text-[#A8672E] dark:text-[#D08F52] mb-1 block uppercase">{month}</span>
       <h5 className="font-bold text-white text-lg mb-2">{title}</h5>
       <p className="text-slate-400 text-sm leading-relaxed">{event}</p>
     </div>
@@ -307,7 +307,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ month, title, event, icon: 
 export default function GreatDecouplingArticle() {
   return (
     <ArticleFrame slug="great-decoupling-2026-asset-bubble-mathematical-analysis">
-      <div className="max-w-5xl mx-auto font-sans bg-transparent text-slate-800">
+      <div className="max-w-5xl mx-auto font-sans bg-transparent text-slate-800 dark:text-slate-200">
         <div className="mt-8 mb-12">
           <InfographicSlot alt="The Great Decoupling Infographic" />
         </div>
@@ -316,34 +316,34 @@ export default function GreatDecouplingArticle() {
           <section>
             <div className="grid md:grid-cols-3 gap-12">
               <div className="md:col-span-2 prose prose-lg prose-slate">
-                <p className="lead text-2xl text-slate-800 font-serif leading-relaxed">
+                <p className="lead text-2xl text-slate-800 dark:text-slate-200 font-serif leading-relaxed">
                   We are currently living through the "Everything Bubble." Unlike previous cycles which were sector-specific (Housing in 2008, Dot-Com in 2000), the 2026 anomaly is characterized by the simultaneous inflation of equities, real estate, and private credit.
                 </p>
                 <p>
-                  This report serves as a tutorial on identifying market fragility. We will dissect the current market structure using the <strong className="text-indigo-600">"Four Pillars of Collapse"</strong> framework: Historical Precedence, Valuation Reality, Technological ROI, and Shadow Leverage.
+                  This report serves as a tutorial on identifying market fragility. We will dissect the current market structure using the <strong className="text-[#A8672E] dark:text-[#D08F52]">"Four Pillars of Collapse"</strong> framework: Historical Precedence, Valuation Reality, Technological ROI, and Shadow Leverage.
                 </p>
               </div>
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2 font-serif">
                   <AlertTriangle className="text-amber-500" size={20}/>
                   Key Risk Indicators
                 </h3>
                 <ul className="space-y-4 text-sm">
-                  <li className="flex justify-between items-center border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Market Concentration</span>
-                    <span className="font-bold text-rose-600">Critical</span>
+                  <li className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Market Concentration</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">Critical</span>
                   </li>
-                  <li className="flex justify-between items-center border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Retail Sentiment</span>
-                    <span className="font-bold text-rose-600">Euphoric</span>
+                  <li className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Retail Sentiment</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">Euphoric</span>
                   </li>
-                  <li className="flex justify-between items-center border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Corporate Debt</span>
+                  <li className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Corporate Debt</span>
                     <span className="font-bold text-amber-500">Elevated</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-slate-600">Liquidity Depth</span>
-                    <span className="font-bold text-rose-600">Very Low</span>
+                    <span className="text-slate-600 dark:text-slate-400">Liquidity Depth</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">Very Low</span>
                   </li>
                 </ul>
               </div>
@@ -359,7 +359,7 @@ export default function GreatDecouplingArticle() {
             />
 
             <div className="mb-12">
-              <p className="text-lg text-slate-600 mb-6">
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
                 Bubbles do not burst randomly; they burst when the underlying mechanism of leverage or liquidity fails. Click on the eras below to understand the specific "Kill Switch" of each crisis and how it manifests in 2026.
               </p>
               
@@ -368,32 +368,32 @@ export default function GreatDecouplingArticle() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-xl border border-slate-200">
-                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-800 mb-4">
-                  <Layers size={20} className="text-indigo-500"/> The "Nifty Fifty" Echo (1972)
+              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">
+                  <Layers size={20} className="text-[#A8672E] dark:text-[#D08F52]"/> The "Nifty Fifty" Echo (1972)
                 </h3>
-                <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                   In 1972, investors flocked to 50 "one-decision" stocks (Polaroid, Xerox, Kodak) regardless of price, driving P/Es to 80x. The rest of the market was ignored.
                 </p>
-                <div className="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-800 font-medium">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-3 rounded-lg text-sm text-[#A8672E] dark:text-[#D08F52] font-medium">
                   <strong>2026 Comparison:</strong> Today's market is even narrower. The "AI 42" drives 100% of S&P 500 earnings growth. If these 42 stocks falter, the index has no support.
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border border-slate-200">
-                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-800 mb-4">
-                  <Clock size={20} className="text-indigo-500"/> The Duration Mismatch
+              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">
+                  <Clock size={20} className="text-[#A8672E] dark:text-[#D08F52]"/> The Duration Mismatch
                 </h3>
-                <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                   In every major crisis, there is a mismatch between liabilities (what you owe) and assets (what you own).
                 </p>
-                <ul className="space-y-2 text-sm text-slate-600">
+                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   <li className="flex gap-2">
-                    <AlertOctagon size={16} className="text-rose-500 shrink-0"/>
+                    <AlertOctagon size={16} className="text-[#BC4128] dark:text-[#E2694A] shrink-0"/>
                     <span><strong>2008:</strong> Banks borrowed overnight (repo) to buy 30-year mortgages.</span>
                   </li>
                   <li className="flex gap-2">
-                    <AlertOctagon size={16} className="text-rose-500 shrink-0"/>
+                    <AlertOctagon size={16} className="text-[#BC4128] dark:text-[#E2694A] shrink-0"/>
                     <span><strong>2026:</strong> Private Credit funds promise quarterly liquidity to retail investors but hold 5-year illiquid loans.</span>
                   </li>
                 </ul>
@@ -416,7 +416,7 @@ export default function GreatDecouplingArticle() {
               title="2. The Valuation Conundrum" 
               subtitle="Prices have decoupled from economic reality. We are paying 2030 prices for 2026 earnings."
               icon={BarChart4}
-              colorClass="text-rose-600"
+              colorClass="text-[#BC4128] dark:text-[#E2694A]"
             />
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -440,20 +440,20 @@ export default function GreatDecouplingArticle() {
                   alert={true}
                 />
 
-                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-800 mb-2">The Yield Gap</h4>
-                  <p className="text-sm text-slate-600 mb-4">Why buy risky stocks when safe bonds pay 5%?</p>
+                <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+                  <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-2">The Yield Gap</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">Why buy risky stocks when safe bonds pay 5%?</p>
                   
                   <div className="flex justify-between items-end mb-2">
                     <span className="text-sm font-medium">S&P 500 Earnings Yield</span>
-                    <span className="font-bold text-slate-800">3.8%</span>
+                    <span className="font-bold text-slate-800 dark:text-slate-200">3.8%</span>
                   </div>
                   <div className="flex justify-between items-end">
                     <span className="text-sm font-medium">Risk-Free Rate (T-Bills)</span>
-                    <span className="font-bold text-emerald-600">5.1%</span>
+                    <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">5.1%</span>
                   </div>
                   
-                  <div className="mt-4 p-3 bg-rose-100 text-rose-800 text-xs rounded font-bold text-center">
+                  <div className="mt-4 p-3 bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A] text-xs rounded font-bold text-center">
                     Negative Equity Risk Premium (-1.3%)
                   </div>
                 </div>
@@ -482,7 +482,7 @@ export default function GreatDecouplingArticle() {
               {/* Background decoration */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500 rounded-full blur-[80px] opacity-20"></div>
               
-              <h3 className="text-2xl font-bold text-white mb-6 relative z-10">The Energy Bottleneck (2026 Estimate)</h3>
+              <h3 className="text-2xl font-bold text-white mb-6 relative z-10 font-serif">The Energy Bottleneck (2026 Estimate)</h3>
               
               <div className="grid md:grid-cols-3 gap-8 relative z-10">
                 <div className="border-l-2 border-cyan-500 pl-4">
@@ -502,7 +502,7 @@ export default function GreatDecouplingArticle() {
                 </div>
               </div>
               
-              <div className="mt-8 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10">
+              <div className="mt-8 bg-white dark:bg-[#0A0D14]/10 p-4 rounded-lg backdrop-blur-sm border border-white/10">
                 <p className="text-sm leading-relaxed">
                   <strong className="text-white">The Thesis Breaker:</strong> Tech companies have billions in cash to buy chips, but they cannot buy electricity that doesn't exist. "Ghost Data Centers"—facilities filled with servers but lacking power—are beginning to appear in Northern Virginia and Texas. This destroys ROI.
                 </p>
@@ -520,39 +520,39 @@ export default function GreatDecouplingArticle() {
 
             <div className="grid md:grid-cols-2 gap-8 mb-10">
               {/* Expanded Content: The Mechanism */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                <h3 className="font-bold text-xl text-slate-800 mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 font-serif">
                   <Zap className="text-amber-500" /> The Casino Effect: 0DTE
                 </h3>
-                <p className="text-slate-600 mb-4 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                   In 2026, the market has been "gamified." Retail participation has hit 28% of daily volume, largely driven by <strong>0DTE (Zero Days to Expiration) Options</strong>. This creates a dangerous feedback loop known as a "Gamma Squeeze."
                 </p>
                 
                 <div className="space-y-4 mt-6">
                   <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg border border-purple-100">
-                    <div className="bg-white p-2 rounded shadow-sm font-bold text-purple-600">1</div>
-                    <div className="text-sm text-slate-700">Retail traders buy Cheap Call Options (Betting Up).</div>
+                    <div className="bg-white dark:bg-[#0A0D14] p-2 rounded shadow-sm font-bold text-purple-600">1</div>
+                    <div className="text-sm text-slate-700 dark:text-slate-300">Retail traders buy Cheap Call Options (Betting Up).</div>
                   </div>
                   <div className="flex justify-center -my-2 text-slate-300">
                     <ArrowDownRight />
                   </div>
                   <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg border border-purple-100">
-                    <div className="bg-white p-2 rounded shadow-sm font-bold text-purple-600">2</div>
-                    <div className="text-sm text-slate-700">Market Makers (Banks) sell the option and must <strong>hedge</strong>.</div>
+                    <div className="bg-white dark:bg-[#0A0D14] p-2 rounded shadow-sm font-bold text-purple-600">2</div>
+                    <div className="text-sm text-slate-700 dark:text-slate-300">Market Makers (Banks) sell the option and must <strong>hedge</strong>.</div>
                   </div>
                   <div className="flex justify-center -my-2 text-slate-300">
                     <ArrowDownRight />
                   </div>
                   <div className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg border border-purple-100">
-                    <div className="bg-white p-2 rounded shadow-sm font-bold text-purple-600">3</div>
-                    <div className="text-sm text-slate-700">Banks BUY the underlying stock to cover risk.</div>
+                    <div className="bg-white dark:bg-[#0A0D14] p-2 rounded shadow-sm font-bold text-purple-600">3</div>
+                    <div className="text-sm text-slate-700 dark:text-slate-300">Banks BUY the underlying stock to cover risk.</div>
                   </div>
                   <div className="flex justify-center -my-2 text-slate-300">
                     <ArrowDownRight />
                   </div>
-                  <div className="flex items-center gap-4 p-3 bg-rose-50 rounded-lg border border-rose-100">
-                    <div className="bg-white p-2 rounded shadow-sm font-bold text-rose-600">4</div>
-                    <div className="text-sm text-slate-700 font-bold">Price rises artificially, forcing more buying.</div>
+                  <div className="flex items-center gap-4 p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg border border-rose-100">
+                    <div className="bg-white dark:bg-[#0A0D14] p-2 rounded shadow-sm font-bold text-[#BC4128] dark:text-[#E2694A]">4</div>
+                    <div className="text-sm text-slate-700 dark:text-slate-300 font-bold">Price rises artificially, forcing more buying.</div>
                   </div>
                 </div>
               </div>
@@ -560,30 +560,30 @@ export default function GreatDecouplingArticle() {
               {/* Expanded Content: Social Amplification */}
               <div className="space-y-6">
                 <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-2xl border border-indigo-100">
-                  <h3 className="font-bold text-xl text-indigo-900 mb-4 flex items-center gap-2">
-                    <MessageCircle className="text-indigo-500" /> Social Amplification
+                  <h3 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 font-serif">
+                    <MessageCircle className="text-[#A8672E] dark:text-[#D08F52]" /> Social Amplification
                   </h3>
-                  <p className="text-indigo-800/80 mb-6 text-sm">
+                  <p className="text-[#A8672E] dark:text-[#D08F52]/80 mb-6 text-sm">
                     The speed of information (and misinformation) has accelerated the cycle. "FinTok" and Reddit create consensus narratives instantly.
                   </p>
                   
-                  <div className="bg-white p-4 rounded-xl shadow-sm mb-4">
+                  <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl shadow-sm mb-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Users size={16} className="text-slate-400" />
                       <span className="text-xs font-bold text-slate-500 uppercase">Herding Behavior</span>
                     </div>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-slate-700 dark:text-slate-300">
                       "If I don't buy Nvidia now, I am losing money relative to my peers." <br/>
                       <span className="italic text-slate-500">- The fear of relative poverty.</span>
                     </p>
                   </div>
                   
-                  <div className="bg-white p-4 rounded-xl shadow-sm">
+                  <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 mb-2">
                       <MousePointerClick size={16} className="text-slate-400" />
                       <span className="text-xs font-bold text-slate-500 uppercase">Illusion of Control</span>
                     </div>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-slate-700 dark:text-slate-300">
                       Trading apps with confetti animations and one-click margins make speculation feel like a game of skill rather than probability.
                     </p>
                   </div>
@@ -601,7 +601,7 @@ export default function GreatDecouplingArticle() {
             </div>
 
             {/* New Cognitive Bias Section */}
-            <h3 className="font-bold text-slate-800 mb-6 px-2">The Investor's Brain: 3 Cognitive Traps</h3>
+            <h3 className="font-bold text-slate-800 dark:text-slate-200 mb-6 px-2 font-serif">The Investor's Brain: 3 Cognitive Traps</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <BiasCard 
                 icon={Clock}
@@ -629,24 +629,24 @@ export default function GreatDecouplingArticle() {
               title="5. The Hidden Trigger: Private Credit" 
               subtitle="The banks are safer than 2008, but the risk has migrated to the unregulated shadows. Private Credit is the new Subprime."
               icon={ShieldAlert}
-              colorClass="text-slate-600"
+              colorClass="text-slate-600 dark:text-slate-400"
             />
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                 <div className="flex flex-col md:flex-row gap-8">
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-2">The "Volatility Laundering" Mechanism</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2 font-serif">The "Volatility Laundering" Mechanism</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
                       In public markets, if a company struggles, its bond price drops instantly. In Private Credit, the loan is not traded. The fund manager marks the value at "Par" (100 cents on the dollar) even if the company is failing, creating a false sense of stability.
                     </p>
-                    <div className="inline-block bg-slate-100 px-3 py-1 rounded text-xs font-bold text-slate-600">
+                    <div className="inline-block bg-slate-100 px-3 py-1 rounded text-xs font-bold text-slate-600 dark:text-slate-400">
                       Est. Market Size: $1.7 Trillion
                     </div>
                   </div>
                   
-                  <div className="flex-1 bg-slate-50 rounded-lg p-4 border border-slate-100">
-                    <h4 className="text-sm font-bold text-slate-700 mb-3 border-b pb-2">Level 3 Assets Explained</h4>
+                  <div className="flex-1 bg-slate-50 dark:bg-[#14171B] rounded-lg p-4 border border-slate-100 dark:border-slate-800">
+                    <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3 border-b pb-2">Level 3 Assets Explained</h4>
                     <div className="space-y-3 text-xs">
                       <div className="flex justify-between">
                         <span className="font-medium">Level 1</span>
@@ -656,9 +656,9 @@ export default function GreatDecouplingArticle() {
                         <span className="font-medium">Level 2</span>
                         <span className="text-slate-500">Observable Inputs (Swaps)</span>
                       </div>
-                      <div className="flex justify-between bg-red-50 p-1 -mx-1 rounded">
-                        <span className="font-bold text-red-700">Level 3</span>
-                        <span className="font-bold text-red-700">"Mark-to-Model" (Guesswork)</span>
+                      <div className="flex justify-between bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-1 -mx-1 rounded">
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">Level 3</span>
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">"Mark-to-Model" (Guesswork)</span>
                       </div>
                     </div>
                   </div>
@@ -668,16 +668,16 @@ export default function GreatDecouplingArticle() {
               <DeepDive title="The 'Payment-in-Kind' (PIK) Doom Loop" color="emerald">
                 <p className="mb-3">When a borrower cannot pay interest, Private Credit lenders allow them to use <strong>PIK</strong>. </p>
                 <p className="mb-3"><strong>Example:</strong> A company owes $100M at 12% interest ($12M/year). They have no cash. Instead of defaulting, the lender says "Okay, now you owe us $112M."</p>
-                <p className="font-bold text-emerald-800">The lender records this $12M as "income" and tells investors the fund is performing great, even though no actual cash changed hands. This artificially suppresses default rates until the loan maturity wall hits.</p>
+                <p className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">The lender records this $12M as "income" and tells investors the fund is performing great, even though no actual cash changed hands. This artificially suppresses default rates until the loan maturity wall hits.</p>
               </DeepDive>
             </div>
           </section>
           {/* Conclusion / Prediction */}
           <section className="bg-slate-900 text-slate-200 p-8 md:p-12 rounded-3xl relative overflow-hidden mt-20 scroll-mt-24" id="prediction">
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-600 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-20"></div>
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#A8672E] dark:bg-[#D08F52] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-20"></div>
             
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-8 text-indigo-400">
+              <div className="flex items-center gap-3 mb-8 text-[#A8672E] dark:text-[#D08F52]">
                 <Scale size={32} />
                 <h2 className="text-4xl font-bold font-serif text-white">How It Ends: The Prediction</h2>
               </div>
@@ -706,8 +706,8 @@ export default function GreatDecouplingArticle() {
                 />
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <Clock className="text-indigo-400" /> The Crisis Timeline (Base Case)
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 font-serif">
+                <Clock className="text-[#A8672E] dark:text-[#D08F52]" /> The Crisis Timeline (Base Case)
               </h3>
 
               <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-12">
@@ -740,38 +740,38 @@ export default function GreatDecouplingArticle() {
               </div>
 
               {/* Survival Guide */}
-              <div className="bg-indigo-900/40 border border-indigo-500/30 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                  <Anchor className="text-indigo-400" /> Portfolio Survival Guide
+              <div className="bg-[#A8672E] dark:bg-[#D08F52]/40 border border-indigo-500/30 rounded-xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 font-serif">
+                  <Anchor className="text-[#A8672E] dark:text-[#D08F52]" /> Portfolio Survival Guide
                 </h3>
                 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="font-bold text-indigo-300 mb-2 text-sm uppercase">What to Avoid</h4>
+                    <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2 text-sm uppercase">What to Avoid</h4>
                     <ul className="space-y-2 text-slate-300 text-sm">
                       <li className="flex gap-2">
-                        <Crosshair size={16} className="text-rose-500"/> High-Beta Tech (Semiconductors)
+                        <Crosshair size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> High-Beta Tech (Semiconductors)
                       </li>
                       <li className="flex gap-2">
-                        <Crosshair size={16} className="text-rose-500"/> Private Credit / Non-Traded REITs
+                        <Crosshair size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Private Credit / Non-Traded REITs
                       </li>
                       <li className="flex gap-2">
-                        <Crosshair size={16} className="text-rose-500"/> Consumer Discretionary Stocks
+                        <Crosshair size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Consumer Discretionary Stocks
                       </li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-bold text-emerald-400 mb-2 text-sm uppercase">Where to Hide</h4>
+                    <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2 text-sm uppercase">Where to Hide</h4>
                     <ul className="space-y-2 text-slate-300 text-sm">
                       <li className="flex gap-2">
-                        <Umbrella size={16} className="text-emerald-500"/> Short-Duration Treasuries (T-Bills)
+                        <Umbrella size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Short-Duration Treasuries (T-Bills)
                       </li>
                       <li className="flex gap-2">
-                        <Umbrella size={16} className="text-emerald-500"/> Gold (Central Bank Buying)
+                        <Umbrella size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Gold (Central Bank Buying)
                       </li>
                       <li className="flex gap-2">
-                        <Umbrella size={16} className="text-emerald-500"/> Healthcare & Utilities (Defensive)
+                        <Umbrella size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Healthcare & Utilities (Defensive)
                       </li>
                     </ul>
                   </div>

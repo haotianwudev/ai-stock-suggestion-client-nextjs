@@ -6,7 +6,7 @@ import { ArticleFrame, InfographicSlot } from '@/components/articles/article-fra
 
 // Simple SVG Payoff Diagram Component
 const PayoffDiagram = () => (
-  <div className="w-full h-64 bg-slate-50 rounded-xl border border-slate-200 relative overflow-hidden flex items-center justify-center mb-6">
+  <div className="w-full h-64 bg-slate-50 dark:bg-[#14171B] rounded-xl border border-slate-200 dark:border-slate-800 relative overflow-hidden flex items-center justify-center mb-6">
     <svg viewBox="0 0 400 200" className="w-full h-full text-slate-400">
       {/* Grid lines */}
       <line x1="0" y1="100" x2="400" y2="100" stroke="currentColor" strokeWidth="1" strokeDasharray="4" />
@@ -34,9 +34,9 @@ interface SectionHeadingProps {
   color?: string;
 }
 
-const SectionHeading = ({ children, icon: Icon, color = "text-indigo-600" }: SectionHeadingProps) => (
-  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-    <div className={`p-2 rounded-lg bg-white shadow-sm border border-slate-100 ${color}`}>
+const SectionHeading = ({ children, icon: Icon, color = "text-[#A8672E] dark:text-[#D08F52]" }: SectionHeadingProps) => (
+  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center gap-3 font-serif">
+    <div className={`p-2 rounded-lg bg-white dark:bg-[#0A0D14] shadow-sm border border-slate-100 dark:border-slate-800 ${color}`}>
       <Icon size={24} />
     </div>
     {children}
@@ -50,9 +50,9 @@ interface CardProps {
 }
 
 const Card = ({ title, children, className = "" }: CardProps) => (
-  <div className={`bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300 ${className}`}>
-    {title && <h3 className="text-lg font-bold text-slate-800 mb-3">{title}</h3>}
-    <div className="text-slate-600 leading-relaxed">{children}</div>
+  <div className={`bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300 ${className}`}>
+    {title && <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-3 font-serif">{title}</h3>}
+    <div className="text-slate-600 dark:text-slate-400 leading-relaxed">{children}</div>
   </div>
 );
 
@@ -63,7 +63,7 @@ interface StatCardProps {
   color?: string;
 }
 
-const StatCard = ({ label, value, subtext, color = "bg-indigo-50 text-indigo-700" }: StatCardProps) => (
+const StatCard = ({ label, value, subtext, color = "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52]" }: StatCardProps) => (
   <div className={`rounded-xl p-4 ${color} border border-opacity-10 border-current`}>
     <div className="text-sm font-semibold opacity-80 uppercase tracking-wider mb-1">{label}</div>
     <div className="text-2xl md:text-3xl font-bold mb-1">{value}</div>
@@ -79,14 +79,14 @@ interface GreekCardProps {
 }
 
 const GreekCard = ({ symbol, name, description, sentiment }: GreekCardProps) => (
-  <div className="bg-white rounded-xl p-5 border-l-4 border-indigo-500 shadow-sm hover:translate-y-[-2px] transition-transform">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-xl p-5 border-l-4 border-indigo-500 shadow-sm hover:translate-y-[-2px] transition-transform">
     <div className="flex justify-between items-start mb-2">
-      <h4 className="text-xl font-bold text-slate-800">{name} <span className="text-indigo-400 font-serif italic ml-1">{symbol}</span></h4>
-      <span className={`text-xs px-2 py-1 rounded-full font-medium ${sentiment === 'Positive' ? 'bg-emerald-100 text-emerald-700' : sentiment === 'Negative' ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-700'}`}>
+      <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200">{name} <span className="text-[#A8672E] dark:text-[#D08F52] font-serif italic ml-1">{symbol}</span></h4>
+      <span className={`text-xs px-2 py-1 rounded-full font-medium ${sentiment === 'Positive' ? 'bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]' : sentiment === 'Negative' ? 'bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]' : 'bg-slate-100 text-slate-700 dark:text-slate-300'}`}>
         {sentiment}
       </span>
     </div>
-    <p className="text-sm text-slate-600">{description}</p>
+    <p className="text-sm text-slate-600 dark:text-slate-400">{description}</p>
   </div>
 );
 
@@ -97,9 +97,9 @@ interface StrategyBlockProps {
 }
 
 const StrategyBlock = ({ title, content, type = "neutral" }: StrategyBlockProps) => (
-  <div className={`p-4 rounded-xl border ${type === 'risk' ? 'bg-rose-50 border-rose-100' : type === 'success' ? 'bg-emerald-50 border-emerald-100' : 'bg-slate-50 border-slate-200'}`}>
-    <h4 className={`font-bold mb-2 ${type === 'risk' ? 'text-rose-700' : type === 'success' ? 'text-emerald-700' : 'text-slate-700'}`}>{title}</h4>
-    <p className="text-sm text-slate-600">{content}</p>
+  <div className={`p-4 rounded-xl border ${type === 'risk' ? 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-100' : type === 'success' ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-100' : 'bg-slate-50 dark:bg-[#14171B] border-slate-200 dark:border-slate-800'}`}>
+    <h4 className={`font-bold mb-2 ${type === 'risk' ? 'text-[#BC4128] dark:text-[#E2694A]' : type === 'success' ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-slate-700 dark:text-slate-300'}`}>{title}</h4>
+    <p className="text-sm text-slate-600 dark:text-slate-400">{content}</p>
   </div>
 );
 
@@ -115,23 +115,23 @@ export default function IronCondorArticle() {
         <section>
           <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <Layers className="text-indigo-200" /> Executive Summary
+              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2 font-serif">
+                <Layers className="text-[#A8672E] dark:text-[#D08F52]" /> Executive Summary
               </h2>
-              <p className="text-indigo-100 text-lg leading-relaxed max-w-3xl">
+              <p className="text-[#A8672E] dark:text-[#D08F52] text-lg leading-relaxed max-w-3xl">
                 The Iron Condor is a sophisticated non-directional strategy designed to generate alpha from market stagnation, time decay (Theta), and volatility contraction. It avoids the precarious task of predicting directional momentum, relying instead on structural pricing inefficiencies.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                  <div className="text-indigo-200 text-sm mb-1">Target</div>
+                <div className="bg-white dark:bg-[#0A0D14]/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <div className="text-[#A8672E] dark:text-[#D08F52] text-sm mb-1">Target</div>
                   <div className="font-bold text-xl">Market Neutrality</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                  <div className="text-indigo-200 text-sm mb-1">Mechanism</div>
+                <div className="bg-white dark:bg-[#0A0D14]/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <div className="text-[#A8672E] dark:text-[#D08F52] text-sm mb-1">Mechanism</div>
                   <div className="font-bold text-xl">Theta Decay</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                  <div className="text-indigo-200 text-sm mb-1">Primary Edge</div>
+                <div className="bg-white dark:bg-[#0A0D14]/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <div className="text-[#A8672E] dark:text-[#D08F52] text-sm mb-1">Primary Edge</div>
                   <div className="font-bold text-xl">IV &gt; HV</div>
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default function IronCondorArticle() {
           <SectionHeading icon={Zap} color="text-amber-500">The Quantitative Edge</SectionHeading>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-bold text-slate-800 mb-4">IV vs. HV Discrepancy</h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">IV vs. HV Discrepancy</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                 The core alpha of the Iron Condor is not direction; it is the <strong>Variance Risk Premium</strong>. Implied Volatility (IV) is the market's expectation of future movement, while Historical Volatility (HV) is actual movement.
               </p>
               <div className="bg-amber-50 p-6 rounded-2xl border border-amber-100 mb-6">
@@ -156,19 +156,19 @@ export default function IronCondorArticle() {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-slate-800 mb-4">Probability of Profit (POP)</h3>
-              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                <div className="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Probability of Profit (POP)</h3>
+              <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+                <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4 mb-4">
                   <span className="text-slate-500">Short Delta</span>
-                  <span className="font-mono font-bold text-indigo-600">~0.16 to 0.20</span>
+                  <span className="font-mono font-bold text-[#A8672E] dark:text-[#D08F52]">~0.16 to 0.20</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+                <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4 mb-4">
                   <span className="text-slate-500">Approx. POP</span>
-                  <span className="font-mono font-bold text-emerald-600">68% - 75%</span>
+                  <span className="font-mono font-bold text-[#1D8A70] dark:text-[#3CBF9C]">68% - 75%</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-500">Expected Value (EV)</span>
-                  <span className="font-mono font-bold text-slate-800">Positive</span>
+                  <span className="font-mono font-bold text-slate-800 dark:text-slate-200">Positive</span>
                 </div>
               </div>
               <p className="text-xs text-slate-400 mt-4">
@@ -183,44 +183,44 @@ export default function IronCondorArticle() {
           <SectionHeading icon={Layers} color="text-pink-600">Structural Mechanics</SectionHeading>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <p className="text-slate-600 mb-6 text-lg">
+              <p className="text-slate-600 dark:text-slate-400 mb-6 text-lg">
                 Synthetically, an Iron Condor amalgamates two vertical credit spreads into a single risk profile. It is the simultaneous execution of four legs to create a "profit zone" bounded by insurance.
               </p>
               <PayoffDiagram />
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-white border border-slate-200 text-center">
-                  <div className="text-rose-500 font-bold mb-1">Short Put Spread</div>
+                <div className="p-4 rounded-xl bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 text-center">
+                  <div className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-1">Short Put Spread</div>
                   <div className="text-xs text-slate-500">Bull Put Spread</div>
                 </div>
-                <div className="p-4 rounded-xl bg-white border border-slate-200 text-center">
-                  <div className="text-emerald-500 font-bold mb-1">Short Call Spread</div>
+                <div className="p-4 rounded-xl bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 text-center">
+                  <div className="text-[#1D8A70] dark:text-[#3CBF9C] font-bold mb-1">Short Call Spread</div>
                   <div className="text-xs text-slate-500">Bear Call Spread</div>
                 </div>
               </div>
             </div>
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">The Four Legs</h3>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-emerald-500 !py-4">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">The Four Legs</h3>
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-emerald-500 !py-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-slate-700">1. Buy Long Put (Floor)</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">1. Buy Long Put (Floor)</span>
                   <span className="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">Protection</span>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-rose-500 !py-4">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-rose-500 !py-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-slate-700">2. Sell Short Put</span>
-                  <span className="text-xs bg-rose-100 px-2 py-1 rounded text-rose-600">Lower Bound</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">2. Sell Short Put</span>
+                  <span className="text-xs bg-[#BC4128] dark:bg-[#E2694A] px-2 py-1 rounded text-[#BC4128] dark:text-[#E2694A]">Lower Bound</span>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-rose-500 !py-4">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-rose-500 !py-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-slate-700">3. Sell Short Call</span>
-                  <span className="text-xs bg-rose-100 px-2 py-1 rounded text-rose-600">Upper Bound</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">3. Sell Short Call</span>
+                  <span className="text-xs bg-[#BC4128] dark:bg-[#E2694A] px-2 py-1 rounded text-[#BC4128] dark:text-[#E2694A]">Upper Bound</span>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-emerald-500 !py-4">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300 border-l-4 border-l-emerald-500 !py-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-slate-700">4. Buy Long Call (Ceiling)</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">4. Buy Long Call (Ceiling)</span>
                   <span className="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">Protection</span>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function IronCondorArticle() {
         {/* The Greeks */}
         <section>
           <SectionHeading icon={BarChart2} color="text-violet-600">The Greeks Analysis</SectionHeading>
-          <p className="text-slate-600 mb-8 max-w-3xl">
+          <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-3xl">
             Success requires managing dynamic sensitivities. While the payoff is static at expiration, the Greeks describe the living, breathing risk profile of the trade.
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
@@ -264,42 +264,42 @@ export default function IronCondorArticle() {
 
         {/* Execution Strategy */}
         <section>
-          <SectionHeading icon={Target} color="text-emerald-600">Optimal Execution</SectionHeading>
+          <SectionHeading icon={Target} color="text-[#1D8A70] dark:text-[#3CBF9C]">Optimal Execution</SectionHeading>
           <div className="flex flex-col md:flex-row gap-8 mb-12">
             <div className="flex-1 space-y-6">
-              <h3 className="font-bold text-xl text-slate-800">The 45 DTE Standard</h3>
-              <div className="prose text-slate-600">
+              <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 font-serif">The 45 DTE Standard</h3>
+              <div className="prose text-slate-600 dark:text-slate-400">
                 <p>Entering at 45 Days to Expiration balances premium density with Gamma stability. It allows you to sell further OTM strikes while collecting viable credit.</p>
               </div>
-              <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
-                <h4 className="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-6 rounded-2xl border border-emerald-100">
+                <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2 flex items-center gap-2">
                   <Clock size={18}/> The 21 DTE Exit Rule
                 </h4>
-                <p className="text-emerald-700 text-sm">
+                <p className="text-[#1D8A70] dark:text-[#3CBF9C] text-sm">
                   Always close or roll at 21 days. This avoids the "Gamma Cliff" where tail risk dominates, shifting the trade from a probability play to a directional gamble.
                 </p>
               </div>
             </div>
             <div className="flex-1 grid grid-cols-2 gap-4">
-              <StatCard label="Entry" value="45 DTE" subtext="Start of decay curve" color="bg-white text-slate-800 shadow-sm" />
-              <StatCard label="Exit" value="21 DTE" subtext="Avoid Gamma risk" color="bg-white text-slate-800 shadow-sm" />
-              <StatCard label="Target" value="50%" subtext="Of Max Profit" color="bg-white text-slate-800 shadow-sm" />
-              <StatCard label="Delta" value="20-30" subtext="Short Strikes" color="bg-white text-slate-800 shadow-sm" />
+              <StatCard label="Entry" value="45 DTE" subtext="Start of decay curve" color="bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow-sm" />
+              <StatCard label="Exit" value="21 DTE" subtext="Avoid Gamma risk" color="bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow-sm" />
+              <StatCard label="Target" value="50%" subtext="Of Max Profit" color="bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow-sm" />
+              <StatCard label="Delta" value="20-30" subtext="Short Strikes" color="bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow-sm" />
             </div>
           </div>
-          <h3 className="font-bold text-xl text-slate-800 mb-6">Strike & Wing Optimization</h3>
+          <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 mb-6 font-serif">Strike & Wing Optimization</h3>
           <div className="grid md:grid-cols-3 gap-6">
-            <Card title="Wing Width" className="bg-slate-50 border-none">
+            <Card title="Wing Width" className="bg-slate-50 dark:bg-[#14171B] border-none">
               <p className="text-sm">
                 Wider is generally better. Narrow wings ($1-$2) suffer from high protection costs. Optimal width is roughly <strong>1/10th</strong> of the underlying stock price (e.g., $10 width for a $100 stock).
               </p>
             </Card>
-            <Card title="Strike Selection" className="bg-slate-50 border-none">
+            <Card title="Strike Selection" className="bg-slate-50 dark:bg-[#14171B] border-none">
               <p className="text-sm">
                 Sell the <strong>20-30 Delta</strong> options. This provides a high probability of profit (approx 70-80% POP) while collecting enough premium to justify the risk.
               </p>
             </Card>
-            <Card title="IV Rank Filter" className="bg-slate-50 border-none">
+            <Card title="IV Rank Filter" className="bg-slate-50 dark:bg-[#14171B] border-none">
               <p className="text-sm">
                 Only engage when IV Rank is <strong>&gt;30</strong> (ideally &gt;50). You must sell "expensive" insurance. Selling in low IV environments is a mathematical trap.
               </p>
@@ -309,8 +309,8 @@ export default function IronCondorArticle() {
 
         {/* Defensive Management */}
         <section>
-          <SectionHeading icon={RefreshCw} color="text-blue-500">Defensive Tactics</SectionHeading>
-          <p className="text-slate-600 mb-8 max-w-3xl">
+          <SectionHeading icon={RefreshCw} color="text-[#A8672E] dark:text-[#D08F52]">Defensive Tactics</SectionHeading>
+          <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-3xl">
             When the market challenges your strikes, doing nothing is rarely the best option. Defensive rolling reduces delta exposure and collects additional credit to widen breakevens.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
@@ -338,7 +338,7 @@ export default function IronCondorArticle() {
           <div className="bg-slate-900 text-slate-300 rounded-2xl p-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">The Rule of 3-5%</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 font-serif">The Rule of 3-5%</h3>
                 <p className="mb-6">
                   Iron Condors are high-probability but negative skew strategies (win often, lose big occasionally). Therefore, position sizing is the only thing protecting you from ruin.
                 </p>
@@ -387,33 +387,33 @@ export default function IronCondorArticle() {
         {/* Asset Selection & Pitfalls */}
         <section className="grid md:grid-cols-2 gap-12">
           <div>
-            <SectionHeading icon={Briefcase} color="text-blue-600">Asset Selection</SectionHeading>
+            <SectionHeading icon={Briefcase} color="text-[#A8672E] dark:text-[#D08F52]">Asset Selection</SectionHeading>
             <div className="space-y-4">
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                  <div className="p-2 bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52] rounded-lg">
                     <TrendingUp size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-800">Liquidity is King</h4>
-                    <p className="text-sm text-slate-600 mt-1">Slippage on 4 legs can destroy edge. Stick to high volume products.</p>
+                    <h4 className="font-bold text-slate-800 dark:text-slate-200">Liquidity is King</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Slippage on 4 legs can destroy edge. Stick to high volume products.</p>
                     <div className="mt-2 flex flex-wrap gap-2">
-                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200">SPY</span>
-                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200">QQQ</span>
-                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200">IWM</span>
-                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200">GLD</span>
+                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200 dark:border-slate-800">SPY</span>
+                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200 dark:border-slate-800">QQQ</span>
+                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200 dark:border-slate-800">IWM</span>
+                      <span className="text-xs bg-slate-100 px-2 py-1 rounded border border-slate-200 dark:border-slate-800">GLD</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                  <div className="p-2 bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52] rounded-lg">
                     <Activity size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-800">Skew Awareness</h4>
-                    <p className="text-sm text-slate-600 mt-1">
+                    <h4 className="font-bold text-slate-800 dark:text-slate-200">Skew Awareness</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                       Markets usually crash faster than they rally. Puts trade at higher IV than calls. You must often set your Put Delta lower (e.g., 16 Delta) than your Call Delta (e.g., 20 Delta) to balance risk.
                     </p>
                   </div>
@@ -424,13 +424,13 @@ export default function IronCondorArticle() {
           <div>
             <SectionHeading icon={AlertTriangle} color="text-amber-500">Critical Pitfalls</SectionHeading>
             <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100 h-full">
-              <h3 className="font-bold text-amber-800 mb-4 text-lg">Dividend Risk</h3>
+              <h3 className="font-bold text-amber-800 mb-4 text-lg font-serif">Dividend Risk</h3>
               <p className="text-amber-900/80 text-sm mb-4">
                 The "Silent Killer" for American options. If you are short a call and it is ITM, you risk early assignment before the ex-dividend date.
               </p>
-              <div className="bg-white p-4 rounded-xl border border-amber-200 mb-4">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border border-amber-200 mb-4">
                 <div className="text-xs font-mono text-slate-500 mb-1">THE ASSIGNMENT FORMULA</div>
-                <div className="font-mono font-bold text-slate-700">Put Extrinsic Value &lt; Dividend Amount</div>
+                <div className="font-mono font-bold text-slate-700 dark:text-slate-300">Put Extrinsic Value &lt; Dividend Amount</div>
               </div>
               <p className="text-amber-900/80 text-sm">
                 <strong>Mitigation:</strong> Trade European style indices (SPX, NDX) or close at risk calls immediately.
@@ -442,8 +442,8 @@ export default function IronCondorArticle() {
         {/* Summary Table */}
         <section className="bg-slate-900 text-slate-300 rounded-3xl p-8 md:p-12 overflow-hidden">
           <div className="flex items-center gap-3 mb-8">
-            <Info className="text-indigo-400" />
-            <h2 className="text-2xl font-bold text-white">Summary of Optimized Parameters</h2>
+            <Info className="text-[#A8672E] dark:text-[#D08F52]" />
+            <h2 className="text-2xl font-bold text-white font-serif">Summary of Optimized Parameters</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -456,27 +456,27 @@ export default function IronCondorArticle() {
               </thead>
               <tbody className="divide-y divide-slate-800 text-sm md:text-base">
                 <tr>
-                  <td className="py-4 pr-4 font-semibold text-indigo-300">Days to Expiration</td>
+                  <td className="py-4 pr-4 font-semibold text-[#A8672E] dark:text-[#D08F52]">Days to Expiration</td>
                   <td className="py-4 px-4 text-white">~45 Days</td>
                   <td className="py-4 pl-4">Optimal Theta/Gamma balance</td>
                 </tr>
                 <tr>
-                  <td className="py-4 pr-4 font-semibold text-indigo-300">Exit Trigger</td>
+                  <td className="py-4 pr-4 font-semibold text-[#A8672E] dark:text-[#D08F52]">Exit Trigger</td>
                   <td className="py-4 px-4 text-white">21 DTE</td>
                   <td className="py-4 pl-4">Avoid Gamma risk acceleration</td>
                 </tr>
                 <tr>
-                  <td className="py-4 pr-4 font-semibold text-indigo-300">Profit Target</td>
+                  <td className="py-4 pr-4 font-semibold text-[#A8672E] dark:text-[#D08F52]">Profit Target</td>
                   <td className="py-4 px-4 text-white">50% of Max</td>
                   <td className="py-4 pl-4">Increases capital velocity</td>
                 </tr>
                 <tr>
-                  <td className="py-4 pr-4 font-semibold text-indigo-300">Short Strikes</td>
+                  <td className="py-4 pr-4 font-semibold text-[#A8672E] dark:text-[#D08F52]">Short Strikes</td>
                   <td className="py-4 px-4 text-white">20-30 Delta</td>
                   <td className="py-4 pl-4">High probability (~1 SD)</td>
                 </tr>
                 <tr>
-                  <td className="py-4 pr-4 font-semibold text-indigo-300">Wing Width</td>
+                  <td className="py-4 pr-4 font-semibold text-[#A8672E] dark:text-[#D08F52]">Wing Width</td>
                   <td className="py-4 px-4 text-white">1/10th Stock Price</td>
                   <td className="py-4 pl-4">Balances ROC with Win Rate</td>
                 </tr>
