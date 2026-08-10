@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown } from "lucide-react";
+import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
@@ -56,6 +56,40 @@ const FEATURE_PILLARS = [
     icon: Globe,
     title: "Quant Neighborhood",
     description: "Curated voices from the quant community",
+  },
+];
+
+// "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient
+const ABOUT_CARDS = [
+  {
+    icon: Globe,
+    title: "Open to everyone",
+    description:
+      "This home page, the article library, and the live market tools are publicly accessible with no account and no sign-in.",
+    borderClass: "border-indigo-200 dark:border-indigo-800/60",
+    bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
+    iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
+    iconClass: "text-indigo-600 dark:text-indigo-400",
+  },
+  {
+    icon: Star,
+    title: "Free account unlocks more",
+    description:
+      "Signing in lets you bookmark articles, join forum discussions, open topic study guides, and read premium articles reserved for subscribers and supporters of the channel.",
+    borderClass: "border-purple-200 dark:border-purple-800/60",
+    bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
+    iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
+    iconClass: "text-purple-600 dark:text-purple-400",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Google sign-in privacy",
+    description:
+      "Signing in with Google is one optional way to create that account. SOPHIE receives only your name, email address, and profile picture, used solely to create your profile and attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other Google data.",
+    borderClass: "border-pink-200 dark:border-pink-800/60",
+    bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
+    iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
+    iconClass: "text-pink-600 dark:text-pink-400",
   },
 ];
 
@@ -152,6 +186,11 @@ export default function Home() {
     setTimeout(() => setRssCopied(false), 2000);
   };
 
+  const nonPinnedFilteredArticles = getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
+    .filter(article => !article.pinned && (canViewPremium || !article.premiumContent));
+  const displayedCount = showAllArticles ? nonPinnedFilteredArticles.length : Math.min(12, nonPinnedFilteredArticles.length);
+  const displayedArticles = nonPinnedFilteredArticles.slice(0, displayedCount);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -187,8 +226,8 @@ export default function Home() {
                   SOPHIE Daddy Quant Blog
                 </p>
                 <p className="max-w-xl text-sm md:text-base text-muted-foreground">
-                  AI-assisted personal blog and youtubes on investment research and education — quantitative analysis, options
-                  strategies, and stock insights.
+                  A personal blog and YouTube channel on quantitative finance — AI-assisted research across
+                  market analysis, options strategies, and stock insights.
                 </p>
 
                 {/* Core feature shortcuts */}
@@ -338,8 +377,7 @@ export default function Home() {
           })()}
 
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            {getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
-              .filter(article => !article.pinned && (canViewPremium || !article.premiumContent))
+            {displayedArticles
               .map((article) => (
                 <ArticleCard
                   key={article.slug}
@@ -361,64 +399,62 @@ export default function Home() {
           </div>
 
           {/* Results Count and Show More/Less Button */}
-          {(() => {
-            const filteredArticles = getFilteredArticles(articles, searchText, selectedLabels, bookmarkedSlugs, bookmarkedOnly)
-              .filter(article => !article.pinned && (canViewPremium || !article.premiumContent));
-            const displayedCount = showAllArticles ? filteredArticles.length : Math.min(12, filteredArticles.length);
-
-            return (
-              <div className="flex flex-col items-center gap-4 mt-8">
-                <p className="text-sm text-muted-foreground">
-                  Showing {displayedCount} of {filteredArticles.length} articles
-                </p>
-                {filteredArticles.length > 12 && (
-                  <Button
-                    onClick={() => setShowAllArticles(!showAllArticles)}
-                    variant="outline"
-                    size="lg"
-                  >
-                    {showAllArticles ? 'Show Less' : `Show All ${filteredArticles.length} Articles`}
-                  </Button>
-                )}
-                {filteredArticles.length === 0 && (
-                  <div className="text-center py-12">
-                    <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
-                    <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
-                  </div>
-                )}
+          <div className="flex flex-col items-center gap-4 mt-8">
+            <p className="text-sm text-muted-foreground">
+              Showing {displayedCount} of {nonPinnedFilteredArticles.length} articles
+            </p>
+            {nonPinnedFilteredArticles.length > 12 && (
+              <Button
+                onClick={() => setShowAllArticles(!showAllArticles)}
+                variant="outline"
+                size="lg"
+              >
+                {showAllArticles ? 'Show Less' : `Show All ${nonPinnedFilteredArticles.length} Articles`}
+              </Button>
+            )}
+            {nonPinnedFilteredArticles.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
+                <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
               </div>
-            );
-          })()}
+            )}
+          </div>
         </section>
 
         {/* What this app is — public, no-login explanation of purpose and of what
-            Google sign-in receives. Required for Google OAuth app verification. */}
-        <section className="container max-w-screen-2xl mx-auto py-8 md:py-12 border-t border-border px-4">
-          <div className="max-w-3xl mx-auto space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
-            <p className="text-sm md:text-base text-muted-foreground">
-              SOPHIE is a quantitative finance research and education platform — market analysis,
-              options strategy research, and investing education, published as articles, videos, and
-              podcast episodes.
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground">
-              <span className="font-medium text-foreground">Browsing is open to everyone.</span>{" "}
-              This home page, the article library, and the live market tools are publicly accessible
-              with no account and no sign-in.
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground">
-              <span className="font-medium text-foreground">A free account unlocks member
-              content.</span>{" "}
-              Signing in lets you bookmark articles, join forum discussions, open topic study guides,
-              and read premium articles reserved for subscribers and supporters of the channel.
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Signing in with Google is one optional way to create that account. SOPHIE receives only
-              your name, email address, and profile picture, used solely to create your profile and
-              attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other
-              Google data.
-            </p>
-            <div className="flex items-center gap-4 pt-1">
+            Google sign-in receives. Required for Google OAuth app verification.
+            The ABOUT_CARDS below preserve that disclosure verbatim; only the layout changed. */}
+        <section className="container max-w-screen-2xl mx-auto py-10 md:py-14 border-t border-border px-4">
+          <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-gradient-to-br from-indigo-50/70 via-purple-50/40 to-pink-50/70 dark:from-indigo-950/20 dark:via-purple-950/10 dark:to-pink-950/20 p-5 sm:p-8 md:p-10">
+            <div className="flex flex-col items-center text-center gap-3 mb-8">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                <Sparkles className="h-3.5 w-3.5" />
+                About the platform
+              </span>
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+                SOPHIE is a quantitative finance research and education platform — market analysis,
+                options strategy research, and investing education, published as articles, videos, and
+                podcast episodes.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              {ABOUT_CARDS.map((card) => (
+                <div
+                  key={card.title}
+                  className={`rounded-2xl border-2 p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${card.borderClass} ${card.bgClass}`}
+                >
+                  <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-full ${card.iconBgClass}`}>
+                    <card.icon className={`h-5 w-5 ${card.iconClass}`} />
+                  </div>
+                  <h3 className="font-semibold text-sm sm:text-base mb-1.5">{card.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-center gap-4 pt-7">
               <Link href="/privacy" className="text-sm font-medium text-primary hover:underline">
                 Privacy Policy
               </Link>
