@@ -7,9 +7,9 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 // --- Helper for styled text ---
 const Keyword = ({ children, color = 'blue' }: { children: React.ReactNode; color?: string }) => {
   const colorClasses: { [key: string]: string } = {
-    blue: 'text-blue-600',
-    green: 'text-green-600',
-    red: 'text-red-600',
+    blue: 'text-[#A8672E] dark:text-[#D08F52]',
+    green: 'text-[#1D8A70] dark:text-[#3CBF9C]',
+    red: 'text-[#BC4128] dark:text-[#E2694A]',
     purple: 'text-purple-600',
     yellow: 'text-amber-600',
   };
@@ -18,17 +18,17 @@ const Keyword = ({ children, color = 'blue' }: { children: React.ReactNode; colo
 
 // --- Data from the Research ---
 const newMemeStocks = [
-  { ticker: <Keyword color="purple">OPEN</Keyword>, name: 'Opendoor Technologies Inc.', performance: <span className="font-bold text-green-600">+440%</span>, narrative: 'Influencer mention ("100-bagger"), high short interest (>25%)' },
-  { ticker: <Keyword color="purple">KSS</Keyword>, name: 'Kohl\'s Corp.', performance: <span className="font-bold text-green-600">Surged ~40%</span>, narrative: 'High retail trader inflow, high short interest' },
-  { ticker: <Keyword color="purple">DNUT</Keyword>, name: 'Krispy Kreme Inc.', performance: <span className="font-bold text-green-600">Surged ~27%</span>, narrative: 'High short interest (~14%), r/wallstreetbets attention' },
-  { ticker: <Keyword color="purple">GPRO</Keyword>, name: 'GoPro, Inc.', performance: <span className="font-bold text-green-600">Surged ~41%</span>, narrative: 'High short interest (~8%), r/wallstreetbets attention' },
-  { ticker: <Keyword color="purple">BYND</Keyword>, name: 'Beyond Meat, Inc.', performance: <span className="font-bold text-green-600">Up {'>'}20%</span>, narrative: 'Struggling company, high short interest, previous meme status' },
+  { ticker: <Keyword color="purple">OPEN</Keyword>, name: 'Opendoor Technologies Inc.', performance: <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">+440%</span>, narrative: 'Influencer mention ("100-bagger"), high short interest (>25%)' },
+  { ticker: <Keyword color="purple">KSS</Keyword>, name: 'Kohl\'s Corp.', performance: <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Surged ~40%</span>, narrative: 'High retail trader inflow, high short interest' },
+  { ticker: <Keyword color="purple">DNUT</Keyword>, name: 'Krispy Kreme Inc.', performance: <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Surged ~27%</span>, narrative: 'High short interest (~14%), r/wallstreetbets attention' },
+  { ticker: <Keyword color="purple">GPRO</Keyword>, name: 'GoPro, Inc.', performance: <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Surged ~41%</span>, narrative: 'High short interest (~8%), r/wallstreetbets attention' },
+  { ticker: <Keyword color="purple">BYND</Keyword>, name: 'Beyond Meat, Inc.', performance: <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Up {'>'}20%</span>, narrative: 'Struggling company, high short interest, previous meme status' },
 ];
 
 const oldGuardStocks = [
-  { ticker: <Keyword color="purple">GME</Keyword>, name: 'GameStop Corp.', peak: '$120.75', current: '~ $24', decline: <span className="font-bold text-red-600">~80%</span> },
-  { ticker: <Keyword color="purple">AMC</Keyword>, name: 'AMC Entertainment', peak: '$726.00', current: '< $4', decline: <span className="font-bold text-red-600">{'>'}99%</span> },
-  { ticker: <Keyword color="purple">BB</Keyword>, name: 'BlackBerry Limited', peak: '~ $28', current: '~ $4', decline: <span className="font-bold text-red-600">~85%</span> },
+  { ticker: <Keyword color="purple">GME</Keyword>, name: 'GameStop Corp.', peak: '$120.75', current: '~ $24', decline: <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">~80%</span> },
+  { ticker: <Keyword color="purple">AMC</Keyword>, name: 'AMC Entertainment', peak: '$726.00', current: '< $4', decline: <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">{'>'}99%</span> },
+  { ticker: <Keyword color="purple">BB</Keyword>, name: 'BlackBerry Limited', peak: '~ $28', current: '~ $4', decline: <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">~85%</span> },
 ];
 
 const glossaryTerms = [
@@ -56,9 +56,9 @@ const Section = ({ title, icon, children }: { title: string; icon: React.ReactNo
   <section className="py-12 md:py-16">
     <div className="flex items-center mb-6">
       {icon}
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 ml-4">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 ml-4 font-serif">{title}</h2>
     </div>
-    <div className="text-slate-600 space-y-6 leading-relaxed text-base">
+    <div className="text-slate-600 dark:text-slate-400 space-y-6 leading-relaxed text-base">
       {children}
     </div>
   </section>
@@ -66,12 +66,12 @@ const Section = ({ title, icon, children }: { title: string; icon: React.ReactNo
 
 const StockTable = ({ headers, data, caption }: { headers: string[]; data: any[]; caption: string }) => (
   <div className="w-full overflow-x-auto">
-    <table className="min-w-full bg-white rounded-lg shadow-md border border-gray-200">
+    <table className="min-w-full bg-white dark:bg-[#0A0D14] rounded-lg shadow-md border border-gray-200">
       <caption className="caption-bottom text-slate-500 mt-2 text-sm text-left">{caption}</caption>
       <thead>
         <tr className="border-b border-gray-200">
           {headers.map((header, index) => (
-            <th key={index} className="text-left font-semibold text-blue-600 p-4 uppercase tracking-wider text-sm bg-gray-50">
+            <th key={index} className="text-left font-semibold text-[#A8672E] dark:text-[#D08F52] p-4 uppercase tracking-wider text-sm bg-gray-50">
               {header}
             </th>
           ))}
@@ -81,7 +81,7 @@ const StockTable = ({ headers, data, caption }: { headers: string[]; data: any[]
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} className="border-b border-gray-200/50 hover:bg-gray-50/80 transition-colors duration-200">
             {Object.values(row).map((cell, cellIndex) => (
-              <td key={cellIndex} className="p-4 text-slate-700">
+              <td key={cellIndex} className="p-4 text-slate-700 dark:text-slate-300">
                 {cellIndex === 0 ? <span className="font-bold text-gray-900">{cell}</span> : cell}
               </td>
             ))}
@@ -96,14 +96,14 @@ const RiskChecklistItem = ({ item }: { item: string }) => {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div
-      className="flex items-center p-4 bg-white rounded-lg cursor-pointer hover:bg-gray-50 transition-all duration-200 border border-gray-200 shadow-sm"
+      className="flex items-center p-4 bg-white dark:bg-[#0A0D14] rounded-lg cursor-pointer hover:bg-gray-50 transition-all duration-200 border border-gray-200 shadow-sm"
       onClick={() => setIsChecked(!isChecked)}
     >
       {isChecked ?
-        <CheckCircle className="w-6 h-6 text-green-500 mr-4 flex-shrink-0" /> :
+        <CheckCircle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-4 flex-shrink-0" /> :
         <Circle className="w-6 h-6 text-gray-400 mr-4 flex-shrink-0" />
       }
-      <span className={`text-slate-700 ${isChecked ? 'line-through text-slate-400' : ''}`}>
+      <span className={`text-slate-700 dark:text-slate-300 ${isChecked ? 'line-through text-slate-400' : ''}`}>
         {item}
       </span>
     </div>
@@ -117,35 +117,35 @@ export default function MemeStockPhenomenon() {
       additionalDisclaimer="Trading meme stocks is extremely risky and can result in the complete loss of your capital."
     >
       {/* What is a Meme Stock? */}
-      <Section title="Anatomy of a Meme Stock" icon={<BookOpen className="w-8 h-8 text-blue-500" />}>
+      <Section title="Anatomy of a Meme Stock" icon={<BookOpen className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}>
         <p>A <Keyword color="blue">&ldquo;meme stock&rdquo;</Keyword> is a security whose price is driven by social media hype and coordinated retail investor action, rather than traditional financial metrics. These events are born from a unique mix of technology, culture, and market mechanics.</p>
 
         <div className="grid md:grid-cols-2 gap-6 mt-8">
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-            <h3 className="font-bold text-xl text-blue-700 mb-2">Viral Popularity</h3>
+          <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">Viral Popularity</h3>
             <p>Interest spreads like a meme on platforms like Reddit&apos;s r/wallstreetbets, X, and Facebook, creating a powerful narrative.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-            <h3 className="font-bold text-xl text-blue-700 mb-2">Collective Action</h3>
+          <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">Collective Action</h3>
             <p>Price movements are heavily influenced by the mass buying activity of individual retail investors, often framed as a &ldquo;David vs. Goliath&rdquo; battle.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-            <h3 className="font-bold text-xl text-blue-700 mb-2">Disconnect from Fundamentals</h3>
+          <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">Disconnect from Fundamentals</h3>
             <p>Share prices often become completely detached from the company&apos;s actual financial health, revenue, or profit outlook.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-            <h3 className="font-bold text-xl text-blue-700 mb-2">Extreme Volatility</h3>
+          <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">Extreme Volatility</h3>
             <p>The defining feature is wild and unpredictable price swings, where massive gains can be wiped out in hours.</p>
           </div>
         </div>
       </Section>
 
       {/* July 2025 Resurgence */}
-      <Section title="July 2025: The Meme Stock Resurgence" icon={<Newspaper className="w-8 h-8 text-blue-500" />}>
+      <Section title="July 2025: The Meme Stock Resurgence" icon={<Newspaper className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}>
         <p>The summer of 2025 saw a new wave of meme stock frenzies, targeting a fresh class of heavily shorted, often struggling companies. This resurgence demonstrated that the phenomenon is an enduring feature of the modern market.</p>
 
         <div className="mt-8">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">The New Class of Meme Stocks</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">The New Class of Meme Stocks</h3>
           <StockTable
             headers={['Ticker', 'Company', '1-Month Performance', 'Narrative / Catalyst']}
             data={newMemeStocks}
@@ -154,7 +154,7 @@ export default function MemeStockPhenomenon() {
         </div>
 
         <div className="mt-12">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">The Old Guard: A Sobering Look Back</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">The Old Guard: A Sobering Look Back</h3>
           <p className="mb-4">The original 2021 meme stocks provide a crucial lesson in long-term risk. While still volatile, their prices remain dramatically below their historic peaks.</p>
           <StockTable
             headers={['Ticker', 'Company', '2021 Peak Price', 'July 2025 Price', 'Decline From Peak']}
@@ -165,17 +165,17 @@ export default function MemeStockPhenomenon() {
       </Section>
 
       {/* The Profit Playbook */}
-      <Section title="The Speculator's Playbook: How to Approach Meme Stocks" icon={<Gem className="w-8 h-8 text-blue-500" />}>
+      <Section title="The Speculator's Playbook: How to Approach Meme Stocks" icon={<Gem className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}>
         <div className="bg-red-100/50 border border-red-300 p-6 rounded-lg flex items-start">
-          <AlertTriangle className="w-10 h-10 text-red-500 mr-4 flex-shrink-0"/>
+          <AlertTriangle className="w-10 h-10 text-[#BC4128] dark:text-[#E2694A] mr-4 flex-shrink-0"/>
           <div>
-            <h3 className="font-bold text-xl text-red-700">This is Not Investing. It&apos;s <Keyword color="red">High-Stakes Speculation</Keyword>.</h3>
+            <h3 className="font-bold text-xl text-[#BC4128] dark:text-[#E2694A] font-serif">This is Not Investing. It&apos;s <Keyword color="red">High-Stakes Speculation</Keyword>.</h3>
             <p className="text-red-800/90 mt-2">Success is rare and depends on disciplined risk management, not <Keyword color="green">&ldquo;diamond hands.&rdquo;</Keyword> The capital you use must be money you can afford to lose entirely. For most investors, a diversified, long-term strategy is far safer.</p>
           </div>
         </div>
 
         <div className="mt-12">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 1: The Personal <Keyword color="red">Risk</Keyword> Assessment</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">Step 1: The Personal <Keyword color="red">Risk</Keyword> Assessment</h3>
           <p className="mb-6">Before you even think about buying, you must honestly answer these questions. If you can&apos;t confidently say &ldquo;Yes&rdquo; to all, you should not proceed.</p>
           <div className="space-y-4">
             {riskChecklistItems.map((item, index) => (
@@ -186,34 +186,34 @@ export default function MemeStockPhenomenon() {
 
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 2: Identifying Potential Targets</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">Step 2: Identifying Potential Targets</h3>
             <p className="mb-4">Speculators hunt for a specific profile:</p>
-            <ul className="list-disc list-inside space-y-2 text-slate-600">
-              <li><span className="font-bold text-blue-600">High Short Interest:</span> The primary fuel for a squeeze.</li>
-              <li><span className="font-bold text-blue-600">Low Float / Small Cap:</span> Easier for buying waves to impact price.</li>
-              <li><span className="font-bold text-blue-600">Brand Recognition:</span> Familiar names make for better stories.</li>
-              <li><span className="font-bold text-blue-600">Struggling Fundamentals:</span> The &ldquo;underdog&rdquo; narrative is powerful.</li>
+            <ul className="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+              <li><span className="font-bold text-[#A8672E] dark:text-[#D08F52]">High Short Interest:</span> The primary fuel for a squeeze.</li>
+              <li><span className="font-bold text-[#A8672E] dark:text-[#D08F52]">Low Float / Small Cap:</span> Easier for buying waves to impact price.</li>
+              <li><span className="font-bold text-[#A8672E] dark:text-[#D08F52]">Brand Recognition:</span> Familiar names make for better stories.</li>
+              <li><span className="font-bold text-[#A8672E] dark:text-[#D08F52]">Struggling Fundamentals:</span> The &ldquo;underdog&rdquo; narrative is powerful.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 3: The Primacy of an Exit Strategy</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">Step 3: The Primacy of an Exit Strategy</h3>
             <p className="mb-4">To realize a <Keyword color="green">profit</Keyword>, you must sell. This is the opposite of the &ldquo;diamond hands&rdquo; ethos that fuels the rally. Emotional decision-making is your enemy.</p>
-            <ul className="list-disc list-inside space-y-2 text-slate-600">
-              <li><span className="font-bold text-green-600">Take Profits:</span> Set a price target *before* you buy and stick to it. <Keyword color="red">Greed</Keyword> is a primary cause of failure.</li>
-              <li><span className="font-bold text-red-600">Cut Losses:</span> Use stop-loss orders to automatically sell if the price drops to a pre-defined level. This protects against catastrophic losses.</li>
+            <ul className="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+              <li><span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Take Profits:</span> Set a price target *before* you buy and stick to it. <Keyword color="red">Greed</Keyword> is a primary cause of failure.</li>
+              <li><span className="font-bold text-[#BC4128] dark:text-[#E2694A]">Cut Losses:</span> Use stop-loss orders to automatically sell if the price drops to a pre-defined level. This protects against catastrophic losses.</li>
             </ul>
           </div>
         </div>
       </Section>
 
       {/* Glossary */}
-      <Section title="Meme Stock Glossary" icon={<BookOpen className="w-8 h-8 text-blue-500" />}>
+      <Section title="Meme Stock Glossary" icon={<BookOpen className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}>
         <p>Understanding the unique lexicon of the meme stock world is key to gauging the sentiment driving a rally.</p>
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {glossaryTerms.map((item, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-              <h4 className="font-bold text-lg text-blue-700">{item.term}</h4>
-              <p className="text-slate-600 text-sm mt-1">{item.definition}</p>
+            <div key={index} className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 shadow-sm">
+              <h4 className="font-bold text-lg text-[#A8672E] dark:text-[#D08F52]">{item.term}</h4>
+              <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{item.definition}</p>
             </div>
           ))}
         </div>

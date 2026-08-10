@@ -271,7 +271,7 @@ export default function XGBoostSystematicTradingArticle() {
                 </div>
 
                 {paperContent.sections[3].example && (
-                  <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+                  <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-xl p-8 shadow-sm">
                     <h3 className="font-serif text-lg text-[#A8672E] dark:text-[#D08F52] mb-4 text-center">{paperContent.sections[3].example.title}</h3>
                     <div className="flex flex-col items-center space-y-4">
                       <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg w-full">

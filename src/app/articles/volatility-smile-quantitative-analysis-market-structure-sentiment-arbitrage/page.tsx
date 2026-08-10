@@ -23,7 +23,7 @@ const FeatureCard = ({ icon, title, description, color = "blue" }: {
         <div className={`p-6 rounded-xl border-2 shadow-lg hover:shadow-xl transition-all duration-300 ${colorClasses[color]}`}>
             <div className="flex items-center mb-3">
                 <div className="mr-3">{icon}</div>
-                <h3 className="text-lg font-bold">{title}</h3>
+                <h3 className="text-lg font-bold font-serif">{title}</h3>
             </div>
             <p className="text-sm leading-relaxed">{description}</p>
         </div>
@@ -38,7 +38,7 @@ const InfoBox = ({ children, type = 'info', icon }: {
     const typeClasses = {
         info: "bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-300 text-blue-900",
         warning: "bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-400 text-yellow-900",
-        success: "bg-gradient-to-r from-green-50 to-emerald-50 border-green-400 text-green-900",
+        success: "bg-gradient-to-r from-green-50 to-emerald-50 border-[#1D8A70] dark:border-[#3CBF9C] text-green-900",
         tip: "bg-gradient-to-r from-purple-50 to-pink-50 border-purple-400 text-purple-900"
     };
 
@@ -55,7 +55,7 @@ const InfoBox = ({ children, type = 'info', icon }: {
 };
 
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-    <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">{children}</span>
+    <span className="font-bold text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 px-2 py-1 rounded">{children}</span>
 );
 
 const CompactTable = ({ headers, data, colorScheme = "blue" }: {
@@ -64,10 +64,10 @@ const CompactTable = ({ headers, data, colorScheme = "blue" }: {
     colorScheme?: "blue" | "purple" | "green" | "orange" | "cyan"
 }) => {
     const colorClasses = {
-        blue: "bg-blue-600 text-white",
+        blue: "bg-[#A8672E] dark:bg-[#D08F52] text-white",
         purple: "bg-purple-600 text-white",
-        green: "bg-green-600 text-white",
-        orange: "bg-orange-600 text-white",
+        green: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-white",
+        orange: "bg-[#BC4128] dark:bg-[#E2694A] text-white",
         cyan: "bg-cyan-600 text-white"
     };
 
@@ -83,7 +83,7 @@ const CompactTable = ({ headers, data, colorScheme = "blue" }: {
                         ))}
                     </tr>
                 </thead>
-                <tbody className="bg-white">
+                <tbody className="bg-white dark:bg-[#0A0D14]">
                     {data.map((row, rowIndex) => (
                         <tr key={rowIndex} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                             {row.map((cell, cellIndex) => (
@@ -106,27 +106,27 @@ const MetricCard = ({ value, label, description, color = "blue" }: {
     color?: "blue" | "purple" | "green" | "orange" | "red" | "cyan"
 }) => {
     const colorClasses = {
-        blue: "bg-blue-600 text-white",
+        blue: "bg-[#A8672E] dark:bg-[#D08F52] text-white",
         purple: "bg-purple-600 text-white",
-        green: "bg-green-600 text-white",
-        orange: "bg-orange-600 text-white",
-        red: "bg-red-600 text-white",
+        green: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-white",
+        orange: "bg-[#BC4128] dark:bg-[#E2694A] text-white",
+        red: "bg-[#BC4128] dark:bg-[#E2694A] text-white",
         cyan: "bg-cyan-600 text-white"
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300">
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300">
             <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${colorClasses[color]} mb-4`}>
                 <span className="text-2xl font-bold">{value}</span>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">{label}</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-2 font-serif">{label}</h3>
             <p className="text-sm text-gray-600">{description}</p>
         </div>
     );
 };
 
 const VolatilitySmileChart = () => (
-    <div className="my-10 p-6 bg-white rounded-xl shadow-xl border border-gray-200">
+    <div className="my-10 p-6 bg-white dark:bg-[#0A0D14] rounded-xl shadow-xl border border-gray-200">
         <h4 className="font-bold text-xl mb-4 text-gray-800 text-center">Volatility Smile &amp; Skew Patterns</h4>
         <div className="w-full" style={{ aspectRatio: '16/9' }}>
             <svg viewBox="0 0 400 250" className="w-full h-full" aria-labelledby="chartTitle">
@@ -169,7 +169,7 @@ const ParityFormula = () => (
 const Introduction = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">The Market&apos;s Rejection of Black-Scholes</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-serif">The Market&apos;s Rejection of Black-Scholes</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 How the volatility smile reveals the true nature of market risk and investor psychology
             </p>
@@ -189,15 +189,15 @@ const Introduction = () => (
                 color="purple"
             />
             <FeatureCard
-                icon={<Activity className="h-8 w-8 text-orange-600" />}
+                icon={<Activity className="h-8 w-8 text-[#BC4128] dark:text-[#E2694A]" />}
                 title="Market Anomaly"
                 description="Smile/skew patterns reveal non-normal returns, fat tails, and crash fears."
                 color="orange"
             />
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The Theoretical Foundation</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">The Theoretical Foundation</h3>
             <p className="text-gray-700 mb-6">
                 The study of stock options pricing is fundamentally a study of how markets quantify and price uncertainty.
                 At the heart of this endeavor lies the concept of <Highlight>implied volatility</Highlight>, a metric that serves as
@@ -227,8 +227,8 @@ const Introduction = () => (
             <p>The volatility smile is the market&apos;s <Highlight>mathematical signature</Highlight> of non-constant volatility and non-normal returns. It&apos;s not a bug - it&apos;s a feature revealing true market dynamics.</p>
         </InfoBox>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Black-Scholes vs Market Reality</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Black-Scholes vs Market Reality</h3>
             <CompactTable
                 headers={["BSM Assumption", "Market Reality", "Evidence"]}
                 data={[
@@ -246,19 +246,19 @@ const Introduction = () => (
 const SmilePatterns = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Smile Morphology</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-serif">Smile Morphology</h2>
             <p className="text-xl text-gray-600">Different markets, different fear patterns</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
             <FeatureCard
-                icon={<Activity className="h-8 w-8 text-blue-600" />}
+                icon={<Activity className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
                 title="Volatility Smile (FX)"
                 description="Symmetrical U-shape. IV lowest at ATM, increases for both ITM and OTM options. Common in currency markets."
                 color="blue"
             />
             <FeatureCard
-                icon={<TrendingDown className="h-8 w-8 text-red-600" />}
+                icon={<TrendingDown className="h-8 w-8 text-[#BC4128] dark:text-[#E2694A]" />}
                 title="Volatility Skew (Equity)"
                 description="Asymmetrical downward slope. OTM puts have much higher IV than OTM calls. Reflects crash fear."
                 color="red"
@@ -298,19 +298,19 @@ const SmilePatterns = () => (
 const MarketForces = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Economic Forces Behind the Smile</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-serif">Economic Forces Behind the Smile</h2>
             <p className="text-xl text-gray-600">Supply, demand, and behavioral finance</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The Statistical Foundation</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">The Statistical Foundation</h3>
             <p className="text-gray-700 mb-6">
                 The volatility smile is not random but a systematic pattern rooted in the fundamental properties of asset returns
                 and investor behavior. Its existence can be deconstructed into three primary causal layers: the statistical failure
                 of the log-normal distribution, the economic forces driven by investor psychology, and the structural frictions of market microstructure.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-red-50 rounded-lg p-6">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg p-6">
                     <h4 className="font-bold text-red-900 mb-3">Skew and Implied Skewness</h4>
                     <p className="text-red-800 text-sm">
                         The downward-sloping volatility skew is the direct manifestation of <Highlight>negative skewness</Highlight> in the implied PDF.
@@ -328,62 +328,62 @@ const MarketForces = () => (
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
                 <div className="flex items-center mb-4">
-                    <Shield className="h-8 w-8 text-red-600 mr-3" />
-                    <h3 className="text-xl font-bold text-gray-900">Demand Side: Fear Premium</h3>
+                    <Shield className="h-8 w-8 text-[#BC4128] dark:text-[#E2694A] mr-3" />
+                    <h3 className="text-xl font-bold text-gray-900 font-serif">Demand Side: Fear Premium</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
                     The 1987 crash instilled a lasting <Highlight>&ldquo;crash-o-phobia,&rdquo;</Highlight> creating structural demand for portfolio insurance.
                 </p>
                 <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start">
-                        <span className="text-red-500 mr-2">•</span>
+                        <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">•</span>
                         <span>Institutional portfolio insurance demand</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="text-red-500 mr-2">•</span>
+                        <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">•</span>
                         <span>Systematic OTM put buying for hedging</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="text-red-500 mr-2">•</span>
+                        <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">•</span>
                         <span>Behavioral bias toward crash protection</span>
                     </li>
                 </ul>
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
                 <div className="flex items-center mb-4">
-                    <TrendingUp className="h-8 w-8 text-green-600 mr-3" />
-                    <h3 className="text-xl font-bold text-gray-900">Supply Side: Income Generation</h3>
+                    <TrendingUp className="h-8 w-8 text-[#1D8A70] dark:text-[#3CBF9C] mr-3" />
+                    <h3 className="text-xl font-bold text-gray-900 font-serif">Supply Side: Income Generation</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
                     The supply of OTM call options is often more plentiful, partly from covered call writing strategies.
                 </p>
                 <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start">
-                        <span className="text-green-500 mr-2">•</span>
+                        <span className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2">•</span>
                         <span>Covered call writing strategies</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="text-green-500 mr-2">•</span>
+                        <span className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2">•</span>
                         <span>Professional volatility sellers</span>
                     </li>
                     <li className="flex items-start">
-                        <span className="text-green-500 mr-2">•</span>
+                        <span className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2">•</span>
                         <span>Market makers providing liquidity</span>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Advanced Modeling Approaches</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Advanced Modeling Approaches</h3>
             <p className="text-gray-700 mb-6">
                 To account for these realities, quantitative analysts use more sophisticated models that explicitly allow for non-constant volatility and sudden price jumps.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-blue-50 rounded-lg p-6">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg p-6">
                     <h4 className="font-bold text-blue-900 mb-3">Stochastic Volatility Models</h4>
                     <p className="text-blue-800 text-sm mb-2">
                         <strong>Heston Model:</strong> Square-root process for volatility with mean reversion and correlation to underlying price movements.
@@ -392,7 +392,7 @@ const MarketForces = () => (
                         <strong>SABR Model:</strong> Stochastic Alpha Beta Rho model specifically designed for interest rate and FX smile modeling.
                     </p>
                 </div>
-                <div className="bg-green-50 rounded-lg p-6">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-lg p-6">
                     <h4 className="font-bold text-green-900 mb-3">Jump-Diffusion Models</h4>
                     <p className="text-green-800 text-sm">
                         <strong>Merton Model:</strong> Incorporates sudden, discontinuous jumps in asset prices, especially around news events.
@@ -410,7 +410,7 @@ const MarketForces = () => (
         </div>
 
         <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-8 border-2 border-purple-200">
-            <h3 className="text-2xl font-bold text-purple-900 mb-4">Statistical Reality Check</h3>
+            <h3 className="text-2xl font-bold text-purple-900 mb-4 font-serif">Statistical Reality Check</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 <div>
                     <h4 className="font-bold text-purple-800 mb-2">Negative Skewness</h4>
@@ -428,19 +428,19 @@ const MarketForces = () => (
 const TradingImplications = () => (
     <section className="space-y-8">
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trading &amp; Risk Management</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-serif">Trading &amp; Risk Management</h2>
             <p className="text-xl text-gray-600">Practical applications for sophisticated investors</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
             <FeatureCard
-                icon={<Eye className="h-8 w-8 text-blue-600" />}
+                icon={<Eye className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
                 title="Sentiment Analysis"
                 description="Steep skew = high fear. Flat smile = complacency. Use as market sentiment barometer."
                 color="blue"
             />
             <FeatureCard
-                icon={<Calculator className="h-8 w-8 text-green-600" />}
+                icon={<Calculator className="h-8 w-8 text-[#1D8A70] dark:text-[#3CBF9C]" />}
                 title="Advanced Greeks"
                 description="Vanna, Volga, and higher-order sensitivities for smile risk management."
                 color="green"
@@ -453,8 +453,8 @@ const TradingImplications = () => (
             />
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The Smile as Market Sentiment Barometer</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">The Smile as Market Sentiment Barometer</h3>
             <p className="text-gray-700 mb-6">
                 The shape of the smile provides a rich, real-time snapshot of the market&apos;s collective fears and expectations.
             </p>
@@ -473,7 +473,7 @@ const TradingImplications = () => (
                         (e.g., ahead of an earnings announcement or major economic event).
                     </p>
                 </div>
-                <div className="bg-green-50 rounded-lg p-6">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-lg p-6">
                     <h4 className="font-bold text-green-900 mb-3">Flattening Skew/Smile</h4>
                     <p className="text-green-800 text-sm">
                         Can signal market complacency or a reduction in the perceived risk of extreme events.
@@ -483,8 +483,8 @@ const TradingImplications = () => (
             </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Advanced Risk Management: Beyond Delta</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Advanced Risk Management: Beyond Delta</h3>
             <p className="text-gray-700 mb-6">
                 The smile introduces &ldquo;smile risk.&rdquo; A trader who is perfectly delta-hedged is still making an unhedged bet on the
                 stability of the smile&apos;s shape. To manage this, practitioners rely on higher-order risk sensitivities.
@@ -501,10 +501,10 @@ const TradingImplications = () => (
             />
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Professional Implementation Framework</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Professional Implementation Framework</h3>
             <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-blue-50 rounded-lg p-6">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg p-6">
                     <h4 className="font-bold text-blue-900 mb-3">Data Infrastructure</h4>
                     <ul className="text-blue-800 text-sm space-y-2">
                         <li>• Real-time options chain feeds</li>
@@ -513,7 +513,7 @@ const TradingImplications = () => (
                         <li>• Cross-asset correlation matrices</li>
                     </ul>
                 </div>
-                <div className="bg-green-50 rounded-lg p-6">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-lg p-6">
                     <h4 className="font-bold text-green-900 mb-3">Execution Systems</h4>
                     <ul className="text-green-800 text-sm space-y-2">
                         <li>• Low-latency order management</li>
@@ -534,13 +534,13 @@ const TradingImplications = () => (
             </div>
         </div>
 
-        <InfoBox type="success" icon={<Zap className="h-6 w-6 text-green-600" />}>
+        <InfoBox type="success" icon={<Zap className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C]" />}>
             <div className="font-bold text-lg mb-2">Key Trading Insight</div>
             <p>The smile is not a market inefficiency to exploit, but a <Highlight>rational pricing mechanism</Highlight> reflecting true market dynamics. Trade with it, not against it.</p>
         </InfoBox>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Put-Call Parity: The Unifying Principle</h3>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Put-Call Parity: The Unifying Principle</h3>
             <p className="text-gray-700 mb-6">
                 Despite different market forces affecting puts and calls, their prices are bound by a fundamental no-arbitrage relationship.
                 This ensures that implied volatility for puts and calls with the same strike and expiration must be identical.
@@ -571,7 +571,7 @@ export default function VolatilitySmileAnalysis() {
                     <TradingImplications />
 
                     <section className="text-center bg-gradient-to-br from-gray-50 to-purple-50 rounded-2xl p-12 shadow-lg">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">The Smile Reveals Market Truth</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">The Smile Reveals Market Truth</h2>
                         <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
                             The volatility smile is the market&apos;s definitive rejection of Black-Scholes assumptions. It&apos;s a sophisticated pricing mechanism that captures the true nature of market risk: non-normal returns, crash fears, and the complex interplay of supply and demand in options markets. Understanding the smile is essential for modern quantitative finance.
                         </p>

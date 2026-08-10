@@ -21,12 +21,12 @@ const ExpandableDeepDive: React.FC<ExpandableDeepDiveProps> = ({ title, children
   const [isOpen, setIsOpen] = useState(false);
   
   const colors = {
-    blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 border-blue-200 dark:border-blue-800",
-    emerald: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 border-emerald-200 dark:border-emerald-800",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 border-blue-200 dark:border-blue-800",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 border-emerald-200 dark:border-emerald-800",
     amber: "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/40 border-amber-200 dark:border-amber-800",
-    rose: "bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-900/40 border-rose-200 dark:border-rose-800",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-900/40 border-rose-200 dark:border-rose-800",
     violet: "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 hover:bg-violet-100 dark:hover:bg-violet-900/40 border-violet-200 dark:border-violet-800",
-    indigo: "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 border-indigo-200 dark:border-indigo-800",
+    indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 border-indigo-200 dark:border-indigo-800",
   };
 
   return (
@@ -49,9 +49,9 @@ const ExpandableDeepDive: React.FC<ExpandableDeepDiveProps> = ({ title, children
                   <div className="bg-slate-900 px-4 py-2 text-xs font-mono text-slate-400 flex justify-between items-center border-b border-slate-800">
                     <span>{codeSnippet.title}</span>
                     <span className="flex gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#BC4128] dark:bg-[#E2694A]/80"></span>
                       <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C]/80"></span>
                     </span>
                   </div>
                   <pre className="p-4 overflow-x-auto text-sm font-mono leading-relaxed text-blue-100">
@@ -128,8 +128,8 @@ const PHackingSimulator: React.FC = () => {
 
   return (
     <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 border border-rose-200 dark:border-rose-900/50 mt-6 shadow-sm relative overflow-hidden">
-      <h4 className="font-bold text-rose-800 dark:text-rose-400 mb-2 flex items-center gap-2 text-xl relative z-10 font-serif">
-        <Search size={24} className="text-rose-500" /> P-Hacking Simulator
+      <h4 className="font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2 text-xl relative z-10 font-serif">
+        <Search size={24} className="text-[#BC4128] dark:text-[#E2694A]" /> P-Hacking Simulator
       </h4>
       <p className="text-slate-600 dark:text-slate-400 mb-8 relative z-10 max-w-2xl leading-relaxed">
         We will generate <strong className="text-slate-900 dark:text-slate-200">100 completely random strategies</strong> (noise). Statistically, one of them will look amazing just by luck. This is "Selection Bias".
@@ -147,7 +147,7 @@ const PHackingSimulator: React.FC = () => {
                     points={sim.path.map((p: number, idx: number) => `${idx},${100 - ((p-80)/40)*100}`).join(' ')}
                     fill="none"
                     stroke={sim.id === bestSim?.id ? "#e11d48" : "currentColor"}
-                    className={sim.id === bestSim?.id ? "" : "text-slate-300 dark:text-slate-700"}
+                    className={sim.id === bestSim?.id ? "" : "text-slate-300 dark:text-slate-700 dark:text-slate-300"}
                     strokeWidth={sim.id === bestSim?.id ? "2" : "0.5"}
                     opacity={sim.id === bestSim?.id ? "1" : "0.4"}
                   />
@@ -166,18 +166,18 @@ const PHackingSimulator: React.FC = () => {
         <div className="w-full md:w-64 flex flex-col justify-center gap-4">
           <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm text-center md:text-left">
             <div className="text-xs text-slate-500 uppercase font-bold mb-2 tracking-wider">Best Random Sharpe</div>
-            <div className={`text-4xl font-mono font-black ${bestSim && bestSim.sharpe > 1.5 ? 'text-emerald-500' : 'text-slate-800 dark:text-slate-200'}`}>
+            <div className={`text-4xl font-mono font-black ${bestSim && bestSim.sharpe > 1.5 ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-slate-800 dark:text-slate-200'}`}>
               {bestSim ? bestSim.sharpe.toFixed(2) : "0.00"}
             </div>
             {bestSim && bestSim.sharpe > 2.0 && (
-              <div className="text-xs text-rose-500 font-bold mt-2">⚠️ Amazing! (But Fake)</div>
+              <div className="text-xs text-[#BC4128] dark:text-[#E2694A] font-bold mt-2">⚠️ Amazing! (But Fake)</div>
             )}
           </div>
 
           <button 
             onClick={runSim}
             disabled={isRunning}
-            className="w-full py-4 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold shadow-lg shadow-rose-600/20 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 bg-[#BC4128] dark:bg-[#E2694A] hover:bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-xl font-bold shadow-lg shadow-rose-600/20 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isRunning ? <RefreshCw className="animate-spin" size={20}/> : <Dices size={20}/>}
             {isRunning ? "Mining Data..." : "Mine for Alpha"}
@@ -203,7 +203,7 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
           {/* SECTION 1: Theoretical Foundations */}
           <section id="theory">
             <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-6">
-              <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Target size={36} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-5xl font-serif tracking-tight text-slate-900 dark:text-white">The Fundamental Law</h2>
               </div>
@@ -214,7 +214,7 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-indigo-700 dark:text-indigo-400 font-serif">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-serif">
                   <Activity size={24} /> The Equation of Skill
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
@@ -234,12 +234,12 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
               </div>
 
               <div className="space-y-6">
-                <div className="bg-indigo-50 dark:bg-indigo-900/10 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/30 p-8">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/10 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/30 p-8">
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3 font-serif">The Extended Law (Reality Check)</h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                     In practice, constraints (liquidity, risk limits, long-only) prevent you from fully expressing your signal. We introduce a "Transfer Coefficient" to measure this leakage.
                   </p>
-                  <div className="bg-white/80 dark:bg-black/20 p-5 rounded-xl border border-indigo-200/50 dark:border-indigo-800/30 font-mono text-lg text-indigo-900 dark:text-indigo-300 mb-4 shadow-sm text-center">
+                  <div className="bg-white dark:bg-[#0A0D14]/80 dark:bg-black/20 p-5 rounded-xl border border-indigo-200/50 dark:border-indigo-800/30 font-mono text-lg text-indigo-900 dark:text-indigo-300 mb-4 shadow-sm text-center">
                     E(R_A) = TC × IC × √BR × σ_A
                   </div>
                   <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
@@ -253,16 +253,16 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
 
                 <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 border-l-4 border-l-rose-500 p-6">
                   <h4 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif text-lg">
-                    <AlertTriangle size={20} className="text-rose-500" />
+                    <AlertTriangle size={20} className="text-[#BC4128] dark:text-[#E2694A]" />
                     Why Theory Fails
                   </h4>
                   <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex gap-3">
-                      <span className="font-bold text-rose-500 mt-0.5">•</span>
+                      <span className="font-bold text-[#BC4128] dark:text-[#E2694A] mt-0.5">•</span>
                       <span className="leading-relaxed"><strong className="text-slate-900 dark:text-white">The Independence Illusion:</strong> 500 stocks ≠ 500 bets if they all crash together. BR is usually lower than you think.</span>
                     </li>
                     <li className="flex gap-3">
-                      <span className="font-bold text-rose-500 mt-0.5">•</span>
+                      <span className="font-bold text-[#BC4128] dark:text-[#E2694A] mt-0.5">•</span>
                       <span className="leading-relaxed"><strong className="text-slate-900 dark:text-white">Non-Linearity:</strong> Pearson IC assumes linear relationships. It fails to capture "smile" curves (e.g., extreme growth and extreme value both outperforming).</span>
                     </li>
                   </ul>
@@ -362,7 +362,7 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
           {/* SECTION 3: The Backtest Lie */}
           <section id="backtesting">
             <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-6">
-              <div className="flex items-center gap-3 mb-4 text-rose-600 dark:text-rose-500">
+              <div className="flex items-center gap-3 mb-4 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                 <Shield size={36} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-5xl font-serif tracking-tight text-slate-900 dark:text-white">The Backtest Lie</h2>
               </div>
@@ -376,18 +376,18 @@ export default function MechanicsOfAlphaPage(): React.ReactElement {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 border-t-4 border-t-rose-500 p-8 flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white font-serif">
-                  <Clock size={24} className="text-rose-500" /> Look-Ahead Bias
+                  <Clock size={24} className="text-[#BC4128] dark:text-[#E2694A]" /> Look-Ahead Bias
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed flex-grow">
                   Using data in your backtest that wasn't available at the time. This is the #1 reason for backtest failure.
                 </p>
-                <div className="bg-rose-50 dark:bg-rose-900/10 p-5 rounded-xl border border-rose-100 dark:border-rose-900/30 space-y-3">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 p-5 rounded-xl border border-rose-100 dark:border-rose-900/30 space-y-3">
                   <div className="flex items-start gap-3 text-sm text-rose-900 dark:text-rose-300">
-                    <XCircle size={18} className="shrink-0 mt-0.5 text-rose-500" /> 
+                    <XCircle size={18} className="shrink-0 mt-0.5 text-[#BC4128] dark:text-[#E2694A]" /> 
                     <span><strong className="font-bold">Mistake:</strong> Using Q1 Earnings on March 31st.</span>
                   </div>
                   <div className="flex items-start gap-3 text-sm text-emerald-800 dark:text-emerald-300">
-                    <CheckCircle size={18} className="shrink-0 mt-0.5 text-emerald-500" /> 
+                    <CheckCircle size={18} className="shrink-0 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C]" /> 
                     <span><strong className="font-bold">Reality:</strong> Earnings aren't released until April 15th.</span>
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-rose-200 dark:border-rose-800/50 italic mt-3">Always use "Point-in-Time" databases.</p>
@@ -439,7 +439,7 @@ def purged_kfold_split(dates, n_splits=5, embargo_pct=0.01):
               }}
             >
               <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="p-4 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-2xl shrink-0">
+                <div className="p-4 bg-rose-100 dark:bg-rose-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-2xl shrink-0">
                   <EyeOff size={32}/>
                 </div>
                 <div>
@@ -447,7 +447,7 @@ def purged_kfold_split(dates, n_splits=5, embargo_pct=0.01):
                   <p className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
                     In standard AI (images), datapoints are independent. In finance, Monday's price is 99% correlated with Tuesday's price.
                   </p>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed bg-rose-50 dark:bg-rose-900/10 p-4 rounded-xl border border-rose-100 dark:border-rose-900/30">
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 p-4 rounded-xl border border-rose-100 dark:border-rose-900/30">
                     <strong className="text-rose-900 dark:text-rose-300 font-bold">Purged K-Fold</strong> enforces a "Gap" (Embargo) between training and testing data. This prevents the model from "peeking" across the boundary via serial correlation. Without this, your backtest Sharpe will be double the reality.
                   </p>
                 </div>

@@ -98,22 +98,22 @@ export default function RiskArchitectureArticle() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
             <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
-              <BookOpen className="text-indigo-500 mb-2" size={20} />
+              <BookOpen className="text-[#A8672E] dark:text-[#D08F52] mb-2" size={20} />
               <span className="text-2xl font-bold text-slate-900 dark:text-white">400+</span>
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Published Factors</span>
             </div>
             <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
-              <TrendingUp className="text-indigo-500 mb-2" size={20} />
+              <TrendingUp className="text-[#A8672E] dark:text-[#D08F52] mb-2" size={20} />
               <span className="text-2xl font-bold text-slate-900 dark:text-white">58%</span>
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Return Decay post-pub</span>
             </div>
             <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
-              <Target className="text-indigo-500 mb-2" size={20} />
+              <Target className="text-[#A8672E] dark:text-[#D08F52] mb-2" size={20} />
               <span className="text-2xl font-bold text-slate-900 dark:text-white">0.0</span>
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Target Beta (L/S)</span>
             </div>
             <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
-              <Activity className="text-indigo-500 mb-2" size={20} />
+              <Activity className="text-[#A8672E] dark:text-[#D08F52] mb-2" size={20} />
               <span className="text-2xl font-bold text-slate-900 dark:text-white">2.0+</span>
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Sharpe Target</span>
             </div>
@@ -134,10 +134,10 @@ export default function RiskArchitectureArticle() {
                 <div key={index} className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm relative overflow-hidden group">
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="text-indigo-500 dark:text-indigo-400">
+                      <div className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <Icon size={20} />
                       </div>
-                      <h3 className="font-bold text-lg text-slate-900 dark:text-white">{factor.title}</h3>
+                      <h3 className="font-bold text-lg text-slate-900 dark:text-white font-serif">{factor.title}</h3>
                     </div>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                       {factor.type}
@@ -167,7 +167,7 @@ export default function RiskArchitectureArticle() {
             
             {/* Summary Card */}
             <div className="bg-slate-900 dark:bg-black rounded-2xl shadow-lg border border-slate-800 p-6 flex flex-col justify-center">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-white font-serif">
                 <AlertTriangle className="text-amber-500" />
                 Factor Crowding
               </h3>
@@ -197,7 +197,7 @@ export default function RiskArchitectureArticle() {
                   className={`px-6 py-3 rounded-lg text-sm font-bold transition-all capitalize ${
                     activeModelTab === model 
                       ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' 
-                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-300'
                   }`}
                 >
                   {model}
@@ -210,7 +210,7 @@ export default function RiskArchitectureArticle() {
             {activeModelTab === 'barra' && (
               <div className="animate-fadeIn">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
-                  <div className="p-4 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded-xl">
+                  <div className="p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] rounded-xl">
                     <Shield size={48} />
                   </div>
                   <div>
@@ -218,14 +218,14 @@ export default function RiskArchitectureArticle() {
                     <p className="text-slate-600 dark:text-slate-400 font-medium">The "Fundamental" Pure-Play</p>
                   </div>
                   <div className="md:ml-auto">
-                    <span className="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Industry Standard</span>
+                    <span className="bg-indigo-100 dark:bg-indigo-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Industry Standard</span>
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div className="space-y-6">
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <Grid size={18} className="text-indigo-500"/> Cross-Sectional Regression
+                        <Grid size={18} className="text-[#A8672E] dark:text-[#D08F52]"/> Cross-Sectional Regression
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-3">
                         Barra's core engine relies on <strong className="font-bold text-slate-900 dark:text-white">Cross-Sectional Regression</strong>. Every day, they take the universe of ~50,000 stocks and regress returns against exposed factors (Style + Industry).
@@ -236,7 +236,7 @@ export default function RiskArchitectureArticle() {
                     </div>
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <GitMerge size={18} className="text-indigo-500"/>Eigenfactor Adjustment
+                        <GitMerge size={18} className="text-[#A8672E] dark:text-[#D08F52]"/>Eigenfactor Adjustment
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                         Raw covariance matrices have "sampling error." Optimizers exploit this error, betting on factors that appear low-risk just by chance. Barra uses Monte Carlo simulations to artificially inflate the risk of these "noisy" small factors, forcing the optimizer to be honest.
@@ -275,7 +275,7 @@ export default function RiskArchitectureArticle() {
             {activeModelTab === 'axioma' && (
               <div className="animate-fadeIn">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
-                  <div className="p-4 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 rounded-xl">
+                  <div className="p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-xl">
                     <Activity size={48} />
                   </div>
                   <div>
@@ -283,14 +283,14 @@ export default function RiskArchitectureArticle() {
                     <p className="text-slate-600 dark:text-slate-400 font-medium">The "Hybrid" Innovator</p>
                   </div>
                   <div className="md:ml-auto">
-                    <span className="bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Quant Favorite</span>
+                    <span className="bg-rose-100 dark:bg-rose-900/50 text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Quant Favorite</span>
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div className="space-y-6">
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <Database size={18} className="text-rose-500"/> Fundamental + Statistical (Hybrid)
+                        <Database size={18} className="text-[#BC4128] dark:text-[#E2694A]"/> Fundamental + Statistical (Hybrid)
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-3">
                         Axioma acknowledges that fundamental factors don't capture everything. They run a <strong className="font-bold text-slate-900 dark:text-white">PCA (Principal Component Analysis)</strong> on the residuals of the fundamental model to find "Statistical Factors."
@@ -304,7 +304,7 @@ export default function RiskArchitectureArticle() {
                     </div>
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <Target size={18} className="text-rose-500"/>Custom Risk Models
+                        <Target size={18} className="text-[#BC4128] dark:text-[#E2694A]"/>Custom Risk Models
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                         Axioma's "Risk Model Machine" allows funds to build custom models. Crucially, you can add your proprietary Alpha signal as a risk factor. This ensures the optimizer doesn't "hedge away" your alpha by mistaking it for unwanted idiosyncratic risk.
@@ -343,7 +343,7 @@ export default function RiskArchitectureArticle() {
             {activeModelTab === 'northfield' && (
               <div className="animate-fadeIn">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
-                  <div className="p-4 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-xl">
+                  <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-xl">
                     <Globe size={48} />
                   </div>
                   <div>
@@ -351,14 +351,14 @@ export default function RiskArchitectureArticle() {
                     <p className="text-slate-600 dark:text-slate-400 font-medium">The "Everything Everywhere" Model</p>
                   </div>
                   <div className="md:ml-auto">
-                    <span className="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Multi-Asset</span>
+                    <span className="bg-emerald-100 dark:bg-emerald-900/50 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Multi-Asset</span>
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div className="space-y-6">
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <Waves size={18} className="text-emerald-500"/> NIS (Everything Everywhere)
+                        <Waves size={18} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> NIS (Everything Everywhere)
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                         While Barra/Axioma often separate Equity, Fixed Income, and Alternatives, Northfield's <strong className="font-bold text-slate-900 dark:text-white">NIS (Northfield Information Services)</strong> model attempts to model the entire investment universe in a unified framework.
@@ -366,7 +366,7 @@ export default function RiskArchitectureArticle() {
                     </div>
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-2 font-serif">
-                        <Brain size={18} className="text-emerald-500"/>Hybrid Estimation
+                        <Brain size={18} className="text-[#1D8A70] dark:text-[#3CBF9C]"/>Hybrid Estimation
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                         Northfield uses a unique blend of short-term and long-term memory. They often employ <strong className="font-bold text-slate-900 dark:text-white">Bayesian Shrinkage</strong> to pull extreme volatility estimates back toward a global mean, providing very stable covariance matrices that don't "whipsaw" the portfolio turnover.
@@ -407,9 +407,9 @@ export default function RiskArchitectureArticle() {
               <thead>
                 <tr className="bg-slate-50 dark:bg-slate-800/50">
                   <th className="p-4 font-semibold text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">Feature</th>
-                  <th className="p-4 font-semibold text-indigo-700 dark:text-indigo-400 text-sm">MSCI Barra</th>
-                  <th className="p-4 font-semibold text-rose-700 dark:text-rose-400 text-sm">Axioma</th>
-                  <th className="p-4 font-semibold text-emerald-700 dark:text-emerald-400 text-sm">Northfield</th>
+                  <th className="p-4 font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-sm">MSCI Barra</th>
+                  <th className="p-4 font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-sm">Axioma</th>
+                  <th className="p-4 font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm">Northfield</th>
                 </tr>
               </thead>
               <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
@@ -477,7 +477,7 @@ export default function RiskArchitectureArticle() {
                 </div>
               </div>
               <div className="bg-slate-800/50 p-8 rounded-3xl border border-slate-700">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 font-serif">
                   <Brain className="text-amber-500" />
                   The New Frontier: Machine Learning
                 </h3>
@@ -512,7 +512,7 @@ export default function RiskArchitectureArticle() {
           </div>
           
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">The Strategy Spectrum</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center font-serif">The Strategy Spectrum</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5 text-slate-900 dark:text-white">
@@ -527,13 +527,13 @@ export default function RiskArchitectureArticle() {
                 </div>
               </div>
               <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border-2 border-indigo-200 dark:border-indigo-900/50 shadow-md relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-5 text-indigo-900 dark:text-indigo-400">
+                <div className="absolute top-0 right-0 p-4 opacity-5 text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]">
                   <PieChart size={80}/>
                 </div>
-                <span className="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide">Most Common</span>
+                <span className="bg-indigo-100 dark:bg-indigo-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide">Most Common</span>
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 text-lg mt-2 mb-2">130/30 (Relaxed)</h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">Enhanced Indexing.</p>
-                <div className="space-y-2 text-xs font-mono bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg text-indigo-900 dark:text-indigo-300">
+                <div className="space-y-2 text-xs font-mono bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded-lg text-indigo-900 dark:text-indigo-300">
                   <div className="flex justify-between"><span>Long:</span> <span>130%</span></div>
                   <div className="flex justify-between"><span>Short:</span> <span>30%</span></div>
                   <div className="flex justify-between"><span>Beta:</span> <span>1.0</span></div>
@@ -561,7 +561,7 @@ export default function RiskArchitectureArticle() {
                   <ArrowRight size={16}/>
                 </div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
+                  <div className="p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] rounded-lg">
                     <Filter size={20}/>
                   </div>
                   <h4 className="font-bold text-slate-900 dark:text-white">1. Alpha Model</h4>
@@ -578,7 +578,7 @@ export default function RiskArchitectureArticle() {
                   <ArrowRight size={16}/>
                 </div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-lg">
+                  <div className="p-2 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-lg">
                     <Shield size={20}/>
                   </div>
                   <h4 className="font-bold text-slate-900 dark:text-white">2. Risk Model</h4>
@@ -593,7 +593,7 @@ export default function RiskArchitectureArticle() {
                   <ArrowRight size={16}/>
                 </div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg">
+                  <div className="p-2 bg-[#1D8A70] dark:bg-[#3CBF9C]/20 text-[#1D8A70] dark:text-[#3CBF9C] rounded-lg">
                     <Cpu size={20}/>
                   </div>
                   <h4 className="font-bold text-white">3. Optimizer</h4>
@@ -606,7 +606,7 @@ export default function RiskArchitectureArticle() {
               </div>
               <div className="flex-1 w-full bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg">
+                  <div className="p-2 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-lg">
                     <DollarSign size={20}/>
                   </div>
                   <h4 className="font-bold text-slate-900 dark:text-white">4. Portfolio</h4>
@@ -645,7 +645,7 @@ export default function RiskArchitectureArticle() {
               </div>
               <div>
                 <h4 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                  <CheckCircle size={18} className="text-emerald-500"/>Success Metric: Information Ratio (IR)
+                  <CheckCircle size={18} className="text-[#1D8A70] dark:text-[#3CBF9C]"/>Success Metric: Information Ratio (IR)
                 </h4>
                 <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                   <div className="text-center mb-6 pb-6 border-b border-slate-100 dark:border-slate-800">

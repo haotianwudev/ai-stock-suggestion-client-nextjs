@@ -8,7 +8,7 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 const Section = ({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) => (
   <section className="scroll-mt-20 mb-24">
     <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 font-serif">{title}</h2>
       <p className="mt-2 text-lg text-amber-500 font-semibold">{subtitle}</p>
     </div>
     <div>{children}</div>
@@ -16,12 +16,12 @@ const Section = ({ title, subtitle, children }: { title: string; subtitle: strin
 );
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md border border-slate-200 hover:shadow-lg transition-shadow h-full">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-slate-200 dark:border-slate-800 hover:shadow-lg transition-shadow h-full">
     <div className="flex items-center gap-4">
       <div className="bg-slate-100 p-3 rounded-full">{icon}</div>
-      <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">{title}</h3>
     </div>
-    <p className="mt-4 text-slate-600">{children}</p>
+    <p className="mt-4 text-slate-600 dark:text-slate-400">{children}</p>
   </div>
 );
 
@@ -31,7 +31,7 @@ const StoryCard = ({ title, story }: { title: string; story: string }) => (
       <Lightbulb size={20}/>
       {title}
     </h4>
-    <p className="mt-2 text-slate-700 leading-relaxed">{story}</p>
+    <p className="mt-2 text-slate-700 dark:text-slate-300 leading-relaxed">{story}</p>
   </div>
 );
 
@@ -39,13 +39,13 @@ const CycleCard = ({ icon, title, description, details }: { icon: React.ReactEle
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200 transform transition-all hover:-translate-y-2 hover:shadow-2xl flex flex-col">
+    <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 transform transition-all hover:-translate-y-2 hover:shadow-2xl flex flex-col">
       <div className="flex items-center justify-center h-16 w-16 bg-amber-100 text-amber-600 rounded-full mx-auto">
         {React.cloneElement(icon, { size: 32 } as { size: number })}
       </div>
-      <h3 className="text-center text-xl font-bold mt-5 text-slate-900">{title}</h3>
-      <p className="text-center text-slate-600 mt-2 text-sm leading-relaxed flex-grow">{description}</p>
-      <div className="mt-4 pt-4 border-t border-slate-200">
+      <h3 className="text-center text-xl font-bold mt-5 text-slate-900 dark:text-slate-100 font-serif">{title}</h3>
+      <p className="text-center text-slate-600 dark:text-slate-400 mt-2 text-sm leading-relaxed flex-grow">{description}</p>
+      <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="w-full text-sm font-semibold text-amber-600 hover:text-amber-800 transition-colors flex items-center justify-center gap-1"
@@ -54,7 +54,7 @@ const CycleCard = ({ icon, title, description, details }: { icon: React.ReactEle
           <ChevronsDown size={16} className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
         {isOpen && (
-          <ul className="mt-4 space-y-2 text-left text-sm text-slate-600 list-disc pl-5">
+          <ul className="mt-4 space-y-2 text-left text-sm text-slate-600 dark:text-slate-400 list-disc pl-5">
             {details.map((detail, index) => (
               <li key={index} dangerouslySetInnerHTML={{ __html: detail }}></li>
             ))}
@@ -114,30 +114,30 @@ const MarketTemperatureChecklist = () => {
   ];
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-xl shadow-2xl border border-slate-200 max-w-4xl mx-auto">
+    <div className="bg-white dark:bg-[#0A0D14] p-6 md:p-8 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-4xl mx-auto">
       <div className="text-center mb-6">
-        <p className="font-bold text-slate-700">&ldquo;If you find that most of your checkmarks are in the left-hand column, hold on to your wallet.&rdquo; - H.M.</p>
+        <p className="font-bold text-slate-700 dark:text-slate-300">&ldquo;If you find that most of your checkmarks are in the left-hand column, hold on to your wallet.&rdquo; - H.M.</p>
       </div>
       <div className="flex flex-col md:flex-row justify-between gap-8">
         <div className="w-full md:w-1/2 space-y-3">
-          <h4 className="font-bold text-lg text-red-600 flex items-center gap-2 mb-4">
+          <h4 className="font-bold text-lg text-[#BC4128] dark:text-[#E2694A] flex items-center gap-2 mb-4">
             <XCircle /> Potentially Overheated
           </h4>
           {leftCol.map((item, index) => (
-            <div key={index} className="flex justify-between items-center bg-red-50 p-3 rounded-md">
-              <span className="text-sm font-semibold text-slate-600">{item.label}</span>
-              <span className="text-sm font-bold text-red-700">{item.value}</span>
+            <div key={index} className="flex justify-between items-center bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-3 rounded-md">
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{item.label}</span>
+              <span className="text-sm font-bold text-[#BC4128] dark:text-[#E2694A]">{item.value}</span>
             </div>
           ))}
         </div>
         <div className="w-full md:w-1/2 space-y-3">
-          <h4 className="font-bold text-lg text-emerald-600 flex items-center gap-2 mb-4">
+          <h4 className="font-bold text-lg text-[#1D8A70] dark:text-[#3CBF9C] flex items-center gap-2 mb-4">
             <CheckCircle /> Potentially Favorable
           </h4>
           {rightCol.map((item, index) => (
-            <div key={index} className="flex justify-between items-center bg-emerald-50 p-3 rounded-md">
-              <span className="text-sm font-semibold text-slate-600">{item.label}</span>
-              <span className="text-sm font-bold text-emerald-700">{item.value}</span>
+            <div key={index} className="flex justify-between items-center bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-3 rounded-md">
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{item.label}</span>
+              <span className="text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C]">{item.value}</span>
             </div>
           ))}
         </div>
@@ -147,38 +147,38 @@ const MarketTemperatureChecklist = () => {
 };
 
 const ThreeStagesOfBullMarket = () => (
-  <div className="bg-white p-8 rounded-lg shadow-xl border border-slate-200">
-    <h3 className="text-2xl font-bold text-center mb-6 text-slate-900">The Three Stages of a Bull Market</h3>
+  <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-lg shadow-xl border border-slate-200 dark:border-slate-800">
+    <h3 className="text-2xl font-bold text-center mb-6 text-slate-900 dark:text-slate-100 font-serif">The Three Stages of a Bull Market</h3>
     <div className="grid md:grid-cols-3 gap-6 text-center">
       <div className="p-4">
         <div className="relative flex justify-center items-center">
-          <div className="w-16 h-16 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-2xl font-bold">1</div>
+          <div className="w-16 h-16 rounded-full bg-slate-200 text-slate-600 dark:text-slate-400 flex items-center justify-center text-2xl font-bold">1</div>
         </div>
         <h4 className="font-bold text-lg mt-4">First Stage</h4>
-        <p className="text-slate-600 mt-1">When only a few perceptive people believe things will get better. Prices are low and skepticism is high.</p>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">When only a few perceptive people believe things will get better. Prices are low and skepticism is high.</p>
       </div>
       <div className="p-4">
         <div className="relative flex justify-center items-center">
           <div className="w-16 h-16 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-2xl font-bold">2</div>
         </div>
         <h4 className="font-bold text-lg mt-4">Second Stage</h4>
-        <p className="text-slate-600 mt-1">When most investors realize improvement is actually taking place. The trend is recognized and prices are rising.</p>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">When most investors realize improvement is actually taking place. The trend is recognized and prices are rising.</p>
       </div>
       <div className="p-4">
         <div className="relative flex justify-center items-center">
           <div className="w-16 h-16 rounded-full bg-red-200 text-red-800 flex items-center justify-center text-2xl font-bold">3</div>
         </div>
         <h4 className="font-bold text-lg mt-4">Third Stage</h4>
-        <p className="text-slate-600 mt-1">When everyone concludes things will get better forever. Euphoria reigns and prices are dangerously high.</p>
+        <p className="text-slate-600 dark:text-slate-400 mt-1">When everyone concludes things will get better forever. Euphoria reigns and prices are dangerously high.</p>
       </div>
     </div>
-    <p className="text-center mt-6 font-semibold text-lg italic text-slate-800">&ldquo;What the wise man does in the beginning, the fool does in the end.&rdquo;</p>
+    <p className="text-center mt-6 font-semibold text-lg italic text-slate-800 dark:text-slate-200">&ldquo;What the wise man does in the beginning, the fool does in the end.&rdquo;</p>
   </div>
 );
 
 const Quote = ({ text, author, className = '' }: { text: string; author?: string; className?: string }) => (
-  <blockquote className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-amber-400 ${className}`}>
-    <p className="text-lg italic text-slate-700">&ldquo;{text}&rdquo;</p>
+  <blockquote className={`bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border-l-4 border-amber-400 ${className}`}>
+    <p className="text-lg italic text-slate-700 dark:text-slate-300">&ldquo;{text}&rdquo;</p>
     <footer className="text-right mt-4 text-slate-500 font-semibold">- {author || 'Howard Marks'}</footer>
   </blockquote>
 );
@@ -187,20 +187,20 @@ export default function MarketCycleSummaryPage() {
   return (
     <ArticleFrame slug="mastering-market-cycle-howard-marks-summary">
       <div className="max-w-5xl mx-auto px-4">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-12">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-12">
           An interactive summary of <span className="text-amber-600 font-semibold">Howard Marks&apos;</span> essential guide to understanding market behavior and &ldquo;getting the odds on your side.&rdquo;
         </p>
 
         {/* Section: Why Study Cycles? */}
         <Section title="Why Study Cycles?" subtitle="The Most Important Thing">
-          <p className="text-lg text-slate-600 leading-relaxed mb-6">
-            Howard Marks&apos; central thesis is that while we can&apos;t predict the macro future, we can gain a crucial advantage by understanding where we are in the present cycle. The key is to shift focus from <strong className="text-slate-900">forecasting</strong> to <strong className="text-slate-900">assessing</strong>. By recognizing recurring patterns, we can adjust our investment stance to align with the probabilities.
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+            Howard Marks&apos; central thesis is that while we can&apos;t predict the macro future, we can gain a crucial advantage by understanding where we are in the present cycle. The key is to shift focus from <strong className="text-slate-900 dark:text-slate-100">forecasting</strong> to <strong className="text-slate-900 dark:text-slate-100">assessing</strong>. By recognizing recurring patterns, we can adjust our investment stance to align with the probabilities.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
-            <InfoCard icon={<TrendingUp className="text-emerald-500" />} title="Be Aggressive">
+            <InfoCard icon={<TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C]" />} title="Be Aggressive">
               When the odds are in our favor&mdash;markets are low, fear is high, and valuations are cheap&mdash;we can increase our bets on more aggressive investments.
             </InfoCard>
-            <InfoCard icon={<TrendingDown className="text-red-500" />} title="Be Defensive">
+            <InfoCard icon={<TrendingDown className="text-[#BC4128] dark:text-[#E2694A]" />} title="Be Defensive">
               When the odds are against us&mdash;markets are high, greed is rampant, and valuations are stretched&mdash;we can take money off the table and increase defensiveness.
             </InfoCard>
           </div>
@@ -214,10 +214,10 @@ export default function MarketCycleSummaryPage() {
         <Section title="The Nature of Cycles" subtitle="Cause and Effect">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="w-full lg:w-1/2">
-              <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Cycles are not just a series of events; they are a <strong className="text-slate-900">chain reaction</strong>. Each phase <strong className="text-slate-900">causes</strong> the next. A boom, with its excessive optimism and easy credit, contains the seeds of the following bust. A bust, with its pervasive pessimism and forced selling, lays the groundwork for the next boom.
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Cycles are not just a series of events; they are a <strong className="text-slate-900 dark:text-slate-100">chain reaction</strong>. Each phase <strong className="text-slate-900 dark:text-slate-100">causes</strong> the next. A boom, with its excessive optimism and easy credit, contains the seeds of the following bust. A bust, with its pervasive pessimism and forced selling, lays the groundwork for the next boom.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 Marks uses the metaphor of a pendulum, which spends very little time at its &lsquo;happy medium&rsquo; and is almost always swinging toward an extreme. This relentless oscillation is primarily driven by the ups and downs of human psychology.
               </p>
               <Quote
@@ -227,7 +227,7 @@ export default function MarketCycleSummaryPage() {
               />
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="bg-white p-4 rounded-lg shadow-md border border-slate-200">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg shadow-md border border-slate-200 dark:border-slate-800">
                 <CycleDiagram />
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function MarketCycleSummaryPage() {
 
         {/* Section: The Key Cycles */}
         <Section title="The Key Cycles" subtitle="Understanding the Components">
-          <p className="text-lg text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-center max-w-3xl mx-auto mb-12">
             The overall market cycle is a combination of several distinct, yet interconnected, cycles. Understanding each one helps build a complete picture of the investment environment.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -315,7 +315,7 @@ export default function MarketCycleSummaryPage() {
 
         {/* Section: Putting It All Together */}
         <Section title="The Market Cycle in Action" subtitle="Tops, Bottoms, and Human Folly">
-          <p className="text-lg text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-center max-w-3xl mx-auto mb-12">
             The interaction of these cycles creates the overall market cycle. Marks provides powerful frameworks for identifying the psychological states that define market extremes.
           </p>
           <div className="space-y-10">
@@ -328,7 +328,7 @@ export default function MarketCycleSummaryPage() {
         </Section>
 
         <Section title="How to Cope" subtitle="Positioning for the Probabilities">
-          <p className="text-lg text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-center max-w-3xl mx-auto mb-12">
             Armed with an understanding of cycles, how should we act? The goal is to position our portfolios to have the wind at our back. This means calibrating our aggressiveness and defensiveness based on our assessment of the current environment.
           </p>
           <MarketTemperatureChecklist />
@@ -341,16 +341,16 @@ export default function MarketCycleSummaryPage() {
 
         {/* Section: The Future of Cycles */}
         <Section title="The Future of Cycles" subtitle="It's Never Different This Time">
-          <p className="text-lg text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-center max-w-3xl mx-auto mb-12">
             A recurring theme in market manias is the belief that &ldquo;this time it&apos;s different&rdquo;&mdash;that a new paradigm has rendered old rules of valuation and risk obsolete. Marks argues this is one of the most dangerous phrases in investing.
           </p>
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md border border-slate-200">
+          <div className="max-w-3xl mx-auto bg-white dark:bg-[#0A0D14] p-8 rounded-lg shadow-md border border-slate-200 dark:border-slate-800">
             <div className="flex justify-center mb-4">
               <Repeat className="text-amber-500" size={40}/>
             </div>
-            <h3 className="text-2xl font-bold text-center mb-4 text-slate-900">Cycles Will Never End</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Why? Because they are not caused by mechanical or scientific laws, but by <strong className="text-slate-800">human nature</strong>. People will always bring emotion, inconsistency, and fallibility to their decisions. They will swing from greed to fear, extrapolate recent trends, and go to excess. As long as humans are involved in markets, cycles are inevitable.
+            <h3 className="text-2xl font-bold text-center mb-4 text-slate-900 dark:text-slate-100 font-serif">Cycles Will Never End</h3>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Why? Because they are not caused by mechanical or scientific laws, but by <strong className="text-slate-800 dark:text-slate-200">human nature</strong>. People will always bring emotion, inconsistency, and fallibility to their decisions. They will swing from greed to fear, extrapolate recent trends, and go to excess. As long as humans are involved in markets, cycles are inevitable.
             </p>
           </div>
         </Section>

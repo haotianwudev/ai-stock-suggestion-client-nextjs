@@ -10,16 +10,16 @@ const Box = ({ color, icon: Icon, title, subtitle, children }: {
   title: string; subtitle: string; children: React.ReactNode;
 }) => {
   const colorMap: Record<string, string> = {
-    blue: "bg-blue-50/50 dark:bg-blue-950/20 border-blue-500 dark:border-blue-500/50 text-blue-900 dark:text-blue-400 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-900/50 text-blue-600 dark:text-blue-400",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-blue-950/20 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52]/50 text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
     cyan: "bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-500 dark:border-cyan-500/50 text-cyan-900 dark:text-cyan-400 text-cyan-800 dark:text-cyan-300 border-cyan-200 dark:border-cyan-900/50 text-cyan-600 dark:text-cyan-400",
-    rose: "bg-rose-50/50 dark:bg-rose-950/20 border-rose-500 dark:border-rose-500/50 text-rose-900 dark:text-rose-400 text-rose-800 dark:text-rose-300 border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-950/20 border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A]/50 text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] text-rose-800 dark:text-rose-300 border-rose-200 dark:border-rose-900/50 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]",
     fuchsia: "bg-fuchsia-50/50 dark:bg-fuchsia-950/20 border-fuchsia-500 dark:border-fuchsia-500/50 text-fuchsia-900 dark:text-fuchsia-400 text-fuchsia-800 dark:text-fuchsia-300 border-fuchsia-200 dark:border-fuchsia-900/50 text-fuchsia-600 dark:text-fuchsia-400",
-    emerald: "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-500 dark:border-emerald-500/50 text-emerald-900 dark:text-emerald-400 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50 text-emerald-600 dark:text-emerald-400",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20 border-[#1D8A70] dark:border-[#3CBF9C] dark:border-[#1D8A70] dark:border-[#3CBF9C]/50 text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]",
     purple: "bg-purple-50/50 dark:bg-purple-950/20 border-purple-500 dark:border-purple-500/50 text-purple-900 dark:text-purple-400 text-purple-800 dark:text-purple-300 border-purple-200 dark:border-purple-900/50 text-purple-600 dark:text-purple-400",
-    teal: "bg-teal-50/50 dark:bg-teal-950/20 border-teal-500 dark:border-teal-500/50 text-teal-900 dark:text-teal-400 text-teal-800 dark:text-teal-300 border-teal-200 dark:border-teal-900/50 text-teal-600 dark:text-teal-400",
+    teal: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-teal-950/20 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52]/50 text-teal-900 dark:text-[#A8672E] dark:text-[#D08F52] text-teal-800 dark:text-teal-300 border-teal-200 dark:border-teal-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
     amber: "bg-amber-50/50 dark:bg-amber-950/20 border-amber-500 dark:border-amber-500/50 text-amber-900 dark:text-amber-400 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-900/50 text-amber-600 dark:text-amber-400",
-    indigo: "bg-indigo-50/50 dark:bg-indigo-950/20 border-indigo-500 dark:border-indigo-500/50 text-indigo-900 dark:text-indigo-400 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-900/50 text-indigo-600 dark:text-indigo-400",
-    slate: "bg-slate-50/50 dark:bg-slate-900 border-slate-500 dark:border-slate-500/50 text-slate-900 dark:text-slate-200 text-slate-800 dark:text-slate-400 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
+    indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-950/20 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52]/50 text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
+    slate: "bg-slate-50 dark:bg-[#14171B]/50 dark:bg-slate-900 border-slate-500 dark:border-slate-500/50 text-slate-900 dark:text-slate-200 text-slate-800 dark:text-slate-400 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
   };
   const c = colorMap[color] || colorMap.blue;
   const classes = c.split(' ');
@@ -36,15 +36,15 @@ const Box = ({ color, icon: Icon, title, subtitle, children }: {
 
 const Card = ({ title, children, color = 'blue' }: { title: string; children: React.ReactNode; color?: string }) => {
   const colorMap: Record<string, string> = {
-    blue: "border-blue-100 dark:border-blue-900/50 text-blue-900 dark:text-blue-400",
+    blue: "border-blue-100 dark:border-blue-900/50 text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52]",
     cyan: "border-cyan-100 dark:border-cyan-900/50 text-cyan-900 dark:text-cyan-400",
-    rose: "border-rose-100 dark:border-rose-900/50 text-rose-900 dark:text-rose-400",
+    rose: "border-rose-100 dark:border-rose-900/50 text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A]",
     fuchsia: "border-fuchsia-100 dark:border-fuchsia-900/50 text-fuchsia-900 dark:text-fuchsia-400",
-    emerald: "border-emerald-100 dark:border-emerald-900/50 text-emerald-900 dark:text-emerald-400",
+    emerald: "border-emerald-100 dark:border-emerald-900/50 text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C]",
     purple: "border-purple-100 dark:border-purple-900/50 text-purple-900 dark:text-purple-400",
-    teal: "border-teal-100 dark:border-teal-900/50 text-teal-900 dark:text-teal-400",
+    teal: "border-teal-100 dark:border-teal-900/50 text-teal-900 dark:text-[#A8672E] dark:text-[#D08F52]",
     amber: "border-amber-100 dark:border-amber-900/50 text-amber-900 dark:text-amber-400",
-    indigo: "border-indigo-100 dark:border-indigo-900/50 text-indigo-900 dark:text-indigo-400",
+    indigo: "border-indigo-100 dark:border-indigo-900/50 text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]",
     slate: "border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200",
   };
   const c = colorMap[color] || colorMap.blue;
@@ -59,15 +59,15 @@ const Card = ({ title, children, color = 'blue' }: { title: string; children: Re
 
 const CodeSnip = ({ children, color = 'blue' }: { children: React.ReactNode; color?: string }) => {
   const colorMap: Record<string, string> = {
-    blue: "text-blue-700 dark:text-blue-400",
+    blue: "text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
     cyan: "text-cyan-700 dark:text-cyan-400",
-    rose: "text-rose-700 dark:text-rose-400",
+    rose: "text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]",
     fuchsia: "text-fuchsia-700 dark:text-fuchsia-400",
-    emerald: "text-emerald-700 dark:text-emerald-400",
+    emerald: "text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]",
     purple: "text-purple-700 dark:text-purple-400",
-    teal: "text-teal-700 dark:text-teal-400",
+    teal: "text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
     amber: "text-amber-700 dark:text-amber-400",
-    indigo: "text-indigo-700 dark:text-indigo-400",
+    indigo: "text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]",
     slate: "text-slate-700 dark:text-slate-400",
   };
   return (
@@ -95,7 +95,7 @@ const DarkCode = ({ children, color = 'blue' }: { children: React.ReactNode; col
 
 const Step = ({ n, title, children, color = 'rose' }: { n: number; title: string; children: React.ReactNode; color?: string }) => {
   const colorMap: Record<string, string> = {
-    rose: "border-rose-100 dark:border-rose-900/50 text-rose-900 dark:text-rose-400 bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300",
+    rose: "border-rose-100 dark:border-rose-900/50 text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300",
   };
   const c = colorMap[color] || colorMap.rose;
   const classes = c.split(' ');
@@ -117,7 +117,7 @@ export default function ClaudeCodeCheatsheet() {
       <main className="max-w-4xl mx-auto px-6 pb-20 pt-12 space-y-24">
         
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">Claude Code Cheatsheet</h1>
+          
           <p className="text-xl text-slate-600 dark:text-slate-400 font-light max-w-2xl mx-auto">Enterprise-grade workflows for algorithmic trading, quantitative research, and complex system orchestration.</p>
         </div>
 
@@ -183,20 +183,20 @@ export default function ClaudeCodeCheatsheet() {
               Never force-kill (<kbd className="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 px-1 rounded border border-slate-200 dark:border-slate-700 text-xs font-mono shadow-sm">Ctrl+C</kbd>) a runaway session — it severs the connection mid-tool-use and corrupts session state. Instead, press <kbd className="bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300 px-1.5 py-0.5 rounded border border-rose-200 dark:border-rose-800 font-mono text-xs shadow-sm">Alt+T</kbd> (or <kbd className="bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300 px-1.5 py-0.5 rounded border border-rose-200 dark:border-rose-800 font-mono text-xs shadow-sm">Opt+T</kbd>). This gracefully bypasses the extended thinking phase, forcing the model to output its current thought process and halting the loop safely.
             </Step>
             <Step n={2} title="Diagnosing Tool Failure Loops">
-              If Claude gets stuck, it is often trying to execute a bash script or Python file that is failing silently (e.g., swallowing <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">stderr</code>). Claude will blindly retry the tool indefinitely. Interrupt the model, manually read the script it wrote, fix the syntax error or missing dependency, and type <code className="text-rose-600 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/resume</code>.
+              If Claude gets stuck, it is often trying to execute a bash script or Python file that is failing silently (e.g., swallowing <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">stderr</code>). Claude will blindly retry the tool indefinitely. Interrupt the model, manually read the script it wrote, fix the syntax error or missing dependency, and type <code className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/resume</code>.
             </Step>
             <Step n={3} title="Context Purging & Token Limits">
-              When Claude starts randomly re-reading unchanged files like <code className="text-xs font-mono dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-1 rounded">models.py</code> over and over, its attention mechanism has degraded due to token bloat. Immediately run <code className="text-rose-600 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/compact</code> to squash the history, or use <code className="text-rose-600 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/clear</code> to keep your repo context but wipe the conversation thread.
+              When Claude starts randomly re-reading unchanged files like <code className="text-xs font-mono dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-1 rounded">models.py</code> over and over, its attention mechanism has degraded due to token bloat. Immediately run <code className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/compact</code> to squash the history, or use <code className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/30 px-1 rounded border border-rose-200 dark:border-rose-800 text-xs font-mono">/clear</code> to keep your repo context but wipe the conversation thread.
             </Step>
             <Step n={4} title="The @ Inclusion Trap">
-              Avoid using global <code className="text-rose-600 dark:text-rose-400 font-bold">@</code> file references in your <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">CLAUDE.md</code> system prompt (e.g., <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">@utils.py</code>). This forces Claude to load the entire file into its context window on <em className="dark:text-white">every single turn</em>, rapidly exhausting the context limit and causing severe latency. Let Claude discover files via tools.
+              Avoid using global <code className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold">@</code> file references in your <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">CLAUDE.md</code> system prompt (e.g., <code className="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded dark:text-slate-300">@utils.py</code>). This forces Claude to load the entire file into its context window on <em className="dark:text-white">every single turn</em>, rapidly exhausting the context limit and causing severe latency. Let Claude discover files via tools.
             </Step>
           </Box>
 
           {/* BOX 4: Handling Massive Data */}
           <Box color="fuchsia" icon={Database} title="Handling Massive Data" subtitle="Strategies to prevent token exhaustion when analyzing gigabytes of historical market data.">
             <Card title="1. The Context Limit vs. RAM Reality" color="fuchsia">
-              <p className="text-sm text-slate-700 dark:text-slate-400">Claude&apos;s context window is ~200,000 tokens. A mere 5MB CSV of tick data will instantly crash the agent with a <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs text-red-600 dark:text-red-400 font-mono">ContextLengthExceeded</code> error. <strong className="dark:text-white">Never</strong> use <code className="text-fuchsia-700 dark:text-fuchsia-400 font-mono text-xs bg-fuchsia-50 dark:bg-fuchsia-900/30 px-1 border border-fuchsia-200 dark:border-fuchsia-800 rounded">claude "read data.csv"</code> or dump raw API JSON arrays into the chat.</p>
+              <p className="text-sm text-slate-700 dark:text-slate-400">Claude&apos;s context window is ~200,000 tokens. A mere 5MB CSV of tick data will instantly crash the agent with a <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-mono">ContextLengthExceeded</code> error. <strong className="dark:text-white">Never</strong> use <code className="text-fuchsia-700 dark:text-fuchsia-400 font-mono text-xs bg-fuchsia-50 dark:bg-fuchsia-900/30 px-1 border border-fuchsia-200 dark:border-fuchsia-800 rounded">claude "read data.csv"</code> or dump raw API JSON arrays into the chat.</p>
             </Card>
             <Card title="2. Bash Pipeline Sampling" color="fuchsia">
               <p className="text-sm text-slate-700 dark:text-slate-400">Strictly constrain output using standard Unix tools before passing to Claude:</p>
@@ -233,7 +233,7 @@ export default function ClaudeCodeCheatsheet() {
               </DarkCode>
             </Card>
             <Card title="2. Market Data Abstraction" color="emerald">
-              <p className="text-sm text-slate-700 dark:text-slate-400">Instead of asking Claude to write brittle Python <code className="text-xs bg-slate-100 dark:bg-slate-800 dark:text-slate-300 px-1 rounded">requests</code> wrappers for Alpha Vantage or Polygon, connect an MCP server. Claude can dynamically call predefined tools like <code className="text-emerald-700 dark:text-emerald-400 font-mono text-xs bg-emerald-50 dark:bg-emerald-900/30 px-1 rounded">get_ticker_history(sym=&quot;AAPL&quot;)</code>, ingesting the JSON output cleanly without writing networking code.</p>
+              <p className="text-sm text-slate-700 dark:text-slate-400">Instead of asking Claude to write brittle Python <code className="text-xs bg-slate-100 dark:bg-slate-800 dark:text-slate-300 px-1 rounded">requests</code> wrappers for Alpha Vantage or Polygon, connect an MCP server. Claude can dynamically call predefined tools like <code className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-mono text-xs bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/30 px-1 rounded">get_ticker_history(sym=&quot;AAPL&quot;)</code>, ingesting the JSON output cleanly without writing networking code.</p>
             </Card>
             <Card title="3. Secure Data Warehouse Queries" color="emerald">
               <p className="text-sm text-slate-700 dark:text-slate-400">Provide Claude secure, read-only SQL access to Snowflake, Dolt, or PostgreSQL via MCP. This allows Claude to query proprietary Monte Carlo simulation results or portfolio state while keeping the actual database credentials entirely outside the LLM context window.</p>
@@ -279,7 +279,7 @@ export default function ClaudeCodeCheatsheet() {
             </Card>
             <Card title=".claudeignore Configuration" color="teal">
               <p className="text-sm text-slate-700 dark:text-slate-400 mb-2">Critically important to prevent autonomous search from reading massive binaries, crashing the context window, or leaking secrets.</p>
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono text-teal-800 dark:text-teal-300 bg-teal-50 dark:bg-teal-900/30 p-3 rounded border border-teal-100 dark:border-teal-800">
+              <div className="grid grid-cols-2 gap-2 text-xs font-mono text-teal-800 dark:text-teal-300 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-teal-900/30 p-3 rounded border border-teal-100 dark:border-teal-800">
                 <ul className="list-disc pl-4 space-y-1">
                   <li>*.csv / *.parquet</li>
                   <li>*.sqlite / *.db</li>
@@ -316,12 +316,12 @@ export default function ClaudeCodeCheatsheet() {
           {/* BOX 9: Plan Mode & Workflows */}
           <Box color="indigo" icon={Layers} title="Plan Mode & Workflows" subtitle="Strategies for safely managing massive architectural refactors and backtest deployments.">
             <Card title="Plan vs. Auto Mode Workflow" color="indigo">
-              <p className="text-sm text-slate-700 dark:text-slate-400 mb-2">Launch with <code className="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-bold px-1 rounded border border-indigo-100 dark:border-indigo-800 text-xs font-mono">claude --permission-mode plan --model claude-3-7-sonnet</code> for read-only analysis. Claude will search files and generate architectural diagrams detailing how it intends to implement a new multi-leg options strategy.</p>
-              <p className="text-sm text-slate-700 dark:text-slate-400">Because it lacks write permissions, it cannot accidentally overwrite legacy pricing logic. Once the proposed plan is approved by the human quant, run <code className="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-bold px-1 rounded border border-indigo-100 dark:border-indigo-800 text-xs font-mono">/act</code> for the rote execution phase.</p>
+              <p className="text-sm text-slate-700 dark:text-slate-400 mb-2">Launch with <code className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold px-1 rounded border border-indigo-100 dark:border-indigo-800 text-xs font-mono">claude --permission-mode plan --model claude-3-7-sonnet</code> for read-only analysis. Claude will search files and generate architectural diagrams detailing how it intends to implement a new multi-leg options strategy.</p>
+              <p className="text-sm text-slate-700 dark:text-slate-400">Because it lacks write permissions, it cannot accidentally overwrite legacy pricing logic. Once the proposed plan is approved by the human quant, run <code className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold px-1 rounded border border-indigo-100 dark:border-indigo-800 text-xs font-mono">/act</code> for the rote execution phase.</p>
             </Card>
             <Card title={`"Wave-Based" CI/CD Implementation`} color="indigo">
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 italic">Essential for massive codebases where single sessions hit the 200k token context limit.</p>
-              <ol className="list-decimal pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-3 marker:text-indigo-500 marker:font-bold">
+              <ol className="list-decimal pl-5 text-sm text-slate-700 dark:text-slate-300 space-y-3 marker:text-[#A8672E] dark:text-[#D08F52] marker:font-bold">
                 <li><strong className="text-indigo-900 dark:text-indigo-300 block">The Architect (Core Agent)</strong> Reads quant requirements, creates the structural plan, and breaks the mathematical implementation down into isolated, sequential GitHub Issues.</li>
                 <li><strong className="text-indigo-900 dark:text-indigo-300 block">The Execution Wave (Sub-Agents)</strong> The Core agent spawns isolated sub-agents (Haiku models for speed) to write the code for each issue in parallel worktrees. <strong className="dark:text-white">Crucially</strong>, these agents are given a strict kill-switch at 75% context capacity to force a commit and prevent hallucination loops.</li>
                 <li><strong className="text-indigo-900 dark:text-indigo-300 block">The Review Loop</strong> The Core agent aggregates sub-agent outputs and runs Pytest suites. If the math fails, it wipes the specific Haiku context and spawns a fresh agent with the exact test failure logs.</li>

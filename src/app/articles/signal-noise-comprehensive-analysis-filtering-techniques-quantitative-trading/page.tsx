@@ -14,13 +14,13 @@ export default function SignalNoiseFilteringGuide() {
   );
 
   const SubHeading = ({ children, id }: { children: React.ReactNode; id?: string }) => (
-    <h2 id={id} className="text-3xl font-bold text-gray-900 mb-6 mt-12">
+    <h2 id={id} className="text-3xl font-bold text-gray-900 mb-6 mt-12 font-serif">
       {children}
     </h2>
   );
 
   const SubSubHeading = ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-2xl font-bold text-gray-800 mb-4 mt-8">
+    <h3 className="text-2xl font-bold text-gray-800 mb-4 mt-8 font-serif">
       {children}
     </h3>
   );
@@ -87,52 +87,52 @@ export default function SignalNoiseFilteringGuide() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
-              <h3 className="text-2xl font-bold mb-6 flex items-center">
-                <div className="p-2 bg-green-100 text-green-600 rounded-lg mr-3">
+            <div className="bg-slate-50 dark:bg-[#14171B] p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+              <h3 className="text-2xl font-bold mb-6 flex items-center font-serif">
+                <div className="p-2 bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C] rounded-lg mr-3">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
                 The Signal
               </h3>
-              <p className="text-slate-600 mb-4 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                 A signal is a persistent, identifiable pattern that carries predictive information about future price movements. It represents the &ldquo;true&rdquo; underlying state of the market, often driven by fundamental economic forces, structural market inefficiencies, or sustained investor behavior.
               </p>
-              <ul className="space-y-2 mb-6 text-slate-700">
+              <ul className="space-y-2 mb-6 text-slate-700 dark:text-slate-300">
                 <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-2 shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 mr-2 shrink-0"></div>
                   <strong>Persistent:</strong> Lasts long enough to be exploitable.
                 </li>
                 <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-2 shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 mr-2 shrink-0"></div>
                   <strong>Predictive:</strong> Offers a probabilistic edge over random guessing.
                 </li>
               </ul>
-              <div className="text-sm font-medium text-indigo-600 bg-indigo-50 inline-block px-3 py-1 rounded-full">
+              <div className="text-sm font-medium text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 inline-block px-3 py-1 rounded-full">
                 High Information Content
               </div>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-6 flex items-center">
-                <div className="p-2 bg-red-100 text-red-600 rounded-lg mr-3">
+            <div className="bg-slate-50 dark:bg-[#14171B] p-8 rounded-3xl border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+              <h3 className="text-2xl font-bold mb-6 flex items-center font-serif">
+                <div className="p-2 bg-red-100 text-[#BC4128] dark:text-[#E2694A] rounded-lg mr-3">
                   <XCircle className="h-6 w-6" />
                 </div>
                 The Noise
               </h3>
-              <p className="text-slate-600 mb-4 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                 Noise consists of random, short-term price fluctuations that obscure the true signal. It can arise from microstructure effects (bid-ask bounce), transient news, unsophisticated trading flow, or simple random variation.
               </p>
-              <ul className="space-y-2 mb-6 text-slate-700">
+              <ul className="space-y-2 mb-6 text-slate-700 dark:text-slate-300">
                 <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-2 shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-[#BC4128] dark:bg-[#E2694A] rounded-full mt-2 mr-2 shrink-0"></div>
                   <strong>Erratic:</strong> Lacks a discernible, repeatable pattern.
                 </li>
                 <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-2 shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-[#BC4128] dark:bg-[#E2694A] rounded-full mt-2 mr-2 shrink-0"></div>
                   <strong>Non-predictive:</strong> Provides no reliable information about future direction.
                 </li>
               </ul>
-              <div className="text-sm font-medium text-rose-600 bg-rose-50 inline-block px-3 py-1 rounded-full">
+              <div className="text-sm font-medium text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 inline-block px-3 py-1 rounded-full">
                 High Entropy, Low Value
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function SignalNoiseFilteringGuide() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white/10 p-6 rounded-xl border border-white/20 backdrop-blur-sm">
+              <div className="bg-white dark:bg-[#0A0D14]/10 p-6 rounded-xl border border-white/20 backdrop-blur-sm">
                 <div className="text-indigo-300 mb-3 font-semibold flex items-center">
                   <Activity className="w-4 h-4 mr-2"/> The State Equation
                 </div>
@@ -155,7 +155,7 @@ export default function SignalNoiseFilteringGuide() {
                 </p>
               </div>
 
-              <div className="bg-white/10 p-6 rounded-xl border border-white/20 backdrop-blur-sm">
+              <div className="bg-white dark:bg-[#0A0D14]/10 p-6 rounded-xl border border-white/20 backdrop-blur-sm">
                 <div className="text-indigo-300 mb-3 font-semibold flex items-center">
                   <Search className="w-4 h-4 mr-2"/> The Observation Equation
                 </div>
@@ -183,8 +183,8 @@ export default function SignalNoiseFilteringGuide() {
                 onClick={() => setActiveTab(key)}
                 className={`flex items-center px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 border ${
                   activeTab === key
-                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-md'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-indigo-50 hover:border-indigo-300'
+                    ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white border-[#A8672E] dark:border-[#D08F52] shadow-md'
+                    : 'bg-white dark:bg-[#0A0D14] text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 hover:border-indigo-300'
                 }`}
               >
                 <span className="mr-2">{data.icon}</span>
@@ -193,51 +193,51 @@ export default function SignalNoiseFilteringGuide() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-3xl p-8 border border-slate-200 mb-8">
+          <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 mb-8">
             <div className="flex items-center mb-6">
-              <div className="p-3 bg-indigo-100 text-indigo-600 rounded-xl mr-4">
+              <div className="p-3 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-xl mr-4">
                 {toolkitData[activeTab].icon}
               </div>
-              <h3 className="text-3xl font-bold text-slate-900">
+              <h3 className="text-3xl font-bold text-slate-900 dark:text-slate-100 font-serif">
                 {toolkitData[activeTab].title}
               </h3>
             </div>
 
-            <p className="text-lg text-slate-700 mb-8 leading-relaxed">
+            <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
               {toolkitData[activeTab].description}
             </p>
 
             {activeTab === 'ma' && (
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Types of Moving Averages</h4>
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">Types of Moving Averages</h4>
                   <div className="grid gap-4 sm:grid-cols-3">
-                    <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                    <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
                       <div className="flex items-center mb-2">
-                        <Sigma className="w-4 h-4 text-indigo-500 mr-2" />
+                        <Sigma className="w-4 h-4 text-[#A8672E] dark:text-[#D08F52] mr-2" />
                         <span className="font-semibold">Simple (SMA)</span>
                       </div>
-                      <p className="text-sm text-slate-600">An unweighted arithmetic mean of the last N prices. Equal weight to all data points in the window.</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">An unweighted arithmetic mean of the last N prices. Equal weight to all data points in the window.</p>
                     </div>
-                    <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                    <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
                       <div className="flex items-center mb-2">
                         <Clock className="w-4 h-4 text-purple-500 mr-2" />
                         <span className="font-semibold">Exponential (EMA)</span>
                       </div>
-                      <p className="text-sm text-slate-600">Applies exponentially decreasing weights to older data. More responsive to recent price changes than SMA.</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">Applies exponentially decreasing weights to older data. More responsive to recent price changes than SMA.</p>
                     </div>
-                    <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                    <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
                       <div className="flex items-center mb-2">
                         <Filter className="w-4 h-4 text-pink-500 mr-2" />
                         <span className="font-semibold">Weighted (WMA)</span>
                       </div>
-                      <p className="text-sm text-slate-600">Assigns weights that decrease linearly. Offers a middle ground between SMA and EMA in terms of responsiveness.</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">Assigns weights that decrease linearly. Offers a middle ground between SMA and EMA in terms of responsiveness.</p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-2">Key Characteristics</h4>
-                  <ul className="list-disc pl-5 space-y-2 text-slate-700">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Key Characteristics</h4>
+                  <ul className="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300">
                     <li><strong>Lag:</strong> All MAs introduce lag. The longer the lookback period, the greater the lag, but the smoother the output.</li>
                     <li><strong>Simplicity:</strong> Easy to calculate, understand, and implement, making them ubiquitous.</li>
                     <li><strong>Trend Following:</strong> Excellent for identifying and remaining in established trends but prone to &ldquo;whipsaws&rdquo; in sideways markets.</li>
@@ -249,15 +249,15 @@ export default function SignalNoiseFilteringGuide() {
             {activeTab === 'kf' && (
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-2">The Two-Step Process</h4>
-                  <ol className="list-decimal pl-5 space-y-2 text-slate-700">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">The Two-Step Process</h4>
+                  <ol className="list-decimal pl-5 space-y-2 text-slate-700 dark:text-slate-300">
                     <li><strong>Predict:</strong> The filter uses its current state estimate to predict the next state and its uncertainty.</li>
                     <li><strong>Update (Correct):</strong> When a new measurement arrives, the filter corrects its prediction based on the difference between the predicted and actual measurement, weighted by the <em>Kalman Gain</em>.</li>
                   </ol>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-2">Why it&apos;s Powerful</h4>
-                  <ul className="list-disc pl-5 space-y-2 text-slate-700">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Why it&apos;s Powerful</h4>
+                  <ul className="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300">
                     <li><strong>Adaptivity:</strong> The Kalman Gain automatically adjusts. If measurements are noisy, it trusts its model more; if the model is uncertain, it trusts new data more.</li>
                     <li><strong>No Fixed Window:</strong> It uses all historical data efficiently without needing to store it all, unlike a simple moving average.</li>
                     <li><strong>Handles Missing Data:</strong> Can still make predictions even if some observations are dropped.</li>
@@ -269,16 +269,16 @@ export default function SignalNoiseFilteringGuide() {
             {activeTab === 'bw' && (
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-2">Frequency Domain Focus</h4>
-                  <p className="text-slate-700 mb-3">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Frequency Domain Focus</h4>
+                  <p className="text-slate-700 dark:text-slate-300 mb-3">
                     Unlike MAs which operate purely in the time domain, Butterworth filters are best understood in the frequency domain. They are typically used as <strong>low-pass filters</strong>, allowing low-frequency components (trends) to pass while attenuating high-frequency components (noise).
                   </p>
                 </div>
-                <div className="bg-slate-100 p-4 rounded-lg border border-slate-200">
-                  <h5 className="font-semibold text-slate-900 mb-1 flex items-center">
-                    <Info className="w-4 h-4 mr-2 text-indigo-500"/> Critical Parameter: Cutoff Frequency
+                <div className="bg-slate-100 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                  <h5 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 flex items-center">
+                    <Info className="w-4 h-4 mr-2 text-[#A8672E] dark:text-[#D08F52]"/> Critical Parameter: Cutoff Frequency
                   </h5>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
                     The &ldquo;cutoff frequency&rdquo; determines the threshold between signal and noise. Setting this correctly is crucial: too high, and too much noise gets through; too low, and valuable trend information is lost (oversmoothing).
                   </p>
                 </div>
@@ -288,8 +288,8 @@ export default function SignalNoiseFilteringGuide() {
             {activeTab === 'hp' && (
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-slate-900 mb-2">The Smoothing Parameter (λ)</h4>
-                  <p className="text-slate-700 mb-3">
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">The Smoothing Parameter (λ)</h4>
+                  <p className="text-slate-700 dark:text-slate-300 mb-3">
                     The filter&apos;s behavior is governed entirely by the penalty parameter, lambda (λ). A higher λ forces a smoother trend (approaching a straight line as λ → ∞), while a lower λ allows the trend to track the raw data more closely.
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2 text-sm">
@@ -298,30 +298,30 @@ export default function SignalNoiseFilteringGuide() {
                     <div className="bg-slate-100 px-3 py-2 rounded sm:col-span-2">Standard λ for Daily Data: often much higher, e.g., <strong>10<sup>5</sup> to 10<sup>8</sup></strong></div>
                   </div>
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg border border-red-100">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-lg border border-red-100">
                   <h5 className="font-semibold text-red-900 mb-1 flex items-center">
-                    <Info className="w-4 h-4 mr-2 text-red-500"/> The &ldquo;End-Point Problem&rdquo;
+                    <Info className="w-4 h-4 mr-2 text-[#BC4128] dark:text-[#E2694A]"/> The &ldquo;End-Point Problem&rdquo;
                   </h5>
-                  <p className="text-sm text-red-700">
+                  <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
                     Standard HP filters are <strong>two-sided</strong>, meaning the estimate at time t uses future data (t+1, t+2...). This makes them non-causal and unsuitable for real-time trading without modification (e.g., using a one-sided variant).
                   </p>
                 </div>
               </div>
             )}
 
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Key Applications</h4>
+            <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-4">Key Applications</h4>
               <ul className="grid sm:grid-cols-2 gap-3">
                 {toolkitData[activeTab].applications.map((app: string, i: number) => (
-                  <li key={i} className="flex items-start bg-white p-3 rounded-lg text-sm border border-slate-100">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">{app}</span>
+                  <li key={i} className="flex items-start bg-white dark:bg-[#0A0D14] p-3 rounded-lg text-sm border border-slate-100 dark:border-slate-800">
+                    <CheckCircle2 className="h-5 w-5 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0" />
+                    <span className="text-slate-700 dark:text-slate-300">{app}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mt-6 bg-orange-50 p-6 rounded-2xl border border-orange-100">
+            <div className="mt-6 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-6 rounded-2xl border border-orange-100">
               <h4 className="text-lg font-bold mb-3 flex items-center text-orange-800">
                 <Filter className="h-5 w-5 mr-2" />The Critical Trade-off
               </h4>
@@ -344,27 +344,27 @@ export default function SignalNoiseFilteringGuide() {
             {/* Stage 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="inline-block p-3 bg-indigo-100 text-indigo-600 rounded-2xl mb-4">
+                <div className="inline-block p-3 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-2xl mb-4">
                   <Search className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-indigo-900 mb-2">Stage 1: Preprocessing &amp; Data Hygiene</h3>
-                <p className="text-lg font-medium text-indigo-600 mb-4">Garbage In, Garbage Out</p>
-                <p className="text-slate-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-indigo-900 mb-2 font-serif">Stage 1: Preprocessing &amp; Data Hygiene</h3>
+                <p className="text-lg font-medium text-[#A8672E] dark:text-[#D08F52] mb-4">Garbage In, Garbage Out</p>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   Before any sophisticated analysis, raw data must be cleaned. This involves detecting and handling outliers (bad ticks), dealing with missing values, and adjusting for corporate actions. Simple filters like rolling median or standard deviation bands are often used here to flag anomalies.
                 </p>
               </div>
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-2xl border border-indigo-100">
-                <ul className="space-y-3 text-slate-700">
+                <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-indigo-500 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] mr-3 flex-shrink-0 mt-0.5" />
                     <span>Outlier detection using rolling statistics</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-indigo-500 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] mr-3 flex-shrink-0 mt-0.5" />
                     <span>Missing data imputation</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-indigo-500 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] mr-3 flex-shrink-0 mt-0.5" />
                     <span>Corporate action adjustments</span>
                   </li>
                 </ul>
@@ -374,7 +374,7 @@ export default function SignalNoiseFilteringGuide() {
             {/* Stage 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="order-2 md:order-1 bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
-                <ul className="space-y-3 text-slate-700">
+                <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0 mt-0.5" />
                     <span>Dynamic beta estimation (Kalman filter)</span>
@@ -393,9 +393,9 @@ export default function SignalNoiseFilteringGuide() {
                 <div className="inline-block p-3 bg-purple-100 text-purple-600 rounded-2xl mb-4">
                   <Cpu className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-purple-900 mb-2">Stage 2: Feature Engineering</h3>
+                <h3 className="text-2xl font-bold text-purple-900 mb-2 font-serif">Stage 2: Feature Engineering</h3>
                 <p className="text-lg font-medium text-purple-600 mb-4">Transforming Data into Alpha Factors</p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   Here, filters transform raw price series into stationary, predictive features. For instance, a Kalman filter might output a dynamic beta, an HP filter might output a cycle indicator, and MAs might be combined to create momentum oscillators. These become inputs for trading rules or ML models.
                 </p>
               </div>
@@ -407,14 +407,14 @@ export default function SignalNoiseFilteringGuide() {
                 <div className="inline-block p-3 bg-pink-100 text-pink-600 rounded-2xl mb-4">
                   <Zap className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-pink-900 mb-2">Stage 3: Signal Generation &amp; Execution</h3>
+                <h3 className="text-2xl font-bold text-pink-900 mb-2 font-serif">Stage 3: Signal Generation &amp; Execution</h3>
                 <p className="text-lg font-medium text-pink-600 mb-4">From Factors to Trades</p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   Filters can also act as final gates for trading. A &ldquo;Regime Filter&rdquo; might use a long-term Moving Average to determine if the market is in a &ldquo;risk-on&rdquo; or &ldquo;risk-off&rdquo; state, enabling or disabling entire strategies based on the macro environment.
                 </p>
               </div>
               <div className="bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-2xl border border-pink-100">
-                <ul className="space-y-3 text-slate-700">
+                <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-pink-500 mr-3 flex-shrink-0 mt-0.5" />
                     <span>Regime classification filters</span>
@@ -443,7 +443,7 @@ export default function SignalNoiseFilteringGuide() {
                 <span className="px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyan-400 uppercase bg-cyan-950 rounded-full inline-block border border-cyan-800">
                   The New Frontier
                 </span>
-                <h3 className="text-3xl font-bold leading-tight text-white sm:text-4xl mt-4">
+                <h3 className="text-3xl font-bold leading-tight text-white sm:text-4xl mt-4 font-serif">
                   Synergy with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Machine Learning</span>
                 </h3>
                 <p className="mt-4 text-xl text-slate-400 max-w-2xl">
@@ -504,49 +504,49 @@ export default function SignalNoiseFilteringGuide() {
           <SubHeading id="section-takeaways">Key Takeaways</SubHeading>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
               <div className="bg-indigo-100 p-2 rounded-lg mr-4 shrink-0">
-                <Target className="w-5 h-5 text-indigo-600" />
+                <Target className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 mb-2">Goal-Oriented</h4>
-                <p className="text-slate-600 text-sm">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Goal-Oriented</h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
                   The choice of filter depends entirely on the goal: trend following needs different tools than mean reversion or high-frequency execution.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
               <div className="bg-indigo-100 p-2 rounded-lg mr-4 shrink-0">
-                <Scale className="w-5 h-5 text-indigo-600" />
+                <Scale className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 mb-2">The Inescapable Trade-off</h4>
-                <p className="text-slate-600 text-sm">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">The Inescapable Trade-off</h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
                   There is no free lunch. Every filter balances responsiveness (lag) against smoothness (noise reduction). You cannot maximize both simultaneously.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
               <div className="bg-indigo-100 p-2 rounded-lg mr-4 shrink-0">
-                <Layers className="w-5 h-5 text-indigo-600" />
+                <Layers className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 mb-2">Hybrid Future</h4>
-                <p className="text-slate-600 text-sm">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Hybrid Future</h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
                   The most effective modern systems combine the interpretability of classical filters with the non-linear predictive power of machine learning.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-indigo-100 flex items-start">
               <div className="bg-indigo-100 p-2 rounded-lg mr-4 shrink-0">
-                <AlertTriangle className="w-5 h-5 text-indigo-600" />
+                <AlertTriangle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 mb-2">Beware of Overfitting</h4>
-                <p className="text-slate-600 text-sm">
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Beware of Overfitting</h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
                   Complex filters (like deep learning) can easily &ldquo;memorize&rdquo; noise in historical data. Rigorous out-of-sample testing is essential.
                 </p>
               </div>
@@ -584,7 +584,7 @@ export default function SignalNoiseFilteringGuide() {
             The Kalman filter, while powerful, is actually a special case of a broader class of optimal filters developed by Norbert Wiener and Andrey Kolmogorov in the 1940s. The Wiener filter is designed to minimize the mean square error between the estimated and true signal, making it theoretically optimal for stationary processes.
           </p>
 
-          <div className="bg-blue-50 p-6 rounded-lg mb-6">
+          <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-lg mb-6">
             <h4 className="font-semibold text-blue-900 mb-3">Key Theoretical Results:</h4>
             <ul className="space-y-3 text-gray-800">
               <li><strong>Wiener-Hopf Equation:</strong> Provides the mathematical foundation for optimal linear filtering in the frequency domain.</li>
@@ -620,8 +620,8 @@ export default function SignalNoiseFilteringGuide() {
             Academic research has extensively tested filtering techniques in trading applications:
           </p>
 
-          <div className="bg-slate-50 p-6 rounded-lg mb-6 border border-slate-200">
-            <h4 className="font-semibold text-slate-900 mb-4">Notable Research Findings:</h4>
+          <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-lg mb-6 border border-slate-200 dark:border-slate-800">
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-4">Notable Research Findings:</h4>
             <ul className="space-y-4 text-gray-700">
               <li>
                 <strong>Brock, Lakonishok, and LeBaron (1992):</strong> Demonstrated that simple moving average crossover strategies generated significant excess returns in historical data, though profitability has declined with increased market efficiency.

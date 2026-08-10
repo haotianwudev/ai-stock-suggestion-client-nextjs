@@ -100,9 +100,9 @@ export default function BeyondBenchmarksETFAnalysis() {
     >
       <div className="max-w-4xl mx-auto px-4 text-gray-800">
         {/* Executive Summary */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <Target className="mr-3 h-6 w-6 text-blue-600" />
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+            <Target className="mr-3 h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
             Executive Summary
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -116,9 +116,9 @@ export default function BeyondBenchmarksETFAnalysis() {
         </div>
 
         {/* Interactive ETF Comparison */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <BarChart3 className="mr-3 h-6 w-6 text-green-600" />
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+            <BarChart3 className="mr-3 h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C]" />
             Interactive ETF Analysis
           </h2>
 
@@ -131,7 +131,7 @@ export default function BeyondBenchmarksETFAnalysis() {
                   onClick={() => setSelectedETF(etf.ticker)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     selectedETF === etf.ticker
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -150,16 +150,16 @@ export default function BeyondBenchmarksETFAnalysis() {
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{etf.name}</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 font-serif">{etf.name}</h3>
                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-2 ${
-                      etf.isBenchmark ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'
+                      etf.isBenchmark ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white' : 'bg-gray-200 text-gray-800'
                     }`}>
                       {etf.ticker}
                     </span>
                   </div>
                   <div className="text-right">
                     <div className={`text-3xl font-bold ${
-                      etf.return10yr?.startsWith('-') ? 'text-red-600' : 'text-green-600'
+                      etf.return10yr?.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'
                     }`}>
                       {etf.return10yr}
                     </div>
@@ -172,7 +172,7 @@ export default function BeyondBenchmarksETFAnalysis() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center">
                     <div className={`text-lg font-semibold ${
-                      etf.return5yr?.startsWith('-') ? 'text-red-600' : 'text-green-600'
+                      etf.return5yr?.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'
                     }`}>
                       {etf.return5yr}
                     </div>
@@ -197,9 +197,9 @@ export default function BeyondBenchmarksETFAnalysis() {
         </div>
 
         {/* Benchmark Analysis */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <Shield className="mr-3 h-6 w-6 text-blue-600" />
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+            <Shield className="mr-3 h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
             The Core Benchmarks: VOO vs QQQ
           </h2>
 
@@ -207,19 +207,19 @@ export default function BeyondBenchmarksETFAnalysis() {
             {benchmarkETFs.map((etf) => (
               <div key={etf.ticker} className="border border-gray-200 rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+                  <span className="bg-[#A8672E] dark:bg-[#D08F52] text-white text-sm font-semibold px-3 py-1 rounded-full">
                     {etf.ticker}
                   </span>
-                  <span className="text-2xl font-bold text-green-600">
+                  <span className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C]">
                     {etf.return10yr}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{etf.name}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 font-serif">{etf.name}</h3>
                 <p className="text-gray-700 mb-4">{etf.description}</p>
 
                 <div className="grid grid-cols-3 gap-4 text-center bg-gray-50 rounded-lg p-4">
                   <div>
-                    <div className="text-lg font-semibold text-green-600">{etf.return5yr}</div>
+                    <div className="text-lg font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">{etf.return5yr}</div>
                     <div className="text-xs text-gray-500">5-Yr Return</div>
                   </div>
                   <div>
@@ -237,9 +237,9 @@ export default function BeyondBenchmarksETFAnalysis() {
         </div>
 
         {/* High-Growth Alternatives */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <TrendingUp className="mr-3 h-6 w-6 text-green-600" />
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+            <TrendingUp className="mr-3 h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C]" />
             High-Growth Alternatives
           </h2>
 
@@ -251,18 +251,18 @@ export default function BeyondBenchmarksETFAnalysis() {
                     {etf.ticker}
                   </span>
                   <span className={`text-2xl font-bold ${
-                    etf.isVolatile ? 'text-red-600' : 'text-green-600'
+                    etf.isVolatile ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'
                   }`}>
                     {etf.return10yr}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{etf.name}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 font-serif">{etf.name}</h3>
                 <p className="text-gray-700 mb-4">{etf.description}</p>
 
                 <div className="grid grid-cols-3 gap-4 text-center bg-gray-50 rounded-lg p-4">
                   <div>
                     <div className={`text-lg font-semibold ${
-                      etf.return5yr?.startsWith('-') ? 'text-red-600' : 'text-green-600'
+                      etf.return5yr?.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'
                     }`}>
                       {etf.return5yr}
                     </div>
@@ -283,30 +283,30 @@ export default function BeyondBenchmarksETFAnalysis() {
         </div>
 
         {/* Risk Analysis */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <AlertTriangle className="mr-3 h-6 w-6 text-red-600" />
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+            <AlertTriangle className="mr-3 h-6 w-6 text-[#BC4128] dark:text-[#E2694A]" />
             Understanding the Risks
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Concentration Risk */}
             <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">1. Concentration Risk (VGT/XLK)</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">Concentration Risk (VGT/XLK)</h3>
               <p className="text-gray-700 mb-4">
                 These ETFs amplify the performance of the tech sector. While this has led to massive outperformance, it also means any downturn in tech will hit them far harder than the broader market.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>Top-Heavy:</strong> Both are dominated by a few mega-cap stocks, making you heavily dependent on their success.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>Factor Bet:</strong> You are implicitly betting that the &ldquo;growth&rdquo; factor will continue to outperform.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>No Diversification:</strong> Zero exposure to other critical sectors like Healthcare or Financials.</span>
                 </li>
               </ul>
@@ -314,21 +314,21 @@ export default function BeyondBenchmarksETFAnalysis() {
 
             {/* Narrative Risk */}
             <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-red-600 mb-4">2. Narrative & Valuation Risk (ARKK/ICLN)</h3>
+              <h3 className="text-xl font-semibold text-[#BC4128] dark:text-[#E2694A] mb-4 font-serif">Narrative & Valuation Risk (ARKK/ICLN)</h3>
               <p className="text-gray-700 mb-4">
                 These thematic funds are sold on a compelling story, not just on fundamentals. This creates unique and severe risks.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>Valuation Insensitivity:</strong> Often buy &ldquo;story stocks&rdquo; at any price, leading to extreme P/E ratios.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>Hype Cycle:</strong> Attract massive inflows after strong performance, forcing managers to buy at the top.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">&bull;</span>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] mr-2">&bull;</span>
                   <span><strong>Higher Fees:</strong> Actively managed funds charge significantly higher expense ratios.</span>
                 </li>
               </ul>
@@ -337,18 +337,18 @@ export default function BeyondBenchmarksETFAnalysis() {
         </div>
 
         {/* The Popularity Paradox */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">The Popularity Paradox &amp; Key Takeaways</h2>
+        <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 font-serif">The Popularity Paradox &amp; Key Takeaways</h2>
 
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Why VOO &amp; QQQ Remain Dominant</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">Why VOO &amp; QQQ Remain Dominant</h3>
             <p className="text-gray-700 mb-6">
               The immense popularity of VOO and QQQ isn&apos;t an accident. It&apos;s a rational choice based on their intended portfolio function, lower costs, and behavioral advantages.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
                   ✓
                 </div>
                 <div>
@@ -362,7 +362,7 @@ export default function BeyondBenchmarksETFAnalysis() {
               </div>
 
               <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
                   ✓
                 </div>
                 <div>
@@ -374,7 +374,7 @@ export default function BeyondBenchmarksETFAnalysis() {
               </div>
 
               <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] text-white rounded-full flex items-center justify-center font-bold text-sm mr-4 mt-1">
                   ✓
                 </div>
                 <div>
@@ -389,18 +389,18 @@ export default function BeyondBenchmarksETFAnalysis() {
 
           {/* Strategic Recommendations */}
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Strategic Recommendations</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">Strategic Recommendations</h3>
             <div className="space-y-3">
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">1</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">1</span>
                 <span className="text-gray-700"><strong>Reinforce the Core:</strong> Foundation should remain in low-cost, broad-market ETFs like VOO or QQQ.</span>
               </div>
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">2</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">2</span>
                 <span className="text-gray-700"><strong>Use Satellites Tactically:</strong> Use higher-growth funds like VGT as smaller &ldquo;satellite&rdquo; holdings, not core replacements.</span>
               </div>
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">3</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-sm mr-3 mt-1">3</span>
                 <span className="text-gray-700"><strong>Approach Thematics with Caution:</strong> Understand extreme risks and volatility before investing in funds like ARKK or ICLN.</span>
               </div>
             </div>

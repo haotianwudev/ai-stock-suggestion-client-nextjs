@@ -4,14 +4,14 @@ import { BrainCircuit, Briefcase, Play, Zap, Cpu, Search, Scale, TestTube, Chevr
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-  <span className="font-semibold text-blue-600">{children}</span>
+  <span className="font-semibold text-[#A8672E] dark:text-[#D08F52]">{children}</span>
 );
 
 export default function QuantWorkflowPage() {
   return (
     <ArticleFrame slug="anatomy-quant-fund-alpha-discovery-automated-execution">
-      <div className="max-w-5xl mx-auto px-4 text-slate-900">
-        <p className="text-xl text-slate-700 leading-relaxed mb-8">
+      <div className="max-w-5xl mx-auto px-4 text-slate-900 dark:text-slate-100">
+        <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
           An in-depth exploration of the systematic workflow that transforms complex data into market-neutral returns. Examines the four pillars of quantitative finance: alpha discovery through machine learning, portfolio construction with risk management, rigorous backtesting methodologies, and low-latency automated execution systems.
         </p>
 
@@ -49,8 +49,8 @@ const WorkflowSection = ({
       <div className="inline-block p-3 bg-blue-100 border border-blue-200 rounded-full mb-3">
         {icon}
       </div>
-      <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{title}</h2>
-      <p className="text-sm text-blue-600 font-semibold">{subtitle}</p>
+      <h2 className="text-2xl font-bold text-gray-900 tracking-tight font-serif">{title}</h2>
+      <p className="text-sm text-[#A8672E] dark:text-[#D08F52] font-semibold">{subtitle}</p>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {children}
@@ -68,10 +68,10 @@ const InfoCard = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-blue-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
+  <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-xl p-6 shadow-sm hover:border-blue-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
     <div className="flex items-center space-x-3 mb-4">
-      <div className="text-blue-600">{icon}</div>
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      <div className="text-[#A8672E] dark:text-[#D08F52]">{icon}</div>
+      <h3 className="text-lg font-semibold text-gray-900 font-serif">{title}</h3>
     </div>
     <div className="text-sm text-gray-600 leading-relaxed space-y-2 flex-grow">
       {children}
@@ -83,7 +83,7 @@ const InfoCard = ({
 const AlphaGenerationSection = () => (
   <WorkflowSection
     id="alpha"
-    icon={<BrainCircuit className="h-8 w-8 text-blue-600" />}
+    icon={<BrainCircuit className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
     title="Pillar I: Alpha Discovery & Research"
     subtitle="The Search for Predictive Signals"
   >
@@ -117,7 +117,7 @@ const AlphaGenerationSection = () => (
 const PortfolioConstructionSection = () => (
   <WorkflowSection
     id="portfolio"
-    icon={<Briefcase className="h-8 w-8 text-blue-600" />}
+    icon={<Briefcase className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
     title="Pillar II: Portfolio Construction & Risk Management"
     subtitle="Translating Signals into a Cohesive Strategy"
   >
@@ -151,7 +151,7 @@ const PortfolioConstructionSection = () => (
 const BacktestingSection = () => (
   <WorkflowSection
     id="backtesting"
-    icon={<TestTube className="h-8 w-8 text-blue-600" />}
+    icon={<TestTube className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
     title="Pillar III: Rigorous Historical Simulation"
     subtitle="Validating Strategy Performance Before Deployment"
   >
@@ -184,7 +184,7 @@ const BacktestingSection = () => (
 const ExecutionSection = () => (
   <WorkflowSection
     id="execution"
-    icon={<Play className="h-8 w-8 text-blue-600" />}
+    icon={<Play className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
     title="Pillar IV: Automated Execution"
     subtitle="Minimizing Costs and Market Impact"
   >
@@ -219,10 +219,10 @@ const TechnologyStackSection = () => (
   <section id="tech-stack" className="py-4">
     <div className="text-center mb-6">
       <div className="inline-block p-3 bg-blue-100 border border-blue-200 rounded-full mb-3">
-        <Code2 className="h-6 w-6 text-blue-600" />
+        <Code2 className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
       </div>
-      <h2 className="text-2xl font-bold text-gray-900 tracking-tight">The Technology Stack</h2>
-      <p className="text-sm text-blue-600 font-semibold">The Infrastructure Powering a Modern Quant Fund</p>
+      <h2 className="text-2xl font-bold text-gray-900 tracking-tight font-serif">The Technology Stack</h2>
+      <p className="text-sm text-[#A8672E] dark:text-[#D08F52] font-semibold">The Infrastructure Powering a Modern Quant Fund</p>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <TechCard title="Languages">
@@ -257,8 +257,8 @@ const TechnologyStackSection = () => (
 );
 
 const TechCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm flex flex-col">
-    <h3 className="font-bold text-gray-900 mb-2 text-center">{title}</h3>
+  <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg p-6 shadow-sm flex flex-col">
+    <h3 className="font-bold text-gray-900 mb-2 text-center font-serif">{title}</h3>
     <div>{children}</div>
   </div>
 );
@@ -267,7 +267,7 @@ const TechCard = ({ title, children }: { title: string; children: React.ReactNod
 const PerpetualChallengeSection = () => (
   <WorkflowSection
     id="challenge"
-    icon={<Infinity className="h-8 w-8 text-blue-600" />}
+    icon={<Infinity className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />}
     title="The Perpetual Challenge: Staying Ahead"
     subtitle="Sustaining an Edge in a Competitive Environment"
   >

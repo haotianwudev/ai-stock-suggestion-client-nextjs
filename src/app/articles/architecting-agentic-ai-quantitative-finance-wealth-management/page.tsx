@@ -49,7 +49,7 @@ export default function AgenticAIArchitectureArticle() {
             </p>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif flex items-center gap-3">
-              <LineChart className="text-indigo-500 w-8 h-8" />
+              <LineChart className="text-[#A8672E] dark:text-[#D08F52] w-8 h-8" />
               Quantitative Finance & Algorithmic Trading
             </h3>
             
@@ -80,7 +80,7 @@ export default function AgenticAIArchitectureArticle() {
             <div className="grid md:grid-cols-2 gap-8 mt-12">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 font-serif">
-                  <Briefcase className="text-teal-500 w-6 h-6" />
+                  <Briefcase className="text-[#A8672E] dark:text-[#D08F52] w-6 h-6" />
                   Wealth Management
                 </h3>
                 <ul className="space-y-6">
@@ -153,33 +153,33 @@ export default function AgenticAIArchitectureArticle() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
-                <Layers className="w-10 h-10 text-emerald-500 mb-4" />
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
+                <Layers className="w-10 h-10 text-[#1D8A70] dark:text-[#3CBF9C] mb-4" />
                 <h3 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4 font-serif">Decoupling Logic & Modularizing</h3>
                 <p className="text-indigo-800 dark:text-indigo-200 mb-4 leading-relaxed">
                   Monolithic prompts exhaust context windows, causing reasoning drift and hallucinations. The industry best practice is a strict shift toward <strong>explicit task-decoupling</strong>.
                 </p>
                 <ul className="space-y-3 text-indigo-800 dark:text-indigo-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" /> 
                     Cognitive logic is separated from tool execution infrastructure.
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" /> 
                     Skills are discrete, pluggable modules registered in a central tool registry.
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" /> 
                     Tools filter and return compressed JSON to maximize token efficiency.
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                    <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" /> 
                     Namespaces define boundaries to prevent overlapping tool capabilities.
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-200 dark:border-indigo-800/50">
                 <AlertOctagon className="w-10 h-10 text-amber-500 mb-4" />
                 <h3 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4 font-serif">Security & Guardrails</h3>
                 <p className="text-indigo-800 dark:text-indigo-200 mb-4 leading-relaxed">
@@ -244,7 +244,7 @@ export default function AgenticAIArchitectureArticle() {
             <div className="grid md:grid-cols-2 gap-12 mt-12">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 font-serif">
-                  <GitMerge className="text-indigo-500 w-6 h-6" /> 
+                  <GitMerge className="text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> 
                   Resolving Conflict & State
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -262,7 +262,7 @@ export default function AgenticAIArchitectureArticle() {
 
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 font-serif">
-                  <Users className="text-teal-500 w-6 h-6" /> 
+                  <Users className="text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> 
                   Human-in-the-Loop (HITL)
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -293,7 +293,7 @@ export default function AgenticAIArchitectureArticle() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Code className="text-blue-500 w-5 h-5" /> Python Libraries
+                  <Code className="text-[#A8672E] dark:text-[#D08F52] w-5 h-5" /> Python Libraries
                 </h3>
                 <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                   <li><strong className="text-slate-900 dark:text-white">QuantLib:</strong> Industry standard for pricing derivatives, fixed-income analysis, and yield curves.</li>
@@ -317,7 +317,7 @@ export default function AgenticAIArchitectureArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Database className="text-emerald-500 w-5 h-5" /> Model Context Protocol (MCP)
+                  <Database className="text-[#1D8A70] dark:text-[#3CBF9C] w-5 h-5" /> Model Context Protocol (MCP)
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                   The "USB-C of AI." An open standard by Anthropic using a JSON-RPC 2.0 transport layer. It provides a universal language for LLMs to securely communicate with external telemetry.
@@ -329,7 +329,7 @@ export default function AgenticAIArchitectureArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Zap className="text-rose-500 w-5 h-5" /> Live Market APIs & FIX
+                  <Zap className="text-[#BC4128] dark:text-[#E2694A] w-5 h-5" /> Live Market APIs & FIX
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                   <strong className="text-slate-900 dark:text-white">Alpaca:</strong> Modern REST/WebSocket APIs for algorithmic testing, margin management, and crypto trading.

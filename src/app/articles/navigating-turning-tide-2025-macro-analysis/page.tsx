@@ -7,7 +7,7 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 const SectionTitle = ({ icon, children }: { icon: React.ComponentType<{ className?: string }>; children: React.ReactNode }) => {
   const Icon = icon;
   return (
-    <h2 className="text-3xl font-bold text-slate-800 flex items-center mb-6">
+    <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 flex items-center mb-6 font-serif">
       <Icon className="w-8 h-8 mr-4 text-sky-500" />
       {children}
     </h2>
@@ -23,16 +23,16 @@ const StatCard = ({ title, value, change, icon, changeType }: {
   changeType: 'gain' | 'loss';
 }) => {
   const Icon = icon;
-  const changeColor = changeType === 'gain' ? 'text-emerald-500' : 'text-red-500';
+  const changeColor = changeType === 'gain' ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]';
   const ChangeIcon = changeType === 'gain' ? ArrowUpRight : ArrowDownRight;
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-200 flex-1 min-w-[280px]">
+    <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 flex-1 min-w-[280px]">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-500">{title}</p>
         <Icon className="w-6 h-6 text-slate-400" />
       </div>
-      <p className="text-3xl font-bold text-slate-800 mt-2">{value}</p>
+      <p className="text-3xl font-bold text-slate-800 dark:text-slate-200 mt-2">{value}</p>
       <div className="flex items-center mt-1">
         <ChangeIcon className={`w-4 h-4 ${changeColor}`} />
         <p className={`text-sm font-semibold ml-1 ${changeColor}`}>{change}</p>
@@ -43,12 +43,12 @@ const StatCard = ({ title, value, change, icon, changeType }: {
 
 // Component for the main table in the report
 const AnalysisTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
-  <div className="overflow-x-auto bg-white rounded-xl shadow-md border border-slate-200">
+  <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-xl shadow-md border border-slate-200 dark:border-slate-800">
     <table className="w-full text-left">
-      <thead className="bg-slate-50">
+      <thead className="bg-slate-50 dark:bg-[#14171B]">
         <tr>
           {headers.map((header, index) => (
-            <th key={index} className="p-4 text-sm font-semibold text-slate-600 uppercase tracking-wider">
+            <th key={index} className="p-4 text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
               {header}
             </th>
           ))}
@@ -56,9 +56,9 @@ const AnalysisTable = ({ headers, data }: { headers: string[]; data: string[][] 
       </thead>
       <tbody className="divide-y divide-slate-200">
         {data.map((row, rowIndex) => (
-          <tr key={rowIndex} className="hover:bg-slate-50 transition-colors">
+          <tr key={rowIndex} className="hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
             {row.map((cell, cellIndex) => (
-              <td key={cellIndex} className="p-4 text-slate-700 whitespace-nowrap">
+              <td key={cellIndex} className="p-4 text-slate-700 dark:text-slate-300 whitespace-nowrap">
                 {cell}
               </td>
             ))}
@@ -102,8 +102,8 @@ export default function Page() {
       slug="navigating-turning-tide-2025-macro-analysis"
       additionalDisclaimer="Macroeconomic analysis involves significant uncertainty, and past performance does not guarantee future results. Currency and equity markets can be highly volatile."
     >
-      <div className="max-w-5xl mx-auto px-4 text-slate-700">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+      <div className="max-w-5xl mx-auto px-4 text-slate-700 dark:text-slate-300">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           An in-depth look at the 2025 Dollar decline, U.S. equity resilience, and the emergence of a new macroeconomic paradigm driven by domestic policy.
         </p>
 
@@ -127,12 +127,12 @@ export default function Page() {
 
         {/* Executive Summary Section */}
         <section className="mb-16">
-          <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
-            <h2 className="text-3xl font-bold text-slate-800 flex items-center mb-4">
+          <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800">
+            <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 flex items-center mb-4 font-serif">
               <FileText className="w-8 h-8 mr-4 text-sky-500" />
               Executive Summary
             </h2>
-            <div className="space-y-4 text-slate-600">
+            <div className="space-y-4 text-slate-600 dark:text-slate-400">
               <p>
                 The first eight months of 2025 marked a historic inflection point for the U.S. Dollar, concluding a 15-year bull cycle with one of its most precipitous declines in over half a century. The depreciation was a culmination of a Federal Reserve policy pivot, a cooling domestic economy, and a surge in policy uncertainty following a new administration&apos;s aggressive tariff agenda.
               </p>
@@ -151,17 +151,17 @@ export default function Page() {
           <SectionTitle icon={BarChart3}>The 2025 Dollar Downturn: A Multi-Factor Analysis</SectionTitle>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-slate-700">The Catalyst: Tariff Policy and Geopolitical Risk</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">The Catalyst: Tariff Policy and Geopolitical Risk</h3>
               <p>
                 The pivotal shift against the U.S. Dollar can be traced directly to April 2025, coinciding with the new Trump administration&apos;s announcements of an aggressive tariff agenda. The proposed tariffs&mdash;up to 60% on goods from China and 20% on all other imports&mdash;were perceived as a significant threat to global supply chains and U.S. growth, injecting high uncertainty into markets.
               </p>
 
-              <h3 className="text-xl font-semibold text-slate-700">The Enabler: A Pivoting Federal Reserve</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">The Enabler: A Pivoting Federal Reserve</h3>
               <p>
                 A concurrent shift in the Federal Reserve&apos;s monetary policy framework created permissive conditions for a sustained dollar decline. The Fed&apos;s revised &ldquo;Statement on Longer-Run Goals&rdquo; provided more flexibility to cut rates preemptively, validating market expectations for a significant easing cycle and reducing the appeal of holding dollar-denominated assets.
               </p>
 
-              <h3 className="text-xl font-semibold text-slate-700">The Confirmation: Cooling Economic Data</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">The Confirmation: Cooling Economic Data</h3>
               <p>
                 A steady stream of cooling macroeconomic data&mdash;including decelerating job creation, moderating inflation, and a mixed GDP picture&mdash;provided the confirmation required to sustain the dollar&apos;s bearish momentum. For equities, this &ldquo;bad news&rdquo; was &ldquo;good news,&rdquo; reinforcing the certainty of forthcoming rate cuts.
               </p>
@@ -186,17 +186,17 @@ export default function Page() {
               />
             </div>
             <div className="order-1 lg:order-2 space-y-4">
-              <h3 className="text-xl font-semibold text-slate-700">An Index at All-Time Highs</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">An Index at All-Time Highs</h3>
               <p>
                 Despite the turmoil, the S&amp;P 500 posted a strong year-to-date gain of 9.84%, charting a course to new all-time highs. A powerful summer rally carried the index past 6,500 by late August, demonstrating remarkable strength.
               </p>
 
-              <h3 className="text-xl font-semibold text-slate-700">A Broadening Rally: Beyond the Magnificent Seven</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">A Broadening Rally: Beyond the Magnificent Seven</h3>
               <p>
                 A critical, healthy development was the shift in leadership away from the &ldquo;Magnificent Seven.&rdquo; The rally broadened to include diverse sectors like Industrials and Materials, with strong performers like GE Vernova (+100.7%) and Palantir (+109.4%), indicating a more sustainable foundation for the bull market.
               </p>
 
-              <h3 className="text-xl font-semibold text-slate-700">A Clear Inverse Correlation</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">A Clear Inverse Correlation</h3>
               <p>
                 The period exhibited a textbook inverse correlation: the DXY&apos;s 9.83% decline almost perfectly mirrored the S&amp;P 500&apos;s 9.84% gain. Anticipated Fed cuts boosted equity valuations while simultaneously weakening the dollar, which in turn provided an earnings tailwind for multinationals.
               </p>
@@ -208,23 +208,23 @@ export default function Page() {
         <section className="mb-16">
           <SectionTitle icon={Scale}>The Currency Conundrum: Integrating FX into Equity Analysis</SectionTitle>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
               <Briefcase className="w-8 h-8 text-sky-500 mb-3" />
-              <h4 className="font-bold text-lg text-slate-800 mb-2">Earnings Tailwind</h4>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Earnings Tailwind</h4>
               <p>
                 A weak dollar directly boosts the reported earnings of U.S. multinationals as foreign profits translate into more dollars, supporting higher equity valuations.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
               <Globe className="w-8 h-8 text-sky-500 mb-3" />
-              <h4 className="font-bold text-lg text-slate-800 mb-2">Competitiveness Edge</h4>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">Competitiveness Edge</h4>
               <p>
                 U.S. exports become cheaper for foreign buyers, boosting sales and market share. However, import-reliant firms face higher costs and margin pressure.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
               <Settings className="w-8 h-8 text-sky-500 mb-3" />
-              <h4 className="font-bold text-lg text-slate-800 mb-2">FX-Aware Framework</h4>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">FX-Aware Framework</h4>
               <p>
                 Investors must analyze geographic revenue, supply chains, and hedging strategies to assess a company&apos;s true currency exposure and select stocks accordingly.
               </p>
@@ -238,17 +238,17 @@ export default function Page() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-slate-700">The Dollar&apos;s Counterintuitive History</h3>
+                <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">The Dollar&apos;s Counterintuitive History</h3>
                 <p>
                   Historically, the dollar shows a &ldquo;modest bullish trend&rdquo; around rate cuts, gaining an average of 3% before and 2% after the first cut. This is because easing cycles often occur during global stress, when the dollar acts as a safe-haven asset, attracting capital inflows.
                 </p>
 
-                <h3 className="text-xl font-semibold text-slate-700">Equities: A More Consistent Tale</h3>
+                <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">Equities: A More Consistent Tale</h3>
                 <p>
                   The S&amp;P 500 aligns with history, which shows an average return of +14.1% in the 12 months after a first rate cut. However, outcomes depend heavily on whether the cuts lead to a &ldquo;soft landing&rdquo; or fail to avert a recession.
                 </p>
 
-                <h3 className="text-xl font-semibold text-slate-700">The 2025 Divergence</h3>
+                <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">The 2025 Divergence</h3>
                 <p>
                   The key difference in 2025 is the *source* of economic risk. The risk was domestically generated by trade policy uncertainty, not an external shock. This undermined confidence in the U.S. trajectory, repelling capital and causing the dollar to weaken, in stark contrast to its historical safe-haven role.
                 </p>
@@ -268,12 +268,12 @@ export default function Page() {
           <SectionTitle icon={Target}>Synthesis and Strategic Outlook</SectionTitle>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-slate-700">Reconciling 2025 with History</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">Reconciling 2025 with History</h3>
               <p>
                 The core thesis is that the dollar&apos;s anomalous behavior was driven by self-generated U.S. policy risk. The market priced in rate cuts as a reaction to potential damage from protectionist trade policies, inverting the dollar&apos;s typical safe-haven response.
               </p>
 
-              <h3 className="text-xl font-semibold text-slate-700">Key Signposts to Watch</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">Key Signposts to Watch</h3>
               <ul className="list-disc list-inside space-y-2">
                 <li><strong>Inflation Persistence:</strong> Stubborn core inflation could limit the Fed&apos;s ability to cut rates.</li>
                 <li><strong>Labor Market Resilience:</strong> A continued softening supports a &ldquo;soft landing&rdquo; narrative.</li>
@@ -282,7 +282,7 @@ export default function Page() {
               </ul>
             </div>
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-slate-700">Portfolio &amp; Risk Management</h3>
+              <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-serif">Portfolio &amp; Risk Management</h3>
               <ul className="list-disc list-inside space-y-2">
                 <li><strong>Geographic Allocation:</strong> Consider unhedged international investments for currency tailwinds.</li>
                 <li><strong>FX-Aware U.S. Equity Selection:</strong> Overweight multinational exporters, underweight import-reliant firms.</li>

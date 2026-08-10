@@ -5,20 +5,20 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Sub-components
 const ConceptCard = ({ icon, title, description }) => (
-  <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1 border border-gray-200">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1 border border-gray-200">
     <div className="flex items-center justify-center mb-4 bg-blue-100 w-16 h-16 rounded-full mx-auto">
       {icon}
     </div>
-    <h3 className="text-xl font-semibold text-center text-gray-900 mb-2">{title}</h3>
+    <h3 className="text-xl font-semibold text-center text-gray-900 mb-2 font-serif">{title}</h3>
     <p className="text-gray-600 text-center">{description}</p>
   </div>
 );
 
 const GreekCard = ({ greek, title, analogy, description, icon }) => (
-  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
     <div className="flex items-center mb-3">
       {icon}
-      <h3 className="text-2xl font-bold text-gray-900 ml-3">{greek} - {title}</h3>
+      <h3 className="text-2xl font-bold text-gray-900 ml-3 font-serif">{greek} - {title}</h3>
     </div>
     <p className="text-sky-600 italic mb-3">Analogy: &ldquo;{analogy}&rdquo;</p>
     <p className="text-gray-600 leading-relaxed">{description}</p>
@@ -26,13 +26,13 @@ const GreekCard = ({ greek, title, analogy, description, icon }) => (
 );
 
 const StrategyPillar = ({ icon, title, points }) => (
-  <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
+  <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-xl shadow-md border border-gray-200">
     {icon}
-    <h3 className="text-2xl font-bold text-center text-gray-900 mb-4">{title}</h3>
+    <h3 className="text-2xl font-bold text-center text-gray-900 mb-4 font-serif">{title}</h3>
     <ul className="space-y-3 text-gray-700">
       {points.map((point, index) => (
         <li key={index} className="flex items-start">
-          <span className="text-blue-500 font-bold mr-3 mt-1">▸</span>
+          <span className="text-[#A8672E] dark:text-[#D08F52] font-bold mr-3 mt-1">▸</span>
           <span>{point}</span>
         </li>
       ))}
@@ -41,15 +41,15 @@ const StrategyPillar = ({ icon, title, points }) => (
 );
 
 const ExampleCard = ({ title, scenario, actions, outcome }) => (
-  <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
-    <h3 className="text-2xl font-bold mb-3 text-blue-700">{title}</h3>
+  <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-xl shadow-md border border-gray-200">
+    <h3 className="text-2xl font-bold mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">{title}</h3>
     <p className="text-gray-600 mb-4">{scenario}</p>
     <div className="mb-4">
       <h4 className="font-semibold text-gray-800 mb-2">Actions Taken:</h4>
       <ul className="space-y-2">
         {actions.map((action, i) => (
           <li key={i} className="flex items-start text-gray-700">
-            <span className="text-green-500 mr-2 mt-1">✓</span>
+            <span className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2 mt-1">✓</span>
             {action}
           </li>
         ))}
@@ -57,14 +57,14 @@ const ExampleCard = ({ title, scenario, actions, outcome }) => (
     </div>
     <div>
       <h4 className="font-semibold text-gray-800 mb-2">Result & Lesson:</h4>
-      <p className="text-gray-700 bg-blue-50 p-4 rounded-lg border border-blue-200">{outcome}</p>
+      <p className="text-gray-700 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-blue-200">{outcome}</p>
     </div>
   </div>
 );
 
 const FAQItem = ({ question, answer }) => (
-  <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
-    <h3 className="text-lg font-semibold text-gray-900 mb-2">{question}</h3>
+  <div className="bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 p-5 shadow-sm">
+    <h3 className="text-lg font-semibold text-gray-900 mb-2 font-serif">{question}</h3>
     <p className="text-gray-600 leading-relaxed">{answer}</p>
   </div>
 );
@@ -82,39 +82,39 @@ export default function ProfitingIronCondorOptionspremiumContent() {
       {/* Core Concepts Section */}
       <section id="concepts" className="mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">The Essence of the Iron Condor</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif">The Essence of the Iron Condor</h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
             Key ideas from &ldquo;Profiting with Iron Condor Options&rdquo; by Michael Hanania Benklifa.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ConceptCard
-            icon={<Target className="w-10 h-10 text-blue-600" />}
+            icon={<Target className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="Market Neutrality"
             description="Creates a 'zone of profit'. As long as the underlying security stays within a specific price range, the trade is profitable. You don't need to guess the market's direction."
           />
           <ConceptCard
-            icon={<BrainCircuit className="w-10 h-10 text-blue-600" />}
+            icon={<BrainCircuit className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="Trade the 'Math'"
             description="Company fundamentals, news, and opinions are irrelevant. Success comes from managing quantifiable factors (the Greeks), especially time decay and volatility."
           />
           <ConceptCard
-            icon={<Clock className="w-10 h-10 text-blue-600" />}
+            icon={<Clock className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="The Seller's Edge"
             description="An option buyer must be right about Direction, Distance, AND Time. The seller only needs to be right about one thing: Time. Time decay is a constant tailwind."
           />
           <ConceptCard
-            icon={<Shield className="w-10 h-10 text-blue-600" />}
+            icon={<Shield className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="Capital Preservation First"
             description="While offering high potential returns, condors are high-risk. The #1 priority is preserving capital. This means having a disciplined exit strategy for both wins and losses."
           />
           <ConceptCard
-            icon={<BookOpen className="w-10 h-10 text-blue-600" />}
+            icon={<BookOpen className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="Liquidity is Crucial"
             description="Trade highly liquid instruments like the SPX, RUT, and NDX. Liquidity ensures you can enter, exit, and adjust trades easily without wide bid-ask spreads hurting your profits."
           />
           <ConceptCard
-            icon={<AlertTriangle className="w-10 h-10 text-blue-600" />}
+            icon={<AlertTriangle className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52]" />}
             title="Counter-Intuitive Trading"
             description="In options, the trade with a worse-looking risk-to-reward ratio can often be the better choice. Logical-sounding premises can be traps; the math reveals the true edge."
           />
@@ -124,7 +124,7 @@ export default function ProfitingIronCondorOptionspremiumContent() {
       {/* The Greeks Section */}
       <section id="greeks" className="mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Mastering the &lsquo;Greeks&rsquo;</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif">Mastering the &lsquo;Greeks&rsquo;</h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
             These are the quantified forces you must manage. Once in a trade, you care only about the math.
           </p>
@@ -135,14 +135,14 @@ export default function ProfitingIronCondorOptionspremiumContent() {
             title="Time Decay"
             analogy="The Melting Ice Cube"
             description="The amount of value an option loses each day. This is the primary profit engine for a condor seller. It decays slowly at first but accelerates dramatically in the last 30-45 days. Your goal is to sell expensive time and buy it back cheap."
-            icon={<Clock className="w-8 h-8 text-green-600" />}
+            icon={<Clock className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C]" />}
           />
           <GreekCard
             greek="Delta (Δ)"
             title="Price Sensitivity & Probability"
             analogy="The Market's Best Guess"
             description="Shows how much an option's price will change per $1 move in the underlying. A Delta of 10 also implies roughly a 10% chance of the option finishing in-the-money. Aiming for low Delta strikes (e.g., 10 or less) is a core condor strategy."
-            icon={<TrendingUp className="w-8 h-8 text-blue-600" />}
+            icon={<TrendingUp className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />}
           />
           <GreekCard
             greek="Gamma (Γ)"
@@ -156,7 +156,7 @@ export default function ProfitingIronCondorOptionspremiumContent() {
             title="Volatility 'Fear' Premium"
             analogy="The Price of Uncertainty"
             description="Measures sensitivity to changes in Implied Volatility (IV). High IV means expensive options. A key strategy is to sell condors when IV is high (e.g., during a market panic) and profit as it reverts to the mean ('volatility crush')."
-            icon={<Wind className="w-8 h-8 text-red-600" />}
+            icon={<Wind className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />}
           />
         </div>
       </section>
@@ -164,14 +164,14 @@ export default function ProfitingIronCondorOptionspremiumContent() {
       {/* Strategic Planning Section */}
       <section id="strategy" className="mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">The 3 Pillars of a Winning Strategy</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif">The 3 Pillars of a Winning Strategy</h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
             &ldquo;Successful trading is all about having a plan. Without a plan you become victim to the two killers of all trading, greed and fear.&rdquo;
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           <StrategyPillar
-            icon={<TrendingUp className="text-green-600 w-12 h-12 mx-auto mb-4" />}
+            icon={<TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C] w-12 h-12 mx-auto mb-4" />}
             title="1. Disciplined Entry"
             points={[
               "Prioritize: 1. Price (credit received), 2. Position (strike distance), 3. Time (to expiration).",
@@ -191,7 +191,7 @@ export default function ProfitingIronCondorOptionspremiumContent() {
             ]}
           />
           <StrategyPillar
-            icon={<TrendingDown className="text-red-600 w-12 h-12 mx-auto mb-4" />}
+            icon={<TrendingDown className="text-[#BC4128] dark:text-[#E2694A] w-12 h-12 mx-auto mb-4" />}
             title="3. Impatient Exit"
             points={[
               "The Most Critical Pillar: 'What separates the winners from the losers is the exit strategy.'",
@@ -206,7 +206,7 @@ export default function ProfitingIronCondorOptionspremiumContent() {
       {/* Practical Examples Section */}
       <section id="examples" className="mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">From the Frontline: Trade Examples</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif">From the Frontline: Trade Examples</h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
             Applying the theory in real-world market conditions.
           </p>
@@ -237,7 +237,7 @@ export default function ProfitingIronCondorOptionspremiumContent() {
 
       {/* FAQ Section */}
       <section id="faq">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 font-serif">Frequently Asked Questions</h2>
         <div className="space-y-6">
           <FAQItem
             question="What are the best instruments for Iron Condors?"

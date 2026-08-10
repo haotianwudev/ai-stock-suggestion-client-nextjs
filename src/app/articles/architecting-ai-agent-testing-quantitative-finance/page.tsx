@@ -93,7 +93,7 @@ export default function ArchitectingAIAgentTesting() {
                 A critical consideration unique to quantitative finance is the dimension of time. Financial time-series analysis is highly susceptible to <strong>look-ahead bias</strong>—inadvertently accessing future market data to make current predictions.
               </p>
               <p>
-                Testing environments must utilize time-mocking libraries like <code className="bg-white/50 dark:bg-black/20 px-2 py-1 rounded">freezegun</code> or <code className="bg-white/50 dark:bg-black/20 px-2 py-1 rounded">time-machine</code> to freeze the system clock to a historical date, ensuring historical queries remain temporally isolated. <em>Note: When using parallel runners like pytest-xdist, these fixtures must be applied explicitly within the test body to prevent non-deterministic node ID generation.</em>
+                Testing environments must utilize time-mocking libraries like <code className="bg-white dark:bg-[#0A0D14]/50 dark:bg-black/20 px-2 py-1 rounded">freezegun</code> or <code className="bg-white dark:bg-[#0A0D14]/50 dark:bg-black/20 px-2 py-1 rounded">time-machine</code> to freeze the system clock to a historical date, ensuring historical queries remain temporally isolated. <em>Note: When using parallel runners like pytest-xdist, these fixtures must be applied explicitly within the test body to prevent non-deterministic node ID generation.</em>
               </p>
             </div>
           </div>

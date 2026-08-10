@@ -195,28 +195,28 @@ export default function StrategicOptionsUtilizationRisk() {
               <div className="flex gap-3">
                 <Shield className="text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" size={20} />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Hedging Risk</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white font-serif">Hedging Risk</h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-1">Protect existing positions from adverse price movements using Protective Puts.</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <DollarSign className="text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" size={20} />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Income Generation</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white font-serif">Income Generation</h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-1">Sell Covered Calls or Cash-Secured Puts to extract yield from stagnant assets.</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" size={20} />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Speculation with Leverage</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white font-serif">Speculation with Leverage</h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-1">Control larger positions with less capital (LEAPS) for defined risk exposure.</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <Activity className="text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" size={20} />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Volatility Betting</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white font-serif">Volatility Betting</h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-1">Profit from the magnitude of movement (or lack thereof) rather than just direction.</p>
                 </div>
               </div>
@@ -394,25 +394,25 @@ export default function StrategicOptionsUtilizationRisk() {
             </div>
             <div className="md:w-2/3 grid sm:grid-cols-2 gap-6">
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2 font-serif">
                   <Layers size={18} className="text-[#BC4128] dark:text-[#E2694A]" /> Liquidity Traps
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Wide bid-ask spreads in illiquid options act as an instant tax. If spread &gt; 1-2% of price, you start with a mathematical disadvantage that is hard to overcome.</p>
               </div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2 font-serif">
                   <Clock size={18} className="text-[#BC4128] dark:text-[#E2694A]" /> IV Crush
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Buying options before binary events (earnings) is dangerous. Even if you predict the direction right, the drop in volatility can crush the option&apos;s value.</p>
               </div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2 font-serif">
                   <MousePointerClick size={18} className="text-[#BC4128] dark:text-[#E2694A]" /> The 0DTE Addiction
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Zero Days to Expiration trading triggers dopamine loops similar to gambling. Extreme Gamma risk can wipe out accounts in minutes.</p>
               </div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2 font-serif">
                   <Target size={18} className="text-[#BC4128] dark:text-[#E2694A]" /> Wash Sale Rules
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Trading similar options within 30 days of a loss can disallow the tax deduction, leading to massive tax bills on phantom profits.</p>

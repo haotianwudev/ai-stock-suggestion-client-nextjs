@@ -71,8 +71,8 @@ interface InsightPillProps {
 
 const InsightPill = ({ label, value, trend = 'neutral' }: InsightPillProps) => {
   const colors = {
-    up: 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50',
-    down: 'text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/50',
+    up: 'text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50',
+    down: 'text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/50',
     neutral: 'text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800',
   };
 
@@ -154,7 +154,7 @@ export default function Form13FMicrostructureArticle() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 min-w-0">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center justify-between">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center justify-between font-serif">
                   <span>Intraday Volatility &amp; Volume Spike (T=0)</span>
                 </h3>
                 <div className="h-72 w-full min-w-0">
@@ -219,7 +219,7 @@ export default function Form13FMicrostructureArticle() {
                   Active managers monitor peers. Digital footprint analysis on EDGAR servers proves that viewing a
                   competitor's 13F increases the likelihood of replicating their trades by 50%.
                 </p>
-                <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-6 min-w-0">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-6 min-w-0">
                   <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-3 flex items-center gap-2">
                     <ShieldAlert className="w-5 h-5" />
                     The Originator's Tax
@@ -234,7 +234,7 @@ export default function Form13FMicrostructureArticle() {
 
               <div className="col-span-1 lg:col-span-2 min-w-0">
                 <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 h-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-8">Annualized Alpha by Copycat Strategy</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-8 font-serif">Annualized Alpha by Copycat Strategy</h3>
                   <div className="h-64 w-full min-w-0">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={copycatPerformanceData} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
@@ -269,7 +269,7 @@ export default function Form13FMicrostructureArticle() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
               <div className="space-y-6 min-w-0">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Confidential Treatment &amp; Restatements</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">Confidential Treatment &amp; Restatements</h3>
                 <div className="prose prose-lg text-slate-600 dark:text-slate-400 max-w-none">
                   <p>
                     To combat front-running, managers utilize Confidential Treatment Requests (CTRs) to hide ongoing
@@ -304,15 +304,15 @@ export default function Form13FMicrostructureArticle() {
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50">
                       {berkshireChubbData.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/20">
+                        <tr key={idx} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/20">
                           <td className="px-6 py-4 font-medium text-slate-900 dark:text-slate-300">{row.quarter}</td>
                           <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{row.shares || '—'}</td>
                           <td className="px-6 py-4">
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                              row.status.includes('Confidential') ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400' :
+                              row.status.includes('Confidential') ? 'bg-slate-100 text-slate-600 dark:text-slate-400 dark:bg-slate-800 dark:text-slate-400' :
                               row.status.includes('Reveal') ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300' :
                               row.status.includes('Aggressive') ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' :
-                              'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+                              'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] dark:bg-indigo-900/40 dark:text-indigo-300'
                             }`}>
                               {row.status}
                             </span>

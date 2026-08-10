@@ -12,8 +12,8 @@ export default function FooledByRandomnesspremiumContent() {
       <div className="space-y-12">
 
         {/* Introduction */}
-        <section className="bg-white rounded-2xl p-8 shadow-sm border">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">The Central Idea: We Are Blind to Luck</h2>
+        <section className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">The Central Idea: We Are Blind to Luck</h2>
           <p className="text-gray-600 leading-relaxed">
             &ldquo;Fooled by Randomness&rdquo; argues that we consistently underestimate the role of chance in our lives. We are wired to find patterns, create narratives, and attribute success to skill, while dismissing failure as bad luck. Taleb calls those who benefit from a disproportionate share of luck but attribute it to their own genius the <strong className="text-purple-600">&ldquo;lucky fools&rdquo;</strong>. This blindness has profound consequences, especially in fields like finance where randomness reigns supreme.
           </p>
@@ -25,9 +25,9 @@ export default function FooledByRandomnesspremiumContent() {
             <div className="bg-pink-500/10 text-pink-600 p-3 rounded-xl mr-4">
               <User className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-gray-900">The Lucky Fool</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif">The Lucky Fool</h3>
           </div>
-          <div className="bg-white rounded-2xl p-8 shadow-sm border space-y-4">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border space-y-4">
             <p className="text-gray-600 leading-relaxed">
               Taleb illustrates this with two characters: the trader <strong className="text-gray-900">Nero Tulip</strong>, who is deeply aware of randomness and builds a conservative career designed to survive it, and his neighbor <strong className="text-gray-900">John</strong>, a high-flying trader who gets rich by taking hidden, catastrophic risks. For years, John looks like a genius and Nero a failure. John&apos;s wealth, cars, and lifestyle are a constant testament to his apparent skill.
             </p>
@@ -49,9 +49,9 @@ export default function FooledByRandomnesspremiumContent() {
             <div className="bg-purple-500/10 text-purple-600 p-3 rounded-xl mr-4">
               <TrendingUp className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-gray-900">The Cemetery of Silent Evidence</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif">The Cemetery of Silent Evidence</h3>
           </div>
-          <div className="bg-white rounded-2xl p-8 shadow-sm border space-y-4">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border space-y-4">
             <p className="text-gray-600 leading-relaxed">
               Why do we mistake the lucky for the skilled? Because of <strong className="text-gray-900">survivorship bias</strong>. We only see the winners. The thousands of traders, entrepreneurs, and actors who failed have vanished. Their stories are not told. We look at billionaires and assume they have a secret formula, forgetting the thousands of others who followed the same formula and went bust.
             </p>
@@ -70,19 +70,19 @@ export default function FooledByRandomnesspremiumContent() {
         {/* Core Concept 3: Skewness */}
         <section>
           <div className="flex items-center mb-6">
-            <div className="bg-emerald-500/10 text-emerald-600 p-3 rounded-xl mr-4">
+            <div className="bg-[#1D8A70] dark:bg-[#3CBF9C]/10 text-[#1D8A70] dark:text-[#3CBF9C] p-3 rounded-xl mr-4">
               <Target className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-gray-900">Skewness: The Payoff Matters, Not the Frequency</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif">Skewness: The Payoff Matters, Not the Frequency</h3>
           </div>
-          <div className="bg-white rounded-2xl p-8 shadow-sm border space-y-4">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border space-y-4">
             <p className="text-gray-600 leading-relaxed">
               Another crucial error is confusing probability with expectation (or payoff). Being right frequently is irrelevant if the costs of being wrong are catastrophic. Taleb calls this <strong className="text-gray-900">asymmetry</strong> or <strong className="text-gray-900">skewness</strong>.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Imagine a strategy that wins $1,000 ninety-nine times out of a hundred, but loses $100,000 once. On average, you lose money. The frequency of success is a poor measure of performance. This is why terms like &ldquo;bullish&rdquo; or &ldquo;bearish&rdquo; are often meaningless. You can believe a market is 70% likely to go up 1%, but 30% likely to fall 10%. Your expectation is negative, so you should bet on a fall, despite being &ldquo;bullish&rdquo; on the probability.
             </p>
-            <blockquote className="border-l-4 border-emerald-500 pl-4 italic text-gray-500 bg-gray-50 p-4 rounded-r-lg">
+            <blockquote className="border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] pl-4 italic text-gray-500 bg-gray-50 p-4 rounded-r-lg">
               &ldquo;Option sellers, it is said, eat like chickens and go to the bathroom like elephants.&rdquo;
             </blockquote>
             <p className="text-gray-600 leading-relaxed">
@@ -97,9 +97,9 @@ export default function FooledByRandomnesspremiumContent() {
             <div className="bg-sky-500/10 text-sky-600 p-3 rounded-xl mr-4">
               <AlertTriangle className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-gray-900">The Black Swan Problem</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif">The Black Swan Problem</h3>
           </div>
-          <div className="bg-white rounded-2xl p-8 shadow-sm border space-y-4">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border space-y-4">
             <p className="text-gray-600 leading-relaxed">
               This is the problem of induction. A turkey is fed by the farmer every day for 1,000 days. With each feeding, the turkey&apos;s confidence that the farmer is a friend grows. On the 1,001st day, the day before Thanksgiving, the turkey will have its beliefs catastrophically revised. The turkey&apos;s error? It mistook absence of evidence (of danger) for evidence of absence.
             </p>
@@ -115,27 +115,27 @@ export default function FooledByRandomnesspremiumContent() {
         {/* Nonlinearity */}
         <section>
           <div className="flex items-center mb-6">
-            <div className="bg-orange-500/10 text-orange-600 p-3 rounded-xl mr-4">
+            <div className="bg-[#BC4128] dark:bg-[#E2694A]/10 text-[#BC4128] dark:text-[#E2694A] p-3 rounded-xl mr-4">
               <Brain className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-gray-900">Nonlinearity and Path Dependence</h3>
+            <h3 className="text-3xl font-bold text-gray-900 font-serif">Nonlinearity and Path Dependence</h3>
           </div>
-          <div className="bg-white rounded-2xl p-8 shadow-sm border space-y-4">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border space-y-4">
             <p className="text-gray-600 leading-relaxed">
               Life is not fair in a linear way. Small advantages, often born from luck, can snowball into massive, winner-take-all outcomes. Taleb uses the <strong className="text-gray-900">QWERTY keyboard</strong> as a prime example. It was designed to be inefficient to prevent early typewriters from jamming. Far superior layouts exist, but QWERTY&apos;s initial, random success created a &ldquo;path dependent&rdquo; standard that is now impossible to change.
             </p>
             <p className="text-gray-600 leading-relaxed">
               The same applies to careers. An actor who gets a lucky break becomes famous, which leads to more roles, making him more famous. The initial advantage was tiny, but the feedback loop creates a huge disparity in outcome. This is why Bill Gates, while smart, is not necessarily the most skilled software engineer who ever lived; he benefited from a powerful network effect that started from a few lucky breaks.
             </p>
-            <blockquote className="border-l-4 border-orange-500 pl-4 italic text-gray-500 bg-gray-50 p-4 rounded-r-lg">
+            <blockquote className="border-l-4 border-[#BC4128] dark:border-[#E2694A] pl-4 italic text-gray-500 bg-gray-50 p-4 rounded-r-lg">
               &ldquo;Chance events coupled with positive feedback rather than technological superiority will determine economic superiority.&rdquo;
             </blockquote>
           </div>
         </section>
 
         {/* Key Takeaways */}
-        <section className="bg-white rounded-2xl p-8 shadow-sm border">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Lessons for Navigating a Random World</h2>
+        <section className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-sm border">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Key Lessons for Navigating a Random World</h2>
           <ul className="space-y-6">
             <li className="flex items-start">
               <span className="text-purple-600 font-bold mr-3 text-lg">1.</span>
@@ -145,7 +145,7 @@ export default function FooledByRandomnesspremiumContent() {
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-emerald-600 font-bold mr-3 text-lg">2.</span>
+              <span className="text-[#1D8A70] dark:text-[#3CBF9C] font-bold mr-3 text-lg">2.</span>
               <div>
                 <h4 className="font-bold text-gray-900 mb-1">Judge Process, Not Outcome.</h4>
                 <p className="text-gray-600">A good decision can lead to a bad outcome, and a bad decision can lead to a good one. Focus on having a robust process for dealing with uncertainty, not on short-term results.</p>

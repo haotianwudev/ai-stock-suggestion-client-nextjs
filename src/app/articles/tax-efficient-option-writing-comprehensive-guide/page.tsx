@@ -21,7 +21,7 @@ export default function TaxEfficientOptionWritingPage() {
               <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <Calculator className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
               </div>
-              <h3 className="font-serif text-lg text-gray-900 dark:text-white mb-2">Section 1256 Advantage</h3>
+              <h3 className="font-serif text-lg text-gray-900 dark:text-white mb-2">Advantage</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Index options (SPX, NDX) receive 60% long-term / 40% short-term tax treatment regardless of holding period, significantly reducing tax burden compared to ETF options.</p>
             </div>
             <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -80,7 +80,7 @@ export default function TaxEfficientOptionWritingPage() {
 
         {/* Section 1256 Deep Dive */}
         <section className="mb-12">
-          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-6">Section 1256 Contracts: The Premier Strategy</h2>
+          <h2 className="font-serif text-2xl md:text-3xl text-gray-900 dark:text-white mb-6">Contracts: The Premier Strategy</h2>
           <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
             <ComparisonGrid>
               <ComparisonCard title="Qualifying Contracts" tone="pos">

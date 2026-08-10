@@ -12,19 +12,19 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
             <thead className="bg-slate-100">
               <tr>
                 {headers.map((header) => (
-                  <th key={header} scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900 sm:pl-6">
+                  <th key={header} scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 sm:pl-6">
                     {header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 bg-white">
+            <tbody className="divide-y divide-slate-200 bg-white dark:bg-[#0A0D14]">
               {data.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
                     <td
                       key={cellIndex}
-                      className="whitespace-pre-wrap py-4 pl-4 pr-3 text-sm text-slate-700 sm:pl-6"
+                      className="whitespace-pre-wrap py-4 pl-4 pr-3 text-sm text-slate-700 dark:text-slate-300 sm:pl-6"
                       dangerouslySetInnerHTML={{ __html: cell }}
                     />
                   ))}
@@ -39,12 +39,12 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
 );
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-10">
+  <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl mb-10 font-serif">
     {children}
   </h2>
 );
 
-const proseStyles = "prose prose-slate prose-lg max-w-none prose-h3:font-semibold prose-h3:text-slate-800 prose-h3:mt-12 prose-h3:mb-4 prose-h4:font-semibold prose-h4:text-slate-700 prose-a:text-blue-600 hover:prose-a:text-blue-700 prose-strong:text-blue-600 prose-strong:font-semibold";
+const proseStyles = "prose prose-slate prose-lg max-w-none prose-h3:font-semibold prose-h3:text-slate-800 dark:text-slate-200 prose-h3:mt-12 prose-h3:mb-4 prose-h4:font-semibold prose-h4:text-slate-700 dark:text-slate-300 prose-a:text-[#A8672E] dark:text-[#D08F52] hover:prose-a:text-[#A8672E] dark:text-[#D08F52] prose-strong:text-[#A8672E] dark:text-[#D08F52] prose-strong:font-semibold";
 
 const Section1 = () => {
   const table1Headers = ["Rule Name", "Core Concept", "How to Calculate", "Key Assumptions", "Major Limitations"];
@@ -61,7 +61,7 @@ const Section1 = () => {
       <div className={proseStyles}>
         <p>Determining the amount of capital required for a secure retirement is the foundational challenge of financial planning. While popular heuristics provide a starting point, a truly scientific approach demands a personalized, multi-variable analysis that moves beyond simplistic rules to a probabilistic understanding of financial futures. This section deconstructs common benchmarks, identifies the critical variables that drive any robust retirement calculation, and provides a framework for building a personalized savings model.</p>
 
-        <h3>1.1 Deconstructing the Common Benchmarks: An Analysis of the 25x, 4%, and 80% Rules</h3>
+        <h3>Deconstructing the Common Benchmarks: An Analysis of the 25x, 4%, and 80% Rules</h3>
         <p>Financial planning literature is replete with rules of thumb designed to simplify the complex question of &ldquo;how much is enough?&rdquo; While useful for initial orientation, these rules are built on a set of specific, and often unstated, assumptions. Understanding their mechanics, origins, and limitations is the first step toward a more rigorous and scientific methodology.</p>
 
         <p>These common benchmarks are not independent or competing theories; rather, they are interconnected components of a single, simplified framework for retirement planning. The <strong>80% Rule</strong> is an attempt to estimate the primary input&mdash;annual expenses&mdash;needed for the savings target calculation. The <strong>25x Rule</strong> is the formula used to convert that annual expense figure into a total capital target required at the point of retirement. Finally, the <strong>4% Rule</strong> is the inverse of the 25x Rule ($1 / 25 = 0.04$), providing the corresponding withdrawal strategy to be used during retirement. They represent a logical sequence: estimating needs, calculating a target, and executing a withdrawal plan.</p>
@@ -70,7 +70,7 @@ const Section1 = () => {
       </div>
       <StyledTable headers={table1Headers} data={table1Data} />
       <div className={`${proseStyles} mt-8`}>
-        <h3>1.2 The Core Variables: A Deep Dive into the Inputs of Your Personal Retirement Equation</h3>
+        <h3>The Core Variables: A Deep Dive into the Inputs of Your Personal Retirement Equation</h3>
         <p>A scientific approach to retirement planning requires moving beyond generalized rules to a personalized calculation that incorporates the specific variables of an individual&apos;s life. Robust financial planning software and online calculators build their models around these key inputs, each of which carries significant weight in determining the final savings target.</p>
 
         <ul>
@@ -82,7 +82,7 @@ const Section1 = () => {
           <li><strong>Other Income Sources:</strong> The amount of savings an individual needs to accumulate is the amount required to fill the gap left by other guaranteed or expected income streams... Social Security benefits, corporate or government pensions, rental income, and any anticipated part-time work.</li>
         </ul>
 
-        <h3>1.3 Building Your Personalized Model: A Step-by-Step Calculation Framework</h3>
+        <h3>Building Your Personalized Model: A Step-by-Step Calculation Framework</h3>
         <p>By synthesizing the core variables, it is possible to construct a personalized calculation that provides a far more accurate savings target than any rule of thumb. The logic follows a clear, sequential process.</p>
 
         <ol>
@@ -123,12 +123,12 @@ const Section2 = () => {
       <div className={proseStyles}>
         <p>Once a savings target is established, the focus shifts to the accumulation phase: the decades-long process of building the required capital. Success in this phase is driven by a combination of disciplined saving, tax-efficient account selection, and a sound investment strategy. The interplay of these factors, particularly the power of time, determines the feasibility of reaching one&apos;s retirement goals.</p>
 
-        <h3>2.1 The Power of an Early Start: A Quantitative Look at Compounding</h3>
+        <h3>The Power of an Early Start: A Quantitative Look at Compounding</h3>
         <p>The single most influential factor in achieving retirement security is the length of the savings horizon. Starting early maximizes the powerful effect of <strong>compounding</strong>, where investment earnings are reinvested and begin to generate their own earnings. This creates a snowball effect that accelerates wealth accumulation over time.</p>
 
         <p>This phenomenon highlights a crucial principle: a dollar saved in one&apos;s 20s is inherently more valuable than a dollar saved in one&apos;s 40s or 50s, simply because it has more decades to compound.</p>
 
-        <h3>2.2 The Saver&apos;s Toolkit: Optimizing 401(k)s, IRAs, and HSAs</h3>
+        <h3>The Saver&apos;s Toolkit: Optimizing 401(k)s, IRAs, and HSAs</h3>
         <p>Consistent saving and the strategic use of tax-advantaged accounts are the cornerstones of wealth accumulation. Financial experts generally recommend saving at least 15% of one&apos;s gross income annually for retirement.</p>
 
         <ul>
@@ -146,7 +146,7 @@ const Section2 = () => {
       </div>
       <StyledTable headers={table2Headers} data={table2Data} />
       <div className={`${proseStyles} mt-8`}>
-        <h3>2.3 Investment Strategy for Growth: The Principles of Asset Allocation and Diversification</h3>
+        <h3>Investment Strategy for Growth: The Principles of Asset Allocation and Diversification</h3>
         <p>Saving consistently is necessary but not sufficient; <em>how</em> that money is invested is equally critical to long-term success. A properly constructed investment portfolio is designed to generate growth while managing risk through the core principles of asset allocation and diversification.</p>
 
         <ul>
@@ -178,7 +178,7 @@ const Section3 = () => {
       <div className={proseStyles}>
         <p>The transition from accumulating assets to decumulating them&mdash;converting a lifetime of savings into a reliable income stream&mdash;is one of the most complex challenges in finance. This phase requires a shift in mindset from growth maximization to risk management, cash flow generation, and longevity protection. This section explores modern withdrawal strategies, the strategic use of Social Security, and the role of annuities in creating a resilient income plan for retirement.</p>
 
-        <h3>3.1 Beyond the 4% Rule: Modern Withdrawal Strategies</h3>
+        <h3>Beyond the 4% Rule: Modern Withdrawal Strategies</h3>
         <p>The 4% Rule... primary weakness is its rigidity... Modern strategies introduce flexibility to adapt to changing market conditions.</p>
 
         <ul>
@@ -186,7 +186,7 @@ const Section3 = () => {
           <li><strong>Constant Percentage Withdrawal:</strong> This method involves withdrawing a fixed percentage... of the portfolio&apos;s <em>current</em> balance each year... it leads to a highly volatile and unpredictable income stream.</li>
         </ul>
 
-        <h3>3.2 The Income Bucket Strategy: A Framework for Managing Volatility and Cash Flow</h3>
+        <h3>The Income Bucket Strategy: A Framework for Managing Volatility and Cash Flow</h3>
         <p>The <strong>&ldquo;bucket&rdquo; strategy</strong> has become a popular and intuitive framework for structuring retirement assets to manage both mathematical and psychological risks. It involves segmenting the portfolio into several &ldquo;buckets,&rdquo; each with a specific time horizon and corresponding level of investment risk.</p>
 
         <p>The power of this strategy is twofold. Mathematically, it is a practical method for managing <strong>sequence of returns risk</strong>... Behaviorally, it provides immense psychological comfort.</p>
@@ -200,7 +200,7 @@ const Section3 = () => {
       </div>
       <StyledTable headers={table3Headers} data={table3Data} />
       <div className={`${proseStyles} mt-8`}>
-        <h3>3.3 Maximizing Social Security: Strategic Timing for Individuals and Couples</h3>
+        <h3>Maximizing Social Security: Strategic Timing for Individuals and Couples</h3>
         <p><strong>Social Security</strong> is the bedrock of retirement income for most Americans. It provides a government-guaranteed, inflation-adjusted income stream for life, making it an invaluable asset.</p>
 
         <ul>
@@ -210,7 +210,7 @@ const Section3 = () => {
 
         <p>The decision to delay Social Security... is deeply synergistic with the portfolio withdrawal strategy... increasing annual Social Security income by $10,000 through delaying is equivalent to having an additional $250,000 in an investment portfolio, assuming a 4% withdrawal rate.</p>
 
-        <h3>3.4 The Role of Annuities in a Diversified Income Plan</h3>
+        <h3>The Role of Annuities in a Diversified Income Plan</h3>
         <p><strong>Annuities</strong> are insurance products that can play a valuable role in a retirement income plan by converting a portion of a portfolio into a guaranteed stream of payments, effectively creating a personal pension and mitigating longevity risk.</p>
 
         <p><strong>Longevity Annuities (QLACs):</strong> A specific type of deferred annuity... designed as pure longevity insurance. An individual might use a portion of their retirement savings to purchase an annuity that only begins paying out at an advanced age, such as 85.</p>
@@ -231,7 +231,7 @@ const Section4 = () => (
     <div className={proseStyles}>
       <p>A successful retirement plan is not merely a projection but a resilient strategy designed to withstand a variety of financial risks... In retirement, however, the combination of withdrawals and a finite time horizon means that risks like market downturns, inflation, and unexpected expenses can have a disproportionately severe and often irreversible impact.</p>
 
-      <h3>4.1 The Sequence of Returns Risk: Protecting Your Portfolio in Early Retirement</h3>
+      <h3>The Sequence of Returns Risk: Protecting Your Portfolio in Early Retirement</h3>
       <p>This is the risk that the specific order, or sequence, of investment returns matters greatly. <strong>Sequence of Returns Risk</strong> means that poor returns experienced in the first few years of retirement can cripple a portfolio&apos;s longevity, even if the long-term average return is favorable.</p>
 
       <p><strong>Mitigation Strategies:</strong></p>
@@ -241,7 +241,7 @@ const Section4 = () => (
         <li><strong>Delaying Retirement:</strong> ...if a severe market downturn occurs, the most effective strategy may be to continue working for another one to two years.</li>
       </ul>
 
-      <h3>4.2 The Unseen Costs: Planning for Healthcare, Long-Term Care, and Inflation</h3>
+      <h3>The Unseen Costs: Planning for Healthcare, Long-Term Care, and Inflation</h3>
       <p>Underestimating expenses is one of the most common and damaging retirement planning mistakes.</p>
 
       <ul>
@@ -252,7 +252,7 @@ const Section4 = () => (
 
       <p>These risks do not exist in isolation; they form an interconnected and often compounding threat.</p>
 
-      <h3>4.3 Common Behavioral Pitfalls: Avoiding Emotional Investing and Overspending</h3>
+      <h3>Common Behavioral Pitfalls: Avoiding Emotional Investing and Overspending</h3>
       <p>Beyond mathematical risks, behavioral biases are a significant threat to retirement security. Human emotions often lead to poor financial decisions, particularly under stress.</p>
 
       <ul>
@@ -262,7 +262,7 @@ const Section4 = () => (
         <li><strong>Being Overly Conservative with Investments:</strong> This approach exposes the portfolio to the full, corrosive effect of inflation.</li>
       </ul>
 
-      <h3>4.4 Debt in Retirement: Strategies for Managing Mortgages and Other Liabilities</h3>
+      <h3>Debt in Retirement: Strategies for Managing Mortgages and Other Liabilities</h3>
       <p>An increasing number of households are entering retirement with outstanding debt, most commonly a mortgage.</p>
 
       <ul>
@@ -289,7 +289,7 @@ const Section5 = () => {
       <div className={proseStyles}>
         <p>Navigating the complexities of retirement planning... can be a daunting task. For many, partnering with a qualified financial advisor is a critical step toward achieving a secure retirement. However, the financial advisory landscape is varied and can be confusing. Selecting the right professional requires a clear understanding of different advisor types, compensation models, and the importance of the fiduciary standard.</p>
 
-        <h3>5.1 Understanding the Landscape: Types of Advisors and Key Certifications</h3>
+        <h3>Understanding the Landscape: Types of Advisors and Key Certifications</h3>
         <p>The term &ldquo;financial advisor&rdquo; is a broad umbrella that encompasses professionals with different specializations and service models.</p>
 
         <p><strong>Key Professional Certifications:</strong></p>
@@ -301,14 +301,14 @@ const Section5 = () => {
 
         <p>Matching an advisor&apos;s specialization to one&apos;s life stage is crucial.</p>
 
-        <h3>5.2 The Fiduciary Standard: Why It&apos;s Non-Negotiable</h3>
+        <h3>The Fiduciary Standard: Why It&apos;s Non-Negotiable</h3>
         <p>The single most important factor in selecting an advisor is determining whether they adhere to the <strong>fiduciary standard</strong>. A fiduciary has a legal and ethical obligation to act solely in their client&apos;s best interest at all times.</p>
 
         <p>This is distinct from the lower <strong>suitability standard</strong>, which only requires that a recommendation be &ldquo;suitable&rdquo; for a client&apos;s circumstances.</p>
 
         <p>An advisor&apos;s compensation structure is the clearest indicator of this alignment. A <strong>Fee-Only</strong> advisor is compensated exclusively by the client... This model removes the conflict of interest inherent in selling products...</p>
 
-        <h3>5.3 A Vetting Checklist: How to Interview and Select the Right Advisor for Your Needs</h3>
+        <h3>A Vetting Checklist: How to Interview and Select the Right Advisor for Your Needs</h3>
         <p>Finding the right advisor is a process of due diligence. It involves self-assessment, research, and structured interviews with multiple candidates.</p>
 
         <ol>
@@ -345,7 +345,7 @@ export default function RetirementArchitectGuide() {
       slug="retirement-architect-guide-secure-retirement"
       additionalDisclaimer="This information is for educational purposes only. Consult with a qualified financial professional before making any decisions."
     >
-      <div className="max-w-4xl mx-auto px-4 text-slate-900">
+      <div className="max-w-4xl mx-auto px-4 text-slate-900 dark:text-slate-100">
         <Section1 />
         <Section2 />
         <Section3 />

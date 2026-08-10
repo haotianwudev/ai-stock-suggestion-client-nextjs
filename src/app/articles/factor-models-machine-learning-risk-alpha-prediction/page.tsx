@@ -73,7 +73,7 @@ export default function FactorModelsMLArticle() {
                   { label: "\varepsilon", value: "Idiosyncratic noise" }
                 ]}
               />
-              <div className="mt-4 bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/50 min-w-0 text-sm text-indigo-900 dark:text-indigo-300">
+              <div className="mt-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/50 min-w-0 text-sm text-indigo-900 dark:text-indigo-300">
                 <strong className="font-bold">Goal:</strong> Traditional finance minimizes <span className="font-mono">ε</span> (Risk Model). Algorithmic trading attempts to <em>predict</em> <span className="font-mono">ε</span> (Alpha Model).
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function FactorModelsMLArticle() {
             </p>
 
             <div className="bg-purple-50 dark:bg-purple-950/20 border-l-4 border-purple-500 p-6 rounded-r-2xl mb-12 min-w-0">
-              <h3 className="text-lg font-bold text-purple-900 dark:text-purple-300 mb-2">The Paradigm Shift</h3>
+              <h3 className="text-lg font-bold text-purple-900 dark:text-purple-300 mb-2 font-serif">The Paradigm Shift</h3>
               <p className="text-purple-800 dark:text-purple-200/80 leading-relaxed">
                 Traditional factor models are <strong className="text-purple-950 dark:text-purple-100">static</strong>: they assume the relationship between factors and returns remains constant. ML models are <strong className="text-purple-950 dark:text-purple-100">dynamic</strong>: they learn regime-dependent relationships, adapting factor sensitivities based on market conditions, volatility regimes, and macroeconomic states.
               </p>
@@ -139,7 +139,7 @@ export default function FactorModelsMLArticle() {
               </div>
 
               <div className="bg-white dark:bg-[#05070A] p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 min-w-0">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-5">
                   <Zap size={24} />
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-3 text-lg font-serif">Transformers</h3>
@@ -154,7 +154,7 @@ export default function FactorModelsMLArticle() {
               </div>
 
               <div className="bg-white dark:bg-[#05070A] p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 min-w-0">
-                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 rounded-2xl flex items-center justify-center text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-5">
                   <Filter size={24} />
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-3 text-lg font-serif">Regularization (Lasso)</h3>
@@ -169,7 +169,7 @@ export default function FactorModelsMLArticle() {
               </div>
             </div>
 
-            <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-3xl p-8 border border-indigo-100 dark:border-indigo-900/30 min-w-0">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/20 rounded-3xl p-8 border border-indigo-100 dark:border-indigo-900/30 min-w-0">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Conditional vs. Unconditional Models</h3>
               <div className="grid md:grid-cols-2 gap-8 min-w-0">
                 <div>
@@ -212,35 +212,35 @@ export default function FactorModelsMLArticle() {
                 <thead className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
                   <tr>
                     <th className="py-4 px-6 text-slate-900 dark:text-white font-bold text-sm">Feature</th>
-                    <th className="py-4 px-6 text-rose-600 dark:text-rose-400 font-bold text-sm">Risk Modeling (Factors)</th>
+                    <th className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold text-sm">Risk Modeling (Factors)</th>
                     <th className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-sm">Alpha Prediction (ML)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-sm md:text-base">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium">Objective</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Explain variance (R² ≈ 90%)</td>
-                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-emerald-50/50 dark:bg-emerald-950/20">Forecast returns (IC ≈ 0.05)</td>
+                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20">Forecast returns (IC ≈ 0.05)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium">Horizon</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Long-term (Quarterly/Yearly structural risks)</td>
-                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-emerald-50/50 dark:bg-emerald-950/20">Short-term (Minutes to Days)</td>
+                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20">Short-term (Minutes to Days)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium">Metric</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Volatility Reduction, Beta</td>
-                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-emerald-50/50 dark:bg-emerald-950/20">Sharpe Ratio, Information Coefficient</td>
+                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20">Sharpe Ratio, Information Coefficient</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium">Data Features</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Stationary, High Signal-to-Noise</td>
-                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-emerald-50/50 dark:bg-emerald-950/20">Non-stationary, Very Low Signal-to-Noise</td>
+                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20">Non-stationary, Very Low Signal-to-Noise</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium">Loss Function</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Minimize Tracking Error</td>
-                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-emerald-50/50 dark:bg-emerald-950/20">Maximize Risk-Adjusted Return</td>
+                    <td className="py-4 px-6 text-slate-800 dark:text-slate-200 font-medium bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/20">Maximize Risk-Adjusted Return</td>
                   </tr>
                 </tbody>
               </table>
@@ -345,10 +345,10 @@ export default function FactorModelsMLArticle() {
                     <div>
                       <div className="flex justify-between mb-1">
                         <span>Market Beta</span>
-                        <span className="font-mono font-bold text-rose-600 dark:text-rose-400">85%</span>
+                        <span className="font-mono font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">85%</span>
                       </div>
                       <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-rose-500" style={{width: '85%'}}></div>
+                        <div className="h-full bg-[#BC4128] dark:bg-[#E2694A]" style={{width: '85%'}}></div>
                       </div>
                     </div>
                     <div>
@@ -370,38 +370,38 @@ export default function FactorModelsMLArticle() {
                       </div>
                     </div>
                   </div>
-                  <p className="mt-4 text-xs text-rose-700 dark:text-rose-400 font-medium p-3 bg-rose-50 dark:bg-rose-950/20 rounded-lg">
+                  <p className="mt-4 text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 rounded-lg">
                     ⚠️ This model is 85% beta exposure. Orthogonalize before deployment.
                   </p>
                 </div>
               </div>
 
-              <div className="bg-rose-50 dark:bg-rose-950/10 p-8 rounded-3xl border border-rose-200 dark:border-rose-900/30 min-w-0 shadow-sm">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/10 p-8 rounded-3xl border border-rose-200 dark:border-rose-900/30 min-w-0 shadow-sm">
                 <h3 className="font-bold text-rose-900 dark:text-rose-300 mb-6 text-xl font-serif">The Orthogonalization Workflow</h3>
                 <ul className="space-y-6 text-sm text-slate-700 dark:text-slate-300">
                   <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">1</span>
+                    <span className="flex-shrink-0 w-8 h-8 bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">1</span>
                     <div>
                       <strong className="block text-rose-950 dark:text-rose-200 mb-1">Identify Known Factors</strong>
                       Start with Fama-French 5-factor model (Market, Size, Value, Profitability, Investment) as baseline.
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">2</span>
+                    <span className="flex-shrink-0 w-8 h-8 bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">2</span>
                     <div>
                       <strong className="block text-rose-950 dark:text-rose-200 mb-1">Regress Signal on Factors</strong>
                       Run OLS regression of your raw signal against factor returns. Extract residuals.
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">3</span>
+                    <span className="flex-shrink-0 w-8 h-8 bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">3</span>
                     <div>
                       <strong className="block text-rose-950 dark:text-rose-200 mb-1">Validate Independence</strong>
                       Compute correlation matrix between residualized signal and original factors. Target: |ρ| &lt; 0.1.
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">4</span>
+                    <span className="flex-shrink-0 w-8 h-8 bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm mt-0.5">4</span>
                     <div>
                       <strong className="block text-rose-950 dark:text-rose-200 mb-1">Backtest Orthogonalized Signal</strong>
                       If performance degrades significantly, your "alpha" was actually disguised beta.
@@ -454,7 +454,7 @@ export default function FactorModelsMLArticle() {
                   { label: "Costs", value: "Transaction fees + Slippage" }
                 ]}
               />
-              <div className="mt-4 bg-emerald-50 dark:bg-emerald-950/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 min-w-0 text-sm text-emerald-900 dark:text-emerald-300">
+              <div className="mt-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 min-w-0 text-sm text-emerald-900 dark:text-emerald-300">
                 <strong className="font-bold">Insight:</strong> The Risk Model (Σ) acts as the "brakes", preventing the Alpha Model (μ) from taking excessive concentrated bets. Lambda (λ) controls risk aversion.
               </div>
             </div>
@@ -483,7 +483,7 @@ export default function FactorModelsMLArticle() {
               />
             </ComparisonGrid>
 
-            <div className="mt-12 bg-emerald-50 dark:bg-emerald-950/10 rounded-3xl p-8 border border-emerald-200 dark:border-emerald-900/30 min-w-0 shadow-sm">
+            <div className="mt-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/10 rounded-3xl p-8 border border-emerald-200 dark:border-emerald-900/30 min-w-0 shadow-sm">
               <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-300 mb-8 font-serif">The Optimization Hierarchy</h3>
               <div className="space-y-4 min-w-0">
                 <div className="bg-white dark:bg-[#05070A] p-6 rounded-2xl border border-emerald-100/50 dark:border-emerald-900/50 shadow-sm">

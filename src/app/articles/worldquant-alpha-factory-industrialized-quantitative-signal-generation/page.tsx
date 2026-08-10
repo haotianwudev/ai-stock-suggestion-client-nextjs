@@ -6,8 +6,8 @@ import { ArticleFrame, InfographicSlot } from '@/components/articles/article-fra
 
 const ContentSection = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
   <section id={id} className="mb-16 scroll-mt-24">
-    <h2 className="text-4xl font-extrabold text-gray-900 mb-2">{title}</h2>
-    <div className="w-24 h-1.5 bg-blue-600 rounded-full mb-8"></div>
+    <h2 className="text-4xl font-extrabold text-gray-900 mb-2 font-serif">{title}</h2>
+    <div className="w-24 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mb-8"></div>
     <div className="space-y-6 text-lg text-gray-700 leading-relaxed">{children}</div>
   </section>
 );
@@ -21,14 +21,14 @@ export default function WorldQuantAlphaFactoryArticle() {
         {/* Executive Summary */}
         <ContentSection id="summary" title="Executive Summary">
           <div className="space-y-4">
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-4 rounded-r-lg">
               <p className="text-lg text-gray-700">
-                <strong className="text-blue-700">What It Is:</strong> The WorldQuant &quot;Alpha Factory&quot; is not a single strategy but an industrial-scale system designed to mass-produce &quot;alphas,&quot; which are defined as predictive models, not investment results.
+                <strong className="text-[#A8672E] dark:text-[#D08F52]">What It Is:</strong> The WorldQuant &quot;Alpha Factory&quot; is not a single strategy but an industrial-scale system designed to mass-produce &quot;alphas,&quot; which are defined as predictive models, not investment results.
               </p>
             </div>
-            <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-4 rounded-r-lg">
               <p className="text-lg text-gray-700">
-                <strong className="text-green-700">How It Works:</strong> It uses a global, crowdsourced talent pool of 250,000+ users on its &quot;BRAIN&quot; platform to mine thousands of traditional and alternative datasets (e.g., credit card receipts, shipping data).
+                <strong className="text-[#1D8A70] dark:text-[#3CBF9C]">How It Works:</strong> It uses a global, crowdsourced talent pool of 250,000+ users on its &quot;BRAIN&quot; platform to mine thousands of traditional and alternative datasets (e.g., credit card receipts, shipping data).
               </p>
             </div>
             <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg">
@@ -36,14 +36,14 @@ export default function WorldQuantAlphaFactoryArticle() {
                 <strong className="text-purple-700">The &quot;Alpha&quot; Signal:</strong> The factory generates millions of &quot;formulaic alphas&quot;—short-term, high-turnover signals. The key is that these signals are <em>weakly predictive</em> and, most importantly, <em>uncorrelated</em> with each other.
               </p>
             </div>
-            <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-r-lg">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg">
               <p className="text-lg text-gray-700">
-                <strong className="text-orange-700">The Core Strategy (Alpha Decay):</strong> The entire system is a strategic solution to &quot;alpha decay&quot; (the inevitable failure of any signal). By constantly discovering thousands of new, uncorrelated signals, WorldQuant can replace dying ones and maintain a robust, diversified &quot;SuperAlpha&quot; portfolio.
+                <strong className="text-[#BC4128] dark:text-[#E2694A]">The Core Strategy (Alpha Decay):</strong> The entire system is a strategic solution to &quot;alpha decay&quot; (the inevitable failure of any signal). By constantly discovering thousands of new, uncorrelated signals, WorldQuant can replace dying ones and maintain a robust, diversified &quot;SuperAlpha&quot; portfolio.
               </p>
             </div>
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg">
               <p className="text-lg text-gray-700">
-                <strong className="text-red-700">How to &quot;Benefit&quot;:</strong> A &quot;common investor&quot; <em>cannot</em> invest in the funds. The only way to &quot;benefit&quot; is to <em>participate</em> as a paid &quot;Research Consultant&quot; on the BRAIN platform, which functions as a &quot;learn-to-earn&quot; talent funnel.
+                <strong className="text-[#BC4128] dark:text-[#E2694A]">How to &quot;Benefit&quot;:</strong> A &quot;common investor&quot; <em>cannot</em> invest in the funds. The only way to &quot;benefit&quot; is to <em>participate</em> as a paid &quot;Research Consultant&quot; on the BRAIN platform, which functions as a &quot;learn-to-earn&quot; talent funnel.
               </p>
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             The query regarding how a &quot;common investor&quot; can &quot;benefit&quot; from this system requires a critical distinction between <em>investing</em> in the fund and <em>participating</em> in the research platform.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Answering the Investment Question: Access to WorldQuant Funds</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">Answering the Investment Question: Access to WorldQuant Funds</h3>
 
           <p>
             This reframes the entire challenge of asset management. The goal is no longer to find a single, brilliant strategy, but to build an industrial factory capable of manufacturing, testing, and cataloging predictive signals at scale. This &quot;industrial&quot; paradigm treats alphas as building blocks, or commodities, that are interchangeable and, most importantly, disposable. As will be detailed, this concept of disposability is the firm&apos;s strategic solution to the single greatest threat in quantitative investing: alpha decay. The factory exists, by design, because its individual products are expected to fail.
@@ -78,7 +78,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             Assessing the &quot;effectiveness&quot; of the Alpha Factory requires clarifying the object of analysis. The effectiveness of any <em>individual</em> alpha is, by design, temporary. The true measure is the effectiveness of the <em>factory model</em> as a whole.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Effectiveness of Individual Alphas</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">Effectiveness of Individual Alphas</h3>
 
           <p>
             The &quot;101 Formulaic Alphas&quot; from 2016 are the best public examples. However, given the reality of alpha decay, it is highly probable that most, if not all, of these specific 101 signals are no longer effective. Public forums with users who have attempted to implement them often report that &quot;none of these work any more&quot;.
@@ -90,7 +90,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             </p>
           </div>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Effectiveness of the Factory Model</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">Effectiveness of the Factory Model</h3>
 
           <p>
             The effectiveness of the <em>factory</em> is measured by its ability to <em>combat decay</em> by <em>continuously producing new, diversified signals</em>.
@@ -113,7 +113,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             This &quot;exponential growth in the number of alphas&quot; is presented as prima facie evidence of the factory&apos;s success. This vast library is a proxy for the robustness of the firm&apos;s combined signal. A portfolio drawing from 4 million+ uncorrelated signals is far less reliant on any single idea and is therefore better insulated from the &quot;heat death&quot; of alpha decay.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">External Research and Validation</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">External Research and Validation</h3>
 
           <p>
             The 2016 Kakushadze paper was a landmark <em>conceptual</em> validation. Its effectiveness was not in providing 101 timeless signals, but in:
@@ -134,7 +134,7 @@ export default function WorldQuantAlphaFactoryArticle() {
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl my-6">
             <h4 className="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-              <Users className="mr-2 h-6 w-6 text-blue-600" />
+              <Users className="mr-2 h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
               The BRAIN Platform: Crowdsourced Intelligence
             </h4>
             <p className="text-lg text-gray-700">
@@ -149,7 +149,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             The WorldQuant Alpha Factor Factory is not a static investment strategy but a <em>paradigm for industrial-scale research</em>. Its design is a direct, strategic response to the core problem of quantitative investing: alpha decay.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Strengths</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">Strengths</h3>
 
           <ul className="list-disc list-inside text-lg text-gray-700 mb-6 pl-4 space-y-3">
             <li>
@@ -166,7 +166,7 @@ export default function WorldQuantAlphaFactoryArticle() {
             </li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Challenges and Caveats</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-4 text-gray-800 font-serif">Challenges and Caveats</h3>
 
           <ul className="list-disc list-inside text-lg text-gray-700 mb-6 pl-4 space-y-3">
             <li>
@@ -184,9 +184,9 @@ export default function WorldQuantAlphaFactoryArticle() {
             </p>
           </div>
 
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg my-6">
+          <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg my-6">
             <p className="text-lg text-gray-700">
-              <strong className="text-red-700">Disclaimer:</strong> This analysis is for educational purposes only and does not constitute investment advice. The WorldQuant Alpha Factory represents a sophisticated institutional approach that is not directly accessible to retail investors.
+              <strong className="text-[#BC4128] dark:text-[#E2694A]">Disclaimer:</strong> This analysis is for educational purposes only and does not constitute investment advice. The WorldQuant Alpha Factory represents a sophisticated institutional approach that is not directly accessible to retail investors.
             </p>
           </div>
         </ContentSection>

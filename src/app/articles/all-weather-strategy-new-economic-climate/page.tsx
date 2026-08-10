@@ -38,11 +38,11 @@ export default function AllWeatherStrategyArticle() {
         }
       `}</style>
 
-      <article className="max-w-4xl mx-auto px-4 text-gray-800 prose prose-slate max-w-none prose-p:leading-relaxed prose-p:text-gray-700 prose-headings:text-slate-900 prose-h2:font-semibold prose-h3:font-semibold prose-h2:mt-12 prose-h2:border-b prose-h2:pb-2 prose-ul:marker:text-blue-500 prose-ol:marker:text-gray-500">
+      <article className="max-w-4xl mx-auto px-4 text-gray-800 prose prose-slate max-w-none prose-p:leading-relaxed prose-p:text-gray-700 prose-headings:text-slate-900 dark:text-slate-100 prose-h2:font-semibold prose-h3:font-semibold prose-h2:mt-12 prose-h2:border-b prose-h2:pb-2 prose-ul:marker:text-[#A8672E] dark:text-[#D08F52] prose-ol:marker:text-gray-500">
         {/* --- Executive Summary Section --- */}
         <section id="executive-summary" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <BookOpen className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <BookOpen className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Executive Summary
           </h2>
 
@@ -84,12 +84,12 @@ export default function AllWeatherStrategyArticle() {
 
         {/* --- Section 1 --- */}
         <section id="section-1" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <Library className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <Library className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Section 1: The All Weather Philosophy
           </h2>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">1.1 The Humility Principle: Acknowledging an Unknowable Future</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Humility Principle: Acknowledging an Unknowable Future</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The All Weather strategy is, at its core, a philosophical stance on the nature of markets, rooted in a profound sense of intellectual humility. Its architecture is a direct response to what its creator, Ray Dalio, views as the fundamental flaw in most investment approaches: the hubristic belief that one can consistently and accurately predict the future.<sup>[4, 6]</sup>
@@ -102,7 +102,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>Portfolio Goal:</strong> To be engineered not to be &ldquo;right&rdquo; more often, but to be prepared even when it is &ldquo;wrong&rdquo;. It is built for endurance, not for maximal short-term gains.<sup>[3, 7]</sup></li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">1.2 Deconstructing the &ldquo;Economic Machine&rdquo;: The Four Seasons Framework</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Deconstructing the &ldquo;Economic Machine&rdquo;: The Four Seasons Framework</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             At the heart of the All Weather philosophy is a simple yet powerful model for deconstructing the immense complexity of the global economy. Dalio and his team concluded that asset class returns are primarily driven by unexpected shifts in just two fundamental economic variables: economic growth and inflation.<sup>[3, 5]</sup>
@@ -123,7 +123,7 @@ export default function AllWeatherStrategyArticle() {
             Crucially, unlike the meteorological seasons, these economic seasons do not follow a predictable order.<sup>[6]</sup> The objective is to own a balanced collection of assets with known biases to each environment, so that the underperformance of one is offset by the outperformance of another.<sup>[3, 13]</sup>
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">1.3 The Role of Each Asset Class as a Seasonal Hedge</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Role of Each Asset Class as a Seasonal Hedge</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The portfolio is deliberately selected to perform a specific role within the four-seasons framework, focusing on fundamental, cause-and-effect relationships (&ldquo;environmental biases&rdquo;) rather than unstable historical correlations.<sup>[1, 13]</sup>
@@ -191,12 +191,12 @@ export default function AllWeatherStrategyArticle() {
 
         {/* --- Section 2 --- */}
         <section id="section-2" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <Scale className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <Scale className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Section 2: The Core Mechanism: Risk Parity
           </h2>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">2.1 Beyond the 60/40: Why Capital Allocation Creates Concentrated Risk</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Beyond the 60/40: Why Capital Allocation Creates Concentrated Risk</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The cornerstone of conventional portfolio construction is the 60/40 split (60% equities, 40% bonds).<sup>[9, 14]</sup> The All Weather strategy rejects this premise as a dangerous illusion.
@@ -212,7 +212,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>False Diversification:</strong> A 60/40 portfolio is not truly balanced. Its fate is overwhelmingly dictated by the equity market, making it highly vulnerable to a &ldquo;falling growth&rdquo; environment.<sup>[3, 12]</sup></li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">2.2 Balancing the Scales: How Risk Parity Equalizes Risk Contribution</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Balancing the Scales: How Risk Parity Equalizes Risk Contribution</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             Risk parity inverts traditional logic. Instead of starting with a capital allocation, it begins by defining a desired risk profile and then determines the capital allocation required to achieve it.<sup>[4, 7]</sup>
@@ -268,7 +268,7 @@ export default function AllWeatherStrategyArticle() {
             Table 2: Risk Contribution Analysis: 60/40 Portfolio vs. Risk Parity Portfolio. This conceptual table illustrates the core problem risk parity solves. It shows how a 60/40 portfolio&apos;s risk is dominated by equities, while a risk parity approach balances the contribution to volatility from each asset class.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">2.3 The All Weather Allocation: A Deliberate Construction for Balance</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The All Weather Allocation: A Deliberate Construction for Balance</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The widely cited retail version of the All Weather portfolio is the practical, unleveraged application of the risk parity philosophy. The large 55% weighting to bonds is not a bearish bet; it is a mathematical necessity to balance the risk of the more volatile components.<sup>[4, 22]</sup>
@@ -289,12 +289,12 @@ export default function AllWeatherStrategyArticle() {
 
         {/* --- Section 3 --- */}
         <section id="section-3" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <ShieldCheck className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <ShieldCheck className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Section 3: A Legacy of Resilience (1996-2021)
           </h2>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">3.1 Long-Term Risk and Return Profile vs. Benchmarks</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Long-Term Risk and Return Profile vs. Benchmarks</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             During the disinflationary era from 1996 through 2021, the strategy built a formidable reputation for delivering on its core promise.
@@ -305,7 +305,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>Risk-Adjusted Returns:</strong> Consistently demonstrated a superior risk-adjusted return (Sharpe Ratio) compared to the S&amp;P 500, indicating a more efficient generation of returns for each unit of risk taken.<sup>[5, 24]</sup></li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">3.2 Trial by Fire: Performance During Major Market Crises</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Trial by Fire: Performance During Major Market Crises</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The strategy&apos;s reputation for resilience was forged during periods of extreme market stress.
@@ -316,7 +316,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>The 2020 COVID-19 Pandemic:</strong> In the violent March 2020 crash, the S&amp;P 500 plummeted by ~33% in weeks. The All Weather portfolio demonstrated its defensive nature, declining by only about 6%.<sup>[8]</sup> The bonds and gold holdings acted as effective shock absorbers.</li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">3.3 The Power of Smaller Drawdowns: Compounding and Behavioral Advantages</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Power of Smaller Drawdowns: Compounding and Behavioral Advantages</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The focus on mitigating drawdowns is rooted in profound mathematical and behavioral advantages.
@@ -377,12 +377,12 @@ export default function AllWeatherStrategyArticle() {
 
         {/* --- Section 4 --- */}
         <section id="section-4" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <AlertTriangle className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <AlertTriangle className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Section 4: The Modern Gauntlet (2022-Present)
           </h2>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">4.1 The Regime Change: The Impact of a Reversing Bond Bull Market</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Regime Change: The Impact of a Reversing Bond Bull Market</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The post-2021 landscape marked a dramatic departure from the preceding 40 years, defined by soaring inflation and one of the most aggressive interest rate hiking cycles in history.<sup>[10]</sup> This shift decisively ended the long-term bond bull market.<sup>[9]</sup>
@@ -394,7 +394,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>A New Headwind:</strong> For a portfolio with a 55% bond allocation, this new regime transformed its largest and most stable component from a source of diversification into a significant source of loss.</li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">4.2 When Correlations Fail: Analyzing the 2022 Stock and Bond Drawdown</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">When Correlations Fail: Analyzing the 2022 Stock and Bond Drawdown</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The year 2022 served as a brutal acid test. The unique macroeconomic conditions&mdash;high inflation forcing aggressive monetary tightening&mdash;caused the long-standing, reliable negative correlation between stocks and bonds to break down completely.
@@ -443,7 +443,7 @@ export default function AllWeatherStrategyArticle() {
             Table 4: Performance During Key Market Crises (2008, 2020 vs. 2022). This table contrasts the strategy&apos;s performance across different types of crises, highlighting its resilience in deflationary shocks and its relative vulnerability during the unique inflationary shock of 2022. <sup>[8, 21, 24]</sup>
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">4.3 The Inflation Question: Assessing Efficacy in a New Era</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Inflation Question: Assessing Efficacy in a New Era</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The performance in 2022 has led to valid criticisms of the All Weather strategy&apos;s suitability for the current economic environment.
@@ -458,7 +458,7 @@ export default function AllWeatherStrategyArticle() {
             However, a robust counterargument exists from the perspective of the strategy&apos;s core philosophy. The portfolio was never designed to outperform in every single environment. Its objective is to provide resilience <em>over a full economic cycle</em>.<sup>[3]</sup> Proponents would argue that this is precisely the wrong time to abandon the strategy, as doing so would be a form of market timing&mdash;the very practice the portfolio was designed to eliminate.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">4.4 Concluding Assessment: Does the All Weather Strategy Still Work Today?</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Concluding Assessment: Does the All Weather Strategy Still Work Today?</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The answer requires a careful distinction between the static <em>formula</em> and the underlying <em>philosophy</em>.
@@ -476,12 +476,12 @@ export default function AllWeatherStrategyArticle() {
 
         {/* --- Section 5 --- */}
         <section id="section-5" className="mb-12">
-          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800">
-            <Users className="h-7 w-7 mr-3 text-blue-600 flex-shrink-0" />
+          <h2 className="flex items-center text-3xl font-semibold border-b border-gray-200 pb-2 mb-4 text-slate-800 dark:text-slate-200 font-serif">
+            <Users className="h-7 w-7 mr-3 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
             Section 5: The Retail Investor&apos;s Playbook
           </h2>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">5.1 Core Lessons: The Enduring Wisdom for Every Investor</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Core Lessons: The Enduring Wisdom for Every Investor</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             Regardless of whether an investor adopts the specific All Weather allocation, the strategy&apos;s underlying philosophy offers several timeless principles that can significantly improve any investment approach.
@@ -494,7 +494,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>Lesson 4: Stay Invested.</strong> The goal of a smoother ride is to enable you to remain in the market, continuously accruing long-term returns. Mitigating drawdowns helps you avoid the behavioral pitfalls that can derail your financial plan.<sup>[1]</sup></li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">5.2 Building a Simplified All Weather Portfolio with ETFs</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Building a Simplified All Weather Portfolio with ETFs</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             For the retail investor, the strategy can be implemented in a straightforward and cost-effective manner using a handful of liquid and low-cost exchange-traded funds (ETFs).<sup>[5, 8, 25]</sup>
@@ -559,7 +559,7 @@ export default function AllWeatherStrategyArticle() {
             For investors seeking a one-stop solution, several ETF providers have launched products designed to replicate a risk parity or &ldquo;all-weather&rdquo; approach in a single ticker. Examples include the SPDR Bridgewater All Weather ETF (ALLW) and the RPAR Risk Parity ETF (RPAR).<sup>[16, 26]</sup>
           </p>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">5.3 Potential Modifications for the Current Environment</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">Potential Modifications for the Current Environment</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             Given the challenges to the static portfolio, sophisticated investors can consider several modifications that adhere to the <em>spirit</em> of the strategy:
@@ -571,7 +571,7 @@ export default function AllWeatherStrategyArticle() {
             <li><strong>Adjusting Bond Duration:</strong> Reduce the high sensitivity to interest rate changes by shifting some of the long-duration (TLT) allocation to shorter-duration bonds, or by creating a &ldquo;bond barbell&rdquo; (a mix of very short-term and long-term bonds).<sup>[5]</sup></li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-6 mb-3 text-blue-700">5.4 The Final Verdict: Who Is This Strategy For?</h3>
+          <h3 className="text-2xl font-semibold mt-6 mb-3 text-[#A8672E] dark:text-[#D08F52] font-serif">The Final Verdict: Who Is This Strategy For?</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             The All Weather strategy, in its classic form, is not a one-size-fits-all solution.

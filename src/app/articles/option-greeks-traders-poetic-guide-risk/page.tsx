@@ -48,8 +48,8 @@ And proxies a probability.`,
       ]
     },
     colorClasses: {
-      border: "border-blue-500",
-      text: "text-blue-600",
+      border: "border-[#A8672E] dark:border-[#D08F52]",
+      text: "text-[#A8672E] dark:text-[#D08F52]",
       shadow: "hover:shadow-blue-500/20"
     }
   },
@@ -108,8 +108,8 @@ The seller's friend, the buyer's race.`,
       ]
     },
     colorClasses: {
-      border: "border-red-500",
-      text: "text-red-600",
+      border: "border-[#BC4128] dark:border-[#E2694A]",
+      text: "text-[#BC4128] dark:text-[#E2694A]",
       shadow: "hover:shadow-red-500/20"
     }
   },
@@ -138,8 +138,8 @@ But measures the unseen, volatile light.`,
       ]
     },
     colorClasses: {
-      border: "border-teal-500",
-      text: "text-teal-600",
+      border: "border-[#A8672E] dark:border-[#D08F52]",
+      text: "text-[#A8672E] dark:text-[#D08F52]",
       shadow: "hover:shadow-teal-500/20"
     }
   },
@@ -177,7 +177,7 @@ const GreekCard = ({ greek }: { greek: GreekData }) => {
   const { colorClasses } = greek;
 
   return (
-    <div className={`rounded-xl shadow-lg p-6 md:p-8 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1.5 border-t-4 bg-white ${colorClasses.border} ${colorClasses.shadow}`}>
+    <div className={`rounded-xl shadow-lg p-6 md:p-8 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1.5 border-t-4 bg-white dark:bg-[#0A0D14] ${colorClasses.border} ${colorClasses.shadow}`}>
       <div className="flex items-center mb-5">
         <span className={`text-5xl font-bold mr-4 ${colorClasses.text}`} style={{textShadow: `0 0 10px var(--tw-shadow-color)`}}>
           {greek.symbol}
@@ -247,9 +247,9 @@ export default function OptionGreeksArticle() {
         <div className="mb-12">
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-200">
             <div className="flex items-start space-x-4">
-              <Shield className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
+              <Shield className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Understanding the Greeks</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Understanding the Greeks</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   The Option Greeks are mathematical measures that quantify how an option&apos;s price changes in response to various factors.
                   They are essential tools for risk management, position sizing, and strategic decision-making in options trading.
@@ -274,20 +274,20 @@ export default function OptionGreeksArticle() {
         {/* Key Takeaways Section */}
         <div className="mb-12">
           <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 border border-green-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <AlertTriangle className="w-6 h-6 text-green-600 mr-3" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center font-serif">
+              <AlertTriangle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3" />
               Key Trading Insights
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">For Option Buyers</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 font-serif">For Option Buyers</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
-                    <TrendingUp className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <TrendingUp className="w-4 h-4 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 mr-2 flex-shrink-0" />
                     Long Delta, Gamma, and Vega exposure
                   </li>
                   <li className="flex items-start">
-                    <Clock className="w-4 h-4 text-red-500 mt-1 mr-2 flex-shrink-0" />
+                    <Clock className="w-4 h-4 text-[#BC4128] dark:text-[#E2694A] mt-1 mr-2 flex-shrink-0" />
                     Fighting against Theta decay daily
                   </li>
                   <li className="flex items-start">
@@ -297,18 +297,18 @@ export default function OptionGreeksArticle() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">For Option Sellers</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 font-serif">For Option Sellers</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
-                    <DollarSign className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
+                    <DollarSign className="w-4 h-4 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 mr-2 flex-shrink-0" />
                     Collect Theta premium daily
                   </li>
                   <li className="flex items-start">
-                    <TrendingDown className="w-4 h-4 text-red-500 mt-1 mr-2 flex-shrink-0" />
+                    <TrendingDown className="w-4 h-4 text-[#BC4128] dark:text-[#E2694A] mt-1 mr-2 flex-shrink-0" />
                     Short Gamma creates acceleration risk
                   </li>
                   <li className="flex items-start">
-                    <Shield className="w-4 h-4 text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                    <Shield className="w-4 h-4 text-[#A8672E] dark:text-[#D08F52] mt-1 mr-2 flex-shrink-0" />
                     Profit from stable, range-bound markets
                   </li>
                 </ul>
@@ -323,7 +323,7 @@ export default function OptionGreeksArticle() {
             <div className="flex items-start space-x-4">
               <FileText className="w-8 h-8 text-purple-600 mt-1 flex-shrink-0" />
               <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center font-serif">
                   Deep Research Analysis
                   <span className="ml-3 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                     Comprehensive Study
@@ -336,8 +336,8 @@ export default function OptionGreeksArticle() {
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white rounded-lg p-4 border border-purple-100">
-                    <h3 className="font-semibold text-gray-900 mb-2">Research Methodology</h3>
+                  <div className="bg-white dark:bg-[#0A0D14] rounded-lg p-4 border border-purple-100">
+                    <h3 className="font-semibold text-gray-900 mb-2 font-serif">Research Methodology</h3>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• Black-Scholes-Merton model analysis</li>
                       <li>• Historical volatility studies</li>
@@ -345,8 +345,8 @@ export default function OptionGreeksArticle() {
                       <li>• Risk management frameworks</li>
                     </ul>
                   </div>
-                  <div className="bg-white rounded-lg p-4 border border-purple-100">
-                    <h3 className="font-semibold text-gray-900 mb-2">Practical Applications</h3>
+                  <div className="bg-white dark:bg-[#0A0D14] rounded-lg p-4 border border-purple-100">
+                    <h3 className="font-semibold text-gray-900 mb-2 font-serif">Practical Applications</h3>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• Portfolio hedging strategies</li>
                       <li>• Volatility trading techniques</li>

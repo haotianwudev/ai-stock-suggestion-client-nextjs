@@ -42,22 +42,22 @@ const inclusionCriteria = [
   {
     title: 'Nationality',
     description: 'Companies must be classified as U.S. based on their headquarters, incorporation, and primary stock exchange. This ensures a pure exposure to the domestic market.',
-    icon: <Globe className="w-6 h-6 text-blue-500" />
+    icon: <Globe className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
   },
   {
     title: 'Eligible Exchanges',
     description: 'Stocks must trade on major, regulated exchanges like the NYSE or Nasdaq. This excludes over-the-counter (OTC) and pink-sheet stocks, which often lack liquidity and reporting standards.',
-    icon: <Briefcase className="w-6 h-6 text-blue-500" />
+    icon: <Briefcase className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
   },
   {
     title: 'Minimum Size & Price',
     description: 'On "rank day" in May, a company must have a total market cap of at least $30M and a closing price of at least $1.00. This filters out the most speculative micro-caps.',
-    icon: <DollarSign className="w-6 h-6 text-blue-500" />
+    icon: <DollarSign className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
   },
   {
     title: 'Share & Voting Rights',
     description: 'A minimum of 5% of the company\'s total shares must be available for public trading (known as "free float"). This excludes tightly controlled firms where the majority of shares are not on the market.',
-    icon: <Scale className="w-6 h-6 text-blue-500" />
+    icon: <Scale className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
   },
 ];
 
@@ -65,22 +65,22 @@ const investmentPros = [
   {
     title: 'Higher Growth Potential',
     description: 'Smaller companies have more room to grow. They are often acquisition targets for larger firms, which can lead to significant stock price premiums for investors.',
-    icon: <ArrowUpRight className="w-5 h-5 mr-2 text-green-500" />
+    icon: <ArrowUpRight className="w-5 h-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
   },
   {
     title: 'Broad Diversification',
     description: 'Unlike the S&P 500 where the top 10 companies dictate a large portion of returns, the Russell 2000 is far less concentrated. This mitigates single-stock risk significantly.',
-    icon: <BookOpen className="w-5 h-5 mr-2 text-green-500" />
+    icon: <BookOpen className="w-5 h-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
   },
   {
     title: 'U.S. Domestic Focus',
     description: 'With revenues primarily generated within the United States, these companies offer a direct investment in the U.S. economy, insulating portfolios from direct currency fluctuations and geopolitical issues abroad.',
-    icon: <Globe className="w-5 h-5 mr-2 text-green-500" />
+    icon: <Globe className="w-5 h-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
   },
   {
     title: 'Economic Bellwether',
     description: 'The performance of the Russell 2000 is often seen as a leading indicator of U.S. economic health, reflecting the sentiment of businesses on Main Street, not just Wall Street.',
-    icon: <LineChart className="w-5 h-5 mr-2 text-green-500" />
+    icon: <LineChart className="w-5 h-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
   },
 ];
 
@@ -88,22 +88,22 @@ const investmentCons = [
   {
     title: 'Increased Volatility',
     description: 'Small-cap stocks historically have a higher beta, meaning their prices swing more dramatically than the broader market. This can lead to larger losses during downturns.',
-    icon: <ArrowDownRight className="w-5 h-5 mr-2 text-red-500" />
+    icon: <ArrowDownRight className="w-5 h-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
   },
   {
     title: 'Economic Sensitivity',
     description: 'These companies are highly levered to the domestic economy. They are particularly vulnerable to rising interest rates (as they rely more on debt) and inflation (as they have less pricing power than large corporations).',
-    icon: <LineChart className="w-5 h-5 mr-2 text-red-500" />
+    icon: <LineChart className="w-5 h-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
   },
   {
     title: 'Misses Mega-Trends',
     description: 'The strict size-based rules mean the index misses out on secular growth themes dominated by mega-caps. For example, the AI revolution has been primarily driven by giants like NVIDIA, which long ago graduated from the small-cap universe.',
-    icon: <Target className="w-5 h-5 mr-2 text-red-500" />
+    icon: <Target className="w-5 h-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
   },
   {
     title: 'The "Profitability Problem"',
     description: 'A significant portion of the index (often 30-40%) consists of unprofitable companies. This can drag on overall returns and makes traditional valuation metrics like the P/E ratio misleading.',
-    icon: <AlertTriangle className="w-5 h-5 mr-2 text-red-500" />
+    icon: <AlertTriangle className="w-5 h-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
   },
 ];
 
@@ -129,7 +129,7 @@ const Section = ({ id, title, subtitle, children, className = "" }: SectionProps
   <section id={id} className={`py-16 px-4 sm:px-6 lg:px-8 ${className}`}>
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">{title}</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl font-serif">{title}</h2>
         <p className="mt-4 text-lg text-gray-500">{subtitle}</p>
       </div>
       {children}
@@ -144,7 +144,7 @@ interface StatCardProps {
 }
 
 const StatCard = ({ title, value, icon }: StatCardProps) => (
-  <div className="bg-white rounded-xl shadow-lg p-6 flex items-start space-x-4 transform hover:-translate-y-1 transition-transform duration-300">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg p-6 flex items-start space-x-4 transform hover:-translate-y-1 transition-transform duration-300">
     <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
       {icon}
     </div>
@@ -164,10 +164,10 @@ export default function Russell2000Page() {
         </p>
 
         {/* Anatomy Section */}
-        <Section id="anatomy" title="Anatomy of the Index" subtitle="What defines the Russell 2000 and who gets in?" className="bg-white">
+        <Section id="anatomy" title="Anatomy of the Index" subtitle="What defines the Russell 2000 and who gets in?" className="bg-white dark:bg-[#0A0D14]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900">A Purely Rules-Based Approach</h3>
+              <h3 className="text-2xl font-bold text-gray-900 font-serif">A Purely Rules-Based Approach</h3>
               <p className="text-gray-600">
                 The Russell 2000 is a segment of the broader Russell 3000 index, which represents about 98% of the investable U.S. equity market. The Russell 2000 comprises the smallest 2,000 companies by market capitalization from that list, making it the leading benchmark for U.S. small-cap stocks. Unlike committee-led indices like the S&amp;P 500, inclusion is a mechanical, transparent process based on verifiable criteria.
               </p>
@@ -184,7 +184,7 @@ export default function Russell2000Page() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Top Holdings (Illustrative)</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center font-serif">Top Holdings (Illustrative)</h3>
               <p className="text-center text-sm text-gray-500 mb-4">
                 Note: The top holdings change frequently, especially during reconstitution. This is a snapshot in time.
               </p>
@@ -206,12 +206,12 @@ export default function Russell2000Page() {
             </div>
           </div>
           <div className="mt-16">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">Sector Composition</h3>
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-2 font-serif">Sector Composition</h3>
             <p className="text-center text-gray-500 max-w-3xl mx-auto mb-6">
               The index is well-diversified across sectors, with a notable tilt towards cyclical areas like Industrials and Financials. This composition makes the index particularly sensitive to the business cycle, performing well during economic expansions but often struggling during contractions.
             </p>
             <div className="w-full">
-              <div className="bg-white p-4 rounded-lg">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {sectorWeights.map((sector, index) => (
                     <div key={sector.name} className="flex flex-col items-center p-3 bg-gray-50 rounded-lg">
@@ -233,30 +233,30 @@ export default function Russell2000Page() {
         {/* Reconstitution Section */}
         <Section id="reconstitution" title="The Great Rebalance" subtitle="How the index adapts to market changes.">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <Repeat className="mx-auto w-12 h-12 text-blue-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Annual Recalibration</h3>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-lg text-center">
+              <Repeat className="mx-auto w-12 h-12 text-[#A8672E] dark:text-[#D08F52] mb-4" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 font-serif">Annual Recalibration</h3>
               <p className="text-gray-600">
                 Each June, the index is fully rebuilt based on market caps from &ldquo;rank day&rdquo; in May. This rigid, predictable schedule is a key feature and a source of criticism.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <GraduationCap className="mx-auto w-12 h-12 text-green-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Graduation &amp; Demotion</h3>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-lg text-center">
+              <GraduationCap className="mx-auto w-12 h-12 text-[#1D8A70] dark:text-[#3CBF9C] mb-4" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 font-serif">Graduation &amp; Demotion</h3>
               <p className="text-gray-600">
                 Successful companies grow out of the Russell 2000 and &ldquo;graduate&rdquo; to the large-cap Russell 1000. Super Micro Computer (SMCI) is a famous recent example of a top performer leaving the index.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-lg text-center">
               <AlertTriangle className="mx-auto w-12 h-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">The &ldquo;Reconstitution Effect&rdquo;</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 font-serif">The &ldquo;Reconstitution Effect&rdquo;</h3>
               <p className="text-gray-600">
                 Arbitrageurs and hedge funds front-run the predictable changes, buying expected additions and shorting deletions. This creates price distortions and a hidden cost for passive funds that are forced to trade at inflated/depressed prices.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <Layers className="mx-auto w-12 h-12 text-indigo-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">&ldquo;Banding&rdquo; Mechanism</h3>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-lg text-center">
+              <Layers className="mx-auto w-12 h-12 text-[#A8672E] dark:text-[#D08F52] mb-4" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 font-serif">&ldquo;Banding&rdquo; Mechanism</h3>
               <p className="text-gray-600">
                 To reduce excessive turnover, a stock is only moved between indices if its market cap moves significantly (typically +/- 2.5%) beyond the breakpoint, creating a &ldquo;band&rdquo; to keep borderline companies stable.
               </p>
@@ -265,38 +265,38 @@ export default function Russell2000Page() {
         </Section>
 
         {/* Valuation Section */}
-        <Section id="valuation" title="What's the Price?" subtitle="A nuanced look at whether small-caps are cheap or expensive." className="bg-white">
+        <Section id="valuation" title="What's the Price?" subtitle="A nuanced look at whether small-caps are cheap or expensive." className="bg-white dark:bg-[#0A0D14]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <StatCard
               title="P/E Ratio (Excl. Neg.)"
               value={valuationMetrics.peRatio}
-              icon={<LineChart className="w-6 h-6 text-blue-600"/>}
+              icon={<LineChart className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}
             />
             <StatCard
               title="Price/Book Ratio"
               value={valuationMetrics.pbRatio}
-              icon={<BookOpen className="w-6 h-6 text-blue-600"/>}
+              icon={<BookOpen className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}
             />
             <StatCard
               title="Price/Sales Ratio"
               value={valuationMetrics.psRatio}
-              icon={<Scale className="w-6 h-6 text-blue-600"/>}
+              icon={<Scale className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}
             />
             <StatCard
               title="Dividend Yield"
               value={valuationMetrics.dividendYield}
-              icon={<DollarSign className="w-6 h-6 text-blue-600"/>}
+              icon={<DollarSign className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}
             />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <div className="bg-red-100 border-l-4 border-red-500 p-6 rounded-r-lg">
+            <div className="bg-red-100 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 rounded-r-lg">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <XCircle className="h-6 w-6 text-red-500" />
+                  <XCircle className="h-6 w-6 text-[#BC4128] dark:text-[#E2694A]" />
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-lg font-bold text-red-800">The Profitability Dilemma</h3>
-                  <div className="mt-2 text-sm text-red-700">
+                  <h3 className="text-lg font-bold text-red-800 font-serif">The Profitability Dilemma</h3>
+                  <div className="mt-2 text-sm text-[#BC4128] dark:text-[#E2694A]">
                     <p>
                       The headline P/E ratio is highly misleading. With typically 30-40% of constituent companies being unprofitable, they are excluded from this calculation. This systematically understates the &ldquo;true&rdquo; valuation of the index. The high number of cash-burning firms means investors are paying for future growth that, for many, may never materialize.
                     </p>
@@ -304,14 +304,14 @@ export default function Russell2000Page() {
                 </div>
               </div>
             </div>
-            <div className="bg-green-100 border-l-4 border-green-500 p-6 rounded-r-lg">
+            <div className="bg-green-100 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-6 rounded-r-lg">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <CheckCircle className="h-6 w-6 text-green-500" />
+                  <CheckCircle className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C]" />
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-lg font-bold text-green-800">Historical Context</h3>
-                  <div className="mt-2 text-sm text-green-700">
+                  <h3 className="text-lg font-bold text-green-800 font-serif">Historical Context</h3>
+                  <div className="mt-2 text-sm text-[#1D8A70] dark:text-[#3CBF9C]">
                     <p>
                       Relative to history, a P/E of {valuationMetrics.peRatio} is slightly below the long-term average (around {valuationMetrics.historicalAvgPE}). Bulls argue this suggests small-caps are reasonably priced, especially if the economy avoids recession and these companies can grow into their valuations. However, this relies on earnings growth materializing as forecast.
                     </p>
@@ -325,8 +325,8 @@ export default function Russell2000Page() {
         {/* Investment Thesis Section */}
         <Section id="thesis" title="The Investment Thesis" subtitle="Why consider small-caps, and what are the risks involved?">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div className="bg-green-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-8 rounded-lg">
+              <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center font-serif">
                 <CheckCircle className="w-8 h-8 mr-3"/> The Pros
               </h3>
               <ul className="space-y-4">
@@ -340,8 +340,8 @@ export default function Russell2000Page() {
                 ))}
               </ul>
             </div>
-            <div className="bg-red-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-8 rounded-lg">
+              <h3 className="text-2xl font-bold text-red-800 mb-6 flex items-center font-serif">
                 <XCircle className="w-8 h-8 mr-3"/> The Cons
               </h3>
               <ul className="space-y-4">
@@ -359,9 +359,9 @@ export default function Russell2000Page() {
         </Section>
 
         {/* Critique Section */}
-        <Section id="critique" title="A Methodological Critique" subtitle="Is market cap the best way to select small-cap stocks?" className="bg-white">
+        <Section id="critique" title="A Methodological Critique" subtitle="Is market cap the best way to select small-cap stocks?" className="bg-white dark:bg-[#0A0D14]">
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">Russell 2000 vs. S&amp;P SmallCap 600</h3>
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-2 font-serif">Russell 2000 vs. S&amp;P SmallCap 600</h3>
             <p className="text-center text-gray-500 mb-8">
               A simple profitability screen makes a world of difference in long-term performance.
             </p>
@@ -375,7 +375,7 @@ export default function Russell2000Page() {
                       <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">S&amp;P SmallCap 600</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200 bg-white">
+                  <tbody className="divide-y divide-gray-200 bg-white dark:bg-[#0A0D14]">
                     {comparisonData.map((row) => (
                       <tr key={row.feature}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
@@ -383,14 +383,14 @@ export default function Russell2000Page() {
                         </td>
                         <td className={`whitespace-nowrap px-3 py-4 text-sm ${
                           row.r2000 === 'No' || row.r2000.startsWith('~7.8') || row.r2000 === 'Higher'
-                            ? 'text-red-500'
+                            ? 'text-[#BC4128] dark:text-[#E2694A]'
                             : 'text-gray-500'
                         }`}>
                           {row.r2000}
                         </td>
                         <td className={`whitespace-nowrap px-3 py-4 text-sm ${
                           row.sp600 === 'Yes' || row.sp600.startsWith('~9.5') || row.sp600 === 'Lower'
-                            ? 'text-green-500'
+                            ? 'text-[#1D8A70] dark:text-[#3CBF9C]'
                             : 'text-gray-500'
                         }`}>
                           {row.sp600}
@@ -409,8 +409,8 @@ export default function Russell2000Page() {
 
         {/* Conclusion Section */}
         <Section id="conclusion" title="Conclusion" subtitle="Synthesizing the analysis for the modern portfolio.">
-          <div className="max-w-4xl mx-auto text-center bg-blue-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">An Excellent Benchmark, A Flawed Investment Vehicle</h3>
+          <div className="max-w-4xl mx-auto text-center bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 font-serif">An Excellent Benchmark, A Flawed Investment Vehicle</h3>
             <p className="text-gray-600 text-lg">
               The Russell 2000 is an indispensable tool for measuring the small-cap market and the health of the domestic economy. Its broadness captures the entire opportunity set. However, its structural flaws&mdash;the costly reconstitution effect and the inclusion of hundreds of unprofitable firms&mdash;make ETFs that track it (like IWM) a suboptimal choice for most long-term, passive investors.
             </p>

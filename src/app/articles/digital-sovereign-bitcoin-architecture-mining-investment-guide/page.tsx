@@ -35,7 +35,7 @@ const Callout = ({ title, children, emoji }: {
     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl">
       {emoji}
     </div>
-    <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2 font-serif">
+    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 flex items-center gap-2 font-serif">
       <span className="text-2xl">{emoji}</span> {title}
     </h3>
     <div className="text-slate-600 dark:text-slate-400 relative z-10">
@@ -100,7 +100,7 @@ export default function BitcoinGuide() {
                   <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">Account Model (Traditional)</h4>
                   <p className="text-sm">Database entry: "Alice Balance: $80". Updates overwrite the previous number.</p>
                 </div>
-                <div className="bg-orange-50 p-6 rounded-xl border border-orange-100 ring-2 ring-orange-200">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-6 rounded-xl border border-orange-100 ring-2 ring-orange-200">
                   <h4 className="font-bold text-orange-900 mb-2">UTXO Model (Bitcoin)</h4>
                   <p className="text-sm">Alice holds specific "chunks" of digital value. To spend 1 BTC from a 5 BTC chunk, she must "melt" the 5 BTC input and create two new outputs: 1 BTC to Bob, and 4 BTC back to herself as change.</p>
                 </div>
@@ -470,19 +470,19 @@ export default function BitcoinGuide() {
           <Section 
             title="Regulation & Taxes" 
             icon={Scale}
-            color={{ border: 'border-teal-100', text: 'text-teal-600' }}
-            bgInfo={{ header: 'bg-teal-50/50', icon: 'bg-white dark:bg-[#0A0D14]' }}
+            color={{ border: 'border-teal-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
+            bgInfo={{ header: 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50', icon: 'bg-white dark:bg-[#0A0D14]' }}
           >
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">
                 <h3 className="font-bold text-lg mb-3 flex items-center gap-2 font-serif">
-                  <FileText size={18} className="text-teal-500"/> Taxation (US)
+                  <FileText size={18} className="text-[#A8672E] dark:text-[#D08F52]"/> Taxation (US)
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Bitcoin is treated as <strong>property</strong>. Every trade, sale, or purchase (even coffee) is a taxable event causing Capital Gains or Losses. New reporting rules (Form 1099-DA) mean exchanges report directly to the IRS.</p>
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-lg mb-3 flex items-center gap-2 font-serif">
-                  <Lock size={18} className="text-teal-500"/> Self-Custody
+                  <Lock size={18} className="text-[#A8672E] dark:text-[#D08F52]"/> Self-Custody
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">A major legislative theme in 2025 is the "Right to Self-Custody"—protecting the individual's right to hold their own private keys without third-party interference.</p>
               </div>

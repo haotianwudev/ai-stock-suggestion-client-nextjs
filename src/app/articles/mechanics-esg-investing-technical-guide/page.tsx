@@ -43,9 +43,9 @@ export default function ESGTutorial() {
                   Corporate Social Responsibility. Qualitative, philanthropic, detached from the core business model. "How we spend our profits."
                 </p>
               </div>
-              <div className="p-6 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-lg shadow-sm">
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/50 rounded-lg shadow-sm">
                 <h4 className="font-bold text-indigo-900 dark:text-indigo-300 mb-2">New Paradigm (ESG)</h4>
-                <p className="text-sm text-indigo-800 dark:text-indigo-400">
+                <p className="text-sm text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52]">
                   Environmental, Social, Governance. Quantitative, integrated into strategy, financially material. "How we make our profits."
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function ESGTutorial() {
           {/* 2. The Pillars Deep Dive */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-emerald-600 dark:text-emerald-500">
+              <div className="flex items-center gap-3 mb-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                 <Leaf size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The ESG Pillars: Metrics & KPIs</h2>
               </div>
@@ -68,7 +68,7 @@ export default function ESGTutorial() {
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
                 <div className="p-6 md:p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-500">
+                    <div className="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                       <Leaf size={24} />
                     </div>
                     <div>
@@ -81,22 +81,22 @@ export default function ESGTutorial() {
                   
                   <div className="space-y-10">
                     <div>
-                      <h4 className="flex items-center gap-2 font-bold text-emerald-800 dark:text-emerald-400 mb-4 text-lg">
+                      <h4 className="flex items-center gap-2 font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 text-lg">
                         <Thermometer size={20} /> Climate Change: Risk Types
                       </h4>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
                           <strong className="block text-emerald-900 dark:text-emerald-300 mb-2">Physical Risk</strong>
-                          <p className="text-sm text-emerald-800 dark:text-emerald-400/80 mb-3">Direct damage to assets from weather events.</p>
-                          <ul className="text-sm text-emerald-700 dark:text-emerald-500 list-disc list-inside space-y-1">
+                          <p className="text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]/80 mb-3">Direct damage to assets from weather events.</p>
+                          <ul className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] list-disc list-inside space-y-1">
                             <li><strong>Acute:</strong> Floods, hurricanes disrupting factories.</li>
                             <li><strong>Chronic:</strong> Rising sea levels affecting real estate value.</li>
                           </ul>
                         </div>
-                        <div className="bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
                           <strong className="block text-emerald-900 dark:text-emerald-300 mb-2">Transition Risk</strong>
-                          <p className="text-sm text-emerald-800 dark:text-emerald-400/80 mb-3">Financial loss from moving to a low-carbon economy.</p>
-                          <ul className="text-sm text-emerald-700 dark:text-emerald-500 list-disc list-inside space-y-1">
+                          <p className="text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]/80 mb-3">Financial loss from moving to a low-carbon economy.</p>
+                          <ul className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] list-disc list-inside space-y-1">
                             <li><strong>Policy:</strong> Carbon taxes, bans on ICE vehicles.</li>
                             <li><strong>Market:</strong> "Stranded Assets" (coal reserves becoming worthless).</li>
                           </ul>
@@ -134,9 +134,9 @@ export default function ESGTutorial() {
                     <div>
                       <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-4 text-sm uppercase tracking-wide">Key Environmental Metrics</h4>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <MetricBox icon={Thermometer} color="text-red-500" label="Carbon Intensity" value="tCO2e / $M Rev" desc="Standardizes footprint by revenue for comparison." />
-                        <MetricBox icon={Droplets} color="text-blue-500" label="Water Intensity" value="m³ / $M Rev" desc="Critical for Semiconductor & Beverage sectors." />
-                        <MetricBox icon={Trees} color="text-emerald-600" label="Biodiversity" value="Land Use %" desc="Ops in protected areas (TNFD framework)." />
+                        <MetricBox icon={Thermometer} color="text-[#BC4128] dark:text-[#E2694A]" label="Carbon Intensity" value="tCO2e / $M Rev" desc="Standardizes footprint by revenue for comparison." />
+                        <MetricBox icon={Droplets} color="text-[#A8672E] dark:text-[#D08F52]" label="Water Intensity" value="m³ / $M Rev" desc="Critical for Semiconductor & Beverage sectors." />
+                        <MetricBox icon={Trees} color="text-[#1D8A70] dark:text-[#3CBF9C]" label="Biodiversity" value="Land Use %" desc="Ops in protected areas (TNFD framework)." />
                         <MetricBox icon={Zap} color="text-yellow-500" label="Green Revenue" value="%" desc="% of revenue derived from sustainable products." />
                       </div>
                     </div>
@@ -148,7 +148,7 @@ export default function ESGTutorial() {
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
                 <div className="p-6 md:p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                    <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                       <Users size={24} />
                     </div>
                     <div>
@@ -161,7 +161,7 @@ export default function ESGTutorial() {
                   
                   <div className="space-y-10">
                     <div>
-                      <h4 className="flex items-center gap-2 font-bold text-indigo-800 dark:text-indigo-400 mb-4 text-lg">
+                      <h4 className="flex items-center gap-2 font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 text-lg">
                         <Briefcase size={20} /> Human Capital Management (Internal)
                       </h4>
                       <p className="text-slate-600 dark:text-slate-400 mb-6">
@@ -175,25 +175,25 @@ export default function ESGTutorial() {
                     </div>
 
                     <div>
-                      <h4 className="flex items-center gap-2 font-bold text-indigo-800 dark:text-indigo-400 mb-4 text-lg">
+                      <h4 className="flex items-center gap-2 font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 text-lg">
                         <HeartHandshake size={20} /> Stakeholder Management (External)
                       </h4>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-indigo-50 dark:bg-indigo-900/10 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
+                        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/10 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
                           <strong className="block text-indigo-900 dark:text-indigo-300 mb-3 flex items-center gap-2">
                             <Smartphone size={16}/> Product Liability
                           </strong>
-                          <ul className="text-sm text-indigo-800 dark:text-indigo-400/80 space-y-2">
+                          <ul className="text-sm text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52]/80 space-y-2">
                             <li><strong>Data Privacy:</strong> GDPR/CCPA fines, data breaches (Tech/Banks).</li>
                             <li><strong>Product Safety:</strong> Recalls per year (Auto/Pharma).</li>
                             <li><strong>Access:</strong> Pricing schemes for low-income markets (Pharma).</li>
                           </ul>
                         </div>
-                        <div className="bg-indigo-50 dark:bg-indigo-900/10 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
+                        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/10 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
                           <strong className="block text-indigo-900 dark:text-indigo-300 mb-3 flex items-center gap-2">
                             <Globe size={16}/> Supply Chain
                           </strong>
-                          <ul className="text-sm text-indigo-800 dark:text-indigo-400/80 space-y-2">
+                          <ul className="text-sm text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52]/80 space-y-2">
                             <li><strong>Modern Slavery:</strong> Audits of Tier 1 & Tier 2 suppliers.</li>
                             <li><strong>Conflict Minerals:</strong> Tracing 3TG (Tantalum, Tin, Tungsten, Gold).</li>
                             <li><strong>Responsible Sourcing:</strong> % of raw materials certified.</li>
@@ -261,11 +261,11 @@ export default function ESGTutorial() {
                         <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
                           <li className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
                             <span>One Share, One Vote</span>
-                            <span className="text-emerald-600 dark:text-emerald-500 font-bold">Good</span>
+                            <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Good</span>
                           </li>
                           <li className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
                             <span>Dual Class Structures</span>
-                            <span className="text-red-500 font-bold">Bad</span>
+                            <span className="text-[#BC4128] dark:text-[#E2694A] font-bold">Bad</span>
                           </li>
                           <li className="text-xs text-slate-500 italic mt-2">
                             (Dual class allows founders to control voting power disproportionate to their economic stake).
@@ -283,13 +283,13 @@ export default function ESGTutorial() {
                       </div>
                     </div>
 
-                    <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800/30 p-5 rounded-xl">
-                      <strong className="text-red-800 dark:text-red-400 text-sm block mb-3">Governance Red Flags to Watch:</strong>
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/10 border border-red-200 dark:border-red-800/30 p-5 rounded-xl">
+                      <strong className="text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] text-sm block mb-3">Governance Red Flags to Watch:</strong>
                       <div className="flex flex-wrap gap-2">
-                        <Badge text="Poison Pills" color="bg-white dark:bg-slate-900 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50" />
-                        <Badge text="Staggered Boards" color="bg-white dark:bg-slate-900 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50" />
-                        <Badge text="Related Party Txns" color="bg-white dark:bg-slate-900 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50" />
-                        <Badge text="Qualified Audit Opinions" color="bg-white dark:bg-slate-900 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50" />
+                        <Badge text="Poison Pills" color="bg-white dark:bg-slate-900 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] border border-red-200 dark:border-red-800/50" />
+                        <Badge text="Staggered Boards" color="bg-white dark:bg-slate-900 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] border border-red-200 dark:border-red-800/50" />
+                        <Badge text="Related Party Txns" color="bg-white dark:bg-slate-900 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] border border-red-200 dark:border-red-800/50" />
+                        <Badge text="Qualified Audit Opinions" color="bg-white dark:bg-slate-900 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] border border-red-200 dark:border-red-800/50" />
                       </div>
                     </div>
                   </div>
@@ -303,14 +303,14 @@ export default function ESGTutorial() {
           {/* 3. Frameworks & Regulations */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Landmark size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Frameworks & Regulations</h2>
               </div>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl">The shift from voluntary 'Alphabet Soup' to mandatory legal compliance.</p>
             </div>
             
-            <div className="bg-blue-50 dark:bg-blue-900/10 border-l-4 border-blue-500 p-6 rounded-r-xl mb-12">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-xl mb-12">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 font-serif">The Great Consolidation</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
                 For 20 years, companies reported voluntarily using confusing, overlapping standards (GRI, SASB, TCFD, CDP). We are now entering the era of <strong>Mandatory Reporting</strong>. The voluntary frameworks are merging into global baselines (ISSB), while governments (EU, CA, US) are passing hard laws requiring audit-grade data.
@@ -350,23 +350,23 @@ export default function ESGTutorial() {
 
             <div className="space-y-8">
               <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
-                <div className="bg-emerald-50 dark:bg-emerald-900/20 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-                  <Globe className="text-emerald-600 dark:text-emerald-400" size={24} />
-                  <h3 className="font-bold text-slate-900 dark:text-white text-lg">The European Engine (The Gold Standard)</h3>
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                  <Globe className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" size={24} />
+                  <h3 className="font-bold text-slate-900 dark:text-white text-lg font-serif">The European Engine (The Gold Standard)</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-slate-600 dark:text-slate-400 mb-6">The EU has the most advanced and comprehensive sustainable finance laws in the world.</p>
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <strong className="text-slate-900 dark:text-white block mb-1">CSRD (Reporting)</strong>
-                      <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-2 block">Corporate Sustainability Reporting Directive</span>
+                      <span className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] uppercase mb-2 block">Corporate Sustainability Reporting Directive</span>
                       <p className="text-sm text-slate-600 dark:text-slate-400">
                         Replaces the NFRD. Requires ~50,000 companies to report over 1,000 data points. Mandatory independent audit of ESG data.
                       </p>
                     </div>
                     <div>
                       <strong className="text-slate-900 dark:text-white block mb-1">SFDR (Investing)</strong>
-                      <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-2 block">Sustainable Finance Disclosure Reg</span>
+                      <span className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] uppercase mb-2 block">Sustainable Finance Disclosure Reg</span>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">Labels for Investment Funds to prevent greenwashing:</p>
                       <ul className="text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
                         <li><strong>Art. 6:</strong> Grey (Standard).</li>
@@ -385,9 +385,9 @@ export default function ESGTutorial() {
               </div>
 
               <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
-                <div className="bg-blue-50 dark:bg-blue-900/20 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-                  <FileText className="text-blue-600 dark:text-blue-400" size={24} />
-                  <h3 className="font-bold text-slate-900 dark:text-white text-lg">The Global Baseline: ISSB</h3>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                  <FileText className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={24} />
+                  <h3 className="font-bold text-slate-900 dark:text-white text-lg font-serif">The Global Baseline: ISSB</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-slate-600 dark:text-slate-400 mb-6">
@@ -395,14 +395,14 @@ export default function ESGTutorial() {
                   </p>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
-                      <strong className="text-blue-600 dark:text-blue-400 block text-lg font-serif">IFRS S1</strong>
+                      <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block text-lg font-serif">IFRS S1</strong>
                       <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">General Requirements</span>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
                         Requires companies to disclose sustainability-related risks and opportunities that could affect cash flows.
                       </p>
                     </div>
                     <div className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
-                      <strong className="text-blue-600 dark:text-blue-400 block text-lg font-serif">IFRS S2</strong>
+                      <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block text-lg font-serif">IFRS S2</strong>
                       <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Climate Disclosures</span>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
                         Mandates Scope 1, 2, and 3 reporting + climate scenario analysis. Based heavily on TCFD.
@@ -419,7 +419,7 @@ export default function ESGTutorial() {
           {/* 4. Measurement & Divergence */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <BarChart3 size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Measuring ESG: The Data Challenge</h2>
               </div>
@@ -427,22 +427,22 @@ export default function ESGTutorial() {
             </div>
             
             <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30 p-6 rounded-xl mb-12">
-              <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3 flex items-center gap-2 font-serif">
                 <AlertTriangle size={24} /> The Problem of "Aggregate Confusion"
               </h3>
               <p className="text-amber-800 dark:text-amber-200/80 mb-6">
                 If you ask Moody's and S&P "Is this company likely to go bankrupt?", they agree 99% of the time. If you ask MSCI and Sustainalytics "Is this company 'Green'?", they might give completely opposite answers. This divergence comes from:
               </p>
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
+                <div className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/20 p-4 rounded-lg">
                   <strong className="block text-amber-900 dark:text-amber-300 mb-1">1. Scope (What?)</strong>
                   <p className="text-sm text-amber-800 dark:text-amber-200/80">One agency includes Lobbying, another ignores it.</p>
                 </div>
-                <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
+                <div className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/20 p-4 rounded-lg">
                   <strong className="block text-amber-900 dark:text-amber-300 mb-1">2. Weight (How Much?)</strong>
                   <p className="text-sm text-amber-800 dark:text-amber-200/80">Agencies assign different weights to the same issue.</p>
                 </div>
-                <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
+                <div className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/20 p-4 rounded-lg">
                   <strong className="block text-amber-900 dark:text-amber-300 mb-1">3. Measurement (How?)</strong>
                   <p className="text-sm text-amber-800 dark:text-amber-200/80">Number of lawsuits vs. Total $ fines paid.</p>
                 </div>
@@ -458,19 +458,19 @@ export default function ESGTutorial() {
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Step 1</div>
                   <div className="font-bold text-slate-900 dark:text-white mb-2">Corporate Disclosure</div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">CSR Reports, 10-Ks. (Self-reported, often biased).</p>
-                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700">&rarr;</div>
+                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700 dark:text-slate-300">&rarr;</div>
                 </div>
                 <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 relative">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Step 2</div>
                   <div className="font-bold text-slate-900 dark:text-white mb-2">Alternative Data</div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">News scraping, NGO reports, satellite imagery.</p>
-                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700">&rarr;</div>
+                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700 dark:text-slate-300">&rarr;</div>
                 </div>
                 <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 relative">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Step 3</div>
                   <div className="font-bold text-slate-900 dark:text-white mb-2">AI & Estimation</div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Filling gaps via algorithms if a company doesn't report data.</p>
-                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700">&rarr;</div>
+                  <div className="hidden md:block absolute -right-4 top-1/2 -mt-2 z-10 text-slate-300 dark:text-slate-700 dark:text-slate-300">&rarr;</div>
                 </div>
                 <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Step 4</div>
@@ -560,7 +560,7 @@ export default function ESGTutorial() {
             
             <div className="mt-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl">
               <div className="flex items-center gap-3 mb-3">
-                <Megaphone className="text-teal-600 dark:text-teal-400" size={24} />
+                <Megaphone className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={24} />
                 <h4 className="font-bold text-slate-900 dark:text-white text-lg font-serif">5. Active Stewardship (Engagement)</h4>
               </div>
               <p className="text-slate-600 dark:text-slate-400 mb-4">
@@ -591,7 +591,7 @@ export default function ESGTutorial() {
                 "Beware of Greenwashing: Demand audited data and interim targets, not just 2050 pledges."
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle className="flex-shrink-0 text-emerald-400 mt-0.5" size={20} />
+                  <CheckCircle className="flex-shrink-0 text-[#1D8A70] dark:text-[#3CBF9C] mt-0.5" size={20} />
                   <span className="text-slate-300">{item}</span>
                 </li>
               ))}

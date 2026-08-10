@@ -4,8 +4,8 @@ import React from 'react';
 import { ArticleFrame } from '@/components/articles/article-frame';
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-100">
-    <h2 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-6 pb-2 border-b border-blue-100">
+  <section className="mb-12 bg-white dark:bg-[#0A0D14] p-6 sm:p-8 rounded-lg shadow-sm border border-gray-100">
+    <h2 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-6 pb-2 border-b border-blue-100 font-serif">
       {title}
     </h2>
     <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -15,7 +15,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const SubHeading = ({ title }: { title: string }) => (
-  <h3 className="text-xl sm:text-2xl font-semibold text-blue-800 mt-8 mb-4">
+  <h3 className="text-xl sm:text-2xl font-semibold text-blue-800 mt-8 mb-4 font-serif">
     {title}
   </h3>
 );
@@ -36,7 +36,7 @@ const StyledTable = ({ headers, data, caption }: {
           ))}
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} className="hover:bg-gray-50">
             {row.map((cell, cellIndex) => (
@@ -58,7 +58,7 @@ const StyledTable = ({ headers, data, caption }: {
 
 const ListItem = ({ children }: { children: React.ReactNode }) => (
   <li className="relative pl-6">
-    <span className="absolute left-0 top-2 w-2 h-2 bg-blue-500 rounded-full"></span>
+    <span className="absolute left-0 top-2 w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></span>
     {children}
   </li>
 );
@@ -69,13 +69,13 @@ const ProConList = ({ title, items, isPro }: {
   isPro: boolean;
 }) => (
   <div className="my-4">
-    <h4 className={`text-lg font-semibold ${isPro ? 'text-green-700' : 'text-red-700'}`}>
+    <h4 className={`text-lg font-semibold ${isPro ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
       {title}
     </h4>
     <ul className="mt-2 space-y-2">
       {items.map((item, index) => (
         <li key={index} className="flex items-start">
-          <span className={`mr-2 mt-1.5 flex-shrink-0 w-4 h-4 rounded-full ${isPro ? 'bg-green-500' : 'bg-red-500'} flex items-center justify-center text-white text-xs font-bold`}>
+          <span className={`mr-2 mt-1.5 flex-shrink-0 w-4 h-4 rounded-full ${isPro ? 'bg-[#1D8A70] dark:bg-[#3CBF9C]' : 'bg-[#BC4128] dark:bg-[#E2694A]'} flex items-center justify-center text-white text-xs font-bold`}>
             {isPro ? '+' : '−'}
           </span>
           <span>{item}</span>
@@ -90,8 +90,8 @@ export default function InsuranceProductsAnalysis() {
     <ArticleFrame slug="quantitative-analysis-insurance-products-retirement-security">
       <div className="max-w-4xl mx-auto px-4 text-gray-900">
         {/* Executive Summary */}
-        <div className="mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-200">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">Executive Summary</h2>
+        <div className="mb-12 bg-white dark:bg-[#0A0D14] p-6 sm:p-8 rounded-lg shadow-md border border-gray-200">
+          <h2 className="text-3xl font-bold text-blue-900 mb-4 font-serif">Executive Summary</h2>
           <p className="text-gray-700 leading-relaxed">
             This report provides a comprehensive quantitative analysis of three primary insurance-based retirement solutions: annuities, long-term care (LTC) insurance, and permanent life insurance. The analysis deconstructs each product&apos;s cost structure, performance potential, and strategic utility, comparing them rigorously against a self-directed investment benchmark (the S&amp;P 500). Key findings indicate that while these products offer valuable risk mitigation features&mdash;namely longevity and healthcare cost protection&mdash;their investment performance is structurally designed to lag direct market investments due to fees, complexity, and the inherent cost of insurance guarantees. The necessity of each product is highly dependent on an individual&apos;s net worth, risk tolerance, and existing retirement assets. Annuities are best suited for individuals seeking to create a pension-like income floor, LTC insurance is critical for those with assets vulnerable to depletion by healthcare costs, and permanent life insurance serves as a niche, tax-advantaged vehicle for supplemental income after other retirement accounts are maximized. Strategic deployment requires a clear understanding of the trade-off between insurance protection and investment opportunity cost.
           </p>
@@ -338,7 +338,7 @@ export default function InsuranceProductsAnalysis() {
             The value of a LIRP is its tax-equivalent return. A tax-free IRR is compared to the pre-tax return needed in a taxable account to achieve the same result.
           </p>
 
-          <div className="my-6 p-4 bg-blue-50 border border-blue-200 rounded-md text-center">
+          <div className="my-6 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-md text-center">
             <p className="text-lg font-mono text-blue-900">
               Tax-Equivalent Yield = Tax-Free IRR / (1 - Marginal Tax Rate)
             </p>

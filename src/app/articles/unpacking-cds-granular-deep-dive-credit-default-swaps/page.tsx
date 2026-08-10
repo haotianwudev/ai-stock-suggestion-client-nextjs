@@ -18,7 +18,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Foundational Intuition</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Foundational Intuition</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -93,7 +93,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Target className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Pricing and Valuation</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Pricing and Valuation</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -142,7 +142,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Globe className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. The Big Bang Protocol</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Big Bang Protocol</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -181,7 +181,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Scale className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Risk Sensitivities (CS01)</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Risk Sensitivities (CS01)</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -220,7 +220,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Calculator className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Precise Estimation</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Precise Estimation</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -245,7 +245,7 @@ export default function UnpackingCDSArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <ShieldAlert className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">6. Stress Testing Logic</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Stress Testing Logic</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">

@@ -19,38 +19,38 @@ export default function NavigatingOptionTradingStrategies() {
 
       <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-8">
         <section id="introduction" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Introduction: Choosing Your Path</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Introduction: Choosing Your Path</h2>
           <p className="mb-3">Based on the sources, there is <strong>no single &quot;best&quot; strategy</strong>. The most feasible strategies for an individual depend on their <strong>knowledge</strong> and <strong>suitability</strong>, incorporating their own <strong>risk/reward attitude</strong> and <strong>financial condition</strong>. An investor must understand the strategy and their own attitude toward risk and reward. It is not proper to use a strategy if its risks violate the investor&apos;s financial objectives or accepted methodology.</p>
         </section>
 
         <section id="strategy-groupings" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Strategy Groupings</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Strategy Groupings</h2>
           <p className="mb-4">Strategies can generally be grouped based on the strategist&apos;s market attitude or approach:</p>
           <div className="grid md:grid-cols-2 gap-6">
-            <div id="directional-strategies" className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-md">
-              <h3 className="text-xl font-semibold text-indigo-700 dark:text-indigo-300 mb-2">Directional Strategies</h3>
+            <div id="directional-strategies" className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-md">
+              <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 mb-2 font-serif">Directional Strategies</h3>
               <p>Geared towards capitalizing on an outlook for a specific stock or the general market (bullish or bearish). These tend to be more aggressive.</p>
             </div>
-            <div id="neutral-strategies" className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md">
-              <h3 className="text-xl font-semibold text-green-700 dark:text-green-300 mb-2">Neutral Strategies</h3>
+            <div id="neutral-strategies" className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-4 rounded-md">
+              <h3 className="text-xl font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 mb-2 font-serif">Neutral Strategies</h3>
               <p>Not focused on picking market direction, but rather based on option value, often related to volatility trading. These perform well if the market net change is small over time.</p>
             </div>
             <div id="limited-risk-large-profit" className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-md">
-              <h3 className="text-xl font-semibold text-amber-700 dark:text-amber-300 mb-2">Limited Risk / Large Profit Strategies</h3>
+              <h3 className="text-xl font-semibold text-amber-700 dark:text-amber-300 mb-2 font-serif">Limited Risk / Large Profit Strategies</h3>
               <p>Have limited risk with the potential for large profits, even if the probability of large profit is low. A few large profits can potentially make up for numerous small losses.</p>
             </div>
             <div id="conservative-strategies" className="bg-sky-50 dark:bg-sky-900/20 p-4 rounded-md">
-              <h3 className="text-xl font-semibold text-sky-700 dark:text-sky-300 mb-2">Conservative Strategies</h3>
+              <h3 className="text-xl font-semibold text-sky-700 dark:text-sky-300 mb-2 font-serif">Conservative Strategies</h3>
               <p>Emphasize making a reasonable but limited return coupled with decreased risk exposure.</p>
             </div>
           </div>
         </section>
 
         <section id="outright-option-purchases" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Outright Option Purchases (Basic Directional)</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Outright Option Purchases (Basic Directional)</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Call Buying</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Call Buying</h3>
               <p className="mb-2">Involves purchasing a call option.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul className="mb-2">
@@ -73,7 +73,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Put Buying</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Put Buying</h3>
               <p className="mb-2">Involves purchasing a put option.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul className="mb-2">
@@ -94,10 +94,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="option-writing-covered" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Option Writing / Covered Positions (Often Conservative or Income Focused)</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Option Writing / Covered Positions (Often Conservative or Income Focused)</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Covered Call Writing</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Covered Call Writing</h3>
               <p className="mb-2">Involves selling a call option against shares of the underlying stock that you own.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -114,7 +114,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Collar</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Collar</h3>
               <p className="mb-2">Involves the purchase of a put and simultaneous sale of a call against an underlying instrument (implicitly, stock owned).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -122,7 +122,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Ratio Writing (against stock)</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Ratio Writing (against stock)</h3>
               <p className="mb-2">Involves selling options (typically calls) in a ratio against owned stock, often selling more calls than stock shares or in a higher ratio against the shares.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -135,7 +135,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Naked Option Writing</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Naked Option Writing</h3>
               <p className="mb-2">Involves selling options without owning the underlying security or having a hedging position.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -148,7 +148,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Covered or Ratio Put Writing</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Covered or Ratio Put Writing</h3>
               <p className="mb-2">Involves writing put options against owned stock (Covered Put Writing, implicitly) or in a ratio (Ratio Put Writing, implicitly).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -159,10 +159,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="spreads" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Spreads (Combining Multiple Options)</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Spreads (Combining Multiple Options)</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">General Spread Concepts</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">General Spread Concepts</h3>
               <ul className="mb-2">
                 <li>Spreads involve buying and selling options simultaneously.</li>
                 <li>They can be structured as <strong>credit spreads</strong> (cash inflow) or <strong>debit spreads</strong> (cash outflow).</li>
@@ -172,7 +172,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Bull Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Bull Spreads</h3>
               <p className="mb-2">Involves buying a call at one strike and selling a call at a higher strike, or buying a put at a lower strike and selling a put at a higher strike.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -189,7 +189,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Bear Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Bear Spreads</h3>
               <p className="mb-2">Involves selling a call at one strike and buying a call at a higher strike (implicitly, bear call spread), or selling a put at one strike and buying a put at a lower strike (implicitly, bear put spread).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -200,7 +200,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Calendar Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Calendar Spreads</h3>
               <p className="mb-2">Typically involves selling a near-term option and buying a longer-term option with the same striking price.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -217,7 +217,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Ratio Spreads (Call or Put)</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Ratio Spreads (Call or Put)</h3>
               <p className="mb-2">Involves buying and selling options on the same underlying, typically with the same expiration or different expirations, but in a ratio other than 1:1.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -234,7 +234,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Butterfly Spread</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Butterfly Spread</h3>
               <p className="mb-2">A neutral position involving three striking prices, utilizing a bull spread between the lower two strikes and a bear spread between the higher two strikes.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -246,7 +246,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Diagonal Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Diagonal Spreads</h3>
               <p className="mb-2">Combine options with different striking prices and different expiration dates.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -261,11 +261,11 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="combination-strategies" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Combination Strategies</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Combination Strategies</h2>
           <p className="mb-4">Often combine features of spreads, straddles, and different expirations.</p>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Spreads Combining Puts and Calls</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Spreads Combining Puts and Calls</h3>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
                 <li>These can offer <strong>potentially large profits</strong>.</li>
@@ -275,7 +275,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Calendar Combination</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Calendar Combination</h3>
               <p className="mb-2">One of three complex strategies combining calendar spreads on puts and calls. Involves selling a near-term combination (put and call) and simultaneously buying a longer-term combination (implicitly, with the same strikes).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -287,7 +287,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Calendar Straddle</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Calendar Straddle</h3>
               <p className="mb-2">Another strategy combining calendar spreads on both puts and call options by selling a near-term straddle and simultaneously purchasing a longer-term straddle.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -300,7 +300,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Diagonal Butterfly Spread</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Diagonal Butterfly Spread</h3>
               <p className="mb-2">A strategy involving both put and call options that uses differing expiration dates and strikes, which can give the opportunity to own a &quot;free&quot; combination. It is a combination of a diagonal bearish call spread and a diagonal bullish put spread.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -312,7 +312,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Straddles and Combinations (General)</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Straddles and Combinations (General)</h3>
               <p className="mb-2">Strategies that involve the use of both puts and calls together.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -321,7 +321,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Straddle Writing</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Straddle Writing</h3>
               <p className="mb-2">Involves selling both a put and a call with the same striking price and expiration date.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -335,7 +335,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Strangle Writing</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Strangle Writing</h3>
               <p className="mb-2">Involves selling both a put and a call with the same expiration date but different striking prices (typically out-of-the-money).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -351,10 +351,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="advanced-limited-risk-large-profit" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Limited Risk / Large Profit Strategies (Advanced)</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Limited Risk / Large Profit Strategies (Advanced)</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Treasury Bill/Option Strategy</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Treasury Bill/Option Strategy</h3>
               <p className="mb-2">Involves putting a large portion of money (e.g., 90%) in risk-free investments like short-term Treasury bills and buying options with the remaining portion (e.g., 10%).</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -366,7 +366,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Backspreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Backspreads</h3>
               <p className="mb-2">Generally involve selling fewer options than are bought, potentially structured as buying out-of-the-money puts and selling at-the-money puts, or buying at-the-money calls and selling out-of-the-money calls, usually with a ratio.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -379,7 +379,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Reverse Hedges and Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Reverse Hedges and Spreads</h3>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
                 <li>Considered if <strong>options are cheap and the market is expected to be volatile</strong>. (The sources describe the structure and potential outcomes but do not provide specific conditions for when to initiate these strategies beyond this general category).</li>
@@ -389,10 +389,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="volatility-trading" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Volatility Trading Strategies</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Volatility Trading Strategies</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Volatility Trading (General)</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Volatility Trading (General)</h3>
               <p className="mb-2">An approach based on the value of the option itself, distinct from picking market direction.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -404,7 +404,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Strategies for Trading Volatility Prediction</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Strategies for Trading Volatility Prediction</h3>
               <p className="mb-2">Involves trading based on the absolute level of implied volatility being perceived as &quot;wrong&quot;.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -415,7 +415,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Strategies for Trading Volatility Skew</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Strategies for Trading Volatility Skew</h3>
               <p className="mb-2">Involves trading based on the fact that implied volatilities for different options on the same underlying have substantially different values.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -430,10 +430,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="index-futures-strategies" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Index & Futures Strategies (Specialized Applications)</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Index & Futures Strategies (Specialized Applications)</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Stock Index Hedging Strategies</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Stock Index Hedging Strategies</h3>
               <p className="mb-2">Involves using futures or options to hedge the risk of an equity portfolio.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -444,7 +444,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Index Spreads</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Index Spreads</h3>
               <p className="mb-2">Involves trading the price relationship between two different indices, such as inter-index or intra-index spreads.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -454,7 +454,7 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Futures Option Trading Strategies</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Futures Option Trading Strategies</h3>
               <p className="mb-2">Strategies involving options on futures contracts.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -470,10 +470,10 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="structured-products" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Structured Products</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Structured Products</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Protected Stock or Index Products</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Protected Stock or Index Products</h3>
               <p className="mb-2">Listed structured products designed to provide upside market potential while limiting downside risk. Similar to a synthetic long call.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -482,17 +482,17 @@ export default function NavigatingOptionTradingStrategies() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Covered Write Products</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Covered Write Products</h3>
               <p className="mb-2">Listed structured products mentioned as a type. (The sources list them but do not provide specific details on their use cases).</p>
             </div>
           </div>
         </section>
 
         <section id="arbitrage" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Arbitrage</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">Arbitrage</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2">Various Arbitrage Techniques</h3>
+              <h3 className="text-2xl font-semibold text-slate-700 dark:text-gray-200 mb-2 font-serif">Various Arbitrage Techniques</h3>
               <p className="mb-2">Includes Basic Put and Call Arbitrage (&quot;Discounting&quot;), Dividend Arbitrage, Conversions and Reversals, and More on Carrying Costs. Index Arbitrage and Riskless Arbitrage are also discussed.</p>
               <p className="mb-1"><strong>When to consider:</strong></p>
               <ul>
@@ -507,7 +507,7 @@ export default function NavigatingOptionTradingStrategies() {
         </section>
 
         <section id="general-management" className="content-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
-          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">General Considerations for Strategy Selection & Management</h2>
+          <h2 className="text-3xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 font-serif">General Considerations for Strategy Selection & Management</h2>
           <ul className="space-y-4">
             <li>
               <strong>Understanding Risk:</strong> Every strategy has risk. It is crucial to understand the potential effects of early assignments, large dividend payments, striking price adjustments, and the like, especially for advanced strategies. Evaluating a position using <strong>risk measures</strong> (Greeks like delta, gamma, theta, vega) can help predict future performance.

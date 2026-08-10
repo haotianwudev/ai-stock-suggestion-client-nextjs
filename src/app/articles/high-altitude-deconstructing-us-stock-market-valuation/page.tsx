@@ -20,10 +20,10 @@ const Italic = ({ children }: { children: React.ReactNode }) => (
 
 const IconWrapper = ({ icon, color = 'indigo' }: { icon: any; color?: string }) => {
   const colors: Record<string, string> = {
-    indigo: 'bg-indigo-100 text-indigo-600',
-    green: 'bg-green-100 text-green-700',
-    red: 'bg-red-100 text-red-700',
-    blue: 'bg-blue-100 text-blue-700',
+    indigo: 'bg-indigo-100 text-[#A8672E] dark:text-[#D08F52]',
+    green: 'bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C]',
+    red: 'bg-red-100 text-[#BC4128] dark:text-[#E2694A]',
+    blue: 'bg-blue-100 text-[#A8672E] dark:text-[#D08F52]',
     purple: 'bg-purple-100 text-purple-700',
     yellow: 'bg-yellow-100 text-yellow-700',
   };
@@ -41,7 +41,7 @@ const Section = ({ title, icon, iconColor, children }: { title: string; icon: an
   <section className="mb-12">
     <div className="flex items-center mb-6 pb-3 border-b border-gray-200">
       <IconWrapper icon={icon} color={iconColor} />
-      <h2 className="text-3xl font-bold text-gray-900 leading-snug ml-4">{title}</h2>
+      <h2 className="text-3xl font-bold text-gray-900 leading-snug ml-4 font-serif">{title}</h2>
     </div>
     {children}
   </section>
@@ -49,22 +49,22 @@ const Section = ({ title, icon, iconColor, children }: { title: string; icon: an
 
 const SubSection = ({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) => (
   <div className={`mb-8 ${className}`}>
-    <h3 className="text-2xl font-semibold text-gray-800 mb-4">{title}</h3>
+    <h3 className="text-2xl font-semibold text-gray-800 mb-4 font-serif">{title}</h3>
     {children}
   </div>
 );
 
 const InfoCard = ({ children, className = "", accentColor = 'indigo' }: { children: React.ReactNode; className?: string; accentColor?: string }) => {
   const colors: Record<string, string> = {
-    indigo: 'border-indigo-500',
-    green: 'border-green-500',
-    red: 'border-red-500',
+    indigo: 'border-[#A8672E] dark:border-[#D08F52]',
+    green: 'border-[#1D8A70] dark:border-[#3CBF9C]',
+    red: 'border-[#BC4128] dark:border-[#E2694A]',
   };
 
   const borderColor = colors[accentColor] || colors.indigo;
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden border-t-4 ${borderColor} ${className}`}>
+    <div className={`bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border border-gray-100 overflow-hidden border-t-4 ${borderColor} ${className}`}>
       <div className="p-6 md:p-8">
         {children}
       </div>
@@ -74,7 +74,7 @@ const InfoCard = ({ children, className = "", accentColor = 'indigo' }: { childr
 
 const StatCard = ({ title, value, icon, color }: { title: string; value: string; icon: any; color?: string }) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex items-center space-x-4">
+    <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-lg border border-gray-100 flex items-center space-x-4">
       <IconWrapper icon={icon} color={color} />
       <div>
         <dt className="text-sm font-medium text-gray-500 truncate">{title}</dt>
@@ -85,7 +85,7 @@ const StatCard = ({ title, value, icon, color }: { title: string; value: string;
 };
 
 const EquationBlock = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-gray-100 border-l-4 border-indigo-500 p-6 rounded-r-lg my-6 font-mono text-gray-800 text-lg overflow-x-auto">
+  <div className="bg-gray-100 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg my-6 font-mono text-gray-800 text-lg overflow-x-auto">
     {children}
   </div>
 );
@@ -117,7 +117,7 @@ const StyledTable = ({ headers, rows }: { headers: string[]; rows: string[][] })
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-white dark:bg-[#0A0D14]' : 'bg-gray-50'}>
               {row.map((cell, cellIndex) => (
                 <td key={cellIndex} className="px-5 py-4 border-b border-gray-200 text-sm">
                   <div className="text-gray-900 whitespace-nowrap">{cell}</div>
@@ -382,16 +382,16 @@ export default function HighAltitudeMarketAnalysis() {
                   <h4 className="text-xl font-semibold text-gray-800 ml-3">Supportive Forces (The Bull Case)</h4>
                 </div>
                 <ul className="space-y-4">
-                  <IconListItem icon={CheckCircle} color="text-green-600">
+                  <IconListItem icon={CheckCircle} color="text-[#1D8A70] dark:text-[#3CBF9C]">
                     <Em>Accommodative Monetary Policy:</Em> The Fed&apos;s 2025 rate cuts and end of QT have provided a powerful liquidity tailwind.
                   </IconListItem>
-                  <IconListItem icon={CheckCircle} color="text-green-600">
+                  <IconListItem icon={CheckCircle} color="text-[#1D8A70] dark:text-[#3CBF9C]">
                     <Em>Resilient Fundamentals:</Em> A strong economy has averted recession, and structurally high profit margins support earnings.
                   </IconListItem>
-                  <IconListItem icon={CheckCircle} color="text-green-600">
+                  <IconListItem icon={CheckCircle} color="text-[#1D8A70] dark:text-[#3CBF9C]">
                     <Em>Massive Capital Returns:</Em> Trillion-dollar buyback programs provide direct support for EPS and stock prices.
                   </IconListItem>
-                  <IconListItem icon={CheckCircle} color="text-green-600">
+                  <IconListItem icon={CheckCircle} color="text-[#1D8A70] dark:text-[#3CBF9C]">
                     <Em>The TINA Factor:</Em> With bond yields at ~4.1%, the earnings yield on stocks remains competitive, making equities the &ldquo;only game in town&rdquo; for many.
                   </IconListItem>
                 </ul>
@@ -403,16 +403,16 @@ export default function HighAltitudeMarketAnalysis() {
                   <h4 className="text-xl font-semibold text-gray-800 ml-3">Primary Risks (The Bear Case)</h4>
                 </div>
                 <ul className="space-y-4">
-                  <IconListItem icon={AlertTriangle} color="text-red-600">
+                  <IconListItem icon={AlertTriangle} color="text-[#BC4128] dark:text-[#E2694A]">
                     <Em>Extreme Absolute Valuation:</Em> On measures like CAPE and Market Cap-to-GDP, the market is at historical peaks that preceded poor returns.
                   </IconListItem>
-                  <IconListItem icon={AlertTriangle} color="text-red-600">
+                  <IconListItem icon={AlertTriangle} color="text-[#BC4128] dark:text-[#E2694A]">
                     <Em>Compressed Risk Premium:</Em> The 0.31% ERP is at a multi-decade low, offering minimal compensation for taking on equity risk.
                   </IconListItem>
-                  <IconListItem icon={AlertTriangle} color="text-red-600">
+                  <IconListItem icon={AlertTriangle} color="text-[#BC4128] dark:text-[#E2694A]">
                     <Em>Persistent Inflation:</Em> Inflation at 3% limits the Fed&apos;s ability to ease further and creates the risk of a hawkish reversal.
                   </IconListItem>
-                  <IconListItem icon={AlertTriangle} color="text-red-600">
+                  <IconListItem icon={AlertTriangle} color="text-[#BC4128] dark:text-[#E2694A]">
                     <Em>Concentration Risk:</Em> The market&apos;s fortunes are disproportionately tied to the performance of a handful of mega-cap stocks.
                   </IconListItem>
                 </ul>

@@ -95,7 +95,7 @@ const Section = ({ title, icon, children }) => (
   <section className="mb-16">
     <div className="flex items-center mb-6">
       {icon}
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 ml-3">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 ml-3 font-serif">{title}</h2>
     </div>
     <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
       {children}
@@ -107,7 +107,7 @@ const Section = ({ title, icon, children }) => (
 const IndicatorCard = ({ title, description, formula, chartComponent }) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700 flex flex-col">
     <div className="flex-grow">
-      <h4 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">{title}</h4>
+      <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-2">{title}</h4>
       <p className="text-base mb-4">{description}</p>
       {formula && (
         <div className="mb-4">
@@ -139,9 +139,9 @@ export default function TrendVsMomentumAnalysis() {
       slug="trend-vs-momentum-technical-analysis-guide"
       additionalDisclaimer="Technical analysis involves risk, and past performance does not guarantee future results. Always conduct your own research and consider consulting with a qualified financial advisor before making investment decisions."
     >
-      <Section title="Trend Indicators: Charting the Course" icon={<TrendingUp size={36} className="text-indigo-500" />}>
+      <Section title="Trend Indicators: Charting the Course" icon={<TrendingUp size={36} className="text-[#A8672E] dark:text-[#D08F52]" />}>
         <p>
-          Trend indicators are the compass of the market. Their primary purpose is to smooth out price volatility to clearly identify the prevailing direction of a security. They answer the question, &ldquo;Which way is the market going?&rdquo; By analyzing historical price data, these tools confirm whether a market is in an uptrend, downtrend, or moving sideways. They are <strong className="font-semibold text-indigo-600 dark:text-indigo-400">lagging indicators</strong>, designed to filter out market &ldquo;noise&rdquo; and confirm a trend once it&apos;s established.
+          Trend indicators are the compass of the market. Their primary purpose is to smooth out price volatility to clearly identify the prevailing direction of a security. They answer the question, &ldquo;Which way is the market going?&rdquo; By analyzing historical price data, these tools confirm whether a market is in an uptrend, downtrend, or moving sideways. They are <strong className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">lagging indicators</strong>, designed to filter out market &ldquo;noise&rdquo; and confirm a trend once it&apos;s established.
         </p>
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
           <IndicatorCard
@@ -187,12 +187,12 @@ export default function TrendVsMomentumAnalysis() {
         </div>
       </Section>
 
-      <Section title="The Hybrid: MACD" icon={<GitMerge size={36} className="text-teal-500" />}>
+      <Section title="The Hybrid: MACD" icon={<GitMerge size={36} className="text-[#A8672E] dark:text-[#D08F52]" />}>
         <p>
           The Moving Average Convergence Divergence (MACD) is a special case, often considered both a trend and a momentum indicator.
         </p>
         <ul className="list-disc list-outside pl-5 space-y-2 mt-4">
-          <li><strong className="font-semibold text-indigo-600 dark:text-indigo-400">Trend Component:</strong> It&apos;s built from the difference between two moving averages (typically 12 & 26-period EMAs).</li>
+          <li><strong className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Trend Component:</strong> It&apos;s built from the difference between two moving averages (typically 12 & 26-period EMAs).</li>
           <li><strong className="font-semibold text-amber-600 dark:text-amber-400">Momentum Component:</strong> The MACD Histogram visualizes the acceleration of momentum by plotting the difference between the MACD line and its 9-period EMA (the &lsquo;signal line&rsquo;).</li>
         </ul>
         <div className="grid grid-cols-1 pt-4">
@@ -205,13 +205,13 @@ export default function TrendVsMomentumAnalysis() {
         </div>
       </Section>
 
-      <Section title="Core Differences: At a Glance" icon={<HelpCircle size={36} className="text-green-500" />}>
+      <Section title="Core Differences: At a Glance" icon={<HelpCircle size={36} className="text-[#1D8A70] dark:text-[#3CBF9C]" />}>
         <div className="overflow-x-auto">
           <table className="w-full min-w-max text-left bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 <th className="p-4 md:p-6 text-lg font-semibold text-gray-600 dark:text-gray-300">Feature</th>
-                <th className="p-4 md:p-6 text-lg font-semibold text-indigo-600 dark:text-indigo-400 flex items-center">
+                <th className="p-4 md:p-6 text-lg font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center">
                   <TrendingUp className="mr-2" /> Trend Indicators
                 </th>
                 <th className="p-4 md:p-6 text-lg font-semibold text-amber-600 dark:text-amber-400 flex items-center">
@@ -235,21 +235,21 @@ export default function TrendVsMomentumAnalysis() {
       <Section title="Strategy Blueprints" icon={<BookOpen size={36} className="text-cyan-500" />}>
         <div className="space-y-8">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
-              <Layers className="mr-3 text-indigo-500"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center font-serif">
+              <Layers className="mr-3 text-[#A8672E] dark:text-[#D08F52]"/>
               Strategy 1: MA + RSI for Pullback Entries
             </h3>
             <p className="mb-4 text-base">
               This strategy uses a trend indicator (Moving Average) to define the overall direction and a momentum indicator (RSI) to time entries during pullbacks.
             </p>
             <ol className="list-decimal list-inside space-y-2 text-base">
-              <li><strong className="font-semibold text-indigo-600 dark:text-indigo-400">Trend Filter:</strong> Use a long-term MA (e.g., 200-day EMA). If price is above it, only look for buy signals.</li>
-              <li><strong className="font-semibold text-indigo-600 dark:text-indigo-400">Entry Trigger:</strong> In an uptrend, wait for the RSI to dip into an oversold or pullback zone (e.g., below 40).</li>
-              <li><strong className="font-semibold text-indigo-600 dark:text-indigo-400">Signal:</strong> Enter a buy trade when the RSI turns back up, suggesting the pullback is over and the main trend is resuming.</li>
+              <li><strong className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Trend Filter:</strong> Use a long-term MA (e.g., 200-day EMA). If price is above it, only look for buy signals.</li>
+              <li><strong className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Entry Trigger:</strong> In an uptrend, wait for the RSI to dip into an oversold or pullback zone (e.g., below 40).</li>
+              <li><strong className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Signal:</strong> Enter a buy trade when the RSI turns back up, suggesting the pullback is over and the main trend is resuming.</li>
             </ol>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center font-serif">
               <Shield className="mr-3 text-amber-500"/>
               Strategy 2: ADX + MACD to Avoid Whipsaws
             </h3>
@@ -266,7 +266,7 @@ export default function TrendVsMomentumAnalysis() {
       </Section>
 
       <div className="text-center pt-10 border-t border-gray-200 dark:border-gray-700">
-        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">The Power of Synergy</h3>
+        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 font-serif">The Power of Synergy</h3>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
           The most robust trading systems don&apos;t rely on a single indicator. They use trend indicators to set the context and momentum indicators for tactical timing. Use trend to find the river&apos;s current, and momentum to find the best spot to cast your line.
         </p>

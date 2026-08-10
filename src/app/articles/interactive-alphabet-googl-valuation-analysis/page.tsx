@@ -288,8 +288,8 @@ export default function AlphabetValuationAnalysis() {
                 onClick={() => setActiveSection(section.id)}
                 className={`px-4 py-3 text-sm md:text-base whitespace-nowrap transition-all duration-300 ${
                   activeSection === section.id
-                    ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 font-semibold'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
+                    ? 'text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] border-b-2 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52] font-semibold'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-[#A8672E] dark:text-[#D08F52] dark:hover:text-[#A8672E] dark:text-[#D08F52]'
                 }`}
               >
                 {section.label}
@@ -301,25 +301,25 @@ export default function AlphabetValuationAnalysis() {
         {activeSection === 'summary' && (
           <section className="space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">Valuation Snapshot</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center font-serif">Valuation Snapshot</h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
                 This section provides the &ldquo;bottom-line&rdquo; from our comprehensive analysis. It contrasts the current market price with the intrinsic value calculated by our interactive DCF model. Use the DCF Modeler section to adjust assumptions and see how the valuation changes.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300">Current Market Price</h3>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300 font-serif">Current Market Price</h3>
                   <p className="text-3xl font-bold text-blue-900 dark:text-blue-200 mt-2">${marketPrice.toFixed(2)}</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">(as of May 28, 2025)</p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-green-800 dark:text-green-300">Model&apos;s Implied Price</h3>
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-green-800 dark:text-green-300 font-serif">Model&apos;s Implied Price</h3>
                   <p className="text-3xl font-bold text-green-900 dark:text-green-200 mt-2">${valuationData.impliedPrice.toFixed(2)}</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">(Comprehensive 10-Yr Model)</p>
                 </div>
                 <div className={`p-6 rounded-lg ${
                   valuationData.conclusion === 'Potentially Overvalued'
                     ? 'bg-yellow-50 dark:bg-yellow-900/20'
-                    : 'bg-green-50 dark:bg-green-900/20'
+                    : 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20'
                 }`}>
                   <h3 className={`text-lg font-semibold ${
                     valuationData.conclusion === 'Potentially Overvalued'
@@ -345,35 +345,35 @@ export default function AlphabetValuationAnalysis() {
         {activeSection === 'profile' && (
           <section className="space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">Company Profile</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center font-serif">Company Profile</h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
                 Alphabet is a technology conglomerate with three main pillars. This section outlines each business segment, its core products, and recent performance, providing context for the company&apos;s revenue streams and growth drivers.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg border border-gray-200 dark:border-gray-600">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">Google Services</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200 font-serif">Google Services</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     The core revenue driver, including Search, YouTube, Android, Chrome, and Hardware. Dominant in advertising.
                   </p>
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  <p className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                     +9.75% <span className="text-base font-normal text-gray-500 dark:text-gray-400">YoY Revenue (Q1 2025)</span>
                   </p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg border border-gray-200 dark:border-gray-600">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">Google Cloud</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200 font-serif">Google Cloud</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     A key growth engine offering enterprise cloud services (GCP) and collaboration tools (Workspace). Now consistently profitable.
                   </p>
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  <p className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                     +28.06% <span className="text-base font-normal text-gray-500 dark:text-gray-400">YoY Revenue (Q1 2025)</span>
                   </p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg border border-gray-200 dark:border-gray-600">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">Other Bets</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200 font-serif">Other Bets</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     A portfolio of long-term, high-risk/high-reward ventures in areas like healthcare (Verily) and autonomous driving.
                   </p>
-                  <p className="text-2xl font-bold text-red-500 dark:text-red-400">
+                  <p className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                     -9.09% <span className="text-base font-normal text-gray-500 dark:text-gray-400">YoY Revenue (Q1 2025)</span>
                   </p>
                 </div>
@@ -385,7 +385,7 @@ export default function AlphabetValuationAnalysis() {
         {activeSection === 'performance' && (
           <section className="space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">Historical Performance</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center font-serif">Historical Performance</h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
                 This chart displays Alphabet&apos;s key financial metrics over the past several years. Understanding these historical trends in revenue, net income, and free cash flow is crucial for projecting future performance. You can click the buttons below to toggle which data series are visible on the chart.
               </p>
@@ -395,13 +395,13 @@ export default function AlphabetValuationAnalysis() {
               <div className="flex justify-center mt-4 space-x-2 flex-wrap">
                 <button
                   onClick={() => toggleDataset('Revenue')}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-2"
+                  className="px-4 py-2 text-sm font-medium text-white bg-[#A8672E] dark:bg-[#D08F52] rounded-md hover:bg-[#A8672E] dark:bg-[#D08F52] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-2"
                 >
                   Revenue
                 </button>
                 <button
                   onClick={() => toggleDataset('Net Income')}
-                  className="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mb-2"
+                  className="px-4 py-2 text-sm font-medium text-white bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-md hover:bg-[#1D8A70] dark:bg-[#3CBF9C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mb-2"
                 >
                   Net Income
                 </button>
@@ -419,7 +419,7 @@ export default function AlphabetValuationAnalysis() {
         {activeSection === 'modeler' && (
           <section className="space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 text-center">Interactive DCF Modeler</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 text-center font-serif">Interactive DCF Modeler</h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
                 This is the core of the analysis. A Discounted Cash Flow (DCF) model estimates a company&apos;s value based on its projected future cash flows. Here, you can adjust the key assumptions that drive the valuation&mdash;the discount rate (WACC) and the long-term growth rate&mdash;to see their immediate impact on Alphabet&apos;s implied share price.
               </p>
@@ -458,7 +458,7 @@ export default function AlphabetValuationAnalysis() {
                     </div>
                   </div>
                   <div className="mt-8">
-                    <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Sensitivity Analysis</h3>
+                    <h3 className="font-semibold mb-2 text-gray-900 dark:text-white font-serif">Sensitivity Analysis</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                       This table shows how the share price changes with WACC and growth rate. The highlighted cell corresponds to your current slider selections.
                     </p>
@@ -482,8 +482,8 @@ export default function AlphabetValuationAnalysis() {
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg border border-gray-200 dark:border-gray-600 flex flex-col items-center justify-center">
-                  <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200">Model&apos;s Implied Share Price</h3>
-                  <p className="text-6xl font-bold text-blue-600 dark:text-blue-400 my-4">${valuationData.impliedPrice.toFixed(2)}</p>
+                  <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200 font-serif">Model&apos;s Implied Share Price</h3>
+                  <p className="text-6xl font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] my-4">${valuationData.impliedPrice.toFixed(2)}</p>
                   <div className="w-full text-center mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <p>PV of FCFs: <span className="font-semibold">${baseData.sumPvFcff.toFixed(2)}B</span></p>
                     <p>+</p>
@@ -504,7 +504,7 @@ export default function AlphabetValuationAnalysis() {
         {activeSection === 'comparison' && (
           <section className="space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">Relative Valuation vs. Peers</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center font-serif">Relative Valuation vs. Peers</h2>
               <p className="text-center text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
                 No company exists in a vacuum. This section compares Alphabet&apos;s valuation multiples (P/E and EV/EBITDA) against its major technology peers. This market context helps assess whether GOOGL is priced attractively relative to its competitors, considering its growth prospects and risk profile.
               </p>

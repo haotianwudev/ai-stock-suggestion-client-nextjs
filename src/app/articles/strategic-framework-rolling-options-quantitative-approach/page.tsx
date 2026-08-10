@@ -386,14 +386,14 @@ export default function StrategicFrameworkRollingOptions() {
             </div>
 
             <div className="mt-8 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6">
-              <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">The 80% Rule for Offensive Rolls</h3>
+              <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">The 80% Rule for Offensive Rolls</h3>
               <p className="text-gray-700 dark:text-gray-300 text-sm">
                 A widely used rule of thumb is to consider rolling when you&apos;ve captured <strong>80% or more</strong> of the initial premium. At this point, the remaining profit may not justify the risk or capital being used.
               </p>
             </div>
 
             <div className="mt-6 bg-[#BC4128]/5 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6">
-              <h3 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Maximum Loss Rule</h3>
+              <h3 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2 font-serif">Maximum Loss Rule</h3>
               <p className="text-gray-700 dark:text-gray-300 text-sm">
                 When a position reaches a loss of <strong>2-3x the initial credit received</strong>, it should be closed regardless of thesis validity. This prevents catastrophic losses and enforces disciplined risk management.
               </p>
@@ -606,7 +606,7 @@ export default function StrategicFrameworkRollingOptions() {
               </p>
 
               <div className="bg-[#A8672E]/5 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 my-8">
-                <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-4">Key Takeaways</h3>
+                <h3 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-4 font-serif">Key Takeaways</h3>
                 <ul className="text-gray-700 dark:text-gray-300 space-y-2">
                   <li>✓ Always roll for a net credit in defensive situations</li>
                   <li>✓ Only roll if your original thesis remains intact</li>

@@ -146,7 +146,7 @@ export default function ArticlePage() {
               />
             </div>
 
-            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200">The s-score (Avellaneda-Lee Framework)</h3>
+            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200 font-serif">The s-score (Avellaneda-Lee Framework)</h3>
             <p>
               Standardizes trading signals across assets by measuring the distance of the residual from its equilibrium mean, scaled by standard deviation.
             </p>
@@ -190,7 +190,7 @@ export default function ArticlePage() {
               Mean-reversion alpha is fragile. Transaction costs—slippage and market impact—can easily destroy a profitable backtest. When an algorithm executes a large order, it consumes liquidity and moves the price against itself.
             </p>
             
-            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200">The Square-Root Law of Market Impact</h3>
+            <h3 className="text-xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200 font-serif">The Square-Root Law of Market Impact</h3>
             <p>
               Slippage is proportional to the asset's volatility and the square root of the normalized order size.
             </p>

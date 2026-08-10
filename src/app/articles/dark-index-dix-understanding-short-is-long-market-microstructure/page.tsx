@@ -35,9 +35,9 @@ export default function DarkIndexTutorial() {
           
           {/* Intro Card */}
           <section>
-            <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 md:p-10 border-t-8 border-indigo-500 dark:border-indigo-400">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 md:p-10 border-t-8 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52]">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white font-serif">
-                <Info className="text-indigo-500 dark:text-indigo-400" /> Tutorial Overview
+                <Info className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" /> Tutorial Overview
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                 The Dark Index (DIX) challenges the orthodox view of market data. It posits that in a market dominated by high-frequency market makers, short volume is mechanically generated to facilitate buying. This tutorial deconstructs the quantitative architecture and intuitive logic behind this "Geiger counter" for institutional sentiment.
@@ -54,7 +54,7 @@ export default function DarkIndexTutorial() {
           {/* Section 1: The Theory */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Unlock size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The Epistemology of Dark Liquidity</h2>
               </div>
@@ -65,17 +65,17 @@ export default function DarkIndexTutorial() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 mb-10">
-              <div className="p-6 rounded-xl bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-800/30">
-                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-orange-900 dark:text-orange-300">
+              <div className="p-6 rounded-xl bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-800/30">
+                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-orange-900 dark:text-orange-300 font-serif">
                   <Zap size={20} /> Retail Perspective
                 </h3>
-                <p className="text-orange-800 dark:text-orange-400/80">I sell short because I think the stock price will go down. This is a directional bet.</p>
+                <p className="text-orange-800 dark:text-[#BC4128] dark:text-[#E2694A]/80">I sell short because I think the stock price will go down. This is a directional bet.</p>
               </div>
-              <div className="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/30">
-                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-blue-900 dark:text-blue-300">
+              <div className="p-6 rounded-xl bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/30">
+                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-blue-900 dark:text-blue-300 font-serif">
                   <Zap size={20} /> Market Maker Perspective
                 </h3>
-                <p className="text-blue-800 dark:text-blue-400/80">I sell short because a buyer wants shares <strong className="font-bold">right now</strong>, and I don't have them in inventory. I short to fill their buy order, planning to locate shares later.</p>
+                <p className="text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]/80">I sell short because a buyer wants shares <strong className="font-bold">right now</strong>, and I don't have them in inventory. I short to fill their buy order, planning to locate shares later.</p>
               </div>
             </div>
 
@@ -86,20 +86,20 @@ export default function DarkIndexTutorial() {
             
             <ul className="space-y-4 mb-8">
               <li className="flex items-start gap-3 bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
-                <div className="mt-1 bg-emerald-500 rounded-full p-1 shrink-0">
+                <div className="mt-1 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full p-1 shrink-0">
                   <ArrowRight size={14} className="text-white" />
                 </div>
                 <span className="text-slate-700 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Scenario A:</strong> Investor Sells to MM. MM buys. Reported as "Long" sale.</span>
               </li>
-              <li className="flex items-start gap-3 bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800/50 shadow-sm">
-                <div className="mt-1 bg-indigo-500 rounded-full p-1 shrink-0">
+              <li className="flex items-start gap-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800/50 shadow-sm">
+                <div className="mt-1 bg-[#A8672E] dark:bg-[#D08F52] rounded-full p-1 shrink-0">
                   <ArrowRight size={14} className="text-white" />
                 </div>
                 <span className="text-indigo-900 dark:text-indigo-200"><strong className="font-bold text-indigo-900 dark:text-indigo-300">Scenario B (The DIX Signal):</strong> Investor Buys from MM. MM doesn't own shares, so MM sells short to fill the order. Reported as <strong className="font-bold text-indigo-900 dark:text-indigo-300">"Short"</strong> sale.</span>
               </li>
             </ul>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border-l-4 border-indigo-500 dark:border-indigo-400 mb-10">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-5 rounded-xl border-l-4 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52] mb-10">
               <p className="font-semibold text-indigo-800 dark:text-indigo-300">
                 Conclusion: High short volume in dark pools correlates with high institutional buying demand.
               </p>
@@ -233,7 +233,7 @@ export default function DarkIndexTutorial() {
           {/* Section 3: Interpretation */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-emerald-600 dark:text-emerald-500">
+              <div className="flex items-center gap-3 mb-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                 <Activity size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Signal Efficacy & Thresholds</h2>
               </div>
@@ -244,38 +244,38 @@ export default function DarkIndexTutorial() {
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              <div className="bg-emerald-50 dark:bg-emerald-900/10 border-t-4 border-emerald-500 dark:border-emerald-400 p-5 rounded-b-xl">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 border-t-4 border-[#1D8A70] dark:border-[#3CBF9C] dark:border-[#1D8A70] dark:border-[#3CBF9C] p-5 rounded-b-xl">
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-300 text-xl mb-1">&gt; 45%</h4>
-                <p className="text-emerald-800 dark:text-emerald-400 font-bold text-sm mb-2">Strong Bullish</p>
-                <p className="text-xs text-emerald-700 dark:text-emerald-500/80">Aggressive accumulation. MMs shorting heavily to fill buy orders.</p>
+                <p className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-sm mb-2">Strong Bullish</p>
+                <p className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]/80">Aggressive accumulation. MMs shorting heavily to fill buy orders.</p>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/10 border-t-4 border-blue-500 dark:border-blue-400 p-5 rounded-b-xl">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/10 border-t-4 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52] p-5 rounded-b-xl">
                 <h4 className="font-bold text-blue-900 dark:text-blue-300 text-xl mb-1">40% - 45%</h4>
-                <p className="text-blue-800 dark:text-blue-400 font-bold text-sm mb-2">Neutral</p>
-                <p className="text-xs text-blue-700 dark:text-blue-500/80">Standard liquidity provision. Constructive flow.</p>
+                <p className="text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] font-bold text-sm mb-2">Neutral</p>
+                <p className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]/80">Standard liquidity provision. Constructive flow.</p>
               </div>
               <div className="bg-amber-50 dark:bg-amber-900/10 border-t-4 border-amber-500 dark:border-amber-400 p-5 rounded-b-xl">
                 <h4 className="font-bold text-amber-900 dark:text-amber-300 text-xl mb-1">&lt; 40%</h4>
                 <p className="text-amber-800 dark:text-amber-400 font-bold text-sm mb-2">Weak / Uncertain</p>
                 <p className="text-xs text-amber-700 dark:text-amber-500/80">Buying demand drying up. Lack of conviction.</p>
               </div>
-              <div className="bg-rose-50 dark:bg-rose-900/10 border-t-4 border-rose-500 dark:border-rose-400 p-5 rounded-b-xl">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 border-t-4 border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A] p-5 rounded-b-xl">
                 <h4 className="font-bold text-rose-900 dark:text-rose-300 text-xl mb-1">&lt; 35%</h4>
-                <p className="text-rose-800 dark:text-rose-400 font-bold text-sm mb-2">Bearish</p>
-                <p className="text-xs text-rose-700 dark:text-rose-500/80">Vacuum of buying. Selling is likely "natural" long selling.</p>
+                <p className="text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] font-bold text-sm mb-2">Bearish</p>
+                <p className="text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]/80">Vacuum of buying. Selling is likely "natural" long selling.</p>
               </div>
             </div>
 
             <div className="p-6 md:p-8 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl mb-10">
               <h3 className="text-xl font-bold mb-4 flex items-center gap-3 text-slate-900 dark:text-white font-serif">
-                <TrendingUp className="text-emerald-500" /> "Buying the Dip" Phenomenon
+                <TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C]" /> "Buying the Dip" Phenomenon
               </h3>
               <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                 The DIX is often <strong className="text-slate-900 dark:text-white">counter-cyclical</strong>. When the S&P 500 crashes, the DIX often <em>rises</em>. This indicates that while price is falling, smart money is stepping in to absorb the selling (accumulate shares). This divergence (Price Down, DIX Up) is a classic bullish reversal signal.
               </p>
-              <div className="bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-300 mb-2">Historical Example: March 2020 COVID Crash</h4>
-                <p className="text-sm text-emerald-800 dark:text-emerald-400/90 leading-relaxed">
+                <p className="text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]/90 leading-relaxed">
                   As the S&P 500 plunged 34% from February 19 to March 23, 2020, the DIX surged from 42% to 48%—indicating massive institutional accumulation during the panic. Investors who recognized this divergence and bought the dip captured the subsequent 70% rally over the next 6 months.
                 </p>
               </div>
@@ -316,7 +316,7 @@ export default function DarkIndexTutorial() {
 
             {/* Second Infographic */}
             <div 
-              className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800 cursor-pointer group relative bg-white"
+              className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800 cursor-pointer group relative bg-white dark:bg-[#0A0D14]"
               onClick={() => setIsSecondImageViewerOpen(true)}
             >
               <img 
@@ -325,7 +325,7 @@ export default function DarkIndexTutorial() {
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 backdrop-blur-[2px] pointer-events-none">
-                <div className="bg-white/95 text-slate-900 px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2">
+                <div className="bg-white dark:bg-[#0A0D14]/95 text-slate-900 dark:text-slate-100 px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2">
                   <Search size={18} /> Click to expand diagram
                 </div>
               </div>
@@ -343,7 +343,7 @@ export default function DarkIndexTutorial() {
           {/* Section 4: Advanced Synergy */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Layers size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Synergy with Gamma Exposure (GEX)</h2>
               </div>
@@ -355,18 +355,18 @@ export default function DarkIndexTutorial() {
                   The DIX (Sentiment) works best when paired with <strong className="text-slate-900 dark:text-white">GEX (Structure)</strong>. GEX measures the capacity of market makers to dampen or amplify volatility.
                 </p>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3 p-4 bg-emerald-50 dark:bg-emerald-900/10 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
-                    <span className="w-3 h-3 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                  <div className="flex items-start gap-3 p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
+                    <span className="w-3 h-3 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] shrink-0 mt-1.5"></span>
                     <div>
                       <strong className="text-emerald-900 dark:text-emerald-300 block mb-1">Positive GEX</strong>
-                      <span className="text-sm text-emerald-800 dark:text-emerald-400/80">Low Volatility. Dealers buy dips/sell rips. Stabilizing force.</span>
+                      <span className="text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]/80">Low Volatility. Dealers buy dips/sell rips. Stabilizing force.</span>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-4 bg-rose-50 dark:bg-rose-900/10 rounded-xl border border-rose-100 dark:border-rose-800/30">
-                    <span className="w-3 h-3 rounded-full bg-rose-500 shrink-0 mt-1.5"></span>
+                  <div className="flex items-start gap-3 p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 rounded-xl border border-rose-100 dark:border-rose-800/30">
+                    <span className="w-3 h-3 rounded-full bg-[#BC4128] dark:bg-[#E2694A] shrink-0 mt-1.5"></span>
                     <div>
                       <strong className="text-rose-900 dark:text-rose-300 block mb-1">Negative GEX</strong>
-                      <span className="text-sm text-rose-800 dark:text-rose-400/80">High Volatility. Dealers sell dips/buy rips. Accelerating force.</span>
+                      <span className="text-sm text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A]/80">High Volatility. Dealers sell dips/buy rips. Accelerating force.</span>
                     </div>
                   </div>
                 </div>
@@ -375,12 +375,12 @@ export default function DarkIndexTutorial() {
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-6 font-serif text-lg">The "Golden Setup"</h4>
                 <div className="flex justify-between items-center">
                   <div>
-                    <div className="text-3xl md:text-4xl font-bold text-rose-500 mb-2">Crash</div>
+                    <div className="text-3xl md:text-4xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Crash</div>
                     <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Market Price</div>
                   </div>
                   <div className="text-2xl text-slate-400 font-light">+</div>
                   <div>
-                    <div className="text-3xl md:text-4xl font-bold text-emerald-500 mb-2">High</div>
+                    <div className="text-3xl md:text-4xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">High</div>
                     <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">DIX Reading</div>
                   </div>
                   <div className="text-2xl text-slate-400 font-light">=</div>
@@ -439,7 +439,7 @@ export default function DarkIndexTutorial() {
           {/* Section 5: Risks & Critique */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-rose-600 dark:text-rose-500">
+              <div className="flex items-center gap-3 mb-4 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                 <AlertTriangle size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Critical Review & 2025 Anomalies</h2>
               </div>
@@ -452,7 +452,7 @@ export default function DarkIndexTutorial() {
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               <div className="flex gap-4 p-6 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 border-l-4 border-l-rose-500">
                 <div className="mt-1 shrink-0">
-                  <Search size={24} className="text-rose-500" />
+                  <Search size={24} className="text-[#BC4128] dark:text-[#E2694A]" />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-lg">The 0DTE Hypothesis</h4>
@@ -475,8 +475,8 @@ export default function DarkIndexTutorial() {
               </div>
             </div>
 
-            <div className="bg-rose-50 dark:bg-rose-900/10 p-6 md:p-8 rounded-2xl border border-rose-200 dark:border-rose-800/30">
-              <h4 className="text-2xl font-bold text-rose-900 dark:text-rose-400 mb-8 font-serif text-center">Structural Market Evolution: Why DIX Degraded</h4>
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 p-6 md:p-8 rounded-2xl border border-rose-200 dark:border-rose-800/30">
+              <h4 className="text-2xl font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-8 font-serif text-center">Structural Market Evolution: Why DIX Degraded</h4>
               
               <div className="space-y-6">
                 <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border border-rose-100 dark:border-rose-900/50">
@@ -484,7 +484,7 @@ export default function DarkIndexTutorial() {
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
                     0DTE options grew from 5% to over 50% of SPX options volume. Market makers hedge these using index futures rather than individual stocks, creating a "hedging bypass".
                   </p>
-                  <p className="text-sm text-rose-700 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX underestimates true institutional demand by 20-30%</p>
+                  <p className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX underestimates true institutional demand by 20-30%</p>
                 </div>
 
                 <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border border-rose-100 dark:border-rose-900/50">
@@ -492,7 +492,7 @@ export default function DarkIndexTutorial() {
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
                     Institutional flows increasingly occur at the ETF level rather than individual stocks. Since DIX only tracks S&P 500 constituents, it misses this massive channel.
                   </p>
-                  <p className="text-sm text-rose-700 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX blind to $2T+ in ETF-mediated flows</p>
+                  <p className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX blind to $2T+ in ETF-mediated flows</p>
                 </div>
 
                 <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border border-rose-100 dark:border-rose-900/50">
@@ -500,7 +500,7 @@ export default function DarkIndexTutorial() {
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
                     High-frequency trading firms exploit maker-taker rebates by simultaneously buying and shorting. This inflates short ratios without representing genuine institutional accumulation.
                   </p>
-                  <p className="text-sm text-rose-700 dark:text-rose-400 font-bold bg-rose-50 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX signal contaminated with 15-25% noise</p>
+                  <p className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 py-2 px-4 rounded-lg inline-block">Impact: DIX signal contaminated with 15-25% noise</p>
                 </div>
               </div>
             </div>

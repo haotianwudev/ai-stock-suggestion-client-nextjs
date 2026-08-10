@@ -4,13 +4,13 @@ import { Layers, Puzzle, Database, ShieldCheck, GitBranch, Share2, BrainCircuit,
 import { ArticleFrame } from '@/components/articles/article-frame';
 
 const Card = ({ children, className = '', id = '' }: { children: React.ReactNode; className?: string; id?: string }) => (
-  <div id={id} className={`bg-gray-50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-xl shadow-lg p-6 md:p-8 ${className}`}>
+  <div id={id} className={`bg-gray-50 dark:bg-white dark:bg-[#0A0D14]/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-xl shadow-lg p-6 md:p-8 ${className}`}>
     {children}
   </div>
 );
 
 const SectionTitle = ({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) => (
-  <h2 className="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-6 flex items-center">
+  <h2 className="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-6 flex items-center font-serif">
     {icon}
     <span className="ml-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-500 dark:from-cyan-300 dark:to-blue-400">{children}</span>
   </h2>
@@ -34,7 +34,7 @@ const InfoCard = ({ title, children, icon }: { title: string; children: React.Re
       <div className="p-2 bg-gray-200 dark:bg-gray-700/50 rounded-lg mr-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">{title}</h3>
     </div>
     <div className="text-gray-600 dark:text-gray-400 space-y-2">{children}</div>
   </div>
@@ -226,8 +226,8 @@ const MCPFoundation = () => (
         The Model Context Protocol (MCP) is an open standard that solves the M×N integration problem. Instead of building custom connectors for every model-to-tool pair, MCP creates a universal interface, turning the problem into a scalable M+N solution.
       </p>
 
-      <div className="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/40 dark:to-purple-900/40 p-6 rounded-lg border border-indigo-300 dark:border-indigo-400/30">
-        <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3">🔌 The &ldquo;USB-C for AI&rdquo;</h3>
+      <div className="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/40 dark:to-purple-900/40 p-6 rounded-lg border border-indigo-300 dark:border-[#A8672E] dark:border-[#D08F52]/30">
+        <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3 font-serif">🔌 The &ldquo;USB-C for AI&rdquo;</h3>
         <p className="text-gray-900 dark:text-white">
           MCP standardizes communication between AI applications and external systems, creating a universal connector that eliminates the need for proprietary adapters. Any compliant AI agent can discover, understand, and utilize external tools in a consistent manner.
         </p>
@@ -279,18 +279,18 @@ const LangGraphBrain = () => (
 
 const ContextProvisioning = () => (
   <Card id="context-provisioning">
-    <SectionTitle icon={<Database size={32} className="text-orange-600 dark:text-orange-400" />}>Mastering Context Provisioning</SectionTitle>
+    <SectionTitle icon={<Database size={32} className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" />}>Mastering Context Provisioning</SectionTitle>
     <div className="space-y-8">
       <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
         The quality of generated SQL is entirely dependent on the context provided to the LLM. A successful strategy requires a multi-stage pipeline to overcome challenges like model hallucination, context window limits, and the semantic gap between technical schemas and business concepts.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <InfoCard title="Dynamic Schema Selection" icon={<Route className="w-6 h-6 text-indigo-500"/>}>
+        <InfoCard title="Dynamic Schema Selection" icon={<Route className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}>
           <p>To avoid overwhelming the LLM, the agent first identifies the relevant tables for a user&apos;s query. It then retrieves the schema for only that small subset of tables, keeping the context focused and efficient.</p>
         </InfoCard>
 
-        <InfoCard title="Semantic Layer" icon={<Rss className="w-6 h-6 text-teal-500"/>}>
+        <InfoCard title="Semantic Layer" icon={<Rss className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]"/>}>
           <p>Enrich raw database schemas with business context using techniques like database comments, curated views, or a RAG pipeline on enterprise documentation. This bridges the gap between cryptic column names and their real-world meaning.</p>
         </InfoCard>
 
@@ -298,13 +298,13 @@ const ContextProvisioning = () => (
           <p>Dynamically select a few high-quality examples of similar questions and their corresponding correct SQL queries. This guides the model on structure, dialect specifics, and formatting, improving accuracy.</p>
         </InfoCard>
 
-        <InfoCard title="Error Correction Tools" icon={<Puzzle className="w-6 h-6 text-rose-500"/>}>
+        <InfoCard title="Error Correction Tools" icon={<Puzzle className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]"/>}>
           <p>Equip the agent with retriever tools to correct common errors, like user misspellings of names in high-cardinality columns, before the SQL query is even generated.</p>
         </InfoCard>
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">📋 Context Provisioning Techniques Comparison</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 font-serif">📋 Context Provisioning Techniques Comparison</h3>
         <p className="text-gray-700 dark:text-gray-300 mb-6">
           Each approach to context provisioning has distinct trade-offs in terms of implementation complexity, maintenance overhead, and effectiveness. Choose the right combination based on your database size, team capabilities, and accuracy requirements.
         </p>
@@ -313,8 +313,8 @@ const ContextProvisioning = () => (
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/20 p-6 rounded-lg border border-orange-300 dark:border-orange-400/30">
-        <h3 className="text-xl font-semibold text-orange-800 dark:text-orange-300 mb-3">💡 Key Strategy</h3>
+      <div className="bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/20 p-6 rounded-lg border border-orange-300 dark:border-[#BC4128] dark:border-[#E2694A]/30">
+        <h3 className="text-xl font-semibold text-orange-800 dark:text-orange-300 mb-3 font-serif">💡 Key Strategy</h3>
         <p className="text-gray-900 dark:text-white">
           Context provisioning is not just about providing more information&mdash;it&apos;s about providing the <em>right</em> information at the <em>right</em> time. The best agents use a multi-stage approach: schema discovery → semantic enrichment → few-shot guidance → error correction.
         </p>
@@ -325,14 +325,14 @@ const ContextProvisioning = () => (
 
 const Architecture = () => (
   <Card id="architecture">
-    <SectionTitle icon={<Layers size={32} className="text-teal-600 dark:text-teal-400" />}>The Integrated Architecture</SectionTitle>
+    <SectionTitle icon={<Layers size={32} className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />}>The Integrated Architecture</SectionTitle>
     <div className="space-y-8">
       <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
         Fusing LangGraph and MCP creates a powerful, decoupled system. LangGraph acts as the orchestration &ldquo;brain,&rdquo; managing the agent&apos;s state and reasoning. MCP provides the standardized &ldquo;nervous system,&rdquo; allowing the brain to communicate with tool &ldquo;limbs&rdquo; via a universal protocol.
       </p>
 
       <div className="w-full max-w-2xl mx-auto p-6 bg-gray-100 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700/50">
-        <h3 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-4">End-to-End Flow</h3>
+        <h3 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-4 font-serif">End-to-End Flow</h3>
         <div className="flex flex-col space-y-2 text-center text-sm font-mono">
           <div className="bg-gray-200 dark:bg-gray-700 p-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300">User Interface</div>
           <div className="text-gray-500">▼ HTTP Request</div>
@@ -340,19 +340,19 @@ const Architecture = () => (
           <div className="text-gray-500">▼ MCP Tool Call (via Adapter)</div>
           <div className="p-3 rounded-lg border border-cyan-400 dark:border-cyan-500/50 bg-cyan-100 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-300">MCP Client</div>
           <div className="text-gray-500">▼ HTTP / stdio</div>
-          <div className="p-3 rounded-lg border border-green-400 dark:border-green-500/50 bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-300">Custom MCP Server (Limb)</div>
+          <div className="p-3 rounded-lg border border-[#1D8A70] dark:border-[#3CBF9C] dark:border-[#1D8A70] dark:border-[#3CBF9C]/50 bg-green-100 dark:bg-[#1D8A70] dark:bg-[#3CBF9C]/10 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300">Custom MCP Server (Limb)</div>
           <div className="text-gray-500">▼ DB Operation</div>
-          <div className="p-3 rounded-lg border border-orange-400 dark:border-orange-500/50 bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-300">Database</div>
+          <div className="p-3 rounded-lg border border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A]/50 bg-orange-100 dark:bg-[#BC4128] dark:bg-[#E2694A]/10 text-[#BC4128] dark:text-[#E2694A] dark:text-orange-300">Database</div>
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-teal-300 dark:border-teal-400/30">
-          <h4 className="font-bold text-teal-700 dark:text-teal-300 mb-3">🧠 Separation of Concerns</h4>
+        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-teal-300 dark:border-[#A8672E] dark:border-[#D08F52]/30">
+          <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-teal-300 mb-3">🧠 Separation of Concerns</h4>
           <p className="text-gray-600 dark:text-gray-400 text-sm">The orchestration logic (LangGraph) is completely separate from the tool implementation (MCP servers), enabling independent scaling and updates.</p>
         </div>
-        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-teal-300 dark:border-teal-400/30">
-          <h4 className="font-bold text-teal-700 dark:text-teal-300 mb-3">🔄 Tool Interoperability</h4>
+        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-teal-300 dark:border-[#A8672E] dark:border-[#D08F52]/30">
+          <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-teal-300 mb-3">🔄 Tool Interoperability</h4>
           <p className="text-gray-600 dark:text-gray-400 text-sm">Any MCP-compliant tool can be plugged into any LangGraph agent, fostering a modular ecosystem of AI-ready microservices.</p>
         </div>
       </div>
@@ -362,14 +362,14 @@ const Architecture = () => (
 
 const Security = () => (
   <Card id="security">
-    <SectionTitle icon={<Shield size={32} className="text-red-600 dark:text-red-400" />}>Productionization & Security</SectionTitle>
+    <SectionTitle icon={<Shield size={32} className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" />}>Productionization & Security</SectionTitle>
     <div className="space-y-8">
       <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
         Executing LLM-generated code against a database is inherently risky. A production-grade system requires a rigorous, defense-in-depth security posture, applying constraints at every layer of the stack. Relying on prompt instructions alone is not enough.
       </p>
 
-      <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-red-400/30">
-        <h3 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-3">⚠️ Defense-in-Depth Strategy</h3>
+      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-[#BC4128] dark:border-[#E2694A]/30">
+        <h3 className="text-xl font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 mb-3 font-serif">⚠️ Defense-in-Depth Strategy</h3>
         <p className="text-gray-900 dark:text-white">
           Security cannot be an afterthought. Every layer&mdash;from database permissions to application logic to LLM prompts&mdash;must implement appropriate controls to prevent unauthorized access and malicious queries.
         </p>
@@ -380,8 +380,8 @@ const Security = () => (
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-red-300 dark:border-red-400/30">
-          <ShieldCheck className="text-red-600 dark:text-red-400 mb-3" size={32} />
+        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-red-300 dark:border-[#BC4128] dark:border-[#E2694A]/30">
+          <ShieldCheck className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-3" size={32} />
           <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Database Layer</h4>
           <p className="text-gray-700 dark:text-gray-300 text-sm">
             Read-only permissions, row-level security, and dedicated agent users form the foundation of database security.
@@ -396,8 +396,8 @@ const Security = () => (
           </p>
         </div>
 
-        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-green-300 dark:border-green-400/30">
-          <BrainCircuit className="text-green-600 dark:text-green-400 mb-3" size={32} />
+        <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg border border-green-300 dark:border-[#1D8A70] dark:border-[#3CBF9C]/30">
+          <BrainCircuit className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3" size={32} />
           <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">LLM Layer</h4>
           <p className="text-gray-700 dark:text-gray-300 text-sm">
             Prompt guardrails and user-based context filtering ensure the model operates within intended boundaries.

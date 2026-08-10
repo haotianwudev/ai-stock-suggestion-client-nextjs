@@ -24,12 +24,12 @@ const SectionHeader = ({ number, title, colorClass, icon: Icon }) => (
     <div className={`flex items-center justify-center w-12 h-12 rounded-xl text-white shadow-lg ${colorClass}`}>
       {Icon ? <Icon size={24} /> : <span className="font-bold text-xl">{number}</span>}
     </div>
-    <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white tracking-tight">{title}</h2>
+    <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white tracking-tight font-serif">{title}</h2>
   </div>
 );
 
 const MathBlock = ({ equation, label, note }) => (
-  <div className="my-6 p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border-l-4 border-indigo-500 overflow-x-auto group hover:shadow-md dark:hover:shadow-none transition-all">
+  <div className="my-6 p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border-l-4 border-[#A8672E] dark:border-[#D08F52] overflow-x-auto group hover:shadow-md dark:hover:shadow-none transition-all">
     <div className="font-mono text-lg md:text-xl text-slate-700 dark:text-slate-300 text-center min-w-max">{equation}</div>
     {label && <div className="mt-3 text-xs text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider font-semibold">{label}</div>}
     {note && <div className="mt-2 text-sm text-slate-500 dark:text-slate-400 text-center italic opacity-0 group-hover:opacity-100 transition-opacity duration-300">{note}</div>}
@@ -38,17 +38,17 @@ const MathBlock = ({ equation, label, note }) => (
 
 const InfoCard = ({ title, children, color = "blue" }) => {
   const colorMap = {
-    blue: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-900/30 text-blue-900 dark:text-blue-400",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border-blue-200 dark:border-blue-900/30 text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52]",
     purple: "bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-900/30 text-purple-900 dark:text-purple-400",
-    rose: "bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-900/30 text-rose-900 dark:text-rose-400",
-    emerald: "bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-900/30 text-emerald-900 dark:text-emerald-400",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 border-rose-200 dark:border-rose-900/30 text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A]",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-900/30 text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C]",
     amber: "bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-900/30 text-amber-900 dark:text-amber-400",
     slate: "bg-slate-100 dark:bg-[#14171B] border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-300",
   };
 
   return (
     <div className={`p-6 rounded-2xl border ${colorMap[color]} mb-6 transition-transform hover:-translate-y-1 duration-300 h-full`}>
-      <h3 className="font-bold text-lg mb-3 flex items-center gap-2">{title}</h3>
+      <h3 className="font-bold text-lg mb-3 flex items-center gap-2 font-serif">{title}</h3>
       <div className="opacity-90 leading-relaxed text-sm md:text-base">{children}</div>
     </div>
   );
@@ -57,21 +57,21 @@ const InfoCard = ({ title, children, color = "blue" }) => {
 const AnalogySection = ({ title, scenarioA, scenarioB, icon: Icon }) => (
   <div className="bg-white dark:bg-[#14171B] p-6 md:p-8 rounded-2xl shadow-md dark:shadow-none border border-slate-100 dark:border-white/10 my-8">
     <div className="flex items-center gap-3 mb-6">
-      <div className="p-2 bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400 rounded-lg">
+      <div className="p-2 bg-orange-100 dark:bg-orange-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-lg">
         <Icon size={24} />
       </div>
-      <h3 className="text-xl font-bold text-slate-800 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-bold text-slate-800 dark:text-white font-serif">{title}</h3>
     </div>
     <div className="grid md:grid-cols-2 gap-6">
       <div className="bg-slate-50 dark:bg-slate-900/20 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
         <h4 className="font-semibold text-slate-600 dark:text-slate-400 mb-2 text-sm uppercase">Scenario A: Deterministic</h4>
         <p className="text-slate-700 dark:text-slate-300">{scenarioA}</p>
       </div>
-      <div className="bg-orange-50 dark:bg-orange-900/20 p-5 rounded-xl border border-orange-200 dark:border-orange-900/30 relative overflow-hidden">
+      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-5 rounded-xl border border-orange-200 dark:border-orange-900/30 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-2 opacity-10">
           <Activity size={64} />
         </div>
-        <h4 className="font-semibold text-orange-700 dark:text-orange-400 mb-2 text-sm uppercase">Scenario B: Stochastic</h4>
+        <h4 className="font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-2 text-sm uppercase">Scenario B: Stochastic</h4>
         <p className="text-slate-800 dark:text-slate-300 font-medium">{scenarioB}</p>
       </div>
     </div>
@@ -94,7 +94,7 @@ const SimulationWidget = () => {
     <div className="bg-slate-900 rounded-xl p-6 shadow-xl my-8 relative overflow-hidden">
       <div className="flex justify-between items-center mb-4">
         <h4 className="text-white font-bold flex items-center gap-2">
-          <Activity size={18} className="text-emerald-400"/> 
+          <Activity size={18} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> 
           Live Simulation: Wiener Process
         </h4>
         <button 
@@ -124,7 +124,7 @@ const SimulationWidget = () => {
         </svg>
       </div>
       <p className="text-slate-400 text-xs mt-3">
-        Visualizing <span className="font-mono text-emerald-400">W_t</span>. Notice the jaggedness. If you zoomed in infinitely, it would look exactly the same (Self-Similarity).
+        Visualizing <span className="font-mono text-[#1D8A70] dark:text-[#3CBF9C]">W_t</span>. Notice the jaggedness. If you zoomed in infinitely, it would look exactly the same (Self-Similarity).
       </p>
     </div>
   );
@@ -144,7 +144,7 @@ export default function ItosLemmaArticle() {
             <SectionHeader 
               number="01" 
               title="The Divergence of Worlds" 
-              colorClass="bg-blue-600"
+              colorClass="bg-[#A8672E] dark:bg-[#D08F52]"
               icon={GitBranch}
             />
             <div className="prose prose-lg text-slate-600 dark:text-slate-400 max-w-none">
@@ -167,7 +167,7 @@ export default function ItosLemmaArticle() {
             <SectionHeader 
               number="02" 
               title="The Nature of the Underlying" 
-              colorClass="bg-indigo-600"
+              colorClass="bg-[#A8672E] dark:bg-[#D08F52]"
               icon={Activity}
             />
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
@@ -178,7 +178,7 @@ export default function ItosLemmaArticle() {
             
             <div className="bg-white dark:bg-[#14171B] rounded-2xl shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10 overflow-hidden mb-10">
               <div className="bg-slate-50 dark:bg-slate-900/20 px-6 py-4 border-b border-slate-200 dark:border-slate-800">
-                <h3 className="font-bold text-slate-800 dark:text-white">Properties of the Wiener Process</h3>
+                <h3 className="font-bold text-slate-800 dark:text-white font-serif">Properties of the Wiener Process</h3>
               </div>
               <div className="p-6 grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
@@ -204,7 +204,7 @@ export default function ItosLemmaArticle() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Quadratic Variation</h3>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 font-serif">Quadratic Variation</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6">
               While total variation is infinite, quadratic variation is finite and deterministic. This is the crux of Itô calculus. Over a small interval dt, the squared increment converges to time itself.
             </p>
@@ -230,19 +230,19 @@ export default function ItosLemmaArticle() {
                     <td className="p-4 font-mono">dt</td>
                     <td className="p-4">1st Order</td>
                     <td className="p-4">1st Order (dt)</td>
-                    <td className="p-4 text-right font-medium text-green-600 dark:text-green-400">Retained</td>
+                    <td className="p-4 text-right font-medium text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Retained</td>
                   </tr>
                   <tr>
                     <td className="p-4 font-mono">dW_t</td>
                     <td className="p-4 text-slate-400">-</td>
                     <td className="p-4">Order 1/2 (√dt)</td>
-                    <td className="p-4 text-right font-medium text-green-600 dark:text-green-400">Retained</td>
+                    <td className="p-4 text-right font-medium text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Retained</td>
                   </tr>
-                  <tr className="bg-indigo-50 dark:bg-indigo-900/20">
-                    <td className="p-4 font-mono font-bold text-indigo-700 dark:text-indigo-400">(dW_t)²</td>
+                  <tr className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20">
+                    <td className="p-4 font-mono font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">(dW_t)²</td>
                     <td className="p-4 text-slate-400">2nd Order (Vanishes)</td>
-                    <td className="p-4 font-bold text-indigo-700 dark:text-indigo-400">Order 1 (dt)</td>
-                    <td className="p-4 text-right font-bold text-indigo-700 dark:text-indigo-400">RETAINED</td>
+                    <td className="p-4 font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Order 1 (dt)</td>
+                    <td className="p-4 text-right font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">RETAINED</td>
                   </tr>
                   <tr>
                     <td className="p-4 font-mono">dt · dW_t</td>
@@ -270,9 +270,9 @@ export default function ItosLemmaArticle() {
             <div className="my-8 p-6 bg-slate-50 dark:bg-slate-900/20 rounded-xl border border-slate-200 dark:border-slate-800">
               <p className="font-mono text-sm text-slate-500 dark:text-slate-400 mb-2">Taylor Expansion:</p>
               <div className="font-mono text-lg text-slate-800 dark:text-white mb-4 overflow-x-auto">
-                df = <span className="text-emerald-600">∂f/∂t dt</span> + <span className="text-blue-600">∂f/∂x dx</span> + <span className="text-purple-600">½ ∂²f/∂x² (dx)²</span> + ...
+                df = <span className="text-[#1D8A70] dark:text-[#3CBF9C]">∂f/∂t dt</span> + <span className="text-[#A8672E] dark:text-[#D08F52]">∂f/∂x dx</span> + <span className="text-purple-600">½ ∂²f/∂x² (dx)²</span> + ...
               </div>
-              <p className="text-slate-600 mb-2">In ordinary calculus, (dx)² vanishes because it is of order dt². In stochastic calculus, we assume x follows a diffusion process: dx = a(x,t)dt + b(x,t)dW.</p>
+              <p className="text-slate-600 dark:text-slate-400 mb-2">In ordinary calculus, (dx)² vanishes because it is of order dt². In stochastic calculus, we assume x follows a diffusion process: dx = a(x,t)dt + b(x,t)dW.</p>
               <p className="text-slate-600 dark:text-slate-400">Squaring this process yields: (dx)² = a²dt² + 2ab(dt)(dW) + b²(dW)².</p>
               <p className="text-slate-600 dark:text-slate-400 mt-2">Ignoring higher order terms (dt², dt · dW) and applying (dW)² = dt, we get: <span className="font-mono font-bold text-purple-600 ml-2">(dx)² = b² dt</span>.</p>
             </div>
@@ -282,15 +282,15 @@ export default function ItosLemmaArticle() {
             <div className="my-10 p-8 bg-slate-900 rounded-2xl shadow-2xl text-white transform md:-rotate-1 hover:rotate-0 transition-transform duration-500">
               <div className="text-center mb-4 text-slate-400 text-sm uppercase tracking-widest">The Fundamental Formula</div>
               <div className="font-mono text-xl md:text-3xl text-center leading-relaxed">
-                df = <span className="text-blue-400">(</span> <span className="text-emerald-400">∂f/∂t</span> + a<span className="text-emerald-400">∂f/∂x</span> + <span className="text-rose-400">½b² ∂²f/∂x²</span><span className="text-blue-400">)</span>dt + b<span className="text-emerald-400">∂f/∂x</span>dW
+                df = <span className="text-[#A8672E] dark:text-[#D08F52]">(</span> <span className="text-[#1D8A70] dark:text-[#3CBF9C]">∂f/∂t</span> + a<span className="text-[#1D8A70] dark:text-[#3CBF9C]">∂f/∂x</span> + <span className="text-[#BC4128] dark:text-[#E2694A]">½b² ∂²f/∂x²</span><span className="text-[#A8672E] dark:text-[#D08F52]">)</span>dt + b<span className="text-[#1D8A70] dark:text-[#3CBF9C]">∂f/∂x</span>dW
               </div>
               <div className="mt-6 flex justify-center gap-4 text-sm flex-wrap">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C]"></div>
                   <span className="text-slate-300">Standard Gradients</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-rose-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#BC4128] dark:bg-[#E2694A]"></div>
                   <span className="text-slate-300">Itô Correction</span>
                 </div>
               </div>
@@ -311,7 +311,7 @@ export default function ItosLemmaArticle() {
             <SectionHeader 
               number="04" 
               title="Case Study: Geometric Brownian Motion" 
-              colorClass="bg-teal-600"
+              colorClass="bg-[#A8672E] dark:bg-[#D08F52]"
               icon={FunctionSquare}
             />
             <p className="text-slate-600 dark:text-slate-400 mb-6">The standard model for stock prices assumes returns are normally distributed, meaning prices are log-normally distributed.</p>
@@ -319,7 +319,7 @@ export default function ItosLemmaArticle() {
             <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-teal-100 dark:border-teal-900/30 shadow-sm dark:shadow-none">
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1 space-y-4">
-                  <h3 className="font-bold text-teal-800 dark:text-teal-400">The Stock Model</h3>
+                  <h3 className="font-bold text-teal-800 dark:text-[#A8672E] dark:text-[#D08F52] font-serif">The Stock Model</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400">We assume the stock S_t follows:</p>
                   <div className="font-mono bg-slate-100 dark:bg-slate-900/40 p-2 rounded text-center">dS = μS dt + σS dW</div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">We want to find the dynamics of the log-return: f(S) = ln(S).</p>
@@ -334,17 +334,17 @@ export default function ItosLemmaArticle() {
                     </div>
                   </div>
                 </div>
-                <div className="hidden md:block text-slate-300 dark:text-slate-600">
+                <div className="hidden md:block text-slate-300 dark:text-slate-600 dark:text-slate-400">
                   <ArrowRight size={32} />
                 </div>
                 <div className="flex-1 space-y-4">
-                  <h3 className="font-bold text-teal-800 dark:text-teal-400">Applying the Lemma</h3>
+                  <h3 className="font-bold text-teal-800 dark:text-[#A8672E] dark:text-[#D08F52] font-serif">Applying the Lemma</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Plug derivatives into the Itô formula:</p>
-                  <div className="font-mono bg-teal-50 dark:bg-teal-900/20 text-teal-900 dark:text-teal-400 p-4 rounded-lg text-sm">
+                  <div className="font-mono bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-teal-900/20 text-teal-900 dark:text-[#A8672E] dark:text-[#D08F52] p-4 rounded-lg text-sm">
                     d(ln S) = (1/S)(μS dt + σS dW) + ½(-1/S²)(σS)² dt
                   </div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Simplifying yields the log-normal dynamics:</p>
-                  <div className="font-mono bg-teal-600 text-white p-3 rounded shadow-lg text-center font-bold">
+                  <div className="font-mono bg-[#A8672E] dark:bg-[#D08F52] text-white p-3 rounded shadow-lg text-center font-bold">
                     d(ln S) = (μ - ½σ²)dt + σdW
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export default function ItosLemmaArticle() {
             <SectionHeader 
               number="06" 
               title="The Black-Scholes PDE" 
-              colorClass="bg-emerald-600"
+              colorClass="bg-[#1D8A70] dark:bg-[#3CBF9C]"
               icon={Sigma}
             />
             <div className="prose prose-lg text-slate-600 dark:text-slate-400 max-w-none mb-8">
@@ -391,36 +391,36 @@ export default function ItosLemmaArticle() {
             
             {/* The Greeks Visualizer */}
             <div className="grid md:grid-cols-4 gap-4 mb-8">
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
-                <div className="text-emerald-800 dark:text-emerald-400 font-bold text-xl mb-1">Θ</div>
-                <div className="text-xs uppercase text-emerald-600 font-bold">Theta</div>
+              <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
+                <div className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-xl mb-1">Θ</div>
+                <div className="text-xs uppercase text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Theta</div>
                 <div className="text-xs text-slate-500 mt-1">Time Decay</div>
               </div>
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
-                <div className="text-emerald-800 dark:text-emerald-400 font-bold text-xl mb-1">Δ</div>
-                <div className="text-xs uppercase text-emerald-600 font-bold">Delta</div>
+              <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
+                <div className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-xl mb-1">Δ</div>
+                <div className="text-xs uppercase text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Delta</div>
                 <div className="text-xs text-slate-500 mt-1">Directional Risk</div>
               </div>
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
-                <div className="text-emerald-800 dark:text-emerald-400 font-bold text-xl mb-1">Γ</div>
-                <div className="text-xs uppercase text-emerald-600 font-bold">Gamma</div>
+              <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
+                <div className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-xl mb-1">Γ</div>
+                <div className="text-xs uppercase text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Gamma</div>
                 <div className="text-xs text-slate-500 mt-1">Convexity</div>
               </div>
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
-                <div className="text-emerald-800 dark:text-emerald-400 font-bold text-xl mb-1">r</div>
-                <div className="text-xs uppercase text-emerald-600 font-bold">Rate</div>
+              <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30 text-center">
+                <div className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold text-xl mb-1">r</div>
+                <div className="text-xs uppercase text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Rate</div>
                 <div className="text-xs text-slate-500 mt-1">Risk Free</div>
               </div>
             </div>
             
-            <div className="mt-6 p-6 border-2 border-emerald-500 rounded-xl bg-emerald-50 dark:bg-emerald-900/10 text-center relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+            <div className="mt-6 p-6 border-2 border-[#1D8A70] dark:border-[#3CBF9C] rounded-xl bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 text-center relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1D8A70] dark:bg-[#3CBF9C] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
                 The Master Equation
               </div>
-              <div className="font-mono text-xl md:text-2xl font-bold text-emerald-900 dark:text-emerald-400 mt-2">
-                <span className="text-emerald-700 dark:text-emerald-400">∂V/∂t</span> + <span className="text-emerald-700 dark:text-emerald-400"> rS ∂V/∂S</span> + <span className="text-emerald-700 dark:text-emerald-400"> ½σ²S² ∂²V/∂S²</span> = rV
+              <div className="font-mono text-xl md:text-2xl font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mt-2">
+                <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">∂V/∂t</span> + <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]"> rS ∂V/∂S</span> + <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]"> ½σ²S² ∂²V/∂S²</span> = rV
               </div>
-              <div className="mt-4 flex justify-center gap-2 md:gap-8 text-xs md:text-sm text-emerald-800 dark:text-emerald-400 font-mono">
+              <div className="mt-4 flex justify-center gap-2 md:gap-8 text-xs md:text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-mono">
                 <span>(Theta)</span>
                 <span>+</span>
                 <span>(Risk-Free Drift)</span>
@@ -429,7 +429,7 @@ export default function ItosLemmaArticle() {
                 <span>=</span>
                 <span>(Bank Account)</span>
               </div>
-              <p className="mt-6 text-sm text-emerald-800 dark:text-emerald-400 max-w-2xl mx-auto">
+              <p className="mt-6 text-sm text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] max-w-2xl mx-auto">
                 This equation states that a hedged portfolio must earn the risk-free rate. Note that the physical drift μ (investor optimism) has disappeared. The option price depends only on volatility σ, not on whether the market is going up or down.
               </p>
             </div>
@@ -444,20 +444,20 @@ export default function ItosLemmaArticle() {
               icon={Layers}
             />
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border-t-4 border-blue-500 group hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
-                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400">Multidimensional</h3>
+              <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border-t-4 border-[#A8672E] dark:border-[#D08F52] group hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-blue-900/20 transition-colors">
+                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-[#A8672E] dark:text-[#D08F52] dark:group-hover:text-[#A8672E] dark:text-[#D08F52] font-serif">Multidimensional</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  For baskets of assets, Itô includes covariance terms. <span className="font-semibold text-blue-600 dark:text-blue-400">Cross-Gamma</span> (∂²V / ∂S₁∂S₂) becomes critical for correlation products like basket options or spread options.
+                  For baskets of assets, Itô includes covariance terms. <span className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Cross-Gamma</span> (∂²V / ∂S₁∂S₂) becomes critical for correlation products like basket options or spread options.
                 </p>
               </div>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border-t-4 border-purple-500 group hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors">
-                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400">Girsanov Theorem</h3>
+                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 font-serif">Girsanov Theorem</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   How do we actually get rid of the drift μ? Girsanov theorem allows us to change the probability measure (from Physical P to Risk-Neutral Q) by changing the drift of the Brownian motion itself.
                 </p>
               </div>
-              <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border-t-4 border-rose-500 group hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors">
-                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-rose-700 dark:group-hover:text-rose-400">Martingale Representation</h3>
+              <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border-t-4 border-[#BC4128] dark:border-[#E2694A] group hover:bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:hover:bg-rose-900/20 transition-colors">
+                <h3 className="font-bold text-lg mb-2 dark:text-white group-hover:text-[#BC4128] dark:text-[#E2694A] dark:group-hover:text-[#BC4128] dark:text-[#E2694A] font-serif">Martingale Representation</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   It implies that any martingale adapted to a Brownian filtration can be written as an Itô integral. This is the theoretical bedrock that guarantees a hedge exists (Market Completeness).
                 </p>
@@ -475,8 +475,8 @@ export default function ItosLemmaArticle() {
                 <rect width="100%" height="100%" fill="url(#grid)" />
               </svg>
             </div>
-            <Anchor className="w-12 h-12 mx-auto text-indigo-400 mb-6 relative z-10" />
-            <h2 className="text-3xl font-bold text-white mb-6 relative z-10">The Architect of Modern Finance</h2>
+            <Anchor className="w-12 h-12 mx-auto text-[#A8672E] dark:text-[#D08F52] mb-6 relative z-10" />
+            <h2 className="text-3xl font-bold text-white mb-6 relative z-10 font-serif">The Architect of Modern Finance</h2>
             <p className="text-lg leading-relaxed max-w-2xl mx-auto mb-8 relative z-10">
               Itô's Lemma serves as the Calculator, the Architect, and the GPS of quantitative finance. It teaches us that in a volatile world, non-linearity creates value. The average outcome of a curved payoff is not the payoff of the average outcome.
             </p>

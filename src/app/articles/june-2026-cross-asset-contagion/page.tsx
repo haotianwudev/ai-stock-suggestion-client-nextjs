@@ -106,7 +106,7 @@ export default function ArticlePage() {
             
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
               <div className="space-y-6 min-w-0">
-                <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Fed's Hawkish Paradigm Shift</h3>
+                <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 font-serif">Fed's Hawkish Paradigm Shift</h3>
                 <div className="prose prose-lg text-slate-600 dark:text-slate-400">
                   <p>
                     The June 2026 Federal Open Market Committee (FOMC) meeting marked a stark paradigm shift for U.S. monetary policy. Chair Kevin Warsh implemented a drastic departure from the communication strategies of his predecessors. 
@@ -189,7 +189,7 @@ export default function ArticlePage() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-4">The AI Capex Bubble &amp; Semiconductor Capitulation</h3>
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-4 font-serif">The AI Capex Bubble &amp; Semiconductor Capitulation</h3>
               <p>
                 The liquidity drain orchestrated by the SpaceX IPO coincided disastrously with a fundamental reality check. Broadcom issued revenue guidance missing Wall Street estimates by a staggering $1.2 billion.
               </p>
@@ -209,7 +209,7 @@ export default function ArticlePage() {
             </div>
             
             <div className="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8 min-w-0">
-              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center gap-3">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center gap-3 font-serif">
                 <TrendingDown className="text-[#BC4128] dark:text-[#E2694A]"/> Quant Winter &amp; CTAs
               </h3>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -231,7 +231,7 @@ export default function ArticlePage() {
               </div>
             </div>
             
-            <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 min-w-0">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 min-w-0">
               <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-rose-900 dark:text-rose-300">
                 <ShieldAlert size={20} className="text-[#BC4128] dark:text-[#E2694A]" /> 
                 Private Credit Contagion
@@ -252,7 +252,7 @@ export default function ArticlePage() {
                    <div className="p-2 rounded-xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-md">
                      <Coins className="size-5" />
                    </div>
-                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Gold &amp; Hard Assets</h3>
+                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-serif">Gold &amp; Hard Assets</h3>
                  </div>
                  <div className="prose prose-slate text-slate-600 dark:text-slate-400">
                    <p>
@@ -272,7 +272,7 @@ export default function ArticlePage() {
                    <div className="p-2 rounded-xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-md">
                      <BarChart3 className="size-5" />
                    </div>
-                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Bitcoin &amp; Digital Assets</h3>
+                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-serif">Bitcoin &amp; Digital Assets</h3>
                  </div>
                  <div className="prose prose-slate text-slate-600 dark:text-slate-400 mb-6">
                    <p>
@@ -295,7 +295,7 @@ export default function ArticlePage() {
                     </div>
                  </div>
 
-                 <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-2xl p-6 min-w-0">
+                 <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-2xl p-6 min-w-0">
                    <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-2 flex items-center gap-2 text-sm">
                      The Strategy Inc. Shock
                    </h4>

@@ -22,7 +22,7 @@ export default function MegaIPOConvergence() {
                   </div>
                   <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Trillion-Dollar Public Debuts</h2>
                 </div>
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed border-l-4 border-blue-400 dark:border-blue-600 pl-4">
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed border-l-4 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52] pl-4">
                   The 2026 market is defined by the unprecedented migration of the world's largest private technology conglomerates into the public equity sphere. These entities are utilizing public markets to finance existential, hyper-capital-intensive infrastructure build-outs while absorbing unprecedented operating losses.
                 </p>
               </div>
@@ -115,9 +115,9 @@ export default function MegaIPOConvergence() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-w-0 mb-8">
-              <div className="bg-white dark:bg-slate-900 border-l-4 border-red-500 dark:border-red-600 shadow-md dark:shadow-slate-900/50 rounded-3xl p-8 min-w-0">
+              <div className="bg-white dark:bg-slate-900 border-l-4 border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A] shadow-md dark:shadow-slate-900/50 rounded-3xl p-8 min-w-0">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3 text-lg">
-                  <BarChart3 className="text-red-500 dark:text-red-400" size={24} />
+                  <BarChart3 className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" size={24} />
                   Weaponization of Index Rules
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -125,9 +125,9 @@ export default function MegaIPOConvergence() {
                 </p>
               </div>
               
-              <div className="bg-white dark:bg-slate-900 border-l-4 border-orange-500 dark:border-orange-600 shadow-md dark:shadow-slate-900/50 rounded-3xl p-8 min-w-0">
+              <div className="bg-white dark:bg-slate-900 border-l-4 border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A] shadow-md dark:shadow-slate-900/50 rounded-3xl p-8 min-w-0">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3 text-lg">
-                  <DollarSign className="text-orange-500 dark:text-orange-400" size={24} />
+                  <DollarSign className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" size={24} />
                   Forced Passive Buying
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -174,19 +174,19 @@ export default function MegaIPOConvergence() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="p-6 font-semibold text-slate-800 dark:text-slate-200">All IPOs (Mean)</td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">+19.0%</td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C]">+7.0%</td>
                     <td className="p-6 text-slate-400 dark:text-slate-500">N/A</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="p-6 font-semibold text-slate-800 dark:text-slate-200">Profitable at IPO</td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C]/80">+13.3%</td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">+33.6%</td>
                     <td className="p-6 text-[#BC4128] dark:text-[#E2694A]">-13.0 pts</td>
                   </tr>
-                  <tr className="bg-rose-50/50 dark:bg-rose-950/20 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors">
+                  <tr className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-950/20 hover:bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:hover:bg-rose-950/30 transition-colors">
                     <td className="p-6 font-semibold text-slate-800 dark:text-slate-200">Unprofitable at IPO (2026 Cohort)</td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">+26.5%</td>
                     <td className="p-6 text-[#BC4128] dark:text-[#E2694A] font-bold">-0.5%</td>
@@ -194,11 +194,11 @@ export default function MegaIPOConvergence() {
                   </tr>
                   <tr className="bg-rose-100/50 dark:bg-rose-900/30 hover:bg-rose-100/80 dark:hover:bg-rose-900/40 transition-colors border-t-2 border-rose-200 dark:border-rose-800">
                     <td className="p-6 font-bold text-rose-900 dark:text-rose-100 flex items-center gap-2">
-                      <TrendingDown className="text-rose-600 dark:text-rose-400" size={20} /> 
+                      <TrendingDown className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" size={20} /> 
                       Extreme Valuation (P/S &gt; 40x)
                     </td>
                     <td className="p-6 text-[#1D8A70] dark:text-[#3CBF9C] font-extrabold text-lg">+93.6%</td>
-                    <td className="p-6 text-rose-700 dark:text-rose-400 font-extrabold text-lg">-44.8%</td>
+                    <td className="p-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-extrabold text-lg">-44.8%</td>
                     <td className="p-6 text-rose-800 dark:text-rose-300 font-bold">-58.5 pts</td>
                   </tr>
                 </tbody>

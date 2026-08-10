@@ -28,13 +28,13 @@ const sensitivityData = [
 ];
 
 const Card = ({ children, className = '', id = '' }: { children: React.ReactNode; className?: string; id?: string }) => (
-  <div id={id} className={`bg-gray-50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-xl shadow-lg p-6 md:p-8 ${className}`}>
+  <div id={id} className={`bg-gray-50 dark:bg-white dark:bg-[#0A0D14]/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-xl shadow-lg p-6 md:p-8 ${className}`}>
     {children}
   </div>
 );
 
 const SectionTitle = ({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) => (
-  <h2 className="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-6 flex items-center">
+  <h2 className="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-6 flex items-center font-serif">
     {icon}
     <span className="ml-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-500 dark:from-cyan-300 dark:to-blue-400">{children}</span>
   </h2>
@@ -59,7 +59,7 @@ const EvEbitdaAnalysis = () => (
     <SectionTitle icon={<BarChart2 size={32} className="text-cyan-700 dark:text-cyan-300" />}>EV/EBITDA Relative Valuation</SectionTitle>
     <div className="space-y-8">
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">📊 Historical Analysis</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">📊 Historical Analysis</h3>
         <p className="text-gray-700 dark:text-gray-300 mb-4">Microsoft&apos;s EV/EBITDA multiple has shown significant fluctuation, dipping in 2022 before rebounding sharply. This rebound correlates directly with market enthusiasm for generative AI, indicating an &ldquo;AI premium&rdquo; is now priced into the stock.</p>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -73,7 +73,7 @@ const EvEbitdaAnalysis = () => (
             </thead>
             <tbody>
               {historicalData.map((row, index) => (
-                <tr key={index} className="border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+                <tr key={index} className="border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                   <td className="p-3 font-mono text-gray-800 dark:text-gray-200">{row.year}</td>
                   <td className="p-3 font-mono text-gray-800 dark:text-gray-200">{row.ev}</td>
                   <td className="p-3 font-mono text-gray-800 dark:text-gray-200">{row.ebitda}</td>
@@ -86,7 +86,7 @@ const EvEbitdaAnalysis = () => (
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">🔍 Peer Group Comparison</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">🔍 Peer Group Comparison</h3>
         <p className="text-gray-700 dark:text-gray-300 mb-4">Microsoft&apos;s multiple of 23.8x commands a premium over key competitors like Alphabet and Amazon. This suggests the market views its enterprise-focused AI monetization strategy as the most direct and profitable.</p>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -101,7 +101,7 @@ const EvEbitdaAnalysis = () => (
             </thead>
             <tbody>
               {peerData.map((row, index) => (
-                <tr key={index} className={`border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors ${row.ticker === 'MSFT' ? 'bg-cyan-50 dark:bg-cyan-900/30' : ''}`}>
+                <tr key={index} className={`border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors ${row.ticker === 'MSFT' ? 'bg-cyan-50 dark:bg-cyan-900/30' : ''}`}>
                   <td className="p-3">
                     <span className="font-bold text-gray-900 dark:text-white">{row.company}</span>
                     <span className="text-gray-500 dark:text-gray-400 font-mono ml-1">({row.ticker})</span>
@@ -118,10 +118,10 @@ const EvEbitdaAnalysis = () => (
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">⚖️ Pros & Cons</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">⚖️ Pros & Cons</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border border-green-300 dark:border-green-400/30">
-            <h4 className="flex items-center text-lg font-semibold text-green-700 dark:text-green-400 mb-4"><CheckCircle size={20} className="mr-2"/> Pros</h4>
+          <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg border border-green-300 dark:border-[#1D8A70] dark:border-[#3CBF9C]/30">
+            <h4 className="flex items-center text-lg font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4"><CheckCircle size={20} className="mr-2"/> Pros</h4>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
               <li>Simple & Widely Used</li>
               <li>Capital Structure Neutral</li>
@@ -129,8 +129,8 @@ const EvEbitdaAnalysis = () => (
               <li>Reflects Market Sentiment</li>
             </ul>
           </div>
-          <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-red-400/30">
-            <h4 className="flex items-center text-lg font-semibold text-red-700 dark:text-red-400 mb-4"><XCircle size={20} className="mr-2"/> Cons</h4>
+          <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-[#BC4128] dark:border-[#E2694A]/30">
+            <h4 className="flex items-center text-lg font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-4"><XCircle size={20} className="mr-2"/> Cons</h4>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
               <li>Ignores Capital Expenditures (CapEx)</li>
               <li>Overlooks Working Capital Changes</li>
@@ -149,7 +149,7 @@ const DcfAnalysis = () => (
     <SectionTitle icon={<DollarSign size={32} className="text-cyan-700 dark:text-cyan-300" />}>DCF Intrinsic Valuation</SectionTitle>
     <div className="space-y-8">
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">🎯 Core Assumptions</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">🎯 Core Assumptions</h3>
         <p className="text-gray-700 dark:text-gray-300 mb-4">A DCF model&apos;s value rests on its assumptions. We used a standard two-stage model with the following key inputs for our base case.</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
           <div className="bg-gray-100 dark:bg-gray-800/50 p-4 rounded-lg border border-cyan-300 dark:border-cyan-400/30">
@@ -172,7 +172,7 @@ const DcfAnalysis = () => (
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">📈 Sensitivity Analysis</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">📈 Sensitivity Analysis</h3>
         <p className="text-gray-700 dark:text-gray-300 mb-4">The intrinsic value is highly sensitive to the WACC and terminal growth rate. The base case value of ~$350/share is significantly below the current market price, highlighting a potential overvaluation.</p>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -189,7 +189,7 @@ const DcfAnalysis = () => (
             </thead>
             <tbody>
               {sensitivityData.map((row, index) => (
-                <tr key={index} className={`border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors ${row.wacc.includes('Base') ? 'bg-cyan-50 dark:bg-cyan-900/30' : ''}`}>
+                <tr key={index} className={`border-b border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors ${row.wacc.includes('Base') ? 'bg-cyan-50 dark:bg-cyan-900/30' : ''}`}>
                   <td className="p-3 font-mono font-bold text-gray-900 dark:text-gray-100">{row.wacc}</td>
                   <td className="p-3 font-mono text-center text-gray-800 dark:text-gray-200">{row.g2_0}</td>
                   <td className={`p-3 font-mono text-center font-bold ${row.wacc.includes('Base') ? 'text-cyan-700 dark:text-cyan-300 text-lg' : 'text-gray-900 dark:text-white'}`}>{row.g2_5}</td>
@@ -202,10 +202,10 @@ const DcfAnalysis = () => (
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">⚖️ Pros & Cons</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">⚖️ Pros & Cons</h3>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border border-green-300 dark:border-green-400/30">
-            <h4 className="flex items-center text-lg font-semibold text-green-700 dark:text-green-400 mb-4"><CheckCircle size={20} className="mr-2"/> Pros</h4>
+          <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg border border-green-300 dark:border-[#1D8A70] dark:border-[#3CBF9C]/30">
+            <h4 className="flex items-center text-lg font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4"><CheckCircle size={20} className="mr-2"/> Pros</h4>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
               <li>Intrinsic & Fundamentals-Based</li>
               <li>Forces Rigorous Analysis</li>
@@ -213,8 +213,8 @@ const DcfAnalysis = () => (
               <li>Independent of Market Moods</li>
             </ul>
           </div>
-          <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-red-400/30">
-            <h4 className="flex items-center text-lg font-semibold text-red-700 dark:text-red-400 mb-4"><XCircle size={20} className="mr-2"/> Cons</h4>
+          <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-lg border border-red-300 dark:border-[#BC4128] dark:border-[#E2694A]/30">
+            <h4 className="flex items-center text-lg font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-4"><XCircle size={20} className="mr-2"/> Cons</h4>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
               <li>&ldquo;Garbage In, Garbage Out&rdquo; Sensitivity</li>
               <li>Difficulty of Long-Term Forecasting</li>
@@ -233,11 +233,11 @@ const Synthesis = () => (
     <SectionTitle icon={<Scale size={32} className="text-cyan-700 dark:text-cyan-300" />}>Synthesis & Conclusion</SectionTitle>
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">🔄 Reconciling the Models</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">🔄 Reconciling the Models</h3>
         <p className="text-gray-700 dark:text-gray-300">The high EV/EBITDA multiple signals a company priced for perfection, while the DCF signals significant overvaluation. The gap between the market price and the DCF&apos;s intrinsic value can be described as the market&apos;s &ldquo;AI Premium.&rdquo;</p>
       </div>
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">🔍 Qualitative Overlay</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">🔍 Qualitative Overlay</h3>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-gray-100 dark:bg-gray-800/40 p-4 rounded-lg border border-cyan-300 dark:border-cyan-400/30 text-center">
             <Shield className="text-cyan-700 dark:text-cyan-400 mb-2 mx-auto" size={32}/>
@@ -257,7 +257,7 @@ const Synthesis = () => (
         </div>
       </div>
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">🎯 Final Investment Thesis</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">🎯 Final Investment Thesis</h3>
         <div className="border-l-4 border-cyan-400 pl-6 py-4 bg-gradient-to-r from-gray-100 to-cyan-100 dark:from-gray-800/60 dark:to-cyan-900/20 rounded-r-lg">
           <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed">
             At its current valuation, Microsoft (MSFT) is a <strong className="text-amber-600 dark:text-amber-300 text-xl">&ldquo;HOLD&rdquo;</strong> for existing investors but presents a challenging entry point for new capital. The stock is priced for perfection, leaving little margin for error. An investment today is a speculative bet that the company can consistently exceed sky-high expectations.

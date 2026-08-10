@@ -13,7 +13,7 @@ const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: str
         <div className={`p-2 rounded-lg ${bgClass} ${darkBgClass} text-gray-800 dark:text-gray-200`}>
           <Icon size={24} />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">{title}</h2>
       </div>
       <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">{subtitle}</p>
     </div>
@@ -22,7 +22,7 @@ const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: str
 
 const Card = ({ title, children, className = "" }: { title?: string; children: React.ReactNode; className?: string }) => (
   <div className={`bg-white dark:bg-[#14171B] rounded-xl shadow-sm border border-gray-100 dark:border-white/10 p-6 hover:shadow-md transition-shadow duration-300 ${className}`}>
-    {title && <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">{title}</h3>}
+    {title && <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 font-serif">{title}</h3>}
     <div className="text-gray-600 dark:text-gray-300 leading-relaxed">{children}</div>
   </div>
 );
@@ -39,9 +39,9 @@ const CodeBlock = ({ code, language = "python" }: { code: string; language?: str
     <div className="bg-slate-800 px-4 py-2 text-slate-400 text-xs flex justify-between items-center">
       <span>{language}</span>
       <div className="flex gap-1">
-        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+        <div className="w-3 h-3 rounded-full bg-[#BC4128] dark:bg-[#E2694A]"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        <div className="w-3 h-3 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C]"></div>
       </div>
     </div>
     <pre className="p-4 overflow-x-auto text-slate-300 font-mono leading-relaxed">
@@ -53,15 +53,15 @@ const CodeBlock = ({ code, language = "python" }: { code: string; language?: str
 const ComparisonRow = ({ label, left, right }: { label: string; left: string; right: string }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-100 dark:border-white/10 py-4 last:border-0">
     <div className="font-semibold text-gray-700 dark:text-gray-200 md:col-span-1">{label}</div>
-    <div className="text-gray-600 dark:text-gray-300 md:col-span-1 bg-rose-50 dark:bg-rose-900/20 p-2 rounded md:bg-transparent md:p-0">{left}</div>
-    <div className="text-gray-600 dark:text-gray-300 md:col-span-1 bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded md:bg-transparent md:p-0">{right}</div>
+    <div className="text-gray-600 dark:text-gray-300 md:col-span-1 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-2 rounded md:bg-transparent md:p-0">{left}</div>
+    <div className="text-gray-600 dark:text-gray-300 md:col-span-1 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-2 rounded md:bg-transparent md:p-0">{right}</div>
   </div>
 );
 
 const StrategyCard = ({ title, signal, action, color, icon: Icon }: { title: string; signal: string; action: string; color: string; icon: React.ElementType }) => (
   <div className={`border-t-4 ${color} bg-white dark:bg-[#14171B] p-6 rounded-lg shadow-sm hover:-translate-y-1 transition-transform duration-300 border-x border-b border-gray-100 dark:border-x-white/10 dark:border-b-white/10`}>
     <div className="flex justify-between items-start mb-4">
-      <h3 className="text-xl font-bold text-gray-800 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-800 dark:text-white font-serif">{title}</h3>
       <Icon className="text-gray-400 dark:text-gray-500" size={24} />
     </div>
     <div className="space-y-3">
@@ -95,7 +95,7 @@ export default function MarketSkewTutorial() {
             title="Introduction: The Geometry of Fear" 
             subtitle="Why standard models fail and why 'Skew' exists."
             icon={TrendingUp}
-            colorClass="border-indigo-500"
+            colorClass="border-[#A8672E] dark:border-[#D08F52]"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <Card title="The Flaw of Normality" className="bg-gradient-to-br from-white to-indigo-50/50 dark:from-[#14171B] dark:to-indigo-900/10">
@@ -104,12 +104,12 @@ export default function MarketSkewTutorial() {
               </p>
               <div className="flex items-center justify-center p-4 bg-white dark:bg-[#14171B] rounded border border-indigo-100 dark:border-indigo-900/30 mb-4">
                 <div className="text-center">
-                  <div className="font-mono text-indigo-600 dark:text-indigo-400 text-lg">BSM Model: σ(K) = Constant</div>
+                  <div className="font-mono text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-lg">BSM Model: σ(K) = Constant</div>
                   <div className="text-xs text-gray-400 dark:text-gray-500">Flat Volatility Surface</div>
                 </div>
                 <ArrowRight className="mx-4 text-gray-300 dark:text-gray-600" />
                 <div className="text-center">
-                  <div className="font-mono text-rose-600 dark:text-rose-400 text-lg">Reality: σ(Put) &gt; σ(Call)</div>
+                  <div className="font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-lg">Reality: σ(Put) &gt; σ(Call)</div>
                   <div className="text-xs text-gray-400 dark:text-gray-500">The Volatility Smirk</div>
                 </div>
               </div>
@@ -124,11 +124,11 @@ export default function MarketSkewTutorial() {
               </p>
               <ul className="space-y-2 mt-4 mb-4">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-green-500 mt-1 shrink-0" size={18} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={18} />
                   <span><strong>CBOE SKEW:</strong> Measures statistical skewness (3rd moment).</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-green-500 mt-1 shrink-0" size={18} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={18} />
                   <span><strong>Nations SkewDex:</strong> Measures the cost of a hedge (Fixed Strike).</span>
                 </li>
               </ul>
@@ -138,18 +138,18 @@ export default function MarketSkewTutorial() {
             </Card>
           </div>
 
-          <Card className="bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-900/30">
-            <h3 className="text-lg font-bold text-indigo-900 dark:text-indigo-400 mb-3">Historical Context: The Birth of Skew</h3>
+          <Card className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-900/30">
+            <h3 className="text-lg font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">Historical Context: The Birth of Skew</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-3">
               Prior to 1987, option markets exhibited relatively symmetric implied volatility across strikes—the theoretical "smile" predicted by Black-Scholes. Post-crash, a permanent structural shift occurred: <strong>the volatility smirk</strong>.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg">
-                <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">Pre-1987</div>
+                <div className="text-2xl font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-1">Pre-1987</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Symmetric volatility smile, minimal skew premium</div>
               </div>
               <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg">
-                <div className="text-2xl font-bold text-rose-600 dark:text-rose-400 mb-1">Oct 19, 1987</div>
+                <div className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-1">Oct 19, 1987</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">22.6% crash, portfolio insurance failure</div>
               </div>
               <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg">
@@ -166,7 +166,7 @@ export default function MarketSkewTutorial() {
             title="CBOE SKEW (^SKEW)" 
             subtitle="The Bakshi, Kapadia, and Madan (BKM) Model-Free Framework."
             icon={Sigma}
-            colorClass="border-rose-500"
+            colorClass="border-[#BC4128] dark:border-[#E2694A]"
           />
           <div className="prose prose-lg text-gray-600 max-w-none mb-8">
             <p>
@@ -177,8 +177,8 @@ export default function MarketSkewTutorial() {
             </p>
           </div>
 
-          <div className="bg-rose-50 dark:bg-rose-900/10 rounded-xl p-8 mb-8 border border-rose-100 dark:border-rose-900/30">
-            <h3 className="text-2xl font-bold text-rose-800 dark:text-rose-400 mb-6 flex items-center gap-2">
+          <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 rounded-xl p-8 mb-8 border border-rose-100 dark:border-rose-900/30">
+            <h3 className="text-2xl font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-6 flex items-center gap-2 font-serif">
               <Divide className="w-6 h-6"/> The Math Behind the Index
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
@@ -211,8 +211,8 @@ export default function MarketSkewTutorial() {
                     <span className="font-mono text-amber-600 dark:text-amber-400">Elevated Tail Risk</span>
                   </li>
                   <li className="flex justify-between items-center pb-2">
-                    <span className="font-bold text-rose-600 dark:text-rose-400">SKEW = 135+</span>
-                    <span className="font-mono text-rose-600 dark:text-rose-400">Extreme Tail Risk (2-3 SD)</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">SKEW = 135+</span>
+                    <span className="font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Extreme Tail Risk (2-3 SD)</span>
                   </li>
                 </ul>
               </div>
@@ -221,12 +221,12 @@ export default function MarketSkewTutorial() {
             <div className="bg-white dark:bg-[#14171B] p-6 rounded-lg border border-transparent dark:border-white/10">
               <h4 className="font-bold text-gray-800 dark:text-white mb-3">The Three-Moment Framework</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div className="border-l-4 border-blue-400 pl-3">
-                  <div className="font-bold text-blue-700 dark:text-blue-400 mb-1">Variance (V)</div>
+                <div className="border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-3">
+                  <div className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-1">Variance (V)</div>
                   <div className="text-gray-600 dark:text-gray-400">Captured by VIX. Measures dispersion around the mean. Second moment of returns.</div>
                 </div>
-                <div className="border-l-4 border-rose-400 pl-3">
-                  <div className="font-bold text-rose-700 dark:text-rose-400 mb-1">Skewness (W)</div>
+                <div className="border-l-4 border-[#BC4128] dark:border-[#E2694A] pl-3">
+                  <div className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-1">Skewness (W)</div>
                   <div className="text-gray-600 dark:text-gray-400">Captured by SKEW. Measures asymmetry. Third moment—negative skew means fat left tail.</div>
                 </div>
                 <div className="border-l-4 border-purple-400 pl-3">
@@ -242,10 +242,10 @@ export default function MarketSkewTutorial() {
               SKEW measures the <strong>shape</strong>, not the magnitude. In calm markets (low VIX), ATM options get cheap, but deep OTM puts stay expensive (floor price). This causes SKEW to <em>rise</em> paradoxically during quiet bull markets.
             </p>
             <p className="mb-3">
-              <span className="text-rose-600 dark:text-rose-400 font-semibold">Warning:</span> A high SKEW can sometimes reflect complacency (low ATM vol) rather than heightened fear.
+              <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-semibold">Warning:</span> A high SKEW can sometimes reflect complacency (low ATM vol) rather than heightened fear.
             </p>
-            <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-transparent dark:border-rose-900/30">
-              <div className="font-bold text-rose-800 dark:text-rose-400 mb-2">Example: The 2017 Anomaly</div>
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-transparent dark:border-rose-900/30">
+              <div className="font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2">Example: The 2017 Anomaly</div>
               <div className="text-sm text-gray-700 dark:text-gray-300">
                 During the low-volatility melt-up of 2017, SKEW reached record highs (150+) while VIX traded below 10. This wasn't panic—it was structural demand for portfolio insurance in a complacent market. The ratio SKEW/VIX became a better fear gauge than SKEW alone.
               </div>
@@ -253,7 +253,7 @@ export default function MarketSkewTutorial() {
           </Card>
 
           <Card className="bg-gradient-to-br from-rose-50 to-white">
-            <h3 className="text-lg font-bold text-rose-900 mb-3">Data Specifications</h3>
+            <h3 className="text-lg font-bold text-rose-900 mb-3 font-serif">Data Specifications</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
                 <div className="text-gray-500 text-xs uppercase tracking-wide mb-1">Ticker</div>
@@ -281,7 +281,7 @@ export default function MarketSkewTutorial() {
             title="Nations SkewDex (^SDEX)" 
             subtitle="The Practitioner's Approach: Fixed-Strike Parameterization."
             icon={MousePointer}
-            colorClass="border-emerald-500"
+            colorClass="border-[#1D8A70] dark:border-[#3CBF9C]"
           />
           
           <div className="prose prose-lg text-gray-600 dark:text-gray-300 max-w-none mb-8">
@@ -292,8 +292,8 @@ export default function MarketSkewTutorial() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div className="md:col-span-2">
-              <Card className="h-full bg-emerald-50/30 dark:bg-emerald-900/10 border-emerald-100 dark:border-emerald-900/30">
-                <h3 className="text-xl font-bold text-emerald-900 dark:text-emerald-400 mb-4">How Traders Actually Think</h3>
+              <Card className="h-full bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/30 dark:bg-emerald-900/10 border-emerald-100 dark:border-emerald-900/30">
+                <h3 className="text-xl font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">How Traders Actually Think</h3>
                 <p className="mb-4">
                   Institutional hedgers don't calculate the third moment. They ask: <em>"How much does a 1-Standard Deviation (1SD) OTM put cost compared to an ATM put?"</em>
                 </p>
@@ -305,35 +305,35 @@ export default function MarketSkewTutorial() {
                   description="Measures relative steepness, normalized for volatility regime."
                 />
                 <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg mt-4 border border-emerald-200 dark:border-emerald-900/30">
-                  <div className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Practical Example</div>
+                  <div className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Practical Example</div>
                   <div className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
                     <div>• ATM Put (50 delta): IV = 20%</div>
                     <div>• 1SD OTM Put (16 delta): IV = 25%</div>
                     <div>• Raw Skew: (25% - 20%) / 20% = 25% premium</div>
-                    <div className="font-mono text-emerald-600 dark:text-emerald-400">• SDEX ≈ 25 (after scaling)</div>
+                    <div className="font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">• SDEX ≈ 25 (after scaling)</div>
                   </div>
                 </div>
               </Card>
             </div>
             <div className="md:col-span-1 space-y-4">
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/10">
-                <div className="text-emerald-600 dark:text-emerald-400 mb-2"><Zap size={24}/></div>
+                <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2"><Zap size={24}/></div>
                 <h4 className="font-bold mb-1">Fast Updates</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Calculated every 15 seconds vs. End-of-Day for CBOE SKEW.</p>
-                <div className="text-xs text-gray-400 dark:text-gray-500 bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                <div className="text-xs text-gray-400 dark:text-gray-500 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-2 rounded">
                   Enables intraday tactical positioning and real-time risk monitoring
                 </div>
               </div>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/10">
-                <div className="text-emerald-600 dark:text-emerald-400 mb-2"><Layers size={24}/></div>
+                <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2"><Layers size={24}/></div>
                 <h4 className="font-bold mb-1">Dynamic Moneyness</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Adapts to VIX. If VIX is high, the "1SD" strike is further away.</p>
-                <div className="text-xs text-gray-400 dark:text-gray-500 bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                <div className="text-xs text-gray-400 dark:text-gray-500 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-2 rounded">
                   Maintains consistent statistical meaning across volatility regimes
                 </div>
               </div>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/10">
-                <div className="text-emerald-600 dark:text-emerald-400 mb-2"><Activity size={24}/></div>
+                <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2"><Activity size={24}/></div>
                 <h4 className="font-bold mb-1">Regime Aware</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Normalizes for absolute volatility level, isolating pure skew signal.</p>
               </div>
@@ -341,31 +341,31 @@ export default function MarketSkewTutorial() {
           </div>
 
           <Card className="bg-gradient-to-br from-emerald-50 to-white dark:from-[#14171B] dark:to-emerald-900/10 dark:border-emerald-900/30 mb-6">
-            <h3 className="text-lg font-bold text-emerald-900 dark:text-emerald-400 mb-4">The Strike Selection Algorithm</h3>
+            <h3 className="text-lg font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">The Strike Selection Algorithm</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">1</div>
+                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">1</div>
                 <div>
                   <div className="font-bold text-gray-800 dark:text-white">Calculate Expected Move</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Using ATM straddle price: EM = (Call + Put) × 0.85</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">2</div>
+                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">2</div>
                 <div>
                   <div className="font-bold text-gray-800 dark:text-white">Identify 1SD Strike</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">K_1SD = Spot - Expected Move (typically 16 delta put)</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">3</div>
+                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">3</div>
                 <div>
                   <div className="font-bold text-gray-800 dark:text-white">Compute IV Differential</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Extract implied vols, calculate percentage premium over ATM</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">4</div>
+                <div className="bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">4</div>
                 <div>
                   <div className="font-bold text-gray-800 dark:text-white">Scale and Publish</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Apply proprietary scaling factor for index consistency</div>
@@ -376,31 +376,31 @@ export default function MarketSkewTutorial() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
-              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3">Advantages Over SKEW</h3>
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3 font-serif">Advantages Over SKEW</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Intraday Granularity:</strong> Capture regime shifts in real-time</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Intuitive Interpretation:</strong> Direct cost of hedging, not abstract moment</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Volatility Normalized:</strong> Isolates skew from overall vol level</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Actionable Signals:</strong> Spikes often precede reversals</span>
                 </li>
               </ul>
             </Card>
 
             <Card>
-              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3">Typical SDEX Regimes</h3>
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3 font-serif">Typical SDEX Regimes</h3>
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between items-center p-2 bg-green-50 dark:bg-green-900/20 rounded">
+                <div className="flex justify-between items-center p-2 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 rounded">
                   <span className="font-mono">SDEX &lt; 10</span>
                   <span className="text-gray-600 dark:text-gray-300">Low skew, complacent market</span>
                 </div>
@@ -408,11 +408,11 @@ export default function MarketSkewTutorial() {
                   <span className="font-mono">SDEX 10-20</span>
                   <span className="text-gray-600 dark:text-gray-300">Normal hedging demand</span>
                 </div>
-                <div className="flex justify-between items-center p-2 bg-orange-50 dark:bg-orange-900/20 rounded">
+                <div className="flex justify-between items-center p-2 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 rounded">
                   <span className="font-mono">SDEX 20-30</span>
                   <span className="text-gray-600 dark:text-gray-300">Elevated protection premium</span>
                 </div>
-                <div className="flex justify-between items-center p-2 bg-red-50 dark:bg-red-900/20 rounded">
+                <div className="flex justify-between items-center p-2 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 rounded">
                   <span className="font-mono font-bold">SDEX &gt; 30</span>
                   <span className="text-gray-600 dark:text-gray-300 font-bold">Panic hedging, potential reversal</span>
                 </div>
@@ -427,7 +427,7 @@ export default function MarketSkewTutorial() {
             title="Head-to-Head Comparison" 
             subtitle="Selecting the right tool for the job."
             icon={BarChart2}
-            colorClass="border-blue-500"
+            colorClass="border-[#A8672E] dark:border-[#D08F52]"
           />
           
           <div className="prose prose-lg text-gray-600 dark:text-gray-300 max-w-none mb-8">
@@ -437,10 +437,10 @@ export default function MarketSkewTutorial() {
           </div>
 
           <div className="bg-white dark:bg-[#14171B] rounded-xl shadow border border-gray-200 dark:border-white/10 overflow-hidden mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10 p-4 font-bold text-gray-500 dark:text-gray-400 uppercase text-xs tracking-wider">
+            <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-50 dark:bg-white dark:bg-[#0A0D14]/5 border-b border-gray-200 dark:border-white/10 p-4 font-bold text-gray-500 dark:text-gray-400 uppercase text-xs tracking-wider">
               <div>Feature</div>
-              <div className="text-rose-600 dark:text-rose-400">CBOE SKEW</div>
-              <div className="text-emerald-600 dark:text-emerald-400">Nations SkewDex</div>
+              <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">CBOE SKEW</div>
+              <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Nations SkewDex</div>
             </div>
             <div className="p-4 space-y-2">
               <ComparisonRow label="Primary Metric" left="Statistical Skewness (Shape)" right="Relative Cost (Slope)" />
@@ -455,45 +455,45 @@ export default function MarketSkewTutorial() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <Card className="bg-rose-50 dark:bg-rose-900/10 border-rose-200 dark:border-rose-900/30">
-              <h3 className="text-lg font-bold text-rose-900 dark:text-rose-400 mb-3">When to Use CBOE SKEW</h3>
+            <Card className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 border-rose-200 dark:border-rose-900/30">
+              <h3 className="text-lg font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-3 font-serif">When to Use CBOE SKEW</h3>
               <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-rose-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#BC4128] dark:text-[#E2694A] mt-1 shrink-0" size={16} />
                   <span><strong>Long-term positioning:</strong> Identifying structural shifts in tail risk pricing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-rose-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#BC4128] dark:text-[#E2694A] mt-1 shrink-0" size={16} />
                   <span><strong>Academic research:</strong> Comparing to theoretical models and historical distributions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-rose-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#BC4128] dark:text-[#E2694A] mt-1 shrink-0" size={16} />
                   <span><strong>Regime detection:</strong> Spotting transitions from complacency to fear</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-rose-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#BC4128] dark:text-[#E2694A] mt-1 shrink-0" size={16} />
                   <span><strong>Portfolio hedging:</strong> Determining if tail protection is overpriced</span>
                 </li>
               </ul>
             </Card>
 
-            <Card className="bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30">
-              <h3 className="text-lg font-bold text-emerald-900 dark:text-emerald-400 mb-3">When to Use Nations SkewDex</h3>
+            <Card className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30">
+              <h3 className="text-lg font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 font-serif">When to Use Nations SkewDex</h3>
               <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Intraday trading:</strong> Capturing mean-reversion in skew spikes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Tactical hedging:</strong> Timing entry/exit for protection trades</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Volatility trading:</strong> Identifying dispersion opportunities</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ArrowRight className="text-emerald-500 mt-1 shrink-0" size={16} />
+                  <ArrowRight className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={16} />
                   <span><strong>Real-time monitoring:</strong> Tracking dealer positioning and flow</span>
                 </li>
               </ul>
@@ -501,17 +501,17 @@ export default function MarketSkewTutorial() {
           </div>
 
           <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-[#14171B] dark:to-blue-900/10 border border-transparent dark:border-white/10">
-            <h3 className="text-lg font-bold text-blue-900 dark:text-blue-400 mb-4">The Complementary Framework</h3>
+            <h3 className="text-lg font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 font-serif">The Complementary Framework</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
               Professional traders don't choose between SKEW and SDEX—they use both in a complementary framework. SKEW provides the strategic context (are we in a high-skew regime?), while SDEX offers tactical timing (is skew spiking right now?).
             </p>
             <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border border-blue-200 dark:border-blue-900/30">
-              <div className="font-bold text-blue-800 dark:text-blue-400 mb-2">Example: The Perfect Storm Setup</div>
+              <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Example: The Perfect Storm Setup</div>
               <div className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
                 <div>1. <strong>SKEW &gt; 140:</strong> Structural overhedging, market vulnerable to squeeze</div>
                 <div>2. <strong>SDEX spikes intraday:</strong> Panic hedging creates temporary dislocation</div>
                 <div>3. <strong>VIX/VVIX ratio normalizes:</strong> Fear subsiding, vol-of-vol declining</div>
-                <div className="font-bold text-green-600 mt-2">→ Signal: Fade the fear, expect Vanna Crush rally</div>
+                <div className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mt-2">→ Signal: Fade the fear, expect Vanna Crush rally</div>
               </div>
             </div>
           </Card>
@@ -531,22 +531,22 @@ export default function MarketSkewTutorial() {
             </p>
 
             <Card className="bg-slate-50 dark:bg-slate-900/20 border-slate-200 dark:border-slate-800">
-              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-3">Prerequisites & Data Cleaning</h3>
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-3 font-serif">Prerequisites & Data Cleaning</h3>
               <div className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="text-blue-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#A8672E] dark:text-[#D08F52] mt-1 shrink-0" size={16} />
                   <span><strong>No-arbitrage filtering:</strong> Remove strikes violating put-call parity or butterfly spreads</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="text-blue-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#A8672E] dark:text-[#D08F52] mt-1 shrink-0" size={16} />
                   <span><strong>Bid-ask midpoints:</strong> Use midpoint prices to reduce noise</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="text-blue-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#A8672E] dark:text-[#D08F52] mt-1 shrink-0" size={16} />
                   <span><strong>Constant maturity:</strong> Interpolate to exactly 30 days using adjacent expirations</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="text-blue-500 mt-1 shrink-0" size={16} />
+                  <CheckCircle className="text-[#A8672E] dark:text-[#D08F52] mt-1 shrink-0" size={16} />
                   <span><strong>Forward price:</strong> Calculate F = S × exp(r×T) for log-moneyness</span>
                 </div>
               </div>
@@ -672,30 +672,30 @@ def example_calculation():
 
 example_calculation()`} />
 
-            <Card className="bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-900/30">
-              <h3 className="text-lg font-bold text-blue-900 dark:text-blue-400 mb-3">Implementation Notes</h3>
+            <Card className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/10 border-blue-200 dark:border-blue-900/30">
+              <h3 className="text-lg font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">Implementation Notes</h3>
               <div className="text-sm text-gray-700 dark:text-gray-300 space-y-3">
                 <div>
-                  <div className="font-bold text-blue-800 dark:text-blue-400 mb-1">1. Strike Selection</div>
+                  <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-1">1. Strike Selection</div>
                   <div>CBOE uses strikes from 2 standard deviations below to 2 standard deviations above the forward price. Strikes with zero bid should be excluded.</div>
                 </div>
                 <div>
-                  <div className="font-bold text-blue-800 dark:text-blue-400 mb-1">2. Constant Maturity Interpolation</div>
+                  <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-1">2. Constant Maturity Interpolation</div>
                   <div>To achieve exactly 30 days, interpolate between two adjacent expirations using variance weighting: σ²(30d) = w₁σ²(T₁) + w₂σ²(T₂)</div>
                 </div>
                 <div>
-                  <div className="font-bold text-blue-800 dark:text-blue-400 mb-1">3. Numerical Stability</div>
+                  <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-1">3. Numerical Stability</div>
                   <div>The calculation can become unstable with sparse option chains or wide bid-ask spreads. Always validate that variance &gt; 0 before computing skewness.</div>
                 </div>
                 <div>
-                  <div className="font-bold text-blue-800 dark:text-blue-400 mb-1">4. Production Considerations</div>
+                  <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-1">4. Production Considerations</div>
                   <div>Real implementations require handling corporate actions, early exercise for American options, and dividend adjustments to the forward price.</div>
                 </div>
               </div>
             </Card>
 
             <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white p-6 rounded-xl">
-              <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+              <h3 className="text-lg font-bold mb-3 flex items-center gap-2 font-serif">
                 <Code className="h-5 w-5" />
                 Advanced: SkewDex Calculation
               </h3>
@@ -703,14 +703,14 @@ example_calculation()`} />
                 For SkewDex, the calculation is simpler but requires real-time IV extraction:
               </p>
               <div className="font-mono text-sm bg-slate-950 p-4 rounded">
-                <div className="text-emerald-400"># 1. Find ATM strike (50 delta)</div>
+                <div className="text-[#1D8A70] dark:text-[#3CBF9C]"># 1. Find ATM strike (50 delta)</div>
                 <div className="text-slate-300">atm_strike = find_closest_strike(spot, delta=0.5)</div>
                 <div className="text-slate-300">iv_atm = extract_implied_vol(atm_strike)</div>
-                <div className="mt-2 text-emerald-400"># 2. Find 1SD OTM strike (16 delta)</div>
+                <div className="mt-2 text-[#1D8A70] dark:text-[#3CBF9C]"># 2. Find 1SD OTM strike (16 delta)</div>
                 <div className="text-slate-300">expected_move = calculate_expected_move(atm_straddle)</div>
                 <div className="text-slate-300">otm_strike = spot - expected_move</div>
                 <div className="text-slate-300">iv_otm = extract_implied_vol(otm_strike)</div>
-                <div className="mt-2 text-emerald-400"># 3. Calculate relative premium</div>
+                <div className="mt-2 text-[#1D8A70] dark:text-[#3CBF9C]"># 3. Calculate relative premium</div>
                 <div className="text-slate-300">sdex = ((iv_otm - iv_atm) / iv_atm) * 100</div>
               </div>
             </div>
@@ -733,7 +733,7 @@ example_calculation()`} />
           </div>
 
           <div className="bg-white dark:bg-[#14171B] p-8 rounded-xl shadow-lg border-t-4 border-amber-500 dark:border-amber-600 mb-8">
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">The Feedback Loop Anatomy</h3>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6 font-serif">The Feedback Loop Anatomy</h3>
             <div className="relative border-l-2 border-amber-200 dark:border-amber-900/50 ml-4 space-y-8 pb-4">
               <div className="pl-8 relative">
                 <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-amber-500"></div>
@@ -760,12 +760,12 @@ example_calculation()`} />
                 </div>
               </div>
               <div className="pl-8 relative">
-                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500 animate-pulse"></div>
-                <h4 className="font-bold text-green-600 dark:text-green-400">4. The Vanna Crush</h4>
+                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] animate-pulse"></div>
+                <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">4. The Vanna Crush</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                  Falling IV reduces Put Deltas (Vanna). Dealers are now over-hedged short. They must <span className="font-bold text-green-600 dark:text-green-400">BUY BACK</span> Futures. This buying drives Spot UP, crushing Vol further. Loop repeats.
+                  Falling IV reduces Put Deltas (Vanna). Dealers are now over-hedged short. They must <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">BUY BACK</span> Futures. This buying drives Spot UP, crushing Vol further. Loop repeats.
                 </p>
-                <div className="text-xs text-gray-500 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 p-2 rounded">
+                <div className="text-xs text-gray-500 dark:text-gray-400 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-2 rounded">
                   The 40 delta put drops back to 25 delta. Dealers buy back 15 deltas worth of futures per contract. With billions in notional, this creates massive buying pressure.
                 </div>
               </div>
@@ -774,7 +774,7 @@ example_calculation()`} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-[#14171B] dark:to-purple-900/10 dark:border-white/10">
-              <h3 className="text-lg font-bold text-purple-900 dark:text-purple-400 mb-3">Understanding Vanna</h3>
+              <h3 className="text-lg font-bold text-purple-900 dark:text-purple-400 mb-3 font-serif">Understanding Vanna</h3>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
                 Vanna measures how an option's delta changes with respect to volatility. For puts, Vanna is typically negative: as IV rises, delta becomes more negative (larger hedge required).
               </p>
@@ -788,7 +788,7 @@ example_calculation()`} />
             </Card>
 
             <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#14171B] dark:to-blue-900/10 dark:border-white/10">
-              <h3 className="text-lg font-bold text-blue-900 dark:text-blue-400 mb-3">The Charm Effect</h3>
+              <h3 className="text-lg font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">The Charm Effect</h3>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
                 Charm (Delta Decay) measures how delta changes with time. As expiration approaches, OTM options lose delta rapidly, forcing additional dealer rehedging.
               </p>
@@ -803,10 +803,10 @@ example_calculation()`} />
           </div>
 
           <Card className="border-l-4 border-l-amber-500">
-            <h3 className="text-lg font-bold text-amber-900 dark:text-amber-400 mb-3">Historical Case Study: March 2020 Recovery</h3>
+            <h3 className="text-lg font-bold text-amber-900 dark:text-amber-400 mb-3 font-serif">Historical Case Study: March 2020 Recovery</h3>
             <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
               <div className="flex items-start gap-3">
-                <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded px-2 py-1 font-bold text-xs shrink-0">Mar 23</div>
+                <div className="bg-red-100 dark:bg-red-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded px-2 py-1 font-bold text-xs shrink-0">Mar 23</div>
                 <div>
                   <strong>Peak Fear:</strong> SPX bottoms at 2,237. VIX hits 82.69 (all-time high). SKEW at 147. Massive put buying.
                 </div>
@@ -818,7 +818,7 @@ example_calculation()`} />
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded px-2 py-1 font-bold text-xs shrink-0">Apr 1-17</div>
+                <div className="bg-green-100 dark:bg-green-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] rounded px-2 py-1 font-bold text-xs shrink-0">Apr 1-17</div>
                 <div>
                   <strong>Vanna Crush:</strong> SPX rallies 29% in 15 trading days. VIX collapses to 40. SKEW normalizes to 125. Fastest bear market recovery in history.
                 </div>
@@ -830,7 +830,7 @@ example_calculation()`} />
           </Card>
 
           <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-[#14171B] dark:to-amber-900/10 p-6 rounded-xl mt-6 border border-transparent dark:border-white/10">
-            <h3 className="text-lg font-bold text-amber-900 dark:text-amber-400 mb-4">Quantifying the Vanna Exposure</h3>
+            <h3 className="text-lg font-bold text-amber-900 dark:text-amber-400 mb-4 font-serif">Quantifying the Vanna Exposure</h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
               Professional desks calculate aggregate Vanna exposure across the option chain to estimate potential dealer flows:
             </p>
@@ -865,14 +865,14 @@ example_calculation()`} />
             <StrategyCard 
               title="The Nervous Bull"
               icon={TrendingUp}
-              color="border-indigo-500"
+              color="border-[#A8672E] dark:border-[#D08F52]"
               signal="VIX < 20 AND SKEW > 140"
               action="Contrarian Buy. Expect Vanna Crush Rally."
             />
             <StrategyCard 
               title="Gamma Flush"
               icon={AlertTriangle}
-              color="border-red-500"
+              color="border-[#BC4128] dark:border-[#E2694A]"
               signal="Price < Gamma Flip AND Low SDEX"
               action="Short. No skew cushion implies freefall."
             />
@@ -886,7 +886,7 @@ example_calculation()`} />
             <StrategyCard 
               title="Trend Confluence"
               icon={Layers}
-              color="border-blue-500"
+              color="border-[#A8672E] dark:border-[#D08F52]"
               signal="Price > 200 SMA + High Skew"
               action="Buy Dips. Bull market wall of worry."
             />
@@ -895,13 +895,13 @@ example_calculation()`} />
           <div className="space-y-6">
             {/* Strategy 1: The Nervous Bull */}
             <Card className="border-l-4 border-l-indigo-500">
-              <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-400 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 font-serif">
                 <TrendingUp className="h-5 w-5" />
                 Strategy 1: The Nervous Bull
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase mb-2">Entry Criteria</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Entry Criteria</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• SKEW &gt; 140</li>
                     <li>• VIX &lt; 20</li>
@@ -909,8 +909,8 @@ example_calculation()`} />
                     <li>• Put/Call Ratio &gt; 1.2</li>
                   </ul>
                 </div>
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase mb-2">Position Structure</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Position Structure</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Long SPY/SPX calls</li>
                     <li>• 30-45 DTE</li>
@@ -918,8 +918,8 @@ example_calculation()`} />
                     <li>• Risk: 1-2% of portfolio</li>
                   </ul>
                 </div>
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase mb-2">Exit Rules</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Exit Rules</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• SKEW drops below 125</li>
                     <li>• 50% profit target</li>
@@ -928,20 +928,20 @@ example_calculation()`} />
                   </ul>
                 </div>
               </div>
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
                 <strong>Rationale:</strong> Extreme SKEW in low-vol environments signals overhedging. When fear subsides, Vanna forces dealer buying, creating explosive rallies. The strategy profits from both directional move and vol crush.
               </div>
             </Card>
 
             {/* Strategy 2: Gamma Flush */}
             <Card className="border-l-4 border-l-red-500">
-              <h3 className="text-xl font-bold text-red-900 dark:text-red-400 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-red-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-4 flex items-center gap-2 font-serif">
                 <AlertTriangle className="h-5 w-5" />
                 Strategy 2: Gamma Flush
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2">Entry Criteria</div>
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] uppercase mb-2">Entry Criteria</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Price &lt; Gamma Flip Point</li>
                     <li>• SDEX &lt; 15 (low skew)</li>
@@ -949,8 +949,8 @@ example_calculation()`} />
                     <li>• Breakdown of support</li>
                   </ul>
                 </div>
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2">Position Structure</div>
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] uppercase mb-2">Position Structure</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Short SPY/SPX futures</li>
                     <li>• Or long puts (7-14 DTE)</li>
@@ -958,8 +958,8 @@ example_calculation()`} />
                     <li>• Risk: 2-3% of portfolio</li>
                   </ul>
                 </div>
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2">Exit Rules</div>
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] uppercase mb-2">Exit Rules</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• SDEX spikes above 25</li>
                     <li>• Price reclaims Gamma Flip</li>
@@ -968,14 +968,14 @@ example_calculation()`} />
                   </ul>
                 </div>
               </div>
-              <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
                 <strong>Rationale:</strong> Below the Gamma Flip, dealers are short gamma and must sell into weakness. Low SDEX means no skew cushion—puts are cheap, indicating complacency. This setup creates cascading sell-offs.
               </div>
             </Card>
 
             {/* Strategy 3: Vol of Vol Shock */}
             <Card className="border-l-4 border-l-purple-500">
-              <h3 className="text-xl font-bold text-purple-900 dark:text-purple-400 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-purple-900 dark:text-purple-400 mb-4 flex items-center gap-2 font-serif">
                 <Activity className="h-5 w-5" />
                 Strategy 3: Vol of Vol Shock
               </h3>
@@ -1015,13 +1015,13 @@ example_calculation()`} />
 
             {/* Strategy 4: Trend Confluence */}
             <Card className="border-l-4 border-l-blue-500">
-              <h3 className="text-xl font-bold text-blue-900 dark:text-blue-400 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 font-serif">
                 <Layers className="h-5 w-5" />
                 Strategy 4: Trend Confluence
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase mb-2">Entry Criteria</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Entry Criteria</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Price &gt; 200-day SMA</li>
                     <li>• SKEW &gt; 130</li>
@@ -1029,8 +1029,8 @@ example_calculation()`} />
                     <li>• Positive breadth</li>
                   </ul>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase mb-2">Position Structure</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Position Structure</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Long equity/ETF</li>
                     <li>• Or sell cash-secured puts</li>
@@ -1038,8 +1038,8 @@ example_calculation()`} />
                     <li>• Risk: 5-10% of portfolio</li>
                   </ul>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase mb-2">Exit Rules</div>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <div className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Exit Rules</div>
                   <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                     <li>• Price &lt; 200-day SMA</li>
                     <li>• SKEW drops below 115</li>
@@ -1048,14 +1048,14 @@ example_calculation()`} />
                   </ul>
                 </div>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg text-sm text-gray-700 dark:text-gray-300">
                 <strong>Rationale:</strong> In established uptrends, high SKEW represents a "wall of worry"—excessive hedging that creates buying pressure on dips. The strategy buys fear in bull markets, profiting from mean reversion and trend continuation.
               </div>
             </Card>
           </div>
 
           <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-[#14171B] dark:to-purple-900/10 dark:border-white/10 mt-8">
-            <h3 className="text-lg font-bold text-purple-900 dark:text-purple-400 mb-4">Risk Management Framework</h3>
+            <h3 className="text-lg font-bold text-purple-900 dark:text-purple-400 mb-4 font-serif">Risk Management Framework</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
               <div>
                 <div className="font-bold text-purple-800 dark:text-purple-400 mb-2">Position Sizing</div>

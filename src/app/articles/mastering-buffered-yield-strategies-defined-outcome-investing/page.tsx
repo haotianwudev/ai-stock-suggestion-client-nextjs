@@ -14,11 +14,11 @@ interface SectionProps {
 
 const Section = ({ title, icon: Icon, children, color = "indigo" }: SectionProps) => {
   const colorClasses = {
-    indigo: "border-l-4 border-indigo-500 bg-white dark:bg-[#0A0D14]",
-    emerald: "border-l-4 border-emerald-500 bg-white dark:bg-[#0A0D14]",
-    rose: "border-l-4 border-rose-500 bg-white dark:bg-[#0A0D14]",
+    indigo: "border-l-4 border-[#A8672E] dark:border-[#D08F52] bg-white dark:bg-[#0A0D14]",
+    emerald: "border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] bg-white dark:bg-[#0A0D14]",
+    rose: "border-l-4 border-[#BC4128] dark:border-[#E2694A] bg-white dark:bg-[#0A0D14]",
     amber: "border-l-4 border-amber-500 bg-white dark:bg-[#0A0D14]",
-    blue: "border-l-4 border-blue-500 bg-white dark:bg-[#0A0D14]",
+    blue: "border-l-4 border-[#A8672E] dark:border-[#D08F52] bg-white dark:bg-[#0A0D14]",
     violet: "border-l-4 border-violet-500 bg-white dark:bg-[#0A0D14]",
   };
 
@@ -182,14 +182,14 @@ const PayoffVisualizer = () => {
 
         {/* Data Panel */}
         <div className="space-y-6">
-          <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500">
+          <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]">
             <div className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Market Return</div>
             <div className="text-3xl font-mono font-bold text-white">
               {marketReturn > 0 ? '+' : ''}{marketReturn}%
             </div>
           </div>
 
-          <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-emerald-500">
+          <div className="bg-slate-800 p-4 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
             <div className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Your Return</div>
             <div className={`text-3xl font-mono font-bold ${strategyReturn >= 0 ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
               {strategyReturn > 0 ? '+' : ''}{strategyReturn.toFixed(1)}%
@@ -445,13 +445,13 @@ const DetailedComparison = () => {
             Debt instruments issued by banks. While they offer powerful customization for High Net Worth individuals, they are fraught with credit and liquidity risks often overlooked by retail investors.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
               <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
                 <AlertTriangle size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Credit Risk
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400">You are an <strong>unsecured creditor</strong>. If the bank (Issuer) fails, you lose 100%. See: Lehman Brothers 2008. You do not own the underlying options.</p>
             </div>
-            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-rose-400">
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-[#BC4128] dark:border-[#E2694A]">
               <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
                 <Lock size={16} className="text-[#BC4128] dark:text-[#E2694A]"/> Liquidity Lock-up
               </div>
@@ -463,7 +463,7 @@ const DetailedComparison = () => {
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400">Fees are "embedded" in the structure. You don't see an expense ratio, but you get worse terms (Caps) to pay the bank's commission.</p>
             </div>
-            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-emerald-400">
+            <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
               <div className="font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
                 <Settings size={16} className="text-[#1D8A70] dark:text-[#3CBF9C]"/> Customization (The Pro)
               </div>
@@ -485,27 +485,27 @@ const DetailedComparison = () => {
           </thead>
           <tbody className="divide-y divide-slate-100">
             <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-bold text-slate-900">Credit Risk</td>
+              <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Credit Risk</td>
               <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] font-bold border-l border-slate-100 dark:border-slate-800">None (Asset Backed)</td>
               <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold border-l border-slate-100 dark:border-slate-800">High (Issuer Default)</td>
             </tr>
             <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-bold text-slate-900">Liquidity</td>
+              <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Liquidity</td>
               <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] font-bold border-l border-slate-100 dark:border-slate-800">Intraday (Exchange)</td>
               <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold border-l border-slate-100 dark:border-slate-800">None / Penalties</td>
             </tr>
             <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-bold text-slate-900">Tax Treatment</td>
+              <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Tax Treatment</td>
               <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Usually 1256 (60/40 Split)</td>
               <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Ordinary Income / Debt</td>
             </tr>
             <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-bold text-slate-900">Transparency</td>
+              <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Transparency</td>
               <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Daily Holdings</td>
               <td className="px-6 py-4 text-amber-500 font-medium border-l border-slate-100 dark:border-slate-800">Black Box</td>
             </tr>
             <tr className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-bold text-slate-900">Cost Structure</td>
+              <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Cost Structure</td>
               <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Explicit Expense Ratio (~0.80%)</td>
               <td className="px-6 py-4 border-l border-slate-100 dark:border-slate-800">Hidden Spread (~2-4%)</td>
             </tr>
@@ -640,7 +640,7 @@ const ScenarioTable = () => {
         <tbody className="divide-y divide-slate-100">
           {scenarios.map((row, idx) => (
             <tr key={idx} className="bg-white dark:bg-[#0A0D14] hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
-              <td className="px-6 py-4 font-medium text-slate-900">{row.market}</td>
+              <td className="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">{row.market}</td>
               <td className="px-6 py-4 font-bold text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/30">{row.buffer15}</td>
               <td className="px-6 py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/30">{row.buffer30}</td>
               <td className="px-6 py-4 text-slate-500">{row.plain}</td>
@@ -663,7 +663,7 @@ export default function BufferedYieldStrategiesArticle() {
           </div>
           {/* Executive Summary */}
           <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl p-10 border border-slate-100 dark:border-slate-800">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4 font-serif">What is a Buffered Strategy?</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">What is a Buffered Strategy?</h2>
             <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
               A Buffered Strategy (or "Defined Outcome" strategy) is an investment approach that explicitly defines the range of possible returns over a specific period. Unlike traditional investing, where your range of outcomes is infinite (and terrifying), here you trade <span className="font-semibold text-[#BC4128] dark:text-[#E2694A]">Upside Potential</span> (the Cap) to fund <span className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">Downside Protection</span> (the Buffer).
             </p>

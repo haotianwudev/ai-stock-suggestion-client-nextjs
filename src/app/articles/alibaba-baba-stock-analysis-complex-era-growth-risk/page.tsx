@@ -22,7 +22,7 @@ const Card = ({ children, className = '' }: { children: React.ReactNode; classNa
 const SectionTitle = ({ title, icon }: { title: string; icon?: React.ReactNode }) => (
   <div className="flex items-center mb-6">
     {icon && <SectionIcon>{icon}</SectionIcon>}
-    <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white tracking-tight">
+    <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white tracking-tight font-serif">
       {title}
     </h2>
   </div>
@@ -184,7 +184,7 @@ const FinancialAnalysis = () => (
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-right">
                 {row.fy2025}
               </td>
-              <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold text-right ${row.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+              <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold text-right ${row.change.startsWith('+') ? 'text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]'
                 }`}>
                 {row.change}
               </td>
@@ -228,26 +228,26 @@ const SwotAnalysis = () => (
       }
     />
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-green-50 dark:bg-green-900/30 p-6 rounded-lg border-l-4 border-green-500">
+      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/30 p-6 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
         <h4 className="font-bold text-lg text-green-800 dark:text-green-300 mb-2">Strengths</h4>
-        <ul className="list-disc list-inside text-green-700 dark:text-green-400 space-y-1">
+        <ul className="list-disc list-inside text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] space-y-1">
           <li>Dominant market position in China</li>
           <li>Fortress-like balance sheet with massive net cash</li>
           <li>Diverse and synergistic ecosystem</li>
           <li>Advanced, proprietary AI technology</li>
         </ul>
       </div>
-      <div className="bg-red-50 dark:bg-red-900/30 p-6 rounded-lg border-l-4 border-red-500">
+      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/30 p-6 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A]">
         <h4 className="font-bold text-lg text-red-800 dark:text-red-300 mb-2">Weaknesses</h4>
-        <ul className="list-disc list-inside text-red-700 dark:text-red-400 space-y-1">
+        <ul className="list-disc list-inside text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] space-y-1">
           <li>Slowing growth in mature domestic e-commerce</li>
           <li>Losses in investment-heavy segments</li>
           <li>Margin pressure from intense competition</li>
         </ul>
       </div>
-      <div className="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-lg border-l-4 border-blue-500">
+      <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/30 p-6 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]">
         <h4 className="font-bold text-lg text-blue-800 dark:text-blue-300 mb-2">Opportunities</h4>
-        <ul className="list-disc list-inside text-blue-700 dark:text-blue-400 space-y-1">
+        <ul className="list-disc list-inside text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] space-y-1">
           <li>Massive global demand for AI & cloud services</li>
           <li>Significant growth potential in international markets</li>
           <li>Leveraging AI to enhance monetization</li>
@@ -325,7 +325,7 @@ const InvestmentThesis = () => (
     />
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
-        <h4 className="font-bold text-xl text-green-600 dark:text-green-400 mb-3">The Bull Case</h4>
+        <h4 className="font-bold text-xl text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3">The Bull Case</h4>
         <div className="prose dark:prose-invert text-gray-600 dark:text-gray-300 space-y-2">
           <p>
             Built on a compelling valuation discount, tangible results from the &ldquo;AI-driven&rdquo; pivot (accelerating cloud growth), and a stabilizing regulatory environment. A new, aggressive capital return policy provides further support.
@@ -333,7 +333,7 @@ const InvestmentThesis = () => (
         </div>
       </div>
       <div>
-        <h4 className="font-bold text-xl text-red-600 dark:text-red-400 mb-3">The Bear Case</h4>
+        <h4 className="font-bold text-xl text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-3">The Bear Case</h4>
         <div className="prose dark:prose-invert text-gray-600 dark:text-gray-300 space-y-2">
           <p>
             Dominated by risks outside the company&apos;s control: a severe downturn in the Chinese economy, escalating US-China tech tensions (especially semiconductor restrictions), and relentless domestic competition that could permanently erode margins.

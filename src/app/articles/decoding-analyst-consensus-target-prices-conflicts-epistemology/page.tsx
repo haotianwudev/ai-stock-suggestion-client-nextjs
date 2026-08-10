@@ -6,13 +6,13 @@ import { ArticleFrame, InfographicSlot } from '@/components/articles/article-fra
 // --- Reusable Components ---
 const Section = ({ title, subtitle, children, icon: Icon, color = "blue" }: any) => {
   const colorClasses: any = {
-    blue: "bg-blue-50 border-blue-100 text-blue-600",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-100 text-[#A8672E] dark:text-[#D08F52]",
     purple: "bg-purple-50 border-purple-100 text-purple-600",
-    rose: "bg-rose-50 border-rose-100 text-rose-600",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-100 text-[#BC4128] dark:text-[#E2694A]",
     amber: "bg-amber-50 border-amber-100 text-amber-600",
-    emerald: "bg-emerald-50 border-emerald-100 text-emerald-600",
-    indigo: "bg-indigo-50 border-indigo-100 text-indigo-600",
-    slate: "bg-slate-100 border-slate-200 text-slate-600"
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-100 text-[#1D8A70] dark:text-[#3CBF9C]",
+    indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-indigo-100 text-[#A8672E] dark:text-[#D08F52]",
+    slate: "bg-slate-100 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
   };
 
   return (
@@ -22,7 +22,7 @@ const Section = ({ title, subtitle, children, icon: Icon, color = "blue" }: any)
           <Icon size={28} />
         </div>
         <div>
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{title}</h2>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight font-serif">{title}</h2>
           {subtitle && <p className="text-slate-500 text-lg mt-1 font-medium">{subtitle}</p>}
         </div>
       </div>
@@ -32,17 +32,17 @@ const Section = ({ title, subtitle, children, icon: Icon, color = "blue" }: any)
 };
 
 const Card = ({ title, children, className = "" }: any) => (
-  <div className={`bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 ${className}`}>
-    {title && <h3 className="text-xl font-bold text-slate-800 mb-4">{title}</h3>}
+  <div className={`bg-white dark:bg-[#0A0D14] rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 ${className}`}>
+    {title && <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">{title}</h3>}
     {children}
   </div>
 );
 
 const StatCard = ({ value, label, subtext, color = "blue" }: any) => (
-  <div className={`p-6 rounded-2xl bg-white border border-${color}-100 shadow-sm text-center relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300`}>
+  <div className={`p-6 rounded-2xl bg-white dark:bg-[#0A0D14] border border-${color}-100 shadow-sm text-center relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300`}>
     <div className={`absolute top-0 left-0 w-1 h-full bg-${color}-500`}></div>
     <div className={`text-4xl font-extrabold text-${color}-600 mb-2 tracking-tighter`}>{value}</div>
-    <div className="text-slate-800 font-bold mb-2">{label}</div>
+    <div className="text-slate-800 dark:text-slate-200 font-bold mb-2">{label}</div>
     <div className="text-slate-500 text-xs leading-relaxed px-2">{subtext}</div>
   </div>
 );
@@ -50,26 +50,26 @@ const StatCard = ({ value, label, subtext, color = "blue" }: any) => (
 const StrategyItem = ({ title, description, type = "do" }: any) => {
   const isDo = type === "do";
   return (
-    <div className={`flex gap-4 p-6 rounded-2xl ${isDo ? 'bg-emerald-50/50 border-emerald-100' : 'bg-rose-50/50 border-rose-100'} border transition-all duration-300 hover:shadow-md`}>
-      <div className={`mt-1 min-w-[24px] ${isDo ? 'text-emerald-500' : 'text-rose-500'}`}>
+    <div className={`flex gap-4 p-6 rounded-2xl ${isDo ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 border-emerald-100' : 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 border-rose-100'} border transition-all duration-300 hover:shadow-md`}>
+      <div className={`mt-1 min-w-[24px] ${isDo ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
         {isDo ? <CheckCircle2 size={24} /> : <XCircle size={24} />}
       </div>
       <div>
         <h4 className={`font-bold ${isDo ? 'text-emerald-900' : 'text-rose-900'} text-lg mb-2`}>{title}</h4>
-        <p className="text-slate-700 text-sm leading-relaxed">{description}</p>
+        <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{description}</p>
       </div>
     </div>
   );
 };
 
 const AcademicRef = ({ year, author, finding }: any) => (
-  <div className="flex gap-4 items-start p-4 bg-slate-50 rounded-xl text-sm border border-slate-100">
-    <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-100 text-slate-400">
+  <div className="flex gap-4 items-start p-4 bg-slate-50 dark:bg-[#14171B] rounded-xl text-sm border border-slate-100 dark:border-slate-800">
+    <div className="bg-white dark:bg-[#0A0D14] p-2 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 text-slate-400">
       <BookOpen size={16} />
     </div>
     <div>
-      <div className="font-semibold text-slate-800">{author} <span className="text-slate-400 font-normal">({year})</span></div>
-      <div className="text-slate-600 mt-1 italic">&ldquo;{finding}&rdquo;</div>
+      <div className="font-semibold text-slate-800 dark:text-slate-200">{author} <span className="text-slate-400 font-normal">({year})</span></div>
+      <div className="text-slate-600 dark:text-slate-400 mt-1 italic">&ldquo;{finding}&rdquo;</div>
     </div>
   </div>
 );
@@ -92,7 +92,7 @@ const TerminalIcon = () => (
 export default function AnalystReportApp() {
   return (
     <ArticleFrame slug="decoding-analyst-consensus-target-prices-conflicts-epistemology">
-      <div className="max-w-5xl mx-auto px-6 text-slate-800">
+      <div className="max-w-5xl mx-auto px-6 text-slate-800 dark:text-slate-200">
         <InfographicSlot alt="Decoding Analyst Consensus Infographic" src="https://i.imgur.com/ovdeXzk.jpeg" />
 
         {/* 1. The Conflict of Interest */}
@@ -105,32 +105,32 @@ export default function AnalystReportApp() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="bg-gradient-to-br from-white to-indigo-50/50 border-indigo-100">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                <div className="p-2 bg-indigo-100 rounded-lg text-[#A8672E] dark:text-[#D08F52]">
                   <Users size={20} />
                 </div>
-                <h3 className="font-bold text-lg text-indigo-950">The Access Economy</h3>
+                <h3 className="font-bold text-lg text-indigo-950 font-serif">The Access Economy</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 Analysts need access to C-suite management to write reports. If an analyst slaps a &ldquo;Sell&rdquo; rating on a company, the CEO stops taking their calls.
               </p>
-              <div className="bg-white p-5 rounded-xl text-sm border border-indigo-100 shadow-sm">
-                <span className="font-bold text-indigo-700 block mb-1">The Result:</span>
+              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl text-sm border border-indigo-100 shadow-sm">
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52] block mb-1">The Result:</span>
                 Analysts &ldquo;curate&rdquo; their ratings. &ldquo;Hold&rdquo; is often a polite code for &ldquo;Sell,&rdquo; and &ldquo;Buy&rdquo; essentially means &ldquo;Neutral/Positive.&rdquo;
               </div>
             </Card>
 
             <Card className="bg-gradient-to-br from-white to-rose-50/50 border-rose-100">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-rose-100 rounded-lg text-rose-600">
+                <div className="p-2 bg-rose-100 rounded-lg text-[#BC4128] dark:text-[#E2694A]">
                   <Lock size={20} />
                 </div>
-                <h3 className="font-bold text-lg text-rose-950">Investment Banking (IB) Bias</h3>
+                <h3 className="font-bold text-lg text-rose-950 font-serif">Investment Banking (IB) Bias</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 Research divisions are cost centers. Investment Banking deals (IPOs, M&amp;A) pay the bills.
               </p>
-              <div className="bg-white p-5 rounded-xl text-sm border border-rose-100 shadow-sm">
-                <span className="font-bold text-rose-700 block mb-1">The Pressure:</span>
+              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl text-sm border border-rose-100 shadow-sm">
+                <span className="font-bold text-[#BC4128] dark:text-[#E2694A] block mb-1">The Pressure:</span>
                 While a &ldquo;Chinese Wall&rdquo; theoretically separates Research and Banking, analysts are incentivized not to offend potential banking clients with negative coverage.
               </div>
             </Card>
@@ -139,7 +139,7 @@ export default function AnalystReportApp() {
           <div className="bg-slate-900 text-slate-300 rounded-3xl p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6 text-white">
               <Brain size={24} />
-              <h3 className="font-bold text-xl">The &ldquo;Herding&rdquo; Phenomenon</h3>
+              <h3 className="font-bold text-xl font-serif">The &ldquo;Herding&rdquo; Phenomenon</h3>
             </div>
             <p className="mb-6 text-lg leading-relaxed">
               Analysts face asymmetric career risk. If they are wrong when everyone else is wrong, they are safe. If they are wrong alone, they are fired.
@@ -168,38 +168,38 @@ export default function AnalystReportApp() {
         >
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* TipRanks Deep Dive */}
-            <div className="bg-white rounded-3xl p-8 border border-blue-100 shadow-sm">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-3xl p-8 border border-blue-100 shadow-sm">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h3 className="text-2xl font-black text-blue-600 mb-1">TipRanks</h3>
-                  <span className="bg-blue-50 text-blue-700 text-xs font-bold px-2 py-1 rounded">RETAIL FOCUSED</span>
+                  <h3 className="text-2xl font-black text-[#A8672E] dark:text-[#D08F52] mb-1 font-serif">TipRanks</h3>
+                  <span className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] text-xs font-bold px-2 py-1 rounded">RETAIL FOCUSED</span>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-full text-blue-600">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-3 rounded-full text-[#A8672E] dark:text-[#D08F52]">
                   <StarIcon />
                 </div>
               </div>
 
-              <h4 className="font-bold text-slate-800 mb-3">The &ldquo;Smart Score&rdquo; (1-10)</h4>
-              <p className="text-sm text-slate-600 mb-4">
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-3">The &ldquo;Smart Score&rdquo; (1-10)</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                 TipRanks aggregates 8 unique datasets to create a single score. It is heavily weighted towards momentum and sentiment.
               </p>
 
-              <ul className="space-y-2 text-sm text-slate-700 mb-6">
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300 mb-6">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div> Analyst Ratings (Wall St)
+                  <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div> Analyst Ratings (Wall St)
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div> Insider Activity (Form 4s)
+                  <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div> Insider Activity (Form 4s)
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div> Hedge Fund Activity (13Fs)
+                  <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div> Hedge Fund Activity (13Fs)
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div> Blogger Opinions
+                  <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div> Blogger Opinions
                 </li>
               </ul>
 
-              <div className="bg-blue-50 p-4 rounded-xl text-sm text-blue-800">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-xl text-sm text-blue-800">
                 <strong>Verdict:</strong> Excellent for sentiment analysis and checking an analyst&apos;s specific track record. Prone to &ldquo;Bull Market Bias.&rdquo;
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function AnalystReportApp() {
             <div className="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-sm text-slate-300">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h3 className="text-2xl font-black text-white mb-1">Bloomberg</h3>
+                  <h3 className="text-2xl font-black text-white mb-1 font-serif">Bloomberg</h3>
                   <span className="bg-slate-800 text-slate-300 text-xs font-bold px-2 py-1 rounded">INSTITUTIONAL</span>
                 </div>
                 <div className="bg-slate-800 p-3 rounded-full text-white">
@@ -223,16 +223,16 @@ export default function AnalystReportApp() {
 
               <ul className="space-y-2 text-sm text-slate-400 mb-6">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> 1-Year Absolute Return
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full"></div> 1-Year Absolute Return
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Timing of Revisions
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full"></div> Timing of Revisions
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Accuracy of Earnings Est.
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full"></div> Accuracy of Earnings Est.
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Cluster Filtering
+                  <div className="w-1.5 h-1.5 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full"></div> Cluster Filtering
                 </li>
               </ul>
 
@@ -277,27 +277,27 @@ export default function AnalystReportApp() {
             />
           </div>
 
-          <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
-            <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
-              <Eye className="text-indigo-500" />
+          <div className="bg-white dark:bg-[#0A0D14] rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 className="font-bold text-lg mb-6 flex items-center gap-2 font-serif">
+              <Eye className="text-[#A8672E] dark:text-[#D08F52]" />
               How to Read the &ldquo;Whisper&rdquo;
             </h3>
             <div className="relative pt-6">
               <div className="absolute top-6 left-0 w-full h-1 bg-gradient-to-r from-rose-200 via-slate-200 to-emerald-200 rounded-full"></div>
-              <div className="flex justify-between relative text-sm font-semibold text-slate-600 mt-4">
+              <div className="flex justify-between relative text-sm font-semibold text-slate-600 dark:text-slate-400 mt-4">
                 <div className="text-center w-1/3">
-                  <div className="w-4 h-4 bg-rose-500 rounded-full border-4 border-white absolute -top-[1.6rem] left-0"></div>
-                  <span className="text-rose-600 block mb-1">Public &ldquo;Hold&rdquo;</span>
+                  <div className="w-4 h-4 bg-[#BC4128] dark:bg-[#E2694A] rounded-full border-4 border-white absolute -top-[1.6rem] left-0"></div>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] block mb-1">Public &ldquo;Hold&rdquo;</span>
                   <span className="font-normal text-xs text-slate-400">Usually means &ldquo;Sell&rdquo;</span>
                 </div>
                 <div className="text-center w-1/3">
                   <div className="w-4 h-4 bg-slate-400 rounded-full border-4 border-white absolute -top-[1.6rem] left-1/2 -translate-x-1/2"></div>
-                  <span className="text-slate-800 block mb-1">Public &ldquo;Buy&rdquo;</span>
+                  <span className="text-slate-800 dark:text-slate-200 block mb-1">Public &ldquo;Buy&rdquo;</span>
                   <span className="font-normal text-xs text-slate-400">Means &ldquo;Neutral/Watch&rdquo;</span>
                 </div>
                 <div className="text-center w-1/3 text-right">
-                  <div className="w-4 h-4 bg-emerald-500 rounded-full border-4 border-white absolute -top-[1.6rem] right-0"></div>
-                  <span className="text-emerald-600 block mb-1">Top Pick / Conviction</span>
+                  <div className="w-4 h-4 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full border-4 border-white absolute -top-[1.6rem] right-0"></div>
+                  <span className="text-[#1D8A70] dark:text-[#3CBF9C] block mb-1">Top Pick / Conviction</span>
                   <span className="font-normal text-xs text-slate-400">Actual &ldquo;Buy&rdquo;</span>
                 </div>
               </div>
@@ -318,26 +318,26 @@ export default function AnalystReportApp() {
                 <ShieldAlert size={32} />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-amber-900 mb-3">The &ldquo;Target Price&rdquo; Fallacy</h3>
+                <h3 className="text-2xl font-bold text-amber-900 mb-3 font-serif">The &ldquo;Target Price&rdquo; Fallacy</h3>
                 <p className="text-amber-800 leading-relaxed mb-6 font-medium">
                   Never, ever use an analyst&apos;s Price Target to calculate your potential margin runway.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white p-6 rounded-2xl border border-amber-200/50 shadow-sm">
-                    <h4 className="font-bold text-rose-600 mb-2">The Investor&apos;s Mistake</h4>
-                    <p className="text-sm text-slate-600 italic mb-3">
+                  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border border-amber-200/50 shadow-sm">
+                    <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">The Investor&apos;s Mistake</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 italic mb-3">
                       &ldquo;Stock is $100. Analyst target is $150. That&apos;s 50% upside. I can leverage 2x and double my money safely.&rdquo;
                     </p>
-                    <div className="text-xs font-bold text-rose-500 bg-rose-50 inline-block px-2 py-1 rounded">
+                    <div className="text-xs font-bold text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 inline-block px-2 py-1 rounded">
                       Result: Margin Call at $85
                     </div>
                   </div>
-                  <div className="bg-white p-6 rounded-2xl border border-amber-200/50 shadow-sm">
-                    <h4 className="font-bold text-emerald-600 mb-2">The Reality</h4>
-                    <p className="text-sm text-slate-600 mb-3">
+                  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border border-amber-200/50 shadow-sm">
+                    <h4 className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">The Reality</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
                       Analysts rarely predict the <strong>path</strong> to the target. A stock can drop 30% on bad macro news before hitting the target 18 months later.
                     </p>
-                    <div className="text-xs font-bold text-emerald-600 bg-emerald-50 inline-block px-2 py-1 rounded">
+                    <div className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 inline-block px-2 py-1 rounded">
                       Rule: Leverage = 0 based on targets
                     </div>
                   </div>
@@ -356,7 +356,7 @@ export default function AnalystReportApp() {
         >
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 ml-1">What to Do</h3>
+              <h3 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 ml-1 font-serif">What to Do</h3>
               <StrategyItem
                 type="do"
                 title="The 'Delta' Strategy"
@@ -375,7 +375,7 @@ export default function AnalystReportApp() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 ml-1">What to Avoid</h3>
+              <h3 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 ml-1 font-serif">What to Avoid</h3>
               <StrategyItem
                 type="dont"
                 title="The 'Orphan' Buy"

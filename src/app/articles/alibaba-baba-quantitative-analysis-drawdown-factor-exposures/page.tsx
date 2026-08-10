@@ -117,12 +117,12 @@ export default function BabaQuantAnalysisApp() {
                   </div>
                   <div className="flex justify-between items-center pt-2">
                     <span className="text-slate-600 dark:text-slate-400">KWEB Benchmark Drawdown</span>
-                    <span className="font-bold text-blue-500">-7.70%</span>
+                    <span className="font-bold text-[#A8672E] dark:text-[#D08F52]">-7.70%</span>
                   </div>
                 </div>
               </div>
-              <div className="bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50 rounded-3xl p-8 flex flex-col justify-center min-w-0">
-                <Info className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mb-4" />
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50 rounded-3xl p-8 flex flex-col justify-center min-w-0">
+                <Info className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-4" />
                 <p className="text-indigo-900 dark:text-indigo-200/80 leading-relaxed">
                   "Even after meticulously accounting for the dividend, BABA deeply underperformed its sector benchmark by approximately 7.22% over an extraordinarily brief ten-session window."
                 </p>
@@ -148,22 +148,22 @@ export default function BabaQuantAnalysisApp() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">Beta <span className="font-serif italic">(β)</span></td>
                     <td className="px-6 py-4">0.8281</td>
                     <td className="px-6 py-4">p = 0.0098</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">Alpha <span className="font-serif italic">(α)</span></td>
                     <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold">-0.0073 (-73 bps)</td>
                     <td className="px-6 py-4">p = 0.1710</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">R-squared <span className="font-serif italic">(R²)</span></td>
                     <td className="px-6 py-4">0.5420</td>
                     <td className="px-6 py-4">F-stat = 10.65</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200">Idiosyncratic Volatility</td>
                     <td className="px-6 py-4">22.92%</td>
                     <td className="px-6 py-4">Annualized</td>
@@ -172,7 +172,7 @@ export default function BabaQuantAnalysisApp() {
               </table>
             </div>
 
-            <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 min-w-0">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 min-w-0">
               <h4 className="text-lg font-bold text-rose-900 dark:text-rose-300 mb-3 flex items-center gap-2">
                 <Activity className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" />
                 Statistical Significance
@@ -197,12 +197,12 @@ export default function BabaQuantAnalysisApp() {
             </p>
 
             <div className="bg-[#14171B] dark:bg-[#05070A] p-8 md:p-10 rounded-3xl border border-slate-800 relative overflow-hidden min-w-0">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#BC4128] dark:bg-[#E2694A]/10 rounded-full blur-3xl" />
               <h4 className="text-xl font-bold text-white mb-4 font-serif relative z-10">Repricing the Cost of Capital</h4>
               <p className="text-slate-300 text-lg leading-relaxed relative z-10 mb-6">
                 While fundamental cash-flow impact is immaterial (BABA lacks DoD contracts), in quant portfolio management, this designation is an early-warning signaling mechanism. It forces mechanical divestment from institutional asset managers bound by ESG and sovereign compliance frameworks to avoid future OFAC/CFIUS entanglement.
               </p>
-              <div className="p-4 bg-white/5 border border-white/10 rounded-2xl inline-block relative z-10">
+              <div className="p-4 bg-white dark:bg-[#0A0D14]/5 border border-white/10 rounded-2xl inline-block relative z-10">
                 <strong className="text-[#A8672E] dark:text-[#D08F52]">Result:</strong> <span className="text-slate-200">The market priced in an immediate spike in the illiquidity premium, ignoring positive catalysts like the Qwen-Robot Suite launch.</span>
               </div>
             </div>
@@ -392,7 +392,7 @@ export default function BabaQuantAnalysisApp() {
               {/* Fixed Income */}
               <div className="bg-white dark:bg-[#05070A] rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col min-w-0">
                 <div className="px-8 py-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center gap-4">
-                  <DollarSign className="text-indigo-600 dark:text-indigo-400 w-6 h-6" />
+                  <DollarSign className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-6 h-6" />
                   <h2 className="text-xl font-serif font-bold text-slate-900 dark:text-white">Fixed Income Markets</h2>
                 </div>
                 <div className="p-8 flex flex-col flex-1">
@@ -402,8 +402,8 @@ export default function BabaQuantAnalysisApp() {
                   
                   <ul className="space-y-6 mb-8 mt-auto">
                     <li className="flex gap-4 items-start">
-                      <div className="mt-1 bg-green-50 dark:bg-green-950/30 p-2 rounded-xl border border-green-200 dark:border-green-900/50">
-                        <Percent className="w-4 h-4 text-green-600 dark:text-green-500" />
+                      <div className="mt-1 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-950/30 p-2 rounded-xl border border-green-200 dark:border-green-900/50">
+                        <Percent className="w-4 h-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" />
                       </div>
                       <div>
                         <strong className="block text-slate-900 dark:text-white mb-1">Bonds Pricing Above Par</strong>
@@ -411,8 +411,8 @@ export default function BabaQuantAnalysisApp() {
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
-                      <div className="mt-1 bg-indigo-50 dark:bg-indigo-950/30 p-2 rounded-xl border border-indigo-200 dark:border-indigo-900/50">
-                        <ShieldAlert className="w-4 h-4 text-indigo-600 dark:text-indigo-500" />
+                      <div className="mt-1 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/30 p-2 rounded-xl border border-indigo-200 dark:border-indigo-900/50">
+                        <ShieldAlert className="w-4 h-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
                       </div>
                       <div>
                         <strong className="block text-slate-900 dark:text-white mb-1">No Default Signals</strong>
@@ -421,7 +421,7 @@ export default function BabaQuantAnalysisApp() {
                     </li>
                   </ul>
                   
-                  <div className="p-4 bg-indigo-50 dark:bg-indigo-950/30 rounded-2xl text-indigo-900 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-900/50 text-sm font-semibold">
+                  <div className="p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/30 rounded-2xl text-indigo-900 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-900/50 text-sm font-semibold">
                     Conclusion: The firm remains highly solvent. The drawdown is strictly a repricing of the equity risk premium.
                   </div>
                 </div>

@@ -142,49 +142,49 @@ const holdingsDeepDive = [
 
 // --- COMPONENTS ---
 const Introduction = () => (
-  <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200 rounded-2xl">
+  <section className="py-20 sm:py-24 bg-slate-50 dark:bg-[#14171B] border-y border-slate-200 dark:border-slate-800 rounded-2xl">
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Architect: Stanley Druckenmiller</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">One of history&apos;s most successful investors, whose strategy is a unique blend of top-down macro analysis and aggressive, high-conviction betting.</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">The Architect: Stanley Druckenmiller</h3>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">One of history&apos;s most successful investors, whose strategy is a unique blend of top-down macro analysis and aggressive, high-conviction betting.</p>
       </div>
       <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div className="space-y-4 text-slate-700">
+        <div className="space-y-4 text-slate-700 dark:text-slate-300">
           <div className="flex items-center space-x-3">
-            <UserCheck className="h-8 w-8 text-blue-600" />
-            <h4 className="text-2xl font-bold text-slate-900">Duquesne Family Office</h4>
+            <UserCheck className="h-8 w-8 text-[#A8672E] dark:text-[#D08F52]" />
+            <h4 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Duquesne Family Office</h4>
           </div>
           <p>After a legendary career, including his famous partnership with George Soros and a 30-year track record at Duquesne Capital averaging <strong>30% annual returns with no down years</strong>, Druckenmiller converted his firm into a family office in 2010.</p>
           <p>Today, Duquesne manages his personal wealth, deploying capital with the same principles that defined his career: mental flexibility, rigorous risk management, and the courage to &ldquo;go for the jugular&rdquo; when an opportunity arises. The firm&apos;s 13F filings are among the most closely watched in finance, offering a glimpse into the mind of a macro master.</p>
         </div>
-        <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
-          <h4 className="text-xl font-bold text-slate-900 text-center">Core Investment Principles</h4>
+        <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+          <h4 className="text-xl font-bold text-slate-900 dark:text-slate-100 text-center">Core Investment Principles</h4>
           <div className="space-y-4">
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 text-blue-600 p-2 rounded-full mt-1">
+              <div className="flex-shrink-0 bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-2 rounded-full mt-1">
                 <Globe className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="font-semibold text-slate-800">Global Macro View</h5>
-                <p className="text-sm text-slate-600">Starts with a big-picture analysis of global economic trends to identify major themes.</p>
+                <h5 className="font-semibold text-slate-800 dark:text-slate-200">Global Macro View</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Starts with a big-picture analysis of global economic trends to identify major themes.</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 text-blue-600 p-2 rounded-full mt-1">
+              <div className="flex-shrink-0 bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-2 rounded-full mt-1">
                 <Scale className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="font-semibold text-slate-800">Concentrated Bets</h5>
-                <p className="text-sm text-slate-600">Eschews diversification in favor of making large, aggressive bets on his highest-conviction ideas.</p>
+                <h5 className="font-semibold text-slate-800 dark:text-slate-200">Concentrated Bets</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Eschews diversification in favor of making large, aggressive bets on his highest-conviction ideas.</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 bg-blue-100 text-blue-600 p-2 rounded-full mt-1">
+              <div className="flex-shrink-0 bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-2 rounded-full mt-1">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="font-semibold text-slate-800">Capital Preservation</h5>
-                <p className="text-sm text-slate-600">Focuses on protecting capital and is known for cutting losses quickly if a thesis is wrong.</p>
+                <h5 className="font-semibold text-slate-800 dark:text-slate-200">Capital Preservation</h5>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Focuses on protecting capital and is known for cutting losses quickly if a thesis is wrong.</p>
               </div>
             </div>
           </div>
@@ -195,27 +195,27 @@ const Introduction = () => (
 );
 
 const MetricCard = ({ title, value, change, changePercent, icon: Icon }) => (
-  <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transform transition-transform hover:-translate-y-1">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transform transition-transform hover:-translate-y-1">
     <div className="flex items-center justify-between">
       <p className="text-sm font-medium text-slate-500">{title}</p>
       <Icon className="h-6 w-6 text-slate-400" />
     </div>
-    <p className="mt-2 text-3xl font-bold text-slate-900">{value}</p>
+    <p className="mt-2 text-3xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
     {change && (
       <div className="flex items-baseline mt-1 space-x-2">
-        <p className="text-lg font-semibold text-green-600">{change}</p>
-        <p className="text-sm font-medium text-green-600">({changePercent})</p>
+        <p className="text-lg font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">{change}</p>
+        <p className="text-sm font-medium text-[#1D8A70] dark:text-[#3CBF9C]">({changePercent})</p>
       </div>
     )}
   </div>
 );
 
 const PortfolioSnapshot = () => (
-  <section id="snapshot" className="py-20 sm:py-24 bg-white">
+  <section id="snapshot" className="py-20 sm:py-24 bg-white dark:bg-[#0A0D14]">
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Q2 Portfolio Snapshot</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">A decisive shift to offense, marked by a surge in capital and concentrated bets.</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">Q2 Portfolio Snapshot</h3>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">A decisive shift to offense, marked by a surge in capital and concentrated bets.</p>
       </div>
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
@@ -242,8 +242,8 @@ const PortfolioSnapshot = () => (
         />
       </div>
       <div className="mt-16 max-w-4xl mx-auto">
-        <h4 className="text-2xl font-bold text-slate-900 text-center mb-8">Q1 vs Q2 Comparison</h4>
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+        <h4 className="text-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8">Q1 vs Q2 Comparison</h4>
+        <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200">
             <thead>
               <tr>
@@ -253,45 +253,45 @@ const PortfolioSnapshot = () => (
                 <th className="py-3 px-4 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Change</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-slate-200">
-              <tr className="hover:bg-slate-50">
-                <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Total Market Value</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 text-center">{portfolioMetrics.q1Value}</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 text-center">{portfolioMetrics.q2Value}</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-green-600 text-center">{portfolioMetrics.valueChangePercent}</td>
+            <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
+              <tr className="hover:bg-slate-50 dark:bg-[#14171B]">
+                <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Total Market Value</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 text-center">{portfolioMetrics.q1Value}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 text-center">{portfolioMetrics.q2Value}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-[#1D8A70] dark:text-[#3CBF9C] text-center">{portfolioMetrics.valueChangePercent}</td>
               </tr>
-              <tr className="hover:bg-slate-50">
-                <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Number of Holdings</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 text-center">{portfolioMetrics.holdingsCountQ1}</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 text-center">{portfolioMetrics.holdingsCountQ2}</td>
-                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-green-600 text-center">+{portfolioMetrics.holdingsCountQ2 - portfolioMetrics.holdingsCountQ1}</td>
+              <tr className="hover:bg-slate-50 dark:bg-[#14171B]">
+                <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Number of Holdings</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 text-center">{portfolioMetrics.holdingsCountQ1}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 text-center">{portfolioMetrics.holdingsCountQ2}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-[#1D8A70] dark:text-[#3CBF9C] text-center">+{portfolioMetrics.holdingsCountQ2 - portfolioMetrics.holdingsCountQ1}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
       <div className="mt-16">
-        <h4 className="text-2xl font-bold text-slate-900 text-center mb-8">Top 10 Holdings</h4>
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <h4 className="text-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8">Top 10 Holdings</h4>
+        <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-200">
-              <thead className="bg-slate-50">
+              <thead className="bg-slate-50 dark:bg-[#14171B]">
                 <tr>
-                  <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900 sm:pl-6">Rank</th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">Ticker</th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">Company</th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">Market Value</th>
-                  <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-semibold text-slate-900">% of Portfolio</th>
+                  <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 sm:pl-6">Rank</th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Ticker</th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Company</th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Market Value</th>
+                  <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">% of Portfolio</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 bg-white">
+              <tbody className="divide-y divide-slate-200 bg-white dark:bg-[#0A0D14]">
                 {topHoldings.map((holding) => (
-                  <tr key={holding.rank} className="hover:bg-slate-50 transition-colors">
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900 sm:pl-6">{holding.rank}</td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-blue-600 font-mono">{holding.ticker}</td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-600">{holding.name}</td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-600">{holding.value}</td>
-                    <td className="whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium text-slate-900 sm:pr-6">{holding.portfolioPercentage}</td>
+                  <tr key={holding.rank} className="hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900 dark:text-slate-100 sm:pl-6">{holding.rank}</td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-[#A8672E] dark:text-[#D08F52] font-mono">{holding.ticker}</td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-600 dark:text-slate-400">{holding.name}</td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-600 dark:text-slate-400">{holding.value}</td>
+                    <td className="whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium text-slate-900 dark:text-slate-100 sm:pr-6">{holding.portfolioPercentage}</td>
                   </tr>
                 ))}
               </tbody>
@@ -308,56 +308,56 @@ const ChangeCard = ({ item, type }) => {
   const isExitOrDecrease = type === 'exit' || type === 'decrease';
 
   return (
-    <div className="bg-white p-4 rounded-lg border border-slate-200 space-y-2 shadow-sm">
+    <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm">
       <div className="flex justify-between items-start">
         <div>
-          <p className="font-mono text-sm text-blue-600">{item.ticker}</p>
-          <p className="font-bold text-slate-900">{item.name}</p>
+          <p className="font-mono text-sm text-[#A8672E] dark:text-[#D08F52]">{item.ticker}</p>
+          <p className="font-bold text-slate-900 dark:text-slate-100">{item.name}</p>
         </div>
-        {(isNewOrIncrease) && <div className="flex-shrink-0 bg-green-100 text-green-600 p-1.5 rounded-full"><Plus className="h-4 w-4" /></div>}
-        {(isExitOrDecrease) && <div className="flex-shrink-0 bg-red-100 text-red-600 p-1.5 rounded-full"><Minus className="h-4 w-4" /></div>}
+        {(isNewOrIncrease) && <div className="flex-shrink-0 bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C] p-1.5 rounded-full"><Plus className="h-4 w-4" /></div>}
+        {(isExitOrDecrease) && <div className="flex-shrink-0 bg-red-100 text-[#BC4128] dark:text-[#E2694A] p-1.5 rounded-full"><Minus className="h-4 w-4" /></div>}
       </div>
       <p className="text-xs text-slate-500 italic">{item.theme}</p>
       <div className="flex justify-between items-baseline pt-1">
-        {item.change && <p className={`text-sm font-semibold ${isNewOrIncrease ? 'text-green-600' : 'text-red-600'}`}>{item.change}</p>}
-        {item.value && <p className="text-sm text-slate-600">{item.value}</p>}
+        {item.change && <p className={`text-sm font-semibold ${isNewOrIncrease ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>{item.change}</p>}
+        {item.value && <p className="text-sm text-slate-600 dark:text-slate-400">{item.value}</p>}
       </div>
     </div>
   );
 };
 
 const PortfolioChanges = () => (
-  <section className="py-20 sm:py-24 bg-slate-50">
+  <section className="py-20 sm:py-24 bg-slate-50 dark:bg-[#14171B]">
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Anatomy of a Reshuffle</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">High-conviction buys and strategic exits funded a fundamental portfolio overhaul.</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">Anatomy of a Reshuffle</h3>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">High-conviction buys and strategic exits funded a fundamental portfolio overhaul.</p>
       </div>
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="space-y-4">
-          <h4 className="flex items-center text-xl font-semibold text-slate-900">
-            <Plus className="h-5 w-5 mr-2 text-green-600" />
+          <h4 className="flex items-center text-xl font-semibold text-slate-900 dark:text-slate-100">
+            <Plus className="h-5 w-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
             New Cornerstones
           </h4>
           {portfolioChanges.newPositions.map(item => <ChangeCard key={item.ticker} item={item} type="new" />)}
         </div>
         <div className="space-y-4">
-          <h4 className="flex items-center text-xl font-semibold text-slate-900">
-            <ArrowUpRight className="h-5 w-5 mr-2 text-green-600" />
+          <h4 className="flex items-center text-xl font-semibold text-slate-900 dark:text-slate-100">
+            <ArrowUpRight className="h-5 w-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]" />
             Increased Stakes
           </h4>
           {portfolioChanges.increasedStakes.map(item => <ChangeCard key={item.ticker} item={item} type="increase" />)}
         </div>
         <div className="space-y-4">
-          <h4 className="flex items-center text-xl font-semibold text-slate-900">
-            <X className="h-5 w-5 mr-2 text-red-600" />
+          <h4 className="flex items-center text-xl font-semibold text-slate-900 dark:text-slate-100">
+            <X className="h-5 w-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
             Complete Exits
           </h4>
           {portfolioChanges.exitedPositions.map(item => <ChangeCard key={item.ticker} item={item} type="exit" />)}
         </div>
         <div className="space-y-4">
-          <h4 className="flex items-center text-xl font-semibold text-slate-900">
-            <ArrowDownRight className="h-5 w-5 mr-2 text-red-600" />
+          <h4 className="flex items-center text-xl font-semibold text-slate-900 dark:text-slate-100">
+            <ArrowDownRight className="h-5 w-5 mr-2 text-[#BC4128] dark:text-[#E2694A]" />
             Major Reductions
           </h4>
           {portfolioChanges.majorReductions.map(item => <ChangeCard key={item.ticker} item={item} type="decrease" />)}
@@ -368,20 +368,20 @@ const PortfolioChanges = () => (
 );
 
 const DruckenmillerDoctrine = () => (
-  <section className="py-20 sm:py-24 bg-white">
+  <section className="py-20 sm:py-24 bg-white dark:bg-[#0A0D14]">
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Druckenmiller Doctrine</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Understanding the core principles behind the legendary investor&apos;s strategy.</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">The Druckenmiller Doctrine</h3>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">Understanding the core principles behind the legendary investor&apos;s strategy.</p>
       </div>
       <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {druckenmillerDoctrine.map((principle) => (
-          <div key={principle.title} className="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center flex flex-col items-center shadow-sm">
-            <div className="bg-blue-100 text-blue-600 p-3 rounded-full">
+          <div key={principle.title} className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center shadow-sm">
+            <div className="bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-3 rounded-full">
               <principle.icon className="h-7 w-7" />
             </div>
-            <h4 className="mt-5 text-lg font-bold text-slate-900">{principle.title}</h4>
-            <p className="mt-2 flex-grow text-slate-600 text-sm">{principle.description}</p>
+            <h4 className="mt-5 text-lg font-bold text-slate-900 dark:text-slate-100">{principle.title}</h4>
+            <p className="mt-2 flex-grow text-slate-600 dark:text-slate-400 text-sm">{principle.description}</p>
           </div>
         ))}
       </div>
@@ -390,21 +390,21 @@ const DruckenmillerDoctrine = () => (
 );
 
 const MacroThemes = () => (
-  <section className="py-20 sm:py-24 bg-slate-50">
+  <section className="py-20 sm:py-24 bg-slate-50 dark:bg-[#14171B]">
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">The Big Picture: Dominant Macro Themes</h3>
-        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Decoding the powerful, interconnected themes driving the new portfolio.</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">The Big Picture: Dominant Macro Themes</h3>
+        <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">Decoding the powerful, interconnected themes driving the new portfolio.</p>
       </div>
       <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
         {macroThemes.map((theme) => (
-          <div key={theme.title} className="bg-white p-8 rounded-2xl border border-slate-200 text-center flex flex-col items-center transform transition-transform hover:-translate-y-2 hover:shadow-lg">
-            <div className="bg-blue-100 text-blue-600 p-4 rounded-full">
+          <div key={theme.title} className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center transform transition-transform hover:-translate-y-2 hover:shadow-lg">
+            <div className="bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-4 rounded-full">
               <theme.icon className="h-8 w-8" />
             </div>
-            <h4 className="mt-6 text-xl font-bold text-slate-900">{theme.title}</h4>
-            <p className="text-sm font-semibold text-blue-600">{theme.subtitle}</p>
-            <p className="mt-4 flex-grow text-slate-600 text-sm">{theme.description}</p>
+            <h4 className="mt-6 text-xl font-bold text-slate-900 dark:text-slate-100">{theme.title}</h4>
+            <p className="text-sm font-semibold text-[#A8672E] dark:text-[#D08F52]">{theme.subtitle}</p>
+            <p className="mt-4 flex-grow text-slate-600 dark:text-slate-400 text-sm">{theme.description}</p>
           </div>
         ))}
       </div>
@@ -417,30 +417,30 @@ const HoldingsDeepDive = () => {
 
   const Modal = ({ holding, onClose }) => (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 transition-colors">
+      <div className="bg-white dark:bg-[#0A0D14] rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 dark:text-slate-200 transition-colors">
           <X className="h-6 w-6" />
         </button>
         <div className="flex items-center space-x-4">
-          <div className="bg-blue-100 text-blue-600 p-3 rounded-full">
+          <div className="bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-3 rounded-full">
             <holding.icon className="h-8 w-8" />
           </div>
           <div>
-            <p className="font-mono text-lg text-blue-600">{holding.ticker}</p>
-            <h3 className="text-2xl font-bold text-slate-900">{holding.name}</h3>
+            <p className="font-mono text-lg text-[#A8672E] dark:text-[#D08F52]">{holding.ticker}</p>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">{holding.name}</h3>
           </div>
         </div>
-        <div className="mt-6 space-y-4 text-slate-600">
+        <div className="mt-6 space-y-4 text-slate-600 dark:text-slate-400">
           <div>
-            <h4 className="font-semibold text-slate-900">Investment Thesis:</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100">Investment Thesis:</h4>
             <p>{holding.thesis}</p>
           </div>
           <div>
-            <h4 className="font-semibold text-slate-900">Portfolio Action:</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100">Portfolio Action:</h4>
             <p>{holding.action}</p>
           </div>
           <div>
-            <h4 className="font-semibold text-slate-900">Recent Catalyst:</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-100">Recent Catalyst:</h4>
             <p>{holding.catalyst}</p>
           </div>
         </div>
@@ -449,29 +449,29 @@ const HoldingsDeepDive = () => {
   );
 
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-white dark:bg-[#0A0D14]">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl font-bold text-slate-900">Deep Dive: Key Holdings</h3>
-          <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Examining the investment thesis behind the portfolio&apos;s most significant positions.</p>
+          <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">Deep Dive: Key Holdings</h3>
+          <p className="mt-3 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">Examining the investment thesis behind the portfolio&apos;s most significant positions.</p>
         </div>
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {holdingsDeepDive.map((holding) => (
             <button
               key={holding.ticker}
               onClick={() => setSelectedHolding(holding)}
-              className="bg-white p-6 rounded-xl border border-slate-200 text-left hover:bg-slate-50 hover:border-blue-500 transition-all transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white shadow-sm"
+              className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-left hover:bg-slate-50 dark:bg-[#14171B] hover:border-[#A8672E] dark:border-[#D08F52] transition-all transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white shadow-sm"
             >
               <div className="flex items-center space-x-3">
                 <div className="bg-slate-100 p-2 rounded-full">
-                  <holding.icon className="h-6 w-6 text-blue-600" />
+                  <holding.icon className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
                 </div>
                 <div>
-                  <p className="font-mono text-blue-600">{holding.ticker}</p>
-                  <h4 className="font-bold text-slate-900">{holding.name}</h4>
+                  <p className="font-mono text-[#A8672E] dark:text-[#D08F52]">{holding.ticker}</p>
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100">{holding.name}</h4>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-slate-600 line-clamp-3">{holding.thesis}</p>
+              <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 line-clamp-3">{holding.thesis}</p>
             </button>
           ))}
         </div>
@@ -484,7 +484,7 @@ const HoldingsDeepDive = () => {
 export default function DruckenmillerQ2Analysis() {
   return (
     <ArticleFrame slug="druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction">
-      <div className="bg-white antialiased text-slate-800 -mx-4 sm:-mx-6 lg:-mx-8">
+      <div className="bg-white dark:bg-[#0A0D14] antialiased text-slate-800 dark:text-slate-200 -mx-4 sm:-mx-6 lg:-mx-8">
         <Introduction />
         <PortfolioSnapshot />
         <PortfolioChanges />

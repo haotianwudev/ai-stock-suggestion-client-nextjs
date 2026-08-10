@@ -49,18 +49,18 @@ const CalendarSpreadGuide = () => {
           <div className="p-6 border-b border-blue-100 dark:border-blue-900/30">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-blue-100 dark:bg-blue-900/40 p-2 rounded-lg">
-                <Calculator className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <Calculator className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
               </div>
-              <h3 className="text-xl font-bold text-blue-900 dark:text-blue-400">Calendar Spread Calculator</h3>
+              <h3 className="text-xl font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] font-serif">Calendar Spread Calculator</h3>
             </div>
-            <p className="text-blue-700 dark:text-blue-300 text-sm">Estimate profit zones and breakeven points for your calendar spread strategy.</p>
+            <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 text-sm">Estimate profit zones and breakeven points for your calendar spread strategy.</p>
           </div>
           <div className="p-6">
             <div className="grid md:grid-cols-2 gap-8">
               {/* Input Controls */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-400 mb-2">Stock Price ($)</label>
+                  <label className="block text-sm font-medium text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Stock Price ($)</label>
                   <input
                     type="number"
                     value={stockPrice}
@@ -69,7 +69,7 @@ const CalendarSpreadGuide = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-400 mb-2">Strike Price ($)</label>
+                  <label className="block text-sm font-medium text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Strike Price ($)</label>
                   <input
                     type="number"
                     value={strikePrice}
@@ -78,7 +78,7 @@ const CalendarSpreadGuide = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-400 mb-2">Short Option DTE</label>
+                  <label className="block text-sm font-medium text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Short Option DTE</label>
                   <input
                     type="number"
                     value={shortDTE}
@@ -87,7 +87,7 @@ const CalendarSpreadGuide = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-400 mb-2">Long Option DTE</label>
+                  <label className="block text-sm font-medium text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Long Option DTE</label>
                   <input
                     type="number"
                     value={longDTE}
@@ -96,7 +96,7 @@ const CalendarSpreadGuide = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-400 mb-2">Implied Volatility (%)</label>
+                  <label className="block text-sm font-medium text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Implied Volatility (%)</label>
                   <input
                     type="number"
                     value={volatility}
@@ -108,19 +108,19 @@ const CalendarSpreadGuide = () => {
               
               {/* Results */}
               <div className="bg-white dark:bg-black/40 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
-                <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-4">Estimated Results</h4>
+                <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Estimated Results</h4>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-green-800 dark:text-green-400">Max Profit</span>
-                    <span className="font-bold text-green-600 dark:text-green-400">${pnlData.maxProfit}</span>
+                  <div className="flex justify-between items-center p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 rounded-lg">
+                    <span className="text-sm font-medium text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Max Profit</span>
+                    <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">${pnlData.maxProfit}</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-blue-800 dark:text-blue-400">Lower Breakeven</span>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">${pnlData.breakeven1}</span>
+                  <div className="flex justify-between items-center p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-lg">
+                    <span className="text-sm font-medium text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Lower Breakeven</span>
+                    <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">${pnlData.breakeven1}</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-blue-800 dark:text-blue-400">Upper Breakeven</span>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">${pnlData.breakeven2}</span>
+                  <div className="flex justify-between items-center p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-lg">
+                    <span className="text-sm font-medium text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Upper Breakeven</span>
+                    <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">${pnlData.breakeven2}</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                     <span className="text-sm font-medium text-purple-800 dark:text-purple-400">Profit Zone Width</span>
@@ -143,28 +143,28 @@ const CalendarSpreadGuide = () => {
       <section className="py-16 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">How It Works</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-serif">How It Works</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               Unlike vertical spreads based on directional bets, the calendar spread is an arbitrage on <strong>time</strong>. You sell a short-term option to finance a long-term option at the same strike.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex items-start p-4 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10 hover:shadow-md dark:hover:shadow-none transition-shadow">
-                <div className="bg-emerald-100 dark:bg-emerald-900/40 p-3 rounded-lg text-emerald-600 dark:text-emerald-400 mr-4">
+                <div className="bg-emerald-100 dark:bg-emerald-900/40 p-3 rounded-lg text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mr-4">
                   <TrendingDown size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-800 dark:text-white">Short Leg (Near-Term)</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-white font-serif">Short Leg (Near-Term)</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     <strong>The Income Engine.</strong> Decays rapidly (30-45 days). You want this to expire worthless or lose value quickly.
                   </p>
                 </div>
               </div>
               <div className="flex items-start p-4 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10 hover:shadow-md dark:hover:shadow-none transition-shadow">
-                <div className="bg-blue-100 dark:bg-blue-900/40 p-3 rounded-lg text-blue-600 dark:text-blue-400 mr-4">
+                <div className="bg-blue-100 dark:bg-blue-900/40 p-3 rounded-lg text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mr-4">
                   <Calendar size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-800 dark:text-white">Long Leg (Far-Term)</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-white font-serif">Long Leg (Far-Term)</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     <strong>The Asset.</strong> Decays slowly (60-90+ days). This provides protection and Vega exposure (volatility sensitivity).
                   </p>
@@ -175,7 +175,7 @@ const CalendarSpreadGuide = () => {
 
           {/* Visual Representation of Decay */}
           <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-white/10 relative overflow-hidden">
-            <h3 className="text-lg font-semibold mb-6 text-center text-slate-700 dark:text-slate-300">Time Decay Acceleration (Theta)</h3>
+            <h3 className="text-lg font-semibold mb-6 text-center text-slate-700 dark:text-slate-300 font-serif">Time Decay Acceleration (Theta)</h3>
             <div className="h-64 relative flex items-end justify-between px-4">
               {/* Axes */}
               <div className="absolute left-0 bottom-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800"></div>
@@ -202,7 +202,7 @@ const CalendarSpreadGuide = () => {
               </svg>
               
               <div className="absolute bottom-2 left-4 text-xs text-slate-400">Time &rarr;</div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 dark:bg-[#14171B]/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-emerald-100 dark:border-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-sm font-bold">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#0A0D14]/90 dark:bg-[#14171B]/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-emerald-100 dark:border-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm font-bold">
                 Net Profit Zone
               </div>
             </div>
@@ -214,7 +214,7 @@ const CalendarSpreadGuide = () => {
       <section className="bg-slate-100 dark:bg-[#0a0a0a] py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">The "Profit Tent" Profile</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-serif">The "Profit Tent" Profile</h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mt-2">
               Visualizing where you make money. Unlike simple stock ownership, your profit zone is a specific price range that peaks at expiration.
             </p>
@@ -245,11 +245,11 @@ const CalendarSpreadGuide = () => {
             
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-lg h-fit text-indigo-700 dark:text-indigo-400">
+                <div className="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-lg h-fit text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                   <Anchor size={24}/>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-white">Peak Profit</h3>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-white font-serif">Peak Profit</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm">
                     Occurs exactly at the strike price when the short option expires. The short option is worthless, but the long option retains maximum extrinsic value.
                   </p>
@@ -257,11 +257,11 @@ const CalendarSpreadGuide = () => {
               </div>
               
               <div className="flex gap-4">
-                <div className="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-lg h-fit text-indigo-700 dark:text-indigo-400">
+                <div className="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-lg h-fit text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                   <Maximize2 size={24}/>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-white">Breakeven Width</h3>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-white font-serif">Breakeven Width</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm">
                     The "width" of your tent depends on the premium paid. Lower debit = wider breakevens. Higher volatility usually widens the tent.
                   </p>
@@ -276,7 +276,7 @@ const CalendarSpreadGuide = () => {
       <section className="bg-slate-900 dark:bg-[#14171B] text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Mastering The Greeks</h2>
+            <h2 className="text-3xl font-bold mb-4 font-serif">Mastering The Greeks</h2>
             <p className="text-slate-400 dark:text-slate-400 max-w-2xl mx-auto">
               The strategy's performance is governed by the nonlinear interaction of sensitivities derived from the Black-Scholes model.
             </p>
@@ -287,28 +287,28 @@ const CalendarSpreadGuide = () => {
               icon={<Clock />} 
               title="Theta (Time)" 
               value="Positive" 
-              color="text-emerald-400"
+              color="text-[#1D8A70] dark:text-[#3CBF9C]"
               desc="The engine of profit. Short option decays faster than the long option, creating net daily income."
             />
             <GreekCard 
               icon={<Activity />} 
               title="Vega (Volatility)" 
               value="Positive" 
-              color="text-emerald-400"
+              color="text-[#1D8A70] dark:text-[#3CBF9C]"
               desc="Profits from rising volatility. Long-term options are more sensitive to Vol changes than short-term."
             />
             <GreekCard 
               icon={<Target />} 
               title="Delta (Direction)" 
               value="Neutral" 
-              color="text-blue-400"
+              color="text-[#A8672E] dark:text-[#D08F52]"
               desc="Ideally Delta Neutral at inception. As price moves, Delta shifts to oppose the move."
             />
             <GreekCard 
               icon={<Zap />} 
               title="Gamma (Acceleration)" 
               value="Negative" 
-              color="text-rose-400"
+              color="text-[#BC4128] dark:text-[#E2694A]"
               desc="The main risk. Large price moves hurt the position. Requires the stock to stay in the 'Tent'."
             />
           </div>
@@ -317,7 +317,7 @@ const CalendarSpreadGuide = () => {
 
       {/* Advanced Calendar Spread Variations */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">Advanced Calendar Variations</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center font-serif">Advanced Calendar Variations</h2>
         
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-gradient-to-br from-purple-50 dark:from-purple-900/20 to-pink-50 dark:to-pink-900/20 border border-purple-200 dark:border-purple-900/30 rounded-xl p-6 hover:shadow-lg transition-shadow">
@@ -327,28 +327,28 @@ const CalendarSpreadGuide = () => {
               </div>
               <span className="bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-purple-900 dark:text-purple-400 mb-2">Double Calendar</h3>
+            <h3 className="text-xl font-bold text-center text-purple-900 dark:text-purple-400 mb-2 font-serif">Double Calendar</h3>
             <p className="text-sm text-purple-700 dark:text-purple-300 text-center mb-4">Two calendars at different strikes</p>
             <ul className="text-sm text-purple-800 dark:text-purple-400 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Wider profit zone</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Higher capital requirement</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>More complex management</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Wider profit zone</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Higher capital requirement</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>More complex management</li>
             </ul>
           </div>
 
           <div className="bg-gradient-to-br from-teal-50 dark:from-teal-900/20 to-cyan-50 dark:to-cyan-900/20 border border-teal-200 dark:border-teal-900/30 rounded-xl p-6 hover:shadow-lg transition-shadow">
             <div className="text-center mb-4">
               <div className="bg-teal-100 dark:bg-teal-900/40 p-3 rounded-lg inline-block mb-3">
-                <RefreshCw className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+                <RefreshCw className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
               </div>
-              <span className="bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Dynamic</span>
+              <span className="bg-teal-100 dark:bg-teal-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Dynamic</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-teal-900 dark:text-teal-400 mb-2">Rolling Calendar</h3>
-            <p className="text-sm text-teal-700 dark:text-teal-300 text-center mb-4">Continuously roll short legs</p>
+            <h3 className="text-xl font-bold text-center text-teal-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">Rolling Calendar</h3>
+            <p className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-teal-300 text-center mb-4">Continuously roll short legs</p>
             <ul className="text-sm text-teal-800 dark:text-teal-300 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Consistent theta income</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Adapts to market conditions</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>High transaction costs</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Consistent theta income</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Adapts to market conditions</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>High transaction costs</li>
             </ul>
           </div>
           
@@ -359,12 +359,12 @@ const CalendarSpreadGuide = () => {
               </div>
               <span className="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Ratio</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-amber-900 dark:text-amber-400 mb-2">Ratio Calendar</h3>
+            <h3 className="text-xl font-bold text-center text-amber-900 dark:text-amber-400 mb-2 font-serif">Ratio Calendar</h3>
             <p className="text-sm text-amber-700 dark:text-amber-300 text-center mb-4">Unequal number of contracts</p>
             <ul className="text-sm text-amber-800 dark:text-amber-300 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Enhanced income potential</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Directional bias capability</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>Unlimited risk potential</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Enhanced income potential</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Directional bias capability</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>Unlimited risk potential</li>
             </ul>
           </div>
         </div>
@@ -374,7 +374,7 @@ const CalendarSpreadGuide = () => {
       <section className="bg-slate-100 dark:bg-[#0a0a0a] py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Market Regime Analysis</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-serif">Market Regime Analysis</h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mt-2">
               Calendar spreads perform differently across market regimes. Understanding when to deploy this strategy is crucial for success.
             </p>
@@ -385,8 +385,8 @@ const CalendarSpreadGuide = () => {
               title="Low Volatility"
               subtitle="VIX < 20"
               performance="Excellent"
-              color="text-emerald-600 dark:text-emerald-400"
-              bgColor="bg-emerald-50 dark:bg-emerald-900/20"
+              color="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]"
+              bgColor="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20"
               borderColor="border-emerald-200 dark:border-emerald-900/30"
               description="Ideal conditions. Time decay dominates, volatility expansion likely."
               indicators={["Contango term structure", "Low realized vol", "Range-bound markets"]}
@@ -395,8 +395,8 @@ const CalendarSpreadGuide = () => {
               title="Rising Volatility"
               subtitle="VIX 20-30"
               performance="Good"
-              color="text-blue-600 dark:text-blue-400"
-              bgColor="bg-blue-50 dark:bg-blue-900/20"
+              color="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]"
+              bgColor="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20"
               borderColor="border-blue-200 dark:border-blue-900/30"
               description="Favorable for long Vega exposure. Monitor for vol crush."
               indicators={["Expanding IV", "Increasing uncertainty", "Event risk building"]}
@@ -415,8 +415,8 @@ const CalendarSpreadGuide = () => {
               title="Vol Crush"
               subtitle="Rapid IV decline"
               performance="Terrible"
-              color="text-rose-600 dark:text-rose-400"
-              bgColor="bg-rose-50 dark:bg-rose-900/20"
+              color="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]"
+              bgColor="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20"
               borderColor="border-rose-200 dark:border-rose-900/30"
               description="Worst case scenario. Long Vega exposure hurts badly."
               indicators={["Post-earnings", "Event resolution", "Mean reversion"]}
@@ -427,7 +427,7 @@ const CalendarSpreadGuide = () => {
 
       {/* Backtesting Results */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">Historical Performance Analysis</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center font-serif">Historical Performance Analysis</h2>
         
         <div className="bg-white dark:bg-[#14171B] rounded-2xl shadow-xl dark:shadow-none border border-slate-200 dark:border-white/10 overflow-hidden">
           <div className="p-8">
@@ -438,30 +438,30 @@ const CalendarSpreadGuide = () => {
                 <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">SPY, 2010-2024</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">58.3%</div>
+                <div className="text-3xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">58.3%</div>
                 <div className="text-slate-600 dark:text-slate-400 text-sm">Win Rate</div>
                 <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">With regime filtering</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">1.24</div>
+                <div className="text-3xl font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-2">1.24</div>
                 <div className="text-slate-600 dark:text-slate-400 text-sm">Profit Factor</div>
                 <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">Gross profits / losses</div>
               </div>
             </div>
             
             <div className="border-t border-slate-200 dark:border-white/10 pt-8">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Key Findings</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 font-serif">Key Findings</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-[#1D8A70] dark:text-[#3CBF9C] mt-0.5 shrink-0" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Term Structure Matters</div>
                       <div className="text-sm text-slate-600 dark:text-slate-400">Contango filtering improved returns by 67 basis points annually</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-[#1D8A70] dark:text-[#3CBF9C] mt-0.5 shrink-0" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Timing is Critical</div>
                       <div className="text-sm text-slate-600 dark:text-slate-400">21-day exit rule prevented 73% of large losses</div>
@@ -470,14 +470,14 @@ const CalendarSpreadGuide = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-rose-500 mt-0.5 shrink-0" />
+                    <XCircle className="h-5 w-5 text-[#BC4128] dark:text-[#E2694A] mt-0.5 shrink-0" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Earnings Weeks Hurt</div>
                       <div className="text-sm text-slate-600 dark:text-slate-400">Average loss of 12% during earnings announcements</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-rose-500 mt-0.5 shrink-0" />
+                    <XCircle className="h-5 w-5 text-[#BC4128] dark:text-[#E2694A] mt-0.5 shrink-0" />
                     <div>
                       <div className="font-medium text-slate-900 dark:text-white">Transaction Costs</div>
                       <div className="text-sm text-slate-600 dark:text-slate-400">Reduced net returns by 0.3% annually on average</div>
@@ -490,45 +490,45 @@ const CalendarSpreadGuide = () => {
         </div>
       </section>
       <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">Strike Selection Strategy</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center font-serif">Strike Selection Strategy</h2>
         
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors">
+          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-[#A8672E] dark:border-[#D08F52] dark:hover:border-[#A8672E] dark:border-[#D08F52] transition-colors">
             <div className="text-center mb-4">
               <span className="bg-slate-100 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Neutral</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2">The ATM Calendar</h3>
+            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2 font-serif">The ATM Calendar</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-4">Strike = Current Stock Price</p>
             <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Highest potential Theta</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Balanced risk to up/downside</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>Highest Gamma risk</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Highest potential Theta</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Balanced risk to up/downside</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>Highest Gamma risk</li>
             </ul>
           </div>
 
-          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors">
+          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-[#A8672E] dark:border-[#D08F52] dark:hover:border-[#A8672E] dark:border-[#D08F52] transition-colors">
             <div className="text-center mb-4">
-              <span className="bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Bullish</span>
+              <span className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/40 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Bullish</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2">OTM Call Calendar</h3>
+            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2 font-serif">OTM Call Calendar</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-4">Strike &gt; Current Price (e.g., Delta 30)</p>
             <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Profits if stock rises slowly</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Cheaper to enter (Lower Debit)</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>Loses if stock crashes</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Profits if stock rises slowly</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Cheaper to enter (Lower Debit)</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>Loses if stock crashes</li>
             </ul>
           </div>
           
-          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors">
+          <div className="border border-slate-200 dark:border-white/10 rounded-xl p-6 bg-white dark:bg-[#14171B] hover:border-[#A8672E] dark:border-[#D08F52] dark:hover:border-[#A8672E] dark:border-[#D08F52] transition-colors">
             <div className="text-center mb-4">
-              <span className="bg-rose-50 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Bearish</span>
+              <span className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Bearish</span>
             </div>
-            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2">OTM Put Calendar</h3>
+            <h3 className="text-xl font-bold text-center text-slate-800 dark:text-white mb-2 font-serif">OTM Put Calendar</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-4">Strike &lt; Current Price (e.g., Delta 30)</p>
             <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Profits on slow decline</li>
-              <li className="flex items-center"><CheckCircle size={14} className="text-emerald-500 mr-2"/>Hedges portfolio delta</li>
-              <li className="flex items-center"><XCircle size={14} className="text-rose-500 mr-2"/>Caution: IV Skew affects pricing</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Profits on slow decline</li>
+              <li className="flex items-center"><CheckCircle size={14} className="text-[#1D8A70] dark:text-[#3CBF9C] mr-2"/>Hedges portfolio delta</li>
+              <li className="flex items-center"><XCircle size={14} className="text-[#BC4128] dark:text-[#E2694A] mr-2"/>Caution: IV Skew affects pricing</li>
             </ul>
           </div>
         </div>
@@ -537,17 +537,17 @@ const CalendarSpreadGuide = () => {
       {/* Research Findings */}
       <section className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-200 dark:border-white/10">
         <div className="flex items-center space-x-3 mb-10">
-          <BookOpen className="text-indigo-600 dark:text-indigo-400" />
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Quantitative Reality</h2>
+          <BookOpen className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-serif">Quantitative Reality</h2>
         </div>
         
         <div className="bg-white dark:bg-[#14171B] rounded-2xl shadow-xl dark:shadow-none border border-slate-200 dark:border-white/10 overflow-hidden">
           <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-white/10">
-            <div className="p-10 bg-rose-50/50 dark:bg-rose-900/10">
-              <h3 className="text-xl font-bold text-rose-700 dark:text-rose-400 mb-2">Unfiltered Strategy</h3>
+            <div className="p-10 bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-900/10">
+              <h3 className="text-xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-2 font-serif">Unfiltered Strategy</h3>
               <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">Mechanical trading without regime filters.</p>
               <div className="flex items-baseline space-x-2">
-                <span className="text-4xl font-black text-rose-600 dark:text-rose-400">-0.09%</span>
+                <span className="text-4xl font-black text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">-0.09%</span>
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Annual Return</span>
               </div>
               <p className="mt-4 text-slate-700 dark:text-slate-300 text-sm">
@@ -555,11 +555,11 @@ const CalendarSpreadGuide = () => {
               </p>
             </div>
             
-            <div className="p-10 bg-emerald-50/50 dark:bg-emerald-900/10">
-              <h3 className="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-2">Contango Filtered</h3>
+            <div className="p-10 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-900/10">
+              <h3 className="text-xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2 font-serif">Contango Filtered</h3>
               <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">Trading only when Back Month IV &gt; Front Month IV.</p>
               <div className="flex items-baseline space-x-2">
-                <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">+0.58%</span>
+                <span className="text-4xl font-black text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+0.58%</span>
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Annual Return</span>
               </div>
               <p className="mt-4 text-slate-700 dark:text-slate-300 text-sm">
@@ -581,7 +581,7 @@ const CalendarSpreadGuide = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-900 rounded-full blur-3xl opacity-50 -ml-32 -mb-32"></div>
         
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">Execution Playbook</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-white font-serif">Execution Playbook</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <PlaybookCard 
@@ -620,24 +620,24 @@ const CalendarSpreadGuide = () => {
 
       {/* Adjustments & Management */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">When It Goes Wrong: Adjustments</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 font-serif">When It Goes Wrong: Adjustments</h2>
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="text-rose-500" />
-              <h3 className="font-bold text-lg text-slate-800 dark:text-white">Scenario: Stock Rallies Hard</h3>
+              <TrendingUp className="text-[#BC4128] dark:text-[#E2694A]" />
+              <h3 className="font-bold text-lg text-slate-800 dark:text-white font-serif">Scenario: Stock Rallies Hard</h3>
             </div>
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
               The stock price has blown through your strike price. The short call is losing money fast.
             </p>
             <div className="space-y-3">
               <div className="text-sm bg-slate-50 dark:bg-slate-900/40 p-3 rounded">
-                <span className="font-bold text-indigo-700 dark:text-indigo-400 block mb-1">Move 1: Do Nothing (Wait)</span>
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">Move 1: Do Nothing (Wait)</span>
                 If there is still time, wait for a pullback. Calendars are forgiving.
               </div>
               <div className="text-sm bg-slate-50 dark:bg-slate-900/40 p-3 rounded">
-                <span className="font-bold text-indigo-700 dark:text-indigo-400 block mb-1">Move 2: Roll Up</span>
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">Move 2: Roll Up</span>
                 Close the current calendar and open a new one at a higher strike (Realize loss, reset probability).
               </div>
             </div>
@@ -645,19 +645,19 @@ const CalendarSpreadGuide = () => {
           
           <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
             <div className="flex items-center gap-2 mb-4">
-              <Activity className="text-rose-500" />
-              <h3 className="font-bold text-lg text-slate-800 dark:text-white">Scenario: IV Crush</h3>
+              <Activity className="text-[#BC4128] dark:text-[#E2694A]" />
+              <h3 className="font-bold text-lg text-slate-800 dark:text-white font-serif">Scenario: IV Crush</h3>
             </div>
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
               Implied Volatility drops significantly. Your long option loses more value than the short option gains.
             </p>
             <div className="space-y-3">
               <div className="text-sm bg-slate-50 dark:bg-slate-900/40 p-3 rounded">
-                <span className="font-bold text-indigo-700 dark:text-indigo-400 block mb-1">The Reality</span>
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">The Reality</span>
                 It is very hard to adjust a pure Vega loss. This is why we avoid earnings events.
               </div>
               <div className="text-sm bg-slate-50 dark:bg-slate-900/40 p-3 rounded">
-                <span className="font-bold text-indigo-700 dark:text-indigo-400 block mb-1">Mitigation</span>
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">Mitigation</span>
                 Close the trade immediately to preserve remaining capital if the thesis has failed.
               </div>
             </div>
@@ -667,7 +667,7 @@ const CalendarSpreadGuide = () => {
 
       {/* Risks & Pitfalls */}
       <section className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-200 dark:border-white/10">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10">Critical Risks</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 font-serif">Critical Risks</h2>
         
         <div className="grid md:grid-cols-2 gap-6">
           <RiskCard 
@@ -696,14 +696,14 @@ const CalendarSpreadGuide = () => {
       {/* Comparison Table */}
       <section className="bg-slate-50 dark:bg-black/40 py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Strategy Comparison</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center font-serif">Strategy Comparison</h2>
           
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-            <table className="w-full text-sm text-left text-slate-600 bg-white dark:bg-[#14171B]">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-400 bg-white dark:bg-[#14171B]">
               <thead className="text-xs text-slate-700 dark:text-slate-300 uppercase bg-slate-100 dark:bg-slate-800">
                 <tr>
                   <th className="px-6 py-3">Feature</th>
-                  <th className="px-6 py-3 text-indigo-700 dark:text-indigo-400">Calendar Spread</th>
+                  <th className="px-6 py-3 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Calendar Spread</th>
                   <th className="px-6 py-3">Vertical Spread</th>
                   <th className="px-6 py-3">Iron Condor</th>
                 </tr>
@@ -711,15 +711,15 @@ const CalendarSpreadGuide = () => {
               <tbody>
                 <tr className="border-b border-slate-100 dark:border-white/10">
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white">Primary Driver</td>
-                  <td className="px-6 py-4 font-bold text-emerald-600 dark:text-emerald-400">Time (Theta)</td>
+                  <td className="px-6 py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Time (Theta)</td>
                   <td className="px-6 py-4">Direction (Delta)</td>
                   <td className="px-6 py-4">Neutrality</td>
                 </tr>
                 <tr className="border-b border-slate-100 dark:border-white/10">
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white">Vega Exposure</td>
-                  <td className="px-6 py-4 text-indigo-600 dark:text-indigo-400">Long Vega (Needs Vol Up)</td>
+                  <td className="px-6 py-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Long Vega (Needs Vol Up)</td>
                   <td className="px-6 py-4 text-slate-400">Neutral/Low</td>
-                  <td className="px-6 py-4 text-rose-600 dark:text-rose-400">Short Vega (Needs Vol Down)</td>
+                  <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Short Vega (Needs Vol Down)</td>
                 </tr>
                 <tr className="border-b border-slate-100 dark:border-white/10">
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white">Profit Zone</td>
@@ -754,21 +754,21 @@ const GreekCard = ({ icon, title, value, desc, color }: { icon: React.ReactEleme
         {value}
       </span>
     </div>
-    <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+    <h3 className="text-lg font-bold text-white mb-2 font-serif">{title}</h3>
     <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
   </div>
 );
 
 const PlaybookCard = ({ step, title, items }: { step: string; title: string; items: string[] }) => (
-  <div className="bg-indigo-800/50 backdrop-blur border border-indigo-700 p-8 rounded-2xl relative">
+  <div className="bg-indigo-800/50 backdrop-blur border border-[#A8672E] dark:border-[#D08F52] p-8 rounded-2xl relative">
     <div className="absolute -top-4 -left-4 w-10 h-10 bg-gradient-to-br from-pink-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
       {step}
     </div>
-    <h3 className="text-xl font-bold text-white mb-6 ml-2">{title}</h3>
+    <h3 className="text-xl font-bold text-white mb-6 ml-2 font-serif">{title}</h3>
     <ul className="space-y-3">
       {items.map((item, idx) => (
         <li key={idx} className="flex items-start text-indigo-100 text-sm">
-          <CheckCircle size={16} className="mr-3 mt-0.5 text-emerald-400 shrink-0" />
+          <CheckCircle size={16} className="mr-3 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
           <span>{item}</span>
         </li>
       ))}
@@ -777,13 +777,13 @@ const PlaybookCard = ({ step, title, items }: { step: string; title: string; ite
 );
 
 const RiskCard = ({ title, desc, badge }: { title: string; desc: string; badge: string }) => (
-  <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl border-l-4 border-rose-500 shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none transition-shadow">
+  <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl border-l-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none transition-shadow">
     <div className="flex justify-between items-start mb-3">
-      <h3 className="font-bold text-slate-800 dark:text-white flex items-center">
-        <AlertTriangle size={18} className="text-rose-500 mr-2" />
+      <h3 className="font-bold text-slate-800 dark:text-white flex items-center font-serif">
+        <AlertTriangle size={18} className="text-[#BC4128] dark:text-[#E2694A] mr-2" />
         {title}
       </h3>
-      <span className="text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/40 px-2 py-1 rounded">
+      <span className="text-xs font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/40 px-2 py-1 rounded">
         {badge}
       </span>
     </div>
@@ -812,9 +812,9 @@ const RegimeCard = ({
 }) => (
   <div className={`${bgColor} ${borderColor} border rounded-xl p-6 hover:shadow-lg dark:hover:shadow-none transition-shadow`}>
     <div className="text-center mb-4">
-      <h3 className="text-lg font-bold text-slate-900 dark:text-white">{title}</h3>
+      <h3 className="text-lg font-bold text-slate-900 dark:text-white font-serif">{title}</h3>
       <p className="text-sm text-slate-600 dark:text-slate-400">{subtitle}</p>
-      <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-bold ${color} bg-white`}>
+      <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-bold ${color} bg-white dark:bg-[#0A0D14]`}>
         {performance}
       </span>
     </div>

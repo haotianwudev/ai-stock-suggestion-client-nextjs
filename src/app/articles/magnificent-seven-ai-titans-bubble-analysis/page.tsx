@@ -47,7 +47,7 @@ const companyDeepDive = [
 // Reusable component for section titles
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="mb-8 lg:mb-12">
-    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">{title}</h2>
+    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight font-serif">{title}</h2>
     {subtitle && <p className="mt-2 text-lg text-gray-500">{subtitle}</p>}
   </div>
 );
@@ -55,9 +55,9 @@ const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }
 // Component for colored keyword spans
 const C = ({ children, color = 'indigo' }: { children: React.ReactNode; color?: 'indigo' | 'green' | 'red' | 'amber' }) => {
   const colorClasses: Record<string, string> = {
-    indigo: 'text-indigo-600 font-semibold',
-    green: 'text-green-700 font-semibold',
-    red: 'text-red-600 font-semibold',
+    indigo: 'text-[#A8672E] dark:text-[#D08F52] font-semibold',
+    green: 'text-[#1D8A70] dark:text-[#3CBF9C] font-semibold',
+    red: 'text-[#BC4128] dark:text-[#E2694A] font-semibold',
     amber: 'text-amber-600 font-semibold',
   };
   return <span className={colorClasses[color]}>{children}</span>;
@@ -67,7 +67,7 @@ export default function MagnificentSevenAnalysis() {
   return (
     <ArticleFrame slug="magnificent-seven-ai-titans-bubble-analysis">
       <div className="max-w-5xl mx-auto px-4 text-gray-700">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           AI-Fueled Titans or a Bubble in the Making?
         </p>
 
@@ -82,15 +82,15 @@ export default function MagnificentSevenAnalysis() {
         <section id="key-themes" className="mb-16">
           <SectionHeader title="Key Themes from Q2 Earnings" subtitle="The Overarching Narratives Driving the Market" />
           <div className="space-y-4">
-            <div className="p-4 bg-white border border-gray-200 rounded-lg">
+            <div className="p-4 bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg">
               <h4 className="font-bold text-gray-900">1. The Great Bifurcation</h4>
               <p className="text-sm text-gray-600 mt-1">A clear split has emerged between the <C>AI Enablers</C> (Nvidia, Microsoft, Alphabet, Amazon) selling the picks and shovels, and the <C>AI Application Players</C> (Apple, Meta, Tesla) seeking to build killer apps on that infrastructure. The former are seeing direct, immediate revenue, while the latter&apos;s payoff is further out.</p>
             </div>
-            <div className="p-4 bg-white border border-gray-200 rounded-lg">
+            <div className="p-4 bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg">
               <h4 className="font-bold text-gray-900">2. The CapEx Arms Race</h4>
               <p className="text-sm text-gray-600 mt-1">Capital expenditures are surging to historic levels as the tech titans engage in an <C color="amber">AI infrastructure arms race</C>. The combined quarterly CapEx of the group now tops <C>$50 billion</C>, a testament to the staggering demand for data centers and AI accelerators required to train and run next-generation models.</p>
             </div>
-            <div className="p-4 bg-white border border-gray-200 rounded-lg">
+            <div className="p-4 bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg">
               <h4 className="font-bold text-gray-900">3. Monetization Takes Center Stage</h4>
               <p className="text-sm text-gray-600 mt-1">The conversation has shifted from AI potential to <C color="green">tangible monetization</C>. Investors are now demanding to see a clear return on investment. Microsoft&apos;s <C>Copilot</C> ecosystem is the leading case study, proving customers are willing to pay a premium for AI-infused software, driving both revenue and margin expansion.</p>
             </div>
@@ -99,7 +99,7 @@ export default function MagnificentSevenAnalysis() {
 
         <section id="earnings-summary" className="mb-16">
           <SectionHeader title="Q2 Financial Snapshot" subtitle="A Comparative Look at Key Performance Metrics" />
-          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white dark:bg-[#0A0D14] shadow-sm">
             <table className="w-full text-sm text-left">
               <thead className="bg-gray-100 text-xs text-gray-600 uppercase tracking-wider">
                 <tr>
@@ -116,19 +116,19 @@ export default function MagnificentSevenAnalysis() {
                     <td className="px-6 py-4 font-medium text-gray-900">{item.company} ({item.ticker})</td>
                     <td className="px-6 py-4 text-center">
                       <div>{item.revenue}</div>
-                      <div className={`text-xs font-bold ${item.revGrowth.startsWith('-') ? 'text-red-600' : 'text-green-700'}`}>
+                      <div className={`text-xs font-bold ${item.revGrowth.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                         {item.revGrowth}
                       </div>
                     </td>
                     <td className="px-6 py-4 text-center">
                       <div>{item.opMargin}</div>
-                      <div className={`text-xs font-bold ${item.opMarginChange.startsWith('-') ? 'text-red-600' : 'text-green-700'}`}>
+                      <div className={`text-xs font-bold ${item.opMarginChange.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                         {item.opMarginChange}
                       </div>
                     </td>
                     <td className="px-6 py-4 text-center">
                       <div>{item.eps}</div>
-                      <div className={`text-xs font-bold ${item.epsGrowth.startsWith('-') ? 'text-red-600' : 'text-green-700'}`}>
+                      <div className={`text-xs font-bold ${item.epsGrowth.startsWith('-') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'}`}>
                         {item.epsGrowth}
                       </div>
                     </td>
@@ -144,7 +144,7 @@ export default function MagnificentSevenAnalysis() {
           <SectionHeader title="Company Deep Dives" subtitle="The Narrative Behind the Numbers" />
           <div className="grid md:grid-cols-1 gap-6">
             {companyDeepDive.map((item) => (
-              <div key={item.company} className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+              <div key={item.company} className="p-6 bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg shadow-sm">
                 <h4 className="text-xl font-bold text-gray-900">{item.company}</h4>
                 <p className="text-gray-600 mt-2">{item.story}</p>
                 <div className="mt-4 pt-4 border-t border-gray-200 flex items-start">
@@ -162,10 +162,10 @@ export default function MagnificentSevenAnalysis() {
         <section id="bubble-debate" className="mb-16">
           <SectionHeader title="The AI Bubble Debate" subtitle="Generational Shift or Irrational Exuberance?" />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
               <div className="flex items-center mb-4">
-                <TrendingUp className="h-8 w-8 text-green-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">The Bull Case</h3>
+                <TrendingUp className="h-8 w-8 text-[#1D8A70] dark:text-[#3CBF9C] mr-3" />
+                <h3 className="text-xl font-bold text-gray-900 font-serif">The Bull Case</h3>
               </div>
               <ul className="space-y-3 text-sm list-disc list-inside text-gray-600">
                 <li><C color="green">Unprecedented Profitability:</C> Unlike the dot-com era, AI leaders generate hundreds of billions in free cash flow from dominant existing businesses.</li>
@@ -173,10 +173,10 @@ export default function MagnificentSevenAnalysis() {
                 <li><C color="green">Productivity Supercycle:</C> AI is a general-purpose technology, like electricity, with a potential multi-trillion dollar impact across all industries.</li>
               </ul>
             </div>
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
               <div className="flex items-center mb-4">
-                <TrendingDown className="h-8 w-8 text-red-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">The Bear Case</h3>
+                <TrendingDown className="h-8 w-8 text-[#BC4128] dark:text-[#E2694A] mr-3" />
+                <h3 className="text-xl font-bold text-gray-900 font-serif">The Bear Case</h3>
               </div>
               <ul className="space-y-3 text-sm list-disc list-inside text-gray-600">
                 <li><C color="red">Extreme Valuations:</C> Tech sector P/E ratios are near dot-com peaks, leaving little room for disappointment. Euphoric sentiment means even stellar results can be punished.</li>
@@ -189,7 +189,7 @@ export default function MagnificentSevenAnalysis() {
 
         <section id="conclusion" className="mb-16">
           <SectionHeader title="Concluding Analysis & Strategic Implications" />
-          <div className="space-y-6 text-gray-700 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="space-y-6 text-gray-700 bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
             <p>The Q2 2025 earnings season solidified that the Magnificent Seven are no longer a monolith. The group is bifurcating between the <C>AI enablers</C> and the <C>application players</C>. While all are investing heavily in AI, their paths to monetization and their risk profiles are diverging significantly.</p>
             <p>The primary risk may not be a 2000-style collapse, but rather a &ldquo;lost decade&rdquo; of <C color="red">valuation compression</C> where earnings growth struggles to catch up to the currently priced-in euphoria. The sheer scale of these firms means the law of large numbers becomes a powerful headwind.</p>
             <p className="font-semibold text-gray-900">For investors, the key is to move beyond the &ldquo;Magnificent Seven&rdquo; label and adopt a sub-theme approach, evaluating each company on its specific role&mdash;be it infrastructure, platform, or application&mdash;within the broader AI ecosystem.</p>

@@ -131,7 +131,7 @@ const NavItem = ({ section, activeSection, setActiveSection, children, icon }) =
         onClick={() => setActiveSection(section)}
         className={`flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap ${activeSection === section
                 ? 'bg-slate-800 text-white shadow-lg'
-                : 'text-slate-600 bg-white hover:bg-slate-100 border border-slate-200'
+                : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0A0D14] hover:bg-slate-100 border border-slate-200 dark:border-slate-800'
             }`}
     >
         <span className="mr-2 text-lg">{icon}</span>
@@ -140,13 +140,13 @@ const NavItem = ({ section, activeSection, setActiveSection, children, icon }) =
 );
 
 const SectionCard = ({ children, className = '', ...props }) => (
-    <div className={`bg-white rounded-xl shadow-md p-6 md:p-8 ${className}`} {...props}>
+    <div className={`bg-white dark:bg-[#0A0D14] rounded-xl shadow-md p-6 md:p-8 ${className}`} {...props}>
         {children}
     </div>
 );
 
 const SectionTitle = ({ children }) => (
-    <h2 className="text-3xl font-bold text-slate-800 mb-2">{children}</h2>
+    <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 mb-2 font-serif">{children}</h2>
 );
 
 const SectionSubtitle = ({ children }) => (
@@ -158,22 +158,22 @@ const Modal = ({ isOpen, onClose, event }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4" onClick={onClose}>
-            <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full p-8" onClick={e => e.stopPropagation()}>
+            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-2xl max-w-lg w-full p-8" onClick={e => e.stopPropagation()}>
                 <div className="flex justify-between items-start mb-4">
                     <div>
-                        <h3 className="text-2xl font-bold text-red-600">{event.asset}</h3>
+                        <h3 className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] font-serif">{event.asset}</h3>
                         <p className="text-sm text-slate-500 font-medium">{event.date} - {event.type}</p>
                     </div>
-                    <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                    <button onClick={onClose} className="text-slate-400 hover:text-slate-600 dark:text-slate-400 text-2xl">&times;</button>
                 </div>
                 <div className="space-y-4">
                     <div>
-                        <p className="font-bold text-slate-700">Approximate Loss:</p>
-                        <p className="text-lg text-slate-900">{event.loss}</p>
+                        <p className="font-bold text-slate-700 dark:text-slate-300">Approximate Loss:</p>
+                        <p className="text-lg text-slate-900 dark:text-slate-100">{event.loss}</p>
                     </div>
                     <div>
-                        <p className="font-bold text-slate-700">Cause of Event:</p>
-                        <p className="text-slate-600">{event.cause}</p>
+                        <p className="font-bold text-slate-700 dark:text-slate-300">Cause of Event:</p>
+                        <p className="text-slate-600 dark:text-slate-400">{event.cause}</p>
                     </div>
                 </div>
             </div>
@@ -373,11 +373,11 @@ const RiskReturnChart = () => {
 // Main Section Components
 const WelcomeSection = ({ setActiveSection }) => (
     <div>
-        <p className="text-lg text-slate-600 max-w-3xl mb-8">
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mb-8">
             An interactive analysis of profiting from digital dollars, understanding the inherent risks, and navigating the new era of regulation.
             This guide translates a comprehensive report into an explorable experience.
         </p>
-        <div className="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg mb-8">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] text-blue-800 p-4 rounded-r-lg mb-8">
             <p>
                 <strong className="font-bold">Core Concept:</strong> Stablecoins are digital assets designed to maintain a stable value by pegging to a reference asset, like the U.S. dollar. They bridge traditional finance and the digital world.
             </p>
@@ -409,26 +409,26 @@ const TypesSection = () => {
                             key={t.id}
                             onClick={() => setSelectedType(t.id)}
                             className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 ${selectedType === t.id
-                                    ? 'border-blue-500 bg-blue-50 shadow-lg scale-105'
-                                    : 'border-slate-200 bg-white hover:border-blue-400 hover:shadow-md'
+                                    ? 'border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 shadow-lg scale-105'
+                                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0A0D14] hover:border-[#A8672E] dark:border-[#D08F52] hover:shadow-md'
                                 }`}
                         >
-                            <h3 className="font-bold text-lg text-slate-800">{t.name}</h3>
+                            <h3 className="font-bold text-lg text-slate-800 dark:text-slate-200 font-serif">{t.name}</h3>
                             <p className="text-sm text-slate-500">Examples: {t.examples}</p>
                         </button>
                     ))}
                 </div>
 
                 <SectionCard key={selectedType} className="animate-fade-in">
-                    <h3 className="text-2xl font-bold text-blue-600 mb-3">{type.name}</h3>
+                    <h3 className="text-2xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">{type.name}</h3>
                     <div className="space-y-4">
                         <div>
-                            <h4 className="font-semibold text-slate-700">Backing Mechanism:</h4>
-                            <p className="text-slate-600">{type.backing}</p>
+                            <h4 className="font-semibold text-slate-700 dark:text-slate-300">Backing Mechanism:</h4>
+                            <p className="text-slate-600 dark:text-slate-400">{type.backing}</p>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-slate-700">Inherent Risk Profile:</h4>
-                            <p className="text-slate-600">{type.riskProfile}</p>
+                            <h4 className="font-semibold text-slate-700 dark:text-slate-300">Inherent Risk Profile:</h4>
+                            <p className="text-slate-600 dark:text-slate-400">{type.riskProfile}</p>
                         </div>
                     </div>
                 </SectionCard>
@@ -455,14 +455,14 @@ const ProfitSection = () => {
             <div className="flex justify-center mb-8 space-x-2 bg-slate-200 p-1 rounded-lg">
                 <button
                     onClick={() => setView('crypto')}
-                    className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${view === 'crypto' ? 'bg-white text-slate-800 shadow' : 'text-slate-600'
+                    className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${view === 'crypto' ? 'bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow' : 'text-slate-600 dark:text-slate-400'
                         }`}
                 >
                     CeFi vs. DeFi
                 </button>
                 <button
                     onClick={() => setView('comparison')}
-                    className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${view === 'comparison' ? 'bg-white text-slate-800 shadow' : 'text-slate-600'
+                    className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${view === 'comparison' ? 'bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 shadow' : 'text-slate-600 dark:text-slate-400'
                         }`}
                 >
                     Crypto vs. TradFi
@@ -501,13 +501,13 @@ const RiskSection = () => {
             </SectionSubtitle>
 
             <SectionCard className="mb-8">
-                <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Historical De-Pegs & Hacks</h3>
-                <div className="relative border-l-2 border-slate-200 ml-4 md:ml-0">
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 text-center font-serif">Historical De-Pegs & Hacks</h3>
+                <div className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 md:ml-0">
                     {riskEvents.map((event, index) => (
                         <div key={index} className="mb-8 ml-8 cursor-pointer group" onClick={() => handleEventClick(event)}>
-                            <div className="absolute -left-[11px] w-5 h-5 bg-slate-200 rounded-full border-4 border-white group-hover:bg-red-500 transition-colors"></div>
-                            <p className="text-sm font-semibold text-red-600">{event.date}</p>
-                            <h4 className="font-bold text-slate-700">{event.asset}</h4>
+                            <div className="absolute -left-[11px] w-5 h-5 bg-slate-200 rounded-full border-4 border-white group-hover:bg-[#BC4128] dark:bg-[#E2694A] transition-colors"></div>
+                            <p className="text-sm font-semibold text-[#BC4128] dark:text-[#E2694A]">{event.date}</p>
+                            <h4 className="font-bold text-slate-700 dark:text-slate-300">{event.asset}</h4>
                             <p className="text-sm text-slate-500">{event.type} - <span className="font-medium">{event.loss}</span></p>
                         </div>
                     ))}
@@ -516,22 +516,22 @@ const RiskSection = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <SectionCard>
-                    <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Case Study: The Terra/UST Collapse</h3>
-                    <p className="text-slate-600 mb-4">
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 text-center font-serif">Case Study: The Terra/UST Collapse</h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">
                         The most infamous failure, wiping out ~$45 billion and triggering a market-wide crisis.
                         It demonstrated the fatal flaws of algorithmic designs and unsustainable yields.
                     </p>
                     <button
                         onClick={() => setShowUstCaseStudy(!showUstCaseStudy)}
-                        className="text-blue-600 font-semibold text-sm"
+                        className="text-[#A8672E] dark:text-[#D08F52] font-semibold text-sm"
                     >
                         {showUstCaseStudy ? 'Show Less' : 'Read the Anatomy of the Collapse'}
                     </button>
                     {showUstCaseStudy && (
-                        <div className="mt-4 text-sm text-slate-600 space-y-2">
-                            <p><strong className="text-slate-700">Flawed Mechanism:</strong> An algorithmic link to LUNA token was meant to maintain the peg. Selling UST forced hyper-inflation of LUNA, creating a &ldquo;death spiral.&rdquo;</p>
-                            <p><strong className="text-slate-700">Unsustainable Yield:</strong> The Anchor Protocol&apos;s artificial ~20% APY created massive, concentrated demand for UST, making the entire ecosystem a single point of failure.</p>
-                            <p><strong className="text-slate-700">The Aftermath:</strong> Within a week, UST was worthless and LUNA&apos;s price fell to zero, destroying investor wealth and leading to the failure of major crypto firms.</p>
+                        <div className="mt-4 text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                            <p><strong className="text-slate-700 dark:text-slate-300">Flawed Mechanism:</strong> An algorithmic link to LUNA token was meant to maintain the peg. Selling UST forced hyper-inflation of LUNA, creating a &ldquo;death spiral.&rdquo;</p>
+                            <p><strong className="text-slate-700 dark:text-slate-300">Unsustainable Yield:</strong> The Anchor Protocol&apos;s artificial ~20% APY created massive, concentrated demand for UST, making the entire ecosystem a single point of failure.</p>
+                            <p><strong className="text-slate-700 dark:text-slate-300">The Aftermath:</strong> Within a week, UST was worthless and LUNA&apos;s price fell to zero, destroying investor wealth and leading to the failure of major crypto firms.</p>
                         </div>
                     )}
                 </SectionCard>
@@ -559,8 +559,8 @@ const RegulationSection = () => (
                 <SectionCard key={index} className="flex items-start">
                     <div className="text-4xl mr-4 mt-1">{item.icon}</div>
                     <div>
-                        <h3 className="font-bold text-lg text-slate-800 mb-1">{item.title}</h3>
-                        <p className="text-slate-600">{item.text}</p>
+                        <h3 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1 font-serif">{item.title}</h3>
+                        <p className="text-slate-600 dark:text-slate-400">{item.text}</p>
                     </div>
                 </SectionCard>
             ))}
@@ -573,14 +573,14 @@ const ChecklistSection = () => {
         const [checked, setChecked] = useState(false);
 
         return (
-            <label className="flex items-start p-3 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer">
+            <label className="flex items-start p-3 rounded-lg hover:bg-slate-50 dark:bg-[#14171B] transition-colors cursor-pointer">
                 <input
                     type="checkbox"
                     checked={checked}
                     onChange={() => setChecked(!checked)}
-                    className="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="mt-1 h-5 w-5 rounded border-gray-300 text-[#A8672E] dark:text-[#D08F52] focus:ring-blue-500"
                 />
-                <span className={`ml-3 text-slate-700 ${checked ? 'line-through text-slate-400' : ''}`}>
+                <span className={`ml-3 text-slate-700 dark:text-slate-300 ${checked ? 'line-through text-slate-400' : ''}`}>
                     {children}
                 </span>
             </label>
@@ -596,14 +596,14 @@ const ChecklistSection = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <SectionCard>
-                    <h3 className="text-xl font-bold text-slate-800 mb-4">1. Evaluating the Stablecoin Asset</h3>
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Evaluating the Stablecoin Asset</h3>
                     <div className="space-y-2">
                         {checklistData.asset.map((item, i) => <CheckboxItem key={i}>{item}</CheckboxItem>)}
                     </div>
                 </SectionCard>
 
                 <SectionCard>
-                    <h3 className="text-xl font-bold text-slate-800 mb-4">2. Evaluating the Yield Platform</h3>
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Evaluating the Yield Platform</h3>
                     <div className="space-y-2">
                         {checklistData.platform.map((item, i) => <CheckboxItem key={i}>{item}</CheckboxItem>)}
                     </div>

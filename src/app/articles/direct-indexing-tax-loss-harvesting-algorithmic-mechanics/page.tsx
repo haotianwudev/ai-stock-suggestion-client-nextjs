@@ -18,7 +18,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Core Foundations</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Core Foundations</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -56,18 +56,18 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <ul className="space-y-2 font-mono text-sm text-slate-600 dark:text-slate-400 mb-6">
                 <li className="flex justify-between"><span>Lot A (Bought Jan)</span><span>$150 Cost Basis</span></li>
                 <li className="flex justify-between"><span>Lot B (Bought Feb)</span><span>$100 Cost Basis</span></li>
-                <li className="flex justify-between font-bold text-blue-600 dark:text-blue-400"><span>Current Price</span><span>$110</span></li>
+                <li className="flex justify-between font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]"><span>Current Price</span><span>$110</span></li>
               </ul>
               
               <ComparisonGrid>
                 <ComparisonCard title="FIFO / Average Cost" tone="neg">
-                  <div className="flex justify-between font-bold text-red-600 mb-1">
+                  <div className="flex justify-between font-bold text-[#BC4128] dark:text-[#E2694A] mb-1">
                     <span>Sells a mix</span><span>-$15 Loss</span>
                   </div>
                   <p className="text-xs text-slate-500">($110 - $125 Avg) = Small benefit.</p>
                 </ComparisonCard>
                 <ComparisonCard title="HIFO Strategy" tone="pos">
-                  <div className="flex justify-between font-bold text-emerald-600 mb-1">
+                  <div className="flex justify-between font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-1">
                     <span>Sells Lot A</span><span>-$40 Loss</span>
                   </div>
                   <p className="text-xs text-slate-500">Explicitly sells Lot A. ($110 - $150). <strong>2.6x more tax alpha.</strong></p>
@@ -93,8 +93,8 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               ]}
             />
             
-            <div className="mt-8 p-4 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 rounded-lg flex items-start gap-3">
-              <Activity className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
+            <div className="mt-8 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 rounded-lg flex items-start gap-3">
+              <Activity className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
               <p className="text-sm text-indigo-900 dark:text-indigo-200">
                 <strong>The "Basis Gap" Trap:</strong> Every harvested loss lowers your portfolio's cost basis. Over time, your basis becomes very low compared to market value, reducing future harvesting opportunities. This is known as <em>Tax Alpha Decay</em>.
               </p>
@@ -107,7 +107,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <PieChart className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Factor Risk Models & Substitutions</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Factor Risk Models & Substitutions</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -126,9 +126,9 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
                 <thead className="text-slate-500 font-semibold uppercase tracking-wider border-b border-slate-200 dark:border-slate-700">
                   <tr>
                     <th className="pb-3">Factor Exposure</th>
-                    <th className="pb-3 text-red-600">Sold: AAPL</th>
+                    <th className="pb-3 text-[#BC4128] dark:text-[#E2694A]">Sold: AAPL</th>
                     <th className="pb-3 text-slate-400">Naive: MSFT</th>
-                    <th className="pb-3 text-emerald-600">Optimized Basket*</th>
+                    <th className="pb-3 text-[#1D8A70] dark:text-[#3CBF9C]">Optimized Basket*</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
@@ -136,25 +136,25 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
                     <td className="py-3 font-medium text-slate-700 dark:text-slate-300">Sector (Tech)</td>
                     <td className="py-3">1.0</td>
                     <td className="py-3">1.0</td>
-                    <td className="py-3 font-bold text-emerald-600">1.0</td>
+                    <td className="py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">1.0</td>
                   </tr>
                   <tr>
                     <td className="py-3 font-medium text-slate-700 dark:text-slate-300">Growth</td>
                     <td className="py-3">0.85</td>
                     <td className="py-3 text-slate-400">0.60</td>
-                    <td className="py-3 font-bold text-emerald-600">0.84</td>
+                    <td className="py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">0.84</td>
                   </tr>
                   <tr>
                     <td className="py-3 font-medium text-slate-700 dark:text-slate-300">Momentum</td>
                     <td className="py-3">0.40</td>
                     <td className="py-3 text-slate-400">0.10</td>
-                    <td className="py-3 font-bold text-emerald-600">0.38</td>
+                    <td className="py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">0.38</td>
                   </tr>
                   <tr>
                     <td className="py-3 font-medium text-slate-700 dark:text-slate-300">Volatility</td>
                     <td className="py-3">0.90</td>
                     <td className="py-3 text-slate-400">0.70</td>
-                    <td className="py-3 font-bold text-emerald-600">0.91</td>
+                    <td className="py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">0.91</td>
                   </tr>
                 </tbody>
               </table>
@@ -197,7 +197,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               To prevent the optimizer from making unintended bets (e.g., accidentally becoming "Anti-Value"), we set strict bounds on Active Exposure.
             </p>
             <div className="bg-slate-900 p-6 rounded-xl font-mono text-sm text-slate-300 mb-8 border border-slate-800">
-              <div className="text-emerald-400 mb-4 flex items-center gap-2">
+              <div className="text-[#1D8A70] dark:text-[#3CBF9C] mb-4 flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4" /> Constraint Configuration
               </div>
               <div className="space-y-4">
@@ -206,11 +206,11 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
                 </div>
                 <div className="flex justify-between">
                   <span>| β_port - β_bench |</span>
-                  <span className="text-emerald-400">&lt; 0.05</span>
+                  <span className="text-[#1D8A70] dark:text-[#3CBF9C]">&lt; 0.05</span>
                 </div>
                 <div className="flex justify-between">
                   <span>| Sector_tech% - Bench_tech% |</span>
-                  <span className="text-emerald-400">&lt; 1.0%</span>
+                  <span className="text-[#1D8A70] dark:text-[#3CBF9C]">&lt; 1.0%</span>
                 </div>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Calculator className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Mathematical Optimization</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Mathematical Optimization</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -262,7 +262,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Code className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Algorithmic Implementation</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Algorithmic Implementation</h2>
             </div>
             
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Data Structures: The Tax Lot</h3>
@@ -329,7 +329,7 @@ export default function DirectIndexingTaxLossHarvestingTutorial() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Activity className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Realities & Alpha Decay</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Realities & Alpha Decay</h2>
             </div>
             
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">The Lifecycle of Tax Alpha</h3>

@@ -35,7 +35,7 @@ export default function AlphaFactoryArticle() {
                 tone="neutral"
               >
                 <div className="flex items-start gap-3">
-                  <HardDrive className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <HardDrive className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-slate-700 dark:text-slate-300 font-bold mb-1">NY4 / NJ2 Data Centers</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Directly cross-connected to exchanges. C++ 20, FPGA, &lt; 5µs Latency.</p>
@@ -47,7 +47,7 @@ export default function AlphaFactoryArticle() {
                 tone="neutral"
               >
                 <div className="flex items-start gap-3">
-                  <Server className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                  <Server className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-slate-700 dark:text-slate-300 font-bold mb-1">Elastic Compute</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">For research, massive data storage, and non-latency sensitive tasks. Python, Kubernetes, Petabytes.</p>
@@ -260,7 +260,7 @@ export default function AlphaFactoryArticle() {
             </ComparisonGrid>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6 font-serif">Tail Risk: VaR vs. CVaR</h3>
-            <div className="bg-rose-50 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm">
               <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-2 font-serif text-xl">Expected Shortfall</h4>
               <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                 While Value at Risk (VaR) only tells you the 95th percentile worst outcome, Expected Shortfall (CVaR) averages the losses <em>in the tail</em>. We optimize for the "average day," but we survive based on CVaR. Furthermore, CVaR is mathematically convex, allowing it to be natively embedded in our optimization solver.

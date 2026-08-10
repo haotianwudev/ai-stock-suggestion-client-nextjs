@@ -6,7 +6,7 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper component for section titles
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 tracking-tight mb-6 sm:mb-10 text-center">
+  <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 tracking-tight mb-6 sm:mb-10 text-center font-serif">
     {children}
   </h2>
 );
@@ -21,9 +21,9 @@ const SectionSubtitle = ({ children }: { children: React.ReactNode }) => (
 // Helper component for highlighting text
 const Highlight = ({ children, color = 'indigo' }: { children: React.ReactNode; color?: 'indigo' | 'red' | 'green' | 'yellow' }) => {
   const colorClasses: Record<string, string> = {
-    indigo: 'text-indigo-600',
-    red: 'text-red-600',
-    green: 'text-green-600',
+    indigo: 'text-[#A8672E] dark:text-[#D08F52]',
+    red: 'text-[#BC4128] dark:text-[#E2694A]',
+    green: 'text-[#1D8A70] dark:text-[#3CBF9C]',
     yellow: 'text-yellow-600',
   }
   return <span className={`font-semibold ${colorClasses[color]}`}>{children}</span>
@@ -32,26 +32,26 @@ const Highlight = ({ children, color = 'indigo' }: { children: React.ReactNode; 
 // Card component for displaying key points and case studies
 const InfoCard = ({ icon, title, children, color = 'indigo' }: { icon: React.ReactElement; title: string; children: React.ReactNode; color?: 'indigo' | 'red' | 'green' | 'yellow' }) => {
   const colorClasses: Record<string, string> = {
-    indigo: 'border-indigo-200 bg-indigo-50/50 text-indigo-800',
-    red: 'border-red-200 bg-red-50/50 text-red-800',
-    green: 'border-green-200 bg-green-50/50 text-green-800',
+    indigo: 'border-indigo-200 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 text-indigo-800',
+    red: 'border-red-200 bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 text-red-800',
+    green: 'border-green-200 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 text-green-800',
     yellow: 'border-yellow-200 bg-yellow-50/50 text-yellow-800',
   };
 
   const iconColorClasses: Record<string, string> = {
-    indigo: 'text-indigo-500',
-    red: 'text-red-500',
-    green: 'text-green-500',
+    indigo: 'text-[#A8672E] dark:text-[#D08F52]',
+    red: 'text-[#BC4128] dark:text-[#E2694A]',
+    green: 'text-[#1D8A70] dark:text-[#3CBF9C]',
     yellow: 'text-yellow-500',
   }
 
   return (
     <div className={`border ${colorClasses[color]} rounded-2xl p-6 shadow-sm`}>
       <div className="flex items-center gap-4 mb-4">
-        <div className={`p-2 bg-white rounded-lg border border-gray-200`}>
+        <div className={`p-2 bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200`}>
           {React.cloneElement(icon, { className: iconColorClasses[color] } as { className: string })}
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-xl font-semibold text-gray-900 font-serif">{title}</h3>
       </div>
       <div className="text-gray-700 space-y-3">
         {children}
@@ -64,7 +64,7 @@ const InfoCard = ({ icon, title, children, color = 'indigo' }: { icon: React.Rea
 const ExecutiveSummary = () => (
   <section className="mb-16">
     <SectionTitle>Executive Summary</SectionTitle>
-    <div className="max-w-4xl mx-auto bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-lg">
+    <div className="max-w-4xl mx-auto bg-slate-50 dark:bg-[#14171B] rounded-2xl p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
       <ul className="text-gray-700 leading-relaxed space-y-4 text-base sm:text-lg list-disc pl-5">
         <li>
           Fed Chair Jerome Powell signaled a <Highlight>dovish pivot</Highlight>, citing a &ldquo;challenging situation&rdquo; of a weakening labor market versus inflation that remains above the 2% target.
@@ -121,9 +121,9 @@ const DovishTurn = () => {
         </InfoCard>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">Immediate Market Reaction</h3>
+      <h3 className="text-2xl font-bold text-gray-800 text-center mb-6 font-serif">Immediate Market Reaction</h3>
       <div className="overflow-x-auto">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 shadow-md">
           <table className="w-full text-left">
             <thead className="border-b border-gray-200 bg-gray-50">
               <tr>
@@ -136,7 +136,7 @@ const DovishTurn = () => {
               {marketReactionData.map((item, index) => (
                 <tr key={index} className="border-b border-gray-200 last:border-none hover:bg-gray-50/50 transition-colors">
                   <td className="p-4 font-medium text-gray-800">{item.asset}</td>
-                  <td className={`p-4 font-mono text-right ${item.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                  <td className={`p-4 font-mono text-right ${item.change.startsWith('+') ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
                     {item.change}
                   </td>
                   <td className="p-4 font-mono text-right text-gray-500" dangerouslySetInnerHTML={{ __html: item.net }}></td>
@@ -217,7 +217,7 @@ const HistoricalPrecedents = () => {
               {study.points.map((point, i) => <li key={i}>{point}</li>)}
             </ul>
             <p className="text-sm font-medium pt-3 mt-3 border-t border-gray-200/50">
-              S&P 500 Return (12mo Post-Cut): <span className={`font-bold text-lg ${study.sp500Return.startsWith('+') ? 'text-green-700' : 'text-red-700'}`}>
+              S&P 500 Return (12mo Post-Cut): <span className={`font-bold text-lg ${study.sp500Return.startsWith('+') ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
                 {study.sp500Return}
               </span>
             </p>
@@ -275,8 +275,8 @@ const CurrentLandscape = () => {
   ];
 
   const TrendIcon = ({ trend }: { trend: string }) => {
-    if (trend === 'up') return <ArrowUpRight className="w-4 h-4 text-red-500" />;
-    if (trend === 'down') return <TrendingDown className="w-4 h-4 text-green-500" />;
+    if (trend === 'up') return <ArrowUpRight className="w-4 h-4 text-[#BC4128] dark:text-[#E2694A]" />;
+    if (trend === 'down') return <TrendingDown className="w-4 h-4 text-[#1D8A70] dark:text-[#3CBF9C]" />;
     return <span className="text-gray-400">-</span>;
   };
 
@@ -287,9 +287,9 @@ const CurrentLandscape = () => {
         The market is priced for a near-perfect outcome at a time when the economic dashboard flashes a mix of green, yellow, and red signals.
       </SectionSubtitle>
 
-      <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">U.S. Economic Dashboard (Q3 2025)</h3>
+      <h3 className="text-2xl font-bold text-gray-800 text-center mb-6 font-serif">U.S. Economic Dashboard (Q3 2025)</h3>
       <div className="overflow-x-auto">
-        <div className="max-w-5xl mx-auto bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="max-w-5xl mx-auto bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 shadow-md">
           <table className="w-full text-left">
             <thead className="border-b border-gray-200 bg-gray-50">
               <tr>
@@ -341,34 +341,34 @@ const StrategicOutlook = () => (
       </InfoCard>
     </div>
 
-    <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">Key Indicators to Monitor</h3>
+    <h3 className="text-2xl font-bold text-gray-800 text-center mb-6 font-serif">Key Indicators to Monitor</h3>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
-      <div className="bg-white p-4 rounded-lg border border-gray-200 text-center shadow-sm">
-        <Briefcase className="mx-auto h-8 w-8 text-indigo-500 mb-2" />
+      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 text-center shadow-sm">
+        <Briefcase className="mx-auto h-8 w-8 text-[#A8672E] dark:text-[#D08F52] mb-2" />
         <h4 className="font-semibold text-gray-800">Labor Market Data</h4>
         <p className="text-sm text-gray-600">Watch for revisions and unemployment upticks (Sahm Rule).</p>
       </div>
-      <div className="bg-white p-4 rounded-lg border border-gray-200 text-center shadow-sm">
-        <TrendingUp className="mx-auto h-8 w-8 text-indigo-500 mb-2" />
+      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 text-center shadow-sm">
+        <TrendingUp className="mx-auto h-8 w-8 text-[#A8672E] dark:text-[#D08F52] mb-2" />
         <h4 className="font-semibold text-gray-800">Inflation Reports</h4>
         <p className="text-sm text-gray-600">Core PCE trajectory will determine the Fed&apos;s flexibility.</p>
       </div>
-      <div className="bg-white p-4 rounded-lg border border-gray-200 text-center shadow-sm">
-        <FileText className="mx-auto h-8 w-8 text-indigo-500 mb-2" />
+      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 text-center shadow-sm">
+        <FileText className="mx-auto h-8 w-8 text-[#A8672E] dark:text-[#D08F52] mb-2" />
         <h4 className="font-semibold text-gray-800">Earnings Guidance</h4>
         <p className="text-sm text-gray-600">Downward revisions would be a key recessionary signal.</p>
       </div>
-      <div className="bg-white p-4 rounded-lg border border-gray-200 text-center shadow-sm">
-        <CreditCard className="mx-auto h-8 w-8 text-indigo-500 mb-2" />
+      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 text-center shadow-sm">
+        <CreditCard className="mx-auto h-8 w-8 text-[#A8672E] dark:text-[#D08F52] mb-2" />
         <h4 className="font-semibold text-gray-800">Credit Spreads</h4>
         <p className="text-sm text-gray-600">Widening spreads indicate rising financial stress.</p>
       </div>
     </div>
 
-    <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">Portfolio Positioning for Uncertainty</h3>
+    <h3 className="text-2xl font-bold text-gray-800 text-center mb-6 font-serif">Portfolio Positioning for Uncertainty</h3>
     <div className="max-w-4xl mx-auto space-y-4">
-      <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
-        <CheckCircle className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1" />
+      <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
+        <CheckCircle className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0 mt-1" />
         <div>
           <strong className="text-gray-800">Emphasize Quality Within Equities:</strong>
           <p className="text-gray-600">
@@ -376,8 +376,8 @@ const StrategicOutlook = () => (
           </p>
         </div>
       </div>
-      <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
-        <CheckCircle className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1" />
+      <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
+        <CheckCircle className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0 mt-1" />
         <div>
           <strong className="text-gray-800">Increase Fixed Income Exposure:</strong>
           <p className="text-gray-600">
@@ -385,8 +385,8 @@ const StrategicOutlook = () => (
           </p>
         </div>
       </div>
-      <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
-        <CheckCircle className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1" />
+      <div className="bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg p-4 flex items-start gap-4 shadow-sm">
+        <CheckCircle className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0 mt-1" />
         <div>
           <strong className="text-gray-800">Prepare for a &ldquo;Bumpy Ride&rdquo;:</strong>
           <p className="text-gray-600">
@@ -406,7 +406,7 @@ export default function PowellPivotArticle() {
       additionalDisclaimer="Market conditions can change rapidly, and past performance does not guarantee future results."
     >
       <div className="max-w-5xl mx-auto px-4">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-12">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-12">
           Navigating Market Crosscurrents After the Fed&apos;s Easing Signal of August 22, 2025.
         </p>
 

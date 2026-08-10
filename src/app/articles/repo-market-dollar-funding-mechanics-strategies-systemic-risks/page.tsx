@@ -80,17 +80,17 @@ export default function RepoMarketArticle() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-gray-900">
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">Underlying Asset</td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-400">Unsecured interbank credit</td>
                   <td className="px-4 py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Collateralized by U.S. Treasuries</td>
                 </tr>
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 bg-slate-50/50 dark:bg-slate-800/30">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 bg-slate-50 dark:bg-[#14171B]/50 dark:bg-slate-800/30">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">Volume</td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-400">Limited, reliant on estimates</td>
                   <td className="px-4 py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">&gt;$1 Trillion daily actual transactions</td>
                 </tr>
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">Market Stress Behavior</td>
                   <td className="px-4 py-3 text-[#BC4128] dark:text-[#E2694A]">Rises sharply (credit risk)</td>
                   <td className="px-4 py-3 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">May fall (flight-to-quality)</td>
@@ -208,21 +208,21 @@ export default function RepoMarketArticle() {
 
           <div className="space-y-4">
             <div className="bg-[#BC4128]/5 dark:bg-[#E2694A]/5 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg">
-              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">1. September 2019 Repo Spike</h3>
+              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">September 2019 Repo Spike</h3>
               <p className="text-sm text-slate-700 dark:text-slate-300">
                 A sharp drain in aggregate bank reserves (corporate tax payments + heavy Treasury settlements) compounded by prolonged Quantitative Tightening. Reserves plunged, cash providers pulled back, and rates spiked violently, forcing the Fed to intervene to stop margin calls on leveraged funds.
               </p>
             </div>
             
             <div className="bg-[#BC4128]/5 dark:bg-[#E2694A]/5 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg">
-              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">2. March 2020 "Dash for Cash"</h3>
+              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">March 2020 "Dash for Cash"</h3>
               <p className="text-sm text-slate-700 dark:text-slate-300">
                 Pandemic volatility spiked margins. Investors hoarded physical cash. Dealers, bound by rigid SLR limits, lacked balance sheet capacity to absorb Treasuries. Hedge funds were forced into distressed unwinds, causing U.S. Treasuries to crash simultaneously with risk assets until massive Fed QE intervened.
               </p>
             </div>
 
             <div className="bg-[#BC4128]/5 dark:bg-[#E2694A]/5 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg">
-              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">3. The Central Clearing Mandate (2025/2026)</h3>
+              <h3 className="font-serif font-bold text-[#BC4128] dark:text-[#E2694A] text-lg mb-1">The Central Clearing Mandate (2025/2026)</h3>
               <p className="text-sm text-slate-700 dark:text-slate-300">
                 New SEC rules mandate FICC central clearing. Standardized 2-4% initial margins eliminate zero-haircuts. This forces massive deleveraging (e.g., from 56:1 down to 25:1), potentially withdrawing $300B+ in Treasury liquidity if funds refuse to raise more capital.
               </p>

@@ -33,10 +33,10 @@ interface InfoCardProps {
 
 const InfoCard = ({ title, children, accentColor = "blue", subtitle }: InfoCardProps) => {
   const colorMap = {
-    blue: "border-blue-500 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10",
-    indigo: "border-indigo-500 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10",
-    emerald: "border-emerald-500 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 hover:bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10",
-    rose: "border-rose-500 bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 hover:bg-[#BC4128]/10 dark:bg-[#E2694A]/10",
+    blue: "border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10",
+    indigo: "border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10",
+    emerald: "border-[#1D8A70] dark:border-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 hover:bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10",
+    rose: "border-[#BC4128] dark:border-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 hover:bg-[#BC4128]/10 dark:bg-[#E2694A]/10",
     amber: "border-amber-500 bg-amber-50/50 hover:bg-amber-50",
     violet: "border-violet-500 bg-violet-50/50 hover:bg-violet-50",
     cyan: "border-cyan-500 bg-cyan-50/50 hover:bg-cyan-50",
@@ -438,7 +438,7 @@ export default function SingleLegLongCallArticle() {
 
             {/* Subsection: The Exit Protocols */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border-t-4 border-rose-500 shadow-sm flex flex-col">
+              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border-t-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <Shield className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" />
                   <h4 className="font-bold text-lg text-gray-900">Defense (Stop Loss)</h4>
@@ -454,7 +454,7 @@ export default function SingleLegLongCallArticle() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border-t-4 border-emerald-500 shadow-sm flex flex-col">
+              <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border-t-4 border-[#1D8A70] dark:border-[#3CBF9C] shadow-sm flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C]" />
                   <h4 className="font-bold text-lg text-gray-900">Offense (Profit Taking)</h4>
@@ -546,7 +546,7 @@ export default function SingleLegLongCallArticle() {
               colorClass="#8b5cf6" 
             />
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl shadow-lg border-t-8 border-indigo-500">
+              <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl shadow-lg border-t-8 border-[#A8672E] dark:border-[#D08F52]">
                 <div className="flex items-center gap-3 mb-6">
                   <TrendingUp className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
                   <div>
@@ -575,7 +575,7 @@ export default function SingleLegLongCallArticle() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl shadow-lg border-t-8 border-rose-500">
+              <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl shadow-lg border-t-8 border-[#BC4128] dark:border-[#E2694A]">
                 <div className="flex items-center gap-3 mb-6">
                   <TrendingDown className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
                   <div>

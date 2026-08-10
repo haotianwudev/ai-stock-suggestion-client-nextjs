@@ -49,7 +49,7 @@ export default function StickyStrikeVsDeltaArticle() {
               component of your risk.
             </p>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 my-8 rounded-r-lg">
               <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-300 mb-3 font-serif">The Total Derivative</h3>
               <p className="text-indigo-800 dark:text-indigo-200 mb-6 leading-relaxed">
                 To calculate the <em>true</em> risk of an option, we must use the <strong>Total Derivative</strong>. 
@@ -86,7 +86,7 @@ export default function StickyStrikeVsDeltaArticle() {
             
             <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800">
               <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 font-serif text-xl">
-                <Scale size={20} className="text-indigo-600 dark:text-indigo-400"/>
+                <Scale size={20} className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]"/>
                 Trader's Intuition: The Long Call Example
               </h4>
               <p className="mb-4 text-slate-600 dark:text-slate-400">Suppose you own a Call option on the S&P 500.</p>
@@ -97,7 +97,7 @@ export default function StickyStrikeVsDeltaArticle() {
                 </li>
                 <li className="flex gap-4">
                   <span className="font-bold text-slate-900 dark:text-white w-24 shrink-0">BS Delta:</span>
-                  <span className="text-emerald-600 dark:text-emerald-400">Make money on Delta.</span>
+                  <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Make money on Delta.</span>
                 </li>
                 <li className="flex gap-4">
                   <span className="font-bold text-slate-900 dark:text-white w-24 shrink-0">Reality:</span>
@@ -108,7 +108,7 @@ export default function StickyStrikeVsDeltaArticle() {
                   <span>You make money on price, but <strong>lose money on Vega</strong>.</span>
                 </li>
               </ul>
-              <div className="mt-6 p-4 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-lg font-bold text-center border border-indigo-200 dark:border-indigo-800">
+              <div className="mt-6 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-lg font-bold text-center border border-indigo-200 dark:border-indigo-800">
                 Conclusion: Your TRUE delta is LOWER than the Black-Scholes model says.
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function StickyStrikeVsDeltaArticle() {
               <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Regime 1: Sticky Strike</h2>
             </div>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 mb-8 rounded-r-lg">
               <p className="text-indigo-900 dark:text-indigo-300 font-bold font-serif text-xl mb-3">The "Painted on the Wall" Theory</p>
               <p className="text-indigo-800 dark:text-indigo-200 leading-relaxed">
                 Imagine the volatility skew is a physical curve painted onto the price axis. It is static. It does not move. 
@@ -156,19 +156,19 @@ export default function StickyStrikeVsDeltaArticle() {
               <div className="space-y-6">
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <CheckCircle2 className="text-indigo-600 dark:text-indigo-400" size={20} />
+                    <CheckCircle2 className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={20} />
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">Trader's Intuition</h3>
                   </div>
                   <ul className="space-y-4 text-slate-600 dark:text-slate-400">
                     <li className="flex gap-3">
-                      <span className="font-bold text-indigo-600 dark:text-indigo-400">1.</span>
+                      <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">1.</span>
                       <span>
                         <strong>Psychological Anchors:</strong> Investors often view round numbers ($100, $150) as 
                         permanent support/resistance levels.
                       </span>
                     </li>
                     <li className="flex gap-3">
-                      <span className="font-bold text-indigo-600 dark:text-indigo-400">2.</span>
+                      <span className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">2.</span>
                       <span>
                         <strong>Range-Bound Markets:</strong> This regime works best when the market is chopping sideways.
                       </span>
@@ -187,7 +187,7 @@ export default function StickyStrikeVsDeltaArticle() {
                     <span>You profit on Delta.</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-amber-900 dark:text-amber-200">
-                    <span className="font-bold text-red-600 dark:text-red-400">Risk</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Risk</span>
                     <ArrowRight size={16} className="text-amber-700"/>
                     <span>If regime flips to Sticky Delta, Call vol collapses.</span>
                   </div>
@@ -207,7 +207,7 @@ export default function StickyStrikeVsDeltaArticle() {
               <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Regime 2: Sticky Delta</h2>
             </div>
             
-            <div className="bg-rose-50 dark:bg-rose-900/20 border-l-4 border-rose-500 p-6 mb-8 rounded-r-lg">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 mb-8 rounded-r-lg">
               <p className="text-rose-900 dark:text-rose-300 font-bold font-serif text-xl mb-3">The "Floating Smile" Theory</p>
               <p className="text-rose-800 dark:text-rose-200 leading-relaxed">
                 Imagine the volatility skew is a kite tied to the stock price. As the stock price moves, the entire curve 
@@ -233,7 +233,7 @@ export default function StickyStrikeVsDeltaArticle() {
                 
                 <div className="space-y-4 mt-8">
                   <div className="flex gap-4">
-                    <MoveRight className="text-rose-500 shrink-0 mt-1" size={20}/>
+                    <MoveRight className="text-[#BC4128] dark:text-[#E2694A] shrink-0 mt-1" size={20}/>
                     <div>
                       <strong className="text-slate-900 dark:text-white block mb-1">Horizontal Shift</strong>
                       <p className="text-slate-600 dark:text-slate-400 text-sm">
@@ -247,7 +247,7 @@ export default function StickyStrikeVsDeltaArticle() {
               <div className="space-y-6">
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Activity className="text-rose-600 dark:text-rose-400" size={20} />
+                    <Activity className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" size={20} />
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">Why FX Markets Love This</h3>
                   </div>
                   <div className="text-slate-600 dark:text-slate-400 space-y-4 leading-relaxed">
@@ -261,7 +261,7 @@ export default function StickyStrikeVsDeltaArticle() {
                   </div>
                 </div>
                 
-                <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-200 dark:border-emerald-800/50">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-200 dark:border-emerald-800/50">
                   <h4 className="font-bold text-emerald-900 dark:text-emerald-300 mb-4 font-serif">The Hedging Implication (Short Put)</h4>
                   <div className="flex items-center justify-between text-emerald-800 dark:text-emerald-200 mb-2">
                     <span>Black-Scholes Delta</span>
@@ -326,14 +326,14 @@ export default function StickyStrikeVsDeltaArticle() {
                   <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
                         <span className="font-bold text-slate-800 dark:text-slate-200">Sticky Strike</span>
                       </div>
                       <p className="text-sm text-slate-600 dark:text-slate-400 pl-5">The curve is rigid. Vol at $100 remains fixed even if Spot goes to $90.</p>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <div className="w-3 h-3 rounded-full bg-rose-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#BC4128] dark:bg-[#E2694A]"></div>
                         <span className="font-bold text-slate-800 dark:text-slate-200">Sticky Delta</span>
                       </div>
                       <p className="text-sm text-slate-600 dark:text-slate-400 pl-5">The curve floats. ATM Vol follows the spot price.</p>
@@ -406,13 +406,13 @@ export default function StickyStrikeVsDeltaArticle() {
             
             <ComparisonGrid>
               <ComparisonCard title="SSR = 0" tone="neutral">
-                <p className="font-bold text-rose-600 dark:text-rose-400 text-lg">Pure Sticky Delta</p>
+                <p className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-lg">Pure Sticky Delta</p>
               </ComparisonCard>
               <ComparisonCard title="SSR = 1" tone="neutral">
-                <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg">Pure Sticky Strike</p>
+                <p className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-lg">Pure Sticky Strike</p>
               </ComparisonCard>
               <ComparisonCard title="SSR ≈ 1.5-2.0" tone="pos">
-                <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg">Real Market (S&P 500)</p>
+                <p className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-lg">Real Market (S&P 500)</p>
               </ComparisonCard>
             </ComparisonGrid>
 

@@ -42,17 +42,17 @@ const qaData = [
 // Reusable ThemeCard Component
 function ThemeCard({ icon, title, points }: { icon: React.ReactNode; title: string; points: string[] }) {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200">
+    <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 dark:border-slate-800">
       <div className="flex items-center mb-4">
         <div className="bg-slate-100 p-2 rounded-full mr-4">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold text-slate-800">{title}</h3>
+        <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 font-serif">{title}</h3>
       </div>
-      <ul className="space-y-3 text-slate-600">
+      <ul className="space-y-3 text-slate-600 dark:text-slate-400">
         {points.map((point, index) => (
           <li key={index} className="flex items-start">
-            <span className="text-blue-500 mr-3 mt-1">&#10003;</span>
+            <span className="text-[#A8672E] dark:text-[#D08F52] mr-3 mt-1">&#10003;</span>
             <span dangerouslySetInnerHTML={{ __html: point }} />
           </li>
         ))}
@@ -66,10 +66,10 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+    <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center text-left p-5 font-semibold text-slate-800 hover:bg-slate-50 focus:outline-none"
+        className="w-full flex justify-between items-center text-left p-5 font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:bg-[#14171B] focus:outline-none"
       >
         <span>{question}</span>
         <ChevronDown
@@ -82,7 +82,7 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
           isOpen ? 'max-h-screen' : 'max-h-0'
         }`}
       >
-        <div className="p-5 border-t border-slate-200 text-slate-700 leading-relaxed">
+        <div className="p-5 border-t border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 leading-relaxed">
           <p dangerouslySetInnerHTML={{ __html: answer }} />
         </div>
       </div>
@@ -96,21 +96,21 @@ export default function CoveredCallSummaryPage() {
       slug="covering-world-global-evidence-covered-calls"
       additionalDisclaimer="Options trading involves substantial risk and is not suitable for all investors. Past performance does not guarantee future results. Always consult with a qualified financial advisor before making investment decisions."
     >
-      <section className="mb-12 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-        <h2 className="text-3xl font-semibold text-slate-800 mb-4 flex items-center">
-          <Briefcase className="mr-3 text-blue-600" size={32} />
+      <section className="mb-12 bg-white dark:bg-[#0A0D14] p-8 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+        <h2 className="text-3xl font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center font-serif">
+          <Briefcase className="mr-3 text-[#A8672E] dark:text-[#D08F52]" size={32} />
           Executive Summary
         </h2>
-        <p className="text-lg leading-relaxed text-slate-700">
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
           The research paper demonstrates that covered call strategies, when applied to a global set of equity indexes, consistently provide &ldquo;equity-like&rdquo; returns with significantly lower volatility and reduced drawdowns compared to holding the underlying equity indexes. The authors decompose covered call performance into three components: passive equity exposure, short volatility exposure, and dynamic equity exposure (equity timing). They find that while passive equity drives most of the risk and return, short volatility exposure offers the highest Sharpe ratio. Crucially, the dynamic equity exposure is identified as a source of uncompensated risk. The paper strongly advocates for &ldquo;risk-managed&rdquo; covered call strategies, which actively hedge this dynamic equity exposure, leading to superior risk-adjusted returns (higher Sharpe ratios) and even lower volatility and drawdowns. Furthermore, global diversification of these risk-managed covered call strategies offers additional benefits, acting as a defensive alternative to global equity with similar returns but enhanced risk characteristics.
         </p>
       </section>
 
       <section>
-        <h2 className="text-3xl font-semibold text-slate-800 mb-8 text-center">Key Themes & Important Findings</h2>
+        <h2 className="text-3xl font-semibold text-slate-800 dark:text-slate-200 mb-8 text-center font-serif">Key Themes & Important Findings</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ThemeCard
-            icon={<TrendingUp className="text-green-500" />}
+            icon={<TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C]" />}
             title="Equity-Like Returns, Lower Risk"
             points={[
               "Covered call strategies show similar benefits across global equity indexes, not just the S&P 500.",
@@ -122,7 +122,7 @@ export default function CoveredCallSummaryPage() {
           />
 
           <ThemeCard
-            icon={<BarChart className="text-indigo-500" />}
+            icon={<BarChart className="text-[#A8672E] dark:text-[#D08F52]" />}
             title="Performance Decomposition"
             points={[
               "<strong>1. Passive Equity:</strong> The main driver of risk and return (70% of variance), earning the equity risk premium.",
@@ -155,12 +155,12 @@ export default function CoveredCallSummaryPage() {
             ]}
           />
 
-          <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
-              <TrendingDown className="mr-3 text-red-500" size={28} />
+          <div className="lg:col-span-2 bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-center">
+            <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-3 flex items-center font-serif">
+              <TrendingDown className="mr-3 text-[#BC4128] dark:text-[#E2694A]" size={28} />
               The Problem of Uncompensated Risk
             </h3>
-            <p className="text-md leading-relaxed text-slate-600">
+            <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400">
               A critical finding is that the <strong>Dynamic Equity Exposure</strong>, which accounts for about 23% of a standard covered call&apos;s variance, is an uncompensated risk. It does not contribute positively to expected returns and, on average, slightly detracted from performance. The paper&apos;s primary argument is that this specific risk should be actively managed and hedged away to create a more efficient investment strategy.
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function CoveredCallSummaryPage() {
 
       {/* Detailed Q&A Section */}
       <section className="mt-16">
-        <h2 className="text-3xl font-semibold text-slate-800 mb-8 text-center">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-semibold text-slate-800 dark:text-slate-200 mb-8 text-center font-serif">Frequently Asked Questions</h2>
         <div className="max-w-4xl mx-auto space-y-4">
           {qaData.map((item, index) => (
             <AccordionItem key={index} question={item.question} answer={item.answer} />
@@ -178,7 +178,7 @@ export default function CoveredCallSummaryPage() {
       </section>
 
       <section className="mt-16 bg-blue-900 text-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-3xl font-semibold mb-4">Conclusion</h2>
+        <h2 className="text-3xl font-semibold mb-4 font-serif">Conclusion</h2>
         <p className="text-lg leading-relaxed text-blue-200">
           The study provides strong global evidence that covered call strategies, especially when risk-managed, are a compelling defensive alternative to traditional equity. They deliver similar compounded returns with lower volatility and smaller drawdowns. The consistency of these findings across eleven global indexes highlights the robustness of harvesting the &ldquo;volatility risk premium&rdquo; and the clear benefits of hedging uncompensated risk within covered call strategies.
         </p>

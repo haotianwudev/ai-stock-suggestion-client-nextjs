@@ -6,15 +6,15 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper: Highlight important words
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-teal-600 dark:text-teal-400 font-semibold">{children}</span>
+  <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-semibold">{children}</span>
 );
 
 // Helper component for section titles
 const SectionTitle = ({ icon, title, id }: { icon: any, title: string, id: string }) => {
   const Icon = icon;
   return (
-    <h2 id={id} className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center scroll-mt-20">
-      <Icon className="w-8 h-8 mr-4 text-indigo-500" />
+    <h2 id={id} className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center scroll-mt-20 font-serif">
+      <Icon className="w-8 h-8 mr-4 text-[#A8672E] dark:text-[#D08F52]" />
       {title}
     </h2>
   );
@@ -22,13 +22,13 @@ const SectionTitle = ({ icon, title, id }: { icon: any, title: string, id: strin
 
 // Helper component for subsections
 const SubSectionTitle = ({ title }: { title: string }) => (
-  <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">{title}</h3>
+  <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4 font-serif">{title}</h3>
 );
 
 // Helper component for list items
 const ListItem = ({ children }: { children: React.ReactNode }) => (
   <li className="flex items-start mb-3">
-    <ChevronsRight className="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" />
+    <ChevronsRight className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] mr-3 mt-1 flex-shrink-0" />
     <span className="text-gray-600 dark:text-gray-300">{children}</span>
   </li>
 );
@@ -125,9 +125,9 @@ const Section1 = () => (
       <ListItem><b>Repentant Sellers:</b> Seek to re-enter at their previous exit price, switching from supply to demand.</ListItem>
     </ul>
 
-    <div className="p-4 border-l-4 border-indigo-500 bg-indigo-50 dark:bg-gray-800 rounded-r-lg">
+    <div className="p-4 border-l-4 border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-gray-800 rounded-r-lg">
       <p className="font-semibold text-indigo-800 dark:text-indigo-200">Key Hypothesis: Role Reversal</p>
-      <p className="text-indigo-700 dark:text-indigo-300">
+      <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300">
         When a support level is decisively breached, it often transforms into a new resistance level. This signifies a fundamental shift in market psychology and supply-demand dynamics—a concept known as <Highlight>role reversal</Highlight>.
       </p>
     </div>
@@ -197,25 +197,25 @@ const PipelineDiagram = () => (
     <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">ML Pipeline Flow</h4>
     <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
       <div className="flex flex-col items-center p-3">
-        <Database className="w-12 h-12 text-indigo-500" />
+        <Database className="w-12 h-12 text-[#A8672E] dark:text-[#D08F52]" />
         <span className="font-semibold mt-2">1. Data</span>
         <span className="text-sm text-gray-500">Price, Volume</span>
       </div>
       <ArrowRight className="w-8 h-8 text-gray-400 dark:text-gray-500 hidden md:block" />
       <div className="flex flex-col items-center p-3">
-        <Cpu className="w-12 h-12 text-indigo-500" />
+        <Cpu className="w-12 h-12 text-[#A8672E] dark:text-[#D08F52]" />
         <span className="font-semibold mt-2">2. Feature Engineering</span>
         <span className="text-sm text-gray-500">ATR, RSI, Volume Profile</span>
       </div>
       <ArrowRight className="w-8 h-8 text-gray-400 dark:text-gray-500 hidden md:block" />
       <div className="flex flex-col items-center p-3">
-        <Bot className="w-12 h-12 text-indigo-500" />
+        <Bot className="w-12 h-12 text-[#A8672E] dark:text-[#D08F52]" />
         <span className="font-semibold mt-2">3. ML Model</span>
         <span className="text-sm text-gray-500">Random Forest, LSTM</span>
       </div>
       <ArrowRight className="w-8 h-8 text-gray-400 dark:text-gray-500 hidden md:block" />
       <div className="flex flex-col items-center p-3">
-        <Target className="w-12 h-12 text-indigo-500" />
+        <Target className="w-12 h-12 text-[#A8672E] dark:text-[#D08F52]" />
         <span className="font-semibold mt-2">4. Prediction</span>
         <span className="text-sm text-gray-500">P(Hold) = 0.85</span>
       </div>

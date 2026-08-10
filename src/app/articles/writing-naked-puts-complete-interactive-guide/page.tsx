@@ -22,10 +22,10 @@ const InfoCard = ({ icon, title, children, className = '' }: {
 }) => (
   <div className={`bg-gray-100 dark:bg-gray-800/50 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 ${className}`}>
     <div className="flex items-center mb-4">
-      <div className="p-2 bg-emerald-500/10 rounded-full mr-4 text-emerald-600 dark:text-emerald-400">
+      <div className="p-2 bg-[#1D8A70] dark:bg-[#3CBF9C]/10 rounded-full mr-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-serif">{title}</h3>
     </div>
     <div className="text-gray-700 dark:text-gray-300 space-y-3">{children}</div>
   </div>
@@ -34,20 +34,20 @@ const InfoCard = ({ icon, title, children, className = '' }: {
 const HomePage = ({ navigateTo }: { navigateTo: (page: string) => void }) => (
   <div>
     <div className="text-center p-8 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Master the Art of Writing Naked Puts</h2>
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 font-serif">Master the Art of Writing Naked Puts</h2>
       <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
         Discover a conservative, profitable, and intelligent way to invest. This guide, based on Mark D. Wolfinger&apos;s &ldquo;Writing Naked Puts,&rdquo; demystifies a powerful options strategy.
       </p>
       <div className="flex justify-center items-center gap-4">
         <button
           onClick={() => navigateTo('strategy')}
-          className="bg-emerald-500 text-white font-bold py-3 px-8 rounded-full hover:bg-emerald-600 transition-transform transform hover:scale-105 shadow-lg"
+          className="bg-[#1D8A70] dark:bg-[#3CBF9C] text-white font-bold py-3 px-8 rounded-full hover:bg-[#1D8A70] dark:bg-[#3CBF9C] transition-transform transform hover:scale-105 shadow-lg"
         >
           Explore the Strategy
         </button>
         <button
           onClick={() => navigateTo('risk')}
-          className="bg-transparent border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold py-3 px-8 rounded-full hover:bg-emerald-500/10 transition-colors"
+          className="bg-transparent border-2 border-[#1D8A70] dark:border-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold py-3 px-8 rounded-full hover:bg-[#1D8A70] dark:bg-[#3CBF9C]/10 transition-colors"
         >
           Understand Risks
         </button>
@@ -66,7 +66,7 @@ const HomePage = ({ navigateTo }: { navigateTo: (page: string) => void }) => (
       </InfoCard>
     </div>
     <div className="mt-12 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-      <h3 className="text-2xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">About the Book</h3>
+      <h3 className="text-2xl font-bold mb-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-serif">About the Book</h3>
       <p className="text-gray-700 dark:text-gray-300 mb-4">This website is a summary of <span className="font-semibold text-gray-900 dark:text-white">&ldquo;Writing Naked Puts&rdquo;</span> by Mark D. Wolfinger. It&apos;s Volume 1 in &ldquo;The Best Option Strategies&rdquo; series, aimed at investors who understand basic options and want to add a powerful, profitable strategy to their arsenal.</p>
     </div>
   </div>
@@ -74,7 +74,7 @@ const HomePage = ({ navigateTo }: { navigateTo: (page: string) => void }) => (
 
 const StrategyPage = () => (
   <div className="space-y-8">
-    <h2 className="text-4xl font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-emerald-500/30 pb-4">The Strategy: Earning & Acquiring</h2>
+    <h2 className="text-4xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] border-b-2 border-[#1D8A70] dark:border-[#3CBF9C]/30 pb-4 font-serif">The Strategy: Earning & Acquiring</h2>
 
     <InfoCard icon={<TrendingUp />} title="Strategy Objective">
       <p><strong className="text-gray-900 dark:text-white">Writing puts is a bullish strategy with two desired outcomes, both considered a &ldquo;win&rdquo;:</strong></p>
@@ -91,14 +91,14 @@ const StrategyPage = () => (
         <li><strong>Underlying Stock:</strong> Choose a stock you genuinely want to own. You must believe its price will not fall below your chosen strike price before expiration.</li>
         <li><strong>Strike Price:</strong> This is a trade-off.
           <ul className="list-circle pl-6 mt-1 text-sm">
-            <li><span className="font-semibold text-red-600 dark:text-red-400">Farther Out-of-the-Money (OTM):</span> Lower premium, but lower risk of assignment. Higher probability of profit.</li>
-            <li><span className="font-semibold text-green-600 dark:text-green-400">Closer to the Money:</span> Higher premium, but higher risk of assignment.</li>
+            <li><span className="font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Farther Out-of-the-Money (OTM):</span> Lower premium, but lower risk of assignment. Higher probability of profit.</li>
+            <li><span className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Closer to the Money:</span> Higher premium, but higher risk of assignment.</li>
           </ul>
         </li>
         <li><strong>Expiration Date:</strong>
           <ul className="list-circle pl-6 mt-1 text-sm">
-            <li><span className="font-semibold text-red-600 dark:text-red-400">Shorter Term (e.g., 30-45 days):</span> Lower premium, but higher annualized return due to faster time decay (theta). More sensitive to stock price moves (gamma).</li>
-            <li><span className="font-semibold text-green-600 dark:text-green-400">Longer Term:</span> Higher premium (more protection), lower annualized return, less sensitive to price moves.</li>
+            <li><span className="font-semibold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Shorter Term (e.g., 30-45 days):</span> Lower premium, but higher annualized return due to faster time decay (theta). More sensitive to stock price moves (gamma).</li>
+            <li><span className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Longer Term:</span> Higher premium (more protection), lower annualized return, less sensitive to price moves.</li>
           </ul>
         </li>
       </ul>
@@ -106,16 +106,16 @@ const StrategyPage = () => (
 
     <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center">
       <h4 className="text-xl font-semibold text-gray-900 dark:text-white">Synthetic Equivalence</h4>
-      <p className="text-gray-700 dark:text-gray-300 mt-2">Did you know? Writing a <strong className="text-emerald-600 dark:text-emerald-400">Naked Put</strong> has the exact same risk/reward profile as writing a <strong className="text-emerald-600 dark:text-emerald-400">Covered Call</strong>. This is a fundamental concept in options trading.</p>
+      <p className="text-gray-700 dark:text-gray-300 mt-2">Did you know? Writing a <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Naked Put</strong> has the exact same risk/reward profile as writing a <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Covered Call</strong>. This is a fundamental concept in options trading.</p>
     </div>
   </div>
 );
 
 const RiskPage = () => (
   <div className="space-y-8">
-    <h2 className="text-4xl font-bold text-red-600 dark:text-red-400 border-b-2 border-red-500/30 pb-4">Risk & Management</h2>
+    <h2 className="text-4xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] border-b-2 border-[#BC4128] dark:border-[#E2694A]/30 pb-4 font-serif">Risk & Management</h2>
 
-    <InfoCard icon={<Shield />} title="Primary Risk: Declining Stock Price" className="border-red-500/50">
+    <InfoCard icon={<Shield />} title="Primary Risk: Declining Stock Price" className="border-[#BC4128] dark:border-[#E2694A]/50">
       <p>The main risk is that the underlying stock price falls significantly, just like owning the stock. If the stock drops far below your strike price, you&apos;ll be obligated to buy shares that are worth much less than you&apos;re paying.</p>
       <p className="mt-2"><strong className="text-gray-900 dark:text-white">Protection:</strong> The premium you collect provides a buffer. The stock has to fall below (Strike Price - Premium) before you have an unrealized loss.</p>
     </InfoCard>
@@ -127,8 +127,8 @@ const RiskPage = () => (
         <li><strong>Close the Position:</strong> Buy back the put to lock in a loss and prevent it from getting worse. This is a crucial part of money management.</li>
         <li><strong>Roll the Position:</strong> Simultaneously buy back your current put and sell a new one with a lower strike price and/or a later expiration date. This can reduce risk or give the trade more time to become profitable.</li>
       </ul>
-      <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/40 rounded-lg border-l-4 border-red-400 space-y-2">
-        <p><strong className="text-red-700 dark:text-red-300">CRUCIAL TIP:</strong> It is mandatory for your success to understand this: <strong className="text-gray-900 dark:text-white">Do not stubbornly refuse to take a loss.</strong> Never hold a losing position just because closing it would make the loss real. The loss has already occurred. Only adjust a position if the new trade is one you would happily make as an independent decision.</p>
+      <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/40 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A] space-y-2">
+        <p><strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-red-300">CRUCIAL TIP:</strong> It is mandatory for your success to understand this: <strong className="text-gray-900 dark:text-white">Do not stubbornly refuse to take a loss.</strong> Never hold a losing position just because closing it would make the loss real. The loss has already occurred. Only adjust a position if the new trade is one you would happily make as an independent decision.</p>
       </div>
       <div className="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/40 rounded-lg border-l-4 border-yellow-400">
         <p><strong className="text-yellow-700 dark:text-yellow-300">TIP ON ROLLING:</strong> Choose the new option that fits your comfort zone. If you don&apos;t know which new position you want to own, it is better to close the original trade, accept the loss, and move on.</p>
@@ -151,7 +151,7 @@ const RiskPage = () => (
       <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">Beyond cost, consider broker execution quality and the variety of strategies they allow. A cheap broker with poor fills can cost more in the long run.</p>
     </InfoCard>
 
-    <InfoCard icon={<Landmark />} title="Margin Requirements" className="border-blue-500/50">
+    <InfoCard icon={<Landmark />} title="Margin Requirements" className="border-[#A8672E] dark:border-[#D08F52]/50">
       <p>When you sell puts that are not cash-backed, you must use margin and post collateral. The initial margin requirement is calculated as follows:</p>
       <ul className="list-decimal pl-6 my-4 space-y-1 bg-gray-200 dark:bg-gray-900/50 p-4 rounded-lg">
         <li><strong className="text-gray-900 dark:text-white">20% of the underlying stock&apos;s value</strong></li>
@@ -160,11 +160,11 @@ const RiskPage = () => (
       </ul>
       <div className="bg-gray-200 dark:bg-gray-700/50 p-4 rounded-lg mt-4">
         <p className="font-semibold text-gray-900 dark:text-white mb-2">Example Calculation:</p>
-        <p>You sell <strong className="text-emerald-600 dark:text-emerald-400">10 put contracts</strong> on a stock trading at <strong className="text-emerald-600 dark:text-emerald-400">$28/share</strong>. The strike is <strong className="text-emerald-600 dark:text-emerald-400">$25</strong> and the premium is <strong className="text-emerald-600 dark:text-emerald-400">$1.00/share</strong>.</p>
+        <p>You sell <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">10 put contracts</strong> on a stock trading at <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">$28/share</strong>. The strike is <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">$25</strong> and the premium is <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">$1.00/share</strong>.</p>
         <ul className="list-none pl-0 mt-3 space-y-2 text-sm">
-          <li className="flex justify-between items-center"><span>1. 20% of Stock Value (1000 shares @ $28):</span> <span className="font-mono text-green-600 dark:text-green-400">$5,600</span></li>
-          <li className="flex justify-between items-center"><span>2. Plus Premium Collected (10 contracts @ $100):</span> <span className="font-mono text-green-600 dark:text-green-400">+ $1,000</span></li>
-          <li className="flex justify-between items-center"><span>3. Minus OTM Amount (($28-$25) * 1000):</span> <span className="font-mono text-red-600 dark:text-red-400">- $3,000</span></li>
+          <li className="flex justify-between items-center"><span>1. 20% of Stock Value (1000 shares @ $28):</span> <span className="font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">$5,600</span></li>
+          <li className="flex justify-between items-center"><span>2. Plus Premium Collected (10 contracts @ $100):</span> <span className="font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+ $1,000</span></li>
+          <li className="flex justify-between items-center"><span>3. Minus OTM Amount (($28-$25) * 1000):</span> <span className="font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">- $3,000</span></li>
           <li className="border-t border-gray-300 dark:border-gray-600 my-2"></li>
           <li className="flex justify-between items-center font-bold text-base"><span>Total Margin Required:</span> <span className="font-mono text-gray-900 dark:text-white">$3,600</span></li>
         </ul>
@@ -172,11 +172,11 @@ const RiskPage = () => (
       <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">TIP: Margin is often lower (e.g., 15%) when selling puts on broad-based indexes.</p>
     </InfoCard>
 
-    <InfoCard icon={<ChevronsRight />} title="After Assignment: The Next Step" className="border-emerald-500/50">
+    <InfoCard icon={<ChevronsRight />} title="After Assignment: The Next Step" className="border-[#1D8A70] dark:border-[#3CBF9C]/50">
       <p className="text-lg font-semibold text-gray-900 dark:text-white">What do you do after you&apos;ve been assigned stock?</p>
       <p>If you are assigned shares because your put expired in-the-money, you don&apos;t have to just hold the stock and hope. There is a better strategy.</p>
-      <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-emerald-400">
-        <p><strong className="text-emerald-700 dark:text-emerald-300">TIP:</strong> Now that you own stock, you can move to the other side of the coin: <strong className="text-gray-900 dark:text-white">writing covered calls.</strong> You sell someone the right to buy your stock at a specific strike price, and you collect a premium for it. This strategy is the synthetic equivalent of selling a naked put and is the logical next step to continue generating income from your new shares.</p>
+      <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
+        <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">TIP:</strong> Now that you own stock, you can move to the other side of the coin: <strong className="text-gray-900 dark:text-white">writing covered calls.</strong> You sell someone the right to buy your stock at a specific strike price, and you collect a premium for it. This strategy is the synthetic equivalent of selling a naked put and is the logical next step to continue generating income from your new shares.</p>
       </div>
     </InfoCard>
   </div>
@@ -184,7 +184,7 @@ const RiskPage = () => (
 
 const GettingStartedPage = () => (
   <div className="space-y-8">
-    <h2 className="text-4xl font-bold text-green-600 dark:text-green-400 border-b-2 border-green-500/30 pb-4">Getting Started: A Practical Guide</h2>
+    <h2 className="text-4xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] border-b-2 border-[#1D8A70] dark:border-[#3CBF9C]/30 pb-4 font-serif">Getting Started: A Practical Guide</h2>
 
     <InfoCard icon={<PlayCircle />} title="Step 1: Preparation is Key (For Investors)">
       <p><strong className="text-gray-900 dark:text-white">Before you place a single trade, do your homework.</strong></p>
@@ -193,9 +193,9 @@ const GettingStartedPage = () => (
         <li><strong>Monitor Put Prices:</strong> Keep an eye on the options you plan to sell so you don&apos;t miss an opportunity. Use limit orders (good for the day) to enter your trades.</li>
         <li><strong>Understand Support Levels:</strong> Be aware of technical support levels for your target stocks.</li>
       </ul>
-      <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-emerald-400 space-y-2">
-        <p><strong className="text-emerald-700 dark:text-emerald-300">TIP:</strong> To hit an effective purchase price after costs, add your commission expense to the premium you need to collect. If you want to buy at $38.80 and commissions are $0.05/share, you need to collect a premium that results in an effective price of $38.75.</p>
-        <p><strong className="text-emerald-700 dark:text-emerald-300">TIP:</strong> Consider writing a put when the stock is slightly *above* a support level. If support holds, you have a profitable trade. If it breaks, you get an early warning to exit with a potentially small loss.</p>
+      <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] space-y-2">
+        <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">TIP:</strong> To hit an effective purchase price after costs, add your commission expense to the premium you need to collect. If you want to buy at $38.80 and commissions are $0.05/share, you need to collect a premium that results in an effective price of $38.75.</p>
+        <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">TIP:</strong> Consider writing a put when the stock is slightly *above* a support level. If support holds, you have a profitable trade. If it breaks, you get an early warning to exit with a potentially small loss.</p>
       </div>
     </InfoCard>
 
@@ -207,14 +207,14 @@ const GettingStartedPage = () => (
       </div>
       <div className="space-y-6">
         <div>
-          <h4 className="font-semibold text-emerald-700 dark:text-emerald-300 mb-2">The Experienced Put-Selling Investor&apos;s View:</h4>
-          <div className="p-4 bg-gray-200 dark:bg-gray-900/50 rounded-lg border-l-4 border-emerald-500 italic text-gray-700 dark:text-gray-300">
+          <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 mb-2">The Experienced Put-Selling Investor&apos;s View:</h4>
+          <div className="p-4 bg-gray-200 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] italic text-gray-700 dark:text-gray-300">
             <p>&ldquo;I&apos;ve been watching UVW and it is been approaching my target buy price of $39. I&apos;m going to write the Aug 40 puts for a buck ($1.00). In any event, I&apos;m a winner. I&apos;ll either own 400 shares at $39, or I&apos;ll keep the premium and walk away with $400.&rdquo;</p>
           </div>
         </div>
         <div>
-          <h4 className="font-semibold text-emerald-700 dark:text-emerald-300 mb-2">The Experienced Put-Writing Trader&apos;s View:</h4>
-          <div className="p-4 bg-gray-200 dark:bg-gray-900/50 rounded-lg border-l-4 border-emerald-500 italic text-gray-700 dark:text-gray-300">
+          <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 mb-2">The Experienced Put-Writing Trader&apos;s View:</h4>
+          <div className="p-4 bg-gray-200 dark:bg-gray-900/50 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] italic text-gray-700 dark:text-gray-300">
             <p>&ldquo;The UVW chart looks good here, but the stock may stay in a trading range... Instead of buying stock, I&apos;ll write these August 40 puts for $1. Sure, it limits profits, but I want to make some money just in case the stock trades in a narrow range for a while... I&apos;m giving up the chance to make a larger profit in return for a better chance to earn any profit.&rdquo;</p>
           </div>
         </div>
@@ -234,11 +234,11 @@ const GettingStartedPage = () => (
       <p><strong className="text-gray-900 dark:text-white">Expiration day is nothing to fear. It&apos;s when you realize your profit or your next opportunity.</strong></p>
 
       <div className="mt-4">
-        <h4 className="font-semibold text-xl text-green-700 dark:text-green-300 mb-2">If Puts are Out-of-the-Money (OTM)</h4>
+        <h4 className="font-semibold text-xl text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 mb-2">If Puts are Out-of-the-Money (OTM)</h4>
         <p>The best course of action is usually to <strong className="text-gray-900 dark:text-white">do nothing</strong> and let them expire worthless. Your capital is freed up on Monday for the next trade.</p>
-        <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-emerald-400 space-y-2">
-          <p><strong className="text-emerald-700 dark:text-emerald-300">TIP:</strong> If a new put you want to sell is attractively priced on expiration Friday, consider buying back your current (nearly worthless) put for $0.05 and immediately selling the new one, rather than waiting until Monday.</p>
-          <p><strong className="text-emerald-700 dark:text-emerald-300">TIP:</strong> The weekend is the ideal time to update your watchlist and prepare for trading on Monday morning.</p>
+        <div className="mt-4 p-4 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] space-y-2">
+          <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">TIP:</strong> If a new put you want to sell is attractively priced on expiration Friday, consider buying back your current (nearly worthless) put for $0.05 and immediately selling the new one, rather than waiting until Monday.</p>
+          <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">TIP:</strong> The weekend is the ideal time to update your watchlist and prepare for trading on Monday morning.</p>
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">Be careful: Don&apos;t sell new puts on a stock before the old ones are covered, even if they&apos;re far OTM. An unexpected event could double your position size and risk.</p>
       </div>
@@ -296,7 +296,7 @@ export default function WritingNakedPutsGuide() {
             onClick={() => setPage(item.id)}
             className={`flex items-center gap-2 py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ${
               page === item.id
-                ? 'bg-emerald-500 text-white'
+                ? 'bg-[#1D8A70] dark:bg-[#3CBF9C] text-white'
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >

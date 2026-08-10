@@ -186,7 +186,7 @@ export default function BlackScholesAnalytics() {
             icon={Shield} 
             title="Risk Neutrality & Martingales" 
             subtitle="The mathematical lens that ignores investor sentiment."
-            color="border-indigo-600 text-[#A8672E] dark:text-[#D08F52]" 
+            color="border-[#A8672E] dark:border-[#D08F52] text-[#A8672E] dark:text-[#D08F52]" 
           />
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
@@ -255,7 +255,7 @@ export default function BlackScholesAnalytics() {
             icon={Cpu} 
             title="The Stochastic Engine" 
             subtitle="The machinery that allows us to operate on random variables."
-            color="border-rose-600 text-[#BC4128] dark:text-[#E2694A]" 
+            color="border-[#BC4128] dark:border-[#E2694A] text-[#BC4128] dark:text-[#E2694A]" 
           />
           <div className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
@@ -352,7 +352,7 @@ export default function BlackScholesAnalytics() {
             icon={Binary} 
             title="The Expectation Derivation" 
             subtitle="Calculating the fair price through weighted path averaging."
-            color="border-emerald-600 text-[#1D8A70] dark:text-[#3CBF9C]" 
+            color="border-[#1D8A70] dark:border-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]" 
           />
           <div className="space-y-8">
             <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
@@ -536,11 +536,11 @@ export default function BlackScholesAnalytics() {
             icon={Terminal} 
             title="Trader Heuristics & Pit Wisdom" 
             subtitle="The mental models and 'oral traditions' of the options pits."
-            color="border-indigo-600 text-[#A8672E] dark:text-[#D08F52]" 
+            color="border-[#A8672E] dark:border-[#D08F52] text-[#A8672E] dark:text-[#D08F52]" 
           />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Rule of 16 */}
-            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-indigo-500 transition-all">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-[#A8672E] dark:border-[#D08F52] transition-all">
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-amber-50 text-amber-500 rounded-xl group-hover:bg-[#A8672E] dark:bg-[#D08F52] group-hover:text-white transition-colors shadow-inner">
@@ -566,7 +566,7 @@ export default function BlackScholesAnalytics() {
             </div>
 
             {/* Linear Straddle Approximation */}
-            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-emerald-500 transition-all">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-[#1D8A70] dark:border-[#3CBF9C] transition-all">
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 text-[#1D8A70] dark:text-[#3CBF9C] rounded-xl group-hover:bg-[#1D8A70] dark:bg-[#3CBF9C] group-hover:text-white transition-colors shadow-inner">
@@ -591,7 +591,7 @@ export default function BlackScholesAnalytics() {
             </div>
 
             {/* Greek Rent Equilibrium */}
-            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-rose-500 transition-all">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-[#BC4128] dark:border-[#E2694A] transition-all">
               <div className="relative">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 text-[#BC4128] dark:text-[#E2694A] rounded-xl shadow-inner">
@@ -613,7 +613,7 @@ export default function BlackScholesAnalytics() {
             </div>
 
             {/* Delta Probability Nuance */}
-            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-blue-500 transition-all">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between group hover:border-[#A8672E] dark:border-[#D08F52] transition-all">
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] rounded-xl shadow-inner">
@@ -695,7 +695,7 @@ export default function BlackScholesAnalytics() {
 
             <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-teal-50 text-teal-500 rounded-xl shadow-inner">
+                <div className="p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] rounded-xl shadow-inner">
                   <Target className="w-8 h-8" />
                 </div>
                 <div>
@@ -706,8 +706,8 @@ export default function BlackScholesAnalytics() {
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                 Stock prices tend to &quot;pin&quot; to strike prices at expiration due to delta hedging flows. Market makers who are short options will buy stock as it approaches the strike (to hedge their short delta), creating support/resistance.
               </p>
-              <div className="p-4 bg-teal-50 rounded-xl">
-                <p className="text-xs text-teal-700 font-medium">
+              <div className="p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-xl">
+                <p className="text-xs text-[#A8672E] dark:text-[#D08F52] font-medium">
                   <strong>Gamma Squeeze:</strong> When large amounts of call options are in-the-money, dealers must buy stock to hedge, amplifying upward moves.
                 </p>
               </div>
@@ -736,7 +736,7 @@ export default function BlackScholesAnalytics() {
               <DetailCard 
                 title="Jump Diffusion Models" 
                 icon={Zap} 
-                colorClass="bg-orange-100 text-orange-600"
+                colorClass="bg-orange-100 text-[#BC4128] dark:text-[#E2694A]"
                 footer="Merton Jump-Diffusion"
               >
                 Merton&apos;s extension adds sudden price jumps to the geometric Brownian motion. This better captures crash risk and explains why out-of-the-money puts trade at higher implied volatilities. The model includes jump frequency, jump size distribution, and jump timing.
@@ -816,7 +816,7 @@ export default function BlackScholesAnalytics() {
             icon={Map} 
             title="The Map vs. The Territory" 
             subtitle="Recognizing the structural failure points of the mathematical model."
-            color="border-rose-600 text-[#BC4128] dark:text-[#E2694A]" 
+            color="border-[#BC4128] dark:border-[#E2694A] text-[#BC4128] dark:text-[#E2694A]" 
           />
           <div className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
@@ -866,7 +866,7 @@ export default function BlackScholesAnalytics() {
               </DetailCard>
             </div>
             
-            <div className="p-10 bg-white dark:bg-[#0A0D14] rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-indigo-500 transition-colors">
+            <div className="p-10 bg-white dark:bg-[#0A0D14] rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-[#A8672E] dark:border-[#D08F52] transition-colors">
               <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
                 <div className="lg:w-1/2">
                   <h4 className="text-2xl font-black mb-3">The Volatility Smile</h4>

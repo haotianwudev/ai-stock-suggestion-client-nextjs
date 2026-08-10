@@ -88,26 +88,26 @@ export default function EntropyMethodsPortfolioConstruction() {
               <div className="lg:w-1/3 min-w-0">
                 <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl h-full">
                   <h4 className="font-serif text-xl flex items-center gap-2 mb-6 text-slate-900 dark:text-white">
-                    <Layers className="w-5 h-5 text-indigo-500" />
+                    <Layers className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
                     Limitations
                   </h4>
                   <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-start gap-3">
-                      <AlertTriangle className="w-4 h-4 mt-0.5 text-indigo-500 shrink-0" />
+                      <AlertTriangle className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                       <div>
                         <strong className="block text-slate-900 dark:text-slate-200 mb-1">Gaussian Straitjacket</strong>
                         Relies on the assumption that market prior and views are normally distributed.
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <AlertTriangle className="w-4 h-4 mt-0.5 text-indigo-500 shrink-0" />
+                      <AlertTriangle className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                       <div>
                         <strong className="block text-slate-900 dark:text-slate-200 mb-1">Constraint Inflexibility</strong>
                         Cannot process views on volatility or tail risks.
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <AlertTriangle className="w-4 h-4 mt-0.5 text-indigo-500 shrink-0" />
+                      <AlertTriangle className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                       <div>
                         <strong className="block text-slate-900 dark:text-slate-200 mb-1">Arbitrary Confidence Matrix</strong>
                         Assigns numerical variances based on heavy discretion.
@@ -205,7 +205,7 @@ export default function EntropyMethodsPortfolioConstruction() {
                 
                 <div className="overflow-x-auto rounded-3xl border border-white/10 min-w-0">
                   <table className="min-w-full text-left bg-black/40">
-                    <thead className="bg-white/5 border-b border-white/10">
+                    <thead className="bg-white dark:bg-[#0A0D14]/5 border-b border-white/10">
                       <tr>
                         <th className="py-5 px-6 text-slate-400 font-bold uppercase tracking-wider text-sm">Analytical Feature</th>
                         <th className="py-5 px-6 text-slate-400 font-bold uppercase tracking-wider text-sm">Black-Litterman</th>
@@ -213,22 +213,22 @@ export default function EntropyMethodsPortfolioConstruction() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/5 text-sm md:text-base">
-                      <tr className="hover:bg-white/5 transition-colors">
+                      <tr className="hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                         <td className="py-5 px-6 text-slate-300 font-semibold">Underlying Distribution</td>
                         <td className="py-5 px-6 text-slate-400">Strictly Gaussian (Normal)</td>
                         <td className="py-5 px-6 text-white font-bold">Fully General; Non-parametric Monte Carlo</td>
                       </tr>
-                      <tr className="hover:bg-white/5 transition-colors">
+                      <tr className="hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                         <td className="py-5 px-6 text-slate-300 font-semibold">Investor Views</td>
                         <td className="py-5 px-6 text-slate-400">Linear expected mean returns only</td>
                         <td className="py-5 px-6 text-white font-bold">Fully Flexible; correlations, volatility, bounds</td>
                       </tr>
-                      <tr className="hover:bg-white/5 transition-colors">
+                      <tr className="hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                         <td className="py-5 px-6 text-slate-300 font-semibold">Confidence Input</td>
                         <td className="py-5 px-6 text-slate-400">Arbitrary scalar matrix (Ω)</td>
                         <td className="py-5 px-6 text-white font-bold">Implicit via relative entropy &amp; natural bounds</td>
                       </tr>
-                      <tr className="hover:bg-white/5 transition-colors">
+                      <tr className="hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                         <td className="py-5 px-6 text-slate-300 font-semibold">Risk Function Compatibility</td>
                         <td className="py-5 px-6 text-slate-400">Symmetric variance only</td>
                         <td className="py-5 px-6 text-white font-bold">Asymmetric convex tail-risk (VaR, CVaR)</td>

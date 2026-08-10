@@ -10,13 +10,13 @@ const InfoIcon = () => (
 );
 
 const UpTrendIcon = () => (
-  <svg className="w-6 h-6 mr-3 inline-block text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-6 h-6 mr-3 inline-block text-[#1D8A70] dark:text-[#3CBF9C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
   </svg>
 );
 
 const DownTrendIcon = () => (
-  <svg className="w-6 h-6 mr-3 inline-block text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-6 h-6 mr-3 inline-block text-[#BC4128] dark:text-[#E2694A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
   </svg>
 );
@@ -32,11 +32,11 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SubHeading = ({ id, children }: { id: string; children: React.ReactNode }) => (
-  <h2 id={id} className="text-3xl font-semibold text-gray-800 mt-8 mb-4 border-b-2 border-blue-200 pb-3">{children}</h2>
+  <h2 id={id} className="text-3xl font-semibold text-gray-800 mt-8 mb-4 border-b-2 border-blue-200 pb-3 font-serif">{children}</h2>
 );
 
 const MinorHeading = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-2xl font-semibold text-gray-700 mt-6 mb-3">{children}</h3>
+  <h3 className="text-2xl font-semibold text-gray-700 mt-6 mb-3 font-serif">{children}</h3>
 );
 
 const Paragraph = ({ children }: { children: React.ReactNode }) => (
@@ -59,7 +59,7 @@ const BulletList = ({ items }: { items: BulletItem[] }) => (
 );
 
 const InfoBox = ({ children, title }: { children: React.ReactNode; title: string }) => (
-  <div className="bg-blue-50 border-l-4 border-blue-500 p-5 my-6 rounded-r-lg shadow-sm">
+  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-5 my-6 rounded-r-lg shadow-sm">
     <h4 className="font-bold text-blue-800 text-xl mb-2 flex items-center">
       <InfoIcon />{title}
     </h4>
@@ -68,7 +68,7 @@ const InfoBox = ({ children, title }: { children: React.ReactNode; title: string
 );
 
 const BullishBox = ({ children, title }: { children: React.ReactNode; title: string }) => (
-  <div className="bg-green-50 border-l-4 border-green-500 p-5 my-6 rounded-r-lg shadow-sm">
+  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-5 my-6 rounded-r-lg shadow-sm">
     <h4 className="font-bold text-green-800 text-xl mb-2 flex items-center">
       <UpTrendIcon />{title}
     </h4>
@@ -77,7 +77,7 @@ const BullishBox = ({ children, title }: { children: React.ReactNode; title: str
 );
 
 const BearishBox = ({ children, title }: { children: React.ReactNode; title: string }) => (
-  <div className="bg-red-50 border-l-4 border-red-500 p-5 my-6 rounded-r-lg shadow-sm">
+  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-5 my-6 rounded-r-lg shadow-sm">
     <h4 className="font-bold text-red-800 text-xl mb-2 flex items-center">
       <DownTrendIcon />{title}
     </h4>
@@ -101,7 +101,7 @@ interface TableRow {
 
 const Table = ({ headers, rows }: { headers: string[]; rows: TableRow[] }) => (
   <div className="overflow-x-auto my-8 rounded-lg shadow-lg border border-gray-200">
-    <table className="w-full text-left bg-white">
+    <table className="w-full text-left bg-white dark:bg-[#0A0D14]">
       <thead className="bg-gray-100">
         <tr>
           {headers.map((header, index) => (
@@ -168,7 +168,7 @@ export default function OptionsAnalysisPage() {
             rows={[
               {
                 data: ["Rising", "Rising", "Rising", "Strongly Bullish. New money is confidently entering long positions, confirming the uptrend. (High Conviction)"],
-                highlight: "bg-green-50"
+                highlight: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10"
               },
               {
                 data: ["Rising", "Falling", "Falling", "Weakening Bull Trend. The rally is likely fueled by short-covering, not new buying interest. Prone to reversal. (Low Conviction)"],
@@ -176,7 +176,7 @@ export default function OptionsAnalysisPage() {
               },
               {
                 data: ["Falling", "Rising", "Rising", "Strongly Bearish. New money is aggressively opening short positions, confirming the downtrend. (High Conviction)"],
-                highlight: "bg-red-50"
+                highlight: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10"
               },
               {
                 data: ["Falling", "Falling", "Falling", "Weakening Bear Trend. Selling pressure is likely from longs liquidating positions. The decline may be losing steam. (Low Conviction)"],
@@ -265,7 +265,7 @@ export default function OptionsAnalysisPage() {
 
           <InfoBox title="Kyle's Lambda: The Price Impact Coefficient">
             <p className="mb-3">Kyle&apos;s model introduces the concept of λ (lambda), which measures the price impact of order flow. In options markets, this translates to:</p>
-            <div className="bg-white p-4 rounded border-l-4 border-blue-300 font-mono text-sm">
+            <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border-l-4 border-blue-300 font-mono text-sm">
               λ = (σ²ᵤ / σ²ᵥ) × √(T)
             </div>
             <p className="mt-3">Where σ²ᵤ represents the variance of the underlying asset&apos;s fundamental value, σ²ᵥ represents the variance of noise trading, and T is the time to expiration.</p>
@@ -281,7 +281,7 @@ export default function OptionsAnalysisPage() {
             rows={[
               {
                 data: ["Options lead stocks by 15-30 minutes", "Tick-by-tick analysis of S&P 100", "Information flows from options to stocks", "Monitor unusual options activity for early signals"],
-                highlight: "bg-blue-50"
+                highlight: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10"
               },
               {
                 data: ["Put volume predicts negative returns", "Cross-sectional regression analysis", "Informed traders use puts for bearish bets", "High put volume ratio signals potential decline"],
@@ -289,7 +289,7 @@ export default function OptionsAnalysisPage() {
               },
               {
                 data: ["OTM options contain more information", "Event study methodology", "Informed traders prefer high leverage", "Focus on OTM unusual activity"],
-                highlight: "bg-green-50"
+                highlight: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10"
               },
               {
                 data: ["Volume-OI divergence predicts reversals", "Time series analysis", "Position closing vs. new positioning", "Use EOD OI data to confirm intraday signals"],
@@ -342,12 +342,12 @@ export default function OptionsAnalysisPage() {
           <InfoBox title="VIX Term Structure Analysis">
             <p className="mb-3">The shape of the VIX term structure reveals market expectations:</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded border">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border">
                 <h5 className="font-semibold text-blue-800 mb-2">Contango (Normal)</h5>
                 <p className="text-sm">VIX9D {'<'} VIX {'<'} VIX3M</p>
                 <p className="text-sm mt-1">Market expects volatility to increase over time</p>
               </div>
-              <div className="bg-white p-4 rounded border">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border">
                 <h5 className="font-semibold text-red-800 mb-2">Backwardation (Stressed)</h5>
                 <p className="text-sm">VIX9D {'>'} VIX {'>'} VIX3M</p>
                 <p className="text-sm mt-1">Market expects current stress to subside</p>
@@ -377,8 +377,8 @@ export default function OptionsAnalysisPage() {
           <div className="bg-gray-50 p-6 rounded-lg border my-6">
             <h4 className="font-bold text-gray-800 text-lg mb-4">Integrated Options Flow Model</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="bg-white p-4 rounded border">
-                <h5 className="font-semibold text-blue-600 mb-2">Input Variables</h5>
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border">
+                <h5 className="font-semibold text-[#A8672E] dark:text-[#D08F52] mb-2">Input Variables</h5>
                 <ul className="space-y-1">
                   <li>&bull; Volume/OI ratios</li>
                   <li>&bull; Put/Call ratios</li>
@@ -387,8 +387,8 @@ export default function OptionsAnalysisPage() {
                   <li>&bull; Moneyness distribution</li>
                 </ul>
               </div>
-              <div className="bg-white p-4 rounded border">
-                <h5 className="font-semibold text-green-600 mb-2">Processing</h5>
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border">
+                <h5 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Processing</h5>
                 <ul className="space-y-1">
                   <li>&bull; Z-score normalization</li>
                   <li>&bull; Regime detection</li>
@@ -397,7 +397,7 @@ export default function OptionsAnalysisPage() {
                   <li>&bull; Signal aggregation</li>
                 </ul>
               </div>
-              <div className="bg-white p-4 rounded border">
+              <div className="bg-white dark:bg-[#0A0D14] p-4 rounded border">
                 <h5 className="font-semibold text-purple-600 mb-2">Output Signals</h5>
                 <ul className="space-y-1">
                   <li>&bull; Directional bias</li>

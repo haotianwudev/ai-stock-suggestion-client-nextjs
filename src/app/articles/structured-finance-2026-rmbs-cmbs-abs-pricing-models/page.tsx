@@ -11,7 +11,7 @@ const SectionHeader = ({ title, subtitle, icon: Icon, colorClass }: { title: str
       <div className={`p-2 rounded-lg ${colorClass.replace('border-', 'bg-').replace('600', '100')} text-${colorClass.split('-')[1]}-700`}>
         <Icon size={28} />
       </div>
-      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white font-serif">{title}</h2>
     </div>
     <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl">{subtitle}</p>
   </div>
@@ -21,7 +21,7 @@ const ConceptCard = ({ title, description, children, accentColor }: { title: str
   <div className="bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10 overflow-hidden hover:shadow-md dark:hover:shadow-none transition-shadow duration-300">
     <div className={`h-1 w-full bg-${accentColor}-500`} />
     <div className="p-6">
-      <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">{title}</h3>
+      <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2 font-serif">{title}</h3>
       <div className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">{description}</div>
       {children && <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10">{children}</div>}
     </div>
@@ -51,20 +51,7 @@ export default function StructuredFinanceArticle() {
           </span>
         </div>
 
-        <header className="bg-white dark:bg-[#14171B] border-b border-slate-200 dark:border-white/10 py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
-          <div className="max-w-4xl mx-auto relative z-10">
-            <div className="inline-flex items-center justify-center p-3 bg-blue-50 dark:bg-blue-900/40 rounded-full mb-6 text-blue-700 dark:text-blue-400">
-              <Building2 size={32} />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
-              Structured Finance 2026
-            </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models. Master the mechanics of credit enhancement and stochastic valuation in structured finance.
-            </p>
-          </div>
-        </header>
+        
 
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
           <InfographicSlot alt="Structured Finance 2026 - RMBS, CMBS, ABS Framework" />
@@ -81,39 +68,39 @@ export default function StructuredFinanceArticle() {
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 This comprehensive tutorial deconstructs the <strong>quantitative architecture</strong> of three major asset-backed security (ABS) classes: <strong>RMBS (Residential Mortgage-Backed Securities)</strong>, <strong>CMBS (Commercial Mortgage-Backed Securities)</strong>, and <strong>ABS (Asset-Backed Securities)</strong>. We explore structural waterfalls, prepayment models, credit enhancement mechanisms, and the Monte Carlo frameworks that power institutional pricing desks.
               </p>
-              <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-900/50 p-6 rounded-r-lg mb-8">
-                <h3 className="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">What You'll Master</h3>
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] dark:border-blue-900/50 p-6 rounded-r-lg mb-8">
+                <h3 className="text-lg font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2 font-serif">What You'll Master</h3>
                 <ul className="space-y-2 text-slate-700 dark:text-slate-300">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>Securitization Mechanics:</strong> SPV structures, true sale accounting, and bankruptcy remoteness</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>Waterfall Architecture:</strong> Sequential vs. pro-rata payment structures and trigger events</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>Credit Enhancement:</strong> Subordination, overcollateralization, reserve accounts, and excess spread</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>Prepayment Models:</strong> PSA curves, CPR/SMM metrics, and S-curve refinancing behavior</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>RMBS Analytics:</strong> Agency vs. non-agency structures, conforming loan limits, and GSE guarantees</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>CMBS Mechanics:</strong> DSCR/LTV covenants, lockout periods, and defeasance structures</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>ABS Diversity:</strong> Auto loans, credit cards, student loans, and esoteric collateral</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                     <span><strong>Monte Carlo Pricing:</strong> Path-dependent cash flows, OAS spreads, and scenario analysis</span>
                   </li>
                 </ul>
@@ -127,7 +114,7 @@ export default function StructuredFinanceArticle() {
               title="Securitization Fundamentals" 
               subtitle="The financial alchemy that transforms illiquid assets into tradable securities through legal isolation and structural credit enhancement."
               icon={Layers}
-              colorClass="border-blue-600"
+              colorClass="border-[#A8672E] dark:border-[#D08F52]"
             />
 
             <div className="prose prose-lg max-w-none mb-8">
@@ -141,11 +128,11 @@ export default function StructuredFinanceArticle() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">The SPV Structure</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white font-serif">The SPV Structure</h3>
                 <p className="text-slate-600 dark:text-slate-400">The Special Purpose Vehicle is the legal entity that owns the asset pool and issues securities. Its design ensures that investors have recourse only to the collateral, not the originator.</p>
                 
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-4">Key SPV Characteristics</h4>
+                  <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Key SPV Characteristics</h4>
                   <DetailList items={[
                     { label: "True Sale", text: "Assets are legally sold to the SPV, not pledged as collateral. This prevents consolidation on the originator's balance sheet and protects against bankruptcy clawback." },
                     { label: "Limited Purpose", text: "The SPV can only hold the specified assets and issue securities. No other business activities are permitted, minimizing operational risk." },
@@ -154,8 +141,8 @@ export default function StructuredFinanceArticle() {
                   ]} />
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                  <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-2">Why This Matters</h4>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
+                  <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Why This Matters</h4>
                   <p className="text-sm text-blue-800 dark:text-blue-300">
                     Without bankruptcy remoteness, a securitization would be rated based on the <strong>originator's credit</strong>, not the collateral quality. The SPV structure enables a mortgage lender with a BBB rating to issue AAA-rated RMBS if the underlying loans and credit enhancement are sufficient.
                   </p>
@@ -163,7 +150,7 @@ export default function StructuredFinanceArticle() {
               </div>
 
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Tranching & Waterfall Mechanics</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 font-serif">Tranching & Waterfall Mechanics</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   The payment waterfall defines the <strong>priority of claims</strong> on the asset pool's cash flows. Each payment period, collections are distributed according to a strict hierarchy.
                 </p>
@@ -171,35 +158,35 @@ export default function StructuredFinanceArticle() {
                 <div className="space-y-4">
                   <div className="relative pl-8 space-y-6 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
                     <div className="relative">
-                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-green-500 ring-4 ring-white dark:ring-[#14171B]"></div>
+                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] ring-4 ring-white dark:ring-[#14171B]"></div>
                       <h4 className="font-bold text-slate-900 dark:text-white">1. Fees & Expenses</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         Servicer fees, trustee fees, and administrative costs are paid first. Typically 0.25-0.50% annually of the outstanding balance.
                       </p>
                     </div>
                     <div className="relative">
-                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-white dark:ring-[#14171B]"></div>
+                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#A8672E] dark:bg-[#D08F52] ring-4 ring-white dark:ring-[#14171B]"></div>
                       <h4 className="font-bold text-slate-900 dark:text-white">2. Senior Tranche Interest</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         Class A notes receive their contractual coupon. These are typically AAA-rated and have the lowest yield.
                       </p>
                     </div>
                     <div className="relative">
-                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-blue-400 ring-4 ring-white dark:ring-[#14171B]"></div>
+                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#A8672E] dark:bg-[#D08F52] ring-4 ring-white dark:ring-[#14171B]"></div>
                       <h4 className="font-bold text-slate-900 dark:text-white">3. Senior Tranche Principal</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         Scheduled and unscheduled principal payments (prepayments) are used to pay down Class A notes until fully retired.
                       </p>
                     </div>
                     <div className="relative">
-                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-orange-400 ring-4 ring-white dark:ring-[#14171B]"></div>
+                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#BC4128] dark:bg-[#E2694A] ring-4 ring-white dark:ring-[#14171B]"></div>
                       <h4 className="font-bold text-slate-900 dark:text-white">4. Mezzanine Tranche Interest</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         Class B/C notes receive interest only after senior obligations are met. Rated AA to BBB.
                       </p>
                     </div>
                     <div className="relative">
-                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-red-400 ring-4 ring-white dark:ring-[#14171B]"></div>
+                      <div className="absolute -left-[29px] top-1 w-4 h-4 rounded-full bg-[#BC4128] dark:bg-[#E2694A] ring-4 ring-white dark:ring-[#14171B]"></div>
                       <h4 className="font-bold text-slate-900 dark:text-white">5. Subordinated/Equity</h4>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
                         Residual cash flows go to the equity tranche (often retained by the originator). This piece absorbs first losses and is unrated.
@@ -208,8 +195,8 @@ export default function StructuredFinanceArticle() {
                   </div>
                 </div>
 
-                <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                  <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-2">Sequential vs. Pro-Rata</h4>
+                <div className="mt-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
+                  <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Sequential vs. Pro-Rata</h4>
                   <p className="text-sm text-blue-800 dark:text-blue-300 mb-2">
                     <strong>Sequential Pay:</strong> Senior tranches are paid off completely before mezzanine tranches receive principal. Provides maximum credit protection but extends duration for junior notes.
                   </p>
@@ -246,7 +233,7 @@ export default function StructuredFinanceArticle() {
               title="RMBS: Residential Mortgage-Backed Securities" 
               subtitle="The largest segment of the structured finance market. Understanding agency guarantees, conforming loan limits, and prepayment behavior."
               icon={Building2}
-              colorClass="border-emerald-600"
+              colorClass="border-[#1D8A70] dark:border-[#3CBF9C]"
             />
 
             <div className="prose prose-lg max-w-none mb-8">
@@ -260,10 +247,10 @@ export default function StructuredFinanceArticle() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Agency vs. Non-Agency</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white font-serif">Agency vs. Non-Agency</h3>
                 
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h4 className="font-bold text-emerald-900 dark:text-emerald-400 mb-4 flex items-center gap-2">
+                  <h4 className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 flex items-center gap-2">
                     <Shield size={20} /> Agency RMBS
                   </h4>
                   <DetailList items={[
@@ -275,7 +262,7 @@ export default function StructuredFinanceArticle() {
                 </div>
 
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h4 className="font-bold text-red-900 dark:text-red-400 mb-4 flex items-center gap-2">
+                  <h4 className="font-bold text-red-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-4 flex items-center gap-2">
                     <AlertTriangle size={20} /> Non-Agency RMBS
                   </h4>
                   <DetailList items={[
@@ -288,14 +275,14 @@ export default function StructuredFinanceArticle() {
               </div>
 
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Prepayment Modeling: The PSA Curve</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 font-serif">Prepayment Modeling: The PSA Curve</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   Prepayment risk is the defining characteristic of RMBS. The <strong>Public Securities Association (PSA) model</strong> provides a standardized benchmark for measuring prepayment speeds.
                 </p>
                 
                 <div className="space-y-6">
-                  <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-4">
-                    <h4 className="font-bold text-emerald-900 dark:text-emerald-400 mb-2">100% PSA Assumption</h4>
+                  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-4">
+                    <h4 className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">100% PSA Assumption</h4>
                     <p className="text-sm text-emerald-800 dark:text-emerald-300 mb-3">
                       The baseline model assumes prepayment rates increase linearly from 0% CPR (Conditional Prepayment Rate) at origination to 6% CPR at month 30, then remain constant thereafter.
                     </p>
@@ -339,8 +326,8 @@ export default function StructuredFinanceArticle() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-900/30">
-              <h4 className="text-emerald-900 dark:text-emerald-400 font-bold flex items-center gap-2 mb-3">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-900/30">
+              <h4 className="text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold flex items-center gap-2 mb-3">
                 <Calculator size={18} /> Weighted Average Life (WAL) Calculation
               </h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
@@ -377,8 +364,8 @@ export default function StructuredFinanceArticle() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Underwriting Metrics</h3>
-                <p className="text-slate-600">CMBS loans are underwritten based on property-level cash flow analysis, not borrower creditworthiness. Two ratios dominate:</p>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white font-serif">Underwriting Metrics</h3>
+                <p className="text-slate-600 dark:text-slate-400">CMBS loans are underwritten based on property-level cash flow analysis, not borrower creditworthiness. Two ratios dominate:</p>
                 
                 <div className="grid grid-cols-1 gap-4">
                   <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
@@ -433,7 +420,7 @@ export default function StructuredFinanceArticle() {
               </div>
 
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Prepayment Protection</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 font-serif">Prepayment Protection</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   Unlike RMBS, CMBS loans include <strong>structural barriers</strong> to prepayment that protect investors from reinvestment risk. These mechanisms are critical to pricing and duration management.
                 </p>
@@ -505,11 +492,11 @@ export default function StructuredFinanceArticle() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-2 bg-slate-50 dark:bg-slate-900/40 rounded">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Multifamily</span>
-                    <span className="text-xs text-green-600 dark:text-green-400 font-semibold">Lowest Risk</span>
+                    <span className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">Lowest Risk</span>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-slate-50 dark:bg-slate-900/40 rounded">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Industrial</span>
-                    <span className="text-xs text-green-600 dark:text-green-400 font-semibold">Low Risk</span>
+                    <span className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">Low Risk</span>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-slate-50 dark:bg-slate-900/40 rounded">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Office</span>
@@ -517,11 +504,11 @@ export default function StructuredFinanceArticle() {
                   </div>
                   <div className="flex justify-between items-center p-2 bg-slate-50 dark:bg-slate-900/40 rounded">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Retail</span>
-                    <span className="text-xs text-orange-600 dark:text-orange-400 font-semibold">High Risk</span>
+                    <span className="text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-semibold">High Risk</span>
                   </div>
                   <div className="flex justify-between items-center p-2 bg-slate-50 dark:bg-slate-900/40 rounded">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Hotel</span>
-                    <span className="text-xs text-red-600 dark:text-red-400 font-semibold">Highest Risk</span>
+                    <span className="text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-semibold">Highest Risk</span>
                   </div>
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">
@@ -538,7 +525,7 @@ export default function StructuredFinanceArticle() {
               title="ABS: Asset-Backed Securities" 
               subtitle="Securitization beyond mortgages. From auto loans to credit cards, understanding the diversity of consumer and commercial receivables."
               icon={Activity}
-              colorClass="border-orange-600"
+              colorClass="border-[#BC4128] dark:border-[#E2694A]"
             />
 
             <div className="prose prose-lg max-w-none mb-8">
@@ -556,7 +543,7 @@ export default function StructuredFinanceArticle() {
                 description="Backed by pools of car loans or leases. Highly predictable cash flows due to short duration (3-5 years) and low default rates (1-3% for prime borrowers). Prepayments are minimal due to lack of refinancing incentive." 
                 accentColor="orange"
               >
-                <div className="text-xs text-slate-600 space-y-2">
+                <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2">
                   <p><strong>Collateral:</strong> New and used vehicle loans</p>
                   <p><strong>Typical Structure:</strong> 3-year revolving period, then amortization</p>
                   <p><strong>Credit Enhancement:</strong> 10-20% subordination</p>
@@ -569,7 +556,7 @@ export default function StructuredFinanceArticle() {
                 description="Backed by revolving credit card receivables. Unique 'master trust' structure where the same pool backs multiple series of bonds. Monthly payment rate (MPR) is the key performance metric." 
                 accentColor="orange"
               >
-                <div className="text-xs text-slate-600 space-y-2">
+                <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2">
                   <p><strong>Collateral:</strong> Credit card balances</p>
                   <p><strong>Typical Structure:</strong> 18-month revolving period</p>
                   <p><strong>Credit Enhancement:</strong> 15-25% subordination + excess spread</p>
@@ -582,7 +569,7 @@ export default function StructuredFinanceArticle() {
                 description="Backed by private student loans (not federal loans, which cannot be securitized). Long duration (10-20 years) and high prepayment variability. Deferment and forbearance options complicate cash flow modeling." 
                 accentColor="orange"
               >
-                <div className="text-xs text-slate-600 space-y-2">
+                <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2">
                   <p><strong>Collateral:</strong> Private student loans</p>
                   <p><strong>Typical Structure:</strong> Sequential pay with turbo amortization</p>
                   <p><strong>Credit Enhancement:</strong> 20-35% subordination</p>
@@ -593,14 +580,14 @@ export default function StructuredFinanceArticle() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm dark:shadow-none border border-slate-200 dark:border-white/10">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Revolving Structures: Credit Card ABS</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 font-serif">Revolving Structures: Credit Card ABS</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   Credit card ABS use a <strong>master trust</strong> structure where new receivables continuously replace paid-off balances during the <strong>revolving period</strong>. This maintains a stable collateral pool size.
                 </p>
                 
                 <div className="space-y-4">
-                  <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2">Revolving Period (Months 1-18)</h4>
+                  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2">Revolving Period (Months 1-18)</h4>
                     <p className="text-sm text-orange-800 dark:text-orange-300 mb-2">
                       Principal collections are used to purchase new receivables from the originator. Investors receive only interest payments. The collateral balance remains constant.
                     </p>
@@ -609,8 +596,8 @@ export default function StructuredFinanceArticle() {
                     </div>
                   </div>
 
-                  <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2">Amortization Period (Months 19+)</h4>
+                  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2">Amortization Period (Months 19+)</h4>
                     <p className="text-sm text-orange-800 dark:text-orange-300 mb-2">
                       Principal collections are distributed to investors according to the waterfall. No new receivables are purchased. The collateral balance declines to zero.
                     </p>
@@ -619,14 +606,14 @@ export default function StructuredFinanceArticle() {
                     </div>
                   </div>
 
-                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg p-4">
-                    <h4 className="font-bold text-red-900 dark:text-red-400 mb-2 flex items-center gap-2">
+                  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg p-4">
+                    <h4 className="font-bold text-red-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                       <AlertTriangle size={16} /> Early Amortization Triggers
                     </h4>
                     <p className="text-sm text-red-800 dark:text-red-300 mb-2">
                       If portfolio performance deteriorates, the revolving period terminates early and amortization begins immediately. Triggers include:
                     </p>
-                    <ul className="text-xs text-red-700 dark:text-red-300 space-y-1 pl-4">
+                    <ul className="text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 space-y-1 pl-4">
                       <li>&bull; 3-month average excess spread &lt; 0%</li>
                       <li>&bull; Charge-off rate &gt; 10% (annualized)</li>
                       <li>&bull; Payment rate &lt; 10% (consumers stop paying)</li>
@@ -637,15 +624,15 @@ export default function StructuredFinanceArticle() {
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Key Performance Metrics</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white font-serif">Key Performance Metrics</h3>
                 <p className="text-slate-600 dark:text-slate-400">ABS investors monitor monthly performance reports to assess collateral health and predict cash flows.</p>
                 
                 <div className="grid grid-cols-1 gap-4">
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2 flex items-center gap-2">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                       <Calculator size={18} /> Monthly Payment Rate (MPR)
                     </h4>
-                    <div className="bg-orange-50 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
                       <p className="font-mono text-sm text-slate-800 dark:text-white">
                         MPR = Monthly Collections / Beginning Balance
                       </p>
@@ -656,10 +643,10 @@ export default function StructuredFinanceArticle() {
                   </div>
 
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2 flex items-center gap-2">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                       <TrendingDown size={18} /> Charge-Off Rate
                     </h4>
-                    <div className="bg-orange-50 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
                       <p className="font-mono text-sm text-slate-800 dark:text-white">
                         Charge-Off = Defaulted Principal / Avg Balance
                       </p>
@@ -670,10 +657,10 @@ export default function StructuredFinanceArticle() {
                   </div>
 
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2 flex items-center gap-2">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                       <DollarSign size={18} /> Excess Spread
                     </h4>
-                    <div className="bg-orange-50 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-3 rounded border border-orange-100 dark:border-orange-900/30 mb-2">
                       <p className="font-mono text-sm text-slate-800 dark:text-white">
                         Excess = WAC - (Coupon + Fees + Losses)
                       </p>
@@ -684,7 +671,7 @@ export default function StructuredFinanceArticle() {
                   </div>
 
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                    <h4 className="font-bold text-orange-900 dark:text-orange-400 mb-2 flex items-center gap-2">
+                    <h4 className="font-bold text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                       <Clock size={18} /> Delinquency Rates
                     </h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
@@ -700,8 +687,8 @@ export default function StructuredFinanceArticle() {
               </div>
             </div>
 
-            <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-100 dark:border-orange-900/30">
-              <h4 className="text-orange-900 dark:text-orange-400 font-bold flex items-center gap-2 mb-3">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-100 dark:border-orange-900/30">
+              <h4 className="text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] font-bold flex items-center gap-2 mb-3">
                 <FileText size={18} /> Esoteric ABS: Beyond Consumer Receivables
               </h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
@@ -742,7 +729,7 @@ export default function StructuredFinanceArticle() {
               title="Monte Carlo Pricing & Option-Adjusted Spread" 
               subtitle="Stochastic modeling for path-dependent cash flows. The institutional standard for valuing structured products."
               icon={BarChart3}
-              colorClass="border-indigo-600"
+              colorClass="border-[#A8672E] dark:border-[#D08F52]"
             />
 
             <div className="prose prose-lg max-w-none mb-8">
@@ -756,19 +743,19 @@ export default function StructuredFinanceArticle() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">The Monte Carlo Framework</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white font-serif">The Monte Carlo Framework</h3>
                 <p className="text-slate-600 dark:text-slate-400">A five-step process that transforms market data into actionable pricing and risk metrics.</p>
                 
                 <div className="space-y-4">
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 font-bold flex items-center justify-center text-sm">1</div>
+                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center justify-center text-sm">1</div>
                       <h4 className="font-bold text-slate-900 dark:text-white">Calibrate Interest Rate Model</h4>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                       Fit a short-rate model (Hull-White, Black-Karasinski) to the current Treasury curve and implied volatilities from swaptions. The model must reproduce market prices of liquid derivatives.
                     </p>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
                       dr(t) = κ[θ(t) - r(t)]dt + σ(t)dW(t)
                     </div>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
@@ -778,13 +765,13 @@ export default function StructuredFinanceArticle() {
 
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 font-bold flex items-center justify-center text-sm">2</div>
+                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center justify-center text-sm">2</div>
                       <h4 className="font-bold text-slate-900 dark:text-white">Generate Rate Paths</h4>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                       Simulate 1,000-10,000 interest rate paths using the calibrated model. Each path represents a possible evolution of the short rate over the security's life.
                     </p>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs text-slate-700 dark:text-slate-300">
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs text-slate-700 dark:text-slate-300">
                       <p className="mb-1">Path 1: 3.5% &rarr; 3.8% &rarr; 4.1% &rarr; ...</p>
                       <p className="mb-1">Path 2: 3.5% &rarr; 3.2% &rarr; 2.9% &rarr; ...</p>
                       <p>Path N: 3.5% &rarr; 3.6% &rarr; 3.7% &rarr; ...</p>
@@ -793,13 +780,13 @@ export default function StructuredFinanceArticle() {
 
                   <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 font-bold flex items-center justify-center text-sm">3</div>
+                      <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center justify-center text-sm">3</div>
                       <h4 className="font-bold text-slate-900 dark:text-white">Model Prepayments & Defaults</h4>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                       For each rate path, compute prepayment speeds using a behavioral model (e.g., refinancing S-curve) and default rates using a credit model (e.g., logistic regression on FICO, LTV, unemployment).
                     </p>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
                       CPR(t) = f(Rate Path, Burnout, Seasonality)
                     </div>
                   </div>
@@ -809,13 +796,13 @@ export default function StructuredFinanceArticle() {
               <div className="space-y-6">
                 <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 font-bold flex items-center justify-center text-sm">4</div>
+                    <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center justify-center text-sm">4</div>
                     <h4 className="font-bold text-slate-900 dark:text-white">Project Cash Flows</h4>
                   </div>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                     For each path, apply the waterfall structure to compute tranche-level cash flows. Account for credit enhancement, reserve accounts, and trigger events.
                   </p>
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs text-slate-700 dark:text-slate-300 space-y-1">
                     <p><strong>Month 1:</strong> Interest = $100K, Principal = $50K</p>
                     <p><strong>Month 2:</strong> Interest = $98K, Principal = $55K</p>
                     <p><strong>...</strong></p>
@@ -825,13 +812,13 @@ export default function StructuredFinanceArticle() {
 
                 <div className="bg-white dark:bg-[#14171B] p-5 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 font-bold flex items-center justify-center text-sm">5</div>
+                    <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center justify-center text-sm">5</div>
                     <h4 className="font-bold text-slate-900 dark:text-white">Discount & Average</h4>
                   </div>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                     Discount each path's cash flows using the path-specific short rates plus a trial spread. Iterate on the spread until the average present value equals the market price. This spread is the OAS.
                   </p>
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
+                  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs font-mono text-slate-700 dark:text-slate-300">
                     PV = Σ [CF(t) / (1 + r(t) + OAS)^t]
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
@@ -839,12 +826,12 @@ export default function StructuredFinanceArticle() {
                   </p>
                 </div>
 
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900/30 rounded-lg p-4">
-                  <h4 className="font-bold text-indigo-900 dark:text-indigo-400 mb-2">Computational Intensity</h4>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900/30 rounded-lg p-4">
+                  <h4 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Computational Intensity</h4>
                   <p className="text-sm text-indigo-800 dark:text-indigo-300 mb-2">
                     A single RMBS tranche with 10,000 paths and 360 monthly periods requires 3.6 million cash flow calculations. Modern pricing systems use GPU acceleration and variance reduction techniques (antithetic variates, control variates) to achieve sub-second pricing.
                   </p>
-                  <p className="text-xs text-indigo-700 dark:text-indigo-300">
+                  <p className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300">
                     Bloomberg's MARS (Mortgage Analytics and Reporting System) and Intex's DealMaker are industry-standard platforms.
                   </p>
                 </div>
@@ -853,32 +840,32 @@ export default function StructuredFinanceArticle() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                <h4 className="font-bold text-indigo-900 dark:text-indigo-400 mb-4 flex items-center gap-2">
+                <h4 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2">
                   <Calculator size={20} /> Interpreting OAS
                 </h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                   OAS represents the <strong>pure credit and liquidity premium</strong> after removing interest rate risk and embedded options. Higher OAS indicates:
                 </p>
-                <ul className="text-sm text-slate-600 space-y-2 pl-4">
+                <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2 pl-4">
                   <li>&bull; <strong>Higher credit risk:</strong> Subordinated tranches have wider OAS than senior tranches</li>
                   <li>&bull; <strong>Lower liquidity:</strong> Non-agency RMBS trade at wider OAS than agency MBS</li>
                   <li>&bull; <strong>Model risk:</strong> If your prepayment model is wrong, OAS is mispriced</li>
                   <li>&bull; <strong>Market dislocation:</strong> During crises, OAS widens dramatically as liquidity evaporates</li>
                 </ul>
-                <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded text-xs text-indigo-800 dark:text-indigo-300">
+                <div className="mt-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded text-xs text-indigo-800 dark:text-indigo-300">
                   <strong>Example:</strong> A AAA RMBS with 50 bps OAS vs. a BBB RMBS with 200 bps OAS. The 150 bps difference compensates for subordination and higher default risk.
                 </div>
               </div>
 
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                <h4 className="font-bold text-indigo-900 dark:text-indigo-400 mb-4 flex items-center gap-2">
+                <h4 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2">
                   <Activity size={20} /> Effective Duration & Convexity
                 </h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                   Monte Carlo also produces <strong>option-adjusted duration</strong> and <strong>convexity</strong>—the sensitivity of price to parallel shifts in the yield curve.
                 </p>
                 <div className="space-y-3">
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
+                  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded">
                     <p className="font-mono text-xs text-slate-800 dark:text-white mb-1">
                       Effective Duration = (P₋ - P₊) / (2 × P₀ × Δy)
                     </p>
@@ -886,7 +873,7 @@ export default function StructuredFinanceArticle() {
                       Where P₋ and P₊ are prices after -25 bps and +25 bps shifts. Measures percentage price change per 100 bps rate move.
                     </p>
                   </div>
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
+                  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-3 rounded">
                     <p className="font-mono text-xs text-slate-800 dark:text-white mb-1">
                       Convexity = (P₋ + P₊ - 2P₀) / (P₀ × Δy²)
                     </p>
@@ -899,7 +886,7 @@ export default function StructuredFinanceArticle() {
             </div>
 
             <div className="bg-gradient-to-r from-indigo-50 dark:from-indigo-900/20 to-purple-50 dark:to-purple-900/20 rounded-xl p-6 border border-indigo-200 dark:border-indigo-900/30">
-              <h4 className="text-indigo-900 dark:text-indigo-400 font-bold flex items-center gap-2 mb-3">
+              <h4 className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] font-bold flex items-center gap-2 mb-3">
                 <Shield size={18} /> Stress Testing & Scenario Analysis
               </h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">

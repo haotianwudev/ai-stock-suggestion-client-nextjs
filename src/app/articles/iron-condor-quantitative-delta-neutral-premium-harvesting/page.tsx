@@ -79,7 +79,7 @@ interface GreekCardProps {
 }
 
 const GreekCard = ({ symbol, name, description, sentiment }: GreekCardProps) => (
-  <div className="bg-white dark:bg-[#0A0D14] rounded-xl p-5 border-l-4 border-indigo-500 shadow-sm hover:translate-y-[-2px] transition-transform">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-xl p-5 border-l-4 border-[#A8672E] dark:border-[#D08F52] shadow-sm hover:translate-y-[-2px] transition-transform">
     <div className="flex justify-between items-start mb-2">
       <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200">{name} <span className="text-[#A8672E] dark:text-[#D08F52] font-serif italic ml-1">{symbol}</span></h4>
       <span className={`text-xs px-2 py-1 rounded-full font-medium ${sentiment === 'Positive' ? 'bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]' : sentiment === 'Negative' ? 'bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]' : 'bg-slate-100 text-slate-700 dark:text-slate-300'}`}>
@@ -334,7 +334,7 @@ export default function IronCondorArticle() {
 
         {/* Portfolio Sizing */}
         <section>
-          <SectionHeading icon={PieChart} color="text-teal-600">Portfolio & Risk Sizing</SectionHeading>
+          <SectionHeading icon={PieChart} color="text-[#A8672E] dark:text-[#D08F52]">Portfolio & Risk Sizing</SectionHeading>
           <div className="bg-slate-900 text-slate-300 rounded-2xl p-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -344,21 +344,21 @@ export default function IronCondorArticle() {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-teal-400"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
                     <span>Never allocate &gt;5% of Net Liq to one symbol.</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-teal-400"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
                     <span>Keep 50% of capital in cash (Buying Power).</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-teal-400"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
                     <span>Diversify expiration cycles (laddering).</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <div className="flex items-center gap-2 mb-4 text-teal-400 font-bold">
+                <div className="flex items-center gap-2 mb-4 text-[#A8672E] dark:text-[#D08F52] font-bold">
                   <Calculator size={20} /> Simple Sizing Math
                 </div>
                 <div className="space-y-4 font-mono text-sm">
@@ -374,7 +374,7 @@ export default function IronCondorArticle() {
                     <span>Condor Width ($5 wide)</span>
                     <span>$500 risk</span>
                   </div>
-                  <div className="flex justify-between text-teal-400 font-bold pt-2">
+                  <div className="flex justify-between text-[#A8672E] dark:text-[#D08F52] font-bold pt-2">
                     <span>Max Contracts</span>
                     <span>6 Contracts</span>
                   </div>

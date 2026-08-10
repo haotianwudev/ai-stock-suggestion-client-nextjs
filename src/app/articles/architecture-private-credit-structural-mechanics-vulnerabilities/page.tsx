@@ -16,13 +16,13 @@ const SectionHeading = ({ icon: Icon, title, subtitle, colorClass }: {
       <div className={`p-3 rounded-2xl ${colorClass} shadow-sm`}>
         <Icon size={28} className="text-current" />
       </div>
-      <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight font-serif">{title}</h2>
     </div>
     {subtitle && <p className="text-xl text-slate-600 dark:text-slate-400 dark:text-slate-300 font-medium ml-14">{subtitle}</p>}
   </div>
 );
 
-const TutorialCard = ({ title, children, accentColor = "bg-blue-500" }: { 
+const TutorialCard = ({ title, children, accentColor = "bg-[#A8672E] dark:bg-[#D08F52]" }: { 
   title?: string; 
   children: React.ReactNode; 
   accentColor?: string;
@@ -30,7 +30,7 @@ const TutorialCard = ({ title, children, accentColor = "bg-blue-500" }: {
   <div className="bg-white dark:bg-[#14171B] rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none overflow-hidden border border-slate-100 dark:border-white/10">
     <div className={`h-2 w-full ${accentColor}`}></div>
     <div className="p-6 md:p-8">
-      {title && <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">{title}</h3>}
+      {title && <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">{title}</h3>}
       <div className="text-slate-600 dark:text-slate-400 dark:text-slate-300 space-y-4 leading-relaxed text-lg">{children}</div>
     </div>
   </div>
@@ -42,11 +42,11 @@ const DefinitionBox = ({ term, definition, color = "blue" }: {
   color?: "blue" | "purple" | "rose" | "amber" | "emerald";
 }) => {
   const colorMap = {
-    blue: "bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-900/20 dark:border-blue-900/30 dark:text-blue-400",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-blue-800 dark:bg-blue-900/20 dark:border-blue-900/30 dark:text-[#A8672E] dark:text-[#D08F52]",
     purple: "bg-purple-50 border-purple-200 text-purple-800 dark:bg-purple-900/20 dark:border-purple-900/30 dark:text-purple-400",
-    rose: "bg-rose-50 border-rose-200 text-rose-800 dark:text-rose-400 dark:bg-rose-900/20 dark:border-rose-900/30 dark:text-rose-400",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] dark:bg-rose-900/20 dark:border-rose-900/30 dark:text-[#BC4128] dark:text-[#E2694A]",
     amber: "bg-amber-50 border-amber-200 text-amber-800 dark:text-amber-300 dark:bg-amber-900/20 dark:border-amber-900/30 dark:text-amber-400",
-    emerald: "bg-emerald-50 border-emerald-200 text-emerald-800 dark:text-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-900/30 dark:text-emerald-400",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-emerald-800 dark:text-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-900/30 dark:text-[#1D8A70] dark:text-[#3CBF9C]",
   };
   return (
     <div className={`p-5 rounded-xl border-l-4 ${colorMap[color]} my-6 shadow-sm`}>
@@ -72,15 +72,15 @@ export default function PrivateCreditArchitecture() {
               icon={BookOpen} 
               title="Macroeconomic Genesis" 
               subtitle="The birth of a trillion-dollar asset class"
-              colorClass="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400"
+              colorClass="bg-blue-100 dark:bg-blue-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]"
             />
             <div className="grid md:grid-cols-2 gap-8">
-              <TutorialCard accentColor="bg-blue-500">
+              <TutorialCard accentColor="bg-[#A8672E] dark:bg-[#D08F52]">
                 <p>Following the 2008 Global Financial Crisis (GFC), regulations like the <strong>Dodd-Frank Act</strong> and <strong>Basel III</strong> imposed strict capital and risk rules on traditional banks. This intentionally de-risked the banking system but created a massive vacuum in middle-market corporate finance.</p>
                 <p>Private credit emerged to fill this void. By 2024–2025, it exploded into an estimated <strong>$1.7T to $2.5T</strong> market, projected to exceed $3 trillion by 2028.</p>
               </TutorialCard>
               <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-[#14171B] dark:to-indigo-900/10 rounded-2xl p-8 flex flex-col justify-center border border-blue-200 dark:border-blue-900/30">
-                <h4 className="text-xl font-bold text-indigo-900 dark:text-indigo-400 mb-4">Key Takeaway</h4>
+                <h4 className="text-xl font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Key Takeaway</h4>
                 <p className="text-indigo-800 dark:text-indigo-300 text-lg leading-relaxed">
                   Corporate credit risk has shifted from highly regulated, publicly insured depository banks to opaque, lightly regulated private investment vehicles managed by alternative asset managers.
                 </p>
@@ -94,10 +94,10 @@ export default function PrivateCreditArchitecture() {
               icon={Landmark} 
               title="The Business Model & Mechanics" 
               subtitle="How Direct Lending actually works behind the scenes"
-              colorClass="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 dark:text-emerald-400"
+              colorClass="bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 dark:text-[#1D8A70] dark:text-[#3CBF9C]"
             />
             <div className="space-y-8">
-              <TutorialCard accentColor="bg-emerald-500">
+              <TutorialCard accentColor="bg-[#1D8A70] dark:bg-[#3CBF9C]">
                 <p>The foundational pillar of private credit is <strong>Direct Lending</strong>—pooling capital from institutional LPs (pensions, sovereign wealth funds) to issue direct, bilaterally negotiated senior secured loans to private companies (often backed by Private Equity sponsors).</p>
 
                 <div className="grid md:grid-cols-2 gap-6 mt-8 mb-2">
@@ -109,8 +109,8 @@ export default function PrivateCreditArchitecture() {
                       <li>Subject to intense regulatory scrutiny and strict capital adequacy constraints.</li>
                     </ul>
                   </div>
-                  <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-200 dark:border-emerald-900/30 shadow-inner">
-                    <h4 className="font-bold text-emerald-900 dark:text-emerald-400 text-xl mb-3 border-b border-emerald-200 pb-2">Private Credit Funds</h4>
+                  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-200 dark:border-emerald-900/30 shadow-inner">
+                    <h4 className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-xl mb-3 border-b border-emerald-200 pb-2">Private Credit Funds</h4>
                     <ul className="space-y-2 text-emerald-800 dark:text-emerald-300 list-disc ml-4">
                       <li>Funded by locked-up, long-term LP capital (5-10 year horizons).</li>
                       <li>Structurally immune to traditional depository bank runs.</li>
@@ -122,16 +122,16 @@ export default function PrivateCreditArchitecture() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 dark:text-emerald-400 text-sm font-bold">1</div>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3 font-serif">
+                    <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm font-bold">1</div>
                     The Capital Call Model
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                     Unlike mutual funds where all money is invested on day one, institutional private credit relies on <strong>Committed Capital</strong>.
                   </p>
-                  <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900/30 mb-4">
+                  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900/30 mb-4">
                     <strong className="text-emerald-800 dark:text-emerald-300 block mb-1">"Dry Powder"</strong>
-                    <p className="text-emerald-700 dark:text-emerald-300 text-xs leading-relaxed">
+                    <p className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 text-xs leading-relaxed">
                       Investors pledge a certain amount, which sits as uncalled "Dry Powder." The General Partner (GP) only "calls" the capital from LPs when a specific loan is successfully negotiated and ready to be funded.
                     </p>
                   </div>
@@ -141,20 +141,20 @@ export default function PrivateCreditArchitecture() {
                 </div>
 
                 <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 dark:text-emerald-400 text-sm font-bold">2</div>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-3 font-serif">
+                    <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm font-bold">2</div>
                     Targeting the Capital Stack
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                     Private credit funds actively choose their risk profile by lending at different tiers of a company's capital structure:
                   </p>
                   <div className="space-y-3">
-                    <div className="border-l-4 border-emerald-500 bg-slate-50 dark:bg-slate-900/20 p-3 rounded-r-lg">
+                    <div className="border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] bg-slate-50 dark:bg-slate-900/20 p-3 rounded-r-lg">
                       <strong className="text-slate-800 dark:text-white block text-sm">Senior Secured (First-Lien)</strong>
                       <p className="text-slate-600 dark:text-slate-400 text-xs">The safest tier. First to be repaid in bankruptcy, secured by the company's assets and cash flows. Yields ~8-11%.</p>
                     </div>
-                    <div className="border-l-4 border-teal-500 bg-slate-50 dark:bg-slate-900/20 p-3 rounded-r-lg">
-                      <strong className="text-slate-800 dark:text-white block text-sm">Unitranche Debt <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400 px-2 py-0.5 rounded text-[10px] ml-2 uppercase">Innovation</span></strong>
+                    <div className="border-l-4 border-[#A8672E] dark:border-[#D08F52] bg-slate-50 dark:bg-slate-900/20 p-3 rounded-r-lg">
+                      <strong className="text-slate-800 dark:text-white block text-sm">Unitranche Debt <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-[#A8672E] dark:text-[#D08F52] px-2 py-0.5 rounded text-[10px] ml-2 uppercase">Innovation</span></strong>
                       <p className="text-slate-600 dark:text-slate-400 text-xs">Blends senior and subordinated debt into a single massive loan with one blended interest rate. Highly popular for speeding up M&A deals.</p>
                     </div>
                     <div className="border-l-4 border-amber-500 bg-slate-50 dark:bg-slate-900/20 p-3 rounded-r-lg">
@@ -165,7 +165,7 @@ export default function PrivateCreditArchitecture() {
                 </div>
               </div>
 
-              <TutorialCard accentColor="bg-emerald-600">
+              <TutorialCard accentColor="bg-[#1D8A70] dark:bg-[#3CBF9C]">
                 <h4 className="font-bold text-slate-800 dark:text-white text-2xl mb-4">The Illiquidity Premium & Covenant-Lite Era</h4>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
                   Private lenders charge an "illiquidity premium" (generally 200-300 basis points higher than public broadly syndicated loans). In return, borrowers accept this higher cost of capital because private credit offers unparalleled strategic advantages:
@@ -219,34 +219,34 @@ export default function PrivateCreditArchitecture() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-black/40">
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40">
                       <td className="px-6 py-4 font-bold">1</td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Ares Management</td>
-                      <td className="px-6 py-4 text-emerald-600 dark:text-emerald-400 font-semibold">$116,277</td>
+                      <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">$116,277</td>
                       <td className="px-6 py-4">Alt Assets / Direct Credit</td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40">
                       <td className="px-6 py-4 font-bold">2</td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">HPS Investment Partners</td>
-                      <td className="px-6 py-4 text-emerald-600 dark:text-emerald-400 font-semibold">$100,912</td>
+                      <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">$100,912</td>
                       <td className="px-6 py-4">Dedicated Private Credit</td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40">
                       <td className="px-6 py-4 font-bold">3</td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Blackstone Inc.</td>
-                      <td className="px-6 py-4 text-emerald-600 dark:text-emerald-400 font-semibold">$98,384</td>
+                      <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">$98,384</td>
                       <td className="px-6 py-4">Private Equity / Real Estate</td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40">
                       <td className="px-6 py-4 font-bold">4</td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Goldman Sachs AM</td>
-                      <td className="px-6 py-4 text-emerald-600 dark:text-emerald-400 font-semibold">$87,755</td>
+                      <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">$87,755</td>
                       <td className="px-6 py-4">Investment Banking</td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/40">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40">
                       <td className="px-6 py-4 font-bold">5</td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">AXA IM Alts</td>
-                      <td className="px-6 py-4 text-emerald-600 dark:text-emerald-400 font-semibold">$56,910</td>
+                      <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">$56,910</td>
                       <td className="px-6 py-4">Insurance / Asset Mgt.</td>
                     </tr>
                   </tbody>
@@ -261,10 +261,10 @@ export default function PrivateCreditArchitecture() {
               icon={Network} 
               title="Wall Street's Strategic Realignment" 
               subtitle="Symbiosis, Syndication, and Synthetic Risk"
-              colorClass="bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400"
+              colorClass="bg-indigo-100 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]"
             />
             <div className="space-y-8">
-              <TutorialCard accentColor="bg-indigo-500">
+              <TutorialCard accentColor="bg-[#A8672E] dark:bg-[#D08F52]">
                 <p className="text-xl text-slate-700 dark:text-slate-300 mb-4 font-medium">
                   Traditional banks haven't been entirely defeated by the rise of shadow banking; instead, they have pivoted to deep, symbiotic integration.
                 </p>
@@ -274,25 +274,25 @@ export default function PrivateCreditArchitecture() {
               </TutorialCard>
 
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-800 border-t-4 border-indigo-500 flex flex-col h-full">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">1. Financing the Shadow Banks</h3>
+                <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-800 border-t-4 border-[#A8672E] dark:border-[#D08F52] flex flex-col h-full">
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">Financing the Shadow Banks</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                     While banks are hesitant to lend directly to highly leveraged middle-market companies, they eagerly lend to the private credit funds themselves. This creates <strong>leverage-on-leverage</strong> within the financial system.
                   </p>
                   <div className="space-y-4 mt-auto">
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
-                      <strong className="text-indigo-900 dark:text-indigo-400 block mb-1">Subscription Lines</strong>
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
+                      <strong className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">Subscription Lines</strong>
                       <p className="text-indigo-800 dark:text-indigo-300 text-xs">Short-term bridging loans secured by the unfunded capital commitments of a fund's institutional LPs. Extremely low risk for the bank.</p>
                     </div>
-                    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
-                      <strong className="text-indigo-900 dark:text-indigo-400 block mb-1">NAV (Net Asset Value) Loans</strong>
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
+                      <strong className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] block mb-1">NAV (Net Asset Value) Loans</strong>
                       <p className="text-indigo-800 dark:text-indigo-300 text-xs">Loans secured by the fund's underlying portfolio of debt. Funds increasingly use NAV loans to artificially boost distributions to LPs or to inject emergency capital into distressed portfolio companies.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-800 border-t-4 border-indigo-500 flex flex-col h-full">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">2. Origination Joint Ventures</h3>
+                <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-800 border-t-4 border-[#A8672E] dark:border-[#D08F52] flex flex-col h-full">
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">Origination Joint Ventures</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
                     The rebirth of the <em>"Originate-to-Distribute"</em> model. Banks possess vast, global investment banking networks to source corporate deals, but they lack the unregulated balance sheets to hold the debt.
                   </p>
@@ -314,10 +314,10 @@ export default function PrivateCreditArchitecture() {
                     <Network size={200} />
                   </div>
                   <div className="relative z-10">
-                    <div className="inline-block px-3 py-1 bg-indigo-500/30 text-indigo-200 text-xs font-bold rounded-full mb-3 border border-indigo-400/30 uppercase tracking-wider">
+                    <div className="inline-block px-3 py-1 bg-[#A8672E] dark:bg-[#D08F52]/30 text-indigo-200 text-xs font-bold rounded-full mb-3 border border-[#A8672E] dark:border-[#D08F52]/30 uppercase tracking-wider">
                       The Capital Relief Engine
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">3. Synthetic Risk Transfers (SRTs)</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4 font-serif">Synthetic Risk Transfers (SRTs)</h3>
                     <p className="text-indigo-100 mb-6 leading-relaxed">
                       To survive the impending <strong>Basel III Endgame</strong> regulations—which demand banks hold significantly more capital against the loans they issue—banks are heavily utilizing SRTs (also known as Credit Risk Transfers).
                     </p>
@@ -356,7 +356,7 @@ export default function PrivateCreditArchitecture() {
             <div className="space-y-8">
               <TutorialCard accentColor="bg-amber-500">
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">The Pivot to the $80 Trillion Wealth Channel</h3>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">The Pivot to the $80 Trillion Wealth Channel</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">
                     For a decade, private credit was exclusively the domain of institutional LPs (pensions, sovereign wealth funds, endowments). However, as institutional allocations hit their limits ("denominator effect" saturation), mega-managers like Blackstone, Apollo, and Ares needed a new engine for infinite AUM growth.
                   </p>
@@ -396,7 +396,7 @@ export default function PrivateCreditArchitecture() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-100 pb-2">The Retail Fee Layer Cake</h3>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800 pb-2 font-serif">The Retail Fee Layer Cake</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
                     The "democratization" of private credit comes at a steep price. Retail investors absorb a heavy fee burden that drastically drags down their net yield compared to institutional giants:
                   </p>
@@ -426,14 +426,14 @@ export default function PrivateCreditArchitecture() {
                   </ul>
                 </div>
 
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 p-8 rounded-2xl shadow-sm flex flex-col justify-center">
-                  <h4 className="text-xl font-bold text-red-800 dark:text-red-400 flex items-center gap-2 mb-4">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 p-8 rounded-2xl shadow-sm flex flex-col justify-center">
+                  <h4 className="text-xl font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] flex items-center gap-2 mb-4">
                     <AlertCircle size={24}/> The Liquidity Illusion
                   </h4>
-                  <p className="text-red-700 dark:text-red-300 text-sm md:text-base leading-relaxed mb-4">
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 text-sm md:text-base leading-relaxed mb-4">
                     Retail BDCs market themselves with the illusion of liquidity, promising high yields, downside protection, and the ability to withdraw money quarterly. However, this creates a severe structural mismatch: <strong>they are offering quarterly retail liquidity against 5-to-7 year highly illiquid corporate loans.</strong>
                   </p>
-                  <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border border-red-100 dark:border-red-900/30 text-red-800 dark:text-red-400 text-sm font-medium">
+                  <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border border-red-100 dark:border-red-900/30 text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] text-sm font-medium">
                     <strong>The Redemption Gate Trap:</strong> Non-traded BDCs implement strict redemption caps (typically maximum 5% of aggregate NAV per quarter). If a recession hits and retail panic ensues, these gates will slam shut immediately. Investors who need cash the most will find their capital legally trapped in a depreciating, illiquid vehicle for years.
                   </div>
                 </div>
@@ -447,24 +447,24 @@ export default function PrivateCreditArchitecture() {
               icon={ShieldAlert} 
               title="Emerging Fissures" 
               subtitle="Why the asset class is under stress"
-              colorClass="bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 dark:text-rose-400"
+              colorClass="bg-rose-100 dark:bg-rose-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 dark:text-[#BC4128] dark:text-[#E2694A]"
             />
             <div className="grid md:grid-cols-2 gap-8">
-              <TutorialCard title="The Payment-in-Kind (PIK) Escalation" accentColor="bg-rose-500">
+              <TutorialCard title="The Payment-in-Kind (PIK) Escalation" accentColor="bg-[#BC4128] dark:bg-[#E2694A]">
                 <p>PIK allows borrowers to defer cash interest payments by adding the owed interest to the principal loan balance.</p>
                 <p>In a high-rate environment, PIK accelerates total leverage, compounding debt until it eclipses the firm's enterprise value. PIK income rose from 4.2% of revenue in 2018 to nearly 8.8% by late 2025.</p>
-                <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-rose-200 dark:border-rose-900/30">
-                  <strong className="text-rose-800 dark:text-rose-400 block mb-1">Shadow Defaults:</strong>
-                  <span className="text-rose-700 dark:text-rose-300 text-sm">Managers use "mid-life" PIK amendments to save distressed borrowers from formal default, artificially suppressing headline default rates.</span>
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-rose-200 dark:border-rose-900/30">
+                  <strong className="text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] block mb-1">Shadow Defaults:</strong>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 text-sm">Managers use "mid-life" PIK amendments to save distressed borrowers from formal default, artificially suppressing headline default rates.</span>
                 </div>
               </TutorialCard>
 
-              <TutorialCard title="Valuation Opacity" accentColor="bg-rose-500">
+              <TutorialCard title="Valuation Opacity" accentColor="bg-[#BC4128] dark:bg-[#E2694A]">
                 <p>Unlike public bonds, private credit assets are untraded. Valuations rely heavily on Level 3 "mark-to-model" frameworks based on highly subjective assumptions.</p>
                 <p>This creates severe agency issues: managers have a profound incentive to inflate valuations to pad fees, support borrowing covenants, and present a low-volatility illusion to LPs.</p>
-                <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-rose-200 dark:border-rose-900/30">
-                  <strong className="text-rose-800 dark:text-rose-400 block mb-1">The Danger:</strong>
-                  <span className="text-rose-700 dark:text-rose-300 text-sm">During acute stress, the violent divergence between smoothed modeled valuations and actual recovery values in liquidation can be catastrophic.</span>
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-4 rounded-lg mt-4 border border-rose-200 dark:border-rose-900/30">
+                  <strong className="text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] block mb-1">The Danger:</strong>
+                  <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 text-sm">During acute stress, the violent divergence between smoothed modeled valuations and actual recovery values in liquidation can be catastrophic.</span>
                 </div>
               </TutorialCard>
             </div>
@@ -476,32 +476,32 @@ export default function PrivateCreditArchitecture() {
               icon={Gavel} 
               title="The Restructuring Crucible" 
               subtitle="The 2026 cliff and 'Sponsor-on-Sponsor Violence'"
-              colorClass="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400"
+              colorClass="bg-orange-100 dark:bg-orange-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]"
             />
             <div className="space-y-8">
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-8 opacity-10">
                   <Activity size={120} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 relative z-10">The 2026-2027 Refinancing Cliff</h3>
+                <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 relative z-10 font-serif">The 2026-2027 Refinancing Cliff</h3>
 
                 <p className="text-lg text-slate-600 dark:text-slate-400 relative z-10 mb-6">
                   Roughly 50% of outstanding loans held in US private credit funds are due for reimbursement or refinancing within a concentrated three-year window. With ~40% of borrowers generating negative free cash flow, traditional cash-flow lending is perishing, causing a flight to <strong>Asset-Based Finance (ABF)</strong>.
                 </p>
                 <div className="bg-slate-900 dark:bg-black/40 text-white rounded-xl p-6 relative z-10 shadow-lg dark:shadow-none dark:border dark:border-white/10">
-                  <h4 className="text-xl font-bold text-orange-400 mb-3 border-b border-slate-700 pb-2">Liability Management Exercises (LMEs)</h4>
+                  <h4 className="text-xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-3 border-b border-slate-700 pb-2">Liability Management Exercises (LMEs)</h4>
                   <p className="text-slate-300 mb-4">
                     Driven by "covenant-lite" loans, PE sponsors execute aggressive out-of-court restructurings to strip value from collateral pools and preserve equity at the lenders' expense.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
-                      <span className="text-orange-400 mt-1">&rarr;</span>
+                      <span className="text-[#BC4128] dark:text-[#E2694A] mt-1">&rarr;</span>
                       <div>
                         <strong className="text-white">Drop-Downs (J.Crew Maneuver):</strong> Transferring crown-jewel assets (like IP) to unrestricted subsidiaries to raise new super-priority debt.
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-orange-400 mt-1">&rarr;</span>
+                      <span className="text-[#BC4128] dark:text-[#E2694A] mt-1">&rarr;</span>
                       <div>
                         <strong className="text-white">Uptiers (Serta Maneuver):</strong> Conspiring with a slim majority of lenders to subordinate minority lenders within the same class of debt.
                       </div>
@@ -510,9 +510,9 @@ export default function PrivateCreditArchitecture() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-[#14171B] dark:to-orange-900/10 border-l-8 border-orange-500 p-8 rounded-r-2xl shadow-sm">
+              <div className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-[#14171B] dark:to-orange-900/10 border-l-8 border-[#BC4128] dark:border-[#E2694A] p-8 rounded-r-2xl shadow-sm">
                 <h4 className="text-2xl font-black text-orange-900 mb-2 uppercase tracking-wide text-sm">Case Study</h4>
-                <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">The Pluralsight Paradigm</h3>
+                <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">The Pluralsight Paradigm</h3>
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                   Sponsored by Vista Equity Partners, Pluralsight faced distress. Vista attempted a classic drop-down LME with a $50M band-aid. Instead of accepting minor losses, private credit lenders (Blue Owl & Ares) retaliated with overwhelming force.
                 </p>
@@ -529,22 +529,22 @@ export default function PrivateCreditArchitecture() {
               icon={Activity} 
               title="Systemic Risk & The Contagion Web" 
               subtitle="How a private market shock transmits to the global economy"
-              colorClass="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 dark:text-red-400"
+              colorClass="bg-red-100 dark:bg-red-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 dark:text-[#BC4128] dark:text-[#E2694A]"
             />
             <div className="space-y-8">
-              <TutorialCard accentColor="bg-red-600">
+              <TutorialCard accentColor="bg-[#BC4128] dark:bg-[#E2694A]">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">The 2008 Comparison</h3>
+                    <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 font-serif">The 2008 Comparison</h3>
                     <p className="text-slate-600 dark:text-slate-400 mb-4">
                       While sharing similarities (opaque shadow banking, covenant-lite loans), private credit fundamentally differs in <strong>liabilities</strong>.
                     </p>
                     <p className="text-slate-600 dark:text-slate-400 mb-4">
                       The 2008 crisis was a bank run driven by hyper-leverage (30:1) and overnight funding mismatch. Private credit generally uses lower fund-level leverage (1.5:1) and locked-up institutional capital, rendering it largely immune to sudden liquidity runs. Regulators currently assess that private credit <em>does not</em> pose an immediate, direct systemic risk to depository banks in the 2008 sense.
                     </p>
-                    <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl border border-red-100 dark:border-red-900/30">
-                      <strong className="text-red-800 dark:text-red-400 block mb-1">The Macro-Economic Transmission:</strong>
-                      <p className="text-red-700 dark:text-red-300 text-sm">
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-xl border border-red-100 dark:border-red-900/30">
+                      <strong className="text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] block mb-1">The Macro-Economic Transmission:</strong>
+                      <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 text-sm">
                         However, because private credit now funds a massive portion of the middle-market real economy (employing tens of millions of people), a sudden stop in private lending would directly trigger widespread corporate bankruptcies and massive job losses, instantly turning a financial credit crunch into a severe, prolonged economic recession.
                       </p>
                     </div>
@@ -553,7 +553,7 @@ export default function PrivateCreditArchitecture() {
                   <div className="flex flex-col gap-4">
                     <div className="bg-slate-50 dark:bg-slate-900/40 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                       <h4 className="font-bold text-slate-800 dark:text-white text-lg mb-2 flex items-center gap-2">
-                        <Network size={18} className="text-indigo-600"/> The Hidden Bank Linkage
+                        <Network size={18} className="text-[#A8672E] dark:text-[#D08F52]"/> The Hidden Bank Linkage
                       </h4>
                       <p className="text-slate-600 dark:text-slate-400 text-sm">
                         Banks are still exposed through the backdoor. They provide massive subscription lines and Net Asset Value (NAV) loans to private credit funds. If underlying private loans default en masse, fund NAVs plummet, potentially triggering margin calls from banks and forcing chaotic liquidations.
@@ -561,7 +561,7 @@ export default function PrivateCreditArchitecture() {
                     </div>
                     <div className="bg-slate-50 dark:bg-slate-900/40 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                       <h4 className="font-bold text-slate-800 dark:text-white text-lg mb-2 flex items-center gap-2">
-                        <ShieldAlert size={18} className="text-rose-600"/> Insurance Capital Arbitrage
+                        <ShieldAlert size={18} className="text-[#BC4128] dark:text-[#E2694A]"/> Insurance Capital Arbitrage
                       </h4>
                       <p className="text-slate-600 dark:text-slate-400 text-sm">
                         Private equity mega-firms increasingly own life insurers (e.g., Apollo's ownership of Athene). They funnel policyholder premiums into their own illiquid private credit funds to boost yield. This deep correlation means a severe credit shock could rapidly deplete insurance reserves, threatening policyholder payouts.
@@ -575,7 +575,7 @@ export default function PrivateCreditArchitecture() {
                 <div className="absolute top-0 right-0 p-4 opacity-20">
                   <Activity size={100} />
                 </div>
-                <h3 className="text-2xl font-bold text-red-100 mb-6 relative z-10 border-b border-red-800 pb-4">
+                <h3 className="text-2xl font-bold text-red-100 mb-6 relative z-10 border-b border-red-800 pb-4 font-serif">
                   The Denominator Effect & Fire Sale Contagion
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6 relative z-10">
@@ -605,7 +605,7 @@ export default function PrivateCreditArchitecture() {
           {/* Conclusion */}
           <section className="bg-slate-900 dark:bg-[#14171B] text-white rounded-3xl p-8 md:p-12 text-center shadow-2xl dark:shadow-none relative overflow-hidden dark:border dark:border-white/10">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500"></div>
-            <h2 className="text-3xl font-black mb-6">Conclusion</h2>
+            <h2 className="text-3xl font-black mb-6 font-serif">Conclusion</h2>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
               Private credit has institutionalized a multi-trillion-dollar shadow banking system. While insulated from 2008-style bank runs, it is buckling under higher-for-longer capital costs. PIK escalations and valuation opacity mask deep distress. Ultimately, its profound interconnectedness with global insurers and pensions guarantees that in a severe macro contraction, private credit will act as a potent accelerant for broader systemic contagion.
             </p>

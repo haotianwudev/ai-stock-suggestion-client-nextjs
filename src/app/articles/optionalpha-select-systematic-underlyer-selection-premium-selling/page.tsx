@@ -25,7 +25,7 @@ export default function OptionAlphaSelectArticle() {
         <section id="pillars" className="py-24 bg-white dark:bg-[#0A0D14]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl font-serif">The Three Foundational Pillars</h2>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 sm:text-4xl font-serif">The Three Foundational Pillars</h2>
               <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 Successful underlyer selection rests on three non-negotiable characteristics. Missing even one introduces unacceptable portfolio risk.
               </p>
@@ -36,7 +36,7 @@ export default function OptionAlphaSelectArticle() {
                 onClick={() => setActivePillar('quality')}
                 className={`p-6 rounded-2xl border-2 text-left transition-all ${
                   activePillar === 'quality' 
-                    ? 'border-blue-500 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 shadow-md transform scale-[1.02]' 
+                    ? 'border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 shadow-md transform scale-[1.02]' 
                     : 'border-slate-100 dark:border-slate-800 hover:border-blue-200 bg-white dark:bg-[#0A0D14]'
                 }`}
               >
@@ -45,7 +45,7 @@ export default function OptionAlphaSelectArticle() {
                 } mb-4 shadow-sm`}>
                   <Shield className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">Asset Quality</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Asset Quality</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">The "Willing to Own" Doctrine. The primary risk management tool against catastrophic loss.</p>
               </button>
 
@@ -53,7 +53,7 @@ export default function OptionAlphaSelectArticle() {
                 onClick={() => setActivePillar('liquidity')}
                 className={`p-6 rounded-2xl border-2 text-left transition-all ${
                   activePillar === 'liquidity' 
-                    ? 'border-emerald-500 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 shadow-md transform scale-[1.02]' 
+                    ? 'border-[#1D8A70] dark:border-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 shadow-md transform scale-[1.02]' 
                     : 'border-slate-100 dark:border-slate-800 hover:border-emerald-200 bg-white dark:bg-[#0A0D14]'
                 }`}
               >
@@ -62,7 +62,7 @@ export default function OptionAlphaSelectArticle() {
                 } mb-4 shadow-sm`}>
                   <Activity className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">Market Liquidity</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Market Liquidity</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">Ensuring efficient trade execution and preserving the ability to exit under stress.</p>
               </button>
 
@@ -79,7 +79,7 @@ export default function OptionAlphaSelectArticle() {
                 } mb-4 shadow-sm`}>
                   <TrendingUp className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">Volatility Engine</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Volatility Engine</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">The source of premium: harnessing Time Decay (Theta) and Volatility Crush (Vega).</p>
               </button>
             </div>
@@ -99,7 +99,7 @@ export default function OptionAlphaSelectArticle() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <BookOpen className="h-5 w-5 mr-2 text-[#A8672E] dark:text-[#D08F52]"/>
                         The "Willing to Own" Doctrine
                       </h4>
@@ -116,13 +116,13 @@ export default function OptionAlphaSelectArticle() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <Target className="h-5 w-5 mr-2 text-[#A8672E] dark:text-[#D08F52]"/>
                         Key Metrics & Red Flags
                       </h4>
                       <div className="space-y-4">
-                        <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-emerald-500 shadow-sm">
-                          <h5 className="font-semibold text-slate-900 mb-2">Green Lights (Ideal State)</h5>
+                        <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] shadow-sm">
+                          <h5 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Green Lights (Ideal State)</h5>
                           <ul className="text-sm space-y-2 text-slate-600 dark:text-slate-400">
                             <li>• <strong>Market Cap:</strong> {'>'}$10B (Blue Chip Stability)</li>
                             <li>• <strong>Earnings:</strong> Consistent, positive P/E history</li>
@@ -130,8 +130,8 @@ export default function OptionAlphaSelectArticle() {
                             <li>• <strong>Sector Leader:</strong> Top 3 player in its industry</li>
                           </ul>
                         </div>
-                        <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-rose-500 shadow-sm">
-                          <h5 className="font-semibold text-slate-900 mb-2">Red Flags (Automatic Disqualification)</h5>
+                        <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm">
+                          <h5 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Red Flags (Automatic Disqualification)</h5>
                           <ul className="text-sm space-y-2 text-slate-600 dark:text-slate-400">
                             <li>• <strong>Biotech awaiting FDA:</strong> Binary event risk is too high.</li>
                             <li>• <strong>Meme Stocks:</strong> Disconnected from fundamentals.</li>
@@ -157,21 +157,21 @@ export default function OptionAlphaSelectArticle() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <BookOpen className="h-5 w-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]"/>
                         The "Hidden Tax" of Illiquidity
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
                         Liquidity is often ignored until it's desperately needed. In a market panic, liquidity dries up instantly. If you are in an illiquid underlying, bid-ask spreads can widen by 500%+, making it mathematically impossible to roll or close a position for a reasonable loss.
                       </p>
-                      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-4 rounded-xl border-l-4 border-emerald-500">
+                      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-4 rounded-xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
                         <p className="text-[#1D8A70] dark:text-[#3CBF9C] font-medium">
                           <strong>The 10% Rule:</strong> Never trade options where the bid-ask spread is {'>'}10% of the total premium. You are giving up too much edge to the market maker immediately upon entry.
                         </p>
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <Target className="h-5 w-5 mr-2 text-[#1D8A70] dark:text-[#3CBF9C]"/>
                         Strict Thresholds
                       </h4>
@@ -186,22 +186,22 @@ export default function OptionAlphaSelectArticle() {
                           </thead>
                           <tbody className="divide-y divide-emerald-100 bg-white dark:bg-[#0A0D14]">
                             <tr>
-                              <td className="px-4 py-3 text-sm font-medium text-slate-900">Open Interest (OI)</td>
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-slate-100">Open Interest (OI)</td>
                               <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">{'>'} 5,000 (Total chain)</td>
                               <td className="px-4 py-3 text-xs text-slate-500">Shows institutional participation.</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3 text-sm font-medium text-slate-900">Strike Volume</td>
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-slate-100">Strike Volume</td>
                               <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">{'>'} 500 contracts/day</td>
                               <td className="px-4 py-3 text-xs text-slate-500">Ensures you aren't the only one trading it.</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3 text-sm font-medium text-slate-900">Bid/Ask Spread</td>
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-slate-100">Bid/Ask Spread</td>
                               <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">{'<'} $0.10 (on {'>'}$3 premiums)</td>
                               <td className="px-4 py-3 text-xs text-slate-500">Minimizes immediate entry/exit loss.</td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-3 text-sm font-medium text-slate-900">Strike Density</td>
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-slate-100">Strike Density</td>
                               <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">$1 or $2.50 increments</td>
                               <td className="px-4 py-3 text-xs text-slate-500">Allows precise risk management rolling.</td>
                             </tr>
@@ -226,7 +226,7 @@ export default function OptionAlphaSelectArticle() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <BookOpen className="h-5 w-5 mr-2 text-amber-500"/>
                         Understanding IV Rank vs. IV Percentile
                       </h4>
@@ -245,7 +245,7 @@ export default function OptionAlphaSelectArticle() {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
                         <Target className="h-5 w-5 mr-2 text-amber-500"/>
                         The "Richness" Test
                       </h4>
@@ -256,7 +256,7 @@ export default function OptionAlphaSelectArticle() {
                           Selling when premium is "expensive" relative to its own history maximizes Vega credit.
                         </p>
                       </div>
-                      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-rose-500 shadow-sm">
+                      <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-xl border-l-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm">
                         <h5 className="font-semibold text-[#BC4128] dark:text-[#E2694A] mb-1 flex items-center">
                           <AlertOctagon className="h-4 w-4 mr-1"/> The Earnings Trap
                         </h5>
@@ -276,19 +276,19 @@ export default function OptionAlphaSelectArticle() {
         <section id="strategies" className="py-24 bg-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl font-serif">Strategy-Specific Nuances</h2>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 sm:text-4xl font-serif">Strategy-Specific Nuances</h2>
               <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 While the Three Pillars apply universally, each strategy requires specific fine-tuning of the selection criteria.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {/* Put Writing Card */}
-              <div className="bg-white dark:bg-[#0A0D14] rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-8 border-blue-500 flex flex-col">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-8 border-[#A8672E] dark:border-[#D08F52] flex flex-col">
                 <div className="flex items-center mb-6">
                   <div className="bg-[#A8672E] dark:bg-[#D08F52] p-3 rounded-full mr-4">
                     <DollarSign className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 font-serif">Cash-Secured Put</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">Cash-Secured Put</h3>
                 </div>
                 <div className="flex-grow">
                   <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">
@@ -297,11 +297,11 @@ export default function OptionAlphaSelectArticle() {
                   <ul className="space-y-4 mb-8">
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider mb-1">Ideal Outlook</span>
-                      <span className="font-medium text-slate-900">Neutral to Mildly Bullish</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Neutral to Mildly Bullish</span>
                     </li>
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider mb-1">Standard Target</span>
-                      <span className="font-medium text-slate-900">30-45 DTE | 0.30 Delta Strike</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">30-45 DTE | 0.30 Delta Strike</span>
                     </li>
                   </ul>
                 </div>
@@ -317,7 +317,7 @@ export default function OptionAlphaSelectArticle() {
                   <div className="bg-purple-100 p-3 rounded-full mr-4">
                     <PieChart className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 font-serif">Covered Call</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">Covered Call</h3>
                 </div>
                 <div className="flex-grow">
                   <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">
@@ -326,11 +326,11 @@ export default function OptionAlphaSelectArticle() {
                   <ul className="space-y-4 mb-8">
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Ideal Outlook</span>
-                      <span className="font-medium text-slate-900">Neutral / Slow Grind Up</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Neutral / Slow Grind Up</span>
                     </li>
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-1">Standard Target</span>
-                      <span className="font-medium text-slate-900">30-45 DTE | 0.30 Delta (OTM)</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">30-45 DTE | 0.30 Delta (OTM)</span>
                     </li>
                   </ul>
                 </div>
@@ -341,13 +341,13 @@ export default function OptionAlphaSelectArticle() {
               </div>
 
               {/* Wheel Strategy Card */}
-              <div className="bg-white dark:bg-[#0A0D14] rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-8 border-indigo-600 relative overflow-hidden flex flex-col">
+              <div className="bg-white dark:bg-[#0A0D14] rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-8 border-[#A8672E] dark:border-[#D08F52] relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 bg-[#A8672E] dark:bg-[#D08F52] text-white text-xs font-bold px-4 py-1 rounded-bl-xl">ADVANCED</div>
                 <div className="flex items-center mb-6">
                   <div className="bg-[#A8672E] dark:bg-[#D08F52] p-3 rounded-full mr-4">
                     <Repeat className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 font-serif">The Wheel</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">The Wheel</h3>
                 </div>
                 <div className="flex-grow">
                   <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">
@@ -356,11 +356,11 @@ export default function OptionAlphaSelectArticle() {
                   <ul className="space-y-4 mb-8">
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider mb-1">Ideal Asset</span>
-                      <span className="font-medium text-slate-900">Blue Chip, Dividend Payer, Low Beta</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Blue Chip, Dividend Payer, Low Beta</span>
                     </li>
                     <li className="flex flex-col bg-slate-50 dark:bg-[#14171B] p-3 rounded-lg">
                       <span className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider mb-1">Why Quality Matters Most</span>
-                      <span className="font-medium text-slate-900">You might hold the stock for months during the "Call" phase.</span>
+                      <span className="font-medium text-slate-900 dark:text-slate-100">You might hold the stock for months during the "Call" phase.</span>
                     </li>
                   </ul>
                 </div>
@@ -381,7 +381,7 @@ export default function OptionAlphaSelectArticle() {
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-violet-100 text-violet-700 font-medium text-sm mb-6">
                   <BarChart3 className="w-4 h-4 mr-2" /> Quantitative Validation
                 </div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6 font-serif">The Volatility Risk Premium (VRP)</h2>
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">The Volatility Risk Premium (VRP)</h2>
                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                   Academic and industry research confirms a persistent "edge" in markets: Implied Volatility (what you are paid for) consistently overstates subsequent Realized Volatility (what actually happens).
                 </p>
@@ -405,7 +405,7 @@ export default function OptionAlphaSelectArticle() {
 
               {/* Research Data Viz */}
               <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-xl">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 text-center font-serif">Cboe PUT Index vs S&P 500 (SPY)</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 text-center font-serif">Cboe PUT Index vs S&P 500 (SPY)</h3>
                 <p className="text-center text-slate-500 text-sm mb-8">Historical Analysis (2007 - 2025)</p>
                 <div className="space-y-10">
                   <div>
@@ -466,17 +466,17 @@ export default function OptionAlphaSelectArticle() {
                   Systematic underlyer selection doesn't just find good stocks; it protects you from your own worst instincts. The greatest threat to a premium seller is <strong>"Yield Reaching"</strong>—ignoring quality red flags because the premium on a volatile, terrible stock looks juicy.
                 </p>
                 <ul className="space-y-4">
-                  <li className="flex items-start bg-[#A8672E] dark:bg-[#D08F52]/50 p-4 rounded-xl border border-indigo-700">
+                  <li className="flex items-start bg-[#A8672E] dark:bg-[#D08F52]/50 p-4 rounded-xl border border-[#A8672E] dark:border-[#D08F52]">
                     <AlertTriangle className="h-6 w-6 text-amber-400 mr-3 flex-shrink-0" />
                     <span><strong>The "Gambler's Ruin":</strong> Trading meme stocks with 200% IV works until it doesn't. One gap-down can wipe out 12 months of small wins.</span>
                   </li>
-                  <li className="flex items-start bg-[#A8672E] dark:bg-[#D08F52]/50 p-4 rounded-xl border border-indigo-700">
+                  <li className="flex items-start bg-[#A8672E] dark:bg-[#D08F52]/50 p-4 rounded-xl border border-[#A8672E] dark:border-[#D08F52]">
                     <CheckCircle className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0" />
                     <span><strong>The Systematic Advantage:</strong> By forcing every trade through the Quality Filter *first*, you mathematically eliminate the possibility of holding a zero-value asset.</span>
                   </li>
                 </ul>
               </div>
-              <div className="bg-white dark:bg-[#0A0D14]/10 p-8 rounded-3xl backdrop-blur-sm border border-indigo-700/50 text-center">
+              <div className="bg-white dark:bg-[#0A0D14]/10 p-8 rounded-3xl backdrop-blur-sm border border-[#A8672E] dark:border-[#D08F52]/50 text-center">
                 <h3 className="text-xl font-semibold mb-6 font-serif">The Vicious Cycle of Yield Reaching</h3>
                 <div className="space-y-4">
                   <div className="bg-[#BC4128] dark:bg-[#E2694A]/20 p-3 rounded-lg text-[#BC4128] dark:text-[#E2694A]">
@@ -497,7 +497,7 @@ export default function OptionAlphaSelectArticle() {
                   <div className="flex justify-center">
                     <ArrowRight className="transform rotate-90 text-[#A8672E] dark:text-[#D08F52]" />
                   </div>
-                  <div className="bg-[#BC4128] dark:bg-[#E2694A]/50 p-3 rounded-lg text-white font-bold border-2 border-rose-500">
+                  <div className="bg-[#BC4128] dark:bg-[#E2694A]/50 p-3 rounded-lg text-white font-bold border-2 border-[#BC4128] dark:border-[#E2694A]">
                     4. Permanent Loss of Capital. Game Over.
                   </div>
                 </div>
@@ -510,7 +510,7 @@ export default function OptionAlphaSelectArticle() {
         <section id="screening" className="py-24 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl font-serif">Systematic Screening Framework</h2>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 sm:text-4xl font-serif">Systematic Screening Framework</h2>
               <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 The professional "Quality-First" funnel approach. Notice that we only look at volatility *after* quality is assured.
               </p>
@@ -561,7 +561,7 @@ export default function OptionAlphaSelectArticle() {
                     3
                   </div>
                   <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">The Human Review</h3>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">The Human Review</h3>
                     <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
                       Computers find the candidates; humans make the final "sanity check".
                     </p>

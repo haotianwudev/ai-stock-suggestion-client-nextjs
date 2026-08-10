@@ -25,16 +25,16 @@ const Section = ({ id, title, icon, children, gradient = "from-purple-500 to-blu
 }) => (
   <section id={id} className="mb-20 scroll-mt-24">
     <div className={`bg-gradient-to-r ${gradient} p-1 rounded-2xl mb-8`}>
-      <div className="bg-white rounded-xl p-8">
+      <div className="bg-white dark:bg-[#0A0D14] rounded-xl p-8">
         <div className="flex items-center gap-4 mb-6">
           <div className="p-3 bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl">
             {icon}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 font-serif">
             {title}
           </h2>
         </div>
-        <div className="space-y-6 text-slate-700 leading-relaxed">
+        <div className="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
           {children}
         </div>
       </div>
@@ -48,10 +48,10 @@ const SubSection = ({ title, children, icon }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
 }) => (
-  <div className="bg-slate-50 rounded-xl p-6 my-6">
+  <div className="bg-slate-50 dark:bg-[#14171B] rounded-xl p-6 my-6">
     <div className="flex items-center gap-3 mb-4">
       {icon && <div className="text-purple-600">{icon}</div>}
-      <h3 className="text-xl font-semibold text-slate-800">{title}</h3>
+      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 font-serif">{title}</h3>
     </div>
     <div className="space-y-4">{children}</div>
   </div>
@@ -63,12 +63,12 @@ const StyledTable = ({ headers, rows }: {
   rows: string[][];
 }) => (
   <div className="overflow-x-auto my-8">
-    <div className="bg-white rounded-xl shadow-lg border border-slate-200">
+    <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
       <table className="min-w-full text-sm">
         <thead>
           <tr className="bg-gradient-to-r from-purple-50 to-blue-50">
             {headers.map((header: string, i: number) => (
-              <th key={i} className="px-6 py-4 text-left font-bold text-slate-800 uppercase tracking-wider border-b border-slate-200">
+              <th key={i} className="px-6 py-4 text-left font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
                 {header}
               </th>
             ))}
@@ -76,7 +76,7 @@ const StyledTable = ({ headers, rows }: {
         </thead>
         <tbody className="divide-y divide-slate-100">
           {rows.map((row: string[], i: number) => (
-            <tr key={i} className="hover:bg-slate-50 transition-colors">
+            <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
               {row.map((cell: string, j: number) => (
                 <td key={j} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: cell }}></td>
               ))}
@@ -90,8 +90,8 @@ const StyledTable = ({ headers, rows }: {
 
 // Enhanced bar chart component
 const ChartComponent = () => (
-  <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 my-12">
-    <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center flex items-center justify-center gap-3">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-800 my-12">
+    <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-8 text-center flex items-center justify-center gap-3 font-serif">
       <TrendingUp className="h-6 w-6 text-purple-600" />
       Model Performance vs. Complexity
     </h3>
@@ -109,7 +109,7 @@ const ChartComponent = () => (
             }}
             aria-label={`${d.name} performance: ${d.performance}%`}
           />
-          <p className="text-xs text-slate-600 font-medium text-center mt-2 whitespace-nowrap">
+          <p className="text-xs text-slate-600 dark:text-slate-400 font-medium text-center mt-2 whitespace-nowrap">
             {d.name}
           </p>
         </div>
@@ -144,12 +144,12 @@ export default function LSTMSystematicTradingArticle() {
           The advent of deep learning has provided a powerful new class of tools for analyzing complex systems, and nowhere is this more relevant than in the domain of quantitative finance. Among these tools, the Long Short-Term Memory (LSTM) network, a specialized type of Recurrent Neural Network (RNN), has emerged as a particularly compelling architecture for modeling the intricate, time-dependent nature of financial markets.
         </p>
 
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-400 p-6 rounded-xl">
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-xl">
           <div className="flex items-start gap-3">
-            <Zap className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+            <Zap className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
             <div>
               <p className="text-blue-800 font-medium">Key Insight</p>
-              <p className="text-blue-700 mt-1">
+              <p className="text-[#A8672E] dark:text-[#D08F52] mt-1">
                 LSTMs represent a breakthrough in sequential modeling, specifically designed to overcome the vanishing gradient problem that plagued traditional RNNs when processing long sequences of financial data.
               </p>
             </div>
@@ -184,17 +184,17 @@ export default function LSTMSystematicTradingArticle() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-4 mt-6">
-            <div className="bg-white p-6 rounded-xl shadow-md border border-purple-100">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md border border-purple-100">
               <h5 className="font-semibold text-purple-600 mb-2">Forget Gate</h5>
-              <p className="text-sm text-slate-600">Decides what information to discard from the cell state</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Decides what information to discard from the cell state</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border border-purple-100">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md border border-purple-100">
               <h5 className="font-semibold text-purple-600 mb-2">Input Gate</h5>
-              <p className="text-sm text-slate-600">Determines what new information to store in the cell state</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Determines what new information to store in the cell state</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border border-purple-100">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md border border-purple-100">
               <h5 className="font-semibold text-purple-600 mb-2">Output Gate</h5>
-              <p className="text-sm text-slate-600">Controls what parts of the cell state to output</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Controls what parts of the cell state to output</p>
             </div>
           </div>
         </SubSection>
@@ -236,24 +236,24 @@ export default function LSTMSystematicTradingArticle() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-6">
-            <div className="bg-white p-6 rounded-xl shadow-md border border-green-200">
-              <h4 className="text-lg font-semibold mb-3 text-green-600 flex items-center gap-2">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md border border-green-200">
+              <h4 className="text-lg font-semibold mb-3 text-[#1D8A70] dark:text-[#3CBF9C] flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
                 LSTM Advantages
               </h4>
-              <ul className="space-y-2 text-sm text-slate-700">
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
                 <li>• Captures long-term dependencies</li>
                 <li>• Handles non-linear relationships</li>
                 <li>• Adapts to regime changes</li>
                 <li>• Processes multivariate inputs</li>
               </ul>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border border-red-200">
-              <h4 className="text-lg font-semibold mb-3 text-red-600 flex items-center gap-2">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl shadow-md border border-red-200">
+              <h4 className="text-lg font-semibold mb-3 text-[#BC4128] dark:text-[#E2694A] flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5" />
                 Traditional Limitations
               </h4>
-              <ul className="space-y-2 text-sm text-slate-700">
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
                 <li>• Assumes stationarity</li>
                 <li>• Limited memory capacity</li>
                 <li>• Linear relationships only</li>
@@ -297,17 +297,17 @@ export default function LSTMSystematicTradingArticle() {
             The effectiveness of an LSTM is highly dependent on how the trading problem is formulated. Instead of predicting exact future prices (a difficult regression task), reframing the problem can lead to more robust models:
           </p>
           <div className="grid gap-4 mt-4">
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <h5 className="font-semibold text-slate-800">Directional Movement Forecasting</h5>
-              <p className="text-sm text-slate-600 mt-1">Predicting direction (Up, Down, Neutral) is more tractable than exact prices</p>
+            <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+              <h5 className="font-semibold text-slate-800 dark:text-slate-200">Directional Movement Forecasting</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Predicting direction (Up, Down, Neutral) is more tractable than exact prices</p>
             </div>
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <h5 className="font-semibold text-slate-800">Volatility Forecasting</h5>
-              <p className="text-sm text-slate-600 mt-1">Critical for risk management and options pricing strategies</p>
+            <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+              <h5 className="font-semibold text-slate-800 dark:text-slate-200">Volatility Forecasting</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Critical for risk management and options pricing strategies</p>
             </div>
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <h5 className="font-semibold text-slate-800">Direct Trading Signals</h5>
-              <p className="text-sm text-slate-600 mt-1">Training to output trading actions (Buy, Hold, Sell) directly</p>
+            <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+              <h5 className="font-semibold text-slate-800 dark:text-slate-200">Direct Trading Signals</h5>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Training to output trading actions (Buy, Hold, Sell) directly</p>
             </div>
           </div>
         </SubSection>
@@ -353,12 +353,12 @@ export default function LSTMSystematicTradingArticle() {
             Deep learning models are highly susceptible to overfitting noisy financial data. Regularization techniques like Dropout and Early Stopping are essential. Furthermore, data snooping (curve-fitting backtests) is an insidious pitfall that demands disciplined out-of-sample and walk-forward validation.
           </p>
 
-          <div className="bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-400 p-6 rounded-xl">
+          <div className="bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 rounded-xl">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
+              <AlertTriangle className="h-5 w-5 text-[#BC4128] dark:text-[#E2694A] mt-1 flex-shrink-0" />
               <div>
                 <p className="text-red-800 font-medium">Critical Warning</p>
-                <p className="text-red-700 mt-1">
+                <p className="text-[#BC4128] dark:text-[#E2694A] mt-1">
                   The complexity of LSTMs makes them particularly prone to overfitting. Always use proper cross-validation and out-of-sample testing.
                 </p>
               </div>

@@ -7,19 +7,19 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 // Helper component for consistent section titles
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
   <div className="text-center mb-12">
-    <h2 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">{children}</h2>
+    <h2 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight font-serif">{children}</h2>
     {subtitle && <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">{subtitle}</p>}
   </div>
 );
 
 // Helper component for icon-adorned feature cards
 const FeatureCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-gray-300">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl border border-gray-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-gray-300">
     <div className="flex items-center gap-4 mb-4">
-      <div className="bg-blue-100 text-blue-600 p-3 rounded-lg border border-blue-200/80">
+      <div className="bg-blue-100 text-[#A8672E] dark:text-[#D08F52] p-3 rounded-lg border border-blue-200/80">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+      <h3 className="text-xl font-semibold text-gray-800 font-serif">{title}</h3>
     </div>
     <p className="text-gray-600 leading-relaxed">{children}</p>
   </div>
@@ -29,13 +29,13 @@ const FeatureCard = ({ icon, title, children }: { icon: React.ReactNode; title: 
 const TimelineItem = ({ Icon, year, title, children }: { Icon: any; year: string; title: string; children: React.ReactNode }) => (
   <div className="flex items-start gap-4 md:gap-6">
     <div className="flex flex-col items-center">
-      <div className="bg-gray-100 border border-gray-200 rounded-full p-3 text-blue-600">
+      <div className="bg-gray-100 border border-gray-200 rounded-full p-3 text-[#A8672E] dark:text-[#D08F52]">
         <Icon className="w-6 h-6" />
       </div>
       <div className="w-px h-full bg-gray-200 min-h-[100px]"></div>
     </div>
     <div>
-      <p className="text-blue-600 font-semibold text-lg">{year}</p>
+      <p className="text-[#A8672E] dark:text-[#D08F52] font-semibold text-lg">{year}</p>
       <h4 className="text-gray-900 font-bold text-xl mb-2">{title}</h4>
       <p className="text-gray-600">{children}</p>
     </div>
@@ -44,7 +44,7 @@ const TimelineItem = ({ Icon, year, title, children }: { Icon: any; year: string
 
 // Quote Card Component
 const QuoteCard = ({ children, source }: { children: React.ReactNode; source: string }) => (
-  <div className="bg-gray-50/80 border-l-4 border-blue-500 p-6 rounded-r-lg">
+  <div className="bg-gray-50/80 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg">
     <Quote className="w-8 h-8 text-blue-200 mb-4" />
     <blockquote className="text-xl text-gray-700 italic leading-relaxed">{children}</blockquote>
     <p className="mt-4 text-right font-semibold text-gray-600">- {source}</p>
@@ -127,7 +127,7 @@ export default function DruckenmillerDoctrine() {
         </section>
 
         {/* Golden Words Section */}
-        <section id="golden-words" className={`fade-in-section bg-white py-20 md:py-28 ${fadeInClass('golden-words')}`}>
+        <section id="golden-words" className={`fade-in-section bg-white dark:bg-[#0A0D14] py-20 md:py-28 ${fadeInClass('golden-words')}`}>
           <div className="container mx-auto px-4">
             <SectionTitle subtitle="A collection of core tenets from the man himself, revealing the mindset required for superior performance.">
               Golden Words
@@ -178,10 +178,10 @@ export default function DruckenmillerDoctrine() {
             Legends of the Trade
           </SectionTitle>
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-            <div className="bg-white p-8 rounded-2xl border border-green-200 shadow-sm shadow-green-500/5">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl border border-green-200 shadow-sm shadow-green-500/5">
               <div className="flex items-center gap-4 mb-4">
-                <TrendingUp className="w-8 h-8 text-green-500" />
-                <h3 className="text-2xl font-bold text-gray-800">Victory: Breaking the Bank of England (1992)</h3>
+                <TrendingUp className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C]" />
+                <h3 className="text-2xl font-bold text-gray-800 font-serif">Victory: Breaking the Bank of England (1992)</h3>
               </div>
               <p className="text-gray-600 mb-4">
                 The macro thesis was a flawed currency peg. The pivotal moment came when Soros challenged his position size. Druckenmiller initially had a short position equal to the size of the entire fund. Soros called this &ldquo;ridiculously small&rdquo; and urged him to bet double that. This was the ultimate &ldquo;go for the jugular&rdquo; moment.
@@ -190,10 +190,10 @@ export default function DruckenmillerDoctrine() {
                 Result: On &ldquo;Black Wednesday,&rdquo; Britain capitulated. The Quantum Fund netted over $1 billion, and Druckenmiller cemented his legend.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl border border-red-200 shadow-sm shadow-red-500/5">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl border border-red-200 shadow-sm shadow-red-500/5">
               <div className="flex items-center gap-4 mb-4">
-                <TrendingDown className="w-8 h-8 text-red-500" />
-                <h3 className="text-2xl font-bold text-gray-800">Defeat: The Dot-Com Meltdown (2000)</h3>
+                <TrendingDown className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
+                <h3 className="text-2xl font-bold text-gray-800 font-serif">Defeat: The Dot-Com Meltdown (2000)</h3>
               </div>
               <p className="text-gray-600 mb-4">
                 A failure of psychology. After correctly identifying the bubble and selling, the fear of missing out (FOMO) drove him to capitulate. He watched young traders make easy money and couldn&apos;t stand it. He bought $6 billion in tech stocks at the absolute peak.
@@ -206,7 +206,7 @@ export default function DruckenmillerDoctrine() {
         </section>
 
         {/* Recent Performance Section */}
-        <section id="recent-performance" className={`fade-in-section bg-white py-20 md:py-28 ${fadeInClass('recent-performance')}`}>
+        <section id="recent-performance" className={`fade-in-section bg-white dark:bg-[#0A0D14] py-20 md:py-28 ${fadeInClass('recent-performance')}`}>
           <div className="container mx-auto px-4">
             <SectionTitle subtitle="While Duquesne is a private family office with no public returns, we can analyze 13F filings and public commentary to infer recent performance and strategy.">
               Recent Performance & Outlook
@@ -214,10 +214,10 @@ export default function DruckenmillerDoctrine() {
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1 bg-gray-50 border border-gray-200 p-8 rounded-2xl">
                 <div className="flex items-center gap-4 mb-4">
-                  <BarChart className="w-8 h-8 text-blue-600" />
-                  <h3 className="text-2xl font-bold text-gray-800">13F Portfolio Performance</h3>
+                  <BarChart className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
+                  <h3 className="text-2xl font-bold text-gray-800 font-serif">13F Portfolio Performance</h3>
                 </div>
-                <p className="text-5xl font-bold text-blue-600 mb-2">~29%</p>
+                <p className="text-5xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">~29%</p>
                 <p className="text-gray-600 font-semibold mb-4">1-Year Estimated Return</p>
                 <p className="text-sm text-gray-500">
                   <span className="font-bold">Disclaimer:</span> This is a hypothetical return calculated by third parties based *only* on the publicly disclosed long U.S. stock positions from 13F filings. It is not the official performance of the Duquesne Family Office and excludes shorts, international assets, and other instruments.
@@ -248,7 +248,7 @@ export default function DruckenmillerDoctrine() {
                 <p>13F filings are delayed up to 45 days and exclude crucial data like short positions, non-U.S. holdings, and commodities. They are a starting point for research, not a shopping list.</p>
               </div>
             </div>
-            <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg">
+            <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg">
               <table className="w-full min-w-[700px] text-left">
                 <thead>
                   <tr>
@@ -292,56 +292,56 @@ export default function DruckenmillerDoctrine() {
         </section>
 
         {/* Key Lessons Section */}
-        <section id="key-lessons" className={`fade-in-section bg-white py-20 md:py-28 ${fadeInClass('key-lessons')}`}>
+        <section id="key-lessons" className={`fade-in-section bg-white dark:bg-[#0A0D14] py-20 md:py-28 ${fadeInClass('key-lessons')}`}>
           <div className="container mx-auto px-4">
             <SectionTitle subtitle="The actionable insights that separate legendary performance from mediocrity.">
               The Druckenmiller Playbook
             </SectionTitle>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-blue-50 border border-blue-200 p-8 rounded-2xl">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 p-8 rounded-2xl">
                 <div className="flex items-center gap-4 mb-6">
-                  <Star className="w-8 h-8 text-blue-600" />
-                  <h3 className="text-2xl font-bold text-gray-800">Investment Philosophy</h3>
+                  <Star className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
+                  <h3 className="text-2xl font-bold text-gray-800 font-serif">Investment Philosophy</h3>
                 </div>
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Focus on macro themes and central bank policy over individual stock picking</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Concentrate capital in high-conviction ideas rather than diversifying</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Scale position sizes based on conviction level and risk-reward asymmetry</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Preserve capital through swift loss-cutting and flexible positioning</span>
                   </li>
                 </ul>
               </div>
-              <div className="bg-green-50 border border-green-200 p-8 rounded-2xl">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-green-200 p-8 rounded-2xl">
                 <div className="flex items-center gap-4 mb-6">
-                  <BookOpen className="w-8 h-8 text-green-600" />
-                  <h3 className="text-2xl font-bold text-gray-800">Psychological Framework</h3>
+                  <BookOpen className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C]" />
+                  <h3 className="text-2xl font-bold text-gray-800 font-serif">Psychological Framework</h3>
                 </div>
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Maintain intellectual humility and willingness to admit mistakes quickly</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Guard against emotional decision-making, especially FOMO and hubris</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Focus on learning from failures rather than celebrating successes</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full mt-2 flex-shrink-0"></div>
                     <span>Develop mental flexibility to change positions when thesis breaks down</span>
                   </li>
                 </ul>

@@ -53,7 +53,7 @@ const InteractiveSkewViz = () => {
         <button 
           onClick={() => setMode('normal')} 
           className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
-            mode === 'normal' ? 'bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400'
+            mode === 'normal' ? 'bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900 dark:text-slate-100' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400'
           }`}
         >
           Normal
@@ -112,7 +112,7 @@ const RegimeVisualizer = () => {
     <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-slate-200 dark:border-gray-800 overflow-hidden mb-12">
       <div className="bg-slate-900 dark:bg-black text-white p-6 flex flex-col md:flex-row justify-between items-center">
         <div>
-          <h3 className="text-xl font-bold flex items-center gap-2">
+          <h3 className="text-xl font-bold flex items-center gap-2 font-serif">
             <Calculator className="text-[#A8672E]" /> Regime Visualizer
           </h3>
           <p className="text-slate-400 text-sm mt-1">Simulate a rally and observe the IV curve response.</p>
@@ -187,7 +187,7 @@ const RegimeVisualizer = () => {
           <div className="flex gap-4 mt-4">
             <button 
               onClick={() => setStep(0)} 
-              className="text-xs font-bold text-slate-400 uppercase tracking-wide hover:text-slate-600 dark:hover:text-slate-300"
+              className="text-xs font-bold text-slate-400 uppercase tracking-wide hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
             >
               Reset
             </button>
@@ -285,10 +285,10 @@ export default function VolatilitySurfaceArticle() {
             <div className="bg-[#14171B] dark:bg-[#05070A] rounded-2xl p-8 text-center text-slate-300 relative overflow-hidden shadow-sm border border-gray-800">
               <div className="relative z-10">
                 <div className="text-6xl font-black text-[#A8672E] mb-2 opacity-50">3D</div>
-                <h3 className="text-2xl font-bold text-white mb-4">Implied Volatility Map</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 font-serif">Implied Volatility Map</h3>
                 <div className="grid grid-cols-3 gap-2 text-sm">
-                  <div className="bg-white/10 p-2 rounded">Strike Price (X)</div>
-                  <div className="bg-white/10 p-2 rounded">Maturity (Y)</div>
+                  <div className="bg-white dark:bg-[#0A0D14]/10 p-2 rounded">Strike Price (X)</div>
+                  <div className="bg-white dark:bg-[#0A0D14]/10 p-2 rounded">Maturity (Y)</div>
                   <div className="bg-[#A8672E]/20 p-2 rounded border border-[#A8672E]/50 text-[#A8672E]">Imp. Volatility (Z)</div>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function VolatilitySurfaceArticle() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <MousePointerClick className="w-5 h-5 text-[#A8672E]" />
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest">Interactive Volatility Lab</h3>
+                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest font-serif">Interactive Volatility Lab</h3>
               </div>
               <InteractiveSkewViz />
             </div>
@@ -410,7 +410,7 @@ export default function VolatilitySurfaceArticle() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
-              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2 font-serif">
                 <Scale className="text-[#A8672E]" /> 25&Delta; Risk Reversal
               </h3>
               <p className="text-sm mb-4 leading-relaxed">
@@ -428,7 +428,7 @@ export default function VolatilitySurfaceArticle() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
-              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2 font-serif">
                 <Activity className="text-[#A8672E]" /> Put-Call Ratio (PCR)
               </h3>
               <p className="text-sm mb-4 leading-relaxed">
@@ -461,7 +461,7 @@ export default function VolatilitySurfaceArticle() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
-              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2 font-serif">
                 <AlertTriangle className="text-[#A8672E]" /> Normalized Skew
               </h3>
               <p className="text-sm mb-4 leading-relaxed">
@@ -481,7 +481,7 @@ export default function VolatilitySurfaceArticle() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
-              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-xl text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2 font-serif">
                 <Layers className="text-[#A8672E]" /> Gamma Exposure (GEX)
               </h3>
               <p className="text-sm mb-4 leading-relaxed">

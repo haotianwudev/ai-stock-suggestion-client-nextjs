@@ -41,8 +41,8 @@ const Table = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
 const Section = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
   <section className="mb-16">
     <div className="flex items-center mb-6">
-      <div className="bg-blue-500/10 text-blue-500 p-3 rounded-lg mr-4">{icon}</div>
-      <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">{title}</h2>
+      <div className="bg-[#A8672E] dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] p-3 rounded-lg mr-4">{icon}</div>
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 font-serif">{title}</h2>
     </div>
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
       {children}
@@ -52,7 +52,7 @@ const Section = ({ icon, title, children }: { icon: React.ReactNode; title: stri
 
 const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mt-10">
-    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 border-l-4 border-blue-500 pl-4">{title}</h3>
+    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 font-serif">{title}</h3>
     {children}
   </div>
 );
@@ -366,7 +366,7 @@ Source: {file: 'doc2.pdf', page: 2}
         </SubSection>
         <SubSection title="7.3. Case Study: A Secure, Multi-Tenant RAG System">
             <div className="flex items-start">
-                <ShieldCheck className="text-green-500 mr-4 mt-1 flex-shrink-0" size={24}/>
+                <ShieldCheck className="text-[#1D8A70] dark:text-[#3CBF9C] mr-4 mt-1 flex-shrink-0" size={24}/>
                 <div>
                     <p>A powerful real-world application of metadata filtering is implementing secure, multi-tenant RAG. This ensures users can only query data they are authorized to access.</p>
                     <ul>

@@ -16,7 +16,7 @@ const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: {
       <div className={`p-2 rounded-lg ${colorClass.replace('border-', 'bg-').replace('500', '100')} text-gray-800 dark:text-white`}>
         <Icon size={24} />
       </div>
-      <h2 className="text-3xl font-bold text-slate-800 font-serif tracking-tight">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 font-serif tracking-tight">{title}</h2>
     </div>
     <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">{subtitle}</p>
   </div>
@@ -34,10 +34,10 @@ const Callout = ({ title, children, type = "info" }: {
   type?: "info" | "warning" | "success" | "finance";
 }) => {
   const styles = {
-    info: { border: "border-blue-500 dark:border-blue-900/50", bg: "bg-blue-50 dark:bg-blue-900/20", text: "text-blue-900 dark:text-blue-400", icon: BookOpen },
-    warning: { border: "border-orange-500 dark:border-orange-900/50", bg: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-900 dark:text-orange-400", icon: AlertTriangle },
-    success: { border: "border-emerald-500 dark:border-emerald-900/50", bg: "bg-emerald-50 dark:bg-emerald-900/20", text: "text-emerald-900 dark:text-emerald-400", icon: Activity },
-    finance: { border: "border-indigo-500 dark:border-indigo-900/50", bg: "bg-indigo-50 dark:bg-indigo-900/20", text: "text-indigo-900 dark:text-indigo-400", icon: TrendingUp },
+    info: { border: "border-[#A8672E] dark:border-[#D08F52] dark:border-blue-900/50", bg: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20", text: "text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52]", icon: BookOpen },
+    warning: { border: "border-[#BC4128] dark:border-[#E2694A] dark:border-orange-900/50", bg: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20", text: "text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A]", icon: AlertTriangle },
+    success: { border: "border-[#1D8A70] dark:border-[#3CBF9C] dark:border-emerald-900/50", bg: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20", text: "text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C]", icon: Activity },
+    finance: { border: "border-[#A8672E] dark:border-[#D08F52] dark:border-indigo-900/50", bg: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20", text: "text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]", icon: TrendingUp },
   };
   const style = styles[type] || styles.info;
   const Icon = style.icon;
@@ -89,13 +89,13 @@ export default function ConvergenceAnalysisArticle() {
                 </p>
               </div>
               <div className="bg-gradient-to-br from-slate-100 dark:from-[#14171B] to-white dark:to-black/40 p-8 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-                <h3 className="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
-                  <Scale size={20} className="text-indigo-500" />
+                <h3 className="font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2 font-serif">
+                  <Scale size={20} className="text-[#A8672E] dark:text-[#D08F52]" />
                   Why it matters
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex gap-3 text-slate-700 dark:text-slate-300">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xs">1</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-xs">1</span>
                     <span><strong>Pricing:</strong> FTAP relies on <span className="font-mono text-sm bg-slate-100 dark:bg-slate-800 px-1 rounded">L¹</span> and <span className="font-mono text-sm bg-slate-100 dark:bg-slate-800 px-1 rounded">L∞</span> topology.</span>
                   </li>
                   <li className="flex gap-3 text-slate-700 dark:text-slate-300">
@@ -107,19 +107,19 @@ export default function ConvergenceAnalysisArticle() {
                     <span><strong>Risk:</strong> Expected Shortfall is an <span className="font-mono text-sm bg-slate-100 dark:bg-slate-800 px-1 rounded">L¹</span> minimization.</span>
                   </li>
                   <li className="flex gap-3 text-slate-700 dark:text-slate-300">
-                    <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xs">4</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-full flex items-center justify-center font-bold text-xs">4</span>
                     <span><strong>Hedging:</strong> Delta-hedging convergence requires uniform bounds on Greeks.</span>
                   </li>
                   <li className="flex gap-3 text-slate-700 dark:text-slate-300">
-                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold text-xs">5</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-100 text-[#1D8A70] dark:text-[#3CBF9C] rounded-full flex items-center justify-center font-bold text-xs">5</span>
                     <span><strong>Calibration:</strong> Implied volatility surfaces must converge in appropriate norms to avoid arbitrage.</span>
                   </li>
                 </ul>
               </div>
             </div>
             
-            <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 p-8 rounded-2xl border border-blue-100 dark:border-blue-900/30">
-              <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-4">The Historical Context</h3>
+            <div className="mt-12 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-8 rounded-2xl border border-blue-100 dark:border-blue-900/30">
+              <h3 className="text-2xl font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 font-serif">The Historical Context</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 The 1973 Black-Scholes revolution wasn&apos;t just about finding a formula—it was about proving that continuous-time hedging could replicate option payoffs. But this proof required <strong>Itô calculus</strong>, which itself rests on measure-theoretic probability.
               </p>
@@ -135,11 +135,11 @@ export default function ConvergenceAnalysisArticle() {
               icon={BookOpen} 
               title="Functional Spaces" 
               subtitle="The geometric stages where financial variables perform."
-              colorClass="border-indigo-500" 
+              colorClass="border-[#A8672E] dark:border-[#D08F52]" 
             />
             
-            <div className="mb-12 bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
-              <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-400 mb-3">The Hierarchy of Spaces</h3>
+            <div className="mb-12 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
+              <h3 className="text-xl font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">The Hierarchy of Spaces</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 Financial mathematics operates in a hierarchy of function spaces, each with distinct properties that enable different types of analysis. Understanding this hierarchy is crucial for selecting the right mathematical tools for each problem.
               </p>
@@ -174,15 +174,15 @@ export default function ConvergenceAnalysisArticle() {
                 <MathBlock>||f||₁ = ∫ |f(x)| dx &lt; ∞</MathBlock>
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
+                    <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">•</span>
                     <span>Contains probability densities and pricing kernels</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
+                    <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">•</span>
                     <span>Natural space for expected values and risk measures</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
+                    <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">•</span>
                     <span>Dual space is L∞ (bounded measurable functions)</span>
                   </li>
                 </ul>
@@ -244,15 +244,15 @@ export default function ConvergenceAnalysisArticle() {
             />
 
             <div className="mb-12 bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl border border-purple-100 dark:border-purple-900/30">
-              <h3 className="text-xl font-bold text-purple-900 dark:text-purple-400 mb-3">The Convergence Hierarchy</h3>
+              <h3 className="text-xl font-bold text-purple-900 dark:text-purple-400 mb-3 font-serif">The Convergence Hierarchy</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 Understanding the relationships between different modes of convergence is crucial for financial modeling. Stronger modes imply weaker ones, but the converse is not true.
               </p>
               <div className="bg-white dark:bg-black/40 p-4 rounded-lg border border-purple-200 dark:border-purple-900/30">
-                <p className="font-mono text-sm text-slate-600 text-center">
+                <p className="font-mono text-sm text-slate-600 dark:text-slate-400 text-center">
                   Uniform (L∞) ⇒ Mean (L¹) ⇒ Convergence in Measure ⇒ Almost Sure Convergence
                 </p>
-                <p className="font-mono text-sm text-slate-600 text-center mt-2">
+                <p className="font-mono text-sm text-slate-600 dark:text-slate-400 text-center mt-2">
                   Mean-Square (L²) ⇒ Mean (L¹)
                 </p>
               </div>
@@ -277,13 +277,13 @@ export default function ConvergenceAnalysisArticle() {
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Binomial tree convergence to Black-Scholes</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-bold text-blue-700 dark:text-blue-400">Mean (L¹)</td>
+                      <td className="p-4 font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Mean (L¹)</td>
                       <td className="p-4 font-mono text-slate-600 dark:text-slate-400">∫ |fₙ - f| &rarr; 0</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Gold standard for pricing. Ensures expected payoff converges to true value.</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Monte Carlo option pricing convergence</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-bold text-green-700 dark:text-green-400">Mean-Square (L²)</td>
+                      <td className="p-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Mean-Square (L²)</td>
                       <td className="p-4 font-mono text-slate-600 dark:text-slate-400">(∫ |fₙ - f|²)^(1/2) &rarr; 0</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Natural metric for variance/volatility. Used in &quot;Strong Convergence&quot; of SDEs.</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Euler-Maruyama scheme for path-dependent options</td>
@@ -295,7 +295,7 @@ export default function ConvergenceAnalysisArticle() {
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Dangerous for risk aggregation</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-bold text-orange-700 dark:text-orange-400">Weak-* (L∞)</td>
+                      <td className="p-4 font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Weak-* (L∞)</td>
                       <td className="p-4 font-mono text-slate-600 dark:text-slate-400">∫ fₙ g &rarr; ∫ f g ∀g∈L¹</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Used in FTAP. Ensures existence of equivalent martingale measure.</td>
                       <td className="p-4 text-sm text-slate-600 dark:text-slate-400">No-arbitrage pricing theory</td>
@@ -306,15 +306,15 @@ export default function ConvergenceAnalysisArticle() {
             </div>
 
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Pathological Examples: When Intuition Fails</h3>
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 font-serif">Pathological Examples: When Intuition Fails</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
                 These examples illustrate why we need rigorous convergence analysis. In each case, a naive approach suggests convergence, but the mathematical reality is different.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-900/30">
-                <h4 className="font-bold text-red-800 dark:text-red-400 mb-2 flex items-center gap-2">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-900/30">
+                <h4 className="font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                   <AlertTriangle size={18} />
                   Pathology 1: Escape to Horizontal Infinity
                 </h4>
@@ -324,13 +324,13 @@ export default function ConvergenceAnalysisArticle() {
                 <div className="text-xs bg-white dark:bg-black/40 p-3 rounded border border-red-100 dark:border-red-900/30 font-mono text-slate-500 dark:text-slate-400 mb-3">
                   fₙ(x) = 𝟙[n, n+1](x)
                 </div>
-                <p className="text-xs text-red-800 dark:text-red-400 mb-2"><strong>Financial Example:</strong></p>
+                <p className="text-xs text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2"><strong>Financial Example:</strong></p>
                 <div className="text-xs bg-white dark:bg-black/40 p-3 rounded border border-red-100 dark:border-red-900/30 text-slate-600 dark:text-slate-400">
                   Analogy: Ignoring tail risk because the probability of it happening <em>today</em> is near zero. The 2008 crisis showed that low-probability events in the far tail can have catastrophic consequences.
                 </div>
               </div>
-              <div className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl border border-orange-100 dark:border-orange-900/30">
-                <h4 className="font-bold text-orange-800 dark:text-orange-400 mb-2 flex items-center gap-2">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-6 rounded-xl border border-orange-100 dark:border-orange-900/30">
+                <h4 className="font-bold text-orange-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2 flex items-center gap-2">
                   <AlertTriangle size={18} />
                   Pathology 2: Escape to Vertical Infinity
                 </h4>
@@ -340,7 +340,7 @@ export default function ConvergenceAnalysisArticle() {
                 <div className="text-xs bg-white dark:bg-black/40 p-3 rounded border border-orange-100 dark:border-orange-900/30 font-mono text-slate-500 dark:text-slate-400 mb-3">
                   fₙ(x) = n · 𝟙[0, 1/n](x)
                 </div>
-                <p className="text-xs text-orange-800 dark:text-orange-400 mb-2"><strong>Financial Example:</strong></p>
+                <p className="text-xs text-orange-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-2"><strong>Financial Example:</strong></p>
                 <div className="text-xs bg-white dark:bg-black/40 p-3 rounded border border-orange-100 dark:border-orange-900/30 text-slate-600 dark:text-slate-400">
                   Analogy: A &quot;Flash Crash&quot; triggered by a specific barrier being hit. Digital options exhibit this behavior—the payoff is discontinuous, causing Greeks to explode at the strike.
                 </div>
@@ -364,11 +364,11 @@ export default function ConvergenceAnalysisArticle() {
               icon={Sigma} 
               title="Stochastic Calculus & Discretization" 
               subtitle="Bridging the gap between continuous theory and discrete simulation."
-              colorClass="border-emerald-500" 
+              colorClass="border-[#1D8A70] dark:border-[#3CBF9C]" 
             />
 
-            <div className="mb-12 bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
-              <h3 className="text-xl font-bold text-emerald-900 dark:text-emerald-400 mb-3">The Discretization Challenge</h3>
+            <div className="mb-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
+              <h3 className="text-xl font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 font-serif">The Discretization Challenge</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 Continuous-time stochastic differential equations (SDEs) are elegant in theory but must be discretized for numerical implementation. The choice of discretization scheme determines both accuracy and computational cost.
               </p>
@@ -387,19 +387,19 @@ export default function ConvergenceAnalysisArticle() {
                 <p className="text-slate-600 dark:text-slate-400 mb-4">
                   Required for <strong>path-dependent options</strong> (Asian, Barrier, Lookback). The simulated path must stay close to the true path at every point in time.
                 </p>
-                <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                  <h4 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2 text-sm">When to Use:</h4>
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+                  <h4 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2 text-sm">When to Use:</h4>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-start gap-2">
-                      <span className="text-emerald-600 dark:text-emerald-400">✓</span>
+                      <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">✓</span>
                       <span>Barrier options (path must not cross barrier)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-emerald-600 dark:text-emerald-400">✓</span>
+                      <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">✓</span>
                       <span>Asian options (average of path matters)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-emerald-600 dark:text-emerald-400">✓</span>
+                      <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">✓</span>
                       <span>Delta hedging (need accurate path for rebalancing)</span>
                     </li>
                   </ul>
@@ -411,19 +411,19 @@ export default function ConvergenceAnalysisArticle() {
                 <p className="text-slate-600 dark:text-slate-400 mb-4">
                   Sufficient for <strong>European options</strong>. We only care that the final distribution of prices is correct, not the specific path taken to get there.
                 </p>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-900/30">
-                  <h4 className="font-bold text-blue-800 dark:text-blue-400 mb-2 text-sm">When to Use:</h4>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-900/30">
+                  <h4 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-2 text-sm">When to Use:</h4>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
+                      <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">✓</span>
                       <span>European options (only terminal value matters)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
+                      <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">✓</span>
                       <span>Faster convergence rate (β &gt; γ typically)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
+                      <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">✓</span>
                       <span>Computational efficiency (larger time steps allowed)</span>
                     </li>
                   </ul>
@@ -431,15 +431,15 @@ export default function ConvergenceAnalysisArticle() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-8 border border-emerald-100 dark:border-emerald-900/30 mb-8">
-              <h3 className="text-xl font-bold text-emerald-900 mb-6">Euler-Maruyama vs. Milstein</h3>
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-xl p-8 border border-emerald-100 dark:border-emerald-900/30 mb-8">
+              <h3 className="text-xl font-bold text-emerald-900 mb-6 font-serif">Euler-Maruyama vs. Milstein</h3>
               <div className="space-y-6">
                 <div className="flex flex-col md:flex-row gap-4 items-start">
                   <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg shadow-sm dark:shadow-none flex-1 border border-emerald-100 dark:border-emerald-900/30">
-                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest block mb-2">Euler-Maruyama</span>
+                    <span className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] uppercase tracking-widest block mb-2">Euler-Maruyama</span>
                     <div className="text-2xl font-bold text-slate-800 dark:text-white mb-1">Order 0.5</div>
                     <div className="text-sm text-slate-500 dark:text-slate-400 mb-3">Strong Convergence</div>
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded mb-3">
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded mb-3">
                       <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
                         Xₙ₊₁ = Xₙ + μ(Xₙ)Δt + σ(Xₙ)ΔWₙ
                       </p>
@@ -449,10 +449,10 @@ export default function ConvergenceAnalysisArticle() {
                     </p>
                   </div>
                   <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg shadow-sm dark:shadow-none flex-1 border border-emerald-100 dark:border-emerald-900/30">
-                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest block mb-2">Milstein Scheme</span>
+                    <span className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] uppercase tracking-widest block mb-2">Milstein Scheme</span>
                     <div className="text-2xl font-bold text-slate-800 dark:text-white mb-1">Order 1.0</div>
                     <div className="text-sm text-slate-500 dark:text-slate-400 mb-3">Strong Convergence</div>
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded mb-3">
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded mb-3">
                       <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
                         Xₙ₊₁ = Xₙ + μΔt + σΔWₙ + ½σσ&apos;(ΔWₙ² - Δt)
                       </p>
@@ -491,7 +491,7 @@ export default function ConvergenceAnalysisArticle() {
                     <span className="font-bold">Euler-Maruyama:</span>
                     <span>N = O(ε⁻²) steps for error ε</span>
                   </div>
-                  <div className="flex justify-between p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded">
+                  <div className="flex justify-between p-2 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded">
                     <span className="font-bold">Milstein:</span>
                     <span>N = O(ε⁻¹) steps for error ε</span>
                   </div>
@@ -519,7 +519,7 @@ export default function ConvergenceAnalysisArticle() {
             />
 
             <div className="mb-12 bg-cyan-50 dark:bg-cyan-900/20 p-6 rounded-xl border border-cyan-100 dark:border-cyan-900/30">
-              <h3 className="text-xl font-bold text-cyan-900 dark:text-cyan-400 mb-3">The Fourier Revolution in Finance</h3>
+              <h3 className="text-xl font-bold text-cyan-900 dark:text-cyan-400 mb-3 font-serif">The Fourier Revolution in Finance</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 Fourier methods transform option pricing from a PDE problem to an algebraic problem in frequency space. The Fast Fourier Transform (FFT) enables pricing entire option surfaces in milliseconds—but only if the convergence properties are properly managed.
               </p>
@@ -533,8 +533,8 @@ export default function ConvergenceAnalysisArticle() {
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Carr-Madan & Damping</h3>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">Carr-Madan & Damping</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                     Call option prices don&apos;t decay to zero as strike <span className="font-mono">k &rarr; -∞</span>, meaning they aren&apos;t in <span className="font-mono">L¹</span>. We can&apos;t Fourier transform them directly.
                   </p>
                   <div className="bg-cyan-50 dark:bg-cyan-900/20 p-4 rounded-lg border border-cyan-100 dark:border-cyan-900/30 mb-4">
@@ -558,12 +558,12 @@ export default function ConvergenceAnalysisArticle() {
                   </Callout>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">The Gibbs Phenomenon</h3>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">The Gibbs Phenomenon</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                     For <strong>Digital Options</strong> (step functions), Fourier series oscillate wildly at the jump (discontinuity). This destroys convergence rates.
                   </p>
-                  <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-100 dark:border-orange-900/30 mb-4">
-                    <p className="text-sm text-orange-900 dark:text-orange-400 mb-2">
+                  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-100 dark:border-orange-900/30 mb-4">
+                    <p className="text-sm text-orange-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-2">
                       <strong>The Problem:</strong> Truncating the Fourier series at N terms gives:
                     </p>
                     <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
@@ -642,11 +642,11 @@ export default function ConvergenceAnalysisArticle() {
               icon={ShieldCheck} 
               title="Risk: Convexity & Robustness" 
               subtitle="Moving from Variance (L²) to Tail Risk (L¹)."
-              colorClass="border-rose-500" 
+              colorClass="border-[#BC4128] dark:border-[#E2694A]" 
             />
 
-            <div className="mb-12 bg-rose-50 dark:bg-rose-900/20 p-6 rounded-xl border border-rose-100 dark:border-rose-900/30">
-              <h3 className="text-xl font-bold text-rose-900 dark:text-rose-400 mb-3">The Paradigm Shift in Risk Measurement</h3>
+            <div className="mb-12 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-6 rounded-xl border border-rose-100 dark:border-rose-900/30">
+              <h3 className="text-xl font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-3 font-serif">The Paradigm Shift in Risk Measurement</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                 The 2008 financial crisis exposed fundamental flaws in traditional risk measures. Value-at-Risk (VaR), despite its regulatory popularity, fails basic mathematical coherence properties. The industry has shifted toward <strong>coherent risk measures</strong> that satisfy essential axioms.
               </p>
@@ -654,19 +654,19 @@ export default function ConvergenceAnalysisArticle() {
                 <h4 className="font-bold text-slate-800 dark:text-white mb-2 text-sm">Axioms of Coherent Risk Measures (Artzner et al., 1999)</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-xs">
                   <div className="flex items-start gap-2">
-                    <span className="text-rose-600 dark:text-rose-400 font-bold">1.</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold">1.</span>
                     <span><strong>Monotonicity:</strong> If X ≤ Y, then ρ(X) ≤ ρ(Y)</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-rose-600 dark:text-rose-400 font-bold">2.</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold">2.</span>
                     <span><strong>Sub-additivity:</strong> ρ(X + Y) ≤ ρ(X) + ρ(Y)</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-rose-600 dark:text-rose-400 font-bold">3.</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold">3.</span>
                     <span><strong>Positive Homogeneity:</strong> ρ(λX) = λρ(X) for λ ≥ 0</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-rose-600 dark:text-rose-400 font-bold">4.</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold">4.</span>
                     <span><strong>Translation Invariance:</strong> ρ(X + c) = ρ(X) - c</span>
                   </div>
                 </div>
@@ -676,7 +676,7 @@ export default function ConvergenceAnalysisArticle() {
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="p-6 rounded-2xl bg-slate-100 dark:bg-[#14171B] border border-slate-200 dark:border-white/10 opacity-75">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-slate-700 dark:text-slate-300">Value-at-Risk (VaR)</h3>
+                  <h3 className="text-xl font-bold text-slate-700 dark:text-slate-300 font-serif">Value-at-Risk (VaR)</h3>
                   <span className="text-xs bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded">Traditional</span>
                 </div>
                 <div className="bg-white dark:bg-black/40 p-3 rounded border border-slate-200 dark:border-white/10 mb-4">
@@ -689,29 +689,29 @@ export default function ConvergenceAnalysisArticle() {
                 </div>
                 <ul className="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">✖</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A]">✖</span>
                     <span>Not Sub-additive (Diversification might &quot;increase&quot; risk)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">✖</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A]">✖</span>
                     <span>Non-convex (Hard to optimize, multiple local minima)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">✖</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A]">✖</span>
                     <span>Ignorant of the tail shape beyond the quantile</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">✖</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A]">✖</span>
                     <span>Encourages regulatory arbitrage</span>
                   </li>
                 </ul>
               </div>
               <div className="p-6 rounded-2xl bg-white dark:bg-[#14171B] shadow-lg dark:shadow-none border-2 border-rose-100 dark:border-rose-900/30">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-rose-600 dark:text-rose-400">Expected Shortfall (ES)</h3>
-                  <span className="text-xs bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 px-2 py-1 rounded font-bold">Modern Standard</span>
+                  <h3 className="text-xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-serif">Expected Shortfall (ES)</h3>
+                  <span className="text-xs bg-rose-100 dark:bg-rose-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] px-2 py-1 rounded font-bold">Modern Standard</span>
                 </div>
-                <div className="bg-rose-50 dark:bg-rose-900/20 p-3 rounded border border-rose-200 dark:border-rose-900/30 mb-4">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-3 rounded border border-rose-200 dark:border-rose-900/30 mb-4">
                   <p className="font-mono text-sm text-slate-600 dark:text-slate-400">
                     ES_α(X) = E[X | X ≥ VaR_α(X)]
                   </p>
@@ -721,19 +721,19 @@ export default function ConvergenceAnalysisArticle() {
                 </div>
                 <ul className="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-green-500">✔</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C]">✔</span>
                     <span>Coherent Risk Measure (satisfies all 4 axioms)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-500">✔</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C]">✔</span>
                     <span><strong>Convex</strong> (Unique optimization solution)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-500">✔</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C]">✔</span>
                     <span><span className="font-mono">L¹</span> Minimization (Robust to outliers)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-500">✔</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C]">✔</span>
                     <span>Captures tail risk severity</span>
                   </li>
                 </ul>
@@ -754,15 +754,15 @@ export default function ConvergenceAnalysisArticle() {
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400">Shrinks all coefficients. Good for correlated data, but keeps all variables.</p>
                 </div>
-                <div className="flex-1 bg-indigo-50 dark:bg-indigo-900/20 p-4 border border-indigo-200 dark:border-indigo-900/30 rounded">
-                  <div className="font-mono text-xs text-indigo-400 mb-1">Lasso Regression</div>
-                  <div className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">L¹ Norm Penalty</div>
+                <div className="flex-1 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 border border-indigo-200 dark:border-indigo-900/30 rounded">
+                  <div className="font-mono text-xs text-[#A8672E] dark:text-[#D08F52] mb-1">Lasso Regression</div>
+                  <div className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-2">L¹ Norm Penalty</div>
                   <div className="bg-white dark:bg-black/40 p-2 rounded mb-2">
                     <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
                       min ||y - Xβ||² + λ||β||₁
                     </p>
                   </div>
-                  <p className="text-xs text-indigo-600 dark:text-indigo-400">Geometry has &quot;corners&quot;. Forces coefficients to exactly zero. Performs <strong>Feature Selection</strong>.</p>
+                  <p className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Geometry has &quot;corners&quot;. Forces coefficients to exactly zero. Performs <strong>Feature Selection</strong>.</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-black/40 p-4 rounded border border-slate-200 dark:border-white/10">
@@ -797,7 +797,7 @@ export default function ConvergenceAnalysisArticle() {
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                   Expected Shortfall can be reformulated as a convex optimization problem, enabling efficient computation via linear programming.
                 </p>
-                <div className="bg-rose-50 dark:bg-rose-900/20 p-3 rounded border border-rose-200 dark:border-rose-900/30">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-3 rounded border border-rose-200 dark:border-rose-900/30">
                   <p className="font-mono text-xs text-slate-600 dark:text-slate-400">
                     ES_α(X) = min_t &#123;t + (1-α)⁻¹ E[(X-t)⁺]&#125;
                   </p>
@@ -820,7 +820,7 @@ export default function ConvergenceAnalysisArticle() {
 
           {/* Synthesis Table */}
           <section className="mb-24">
-            <h2 className="text-3xl font-serif font-bold mb-8 text-slate-800 text-center">Synthesis: The Geometric Structure</h2>
+            <h2 className="text-3xl font-serif font-bold mb-8 text-slate-800 dark:text-slate-200 text-center">Synthesis: The Geometric Structure</h2>
             <div className="overflow-x-auto rounded-xl shadow-lg dark:shadow-none border border-slate-200 dark:border-white/10">
               <table className="w-full text-left bg-white dark:bg-[#14171B]">
                 <thead className="bg-slate-800 dark:bg-slate-900 text-white">
@@ -832,25 +832,25 @@ export default function ConvergenceAnalysisArticle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-white/10 text-sm md:text-base">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                     <td className="p-4 font-bold text-slate-700 dark:text-slate-300">No Arbitrage</td>
                     <td className="p-4 font-mono text-slate-500 dark:text-slate-400">L∞ (Dual of L¹)</td>
                     <td className="p-4">Weak-* Convergence</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">Existence of Pricing Measure</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                     <td className="p-4 font-bold text-slate-700 dark:text-slate-300">SDE Simulation</td>
                     <td className="p-4 font-mono text-slate-500 dark:text-slate-400">L² (Pathwise)</td>
                     <td className="p-4">Strong Convergence</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">Accurate Hedging</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                     <td className="p-4 font-bold text-slate-700 dark:text-slate-300">Fourier Pricing</td>
                     <td className="p-4 font-mono text-slate-500 dark:text-slate-400">L¹ (Damped)</td>
                     <td className="p-4">Spectral Convergence</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">Exponential Speed</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-white dark:bg-[#0A0D14]/5 transition-colors">
                     <td className="p-4 font-bold text-slate-700 dark:text-slate-300">Risk (ES)</td>
                     <td className="p-4 font-mono text-slate-500 dark:text-slate-400">L¹ (Convex)</td>
                     <td className="p-4">Monotonic Convergence</td>

@@ -31,7 +31,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
               Among these, the <strong className="text-slate-900 dark:text-white">options collar</strong> has historically emerged as the foundational architecture. It allows investors to effectively bound the distribution of future returns, reducing portfolio volatility and shielding balance sheets from catastrophic price dislocations.
             </p>
 
-            <div className="bg-indigo-50 dark:bg-indigo-950/20 p-8 rounded-3xl border-l-4 border-indigo-500 min-w-0">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/20 p-8 rounded-3xl border-l-4 border-[#A8672E] dark:border-[#D08F52] min-w-0">
               <h3 className="font-bold text-indigo-900 dark:text-indigo-300 mb-3 text-lg font-serif">Market Context</h3>
               <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                 During the "risk-off" macroeconomic sentiment of 2022/2023, flows into derivative-based risk management strategies accelerated significantly. Options collar ETF assets reached approximately $23 billion by early 2023. However, an options collar is not a monolithic instrument — practitioners have engineered specific variants to address volatility skew, margin efficiency, and behavioral finance biases.
@@ -58,7 +58,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                 tone="pos"
               >
                 <div className="flex items-start gap-3">
-                  <TrendingDown className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <TrendingDown className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                   <p className="text-sm text-slate-700 dark:text-slate-300">
                     Provides a guaranteed price floor, strictly limiting downside losses if the underlying asset experiences a severe devaluation.
                   </p>
@@ -81,8 +81,8 @@ export default function AdvancedOptionsCollarStrategiesPage() {
               When the premium received perfectly offsets the premium paid, the derivative achieves parity and is classified as a <strong className="text-slate-900 dark:text-white not-italic">"zero-cost" collar</strong>.
             </p>
 
-            <div className="bg-rose-50 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm flex flex-col md:flex-row gap-6 items-start">
-              <AlertTriangle className="w-8 h-8 text-rose-600 dark:text-rose-400 shrink-0" />
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm flex flex-col md:flex-row gap-6 items-start">
+              <AlertTriangle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] shrink-0" />
               <div className="min-w-0">
                 <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-2 font-serif text-xl">Frictions & Limitations</h4>
                 <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -107,7 +107,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Structural Mechanics (1×2 Profile)</h3>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
-              In a 1×2 ratio collar, selling two call options against every 100 shares fundamentally fractures the protection. One short call is covered by the equity, but the second is completely <strong className="text-rose-600 dark:text-rose-400">"naked" or uncovered</strong>. This introduces a high degree of negative convexity and theoretically unlimited liability on the upside.
+              In a 1×2 ratio collar, selling two call options against every 100 shares fundamentally fractures the protection. One short call is covered by the equity, but the second is completely <strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">"naked" or uncovered</strong>. This introduces a high degree of negative convexity and theoretically unlimited liability on the upside.
             </p>
 
             <div className="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 mb-12 min-w-0 shadow-sm">
@@ -120,53 +120,53 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-sm md:text-base">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Crash to $80.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400">-$20.00</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400">+$15.00</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">-$20.00</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+$15.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400 font-bold whitespace-nowrap">-$5.00 (Max Loss)</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold whitespace-nowrap">-$5.00 (Max Loss)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Drift to $95.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400">-$5.00</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">-$5.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400 font-bold whitespace-nowrap">-$5.00 (Max Loss)</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold whitespace-nowrap">-$5.00 (Max Loss)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Rise to $100.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
                     <td className="py-4 px-6 text-slate-500 font-bold whitespace-nowrap">$0.00 (Breakeven)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Rally to $105.00</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400">+$5.00</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+$5.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-bold whitespace-nowrap">+$5.00 (Max Profit)</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold whitespace-nowrap">+$5.00 (Max Profit)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Surge to $110.00</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400">+$10.00</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+$10.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400">-$10.00</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">-$10.00</td>
                     <td className="py-4 px-6 text-slate-500 font-bold whitespace-nowrap">$0.00 (Upper Breakeven)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors bg-rose-50/50 dark:bg-rose-950/10">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-950/10">
                     <td className="py-4 px-6 text-slate-900 dark:text-white font-medium whitespace-nowrap">Melt-Up to $120.00</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400">+$20.00</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">+$20.00</td>
                     <td className="py-4 px-6 text-slate-500">$0.00</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400">-$30.00</td>
-                    <td className="py-4 px-6 text-rose-700 dark:text-rose-400 font-bold whitespace-nowrap">-$10.00 (Infinite Risk)</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">-$30.00</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-bold whitespace-nowrap">-$10.00 (Infinite Risk)</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="bg-rose-50 dark:bg-rose-950/20 border-l-4 border-rose-500 p-8 rounded-r-3xl min-w-0">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-8 rounded-r-3xl min-w-0">
               <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-3 text-lg font-serif">Ideal Investor Profile</h4>
               <p className="text-sm text-rose-800 dark:text-rose-200/80 leading-relaxed">
                 Strictly unsuitable for passive, long-term buy-and-hold investors. It is the domain of sophisticated, active volatility traders and institutional yield-seekers with a <strong className="font-bold">neutral-to-bearish outlook</strong> who possess the capital reserves to satisfy massive margin demands if the naked call is breached.
@@ -238,7 +238,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                 </li>
                 <li className="flex items-start gap-4 pb-4 border-b border-slate-100 dark:border-slate-800/50">
                   <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">2</span>
+                    <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">2</span>
                   </div>
                   <div>
                     <strong className="text-slate-900 dark:text-white text-lg font-serif block mb-1">Long Put (K&#x2081;)</strong>
@@ -256,7 +256,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="font-bold text-rose-600 dark:text-rose-400">4</span>
+                    <span className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">4</span>
                   </div>
                   <div>
                     <strong className="text-slate-900 dark:text-white text-lg font-serif block mb-1">Short Put (K&#x2083;)</strong>
@@ -266,7 +266,7 @@ export default function AdvancedOptionsCollarStrategiesPage() {
               </ul>
             </div>
 
-            <div className="bg-rose-50 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm">
               <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-3 text-lg font-serif flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5" /> Latent Vulnerabilities & The Subfloor
               </h4>
@@ -299,15 +299,15 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                 </p>
                 <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-emerald-500 shrink-0">+</span>
+                    <span className="mt-1 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0">+</span>
                     Set-and-forget; immune to overnight crashes.
                   </li>
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-rose-500 shrink-0">-</span>
+                    <span className="mt-1 text-[#BC4128] dark:text-[#E2694A] shrink-0">-</span>
                     High premium costs due to long-term Theta.
                   </li>
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-rose-500 shrink-0">-</span>
+                    <span className="mt-1 text-[#BC4128] dark:text-[#E2694A] shrink-0">-</span>
                     Severe opportunity cost (tight upside cap).
                   </li>
                 </ul>
@@ -321,15 +321,15 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                 </p>
                 <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-emerald-500 shrink-0">+</span>
+                    <span className="mt-1 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0">+</span>
                     Cheaper absolute premium outlay.
                   </li>
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-emerald-500 shrink-0">+</span>
+                    <span className="mt-1 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0">+</span>
                     Wider bands allow for better upside participation.
                   </li>
                   <li className="flex gap-2 items-start">
-                    <span className="mt-1 text-rose-500 shrink-0">-</span>
+                    <span className="mt-1 text-[#BC4128] dark:text-[#E2694A] shrink-0">-</span>
                     Path dependency, whipsaw risk, and high transaction costs.
                   </li>
                 </ul>
@@ -360,32 +360,32 @@ export default function AdvancedOptionsCollarStrategiesPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-sm md:text-base">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 font-bold text-slate-900 dark:text-white whitespace-nowrap">Standard Zero-Cost</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Zero (premiums offset)</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Strictly capped at short call strike</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-medium">100% below long put</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-medium">100% below long put</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Traditional hedgers securing short-term gains</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 font-bold text-slate-900 dark:text-white whitespace-nowrap">Ratio Collar (1×2)</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Net credit or zero</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400 font-medium">Unlimited upside liability (naked call)</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-medium">100% below long put</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium">Unlimited upside liability (naked call)</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-medium">100% below long put</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Aggressive yield seekers, neutral-to-bearish</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 font-bold text-slate-900 dark:text-white whitespace-nowrap">Participating Collar</td>
                     <td className="py-4 px-6 text-slate-700 dark:text-slate-300 font-medium">Net debit (cash required)</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-medium">Partial capture (e.g., 50%) above cap</td>
-                    <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-medium">100% below long put</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-medium">Partial capture (e.g., 50%) above cap</td>
+                    <td className="py-4 px-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-medium">100% below long put</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Long-term bullish executives avoiding cap regret</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/30 transition-colors">
                     <td className="py-4 px-6 font-bold text-slate-900 dark:text-white whitespace-nowrap">Three-Way (Seagull)</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Zero (subsidized by subfloor)</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Capped, but wider than standard</td>
-                    <td className="py-4 px-6 text-rose-600 dark:text-rose-400 font-medium">Protected in band; 1:1 risk below subfloor</td>
+                    <td className="py-4 px-6 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium">Protected in band; 1:1 risk below subfloor</td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-400">Institutional commodity/FX hedgers</td>
                   </tr>
                 </tbody>

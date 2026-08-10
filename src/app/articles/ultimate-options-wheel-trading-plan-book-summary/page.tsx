@@ -8,14 +8,14 @@ import { StructuredData, BreadcrumbStructuredData } from '@/components/seo/struc
 
 // Helper components for Icons (using inline SVG for portability)
 const IconBookOpen = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
     </svg>
 );
 
 const IconTarget = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <circle cx="12" cy="12" r="10"></circle>
         <circle cx="12" cy="12" r="6"></circle>
         <circle cx="12" cy="12" r="2"></circle>
@@ -23,14 +23,14 @@ const IconTarget = () => (
 );
 
 const IconShieldCheck = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         <path d="m9 12 2 2 4-4"></path>
     </svg>
 );
 
 const IconGitCompareArrows = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <circle cx="18" cy="5" r="3"></circle>
         <circle cx="6" cy="19" r="3"></circle>
         <path d="M14.29 7.71 9.7 12.3a1.94 1.94 0 0 0-2.73 0l-1.27 1.27"></path>
@@ -42,14 +42,14 @@ const IconGitCompareArrows = () => (
 const SectionHeader = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <div className="flex items-center mb-6">
         {children}
-        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{title}</h2>
+        <h2 className="text-3xl font-bold text-gray-900 tracking-tight font-serif">{title}</h2>
     </div>
 );
 
 // Component for styled tables
 const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
     <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white dark:bg-[#0A0D14] text-sm">
             <thead className="bg-gray-50">
                 <tr>
                     {headers.map((header, index) => (
@@ -63,8 +63,8 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
                 {data.map((row, rowIndex) => (
                     <tr key={rowIndex} className="hover:bg-gray-50">
                         {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} className={`whitespace-pre-wrap px-4 py-3 ${cell.includes('Pass') || cell.includes('Qualify') ? 'text-green-600 font-medium' :
-                                    cell.includes('Fail') || cell.includes('Disqualify') ? 'text-red-600 font-medium' :
+                            <td key={cellIndex} className={`whitespace-pre-wrap px-4 py-3 ${cell.includes('Pass') || cell.includes('Qualify') ? 'text-[#1D8A70] dark:text-[#3CBF9C] font-medium' :
+                                    cell.includes('Fail') || cell.includes('Disqualify') ? 'text-[#BC4128] dark:text-[#E2694A] font-medium' :
                                         'text-gray-700'
                                 }`}>
                                 {cell}
@@ -132,7 +132,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     {/* Return to Home Button */}
                     <div className="flex items-center gap-4 mb-4">
-                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-blue-700 transition-colors duration-200 text-white font-medium">
+                        <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-800 hover:bg-[#A8672E] dark:bg-[#D08F52] transition-colors duration-200 text-white font-medium">
                             <ArrowLeft className="mr-2 h-4 w-4" />
                             Return to Home
                         </Link>
@@ -164,24 +164,17 @@ export default function UltimateOptionsWheelTradingPlan() {
                     </div>
 
                     {/* Header */}
-                    <header className="text-center mb-16 pt-8">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-4">
-                            The Ultimate <span className="text-indigo-600">Options Wheel</span> Trading Plan
-                        </h1>
-                        <p className="max-w-3xl mx-auto text-lg lg:text-xl text-gray-600">
-                            A quantitative, rules-based approach to generating consistent income and acquiring quality stocks at a discount.
-                        </p>
-                    </header>
+                    
 
                     {/* Main Content */}
                     <main className="space-y-16">
                         {/* Section 1: Strategic Rationale */}
-                        <section id="rationale" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                        <section id="rationale" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                             <SectionHeader title="The Strategic Rationale of the Wheel">
                                 <IconBookOpen />
                             </SectionHeader>
 
-                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
+                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
                                 <p>
                                     The Options Wheel Strategy is a systematic, cyclical process for generating income and potentially acquiring high-quality stocks.
                                     It's not a single trade, but a continuous loop designed to harness option premiums and time decay. It is fundamentally a
@@ -189,7 +182,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                     a quality asset at a price you deem attractive.
                                 </p>
 
-                                <h3>1.1 Deconstructing the Wheel: A Cyclical Income Engine</h3>
+                                <h3>Deconstructing the Wheel: A Cyclical Income Engine</h3>
                                 <p>The Wheel rotates between two primary strategies in a clear sequence:</p>
                                 <ol className="list-decimal list-inside space-y-3 pl-2">
                                     <li>
@@ -206,7 +199,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                     </li>
                                 </ol>
 
-                                <h3>1.2 The Financial Logic: Cost Basis Reduction & "Synthetic Dividend"</h3>
+                                <h3>The Financial Logic: Cost Basis Reduction & "Synthetic Dividend"</h3>
                                 <p>
                                     Premiums collected systematically reduce your effective purchase price (cost basis). A $50 strike put with a $2 premium
                                     results in a <strong>$48 cost basis</strong> if assigned ($50 strike - $2 premium). Subsequent call premiums further reduce
@@ -217,7 +210,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                     own cash flow, which enhances returns even when the stock price is stagnant, much like a real dividend.
                                 </p>
 
-                                <h3>1.3 Market Conditions: The Sweet Spot</h3>
+                                <h3>Market Conditions: The Sweet Spot</h3>
                                 <p>
                                     The Wheel performs optimally in <strong>neutral, sideways, or mildly bullish markets</strong>. In these conditions, you can
                                     repeatedly collect premiums as options expire worthless. In strongly bullish markets, it underperforms buy-and-hold due to
@@ -227,13 +220,13 @@ export default function UltimateOptionsWheelTradingPlan() {
                         </section>
 
                         {/* Section 2: Trading Plan */}
-                        <section id="plan" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                        <section id="plan" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                             <SectionHeader title="The Ultimate Trading Plan: Implementation Protocol">
                                 <IconTarget />
                             </SectionHeader>
 
-                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
-                                <h3>2.1 Underlyer Selection Protocol</h3>
+                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
+                                <h3>Underlyer Selection Protocol</h3>
                                 <p>
                                     This is the most critical step. The success of the Wheel is determined by the quality of the underlying asset. The goal is
                                     to identify stable, financially sound businesses you are willing to own long-term. Your selection should pass a multi-stage filter.
@@ -254,7 +247,7 @@ export default function UltimateOptionsWheelTradingPlan() {
 
                                 <StyledTable headers={underlyerTableHeaders} data={underlyerTableData} />
 
-                                <h3 className="pt-8">2.2 Option Writing Protocol</h3>
+                                <h3 className="pt-8 font-serif">Option Writing Protocol</h3>
                                 <p>
                                     Option selection should be rules-based, balancing income, risk, and probability of assignment. Key variables are Days to
                                     Expiration (DTE), Delta, and Implied Volatility (IV).
@@ -279,13 +272,13 @@ export default function UltimateOptionsWheelTradingPlan() {
                         </section>
 
                         {/* Section 3: Risk Management */}
-                        <section id="risk" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                        <section id="risk" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                             <SectionHeader title="Advanced Risk Management & Adjustments">
                                 <IconShieldCheck />
                             </SectionHeader>
 
-                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
-                                <h3>3.1 Primary Risk Exposures</h3>
+                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
+                                <h3>Primary Risk Exposures</h3>
                                 <p>
                                     <strong>"Bag-Holding" Risk:</strong> The biggest risk is being assigned a stock that continues to decline significantly.
                                     This highlights why selecting a high-quality company you believe in is paramount. If the thesis is sound, you are simply
@@ -296,7 +289,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                     your strike price. This is the explicit trade-off for consistent income generation.
                                 </p>
 
-                                <h3>3.2 The Art of Rolling: A Tactical Guide</h3>
+                                <h3>The Art of Rolling: A Tactical Guide</h3>
                                 <p>
                                     Rolling is the primary management technique. The goal is to always roll for a <strong>net credit</strong>, which improves
                                     your position. If you can no longer collect a credit, it's often better to accept assignment and transition to the next
@@ -318,12 +311,12 @@ export default function UltimateOptionsWheelTradingPlan() {
                         </section>
 
                         {/* Section 4: Comparative Analysis */}
-                        <section id="comparison" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                        <section id="comparison" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                             <SectionHeader title="Comparative Strategic Analysis">
                                 <IconGitCompareArrows />
                             </SectionHeader>
 
-                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
+                            <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
                                 <p>
                                     To fully appreciate the Wheel's utility, it's essential to see how it stacks up against other common investment strategies.
                                     The right choice depends on your specific goals, risk tolerance, capital, and desired level of active involvement.
@@ -335,7 +328,7 @@ export default function UltimateOptionsWheelTradingPlan() {
 
                         {/* Call-to-Action Section */}
                         <section className="text-center py-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-white">
-                            <h2 className="text-3xl font-bold mb-4">Ready to Master the Options Wheel?</h2>
+                            <h2 className="text-3xl font-bold mb-4 font-serif">Ready to Master the Options Wheel?</h2>
                             <p className="text-xl mb-8 max-w-2xl mx-auto">
                                 Dive deeper into the quantitative frameworks and systematic approaches covered in this comprehensive analysis.
                             </p>
@@ -346,7 +339,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                         href={currentArticle.googleDoc}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-block bg-white text-indigo-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+                                        className="inline-block bg-white dark:bg-[#0A0D14] text-[#A8672E] dark:text-[#D08F52] font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
                                     >
                                         <BookOpen className="inline mr-2" />
                                         Read Full Research
@@ -358,7 +351,7 @@ export default function UltimateOptionsWheelTradingPlan() {
                                         href={currentArticle.podcastUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-block bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+                                        className="inline-block bg-[#1D8A70] dark:bg-[#3CBF9C] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#1D8A70] dark:bg-[#3CBF9C] transition-colors duration-300 transform hover:scale-105"
                                     >
                                         <Music className="inline mr-2" />
                                         Listen to Podcast
@@ -369,7 +362,7 @@ export default function UltimateOptionsWheelTradingPlan() {
 
                         {/* Conclusion */}
                         <section id="conclusion" className="text-center mt-16 py-12">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">A Marathon, Not a Sprint</h2>
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">A Marathon, Not a Sprint</h2>
                             <p className="max-w-3xl mx-auto text-lg text-gray-600">
                                 The Options Wheel is a powerful method for long-term portfolio enhancement, blending value investing with active income generation.
                                 By following a disciplined, systematic plan based on quality underlyers, rules-based execution, and active risk management, you can

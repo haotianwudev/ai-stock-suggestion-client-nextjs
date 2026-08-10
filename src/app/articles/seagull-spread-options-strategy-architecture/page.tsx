@@ -30,21 +30,21 @@ const PayoffDiagram = () => {
   return (
     <svg viewBox="0 0 600 300" className="w-full max-w-2xl h-auto font-sans bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-2">
       {/* Grid lines */}
-      <line x1={paddingX} y1={zeroY} x2={width - paddingX} y2={zeroY} stroke="currentColor" className="text-slate-400 dark:text-slate-600" strokeWidth="2" />
-      <line x1={mapX(90)} y1={paddingY} x2={mapX(90)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700" strokeWidth="1" strokeDasharray="4 4" />
-      <line x1={mapX(100)} y1={paddingY} x2={mapX(100)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700" strokeWidth="1" strokeDasharray="4 4" />
-      <line x1={mapX(110)} y1={paddingY} x2={mapX(110)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700" strokeWidth="1" strokeDasharray="4 4" />
+      <line x1={paddingX} y1={zeroY} x2={width - paddingX} y2={zeroY} stroke="currentColor" className="text-slate-400 dark:text-slate-600 dark:text-slate-400" strokeWidth="2" />
+      <line x1={mapX(90)} y1={paddingY} x2={mapX(90)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700 dark:text-slate-300" strokeWidth="1" strokeDasharray="4 4" />
+      <line x1={mapX(100)} y1={paddingY} x2={mapX(100)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700 dark:text-slate-300" strokeWidth="1" strokeDasharray="4 4" />
+      <line x1={mapX(110)} y1={paddingY} x2={mapX(110)} y2={height - paddingY} stroke="currentColor" className="text-slate-300 dark:text-slate-700 dark:text-slate-300" strokeWidth="1" strokeDasharray="4 4" />
 
       {/* Fill Areas */}
       <path d={lossArea} fill="currentColor" className="text-red-100 dark:text-red-900/40" />
       <path d={profitArea} fill="currentColor" className="text-emerald-100 dark:text-emerald-900/40" />
 
       {/* Payoff Line */}
-      <path d={pathData} fill="none" stroke="currentColor" className="text-blue-600 dark:text-blue-400" strokeWidth="4" strokeLinejoin="round" />
+      <path d={pathData} fill="none" stroke="currentColor" className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" strokeWidth="4" strokeLinejoin="round" />
 
       {/* Data Points */}
       {points.map((p, i) => (
-        <circle key={i} cx={mapX(p.x)} cy={mapY(p.y)} r="5" fill="currentColor" className="text-blue-800 dark:text-blue-500" stroke="currentColor" strokeWidth="2" />
+        <circle key={i} cx={mapX(p.x)} cy={mapY(p.y)} r="5" fill="currentColor" className="text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]" stroke="currentColor" strokeWidth="2" />
       ))}
 
       {/* Axis Labels */}
@@ -90,7 +90,7 @@ export default function SeagullSpreadArticle() {
               Direct directional plays suffer from the friction of premium decay and high implied volatility costs. Conversely, standard spread strategies define and cap risk but inherently limit the magnitude of potential profitability.
             </p>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 my-8 rounded-r-lg">
               <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-300 mb-3 font-serif flex items-center gap-2">
                 <Zap className="w-5 h-5" /> The Core Philosophy
               </h3>
@@ -140,9 +140,9 @@ export default function SeagullSpreadArticle() {
             </p>
 
             <div className="space-y-12">
-              <div className="bg-emerald-50 dark:bg-emerald-900/20 p-8 rounded-2xl border border-emerald-200 dark:border-emerald-800/50">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-8 rounded-2xl border border-emerald-200 dark:border-emerald-800/50">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-emerald-100 dark:bg-emerald-900 p-3 rounded-full text-emerald-600 dark:text-emerald-400">
+                  <div className="bg-emerald-100 dark:bg-emerald-900 p-3 rounded-full text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                     <TrendingUp className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-300 font-serif">The Bullish Seagull</h3>
@@ -169,9 +169,9 @@ export default function SeagullSpreadArticle() {
                 />
               </div>
 
-              <div className="bg-rose-50 dark:bg-rose-900/20 p-8 rounded-2xl border border-rose-200 dark:border-rose-800/50">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-8 rounded-2xl border border-rose-200 dark:border-rose-800/50">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-rose-100 dark:bg-rose-900 p-3 rounded-full text-rose-600 dark:text-rose-400">
+                  <div className="bg-rose-100 dark:bg-rose-900 p-3 rounded-full text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                     <TrendingDown className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-rose-900 dark:text-rose-300 font-serif">The Bearish Seagull</h3>
@@ -274,7 +274,7 @@ export default function SeagullSpreadArticle() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <TrendingUp className="w-6 h-6 text-blue-500" />
+                  <TrendingUp className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
                   <h3 className="font-bold text-lg text-slate-900 dark:text-white font-serif">Delta (Δ)</h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -304,7 +304,7 @@ export default function SeagullSpreadArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <BarChart className="w-6 h-6 text-rose-500" />
+                  <BarChart className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" />
                   <h3 className="font-bold text-lg text-slate-900 dark:text-white font-serif">Vega (ν)</h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -326,16 +326,16 @@ export default function SeagullSpreadArticle() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border-t-4 border-red-500 shadow-sm border border-slate-200 dark:border-slate-800">
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border-t-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm border border-slate-200 dark:border-slate-800">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-2 font-serif text-lg flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-500" /> The Naked Leg Danger
+                  <AlertTriangle className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" /> The Naked Leg Danger
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400">
                   The absolute primary vulnerability resides entirely in the naked short option utilized to finance the structure. Novice participants frequently make the catastrophic mistake of equating zero upfront cost with zero risk.
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border-t-4 border-orange-500 shadow-sm border border-slate-200 dark:border-slate-800">
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border-t-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm border border-slate-200 dark:border-slate-800">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-2 font-serif text-lg">Dynamic Hedging</h4>
                 <p className="text-slate-600 dark:text-slate-400">
                   If the underlying equity aggressively sells off, portfolio managers dynamically hedge by shorting corresponding shares to neutralize delta and stop the acceleration of losses (the gamma trap).
@@ -353,13 +353,13 @@ export default function SeagullSpreadArticle() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-indigo-700 dark:text-indigo-400 border-b border-indigo-100 dark:border-indigo-900/50 pb-2 mb-3 flex items-center gap-2">
+                  <h4 className="text-lg font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] border-b border-indigo-100 dark:border-indigo-900/50 pb-2 mb-3 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5" /> Portfolio Margin (TIMS)
                   </h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">
                     Available to qualified institutional entities, PM evaluates the true risk holistically by stress-testing the portfolio across theoretical price points. It recognizes the offset of the long/short legs.
                   </p>
-                  <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-4 border border-emerald-100 dark:border-emerald-800/50 text-sm text-emerald-800 dark:text-emerald-300 font-medium">
+                  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-xl p-4 border border-emerald-100 dark:border-emerald-800/50 text-sm text-emerald-800 dark:text-emerald-300 font-medium">
                     Result: A massive margin reduction of 60% to 85% compared to Reg T, offering extreme capital efficiency leverage ratios approaching 6.7:1.
                   </div>
                 </div>

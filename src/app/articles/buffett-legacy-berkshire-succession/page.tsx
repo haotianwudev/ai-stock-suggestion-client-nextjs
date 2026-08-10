@@ -39,7 +39,7 @@ const table3Data = {
 const StatCard = ({ title, value, icon, color }: { title: string; value: string; icon: any; color: { bg: string; text: string } }) => {
   const IconComponent = icon;
   return (
-    <div className="bg-white shadow-xl rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300">
+    <div className="bg-white dark:bg-[#0A0D14] shadow-xl rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300">
       <div className={`p-3 rounded-full inline-block ${color.bg} ${color.text}`}>
         <IconComponent size={28} />
       </div>
@@ -52,12 +52,12 @@ const StatCard = ({ title, value, icon, color }: { title: string; value: string;
 const InfoCard = ({ title, description, icon, color }: { title: string; description: string; icon: any; color: { border: string; bg: string; text: string } }) => {
   const IconComponent = icon;
   return (
-    <div className={`bg-white border-l-4 ${color.border} shadow-lg rounded-lg p-6`}>
+    <div className={`bg-white dark:bg-[#0A0D14] border-l-4 ${color.border} shadow-lg rounded-lg p-6`}>
       <div className="flex items-center space-x-4">
         <div className={`p-3 rounded-full ${color.bg} ${color.text}`}>
           <IconComponent size={24} />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-xl font-semibold text-gray-900 font-serif">{title}</h3>
       </div>
       <p className="text-gray-600 mt-4 text-base">{description}</p>
     </div>
@@ -65,7 +65,7 @@ const InfoCard = ({ title, description, icon, color }: { title: string; descript
 };
 
 const ResponsiveTable = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
-  <div className="w-full overflow-x-auto bg-white rounded-lg shadow-md mt-6">
+  <div className="w-full overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-lg shadow-md mt-6">
     <table className="min-w-full divide-y divide-gray-200">
       <thead className="bg-gray-100">
         <tr>
@@ -80,7 +80,7 @@ const ResponsiveTable = ({ headers, rows }: { headers: string[]; rows: string[][
           ))}
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
         {rows.map((row, rowIndex) => (
           <tr key={rowIndex} className="hover:bg-gray-50 transition-colors">
             {row.map((cell, cellIndex) => (
@@ -100,15 +100,15 @@ const ResponsiveTable = ({ headers, rows }: { headers: string[]; rows: string[][
 
 const ContentSection = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
   <section id={id} className="mb-16 scroll-mt-24">
-    <h2 className="text-4xl font-extrabold text-gray-900 mb-2">{title}</h2>
-    <div className="w-24 h-1.5 bg-blue-600 rounded-full mb-8"></div>
+    <h2 className="text-4xl font-extrabold text-gray-900 mb-2 font-serif">{title}</h2>
+    <div className="w-24 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mb-8"></div>
     <div className="space-y-6 text-lg text-gray-700 leading-relaxed">{children}</div>
   </section>
 );
 
 const KeyQuote = ({ children, citation }: { children: React.ReactNode; citation: string }) => (
-  <blockquote className="my-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg shadow">
-    <Quote className="text-blue-400 h-10 w-10 transform -scale-x-100" />
+  <blockquote className="my-8 p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] rounded-r-lg shadow">
+    <Quote className="text-[#A8672E] dark:text-[#D08F52] h-10 w-10 transform -scale-x-100" />
     <p className="text-2xl font-medium text-gray-800 italic leading-relaxed my-4">{children}</p>
     <cite className="text-gray-600 font-semibold not-italic">&mdash; {citation}</cite>
   </blockquote>
@@ -136,7 +136,7 @@ export default function BuffettLegacyArticle() {
               title="A Shift in Communication"
               description="Buffett is bifurcating his role: Greg Abel will take over all fiduciary and financial communication, while Buffett retains a new platform for philosophy and values."
               icon={BookOpen}
-              color={{ border: 'border-blue-500', bg: 'bg-blue-100', text: 'text-blue-600' }}
+              color={{ border: 'border-[#A8672E] dark:border-[#D08F52]', bg: 'bg-blue-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
             <InfoCard
               title="Tribute to Charlie Munger"
@@ -148,13 +148,13 @@ export default function BuffettLegacyArticle() {
               title="Final Critique on CEO Pay"
               description="A sharp critique of excessive CEO compensation driven by 'envy and greed,' contrasting it with Berkshire's philosophy of internal modesty and avoiding a 'look-at-me rich' culture."
               icon={XCircle}
-              color={{ border: 'border-red-500', bg: 'bg-red-100', text: 'text-red-600' }}
+              color={{ border: 'border-[#BC4128] dark:border-[#E2694A]', bg: 'bg-red-100', text: 'text-[#BC4128] dark:text-[#E2694A]' }}
             />
             <InfoCard
               title="The Capstone Donation"
               description="Announced a new $1.3 billion donation and an acceleration of lifetime gifts, ensuring his children can fully dispense his fortune."
               icon={Gift}
-              color={{ border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600' }}
+              color={{ border: 'border-[#1D8A70] dark:border-[#3CBF9C]', bg: 'bg-green-100', text: 'text-[#1D8A70] dark:text-[#3CBF9C]' }}
             />
           </div>
         </ContentSection>
@@ -182,7 +182,7 @@ export default function BuffettLegacyArticle() {
               title="Greg Abel: The Successor"
               description="Buffett gave his full endorsement: 'Greg understands capital allocation as well as I do.' A long-time Berkshire veteran who built BHE, Abel is known as a tireless, detail-oriented manager."
               icon={Users}
-              color={{ border: 'border-indigo-500', bg: 'bg-indigo-100', text: 'text-indigo-600' }}
+              color={{ border: 'border-[#A8672E] dark:border-[#D08F52]', bg: 'bg-indigo-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
             <InfoCard
               title="The 'Golden Shield'"
@@ -194,7 +194,7 @@ export default function BuffettLegacyArticle() {
               title="The Co-CIOs: Combs & Weschler"
               description="Todd Combs and Ted Weschler, who already manage billions, will continue to run the public stock portfolio. They provide a crucial 'sounding board' for Abel on major capital decisions."
               icon={TrendingUp}
-              color={{ border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600' }}
+              color={{ border: 'border-[#1D8A70] dark:border-[#3CBF9C]', bg: 'bg-green-100', text: 'text-[#1D8A70] dark:text-[#3CBF9C]' }}
             />
           </div>
         </ContentSection>
@@ -210,19 +210,19 @@ export default function BuffettLegacyArticle() {
               title="Record Cash Pile"
               value="$382 Billion"
               icon={DollarSign}
-              color={{ bg: 'bg-green-100', text: 'text-green-600' }}
+              color={{ bg: 'bg-green-100', text: 'text-[#1D8A70] dark:text-[#3CBF9C]' }}
             />
             <StatCard
               title="Q3 Operating Earnings"
               value="+34% Y-o-Y"
               icon={TrendingUp}
-              color={{ bg: 'bg-blue-100', text: 'text-blue-600' }}
+              color={{ bg: 'bg-blue-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
             <StatCard
               title="Insurance Float"
               value="~$175 Billion"
               icon={Anchor}
-              color={{ bg: 'bg-teal-100', text: 'text-teal-600' }}
+              color={{ bg: 'bg-teal-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
           </div>
 
@@ -230,7 +230,7 @@ export default function BuffettLegacyArticle() {
             The cash hoard, held in T-bills, is an active &quot;call option&quot; on a future market dislocation. The earnings surge was led by a tripling in insurance underwriting profit, but other key segments like GEICO (rising costs) and BNSF (lagging competitors) are struggling.
           </p>
 
-          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Q3 2025 Segment Performance</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4 font-serif">Q3 2025 Segment Performance</h3>
           <ResponsiveTable headers={table1Data.headers} rows={table1Data.rows} />
 
           <div className="grid md:grid-cols-2 gap-6 mt-8">
@@ -238,13 +238,13 @@ export default function BuffettLegacyArticle() {
               title="The 'Elephant Gun' Option"
               description="The $382B cash pile is not idle. Buffett and Abel see it as an 'elephant gun'—a call option on a future crisis, allowing them to provide liquidity to the market (like the 2008 BofA deal) at extremely favorable terms."
               icon={DollarSign}
-              color={{ border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600' }}
+              color={{ border: 'border-[#1D8A70] dark:border-[#3CBF9C]', bg: 'bg-green-100', text: 'text-[#1D8A70] dark:text-[#3CBF9C]' }}
             />
             <InfoCard
               title="Segment Headwinds"
               description="Key subsidiaries face challenges. GEICO is battling rising auto repair costs and ad-spend from competitors. BNSF (rail) is lagging Union Pacific in efficiency, a key metric Abel is focused on improving."
               icon={Briefcase}
-              color={{ border: 'border-red-500', bg: 'bg-red-100', text: 'text-red-600' }}
+              color={{ border: 'border-[#BC4128] dark:border-[#E2694A]', bg: 'bg-red-100', text: 'text-[#BC4128] dark:text-[#E2694A]' }}
             />
           </div>
         </ContentSection>
@@ -260,11 +260,11 @@ export default function BuffettLegacyArticle() {
               title="The Secret Weapon: Insurance Float"
               description="Berkshire uses ~$175 billion in 'float'—premiums collected upfront—as a massive, interest-free loan from policyholders. This float is invested for Berkshire's own benefit, providing the leverage to buy stocks and entire companies."
               icon={Anchor}
-              color={{ border: 'border-teal-500', bg: 'bg-teal-100', text: 'text-teal-600' }}
+              color={{ border: 'border-[#A8672E] dark:border-[#D08F52]', bg: 'bg-teal-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
           </div>
 
-          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Conglomerate vs. Mutual Fund</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4 font-serif">Conglomerate vs. Mutual Fund</h3>
           <ResponsiveTable headers={table2Data.headers} rows={table2Data.rows} />
 
           <div className="mt-8">
@@ -272,7 +272,7 @@ export default function BuffettLegacyArticle() {
               title="The Power of Permanent Capital"
               description="Unlike a fund, Berkshire's capital is 'permanent.' It never has to sell assets to meet investor redemptions. This allows it to be a buyer during market panics when everyone else is forced to sell."
               icon={Building}
-              color={{ border: 'border-indigo-500', bg: 'bg-indigo-100', text: 'text-indigo-600' }}
+              color={{ border: 'border-[#A8672E] dark:border-[#D08F52]', bg: 'bg-indigo-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
           </div>
         </ContentSection>
@@ -284,21 +284,21 @@ export default function BuffettLegacyArticle() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <div className="bg-red-50 border-l-4 border-red-400 p-6 rounded-lg shadow">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 rounded-lg shadow">
               <div className="flex items-center space-x-3">
-                <XCircle className="text-red-500" size={24} />
-                <h3 className="text-2xl font-semibold text-red-800">The Bear Case</h3>
+                <XCircle className="text-[#BC4128] dark:text-[#E2694A]" size={24} />
+                <h3 className="text-2xl font-semibold text-red-800 font-serif">The Bear Case</h3>
               </div>
-              <p className="text-red-700 mt-3">
+              <p className="text-[#BC4128] dark:text-[#E2694A] mt-3">
                 The &quot;Buffett Premium&quot; is evaporating. The market has voted &apos;no confidence,&apos; and the company&apos;s massive size means the days of 19.9% compounded returns are over.
               </p>
             </div>
-            <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg shadow">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-6 rounded-lg shadow">
               <div className="flex items-center space-x-3">
-                <CheckCircle className="text-green-600" size={24} />
-                <h3 className="text-2xl font-semibold text-green-800">The Bull Case</h3>
+                <CheckCircle className="text-[#1D8A70] dark:text-[#3CBF9C]" size={24} />
+                <h3 className="text-2xl font-semibold text-green-800 font-serif">The Bull Case</h3>
               </div>
-              <p className="text-green-700 mt-3">
+              <p className="text-[#1D8A70] dark:text-[#3CBF9C] mt-3">
                 The stock is now &quot;moderately undervalued.&quot; The gap between a falling <em>price</em> and rising <em>value</em> (34% earnings surge) is a classic Buffett-style &quot;Buy&quot; signal.
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function BuffettLegacyArticle() {
             color={{ border: 'border-purple-500', bg: 'bg-purple-100', text: 'text-purple-600' }}
           />
 
-          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4">Analyst Ratings Summary</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 mt-10 mb-4 font-serif">Analyst Ratings Summary</h3>
           <ResponsiveTable headers={table3Data.headers} rows={table3Data.rows} />
         </ContentSection>
 
@@ -333,13 +333,13 @@ export default function BuffettLegacyArticle() {
               title="The Great Anti-Dynasty"
               description="Buffett's final act is the deliberate separation of his family from his fortune. He spent 60 years building an empire and is spending his final years ensuring it serves public shareholders and society, not his own bloodline."
               icon={Gift}
-              color={{ border: 'border-blue-500', bg: 'bg-blue-100', text: 'text-blue-600' }}
+              color={{ border: 'border-[#A8672E] dark:border-[#D08F52]', bg: 'bg-blue-100', text: 'text-[#A8672E] dark:text-[#D08F52]' }}
             />
             <InfoCard
               title="The Common Investor's Benefit"
               description="For a regular investor, Berkshire remains a 'buy and hold' vehicle offering ETF-like diversification, a fortress balance sheet, and a management team (Abel, Combs, Weschler) aligned with their interests."
               icon={PiggyBank}
-              color={{ border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600' }}
+              color={{ border: 'border-[#1D8A70] dark:border-[#3CBF9C]', bg: 'bg-green-100', text: 'text-[#1D8A70] dark:text-[#3CBF9C]' }}
             />
           </div>
 

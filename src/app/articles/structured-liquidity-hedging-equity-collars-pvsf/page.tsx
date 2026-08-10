@@ -40,7 +40,7 @@ export default function StructuredLiquidityHedgingPage() {
             </p>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif flex items-center gap-3">
-              <Lock className="text-emerald-500 w-6 h-6" /> The Zero-Cost Imperative
+              <Lock className="text-[#1D8A70] dark:text-[#3CBF9C] w-6 h-6" /> The Zero-Cost Imperative
             </h3>
             <ComparisonGrid>
               <ComparisonCard title="1. Long Stock" tone="neutral">
@@ -63,7 +63,7 @@ export default function StructuredLiquidityHedgingPage() {
               </p>
               
               <div className="space-y-4">
-                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-rose-500 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-[#BC4128] dark:border-[#E2694A] border border-slate-200 dark:border-slate-800 shadow-sm">
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2">Scenario A: Severe Market Decline (Price Drops to $41)</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">The short call expires worthless. The protective put is deeply in-the-money and exercised. The shares are sold at the guaranteed $45 strike.</p>
                   <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg font-mono text-sm text-slate-700 dark:text-slate-300">
@@ -71,7 +71,7 @@ export default function StructuredLiquidityHedgingPage() {
                   </div>
                 </div>
                 
-                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-blue-500 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-[#A8672E] dark:border-[#D08F52] border border-slate-200 dark:border-slate-800 shadow-sm">
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2">Scenario B: Range-Bound Market (Price Settles at $48)</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">The price resides in the un-capped corridor between $45 and $50. Both options expire worthless. The investor retains the shares.</p>
                   <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg font-mono text-sm text-slate-700 dark:text-slate-300">
@@ -79,7 +79,7 @@ export default function StructuredLiquidityHedgingPage() {
                   </div>
                 </div>
                 
-                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-emerald-500 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="bg-white dark:bg-slate-950 p-6 rounded-xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] border border-slate-200 dark:border-slate-800 shadow-sm">
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2">Scenario C: Exceptional Appreciation (Price Surges to $52.50)</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">The put expires worthless. The short call is in-the-money. The investor is forced to sell their shares at the $50 strike price.</p>
                   <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg font-mono text-sm text-slate-700 dark:text-slate-300">
@@ -107,7 +107,7 @@ export default function StructuredLiquidityHedgingPage() {
               equity collar with the immediate liquidity of a non-recourse, collateralized cash advance.
             </p>
 
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-200 dark:border-indigo-800/50 mb-10">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-200 dark:border-indigo-800/50 mb-10">
               <h4 className="text-indigo-900 dark:text-indigo-300 font-bold mb-4 font-serif text-xl">How the Upfront Payment is Calculated</h4>
               <ul className="list-disc pl-5 space-y-3 text-indigo-800 dark:text-indigo-200">
                 <li><strong>Advance Rate:</strong> Typically 75% to 90% of the stock&apos;s current spot market value.</li>
@@ -177,25 +177,25 @@ export default function StructuredLiquidityHedgingPage() {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Immediate Liquidity</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">None</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Variable (Capped at 50%)</td>
-                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 font-bold">High (75% - 90%)</td>
+                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold">High (75% - 90%)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Immediate Tax Event</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">No</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">No</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">No (Deferred)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Downside Protection</td>
-                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 font-bold">Yes (Hard Floor)</td>
-                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-rose-500 font-bold">None (Margin Risk)</td>
-                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 font-bold">Yes (Embedded Put)</td>
+                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Yes (Hard Floor)</td>
+                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#BC4128] dark:text-[#E2694A] font-bold">None (Margin Risk)</td>
+                    <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-bold">Yes (Embedded Put)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Upside Participation</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Capped</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Unlimited</td>
@@ -220,7 +220,7 @@ export default function StructuredLiquidityHedgingPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 font-serif">
-                  <Landmark className="text-rose-500 w-6 h-6" /> Tax Pitfalls
+                  <Landmark className="text-[#BC4128] dark:text-[#E2694A] w-6 h-6" /> Tax Pitfalls
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                   To maintain tax-deferred status and avoid triggering a &ldquo;constructive sale&rdquo; under

@@ -205,7 +205,7 @@ const HistoricalEraSelector: React.FC = () => {
             onClick={() => setActiveEra(year as '1929' | '1987' | '2000' | '2008')}
             className={`flex-1 py-4 px-6 text-sm font-bold transition-all whitespace-nowrap ${
               activeEra === year 
-                ? 'bg-slate-50 dark:bg-[#14171B] text-[#A8672E] dark:text-[#D08F52] border-b-2 border-indigo-600' 
+                ? 'bg-slate-50 dark:bg-[#14171B] text-[#A8672E] dark:text-[#D08F52] border-b-2 border-[#A8672E] dark:border-[#D08F52]' 
                 : 'text-slate-500 hover:bg-slate-50 dark:bg-[#14171B] hover:text-slate-700 dark:text-slate-300'
             }`}
           >
@@ -271,7 +271,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ probability, title, type, d
   };
 
   return (
-    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 relative overflow-hidden group hover:border-indigo-500 transition-all">
+    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 relative overflow-hidden group hover:border-[#A8672E] dark:border-[#D08F52] transition-all">
       <div className={`absolute top-0 left-0 w-1 h-full ${typeColors[type]}`} />
       
       <div className="flex justify-between items-start mb-4">
@@ -324,7 +324,7 @@ export default function GreatDecouplingArticle() {
                 </p>
               </div>
               <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2 font-serif">
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2 font-serif">
                   <AlertTriangle className="text-amber-500" size={20}/>
                   Key Risk Indicators
                 </h3>
@@ -740,7 +740,7 @@ export default function GreatDecouplingArticle() {
               </div>
 
               {/* Survival Guide */}
-              <div className="bg-[#A8672E] dark:bg-[#D08F52]/40 border border-indigo-500/30 rounded-xl p-8">
+              <div className="bg-[#A8672E] dark:bg-[#D08F52]/40 border border-[#A8672E] dark:border-[#D08F52]/30 rounded-xl p-8">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 font-serif">
                   <Anchor className="text-[#A8672E] dark:text-[#D08F52]" /> Portfolio Survival Guide
                 </h3>

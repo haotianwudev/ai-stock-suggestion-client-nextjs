@@ -49,7 +49,7 @@ const SectionHeader = ({ icon: Icon, title, subtitle, colorClass, isDark = false
     <h2 className={`text-4xl font-extrabold tracking-tight mb-4 ${isDark ? 'text-white' : 'text-slate-900 dark:text-white'} dark:text-white`}>
       {title}
     </h2>
-    <div className={`h-1.5 w-24 bg-gradient-to-r from-current to-transparent opacity-20 mb-4 ${isDark ? 'text-white' : 'text-indigo-500'} dark:text-indigo-400`}></div>
+    <div className={`h-1.5 w-24 bg-gradient-to-r from-current to-transparent opacity-20 mb-4 ${isDark ? 'text-white' : 'text-[#A8672E] dark:text-[#D08F52]'} dark:text-[#A8672E] dark:text-[#D08F52]`}></div>
     <p className={`text-xl max-w-3xl leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600 dark:text-slate-400'} dark:text-slate-300`}>
       {subtitle}
     </p>
@@ -66,7 +66,7 @@ const DeepDiveCard = ({ title, children, icon: Icon }: {
       {Icon && <Icon size={64} />}
     </div>
     <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
-      <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
+      <div className="w-2 h-2 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
       {title}
     </h4>
     <div className="text-slate-600 dark:text-slate-400 dark:text-slate-300 space-y-4 text-sm md:text-base leading-relaxed relative z-10">
@@ -110,7 +110,7 @@ export default function ModelingExpectedReturnsArticle() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900/20">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="w-12 h-12 bg-indigo-600 rounded-full mb-4"></div>
+          <div className="w-12 h-12 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mb-4"></div>
           <p className="text-slate-400 font-medium">Initializing Quantitative Assets...</p>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function ModelingExpectedReturnsArticle() {
               icon={Calculator}
               title="1. The Precision Paradox"
               subtitle="Why Expected Return is both the most influential and the most volatile variable in asset allocation."
-              colorClass="bg-indigo-600"
+              colorClass="bg-[#A8672E] dark:bg-[#D08F52]"
             />
             
             {/* Introduction */}
@@ -143,7 +143,7 @@ export default function ModelingExpectedReturnsArticle() {
                 is notoriously poor. This creates the fundamental tension at the heart of modern portfolio theory.
               </p>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-indigo-200 dark:border-indigo-900/30">
-                <h4 className="font-bold text-indigo-900 dark:text-indigo-400 mb-3">The Sensitivity Problem</h4>
+                <h4 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3">The Sensitivity Problem</h4>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">
                   Consider a stock with expected return of 10%. If we revise this to 11%, the Discounted Cash Flow model 
                   suggests the stock is now 20-25% undervalued. This extreme sensitivity makes portfolio optimization 
@@ -163,10 +163,10 @@ export default function ModelingExpectedReturnsArticle() {
                 {/* DCF Model */}
                 <div className="space-y-6">
                   <div className="flex items-start gap-4 p-6 bg-slate-50 dark:bg-slate-900/20 rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0 font-bold">1</div>
+                    <div className="w-8 h-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center shrink-0 font-bold">1</div>
                     <div className="flex-1 overflow-hidden">
                       <span className="font-bold block text-slate-900 dark:text-white mb-3">Discounted Cash Flow Model</span>
-                      <Math formula={"P_0 = \\sum_{t=1}^{\\infty} \\frac{CF_t}{(1 + E[r])^t}"} display={true} className="text-indigo-900 dark:text-indigo-400" />
+                      <Math formula={"P_0 = \\sum_{t=1}^{\\infty} \\frac{CF_t}{(1 + E[r])^t}"} display={true} className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]" />
                       <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
                         Where P₀ is current price, CF_t is cash flow in period t, and E[r] is the expected return (discount rate).
                       </p>
@@ -175,10 +175,10 @@ export default function ModelingExpectedReturnsArticle() {
 
                   {/* Gordon Growth Model */}
                   <div className="flex items-start gap-4 p-6 bg-slate-50 dark:bg-slate-900/20 rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0 font-bold">2</div>
+                    <div className="w-8 h-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center shrink-0 font-bold">2</div>
                     <div className="flex-1 overflow-hidden">
                       <span className="font-bold block text-slate-900 dark:text-white mb-3">Gordon Growth Model (Perpetual Growth)</span>
-                      <Math formula={"P_0 = \\frac{D_1}{r - g}"} display={true} className="text-indigo-900 dark:text-indigo-400" />
+                      <Math formula={"P_0 = \\frac{D_1}{r - g}"} display={true} className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]" />
                       <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
                         For dividend-paying stocks: D₁ is next year's dividend, r is required return, g is growth rate.
                         Notice how small changes in (r-g) create massive price swings.
@@ -188,10 +188,10 @@ export default function ModelingExpectedReturnsArticle() {
 
                   {/* Earnings Yield Model */}
                   <div className="flex items-start gap-4 p-6 bg-slate-50 dark:bg-slate-900/20 rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0 font-bold">3</div>
+                    <div className="w-8 h-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center shrink-0 font-bold">3</div>
                     <div className="flex-1 overflow-hidden">
                       <span className="font-bold block text-slate-900 dark:text-white mb-3">Earnings Yield Relationship</span>
-                      <Math formula={"\\frac{E}{P} = r - g"} display={true} className="text-indigo-900 dark:text-indigo-400" />
+                      <Math formula={"\\frac{E}{P} = r - g"} display={true} className="text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52]" />
                       <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
                         The earnings yield (E/P) equals the risk premium above growth. This explains why high P/E ratios 
                         imply either low expected returns or high growth expectations.
@@ -207,25 +207,25 @@ export default function ModelingExpectedReturnsArticle() {
                     Sensitivity Analysis Example
                   </h4>
                   <div className="space-y-3 text-sm">
-                    <div className="grid grid-cols-3 gap-4 font-mono bg-white p-3 rounded-lg">
+                    <div className="grid grid-cols-3 gap-4 font-mono bg-white dark:bg-[#0A0D14] p-3 rounded-lg">
                       <div className="font-bold dark:text-white">Expected Return</div>
                       <div className="font-bold dark:text-white">Fair Value</div>
                       <div className="font-bold dark:text-white">Implied Action</div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white p-3 rounded-lg">
+                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0A0D14] p-3 rounded-lg">
                       <div>9%</div>
                       <div>$111.11</div>
-                      <div className="text-green-600 dark:text-green-400">Strong Buy</div>
+                      <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Strong Buy</div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white p-3 rounded-lg">
+                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0A0D14] p-3 rounded-lg">
                       <div>10%</div>
                       <div>$100.00</div>
-                      <div className="text-blue-600 dark:text-blue-400">Fair Value</div>
+                      <div className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Fair Value</div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white p-3 rounded-lg">
+                    <div className="grid grid-cols-3 gap-4 font-mono text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0A0D14] p-3 rounded-lg">
                       <div>11%</div>
                       <div>$90.91</div>
-                      <div className="text-red-600 dark:text-red-400">Strong Sell</div>
+                      <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Strong Sell</div>
                     </div>
                   </div>
                   <p className="text-xs text-amber-700 dark:text-amber-400 mt-3 italic">
@@ -264,11 +264,11 @@ export default function ModelingExpectedReturnsArticle() {
                     <div className="space-y-2 text-sm font-mono">
                       <div className="flex justify-between">
                         <span>Low Vol (10% return, 5% vol):</span>
-                        <span className="text-green-600 dark:text-green-400">$2.59</span>
+                        <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">$2.59</span>
                       </div>
                       <div className="flex justify-between">
                         <span>High Vol (10% return, 25% vol):</span>
-                        <span className="text-red-600 dark:text-red-400">$2.28</span>
+                        <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">$2.28</span>
                       </div>
                     </div>
                   </div>
@@ -283,17 +283,17 @@ export default function ModelingExpectedReturnsArticle() {
                     Static models fail to capture this dynamic nature.
                   </p>
                   <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-900/30">
-                      <div className="font-bold text-green-800 dark:text-green-400">Bull Market</div>
-                      <div className="text-green-600 dark:text-green-400">High momentum, low risk premiums</div>
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-900/30">
+                      <div className="font-bold text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Bull Market</div>
+                      <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">High momentum, low risk premiums</div>
                     </div>
-                    <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-900/30">
-                      <div className="font-bold text-red-800 dark:text-red-400">Bear Market</div>
-                      <div className="text-red-600 dark:text-red-400">Mean reversion, high risk premiums</div>
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-900/30">
+                      <div className="font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A]">Bear Market</div>
+                      <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Mean reversion, high risk premiums</div>
                     </div>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-900/30">
-                      <div className="font-bold text-blue-800 dark:text-blue-400">Low Volatility</div>
-                      <div className="text-blue-600 dark:text-blue-400">Compressed risk premiums</div>
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-900/30">
+                      <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Low Volatility</div>
+                      <div className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Compressed risk premiums</div>
                     </div>
                     <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-900/30">
                       <div className="font-bold text-purple-800 dark:text-purple-400">High Volatility</div>
@@ -311,7 +311,7 @@ export default function ModelingExpectedReturnsArticle() {
               icon={ShieldAlert}
               title="2. Risk-Return Equilibrium"
               subtitle="The market pays you to bear systemic risk. Modeling returns requires modeling the compensation for uncertainty."
-              colorClass="bg-rose-50 dark:bg-rose-900/200"
+              colorClass="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/200"
             />
 
             {/* Introduction */}
@@ -322,7 +322,7 @@ export default function ModelingExpectedReturnsArticle() {
                 This relationship forms the theoretical foundation for all asset pricing models.
               </p>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-rose-200 dark:border-rose-900/30">
-                <h4 className="font-bold text-rose-900 dark:text-rose-400 mb-3">The Risk Premium Puzzle</h4>
+                <h4 className="font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-3">The Risk Premium Puzzle</h4>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">
                   Why do stocks earn 6-8% more than bonds over the long term? The answer lies in systematic risk exposure. 
                   Stocks are leveraged claims on the real economy, making them sensitive to business cycles, inflation, 
@@ -333,33 +333,33 @@ export default function ModelingExpectedReturnsArticle() {
 
             <div className="grid md:grid-cols-5 gap-8 mb-16">
               <div className="md:col-span-3 space-y-6">
-                <div className="bg-rose-50 dark:bg-rose-900/20 rounded-3xl p-10 border border-rose-100 dark:border-rose-900/30 relative overflow-hidden h-full flex flex-col justify-center">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 rounded-3xl p-10 border border-rose-100 dark:border-rose-900/30 relative overflow-hidden h-full flex flex-col justify-center">
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-bold text-rose-900 dark:text-rose-400 mb-6 underline decoration-rose-200 decoration-4 underline-offset-8">
+                    <h3 className="text-3xl font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] mb-6 underline decoration-rose-200 decoration-4 underline-offset-8 font-serif">
                       Capital Asset Pricing Model (CAPM)
                     </h3>
-                    <p className="text-rose-800 dark:text-rose-400/80 dark:text-rose-300 text-lg leading-relaxed mb-8">
+                    <p className="text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A]/80 dark:text-rose-300 text-lg leading-relaxed mb-8">
                       Under CAPM, expected returns are purely a function of systematic risk (beta). 
                       Assets with higher correlation to market movements demand higher expected returns as compensation.
                     </p>
-                    <div className="bg-white/60 dark:bg-black/40 p-6 rounded-2xl border border-white mb-6">
-                      <Math formula={"E[R_i] = R_f + \\beta_i (E[R_m] - R_f)"} display={true} className="text-3xl text-rose-900 dark:text-rose-400" />
+                    <div className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/40 p-6 rounded-2xl border border-white mb-6">
+                      <Math formula={"E[R_i] = R_f + \\beta_i (E[R_m] - R_f)"} display={true} className="text-3xl text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A]" />
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div className="bg-white/40 dark:bg-black/40 p-4 rounded-xl">
-                        <div className="font-bold text-rose-800 dark:text-rose-400">Risk-Free Rate (Rf)</div>
-                        <div className="text-rose-700 dark:text-rose-300">Treasury bills, government bonds</div>
+                      <div className="bg-white dark:bg-[#0A0D14]/40 dark:bg-black/40 p-4 rounded-xl">
+                        <div className="font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A]">Risk-Free Rate (Rf)</div>
+                        <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300">Treasury bills, government bonds</div>
                       </div>
-                      <div className="bg-white/40 dark:bg-black/40 p-4 rounded-xl">
-                        <div className="font-bold text-rose-800 dark:text-rose-400">Market Premium</div>
-                        <div className="text-rose-700 dark:text-rose-300">E[Rm] - Rf ≈ 6-8% historically</div>
+                      <div className="bg-white dark:bg-[#0A0D14]/40 dark:bg-black/40 p-4 rounded-xl">
+                        <div className="font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A]">Market Premium</div>
+                        <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300">E[Rm] - Rf ≈ 6-8% historically</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="md:col-span-2 bg-slate-900 dark:bg-[#14171B] rounded-3xl p-10 text-white flex flex-col justify-center border border-transparent dark:border-slate-800 border-b-8 border-rose-500">
-                <h4 className="text-rose-400 font-bold mb-4 uppercase text-xs tracking-widest">The Quant's Edge</h4>
+              <div className="md:col-span-2 bg-slate-900 dark:bg-[#14171B] rounded-3xl p-10 text-white flex flex-col justify-center border border-transparent dark:border-slate-800 border-b-8 border-[#BC4128] dark:border-[#E2694A]">
+                <h4 className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-4 uppercase text-xs tracking-widest">The Quant's Edge</h4>
                 <p className="text-slate-300 leading-relaxed mb-6">
                   Returns are hard to estimate, but <strong>risk</strong> is relatively stable. Quants often start with a risk target and solve for the returns necessary to justify that risk.
                 </p>
@@ -376,7 +376,7 @@ export default function ModelingExpectedReturnsArticle() {
             {/* Beta Calculation and Interpretation */}
             <div className="grid lg:grid-cols-2 gap-16 mb-16">
               <div className="space-y-8">
-                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Understanding Beta</h3>
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Understanding Beta</h3>
                 <div className="bg-slate-50 dark:bg-slate-900/20 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-800 dark:text-white mb-4">Beta Calculation</h4>
                   <Math formula={"\\beta_i = \\frac{\\text{Cov}(R_i, R_m)}{\\text{Var}(R_m)} = \\rho_{i,m} \\cdot \\frac{\\sigma_i}{\\sigma_m}"} display={true} className="text-slate-700 dark:text-slate-300 mb-4" />
@@ -386,25 +386,25 @@ export default function ModelingExpectedReturnsArticle() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-900/30">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center font-bold text-green-800 dark:text-green-400">β&lt;1</div>
+                  <div className="flex items-center gap-4 p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-900/30">
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center font-bold text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">β&lt;1</div>
                     <div>
-                      <div className="font-bold text-green-800 dark:text-green-400">Defensive Assets</div>
-                      <div className="text-sm text-green-600 dark:text-green-400">Utilities, consumer staples, bonds</div>
+                      <div className="font-bold text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Defensive Assets</div>
+                      <div className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Utilities, consumer staples, bonds</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center font-bold text-blue-800 dark:text-blue-400">β=1</div>
+                  <div className="flex items-center gap-4 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">β=1</div>
                     <div>
-                      <div className="font-bold text-blue-800 dark:text-blue-400">Market Assets</div>
-                      <div className="text-sm text-blue-600 dark:text-blue-400">Index funds, diversified portfolios</div>
+                      <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Market Assets</div>
+                      <div className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Index funds, diversified portfolios</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 p-4 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-900/30">
-                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center font-bold text-red-800 dark:text-red-400">β&gt;1</div>
+                  <div className="flex items-center gap-4 p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-900/30">
+                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A]">β&gt;1</div>
                     <div>
-                      <div className="font-bold text-red-800 dark:text-red-400">Aggressive Assets</div>
-                      <div className="text-sm text-red-600 dark:text-red-400">Technology, small-cap, leverage</div>
+                      <div className="font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A]">Aggressive Assets</div>
+                      <div className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Technology, small-cap, leverage</div>
                     </div>
                   </div>
                 </div>
@@ -449,11 +449,11 @@ export default function ModelingExpectedReturnsArticle() {
 
             {/* Risk Premium Decomposition */}
             <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-[#14171B] dark:to-slate-900/10 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Risk Premium Decomposition</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Risk Premium Decomposition</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-50 dark:bg-blue-900/200 rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/200 rounded-full"></div>
                     Credit Risk Premium
                   </h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
@@ -467,7 +467,7 @@ export default function ModelingExpectedReturnsArticle() {
                 </div>
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-50 dark:bg-green-900/200 rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/200 rounded-full"></div>
                     Liquidity Premium
                   </h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
@@ -526,7 +526,7 @@ export default function ModelingExpectedReturnsArticle() {
             <div className="relative border-l-4 border-amber-200 ml-8 pl-16 space-y-32">
               {/* Evolution I: Historical Sampling */}
               <div className="relative">
-                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white border-4 border-slate-300 shadow-lg flex items-center justify-center">
+                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white dark:bg-[#0A0D14] border-4 border-slate-300 shadow-lg flex items-center justify-center">
                   <span className="text-xs font-bold text-slate-600 dark:text-slate-400">1</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-900/20 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
@@ -544,9 +544,9 @@ export default function ModelingExpectedReturnsArticle() {
                         Simple average of historical returns. Highly unstable and regime-dependent.
                       </p>
                     </div>
-                    <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-2xl border border-red-200 dark:border-red-900/30">
-                      <h5 className="font-bold text-red-800 dark:text-red-400 mb-3">Problems</h5>
-                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-2">
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-2xl border border-red-200 dark:border-red-900/30">
+                      <h5 className="font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-3">Problems</h5>
+                      <ul className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-red-300 space-y-2">
                         <li>• Survivorship bias</li>
                         <li>• Regime instability</li>
                         <li>• Look-ahead bias</li>
@@ -566,7 +566,7 @@ export default function ModelingExpectedReturnsArticle() {
 
               {/* Evolution II: Black-Litterman Framework */}
               <div className="relative">
-                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white border-4 border-amber-500 shadow-lg shadow-amber-200 flex items-center justify-center">
+                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white dark:bg-[#0A0D14] border-4 border-amber-500 shadow-lg shadow-amber-200 flex items-center justify-center">
                   <span className="text-xs font-bold text-amber-700 dark:text-amber-400">2</span>
                 </div>
                 <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-[#14171B] dark:to-amber-900/10 p-8 rounded-3xl border border-amber-200 dark:border-amber-900/30">
@@ -593,15 +593,15 @@ export default function ModelingExpectedReturnsArticle() {
                         <Math formula={"\\Pi"} className="text-xl text-amber-800 dark:text-amber-400" />
                         <p className="text-xs text-amber-600 mt-2">Implied returns from market caps</p>
                       </div>
-                      <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-900/30 text-center">
-                        <span className="block text-xs font-bold text-blue-700 dark:text-blue-300 uppercase mb-2">Investor Views</span>
-                        <Math formula={"Q"} className="text-xl text-blue-800 dark:text-blue-400" />
-                        <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">Subjective return forecasts</p>
+                      <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-900/30 text-center">
+                        <span className="block text-xs font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 uppercase mb-2">Investor Views</span>
+                        <Math formula={"Q"} className="text-xl text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]" />
+                        <p className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-2">Subjective return forecasts</p>
                       </div>
-                      <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl border border-green-200 dark:border-green-900/30 text-center">
-                        <span className="block text-xs font-bold text-green-700 dark:text-green-300 uppercase mb-2">View Confidence</span>
-                        <Math formula={"\\Omega"} className="text-xl text-green-800 dark:text-green-400" />
-                        <p className="text-xs text-green-600 dark:text-green-400 mt-2">Uncertainty in views</p>
+                      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-4 rounded-xl border border-green-200 dark:border-green-900/30 text-center">
+                        <span className="block text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 uppercase mb-2">View Confidence</span>
+                        <Math formula={"\\Omega"} className="text-xl text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]" />
+                        <p className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mt-2">Uncertainty in views</p>
                       </div>
                       <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-900/30 text-center">
                         <span className="block text-xs font-bold text-purple-700 dark:text-purple-300 uppercase mb-2">Covariance</span>
@@ -667,23 +667,23 @@ export default function ModelingExpectedReturnsArticle() {
 
               {/* Evolution III: Modern Extensions */}
               <div className="relative">
-                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white border-4 border-emerald-500 shadow-lg shadow-emerald-200 flex items-center justify-center">
-                  <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300">3</span>
+                <div className="absolute -left-[73px] top-0 w-8 h-8 rounded-full bg-white dark:bg-[#0A0D14] border-4 border-[#1D8A70] dark:border-[#3CBF9C] shadow-lg shadow-emerald-200 flex items-center justify-center">
+                  <span className="text-xs font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">3</span>
                 </div>
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-[#14171B] dark:to-emerald-900/10 p-8 rounded-3xl border border-emerald-200 dark:border-emerald-900/30">
-                  <h4 className="text-3xl font-bold mb-6 text-emerald-900 dark:text-emerald-400">Evolution III: Modern Extensions</h4>
+                  <h4 className="text-3xl font-bold mb-6 text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Evolution III: Modern Extensions</h4>
                   
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-6">
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30">
-                        <h5 className="font-bold text-emerald-800 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 flex items-center gap-2">
                           <BrainCircuit size={20} />
                           Machine Learning Integration
                         </h5>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                           Modern implementations use ML models to generate views (Q) and estimate confidence levels (Ω) dynamically.
                         </p>
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
                           • Factor models for view generation<br/>
                           • Ensemble methods for confidence<br/>
                           • Real-time view updating
@@ -691,14 +691,14 @@ export default function ModelingExpectedReturnsArticle() {
                       </div>
 
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30">
-                        <h5 className="font-bold text-emerald-800 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 flex items-center gap-2">
                           <Target size={20} />
                           Multi-Asset Extensions
                         </h5>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                           Extended to handle multiple asset classes, currencies, and alternative investments.
                         </p>
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
                           • Cross-asset momentum views<br/>
                           • Currency hedging decisions<br/>
                           • Alternative risk premiums
@@ -708,14 +708,14 @@ export default function ModelingExpectedReturnsArticle() {
 
                     <div className="space-y-6">
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30">
-                        <h5 className="font-bold text-emerald-800 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 flex items-center gap-2">
                           <Activity size={20} />
                           Dynamic Rebalancing
                         </h5>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                           Views and confidence levels update continuously based on new information and market conditions.
                         </p>
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
                           • Regime-dependent parameters<br/>
                           • Volatility-adjusted confidence<br/>
                           • Transaction cost optimization
@@ -723,14 +723,14 @@ export default function ModelingExpectedReturnsArticle() {
                       </div>
 
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30">
-                        <h5 className="font-bold text-emerald-800 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                        <h5 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3 flex items-center gap-2">
                           <Layers size={20} />
                           Robust Optimization
                         </h5>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                           Incorporates parameter uncertainty directly into the optimization process.
                         </p>
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg text-xs">
                           • Worst-case scenario planning<br/>
                           • Ambiguity aversion modeling<br/>
                           • Stress-test integration
@@ -744,7 +744,7 @@ export default function ModelingExpectedReturnsArticle() {
 
             {/* Practical Implementation Example */}
             <div className="mt-16 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-[#14171B] dark:to-slate-900/10 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Practical Implementation Example</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Practical Implementation Example</h3>
               <div className="grid lg:grid-cols-3 gap-8">
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-800 dark:text-white mb-4">Step 1: Market Equilibrium</h4>
@@ -766,15 +766,15 @@ export default function ModelingExpectedReturnsArticle() {
                 <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-800 dark:text-white mb-4">Step 2: Investor Views</h4>
                   <div className="space-y-3 text-sm">
-                    <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                    <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-3 rounded-lg">
                       <div className="font-bold">View 1:</div>
                       <div>US stocks outperform by 2%</div>
-                      <div className="text-xs text-blue-600 dark:text-blue-400">Confidence: 65%</div>
+                      <div className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Confidence: 65%</div>
                     </div>
-                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-3 rounded-lg">
                       <div className="font-bold">View 2:</div>
                       <div>Bonds underperform by 1%</div>
-                      <div className="text-xs text-green-600 dark:text-green-400">Confidence: 80%</div>
+                      <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Confidence: 80%</div>
                     </div>
                   </div>
                 </div>
@@ -783,15 +783,15 @@ export default function ModelingExpectedReturnsArticle() {
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between font-mono">
                       <span>US Stocks:</span>
-                      <span className="text-green-600 dark:text-green-400">68% (+8%)</span>
+                      <span className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">68% (+8%)</span>
                     </div>
                     <div className="flex justify-between font-mono">
                       <span>Intl Stocks:</span>
-                      <span className="text-blue-600 dark:text-blue-400">22% (-3%)</span>
+                      <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">22% (-3%)</span>
                     </div>
                     <div className="flex justify-between font-mono">
                       <span>Bonds:</span>
-                      <span className="text-red-600 dark:text-red-400">10% (-5%)</span>
+                      <span className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">10% (-5%)</span>
                     </div>
                   </div>
                 </div>
@@ -802,7 +802,7 @@ export default function ModelingExpectedReturnsArticle() {
           {/* Additional Infographic - Advanced Methodologies */}
           <section className="max-w-6xl mx-auto px-6 py-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Advanced Expected Return Methodologies</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 font-serif">Advanced Expected Return Methodologies</h3>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                 A comprehensive visual guide to the sophisticated techniques used by institutional investors 
                 for modeling expected returns across different market regimes and asset classes.
@@ -828,7 +828,7 @@ export default function ModelingExpectedReturnsArticle() {
               />
 
               {/* Introduction */}
-              <div className="mb-16 p-8 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm">
+              <div className="mb-16 p-8 bg-white dark:bg-[#0A0D14]/5 rounded-3xl border border-white/10 backdrop-blur-sm">
                 <p className="text-xl text-slate-300 leading-relaxed mb-6">
                   Financial markets are fundamentally <strong className="text-white">non-linear systems</strong>. 
                   Traditional models assume relationships remain constant, but reality shows that factor loadings, 
@@ -846,10 +846,10 @@ export default function ModelingExpectedReturnsArticle() {
 
               <div className="grid lg:grid-cols-2 gap-16 mb-16">
                 <div className="space-y-8">
-                  <h3 className="text-3xl font-bold text-white mb-6">Machine Learning Approaches</h3>
+                  <h3 className="text-3xl font-bold text-white mb-6 font-serif">Machine Learning Approaches</h3>
                   
                   {/* Regularization */}
-                  <div className="p-8 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm">
+                  <div className="p-8 bg-white dark:bg-[#0A0D14]/5 rounded-3xl border border-white/10 backdrop-blur-sm">
                     <h5 className="font-bold text-violet-300 mb-4 flex items-center gap-2">
                       <Layers size={20} /> Regularization & Feature Selection
                     </h5>
@@ -878,7 +878,7 @@ export default function ModelingExpectedReturnsArticle() {
                   </div>
 
                   {/* Cross-Validation */}
-                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="p-6 bg-white dark:bg-[#0A0D14]/5 rounded-2xl border border-white/10">
                     <h5 className="font-bold text-violet-300 mb-3 flex items-center gap-2">
                       <Target size={18} /> Time Series Cross-Validation
                     </h5>
@@ -894,7 +894,7 @@ export default function ModelingExpectedReturnsArticle() {
                 </div>
 
                 <div className="space-y-8">
-                  <h3 className="text-3xl font-bold text-white mb-6">Advanced Architectures</h3>
+                  <h3 className="text-3xl font-bold text-white mb-6 font-serif">Advanced Architectures</h3>
 
                   {/* Regime Detection */}
                   <div className="p-6 bg-gradient-to-r from-violet-600/20 to-purple-600/20 rounded-2xl border border-violet-500/20">
@@ -911,23 +911,23 @@ export default function ModelingExpectedReturnsArticle() {
                       <p className="text-xs text-slate-400">Transition probability from regime i to regime j</p>
                     </div>
                     <div className="grid grid-cols-3 gap-2 mt-4 text-xs">
-                      <div className="bg-green-50 dark:bg-green-900/200/20 p-2 rounded text-center">
+                      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/200/20 p-2 rounded text-center">
                         <div className="font-bold text-green-300">Growth</div>
-                        <div className="text-green-400">Low vol, momentum</div>
+                        <div className="text-[#1D8A70] dark:text-[#3CBF9C]">Low vol, momentum</div>
                       </div>
                       <div className="bg-yellow-50 dark:bg-yellow-900/200/20 p-2 rounded text-center">
                         <div className="font-bold text-yellow-300">Neutral</div>
                         <div className="text-yellow-400">Mean reversion</div>
                       </div>
-                      <div className="bg-red-50 dark:bg-red-900/200/20 p-2 rounded text-center">
+                      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/200/20 p-2 rounded text-center">
                         <div className="font-bold text-red-300">Crisis</div>
-                        <div className="text-red-400">High vol, correlation</div>
+                        <div className="text-[#BC4128] dark:text-[#E2694A]">High vol, correlation</div>
                       </div>
                     </div>
                   </div>
 
                   {/* Ensemble Methods */}
-                  <div className="p-6 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-2xl border border-emerald-500/20">
+                  <div className="p-6 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-2xl border border-[#1D8A70] dark:border-[#3CBF9C]/20">
                     <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                       <Layers size={20} />
                       Ensemble Learning
@@ -952,7 +952,7 @@ export default function ModelingExpectedReturnsArticle() {
                   </div>
 
                   {/* Alternative Data */}
-                  <div className="p-6 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl border border-orange-500/20">
+                  <div className="p-6 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl border border-[#BC4128] dark:border-[#E2694A]/20">
                     <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                       <Search size={20} />
                       Alternative Signal Alpha
@@ -984,8 +984,8 @@ export default function ModelingExpectedReturnsArticle() {
               </div>
 
               {/* Feature Engineering Pipeline */}
-              <div className="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm mb-16">
-                <h3 className="text-2xl font-bold text-white mb-6">Feature Engineering Pipeline</h3>
+              <div className="bg-white dark:bg-[#0A0D14]/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm mb-16">
+                <h3 className="text-2xl font-bold text-white mb-6 font-serif">Feature Engineering Pipeline</h3>
                 <div className="grid md:grid-cols-4 gap-6">
                   <div className="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
                     <div className="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center mb-4">
@@ -1040,7 +1040,7 @@ export default function ModelingExpectedReturnsArticle() {
 
               {/* Model Validation Framework */}
               <div className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 p-8 rounded-3xl border border-slate-600">
-                <h3 className="text-2xl font-bold text-white mb-6">Robust Validation Framework</h3>
+                <h3 className="text-2xl font-bold text-white mb-6 font-serif">Robust Validation Framework</h3>
                 <div className="grid lg:grid-cols-2 gap-8">
                   <div className="space-y-6">
                     <div className="bg-slate-800/50 p-6 rounded-2xl">
@@ -1061,8 +1061,8 @@ export default function ModelingExpectedReturnsArticle() {
                         Test model performance across different market regimes to ensure stability.
                       </p>
                       <div className="grid grid-cols-3 gap-2 text-xs">
-                        <div className="bg-green-50 dark:bg-green-900/200/20 p-2 rounded text-center text-green-300">Bull</div>
-                        <div className="bg-red-50 dark:bg-red-900/200/20 p-2 rounded text-center text-red-300">Bear</div>
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/200/20 p-2 rounded text-center text-green-300">Bull</div>
+                        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/200/20 p-2 rounded text-center text-red-300">Bear</div>
                         <div className="bg-yellow-50 dark:bg-yellow-900/200/20 p-2 rounded text-center text-yellow-300">Sideways</div>
                       </div>
                     </div>
@@ -1101,7 +1101,7 @@ export default function ModelingExpectedReturnsArticle() {
               icon={Target}
               title="5. The Investor's Protocol"
               subtitle="Moving from theory to a robust personal portfolio allocation strategy."
-              colorClass="bg-emerald-600"
+              colorClass="bg-[#1D8A70] dark:bg-[#3CBF9C]"
             />
 
             {/* Introduction */}
@@ -1112,7 +1112,7 @@ export default function ModelingExpectedReturnsArticle() {
                 This protocol provides a step-by-step framework for building robust expected return estimates.
               </p>
               <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30">
-                <h4 className="font-bold text-emerald-900 dark:text-emerald-400 mb-3">The Implementation Challenge</h4>
+                <h4 className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-3">The Implementation Challenge</h4>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">
                   Most investors either ignore expected returns entirely (naive diversification) or rely on overly simplistic 
                   historical averages. Both approaches are suboptimal. The key is to combine multiple information sources 
@@ -1122,8 +1122,8 @@ export default function ModelingExpectedReturnsArticle() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white transition-colors group">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md mb-6 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white dark:bg-[#0A0D14] transition-colors group">
+                <div className="w-12 h-12 bg-white dark:bg-[#0A0D14] rounded-xl flex items-center justify-center shadow-md mb-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] group-hover:scale-110 transition-transform">
                   <Search size={24} />
                 </div>
                 <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Step 1: The Base Case</h4>
@@ -1131,9 +1131,9 @@ export default function ModelingExpectedReturnsArticle() {
                   Start with institutional Capital Market Assumptions (CMAs) as your prior. These represent the collective 
                   wisdom of professional investors and provide a disciplined anchor for your expectations.
                 </p>
-                <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/30">
-                  <h5 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Recommended Sources:</h5>
-                  <ul className="text-xs text-emerald-700 dark:text-emerald-300 space-y-1">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/30">
+                  <h5 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Recommended Sources:</h5>
+                  <ul className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 space-y-1">
                     <li>• BlackRock Investment Institute</li>
                     <li>• Vanguard Capital Markets Model</li>
                     <li>• J.P. Morgan Long-Term CMA</li>
@@ -1142,8 +1142,8 @@ export default function ModelingExpectedReturnsArticle() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white transition-colors group">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md mb-6 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white dark:bg-[#0A0D14] transition-colors group">
+                <div className="w-12 h-12 bg-white dark:bg-[#0A0D14] rounded-xl flex items-center justify-center shadow-md mb-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] group-hover:scale-110 transition-transform">
                   <Activity size={24} />
                 </div>
                 <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Step 2: Convex Thinking</h4>
@@ -1151,9 +1151,9 @@ export default function ModelingExpectedReturnsArticle() {
                   Understand the risk-return trade-off. High expected returns must be justified by high risk. 
                   Never model high returns with low risk—it's a sign of model error or wishful thinking.
                 </p>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-900/30">
-                  <h5 className="font-bold text-blue-800 dark:text-blue-400 mb-2">Sharpe Ratio Benchmarks:</h5>
-                  <div className="text-xs text-blue-700 dark:text-blue-300 space-y-1 font-mono">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-900/30">
+                  <h5 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Sharpe Ratio Benchmarks:</h5>
+                  <div className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 space-y-1 font-mono">
                     <div className="flex justify-between">
                       <span>Conservative:</span>
                       <span>0.3 - 0.5</span>
@@ -1170,8 +1170,8 @@ export default function ModelingExpectedReturnsArticle() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white transition-colors group">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md mb-6 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+              <div className="p-8 bg-slate-50 dark:bg-slate-900/20 rounded-3xl border border-slate-200 dark:border-slate-800 hover:bg-white dark:bg-[#0A0D14] transition-colors group">
+                <div className="w-12 h-12 bg-white dark:bg-[#0A0D14] rounded-xl flex items-center justify-center shadow-md mb-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] group-hover:scale-110 transition-transform">
                   <Layers size={24} />
                 </div>
                 <h4 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Step 3: Dynamic Drift</h4>
@@ -1195,7 +1195,7 @@ export default function ModelingExpectedReturnsArticle() {
             <div className="space-y-16">
               {/* Capital Market Assumptions */}
               <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-[#14171B] dark:to-slate-900/10 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Building Your Capital Market Assumptions</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 font-serif">Building Your Capital Market Assumptions</h3>
                 
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div className="space-y-6">
@@ -1204,7 +1204,7 @@ export default function ModelingExpectedReturnsArticle() {
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center justify-between mb-3">
                           <h5 className="font-bold text-slate-800 dark:text-white">US Large Cap Stocks</h5>
-                          <span className="text-sm font-mono bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-400 px-2 py-1 rounded">7.5%</span>
+                          <span className="text-sm font-mono bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] px-2 py-1 rounded">7.5%</span>
                         </div>
                         <div className="grid grid-cols-3 gap-3 text-xs">
                           <div>
@@ -1225,7 +1225,7 @@ export default function ModelingExpectedReturnsArticle() {
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center justify-between mb-3">
                           <h5 className="font-bold text-slate-800 dark:text-white">International Developed</h5>
-                          <span className="text-sm font-mono bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-400 px-2 py-1 rounded">7.0%</span>
+                          <span className="text-sm font-mono bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] px-2 py-1 rounded">7.0%</span>
                         </div>
                         <div className="grid grid-cols-3 gap-3 text-xs">
                           <div>
@@ -1246,7 +1246,7 @@ export default function ModelingExpectedReturnsArticle() {
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center justify-between mb-3">
                           <h5 className="font-bold text-slate-800 dark:text-white">Emerging Markets</h5>
-                          <span className="text-sm font-mono bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-400 px-2 py-1 rounded">8.5%</span>
+                          <span className="text-sm font-mono bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-[#BC4128] dark:text-[#E2694A] px-2 py-1 rounded">8.5%</span>
                         </div>
                         <div className="grid grid-cols-3 gap-3 text-xs">
                           <div>
@@ -1314,7 +1314,7 @@ export default function ModelingExpectedReturnsArticle() {
                       <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center justify-between mb-3">
                           <h5 className="font-bold text-slate-800 dark:text-white">Commodities</h5>
-                          <span className="text-sm font-mono bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-400 px-2 py-1 rounded">5.0%</span>
+                          <span className="text-sm font-mono bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] px-2 py-1 rounded">5.0%</span>
                         </div>
                         <div className="grid grid-cols-3 gap-3 text-xs">
                           <div>
@@ -1338,29 +1338,29 @@ export default function ModelingExpectedReturnsArticle() {
 
               {/* Valuation-Based Adjustments */}
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-[#14171B] dark:to-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/30">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Valuation-Based Return Adjustments</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 font-serif">Valuation-Based Return Adjustments</h3>
                 
                 <div className="grid lg:grid-cols-2 gap-12">
                   <div className="space-y-6">
                     <h4 className="text-xl font-bold text-slate-800 dark:text-white">Equity Valuation Metrics</h4>
                     <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-blue-200 dark:border-blue-900/30">
-                      <h5 className="font-bold text-blue-800 dark:text-blue-400 mb-4">Shiller P/E (CAPE) Model</h5>
-                      <Math formula={"E[R]_{10yr} = \\frac{1}{CAPE} + g - \\frac{\\Delta CAPE}{CAPE \\cdot 10}"} display={true} className="text-blue-700 dark:text-blue-300 mb-4" />
+                      <h5 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Shiller P/E (CAPE) Model</h5>
+                      <Math formula={"E[R]_{10yr} = \\frac{1}{CAPE} + g - \\frac{\\Delta CAPE}{CAPE \\cdot 10}"} display={true} className="text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 mb-4" />
                       <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
-                          <div className="font-bold text-blue-800 dark:text-blue-400">Current CAPE: 28</div>
-                          <div className="text-blue-600 dark:text-blue-400">Historical Avg: 17</div>
+                        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-3 rounded-lg">
+                          <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Current CAPE: 28</div>
+                          <div className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Historical Avg: 17</div>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
-                          <div className="font-bold text-blue-800 dark:text-blue-400">Implied Return: 5.2%</div>
-                          <div className="text-blue-600 dark:text-blue-400">vs Long-term: 7.5%</div>
+                        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-3 rounded-lg">
+                          <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Implied Return: 5.2%</div>
+                          <div className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">vs Long-term: 7.5%</div>
                         </div>
                       </div>
                     </div>
 
                     <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-blue-200 dark:border-blue-900/30">
-                      <h5 className="font-bold text-blue-800 dark:text-blue-400 mb-4">Earnings Yield Model</h5>
-                      <Math formula={"E[R] = \\frac{E}{P} + g"} display={true} className="text-blue-700 dark:text-blue-300 mb-4" />
+                      <h5 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Earnings Yield Model</h5>
+                      <Math formula={"E[R] = \\frac{E}{P} + g"} display={true} className="text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 mb-4" />
                       <p className="text-sm text-slate-600 dark:text-slate-400">
                         Forward earnings yield plus expected earnings growth. More responsive to near-term conditions than CAPE.
                       </p>
@@ -1370,27 +1370,27 @@ export default function ModelingExpectedReturnsArticle() {
                   <div className="space-y-6">
                     <h4 className="text-xl font-bold text-slate-800 dark:text-white">Bond Yield Models</h4>
                     <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-blue-200 dark:border-blue-900/30">
-                      <h5 className="font-bold text-blue-800 dark:text-blue-400 mb-4">Yield-to-Maturity Approach</h5>
+                      <h5 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Yield-to-Maturity Approach</h5>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                         For bonds, current yield is the best predictor of future returns over the bond's duration.
                       </p>
-                      <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                      <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg">
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <div className="font-bold text-blue-800 dark:text-blue-400">10-Year Treasury:</div>
-                            <div className="font-mono text-blue-600 dark:text-blue-400">4.2%</div>
+                            <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">10-Year Treasury:</div>
+                            <div className="font-mono text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">4.2%</div>
                           </div>
                           <div>
-                            <div className="font-bold text-blue-800 dark:text-blue-400">Investment Grade:</div>
-                            <div className="font-mono text-blue-600 dark:text-blue-400">5.1%</div>
+                            <div className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Investment Grade:</div>
+                            <div className="font-mono text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">5.1%</div>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-blue-200 dark:border-blue-900/30">
-                      <h5 className="font-bold text-blue-800 dark:text-blue-400 mb-4">Term Structure Model</h5>
-                      <Math formula={"E[R]_{bond} = YTM + \\text{Roll Return} - \\text{Credit Losses}"} display={true} className="text-blue-700 dark:text-blue-300 mb-4" />
+                      <h5 className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4">Term Structure Model</h5>
+                      <Math formula={"E[R]_{bond} = YTM + \\text{Roll Return} - \\text{Credit Losses}"} display={true} className="text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 mb-4" />
                       <p className="text-sm text-slate-600 dark:text-slate-400">
                         Decompose bond returns into yield income, price appreciation from rolling down the curve, and expected credit losses.
                       </p>
@@ -1401,27 +1401,27 @@ export default function ModelingExpectedReturnsArticle() {
 
               {/* Portfolio Construction Process */}
               <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-[#14171B] dark:to-emerald-900/10 p-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Systematic Portfolio Construction</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 font-serif">Systematic Portfolio Construction</h3>
                 
                 <div className="grid md:grid-cols-4 gap-6 mb-8">
                   <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30 text-center">
-                    <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">1</div>
-                    <h4 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Gather Inputs</h4>
+                    <div className="w-12 h-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">1</div>
+                    <h4 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Gather Inputs</h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Expected returns, volatilities, correlations</p>
                   </div>
                   <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30 text-center">
-                    <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">2</div>
-                    <h4 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Apply Constraints</h4>
+                    <div className="w-12 h-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">2</div>
+                    <h4 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Apply Constraints</h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Min/max weights, turnover limits</p>
                   </div>
                   <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30 text-center">
-                    <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">3</div>
-                    <h4 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Optimize</h4>
+                    <div className="w-12 h-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">3</div>
+                    <h4 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Optimize</h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Mean-variance or Black-Litterman</p>
                   </div>
                   <div className="bg-white dark:bg-[#14171B] p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900/30 text-center">
-                    <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">4</div>
-                    <h4 className="font-bold text-emerald-800 dark:text-emerald-400 mb-2">Monitor</h4>
+                    <div className="w-12 h-12 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/200 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">4</div>
+                    <h4 className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Monitor</h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400">Track performance, rebalance</p>
                   </div>
                 </div>
@@ -1436,7 +1436,7 @@ export default function ModelingExpectedReturnsArticle() {
                           <span className="text-sm font-medium">US Large Cap</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-slate-200 rounded-full overflow-hidden">
-                              <div className="w-3/5 h-full bg-blue-50 dark:bg-blue-900/200"></div>
+                              <div className="w-3/5 h-full bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/200"></div>
                             </div>
                             <span className="text-sm font-mono">35%</span>
                           </div>
@@ -1445,7 +1445,7 @@ export default function ModelingExpectedReturnsArticle() {
                           <span className="text-sm font-medium">International</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-slate-200 rounded-full overflow-hidden">
-                              <div className="w-1/4 h-full bg-green-50 dark:bg-green-900/200"></div>
+                              <div className="w-1/4 h-full bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/200"></div>
                             </div>
                             <span className="text-sm font-mono">15%</span>
                           </div>
@@ -1454,7 +1454,7 @@ export default function ModelingExpectedReturnsArticle() {
                           <span className="text-sm font-medium">Emerging Markets</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-slate-200 rounded-full overflow-hidden">
-                              <div className="w-1/5 h-full bg-orange-50 dark:bg-orange-900/200"></div>
+                              <div className="w-1/5 h-full bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/200"></div>
                             </div>
                             <span className="text-sm font-mono">10%</span>
                           </div>
@@ -1481,7 +1481,7 @@ export default function ModelingExpectedReturnsArticle() {
                           <span className="text-sm font-medium">Commodities</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-slate-200 rounded-full overflow-hidden">
-                              <div className="w-1/10 h-full bg-red-50 dark:bg-red-900/200"></div>
+                              <div className="w-1/10 h-full bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/200"></div>
                             </div>
                             <span className="text-sm font-mono">5%</span>
                           </div>
@@ -1491,19 +1491,19 @@ export default function ModelingExpectedReturnsArticle() {
                     <div>
                       <h5 className="font-bold text-slate-700 dark:text-slate-300 mb-4">Expected Portfolio Metrics</h5>
                       <div className="space-y-4">
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-900/30">
+                        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-900/30">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-emerald-800 dark:text-emerald-400">Expected Return</span>
-                            <span className="text-lg font-mono text-emerald-700 dark:text-emerald-300">6.8%</span>
+                            <span className="font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Expected Return</span>
+                            <span className="text-lg font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300">6.8%</span>
                           </div>
-                          <div className="text-xs text-emerald-600 dark:text-emerald-400">Weighted average of asset class returns</div>
+                          <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Weighted average of asset class returns</div>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-900/30">
+                        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-900/30">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-blue-800 dark:text-blue-400">Expected Volatility</span>
-                            <span className="text-lg font-mono text-blue-700 dark:text-blue-300">11.2%</span>
+                            <span className="font-bold text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Expected Volatility</span>
+                            <span className="text-lg font-mono text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300">11.2%</span>
                           </div>
-                          <div className="text-xs text-blue-600 dark:text-blue-400">Portfolio standard deviation</div>
+                          <div className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Portfolio standard deviation</div>
                         </div>
                         <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-200 dark:border-purple-900/30">
                           <div className="flex justify-between items-center mb-2">
@@ -1512,12 +1512,12 @@ export default function ModelingExpectedReturnsArticle() {
                           </div>
                           <div className="text-xs text-purple-600 dark:text-purple-400">Risk-adjusted return measure</div>
                         </div>
-                        <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-200 dark:border-orange-900/30">
+                        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-200 dark:border-orange-900/30">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-orange-800 dark:text-orange-400">Max Drawdown</span>
-                            <span className="text-lg font-mono text-orange-700 dark:text-orange-300">-18%</span>
+                            <span className="font-bold text-orange-800 dark:text-[#BC4128] dark:text-[#E2694A]">Max Drawdown</span>
+                            <span className="text-lg font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-orange-300">-18%</span>
                           </div>
-                          <div className="text-xs text-orange-600 dark:text-orange-400">Estimated worst-case scenario</div>
+                          <div className="text-xs text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Estimated worst-case scenario</div>
                         </div>
                       </div>
                     </div>

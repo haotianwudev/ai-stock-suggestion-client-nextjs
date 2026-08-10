@@ -26,7 +26,7 @@ const SectionHeading = ({ children, subtitle, centered = false }: {
   centered?: boolean; 
 }) => (
   <div className={`mb-12 ${centered ? 'text-center flex flex-col items-center' : ''}`}>
-    <h2 className="text-3xl font-bold text-slate-900 mb-4 font-serif">{children}</h2>
+    <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">{children}</h2>
     {subtitle && <p className="text-slate-500 max-w-2xl">{subtitle}</p>}
     <div className="w-20 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-4"></div>
   </div>
@@ -82,8 +82,8 @@ export default function ArchitectureStructuredNotes() {
                 <thead>
                   <tr className="bg-slate-50 dark:bg-[#14171B] border-b border-slate-100 dark:border-slate-800">
                     <th className="px-6 py-4 font-bold text-slate-400 uppercase text-xs tracking-widest">Feature</th>
-                    <th className="px-6 py-4 font-bold text-slate-900">Traditional Stocks</th>
-                    <th className="px-6 py-4 font-bold text-slate-900">Traditional Bonds</th>
+                    <th className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Traditional Stocks</th>
+                    <th className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Traditional Bonds</th>
                     <th className="px-6 py-4 font-bold text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50">Structured Notes</th>
                   </tr>
                 </thead>
@@ -100,7 +100,7 @@ export default function ArchitectureStructuredNotes() {
                       <td className="px-6 py-4 font-bold text-slate-700 dark:text-slate-300 text-sm bg-slate-50 dark:bg-[#14171B]/30">{row[0]}</td>
                       <td className="px-6 py-4 text-slate-600 dark:text-slate-400 text-sm">{row[1]}</td>
                       <td className="px-6 py-4 text-slate-600 dark:text-slate-400 text-sm">{row[2]}</td>
-                      <td className="px-6 py-4 font-semibold text-slate-900 text-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10/20">{row[3]}</td>
+                      <td className="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100 text-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10/20">{row[3]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -124,7 +124,7 @@ export default function ArchitectureStructuredNotes() {
                 </p>
                 <div className="p-4 bg-slate-50 dark:bg-[#14171B] rounded-xl">
                   <div className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">Bond Function</div>
-                  <div className="text-slate-900 font-semibold">Sources the "Principal Protection" guarantee (subject to issuer credit).</div>
+                  <div className="text-slate-900 dark:text-slate-100 font-semibold">Sources the "Principal Protection" guarantee (subject to issuer credit).</div>
                 </div>
               </div>
               <div className="bg-white dark:bg-[#0A0D14] p-10 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
@@ -154,7 +154,7 @@ export default function ArchitectureStructuredNotes() {
                   key={key}
                   onClick={() => setActiveTab(key)}
                   className={`px-6 py-3 rounded-xl font-bold transition-all ${
-                    activeTab === key ? 'bg-white dark:bg-[#0A0D14] text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:text-slate-300'
+                    activeTab === key ? 'bg-white dark:bg-[#0A0D14] text-slate-900 dark:text-slate-100 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:text-slate-300'
                   }`}
                 >
                   {cat.title}
@@ -166,7 +166,7 @@ export default function ArchitectureStructuredNotes() {
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 ${categories[activeTab].color}`}>
                   {React.createElement(categories[activeTab].icon, { className: "text-white", size: 32 })}
                 </div>
-                <h3 className="text-4xl font-bold mb-6 text-slate-900 font-serif">{categories[activeTab].title}</h3>
+                <h3 className="text-4xl font-bold mb-6 text-slate-900 dark:text-slate-100 font-serif">{categories[activeTab].title}</h3>
                 <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">{categories[activeTab].description}</p>
                 <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{categories[activeTab].details}</p>
@@ -191,7 +191,7 @@ export default function ArchitectureStructuredNotes() {
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-4 border-b border-slate-100 dark:border-slate-800">
                       <span className="font-semibold text-slate-500">{item.label}</span>
-                      <span className="font-bold text-slate-900">{item.value}</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100">{item.value}</span>
                     </div>
                   ))}
                 </div>
@@ -220,14 +220,14 @@ export default function ArchitectureStructuredNotes() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center text-xs font-bold mt-1">1</div>
                     <div>
-                      <span className="font-bold text-slate-900 block">Memory Feature:</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100 block">Memory Feature:</span>
                       <span className="text-sm text-slate-500">Missed coupons can accrue and be paid in a lump sum later if triggers are met.</span>
                     </div>
                   </div>
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#A8672E] dark:bg-[#D08F52] text-white flex items-center justify-center text-xs font-bold mt-1">2</div>
                     <div>
-                      <span className="font-bold text-slate-900 block">Reinvestment Risk:</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100 block">Reinvestment Risk:</span>
                       <span className="text-sm text-slate-500">Often called when yields are low, forcing capital redeployment in unfavorable markets.</span>
                     </div>
                   </div>
@@ -249,14 +249,14 @@ export default function ArchitectureStructuredNotes() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold mt-1">1</div>
                     <div>
-                      <span className="font-bold text-slate-900 block">Physical Delivery:</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100 block">Physical Delivery:</span>
                       <span className="text-sm text-slate-500">If the barrier is breached, you may receive depreciated shares of stock instead of cash.</span>
                     </div>
                   </div>
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold mt-1">2</div>
                     <div>
-                      <span className="font-bold text-slate-900 block">Asymmetric Risk:</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100 block">Asymmetric Risk:</span>
                       <span className="text-sm text-slate-500">Upside is capped at the coupon; downside loss can be near 100% of principal.</span>
                     </div>
                   </div>
@@ -347,11 +347,11 @@ export default function ArchitectureStructuredNotes() {
                 </h3>
                 <div className="space-y-4 text-sm">
                   <div className="p-4 bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                    <span className="font-bold text-slate-900 block mb-1">Ordinary Income Treatment:</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-100 block mb-1">Ordinary Income Treatment:</span>
                     <p className="text-slate-600 dark:text-slate-400">Gains on many notes are taxed at ordinary rates rather than preferential long-term capital gains rates.</p>
                   </div>
                   <div className="p-4 bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-                    <span className="font-bold text-slate-900 block mb-1">Phantom Income (OID):</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-100 block mb-1">Phantom Income (OID):</span>
                     <p className="text-slate-600 dark:text-slate-400">OID rules may require you to pay taxes on accrued interest yearly, even if no cash is received until maturity.</p>
                   </div>
                   <div className="p-4 bg-[#A8672E] dark:bg-[#D08F52] text-white rounded-xl shadow-lg shadow-indigo-100">
@@ -400,7 +400,7 @@ export default function ArchitectureStructuredNotes() {
                     {i + 1}
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 mb-2">{item.q}</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">{item.q}</h4>
                     <p className="text-xs text-slate-500 leading-relaxed">{item.d}</p>
                   </div>
                 </div>

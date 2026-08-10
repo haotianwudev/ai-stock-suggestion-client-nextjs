@@ -146,7 +146,7 @@ export default function SystematicVsModelQuantitativeTrading() {
           <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 py-20 -mx-6 md:-mx-12">
             <Section>
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-slate-900 mb-4 font-serif">Under the Hood: Strategy Construction</h2>
+                <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Under the Hood: Strategy Construction</h2>
                 <p className="text-xl text-slate-500 max-w-2xl mx-auto">
                   How do we actually build these? Let's look at the code structure for both approaches.
                 </p>
@@ -355,15 +355,15 @@ def model_strategy(asset_a, asset_b):
 
           {/* Tutorial Footer */}
           <Section className="text-center py-20">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6 font-serif">Ready to Start Building?</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">Ready to Start Building?</h2>
             <div className="grid md:grid-cols-3 gap-8 text-left max-w-4xl mx-auto">
-              <Card title="Step 1: Data" icon={BookOpen} colorClass="border-blue-500">
+              <Card title="Step 1: Data" icon={BookOpen} colorClass="border-[#A8672E] dark:border-[#D08F52]">
                 Learn Python (Pandas) and get high-quality data from sources like Yahoo Finance (free) or Bloomberg (pro).
               </Card>
-              <Card title="Step 2: Backtest" icon={TrendingUp} colorClass="border-green-500">
+              <Card title="Step 2: Backtest" icon={TrendingUp} colorClass="border-[#1D8A70] dark:border-[#3CBF9C]">
                 Use libraries like Backtrader or Zipline to simulate your strategy over historical data to check robustness.
               </Card>
-              <Card title="Step 3: Risk" icon={AlertTriangle} colorClass="border-red-500">
+              <Card title="Step 3: Risk" icon={AlertTriangle} colorClass="border-[#BC4128] dark:border-[#E2694A]">
                 Never deploy without a risk engine. Focus on Sharpe Ratio and Maximum Drawdown, not just total return.
               </Card>
             </div>

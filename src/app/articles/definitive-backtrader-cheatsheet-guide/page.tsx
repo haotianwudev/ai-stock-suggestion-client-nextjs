@@ -494,7 +494,7 @@ const CodeBlock = ({ code, title }: CodeBlockProps) => {
         <p className="text-white font-semibold text-lg">{title}</p>
         <button
           onClick={handleCopy}
-          className="flex items-center text-white hover:text-indigo-200 transition-colors duration-200 bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg"
+          className="flex items-center text-white hover:text-indigo-200 transition-colors duration-200 bg-white dark:bg-[#0A0D14]/20 hover:bg-white dark:bg-[#0A0D14]/30 px-3 py-2 rounded-lg"
         >
           {copied ? (
             <Fragment>
@@ -524,7 +524,7 @@ interface TableProps {
 const Table = ({ headers, rows }: TableProps) => {
   return (
     <div className="my-8 overflow-x-auto">
-      <div className="min-w-full bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+      <div className="min-w-full bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
         <table className="min-w-full">
           <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
             <tr>
@@ -537,7 +537,7 @@ const Table = ({ headers, rows }: TableProps) => {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-indigo-50 transition-colors duration-200">
+              <tr key={rowIndex} className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 transition-colors duration-200">
                 {row.map((cell, cellIndex) => (
                   <td key={cellIndex} className="p-6 text-gray-700">
                     {cell.startsWith('bt.') ? (
@@ -568,7 +568,7 @@ interface SectionProps {
 
 const Section = ({ title, content, list, codeBlocks, table }: SectionProps) => (
   <div className="mb-12">
-    <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-gradient-to-r from-indigo-200 to-purple-200">
+    <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-gradient-to-r from-indigo-200 to-purple-200 font-serif">
       {title}
     </h3>
     {content && content.map((p, i) => (
@@ -584,7 +584,7 @@ const Section = ({ title, content, list, codeBlocks, table }: SectionProps) => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {list.map((item, i) => (
           <div key={i} className="bg-gradient-to-r from-gray-50 to-indigo-50 p-4 rounded-xl border border-gray-200 hover:shadow-md transition-shadow duration-200">
-            <div className="font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-lg inline-block mb-2 text-sm">
+            <div className="font-bold text-[#A8672E] dark:text-[#D08F52] bg-indigo-100 px-3 py-1 rounded-lg inline-block mb-2 text-sm">
               {item.term}
             </div>
             <p className="text-gray-700 text-sm leading-relaxed">{item.description}</p>
@@ -608,7 +608,7 @@ export default function BacktraderCheatsheetPage() {
       {/* Introduction Section */}
       <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-2xl shadow-xl border border-indigo-100 p-10 mb-12">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6 font-serif">
             Master Python Algorithmic Trading with backtrader
           </h2>
           <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
@@ -621,14 +621,14 @@ export default function BacktraderCheatsheetPage() {
       {cheatsheetData.parts.map(part => {
         return (
           <div key={part.id} id={part.id} className="mb-20">
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
               {/* Part Header */}
               <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-8">
                 <div className="flex items-center space-x-4">
-                  <div className="bg-white/20 p-4 rounded-xl">
+                  <div className="bg-white dark:bg-[#0A0D14]/20 p-4 rounded-xl">
                     <Icon name={part.Icon as string} size={32} className="text-white" />
                   </div>
-                  <h2 className="text-3xl font-bold text-white tracking-tight">
+                  <h2 className="text-3xl font-bold text-white tracking-tight font-serif">
                     {part.title}
                   </h2>
                 </div>

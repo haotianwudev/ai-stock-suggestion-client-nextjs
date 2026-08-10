@@ -36,19 +36,19 @@ export default function BlackLittermanGuide() {
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="bg-white dark:bg-slate-950 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
-                    <div className="text-rose-500 font-bold mb-2">1. Input Sensitivity</div>
+                    <div className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-2">1. Input Sensitivity</div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       A tiny 0.1% change in expected return can flip a portfolio from 0% to 50% allocation in an asset. The math is precise, but the inputs are guesses.
                     </p>
                   </div>
                   <div className="bg-white dark:bg-slate-950 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
-                    <div className="text-rose-500 font-bold mb-2">2. The Prediction Problem</div>
+                    <div className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-2">2. The Prediction Problem</div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       MVO assumes we know future returns with certainty. In reality, historical mean returns are terrible predictors of the future.
                     </p>
                   </div>
                   <div className="bg-white dark:bg-slate-950 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
-                    <div className="text-rose-500 font-bold mb-2">3. Unintuitive Weights</div>
+                    <div className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-2">3. Unintuitive Weights</div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       Standard optimizers often suggest extreme long/short positions (corner solutions) that no sane manager would implement.
                     </p>
@@ -95,7 +95,7 @@ export default function BlackLittermanGuide() {
               {/* Step 1: The Prior */}
               <div className="bg-white dark:bg-slate-950 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold">1</div>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold">1</div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">The Market Prior (Reverse Optimization)</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400">Reverse-engineering what the market is thinking.</p>
@@ -118,7 +118,7 @@ export default function BlackLittermanGuide() {
               {/* Step 2: The Views */}
               <div className="bg-white dark:bg-slate-950 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold">2</div>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold">2</div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">Modeling the Views (P, Q, and Ω)</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400">Quantifying subjective opinions.</p>
@@ -137,17 +137,17 @@ export default function BlackLittermanGuide() {
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                       <tr>
-                        <td className="px-4 py-3 font-mono font-bold text-indigo-600 dark:text-indigo-400">P</td>
+                        <td className="px-4 py-3 font-mono font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">P</td>
                         <td className="px-4 py-3 font-mono text-slate-500 dark:text-slate-400">K x N</td>
                         <td className="px-4 py-3"><strong>Selection Matrix.</strong> Identifies which assets are involved in each of the <em>K</em> views.</td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-3 font-mono font-bold text-indigo-600 dark:text-indigo-400">Q</td>
+                        <td className="px-4 py-3 font-mono font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Q</td>
                         <td className="px-4 py-3 font-mono text-slate-500 dark:text-slate-400">K x 1</td>
                         <td className="px-4 py-3"><strong>View Vector.</strong> The expected return for each view (e.g., "5%" or 0.05).</td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-3 font-mono font-bold text-indigo-600 dark:text-indigo-400">Ω</td>
+                        <td className="px-4 py-3 font-mono font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Ω</td>
                         <td className="px-4 py-3 font-mono text-slate-500 dark:text-slate-400">K x K</td>
                         <td className="px-4 py-3"><strong>Uncertainty Matrix (Diagonal).</strong> The variance of the error term ε. Represents how unsure you are of your own view.</td>
                       </tr>
@@ -159,7 +159,7 @@ export default function BlackLittermanGuide() {
               {/* Step 3: The Master Formula */}
               <div className="bg-white dark:bg-slate-950 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold">3</div>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold">3</div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">The Master Formula (Posterior)</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400">The Generalized Least Squares (GLS) estimator.</p>
@@ -180,7 +180,7 @@ export default function BlackLittermanGuide() {
               {/* Step 4: Final Weights */}
               <div className="bg-white dark:bg-slate-950 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold">4</div>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold">4</div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">Final Portfolio Weights</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400">Turning returns into allocations.</p>
@@ -219,7 +219,7 @@ export default function BlackLittermanGuide() {
               <div className="space-y-10">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-lg shadow-lg">1</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold text-lg shadow-lg">1</div>
                     <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>
                   </div>
                   <div className="pb-12 w-full">
@@ -233,7 +233,7 @@ export default function BlackLittermanGuide() {
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-lg shadow-lg">2</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold text-lg shadow-lg">2</div>
                     <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>
                   </div>
                   <div className="pb-12 w-full">
@@ -247,7 +247,7 @@ export default function BlackLittermanGuide() {
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-lg shadow-lg">3</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold text-lg shadow-lg">3</div>
                     <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>
                   </div>
                   <div className="pb-12 w-full">
@@ -261,7 +261,7 @@ export default function BlackLittermanGuide() {
                 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-lg shadow-lg">4</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold text-lg shadow-lg">4</div>
                     <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>
                   </div>
                   <div className="pb-12 w-full">
@@ -275,7 +275,7 @@ export default function BlackLittermanGuide() {
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-lg shadow-lg">5</div>
+                    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 flex items-center justify-center font-bold text-lg shadow-lg">5</div>
                   </div>
                   <div className="pb-12 w-full">
                     <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">Final Optimization</h4>
@@ -347,7 +347,7 @@ export default function BlackLittermanGuide() {
 
             <div className="space-y-12">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">1. Entropy Pooling (The Generalization)</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">Entropy Pooling (The Generalization)</h3>
                 <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">Attilio Meucci (2008)</p>
                 
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">Classic BL is actually a special case of a broader framework called <strong>Entropy Pooling</strong>. While BL assumes all assets follow a Normal Distribution, Entropy Pooling makes no assumptions. It allows you to input views on <em>anything</em>: Volatility, Skewness, or Tail Risk.</p>
@@ -370,7 +370,7 @@ export default function BlackLittermanGuide() {
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">2. Factor-Based Black-Litterman</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">Factor-Based Black-Litterman</h3>
                 <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">Viewing the world through Drivers, not Assets.</p>
                 
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">Instead of having views on "Apple" or "Google", quants often have views on <strong>Factors</strong> (Value, Momentum, Inflation, GDP). We project these views onto the assets using a factor loading matrix (B).</p>
@@ -382,12 +382,12 @@ export default function BlackLittermanGuide() {
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">3. AI Integration (Dynamic Omega)</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 font-serif">AI Integration (Dynamic Omega)</h3>
                 <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">Using Neural Networks to calibrate Confidence.</p>
                 
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">The weakest link in BL is the human "Confidence" parameter (Ω). Modern funds use <strong>Bayesian Neural Networks (BNNs)</strong> or <strong>Dropout</strong> in Deep Learning to estimate this.</p>
                 
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-xl border border-indigo-200 dark:border-indigo-800/50">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-xl border border-indigo-200 dark:border-indigo-800/50">
                   <p className="text-sm text-indigo-800 dark:text-indigo-200 italic leading-relaxed">"If the AI model is volatile/uncertain in its prediction, BL automatically ignores the view and reverts to the index. It acts as an automatic kill-switch for bad AI predictions."</p>
                 </div>
               </div>
@@ -449,33 +449,33 @@ export default function BlackLittermanGuide() {
                 <tr className="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-200">
                   <th className="p-4 border-b border-slate-200 dark:border-slate-800">Feature</th>
                   <th className="p-4 border-b border-l border-slate-200 dark:border-slate-800">Mean-Variance (1952)</th>
-                  <th className="p-4 border-b border-l border-slate-200 dark:border-slate-800 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-900 dark:text-indigo-300 font-bold">Black-Litterman (1990)</th>
+                  <th className="p-4 border-b border-l border-slate-200 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 text-indigo-900 dark:text-indigo-300 font-bold">Black-Litterman (1990)</th>
                   <th className="p-4 border-b border-l border-slate-200 dark:border-slate-800">Entropy Pooling (2008)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                   <td className="p-4 font-semibold text-slate-900 dark:text-white">Philosophy</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">"Data is Truth"</td>
-                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-indigo-50/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">"Market is Truth"</td>
+                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">"Market is Truth"</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">"Information Distance"</td>
                 </tr>
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                   <td className="p-4 font-semibold text-slate-900 dark:text-white">Inputs</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">Historical Mean/Covariance</td>
-                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-indigo-50/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">CAPM Prior + Linear Views</td>
+                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">CAPM Prior + Linear Views</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">Prior PDF + General Views</td>
                 </tr>
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                   <td className="p-4 font-semibold text-slate-900 dark:text-white">Optimization</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">Quadratic Programming</td>
-                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-indigo-50/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">Bayesian Update</td>
+                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">Bayesian Update</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">KL-Divergence Min</td>
                 </tr>
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                   <td className="p-4 font-semibold text-slate-900 dark:text-white">Weakness</td>
-                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-rose-500">Error Maximization</td>
-                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-indigo-50/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">Normality Assumption</td>
+                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#BC4128] dark:text-[#E2694A]">Error Maximization</td>
+                  <td className="p-4 border-l border-slate-200 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 font-medium text-indigo-900 dark:text-indigo-300">Normality Assumption</td>
                   <td className="p-4 border-l border-slate-200 dark:border-slate-800">Computational Complexity</td>
                 </tr>
               </tbody>

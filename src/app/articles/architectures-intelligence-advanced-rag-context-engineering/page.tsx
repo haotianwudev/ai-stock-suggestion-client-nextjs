@@ -7,20 +7,20 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 // Helper component for colored keyword highlighting
 const Highlight = ({ children, color }: { children: React.ReactNode; color: string }) => {
   const colorClasses: { [key: string]: string } = {
-    blue: 'text-blue-600',
-    teal: 'text-teal-600',
+    blue: 'text-[#A8672E] dark:text-[#D08F52]',
+    teal: 'text-[#A8672E] dark:text-[#D08F52]',
     amber: 'text-amber-600',
     fuchsia: 'text-fuchsia-600',
     lime: 'text-lime-600',
     purple: 'text-purple-600',
-    orange: 'text-orange-600',
+    orange: 'text-[#BC4128] dark:text-[#E2694A]',
   };
-  return <span className={`font-semibold ${colorClasses[color] || 'text-blue-600'}`}>{children}</span>;
+  return <span className={`font-semibold ${colorClasses[color] || 'text-[#A8672E] dark:text-[#D08F52]'}`}>{children}</span>;
 };
 
 // Component for a styled table
 const StyledTable = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
-  <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white/50 my-6 backdrop-blur-sm">
+  <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white dark:bg-[#0A0D14]/50 my-6 backdrop-blur-sm">
     <table className="min-w-full divide-y divide-gray-200 text-sm">
       <thead className="bg-gray-50">
         <tr>
@@ -31,7 +31,7 @@ const StyledTable = ({ headers, rows }: { headers: string[]; rows: string[][] })
           ))}
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
         {rows.map((row, rowIndex) => (
           <tr key={rowIndex} className="hover:bg-gray-50 transition-colors duration-200">
             {row.map((cell, cellIndex) => (
@@ -51,7 +51,7 @@ const CollapsibleSection = ({ title, children, icon }: { title: string; children
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="bg-white/80 border border-gray-200/80 rounded-2xl shadow-lg backdrop-blur-xl mb-8 overflow-hidden">
+    <div className="bg-white dark:bg-[#0A0D14]/80 border border-gray-200/80 rounded-2xl shadow-lg backdrop-blur-xl mb-8 overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center text-left text-xl md:text-2xl font-bold text-gray-800 p-6 focus:outline-none transition-colors duration-300 hover:bg-gray-100/60"
@@ -129,7 +129,7 @@ export default function ArchitecturesOfIntelligence() {
     >
       <CollapsibleSection
         title="The Evolution: From Prompting to Context Engineering"
-        icon={<Brain className="w-6 h-6 text-blue-600" />}
+        icon={<Brain className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />}
       >
         <h3>Defining the Modern AI Stack</h3>
         <p>Production-grade AI systems are more than an API call. Foundational models are powerful but have key limitations:</p>
@@ -158,7 +158,7 @@ export default function ArchitecturesOfIntelligence() {
 
       <CollapsibleSection
         title="Pre-Retrieval: Optimizing the Knowledge Corpus"
-        icon={<Database className="w-6 h-6 text-teal-600" />}
+        icon={<Database className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />}
       >
         <h3>The Critical Role of Document Chunking</h3>
         <p>Chunking is splitting large documents into smaller, semantically meaningful snippets. The core challenge is balancing <Highlight color="lime">precision</Highlight> (small chunks for specific queries) and <Highlight color="lime">context</Highlight> (large chunks to preserve meaning). The ideal chunk is large enough to be coherent but small enough to be topically focused.</p>
@@ -200,7 +200,7 @@ export default function ArchitecturesOfIntelligence() {
 
       <CollapsibleSection
         title="The Augmentation Stage: Advanced Prompting for RAG"
-        icon={<Settings className="w-6 h-6 text-orange-600" />}
+        icon={<Settings className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" />}
       >
         <h3>Structuring the Augmented Prompt</h3>
         <p>A well-structured prompt uses delimiters (e.g., XML tags like `&lt;context&gt;`) to help the LLM distinguish between system instructions, retrieved context, and the user query. Formatting the context itself by numbering chunks or prepending metadata also improves clarity.</p>
@@ -234,7 +234,7 @@ export default function ArchitecturesOfIntelligence() {
 
       <CollapsibleSection
         title="Conclusion and Strategic Recommendations"
-        icon={<Brain className="w-6 h-6 text-blue-600" />}
+        icon={<Brain className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />}
       >
         <h3>A Unified Framework for RAG Optimization</h3>
         <p>The optimal RAG architecture is a holistic system following a multi-stage pipeline with embedded feedback loops: <Highlight color="lime">Pre-Retrieval &rarr; Retrieval &rarr; Post-Retrieval &rarr; Generation &rarr; Refinement</Highlight>.</p>

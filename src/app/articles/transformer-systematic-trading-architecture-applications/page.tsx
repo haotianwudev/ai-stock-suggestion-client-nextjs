@@ -14,18 +14,18 @@ const Section = ({ children, id, className = '' }: { children: React.ReactNode; 
 );
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight text-center">
+  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight text-center font-serif">
     {children}
   </h2>
 );
 
 const Card = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1 transition-all duration-300 border border-gray-200 h-full">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1 transition-all duration-300 border border-gray-200 h-full">
     <div className="flex items-center mb-4">
       <div className="p-2 bg-cyan-100/60 rounded-full mr-4">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-cyan-700">{title}</h3>
+      <h3 className="text-xl font-semibold text-cyan-700 font-serif">{title}</h3>
     </div>
     <p className="text-gray-600 leading-relaxed">{children}</p>
   </div>
@@ -102,7 +102,7 @@ const Applications = () => (
 
         {/* --- Forecasting Section --- */}
         <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><TrendingUp className="h-8 w-8 mr-3 text-cyan-600" />Forecasting: From Prediction to Probability</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center font-serif"><TrendingUp className="h-8 w-8 mr-3 text-cyan-600" />Forecasting: From Prediction to Probability</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card icon={<Layers className="h-6 w-6 text-cyan-600" />} title="Price & Return Prediction">
                     Transformers move beyond linear models by capturing complex, non-linear market dynamics. They learn relevant temporal dependencies directly from data, identifying multi-scale patterns from intraday momentum to long-term market regimes.
@@ -118,16 +118,16 @@ const Applications = () => (
 
         {/* --- NLP Section --- */}
         <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><FileText className="h-8 w-8 mr-3 text-cyan-600" />The Alpha in the Alphabet: Quantifying the Narrative</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center font-serif"><FileText className="h-8 w-8 mr-3 text-cyan-600" />The Alpha in the Alphabet: Quantifying the Narrative</h3>
              <p className="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto">
                 Transformers&apos; native strength in NLP provides a mechanism to systematically extract alpha from the vast sea of unstructured text data that drives market narratives, bridging the historical divide between quantitative and fundamental analysis.
             </p>
             <div className="grid md:grid-cols-2 gap-8 items-start">
-                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                 <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
                     <h4 className="text-xl font-semibold text-cyan-700 mb-3">The &ldquo;Quantamental&rdquo; Bridge</h4>
                     <p className="text-gray-600">Models like FinBERT act as a translator, converting news headlines and reports into numerical sentiment scores. This structured data is then fed into forecasting models, allowing a system to learn relationships between news events and subsequent price movements, creating strategies that systematically trade on narratives.</p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
                     <h4 className="text-xl font-semibold text-cyan-700 mb-3">Beyond Simple Sentiment</h4>
                     <p className="text-gray-600">Advanced applications extend to topic modeling (identifying themes like &ldquo;inflation concerns&rdquo; in news) and semantic search, dramatically accelerating the research process that underpins both discretionary and systematic trading.</p>
                 </div>
@@ -136,11 +136,11 @@ const Applications = () => (
 
         {/* --- Factor Generation Section --- */}
         <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><BrainCircuit className="h-8 w-8 mr-3 text-cyan-600" />Factor Generation: The New Frontier</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center font-serif"><BrainCircuit className="h-8 w-8 mr-3 text-cyan-600" />Factor Generation: The New Frontier</h3>
             <p className="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto">
                 The most sophisticated application involves moving beyond prediction to creation. This approach elegantly solves the &ldquo;black box&rdquo; problem, a major barrier to institutional adoption.
             </p>
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+            <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-lg shadow-lg border border-gray-200">
                 <h4 className="text-xl font-semibold text-cyan-700 mb-6 text-center">The Factor Generation Process</h4>
                 <ol className="relative border-l border-gray-200 space-y-8">
                     <li className="ml-6">
@@ -179,7 +179,7 @@ const Comparison = () => (
         <p className="text-lg text-gray-700 text-center mb-10">
             Transformers are not a universal solution. Their performance is highly context-dependent, and they face stiff competition from other powerful ML techniques like LSTMs and Gradient Boosted Trees (e.g., XGBoost).
         </p>
-        <div className="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
+        <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-lg shadow-md border border-gray-200">
             <table className="w-full text-left border-collapse">
                 <thead>
                     <tr className="bg-gray-100">
@@ -236,20 +236,20 @@ const Challenges = () => (
     <Section id="challenges">
         <SectionTitle>Pros, Cons & Critical Challenges</SectionTitle>
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-green-50 border border-green-200 p-6 rounded-lg">
-                <h3 className="text-2xl font-semibold text-green-800 mb-4">Pros</h3>
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-green-200 p-6 rounded-lg">
+                <h3 className="text-2xl font-semibold text-green-800 mb-4 font-serif">Pros</h3>
                 <ul className="space-y-3">
-                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Global Context:</strong> Unparalleled ability to model complex, long-range dependencies in data.</span></li>
-                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Parallelization:</strong> Significantly faster to train on large datasets compared to sequential models like LSTMs.</span></li>
-                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Flexibility:</strong> Provides a unified framework for fusing diverse data types, from prices to news text.</span></li>
+                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Global Context:</strong> Unparalleled ability to model complex, long-range dependencies in data.</span></li>
+                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Parallelization:</strong> Significantly faster to train on large datasets compared to sequential models like LSTMs.</span></li>
+                    <li className="flex items-start"><CheckCircle className="h-6 w-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Flexibility:</strong> Provides a unified framework for fusing diverse data types, from prices to news text.</span></li>
                 </ul>
             </div>
-            <div className="bg-red-50 border border-red-200 p-6 rounded-lg">
-                <h3 className="text-2xl font-semibold text-red-800 mb-4">Cons & Difficulties</h3>
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 p-6 rounded-lg">
+                <h3 className="text-2xl font-semibold text-red-800 mb-4 font-serif">Cons & Difficulties</h3>
                 <ul className="space-y-3">
-                    <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Overfitting Risk:</strong> High model capacity makes it easy to memorize historical noise instead of a true signal.</span></li>
-                    <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Interpretability:</strong> The &ldquo;black box&rdquo; nature poses significant risk management and compliance challenges.</span></li>
-                    <li className="flex items-start"><XCircle className="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Cost & Data:</strong> Data-hungry and computationally expensive, requiring massive datasets and powerful GPUs.</span></li>
+                    <li className="flex items-start"><XCircle className="h-6 w-6 text-[#BC4128] dark:text-[#E2694A] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Overfitting Risk:</strong> High model capacity makes it easy to memorize historical noise instead of a true signal.</span></li>
+                    <li className="flex items-start"><XCircle className="h-6 w-6 text-[#BC4128] dark:text-[#E2694A] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Interpretability:</strong> The &ldquo;black box&rdquo; nature poses significant risk management and compliance challenges.</span></li>
+                    <li className="flex items-start"><XCircle className="h-6 w-6 text-[#BC4128] dark:text-[#E2694A] mr-3 flex-shrink-0 mt-1" /><span><strong className="font-semibold">Cost & Data:</strong> Data-hungry and computationally expensive, requiring massive datasets and powerful GPUs.</span></li>
                 </ul>
             </div>
         </div>
@@ -263,7 +263,7 @@ const CaseStudies = () => (
             <p className="text-lg text-gray-700 text-center">
                 Research provides concrete examples of Transformer-based strategies, while the future points towards foundational models and hybrid systems.
             </p>
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-md">
                 <h4 className="text-xl font-semibold text-cyan-700 mb-2">Case Study: Stockformer</h4>
                 <p className="text-gray-600 mb-4">A price-volume factor model that uses a Dual-Frequency Spatiotemporal Encoder. A swing trading strategy based on its factor reported an impressive <strong className="text-gray-800">annualized return of 30.80%</strong> in backtests, showing stability even in downturns.</p>
                 <h4 className="text-xl font-semibold text-cyan-700 mb-2">Case Study: Quantformer</h4>
@@ -283,7 +283,7 @@ export default function TransformerTradingArticle() {
   return (
     <ArticleFrame slug="transformer-systematic-trading-architecture-applications">
       <div className="max-w-5xl mx-auto px-4 text-gray-800">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           A deep dive into the revolutionary architecture, its adaptation for financial markets, and its practical applications in creating alpha.
         </p>
 

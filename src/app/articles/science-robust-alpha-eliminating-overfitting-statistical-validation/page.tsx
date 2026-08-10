@@ -277,7 +277,7 @@ export default function ScienceRobustAlpha() {
                     <tr key={i} className="group">
                       <td className="py-4 text-sm font-bold text-slate-500">{row[0]}</td>
                       <td className="py-4 text-sm text-slate-700 dark:text-slate-300">{row[1]}</td>
-                      <td className="py-4 text-sm text-slate-900 font-medium group-hover:text-[#A8672E] dark:text-[#D08F52] transition-colors">{row[2]}</td>
+                      <td className="py-4 text-sm text-slate-900 dark:text-slate-100 font-medium group-hover:text-[#A8672E] dark:text-[#D08F52] transition-colors">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -323,7 +323,7 @@ export default function ScienceRobustAlpha() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900 font-serif">The SNR Hurricane</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-slate-100 font-serif">The SNR Hurricane</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 SNR is often below 0.05. Powerful models mistake the hurricane for the whisper.
               </p>
@@ -362,7 +362,7 @@ export default function ScienceRobustAlpha() {
         <div className="space-y-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900 leading-tight font-serif">Beyond Binary Returns</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight font-serif">Beyond Binary Returns</h3>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 Traditional "sign-based" labeling ignores the path. Elite quants use dynamic barriers that account for risk and time-decay.
               </p>
@@ -389,8 +389,8 @@ export default function ScienceRobustAlpha() {
                 <h3 className="text-3xl font-black mb-6 text-[#A8672E] dark:text-[#D08F52] tracking-tight font-serif">Triple Barrier Method</h3>
                 <ul className="space-y-6">
                   {[
-                    { t: "Upper Barrier (pt)", d: "Profit Target reached (+1 label)", c: "border-indigo-500", val: "y_t = 1" },
-                    { t: "Lower Barrier (sl)", d: "Stop Loss triggered (-1 label)", c: "border-rose-500", val: "y_t = -1" },
+                    { t: "Upper Barrier (pt)", d: "Profit Target reached (+1 label)", c: "border-[#A8672E] dark:border-[#D08F52]", val: "y_t = 1" },
+                    { t: "Lower Barrier (sl)", d: "Stop Loss triggered (-1 label)", c: "border-[#BC4128] dark:border-[#E2694A]", val: "y_t = -1" },
                     { t: "Vertical Barrier (td)", d: "Time limit exceeded (0 label)", c: "border-slate-500", val: "y_t = 0" }
                   ].map((item, i) => (
                     <li key={i} className={`border-l-4 pl-6 ${item.c} p-2 rounded-r-xl`}>
@@ -422,7 +422,7 @@ for t in timestamps:
 
           <div className="grid lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 font-serif">Meta-Labeling: The Master Stroke</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">Meta-Labeling: The Master Stroke</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Introducing a "Secondary Model" that asks: <em>"Given the current context, should I follow the Primary signal?"</em>
               </p>
@@ -467,7 +467,7 @@ for t in timestamps:
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900 font-serif">Deflating the Sharpe Ratio</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-slate-100 font-serif">Deflating the Sharpe Ratio</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 The <strong>Deflated Sharpe Ratio (DSR)</strong> corrects for selection bias and non-normal returns.
               </p>
@@ -489,7 +489,7 @@ for t in timestamps:
           <div className="p-8 md:p-12 bg-white dark:bg-[#0A0D14] rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-5 space-y-6">
-                <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2 font-serif">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 font-serif">
                   <FileSearch className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" /> Feature Importance: MDA vs MDI
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
@@ -513,7 +513,7 @@ for t in timestamps:
 
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl font-black text-slate-900 font-serif">Elastic Net Shield</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-slate-100 font-serif">Elastic Net Shield</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Regularization penalizes large weights to force model humility.
               </p>

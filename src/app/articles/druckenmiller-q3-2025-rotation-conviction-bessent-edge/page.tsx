@@ -19,12 +19,12 @@ const InfoCard = ({ icon, title, children, color = 'blue' }: {
   color?: string;
 }) => {
   const colorClasses: Record<string, string> = {
-    blue: 'bg-blue-100 text-blue-700',
-    green: 'bg-green-100 text-green-700',
-    indigo: 'bg-indigo-100 text-indigo-700',
+    blue: 'bg-blue-100 text-[#A8672E] dark:text-[#D08F52]',
+    green: 'bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C]',
+    indigo: 'bg-indigo-100 text-[#A8672E] dark:text-[#D08F52]',
     purple: 'bg-purple-100 text-purple-700',
     pink: 'bg-pink-100 text-pink-700',
-    red: 'bg-red-100 text-red-700',
+    red: 'bg-red-100 text-[#BC4128] dark:text-[#E2694A]',
     yellow: 'bg-yellow-100 text-yellow-700',
   };
 
@@ -39,28 +39,28 @@ const InfoCard = ({ icon, title, children, color = 'blue' }: {
   };
 
   return (
-    <div className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${shadowClasses[color]}`}>
+    <div className={`bg-white dark:bg-[#0A0D14] rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${shadowClasses[color]}`}>
       <div className="p-6">
         <div className={`flex items-center justify-center w-16 h-16 rounded-xl ${colorClasses[color]} mb-5`}>
           {icon}
         </div>
-        <h3 className="text-2xl font-semibold text-slate-900 mb-3">{title}</h3>
-        <p className="text-slate-600 leading-relaxed">{children}</p>
+        <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-3 font-serif">{title}</h3>
+        <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{children}</p>
       </div>
     </div>
   );
 };
 
 const QuoteBlock = ({ children, source }: { children: React.ReactNode; source?: string }) => (
-  <blockquote className="my-8 p-6 rounded-xl bg-blue-50 border-l-4 border-blue-500">
+  <blockquote className="my-8 p-6 rounded-xl bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52]">
     <p className="text-xl italic font-medium text-blue-900 leading-relaxed">
       &ldquo;{children}&rdquo;
     </p>
-    {source && <cite className="block mt-4 text-right text-slate-600 not-italic">&mdash; {source}</cite>}
+    {source && <cite className="block mt-4 text-right text-slate-600 dark:text-slate-400 not-italic">&mdash; {source}</cite>}
   </blockquote>
 );
 
-const SectionWrapper = ({ id, title, subtitle, children, className = 'bg-white' }: {
+const SectionWrapper = ({ id, title, subtitle, children, className = 'bg-white dark:bg-[#0A0D14]' }: {
   id: string;
   title: string;
   subtitle: string;
@@ -70,8 +70,8 @@ const SectionWrapper = ({ id, title, subtitle, children, className = 'bg-white' 
   <section id={id} className={`py-16 ${className}`}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto text-center mb-16">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">{title}</h2>
-        <p className="mt-4 text-xl text-slate-600">{subtitle}</p>
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-100 font-serif">{title}</h2>
+        <p className="mt-4 text-xl text-slate-600 dark:text-slate-400">{subtitle}</p>
       </div>
       {children}
     </div>
@@ -82,16 +82,16 @@ const ChangeCell = ({ value, prefix = '' }: { value: any; prefix?: string }) => 
   const isPositive = value && (value > 0 || (typeof value === 'string' && value.startsWith('+')));
   const isNegative = value && (value < 0 || (typeof value === 'string' && value.startsWith('-')));
 
-  let className = "text-slate-900";
+  let className = "text-slate-900 dark:text-slate-100";
   let formattedValue = `${prefix}${value}`;
 
   if (isPositive) {
-    className = "text-green-600 font-medium";
+    className = "text-[#1D8A70] dark:text-[#3CBF9C] font-medium";
     formattedValue = typeof value === 'string' ? value : `+${prefix}${value.toFixed(2)}`;
   }
 
   if (isNegative) {
-    className = "text-red-600 font-medium";
+    className = "text-[#BC4128] dark:text-[#E2694A] font-medium";
     formattedValue = typeof value === 'string' ? value : `-${prefix}${Math.abs(value).toFixed(2)}`;
   }
 
@@ -103,106 +103,106 @@ const ChangeCell = ({ value, prefix = '' }: { value: any; prefix?: string }) => 
 ----------------------------------------------------------------------*/
 
 const SectionPortfolioAnalysis = () => (
-  <SectionWrapper id="section-what" title='I. Portfolio Analysis (The "What")' subtitle="A quantitative breakdown of the Duquesne Family Office's Q3 2025 13F filing." className="bg-slate-50">
+  <SectionWrapper id="section-what" title='I. Portfolio Analysis (The "What")' subtitle="A quantitative breakdown of the Duquesne Family Office's Q3 2025 13F filing." className="bg-slate-50 dark:bg-[#14171B]">
     <div className="space-y-16">
-      <div className="bg-white p-8 rounded-2xl shadow-xl">
-        <h3 className="text-3xl font-semibold text-slate-900 mb-6 text-center">Portfolio Architecture: Q3 vs. Q2 2025</h3>
-        <p className="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-8">
+      <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-xl">
+        <h3 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center font-serif">Portfolio Architecture: Q3 vs. Q2 2025</h3>
+        <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-3xl mx-auto mb-8">
           The portfolio&apos;s value remained stable, but a 63.27% turnover rate reveals a complete &ldquo;re-underwriting&rdquo; of positions.
           This is a strategy of active management and aggressive rotation, not &ldquo;buy and hold.&rdquo; The concentration is extreme:
           the top 10 holdings now make up 53.93% of the entire portfolio, up from a lower concentration in Q2.
         </p>
-        <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200">
             <thead className="bg-slate-100">
               <tr>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Metric</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Q2 2025</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Q3 2025</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Analysis</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Metric</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Q2 2025</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Q3 2025</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Analysis</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-slate-200">
+            <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Managed 13F AUM</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">$4.07 Billion</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">$4.06 Billion</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Managed 13F AUM</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">$4.07 Billion</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">$4.06 Billion</td>
                 <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-500 italic">Stable value, masks internal churn.</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Number of Holdings</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">69</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">65</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Number of Holdings</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">69</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">65</td>
                 <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-500 italic">Slightly more concentrated.</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Top 10 Holdings %</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">48.12%</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 font-bold">53.93%</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-green-600 italic">Increased conviction in top names.</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Top 10 Holdings %</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">48.12%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300 font-bold">53.93%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C] italic">Increased conviction in top names.</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">Turnover %</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">~28%</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-red-600 font-bold">63.27%</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-red-600 italic">Hyper-aggressive rotation.</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">Turnover %</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">~28%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A] font-bold">63.27%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A] italic">Hyper-aggressive rotation.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-2xl shadow-xl">
-        <h3 className="text-3xl font-semibold text-slate-900 mb-6 text-center">Top 10 Holdings: The Core Convictions</h3>
-        <p className="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-8">
+      <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-xl">
+        <h3 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center font-serif">Top 10 Holdings: The Core Convictions</h3>
+        <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-3xl mx-auto mb-8">
           The portfolio is extraordinarily concentrated. The top 3 healthcare names (NTRA, INSM, TEVA) alone represent
           nearly 30% of the entire portfolio, a massive &ldquo;bet the ranch&rdquo; move on three *uncorrelated* theses.
         </p>
-        <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200">
             <thead className="bg-slate-100">
               <tr>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Ticker</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Company</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">% of Portfolio</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Q/Q Change</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Ticker</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Company</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">% of Portfolio</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Q/Q Change</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-slate-200">
-              <tr className="bg-green-50">
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">NTRA</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">Natera, Inc.</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-green-700">~12.95%</td>
+            <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
+              <tr className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10">
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">NTRA</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">Natera, Inc.</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C]">~12.95%</td>
                 <ChangeCell value="+4.2%" />
               </tr>
-              <tr className="bg-green-50">
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">INSM</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">Insmed Inc.</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-green-700">~8.74%</td>
+              <tr className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10">
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">INSM</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">Insmed Inc.</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C]">~8.74%</td>
                 <ChangeCell value="+7.5%" />
               </tr>
-              <tr className="bg-green-50">
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">TEVA</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">Teva Pharmaceutical</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-green-700">~8.39%</td>
+              <tr className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10">
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">TEVA</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">Teva Pharmaceutical</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C]">~8.39%</td>
                 <td className="px-5 py-4 text-sm text-slate-500 italic">New Position</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">TSM</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">Taiwan Semiconductor</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">~5.35%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">TSM</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">Taiwan Semiconductor</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">~5.35%</td>
                 <td className="px-5 py-4 text-sm text-slate-500 italic">Trimmed</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">WWD</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">Woodward Inc.</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">~4.01%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">WWD</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">Woodward Inc.</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">~4.01%</td>
                 <ChangeCell value="-25.4%" />
               </tr>
               <tr>
-                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900">EEM</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">iShares MSCI Emerging Mkts</td>
-                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700">~2.54%</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">EEM</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">iShares MSCI Emerging Mkts</td>
+                <td className="px-5 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">~2.54%</td>
                 <td className="px-5 py-4 text-sm text-slate-500 italic">New Position</td>
               </tr>
             </tbody>
@@ -211,9 +211,9 @@ const SectionPortfolioAnalysis = () => (
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-2xl shadow-xl">
-          <h4 className="text-2xl font-semibold text-slate-900 mb-6 text-center">Significant New Buys (Q3)</h4>
-          <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-xl">
+          <h4 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center">Significant New Buys (Q3)</h4>
+          <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
             <table className="min-w-full divide-y divide-slate-200">
               <thead className="bg-green-100">
                 <tr>
@@ -222,7 +222,7 @@ const SectionPortfolioAnalysis = () => (
                   <th className="px-5 py-3 text-left text-sm font-semibold text-green-800 uppercase">Portfolio %</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-slate-200">
+              <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
                 <tr><td className="px-5 py-3 text-sm font-medium">TEVA</td><td className="px-5 py-3 text-sm">Teva Pharmaceutical</td><td className="px-5 py-3 text-sm font-bold">~8.39%</td></tr>
                 <tr><td className="px-5 py-3 text-sm font-medium">EEM</td><td className="px-5 py-3 text-sm">iShares MSCI Emerging Markets</td><td className="px-5 py-3 text-sm font-bold">~2.54%</td></tr>
                 <tr><td className="px-5 py-3 text-sm font-medium">AMZN</td><td className="px-5 py-3 text-sm">Amazon.com Inc</td><td className="px-5 py-3 text-sm">~2.15%</td></tr>
@@ -233,9 +233,9 @@ const SectionPortfolioAnalysis = () => (
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-2xl shadow-xl">
-          <h4 className="text-2xl font-semibold text-slate-900 mb-6 text-center">Significant Exits (Q3)</h4>
-          <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-xl">
+          <h4 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center">Significant Exits (Q3)</h4>
+          <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
             <table className="min-w-full divide-y divide-slate-200">
               <thead className="bg-red-100">
                 <tr>
@@ -244,7 +244,7 @@ const SectionPortfolioAnalysis = () => (
                   <th className="px-5 py-3 text-left text-sm font-semibold text-red-800 uppercase">Former %</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-slate-200">
+              <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
                 <tr><td className="px-5 py-3 text-sm font-medium">MSFT</td><td className="px-5 py-3 text-sm">Microsoft Corporation</td><td className="px-5 py-3 text-sm text-slate-500">~6.5%</td></tr>
                 <tr><td className="px-5 py-3 text-sm font-medium">NVDA</td><td className="px-5 py-3 text-sm">Nvidia Corp</td><td className="px-5 py-3 text-sm text-slate-500">~3.1%</td></tr>
                 <tr><td className="px-5 py-3 text-sm font-medium">PM</td><td className="px-5 py-3 text-sm">Philip Morris International</td><td className="px-5 py-3 text-sm text-slate-500">~4.2%</td></tr>
@@ -260,49 +260,49 @@ const SectionPortfolioAnalysis = () => (
 );
 
 const SectionSectorAllocation = () => (
-  <SectionWrapper id="section-sectors" title='II. Sector Allocation: "All In" on Health' subtitle="The portfolio's sector weights reveal the real conviction: a massive, concentrated bet on Healthcare." className="bg-white">
+  <SectionWrapper id="section-sectors" title='II. Sector Allocation: "All In" on Health' subtitle="The portfolio's sector weights reveal the real conviction: a massive, concentrated bet on Healthcare." className="bg-white dark:bg-[#0A0D14]">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h3 className="text-3xl font-semibold text-slate-900 mb-6">Q3 2025 vs. Q2 2025</h3>
-        <p className="text-lg text-slate-600 mb-8">
+        <h3 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-6 font-serif">Q3 2025 vs. Q2 2025</h3>
+        <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
           In Q2, the portfolio was heavily weighted towards Information Technology. In Q3, that capital was aggressively
           rotated out of Tech and redeployed into a massive, concentrated Healthcare bet. Tech exposure was cut by more
           than half, while Healthcare exposure more than doubled, becoming by far the largest sector.
         </p>
-        <div className="overflow-x-auto rounded-lg border border-slate-200">
+        <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200">
             <thead className="bg-slate-100">
               <tr>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Sector</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Q2 2025 Weight</th>
-                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider">Q3 2025 Weight</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Sector</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Q2 2025 Weight</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Q3 2025 Weight</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-slate-200">
-              <tr className="bg-green-50">
-                <td className="px-5 py-4 text-sm font-medium text-slate-900">Healthcare</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~18%</td>
-                <td className="px-5 py-4 text-sm font-bold text-green-700">~38.5%</td>
+            <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
+              <tr className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10">
+                <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Healthcare</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~18%</td>
+                <td className="px-5 py-4 text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C]">~38.5%</td>
               </tr>
-              <tr className="bg-red-50">
-                <td className="px-5 py-4 text-sm font-medium text-slate-900">Information Technology</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~29%</td>
-                <td className="px-5 py-4 text-sm font-bold text-red-700">~13.2%</td>
-              </tr>
-              <tr>
-                <td className="px-5 py-4 text-sm font-medium text-slate-900">Communication Services</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~7%</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~9.4%</td>
+              <tr className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10">
+                <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Information Technology</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~29%</td>
+                <td className="px-5 py-4 text-sm font-bold text-[#BC4128] dark:text-[#E2694A]">~13.2%</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 text-sm font-medium text-slate-900">Industrials</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~8%</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~7.1%</td>
+                <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Communication Services</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~7%</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~9.4%</td>
               </tr>
               <tr>
-                <td className="px-5 py-4 text-sm font-medium text-slate-900">ETFs (Broad Market)</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~5%</td>
-                <td className="px-5 py-4 text-sm text-slate-700">~6.8%</td>
+                <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Industrials</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~8%</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~7.1%</td>
+              </tr>
+              <tr>
+                <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">ETFs (Broad Market)</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~5%</td>
+                <td className="px-5 py-4 text-sm text-slate-700 dark:text-slate-300">~6.8%</td>
               </tr>
             </tbody>
           </table>
@@ -310,7 +310,7 @@ const SectionSectorAllocation = () => (
       </div>
       <div className="text-center">
         <p className="text-sm text-slate-500 mb-2 italic">Illustrative Chart</p>
-        <div className="w-full max-w-md mx-auto aspect-square bg-slate-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-300">
+        <div className="w-full max-w-md mx-auto aspect-square bg-slate-50 dark:bg-[#14171B] rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-300">
           <div className="text-center">
             <PieChart className="w-24 h-24 text-slate-400 mx-auto" />
             <p className="mt-2 text-sm text-slate-500 max-w-xs">
@@ -325,7 +325,7 @@ const SectionSectorAllocation = () => (
 );
 
 const SectionThesis = () => (
-  <SectionWrapper id="section-why" title='III. Decoding the Thesis (The "Why")' subtitle="Reverse-engineering the macro and micro themes behind the quarter's key trades." className="bg-slate-50">
+  <SectionWrapper id="section-why" title='III. Decoding the Thesis (The "Why")' subtitle="Reverse-engineering the macro and micro themes behind the quarter's key trades." className="bg-slate-50 dark:bg-[#14171B]">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <InfoCard title="Theme 1: The Great AI Rotation" icon={<RefreshCw className="w-8 h-8" />} color="blue">
         Exiting first-wave, high-valuation AI (MSFT, NVDA) and rotating capital into &ldquo;cheaper,&rdquo; second-wave utility
@@ -352,7 +352,7 @@ const SectionThesis = () => (
 );
 
 const SectionRisks = () => (
-  <SectionWrapper id="section-risks" title="IV. Risks & Alternative Views" subtitle="A strong thesis must be tested. What if the Q3 analysis is wrong?" className="bg-white">
+  <SectionWrapper id="section-risks" title="IV. Risks & Alternative Views" subtitle="A strong thesis must be tested. What if the Q3 analysis is wrong?" className="bg-white dark:bg-[#0A0D14]">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <InfoCard title="Risk 1: Concentration Catastrophe" icon={<ShieldOff className="w-8 h-8" />} color="red">
         The ~30% bet on three healthcare names is a massive &ldquo;key-man risk&rdquo; on a few company-specific events. A failed
@@ -374,7 +374,7 @@ const SectionRisks = () => (
 );
 
 const SectionPhilosophy = () => (
-  <SectionWrapper id="section-philosophy" title="V. The Philosophical Context" subtitle="The Q3 2025 filing is a perfect execution of Druckenmiller's core investment framework." className="bg-slate-50">
+  <SectionWrapper id="section-philosophy" title="V. The Philosophical Context" subtitle="The Q3 2025 filing is a perfect execution of Druckenmiller's core investment framework." className="bg-slate-50 dark:bg-[#14171B]">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <InfoCard title='"Preservation of Capital and Home Runs"' icon={<ShieldCheck className="w-8 h-8" />} color="blue">
         The 63.27% turnover *is* capital preservation&mdash;he&apos;s preserving gains by selling winners (MSFT) and cutting losers.
@@ -397,10 +397,10 @@ const SectionPhilosophy = () => (
 );
 
 const SectionNexus = () => (
-  <SectionWrapper id="section-nexus" title="VI. The Soros-Druckenmiller-Bessent Nexus" subtitle="Connecting past, present, and future to find the non-obvious 'edge' in the portfolio." className="bg-white">
-    <div className="max-w-4xl mx-auto text-lg text-slate-700 leading-relaxed space-y-8">
+  <SectionWrapper id="section-nexus" title="VI. The Soros-Druckenmiller-Bessent Nexus" subtitle="Connecting past, present, and future to find the non-obvious 'edge' in the portfolio." className="bg-white dark:bg-[#0A0D14]">
+    <div className="max-w-4xl mx-auto text-lg text-slate-700 dark:text-slate-300 leading-relaxed space-y-8">
       <div>
-        <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+        <h3 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-4 font-serif">
           The Soros Legacy: Learning to &ldquo;Go for the Jugular&rdquo;
         </h3>
         <p className="mb-6">
@@ -418,10 +418,10 @@ const SectionNexus = () => (
         </p>
       </div>
 
-      <hr className="my-12 border-t-2 border-slate-200" />
+      <hr className="my-12 border-t-2 border-slate-200 dark:border-slate-800" />
 
       <div>
-        <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+        <h3 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-4 font-serif">
           The Bessent Connection: The Duquesne-Treasury Corridor
         </h3>
         <p className="mb-6">
@@ -436,11 +436,11 @@ const SectionNexus = () => (
         </p>
         <ul className="space-y-4 list-disc list-inside">
           <li className="ml-4">
-            <strong className="text-slate-900">The EEM Buy:</strong> A front-running of the inevitable policy path (a
+            <strong className="text-slate-900 dark:text-slate-100">The EEM Buy:</strong> A front-running of the inevitable policy path (a
             weaker USD) that Bessent, a currency specialist, knows is necessary to manage the U.S. deficit.
           </li>
           <li className="ml-4">
-            <strong className="text-slate-900">The AI Rotation:</strong> Aligns perfectly with Bessent&apos;s public
+            <strong className="text-slate-900 dark:text-slate-100">The AI Rotation:</strong> Aligns perfectly with Bessent&apos;s public
             industrial policy to solve the tech labor bottleneck, directly benefiting the large-scale platforms (AMZN,
             GOOGL, META).
           </li>
@@ -451,7 +451,7 @@ const SectionNexus = () => (
 );
 
 const SectionLessons = () => (
-  <SectionWrapper id="section-lessons" title="VII. Synthesis: Lessons for the Investor" subtitle="Actionable, philosophical principles to distill from the Druckenmiller masterclass." className="bg-slate-50">
+  <SectionWrapper id="section-lessons" title="VII. Synthesis: Lessons for the Investor" subtitle="Actionable, philosophical principles to distill from the Druckenmiller masterclass." className="bg-slate-50 dark:bg-[#14171B]">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <InfoCard title="1. Conviction > Diversification" icon={<Target className="w-8 h-8" />} color="blue">
         Challenge &ldquo;di-worsification.&rdquo; If deep research provides an asymmetric thesis, have the courage to make the
@@ -492,7 +492,7 @@ export default function DruckenmillerQ32025Article() {
       slug="druckenmiller-q3-2025-rotation-conviction-bessent-edge"
       additionalDisclaimer="Specific portfolio percentages and figures in this analysis are illustrative and based on public 13F filing concepts; verify exact figures against official SEC filings before relying on them."
     >
-      <div className="text-slate-700">
+      <div className="text-slate-700 dark:text-slate-300">
         <SectionPortfolioAnalysis />
         <SectionSectorAllocation />
         <SectionThesis />

@@ -11,7 +11,7 @@ interface StoryCardProps {
 }
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-12 text-center">
+  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-12 text-center font-serif">
     {children}
   </h2>
 );
@@ -20,22 +20,22 @@ const StoryCard = ({ icon, title, story, lesson }: StoryCardProps) => (
   <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out overflow-hidden transform hover:-translate-y-2">
     <div className="p-8">
       <div className="flex items-center mb-6">
-        <div className="bg-blue-500 dark:bg-blue-600 text-white rounded-full p-3 mr-4">
+        <div className="bg-[#A8672E] dark:bg-[#D08F52] dark:bg-[#A8672E] dark:bg-[#D08F52] text-white rounded-full p-3 mr-4">
           {icon}
         </div>
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">{title}</h3>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight font-serif">{title}</h3>
       </div>
       <div className="space-y-6">
         <div>
           <h4 className="font-semibold text-lg text-gray-700 dark:text-gray-300 mb-2">The Story</h4>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{story}</p>
         </div>
-        <div className="bg-blue-50 dark:bg-gray-700/50 p-5 rounded-lg">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-gray-700/50 p-5 rounded-lg">
           <h4 className="font-semibold text-lg text-blue-800 dark:text-blue-300 mb-2 flex items-center">
             <Lightbulb className="w-5 h-5 mr-2" />
             Core Lesson
           </h4>
-          <p className="text-blue-700 dark:text-blue-400 leading-relaxed">{lesson}</p>
+          <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] leading-relaxed">{lesson}</p>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@ export default function RichDadPoorDadSummary() {
     >
       {/* Introduction Section */}
       <section className="mb-16 text-center max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">A Tale of Two Mindsets</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6 font-serif">A Tale of Two Mindsets</h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
           &ldquo;Rich Dad, Poor Dad&rdquo; is not just a book; it&apos;s a fundamental shift in perspective. Robert Kiyosaki&apos;s journey, guided by two distinct father figures, reveals a powerful truth: financial well-being isn&apos;t about how much you earn, but about how much you understand money. Below are the pivotal stories that illustrate the core philosophy of making money work for you.
         </p>
@@ -134,18 +134,18 @@ export default function RichDadPoorDadSummary() {
         <SectionTitle>The Core Philosophy</SectionTitle>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 text-center">
           <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-            <DollarSign className="mx-auto text-green-500 w-16 h-16 mb-4"/>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Assets vs. Liabilities</h3>
-            <p className="text-gray-600 dark:text-gray-400">An <span className="font-bold text-green-600 dark:text-green-400">asset</span> puts money in your pocket. A <span className="font-bold text-red-600 dark:text-red-400">liability</span> takes money out. The rich acquire assets; the poor and middle class acquire liabilities they think are assets.</p>
+            <DollarSign className="mx-auto text-[#1D8A70] dark:text-[#3CBF9C] w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 font-serif">Assets vs. Liabilities</h3>
+            <p className="text-gray-600 dark:text-gray-400">An <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">asset</span> puts money in your pocket. A <span className="font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">liability</span> takes money out. The rich acquire assets; the poor and middle class acquire liabilities they think are assets.</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-            <BrainCircuit className="mx-auto text-blue-500 w-16 h-16 mb-4"/>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Financial IQ</h3>
+            <BrainCircuit className="mx-auto text-[#A8672E] dark:text-[#D08F52] w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 font-serif">Financial IQ</h3>
             <p className="text-gray-600 dark:text-gray-400">It&apos;s not about being smart, it&apos;s about being financially smart. This requires knowledge of accounting, investing, markets, and law. It&apos;s about how much you keep, not how much you make.</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
-            <TrendingUp className="mx-auto text-indigo-500 w-16 h-16 mb-4"/>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Work to Learn</h3>
+            <TrendingUp className="mx-auto text-[#A8672E] dark:text-[#D08F52] w-16 h-16 mb-4"/>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 font-serif">Work to Learn</h3>
             <p className="text-gray-600 dark:text-gray-400">Don&apos;t work for money; work to learn new skills. Job security is a thing of the past. Skill security&mdash;especially in sales, marketing, and communication&mdash;is the new path to financial freedom.</p>
           </div>
         </div>

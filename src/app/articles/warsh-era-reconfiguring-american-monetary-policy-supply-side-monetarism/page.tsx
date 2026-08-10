@@ -23,12 +23,12 @@ interface SectionTitleProps {
 }
 
 const SectionTitle = ({ icon: Icon, title, subtitle }: SectionTitleProps) => (
-  <div className="mb-8 border-l-4 border-teal-500 pl-4">
-    <div className="flex items-center gap-2 text-teal-600 font-semibold uppercase tracking-wider text-sm mb-1">
+  <div className="mb-8 border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4">
+    <div className="flex items-center gap-2 text-[#A8672E] dark:text-[#D08F52] font-semibold uppercase tracking-wider text-sm mb-1">
       {Icon && <Icon size={16} />}
       <span>{subtitle}</span>
     </div>
-    <h2 className="text-3xl font-bold text-slate-900 font-serif">{title}</h2>
+    <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 font-serif">{title}</h2>
   </div>
 );
 
@@ -61,7 +61,7 @@ export default function KevinWarshAnalysis() {
     <ArticleFrame slug="warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism">
           {/* Executive Summary Hero */}
           <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white shadow-2xl mt-8 mb-12">
-            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
             <div className="relative p-12 md:p-16">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -74,7 +74,7 @@ export default function KevinWarshAnalysis() {
                   <div className="text-sm text-slate-400">Gold & Silver Liquidation Event</div>
                 </div>
                 <div className="bg-white dark:bg-[#0A0D14]/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl">
-                  <div className="text-teal-400 font-bold mb-1">New Doctrine</div>
+                  <div className="text-[#A8672E] dark:text-[#D08F52] font-bold mb-1">New Doctrine</div>
                   <div className="text-sm text-slate-400">Supply-Side Monetarism</div>
                 </div>
               </div>
@@ -124,10 +124,10 @@ export default function KevinWarshAnalysis() {
 
               {/* Key Influences */}
               <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                <h4 className="font-bold text-slate-900 mb-3">Intellectual Influences</h4>
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-3">Intellectual Influences</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div>
                     <span className="text-slate-700 dark:text-slate-300">Milton Friedman (Monetarism)</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -187,9 +187,9 @@ export default function KevinWarshAnalysis() {
                       <div className="font-bold text-[#BC4128] dark:text-[#E2694A]">Bear Stearns</div>
                       <div className="text-xs text-[#BC4128] dark:text-[#E2694A]">Facilitated JPM Acquisition</div>
                     </div>
-                    <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100">
+                    <div className="text-center p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg border border-orange-100">
                       <div className="font-bold text-orange-900">Lehman Brothers</div>
-                      <div className="text-xs text-orange-700">Advocated for Bankruptcy</div>
+                      <div className="text-xs text-[#BC4128] dark:text-[#E2694A]">Advocated for Bankruptcy</div>
                     </div>
                     <div className="text-center p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg border border-blue-100">
                       <div className="font-bold text-[#A8672E] dark:text-[#D08F52]">AIG</div>
@@ -219,7 +219,7 @@ export default function KevinWarshAnalysis() {
 
               <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-none">
                 <h3 className="text-xl font-bold mb-6 flex items-center gap-2 font-serif">
-                  <Landmark size={20} className="text-teal-400" /> The Trump Calculation
+                  <Landmark size={20} className="text-[#A8672E] dark:text-[#D08F52]" /> The Trump Calculation
                 </h3>
                 
                 <div className="grid sm:grid-cols-2 gap-6 mb-6">
@@ -269,18 +269,18 @@ export default function KevinWarshAnalysis() {
           {/* Section 2: The Warsh Doctrine */}
           <section>
             <div className="text-center max-w-4xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-2 text-teal-600 font-bold uppercase tracking-wider text-sm mb-2">
+              <div className="inline-flex items-center gap-2 text-[#A8672E] dark:text-[#D08F52] font-bold uppercase tracking-wider text-sm mb-2">
                 <BookOpen size={16} />
                 <span>Core Philosophy</span>
               </div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4 font-serif">The Warsh Doctrine</h2>
+              <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">The Warsh Doctrine</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
                 A fundamental rejection of the "New Keynesian" consensus that has dominated central banking since 2008. Warsh proposes a revolutionary decoupling: separate the price of money from the quantity of money.
               </p>
               
               {/* Theoretical Foundation */}
               <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-left">
-                <h3 className="font-bold text-slate-900 mb-3 font-serif">Theoretical Foundation: Supply-Side Monetarism</h3>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Theoretical Foundation: Supply-Side Monetarism</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div>
                     <h4 className="font-semibold text-[#A8672E] dark:text-[#D08F52] mb-2">Traditional Monetarism (Friedman)</h4>
@@ -297,7 +297,7 @@ export default function KevinWarshAnalysis() {
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <div className="col-span-1 md:col-span-2 bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800">
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6 font-serif">The "Barbell" Strategy</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">The "Barbell" Strategy</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-6">
                     Unlike traditional monetary policy that moves rates and balance sheet in tandem, Warsh proposes opposite directions: aggressive rate cuts paired with aggressive quantitative tightening.
                   </p>
@@ -336,7 +336,7 @@ export default function KevinWarshAnalysis() {
 
                   {/* Mathematical Framework */}
                   <div className="bg-slate-100 p-4 rounded-lg">
-                    <h4 className="font-semibold text-slate-900 mb-2">The Warsh Equation</h4>
+                    <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">The Warsh Equation</h4>
                     <div className="font-mono text-sm text-slate-700 dark:text-slate-300 mb-2">
                       Economic Growth = f(Low Rates, Tight Money Supply, Productivity Gains)
                     </div>
@@ -349,10 +349,10 @@ export default function KevinWarshAnalysis() {
                 <div className="bg-slate-50 dark:bg-[#14171B] px-8 py-6 border-t border-slate-100 dark:border-slate-800">
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Zap size={16} className="text-teal-600" />
+                      <Zap size={16} className="text-[#A8672E] dark:text-[#D08F52]" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 mb-1">The Core Logic</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-1">The Core Logic</h4>
                       <p className="text-sm text-slate-600 dark:text-slate-400">
                         Supply-side monetarism: Provide cheap credit (low rates) to fuel productivity investment while maintaining tight monetary conditions (small money supply) to prevent asset bubbles and inflation.
                       </p>
@@ -399,7 +399,7 @@ export default function KevinWarshAnalysis() {
             {/* Comparison with Historical Precedents */}
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
               <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-6 border-b border-slate-200 dark:border-slate-800">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2 font-serif">Historical Precedents & Departures</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Historical Precedents & Departures</h3>
                 <p className="text-slate-600 dark:text-slate-400">How the Warsh Doctrine compares to previous monetary regimes</p>
               </div>
               
@@ -409,7 +409,7 @@ export default function KevinWarshAnalysis() {
                     <div className="w-16 h-16 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center mx-auto mb-3">
                       <User size={24} className="text-[#A8672E] dark:text-[#D08F52]" />
                     </div>
-                    <h4 className="font-bold text-slate-900 mb-2">Volcker Era (1979-1987)</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Volcker Era (1979-1987)</h4>
                     <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                       <div><strong>Similarity:</strong> Prioritize price stability over employment</div>
                       <div><strong>Difference:</strong> Volcker raised rates; Warsh cuts them while tightening money supply</div>
@@ -420,7 +420,7 @@ export default function KevinWarshAnalysis() {
                     <div className="w-16 h-16 bg-[#1D8A70] dark:bg-[#3CBF9C] rounded-full flex items-center justify-center mx-auto mb-3">
                       <TrendingUp size={24} className="text-[#1D8A70] dark:text-[#3CBF9C]" />
                     </div>
-                    <h4 className="font-bold text-slate-900 mb-2">Greenspan Era (1987-2006)</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Greenspan Era (1987-2006)</h4>
                     <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                       <div><strong>Similarity:</strong> Focus on productivity-driven growth</div>
                       <div><strong>Difference:</strong> Greenspan used forward guidance; Warsh rejects it</div>
@@ -431,7 +431,7 @@ export default function KevinWarshAnalysis() {
                     <div className="w-16 h-16 bg-[#BC4128] dark:bg-[#E2694A] rounded-full flex items-center justify-center mx-auto mb-3">
                       <AlertTriangle size={24} className="text-[#BC4128] dark:text-[#E2694A]" />
                     </div>
-                    <h4 className="font-bold text-slate-900 mb-2">Post-2008 Consensus</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Post-2008 Consensus</h4>
                     <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                       <div><strong>Rejection:</strong> No more QE or forward guidance</div>
                       <div><strong>Innovation:</strong> Decouple rate policy from balance sheet policy</div>
@@ -457,7 +457,7 @@ export default function KevinWarshAnalysis() {
               
               {/* Timeline of Events */}
               <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <h4 className="font-semibold text-slate-900 mb-3">Timeline: January 30, 2026</h4>
+                <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-3">Timeline: January 30, 2026</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
                   <div className="text-center p-2 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded">
                     <div className="font-mono text-[#A8672E] dark:text-[#D08F52]">9:30 AM EST</div>
@@ -481,7 +481,7 @@ export default function KevinWarshAnalysis() {
             
             <div className="grid md:grid-cols-2">
               <div className="p-8 border-r border-slate-100 dark:border-slate-800">
-                <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2 font-serif">
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2 font-serif">
                   <AlertTriangle className="text-[#BC4128] dark:text-[#E2694A]" />
                   The Great Liquidation
                 </h3>
@@ -499,14 +499,14 @@ export default function KevinWarshAnalysis() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between p-4 bg-orange-50 rounded-lg border border-orange-100">
+                  <div className="flex items-center justify-between p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg border border-orange-100">
                     <div>
                       <span className="block font-bold text-orange-900">Gold (GLD)</span>
-                      <span className="text-xs text-orange-700">Close: -4.5%</span>
+                      <span className="text-xs text-[#BC4128] dark:text-[#E2694A]">Close: -4.5%</span>
                     </div>
                     <div className="text-right">
-                      <span className="block font-bold text-2xl text-orange-600">$2,129</span>
-                      <span className="text-xs text-orange-700">per ounce</span>
+                      <span className="block font-bold text-2xl text-[#BC4128] dark:text-[#E2694A]">$2,129</span>
+                      <span className="text-xs text-[#BC4128] dark:text-[#E2694A]">per ounce</span>
                     </div>
                   </div>
                   
@@ -524,14 +524,14 @@ export default function KevinWarshAnalysis() {
 
                 {/* Analysis */}
                 <div className="bg-slate-50 dark:bg-[#14171B] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <h4 className="font-semibold text-slate-900 mb-2">Why the Debasement Trade Died</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Why the Debasement Trade Died</h4>
                   <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
                     <div className="flex items-start gap-2">
                       <div className="w-2 h-2 bg-[#BC4128] dark:bg-[#E2694A] rounded-full mt-2 flex-shrink-0"></div>
                       <div><strong>Narrative Shift:</strong> Warsh is an institutionalist who despises money printing</div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-[#BC4128] dark:bg-[#E2694A] rounded-full mt-2 flex-shrink-0"></div>
                       <div><strong>Fear Premium Evaporation:</strong> No more currency debasement concerns</div>
                     </div>
                     <div className="flex items-start gap-2">
@@ -558,7 +558,7 @@ export default function KevinWarshAnalysis() {
               </div>
               
               <div className="p-8">
-                <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2 font-serif">
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2 font-serif">
                   <TrendingUp className="text-[#A8672E] dark:text-[#D08F52]" />
                   The "Bear Steepener" Phenomenon
                 </h3>
@@ -596,7 +596,7 @@ export default function KevinWarshAnalysis() {
 
                 {/* Steepening Metrics */}
                 <div className="bg-slate-50 dark:bg-[#14171B] p-4 rounded-lg border border-slate-200 dark:border-slate-800 mb-6">
-                  <h4 className="font-semibold text-slate-900 mb-3">Curve Steepening Metrics</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-3">Curve Steepening Metrics</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="font-medium text-slate-800 dark:text-slate-200">2s10s Spread</div>
@@ -633,10 +633,10 @@ export default function KevinWarshAnalysis() {
 
             {/* Technical Analysis Section */}
             <div className="bg-slate-50 dark:bg-[#14171B] p-8 border-t border-slate-200 dark:border-slate-800">
-              <h3 className="font-bold text-slate-900 mb-6 font-serif">Technical & Flow Analysis</h3>
+              <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">Technical & Flow Analysis</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <h4 className="font-semibold text-slate-900 mb-2">Options Flow</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Options Flow</h4>
                   <div className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                     <div>• Massive put buying in TLT (long bonds)</div>
                     <div>• Call buying in KRE (regional banks)</div>
@@ -644,7 +644,7 @@ export default function KevinWarshAnalysis() {
                   </div>
                 </div>
                 <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <h4 className="font-semibold text-slate-900 mb-2">Institutional Flow</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Institutional Flow</h4>
                   <div className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                     <div>• $2.3B outflow from gold ETFs</div>
                     <div>• $1.8B inflow to bank ETFs</div>
@@ -652,7 +652,7 @@ export default function KevinWarshAnalysis() {
                   </div>
                 </div>
                 <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <h4 className="font-semibold text-slate-900 mb-2">Cross-Asset Signals</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Cross-Asset Signals</h4>
                   <div className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                     <div>• USD strengthens vs. gold currencies</div>
                     <div>• Credit spreads tighten (risk-on)</div>
@@ -671,7 +671,7 @@ export default function KevinWarshAnalysis() {
               {/* Macro Economic Implications */}
               <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 border-b border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">Macro Economic Implications</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Macro Economic Implications</h3>
                   <p className="text-slate-600 dark:text-slate-400">How the Warsh Doctrine reshapes the economic landscape</p>
                 </div>
                 
@@ -681,7 +681,7 @@ export default function KevinWarshAnalysis() {
                       <Landmark size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-slate-900 text-lg mb-2">The Housing Paradox</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-2">The Housing Paradox</h4>
                       <p className="text-slate-600 dark:text-slate-400 mb-3">
                         <strong>The Conflict:</strong> Trump wants low mortgage rates to stimulate housing, but Warsh wants to sell the Fed's $2.3T mortgage-backed securities portfolio.
                       </p>
@@ -711,7 +711,7 @@ export default function KevinWarshAnalysis() {
                       <DollarSign size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-slate-900 text-lg mb-2">Banking Renaissance</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-2">Banking Renaissance</h4>
                       <p className="text-slate-600 dark:text-slate-400 mb-3">
                         <strong>The Goldmine:</strong> Steeper yield curve creates the perfect environment for traditional banking profitability.
                       </p>
@@ -740,11 +740,11 @@ export default function KevinWarshAnalysis() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-teal-100 text-teal-600 rounded-lg flex-shrink-0">
+                    <div className="p-3 bg-teal-100 text-[#A8672E] dark:text-[#D08F52] rounded-lg flex-shrink-0">
                       <Activity size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-slate-900 text-lg mb-2">The Productivity Miracle Test</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-2">The Productivity Miracle Test</h4>
                       <p className="text-slate-600 dark:text-slate-400 mb-3">
                         Warsh's entire thesis depends on AI-driven productivity gains offsetting inflationary pressures from rate cuts.
                       </p>
@@ -771,7 +771,7 @@ export default function KevinWarshAnalysis() {
               {/* Sectoral Winners and Losers */}
               <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
                 <div className="bg-slate-50 dark:bg-[#14171B] p-6 border-b border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">Sectoral Impact Analysis</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Sectoral Impact Analysis</h3>
                   <p className="text-slate-600 dark:text-slate-400">Which sectors thrive and which struggle under the Warsh regime</p>
                 </div>
                 
@@ -840,28 +840,28 @@ export default function KevinWarshAnalysis() {
 
               {/* Risk Assessment */}
               <div className="mt-8">
-                <h3 className="font-bold text-slate-900 mb-6 text-xl font-serif">Risk Assessment: Is Warsh the Right Choice?</h3>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-6 text-xl font-serif">Risk Assessment: Is Warsh the Right Choice?</h3>
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-teal-50 p-6 rounded-xl border border-teal-100">
+                  <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-xl border border-teal-100">
                     <div className="font-bold text-teal-800 mb-4 flex items-center gap-2">
-                      <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-[#A8672E] dark:bg-[#D08F52] rounded-full"></div>
                       PROS
                     </div>
-                    <ul className="text-sm text-teal-700 space-y-2">
+                    <ul className="text-sm text-[#A8672E] dark:text-[#D08F52] space-y-2">
                       <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                         <div><strong>Market Discipline:</strong> Ends moral hazard and "Fed Put" dependency</div>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                         <div><strong>Crisis Experience:</strong> Proven ability to manage financial instability</div>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                         <div><strong>Communication:</strong> Exceptional ability to explain complex policy</div>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mt-2 flex-shrink-0"></div>
                         <div><strong>Innovation:</strong> Willing to break from failed post-2008 consensus</div>
                       </li>
                     </ul>
@@ -895,7 +895,7 @@ export default function KevinWarshAnalysis() {
                 
                 {/* Probability Assessment */}
                 <div className="mt-6 bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                  <h4 className="font-bold text-slate-900 mb-4">Probability Assessment</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-4">Probability Assessment</h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-1">75%</div>
@@ -933,7 +933,7 @@ export default function KevinWarshAnalysis() {
                     </div>
                   </div>
                   
-                  <div className="border-l-2 border-teal-500 pl-4">
+                  <div className="border-l-2 border-[#A8672E] dark:border-[#D08F52] pl-4">
                     <h4 className="font-bold text-lg mb-2">2. Embrace the "Belly"</h4>
                     <p className="text-slate-400 text-sm mb-2">
                       Position in 2-year to 5-year notes. These will benefit from Fed rate cuts.
@@ -954,7 +954,7 @@ export default function KevinWarshAnalysis() {
                     </div>
                   </div>
                   
-                  <div className="border-l-2 border-red-500 pl-4">
+                  <div className="border-l-2 border-[#BC4128] dark:border-[#E2694A] pl-4">
                     <h4 className="font-bold text-lg mb-2">4. Long Volatility</h4>
                     <p className="text-slate-400 text-sm mb-2">
                       Without forward guidance, markets will be more volatile. Position accordingly.
@@ -964,7 +964,7 @@ export default function KevinWarshAnalysis() {
                     </div>
                   </div>
                   
-                  <div className="border-l-2 border-blue-500 pl-4">
+                  <div className="border-l-2 border-[#A8672E] dark:border-[#D08F52] pl-4">
                     <h4 className="font-bold text-lg mb-2">5. Currency Positioning</h4>
                     <p className="text-slate-400 text-sm mb-2">
                       Strong dollar thesis if productivity gains materialize.
@@ -1005,7 +1005,7 @@ export default function KevinWarshAnalysis() {
           {/* New Conclusion Section */}
           <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-3xl shadow-2xl text-white overflow-hidden">
             <div className="relative p-12 md:p-16">
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
               <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
               
               <div className="relative">
@@ -1028,7 +1028,7 @@ export default function KevinWarshAnalysis() {
                 {/* Key Insights Grid */}
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-white dark:bg-[#0A0D14]/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl">
-                    <div className="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-[#A8672E] dark:bg-[#D08F52] rounded-lg flex items-center justify-center mb-4">
                       <Zap size={24} className="text-white" />
                     </div>
                     <h3 className="font-bold text-white mb-2 font-serif">The Innovation</h3>
@@ -1061,7 +1061,7 @@ export default function KevinWarshAnalysis() {
                 {/* Timeline Outlook */}
                 <div className="bg-white dark:bg-[#0A0D14]/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl mb-8">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2 font-serif">
-                    <BarChart2 size={20} className="text-teal-400" />
+                    <BarChart2 size={20} className="text-[#A8672E] dark:text-[#D08F52]" />
                     Critical Timeline: 2026-2028
                   </h3>
                   <div className="grid md:grid-cols-4 gap-4 text-sm">

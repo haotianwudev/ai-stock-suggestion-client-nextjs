@@ -121,7 +121,7 @@ const Table = ({ data }: { data: any }) => {
 									))}
 								</tr>
 							</thead>
-							<tbody className="divide-y divide-gray-200 bg-white">
+							<tbody className="divide-y divide-gray-200 bg-white dark:bg-[#0A0D14]">
 								{data.rows.map((row: string[], rowIndex: number) => (
 									<tr key={rowIndex}>
 										{row.map((cell: string, cellIndex: number) => (
@@ -140,7 +140,7 @@ const Table = ({ data }: { data: any }) => {
 
 const ContentSection = ({ section }: { section: any }) => (
 	<div id={section.id} className="mb-16 scroll-mt-24">
-		<h3 className="text-3xl font-bold text-gray-800 border-b border-teal-500 pb-3 mb-6">{section.title}</h3>
+		<h3 className="text-3xl font-bold text-gray-800 border-b border-[#A8672E] dark:border-[#D08F52] pb-3 mb-6 font-serif">{section.title}</h3>
 		<div className="space-y-4 text-lg text-gray-700 leading-relaxed">
 			{section.content.map((paragraph: string, index: number) => (
 				<p key={index}>{paragraph}</p>
@@ -155,7 +155,7 @@ export default function Page() {
 		<ArticleFrame slug="small-hedge-fund-cto-technology-leadership-quant-trading">
 			{contentData.parts.map((part: any, partIndex: number) => (
 				<div key={partIndex} className="mb-12">
-					<h2 className="text-sm font-bold text-teal-600 uppercase tracking-widest mb-8 pb-2 border-b-2 border-teal-200">{part.partTitle}</h2>
+					<h2 className="text-sm font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-widest mb-8 pb-2 border-b-2 border-teal-200 font-serif">{part.partTitle}</h2>
 					{part.sections.map((section: any) => (
 						<ContentSection key={section.id} section={section} />
 					))}

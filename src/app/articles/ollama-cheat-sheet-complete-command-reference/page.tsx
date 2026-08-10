@@ -7,7 +7,7 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 function CheatSheetSection({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
         {icon}
         {title}
       </h2>
@@ -46,7 +46,7 @@ function CommandCard({ command, description, example, isLinkList = false }: { co
               href={`https://${link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-600 dark:text-green-400 font-mono text-sm hover:underline flex items-center"
+              className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-mono text-sm hover:underline flex items-center"
             >
               <Globe className="w-3 h-3 mr-2" />
               {link}
@@ -56,7 +56,7 @@ function CommandCard({ command, description, example, isLinkList = false }: { co
       );
     }
     return (
-      <code className="text-green-700 dark:text-green-400 font-mono text-sm whitespace-pre-wrap break-words">
+      <code className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] font-mono text-sm whitespace-pre-wrap break-words">
         {example}
       </code>
     );
@@ -66,14 +66,14 @@ function CommandCard({ command, description, example, isLinkList = false }: { co
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 flex flex-col justify-between shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-shadow duration-300">
       <div>
         <div className="flex justify-between items-start mb-3">
-          <code className="text-blue-600 dark:text-blue-400 font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm sm:text-base break-words">
+          <code className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm sm:text-base break-words">
             {command}
           </code>
           <button
             onClick={() => handleCopy(command)}
             className={`p-2 rounded-md transition-colors duration-200 ${
               copied
-                ? 'bg-green-500 text-white'
+                ? 'bg-[#1D8A70] dark:bg-[#3CBF9C] text-white'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
             aria-label="Copy command"
@@ -108,7 +108,7 @@ export default function OllamaCheatSheetArticle() {
   const cheatSheetData = [
     {
       category: 'Model Management',
-      icon: <Database className="w-6 h-6 mr-3 text-blue-500" />,
+      icon: <Database className="w-6 h-6 mr-3 text-[#A8672E] dark:text-[#D08F52]" />,
       commands: [
         {
           command: 'ollama pull <model_name>',
@@ -134,7 +134,7 @@ export default function OllamaCheatSheetArticle() {
     },
     {
       category: 'Running Models',
-      icon: <Terminal className="w-6 h-6 mr-3 text-green-500" />,
+      icon: <Terminal className="w-6 h-6 mr-3 text-[#1D8A70] dark:text-[#3CBF9C]" />,
       commands: [
         {
           command: 'ollama run <model_name>',

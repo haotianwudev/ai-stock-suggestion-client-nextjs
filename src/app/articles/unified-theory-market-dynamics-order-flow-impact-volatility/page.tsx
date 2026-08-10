@@ -16,7 +16,7 @@ export default function UnifiedTheoryMarketDynamics() {
           {/* Section 1 */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Network size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The Fragmentation of Theory</h2>
               </div>
@@ -45,14 +45,14 @@ export default function UnifiedTheoryMarketDynamics() {
             </ul>
             
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Historically, these were studied in isolation. The <strong className="text-slate-900 dark:text-white">Muhle-Karbe framework</strong> unifies them. By identifying a single structural statistic, <span className="font-semibold text-indigo-600 dark:text-indigo-400">H₀</span>, which quantifies the persistence of institutional trading, the authors prove these phenomena are mathematically bound together through no-arbitrage requirements.
+              Historically, these were studied in isolation. The <strong className="text-slate-900 dark:text-white">Muhle-Karbe framework</strong> unifies them. By identifying a single structural statistic, <span className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">H₀</span>, which quantifies the persistence of institutional trading, the authors prove these phenomena are mathematically bound together through no-arbitrage requirements.
             </p>
           </section>
 
           {/* Section 2 */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <Layers size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The Two-Layer Hawkes Architecture</h2>
               </div>
@@ -72,33 +72,33 @@ export default function UnifiedTheoryMarketDynamics() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-sm md:text-base">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Origin</td>
                     <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400">Institutional metaorders, fundamental views</td>
                     <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400">HFT, market making, liquidity provision</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Primary Driver</td>
-                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-indigo-700 dark:text-indigo-400 font-medium">Autonomous investment decisions</td>
-                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-rose-600 dark:text-rose-400 font-medium">Response to observed market activity</td>
+                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-medium">Autonomous investment decisions</td>
+                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium">Response to observed market activity</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Temporal Horizon</td>
                     <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400">Low to medium frequency (hours/days)</td>
                     <td className="p-4 border-l border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-400">High frequency (milliseconds to seconds)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-slate-200">Mathematical Role</td>
-                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 bg-indigo-50/50 dark:bg-indigo-900/10 text-slate-600 dark:text-slate-400">Generates long-term persistence (H₀)</td>
-                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 bg-rose-50/50 dark:bg-rose-900/10 text-slate-600 dark:text-slate-400">Generates martingale / high-freq noise</td>
+                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 text-slate-600 dark:text-slate-400">Generates long-term persistence (H₀)</td>
+                    <td className="p-4 border-l border-slate-100 dark:border-slate-800 bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-900/10 text-slate-600 dark:text-slate-400">Generates martingale / high-freq noise</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
-            <div className="p-6 rounded-2xl border-2 my-8 shadow-sm bg-indigo-50 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-800/30 text-indigo-900 dark:text-indigo-200">
+            <div className="p-6 rounded-2xl border-2 my-8 shadow-sm bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-800/30 text-indigo-900 dark:text-indigo-200">
               <h4 className="font-bold text-xl mb-3 flex items-center gap-2 font-serif">
-                <Zap size={20} className="fill-current text-indigo-500" />
+                <Zap size={20} className="fill-current text-[#A8672E] dark:text-[#D08F52]" />
                 The Anchor Statistic: H₀
               </h4>
               <div className="text-base opacity-90 leading-relaxed">
@@ -112,7 +112,7 @@ export default function UnifiedTheoryMarketDynamics() {
           {/* Section 3 */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-emerald-600 dark:text-emerald-500">
+              <div className="flex items-center gap-3 mb-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                 <Scale size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The Scaling Limit & Fractional Dynamics</h2>
               </div>
@@ -171,14 +171,14 @@ export default function UnifiedTheoryMarketDynamics() {
               <p className="text-center text-slate-500 dark:text-slate-400 text-sm mt-2 mb-8">The mathematical relationship linking the Hurst parameter of volatility to the persistence of the core order flow.</p>
             </div>
             
-            <div className="p-6 rounded-2xl border-2 my-8 shadow-sm bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800/30 text-emerald-900 dark:text-emerald-200">
+            <div className="p-6 rounded-2xl border-2 my-8 shadow-sm bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800/30 text-emerald-900 dark:text-emerald-200">
               <h4 className="font-bold text-xl mb-3 flex items-center gap-2 font-serif">
-                <Zap size={20} className="fill-current text-emerald-500" />
+                <Zap size={20} className="fill-current text-[#1D8A70] dark:text-[#3CBF9C]" />
                 Calculating the Roughness
               </h4>
               <div className="text-base opacity-90 leading-relaxed">
                 Given the empirical estimate of core flow persistence <strong className="font-bold">H₀ ≈ 0.75</strong>, the model predicts a volatility Hurst parameter of:<br/><br/>
-                <code className="bg-white/50 dark:bg-black/20 px-3 py-1.5 rounded-lg text-emerald-900 dark:text-emerald-300 font-mono text-lg shadow-sm">2(0.75) - 1.5 = 0.0</code><br/><br/>
+                <code className="bg-white dark:bg-[#0A0D14]/50 dark:bg-black/20 px-3 py-1.5 rounded-lg text-emerald-900 dark:text-emerald-300 font-mono text-lg shadow-sm">2(0.75) - 1.5 = 0.0</code><br/><br/>
                 This perfectly matches empirical observations where H_vol ranges from 0.0 to 0.15, explaining why volatility appears so much rougher than the price process itself!
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function UnifiedTheoryMarketDynamics() {
           {/* Section 5 */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-rose-600 dark:text-rose-500">
+              <div className="flex items-center gap-3 mb-4 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                 <Cpu size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">Reconciling the Square-Root Law</h2>
               </div>
@@ -210,14 +210,14 @@ export default function UnifiedTheoryMarketDynamics() {
               <p className="text-center text-slate-500 dark:text-slate-400 text-sm mt-2 mb-8">The power-law exponent (δ) of market impact derived from core flow persistence.</p>
             </div>
             
-            <div className="bg-rose-50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-800/30 p-6 md:p-8 rounded-2xl my-6">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-800/30 p-6 md:p-8 rounded-2xl my-6">
               <p className="text-rose-900 dark:text-rose-300 mb-0 font-medium">
                 Plugging in our universal constant <strong className="font-bold">H₀ ≈ 0.75</strong>:
               </p>
-              <div className="mt-4 mb-4 bg-white/60 dark:bg-black/20 p-4 rounded-xl text-rose-700 dark:text-rose-400 font-mono text-xl text-center shadow-sm">
+              <div className="mt-4 mb-4 bg-white dark:bg-[#0A0D14]/60 dark:bg-black/20 p-4 rounded-xl text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-mono text-xl text-center shadow-sm">
                 δ = 2 - 2(0.75) = 0.5
               </div>
-              <p className="text-rose-800 dark:text-rose-400/80 text-sm leading-relaxed">
+              <p className="text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A]/80 text-sm leading-relaxed">
                 An exponent of 0.5 is exactly the Square-Root Law! The model seamlessly transitions from high-frequency linear impact of individual child orders to macro-scale concavity for aggregate metaorders.
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function UnifiedTheoryMarketDynamics() {
           {/* Section 6 */}
           <section>
             <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-500">
+              <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 <BarChart3 size={32} strokeWidth={1.5} />
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 dark:text-white">The Fractal Nature of Traded Volume</h2>
               </div>
@@ -255,12 +255,12 @@ export default function UnifiedTheoryMarketDynamics() {
                 { metric: "Market Impact", formula: "2 - 2H₀", result: "0.50", tag: "Square-Root Law" },
               ].map((item, i) => (
                 <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500 dark:bg-indigo-400"></div>
+                  <div className="absolute top-0 left-0 w-1 h-full bg-[#A8672E] dark:bg-[#D08F52] dark:bg-[#A8672E] dark:bg-[#D08F52]"></div>
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1">{item.tag}</div>
                   <div className="font-bold text-slate-800 dark:text-slate-200 mb-3">{item.metric}</div>
                   <div className="flex items-end justify-between">
                     <div className="font-serif italic text-slate-500 dark:text-slate-400">{item.formula}</div>
-                    <div className="text-2xl font-black text-indigo-600 dark:text-indigo-400">{item.result}</div>
+                    <div className="text-2xl font-black text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">{item.result}</div>
                   </div>
                 </div>
               ))}
@@ -268,7 +268,7 @@ export default function UnifiedTheoryMarketDynamics() {
           </section>
 
           {/* Footer / Conclusion */}
-          <footer className="mt-16 bg-slate-900 dark:bg-black text-slate-300 rounded-3xl p-8 md:p-12 border-t-4 border-indigo-500 dark:border-indigo-400">
+          <footer className="mt-16 bg-slate-900 dark:bg-black text-slate-300 rounded-3xl p-8 md:p-12 border-t-4 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52]">
             <h2 className="text-2xl font-bold text-white mb-6 font-serif text-center">The Future of Statistical Finance</h2>
             <p className="mb-8 leading-relaxed text-center max-w-2xl mx-auto text-slate-400">
               The unified theory reveals a market that is fundamentally interconnected. The persistence of institutional metaorders is the hidden architect behind modern finance's most prominent features. By bridging the gap between microstructure and asset pricing, this framework provides a rigorous tool for institutional execution, risk management, and regulatory monitoring.

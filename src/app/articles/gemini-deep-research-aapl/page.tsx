@@ -292,25 +292,25 @@ export default function AppleInvestmentThesis() {
 
         <section id="thesis-balance" className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-2">The Quality vs. Price Dilemma</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-2 font-serif">The Quality vs. Price Dilemma</h2>
             <p className="max-w-3xl mx-auto text-stone-600 dark:text-gray-400">
               This analysis presents the central conflict in evaluating Apple today: it is an undeniably wonderful business, yet it trades at a price that appears to offer little-to-no margin of safety. This interactive dashboard allows you to explore both sides of the argument&mdash;the exceptional quality of the enterprise and the steepness of its market valuation&mdash;to understand the &ldquo;neutral&rdquo; investment thesis.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-green-800 dark:text-green-400 mb-4 text-center">✅ The Wonderful Business Case</h3>
+            <div className="bg-white dark:bg-[#0A0D14]/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
+              <h3 className="text-2xl font-bold text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 text-center font-serif">✅ The Wonderful Business Case</h3>
               <div className="space-y-6">
                 <div>
                   <h4 className="font-bold text-lg mb-2 text-stone-700 dark:text-gray-200">Exceptional Financial Fortitude</h4>
                   <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-green-700 dark:text-green-400" id="roic"></div>
-                      <div className="text-sm text-green-600 dark:text-green-500">Return on Invested Capital</div>
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-4 rounded-lg">
+                      <div className="text-3xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" id="roic"></div>
+                      <div className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Return on Invested Capital</div>
                     </div>
-                    <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-green-700 dark:text-green-400" id="gpm"></div>
-                      <div className="text-sm text-green-600 dark:text-green-500">Gross Profit Margin</div>
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-4 rounded-lg">
+                      <div className="text-3xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" id="gpm"></div>
+                      <div className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Gross Profit Margin</div>
                     </div>
                   </div>
                 </div>
@@ -322,8 +322,8 @@ export default function AppleInvestmentThesis() {
                       <h5 className="font-bold text-sky-800 dark:text-sky-400">Brand & Intangibles</h5>
                       <p className="text-sm text-stone-600 dark:text-gray-400 hidden">One of the world&apos;s most valuable brands, synonymous with quality and innovation, enabling premium pricing.</p>
                     </div>
-                    <div className="moat-segment bg-stone-100 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-indigo-600" data-moat="ecosystem">
-                      <h5 className="font-bold text-indigo-800 dark:text-indigo-400">Integrated Ecosystem</h5>
+                    <div className="moat-segment bg-stone-100 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]" data-moat="ecosystem">
+                      <h5 className="font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52]">Integrated Ecosystem</h5>
                       <p className="text-sm text-stone-600 dark:text-gray-400 hidden">Hardware, software, and services create a &ldquo;walled garden&rdquo; with high switching costs for consumers.</p>
                     </div>
                     <div className="moat-segment bg-stone-100 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-purple-600" data-moat="network">
@@ -342,19 +342,19 @@ export default function AppleInvestmentThesis() {
               </div>
             </div>
 
-            <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-red-800 dark:text-red-400 mb-4 text-center">❌ The Unfair Price Case</h3>
+            <div className="bg-white dark:bg-[#0A0D14]/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
+              <h3 className="text-2xl font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-4 text-center font-serif">❌ The Unfair Price Case</h3>
               <div className="space-y-6">
                 <div>
                   <h4 className="font-bold text-lg mb-2 text-stone-700 dark:text-gray-200">Stretched Valuation Metrics</h4>
                   <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-red-700 dark:text-red-400" id="pe-ratio"></div>
-                      <div className="text-sm text-red-600 dark:text-red-500">Price-to-Earnings (TTM)</div>
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                      <div className="text-3xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" id="pe-ratio"></div>
+                      <div className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Price-to-Earnings (TTM)</div>
                     </div>
-                    <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                      <div className="text-3xl font-bold text-red-700 dark:text-red-400" id="fcf-yield-card"></div>
-                      <div className="text-sm text-red-600 dark:text-red-500">Free Cash Flow Yield</div>
+                    <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                      <div className="text-3xl font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" id="fcf-yield-card"></div>
+                      <div className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Free Cash Flow Yield</div>
                     </div>
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export default function AppleInvestmentThesis() {
                 <div>
                   <h4 className="font-bold text-lg mb-2 text-stone-700 dark:text-gray-200">Margin of Safety: The Core Concern</h4>
                   <div className="bg-stone-100 dark:bg-gray-700 p-4 rounded-lg text-center">
-                    <div id="margin-of-safety" className="text-2xl font-bold text-red-800 dark:text-red-400 mb-1">~50% Premium</div>
+                    <div id="margin-of-safety" className="text-2xl font-bold text-red-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-1">~50% Premium</div>
                     <p className="text-sm text-stone-600 dark:text-gray-400">The current price is significantly above a conservative estimate of intrinsic value, violating the cardinal rule of demanding a margin of safety. This leaves no room for error and limits upside potential.</p>
                   </div>
                 </div>
@@ -380,12 +380,12 @@ export default function AppleInvestmentThesis() {
 
         <section id="future-outlook" className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-2">Future Catalysts & Headwinds</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-2 font-serif">Future Catalysts & Headwinds</h2>
             <p className="max-w-3xl mx-auto text-stone-600 dark:text-gray-400">
               An investment in Apple today is a bet on its future. The company&apos;s growth trajectory depends on major initiatives like Apple Intelligence, but it also faces significant risks from regulation and geopolitics. Explore the key factors that will shape Apple&apos;s performance in the years to come.
             </p>
           </div>
-          <div className="bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-[#0A0D14]/80 dark:bg-gray-800/80 p-6 rounded-2xl shadow-lg border border-stone-200 dark:border-gray-700">
             <div className="border-b border-stone-300 dark:border-gray-600 mb-4">
               <nav className="flex space-x-4" aria-label="Tabs">
                 <button className="tab-button active py-2 px-4 border-b-2 text-lg text-stone-700 dark:text-gray-300" data-tab="growth">Growth Drivers</button>
@@ -395,15 +395,15 @@ export default function AppleInvestmentThesis() {
 
             <div id="growth-content" className="tab-content">
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-stone-800 dark:text-white">🚀 Innovation as the Engine</h3>
+                <h3 className="text-xl font-bold text-stone-800 dark:text-white font-serif">🚀 Innovation as the Engine</h3>
                 <p className="text-stone-700 dark:text-gray-300">Apple&apos;s future is tied to its ability to innovate. &ldquo;Apple Intelligence&rdquo; is the centerpiece of this strategy, with the potential to trigger a significant iPhone upgrade cycle. The success of this AI integration, alongside growth in Services and new categories like Vision Pro, is crucial to justifying the current valuation.</p>
                 <div className="grid md:grid-cols-2 gap-6 pt-4">
                   <div className="bg-stone-50 dark:bg-gray-700/50 p-4 rounded-lg border border-stone-200 dark:border-gray-600">
-                    <h4 className="font-semibold text-lg text-blue-800 dark:text-blue-400">Apple Intelligence (AI)</h4>
+                    <h4 className="font-semibold text-lg text-blue-800 dark:text-[#A8672E] dark:text-[#D08F52]">Apple Intelligence (AI)</h4>
                     <p className="text-sm text-stone-600 dark:text-gray-400">Positioned as a key catalyst, focusing on a privacy-first, on-device approach. Success hinges on driving a hardware refresh cycle and offering a differentiated user experience.</p>
                   </div>
                   <div className="bg-stone-50 dark:bg-gray-700/50 p-4 rounded-lg border border-stone-200 dark:border-gray-600">
-                    <h4 className="font-semibold text-lg text-green-800 dark:text-green-400">Services Growth</h4>
+                    <h4 className="font-semibold text-lg text-green-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">Services Growth</h4>
                     <p className="text-sm text-stone-600 dark:text-gray-400">Continues to be a high-margin growth engine, achieving record revenues. Its expansion is critical for overall profitability and margin improvement.</p>
                   </div>
                 </div>
@@ -412,7 +412,7 @@ export default function AppleInvestmentThesis() {
 
             <div id="risks-content" className="tab-content hidden">
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-stone-800 dark:text-white">⛈️ Navigating Storm Clouds</h3>
+                <h3 className="text-xl font-bold text-stone-800 dark:text-white font-serif">⛈️ Navigating Storm Clouds</h3>
                 <p className="text-stone-700 dark:text-gray-300">Even a fortress like Apple faces threats. Geopolitical tensions could disrupt its supply chain, while intensifying regulatory scrutiny targets the core of its profitable ecosystem. These external pressures represent significant uncertainties that could impact future earnings and valuation.</p>
                 <div id="accordion-container" className="space-y-2">
                   {/* Accordion items will be dynamically inserted by JavaScript */}
@@ -423,12 +423,12 @@ export default function AppleInvestmentThesis() {
         </section>
 
         <section className="text-center pt-8 border-t border-stone-200 dark:border-gray-700">
-          <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-4">Conclusion: A Disciplined &ldquo;Neutral&rdquo; Stance</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-white mb-4 font-serif">Conclusion: A Disciplined &ldquo;Neutral&rdquo; Stance</h2>
           <p className="max-w-3xl mx-auto text-stone-600 dark:text-gray-400 mb-6">
             Apple is a textbook example of a wonderful enterprise. The data clearly shows its financial strength and durable competitive moat. However, value investing principles demand a disciplined approach to price. The current valuation, with its low cash yield and absent margin of safety, makes a new investment difficult to justify. The rational course of action is patience: admire the quality of the business, but wait for a more sensible price to emerge.
           </p>
           <div className="inline-block bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-stone-200 dark:border-gray-700">
-            <h3 className="font-bold text-lg text-stone-700 dark:text-gray-200 mb-3">Core Recommendation</h3>
+            <h3 className="font-bold text-lg text-stone-700 dark:text-gray-200 mb-3 font-serif">Core Recommendation</h3>
             <p className="text-stone-600 dark:text-gray-400">MAINTAIN PATIENCE & MONITOR KEY VARIABLES</p>
           </div>
         </section>

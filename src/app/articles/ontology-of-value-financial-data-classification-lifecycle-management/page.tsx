@@ -21,39 +21,39 @@ export default function OntologyOfValueArticle() {
               This comprehensive guide explores the <strong>ontology of financial value</strong>: the systematic classification and lifecycle management of financial instruments, entities, transactions, and positions. Whether you're building a trading platform, implementing a portfolio management system, or simply seeking to understand how institutional finance operates at the data layer, this framework provides the foundational architecture.
             </p>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-300 mb-4 font-serif">What You'll Master</h3>
               <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Product Master:</strong> Global identification standards (ISIN, CUSIP, FIGI) and asset-specific attributes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Entity & Account Hierarchies:</strong> From households to sleeves, understanding ownership structures</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Transaction Lifecycle:</strong> ISO 20022 migration and structured event processing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Tax Lot Accounting:</strong> Cost basis methodologies and corporate action mathematics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>The Three Books:</strong> IBOR, ABOR, and PBOR—separating trading, accounting, and performance views</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Performance Attribution:</strong> TWRR vs MWRR and GIPS compliance frameworks</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Risk Architecture:</strong> VaR, stress testing, and liquidity classification</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-0.5 shrink-0" />
                   <span><strong>Data Engineering:</strong> Master Data Management (MDM) and bitemporal design patterns</span>
                 </li>
               </ul>
@@ -102,7 +102,7 @@ export default function OntologyOfValueArticle() {
               </ComparisonCard>
             </ComparisonGrid>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 my-10">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 my-10">
               <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-lg">Why Multiple Identifiers?</h4>
               <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
                 Different markets and regulators mandate different standards. A robust system maintains <strong>cross-reference mappings</strong> between ISIN, CUSIP, SEDOL, FIGI, and Bloomberg Ticker to ensure seamless data integration across vendors and jurisdictions.
@@ -113,23 +113,23 @@ export default function OntologyOfValueArticle() {
             <div className="space-y-8">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
                 <h4 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4 font-serif">
-                  <TrendingUp className="w-5 h-5 text-blue-500" /> Equities
+                  <TrendingUp className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" /> Equities
                 </h4>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
                     <p className="text-sm text-slate-700 dark:text-slate-300"><strong>Voting Rights:</strong> Essential for proxy voting workflows. Distinguishes common from preferred shares.</p>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
                     <p className="text-sm text-slate-700 dark:text-slate-300"><strong>Free Float:</strong> Percentage of shares available for public trading. Inputs for liquidity risk models.</p>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
                     <p className="text-sm text-slate-700 dark:text-slate-300"><strong>GICS/ICB:</strong> Sector classification driving rotation strategies, factor attribution, and benchmark construction.</p>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-0.5" />
                     <p className="text-sm text-slate-700 dark:text-slate-300"><strong>Dividend Policy:</strong> Frequency (quarterly, annual), ex-dividend dates, and payment dates.</p>
                   </li>
                 </ul>
@@ -137,7 +137,7 @@ export default function OntologyOfValueArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
                 <h4 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4 font-serif">
-                  <Activity className="w-5 h-5 text-emerald-500" /> Fixed Income
+                  <Activity className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C]" /> Fixed Income
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400 mb-4">Bonds are <strong>contractual cash flow machines</strong>. The Product Master must encode the legal terms that govern these flows.</p>
                 <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
@@ -197,7 +197,7 @@ export default function OntologyOfValueArticle() {
               </div>
             </div>
             
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800 mt-10">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800 mt-10">
               <h4 className="text-emerald-900 dark:text-emerald-300 font-bold flex items-center gap-2 mb-3 font-serif text-lg">
                 <Globe className="w-5 h-5" /> Regulatory Classifications: SFDR
               </h4>
@@ -253,28 +253,28 @@ export default function OntologyOfValueArticle() {
             <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 mb-10">
               <div className="relative pl-8 space-y-8 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-300 dark:before:bg-slate-700">
                 <div className="relative">
-                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-50 dark:ring-slate-900"></div>
+                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] ring-4 ring-slate-50 dark:ring-slate-900"></div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-lg">1. Client / Household</h4>
                   <p className="text-slate-600 dark:text-slate-400 mt-2">
                     Top-level owner (e.g., "The Smith Family"). Aggregates Total Wealth across all accounts. Used for relationship management and consolidated reporting. Links to CRM systems.
                   </p>
                 </div>
                 <div className="relative">
-                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-50 dark:ring-slate-900"></div>
+                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] ring-4 ring-slate-50 dark:ring-slate-900"></div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-lg">2. Custodial Account</h4>
                   <p className="text-slate-600 dark:text-slate-400 mt-2">
                     Legal vessel at a custodian bank. This is the level for <strong>Form 1099-B</strong> tax reporting. Each account has a unique account number and legal registration (Individual, Joint, IRA, Trust).
                   </p>
                 </div>
                 <div className="relative">
-                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-50 dark:ring-slate-900"></div>
+                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] ring-4 ring-slate-50 dark:ring-slate-900"></div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-lg">3. Portfolio / Strategy</h4>
                   <p className="text-slate-600 dark:text-slate-400 mt-2">
                     Logical grouping within an account (e.g., "US Growth Equity", "Fixed Income Core"). Enables <strong>model portfolio</strong> assignment and performance attribution by strategy. Not a legal entity.
                   </p>
                 </div>
                 <div className="relative">
-                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-50 dark:ring-slate-900"></div>
+                  <div className="absolute -left-[36px] top-1 w-4 h-4 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] ring-4 ring-slate-50 dark:ring-slate-900"></div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-lg">4. Sleeve / Sub-Account</h4>
                   <p className="text-slate-600 dark:text-slate-400 mt-2">
                     Virtual partition for <strong>Unified Managed Accounts (UMAs)</strong>. Enables multi-manager strategies within a single custodial account. Critical for avoiding wash sales across sleeves.
@@ -337,28 +337,28 @@ export default function OntologyOfValueArticle() {
               <div className="flex items-center gap-4 mb-8">
                 <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex-1 text-center">
                   <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Legacy</div>
-                  <div className="font-mono text-rose-400 text-lg">MT Format</div>
+                  <div className="font-mono text-[#BC4128] dark:text-[#E2694A] text-lg">MT Format</div>
                 </div>
-                <ArrowRight className="w-8 h-8 text-slate-600 shrink-0" />
+                <ArrowRight className="w-8 h-8 text-slate-600 dark:text-slate-400 shrink-0" />
                 <div className="bg-slate-800 p-4 rounded-xl border border-amber-500/30 flex-1 text-center shadow-[0_0_15px_rgba(245,158,11,0.1)]">
                   <div className="text-xs text-amber-500/70 uppercase tracking-widest font-bold mb-1">Modern</div>
-                  <div className="font-mono text-emerald-400 text-lg">MX Format</div>
+                  <div className="font-mono text-[#1D8A70] dark:text-[#3CBF9C] text-lg">MX Format</div>
                 </div>
               </div>
 
               <h4 className="text-slate-200 font-bold mb-4 font-serif">Core Transaction Types</h4>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-blue-500">
+                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-[#A8672E] dark:border-[#D08F52]">
                   <div className="flex justify-between items-center mb-1">
                     <span className="font-bold text-white">Trade Activity</span>
-                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">T+2 Settled</span>
+                    <span className="text-xs bg-[#A8672E] dark:bg-[#D08F52]/20 text-blue-300 px-2 py-1 rounded">T+2 Settled</span>
                   </div>
                   <span className="text-sm text-slate-400">Buy, Sell, Short, Cover</span>
                 </div>
-                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-emerald-500">
+                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
                   <div className="flex justify-between items-center mb-1">
                     <span className="font-bold text-white">Income Activity</span>
-                    <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded">Cash Flow</span>
+                    <span className="text-xs bg-[#1D8A70] dark:bg-[#3CBF9C]/20 text-emerald-300 px-2 py-1 rounded">Cash Flow</span>
                   </div>
                   <span className="text-sm text-slate-400">Dividends, Interest, Coupons</span>
                 </div>
@@ -369,10 +369,10 @@ export default function OntologyOfValueArticle() {
                   </div>
                   <span className="text-sm text-slate-400">Splits, Mergers, Spin-offs</span>
                 </div>
-                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-orange-500">
+                <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-[#BC4128] dark:border-[#E2694A]">
                   <div className="flex justify-between items-center mb-1">
                     <span className="font-bold text-white">Cash Activity</span>
-                    <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Non-Trade</span>
+                    <span className="text-xs bg-[#BC4128] dark:bg-[#E2694A]/20 text-orange-300 px-2 py-1 rounded">Non-Trade</span>
                   </div>
                   <span className="text-sm text-slate-400">Deposits, Withdrawals, Fees</span>
                 </div>
@@ -382,7 +382,7 @@ export default function OntologyOfValueArticle() {
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Transaction State Machine</h3>
             <div className="grid md:grid-cols-4 gap-4 mb-10">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg mx-auto mb-3">1</div>
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center font-bold text-lg mx-auto mb-3">1</div>
                 <strong className="block text-slate-900 dark:text-white mb-2">Pending</strong>
                 <p className="text-xs text-slate-600 dark:text-slate-400">Order submitted, awaiting execution</p>
               </div>
@@ -397,7 +397,7 @@ export default function OntologyOfValueArticle() {
                 <p className="text-xs text-slate-600 dark:text-slate-400">Cash and securities exchanged (T+2)</p>
               </div>
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
-                <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg mx-auto mb-3">4</div>
+                <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center justify-center font-bold text-lg mx-auto mb-3">4</div>
                 <strong className="block text-slate-900 dark:text-white mb-2">Reconciled</strong>
                 <p className="text-xs text-slate-600 dark:text-slate-400">Matched with custodian statement</p>
               </div>
@@ -503,7 +503,7 @@ export default function OntologyOfValueArticle() {
             <div className="grid md:grid-cols-2 gap-8 mb-10">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <Clock className="w-6 h-6 text-teal-500" />
+                  <Clock className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">TWRR (Time-Weighted)</h3>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
@@ -517,7 +517,7 @@ export default function OntologyOfValueArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <Briefcase className="w-6 h-6 text-indigo-500" />
+                  <Briefcase className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">MWRR (Money-Weighted)</h3>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">

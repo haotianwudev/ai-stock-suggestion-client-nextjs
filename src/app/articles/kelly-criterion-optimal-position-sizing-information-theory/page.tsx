@@ -57,9 +57,9 @@ export default function KellyCriterionArticle() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50 rounded-3xl p-8 min-w-0">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50 rounded-3xl p-8 min-w-0">
               <h4 className="text-lg font-bold text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-blue-600 dark:text-blue-500" />
+                <AlertTriangle className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
                 The Golden Rule of Risk
               </h4>
               <p className="text-blue-800 dark:text-blue-200/80 leading-relaxed">
@@ -250,13 +250,13 @@ export default function KellyCriterionArticle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200">Full Kelly (1.0x)</td>
                     <td className="px-6 py-4 text-[#1D8A70] dark:text-[#3CBF9C] font-bold">100%</td>
                     <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A] font-bold">100%</td>
                     <td className="px-6 py-4 text-[#BC4128] dark:text-[#E2694A]">~20.0% (1-in-5)</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-800 dark:text-slate-200">Half Kelly (0.5x)</td>
                     <td className="px-6 py-4">75%</td>
                     <td className="px-6 py-4">25% (1/4th)</td>
@@ -290,7 +290,7 @@ export default function KellyCriterionArticle() {
               Is the Kelly Criterion suitable for the common retail investor? In practice: <strong className="text-slate-900 dark:text-white">No.</strong>
             </p>
 
-            <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 mb-8 min-w-0">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 mb-8 min-w-0">
               <h4 className="text-lg font-bold text-rose-900 dark:text-rose-300 mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" />
                 The Illusion of Known Probabilities

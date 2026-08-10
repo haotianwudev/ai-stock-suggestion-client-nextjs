@@ -76,11 +76,11 @@ const shockEventTimelineData = [
 ];
 
 const marketStats = [
-  { name: 'S&P 500', value: '-2.7%', Icon: TrendingDown, color: 'text-red-500' },
-  { name: 'NASDAQ', value: '-2.7%', Icon: TrendingDown, color: 'text-red-500' },
-  { name: 'PHLX Semiconductor', value: '-4.1%', Icon: TrendingDown, color: 'text-red-500' },
-  { name: 'Qualcomm', value: '-5.5%', Icon: TrendingDown, color: 'text-red-500' },
-  { name: 'MP Materials', value: '+11%', Icon: TrendingUp, color: 'text-green-500' },
+  { name: 'S&P 500', value: '-2.7%', Icon: TrendingDown, color: 'text-[#BC4128] dark:text-[#E2694A]' },
+  { name: 'NASDAQ', value: '-2.7%', Icon: TrendingDown, color: 'text-[#BC4128] dark:text-[#E2694A]' },
+  { name: 'PHLX Semiconductor', value: '-4.1%', Icon: TrendingDown, color: 'text-[#BC4128] dark:text-[#E2694A]' },
+  { name: 'Qualcomm', value: '-5.5%', Icon: TrendingDown, color: 'text-[#BC4128] dark:text-[#E2694A]' },
+  { name: 'MP Materials', value: '+11%', Icon: TrendingUp, color: 'text-[#1D8A70] dark:text-[#3CBF9C]' },
   { name: 'Gold Price', value: '>$4,000/oz', Icon: Shield, color: 'text-yellow-600' },
 ];
 
@@ -130,13 +130,13 @@ const ShockTimelineItem = ({ data, isLast }: { data: any; isLast: boolean }) => 
     <div className="relative flex items-start pl-12 md:pl-0">
       {!isLast && <div className="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200"></div>}
       <div className="absolute top-0 left-0">
-        <span className="absolute top-2 left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center ring-8 ring-gray-50 z-10">
+        <span className="absolute top-2 left-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] rounded-full flex items-center justify-center ring-8 ring-gray-50 z-10">
           {getIcon()}
         </span>
       </div>
       <div className="ml-10 pt-1 flex-1">
         <p className="font-semibold text-gray-500 text-sm">{data.time}</p>
-        <h3 className="font-bold text-xl text-gray-800 mt-1">{data.title}</h3>
+        <h3 className="font-bold text-xl text-gray-800 mt-1 font-serif">{data.title}</h3>
         <p className="mt-2 text-gray-600 max-w-md">{data.description}</p>
       </div>
     </div>
@@ -151,11 +151,11 @@ export default function TradeWarReduxAnalysis() {
     >
       <div className="max-w-4xl mx-auto px-4 text-gray-900">
         {/* Executive Summary */}
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-12 rounded-r-lg">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 mb-12 rounded-r-lg">
           <div className="flex items-start">
-            <AlertTriangle className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+            <AlertTriangle className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] mr-3 mt-1 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-blue-900 mb-2">Executive Summary</h3>
+              <h3 className="text-lg font-semibold text-blue-900 mb-2 font-serif">Executive Summary</h3>
               <p className="text-blue-800">
                 The October 10, 2025 market shock represents a classic case of geopolitical sentiment overwhelming fundamentals.
                 While the immediate trigger was renewed trade war rhetoric, the underlying dynamics reflect deeper structural tensions
@@ -168,15 +168,15 @@ export default function TradeWarReduxAnalysis() {
 
         {/* Analyst's Take Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Analyst&apos;s Take: Volatility as Opportunity?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Analyst&apos;s Take: Volatility as Opportunity?</h2>
           <p className="text-lg text-gray-600 mb-8">
             Geopolitical shocks are unsettling, but historical context provides a valuable lens for navigating the turmoil.
           </p>
 
           <div className="space-y-8">
-            <div className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center">
-                <BarChart className="w-5 h-5 mr-2 text-blue-600" />
+            <div className="bg-white dark:bg-[#0A0D14] p-6 border border-gray-200 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center font-serif">
+                <BarChart className="w-5 h-5 mr-2 text-[#A8672E] dark:text-[#D08F52]" />
                 Historical Precedent for Geopolitical Shocks
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -188,29 +188,29 @@ export default function TradeWarReduxAnalysis() {
               </p>
             </div>
 
-            <div className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center">
-                <BookOpen className="w-5 h-5 mr-2 text-blue-600" />
+            <div className="bg-white dark:bg-[#0A0D14] p-6 border border-gray-200 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center font-serif">
+                <BookOpen className="w-5 h-5 mr-2 text-[#A8672E] dark:text-[#D08F52]" />
                 How Long Do Drawdowns Last?
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 The duration of a drawdown depends on the severity of the crisis and the policy response. For sentiment-driven
                 shocks without an immediate, deep recession, drawdowns of 10-15% typically find a bottom within{' '}
-                <span className="font-bold text-blue-600">1 to 3 months</span>. The full recovery to prior highs can take longer,
-                often in the range of <span className="font-bold text-blue-600">4 to 6 months</span>. However, if these tariff
+                <span className="font-bold text-[#A8672E] dark:text-[#D08F52]">1 to 3 months</span>. The full recovery to prior highs can take longer,
+                often in the range of <span className="font-bold text-[#A8672E] dark:text-[#D08F52]">4 to 6 months</span>. However, if these tariff
                 threats materialize into policy that severely damages corporate earnings, the drawdown could be deeper and more
                 prolonged, resembling a cyclical bear market.
               </p>
             </div>
 
-            <div className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center">
-                <Target className="w-5 h-5 mr-2 text-blue-600" />
+            <div className="bg-white dark:bg-[#0A0D14] p-6 border border-gray-200 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center font-serif">
+                <Target className="w-5 h-5 mr-2 text-[#A8672E] dark:text-[#D08F52]" />
                 Is This a Good Chance for Retail Investors?
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 For investors with a long-term horizon (5+ years) and adequate liquidity, such events represent a{' '}
-                <span className="font-bold text-green-600">potential opportunity</span>. It allows for the purchase of
+                <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">potential opportunity</span>. It allows for the purchase of
                 high-quality assets at discounted prices. The crucial task is to differentiate between fundamentally sound
                 companies caught in the panic versus those whose business models are permanently impaired by new trade realities.
                 Rushing in is unwise, but a disciplined strategy of <span className="font-bold">dollar-cost averaging</span> into
@@ -222,7 +222,7 @@ export default function TradeWarReduxAnalysis() {
 
         {/* Historical Timeline Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">The Road to October 10th</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">The Road to October 10th</h2>
           <p className="text-lg text-gray-600 mb-12">
             This recent shock wasn&apos;t a bolt from the blue. It was the latest chapter in a multi-year economic conflict
             that has reshaped global trade.
@@ -234,12 +234,12 @@ export default function TradeWarReduxAnalysis() {
               <div key={index} className={`relative md:flex mb-12 items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                 <div className="md:w-1/2 p-4">
                   <div className="bg-gray-100 p-6 rounded-lg border border-gray-200">
-                    <p className="text-blue-600 font-bold text-2xl mb-2">{item.year}</p>
-                    <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
+                    <p className="text-[#A8672E] dark:text-[#D08F52] font-bold text-2xl mb-2">{item.year}</p>
+                    <h3 className="text-xl font-bold text-gray-800 font-serif">{item.title}</h3>
                     <p className="text-gray-600 mt-2">{item.description}</p>
                   </div>
                 </div>
-                <div className="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-blue-500 border-4 border-white"></div>
+                <div className="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[#A8672E] dark:bg-[#D08F52] border-4 border-white"></div>
                 <div className="md:w-1/2 p-4"></div>
               </div>
             ))}
@@ -248,7 +248,7 @@ export default function TradeWarReduxAnalysis() {
 
         {/* Shock Event Timeline Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Anatomy of the Shock</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">Anatomy of the Shock</h2>
           <p className="text-lg text-gray-600 mb-12">
             A minute-by-minute account of how a calm trading day devolved into the worst session since April,
             driven by geopolitical tremors.
@@ -263,7 +263,7 @@ export default function TradeWarReduxAnalysis() {
 
         {/* Market Impact Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">The Ripple Effect</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">The Ripple Effect</h2>
           <p className="text-lg text-gray-600 mb-12">
             The sell-off was broad and deep, with technology and semiconductor stocks at the epicenter of the damage.
             Here&apos;s a snapshot of the market carnage.
@@ -271,16 +271,16 @@ export default function TradeWarReduxAnalysis() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center mb-12">
             {marketStats.map(({ name, value, Icon, color }) => (
-              <div key={name} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-500 transition-all transform hover:-translate-y-1">
+              <div key={name} className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-[#A8672E] dark:border-[#D08F52] transition-all transform hover:-translate-y-1">
                 <Icon className={`w-10 h-10 mx-auto mb-3 ${color}`} />
-                <h3 className="font-semibold text-gray-500 text-sm">{name}</h3>
+                <h3 className="font-semibold text-gray-500 text-sm font-serif">{name}</h3>
                 <p className={`text-2xl font-bold ${color}`}>{value}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center p-8 bg-gray-100/70 rounded-xl border border-gray-200 max-w-4xl mx-auto">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">A Tale of Two Strategies</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-3 font-serif">A Tale of Two Strategies</h3>
             <p className="text-gray-600 leading-relaxed">
               The market reaction highlights the strategic nature of the conflict. The U.S. threat was a blunt instrument
               targeting the entire Chinese economy. In contrast, China&apos;s recent moves&mdash;from restricting rare earth tech to
@@ -292,7 +292,7 @@ export default function TradeWarReduxAnalysis() {
 
         {/* Investor Playbook Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">A Disciplined Investor&apos;s Playbook</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 font-serif">A Disciplined Investor&apos;s Playbook</h2>
           <p className="text-lg text-gray-600 mb-12">
             Geopolitical shocks test investor discipline. History suggests that a strategic, long-term perspective is
             the key to navigating volatility.
@@ -300,12 +300,12 @@ export default function TradeWarReduxAnalysis() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {investorPlaybook.map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-xl hover:border-blue-400">
+              <div key={index} className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-xl hover:border-[#A8672E] dark:border-[#D08F52]">
                 <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#A8672E] dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center">
                     <item.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="ml-4 text-lg font-bold text-gray-800">{item.title}</h3>
+                  <h3 className="ml-4 text-lg font-bold text-gray-800 font-serif">{item.title}</h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed">{item.description}</p>
               </div>

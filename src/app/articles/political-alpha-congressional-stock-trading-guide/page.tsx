@@ -5,15 +5,15 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper component for consistent section titles
 const SectionTitle = ({ icon: Icon, children }: { icon: React.ElementType, children: React.ReactNode }) => (
-  <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 flex items-center justify-center text-center sm:text-left sm:justify-start">
-    <Icon className="w-8 h-8 mr-4 text-indigo-500" />
+  <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 flex items-center justify-center text-center sm:text-left sm:justify-start font-serif">
+    <Icon className="w-8 h-8 mr-4 text-[#A8672E] dark:text-[#D08F52]" />
     {children}
   </h2>
 );
 
 // Helper component for stat cards
 const StatCard = ({ title, value, description }: { title: string, value: string, description: string }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
+  <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200 transform hover:-translate-y-1 transition-transform duration-300">
     <p className="text-sm text-gray-500">{title}</p>
     <p className="text-4xl font-bold text-gray-900 my-2">{value}</p>
     <p className="text-sm text-gray-600">{description}</p>
@@ -22,8 +22,8 @@ const StatCard = ({ title, value, description }: { title: string, value: string,
 
 // Helper component for case study cards
 const CaseStudyCard = ({ title, content }: { title: string, content: string }) => (
-  <div className="bg-white/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-200 hover:border-indigo-400 hover:shadow-xl transition-all duration-300">
-    <h4 className="font-bold text-xl text-indigo-600 mb-2">{title}</h4>
+  <div className="bg-white dark:bg-[#0A0D14]/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-200 hover:border-[#A8672E] dark:border-[#D08F52] hover:shadow-xl transition-all duration-300">
+    <h4 className="font-bold text-xl text-[#A8672E] dark:text-[#D08F52] mb-2">{title}</h4>
     <p className="text-gray-700">{content}</p>
   </div>
 );
@@ -52,7 +52,7 @@ export default function PoliticalAlphaArticle() {
   return (
     <ArticleFrame slug="political-alpha-congressional-stock-trading-guide">
       <div className="max-w-5xl mx-auto px-4 text-gray-800">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           A select group of U.S. politicians have demonstrated extraordinary investment returns, consistently outperforming the market. Discover the data, the players, and the strategies.
         </p>
 
@@ -94,17 +94,17 @@ export default function PoliticalAlphaArticle() {
               />
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <ShieldCheck className="w-6 h-6 mr-3 text-indigo-500"/>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center font-serif">
+                <ShieldCheck className="w-6 h-6 mr-3 text-[#A8672E] dark:text-[#D08F52]"/>
                 Controversy & Defense
               </h3>
               <p className="text-gray-600 mb-4">
                 The portfolio&apos;s extraordinary performance has led to persistent accusations of insider trading, suggesting access to non-public information.
               </p>
-              <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-lg">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-indigo-200 p-4 rounded-lg">
                 <p className="font-semibold text-indigo-800">The Official Defense:</p>
-                <p className="text-indigo-700 mt-1">
+                <p className="text-[#A8672E] dark:text-[#D08F52] mt-1">
                   &ldquo;Speaker Pelosi does not own any stocks and has no knowledge or subsequent involvement in any transactions.&rdquo;
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
@@ -114,8 +114,8 @@ export default function PoliticalAlphaArticle() {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Annual Performance vs. Benchmarks</h3>
-          <div className="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center font-serif">Annual Performance vs. Benchmarks</h3>
+          <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-lg shadow-md border border-gray-200">
             <table className="w-full text-left">
               <thead className="bg-gray-100">
                 <tr>
@@ -130,10 +130,10 @@ export default function PoliticalAlphaArticle() {
                 {pelosiPerformanceData.map((data, index) => (
                   <tr key={index} className="border-t border-gray-200 hover:bg-gray-50 transition-colors">
                     <td className="p-4">{data.year}</td>
-                    <td className="p-4 text-green-600 font-mono font-semibold">{data.return}</td>
+                    <td className="p-4 text-[#1D8A70] dark:text-[#3CBF9C] font-mono font-semibold">{data.return}</td>
                     <td className="p-4 font-mono">{data.sp500}</td>
                     <td className="p-4 font-mono">{data.nasdaq100}</td>
-                    <td className="p-4 text-green-600 font-mono">{data.outperformance} bps</td>
+                    <td className="p-4 text-[#1D8A70] dark:text-[#3CBF9C] font-mono">{data.outperformance} bps</td>
                   </tr>
                 ))}
               </tbody>
@@ -149,7 +149,7 @@ export default function PoliticalAlphaArticle() {
             While the Pelosi portfolio attracts the most attention, the practice of active stock trading is widespread in Congress, often in sectors related to their committee assignments.
           </p>
 
-          <div className="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200 mb-12">
+          <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-lg shadow-md border border-gray-200 mb-12">
             <table className="w-full text-left">
               <thead className="bg-gray-100">
                 <tr>
@@ -176,25 +176,25 @@ export default function PoliticalAlphaArticle() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Partisan Portfolio ETFs</h3>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 font-serif">Partisan Portfolio ETFs</h3>
               <p className="text-gray-600 mb-4">
                 The market has responded to these trends by creating politically themed ETFs that mirror the trades of each party.
               </p>
               <div className="space-y-4">
-                <div className="p-4 border border-blue-200 bg-blue-50 rounded-lg">
+                <div className="p-4 border border-blue-200 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg">
                   <p className="font-bold text-blue-800">NANC (Democratic)</p>
-                  <p className="text-2xl font-bold text-green-600">58.9% Return</p>
+                  <p className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C]">58.9% Return</p>
                 </div>
-                <div className="p-4 border border-red-200 bg-red-50 rounded-lg">
+                <div className="p-4 border border-red-200 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg">
                   <p className="font-bold text-red-800">GOP (Republican)</p>
-                  <p className="text-2xl font-bold text-green-600">30.2% Return</p>
+                  <p className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C]">30.2% Return</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Committee Correlation</h3>
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 font-serif">Committee Correlation</h3>
               <p className="text-gray-600">
                 A strong correlation exists between a politician&apos;s committee assignments and their trading activity, suggesting a potential informational advantage.
               </p>
@@ -214,8 +214,8 @@ export default function PoliticalAlphaArticle() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-full mb-4">
                 <Users className="w-6 h-6"/>
               </div>
               <h4 className="font-bold text-xl text-gray-800 mb-2">1. Curation</h4>
@@ -224,8 +224,8 @@ export default function PoliticalAlphaArticle() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-full mb-4">
                 <TrendingUp className="w-6 h-6"/>
               </div>
               <h4 className="font-bold text-xl text-gray-800 mb-2">2. Information Flow</h4>
@@ -234,8 +234,8 @@ export default function PoliticalAlphaArticle() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-full mb-4">
                 <Search className="w-6 h-6"/>
               </div>
               <h4 className="font-bold text-xl text-gray-800 mb-2">3. Trade Triage</h4>
@@ -244,8 +244,8 @@ export default function PoliticalAlphaArticle() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="flex items-center justify-center w-12 h-12 bg-indigo-100 text-[#A8672E] dark:text-[#D08F52] rounded-full mb-4">
                 <Target className="w-6 h-6"/>
               </div>
               <h4 className="font-bold text-xl text-gray-800 mb-2">4. Execution</h4>
@@ -262,8 +262,8 @@ export default function PoliticalAlphaArticle() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                <FileText className="w-6 h-6 mr-3 text-indigo-500"/>
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center font-serif">
+                <FileText className="w-6 h-6 mr-3 text-[#A8672E] dark:text-[#D08F52]"/>
                 The STOCK Act: Foundation & Flaws
               </h3>
               <p className="text-gray-600 mb-4">
@@ -292,14 +292,14 @@ export default function PoliticalAlphaArticle() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                <BarChart3 className="w-6 h-6 mr-3 text-indigo-500"/>
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center font-serif">
+                <BarChart3 className="w-6 h-6 mr-3 text-[#A8672E] dark:text-[#D08F52]"/>
                 Data Sources & Platforms
               </h3>
               <p className="text-gray-600 mb-4">
                 An ecosystem of platforms makes tracking this data more actionable than sifting through raw government filings.
               </p>
-              <div className="overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
+              <div className="overflow-x-auto bg-white dark:bg-[#0A0D14] rounded-lg shadow-md border border-gray-200">
                 <table className="w-full text-left">
                   <thead className="bg-gray-100">
                     <tr>
@@ -323,12 +323,12 @@ export default function PoliticalAlphaArticle() {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Key Risk Factors</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center font-serif">Key Risk Factors</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg">
-                <Scale className="w-8 h-8 mb-4 text-red-500" />
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 p-6 rounded-lg">
+                <Scale className="w-8 h-8 mb-4 text-[#BC4128] dark:text-[#E2694A]" />
                 <h4 className="font-bold text-xl text-red-800 mb-2">Legislative Risk</h4>
-                <p className="text-red-700">
+                <p className="text-[#BC4128] dark:text-[#E2694A]">
                   A bipartisan movement (e.g., the ETHICS Act) aims to ban congressional stock trading, which would make this entire strategy obsolete overnight.
                 </p>
               </div>
@@ -341,10 +341,10 @@ export default function PoliticalAlphaArticle() {
                 </p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg">
-                <Target className="w-8 h-8 mb-4 text-blue-500" />
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 p-6 rounded-lg">
+                <Target className="w-8 h-8 mb-4 text-[#A8672E] dark:text-[#D08F52]" />
                 <h4 className="font-bold text-xl text-blue-800 mb-2">Reporting Lag & Crowded Trades</h4>
-                <p className="text-blue-700">
+                <p className="text-[#A8672E] dark:text-[#D08F52]">
                   The 45-day delay means you&apos;re buying late. The disclosure itself can cause a price surge, creating risk that you&apos;re buying at an inflated peak.
                 </p>
               </div>

@@ -95,7 +95,7 @@ const lifeMindsetBooks = [
 ];
 
 const BookCard = ({ book }: { book: typeof investingBooks[0] }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
     <div className="relative w-full h-80 bg-gray-50 flex items-center justify-center p-4">
       <img
         src={book.image}
@@ -104,7 +104,7 @@ const BookCard = ({ book }: { book: typeof investingBooks[0] }) => (
       />
     </div>
     <div className="p-6 flex-grow flex flex-col">
-      <h3 className="font-bold text-xl mb-2 leading-tight">{book.title}</h3>
+      <h3 className="font-bold text-xl mb-2 leading-tight font-serif">{book.title}</h3>
       <p className="text-gray-600 mb-4 text-sm font-medium">{book.author}</p>
       <p className="text-gray-700 text-sm flex-grow leading-relaxed">{book.description}</p>
     </div>
@@ -119,7 +119,7 @@ export default function EssentialReadingForInvestors() {
     >
       {/* Investing & Finance Section */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-2">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-[#A8672E] dark:border-[#D08F52] pb-2 font-serif">
           Investing & Finance
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -131,7 +131,7 @@ export default function EssentialReadingForInvestors() {
 
       {/* Life & Mindset Section */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-green-500 pb-2">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-[#1D8A70] dark:border-[#3CBF9C] pb-2 font-serif">
           Life & Mindset
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

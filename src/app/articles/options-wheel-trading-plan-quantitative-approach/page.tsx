@@ -5,14 +5,14 @@ import { ArrowLeft, ArrowRight, BookOpen, Target, ShieldCheck, TrendingUp, BarCh
 import { ArticleFrame, InfographicSlot } from '@/components/articles/article-frame';
 
 const IconBookOpen = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
     </svg>
 );
 
 const IconTarget = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <circle cx="12" cy="12" r="10"></circle>
         <circle cx="12" cy="12" r="6"></circle>
         <circle cx="12" cy="12" r="2"></circle>
@@ -20,7 +20,7 @@ const IconTarget = () => (
 );
 
 const IconShieldCheck = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-indigo-600">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         <path d="m9 12 2 2 4-4"></path>
     </svg>
@@ -29,13 +29,13 @@ const IconShieldCheck = () => (
 const SectionHeader = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <div className="flex items-center mb-6">
         {children}
-        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{title}</h2>
+        <h2 className="text-3xl font-bold text-gray-900 tracking-tight font-serif">{title}</h2>
     </div>
 );
 
 const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
     <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white dark:bg-[#0A0D14] text-sm">
             <thead className="bg-gray-50">
                 <tr>
                     {headers.map((header, index) => (
@@ -49,8 +49,8 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
                 {data.map((row, rowIndex) => (
                     <tr key={rowIndex} className="hover:bg-gray-50">
                         {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} className={`whitespace-pre-wrap px-4 py-3 ${cell.includes('Pass') || cell.includes('Qualify') ? 'text-green-600 font-medium' :
-                                    cell.includes('Fail') || cell.includes('Disqualify') ? 'text-red-600 font-medium' :
+                            <td key={cellIndex} className={`whitespace-pre-wrap px-4 py-3 ${cell.includes('Pass') || cell.includes('Qualify') ? 'text-[#1D8A70] dark:text-[#3CBF9C] font-medium' :
+                                    cell.includes('Fail') || cell.includes('Disqualify') ? 'text-[#BC4128] dark:text-[#E2694A] font-medium' :
                                         'text-gray-700'
                                 }`}>
                                 {cell}
@@ -72,7 +72,7 @@ const WheelCycleVisualization = () => {
             title: "Phase 1: Cash-Secured Put",
             description: "Sell puts on quality stocks you want to own at a discount",
             action: "Collect premium while waiting for assignment",
-            color: "bg-blue-500"
+            color: "bg-[#A8672E] dark:bg-[#D08F52]"
         },
         {
             id: 2,
@@ -86,7 +86,7 @@ const WheelCycleVisualization = () => {
             title: "Phase 3: Covered Call",
             description: "Sell calls against your shares",
             action: "Generate income from owned shares",
-            color: "bg-green-500"
+            color: "bg-[#1D8A70] dark:bg-[#3CBF9C]"
         },
         {
             id: 4,
@@ -98,8 +98,8 @@ const WheelCycleVisualization = () => {
     ];
 
     return (
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Interactive Wheel Cycle</h3>
+        <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-xl border border-gray-200 shadow-md">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center font-serif">Interactive Wheel Cycle</h3>
 
             <div className="flex justify-center mb-8">
                 <div className="flex space-x-2">
@@ -201,12 +201,12 @@ export default function OptionsWheelTradingPlan() {
                     <WheelCycleVisualization />
 
                     {/* Section 1: Strategic Rationale */}
-                    <section id="rationale" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="rationale" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <SectionHeader title="The Strategic Rationale of the Wheel">
                             <IconBookOpen />
                         </SectionHeader>
 
-                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
+                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
                             <p>
                                 The Options Wheel Strategy is a systematic, cyclical process for generating income and potentially acquiring high-quality stocks.
                                 It&apos;s not a single trade, but a continuous loop designed to harness option premiums and time decay. It is fundamentally a
@@ -214,16 +214,16 @@ export default function OptionsWheelTradingPlan() {
                                 a quality asset at a price you deem attractive.
                             </p>
 
-                            <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]">
                                 <h4 className="font-bold text-blue-800 mb-2">Core Mathematical Principle</h4>
-                                <p className="text-blue-700">
+                                <p className="text-[#A8672E] dark:text-[#D08F52]">
                                     The wheel leverages <strong>put-call parity</strong>: C + X = P + S. This means selling a covered call is mathematically
                                     equivalent to selling a cash-secured put at the same strike and expiration. The wheel seamlessly transitions between
                                     these equivalent positions to maximize income generation.
                                 </p>
                             </div>
 
-                            <h3>1.1 Deconstructing the Wheel: A Cyclical Income Engine</h3>
+                            <h3>Deconstructing the Wheel: A Cyclical Income Engine</h3>
                             <p>The Wheel rotates between two primary strategies in a clear sequence:</p>
                             <ol className="list-decimal list-inside space-y-3 pl-2">
                                 <li>
@@ -240,15 +240,15 @@ export default function OptionsWheelTradingPlan() {
                                 </li>
                             </ol>
 
-                            <h3>1.2 Triple Income Mechanism</h3>
+                            <h3>Triple Income Mechanism</h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                                 <div className="bg-green-100 p-4 rounded-lg">
                                     <h4 className="font-bold text-green-800 mb-2">1. Put Premiums</h4>
-                                    <p className="text-green-700 text-sm">Collect income while waiting for good entry prices on quality stocks</p>
+                                    <p className="text-[#1D8A70] dark:text-[#3CBF9C] text-sm">Collect income while waiting for good entry prices on quality stocks</p>
                                 </div>
                                 <div className="bg-blue-100 p-4 rounded-lg">
                                     <h4 className="font-bold text-blue-800 mb-2">2. Call Premiums</h4>
-                                    <p className="text-blue-700 text-sm">Generate income from owned shares while waiting to sell at target prices</p>
+                                    <p className="text-[#A8672E] dark:text-[#D08F52] text-sm">Generate income from owned shares while waiting to sell at target prices</p>
                                 </div>
                                 <div className="bg-purple-100 p-4 rounded-lg">
                                     <h4 className="font-bold text-purple-800 mb-2">3. Dividends</h4>
@@ -256,7 +256,7 @@ export default function OptionsWheelTradingPlan() {
                                 </div>
                             </div>
 
-                            <h3>1.3 The Financial Logic: Cost Basis Reduction &amp; &ldquo;Synthetic Dividend&rdquo;</h3>
+                            <h3>The Financial Logic: Cost Basis Reduction &amp; &ldquo;Synthetic Dividend&rdquo;</h3>
                             <p>
                                 Premiums collected systematically reduce your effective purchase price (cost basis). A $50 strike put with a $2 premium
                                 results in a <strong>$48 cost basis</strong> if assigned ($50 strike - $2 premium). Subsequent call premiums further reduce
@@ -267,7 +267,7 @@ export default function OptionsWheelTradingPlan() {
                                 own cash flow, which enhances returns even when the stock price is stagnant, much like a real dividend.
                             </p>
 
-                            <h3>1.4 Market Conditions: The Sweet Spot</h3>
+                            <h3>Market Conditions: The Sweet Spot</h3>
                             <p>
                                 The Wheel performs optimally in <strong>neutral, sideways, or mildly bullish markets</strong>. In these conditions, you can
                                 repeatedly collect premiums as options expire worthless. In strongly bullish markets, it underperforms buy-and-hold due to
@@ -286,13 +286,13 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 2: Trading Plan */}
-                    <section id="plan" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="plan" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <SectionHeader title="The Ultimate Trading Plan: Implementation Protocol">
                             <IconTarget />
                         </SectionHeader>
 
-                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
-                            <h3>2.1 Underlyer Selection Protocol</h3>
+                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
+                            <h3>Underlyer Selection Protocol</h3>
                             <p>
                                 This is the most critical step. The success of the Wheel is determined by the quality of the underlying asset. The goal is
                                 to identify stable, financially sound businesses you are willing to own long-term. Your selection should pass a multi-stage filter.
@@ -313,7 +313,7 @@ export default function OptionsWheelTradingPlan() {
 
                             <StyledTable headers={underlyerTableHeaders} data={underlyerTableData} />
 
-                            <h3 className="pt-8">2.2 Option Writing Protocol</h3>
+                            <h3 className="pt-8 font-serif">Option Writing Protocol</h3>
                             <p>
                                 Option selection should be rules-based, balancing income, risk, and probability of assignment. Key variables are Days to
                                 Expiration (DTE), Delta, and Implied Volatility (IV).
@@ -338,9 +338,9 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 3: Understanding the Greeks */}
-                    <section id="greeks" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="greeks" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <SectionHeader title="Understanding the Option Greeks">
-                            <BarChart3 className="h-6 w-6 mr-3 text-indigo-600" />
+                            <BarChart3 className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]" />
                         </SectionHeader>
 
                         <div className="space-y-8">
@@ -350,16 +350,16 @@ export default function OptionsWheelTradingPlan() {
                             </p>
 
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-lg border border-blue-200">
                                     <h4 className="text-lg font-bold text-blue-900 mb-3">Delta (Δ)</h4>
-                                    <p className="text-blue-700 text-sm">
+                                    <p className="text-[#A8672E] dark:text-[#D08F52] text-sm">
                                         Measures the rate of change in an option&apos;s price for every $1 move in the underlying stock. For short puts,
                                         a delta of 0.30 means the option premium will increase by $0.30 if the stock falls by $1.
                                     </p>
                                 </div>
-                                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-6 rounded-lg border border-green-200">
                                     <h4 className="text-lg font-bold text-green-900 mb-3">Theta (Θ)</h4>
-                                    <p className="text-green-700 text-sm">
+                                    <p className="text-[#1D8A70] dark:text-[#3CBF9C] text-sm">
                                         Measures the rate of an option&apos;s price decay over time, often called &lsquo;time decay.&rsquo; As an option writer,
                                         Theta is your primary source of profit, as the premium you collected erodes each day, all else being equal.
                                     </p>
@@ -371,9 +371,9 @@ export default function OptionsWheelTradingPlan() {
                                         decreases (a &lsquo;Vega crush&rsquo;), as this lowers the option&apos;s premium, making it cheaper to buy back.
                                     </p>
                                 </div>
-                                <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-6 rounded-lg border border-orange-200">
                                     <h4 className="text-lg font-bold text-orange-900 mb-3">Gamma (Γ)</h4>
-                                    <p className="text-orange-700 text-sm">
+                                    <p className="text-[#BC4128] dark:text-[#E2694A] text-sm">
                                         Measures the rate of change of Delta. It indicates how much an option&apos;s delta will change for a $1 move
                                         in the stock. High gamma means the position&apos;s risk profile can change very quickly.
                                     </p>
@@ -383,13 +383,13 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 4: Strategic Market Entry via Put Writing */}
-                    <section id="entry" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="entry" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <div className="flex items-start mb-6">
                             <div className="flex-shrink-0 bg-blue-100 p-4 rounded-lg mr-6">
-                                <ArrowDownCircle className="w-8 h-8 text-blue-600" />
+                                <ArrowDownCircle className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
                             </div>
                             <div>
-                                <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Strategic Market Entry via Put Writing</h2>
+                                <h2 className="text-3xl font-bold text-gray-900 tracking-tight font-serif">Strategic Market Entry via Put Writing</h2>
                                 <p className="text-xl text-gray-600 mt-2">
                                     The cash-secured put transforms waiting for a target stock price into an active, income-generating process.
                                 </p>
@@ -404,7 +404,7 @@ export default function OptionsWheelTradingPlan() {
                                 near significant technical support levels.
                             </p>
 
-                            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+                            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:bg-[#0A0D14] shadow-md">
                                 <div className="p-6 bg-gray-50 border-b border-gray-200">
                                     <h4 className="text-xl font-bold text-gray-800">Scenario Analysis: Cash-Secured Put</h4>
                                     <p className="mt-1 text-sm text-gray-600">
@@ -416,29 +416,29 @@ export default function OptionsWheelTradingPlan() {
                                     <table className="min-w-full divide-y divide-gray-200">
                                         <thead className="bg-gray-50">
                                             <tr>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Stock Price at Expiration</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Outcome</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Profit / Loss</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Notes</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Stock Price at Expiration</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Outcome</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Profit / Loss</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Notes</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="bg-white divide-y divide-gray-200">
+                                        <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$105.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Put expires worthless</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-medium">+$200</td>
+                                                <td className="px-6 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C] font-medium">+$200</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Maximum gain achieved. Keep premium.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$95.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Put expires worthless</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-medium">+$200</td>
+                                                <td className="px-6 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C] font-medium">+$200</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">At strike price. Option expires worthless.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$94.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Put is assigned</td>
-                                                <td className="px-6 py-4 text-sm text-red-600 font-medium">-$100</td>
+                                                <td className="px-6 py-4 text-sm text-[#BC4128] dark:text-[#E2694A] font-medium">-$100</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Buy 100 shares at $95. Effective cost $93.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
@@ -450,7 +450,7 @@ export default function OptionsWheelTradingPlan() {
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$90.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Put is assigned</td>
-                                                <td className="px-6 py-4 text-sm text-red-600 font-medium">-$300</td>
+                                                <td className="px-6 py-4 text-sm text-[#BC4128] dark:text-[#E2694A] font-medium">-$300</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Paper loss: ($90 - $93) x 100.</td>
                                             </tr>
                                         </tbody>
@@ -461,13 +461,13 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 5: Strategic Market Exit via Call Writing */}
-                    <section id="exit" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="exit" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <div className="flex items-start mb-6">
                             <div className="flex-shrink-0 bg-green-100 p-4 rounded-lg mr-6">
-                                <ArrowUpCircle className="w-8 h-8 text-green-600" />
+                                <ArrowUpCircle className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C]" />
                             </div>
                             <div>
-                                <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Strategic Market Exit via Call Writing</h2>
+                                <h2 className="text-3xl font-bold text-gray-900 tracking-tight font-serif">Strategic Market Exit via Call Writing</h2>
                                 <p className="text-xl text-gray-600 mt-2">
                                     The covered call is used to generate income or execute a disciplined, price-targeted exit.
                                 </p>
@@ -482,7 +482,7 @@ export default function OptionsWheelTradingPlan() {
                                 that often exceeds the stock&apos;s actual dividend.
                             </p>
 
-                            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+                            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:bg-[#0A0D14] shadow-md">
                                 <div className="p-6 bg-gray-50 border-b border-gray-200">
                                     <h4 className="text-xl font-bold text-gray-800">Scenario Analysis: Covered Call</h4>
                                     <p className="mt-1 text-sm text-gray-600">
@@ -494,29 +494,29 @@ export default function OptionsWheelTradingPlan() {
                                     <table className="min-w-full divide-y divide-gray-200">
                                         <thead className="bg-gray-50">
                                             <tr>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Stock Price at Expiration</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Outcome</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Profit / Loss</th>
-                                                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Notes</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Stock Price at Expiration</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Outcome</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Profit / Loss</th>
+                                                <th className="px-6 py-3 text-left text-xs font-medium text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Notes</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="bg-white divide-y divide-gray-200">
+                                        <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$55.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Shares called away at $50</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-medium">+$350</td>
+                                                <td className="px-6 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C] font-medium">+$350</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Maximum gain. Misses gains above $50.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$50.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Shares called away at $50</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-medium">+$350</td>
+                                                <td className="px-6 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C] font-medium">+$350</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Maximum gain achieved.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$49.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Call expires worthless</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-medium">+$250</td>
+                                                <td className="px-6 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C] font-medium">+$250</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Keep premium + stock appreciation.</td>
                                             </tr>
                                             <tr className="hover:bg-gray-50/70 transition-colors">
@@ -528,7 +528,7 @@ export default function OptionsWheelTradingPlan() {
                                             <tr className="hover:bg-gray-50/70 transition-colors">
                                                 <td className="px-6 py-4 text-sm text-gray-700">$40.00</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Call expires worthless</td>
-                                                <td className="px-6 py-4 text-sm text-red-600 font-medium">-$650</td>
+                                                <td className="px-6 py-4 text-sm text-[#BC4128] dark:text-[#E2694A] font-medium">-$650</td>
                                                 <td className="px-6 py-4 text-sm text-gray-700">Stock loss partially offset by premium.</td>
                                             </tr>
                                         </tbody>
@@ -539,16 +539,16 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 6: Risk Management */}
-                    <section id="risk" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="risk" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <SectionHeader title="Advanced Risk Management & Adjustments">
                             <IconShieldCheck />
                         </SectionHeader>
 
-                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-indigo-600">
-                            <h3>6.1 Primary Risk Exposures</h3>
-                            <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                        <div className="space-y-8 prose prose-lg max-w-none prose-p:text-gray-600 prose-h3:text-gray-900 prose-h3:text-2xl prose-strong:text-[#A8672E] dark:text-[#D08F52]">
+                            <h3>Primary Risk Exposures</h3>
+                            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-6 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A]">
                                 <h4 className="font-bold text-red-800 mb-2">&ldquo;Bag-Holding&rdquo; Risk</h4>
-                                <p className="text-red-700">
+                                <p className="text-[#BC4128] dark:text-[#E2694A]">
                                     The biggest risk is being assigned a stock that continues to decline significantly. This highlights why selecting
                                     a high-quality company you believe in is paramount. If the thesis is sound, you are simply a long-term investor
                                     holding a quality asset at a temporary discount.
@@ -563,25 +563,25 @@ export default function OptionsWheelTradingPlan() {
                                 </p>
                             </div>
 
-                            <h3>6.2 The Art of Rolling: A Tactical Guide</h3>
+                            <h3>The Art of Rolling: A Tactical Guide</h3>
                             <p>
                                 Rolling is the process of closing an existing option position and simultaneously opening a new one with different
                                 parameters (strike, expiration, or both). This is the primary tool for active position management in the wheel strategy.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="bg-blue-50 p-6 rounded-lg">
+                                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-lg">
                                     <h4 className="font-bold text-blue-800 mb-3">Defensive Rolling</h4>
-                                    <ul className="text-blue-700 text-sm space-y-2">
+                                    <ul className="text-[#A8672E] dark:text-[#D08F52] text-sm space-y-2">
                                         <li>• <strong>Roll down and out:</strong> Lower strike, extend time</li>
                                         <li>• <strong>When to use:</strong> Position moving against you</li>
                                         <li>• <strong>Goal:</strong> Reduce assignment probability</li>
                                         <li>• <strong>Rule:</strong> Always collect net credit</li>
                                     </ul>
                                 </div>
-                                <div className="bg-green-50 p-6 rounded-lg">
+                                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-6 rounded-lg">
                                     <h4 className="font-bold text-green-800 mb-3">Offensive Rolling</h4>
-                                    <ul className="text-green-700 text-sm space-y-2">
+                                    <ul className="text-[#1D8A70] dark:text-[#3CBF9C] text-sm space-y-2">
                                         <li>• <strong>Roll up and out:</strong> Higher strike, extend time</li>
                                         <li>• <strong>When to use:</strong> Position profitable, want more premium</li>
                                         <li>• <strong>Goal:</strong> Maximize income and capital efficiency</li>
@@ -590,7 +590,7 @@ export default function OptionsWheelTradingPlan() {
                                 </div>
                             </div>
 
-                            <h3>6.3 Position Sizing and Portfolio Integration</h3>
+                            <h3>Position Sizing and Portfolio Integration</h3>
                             <p>
                                 Never allocate more than 5-10% of your portfolio to any single wheel position. The strategy requires significant
                                 capital commitment, so diversification across multiple quality names is essential. Consider the wheel as one
@@ -600,9 +600,9 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Section 7: Strategy Comparison Matrix */}
-                    <section id="comparison" className="p-8 bg-white rounded-xl border border-gray-200 shadow-md">
+                    <section id="comparison" className="p-8 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
                         <SectionHeader title="Strategy Comparison Matrix">
-                            <TrendingUp className="h-6 w-6 mr-3 text-indigo-600" />
+                            <TrendingUp className="h-6 w-6 mr-3 text-[#A8672E] dark:text-[#D08F52]" />
                         </SectionHeader>
 
                         <div className="space-y-6">
@@ -612,9 +612,9 @@ export default function OptionsWheelTradingPlan() {
 
                             <StyledTable headers={comparisonMatrixHeaders} data={comparisonMatrixData} />
 
-                            <div className="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
+                            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-6 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]">
                                 <h4 className="font-bold text-indigo-800 mb-2">Key Insight</h4>
-                                <p className="text-indigo-700">
+                                <p className="text-[#A8672E] dark:text-[#D08F52]">
                                     The wheel strategy is optimal for investors who want active income generation, are comfortable with capped upside,
                                     and have strong conviction in their stock selection. It&apos;s particularly effective in neutral to mildly bullish markets
                                     where traditional buy-and-hold may underperform.
@@ -624,8 +624,8 @@ export default function OptionsWheelTradingPlan() {
                     </section>
 
                     {/* Conclusion */}
-                    <section className="text-center py-16 bg-white rounded-xl border border-gray-200 shadow-md">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">A Marathon, Not a Sprint</h2>
+                    <section className="text-center py-16 bg-white dark:bg-[#0A0D14] rounded-xl border border-gray-200 shadow-md">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">A Marathon, Not a Sprint</h2>
                         <p className="max-w-3xl mx-auto text-lg text-gray-600">
                             The Options Wheel is a powerful method for long-term portfolio enhancement, blending value investing with active income generation.
                             By following a disciplined, systematic plan based on quality underlyers, rules-based execution, and active risk management, you can

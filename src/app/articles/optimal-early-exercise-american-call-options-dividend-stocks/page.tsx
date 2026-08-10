@@ -145,7 +145,7 @@ export default function OptimalEarlyExerciseArticle() {
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
                   {table1Data.map((row, rowIndex) => (
-                    <tr key={rowIndex} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors duration-200">
+                    <tr key={rowIndex} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors duration-200">
                       {row.map((cell, cellIndex) => (
                         <td key={cellIndex} className={`px-6 py-4 text-sm ${
                           cell.startsWith("EXERCISE") ? "text-[#1D8A70] dark:text-[#3CBF9C] font-bold" : 

@@ -10,8 +10,8 @@ const institutions = [
   {
     name: 'Morgan Stanley',
     target: '8,300 (Mid-2027)',
-    icon: <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />,
-    bg: 'bg-blue-50 dark:bg-blue-950/30',
+    icon: <Activity className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />,
+    bg: 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-950/30',
     border: 'border-blue-200 dark:border-blue-900/50',
     titleColor: 'text-blue-900 dark:text-blue-300',
     warnings: ['Stagflation risks', 'Consumer credit fragility', 'Narrow market concentration', 'Delayed rate cuts']
@@ -19,8 +19,8 @@ const institutions = [
   {
     name: 'JPMorgan Chase',
     target: '7,200 (Year-End 2026)',
-    icon: <AlertTriangle className="w-5 h-5 text-rose-600 dark:text-rose-400" />,
-    bg: 'bg-rose-50 dark:bg-rose-950/30',
+    icon: <AlertTriangle className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" />,
+    bg: 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30',
     border: 'border-rose-200 dark:border-rose-900/50',
     titleColor: 'text-rose-900 dark:text-rose-300',
     warnings: ['95th percentile gross leverage', 'Geopolitical fragmentation', 'Oil supply shocks (12M bpd)', 'Structural inflation']
@@ -37,8 +37,8 @@ const institutions = [
   {
     name: 'Citigroup',
     target: '8,100 (Year-End 2026)',
-    icon: <Globe className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-    bg: 'bg-teal-50 dark:bg-teal-950/30',
+    icon: <Globe className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />,
+    bg: 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-teal-950/30',
     border: 'border-teal-200 dark:border-teal-900/50',
     titleColor: 'text-teal-900 dark:text-teal-300',
     warnings: ['Heavy reliance on AI capex', 'Vulnerability to P/E multiple compression', 'Restrictive monetary policy risks']
@@ -66,9 +66,9 @@ const greeks = [
     name: 'Charm (CHEX)',
     math: <InlineMath math="\\frac{\\partial^2 P}{\\partial S \\partial \\tau}" />,
     color: 'from-orange-500 to-amber-600',
-    lightBg: 'bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300',
+    lightBg: 'bg-orange-100 dark:bg-orange-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-orange-300',
     description: 'Time decay alters dealer deltas overnight, creating severe opening imbalances. 0DTE charm forces rapid, forced liquidations in the final hours of trading.',
-    icon: <Clock className="w-5 h-5 text-orange-600" />
+    icon: <Clock className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" />
   }
 ];
 
@@ -149,8 +149,8 @@ export default function MarketDropAnatomyArticle() {
             </div>
 
             {/* Breadth Warning Callout */}
-            <div className="mt-8 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 flex gap-6 items-start min-w-0">
-              <AlertTriangle className="text-rose-600 dark:text-rose-500 shrink-0 mt-1" size={28} />
+            <div className="mt-8 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 flex gap-6 items-start min-w-0">
+              <AlertTriangle className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] shrink-0 mt-1" size={28} />
               <div className="min-w-0">
                 <h4 className="text-xl font-bold text-rose-900 dark:text-rose-300 mb-3">The Breadth Divergence Red Flag</h4>
                 <p className="text-rose-800 dark:text-rose-200/80 leading-relaxed">
@@ -180,7 +180,7 @@ export default function MarketDropAnatomyArticle() {
                   key={idx} 
                   className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col min-w-0"
                 >
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{greek.name}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 font-serif">{greek.name}</h3>
                   <div className={`px-3 py-1.5 rounded-xl font-mono text-sm font-bold mb-4 inline-flex self-start ${greek.lightBg} border border-transparent`}>
                     {greek.math}
                   </div>
@@ -223,7 +223,7 @@ export default function MarketDropAnatomyArticle() {
                   <Zap className="w-8 h-8" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Volatility (VIX Options &amp; Futures)</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">Volatility (VIX Options &amp; Futures)</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                     The VIX has extreme negative Beta (-14 during a crash). The term structure violently inverts into backwardation. Due to Implied Convexity (vol of vol), structurally allocated long VIX calls deliver explosive, nonlinear gains in the first 24-72 hours.
                   </p>
@@ -239,7 +239,7 @@ export default function MarketDropAnatomyArticle() {
                   <TrendingUp className="w-8 h-8" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Crisis Alpha (Systematic CTAs)</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">Crisis Alpha (Systematic CTAs)</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                     Managed futures utilize trend-following algorithms. As a crisis approaches and correlations spike to 1.0, CTAs inherently capture extreme positive skew by being short global equities, long safe-haven bonds, and long funding currencies.
                   </p>
@@ -255,7 +255,7 @@ export default function MarketDropAnatomyArticle() {
                   <ShieldCheck className="w-8 h-8" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Safe Haven Sovereigns &amp; Defensive Premia</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">Safe Haven Sovereigns &amp; Defensive Premia</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                     U.S. Treasuries jump rapidly as yields collapse, pricing in aggressive central bank easing. Defensive equity factors ("Minimum Variance", "High Quality") act as empirical shock absorbers.
                   </p>
@@ -280,7 +280,7 @@ export default function MarketDropAnatomyArticle() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-w-0">
                 <div className="bg-slate-800/50 p-8 rounded-3xl border border-slate-700/50 min-w-0">
-                  <h3 className="text-xl font-bold text-white mb-4">The "Loser" Squeeze</h3>
+                  <h3 className="text-xl font-bold text-white mb-4 font-serif">The "Loser" Squeeze</h3>
                   <p className="text-sm text-slate-300 leading-relaxed mb-6">
                     Following the Merton (1974) model, distressed firms driven to the brink of bankruptcy transition to behaving like deep OTM call options. Their Beta explodes (&gt;3.0). When the market rebounds, these "loser" stocks act as highly levered call options, exploding upward in violent short squeezes.
                   </p>
@@ -290,7 +290,7 @@ export default function MarketDropAnatomyArticle() {
                 
                 <div className="bg-slate-800/50 p-8 rounded-3xl border border-slate-700/50 flex flex-col justify-between min-w-0">
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Mitigating the Risk</h3>
+                    <h3 className="text-xl font-bold text-white mb-4 font-serif">Mitigating the Risk</h3>
                     <ul className="space-y-4 text-slate-300">
                       <li className="flex gap-3 items-start">
                         <ShieldCheck className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0 mt-0.5" />

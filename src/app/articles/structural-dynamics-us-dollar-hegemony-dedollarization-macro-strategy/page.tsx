@@ -51,7 +51,7 @@ export default function USDollarArticle() {
             <ComparisonGrid>
               <ComparisonCard title="Dollar Milkshake Theory" tone="pos">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-4 h-4 text-emerald-500" />
+                  <TrendingUp className="w-4 h-4 text-[#1D8A70] dark:text-[#3CBF9C]" />
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Inevitable, crisis-driven dollar appreciation.</p>
                 </div>
                 <ul className="space-y-2 mt-4 text-sm text-slate-600 dark:text-slate-400">
@@ -63,7 +63,7 @@ export default function USDollarArticle() {
 
               <ComparisonCard title="De-dollarization Thesis" tone="neg">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingDown className="w-4 h-4 text-rose-500" />
+                  <TrendingDown className="w-4 h-4 text-[#BC4128] dark:text-[#E2694A]" />
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Structural decay and systemic collapse.</p>
                 </div>
                 <ul className="space-y-2 mt-4 text-sm text-slate-600 dark:text-slate-400">
@@ -94,7 +94,7 @@ export default function USDollarArticle() {
               Translating macroeconomic theories into strategy requires precise instrumentation. However, the ubiquitous retail benchmark—the U.S. Dollar Index (DXY)—suffers from profound structural limitations.
             </p>
 
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-200 dark:border-indigo-800/50 mb-8">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-2xl border border-indigo-200 dark:border-indigo-800/50 mb-8">
               <h4 className="text-indigo-900 dark:text-indigo-300 font-bold mb-2">The Problem with the DXY</h4>
               <p className="text-indigo-800 dark:text-indigo-200 text-sm leading-relaxed">Designed in 1973 and last updated in 1999 (for the Euro), the DXY heavily over-represents European economies while entirely ignoring modern supply chain giants like China and Mexico.</p>
             </div>
@@ -111,7 +111,7 @@ export default function USDollarArticle() {
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
                   {dxyData.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                    <tr key={idx} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                       <td className="p-4 font-medium text-slate-900 dark:text-white">{row.currency}</td>
                       <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-mono">{row.symbol}</td>
                       <td className="p-4 border-l border-slate-200 dark:border-slate-800">
@@ -127,14 +127,14 @@ export default function USDollarArticle() {
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Institutional Alternatives</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <Globe className="text-emerald-500 mt-1 shrink-0" size={22} />
+                <Globe className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={22} />
                 <div>
                   <strong className="text-slate-900 dark:text-white block mb-2">Fed's Broad Trade-Weighted Dollar Index</strong>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Bifurcated into Advanced Foreign Economies (AFE) and Emerging Market Economies (EME) to isolate European divergence from EM capital flight.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <Activity className="text-emerald-500 mt-1 shrink-0" size={22} />
+                <Activity className="text-[#1D8A70] dark:text-[#3CBF9C] mt-1 shrink-0" size={22} />
                 <div>
                   <strong className="text-slate-900 dark:text-white block mb-2">Bloomberg U.S. Dollar Spot Index (BBDXY)</strong>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Dynamically rebalanced annually based on trade volume and FX liquidity. Accurately captures USMCA trade (CAD, MXN) and Asian influence (JPY, CNH, KRW, INR).</p>
@@ -194,10 +194,10 @@ export default function USDollarArticle() {
 
             <div className="space-y-8">
               {/* Bullish */}
-              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border-l-4 border-emerald-500 border-y border-r border-slate-200 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] border-y border-r border-slate-200 dark:border-slate-800">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3 font-serif">
-                    <TrendingUp className="text-emerald-500 w-6 h-6" /> Long USD Playbook
+                    <TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C] w-6 h-6" /> Long USD Playbook
                   </h3>
                   <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded text-xs font-bold tracking-wider">BULLISH</span>
                 </div>
@@ -209,10 +209,10 @@ export default function USDollarArticle() {
               </div>
 
               {/* Bearish */}
-              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border-l-4 border-rose-500 border-y border-r border-slate-200 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border-l-4 border-[#BC4128] dark:border-[#E2694A] border-y border-r border-slate-200 dark:border-slate-800">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3 font-serif">
-                    <TrendingDown className="text-rose-500 w-6 h-6" /> Short USD Playbook
+                    <TrendingDown className="text-[#BC4128] dark:text-[#E2694A] w-6 h-6" /> Short USD Playbook
                   </h3>
                   <span className="bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 px-3 py-1 rounded text-xs font-bold tracking-wider">BEARISH</span>
                 </div>
@@ -236,7 +236,7 @@ export default function USDollarArticle() {
               <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The 'Widow-Maker' Trade</h2>
             </div>
             
-            <div className="bg-rose-50 dark:bg-rose-900/20 border-l-4 border-rose-500 p-6 rounded-r-xl mb-8">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 rounded-r-xl mb-8">
               <p className="text-rose-900 dark:text-rose-200 font-medium leading-relaxed">The greatest peril is successfully identifying a structural truth but catastrophically misjudging the timing. Fighting a dominant dollar trend prematurely earns the contrarian short dollar position the moniker of a "widow-maker" trade.</p>
             </div>
             
@@ -258,7 +258,7 @@ export default function USDollarArticle() {
             </ul>
 
             <div className="bg-slate-900 dark:bg-slate-100 p-6 rounded-xl text-center">
-              <p className="font-semibold text-white dark:text-slate-900">
+              <p className="font-semibold text-white dark:text-slate-900 dark:text-slate-100">
                 Lesson: Fundamental unsustainability does not preclude medium-term strength. Negative carry can bankrupt an institution before reality materializes.
               </p>
             </div>
@@ -322,7 +322,7 @@ export default function USDollarArticle() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Zap className="text-blue-500 w-5 h-5 shrink-0" />
+                  <Zap className="text-[#A8672E] dark:text-[#D08F52] w-5 h-5 shrink-0" />
                   AI-Driven Reshoring
                 </h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Challenging the industrial decay narrative, $2.9T in projected AI CapEx (by 2026) is driving "U.S. exceptionalism." High productivity gains keep domestic rates elevated, supporting a tech-driven USD bull cycle.</p>
@@ -330,7 +330,7 @@ export default function USDollarArticle() {
               
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Globe className="text-indigo-500 w-5 h-5 shrink-0" />
+                  <Globe className="text-[#A8672E] dark:text-[#D08F52] w-5 h-5 shrink-0" />
                   BRICS & Project mBridge
                 </h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">A DLT platform bypassing SWIFT. Managed by central banks (China, UAE, etc.), its EVM compatibility enables smart contracts. Reduces transactional friction binding emerging markets to the USD.</p>
@@ -338,7 +338,7 @@ export default function USDollarArticle() {
               
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 font-serif">
-                  <Activity className="text-rose-500 w-5 h-5 shrink-0" />
+                  <Activity className="text-[#BC4128] dark:text-[#E2694A] w-5 h-5 shrink-0" />
                   Fed Balance Sheet
                 </h4>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">CBO projects deficit at $3.1T and debt at 120% of GDP by 2036. The Fed cannot simultaneously maintain a small balance sheet, low rate volatility, and minimal market intervention. Fiscal dominance risks severe USD devaluation.</p>
@@ -364,13 +364,13 @@ export default function USDollarArticle() {
             <div className="bg-slate-900 dark:bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
               <div className="p-6 border-b border-slate-800 bg-slate-950/50">
                 <h4 className="font-bold text-white flex items-center gap-2 text-lg">
-                  <Target className="text-emerald-500" /> Regime Shift Indicator Checklist
+                  <Target className="text-[#1D8A70] dark:text-[#3CBF9C]" /> Regime Shift Indicator Checklist
                 </h4>
               </div>
               <div className="divide-y divide-slate-800/50">
                 <div className="p-6 grid md:grid-cols-3 gap-6 hover:bg-slate-800/20 transition-colors">
                   <div className="md:col-span-1">
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-wider block mb-1">Cross-Border Funding</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] text-xs font-bold uppercase tracking-wider block mb-1">Cross-Border Funding</span>
                     <strong className="text-slate-200 text-sm">TIC Form SLT Data / Foreign Treasury Demand</strong>
                   </div>
                   <div className="md:col-span-2 text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-6">
@@ -380,7 +380,7 @@ export default function USDollarArticle() {
                 
                 <div className="p-6 grid md:grid-cols-3 gap-6 hover:bg-slate-800/20 transition-colors">
                   <div className="md:col-span-1">
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-wider block mb-1">Geopolitical Settlement</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] text-xs font-bold uppercase tracking-wider block mb-1">Geopolitical Settlement</span>
                     <strong className="text-slate-200 text-sm">Transaction Volume on the mBridge Ledger</strong>
                   </div>
                   <div className="md:col-span-2 text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-6">
@@ -390,7 +390,7 @@ export default function USDollarArticle() {
                 
                 <div className="p-6 grid md:grid-cols-3 gap-6 hover:bg-slate-800/20 transition-colors">
                   <div className="md:col-span-1">
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-wider block mb-1">Monetary Divergence</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] text-xs font-bold uppercase tracking-wider block mb-1">Monetary Divergence</span>
                     <strong className="text-slate-200 text-sm">US 2-Year vs. German 2-Year Sovereign Yield Spread</strong>
                   </div>
                   <div className="md:col-span-2 text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-6">
@@ -400,7 +400,7 @@ export default function USDollarArticle() {
                 
                 <div className="p-6 grid md:grid-cols-3 gap-6 hover:bg-slate-800/20 transition-colors">
                   <div className="md:col-span-1">
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-wider block mb-1">Fiscal Dominance</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] text-xs font-bold uppercase tracking-wider block mb-1">Fiscal Dominance</span>
                     <strong className="text-slate-200 text-sm">Federal Reserve Reverse Repo (RRP) Facility Levels</strong>
                   </div>
                   <div className="md:col-span-2 text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-6">
@@ -410,7 +410,7 @@ export default function USDollarArticle() {
 
                 <div className="p-6 grid md:grid-cols-3 gap-6 hover:bg-slate-800/20 transition-colors">
                   <div className="md:col-span-1">
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-wider block mb-1">Behavioral Positioning</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] text-xs font-bold uppercase tracking-wider block mb-1">Behavioral Positioning</span>
                     <strong className="text-slate-200 text-sm">Foreign Institutional Currency Hedge Ratios</strong>
                   </div>
                   <div className="md:col-span-2 text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-6">

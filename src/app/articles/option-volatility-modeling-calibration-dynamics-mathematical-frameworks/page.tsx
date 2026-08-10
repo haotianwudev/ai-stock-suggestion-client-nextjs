@@ -32,7 +32,7 @@ export default function OptionVolatilityModelingArticle() {
               While this elegant closed-form solution catalyzed the explosive growth of the global derivatives market, the empirical realities of financial markets—most vividly demonstrated during the global equity market crash of October 1987—proved that the assumption of constant, log-normally distributed volatility is structurally flawed.
             </p>
             
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 p-6 rounded-r-xl mb-8">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-6 rounded-r-xl mb-8">
               <h4 className="font-bold text-emerald-900 dark:text-emerald-200 mb-2 flex items-center gap-2">
                 <Lightbulb className="w-5 h-5" /> The Market Reality
               </h4>
@@ -96,19 +96,19 @@ export default function OptionVolatilityModelingArticle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
-                    <td className="p-4 font-semibold text-emerald-600 dark:text-emerald-400">Local Optimizers</td>
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
+                    <td className="p-4 font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Local Optimizers</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Levenberg-Marquardt, L-BFGS, SLSQP</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Highly efficient; converges in ms; ideal for smooth spaces.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Sensitive to initial guess; prone to local minima entrapment.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
-                    <td className="p-4 font-semibold text-indigo-600 dark:text-indigo-400">Global Optimizers</td>
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
+                    <td className="p-4 font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Global Optimizers</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Simulated Annealing, Genetic Algorithms</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Avoids local minima; requires no precise initial guess.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Computationally heavy; lethargic convergence.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-semibold text-amber-600 dark:text-amber-400">Hybrid Approaches</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Grid Search + Levenberg-Marquardt</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">High confidence global minimum; reduced time.</td>
@@ -155,22 +155,22 @@ export default function OptionVolatilityModelingArticle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-mono font-bold text-amber-600 dark:text-amber-500"><InlineMath math="v_t" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 font-mono text-slate-600 dark:text-slate-400"><InlineMath math="v_t = (a + b(-\rho m + \sqrt{m^2 + \sigma^2}))/t" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">At-The-Money (ATM) implied variance.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-mono font-bold text-amber-600 dark:text-amber-500"><InlineMath math="\psi_t" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 font-mono text-slate-600 dark:text-slate-400"><InlineMath math="\psi_t = (1/\sqrt{w_t})(b/2)(-m/\sqrt{m^2 + \sigma^2} + \rho)" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">ATM forward skew (first derivative of volatility).</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-mono font-bold text-amber-600 dark:text-amber-500"><InlineMath math="p_t" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 font-mono text-slate-600 dark:text-slate-400"><InlineMath math="p_t = (1/\sqrt{w_t})b(1 - \rho)" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Asymptotic slope of the out-of-the-money put wing.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-mono font-bold text-amber-600 dark:text-amber-500"><InlineMath math="c_t" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 font-mono text-slate-600 dark:text-slate-400"><InlineMath math="c_t = (1/\sqrt{w_t})b(1 + \rho)" /></td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Asymptotic slope of the out-of-the-money call wing.</td>
@@ -223,7 +223,7 @@ export default function OptionVolatilityModelingArticle() {
               formula="\sigma_{\text{loc}}^2(K, T) = \frac{\frac{\partial C}{\partial T} + (r_T - q_T)K\frac{\partial C}{\partial K} + q_T C}{\frac{1}{2}K^2\frac{\partial^2 C}{\partial K^2}}"
             />
             
-            <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 rounded-r-xl mt-8">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-xl mt-8">
               <h4 className="font-bold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
                 <Info className="w-5 h-5" /> Statics vs. Dynamics
               </h4>
@@ -258,19 +258,19 @@ export default function OptionVolatilityModelingArticle() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 mb-8">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <strong className="text-indigo-600 dark:text-indigo-400 block mb-2 font-serif text-lg">θ (Long-Run Average)</strong>
+                <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-2 font-serif text-lg">θ (Long-Run Average)</strong>
                 <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Theoretical equilibrium variance market gravitates toward.</span>
               </div>
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <strong className="text-indigo-600 dark:text-indigo-400 block mb-2 font-serif text-lg">κ (Mean-Reversion)</strong>
+                <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-2 font-serif text-lg">κ (Mean-Reversion)</strong>
                 <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Speed at which volatility spikes decay back to historical average.</span>
               </div>
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <strong className="text-indigo-600 dark:text-indigo-400 block mb-2 font-serif text-lg">σ (Vol-of-Vol)</strong>
+                <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-2 font-serif text-lg">σ (Vol-of-Vol)</strong>
                 <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Controls variance amplitude; higher value deepens smile convexity.</span>
               </div>
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <strong className="text-indigo-600 dark:text-indigo-400 block mb-2 font-serif text-lg">ρ (Correlation)</strong>
+                <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] block mb-2 font-serif text-lg">ρ (Correlation)</strong>
                 <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Generates asymmetric downward skew ("leverage effect").</span>
               </div>
             </div>
@@ -321,24 +321,24 @@ export default function OptionVolatilityModelingArticle() {
                   <tr className="bg-slate-100 dark:bg-slate-950 font-semibold border-b border-slate-200 dark:border-slate-800">
                     <th className="p-4 text-slate-800 dark:text-slate-200">Feature</th>
                     <th className="p-4 border-l border-slate-200 dark:border-slate-800 text-pink-600 dark:text-pink-400">Dupire LV</th>
-                    <th className="p-4 border-l border-slate-200 dark:border-slate-800 text-blue-600 dark:text-blue-400">Heston SV</th>
+                    <th className="p-4 border-l border-slate-200 dark:border-slate-800 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Heston SV</th>
                     <th className="p-4 border-l border-slate-200 dark:border-slate-800 text-purple-600 dark:text-purple-400">Hybrid LSV</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-semibold text-slate-700 dark:text-slate-300">Vanilla Fit</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Perfect</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Approximate</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold">Perfect</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-semibold text-slate-700 dark:text-slate-300">Smile Dynamics</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Deterministic (flattens)</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Realistic</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold">Highly realistic</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-semibold text-slate-700 dark:text-slate-300">Primary Use Case</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">1st-gen exotics</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Vanilla & Greeks</td>
@@ -389,7 +389,7 @@ export default function OptionVolatilityModelingArticle() {
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                   Trained offline on millions of simulations, networks replace agonizing Monte Carlo engines, collapsing evaluation time to ~40 milliseconds.
                 </p>
-                <div className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 p-4 rounded-r-xl">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-4 rounded-r-xl">
                   <p className="text-emerald-800 dark:text-emerald-300/90 text-sm leading-relaxed">
                     <strong>Deep Differential Networks (DDN)</strong> utilize automatic differentiation (<InlineMath math="\varphi_{\text{NN}}" />) to extract exact analytical gradients, allowing real-time, instantaneous calibration of rough volatility models.
                   </p>

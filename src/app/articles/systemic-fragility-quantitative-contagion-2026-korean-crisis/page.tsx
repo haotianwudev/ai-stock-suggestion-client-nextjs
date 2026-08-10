@@ -67,7 +67,7 @@ export default function SystemicFragilityArticle() {
                 <span className="font-bold text-sm">2023</span>
               </div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2">The CFD Crisis</h3>
+                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2 font-serif">The CFD Crisis</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-base">A massive pump-and-dump scheme utilizing Contracts for Difference (CFDs) unraveled, wiping out 8.2 trillion won. Regulators responded with strict rules, inadvertently channeling retail speculation elsewhere.</p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function SystemicFragilityArticle() {
                 <span className="font-bold text-sm">2024</span>
               </div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2">The ELS Saga</h3>
+                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2 font-serif">The ELS Saga</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-base">Retail investors lost an estimated 4.6 trillion won on Equity-Linked Securities tied to plunging Chinese indices, proving a deep-seated structural appetite for complex derivatives.</p>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function SystemicFragilityArticle() {
                 <span className="font-bold text-sm">2025</span>
               </div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2">The Short-Selling Ban</h3>
+                <h3 className="font-bold text-xl text-slate-800 dark:text-slate-100 mb-2 font-serif">The Short-Selling Ban</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-base">A 17-month blanket ban on short-selling removed a critical friction layer. Without short-sellers to stabilize the market, the AI rally steepened parabolically without structural resistance.</p>
               </div>
             </div>
@@ -154,9 +154,9 @@ export default function SystemicFragilityArticle() {
               While the AI narrative provided the spark, the explosive velocity of the KOSPI&apos;s ascent was engineered by retail investors, colloquially known as &ldquo;ants.&rdquo; By May 2026, active trading accounts surpassed 105 million.
             </p>
             
-            <div className="p-6 border rounded-2xl bg-orange-50/50 dark:bg-orange-900/10 border-orange-200 dark:border-orange-900/50 text-orange-900 dark:text-orange-200 shadow-sm my-6">
+            <div className="p-6 border rounded-2xl bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-orange-900/10 border-orange-200 dark:border-orange-900/50 text-orange-900 dark:text-orange-200 shadow-sm my-6">
               <div className="flex items-center gap-3 mb-3">
-                <AlertTriangle className="w-6 h-6 text-orange-500" />
+                <AlertTriangle className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" />
                 <h4 className="font-bold text-xl">The Margin Debt Bubble</h4>
               </div>
               <p>
@@ -181,7 +181,7 @@ export default function SystemicFragilityArticle() {
               The definitive tipping point occurred in late May 2026 with the regulatory approval of 16 domestic single-stock leveraged ETFs tied to Samsung Electronics and SK Hynix. Intended to repatriate capital from offshore markets, these 2x leveraged products were launched exactly as the market reached peak valuations and maximum volatility.
             </p>
             
-            <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100">The Mathematics of Volatility Decay</h3>
+            <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100 font-serif">The Mathematics of Volatility Decay</h3>
             <p>
               2x leveraged ETFs are mathematically flawed as long-term investments in highly volatile environments due to negative compounding, known as &ldquo;volatility decay.&rdquo; The leverage ratio must reset daily, systematically eroding the Net Asset Value (NAV).
             </p>

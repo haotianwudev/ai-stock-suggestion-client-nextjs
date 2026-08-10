@@ -246,7 +246,7 @@ export default function EfficientFrontierArticle() {
                         onClick={() => setActiveTab(item.id)}
                         className={`w-full text-left p-3 rounded-xl transition-all border ${
                           activeTab === item.id 
-                            ? 'bg-[#1D8A70] dark:bg-[#3CBF9C]/20 border-emerald-500/50 text-white' 
+                            ? 'bg-[#1D8A70] dark:bg-[#3CBF9C]/20 border-[#1D8A70] dark:border-[#3CBF9C]/50 text-white' 
                             : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-750'
                         }`}
                       >
@@ -521,7 +521,7 @@ prob.solve(solver=cp.ECOS)`} />
               title="The Tech Stack" 
               subtitle="Buy vs. Build in 2024."
               icon={Database}
-              colorClass="bg-teal-600"
+              colorClass="bg-[#A8672E] dark:bg-[#D08F52]"
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-xl shadow-sm border border-gray-200">

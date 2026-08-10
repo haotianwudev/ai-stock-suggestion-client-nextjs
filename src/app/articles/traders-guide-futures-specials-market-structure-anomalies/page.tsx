@@ -17,7 +17,7 @@ const SectionHeader = ({ icon: Icon, title, subtitle, colorClass }: {
       <div className="p-2 rounded-lg text-white shadow-md" style={{ backgroundColor: colorClass }}>
         <Icon size={24} />
       </div>
-      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white font-serif">{title}</h2>
     </div>
     <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">{subtitle}</p>
   </div>
@@ -46,7 +46,7 @@ const Card = ({ title, children, colorClass, active = false, onClick, badge }: {
         {badge}
       </div>
     )}
-    <h3 className="text-xl font-bold mb-3 text-slate-800 dark:text-white flex items-center gap-2">
+    <h3 className="text-xl font-bold mb-3 text-slate-800 dark:text-white flex items-center gap-2 font-serif">
       {title}
     </h3>
     <div className={`text-slate-600 dark:text-slate-400 ${active ? 'opacity-100' : 'opacity-80'}`}>
@@ -80,10 +80,10 @@ const InfoBlock = ({ title, content, type = "info" }: {
   type?: "info" | "warning" | "danger" | "success";
 }) => {
   const styles = {
-    info: { bg: "bg-blue-50 dark:bg-blue-900/20", border: "border-blue-200 dark:border-blue-800", text: "text-blue-800 dark:text-blue-300", icon: "text-blue-500 dark:text-blue-400" },
+    info: { bg: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20", border: "border-blue-200 dark:border-blue-800", text: "text-blue-800 dark:text-blue-300", icon: "text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" },
     warning: { bg: "bg-amber-50 dark:bg-amber-900/20", border: "border-amber-200 dark:border-amber-800", text: "text-amber-800 dark:text-amber-300", icon: "text-amber-500 dark:text-amber-400" },
-    danger: { bg: "bg-red-50 dark:bg-red-900/20", border: "border-red-200 dark:border-red-800", text: "text-red-800 dark:text-red-300", icon: "text-red-500 dark:text-red-400" },
-    success: { bg: "bg-emerald-50 dark:bg-emerald-900/20", border: "border-emerald-200 dark:border-emerald-800", text: "text-emerald-800 dark:text-emerald-300", icon: "text-emerald-500 dark:text-emerald-400" },
+    danger: { bg: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20", border: "border-red-200 dark:border-red-800", text: "text-red-800 dark:text-red-300", icon: "text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]" },
+    success: { bg: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20", border: "border-emerald-200 dark:border-emerald-800", text: "text-emerald-800 dark:text-emerald-300", icon: "text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" },
   };
   const s = styles[type];
   
@@ -121,7 +121,7 @@ export default function FuturesSpecialsArticle() {
       <main className="max-w-4xl mx-auto px-6 lg:px-24 py-16 space-y-32">
           
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">Futures Specials & Anomalies</h1>
+            
             <p className="text-xl text-slate-600 dark:text-slate-400 font-light max-w-2xl mx-auto">A trader's guide to market structure anomalies, delivery mechanics, and why physical reality breaks theoretical pricing models.</p>
           </div>
 
@@ -175,16 +175,16 @@ export default function FuturesSpecialsArticle() {
                     Speculators rarely take delivery. Before expiry, they must "Roll" (Close the expiring contract, Open the next month).
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-xs font-mono">
-                    <div className="bg-white/50 dark:bg-black/50 p-2 rounded">
+                    <div className="bg-white dark:bg-[#0A0D14]/50 dark:bg-black/50 p-2 rounded">
                       <div className="font-bold mb-1 dark:text-white">Contango Roll</div>
-                      <div className="text-red-600 dark:text-red-400">Sell Low (Spot)</div>
-                      <div className="text-red-600 dark:text-red-400">Buy High (Future)</div>
+                      <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Sell Low (Spot)</div>
+                      <div className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Buy High (Future)</div>
                       <div className="mt-1 font-bold text-slate-700 dark:text-slate-300">= LOSS</div>
                     </div>
-                    <div className="bg-white/50 dark:bg-black/50 p-2 rounded">
+                    <div className="bg-white dark:bg-[#0A0D14]/50 dark:bg-black/50 p-2 rounded">
                       <div className="font-bold mb-1 dark:text-white">Backwardation Roll</div>
-                      <div className="text-emerald-600 dark:text-emerald-400">Sell High (Spot)</div>
-                      <div className="text-emerald-600 dark:text-emerald-400">Buy Low (Future)</div>
+                      <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Sell High (Spot)</div>
+                      <div className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Buy Low (Future)</div>
                       <div className="mt-1 font-bold text-slate-700 dark:text-slate-300">= PROFIT</div>
                     </div>
                   </div>
@@ -199,7 +199,7 @@ export default function FuturesSpecialsArticle() {
                     className={`flex-1 py-4 font-bold text-sm uppercase tracking-wide transition-colors ${
                       activeTab === 'contango' 
                         ? 'text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20 border-b-2 border-sky-500' 
-                        : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                        : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50'
                     }`}
                   >
                     Contango (Normal)
@@ -208,8 +208,8 @@ export default function FuturesSpecialsArticle() {
                     onClick={() => setActiveTab('backwardation')}
                     className={`flex-1 py-4 font-bold text-sm uppercase tracking-wide transition-colors ${
                       activeTab === 'backwardation' 
-                        ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 border-b-2 border-indigo-500' 
-                        : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                        ? 'text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-b-2 border-[#A8672E] dark:border-[#D08F52]' 
+                        : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50'
                     }`}
                   >
                     Backwardation (Inverted)
@@ -240,7 +240,7 @@ export default function FuturesSpecialsArticle() {
                       
                       <div className="flex items-center gap-3 mb-4 text-sky-600 dark:text-sky-400">
                         <TrendingUp size={28} />
-                        <h3 className="text-xl font-bold">Contango Market Structure</h3>
+                        <h3 className="text-xl font-bold font-serif">Contango Market Structure</h3>
                       </div>
                       
                       <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm">
@@ -284,16 +284,16 @@ export default function FuturesSpecialsArticle() {
                         </svg>
                       </div>
                       
-                      <div className="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400">
+                      <div className="flex items-center gap-3 mb-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <TrendingDown size={28} />
-                        <h3 className="text-xl font-bold">Backwardation (Scarcity)</h3>
+                        <h3 className="text-xl font-bold font-serif">Backwardation (Scarcity)</h3>
                       </div>
                       
                       <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm">
                         Futures prices are <strong className="dark:text-white">lower</strong> than spot. This signals an immediate physical shortage. The market is effectively saying: "We will pay you a premium to have the commodity NOW, not later."
                       </p>
                       
-                      <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-100 dark:border-indigo-900/50 mb-4">
+                      <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-100 dark:border-indigo-900/50 mb-4">
                         <h4 className="font-bold text-indigo-900 dark:text-indigo-300 text-sm mb-2">The "Convenience Yield" ($y$)</h4>
                         <p className="text-xs text-indigo-800 dark:text-indigo-200/80 leading-relaxed mb-2">
                           Unlike Contango, you cannot easily arbitrage Backwardation because you cannot "borrow" a commodity from the future to sell today. 
@@ -308,7 +308,7 @@ export default function FuturesSpecialsArticle() {
                             <span>Nat Gas (Winter)</span>
                           </div>
                           <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                            <Sun size={14} className="text-orange-400"/>
+                            <Sun size={14} className="text-[#BC4128] dark:text-[#E2694A]"/>
                             <span>Corn (Pre-Harvest)</span>
                           </div>
                         </div>
@@ -335,13 +335,13 @@ export default function FuturesSpecialsArticle() {
                   onClick={() => setActiveTreasury('otr')}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     activeTreasury === 'otr' 
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 ring-1 ring-emerald-500 shadow-md' 
-                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-700'
+                      ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-[#1D8A70] dark:border-[#3CBF9C] ring-1 ring-emerald-500 shadow-md' 
+                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C]'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className={`font-bold ${activeTreasury === 'otr' ? 'text-emerald-900 dark:text-emerald-300' : 'text-slate-800 dark:text-slate-200'}`}>1. Liquidity Premium</span>
-                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">OTR / OFTR</span>
+                    <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">OTR / OFTR</span>
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">The "Smile" in the yield curve.</div>
                 </button>
@@ -350,13 +350,13 @@ export default function FuturesSpecialsArticle() {
                   onClick={() => setActiveTreasury('repo')}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     activeTreasury === 'repo' 
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 ring-1 ring-emerald-500 shadow-md' 
-                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-700'
+                      ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-[#1D8A70] dark:border-[#3CBF9C] ring-1 ring-emerald-500 shadow-md' 
+                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C]'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className={`font-bold ${activeTreasury === 'repo' ? 'text-emerald-900 dark:text-emerald-300' : 'text-slate-800 dark:text-slate-200'}`}>2. Repo "Specials"</span>
-                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Squeeze</span>
+                    <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Squeeze</span>
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">When borrowing a bond costs money.</div>
                 </button>
@@ -365,13 +365,13 @@ export default function FuturesSpecialsArticle() {
                   onClick={() => setActiveTreasury('basis')}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     activeTreasury === 'basis' 
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 ring-1 ring-emerald-500 shadow-md' 
-                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-700'
+                      ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-[#1D8A70] dark:border-[#3CBF9C] ring-1 ring-emerald-500 shadow-md' 
+                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C]'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className={`font-bold ${activeTreasury === 'basis' ? 'text-emerald-900 dark:text-emerald-300' : 'text-slate-800 dark:text-slate-200'}`}>3. The Basis Trade</span>
-                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Arbitrage</span>
+                    <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Arbitrage</span>
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">Spot vs Future convergence.</div>
                 </button>
@@ -380,13 +380,13 @@ export default function FuturesSpecialsArticle() {
                   onClick={() => setActiveTreasury('ctd')}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     activeTreasury === 'ctd' 
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 ring-1 ring-emerald-500 shadow-md' 
-                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-700'
+                      ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-[#1D8A70] dark:border-[#3CBF9C] ring-1 ring-emerald-500 shadow-md' 
+                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C]'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className={`font-bold ${activeTreasury === 'ctd' ? 'text-emerald-900 dark:text-emerald-300' : 'text-slate-800 dark:text-slate-200'}`}>4. CTD Mechanics</span>
-                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Delivery</span>
+                    <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100 dark:bg-emerald-900/50 px-2 py-1 rounded">Delivery</span>
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">Duration bias & Conversion Factors.</div>
                 </button>
@@ -395,8 +395,8 @@ export default function FuturesSpecialsArticle() {
                   onClick={() => setActiveTreasury('wildcard')}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     activeTreasury === 'wildcard' 
-                      ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 ring-1 ring-emerald-500 shadow-md' 
-                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-emerald-700'
+                      ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-[#1D8A70] dark:border-[#3CBF9C] ring-1 ring-emerald-500 shadow-md' 
+                      : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-emerald-300 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C]'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-1">
@@ -408,11 +408,11 @@ export default function FuturesSpecialsArticle() {
               </div>
               
               <div className="lg:col-span-8 bg-white dark:bg-[#14171B] rounded-2xl shadow-lg border border-slate-100 dark:border-white/10 p-8 relative overflow-hidden flex flex-col justify-center min-h-[500px]">
-                <div className="absolute top-0 right-0 p-32 bg-emerald-50 dark:bg-emerald-900/10 rounded-full blur-3xl opacity-50 -mr-10 -mt-10 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 p-32 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 rounded-full blur-3xl opacity-50 -mr-10 -mt-10 pointer-events-none"></div>
                 
                 {activeTreasury === 'otr' && (
                   <div className="animate-in fade-in zoom-in-95 duration-300 h-full">
-                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-4">The Liquidity Smile</h3>
+                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">The Liquidity Smile</h3>
                     <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm leading-relaxed">
                       The US Treasury Yield Curve is not a smooth line. The most recently issued bonds (On-the-Run) trade at a premium (lower yield) because they are highly liquid. Old bonds (Off-the-Run) trade at a discount.
                     </p>
@@ -436,11 +436,11 @@ export default function FuturesSpecialsArticle() {
                     </div>
                     
                     <div className="grid md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
+                      <div className="p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
                         <div className="font-bold text-emerald-900 dark:text-emerald-300 text-sm">The Trade</div>
                         <p className="text-xs text-emerald-800 dark:text-emerald-200/70 mt-1">Short OTR (Expensive) / Long OFTR (Cheap). Bet on spread convergence.</p>
                       </div>
-                      <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
+                      <div className="p-4 bg-slate-50 dark:bg-white dark:bg-[#0A0D14]/5 rounded-lg border border-slate-100 dark:border-white/5">
                         <div className="font-bold text-slate-800 dark:text-white text-sm">The Risk</div>
                         <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">In a crisis, "Flight to Quality" widens the spread. Everyone wants OTR; nobody wants OFTR.</p>
                       </div>
@@ -450,7 +450,7 @@ export default function FuturesSpecialsArticle() {
                 
                 {activeTreasury === 'repo' && (
                   <div className="animate-in fade-in zoom-in-95 duration-300 h-full">
-                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-4">Repo Specials & The Squeeze</h3>
+                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">Repo Specials & The Squeeze</h3>
                     <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm">
                       A bond goes "special" when the demand to borrow it (to cover short positions) exceeds supply.
                     </p>
@@ -459,11 +459,11 @@ export default function FuturesSpecialsArticle() {
                       <div className="mb-4 border-b border-slate-700 pb-2 text-slate-400">Daily Cost of Carry Calculation</div>
                       <div className="flex justify-between mb-2">
                         <span>General Collateral (GC):</span>
-                        <span className="text-emerald-400">5.30%</span>
+                        <span className="text-[#1D8A70] dark:text-[#3CBF9C]">5.30%</span>
                       </div>
                       <div className="flex justify-between mb-2">
                         <span>Specific Issue Repo:</span>
-                        <span className="text-red-400">0.05%</span>
+                        <span className="text-[#BC4128] dark:text-[#E2694A]">0.05%</span>
                       </div>
                       <div className="border-t border-slate-700 pt-2 flex justify-between font-bold">
                         <span>"Specialness":</span>
@@ -482,7 +482,7 @@ export default function FuturesSpecialsArticle() {
                 {activeTreasury === 'basis' && (
                   <div className="animate-in fade-in zoom-in-95 duration-300 h-full">
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400">The Basis Trade Anatomy</h3>
+                      <h3 className="text-2xl font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-serif">The Basis Trade Anatomy</h3>
                       <span className="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-bold px-2 py-1 rounded">Hedge Fund Strategy</span>
                     </div>
                     
@@ -492,7 +492,7 @@ export default function FuturesSpecialsArticle() {
                         <div className="p-3 bg-white dark:bg-[#14171B] border border-slate-300 dark:border-white/20 rounded shadow-sm text-center w-32">
                           <div className="text-xs text-slate-400 uppercase">Step 1</div>
                           <div className="font-bold text-sm dark:text-white">Buy Bond</div>
-                          <div className="text-[10px] text-emerald-600 dark:text-emerald-400">Spot Market</div>
+                          <div className="text-[10px] text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Spot Market</div>
                         </div>
                         <ArrowRight className="text-slate-400"/>
                         <div className="p-3 bg-white dark:bg-[#14171B] border border-slate-300 dark:border-white/20 rounded shadow-sm text-center w-32">
@@ -504,7 +504,7 @@ export default function FuturesSpecialsArticle() {
                         <div className="p-3 bg-white dark:bg-[#14171B] border border-slate-300 dark:border-white/20 rounded shadow-sm text-center w-32">
                           <div className="text-xs text-slate-400 uppercase">Step 3</div>
                           <div className="font-bold text-sm dark:text-white">Sell Future</div>
-                          <div className="text-[10px] text-red-500 dark:text-red-400">Capture Basis</div>
+                          <div className="text-[10px] text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Capture Basis</div>
                         </div>
                       </div>
                       <div className="mt-4 text-xs text-slate-500 italic text-center w-full border-t border-slate-200 dark:border-white/10 pt-2">
@@ -526,27 +526,27 @@ export default function FuturesSpecialsArticle() {
                 
                 {activeTreasury === 'ctd' && (
                   <div className="animate-in fade-in zoom-in-95 duration-300 h-full">
-                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-4">Delivery Mechanics (CTD)</h3>
+                    <h3 className="text-2xl font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">Delivery Mechanics (CTD)</h3>
                     <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm">
                       The short seller has the right to choose <strong className="dark:text-white">which</strong> bond to deliver. They calculate the "Implied Repo Rate" for every deliverable bond and pick the highest one (Max Profit).
                     </p>
                     
                     <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border-2 border-slate-100 dark:border-white/10 hover:border-emerald-200 dark:hover:border-emerald-700 transition-colors">
+                      <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border-2 border-slate-100 dark:border-white/10 hover:border-emerald-200 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C] transition-colors">
                         <h4 className="font-bold text-slate-800 dark:text-white text-sm mb-2 flex items-center gap-2">
-                          <TrendingDown size={16} className="text-red-500 dark:text-red-400"/> High Yield Environment
+                          <TrendingDown size={16} className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]"/> High Yield Environment
                         </h4>
                         <p className="text-xs text-slate-600 dark:text-slate-400">Yields {'>'} 6%. Long duration bonds (low coupon) tend to be Cheapest to Deliver.</p>
                       </div>
-                      <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border-2 border-slate-100 dark:border-white/10 hover:border-emerald-200 dark:hover:border-emerald-700 transition-colors">
+                      <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg border-2 border-slate-100 dark:border-white/10 hover:border-emerald-200 dark:hover:border-[#1D8A70] dark:border-[#3CBF9C] transition-colors">
                         <h4 className="font-bold text-slate-800 dark:text-white text-sm mb-2 flex items-center gap-2">
-                          <TrendingUp size={16} className="text-emerald-500 dark:text-emerald-400"/> Low Yield Environment
+                          <TrendingUp size={16} className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]"/> Low Yield Environment
                         </h4>
                         <p className="text-xs text-slate-600 dark:text-slate-400">Yields {'<'} 6%. Short duration bonds tend to be Cheapest to Deliver.</p>
                       </div>
                     </div>
                     
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-900/50">
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-900/50">
                       <h4 className="font-bold text-emerald-900 dark:text-emerald-300 text-sm mb-1">The "Switch" Option</h4>
                       <p className="text-xs text-emerald-800 dark:text-emerald-200/80">If yields shift significantly, the CTD bond can change. This creates uncertainty for the Long holder (who doesn't know what they will receive), suppressing the futures price.</p>
                     </div>
@@ -559,7 +559,7 @@ export default function FuturesSpecialsArticle() {
                       <div className="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-400">
                         <Clock size={24}/>
                       </div>
-                      <h3 className="text-2xl font-bold text-purple-900 dark:text-purple-300">The Wildcard Option</h3>
+                      <h3 className="text-2xl font-bold text-purple-900 dark:text-purple-300 font-serif">The Wildcard Option</h3>
                     </div>
                     
                     <div className="relative border-l-2 border-purple-200 dark:border-purple-800 ml-3 pl-6 space-y-6 my-6">
@@ -602,7 +602,7 @@ export default function FuturesSpecialsArticle() {
             
             <div className="grid md:grid-cols-3 gap-6">
               <Card title="Crack Spread" badge="Energy" colorClass={colors.spreads}>
-                <div className="mb-3 text-sm font-mono bg-orange-50 dark:bg-orange-900/20 p-2 rounded text-orange-800 dark:text-orange-300">3:2:1 Ratio</div>
+                <div className="mb-3 text-sm font-mono bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-2 rounded text-orange-800 dark:text-orange-300">3:2:1 Ratio</div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">Buy 3 Crude Oil → Sell 2 Gasoline + 1 Heating Oil.</p>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   This measures the <strong className="dark:text-white">refining margin</strong>. If the spread tightens, refiners slow production, eventually causing product shortages (Gasoline prices rise).
@@ -618,7 +618,7 @@ export default function FuturesSpecialsArticle() {
               </Card>
               
               <Card title="The Widowmaker" badge="Dangerous" colorClass="#DC2626">
-                <div className="mb-3 text-sm font-mono bg-red-50 dark:bg-red-900/20 p-2 rounded text-red-800 dark:text-red-300">March/April Nat Gas</div>
+                <div className="mb-3 text-sm font-mono bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-2 rounded text-red-800 dark:text-red-300">March/April Nat Gas</div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">Long March (Winter) / Short April (Spring).</p>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   Known for extreme volatility. It bets on how much gas is left in storage at the exact end of winter. It has bankrupted hedge funds (e.g., Amaranth Advisors) due to weather unpredictability.
@@ -639,7 +639,7 @@ export default function FuturesSpecialsArticle() {
             <div className="grid lg:grid-cols-12 gap-8">
               {/* Left: Interactive Timeline Selectors */}
               <div className="lg:col-span-4 space-y-4">
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-900/50 p-4 rounded-xl mb-6">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-900/50 p-4 rounded-xl mb-6">
                   <h4 className="font-bold text-indigo-900 dark:text-indigo-300 mb-2 flex items-center gap-2">
                     <AlertTriangle size={18}/> Retail Warning
                   </h4>
@@ -660,8 +660,8 @@ export default function FuturesSpecialsArticle() {
                     onClick={() => setActiveDeliveryStep(step.id)}
                     className={`w-full text-left p-4 rounded-xl border transition-all relative overflow-hidden ${
                       activeDeliveryStep === step.id 
-                        ? 'bg-white dark:bg-[#1A1E23] border-indigo-500 shadow-md ring-1 ring-indigo-500' 
-                        : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-indigo-300 dark:hover:border-indigo-700'
+                        ? 'bg-white dark:bg-[#1A1E23] border-[#A8672E] dark:border-[#D08F52] shadow-md ring-1 ring-indigo-500' 
+                        : 'bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 hover:border-indigo-300 dark:hover:border-[#A8672E] dark:border-[#D08F52]'
                     }`}
                   >
                     <div className="flex justify-between items-center z-10 relative">
@@ -674,7 +674,7 @@ export default function FuturesSpecialsArticle() {
                     </div>
                     <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 z-10 relative">{step.desc}</div>
                     {activeDeliveryStep === step.id && (
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"></div>
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#A8672E] dark:bg-[#D08F52]"></div>
                     )}
                   </button>
                 ))}
@@ -685,11 +685,11 @@ export default function FuturesSpecialsArticle() {
                 {activeDeliveryStep === 'pos_day' && (
                   <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-indigo-600 dark:text-indigo-400">
+                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <Lock size={24} />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white">First Position Day</h3>
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white font-serif">First Position Day</h3>
                         <p className="text-sm text-slate-500 dark:text-slate-400">The "Line in the Sand"</p>
                       </div>
                     </div>
@@ -715,11 +715,11 @@ export default function FuturesSpecialsArticle() {
                 {activeDeliveryStep === 'fnd' && (
                   <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-indigo-600 dark:text-indigo-400">
+                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <AlertTriangle size={24} />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white">First Notice Day (FND)</h3>
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white font-serif">First Notice Day (FND)</h3>
                         <p className="text-sm text-slate-500 dark:text-slate-400">The Lottery You Don't Want to Win</p>
                       </div>
                     </div>
@@ -729,13 +729,13 @@ export default function FuturesSpecialsArticle() {
                     </p>
                     
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
-                      <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-100 dark:border-indigo-900/50">
+                      <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-100 dark:border-indigo-900/50">
                         <div className="font-bold text-indigo-900 dark:text-indigo-300 text-sm mb-2">The Matching Algo</div>
                         <p className="text-xs text-indigo-800 dark:text-indigo-200/80">
                           Most exchanges use the <strong className="dark:text-white">"Oldest Long"</strong> rule. The trader who has held the Long position the longest gets assigned first.
                         </p>
                       </div>
-                      <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-100 dark:border-red-900/50">
+                      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg border border-red-100 dark:border-red-900/50">
                         <div className="font-bold text-red-900 dark:text-red-300 text-sm mb-2">Can you refuse?</div>
                         <p className="text-xs text-red-800 dark:text-red-200/80">
                           No. If you receive a Delivery Notice, you must pay the full contract value in cash and accept the warehouse receipt.
@@ -748,11 +748,11 @@ export default function FuturesSpecialsArticle() {
                 {activeDeliveryStep === 'ltd' && (
                   <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-indigo-600 dark:text-indigo-400">
+                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <BarChart2 size={24} />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Last Trading Day</h3>
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white font-serif">Last Trading Day</h3>
                         <p className="text-sm text-slate-500 dark:text-slate-400">Convergence is Complete</p>
                       </div>
                     </div>
@@ -771,11 +771,11 @@ export default function FuturesSpecialsArticle() {
                 {activeDeliveryStep === 'delivery' && (
                   <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-indigo-600 dark:text-indigo-400">
+                      <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                         <Truck size={24} />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Delivery Day</h3>
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white font-serif">Delivery Day</h3>
                         <p className="text-sm text-slate-500 dark:text-slate-400">Exchange of Warrants</p>
                       </div>
                     </div>
@@ -788,19 +788,19 @@ export default function FuturesSpecialsArticle() {
                       <div className="p-4 bg-white dark:bg-[#14171B] border border-slate-200 dark:border-white/10 rounded-lg shadow-sm">
                         <div className="font-bold text-slate-800 dark:text-white mb-1">Exchange</div>
                         <div className="text-xs text-slate-500 dark:text-slate-400">Clearing House</div>
-                        <div className="my-2 text-indigo-300 dark:text-indigo-700">↓</div>
+                        <div className="my-2 text-indigo-300 dark:text-[#A8672E] dark:text-[#D08F52]">↓</div>
                         <div className="text-[10px] bg-slate-100 dark:bg-slate-800 p-1 rounded dark:text-slate-300">Matches Buyer/Seller</div>
                       </div>
                       <div className="p-4 bg-white dark:bg-[#14171B] border border-slate-200 dark:border-white/10 rounded-lg shadow-sm">
                         <div className="font-bold text-slate-800 dark:text-white mb-1">Seller</div>
                         <div className="text-xs text-slate-500 dark:text-slate-400">Short</div>
-                        <div className="my-2 text-indigo-300 dark:text-indigo-700">→</div>
+                        <div className="my-2 text-indigo-300 dark:text-[#A8672E] dark:text-[#D08F52]">→</div>
                         <div className="text-[10px] bg-slate-100 dark:bg-slate-800 p-1 rounded dark:text-slate-300">Sends Warrant</div>
                       </div>
                       <div className="p-4 bg-white dark:bg-[#14171B] border border-slate-200 dark:border-white/10 rounded-lg shadow-sm">
                         <div className="font-bold text-slate-800 dark:text-white mb-1">Buyer</div>
                         <div className="text-xs text-slate-500 dark:text-slate-400">Long</div>
-                        <div className="my-2 text-indigo-300 dark:text-indigo-700">←</div>
+                        <div className="my-2 text-indigo-300 dark:text-[#A8672E] dark:text-[#D08F52]">←</div>
                         <div className="text-[10px] bg-slate-100 dark:bg-slate-800 p-1 rounded dark:text-slate-300">Sends Cash</div>
                       </div>
                     </div>
@@ -827,18 +827,18 @@ export default function FuturesSpecialsArticle() {
             />
             
             <div className="space-y-6">
-              <div className="bg-white dark:bg-[#14171B] border-l-8 border-rose-500 rounded-r-xl shadow-lg p-8 flex flex-col md:flex-row gap-8 items-center border dark:border-y-white/10 dark:border-r-white/10">
+              <div className="bg-white dark:bg-[#14171B] border-l-8 border-[#BC4128] dark:border-[#E2694A] rounded-r-xl shadow-lg p-8 flex flex-col md:flex-row gap-8 items-center border dark:border-y-white/10 dark:border-r-white/10">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-3">
-                    <Flame className="text-rose-500" size={32} /> WTI Crude Oil (April 2020)
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-3 font-serif">
+                    <Flame className="text-[#BC4128] dark:text-[#E2694A]" size={32} /> WTI Crude Oil (April 2020)
                   </h3>
-                  <div className="text-5xl font-extrabold text-rose-600 dark:text-rose-400 my-4">-$37.63</div>
+                  <div className="text-5xl font-extrabold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] my-4">-$37.63</div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     Oil futures require physical delivery at Cushing, Oklahoma. In April 2020, global lockdowns killed demand, and Cushing storage hit 100% capacity.
                     Long holders (ETFs, speculators) had <strong className="dark:text-white">no place to put the oil</strong>. They had to PAY buyers to take the contracts off their hands to avoid breaching delivery contracts.
                   </p>
                 </div>
-                <div className="md:w-1/3 bg-rose-50 dark:bg-rose-900/20 p-6 rounded-xl border border-rose-100 dark:border-rose-900/50 shadow-sm">
+                <div className="md:w-1/3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-6 rounded-xl border border-rose-100 dark:border-rose-900/50 shadow-sm">
                   <h4 className="font-bold text-rose-800 dark:text-rose-300 text-sm uppercase mb-3 border-b border-rose-200 dark:border-rose-900/50 pb-2">The Lesson</h4>
                   <p className="text-sm text-rose-900 dark:text-rose-200/80 leading-relaxed">
                     Commodity prices have a "soft floor" (storage costs) and a "hard floor" (zero). But when storage is full, the floor disappears. Prices can theoretically go to negative infinity.
@@ -847,7 +847,7 @@ export default function FuturesSpecialsArticle() {
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-white/10 group hover:border-rose-300 dark:hover:border-rose-700 transition-colors">
+                <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-white/10 group hover:border-rose-300 dark:hover:border-[#BC4128] dark:border-[#E2694A] transition-colors">
                   <h4 className="font-bold text-lg text-slate-800 dark:text-white mb-2 flex items-center gap-2">
                     <Droplet size={18} className="text-slate-400"/> Waha Gas Hub
                   </h4>
@@ -855,7 +855,7 @@ export default function FuturesSpecialsArticle() {
                     Natural gas in West Texas is a byproduct of oil drilling. If pipelines break, gas is stranded. Producers will pay -$5.00/MMBtu just to get rid of it (flaring is regulated) so they can keep pumping the profitable oil.
                   </p>
                 </div>
-                <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-white/10 group hover:border-rose-300 dark:hover:border-rose-700 transition-colors">
+                <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-white/10 group hover:border-rose-300 dark:hover:border-[#BC4128] dark:border-[#E2694A] transition-colors">
                   <h4 className="font-bold text-lg text-slate-800 dark:text-white mb-2 flex items-center gap-2">
                     <Zap size={18} className="text-slate-400"/> Negative Electricity
                   </h4>
@@ -881,7 +881,7 @@ export default function FuturesSpecialsArticle() {
                 <div className="absolute top-4 right-4 text-amber-300 dark:text-amber-700 opacity-20">
                   <Anchor size={80} />
                 </div>
-                <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3">The Vomitoxin Discount</h3>
+                <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3 font-serif">The Vomitoxin Discount</h3>
                 <p className="text-amber-900/80 dark:text-amber-200/70 mb-4 text-sm">
                   In grain markets, futures specs allow for delivery of lower quality grain at a discount. In a bad crop year, only "dirty" wheat (high vomitoxin levels) is available for delivery.
                 </p>
@@ -896,11 +896,11 @@ export default function FuturesSpecialsArticle() {
                 <div className="absolute top-4 right-4 text-amber-300 dark:text-amber-700 opacity-20">
                   <Coffee size={80} />
                 </div>
-                <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3">Coffee "C" Differentials</h3>
+                <h3 className="text-xl font-bold text-amber-900 dark:text-amber-400 mb-3 font-serif">Coffee "C" Differentials</h3>
                 <p className="text-amber-900/80 dark:text-amber-200/70 mb-4 text-sm">
                   The ICE contract allows delivery from 20 countries. Traders will always deliver the cheapest origin allowed (e.g., Honduras vs Colombia).
                 </p>
-                <div className="bg-white/60 dark:bg-black/30 p-3 rounded-lg text-xs text-amber-900 dark:text-amber-300">
+                <div className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/30 p-3 rounded-lg text-xs text-amber-900 dark:text-amber-300">
                   <strong className="dark:text-amber-400">The "Switch":</strong> If exchange differentials don't match real-world prices, certified stocks flood with the "cheapest" beans, dragging the futures price down relative to premium beans used by Starbucks.
                 </div>
               </div>
@@ -945,7 +945,7 @@ export default function FuturesSpecialsArticle() {
 
           {/* --- FOOTER / GLOSSARY --- */}
           <footer className="mt-20 border-t border-slate-200 dark:border-white/10 pt-12">
-            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8 text-center">Specials Glossary & Risk Matrix</h2>
+            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8 text-center font-serif">Specials Glossary & Risk Matrix</h2>
             
             <div className="overflow-x-auto shadow-xl rounded-lg border border-slate-200 dark:border-white/10">
               <table className="w-full text-left bg-white dark:bg-[#14171B]">
@@ -958,23 +958,23 @@ export default function FuturesSpecialsArticle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-sm text-slate-700 dark:text-slate-300 font-medium">
-                  <tr className="hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors">
-                    <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400">Treasury</td>
+                  <tr className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-indigo-900/20 transition-colors">
+                    <td className="p-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Treasury</td>
                     <td className="p-4">Repo Special</td>
                     <td className="p-4 font-mono text-xs">Repo Rate &lt; GC</td>
                     <td className="p-4">
-                      <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full text-xs font-bold shadow-sm border border-orange-200 dark:border-orange-800">High</span>
+                      <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-full text-xs font-bold shadow-sm border border-orange-200 dark:border-orange-800">High</span>
                     </td>
                   </tr>
-                  <tr className="hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors">
-                    <td className="p-4 font-bold text-rose-500 dark:text-rose-400">Energy</td>
+                  <tr className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-indigo-900/20 transition-colors">
+                    <td className="p-4 font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Energy</td>
                     <td className="p-4">Negative Pricing</td>
                     <td className="p-4 font-mono text-xs">Storage Capacity %</td>
                     <td className="p-4">
-                      <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-full text-xs font-bold shadow-sm border border-red-200 dark:border-red-800">Critical</span>
+                      <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-full text-xs font-bold shadow-sm border border-red-200 dark:border-red-800">Critical</span>
                     </td>
                   </tr>
-                  <tr className="hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors">
+                  <tr className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-indigo-900/20 transition-colors">
                     <td className="p-4 font-bold text-amber-500 dark:text-amber-400">Agriculture</td>
                     <td className="p-4">Vomitoxin / Quality</td>
                     <td className="p-4 font-mono text-xs">Quality Spread</td>
@@ -982,20 +982,20 @@ export default function FuturesSpecialsArticle() {
                       <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-bold shadow-sm border border-yellow-200 dark:border-yellow-800">Medium</span>
                     </td>
                   </tr>
-                  <tr className="hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors">
+                  <tr className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-indigo-900/20 transition-colors">
                     <td className="p-4 font-bold text-violet-500 dark:text-violet-400">Micro</td>
                     <td className="p-4">Gamma Squeeze</td>
                     <td className="p-4 font-mono text-xs">OTM Open Interest</td>
                     <td className="p-4">
-                      <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full text-xs font-bold shadow-sm border border-orange-200 dark:border-orange-800">Volatile</span>
+                      <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] rounded-full text-xs font-bold shadow-sm border border-orange-200 dark:border-orange-800">Volatile</span>
                     </td>
                   </tr>
-                  <tr className="hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors">
-                    <td className="p-4 font-bold text-red-600 dark:text-red-400">Nat Gas</td>
+                  <tr className="hover:bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:hover:bg-indigo-900/20 transition-colors">
+                    <td className="p-4 font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Nat Gas</td>
                     <td className="p-4">Widowmaker</td>
                     <td className="p-4 font-mono text-xs">March/April Spread</td>
                     <td className="p-4">
-                      <span className="px-3 py-1 bg-red-600 dark:bg-red-500 text-white rounded-full text-xs font-bold shadow-sm border border-red-700 dark:border-red-400">Extreme</span>
+                      <span className="px-3 py-1 bg-[#BC4128] dark:bg-[#E2694A] dark:bg-[#BC4128] dark:bg-[#E2694A] text-white rounded-full text-xs font-bold shadow-sm border border-[#BC4128] dark:border-[#E2694A] dark:border-[#BC4128] dark:border-[#E2694A]">Extreme</span>
                     </td>
                   </tr>
                 </tbody>

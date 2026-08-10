@@ -21,7 +21,7 @@ const SectionHeader = ({ title, icon: Icon, colorClass }: {
     <div className={`p-3 rounded-xl text-white ${colorClass} shadow-lg`}>
       <Icon size={28} />
     </div>
-    <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">{title}</h2>
+    <h2 className="text-3xl font-extrabold text-slate-800 dark:text-slate-200 tracking-tight font-serif">{title}</h2>
   </div>
 );
 
@@ -31,9 +31,9 @@ const TutorialCard = ({ title, children, borderColor, bgColor }: {
   borderColor: string;
   bgColor: string;
 }) => (
-  <div className={`bg-white rounded-2xl p-6 md:p-8 shadow-sm border-t-4 ${borderColor} ${bgColor} transition-all hover:shadow-md mb-6`}>
-    {title && <h3 className="text-xl font-bold text-slate-800 mb-4">{title}</h3>}
-    <div className="text-slate-600 leading-relaxed space-y-4">
+  <div className={`bg-white dark:bg-[#0A0D14] rounded-2xl p-6 md:p-8 shadow-sm border-t-4 ${borderColor} ${bgColor} transition-all hover:shadow-md mb-6`}>
+    {title && <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">{title}</h3>}
+    <div className="text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
       {children}
     </div>
   </div>
@@ -46,9 +46,9 @@ const ConceptBox = ({ title, children, icon: Icon, colorTheme }: {
   colorTheme: string;
 }) => {
   const themes: Record<string, string> = {
-    blue: "bg-blue-50 border-blue-200 text-blue-800",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-blue-800",
     amber: "bg-amber-50 border-amber-200 text-amber-900",
-    emerald: "bg-emerald-50 border-emerald-200 text-emerald-900",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-emerald-900",
     purple: "bg-purple-50 border-purple-200 text-purple-900",
   };
   return (
@@ -68,11 +68,11 @@ const MathFormula = () => (
       R<sub className="text-sm">i,t</sub> = &alpha;<sub className="text-sm">i,t</sub> + &beta;<sub className="text-sm">m</sub> R<sub className="text-sm">m,t</sub> + &Sigma; &beta;<sub className="text-sm">k</sub> F<sub className="text-sm">k,t</sub> + &epsilon;<sub className="text-sm">i,t</sub>
     </div>
     <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs text-slate-400">
-      <span><strong className="text-blue-400">R</strong> = Total Return</span>
+      <span><strong className="text-[#A8672E] dark:text-[#D08F52]">R</strong> = Total Return</span>
       <span><strong className="text-purple-400">&alpha;</strong> = Alpha</span>
-      <span><strong className="text-green-400">&beta;m</strong> = Market Risk</span>
+      <span><strong className="text-[#1D8A70] dark:text-[#3CBF9C]">&beta;m</strong> = Market Risk</span>
       <span><strong className="text-yellow-400">Fk</strong> = Risk Factors</span>
-      <span><strong className="text-emerald-400">&epsilon;</strong> = Isolated Signal</span>
+      <span><strong className="text-[#1D8A70] dark:text-[#3CBF9C]">&epsilon;</strong> = Isolated Signal</span>
     </div>
   </div>
 );
@@ -104,9 +104,9 @@ export default function ArticlePage() {
           <section>
             <SectionHeader title="1. Quantitative Methodologies for Signal Isolation" icon={Calculator} colorClass="bg-gradient-to-br from-blue-500 to-cyan-600" />
 
-            <TutorialCard borderColor="border-blue-500" bgColor="bg-white">
+            <TutorialCard borderColor="border-[#A8672E] dark:border-[#D08F52]" bgColor="bg-white dark:bg-[#0A0D14]">
               <p>
-                <a href="https://www.theta.md/supply-chain" target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-semibold hover:underline">Theta.md</a> is an independent quantitative research platform built by a solo quant, focused on a deceptively simple question: when a supplier&apos;s stock moves after a customer&apos;s earnings, is that a genuine supply chain signal &mdash; or just industry beta in disguise? Their answer involves a rigorous, falsification-first methodology that most sell-side research never attempts.
+                <a href="https://www.theta.md/supply-chain" target="_blank" rel="noopener noreferrer" className="text-[#A8672E] dark:text-[#D08F52] font-semibold hover:underline">Theta.md</a> is an independent quantitative research platform built by a solo quant, focused on a deceptively simple question: when a supplier&apos;s stock moves after a customer&apos;s earnings, is that a genuine supply chain signal &mdash; or just industry beta in disguise? Their answer involves a rigorous, falsification-first methodology that most sell-side research never attempts.
               </p>
               <p>
                 The primary challenge in supply chain signal processing is disentangling idiosyncratic, network-driven information from systematic market noise. A supplier&apos;s stock might rise because of an explicit operational link, or simply because the broader market rallied. Theta.md attacks this problem head-on.
@@ -127,23 +127,23 @@ export default function ArticlePage() {
                 <p className="mt-2 font-semibold">Takeaway: without multi-factor correction, &ldquo;predicting B from A&rdquo; easily produces spurious signals.</p>
               </ConceptBox>
 
-              <h4 className="font-bold text-slate-800 mt-8 mb-4 flex items-center gap-2">
-                <Cpu className="text-blue-500" size={20} /> Residualizing Against the SOX Index
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4 flex items-center gap-2">
+                <Cpu className="text-[#A8672E] dark:text-[#D08F52]" size={20} /> Residualizing Against the SOX Index
               </h4>
               <p>
                 In highly integrated sectors like global semiconductor manufacturing, quantitative models must actively filter out the overarching industry beta. The <strong>PHLX Semiconductor Sector Index (SOX)</strong> serves as the primary benchmark. Analysts use rolling regressions to extract the idiosyncratic component of the firm&apos;s return relative to the SOX index to verify if a signal (e.g., automotive demand) is genuine and independent of broader AI speculation.
               </p>
 
-              <h4 className="font-bold text-slate-800 mt-8 mb-4 flex items-center gap-2">
-                <Globe className="text-blue-500" size={20} /> Neutralizing Currency (FX) Risk
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4 flex items-center gap-2">
+                <Globe className="text-[#A8672E] dark:text-[#D08F52]" size={20} /> Neutralizing Currency (FX) Risk
               </h4>
               <p>
                 Unhedged FX exposure is a massive source of statistical contamination. A supplier might report soaring revenues simply because their local currency depreciated against the US Dollar, artificially inflating the &ldquo;demand&rdquo; signal.
               </p>
 
-              <div className="overflow-x-auto mt-4 rounded-xl border border-slate-200">
+              <div className="overflow-x-auto mt-4 rounded-xl border border-slate-200 dark:border-slate-800">
                 <table className="w-full text-sm text-left">
-                  <thead className="text-xs text-slate-700 uppercase bg-slate-50">
+                  <thead className="text-xs text-slate-700 dark:text-slate-300 uppercase bg-slate-50 dark:bg-[#14171B]">
                     <tr>
                       <th className="px-6 py-3">Risk Category</th>
                       <th className="px-6 py-3">Operational Definition</th>
@@ -151,17 +151,17 @@ export default function ArticlePage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
-                    <tr className="bg-white">
+                    <tr className="bg-white dark:bg-[#0A0D14]">
                       <td className="px-6 py-4 font-semibold">Transaction Risk</td>
                       <td className="px-6 py-4">Time lag between agreeing to a contract and payment settlement.</td>
                       <td className="px-6 py-4">Can unexpectedly inflate inventory costs and compress margins.</td>
                     </tr>
-                    <tr className="bg-slate-50">
+                    <tr className="bg-slate-50 dark:bg-[#14171B]">
                       <td className="px-6 py-4 font-semibold">Translation Risk</td>
                       <td className="px-6 py-4">Translating foreign-denominated assets into reporting currency.</td>
                       <td className="px-6 py-4">Distorts reported profits and valuations, generating misleading signals.</td>
                     </tr>
-                    <tr className="bg-white">
+                    <tr className="bg-white dark:bg-[#0A0D14]">
                       <td className="px-6 py-4 font-semibold">Liquidity Risk</td>
                       <td className="px-6 py-4">Friction caused by cash flow mismatches across jurisdictions.</td>
                       <td className="px-6 py-4">Strains working capital, causing cascading downstream delivery failures.</td>
@@ -176,7 +176,7 @@ export default function ArticlePage() {
           <section>
             <SectionHeader title="2. The Non-Linearity of Event Transmission" icon={Network} colorClass="bg-gradient-to-br from-amber-500 to-orange-600" />
 
-            <TutorialCard borderColor="border-amber-500" bgColor="bg-white">
+            <TutorialCard borderColor="border-amber-500" bgColor="bg-white dark:bg-[#0A0D14]">
               <p>
                 Physical supply chains are dynamic, sensitive systems subject to immense feedback loops. A localized demand shock rarely yields a proportional output. This brings us to a phenomenon known as the <strong>Direction Reversal</strong>.
               </p>
@@ -189,26 +189,26 @@ export default function ArticlePage() {
                 <p>Theta.md&apos;s event propagation model highlights a counterintuitive reality: a nuclear plant construction delay that appears to hurt an equipment supplier may actually <em>free capacity</em> for other clients &mdash; turning an ostensible negative into a positive for the supplier. The framework systematically checks whether second-order effects reverse first-order direction.</p>
               </ConceptBox>
 
-              <h4 className="font-bold text-slate-800 mt-8 mb-4">Case Study: The 2021&ndash;2023 Semiconductor Double-Ordering Phenomenon</h4>
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4">Case Study: The 2021&ndash;2023 Semiconductor Double-Ordering Phenomenon</h4>
               <p className="mb-4">
                 During the COVID-19 pandemic, a massive shift in electronics demand coupled with shipping constraints caused global component shortages. Here is how the direction reversal unfolded:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <div className="border border-slate-200 p-4 rounded-xl bg-slate-50 hover:bg-white transition-colors shadow-sm">
+                <div className="border border-slate-200 dark:border-slate-800 p-4 rounded-xl bg-slate-50 dark:bg-[#14171B] hover:bg-white dark:bg-[#0A0D14] transition-colors shadow-sm">
                   <div className="text-amber-600 font-bold mb-2">1. The First-Order Shock</div>
                   <p className="text-sm">Localized shortages halt assembly lines. <strong>Signal:</strong> Strong Bullish (component spot prices surge).</p>
                 </div>
-                <div className="border border-slate-200 p-4 rounded-xl bg-slate-50 hover:bg-white transition-colors shadow-sm">
+                <div className="border border-slate-200 dark:border-slate-800 p-4 rounded-xl bg-slate-50 dark:bg-[#14171B] hover:bg-white dark:bg-[#0A0D14] transition-colors shadow-sm">
                   <div className="text-amber-600 font-bold mb-2">2. The Bullwhip Amplification</div>
                   <p className="text-sm">Downstream firms panic and &ldquo;double order&rdquo;. <strong>Signal:</strong> Hyper-Bullish (Upstream order books fill years in advance).</p>
                 </div>
-                <div className="border border-slate-200 p-4 rounded-xl bg-slate-50 hover:bg-white transition-colors shadow-sm">
+                <div className="border border-slate-200 dark:border-slate-800 p-4 rounded-xl bg-slate-50 dark:bg-[#14171B] hover:bg-white dark:bg-[#0A0D14] transition-colors shadow-sm">
                   <div className="text-amber-600 font-bold mb-2">3. The Second-Order Effect</div>
                   <p className="text-sm">Foundries commit to historic CapEx (&gt;50% of revenue) for new fabs based on phantom demand. <strong>Signal:</strong> Plateau (Massive outlays drain cash).</p>
                 </div>
-                <div className="border border-red-200 p-4 rounded-xl bg-red-50 hover:bg-red-100 transition-colors shadow-sm">
-                  <div className="text-red-600 font-bold mb-2">4. The Direction Reversal</div>
+                <div className="border border-red-200 p-4 rounded-xl bg-[#BC4128]/10 dark:bg-[#E2694A]/10 hover:bg-red-100 transition-colors shadow-sm">
+                  <div className="text-[#BC4128] dark:text-[#E2694A] font-bold mb-2">4. The Direction Reversal</div>
                   <p className="text-sm">Demand normalizes. Downstream cancels phantom orders. <strong>Signal:</strong> Violent Bearish Reversal (Upstream faces stranded assets/idle capacity).</p>
                 </div>
               </div>
@@ -218,7 +218,7 @@ export default function ArticlePage() {
           {/* Infographic */}
           <section className="max-w-5xl mx-auto">
             <div
-              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
+              className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 cursor-pointer group relative"
               onClick={() => setIsImageViewerOpen(true)}
             >
               <img
@@ -234,7 +234,7 @@ export default function ArticlePage() {
                 <Maximize2 className="h-4 w-4" />
               </button>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
+                <div className="bg-white dark:bg-[#0A0D14]/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
                   Click to view full screen
                 </div>
               </div>
@@ -252,14 +252,14 @@ export default function ArticlePage() {
           <section>
             <SectionHeader title="3. Asymmetric Time Windows in Information Pricing" icon={Clock} colorClass="bg-gradient-to-br from-emerald-500 to-teal-600" />
 
-            <TutorialCard borderColor="border-emerald-500" bgColor="bg-white">
+            <TutorialCard borderColor="border-[#1D8A70] dark:border-[#3CBF9C]" bgColor="bg-white dark:bg-[#0A0D14]">
               <p>
                 Contrary to the Efficient Market Hypothesis, markets do not digest all information equally. Financial markets display a pronounced tendency to price in positive supply chain news at a fundamentally different speed and efficiency than negative news.
               </p>
 
               <div className="flex flex-col md:flex-row gap-6 mt-6">
-                <div className="flex-1 bg-emerald-50 rounded-xl p-6 border border-emerald-100">
-                  <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
+                <div className="flex-1 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-xl p-6 border border-emerald-100">
+                  <div className="flex items-center gap-2 text-[#1D8A70] dark:text-[#3CBF9C] font-bold mb-3">
                     <TrendingUp size={20} /> Positive Shocks (Fast Pricing)
                   </div>
                   <p className="text-sm">
@@ -267,8 +267,8 @@ export default function ArticlePage() {
                   </p>
                 </div>
 
-                <div className="flex-1 bg-rose-50 rounded-xl p-6 border border-rose-100">
-                  <div className="flex items-center gap-2 text-rose-700 font-bold mb-3">
+                <div className="flex-1 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-xl p-6 border border-rose-100">
+                  <div className="flex items-center gap-2 text-[#BC4128] dark:text-[#E2694A] font-bold mb-3">
                     <TrendingUp size={20} className="transform rotate-180" /> Negative Shocks (Slow Pricing)
                   </div>
                   <p className="text-sm">
@@ -291,41 +291,41 @@ export default function ArticlePage() {
           <section>
             <SectionHeader title="4. Buy-Side Institutional Integration" icon={Shield} colorClass="bg-gradient-to-br from-purple-500 to-indigo-600" />
 
-            <TutorialCard borderColor="border-purple-500" bgColor="bg-white">
+            <TutorialCard borderColor="border-purple-500" bgColor="bg-white dark:bg-[#0A0D14]">
               <p>
                 The era of using supply chain data strictly for high-frequency, sub-second arbitrage is fading due to signal decay and commoditized algorithms. Elite buy-side institutions now leverage these signals to update long-term fundamental valuation architectures.
               </p>
 
-              <h4 className="font-bold text-slate-800 mt-8 mb-4 flex items-center gap-2">
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4 flex items-center gap-2">
                 <CheckCircle2 className="text-purple-500" size={20} /> Fundamental DCF Recalibration
               </h4>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
                   <div className="mt-1 w-2 h-2 rounded-full bg-purple-500 shrink-0"></div>
-                  <p><strong className="text-slate-800">Revenue Projections:</strong> Identifying upstream choke points forecasts downstream volume constraints before they hit earnings reports.</p>
+                  <p><strong className="text-slate-800 dark:text-slate-200">Revenue Projections:</strong> Identifying upstream choke points forecasts downstream volume constraints before they hit earnings reports.</p>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1 w-2 h-2 rounded-full bg-purple-500 shrink-0"></div>
-                  <p><strong className="text-slate-800">COGS &amp; Margins:</strong> Tracking raw material inflation and freight expedites accurately models impending gross margin compression.</p>
+                  <p><strong className="text-slate-800 dark:text-slate-200">COGS &amp; Margins:</strong> Tracking raw material inflation and freight expedites accurately models impending gross margin compression.</p>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1 w-2 h-2 rounded-full bg-purple-500 shrink-0"></div>
-                  <p><strong className="text-slate-800">Working Capital (NWC):</strong> Inventory buildups signal Bullwhip Effects, dictating immediate downward revisions to projected Free Cash Flow (FCFF).</p>
+                  <p><strong className="text-slate-800 dark:text-slate-200">Working Capital (NWC):</strong> Inventory buildups signal Bullwhip Effects, dictating immediate downward revisions to projected Free Cash Flow (FCFF).</p>
                 </li>
               </ul>
 
               <ConceptBox title="The &lsquo;Upstreamness&rsquo; Metric" icon={BarChart3} colorTheme="purple">
                 <p>Institutions use input-output economics to calculate a firm&apos;s absolute vertical position within the global production network.</p>
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  <div className="bg-white p-3 rounded shadow-sm text-xs border border-purple-100">
+                  <div className="bg-white dark:bg-[#0A0D14] p-3 rounded shadow-sm text-xs border border-purple-100">
                     <strong className="block text-purple-800 mb-1">High Upstreamness</strong>
                     Raw material extractors. Highly vulnerable to the Bullwhip Effect. High beta.
                   </div>
-                  <div className="bg-white p-3 rounded shadow-sm text-xs border border-purple-100">
+                  <div className="bg-white dark:bg-[#0A0D14] p-3 rounded shadow-sm text-xs border border-purple-100">
                     <strong className="block text-purple-800 mb-1">Moderate Upstreamness</strong>
                     Tier-1 components. Vulnerable to dual pressures and single-source bottlenecks.
                   </div>
-                  <div className="bg-white p-3 rounded shadow-sm text-xs border border-purple-100">
+                  <div className="bg-white dark:bg-[#0A0D14] p-3 rounded shadow-sm text-xs border border-purple-100">
                     <strong className="block text-purple-800 mb-1">Low Upstreamness</strong>
                     Consumer retail. Stable demand but highly vulnerable to localized price elasticity.
                   </div>
@@ -334,13 +334,13 @@ export default function ArticlePage() {
 
               <ConceptBox title="Why Theta.md Matters for Buy-Side Analysts" icon={Lightbulb} colorTheme="purple">
                 <p>Traditional sell-side research is siloed by industry &mdash; semiconductor analysts cover semiconductors, power analysts cover utilities. But supply chain signals don&apos;t respect these boundaries:</p>
-                <p className="mt-2 font-mono text-xs bg-white p-3 rounded border border-purple-100">
+                <p className="mt-2 font-mono text-xs bg-white dark:bg-[#0A0D14] p-3 rounded border border-purple-100">
                   NVIDIA GPU demand &rarr; TSMC (semiconductor manufacturing) &rarr; ASML (lithography equipment) &rarr; Zeiss (German optics)
                 </p>
                 <p className="mt-2">A single demand signal crosses four traditional industry classifications. Theta.md&apos;s cross-industry, cross-geography framework gives buy-side teams the systematic, multi-hop view that sell-side coverage structurally cannot provide.</p>
               </ConceptBox>
 
-              <h4 className="font-bold text-slate-800 mt-8 mb-4">Valuing the Resilience Premium</h4>
+              <h4 className="font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4">Valuing the Resilience Premium</h4>
               <p>
                 Historically, supply chains optimized purely for cost (Just-in-Time) were rewarded. Post-2020, institutions actively price &ldquo;supply chain resilience&rdquo; into models. Geographic diversification, rigid dual-sourcing, and strategic inventory buffers are no longer viewed as margin-dilutive inefficiencies, but as mandatory insurance premiums protecting long-term free cash flow.
               </p>
@@ -348,14 +348,14 @@ export default function ArticlePage() {
           </section>
 
         {/* Synthesis Footer */}
-        <div className="bg-slate-900 text-slate-300 py-12 px-6 md:px-12 mt-12 border-t-4 border-indigo-500">
+        <div className="bg-slate-900 text-slate-300 py-12 px-6 md:px-12 mt-12 border-t-4 border-[#A8672E] dark:border-[#D08F52]">
           <div className="max-w-4xl mx-auto text-center space-y-4">
-            <Zap className="mx-auto text-indigo-400 mb-4" size={32} />
-            <h2 className="text-2xl font-bold text-white">Synthesis &amp; Conclusion</h2>
+            <Zap className="mx-auto text-[#A8672E] dark:text-[#D08F52] mb-4" size={32} />
+            <h2 className="text-2xl font-bold text-white font-serif">Synthesis &amp; Conclusion</h2>
             <p className="leading-relaxed max-w-2xl mx-auto text-slate-400">
               Extracting meaningful intelligence from complex global networks requires rigorous isolation against market noise (e.g., SOX index, FX rates). Understanding the non-linear realities&mdash;like the devastating direction reversals seen in the semiconductor industry&mdash;and the asymmetric pricing windows dictates a new paradigm. Supply chain intelligence is no longer just for arbitrage; it is the definitive benchmark for structural risk management and sustained equity alpha in the 21st century.
             </p>
-            <div className="pt-8 text-sm text-slate-600">
+            <div className="pt-8 text-sm text-slate-600 dark:text-slate-400">
               Tutorial modeled after institutional quantitative supply chain research strategies.
             </div>
           </div>

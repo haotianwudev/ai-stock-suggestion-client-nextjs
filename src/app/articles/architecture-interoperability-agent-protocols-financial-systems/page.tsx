@@ -15,7 +15,7 @@ export default function AgentProtocolsArticle() {
           {/* Section 1: The Problem & Solution */}
           <section className="py-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">1. The Fragmentation Crisis</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">The Fragmentation Crisis</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                 As financial firms transition to autonomous AI agents, extreme fragmentation occurs across federated engineering teams.
               </p>
@@ -51,7 +51,7 @@ export default function AgentProtocolsArticle() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Layers className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. How A2A Works: The Mechanics</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">How A2A Works: The Mechanics</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
               The protocol relies on several foundational architectural paradigms to enable enterprise-grade collaboration.
@@ -59,7 +59,7 @@ export default function AgentProtocolsArticle() {
 
             <div className="grid md:grid-cols-3 gap-6 min-w-0">
               <div className="bg-white dark:bg-[#05070A] p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 min-w-0">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-5">
                   <FileJson size={24} />
                 </div>
                 <h4 className="font-bold text-slate-900 dark:text-white mb-3 text-lg font-serif">Capability Advertising (Agent Cards)</h4>
@@ -93,7 +93,7 @@ export default function AgentProtocolsArticle() {
           {/* Section 3: Protocol Choices */}
           <section className="py-16 border-t border-slate-200 dark:border-slate-800">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">3. The Broader Stack: What are the choices?</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">The Broader Stack: What are the choices?</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
                 A2A is not a monolithic solution. It operates alongside complementary protocols tailored to specific use cases, network latency profiles, and security models.
               </p>
@@ -104,22 +104,22 @@ export default function AgentProtocolsArticle() {
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/30 min-w-0 shadow-sm transition-transform hover:-translate-y-1">
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-300 font-serif">MCP</h3>
-                  <span className="bg-blue-200 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-bold px-3 py-1 rounded-full border border-blue-300 dark:border-blue-700">Model Context Protocol</span>
+                  <span className="bg-blue-200 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-bold px-3 py-1 rounded-full border border-blue-300 dark:border-[#A8672E] dark:border-[#D08F52]">Model Context Protocol</span>
                 </div>
                 <p className="text-blue-800 dark:text-blue-200/80 mb-6 font-medium leading-relaxed">
                   The standardized connectivity layer bridging AI applications with static data and tools.
                 </p>
                 <ul className="space-y-4 text-sm text-blue-900/80 dark:text-blue-100/70">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div>Rigid client-server hierarchy.</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div>Reduces token overhead by 98.7% (replaces prompt schemas with JSON-RPC services).</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div><strong className="text-blue-900 dark:text-blue-200 font-semibold">Best for:</strong> Tool utilization, RAG pipelines, internal SQL database queries.</div>
                   </li>
                 </ul>
@@ -154,22 +154,22 @@ export default function AgentProtocolsArticle() {
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20 p-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30 min-w-0 shadow-sm transition-transform hover:-translate-y-1">
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-300 font-serif">A2A</h3>
-                  <span className="bg-emerald-200 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-700">Agent-to-Agent Protocol</span>
+                  <span className="bg-emerald-200 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 dark:border-[#1D8A70] dark:border-[#3CBF9C]">Agent-to-Agent Protocol</span>
                 </div>
                 <p className="text-emerald-800 dark:text-emerald-200/80 mb-6 font-medium leading-relaxed">
                   The interworking protocol for dynamic, peer-to-peer task exchange.
                 </p>
                 <ul className="space-y-4 text-sm text-emerald-900/80 dark:text-emerald-100/70">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div>Decentralized network emphasizing autonomous delegation.</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div>Secures identity via Decentralized Identifiers (DIDs) and Agent Cards.</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div><strong className="text-emerald-900 dark:text-emerald-200 font-semibold">Best for:</strong> Multi-agent workflows, expert marketplaces, dynamic task routing.</div>
                   </li>
                 </ul>
@@ -179,22 +179,22 @@ export default function AgentProtocolsArticle() {
               <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/20 dark:to-orange-950/20 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0 shadow-sm transition-transform hover:-translate-y-1">
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <h3 className="text-2xl font-bold text-rose-900 dark:text-rose-300 font-serif">AGP</h3>
-                  <span className="bg-rose-200 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 text-xs font-bold px-3 py-1 rounded-full border border-rose-300 dark:border-rose-700">Agent Gateway Protocol</span>
+                  <span className="bg-rose-200 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 text-xs font-bold px-3 py-1 rounded-full border border-rose-300 dark:border-[#BC4128] dark:border-[#E2694A]">Agent Gateway Protocol</span>
                 </div>
                 <p className="text-rose-800 dark:text-rose-200/80 mb-6 font-medium leading-relaxed">
                   A high-performance network transport layer abstracting data exchange.
                 </p>
                 <ul className="space-y-4 text-sm text-rose-900/80 dark:text-rose-100/70">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Leverages gRPC over HTTP/2.0 using highly compressed Protocol Buffers.</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Replaces REST payloads where microsecond latency is critical.</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div><strong className="text-rose-900 dark:text-rose-200 font-semibold">Best for:</strong> High-frequency trading algorithms, intensive low-latency interactions.</div>
                   </li>
                 </ul>
@@ -205,17 +205,17 @@ export default function AgentProtocolsArticle() {
           {/* Section 4: Pros, Cons & Standards */}
           <section className="py-16">
             <div className="bg-[#14171B] dark:bg-[#05070A] text-white rounded-[3rem] p-8 md:p-14 shadow-2xl border border-slate-800 min-w-0 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52]/10 rounded-full blur-3xl pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D08F52]/10 rounded-full blur-3xl pointer-events-none"></div>
               
               <div className="relative z-10">
                 <div className="mb-12 flex flex-col md:flex-row justify-between items-start gap-8 border-b border-slate-800 pb-8 min-w-0">
                   <div className="min-w-0 flex-1">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">4. Industry Standards &amp; Systemic Risks</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">Industry Standards &amp; Systemic Risks</h2>
                     <p className="text-slate-400 text-lg leading-relaxed">Balancing the immense benefits with the severe architectural vulnerabilities.</p>
                   </div>
                   <div className="bg-black/40 border border-slate-800 p-6 rounded-2xl flex items-start gap-4 max-w-sm shrink-0 min-w-0">
-                    <Globe className="text-blue-400 shrink-0 w-8 h-8" />
+                    <Globe className="text-[#A8672E] dark:text-[#D08F52] shrink-0 w-8 h-8" />
                     <p className="text-sm text-slate-300 leading-relaxed">
                       <strong className="text-white">The FIX Analogy:</strong> Like the FIX protocol standardized electronic trading in the 90s, the Linux Foundation (AAIF) is creating the "TCP/IP moment" for AI.
                     </p>
@@ -250,7 +250,7 @@ export default function AgentProtocolsArticle() {
                   </div>
                   
                   <div className="min-w-0">
-                    <h3 className="text-2xl font-bold text-rose-400 mb-8 flex items-center gap-3 font-serif">
+                    <h3 className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-8 flex items-center gap-3 font-serif">
                       <AlertTriangle className="w-6 h-6" /> The Vulnerabilities (Cons)
                     </h3>
                     <ul className="space-y-6">
@@ -282,7 +282,7 @@ export default function AgentProtocolsArticle() {
           {/* Section 5: Architecture Examples */}
           <section className="py-16 border-t border-slate-200 dark:border-slate-800">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">5. Real-World Orchestration Architectures</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-6">Real-World Orchestration Architectures</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
                 How different teams coordinate together utilizing orchestrator backbones to execute complex financial workloads.
               </p>
@@ -291,13 +291,13 @@ export default function AgentProtocolsArticle() {
             <div className="space-y-12 min-w-0">
               {/* Example 1 */}
               <div className="bg-white dark:bg-[#05070A] rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm min-w-0 flex flex-col">
-                <div className="bg-blue-50 dark:bg-blue-950/20 border-b border-blue-100 dark:border-blue-900/30 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shrink-0">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-950/20 border-b border-blue-100 dark:border-blue-900/30 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shrink-0">
                   <div className="min-w-0">
                     <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-300 font-serif mb-2">System 1: Autonomous Wealth Management</h3>
-                    <p className="text-blue-700 dark:text-blue-400/80 text-sm">Hierarchical Orchestration bridging LangChain and CrewAI.</p>
+                    <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]/80 text-sm">Hierarchical Orchestration bridging LangChain and CrewAI.</p>
                   </div>
                   <div className="bg-white dark:bg-black p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-sm font-semibold text-blue-800 dark:text-blue-300 flex items-center gap-3 shrink-0">
-                    <Lock className="w-5 h-5 text-blue-500" /> The Nexus Handshake
+                    <Lock className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" /> The Nexus Handshake
                   </div>
                 </div>
                 
@@ -306,7 +306,7 @@ export default function AgentProtocolsArticle() {
                     {/* Flow Visualization */}
                     <div className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col gap-6 relative min-w-0 shrink-0">
                       <div className="p-6 bg-white dark:bg-[#05070A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-5 relative z-10 min-w-0">
-                        <div className="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 p-4 rounded-xl shrink-0">
+                        <div className="bg-blue-100 dark:bg-blue-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] p-4 rounded-xl shrink-0">
                           <Server className="w-6 h-6"/>
                         </div>
                         <div className="min-w-0">
@@ -316,7 +316,7 @@ export default function AgentProtocolsArticle() {
                       </div>
                       
                       {/* Connecting line */}
-                      <div className="h-12 border-l-2 border-dashed border-indigo-300 dark:border-indigo-700 ml-12 relative">
+                      <div className="h-12 border-l-2 border-dashed border-indigo-300 dark:border-[#A8672E] dark:border-[#D08F52] ml-12 relative">
                         <div className="absolute top-1/2 -translate-y-1/2 left-4 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 text-xs px-3 py-1.5 rounded-lg font-bold border border-indigo-200 dark:border-indigo-800/50 whitespace-nowrap">
                           A2A + ACP (Nexus Handshake)
                         </div>
@@ -340,23 +340,23 @@ export default function AgentProtocolsArticle() {
                       </p>
                       <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">1. Ingestion:</strong> The Advisory agent uses <strong className="text-slate-900 dark:text-slate-200">MCP</strong> to ingest client constraints from an internal CRM securely.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">2. Discovery:</strong> Using <strong className="text-slate-900 dark:text-slate-200">A2A</strong>, it searches for an agent broadcasting the FIBO semantic intent <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs">EXECUTE_PORTFOLIO_STRESS_TEST</code>.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">3. Negotiation:</strong> Via <strong className="text-slate-900 dark:text-slate-200">ACP</strong>, the agents negotiate SLAs (e.g., latency, cost) using PROBE and BID messages.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">4. The Nexus Handshake:</strong> A central Authority leases a time-bound identity token to the Risk agent. This allows secure cross-silo execution without sharing master credentials.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">5. Streaming Execution:</strong> Risk Agent runs Monte Carlo simulations, returning status via Server-Sent Events to avoid timeouts, completely opaque to the Advisory agent.</div>
                         </li>
                       </ul>
@@ -367,13 +367,13 @@ export default function AgentProtocolsArticle() {
 
               {/* Example 2 */}
               <div className="bg-white dark:bg-[#05070A] rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm min-w-0 flex flex-col">
-                <div className="bg-rose-50 dark:bg-rose-950/20 border-b border-rose-100 dark:border-rose-900/30 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shrink-0">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 border-b border-rose-100 dark:border-rose-900/30 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shrink-0">
                   <div className="min-w-0">
                     <h3 className="text-2xl font-bold text-rose-900 dark:text-rose-300 font-serif mb-2">System 2: Enterprise Fraud Detection</h3>
-                    <p className="text-rose-700 dark:text-rose-400/80 text-sm">Adaptive Routing &amp; Group Chat Orchestration.</p>
+                    <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]/80 text-sm">Adaptive Routing &amp; Group Chat Orchestration.</p>
                   </div>
                   <div className="bg-white dark:bg-black p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-sm font-semibold text-rose-800 dark:text-rose-300 flex items-center gap-3 shrink-0">
-                    <Database className="w-5 h-5 text-rose-500" /> Bitemporal Evidence
+                    <Database className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]" /> Bitemporal Evidence
                   </div>
                 </div>
                 
@@ -384,7 +384,7 @@ export default function AgentProtocolsArticle() {
                       <div className="p-6 w-full bg-white dark:bg-[#05070A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 flex justify-center mb-8 relative z-10 min-w-0">
                         <div className="text-center min-w-0">
                           <div className="font-bold text-slate-800 dark:text-slate-200 flex justify-center items-center gap-3 mb-1 truncate">
-                            <Network className="w-5 h-5 text-rose-500"/> Transaction Orchestrator
+                            <Network className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A]"/> Transaction Orchestrator
                           </div>
                           <div className="text-xs text-slate-500 dark:text-slate-400 truncate">Global Core Backbone</div>
                         </div>
@@ -396,11 +396,11 @@ export default function AgentProtocolsArticle() {
                         <div className="absolute top-0 right-[25%] w-[25%] h-8 border-t-2 border-r-2 border-dashed border-slate-300 dark:border-slate-700 rounded-tr-xl -z-0"></div>
                         
                         <div className="p-4 bg-white dark:bg-[#05070A] rounded-2xl shadow-sm border border-red-200 dark:border-red-900/50 mt-8 w-1/2 text-center relative z-10 min-w-0">
-                          <div className="text-sm font-bold text-red-700 dark:text-red-400 mb-1 truncate">Behavioral Agent</div>
+                          <div className="text-sm font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] mb-1 truncate">Behavioral Agent</div>
                           <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">Flags Graph Anomaly</div>
                         </div>
                         <div className="p-4 bg-white dark:bg-[#05070A] rounded-2xl shadow-sm border border-emerald-200 dark:border-emerald-900/50 mt-8 w-1/2 text-center relative z-10 min-w-0">
-                          <div className="text-sm font-bold text-emerald-700 dark:text-emerald-400 mb-1 truncate">Compliance Agent</div>
+                          <div className="text-sm font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-1 truncate">Compliance Agent</div>
                           <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">Clears OFAC Check</div>
                         </div>
                       </div>
@@ -420,23 +420,23 @@ export default function AgentProtocolsArticle() {
                       </p>
                       <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">1. Low Latency Routing:</strong> The Orchestrator uses the <strong className="text-slate-900 dark:text-slate-200">AGP (gRPC)</strong> protocol to broadcast transaction metadata simultaneously for ultra-low latency.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">2. Tool Usage:</strong> Agents use <strong className="text-slate-900 dark:text-slate-200">MCP</strong> to hit live APIs (OFAC database, internal Graph Topologies).</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">3. Conflict Emergence:</strong> The Compliance agent clears the wire, but the Behavioral agent detects an 85% anomaly rate. Mathematical conflict occurs.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">4. Adversarial Resolution:</strong> The Orchestrator spins up a <strong className="text-slate-900 dark:text-slate-200">Group Chat Pattern</strong>. An Audit Agent weighs historical accuracy and invokes weighted aggregation to freeze the funds.</div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                          <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                           <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">5. Documentation Debt:</strong> Every handshake, intent, and rule is written immutably to a bitemporal XTDB database, proving exactly <em>why</em> the agents acted at that exact millisecond to auditors (Evidence-Based Governance).</div>
                         </li>
                       </ul>

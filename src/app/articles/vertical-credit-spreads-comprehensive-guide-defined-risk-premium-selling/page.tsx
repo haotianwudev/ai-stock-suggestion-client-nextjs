@@ -13,22 +13,22 @@ export default function VerticalCreditSpreadsGuide() {
         <InfographicSlot alt="Vertical Credit Spreads Strategy Infographic" />
 
         {/* Introduction Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <TrendingUp className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             An Introduction to the Vertical Credit Spread
           </h2>
 
           <div className="space-y-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">The Core Concept: Selling Financial &lsquo;Insurance&rsquo;</h3>
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-blue-900 mb-3 font-serif">The Core Concept: Selling Financial &lsquo;Insurance&rsquo;</h3>
               <p className="text-blue-800 leading-relaxed">
                 Think of a vertical credit spread as selling a carefully structured insurance policy on a stock. You collect an upfront payment (the &lsquo;premium&rsquo; or &lsquo;credit&rsquo;), and if the stock price stays within a specific range by a certain date, you keep that payment as profit. The &lsquo;vertical&rsquo; part of the name comes from the fact that the two options involved have strike prices that are vertically aligned in the same expiration cycle on an option chain.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-green-200 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-green-900 mb-3 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5" />
                   Bull Put Spread
@@ -42,7 +42,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </div>
               </div>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-red-900 mb-3 flex items-center gap-2">
                   <Activity className="w-5 h-5" />
                   Bear Call Spread
@@ -60,22 +60,22 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Strategic Application Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Target className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             Strategic Application and Environmental Factors
           </h2>
 
           <div className="space-y-6">
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-purple-900 mb-3">Market Outlook: The Power of Neutrality</h3>
+              <h3 className="text-xl font-semibold text-purple-900 mb-3 font-serif">Market Outlook: The Power of Neutrality</h3>
               <p className="text-purple-800 leading-relaxed">
                 Vertical credit spreads thrive in markets characterized by moderate movement or consolidation. Unlike buying stock, where you only profit from an upward move, credit spreads profit from three potential scenarios: the stock moving in your favor, moving sideways, or even moving slightly against you. This versatility significantly increases the probability of a winning trade from the outset.
               </p>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-orange-900 mb-3">Implied Volatility (IV): The Trader&apos;s Edge</h3>
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-orange-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-orange-900 mb-3 font-serif">Implied Volatility (IV): The Trader&apos;s Edge</h3>
               <p className="text-orange-800 leading-relaxed mb-4">
                 The most critical factor for success is high implied volatility. IV is a measure of the market&apos;s expectation of future price swings. When IV is high, option prices are expensive. As a seller of credit spreads, you are selling this &lsquo;rich&rsquo; premium.
               </p>
@@ -89,9 +89,9 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* The Greeks Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Calculator className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Calculator className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             Understanding the &lsquo;Greeks&rsquo;
           </h2>
 
@@ -103,14 +103,14 @@ export default function VerticalCreditSpreadsGuide() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-2">Delta (Directional Risk)</h4>
                 <p className="text-blue-800 text-sm">
                   The position&apos;s net delta tells you your equivalent stock exposure. Bull put spreads have positive delta, bear call spreads have negative delta.
                 </p>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-green-200 rounded-lg p-4">
                 <h4 className="font-semibold text-green-900 mb-2">Theta (Time Decay)</h4>
                 <p className="text-green-800 text-sm">
                   As a net seller of options, your position has positive theta. This means your position&apos;s value increases each day as time decay erodes option values.
@@ -126,7 +126,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </p>
               </div>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 rounded-lg p-4">
                 <h4 className="font-semibold text-red-900 mb-2">Gamma (Rate of Change)</h4>
                 <p className="text-red-800 text-sm">
                   Gamma represents your trade&apos;s instability. As expiration nears, gamma risk increases dramatically, making positions unpredictable.
@@ -137,9 +137,9 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Choosing Underlyings Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Activity className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Activity className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             Choosing the Right Underlying
           </h2>
 
@@ -151,16 +151,16 @@ export default function VerticalCreditSpreadsGuide() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+              <div className="flex items-start gap-3 p-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-green-200 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-green-900">High Liquidity</h4>
                   <p className="text-green-800 text-sm">Focus on stocks with high daily volume and open interest. Think SPY, QQQ, and large-cap stocks.</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+              <div className="flex items-start gap-3 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-blue-900">Elevated IV Rank</h4>
                   <p className="text-blue-800 text-sm">Use IV Rank screeners to find underlyings with current IV high relative to 52-week range (&gt;30 minimum).</p>
@@ -169,8 +169,8 @@ export default function VerticalCreditSpreadsGuide() {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <XCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+              <div className="flex items-start gap-3 p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 rounded-lg">
+                <XCircle className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A] mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-red-900">Avoid Binary Events</h4>
                   <p className="text-red-800 text-sm">Never place spreads with expiration dates that include earnings or other major announcements.</p>
@@ -189,9 +189,9 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Comparison Table Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Shield className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Shield className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             Comparative Analysis: Spreads vs. Naked Options
           </h2>
 
@@ -212,7 +212,7 @@ export default function VerticalCreditSpreadsGuide() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Short Naked Put</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Market Outlook</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bearish to Neutral</td>
@@ -222,37 +222,37 @@ export default function VerticalCreditSpreadsGuide() {
                 </tr>
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Max Profit</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited (Net Credit)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited (Premium)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited (Net Credit)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited (Premium)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited (Net Credit)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited (Premium)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited (Net Credit)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited (Premium)</td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Max Loss</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited &amp; Defined</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Unlimited</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Limited &amp; Defined</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Substantial</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited &amp; Defined</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Unlimited</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Limited &amp; Defined</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Substantial</td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Margin Requirement</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Low (Equals Max Loss)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Very High</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">Low (Equals Max Loss)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Very High</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Low (Equals Max Loss)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Very High</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">Low (Equals Max Loss)</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Very High</td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Capital Efficiency</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">High</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Low</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">High</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">Low</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">High</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Low</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#1D8A70] dark:text-[#3CBF9C]">High</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#BC4128] dark:text-[#E2694A]">Low</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="mt-6 p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-lg">
             <p className="text-blue-800 text-sm italic text-center">
               The spread is a structurally superior vehicle for premium selling from a risk-management and capital-efficiency perspective. For a modest reduction in potential profit, the trader gains absolute control and frees up significant capital for other opportunities.
             </p>
@@ -260,15 +260,15 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Trade Architecture Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Zap className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Zap className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             The Architecture of the Trade: Strike and Width Selection
           </h2>
 
           <div className="space-y-6">
-            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-indigo-900 mb-3">Selecting the First Leg (Short Strike) Using Delta</h3>
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-indigo-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-indigo-900 mb-3 font-serif">Selecting the First Leg (Short Strike) Using Delta</h3>
               <p className="text-indigo-800 leading-relaxed mb-4">
                 Delta can be interpreted as an approximate probability of an option expiring in-the-money. This makes it an invaluable tool for building trades that align with your risk tolerance.
               </p>
@@ -289,8 +289,8 @@ export default function VerticalCreditSpreadsGuide() {
               </div>
             </div>
 
-            <div className="bg-teal-50 border border-teal-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-teal-900 mb-3">Selecting the Second Leg and Defining Spread Width</h3>
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-teal-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-900 mb-3 font-serif">Selecting the Second Leg and Defining Spread Width</h3>
               <p className="text-teal-800 leading-relaxed mb-4">
                 The distance between your short strike and your long strike is the &lsquo;width&rsquo; of the spread. This width dictates your maximum risk and the margin required for the trade.
               </p>
@@ -304,14 +304,14 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Trade Walkthrough Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <CheckCircle className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <CheckCircle className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             A Practical Trade Walkthrough
           </h2>
 
           <div className="mb-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Bull Put Spread on META (Fictional Example)</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3 font-serif">Bull Put Spread on META (Fictional Example)</h3>
             <p className="text-gray-700 leading-relaxed">
               Let&apos;s walk through a complete trade setup and management process from analysis to execution.
             </p>
@@ -356,7 +356,7 @@ export default function VerticalCreditSpreadsGuide() {
               }
             ].map((item) => (
               <div key={item.step} className="flex items-start gap-4 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white font-bold rounded-full flex items-center justify-center">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#A8672E] dark:bg-[#D08F52] text-white font-bold rounded-full flex items-center justify-center">
                   {item.step}
                 </div>
                 <div>
@@ -369,19 +369,19 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* Trade Management Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Calendar className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <Calendar className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             A Trader&apos;s Guide to Managing and Closing the Position
           </h2>
 
           <div className="space-y-6">
-            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-emerald-900 mb-4">Best Practices for Proactive Trade Management</h3>
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border border-emerald-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-emerald-900 mb-4 font-serif">Best Practices for Proactive Trade Management</h3>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Calendar className="w-6 h-6 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Calendar className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-emerald-900">Optimal Expiration Dates (DTE)</h4>
                     <p className="text-emerald-800 text-sm">Enter trades with 30-60 days to expiration. The 45 DTE mark is often optimal for theta decay balance.</p>
@@ -389,7 +389,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Target className="w-6 h-6 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Target className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-emerald-900">The 50% Profit Rule</h4>
                     <p className="text-emerald-800 text-sm">Close positions once you capture 50% of initial credit. This improves win rate and return on capital.</p>
@@ -397,7 +397,7 @@ export default function VerticalCreditSpreadsGuide() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-6 h-6 text-emerald-600 mt-1 flex-shrink-0" />
+                  <AlertTriangle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-emerald-900">The 21 DTE Management Rule</h4>
                     <p className="text-emerald-800 text-sm">At 21 DTE, gamma risk increases significantly. Close profitable trades or consider rolling losing positions.</p>
@@ -406,8 +406,8 @@ export default function VerticalCreditSpreadsGuide() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Advanced Management: &lsquo;Rolling&rsquo; a Position</h3>
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border border-blue-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-blue-900 mb-3 font-serif">Advanced Management: &lsquo;Rolling&rsquo; a Position</h3>
               <p className="text-blue-800 leading-relaxed mb-4">
                 When a trade moves against you, you can &lsquo;roll&rsquo; it to extend duration and potentially improve your position. Rolling involves closing your existing spread and opening a new one in a later expiration cycle.
               </p>
@@ -418,8 +418,8 @@ export default function VerticalCreditSpreadsGuide() {
               </div>
             </div>
 
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-red-900 mb-3">Expiration Risk: Avoiding the &lsquo;Pin&rsquo;</h3>
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border border-red-200 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-red-900 mb-3 font-serif">Expiration Risk: Avoiding the &lsquo;Pin&rsquo;</h3>
               <p className="text-red-800 leading-relaxed mb-4">
                 The greatest danger at expiration is &lsquo;pin risk.&rsquo; This occurs if the underlying price closes exactly at, or very close to, your short strike price, potentially leading to unexpected assignment.
               </p>
@@ -433,9 +433,9 @@ export default function VerticalCreditSpreadsGuide() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <HelpCircle className="w-8 h-8 text-blue-600" />
+        <section className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3 font-serif">
+            <HelpCircle className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
             Frequently Asked Questions
           </h2>
 
@@ -458,7 +458,7 @@ export default function VerticalCreditSpreadsGuide() {
                 a: "Commissions are a cost of doing business and should be factored into expected profit. Because spreads involve multiple legs, commissions can be higher than single-leg trades."
               }
             ].map((faq, index) => (
-              <div key={index} className="p-6 border-l-4 border-blue-200 bg-blue-50 rounded-r-lg">
+              <div key={index} className="p-6 border-l-4 border-blue-200 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-r-lg">
                 <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                   <HelpCircle className="w-5 h-5" />
                   {faq.q}
@@ -471,35 +471,35 @@ export default function VerticalCreditSpreadsGuide() {
 
         {/* Key Recommendations */}
         <section className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Key Recommendations for Implementation</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center font-serif">Key Recommendations for Implementation</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 title: "Prioritize High IV",
                 description: "Only sell spreads when the underlying's IV Rank is elevated (ideally above 30). This provides the 'edge' that makes the strategy consistently profitable.",
-                icon: <Activity className="w-8 h-8 text-teal-600" />
+                icon: <Activity className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
               },
               {
                 title: "Standardize Your Setup",
                 description: "Use a consistent delta for strike selection (e.g., 30 delta) and a consistent risk/reward target (e.g., collect 1/3 the width of the strikes).",
-                icon: <Target className="w-8 h-8 text-teal-600" />
+                icon: <Target className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
               },
               {
                 title: "Manage by the Numbers",
                 description: "Follow a strict management plan: ~45 DTE entry, take profits at 50%, and manage or close all positions at 21 DTE.",
-                icon: <CheckCircle className="w-8 h-8 text-teal-600" />
+                icon: <CheckCircle className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
               },
               {
                 title: "Systematic Position Sizing",
                 description: "Consistently risk a small, fixed percentage of total account equity (e.g., 1-2%) on each and every trade.",
-                icon: <Shield className="w-8 h-8 text-teal-600" />
+                icon: <Shield className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52]" />
               }
             ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+              <div key={index} className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
                 <div className="flex items-center mb-4">
                   {item.icon}
-                  <h3 className="ml-4 text-xl font-semibold text-gray-800">{item.title}</h3>
+                  <h3 className="ml-4 text-xl font-semibold text-gray-800 font-serif">{item.title}</h3>
                 </div>
                 <p className="text-gray-600">{item.description}</p>
               </div>
@@ -509,35 +509,35 @@ export default function VerticalCreditSpreadsGuide() {
 
         {/* Common Mistakes */}
         <section className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Common Mistakes to Avoid</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center font-serif">Common Mistakes to Avoid</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 title: "Legging Into Spreads",
                 description: "Trying to time the market by entering each leg separately. This turns a high-probability spread into a low-probability directional bet.",
-                icon: <XCircle className="w-8 h-8 text-red-500" />
+                icon: <XCircle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
               },
               {
                 title: "Ignoring Earnings and News",
                 description: "Placing trades before earnings reports is gambling, not strategy. Extreme price gaps will overwhelm any statistical edge.",
-                icon: <XCircle className="w-8 h-8 text-red-500" />
+                icon: <XCircle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
               },
               {
                 title: "Over-Sizing Positions",
                 description: "Just because risk is 'defined' doesn't mean you can ignore position sizing. Risking too much leads to emotional decisions.",
-                icon: <XCircle className="w-8 h-8 text-red-500" />
+                icon: <XCircle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
               },
               {
                 title: "Chasing High Premiums",
                 description: "The highest premiums are often on low-quality stocks with high IV for good reason—they are extremely volatile.",
-                icon: <XCircle className="w-8 h-8 text-red-500" />
+                icon: <XCircle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A]" />
               }
             ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+              <div key={index} className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
                 <div className="flex items-center mb-4">
                   {item.icon}
-                  <h3 className="ml-4 text-xl font-semibold text-gray-800">{item.title}</h3>
+                  <h3 className="ml-4 text-xl font-semibold text-gray-800 font-serif">{item.title}</h3>
                 </div>
                 <p className="text-gray-600">{item.description}</p>
               </div>

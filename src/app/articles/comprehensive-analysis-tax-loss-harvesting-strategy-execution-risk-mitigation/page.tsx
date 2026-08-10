@@ -12,7 +12,7 @@ const ContentBox = ({ title, children, icon: Icon, colorClass, borderClass = 'bo
   colorClass: string;
   borderClass?: string;
 }) => (
-  <div className={`p-6 bg-white rounded-xl shadow-lg border ${borderClass} mb-8`}>
+  <div className={`p-6 bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border ${borderClass} mb-8`}>
     <h3 className={`flex items-center text-xl font-bold mb-4 ${colorClass}`}>
       {Icon && <Icon className="mr-3" />}
       {title}
@@ -48,21 +48,21 @@ export default function TaxLossHarvestingArticle() {
         <InfographicSlot alt="Tax-Loss Harvesting Strategy Infographic" />
 
         {/* Introductory Box */}
-        <div className="p-8 bg-blue-50 border-l-4 border-blue-500 rounded-xl shadow-inner mb-10">
+        <div className="p-8 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-l-4 border-[#A8672E] dark:border-[#D08F52] rounded-xl shadow-inner mb-10">
           <p className="text-xl font-semibold text-blue-800">
             Tax-loss harvesting is a <strong>strategic discipline</strong> designed to enhance after-tax returns by systematically managing the realization of capital gains and losses, often referred to as generating <strong>&ldquo;tax alpha.&rdquo;</strong>
           </p>
         </div>
 
         {/* --- Section I: Strategic Imperative --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           I. The Strategic Imperative
         </h2>
 
         <ContentBox
           title="Core Mechanism"
           icon={CheckCircle}
-          colorClass="text-green-700"
+          colorClass="text-[#1D8A70] dark:text-[#3CBF9C]"
           borderClass="border-green-300"
         >
           <BulletList color="rgb(4, 120, 87)">
@@ -74,14 +74,14 @@ export default function TaxLossHarvestingArticle() {
         </ContentBox>
 
         {/* --- Section II: Step-by-Step Execution --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           II. Step-by-Step Execution Guide
         </h2>
 
         <ContentBox
           title="Step-by-Step Process"
           icon={CheckCircle}
-          colorClass="text-blue-700"
+          colorClass="text-[#A8672E] dark:text-[#D08F52]"
           borderClass="border-blue-300"
         >
           <ol className="list-decimal pl-5 space-y-3">
@@ -113,17 +113,17 @@ export default function TaxLossHarvestingArticle() {
         </ContentBox>
 
         {/* --- Section III: Wash-Sale Rule --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           III. Compliance and the Wash-Sale Rule
         </h2>
 
         <ContentBox
           title="The Wash-Sale Rule Defined"
           icon={AlertTriangle}
-          colorClass="text-red-700"
-          borderClass="border-red-400"
+          colorClass="text-[#BC4128] dark:text-[#E2694A]"
+          borderClass="border-[#BC4128] dark:border-[#E2694A]"
         >
-          <p className="font-semibold text-red-800 bg-red-50 p-3 rounded-md">
+          <p className="font-semibold text-red-800 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-3 rounded-md">
             You cannot claim a tax loss if you acquire the same or a <strong>&ldquo;substantially identical&rdquo;</strong> security within the <strong>61-day window</strong>.
           </p>
           <BulletList color="rgb(185, 28, 28)">
@@ -138,7 +138,7 @@ export default function TaxLossHarvestingArticle() {
         </ContentBox>
 
         {/* --- Section IV: The Art of Replacement --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           IV. Replacement Strategies (Avoiding &ldquo;Substantially Identical&rdquo;)
         </h2>
 
@@ -152,7 +152,7 @@ export default function TaxLossHarvestingArticle() {
           <BulletList color="rgb(147, 51, 234)">
             <p>Sell a fund tracking the S&amp;P 500 and replace it with a fund tracking the <strong>Russell 1000</strong> or <strong>CRSP Total Stock Market</strong> index.</p>
             <p>These track different benchmarks, making them non-identical, even if performance is highly correlated.</p>
-            <p className="text-red-600 font-semibold">
+            <p className="text-[#BC4128] dark:text-[#E2694A] font-semibold">
               HIGH RISK: Do NOT swap ETFs from different managers that track the <strong>EXACT SAME INDEX</strong> (e.g., VOO to IVV). This is likely a wash sale.
             </p>
           </BulletList>
@@ -163,14 +163,14 @@ export default function TaxLossHarvestingArticle() {
         </ContentBox>
 
         {/* --- Section V: Common Pitfalls --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           V. Common Pitfalls and Strategic Missteps
         </h2>
 
         <ContentBox
           title="Key Operational Pitfalls"
           icon={AlertTriangle}
-          colorClass="text-orange-700"
+          colorClass="text-[#BC4128] dark:text-[#E2694A]"
           borderClass="border-orange-300"
         >
           <BulletList color="rgb(234, 88, 12)">
@@ -182,14 +182,14 @@ export default function TaxLossHarvestingArticle() {
         </ContentBox>
 
         {/* --- Section VI: Advanced Strategies --- */}
-        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6 pb-2 border-b-2 border-gray-200 font-serif">
           VI. Advanced Strategies and Automation
         </h2>
 
         <ContentBox
           title="Automation & Next-Gen TLH"
           icon={CheckCircle}
-          colorClass="text-teal-700"
+          colorClass="text-[#A8672E] dark:text-[#D08F52]"
           borderClass="border-teal-300"
         >
           <BulletList color="rgb(13, 148, 136)">

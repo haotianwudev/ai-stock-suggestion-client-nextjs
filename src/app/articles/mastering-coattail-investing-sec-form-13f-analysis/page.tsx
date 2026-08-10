@@ -6,12 +6,12 @@ import { ArticleFrame, InfographicSlot } from '@/components/articles/article-fra
 
 const Badge = ({ children, color = "blue" }: { children: React.ReactNode; color?: string }) => {
   const colors: Record<string, string> = {
-    blue: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-    green: "bg-emerald-100 text-emerald-800 dark:text-emerald-400 dark:bg-emerald-900/30 dark:text-emerald-400",
-    red: "bg-rose-100 text-rose-800 dark:text-rose-400 dark:bg-rose-900/30 dark:text-rose-400",
+    blue: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-[#A8672E] dark:text-[#D08F52]",
+    green: "bg-emerald-100 text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] dark:bg-emerald-900/30 dark:text-[#1D8A70] dark:text-[#3CBF9C]",
+    red: "bg-rose-100 text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] dark:bg-rose-900/30 dark:text-[#BC4128] dark:text-[#E2694A]",
     purple: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
     amber: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-    gray: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+    gray: "bg-slate-200 text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:text-slate-300",
   };
   return (
     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${colors[color] || colors.blue}`}>
@@ -28,10 +28,10 @@ const InvestorCard = ({ name, firm, type, strategy, keyMoves, color }: {
   keyMoves: Array<{ ticker: string; desc: string; type: string }>;
   color: string;
 }) => (
-  <div className={`bg-white dark:bg-[#14171B] rounded-2xl p-6 shadow-xl dark:shadow-none border-t-4 hover:shadow-2xl dark:hover:shadow-none transition-shadow duration-300 ${color === 'green' ? 'border-emerald-500' : color === 'purple' ? 'border-purple-500' : 'border-blue-500'}`}>
+  <div className={`bg-white dark:bg-[#14171B] rounded-2xl p-6 shadow-xl dark:shadow-none border-t-4 hover:shadow-2xl dark:hover:shadow-none transition-shadow duration-300 ${color === 'green' ? 'border-[#1D8A70] dark:border-[#3CBF9C]' : color === 'purple' ? 'border-purple-500' : 'border-[#A8672E] dark:border-[#D08F52]'}`}>
     <div className="flex justify-between items-start mb-4">
       <div>
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{name}</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">{name}</h3>
         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{firm}</p>
       </div>
       <Badge color={color}>{type}</Badge>
@@ -42,7 +42,7 @@ const InvestorCard = ({ name, firm, type, strategy, keyMoves, color }: {
       <ul className="space-y-3">
         {keyMoves.map((move, idx) => (
           <li key={idx} className="flex items-start text-sm">
-            <span className={`mt-1 mr-2 w-2 h-2 rounded-full flex-shrink-0 ${move.type === 'buy' ? 'bg-emerald-500' : move.type === 'sell' ? 'bg-rose-500' : 'bg-amber-500'}`} />
+            <span className={`mt-1 mr-2 w-2 h-2 rounded-full flex-shrink-0 ${move.type === 'buy' ? 'bg-[#1D8A70] dark:bg-[#3CBF9C]' : move.type === 'sell' ? 'bg-[#BC4128] dark:bg-[#E2694A]' : 'bg-amber-500'}`} />
             <span className="text-slate-700 dark:text-slate-300">
               <span className="font-semibold">{move.ticker}:</span> {move.desc}
             </span>
@@ -60,12 +60,12 @@ const StepCard = ({ number, title, icon: Icon, children }: {
   children: React.ReactNode;
 }) => (
   <div className="relative pl-16 py-4 group">
-    <div className="absolute left-0 top-4 w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center border-2 border-indigo-500 group-hover:bg-indigo-500 transition-colors duration-300">
-      <Icon className="w-6 h-6 text-indigo-600 dark:text-indigo-400 group-hover:text-white dark:group-hover:text-white transition-colors duration-300" />
+    <div className="absolute left-0 top-4 w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center border-2 border-[#A8672E] dark:border-[#D08F52] group-hover:bg-[#A8672E] dark:bg-[#D08F52] transition-colors duration-300">
+      <Icon className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] group-hover:text-white dark:group-hover:text-white transition-colors duration-300" />
     </div>
     <div className="absolute left-6 top-16 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 -z-10 group-last:hidden"></div>
-    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center">
-      <span className="mr-2 text-indigo-500">Step {number}:</span> {title}
+    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center font-serif">
+      <span className="mr-2 text-[#A8672E] dark:text-[#D08F52]">Step {number}:</span> {title}
     </h3>
     <div className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">{children}</div>
   </div>
@@ -78,13 +78,13 @@ const TypologyCard = ({ icon: Icon, title, description, examples, type }: {
   examples: string[];
   type: string;
 }) => (
-  <div className={`p-6 rounded-xl border ${type === 'good' ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-900/30' : 'bg-rose-50 dark:bg-rose-900/20 border-rose-100 dark:border-rose-900/30'}`}>
+  <div className={`p-6 rounded-xl border ${type === 'good' ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-900/30' : 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 border-rose-100 dark:border-rose-900/30'}`}>
     <div className="flex items-start mb-4">
       <div className={`p-2 rounded-lg mr-3 ${type === 'good' ? 'bg-emerald-100 dark:bg-emerald-900/40' : 'bg-rose-100 dark:bg-rose-900/40'}`}>
-        <Icon className={`w-5 h-5 ${type === 'good' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`} />
+        <Icon className={`w-5 h-5 ${type === 'good' ? 'text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]'}`} />
       </div>
       <div>
-        <h4 className={`text-lg font-bold ${type === 'good' ? 'text-emerald-900 dark:text-emerald-400' : 'text-rose-900 dark:text-rose-400'}`}>{title}</h4>
+        <h4 className={`text-lg font-bold ${type === 'good' ? 'text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A]'}`}>{title}</h4>
       </div>
     </div>
     <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 min-h-[60px]">{description}</p>
@@ -117,13 +117,13 @@ const ConflictCard = ({ stock, bull, bear, bullThesis, bearThesis }: {
       <Scale className="text-slate-400 w-5 h-5" />
     </div>
     <div className="grid grid-cols-2 gap-4 text-sm">
-      <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-        <span className="block font-bold text-emerald-800 dark:text-emerald-400 mb-1">{bull} (Buying)</span>
-        <p className="text-emerald-700 dark:text-emerald-300 leading-tight">{bullThesis}</p>
+      <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+        <span className="block font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-1">{bull} (Buying)</span>
+        <p className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 leading-tight">{bullThesis}</p>
       </div>
-      <div className="bg-rose-50 dark:bg-rose-900/20 p-3 rounded-lg border border-rose-100 dark:border-rose-900/30">
-        <span className="block font-bold text-rose-800 dark:text-rose-400 mb-1">{bear} (Selling)</span>
-        <p className="text-rose-700 dark:text-rose-300 leading-tight">{bearThesis}</p>
+      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-3 rounded-lg border border-rose-100 dark:border-rose-900/30">
+        <span className="block font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-1">{bear} (Selling)</span>
+        <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-rose-300 leading-tight">{bearThesis}</p>
       </div>
     </div>
   </div>
@@ -142,7 +142,7 @@ export default function CoattailInvestingArticle() {
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">What is the 13F?</h2>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6 font-serif">What is the 13F?</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
                 Born from the Securities Exchange Act of 1934, SEC Form 13F is a quarterly report filed by institutional investment managers with over <strong>$100 million</strong> in qualifying assets.
               </p>
@@ -152,14 +152,14 @@ export default function CoattailInvestingArticle() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
                   <Clock className="w-6 h-6 text-amber-500 mb-2" />
-                  <h3 className="font-semibold text-slate-900 dark:text-white">The 45-Day Lag</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white font-serif">The 45-Day Lag</h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                     Filings are due 45 days after quarter-end. Q4 data (Dec 31) arrives in mid-February.
                   </p>
                 </div>
                 <div className="bg-white dark:bg-[#14171B] p-4 rounded-lg shadow-sm dark:shadow-none border border-slate-100 dark:border-white/10">
-                  <ShieldAlert className="w-6 h-6 text-rose-500 mb-2" />
-                  <h3 className="font-semibold text-slate-900 dark:text-white">Asymmetric Data</h3>
+                  <ShieldAlert className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A] mb-2" />
+                  <h3 className="font-semibold text-slate-900 dark:text-white font-serif">Asymmetric Data</h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                     Only LONG positions are shown. Short sells, foreign stocks, and cash are hidden.
                   </p>
@@ -170,17 +170,17 @@ export default function CoattailInvestingArticle() {
               <div className="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
                 <BookOpen size={200} />
               </div>
-              <h3 className="text-2xl font-bold mb-4">The Golden Rule</h3>
+              <h3 className="text-2xl font-bold mb-4 font-serif">The Golden Rule</h3>
               <p className="text-indigo-200 mb-6 text-lg">
                 "Treating a 13F filing as a real-time reflection of market sentiment is a critical analytical fallacy."
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] mt-1 mr-3 flex-shrink-0" />
                   <p className="text-sm">Follow managers with multi-year time horizons.</p>
                 </div>
                 <div className="flex items-start">
-                  <XCircle className="w-5 h-5 text-rose-400 mt-1 mr-3 flex-shrink-0" />
+                  <XCircle className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A] mt-1 mr-3 flex-shrink-0" />
                   <p className="text-sm">Avoid High-Frequency Traders & Market Makers.</p>
                 </div>
                 <div className="flex items-start">
@@ -196,7 +196,7 @@ export default function CoattailInvestingArticle() {
         <section className="mb-16 bg-white dark:bg-[#14171B] py-16 px-4 md:px-8 rounded-3xl">
           <div className="text-center mb-16">
             <Badge color="blue">Step 1: Filtration</Badge>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4">The Typology of Institutional Alpha</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4 font-serif">The Typology of Institutional Alpha</h2>
             <p className="text-slate-500 dark:text-slate-400 mt-2">
               Not all billions are created equal. You must filter for specific operational models to find actionable signal.
             </p>
@@ -204,7 +204,7 @@ export default function CoattailInvestingArticle() {
 
           {/* High Signal Investors */}
           <div className="mb-12">
-            <h3 className="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-6 flex items-center">
+            <h3 className="text-xl font-bold text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-6 flex items-center font-serif">
               <CheckCircle className="w-6 h-6 mr-2" />
               High-Signal Allocators (The Green Zone)
             </h3>
@@ -235,7 +235,7 @@ export default function CoattailInvestingArticle() {
 
           {/* Low Signal Investors */}
           <div>
-            <h3 className="text-xl font-bold text-rose-800 dark:text-rose-400 mb-6 flex items-center">
+            <h3 className="text-xl font-bold text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] mb-6 flex items-center font-serif">
               <XCircle className="w-6 h-6 mr-2" />
               Low-Signal / Noise (The Red Zone)
             </h3>
@@ -273,10 +273,10 @@ export default function CoattailInvestingArticle() {
         </section>
 
         {/* Q4 2025 Analysis */}
-        <section className="mb-16 bg-indigo-50 dark:bg-indigo-900/10 py-16 px-4 md:px-8 rounded-3xl">
+        <section className="mb-16 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/10 py-16 px-4 md:px-8 rounded-3xl">
           <div className="text-center mb-16">
             <Badge color="purple">Q4 2025 Research • Feb 2026 Filings</Badge>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4">The Apex Allocators: Divergent Views</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4 font-serif">The Apex Allocators: Divergent Views</h2>
             <p className="text-slate-500 dark:text-slate-400 mt-2">
               The consensus has fractured. The masters are taking opposing bets on the "AI Capex" cycle.
             </p>
@@ -363,7 +363,7 @@ export default function CoattailInvestingArticle() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <Badge color="blue">Tutorial</Badge>
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4">The Common Investor Workflow</h2>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-4 font-serif">The Common Investor Workflow</h2>
               <p className="text-slate-500 dark:text-slate-400 mt-2">How to execute this strategy yourself.</p>
             </div>
             <div className="space-y-4">

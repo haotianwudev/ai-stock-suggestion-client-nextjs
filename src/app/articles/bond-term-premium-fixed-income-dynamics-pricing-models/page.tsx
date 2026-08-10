@@ -56,7 +56,7 @@ export default function BondTermPremiumPage() {
                 <div key={i} className="flex gap-4 p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <span className="text-2xl flex-shrink-0">{item.icon}</span>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">{item.label}</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-1">{item.label}</p>
                     <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ export default function BondTermPremiumPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Landmark className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Foundation: Theoretical Genesis</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Foundation: Theoretical Genesis</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
               The term structure of interest rates remains one of the most rigorously analyzed subjects in
@@ -124,7 +124,7 @@ export default function BondTermPremiumPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Settings className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Mechanics: Decomposing Yields (ACM Model)</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Mechanics: Decomposing Yields (ACM Model)</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
               Because the term premium is a latent variable, financial economists rely on Affine Term
@@ -179,7 +179,7 @@ export default function BondTermPremiumPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <BarChart3 className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Quantitative Framework</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Quantitative Framework</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
               To systematically forecast the term premium (TP<sub>t</sub>), quantitative researchers deploy
@@ -207,25 +207,25 @@ export default function BondTermPremiumPage() {
                   <tr>
                     <td className="py-4 px-6 font-mono font-bold">σ(π,t)</td>
                     <td className="py-4 px-6">Survey disagreement on 1-year ahead CPI</td>
-                    <td className="py-4 px-6 font-bold text-emerald-600 dark:text-emerald-400">Positive (+)</td>
+                    <td className="py-4 px-6 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Positive (+)</td>
                     <td className="py-4 px-6">Higher inflation uncertainty demands greater compensation for purchasing power risk.</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 font-mono font-bold">Debt/GDP</td>
                     <td className="py-4 px-6">Ratio of outstanding sovereign debt to GDP</td>
-                    <td className="py-4 px-6 font-bold text-emerald-600 dark:text-emerald-400">Positive (+)</td>
+                    <td className="py-4 px-6 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Positive (+)</td>
                     <td className="py-4 px-6">Increased supply of duration requires a higher premium to induce arbitrageurs to hold the risk.</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 font-mono font-bold">ΔCB</td>
                     <td className="py-4 px-6">Change in central bank balance sheet size</td>
-                    <td className="py-4 px-6 font-bold text-rose-600 dark:text-rose-400">Negative (−)</td>
+                    <td className="py-4 px-6 font-bold text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Negative (−)</td>
                     <td className="py-4 px-6">QE removes duration risk from the market, mechanically depressing the premium.</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 font-mono font-bold">MOVE</td>
                     <td className="py-4 px-6">Option-implied interest rate volatility</td>
-                    <td className="py-4 px-6 font-bold text-emerald-600 dark:text-emerald-400">Positive (+)</td>
+                    <td className="py-4 px-6 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Positive (+)</td>
                     <td className="py-4 px-6">Higher general rate volatility implies higher mark-to-market risk for long bonds.</td>
                   </tr>
                 </tbody>
@@ -241,7 +241,7 @@ export default function BondTermPremiumPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Target className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Strategy and Application</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Strategy and Application</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
               For professional fixed income managers, the term premium is a vital, tradable macro signal.
@@ -252,7 +252,7 @@ export default function BondTermPremiumPage() {
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6 font-serif">The Portfolio Positioning Matrix</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              <div className="bg-rose-50 dark:bg-rose-900/20 rounded-2xl p-6 border-t-4 border-rose-500 shadow-sm">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 rounded-2xl p-6 border-t-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm">
                 <h4 className="text-xl font-bold text-rose-900 dark:text-rose-300 mb-6 flex items-center gap-2 font-serif">
                   <TrendingUp className="rotate-180 shrink-0" size={24} />
                   Compressed / Negative TP
@@ -265,7 +265,7 @@ export default function BondTermPremiumPage() {
                 </ul>
               </div>
 
-              <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border-t-4 border-emerald-500 shadow-sm">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-2xl p-6 border-t-4 border-[#1D8A70] dark:border-[#3CBF9C] shadow-sm">
                 <h4 className="text-xl font-bold text-emerald-900 dark:text-emerald-300 mb-6 flex items-center gap-2 font-serif">
                   <TrendingUp className="shrink-0" size={24} />
                   Elevated / Normalizing TP
@@ -288,7 +288,7 @@ export default function BondTermPremiumPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <History className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Historical Evidence</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Historical Evidence</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">

@@ -32,18 +32,18 @@ interface CardProps {
 
 const Card = ({ title, children, icon: Icon, color = "blue" }: CardProps) => {
   const colorMap = {
-    blue: "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/20 dark:border-blue-900/30 dark:text-blue-400",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-[#A8672E] dark:text-[#D08F52] dark:bg-blue-900/20 dark:border-blue-900/30 dark:text-[#A8672E] dark:text-[#D08F52]",
     purple: "bg-purple-50 border-purple-200 text-purple-700 dark:bg-purple-900/20 dark:border-purple-900/30 dark:text-purple-400",
-    emerald: "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-900/30 dark:text-emerald-400",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-[#1D8A70] dark:text-[#3CBF9C] dark:bg-emerald-900/20 dark:border-emerald-900/30 dark:text-[#1D8A70] dark:text-[#3CBF9C]",
     amber: "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-900/20 dark:border-amber-900/30 dark:text-amber-400",
-    rose: "bg-rose-50 border-rose-200 text-rose-700 dark:bg-rose-900/20 dark:border-rose-900/30 dark:text-rose-400",
-    slate: "bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-900/20 dark:border-slate-800 dark:text-slate-400",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-[#BC4128] dark:text-[#E2694A] dark:bg-rose-900/20 dark:border-rose-900/30 dark:text-[#BC4128] dark:text-[#E2694A]",
+    slate: "bg-slate-50 dark:bg-[#14171B] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 dark:bg-slate-900/20 dark:border-slate-800 dark:text-slate-400",
   };
   return (
     <div className={`p-6 rounded-2xl border-2 ${colorMap[color]} transition-transform hover:-translate-y-1 duration-300 h-full`}>
       <div className="flex items-center mb-4">
         {Icon && <Icon className="w-6 h-6 mr-3" />}
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{title}</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white font-serif">{title}</h3>
       </div>
       <div className="text-slate-800 dark:text-slate-300">{children}</div>
     </div>
@@ -56,9 +56,9 @@ const TickerBadge = ({ symbol, name, change }: { symbol: string; name: string; c
     <span className="text-slate-500 dark:text-slate-400 text-sm mr-3 hidden sm:inline">{name}</span>
     {change && (
       <span className={`text-xs font-semibold px-2 py-0.5 rounded ${
-        change === 'new' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
-        change === 'sold' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' :
-        'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+        change === 'new' ? 'bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C] dark:bg-green-900/30 dark:text-[#1D8A70] dark:text-[#3CBF9C]' :
+        change === 'sold' ? 'bg-red-100 text-[#BC4128] dark:text-[#E2694A] dark:bg-red-900/30 dark:text-[#BC4128] dark:text-[#E2694A]' :
+        'bg-blue-100 text-[#A8672E] dark:text-[#D08F52] dark:bg-blue-900/30 dark:text-[#A8672E] dark:text-[#D08F52]'
       }`}>
         {change.toUpperCase()}
       </span>
@@ -67,17 +67,17 @@ const TickerBadge = ({ symbol, name, change }: { symbol: string; name: string; c
 );
 
 const TutorialTip = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-start bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-100 dark:border-indigo-900/30 my-8">
-    <BookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400 mt-1 mr-4 flex-shrink-0" />
+  <div className="flex items-start bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-100 dark:border-indigo-900/30 my-8">
+    <BookOpen className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mt-1 mr-4 flex-shrink-0" />
     <div>
-      <h4 className="font-bold text-indigo-900 dark:text-indigo-400 text-sm uppercase tracking-wider mb-1">Tutorial Note</h4>
+      <h4 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] text-sm uppercase tracking-wider mb-1">Tutorial Note</h4>
       <p className="text-indigo-800 dark:text-indigo-300 leading-relaxed">{children}</p>
     </div>
   </div>
 );
 
 const HoldingRow = ({ rank, name, ticker, allocation, type }: { rank: number; name: string; ticker: string; allocation: string; type: string }) => (
-  <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors px-4 rounded-lg">
+  <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40 transition-colors px-4 rounded-lg">
     <div className="flex items-center mb-2 sm:mb-0">
       <span className="w-8 h-8 flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400 font-bold rounded-full mr-4 text-sm">
         {rank}
@@ -116,7 +116,7 @@ export default function DuquesneParadigmArticle() {
               </Text>
             </div>
             <div className="bg-slate-100 dark:bg-[#14171B] p-8 rounded-3xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-              <h3 className="text-xl font-bold mb-6 flex items-center">
+              <h3 className="text-xl font-bold mb-6 flex items-center font-serif">
                 <Activity className="w-5 h-5 mr-2 text-purple-600" />
                 Key Stats (Q4 2025)
               </h3>
@@ -135,7 +135,7 @@ export default function DuquesneParadigmArticle() {
                 </div>
                 <div className="flex justify-between items-center pb-2">
                   <span className="text-slate-600 dark:text-slate-400">New Positions</span>
-                  <span className="font-mono font-bold text-green-600 dark:text-green-400">28</span>
+                  <span className="font-mono font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">28</span>
                 </div>
               </div>
             </div>
@@ -147,10 +147,10 @@ export default function DuquesneParadigmArticle() {
           <Section className="py-0">
             <div className="flex flex-col md:flex-row items-start gap-8">
               <div className="md:w-1/3">
-                <div className="bg-blue-600 p-4 rounded-xl inline-block mb-4">
+                <div className="bg-[#A8672E] dark:bg-[#D08F52] p-4 rounded-xl inline-block mb-4">
                   <Search className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold mb-2">What is a 13F?</h2>
+                <h2 className="text-2xl font-bold mb-2 font-serif">What is a 13F?</h2>
                 <p className="text-slate-400">A quick primer for the common investor.</p>
               </div>
               <div className="md:w-2/3">
@@ -159,13 +159,13 @@ export default function DuquesneParadigmArticle() {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                    <span className="text-green-400 font-bold block mb-1">The Opportunity</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C] font-bold block mb-1">The Opportunity</span>
                     <span className="text-sm text-slate-400">
                       See exactly what the "smart money" owns, allowing you to identify high-conviction themes and sector rotations.
                     </span>
                   </div>
                   <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                    <span className="text-red-400 font-bold block mb-1">The Trap</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A] font-bold block mb-1">The Trap</span>
                     <span className="text-sm text-slate-400">
                       Filings are delayed by 45 days. By the time you read this, Druckenmiller may have already sold. It is a lagging indicator.
                     </span>
@@ -213,7 +213,7 @@ export default function DuquesneParadigmArticle() {
                 <Zap className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-white leading-tight">Theme 1: The AI Infrastructure Pivot</h2>
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white leading-tight font-serif">Theme 1: The AI Infrastructure Pivot</h2>
                 <p className="text-purple-600 font-bold tracking-wide uppercase text-sm mt-1">From Silicon to Electrons</p>
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function DuquesneParadigmArticle() {
             <div className="grid lg:grid-cols-2 gap-8 mb-10">
               {/* The Problem: Grid Congestion */}
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center font-serif">
                   <AlertTriangle className="w-5 h-5 text-amber-500 mr-2" />
                   The Bottleneck Thesis
                 </h3>
@@ -240,42 +240,42 @@ export default function DuquesneParadigmArticle() {
                 <div className="bg-slate-100 dark:bg-slate-900/40 rounded-xl p-5">
                   <div className="flex justify-between text-xs font-bold text-slate-500 dark:text-slate-400 mb-1">
                     <span>Chip Supply (Nvidia H100s)</span>
-                    <span className="text-green-600">Stabilizing</span>
+                    <span className="text-[#1D8A70] dark:text-[#3CBF9C]">Stabilizing</span>
                   </div>
                   <div className="w-full bg-slate-300 dark:bg-slate-700 rounded-full h-2 mb-4">
-                    <div className="bg-green-500 h-2 rounded-full shadow-sm" style={{ width: '85%' }}></div>
+                    <div className="bg-[#1D8A70] dark:bg-[#3CBF9C] h-2 rounded-full shadow-sm" style={{ width: '85%' }}></div>
                   </div>
                   <div className="flex justify-between text-xs font-bold text-slate-500 dark:text-slate-400 mb-1">
                     <span>Power Availability (Gigawatts)</span>
-                    <span className="text-red-600">Critical Shortage</span>
+                    <span className="text-[#BC4128] dark:text-[#E2694A]">Critical Shortage</span>
                   </div>
                   <div className="w-full bg-slate-300 dark:bg-slate-700 rounded-full h-2">
-                    <div className="bg-red-500 h-2 rounded-full shadow-sm" style={{ width: '30%' }}></div>
+                    <div className="bg-[#BC4128] dark:bg-[#E2694A] h-2 rounded-full shadow-sm" style={{ width: '30%' }}></div>
                   </div>
                 </div>
               </div>
 
               {/* The Solution: Behind-the-Meter Generation */}
               <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center">
-                  <Activity className="w-5 h-5 text-emerald-500 mr-2" />
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center font-serif">
+                  <Activity className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] mr-2" />
                   The Solution (Holdings)
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
                   Druckenmiller bought companies that allow data centers to generate their own power on-site, bypassing the utility grid entirely.
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                    <span className="font-bold text-emerald-900 dark:text-emerald-400 text-sm">Bloom Energy (BE)</span>
-                    <span className="text-xs text-emerald-700 dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Solid Oxide Fuel Cells</span>
+                  <div className="flex items-center justify-between p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+                    <span className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm">Bloom Energy (BE)</span>
+                    <span className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Solid Oxide Fuel Cells</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                    <span className="font-bold text-emerald-900 dark:text-emerald-400 text-sm">Vistra (VST)</span>
-                    <span className="text-xs text-emerald-700 dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Nuclear Baseload</span>
+                  <div className="flex items-center justify-between p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+                    <span className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm">Vistra (VST)</span>
+                    <span className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Nuclear Baseload</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                    <span className="font-bold text-emerald-900 dark:text-emerald-400 text-sm">GE Vernova (GEV)</span>
-                    <span className="text-xs text-emerald-700 dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Grid Hardware</span>
+                  <div className="flex items-center justify-between p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+                    <span className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm">GE Vernova (GEV)</span>
+                    <span className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 bg-white dark:bg-black/40 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/30">Grid Hardware</span>
                   </div>
                 </div>
               </div>
@@ -292,14 +292,14 @@ export default function DuquesneParadigmArticle() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center border-b border-rose-100 dark:border-rose-900/30 pb-2">
                       <span className="font-bold text-slate-800 dark:text-white">Microsoft (MSFT)</span>
-                      <span className="text-xs font-mono text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 px-2 py-1 rounded">-45% Size</span>
+                      <span className="text-xs font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 px-2 py-1 rounded">-45% Size</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-rose-100 dark:border-rose-900/30 pb-2">
                       <span className="font-bold text-slate-800 dark:text-white">Broadcom (AVGO)</span>
-                      <span className="text-xs font-mono text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 px-2 py-1 rounded">Sold Out</span>
+                      <span className="text-xs font-mono text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 px-2 py-1 rounded">Sold Out</span>
                     </div>
                   </div>
-                  <div className="mt-4 bg-rose-50 dark:bg-rose-900/20 p-3 rounded-lg border border-rose-100 dark:border-rose-900/30">
+                  <div className="mt-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 p-3 rounded-lg border border-rose-100 dark:border-rose-900/30">
                     <p className="text-xs text-rose-800 dark:text-rose-300 italic">
                       "Everyone owns the chips. The edge is gone. The Capex spend is massive, but the ROI timeline is extending."
                     </p>
@@ -316,14 +316,14 @@ export default function DuquesneParadigmArticle() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center border-b border-emerald-100 dark:border-emerald-900/30 pb-2">
                       <span className="font-bold text-slate-800 dark:text-white">Cameco (CCJ)</span>
-                      <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">New (Uranium)</span>
+                      <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 px-2 py-1 rounded">New (Uranium)</span>
                     </div>
                     <div className="flex justify-between items-center border-b border-emerald-100 dark:border-emerald-900/30 pb-2">
                       <span className="font-bold text-slate-800 dark:text-white">Constellation (CEG)</span>
-                      <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">+25% Add</span>
+                      <span className="text-xs font-mono text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 px-2 py-1 rounded">+25% Add</span>
                     </div>
                   </div>
-                  <div className="mt-4 bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
+                  <div className="mt-4 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
                     <p className="text-xs text-emerald-800 dark:text-emerald-300 italic">
                       "If you believe in AI, you must believe in Nuclear. There is no other math that works for the grid."
                     </p>
@@ -342,7 +342,7 @@ export default function DuquesneParadigmArticle() {
         <Section>
           <div className="flex items-center mb-6">
             <div className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg mr-4">
-              <Landmark className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <Landmark className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
             </div>
             <Heading className="mb-0">Theme 2: "Animal Spirits" & Deregulation</Heading>
           </div>
@@ -376,11 +376,11 @@ export default function DuquesneParadigmArticle() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-indigo-300">The "Inside" Edge: Kevin Warsh</h2>
+                <h2 className="text-3xl font-bold mb-6 text-indigo-300 font-serif">The "Inside" Edge: Kevin Warsh</h2>
                 <p className="text-indigo-100 mb-6 leading-relaxed">
                   To understand the portfolio, you must understand the relationship. Kevin Warsh, the new Fed Chair, is Druckenmiller's former partner and protégé.
                 </p>
-                <div className="bg-indigo-800 p-6 rounded-xl border border-indigo-700">
+                <div className="bg-indigo-800 p-6 rounded-xl border border-[#A8672E] dark:border-[#D08F52]">
                   <h4 className="font-bold text-white mb-2">Epistemological Capture</h4>
                   <p className="text-sm text-indigo-200">
                     A fancy term meaning the regulator thinks like the regulated. Warsh views the economy through a "market lens." He understands that liquidity drives markets. Druckenmiller's bet on Financials is a bet on a Fed that prioritizes market function.
@@ -388,20 +388,20 @@ export default function DuquesneParadigmArticle() {
                 </div>
               </div>
               <div className="md:w-1/2 relative">
-                <div className="absolute -inset-4 bg-indigo-500 rounded-full opacity-20 blur-2xl"></div>
+                <div className="absolute -inset-4 bg-[#A8672E] dark:bg-[#D08F52] rounded-full opacity-20 blur-2xl"></div>
                 <div className="relative bg-indigo-950 p-8 rounded-2xl border border-indigo-800 shadow-2xl">
-                  <h3 className="text-xl font-bold mb-4 text-white">The Warsh/Druckenmiller Nexus</h3>
+                  <h3 className="text-xl font-bold mb-4 text-white font-serif">The Warsh/Druckenmiller Nexus</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
-                      <span className="bg-indigo-500 rounded-full p-1 mr-3 mt-1"></span>
+                      <span className="bg-[#A8672E] dark:bg-[#D08F52] rounded-full p-1 mr-3 mt-1"></span>
                       <span className="text-indigo-100 text-sm">Warsh worked at Duquesne Family Office for over a decade.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="bg-indigo-500 rounded-full p-1 mr-3 mt-1"></span>
+                      <span className="bg-[#A8672E] dark:bg-[#D08F52] rounded-full p-1 mr-3 mt-1"></span>
                       <span className="text-indigo-100 text-sm">Druckenmiller lobbied heavily for Warsh's nomination.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="bg-indigo-500 rounded-full p-1 mr-3 mt-1"></span>
+                      <span className="bg-[#A8672E] dark:bg-[#D08F52] rounded-full p-1 mr-3 mt-1"></span>
                       <span className="text-indigo-100 text-sm">
                         <strong>The Strategy:</strong> Front-running the "Warsh Put." A Fed Chair who is sensitive to market signals lowers the risk of a catastrophic crash, justifying leverage in financials.
                       </span>
@@ -417,7 +417,7 @@ export default function DuquesneParadigmArticle() {
         <Section>
           <div className="flex items-center mb-6">
             <div className="p-3 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg mr-4">
-              <Globe className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+              <Globe className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" />
             </div>
             <Heading className="mb-0">Theme 3: Global Yield Arbitrage</Heading>
           </div>
@@ -426,13 +426,13 @@ export default function DuquesneParadigmArticle() {
           </Text>
           <div className="grid md:grid-cols-2 gap-8 mt-8">
             <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-              <h3 className="font-bold text-lg mb-3">The Inflation Hedge</h3>
+              <h3 className="font-bold text-lg mb-3 font-serif">The Inflation Hedge</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                 If U.S. growth drives inflation, the Fed might not cut rates. Emerging markets with commodity exposure (like Brazil's oil and iron ore) benefit from global growth and offer high yields.
               </p>
             </div>
             <div className="bg-white dark:bg-[#14171B] p-6 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-              <h3 className="font-bold text-lg mb-3">The Holdings</h3>
+              <h3 className="font-bold text-lg mb-3 font-serif">The Holdings</h3>
               <div className="flex flex-wrap gap-2">
                 <TickerBadge symbol="EWZ" name="Brazil ETF" change="new" />
                 <TickerBadge symbol="EEM" name="Emerging Markets" change="add" />
@@ -462,12 +462,12 @@ export default function DuquesneParadigmArticle() {
             </div>
 
             {/* Action 1: Sectors over Tickers */}
-            <div className="flex flex-col p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
+            <div className="flex flex-col p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-blue-100 dark:bg-blue-900/40 rounded-lg mr-3">
-                  <TrendingUp className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <TrendingUp className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
                 </div>
-                <h4 className="font-bold text-blue-900 dark:text-blue-400 text-lg">Use as a Compass, Not a GPS</h4>
+                <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] text-lg">Use as a Compass, Not a GPS</h4>
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-300 leading-relaxed">
                 Don't buy 741,000 shares of Bloom Energy just because he did. Instead, recognize the <strong>trend</strong>: Energy Infrastructure is becoming critical. Go do your own research on utilities and grid providers. The value is in the <em>thesis</em>, not the specific ticker.

@@ -18,7 +18,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Network className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. The Paradigm of Dependency</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Paradigm of Dependency</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
@@ -30,8 +30,8 @@ export default function AdvancedDynamicsCorrelationPage() {
               <li><strong>The Flaw of Separability:</strong> Historically, risk was treated as "separable," assuming a portfolio's sensitivity to one risk factor remained independent of another. This is no longer a valid assumption.</li>
             </ul>
 
-            <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 my-6 shadow-sm">
-              <AlertTriangle className="shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={24} />
+            <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 my-6 shadow-sm">
+              <AlertTriangle className="shrink-0 mt-1 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={24} />
               <div>
                 <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-xl">Key Insight</h4>
                 <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
@@ -47,7 +47,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <FunctionSquare className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Statistical Foundations & Typologies</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Statistical Foundations & Typologies</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -88,7 +88,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Layers className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Portfolio Theory and Diversification</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Portfolio Theory and Diversification</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
@@ -115,13 +115,13 @@ export default function AdvancedDynamicsCorrelationPage() {
             <ComparisonGrid>
               <ComparisonCard title="Central Counterparty Margining" tone="neutral">
                 <div className="flex items-start gap-3">
-                  <ShieldAlert className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <ShieldAlert className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                   <p className="text-sm text-slate-700 dark:text-slate-300">Static margin calculations become compromised during regime shifts. Exposes clearinghouses to massive uncollateralized systemic credit events.</p>
                 </div>
               </ComparisonCard>
               <ComparisonCard title="Systemic Risk" tone="neutral">
                 <div className="flex items-start gap-3">
-                  <Activity className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <Activity className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                   <p className="text-sm text-slate-700 dark:text-slate-300">Failing to account for correlation regime shifts underestimates portfolio risk, skews Initial Margin (IM), VaR, and Expected Shortfall (ES).</p>
                 </div>
               </ComparisonCard>
@@ -134,7 +134,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <BarChart2 className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Realized vs. Option-Implied Correlation</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Realized vs. Option-Implied Correlation</h2>
             </div>
             
             <ComparisonGrid>
@@ -175,7 +175,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Correlation Risk Premium (CRP)</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Correlation Risk Premium (CRP)</h2>
             </div>
             
             <ul className="space-y-4 list-disc list-inside text-lg text-slate-600 dark:text-slate-400 mb-8">
@@ -207,7 +207,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <FileBox className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">6. Correlation-Sensitive Financial Instruments</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Correlation-Sensitive Financial Instruments</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -255,7 +255,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Globe className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">7. Dynamic Econometric & Copula Modeling</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Dynamic Econometric & Copula Modeling</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
@@ -312,7 +312,7 @@ export default function AdvancedDynamicsCorrelationPage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Activity className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">8. Synthesis: Evolution of Dependency</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Synthesis: Evolution of Dependency</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">

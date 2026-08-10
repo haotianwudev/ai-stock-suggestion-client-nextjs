@@ -24,7 +24,7 @@ export default function VolatilityHedgeFundsArticle() {
             </p>
             
             <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl border border-indigo-100 mb-12">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">The Volatility Imperative</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">The Volatility Imperative</h3>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
                 While traditional asset managers focus on directional bets, volatility funds operate in a fundamentally different paradigm. 
                 They harvest the <strong>Volatility Risk Premium (VRP)</strong>—the persistent tendency for implied volatility to exceed 
@@ -43,12 +43,12 @@ export default function VolatilityHedgeFundsArticle() {
               <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Part 01</span>
               <span className="w-8 h-[1px] bg-slate-300"></span>
             </div>
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight font-serif">The Data Ecosystem</h2>
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 tracking-tight font-serif">The Data Ecosystem</h2>
             <p className="text-lg text-slate-500 font-light">Alpha begins with hygiene. The challenge of non-stationary option chains.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border-l-4 border-blue-500 p-6">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6">
               <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Corporate Actions</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                 Handling stock splits and dividends is structural. A split transforms contract <em>K</em> into two at <em>K/2</em>. 
@@ -56,7 +56,7 @@ export default function VolatilityHedgeFundsArticle() {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border-l-4 border-rose-500 p-6">
+            <div className="bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6">
               <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Survivorship Bias</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                 The "silent killer". Excluding delisted companies (Lehman, Enron) removes insurance payouts from history, 
@@ -82,7 +82,7 @@ export default function VolatilityHedgeFundsArticle() {
           </div>
 
           <div className="bg-slate-50 dark:bg-[#14171B] p-8 rounded-xl border border-slate-200 dark:border-slate-800">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">The Data Quality Imperative</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">The Data Quality Imperative</h3>
             <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
               In volatility trading, data quality isn't just important—it's existential. A single corrupted tick can trigger 
               false arbitrage signals, leading to catastrophic losses when the "opportunity" evaporates upon execution.
@@ -103,13 +103,13 @@ export default function VolatilityHedgeFundsArticle() {
               <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Part 02</span>
               <span className="w-8 h-[1px] bg-slate-300"></span>
             </div>
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight font-serif">Mathematical Foundations</h2>
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 tracking-tight font-serif">Mathematical Foundations</h2>
             <p className="text-lg text-slate-500 font-light">From SVI Calibration to Higher-Order Greek Attribution.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">The Volatility Surface (SVI)</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">The Volatility Surface (SVI)</h3>
               <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                 Raw option prices are noisy. We fit them to the <strong>Stochastic Volatility Inspired (SVI)</strong> model 
                 to generate a smooth surface free of static arbitrage. This allows us to interpolate vol for any strike/expiry.
@@ -131,7 +131,7 @@ export default function VolatilityHedgeFundsArticle() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">Local Volatility (Dupire)</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Local Volatility (Dupire)</h3>
               <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                 To price path-dependent exotics or test strategies, we need a diffusion process. Dupire's formula allows us 
                 to extract the unique local volatility surface from the SVI implied surface.
@@ -212,7 +212,7 @@ export default function VolatilityHedgeFundsArticle() {
               <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Part 03</span>
               <span className="w-8 h-[1px] bg-slate-300"></span>
             </div>
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight font-serif">Alpha Strategies</h2>
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 tracking-tight font-serif">Alpha Strategies</h2>
             <p className="text-lg text-slate-500 font-light">Harvesting risk premia through structural imbalances.</p>
           </div>
 
@@ -220,7 +220,7 @@ export default function VolatilityHedgeFundsArticle() {
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl overflow-hidden shadow-md border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all">
               <div className="h-1 w-full bg-gradient-to-r from-indigo-400 to-indigo-600"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 font-serif">Short Volatility (VRP)</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Short Volatility (VRP)</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
                   Systematic harvesting of the spread between Implied and Realized volatility. Markets historically 
                   overestimate future realized movement (insurance premium).
@@ -237,7 +237,7 @@ export default function VolatilityHedgeFundsArticle() {
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl overflow-hidden shadow-md border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all">
               <div className="h-1 w-full bg-gradient-to-r from-purple-400 to-purple-600"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 font-serif">Dispersion Trading</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Dispersion Trading</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
                   Trading <strong>Index vs. Constituents</strong>. Implied Correlation is often overpriced. We sell the 
                   index (expensive due to macro hedging demand) and buy single names.
@@ -254,13 +254,13 @@ export default function VolatilityHedgeFundsArticle() {
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl overflow-hidden shadow-md border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all">
               <div className="h-1 w-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 font-serif">Relative Value (Skew)</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Relative Value (Skew)</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
                   Trading the shape of the surface. Exploiting anomalies in the Skew (Put vs Call vol) or Term Structure 
                   (Contango vs Backwardation).
                 </p>
-                <div className="bg-teal-50 rounded-lg p-4 border border-teal-100">
-                  <h4 className="text-xs font-bold text-teal-700 uppercase mb-2">Trade Mechanics</h4>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg p-4 border border-teal-100">
+                  <h4 className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase mb-2">Trade Mechanics</h4>
                   <p className="text-xs text-teal-800 leading-relaxed font-medium">
                     Risk Reversals (Buy Call / Sell Put) when Skew is 2σ extreme. Calendar Spreads to trade term structure.
                   </p>
@@ -271,7 +271,7 @@ export default function VolatilityHedgeFundsArticle() {
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl overflow-hidden shadow-md border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all">
               <div className="h-1 w-full bg-gradient-to-r from-rose-400 to-rose-600"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 font-serif">Tail Risk Hedging</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 font-serif">Tail Risk Hedging</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
                   Buying "Crisis Alpha". The goal is to reduce bleed (carry cost) while maintaining convexity during 3σ+ selloffs.
                 </p>
@@ -294,31 +294,31 @@ export default function VolatilityHedgeFundsArticle() {
               <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Part 04</span>
               <span className="w-8 h-[1px] bg-slate-300"></span>
             </div>
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight font-serif">Risk &amp; Constraints</h2>
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 tracking-tight font-serif">Risk &amp; Constraints</h2>
             <p className="text-lg text-slate-500 font-light">Preserving capital through rigorous stress testing.</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
-              <h3 className="text-xl font-bold text-slate-900 mb-6 font-serif">Hard Constraints</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">Hard Constraints</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-2">
                   <span className="text-slate-600 dark:text-slate-400">Gross Leverage Cap</span>
-                  <span className="font-mono font-bold text-slate-900">15.0x</span>
+                  <span className="font-mono font-bold text-slate-900 dark:text-slate-100">15.0x</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-2">
                   <span className="text-slate-600 dark:text-slate-400">Net Vega Limit</span>
-                  <span className="font-mono font-bold text-slate-900">±2.5% NAV</span>
+                  <span className="font-mono font-bold text-slate-900 dark:text-slate-100">±2.5% NAV</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-2">
                   <span className="text-slate-600 dark:text-slate-400">Max Drawdown (Month)</span>
-                  <span className="font-mono font-bold text-slate-900">5.0%</span>
+                  <span className="font-mono font-bold text-slate-900 dark:text-slate-100">5.0%</span>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-2 bg-white dark:bg-[#0A0D14] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
-              <h3 className="text-xl font-bold text-slate-900 mb-6 font-serif">Historical Stress Testing</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-serif">Historical Stress Testing</h3>
               <p className="text-sm text-slate-500 mb-6">Portfolio behavior simulations in crisis scenarios.</p>
               
               <div className="grid sm:grid-cols-3 gap-4">
@@ -425,7 +425,7 @@ export default function VolatilityHedgeFundsArticle() {
         {/* Conclusion & Call-to-Action */}
         <section className="mb-16">
           <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-xl border border-indigo-100">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4 font-serif">The Industrialization Paradigm</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">The Industrialization Paradigm</h3>
             <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
               The modern volatility hedge fund represents the industrialization of what was once artisanal trading. Through 
               systematic data processing, mathematical rigor, and algorithmic execution, these institutions have transformed 

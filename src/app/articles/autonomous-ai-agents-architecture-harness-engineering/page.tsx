@@ -37,23 +37,23 @@ export default function AutonomousAIAgentsArticle() {
 
               <div className="lg:w-1/3 min-w-0">
                 <div className="p-8 bg-[#14171B] dark:bg-[#05070A] text-white border-none shadow-xl rounded-3xl h-full flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#A8672E] dark:bg-[#D08F52]/10 rounded-full blur-3xl" />
                   <h3 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-8 text-center relative z-10 font-serif">The Autonomy Equation</h3>
                   <div className="flex flex-col items-center justify-center space-y-6 relative z-10">
                     <div className="flex items-center justify-center gap-4 w-full">
-                      <div className="flex flex-col items-center p-4 bg-white/5 border border-white/10 rounded-2xl w-28">
+                      <div className="flex flex-col items-center p-4 bg-white dark:bg-[#0A0D14]/5 border border-white/10 rounded-2xl w-28">
                         <Brain className="text-purple-400 mb-2" size={28} />
                         <span className="text-slate-300 font-semibold text-sm">Model</span>
                       </div>
                       <span className="text-slate-500 text-2xl">+</span>
-                      <div className="flex flex-col items-center p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl w-28">
-                        <Shield className="text-blue-400 mb-2" size={28} />
+                      <div className="flex flex-col items-center p-4 bg-[#A8672E] dark:bg-[#D08F52]/10 border border-[#A8672E] dark:border-[#D08F52]/20 rounded-2xl w-28">
+                        <Shield className="text-[#A8672E] dark:text-[#D08F52] mb-2" size={28} />
                         <span className="text-blue-300 font-semibold text-sm">Harness</span>
                       </div>
                     </div>
-                    <div className="text-3xl font-bold text-slate-600">=</div>
-                    <div className="flex flex-col items-center p-6 bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-blue-500/30 rounded-2xl w-full text-white">
-                      <Bot size={36} className="mb-3 text-blue-400" />
+                    <div className="text-3xl font-bold text-slate-600 dark:text-slate-400">=</div>
+                    <div className="flex flex-col items-center p-6 bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-[#A8672E] dark:border-[#D08F52]/30 rounded-2xl w-full text-white">
+                      <Bot size={36} className="mb-3 text-[#A8672E] dark:text-[#D08F52]" />
                       <span className="text-lg font-bold tracking-wide">Autonomous Agent</span>
                       <span className="text-xs text-slate-400 mt-2 text-center">Capable of real-world, long-horizon tasks</span>
                     </div>
@@ -129,7 +129,7 @@ export default function AutonomousAIAgentsArticle() {
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="p-3 bg-white/10 rounded-xl text-[#D08F52]">
+                  <div className="p-3 bg-white dark:bg-[#0A0D14]/10 rounded-xl text-[#D08F52]">
                     <Wrench size={28} />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold text-white font-serif tracking-tight">Tools, Skills &amp; The MCP</h2>
@@ -139,8 +139,8 @@ export default function AutonomousAIAgentsArticle() {
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-8 mb-12 min-w-0">
-                  <div className="bg-white/5 border border-white/10 p-8 rounded-3xl min-w-0">
-                    <h3 className="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2 font-serif">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 border border-white/10 p-8 rounded-3xl min-w-0">
+                    <h3 className="text-xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-2 font-serif">
                       <Code size={20}/> Raw Tools
                     </h3>
                     <p className="text-slate-300 leading-relaxed">
@@ -194,7 +194,7 @@ export default function AutonomousAIAgentsArticle() {
                 </p>
                 <div className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl min-w-0 mt-4">
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    <strong className="text-slate-900 dark:text-white">Skill Distillation (SkillRL):</strong> When an agent succeeds through trial and error, the harness captures the context tree and autonomously generates a new, optimized <code className="text-sm bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 rounded text-indigo-600 dark:text-indigo-400">SKILL.md</code> file, recursively evolving capabilities without model fine-tuning.
+                    <strong className="text-slate-900 dark:text-white">Skill Distillation (SkillRL):</strong> When an agent succeeds through trial and error, the harness captures the context tree and autonomously generates a new, optimized <code className="text-sm bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 rounded text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">SKILL.md</code> file, recursively evolving capabilities without model fine-tuning.
                   </p>
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function AutonomousAIAgentsArticle() {
                 
                 <div className="space-y-8 relative z-10">
                   <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-800/50 shadow-sm relative z-10">
+                    <div className="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-800/50 shadow-sm relative z-10">
                       <Bot size={32}/>
                     </div>
                     <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex-1">
@@ -248,9 +248,9 @@ export default function AutonomousAIAgentsArticle() {
 
           {/* Section 5: LangGraph Example */}
           <section className="py-16">
-            <div className="bg-indigo-50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30 rounded-3xl p-8 md:p-12 min-w-0">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30 rounded-3xl p-8 md:p-12 min-w-0">
               <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 bg-indigo-600 dark:bg-indigo-500 rounded-2xl text-white shadow-md">
+                <div className="p-3 bg-[#A8672E] dark:bg-[#D08F52] dark:bg-[#A8672E] dark:bg-[#D08F52] rounded-2xl text-white shadow-md">
                   <Workflow className="w-6 h-6" />
                 </div>
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-serif tracking-tight">LangGraph: Graph-Based Harness</h2>
@@ -261,24 +261,24 @@ export default function AutonomousAIAgentsArticle() {
               
               <div className="grid md:grid-cols-3 gap-6 min-w-0">
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-400 mb-4 flex items-center gap-3 font-serif">
-                    <div className="w-3 h-3 rounded-full bg-indigo-500"></div> Nodes
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-3 font-serif">
+                    <div className="w-3 h-3 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div> Nodes
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     Represent discrete logical steps or specialized sub-agents (e.g., <code className="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Alpha_Signal</code>). The AI has total autonomy <em className="text-slate-900 dark:text-white">inside</em> the node.
                   </p>
                 </div>
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-400 mb-4 flex items-center gap-3 font-serif">
-                    <GitBranch className="text-indigo-500 w-5 h-5"/> Edges
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-3 font-serif">
+                    <GitBranch className="text-[#A8672E] dark:text-[#D08F52] w-5 h-5"/> Edges
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     Define the execution flow. Conditional edges empower complex routing, guaranteeing that outputs pass through compliance verification before market execution.
                   </p>
                 </div>
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-bold text-indigo-800 dark:text-indigo-400 mb-4 flex items-center gap-3 font-serif">
-                    <Repeat className="text-indigo-500 w-5 h-5"/> Ralph Loops
+                  <h3 className="text-xl font-bold text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] mb-4 flex items-center gap-3 font-serif">
+                    <Repeat className="text-[#A8672E] dark:text-[#D08F52] w-5 h-5"/> Ralph Loops
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     Middleware patterns that intercept premature exit attempts (often from context anxiety), forcing the agent to meticulously review its proposed solution against original specs.
@@ -299,7 +299,7 @@ export default function AutonomousAIAgentsArticle() {
             
             <div className="space-y-8 min-w-0">
               <div className="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row gap-8 items-start min-w-0">
-                <div className="p-5 bg-emerald-50 dark:bg-emerald-950/30 rounded-2xl shrink-0 border border-emerald-100 dark:border-emerald-900/50">
+                <div className="p-5 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/30 rounded-2xl shrink-0 border border-emerald-100 dark:border-emerald-900/50">
                   <Activity className="text-[#1D8A70] dark:text-[#3CBF9C] w-8 h-8" />
                 </div>
                 <div>
@@ -307,7 +307,7 @@ export default function AutonomousAIAgentsArticle() {
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                     Trading lifecycles are mapped onto specialized agents operating within a unified harness. <strong className="text-slate-900 dark:text-white">Alpha Agents</strong> extract predictive signals, <strong className="text-slate-900 dark:text-white">Risk Agents</strong> calculate VaR/CVaR enforcing limits, and <strong className="text-slate-900 dark:text-white">Execution Agents</strong> manage slippage via MCP connections to brokerages.
                   </p>
-                  <div className="text-sm bg-emerald-50 dark:bg-emerald-900/20 text-[#1D8A70] dark:text-[#3CBF9C] border border-emerald-200 dark:border-emerald-800/50 px-4 py-2 rounded-xl inline-block font-semibold">
+                  <div className="text-sm bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 text-[#1D8A70] dark:text-[#3CBF9C] border border-emerald-200 dark:border-emerald-800/50 px-4 py-2 rounded-xl inline-block font-semibold">
                     Result: Outperformed baseline indices with significantly lower drawdowns via strict temporal sequences.
                   </div>
                 </div>
@@ -326,8 +326,8 @@ export default function AutonomousAIAgentsArticle() {
               </div>
               
               <div className="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row gap-8 items-start min-w-0">
-                <div className="p-5 bg-blue-50 dark:bg-blue-950/30 rounded-2xl shrink-0 border border-blue-100 dark:border-blue-900/50">
-                  <Shield className="text-blue-600 dark:text-blue-500 w-8 h-8" />
+                <div className="p-5 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-950/30 rounded-2xl shrink-0 border border-blue-100 dark:border-blue-900/50">
+                  <Shield className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-8 h-8" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">Enterprise CI/CD &amp; Institutional Automation</h3>

@@ -15,21 +15,21 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, icon: Icon, colorTheme, children }) => {
   const themes = {
-    slate: "bg-slate-50 border-slate-100 text-slate-900",
-    blue: "bg-blue-50/50 border-blue-100 text-blue-900",
+    slate: "bg-slate-50 dark:bg-[#14171B] border-slate-100 dark:border-slate-800 text-slate-900 dark:text-slate-100",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 border-blue-100 text-blue-900",
     purple: "bg-purple-50/50 border-purple-100 text-purple-900",
-    emerald: "bg-emerald-50/50 border-emerald-100 text-emerald-900",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 border-emerald-100 text-emerald-900",
     amber: "bg-amber-50/50 border-amber-100 text-amber-900",
-    rose: "bg-rose-50/50 border-rose-100 text-rose-900",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 border-rose-100 text-rose-900",
   };
 
   const iconColors = {
-    slate: "text-slate-600 bg-slate-100",
-    blue: "text-blue-600 bg-blue-100",
+    slate: "text-slate-600 dark:text-slate-400 bg-slate-100",
+    blue: "text-[#A8672E] dark:text-[#D08F52] bg-blue-100",
     purple: "text-purple-600 bg-purple-100",
-    emerald: "text-emerald-600 bg-emerald-100",
+    emerald: "text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100",
     amber: "text-amber-600 bg-amber-100",
-    rose: "text-rose-600 bg-rose-100",
+    rose: "text-[#BC4128] dark:text-[#E2694A] bg-rose-100",
   };
 
   return (
@@ -39,7 +39,7 @@ const Section: React.FC<SectionProps> = ({ title, icon: Icon, colorTheme, childr
           <div className={`p-3 rounded-2xl shadow-sm ${iconColors[colorTheme]}`}>
             <Icon className="w-8 h-8" />
           </div>
-          <h2 className="text-3xl font-bold">{title}</h2>
+          <h2 className="text-3xl font-bold font-serif">{title}</h2>
         </div>
         <div className="text-lg text-slate-700 dark:text-slate-400 dark:text-slate-300 leading-relaxed space-y-6">
           {children}
@@ -57,10 +57,10 @@ interface TutorialCalloutProps {
 
 const TutorialCallout: React.FC<TutorialCalloutProps> = ({ title, color, children }) => {
   const colors = {
-    indigo: "border-indigo-500 bg-indigo-50/80 text-indigo-900",
+    indigo: "border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/80 text-indigo-900",
     pink: "border-pink-500 bg-pink-50/80 text-pink-900",
-    teal: "border-teal-500 bg-teal-50/80 text-teal-900",
-    orange: "border-orange-500 bg-orange-50/80 text-orange-900",
+    teal: "border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10/80 text-teal-900",
+    orange: "border-[#BC4128] dark:border-[#E2694A] bg-[#BC4128]/10 dark:bg-[#E2694A]/10/80 text-orange-900",
   };
 
   return (
@@ -95,7 +95,7 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows }) => (
       </thead>
       <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
         {rows.map((row, i) => (
-          <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
+          <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-900/40 transition-colors">
             {row.map((cell, j) => (
               <td key={j} className={`px-6 py-4 text-slate-600 dark:text-slate-400 ${j === 0 ? 'font-medium text-slate-800 dark:text-white' : ''}`}>
                 {cell}
@@ -271,7 +271,7 @@ export default function NvidiaEarningsParadoxArticle() {
           {/* Section 11 & 12 */}
           <Section title="11 & 12. Comprehensive Driver Synthesis & Risk Assessment" icon={ShieldAlert} colorTheme="amber">
             <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl border border-amber-200 dark:border-amber-900/30 shadow-sm dark:shadow-none mb-8">
-              <h3 className="text-2xl font-bold mb-4 text-amber-900 dark:text-amber-400 border-b border-amber-100 dark:border-amber-900/30 pb-2">
+              <h3 className="text-2xl font-bold mb-4 text-amber-900 dark:text-amber-400 border-b border-amber-100 dark:border-amber-900/30 pb-2 font-serif">
                 The Ultimate Driver: A Confluence of Mechanics
               </h3>
               <p className="text-lg text-slate-700 dark:text-slate-400 dark:text-slate-300 mb-4">
@@ -285,12 +285,12 @@ export default function NvidiaEarningsParadoxArticle() {
               </ol>
             </div>
 
-            <h3 className="text-2xl font-bold mt-10 mb-6 text-slate-900 dark:text-white">
+            <h3 className="text-2xl font-bold mt-10 mb-6 text-slate-900 dark:text-white font-serif">
               Multi-Angle Risk Assessment (Fiscal 2027)
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-indigo-500">
-                <div className="flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-400">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-[#A8672E] dark:border-[#D08F52]">
+                <div className="flex items-center gap-2 mb-3 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                   <Briefcase className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Institutional & Factor Risk</h4>
                 </div>
@@ -301,8 +301,8 @@ export default function NvidiaEarningsParadoxArticle() {
                 </ul>
               </div>
 
-              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-emerald-500">
-                <div className="flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-400">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-[#1D8A70] dark:border-[#3CBF9C]">
+                <div className="flex items-center gap-2 mb-3 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                   <TrendingDown className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Fundamental & Structural Risk</h4>
                 </div>
@@ -313,8 +313,8 @@ export default function NvidiaEarningsParadoxArticle() {
                 </ul>
               </div>
 
-              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-rose-500">
-                <div className="flex items-center gap-2 mb-3 text-rose-700 dark:text-rose-400">
+              <div className="p-6 bg-white dark:bg-[#14171B] rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-white/10 border-t-4 border-[#BC4128] dark:border-[#E2694A]">
+                <div className="flex items-center gap-2 mb-3 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                   <Users className="w-5 h-5" />
                   <h4 className="font-bold text-xl">Sentiment & Retail Risk</h4>
                 </div>

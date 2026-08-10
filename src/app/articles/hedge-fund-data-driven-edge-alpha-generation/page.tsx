@@ -6,10 +6,10 @@ import { ArticleFrame, InfographicSlot } from '@/components/articles/article-fra
 // Helper component for colored keyword spans
 const Keyword = ({ children, color = 'blue' }: { children: React.ReactNode; color?: string }) => {
   const colorClasses: { [key: string]: string } = {
-    blue: 'text-blue-600',
-    teal: 'text-teal-600',
-    indigo: 'text-indigo-600',
-    rose: 'text-rose-600',
+    blue: 'text-[#A8672E] dark:text-[#D08F52]',
+    teal: 'text-[#A8672E] dark:text-[#D08F52]',
+    indigo: 'text-[#A8672E] dark:text-[#D08F52]',
+    rose: 'text-[#BC4128] dark:text-[#E2694A]',
   };
   return <span className={`font-semibold ${colorClasses[color]}`}>{children}</span>;
 };
@@ -25,17 +25,17 @@ const Section = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="border border-slate-200 rounded-xl mb-6 overflow-hidden shadow-sm">
-      <div className="p-6 bg-white">
+    <div className="border border-slate-200 dark:border-slate-800 rounded-xl mb-6 overflow-hidden shadow-sm">
+      <div className="p-6 bg-white dark:bg-[#0A0D14]">
         <div className="flex items-center mb-6">
-          <div className="hidden sm:block mr-4 text-blue-500">
+          <div className="hidden sm:block mr-4 text-[#A8672E] dark:text-[#D08F52]">
             {icon}
           </div>
-          <h2 className="text-xl md:text-2xl font-bold text-slate-800">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 font-serif">
             {title}
           </h2>
         </div>
-        <div className="bg-white p-6 md:p-8 rounded-lg border border-slate-200">
+        <div className="bg-white dark:bg-[#0A0D14] p-6 md:p-8 rounded-lg border border-slate-200 dark:border-slate-800">
           {children}
         </div>
       </div>
@@ -46,8 +46,8 @@ const Section = ({
 // Main Content Components
 const ContentBlock = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
-    <h3 className="text-lg font-semibold text-blue-600 mb-3">{title}</h3>
-    <div className="prose prose-slate max-w-none text-slate-600 space-y-4">
+    <h3 className="text-lg font-semibold text-[#A8672E] dark:text-[#D08F52] mb-3 font-serif">{title}</h3>
+    <div className="prose prose-slate max-w-none text-slate-600 dark:text-slate-400 space-y-4">
       {children}
     </div>
   </div>
@@ -63,13 +63,13 @@ const Table = ({
   caption: string;
 }) => (
   <div className="my-8">
-    <h4 className="text-md font-semibold text-center mb-4 text-slate-700">
+    <h4 className="text-md font-semibold text-center mb-4 text-slate-700 dark:text-slate-300">
       {caption}
     </h4>
-    <div className="border border-slate-200 rounded-lg overflow-hidden">
+    <div className="border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full divide-y divide-slate-200">
-          <thead className="bg-slate-50">
+          <thead className="bg-slate-50 dark:bg-[#14171B]">
             <tr>
               {headers.map((header) => (
                 <th
@@ -82,13 +82,13 @@ const Table = ({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 bg-white">
+          <tbody className="divide-y divide-slate-200 bg-white dark:bg-[#0A0D14]">
             {data.map((row, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-slate-50">
+              <tr key={rowIndex} className="hover:bg-slate-50 dark:bg-[#14171B]">
                 {row.map((cell, cellIndex) => (
                   <td
                     key={cellIndex}
-                    className="px-3 md:px-6 py-4 text-sm text-slate-600 break-words"
+                    className="px-3 md:px-6 py-4 text-sm text-slate-600 dark:text-slate-400 break-words"
                   >
                     {cell}
                   </td>
@@ -113,15 +113,15 @@ const Section1 = () => (
         <Keyword>Long-short equity</Keyword> strategies involve taking long positions in stocks expected to appreciate while simultaneously shorting stocks expected to decline. This dual approach profits from both rising and falling markets while mitigating overall market risk through three primary variations:
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-blue-200">
           <h4 className="font-semibold text-blue-800 mb-2">Market-Neutral</h4>
-          <p className="text-sm text-blue-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Portfolio <Keyword>beta</Keyword> near zero by matching long/short positions, isolating manager skill from market movements. Profits from relative value regardless of market direction.
           </p>
         </div>
-        <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-teal-200">
           <h4 className="font-semibold text-teal-800 mb-2">Factor-Neutral</h4>
-          <p className="text-sm text-teal-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Hedges out systematic risk factors like <Keyword color="teal">size, value, and momentum</Keyword> to generate pure <Keyword>idiosyncratic returns</Keyword> (true alpha).
           </p>
         </div>
@@ -154,15 +154,15 @@ const Section2 = () => (
     <ContentBlock title="Foundational Datasets for Fundamental Analysis">
       <p>Retail investors access substantial free, public information through multiple channels:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-4 rounded-lg border border-green-200">
           <h4 className="font-semibold text-green-800 mb-2">Corporate Filings</h4>
-          <p className="text-sm text-green-700">
+          <p className="text-sm text-[#1D8A70] dark:text-[#3CBF9C]">
             SEC EDGAR provides 10-K (annual), 10-Q (quarterly), and 8-K (major event) reports with comprehensive financial data.
           </p>
         </div>
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-blue-200">
           <h4 className="font-semibold text-blue-800 mb-2">Market Data</h4>
-          <p className="text-sm text-blue-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Real-time or delayed stock prices, trading volumes, and macroeconomic indicators (GDP, CPI) through various platforms.
           </p>
         </div>
@@ -207,21 +207,21 @@ const Section3 = () => (
     <ContentBlock title="Professional Gateway: Institutional Data Terminals">
       <p>Indispensable gateways to global financial markets offering unparalleled data depth and connectivity:</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-lg border border-orange-200">
           <h4 className="font-semibold text-orange-800 mb-2">Bloomberg Terminal</h4>
-          <p className="text-sm text-orange-700">
+          <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
             Industry standard at ~$32,000/user/year. Value lies in aggregating vast, obscure data and ubiquitous messaging system.
           </p>
         </div>
-        <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-teal-200">
           <h4 className="font-semibold text-teal-800 mb-2">LSEG Eikon</h4>
-          <p className="text-sm text-teal-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Powerful competitor, particularly strong in equities and FX markets with comprehensive analytics.
           </p>
         </div>
-        <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-indigo-200">
           <h4 className="font-semibold text-indigo-800 mb-2">FactSet</h4>
-          <p className="text-sm text-indigo-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Favored by analysts for deep company data and sophisticated analytical tools.
           </p>
         </div>
@@ -278,15 +278,15 @@ const Section4 = () => (
     <ContentBlock title="The Industrialized Data-to-Signal Pipeline">
       <p>Converting raw data into trades follows a systematic, multi-stage pipeline:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-blue-200">
           <h4 className="font-semibold text-blue-800 mb-2">Data Acquisition &amp; Ingestion</h4>
-          <p className="text-sm text-blue-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Automated systems pull data from disparate sources into central <Keyword color="indigo">data lakes</Keyword> (e.g., Amazon S3).
           </p>
         </div>
-        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 p-4 rounded-lg border border-green-200">
           <h4 className="font-semibold text-green-800 mb-2">Data Preparation</h4>
-          <p className="text-sm text-green-700">
+          <p className="text-sm text-[#1D8A70] dark:text-[#3CBF9C]">
             Critical cleansing and structuring, handling missing values, correcting errors, and performing <Keyword color="indigo">entity mapping</Keyword>.
           </p>
         </div>
@@ -296,9 +296,9 @@ const Section4 = () => (
             Quants use specialized platforms and <Keyword color="teal">machine learning</Keyword> to find predictive signals with rigorous <Keyword color="indigo">backtesting</Keyword>.
           </p>
         </div>
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-lg border border-orange-200">
           <h4 className="font-semibold text-orange-800 mb-2">Portfolio Construction</h4>
-          <p className="text-sm text-orange-700">
+          <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
             Signals feed optimization models determining position size, with algorithmic execution minimizing market impact.
           </p>
         </div>
@@ -319,25 +319,25 @@ const Section4 = () => (
     <ContentBlock title="Case Study: A Hypothetical Short Trade on 'StyleCo'">
       <p>High-conviction short thesis built by integrating multiple independent datasets, creating a robust <Keyword color="indigo">mosaic</Keyword>:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
-        <div className="bg-red-50 p-3 rounded-lg border border-red-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-3 rounded-lg border border-red-200">
           <h5 className="font-semibold text-red-800 text-sm mb-1">Web Data</h5>
-          <p className="text-xs text-red-700">SimilarWeb flags persistent website traffic decline</p>
+          <p className="text-xs text-[#BC4128] dark:text-[#E2694A]">SimilarWeb flags persistent website traffic decline</p>
         </div>
-        <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-3 rounded-lg border border-orange-200">
           <h5 className="font-semibold text-orange-800 text-sm mb-1">Transaction Data</h5>
-          <p className="text-xs text-orange-700">YipitData confirms falling sales volume and transaction size</p>
+          <p className="text-xs text-[#BC4128] dark:text-[#E2694A]">YipitData confirms falling sales volume and transaction size</p>
         </div>
         <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
           <h5 className="font-semibold text-purple-800 text-sm mb-1">Geospatial Data</h5>
           <p className="text-xs text-purple-700">Lower truck traffic and parking lot occupancy</p>
         </div>
-        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-3 rounded-lg border border-blue-200">
           <h5 className="font-semibold text-blue-800 text-sm mb-1">Sentiment Analysis</h5>
-          <p className="text-xs text-blue-700">Spike in negative customer reviews indicating quality issues</p>
+          <p className="text-xs text-[#A8672E] dark:text-[#D08F52]">Spike in negative customer reviews indicating quality issues</p>
         </div>
-        <div className="bg-teal-50 p-3 rounded-lg border border-teal-200">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-3 rounded-lg border border-teal-200">
           <h5 className="font-semibold text-teal-800 text-sm mb-1">Corporate Exhaust</h5>
-          <p className="text-xs text-teal-700">Hiring freeze in marketing, new &ldquo;supply chain restructuring&rdquo; roles</p>
+          <p className="text-xs text-[#A8672E] dark:text-[#D08F52]">Hiring freeze in marketing, new &ldquo;supply chain restructuring&rdquo; roles</p>
         </div>
       </div>
     </ContentBlock>
@@ -350,15 +350,15 @@ const Section5 = () => (
     <ContentBlock title="The Widening Data Divide">
       <p>The institutional advantage transcends mere information access&mdash;it&apos;s fundamentally structural, financial, and technological, summarized across three critical dimensions:</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-lg border border-red-200">
           <h4 className="font-semibold text-red-800 mb-2">Data Access</h4>
-          <p className="text-sm text-red-700">
+          <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
             Insurmountable financial barriers to high-cost alternative data sources.
           </p>
         </div>
-        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+        <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-lg border border-orange-200">
           <h4 className="font-semibold text-orange-800 mb-2">Analytical Power</h4>
-          <p className="text-sm text-orange-700">
+          <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
             Capability to process petabytes with sophisticated ML models and computing clusters.
           </p>
         </div>
@@ -376,19 +376,19 @@ const Section5 = () => (
       <div className="space-y-4 mt-4">
         <div className="bg-gradient-to-r from-rose-50 to-pink-50 p-4 rounded-lg border border-rose-200">
           <h4 className="font-semibold text-rose-800 mb-2">The &ldquo;Treadmill&rdquo; of <Keyword color="rose">Alpha Decay</Keyword></h4>
-          <p className="text-sm text-rose-700">
+          <p className="text-sm text-[#BC4128] dark:text-[#E2694A]">
             As datasets become widely used, predictive power decays, forcing constant pursuit of newer, more esoteric data sources.
           </p>
         </div>
         <div className="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 rounded-lg border border-teal-200">
           <h4 className="font-semibold text-teal-800 mb-2">The Rise of <Keyword color="teal">Generative AI</Keyword></h4>
-          <p className="text-sm text-teal-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             LLMs augment human analysts, accelerating research through report summarization, memo drafting, and code generation. Future edge lies in effective <Keyword color="indigo">human-AI collaboration</Keyword>.
           </p>
         </div>
         <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-lg border border-indigo-200">
           <h4 className="font-semibold text-indigo-800 mb-2">The Search for &ldquo;True&rdquo; Alternative Data</h4>
-          <p className="text-sm text-indigo-700">
+          <p className="text-sm text-[#A8672E] dark:text-[#D08F52]">
             Frontier pushes into <Keyword color="teal">IoT sensor data</Keyword>, NLP analysis of internal corporate communications, and <Keyword color="teal">synthetic data</Keyword> for model stress-testing.
           </p>
         </div>
@@ -401,18 +401,18 @@ export default function HedgeFundDataPage() {
   return (
     <ArticleFrame slug="hedge-fund-data-driven-edge-alpha-generation">
       <div className="max-w-5xl mx-auto px-4">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           A comprehensive analysis of datasets used by hedge funds for alpha generation in long-short equity trading.
         </p>
 
         <InfographicSlot alt="Hedge Fund Data-Driven Edge Infographic" />
 
         {/* Executive Summary */}
-        <div className="bg-white p-6 md:p-8 rounded-xl shadow-md mb-12 mt-12 border border-slate-200">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">
+        <div className="bg-white dark:bg-[#0A0D14] p-6 md:p-8 rounded-xl shadow-md mb-12 mt-12 border border-slate-200 dark:border-slate-800">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-serif">
             Executive Summary
           </h2>
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-400">
             This report analyzes the datasets used by hedge funds for long-short equity trading, highlighting the accessibility gap between institutional and retail investors. The generation of <Keyword>alpha</Keyword> is now an industrial-scale process of acquiring, cleansing, and analyzing vast, diverse, and often proprietary <Keyword color="teal">alternative datasets</Keyword>. The true &ldquo;edge&rdquo; for hedge funds lies not just in exclusive data, but in the confluence of capital to license it, technology to process it, and specialized talent to model it. This integrated framework creates a formidable barrier to entry, explaining the performance chasm between institutional and retail participants.
           </p>
         </div>

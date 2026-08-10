@@ -14,7 +14,7 @@ export default function ConformalPredictionArticle() {
         <div className="max-w-4xl mx-auto">
           {/* Paper Attribution Section */}
           <section className="py-12 mt-8">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-l-4 border-blue-600 dark:border-blue-500 p-8 rounded-r-3xl min-w-0 shadow-sm">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] dark:border-[#A8672E] dark:border-[#D08F52] p-8 rounded-r-3xl min-w-0 shadow-sm">
               <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-300 mb-6 font-serif">Research Foundation</h2>
               <p className="text-lg text-blue-800 dark:text-blue-200/80 mb-6 leading-relaxed">
                 This article builds upon the groundbreaking research by <strong className="text-blue-950 dark:text-blue-100">Marc Schmitt</strong> in his paper:
@@ -30,7 +30,7 @@ export default function ConformalPredictionArticle() {
                   href="https://arxiv.org/abs/2602.03903"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold transition-colors group"
+                  className="inline-flex items-center gap-2 text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] hover:text-blue-800 dark:hover:text-blue-300 font-bold transition-colors group"
                 >
                   Read the Full Paper on arXiv
                   <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -85,21 +85,21 @@ export default function ConformalPredictionArticle() {
             
             <div className="space-y-6 mb-10 min-w-0">
               <div className="bg-white dark:bg-[#05070A] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0 mt-0.5">1</div>
+                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center font-bold shrink-0 mt-0.5">1</div>
                 <div className="min-w-0">
                   <strong className="block text-slate-900 dark:text-white mb-1 font-serif text-lg">Computing Nonconformity Scores</strong>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Measure how "unusual" each historical observation is relative to a base model.</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-[#05070A] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0 mt-0.5">2</div>
+                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center font-bold shrink-0 mt-0.5">2</div>
                 <div className="min-w-0">
                   <strong className="block text-slate-900 dark:text-white mb-1 font-serif text-lg">Quantile Calculation</strong>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Find the (1 - α) quantile of these scores.</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-[#05070A] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0 mt-0.5">3</div>
+                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center font-bold shrink-0 mt-0.5">3</div>
                 <div className="min-w-0">
                   <strong className="block text-slate-900 dark:text-white mb-1 font-serif text-lg">Prediction Interval</strong>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Use this quantile to construct an interval for future returns.</p>
@@ -107,7 +107,7 @@ export default function ConformalPredictionArticle() {
               </div>
             </div>
             
-            <div className="bg-emerald-50 dark:bg-emerald-950/20 p-6 rounded-2xl border-l-4 border-emerald-500 min-w-0">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/20 p-6 rounded-2xl border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] min-w-0">
               <p className="text-emerald-900 dark:text-emerald-300 font-mono text-sm">
                 <strong className="font-bold">Validity Guarantee:</strong> Under exchangeability, the prediction interval covers the true value with probability ≥ (1 - α)
               </p>
@@ -182,23 +182,23 @@ export default function ConformalPredictionArticle() {
             </p>
 
             <div className="bg-white dark:bg-[#05070A] p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 mb-12 min-w-0 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-2 h-full bg-orange-500"></div>
+              <div className="absolute top-0 left-0 w-2 h-full bg-[#BC4128] dark:bg-[#E2694A]"></div>
               <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-6 font-serif">Weighting Schemes</h4>
               <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-start gap-3">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                  <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                   <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">Exponential Decay:</strong> w(t) = exp(-λ · (T - t)) — Recent data weighted more heavily</div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                  <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                   <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">Volatility-Based:</strong> Weight by similarity in realized volatility regimes</div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                  <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                   <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">Regime Detection:</strong> Use HMM or change-point detection to identify regime shifts</div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                  <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                   <div className="leading-relaxed"><strong className="text-slate-900 dark:text-slate-200">Adaptive λ:</strong> Learn the decay rate from data to optimize coverage</div>
                 </li>
               </ul>
@@ -249,43 +249,43 @@ export default function ConformalPredictionArticle() {
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 font-serif">Step-by-Step Implementation</h3>
 
             <div className="space-y-6 min-w-0">
-              <div className="bg-blue-50/50 dark:bg-blue-950/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/30 min-w-0">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-blue-950/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/30 min-w-0">
                 <h4 className="text-xl font-bold text-blue-900 dark:text-blue-300 mb-4 flex items-center gap-3 font-serif">
                   <span className="w-8 h-8 bg-blue-200 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full flex items-center justify-center text-sm shadow-sm">1</span>
                   Data Preparation
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300 pl-11">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div>Collect historical portfolio returns (daily, hourly, or tick-level)</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div>Compute regime indicators (VIX, realized volatility, correlation)</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#A8672E] dark:text-[#D08F52] shrink-0" />
                     <div>Split data into calibration and test sets</div>
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-emerald-50/50 dark:bg-emerald-950/10 p-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30 min-w-0">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-950/10 p-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30 min-w-0">
                 <h4 className="text-xl font-bold text-emerald-900 dark:text-emerald-300 mb-4 flex items-center gap-3 font-serif">
                   <span className="w-8 h-8 bg-emerald-200 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 rounded-full flex items-center justify-center text-sm shadow-sm">2</span>
                   Base Model Selection
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300 pl-11">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div>Choose a base forecasting model (GARCH, ML model, or simple historical mean)</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div>The beauty of conformal prediction: model misspecification is corrected by the conformal layer</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                     <div>Even a naive model can achieve valid coverage with conformal adjustment</div>
                   </li>
                 </ul>
@@ -312,47 +312,47 @@ export default function ConformalPredictionArticle() {
                 </ul>
               </div>
 
-              <div className="bg-orange-50/50 dark:bg-orange-950/10 p-8 rounded-3xl border border-orange-100 dark:border-orange-900/30 min-w-0">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-orange-950/10 p-8 rounded-3xl border border-orange-100 dark:border-orange-900/30 min-w-0">
                 <h4 className="text-xl font-bold text-orange-900 dark:text-orange-300 mb-4 flex items-center gap-3 font-serif">
                   <span className="w-8 h-8 bg-orange-200 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 rounded-full flex items-center justify-center text-sm shadow-sm">4</span>
                   Regime Weighting
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300 pl-11">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Implement exponential decay or volatility-based weighting</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Tune decay parameter λ via cross-validation</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-orange-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Monitor regime transitions and adjust weights dynamically</div>
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-rose-50/50 dark:bg-rose-950/10 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0">
+              <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-950/10 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/30 min-w-0">
                 <h4 className="text-xl font-bold text-rose-900 dark:text-rose-300 mb-4 flex items-center gap-3 font-serif">
                   <span className="w-8 h-8 bg-rose-200 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 rounded-full flex items-center justify-center text-sm shadow-sm">5</span>
                   Risk Control Integration
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300 pl-11">
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Define loss function (e.g., magnitude of VaR breaches)</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Set target risk level α (e.g., 5% for 95% VaR)</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Implement online learning algorithm to adjust thresholds</div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <ChevronRight className="w-4 h-4 mt-0.5 text-rose-500 shrink-0" />
+                    <ChevronRight className="w-4 h-4 mt-0.5 text-[#BC4128] dark:text-[#E2694A] shrink-0" />
                     <div>Monitor cumulative loss and adapt in real-time</div>
                   </li>
                 </ul>
@@ -516,7 +516,7 @@ export default function ConformalPredictionArticle() {
             </div>
             
             <div className="bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#05070A] dark:to-[#14171B] text-white p-10 md:p-14 rounded-[3rem] shadow-2xl min-w-0 relative overflow-hidden border border-slate-800">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1D8A70] dark:bg-[#3CBF9C]/10 rounded-full blur-3xl pointer-events-none"></div>
               
               <div className="relative z-10">
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed font-serif">
@@ -525,23 +525,23 @@ export default function ConformalPredictionArticle() {
                 
                 <ul className="space-y-5 mb-10 text-lg">
                   <li className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                     <div>Provides valid risk estimates without distributional assumptions</div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                     <div>Adapts to regime changes in real-time</div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                     <div>Controls expected loss, not just coverage probability</div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                     <div>Works with any base forecasting model</div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-0.5" />
                     <div>Offers finite-sample guarantees for any strategy horizon</div>
                   </li>
                 </ul>

@@ -158,34 +158,34 @@ const allPapers = [
 ];
 
 const ResearchCard = ({ title, year, authors, concept, thesis, impact }) => (
-  <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-cyan-200 transition-all duration-300 transform hover:-translate-y-1">
+  <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-cyan-200 transition-all duration-300 transform hover:-translate-y-1">
     <div className="flex justify-between items-start mb-3">
       <span className="bg-cyan-100 text-cyan-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-cyan-200">
         {concept}
       </span>
       <span className="text-slate-500 text-sm font-mono">{year}</span>
     </div>
-    <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
+    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">{title}</h3>
     <p className="text-sm text-slate-500 mb-3 font-mono">{authors}</p>
-    <p className="text-slate-600 text-base leading-relaxed mb-3">{thesis}</p>
-    <div className="border-t border-slate-100 pt-3">
+    <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-3">{thesis}</p>
+    <div className="border-t border-slate-100 dark:border-slate-800 pt-3">
       <p className="text-sm text-slate-500 italic">Impact: {impact}</p>
     </div>
   </div>
 );
 
 const CategoryCard = ({ category, count, description, icon }) => (
-  <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+  <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
     <div className="flex items-center mb-4">
       <div className="p-2 bg-cyan-100 rounded-lg mr-3">
         {icon}
       </div>
       <div>
-        <h3 className="text-lg font-bold text-slate-900">{category}</h3>
+        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 font-serif">{category}</h3>
         <p className="text-sm text-slate-500">{count} papers</p>
       </div>
     </div>
-    <p className="text-slate-600">{description}</p>
+    <p className="text-slate-600 dark:text-slate-400">{description}</p>
   </div>
 );
 
@@ -224,7 +224,7 @@ export default function AQRResearchArchitecture() {
   const getIconForType = (type) => {
     switch (type) {
       case 'Journal Article': return <BookOpen className="h-5 w-5 text-cyan-600" />;
-      case 'White Paper': return <FileText className="h-5 w-5 text-indigo-500" />;
+      case 'White Paper': return <FileText className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52]" />;
       case 'Working Paper': return <Beaker className="h-5 w-5 text-amber-500" />;
       default: return null;
     }
@@ -247,10 +247,10 @@ export default function AQRResearchArchitecture() {
     };
 
     return (
-      <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 cursor-pointer" onClick={handleClick}>
+      <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 cursor-pointer" onClick={handleClick}>
         <div className="group inline-flex items-center">
           {children}
-          <span className={`ml-2 flex-none rounded ${direction !== 'none' ? 'bg-slate-200 text-slate-900' : 'text-slate-400 invisible group-hover:visible'}`}>
+          <span className={`ml-2 flex-none rounded ${direction !== 'none' ? 'bg-slate-200 text-slate-900 dark:text-slate-100' : 'text-slate-400 invisible group-hover:visible'}`}>
             <ArrowUpDown className="h-4 w-4" />
           </span>
         </div>
@@ -264,7 +264,7 @@ export default function AQRResearchArchitecture() {
       additionalDisclaimer="Past performance does not guarantee future results. Factor investing involves risks including potential losses."
     >
       {/* Navigation Tabs */}
-      <div className="flex flex-wrap justify-center mb-12 border-b border-slate-200">
+      <div className="flex flex-wrap justify-center mb-12 border-b border-slate-200 dark:border-slate-800">
         {[
           { id: 'foundational', label: 'Foundational Work', icon: <Award className="h-4 w-4" /> },
           { id: 'debates', label: 'Key Debates', icon: <Users className="h-4 w-4" /> },
@@ -278,7 +278,7 @@ export default function AQRResearchArchitecture() {
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors ${activeTab === tab.id
                 ? 'text-cyan-600 border-b-2 border-cyan-600'
-                : 'text-slate-600 hover:text-slate-900'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-slate-100'
               }`}
           >
             {tab.icon}
@@ -291,8 +291,8 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'foundational' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Foundational Research</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Foundational Research</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               The cornerstones of AQR&apos;s research that established the core factors in quantitative investing and transformed academic theory into institutional practice.
             </p>
           </div>
@@ -307,8 +307,8 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'debates' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Key Debates in Factor Investing</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Key Debates in Factor Investing</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               AQR&apos;s perspective on the practical and philosophical challenges of implementing factor strategies in institutional portfolios.
             </p>
           </div>
@@ -323,8 +323,8 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'categories' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Research Categories</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Research Categories</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               AQR&apos;s research spans multiple domains, from traditional factor investing to cutting-edge machine learning applications.
             </p>
           </div>
@@ -339,8 +339,8 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'evolution' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Evolution of Quantitative Research</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Evolution of Quantitative Research</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               Trace the development of AQR&apos;s research from early factor studies to modern machine learning applications over 25+ years.
             </p>
           </div>
@@ -348,23 +348,23 @@ export default function AQRResearchArchitecture() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 to-blue-600 rounded-full"></div>
             <div className="space-y-12">
               {[
-                { year: "1997-2000", title: "Early Factor Research", description: "Foundational work on value-momentum interaction and style timing", color: "bg-blue-500" },
+                { year: "1997-2000", title: "Early Factor Research", description: "Foundational work on value-momentum interaction and style timing", color: "bg-[#A8672E] dark:bg-[#D08F52]" },
                 { year: "2012-2014", title: "Factor Universality", description: "Breakthrough research on global factor premia and defensive strategies", color: "bg-cyan-500" },
-                { year: "2016-2019", title: "Implementation Focus", description: "Practical insights on factor timing skepticism and quality investing", color: "bg-indigo-500" },
+                { year: "2016-2019", title: "Implementation Focus", description: "Practical insights on factor timing skepticism and quality investing", color: "bg-[#A8672E] dark:bg-[#D08F52]" },
                 { year: "2023-2025", title: "Modern Applications", description: "Machine learning, tax optimization, and structured product innovation", color: "bg-purple-500" }
               ].map((era, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className="flex-1"></div>
                   <div className={`w-4 h-4 ${era.color} rounded-full border-4 border-white shadow-lg z-10 relative`}></div>
                   <div className="flex-1 px-8">
-                    <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                    <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm">
                       <div className="flex items-center mb-2">
                         <span className={`${era.color} text-white text-xs px-2 py-1 rounded-full font-semibold`}>
                           {era.year}
                         </span>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2">{era.title}</h3>
-                      <p className="text-slate-600">{era.description}</p>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">{era.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400">{era.description}</p>
                     </div>
                   </div>
                 </div>
@@ -377,56 +377,56 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'insights' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Key Insights from AQR&apos;s Research</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Key Insights from AQR&apos;s Research</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               The fundamental principles and discoveries that emerged from AQR&apos;s systematic approach to quantitative investing.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-cyan-100 rounded-lg mr-3">
                   <TrendingUp className="h-6 w-6 text-cyan-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Factor Universality</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Factor Universality</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 AQR&apos;s research demonstrates that value and momentum factors work across asset classes, geographies, and time periods.
                 This universality suggests these are fundamental risk premia rather than statistical artifacts.
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-indigo-100 rounded-lg mr-3">
-                  <BarChart3 className="h-6 w-6 text-indigo-600" />
+                  <BarChart3 className="h-6 w-6 text-[#A8672E] dark:text-[#D08F52]" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Implementation Matters</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Implementation Matters</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 The gap between academic factor returns and real-world implementation is significant. Transaction costs,
                 capacity constraints, and behavioral biases all impact the practical application of factor strategies.
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-purple-100 rounded-lg mr-3">
                   <Layers className="h-6 w-6 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Diversification Benefits</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Diversification Benefits</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Combining negatively correlated factors like value and momentum creates more robust portfolios.
                 The diversification benefit extends beyond simple risk reduction to improved risk-adjusted returns.
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-amber-100 rounded-lg mr-3">
                   <Brain className="h-6 w-6 text-amber-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Behavioral Foundations</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Behavioral Foundations</h3>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Many factor premia have behavioral explanations rooted in investor psychology. Understanding these
                 behavioral drivers helps explain factor persistence and provides confidence in their continued existence.
               </p>
@@ -438,8 +438,8 @@ export default function AQRResearchArchitecture() {
       {activeTab === 'library' && (
         <section className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Complete Research Library</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Complete Research Library</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
               A comprehensive, searchable catalog of AQR&apos;s journal articles, white papers, and working papers spanning 25+ years of quantitative research.
               Sorted by date to show the latest breakthroughs first.
             </p>
@@ -447,21 +447,21 @@ export default function AQRResearchArchitecture() {
 
           {/* Recent Highlights */}
           <div className="mb-8">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Recent Highlights</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 font-serif">Recent Highlights</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {allPapers.slice(0, 6).map((paper, index) => (
-                <div key={index} className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-lg p-4 hover:shadow-md transition-all duration-300">
+                <div key={index} className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 dark:border-slate-800 rounded-lg p-4 hover:shadow-md transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
                     <span className="bg-cyan-100 text-cyan-800 text-xs px-2 py-1 rounded-full">
                       {paper.type}
                     </span>
                     <span className="text-xs text-slate-500">{formatDate(paper.date)}</span>
                   </div>
-                  <h4 className="font-semibold text-slate-900 text-sm mb-2 line-clamp-2">{paper.title}</h4>
-                  <p className="text-xs text-slate-600 mb-2">{paper.authors}</p>
+                  <h4 className="font-semibold text-slate-900 dark:text-slate-100 text-sm mb-2 line-clamp-2">{paper.title}</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">{paper.authors}</p>
                   <div className="flex flex-wrap gap-1">
                     {paper.topic.split(', ').slice(0, 2).map(topic => (
-                      <span key={topic} className="bg-slate-100 text-slate-700 text-xs px-1.5 py-0.5 rounded">
+                      <span key={topic} className="bg-slate-100 text-slate-700 dark:text-slate-300 text-xs px-1.5 py-0.5 rounded">
                         {topic}
                       </span>
                     ))}
@@ -471,7 +471,7 @@ export default function AQRResearchArchitecture() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-lg">
+          <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-6 shadow-lg">
             {/* Search and Filter Controls */}
             <div className="flex flex-col md:flex-row gap-4 mb-4">
               <div className="relative flex-grow">
@@ -481,7 +481,7 @@ export default function AQRResearchArchitecture() {
                   placeholder="Search by title, author, or topic..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-white border border-slate-300 rounded-lg py-2 pl-10 pr-4 text-slate-900 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
+                  className="w-full bg-white dark:bg-[#0A0D14] border border-slate-300 rounded-lg py-2 pl-10 pr-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
                 />
               </div>
               <div className="flex items-center space-x-2 overflow-x-auto pb-2">
@@ -491,7 +491,7 @@ export default function AQRResearchArchitecture() {
                     onClick={() => setFilterType(type)}
                     className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition ${filterType === type
                         ? 'bg-cyan-600 text-white shadow-sm'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                        : 'bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-slate-200'
                       }`}
                   >
                     {type}
@@ -510,8 +510,8 @@ export default function AQRResearchArchitecture() {
                 <thead>
                   <tr>
                     <SortableHeader sortKey="title">Title</SortableHeader>
-                    <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 hidden lg:table-cell">Authors</th>
-                    <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 hidden md:table-cell">Topics</th>
+                    <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 hidden lg:table-cell">Authors</th>
+                    <th scope="col" className="py-3.5 px-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 hidden md:table-cell">Topics</th>
                     <SortableHeader sortKey="date">Date</SortableHeader>
                     <SortableHeader sortKey="type">Type</SortableHeader>
                   </tr>
@@ -519,28 +519,28 @@ export default function AQRResearchArchitecture() {
                 <tbody className="divide-y divide-slate-100">
                   {sortedAndFilteredPapers.length > 0 ? (
                     sortedAndFilteredPapers.map((paper, index) => (
-                      <tr key={index} className="hover:bg-slate-50 transition-colors">
-                        <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-slate-900 sm:w-auto sm:max-w-none sm:pl-3">
+                      <tr key={index} className="hover:bg-slate-50 dark:bg-[#14171B] transition-colors">
+                        <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-slate-900 dark:text-slate-100 sm:w-auto sm:max-w-none sm:pl-3">
                           {paper.title}
                           <dl className="font-normal lg:hidden mt-1">
                             <dt className="sr-only">Authors</dt>
-                            <dd className="truncate text-slate-600">{paper.authors}</dd>
+                            <dd className="truncate text-slate-600 dark:text-slate-400">{paper.authors}</dd>
                           </dl>
                           <dl className="font-normal md:hidden mt-1">
                             <dt className="sr-only">Topics</dt>
-                            <dd className="truncate text-slate-600 text-xs">{paper.topic}</dd>
+                            <dd className="truncate text-slate-600 dark:text-slate-400 text-xs">{paper.topic}</dd>
                           </dl>
                         </td>
                         <td className="hidden px-3 py-4 text-sm text-slate-500 lg:table-cell">{paper.authors}</td>
                         <td className="hidden px-3 py-4 text-sm text-slate-500 md:table-cell">
                           <div className="flex flex-wrap gap-1">
                             {paper.topic.split(', ').map(t => (
-                              <span key={t} className="bg-slate-100 text-slate-700 text-xs font-medium px-2 py-0.5 rounded-full">{t}</span>
+                              <span key={t} className="bg-slate-100 text-slate-700 dark:text-slate-300 text-xs font-medium px-2 py-0.5 rounded-full">{t}</span>
                             ))}
                           </div>
                         </td>
                         <td className="px-3 py-4 text-sm text-slate-500 whitespace-nowrap">{formatDate(paper.date)}</td>
-                        <td className="px-3 py-4 text-sm text-slate-600">
+                        <td className="px-3 py-4 text-sm text-slate-600 dark:text-slate-400">
                           <div className="flex items-center gap-2 font-medium">
                             {getIconForType(paper.type)}
                             <span className="hidden xl:inline">{paper.type}</span>

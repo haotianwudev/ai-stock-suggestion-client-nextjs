@@ -23,8 +23,8 @@ const valuationData = [
 // Reusable Components
 const Section = ({ title, children, icon: Icon }) => (
   <section className="mb-12 bg-white dark:bg-gray-800/50 p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-      <Icon className="w-8 h-8 mr-4 text-teal-500" />
+    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
+      <Icon className="w-8 h-8 mr-4 text-[#A8672E] dark:text-[#D08F52]" />
       {title}
     </h2>
     <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
@@ -36,7 +36,7 @@ const Section = ({ title, children, icon: Icon }) => (
 const StatCard = ({ title, value, subtext, icon: Icon }) => (
   <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl shadow-md flex items-center space-x-4 border border-gray-200 dark:border-gray-700">
     <div className="bg-teal-100 dark:bg-teal-900 p-3 rounded-full">
-      <Icon className="w-8 h-8 text-teal-600 dark:text-teal-300" />
+      <Icon className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] dark:text-teal-300" />
     </div>
     <div>
       <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{title}</p>
@@ -50,25 +50,25 @@ const ProductCard = ({ title, description, icon }) => (
   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
     <div className="flex items-center mb-4">
       <img src={icon} alt={`${title} icon`} className="w-10 h-10 mr-4"/>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">{title}</h3>
     </div>
     <p className="text-gray-600 dark:text-gray-300">{description}</p>
   </div>
 );
 
-const Highlight = ({ children }) => <span className="text-teal-500 dark:text-teal-400 font-semibold">{children}</span>;
+const Highlight = ({ children }) => <span className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] font-semibold">{children}</span>;
 
 const RiskCard = ({ title, children }) => (
-  <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-r-lg mt-4">
+  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-4 rounded-r-lg mt-4">
     <h4 className="font-bold text-red-800 dark:text-red-300">{title}</h4>
-    <p className="text-red-700 dark:text-red-400">{children}</p>
+    <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">{children}</p>
   </div>
 );
 
 const StrengthCard = ({ title, children }) => (
-  <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-4 rounded-r-lg mt-4">
+  <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] p-4 rounded-r-lg mt-4">
     <h4 className="font-bold text-green-800 dark:text-green-300">{title}</h4>
-    <p className="text-green-700 dark:text-green-400">{children}</p>
+    <p className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">{children}</p>
   </div>
 );
 
@@ -128,7 +128,7 @@ export default function FigmaIPOAnalysis() {
           />
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">The Strategic Pivot to AI</h3>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">The Strategic Pivot to AI</h3>
         <p>
           At Config 2025, Figma unveiled a suite of AI-powered products to expand its capabilities and empower a broader user base.
           This strategic push aims to evolve Figma from a design tool into an <Highlight>operating system for AI-driven creation</Highlight>.
@@ -147,20 +147,20 @@ export default function FigmaIPOAnalysis() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center">
           <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
-            <p className="text-4xl font-bold text-teal-500">132%</p>
+            <p className="text-4xl font-bold text-[#A8672E] dark:text-[#D08F52]">132%</p>
             <p className="font-semibold text-gray-700 dark:text-gray-300">Net Dollar Retention</p>
           </div>
           <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
-            <p className="text-4xl font-bold text-teal-500">&gt;90%</p>
+            <p className="text-4xl font-bold text-[#A8672E] dark:text-[#D08F52]">&gt;90%</p>
             <p className="font-semibold text-gray-700 dark:text-gray-300">Gross Margin</p>
           </div>
           <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
-            <p className="text-4xl font-bold text-teal-500">63</p>
+            <p className="text-4xl font-bold text-[#A8672E] dark:text-[#D08F52]">63</p>
             <p className="font-semibold text-gray-700 dark:text-gray-300">Rule of 40 Score</p>
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center font-serif">
           Consolidated Financial Performance ($M)
         </h3>
         <div style={{ width: '100%', height: 400 }}>
@@ -228,7 +228,7 @@ export default function FigmaIPOAnalysis() {
           The bull case hinges on Figma becoming a foundational &ldquo;operating system for creativity,&rdquo; while the bear case points to the high risk of valuation compression.
         </p>
 
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center font-serif">
           Comparative P/S Ratios
         </h3>
         <div style={{ width: '100%', height: 400 }}>
@@ -286,10 +286,10 @@ export default function FigmaIPOAnalysis() {
           </div>
         </div>
 
-        <div className="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 p-6 rounded-r-lg">
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-teal-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-lg">
           <h4 className="font-bold text-2xl text-teal-800 dark:text-teal-200 mb-2">Recommendation:</h4>
-          <p className="text-xl font-semibold text-teal-700 dark:text-teal-300">Place on Priority Watchlist</p>
-          <p className="mt-4 text-teal-600 dark:text-teal-400">
+          <p className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-teal-300">Place on Priority Watchlist</p>
+          <p className="mt-4 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
             The most logical course of action is patience. Await a market correction or a period of consolidation
             that allows fundamentals to catch up to the stock price, creating a more attractive risk/reward
             profile before initiating a position.

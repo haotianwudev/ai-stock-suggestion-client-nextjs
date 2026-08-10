@@ -168,7 +168,7 @@ const RiskProfile: React.FC<RiskProfileProps> = ({ type, stocks, bonds, cash, de
   const themes = {
     conservative: {
       border: "border-emerald-200",
-      hover: "hover:border-emerald-400",
+      hover: "hover:border-[#1D8A70] dark:border-[#3CBF9C]",
       bgHeader: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10",
       textHeader: "text-[#1D8A70] dark:text-[#3CBF9C]",
       badge: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C] border-emerald-200",
@@ -178,7 +178,7 @@ const RiskProfile: React.FC<RiskProfileProps> = ({ type, stocks, bonds, cash, de
     },
     balanced: {
       border: "border-indigo-200",
-      hover: "hover:border-indigo-400",
+      hover: "hover:border-[#A8672E] dark:border-[#D08F52]",
       bgHeader: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10",
       textHeader: "text-[#A8672E] dark:text-[#D08F52]",
       badge: "bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52] border-indigo-200",
@@ -188,7 +188,7 @@ const RiskProfile: React.FC<RiskProfileProps> = ({ type, stocks, bonds, cash, de
     },
     aggressive: {
       border: "border-rose-200",
-      hover: "hover:border-rose-400",
+      hover: "hover:border-[#BC4128] dark:border-[#E2694A]",
       bgHeader: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10",
       textHeader: "text-[#BC4128] dark:text-[#E2694A]",
       badge: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A] border-rose-200",
@@ -331,8 +331,8 @@ const AttributionCalculator = () => {
             />
             
             <div className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-400">
-              <label className="text-orange-600">Portfolio Weight (Your Bet)</label>
-              <span className="text-orange-600">{wp}%</span>
+              <label className="text-[#BC4128] dark:text-[#E2694A]">Portfolio Weight (Your Bet)</label>
+              <span className="text-[#BC4128] dark:text-[#E2694A]">{wp}%</span>
             </div>
             <input 
               type="range" 
@@ -362,8 +362,8 @@ const AttributionCalculator = () => {
             />
             
             <div className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-400">
-              <label className="text-orange-600">Your Stock Picks Return</label>
-              <span className="text-orange-600">{rp}%</span>
+              <label className="text-[#BC4128] dark:text-[#E2694A]">Your Stock Picks Return</label>
+              <span className="text-[#BC4128] dark:text-[#E2694A]">{rp}%</span>
             </div>
             <input 
               type="range" 
@@ -642,7 +642,7 @@ export default function StrategicTacticalAssetAllocation() {
 
           {/* Section 2: Tactical Asset Allocation */}
           <section>
-            <SectionHeading icon={Activity} color="text-orange-600" bg="bg-orange-50">
+            <SectionHeading icon={Activity} color="text-[#BC4128] dark:text-[#E2694A]" bg="bg-[#BC4128]/10 dark:bg-[#E2694A]/10">
               Tactical Asset Allocation (TAA)
             </SectionHeading>
             <div className="prose prose-lg text-slate-600 dark:text-slate-400 mb-10 max-w-none">
@@ -660,7 +660,7 @@ export default function StrategicTacticalAssetAllocation() {
             <div className="mb-12">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 font-serif">
-                  <Zap size={24} className="text-orange-500"/>
+                  <Zap size={24} className="text-[#BC4128] dark:text-[#E2694A]"/>
                   The TAA Decision Engine
                 </h3>
                 <span className="text-xs font-bold bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-wide">Live Signal Examples</span>
@@ -698,7 +698,7 @@ export default function StrategicTacticalAssetAllocation() {
               
               <div className="bg-white dark:bg-[#0A0D14] rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
-                  <BarChart size={20} className="text-orange-500"/>
+                  <BarChart size={20} className="text-[#BC4128] dark:text-[#E2694A]"/>
                   TAA Signal Categories Explained
                 </h4>
                 <div className="grid md:grid-cols-2 gap-6 text-sm">
@@ -725,11 +725,11 @@ export default function StrategicTacticalAssetAllocation() {
             </div>
             
             <div className="bg-slate-900 rounded-3xl p-8 md:p-12 mb-12 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600 rounded-full blur-[120px] opacity-20"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#BC4128] dark:bg-[#E2694A] rounded-full blur-[120px] opacity-20"></div>
               <h3 className="text-2xl font-bold mb-8 relative z-10 font-serif">Approaches to Tactical Execution</h3>
               <div className="grid md:grid-cols-2 gap-8 relative z-10">
                 <div className="bg-white dark:bg-[#0A0D14]/10 backdrop-blur-md p-6 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-3 mb-4 text-orange-400">
+                  <div className="flex items-center gap-3 mb-4 text-[#BC4128] dark:text-[#E2694A]">
                     <Cpu size={24} />
                     <h4 className="font-bold text-lg">Systematic TAA (Quant)</h4>
                   </div>
@@ -741,7 +741,7 @@ export default function StrategicTacticalAssetAllocation() {
                   </ul>
                 </div>
                 <div className="bg-white dark:bg-[#0A0D14]/10 backdrop-blur-md p-6 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-3 mb-4 text-orange-400">
+                  <div className="flex items-center gap-3 mb-4 text-[#BC4128] dark:text-[#E2694A]">
                     <Briefcase size={24} />
                     <h4 className="font-bold text-lg">Discretionary TAA</h4>
                   </div>
@@ -757,7 +757,7 @@ export default function StrategicTacticalAssetAllocation() {
 
             <div className="bg-white dark:bg-[#0A0D14] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-8 mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <RefreshCw className="text-orange-500" size={24} />
+                <RefreshCw className="text-[#BC4128] dark:text-[#E2694A]" size={24} />
                 <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 font-serif">Strategy Focus: Sector Rotation</h3>
               </div>
               <p className="text-slate-600 dark:text-slate-400 mb-8">One common TAA strategy involves shifting between business sectors based on the economic cycle. Different sectors perform better at different stages of economic expansion and contraction.</p>
@@ -778,12 +778,12 @@ export default function StrategicTacticalAssetAllocation() {
                     <div className="text-xs text-slate-400">Strong earnings growth, capex spending</div>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-2 h-2 bg-[#A8672E] dark:bg-[#D08F52] rounded-full md:block hidden"></div>
                   </div>
-                  <div className="bg-orange-50 p-4 rounded-xl border border-orange-100 text-center relative hover:-translate-y-1 transition-transform">
-                    <div className="text-xs font-bold uppercase text-orange-600 mb-1">Late Cycle</div>
+                  <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-xl border border-orange-100 text-center relative hover:-translate-y-1 transition-transform">
+                    <div className="text-xs font-bold uppercase text-[#BC4128] dark:text-[#E2694A] mb-1">Late Cycle</div>
                     <div className="font-bold text-slate-800 dark:text-slate-200 mb-2">Slowdown</div>
                     <div className="text-xs text-slate-500 mb-3">Overweight: <br/>Energy, Materials</div>
                     <div className="text-xs text-slate-400">Inflation pressures, resource scarcity</div>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-2 h-2 bg-orange-500 rounded-full md:block hidden"></div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-2 h-2 bg-[#BC4128] dark:bg-[#E2694A] rounded-full md:block hidden"></div>
                   </div>
                   <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 p-4 rounded-xl border border-red-100 text-center relative hover:-translate-y-1 transition-transform">
                     <div className="text-xs font-bold uppercase text-[#BC4128] dark:text-[#E2694A] mb-1">Recession</div>
@@ -799,7 +799,7 @@ export default function StrategicTacticalAssetAllocation() {
                 <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-3">Sector Rotation Implementation Tips</h5>
                 <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-600 dark:text-slate-400">
                   <div>
-                    <h6 className="font-bold text-orange-600 mb-2">Leading Indicators</h6>
+                    <h6 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Leading Indicators</h6>
                     <ul className="space-y-1">
                       <li>• Yield curve shape (normal vs. inverted)</li>
                       <li>• Credit spreads (tight vs. wide)</li>
@@ -808,7 +808,7 @@ export default function StrategicTacticalAssetAllocation() {
                     </ul>
                   </div>
                   <div>
-                    <h6 className="font-bold text-orange-600 mb-2">Execution Considerations</h6>
+                    <h6 className="font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Execution Considerations</h6>
                     <ul className="space-y-1">
                       <li>• Use sector ETFs for broad exposure</li>
                       <li>• Gradual position sizing (not all-or-nothing)</li>
@@ -995,7 +995,7 @@ export default function StrategicTacticalAssetAllocation() {
                 </div>
                 <div className="bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic border border-slate-100 dark:border-slate-800">
                   <div className="flex items-start gap-3">
-                    <AlertTriangle size={16} className="text-orange-500 mt-1 shrink-0"/>
+                    <AlertTriangle size={16} className="text-[#BC4128] dark:text-[#E2694A] mt-1 shrink-0"/>
                     <div>
                       <p className="mb-3">"Attribution tells you where the return came from, but not if it will persist. A manager with +5% Selection Effect in one quarter might just be lucky."</p>
                       <p className="font-bold text-slate-700 dark:text-slate-300">Look for consistency over 3-5 years to identify genuine skill.</p>
@@ -1008,7 +1008,7 @@ export default function StrategicTacticalAssetAllocation() {
 
           {/* Section 4: Implementation & Pitfalls */}
           <section>
-            <SectionHeading icon={Scale} color="text-teal-600" bg="bg-teal-50">
+            <SectionHeading icon={Scale} color="text-[#A8672E] dark:text-[#D08F52]" bg="bg-[#A8672E]/10 dark:bg-[#D08F52]/10">
               Implementation & Pitfalls
             </SectionHeading>
             <div className="grid md:grid-cols-2 gap-8">
@@ -1047,10 +1047,10 @@ export default function StrategicTacticalAssetAllocation() {
                     <p className="text-sm text-[#BC4128] dark:text-[#E2694A] mt-1 mb-2">Assuming that because Tech stocks went up last year, they will go up this year. This leads to chasing returns.</p>
                     <p className="text-xs text-[#BC4128] dark:text-[#E2694A]">Solution: Base decisions on long-term fundamentals, not recent performance.</p>
                   </div>
-                  <div className="p-3 bg-orange-50 rounded-lg border border-orange-100">
+                  <div className="p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg border border-orange-100">
                     <h5 className="font-bold text-orange-800 text-sm">Overconfidence</h5>
-                    <p className="text-sm text-orange-700 mt-1 mb-2">Believing you can time the market better than you actually can. Most TAA fails due to emotion.</p>
-                    <p className="text-xs text-orange-600">Solution: Start small with TAA positions. Track your hit rate honestly.</p>
+                    <p className="text-sm text-[#BC4128] dark:text-[#E2694A] mt-1 mb-2">Believing you can time the market better than you actually can. Most TAA fails due to emotion.</p>
+                    <p className="text-xs text-[#BC4128] dark:text-[#E2694A]">Solution: Start small with TAA positions. Track your hit rate honestly.</p>
                   </div>
                   <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-100">
                     <h5 className="font-bold text-yellow-800 text-sm">Style Drift</h5>
@@ -1068,12 +1068,12 @@ export default function StrategicTacticalAssetAllocation() {
             
             <div className="mt-8 bg-white dark:bg-[#0A0D14] rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
               <h3 className="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 font-serif">
-                <CheckCircle size={20} className="text-teal-500"/>
+                <CheckCircle size={20} className="text-[#A8672E] dark:text-[#D08F52]"/>
                 Implementation Checklist
               </h3>
               <div className="grid md:grid-cols-2 gap-6 text-sm">
                 <div>
-                  <h4 className="font-bold text-teal-600 mb-3">Before You Start</h4>
+                  <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-3">Before You Start</h4>
                   <ul className="space-y-2 text-slate-600 dark:text-slate-400">
                     <li className="flex items-start gap-2">
                       <div className="w-4 h-4 border border-slate-300 rounded mt-0.5 shrink-0"></div>
@@ -1094,7 +1094,7 @@ export default function StrategicTacticalAssetAllocation() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold text-teal-600 mb-3">Ongoing Management</h4>
+                  <h4 className="font-bold text-[#A8672E] dark:text-[#D08F52] mb-3">Ongoing Management</h4>
                   <ul className="space-y-2 text-slate-600 dark:text-slate-400">
                     <li className="flex items-start gap-2">
                       <div className="w-4 h-4 border border-slate-300 rounded mt-0.5 shrink-0"></div>

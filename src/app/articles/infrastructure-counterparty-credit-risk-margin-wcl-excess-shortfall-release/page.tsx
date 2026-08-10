@@ -119,7 +119,7 @@ export default function CounterpartyCreditRiskArticle() {
                 headers={["Metric", "Calculation Methodology", "Example Scenario"]}
                 rows={regTData}
                 renderRow={(row, i) => (
-                  <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
                     <td className="p-3 font-medium text-slate-900 dark:text-slate-100">{row.metric}</td>
                     <td className="p-3 text-slate-600 dark:text-slate-400 font-mono text-xs">{row.calc}</td>
                     <td className="p-3 text-[#1D8A70] dark:text-[#3CBF9C]">{row.example}</td>
@@ -187,7 +187,7 @@ export default function CounterpartyCreditRiskArticle() {
                 headers={["Liquidity Metric", "Calculation / Value"]}
                 rows={houseExcessData}
                 renderRow={(row, i) => (
-                  <tr key={i} className={`transition-colors ${row.highlight ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'}`}>
+                  <tr key={i} className={`transition-colors ${row.highlight ? 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10' : 'hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50'}`}>
                     <td className={`p-3 font-medium ${row.highlight ? 'text-[#1D8A70] dark:text-[#3CBF9C] font-bold' : 'text-slate-900 dark:text-slate-100'}`}>{row.metric}</td>
                     <td className={`p-3 font-mono text-xs ${row.highlight ? 'text-[#1D8A70] dark:text-[#3CBF9C] font-bold' : 'text-slate-600 dark:text-slate-400'}`}>{row.val}</td>
                   </tr>
@@ -245,13 +245,13 @@ export default function CounterpartyCreditRiskArticle() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-gray-900">
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                       <td className="p-3 font-bold text-slate-900 dark:text-slate-100">Regulation T</td>
                       <td className="p-3 font-mono text-slate-600 dark:text-slate-400">$2.5M</td>
                       <td className="p-3 font-mono font-bold text-[#1D8A70] dark:text-[#3CBF9C]">$1,250,000</td>
                       <td className="p-3 font-medium text-[#BC4128] dark:text-[#E2694A]">$0 (High Margin Call Risk)</td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                       <td className="p-3 font-bold text-slate-900 dark:text-slate-100">Portfolio Margin</td>
                       <td className="p-3 font-mono text-slate-600 dark:text-slate-400">$2.5M</td>
                       <td className="p-3 font-mono font-bold text-[#1D8A70] dark:text-[#3CBF9C]">$2,125,000</td>
@@ -301,8 +301,8 @@ export default function CounterpartyCreditRiskArticle() {
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-gray-900">
                   {comparisonData.map((row, i) => (
-                    <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                      <td className="p-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30">{row.char}</td>
+                    <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50 transition-colors">
+                      <td className="p-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#14171B]/50 dark:bg-slate-800/30">{row.char}</td>
                       <td className="p-4 text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700">{row.pb}</td>
                       <td className="p-4 text-slate-600 dark:text-slate-400">{row.wm}</td>
                     </tr>

@@ -62,7 +62,7 @@ function ParadigmShiftSection() {
               ["Tool Utilization", "None (fixed database connection)", "Dynamic selection of multiple specialized retrieval tools"],
               ["Optimal Use Case", "Fast lookups, simple FAQs, static documentation", "Complex research, multi-document synthesis, mathematical proofs"]
             ].map(([feature, standard, agentic], i) => (
-              <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+              <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/20 transition-colors">
                 <td className="py-4 px-4 font-medium text-slate-900 dark:text-slate-300">{feature}</td>
                 <td className="py-4 px-4">{standard}</td>
                 <td className="py-4 px-4">{agentic}</td>
@@ -123,7 +123,7 @@ function EngineeringSection() {
               ["BaseTool Subclassing", "Extends base class for manual _run implementation.", "Custom tools needing state management and deep error handling."],
               ["BaseToolkit", "Groups multiple BaseTool instances together.", "Exposing an entire wiki API to the agent."]
             ].map(([method, strategy, usecase], i) => (
-              <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+              <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/20 transition-colors">
                 <td className="py-4 px-4 font-medium text-slate-900 dark:text-slate-300">{method}</td>
                 <td className="py-4 px-4">{strategy}</td>
                 <td className="py-4 px-4">{usecase}</td>
@@ -133,8 +133,8 @@ function EngineeringSection() {
         </table>
       </div>
 
-      <div className="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 flex gap-6 items-start min-w-0">
-        <ShieldAlert className="text-rose-600 dark:text-rose-500 shrink-0 mt-1" size={28} />
+      <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl p-8 flex gap-6 items-start min-w-0">
+        <ShieldAlert className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] shrink-0 mt-1" size={28} />
         <div className="min-w-0">
           <h4 className="text-xl font-bold text-rose-900 dark:text-rose-300 mb-3">Access Control &amp; Entitlement Drift</h4>
           <p className="text-rose-800 dark:text-rose-200/80 leading-relaxed">
@@ -166,10 +166,10 @@ function IngestionSection() {
         <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
           <Calculator size={120} className="text-white" />
         </div>
-        <h4 className="text-emerald-400 font-mono text-sm mb-6 tracking-wide">THE VULNERABILITY OF MATH PARSING: BLACK-SCHOLES-MERTON</h4>
+        <h4 className="text-[#1D8A70] dark:text-[#3CBF9C] font-mono text-sm mb-6 tracking-wide">THE VULNERABILITY OF MATH PARSING: BLACK-SCHOLES-MERTON</h4>
         <div className="space-y-6 text-slate-300 text-sm md:text-base min-w-0 overflow-x-auto">
           <MathBlock math="C = S_t N(d_1) - K e^{-rt} N(d_2)" className="text-white" />
-          <p className="text-rose-400 bg-rose-900/30 py-2 -mx-4 px-4 border-l-4 border-rose-500 font-mono text-xs md:text-sm my-4">
+          <p className="text-[#BC4128] dark:text-[#E2694A] bg-rose-900/30 py-2 -mx-4 px-4 border-l-4 border-[#BC4128] dark:border-[#E2694A] font-mono text-xs md:text-sm my-4">
             {`// A naive RecursiveCharacterTextSplitter splits here at \\n`}
           </p>
           <MathBlock math="d_1 = \frac{\ln(S_t/K) + (r + \sigma^2/2)t}{\sigma\sqrt{t}}" className="text-white" />
@@ -196,7 +196,7 @@ function IngestionSection() {
               ["MarkdownHeaderTextSplitter", "Groups text by explicit heading hierarchy.", "Maintains structural integrity of comprehensive research papers."],
               ["Semantic Chunking", "Groups based on embedding similarity scores.", "Keeps explanatory text coupled with relevant formulas."]
             ].map(([strategy, mechanism, application], i) => (
-              <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+              <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/20 transition-colors">
                 <td className="py-4 px-4 font-medium text-slate-900 dark:text-slate-300">{strategy}</td>
                 <td className="py-4 px-4">{mechanism}</td>
                 <td className="py-4 px-4">{application}</td>
@@ -266,7 +266,7 @@ function LangGraphSection() {
               ["Code Generator", "Translating mathematical concepts into executable algorithms.", "Python REPL, IDE integrations."],
               ["Risk Control/Critic", "Validating outputs against mathematical proofs and risk limits.", "Evaluation rubrics, LLM-as-a-Judge prompts."]
             ].map(([role, func, tools], i) => (
-              <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+              <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/20 transition-colors">
                 <td className="py-4 px-4 font-medium text-slate-900 dark:text-slate-300">{role}</td>
                 <td className="py-4 px-4">{func}</td>
                 <td className="py-4 px-4">{tools}</td>
@@ -320,7 +320,7 @@ function ExecutionSection() {
           True enterprise systems require <strong>proactive memory</strong> (monitoring Git/Confluence to autonomously update vector stores) and rigorous <strong>observability</strong> (using LangSmith to trace Pydantic inputs, latency, and LLM reasoning alterations).
         </p>
         <p className="text-slate-400 text-sm uppercase tracking-widest font-semibold">
-          When a mathematical parameter is missing, the system must <span className="text-rose-400">fail loudly</span>, not approximate.
+          When a mathematical parameter is missing, the system must <span className="text-[#BC4128] dark:text-[#E2694A]">fail loudly</span>, not approximate.
         </p>
       </div>
     </section>

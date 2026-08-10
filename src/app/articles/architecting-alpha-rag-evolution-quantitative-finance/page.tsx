@@ -19,7 +19,7 @@ export default function ArchitectingAlphaRAG() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Why RAG is Imperative in Finance</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Why RAG is Imperative in Finance</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -29,7 +29,7 @@ export default function ArchitectingAlphaRAG() {
             <ComparisonGrid>
               <ComparisonCard title="Grounding & Transparency" tone="pos">
                 <div className="flex items-center gap-2 mb-2">
-                  <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                  <ShieldCheck className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C]" />
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Auditable Citations</p>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">Instead of guessing, the LLM is forced to answer strictly based on retrieved external evidence (e.g., SEC 10-Q filings). This drastically reduces hallucination and provides clear, auditable citations for compliance teams.</p>
@@ -37,7 +37,7 @@ export default function ArchitectingAlphaRAG() {
               
               <ComparisonCard title="Accelerating the Research Lifecycle" tone="pos">
                 <div className="flex items-center gap-2 mb-2">
-                  <Zap className="w-5 h-5 text-emerald-500" />
+                  <Zap className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C]" />
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Natural Language Queries</p>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">Quants can query unstructured corpora (earnings calls, alternative data) in natural language. By vectorizing daily market reports, RAG democratizes data processing without the need to retrain massive models daily.</p>
@@ -53,7 +53,7 @@ export default function ArchitectingAlphaRAG() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <AlertTriangle className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Where RAG Fails: Structural Boundaries</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Where RAG Fails: Structural Boundaries</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -90,7 +90,7 @@ export default function ArchitectingAlphaRAG() {
                   <div>
                     <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">{item.title}</h4>
                     <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">{item.body}</p>
-                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800/50">
+                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-emerald-300 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/30 px-3 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800/50">
                       <CheckCircle2 className="w-4 h-4" /> {item.fix}
                     </div>
                   </div>
@@ -107,7 +107,7 @@ export default function ArchitectingAlphaRAG() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Network className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Resolving the Global Context Deficit</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Resolving the Global Context Deficit</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -149,7 +149,7 @@ export default function ArchitectingAlphaRAG() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Workflow className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. The Agentic Leap</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Agentic Leap</h2>
             </div>
             
             <div className="grid md:grid-cols-5 gap-8">
@@ -163,7 +163,7 @@ export default function ArchitectingAlphaRAG() {
                     { n: '4', title: 'Agentic RAG', desc: 'LLM becomes an autonomous orchestrator with a state machine, memory, and reflection.', active: true },
                   ].map((item) => (
                     <li key={item.n} className="flex items-start gap-4">
-                      <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm shrink-0 ${item.active ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>{item.n}</span>
+                      <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm shrink-0 ${item.active ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>{item.n}</span>
                       <div>
                         <strong className="block text-slate-900 dark:text-white mb-1">{item.title}</strong>
                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</span>
@@ -179,13 +179,13 @@ export default function ArchitectingAlphaRAG() {
                 
                 <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
                   <h4 className="font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 text-lg font-serif">
-                    <BrainCircuit className="w-6 h-6 text-indigo-500" />
+                    <BrainCircuit className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />
                     Example: TradingAgents Framework
                   </h4>
                   <div className="space-y-4">
                     {[
-                      { icon: BookOpen, color: 'text-blue-500', label: 'Fundamentals Analyst:', desc: 'Assesses SEC filings via standard RAG.' },
-                      { icon: TrendingUp, color: 'text-emerald-500', label: 'Sentiment Expert:', desc: 'Monitors news APIs for real-time volatility vectors.' },
+                      { icon: BookOpen, color: 'text-[#A8672E] dark:text-[#D08F52]', label: 'Fundamentals Analyst:', desc: 'Assesses SEC filings via standard RAG.' },
+                      { icon: TrendingUp, color: 'text-[#1D8A70] dark:text-[#3CBF9C]', label: 'Sentiment Expert:', desc: 'Monitors news APIs for real-time volatility vectors.' },
                       { icon: BarChart3, color: 'text-amber-500', label: 'Technical Analyst:', desc: 'Uses TS-RAG and code-interpreters for momentum shifts.' },
                     ].map((item, i) => (
                       <div key={i} className="p-4 bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
@@ -193,8 +193,8 @@ export default function ArchitectingAlphaRAG() {
                         <p className="text-sm text-slate-700 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">{item.label}</strong> {item.desc}</p>
                       </div>
                     ))}
-                    <div className="p-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-xl border border-slate-800 dark:border-slate-200 flex items-center gap-4 mt-6 shadow-md">
-                      <ShieldCheck className="w-6 h-6 text-emerald-400 dark:text-emerald-600 shrink-0" />
+                    <div className="p-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 dark:text-slate-100 rounded-xl border border-slate-800 dark:border-slate-200 dark:border-slate-800 flex items-center gap-4 mt-6 shadow-md">
+                      <ShieldCheck className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] shrink-0" />
                       <p className="text-sm"><strong>Risk Orchestrator:</strong> Central node managing "Shared Scratchpad" state and resolving conflicts.</p>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export default function ArchitectingAlphaRAG() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Database className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. The Knowledge Bank of 2026+</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">The Knowledge Bank of 2026+</h2>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -252,13 +252,13 @@ export default function ArchitectingAlphaRAG() {
               
               <div className="space-y-6">
                 <div className="bg-slate-900 dark:bg-slate-950 border border-slate-800 rounded-3xl p-8 text-white shadow-xl">
-                  <Cpu className="w-8 h-8 text-indigo-400 mb-4" />
+                  <Cpu className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] mb-4" />
                   <h4 className="text-xl font-bold mb-3 font-serif">Edge AI & Infrastructure</h4>
                   <p className="text-sm text-slate-400 leading-relaxed">Latency requirements are driving computation from the cloud to trading floors. Sovereign AI stacks and microfluidic liquid cooling for silicon are becoming mandatory.</p>
                 </div>
                 
                 <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
-                  <ShieldCheck className="w-8 h-8 text-rose-500 mb-4" />
+                  <ShieldCheck className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A] mb-4" />
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3 font-serif">The XAI Imperative</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Regulators (EU AI Act) are banning black-box systems. Explainability (SHAP, LIME, Bayesian uncertainty tracking) is no longer a luxury — it must be engineered into the core code.</p>
                 </div>

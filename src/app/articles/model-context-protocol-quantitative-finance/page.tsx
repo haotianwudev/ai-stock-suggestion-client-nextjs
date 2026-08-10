@@ -27,8 +27,8 @@ export default function McpQuantFinancePage() {
               language models must reason, select appropriate tools, and iteratively chain actions together to
               achieve complex analytical objectives.
             </p>
-            <div className="p-6 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl flex gap-4 my-6 shadow-sm">
-              <CheckCircle2 className="shrink-0 mt-1 text-emerald-600 dark:text-emerald-400" size={24} />
+            <div className="p-6 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl flex gap-4 my-6 shadow-sm">
+              <CheckCircle2 className="shrink-0 mt-1 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]" size={24} />
               <div>
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-300 mb-2 font-serif text-xl">The ROI of MCP in Finance</h4>
                 <p className="text-emerald-800 dark:text-emerald-200 leading-relaxed">
@@ -47,7 +47,7 @@ export default function McpQuantFinancePage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Activity className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">1. Ecosystem & Workflow Automation</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Ecosystem & Workflow Automation</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -86,7 +86,7 @@ export default function McpQuantFinancePage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Database className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">2. Architecting for Scale: Massive Datasets</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Architecting for Scale: Massive Datasets</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -97,7 +97,7 @@ export default function McpQuantFinancePage() {
             <div className="grid md:grid-cols-2 gap-8 mt-8 mb-10">
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3">
-                  <Layers size={20} className="text-emerald-500" />
+                  <Layers size={20} className="text-[#1D8A70] dark:text-[#3CBF9C]" />
                   Context Compaction
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400">
@@ -108,13 +108,13 @@ export default function McpQuantFinancePage() {
               </div>
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3">
-                  <Code size={20} className="text-emerald-500" />
+                  <Code size={20} className="text-[#1D8A70] dark:text-[#3CBF9C]" />
                   The Surrogate File Pattern
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400">
                   Instead of returning a monolithic, gigabyte-sized result string, the tool writes it to a
                   local file or object storage and returns a highly compressed response to the LLM with
-                  instructions to use a specialized <code className="bg-slate-200 dark:bg-slate-800 px-1 rounded text-sm text-indigo-600 dark:text-indigo-400">read_chunk</code> tool.
+                  instructions to use a specialized <code className="bg-slate-200 dark:bg-slate-800 px-1 rounded text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">read_chunk</code> tool.
                 </p>
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function McpQuantFinancePage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Server className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">3. Stateful Architecture & Memory</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Stateful Architecture & Memory</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
@@ -178,7 +178,7 @@ export default function McpQuantFinancePage() {
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <Cpu className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">4. Session-Aware Primitives</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Session-Aware Primitives</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
@@ -186,8 +186,8 @@ export default function McpQuantFinancePage() {
             </p>
 
             <div className="space-y-6 mt-8">
-              <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
-                <AlertCircle className="shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={24} />
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
+                <AlertCircle className="shrink-0 mt-1 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={24} />
                 <div>
                   <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-xl">1. Elicitation: Human-in-the-Loop</h4>
                   <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
@@ -198,8 +198,8 @@ export default function McpQuantFinancePage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
-                <AlertCircle className="shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={24} />
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-2xl flex gap-4 shadow-sm">
+                <AlertCircle className="shrink-0 mt-1 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" size={24} />
                 <div>
                   <h4 className="font-bold text-blue-900 dark:text-blue-300 mb-2 font-serif text-xl">2. Sampling: Reversing Dependencies</h4>
                   <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
@@ -212,7 +212,7 @@ export default function McpQuantFinancePage() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 mt-8">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-3 text-xl font-serif">
-                  <Activity size={20} className="text-emerald-500" />
+                  <Activity size={20} className="text-[#1D8A70] dark:text-[#3CBF9C]" />
                   3. Progress Notifications
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
@@ -253,7 +253,7 @@ async with client:
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">5. Zero-Trust Security & Kubernetes</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">Zero-Trust Security & Kubernetes</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
@@ -282,19 +282,19 @@ async with client:
                   <tr>
                     <td className="py-4 font-bold text-slate-800 dark:text-slate-200">HTTP + SSE</td>
                     <td className="py-4 text-slate-600 dark:text-slate-400">Unidirectional (Server &rarr; Client); requires separate POSTs.</td>
-                    <td className="py-4 font-bold text-rose-600">High; vulnerable to round-robin issues.</td>
+                    <td className="py-4 font-bold text-[#BC4128] dark:text-[#E2694A]">High; vulnerable to round-robin issues.</td>
                   </tr>
                   <tr>
                     <td className="py-4 font-bold text-slate-800 dark:text-slate-200">Streamable HTTP</td>
                     <td className="py-4 text-slate-600 dark:text-slate-400">Bidirectional (via GET/POST).</td>
-                    <td className="py-4 font-bold text-rose-600">High; requires precise session tracking.</td>
+                    <td className="py-4 font-bold text-[#BC4128] dark:text-[#E2694A]">High; requires precise session tracking.</td>
                   </tr>
                   <tr>
-                    <td className="py-4 font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mt-3">
+                    <td className="py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center gap-2 mt-3">
                       <CheckCircle2 size={16} /> WebSockets
                     </td>
-                    <td className="py-4 text-emerald-600 dark:text-emerald-400">Fully Bidirectional over a persistent TCP connection.</td>
-                    <td className="py-4 font-bold text-emerald-600 dark:text-emerald-400">Low; connection fixed to a single pod.</td>
+                    <td className="py-4 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Fully Bidirectional over a persistent TCP connection.</td>
+                    <td className="py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Low; connection fixed to a single pod.</td>
                   </tr>
                 </tbody>
               </table>
@@ -307,7 +307,7 @@ async with client:
               <div className="p-3 rounded-2xl bg-gradient-to-br from-[#14171B] to-[#2A2F36] dark:from-[#D08F52] dark:to-[#A8672E] text-white shadow-lg">
                 <LayoutDashboard className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">6. UX Engineering for "Slow AI"</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white tracking-tight">UX Engineering for "Slow AI"</h2>
             </div>
             
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
@@ -333,8 +333,8 @@ async with client:
                 The system must provide early, progressive glimpses into the AI's active reasoning process.
               </p>
               <div className="space-y-3 font-mono text-sm">
-                <div className="text-emerald-400 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="text-[#1D8A70] dark:text-[#3CBF9C] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#1D8A70] dark:bg-[#3CBF9C] animate-pulse" />
                   [Progress: 40%] Analyzing covariance matrices...
                 </div>
                 <div className="text-sky-400 flex items-center gap-2 opacity-50">

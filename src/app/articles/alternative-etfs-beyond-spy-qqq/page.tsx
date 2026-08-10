@@ -271,16 +271,16 @@ const EtfCard = ({ etf, isBenchmark = false }: { etf: any; isBenchmark?: boolean
   return (
     <div className={`bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl ${isBenchmark ? 'shadow-lg' : 'shadow-md hover:shadow-xl'} transition-shadow duration-300 p-6 flex flex-col space-y-4`}>
       <div className="flex items-center">
-        <div className={`${isBenchmark ? 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300' : 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400'} p-3 rounded-lg mr-4`}>
+        <div className={`${isBenchmark ? 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300' : 'bg-blue-100 dark:bg-blue-900/50 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]'} p-3 rounded-lg mr-4`}>
           <Icon size={24} />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{etf.ticker}</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">{etf.ticker}</h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">{etf.name}</p>
         </div>
       </div>
       <div>
-        <p className={`text-sm font-semibold ${isBenchmark ? 'text-gray-600 dark:text-gray-400' : 'text-blue-600 dark:text-blue-400'} mb-1`}>{etf.strategy}</p>
+        <p className={`text-sm font-semibold ${isBenchmark ? 'text-gray-600 dark:text-gray-400' : 'text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]'} mb-1`}>{etf.strategy}</p>
         <p className="text-gray-600 dark:text-gray-300 text-sm">{etf.description}</p>
       </div>
 
@@ -293,20 +293,20 @@ const EtfCard = ({ etf, isBenchmark = false }: { etf: any; isBenchmark?: boolean
 
       <PerformanceTable metrics={etf.metrics} benchmarkMetrics={bench?.metrics} benchmarkTicker={bench?.ticker} />
 
-      <div className={`${isBenchmark ? 'bg-gray-100 dark:bg-gray-800/80 border-gray-400' : 'bg-blue-50 dark:bg-gray-800/50 border-blue-500'} border-l-4 p-4 rounded-r-lg`}>
-        <h4 className="font-semibold mb-2 text-gray-800 dark:text-white flex items-center"><Info size={16} className={`mr-2 ${isBenchmark ? 'text-gray-500' : 'text-blue-500'}`}/>Strategic Insight</h4>
+      <div className={`${isBenchmark ? 'bg-gray-100 dark:bg-gray-800/80 border-gray-400' : 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-gray-800/50 border-[#A8672E] dark:border-[#D08F52]'} border-l-4 p-4 rounded-r-lg`}>
+        <h4 className="font-semibold mb-2 text-gray-800 dark:text-white flex items-center"><Info size={16} className={`mr-2 ${isBenchmark ? 'text-gray-500' : 'text-[#A8672E] dark:text-[#D08F52]'}`}/>Strategic Insight</h4>
         <p className="text-sm text-gray-700 dark:text-gray-300 italic">{etf.discussion}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm pt-2">
         <div>
-          <h4 className="font-semibold mb-2 text-green-600 dark:text-green-400">Pros</h4>
+          <h4 className="font-semibold mb-2 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Pros</h4>
           <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
             {etf.pros.map((pro: string, index: number) => <li key={index}>{pro}</li>)}
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-red-600 dark:text-red-400">Cons</h4>
+          <h4 className="font-semibold mb-2 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Cons</h4>
           <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
             {etf.cons.map((con: string, index: number) => <li key={index}>{con}</li>)}
           </ul>
@@ -325,8 +325,8 @@ export default function AlternativeETFsPage() {
       <div className="space-y-12">
         {/* Overview Section */}
         <section className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <Eye className="mr-3 text-blue-600" />
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
+            <Eye className="mr-3 text-[#A8672E] dark:text-[#D08F52]" />
             Executive Summary
           </h2>
 
@@ -337,8 +337,8 @@ export default function AlternativeETFsPage() {
               presenting both opportunities and risks that may not align with every investor&apos;s objectives.
             </p>
 
-            <div className="bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 p-6 mb-6">
-              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">Key Research Findings</h3>
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/30 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 mb-6">
+              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2 font-serif">Key Research Findings</h3>
               <ul className="space-y-2 text-blue-800 dark:text-blue-200">
                 <li>&rarr; <strong>Concentration Risk:</strong> SPY and QQQ are increasingly concentrated bets on mega-cap technology</li>
                 <li>&rarr; <strong>Income Deficit:</strong> Low dividend yields (1.27% and 0.58% respectively) fail to meet income needs</li>
@@ -348,9 +348,9 @@ export default function AlternativeETFsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-green-50 dark:bg-green-900/30 p-6 rounded-lg">
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/30 p-6 rounded-lg">
                 <h4 className="font-semibold text-green-800 dark:text-green-200 mb-3">Income Solutions</h4>
-                <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                <ul className="text-sm text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 space-y-1">
                   <li>• SCHD: Quality dividend growth (3.97% yield)</li>
                   <li>• VYM: Broad high-yield exposure (2.86% yield)</li>
                   <li>• JEPI/JEPQ: Options-based income (7-12% yield)</li>
@@ -372,8 +372,8 @@ export default function AlternativeETFsPage() {
 
         {/* Interactive Guide Section */}
         <section className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <BarChart className="mr-3 text-blue-600" />
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
+            <BarChart className="mr-3 text-[#A8672E] dark:text-[#D08F52]" />
             Interactive ETF Comparison Tool
           </h2>
 
@@ -388,7 +388,7 @@ export default function AlternativeETFsPage() {
           </div>
 
           <div className="mb-10">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Meet the Benchmarks</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Meet the Benchmarks</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">These are the market-cap weighted giants that form the baseline for comparison.</p>
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
               <EtfCard etf={benchmarkData.spy} isBenchmark={true} />
@@ -397,7 +397,7 @@ export default function AlternativeETFsPage() {
           </div>
 
           <div className="mb-10">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Strategies for Income</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Strategies for Income</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">From high-quality dividend payers to income-manufacturing machines.</p>
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
               {etfData.income.map(etf => <EtfCard key={etf.id} etf={etf} />)}
@@ -405,7 +405,7 @@ export default function AlternativeETFsPage() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Strategies for Your Core Portfolio</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Strategies for Your Core Portfolio</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">Reshape your portfolio&apos;s foundation with factor-based and alternative-weighting ETFs.</p>
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
               {etfData.core.map(etf => <EtfCard key={etf.id} etf={etf} />)}
@@ -415,8 +415,8 @@ export default function AlternativeETFsPage() {
 
         {/* Research Methodology */}
         <section className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <FileText className="mr-3 text-blue-600" />
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
+            <FileText className="mr-3 text-[#A8672E] dark:text-[#D08F52]" />
             Research Methodology
           </h2>
 
@@ -466,14 +466,14 @@ export default function AlternativeETFsPage() {
 
         {/* Key Insights */}
         <section className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <TrendingUp className="mr-3 text-blue-600" />
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center font-serif">
+            <TrendingUp className="mr-3 text-[#A8672E] dark:text-[#D08F52]" />
             Strategic Investment Insights
           </h2>
 
           <div className="space-y-6">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">The Income Revolution</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 font-serif">The Income Revolution</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Traditional market-cap weighted funds offer minimal income, but strategic alternatives can dramatically enhance yield:
               </p>
@@ -490,7 +490,7 @@ export default function AlternativeETFsPage() {
             </div>
 
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Risk Management Through Diversification</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 font-serif">Risk Management Through Diversification</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Factor-based and alternative weighting strategies can reduce concentration risk while potentially enhancing returns:
               </p>
@@ -502,7 +502,7 @@ export default function AlternativeETFsPage() {
             </div>
 
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Tax Efficiency Considerations</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 font-serif">Tax Efficiency Considerations</h3>
               <p className="text-gray-700 dark:text-gray-300">
                 Not all income is created equal from a tax perspective. Options-based income funds (JEPI, JEPQ)
                 generate distributions taxed as ordinary income, making them most suitable for tax-advantaged accounts.

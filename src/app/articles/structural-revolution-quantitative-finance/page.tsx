@@ -258,17 +258,17 @@ export default function StructuralRevolutionArticle() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-gray-900">
-                                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                                     <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Constraint-Based (PC, FCI)</td>
                                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">Conditional independence tests.</td>
                                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">FCI mathematically handles unobserved confounders.</td>
                                 </tr>
-                                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                                     <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Continuous Optimization (NOTEARS)</td>
                                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">Differentiable algebraic constraint.</td>
                                     <td className="px-6 py-4 font-bold text-[#1D8A70] dark:text-[#3CBF9C]">Scales to large universes; integrates with NNs.</td>
                                 </tr>
-                                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/50">
                                     <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">Non-Gaussian (LiNGAM)</td>
                                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">Independent Component Analysis.</td>
                                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">Orients causal arrows uniquely, resolving equivalence.</td>

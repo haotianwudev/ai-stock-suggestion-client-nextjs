@@ -5,19 +5,19 @@ import { TrendingDown, TrendingUp, AlertTriangle, FileText } from 'lucide-react'
 import { ArticleFrame } from '@/components/articles/article-frame';
 
 const Card = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-white border border-slate-200 rounded-xl shadow-lg ${className}`}>
+  <div className={`bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg ${className}`}>
     {children}
   </div>
 );
 
 const CardHeader = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`p-6 border-b border-slate-200 ${className}`}>
+  <div className={`p-6 border-b border-slate-200 dark:border-slate-800 ${className}`}>
     {children}
   </div>
 );
 
 const CardTitle = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <h2 className={`text-2xl font-semibold text-indigo-700 ${className}`}>
+  <h2 className={`text-2xl font-semibold text-[#A8672E] dark:text-[#D08F52] ${className}`}>
     {children}
   </h2>
 );
@@ -29,7 +29,7 @@ const CardSubtitle = ({ children, className = '' }: { children: React.ReactNode;
 );
 
 const CardContent = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`p-6 space-y-4 text-slate-700 ${className}`}>
+  <div className={`p-6 space-y-4 text-slate-700 dark:text-slate-300 ${className}`}>
     {children}
   </div>
 );
@@ -99,12 +99,12 @@ export default function AIAntithesisArticle() {
       slug="ai-antithesis-deconstructing-michael-burry-q3-2025-pivot"
       additionalDisclaimer="This analysis is based on public 13F filings, which are reported on a 45-day delay and may not reflect a fund's current positions."
     >
-      <div className="max-w-4xl mx-auto px-4 text-slate-800 space-y-8">
+      <div className="max-w-4xl mx-auto px-4 text-slate-800 dark:text-slate-200 space-y-8">
         {/* Section I: Executive Analysis */}
         <Card>
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <FileText className="w-7 h-7 text-indigo-600" />
+              <FileText className="w-7 h-7 text-[#A8672E] dark:text-[#D08F52]" />
               <CardTitle>I. Executive Analysis: The Q3 2025 Pivot</CardTitle>
             </div>
             <CardSubtitle>Short the &ldquo;Bubble,&rdquo; Long the &ldquo;Real&rdquo;</CardSubtitle>
@@ -133,38 +133,38 @@ export default function AIAntithesisArticle() {
             <CardSubtitle>A comparative analysis of two diametrically opposed market theses.</CardSubtitle>
           </CardHeader>
           <CardContent>
-            <h3 className="text-xl font-semibold text-indigo-700">A. The Q2 2025 Portfolio: Bullish on the &ldquo;Rebound&rdquo;</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] font-serif">A. The Q2 2025 Portfolio: Bullish on the &ldquo;Rebound&rdquo;</h3>
             <p>
               Scion&apos;s Q2 2025 filing showed an aggressive reversal from a near-total liquidation in Q1. In Q2, he reversed course entirely, establishing a large, bullishly-levered portfolio defined by large call option positions. The Q2 story was unambiguously &ldquo;risk-on.&rdquo;
             </p>
 
-            <p className="font-medium text-slate-800">Top Q2 Holdings Included:</p>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <p className="font-medium text-slate-800 dark:text-slate-200">Top Q2 Holdings Included:</p>
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
               {q2Portfolio.map((item, index) => (
                 <li key={index}>
-                  <span className="font-semibold text-slate-800">{item.name}:</span> {item.value}
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{item.name}:</span> {item.value}
                 </li>
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">B. The Q3 2025 Liquidation: Wiping the Slate Clean</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">B. The Q3 2025 Liquidation: Wiping the Slate Clean</h3>
             <p>
               In Q3, Burry systematically liquidated 100% of his Q2 option positions. The top five &ldquo;sells&rdquo; were a mirror image of Q2&apos;s top &ldquo;buys,&rdquo; demonstrating a complete abandonment of the previous quarter&apos;s thesis.
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
               {q3Sells.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">C. The New Bastion: Scion&apos;s Q3 2025 Holdings (The 8 Positions)</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">C. The New Bastion: Scion&apos;s Q3 2025 Holdings (The 8 Positions)</h3>
             <p>
               The new $1.38 billion portfolio is a case study in concentration, consisting of only eight positions in total.
             </p>
 
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-slate-200 border border-slate-200 rounded-lg">
+              <table className="min-w-full divide-y divide-slate-200 border border-slate-200 dark:border-slate-800 rounded-lg">
                 <thead className="bg-slate-100">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Company (Ticker)</th>
@@ -174,18 +174,18 @@ export default function AIAntithesisArticle() {
                     <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">% of Portfolio</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-slate-200">
+                <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-slate-200">
                   {q3Holdings.map((holding) => (
                     <tr key={holding.company}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{holding.company}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">{holding.company}</td>
                       <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold ${
-                        holding.type.includes('Put') ? 'text-rose-600' : 'text-emerald-600'
+                        holding.type.includes('Put') ? 'text-[#BC4128] dark:text-[#E2694A]' : 'text-[#1D8A70] dark:text-[#3CBF9C]'
                       }`}>
                         {holding.type}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">{holding.equivalent}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">{holding.value}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">{holding.portfolio}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">{holding.equivalent}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">{holding.value}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700 dark:text-slate-300">{holding.portfolio}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -198,23 +198,23 @@ export default function AIAntithesisArticle() {
         <Card>
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <TrendingDown className="w-7 h-7 text-rose-600" />
+              <TrendingDown className="w-7 h-7 text-[#BC4128] dark:text-[#E2694A]" />
               <CardTitle>III. Deconstructing the Thesis: The $1.1B Short Against AI</CardTitle>
             </div>
             <CardSubtitle>The intellectual &ldquo;why&rdquo; behind the dominant bearish bet.</CardSubtitle>
           </CardHeader>
           <CardContent>
-            <h3 className="text-xl font-semibold text-indigo-700">A. The Bearish Core: NVDA and PLTR</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] font-serif">A. The Bearish Core: NVDA and PLTR</h3>
             <p>
               The puts on Palantir ($912 million notional value) and Nvidia ($187 million notional value) consume a combined 79.55% of the filed portfolio. This is an &ldquo;all-in&rdquo; bet against the two companies that have become poster children for the AI narrative, predicated on the idea that their valuations are indefensible.
             </p>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">B. The &ldquo;Circular Financing&rdquo; Doctrine</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">B. The &ldquo;Circular Financing&rdquo; Doctrine</h3>
             <p>
               This is not just a simple valuation call; it is a bet against the <em>sustainability</em> of the AI boom itself. On November 3, Burry shared a graphic detailing &ldquo;circular financing concerns&rdquo; related to Nvidia. This thesis argues that the AI revenue boom is, in part, an illusion built on a self-referential loop:
             </p>
 
-            <ul className="list-decimal list-inside space-y-2 text-indigo-800 bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+            <ul className="list-decimal list-inside space-y-2 text-indigo-800 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 p-4 rounded-lg border border-indigo-200">
               {circularFinancingSteps.map((step, index) => (
                 <li key={index}>{step}</li>
               ))}
@@ -224,7 +224,7 @@ export default function AIAntithesisArticle() {
               If this thesis is correct, the reported revenue is not from genuine, external, end-customer demand, but is rather a closed-loop system&mdash;a venture capital echo chamber.
             </p>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">C. The Missing Disclaimer: Why This Time Is Different</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">C. The Missing Disclaimer: Why This Time Is Different</h3>
             <p>
               When Scion previously disclosed a put position on Nvidia in Q1 2025, the filing included a specific disclaimer that the puts &ldquo;may serve to hedge long positions.&rdquo;
             </p>
@@ -243,31 +243,31 @@ export default function AIAntithesisArticle() {
         <Card>
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <TrendingUp className="w-7 h-7 text-emerald-600" />
+              <TrendingUp className="w-7 h-7 text-[#1D8A70] dark:text-[#3CBF9C]" />
               <CardTitle>IV. The Other Side of the Ledger: The &ldquo;Anti-Bubble&rdquo; Portfolio</CardTitle>
             </div>
             <CardSubtitle>Burry&apos;s new bullish convictions in the physical, defensive, and tangible.</CardSubtitle>
           </CardHeader>
           <CardContent>
-            <h3 className="text-xl font-semibold text-indigo-700">A. Pivoting to &ldquo;Real-World&rdquo; Value: PFE and HAL Calls</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] font-serif">A. Pivoting to &ldquo;Real-World&rdquo; Value: PFE and HAL Calls</h3>
             <p>
               Burry&apos;s new bullish bets are expressed through call options on two unloved S&amp;P 500 giants: a $153 million position in Pfizer ($PFE) and a $61.5 million position in Halliburton ($HAL). This is a clear rotation from high-multiple tech to defensive, cash-flow-oriented &ldquo;value&rdquo; sectors.
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li><span className="font-semibold text-slate-800">Pfizer ($PFE):</span> A classic defensive, non-cyclical healthcare play.</li>
-              <li><span className="font-semibold text-slate-800">Halliburton ($HAL):</span> Represents a bet on the &ldquo;real world&rdquo; economy, hard assets, and a potential hedge against persistent inflation.</li>
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">Pfizer ($PFE):</span> A classic defensive, non-cyclical healthcare play.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">Halliburton ($HAL):</span> Represents a bet on the &ldquo;real world&rdquo; economy, hard assets, and a potential hedge against persistent inflation.</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">B. The Contrarian Equity Book: MOH, SLM, and LULU</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">B. The Contrarian Equity Book: MOH, SLM, and LULU</h3>
             <p>
               Burry&apos;s small-cap equity positions reveal his classic, bottom-up, deep-value investing style.
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li><span className="font-semibold text-slate-800">Molina Healthcare ($MOH):</span> A profoundly contrarian &ldquo;buy the blood&rdquo; move. Molina&apos;s stock was down 49% year-to-date, and Burry initiated his position precisely when the news was at its absolute worst.</li>
-              <li><span className="font-semibold text-slate-800">SLM Corp ($SLM):</span> A classic Burry bet on a distressed, controversial sector: private student loans.</li>
-              <li><span className="font-semibold text-slate-800">Lululemon ($LULU):</span> A sophisticated two-part maneuver. He <em>doubled</em> his equity stake while simultaneously <em>selling</em> his large Q2 call option. He is &ldquo;de-levering&rdquo; his bullish bet, converting a speculative trade into a long-term investment.</li>
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">Molina Healthcare ($MOH):</span> A profoundly contrarian &ldquo;buy the blood&rdquo; move. Molina&apos;s stock was down 49% year-to-date, and Burry initiated his position precisely when the news was at its absolute worst.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">SLM Corp ($SLM):</span> A classic Burry bet on a distressed, controversial sector: private student loans.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">Lululemon ($LULU):</span> A sophisticated two-part maneuver. He <em>doubled</em> his equity stake while simultaneously <em>selling</em> his large Q2 call option. He is &ldquo;de-levering&rdquo; his bullish bet, converting a speculative trade into a long-term investment.</li>
             </ul>
           </CardContent>
         </Card>
@@ -278,24 +278,24 @@ export default function AIAntithesisArticle() {
             <CardTitle>V. Market Catalyst and Consensus: Disambiguating Two Downturns</CardTitle>
           </CardHeader>
           <CardContent>
-            <h3 className="text-xl font-semibold text-indigo-700">A. The &ldquo;Burry Effect&rdquo;: Anatomy of the November 4, 2025 AI Sell-off</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] font-serif">A. The &ldquo;Burry Effect&rdquo;: Anatomy of the November 4, 2025 AI Sell-off</h3>
             <p>
               The Q3 13F, filed on Monday, November 3, was not a passive event. The reaction was immediate, severe, and highly specific to the AI sector.
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li><span className="font-semibold text-slate-800">The Impact:</span> Palantir ($PLTR) shares were hit hardest, closing the day down between 8% and 9.5%.</li>
-              <li><span className="font-semibold text-slate-800">The &ldquo;Tell&rdquo;:</span> This drop occurred <em>despite</em> Palantir reporting strong Q3 earnings and <em>raising</em> its full-year guidance. The market, spooked by Burry, completely ignored the positive fundamental news.</li>
-              <li><span className="font-semibold text-slate-800">Contagion:</span> Nvidia ($NVDA) shares fell in sympathy, dropping between 3.8% and 4%. The Nasdaq lost 2% on the day.</li>
-              <li><span className="font-semibold text-slate-800">CEO Reaction:</span> Palantir CEO Alex Karp personally attacked Burry on CNBC, calling his thesis &ldquo;bats--- crazy&rdquo; and accusing him of &ldquo;market manipulation,&rdquo; inadvertently giving massive credibility to the bear case.</li>
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">The Impact:</span> Palantir ($PLTR) shares were hit hardest, closing the day down between 8% and 9.5%.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">The &ldquo;Tell&rdquo;:</span> This drop occurred <em>despite</em> Palantir reporting strong Q3 earnings and <em>raising</em> its full-year guidance. The market, spooked by Burry, completely ignored the positive fundamental news.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">Contagion:</span> Nvidia ($NVDA) shares fell in sympathy, dropping between 3.8% and 4%. The Nasdaq lost 2% on the day.</li>
+              <li><span className="font-semibold text-slate-800 dark:text-slate-200">CEO Reaction:</span> Palantir CEO Alex Karp personally attacked Burry on CNBC, calling his thesis &ldquo;bats--- crazy&rdquo; and accusing him of &ldquo;market manipulation,&rdquo; inadvertently giving massive credibility to the bear case.</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">B. The Mid-August 2025 Weakness: A Macro-Driven Event</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">B. The Mid-August 2025 Weakness: A Macro-Driven Event</h3>
             <p>
               The market weakness in mid-August was an entirely separate and unrelated event, driven by macroeconomic factors:
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
               {augustMarketDropReasons.map((reason, index) => (
                 <li key={index}>{reason}</li>
               ))}
@@ -312,23 +312,23 @@ export default function AIAntithesisArticle() {
             </div>
           </CardHeader>
           <CardContent>
-            <h3 className="text-xl font-semibold text-indigo-700">A. The Unified Field Theory of Scion&apos;s Q3</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] font-serif">A. The Unified Field Theory of Scion&apos;s Q3</h3>
             <p>
               Michael Burry&apos;s Q3 2025 portfolio is a single, unified, high-conviction narrative. He is shorting a specific, perceived vulnerability&mdash;the &ldquo;circular financing&rdquo; that he believes is inflating AI revenues. Simultaneously, he has built an &ldquo;anti-bubble&rdquo; portfolio. This portfolio is a clear, decisive bet that the market is at an inflection point.
             </p>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">B. The Counter-Argument and Strategic Risks</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">B. The Counter-Argument and Strategic Risks</h3>
             <p>
               This thesis, while compelling, is not without significant risks and counter-arguments:
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
               {counterArguments.map((arg, index) => (
                 <li key={index}>{arg}</li>
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold text-indigo-700 mt-6">C. Final Analyst Assessment</h3>
+            <h3 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mt-6 font-serif">C. Final Analyst Assessment</h3>
             <p>
               Despite the risks and the data&apos;s limitations, the <em>narrative</em> of the Q3 2025 filing is too powerful to ignore. The market&apos;s violent reaction on November 4, and particularly the panicked response from Palantir&apos;s CEO, prove that Burry&apos;s 13F has transcended its status as a simple regulatory filing. It has become a powerful, market-moving catalyst.
             </p>
@@ -345,7 +345,7 @@ export default function AIAntithesisArticle() {
 
           <div className="space-y-8">
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">I. Theoretical Framework: Information Asymmetry and Market Efficiency</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">I. Theoretical Framework: Information Asymmetry and Market Efficiency</h4>
               <p className="mb-4">
                 The academic literature on institutional investor behavior provides crucial context for understanding Burry&apos;s strategic pivot. Grossman and Stiglitz (1980) established that markets cannot be perfectly efficient if information acquisition is costly, creating opportunities for informed traders to generate alpha through superior analysis.
               </p>
@@ -355,7 +355,7 @@ export default function AIAntithesisArticle() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">II. Empirical Evidence: Hedge Fund Performance and Concentration</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">II. Empirical Evidence: Hedge Fund Performance and Concentration</h4>
               <p className="mb-4">
                 Research by Kacperczyk, Sialm, and Zheng (2005) demonstrates that fund managers with more concentrated portfolios tend to outperform those with diversified holdings, supporting Burry&apos;s strategy of extreme concentration in eight positions representing $1.38 billion in notional exposure.
               </p>
@@ -365,7 +365,7 @@ export default function AIAntithesisArticle() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">III. Behavioral Finance: Bubble Formation and Contrarian Strategies</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">III. Behavioral Finance: Bubble Formation and Contrarian Strategies</h4>
               <p className="mb-4">
                 Shiller&apos;s (2000) work on irrational exuberance provides theoretical support for Burry&apos;s &ldquo;circular financing&rdquo; thesis. The feedback loops between investor sentiment, media coverage, and price momentum can create self-reinforcing bubbles that eventually collapse when fundamental reality reasserts itself.
               </p>
@@ -375,7 +375,7 @@ export default function AIAntithesisArticle() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">IV. Market Microstructure: Options Markets and Price Discovery</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">IV. Market Microstructure: Options Markets and Price Discovery</h4>
               <p className="mb-4">
                 The heavy use of options in Burry&apos;s strategy aligns with research by Pan and Poteshman (2006) showing that options markets often lead equity markets in price discovery. Put option volumes, in particular, have been shown to predict negative stock returns, suggesting that Burry&apos;s massive put positions may create self-fulfilling prophecies.
               </p>
@@ -385,7 +385,7 @@ export default function AIAntithesisArticle() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">V. Risk Management Theory: Concentration vs. Diversification</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">V. Risk Management Theory: Concentration vs. Diversification</h4>
               <p className="mb-4">
                 Modern Portfolio Theory suggests diversification reduces risk, but Kelly (1956) and subsequent research on optimal portfolio concentration shows that when investors have superior information and high conviction, concentration can be optimal despite higher volatility.
               </p>
@@ -395,11 +395,11 @@ export default function AIAntithesisArticle() {
             </div>
 
             <div>
-              <h4 className="text-xl font-semibold text-indigo-700 mb-4">VI. Future Research Directions</h4>
+              <h4 className="text-xl font-semibold text-[#A8672E] dark:text-[#D08F52] mb-4">VI. Future Research Directions</h4>
               <p className="mb-4">
                 The intersection of artificial intelligence valuations, circular financing mechanisms, and institutional investor behavior represents a fertile area for future academic research. Key questions include:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-700 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 mb-4">
                 <li>How do venture capital feedback loops affect public market valuations?</li>
                 <li>What role do celebrity investors play in modern market efficiency?</li>
                 <li>How has social media changed the speed and magnitude of institutional investor influence?</li>

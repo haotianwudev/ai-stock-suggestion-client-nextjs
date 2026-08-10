@@ -44,9 +44,9 @@ export default function AppleFinancialHealthAnalysis() {
     >
       {/* Executive Summary */}
       <section className="mb-12">
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-6 rounded-2xl shadow-sm">
-          <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-3 flex items-center">
-            <CheckCircle className="w-7 h-7 mr-3 text-blue-600 dark:text-blue-400" />
+        <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-6 rounded-2xl shadow-sm">
+          <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-3 flex items-center font-serif">
+            <CheckCircle className="w-7 h-7 mr-3 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
             Executive Verdict: Financially Strong
           </h2>
           <p className="text-blue-800 dark:text-blue-300 leading-relaxed">
@@ -62,10 +62,10 @@ export default function AppleFinancialHealthAnalysis() {
       <section className="mb-12">
         <div className="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl p-6 shadow-lg">
           <div className="flex items-center mb-4">
-            <TrendingDown className="w-8 h-8 text-orange-500 mr-4"/>
+            <TrendingDown className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A] mr-4"/>
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Liquidity: The &ldquo;Low&rdquo; Current Ratio</h3>
-              <p className="text-sm text-orange-600 dark:text-orange-400">Appears Risky, But Reveals Efficiency</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">Liquidity: The &ldquo;Low&rdquo; Current Ratio</h3>
+              <p className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Appears Risky, But Reveals Efficiency</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -82,12 +82,12 @@ export default function AppleFinancialHealthAnalysis() {
             </div>
             <div>
               <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Current Ratio Comparison (FY24)</h4>
-              <Bar label="Apple" value={financialData.currentRatio.apple} color="bg-orange-500" maxValue={3} isApple={true} />
-              <Bar label="Microsoft" value={financialData.currentRatio.microsoft} color="bg-blue-500" maxValue={3} />
+              <Bar label="Apple" value={financialData.currentRatio.apple} color="bg-[#BC4128] dark:bg-[#E2694A]" maxValue={3} isApple={true} />
+              <Bar label="Microsoft" value={financialData.currentRatio.microsoft} color="bg-[#A8672E] dark:bg-[#D08F52]" maxValue={3} />
               <Bar label="Samsung" value={financialData.currentRatio.samsung} color="bg-sky-500" maxValue={3} />
               <div className="relative my-2">
-                <div className="border-t border-dashed border-red-500"></div>
-                <p className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-800 px-2 text-xs text-red-500">
+                <div className="border-t border-dashed border-[#BC4128] dark:border-[#E2694A]"></div>
+                <p className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-800 px-2 text-xs text-[#BC4128] dark:text-[#E2694A]">
                   1.0 Benchmark
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default function AppleFinancialHealthAnalysis() {
           <div className="flex items-center mb-4">
             <Scale className="w-8 h-8 text-purple-500 mr-4"/>
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Solvency: The High Debt-to-Equity Ratio</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">Solvency: The High Debt-to-Equity Ratio</h3>
               <p className="text-sm text-purple-600 dark:text-purple-400">A Deliberate Strategy to Maximize Shareholder Value</p>
             </div>
           </div>
@@ -121,8 +121,8 @@ export default function AppleFinancialHealthAnalysis() {
             <div>
               <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Debt-to-Equity Comparison (FY24)</h4>
               <Bar label="Apple" value={financialData.debtToEquity.apple} color="bg-purple-500" maxValue={2} isApple={true} />
-              <Bar label="Microsoft" value={financialData.debtToEquity.microsoft} color="bg-blue-500" maxValue={2} />
-              <Bar label="Alphabet" value={financialData.debtToEquity.alphabet} color="bg-green-500" maxValue={2} />
+              <Bar label="Microsoft" value={financialData.debtToEquity.microsoft} color="bg-[#A8672E] dark:bg-[#D08F52]" maxValue={2} />
+              <Bar label="Alphabet" value={financialData.debtToEquity.alphabet} color="bg-[#1D8A70] dark:bg-[#3CBF9C]" maxValue={2} />
               <Bar label="Industry Avg" value={financialData.debtToEquity.industry} color="bg-gray-500" maxValue={2} />
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function AppleFinancialHealthAnalysis() {
           <div className="flex items-center mb-4">
             <BookOpen className="w-8 h-8 text-gray-600 dark:text-gray-400 mr-4"/>
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">When Traditional Ratios Tell the Wrong Story</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white font-serif">When Traditional Ratios Tell the Wrong Story</h3>
               <p className="text-sm text-gray-500 dark:text-gray-400">Understanding the context behind the numbers.</p>
             </div>
           </div>
@@ -143,11 +143,11 @@ export default function AppleFinancialHealthAnalysis() {
             <div>
               <h4 className="font-semibold text-gray-800 dark:text-gray-200">The Current Ratio: A Tale of Two Business Models</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                <strong className="text-green-600 dark:text-green-400">When it works:</strong> For traditional businesses
+                <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">When it works:</strong> For traditional businesses
                 (e.g., retail, manufacturing) with physical inventory and standard payment cycles.
                 Here, it&apos;s a reliable snapshot of their ability to pay bills.
                 <br/><br/>
-                <strong className="text-red-600 dark:text-red-400">When it misleads (The Apple Evidence):</strong> For
+                <strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">When it misleads (The Apple Evidence):</strong> For
                 companies with immense market power and negative cash conversion cycles. Apple collects
                 cash from iPhone sales months before it pays its suppliers. Its high &ldquo;Accounts Payable&rdquo;
                 isn&apos;t a weakness; it&apos;s proof of its power. The ultimate evidence is that Apple generates
@@ -157,11 +157,11 @@ export default function AppleFinancialHealthAnalysis() {
             <div className="border-t dark:border-gray-700 pt-4">
               <h4 className="font-semibold text-gray-800 dark:text-gray-200">The Debt-to-Equity Ratio: Funding vs. Engineering</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                <strong className="text-green-600 dark:text-green-400">When it works:</strong> For capital-intensive companies
+                <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">When it works:</strong> For capital-intensive companies
                 (e.g., utilities, industrials) that use debt to fund core operations. In this context,
                 a high D/E ratio correctly signals higher financial risk.
                 <br/><br/>
-                <strong className="text-red-600 dark:text-red-400">When it misleads (The Apple Evidence):</strong> For
+                <strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">When it misleads (The Apple Evidence):</strong> For
                 cash-rich &ldquo;super-profitable&rdquo; companies using debt for financial engineering. Apple&apos;s
                 high D/E is caused by its massive stock buyback program, which intentionally shrinks
                 its equity base. The evidence is that its Interest Coverage Ratio is incredibly healthy.
@@ -180,12 +180,12 @@ export default function AppleFinancialHealthAnalysis() {
 
       {/* Cash Flow Engine */}
       <section className="mb-12">
-        <div className="relative bg-green-600 text-white rounded-2xl p-6 md:p-8 shadow-2xl overflow-hidden">
+        <div className="relative bg-[#1D8A70] dark:bg-[#3CBF9C] text-white rounded-2xl p-6 md:p-8 shadow-2xl overflow-hidden">
           <div className="relative z-10">
             <div className="flex items-center mb-4">
               <DollarSign className="w-8 h-8 mr-4"/>
               <div>
-                <h3 className="text-2xl font-bold">The Engine: Free Cash Flow Fortress</h3>
+                <h3 className="text-2xl font-bold font-serif">The Engine: Free Cash Flow Fortress</h3>
                 <p className="text-sm text-green-100">The Ultimate Proof of Financial Health</p>
               </div>
             </div>
@@ -196,17 +196,17 @@ export default function AppleFinancialHealthAnalysis() {
               This is the engine that powers everything.
             </p>
             <div className="flex flex-col md:flex-row items-center justify-around gap-6 text-center">
-              <div className="p-4 bg-green-700/50 rounded-xl w-full md:w-auto">
+              <div className="p-4 bg-[#1D8A70] dark:bg-[#3CBF9C]/50 rounded-xl w-full md:w-auto">
                 <p className="text-sm text-green-200">FY24 Net Income</p>
                 <p className="text-4xl font-bold">${financialData.fcf.apple.netIncome}B</p>
               </div>
               <div className="font-bold text-4xl transform md:rotate-0 rotate-90">&rarr;</div>
-              <div className="p-4 bg-green-700/50 rounded-xl w-full md:w-auto">
+              <div className="p-4 bg-[#1D8A70] dark:bg-[#3CBF9C]/50 rounded-xl w-full md:w-auto">
                 <p className="text-sm text-green-200">FY24 Free Cash Flow</p>
                 <p className="text-4xl font-bold">${financialData.fcf.apple.fcf}B</p>
               </div>
               <div className="font-bold text-4xl">=</div>
-              <div className="p-4 bg-white/20 rounded-xl border border-white/50 w-full md:w-auto">
+              <div className="p-4 bg-white dark:bg-[#0A0D14]/20 rounded-xl border border-white/50 w-full md:w-auto">
                 <p className="text-sm text-green-100">FCF Conversion Rate</p>
                 <p className="text-5xl font-extrabold text-white">{financialData.fcf.apple.conversion}%</p>
                 <p className="text-xs text-green-100">(Industry-leading quality of earnings)</p>
@@ -220,22 +220,22 @@ export default function AppleFinancialHealthAnalysis() {
       <section>
         <div className="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-2xl p-6 shadow-lg">
           <div className="flex items-center mb-6">
-            <AlertTriangle className="w-8 h-8 text-red-500 mr-4"/>
+            <AlertTriangle className="w-8 h-8 text-[#BC4128] dark:text-[#E2694A] mr-4"/>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Where to Watch for Cracks</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-serif">Where to Watch for Cracks</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">Key indicators for monitoring Apple&apos;s financial health</p>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 p-4 rounded-lg">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 p-4 rounded-lg">
               <h4 className="font-semibold text-orange-800 dark:text-orange-300 mb-2">FCF Sustainability</h4>
-              <p className="text-sm text-orange-700 dark:text-orange-400">
+              <p className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                 Any sustained drop in cash generation is the primary red flag to watch.
               </p>
             </div>
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
               <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">Services Growth</h4>
-              <p className="text-sm text-blue-700 dark:text-blue-400">
+              <p className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                 Regulatory threats to the high-margin Services segment could hurt profitability.
               </p>
             </div>

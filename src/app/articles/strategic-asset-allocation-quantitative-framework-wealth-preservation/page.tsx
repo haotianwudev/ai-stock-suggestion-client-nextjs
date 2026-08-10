@@ -23,7 +23,7 @@ export default function StrategicAssetAllocationArticle() {
               </div>
               <div>
                 <span className="text-[#A8672E] dark:text-[#D08F52] font-bold uppercase tracking-widest text-xs">Module 01</span>
-                <h2 className="text-5xl font-black text-slate-900 font-serif">Human Capital Analysis</h2>
+                <h2 className="text-5xl font-black text-slate-900 dark:text-slate-100 font-serif">Human Capital Analysis</h2>
               </div>
             </div>
             
@@ -48,7 +48,7 @@ export default function StrategicAssetAllocationArticle() {
                   
                   <div className="grid md:grid-cols-2 gap-6 mb-8">
                     <div className="p-6 bg-slate-50 dark:bg-[#14171B] rounded-3xl border border-slate-100 dark:border-slate-800">
-                      <h4 className="font-bold text-slate-900 mb-2">Industry Correlation Analysis</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Industry Correlation Analysis</h4>
                       <p className="text-xs text-slate-500 leading-relaxed mb-3">
                         If you work in Tech, your human capital is highly correlated with the NASDAQ (ρ ≈ 0.7-0.8). SAA suggests <strong>underweighting</strong> Tech in your financial portfolio to avoid "Double-Jeopardy" risk.
                       </p>
@@ -68,7 +68,7 @@ export default function StrategicAssetAllocationArticle() {
                       </div>
                     </div>
                     <div className="p-6 bg-slate-50 dark:bg-[#14171B] rounded-3xl border border-slate-100 dark:border-slate-800">
-                      <h4 className="font-bold text-slate-900 mb-2">Mortality & Disability Risk</h4>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">Mortality & Disability Risk</h4>
                       <p className="text-xs text-slate-500 leading-relaxed mb-3">
                         Human capital is fragile and non-tradeable. Term life insurance acts as a "put option" on your human capital, allowing you to maintain an aggressive SAA for your financial capital.
                       </p>
@@ -193,7 +193,7 @@ export default function StrategicAssetAllocationArticle() {
                     <div key={i}>
                       <div className="flex justify-between text-xs font-bold mb-2">
                         <span className="text-slate-600 dark:text-slate-400">{stat.label}</span>
-                        <span className="text-slate-900">{stat.val}%</span>
+                        <span className="text-slate-900 dark:text-slate-100">{stat.val}%</span>
                       </div>
                       <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden mb-2">
                         <div className={`h-full ${stat.color} rounded-full`} style={{ width: `${stat.val}%` }}></div>
@@ -224,7 +224,7 @@ export default function StrategicAssetAllocationArticle() {
               <div className="p-4 bg-amber-500 rounded-2xl shadow-xl mb-6">
                 <Compass className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-5xl font-black text-slate-900 mb-4 tracking-tight font-serif">Macro-Regime Identification Framework</h2>
+              <h2 className="text-5xl font-black text-slate-900 dark:text-slate-100 mb-4 tracking-tight font-serif">Macro-Regime Identification Framework</h2>
               <p className="text-slate-500 max-w-3xl font-medium leading-relaxed">
                 Strategic allocation transcends static diversification by dynamically positioning across the growth-inflation matrix. Understanding regime transitions enables tactical tilts while maintaining strategic discipline.
               </p>
@@ -345,7 +345,7 @@ export default function StrategicAssetAllocationArticle() {
                 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <div className="p-6 bg-[#1D8A70] dark:bg-[#3CBF9C]/30 border border-emerald-700/30 rounded-3xl">
+                    <div className="p-6 bg-[#1D8A70] dark:bg-[#3CBF9C]/30 border border-[#1D8A70] dark:border-[#3CBF9C]/30 rounded-3xl">
                       <h4 className="text-lg font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">Rising Growth + Low Inflation</h4>
                       <p className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] mb-3">The "Goldilocks" environment favoring risk assets</p>
                       <div className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] space-y-1">
@@ -356,7 +356,7 @@ export default function StrategicAssetAllocationArticle() {
                       </div>
                     </div>
                     
-                    <div className="p-6 bg-[#BC4128] dark:bg-[#E2694A]/30 border border-rose-700/30 rounded-3xl">
+                    <div className="p-6 bg-[#BC4128] dark:bg-[#E2694A]/30 border border-[#BC4128] dark:border-[#E2694A]/30 rounded-3xl">
                       <h4 className="text-lg font-bold text-[#BC4128] dark:text-[#E2694A] mb-2">Falling Growth + Low Inflation</h4>
                       <p className="text-xs text-[#BC4128] dark:text-[#E2694A] mb-3">Deflationary environment favoring duration</p>
                       <div className="text-xs text-[#BC4128] dark:text-[#E2694A] space-y-1">
@@ -421,7 +421,7 @@ export default function StrategicAssetAllocationArticle() {
                 <Calculator className="w-10 h-10 text-white" />
               </div>
               <div>
-                <h2 className="text-5xl font-black text-slate-900 tracking-tight font-serif">Portfolio Optimization Mathematics</h2>
+                <h2 className="text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight font-serif">Portfolio Optimization Mathematics</h2>
                 <p className="text-slate-500 font-medium">From Markowitz foundations to institutional-grade implementations.</p>
               </div>
             </div>
@@ -617,7 +617,7 @@ export default function StrategicAssetAllocationArticle() {
                   </div>
                 </div>
                 
-                <div className="p-6 bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-700/30 rounded-3xl">
+                <div className="p-6 bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-[#A8672E] dark:border-[#D08F52]/30 rounded-3xl">
                   <h4 className="text-lg font-bold text-[#A8672E] dark:text-[#D08F52] mb-4">Implementation Reality Check</h4>
                   <div className="grid md:grid-cols-3 gap-6 text-xs">
                     <div>
@@ -657,7 +657,7 @@ export default function StrategicAssetAllocationArticle() {
                 <Briefcase className="w-10 h-10 text-white" />
               </div>
               <div>
-                <h2 className="text-5xl font-black text-slate-900 tracking-tight font-serif">The Strategic Building Blocks</h2>
+                <h2 className="text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight font-serif">The Strategic Building Blocks</h2>
                 <p className="text-slate-500 font-medium">From public market beta to institutional alternative alpha sources.</p>
               </div>
             </div>
@@ -927,7 +927,7 @@ export default function StrategicAssetAllocationArticle() {
                 <Coins className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h2 className="text-4xl font-black text-slate-900 tracking-tight font-serif">Gold: The Monetary Metal in Portfolio Context</h2>
+                <h2 className="text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight font-serif">Gold: The Monetary Metal in Portfolio Context</h2>
                 <p className="text-slate-500 font-medium tracking-tight">Neutral reserve assets in a multipolar monetary system.</p>
               </div>
             </div>
@@ -1123,25 +1123,25 @@ export default function StrategicAssetAllocationArticle() {
                     </div>
                   </div>
                   
-                  <div className="p-6 bg-orange-900/30 border border-orange-700/30 rounded-3xl">
-                    <h4 className="text-lg font-bold text-orange-400 mb-3">Optimal Allocation Framework</h4>
+                  <div className="p-6 bg-orange-900/30 border border-[#BC4128] dark:border-[#E2694A]/30 rounded-3xl">
+                    <h4 className="text-lg font-bold text-[#BC4128] dark:text-[#E2694A] mb-3">Optimal Allocation Framework</h4>
                     <p className="text-xs text-orange-200 mb-4">Strategic allocation guidelines by investor profile</p>
                     <div className="text-xs text-orange-100 space-y-2">
                       <div className="flex justify-between">
                         <span>Conservative (Age 60+):</span>
-                        <span className="font-bold text-orange-400">10-15%</span>
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">10-15%</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Moderate (Age 40-60):</span>
-                        <span className="font-bold text-orange-400">5-10%</span>
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">5-10%</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Aggressive (Age 20-40):</span>
-                        <span className="font-bold text-orange-400">2-5%</span>
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">2-5%</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Institutional Target:</span>
-                        <span className="font-bold text-orange-400">7-12%</span>
+                        <span className="font-bold text-[#BC4128] dark:text-[#E2694A]">7-12%</span>
                       </div>
                     </div>
                   </div>
@@ -1181,7 +1181,7 @@ export default function StrategicAssetAllocationArticle() {
                 <ArrowRightLeft className="w-10 h-10 text-white" />
               </div>
               <div>
-                <h2 className="text-5xl font-black text-slate-900 tracking-tight font-serif">Implementation & Maintenance Alpha</h2>
+                <h2 className="text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight font-serif">Implementation & Maintenance Alpha</h2>
                 <p className="text-slate-500 font-medium tracking-tight">Systematic execution discipline for maximum after-tax, after-cost returns.</p>
               </div>
             </div>
@@ -1332,7 +1332,7 @@ export default function StrategicAssetAllocationArticle() {
                     </div>
                   </div>
                   
-                  <div className="mt-8 p-6 bg-gradient-to-r from-rose-900/30 to-emerald-900/30 border border-rose-700/30 rounded-3xl">
+                  <div className="mt-8 p-6 bg-gradient-to-r from-rose-900/30 to-emerald-900/30 border border-[#BC4128] dark:border-[#E2694A]/30 rounded-3xl">
                     <h4 className="text-sm font-bold text-[#BC4128] dark:text-[#E2694A] uppercase mb-3 flex items-center gap-2">
                       <FileText className="w-4 h-4" /> Implementation Alpha Research
                     </h4>

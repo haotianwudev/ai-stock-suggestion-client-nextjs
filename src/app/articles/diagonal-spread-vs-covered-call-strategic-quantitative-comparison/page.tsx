@@ -6,19 +6,19 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Helper component for section titles
 const SectionTitle = ({ children }) => (
-    <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 border-l-4 border-blue-500 pl-4">{children}</h2>
+    <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 font-serif">{children}</h2>
 );
 
 // Helper component for subsection titles
 const SubTitle = ({ children }) => (
-    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">{children}</h3>
+    <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4 font-serif">{children}</h3>
 );
 
 // Helper component for paragraphs
 const P = ({ children }) => <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{children}</p>;
 
 // Helper component for list items
-const ListItem = ({ children }) => <li className="mb-2 flex items-start"><ArrowRight className="w-5 h-5 text-blue-500 mr-3 mt-1.5 flex-shrink-0" /><span>{children}</span></li>;
+const ListItem = ({ children }) => <li className="mb-2 flex items-start"><ArrowRight className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] mr-3 mt-1.5 flex-shrink-0" /><span>{children}</span></li>;
 
 // Card component for visual separation
 const Card = ({ children, className = "" }) => (
@@ -158,12 +158,12 @@ const PMCCSection = () => (
                         <td className="p-4 border-b border-gray-200 dark:border-gray-600">$1,000</td>
                         <td className="p-4 border-b border-gray-200 dark:border-gray-600">$1,000</td>
                     </tr>
-                    <tr className="font-bold bg-blue-50 dark:bg-blue-900/30">
+                    <tr className="font-bold bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/30">
                         <td className="p-4 border-b border-gray-200 dark:border-gray-600">Net Capital Required</td>
                         <td className="p-4 border-b border-gray-200 dark:border-gray-600">$49,000</td>
                         <td className="p-4 border-b border-gray-200 dark:border-gray-600">$11,000</td>
                     </tr>
-                    <tr className="font-bold bg-red-50 dark:bg-red-900/30">
+                    <tr className="font-bold bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/30">
                         <td className="p-4 border-b-0">Maximum Risk</td>
                         <td className="p-4 border-b-0">$49,000 (Stock to $0)</td>
                         <td className="p-4 border-b-0">$11,000 (Net debit paid)</td>
@@ -183,16 +183,16 @@ const QuantitativeAnalysis = () => (
             <div>
                 <SubTitle>5.1 Covered Call Profile</SubTitle>
                 <ul className="list-none space-y-4">
-                    <li><strong className="text-green-600 dark:text-green-400">Max Profit (Capped):</strong> `(Strike - Stock Price) + Premium`</li>
-                    <li><strong className="text-red-600 dark:text-red-400">Max Loss (Substantial):</strong> `Stock Price - Premium`</li>
+                    <li><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Max Profit (Capped):</strong> `(Strike - Stock Price) + Premium`</li>
+                    <li><strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Max Loss (Substantial):</strong> `Stock Price - Premium`</li>
                     <li><strong className="text-yellow-600 dark:text-yellow-400">Breakeven:</strong> `Stock Price - Premium`</li>
                 </ul>
             </div>
             <div>
                 <SubTitle>5.2 Diagonal Spread Profile</SubTitle>
                 <ul className="list-none space-y-4">
-                    <li><strong className="text-green-600 dark:text-green-400">Max Profit (Limited but Variable):</strong> Occurs if stock is at the short strike at its expiration. Cannot be precisely calculated upfront.</li>
-                    <li><strong className="text-red-600 dark:text-red-400">Max Loss (Defined & Limited):</strong> The net debit paid to enter the position.</li>
+                    <li><strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Max Profit (Limited but Variable):</strong> Occurs if stock is at the short strike at its expiration. Cannot be precisely calculated upfront.</li>
+                    <li><strong className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Max Loss (Defined & Limited):</strong> The net debit paid to enter the position.</li>
                     <li><strong className="text-yellow-600 dark:text-yellow-400">Breakeven (Approximate):</strong> `Long Option Strike + Net Debit`. A precise formula is not feasible due to IV impact.</li>
                 </ul>
             </div>
@@ -249,8 +249,8 @@ const GreeksSection = () => (
                     </tr>
                     <tr className="font-bold bg-yellow-50 dark:bg-yellow-900/30">
                         <td className="p-4 border-b-0"><strong>Vega</strong></td>
-                        <td className="p-4 border-b-0 flex items-center"><TrendingDown className="w-5 h-5 text-red-500 mr-2" /> Negative</td>
-                        <td className="p-4 border-b-0 flex items-center"><TrendingUp className="w-5 h-5 text-green-500 mr-2" /> Positive</td>
+                        <td className="p-4 border-b-0 flex items-center"><TrendingDown className="w-5 h-5 text-[#BC4128] dark:text-[#E2694A] mr-2" /> Negative</td>
+                        <td className="p-4 border-b-0 flex items-center"><TrendingUp className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] mr-2" /> Positive</td>
                         <td className="p-4 border-b-0">Key Differentiator: Opposing volatility preference.</td>
                     </tr>
                 </tbody>
@@ -323,23 +323,23 @@ const Synthesis = () => (
 
         <SubTitle>8.2 Decision Framework: Choosing the Right Strategy</SubTitle>
         <div className="grid md:grid-cols-2 gap-8 mt-6">
-            <div className="border-l-4 border-blue-500 pl-4">
-                <h4 className="font-bold text-xl mb-2 text-blue-600 dark:text-blue-400">Use a Covered Call when...</h4>
+            <div className="border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4">
+                <h4 className="font-bold text-xl mb-2 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Use a Covered Call when...</h4>
                 <P>You are a long-term holder of 100+ shares, have a neutral-to-moderately bullish outlook, and want to generate extra income from your existing assets.</P>
             </div>
-            <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-bold text-xl mb-2 text-green-600 dark:text-green-400">Use a Diagonal Spread when...</h4>
+            <div className="border-l-4 border-[#1D8A70] dark:border-[#3CBF9C] pl-4">
+                <h4 className="font-bold text-xl mb-2 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Use a Diagonal Spread when...</h4>
                 <P>You are bullish but have limited capital, want a defined-risk alternative to stock, and are comfortable with higher complexity and more active management.</P>
             </div>
         </div>
 
         <div className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-inner">
             <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center">
-                <HelpCircle className="w-6 h-6 mr-2 text-indigo-500" />
+                <HelpCircle className="w-6 h-6 mr-2 text-[#A8672E] dark:text-[#D08F52]" />
                 Concluding Expert Insight
             </h4>
             <P className="!mb-0 text-xl italic">
-                A <strong className="text-blue-600 dark:text-blue-400">covered call</strong> is a tactic to enhance an existing asset. A <strong className="text-green-600 dark:text-green-400">diagonal spread</strong> is a strategy to create a new, synthetic, and capital-efficient position. The choice is not about which is &ldquo;better,&rdquo; but which is the right tool for your specific objectives, capital, and risk tolerance.
+                A <strong className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">covered call</strong> is a tactic to enhance an existing asset. A <strong className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">diagonal spread</strong> is a strategy to create a new, synthetic, and capital-efficient position. The choice is not about which is &ldquo;better,&rdquo; but which is the right tool for your specific objectives, capital, and risk tolerance.
             </P>
         </div>
     </Card>

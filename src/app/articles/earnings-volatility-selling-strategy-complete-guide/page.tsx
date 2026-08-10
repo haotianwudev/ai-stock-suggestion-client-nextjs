@@ -14,7 +14,7 @@ interface StrategyCardProps {
 
 // Helper component for section titles
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-12 text-center">
+  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-12 text-center font-serif">
     {children}
   </h2>
 );
@@ -22,9 +22,9 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 // Helper component for strategy cards
 const StrategyCard = ({ icon, title, description, keyPoints, riskLevel }: StrategyCardProps) => {
   const riskColors = {
-    low: 'bg-green-50 border-green-200 text-green-800 dark:bg-green-900/20 dark:border-green-700 dark:text-green-300',
+    low: 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-green-200 text-green-800 dark:bg-green-900/20 dark:border-[#1D8A70] dark:border-[#3CBF9C] dark:text-green-300',
     medium: 'bg-yellow-50 border-yellow-200 text-yellow-800 dark:bg-yellow-900/20 dark:border-yellow-700 dark:text-yellow-300',
-    high: 'bg-red-50 border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-700 dark:text-red-300'
+    high: 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-red-200 text-red-800 dark:bg-red-900/20 dark:border-[#BC4128] dark:border-[#E2694A] dark:text-red-300'
   };
 
   return (
@@ -35,7 +35,7 @@ const StrategyCard = ({ icon, title, description, keyPoints, riskLevel }: Strate
             <div className="bg-cyan-500 dark:bg-cyan-600 text-white rounded-full p-3 mr-4">
               {icon}
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">{title}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight font-serif">{title}</h3>
           </div>
           <div className={`px-3 py-1 rounded-full text-sm font-medium border ${riskColors[riskLevel]}`}>
             {riskLevel.toUpperCase()} RISK
@@ -109,7 +109,7 @@ export default function EarningsVolatilitySellingStrategy() {
           <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8 mb-8">
             <div className="flex items-center mb-6">
               <BookOpen className="w-8 h-8 text-cyan-600 mr-4" />
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Core Strategy</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">Core Strategy</h3>
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               The earnings volatility selling strategy involves selling short-term options (straddles or calendar spreads)
@@ -125,9 +125,9 @@ export default function EarningsVolatilitySellingStrategy() {
                   <li>• Market makers price in larger moves than typically occur</li>
                 </ul>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-lg">
                 <h4 className="font-bold text-blue-800 dark:text-blue-300 text-lg mb-3">Edge Sources</h4>
-                <ul className="space-y-2 text-blue-700 dark:text-blue-400">
+                <ul className="space-y-2 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                   <li>• Hedgers overpay for protection</li>
                   <li>• Retail speculators chase lottery tickets</li>
                   <li>• Statistical arbitrage in volatility pricing</li>
@@ -155,7 +155,7 @@ export default function EarningsVolatilitySellingStrategy() {
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
               <div className="flex items-center mb-6">
                 <BrainCircuit className="w-8 h-8 text-purple-600 mr-4" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Implied vs. Realized Volatility</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-serif">Implied vs. Realized Volatility</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                 Historically, the implied volatility (IV) priced into options before an earnings event is higher
@@ -171,18 +171,18 @@ export default function EarningsVolatilitySellingStrategy() {
 
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
               <div className="flex items-center mb-6">
-                <DollarSign className="w-8 h-8 text-green-600 mr-4" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Who Overpays for Options?</h3>
+                <DollarSign className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C] mr-4" />
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-serif">Who Overpays for Options?</h3>
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-green-700 dark:text-green-300 mb-2">Hedgers (Institutions)</h4>
+                  <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 mb-2">Hedgers (Institutions)</h4>
                   <p className="text-gray-600 dark:text-gray-400">
                     Price-insensitive participants who buy protection regardless of cost to secure portfolios.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-green-700 dark:text-green-300 mb-2">Speculators (Retail)</h4>
+                  <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 mb-2">Speculators (Retail)</h4>
                   <p className="text-gray-600 dark:text-gray-400">
                     Buy short-dated calls hoping for lottery-like payouts, inflating demand and prices.
                   </p>
@@ -197,7 +197,7 @@ export default function EarningsVolatilitySellingStrategy() {
           <SectionTitle>Step-by-Step Execution Guide</SectionTitle>
           <div className="space-y-8">
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-cyan-600 mb-6">Step 1: Screen for Opportunities</h3>
+              <h3 className="text-2xl font-bold text-cyan-600 mb-6 font-serif">Step 1: Screen for Opportunities</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 Filter the universe of upcoming earnings announcements for high-probability setups using three key criteria:
               </p>
@@ -208,15 +208,15 @@ export default function EarningsVolatilitySellingStrategy() {
                     Front-month IV must be significantly higher than back-month IV, indicating overpriced short-term volatility.
                   </p>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-3">High IV/RV Ratio</h4>
-                  <p className="text-blue-700 dark:text-blue-400 text-sm">
+                  <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-sm">
                     Implied volatility should be inflated relative to historical realized volatility (ideally ratio &gt; 1.5).
                   </p>
                 </div>
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-lg">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-indigo-800 dark:text-indigo-300 mb-3">Sufficient Liquidity</h4>
-                  <p className="text-indigo-700 dark:text-indigo-400 text-sm">
+                  <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-sm">
                     High average trading volume ensures minimal slippage on entry and exit.
                   </p>
                 </div>
@@ -225,20 +225,20 @@ export default function EarningsVolatilitySellingStrategy() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-green-600 mb-4">Step 2: Trade Entry</h3>
-                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                <h3 className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-4 font-serif">Step 2: Trade Entry</h3>
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-green-800 dark:text-green-300 text-lg mb-2">Execution Time</h4>
-                  <p className="text-green-700 dark:text-green-400">
+                  <p className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">
                     Open position <strong>15 minutes before market close</strong> on earnings announcement day.
                   </p>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-blue-600 mb-4">Step 3: Trade Exit</h3>
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                <h3 className="text-2xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-4 font-serif">Step 3: Trade Exit</h3>
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-blue-800 dark:text-blue-300 text-lg mb-2">Execution Time</h4>
-                  <p className="text-blue-700 dark:text-blue-400">
+                  <p className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                     Close position <strong>15 minutes after market open</strong> the following trading day.
                   </p>
                 </div>
@@ -246,12 +246,12 @@ export default function EarningsVolatilitySellingStrategy() {
             </div>
 
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-red-600 mb-6">Step 4: Position Sizing (Critical)</h3>
+              <h3 className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-6 font-serif">Step 4: Position Sizing (Critical)</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A]">
                   <h4 className="font-bold text-red-800 dark:text-red-300 text-lg mb-2">Short Straddles</h4>
-                  <p className="text-red-700 dark:text-red-400 text-2xl font-bold mb-2">≤ 2%</p>
-                  <p className="text-red-600 dark:text-red-400">of capital per trade</p>
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-2xl font-bold mb-2">≤ 2%</p>
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">of capital per trade</p>
                 </div>
                 <div className="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-lg border-l-4 border-yellow-500">
                   <h4 className="font-bold text-yellow-800 dark:text-yellow-300 text-lg mb-2">Calendar Spreads</h4>
@@ -261,7 +261,7 @@ export default function EarningsVolatilitySellingStrategy() {
               </div>
               <div className="mt-6 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
                 <p className="text-gray-700 dark:text-gray-300 font-medium">
-                  <AlertTriangle className="w-5 h-5 inline mr-2 text-red-500" />
+                  <AlertTriangle className="w-5 h-5 inline mr-2 text-[#BC4128] dark:text-[#E2694A]" />
                   Never use full Kelly sizing. Even with statistical edge, improper sizing leads to ruin.
                 </p>
               </div>
@@ -285,7 +285,7 @@ export default function EarningsVolatilitySellingStrategy() {
           <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8 mb-8">
             <div className="flex items-center mb-6">
               <BarChart3 className="w-8 h-8 text-purple-600 mr-4" />
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Methodology</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">Methodology</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -307,8 +307,8 @@ export default function EarningsVolatilitySellingStrategy() {
               </div>
               <div>
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Key Finding</h4>
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
-                  <p className="text-red-700 dark:text-red-400 font-medium">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-4 rounded-lg">
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium">
                     Blindly trading every earnings event results in near 0% mean return.
                     The edge only exists when filtering for high-probability setups.
                   </p>
@@ -323,19 +323,19 @@ export default function EarningsVolatilitySellingStrategy() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded">
                   <span>Straddle Mean Return</span>
-                  <span className="font-bold text-green-600">9.0%</span>
+                  <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">9.0%</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded">
                   <span>Calendar Mean Return</span>
-                  <span className="font-bold text-green-600">7.3%</span>
+                  <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C]">7.3%</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded">
                   <span>Straddle Win Rate</span>
-                  <span className="font-bold text-blue-600">64%</span>
+                  <span className="font-bold text-[#A8672E] dark:text-[#D08F52]">64%</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded">
                   <span>Calendar Win Rate</span>
-                  <span className="font-bold text-blue-600">66%</span>
+                  <span className="font-bold text-[#A8672E] dark:text-[#D08F52]">66%</span>
                 </div>
               </div>
             </div>
@@ -347,8 +347,8 @@ export default function EarningsVolatilitySellingStrategy() {
                   <h5 className="font-bold text-cyan-700 dark:text-cyan-300">Term Structure Slope</h5>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Most important predictor of success</p>
                 </div>
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h5 className="font-bold text-blue-700 dark:text-blue-300">IV/RV Ratio</h5>
+                <div className="border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4">
+                  <h5 className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300">IV/RV Ratio</h5>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Confirms overpriced volatility</p>
                 </div>
                 <div className="border-l-4 border-purple-500 pl-4">
@@ -364,18 +364,18 @@ export default function EarningsVolatilitySellingStrategy() {
         <section id="risk">
           <SectionTitle>Risk Management & Position Sizing</SectionTitle>
           <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8 mb-8">
-            <h3 className="text-2xl font-bold text-red-600 mb-6 text-center">The Four Pillars of Risk Management</h3>
+            <h3 className="text-2xl font-bold text-[#BC4128] dark:text-[#E2694A] mb-6 text-center font-serif">The Four Pillars of Risk Management</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-red-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-red-800 dark:text-red-300 mb-2">1. Never Trade Full Kelly</h4>
-                  <p className="text-red-700 dark:text-red-400 text-sm">
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-sm">
                     Kelly Criterion maximizes growth theoretically but leads to unacceptable volatility in practice.
                   </p>
                 </div>
-                <div className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+                <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-orange-800 dark:text-orange-300 mb-2">2. Straddles ≤ 2% Capital</h4>
-                  <p className="text-orange-700 dark:text-orange-400 text-sm">
+                  <p className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] text-sm">
                     Strict sizing protects against devastating impact of tail risk events.
                   </p>
                 </div>
@@ -387,9 +387,9 @@ export default function EarningsVolatilitySellingStrategy() {
                     Balance between meaningful returns and capital preservation.
                   </p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-green-800 dark:text-green-300 mb-2">4. Avoid Low Liquidity</h4>
-                  <p className="text-green-700 dark:text-green-400 text-sm">
+                  <p className="text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] text-sm">
                     Wide bid-ask spreads can completely erase the strategy&apos;s edge.
                   </p>
                 </div>
@@ -398,14 +398,14 @@ export default function EarningsVolatilitySellingStrategy() {
           </div>
 
           <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-green-600 mb-6 text-center">Long-Term Growth Simulation</h3>
+            <h3 className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-6 text-center font-serif">Long-Term Growth Simulation</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
-                <div className="text-3xl font-bold text-green-600 mb-2">$10,000</div>
+              <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 p-6 rounded-lg">
+                <div className="text-3xl font-bold text-[#1D8A70] dark:text-[#3CBF9C] mb-2">$10,000</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Starting Capital</div>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">10 Years</div>
+              <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-lg">
+                <div className="text-3xl font-bold text-[#A8672E] dark:text-[#D08F52] mb-2">10 Years</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Time Horizon</div>
               </div>
               <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
@@ -426,7 +426,7 @@ export default function EarningsVolatilitySellingStrategy() {
           <SectionTitle>Case Study: AMZN Earnings Trade</SectionTitle>
           <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-cyan-600 mb-4">Real-World Application</h3>
+              <h3 className="text-2xl font-bold text-cyan-600 mb-4 font-serif">Real-World Application</h3>
               <p className="text-lg text-gray-600 dark:text-gray-300">
                 Amazon (AMZN) earnings trade flagged as &ldquo;RECOMMEND&rdquo; by the screening criteria
               </p>
@@ -450,7 +450,7 @@ export default function EarningsVolatilitySellingStrategy() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Total Risk:</span>
-                    <span className="font-medium text-red-600">$33,300</span>
+                    <span className="font-medium text-[#BC4128] dark:text-[#E2694A]">$33,300</span>
                   </div>
                 </div>
               </div>
@@ -472,7 +472,7 @@ export default function EarningsVolatilitySellingStrategy() {
                   </div>
                   <div className="flex justify-between border-t pt-3">
                     <span className="text-gray-600 dark:text-gray-400">Profit:</span>
-                    <span className="font-bold text-green-600 text-lg">+$9,300</span>
+                    <span className="font-bold text-[#1D8A70] dark:text-[#3CBF9C] text-lg">+$9,300</span>
                   </div>
                 </div>
               </div>
@@ -496,8 +496,8 @@ export default function EarningsVolatilitySellingStrategy() {
           <div className="space-y-8">
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
               <div className="flex items-center mb-6">
-                <Calculator className="w-8 h-8 text-indigo-600 mr-4" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Implementation Guide</h3>
+                <Calculator className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] mr-4" />
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-serif">Implementation Guide</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 To build an effective scanner, you need to implement the filtering logic that identifies
@@ -505,9 +505,9 @@ export default function EarningsVolatilitySellingStrategy() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-lg">
+                <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 p-6 rounded-lg">
                   <h4 className="font-bold text-indigo-800 dark:text-indigo-300 mb-3">Data Requirements</h4>
-                  <ul className="text-sm text-indigo-700 dark:text-indigo-400 space-y-2">
+                  <ul className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] space-y-2">
                     <li>• Earnings calendar</li>
                     <li>• Options chains (IV, Greeks)</li>
                     <li>• Historical stock prices</li>
@@ -535,7 +535,7 @@ export default function EarningsVolatilitySellingStrategy() {
             </div>
 
             <div className="bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-cyan-600 mb-6">Formulas & Implementation</h3>
+              <h3 className="text-2xl font-bold text-cyan-600 mb-6 font-serif">Formulas & Implementation</h3>
               <div className="space-y-6">
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Term Structure Slope</h4>

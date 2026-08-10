@@ -25,7 +25,7 @@ export default function IntegerOptimizationArticle() {
               Traditional Mean-Variance Optimization assumes assets are infinitely divisible. This creates "dust"—negligible positions (e.g., 0.0001%) that are costly to trade, operational nightmares, impossible to hedge, and illiquid odd-lots.
             </p>
             
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 my-8 rounded-r-lg">
               <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-300 mb-3 font-serif flex items-center gap-2">
                 <Lightbulb className="w-5 h-5" /> The MIP Solution
               </h3>
@@ -63,19 +63,19 @@ export default function IntegerOptimizationArticle() {
             <ComparisonGrid>
               <ComparisonCard title="Logical Constraints" tone="neutral">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Encodes "If-Then" rules. Example: "If we hold Shell, we must not hold BP."</p>
-                <div className="font-mono text-xs text-indigo-600 dark:text-indigo-400">z_shell + z_bp ≤ 1</div>
+                <div className="font-mono text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">z_shell + z_bp ≤ 1</div>
               </ComparisonCard>
               <ComparisonCard title="Cardinality (K)" tone="neutral">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Limits the total number of assets in the portfolio to exactly K.</p>
-                <div className="font-mono text-xs text-indigo-600 dark:text-indigo-400">Σ z_i = K</div>
+                <div className="font-mono text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Σ z_i = K</div>
               </ComparisonCard>
               <ComparisonCard title="Minimum Buy-In" tone="neutral">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Disallows small trades. Position must be 0 or &gt; $100k.</p>
-                <div className="font-mono text-xs text-indigo-600 dark:text-indigo-400">w_i = 0 ∨ w_i ≥ 0.05</div>
+                <div className="font-mono text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">w_i = 0 ∨ w_i ≥ 0.05</div>
               </ComparisonCard>
               <ComparisonCard title="Round Lots" tone="neutral">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Forces trades to be multiples of a lot size (e.g., 100 shares).</p>
-                <div className="font-mono text-xs text-indigo-600 dark:text-indigo-400">x_i = L · n_i, n_i ∈ ℤ</div>
+                <div className="font-mono text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">x_i = L · n_i, n_i ∈ ℤ</div>
               </ComparisonCard>
             </ComparisonGrid>
 
@@ -83,24 +83,24 @@ export default function IntegerOptimizationArticle() {
             <ComparisonGrid>
               <ComparisonCard title="Perspective Cut" tone="pos">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Advanced conic reformulation. Replaces quadratic terms to tighten the "relaxation gap."</p>
-                <div className="font-mono text-xs text-emerald-600 dark:text-emerald-400">w_i² → w_i² / z_i</div>
+                <div className="font-mono text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">w_i² → w_i² / z_i</div>
               </ComparisonCard>
               <ComparisonCard title="Indicator Constraints" tone="pos">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Modern solver feature. Avoids "Big-M" numerical issues by handling logic natively.</p>
-                <div className="font-mono text-xs text-emerald-600 dark:text-emerald-400">z=1 ⇒ Σ w_i ≤ α</div>
+                <div className="font-mono text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">z=1 ⇒ Σ w_i ≤ α</div>
               </ComparisonCard>
               <ComparisonCard title="SOS Type 2" tone="pos">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Special Ordered Sets. Essential for modeling piecewise linear costs.</p>
-                <div className="font-mono text-xs text-emerald-600 dark:text-emerald-400">λ_i, λ_i+1 ≠ 0</div>
+                <div className="font-mono text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">λ_i, λ_i+1 ≠ 0</div>
               </ComparisonCard>
               <ComparisonCard title="Turnover Control" tone="pos">
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">Linearizing absolute value differences for rebalancing limits.</p>
-                <div className="font-mono text-xs text-emerald-600 dark:text-emerald-400">|w_new - w_old| ≤ T</div>
+                <div className="font-mono text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">|w_new - w_old| ≤ T</div>
               </ComparisonCard>
             </ComparisonGrid>
             
-            <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800 flex items-start">
-              <div className="p-2 bg-blue-100 dark:bg-blue-800 rounded-lg mr-4 text-blue-600 dark:text-blue-300 shrink-0">
+            <div className="mt-8 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800 flex items-start">
+              <div className="p-2 bg-blue-100 dark:bg-blue-800 rounded-lg mr-4 text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 shrink-0">
                 <BookOpen className="w-5 h-5"/>
               </div>
               <div>
@@ -125,7 +125,7 @@ export default function IntegerOptimizationArticle() {
             
             <div className="space-y-8 mt-10">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-6">
-                <Database className="w-8 h-8 text-indigo-500 shrink-0 mt-1" />
+                <Database className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-1" />
                 <div>
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">1. Data Ingestion & Signal Generation</h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">Constructing the inputs for the optimizer using Python/Pandas.</p>
@@ -137,7 +137,7 @@ export default function IntegerOptimizationArticle() {
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-6">
-                <Code2 className="w-8 h-8 text-indigo-500 shrink-0 mt-1" />
+                <Code2 className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-1" />
                 <div className="w-full">
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">2. Problem Formulation (CVXPY)</h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">Translating business logic into standard form via MIP Modeling.</p>
@@ -160,7 +160,7 @@ export default function IntegerOptimizationArticle() {
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-6">
-                <Cpu className="w-8 h-8 text-indigo-500 shrink-0 mt-1" />
+                <Cpu className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-1" />
                 <div className="w-full">
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">3. The Solver Engine</h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">Branch-and-Bound search space exploration (e.g., Gurobi, Mosek).</p>
@@ -184,7 +184,7 @@ export default function IntegerOptimizationArticle() {
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-6">
-                <Coins className="w-8 h-8 text-indigo-500 shrink-0 mt-1" />
+                <Coins className="w-8 h-8 text-[#A8672E] dark:text-[#D08F52] shrink-0 mt-1" />
                 <div>
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 font-serif">4. Order Slicing & Execution</h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">Transforming optimal weights into market orders via FIX Protocol.</p>
@@ -287,7 +287,7 @@ export default function IntegerOptimizationArticle() {
             <div className="space-y-12 mt-10">
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400">
+                  <div className="p-2 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">
                     <Cloud className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">Quantum Annealing</h3>
@@ -313,7 +313,7 @@ export default function IntegerOptimizationArticle() {
 
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-xl bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400">
+                  <div className="p-2 rounded-xl bg-rose-100 dark:bg-rose-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">
                     <BrainCircuit className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">Neural Branching</h3>

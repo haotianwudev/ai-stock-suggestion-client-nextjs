@@ -76,27 +76,27 @@ export default function AdvancedOptionRollingMechanicsPage() {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Original Leg Premium</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Closed via Buy-to-Close or Sell-to-Close</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Locks in realized gain or loss for the current tax year (unless wash sale applies). Triggers Form 1099-B reporting.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">New Leg Premium</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Opened via Sell-to-Open or Buy-to-Open</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Establishes a new, independent cost basis. Re-establishes margin utilization.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Net Credit/Debit</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Difference between close and open prices</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Irrelevant to cumulative profitability; simply indicates immediate cash flow at the moment of execution.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Margin Buying Power</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Released by old leg, consumed by new leg</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Often increases capital requirements if rolling to a wider spread or higher-priced underlying.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">P&L Reporting UI</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Platform resets 'P&L Open'</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Creates psychological bias by hiding the aggregate sequence loss, encouraging commitment to negative-EV trades.</td>
@@ -140,7 +140,7 @@ export default function AdvancedOptionRollingMechanicsPage() {
               </ComparisonCard>
             </ComparisonGrid>
 
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 rounded-r-xl my-8">
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 border-l-4 border-[#A8672E] dark:border-[#D08F52] p-6 rounded-r-xl my-8">
               <h4 className="font-bold text-indigo-900 dark:text-indigo-200 mb-2 flex items-center gap-2">
                 <Info className="w-5 h-5" /> Interaction Effects
               </h4>
@@ -163,21 +163,21 @@ export default function AdvancedOptionRollingMechanicsPage() {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Time-Based (21 DTE)</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Days to Expiration</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Eliminates terminal Gamma risk; resets trade duration.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Forces realization of losses on trades that might revert.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">High-probability income strategies (Iron Condors, Strangles).</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Delta-Based (Tested)</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Absolute Delta</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Highly responsive to price; allows dynamic delta-neutral hedging.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Can result in 'whipsaw' losses if the market aggressively mean-reverts.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Undefined risk strangles via 'Slide Rolls'.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">P&L-Based (50% PT)</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Net Credit %</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Locks in profits efficiently; increases annualized ROC.</td>
@@ -210,7 +210,7 @@ export default function AdvancedOptionRollingMechanicsPage() {
             
             <ul className="space-y-4 mb-10 text-slate-600 dark:text-slate-400">
               <li className="flex gap-4 items-start bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                <CheckCircle2 className="text-emerald-500 shrink-0 mt-1" size={24} />
+                <CheckCircle2 className="text-[#1D8A70] dark:text-[#3CBF9C] shrink-0 mt-1" size={24} />
                 <div className="leading-relaxed">
                   <strong className="text-slate-900 dark:text-white block mb-1">Contango (Normal Market):</strong>
                   Upward-sloping term structure. Rolling forward is structurally subsidized as you buy near-term
@@ -218,7 +218,7 @@ export default function AdvancedOptionRollingMechanicsPage() {
                 </div>
               </li>
               <li className="flex gap-4 items-start bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
-                <TrendingDown className="text-rose-500 shrink-0 mt-1" size={24} />
+                <TrendingDown className="text-[#BC4128] dark:text-[#E2694A] shrink-0 mt-1" size={24} />
                 <div className="leading-relaxed">
                   <strong className="text-slate-900 dark:text-white block mb-1">Backwardation (Market Panic):</strong>
                   Inverted term structure. Rolling forward carries a severe structural penalty as you buy back
@@ -234,7 +234,7 @@ export default function AdvancedOptionRollingMechanicsPage() {
               rolling out in time is substituting a low-Vega contract for a high-Vega contract.
             </p>
 
-            <div className="bg-rose-50 dark:bg-rose-900/20 border-l-4 border-rose-500 p-6 rounded-r-xl">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 border-l-4 border-[#BC4128] dark:border-[#E2694A] p-6 rounded-r-xl">
               <h4 className="font-bold text-rose-900 dark:text-rose-200 mb-2 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5" /> Dangerous Exposure
               </h4>
@@ -330,19 +330,19 @@ export default function AdvancedOptionRollingMechanicsPage() {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-800">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Covered Calls</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Roll Up and Out for a Credit.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Let stock get assigned to free capital.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Duration exceeds 60 DTE to achieve credit.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Short Puts (Wheel)</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Take assignment and write calls.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Roll down and out for credit if premium rich.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Fundamental thesis on underlying breaks.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-950 transition-colors">
                     <td className="p-4 font-medium text-slate-900 dark:text-white">Short Strangles</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Roll untested side (Slide Roll) to neutralize delta.</td>
                     <td className="p-4 border-l border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">Roll entire position out in time to re-center.</td>

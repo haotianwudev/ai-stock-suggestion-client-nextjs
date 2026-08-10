@@ -102,15 +102,15 @@ const portfolioData = {
 // --- Components ---
 const StatCard = ({ icon, label, value, q1, q2, trend }) => {
   const TrendIcon = trend === 'up' ? TrendingUp : TrendingDown;
-  const trendColor = trend === 'up' ? 'text-green-600' : 'text-red-600';
+  const trendColor = trend === 'up' ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]';
 
   return (
-    <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+    <div className="bg-white dark:bg-[#0A0D14] p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
       <div className="flex items-center text-gray-500 mb-2">
         {icon}
         <span className="ml-2 text-sm font-medium">{label}</span>
       </div>
-      <div className="text-2xl font-bold text-slate-900">{value}</div>
+      <div className="text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</div>
       <div className="flex justify-between items-end mt-2 text-xs">
         <span className="text-gray-400">Q1: {q1}</span>
         <div className={`flex items-center font-semibold ${trendColor}`}>
@@ -126,31 +126,31 @@ const ThesisCard = ({ title, icon: Icon, color, investments }) => {
   const [expanded, setExpanded] = useState(false);
 
   const colorVariants = {
-    blue: { border: "border-blue-500/50 hover:border-blue-500", text: "text-blue-600" },
+    blue: { border: "border-[#A8672E] dark:border-[#D08F52]/50 hover:border-[#A8672E] dark:border-[#D08F52]", text: "text-[#A8672E] dark:text-[#D08F52]" },
     purple: { border: "border-purple-500/50 hover:border-purple-500", text: "text-purple-600" },
-    green: { border: "border-green-500/50 hover:border-green-500", text: "text-green-600" }
+    green: { border: "border-[#1D8A70] dark:border-[#3CBF9C]/50 hover:border-[#1D8A70] dark:border-[#3CBF9C]", text: "text-[#1D8A70] dark:text-[#3CBF9C]" }
   };
 
   return (
-    <div className={`bg-white/80 backdrop-blur-md border ${colorVariants[color].border} rounded-xl p-6 transition-all duration-300 shadow-md`}>
+    <div className={`bg-white dark:bg-[#0A0D14]/80 backdrop-blur-md border ${colorVariants[color].border} rounded-xl p-6 transition-all duration-300 shadow-md`}>
       <div className="flex items-center cursor-pointer" onClick={() => setExpanded(!expanded)}>
         <Icon className={`${colorVariants[color].text} mr-4`} size={28} />
-        <h3 className="text-xl font-semibold text-slate-900 flex-grow">{title}</h3>
+        <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 flex-grow font-serif">{title}</h3>
         <ChevronsDown className={`text-gray-400 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
       </div>
       {expanded && (
         <div className="mt-6 space-y-6">
           {investments.map((inv, index) => (
             <div key={index} className="border-l-2 border-gray-200 pl-4">
-              <h4 className="font-bold text-lg text-slate-800 mb-2">{inv.name}</h4>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">{inv.name}</h4>
               <div className="space-y-3 text-gray-600 text-sm">
                 <div className="flex items-start">
-                  <TrendingDown className="text-red-500 mr-3 mt-1 flex-shrink-0" size={16} />
-                  <p><strong className="text-red-600 font-semibold">The Bear Case:</strong> {inv.bearCase}</p>
+                  <TrendingDown className="text-[#BC4128] dark:text-[#E2694A] mr-3 mt-1 flex-shrink-0" size={16} />
+                  <p><strong className="text-[#BC4128] dark:text-[#E2694A] font-semibold">The Bear Case:</strong> {inv.bearCase}</p>
                 </div>
                 <div className="flex items-start">
-                  <TrendingUp className="text-green-500 mr-3 mt-1 flex-shrink-0" size={16} />
-                  <p><strong className="text-green-600 font-semibold">Burry&apos;s Likely Bull Case:</strong> {inv.bullCase}</p>
+                  <TrendingUp className="text-[#1D8A70] dark:text-[#3CBF9C] mr-3 mt-1 flex-shrink-0" size={16} />
+                  <p><strong className="text-[#1D8A70] dark:text-[#3CBF9C] font-semibold">Burry&apos;s Likely Bull Case:</strong> {inv.bullCase}</p>
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@ const Section = ({ id, title, subtitle, children, bgClass = "bg-transparent" }) 
   <section id={id} className={`py-16 sm:py-24 ${bgClass}`}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{title}</h2>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-serif">{title}</h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">{subtitle}</p>
       </div>
       {children}
@@ -185,12 +185,12 @@ const Table = ({ headers, data, type }) => (
           ))}
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white dark:bg-[#0A0D14] divide-y divide-gray-200">
         {data.map((row, index) => (
           <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
             {Object.values(row).map((cell, cellIndex) => (
               <td key={cellIndex} className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                {cellIndex === 0 && type === 'common' && <span className="font-bold text-slate-900">{cell}</span>}
+                {cellIndex === 0 && type === 'common' && <span className="font-bold text-slate-900 dark:text-slate-100">{cell}</span>}
                 {cellIndex !== 0 || type !== 'common' ? cell : ''}
               </td>
             ))}
@@ -204,7 +204,7 @@ const Table = ({ headers, data, type }) => (
 export default function BurryAnalysis() {
   return (
     <ArticleFrame slug="michael-burry-q2-2025-portfolio-analysis-cassandra-pivot">
-      <div className="bg-gray-50 text-slate-800 font-sans leading-relaxed -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+      <div className="bg-gray-50 text-slate-800 dark:text-slate-200 font-sans leading-relaxed -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         {/* About Burry Section */}
         <Section id="about" title="Profile of a Contrarian" subtitle="Understanding the mind behind the trades." bgClass="bg-gray-100">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -217,24 +217,24 @@ export default function BurryAnalysis() {
               </p>
             </div>
             <div className="space-y-4">
-              <div className="flex items-start p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                <Scale className="text-blue-600 h-8 w-8 mr-4 flex-shrink-0" />
+              <div className="flex items-start p-4 bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 shadow-sm">
+                <Scale className="text-[#A8672E] dark:text-[#D08F52] h-8 w-8 mr-4 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-slate-800">Margin of Safety</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-slate-200 font-serif">Margin of Safety</h3>
                   <p className="text-gray-600 text-sm">The foundational principle: purchase securities for significantly less than their calculated intrinsic value.</p>
                 </div>
               </div>
-              <div className="flex items-start p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                <Feather className="text-blue-600 h-8 w-8 mr-4 flex-shrink-0" />
+              <div className="flex items-start p-4 bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 shadow-sm">
+                <Feather className="text-[#A8672E] dark:text-[#D08F52] h-8 w-8 mr-4 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-slate-800">&ldquo;Road Kill&rdquo; Investing</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-slate-200 font-serif">&ldquo;Road Kill&rdquo; Investing</h3>
                   <p className="text-gray-600 text-sm">Actively seeks unpopular, overlooked companies, aiming to buy when they look like &ldquo;road kill&rdquo; and sell when polished up.</p>
                 </div>
               </div>
-              <div className="flex items-start p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                <BookOpen className="text-blue-600 h-8 w-8 mr-4 flex-shrink-0" />
+              <div className="flex items-start p-4 bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 shadow-sm">
+                <BookOpen className="text-[#A8672E] dark:text-[#D08F52] h-8 w-8 mr-4 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-slate-800">Forensic Research</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-slate-200 font-serif">Forensic Research</h3>
                   <p className="text-gray-600 text-sm">A deep, clinical examination of financials, prioritizing free cash flow over easily manipulated metrics like P/E ratios.</p>
                 </div>
               </div>
@@ -245,17 +245,17 @@ export default function BurryAnalysis() {
         {/* The Pivot Section */}
         <Section id="pivot" title="The Great Repositioning" subtitle="A 180-degree pivot from maximum bearishness in Q1 to targeted bullishness in Q2 2025.">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-              <div className="flex items-center text-red-600 mb-3">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-md">
+              <div className="flex items-center text-[#BC4128] dark:text-[#E2694A] mb-3">
                 <Castle size={28} className="mr-3"/>
-                <h3 className="text-2xl font-bold text-slate-900">Q1: The Fortress</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">Q1: The Fortress</h3>
               </div>
               <p className="text-gray-600">{portfolioData.q1_2025.narrative}</p>
             </div>
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
-              <div className="flex items-center text-green-600 mb-3">
+            <div className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-md">
+              <div className="flex items-center text-[#1D8A70] dark:text-[#3CBF9C] mb-3">
                 <ShieldOff size={28} className="mr-3"/>
-                <h3 className="text-2xl font-bold text-slate-900">Q2: The Offensive</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">Q2: The Offensive</h3>
               </div>
               <p className="text-gray-600">
                 The fortress was completely dismantled. All bearish puts were closed and capital was redeployed into a concentrated portfolio of 6 stocks and 9 bullish call options, targeting beaten-down market leaders.
@@ -302,7 +302,7 @@ export default function BurryAnalysis() {
         <Section id="holdings" title="Scion's Q2 2025 Portfolio" subtitle="A detailed breakdown of the new high-conviction bets." bgClass="bg-gray-100">
           <div className="space-y-12">
             <div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4 text-left">Common Stock Holdings</h3>
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 text-left font-serif">Common Stock Holdings</h3>
               <Table
                 headers={["Ticker", "Company", "Shares", "Market Value", "Portfolio Weight"]}
                 data={portfolioData.commonStocks}
@@ -310,7 +310,7 @@ export default function BurryAnalysis() {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4 text-left">Leveraged Bets: Call Options</h3>
+              <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 text-left font-serif">Leveraged Bets: Call Options</h3>
               <Table
                 headers={["Ticker", "Company", "Notional Value"]}
                 data={portfolioData.callOptions}
@@ -331,25 +331,25 @@ export default function BurryAnalysis() {
 
         {/* Conclusion Section */}
         <Section id="conclusion" title="The Verdict" subtitle="What does this dramatic shift signal about Burry&apos;s market outlook?" bgClass="bg-gray-100">
-          <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-lg max-w-4xl mx-auto">
-            <div className="flex items-center text-blue-600 mb-4">
+          <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-lg border border-gray-200 shadow-lg max-w-4xl mx-auto">
+            <div className="flex items-center text-[#A8672E] dark:text-[#D08F52] mb-4">
               <Target size={28} className="mr-3" />
-              <h3 className="text-2xl font-bold text-slate-900">From Macro-Bear to Micro-Bull</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">From Macro-Bear to Micro-Bull</h3>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
                 Michael Burry is no longer positioned for a systemic market crash. He has shifted from a top-down, macro-focused bearishness to a bottom-up, micro-focused bullishness, picking through the wreckage of what he appears to view as a targeted correction.
               </p>
-              <div className="flex items-start p-4 bg-red-50 rounded-lg border border-red-200">
-                <AlertTriangle className="text-red-500 h-6 w-6 mr-4 flex-shrink-0 mt-1" />
+              <div className="flex items-start p-4 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 rounded-lg border border-red-200">
+                <AlertTriangle className="text-[#BC4128] dark:text-[#E2694A] h-6 w-6 mr-4 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-red-700">Concentration &amp; Leverage Risk</h4>
+                  <h4 className="font-bold text-[#BC4128] dark:text-[#E2694A]">Concentration &amp; Leverage Risk</h4>
                   <p className="text-sm text-red-900">
                     This new portfolio carries significant idiosyncratic risk. It is highly concentrated in challenged sectors and uses extensive leverage via call options, which require correct timing to be profitable. This is a high-stakes bet on a recovery in specific, beaten-down names.
                   </p>
                 </div>
               </div>
-              <p className="font-semibold text-slate-800">
+              <p className="font-semibold text-slate-800 dark:text-slate-200">
                 Final Assessment: The Cassandra has ceased his warnings of a broad storm and has begun to sift through the rubble, having identified the specific targets he believes will rise again.
               </p>
             </div>

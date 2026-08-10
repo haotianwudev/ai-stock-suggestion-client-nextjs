@@ -168,17 +168,17 @@ export default function HedgeFundPerformanceGuide() {
           <div className="bg-[#14171B] dark:bg-[#05070A] p-6 md:p-8 rounded-xl text-white shadow-lg">
             <h3 className="font-serif text-xl mb-4 text-[#D08F52]">Calculation Method Selection Framework</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+              <div className="bg-white dark:bg-[#0A0D14]/5 p-4 rounded-lg border border-white/10">
                 <h4 className="font-semibold text-white mb-2">Liquid Strategies</h4>
                 <p className="text-gray-400 text-sm mb-3">Long/Short Equity, Market Neutral, Arbitrage</p>
                 <div className="text-[#D08F52] font-mono text-sm">&rarr; Use TWR</div>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+              <div className="bg-white dark:bg-[#0A0D14]/5 p-4 rounded-lg border border-white/10">
                 <h4 className="font-semibold text-white mb-2">Illiquid Strategies</h4>
                 <p className="text-gray-400 text-sm mb-3">Private Equity, Distressed Debt, Real Estate</p>
                 <div className="text-[#D08F52] font-mono text-sm">&rarr; Use IRR</div>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+              <div className="bg-white dark:bg-[#0A0D14]/5 p-4 rounded-lg border border-white/10">
                 <h4 className="font-semibold text-white mb-2">Mixed Liquidity</h4>
                 <p className="text-gray-400 text-sm mb-3">Multi-Strategy, Credit Opportunities</p>
                 <div className="text-[#D08F52] font-mono text-sm">&rarr; Use Modified Dietz</div>
@@ -346,12 +346,12 @@ export default function HedgeFundPerformanceGuide() {
                   In hedge funds, managing cash flow is critical. A large inflow of cash (subscription) creates &ldquo;cash drag&rdquo;&mdash;diluting performance until deployed. Managers often use <strong>Subscription Lines</strong> or <strong>Equalization</strong> methods to ensure new investors don&apos;t dilute existing returns or inherit unrealized gains unfairly.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-4 rounded-lg border border-white/10">
                     <span className="block text-xs text-gray-400 uppercase tracking-wider mb-1">Solution 1</span>
                     <span className="font-semibold text-white block mb-2">Equalization Credits</span>
                     <p className="text-xs text-gray-400">New investors pay for unrealized gains</p>
                   </div>
-                  <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-4 rounded-lg border border-white/10">
                     <span className="block text-xs text-gray-400 uppercase tracking-wider mb-1">Solution 2</span>
                     <span className="font-semibold text-white block mb-2">Series Accounting</span>
                     <p className="text-xs text-gray-400">Separate share classes by entry date</p>
@@ -359,13 +359,13 @@ export default function HedgeFundPerformanceGuide() {
                 </div>
               </div>
 
-              <div className="w-full md:w-1/3 bg-white/5 rounded-xl p-6 border border-white/10">
+              <div className="w-full md:w-1/3 bg-white dark:bg-[#0A0D14]/5 rounded-xl p-6 border border-white/10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-gray-400">Fund Return (TWR)</span>
                     <span className="text-[#3CBF9C] font-mono tabular-nums font-bold">+12.5%</span>
                   </div>
-                  <div className="h-px bg-white/10" />
+                  <div className="h-px bg-white dark:bg-[#0A0D14]/10" />
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-gray-400">Investor A (Early Entry)</span>
                     <span className="text-white font-mono tabular-nums">+12.5%</span>
@@ -648,15 +648,15 @@ export default function HedgeFundPerformanceGuide() {
               <div>
                 <h4 className="font-semibold text-white mb-4">Historical Stress Tests</h4>
                 <div className="space-y-3">
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">2008 Financial Crisis</div>
                     <div className="text-xs text-gray-400">Credit spreads, equity crash, liquidity crisis</div>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">COVID-19 March 2020</div>
                     <div className="text-xs text-gray-400">Rapid deleveraging, correlation breakdown</div>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">LTCM 1998</div>
                     <div className="text-xs text-gray-400">Convergence trade failure, leverage unwind</div>
                   </div>
@@ -666,15 +666,15 @@ export default function HedgeFundPerformanceGuide() {
               <div>
                 <h4 className="font-semibold text-white mb-4">Hypothetical Scenarios</h4>
                 <div className="space-y-3">
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">Interest Rate Shock</div>
                     <div className="text-xs text-gray-400">+200bp parallel shift, curve steepening</div>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">Currency Crisis</div>
                     <div className="text-xs text-gray-400">Major currency devaluation, carry unwind</div>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                  <div className="bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-white/10">
                     <div className="font-semibold text-white">Volatility Spike</div>
                     <div className="text-xs text-gray-400">VIX to 50+, correlation increase</div>
                   </div>

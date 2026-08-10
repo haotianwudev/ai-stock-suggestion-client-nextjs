@@ -27,7 +27,7 @@ interface TagProps {
 }
 
 const Card = ({ children, className = '' }: CardProps) => (
-  <div className={`bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg p-6 transition-all duration-300 hover:border-cyan-400/70 hover:shadow-cyan-500/10 ${className}`}>
+  <div className={`bg-white dark:bg-[#0A0D14]/60 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg p-6 transition-all duration-300 hover:border-cyan-400/70 hover:shadow-cyan-500/10 ${className}`}>
     {children}
   </div>
 );
@@ -42,7 +42,7 @@ const Section = ({ children, id, className = '' }: SectionProps) => (
 
 const SectionTitle = ({ children, subtitle }: SectionTitleProps) => (
   <div className="text-center mb-12">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">{children}</h2>
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight font-serif">{children}</h2>
     {subtitle && <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">{subtitle}</p>}
   </div>
 );
@@ -101,7 +101,7 @@ const ArenaSection = () => {
               <div className={`p-3 rounded-lg bg-${adv.color}-100`}>
                 <adv.icon className={`w-8 h-8 text-${adv.color}-500`} />
               </div>
-              <h3 className="ml-4 text-xl font-bold text-gray-900">{adv.title}</h3>
+              <h3 className="ml-4 text-xl font-bold text-gray-900 font-serif">{adv.title}</h3>
             </div>
             <p className="mt-4 text-gray-600">{adv.description}</p>
           </Card>
@@ -186,7 +186,7 @@ const StrategiesSection = () => {
   ];
 
   return (
-    <Section id="strategies" className="bg-white">
+    <Section id="strategies" className="bg-white dark:bg-[#0A0D14]">
       <SectionTitle subtitle="All strategies are low-frequency, data-light, and systematic, designed to leverage the retail quant's unique advantages.">
         Core Trading Strategies
       </SectionTitle>
@@ -198,7 +198,7 @@ const StrategiesSection = () => {
                 <group.icon className="w-8 h-8 text-cyan-500" />
               </div>
               <div className="ml-4">
-                <h3 className="text-2xl font-bold text-gray-900">{group.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 font-serif">{group.title}</h3>
                 <p className="text-gray-600 italic">&ldquo;{group.principle}&rdquo;</p>
               </div>
             </div>
@@ -213,7 +213,7 @@ const StrategiesSection = () => {
 
                   <div className="mt-4 pt-4 border-t border-gray-200/80 space-y-4 text-sm">
                     <div className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-[#1D8A70] dark:text-[#3CBF9C] mr-3 flex-shrink-0 mt-0.5" />
                       <div>
                         <h5 className="font-bold text-gray-800">The Edge (Why it Works)</h5>
                         <p className="text-gray-600">{strategy.evidence}</p>
@@ -266,7 +266,7 @@ const ToolkitSection = () => {
             <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-cyan-100/50 border-2 border-cyan-200">
               <tool.icon className="h-8 w-8 text-cyan-500" />
             </div>
-            <h3 className="mt-6 text-xl font-bold text-gray-900">{tool.name}</h3>
+            <h3 className="mt-6 text-xl font-bold text-gray-900 font-serif">{tool.name}</h3>
             <p className="mt-2 text-gray-600">{tool.description}</p>
           </Card>
         ))}
@@ -287,7 +287,7 @@ const ComparisonTableSection = () => {
   ];
 
   return (
-    <Section id="comparison" className="bg-white">
+    <Section id="comparison" className="bg-white dark:bg-[#0A0D14]">
       <SectionTitle subtitle="A high-level comparison to help select strategies that align with your objectives, risk tolerance, and capabilities.">
         Strategy Comparison Matrix
       </SectionTitle>
@@ -301,12 +301,12 @@ const ComparisonTableSection = () => {
               <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-600">Key Pitfall</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
+          <tbody className="divide-y divide-gray-200 bg-white dark:bg-[#0A0D14]">
             {strategies.map((s) => (
               <tr key={s.name} className="hover:bg-gray-50 transition-colors">
                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-cyan-600 sm:pl-6">{s.name}</td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">{s.principle}</td>
-                <td className="whitespace-nowrap px-3 py-4 text-sm text-green-600">{s.advantage}</td>
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-[#1D8A70] dark:text-[#3CBF9C]">{s.advantage}</td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-amber-600">{s.pitfall}</td>
               </tr>
             ))}
@@ -325,7 +325,7 @@ const RoadmapSection = () => (
     <div className="grid md:grid-cols-2 gap-12 text-center">
       <Card>
         <BookOpen className="mx-auto h-12 w-12 text-cyan-500" />
-        <h3 className="mt-6 text-2xl font-bold text-gray-900">A Curated Self-Study Plan</h3>
+        <h3 className="mt-6 text-2xl font-bold text-gray-900 font-serif">A Curated Self-Study Plan</h3>
         <p className="mt-4 text-gray-600">
           Build a strong theoretical foundation in statistics and financial time series. Explore resources like Quantpedia for ideas and use platforms like QuantConnect for robust backtesting.
         </p>
@@ -339,7 +339,7 @@ const RoadmapSection = () => (
       </Card>
       <Card>
         <BrainCircuit className="mx-auto h-12 w-12 text-cyan-500" />
-        <h3 className="mt-6 text-2xl font-bold text-gray-900">The Indispensable Quant Mindset</h3>
+        <h3 className="mt-6 text-2xl font-bold text-gray-900 font-serif">The Indispensable Quant Mindset</h3>
         <p className="mt-4 text-gray-600">
           Embrace probabilities, not certainties. Focus on process over individual outcomes. Adhere to your system with iron discipline, knowing your edge only manifests over a large sample of trades.
         </p>

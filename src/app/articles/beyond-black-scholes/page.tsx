@@ -71,17 +71,17 @@ const Callout = ({
   color?: string;
 }) => {
   const colors: Record<string, string> = {
-    blue: 'bg-blue-50 dark:bg-blue-950/20 border-blue-500 text-blue-900 dark:text-blue-300',
+    blue: 'bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-950/20 border-[#A8672E] dark:border-[#D08F52] text-blue-900 dark:text-blue-300',
     amber: 'bg-amber-50 dark:bg-amber-950/20 border-amber-500 text-amber-900 dark:text-amber-300',
-    rose: 'bg-rose-50 dark:bg-rose-950/20 border-rose-500 text-rose-900 dark:text-rose-300',
-    emerald: 'bg-emerald-50 dark:bg-emerald-950/20 border-emerald-500 text-emerald-900 dark:text-emerald-300',
+    rose: 'bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 border-[#BC4128] dark:border-[#E2694A] text-rose-900 dark:text-rose-300',
+    emerald: 'bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-950/20 border-[#1D8A70] dark:border-[#3CBF9C] text-emerald-900 dark:text-emerald-300',
     purple: 'bg-purple-50 dark:bg-purple-950/20 border-purple-500 text-purple-900 dark:text-purple-300',
   };
   const iconColors: Record<string, string> = {
-    blue: 'text-blue-500',
+    blue: 'text-[#A8672E] dark:text-[#D08F52]',
     amber: 'text-amber-500',
-    rose: 'text-rose-500',
-    emerald: 'text-emerald-500',
+    rose: 'text-[#BC4128] dark:text-[#E2694A]',
+    emerald: 'text-[#1D8A70] dark:text-[#3CBF9C]',
     purple: 'text-purple-500',
   };
   return (
@@ -98,11 +98,11 @@ const Callout = ({
 const SectionHeading = ({ children, badge }: { children: React.ReactNode; badge?: string }) => (
   <div className="mb-8 mt-16">
     {badge && (
-      <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
+      <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] text-xs font-bold uppercase tracking-wider mb-3">
         {badge}
       </span>
     )}
-    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">{children}</h2>
+    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight font-serif">{children}</h2>
     <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-4" />
   </div>
 );
@@ -128,19 +128,19 @@ const ModelCard = ({
     >
       <Icon size={24} />
     </div>
-    <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{title}</h3>
+    <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">{title}</h3>
     <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-grow leading-relaxed">
       <strong className="text-slate-800 dark:text-white">Objective:</strong> {objective}
     </p>
     {derivatives && (
-      <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed bg-slate-50 dark:bg-white/5 p-3 rounded-lg border border-slate-100 dark:border-white/10">
+      <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed bg-slate-50 dark:bg-white dark:bg-[#0A0D14]/5 p-3 rounded-lg border border-slate-100 dark:border-white/10">
         <strong className="text-slate-800 dark:text-white block mb-1">Target Derivatives:</strong>
         {derivatives}
       </div>
     )}
     <div className="pt-4 border-t border-slate-100 dark:border-white/10 mt-auto">
       <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">Representative Models</p>
-      <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400">{models}</p>
+      <p className="text-sm font-medium text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">{models}</p>
     </div>
   </div>
 );
@@ -189,13 +189,13 @@ export default function ArticlePage() {
           </p>
 
           <div className="bg-white dark:bg-[#14171B] rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-white/10 mb-10">
-            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
-              <BookOpen size={22} className="text-indigo-500" />
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2 font-serif">
+              <BookOpen size={22} className="text-[#A8672E] dark:text-[#D08F52]" />
               Classification by Mathematical Framework
             </h3>
             <div className="space-y-6 text-slate-700 dark:text-slate-300">
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center flex-shrink-0 font-bold">
                   1
                 </div>
                 <div>
@@ -209,7 +209,7 @@ export default function ArticlePage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] flex items-center justify-center flex-shrink-0 font-bold">
                   2
                 </div>
                 <div>
@@ -238,7 +238,7 @@ export default function ArticlePage() {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Application by Asset &amp; Derivative Class</h3>
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 font-serif">Application by Asset &amp; Derivative Class</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             <ModelCard
@@ -289,11 +289,11 @@ export default function ArticlePage() {
             {/* Pillar 1 */}
             <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg text-indigo-600 dark:text-indigo-400 flex-shrink-0">
+                <div className="p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/30 rounded-lg text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex-shrink-0">
                   <Layers size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">1. The Feynman-Kac Theorem</h3>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">The Feynman-Kac Theorem</h3>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
                     The Feynman-Kac formula is the vital bridge connecting stochastic differential equations (SDEs) to
                     deterministic PDEs. It proves that solving a complex parabolic PDE is mathematically equivalent to
@@ -315,11 +315,11 @@ export default function ArticlePage() {
             {/* Pillar 2 */}
             <div className="bg-white dark:bg-[#14171B] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                <div className="p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/30 rounded-lg text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex-shrink-0">
                   <Activity size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">
                     2. Affine Jump-Diffusions &amp; The OU Process
                   </h3>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
@@ -341,15 +341,15 @@ E[x_{t}]   = x_{0} e^{-θt} + μ(1 - e^{-θt})
 Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
                   />
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
-                      <strong className="text-emerald-800 dark:text-emerald-400">θ (Speed):</strong> How fast the variable snaps back to
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">θ (Speed):</strong> How fast the variable snaps back to
                       the mean.
                     </div>
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
-                      <strong className="text-emerald-800 dark:text-emerald-400">μ (Level):</strong> The long-term mean equilibrium.
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">μ (Level):</strong> The long-term mean equilibrium.
                     </div>
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
-                      <strong className="text-emerald-800 dark:text-emerald-400">σ (Vol):</strong> The magnitude of random shocks.
+                    <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 p-3 rounded border border-emerald-100 dark:border-emerald-900/30">
+                      <strong className="text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C]">σ (Vol):</strong> The magnitude of random shocks.
                     </div>
                   </div>
                 </div>
@@ -363,7 +363,7 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
                   <Lightbulb size={24} />
                 </div>
                 <div className="w-full min-w-0">
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3 font-serif">
                     3. Characteristic Functions &amp; Fourier Inversion
                   </h3>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
@@ -408,8 +408,8 @@ Var[x_{t}] = (σ² / 2θ) · (1 - e^{-2θt})`}
           </p>
 
           {/* Heston */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-8 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-8 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center text-sm font-bold">
               1
             </span>
             The Heston Model (1993)
@@ -431,40 +431,40 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <ul className="space-y-3 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#14171B] p-6 rounded-xl border border-slate-100 dark:border-white/10">
               <li className="flex gap-2">
-                <ArrowRight size={18} className="text-blue-500 mt-1 flex-shrink-0" />
+                <ArrowRight size={18} className="text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
                 <span>
                   <strong>v̄ (Long-term variance):</strong> The equilibrium level variance drifts toward.
                 </span>
               </li>
               <li className="flex gap-2">
-                <ArrowRight size={18} className="text-blue-500 mt-1 flex-shrink-0" />
+                <ArrowRight size={18} className="text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
                 <span>
                   <strong>a (Mean reversion rate):</strong> How aggressively variance is pulled back.
                 </span>
               </li>
               <li className="flex gap-2">
-                <ArrowRight size={18} className="text-blue-500 mt-1 flex-shrink-0" />
+                <ArrowRight size={18} className="text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
                 <span>
                   <strong>η (Vol of vol):</strong> Amplitude of random variance fluctuations (kurtosis).
                 </span>
               </li>
               <li className="flex gap-2">
-                <ArrowRight size={18} className="text-blue-500 mt-1 flex-shrink-0" />
+                <ArrowRight size={18} className="text-[#A8672E] dark:text-[#D08F52] mt-1 flex-shrink-0" />
                 <span>
                   <strong>ρ (Correlation):</strong> Responsible for generating the asymmetric skew.
                 </span>
               </li>
             </ul>
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 p-6 rounded-xl flex flex-col justify-center">
-              <h4 className="font-bold text-blue-900 dark:text-blue-400 mb-2 flex items-center gap-2">
-                <AlertTriangle size={18} className="text-blue-500" />
+            <div className="bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 p-6 rounded-xl flex flex-col justify-center">
+              <h4 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2 flex items-center gap-2">
+                <AlertTriangle size={18} className="text-[#A8672E] dark:text-[#D08F52]" />
                 The Feller Condition
               </h4>
               <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
                 To prevent the variance process from reaching zero (becoming deterministic), parameters must satisfy
                 the Feller boundary condition:
               </p>
-              <code className="bg-white/60 dark:bg-black/40 text-blue-900 dark:text-blue-300 px-3 py-2 rounded font-mono text-center block font-bold border border-blue-200 dark:border-blue-900/30">
+              <code className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/40 text-blue-900 dark:text-blue-300 px-3 py-2 rounded font-mono text-center block font-bold border border-blue-200 dark:border-blue-900/30">
                 2a·v̄ &gt; η²
               </code>
             </div>
@@ -483,8 +483,8 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           </Callout>
 
           {/* SABR */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center text-sm font-bold">
               2
             </span>
             The SABR Model (2002)
@@ -536,8 +536,8 @@ Correlation:  E[dW_{1,t} · dW_{2,t}] = ρ dt`}
           </Callout>
 
           {/* SVI */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] flex items-center justify-center text-sm font-bold">
               3
             </span>
             Stochastic Volatility Inspired (SVI)
@@ -564,7 +564,7 @@ where  k = ln(K/F)  is the log-moneyness`}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-rose-400 dark:border-rose-900/50 shadow-md rounded-b-xl">
+            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-[#BC4128] dark:border-[#E2694A] dark:border-rose-900/50 shadow-md rounded-b-xl">
               <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Merton&apos;s Jump-Diffusion</h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                 Superimposes a Poisson process onto Brownian motion. Jumps are normally distributed. Prices are
@@ -575,7 +575,7 @@ where  k = ln(K/F)  is the log-moneyness`}
                 block={`dS_{t} / S_{t-} = (r - λk̄) dt + σ dW_{t} + (J_{t} - 1) dN_{t}`}
               />
             </div>
-            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-rose-500 dark:border-rose-900/50 shadow-md rounded-b-xl">
+            <div className="bg-white dark:bg-[#14171B] p-6 border-t-4 border-[#BC4128] dark:border-[#E2694A] dark:border-rose-900/50 shadow-md rounded-b-xl">
               <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Kou Double Exponential</h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                 Uses an asymmetric Laplace distribution for jumps. Its mathematical memoryless property allows
@@ -590,9 +590,9 @@ where  k = ln(K/F)  is the log-moneyness`}
           </div>
 
           <div className="bg-slate-800 text-white p-8 rounded-2xl shadow-xl mb-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500 rounded-full mix-blend-screen filter blur-3xl opacity-30" />
-            <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-              <Zap className="text-rose-400" /> Infinite Activity: Variance Gamma (VG)
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#BC4128] dark:bg-[#E2694A] rounded-full mix-blend-screen filter blur-3xl opacity-30" />
+            <h3 className="text-xl font-bold mb-3 flex items-center gap-2 font-serif">
+              <Zap className="text-[#BC4128] dark:text-[#E2694A]" /> Infinite Activity: Variance Gamma (VG)
             </h3>
             <p className="text-slate-300 leading-relaxed mb-4">
               The VG model completely eliminates continuous Brownian diffusion. The asset price moves exclusively via
@@ -620,8 +620,8 @@ where  k = ln(K/F)  is the log-moneyness`}
           />
 
           {/* Vasicek */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center justify-center text-sm font-bold">
               1
             </span>
             The Vasicek Model (1977)
@@ -647,8 +647,8 @@ Yield:       R(t, T) = -(1 / (T - t)) · ln P(t, T)`}
           </Callout>
 
           {/* CIR */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center justify-center text-sm font-bold">
               2
             </span>
             Cox-Ingersoll-Ross (CIR) Model (1985)
@@ -666,23 +666,23 @@ Yield:       R(t, T) = -(1 / (T - t)) · ln P(t, T)`}
 Bond Price:  P(t, T) = A(t, T) · exp(-B(t, T) · r_{t})`}
           />
 
-          <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900/30 p-6 rounded-xl mb-6">
-            <h4 className="font-bold text-emerald-900 dark:text-emerald-400 mb-2 flex items-center gap-2">
-              <Activity size={18} className="text-emerald-500" />
+          <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900/30 p-6 rounded-xl mb-6">
+            <h4 className="font-bold text-emerald-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] mb-2 flex items-center gap-2">
+              <Activity size={18} className="text-[#1D8A70] dark:text-[#3CBF9C]" />
               Feller Condition for Strictly Positive Rates
             </h4>
             <p className="text-sm text-emerald-800 dark:text-emerald-300 mb-3">
               If the parameters satisfy the condition below, the interest rate r_t will never reach zero and remains
               strictly positive:
             </p>
-            <code className="bg-white/60 dark:bg-black/40 text-emerald-900 dark:text-emerald-300 px-3 py-2 rounded font-mono text-center block font-bold border border-emerald-200 dark:border-emerald-900/30">
+            <code className="bg-white dark:bg-[#0A0D14]/60 dark:bg-black/40 text-emerald-900 dark:text-emerald-300 px-3 py-2 rounded font-mono text-center block font-bold border border-emerald-200 dark:border-emerald-900/30">
               2ab &gt; &sigma;²
             </code>
           </div>
 
           {/* Hull-White */}
-          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 flex items-center gap-2 font-serif">
+            <span className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center justify-center text-sm font-bold">
               3
             </span>
             The Hull-White Model (Extended Vasicek)
@@ -715,17 +715,17 @@ Bond Price:  P(t, T) = A(t, T) · exp(-B(t, T) · r_{t})`}
 
           <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-3xl p-8 text-white shadow-2xl mb-16">
             <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 bg-white/10 rounded-xl">
+              <div className="p-3 bg-white dark:bg-[#0A0D14]/10 rounded-xl">
                 <Cpu size={32} className="text-pink-300" />
               </div>
-              <h3 className="text-2xl font-bold">Neural Networks &amp; Calibration</h3>
+              <h3 className="text-2xl font-bold font-serif">Neural Networks &amp; Calibration</h3>
             </div>
             <p className="text-indigo-100 leading-relaxed mb-6 text-lg">
               Classical parametric models suffer from parameter risk and complex optimization bottlenecks. Today, deep
               learning architectures (LSTMs, MLPs) are deployed not to replace models like SABR or Heston, but to
               dramatically accelerate their calibration.
             </p>
-            <div className="bg-white/10 p-5 rounded-xl border border-white/20">
+            <div className="bg-white dark:bg-[#0A0D14]/10 p-5 rounded-xl border border-white/20">
               <h4 className="font-bold text-pink-300 mb-2">The Hybrid AI Approach</h4>
               <p className="text-sm text-indigo-100">
                 By training neural networks offline on millions of simulated model outputs, the AI learns the complex

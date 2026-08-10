@@ -5,8 +5,8 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 
 // Card component for displaying main themes
 const ThemeCard = ({ title, content, children }) => (
-  <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-    <h3 className="text-2xl font-bold text-gray-800 mb-4">{title}</h3>
+  <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+    <h3 className="text-2xl font-bold text-gray-800 mb-4 font-serif">{title}</h3>
     {content && <p className="text-gray-600 mb-4 leading-relaxed">{content}</p>}
     {children}
   </div>
@@ -132,8 +132,8 @@ const ThemesContent = () => (
 );
 
 const QuotesContent = () => (
-  <div className="bg-white rounded-lg shadow-lg p-8">
-    <h2 className="text-3xl font-bold text-gray-800 mb-6">Key Facts and Quotes</h2>
+  <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-lg p-8">
+    <h2 className="text-3xl font-bold text-gray-800 mb-6 font-serif">Key Facts and Quotes</h2>
     <div className="space-y-6">
       <Quote text="In my whole life, I have known no wise people (over a broad subject matter area) who didn't read all the time – none, zero." author="Charles T. Munger" />
 
@@ -147,8 +147,8 @@ const QuotesContent = () => (
 
       <Quote text="Life and its various passages can be hard, brutally hard. The three things I have found helpful in coping with its challenges are: Have low expectations. Have a sense of humor. Surround yourself with the love of friends and family." author="Charles T. Munger" />
 
-      <div className="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-        <h3 className="text-xl font-bold text-blue-800 mb-3">Key Investment Principles</h3>
+      <div className="mt-8 p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 rounded-lg border-l-4 border-[#A8672E] dark:border-[#D08F52]">
+        <h3 className="text-xl font-bold text-blue-800 mb-3 font-serif">Key Investment Principles</h3>
         <ul className="space-y-2 text-gray-700">
           <li>&bull; <strong>Circle of Competence:</strong> Stay within your area of expertise</li>
           <li>&bull; <strong>Margin of Safety:</strong> Buy with a significant discount to intrinsic value</li>
@@ -158,23 +158,23 @@ const QuotesContent = () => (
         </ul>
       </div>
 
-      <div className="mt-8 p-6 bg-green-50 rounded-lg border-l-4 border-green-500">
-        <h3 className="text-xl font-bold text-green-800 mb-3">The Four Pillars of Worldly Wisdom</h3>
+      <div className="mt-8 p-6 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 rounded-lg border-l-4 border-[#1D8A70] dark:border-[#3CBF9C]">
+        <h3 className="text-xl font-bold text-green-800 mb-3 font-serif">The Four Pillars of Worldly Wisdom</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
           <div>
-            <h4 className="font-semibold text-green-700">1. Mental Models</h4>
+            <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">1. Mental Models</h4>
             <p className="text-sm">Build a latticework of interdisciplinary knowledge</p>
           </div>
           <div>
-            <h4 className="font-semibold text-green-700">2. Inversion</h4>
+            <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">2. Inversion</h4>
             <p className="text-sm">Think backwards to avoid failure</p>
           </div>
           <div>
-            <h4 className="font-semibold text-green-700">3. Psychology</h4>
+            <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">3. Psychology</h4>
             <p className="text-sm">Understand cognitive biases and human misjudgment</p>
           </div>
           <div>
-            <h4 className="font-semibold text-green-700">4. Ethics</h4>
+            <h4 className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C]">4. Ethics</h4>
             <p className="text-sm">Deserve what you want through reliability and integrity</p>
           </div>
         </div>
@@ -201,7 +201,7 @@ export default function MungerWisdomArticle() {
 
   return (
     <ArticleFrame slug="worldly-wisdom-charles-munger-multidisciplinary-approach">
-      <div className="bg-white rounded-lg shadow-md mb-8 sticky top-0 z-10">
+      <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-md mb-8 sticky top-0 z-10">
         <nav className="flex justify-center p-2 space-x-1 md:space-x-4">
           <TabButton title="Introduction" isActive={activeTab === 'introduction'} onClick={() => setActiveTab('introduction')} />
           <TabButton title="Main Themes" isActive={activeTab === 'themes'} onClick={() => setActiveTab('themes')} />

@@ -56,21 +56,21 @@ export default function ArticlePage() {
 
             <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-gray-900 min-w-0">
               <div className="bg-slate-50 dark:bg-slate-900/50 px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-                <Activity className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                <Activity className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]" />
                 <h4 className="font-bold text-slate-900 dark:text-white">Empirical Fragility: Factor Performance (2020-2026)</h4>
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full text-left text-sm">
                   <thead>
-                    <tr className="text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/20">
+                    <tr className="text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#14171B]/50 dark:bg-slate-900/20">
                       <th className="px-6 py-4 font-bold uppercase tracking-wider">Factor</th>
                       <th className="px-6 py-4 font-bold uppercase tracking-wider">2026 Performance</th>
                       <th className="px-6 py-4 font-bold uppercase tracking-wider">Primary Drivers &amp; Vulnerabilities</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50">
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-                      <td className="px-6 py-5 font-bold text-indigo-600 dark:text-indigo-400">Momentum</td>
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
+                      <td className="px-6 py-5 font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Momentum</td>
                       <td className="px-6 py-5">
                         <span className="text-[#1D8A70] dark:text-[#3CBF9C] font-bold block mb-1">Extreme Outperformance</span>
                         <span className="text-slate-500 dark:text-slate-400">(+9.5% top-bottom spread)</span>
@@ -79,8 +79,8 @@ export default function ArticlePage() {
                         Trend-following in mega-cap tech. Highly vulnerable to violent reversals (the "Winner's Curse").
                       </td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-                      <td className="px-6 py-5 font-bold text-blue-600 dark:text-blue-400">Quality</td>
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
+                      <td className="px-6 py-5 font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Quality</td>
                       <td className="px-6 py-5">
                         <span className="text-[#1D8A70] dark:text-[#3CBF9C] font-bold block mb-1">Strong Outperformance</span>
                         <span className="text-slate-500 dark:text-slate-400">(+5.7% spread)</span>
@@ -89,7 +89,7 @@ export default function ArticlePage() {
                         Investors favored strong balance sheets amidst macro uncertainty.
                       </td>
                     </tr>
-                    <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                    <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                       <td className="px-6 py-5 font-bold text-[#BC4128] dark:text-[#E2694A]">Value</td>
                       <td className="px-6 py-5">
                         <span className="text-[#BC4128] dark:text-[#E2694A] font-bold block mb-1">Severe Underperformance</span>
@@ -117,27 +117,27 @@ export default function ArticlePage() {
               To address the blindness of traditional metrics, quantitative literature introduced <strong className="text-slate-900 dark:text-white">Minimum Regime Performance (MRP)</strong>. It is the lowest realized risk-adjusted return across distinct historical regimes—a conservative lower bound on a strategy's durability.
             </p>
 
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-6 font-serif">1. Defining Regimes</h3>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-6 font-serif">Defining Regimes</h3>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
               Regimes are contiguous periods with stable macroeconomic dynamics. They are mathematically defined using:
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12 min-w-0">
               <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
-                <strong className="block text-indigo-700 dark:text-indigo-400 mb-3 text-lg">Hidden Markov Models</strong>
+                <strong className="block text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-3 text-lg">Hidden Markov Models</strong>
                 <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed block">Probabilistic models inferring hidden market states from observable volatility and returns.</span>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
-                <strong className="block text-indigo-700 dark:text-indigo-400 mb-3 text-lg">Macro Clustering</strong>
+                <strong className="block text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-3 text-lg">Macro Clustering</strong>
                 <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed block">Unsupervised learning (K-means) clustering multidimensional macro datasets like yield curves.</span>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 min-w-0">
-                <strong className="block text-indigo-700 dark:text-indigo-400 mb-3 text-lg">VIX / Volatility</strong>
+                <strong className="block text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-3 text-lg">VIX / Volatility</strong>
                 <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed block">Using sustained divergences between 20-day and 252-day realized volatility.</span>
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-6 font-serif">2. The Mathematics of MRP</h3>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mt-12 mb-6 font-serif">The Mathematics of MRP</h3>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
               The algorithm searches across all valid temporal splits of a return series to find the segment yielding the lowest performance. A minimum regime length, <code>d</code>, is enforced to ignore microscopic noise.
             </p>
@@ -165,7 +165,7 @@ export default function ArticlePage() {
               </div>
             </div>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed bg-indigo-50/50 dark:bg-indigo-950/20 p-6 rounded-3xl border border-indigo-100 dark:border-indigo-900/30">
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-950/20 p-6 rounded-3xl border border-indigo-100 dark:border-indigo-900/30">
               MRP acts conceptually like a <strong className="text-slate-900 dark:text-white">dynamic Calmar ratio</strong> applied in risk-adjusted space. Rather than isolating downside price volatility (Sortino) or a single historical crash (Calmar), MRP actively searches for the specific historical era where the <em className="text-indigo-800 dark:text-indigo-300">risk-adjusted compounding was fundamentally weakest</em>.
             </p>
           </section>
@@ -199,13 +199,13 @@ export default function ArticlePage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50 text-slate-600 dark:text-slate-400">
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 text-left font-bold text-slate-800 dark:text-slate-200">Recovery</td>
                     <td className="px-6 py-4">Growth ↑, Inflation ↓</td>
                     <td className="px-6 py-4 text-center font-bold text-[#1D8A70] dark:text-[#3CBF9C] border-l border-slate-100 dark:border-slate-800/50">8.79%</td>
                     <td className="px-6 py-4 text-center font-semibold">1.22%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <tr className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-slate-800/30 transition-colors">
                     <td className="px-6 py-4 text-left font-bold text-slate-800 dark:text-slate-200">Expansion</td>
                     <td className="px-6 py-4">Growth ↑, Inflation ↑</td>
                     <td className="px-6 py-4 text-center font-bold text-[#1D8A70] dark:text-[#3CBF9C] border-l border-slate-100 dark:border-slate-800/50">14.90%</td>
@@ -215,13 +215,13 @@ export default function ArticlePage() {
                     <td className="px-6 py-4 text-left font-bold text-slate-800 dark:text-slate-200">Slowdown</td>
                     <td className="px-6 py-4">Growth ↓, Inflation ↑</td>
                     <td className="px-6 py-4 text-center font-semibold border-l border-slate-200 dark:border-slate-800">6.18%</td>
-                    <td className="px-6 py-4 text-center font-bold text-indigo-600 dark:text-indigo-400">6.86%</td>
+                    <td className="px-6 py-4 text-center font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">6.86%</td>
                   </tr>
                   <tr className="bg-slate-50 dark:bg-slate-900/30 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
                     <td className="px-6 py-4 text-left font-bold text-slate-800 dark:text-slate-200">Contraction</td>
                     <td className="px-6 py-4">Growth ↓, Inflation ↓</td>
                     <td className="px-6 py-4 text-center text-[#BC4128] dark:text-[#E2694A] font-bold border-l border-slate-200 dark:border-slate-800">-12.08%</td>
-                    <td className="px-6 py-4 text-center font-bold text-indigo-600 dark:text-indigo-400">5.48%</td>
+                    <td className="px-6 py-4 text-center font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">5.48%</td>
                   </tr>
                   <tr className="border-t-2 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
                     <td className="px-6 py-5 text-left font-bold text-slate-900 dark:text-white uppercase tracking-wider" colSpan={2}>Full Sample Average</td>
@@ -233,18 +233,18 @@ export default function ArticlePage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-10 min-w-0">
-              <div className="p-8 bg-rose-50 dark:bg-rose-950/20 rounded-3xl border border-rose-200 dark:border-rose-900/50">
+              <div className="p-8 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-950/20 rounded-3xl border border-rose-200 dark:border-rose-900/50">
                 <h4 className="font-bold text-rose-900 dark:text-rose-300 text-xl mb-4 flex items-center gap-3">
-                  <TrendingDown className="text-rose-600 dark:text-rose-500 w-6 h-6" /> Momentum Vulnerability
+                  <TrendingDown className="text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] w-6 h-6" /> Momentum Vulnerability
                 </h4>
                 <p className="text-rose-800 dark:text-rose-200/80 leading-relaxed">
                   Despite a higher full-sample average (8.41%), its <strong className="font-bold text-rose-900 dark:text-rose-300">MRP is deeply negative</strong>. The strategy suffers from the "Winner's Curse", experiencing catastrophic drawdowns during market inflection points (Contraction).
                 </p>
               </div>
 
-              <div className="p-8 bg-indigo-50 dark:bg-indigo-950/20 rounded-3xl border border-indigo-200 dark:border-indigo-900/50">
+              <div className="p-8 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-950/20 rounded-3xl border border-indigo-200 dark:border-indigo-900/50">
                 <h4 className="font-bold text-indigo-900 dark:text-indigo-300 text-xl mb-4 flex items-center gap-3">
-                  <TrendingUp className="text-indigo-600 dark:text-indigo-500 w-6 h-6" /> Quality Resilience
+                  <TrendingUp className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> Quality Resilience
                 </h4>
                 <p className="text-indigo-800 dark:text-indigo-200/80 leading-relaxed">
                   Though its average return is lower (4.18%), its <strong className="font-bold text-indigo-900 dark:text-indigo-300">MRP remains strictly positive</strong> across all regimes. It acts as a structural anchor during hostile environments when leveraged cyclical assets fail.
@@ -317,7 +317,7 @@ export default function ArticlePage() {
           {/* Section 5: Synthesis */}
           <section className="py-16">
             <div className="bg-gradient-to-br from-slate-900 to-[#14171B] text-slate-100 rounded-3xl p-10 md:p-14 shadow-2xl relative overflow-hidden min-w-0 flex flex-col items-center text-center">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl mb-8 inline-block border border-white/10">
+              <div className="p-4 bg-white dark:bg-[#0A0D14]/10 backdrop-blur-md rounded-2xl mb-8 inline-block border border-white/10">
                 <BookOpen size={32} className="text-[#A8672E] dark:text-[#D08F52]" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white font-serif">Synthesis &amp; Strategic Outlook</h2>

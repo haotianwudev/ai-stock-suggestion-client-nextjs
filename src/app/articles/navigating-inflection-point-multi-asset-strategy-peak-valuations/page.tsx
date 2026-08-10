@@ -16,14 +16,14 @@ const GoldIcon = () => (
 );
 
 const FixedIncomeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#A8672E] dark:text-[#D08F52]">
     <line x1="12" y1="1" x2="12" y2="23"></line>
     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
   </svg>
 );
 
 const SmallCapIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1D8A70] dark:text-[#3CBF9C]">
     <line x1="12" y1="20" x2="12" y2="10"></line>
     <line x1="18" y1="20" x2="18" y2="4"></line>
     <line x1="6" y1="20" x2="6" y2="16"></line>
@@ -41,11 +41,11 @@ const OptionsIcon = () => (
 const Section = ({ title, romanNumeral, children }: { title: string; romanNumeral?: string; children: React.ReactNode }) => (
   <section className="py-12 md:py-16">
     <div className="max-w-4xl mx-auto px-4">
-      <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 font-serif">
         <span className="text-sky-600">{romanNumeral ? `${romanNumeral}. ` : ''}</span>
         {title}
       </h2>
-      <div className="mt-6 space-y-6 text-slate-700">
+      <div className="mt-6 space-y-6 text-slate-700 dark:text-slate-300">
         {children}
       </div>
     </div>
@@ -54,8 +54,8 @@ const Section = ({ title, romanNumeral, children }: { title: string; romanNumera
 
 const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div>
-    <h3 className="text-xl font-semibold text-slate-800 mb-3">{title}</h3>
-    <div className="space-y-4 text-slate-600 border-l-2 border-slate-200 pl-6">
+    <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3 font-serif">{title}</h3>
+    <div className="space-y-4 text-slate-600 dark:text-slate-400 border-l-2 border-slate-200 dark:border-slate-800 pl-6">
       {children}
     </div>
   </div>
@@ -67,16 +67,16 @@ const InvestmentChoiceCard = ({ icon, title, description, children }: {
   description: string;
   children?: React.ReactNode
 }) => (
-  <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all hover:shadow-xl hover:scale-[1.02]">
+  <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-lg overflow-hidden transition-all hover:shadow-xl hover:scale-[1.02]">
     <div className="p-6">
       <div className="flex items-center gap-4 mb-4">
         {icon}
-        <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">{title}</h3>
       </div>
-      <p className="text-slate-600">{description}</p>
+      <p className="text-slate-600 dark:text-slate-400">{description}</p>
     </div>
     {children && (
-      <div className="bg-slate-50 p-6 border-t border-slate-200">
+      <div className="bg-slate-50 dark:bg-[#14171B] p-6 border-t border-slate-200 dark:border-slate-800">
         {children}
       </div>
     )}
@@ -85,10 +85,10 @@ const InvestmentChoiceCard = ({ icon, title, description, children }: {
 
 const ExecutiveSummary = () => (
   <Section title="Executive Summary" romanNumeral="">
-    <p className="text-lg text-slate-600 mb-4">
+    <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
       The global investment landscape is defined by a paradox: equity markets at all-time highs while the Federal Reserve is poised to initiate monetary easing. This confluence of peak valuations and impending rate cuts creates a precarious environment, demanding a strategic shift away from passive, broad-market exposure towards a nuanced, actively managed, and deeply diversified portfolio.
     </p>
-    <p className="text-slate-600">
+    <p className="text-slate-600 dark:text-slate-400">
       This report advocates for a portfolio construction philosophy centered on resilience. The recommended approach involves a strategic rebalancing away from concentrated, overvalued market segments and a deliberate allocation towards non-correlated assets, duration-sensitive instruments, and tactical opportunities in undervalued sectors. This framework is designed to build a robust portfolio capable of weathering multiple potential scenarios while capitalizing on the structural shifts this new monetary regime will inevitably create.
     </p>
   </Section>
@@ -98,14 +98,14 @@ export default function MarketAnalysisPage() {
   return (
     <ArticleFrame slug="navigating-inflection-point-multi-asset-strategy-peak-valuations">
       <div className="max-w-5xl mx-auto px-4">
-        <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-8">
           A Multi-Asset Strategy for an Era of Peak Valuations and Monetary Easing
         </p>
 
         <ExecutiveSummary />
 
         {/* --- Macroeconomic Landscape --- */}
-        <div className="bg-white -mx-4 px-4 rounded-xl">
+        <div className="bg-white dark:bg-[#0A0D14] -mx-4 px-4 rounded-xl">
           <Section title="The Macroeconomic Landscape: A Precarious Peak" romanNumeral="I">
             <SubSection title="1.1 Anatomy of an All-Time High Market">
               <p>
@@ -135,7 +135,7 @@ export default function MarketAnalysisPage() {
               title="Gold"
               description="Gold's performance is powerfully driven by its inverse relationship with real interest rates. As the Fed cuts nominal rates while inflation remains sticky, real yields are expected to fall, reducing the opportunity cost of holding non-yielding gold."
             >
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-start gap-2">
                   <span className="text-amber-500 mt-1">◆</span>
                   <span>Historically performs well during Fed easing cycles with double-digit gains.</span>
@@ -156,17 +156,17 @@ export default function MarketAnalysisPage() {
               title="Fixed Income"
               description="With the Fed on the cusp of a rate-cutting cycle, fixed income strategy shifts from collecting coupons to pursuing capital appreciation. The key is extending duration, as bond prices rise when interest rates fall."
             >
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 mt-1">◆</span>
+                  <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">◆</span>
                   <span>Historically, ~80% of returns in an easing cycle occur in the first six months.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 mt-1">◆</span>
+                  <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">◆</span>
                   <span>The 3 to 7-year maturity range offers a compelling balance of duration exposure and manageable volatility.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 mt-1">◆</span>
+                  <span className="text-[#A8672E] dark:text-[#D08F52] mt-1">◆</span>
                   <span>A shift from cash to intermediate-term bonds is crucial to capture potential gains.</span>
                 </li>
               </ul>
@@ -175,22 +175,22 @@ export default function MarketAnalysisPage() {
         </Section>
 
         {/* --- Spectrum of Opportunity --- */}
-        <div className="bg-white -mx-4 px-4 rounded-xl">
+        <div className="bg-white dark:bg-[#0A0D14] -mx-4 px-4 rounded-xl">
           <Section title="The Spectrum of Opportunity: Evaluating Risk Assets" romanNumeral="III">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-slate-800 mb-3">
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3 font-serif">
                   3.1 Navigating the Credit Markets: A Flight to Quality
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-slate-600 dark:text-slate-400">
                   Credit spreads are near historic lows, suggesting complacency and inadequate compensation for risks in a slowing economy. With default rates projected to rise, a &ldquo;flight to quality&rdquo; is prudent.
                 </p>
-                <ul className="space-y-3 pl-4 list-disc text-slate-600">
+                <ul className="space-y-3 pl-4 list-disc text-slate-600 dark:text-slate-400">
                   <li>
-                    <strong className="text-slate-800">Investment Grade (IG):</strong> Well-positioned to benefit from falling Treasury yields and rising risk aversion.
+                    <strong className="text-slate-800 dark:text-slate-200">Investment Grade (IG):</strong> Well-positioned to benefit from falling Treasury yields and rising risk aversion.
                   </li>
                   <li>
-                    <strong className="text-slate-800">High-Yield (HY):</strong> Unfavorable risk-reward profile. Narrow spreads offer little cushion against a potential sharp widening if a recession occurs.
+                    <strong className="text-slate-800 dark:text-slate-200">High-Yield (HY):</strong> Unfavorable risk-reward profile. Narrow spreads offer little cushion against a potential sharp widening if a recession occurs.
                   </li>
                 </ul>
               </div>
@@ -201,8 +201,8 @@ export default function MarketAnalysisPage() {
                 description="A compelling, higher-risk tactical opportunity. Small caps historically outperform during periods of declining rates and early economic expansions, and currently trade at a significant valuation discount to large caps."
               >
                 <div className="text-sm">
-                  <p className="font-semibold text-red-600 mb-2">High-Risk / Contingent Play:</p>
-                  <p className="text-slate-600">
+                  <p className="font-semibold text-[#BC4128] dark:text-[#E2694A] mb-2">High-Risk / Contingent Play:</p>
+                  <p className="text-slate-600 dark:text-slate-400">
                     This is a tactical bet contingent on the Fed engineering a soft landing. In a hard landing scenario, small caps are likely to underperform significantly due to higher volatility and vulnerability to economic downturns.
                   </p>
                 </div>
@@ -213,23 +213,23 @@ export default function MarketAnalysisPage() {
 
         {/* --- Advanced Strategies --- */}
         <Section title="Advanced Strategies for an Uncertain Environment" romanNumeral="IV">
-          <p className="mb-8 max-w-3xl text-slate-600">
+          <p className="mb-8 max-w-3xl text-slate-600 dark:text-slate-400">
             Elevated market volatility, a typical feature of a Fed policy pivot, increases option premiums. This creates an attractive environment for income-generating strategies that involve selling options to harvest this &ldquo;volatility premium.&rdquo;
           </p>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white dark:bg-[#0A0D14] rounded-lg shadow-lg overflow-hidden">
             <div className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <Icon><OptionsIcon /></Icon>
-                <h3 className="text-xl font-bold text-slate-900">Option Writing Strategies</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Option Writing Strategies</h3>
               </div>
-              <p className="text-slate-600">
+              <p className="text-slate-600 dark:text-slate-400">
                 Systematically selling options can generate a consistent income stream, lower portfolio volatility, and enhance risk-adjusted returns.
               </p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left text-slate-500">
-                <thead className="text-xs text-slate-700 uppercase bg-slate-100">
+                <thead className="text-xs text-slate-700 dark:text-slate-300 uppercase bg-slate-100">
                   <tr>
                     <th scope="col" className="px-6 py-3">Strategy</th>
                     <th scope="col" className="px-6 py-3">Market Outlook</th>
@@ -238,16 +238,16 @@ export default function MarketAnalysisPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white border-b">
-                    <th scope="row" className="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
+                  <tr className="bg-white dark:bg-[#0A0D14] border-b">
+                    <th scope="row" className="px-6 py-4 font-medium text-slate-900 dark:text-slate-100 whitespace-nowrap">
                       Covered Call
                     </th>
                     <td className="px-6 py-4">Neutral to Mildly Bullish</td>
                     <td className="px-6 py-4">Generate income on existing holdings</td>
                     <td className="px-6 py-4">Profit is limited; Risk is stock falling to zero</td>
                   </tr>
-                  <tr className="bg-white">
-                    <th scope="row" className="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
+                  <tr className="bg-white dark:bg-[#0A0D14]">
+                    <th scope="row" className="px-6 py-4 font-medium text-slate-900 dark:text-slate-100 whitespace-nowrap">
                       Cash-Secured Put
                     </th>
                     <td className="px-6 py-4">Neutral to Mildly Bullish</td>

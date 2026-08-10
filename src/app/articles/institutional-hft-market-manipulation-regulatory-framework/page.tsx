@@ -12,23 +12,23 @@ const Chapter = ({ title, icon: Icon, colorTheme, children }: {
   children: React.ReactNode;
 }) => {
   const themeClasses: Record<string, string> = {
-    blue: "bg-blue-50/50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-900/30 text-blue-900 dark:text-blue-100",
-    emerald: "bg-emerald-50/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30 text-emerald-900 dark:text-emerald-100",
-    rose: "bg-rose-50/50 dark:bg-rose-900/10 border-rose-200 dark:border-rose-900/30 text-rose-900 dark:text-rose-100",
+    blue: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-900/30 text-blue-900 dark:text-blue-100",
+    emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30 text-emerald-900 dark:text-emerald-100",
+    rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10/50 dark:bg-rose-900/10 border-rose-200 dark:border-rose-900/30 text-rose-900 dark:text-rose-100",
     purple: "bg-purple-50/50 dark:bg-purple-900/10 border-purple-200 dark:border-purple-900/30 text-purple-900 dark:text-purple-100",
     amber: "bg-amber-50/50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30 text-amber-900 dark:text-amber-100",
-    indigo: "bg-indigo-50/50 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-900/30 text-indigo-900 dark:text-indigo-100",
+    indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10/50 dark:bg-indigo-900/10 border-indigo-200 dark:border-indigo-900/30 text-indigo-900 dark:text-indigo-100",
     slate: "bg-white dark:bg-[#14171B] border-slate-200 dark:border-white/10 text-slate-900 dark:text-white",
   };
 
   const iconColors: Record<string, string> = {
-    blue: "text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/30",
-    emerald: "text-emerald-600 bg-emerald-100 dark:text-emerald-400 dark:bg-emerald-900/30",
-    rose: "text-rose-600 bg-rose-100 dark:text-rose-400 dark:bg-rose-900/30",
+    blue: "text-[#A8672E] dark:text-[#D08F52] bg-blue-100 dark:text-[#A8672E] dark:text-[#D08F52] dark:bg-blue-900/30",
+    emerald: "text-[#1D8A70] dark:text-[#3CBF9C] bg-emerald-100 dark:text-[#1D8A70] dark:text-[#3CBF9C] dark:bg-emerald-900/30",
+    rose: "text-[#BC4128] dark:text-[#E2694A] bg-rose-100 dark:text-[#BC4128] dark:text-[#E2694A] dark:bg-rose-900/30",
     purple: "text-purple-600 bg-purple-100 dark:text-purple-400 dark:bg-purple-900/30",
     amber: "text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-900/30",
-    indigo: "text-indigo-600 bg-indigo-100 dark:text-indigo-400 dark:bg-indigo-900/30",
-    slate: "text-slate-600 bg-slate-100 dark:text-slate-300 dark:bg-white/10",
+    indigo: "text-[#A8672E] dark:text-[#D08F52] bg-indigo-100 dark:text-[#A8672E] dark:text-[#D08F52] dark:bg-indigo-900/30",
+    slate: "text-slate-600 dark:text-slate-400 bg-slate-100 dark:text-slate-300 dark:bg-white dark:bg-[#0A0D14]/10",
   };
 
   return (
@@ -38,7 +38,7 @@ const Chapter = ({ title, icon: Icon, colorTheme, children }: {
           <div className={`p-3 rounded-2xl ${iconColors[colorTheme] ?? iconColors.slate}`}>
             <Icon size={32} strokeWidth={1.5} />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white font-serif">{title}</h2>
         </div>
         <div className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
           {children}
@@ -54,11 +54,11 @@ const ConceptSpotlight = ({ title, children, colorTheme = "blue" }: {
   colorTheme?: string;
 }) => {
   const borderColors: Record<string, string> = {
-    blue: "border-blue-300 dark:border-blue-500/30 bg-blue-50/80 dark:bg-blue-900/20",
-    emerald: "border-emerald-300 dark:border-emerald-500/30 bg-emerald-50/80 dark:bg-emerald-900/20",
-    rose: "border-rose-300 dark:border-rose-500/30 bg-rose-50/80 dark:bg-rose-900/20",
+    blue: "border-blue-300 dark:border-[#A8672E] dark:border-[#D08F52]/30 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/80 dark:bg-blue-900/20",
+    emerald: "border-emerald-300 dark:border-[#1D8A70] dark:border-[#3CBF9C]/30 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10/80 dark:bg-emerald-900/20",
+    rose: "border-rose-300 dark:border-[#BC4128] dark:border-[#E2694A]/30 bg-[#BC4128]/10 dark:bg-[#E2694A]/10/80 dark:bg-rose-900/20",
     purple: "border-purple-300 dark:border-purple-500/30 bg-purple-50/80 dark:bg-purple-900/20",
-    indigo: "border-indigo-300 dark:border-indigo-500/30 bg-indigo-50/80 dark:bg-indigo-900/20",
+    indigo: "border-indigo-300 dark:border-[#A8672E] dark:border-[#D08F52]/30 bg-[#A8672E]/10 dark:bg-[#D08F52]/10/80 dark:bg-indigo-900/20",
   };
 
   return (
@@ -99,7 +99,7 @@ const DataTable = ({ headers, rows, colorTheme = "blue" }: {
         </thead>
         <tbody className="bg-white dark:bg-[#14171B]">
           {rows.map((row, i) => (
-            <tr key={i} className="hover:bg-slate-50 dark:hover:bg-white/5 border-b border-slate-100 dark:border-white/10 last:border-0 transition-colors">
+            <tr key={i} className="hover:bg-slate-50 dark:bg-[#14171B] dark:hover:bg-white dark:bg-[#0A0D14]/5 border-b border-slate-100 dark:border-white/10 last:border-0 transition-colors">
               {row.map((cell, j) => (
                 <td key={j} className="p-4 text-slate-700 dark:text-slate-300 align-top">{cell}</td>
               ))}
@@ -144,7 +144,7 @@ export default function ArticlePage() {
             To evaluate regulatory actions against institutional trading firms, we must dissect the specific microstructural strategies utilized within limit order books and automated auction mechanisms.
           </p>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-emerald-800 dark:text-emerald-400">Permissible Operations</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-emerald-800 dark:text-[#1D8A70] dark:text-[#3CBF9C] font-serif">Permissible Operations</h3>
           <p>
             Quantitative trading firms such as Jane Street Group, Citadel Securities, and Millennium Management operate primarily as market makers and designated liquidity providers. Regulatory frameworks universally recognize the essential function these entities serve in maintaining orderly markets.
           </p>
@@ -154,7 +154,7 @@ export default function ArticlePage() {
             <p><strong className="text-slate-900 dark:text-white">Delta Hedging:</strong> When institutions sell complex options, they incur massive directional risk. To neutralize this, they mathematically purchase or sell the underlying asset in exact proportion to the option&apos;s delta. While this massive volume can influence prices, it is a legally recognized risk-management practice.</p>
           </ConceptSpotlight>
 
-          <h3 className="text-2xl font-bold mt-10 mb-4 text-rose-800 dark:text-rose-400">Prohibited Tactics</h3>
+          <h3 className="text-2xl font-bold mt-10 mb-4 text-rose-800 dark:text-[#BC4128] dark:text-[#E2694A] font-serif">Prohibited Tactics</h3>
           <p>
             Conversely, regulatory frameworks explicitly prohibit practices engineered to create artificial supply, artificial demand, or distorted pricing metrics.
           </p>
@@ -182,7 +182,7 @@ export default function ArticlePage() {
             The intense regulatory scrutiny was paradoxically catalyzed by Jane Street&apos;s own legal actions. In April 2024, they sued rival hedge fund Millennium Management in the U.S., claiming two former traders stole a proprietary Indian options strategy capable of generating $150 million in three months. This public disclosure immediately caught the attention of SEBI.
           </ConceptSpotlight>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Mechanics of &ldquo;Extended Marking the Close&rdquo;</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white font-serif">The Mechanics of &ldquo;Extended Marking the Close&rdquo;</h3>
           <p>
             Unlike US markets that settle via transparent closing auctions, Indian weekly index options settle in cash based on a 30-minute Volume-Weighted Average Price (VWAP) calculated during the final half-hour of trading on Thursdays.
           </p>
@@ -217,7 +217,7 @@ export default function ArticlePage() {
             Concurrent with traditional equity and options investigations, institutional market makers like Jane Street frequently find themselves at the center of massive retail conspiracies within digital assets and commodities. This highlights a massive disconnect between complex institutional &ldquo;plumbing&rdquo; (Authorized Participant arbitrage) and retail perceptions of market manipulation.
           </p>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-purple-800 dark:text-purple-400">The Crypto Ecosystem: TerraUSD &amp; The &ldquo;10 AM Dump&rdquo;</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-purple-800 dark:text-purple-400 font-serif">The Crypto Ecosystem: TerraUSD &amp; The &ldquo;10 AM Dump&rdquo;</h3>
 
           <ConceptSpotlight title="The TerraUSD (UST) Collapse (2022)" colorTheme="purple">
             <p className="mb-2">During the catastrophic de-pegging of the TerraUSD stablecoin, the SEC alleged that Terraform Labs secretly enlisted a &ldquo;U.S. Trading Firm&rdquo; (widely identified as Jane Street) to restore the peg. The firm aggressively bought UST to prop up the price, receiving discounted LUNA tokens in exchange.</p>
@@ -231,7 +231,7 @@ export default function ArticlePage() {
             Retail traders immediately theorized that Jane Street deactivated a &ldquo;malicious manipulation algo&rdquo; to avoid further legal discovery. However, quantitative researchers note the 10 AM window perfectly aligns with standard structural liquidity windows: US spot Bitcoin ETF share creation/redemption, macroeconomic data releases, and the alignment of European market closes. Massive structural volume simply looks like manipulation to the untrained eye.
           </p>
 
-          <h3 className="text-2xl font-bold mt-10 mb-4 text-purple-800 dark:text-purple-400">Precious Metals: The iShares Silver Trust (SLV) Anomaly</h3>
+          <h3 className="text-2xl font-bold mt-10 mb-4 text-purple-800 dark:text-purple-400 font-serif">Precious Metals: The iShares Silver Trust (SLV) Anomaly</h3>
           <p className="mb-6">
             In the wake of the 2021 &ldquo;meme stock&rdquo; era, retail traders attempted a coordinated &ldquo;Silver Squeeze&rdquo; to drive up the price of the iShares Silver Trust (SLV). Subsequent 13F SEC filings revealed that Jane Street had acquired over 20 million shares of SLV (valued at over $1.6 billion), alongside massive put and call option positions. Retail communities framed this as a coordinated, engineered scheme by Wall Street to suppress global silver prices via naked shorting.
           </p>
@@ -275,7 +275,7 @@ export default function ArticlePage() {
             <em className="text-slate-800 dark:text-slate-200">A trader&apos;s intent to influence a price is absolutely not illegal if the trader genuinely believes the resulting influenced price accurately reflects true market value. Genuine, open-market transactions carrying real economic risk cannot easily be classified as illegal without smoking-gun evidence of fraudulent intent.</em>
           </ConceptSpotlight>
 
-          <h3 className="text-2xl font-bold mt-10 mb-4 text-indigo-800 dark:text-indigo-400">Global Evidentiary Standards</h3>
+          <h3 className="text-2xl font-bold mt-10 mb-4 text-indigo-800 dark:text-[#A8672E] dark:text-[#D08F52] font-serif">Global Evidentiary Standards</h3>
           <DataTable
             colorTheme="indigo"
             headers={["Regulatory Body", "Legal Standard", "Approach to Open-Market Trading"]}
@@ -293,7 +293,7 @@ export default function ArticlePage() {
             When evaluating whether financial institutions face meaningful punishment, a dual reality emerges: regulators extract massive settlements for explicit deception (like spoofing), but struggle against structural market manipulation rooted in complex quantitative strategies.
           </p>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100">Do They Actually Get Punished?</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100 font-serif">Do They Actually Get Punished?</h3>
           <p className="mb-6">
             The resolution of market manipulation charges typically follows a predictable institutional trajectory. While headline-grabbing fines are levied, the structural impact on the firm is often minimal:
           </p>
@@ -304,9 +304,9 @@ export default function ArticlePage() {
             <li><strong className="text-slate-900 dark:text-white">Individual vs. Corporate Liability:</strong> While rogue individual traders (like Navinder Sarao or specific desk heads at major banks) may face prison time, the c-suite executives and the corporate entities themselves are almost completely insulated from criminal convictions.</li>
           </ul>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100">The Typical Institutional Playbook: Tricks vs. Allowed Mechanics</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100 font-serif">The Typical Institutional Playbook: Tricks vs. Allowed Mechanics</h3>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-rose-50 dark:bg-rose-900/10 p-5 rounded-xl border border-rose-200 dark:border-rose-900/30">
+            <div className="bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/10 p-5 rounded-xl border border-rose-200 dark:border-rose-900/30">
               <h4 className="font-bold text-rose-900 dark:text-rose-300 mb-2">The &ldquo;Tricks&rdquo; (Prohibited/Gray Area)</h4>
               <ul className="text-sm space-y-2 text-rose-800 dark:text-rose-200 list-disc pl-4">
                 <li><strong className="text-rose-900 dark:text-rose-100">Cross-Market Squeezes:</strong> Taking a massive, quiet position in a derivative (like Indian Options), then aggressively trading the underlying cash market to force the settlement price to a profitable level.</li>
@@ -314,7 +314,7 @@ export default function ArticlePage() {
                 <li><strong className="text-rose-900 dark:text-rose-100">Spoofing &amp; Layering:</strong> Algorithms flashing large fake orders to trick other algorithms into moving the price, canceling before execution.</li>
               </ul>
             </div>
-            <div className="bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-200 dark:border-emerald-900/30">
+            <div className="bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/10 p-5 rounded-xl border border-emerald-200 dark:border-emerald-900/30">
               <h4 className="font-bold text-emerald-900 dark:text-emerald-300 mb-2">The Allowed Mechanics (Legal)</h4>
               <ul className="text-sm space-y-2 text-emerald-800 dark:text-emerald-200 list-disc pl-4">
                 <li><strong className="text-emerald-900 dark:text-emerald-100">Statistical Arbitrage:</strong> Trading on historical price correlations across thousands of assets simultaneously without intent to artificially move prices.</li>
@@ -324,7 +324,7 @@ export default function ArticlePage() {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100">Key Historical Case Studies</h3>
+          <h3 className="text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100 font-serif">Key Historical Case Studies</h3>
           <DataTable
             colorTheme="blue"
             headers={["Entity", "Year", "Primary Charge", "Ultimate Outcome"]}
@@ -340,8 +340,8 @@ export default function ArticlePage() {
 
           {/* Final Synthesis */}
           <div className="mt-12 p-8 bg-slate-900 dark:bg-[#0A0D11] text-slate-100 rounded-2xl shadow-xl border dark:border-white/10">
-            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
-              <ShieldAlert className="text-rose-400" /> Final Synthesis
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 text-white font-serif">
+              <ShieldAlert className="text-[#BC4128] dark:text-[#E2694A]" /> Final Synthesis
             </h3>
             <p className="text-slate-300 mb-4">
               The contemporary quantitative firm operates at speeds and complexities that vastly outpace traditional regulatory frameworks. While explicit, easily provable tactics like spoofing are now effectively prosecuted with criminal sanctions against individual traders, sophisticated structural strategies &mdash; like cross-market arbitrage, algorithmic front-running, and benchmark distortion &mdash; exist in a fiercely litigated gray zone.

@@ -219,10 +219,10 @@ export default function DeepResearchTAvsMLTrading() {
         }
         synergyButtons.forEach((btn) => {
           btn.classList.remove("bg-[#A67B5B]", "text-white");
-          btn.classList.add("bg-white", "dark:bg-gray-800");
+          btn.classList.add("bg-white dark:bg-[#0A0D14]", "dark:bg-gray-800");
         });
         button.classList.add("bg-[#A67B5B]", "text-white");
-        button.classList.remove("bg-white", "dark:bg-gray-800");
+        button.classList.remove("bg-white dark:bg-[#0A0D14]", "dark:bg-gray-800");
       });
     });
   }, [chartLibLoaded]);
@@ -240,7 +240,7 @@ export default function DeepResearchTAvsMLTrading() {
           {/* Comparison Section */}
           <section id="comparison">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Head-to-Head: TA vs. ML</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">Head-to-Head: TA vs. ML</h3>
               <p className="mt-2 text-md text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">This section provides a direct comparison between Technical Analysis and Machine Learning across key attributes. The radar chart below offers a visual summary of their relative strengths, while the lists detail their core pros and cons. This allows for a quick, high-level understanding of where each methodology excels and falls short.</p>
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -254,7 +254,7 @@ export default function DeepResearchTAvsMLTrading() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                  <h4 className="text-xl font-semibold mb-3 text-green-700 dark:text-green-400">Technical Analysis: Pros</h4>
+                  <h4 className="text-xl font-semibold mb-3 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Technical Analysis: Pros</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
                     <li>Accessible and low-cost to start</li>
                     <li>Provides intuitive visual framework</li>
@@ -264,7 +264,7 @@ export default function DeepResearchTAvsMLTrading() {
                   </ul>
                 </div>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                  <h4 className="text-xl font-semibold mb-3 text-red-700 dark:text-red-400">Technical Analysis: Cons</h4>
+                  <h4 className="text-xl font-semibold mb-3 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Technical Analysis: Cons</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
                     <li>Highly subjective interpretation</li>
                     <li>Prone to false signals (whipsaws)</li>
@@ -274,7 +274,7 @@ export default function DeepResearchTAvsMLTrading() {
                   </ul>
                 </div>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                  <h4 className="text-xl font-semibold mb-3 text-green-700 dark:text-green-400">Machine Learning: Pros</h4>
+                  <h4 className="text-xl font-semibold mb-3 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">Machine Learning: Pros</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
                     <li>Superior pattern recognition in complex data</li>
                     <li>High speed and efficiency in execution</li>
@@ -284,7 +284,7 @@ export default function DeepResearchTAvsMLTrading() {
                   </ul>
                 </div>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                  <h4 className="text-xl font-semibold mb-3 text-red-700 dark:text-red-400">Machine Learning: Cons</h4>
+                  <h4 className="text-xl font-semibold mb-3 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A]">Machine Learning: Cons</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
                     <li>Heavy dependency on high-quality data</li>
                     <li>High risk of overfitting to historical data</li>
@@ -300,7 +300,7 @@ export default function DeepResearchTAvsMLTrading() {
           {/* ML Paradigms Section */}
           <section id="paradigms" className="py-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
             <div className="text-center mb-12 px-6">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Exploring ML Paradigms</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">Exploring ML Paradigms</h3>
               <p className="mt-2 text-md text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Machine learning is not a monolith. It encompasses several distinct approaches, each suited for different tasks. This section provides a deep dive into the three primary paradigms used in trading. Use the tabs to explore how each one works, its applications, and its specific advantages and disadvantages in the financial markets.</p>
             </div>
             <div className="max-w-4xl mx-auto px-6">
@@ -321,7 +321,7 @@ export default function DeepResearchTAvsMLTrading() {
                   <div className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg h-full">
                     <div className="flex items-center space-x-2">
                       <div className="text-center">
-                        <div className="icon-box bg-blue-100 text-blue-600">📈</div>
+                        <div className="icon-box bg-blue-100 text-[#A8672E] dark:text-[#D08F52]">📈</div>
                         <p className="text-xs mt-1 text-gray-600 dark:text-gray-400">Data + Label</p>
                       </div>
                       <div className="text-5xl font-thin text-gray-300 dark:text-gray-600">→</div>
@@ -330,7 +330,7 @@ export default function DeepResearchTAvsMLTrading() {
                       </div>
                       <div className="text-5xl font-thin text-gray-300 dark:text-gray-600">→</div>
                       <div className="text-center">
-                        <div className="icon-box bg-green-100 text-green-600">🎯</div>
+                        <div className="icon-box bg-green-100 text-[#1D8A70] dark:text-[#3CBF9C]">🎯</div>
                         <p className="text-xs mt-1 text-gray-600 dark:text-gray-400">Prediction</p>
                       </div>
                     </div>
@@ -350,8 +350,8 @@ export default function DeepResearchTAvsMLTrading() {
                   <div className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg h-full">
                     <div className="flex items-center space-x-2">
                       <div className="flex space-x-1">
-                        <div className="w-4 h-4 rounded-full bg-red-400"></div>
-                        <div className="w-4 h-4 rounded-full bg-blue-400"></div>
+                        <div className="w-4 h-4 rounded-full bg-[#BC4128] dark:bg-[#E2694A]"></div>
+                        <div className="w-4 h-4 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div>
                         <div className="w-4 h-4 rounded-full bg-red-300"></div>
                         <div className="w-4 h-4 rounded-full bg-yellow-400"></div>
                         <div className="w-4 h-4 rounded-full bg-blue-300"></div>
@@ -362,8 +362,8 @@ export default function DeepResearchTAvsMLTrading() {
                       </div>
                       <div className="text-5xl font-thin text-gray-300 dark:text-gray-600">→</div>
                       <div className="flex space-x-2">
-                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-red-400"></div><div className="w-4 h-4 rounded-full bg-red-300"></div></div>
-                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-blue-400"></div><div className="w-4 h-4 rounded-full bg-blue-300"></div></div>
+                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-[#BC4128] dark:bg-[#E2694A]"></div><div className="w-4 h-4 rounded-full bg-red-300"></div></div>
+                        <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-[#A8672E] dark:bg-[#D08F52]"></div><div className="w-4 h-4 rounded-full bg-blue-300"></div></div>
                         <div className="flex flex-col space-y-1"><div className="w-4 h-4 rounded-full bg-yellow-400"></div></div>
                       </div>
                     </div>
@@ -407,7 +407,7 @@ export default function DeepResearchTAvsMLTrading() {
           {/* Synergy Section */}
           <section id="synergy">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Synergy: Can ML Replace TA?</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white font-serif">Synergy: Can ML Replace TA?</h3>
               <p className="mt-2 text-md text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Rather than a replacement, the future points towards a powerful synergy. Machine Learning can augment, automate, and refine many traditional Technical Analysis functions. Click on the TA functions below to see how different ML paradigms can be applied, revealing a more nuanced relationship than simple substitution.</p>
             </div>
             <div className="max-w-5xl mx-auto">

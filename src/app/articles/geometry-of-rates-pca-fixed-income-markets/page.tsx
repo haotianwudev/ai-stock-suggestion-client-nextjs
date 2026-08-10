@@ -168,7 +168,7 @@ export default function GeometryOfRatesArticle() {
           <Section 
             id="hedging"
             title="4. Vector Hedging vs. Duration"
-            icon={<Shield className="w-6 h-6 text-teal-500" />}
+            icon={<Shield className="w-6 h-6 text-[#A8672E] dark:text-[#D08F52]" />}
             color="teal"
           >
             <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
@@ -230,7 +230,7 @@ export default function GeometryOfRatesArticle() {
           <Section 
             id="butterfly"
             title="5. Alpha Strategy: The PCA Butterfly"
-            icon={<GitMerge className="w-6 h-6 text-orange-500" />}
+            icon={<GitMerge className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A]" />}
             color="orange"
           >
             <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 border border-orange-100">
@@ -290,7 +290,7 @@ export default function GeometryOfRatesArticle() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-lg border-l-4 border-red-500 shadow-sm">
+              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
                   <Activity className="w-4 h-4"/> Correlation Break
                 </h4>
@@ -299,7 +299,7 @@ export default function GeometryOfRatesArticle() {
                 </p>
               </div>
               
-              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-lg border-l-4 border-red-500 shadow-sm">
+              <div className="bg-white dark:bg-[#0A0D14] p-5 rounded-lg border-l-4 border-[#BC4128] dark:border-[#E2694A] shadow-sm">
                 <h4 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
                   <TrendingUp className="w-4 h-4"/> Slope Inversion
                 </h4>
@@ -399,8 +399,8 @@ const Section = ({ id, title, children, icon, color }: SectionProps) => {
     blue: "text-[#A8672E] dark:text-[#D08F52]",
     purple: "text-purple-600", 
     pink: "text-pink-600",
-    teal: "text-teal-600",
-    orange: "text-orange-600",
+    teal: "text-[#A8672E] dark:text-[#D08F52]",
+    orange: "text-[#BC4128] dark:text-[#E2694A]",
     red: "text-[#BC4128] dark:text-[#E2694A]",
     indigo: "text-[#A8672E] dark:text-[#D08F52]",
   };

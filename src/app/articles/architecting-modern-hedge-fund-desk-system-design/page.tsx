@@ -6,12 +6,12 @@ import { ArticleFrame } from '@/components/articles/article-frame';
 // HELPER COMPONENTS =======================================================
 
 // Section wrapper component
-const Section = ({ id, title, subtitle, children, bgColor = 'bg-white' }) => (
+const Section = ({ id, title, subtitle, children, bgColor = 'bg-white dark:bg-[#0A0D14]' }) => (
   <section id={id} className={`py-20 px-4 md:px-8 ${bgColor}`}>
     <div className="container px-5 py-4 mx-auto">
       <div className="text-center mb-20">
-        <h2 className="text-xs text-cyan-600 tracking-widest font-medium title-font mb-1 uppercase">{subtitle}</h2>
-        <h1 className="sm:text-4xl text-3xl font-bold title-font text-slate-900 mb-4">{title}</h1>
+        <h2 className="text-xs text-cyan-600 tracking-widest font-medium title-font mb-1 uppercase font-serif">{subtitle}</h2>
+        
         <div className="flex mt-6 justify-center">
           <div className="w-24 h-1 rounded-full bg-cyan-500 inline-flex"></div>
         </div>
@@ -28,7 +28,7 @@ const Card = ({ icon, title, description }) => (
       {icon}
     </div>
     <div className="flex-grow">
-      <h2 className="text-slate-900 text-lg title-font font-medium mb-3">{title}</h2>
+      <h2 className="text-slate-900 dark:text-slate-100 text-lg title-font font-medium mb-3 font-serif">{title}</h2>
       <p className="leading-relaxed text-base text-gray-600">{description}</p>
     </div>
   </div>
@@ -37,13 +37,13 @@ const Card = ({ icon, title, description }) => (
 // MAIN SECTIONS ===========================================================
 
 const Hero = () => (
-  <section id="home" className="text-gray-600 bg-white body-font">
+  <section id="home" className="text-gray-600 bg-white dark:bg-[#0A0D14] body-font">
     <div className="container mx-auto flex px-5 py-16 justify-center">
       <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full">
-        <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
+        <div className="bg-white dark:bg-[#0A0D14] p-8 rounded-xl shadow-2xl border border-gray-200">
           <div className="flex items-center mb-6">
             <Briefcase className="w-8 h-8 text-cyan-500 mr-4" />
-            <h3 className="text-2xl font-bold text-slate-900">PM Cockpit</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-serif">PM Cockpit</h3>
           </div>
           <div className="bg-gray-50 p-4 rounded-lg mb-4 border border-gray-200">
             <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
@@ -51,7 +51,7 @@ const Hero = () => (
               <span className="font-medium text-gray-800">$150.7M</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '75%' }}></div>
+              <div className="bg-[#1D8A70] dark:bg-[#3CBF9C] h-2.5 rounded-full" style={{ width: '75%' }}></div>
             </div>
           </div>
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
@@ -60,14 +60,14 @@ const Hero = () => (
               <span className="font-medium text-gray-800">$45.2M</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: '30%' }}></div>
+              <div className="bg-[#A8672E] dark:bg-[#D08F52] h-2.5 rounded-full" style={{ width: '30%' }}></div>
             </div>
           </div>
           <div className="mt-6">
-            <h4 className="text-lg font-semibold text-slate-900 mb-2">Daily P&L (USD)</h4>
+            <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Daily P&L (USD)</h4>
             <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between border border-gray-200">
-              <span className="text-2xl font-bold text-green-500">+$2,134,550.00</span>
-              <BarChart2 className="w-8 h-8 text-green-500" />
+              <span className="text-2xl font-bold text-[#1D8A70] dark:text-[#3CBF9C]">+$2,134,550.00</span>
+              <BarChart2 className="w-8 h-8 text-[#1D8A70] dark:text-[#3CBF9C]" />
             </div>
           </div>
           <div className="mt-4 text-sm text-gray-500">
@@ -127,30 +127,30 @@ const SystemArchitecture = () => (
   <Section id="architecture" title="System Architecture Blueprint" subtitle="Foundational Design">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest">ARCHITECTURAL PATTERN</h2>
-        <h1 className="text-slate-900 text-3xl title-font font-medium mb-4">The Modular Monolith</h1>
+        <h2 className="text-sm title-font text-gray-500 tracking-widest font-serif">ARCHITECTURAL PATTERN</h2>
+        
         <p className="leading-relaxed mb-4 text-gray-600">
           We chose a Modular Monolith to balance initial development speed with long-term maintainability. It provides the operational simplicity of a single deployable unit while enforcing strong internal boundaries, preventing technical debt. This approach serves as a perfect transitional architecture, allowing modules to be extracted into microservices if future needs demand it.
         </p>
         <div className="flex border-t border-gray-200 py-2">
           <span className="text-gray-500">Pattern</span>
-          <span className="ml-auto text-slate-900">Modular Monolith</span>
+          <span className="ml-auto text-slate-900 dark:text-slate-100">Modular Monolith</span>
         </div>
         <div className="flex border-t border-gray-200 py-2">
           <span className="text-gray-500">Key Benefit</span>
-          <span className="ml-auto text-slate-900">Low operational complexity, high cohesion</span>
+          <span className="ml-auto text-slate-900 dark:text-slate-100">Low operational complexity, high cohesion</span>
         </div>
         <div className="flex border-t border-b mb-6 border-gray-200 py-2">
           <span className="text-gray-500">Scalability</span>
-          <span className="ml-auto text-slate-900">Moderate, with clear path to Microservices</span>
+          <span className="ml-auto text-slate-900 dark:text-slate-100">Moderate, with clear path to Microservices</span>
         </div>
-        <h2 className="text-slate-900 text-2xl title-font font-medium mt-8 mb-4">Central Nervous System: EDA, CQRS &amp; Event Sourcing</h2>
+        <h2 className="text-slate-900 dark:text-slate-100 text-2xl title-font font-medium mt-8 mb-4 font-serif">Central Nervous System: EDA, CQRS &amp; Event Sourcing</h2>
         <p className="leading-relaxed mb-4 text-gray-600">
           An <strong>Event-Driven Architecture (EDA)</strong> using Apache Kafka acts as the system&apos;s core communication backbone, decoupling components. This is enhanced by <strong>CQRS</strong> (Command Query Responsibility Segregation), which separates the write and read operations, and <strong>Event Sourcing</strong>, which stores every state change as an immutable event. This combination creates a highly auditable, scalable, and resilient system where the event log serves as the ultimate, verifiable system of truth.
         </p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
           <div className="flex items-center">
-            <span className="mr-3 text-slate-900">Key Patterns</span>
+            <span className="mr-3 text-slate-900 dark:text-slate-100">Key Patterns</span>
             <div className="relative">
               <span className="mr-2 rounded border border-gray-300 py-1 px-2 text-gray-700">EDA</span>
               <span className="mr-2 rounded border border-gray-300 py-1 px-2 text-gray-700">CQRS</span>
@@ -162,7 +162,7 @@ const SystemArchitecture = () => (
       <div className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-lg border border-gray-200 bg-gray-50 p-8 flex items-center justify-center">
         <div className="text-center">
           <Layers className="w-24 h-24 text-cyan-500 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-slate-900">Monolith &rarr; Modular &rarr; Microservices</h3>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">Monolith &rarr; Modular &rarr; Microservices</h3>
           <p className="text-gray-500 mt-2">An evolutionary path that manages complexity and technical debt.</p>
         </div>
       </div>
@@ -174,8 +174,8 @@ const DataArchitecture = () => (
   <Section id="data" title="Data Sourcing & Pipelines" subtitle="The System's Lifeblood" bgColor="bg-gray-50">
     <div className="flex flex-col md:flex-row items-center justify-center gap-8">
       {/* Data Sources */}
-      <div className="w-full md:w-1/4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-        <h3 className="text-xl font-bold text-slate-900 mb-4 text-center">Consolidated Data Sources</h3>
+      <div className="w-full md:w-1/4 bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 text-center font-serif">Consolidated Data Sources</h3>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-center">
             <Database className="w-5 h-5 mr-3 text-cyan-500"/>
@@ -203,9 +203,9 @@ const DataArchitecture = () => (
         <ArrowRight className="w-12 h-12 text-cyan-500" />
       </div>
       {/* Ingestion Engine */}
-      <div className="w-full md:w-1/3 bg-white p-6 rounded-lg border border-gray-200 shadow-sm text-center">
+      <div className="w-full md:w-1/3 bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm text-center">
         <Zap className="w-16 h-16 mx-auto mb-4 text-cyan-500"/>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Kafka Ingestion Engine</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-serif">Kafka Ingestion Engine</h3>
         <p className="text-gray-600 mb-4">
           A fault-tolerant, high-performance data pipeline built on <strong>Apache Kafka</strong>. It provides a durable, replayable log for all system events, enhanced by <strong>Kafka Connect</strong> for reliability and <strong>Schema Registry</strong> for data governance.
         </p>
@@ -217,8 +217,8 @@ const DataArchitecture = () => (
         <ArrowRight className="w-12 h-12 text-cyan-500" />
       </div>
       {/* Database Storage */}
-      <div className="w-full md:w-1/4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-        <h3 className="text-xl font-bold text-slate-900 mb-4 text-center">Polyglot Persistence</h3>
+      <div className="w-full md:w-1/4 bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 shadow-sm">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 text-center font-serif">Polyglot Persistence</h3>
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-center">
             <Server className="w-5 h-5 mr-3 text-cyan-500"/>
@@ -290,13 +290,13 @@ const TechStack = () => {
     <Section id="tech" title="Technology Stack & Implementation" subtitle="The Engine Room">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {stack.map((tech, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 hover:border-cyan-500 hover:shadow-lg transition-all duration-300">
+          <div key={index} className="bg-white dark:bg-[#0A0D14] p-6 rounded-lg border border-gray-200 hover:border-cyan-500 hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 mr-4 inline-flex items-center justify-center rounded-full bg-gray-100 text-cyan-500">
                 {tech.icon}
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900">{tech.name}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif">{tech.name}</h3>
                 <p className="text-sm text-cyan-600">{tech.category}</p>
               </div>
             </div>
@@ -353,10 +353,10 @@ const Security = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {securityGroups.map((group, index) => (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+            <div key={index} className="bg-white dark:bg-[#0A0D14] rounded-lg border border-gray-200 p-6 shadow-sm">
               <div className="flex items-center mb-4">
                 {group.icon}
-                <h3 className="text-xl font-bold text-slate-900 ml-4">{group.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 ml-4 font-serif">{group.title}</h3>
               </div>
               <ul className="space-y-2 list-disc list-inside text-gray-600">
                 {group.items.map((item, i) => <li key={i}>{item}</li>)}
@@ -409,10 +409,10 @@ const Implementation = () => {
             <div key={index} className={`mb-8 flex justify-between items-center w-full ${index % 2 === 0 ? 'flex-row-reverse left-timeline' : 'right-timeline'}`}>
               <div className="order-1 w-5/12"></div>
               <div className="z-20 flex items-center order-1 bg-cyan-500 shadow-xl w-12 h-12 rounded-full">
-                <h1 className="mx-auto font-bold text-lg text-white">{item.phase}</h1>
+                
               </div>
-              <div className="order-1 bg-white border border-gray-200 rounded-lg shadow-xl w-5/12 px-6 py-4">
-                <h3 className="mb-3 font-bold text-slate-900 text-xl">
+              <div className="order-1 bg-white dark:bg-[#0A0D14] border border-gray-200 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                <h3 className="mb-3 font-bold text-slate-900 dark:text-slate-100 text-xl font-serif">
                   {item.title} <span className="text-sm text-cyan-600">({item.duration})</span>
                 </h3>
                 <ul className="text-sm leading-snug tracking-wide text-gray-600 list-disc list-inside">
@@ -432,7 +432,7 @@ const Implementation = () => {
 export default function ArchitectingModernHedgeFundDesk() {
   return (
     <ArticleFrame slug="architecting-modern-hedge-fund-desk-system-design">
-      <div className="bg-white -mx-4 sm:-mx-6 lg:-mx-8">
+      <div className="bg-white dark:bg-[#0A0D14] -mx-4 sm:-mx-6 lg:-mx-8">
         <Hero />
         <CoreArchitecture />
         <SystemArchitecture />

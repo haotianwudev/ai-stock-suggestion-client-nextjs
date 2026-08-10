@@ -8,7 +8,7 @@ const Section = ({ title, icon: Icon, children }: { title: string; icon: any; ch
     <div className="container mx-auto px-6">
       <div className="flex items-center mb-8">
         <Icon className="w-8 h-8 text-sky-500 mr-4" />
-        <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 font-serif">{title}</h2>
       </div>
       <div className="space-y-8">
         {children}
@@ -18,7 +18,7 @@ const Section = ({ title, icon: Icon, children }: { title: string; icon: any; ch
 );
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-white rounded-xl shadow-lg overflow-hidden p-6 md:p-8 ${className}`}>
+  <div className={`bg-white dark:bg-[#0A0D14] rounded-xl shadow-lg overflow-hidden p-6 md:p-8 ${className}`}>
     {children}
   </div>
 );
@@ -32,14 +32,14 @@ const Verdict = ({ makesSense }: { makesSense: boolean }) => (
     }}
   >
     {makesSense ?
-      <CheckCircle className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" /> :
-      <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+      <CheckCircle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] flex-shrink-0 mt-1" /> :
+      <XCircle className="w-6 h-6 text-[#BC4128] dark:text-[#E2694A] flex-shrink-0 mt-1" />
     }
     <div>
       <h4 className={`text-lg font-semibold ${makesSense ? 'text-emerald-800' : 'text-red-800'}`}>
         {makesSense ? 'Makes Sense (with caveats)' : 'Doesn\'t Make Sense'}
       </h4>
-      <p className={`mt-1 text-sm ${makesSense ? 'text-emerald-700' : 'text-red-700'}`}>
+      <p className={`mt-1 text-sm ${makesSense ? 'text-[#1D8A70] dark:text-[#3CBF9C]' : 'text-[#BC4128] dark:text-[#E2694A]'}`}>
         {makesSense ?
           'This pattern has a statistical basis, but may not be a wise trading strategy.' :
           'This adage is more myth than reality or is a flawed strategy.'
@@ -50,9 +50,9 @@ const Verdict = ({ makesSense }: { makesSense: boolean }) => (
 );
 
 const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] }) => (
-  <div className="overflow-x-auto rounded-lg border border-slate-200">
-    <table className="w-full text-sm text-left text-slate-600">
-      <thead className="bg-slate-50 text-xs text-slate-700 uppercase tracking-wider">
+  <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
+    <table className="w-full text-sm text-left text-slate-600 dark:text-slate-400">
+      <thead className="bg-slate-50 dark:bg-[#14171B] text-xs text-slate-700 dark:text-slate-300 uppercase tracking-wider">
         <tr>
           {headers.map((header, i) => (
             <th key={i} scope="col" className="px-6 py-3">{header}</th>
@@ -61,9 +61,9 @@ const StyledTable = ({ headers, data }: { headers: string[]; data: string[][] })
       </thead>
       <tbody>
         {data.map((row, i) => (
-          <tr key={i} className="bg-white border-b border-slate-200 hover:bg-slate-50">
+          <tr key={i} className="bg-white dark:bg-[#0A0D14] border-b border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:bg-[#14171B]">
             {row.map((cell, j) => (
-              <td key={j} className={`px-6 py-4 ${j > 0 ? 'font-mono' : 'font-medium text-slate-900'}`}>
+              <td key={j} className={`px-6 py-4 ${j > 0 ? 'font-mono' : 'font-medium text-slate-900 dark:text-slate-100'}`}>
                 {cell}
               </td>
             ))}
@@ -78,16 +78,16 @@ const SellInMay = () => (
   <Card>
     <div className="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 className="text-2xl font-semibold text-slate-800 mb-2">&ldquo;Sell in May and Go Away&rdquo;</h3>
-        <p className="text-slate-600">
+        <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2 font-serif">&ldquo;Sell in May and Go Away&rdquo;</h3>
+        <p className="text-slate-600 dark:text-slate-400">
           This famous adage suggests selling stocks around May 1st and reinvesting around Halloween (Nov 1st).
           The Nov-Apr period is often called the &ldquo;best six months.&rdquo;
         </p>
         <Verdict makesSense={false} />
       </div>
       <div>
-        <h4 className="font-semibold text-slate-700 mb-3">Why it seems plausible:</h4>
-        <ul className="space-y-2 text-sm text-slate-600">
+        <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-3">Why it seems plausible:</h4>
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li className="flex items-start">
             <TrendingUp className="w-4 h-4 mr-2 mt-0.5 text-amber-500 flex-shrink-0" />
             <p><strong>Summer Doldrums:</strong> Historically, lower trading volumes and listlessness during summer vacation months.</p>
@@ -101,8 +101,8 @@ const SellInMay = () => (
     </div>
 
     <div className="mt-8">
-      <h4 className="font-semibold text-slate-700 mb-4">The Data: Relative vs. Absolute Performance</h4>
-      <p className="text-slate-600 mb-4 text-sm">
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-4">The Data: Relative vs. Absolute Performance</h4>
+      <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
         While the Nov-Apr period has shown higher average returns, the May-Oct period is still positive on average.
         Exiting the market means forfeiting these gains, which is devastating long-term due to compounding.
       </p>
@@ -117,8 +117,8 @@ const SellInMay = () => (
     </div>
 
     <div className="mt-8">
-      <h4 className="font-semibold text-slate-700 mb-4">Critical Verdict: Buy-and-Hold Wins</h4>
-      <p className="text-slate-600 mb-4 text-sm">
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-4">Critical Verdict: Buy-and-Hold Wins</h4>
+      <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
         &ldquo;Time in the market beats timing the market.&rdquo; The cost of being out of the market during the &ldquo;weaker&rdquo;
         but still positive months is immense over time.
       </p>
@@ -137,18 +137,18 @@ const JanuaryEffect = () => (
   <Card>
     <div className="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 className="text-2xl font-semibold text-slate-800 mb-2">The January Effect</h3>
-        <p className="text-slate-600">
+        <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2 font-serif">The January Effect</h3>
+        <p className="text-slate-600 dark:text-slate-400">
           A historical tendency for stocks, especially small-caps, to rise in January. The &ldquo;January Barometer&rdquo;
           suggests January&apos;s performance predicts the full year.
         </p>
         <Verdict makesSense={false} />
       </div>
       <div>
-        <h4 className="font-semibold text-slate-700 mb-3">Historical Explanations:</h4>
-        <ul className="space-y-2 text-sm text-slate-600">
+        <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-3">Historical Explanations:</h4>
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li className="flex items-start">
-            <TrendingUp className="w-4 h-4 mr-2 mt-0.5 text-emerald-500 flex-shrink-0" />
+            <TrendingUp className="w-4 h-4 mr-2 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] flex-shrink-0" />
             <p><strong>Tax-Loss Harvesting:</strong> Investors sell losers in December for tax purposes and reinvest in January.</p>
           </li>
           <li className="flex items-start">
@@ -164,8 +164,8 @@ const JanuaryEffect = () => (
     </div>
 
     <div className="mt-8">
-      <h4 className="font-semibold text-slate-700 mb-4">The Data: A Fading Anomaly</h4>
-      <p className="text-slate-600 mb-4 text-sm">
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-4">The Data: A Fading Anomaly</h4>
+      <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
         The January Effect is a classic example of an anomaly decaying as it becomes well-known.
         Investors now act in December, smoothing out the effect. It has largely disappeared in recent decades.
       </p>
@@ -183,17 +183,17 @@ const SantaRally = () => (
   <Card>
     <div className="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 className="text-2xl font-semibold text-slate-800 mb-2">The Santa Claus Rally</h3>
-        <p className="text-slate-600">
+        <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2 font-serif">The Santa Claus Rally</h3>
+        <p className="text-slate-600 dark:text-slate-400">
           A tendency for the market to rise during the last 5 trading days of December and the first 2 of January.
         </p>
         <Verdict makesSense={true} />
       </div>
       <div>
-        <h4 className="font-semibold text-slate-700 mb-3">Why it persists:</h4>
-        <ul className="space-y-2 text-sm text-slate-600">
+        <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-3">Why it persists:</h4>
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li className="flex items-start">
-            <Gift className="w-4 h-4 mr-2 mt-0.5 text-red-500 flex-shrink-0" />
+            <Gift className="w-4 h-4 mr-2 mt-0.5 text-[#BC4128] dark:text-[#E2694A] flex-shrink-0" />
             <p><strong>Holiday Spirit:</strong> General optimism among retail investors.</p>
           </li>
           <li className="flex items-start">
@@ -201,7 +201,7 @@ const SantaRally = () => (
             <p><strong>Low Institutional Volume:</strong> &ldquo;The big guys are on vacation,&rdquo; leaving the market to more bullish retail investors.</p>
           </li>
           <li className="flex items-start">
-            <TrendingUp className="w-4 h-4 mr-2 mt-0.5 text-emerald-500 flex-shrink-0" />
+            <TrendingUp className="w-4 h-4 mr-2 mt-0.5 text-[#1D8A70] dark:text-[#3CBF9C] flex-shrink-0" />
             <p><strong>End of Tax Selling:</strong> Selling pressure from tax-loss harvesting subsides.</p>
           </li>
         </ul>
@@ -209,8 +209,8 @@ const SantaRally = () => (
     </div>
 
     <div className="mt-8">
-      <h4 className="font-semibold text-slate-700 mb-4">The Data: A Robust Anomaly</h4>
-      <p className="text-slate-600 mb-4 text-sm">
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-4">The Data: A Robust Anomaly</h4>
+      <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
         Unlike the January Effect, the Santa Claus Rally has remained surprisingly consistent.
         The saying goes, &ldquo;If Santa should fail to call, bears may come to Broad and Wall,&rdquo;
         as failed rallies have sometimes preceded down years.
@@ -218,15 +218,15 @@ const SantaRally = () => (
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
         <div className="bg-slate-100 p-4 rounded-lg">
           <p className="text-2xl font-bold text-sky-600">+1.3%</p>
-          <p className="text-sm text-slate-600">Avg. Return</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">Avg. Return</p>
         </div>
         <div className="bg-slate-100 p-4 rounded-lg">
           <p className="text-2xl font-bold text-sky-600">~79%</p>
-          <p className="text-sm text-slate-600">Win Rate</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">Win Rate</p>
         </div>
         <div className="bg-slate-100 p-4 rounded-lg col-span-2 md:col-span-1">
           <p className="text-2xl font-bold text-sky-600">7 Days</p>
-          <p className="text-sm text-slate-600">Typical Duration</p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">Typical Duration</p>
         </div>
       </div>
     </div>
@@ -237,16 +237,16 @@ const SeptemberEffect = () => (
   <Card>
     <div className="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 className="text-2xl font-semibold text-slate-800 mb-2">The September Effect</h3>
-        <p className="text-slate-600">
+        <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2 font-serif">The September Effect</h3>
+        <p className="text-slate-600 dark:text-slate-400">
           September has the distinction of being the market&apos;s worst-performing month on average.
           The reputation for &ldquo;August being bearish&rdquo; is a myth; August is typically flat.
         </p>
         <Verdict makesSense={true} />
       </div>
       <div>
-        <h4 className="font-semibold text-slate-700 mb-3">Potential Reasons:</h4>
-        <ul className="space-y-2 text-sm text-slate-600">
+        <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-3">Potential Reasons:</h4>
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li className="flex items-start">
             <Building className="w-4 h-4 mr-2 mt-0.5 text-gray-500 flex-shrink-0" />
             <p><strong>Mutual Fund Year-End:</strong> Many funds end their fiscal year on Sep 30, leading to selling of losing positions.</p>
@@ -260,8 +260,8 @@ const SeptemberEffect = () => (
     </div>
 
     <div className="mt-8">
-      <h4 className="font-semibold text-slate-700 mb-4">The Data: The Worst Month</h4>
-      <p className="text-slate-600 mb-4 text-sm">
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-4">The Data: The Worst Month</h4>
+      <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
         September is the only month with a consistently negative average return. However, it&apos;s still positive
         about 45% of the time, making it a poor bet for market timing.
       </p>
@@ -294,8 +294,8 @@ const MonthlyPerformance = () => {
 
   return (
     <Card>
-      <h3 className="text-2xl font-semibold text-slate-800 mb-2">Month-by-Month Performance</h3>
-      <p className="text-slate-600 mb-6">
+      <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-200 mb-2 font-serif">Month-by-Month Performance</h3>
+      <p className="text-slate-600 dark:text-slate-400 mb-6">
         While certain adages focus on specific periods, looking at the average performance of every month reveals
         the full seasonal picture. This data (based on the S&amp;P 500 since 1950 and sorted by average return)
         highlights the market&apos;s general upward trend and pinpoints which months have historically been strongest and weakest.
@@ -325,7 +325,7 @@ const Conclusion = () => (
         <Card className="bg-slate-900 border border-slate-700">
           <div className="flex items-center mb-4">
             <AlertTriangle className="w-6 h-6 text-amber-400 mr-3" />
-            <h3 className="text-xl font-semibold text-white">The Flaw of Market Timing</h3>
+            <h3 className="text-xl font-semibold text-white font-serif">The Flaw of Market Timing</h3>
           </div>
           <p className="text-slate-300">
             The single most important conclusion is that attempting to time the market based on calendar patterns
@@ -337,8 +337,8 @@ const Conclusion = () => (
 
         <Card className="bg-slate-900 border border-slate-700">
           <div className="flex items-center mb-4">
-            <CheckCircle className="w-6 h-6 text-emerald-400 mr-3" />
-            <h3 className="text-xl font-semibold text-white">A Better Approach</h3>
+            <CheckCircle className="w-6 h-6 text-[#1D8A70] dark:text-[#3CBF9C] mr-3" />
+            <h3 className="text-xl font-semibold text-white font-serif">A Better Approach</h3>
           </div>
           <p className="text-slate-300">
             Use seasonal awareness to{' '}
@@ -362,7 +362,7 @@ const Conclusion = () => (
 export default function SeasonsOfTheMarket() {
   return (
     <ArticleFrame slug="seasons-market-calendar-anomalies-trading-adages">
-      <div className="bg-slate-50 font-sans antialiased -mx-4 sm:-mx-6 lg:-mx-8">
+      <div className="bg-slate-50 dark:bg-[#14171B] font-sans antialiased -mx-4 sm:-mx-6 lg:-mx-8">
         <Section title="The 'Best Six Months' Anomaly" icon={Moon}>
           <SellInMay />
         </Section>

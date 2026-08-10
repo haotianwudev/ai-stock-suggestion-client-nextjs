@@ -20,7 +20,7 @@ const SectionAccordion: FC<SectionAccordionProps> = ({ title, isOpen, toggle, ic
     >
       <div className="flex items-center space-x-4">
         <div className="text-cyan-600 dark:text-cyan-400">{icon}</div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-serif">{title}</h2>
       </div>
       <ChevronDown
         className={`w-6 h-6 text-cyan-600 dark:text-cyan-400 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -47,7 +47,7 @@ const Chapter: FC<ChapterProps> = ({ id, title, openSection, toggleSection, chil
       onClick={() => toggleSection(id)}
       className="w-full p-4 text-left flex justify-between items-center bg-gray-100 dark:bg-gray-700/50 hover:bg-gray-200 dark:hover:bg-gray-600/50 transition-colors duration-300"
     >
-      <h3 className="text-xl font-semibold text-cyan-700 dark:text-cyan-300">{title}</h3>
+      <h3 className="text-xl font-semibold text-cyan-700 dark:text-cyan-300 font-serif">{title}</h3>
       <ChevronDown
         className={`w-5 h-5 text-cyan-700 dark:text-cyan-300 transform transition-transform duration-300 ${openSection === id ? 'rotate-180' : ''}`}
       />

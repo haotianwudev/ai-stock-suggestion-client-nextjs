@@ -210,7 +210,7 @@ const TacticalPlaybook = () => (
           icon: <Anchor className="w-5 h-5 text-[#D08F52]" />
         }
       ].map((play, i) => (
-        <div key={i} className="bg-white/5 border border-white/10 p-5 rounded-lg">
+        <div key={i} className="bg-white dark:bg-[#0A0D14]/5 border border-white/10 p-5 rounded-lg">
           <div className="mb-3">{play.icon}</div>
           <h3 className="font-serif text-base mb-3">{play.title}</h3>
           <div className="space-y-2.5 text-sm">
@@ -427,9 +427,7 @@ export default function FinancialRetrospective2025() {
             <BarChart3 className="w-4 h-4 text-[#A8672E] dark:text-[#D08F52]" />
             2025 Market Retrospective
           </div>
-          <h1 className="font-serif text-3xl md:text-4xl text-gray-900 dark:text-white leading-tight mb-4">
-            The Year of the <span className="text-[#A8672E] dark:text-[#D08F52]">Great Pivot.</span>
-          </h1>
+          
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             The death of the linear narrative. From the &ldquo;DeepSeek&rdquo; shock to the &ldquo;Gold Super-Cycle,&rdquo; 2025 was a masterclass in regime change.
           </p>

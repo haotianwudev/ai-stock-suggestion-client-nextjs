@@ -12,7 +12,7 @@ export default function InvestmentClockFramework() {
       title: "Phase I: Reflation",
       subtitle: "Growth ↓ | Inflation ↓",
       economicState: "Deep Recession / Trough",
-      color: "bg-blue-50 border-blue-200 text-blue-900",
+      color: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-blue-200 text-blue-900",
       accent: "blue",
       icon: <Wind className="w-8 h-8" />,
       summary: "The economy suffers from excess capacity and falling demand. Policymakers respond with aggressive monetary easing to jumpstart activity. This phase typically emerges from financial crises or severe economic contractions.",
@@ -29,7 +29,7 @@ export default function InvestmentClockFramework() {
       title: "Phase II: Recovery",
       subtitle: "Growth ↑ | Inflation ↓",
       economicState: "Early-Cycle Expansion",
-      color: "bg-emerald-50 border-emerald-200 text-emerald-900",
+      color: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-emerald-900",
       accent: "emerald",
       icon: <TrendingUp className="w-8 h-8" />,
       summary: "The 'Goldilocks' phase where everything works. Growth accelerates due to previous stimulus, but inflation remains low because the output gap is still wide. Corporate margins expand as operating leverage kicks in.",
@@ -46,7 +46,7 @@ export default function InvestmentClockFramework() {
       title: "Phase III: Overheat",
       subtitle: "Growth ↑ | Inflation ↑",
       economicState: "Late-Cycle Boom",
-      color: "bg-orange-50 border-orange-200 text-orange-900",
+      color: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-orange-200 text-orange-900",
       accent: "orange",
       icon: <Flame className="w-8 h-8" />,
       summary: "The output gap closes and the economy runs 'hot.' Demand exceeds supply, leading to wage growth and rising input costs. The central bank shifts to a hawkish stance to prevent runaway inflation.",
@@ -63,7 +63,7 @@ export default function InvestmentClockFramework() {
       title: "Phase IV: Stagflation",
       subtitle: "Growth ↓ | Inflation ↑",
       economicState: "Economic Contraction",
-      color: "bg-rose-50 border-rose-200 text-rose-900",
+      color: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-rose-900",
       accent: "rose",
       icon: <ShieldAlert className="w-8 h-8" />,
       summary: "The most challenging phase for investors. Growth slows due to high rates, supply shocks, or policy mistakes, but inflation stays high. Central banks face the impossible choice between fighting inflation and supporting growth.",
@@ -86,55 +86,7 @@ export default function InvestmentClockFramework() {
   return (
     <ArticleFrame slug="investment-clock-framework-quantitative-macro-regime-detection">
       <div className="bg-transparent font-sans dark:text-slate-300">
-        <header className="py-24 px-6 bg-white dark:bg-transparent border-b border-neutral-200 dark:border-white/10 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-            <div>
-              <div className="inline-block px-3 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-md mb-6">
-                Institutional Research Document
-              </div>
-              <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
-                Macro <br/> <span className="text-indigo-600 dark:text-indigo-400">Cycles.</span>
-              </h1>
-              <p className="text-xl text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-lg mb-4">
-                A comprehensive technical guide to the Investment Clock—a quantitative framework for identifying market regimes through growth and inflation volatility.
-              </p>
-              <div className="flex items-center gap-4 text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mt-8 border-t border-neutral-100 dark:border-white/10 pt-8">
-                <span className="flex items-center gap-2">
-                  <Activity className="w-4 h-4" /> Live Macro Model
-                </span>
-                <span className="w-1 h-1 bg-neutral-300 dark:bg-neutral-700 rounded-full"></span>
-                <span>Updated Q1 2026</span>
-              </div>
-            </div>
-            <div className="relative flex justify-center">
-              <div className="aspect-square w-full max-w-[440px] bg-neutral-100 dark:bg-[#14171B] rounded-full border-8 border-white dark:border-[#1A1D21] shadow-2xl dark:shadow-none flex items-center justify-center p-8 relative">
-                <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full h-full">
-                  {phases.map((p, i) => (
-                    <div 
-                      key={i} 
-                      onMouseEnter={() => setActivePhase(i)}
-                      className={`rounded-2xl flex flex-col items-center justify-center p-4 transition-all duration-500 cursor-pointer ${
-                        activePhase === i ? 'scale-110 shadow-xl dark:shadow-none ' + p.color : 'opacity-30 grayscale blur-[1px]'
-                      }`}
-                    >
-                      {p.icon}
-                      <span className="text-[10px] font-black mt-2 uppercase tracking-tighter hidden sm:block">
-                        {p.title.split(":")[1]}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                {/* Visual Clock Hand */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-12">
-                  <div 
-                    className="w-1.5 h-1/2 bg-indigo-600 rounded-full origin-bottom transition-transform duration-700 ease-in-out" 
-                    style={{ transform: `rotate(${activePhase * 90 + 45}deg) translateY(-50%)` }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
+        
 
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
           <InfographicSlot alt="Investment Clock Framework Infographic" />
@@ -144,25 +96,25 @@ export default function InvestmentClockFramework() {
           {/* Section 1: The Core Research */}
           <section id="theory" className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-1">
-              <h2 className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4">
+              <h2 className="text-[10px] font-black text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.3em] mb-4 font-serif">
                 01. Theoretical Foundation
               </h2>
-              <h3 className="text-4xl font-extrabold mb-6 leading-tight dark:text-white">
+              <h3 className="text-4xl font-extrabold mb-6 leading-tight dark:text-white font-serif">
                 The Cartesian Macro Model
               </h3>
               <p className="text-neutral-500 dark:text-neutral-400 mb-6 leading-relaxed">
                 The Investment Clock framework, pioneered by Merrill Lynch in 2004, revolutionized institutional asset allocation by reducing the complexity of global macro analysis into a simple two-dimensional coordinate system. The clock assumes that the primary drivers of investment returns are the cyclical movements of <strong>Global Growth</strong> (relative to trend) and <strong>Inflation</strong>.
               </p>
-              <div className="p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-200 dark:border-indigo-900/30">
-                <h5 className="font-bold text-indigo-900 dark:text-indigo-400 mb-3">Historical Context</h5>
-                <p className="text-sm text-indigo-700 dark:text-indigo-300 leading-relaxed">
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-indigo-900/20 rounded-2xl border border-indigo-200 dark:border-indigo-900/30">
+                <h5 className="font-bold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3">Historical Context</h5>
+                <p className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 leading-relaxed">
                   The framework emerged from the need to systematize tactical asset allocation decisions across business cycles. Unlike static portfolio models, the Investment Clock provides a dynamic roadmap for rotating between asset classes based on macroeconomic regime changes.
                 </p>
               </div>
             </div>
             <div className="md:col-span-2 grid sm:grid-cols-2 gap-8">
               <div className="p-10 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-3xl shadow-sm dark:shadow-none hover:border-indigo-200 dark:hover:border-indigo-900/50 transition-colors">
-                <Activity className="w-10 h-10 text-indigo-600 dark:text-indigo-400 mb-6" />
+                <Activity className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-6" />
                 <h4 className="text-xl font-bold mb-3 dark:text-white">Growth (The Output Gap)</h4>
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed italic mb-4">
                   "It is not absolute GDP that matters, but the deviation from potential."
@@ -181,7 +133,7 @@ export default function InvestmentClockFramework() {
                 </div>
               </div>
               <div className="p-10 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-3xl shadow-sm dark:shadow-none hover:border-indigo-200 dark:hover:border-indigo-900/50 transition-colors">
-                <Scale className="w-10 h-10 text-indigo-600 dark:text-indigo-400 mb-6" />
+                <Scale className="w-10 h-10 text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] mb-6" />
                 <h4 className="text-xl font-bold mb-3 dark:text-white">Inflation (The Constraint)</h4>
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed italic mb-4">
                   "Inflation acts as the terminal speed limit for any expansion."
@@ -205,10 +157,10 @@ export default function InvestmentClockFramework() {
           <section id="phases" className="space-y-12">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
               <div>
-                <h2 className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4">
+                <h2 className="text-[10px] font-black text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.3em] mb-4 font-serif">
                   02. Phase Analysis
                 </h2>
-                <h3 className="text-4xl font-extrabold dark:text-white">The Four Market Regimes</h3>
+                <h3 className="text-4xl font-extrabold dark:text-white font-serif">The Four Market Regimes</h3>
               </div>
               <div className="flex bg-neutral-200 dark:bg-neutral-800 p-1 rounded-xl">
                 {phases.map((_, i) => (
@@ -216,7 +168,7 @@ export default function InvestmentClockFramework() {
                     key={i} 
                     onClick={() => setActivePhase(i)}
                     className={`px-6 py-2 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
-                      activePhase === i ? 'bg-white dark:bg-neutral-700 text-indigo-600 dark:text-indigo-300 shadow-sm dark:shadow-none' : 'text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
+                      activePhase === i ? 'bg-white dark:bg-neutral-700 text-[#A8672E] dark:text-[#D08F52] dark:text-indigo-300 shadow-sm dark:shadow-none' : 'text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
                     }`}
                   >
                     Phase {i + 1}
@@ -234,7 +186,7 @@ export default function InvestmentClockFramework() {
                     </div>
                     <div>
                       <h4 className="text-4xl font-black tracking-tight dark:text-white">{phases[activePhase].title}</h4>
-                      <p className="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.2em] text-xs">
+                      <p className="font-bold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.2em] text-xs">
                         {phases[activePhase].subtitle}
                       </p>
                     </div>
@@ -252,7 +204,7 @@ export default function InvestmentClockFramework() {
                         <span className="text-[10px] font-black uppercase text-neutral-400 dark:text-neutral-500 tracking-widest block mb-3">
                           Central Bank
                         </span>
-                        <div className="font-bold text-neutral-900 dark:text-white border-l-4 border-indigo-500 pl-4 py-1">
+                        <div className="font-bold text-neutral-900 dark:text-white border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 py-1">
                           {phases[activePhase].centralBank}
                         </div>
                       </div>
@@ -260,14 +212,14 @@ export default function InvestmentClockFramework() {
                         <span className="text-[10px] font-black uppercase text-neutral-400 dark:text-neutral-500 tracking-widest block mb-3">
                           Economic State
                         </span>
-                        <div className="font-bold text-neutral-900 dark:text-white border-l-4 border-indigo-500 pl-4 py-1">
+                        <div className="font-bold text-neutral-900 dark:text-white border-l-4 border-[#A8672E] dark:border-[#D08F52] pl-4 py-1">
                           {phases[activePhase].economicState}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-8 bg-white/50 dark:bg-black/20 rounded-[2rem] border border-white/50 dark:border-white/10 backdrop-blur-sm">
+                  <div className="p-8 bg-white dark:bg-[#0A0D14]/50 dark:bg-black/20 rounded-[2rem] border border-white/50 dark:border-white/10 backdrop-blur-sm">
                     <h5 className="font-bold mb-4 flex items-center gap-2 uppercase text-xs tracking-widest text-neutral-500 dark:text-neutral-400">
                       <Target className="w-4 h-4" /> Quantitative Rationale
                     </h5>
@@ -282,7 +234,7 @@ export default function InvestmentClockFramework() {
                   <div className="space-y-4">
                     {phases[activePhase].optimalAssets.map((asset, i) => (
                       <div key={i} className="bg-white dark:bg-[#14171B] p-6 rounded-2xl shadow-sm dark:shadow-none border border-black/5 dark:border-white/10 flex gap-5 group hover:shadow-md dark:hover:shadow-none transition-shadow">
-                        <div className="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-100 dark:border-emerald-900/40">
+                        <div className="w-10 h-10 rounded-full bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C] flex items-center justify-center shrink-0 border border-emerald-100 dark:border-emerald-900/40">
                           <TrendingUp className="w-5 h-5" />
                         </div>
                         <div>
@@ -292,14 +244,14 @@ export default function InvestmentClockFramework() {
                       </div>
                     ))}
                     <div className="bg-rose-100/40 dark:bg-rose-900/20 p-6 rounded-2xl border border-rose-200 dark:border-rose-900/30 flex gap-5 mt-4">
-                      <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 border border-rose-200 dark:border-rose-900/50">
+                      <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] flex items-center justify-center shrink-0 border border-rose-200 dark:border-rose-900/50">
                         <TrendingDown className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="font-bold text-rose-900 dark:text-rose-400 uppercase text-xs tracking-widest mb-1">
+                        <div className="font-bold text-rose-900 dark:text-[#BC4128] dark:text-[#E2694A] uppercase text-xs tracking-widest mb-1">
                           Structural Underweight
                         </div>
-                        <div className="text-sm text-rose-700 dark:text-rose-400 font-medium">{phases[activePhase].subOptimal}</div>
+                        <div className="text-sm text-[#BC4128] dark:text-[#E2694A] dark:text-[#BC4128] dark:text-[#E2694A] font-medium">{phases[activePhase].subOptimal}</div>
                       </div>
                     </div>
                   </div>
@@ -310,12 +262,12 @@ export default function InvestmentClockFramework() {
 
           {/* Section 3: Quantitative Implementation Guide */}
           <section id="quant" className="bg-neutral-900 rounded-[4rem] p-10 md:p-20 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[180px] opacity-10 -mt-64 -mr-64"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A8672E] dark:bg-[#D08F52] rounded-full blur-[180px] opacity-10 -mt-64 -mr-64"></div>
             <div className="relative z-10">
-              <h2 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.4em] mb-4 text-center">
+              <h2 className="text-[10px] font-black text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.4em] mb-4 text-center font-serif">
                 03. Professional Implementation
               </h2>
-              <h3 className="text-5xl font-black mb-8 text-center tracking-tight">Quantitative Workflow</h3>
+              <h3 className="text-5xl font-black mb-8 text-center tracking-tight font-serif">Quantitative Workflow</h3>
               <p className="text-lg text-neutral-300 text-center max-w-4xl mx-auto mb-20 leading-relaxed">
                 Transforming the Investment Clock from conceptual framework into actionable trading signals requires a systematic approach to data processing, statistical normalization, and portfolio implementation. Here's the institutional-grade methodology used by asset managers worldwide.
               </p>
@@ -348,40 +300,40 @@ export default function InvestmentClockFramework() {
                   }
                 ].map((item, i) => (
                   <div key={i} className="space-y-6 group">
-                    <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-[1.25rem] flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                    <div className="w-16 h-16 bg-white dark:bg-[#0A0D14]/5 border border-white/10 rounded-[1.25rem] flex items-center justify-center text-[#A8672E] dark:text-[#D08F52] group-hover:bg-[#A8672E] dark:bg-[#D08F52] group-hover:text-white transition-all duration-500">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold border-b border-white/10 pb-4">{item.step}</h4>
                     <p className="text-neutral-400 text-sm leading-relaxed mb-4">{item.desc}</p>
-                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                    <div className="p-4 bg-white dark:bg-[#0A0D14]/5 rounded-xl border border-white/10">
                       <p className="text-xs text-neutral-500 leading-relaxed">{item.details}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-20 p-10 bg-white/5 border border-white/10 rounded-[3rem] flex flex-col md:flex-row items-center gap-12">
+              <div className="mt-20 p-10 bg-white dark:bg-[#0A0D14]/5 border border-white/10 rounded-[3rem] flex flex-col md:flex-row items-center gap-12">
                 <div className="shrink-0 text-center px-10 border-r border-white/10 hidden lg:block">
-                  <div className="text-5xl font-black text-indigo-400 tracking-tighter">0.2 SD</div>
+                  <div className="text-5xl font-black text-[#A8672E] dark:text-[#D08F52] tracking-tighter">0.2 SD</div>
                   <div className="text-[10px] font-bold uppercase text-neutral-500 tracking-widest mt-2">
                     Hysteresis Band
                   </div>
                 </div>
                 <div>
                   <h5 className="font-bold text-lg mb-3 flex items-center gap-3">
-                    <Info className="w-5 h-5 text-indigo-400" /> Statistical Risk Mitigation
+                    <Info className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" /> Statistical Risk Mitigation
                   </h5>
                   <p className="text-base text-neutral-400 leading-relaxed max-w-3xl mb-4">
                     Most institutional managers implement a <strong>Hysteresis Band</strong>. A phase transition is only triggered if the macro vector moves at least 0.2 standard deviations across an axis. This prevents excessive turnover and "whipsaw" trading during minor data revisions or cyclical noise.
                   </p>
                   <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <div className="p-4 bg-white/5 rounded-xl">
+                    <div className="p-4 bg-white dark:bg-[#0A0D14]/5 rounded-xl">
                       <h6 className="font-semibold text-sm text-white mb-2">Transaction Cost Management</h6>
                       <p className="text-xs text-neutral-400 leading-relaxed">
                         Frequent rebalancing can erode returns through bid-ask spreads and market impact. The hysteresis band reduces turnover by 40-60% while maintaining signal integrity.
                       </p>
                     </div>
-                    <div className="p-4 bg-white/5 rounded-xl">
+                    <div className="p-4 bg-white dark:bg-[#0A0D14]/5 rounded-xl">
                       <h6 className="font-semibold text-sm text-white mb-2">Data Revision Robustness</h6>
                       <p className="text-xs text-neutral-400 leading-relaxed">
                         Economic data undergoes multiple revisions. The band ensures that portfolio changes are based on statistically significant regime shifts rather than measurement noise.
@@ -396,10 +348,10 @@ export default function InvestmentClockFramework() {
           {/* Section 4: Critical Analysis & Modern Challenges */}
           <section id="critique" className="space-y-16">
             <div className="max-w-3xl">
-              <h2 className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4">
+              <h2 className="text-[10px] font-black text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.3em] mb-4 font-serif">
                 04. Critical Analysis
               </h2>
-              <h3 className="text-4xl font-extrabold mb-8 tracking-tight dark:text-white">
+              <h3 className="text-4xl font-extrabold mb-8 tracking-tight dark:text-white font-serif">
                 The Modern Implementation Gap
               </h3>
               <p className="text-xl text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
@@ -419,7 +371,7 @@ export default function InvestmentClockFramework() {
             <div className="grid md:grid-cols-2 gap-10">
               <div className="p-12 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-[3rem] shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none transition-shadow">
                 <h4 className="text-2xl font-bold mb-6 flex items-center gap-3 dark:text-white">
-                  <Briefcase className="text-indigo-600 dark:text-indigo-400 w-7 h-7" /> The "Time Lag" Problem
+                  <Briefcase className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-7 h-7" /> The "Time Lag" Problem
                 </h4>
                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
                   Macro data (GDP, CPI) is notoriously backward-looking. By the time a 'Recovery' phase is confirmed by official data, equity markets have often already priced in the expansion. This creates a lag where the clock reflects the past rather than the future.
@@ -433,9 +385,9 @@ export default function InvestmentClockFramework() {
                       <li>• Employment: Available first Friday of following month</li>
                     </ul>
                   </div>
-                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
-                    <h6 className="font-semibold text-blue-900 dark:text-blue-400 text-sm mb-2">Practitioner Solutions</h6>
-                    <ul className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
+                  <div className="p-4 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-900/30">
+                    <h6 className="font-semibold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] text-sm mb-2">Practitioner Solutions</h6>
+                    <ul className="text-xs text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 space-y-1">
                       <li>• Nowcasting models using high-frequency data</li>
                       <li>• Credit spreads as real-time growth proxies</li>
                       <li>• Satellite data for economic activity tracking</li>
@@ -447,7 +399,7 @@ export default function InvestmentClockFramework() {
 
               <div className="p-12 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-[3rem] shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none transition-shadow">
                 <h4 className="text-2xl font-bold mb-6 flex items-center gap-3 dark:text-white">
-                  <Zap className="text-indigo-600 dark:text-indigo-400 w-7 h-7" /> Monetary Distortion (QE/QT)
+                  <Zap className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-7 h-7" /> Monetary Distortion (QE/QT)
                 </h4>
                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
                   Central bank bond-buying programs (QE) suppress yields regardless of growth, severing the link between cycles and bond prices. Furthermore, liquidity impulses often override macro fundamentals in the short term, creating "fake" signals.
@@ -475,7 +427,7 @@ export default function InvestmentClockFramework() {
               </div>
             </div>
 
-            <div className="bg-indigo-600 p-12 md:p-20 rounded-[4rem] text-white">
+            <div className="bg-[#A8672E] dark:bg-[#D08F52] p-12 md:p-20 rounded-[4rem] text-white">
               <div className="max-w-4xl mx-auto">
                 <h4 className="text-3xl font-black mb-6 text-center tracking-tight">
                   Complementary Frameworks
@@ -488,7 +440,7 @@ export default function InvestmentClockFramework() {
                     <div className="text-indigo-200 font-black uppercase text-xs tracking-[0.2em]">
                       Framework A
                     </div>
-                    <h5 className="text-xl font-bold border-l-2 border-indigo-400 pl-6">
+                    <h5 className="text-xl font-bold border-l-2 border-[#A8672E] dark:border-[#D08F52] pl-6">
                       Yield Curve Term Structure
                     </h5>
                     <p className="text-sm text-indigo-100/70 leading-relaxed pl-6 mb-4">
@@ -513,7 +465,7 @@ export default function InvestmentClockFramework() {
                     <div className="text-indigo-200 font-black uppercase text-xs tracking-[0.2em]">
                       Framework B
                     </div>
-                    <h5 className="text-xl font-bold border-l-2 border-indigo-400 pl-6">
+                    <h5 className="text-xl font-bold border-l-2 border-[#A8672E] dark:border-[#D08F52] pl-6">
                       Citi Economic Surprise Index
                     </h5>
                     <p className="text-sm text-indigo-100/70 leading-relaxed pl-6 mb-4">
@@ -536,23 +488,23 @@ export default function InvestmentClockFramework() {
                   </div>
                 </div>
                 
-                <div className="mt-12 p-8 bg-white/10 rounded-2xl">
+                <div className="mt-12 p-8 bg-white dark:bg-[#0A0D14]/10 rounded-2xl">
                   <h5 className="font-bold text-lg mb-4 text-center">Integration Strategy</h5>
                   <div className="grid md:grid-cols-3 gap-6 text-sm">
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-white dark:bg-[#0A0D14]/20 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="font-bold">1</span>
                       </div>
                       <p className="text-indigo-100">Use Investment Clock for primary regime identification</p>
                     </div>
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-white dark:bg-[#0A0D14]/20 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="font-bold">2</span>
                       </div>
                       <p className="text-indigo-100">Validate with yield curve positioning and economic surprises</p>
                     </div>
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-white dark:bg-[#0A0D14]/20 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="font-bold">3</span>
                       </div>
                       <p className="text-indigo-100">Adjust position sizing based on signal confluence</p>
@@ -566,18 +518,18 @@ export default function InvestmentClockFramework() {
           {/* Mathematical Framework Section */}
           <section className="space-y-12">
             <div className="max-w-3xl">
-              <h2 className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4">
+              <h2 className="text-[10px] font-black text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] uppercase tracking-[0.3em] mb-4 font-serif">
                 05. Mathematical Framework
               </h2>
-              <h3 className="text-4xl font-extrabold mb-8 tracking-tight dark:text-white">
+              <h3 className="text-4xl font-extrabold mb-8 tracking-tight dark:text-white font-serif">
                 The Quantitative Engine
               </h3>
               <p className="text-xl text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
                 The Investment Clock transforms qualitative macro observations into quantitative signals through standardized statistical measures. This mathematical foundation enables systematic implementation and backtesting across different market regimes.
               </p>
-              <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-2xl">
-                <h5 className="font-bold text-blue-900 dark:text-blue-400 mb-3">Statistical Foundation</h5>
-                <p className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">
+              <div className="p-6 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-2xl">
+                <h5 className="font-bold text-blue-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-3">Statistical Foundation</h5>
+                <p className="text-sm text-[#A8672E] dark:text-[#D08F52] dark:text-blue-300 leading-relaxed">
                   The framework relies on the assumption that economic variables follow approximately normal distributions over business cycle frequencies. Z-score normalization converts raw data into standardized units, enabling cross-temporal and cross-regional comparisons.
                 </p>
               </div>
@@ -586,7 +538,7 @@ export default function InvestmentClockFramework() {
             <div className="grid md:grid-cols-2 gap-10">
               <div className="p-10 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-3xl shadow-sm dark:shadow-none">
                 <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
-                  <LineChart className="text-indigo-600 dark:text-indigo-400 w-6 h-6" /> Z-Score Normalization
+                  <LineChart className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> Z-Score Normalization
                 </h4>
                 <div className="bg-neutral-50 p-6 rounded-xl mb-6 font-mono text-sm">
                   <div className="text-center mb-4">
@@ -606,9 +558,9 @@ export default function InvestmentClockFramework() {
                   Each FRED series is normalized using an exponential-weighted moving Z-score (span=24). Recent data is weighted more heavily than older observations, enabling faster adaptation to regime shifts without HP-filter end-point bias.
                 </p>
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-900/30">
-                    <h6 className="font-semibold text-green-900 dark:text-green-400 text-xs mb-1">Why Exponential Weighting?</h6>
-                    <ul className="text-xs text-green-700 dark:text-green-300 space-y-1">
+                  <div className="p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-900/30">
+                    <h6 className="font-semibold text-green-900 dark:text-[#1D8A70] dark:text-[#3CBF9C] text-xs mb-1">Why Exponential Weighting?</h6>
+                    <ul className="text-xs text-[#1D8A70] dark:text-[#3CBF9C] dark:text-green-300 space-y-1">
                       <li>• No end-point bias (HP filters distort latest 12-24 months)</li>
                       <li>• ~12-month halflife adapts to post-shock regimes quickly</li>
                       <li>• Multi-timeframe signal blending (leading + coincident + lagging)</li>
@@ -619,22 +571,22 @@ export default function InvestmentClockFramework() {
 
               <div className="p-10 bg-white dark:bg-[#14171B] border border-neutral-200 dark:border-white/10 rounded-3xl shadow-sm dark:shadow-none">
                 <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
-                  <Target className="text-indigo-600 dark:text-indigo-400 w-6 h-6" /> Phase Classification
+                  <Target className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> Phase Classification
                 </h4>
                 <div className="space-y-3 text-sm mb-6">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 dark:bg-blue-900/20 rounded-lg">
                     <span className="font-semibold">Reflation:</span>
                     <span className="font-mono">Z<sub>g</sub> &lt; 0, Z<sub>i</sub> &lt; 0</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 dark:bg-emerald-900/20 rounded-lg">
                     <span className="font-semibold">Recovery:</span>
                     <span className="font-mono">Z<sub>g</sub> &gt; 0, Z<sub>i</sub> &lt; 0</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-orange-900/20 rounded-lg">
                     <span className="font-semibold">Overheat:</span>
                     <span className="font-mono">Z<sub>g</sub> &gt; 0, Z<sub>i</sub> &gt; 0</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-rose-50 dark:bg-rose-900/20 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-[#BC4128]/10 dark:bg-[#E2694A]/10 dark:bg-rose-900/20 rounded-lg">
                     <span className="font-semibold">Stagflation:</span>
                     <span className="font-mono">Z<sub>g</sub> &lt; 0, Z<sub>i</sub> &gt; 0</span>
                   </div>
@@ -650,7 +602,7 @@ export default function InvestmentClockFramework() {
 
             <div className="p-10 bg-gradient-to-r from-indigo-50 dark:from-indigo-900/20 to-purple-50 dark:to-purple-900/20 rounded-3xl border border-indigo-200 dark:border-indigo-900/30">
               <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <AlertCircle className="text-indigo-600 dark:text-indigo-400 w-6 h-6" /> Signal Strength & Confidence
+                <AlertCircle className="text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52] w-6 h-6" /> Signal Strength & Confidence
               </h4>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -672,14 +624,14 @@ export default function InvestmentClockFramework() {
                     <div className="p-2 bg-white dark:bg-black/40 rounded border border-neutral-200 dark:border-white/10">
                       <div className="flex justify-between text-xs">
                         <span>Distance 0.5-1.0:</span>
-                        <span className="font-semibold text-blue-600 dark:text-blue-400">Moderate Signal</span>
+                        <span className="font-semibold text-[#A8672E] dark:text-[#D08F52] dark:text-[#A8672E] dark:text-[#D08F52]">Moderate Signal</span>
                       </div>
                       <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Clear directional bias, implement modest tactical tilts</p>
                     </div>
                     <div className="p-2 bg-white dark:bg-black/40 rounded border border-neutral-200 dark:border-white/10">
                       <div className="flex justify-between text-xs">
                         <span>Distance &gt; 1.0:</span>
-                        <span className="font-semibold text-green-600 dark:text-green-400">High Confidence</span>
+                        <span className="font-semibold text-[#1D8A70] dark:text-[#3CBF9C] dark:text-[#1D8A70] dark:text-[#3CBF9C]">High Confidence</span>
                       </div>
                       <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Strong regime signal, maximum tactical allocation</p>
                     </div>
@@ -712,11 +664,11 @@ export default function InvestmentClockFramework() {
                 </div>
               </div>
               
-              <div className="mt-8 p-6 bg-white/70 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/10">
+              <div className="mt-8 p-6 bg-white dark:bg-[#0A0D14]/70 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/10">
                 <h5 className="font-semibold mb-4 text-center dark:text-white">Backtesting Considerations</h5>
                 <div className="grid md:grid-cols-3 gap-6 text-sm">
                   <div>
-                    <h6 className="font-semibold text-indigo-900 dark:text-indigo-400 mb-2">Data Requirements</h6>
+                    <h6 className="font-semibold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Data Requirements</h6>
                     <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
                       <li>• Minimum 20 years of history</li>
                       <li>• Multiple business cycles</li>
@@ -725,7 +677,7 @@ export default function InvestmentClockFramework() {
                     </ul>
                   </div>
                   <div>
-                    <h6 className="font-semibold text-indigo-900 dark:text-indigo-400 mb-2">Performance Metrics</h6>
+                    <h6 className="font-semibold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Performance Metrics</h6>
                     <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
                       <li>• Information Ratio vs. benchmark</li>
                       <li>• Maximum drawdown by regime</li>
@@ -734,7 +686,7 @@ export default function InvestmentClockFramework() {
                     </ul>
                   </div>
                   <div>
-                    <h6 className="font-semibold text-indigo-900 dark:text-indigo-400 mb-2">Robustness Tests</h6>
+                    <h6 className="font-semibold text-indigo-900 dark:text-[#A8672E] dark:text-[#D08F52] mb-2">Robustness Tests</h6>
                     <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
                       <li>• Parameter sensitivity analysis</li>
                       <li>• Out-of-sample validation</li>

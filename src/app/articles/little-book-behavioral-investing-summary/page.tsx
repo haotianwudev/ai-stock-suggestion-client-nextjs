@@ -68,7 +68,7 @@ const keyThemes = [
       'Keynes\' Beauty Contest: Professional investors often don\'t pick what they think is best, but what they think *other people think* is best. This second-guessing leads to herd behavior and poor outcomes.'
     ],
     color: 'bg-teal-100',
-    borderColor: 'border-teal-500'
+    borderColor: 'border-[#A8672E] dark:border-[#D08F52]'
   },
   {
     id: 'theme-4',
@@ -86,7 +86,7 @@ const keyThemes = [
       'Analyst Track Record: Analysts are, on average, wrong by a staggering 94% when first forecasting a company\'s earnings two years out. Their five-year growth forecasts are no better than random chance.'
     ],
     color: 'bg-rose-100',
-    borderColor: 'border-rose-500'
+    borderColor: 'border-[#BC4128] dark:border-[#E2694A]'
   },
   {
     id: 'theme-5',
@@ -104,7 +104,7 @@ const keyThemes = [
       'The Emergency Room Checklist: A Michigan hospital dramatically improved its ability to correctly diagnose heart attacks not by providing more data, but by giving doctors a simple checklist focusing on the few truly diagnostic variables, helping them ignore the "pseudo-diagnostic" noise.'
     ],
     color: 'bg-indigo-100',
-    borderColor: 'border-indigo-500'
+    borderColor: 'border-[#A8672E] dark:border-[#D08F52]'
   },
   {
     id: 'theme-6',
@@ -172,7 +172,7 @@ const keyThemes = [
       'Warren Buffett\'s "Fat Pitch": Buffett compares investing to baseball, but a version where you have no called strikes. You can wait indefinitely for the perfect, easy-to-hit pitch (a "fat pitch"). The key is having the patience to do nothing until that opportunity arrives.'
     ],
     color: 'bg-orange-100',
-    borderColor: 'border-orange-500'
+    borderColor: 'border-[#BC4128] dark:border-[#E2694A]'
   },
   {
     id: 'theme-10',
@@ -189,7 +189,7 @@ const keyThemes = [
       'The Pain of Non-Conformity: Neuroscience shows that when you disagree with a group, your brain activates the amygdala (the fear center) and regions associated with physical pain. It is literally painful to be a contrarian.'
     ],
     color: 'bg-emerald-100',
-    borderColor: 'border-emerald-500'
+    borderColor: 'border-[#1D8A70] dark:border-[#3CBF9C]'
   },
   {
     id: 'theme-11',
@@ -235,13 +235,13 @@ const AccordionItem = ({ theme, isOpen, onToggle }) => {
         onClick={onToggle}
         className={`w-full text-left p-5 ${theme.color} hover:bg-opacity-90 focus:outline-none flex justify-between items-center transition-colors duration-300`}
       >
-        <h3 className="text-xl font-semibold text-gray-800">{theme.title}</h3>
+        <h3 className="text-xl font-semibold text-gray-800 font-serif">{theme.title}</h3>
         <div className="transform transition-transform duration-300">
           {isOpen ? <ChevronsUp className="text-gray-700" /> : <ChevronsDown className="text-gray-600" />}
         </div>
       </button>
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
-        <div className="p-6 bg-white">
+        <div className="p-6 bg-white dark:bg-[#0A0D14]">
           <p className="text-gray-700 mb-5 italic border-l-2 border-gray-300 pl-4">{theme.content}</p>
           <div className="mb-6">
             <h4 className="font-semibold text-lg text-gray-800 mb-3 flex items-center">
@@ -285,14 +285,14 @@ export default function LittleBookBehavioralInvestingSummary() {
   return (
     <ArticleFrame slug="little-book-behavioral-investing-summary">
       {/* Executive Summary Section */}
-      <section className="mb-16 bg-white p-8 rounded-xl shadow-xl border-t-4 border-blue-600">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Executive Summary</h2>
+      <section className="mb-16 bg-white dark:bg-[#0A0D14] p-8 rounded-xl shadow-xl border-t-4 border-[#A8672E] dark:border-[#D08F52]">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4 font-serif">Executive Summary</h2>
         <p className="text-gray-700 leading-relaxed text-lg">{executiveSummary.content}</p>
       </section>
 
       {/* Key Themes Section */}
       <section>
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Key Themes & Most Important Ideas</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center font-serif">Key Themes & Most Important Ideas</h2>
         <div>
           {keyThemes.map(theme => (
             <AccordionItem

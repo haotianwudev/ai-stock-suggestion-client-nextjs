@@ -177,7 +177,7 @@ const SectionCard = ({ section }: { section: any }) => {
       indigo: "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 border-indigo-200 text-[#A8672E] dark:text-[#D08F52]",
       purple: "bg-purple-50 border-purple-200 text-purple-900",
       emerald: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/10 border-emerald-200 text-[#1D8A70] dark:text-[#3CBF9C]",
-      orange: "bg-orange-50 border-orange-200 text-orange-900",
+      orange: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-orange-200 text-orange-900",
       red: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-red-200 text-[#BC4128] dark:text-[#E2694A]",
       rose: "bg-[#BC4128]/10 dark:bg-[#E2694A]/10 border-rose-200 text-[#BC4128] dark:text-[#E2694A]",
     };
@@ -190,7 +190,7 @@ const SectionCard = ({ section }: { section: any }) => {
       indigo: "bg-[#A8672E] dark:bg-[#D08F52] text-[#A8672E] dark:text-[#D08F52]",
       purple: "bg-purple-100 text-purple-700",
       emerald: "bg-[#1D8A70] dark:bg-[#3CBF9C] text-[#1D8A70] dark:text-[#3CBF9C]",
-      orange: "bg-orange-100 text-orange-700",
+      orange: "bg-orange-100 text-[#BC4128] dark:text-[#E2694A]",
       red: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]",
       rose: "bg-[#BC4128] dark:bg-[#E2694A] text-[#BC4128] dark:text-[#E2694A]",
     };
@@ -283,7 +283,7 @@ export default function PredictionMarketsGuide() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8672E] dark:bg-[#D08F52] rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 rounded-full bg-[#A8672E] dark:bg-[#D08F52]/20 text-[#A8672E] dark:text-[#D08F52] text-xs font-bold uppercase tracking-wider border border-indigo-500/30">
+                <span className="px-3 py-1 rounded-full bg-[#A8672E] dark:bg-[#D08F52]/20 text-[#A8672E] dark:text-[#D08F52] text-xs font-bold uppercase tracking-wider border border-[#A8672E] dark:border-[#D08F52]/30">
                   {GuideData.intro.badge}
                 </span>
                 <TrendingUp className="w-5 h-5 text-[#A8672E] dark:text-[#D08F52]" />
