@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles } from "lucide-react";
+import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles, Layers, BookOpen } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
@@ -59,8 +59,40 @@ const FEATURE_PILLARS = [
   },
 ];
 
-// "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient
+// "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient.
+// First three sell what makes SOPHIE worth reading; last three cover access + the
+// Google sign-in disclosure required for OAuth app verification (keep those facts intact).
 const ABOUT_CARDS = [
+  {
+    icon: Layers,
+    title: "One frame, every format",
+    description:
+      "Each topic's article, video walkthrough, primary research paper, and wiki reference live in the same scrollable frame — read, watch, or dig into the source without hunting across tabs.",
+    borderClass: "border-indigo-200 dark:border-indigo-800/60",
+    bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
+    iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
+    iconClass: "text-indigo-600 dark:text-indigo-400",
+  },
+  {
+    icon: TrendingUp,
+    title: "Trending quant topics",
+    description:
+      "A live-ranked board surfaces what's moving in quant finance and options right now, so you always know what's actually worth reading today.",
+    borderClass: "border-purple-200 dark:border-purple-800/60",
+    bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
+    iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
+    iconClass: "text-purple-600 dark:text-purple-400",
+  },
+  {
+    icon: BookOpen,
+    title: "Guided study paths",
+    description:
+      "Topic pages come with curated study guides — an ordered reading path that takes you from first principles to fluent, instead of a random pile of articles.",
+    borderClass: "border-pink-200 dark:border-pink-800/60",
+    bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
+    iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
+    iconClass: "text-pink-600 dark:text-pink-400",
+  },
   {
     icon: Globe,
     title: "Open to everyone",
@@ -421,9 +453,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What this app is — public, no-login explanation of purpose and of what
-            Google sign-in receives. Required for Google OAuth app verification.
-            The ABOUT_CARDS below preserve that disclosure verbatim; only the layout changed. */}
+        {/* "About SOPHIE" — advocates the platform (content format, trending topics, study
+            guides) while keeping the free-access + Google sign-in disclosure that Google's
+            OAuth app verification checks for, in case of re-review. */}
         <section className="container max-w-screen-2xl mx-auto py-10 md:py-14 border-t border-border px-4">
           <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-gradient-to-br from-indigo-50/70 via-purple-50/40 to-pink-50/70 dark:from-indigo-950/20 dark:via-purple-950/10 dark:to-pink-950/20 p-5 sm:p-8 md:p-10">
             <div className="flex flex-col items-center text-center gap-3 mb-8">
@@ -433,9 +465,10 @@ export default function Home() {
               </span>
               <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
               <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                SOPHIE is a quantitative finance research and education platform — market analysis,
-                options strategy research, and investing education, published as articles, videos, and
-                podcast episodes.
+                SOPHIE turns scattered market research into one place worth coming back to.
+                Every topic pairs its article with the video, primary research paper, and wiki
+                reference in a single scrollable frame, backed by a live trending-topics board
+                and guided study paths — all free, no account required.
               </p>
             </div>
 
