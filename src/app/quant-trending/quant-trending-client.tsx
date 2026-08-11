@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useQuery } from "@apollo/client";
-import { Flame, Search } from "lucide-react";
+import { Flame, Search, ArrowUpDown } from "lucide-react";
 import { GET_QUANT_TRENDING } from "@/lib/graphql/queries";
 import { QuantTrendingResult, QuantTrendingItem } from "@/lib/graphql/types";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -20,6 +20,7 @@ const SOURCES = [
   { key: "github",     label: "GitHub" },
   { key: "reddit",     label: "Reddit" },
   { key: "hackernews", label: "Hacker News" },
+  { key: "googlenews", label: "Google News" },
 ];
 
 const SOURCE_BADGE: Record<string, string> = {
@@ -27,14 +28,25 @@ const SOURCE_BADGE: Record<string, string> = {
   github:     "bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700",
   reddit:     "bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-300 dark:border-orange-800",
   hackernews: "bg-yellow-100 text-yellow-700 border-yellow-200 dark:bg-yellow-900/40 dark:text-yellow-300 dark:border-yellow-800",
+  googlenews: "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800",
 };
 
+function normalizeSource(source?: string): string {
+  if (!source) return "";
+  const s = source.toLowerCase().replace(/[-_\s]/g, "");
+  if (s === "google" || s === "googlenews" || s === "gnews" || s === "news") return "googlenews";
+  if (s === "hn" || s === "hackernews") return "hackernews";
+  return s;
+}
+
 function sourceLabel(source: string) {
-  return SOURCES.find(s => s.key === source)?.label ?? source;
+  const norm = normalizeSource(source);
+  return SOURCES.find(s => s.key === norm)?.label ?? source;
 }
 
 function sourceBadgeClass(source: string) {
-  return SOURCE_BADGE[source] ?? "bg-slate-100 text-slate-700";
+  const norm = normalizeSource(source);
+  return SOURCE_BADGE[norm] ?? "bg-slate-100 text-slate-700";
 }
 
 // ---------------------------------------------------------------------------
@@ -155,15 +167,38 @@ function ItemList({ items }: { items: QuantTrendingItem[] }) {
 
 export function QuantTrendingClient() {
   const [searchText, setSearchText] = useState("");
+  const [sortBy, setSortBy] = useState<"date" | "heat">("date");
 
   // Fetch all sources up front — tab switching is instant (no re-fetch)
   const { data, loading, error } = useQuery<{ quantTrending: QuantTrendingResult }>(
     GET_QUANT_TRENDING,
-    { variables: { limit: 80 }, fetchPolicy: "cache-and-network" }
+    { variables: { limit: 200 }, fetchPolicy: "cache-and-network" }
   );
 
-  const allItems = data?.quantTrending?.items ?? [];
+  const rawItems = data?.quantTrending?.items ?? [];
   const lastUpdated = data?.quantTrending?.lastUpdated;
+
+  // Sort items (default by Latest ETL Run Date DESC)
+  const allItems = useMemo(() => {
+    return [...rawItems].sort((a, b) => {
+      const fetchA = a.fetchedAt ? new Date(a.fetchedAt).getTime() : 0;
+      const fetchB = b.fetchedAt ? new Date(b.fetchedAt).getTime() : 0;
+      const pubA = a.publishedAt ? new Date(a.publishedAt).getTime() : fetchA;
+      const pubB = b.publishedAt ? new Date(b.publishedAt).getTime() : fetchB;
+
+      if (sortBy === "date") {
+        if (fetchB !== fetchA) return fetchB - fetchA; // Newest ETL fetch first
+        if (pubB !== pubA) return pubB - pubA;       // Newest publish date second
+        return (b.heatScore ?? 0) - (a.heatScore ?? 0);
+      } else {
+        const heatA = a.heatScore ?? 0;
+        const heatB = b.heatScore ?? 0;
+        if (heatB !== heatA) return heatB - heatA;
+        if (fetchB !== fetchA) return fetchB - fetchA;
+        return pubB - pubA;
+      }
+    });
+  }, [rawItems, sortBy]);
 
   // Filter by search text
   const filtered = useMemo(() => {
@@ -182,7 +217,7 @@ export function QuantTrendingClient() {
   const bySource = useMemo(() => {
     const map: Record<string, QuantTrendingItem[]> = { all: filtered };
     for (const s of SOURCES.slice(1)) {
-      map[s.key] = filtered.filter(item => item.source === s.key);
+      map[s.key] = filtered.filter(item => normalizeSource(item.source) === s.key);
     }
     return map;
   }, [filtered]);
@@ -197,7 +232,7 @@ export function QuantTrendingClient() {
             <h1 className="text-2xl font-bold tracking-tight">Quant Trending</h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            Trending quant finance content from ArXiv, GitHub, Reddit, and Hacker News.
+            Trending quant finance content from ArXiv, GitHub, Reddit, Hacker News, and Google News.
             {lastUpdated && <> Updated {timeAgo(lastUpdated)}.</>}
           </p>
         </div>
@@ -209,15 +244,44 @@ export function QuantTrendingClient() {
         )}
       </div>
 
-      {/* Search */}
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-        <Input
-          placeholder="Search by title, author, or tag..."
-          value={searchText}
-          onChange={e => setSearchText(e.target.value)}
-          className="pl-9"
-        />
+      {/* Search & Sort */}
+      <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <Input
+            placeholder="Search by title, author, or tag..."
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
+            className="pl-9"
+          />
+        </div>
+        <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 bg-muted/60 p-1 rounded-lg border text-xs">
+          <span className="text-muted-foreground px-1.5 flex items-center gap-1 font-medium">
+            <ArrowUpDown className="h-3 w-3" /> Sort:
+          </span>
+          <button
+            type="button"
+            onClick={() => setSortBy("date")}
+            className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+              sortBy === "date"
+                ? "bg-background text-foreground shadow-sm font-semibold"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Newest Date
+          </button>
+          <button
+            type="button"
+            onClick={() => setSortBy("heat")}
+            className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+              sortBy === "heat"
+                ? "bg-background text-foreground shadow-sm font-semibold"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Heat Score
+          </button>
+        </div>
       </div>
 
       {/* Content */}

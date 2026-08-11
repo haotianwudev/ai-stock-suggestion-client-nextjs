@@ -6,7 +6,7 @@ import { QuantTrendingClient } from "./quant-trending-client";
 export const metadata: Metadata = {
   title: "Quant Trending | SOPHIE",
   description:
-    "Trending quant finance topics from ArXiv, GitHub, Reddit, and Hacker News — updated every few hours.",
+    "Trending quant finance topics from ArXiv, GitHub, Reddit, Hacker News, and Google News — updated every few hours.",
 };
 
 export default function QuantTrendingPage() {

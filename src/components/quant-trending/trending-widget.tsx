@@ -17,7 +17,16 @@ const SOURCE_STYLES: Record<string, { badge: string; label: string }> = {
   github:     { badge: "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300",       label: "GitHub" },
   reddit:     { badge: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300", label: "Reddit" },
   hackernews: { badge: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300", label: "HN" },
+  googlenews: { badge: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300", label: "Google News" },
 };
+
+function normalizeSource(source?: string): string {
+  if (!source) return "";
+  const s = source.toLowerCase().replace(/[-_\s]/g, "");
+  if (s === "google" || s === "googlenews" || s === "gnews" || s === "news") return "googlenews";
+  if (s === "hn" || s === "hackernews") return "hackernews";
+  return s;
+}
 
 function timeAgo(isoStr?: string): string {
   if (!isoStr) return "";
@@ -36,14 +45,23 @@ export function QuantTrendingWidget() {
   const router = useRouter();
   const { data, loading } = useQuery<{ quantTrending: QuantTrendingResult }>(
     GET_QUANT_TRENDING,
-    { variables: { limit: 30 }, fetchPolicy: "cache-and-network" }
+    { variables: { limit: 50 }, fetchPolicy: "cache-and-network" }
   );
 
-  // Pick a random item from the top results (stable per render via useMemo)
+  // Pick a random item from the top 10 newest results (stable per render via useMemo)
   const item: QuantTrendingItem | null = useMemo(() => {
     const items = data?.quantTrending?.items;
     if (!items || items.length === 0) return null;
-    return items[Math.floor(Math.random() * items.length)];
+    const sorted = [...items].sort((a, b) => {
+      const fetchA = a.fetchedAt ? new Date(a.fetchedAt).getTime() : 0;
+      const fetchB = b.fetchedAt ? new Date(b.fetchedAt).getTime() : 0;
+      if (fetchB !== fetchA) return fetchB - fetchA;
+      const pubA = a.publishedAt ? new Date(a.publishedAt).getTime() : fetchA;
+      const pubB = b.publishedAt ? new Date(b.publishedAt).getTime() : fetchB;
+      return pubB - pubA;
+    });
+    const topRecent = sorted.slice(0, 10);
+    return topRecent[Math.floor(Math.random() * topRecent.length)];
   }, [data]);
 
   const total = data?.quantTrending?.total ?? 0;
@@ -54,7 +72,8 @@ export function QuantTrendingWidget() {
 
   if (!item) return null;
 
-  const src = SOURCE_STYLES[item.source] ?? { badge: "bg-slate-100 text-slate-700", label: item.source };
+  const normSource = normalizeSource(item.source);
+  const src = SOURCE_STYLES[normSource] ?? { badge: "bg-slate-100 text-slate-700", label: item.source };
   const heat = Math.round(Math.min(Math.max(item.heatScore, 0), 100));
   const heatColor =
     heat >= 75 ? "bg-red-500" :

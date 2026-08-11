@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Clock, BookOpen, MessagesSquare, Crown } from "lucide-react";
+import { Menu, Clock, BookOpen, MessagesSquare, Crown, Flame } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SearchBar } from "@/components/search/search-bar";
 import { AuthStatus } from "@/components/auth/auth-status";
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
+  { href: "/quant-trending", label: "Quant Trending", icon: Flame },
   { href: "/investment-clock", label: "Macro Clock", icon: Clock },
   { href: "/wiki", label: "Wiki", icon: BookOpen },
   { href: "/forum/site-feedback", label: "Feedback", icon: MessagesSquare },
