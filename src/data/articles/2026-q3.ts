@@ -83,10 +83,11 @@ export const articles2026Q3: Article[] = [
     description: "A comprehensive quantitative analysis of the fixed-income market transition from bear to bull territory. Master macroeconomic stall speed indicators, yield curve dynamics, term premium decomposition, the neutral rate (r*) framework, credit spread analysis via OAS, and technical quantitative metrics to identify structural market turning points.",
     slug: "quantitative-assessment-fixed-income-market-turning-points",
     date: "August 10, 2026",
-    imageUrl: "https://i.imgur.com/UcGCi44.png",
+    imageUrl: "https://img.youtube.com/vi/kTuZBlNZtEU/maxresdefault.jpg",
     infographicUrl: "https://i.imgur.com/UcGCi44.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTiJIPSoFj9za65qjVvLGuvIzjsbbwFYw31dQhFS3eNF-M_YGfuxuUurhoGaJXLDu7DcuK-XpfnOIiJ/pub",
+    youtubeUrl: "https://youtu.be/kTuZBlNZtEU",
     labels: [ArticleLabel.MACRO],
   },
   {
