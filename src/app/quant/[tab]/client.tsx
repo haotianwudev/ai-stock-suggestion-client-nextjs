@@ -56,48 +56,47 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
           <TabsTrigger
             value="monte-carlo"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Monte Carlo</span>
-            <span className="hidden sm:block">Monte Carlo Simulation</span>
+            <span className="block md:hidden">Monte Carlo</span>
+            <span className="hidden md:block">Monte Carlo Simulation</span>
           </TabsTrigger>
           <TabsTrigger
             value="statistical-analysis"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Statistics</span>
-            <span className="hidden sm:block">Statistical Analysis</span>
+            <span className="block md:hidden">Statistics</span>
+            <span className="hidden md:block">Statistical Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="derivatives-pricing"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Derivatives</span>
-            <span className="hidden sm:block">Derivatives Pricing</span>
+            <span className="block md:hidden">Derivatives</span>
+            <span className="hidden md:block">Derivatives Pricing</span>
           </TabsTrigger>
           <TabsTrigger
             value="ai-in-quant"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">AI</span>
-            <span className="hidden sm:block">AI in Quant</span>
+            <span className="block md:hidden">AI</span>
+            <span className="hidden md:block">AI in Quant</span>
           </TabsTrigger>
           <TabsTrigger
             value="risk-management"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Risk</span>
-            <span className="hidden sm:block">Risk Management</span>
+            <span className="block md:hidden">Risk</span>
+            <span className="hidden md:block">Risk Management</span>
           </TabsTrigger>
           <TabsTrigger
             value="books"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
           >
-            <span className="block sm:hidden">Books</span>
-            <span className="hidden sm:block">Books</span>
+            Books
           </TabsTrigger>
         </TabsList>
 
