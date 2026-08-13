@@ -72,10 +72,11 @@ export const articles2026Q3: Article[] = [
     description: "A comprehensive deep dive into the microstructural impact of quarterly 13F filings. Master algorithmic XML parsing in milliseconds, the economics of copycat trading generating 5.5-6.7% alpha, strategic confidential treatment requests, predatory front-running causing 2.6% performance drag, and the systemic risks of Form SHO integration in late 2026.",
     slug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",
     date: "August 13, 2026",
-    imageUrl: "https://i.imgur.com/XRlmzzc.jpeg",
+    imageUrl: "https://img.youtube.com/vi/VFaAUqhqT7I/maxresdefault.jpg",
     infographicUrl: "https://i.imgur.com/XRlmzzc.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSYnlLjWMH5WS69sejmZQPopfryjNLxiDi7oZ9qgMW47paRA0P7QfVyItIIw3-vjumxJm3Fom31XYOa/pub",
+    youtubeUrl: "https://youtu.be/VFaAUqhqT7I",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {

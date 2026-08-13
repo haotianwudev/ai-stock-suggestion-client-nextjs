@@ -73,3 +73,4 @@ Sophisticated managers employ several disclosure tactics:
 
 - [The Hidden Mechanics of Form 13F Disclosures](/articles/hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSYnlLjWMH5WS69sejmZQPopfryjNLxiDi7oZ9qgMW47paRA0P7QfVyItIIw3-vjumxJm3Fom31XYOa/pub)
+- [Watch on YouTube](https://youtu.be/VFaAUqhqT7I)
