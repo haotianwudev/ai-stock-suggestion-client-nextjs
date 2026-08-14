@@ -291,6 +291,7 @@ export interface User {
   youtubeSubscribed: boolean;
   likedCount: number;
   tier: number;
+  preferredVideoSource: string;
 }
 
 export interface LikeResult {

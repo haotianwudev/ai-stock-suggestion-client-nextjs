@@ -381,6 +381,7 @@ export const ME = gql`
       youtubeSubscribed
       likedCount
       tier
+      preferredVideoSource
     }
   }
 `;
@@ -395,6 +396,7 @@ export const UPDATE_PROFILE = gql`
       youtubeSubscribed
       likedCount
       tier
+      preferredVideoSource
     }
   }
 `;
@@ -409,6 +411,22 @@ export const SET_YOUTUBE_SUBSCRIBED = gql`
       youtubeSubscribed
       likedCount
       tier
+      preferredVideoSource
+    }
+  }
+`;
+
+export const SET_PREFERRED_VIDEO_SOURCE = gql`
+  mutation SetPreferredVideoSource($source: String!) {
+    setPreferredVideoSource(source: $source) {
+      id
+      email
+      displayName
+      avatarUrl
+      youtubeSubscribed
+      likedCount
+      tier
+      preferredVideoSource
     }
   }
 `;

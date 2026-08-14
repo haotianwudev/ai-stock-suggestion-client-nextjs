@@ -11,6 +11,7 @@ import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/struc
 import { Header } from "@/components/layout/header";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { youtubeEmbedUrl, youtubeThumbnailUrl } from "@/lib/youtube";
+import { bilibiliEmbedUrl } from "@/lib/bilibili";
 import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/wiki";
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
@@ -141,11 +142,33 @@ export function InfographicSlot({
 // Like/bookmark live here (not a content-blocking gate) since every article's fully
 // readable once you're past Tier 2 anyway -- this is just the natural place to act on
 // the video you're already looking at.
-function VideoCard({ youtubeUrl, title, articleSlug }: { youtubeUrl: string; title: string; articleSlug: string }) {
+function VideoCard({
+  youtubeUrl,
+  bilibiliUrl,
+  title,
+  articleSlug,
+}: {
+  youtubeUrl: string;
+  bilibiliUrl?: string;
+  title: string;
+  articleSlug: string;
+}) {
   const [playing, setPlaying] = useState(false);
+  const [source, setSource] = useState<"youtube" | "bilibili">("youtube");
+  const [sourceTouched, setSourceTouched] = useState(false);
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const { user, profile } = useUser();
-  const embedUrl = youtubeEmbedUrl(youtubeUrl);
+
+  // Apply the signed-in user's preferred platform as the default once their profile
+  // loads (it arrives after mount, hence an effect rather than the initial state) --
+  // but never fight a source switch the reader has already made this session.
+  useEffect(() => {
+    if (sourceTouched || !bilibiliUrl) return;
+    if (profile?.preferredVideoSource === "bilibili") setSource("bilibili");
+  }, [profile?.preferredVideoSource, bilibiliUrl, sourceTouched]);
+
+  const embedUrl = source === "bilibili" && bilibiliUrl ? bilibiliEmbedUrl(bilibiliUrl) : youtubeEmbedUrl(youtubeUrl);
+  // Same video either way, so the YouTube thumbnail (already the article's card image) doubles as the poster frame for both sources.
   const thumbnailUrl = youtubeThumbnailUrl(youtubeUrl);
 
   const { data: likedData } = useQuery<{ myLikedArticleSlugs: string[] }>(MY_LIKED_ARTICLES, {
@@ -185,15 +208,36 @@ function VideoCard({ youtubeUrl, title, articleSlug }: { youtubeUrl: string; tit
 
   const handleBookmark = () => toggleBookmarkSlug(articleSlug);
 
+  const autoplaySrc = embedUrl ? `${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1` : null;
+
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
-      <div className="px-4 pt-4 pb-2">
+      <div className="px-4 pt-4 pb-2 flex items-center justify-between">
         <SlotKicker icon={PlayCircle} label="Watch" tone="red" />
+        {bilibiliUrl && (
+          <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden text-[11px] font-semibold">
+            {(["youtube", "bilibili"] as const).map((s) => (
+              <button
+                key={s}
+                onClick={() => { setSource(s); setSourceTouched(true); }}
+                className={`px-2.5 py-1 transition-colors ${
+                  source === s
+                    ? s === "bilibili"
+                      ? "bg-[#FB7299] text-white"
+                      : "bg-red-600 text-white"
+                    : "bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                }`}
+              >
+                {s === "youtube" ? "YouTube" : "Bilibili"}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <div className="relative aspect-video bg-black">
-        {playing && embedUrl ? (
+        {playing && autoplaySrc ? (
           <iframe
-            src={`${embedUrl}?autoplay=1`}
+            src={autoplaySrc}
             title={title}
             className="w-full h-full"
             allow="accelerate-compute; encrypted-media; picture-in-picture"
@@ -685,6 +729,7 @@ export function ArticleFrame({
                   {hasVideo && (
                     <VideoCard
                       youtubeUrl={currentArticle.youtubeUrl!}
+                      bilibiliUrl={currentArticle.bilibiliUrl}
                       title={title}
                       articleSlug={currentArticle.slug || slug}
                     />

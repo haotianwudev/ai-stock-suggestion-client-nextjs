@@ -10,8 +10,8 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { useUser } from "@/hooks/use-user";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { getTierName, tierUnlockMessage } from "@/lib/tiers";
-import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
+import { getTierName, tierUnlockMessage, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER } from "@/lib/tiers";
+import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED, SET_PREFERRED_VIDEO_SOURCE } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
 import { TierUpDialog } from "@/components/shared/tier-up-dialog";
@@ -39,6 +39,9 @@ export function ProfileSettingsClient() {
   const [setYoutubeSubscribed, { loading: savingYoutube }] = useMutation<{
     setYoutubeSubscribed: MeResult;
   }>(SET_YOUTUBE_SUBSCRIBED, { refetchQueries: [{ query: ME }] });
+  const [setPreferredVideoSource, { loading: savingVideoSource }] = useMutation<{
+    setPreferredVideoSource: MeResult;
+  }>(SET_PREFERRED_VIDEO_SOURCE, { refetchQueries: [{ query: ME }] });
 
   const {
     register,
@@ -103,6 +106,17 @@ export function ProfileSettingsClient() {
       } else {
         setCongrats({ title: "Thanks for subscribing!", description: "We really appreciate it." });
       }
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Something went wrong.");
+    }
+  };
+
+  const changeVideoSource = async (source: "youtube" | "bilibili") => {
+    if (!canSetVideoPreference(profile?.tier ?? 1)) return;
+    if (source === profile?.preferredVideoSource) return;
+    try {
+      await setPreferredVideoSource({ variables: { source } });
+      toast.success("Updated.");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong.");
     }
@@ -183,6 +197,45 @@ export function ProfileSettingsClient() {
             Liked {profile?.likedCount ?? 0} video{(profile?.likedCount ?? 0) === 1 ? "" : "s"} on YouTube —
             hit the &quot;Like on YouTube&quot; button on any article to rank up further.
           </p>
+        </div>
+
+        <div className="mt-6 border-t pt-6">
+          <Label className="flex items-center gap-2">
+            Preferred video platform
+            {!canSetVideoPreference(profile?.tier ?? 1) && (
+              <Badge variant="outline" className="font-normal">
+                Unlocks at {getTierName(MIN_VIDEO_PREFERENCE_TIER)}
+              </Badge>
+            )}
+          </Label>
+          <p className="mt-1 text-xs text-muted-foreground">
+            When an article has both a YouTube and Bilibili version, the Watch card plays this one by
+            default. You can still switch per-video from the toggle on the card itself.
+          </p>
+          <div className="mt-3 flex gap-2">
+            {(["youtube", "bilibili"] as const).map((s) => (
+              <button
+                key={s}
+                type="button"
+                disabled={savingVideoSource || !canSetVideoPreference(profile?.tier ?? 1)}
+                onClick={() => changeVideoSource(s)}
+                className={cn(
+                  "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                  (profile?.preferredVideoSource ?? "youtube") === s
+                    ? "border-primary ring-2 ring-primary"
+                    : "border-border hover:bg-accent"
+                )}
+              >
+                {s === "youtube" ? "YouTube" : "Bilibili"}
+              </button>
+            ))}
+          </div>
+          {!canSetVideoPreference(profile?.tier ?? 1) && (
+            <p className="mt-2 text-xs text-muted-foreground">
+              Reach {getTierName(MIN_VIDEO_PREFERENCE_TIER)} to choose your default — see the rank-up tip
+              above for what's next.
+            </p>
+          )}
         </div>
       </CardContent>
       <TierUpDialog

@@ -378,6 +378,7 @@ export function InvestmentClockClient() {
                   date={article.date}
                   imageUrl={article.imageUrl}
                   youtubeUrl={article.youtubeUrl}
+                  bilibiliUrl={article.bilibiliUrl}
                   isVideo={article.isVideo}
                   deepResearch={article.deepResearch}
                   websiteUrl={article.websiteUrl}

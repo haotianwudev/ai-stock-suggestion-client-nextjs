@@ -398,6 +398,7 @@ export default function Home() {
                   googleDoc={pinnedArticle.googleDoc}
                   deepResearch={pinnedArticle.deepResearch}
                   youtubeUrl={pinnedArticle.youtubeUrl}
+                  bilibiliUrl={pinnedArticle.bilibiliUrl}
                   isVideo={pinnedArticle.isVideo}
                   options={pinnedArticle.options}
                   noSummary={pinnedArticle.noSummary}
@@ -421,6 +422,7 @@ export default function Home() {
                   googleDoc={article.googleDoc}
                   deepResearch={article.deepResearch}
                   youtubeUrl={article.youtubeUrl}
+                  bilibiliUrl={article.bilibiliUrl}
                   isVideo={article.isVideo}
                   options={article.options}
                   noSummary={article.noSummary}

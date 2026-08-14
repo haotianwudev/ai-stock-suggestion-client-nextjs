@@ -267,6 +267,7 @@ function QuantArticlesTab() {
               googleDoc={article.googleDoc}
               deepResearch={article.deepResearch}
               youtubeUrl={article.youtubeUrl}
+              bilibiliUrl={article.bilibiliUrl}
               isVideo={article.isVideo}
               options={article.options}
               noSummary={article.noSummary}

@@ -16,6 +16,7 @@ export interface Profile {
   youtubeSubscribed: boolean;
   likedCount: number;
   tier: number;
+  preferredVideoSource: "youtube" | "bilibili";
 }
 
 interface UserContextValue {
@@ -85,6 +86,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       youtubeSubscribed: me?.youtubeSubscribed ?? false,
       likedCount: me?.likedCount ?? 0,
       tier: me?.tier ?? 1,
+      preferredVideoSource: me?.preferredVideoSource === "bilibili" ? "bilibili" : "youtube",
     };
   }
 

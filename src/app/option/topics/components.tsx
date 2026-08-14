@@ -132,6 +132,7 @@ export function RelatedArticles({ articleSlugs, title = "Related Articles" }: Re
               googleDoc={article.googleDoc}
               deepResearch={article.deepResearch}
               youtubeUrl={article.youtubeUrl}
+              bilibiliUrl={article.bilibiliUrl}
               isVideo={article.isVideo}
               options={article.options}
               noSummary={article.noSummary}

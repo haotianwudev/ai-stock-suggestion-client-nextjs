@@ -7,6 +7,7 @@ import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer"
 import { useState } from "react";
 import { youtubeThumbnailUrl } from "@/lib/youtube";
 import { useBookmarks } from "@/hooks/use-bookmarks";
+import { useUser } from "@/hooks/use-user";
 
 interface ArticleCardProps {
   title: string;
@@ -18,17 +19,28 @@ interface ArticleCardProps {
   websiteUrl?: string;
   deepResearch?: boolean;
   youtubeUrl?: string;
+  bilibiliUrl?: string;
   isVideo?: boolean;
   options?: boolean;
   noSummary?: boolean;
   podcastUrl?: string;
 }
 
-export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
+export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, bilibiliUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   const { isBookmarked, toggleBookmark, bookmarking } = useBookmarks();
   const bookmarked = isBookmarked(slug);
-  // Consolidated card: an article with an attached YouTube video can toggle its
+  const { profile } = useUser();
+  // Same video, whichever platform the reader prefers -- falls back to YouTube
+  // when there's no Bilibili cross-post, or no preference set.
+  const preferBilibili = profile?.preferredVideoSource === "bilibili" && Boolean(bilibiliUrl);
+  const primaryVideoUrl = preferBilibili ? bilibiliUrl : youtubeUrl;
+  const primaryVideoLabel = preferBilibili ? "Bilibili" : "YouTube";
+  // Bilibili's brand pink instead of YouTube red when that's the active source.
+  const videoButtonGradient = preferBilibili
+    ? "bg-gradient-to-r from-[#FB7299] to-[#F65E8D] hover:from-[#F65E8D] hover:to-[#E14A79]"
+    : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800";
+  // Consolidated card: an article with an attached video can toggle its
   // thumbnail between the article infographic and the video thumbnail.
   const hasAttachedVideo = Boolean(youtubeUrl) && !isVideo;
   const videoThumbnail = hasAttachedVideo ? youtubeThumbnailUrl(youtubeUrl!) : null;
@@ -139,16 +151,16 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   </a>
                 </>
               )}
-              {youtubeUrl && (
+              {primaryVideoUrl && (
                 <>
                   <span className="mx-1">·</span>
                   <a
-                    href={youtubeUrl}
+                    href={primaryVideoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-red-700"
+                    className={preferBilibili ? "underline hover:text-[#FB7299]" : "underline hover:text-red-700"}
                   >
-                    YouTube
+                    {primaryVideoLabel}
                   </a>
                 </>
               )}
@@ -185,7 +197,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
           </div>
           {(() => {
             // Count the number of buttons
-            const buttonCount = (isVideo && youtubeUrl ? 1 : 0) +
+            const buttonCount = (isVideo && primaryVideoUrl ? 1 : 0) +
                                (websiteUrl ? 1 : 0) +
                                (podcastUrl ? 1 : 0) +
                                (hasAttachedVideo ? 1 : 0) +
@@ -193,31 +205,39 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
 
             return (
               <div className="flex flex-wrap gap-1.5 md:gap-2 mt-1 mb-1">
-                {isVideo && youtubeUrl ? (
+                {isVideo && primaryVideoUrl ? (
                   <a
-                    href={youtubeUrl}
+                    href={primaryVideoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"
+                    className={`flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg ${videoButtonGradient} text-white font-semibold shadow transition-colors text-sm`}
                   >
-                    <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    Watch on YouTube
+                    {preferBilibili ? (
+                      <PlayCircle className="mr-2 h-4 w-4" />
+                    ) : (
+                      <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                    )}
+                    Watch on {primaryVideoLabel}
                   </a>
                 ) : (
                   <>
-                    {hasAttachedVideo && (
+                    {hasAttachedVideo && primaryVideoUrl && (
                       <a
-                        href={youtubeUrl}
+                        href={primaryVideoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow hover:from-red-700 hover:to-red-800 transition-colors text-sm"
+                        className={`flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg ${videoButtonGradient} text-white font-semibold shadow transition-colors text-sm`}
                       >
-                        <svg className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <span className="truncate">YouTube</span>
+                        {preferBilibili ? (
+                          <PlayCircle className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" />
+                        ) : (
+                          <svg className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                          </svg>
+                        )}
+                        <span className="truncate">{primaryVideoLabel}</span>
                       </a>
                     )}
                     {podcastUrl && (

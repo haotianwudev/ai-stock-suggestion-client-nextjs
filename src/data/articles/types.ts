@@ -26,6 +26,8 @@ export interface Article {
   websiteUrl?: string;   // External tool / product page — renders a "Go to Website" button
   deepResearch?: boolean;
   youtubeUrl?: string;
+  bilibiliUrl?: string; // same video cross-posted to Bilibili; VideoCard shows a source toggle when both are set
+  bilibiliTitle?: string; // the video's Chinese-language title on Bilibili, kept for reference/display
   isVideo?: boolean;
   options?: boolean;
   pinned?: boolean;

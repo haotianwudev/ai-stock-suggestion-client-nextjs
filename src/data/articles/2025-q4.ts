@@ -9,6 +9,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/oY2XSiVxYtQ/maxresdefault.jpg",
     infographicUrl: "https://i.imgur.com/uoz3V2q.jpeg",
     youtubeUrl: "https://youtu.be/oY2XSiVxYtQ",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1aFiNBsEXX/",
+    bilibiliTitle: "2026美股市场宏观已知事实与预测",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgVz7tn0HDMAVIzkJJHFXLaEuUmSv9Ag16gG1cAPbyIY4jx6sqbGZThKT3TbohbGwOM5TsDe8G1paF/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5oRuR59t5LjAvMkxdAnGLu?si=cruOlJMpRP25yWdc5uti2A",
@@ -22,6 +24,8 @@ export const articles2025Q4: Article[] = [
     imageUrl: "https://img.youtube.com/vi/bt2O3ngqI_8/maxresdefault.jpg",
     infographicUrl: "https://i.imgur.com/FlVMnGq.jpeg",
     youtubeUrl: "https://youtu.be/bt2O3ngqI_8",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1rQvmBdEne/",
+    bilibiliTitle: "2025美股市场，回顾一下这一波三折的一年",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub",
     deepResearch: true,
     labels: [ArticleLabel.MACRO],
@@ -38,6 +42,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6HLhQ0jGswN8PR9CyHlRsu?si=53MGBBoDQYG5yV4pSw_RLg",
     options: true,
     youtubeUrl: "https://youtu.be/brQbdu19cbw",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1LGBzBwEr1/",
+    bilibiliTitle: "讲期权年末总结，期权何时适用何时危险",
   },
   {
     title: "Measuring the Immeasurable: A Comprehensive Guide to Hedge Fund Performance Metrics",
@@ -50,6 +56,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLF6YOjvadQ0NUUS0YvAYK1HmyAUtpS-iFVYbE3espsZOasOv5qjfkalz9X6pOqoDUSPDalwJiXdEB/pub",
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/WBUxNZZzwnY",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1j8BSB8Eeh/",
+    bilibiliTitle: "策略Performance怎么算，有哪些说法？",
   },
   {
     title: "The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors",
@@ -62,6 +70,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.AI_ML, ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/aViyh1n08v4",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1SbB8BbEat/",
+    bilibiliTitle: "Web3在金融领域有哪些创新",
   },
   {
     title: "DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index",
@@ -74,6 +84,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/1tN9LuKi3Os",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1R3qkBvEQQ/",
+    bilibiliTitle: "解读DSPX，和VIX有什么关系？",
   },
   {
     title: "The Single Leg Long Put: Asymmetric Utility in Options Trading",
@@ -87,6 +99,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/28qBfNSza5WcYKEsfdPbP1?si=7a3741854f374aeb",
     options: true,
     youtubeUrl: "https://youtu.be/X2IJngJv4G0",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1npqRB2Ees/",
+    bilibiliTitle: "为什么Put Option这么贵？",
   },
   {
     title: "The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation",
@@ -99,6 +113,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTfVUDR6-Tcq29BcC0ZoePDr5Q5ln5LFwY-o6Vj0aD3wGzjTyBPWOxGujq5sLSMSJ_ihykDy6QlwVuV/pub",
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/L0aVoPLqcFw",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1HHq3BtED4/",
+    bilibiliTitle: "揭秘WorldQuant策略流水线",
   },
   {
     title: "ES & NQ Futures: The Engine Room of the Global Economy",
@@ -111,6 +127,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/EbvI5T_P4Yg",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1GrmrBpEPT/",
+    bilibiliTitle: "美股指数期货简介：ES&NQ",
   },
   {
     title: "Selling Long-Dated Put Options (LEAPs): Institutional Mechanics, Volatility Arbitrage, and the Retail Traps",
@@ -123,6 +141,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/pdfm0osP4Ow",
+    bilibiliUrl: "https://www.bilibili.com/video/BV17ymSBpE3t/",
+    bilibiliTitle: "巴菲特期权策略：LEAPS Put",
   },
   {
     title: "Monte Carlo Simulation for Derivative Pricing",
@@ -135,6 +155,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/nBAnWHAzD6I",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1tKmTBEEK3/",
+    bilibiliTitle: "Monte Carlo模拟量化应用第三集：定价模型",
   },
   {
     title: "A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer",
@@ -147,6 +169,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub",
     labels: [ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/_HHOkj3iFco",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1zM2mBLEHn/",
+    bilibiliTitle: "信托扫盲，你何时需要一个",
   },
   {
     title: "The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind",
@@ -159,6 +183,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.MACRO],
     youtubeUrl: "https://youtu.be/zhCdnpC3eag",
+    bilibiliUrl: "https://www.bilibili.com/video/BV11R2ZB9Ews/",
+    bilibiliTitle: "日本加息灰犀牛对市场有什么影响",
   },
   {
     title: "Gamma Exposure (GEX): The GPS of Market Volatility",
@@ -170,6 +196,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/t_5yWuxn0WY",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1q32VBLENv/",
+    bilibiliTitle: "揭秘Gamma Exposure(GEX)：隐形支撑与阻力",
     labels: [ArticleLabel.QUANT],
   },
   {
@@ -183,6 +211,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS8p38E8rMXs3x5o96emoQqgiNEokrC2RxsQncu0t8-8iv904RXUZzTyBoiVGqE_ZdM0FL7rUFvOe5V/pub",
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/sA57KkA-v-Q",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1xYSaBRExF/",
+    bilibiliTitle: "Monte Carlo模拟量化应用第二集：抗压测试",
   },
   {
     title: "Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research",
@@ -196,6 +226,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6YJIf7dNTVTxiDFnGA4LLJ?si=enOoYGFmTTi0n_Z23tZ_Uw",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/G3s64sExKpg",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1VUSzBoEU8/",
+    bilibiliTitle: "你应该相信华尔街分析师的评级吗？",
   },
   {
     title: "Mastering the Volatility Risk Premium: A Comprehensive Guide to SPX Options Selling",
@@ -208,6 +240,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/yThUZBJWKPM",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1xTUoBREJT/",
+    bilibiliTitle: "卖标普500期权收租你应该知道什么，又有哪些ETF",
   },
   {
     title: "Monte Carlo Simulation for Quant Finance Overview",
@@ -220,6 +254,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQQKNAELVon2-aHvD3z3Kx8Y-ltrh9d8kLO4ZZRPfbO35-yGiYfvXuZn9Y3HNtuh18vT5-l0GNrGx81/pub",
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/5gA1ifx7wPg",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1SKUBBkEpa/",
+    bilibiliTitle: "Monte Carlo Simulation量化应用第一集：风险管理",
   },
   {
     title: "A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation",
@@ -233,6 +269,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/6KtXCPH7LLeITLhIDGUHWn?si=lvtiSYTaQIKm4MfqG5qkqg",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/DtF2uyr2Uus",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1wFUUBtEoV/",
+    bilibiliTitle: "年末了，又到了Tax Loss Harvesting的时候，虽然今年可能没有loss",
   },
   {
     title: "NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation",
@@ -245,6 +283,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub",
     labels: [ArticleLabel.STOCK_ANALYSIS],
     youtubeUrl: "https://youtu.be/hkpuKl-ucd4",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1tRUKBSEgr/",
+    bilibiliTitle: "英伟达的悖论：完美财报后的暴跌",
   },
   {
     title: "Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies",
@@ -258,6 +298,8 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/eHu9X04D7Ss",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1jaULB4ESC/",
+    bilibiliTitle: "如何理解VRP，你卖期权的底气与恐惧",
   },
   {
     title: "The Evolution of Deep Learning in Quantitative Trading: From MLPs to Transformers",
@@ -270,6 +312,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/s0Z3pl8DFDA",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1GzypBcEfg/",
+    bilibiliTitle: "量化交易深度学习的进化 MLP到Transformer",
   },
   {
     title: "David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis",
@@ -281,6 +325,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub",
     labels: [ArticleLabel.FORM13F],
     youtubeUrl: "https://youtu.be/pGO7nYdHCT0",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1YzCzB3ED8/",
+    bilibiliTitle: "抄底大神David Tepper最新持仓分析",
   },
   {
     title: "The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass",
@@ -293,6 +339,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/415h1tKoMHcPUHbdkNYxWW?si=LE96YtzTQkOVFl4Cv_tKag",
     labels: [ArticleLabel.FORM13F],
     youtubeUrl: "https://youtu.be/rXKGJGI4hvQ",
+    bilibiliUrl: "https://www.bilibili.com/video/BV19tCdBXELa/",
+    bilibiliTitle: "Druckenmiller最新持仓分析-贝森特优势？",
   },
   {
     title: "Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection",
@@ -305,6 +353,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub",
     options: true,
     youtubeUrl: "https://youtu.be/AtRXXgVRtlk",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1FfC2BrEqT/",
+    bilibiliTitle: "市场波动不上不下，Option请选择Straddle, Strangle",
   },
   {
     title: "Signal in the Noise: A Comprehensive Analysis of Filtering Techniques in Quantitative Trading",
@@ -317,6 +367,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub",
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/xtwugnNA6Ac",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1XFCTBmEf8/",
+    bilibiliTitle: "量化交易除去噪音，Filters的应用与选择",
   },
   {
     title: "Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO",
@@ -328,6 +380,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/WTQIQb1TLns",
+    bilibiliUrl: "https://www.bilibili.com/video/BV16LCcBVESi/",
+    bilibiliTitle: "除了VOO和QQQ，哪些ETF表现更好，代价是什么",
   },
   {
     title: "The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession",
@@ -339,6 +393,8 @@ export const articles2025Q4: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub",
     labels: [ArticleLabel.FORM13F],
     youtubeUrl: "https://youtu.be/ptZstN8sTVQ",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1npkkBdEnV/",
+    bilibiliTitle: "Goodbye巴菲特!Good Buy伯克希尔？",
   },
   {
     title: "Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet",
@@ -350,6 +406,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS],
     youtubeUrl: "https://youtu.be/TcGcYSa-aSQ",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1J71oBTEAw/",
+    bilibiliTitle: "特斯拉的AI梦想与混乱的现实",
   },
   {
     title: "The Option Greeks: A Trader's Poetic Guide to Risk",
@@ -362,6 +420,8 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/ZLUeCSLgw3Y",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1pu2MBGExE/",
+    bilibiliTitle: "Option Greeks 的诗歌",
   },
   {
     title: "The All Weather Strategy in a New Economic Climate",
@@ -373,6 +433,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FINANCE101, ArticleLabel.MACRO],
     youtubeUrl: "https://youtu.be/NCVI6IDwz2c",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1gC1bB1E5y/",
+    bilibiliTitle: "瑞达利欧的全天候策略还有没有用武之地",
   },
   {
     title: "The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot",
@@ -384,6 +446,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FORM13F],
     youtubeUrl: "https://youtu.be/UAS_tTCbWD4",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1xq1nBmEvW/",
+    bilibiliTitle: "大空头最新13F导致的灾难",
   },
   {
     title: "A Quantitative Analysis of Insurance Products for Retirement Security",
@@ -395,6 +459,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/W22VVkVoxEY",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1Qg1vBaEZL/",
+    bilibiliTitle: "退休有哪些保险选择，又有哪些隐藏陷阱",
   },
   {
     title: "High Altitude: Deconstructing the U.S. Stock Market Valuation",
@@ -406,6 +472,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.MACRO],
     youtubeUrl: "https://youtu.be/UMgH4GiusZA",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1Mc1PBMEXt/",
+    bilibiliTitle: "是什么支撑着市场的高估值",
   },
   {
     title: "Decoding the Options Market: Volume & Open Interest Analysis",
@@ -418,6 +486,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/DOhaPf3eJXM",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1BzyQBXEUL/",
+    bilibiliTitle: "如何理解利用 Option Volume 和 Open Interest",
   },
   {
     title: "Assumptions of Machine Learning in Quantitative Trading",
@@ -431,6 +501,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/3r0bmiKkIkJOqjq6ezCYgk?si=k-FtyCXTRGu8UWy-RDE98Q",
     labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/pR821HLbl3c",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1xiyvBDEL3/",
+    bilibiliTitle: "为什么machine learning对量化交易学习困难",
   },
   {
     title: "A Quantitative Approach to Predicting Market Direction Using Pre-Market Data",
@@ -444,6 +516,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/1SlRQyzAjAJCw2bomWYVCc?si=OPefwuaUTLOSdPmurG0QhQ",
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/5WuCFfwFCd4",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1eNyBBzEPm/",
+    bilibiliTitle: "整合开盘前信息，哪些最有价值",
   },
   {
     title: "The Architect's Guide to a Secure Retirement",
@@ -456,6 +530,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/26oLKFLFO6EEKRSY2iwntW?si=2hmPZ9O_QT2ObxbH_urMNw",
     labels: [ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/dZ5THqfE9ys",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1eRszzLEw3/",
+    bilibiliTitle: "科学退休要早做财务规划-看看这些你知道吗",
   },
   {
     title: "Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling",
@@ -468,6 +544,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/g5e-nZERjLE",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1KGs9z3Edp/",
+    bilibiliTitle: "Vertical Spread，震荡行情更灵活期权收租",
   },
   {
     title: "A Quantitative Analyst's Guide to Volatility Forecasting",
@@ -481,6 +559,8 @@ export const articles2025Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     options: true,
     youtubeUrl: "https://youtu.be/zLKCTVTfvo4",
+    bilibiliUrl: "https://www.bilibili.com/video/BV17csqzyEB5/",
+    bilibiliTitle: "对冲基金如何预测Volatility？又有何用途？",
   },
   {
     title: "The Insider's Edge: Signal from Insider Trading",
@@ -492,6 +572,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS],
     youtubeUrl: "https://youtu.be/RpaZZsz5J5U",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1frW9z4ECN/",
+    bilibiliTitle: "Insider Trading合法作为交易信号",
   },
   {
     title: "The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility",
@@ -505,6 +587,8 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/_NDyPBYkZxg",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1cdsPzZEKv/",
+    bilibiliTitle: "VIX预示了哪些东西？揭秘市场的恐惧指标",
   },
   {
     title: "The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage",
@@ -518,6 +602,8 @@ export const articles2025Q4: Article[] = [
     options: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/p8nblr4NyNc",
+    bilibiliUrl: "https://www.bilibili.com/video/BV11xWhzuEzQ/",
+    bilibiliTitle: "你能从Volatility Smile知道什么？",
   },
   {
     title: "Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha",
@@ -530,6 +616,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT],
     youtubeUrl: "https://youtu.be/z32X0C5F5JE",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1jBW7z9EfJ/",
+    bilibiliTitle: "股票因子的前世今生",
   },
   {
     title: "The Harvest: How Institutions Systematically Exploit Retail Investors",
@@ -542,6 +630,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/xMaKA2lIn8c",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1iC4SznE8o/",
+    bilibiliTitle: "华尔街有哪些手段割散户韭菜",
   },
   {
     title: "The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading",
@@ -555,6 +645,8 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/5OmbT8uJdLkCqwLGOmryBj?si=w4REK83BSh-ygvow64zosQ",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     youtubeUrl: "https://youtu.be/Zp-ZmWc1G3A",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1Gb4jzQEoz/",
+    bilibiliTitle: "HFT高频交易的玩法和玩家们",
   },
   {
     title: "Options Strategy to beat Black Swan and Grey Rhino",
@@ -567,6 +659,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/UTPVKLS87zg",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1CS4NzBEE6/",
+    bilibiliTitle: "用期权如何打败黑天鹅灰犀牛",
   },
   {
     title: "Options Wheel Trading Plan: A Quantitative Approach",
@@ -580,6 +674,8 @@ export const articles2025Q4: Article[] = [
     options: true,
     podcastUrl: "https://open.spotify.com/episode/3dDqZGmZQGZqrGdlYdA2bB?si=Y4JvhtcBT6ylI-xiakV6sg",
     youtubeUrl: "https://youtu.be/GGKItsjV-L8",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1fi4PztE18/",
+    bilibiliTitle: "用好轮子策略，玩转股票和期权",
   },
   {
     title: "Trade War Redux: Anatomy of the October 10th Market Shock",
@@ -591,6 +687,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.MACRO],
     youtubeUrl: "https://youtu.be/imLzlzT5u8I",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1Vy4szCEDc/",
+    bilibiliTitle: "美股A股都暴跌，贸易战又回来了，你的投资该怎么办",
   },
   {
     title: "Personal Quant Trading Strategies",
@@ -614,6 +712,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS],
     youtubeUrl: "https://youtu.be/VjOsdoln7Bo",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1GZxozcEhD/",
+    bilibiliTitle: "量价分析-基本原理浅解",
   },
   {
     title: "Russell 2000: The Small-Cap Engine - A Deep Dive Analysis",
@@ -625,6 +725,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.FINANCE101],
     youtubeUrl: "https://youtu.be/IX4E6eHmYaE",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1SoxuzxE1F/",
+    bilibiliTitle: "Russell 2000小盘股指数你不知道的事",
   },
   {
     title: "Strategic Portfolio Management via Option Writing",
@@ -637,6 +739,8 @@ export const articles2025Q4: Article[] = [
     deepResearch: true,
     options: true,
     youtubeUrl: "https://youtu.be/MVc-dVWEc4w",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1qQx4zXEqg/",
+    bilibiliTitle: "用期权建仓平仓股票，显得更专业",
   },
   {
     title: "The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution",
@@ -650,5 +754,7 @@ export const articles2025Q4: Article[] = [
     podcastUrl: "https://open.spotify.com/episode/5go6IpDzzcDSiqC6Q06uxI?si=CpaGEZk9Td-eQS4h1k2NFQ",
     labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
     youtubeUrl: "https://youtu.be/QQjvEWV9-WQ",
+    bilibiliUrl: "https://www.bilibili.com/video/BV1BsHgzaEo9/",
+    bilibiliTitle: "拆解一般quant hedge fund交易研究流程",
   },
 ];

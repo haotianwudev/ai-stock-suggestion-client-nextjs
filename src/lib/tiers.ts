@@ -39,6 +39,16 @@ export const MIN_COMMENT_TIER = 3;
 /** Tier required to view non-default topic pages (see TopicAccessGate). */
 export const MIN_TOPIC_TIER = 2;
 
+/** Tier required to set a preferred video platform (YouTube vs Bilibili) in
+ * profile settings. Mirrors MIN_VIDEO_PREFERENCE_TIER in
+ * server/src/resolvers/auth.js -- keep both in sync. */
+export const MIN_VIDEO_PREFERENCE_TIER = 4;
+
+/** Returns true when the given tier is allowed to set the video-source preference. */
+export function canSetVideoPreference(tier: number): boolean {
+  return tier >= MIN_VIDEO_PREFERENCE_TIER;
+}
+
 /** Returns true when the tier alone (no YouTube-subscription bypass) unlocks topic pages. */
 export function canAccessTopicContentByTier(tier: number): boolean {
   return tier >= MIN_TOPIC_TIER;
@@ -92,7 +102,7 @@ export function tierUnlockMessage(tier: number): string | null {
     case 3:
       return "Comments are now unlocked.";
     case 4:
-      return "Premium articles are now unlocked.";
+      return "Premium articles and your preferred video platform are now unlocked.";
     default:
       return null;
   }
