@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useMutation, useQuery } from "@apollo/client";
 import { toast } from "sonner";
-import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, PlayCircle, ImageIcon, Layers, TrendingUp, X, Bookmark, ThumbsUp } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText, BookOpen, ExternalLink, Maximize2, Minimize2, PlayCircle, ImageIcon, Layers, TrendingUp, X, Bookmark, ThumbsUp } from "lucide-react";
 import { articles } from "@/data/articles";
 import { Article, ArticleLabel } from "@/data/articles/types";
 import { StructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data";
@@ -154,6 +154,7 @@ function VideoCard({
   articleSlug: string;
 }) {
   const [playing, setPlaying] = useState(false);
+  const [enlarged, setEnlarged] = useState(false);
   const [source, setSource] = useState<"youtube" | "bilibili">("youtube");
   const [sourceTouched, setSourceTouched] = useState(false);
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
@@ -211,28 +212,44 @@ function VideoCard({
   const autoplaySrc = embedUrl ? `${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1` : null;
 
   return (
-    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm">
+    <div
+      className={
+        enlarged
+          ? "fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:w-[440px] md:w-[520px] lg:w-[620px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-2xl"
+          : "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm"
+      }
+    >
       <div className="px-4 pt-4 pb-2 flex items-center justify-between">
         <SlotKicker icon={PlayCircle} label="Watch" tone="red" />
-        {bilibiliUrl && (
-          <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden text-[11px] font-semibold">
-            {(["youtube", "bilibili"] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => { setSource(s); setSourceTouched(true); }}
-                className={`px-2.5 py-1 transition-colors ${
-                  source === s
-                    ? s === "bilibili"
-                      ? "bg-[#FB7299] text-white"
-                      : "bg-red-600 text-white"
-                    : "bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                }`}
-              >
-                {s === "youtube" ? "YouTube" : "Bilibili"}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {bilibiliUrl && (
+            <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden text-[11px] font-semibold">
+              {(["youtube", "bilibili"] as const).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => { setSource(s); setSourceTouched(true); }}
+                  className={`px-2.5 py-1 transition-colors ${
+                    source === s
+                      ? s === "bilibili"
+                        ? "bg-[#FB7299] text-white"
+                        : "bg-red-600 text-white"
+                      : "bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                  }`}
+                >
+                  {s === "youtube" ? "YouTube" : "Bilibili"}
+                </button>
+              ))}
+            </div>
+          )}
+          <button
+            onClick={() => setEnlarged((prev) => !prev)}
+            className="inline-flex items-center justify-center size-6 rounded border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+            title={enlarged ? "Shrink player" : "Enlarge player — keeps playing while you scroll and read"}
+            aria-label={enlarged ? "Shrink player" : "Enlarge player"}
+          >
+            {enlarged ? <Minimize2 className="size-3.5" /> : <Maximize2 className="size-3.5" />}
+          </button>
+        </div>
       </div>
       <div className="relative aspect-video bg-black">
         {playing && autoplaySrc ? (
@@ -245,7 +262,7 @@ function VideoCard({
           />
         ) : (
           <button
-            onClick={() => setPlaying(true)}
+            onClick={() => { setPlaying(true); setEnlarged(true); }}
             className="absolute inset-0 w-full h-full group touch-manipulation"
             aria-label={`Play video: ${title}`}
           >
@@ -700,22 +717,22 @@ export function ArticleFrame({
           </p>
         </div>
 
-        {/* Body + support-material panel. On mobile the panel cards stack below the
-            article in source order; on desktop (lg+) they sit in a sticky right rail
-            so video/paper/wiki stay reachable without leaving the article's scroll
-            position. */}
+        {/* Body + support-material panel. On mobile the panel cards (video first)
+            stack above the article via order-1/order-2, so the video is visible
+            without scrolling past the whole article first; on desktop (lg+) the
+            order flips back so the panel sits in its usual sticky right rail. */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
           <CurrentArticleContext.Provider value={currentArticle}>
             {hasPanel ? (
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_336px] gap-8 lg:gap-10 items-start">
-                <article className="min-w-0">
+                <article className="min-w-0 order-2 lg:order-1">
                   {hasVideo ? (
                     <YoutubeSubscribeGate videoUrl={currentArticle.youtubeUrl!}>{children}</YoutubeSubscribeGate>
                   ) : (
                     children
                   )}
                 </article>
-                <aside className="lg:sticky lg:top-24 space-y-4">
+                <aside className="order-1 lg:order-2 lg:sticky lg:top-24 space-y-4">
                   <Link
                     href="/"
                     className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
