@@ -197,7 +197,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 </>
               )}
             </div>
-            <CardDescription className="mb-2 text-sm text-muted-foreground line-clamp-5">
+            <CardDescription className="mb-2 text-sm text-muted-foreground line-clamp-2">
               {description}
             </CardDescription>
           </div>

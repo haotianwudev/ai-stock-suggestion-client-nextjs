@@ -3,7 +3,7 @@ import { Article, ArticleLabel } from './types';
 export const articles2026Q3: Article[] = [
   {
     title: "Strategic Wealth Considerations: Tax Mechanics, Asset Location, and Behavioral Finance",
-    description: "A practitioner's guide to the tax mechanics most wealth plans miss: the de minimis trap that turns municipal bond gains into ordinary income, the Free Dividend Fallacy distorting yield-seeking behavior, phantom income traps from TIPS and the new OBBBA gambling-loss cap, and how Donor-Advised Funds and Qualified Charitable Distributions turn philanthropy into precision tax defense.",
+    description: "The tax traps most wealth plans miss: the municipal bond de minimis rule, the Free Dividend Fallacy, TIPS phantom income, and precision charitable giving.",
     slug: "strategic-wealth-considerations-tax-and-behavioral-finance",
     date: "August 28, 2026",
     imageUrl: "https://i.imgur.com/8mIAdD3.jpeg",
@@ -14,7 +14,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Infrastructure of Counterparty Credit Risk: Margin, WCL, Excess, Shortfall, and Release",
-    description: "A comprehensive deep dive into the mathematical frameworks governing credit extension across Prime Brokerage and UHNW Wealth Management. Master Regulation T vs Portfolio Margin, Worst Case Loss stress grids, House Excess liquidity constraints, forced liquidation mechanics, and the systemic importance of precise margin release calculations.",
+    description: "Inside Prime Brokerage credit risk: Regulation T vs Portfolio Margin, Worst Case Loss stress grids, House Excess limits, and forced liquidation mechanics.",
     slug: "infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release",
     date: "August 25, 2026",
     imageUrl: "https://i.imgur.com/CJKuvau.png",
@@ -25,7 +25,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Structural Revolution in Causal Quantitative Finance",
-    description: "A comprehensive deep dive into the shift from correlational to causal finance — covering Double Machine Learning for unbiased parameter estimation, Deep IV for unobserved confounding, causal discovery algorithms (NOTEARS, LiNGAM, PC/FCI) for learning market structure directly from data, and the Interventional Covariance Matrix as a causally-robust replacement for the Pearson correlation matrix in portfolio construction.",
+    description: "How causal finance is replacing correlation: Double Machine Learning, Deep IV, causal discovery algorithms, and a causally-robust covariance matrix.",
     slug: "structural-revolution-quantitative-finance",
     date: "August 23, 2026",
     imageUrl: "https://i.imgur.com/gsS0XT4.jpeg",
@@ -36,7 +36,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Repo Market & Dollar Funding: Mechanics, Strategies, and Systemic Risks",
-    description: "A comprehensive deep dive into the $1 trillion daily engine of global finance. Master the mechanics of repurchase agreements, SOFR benchmark transition, Treasury basis trades with 56-to-1 leverage, Fed standing facilities, and the systemic vulnerabilities exposed in September 2019 and March 2020 liquidity crises.",
+    description: "Inside the $1 trillion repo market: SOFR transition, 56-to-1 Treasury basis trades, Fed standing facilities, and the 2019 and 2020 liquidity crises.",
     slug: "repo-market-dollar-funding-mechanics-strategies-systemic-risks",
     date: "August 21, 2026",
     imageUrl: "https://i.imgur.com/txWFjTV.png",
@@ -47,7 +47,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Advancements in Formulaic Alpha Mining: Deep Search Mechanics, Application Strategies, and Statistical Robustness",
-    description: "A comprehensive deep dive into automated alpha discovery through Deep Reinforcement Learning and Monte Carlo Tree Search. Master the mechanics of formulaic alpha generation, risk-seeking policy gradients, signal diversity enforcement, and the critical statistical deflation techniques needed to separate genuine structural inefficiencies from backtest overfitting.",
+    description: "Automated alpha discovery via deep RL and Monte Carlo Tree Search — plus the statistical deflation techniques that separate signal from overfitting.",
     slug: "advancements-formulaic-alpha-mining-deep-search-mechanics",
     date: "August 18, 2026",
     imageUrl: "https://i.imgur.com/FaYqMkm.jpeg",
@@ -58,7 +58,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance",
-    description: "A comprehensive technical guide to building agentic RAG systems that integrate LangChain with custom proprietary wikis. Master multi-hop reasoning, mathematical chunking strategies, LangGraph workflows, and hierarchical swarm architectures for high-stakes quantitative finance and mathematical modeling.",
+    description: "Building agentic RAG with LangChain and proprietary wikis: multi-hop reasoning, mathematical chunking, LangGraph workflows, and swarm architectures.",
     slug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
     date: "August 15, 2026",
     imageUrl: "https://i.imgur.com/mdTAlcA.jpeg",
@@ -69,7 +69,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Hidden Mechanics of Form 13F Disclosures: Microstructure, Copycat Economics, and Systemic Risk",
-    description: "A comprehensive deep dive into the microstructural impact of quarterly 13F filings. Master algorithmic XML parsing in milliseconds, the economics of copycat trading generating 5.5-6.7% alpha, strategic confidential treatment requests, predatory front-running causing 2.6% performance drag, and the systemic risks of Form SHO integration in late 2026.",
+    description: "Inside 13F filings: millisecond XML parsing, copycat trades worth 5.5-6.7% alpha, confidential treatment requests, and front-running's 2.6% drag.",
     slug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",
     date: "August 13, 2026",
     imageUrl: "https://img.youtube.com/vi/VFaAUqhqT7I/maxresdefault.jpg",
@@ -83,7 +83,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Quantitative Assessment of the Fixed-Income Market: Identifying Turning Points in the Macroeconomic Cycle",
-    description: "A comprehensive quantitative analysis of the fixed-income market transition from bear to bull territory. Master macroeconomic stall speed indicators, yield curve dynamics, term premium decomposition, the neutral rate (r*) framework, credit spread analysis via OAS, and technical quantitative metrics to identify structural market turning points.",
+    description: "Spotting bond-market turning points via stall-speed indicators, yield curve dynamics, term premium decomposition, the r* framework, and OAS spreads.",
     slug: "quantitative-assessment-fixed-income-market-turning-points",
     date: "August 10, 2026",
     imageUrl: "https://img.youtube.com/vi/kTuZBlNZtEU/maxresdefault.jpg",
@@ -97,7 +97,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks",
-    description: "A comprehensive deep dive into ETF mechanics — from regulatory frameworks and the dual-market architecture to tax efficiency via the heartbeat trade, execution strategies for low-liquidity ETFs, volatility decay in leveraged products, and the USO contango anomaly.",
+    description: "ETF mechanics unpacked: the dual-market structure, the tax-saving heartbeat trade, low-liquidity execution tactics, and the USO contango anomaly.",
     slug: "architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks",
     date: "August 7, 2026",
     imageUrl: "https://img.youtube.com/vi/sjPhkcigAU8/maxresdefault.jpg",
@@ -111,7 +111,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Quantitative Trading of Mean Reversion: Factor Models, Execution Dynamics, and Rigorous Research Practices",
-    description: "A comprehensive deep dive into statistical arbitrage and mean reversion trading. Master factor models from CAPM to Fama-French Five-Factor, advanced extraction via IPCA and deep learning, Ornstein-Uhlenbeck frameworks, execution dynamics with the square-root law, and rigorous research practices to prevent overfitting.",
+    description: "Statistical arbitrage explained: CAPM to Fama-French factors, IPCA and deep-learning extraction, Ornstein-Uhlenbeck models, and overfitting safeguards.",
     slug: "quantitative-trading-mean-reversion-factor-models-execution-dynamics",
     date: "August 4, 2026",
     imageUrl: "https://img.youtube.com/vi/8BLEdEnxGi4/maxresdefault.jpg",
@@ -125,7 +125,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow",
-    description: "Master the 3D map of implied volatility to separate sustainable trends from fragile bubbles. Learn to read skew morphology, sticky delta regimes, and quantitative metrics for superior market timing.",
+    description: "Read the 3D implied-volatility surface to separate real trends from bubbles — skew morphology, sticky delta regimes, and market-timing signals.",
     slug: "decoding-volatility-surface-advanced-market-prediction-options-flow",
     date: "August 1, 2026",
     imageUrl: "https://img.youtube.com/vi/H_GydoDEoSk/maxresdefault.jpg",
@@ -140,7 +140,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Advanced GitLab SDLC for Quantitative Development: CI/CD Best Practices",
-    description: "A comprehensive guide to managing Git version control and CI/CD pipelines specifically tailored for quantitative engineering. Master branching strategies, Jupyter notebook workflows, data versioning with DVC, performance testing, and continuous compliance for financial systems.",
+    description: "A quant engineer's guide to Git and CI/CD: branching strategies, Jupyter workflows, DVC data versioning, and continuous compliance for finance.",
     slug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
     date: "July 30, 2026",
     youtubeUrl: "https://youtu.be/mXnjiHQ2ycY",
@@ -154,7 +154,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Systemic Fragility & Quantitative Contagion: The 2026 South Korean Equity Crisis",
-    description: "An in-depth analysis of the 2026 South Korean Equity Crisis, exploring the toxic convergence of retail leverage, market microstructure, and global factor rotation. Examines how single-stock leveraged ETFs, extreme index concentration, and mechanical feedback loops created a catastrophic deleveraging cascade.",
+    description: "Inside the 2026 Korean equity crisis: retail leverage, single-stock leveraged ETFs, index concentration, and the mechanical deleveraging cascade.",
     slug: "systemic-fragility-quantitative-contagion-2026-korean-crisis",
     date: "July 27, 2026",
     youtubeUrl: "https://youtu.be/OB4lqey_8f8",
@@ -169,7 +169,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Mathematics & Microstructure of the Cboe VIX",
-    description: "A comprehensive quantitative guide to the VIX — from stochastic variance replication and discrete approximation to market microstructure dynamics, derivatives ecosystems, and the August 2024 liquidity shock. Master the fear gauge beyond the headlines.",
+    description: "The VIX beyond the headlines: stochastic variance replication, market microstructure dynamics, the derivatives ecosystem, and the 2024 liquidity shock.",
     slug: "mathematics-microstructure-cboe-vix",
     date: "July 24, 2026",
     youtubeUrl: "https://youtu.be/IXumgPJ5D-A",
@@ -183,7 +183,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The SpaceX Public Market Integration: Index Weighting, Structural Drawdown Vulnerabilities, and Systemic Failure Consequences of the $1.77 Trillion Mega-IPO",
-    description: "A comprehensive analysis of the largest IPO in history. Explore the financial architecture bundling Starlink profits with xAI losses, divergent index inclusion strategies creating massive tracking errors, extreme valuation multiples with 4.2% float scarcity, and the systemic aerospace-defense-telecommunications dependencies that make SpaceX a centralized point of failure for the global economy.",
+    description: "Inside the $1.77T SpaceX IPO: Starlink-xAI bundling, index tracking-error risk, 4.2% float scarcity, and its systemic aerospace dependencies.",
     slug: "spacex-public-market-integration-systemic-risk-analysis",
     date: "July 21, 2026",
     youtubeUrl: "https://youtu.be/48MkY66hXfA",
@@ -198,7 +198,7 @@ export const articles2026Q3: Article[] = [
 
   {
     title: "Mastering SPX Option Selling Strategies: A Quantitative Guide to Harvesting the Variance Risk Premium",
-    description: "A comprehensive guide to the empirical efficacy of technical, volatility, and macroeconomic indicators in harvesting the Variance Risk Premium through systematic SPX option selling. Master VIX/VXV ratios, Morning VVIX anomalies, mean-reverting tactical indicators, and dynamic position sizing for optimal risk-adjusted returns.",
+    description: "Harvesting the Variance Risk Premium via SPX options: VIX/VXV ratios, Morning VVIX anomalies, and dynamic position sizing for risk-adjusted returns.",
     slug: "mastering-spx-option-selling-strategies-variance-risk-premium",
     date: "July 18, 2026",
     youtubeUrl: "https://youtu.be/uWmPazdgV4Q",
@@ -213,7 +213,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Quantitative Foundations of Long-Short Equity Portfolios",
-    description: "A comprehensive quantitative guide to the architecture of long-short equity strategies — from the Fundamental Law of Active Management and structural paradigms (market-neutral vs. 130/30) to factor models, the quant research workflow, and portfolio optimization via convex programming.",
+    description: "The architecture of long-short equity: the Fundamental Law of Active Management, market-neutral vs. 130/30, factor models, and convex optimization.",
     slug: "quantitative-foundations-long-short-equity-portfolios",
     date: "July 16, 2026",
     imageUrl: "https://img.youtube.com/vi/-gVI9UIGoeQ/maxresdefault.jpg",
@@ -227,7 +227,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Architecting AI Agent Testing in Quantitative Finance",
-    description: "Master the robust evaluation frameworks required to deploy autonomous financial agents safely, utilizing the LangChain and LangGraph ecosystems. From unit testing and trajectory validation to LLM-as-a-judge evaluation and domain-specific benchmarking.",
+    description: "Testing autonomous financial agents safely with LangChain and LangGraph: unit tests, trajectory validation, LLM-as-a-judge, and domain benchmarks.",
     slug: "architecting-ai-agent-testing-quantitative-finance",
     date: "July 13, 2026",
     imageUrl: "https://img.youtube.com/vi/Bl3v2F2jAjg/maxresdefault.jpg",
@@ -241,7 +241,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
-    description: "A comprehensive, step-by-step breakdown of the scale, strategic utility, and quantitative mechanics driving the modern $22 trillion ETF ecosystem. From AUM growth and trading velocity to the exodus from vanilla beta, tax alpha advantages, and the arbitrage engine of market microstructure.",
+    description: "Inside the $22 trillion ETF ecosystem: AUM growth, the exodus from vanilla beta, tax alpha advantages, and the market-microstructure arbitrage engine.",
     slug: "dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics",
     date: "July 10, 2026",
     youtubeUrl: "https://youtu.be/KXLmOi9HV9o",
@@ -256,7 +256,7 @@ export const articles2026Q3: Article[] = [
 
   {
     title: "The Pricing of Cross-Border Dual-Listed Equities",
-    description: "Exploring liquidity premia, arbitrage constraints, and the persistent Chinese AH Premium Puzzle. A deep dive into why the Law of One Price is systematically violated in global markets through quantitative finance models.",
+    description: "Why the Law of One Price breaks down: liquidity premia, arbitrage constraints, and the persistent Chinese AH Premium Puzzle, explained quantitatively.",
     slug: "pricing-cross-border-dual-listed-equities",
     date: "July 8, 2026",
     youtubeUrl: "https://youtu.be/dbnmFlVnOQQ",
@@ -270,7 +270,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "The Anatomy of a Transient Shock: Deconstructing Stagflation Fears and the 2026 Disinflationary Trend",
-    description: "A comprehensive macroeconomic analysis of the 2026 energy shock, inflation paradox, and structural resilience. Explores why stagflation fears were premature, how the Strait of Hormuz crisis created transient volatility, and why falling breakeven inflation rates validate the disinflationary trajectory despite geopolitical chaos.",
+    description: "Why 2026 stagflation fears were premature: the Strait of Hormuz shock, falling breakeven inflation, and the case for disinflation despite chaos.",
     slug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
     date: "July 5, 2026",
     youtubeUrl: "https://youtu.be/ltbC23TpuM0",
@@ -284,7 +284,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage",
-    description: "The modern edge lies not in the blind selling of insurance, but in the rigorous decomposition of the VRP into its constituent, orthogonal components. Master the dissection of moneyness, term structure, and correlation to target structural inefficiencies driven by non-economic flows.",
+    description: "The real VRP edge isn't blind insurance-selling — it's decomposing moneyness, term structure, and correlation to target structural inefficiencies.",
     slug: "decomposing-volatility-risk-premium-structural-arbitrage",
     date: "July 3, 2026",
     youtubeUrl: "https://youtu.be/tP1HJuVzuZU",
@@ -299,7 +299,7 @@ export const articles2026Q3: Article[] = [
   },
   {
     title: "Architecting Autonomous Quantitative Agents: A Comprehensive Guide to the LangChain Ecosystem",
-    description: "A comprehensive guide to the modern LangChain ecosystem. Build stateful, reliable, and secure multi-agent systems for financial modeling—without writing endless code. From LangChain frameworks to Deep Agents harness and MCP connectivity.",
+    description: "Build stateful, secure multi-agent financial systems with the LangChain ecosystem — from core frameworks to the Deep Agents harness and MCP connectivity.",
     slug: "architecting-autonomous-quantitative-agents-langchain-ecosystem",
     date: "July 1, 2026",
     youtubeUrl: "https://youtu.be/UsmpSM6ynuo",

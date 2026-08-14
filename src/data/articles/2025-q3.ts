@@ -3,7 +3,7 @@ import { Article, ArticleLabel } from './types';
 export const articles2025Q3: Article[] = [
   {
     title: "Navigating the Turning Point: 2025 Long-Term Fixed Income Market Analysis",
-    description: "An in-depth analysis of the 2025 long-term fixed income market, exploring the paradigm shift from price appreciation to income-driven returns. Examines high starting yields, Federal Reserve policy pivot, and strategic opportunities in a 'stagflation-lite' environment shaped by growth deceleration and persistent inflation.",
+    description: "Bonds pivot from price appreciation to income: high starting yields, the Fed's policy turn, and how to position in a 'stagflation-lite' 2025 economy.",
     slug: "navigating-turning-point-2025-fixed-income-analysis",
     date: "September 30, 2025",
     imageUrl: "https://img.youtube.com/vi/2xcK1hjcPfg/maxresdefault.jpg",
@@ -16,7 +16,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations",
-    description: "An in-depth analysis of U.S. equity valuations following Fed Chair Powell's warning that the market is 'fairly highly valued.' Explores key valuation metrics, historical precedents, and strategic recommendations for navigating an expensive market environment.",
+    description: "Powell called markets 'fairly highly valued' — inside the valuation metrics, historical precedents, and strategies for investing at record-expensive prices.",
     slug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
     date: "September 29, 2025",
     imageUrl: "https://img.youtube.com/vi/RckAyn0Ia3k/maxresdefault.jpg",
@@ -30,7 +30,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading",
-    description: "A comprehensive analysis of the psychological, technical, and structural pitfalls that trap options traders. Explores the Greeks, volatility dynamics, assignment risks, tax implications, and the critical differences between index and ETF options that can make or break trading strategies.",
+    description: "Inside the psychological and structural traps options traders fall into: the Greeks, volatility dynamics, assignment risk, taxes, and index vs ETF quirks.",
     slug: "navigating-minefield-options-trading-pitfalls",
     date: "September 28, 2025",
     imageUrl: "https://img.youtube.com/vi/IvWGgDNQoUk/maxresdefault.jpg",
@@ -45,7 +45,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Anatomy of Speed: Modern Market Making in High-Frequency Trading",
-    description: "A comprehensive analytical report on the strategies, models, and alpha generation techniques in high-frequency trading environments. Explores the Avellaneda-Stoikov model, machine learning applications, and the technological infrastructure powering electronic market makers in the latency arms race.",
+    description: "Inside modern market making: the Avellaneda-Stoikov model, machine learning alpha, and the infrastructure powering the high-frequency latency arms race.",
     slug: "anatomy-of-speed-modern-market-making-hft",
     date: "September 26, 2025",
     imageUrl: "https://img.youtube.com/vi/waY0tFW49VY/maxresdefault.jpg",
@@ -60,7 +60,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Smart Beta: Guide to Systematic and Personal Strategies",
-    description: "An exhaustive analysis of smart beta strategies, deconstructing their theoretical underpinnings, practical applications, and strategic recommendations for both institutional and individual investors.",
+    description: "Smart beta strategies deconstructed: the factor theory behind them, systematic implementation, and practical playbooks for institutions and individuals.",
     slug: "smart-beta-systematic-personal-investing-strategies",
     date: "September 24, 2025",
     imageUrl: "https://img.youtube.com/vi/xZY-O9-4AUs/maxresdefault.jpg",
@@ -74,7 +74,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The New Golden Age: A Structural Bull Market Analysis",
-    description: "An in-depth analysis of the reinforcing mega-trends—macroeconomic shifts, central bank accumulation, and geopolitical risk—propelling gold into a new era of sustained growth. Explores the anatomy of secular bull markets, the great accumulation by central banks, and institutional price projections reaching $4,000+.",
+    description: "Gold's structural bull case: central bank accumulation, macro mega-trends, and why institutions are projecting prices above $4,000.",
     slug: "new-golden-age-structural-bull-market-analysis",
     date: "September 22, 2025",
     imageUrl: "https://img.youtube.com/vi/XqG5CLOzmME/maxresdefault.jpg",
@@ -88,7 +88,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Academic Foundations of Option Writing",
-    description: "A comprehensive review of modern research on risk premia, strategy performance, and risk management in systematic option selling strategies.",
+    description: "What academic research actually says about option-selling risk premia, strategy performance, and risk management in systematic put and call writing.",
     slug: "academic-foundations-option-writing-research-review",
     date: "September 21, 2025",
     imageUrl: "https://smartbulls.com/images/learn/option-writing.png",
@@ -100,7 +100,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Option Collar Strategy: Protect Gains, Define Risk",
-    description: "A comprehensive deep research analysis of the option collar strategy for capital preservation. Explores the three-pillar structure, interactive payoff calculations, volatility skew implications, and advanced management techniques for hedging long positions at low or zero net cost.",
+    description: "The zero-cost option collar explained: its three-pillar structure, payoff math, volatility skew effects, and advanced techniques for hedging long stock.",
     slug: "option-collar-strategy-protect-gains-define-risk",
     date: "September 20, 2025",
     imageUrl: "https://img.youtube.com/vi/AuBIzqvQdEw/maxresdefault.jpg",
@@ -114,7 +114,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Reinforcement Learning in Quantitative Trading: From Prediction to Optimal Action",
-    description: "An in-depth analysis of how RL is shifting the financial paradigm from static prediction to dynamic, adaptive policy optimization for superior alpha generation. Explores the fundamental evolution from asking 'What will the market do?' to 'What is the best action to take now?'",
+    description: "RL reframes trading from prediction to action: how 'what will the market do' becomes 'what's the best move now' for adaptive, alpha-seeking policies.",
     slug: "reinforcement-learning-quantitative-trading-optimal-action",
     date: "September 19, 2025",
     imageUrl: "https://img.youtube.com/vi/sSu4emL_mOU/maxresdefault.jpg",
@@ -129,7 +129,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "From Viral Videos to Volatile Valuations: Can AI Algorithms Pick Your Next Stock?",
-    description: "A critical feasibility analysis of applying social media recommender systems to financial markets, revealing a fundamental conflict between engagement-driven logic and the principles of prudent investment. Explores the chasm between TikTok's algorithm and sound financial advisory systems.",
+    description: "Can TikTok's recommendation engine pick stocks? A feasibility test exposes the clash between engagement-driven algorithms and prudent investing.",
     slug: "viral-videos-volatile-valuations-ai-algorithms-stock-picking",
     date: "September 17, 2025",
     imageUrl: "https://img.youtube.com/vi/g3vVAfBu84c/maxresdefault.jpg",
@@ -142,7 +142,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Mastering the S&P 500 Inclusion Anomaly: December 2025 Deep Research",
-    description: "A comprehensive analysis of the S&P 500 inclusion event-driven strategy for December 5, 2025. Deep dive into candidate screening, options strategies, risk management, and the modern index effect that creates temporary momentum opportunities for sophisticated traders.",
+    description: "Trading the S&P 500's December 5, 2025 rebalance: candidate screening, options tactics, risk controls, and the index-effect momentum it creates.",
     slug: "sp500-inclusion-anomaly-december-2025-deep-research",
     date: "September 15, 2025",
     imageUrl: "https://img.youtube.com/vi/IMS-1JMTbc0/maxresdefault.jpg",
@@ -157,7 +157,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Defensive and Offensive Rolling on Short Options",
-    description: "A comprehensive quantitative framework for managing option positions through defensive and offensive rolling strategies. Covers universal principles, decision triggers using Greeks, net credit mandates, and practical implementation guides for both put and call strategies. Features interactive visual components and real-world examples.",
+    description: "A quantitative playbook for rolling short options: Greeks-based decision triggers, net-credit mandates, and defensive vs offensive tactics for puts and calls.",
     slug: "strategic-framework-rolling-options-quantitative-approach",
     date: "September 13, 2025",
     imageUrl: "https://img.youtube.com/vi/q5FSpOKtcFM/maxresdefault.jpg",
@@ -171,7 +171,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Tax-Efficient Option Writing and Common Pitfalls",
-    description: "Option writers to navigate and mitigate the inherent tax inefficiencies of premium collection strategies. Covers Section 1256 contracts, the 60/40 rule, straddle and wash sale rules, qualified covered calls, and advanced tax-planning techniques for maximizing after-tax returns.",
+    description: "Section 1256 contracts, the 60/40 rule, straddle and wash-sale traps, and qualified covered calls: how to keep more of your option-selling premium.",
     slug: "tax-efficient-option-writing-comprehensive-guide",
     date: "September 12, 2025",
     imageUrl: "https://img.youtube.com/vi/PkibBIsGHzk/maxresdefault.jpg",
@@ -185,7 +185,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Strategic Role of XGBoost in Systematic Trading: A 2025 Perspective",
-    description: "While complex models like LSTMs and Transformers gain prominence, XGBoost maintains a vital position in systematic trading. Exploring performance, problems, and positioning against deep learning in modern quantitative finance.",
+    description: "While LSTMs and Transformers grab headlines, XGBoost still holds its ground in systematic trading — where it wins, where it loses to deep learning.",
     slug: "strategic-role-xgboost-systematic-trading-2025",
     date: "September 11, 2025",
     deepResearch: true,
@@ -199,7 +199,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Mutual Funds vs ETFs: The Definitive Investment Guide",
-    description: "A comprehensive analysis of the key differences between mutual funds and ETFs, covering trading mechanisms, tax efficiency, costs, and strategic applications. Learn when to use each investment vehicle and how to build a hybrid portfolio that maximizes the strengths of both approaches.",
+    description: "Mutual funds vs ETFs on trading mechanics, tax efficiency, and cost — plus how to blend both into a hybrid portfolio that plays to each one's strengths.",
     slug: "mutual-funds-vs-etfs-definitive-investment-guide",
     date: "September 9, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vST0TMTGIMyJXP9CPCB8Hr-EMKCrs_wIhiHzvEB9kAvWohhT8WgdoacElpCdBh-Ubvn8jeLwpiHHuac/pub",
@@ -209,7 +209,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Mastering the Market Cycle: Getting the Odds on Your Side",
-    description: "An interactive summary of Howard Marks' essential guide to understanding market behavior, cycles, and positioning for investment success through market extremes.",
+    description: "Howard Marks on reading market cycles: how to recognize extremes and position for the odds to tilt in your favor, distilled into an interactive summary.",
     slug: "mastering-market-cycle-howard-marks-summary",
     date: "September 8, 2025",
     imageUrl: "https://img.youtube.com/vi/iT8RowYimos/maxresdefault.jpg",
@@ -220,7 +220,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations",
-    description: "A comprehensive analysis of the paradox facing investors: equity markets at all-time highs while the Federal Reserve initiates monetary easing. Explores strategic portfolio construction for an era of peak valuations, examining gold, fixed income, small-cap opportunities, and advanced option strategies.",
+    description: "Stocks at record highs while the Fed cuts rates — a portfolio playbook for peak valuations covering gold, fixed income, small caps, and options overlays.",
     slug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
     date: "September 6, 2025",
     deepResearch: true,
@@ -234,7 +234,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "How Hedge Funds Use Alternative Data for Alpha",
-    description: "Analysis of datasets used by hedge funds for alpha generation in long-short equity trading. Explores the accessibility gap between institutional and retail investors, covering alternative data sources, machine learning pipelines, and the industrial-scale infrastructure that creates formidable barriers to entry.",
+    description: "The alternative-data arms race behind hedge fund alpha: the datasets, ML pipelines, and industrial-scale infrastructure retail investors can't match.",
     slug: "hedge-fund-data-driven-edge-alpha-generation",
     date: "September 4, 2025",
     imageUrl: "https://img.youtube.com/vi/U5iJM-xrGLs/maxresdefault.jpg",
@@ -248,7 +248,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Navigating the Turning Tide: A 2025 Macro Analysis",
-    description: "An in-depth analysis of the 2025 Dollar decline, U.S. equity resilience, and the emergence of a new macroeconomic paradigm driven by domestic policy uncertainty. Examining the historic inflection point that ended the dollar's 15-year bull cycle.",
+    description: "The dollar's 15-year bull cycle just ended — inside 2025's currency inflection point, U.S. equity resilience, and the new macro paradigm it signals.",
     slug: "navigating-turning-tide-2025-macro-analysis",
     date: "September 4, 2025",
     deepResearch: true,
@@ -262,7 +262,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?",
-    description: "Deep dive into the unprecedented market dominance of the Magnificent Seven tech giants. Analyzing Q2 2025 earnings, AI monetization strategies, and the great bifurcation between AI enablers and application players in this comprehensive market analysis.",
+    description: "Inside the Magnificent Seven's Q2 2025 earnings: AI monetization strategies and the growing bifurcation between AI enablers and application players.",
     slug: "magnificent-seven-ai-titans-bubble-analysis",
     date: "September 2, 2025",
     deepResearch: true,
@@ -276,7 +276,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Covered Calls vs Cash-Secured Puts",
-    description: "This article explores the mechanics, theoretical equivalence, and practical differences between covered call writing and cash-secured put writing. It covers put-call parity, risk/reward profiles, assignment events, and the psychological and operational factors that make these strategies both mathematically identical and behaviorally distinct. Includes a decision matrix and implementation guidance for real-world investors.",
+    description: "Covered calls and cash-secured puts are mathematically identical via put-call parity, yet behaviorally distinct — assignment, risk, and a decision matrix.",
     slug: "covered-calls-vs-cash-secured-puts",
     date: "August 30, 2025",
     options: true,
@@ -290,7 +290,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Transformers in Systematic Trading",
-    description: "Dive into the revolutionary Transformer architecture and its applications in systematic trading. Explores the core innovation of self-attention, adaptation for financial time series, forecasting capabilities, NLP integration for quantamental strategies, and factor generation. Includes model comparisons, challenges, and real-world case studies like Stockformer and Quantformer.",
+    description: "Self-attention meets finance: how Transformer architectures like Stockformer and Quantformer tackle forecasting, factor generation, and quantamental NLP.",
     slug: "transformer-systematic-trading-architecture-applications",
     date: "August 28, 2025",
     imageUrl: "https://img.youtube.com/vi/2JlReeYdFxA/maxresdefault.jpg",
@@ -304,7 +304,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Political Alpha: An Investor's Guide to Congressional Stock Trading",
-    description: "Deep dive into the extraordinary investment returns of select U.S. politicians, analyzing Nancy Pelosi's market-beating portfolio, Capitol Hill's top traders, and the strategic framework for tracking congressional stock disclosures. Explore the data, risks, and toolkit for political alpha generation.",
+    description: "Nancy Pelosi's market-beating portfolio and Capitol Hill's top traders — a data-driven framework for tracking congressional stock disclosures for alpha.",
     slug: "political-alpha-congressional-stock-trading-guide",
     date: "August 28, 2025",
     imageUrl: "https://suindependent.com/wp-content/uploads/2020/09/Pelosis_Image.jpg",
@@ -314,7 +314,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Beyond Leverage: Risk Parity Through Call Writing",
-    description: "Discover a sophisticated, non-leverage-based methodology for achieving true risk diversification by re-engineering asset risk profiles through options overlays. A comprehensive analysis of Equal Risk Contribution principles and call writing as risk transformation.",
+    description: "True risk parity without leverage: using Equal Risk Contribution principles and call-writing overlays to re-engineer an asset's risk profile.",
     slug: "beyond-leverage-risk-parity-call-writing",
     date: "August 28, 2025",
     imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2021/02/Risk-Parity.jpg",
@@ -326,7 +326,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Powell Pivot: Navigating Market Crosscurrents After the Fed's Easing Signal",
-    description: "Fed Chair Jerome Powell's dovish pivot signals a challenging situation of weakening labor markets versus persistent inflation. Historical analysis reveals the critical difference between insurance cuts and crisis responses, with today's hybrid environment demanding cautious, quality-focused investment strategies.",
+    description: "Powell's dovish pivot pits weakening labor markets against sticky inflation — history's insurance-cut playbook for today's hybrid, quality-first market.",
     slug: "powell-pivot-navigating-market-crosscurrents-fed-easing-signal",
     date: "August 25, 2025",
     imageUrl: "https://img.youtube.com/vi/Wgib90X4FDM/maxresdefault.jpg",
@@ -340,7 +340,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Cassandra Pivot: Michael Burry's Q2 2025 Market Reversal Analysis",
-    description: "Deep dive into Michael Burry's dramatic portfolio transformation from maximum bearishness in Q1 to targeted bullishness in Q2 2025. Analyzing his shift from macro-bear to micro-bull through detailed 13F filings and investment thesis breakdown.",
+    description: "Michael Burry's Q2 2025 13F flips from maximum bearishness to targeted bullishness — inside his shift from macro-bear to micro-bull, position by position.",
     slug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
     date: "August 24, 2025",
     imageUrl: "https://img.youtube.com/vi/j7oFt5F_0Ik/maxresdefault.jpg",
@@ -354,7 +354,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Automated Option Trading: A Comprehensive Guide",
-    description: "Master the five pillars of automated options trading systems: strategy development, optimization, risk management, capital allocation, and backtesting. Learn how options trading differs fundamentally from traditional algorithmic approaches.",
+    description: "The five pillars of automated options trading: strategy development, optimization, risk management, capital allocation, and backtesting done right.",
     slug: "automated-option-trading-comprehensive-guide",
     date: "August 23, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/41p88qR4I6L._SY466_.jpg",
@@ -365,7 +365,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction",
-    description: "Stanley Druckenmiller's latest 13F filing reveals a dramatic $1B+ surge into U.S. equities, deep bets on the AI value chain, and bullish conviction on the American economy. Analyzing the legendary investor's strategic pivot.",
+    description: "Stanley Druckenmiller's 13F shows a $1B+ surge into U.S. equities and deep AI value-chain bets — inside the legendary investor's aggressive pivot.",
     slug: "druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction",
     date: "August 22, 2025",
     imageUrl: "https://img.youtube.com/vi/AkHQPJ8K6Uo/maxresdefault.jpg",
@@ -379,7 +379,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Alibaba Group (BABA) Stock Analysis",
-    description: "Comprehensive analysis of Alibaba Group examining its operational structure, financial health, competitive positioning, and strategic direction. The core investment thesis is that Alibaba presents a compelling, high-risk/high-reward opportunity with significant undervaluation relative to its intrinsic growth potential.",
+    description: "Alibaba's operations, balance sheet, and competitive position point to a high-risk, high-reward stock trading well below its intrinsic growth value.",
     slug: "alibaba-baba-stock-analysis-complex-era-growth-risk",
     date: "August 17, 2025",
     youtubeUrl: "https://www.youtube.com/watch?v=dWNdmLn9dj0",
@@ -393,7 +393,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "LSTM in Systematic Trading",
-    description: "A comprehensive exploration of Long Short-Term Memory networks in quantitative finance. From architectural innovations solving the vanishing gradient problem to practical implementation challenges in systematic trading strategies, discover how LSTMs capture long-term dependencies in financial markets.",
+    description: "How LSTM networks solve the vanishing gradient problem to capture long-term dependencies in financial time series — architecture, use, and limits.",
     slug: "lstm-systematic-trading-deep-dive-architecture-application-performance",
     date: "August 15, 2025",
     youtubeUrl: "https://youtu.be/smYKvopeg1Q",
@@ -408,7 +408,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Worldly Wisdom of Charles T. Munger",
-    description: "Deep dive into Charlie Munger's mental models, investment philosophy, and practical wisdom from 'Poor Charlie's Almanack'. Learn the latticework of mental models that shaped one of history's greatest investors.",
+    description: "Charlie Munger's latticework of mental models from 'Poor Charlie's Almanack' — the multidisciplinary thinking behind one of history's great investors.",
     slug: "worldly-wisdom-charles-munger-multidisciplinary-approach",
     date: "August 15, 2025",
     imageUrl: "https://img.youtube.com/vi/5qiescI6ZiA/maxresdefault.jpg",
@@ -420,7 +420,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Architecture of Quantitative Insight: AQR's Research Legacy",
-    description: "An interactive exploration of AQR Capital Management's foundational research that shaped modern quantitative investing. From the seminal Value and Momentum Everywhere to cutting-edge machine learning applications, discover how systematic factor investing evolved from academic theory to institutional practice.",
+    description: "From 'Value and Momentum Everywhere' to machine learning, AQR's research legacy traces systematic factor investing from academic theory to practice.",
     slug: "architecture-quantitative-insight-aqr-research-legacy",
     date: "August 14, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ_JV_qjhSYRA7pthINbLhOKrgCpkRDg8D4jgC8yGh-LObpjZvUMRstL1UyQ0Bed-jEU6LvFy-GtkXZ/pub",
@@ -431,7 +431,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading",
-    description: "A comprehensive guide for small-fund CTOs operating as player-coaches. Covers strategic mandate, build-buy-outsource calculus, mid-frequency trading architecture, modern tech stack, infrastructure choices, and FIX/data connectivity considerations.",
+    description: "A playbook for small-fund CTOs as player-coaches: build-buy-outsource calls, mid-frequency architecture, tech stack choices, and FIX connectivity.",
     slug: "small-hedge-fund-cto-technology-leadership-quant-trading",
     date: "August 13, 2025",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSj-Ys5Zam83336tHdL4TJXfe_vXIQ-yJyj89K5eg63u98H-zD9wsBrnFqBSPbUeuRRKusKng3nUK4r/pub",
@@ -441,7 +441,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Architecting the Modern Trading Tool",
-    description: "A comprehensive system design for a low to mid-frequency equity portfolio management platform. Explores the architecture, technology, and strategy required to build a system that moves from data, to idea, to action with maximum speed and confidence.",
+    description: "System design for a low-to-mid-frequency portfolio platform: the architecture and tech stack that moves data to idea to action at maximum speed.",
     slug: "architecting-modern-hedge-fund-desk-system-design",
     date: "August 11, 2025",
     imageUrl: "https://www.avatrade.com/wp-content/uploads/2023/04/trading-history-1.png.webp",
@@ -451,7 +451,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Unlocking SEC Form 13F",
-    description: "Master the art of tracking institutional investors through SEC Form 13F filings. Learn how to decode quarterly holdings reports, identify high-conviction bets, and use smart money movements for idea generation while avoiding common pitfalls in this comprehensive deep research analysis.",
+    description: "How to decode quarterly 13F filings, spot institutions' high-conviction bets, and turn smart-money moves into idea generation without the common traps.",
     slug: "unlocking-institutional-portfolios-strategic-guide-sec-form-13f",
     date: "August 9, 2025",
     imageUrl: "https://img.youtube.com/vi/QpFSjEhKIaU/maxresdefault.jpg",
@@ -464,7 +464,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Global Evidence on Covered Calls",
-    description: "AQR research exploring global evidence on covered call strategies. Covers performance decomposition, risk-managed approaches, volatility risk premiums, and the benefits of global diversification for defensive equity alternatives.",
+    description: "AQR's global research on covered calls: performance decomposition, the volatility risk premium, and why diversifying the strategy worldwide pays off.",
     slug: "covering-world-global-evidence-covered-calls",
     date: "August 7, 2025",
     imageUrl: "https://img.youtube.com/vi/ntqTDpKv5es/hqdefault.jpg",
@@ -479,7 +479,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Quantitative Support Level Modeling",
-    description: "Transforming traditional support level identification into a rigorous, quantitative framework. Explores algorithmic baselines, machine learning pipelines, feature engineering, and empirical validation for systematic trading strategies.",
+    description: "Turning chart-reading support levels into a rigorous quantitative framework — algorithmic baselines, ML pipelines, and empirical validation.",
     slug: "quantitative-support-level-modeling-machine-learning",
     date: "August 6, 2025",
     imageUrl: "https://static2.sahmcapital.com/public/college/images/2023/09/04/905335423993978881.png",
@@ -489,7 +489,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Seasons of the Market: Calendar Anomalies and Trading Adages",
-    description: "Analysis of calendar-based market patterns including 'Sell in May', the January Effect, Santa Claus Rally, and September weakness. Examining which seasonal anomalies persist and why market timing based on calendar patterns remains a flawed strategy.",
+    description: "'Sell in May,' the January Effect, the Santa Claus Rally, September weakness — which calendar anomalies hold up, and why timing them still fails.",
     slug: "seasons-market-calendar-anomalies-trading-adages",
     date: "August 5, 2025",
     imageUrl: "https://www.luxalgo.com/blog/content/images/size/w1280/format/webp/2025/04/image-19.png",
@@ -499,7 +499,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Druckenmiller Doctrine",
-    description: "An exploration of the macro titan who mastered the art of asymmetric returns, turning concentrated conviction into a 30-year, 30% average annual return without a single down year. Learn the four-pillar framework that enabled Stanley Druckenmiller's legendary performance through macro-centric analysis, concentrated betting, and psychological mastery.",
+    description: "Stanley Druckenmiller's 30-year, 30% average annual return without a down year, distilled into a four-pillar framework of conviction and psychology.",
     slug: "druckenmiller-doctrine-asymmetric-returns",
     date: "August 4, 2025",
     imageUrl: "/images/agents/stanley_druckenmiller.png",
@@ -509,7 +509,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Fooled by Randomness: The Hidden Role of Chance in Life and Markets",
-    description: "An interactive book summary of Nassim Nicholas Taleb's groundbreaking work exploring how we consistently underestimate the role of chance in our lives. Learn about lucky fools, survivorship bias, skewness, and the Black Swan problem that shapes our understanding of success and failure in markets and life.",
+    description: "Nassim Taleb on lucky fools, survivorship bias, skewness, and Black Swans — how we consistently underrate the role of chance in markets and life.",
     slug: "fooled-by-randomness-book-summary",
     date: "August 3, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/412MBJ9ojxL._SY466_.jpg",
@@ -519,7 +519,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Figma IPO Deep Dive: A Post-IPO Analysis of the Generational SaaS Company",
-    description: "A comprehensive post-IPO analysis of Figma's public debut, examining the company's elite SaaS metrics, stratospheric valuation, and the strategic implications of the failed Adobe acquisition. Explores the investment thesis, competitive positioning, and whether the current stock price offers attractive risk-adjusted returns.",
+    description: "Figma's public debut: elite SaaS metrics, a stratospheric valuation, the fallout from the failed Adobe deal, and whether the stock is still worth buying.",
     slug: "figma-ipo-deep-dive-post-ipo-analysis-generational-saas",
     date: "August 3, 2025",
     imageUrl: "https://www.pixartprinting.co.uk/blog/wp-content/uploads/2023/01/Figma.jpg",
@@ -529,7 +529,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Diagonal Spread vs. Covered Call",
-    description: "A comprehensive book summary exploring the fundamental differences between diagonal spreads and covered calls. Covers capital efficiency, risk profiles, the Poor Man's Covered Call (PMCC), Greeks analysis, and strategic decision frameworks for options traders.",
+    description: "Diagonal spreads vs covered calls: capital efficiency, risk profiles, the Poor Man's Covered Call, and the Greeks that separate these two strategies.",
     slug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
     date: "August 2, 2025",
     imageUrl: "https://thetradinganalyst.com/wp-content/uploads/Diagonal_Spread.svg",
@@ -540,7 +540,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Advanced RAG and Context Engineering",
-    description: "A comprehensive deep dive into the evolution from prompt engineering to context engineering. Explores advanced RAG architectures, query transformation techniques, re-ranking strategies, and agentic systems that power production-grade AI applications.",
+    description: "From prompt engineering to context engineering: advanced RAG architectures, query transformation, re-ranking, and the agentic systems behind production AI.",
     slug: "architectures-intelligence-advanced-rag-context-engineering",
     date: "August 1, 2025",
     imageUrl: "https://www.sundog-education.com/wp-content/uploads/2024/11/iStock-2150086022-2048x1365.jpg",
@@ -550,7 +550,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Definitive backtrader Cheatsheet",
-    description: "Master algorithmic trading with this comprehensive backtrader guide. From basic setup to advanced optimization techniques, learn everything you need to build, test, and deploy profitable trading strategies in Python.",
+    description: "A backtrader reference covering setup through advanced optimization — everything needed to build, test, and deploy trading strategies in Python.",
     slug: "definitive-backtrader-cheatsheet-guide",
     date: "July 30, 2025",
     imageUrl: "https://i.imgur.com/hHbVXLF.jpeg",
@@ -561,7 +561,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Little Book of Behavioral Investing: How Not to Be Your Own Worst Enemy",
-    description: "An interactive book summary exploring the psychological biases that sabotage investment success. Learn how to overcome the X-system vs C-system battle in your brain, master pre-commitment strategies, and develop the contrarian mindset needed to beat your worst enemy - yourself.",
+    description: "The X-system vs C-system battle in your brain: pre-commitment strategies and the contrarian mindset needed to stop sabotaging your own returns.",
     slug: "little-book-behavioral-investing-summary",
     date: "July 30, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/51kAXhLvseL._SY425_.jpg",
@@ -571,7 +571,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Trend vs. Momentum in Technical Analysis",
-    description: "Master the core distinction between trend and momentum indicators in technical analysis. Learn how trend indicators chart market direction while momentum indicators measure the force behind price movements, with practical strategies for combining both approaches.",
+    description: "Trend indicators chart direction; momentum indicators measure the force behind it — the distinction technical analysts blur, and how to combine both.",
     slug: "trend-vs-momentum-technical-analysis-guide",
     date: "July 27, 2025",
     imageUrl: "https://www.toptradersunplugged.com/wp-content/uploads/2022/02/The-Difference-Between-Trend-Following-Momentum-A.png",
@@ -581,7 +581,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Investor's Guide to Stablecoins",
-    description: "Analysis of stablecoin investing, covering the four types of stability mechanisms, yield generation strategies, regulatory frameworks, and risk management. Explore the interactive dashboard revealing the truth about digital dollar profits and pitfalls.",
+    description: "Four stability mechanisms, yield strategies, and shifting regulation — an interactive dashboard on where digital-dollar profits and pitfalls really lie.",
     slug: "investors-guide-stablecoins-profiting-digital-dollars",
     date: "July 26, 2025",
     imageUrl: "https://img.youtube.com/vi/bWzpeYtU16Q/maxresdefault.jpg",
@@ -593,7 +593,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "The Meme Stock Phenomenon: Hype, Risk, and Strategy",
-    description: "An analytical guide to understanding the meme stock phenomenon, from viral social media campaigns to extreme volatility. Explore the July 2025 resurgence, risk management strategies, and the psychology behind retail trading frenzies.",
+    description: "Inside the July 2025 meme stock resurgence: viral social campaigns, extreme volatility, and the retail psychology driving the next trading frenzy.",
     slug: "meme-stock-phenomenon-hype-risk-strategy",
     date: "July 25, 2025",
     imageUrl: "https://www.quantifiedstrategies.com/wp-content/uploads/2024/05/Meme-Stocks.jpg",
@@ -603,7 +603,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "India's Option Market and Jane Street",
-    description: "SEBI vs. Jane Street case and its sweeping implications for global finance. Explore how this landmark regulatory action exposed vulnerabilities in market structure, triggered reforms, and created a new paradigm for both institutional and retail investors.",
+    description: "SEBI vs. Jane Street: how the landmark manipulation case exposed market-structure vulnerabilities and reshaped rules for institutional and retail traders.",
     slug: "jane-street-precedent-market-manipulation",
     date: "July 23, 2025",
     imageUrl: "https://images.timesnownews.com/thumb/msid-152263498,thumbsize-87148,width-1280,height-720,resizemode-75/152263498.jpg",
@@ -613,7 +613,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Profiting with Iron Condor Options: Trade the Math, Not the Myth",
-    description: "Master the Iron Condor strategy with this comprehensive book summary covering market-neutral trading, time decay profits, and the Greeks. Learn why successful options trading is about managing quantifiable factors, not predicting market direction.",
+    description: "The Iron Condor explained: market-neutral positioning, time-decay profits, and the Greeks — winning at options means managing variables, not direction.",
     slug: "profiting-iron-condor-options-book-summary",
     date: "July 22, 2025",
     imageUrl: "https://m.media-amazon.com/images/I/4139vOZ8lOL._SY445_SX342_PQ35_.jpg",
@@ -623,7 +623,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Research Paper: Technical Analysis Performance and Practice",
-    description: "Deep dive into the academic study revealing how institutional portfolio managers using technical analysis achieve superior performance, particularly in down markets. Explores the long-standing debate between academic skepticism and practitioner reality, featuring analysis of over 10,000 portfolios.",
+    description: "A 10,000-portfolio study finds institutional managers using technical analysis outperform, especially in down markets — academic skepticism meets practice.",
     slug: "technical-analysis-portfolio-management-performance-practice",
     date: "July 18, 2025",
     imageUrl: "https://img.youtube.com/vi/AeIqXXreunA/maxresdefault.jpg",
@@ -636,7 +636,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "RAG Systems with Metadata-Driven Filtering",
-    description: "Blueprint for building production-grade RAG systems that fuse semantic search with structured metadata filtering. Covers advanced architectures, vector database optimization, hybrid search techniques, and implementation frameworks using LangChain and LlamaIndex for enterprise-scale applications.",
+    description: "Blueprint for production RAG: fusing semantic search with structured metadata filtering via LangChain and LlamaIndex for enterprise-scale retrieval.",
     slug: "rag-metadata-filtering-advanced-architectures",
     date: "July 17, 2025",
     imageUrl: "https://www.ontotext.com/wp-content/uploads/2020/01/Metadata.png",
@@ -646,7 +646,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Essential Reading for Value Investors",
-    description: "A curated collection of must-read books for value investors and deep thinkers. Features timeless wisdom on investing, finance, psychology, and life philosophy from legendary authors like Warren Buffett, Charlie Munger, Howard Marks, and Morgan Housel.",
+    description: "A curated reading list for value investors — timeless works on investing, psychology, and life from Buffett, Munger, Howard Marks, and Morgan Housel.",
     slug: "essential-reading-for-investors",
     date: "July 14, 2025",
     imageUrl: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
@@ -656,7 +656,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Advanced Option Strategy: Earnings Volatility Selling",
-    description: "The earnings volatility selling option strategy, covering data-driven approaches to options trading before earnings announcements. Learn how to profit from IV crush using straddles and calendar spreads with proper risk management and position sizing techniques.",
+    description: "Selling volatility into earnings: how straddles and calendar spreads profit from IV crush, with the position sizing and risk controls to do it safely.",
     slug: "earnings-volatility-selling-strategy-complete-guide",
     date: "July 13, 2025",
     imageUrl: "https://i0.wp.com/tejimandi.com/wp-content/uploads/2024/12/Effect-of-Corporate-Earnings-Reports-on-Stock-Prices-Blog.png?fit=1024%2C553&ssl=1",
@@ -666,7 +666,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "AI Uncovers the Truth: Do Finfluencers nail the market?",
-    description: "Have you ever wondered if the \"finfluencers\" you see on YouTube and TikTok actually know what they're talking about? They sound so confident, but do their stock picks actually make you money? We're diving into some groundbreaking research to find out!",
+    description: "Do finfluencers' confident YouTube and TikTok stock picks actually make you money? Groundbreaking research puts finance influencers to the test.",
     slug: "ai-uncovers-truth-finfluencers-nail-market",
     date: "July 11, 2025",
     youtubeUrl: "https://www.youtube.com/watch?v=qUDsz4wMhHU",
@@ -678,7 +678,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Rich Dad, Poor Dad: Key Stories and Lessons in Financial Liberation",
-    description: "An interactive book summary of Robert Kiyosaki's groundbreaking financial education classic. Explores the core stories that teach the fundamental difference between assets and liabilities, the importance of financial IQ, and how to make money work for you instead of working for money.",
+    description: "Robert Kiyosaki's core lesson — assets vs liabilities, financial IQ, and making money work for you — distilled from the personal-finance classic.",
     slug: "rich-dad-poor-dad-book-summary",
     date: "July 5, 2025",
     imageUrl: "https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL._AC_UL232_SR232,232_.jpg",
@@ -688,7 +688,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Apple's Financial Health: When Traditional Metrics Mislead",
-    description: "Analysis of Apple's financial health covering liquidity, solvency, and cash flow metrics. Explains why Apple's seemingly problematic Current Ratio and Debt-to-Equity ratios are actually signs of sophisticated capital management strategy, powered by exceptional free cash flow generation.",
+    description: "Apple's Current Ratio and Debt-to-Equity look alarming on paper, but they're actually signs of sophisticated capital management backed by huge free cash flow.",
     slug: "apple-financial-health-analysis-traditional-metrics-mislead",
     date: "July 5, 2025",
     imageUrl: "https://img.youtube.com/vi/qOzB4WtPRok/maxresdefault.jpg",
@@ -701,7 +701,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Ollama Cheat Sheet",
-    description: "An interactive cheat sheet for Ollama commands and advanced tips. Copy and print-friendly easy reference while working with local LLMs.",
+    description: "A print-friendly, interactive Ollama cheat sheet covering commands and advanced tips, built as a quick reference for anyone running local LLMs.",
     slug: "ollama-cheat-sheet-complete-command-reference",
     date: "July 4, 2025",
     imageUrl: "https://ollama.com/public/ollama.png",
@@ -709,7 +709,7 @@ export const articles2025Q3: Article[] = [
   },
   {
     title: "Stock Wipeout Probability Analysis",
-    description: "A comprehensive analytical report examining the surprisingly high probability of individual stock failure and complete investor wipeouts. Explores the skewed nature of stock returns, the mechanical processes of corporate failure, and why diversification is the only effective strategy for mitigating catastrophic loss risk.",
+    description: "Individual stocks fail more often than you'd think — inside the skewed return distributions, mechanics of corporate collapse, and the case for diversification.",
     slug: "stock-wipeout-probability-analysis",
     date: "July 1, 2025",
     imageUrl: "https://img.youtube.com/vi/VsjpIv_gKEI/maxresdefault.jpg",

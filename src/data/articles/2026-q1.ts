@@ -4,7 +4,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration",
-    description: "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards. Master state synchronization without re-render jank, implement secure bi-directional LLM interactions, and evaluate open-source frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.",
+    description: "Generative UI for finance: state sync without re-render jank, secure bi-directional LLM calls, and CopilotKit vs Vercel AI SDK vs assistant-ui.",
     slug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
     date: "March 30, 2026",
     imageUrl: "https://img.youtube.com/vi/qb-JRu3ezzs/maxresdefault.jpg",
@@ -19,7 +19,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread as a Probability Microscope",
-    description: "Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices. From the Breeden-Litzenberger theorem to trading applications.",
+    description: "Risk-neutral densities turn the butterfly spread into a probability microscope: the Breeden-Litzenberger theorem applied to real option prices.",
     slug: "unlocking-volatility-surface-risk-neutral-densities-butterfly-spread",
     date: "March 28, 2026",
     imageUrl: "https://img.youtube.com/vi/KG66_1FnRSg/maxresdefault.jpg",
@@ -35,7 +35,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "The Risk Prism: Master the Architecture of Modern Factor Models",
-    description: "Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.",
+    description: "Inside modern factor models: from the Factor Zoo to Generative AI factors, decomposing market risk beyond simple asset-class silos for institutional portfolios.",
     slug: "risk-prism-architecture-modern-factor-models",
     date: "March 26, 2026",
     imageUrl: "https://img.youtube.com/vi/UNmo7ERzI8o/maxresdefault.jpg",
@@ -50,7 +50,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "Claude Code Financial Cheatsheet",
-    description: "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows. Master CLI execution flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for building institutional-grade algorithmic trading systems.",
+    description: "A quant desk reference for Claude Code: CLI flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for trading systems.",
     slug: "claude-code-financial-cheatsheet-enterprise-reference",
     date: "March 24, 2026",
     imageUrl: "https://img.youtube.com/vi/NUwRqNkxbY8/maxresdefault.jpg",
@@ -65,7 +65,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "The Trader's Guide to Futures Specials: Market Structure Anomalies",
-    description: "A comprehensive analysis of structural anomalies in futures markets - from the 'Widowmaker' spread to negative oil prices. Understanding the physics of time, delivery mechanics, and embedded options that define alpha opportunities and catastrophic risks.",
+    description: "Inside futures market anomalies: the Widowmaker spread, negative oil prices, delivery mechanics, and the embedded options behind outsized risk.",
     slug: "traders-guide-futures-specials-market-structure-anomalies",
     date: "March 22, 2026",
     imageUrl: "https://img.youtube.com/vi/bC2Fb6yIOlA/maxresdefault.jpg",
@@ -80,7 +80,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "Mastering Volatility: The Definitive Guide to Long Straddles and Strangles",
-    description: "The definitive technical guide to trading volatility as an asset class. Master the physics of implied vs realized volatility, the Greeks that drive profit, and the professional lifecycle management of Long Straddles and Strangles. From IV Crush mechanics to Gamma Scalping algorithms.",
+    description: "Trading volatility as an asset class: implied vs realized vol, the Greeks that drive P&L, IV Crush mechanics, and Gamma Scalping in practice.",
     slug: "mastering-volatility-definitive-guide-long-straddles-strangles",
     date: "March 20, 2026",
     imageUrl: "https://img.youtube.com/vi/3UfLDV7Y8Ps/maxresdefault.jpg",
@@ -95,7 +95,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "The Evolution of Autonomous Execution: From Legacy Function Calling to Agentic Skills-Based Harnesses",
-    description: "A comprehensive technical deep-dive into the evolution of AI tool-calling architectures in quantitative finance. From legacy JSON function calling and Model Context Protocol (MCP) to programmatic Turing-complete code execution and modern agent harnesses with skills-based context management.",
+    description: "From JSON function calling and MCP to Turing-complete code execution: how AI tool-calling architecture evolved into skills-based agent harnesses.",
     slug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
     date: "March 18, 2026",
     imageUrl: "https://img.youtube.com/vi/N1wOqSyN4ZA/maxresdefault.jpg",
@@ -111,7 +111,7 @@ export const articles2026Q1: Article[] = [
 
   {
     title: "Institutional High-Frequency Trading & Market Manipulation",
-    description: "An exhaustive educational deconstruction of regulatory frameworks, quantitative strategies, and the contemporary Jane Street paradigm. Examines the fine line between legally permissible algorithmic arbitrage and prohibited market manipulation across equities, options, digital assets, and commodities.",
+    description: "Where legal algorithmic arbitrage ends and prohibited manipulation begins: the Jane Street paradigm across equities, options, crypto, and commodities markets.",
     slug: "institutional-hft-market-manipulation-regulatory-framework",
     date: "March 16, 2026",
     imageUrl: "https://img.youtube.com/vi/eIpC4b_4cAM/maxresdefault.jpg",
@@ -126,7 +126,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Autocallable Strategy: Engineered Yield for Sideways Markets",
-    description: "A comprehensive technical guide to autocallable structured products - understanding the barrier mechanics, pricing components, and implementation strategies for generating yield in flat market environments.",
+    description: "Inside autocallable structured products: barrier mechanics, pricing components, and how Wall Street engineers yield for flat, sideways markets.",
     slug: "autocallable-strategy-engineered-yield-sideways-markets",
     date: "March 14, 2026",
     imageUrl: "https://img.youtube.com/vi/Y2zHP9umJXo/maxresdefault.jpg",
@@ -141,7 +141,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Order Flow Anomalies: Sweeps, Footprint Mechanics, and Institutional Traps",
-    description: "A deep analysis of market microstructure anomalies including intermarket sweeps, footprint chart mechanics, and the AMD framework. Distinguish genuine institutional accumulation from engineered liquidity events through sub-millisecond order flow analysis.",
+    description: "Inside order flow anomalies: intermarket sweeps, footprint chart mechanics, and the AMD framework for telling real accumulation from liquidity traps.",
     slug: "order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps",
     date: "March 11, 2026",
     youtubeUrl: "https://youtu.be/NqY0oXpdsX8",
@@ -155,7 +155,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Beyond Black-Scholes: Advanced Quantitative Pricing Models",
-    description: "A comprehensive guide to advanced quantitative pricing models and semi-analytical frameworks that drive modern mathematical finance. Covers stochastic volatility (Heston, SABR, SVI), jump-diffusion, Lévy processes, interest rate models (Vasicek, CIR, Hull-White), and the integration of AI in model calibration.",
+    description: "Beyond Black-Scholes: Heston, SABR, and SVI stochastic vol, jump-diffusion, Lévy processes, Vasicek/CIR/Hull-White rates, and AI calibration.",
     slug: "beyond-black-scholes",
     date: "March 9, 2026",
     youtubeUrl: "https://youtu.be/zS43HPjsDtc",
@@ -170,7 +170,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Quantitative Analysis of Tail Risk: CBOE SKEW and Nations SkewDex Deep Dive",
-    description: "A comprehensive deep dive into CBOE SKEW and Nations SkewDex. Understanding the geometry of market fear beyond the VIX through model-free skewness estimation, fixed-strike parameterization, and the Vanna Crush mechanics that fuel market rallies.",
+    description: "CBOE SKEW and Nations SkewDex decoded: model-free skewness estimation, fixed-strike parameterization, and the Vanna Crush that fuels rallies.",
     slug: "quantitative-analysis-tail-risk-cboe-skew-nations-skewdex",
     date: "March 7, 2026",
     youtubeUrl: "https://youtu.be/2LL3GzaFPWw",
@@ -185,7 +185,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Modeling Expected Returns: The Quantitative Foundation of Modern Portfolio Theory",
-    description: "A comprehensive deep dive into the mathematical frameworks for estimating expected returns, from classical CAPM to advanced machine learning approaches. Explore the precision paradox, Black-Litterman evolution, and practical implementation strategies.",
+    description: "Estimating expected returns from CAPM to machine learning: the precision paradox, the Black-Litterman evolution, and practical implementation.",
     slug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
     date: "March 5, 2026",
     youtubeUrl: "https://youtu.be/i0WiCcwcsFs",
@@ -199,7 +199,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Architecture of Private Credit: Structural Mechanics, Emerging Vulnerabilities, and Systemic Implications",
-    description: "A comprehensive deep dive into the trillion-dollar private credit market. From direct lending mechanics to the retailization of illiquidity, explore the structural vulnerabilities, Wall Street realignment, and systemic risks in the shadow banking system that now funds the middle-market economy.",
+    description: "Inside the trillion-dollar private credit market: direct lending mechanics, the retailization of illiquidity, and shadow-banking systemic risk.",
     slug: "architecture-private-credit-structural-mechanics-vulnerabilities",
     date: "March 3, 2026",
     youtubeUrl: "https://youtu.be/9qNl3AyDkO0",
@@ -213,7 +213,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Decoding the Reversal: Nvidia's February 2026 Earnings Paradox",
-    description: "An exhaustive, multi-disciplinary tutorial analyzing the complex market mechanics, macroeconomic headwinds, and structural forces that drove NVDA's severe post-earnings sell-off despite unprecedented fundamental success. Master the IV Crush, Gamma Flip, and institutional de-grossing dynamics.",
+    description: "Why NVDA sold off after a flawless earnings beat: IV Crush, Gamma Flip, and institutional de-grossing behind the sudden post-earnings reversal.",
     slug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
     date: "March 1, 2026",
     youtubeUrl: "https://youtu.be/vuTmzLnjfYc",
@@ -228,7 +228,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading",
-    description: "Master the strategic architecture of defined-risk trading. Stop gambling on naked options and start financing your directional views with mathematical precision. A comprehensive guide to bull call spreads, bear put spreads, and the mathematics of advantage.",
+    description: "Financing directional bets with mathematical precision: bull call spreads, bear put spreads, and why defined-risk beats gambling on naked options.",
     slug: "vertical-debit-spreads-strategic-architecture-defined-risk-trading",
     date: "February 27, 2026",
     youtubeUrl: "https://youtu.be/OZh8KnJobic",
@@ -242,7 +242,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Masterclass of Li Lu: Philosophy, Portfolio Architecture, and the Himalaya Capital Compounding Machine",
-    description: "A comprehensive deep dive into Li Lu's investment philosophy, the four pillars of value investing, and the extreme portfolio concentration strategy that built Himalaya Capital into a multi-decade compounding machine. From Tiananmen Square to managing billions for Charlie Munger.",
+    description: "From Tiananmen Square to managing billions for Charlie Munger: Li Lu's four pillars of value investing and Himalaya Capital's concentrated bets.",
     slug: "masterclass-li-lu-himalaya-capital-investment-philosophy",
     date: "February 25, 2026",
     youtubeUrl: "https://youtu.be/rfjw97edq48",
@@ -256,7 +256,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Duquesne Paradigm: Decoding Stanley Druckenmiller's $4.5B Portfolio Shift",
-    description: "A comprehensive tutorial on macro-investing through Stanley Druckenmiller's Q4 2025 portfolio transformation. Master the art of reading 13F filings, understanding the 'Warsh Effect,' and identifying the pivot from AI hardware to energy infrastructure in the new economic regime.",
+    description: "Decoding Druckenmiller's $4.5B portfolio shift: reading 13F filings, the 'Warsh Effect,' and the pivot from AI hardware to energy infrastructure.",
     slug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
     date: "February 23, 2026",
     youtubeUrl: "https://youtu.be/EVDw2iynOBE",
@@ -270,7 +270,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Mastering Coattail Investing: A Comprehensive Tutorial on SEC Form 13F Analysis",
-    description: "A comprehensive tutorial on decoding institutional disclosures, avoiding latency traps, and following the Apex Allocators. Master the art of coattail investing through SEC Form 13F analysis, manager typology, and the Q4 2025 divergent views on AI Capex.",
+    description: "Following the Apex Allocators without falling into latency traps: manager typology, SEC Form 13F analysis, and Q4 2025's divergent AI capex views.",
     slug: "mastering-coattail-investing-sec-form-13f-analysis",
     date: "February 21, 2026",
     youtubeUrl: "https://youtu.be/OAyHoIbIR4o",
@@ -284,7 +284,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Quantifying Intraday Alpha: The U-Curve Volatility Engine and Institutional Flow Dynamics",
-    description: "A research-driven exploration into how timing, volume clusters, and liquidity cycles dictate price action. Master the U-Curve phenomenon and align your execution with global institutional flows for superior market timing and risk-adjusted returns.",
+    description: "How timing, volume clusters, and liquidity cycles shape intraday price action: the U-Curve phenomenon and aligning execution with institutional flow.",
     slug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
     date: "February 19, 2026",
     youtubeUrl: "https://youtu.be/ij2nWJXmb04",
@@ -298,7 +298,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Stochastic Calculus of Finance: A Comprehensive Treatise on Itô's Lemma",
-    description: "A comprehensive treatise on Itô's Lemma: the mathematical bridge between the smooth world of Newton and the jagged reality of financial markets. Master the fundamental theorem that transforms stochastic differential equations into the Black-Scholes framework.",
+    description: "Itô's Lemma: the mathematical bridge from Newton's smooth calculus to market randomness, and the theorem behind the Black-Scholes framework.",
     slug: "stochastic-calculus-finance-itos-lemma-comprehensive-treatise",
     date: "February 17, 2026",
     youtubeUrl: "https://youtu.be/3-RdnIsr3f4",
@@ -312,7 +312,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Investment Clock Framework: Quantitative Guide to Macro Regime Detection",
-    description: "A comprehensive technical analysis of the Investment Clock—a quantitative framework for tactical asset allocation through growth and inflation cycle identification. Includes implementation methodology, statistical validation, and modern market adaptations.",
+    description: "The Investment Clock decoded: quantitative macro regime detection through growth and inflation cycles, with statistical validation and updates.",
     slug: "investment-clock-framework-quantitative-macro-regime-detection",
     date: "February 15, 2026",
     youtubeUrl: "https://youtu.be/ns0nlaE74Ac",
@@ -326,7 +326,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Microstructure of Intraday Option Speculation: Mechanics, Strategies, and Structural Risks",
-    description: "An exhaustive analysis of the option day trading ecosystem, deconstructing 0DTE contracts, Gamma Exposure (GEX), and the structural asymmetry between retail traders and institutional market makers.",
+    description: "Inside 0DTE option day trading: Gamma Exposure (GEX) mechanics and the structural asymmetry stacked against retail traders versus market makers.",
     slug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
     date: "February 13, 2026",
     youtubeUrl: "https://youtu.be/94XcRcFfnxo",
@@ -341,7 +341,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Structured Finance 2026: Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models",
-    description: "Master the mechanics of credit enhancement and stochastic valuation in structured finance. A comprehensive institutional research framework covering RMBS, CMBS, and ABS pricing models, structural waterfalls, prepayment models, and the quantitative engineering behind modern securitization.",
+    description: "Inside RMBS, CMBS, and ABS pricing: credit enhancement, structural waterfalls, prepayment models, and the engineering behind securitization.",
     slug: "structured-finance-2026-rmbs-cmbs-abs-pricing-models",
     date: "February 11, 2026",
     youtubeUrl: "https://youtu.be/vpiIPto8Mao",
@@ -355,7 +355,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Convergence Analysis in Quantitative Finance: From Measure Theory to Market Reality",
-    description: "A comprehensive exploration of functional analysis and convergence modes in quantitative finance. From Banach spaces to stochastic calculus, understand how mathematical limits shape derivative pricing, risk management, and computational methods.",
+    description: "From Banach spaces to stochastic calculus: how convergence modes in functional analysis shape derivative pricing, risk management, and computation.",
     slug: "convergence-analysis-quantitative-finance-measure-theory",
     date: "February 9, 2026",
     youtubeUrl: "https://youtu.be/p38CVckTJqU",
@@ -369,7 +369,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading",
-    description: "A multidimensional instrument arbitrage that exploits the distinct decay characteristics of options across different temporal horizons. Master the profit tent profile, Greek interactions, strike selection strategies, and quantitative reality of trading calendars with Contango filtering for systematic edge.",
+    description: "Exploiting time-decay differentials across expirations: the profit tent, Greek interactions, strike selection, and Contango filtering for edge.",
     slug: "calendar-spread-architecture-time-decay-options-trading",
     date: "February 7, 2026",
     youtubeUrl: "https://youtu.be/83U-tqsVHdY",
@@ -383,7 +383,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Strategic vs. Tactical Asset Allocation: A Comprehensive Investment Framework",
-    description: "A deep-dive tutorial for investors. Learn how to build a portfolio baseline, when to deviate for profit, and how to use math to hold managers accountable. Master the fundamentals of Strategic Asset Allocation (SAA) as your investment anchor, understand Tactical Asset Allocation (TAA) for generating alpha, and discover Performance Attribution Analysis to separate skill from luck.",
+    description: "Building a portfolio baseline and knowing when to deviate: Strategic vs Tactical Asset Allocation and attribution to separate skill from luck.",
     slug: "strategic-tactical-asset-allocation-comprehensive-guide",
     date: "February 5, 2026",
     youtubeUrl: "https://youtu.be/Ef2bnyet0wA",
@@ -397,7 +397,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Prediction Markets: The Financialization of Truth - Complete Trading Guide",
-    description: "Comprehensive analysis of prediction markets from Kalshi to Polymarket. Learn market mechanics, strategic trading approaches, risk management, and how to profit from the financialization of information.",
+    description: "Inside prediction markets from Kalshi to Polymarket: market mechanics, trading strategies, risk management, and the financialization of truth.",
     slug: "prediction-markets-financialization-truth-complete-trading-guide",
     date: "February 3, 2026",
     youtubeUrl: "https://youtu.be/0gJhGy9m2VA",
@@ -411,7 +411,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Warsh Era: Reconfiguring American Monetary Policy in the Age of Supply-Side Monetarism",
-    description: "A comprehensive analysis of Kevin Warsh's nomination as Federal Reserve Chair and the paradigm shift from financial dominance to supply-side monetarism. Explore the barbell strategy of aggressive rate cuts paired with balance sheet destruction, market implications, and strategic positioning for the new monetary regime.",
+    description: "Kevin Warsh's Fed and the shift to supply-side monetarism: aggressive rate cuts paired with balance sheet destruction, and how to position for it.",
     slug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
     date: "February 1, 2026",
     youtubeUrl: "https://youtu.be/f_RHGL3pbM4",
@@ -426,7 +426,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing",
-    description: "Deconstruct the 'Defined Outcome' trade and learn how to engineer your own risk profile using Options, ETFs, and Structured Notes. Master the Put Spread Collar mechanics, understand the trade-offs between upside caps and downside buffers, and navigate the critical differences between ETFs and Structured Notes.",
+    description: "Engineering your own 'Defined Outcome' trade: Put Spread Collar mechanics, upside caps vs downside buffers, and ETFs versus Structured Notes.",
     slug: "mastering-buffered-yield-strategies-defined-outcome-investing",
     date: "January 30, 2026",
     youtubeUrl: "https://youtu.be/i1OT9W7xp9w",
@@ -441,7 +441,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Science of Robust Alpha: Eliminating Overfitting Through Rigorous Statistical Validation",
-    description: "A comprehensive masterclass on Financial Machine Learning (FML) - the adversarial environment where prediction changes the outcome. Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive the low signal-to-noise ratio of financial markets.",
+    description: "Deflating overfit backtests: triple barrier labeling and the statistical armor financial machine learning needs to survive noisy market data.",
     slug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
     date: "January 28, 2026",
     youtubeUrl: "https://youtu.be/PvE1DqLAxGU",
@@ -455,7 +455,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Strategic Asset Allocation: A Quantitative Framework for Multi-Generational Wealth Preservation",
-    description: "A comprehensive institutional research portal covering human capital analysis, macro-regime mapping, and quantitative optimization methods. Master the mathematical foundations of asset weighting, risk parity, and tax-efficient implementation for long-term wealth preservation.",
+    description: "Human capital analysis, macro-regime mapping, and risk parity: the quantitative math behind multi-generational, tax-efficient wealth preservation.",
     slug: "strategic-asset-allocation-quantitative-framework-wealth-preservation",
     date: "January 26, 2026",
     youtubeUrl: "https://youtu.be/IvgZO_QcUJs",
@@ -469,7 +469,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Black-Scholes Analytics: The Laboratory Axioms of Option Pricing",
-    description: "A comprehensive masterclass on the Black-Scholes-Merton model - from the stochastic engine of Itô's Lemma to the risk-neutral measure transformation. Master the mathematical axioms, Greek sensitivities, trader heuristics, and structural limitations of the standard ruler for pricing uncertainty.",
+    description: "Black-Scholes-Merton from the ground up: Itô's Lemma, the risk-neutral measure, Greek sensitivities, and where the standard model breaks down.",
     slug: "black-scholes-analytics-laboratory-axioms-option-pricing",
     date: "January 24, 2026",
     youtubeUrl: "https://youtu.be/BfU9H60nepI",
@@ -484,7 +484,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Efficient Frontier: Mathematical Foundations of Modern Portfolio Optimization",
-    description: "A comprehensive deep dive into the mathematics, constraints, and software architecture used by hedge funds to transform raw signals into optimal portfolios. From Markowitz mean-variance optimization to advanced hierarchical risk parity models.",
+    description: "From Markowitz mean-variance optimization to hierarchical risk parity: the math and software architecture hedge funds use to build optimal portfolios.",
     slug: "efficient-frontier-portfolio-optimization-mathematics",
     date: "January 22, 2026",
     youtubeUrl: "https://youtu.be/_XSExYXACic",
@@ -498,7 +498,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Gift of the Phantom Trader: Mastering the Psychology of Winning Through Losing",
-    description: "A comprehensive analysis of Art Simpson's legendary trading philosophy from the Futures Magazine forums. Learn the three laws of survival, the 3:2:1 pyramiding ratio, and why successful trading is about superior behavior modification, not superior knowledge.",
+    description: "Art Simpson's legendary trading philosophy: the three laws of survival, the 3:2:1 pyramiding ratio, and why trading is behavior, not knowledge.",
     slug: "gift-phantom-trader-psychology-winning-through-losing",
     date: "January 20, 2026",
     youtubeUrl: "https://youtu.be/0WJ0fJ0a2HY",
@@ -511,7 +511,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Great Decoupling: Why the 2026 Asset Bubble is Mathematically Distinct from Previous Crises",
-    description: "A comprehensive analysis of the 2026 'Everything Bubble' using the Four Pillars of Collapse framework. Unlike sector-specific crashes of 2000 and 2008, this crisis features simultaneous inflation of equities, real estate, and private credit, creating unprecedented systemic risk.",
+    description: "The 2026 Everything Bubble through the Four Pillars of Collapse: simultaneous inflation in equities, real estate, and private credit at once.",
     slug: "great-decoupling-2026-asset-bubble-mathematical-analysis",
     date: "January 18, 2026",
     youtubeUrl: "https://youtu.be/c-w-bpkPqh8",
@@ -525,7 +525,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Single-Leg Long Call: Mastering Asymmetric Leverage in Options Trading",
-    description: "Master the art of asymmetric leverage with the single-leg long call. Learn why retail traders lose with calls while institutions use them for risk management and capital efficiency. From convexity theory to strike selection strategies.",
+    description: "Asymmetric leverage explained: why retail traders lose with long calls while institutions use them for risk management and capital efficiency.",
     slug: "single-leg-long-call-asymmetric-leverage-options-trading",
     date: "January 16, 2026",
     youtubeUrl: "https://youtu.be/JldPgH31X3U",
@@ -539,7 +539,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "Systematic vs. Model Quantitative Trading: The Evolution of Algorithmic Finance",
-    description: "A comprehensive deep dive into the fundamental differences between traditional systematic trading and modern model-based quantitative approaches. From deterministic rule-based strategies to probabilistic machine learning models, explore how algorithmic trading has evolved and where the industry is heading.",
+    description: "From deterministic rule-based systems to probabilistic machine learning: how algorithmic trading has evolved and where the industry is heading next.",
     slug: "systematic-vs-model-quantitative-trading-evolution",
     date: "January 14, 2026",
     youtubeUrl: "https://youtu.be/72sh2YIWD8U",
@@ -553,7 +553,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
-    description: "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
+    description: "Bitcoin's full architecture: UTXO models, mining as a computational lottery, privacy tradeoffs, and today's institutional investment landscape.",
     slug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
     date: "January 12, 2026",
     youtubeUrl: "https://youtu.be/ZN_GbavKYxk",
@@ -567,7 +567,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",
-    description: "A comprehensive framework for sustainable option selling success through disciplined underlyer selection. Master the three foundational pillars—asset quality, market liquidity, and volatility engine—to systematically harvest the Volatility Risk Premium while avoiding catastrophic losses from yield-reaching behavior.",
+    description: "Systematic underlyer selection for option sellers: asset quality, liquidity, and volatility engine screens to harvest premium without reaching.",
     slug: "optionalpha-select-systematic-underlyer-selection-premium-selling",
     date: "January 10, 2026",
     youtubeUrl: "https://youtu.be/k2hUvNYWuyY",
@@ -583,7 +583,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds",
-    description: "A comprehensive deep research analysis of the operational architecture powering modern volatility-focused hedge funds. From data hygiene and Greek attribution to algorithmic execution and AI-powered deep hedging, explore the systematic framework that transforms market volatility into alpha generation.",
+    description: "Inside volatility hedge fund operations: data hygiene, Greek attribution, algorithmic execution, and AI-powered deep hedging turned into alpha.",
     slug: "industrialization-volatility-hedge-funds-operational-architecture",
     date: "January 8, 2026",
     youtubeUrl: "https://youtu.be/B4tJwZriwdY",
@@ -598,7 +598,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Geometry of Rates: Principal Component Analysis in Modern Fixed Income Markets",
-    description: "Mastering Principal Component Analysis (PCA) to decode the complex movements of the Fixed Income yield curve. Learn how to transform 30+ correlated yields into 3 independent factors for superior risk management and alpha generation.",
+    description: "PCA decodes the yield curve: transforming 30-plus correlated Treasury yields into three independent factors for risk management and alpha generation.",
     slug: "geometry-of-rates-pca-fixed-income-markets",
     date: "January 6, 2026",
     youtubeUrl: "https://youtu.be/WL_YzTImNzs",
@@ -612,7 +612,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance",
-    description: "Deconstructing senior, unsecured debt obligations linked to market performance. Understand the mechanics, inherent risks, and strategic portfolio suitability of these hybrid instruments that combine zero-coupon bonds with derivative packages.",
+    description: "Structured notes decoded: senior unsecured debt linked to market performance, built from zero-coupon bonds plus a derivative package layered on top.",
     slug: "architecture-structured-notes-comprehensive-investors-guide",
     date: "January 4, 2026",
     youtubeUrl: "https://youtu.be/eK2moYsTJrE",
@@ -626,7 +626,7 @@ export const articles2026Q1: Article[] = [
   },
   {
     title: "The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting",
-    description: "A comprehensive analysis of the Iron Condor strategy, exploring the mathematical edge through variance risk premium, optimal execution parameters, and defensive management techniques. Master the art of selling overpriced volatility while managing the Greeks and structural risks.",
+    description: "Selling overpriced volatility with the Iron Condor: variance risk premium, optimal strike selection, and defensive Greek management under pressure.",
     slug: "iron-condor-quantitative-delta-neutral-premium-harvesting",
     date: "January 2, 2026",
     youtubeUrl: "https://youtu.be/LC1qM2ps6NY",

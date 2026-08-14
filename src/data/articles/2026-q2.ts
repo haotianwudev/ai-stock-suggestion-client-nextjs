@@ -3,7 +3,7 @@ import { Article, ArticleLabel } from './types';
 export const articles2026Q2: Article[] = [
   {
     title: "The June 2026 Cross-Asset Contagion",
-    description: "A comprehensive breakdown of macroeconomic catalysts, quantitative deleveraging, and the terminal phase of market overheating. Explore how uncorrelated assets collapsed simultaneously through rigorous structural analysis of Fed policy shifts, geopolitical resolution, and market microstructure vulnerabilities.",
+    description: "Inside the June 2026 selloff: gold, bitcoin, and tech stocks collapsed together via quantitative deleveraging, Fed policy shifts, and microstructure breakdown.",
     slug: "june-2026-cross-asset-contagion",
     date: "June 28, 2026",
     imageUrl: "https://img.youtube.com/vi/i-s0lWdK8LE/maxresdefault.jpg",
@@ -17,7 +17,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation",
-    description: "A comprehensive quantitative analysis of market crash mechanics — from institutional warnings and valuation overheating to options microstructure dynamics (Gamma, Vanna, Charm), volatility feedback effects, and strategic Crisis Alpha positioning through VIX convexity and trend-following strategies.",
+    description: "Inside crash mechanics: Gamma, Vanna, and Charm dynamics, volatility feedback loops, and Crisis Alpha positioning through VIX convexity and trend-following.",
     slug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
     date: "June 26, 2026",
     imageUrl: "https://img.youtube.com/vi/o9cu-VKCgY4/maxresdefault.jpg",
@@ -32,7 +32,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice",
-    description: "Discover why signal generation is only half the battle, and how mathematics dictates your long-term survival in financial markets. From Bell Labs to Wall Street, master the logarithmic utility function, Merton Fraction, and why institutions never trade Full Kelly.",
+    description: "From Bell Labs to Wall Street: the logarithmic utility function, the Merton Fraction, and why institutions size trades below Full Kelly for survival.",
     slug: "kelly-criterion-optimal-position-sizing-information-theory",
     date: "June 23, 2026",
     imageUrl: "https://img.youtube.com/vi/lLaqaSzIlP4/maxresdefault.jpg",
@@ -46,7 +46,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Optimal Early Exercise of American Call Options on Dividend-Paying Stocks",
-    description: "A comprehensive theoretical and computational analysis of the early exercise decision for rational investors. Explores Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method for determining optimal exercise strategies.",
+    description: "Inside the early-exercise decision for dividend stocks: Black's approximation, Monte Carlo simulation, and the Longstaff-Schwartz method.",
     slug: "optimal-early-exercise-american-call-options-dividend-stocks",
     date: "June 20, 2026",
     imageUrl: "https://img.youtube.com/vi/v8iVbeIxVRc/maxresdefault.jpg",
@@ -61,7 +61,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Alibaba Group (BABA) Drawdown: Quantitative Analysis of Idiosyncratic Shocks, Factor Exposures, and Volatility Dynamics",
-    description: "A comprehensive quantitative analysis of Alibaba's severe multi-sigma equity drawdown as of June 2026. Explores statistical return modeling, geopolitical risk premiums, market microstructure dynamics, fundamental factor deterioration, and the mathematical frameworks underlying the catastrophic repricing event.",
+    description: "Inside Alibaba's multi-sigma June 2026 drawdown: geopolitical risk premiums, factor deterioration, and the microstructure of a catastrophic repricing.",
     slug: "alibaba-baba-quantitative-analysis-drawdown-factor-exposures",
     date: "June 18, 2026",
     imageUrl: "https://img.youtube.com/vi/OQ4VLc6UcCs/maxresdefault.jpg",
@@ -75,7 +75,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction",
-    description: "A quantitative framework for identifying structural vulnerabilities in systematic strategies and building regime-aware portfolios. Master Minimum Regime Performance (MRP), the Winner's Curse in momentum, and how to construct portfolios that survive hostile macroeconomic environments.",
+    description: "Inside regime-aware portfolio construction: Minimum Regime Performance, the Winner's Curse in momentum, and building strategies that survive hostile macro.",
     slug: "strategy-decay-factor-fragility-regime-aware-portfolio-construction",
     date: "June 16, 2026",
     imageUrl: "https://img.youtube.com/vi/oD_Ki-sDNzM/maxresdefault.jpg",
@@ -89,7 +89,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The 2026 Mega-IPO Convergence: Market Analysis & Systemic Risk",
-    description: "A comprehensive diagnostic analysis examining the structural market mechanics, valuation excesses, and macroeconomic vulnerabilities of the $4 Trillion tech listing wave. SpaceX, Anthropic, and OpenAI face unprecedented scrutiny amid warning signs of market overheating.",
+    description: "Inside the $4 trillion IPO wave: SpaceX, Anthropic, and OpenAI face valuation excesses and systemic risk amid signs of market overheating.",
     slug: "2026-mega-ipo-convergence-market-analysis-systemic-risk",
     date: "June 13, 2026",
     imageUrl: "https://img.youtube.com/vi/uiAI1u6xhB8/maxresdefault.jpg",
@@ -104,7 +104,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Autonomous AI Agents: The Architecture of Harness Engineering",
-    description: "In the hyper-competitive landscape of quantitative finance, raw LLMs are fundamentally ill-equipped for rigorous, fault-intolerant environments. The competitive moat has shifted to the operational infrastructure that wraps around them: The Harness. Explore execution runtimes, secure sandboxes, memory compaction, authorization fabrics, and the recursive autonomy of skills calling skills.",
+    description: "Why raw LLMs fail in finance: execution runtimes, secure sandboxes, memory compaction, authorization fabrics, and skills calling skills.",
     slug: "autonomous-ai-agents-architecture-harness-engineering",
     date: "June 11, 2026",
     imageUrl: "https://img.youtube.com/vi/_fcDzh04ntc/maxresdefault.jpg",
@@ -118,7 +118,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms",
-    description: "The historical evolution from rigid mean-variance frameworks to flexible information-theoretic paradigms. Explore the deep intuition of the Entropy Pooling framework and its mapping to the classical Black-Litterman model.",
+    description: "From rigid mean-variance models to Entropy Pooling: the information-theoretic paradigm bridging portfolio theory to the classical Black-Litterman framework.",
     slug: "entropy-methods-portfolio-construction",
     date: "June 8, 2026",
     imageUrl: "https://img.youtube.com/vi/gr4Z7fOsVk0/maxresdefault.jpg",
@@ -132,7 +132,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction",
-    description: "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models, explore how machine learning transforms static betas into dynamic prediction engines.",
+    description: "From the Fundamental Law of Active Management to conditional factor models: how machine learning turns static betas into dynamic prediction engines.",
     slug: "factor-models-machine-learning-risk-alpha-prediction",
     date: "June 5, 2026",
     imageUrl: "https://img.youtube.com/vi/3FS6Yqd-zDU/maxresdefault.jpg",
@@ -146,7 +146,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Architecture of Interoperability: Agent-to-Agent Protocols in Financial Multi-Agent Systems",
-    description: "A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, and orchestrating autonomous AI in modern finance. Explore capability advertising, stateful collaboration, opacity architecture, and the broader protocol stack (MCP, ACP, AGP) powering the next generation of financial infrastructure.",
+    description: "Inside Agent-to-Agent protocols: capability advertising, stateful collaboration, opacity architecture, and the MCP, ACP, and AGP stack powering finance AI.",
     slug: "architecture-interoperability-agent-protocols-financial-systems",
     date: "June 2, 2026",
     imageUrl: "https://img.youtube.com/vi/GGZSwdPs5F8/maxresdefault.jpg",
@@ -160,7 +160,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Primacy of Domain Knowledge in Quantitative Finance",
-    description: "An exhaustive exploration of modern quantitative finance principles asserting that deep financial domain expertise and market intuition are the indispensable cornerstones of successful quantitative research. From market microstructure feature engineering to vertical AI alignment and FinDPO frameworks.",
+    description: "Why market intuition still beats the model: microstructure feature engineering, vertical AI alignment, and the FinDPO framework for quant research.",
     slug: "primacy-domain-knowledge-quantitative-finance",
     date: "May 29, 2026",
     imageUrl: "https://img.youtube.com/vi/T6Fgad-WZ60/maxresdefault.jpg",
@@ -174,7 +174,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Conformal Prediction for Portfolio Risk: Beyond VaR",
-    description: "A distribution-free, mathematically rigorous alternative to standard VaR models. Master conformal prediction mechanics, Conformal Risk Control (CRC), Regime-Weighted Conformal (RWC), and how to build adaptive capital allocation systems that survive non-stationary markets and regime changes.",
+    description: "Beyond VaR: Conformal Risk Control, Regime-Weighted Conformal methods, and adaptive capital allocation that survives non-stationary markets.",
     slug: "conformal-prediction-portfolio-risk-var",
     date: "May 26, 2026",
     imageUrl: "https://img.youtube.com/vi/HP6o-90qKos/maxresdefault.jpg",
@@ -188,7 +188,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Advanced Options Collar Strategies: Structural Mechanics, Tradeoffs, and Institutional Applications",
-    description: "A comprehensive masterclass on options collar variants used by institutional portfolio managers and corporate treasurers. From the standard zero-cost collar and ratio collar mechanics to participating collars, three-way seagull structures, and temporal rolling strategies for dynamic risk management.",
+    description: "Inside institutional collar variants: zero-cost and ratio collars, participating collars, three-way seagulls, and temporal rolling strategies.",
     slug: "advanced-options-collar-strategies-structural-mechanics-tradeoffs",
     date: "May 23, 2026",
     imageUrl: "https://img.youtube.com/vi/qkbNo52noE4/maxresdefault.jpg",
@@ -203,7 +203,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds",
-    description: "A comprehensive technical deep-dive into the architecture, data infrastructure, machine learning pipelines, and risk management systems that power modern quantitative hedge funds. From bitemporal data lakes to high-frequency execution algorithms.",
+    description: "Inside the modern quant hedge fund stack: bitemporal data lakes, machine learning pipelines, risk systems, and high-frequency execution algorithms.",
     slug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
     date: "May 20, 2026",
     imageUrl: "https://img.youtube.com/vi/tV8_MOdpPVQ/maxresdefault.jpg",
@@ -218,7 +218,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
-    description: "A deep dive into the algorithmic mechanics of tax-aware portfolio construction, SPX tracking optimization, and factor risk models. Master the quantitative edge of Direct Indexing through convex optimization, HIFO accounting, and systematic tax alpha generation.",
+    description: "Inside Direct Indexing's quantitative edge: SPX tracking optimization, convex optimization, HIFO accounting, and systematic tax alpha generation.",
     slug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
     date: "May 18, 2026",
     imageUrl: "https://img.youtube.com/vi/kVwOEbM-okw/maxresdefault.jpg",
@@ -233,7 +233,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Advanced Dynamics of Correlation in Quantitative Finance",
-    description: "A comprehensive deep research analysis of correlation as the most mathematically complex parameter in quantitative finance. Explores statistical foundations, portfolio diversification failures, realized vs. implied correlation, the Correlation Risk Premium, dispersion trading mechanics, correlation-sensitive derivatives, and advanced copula modeling frameworks.",
+    description: "Why correlation is finance's hardest parameter: diversification failures, the Correlation Risk Premium, dispersion trading, and copula modeling.",
     slug: "advanced-dynamics-correlation-quantitative-finance",
     date: "May 15, 2026",
     imageUrl: "https://img.youtube.com/vi/NC4QwRw8rAA/maxresdefault.jpg",
@@ -247,7 +247,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps",
-    description: "A comprehensive quantitative analysis of Credit Default Swaps from bilateral insurance mechanics to advanced Greeks. Master hazard rates, the Credit Triangle, Big Bang standardization, CS01 risk sensitivities, and professional stress testing frameworks used by institutional credit desks.",
+    description: "Inside Credit Default Swaps: hazard rates, the Credit Triangle, Big Bang standardization, CS01 sensitivities, and institutional stress testing.",
     slug: "unpacking-cds-granular-deep-dive-credit-default-swaps",
     date: "May 13, 2026",
     imageUrl: "https://img.youtube.com/vi/EtDXXSIffTQ/maxresdefault.jpg",
@@ -261,7 +261,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Model Context Protocol in Quantitative Finance: System Architecture, State Management, and Agent Design",
-    description: "A comprehensive guide to the Model Context Protocol (MCP) — the open standard transforming how LLMs integrate with quantitative finance systems. From algorithmic backtesting automation and massive dataset handling to stateful session memory, zero-trust security, and UX engineering for autonomous AI agents.",
+    description: "Inside MCP: how the open standard powers backtesting automation, stateful session memory, zero-trust security, and AI agent UX in finance.",
     slug: "model-context-protocol-quantitative-finance",
     date: "May 11, 2026",
     imageUrl: "https://img.youtube.com/vi/98zl2mTQY-g/maxresdefault.jpg",
@@ -275,7 +275,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
-    description: "A comprehensive deep dive into the geometry of market risk and the volatility surface. Master the Total Derivative, Shadow Delta, Skew Stickiness Ratio (SSR), and how to calculate true Greeks that account for the dynamic relationship between spot price and implied volatility.",
+    description: "Inside the volatility surface: the Total Derivative, Shadow Delta, and the Skew Stickiness Ratio behind true option Greeks that account for spot-vol dynamics.",
     slug: "sticky-strike-vs-sticky-delta-volatility-surface-dynamics",
     date: "May 9, 2026",
     imageUrl: "https://img.youtube.com/vi/LgSXvwCOy0o/maxresdefault.jpg",
@@ -290,7 +290,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Decoding the Bond Term Premium: Fixed Income Dynamics, Pricing Models, and Portfolio Strategy",
-    description: "A mathematically rigorous analysis of the bond term premium — from the ACM affine term structure model and its failure modes to the post-2022 regime shift, AI-driven fiscal supply shocks, and actionable portfolio positioning frameworks for navigating duration risk.",
+    description: "Inside the bond term premium: the ACM model's failure modes, the post-2022 regime shift, AI-driven fiscal supply shocks, and duration positioning.",
     slug: "bond-term-premium-fixed-income-dynamics-pricing-models",
     date: "May 6, 2026",
     imageUrl: "https://img.youtube.com/vi/qp4ElDhvLr8/maxresdefault.jpg",
@@ -304,7 +304,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Integer Optimization in Finance: From Continuous Theory to Discrete Execution",
-    description: "From continuous theory to discrete execution. How Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading. Master the mathematical architectures, strategic applications, and modern solver technologies that power quantitative finance.",
+    description: "How Mixed-Integer Programming solves NP-Hard trading problems: mathematical architectures, strategic applications, and modern solver technology.",
     slug: "integer-optimization-finance-continuous-theory-discrete-execution",
     date: "May 4, 2026",
     imageUrl: "https://img.youtube.com/vi/MY8LRTrnPKk/maxresdefault.jpg",
@@ -318,7 +318,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Seagull Spread: Strategic Architecture, Volatility Skew Arbitrage, and Institutional Implementation",
-    description: "A comprehensive institutional tutorial on the Seagull spread — a sophisticated three-legged options strategy that finances directional speculation through volatility skew arbitrage. Master structural mechanics, Greeks dynamics, payoff profiles, and risk mitigation protocols used by corporate treasurers and portfolio managers.",
+    description: "Inside the Seagull spread: a three-legged options strategy financing directional bets through volatility skew arbitrage, Greeks, and payoff mechanics.",
     slug: "seagull-spread-options-strategy-architecture",
     date: "May 2, 2026",
     imageUrl: "https://img.youtube.com/vi/DGOML4Zpt5E/maxresdefault.jpg",
@@ -333,7 +333,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Ontology of Value: Financial Data Classification and Lifecycle Management",
-    description: "A comprehensive interactive guide to financial data classification, architecture, and lifecycle management. Understanding the DNA of modern capital markets through Product Masters, Entity hierarchies, transaction lifecycles, and the three books of record.",
+    description: "Inside the DNA of capital markets: Product Masters, entity hierarchies, transaction lifecycles, and the three books of record that define an asset.",
     slug: "ontology-of-value-financial-data-classification-lifecycle-management",
     date: "April 29, 2026",
     imageUrl: "https://img.youtube.com/vi/r4DG-C7B0yw/maxresdefault.jpg",
@@ -347,7 +347,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Architecting Agentic AI in Quantitative Finance & Wealth Management",
-    description: "Unlike foundational LLMs that function as passive co-pilots, agentic AI systems possess autonomous reasoning, dynamic tool invocation, state persistence, and goal-directed execution. This comprehensive guide explores the paradigm shift from traditional AI to autonomous agents in finance.",
+    description: "Beyond passive co-pilots: autonomous reasoning, dynamic tool invocation, state persistence, and goal-directed execution in finance AI.",
     slug: "architecting-agentic-ai-quantitative-finance-wealth-management",
     date: "April 27, 2026",
     imageUrl: "https://img.youtube.com/vi/tXqQe2wgR8A/maxresdefault.jpg",
@@ -361,7 +361,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Structured Liquidity & Hedging: Equity Collars and Prepaid Variable Share Forwards",
-    description: "A comprehensive masterclass on navigating concentrated wealth using Equity Collars and Prepaid Variable Share Forwards (PVSFs). From zero-cost collar architecture and variable settlement algorithms to IRC Section 1259 constructive sale rules, SEC Form 4 disclosure requirements, and the landmark McKelvey litigation.",
+    description: "Inside concentrated wealth hedging: zero-cost collars, PVSF settlement algorithms, IRC Section 1259 constructive sale rules, and the McKelvey case.",
     slug: "structured-liquidity-hedging-equity-collars-pvsf",
     date: "April 25, 2026",
     imageUrl: "https://img.youtube.com/vi/H0btkOFsAvc/maxresdefault.jpg",
@@ -376,7 +376,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Black-Litterman Model: Bridging Mathematical Rigor and Human Intuition in Modern Portfolio Management",
-    description: "A comprehensive deep dive into the Black-Litterman model, exploring its mathematical foundations, institutional applications, and modern extensions. From Goldman Sachs' original framework to AI-powered implementations.",
+    description: "Inside Black-Litterman: from Goldman Sachs' original framework to AI-powered extensions bridging mathematical rigor and human intuition.",
     slug: "black-litterman-model-comprehensive-guide-portfolio-optimization",
     date: "April 23, 2026",
     imageUrl: "https://img.youtube.com/vi/fhMyv0I69LQ/maxresdefault.jpg",
@@ -390,7 +390,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Structural Dynamics of the U.S. Dollar: Hegemony, De-dollarization, and Global Macro Strategy",
-    description: "An institutional framework exploring the conflicting paradigms of dollar hegemony and de-dollarization. From the Dollar Milkshake Theory to Triffin's Dilemma, master quantitative forecasting models, global macro execution playbooks, and the leading indicators that signal a structural regime shift in the world's reserve currency.",
+    description: "Dollar hegemony vs. de-dollarization: the Dollar Milkshake Theory, Triffin's Dilemma, and the leading indicators of a reserve-currency regime shift.",
     slug: "structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy",
     date: "April 21, 2026",
     imageUrl: "https://img.youtube.com/vi/r0XnUYdpGWg/maxresdefault.jpg",
@@ -404,7 +404,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "A Quantitative Guide to Calculate The Investment Clock",
-    description: `This video provides a quantitative walkthrough for calculating the Investment Clock — using FRED data to derive Growth and Inflation Z-scores that pinpoint the current macro regime phase for optimal asset allocation.`,
+    description: "A quantitative walkthrough for calculating the Investment Clock: FRED-derived Growth and Inflation Z-scores that pinpoint the current macro regime.",
     slug: "quantitative-guide-calculate-investment-clock",
     date: "April 20, 2026",
     youtubeUrl: "https://youtu.be/Zzi1cuaPs7M",
@@ -416,7 +416,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Investment Clock: Live Macroeconomic Cycle Tracker",
-    description: "Track the US economy's position in real-time using the Merrill Lynch Investment Clock framework. Powered by FRED data and AI evaluation, this live tool maps Growth and Inflation Z-scores to identify the current phase — Reflation, Recovery, Overheat, or Stagflation — and surfaces the optimal asset allocation and sector rotation for each regime.",
+    description: "Track the US economy in real time with the Merrill Lynch Investment Clock: FRED data, AI evaluation, and optimal sector rotation by regime.",
     slug: "investment-clock-website",
     date: "April 19, 2026",
     imageUrl: "https://i.imgur.com/TnhLYe5.png",
@@ -427,7 +427,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Advanced Option Rolling Mechanics: Mathematical Frameworks, Volatility Surface Dynamics, and Systematic Implementation",
-    description: "A comprehensive masterclass on option rolling mechanics. Master the P&L accounting reality behind the 'rolling for a credit' fallacy, systematic trigger frameworks (21 DTE, delta-based, P&L-based), volatility surface dynamics including the Vega trap, diagonal roll risk transformations, and mechanical rulebooks for covered calls, short puts, and strangles.",
+    description: "Busting the 'rolling for a credit' fallacy: systematic triggers, the Vega trap, diagonal roll risk, and mechanical rulebooks for covered calls and strangles.",
     slug: "advanced-option-rolling-mechanics",
     date: "April 17, 2026",
     imageUrl: "https://img.youtube.com/vi/2L_UPaxTy_c/maxresdefault.jpg",
@@ -442,7 +442,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Architecting Alpha: The Evolution of RAG in Quantitative Finance",
-    description: "A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future of the enterprise knowledge bank. From naive RAG to multi-agent topologies and the Galaxy convergence architecture.",
+    description: "Why RAG changed capital markets, and where it fails: naive RAG, multi-agent topologies, and the Galaxy convergence architecture for finance AI.",
     slug: "architecting-alpha-rag-evolution-quantitative-finance",
     date: "April 15, 2026",
     imageUrl: "https://img.youtube.com/vi/Tjf1K2id4JI/maxresdefault.jpg",
@@ -456,7 +456,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Theta.md: Cross-Industry Supply Chain Signal Analysis",
-    description: "An independent quant platform tackling one of finance's hardest problems — isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation, the Bullwhip Effect, and asymmetric information pricing frameworks.",
+    description: "Isolating genuine supply chain signals from market noise: multi-factor validation, the Bullwhip Effect, and asymmetric information pricing.",
     slug: "supply-chain",
     date: "April 13, 2026",
     imageUrl: "https://img.youtube.com/vi/TQLZWeYUYyQ/maxresdefault.jpg",
@@ -469,7 +469,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Option Volatility Modeling: Calibration Dynamics, Mathematical Frameworks, and Modern Market Applications",
-    description: "A comprehensive masterclass exploring the evolution from Black-Scholes to modern volatility surfaces. Master SVI parametric models, Dupire local volatility, Heston stochastic volatility, hybrid LSV architectures, rough volatility frontiers, and deep learning applications for derivative pricing.",
+    description: "From Black-Scholes to modern surfaces: SVI, Dupire local vol, Heston stochastic vol, hybrid LSV, rough volatility, and deep learning pricing.",
     slug: "option-volatility-modeling-calibration-dynamics-mathematical-frameworks",
     date: "April 11, 2026",
     imageUrl: "https://img.youtube.com/vi/EjaO4UaVLJA/maxresdefault.jpg",
@@ -484,7 +484,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Mechanics of ESG Investing: A Technical Guide to Environmental, Social, and Governance Factors",
-    description: "A comprehensive technical guide to ESG investing frameworks, regulations, and valuation models. From MSCI ratings methodology to EU taxonomy compliance, master the data-driven discipline that evaluates risks and opportunities unaccounted for in traditional financial statements.",
+    description: "Inside ESG's data-driven discipline: MSCI ratings methodology, EU taxonomy compliance, and risks unaccounted for in financial statements.",
     slug: "mechanics-esg-investing-technical-guide",
     date: "April 9, 2026",
     imageUrl: "https://img.youtube.com/vi/UWmWNufQdLg/maxresdefault.jpg",
@@ -498,7 +498,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "The Dark Index (DIX): Understanding Why Short is Long in Modern Market Microstructure",
-    description: "A comprehensive deep dive into the Dark Index (DIX) and the counterintuitive 'Short is Long' hypothesis. Master the quantitative architecture of dark pool liquidity, market maker rebates, and how institutional accumulation manifests as short volume in off-exchange trading.",
+    description: "Why short is long: inside the Dark Index, dark pool liquidity, market maker rebates, and institutional accumulation in off-exchange trading.",
     slug: "dark-index-dix-understanding-short-is-long-market-microstructure",
     date: "April 7, 2026",
     imageUrl: "https://img.youtube.com/vi/f5yZ7wdjEOY/maxresdefault.jpg",
@@ -512,7 +512,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility",
-    description: "Exploring the microstructural foundations of order flow, market impact, and volatility through a unified mathematical framework. Based on breakthrough research by Muhle-Karbe et al., this deep dive reveals how a single structural statistic binds together long memory, square-root scaling, and rough volatility.",
+    description: "Inside Muhle-Karbe et al.'s breakthrough: the single structural statistic binding long memory, square-root scaling, and rough volatility together.",
     slug: "unified-theory-market-dynamics-order-flow-impact-volatility",
     date: "April 5, 2026",
     imageUrl: "https://img.youtube.com/vi/wF1vaW8WwzU/maxresdefault.jpg",
@@ -526,7 +526,7 @@ export const articles2026Q2: Article[] = [
   },
   {
     title: "Navigating the Bull-to-Bear Regime Shift: Quantitative Signals and Systematic Strategies",
-    description: "A deep-dive tutorial into quantitative signals, systematic factor rotation, and convexity monetization during transitional market phases. Master VIX term structure analysis, breadth deterioration metrics, and options strategies for defending portfolios during regime changes.",
+    description: "Inside regime-shift signals: VIX term structure analysis, breadth deterioration metrics, and options strategies for defending portfolios.",
     slug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
     date: "April 3, 2026",
     imageUrl: "https://img.youtube.com/vi/A16B5cx3_yc/maxresdefault.jpg",
@@ -542,7 +542,7 @@ export const articles2026Q2: Article[] = [
 
   {
     title: "The Mechanics of Alpha: From Raw Data to Realized Returns",
-    description: "A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading. Master the Fundamental Law of Active Management, implementation shortfall, and the reality of backtest overfitting.",
+    description: "Inside factor engineering and signal processing: the Fundamental Law of Active Management, implementation shortfall, and backtest overfitting.",
     slug: "mechanics-of-alpha-raw-data-realized-returns",
     date: "April 1, 2026",
     imageUrl: "https://img.youtube.com/vi/rv_9yM5vn6k/maxresdefault.jpg",
