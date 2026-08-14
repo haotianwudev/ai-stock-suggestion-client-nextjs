@@ -3,7 +3,7 @@ import { StrategyDetailProps } from '../strategy-config';
 export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
   return (
     <div className="mt-6 space-y-6">
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200 mb-6">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200 mb-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
                 <span className="text-2xl">📚</span>
                 Strategy Details
@@ -21,7 +21,7 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
               <p className="mb-2">The Iron Condor is a <strong>delta-neutral, non-directional strategy</strong> that profits from market stagnation and volatility contraction. You're essentially selling "insurance" to traders who expect large price movements, collecting premium when the market stays within your defined profit zone.</p>
               <p>The strategy combines two credit spreads: a <strong>bull put spread</strong> (below current price) and a <strong>bear call spread</strong> (above current price), creating a "profit tent" where you win if the stock stays between your short strikes.</p>
             </div>
-            
+
             <div className="border-l-4 border-slate-300 pl-4">
               <h4 className="font-semibold text-slate-800 mb-2">Why It Works:</h4>
               <ul className="space-y-1 ml-4">
@@ -103,7 +103,7 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
                 <li><strong>Calculate wing width:</strong> Typically 1/10th of stock price (e.g., $10 for $100 stock)</li>
               </ol>
             </div>
-            
+
             <div className="border-l-4 border-indigo-300 pl-4">
               <h4 className="font-semibold text-indigo-800">Phase 2: Strike Selection & Execution</h4>
               <ol className="list-decimal list-inside space-y-1 mt-2">
@@ -382,7 +382,7 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Educational Content:</h4>
               <div className="space-y-1 ml-4">
-                <a href="/articles/iron-condor-quantitative-delta-neutral-premium-harvesting" 
+                <a href="/articles/iron-condor-quantitative-delta-neutral-premium-harvesting"
                    className="text-blue-600 hover:underline block">
                    • Deep Research: Iron Condor Quantitative Analysis
                 </a>
@@ -391,8 +391,8 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Research & Backtesting:</h4>
               <div className="space-y-1 ml-4">
-                <a href="https://www.reddit.com/r/thetagang/" 
-                   target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.reddit.com/r/thetagang/"
+                   target="_blank" rel="noopener noreferrer"
                    className="text-blue-600 hover:underline block">
                    • Reddit: r/thetagang Community
                 </a>
@@ -401,19 +401,30 @@ export const IronCondorStrategyDetail = ({ strategy, onBack }: StrategyDetailPro
             <div>
               <h4 className="font-semibold text-teal-800 mb-2">Tools & Calculators:</h4>
               <div className="space-y-1 ml-4">
-                <a href="https://www.optionsprofitcalculator.com/" 
-                   target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.optionsprofitcalculator.com/"
+                   target="_blank" rel="noopener noreferrer"
                    className="text-blue-600 hover:underline block">
                    • Options Profit Calculator
                 </a>
-                <a href="https://marketchameleon.com/Overview/SPY/IV/" 
-                   target="_blank" rel="noopener noreferrer" 
+                <a href="https://marketchameleon.com/Overview/SPY/IV/"
+                   target="_blank" rel="noopener noreferrer"
                    className="text-blue-600 hover:underline block">
                    • Market Chameleon: IV Rank Data
                 </a>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Risk Disclaimer */}
+        <div className="bg-gray-100 p-4 rounded-lg border border-gray-300">
+          <p className="text-xs text-gray-600">
+            <strong>Risk Disclosure:</strong> Iron condors involve substantial risk and are suitable only for experienced
+            traders who understand options mechanics, assignment risk, and margin requirements. Losses can significantly
+            exceed the initial credit received if the underlying moves sharply beyond the protective strikes. Past
+            performance and stated win rates do not guarantee future results. This content is for educational purposes
+            only and is not investment advice — consult a licensed financial advisor before trading options.
+          </p>
         </div>
     </div>
   );

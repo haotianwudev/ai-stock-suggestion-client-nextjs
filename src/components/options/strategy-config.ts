@@ -40,7 +40,7 @@ export interface Strategy {
 
 // Import strategy detail components
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
-import { IronCondorStrategyDetail } from './strategies/iron-condor';
+import { IronCondorStrategyDetail } from './strategies/iron-condor-strategy';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
 import { LongCallStrategyDetail } from './strategies/long-call-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
@@ -252,6 +252,7 @@ export const strategies: Strategy[] = [
             
             return putSpreadPnL + callSpreadPnL + netCredit;
         },
+        payoffExplanation: "Maximum profit is the net credit collected, earned when the stock stays between the short strikes at expiration. Losses grow beyond either short strike and are capped once price passes the long (protective) strikes.",
         relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         primaryArticleSlug: 'iron-condor-quantitative-delta-neutral-premium-harvesting',
         detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
