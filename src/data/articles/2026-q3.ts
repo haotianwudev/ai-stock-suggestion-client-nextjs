@@ -24,7 +24,7 @@ export const articles2026Q3: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {
-    title: "The Structural Revolution in Quantitative Finance",
+    title: "The Structural Revolution in Causal Quantitative Finance",
     description: "A comprehensive deep dive into the shift from correlational to causal finance — covering Double Machine Learning for unbiased parameter estimation, Deep IV for unobserved confounding, causal discovery algorithms (NOTEARS, LiNGAM, PC/FCI) for learning market structure directly from data, and the Interventional Covariance Matrix as a causally-robust replacement for the Pearson correlation matrix in portfolio construction.",
     slug: "structural-revolution-quantitative-finance",
     date: "August 23, 2026",
