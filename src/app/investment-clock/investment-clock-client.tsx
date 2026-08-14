@@ -6,6 +6,7 @@ import { GET_INVESTMENT_CLOCK } from "@/lib/graphql/queries";
 import { InvestmentClockResult } from "@/lib/graphql/types";
 import { ClockFace } from "@/components/investment-clock/clock-face";
 import { TracerDiagram } from "@/components/investment-clock/tracer-diagram";
+import { HistoricalChart } from "@/components/investment-clock/historical-chart";
 import { AssetAllocationCards } from "@/components/investment-clock/asset-allocation-cards";
 import { LlmEvaluationPanel } from "@/components/investment-clock/llm-evaluation-panel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,13 +27,11 @@ const PHASE_COLORS: Record<string, string> = {
   Reflation:   "bg-blue-500/10 text-blue-600 border-blue-500/30",
 };
 
-const ROLE_STYLE: Record<string, string> = {
-  "Growth 40%":    "bg-green-500/10 text-green-700 border-green-500/20",
-  "Growth 35%":    "bg-green-500/10 text-green-700 border-green-500/20",
-  "Growth 25%":    "bg-green-500/10 text-green-700 border-green-500/20",
-  "Inflation 70%": "bg-orange-500/10 text-orange-700 border-orange-500/20",
-  "Inflation 30%": "bg-orange-500/10 text-orange-700 border-orange-500/20",
-};
+function roleStyle(role: string): string {
+  if (role.startsWith("Growth"))    return "bg-green-500/10 text-green-700 border-green-500/20";
+  if (role.startsWith("Inflation")) return "bg-orange-500/10 text-orange-700 border-orange-500/20";
+  return "bg-muted text-muted-foreground border-border";
+}
 
 function RawIndicator({
   label, value, unit = "", decimals = 2, yoy, yoySuffix = "% YoY", description, role, invertSignal,
@@ -50,7 +49,7 @@ function RawIndicator({
       <div className="flex items-center gap-1.5 flex-wrap">
         <span className="text-xs text-muted-foreground">{label}</span>
         {role && (
-          <span className={`text-[9px] font-semibold px-1 py-0 rounded border ${ROLE_STYLE[role] ?? "bg-muted text-muted-foreground border-border"}`}>
+          <span className={`text-[9px] font-semibold px-1 py-0 rounded border ${roleStyle(role)}`}>
             {role}
           </span>
         )}
@@ -215,6 +214,23 @@ export function InvestmentClockClient() {
         </Card>
       </div>
 
+      {/* Historical Trend */}
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm text-muted-foreground font-medium">
+            Growth &amp; Inflation Trend
+          </CardTitle>
+          <p className="text-xs text-muted-foreground">
+            How the two composite Z-scores have moved over the last {history.length || 24} months, with the
+            background shaded by the phase each month fell into — the same read as the clock and tracer above,
+            laid out on a timeline instead of in phase-space.
+          </p>
+        </CardHeader>
+        <CardContent>
+          <HistoricalChart history={history} />
+        </CardContent>
+      </Card>
+
       {/* LLM Evaluation */}
       {evaluation ? (
         <LlmEvaluationPanel evaluation={evaluation} />
@@ -280,7 +296,7 @@ export function InvestmentClockClient() {
                 role="Inflation 25%" description="Core CPI 12-month rate vs 2% target. Lagging trend confirmer." />
               <RawIndicator
                 label="PPI Final Demand" value={latestData.ppiYoy} unit="%" decimals={2}
-                role="Inflation 20%" description="Producer prices YoY. Leads CPI by 2-6 months — pipeline pressure." />
+                role="Inflation 20%" description="Producer prices YoY vs 2% target. Leads CPI by 2-6 months — pipeline pressure." />
               <RawIndicator
                 label="CPI MoM Ann." value={latestData.cpiMomAnn} unit="%" decimals={2}
                 role="Inflation 15%" description="Annualized monthly CPI rate vs 2% target. Most responsive to inflection." />
@@ -314,7 +330,7 @@ export function InvestmentClockClient() {
                   </span>
                 </div>
                 <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-                  Weighted composite: CPI YoY (40%) + CPI MoM annualized (30%) + Cap. Utilization (30%).
+                  Weighted composite: 5Y Breakeven (30%) + CPI YoY (25%) + PPI Final Demand (20%) + CPI MoM annualized (15%) + Cap. Utilization (10%), all vs the Fed&apos;s 2% target except Cap. Utilization.
                   Exponential rolling Z-score (span=24). <span className="font-medium">{(latestData.inflationZScore ?? 0) >= 0 ? "Above trend → Overheat / Stagflation signal." : "Below trend → Reflation / Recovery signal."}</span>
                 </p>
               </div>
@@ -322,7 +338,7 @@ export function InvestmentClockClient() {
 
             {/* Methodology note */}
             <p className="text-[11px] text-muted-foreground border-t pt-3 leading-relaxed">
-              <span className="font-medium">Methodology:</span> Each FRED series is normalized using an exponential-weighted rolling Z-score (span=24 months). Growth axis blends OECD CLI (leading), Industrial Production (coincident), and inverted Jobless Claims + Unemployment (lagging). Inflation axis blends CPI YoY (lagging), CPI MoM annualized (real-time), and Capacity Utilization (leading pressure). The composite scores determine the Investment Clock quadrant and hand position.
+              <span className="font-medium">Methodology:</span> Each FRED series is normalized using an exponential-weighted rolling Z-score (span=24 months). Growth axis blends OECD CLI (leading, vs its 100 long-run trend), Industrial Production (coincident), and inverted Jobless Claims + Unemployment (lagging). Inflation axis blends 5Y Breakeven (leading market expectation), CPI YoY (lagging confirmer), PPI Final Demand (pipeline leading), and CPI MoM annualized (real-time inflection) — each measured against the Fed&apos;s 2% target — plus Capacity Utilization (leading pressure, unanchored). The composite scores determine the Investment Clock quadrant and hand position.
             </p>
           </CardContent>
         </Card>
