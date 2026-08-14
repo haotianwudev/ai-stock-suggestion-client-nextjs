@@ -12,6 +12,7 @@ import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
 import { articles } from "@/data/articles";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 import { useBookmarks } from "@/hooks/use-bookmarks";
 import { canAccessPremiumContent } from "@/lib/tiers";
 import { InstallAppButton } from "@/components/ui/install-app-button";
@@ -31,144 +32,6 @@ const CompactStockSkeleton = () => (
   </div>
 );
 
-// Core feature pillars shown under the hero
-const FEATURE_PILLARS = [
-  {
-    href: "/quant",
-    icon: Sigma,
-    title: "Quant Finance",
-    description: "Quantitative models and market research",
-  },
-  {
-    href: "/option",
-    icon: LineChart,
-    title: "Option Strategies",
-    description: "Options strategy research and trade ideas",
-  },
-  {
-    href: "/stock",
-    icon: TrendingUp,
-    title: "Stock & Investment",
-    description: "AI-assisted analysis of trending stocks",
-  },
-  {
-    href: "/neighborhood",
-    icon: Globe,
-    title: "Quant Neighborhood",
-    description: "Curated voices from the quant community",
-  },
-];
-
-// "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient.
-// First three sell what makes SOPHIE worth reading; last three cover access + the
-// Google sign-in disclosure required for OAuth app verification (keep those facts intact).
-const ABOUT_CARDS = [
-  {
-    icon: Layers,
-    title: "One frame, every format",
-    description:
-      "Each topic's article, video walkthrough, primary research paper, and wiki reference live in the same scrollable frame — read, watch, or dig into the source without hunting across tabs.",
-    borderClass: "border-indigo-200 dark:border-indigo-800/60",
-    bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
-    iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
-    iconClass: "text-indigo-600 dark:text-indigo-400",
-  },
-  {
-    icon: TrendingUp,
-    title: "Trending quant topics",
-    description:
-      "A live-ranked board surfaces what's moving in quant finance and options right now, so you always know what's actually worth reading today.",
-    borderClass: "border-purple-200 dark:border-purple-800/60",
-    bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
-    iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
-    iconClass: "text-purple-600 dark:text-purple-400",
-  },
-  {
-    icon: BookOpen,
-    title: "Guided study paths",
-    description:
-      "Topic pages come with curated study guides — an ordered reading path that takes you from first principles to fluent, instead of a random pile of articles.",
-    borderClass: "border-pink-200 dark:border-pink-800/60",
-    bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
-    iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
-    iconClass: "text-pink-600 dark:text-pink-400",
-  },
-  {
-    icon: Globe,
-    title: "Open to everyone",
-    description:
-      "This home page, the article library, and the live market tools are publicly accessible with no account and no sign-in.",
-    borderClass: "border-indigo-200 dark:border-indigo-800/60",
-    bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
-    iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
-    iconClass: "text-indigo-600 dark:text-indigo-400",
-  },
-  {
-    icon: Star,
-    title: "Free account unlocks more",
-    description:
-      "Signing in lets you bookmark articles, join forum discussions, open topic study guides, and read premium articles reserved for subscribers and supporters of the channel.",
-    borderClass: "border-purple-200 dark:border-purple-800/60",
-    bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
-    iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
-    iconClass: "text-purple-600 dark:text-purple-400",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Google sign-in privacy",
-    description:
-      "Signing in with Google is one optional way to create that account. SOPHIE receives only your name, email address, and profile picture, used solely to create your profile and attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other Google data.",
-    borderClass: "border-pink-200 dark:border-pink-800/60",
-    bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
-    iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
-    iconClass: "text-pink-600 dark:text-pink-400",
-  },
-];
-
-// External channels, collapsed into a compact icon row
-const SOCIAL_LINKS = [
-  {
-    href: "https://www.youtube.com/@SOPHIEAIFinance",
-    label: "YouTube Channel",
-    colorClass: "bg-red-600 hover:bg-red-700 text-white",
-    icon: (
-      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
-  },
-  {
-    href: "https://open.spotify.com/show/1LVAoacNfDyzrEf9bwrVM9",
-    label: "Podcast on Spotify",
-    colorClass: "bg-green-600 hover:bg-green-700 text-white",
-    icon: (
-      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.295.479-1.02.659-1.559.359z" />
-      </svg>
-    ),
-  },
-  {
-    href: "https://space.bilibili.com/1485896958",
-    label: "Bilibili频道",
-    colorClass: "bg-pink-500 hover:bg-pink-600 text-white",
-    icon: (
-      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .356-.124.657-.373.906l-1.174 1.12zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.789 1.894v7.52c.02.764.283 1.396.789 1.894.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.13.789-1.894v-7.52c-.02-.765-.283-1.396-.789-1.894-.507-.497-1.134-.755-1.88-.773H5.333zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z" />
-      </svg>
-    ),
-  },
-  {
-    href: "https://xhslink.com/m/26R3QGSdpiH",
-    label: "小红书互动加群",
-    colorClass: "bg-red-500 hover:bg-red-600 text-white",
-    icon: (
-      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169-.185-.459-.185-.628 0l-2.24 2.24c-.169.169-.169.459 0 .628l2.24 2.24c.169.169.459.169.628 0 .169-.169.169-.459 0-.628L15.256 12l2.312-2.312c.169-.169.169-.459 0-.628zM8.432 15.84c.169.185.459.185.628 0l2.24-2.24c.169-.169.169-.459 0-.628l-2.24-2.24c-.169-.169-.459-.169-.628 0-.169.169-.169.459 0 .628L10.744 12l-2.312 2.312c-.169.169-.169.459 0 .628z" />
-      </svg>
-    ),
-  },
-];
-
 export default function Home() {
   const [showAllArticles, setShowAllArticles] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -179,11 +42,144 @@ export default function Home() {
 
   const { profile } = useUser();
   const { bookmarkedSlugs } = useBookmarks();
+  const { t } = useLanguage();
   const canViewPremium = canAccessPremiumContent(profile?.tier ?? 1);
   const isAdmin = profile?.tier === 9;
 
   // Get all predefined labels
   const availableLabels = getAllLabels();
+
+  // Core feature pillars shown under the hero
+  const FEATURE_PILLARS = [
+    {
+      href: "/quant",
+      icon: Sigma,
+      title: t("homepage.featurePillarQuantTitle"),
+      description: t("homepage.featurePillarQuantDescription"),
+    },
+    {
+      href: "/option",
+      icon: LineChart,
+      title: t("homepage.featurePillarOptionsTitle"),
+      description: t("homepage.featurePillarOptionsDescription"),
+    },
+    {
+      href: "/stock",
+      icon: TrendingUp,
+      title: t("homepage.featurePillarStockTitle"),
+      description: t("homepage.featurePillarStockDescription"),
+    },
+    {
+      href: "/neighborhood",
+      icon: Globe,
+      title: t("homepage.featurePillarNeighborhoodTitle"),
+      description: t("homepage.featurePillarNeighborhoodDescription"),
+    },
+  ];
+
+  // "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient.
+  // First three sell what makes SOPHIE worth reading; last three cover access + the
+  // Google sign-in disclosure required for OAuth app verification (keep those facts intact).
+  const ABOUT_CARDS = [
+    {
+      icon: Layers,
+      title: t("homepage.aboutCardOneFrameTitle"),
+      description: t("homepage.aboutCardOneFrameDescription"),
+      borderClass: "border-indigo-200 dark:border-indigo-800/60",
+      bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
+      iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
+      iconClass: "text-indigo-600 dark:text-indigo-400",
+    },
+    {
+      icon: TrendingUp,
+      title: t("homepage.aboutCardTrendingTitle"),
+      description: t("homepage.aboutCardTrendingDescription"),
+      borderClass: "border-purple-200 dark:border-purple-800/60",
+      bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
+      iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
+      iconClass: "text-purple-600 dark:text-purple-400",
+    },
+    {
+      icon: BookOpen,
+      title: t("homepage.aboutCardStudyPathsTitle"),
+      description: t("homepage.aboutCardStudyPathsDescription"),
+      borderClass: "border-pink-200 dark:border-pink-800/60",
+      bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
+      iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
+      iconClass: "text-pink-600 dark:text-pink-400",
+    },
+    {
+      icon: Globe,
+      title: t("homepage.aboutCardOpenTitle"),
+      description: t("homepage.aboutCardOpenDescription"),
+      borderClass: "border-indigo-200 dark:border-indigo-800/60",
+      bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
+      iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
+      iconClass: "text-indigo-600 dark:text-indigo-400",
+    },
+    {
+      icon: Star,
+      title: t("homepage.aboutCardFreeAccountTitle"),
+      description: t("homepage.aboutCardFreeAccountDescription"),
+      borderClass: "border-purple-200 dark:border-purple-800/60",
+      bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
+      iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
+      iconClass: "text-purple-600 dark:text-purple-400",
+    },
+    {
+      icon: ShieldCheck,
+      title: t("homepage.aboutCardGooglePrivacyTitle"),
+      description: t("homepage.aboutCardGooglePrivacyDescription"),
+      borderClass: "border-pink-200 dark:border-pink-800/60",
+      bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
+      iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
+      iconClass: "text-pink-600 dark:text-pink-400",
+    },
+  ];
+
+  // External channels, collapsed into a compact icon row
+  const SOCIAL_LINKS = [
+    {
+      href: "https://www.youtube.com/@SOPHIEAIFinance",
+      label: t("homepage.youtubeChannel"),
+      colorClass: "bg-red-600 hover:bg-red-700 text-white",
+      icon: (
+        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg>
+      ),
+    },
+    {
+      href: "https://open.spotify.com/show/1LVAoacNfDyzrEf9bwrVM9",
+      label: t("homepage.podcastOnSpotify"),
+      colorClass: "bg-green-600 hover:bg-green-700 text-white",
+      icon: (
+        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.295.479-1.02.659-1.559.359z" />
+        </svg>
+      ),
+    },
+    {
+      href: "https://space.bilibili.com/1485896958",
+      label: t("homepage.bilibiliChannel"),
+      colorClass: "bg-pink-500 hover:bg-pink-600 text-white",
+      icon: (
+        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .356-.124.657-.373.906l-1.174 1.12zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.789 1.894v7.52c.02.764.283 1.396.789 1.894.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.13.789-1.894v-7.52c-.02-.765-.283-1.396-.789-1.894-.507-.497-1.134-.755-1.88-.773H5.333zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z" />
+        </svg>
+      ),
+    },
+    {
+      href: "https://xhslink.com/m/26R3QGSdpiH",
+      label: t("homepage.xiaohongshuGroup"),
+      colorClass: "bg-red-500 hover:bg-red-600 text-white",
+      icon: (
+        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169-.185-.459-.185-.628 0l-2.24 2.24c-.169.169-.169.459 0 .628l2.24 2.24c.169.169.459.169.628 0 .169-.169.169-.459 0-.628L15.256 12l2.312-2.312c.169-.169.169-.459 0-.628zM8.432 15.84c.169.185.459.185.628 0l2.24-2.24c.169-.169.169-.459 0-.628l-2.24-2.24c-.169-.169-.459-.169-.628 0-.169.169-.169.459 0 .628L10.744 12l-2.312 2.312c-.169.169-.169.459 0 .628z" />
+        </svg>
+      ),
+    },
+  ];
 
   // Lazy load stock data after initial render
   useEffect(() => {
@@ -258,8 +254,7 @@ export default function Home() {
                   SOPHIE Daddy Quant Blog
                 </p>
                 <p className="max-w-xl text-sm md:text-base text-muted-foreground">
-                  A personal blog and YouTube channel on quantitative finance — AI-assisted research across
-                  market analysis, options strategies, and stock insights.
+                  {t("homepage.tagline")}
                 </p>
 
                 {/* Core feature shortcuts */}
@@ -301,8 +296,8 @@ export default function Home() {
                   ))}
                   <button
                     onClick={handleCopyRSSFeed}
-                    aria-label="Copy RSS Feed URL"
-                    title={rssCopied ? "Copied!" : "Copy RSS Feed URL"}
+                    aria-label={t("homepage.copyRssFeedUrl")}
+                    title={rssCopied ? t("homepage.rssCopied") : t("homepage.copyRssFeedUrl")}
                     className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${rssCopied
                       ? "border-primary/40 text-primary bg-accent"
                       : "border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-accent"
@@ -316,7 +311,7 @@ export default function Home() {
                     className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <Users className="h-3.5 w-3.5" />
-                    Meet SOPHIE Daddy
+                    {t("homepage.meetSophieDaddy")}
                   </Link>
                   {isAdmin && (
                     <Link
@@ -324,7 +319,7 @@ export default function Home() {
                       className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
                     >
                       <Crown className="h-3.5 w-3.5" />
-                      Admin
+                      {t("header.admin")}
                     </Link>
                   )}
 
@@ -359,10 +354,12 @@ export default function Home() {
         <section className="container max-w-screen-2xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
           <div className="flex flex-col items-center space-y-4 text-center mb-6">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Interactive Articles
+              {t("homepage.interactiveArticles")}
             </h2>
             <p className="text-muted-foreground text-sm max-w-2xl">
-              Explore {articles.filter(a => canViewPremium ? true : !a.premiumContent).length}+ articles on quantitative finance, options trading, and market analysis
+              {t("homepage.exploreArticlesCount", {
+                count: articles.filter(a => canViewPremium ? true : !a.premiumContent).length,
+              })}
             </p>
           </div>
 
@@ -386,7 +383,7 @@ export default function Home() {
             return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
                 <div className="absolute -top-3 left-3 z-10">
-                  <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded shadow">Featured</span>
+                  <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded shadow">{t("homepage.featured")}</span>
                 </div>
                 <ArticleCard
                   key={pinnedArticle.slug}
@@ -399,6 +396,7 @@ export default function Home() {
                   deepResearch={pinnedArticle.deepResearch}
                   youtubeUrl={pinnedArticle.youtubeUrl}
                   bilibiliUrl={pinnedArticle.bilibiliUrl}
+                  bilibiliTitle={pinnedArticle.bilibiliTitle}
                   isVideo={pinnedArticle.isVideo}
                   options={pinnedArticle.options}
                   noSummary={pinnedArticle.noSummary}
@@ -423,6 +421,7 @@ export default function Home() {
                   deepResearch={article.deepResearch}
                   youtubeUrl={article.youtubeUrl}
                   bilibiliUrl={article.bilibiliUrl}
+                  bilibiliTitle={article.bilibiliTitle}
                   isVideo={article.isVideo}
                   options={article.options}
                   noSummary={article.noSummary}
@@ -435,7 +434,10 @@ export default function Home() {
           {/* Results Count and Show More/Less Button */}
           <div className="flex flex-col items-center gap-4 mt-8">
             <p className="text-sm text-muted-foreground">
-              Showing {displayedCount} of {nonPinnedFilteredArticles.length} articles
+              {t("homepage.showingArticlesCount", {
+                shown: displayedCount,
+                total: nonPinnedFilteredArticles.length,
+              })}
             </p>
             {nonPinnedFilteredArticles.length > 12 && (
               <Button
@@ -443,13 +445,15 @@ export default function Home() {
                 variant="outline"
                 size="lg"
               >
-                {showAllArticles ? 'Show Less' : `Show All ${nonPinnedFilteredArticles.length} Articles`}
+                {showAllArticles
+                  ? t("homepage.showLess")
+                  : t("homepage.showAllArticlesButton", { count: nonPinnedFilteredArticles.length })}
               </Button>
             )}
             {nonPinnedFilteredArticles.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">No articles found matching your filters.</p>
-                <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
+                <p className="text-lg text-muted-foreground">{t("homepage.noArticlesFound")}</p>
+                <p className="text-sm text-muted-foreground mt-2">{t("homepage.tryAdjustingFilters")}</p>
               </div>
             )}
           </div>
@@ -463,14 +467,11 @@ export default function Home() {
             <div className="flex flex-col items-center text-center gap-3 mb-8">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                 <Sparkles className="h-3.5 w-3.5" />
-                About the platform
+                {t("homepage.aboutThePlatform")}
               </span>
-              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">About SOPHIE</h2>
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("homepage.aboutSophieHeading")}</h2>
               <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                SOPHIE turns scattered market research into one place worth coming back to.
-                Every topic pairs its article with the video, primary research paper, and wiki
-                reference in a single scrollable frame, backed by a live trending-topics board
-                and guided study paths — all free, no account required.
+                {t("homepage.aboutSophieDescription")}
               </p>
             </div>
 
@@ -491,10 +492,10 @@ export default function Home() {
 
             <div className="flex items-center justify-center gap-4 pt-7">
               <Link href="/privacy" className="text-sm font-medium text-primary hover:underline">
-                Privacy Policy
+                {t("footer.privacyPolicy")}
               </Link>
               <Link href="/terms" className="text-sm font-medium text-primary hover:underline">
-                Terms of Service
+                {t("footer.termsOfService")}
               </Link>
             </div>
           </div>

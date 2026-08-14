@@ -1,13 +1,17 @@
-import Link from "next/link";
+"use client";
 
-const FOOTER_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms of Service" },
-  { href: "/forum/site-feedback", label: "Feedback" },
-];
+import Link from "next/link";
+import { useLanguage } from "@/hooks/use-language";
 
 export function Footer() {
+  const { t } = useLanguage();
+  const FOOTER_LINKS = [
+    { href: "/about", label: t("footer.about") },
+    { href: "/privacy", label: t("footer.privacyPolicy") },
+    { href: "/terms", label: t("footer.termsOfService") },
+    { href: "/forum/site-feedback", label: t("footer.feedback") },
+  ];
+
   return (
     <footer className="border-t bg-white dark:bg-slate-900 dark:border-slate-800 py-8">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 flex flex-col items-center gap-3 text-center">
@@ -23,7 +27,7 @@ export function Footer() {
           ))}
         </nav>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} SOPHIE Daddy Quant Blog. Educational content for informational purposes only.
+          {t("footer.copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
     </footer>

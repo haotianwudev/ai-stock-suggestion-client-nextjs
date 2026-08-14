@@ -6,9 +6,10 @@ import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
 import { Youtube } from "lucide-react";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 import { ME, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
-import { getTierName, tierUnlockMessage } from "@/lib/tiers";
+import { getTierName, tierUnlockKey } from "@/lib/tiers";
 import { TierUpDialog } from "@/components/shared/tier-up-dialog";
 
 /**
@@ -49,6 +50,7 @@ export function YoutubeSubscribeGate({
   children: React.ReactNode;
 }) {
   const { user, profile, loading } = useUser();
+  const { t } = useLanguage();
   const [unlocked, setUnlocked] = useState(false);
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [setYoutubeSubscribed, { loading: confirming }] = useMutation<{
@@ -65,15 +67,19 @@ export function YoutubeSubscribeGate({
 
       const newTier = data?.setYoutubeSubscribed.tier ?? prevTier;
       if (newTier > prevTier) {
+        const unlockKey = tierUnlockKey(newTier);
         setCongrats({
-          title: `You're now ${getTierName(newTier)}!`,
-          description: tierUnlockMessage(newTier) ?? "Keep it up!",
+          title: t("articleFrame.congratsTitle", { tier: getTierName(newTier) }),
+          description: unlockKey ? t(unlockKey) : t("articleFrame.congratsKeepItUp"),
         });
       } else {
-        setCongrats({ title: "Thanks for subscribing!", description: "We really appreciate it." });
+        setCongrats({
+          title: t("profileSettings.congratsSubscribed"),
+          description: t("profileSettings.congratsAppreciate"),
+        });
       }
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      toast.error(e instanceof Error ? e.message : t("profileSettings.genericError"));
     }
   };
 

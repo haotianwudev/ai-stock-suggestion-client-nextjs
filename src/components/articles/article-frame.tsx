@@ -19,8 +19,9 @@ import { CommentSection } from "@/components/comments/comment-section";
 import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 import { useBookmarks } from "@/hooks/use-bookmarks";
-import { getTierName, tierUnlockMessage } from "@/lib/tiers";
+import { getTierName, tierUnlockKey } from "@/lib/tiers";
 import { TierUpDialog } from "@/components/shared/tier-up-dialog";
 import { TierStatusBanner } from "@/components/shared/tier-status-banner";
 import {
@@ -47,14 +48,6 @@ interface ArticleFrameProps {
    */
   additionalDisclaimer?: string;
 }
-
-// The single, reused-everywhere disclaimer. Topic-agnostic on purpose — article-specific
-// risk language (e.g. options risk, a particular metric's limitations) belongs in
-// `additionalDisclaimer`, not here, since not every article covers the same territory.
-const UNIVERSAL_DISCLAIMER =
-  "This content is for educational purposes only and does not constitute financial advice. " +
-  "Past performance does not guarantee future results. Always conduct your own research and " +
-  "consult a qualified financial professional before making investment decisions.";
 
 function toEmbedUrl(googleDoc: string): string | null {
   if (!googleDoc.includes("/pub")) return null;
@@ -159,6 +152,7 @@ function VideoCard({
   const [sourceTouched, setSourceTouched] = useState(false);
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const { user, profile } = useUser();
+  const { t } = useLanguage();
 
   // Apply the signed-in user's preferred platform as the default once their profile
   // loads (it arrives after mount, hence an effect rather than the initial state) --
@@ -194,16 +188,22 @@ function VideoCard({
         const result = data?.attestLiked;
         if (!result?.wasNewLike) return;
         if (result.tier > prevTier) {
+          const unlockKey = tierUnlockKey(result.tier);
           setCongrats({
-            title: `You're now ${getTierName(result.tier)}!`,
-            description: tierUnlockMessage(result.tier) ?? "Keep it up!",
+            title: t("articleFrame.congratsTitle", { tier: getTierName(result.tier) }),
+            description: unlockKey ? t(unlockKey) : t("articleFrame.congratsKeepItUp"),
           });
         } else {
-          toast.success(`Liked! (${result.likedCount} video${result.likedCount === 1 ? "" : "s"} liked so far)`);
+          toast.success(
+            t("articleFrame.likedToast", {
+              count: result.likedCount,
+              plural: result.likedCount === 1 ? "" : "s",
+            })
+          );
         }
       })
       .catch((e) => {
-        toast.error(e instanceof Error ? e.message : "Something went wrong.");
+        toast.error(e instanceof Error ? e.message : t("articleFrame.likeError"));
       });
   };
 
@@ -220,7 +220,7 @@ function VideoCard({
       }
     >
       <div className="px-4 pt-4 pb-2 flex items-center justify-between">
-        <SlotKicker icon={PlayCircle} label="Watch" tone="red" />
+        <SlotKicker icon={PlayCircle} label={t("articleFrame.watch")} tone="red" />
         <div className="flex items-center gap-2">
           {bilibiliUrl && (
             <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden text-[11px] font-semibold">
@@ -244,8 +244,8 @@ function VideoCard({
           <button
             onClick={() => setEnlarged((prev) => !prev)}
             className="inline-flex items-center justify-center size-6 rounded border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-            title={enlarged ? "Shrink player" : "Enlarge player — keeps playing while you scroll and read"}
-            aria-label={enlarged ? "Shrink player" : "Enlarge player"}
+            title={enlarged ? t("articleFrame.shrinkPlayer") : t("articleFrame.enlargePlayerHint")}
+            aria-label={enlarged ? t("articleFrame.shrinkPlayer") : t("articleFrame.enlargePlayer")}
           >
             {enlarged ? <Minimize2 className="size-3.5" /> : <Maximize2 className="size-3.5" />}
           </button>
@@ -264,7 +264,7 @@ function VideoCard({
           <button
             onClick={() => { setPlaying(true); setEnlarged(true); }}
             className="absolute inset-0 w-full h-full group touch-manipulation"
-            aria-label={`Play video: ${title}`}
+            aria-label={t("articleFrame.playVideo", { title })}
           >
             {thumbnailUrl && (
               <img
@@ -297,12 +297,12 @@ function VideoCard({
           }`}
         >
           <ThumbsUp className="size-4" fill={liked ? "currentColor" : "none"} />
-          {liked ? "Liked" : "Like on YouTube"}
+          {liked ? t("articleFrame.liked") : t("articleFrame.likeOnYoutube")}
         </button>
         <button
           onClick={handleBookmark}
           disabled={bookmarking}
-          aria-label={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+          aria-label={bookmarked ? t("articleFrame.bookmarkRemove") : t("articleFrame.bookmarkAdd")}
           className={`inline-flex items-center justify-center size-9 rounded-lg border transition-colors disabled:opacity-50 ${
             bookmarked
               ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
@@ -337,6 +337,7 @@ function ArticleNavLinks({
   previousArticle?: Article;
   nextArticle?: Article;
 }) {
+  const { t } = useLanguage();
   if (!previousArticle && !nextArticle) return null;
   const linkClass =
     "flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] text-sm shadow-sm transition-colors";
@@ -347,7 +348,7 @@ function ArticleNavLinks({
         <Link href={`/articles/${previousArticle.slug}`} className={linkClass}>
           <ArrowLeft className="h-4 w-4 shrink-0" />
           <span className="min-w-0">
-            <span className={kickerClass}>Previous</span>
+            <span className={kickerClass}>{t("articleFrame.previous")}</span>
             <span className="block truncate font-medium">{previousArticle.title}</span>
           </span>
         </Link>
@@ -355,7 +356,7 @@ function ArticleNavLinks({
       {nextArticle && (
         <Link href={`/articles/${nextArticle.slug}`} className={`${linkClass} justify-end text-right`}>
           <span className="min-w-0">
-            <span className={kickerClass}>Next</span>
+            <span className={kickerClass}>{t("articleFrame.next")}</span>
             <span className="block truncate font-medium">{nextArticle.title}</span>
           </span>
           <ArrowRight className="h-4 w-4 shrink-0" />
@@ -390,26 +391,29 @@ function LinksCard({ icon, label, links }: { icon: React.ElementType; label: str
 }
 
 function TopicsCard({ links }: { links: TopicLink[] }) {
-  return <LinksCard icon={Layers} label="Related Topics" links={links} />;
+  const { t } = useLanguage();
+  return <LinksCard icon={Layers} label={t("articleFrame.relatedTopics")} links={links} />;
 }
 
 function StrategiesCard({ links }: { links: TopicLink[] }) {
-  return <LinksCard icon={TrendingUp} label="Related Strategies" links={links} />;
+  const { t } = useLanguage();
+  return <LinksCard icon={TrendingUp} label={t("articleFrame.relatedStrategies")} links={links} />;
 }
 
 function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () => void }) {
+  const { t } = useLanguage();
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
-      <SlotKicker icon={FileText} label="Research Paper" tone="accent" />
+      <SlotKicker icon={FileText} label={t("articleFrame.researchPaper")} tone="accent" />
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-        The full source paper behind this article — read it inline or open it in Google Docs.
+        {t("articleFrame.researchPaperDescription")}
       </p>
       <div className="flex flex-col gap-2">
         <button
           onClick={onExpand}
           className="inline-flex items-center justify-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg bg-[#A8672E] hover:bg-[#8f5726] dark:bg-[#D08F52] dark:hover:bg-[#c17f47] text-white dark:text-[#14171B] transition-colors"
         >
-          <Maximize2 className="h-3.5 w-3.5" /> Read inline
+          <Maximize2 className="h-3.5 w-3.5" /> {t("articleFrame.readInline")}
         </button>
         <a
           href={googleDoc}
@@ -417,7 +421,7 @@ function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () =>
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-[#A8672E] dark:text-[#D08F52] hover:text-[#8f5726] dark:hover:text-[#e2a877] py-1"
         >
-          Open in Google Docs
+          {t("articleFrame.openInGoogleDocs")}
           <ExternalLink className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -430,9 +434,10 @@ function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () =>
 // standalone page. Mirrors the Research Paper card on purpose — both are "the full
 // source material behind this article," so they should behave the same way.
 function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void }) {
+  const { t } = useLanguage();
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
-      <SlotKicker icon={BookOpen} label="Wiki" tone="accent" />
+      <SlotKicker icon={BookOpen} label={t("articleFrame.wiki")} tone="accent" />
       <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1">{entry.title}</h4>
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-3">{entry.summary}</p>
       <div className="flex flex-col gap-2">
@@ -440,13 +445,13 @@ function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void 
           onClick={onExpand}
           className="inline-flex items-center justify-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg bg-[#A8672E] hover:bg-[#8f5726] dark:bg-[#D08F52] dark:hover:bg-[#c17f47] text-white dark:text-[#14171B] transition-colors"
         >
-          <Maximize2 className="h-3.5 w-3.5" /> Read inline
+          <Maximize2 className="h-3.5 w-3.5" /> {t("articleFrame.readInline")}
         </button>
         <Link
           href={wikiPathToRoute(entry.path)}
           className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-[#A8672E] dark:text-[#D08F52] hover:text-[#8f5726] dark:hover:text-[#e2a877] py-1"
         >
-          View full page
+          {t("articleFrame.viewFullPage")}
           <ExternalLink className="h-3.5 w-3.5" />
         </Link>
       </div>
@@ -458,6 +463,7 @@ function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void 
 // shape as PaperModal, so both "source material" cards behave identically. Fetches
 // the markdown lazily (only once opened) since the teaser card never needed it.
 function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }) {
+  const { t } = useLanguage();
   const [content, setContent] = useState<string | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
 
@@ -506,12 +512,12 @@ function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }
             href={wikiPathToRoute(entry.path)}
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[#A8672E] dark:text-[#D08F52] hover:text-[#8f5726] dark:hover:text-[#e2a877]"
           >
-            View full wiki page
+            {t("articleFrame.viewFullWikiPage")}
             <ExternalLink className="h-3.5 w-3.5" />
           </Link>
           <button
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("articleFrame.close")}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400"
           >
             <X className="h-5 w-5" />
@@ -529,7 +535,7 @@ function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }
           {status === "missing" && (
             <div className="flex flex-col items-center text-center py-12">
               <BookOpen className="w-10 h-10 text-gray-300 dark:text-gray-700 mb-3" />
-              <p className="text-gray-500 dark:text-gray-400">Wiki entry coming soon for this article.</p>
+              <p className="text-gray-500 dark:text-gray-400">{t("articleFrame.wikiComingSoon")}</p>
             </div>
           )}
           {status === "ready" && <WikiMarkdown content={content ?? ""} />}
@@ -543,6 +549,7 @@ function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }
 // than a cramped sidebar iframe, and it doesn't disturb the reader's scroll position
 // in the main article underneath.
 function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => void }) {
+  const { t } = useLanguage();
   const embedUrl = toEmbedUrl(googleDoc);
 
   useEffect(() => {
@@ -571,12 +578,12 @@ function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[#A8672E] dark:text-[#D08F52] hover:text-[#8f5726] dark:hover:text-[#e2a877]"
           >
-            Open in Google Docs
+            {t("articleFrame.openInGoogleDocs")}
             <ExternalLink className="h-3.5 w-3.5" />
           </a>
           <button
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("articleFrame.close")}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400"
           >
             <X className="h-5 w-5" />
@@ -588,7 +595,7 @@ function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => 
           ) : (
             <div className="h-full flex flex-col items-center justify-center text-center px-6">
               <p className="text-gray-500 dark:text-gray-400 mb-4">
-                This document isn&apos;t embeddable — open it directly in Google Docs.
+                {t("articleFrame.docNotEmbeddable")}
               </p>
               <a
                 href={googleDoc}
@@ -596,7 +603,7 @@ function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-[#A8672E] dark:text-[#D08F52] underline"
               >
-                Open Research Paper <ExternalLink className="h-4 w-4" />
+                {t("articleFrame.openResearchPaper")} <ExternalLink className="h-4 w-4" />
               </a>
             </div>
           )}
@@ -615,6 +622,7 @@ export function ArticleFrame({
   descriptionOverride,
   additionalDisclaimer,
 }: ArticleFrameProps) {
+  const { t } = useLanguage();
   const [paperOpen, setPaperOpen] = useState(false);
   const [wikiOpen, setWikiOpen] = useState(false);
   const currentIndex = articles.findIndex((a) => a.slug === slug);
@@ -639,9 +647,9 @@ export function ArticleFrame({
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 flex flex-col items-center justify-center px-4 text-center">
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">Article not found.</p>
+          <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">{t("articleFrame.articleNotFound")}</p>
           <Link href="/" className="text-indigo-600 dark:text-indigo-400 underline">
-            Return to Home
+            {t("articleFrame.returnToHome")}
           </Link>
         </main>
       </div>
@@ -677,7 +685,7 @@ export function ArticleFrame({
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Return to Home
+              {t("articleFrame.returnToHome")}
             </Link>
             <div className="w-full max-w-md">
               <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
@@ -690,7 +698,7 @@ export function ArticleFrame({
           <div className="flex flex-wrap items-center gap-2 mb-4">
             {currentArticle.options && (
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
-                Options
+                {t("articleFrame.optionsBadge")}
               </span>
             )}
             {currentArticle.labels
@@ -738,7 +746,7 @@ export function ArticleFrame({
                     className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Return to Home
+                    {t("articleFrame.returnToHome")}
                   </Link>
                   <ArticleNavLinks previousArticle={previousArticle} nextArticle={nextArticle} />
                   {hasTopics && <TopicsCard links={topicLinks} />}
@@ -774,8 +782,8 @@ export function ArticleFrame({
             replaces the universal text. Pass it instead of adding a second box in the body. */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
           <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 p-6 rounded-r-lg">
-            <h4 className="font-bold text-amber-900 dark:text-amber-300 mb-2">Educational Disclaimer</h4>
-            <p className="text-amber-800 dark:text-amber-400 text-sm">{UNIVERSAL_DISCLAIMER}</p>
+            <h4 className="font-bold text-amber-900 dark:text-amber-300 mb-2">{t("articleFrame.educationalDisclaimer")}</h4>
+            <p className="text-amber-800 dark:text-amber-400 text-sm">{t("articleFrame.universalDisclaimer")}</p>
             {additionalDisclaimer && (
               <p className="text-amber-800 dark:text-amber-400 text-sm mt-2">{additionalDisclaimer}</p>
             )}
@@ -786,7 +794,7 @@ export function ArticleFrame({
       <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-slate-500 dark:text-slate-400 text-sm">
-            © 2026 SOPHIE&apos;s Daddy Quant Blog. Educational content for informational purposes only.
+            {t("articleFrame.footerCopyright")}
           </p>
         </div>
       </footer>

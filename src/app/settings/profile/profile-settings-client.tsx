@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Crown } from "lucide-react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,8 +10,9 @@ import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { getTierName, tierUnlockMessage, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER } from "@/lib/tiers";
+import { getTierName, tierUnlockKey, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER } from "@/lib/tiers";
 import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED, SET_PREFERRED_VIDEO_SOURCE } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
@@ -31,6 +33,7 @@ type FormValues = z.infer<typeof schema>;
 
 export function ProfileSettingsClient() {
   const { user, profile, loading } = useUser();
+  const { t } = useLanguage();
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [updateProfile, { loading: saving }] = useMutation<{ updateProfile: MeResult }>(
     UPDATE_PROFILE,
@@ -72,7 +75,7 @@ export function ProfileSettingsClient() {
   if (!user) {
     return (
       <div className="flex items-center justify-between rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
-        <span>Sign in to edit your profile.</span>
+        <span>{t("profileSettings.signInPrompt")}</span>
         <LoginButton />
       </div>
     );
@@ -83,9 +86,9 @@ export function ProfileSettingsClient() {
   const submit = handleSubmit(async ({ displayName, avatarUrl }) => {
     try {
       await updateProfile({ variables: { displayName: displayName.trim(), avatarUrl } });
-      toast.success("Profile updated.");
+      toast.success(t("profileSettings.profileUpdated"));
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      toast.error(e instanceof Error ? e.message : t("profileSettings.genericError"));
     }
   });
 
@@ -94,20 +97,24 @@ export function ProfileSettingsClient() {
       const prevTier = profile?.tier ?? 1;
       const { data } = await setYoutubeSubscribed({ variables: { subscribed } });
       if (!subscribed) {
-        toast.success("Updated.");
+        toast.success(t("profileSettings.updated"));
         return;
       }
       const newTier = data?.setYoutubeSubscribed.tier ?? prevTier;
       if (newTier > prevTier) {
+        const unlockKey = tierUnlockKey(newTier);
         setCongrats({
-          title: `You're now ${getTierName(newTier)}!`,
-          description: tierUnlockMessage(newTier) ?? "Keep it up!",
+          title: t("articleFrame.congratsTitle", { tier: getTierName(newTier) }),
+          description: unlockKey ? t(unlockKey) : t("articleFrame.congratsKeepItUp"),
         });
       } else {
-        setCongrats({ title: "Thanks for subscribing!", description: "We really appreciate it." });
+        setCongrats({
+          title: t("profileSettings.congratsSubscribed"),
+          description: t("profileSettings.congratsAppreciate"),
+        });
       }
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      toast.error(e instanceof Error ? e.message : t("profileSettings.genericError"));
     }
   };
 
@@ -116,9 +123,9 @@ export function ProfileSettingsClient() {
     if (source === profile?.preferredVideoSource) return;
     try {
       await setPreferredVideoSource({ variables: { source } });
-      toast.success("Updated.");
+      toast.success(t("profileSettings.updated"));
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Something went wrong.");
+      toast.error(e instanceof Error ? e.message : t("profileSettings.genericError"));
     }
   };
 
@@ -126,7 +133,7 @@ export function ProfileSettingsClient() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          Profile settings
+          {t("profileSettings.heading")}
           <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>
         </CardTitle>
         <TierStatusBanner profile={profile} />
@@ -134,7 +141,7 @@ export function ProfileSettingsClient() {
       <CardContent>
         <form onSubmit={submit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="displayName">Display name</Label>
+            <Label htmlFor="displayName">{t("profileSettings.displayNameLabel")}</Label>
             <Input id="displayName" maxLength={50} {...register("displayName")} />
             {errors.displayName && (
               <p className="text-xs text-destructive">{errors.displayName.message}</p>
@@ -142,7 +149,7 @@ export function ProfileSettingsClient() {
           </div>
 
           <div className="space-y-2">
-            <Label>Avatar</Label>
+            <Label>{t("profileSettings.avatarLabel")}</Label>
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
               {AVATAR_OPTIONS.map((option) => (
                 <button
@@ -170,7 +177,7 @@ export function ProfileSettingsClient() {
 
           <div className="flex justify-end">
             <Button type="submit" disabled={saving || !isDirty}>
-              {saving ? "Saving..." : "Save changes"}
+              {saving ? t("profileSettings.saving") : t("profileSettings.saveChanges")}
             </Button>
           </div>
         </form>
@@ -185,32 +192,39 @@ export function ProfileSettingsClient() {
               className="mt-0.5 size-4 rounded border-border accent-[#A8672E]"
             />
             <span className="text-sm">
-              <span className="font-medium">I&apos;m subscribed to the SOPHIE YouTube channel</span>
+              <span className="font-medium">{t("profileSettings.subscribedLabel")}</span>
               <br />
               <span className="text-muted-foreground">
-                Promotes you to {getTierName(2)} and unlocks every article automatically. We don&apos;t
-                verify this — it&apos;s the honor system.
+                {t("profileSettings.subscribedDescription", { tier: getTierName(2) })}
               </span>
             </span>
           </label>
           <p className="mt-3 text-xs text-muted-foreground">
-            Liked {profile?.likedCount ?? 0} video{(profile?.likedCount ?? 0) === 1 ? "" : "s"} on YouTube —
-            hit the &quot;Like on YouTube&quot; button on any article to rank up further.
+            {t("profileSettings.likedVideosCount", {
+              count: profile?.likedCount ?? 0,
+              plural: (profile?.likedCount ?? 0) === 1 ? "" : "s",
+            })}
           </p>
         </div>
 
         <div className="mt-6 border-t pt-6">
           <Label className="flex items-center gap-2">
-            Preferred video platform
+            {t("profileSettings.preferredVideoPlatform")}
+            <Badge
+              variant="outline"
+              className="gap-1 border-amber-600/30 bg-amber-600/10 font-normal text-amber-700 dark:text-amber-500"
+            >
+              <Crown className="size-3" />
+              {t("profileSettings.premiumBadge")}
+            </Badge>
             {!canSetVideoPreference(profile?.tier ?? 1) && (
               <Badge variant="outline" className="font-normal">
-                Unlocks at {getTierName(MIN_VIDEO_PREFERENCE_TIER)}
+                {t("profileSettings.unlocksAt", { tier: getTierName(MIN_VIDEO_PREFERENCE_TIER) })}
               </Badge>
             )}
           </Label>
           <p className="mt-1 text-xs text-muted-foreground">
-            When an article has both a YouTube and Bilibili version, the Watch card plays this one by
-            default. You can still switch per-video from the toggle on the card itself.
+            {t("profileSettings.videoPlatformDescription")}
           </p>
           <div className="mt-3 flex gap-2">
             {(["youtube", "bilibili"] as const).map((s) => (
@@ -232,8 +246,7 @@ export function ProfileSettingsClient() {
           </div>
           {!canSetVideoPreference(profile?.tier ?? 1) && (
             <p className="mt-2 text-xs text-muted-foreground">
-              Reach {getTierName(MIN_VIDEO_PREFERENCE_TIER)} to choose your default — see the rank-up tip
-              above for what's next.
+              {t("profileSettings.reachTierToChoose", { tier: getTierName(MIN_VIDEO_PREFERENCE_TIER) })}
             </p>
           )}
         </div>

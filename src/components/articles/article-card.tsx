@@ -8,6 +8,7 @@ import { useState } from "react";
 import { youtubeThumbnailUrl } from "@/lib/youtube";
 import { useBookmarks } from "@/hooks/use-bookmarks";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 
 interface ArticleCardProps {
   title: string;
@@ -20,17 +21,22 @@ interface ArticleCardProps {
   deepResearch?: boolean;
   youtubeUrl?: string;
   bilibiliUrl?: string;
+  bilibiliTitle?: string;
   isVideo?: boolean;
   options?: boolean;
   noSummary?: boolean;
   podcastUrl?: string;
 }
 
-export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, bilibiliUrl, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
+export function ArticleCard({ title, description, slug, date, imageUrl, googleDoc, websiteUrl, deepResearch, youtubeUrl, bilibiliUrl, bilibiliTitle, isVideo, options, noSummary, podcastUrl }: ArticleCardProps) {
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
   const { isBookmarked, toggleBookmark, bookmarking } = useBookmarks();
   const bookmarked = isBookmarked(slug);
   const { profile } = useUser();
+  const { t, language } = useLanguage();
+  // In Chinese mode, prefer the video's actual Chinese title (from the Bilibili cross-post)
+  // over the article's English title, when one was captured for this article.
+  const displayTitle = language === "zh" && bilibiliTitle ? bilibiliTitle : title;
   // Same video, whichever platform the reader prefers -- falls back to YouTube
   // when there's no Bilibili cross-post, or no preference set.
   const preferBilibili = profile?.preferredVideoSource === "bilibili" && Boolean(bilibiliUrl);
@@ -55,7 +61,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
             <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100 group">
               <img
                 src={displayImageUrl}
-                alt={title}
+                alt={displayTitle}
                 className="h-full w-full object-contain hover:object-cover transition-all duration-300 cursor-pointer"
                 onClick={() => setIsImageViewerOpen(true)}
                 onError={(e) => {
@@ -74,28 +80,28 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               <button
                 onClick={() => setIsImageViewerOpen(true)}
                 className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                title="View full screen"
+                title={t("articleCard.viewFullScreen")}
               >
                 <Maximize2 className="h-3 w-3" />
               </button>
               {deepResearch && (
                 <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-xs text-primary-foreground font-semibold shadow group-hover:left-12 transition-all duration-200">
-                  Deep Research
+                  {t("articleCard.deepResearch")}
                 </span>
               )}
               {(isVideo || hasAttachedVideo) && (
                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
-                  Video
+                  {t("articleCard.video")}
                 </span>
               )}
               {podcastUrl && !isVideo && !hasAttachedVideo && (
                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
-                  Podcast
+                  {t("articleCard.podcast")}
                 </span>
               )}
               {options && (
                 <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
-                  Options
+                  {t("articleCard.options")}
                 </span>
               )}
               {/* Toggle chip: swap between infographic and YouTube thumbnail */}
@@ -106,10 +112,10 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     setShowVideoThumb((prev) => !prev);
                   }}
                   className="absolute bottom-2 left-2 inline-flex items-center gap-1 px-2 py-1 rounded bg-black/60 hover:bg-black/80 text-white text-[10px] font-medium shadow transition-colors z-10 touch-manipulation"
-                  title={showVideoThumb ? "Show infographic" : "Show video thumbnail"}
+                  title={showVideoThumb ? t("articleCard.showInfographic") : t("articleCard.showVideoThumbnail")}
                 >
                   {showVideoThumb ? <ImageIcon className="h-3 w-3" /> : <PlayCircle className="h-3 w-3" />}
-                  {showVideoThumb ? "Infographic" : "Video"}
+                  {showVideoThumb ? t("articleCard.infographic") : t("articleCard.video")}
                 </button>
               )}
             </div>
@@ -117,7 +123,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
         <div className="flex-1 flex flex-col justify-between min-w-0">
           <div>
             <div className="flex items-start justify-between gap-2">
-              <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{title}</CardTitle>
+              <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{displayTitle}</CardTitle>
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -125,8 +131,8 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                   toggleBookmark(slug);
                 }}
                 disabled={bookmarking}
-                aria-label={bookmarked ? "Remove bookmark" : "Bookmark this article"}
-                title={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+                aria-label={bookmarked ? t("articleCard.bookmarkRemove") : t("articleCard.bookmarkAdd")}
+                title={bookmarked ? t("articleCard.bookmarkRemove") : t("articleCard.bookmarkAdd")}
                 className={`shrink-0 inline-flex items-center justify-center size-7 rounded-lg border transition-colors disabled:opacity-50 ${
                   bookmarked
                     ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
@@ -147,7 +153,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     rel="noopener noreferrer"
                     className="underline hover:text-primary"
                   >
-                    Google Doc
+                    {t("articleCard.googleDoc")}
                   </a>
                 </>
               )}
@@ -173,7 +179,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     rel="noopener noreferrer"
                     className="underline hover:text-green-700"
                   >
-                    Podcast
+                    {t("articleCard.podcast")}
                   </a>
                 </>
               )}
@@ -186,7 +192,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     rel="noopener noreferrer"
                     className="underline hover:text-blue-700"
                   >
-                    Website
+                    {t("articleCard.website")}
                   </a>
                 </>
               )}
@@ -219,7 +225,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         <path d="M23.498 6.186a2.991 2.991 0 0 0-2.11-2.11C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.576A2.991 2.991 0 0 0 .502 6.186C-.074 8.07-.074 12-.074 12s0 3.93.576 5.814a2.991 2.991 0 0 0 2.11 2.11C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.576a2.991 2.991 0 0 0 2.11-2.11C23.574 15.93 23.574 12 23.574 12s0-3.93-.576-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                       </svg>
                     )}
-                    Watch on {primaryVideoLabel}
+                    {t("articleCard.watchOn", { platform: primaryVideoLabel })}
                   </a>
                 ) : (
                   <>
@@ -248,7 +254,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold shadow hover:from-green-700 hover:to-green-800 transition-colors text-sm"
                       >
                         <Music className="mr-1.5 h-4 w-4 shrink-0 hidden sm:block" />
-                        <span className="truncate">Podcast</span>
+                        <span className="truncate">{t("articleCard.podcast")}</span>
                       </a>
                     )}
                     {websiteUrl && (
@@ -258,15 +264,15 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                         rel="noopener noreferrer"
                         className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold shadow hover:from-blue-700 hover:to-cyan-700 transition-colors text-sm"
                       >
-                        <span className="truncate">Website</span>
+                        <span className="truncate">{t("articleCard.website")}</span>
                       </a>
                     )}
                     {!noSummary && (
-                      <Link 
-                        href={`/articles/${slug}`} 
+                      <Link
+                        href={`/articles/${slug}`}
                         className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg border border-primary/40 text-primary font-semibold bg-card hover:bg-accent transition-colors text-sm"
                       >
-                        <span className="truncate">Read Article</span>
+                        <span className="truncate">{t("articleCard.readArticle")}</span>
                         <ArrowRight className="ml-1.5 h-4 w-4 shrink-0 hidden sm:block" />
                       </Link>
                     )}
@@ -283,7 +289,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
     {displayImageUrl && (
       <FullScreenImageViewer
         src={displayImageUrl}
-        alt={title}
+        alt={displayTitle}
         isOpen={isImageViewerOpen}
         onClose={() => setIsImageViewerOpen(false)}
       />

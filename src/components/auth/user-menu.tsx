@@ -11,9 +11,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 
 export function UserMenu() {
   const { user, profile, signOut } = useUser();
+  const { t } = useLanguage();
 
   if (!user) return null;
 
@@ -35,10 +37,10 @@ export function UserMenu() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/settings/profile">Edit profile</Link>
+          <Link href="/settings/profile">{t("auth.editProfile")}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()}>Sign out</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => signOut()}>{t("auth.signOut")}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

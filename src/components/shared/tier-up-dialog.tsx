@@ -11,11 +11,12 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/hooks/use-language";
 
 /**
  * Shared congrats popup for every rank-up moment: first login (Intern),
  * subscribing, and each tier crossed via the like ladder (see
- * nextLikeMilestone/tierUnlockMessage in lib/tiers.ts). Callers own the
+ * nextLikeMilestone/tierUnlockKey in lib/tiers.ts). Callers own the
  * open/close state and just pass the copy for this specific moment.
  */
 export function TierUpDialog({
@@ -29,6 +30,7 @@ export function TierUpDialog({
   title: string;
   description: string;
 }) {
+  const { t } = useLanguage();
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-sm text-center">
@@ -41,7 +43,7 @@ export function TierUpDialog({
         </DialogHeader>
         <DialogFooter className="sm:justify-center">
           <DialogClose asChild>
-            <Button>Nice!</Button>
+            <Button>{t("tierUpDialog.nice")}</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

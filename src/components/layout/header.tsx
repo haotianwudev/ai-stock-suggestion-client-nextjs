@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, Clock, BookOpen, MessagesSquare, Crown, Flame } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { LanguageToggle } from "@/components/layout/language-toggle";
 import { SearchBar } from "@/components/search/search-bar";
 import { AuthStatus } from "@/components/auth/auth-status";
 import { WelcomeGate } from "@/components/auth/welcome-gate";
@@ -11,6 +12,7 @@ import { RegisterServiceWorker } from "@/components/pwa/register-service-worker"
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 import { getTierName } from "@/lib/tiers";
 import {
   DropdownMenu,
@@ -19,16 +21,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const NAV_LINKS = [
-  { href: "/quant-trending", label: "Quant Trending", icon: Flame },
-  { href: "/investment-clock", label: "Macro Clock", icon: Clock },
-  { href: "/wiki", label: "Wiki", icon: BookOpen },
-  { href: "/forum/site-feedback", label: "Feedback", icon: MessagesSquare },
-];
-
 export function Header() {
   const { user, profile } = useUser();
+  const { t } = useLanguage();
   const isAdmin = profile?.tier === 9;
+  const NAV_LINKS = [
+    { href: "/quant-trending", label: t("header.navQuantTrending"), icon: Flame },
+    { href: "/investment-clock", label: t("header.navMacroClock"), icon: Clock },
+    { href: "/wiki", label: t("header.navWiki"), icon: BookOpen },
+    { href: "/forum/site-feedback", label: t("header.navFeedback"), icon: MessagesSquare },
+  ];
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <WelcomeGate />
@@ -74,7 +76,7 @@ export function Header() {
                 className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors whitespace-nowrap"
               >
                 <Crown className="h-3 w-3" />
-                Admin
+                {t("header.admin")}
               </Link>
             )}
           </nav>
@@ -82,7 +84,7 @@ export function Header() {
           {/* Mobile nav menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="sm:hidden">
-              <Button variant="ghost" size="icon" aria-label="Open navigation menu">
+              <Button variant="ghost" size="icon" aria-label={t("header.openNavMenu")}>
                 <Menu className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
@@ -102,19 +104,23 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/admin" className="flex items-center gap-2 font-semibold text-purple-600 dark:text-purple-400">
                     <Crown className="h-4 w-4" />
-                    Admin
+                    {t("header.admin")}
                   </Link>
                 </DropdownMenuItem>
               )}
               {user && profile && (
                 <div className="flex items-center justify-between px-2 py-2 mt-2 border-t sm:hidden">
-                  <span className="text-sm font-medium">Rank</span>
+                  <span className="text-sm font-medium">{t("header.rank")}</span>
                   <Badge variant="outline">{getTierName(profile.tier)}</Badge>
                 </div>
               )}
               <div className="flex items-center justify-between px-2 py-2 border-t sm:hidden">
-                <span className="text-sm font-medium">Theme</span>
+                <span className="text-sm font-medium">{t("header.theme")}</span>
                 <ThemeToggle />
+              </div>
+              <div className="flex items-center justify-between px-2 py-2 border-t sm:hidden">
+                <span className="text-sm font-medium">{t("header.language")}</span>
+                <LanguageToggle />
               </div>
               <div className="flex items-center px-2 py-2 border-t sm:hidden">
                 <AuthStatus />
@@ -129,6 +135,9 @@ export function Header() {
           )}
           <div className="hidden sm:block">
             <ThemeToggle />
+          </div>
+          <div className="hidden sm:block">
+            <LanguageToggle />
           </div>
           <div className="hidden sm:block">
             <AuthStatus />

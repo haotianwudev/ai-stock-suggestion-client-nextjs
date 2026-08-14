@@ -3,6 +3,7 @@
 import { Search, X, Bookmark } from "lucide-react";
 import { ArticleLabel } from "@/data/articles/types";
 import { useUser } from "@/hooks/use-user";
+import { useLanguage } from "@/hooks/use-language";
 
 interface ArticleFilterProps {
   searchText: string;
@@ -24,6 +25,7 @@ export function ArticleFilter({
   onBookmarkedOnlyChange
 }: ArticleFilterProps) {
   const { user } = useUser();
+  const { t } = useLanguage();
 
   const toggleLabel = (label: string) => {
     if (selectedLabels.includes(label)) {
@@ -49,7 +51,7 @@ export function ArticleFilter({
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search articles by title or description..."
+            placeholder={t("articleFilter.searchPlaceholder")}
             value={searchText}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-10 pr-10 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-sm"
@@ -71,7 +73,7 @@ export function ArticleFilter({
             className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors duration-200 whitespace-nowrap"
           >
             <X className="h-4 w-4" />
-            <span>Clear All</span>
+            <span>{t("articleFilter.clearAll")}</span>
           </button>
         )}
       </div>
@@ -89,7 +91,7 @@ export function ArticleFilter({
               }`}
             >
               <Bookmark className="h-3 w-3" fill={bookmarkedOnly ? "currentColor" : "none"} />
-              Bookmarked
+              {t("articleFilter.bookmarked")}
               {bookmarkedOnly && <X className="h-3 w-3" />}
             </button>
           )}

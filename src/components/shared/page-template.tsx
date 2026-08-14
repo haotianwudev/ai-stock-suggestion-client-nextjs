@@ -245,6 +245,7 @@ export function PageTemplate({
                       deepResearch={article.deepResearch}
                       youtubeUrl={article.youtubeUrl}
                       bilibiliUrl={article.bilibiliUrl}
+                      bilibiliTitle={article.bilibiliTitle}
                       isVideo={article.isVideo}
                       options={article.options}
                       noSummary={article.noSummary}

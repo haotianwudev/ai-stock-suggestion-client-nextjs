@@ -239,6 +239,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                     deepResearch={article.deepResearch}
                                     youtubeUrl={article.youtubeUrl}
                                     bilibiliUrl={article.bilibiliUrl}
+                                    bilibiliTitle={article.bilibiliTitle}
                                     isVideo={article.isVideo}
                                     options={article.options}
                                     noSummary={article.noSummary}

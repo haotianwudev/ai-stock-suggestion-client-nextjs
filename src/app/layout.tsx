@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ApolloWrapper } from "@/lib/apollo/apollo-wrapper";
 import { UserProvider } from "@/hooks/use-user";
+import { LanguageProvider } from "@/hooks/use-language";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -97,6 +98,25 @@ export default function RootLayout({
             `
           }}
         />
+        {/* Sets <html lang> before first paint from ?lang= or localStorage, mirroring
+            next-themes' own flash-of-wrong-value fix for the theme class below. This
+            only fixes the lang attribute pre-paint -- the translated text itself still
+            renders via LanguageProvider's client state, so a brief flash of English text
+            (not the attribute) for a returning zh-preferring visitor is an accepted
+            trade-off of a client-only toggle with no server-side locale detection. */}
+        <Script
+          id="lang-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                var p = new URLSearchParams(window.location.search).get('lang');
+                var lang = p === 'zh' || p === 'en' ? p : (localStorage.getItem('sophie-lang') === 'zh' ? 'zh' : 'en');
+                document.documentElement.lang = lang;
+              })();
+            `
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -105,12 +125,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ApolloWrapper>
-            <UserProvider>
-              {children}
-            </UserProvider>
-          </ApolloWrapper>
-          <Toaster />
+          <LanguageProvider>
+            <ApolloWrapper>
+              <UserProvider>
+                {children}
+              </UserProvider>
+            </ApolloWrapper>
+            <Toaster />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

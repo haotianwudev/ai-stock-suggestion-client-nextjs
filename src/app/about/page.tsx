@@ -21,7 +21,7 @@ const TIER_PERKS: Record<number, string> = {
   1: "Bookmarks",
   [MIN_TOPIC_TIER]: "Topic pages & study guides",
   [MIN_COMMENT_TIER]: "Comments & forum posts",
-  [MIN_PREMIUM_TIER]: "Premium articles",
+  [MIN_PREMIUM_TIER]: "Premium articles & preferred video platform",
   5: "Coming later",
   6: "Coming later",
   7: "Coming later",
@@ -230,7 +230,8 @@ export default function AboutPage() {
                 Reading SOPHIE is free and open — no account needed for the home page, the article
                 library, or the market tools. Just signing in earns your first rank and unlocks
                 bookmarks, and each rank above that unlocks more — topic pages, comments, and
-                premium articles. Ranks 5-8 are earned the same way but don&apos;t unlock anything
+                premium articles plus a preferred video platform (YouTube or Bilibili) for the
+                Watch card. Ranks 5-8 are earned the same way but don&apos;t unlock anything
                 yet; that&apos;s coming later.
               </p>
               <div className="overflow-x-auto">

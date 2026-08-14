@@ -1,3 +1,5 @@
+import type { TranslationKey } from "@/lib/i18n/strings";
+
 // Mirrors the tier semantics on the server (profiles.tier, 1-9). Tiers 1-4 are
 // reachable today: 2-3 via the YouTube subscribe attestation
 // (server/src/db/auth.js), 3-4 via the like ladder (server/src/db/engagement.js).
@@ -93,16 +95,18 @@ export function nextLikeMilestone(tier: number): LikeTierStep | null {
   return LIKE_TIER_LADDER.find((step) => step.tier > tier) ?? null;
 }
 
-/** What (if anything) a given tier unlocks, for congrats copy. Null when the
- * tier is a rank-only milestone with no feature behind it yet (5-7). */
-export function tierUnlockMessage(tier: number): string | null {
+/** Translation key for what (if anything) a given tier unlocks, for congrats copy --
+ * callers resolve it via useLanguage()'s t(). Null when the tier is a rank-only
+ * milestone with no feature behind it yet (5-7). Mirrors tierUnlock.* in
+ * lib/i18n/strings.ts -- keep both in sync. */
+export function tierUnlockKey(tier: number): TranslationKey | null {
   switch (tier) {
     case 2:
-      return "Topic pages are now unlocked.";
+      return "tierUnlock.topicPages";
     case 3:
-      return "Comments are now unlocked.";
+      return "tierUnlock.comments";
     case 4:
-      return "Premium articles and your preferred video platform are now unlocked.";
+      return "tierUnlock.premiumAndVideoPlatform";
     default:
       return null;
   }
