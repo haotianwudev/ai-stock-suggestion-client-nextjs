@@ -1,145 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
-import { Line } from 'react-chartjs-2';
 import { Maximize2 } from 'lucide-react';
 import { strategies, type Strategy, getStrategyDetailComponent, strategyIdToSlug, slugToStrategyId } from './strategy-config';
+import { PayoffChartView } from './payoff-chart-view';
+import { SpxPayoffBuilder } from './spx-payoff-builder';
 import { articles } from '@/data/articles';
 import { ArticleCard } from '@/components/articles/article-card';
 import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
 import { resolveStrategyMedia } from '@/lib/article-utils';
 
-// Register ChartJS components
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
-
-// Status colors: profit/loss is good/bad, not series identity, so it's colored
-// by point sign rather than picked once for the whole line.
-const GOOD = '#0ca30c';
-const GOOD_FILL = 'rgba(12, 163, 12, 0.1)';
-const CRITICAL = '#d03b3b';
-const CRITICAL_FILL = 'rgba(208, 59, 59, 0.1)';
-const BASELINE = '#c3c2b7';
-const GRID = '#e1e0d9';
-const MUTED = '#898781';
-
-const fmtCurrency = (v: number) => `${v >= 0 ? '+' : '-'}$${Math.abs(v).toFixed(2)}`;
-
-const StatChip = ({ tone, label, value }: { tone: 'good' | 'critical' | 'neutral'; label: string; value: string }) => {
-    const dot = tone === 'good' ? GOOD : tone === 'critical' ? CRITICAL : BASELINE;
-    return (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1 text-xs">
-            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
-            <span className="text-gray-500 font-medium">{label}:</span>
-            <span className="text-gray-900 font-semibold">{value}</span>
-        </span>
-    );
-};
+const DEFAULT_DEMO_PARAMS = { stockPrice: 100, strike1: 100, strike2: 105, strike3: 95, strike4: 90, premium: 2.5 };
 
 const PayoffChart = ({ strategy }: { strategy: Strategy }) => {
-    const stockPrice = 100, strike1 = 100, strike2 = 105, strike3 = 95, strike4 = 90, premium = 2.5;
-    const labels = Array.from({ length: 41 }, (_, i) => stockPrice - 20 + i);
-
-    // Use the strategy's payoff calculator
-    const payoffData = labels.map(p => strategy.payoffCalculator(p, { stockPrice, strike1, strike2, strike3, strike4, premium }));
-
-    const maxProfit = Math.max(...payoffData);
-    const maxLoss = Math.min(...payoffData);
-    const unlimitedProfit = /unlimited profit/i.test(strategy.profile);
-    const unlimitedRisk = /unlimited risk/i.test(strategy.profile);
-
-    // Interpolate every zero-crossing so breakeven(s) are exact, not rounded to the nearest $1 sample.
-    const breakevens: number[] = [];
-    for (let i = 0; i < payoffData.length - 1; i++) {
-        const a = payoffData[i], b = payoffData[i + 1];
-        if (a === 0) breakevens.push(labels[i]);
-        else if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
-            const t = -a / (b - a);
-            breakevens.push(labels[i] + t * (labels[i + 1] - labels[i]));
-        }
-    }
-    if (payoffData[payoffData.length - 1] === 0) breakevens.push(labels[labels.length - 1]);
-
-    const chartData = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Profit / Loss',
-                data: payoffData,
-                borderColor: GOOD,
-                backgroundColor: GOOD_FILL,
-                borderWidth: 2,
-                fill: true,
-                pointRadius: 0,
-                tension: 0,
-                // Color each segment by where it lands relative to $0, not by whether the
-                // strategy has profit potential anywhere — a defined-risk spread's loss
-                // wings must not render the same color as its profit zone.
-                segment: {
-                    borderColor: (ctx: any) => (ctx.p1.parsed.y < 0 ? CRITICAL : GOOD),
-                    backgroundColor: (ctx: any) => (ctx.p1.parsed.y < 0 ? CRITICAL_FILL : GOOD_FILL),
-                }
-            },
-            {
-                label: 'Breakeven',
-                data: labels.map(() => 0),
-                borderColor: BASELINE,
-                borderWidth: 1,
-                pointRadius: 0,
-                borderDash: [4, 4]
-            }
-        ]
-    };
-
-    const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index' as const, intersect: false },
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                filter: (item: any) => item.datasetIndex === 0,
-                callbacks: {
-                    title: (items: any) => `Underlying: $${items[0].label}`,
-                    label: (item: any) => `P/L at expiration: ${fmtCurrency(item.raw as number)}`,
-                    labelColor: (item: any) => {
-                        const positive = (item.raw as number) >= 0;
-                        return { borderColor: positive ? GOOD : CRITICAL, backgroundColor: positive ? GOOD : CRITICAL };
-                    }
-                }
-            }
-        },
-        scales: {
-            x: {
-                title: { display: true, text: 'Underlying Price at Expiration', color: MUTED },
-                grid: { color: GRID },
-                ticks: { color: MUTED, maxTicksLimit: 9, callback: (_val: any, idx: number) => `$${labels[idx]}` }
-            },
-            y: {
-                title: { display: true, text: 'Profit / Loss', color: MUTED },
-                grid: { color: GRID },
-                ticks: { color: MUTED, callback: (val: any) => fmtCurrency(Number(val)) }
-            }
-        }
-    };
-
-    return (
-        <>
-            <div className="chart-container h-[280px] md:h-[350px] bg-gray-50 rounded-lg p-4">
-                <Line data={chartData} options={options} />
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-                <StatChip tone="good" label="Max Profit" value={unlimitedProfit ? 'Unlimited' : fmtCurrency(maxProfit)} />
-                <StatChip tone="critical" label="Max Loss" value={unlimitedRisk ? 'Unlimited' : fmtCurrency(maxLoss)} />
-                {breakevens.length > 0 && (
-                    <StatChip
-                        tone="neutral"
-                        label={breakevens.length > 1 ? 'Breakevens' : 'Breakeven'}
-                        value={breakevens.map(b => `$${b.toFixed(2)}`).join(' / ')}
-                    />
-                )}
-            </div>
-        </>
-    );
+    // Most strategies use the generic illustrative demo; a few (Iron Condor, Put Writing) carry
+    // payoffDemoParams grounded in real backtested trades — see options-backtest-samples.ts.
+    const demo = { ...DEFAULT_DEMO_PARAMS, ...strategy.payoffDemoParams };
+    const labels = Array.from({ length: 41 }, (_, i) => demo.stockPrice - 20 + i);
+    const payoffData = labels.map(p => strategy.payoffCalculator!(p, demo));
+    return <PayoffChartView labels={labels} payoffData={payoffData} profile={strategy.profile} />;
 };
 
 const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => {
@@ -182,6 +60,12 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
             {/* Payoff Diagram and Video Section */}
             {(() => {
                 const hasVideo = media.youtubeId;
+                const CustomBuilder = strategy.customPayoffBuilder;
+                const payoffSection = strategy.payoffPresetId
+                    ? <SpxPayoffBuilder initialPresetId={strategy.payoffPresetId} lockPreset initialExpirationTargetDte={strategy.payoffExpirationTargetDte} />
+                    : CustomBuilder
+                    ? <CustomBuilder strategy={strategy} />
+                    : <PayoffChart strategy={strategy} />;
 
                 if (hasVideo) {
                     return (
@@ -201,7 +85,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                         </p>
                                     </div>
                                 )}
-                                <PayoffChart strategy={strategy} />
+                                {payoffSection}
                             </div>
 
                             {/* YouTube Video */}
@@ -240,7 +124,7 @@ const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => voi
                                 </p>
                             </div>
                         )}
-                        <PayoffChart strategy={strategy} />
+                        {payoffSection}
                     </div>
                 );
             })()}

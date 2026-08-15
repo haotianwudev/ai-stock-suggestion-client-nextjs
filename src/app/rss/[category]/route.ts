@@ -9,10 +9,10 @@ const RSS_CATEGORIES = [
   'deep-research',
   'video-content',
   'podcast',
-  'ai-ml',
+  'gen-ai',
+  'machine-learning',
   'stock-analysis',
   'macro-views',
-  'crypto',
   'finance-101',
   'book-review'
 ];
@@ -24,10 +24,10 @@ const CATEGORY_MAP: Record<string, string> = {
   'deep-research': 'Deep Research',
   'video-content': 'Video Content',
   'podcast': 'Podcast',
-  'ai-ml': 'AI & Machine Learning',
+  'gen-ai': 'Gen AI',
+  'machine-learning': 'Machine Learning',
   'stock-analysis': 'Stock Analysis',
   'macro-views': 'Macro Views',
-  'crypto': 'Crypto',
   'finance-101': 'Finance 101',
   'book-review': 'Book Review'
 };

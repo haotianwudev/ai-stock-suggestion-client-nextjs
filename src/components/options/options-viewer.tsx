@@ -7,21 +7,19 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
+import {
   Search,
-  TrendingUp, 
-  TrendingDown, 
-  Activity, 
-  DollarSign, 
+  TrendingUp,
+  TrendingDown,
+  Activity,
+  DollarSign,
   Calendar,
   BarChart3,
   RefreshCw,
   AlertCircle,
   Info
 } from 'lucide-react';
-
-// API endpoint
-const API_ENDPOINT = 'https://whl064peuf.execute-api.us-east-1.amazonaws.com/options-analytics';
+import { LIVE_CHAIN_API_ENDPOINT as API_ENDPOINT } from '@/lib/options/chain-provider';
 
 // Types based on the API response
 interface StockData {

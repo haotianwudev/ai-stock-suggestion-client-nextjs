@@ -156,8 +156,8 @@ export function generateRSSFeed(): string {
     <category domain="${SITE_URL}/category/options-trading">Options Trading</category>
     <category domain="${SITE_URL}/category/investment-strategy">Investment Strategy</category>
     <category domain="${SITE_URL}/category/market-analysis">Market Analysis</category>
-    <category domain="${SITE_URL}/category/ai-ml">AI & Machine Learning</category>
-    <category domain="${SITE_URL}/category/cryptocurrency">Cryptocurrency</category>
+    <category domain="${SITE_URL}/category/gen-ai">Gen AI</category>
+    <category domain="${SITE_URL}/category/machine-learning">Machine Learning</category>
     <textInput>
       <title>Search ${SITE_NAME}</title>
       <description>Search articles on ${SITE_NAME}</description>

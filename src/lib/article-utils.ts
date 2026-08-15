@@ -232,17 +232,17 @@ export function generateSEOKeywords(article: Article): string[] {
         case 'Quantitative Finance':
           keywords.push('quant trading', 'algorithmic trading', 'mathematical finance');
           break;
-        case 'AI & Machine Learning':
-          keywords.push('AI trading', 'machine learning finance', 'algorithmic strategies');
+        case 'Gen AI':
+          keywords.push('Gen AI', 'generative AI', 'LLM', 'AI agents', 'RAG');
+          break;
+        case 'Machine Learning':
+          keywords.push('machine learning', 'deep learning', 'statistical learning', 'financial ML');
           break;
         case 'Stock Analysis':
           keywords.push('equity analysis', 'stock valuation', 'fundamental analysis');
           break;
         case 'Macro Views':
           keywords.push('macroeconomic analysis', 'market outlook', 'economic trends');
-          break;
-        case 'Crypto':
-          keywords.push('cryptocurrency', 'bitcoin analysis', 'blockchain finance');
           break;
       }
     });

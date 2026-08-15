@@ -21,7 +21,7 @@ export const articles2025Q2: Article[] = [
     bilibiliTitle: "五个股票问题AI帮我致富--可以吗",
     isVideo: true,
     imageUrl: "/images/5 Questions to AI to get RICH… Until You Wake Up.jpg",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.GEN_AI],
   },
   {
     title: "Dual-Purpose Playbook: Confluence for Human and AI",
@@ -31,7 +31,7 @@ export const articles2025Q2: Article[] = [
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoj8tFunsULue4hENkNlDEFqeCMpqmwH0XPQ&s",
     googleDoc: "https://docs.google.com/document/d/1OJ8dJDCetyLUlENiFTPWQaOgZmviRMhROQs304dPyZA/edit?tab=t.0",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "The ARK Invest Enigma: Cathie Wood's Strategy Decoded",
@@ -60,7 +60,7 @@ export const articles2025Q2: Article[] = [
     imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=800&q=80",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQbotcpzfYJwup5fVXlooM7bPuG6Q_6nP8Af-ZJB558XCuJz0rOE1mJf_NUte_7dnNC3BiUamG_m7AH/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "Vector Storage Solutions for Confluence RAG",
@@ -70,7 +70,7 @@ export const articles2025Q2: Article[] = [
     imageUrl: "https://writer.com/wp-content/uploads/2023/11/2023-11-Retrieval-augmented-generation-what-it-is-and-why-its-a-hot-topic-for-enterprise-AI-Blog-1.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRNp3AVzpmT2-wxQRg1Pzo8T5mufZuDibJ8peKXR6WldkPJHhuwxGOmeUgAH4FxmRqcsySRbxgBngYL/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "MSFT: EV/EBITDA vs DCF",
@@ -94,7 +94,7 @@ export const articles2025Q2: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRb2Opr7keDlhiUot7H3XkPkiBnZAusLebEM5o5hz-8Mp_skm58SjSDOTZlaYuTLINT7keGh4Njd5tO/pub",
     deepResearch: true,
     noSummary: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "Writing Naked Puts: A Complete Guide",
@@ -153,7 +153,7 @@ export const articles2025Q2: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgDx1bHxlh7TPZ9e1mrBkPGKYSu25L2ju5K142JniqOrxR_8BLOkTyleG-nicehKOxOAF8aKBOZ5uR/pub",
     deepResearch: true,
     imageUrl: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=800&q=80",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Gemini Deep Research on AAPL",
@@ -171,7 +171,7 @@ export const articles2025Q2: Article[] = [
     slug: "stock-analysis-ai-agent-prompt-example",
     date: "May 31, 2025",
     imageUrl: "/images/agents/charlie_munger.png",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.GEN_AI],
   },
   {
     title: "Decoding AI Agent Stock Analyst",
@@ -183,6 +183,6 @@ export const articles2025Q2: Article[] = [
     bilibiliUrl: "https://www.bilibili.com/video/BV1SQTGzDE3N/",
     bilibiliTitle: "解密最近超火股票投资AI Agent",
     isVideo: true,
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.GEN_AI],
   }
 ];

@@ -84,11 +84,6 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               >
                 <Maximize2 className="h-3 w-3" />
               </button>
-              {deepResearch && (
-                <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-xs text-primary-foreground font-semibold shadow group-hover:left-12 transition-all duration-200">
-                  {t("articleCard.deepResearch")}
-                </span>
-              )}
               {(isVideo || hasAttachedVideo) && (
                 <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
                   {t("articleCard.video")}
@@ -197,7 +192,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 </>
               )}
             </div>
-            <CardDescription className="mb-2 text-sm text-muted-foreground line-clamp-2">
+            <CardDescription className="mb-2 text-sm text-muted-foreground">
               {description}
             </CardDescription>
           </div>

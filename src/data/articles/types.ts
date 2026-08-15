@@ -1,15 +1,14 @@
 // Predefined label enum - maximum 10 labels
 export enum ArticleLabel {
-  DEEP_RESEARCH = "Deep Research",
   OPTIONS = "Options Trading",
   VIDEO = "Youtube",
   PODCAST = "Podcast",
   QUANT = "Quantitative Finance",
-  AI_ML = "AI & Machine Learning",
+  GEN_AI = "Gen AI",
+  MACHINE_LEARNING = "Machine Learning",
   STOCK_ANALYSIS = "Stock Analysis",
   MACRO = "Macro Views",
   FORM13F = "13F Analysis",
-  CRYPTO = "Crypto",
   FINANCE101 = "Finance 101",
   BOOK = "Book Review",
   PREMIUM = "Premium",
@@ -54,7 +53,6 @@ export function postprocessArticles(articles: Article[]): Article[] {
     const autoLabels: ArticleLabel[] = [];
     
     // Add labels based on flags
-    if (article.deepResearch) autoLabels.push(ArticleLabel.DEEP_RESEARCH);
     if (article.options) autoLabels.push(ArticleLabel.OPTIONS);
     if (article.isVideo) autoLabels.push(ArticleLabel.VIDEO);
     if (article.podcastUrl) autoLabels.push(ArticleLabel.PODCAST);

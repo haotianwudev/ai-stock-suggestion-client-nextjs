@@ -47,11 +47,18 @@ export default function RSSPage() {
       color: 'bg-green-100 text-green-800'
     },
     {
-      title: 'AI & Machine Learning',
-      description: 'Machine learning applications in finance, neural networks, and AI trading',
-      url: '/rss/ai-ml',
+      title: 'Gen AI',
+      description: 'Generative AI applications, LLMs, AI agents, and RAG architectures in finance',
+      url: '/rss/gen-ai',
       category: 'Specialized',
       color: 'bg-indigo-100 text-indigo-800'
+    },
+    {
+      title: 'Machine Learning',
+      description: 'Machine learning algorithms, deep learning models, and predictive analytics',
+      url: '/rss/machine-learning',
+      category: 'Specialized',
+      color: 'bg-purple-100 text-purple-800'
     },
     {
       title: 'Stock Analysis',
@@ -66,13 +73,6 @@ export default function RSSPage() {
       url: '/rss/macro-views',
       category: 'Specialized',
       color: 'bg-yellow-100 text-yellow-800'
-    },
-    {
-      title: 'Cryptocurrency',
-      description: 'Bitcoin, blockchain technology, and cryptocurrency analysis',
-      url: '/rss/crypto',
-      category: 'Specialized',
-      color: 'bg-amber-100 text-amber-800'
     },
     {
       title: 'Finance 101',

@@ -56,7 +56,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQII0UWvpa1IRgnH8Pplp2pPeYf3OL1a-n00attBl1nt-Hv0bhmvIvIb-_UH5Ybnip4F5jO5uwlGn6p/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/6dDuoSLhtwNG3ve4D6Y21C?si=OqbYzPD9RWeC_UQQ0BDJ9Q",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Smart Beta: Guide to Systematic and Personal Strategies",
@@ -125,7 +125,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSExzba-zReWxWXE_hTCwxq0j9H2Cf52KplQm5sP4LpcX_0Li2GK98Z-MOFPxuTp_bWp6HH8aW74wwm/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5FXEMj6AWvKfGZAMYg69is?si=ykChirPwRROyOAY44wdMiQ",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
   },
   {
     title: "From Viral Videos to Volatile Valuations: Can AI Algorithms Pick Your Next Stock?",
@@ -138,7 +138,7 @@ export const articles2025Q3: Article[] = [
     bilibiliTitle: "B站的推荐系统帮你推荐股票会发生什么？",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTrX4_X404giJLFmVnWcLanvOEVi3sAVtESKEfonVtcwjhAg8PKRuN4sWyKJMvHJqxRmyDVaomT06ec/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.FINANCE101],
   },
   {
     title: "Mastering the S&P 500 Inclusion Anomaly: December 2025 Deep Research",
@@ -195,7 +195,7 @@ export const articles2025Q3: Article[] = [
     youtubeUrl: "https://youtu.be/6mXc-7dDLS0",
     bilibiliUrl: "https://www.bilibili.com/video/BV1ujHzzhER1/",
     bilibiliTitle: "XGBoost(GBDT)在量化中是否还有一席之地",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
   },
   {
     title: "Mutual Funds vs ETFs: The Definitive Investment Guide",
@@ -244,7 +244,7 @@ export const articles2025Q3: Article[] = [
     bilibiliTitle: "对冲基金的优势真正在哪？数据吗？",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQAeRCVqt5_0WhENYxf9pjqHIu8lALTFyuCQAHaQrTVOGPJRl8msRMloUvT6tVfKzSKowYUq-tCvt-h/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Navigating the Turning Tide: A 2025 Macro Analysis",
@@ -300,7 +300,7 @@ export const articles2025Q3: Article[] = [
     bilibiliTitle: "Transformer能否重塑量化交易？",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTgqBtNG9YooJB-mjzhcLqWaBZrc0DwNKquiBBh-MeWtW5OlWX2otOmyjD5k5v4F9_uFisnEgZmNpEG/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
   },
   {
     title: "Political Alpha: An Investor's Guide to Congressional Stock Trading",
@@ -404,7 +404,7 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://img.youtube.com/vi/smYKvopeg1Q/maxresdefault.jpg",
     infographicUrl: "https://i.imgur.com/pldvBTi.jpeg",
     podcastUrl: "https://open.spotify.com/episode/0B3DPu2vDn9PV8ksbRX6hY?si=5xoIEsEdT4uE1FXraVnmwg",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
   },
   {
     title: "The Worldly Wisdom of Charles T. Munger",
@@ -546,7 +546,7 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://www.sundog-education.com/wp-content/uploads/2024/11/iStock-2150086022-2048x1365.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS4WNttd_CKQxFbfE2JTMFjkh0Sw0EJ4-8_n4QG5a77pQ01AMmOkfnVJKzt2_MCkDgc2b_Wn2TnBzBs/pub",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "The Definitive backtrader Cheatsheet",
@@ -589,7 +589,7 @@ export const articles2025Q3: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSCy9C-tzrd2-uBRohPRJnOoXf-u_Km1c6HAzPEKZI5aPYqlLUY0_0O2EwJMDTtK8KpJkloRt-Fcz7i/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/3lVDMCL8H5XfMnjEeFnNBe?si=cTBlIU61Qy6nWgLiw0HtyQ",
-    labels: [ArticleLabel.FINANCE101, ArticleLabel.CRYPTO],
+    labels: [ArticleLabel.FINANCE101],
   },
   {
     title: "The Meme Stock Phenomenon: Hype, Risk, and Strategy",
@@ -642,7 +642,7 @@ export const articles2025Q3: Article[] = [
     imageUrl: "https://www.ontotext.com/wp-content/uploads/2020/01/Metadata.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSLBNWa20tXhfpdDaAtABII58DpPHFZ48Fy2arZ3pt31rLWx2YDwmODe_8sWeLWEWDvmvw9BBKfEk9G/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "Essential Reading for Value Investors",
@@ -674,7 +674,7 @@ export const articles2025Q3: Article[] = [
     bilibiliTitle: "AI都看不下去了！你天天刷的金融网红，推荐的股票靠谱吗？",
     isVideo: true,
     imageUrl: "/images/AI Uncovers the Truth Do Finfluencers nail market.jpg",
-    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.GEN_AI, ArticleLabel.QUANT],
   },
   {
     title: "Rich Dad, Poor Dad: Key Stories and Lessons in Financial Liberation",
@@ -705,7 +705,7 @@ export const articles2025Q3: Article[] = [
     slug: "ollama-cheat-sheet-complete-command-reference",
     date: "July 4, 2025",
     imageUrl: "https://ollama.com/public/ollama.png",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "Stock Wipeout Probability Analysis",

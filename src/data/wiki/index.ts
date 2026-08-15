@@ -16,7 +16,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Causal Inference in Finance",
     articleSlug: "structural-revolution-quantitative-finance",
     date: "2026-08-08",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary: "Why correlation-only factor mining structurally fails across regime changes, and how Double Machine Learning, Deep IV, causal discovery (NOTEARS, LiNGAM, PC/FCI), and the Interventional Covariance Matrix replace it with causally-robust structure.",
   },
   {
@@ -40,7 +40,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Technical Analysis vs ML Trading",
     articleSlug: "deep-research-ta-vs-ml-trading",
     date: "2025-06-02",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary: "A head-to-head TA vs. ML comparison (radar chart across speed, accuracy, adaptability, scalability, interpretability, cost), the three ML paradigms (supervised, unsupervised, reinforcement), and how ML augments — not replaces — six classic TA functions.",
   },
   {
@@ -88,7 +88,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Vector Storage Solutions for Confluence RAG",
     articleSlug: "vector-storage-confluence-rag",
     date: "2025-06-22",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "A feature-by-feature comparison of Chroma, FAISS, and Scikit-learn for hierarchical Confluence RAG — Chroma wins on architectural fit and end-to-end latency for filter-heavy queries despite FAISS's raw speed advantage.",
   },
   {
@@ -96,7 +96,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Database Agents with MCP and LangChain",
     articleSlug: "database-agents-mcp-langchain",
     date: "2025-06-22",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "Architecting production-grade database agents by fusing MCP (standardized tool communication) with LangGraph (stateful orchestration), covering context provisioning strategies and a defense-in-depth security posture across database, application, and LLM layers.",
   },
   {
@@ -120,7 +120,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Dual-Purpose Playbook: Confluence for Human and AI",
     articleSlug: "confluence-dual-purpose-playbook-human-ai-collaboration",
     date: "2025-06-27",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "How to architect a Confluence knowledge base that's equally usable by humans and AI/RAG systems, via five principles: Architect, Atomize, Structure, Automate, Govern — plus a no-code database pattern using Page Properties macros.",
   },
   {
@@ -144,7 +144,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Ollama Cheat Sheet: Complete Command Reference",
     articleSlug: "ollama-cheat-sheet-complete-command-reference",
     date: "2025-07-04",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "A quick-reference for running LLMs locally with Ollama — model management, interactive chat, Modelfiles, the local HTTP API, and advanced tips like tool calling and Open WebUI.",
   },
   {
@@ -184,7 +184,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Architecting Advanced RAG Systems: Metadata-Driven Filtering",
     articleSlug: "rag-metadata-filtering-advanced-architectures",
     date: "2025-07-17",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "Fusing semantic vector search with structured metadata filtering — pre- vs. post-filtering tradeoffs, vector database comparisons (Qdrant, Pinecone, Weaviate, pgvector), self-querying retrieval, RAG vs. NL-to-SQL, and secure multi-tenant RAG design.",
   },
   {
@@ -224,7 +224,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Investor's Guide to Stablecoins: Profiting from Digital Dollars",
     articleSlug: "investors-guide-stablecoins-profiting-digital-dollars",
     date: "2025-07-26",
-    labels: [ArticleLabel.FINANCE101, ArticleLabel.CRYPTO],
+    labels: [ArticleLabel.FINANCE101],
     summary: "The four stablecoin types and their risk profiles, CeFi/DeFi yield vs. TradFi savings, the GENIUS Act's new reserve/audit mandates, and lessons from the Terra/UST collapse and other historical de-pegs and hacks.",
   },
   {
@@ -256,7 +256,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Architectures of Intelligence: Advanced RAG and Context Engineering",
     articleSlug: "architectures-intelligence-advanced-rag-context-engineering",
     date: "2025-08-01",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary: "A tiered framework for production RAG systems — chunking strategies, query transformation, two-stage re-ranking, prompting patterns, and agentic self-correction loops (CRAG, SELF-RAG) — organized around 'context failures, not model failures.'",
   },
   {
@@ -360,7 +360,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "LSTM in Systematic Trading: Architecture, Application, and Performance",
     articleSlug: "lstm-systematic-trading-deep-dive-architecture-application-performance",
     date: "2025-08-15",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary: "How LSTM networks solve the vanishing gradient problem to capture long-term dependencies in noisy, non-stationary financial time series, compared against GRU and Transformer architectures and the practical pitfalls of deploying them.",
   },
   {
@@ -427,7 +427,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Transformers in Systematic Trading",
     articleSlug: "transformer-systematic-trading-architecture-applications",
     date: "2025-08-28",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary:
       "How Transformers adapt to finance via time-series patching, applications in forecasting/NLP/factor generation, a head-to-head comparison vs. LSTM and XGBoost, and case studies (Stockformer, Quantformer).",
   },
@@ -463,7 +463,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "How Hedge Funds Use Alternative Data for Alpha",
     articleSlug: "hedge-fund-data-driven-edge-alpha-generation",
     date: "2025-09-04",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "Why the institutional data edge is capital + technology + talent combined, not data access alone — alternative data categories and vendors, the data-to-signal ML pipeline, and a mosaic-theory short-thesis case study.",
   },
@@ -499,7 +499,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "XGBoost vs. Deep Learning in Systematic Trading",
     articleSlug: "strategic-role-xgboost-systematic-trading-2025",
     date: "2025-09-11",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary:
       "Why XGBoost remains the right tool for structured, tabular, feature-driven prediction problems (cross-sectional ranking, regime classification) even as deep learning advances, plus the hybrid LSTM-then-XGBoost architecture pattern.",
   },
@@ -535,7 +535,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Why Social Media Recommender Algorithms Can't Pick Stocks",
     articleSlug: "viral-videos-volatile-valuations-ai-algorithms-stock-picking",
     date: "2025-09-17",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.FINANCE101],
     summary:
       "Why engagement-optimized recommender systems (TikTok-style) are structurally incompatible with sound financial advice, the regulatory risks of applying them to markets, and the viable path forward (educational augmentation, not prescriptive recommendations).",
   },
@@ -544,7 +544,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Reinforcement Learning in Quantitative Trading",
     articleSlug: "reinforcement-learning-quantitative-trading-optimal-action",
     date: "2025-09-19",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary:
       "How RL shifts trading from predict-then-act to directly learning a cost-and-risk-aware policy, its core application domains (portfolio optimization, execution, market making), practical limitations, and a blueprint for building an RL trading system.",
   },
@@ -589,7 +589,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Modern Market Making: The Avellaneda-Stoikov Model & HFT Infrastructure",
     articleSlug: "anatomy-of-speed-modern-market-making-hft",
     date: "2025-09-26",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "How electronic market makers price inventory risk and adverse selection with the Avellaneda-Stoikov model, the HFT latency infrastructure stack, and how machine learning extends alpha generation beyond quoting.",
   },
@@ -625,7 +625,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Anatomy of a Quant Fund: Alpha to Execution",
     articleSlug: "anatomy-quant-fund-alpha-discovery-automated-execution",
     date: "2025-10-02",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "The four-pillar systematic quant fund workflow — alpha discovery via ML, market-neutral portfolio construction, bias-aware backtesting, and low-latency execution — plus the technology stack and the perpetual challenge of alpha decay.",
   },
@@ -697,7 +697,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "High-Frequency Trading: Core Strategies and the Technology Arms Race",
     articleSlug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
     date: "2025-10-13",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "The four core HFT strategy pillars (market making, arbitrage, liquidity detection, directional), the latency/hardware technology arms race behind them, the ML techniques mapped to each strategy, and the regulatory fairness debate.",
   },
@@ -751,7 +751,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Volatility Forecasting: From GARCH to Deep Learning",
     articleSlug: "quantitative-analyst-guide-volatility-forecasting",
     date: "2025-10-24",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "The evolution of volatility forecasting from GARCH and its asymmetric extensions (GJR-GARCH, EGARCH) through tree ensembles to deep learning, covering the Heston stochastic volatility model, volatility arbitrage deployment, and why no model is immune to black swans.",
   },
@@ -787,7 +787,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Why Machine Learning Assumptions Break in Financial Markets",
     articleSlug: "foundational-assumptions-machine-learning-quantitative-trading",
     date: "2025-10-31",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary:
       "How non-stationarity, volatility clustering, and fat tails violate the core assumptions behind ML algorithms in financial markets, and how tree-based vs. deep learning models each handle (or fail to handle) these violations.",
   },
@@ -913,7 +913,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Evolution of Deep Learning in Quantitative Trading",
     articleSlug: "evolution-deep-learning-quantitative-trading-mlps-transformers",
     date: "2025-11-20",
-    labels: [ArticleLabel.AI_ML, ArticleLabel.QUANT],
+    labels: [ArticleLabel.MACHINE_LEARNING, ArticleLabel.QUANT],
     summary:
       "A comprehensive technical survey charting the evolution from traditional econometric models to sophisticated deep neural networks in quantitative finance. Explores MLPs, LSTMs, CNNs, Autoencoders, Deep Reinforcement Learning, GNNs, and Transformers—analyzing their unique properties, applications in trading, and critical limitations in high-noise, non-stationary financial markets.",
   },
@@ -1057,7 +1057,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Web3 Revolution: DeFi for Retail Investors",
     articleSlug: "web3-revolution-defi-retail-investors",
     date: "2025-12-23",
-    labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.FINANCE101],
     summary:
       "Web3 represents a fundamental paradigm shift towards a 'Read-Write-Own' internet built on blockchain, smart contracts, and cryptography. Explore how DeFi is transforming retail investors from passive consumers into active participants and co-owners of market infrastructure.",
   },
@@ -1129,7 +1129,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Digital Sovereign (Bitcoin Architecture)",
     articleSlug: "digital-sovereign-bitcoin-architecture-mining-investment-guide",
     date: "2026-01-12",
-    labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.FINANCE101],
     summary:
       "An interactive deep-dive into Bitcoin's technical architecture, mining mechanics, privacy considerations, and modern investment landscape. From UTXO models to computational lotteries, explore the complete ecosystem of the world's first cryptocurrency.",
   },
@@ -1156,7 +1156,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Systematic vs. Model Quantitative Trading",
     articleSlug: "systematic-vs-model-quantitative-trading-evolution",
     date: "2026-01-14",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A comprehensive deep dive into the fundamental differences between traditional systematic trading and modern model-based quantitative approaches. From deterministic rule-based strategies to probabilistic machine learning models, explore how algorithmic trading has evolved and where the industry is heading.",
   },
@@ -1219,7 +1219,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Science of Robust Alpha",
     articleSlug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
     date: "2026-01-28",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A comprehensive masterclass on Financial Machine Learning (FML). Master the statistical armor needed to deflate performance claims, implement triple barrier labeling, and build robust alpha generation systems that survive extreme low signal-to-noise environments.",
   },
@@ -1372,7 +1372,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Agentic RAG with LangChain",
     articleSlug: "architecting-agentic-retrieval-systems-langchain-proprietary-wikis",
     date: "2026-08-15",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A technical guide to building agentic RAG systems that integrate LangChain with custom proprietary wikis — multi-hop reasoning, math-aware chunking, LangGraph workflows, and hierarchical agent swarms for quantitative finance.",
   },
@@ -1507,7 +1507,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Evolution of Autonomous Execution",
     articleSlug: "evolution-autonomous-execution-function-calling-agentic-harnesses",
     date: "2026-03-18",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary:
       "A comprehensive technical deep-dive into the evolution of AI tool-calling architectures in quantitative finance.",
   },
@@ -1534,7 +1534,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Claude Code Financial Cheatsheet",
     articleSlug: "claude-code-financial-cheatsheet-enterprise-reference",
     date: "2026-03-24",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary:
       "A comprehensive enterprise reference for using Claude Code in quantitative finance workflows.",
   },
@@ -1561,7 +1561,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Building Interactive Financial Copilots",
     articleSlug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
     date: "2026-03-30",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary:
       "A comprehensive architectural masterclass on designing Generative UIs for financial dashboards.",
   },
@@ -1633,7 +1633,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Architecting Alpha: The Evolution of RAG in Quantitative Finance",
     articleSlug: "architecting-alpha-rag-evolution-quantitative-finance",
     date: "2026-04-15",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
     summary:
       "A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future.",
   },
@@ -1678,7 +1678,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Agentic AI in Quant Finance",
     articleSlug: "architecting-agentic-ai-quantitative-finance-wealth-management",
     date: "2026-04-27",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "Exploring the paradigm shift from foundational LLMs to autonomous agentic systems in quantitative finance.",
   },
@@ -1732,7 +1732,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Model Context Protocol in Quant Finance",
     articleSlug: "model-context-protocol-quantitative-finance",
     date: "2026-05-11",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A comprehensive guide to the Model Context Protocol (MCP), System Architecture, and Interactive Agent Design.",
   },
@@ -1768,7 +1768,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Alpha Factory Blueprint",
     articleSlug: "alpha-factory-technical-blueprint-quantitative-hedge-funds",
     date: "2026-05-20",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A comprehensive technical deep-dive into the architecture and systems powering modern quantitative hedge funds.",
   },
@@ -1795,7 +1795,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Primacy of Domain Knowledge",
     articleSlug: "primacy-domain-knowledge-quantitative-finance",
     date: "2026-05-29",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "Exploration asserting that deep financial domain expertise and market intuition are indispensable in quantitative finance.",
   },
@@ -1804,7 +1804,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "The Architecture of Interoperability",
     articleSlug: "architecture-interoperability-agent-protocols-financial-systems",
     date: "2026-06-02",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, and orchestrating autonomous AI in modern finance.",
   },
@@ -1813,7 +1813,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Factor Models in Machine Learning",
     articleSlug: "factor-models-machine-learning-risk-alpha-prediction",
     date: "2026-06-05",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A comprehensive deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. From the Fundamental Law of Active Management to conditional factor models.",
   },
@@ -1831,7 +1831,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Autonomous AI Agents: Harness Engineering",
     articleSlug: "autonomous-ai-agents-architecture-harness-engineering",
     date: "2026-06-11",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A detailed architectural overview of Harness Engineering—the operational infrastructure that wraps around non-deterministic LLMs to deploy fault-tolerant, autonomous AI agents in rigorous domains like quantitative finance.",
   },
@@ -1903,7 +1903,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Formulaic Alpha Mining & Deep Search",
     articleSlug: "advancements-formulaic-alpha-mining-deep-search-mechanics",
     date: "2026-08-18",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A comprehensive guide to automated alpha discovery using Deep Reinforcement Learning and Monte Carlo Tree Search. Master formulaic operators, risk-seeking policy gradients, and the Deflated Sharpe Ratio to separate true structural alpha from backtest overfitting.",
   },
@@ -1930,7 +1930,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "Autonomous Quantitative Agents (LangChain)",
     articleSlug: "architecting-autonomous-quantitative-agents-langchain-ecosystem",
     date: "2026-07-01",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A comprehensive guide to the modern LangChain ecosystem. Build stateful, reliable, and secure multi-agent systems for financial modeling—without writing endless code. From LangChain frameworks to Deep Agents harness and MCP connectivity.",
   },
@@ -1975,7 +1975,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "AI Agent Testing in Quantitative Finance",
     articleSlug: "architecting-ai-agent-testing-quantitative-finance",
     date: "2026-07-13",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
     summary:
       "A framework for evaluating autonomous financial agents using mock models, temporal state control, and LLM-as-a-judge evaluation.",
   },
@@ -2020,7 +2020,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "SDLC for Quantitative Development",
     articleSlug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
     date: "2026-07-30",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
     summary:
       "A structured DevSecOps lifecycle for quant finance teams — covering GitLab CI/CD pipelines, trunk-based development, Jupyter notebook tooling (nbstripout, Jupytext, ReviewNB), DVC for large data versioning, DAG-optimized pipeline execution, and continuous compliance via the Four Eyes principle, CODEOWNERS, SAST/DAST, and secret detection.",
   },

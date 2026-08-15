@@ -114,7 +114,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/xYCDApY.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQqSaOZmRIneROTf2i0eKsycU1dWr096q_TxAsohj4AZc2G7UXEM2K6DnZYzfn5cVlkqCs1jjTGCiX_/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms",
@@ -142,7 +142,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/2IxVlfz.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQvFX2gTL7En0J50TFBwoxXRgmU-NLEVUs3ybELK5FQqr_wqwmdSdGMaSfxoAYwMOx6VbWU_uINXPEo/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "The Architecture of Interoperability: Agent-to-Agent Protocols in Financial Multi-Agent Systems",
@@ -156,7 +156,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/dEJdLqp.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTN5PUOMtjL6XbesvfYCt6JQDTSAxQfoIMN1X0AQwdXUbT0vcGRrSeF73i8_RDFlfe3dgKMYlGXV-k4/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "The Primacy of Domain Knowledge in Quantitative Finance",
@@ -170,7 +170,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/pHGOcTD.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT_og9NfAgJ9t77BRrhJIIVM82DnqIIw1MWwplsGj2q8eRy9XPa5f-8sKBhyRAOmW686-ccHhjQcOSS/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "Conformal Prediction for Portfolio Risk: Beyond VaR",
@@ -214,7 +214,7 @@ export const articles2026Q2: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQ9mI9EreI3DcLppjSc9Nta-obinwUtD3Q-YiOlzA40p2D5n96XqE1iJUNdJf3fhNSPqdZpjUAedo8G/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/5Y61EqMZsWWp7ieYepXgqI?si=DpB5TEsvSaekOWbnbHoxmA",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction",
@@ -271,7 +271,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/d1fcUzy.png",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vScLUqi2s9JY-4AM3YeJDQsZw2zEs--j9ocLVE_BPdWL8jaxTCrlavQF3OFJ0Tds9NM8HnEi0caTv2a/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface",
@@ -357,7 +357,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/FXxn1Cs.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTST8riroDVOwy5fD-Qkq9rp-qThzYWVtGGL1iKIwkLH-KGY_wl2EU51yvzYA8ukT821cwOYiCAfdu1/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "Structured Liquidity & Hedging: Equity Collars and Prepaid Variable Share Forwards",
@@ -452,7 +452,7 @@ export const articles2026Q2: Article[] = [
     infographicUrl: "https://i.imgur.com/lE7Zs7q.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTMoewDaZMbmE0mQCsj3kvX4aWKQUUdC6RiqidkcNwC9Purx3FIhKzuPC8yWTQE__njyUPqOy8cxJ4x/pub",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
   {
     title: "Theta.md: Cross-Industry Supply Chain Signal Analysis",

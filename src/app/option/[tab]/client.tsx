@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { OptionsViewer } from "@/components/options/options-viewer";
+import { SpxPayoffBuilder } from "@/components/options/spx-payoff-builder";
 import { VRPContent } from "../topics/vrp";
 import { Option101Content } from "../topics/option101";
 import { GreeksContent } from "../topics/greeks";
@@ -155,6 +156,42 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     </div>
   );
 }
+// Options Viewer Tab — two sub-tools: the live chain lookup and the SPX payoff builder.
+// Local state only (no deep-linking sub-routes), same pattern as TopicsTab above.
+function ViewerTab() {
+  const [activeTool, setActiveTool] = useState('chain');
+  return (
+    <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
+      <TabsList className="grid w-full grid-cols-2 mb-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+        <TabsTrigger value="chain" className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation">
+          Options Chain
+        </TabsTrigger>
+        <TabsTrigger value="builder" className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation">
+          Payoff Builder
+        </TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="chain" className="mt-0">
+        <OptionsViewer />
+      </TabsContent>
+
+      <TabsContent value="builder" className="mt-0">
+        <Card>
+          <CardHeader className="pb-3 md:pb-6">
+            <CardTitle className="text-lg md:text-2xl">SPX Payoff Builder</CardTitle>
+            <CardDescription className="text-sm md:text-base">
+              Build any multi-leg SPX position from a real option chain — presets, net Greeks, solved IV, probability of profit, and a today-vs-expiration payoff comparison.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <SpxPayoffBuilder />
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  );
+}
+
 function OptionsArticlesTab() {
   const [searchText, setSearchText] = useState('');
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
@@ -327,7 +364,7 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
             </TabsList>
             
             <TabsContent value="viewer" className="mt-2 md:mt-6">
-              <OptionsViewer />
+              <ViewerTab />
             </TabsContent>
             
             <TabsContent value="topics" className="mt-0">

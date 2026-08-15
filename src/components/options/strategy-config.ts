@@ -2,6 +2,7 @@
 // Centralized configuration for all options strategies
 
 import { ComponentType } from 'react';
+import { SHORT_PUT_DEMO } from '../../data/options-backtest-samples';
 
 export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured' | 'Risk Defined';
 
@@ -29,7 +30,11 @@ export interface Strategy {
     profile: string;
     volatility: string;
     time: string;
-    payoffCalculator: PayoffCalculator;
+    payoffCalculator?: PayoffCalculator; // Required unless payoffPresetId or customPayoffBuilder is set
+    payoffDemoParams?: Partial<PayoffParams>; // Overrides the chart's default demo strikes/premium; use to ground the illustration in real data
+    payoffPresetId?: string; // Renders the generic interactive SpxPayoffBuilder locked to this preset id (see src/lib/options/presets.ts) instead of the static diagram
+    payoffExpirationTargetDte?: number; // Initial expiration DTE target for the interactive builder (default 45); set higher for LEAPS-framed strategies
+    customPayoffBuilder?: ComponentType<{ strategy: Strategy }>; // Lower-level escape hatch for a payoff diagram that isn't expressible as a preset
     youtubeId?: string;  // Explicit override; falls back to primaryArticleSlug's article when unset
     payoffExplanation?: string;  // Explanation for the payoff diagram
     relatedArticles?: string[];  // Array of article slugs
@@ -41,6 +46,7 @@ export interface Strategy {
 // Import strategy detail components
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor-strategy';
+import { IronCondorBuilder } from './iron-condor-builder';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
 import { LongCallStrategyDetail } from './strategies/long-call-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
@@ -138,8 +144,9 @@ export const strategies: Strategy[] = [
         profile: 'Substantial Risk, Limited Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
+        payoffCalculator: (p, { strike1, premium }) =>
             (p >= strike1 ? premium : premium + (p - strike1)),
+        payoffDemoParams: SHORT_PUT_DEMO,
         payoffExplanation: "Maximum profit occurs when stock price stays above the put strike at expiration. Maximum loss occurs when stock falls to zero (minus premium received).",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'covered-calls-vs-cash-secured-puts',
@@ -235,24 +242,10 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, strike2, strike3, strike4, premium }) => {
-            // Iron Condor: Short put spread + Short call spread
-            // strike4 = 90 (long put), strike3 = 95 (short put), strike2 = 105 (short call), strike1 = 100 (not used for IC)
-            // For IC: Buy put at 90, Sell put at 95, Sell call at 105, Buy call at 110
-            const longCallStrike = strike2 + (strike3 - strike4); // 105 + (95-90) = 110
-            
-            // Put spread P&L: (short put premium - long put premium) - max(0, strike3 - p) + max(0, strike4 - p)
-            const putSpreadPnL = -Math.max(0, strike3 - p) + Math.max(0, strike4 - p);
-            
-            // Call spread P&L: (short call premium - long call premium) - max(0, p - strike2) + max(0, p - longCallStrike)
-            const callSpreadPnL = -Math.max(0, p - strike2) + Math.max(0, p - longCallStrike);
-            
-            // Net credit received (simplified as premium/2 for each spread)
-            const netCredit = premium * 0.8; // Typical IC collects about 80% of premium as credit
-            
-            return putSpreadPnL + callSpreadPnL + netCredit;
-        },
-        payoffExplanation: "Maximum profit is the net credit collected, earned when the stock stays between the short strikes at expiration. Losses grow beyond either short strike and are capped once price passes the long (protective) strikes.",
+        // No payoffCalculator: the diagram below is fully interactive, built from a real SPX
+        // option chain rather than an illustrative formula — see iron-condor-builder.tsx.
+        customPayoffBuilder: IronCondorBuilder,
+        payoffExplanation: "Legs are pre-filled with realistic ~16-20 delta strikes from a real SPX option chain (sophie-option-research, historical). Change the expiration or any leg to see the payoff update live. Maximum profit is the net credit collected, earned when the stock stays between the short strikes at expiration; losses grow beyond either short strike and are capped once price passes the long (protective) strikes.",
         relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         primaryArticleSlug: 'iron-condor-quantitative-delta-neutral-premium-harvesting',
         detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
@@ -343,7 +336,7 @@ export const strategies: Strategy[] = [
         category: ['Risk Defined', 'Income', 'Featured'],
         name: 'Buffered Strategy (Defined Outcome)',
         description: "A sophisticated defined outcome strategy that trades upside potential for downside protection. Combines stock ownership with a protective put spread collar to create a 'buffer' that absorbs the first X% of losses while capping gains at a predetermined level. Popular in ETF form for retirement planning and risk management.",
-        profile: 'Defined Risk, Defined Profit',
+        profile: 'Buffered Risk, Defined Profit',
         volatility: 'Mixed impact (Long Put Vega, Short Call/Put Vega)',
         time: 'Mixed impact (Long Put Theta, Short Call/Put Theta)',
         payoffCalculator: (p, { stockPrice, strike1, strike2, strike3 }) => {
@@ -435,7 +428,7 @@ export const strategies: Strategy[] = [
         category: ['Bullish', 'Income', 'Risk Defined'],
         name: 'Seagull Spread',
         description: "A three-legged options strategy that finances directional speculation through volatility skew arbitrage. Combines buying a call spread with selling an OTM put to create near-zero-cost directional exposure. Popular among institutional traders and corporate treasurers for risk-defined hedging.",
-        profile: 'Defined Risk, Capped Profit',
+        profile: 'Substantial Risk, Capped Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike1, strike2, strike3, premium }) =>

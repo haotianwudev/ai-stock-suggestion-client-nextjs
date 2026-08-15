@@ -32,7 +32,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/gsS0XT4.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQkzf2BRMxk6r75pn0EGCnRjDO1LGBI-wHNPNMWl6GOAwhxvX3JFRs9fa8ODDiWDWCxDd4YIyTQ48D7/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "The Repo Market & Dollar Funding: Mechanics, Strategies, and Systemic Risks",
@@ -54,7 +54,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/FaYqMkm.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR_-Z3OuYhw2uj9r_4H_-JisNtFvG5jIKVAKT_bw2RGxO09AWjIFAFCw99_QtESFl_ZGcW6a1NvdOpx/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance",
@@ -65,7 +65,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/mdTAlcA.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRRGHdhwwkgxYFefJSj0B94I6KZ9dWLXDDA9hJlBApcHr0C9SPHuR46zouMwqC-S5-DaPoUobsOTXpe/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "The Hidden Mechanics of Form 13F Disclosures: Microstructure, Copycat Economics, and Systemic Risk",
@@ -150,7 +150,7 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/g45Lazn.jpeg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSsekdP5by9yDaBjsooMo5iksGBE2zMRBf9UfhlaFUmHLffTmAdg5vMVISetYwYn55AHCHYi6YdQUb4/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Systemic Fragility & Quantitative Contagion: The 2026 South Korean Equity Crisis",
@@ -237,7 +237,7 @@ export const articles2026Q3: Article[] = [
     bilibiliTitle: "量化智能体的测试架构",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQcPHZeL7cqAsc-vana14vl4oRiZ_T9c5sEfE-ZX2Yhvh860zzx4WVZes1gQIB2FFPBF5Uc-qv2-Rsl/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
     title: "Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics",
@@ -309,6 +309,6 @@ export const articles2026Q3: Article[] = [
     infographicUrl: "https://i.imgur.com/2jjdEFS.jpeg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQnDE6aAIAQqmLqO41KXQ7-23I0Sk1Z66HSpwZaMbGMLuo3XXKrKgHO8qICTMP4e6cu4TqFELuCbRvx/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
 ];

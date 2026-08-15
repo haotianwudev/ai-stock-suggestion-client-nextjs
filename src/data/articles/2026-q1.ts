@@ -14,7 +14,7 @@ export const articles2026Q1: Article[] = [
     infographicUrl: "https://i.imgur.com/EMfMO9X.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSywyhcvXBr6cIzQ-9ftPxtdvhNHHiz7_M_5GsQ5zFQBuXx1hyhCzmUco_0DcIO5JN9vBzHQho_j9v1/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
 
   {
@@ -60,7 +60,7 @@ export const articles2026Q1: Article[] = [
     infographicUrl: "https://i.imgur.com/nc54SVr.png",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKlh2hpEDIyjcw7VARLg-6m7hjsAtyEDLJlZ75LkWywZIkAkgl7KD-TTj9n1jqQeVTHEBNOlVIFt1Y/pub",
     deepResearch: true,
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
 
   {
@@ -106,7 +106,7 @@ export const articles2026Q1: Article[] = [
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vREwLPbeeZpEgh7kfYl8auX_3t2UxdBa5Hj8-eaYe1xx9vciC342fXq4uRcD8wBx_OaMuyScnQZovbs/pub",
     deepResearch: true,
     podcastUrl: "https://open.spotify.com/episode/0oVm5Mi3VdzfWayL1FsBWO?si=yKLaXDLET_28sH-ReIDomQ",
-    labels: [ArticleLabel.AI_ML],
+    labels: [ArticleLabel.GEN_AI],
   },
 
   {
@@ -451,7 +451,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://img.youtube.com/vi/PvE1DqLAxGU/maxresdefault.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSUUpjNVcy7QXkm3f8FiUFQhoUcMFQ4fsbBscDsiCJwD-GAwuL9r8JWF_qBliMT25tfZyaGghLIIc5v/pub",
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "Strategic Asset Allocation: A Quantitative Framework for Multi-Generational Wealth Preservation",
@@ -549,7 +549,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://img.youtube.com/vi/72sh2YIWD8U/maxresdefault.jpg",
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSX2D-OpfAaOa901lFoIpi8XfiHSjO8pLOpsQ5N578oik1dLwwDp49i_LSk2DDTV8kgORTpKnF9Jn0w/pub",
     deepResearch: true,
-    labels: [ArticleLabel.QUANT, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACHINE_LEARNING],
   },
   {
     title: "The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem",
@@ -563,7 +563,7 @@ export const articles2026Q1: Article[] = [
     imageUrl: "https://img.youtube.com/vi/ZN_GbavKYxk/maxresdefault.jpg",
     deepResearch: true,
     googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub",
-    labels: [ArticleLabel.CRYPTO, ArticleLabel.FINANCE101],
+    labels: [ArticleLabel.FINANCE101],
   },
   {
     title: "OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies",

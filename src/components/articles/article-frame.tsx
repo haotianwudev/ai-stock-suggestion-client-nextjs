@@ -702,11 +702,8 @@ export function ArticleFrame({
               </span>
             )}
             {currentArticle.labels
-              // Options already gets its own dedicated badge above, and Deep Research
-              // is intentionally not shown at all — postprocessArticles()
-              // (src/data/articles/types.ts) auto-merges both into `labels` from the
-              // deepResearch/options flags, so this array needs filtering either way.
-              ?.filter((label) => label !== ArticleLabel.DEEP_RESEARCH && label !== ArticleLabel.OPTIONS)
+              // Options already gets its own dedicated badge above, so filter it out from labels
+              ?.filter((label) => label !== ArticleLabel.OPTIONS)
               .map((label) => (
                 <span
                   key={label}
