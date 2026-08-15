@@ -3,7 +3,7 @@ path: stock-analysis/optionalpha-select
 title: OptionAlpha Select Framework
 articleSlug: optionalpha-select-systematic-underlyer-selection-premium-selling
 date: 2026-01-10
-labels: [STOCK_ANALYSIS]
+labels: ["STOCK_ANALYSIS"]
 related: []
 ---
 
@@ -38,6 +38,7 @@ The framework mathematically prevents "Yield Reaching"—the trap of ignoring qu
 Academic research confirms a persistent edge: Implied Volatility consistently overstates subsequent Realized Volatility. Institutional hedging and behavioral aversion create a constant demand for "insurance" that disciplined sellers can systematically collect.
 
 ## Related Reading
+
 - [OptionAlpha Select: Systematic Underlyer Selection for Premium-Selling Strategies](/articles/optionalpha-select-systematic-underlyer-selection-premium-selling)
 - [Watch on YouTube](https://youtu.be/k2hUvNYWuyY)
 - [Listen to the Podcast](https://open.spotify.com/episode/4cpspiGvyPjxtTXQB7hcY5?si=DjOmyfm9QzKIMBJD3qQDeg)

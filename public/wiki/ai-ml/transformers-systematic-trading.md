@@ -1,9 +1,9 @@
 ---
 path: ai-ml/transformers-systematic-trading
-title: "Transformers in Systematic Trading"
+title: Transformers in Systematic Trading
 articleSlug: transformer-systematic-trading-architecture-applications
 date: 2025-08-28
-labels: [AI/ML, Quantitative Finance]
+labels: ["AI/ML", "Quantitative Finance"]
 related: []
 ---
 
@@ -58,4 +58,3 @@ The field is trending toward large pre-trained foundational models for finance (
 
 - [Transformers in Systematic Trading](/articles/transformer-systematic-trading-architecture-applications)
 - [Watch on YouTube](https://youtu.be/2JlReeYdFxA)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTgqBtNG9YooJB-mjzhcLqWaBZrc0DwNKquiBBh-MeWtW5OlWX2otOmyjD5k5v4F9_uFisnEgZmNpEG/pub)

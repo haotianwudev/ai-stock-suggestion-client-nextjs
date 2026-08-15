@@ -1,9 +1,9 @@
 ---
 path: option-strategy/automated-option-trading-five-pillars
-title: "Automated Option Trading: The Five Pillars Framework"
+title: Automated Option Trading: The Five Pillars Framework
 articleSlug: automated-option-trading-comprehensive-guide
 date: 2025-08-23
-labels: [Quantitative Finance, Options]
+labels: ["Quantitative Finance", "Options"]
 related: []
 ---
 

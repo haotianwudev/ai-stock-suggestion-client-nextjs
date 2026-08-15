@@ -1,9 +1,9 @@
 ---
 path: quant/small-hedge-fund-cto-technology-stack
-title: "The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading"
+title: The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading
 articleSlug: small-hedge-fund-cto-technology-leadership-quant-trading
 date: 2025-08-13
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -68,4 +68,3 @@ Direct exchange feeds deliver the lowest latency versus consolidated vendor feed
 ## Related Reading
 
 - [The Small Hedge Fund CTO: Technology Leadership in Quantitative Trading](/articles/small-hedge-fund-cto-technology-leadership-quant-trading)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSj-Ys5Zam83336tHdL4TJXfe_vXIQ-yJyj89K5eg63u98H-zD9wsBrnFqBSPbUeuRRKusKng3nUK4r/pub)

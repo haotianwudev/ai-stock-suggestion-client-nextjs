@@ -1,9 +1,9 @@
 ---
 path: option-strategy/global-covered-call-risk-decomposition
-title: "Global Evidence on Covered Calls: Risk Decomposition and Risk-Managed Strategies"
+title: Global Evidence on Covered Calls: Risk Decomposition and Risk-Managed Strategies
 articleSlug: covering-world-global-evidence-covered-calls
 date: 2025-08-07
-labels: [Options, Quantitative Finance]
+labels: ["Options", "Quantitative Finance"]
 related: []
 ---
 
@@ -57,4 +57,3 @@ Diversifying risk-managed covered calls across countries adds a further layer of
 
 - [Global Evidence on Covered Calls](/articles/covering-world-global-evidence-covered-calls)
 - [Watch on YouTube](https://youtu.be/ntqTDpKv5es)
-- [Full Research Paper](https://www.aqr.com/Insights/Research/Working-Paper/Covering-the-World-Global-Evidence-on-Covered-Calls)

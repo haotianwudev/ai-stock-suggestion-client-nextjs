@@ -1,9 +1,9 @@
 ---
 path: finance101/es-nq-futures
-title: "ES & NQ Futures: The Engine Room of the Global Economy"
+title: ES & NQ Futures: The Engine Room of the Global Economy
 articleSlug: es-nq-futures-engine-room-global-economy
 date: 2025-12-16
-labels: [Quantitative Finance, Finance 101]
+labels: ["Quantitative Finance", "Finance 101"]
 related: []
 ---
 
@@ -41,4 +41,4 @@ Even non-traders use ES/NQ as dashboard indicators:
 ## Related Reading
 
 - [ES & NQ Futures: The Engine Room of the Global Economy](/articles/es-nq-futures-engine-room-global-economy) — full article with contract specs, market rhythm, and the complete pitfalls breakdown.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQTy8TWpAKFSFBnnKnfjHyPrupXR_D2I5khOcSy5WChcffYFrogZhvE3pUZ_ekwlf7QabBtCmJTcm4Z/pub)
+- [Watch on YouTube](https://youtu.be/EbvI5T_P4Yg)

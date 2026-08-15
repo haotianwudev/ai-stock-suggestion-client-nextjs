@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/alibaba-baba-fundamental-analysis-2025
-title: "Alibaba (BABA): Navigating a Complex New Era of Growth and Risk"
+title: Alibaba (BABA): Navigating a Complex New Era of Growth and Risk
 articleSlug: alibaba-baba-stock-analysis-complex-era-growth-risk
 date: 2025-08-17
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -82,4 +82,3 @@ Alibaba is the dominant e-commerce and cloud leader in China but faces intense p
 
 - [Alibaba Group (BABA) Stock Analysis](/articles/alibaba-baba-stock-analysis-complex-era-growth-risk)
 - [Watch on YouTube](https://www.youtube.com/watch?v=dWNdmLn9dj0)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ7qPBtkFEqNmY63GX0LZf0ABP5o_5EKpkAZBUb7KNkFcrH_cZ8vrVbK1f0X7_9jrBhebAJKqvUW783/pub)

@@ -3,7 +3,7 @@ path: quant/geometry-of-rates
 title: The Geometry of Rates
 articleSlug: geometry-of-rates-pca-fixed-income-markets
 date: 2026-01-06
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -37,6 +37,6 @@ A "Butterfly" trade isolates pure Relative Value by buying the "Body" (e.g., 5Y)
 PCA is a statistical description of history, not a physical law. During major regime changes (like the 2022 Inflation Shock), historical correlations can break down entirely. Models must use rolling windows (e.g., a 1-year lookback) to adapt to changing regimes.
 
 ## Related Reading
+
 - [The Geometry of Rates: Principal Component Analysis in Modern Fixed Income Markets](/articles/geometry-of-rates-pca-fixed-income-markets)
 - [Watch on YouTube](https://youtu.be/WL_YzTImNzs)
-- [Read Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSQfXX8zzU5lBWRDTUFOC_kXK31Ew8kznQVN6kOAfQy4avLLo3s7FgbTpttXcnPrV-jfj8XdB5XyTIZ/pub)

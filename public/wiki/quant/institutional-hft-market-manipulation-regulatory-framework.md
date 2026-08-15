@@ -1,4 +1,11 @@
-# Institutional High-Frequency Trading & Market Manipulation
+---
+path: quant/institutional-hft-market-manipulation-regulatory-framework
+title: Institutional High-Frequency Trading & Market Manipulation
+articleSlug: institutional-hft-market-manipulation-regulatory-framework
+date: 2026-03-16
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 An exhaustive educational deconstruction of regulatory frameworks, quantitative strategies, and the contemporary Jane Street paradigm. Examines the fine line between legally permissible algorithmic arbitrage and prohibited market manipulation across equities, options, digital assets, and commodities.
@@ -17,3 +24,8 @@ Executing trades near the end of the trading session to artificially inflate or 
 
 ## 3. Regulatory Scrutiny
 Regulators like the SEC and CFTC use advanced data analytics to detect patterns of manipulation. Firms like Jane Street operate under intense scrutiny, requiring robust compliance frameworks to ensure their algorithms do not inadvertently cross the line into manipulative territory. The distinction often hinges on whether an algorithm is *reacting* to market data or intentionally *distorting* it.
+
+## Related Reading
+
+- [Institutional High-Frequency Trading & Market Manipulation](/articles/institutional-hft-market-manipulation-regulatory-framework)
+- [Watch on YouTube](https://youtu.be/eIpC4b_4cAM)

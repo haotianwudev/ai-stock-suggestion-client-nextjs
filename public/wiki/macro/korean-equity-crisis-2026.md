@@ -3,7 +3,7 @@ path: macro/korean-equity-crisis-2026
 title: 2026 Korean Equity Crisis
 articleSlug: systemic-fragility-quantitative-contagion-2026-korean-crisis
 date: 2026-07-27
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -93,4 +93,4 @@ The Financial Services Commission (FSC) responded with four measures:
 ## Related Reading
 
 - [Systemic Fragility & Quantitative Contagion: The 2026 South Korean Equity Crisis](/articles/systemic-fragility-quantitative-contagion-2026-korean-crisis)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTX9eVoBRIL9uIPZ7L_sMw-so9M8hOnX2gxtSfLPw9AI3fVmessmcU1bICtUcErwxyoXy0gxlRs86k_/pub)
+- [Watch on YouTube](https://youtu.be/OB4lqey_8f8)

@@ -1,9 +1,9 @@
 ---
 path: finance101/li-lu-himalaya
-title: "Li Lu: Masterclass in Value Investing"
+title: Li Lu: Masterclass in Value Investing
 articleSlug: masterclass-li-lu-himalaya-capital-investment-philosophy
 date: 2026-03-05T00:00:00Z
-labels: [FINANCE101, STOCK_ANALYSIS]
+labels: ["FINANCE101", "STOCK_ANALYSIS"]
 related: []
 ---
 
@@ -36,5 +36,6 @@ Retail investors attempting to blindly clone Li Lu's 13F face severe risks:
 3. **Psychological Asymmetry:** Retail investors cannot borrow a manager's conviction to survive a 50-80% drawdown.
 
 ## Related Reading
-- [Li Lu Investment Philosophy Masterclass](/articles/masterclass-li-lu-himalaya-capital-investment-philosophy)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS2Nq_0hJ48r15B8R-e1_8B7R228eY9q4N83b_8V81b_62M3Fq_k3M3H-Q5T0g/pub)
+
+- [The Masterclass of Li Lu: Philosophy, Portfolio Architecture, and the Himalaya Capital Compounding Machine](/articles/masterclass-li-lu-himalaya-capital-investment-philosophy)
+- [Watch on YouTube](https://youtu.be/rfjw97edq48)

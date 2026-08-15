@@ -1,4 +1,11 @@
-# The Mechanics of ESG Investing: A Technical Guide
+---
+path: quant/mechanics-esg-investing-technical-guide
+title: The Mechanics of ESG Investing: A Technical Guide
+articleSlug: mechanics-esg-investing-technical-guide
+date: 2026-04-09
+labels: ["Quantitative Finance", "Finance 101"]
+related: []
+---
 
 ## Overview
 A comprehensive technical guide to ESG investing frameworks, regulations, and valuation models. From MSCI ratings methodology to EU taxonomy compliance, master the data-driven discipline that evaluates risks and opportunities unaccounted for in traditional financial statements.
@@ -29,3 +36,8 @@ The European Union has codified ESG into law, fundamentally changing global asse
 ESG factors are directly integrated into quantitative financial models.
 - **Cost of Capital (WACC):** High ESG risk translates to a higher cost of debt and equity. Investors demand a higher risk premium for companies facing stranded asset risks or regulatory fines.
 - **Cash Flow Adjustments:** Models must adjust future cash flows for incoming carbon taxes, required CapEx for green transition, or potential litigation costs.
+
+## Related Reading
+
+- [The Mechanics of ESG Investing: A Technical Guide to Environmental, Social, and Governance Factors](/articles/mechanics-esg-investing-technical-guide)
+- [Watch on YouTube](https://youtu.be/UWmWNufQdLg)

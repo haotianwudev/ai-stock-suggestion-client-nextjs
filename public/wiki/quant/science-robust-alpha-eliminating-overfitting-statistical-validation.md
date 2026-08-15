@@ -3,7 +3,7 @@ path: quant/science-robust-alpha-eliminating-overfitting-statistical-validation
 title: The Science of Robust Alpha
 articleSlug: science-robust-alpha-eliminating-overfitting-statistical-validation
 date: 2026-01-28
-labels: [QUANT, AI_ML]
+labels: ["QUANT", "AI_ML"]
 related: []
 ---
 
@@ -35,6 +35,6 @@ Backtests are often deceptive mirages. You must implement industrial validation 
 - **Validation Pipeline:** Use Purging (removing overlapping samples), Embargoing (adding buffer periods after test sets), and Combinatorial Purged Cross-Validation (CPCV).
 
 ## Related Reading
+
 - [The Science of Robust Alpha: Eliminating Overfitting Through Rigorous Statistical Validation](/articles/science-robust-alpha-eliminating-overfitting-statistical-validation)
 - [Watch on YouTube](https://youtu.be/PvE1DqLAxGU)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSUUpjNVcy7QXkm3f8FiUFQhoUcMFQ4fsbBscDsiCJwD-GAwuL9r8JWF_qBliMT25tfZyaGghLIIc5v/pub)

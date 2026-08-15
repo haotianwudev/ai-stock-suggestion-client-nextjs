@@ -1,9 +1,9 @@
 ---
 path: finance101/meme-stock-phenomenon-guide
-title: "The Meme Stock Phenomenon: Hype, Risk, and Strategy"
+title: The Meme Stock Phenomenon: Hype, Risk, and Strategy
 articleSlug: meme-stock-phenomenon-hype-risk-strategy
 date: 2025-07-25
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -60,4 +60,3 @@ Before buying, honestly answer: Is this money truly disposable? Have I set a non
 ## Related Reading
 
 - [The Meme Stock Phenomenon: Hype, Risk, and Strategy](/articles/meme-stock-phenomenon-hype-risk-strategy)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQEDSJlZicJ4_mKk-kaRdGyB5X4dfJ1tbmRy2RMVKH59W0QLeyEh5l94CdZTlx936j-cSAzqFcyi1Mu/pub)

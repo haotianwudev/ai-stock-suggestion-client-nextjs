@@ -1,9 +1,9 @@
 ---
 path: form13f/berkshire-succession-insurance-float-model
-title: "Berkshire's Succession: Greg Abel, Insurance Float, and the Conglomerate Model"
+title: Berkshire's Succession: Greg Abel, Insurance Float, and the Conglomerate Model
 articleSlug: buffett-legacy-berkshire-succession
 date: 2025-11-11
-labels: [13F Analysis]
+labels: ["13F Analysis"]
 related: []
 ---
 
@@ -47,4 +47,4 @@ Warren Buffett's Thanksgiving "goodbye letter" formalized his transition from CE
 ## Related Reading
 
 - [The End of an Era: Warren Buffett's Legacy and Berkshire Hathaway's Succession](/articles/buffett-legacy-berkshire-succession) — full article with segment performance tables and analyst ratings summary.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRciV9OdjfjcoCcq_PinHpmnLk8x_udxzvpAvipDy3lvyYuORxalzatF2CKiisa14YnVYUSDMryX4R0/pub)
+- [Watch on YouTube](https://youtu.be/ptZstN8sTVQ)

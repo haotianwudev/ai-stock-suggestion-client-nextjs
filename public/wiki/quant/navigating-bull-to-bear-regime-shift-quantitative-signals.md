@@ -1,4 +1,11 @@
-# Navigating the Bull-to-Bear Regime Shift: Quantitative Signals and Systematic Strategies
+---
+path: quant/navigating-bull-to-bear-regime-shift-quantitative-signals
+title: Navigating the Bull-to-Bear Regime Shift
+articleSlug: navigating-bull-to-bear-regime-shift-quantitative-signals
+date: 2026-04-03
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A deep-dive into quantitative signals, systematic factor rotation, and convexity monetization during transitional market phases. Master VIX term structure analysis, breadth deterioration metrics, and options strategies for defending portfolios during regime changes.
@@ -23,3 +30,8 @@ Rules-based strategies for preserving capital and exploiting the transition.
 - **Deploy Put Ratio Spreads:** Outright put purchasing is mathematically unsound right now. Use 1x2 or 1x3 put ratio backspreads to monetize the steepening skew for a net credit.
 - **Systematic Factor Rotation:** Aggressively reduce exposure to crowded high-beta momentum trades. Rotate into low-volatility, quality, and defensive factors.
 - **Enforce Volatility Scaling:** With VIX breaking higher, algorithmic systems must immediately apply volatility scaling. Contract gross leverage to prevent VaR breaches.
+
+## Related Reading
+
+- [Navigating the Bull-to-Bear Regime Shift: Quantitative Signals and Systematic Strategies](/articles/navigating-bull-to-bear-regime-shift-quantitative-signals)
+- [Watch on YouTube](https://youtu.be/A16B5cx3_yc)

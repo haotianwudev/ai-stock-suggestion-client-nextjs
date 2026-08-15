@@ -3,7 +3,7 @@ path: option-strategy/gex
 title: Gamma Exposure (GEX)
 articleSlug: gamma-exposure-gex-gps-market-volatility
 date: 2026-08-02
-labels: [Quantitative Finance, Options Trading]
+labels: ["Quantitative Finance", "Options Trading"]
 related: []
 ---
 
@@ -67,4 +67,4 @@ Meaning: for a 1% move in the underlying, market makers must hedge roughly $2M o
 ## Related Reading
 
 - [Gamma Exposure (GEX): The GPS of Market Volatility](/articles/gamma-exposure-gex-gps-market-volatility) — full article with Market Regime breakdowns and trading playbooks.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQt5lOaJ_vhjHD6NbGJ5SGZhyLONQADFnfZli8z0ayeZyyhryfJk9k3cjRTttGmrF2kJPeik1Jmj3Bg/pub)
+- [Watch on YouTube](https://youtu.be/t_5yWuxn0WY)

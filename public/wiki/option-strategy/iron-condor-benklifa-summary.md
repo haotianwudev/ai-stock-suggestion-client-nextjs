@@ -1,9 +1,9 @@
 ---
 path: option-strategy/iron-condor-benklifa-summary
-title: "Profiting with Iron Condor Options: Trade the Math, Not the Myth"
+title: Profiting with Iron Condor Options: Trade the Math, Not the Myth
 articleSlug: profiting-iron-condor-options-book-summary
 date: 2025-07-22
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 

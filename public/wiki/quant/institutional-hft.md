@@ -46,5 +46,6 @@ Successful prosecution of market manipulation is exceptionally difficult due to 
 - While rogue individual traders may face prison for explicit spoofing, corporate entities iteratively optimize their algorithms to circumvent new legal precedents, operating in a highly lucrative gray zone of permissible conduct.
 
 ## Related Reading
+
 - [Institutional High-Frequency Trading & Market Manipulation](/articles/institutional-hft-market-manipulation-regulatory-framework)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTQ_AgA7p0yQFFKOSaqea7262X6g25ZnB4sL303BzJ2Ek7fIB3aCd8Xu4GBWpqTTBAL4J3lStQ66SDK/pub)
+- [Watch on YouTube](https://youtu.be/eIpC4b_4cAM)

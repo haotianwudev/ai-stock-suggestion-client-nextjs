@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/russell-2000-small-cap-benchmark
-title: "The Russell 2000: Construction, Valuation, and Investment Case"
+title: The Russell 2000: Construction, Valuation, and Investment Case
 articleSlug: russell-2000-small-cap-engine-deep-dive
 date: 2025-10-06
-labels: [Stock Analysis, Finance 101]
+labels: ["Stock Analysis", "Finance 101"]
 related: []
 ---
 
@@ -41,4 +41,4 @@ The S&P SmallCap 600 applies a profitability screen (four consecutive profitable
 ## Related Reading
 
 - [Russell 2000: The Small-Cap Engine - A Deep Dive Analysis](/articles/russell-2000-small-cap-engine-deep-dive)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQYdxrd83Nu3hc2lcNCwcu0pcYDR01GRak19dqdS0RPKyV9wIPNy_YioLUQ7sG5sbeX4O1iiva0-yoo/pub)
+- [Watch on YouTube](https://youtu.be/IX4E6eHmYaE)

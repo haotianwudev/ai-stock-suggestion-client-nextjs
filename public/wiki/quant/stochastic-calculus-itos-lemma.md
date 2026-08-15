@@ -3,7 +3,7 @@ path: quant/stochastic-calculus-itos-lemma
 title: The Stochastic Calculus of Finance (Itô's Lemma)
 articleSlug: stochastic-calculus-finance-itos-lemma-comprehensive-treatise
 date: 2026-02-17T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -50,6 +50,6 @@ This equation fundamentally proves that the option price depends only on volatil
 - **Martingale Representation Theorem:** Guarantees that any martingale can be written as an Itô integral, ensuring market completeness and the existence of a perfect hedge.
 
 ## Related Reading
+
 - [The Stochastic Calculus of Finance: A Comprehensive Treatise on Itô's Lemma](/articles/stochastic-calculus-finance-itos-lemma-comprehensive-treatise)
 - [Watch on YouTube](https://youtu.be/3-RdnIsr3f4)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT3pmzf_9qs3EuXso8bAoLgKJ1JD00K5OCA3fevG20UDKEMGNSIUqKEZAqJZqB59QXQ_dOBNYwTk3YW/pub)

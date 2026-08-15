@@ -1,9 +1,9 @@
 ---
 path: option-strategy/risk-parity-call-writing-overlay
-title: "Risk Parity Through Call Writing (An Alternative to Leverage)"
+title: Risk Parity Through Call Writing (An Alternative to Leverage)
 articleSlug: beyond-leverage-risk-parity-call-writing
 date: 2025-08-28
-labels: [Options, Quantitative Finance]
+labels: ["Options", "Quantitative Finance"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ Best suited for leverage-constrained institutions (endowments, foundations whose
 ## Related Reading
 
 - [Beyond Leverage: Risk Parity Through Call Writing](/articles/beyond-leverage-risk-parity-call-writing)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSd8wQidCZUfKg-fmOVm7mtGlq6mgKFVwOVhXrJyTkJ0OLZTOZwDxEXnILWVoqhqhDEUx1r_jtcmaN4/pub)

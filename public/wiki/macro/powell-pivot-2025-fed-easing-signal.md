@@ -1,9 +1,9 @@
 ---
 path: macro/powell-pivot-2025-fed-easing-signal
-title: "The Powell Pivot: Insurance Cuts vs. Crisis Cuts"
+title: The Powell Pivot: Insurance Cuts vs. Crisis Cuts
 articleSlug: powell-pivot-navigating-market-crosscurrents-fed-easing-signal
 date: 2025-08-25
-labels: [Macro]
+labels: ["Macro"]
 related: []
 ---
 
@@ -55,4 +55,3 @@ The pattern: cuts into a genuinely healthy economy (1995, 2019) were bullish; cu
 
 - [The Powell Pivot: Navigating Market Crosscurrents After the Fed's Easing Signal](/articles/powell-pivot-navigating-market-crosscurrents-fed-easing-signal)
 - [Watch on YouTube](https://youtu.be/Wgib90X4FDM)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRp5bduh9eC1MoSUf7Eyv4s23hXPDFH1DePgLGyz2nZayGbcv2_0WPgliBYVPVShSrgTa1rtBLA2J2N/pub)

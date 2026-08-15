@@ -1,4 +1,11 @@
-# Structural Dynamics of the U.S. Dollar
+---
+path: quant/structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy
+title: Structural Dynamics of the U.S. Dollar (Apr 2026)
+articleSlug: structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy
+date: 2026-04-21
+labels: ["Macro & Fed Policy", "Quantitative Finance"]
+related: []
+---
 
 ## Overview
 An institutional framework exploring conflicting paradigms of dollar hegemony, quantitative forecasting, and global macro trade execution. The trajectory of the U.S. dollar is governed by a highly complex, continuously evolving interplay of structural capital flows, relative macroeconomic performance, and systemic geopolitics. 
@@ -36,3 +43,8 @@ To navigate the treacherous timing between short-term USD strength and long-term
 - **mBridge Ledger Volume:** Accelerating transaction value indicates adoption of non-SWIFT settlement.
 - **Yield Spread:** Narrowing spreads remove the vital carry factor supporting the USD.
 - **Gold vs. Real Yields:** Breaking historic correlations indicates central banks acquiring non-fiat reserve assets.
+
+## Related Reading
+
+- [Structural Dynamics of the U.S. Dollar: Hegemony, De-dollarization, and Global Macro Strategy](/articles/structural-dynamics-us-dollar-hegemony-dedollarization-macro-strategy)
+- [Watch on YouTube](https://youtu.be/r0XnUYdpGWg)

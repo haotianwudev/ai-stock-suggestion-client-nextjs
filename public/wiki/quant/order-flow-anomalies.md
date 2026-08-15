@@ -54,5 +54,6 @@ Institutions use a three-phase cycle to exploit retail traders:
 - Beware of liquidity illusions (icebergs, spoofing); use delta divergence to identify when institutions are trapping retail momentum traders.
 
 ## Related Reading
-- [Order Flow Anomalies](/articles/order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vR4nfxQ-YoNoap6b1usLn_sAix7uX7k8vmkpRvmWcwtBA3U7NOq3eCIcrMYjlMbDwhbsBJsqmhj2_U_/pub)
+
+- [Order Flow Anomalies: Sweeps, Footprint Mechanics, and Institutional Traps](/articles/order-flow-anomalies-sweeps-footprint-mechanics-institutional-traps)
+- [Watch on YouTube](https://youtu.be/NqY0oXpdsX8)

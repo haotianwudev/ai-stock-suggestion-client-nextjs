@@ -1,9 +1,9 @@
 ---
 path: form13f/burry-circular-financing-ai-short-thesis
-title: "Reading a 13F: Michael Burry's Circular Financing Thesis Against AI"
+title: Reading a 13F: Michael Burry's Circular Financing Thesis Against AI
 articleSlug: ai-antithesis-deconstructing-michael-burry-q3-2025-pivot
 date: 2025-11-05
-labels: [13F Analysis]
+labels: ["13F Analysis"]
 related: []
 ---
 
@@ -42,4 +42,4 @@ The filing (November 3) triggered an immediate, AI-specific sell-off on November
 ## Related Reading
 
 - [The AI Antithesis: Deconstructing Michael Burry's $1.38 Billion Q3 2025 Pivot](/articles/ai-antithesis-deconstructing-michael-burry-q3-2025-pivot) — full article with the complete Q2-to-Q3 portfolio breakdown and academic research review.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTfWqGZtTngKfDSSWb10w6DNozn1VdkYEB8McxhmEfYzvNmJQm-_ZQsGZxot5KzvhTgVWwXH-JX7sO2/pub)
+- [Watch on YouTube](https://youtu.be/UAS_tTCbWD4)

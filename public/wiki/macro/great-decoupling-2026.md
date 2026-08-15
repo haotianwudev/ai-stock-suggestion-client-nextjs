@@ -1,7 +1,10 @@
 ---
-title: "The Great Decoupling (2026 Macro Analysis)"
-path: "macro/great-decoupling-2026"
-date: "2026-08-07"
+path: macro/great-decoupling-2026
+title: The Great Decoupling (2026 Macro Analysis)
+articleSlug: great-decoupling-2026-asset-bubble-mathematical-analysis
+date: 2026-08-07
+labels: ["Macro & Fed Policy"]
+related: []
 ---
 
 # The Great Decoupling: The 2026 Asset Bubble
@@ -44,3 +47,8 @@ We have entered the "Ponzi Finance" stage of a **Minsky Moment**, where borrower
 ## Related Resources
 - **Article:** [The Great Decoupling: 2026 Asset Bubble Mathematical Analysis](/articles/great-decoupling-2026-asset-bubble-mathematical-analysis)
 - **Infographic:** The Great Decoupling Mechanism Map
+
+## Related Reading
+
+- [The Great Decoupling: Why the 2026 Asset Bubble is Mathematically Distinct from Previous Crises](/articles/great-decoupling-2026-asset-bubble-mathematical-analysis)
+- [Watch on YouTube](https://youtu.be/c-w-bpkPqh8)

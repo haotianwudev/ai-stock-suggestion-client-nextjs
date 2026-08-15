@@ -1,4 +1,11 @@
-# Claude Code Financial Cheatsheet
+---
+path: ai-ml/claude-code-financial-cheatsheet-enterprise-reference
+title: Claude Code Financial Cheatsheet
+articleSlug: claude-code-financial-cheatsheet-enterprise-reference
+date: 2026-03-24
+labels: ["Generative AI"]
+related: []
+---
 
 ## Overview
 A comprehensive enterprise reference for using Claude Code in quantitative finance workflows. Master CLI execution flags, slash commands, MCP architecture, sub-agent patterns, and security guardrails for building institutional-grade algorithmic trading systems.
@@ -24,3 +31,8 @@ In complex quantitative workflows, you should avoid monolithic agents. Instead, 
 When giving an LLM access to a terminal, security is paramount.
 - Always run Claude Code inside an isolated Docker container with zero network access to production trading servers.
 - Use the `accidental-data-loss-prevention` skill to require human confirmation before executing `DROP TABLE` or `rm -rf` commands.
+
+## Related Reading
+
+- [Claude Code Financial Cheatsheet](/articles/claude-code-financial-cheatsheet-enterprise-reference)
+- [Watch on YouTube](https://youtu.be/NUwRqNkxbY8)

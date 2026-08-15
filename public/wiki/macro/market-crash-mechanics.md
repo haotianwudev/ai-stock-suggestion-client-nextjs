@@ -54,5 +54,6 @@ During "Phase 2: The Rebound", the fastest-jumping assets are deeply counterintu
 - **Volatility Scaling:** Weight positions inversely by realized formation-period volatility.
 
 ## Related Reading
+
 - [The Anatomy of a Market Drop: Systemic Risk, Options Microstructure, and Crisis Alpha Generation](/articles/anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRMBFOALOOKtuFDR_qczy4Uy0sgLQvy8NTp8rQPB8H95g6gcGCtn6FmXHaZZlnstnNk7MyGvEaymabx/pub)
+- [Watch on YouTube](https://youtu.be/o9cu-VKCgY4)

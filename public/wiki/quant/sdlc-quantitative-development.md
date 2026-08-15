@@ -3,7 +3,7 @@ path: quant/sdlc-quantitative-development
 title: SDLC for Quantitative Development
 articleSlug: advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices
 date: 2026-07-30
-labels: [Quant, AI/ML]
+labels: ["Quant", "AI/ML"]
 related: []
 ---
 
@@ -94,4 +94,4 @@ Notebooks are deeply nested JSON files with embedded binary outputs — hostile 
 ## Related Reading
 
 - [Advanced GitLab SDLC for Quantitative Development: CI/CD Best Practices](/articles/advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSsekdP5by9yDaBjsooMo5iksGBE2zMRBf9UfhlaFUmHLffTmAdg5vMVISetYwYn55AHCHYi6YdQUb4/pub)
+- [Watch on YouTube](https://youtu.be/mXnjiHQ2ycY)

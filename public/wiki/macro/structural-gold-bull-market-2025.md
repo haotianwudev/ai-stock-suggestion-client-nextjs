@@ -1,9 +1,9 @@
 ---
 path: macro/structural-gold-bull-market-2025
-title: "The Structural Gold Bull Market: Drivers and Outlook"
+title: The Structural Gold Bull Market: Drivers and Outlook
 articleSlug: new-golden-age-structural-bull-market-analysis
 date: 2025-09-22
-labels: [Macro]
+labels: ["Macro"]
 related: []
 ---
 
@@ -46,4 +46,3 @@ Federal Reserve communications and the dot plot, real interest rates (10-year TI
 
 - [The New Golden Age: A Structural Bull Market Analysis](/articles/new-golden-age-structural-bull-market-analysis)
 - [Watch on YouTube](https://youtu.be/XqG5CLOzmME)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTjfbcosuMvAxfz_ZIVfHhN6nd11M2IM-5WyQIJj8c0SbvMgan8b_GiSu6xs6JP2WvF0g3NaTL-i5NC/pub)

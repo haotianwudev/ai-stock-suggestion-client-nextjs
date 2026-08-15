@@ -1,9 +1,9 @@
 ---
 path: option-strategy/short-straddles-strangles
-title: "Mastering Short Volatility: Straddles & Strangles"
+title: Mastering Short Volatility: Straddles & Strangles
 articleSlug: mastering-short-volatility-straddles-strangles-systematic-premium-collection
 date: 2025-11-15
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -54,4 +54,4 @@ Short straddles and strangles harvest the Volatility Risk Premium by selling bot
 ## Related Reading
 
 - [Mastering Short Volatility: Straddles and Strangles for Systematic Premium Collection](/articles/mastering-short-volatility-straddles-strangles-systematic-premium-collection) — full article with the complete position-sizing table and academic research deep dive.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSogpfiMXcV-iKvv27TG4FD3iHjZyLHRUL029WjXBqG69dIrFTpImX5xiIfokocTzo0HpTFhcI2fVO5/pub)
+- [Watch on YouTube](https://youtu.be/AtRXXgVRtlk)

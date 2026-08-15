@@ -3,7 +3,7 @@ path: quant/worldquant-alpha-factory
 title: The WorldQuant Alpha Factory
 articleSlug: worldquant-alpha-factory-industrialized-quantitative-signal-generation
 date: 2025-12-18
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -46,4 +46,4 @@ WorldQuant's &ldquo;Alpha Factory&rdquo; is not a single trading strategy but an
 ## Related Reading
 
 - [The WorldQuant Alpha Factory: An Industrialized Approach to Quantitative Signal Generation](/articles/worldquant-alpha-factory-industrialized-quantitative-signal-generation) — full article with the complete effectiveness analysis and strengths/caveats assessment.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTfVUDR6-Tcq29BcC0ZoePDr5Q5ln5LFwY-o6Vj0aD3wGzjTyBPWOxGujq5sLSMSJ_ihykDy6QlwVuV/pub)
+- [Watch on YouTube](https://youtu.be/L0aVoPLqcFw)

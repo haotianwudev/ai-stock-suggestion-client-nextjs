@@ -3,7 +3,7 @@ path: finance101/gift-phantom-trader-psychology-winning-through-losing
 title: The Gift of the Phantom Trader
 articleSlug: gift-phantom-trader-psychology-winning-through-losing
 date: 2026-01-20
-labels: [FINANCE101, BOOK]
+labels: ["FINANCE101", "BOOK"]
 related: []
 ---
 
@@ -35,6 +35,8 @@ This method creates an inverted pyramid where the largest position is establishe
 "The market will do whatever it has to do to prove the majority wrong." Big moves happen when the majority is trapped on the wrong side and are forced to liquidate. If a bullish report comes out and the market does not go up, the "surprise side" is down. The small trader can use their speed, invisibility, and adaptability to capitalize on these shifts.
 
 ## Related Reading
+
 - [The Gift of the Phantom Trader: Mastering the Psychology of Winning Through Losing](/articles/gift-phantom-trader-psychology-winning-through-losing)
+- [Watch on YouTube](https://youtu.be/0WJ0fJ0a2HY)
 - [Phantom of the Pits - Free Download](https://tradertom.com/resource/the-phantom-of-the-pits/)
 - [Listen to the Podcast](https://open.spotify.com/episode/2ORmIbJViUDfjCtGVjFBDE?si=dM7h7ODCTwOlZPznIZfYiw)

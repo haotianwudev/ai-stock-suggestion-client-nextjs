@@ -1,9 +1,9 @@
 ---
 path: finance101/stablecoin-investing-guide
-title: "The Investor's Guide to Stablecoins: Profiting from Digital Dollars"
+title: The Investor's Guide to Stablecoins: Profiting from Digital Dollars
 articleSlug: investors-guide-stablecoins-profiting-digital-dollars
 date: 2025-07-26
-labels: [Finance 101, Crypto]
+labels: ["Finance 101", "Crypto"]
 related: []
 ---
 
@@ -60,4 +60,3 @@ The largest and most instructive failure: UST's peg relied on an algorithmic lin
 
 - [The Investor's Guide to Stablecoins](/articles/investors-guide-stablecoins-profiting-digital-dollars)
 - [Watch on YouTube](https://youtu.be/bWzpeYtU16Q)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSCy9C-tzrd2-uBRohPRJnOoXf-u_Km1c6HAzPEKZI5aPYqlLUY0_0O2EwJMDTtK8KpJkloRt-Fcz7i/pub)

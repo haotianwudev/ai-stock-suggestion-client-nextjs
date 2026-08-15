@@ -1,9 +1,9 @@
 ---
 path: finance101/fooled-by-randomness-taleb-summary
-title: "Fooled by Randomness: The Hidden Role of Chance in Life and Markets"
+title: Fooled by Randomness: The Hidden Role of Chance in Life and Markets
 articleSlug: fooled-by-randomness-book-summary
 date: 2025-08-03
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 

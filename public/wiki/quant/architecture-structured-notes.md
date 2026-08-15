@@ -3,7 +3,7 @@ path: quant/architecture-structured-notes
 title: The Architecture of Structured Notes
 articleSlug: architecture-structured-notes-comprehensive-investors-guide
 date: 2026-01-04
-labels: [QUANT, FINANCE101]
+labels: ["QUANT", "FINANCE101"]
 related: []
 ---
 
@@ -31,6 +31,6 @@ A structured note is ultimately an **unsecured promise to pay**. In 2008, when L
 - **Taxation:** Gains on many notes are taxed at ordinary income rates, and phantom income (OID) may require yearly tax payments before maturity. They are best held in tax-sheltered accounts (IRAs/401ks).
 
 ## Related Reading
-- [The Architecture of Structured Notes: A Comprehensive Investor's Guide](/articles/architecture-structured-notes-comprehensive-investors-guide)
+
+- [The Architecture of Structured Notes: A Comprehensive Investor's Guide to Senior Debt Obligations Linked to Market Performance](/articles/architecture-structured-notes-comprehensive-investors-guide)
 - [Watch on YouTube](https://youtu.be/eK2moYsTJrE)
-- [Read Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSdTIfXfVSD4VQRxrS-tr8USAD81aw5jBW88pS3qAuUZxoSYXzjEmGlph0oWbcQzNKcNMk-7jcKvIy4/pub)

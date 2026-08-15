@@ -3,7 +3,7 @@ path: quant/convergence-analysis-quantitative-finance-measure-theory
 title: Convergence Analysis in Quantitative Finance
 articleSlug: convergence-analysis-quantitative-finance-measure-theory
 date: 2026-02-09
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -38,6 +38,6 @@ Fourier methods transform option pricing from a PDE problem to an algebraic one 
 The mapping between problems and functional spaces provides a structured approach to quantitative modeling: No Arbitrage relies on Weak-* in L∞, SDE Simulation uses Strong Convergence in L², Fourier Pricing employs Spectral Convergence in damped L¹, and Risk measures like Expected Shortfall depend on Monotonic Convergence in L¹.
 
 ## Related Reading
+
 - [Convergence Analysis in Quantitative Finance: From Measure Theory to Market Reality](/articles/convergence-analysis-quantitative-finance-measure-theory)
 - [Watch on YouTube](https://youtu.be/p38CVckTJqU)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTkHO4z-6dJegqMb2UHTZduNYLGW3xQzwPiAzN359fnDG5ZCDF23zmQLGMiakcQiz7XBDW7Ci0WfYO8/pub)

@@ -1,9 +1,9 @@
 ---
 path: quant/hedge-fund-desk-system-architecture
-title: "Architecting the Modern Hedge Fund Desk"
+title: Architecting the Modern Hedge Fund Desk
 articleSlug: architecting-modern-hedge-fund-desk-system-design
 date: 2025-08-11
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -68,4 +68,3 @@ A phased, incremental build avoids a &lsquo;big bang&rsquo; release, allowing co
 ## Related Reading
 
 - [Architecting the Modern Trading Tool](/articles/architecting-modern-hedge-fund-desk-system-design)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSRiUI4Qd6UcOEDjuIqpL-P2d0PgZW54lSX_fT91rCAhGl08klg9GwFPKw4CHKJT4X_BJ8tJa-gqHK9/pub)

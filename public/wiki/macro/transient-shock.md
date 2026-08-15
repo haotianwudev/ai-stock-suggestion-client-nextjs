@@ -3,7 +3,7 @@ path: macro/transient-shock
 title: The Transient Shock & Disinflation
 articleSlug: anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend
 date: 2026-07-05
-labels: [Quantitative Finance, Macro Views]
+labels: ["Quantitative Finance", "Macro Views"]
 related: []
 ---
 
@@ -36,5 +36,6 @@ Structural labor constraints prevented demand-driven inflation:
 - **Low-Hire, Low-Fire Equilibrium**: Job growth slowed to 22,500/month, severely restraining consumer confidence and money velocity.
 
 ## Related Reading
+
 - [The Anatomy of a Transient Shock: Deconstructing Stagflation Fears and the 2026 Disinflationary Trend](/articles/anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSZ3hTYpbnqCtwVfqcHGD2AqeIfuYoSbaU7842Hp92T1x9i3bGn3Gt47QC4BW0GCn4dZW-WKl16dOiC/pub)
+- [Watch on YouTube](https://youtu.be/ltbC23TpuM0)

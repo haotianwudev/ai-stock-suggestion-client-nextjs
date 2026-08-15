@@ -3,7 +3,7 @@ path: quant/volatility-risk-premium
 title: Volatility Risk Premium (VRP) Decomposition
 articleSlug: decomposing-volatility-risk-premium-structural-arbitrage
 date: 2026-07-03
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -33,5 +33,6 @@ $$
 - Pure ATM variance strategies are heavily influenced by Gamma flows, while downside skew is dominated by crash aversion from pension funds and insurers.
 
 ## Related Reading
+
 - [Decomposing the Volatility Risk Premium: A Sophisticated Framework for Structural Arbitrage](/articles/decomposing-volatility-risk-premium-structural-arbitrage)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQtvD2dDGh4qpYyNaLb4YHG6Jga1fCkpXS4wKyfkv0JztdmUxgJoP23TLoSm22pYIb6eApKo-9drVCl/pub)
+- [Watch on YouTube](https://youtu.be/tP1HJuVzuZU)

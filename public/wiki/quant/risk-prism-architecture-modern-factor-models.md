@@ -1,4 +1,11 @@
-# The Risk Prism: Master the Architecture of Modern Factor Models
+---
+path: quant/risk-prism-architecture-modern-factor-models
+title: The Risk Prism
+articleSlug: risk-prism-architecture-modern-factor-models
+date: 2026-03-26
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 Master the architecture of modern factor models. Transition from asset-class silos to a surgical, multidimensional understanding of risk drivers. From the Factor Zoo to Generative AI Factors, explore the systematic decomposition of market risk.
@@ -19,3 +26,8 @@ The bleeding edge of factor modeling involves using Large Language Models to ext
 - **Supply Chain Contagion:** Using LLMs to map global supply chains and create a "supply chain risk" factor.
 - **Regulatory Sentiment:** Quantifying the tone of regulatory filings to build a "regulatory burden" factor.
 - **CEO Overconfidence:** Analyzing earnings calls to construct a behavioral factor.
+
+## Related Reading
+
+- [The Risk Prism: Master the Architecture of Modern Factor Models](/articles/risk-prism-architecture-modern-factor-models)
+- [Watch on YouTube](https://youtu.be/UNmo7ERzI8o)

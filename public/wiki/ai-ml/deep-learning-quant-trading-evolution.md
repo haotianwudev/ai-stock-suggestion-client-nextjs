@@ -1,9 +1,9 @@
 ---
 path: ai-ml/deep-learning-quant-trading-evolution
-title: "The Evolution of Deep Learning in Quantitative Trading"
+title: The Evolution of Deep Learning in Quantitative Trading
 articleSlug: evolution-deep-learning-quantitative-trading-mlps-transformers
 date: 2025-11-20
-labels: [AI & Machine Learning, Quantitative Finance]
+labels: ["AI & Machine Learning", "Quantitative Finance"]
 related: []
 ---
 
@@ -59,4 +59,4 @@ Deep learning in quant trading evolved through a series of architectures, each s
 ## Related Reading
 
 - [The Evolution of Deep Learning in Quantitative Trading: From MLPs to Transformers](/articles/evolution-deep-learning-quantitative-trading-mlps-transformers) — full article with the complete model comparison tables and DL quant roadmap.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ0M1DiOALtdksxSjBTSGy8k-i-nW-HvOCzF5FSRvTMMl4XxLYy2kxlFGcAQQvzzinpGDkZTpXOtfnj/pub)
+- [Watch on YouTube](https://youtu.be/s0Z3pl8DFDA)

@@ -1,9 +1,9 @@
 ---
 path: macro/all-weather-risk-parity-strategy
-title: "Ray Dalio's All Weather Strategy: Risk Parity in a New Economic Climate"
+title: Ray Dalio's All Weather Strategy: Risk Parity in a New Economic Climate
 articleSlug: all-weather-strategy-new-economic-climate
 date: 2025-11-06
-labels: [Finance 101, Macro Views]
+labels: ["Finance 101", "Macro Views"]
 related: []
 ---
 
@@ -61,4 +61,4 @@ A simplified retail version can be built with low-cost ETFs: VTI (stocks), TLT (
 ## Related Reading
 
 - [The All Weather Strategy in a New Economic Climate](/articles/all-weather-strategy-new-economic-climate) — full deep-research article with detailed performance tables and ETF implementation guide.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQvALRt-laCUkd4G2g5lICfpJAcY6WFFAICQSCBmIt9YlmV9tVEkgjJNoUoPOXCZ-NvjZaScNsCEU5n/pub)
+- [Watch on YouTube](https://youtu.be/NCVI6IDwz2c)

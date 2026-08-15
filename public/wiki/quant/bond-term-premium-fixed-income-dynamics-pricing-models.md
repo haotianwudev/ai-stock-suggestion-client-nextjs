@@ -1,4 +1,11 @@
-# Decoding the Bond Term Premium
+---
+path: quant/bond-term-premium-fixed-income-dynamics-pricing-models
+title: Decoding the Bond Term Premium
+articleSlug: bond-term-premium-fixed-income-dynamics-pricing-models
+date: 2026-05-06
+labels: ["Quantitative Finance", "Macro & Fed Policy"]
+related: []
+---
 
 ## Overview
 The bond term premium represents the excess yield investors demand for holding long-duration sovereign debt rather than rolling over short-term risk-free instruments. This guide covers the theoretical foundations, econometric modeling, macroeconomic drivers, and strategic portfolio applications of the term premium.
@@ -29,3 +36,8 @@ The bond term premium represents the excess yield investors demand for holding l
 - **Reevaluating 60/40:** With positive stock-bond correlations and higher term premia, traditional 60/40 portfolios suffer.
 - **TIPS:** If nominal term premia compress but inflation volatility remains high, TIPS (Treasury Inflation-Protected Securities) offer mechanically superior purchasing power protection.
 - **Floating-Rate Credit:** Investors should diversify beyond traditional duration by incorporating floating-rate or alternative credit strategies.
+
+## Related Reading
+
+- [Decoding the Bond Term Premium: Fixed Income Dynamics, Pricing Models, and Portfolio Strategy](/articles/bond-term-premium-fixed-income-dynamics-pricing-models)
+- [Watch on YouTube](https://youtu.be/qp4ElDhvLr8)

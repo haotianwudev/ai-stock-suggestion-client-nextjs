@@ -1,4 +1,11 @@
-# The Architecture of Interoperability: Agent-to-Agent Protocols
+---
+path: quant/architecture-interoperability-agent-protocols-financial-systems
+title: The Architecture of Interoperability
+articleSlug: architecture-interoperability-agent-protocols-financial-systems
+date: 2026-06-02
+labels: ["Quantitative Finance", "Generative AI"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, and orchestrating autonomous AI in modern finance. Explores capability advertising, stateful collaboration, opacity architecture, and the broader protocol stack (MCP, ACP, AGP) powering financial infrastructure.
@@ -25,3 +32,8 @@ A comprehensive guide to Agent-to-Agent (A2A) protocols, solving fragmentation, 
 ## Real-World Orchestration Architectures
 - **Autonomous Wealth Management:** Hierarchical orchestration leveraging a "Nexus Handshake" to securely pass constraints between Wealth Advisory (LangChain) and Quantitative Risk (CrewAI) agents.
 - **Enterprise Fraud Detection:** Adaptive routing across silos where conflicting agent recommendations (e.g., Compliance vs. Behavioral) trigger a "Group Chat Resolution" handled by an Audit Agent, with all actions recorded immutably.
+
+## Related Reading
+
+- [The Architecture of Interoperability: Agent-to-Agent Protocols in Financial Multi-Agent Systems](/articles/architecture-interoperability-agent-protocols-financial-systems)
+- [Watch on YouTube](https://youtu.be/GGZSwdPs5F8)

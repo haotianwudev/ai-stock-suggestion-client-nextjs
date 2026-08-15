@@ -1,9 +1,9 @@
 ---
 path: quant/technical-analysis-institutional-performance
-title: "Technical Analysis in Portfolio Management: Performance and Practice"
+title: Technical Analysis in Portfolio Management: Performance and Practice
 articleSlug: technical-analysis-portfolio-management-performance-practice
 date: 2025-07-18
-labels: [Quantitative Finance, Stock Analysis]
+labels: ["Quantitative Finance", "Stock Analysis"]
 related: []
 ---
 

@@ -3,7 +3,7 @@ path: quant/industrialization-volatility
 title: The Industrialization of Volatility
 articleSlug: industrialization-volatility-hedge-funds-operational-architecture
 date: 2026-01-08
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -36,6 +36,6 @@ Data quality in volatility trading is existential. A single corrupted tick can t
 - **Deep Hedging (RL):** Reinforcement Learning agents learn the optimal hedging action (quantity) by accounting for transaction costs and market impact, moving beyond simple Black-Scholes calculations.
 
 ## Related Reading
-- [The Industrialization of Volatility: Deconstructing the Operational Architecture](/articles/industrialization-volatility-hedge-funds-operational-architecture)
+
+- [The Industrialization of Volatility: Deconstructing the Operational Architecture of Modern Volatility-Focused Hedge Funds](/articles/industrialization-volatility-hedge-funds-operational-architecture)
 - [Watch on YouTube](https://youtu.be/B4tJwZriwdY)
-- [Read Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRMLbZ3S8DmR7fwEHeXAXQFtvPrY7jU8fdv4ly-r_PF9AEXHngWzLib58pUtDRwAC9rZtY6gtbCHRvA/pub)

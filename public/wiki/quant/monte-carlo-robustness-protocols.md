@@ -3,7 +3,7 @@ path: quant/monte-carlo-robustness-protocols
 title: Monte Carlo Simulation for Quant Trading Robustness
 articleSlug: monte-carlo-robustness-protocols-stress-testing-systematic-trading
 date: 2025-12-03
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -57,4 +57,4 @@ A single historical backtest is one realization of a stochastic process — a sa
 ## Related Reading
 
 - [Monte Carlo Simulation for Quant Trading Robustness](/articles/monte-carlo-robustness-protocols-stress-testing-systematic-trading) — full article with the complete method taxonomy, pitfalls, and validation workflow.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS8p38E8rMXs3x5o96emoQqgiNEokrC2RxsQncu0t8-8iv904RXUZzTyBoiVGqE_ZdM0FL7rUFvOe5V/pub)
+- [Watch on YouTube](https://youtu.be/sA57KkA-v-Q)

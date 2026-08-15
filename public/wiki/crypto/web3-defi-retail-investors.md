@@ -3,7 +3,7 @@ path: crypto/web3-defi-retail-investors
 title: The Web3 Revolution: DeFi for Retail Investors
 articleSlug: web3-revolution-defi-retail-investors
 date: 2025-12-23
-labels: [Crypto, Finance 101]
+labels: ["Crypto", "Finance 101"]
 related: []
 ---
 
@@ -42,4 +42,4 @@ Web3 is a paradigm shift toward a &ldquo;Read-Write-Own&rdquo; internet built on
 ## Related Reading
 
 - [The Web3 Revolution: Deconstructing Decentralized Finance and the New Frontier for Retail Investors](/articles/web3-revolution-defi-retail-investors) — full article with the Four Pillars framework, DeFi primitives, and the CeDeFi outlook.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ8jmxTMBnLq-y9ucLNhiFO3uuc_-S0TNTRLluyg4uzUj0-rXtBMKKyW-aZn1LfoEvM4nZM5kC4meod/pub)
+- [Watch on YouTube](https://youtu.be/aViyh1n08v4)

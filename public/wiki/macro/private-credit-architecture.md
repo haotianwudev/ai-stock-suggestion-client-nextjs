@@ -1,9 +1,9 @@
 ---
 path: macro/private-credit-architecture
-title: "Private Credit Architecture & Vulnerabilities"
+title: Private Credit Architecture & Vulnerabilities
 articleSlug: architecture-private-credit-structural-mechanics-vulnerabilities
 date: 2026-02-12T00:00:00Z
-labels: [MACRO]
+labels: ["MACRO"]
 related: []
 ---
 
@@ -33,5 +33,6 @@ Asset managers are aggressively pushing illiquid debt into retail wealth channel
 While immune to 2008-style bank runs, a private credit shock transmits systemically through the real economy (widespread bankruptcies), hidden bank linkages (NAV loans/subscription lines), and the Denominator Effect (forcing pensions to fire-sale public assets).
 
 ## Related Reading
-- [Private Credit Architecture](/articles/architecture-private-credit-structural-mechanics-vulnerabilities)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT2Nq_0hJ48r15B8R-e1_8B7R228eY9q4N83b_8V81b_62M3Fq_k3M3H-Q5T0g/pub)
+
+- [The Architecture of Private Credit: Structural Mechanics, Emerging Vulnerabilities, and Systemic Implications](/articles/architecture-private-credit-structural-mechanics-vulnerabilities)
+- [Watch on YouTube](https://youtu.be/9qNl3AyDkO0)

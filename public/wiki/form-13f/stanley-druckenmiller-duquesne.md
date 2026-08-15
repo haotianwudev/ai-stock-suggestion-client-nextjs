@@ -3,7 +3,7 @@ path: form-13f/stanley-druckenmiller-duquesne
 title: The Duquesne Paradigm
 articleSlug: duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025
 date: 2026-02-23T00:00:00Z
-labels: [FORM13F]
+labels: ["FORM13F"]
 related: []
 ---
 
@@ -41,6 +41,6 @@ While heavily long the U.S., Druckenmiller hedged with significant positions in 
 - **The Trader Mismatch:** Druckenmiller is a trader, not a buy-and-hold investor. Never buy a 13F stock without your own exit strategy.
 
 ## Related Reading
+
 - [The Duquesne Paradigm: Decoding Stanley Druckenmiller's $4.5B Portfolio Shift](/articles/duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025)
 - [Watch on YouTube](https://youtu.be/EVDw2iynOBE)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTZ1f0yRS35xqhKFDmjwtehde982-hWddBqhGeAtWDz30_VlFB2EW_-G5TrduYir15fHKO6gLGiWCf3/pub)

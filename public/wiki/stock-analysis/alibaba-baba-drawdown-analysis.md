@@ -1,4 +1,11 @@
-# Alibaba (BABA) Quantitative Drawdown Analysis
+---
+path: stock-analysis/alibaba-baba-drawdown-analysis
+title: Alibaba (BABA) Quantitative Drawdown Analysis
+articleSlug: alibaba-baba-quantitative-analysis-drawdown-factor-exposures
+date: 2026-06-18
+labels: ["Stock Analysis"]
+related: []
+---
 
 ## Overview
 A comprehensive quantitative analysis of Alibaba's severe multi-sigma equity drawdown in June 2026. The analysis isolates systematic market risk from idiosyncratic shocks to explain the catastrophic repricing event.
@@ -16,6 +23,9 @@ A comprehensive quantitative analysis of Alibaba's severe multi-sigma equity dra
 - **Valuation Floor Removed:** Without strong fundamental factors (FCF generation, high ROIC) to act as a valuation floor, equities are highly vulnerable to momentum-driven selloffs.
 
 ## Related Reading
+
+- [Alibaba Group (BABA) Drawdown: Quantitative Analysis of Idiosyncratic Shocks, Factor Exposures, and Volatility Dynamics](/articles/alibaba-baba-quantitative-analysis-drawdown-factor-exposures)
+- [Watch on YouTube](https://youtu.be/OQ4VLc6UcCs)
 - Geopolitical Risk Premiums in Emerging Markets
 - Options Gamma and Market Microstructure
 - Statistical Arbitrage and Short Volume Analysis

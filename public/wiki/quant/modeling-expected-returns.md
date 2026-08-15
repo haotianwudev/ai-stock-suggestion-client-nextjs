@@ -3,7 +3,7 @@ path: quant/modeling-expected-returns
 title: Modeling Expected Returns
 articleSlug: modeling-expected-returns-quantitative-foundation-modern-portfolio-theory
 date: 2026-03-05T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -35,6 +35,6 @@ Modern approaches use AI/ML to navigate non-linear relationships.
 - **The Overfitting Trap**: Financial data has low signal-to-noise. ML models require strict regularization, cross-validation (like Purged K-Fold), and economic intuition constraints to avoid fitting to noise.
 
 ## Related Reading
+
 - [Modeling Expected Returns: The Quantitative Foundation of Modern Portfolio Theory](/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory)
 - [Watch on YouTube](https://youtu.be/i0WiCcwcsFs)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTuvo-o0S4giC6cDaVEbctBMw_tEh0sXvvQs0Y-ATeACH97qbGJs7UPBp3n8ROQiCmaWuNuqA1TQQZ6/pub)

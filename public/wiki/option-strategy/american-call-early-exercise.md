@@ -1,4 +1,11 @@
-# American Call Early Exercise
+---
+path: option-strategy/american-call-early-exercise
+title: American Call Early Exercise
+articleSlug: optimal-early-exercise-american-call-options-dividend-stocks
+date: 2026-06-20
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 Understanding when it is mathematically optimal to early exercise an American call option, specifically focusing on the impact of discrete cash dividends and the trade-off between intrinsic and time value.
@@ -26,6 +33,9 @@ $$ S_{t+\Delta t} = S_t \exp\left( \left( r - \frac{1}{2}\sigma^2 \right)\Delta 
 - **Computational Power:** The Longstaff-Schwartz method overcomes the curse of dimensionality, allowing American option valuation across multiple assets and complex stochastic processes where traditional binomial trees fail.
 
 ## Related Reading
+
+- [Optimal Early Exercise of American Call Options on Dividend-Paying Stocks](/articles/optimal-early-exercise-american-call-options-dividend-stocks)
+- [Watch on YouTube](https://youtu.be/v8iVbeIxVRc)
 - Black-Scholes Option Pricing
 - Monte Carlo Methods in Quantitative Finance
 - Dividend Impact on Option Pricing

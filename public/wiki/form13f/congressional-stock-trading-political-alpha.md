@@ -1,9 +1,9 @@
 ---
 path: form13f/congressional-stock-trading-political-alpha
-title: "Political Alpha: Tracking Congressional Stock Trading"
+title: Political Alpha: Tracking Congressional Stock Trading
 articleSlug: political-alpha-congressional-stock-trading-guide
 date: 2025-08-28
-labels: [Form 13F, Finance 101]
+labels: ["Form 13F", "Finance 101"]
 related: []
 ---
 
@@ -54,4 +54,3 @@ The market has responded with politically-themed ETFs tracking each party's disc
 ## Related Reading
 
 - [Political Alpha: An Investor's Guide to Congressional Stock Trading](/articles/political-alpha-congressional-stock-trading-guide)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQXZifSiE46mzedCc2Go-dGoDPiMxZdeqNBy0nmGUncvRQkgiAu_w6Xxa1C5KFb716BIq_TACbZIlfe/pub)

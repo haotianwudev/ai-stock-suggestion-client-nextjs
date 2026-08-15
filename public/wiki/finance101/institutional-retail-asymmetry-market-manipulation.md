@@ -1,9 +1,9 @@
 ---
 path: finance101/institutional-retail-asymmetry-market-manipulation
-title: "The Harvest: How Institutions Exploit Retail Investors"
+title: The Harvest: How Institutions Exploit Retail Investors
 articleSlug: the-harvest-institutional-exploitation-retail-investors
 date: 2025-10-14
-labels: [Finance 101, Quantitative Finance]
+labels: ["Finance 101", "Quantitative Finance"]
 related: []
 ---
 
@@ -47,4 +47,4 @@ The gap between institutional and retail investors isn't incidental — it's str
 ## Related Reading
 
 - [The Harvest: How Institutions Systematically Exploit Retail Investors](/articles/the-harvest-institutional-exploitation-retail-investors) — full article with the institutional-vs-retail comparison table and manipulation tactic reference.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQyCrOe1hCmGUSmlcsi60DB8nyD5MrntKZvHku-NSwREpcEzp1RZd9IpzkEYrKTdBeqy2CxNT1V5fYI/pub)
+- [Watch on YouTube](https://youtu.be/xMaKA2lIn8c)

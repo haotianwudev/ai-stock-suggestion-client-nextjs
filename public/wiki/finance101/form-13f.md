@@ -1,9 +1,9 @@
-﻿---
+---
 path: finance101/form-13f
 title: Form 13F Disclosures
 articleSlug: hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk
 date: 2026-08-13
-labels: [QUANT, FINANCE101]
+labels: ["QUANT", "FINANCE101"]
 related: []
 ---
 
@@ -71,6 +71,5 @@ Sophisticated managers employ several disclosure tactics:
 
 ## Related Reading
 
-- [The Hidden Mechanics of Form 13F Disclosures](/articles/hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSYnlLjWMH5WS69sejmZQPopfryjNLxiDi7oZ9qgMW47paRA0P7QfVyItIIw3-vjumxJm3Fom31XYOa/pub)
+- [The Hidden Mechanics of Form 13F Disclosures: Microstructure, Copycat Economics, and Systemic Risk](/articles/hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk)
 - [Watch on YouTube](https://youtu.be/VFaAUqhqT7I)

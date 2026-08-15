@@ -3,7 +3,7 @@ path: option-strategy/volatility-surface
 title: The Volatility Surface
 articleSlug: decoding-volatility-surface-advanced-market-prediction-options-flow
 date: 2026-08-01
-labels: [QUANT, OPTIONS]
+labels: ["QUANT", "OPTIONS"]
 related: []
 ---
 
@@ -65,6 +65,5 @@ A sustainable bull market requires both a Sticky Delta regime (trend belief) and
 ## Related Reading
 
 - [Decoding the Volatility Surface: Advanced Market Prediction Through Options Flow](/articles/decoding-volatility-surface-advanced-market-prediction-options-flow)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSSjTnFPfVd2dtnBvN8DK9CQSzZJw8sjIhA0Fpa0196LiNG_fA-G-1YMvttNH2B-SLurcoPo-dk1fOb/pub)
+- [Watch on YouTube](https://youtu.be/H_GydoDEoSk)
 - [Gamma Exposure (GEX)](/wiki/option-strategy/gex)
-- [Decomposing the Volatility Risk Premium](/articles/decomposing-volatility-risk-premium-structural-arbitrage)

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/cash-secured-puts-covered-calls
-title: "Cash-Secured Puts & Covered Calls: Disciplined Entry and Exit"
+title: Cash-Secured Puts & Covered Calls: Disciplined Entry and Exit
 articleSlug: strategic-portfolio-management-option-writing
 date: 2025-10-04
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -45,4 +45,4 @@ Cash-secured puts and covered calls reframe options away from speculation and to
 ## Related Reading
 
 - [Strategic Portfolio Management via Option Writing](/articles/strategic-portfolio-management-option-writing)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTOrdqZPBCcH4OrKMlfCrf8WlDzYrTzCaA8xGJqp4tV9trw7p-FIrtxnHSjzD9VnMEZFumz_-TE-aDo/pub)
+- [Watch on YouTube](https://youtu.be/MVc-dVWEc4w)

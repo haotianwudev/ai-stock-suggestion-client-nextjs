@@ -1,9 +1,9 @@
-﻿---
+---
 path: macro/fixed-income-turning-points
 title: Fixed-Income Market Turning Points
 articleSlug: quantitative-assessment-fixed-income-market-turning-points
 date: 2026-08-10
-labels: [MARCO]
+labels: ["MARCO"]
 related: []
 ---
 
@@ -82,5 +82,4 @@ Algorithmic funds universally monitor the 200-DMA. Price above 200-DMA historica
 ## Related Reading
 
 - [Quantitative Assessment of the Fixed-Income Market: Identifying Turning Points in the Macroeconomic Cycle](/articles/quantitative-assessment-fixed-income-market-turning-points)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTiJIPSoFj9za65qjVvLGuvIzjsbbwFYw31dQhFS3eNF-M_YGfuxuUurhoGaJXLDu7DcuK-XpfnOIiJ/pub)
 - [Watch on YouTube](https://youtu.be/kTuZBlNZtEU)

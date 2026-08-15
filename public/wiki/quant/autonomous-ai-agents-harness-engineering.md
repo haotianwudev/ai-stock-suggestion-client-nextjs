@@ -1,4 +1,11 @@
-# Autonomous AI Agents: Harness Engineering
+---
+path: quant/autonomous-ai-agents-harness-engineering
+title: Autonomous AI Agents: Harness Engineering
+articleSlug: autonomous-ai-agents-architecture-harness-engineering
+date: 2026-06-11
+labels: ["Quantitative Finance", "Generative AI"]
+related: []
+---
 
 ## Overview
 A detailed architectural overview of Harness Engineering—the operational infrastructure that wraps around non-deterministic LLMs to deploy fault-tolerant, autonomous AI agents in rigorous domains like quantitative finance.
@@ -22,3 +29,8 @@ A detailed architectural overview of Harness Engineering—the operational infra
 ## Recursive Autonomy & Graph Execution
 - **Recursive Autonomy:** Advanced harnesses empower AI to invoke skills that autonomously call other sub-skills. Strict Recursion Guards (Max Depth/Children) prevent runaway compute costs.
 - **LangGraph Architecture:** Conceptualizes agent workflows as cyclical, directed graphs. Unconstrained agency is localized within strictly bounded nodes, with conditional edges routing outputs through deterministic compliance verification loops (e.g., "Ralph Loops") before market execution.
+
+## Related Reading
+
+- [Autonomous AI Agents: The Architecture of Harness Engineering](/articles/autonomous-ai-agents-architecture-harness-engineering)
+- [Watch on YouTube](https://youtu.be/_fcDzh04ntc)

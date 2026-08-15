@@ -1,9 +1,9 @@
 ---
 path: macro/stock-market-valuation-equity-risk-premium
-title: "Beyond P/E: Reading Market Valuation Through the Equity Risk Premium and Fed Model"
+title: Beyond P/E: Reading Market Valuation Through the Equity Risk Premium and Fed Model
 articleSlug: high-altitude-deconstructing-us-stock-market-valuation
 date: 2025-11-03
-labels: [Macro Views]
+labels: ["Macro Views"]
 related: []
 ---
 
@@ -52,4 +52,4 @@ The gap between the absolute metrics (strongly overvalued) and the relative ERP 
 ## Related Reading
 
 - [High Altitude: Deconstructing the U.S. Stock Market Valuation](/articles/high-altitude-deconstructing-us-stock-market-valuation) — full article with the complete macro dashboard and bull/bear case breakdown.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRjopKgYRYinwE5rUu8W0BtQY9j_wT3aWkn6pP6q2NgZIHtSNcSHmFnp9iSFB4ng1rLfh-osGKVbYx5/pub)
+- [Watch on YouTube](https://youtu.be/UMgH4GiusZA)

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/vrp-spx-options-selling
-title: "Mastering the Volatility Risk Premium: SPX Options Selling"
+title: Mastering the Volatility Risk Premium: SPX Options Selling
 articleSlug: mastering-volatility-risk-premium-spx-options-selling
 date: 2025-11-28
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -54,4 +54,4 @@ The Volatility Risk Premium (VRP) is the persistent spread between Implied Volat
 ## Related Reading
 
 - [Mastering the Volatility Risk Premium: A Comprehensive Guide to SPX Options Selling](/articles/mastering-volatility-risk-premium-spx-options-selling) — full article with the SPX/XSP/SPY comparison table, ETF due diligence, and persona-based recommendations.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSyPM4fIhPOPhOzvbO3SZ-PxzObursCGZzw8F93Wz2yA2eLmuAMSZ7lNHf7uFLeMp4wJe5N5pj9PQPT/pub)
+- [Watch on YouTube](https://youtu.be/yThUZBJWKPM)

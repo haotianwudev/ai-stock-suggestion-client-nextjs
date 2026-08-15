@@ -1,9 +1,9 @@
 ---
 path: macro/geopolitical-shock-market-drawdown-playbook
-title: "Trading Geopolitical Shocks: Historical Precedent and an Investor Playbook"
+title: Trading Geopolitical Shocks: Historical Precedent and an Investor Playbook
 articleSlug: trade-war-redux-october-10-market-shock-analysis
 date: 2025-10-10
-labels: [Macro Views]
+labels: ["Macro Views"]
 related: []
 ---
 
@@ -39,4 +39,4 @@ A textbook pattern: peak optimism (record highs, "AI-driven euphoria") → a qui
 ## Related Reading
 
 - [Trade War Redux: Anatomy of the October 10th Market Shock](/articles/trade-war-redux-october-10-market-shock-analysis) — full article with the complete historical trade-war timeline and hour-by-hour shock-day account.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQjkJ8tUQs6z5rLNRsjtEhtGXajOgiYAeW-44bjqFAivgHrP7UJbi9DjwSSjDUbhIGtVWuY_GJfPZ6q/pub)
+- [Watch on YouTube](https://youtu.be/imLzlzT5u8I)

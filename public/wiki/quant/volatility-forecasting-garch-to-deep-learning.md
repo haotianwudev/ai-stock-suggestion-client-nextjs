@@ -1,9 +1,9 @@
 ---
 path: quant/volatility-forecasting-garch-to-deep-learning
-title: "Volatility Forecasting: From GARCH to Deep Learning"
+title: Volatility Forecasting: From GARCH to Deep Learning
 articleSlug: quantitative-analyst-guide-volatility-forecasting
 date: 2025-10-24
-labels: [Quantitative Finance, AI & Machine Learning]
+labels: ["Quantitative Finance", "AI & Machine Learning"]
 related: []
 ---
 
@@ -55,4 +55,4 @@ The Heston model (1993) treats volatility itself as following a stochastic proce
 ## Related Reading
 
 - [A Quantitative Analyst's Guide to Volatility Forecasting](/articles/quantitative-analyst-guide-volatility-forecasting) — full article with the GARCH family derivations, LSTM/Transformer architecture, and academic research review.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRpFDZmT3ajgqPdW9nBkPpkyd-sRz2p9NtHYam2Na4CmC6WHteqCvB0UJoKH1eSpvmZWioTlHrLDoQU/pub)
+- [Watch on YouTube](https://youtu.be/zLKCTVTfvo4)

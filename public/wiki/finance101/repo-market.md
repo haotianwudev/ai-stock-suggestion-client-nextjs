@@ -3,7 +3,7 @@ path: finance101/repo-market
 title: The Repo Market & Treasury Basis Trade
 articleSlug: repo-market-dollar-funding-mechanics-strategies-systemic-risks
 date: 2026-08-21
-labels: [QUANT, FINANCE101]
+labels: ["QUANT", "FINANCE101"]
 related: []
 ---
 
@@ -56,5 +56,5 @@ $$
 - **Divergence in Cash-Futures Basis Spread** — Ultimate real-time trigger of a systemic crash indicating arbitrageurs cannot secure repo financing.
 
 ## Related Reading
+
 - [The Repo Market & Dollar Funding: Mechanics, Strategies, and Systemic Risks](/articles/repo-market-dollar-funding-mechanics-strategies-systemic-risks)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vROL_pfgkMnc4Vk1YN8DzCrDRYpCynn644w3IbMEtRsfQn3_uM430aD3w4-GZY2JKboC3MloI_Q0Dno/pub)

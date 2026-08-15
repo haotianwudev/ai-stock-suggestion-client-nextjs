@@ -1,4 +1,11 @@
-# Direct Indexing & Tax-Loss Harvesting: Algorithmic Mechanics
+---
+path: quant/direct-indexing-tax-loss-harvesting-algorithmic-mechanics
+title: Direct Indexing & Tax-Loss Harvesting
+articleSlug: direct-indexing-tax-loss-harvesting-algorithmic-mechanics
+date: 2026-05-18
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A deep dive into the algorithmic mechanics of tax-aware portfolio construction, tracking error optimization, and factor risk models. Explores how to systematically generate tax alpha through direct indexing.
@@ -34,3 +41,8 @@ A deep dive into the algorithmic mechanics of tax-aware portfolio construction, 
 ## V. Strategic Realities
 - **Alpha Decay:** Tax alpha is a depleting asset. As a portfolio ages in a rising market, cost basis remains low while prices rise, eliminating harvestable losses. This decay must be countered with continuous fresh cash inflows to "reload" high-basis lots.
 - **Operational Pitfalls:** Managing "Cash Drag" (which can destroy tax benefits in bull markets) and navigating complex corporate actions (spin-offs/mergers) that complicate cost basis tracking.
+
+## Related Reading
+
+- [Direct Indexing & Tax-Loss Harvesting: The Algorithmic Mechanics of Tax-Aware Portfolio Construction](/articles/direct-indexing-tax-loss-harvesting-algorithmic-mechanics)
+- [Watch on YouTube](https://youtu.be/kVwOEbM-okw)

@@ -1,9 +1,9 @@
 ---
 path: quant/vix-fear-gauge-guide
-title: "The VIX Index: Reading the Market's Fear Gauge"
+title: The VIX Index: Reading the Market's Fear Gauge
 articleSlug: vix-index-comprehensive-guide-market-volatility
 date: 2025-10-20
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -50,4 +50,4 @@ The VIX and S&P 500 move together roughly 20% of the time. Two common scenarios:
 ## Related Reading
 
 - [The VIX Index: A Comprehensive Guide to Understanding and Utilizing Market Volatility](/articles/vix-index-comprehensive-guide-market-volatility) — full article with historical VIX spike case studies and VIX derivative comparison table.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRvMWp5V6VlPo-S5xxbxIO5usm8miwtVoITY4FbmdOpf4ZGEUsQFiU4WuTCZVO2ON0ZYeEeTq8zsnYm/pub)
+- [Watch on YouTube](https://youtu.be/_NDyPBYkZxg)

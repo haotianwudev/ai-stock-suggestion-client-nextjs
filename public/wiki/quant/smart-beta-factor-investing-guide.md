@@ -1,9 +1,9 @@
 ---
 path: quant/smart-beta-factor-investing-guide
-title: "Smart Beta: Factor Investing Between Passive and Active"
+title: Smart Beta: Factor Investing Between Passive and Active
 articleSlug: smart-beta-systematic-personal-investing-strategies
 date: 2025-09-24
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -69,4 +69,3 @@ A Core-Satellite approach (market-cap core with factor tilts) or a diversified m
 
 - [Smart Beta: Guide to Systematic and Personal Strategies](/articles/smart-beta-systematic-personal-investing-strategies)
 - [Watch on YouTube](https://youtu.be/xZY-O9-4AUs)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRC7i2bCR1kQsjEscSldjUfZAyKlE-7MNhtWxJvXBcsP3o9pn2DjrPVVPmMZoQNlSAN1szkIeSt9xYt/pub)

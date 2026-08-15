@@ -1,9 +1,9 @@
 ---
 path: options/vertical-debit-spreads
-title: "Vertical Debit Spreads: Strategic Architecture"
+title: Vertical Debit Spreads: Strategic Architecture
 articleSlug: vertical-debit-spreads-strategic-architecture-defined-risk-trading
 date: 2026-03-01T00:00:00Z
-labels: [OPTIONS]
+labels: ["OPTIONS"]
 related: []
 ---
 
@@ -40,5 +40,6 @@ Never execute without passing these gates:
 - **No Rolling Losers:** Accept the loss; do not throw good money after bad by rolling a losing debit spread.
 
 ## Related Reading
-- [Vertical Debit Spreads](/articles/vertical-debit-spreads-strategic-architecture-defined-risk-trading)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS2Nq_0hJ48r15B8R-e1_8B7R228eY9q4N83b_8V81b_62M3Fq_k3M3H-Q5T0g/pub)
+
+- [Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading](/articles/vertical-debit-spreads-strategic-architecture-defined-risk-trading)
+- [Watch on YouTube](https://youtu.be/OZh8KnJobic)

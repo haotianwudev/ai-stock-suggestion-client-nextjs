@@ -1,9 +1,9 @@
 ---
 path: ai-ml/lstm-systematic-trading
-title: "LSTM in Systematic Trading: Architecture, Application, and Performance"
+title: LSTM in Systematic Trading: Architecture, Application, and Performance
 articleSlug: lstm-systematic-trading-deep-dive-architecture-application-performance
 date: 2025-08-15
-labels: [AI/ML, Quantitative Finance]
+labels: ["AI/ML", "Quantitative Finance"]
 related: []
 ---
 
@@ -62,4 +62,3 @@ Transformers are taking over large-scale sequence tasks, but LSTMs remain valuab
 
 - [LSTM in Systematic Trading](/articles/lstm-systematic-trading-deep-dive-architecture-application-performance)
 - [Watch on YouTube](https://youtu.be/smYKvopeg1Q)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTaoVhyDF_TM8QgEYxETLGubMxtsCAVLDfxsjU_m8OCAjNTONPzmc2af44Pe6b9UQKSqfNg4YgAY9nU/pub)

@@ -1,9 +1,9 @@
 ---
 path: quant/hft-market-making-avellaneda-stoikov
-title: "Modern Market Making: The Avellaneda-Stoikov Model & HFT Infrastructure"
+title: Modern Market Making: The Avellaneda-Stoikov Model & HFT Infrastructure
 articleSlug: anatomy-of-speed-modern-market-making-hft
 date: 2025-09-26
-labels: [Quantitative Finance, AI/ML]
+labels: ["Quantitative Finance", "AI/ML"]
 related: []
 ---
 
@@ -61,4 +61,3 @@ Alpha generation beyond quoting comes from feature engineering on raw limit orde
 
 - [The Anatomy of Speed: Modern Market Making in High-Frequency Trading](/articles/anatomy-of-speed-modern-market-making-hft)
 - [Watch on YouTube](https://youtu.be/waY0tFW49VY)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQII0UWvpa1IRgnH8Pplp2pPeYf3OL1a-n00attBl1nt-Hv0bhmvIvIb-_UH5Ybnip4F5jO5uwlGn6p/pub)

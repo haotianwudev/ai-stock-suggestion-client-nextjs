@@ -3,7 +3,7 @@ path: quant/advanced-pricing-models
 title: Advanced Quantitative Pricing Models
 articleSlug: beyond-black-scholes
 date: 2026-03-09T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -52,6 +52,6 @@ $$
 $$
 
 ## Related Reading
+
 - [Beyond Black-Scholes: Advanced Quantitative Pricing Models](/articles/beyond-black-scholes)
 - [Watch on YouTube](https://youtu.be/zS43HPjsDtc)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRvrZWWikO-WOXDkGTqrdgoIO5aQiDmG-bD1K-HfneWJ92coZrsQfvuVwDzfHJMbGDA5TOq7QtGV4HA/pub)

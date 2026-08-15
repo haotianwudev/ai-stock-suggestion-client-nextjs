@@ -1,9 +1,9 @@
 ---
 path: finance101/sebi-jane-street-market-manipulation
-title: "The Jane Street Precedent: Manipulation, Regulation, and India's Derivatives Market"
+title: The Jane Street Precedent: Manipulation, Regulation, and India's Derivatives Market
 articleSlug: jane-street-precedent-market-manipulation
 date: 2025-07-23
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -59,4 +59,3 @@ Your derivatives counterparty is often a highly sophisticated institution with m
 ## Related Reading
 
 - [India's Option Market and Jane Street](/articles/jane-street-precedent-market-manipulation)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSoGmmRVw9JQEKdSct9ASfyVHutJdnIWu4o0aLuE5dqg3ib_MLsK92YLdVS8C9CPaZuZWcNn_fkK5lA/pub)

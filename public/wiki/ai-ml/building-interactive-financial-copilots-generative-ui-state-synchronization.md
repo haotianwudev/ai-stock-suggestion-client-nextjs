@@ -1,4 +1,11 @@
-# Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration
+---
+path: ai-ml/building-interactive-financial-copilots-generative-ui-state-synchronization
+title: Building Interactive Financial Copilots
+articleSlug: building-interactive-financial-copilots-generative-ui-state-synchronization
+date: 2026-03-30
+labels: ["Generative AI"]
+related: []
+---
 
 ## Overview
 A comprehensive architectural masterclass on designing Generative UIs for financial dashboards. Master state synchronization without re-render jank, implement secure bi-directional LLM interactions, and evaluate open-source frameworks like CopilotKit, Vercel AI SDK, and assistant-ui for institutional-grade financial applications.
@@ -20,3 +27,8 @@ Maintaining a consistent state between the client, server, and LLM is the hardes
 - **CopilotKit:** Excellent for building in-app copilots with tight integration into existing React applications.
 - **Vercel AI SDK:** The industry standard for streaming LLM responses and integrating with edge functions.
 - **assistant-ui:** A robust framework for building conversational interfaces with built-in support for Generative UI.
+
+## Related Reading
+
+- [Building Interactive Financial Copilots: Generative UI, State Synchronization, and LLM Integration](/articles/building-interactive-financial-copilots-generative-ui-state-synchronization)
+- [Watch on YouTube](https://youtu.be/qb-JRu3ezzs)

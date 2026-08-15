@@ -1,9 +1,9 @@
 ---
 path: option-strategy/option-greeks-overview
-title: "The Option Greeks: Delta, Gamma, Theta, Vega, and Rho Explained"
+title: The Option Greeks: Delta, Gamma, Theta, Vega, and Rho Explained
 articleSlug: option-greeks-traders-poetic-guide-risk
 date: 2025-11-07
-labels: [Quantitative Finance, Options Trading]
+labels: ["Quantitative Finance", "Options Trading"]
 related: []
 ---
 
@@ -41,4 +41,4 @@ The Option Greeks are the five risk measures that quantify how an option's price
 ## Related Reading
 
 - [The Option Greeks: A Trader's Poetic Guide to Risk](/articles/option-greeks-traders-poetic-guide-risk) — full article with poetic mnemonics and detailed trading applications for each Greek.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ_ZxmybeUGt5uWZgRQAT3AhpPa0JdTJdaip5cUsKc7JQf5Onq-kB1t1y9TzB1gQmYghoXEIMAwS30M/pub)
+- [Watch on YouTube](https://youtu.be/ZLUeCSLgw3Y)

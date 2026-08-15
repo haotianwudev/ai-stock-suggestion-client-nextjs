@@ -1,4 +1,11 @@
-# The Black-Litterman Model
+---
+path: quant/black-litterman-model-comprehensive-guide-portfolio-optimization
+title: The Black-Litterman Model
+articleSlug: black-litterman-model-comprehensive-guide-portfolio-optimization
+date: 2026-04-23
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to bridging the gap between mathematical rigor and human intuition in modern portfolio management. The Black-Litterman model, developed in 1990 by Fischer Black and Robert Litterman at Goldman Sachs, is a robust mathematical framework that solves the practical flaws of classical mean-variance optimization by allowing investors to blend equilibrium market assumptions with their own subjective views.
@@ -31,3 +38,8 @@ While Black-Litterman revolutionized portfolio construction, it relies heavily o
 The model bridges the divide between quantitative analysts (who demand mathematical rigor) and fundamental portfolio managers (who have deep domain expertise but don't speak in covariance matrices).
 - **Robo-Advisors:** Many modern robo-advisors use Black-Litterman under the hood to construct ETF portfolios, using the global market cap as the starting prior.
 - **Hedge Funds:** Quantitative macro funds use the model to translate diverse macroeconomic signals into optimal portfolio weights without suffering from optimizer instability.
+
+## Related Reading
+
+- [The Black-Litterman Model: Bridging Mathematical Rigor and Human Intuition in Modern Portfolio Management](/articles/black-litterman-model-comprehensive-guide-portfolio-optimization)
+- [Watch on YouTube](https://youtu.be/fhMyv0I69LQ)

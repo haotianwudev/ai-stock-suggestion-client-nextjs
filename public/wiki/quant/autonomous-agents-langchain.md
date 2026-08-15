@@ -45,5 +45,6 @@ The **Supervisor Pattern** divides cognitive labor among highly specialized, str
 The **Model Context Protocol (MCP)** standardizes how applications provide executable tools and contextual data to LLMs, decoupling logic from infrastructure.
 
 ## Related Reading
+
 - [Architecting Autonomous Quantitative Agents: A Comprehensive Guide to the LangChain Ecosystem](/articles/architecting-autonomous-quantitative-agents-langchain-ecosystem)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQnDE6aAIAQqmLqO41KXQ7-23I0Sk1Z66HSpwZaMbGMLuo3XXKrKgHO8qICTMP4e6cu4TqFELuCbRvx/pub)
+- [Watch on YouTube](https://youtu.be/UsmpSM6ynuo)

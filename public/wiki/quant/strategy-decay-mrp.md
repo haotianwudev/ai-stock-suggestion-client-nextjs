@@ -3,7 +3,7 @@ path: quant/strategy-decay-mrp
 title: Strategy Decay & Factor Fragility
 articleSlug: strategy-decay-factor-fragility-regime-aware-portfolio-construction
 date: 2026-06-16
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -47,6 +47,6 @@ $$
 - Don't over-optimize for regime neutrality: factor premiums exist to compensate for un-hedged structural risk, and stripping that away just replicates the risk-free rate.
 
 ## Related Reading
+
 - [Strategy Decay & Factor Fragility: A Quantitative Framework for Regime-Aware Portfolio Construction](/articles/strategy-decay-factor-fragility-regime-aware-portfolio-construction)
 - [Watch on YouTube](https://youtu.be/oD_Ki-sDNzM)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQu42JJI4PlB8yjnB95qdkk8yOIC6tVvlrWkwtEVylWMzfFA2Jl56TDudeGJPKKKCmoHoGnb-hM7RkM/pub)

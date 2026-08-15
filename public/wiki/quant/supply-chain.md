@@ -1,4 +1,11 @@
-# Theta.md: Cross-Industry Supply Chain Signal Analysis
+---
+path: quant/supply-chain
+title: Theta.md: Cross-Industry Supply Chain Signal Analysis
+articleSlug: supply-chain
+date: 2026-04-13
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 An independent quant platform tackling one of finance's hardest problems — isolating genuine cross-industry supply chain signals from market noise using rigorous multi-factor validation, the Bullwhip Effect, and asymmetric information pricing frameworks.
@@ -26,3 +33,8 @@ Supply chain data inherently possesses asymmetric information properties. The de
 
 ### The Inefficiency Window
 Quantitative models aim to exploit this window by executing trades based on the physical data before the broader market reprices the asset based on the lagging financial data. The speed and accuracy of the data ingestion and modeling pipeline determine the magnitude of the capture.
+
+## Related Reading
+
+- [Theta.md: Cross-Industry Supply Chain Signal Analysis](/articles/supply-chain)
+- [Watch on YouTube](https://youtu.be/TQLZWeYUYyQ)

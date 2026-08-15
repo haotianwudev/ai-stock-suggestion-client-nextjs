@@ -1,4 +1,11 @@
-# Advanced Dynamics of Correlation in Quantitative Finance
+---
+path: quant/advanced-dynamics-correlation-quantitative-finance
+title: Advanced Dynamics of Correlation
+articleSlug: advanced-dynamics-correlation-quantitative-finance
+date: 2026-05-15
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to understanding dependency between multiple random variables in modern capital markets, moving beyond simple static Pearson correlation to advanced models that capture regime shifts, option-implied expectations, and tail dependence.
@@ -40,3 +47,8 @@ A comprehensive guide to understanding dependency between multiple random variab
 
 ## VIII. Synthesis
 Correlation is undeniably the most mathematically complex and systemically consequential parameter in quantitative finance. Because financial assets co-move nonlinearly and asymmetrically, financial mathematics has permanently evolved toward dynamic regime-switching models and tail-dependent copulas.
+
+## Related Reading
+
+- [Advanced Dynamics of Correlation in Quantitative Finance](/articles/advanced-dynamics-correlation-quantitative-finance)
+- [Watch on YouTube](https://youtu.be/NC4QwRw8rAA)

@@ -1,9 +1,9 @@
 ---
 path: macro/multi-asset-strategy-peak-valuations
-title: "Multi-Asset Strategy for Peak Valuations and Monetary Easing"
+title: Multi-Asset Strategy for Peak Valuations and Monetary Easing
 articleSlug: navigating-inflection-point-multi-asset-strategy-peak-valuations
 date: 2025-09-06
-labels: [Macro]
+labels: ["Macro"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ Elevated volatility around a Fed pivot inflates option premiums, creating a favo
 
 - [Navigating the Inflection Point: Multi-Asset Strategy for Peak Valuations](/articles/navigating-inflection-point-multi-asset-strategy-peak-valuations)
 - [Watch on YouTube](https://youtu.be/7oFcs_pkygU)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTibgOHZsgsi_1tVoG0LuoJtLUNgp7157pr-VSO4BJ7oYc2MnXCqYK2fcCZw-au_Dp-36z4He8utmVa/pub)

@@ -1,9 +1,9 @@
 ---
 path: finance101/retirement-insurance-products-annuities-ltc-lirp
-title: "Annuities, LTC Insurance, and LIRPs: Risk Transfer vs. Investment Return"
+title: Annuities, LTC Insurance, and LIRPs: Risk Transfer vs. Investment Return
 articleSlug: quantitative-analysis-insurance-products-retirement-security
 date: 2025-11-04
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -50,4 +50,4 @@ Annuities, long-term care (LTC) insurance, and permanent life insurance are freq
 ## Related Reading
 
 - [A Quantitative Analysis of Insurance Products for Retirement Security](/articles/quantitative-analysis-insurance-products-retirement-security) — full article with detailed cost tables and the retirement insurance decision matrix.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ4iNpMbZNHU76OhWJ0DmTKu-b20ZPKM-tTDXqtMqVspNSb-K4L4_ucVYO35w0NaIjbnU3XgASUszq0/pub)
+- [Watch on YouTube](https://youtu.be/W22VVkVoxEY)

@@ -3,7 +3,7 @@ path: option-strategy/variance-risk-premium
 title: Variance Risk Premium
 articleSlug: mastering-spx-option-selling-strategies-variance-risk-premium
 date: 2026-07-18T00:00:00.000Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -32,5 +32,6 @@ $$
 - The 200-Day SMA serves as a crucial binary switch to turn off the strategy during structural bear markets.
 
 ## Related Reading
+
 - [Mastering SPX Option Selling Strategies: A Quantitative Guide to Harvesting the Variance Risk Premium](/articles/mastering-spx-option-selling-strategies-variance-risk-premium)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTZefseAjdi7leNybGju5o6IrsRShhSICTjSvRyKWU3fCcFwrFXMdL0bZQWyMTGo8v1X7G6FYAle_pD/pub)
+- [Watch on YouTube](https://youtu.be/uWmPazdgV4Q)

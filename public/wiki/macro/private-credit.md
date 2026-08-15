@@ -3,7 +3,7 @@ path: macro/private-credit
 title: Architecture of Private Credit
 articleSlug: architecture-private-credit-structural-mechanics-vulnerabilities
 date: 2026-03-03T00:00:00Z
-labels: [QUANT, FINANCE101]
+labels: ["QUANT", "FINANCE101"]
 related: []
 ---
 
@@ -40,6 +40,6 @@ Unlike 2008, private credit is funded by locked-up capital rather than flighty d
 - **The Denominator Effect**: In a public market crash, institutional investors' portfolio denominators shrink, breaching private credit allocation limits. Unable to sell illiquid private loans, they are forced into a "fire sale" of liquid public assets (Treasuries, equities), violently transmitting the shadow banking shock into the broader global economy.
 
 ## Related Reading
+
 - [The Architecture of Private Credit: Structural Mechanics, Emerging Vulnerabilities, and Systemic Implications](/articles/architecture-private-credit-structural-mechanics-vulnerabilities)
 - [Watch on YouTube](https://youtu.be/9qNl3AyDkO0)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSmqWrrW0icyvUm1rILW98j3WNAvYcSTF0zip4Q6IjfV1dF67MYO5UbG7C5-aVcNS_QVlEvQHy_s4_i/pub)

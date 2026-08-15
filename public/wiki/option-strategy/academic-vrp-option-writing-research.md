@@ -1,9 +1,9 @@
 ---
 path: option-strategy/academic-vrp-option-writing-research
-title: "Academic Foundations of Option Writing: VRP, Performance, and Tail Risk"
+title: Academic Foundations of Option Writing: VRP, Performance, and Tail Risk
 articleSlug: academic-foundations-option-writing-research-review
 date: 2025-09-21
-labels: [Options, Quantitative Finance]
+labels: ["Options", "Quantitative Finance"]
 related: []
 ---
 
@@ -50,4 +50,3 @@ An emerging, robust hedging heuristic: build a portfolio of the cheapest availab
 ## Related Reading
 
 - [The Academic Foundations of Option Writing](/articles/academic-foundations-option-writing-research-review)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQH0mb1siuXzDAZaPOwS2fjvmYIEzM-CqDOwDgZa0hsp7au8HeZbXUi4feyBPVfcwxnggelLmlMhbZJ/pub)

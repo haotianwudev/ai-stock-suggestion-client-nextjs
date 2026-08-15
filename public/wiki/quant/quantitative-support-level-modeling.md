@@ -1,9 +1,9 @@
 ---
 path: quant/quantitative-support-level-modeling
-title: "Quantitative Support Level Modeling: From Heuristic to Machine Learning"
+title: Quantitative Support Level Modeling: From Heuristic to Machine Learning
 articleSlug: quantitative-support-level-modeling-machine-learning
 date: 2025-08-06
-labels: [Quantitative Finance, Stock Analysis]
+labels: ["Quantitative Finance", "Stock Analysis"]
 related: []
 ---
 
@@ -72,4 +72,3 @@ Rigorous backtesting must guard against look-ahead bias, overfitting, and surviv
 ## Related Reading
 
 - [Quantitative Support Level Modeling](/articles/quantitative-support-level-modeling-machine-learning)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQZmL_LmAMDLAhzil24nhvf7wb3MoOVgUYNI7VgjGzybyxBwepDs_rKXmuYPgnhNCGU-3gc1rQwoVrQ/pub)

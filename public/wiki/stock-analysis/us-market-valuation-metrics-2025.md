@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/us-market-valuation-metrics-2025
-title: "U.S. Market Valuations: Reading the Overvaluation Signals"
+title: U.S. Market Valuations: Reading the Overvaluation Signals
 articleSlug: navigating-rarified-air-quantitative-analysis-us-market-valuations
 date: 2025-09-29
-labels: [Stock Analysis, Macro]
+labels: ["Stock Analysis", "Macro"]
 related: []
 ---
 
@@ -46,4 +46,3 @@ Valuation extremes have preceded weak forward returns before: Shiller P/E of 32.
 
 - [Navigating Rarified Air: A Quantitative Analysis of U.S. Market Valuations](/articles/navigating-rarified-air-quantitative-analysis-us-market-valuations)
 - [Watch on YouTube](https://youtu.be/RckAyn0Ia3k)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTjyvxENqOtjQHi2m54YPolNioEUyF7RS6KNOY_8DidzauE_opcghMRYhPH2DZfMX_RpYsrIpqNQvOH/pub)

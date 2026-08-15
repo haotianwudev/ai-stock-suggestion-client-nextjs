@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/analyst-consensus-target-prices
-title: "Decoding the Analyst Consensus: Target Prices & Conflicts"
+title: Decoding the Analyst Consensus: Target Prices & Conflicts
 articleSlug: decoding-analyst-consensus-target-prices-conflicts-epistemology
 date: 2025-12-01
-labels: [Stock Analysis, Finance 101]
+labels: ["Stock Analysis", "Finance 101"]
 related: []
 ---
 
@@ -61,4 +61,4 @@ Never use an analyst's price target to size margin/leverage. The investor's mist
 ## Related Reading
 
 - [Decoding the Analyst Consensus: Target Prices, Conflicts, and the Epistemology of Wall Street Research](/articles/decoding-analyst-consensus-target-prices-conflicts-epistemology) — full article with the TipRanks/Bloomberg platform comparison and complete tactical playbook.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT1TJ8aqQAjEejZm3IBAYvLW-BCXsfAsZpNyjevu38qHU2OMckyXkGxe7qUm_mMJxSTOoqia0fIcz-x/pub)
+- [Watch on YouTube](https://youtu.be/G3s64sExKpg)

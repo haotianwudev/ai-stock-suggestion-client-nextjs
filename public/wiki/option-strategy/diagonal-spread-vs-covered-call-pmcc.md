@@ -1,9 +1,9 @@
 ---
 path: option-strategy/diagonal-spread-vs-covered-call-pmcc
-title: "Diagonal Spread vs. Covered Call: A Strategic and Quantitative Comparison"
+title: Diagonal Spread vs. Covered Call: A Strategic and Quantitative Comparison
 articleSlug: diagonal-spread-vs-covered-call-strategic-quantitative-comparison
 date: 2025-08-02
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -65,4 +65,3 @@ The covered call is net short vega — it wants IV to fall, so the ideal entry i
 ## Related Reading
 
 - [Diagonal Spread vs. Covered Call](/articles/diagonal-spread-vs-covered-call-strategic-quantitative-comparison)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTp8O3f6sN5Q0eM06kjFAao-p3NWN6tpk_iZF-I32pAzpIVaE0Vt4cpmVluAlfqbyHPm8dy4xpHasCO/pub)

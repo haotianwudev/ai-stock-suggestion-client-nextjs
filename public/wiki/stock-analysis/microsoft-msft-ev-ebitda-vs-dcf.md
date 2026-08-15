@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/microsoft-msft-ev-ebitda-vs-dcf
-title: "MSFT: EV/EBITDA vs DCF"
+title: MSFT: EV/EBITDA vs DCF
 articleSlug: deep-research-microsoft-valuation-analysis
 date: 2025-06-21
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -61,4 +61,4 @@ At its current valuation, Microsoft is a &ldquo;HOLD&rdquo; for existing investo
 ## Related Reading
 
 - [MSFT: EV/EBITDA vs DCF](/articles/deep-research-microsoft-valuation-analysis)
-- [Watch on YouTube](https://www.youtube.com/watch?v=7_cJfQ_qKmM)
+- [Watch on YouTube](https://youtu.be/7_cJfQ_qKmM)

@@ -3,7 +3,7 @@ path: options/iron-condor
 title: The Iron Condor
 articleSlug: iron-condor-quantitative-delta-neutral-premium-harvesting
 date: 2026-01-02
-labels: [OPTIONS, QUANT]
+labels: ["OPTIONS", "QUANT"]
 related: []
 ---
 
@@ -37,6 +37,6 @@ Synthetically, an Iron Condor is the simultaneous execution of two vertical cred
 - **Dividend Risk:** Short calls risk early assignment before the ex-dividend date if the Put Extrinsic Value < Dividend Amount. Trade European-style indices (SPX, NDX) to mitigate this.
 
 ## Related Reading
+
 - [The Iron Condor: A Quantitative Approach to Delta-Neutral Premium Harvesting](/articles/iron-condor-quantitative-delta-neutral-premium-harvesting)
 - [Watch on YouTube](https://youtu.be/LC1qM2ps6NY)
-- [Read Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQWaG85W3EdnnL4ZeS-Ep3ugP2yUnla9PmPZ9ZP2n6XjkrlmpuBgHmbfYSjrkoLUe-Ljq9GO-WtzjgK/pub)

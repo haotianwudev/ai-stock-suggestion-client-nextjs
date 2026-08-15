@@ -1,9 +1,9 @@
 ---
 path: form13f/druckenmiller-doctrine-asymmetric-returns
-title: "The Druckenmiller Doctrine: Mastering Asymmetric Returns"
+title: The Druckenmiller Doctrine: Mastering Asymmetric Returns
 articleSlug: druckenmiller-doctrine-asymmetric-returns
 date: 2025-08-04
-labels: [Form 13F]
+labels: ["Form 13F"]
 related: []
 ---
 
@@ -62,4 +62,3 @@ His AI stance: &ldquo;overhyped short-term, under-hyped long-term&rdquo; — pro
 ## Related Reading
 
 - [The Druckenmiller Doctrine](/articles/druckenmiller-doctrine-asymmetric-returns)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQJdbfXhW73l8IPVbu9Q_gKLrQq9OI5LTh1Qns2SgDdVC4Va50krNsd-9Njwy7PUoEXaA1loFB4yO0U/pub)

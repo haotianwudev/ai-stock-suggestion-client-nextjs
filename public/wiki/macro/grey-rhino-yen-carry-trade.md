@@ -1,9 +1,9 @@
 ---
 path: macro/grey-rhino-yen-carry-trade
-title: "The Grey Rhino: Yen Carry Trade Unwind"
+title: The Grey Rhino: Yen Carry Trade Unwind
 articleSlug: grey-rhino-monetary-divergence-yen-carry-trade-unwind
 date: 2025-12-07
-labels: [Macro Views]
+labels: ["Macro Views"]
 related: []
 ---
 
@@ -42,4 +42,4 @@ The Bessent Hypothesis argues that the Bank of Japan hiking rates while the US F
 ## Related Reading
 
 - [The Grey Rhino: Monetary Divergence and the Yen Carry Trade Unwind](/articles/grey-rhino-monetary-divergence-yen-carry-trade-unwind) — full article with the KPI dashboard, divergence timeline, and complete doom-loop breakdown.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRJOwkRSpdTDEXDsMu6BMhia2EkzosRPCqPAzGT-qofQgqNY4di6sosdDIzEZXszWip_TpA5-JAkbp8/pub)
+- [Watch on YouTube](https://youtu.be/zhCdnpC3eag)

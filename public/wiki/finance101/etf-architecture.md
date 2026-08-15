@@ -36,6 +36,6 @@ The **Heartbeat Trade** involves three steps:
 - **USO Anomaly & Futures Contango**: Commodity ETFs using futures contracts can suffer from negative roll yield when in contango.
 
 ## Related Reading
-- [Watch on YouTube](https://youtu.be/sjPhkcigAU8)
+
 - [The Architecture of Exchange-Traded Funds: Mechanisms, Trading Strategies, and Structural Risks](/articles/architecture-exchange-traded-funds-mechanisms-trading-strategies-structural-risks)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ59vFSBpEsVu-mGv-nXUxSoaXBNeftaJtQqdh0trPJtwJLMLPeb5t6DPckKd_htxCNNUnPd3z4sYjO/pub)
+- [Watch on YouTube](https://youtu.be/sjPhkcigAU8)

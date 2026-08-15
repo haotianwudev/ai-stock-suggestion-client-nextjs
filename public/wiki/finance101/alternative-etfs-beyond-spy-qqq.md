@@ -1,9 +1,9 @@
 ---
 path: finance101/alternative-etfs-beyond-spy-qqq
-title: "ETFs Beyond SPY and QQQ"
+title: ETFs Beyond SPY and QQQ
 articleSlug: alternative-etfs-beyond-spy-qqq
 date: 2025-06-30
-labels: [Stock Analysis, Finance 101]
+labels: ["Stock Analysis", "Finance 101"]
 related: []
 ---
 

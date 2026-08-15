@@ -1,9 +1,9 @@
 ---
 path: ai-ml/reinforcement-learning-quant-trading
-title: "Reinforcement Learning in Quantitative Trading"
+title: Reinforcement Learning in Quantitative Trading
 articleSlug: reinforcement-learning-quantitative-trading-optimal-action
 date: 2025-09-19
-labels: [AI/ML, Quantitative Finance]
+labels: ["AI/ML", "Quantitative Finance"]
 related: []
 ---
 
@@ -66,4 +66,3 @@ Multi-Agent RL (MARL) for more realistic market simulators capturing liquidity c
 
 - [Reinforcement Learning in Quantitative Trading: From Prediction to Optimal Action](/articles/reinforcement-learning-quantitative-trading-optimal-action)
 - [Watch on YouTube](https://youtu.be/sSu4emL_mOU)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSExzba-zReWxWXE_hTCwxq0j9H2Cf52KplQm5sP4LpcX_0Li2GK98Z-MOFPxuTp_bWp6HH8aW74wwm/pub)

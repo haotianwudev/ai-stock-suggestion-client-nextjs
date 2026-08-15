@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/nvidia-crush-despite-beat
-title: "NVIDIA: Why the Stock Fell Despite Beating Estimates"
+title: NVIDIA: Why the Stock Fell Despite Beating Estimates
 articleSlug: nvidia-deep-dive-crush-despite-beat-analyzing-valuation
 date: 2025-11-23
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -47,4 +47,4 @@ NVIDIA delivered a &ldquo;beat and raise&rdquo; Q3 FY26 quarter — yet the stoc
 ## Related Reading
 
 - [NVIDIA Deep Dive: Why the 'Crush' Despite the Beat? Analyzing the $3.6T Valuation](/articles/nvidia-deep-dive-crush-despite-beat-analyzing-valuation) — full article with the complete fundamentals table and institutional flow tracker.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQo1ostYEF8L68Ypm6WGTcLHTd-SAeG5y1-WOOAg_58njxJt2hHB5udlwUleHr3CRDDq0xMD4o8AAj9/pub)
+- [Watch on YouTube](https://youtu.be/hkpuKl-ucd4)

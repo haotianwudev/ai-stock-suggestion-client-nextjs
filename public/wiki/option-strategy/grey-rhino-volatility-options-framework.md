@@ -1,9 +1,9 @@
 ---
 path: option-strategy/grey-rhino-volatility-options-framework
-title: "Trading a Grey Rhino Sell-off: A Phased Options Framework"
+title: Trading a Grey Rhino Sell-off: A Phased Options Framework
 articleSlug: options-strategy-report-october-10-market-event
 date: 2025-10-12
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -46,5 +46,5 @@ Not every sell-off is a Black Swan. A "Grey Rhino" is a highly probable, high-im
 
 ## Related Reading
 
-- [Options Strategy to Beat Black Swan and Grey Rhino](/articles/options-strategy-report-october-10-market-event) — full article with worked SPY spread/put examples and the strategy comparison matrix.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRjnmSNJPBN0qAsNoOuSRHFIWrtn5_o1lxNm1eIB1kwsWpwP9Yf6dDHIbEJjcmr9MDkZEdbjGW5iiSB/pub)
+- [Options Strategy to beat Black Swan and Grey Rhino](/articles/options-strategy-report-october-10-market-event) — full article with worked SPY spread/put examples and the strategy comparison matrix.
+- [Watch on YouTube](https://youtu.be/UTPVKLS87zg)

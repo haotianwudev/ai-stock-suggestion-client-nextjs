@@ -1,4 +1,11 @@
-# Architecting Alpha: The Evolution of RAG in Quantitative Finance
+---
+path: quant/architecting-alpha-rag-evolution-quantitative-finance
+title: Architecting Alpha: The Evolution of RAG in Quantitative Finance
+articleSlug: architecting-alpha-rag-evolution-quantitative-finance
+date: 2026-04-15
+labels: ["Generative AI"]
+related: []
+---
 
 ## Overview
 A deep dive into why Retrieval-Augmented Generation changed capital markets, where it catastrophically fails, and the autonomous Agentic future of the enterprise knowledge bank. From naive RAG to multi-agent topologies and the Galaxy convergence architecture.
@@ -23,3 +30,8 @@ To solve these structural failures, quantitative hedge funds have moved from "Na
 The next frontier is moving from passive retrieval to autonomous "Agentic AI" systems. An Agentic RAG system acts like a synthetic junior analyst.
 - **Multi-Agent Topologies:** Instead of one monolithic LLM, tasks are routed to specialized agents. A "Retrieval Agent" fetches data, a "Code Execution Agent" runs Python scripts for calculations, and a "Synthesis Agent" writes the final report.
 - **Dynamic Tool Invocation:** The system recognizes when it needs external capabilities, writing SQL queries to pull structured data from Snowflake while simultaneously vector-searching unstructured PDFs.
+
+## Related Reading
+
+- [Architecting Alpha: The Evolution of RAG in Quantitative Finance](/articles/architecting-alpha-rag-evolution-quantitative-finance)
+- [Watch on YouTube](https://youtu.be/Tjf1K2id4JI)

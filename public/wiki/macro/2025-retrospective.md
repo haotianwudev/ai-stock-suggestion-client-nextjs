@@ -29,6 +29,6 @@ The passive "buy and hold" strategies are ill-suited for this environment.
 - **Fed Independence**: The nomination of Powell's successor is the critical event for bonds.
 
 ## Related Reading
-- [The 2025 Financial Market Retrospective](/articles/2025-financial-market-retrospective-seven-pivotal-events)
+
+- [The 2025 Financial Market Retrospective: Seven Pivotal Events That Redefined Modern Trading](/articles/2025-financial-market-retrospective-seven-pivotal-events)
 - [Watch on YouTube](https://youtu.be/bt2O3ngqI_8)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRYVm-1rnmqQVydva_rDpFm7w0Wd4YL2PNG3h-tnS7CvyHcxVkqmV9zJd487Q1BpROW5Ey-oweieeWR/pub)

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/options-wheel-strategy-quantitative-rules
-title: "The Options Wheel: A Rules-Based Trading Plan"
+title: The Options Wheel: A Rules-Based Trading Plan
 articleSlug: options-wheel-trading-plan-quantitative-approach
 date: 2025-10-11
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -61,4 +61,4 @@ The Wheel performs best in **neutral, sideways, or mildly bullish markets**, whe
 ## Related Reading
 
 - [Options Wheel Trading Plan: A Quantitative Approach](/articles/options-wheel-trading-plan-quantitative-approach) — full article with the interactive wheel-cycle visualization and worked put/call scenario tables.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTrNZ1-3VX4fwU3wlmIwgjvpUKbePjGbOAttYmqO1QTHlNDHjPUeA-hTC4SpWv-W4ZicYLR-eHB9Wek/pub)
+- [Watch on YouTube](https://youtu.be/GGKItsjV-L8)

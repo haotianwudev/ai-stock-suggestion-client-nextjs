@@ -3,7 +3,8 @@ path: quant/kelly-criterion
 title: The Kelly Criterion
 articleSlug: kelly-criterion-optimal-position-sizing-information-theory
 date: 2026-06-23
-labels: [QUANT]
+labels: ["QUANT"]
+related: []
 ---
 
 ## Overview
@@ -34,5 +35,6 @@ Where **μ** is expected return, **r** is the risk-free rate, and **σ²** is va
 - Institutions almost never trade "Full Kelly." The psychological tolerance required to endure the massive drawdowns associated with Full Kelly makes Fractional Kelly the practical standard.
 
 ## Related Reading
+
 - [The Kelly Criterion: Optimal Position Sizing from Information Theory to Practice](/articles/kelly-criterion-optimal-position-sizing-information-theory)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRYRSb1Buipf_L70N9WiFFK8giTqIcy6v_i7iOH9Q7QUBiYxutn8fhCvs0Ky7WoMcUjy2MVPQyBmGdD/pub)
+- [Watch on YouTube](https://youtu.be/lLaqaSzIlP4)

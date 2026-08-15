@@ -1,9 +1,9 @@
-﻿---
+---
 path: stock-analysis/spacex-systemic-risk
 title: SpaceX Systemic Risk & Public Market Integration
 articleSlug: spacex-public-market-integration-systemic-risk-analysis
 date: 2026-07-21
-labels: [QUANT, STOCK_ANALYSIS]
+labels: ["QUANT", "STOCK_ANALYSIS"]
 related: []
 ---
 
@@ -48,5 +48,5 @@ Starlink's 8,100+ satellite constellation serves 10.3M subscribers but relies on
 
 ## Related Reading
 
-- [The SpaceX Public Market Integration — Full Article](/articles/spacex-public-market-integration-systemic-risk-analysis)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vShCo6mDy-nCHZ6GwtJZF58nXNPEGumVeqwVdtMPXbAjGoCylKbThW3txSpk6w4SPFZGGCiYq_YquwZ/pub)
+- [The SpaceX Public Market Integration: Index Weighting, Structural Drawdown Vulnerabilities, and Systemic Failure Consequences of the $1.77 Trillion Mega-IPO](/articles/spacex-public-market-integration-systemic-risk-analysis)
+- [Watch on YouTube](https://youtu.be/48MkY66hXfA)

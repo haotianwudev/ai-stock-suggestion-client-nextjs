@@ -3,7 +3,7 @@ path: quant/mastering-buffered-yield-strategies-defined-outcome-investing
 title: Mastering Buffered Yield Strategies
 articleSlug: mastering-buffered-yield-strategies-defined-outcome-investing
 date: 2026-01-30
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -38,6 +38,6 @@ Whether using a bank note or an ETF, the underlying mechanics involve four legs 
 - **The Annual Reset:** Options expire annually, and rolling into new contracts relies on current volatility (VIX), which can result in lower caps if VIX is low.
 
 ## Related Reading
+
 - [Mastering Buffered Yield Strategies: The Complete Guide to Defined Outcome Investing](/articles/mastering-buffered-yield-strategies-defined-outcome-investing)
 - [Watch on YouTube](https://youtu.be/i1OT9W7xp9w)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRFymm4041wNHJCk1t0g_qlHaPRV9v1ZVnSpMeZhpgOKuDsDIRG1nU0VcPhfJJnGy_WyDDWl2IR4zEQ/pub)

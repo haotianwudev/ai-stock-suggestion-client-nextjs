@@ -1,9 +1,9 @@
 ---
 path: ai-ml/rag-metadata-filtering-architectures
-title: "Architecting Advanced RAG Systems: Metadata-Driven Filtering"
+title: Architecting Advanced RAG Systems: Metadata-Driven Filtering
 articleSlug: rag-metadata-filtering-advanced-architectures
 date: 2025-07-17
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 
@@ -79,4 +79,3 @@ NL-to-SQL's fundamental weakness is executing LLM-generated code, which creates 
 ## Related Reading
 
 - [RAG Systems with Metadata-Driven Filtering](/articles/rag-metadata-filtering-advanced-architectures)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSLBNWa20tXhfpdDaAtABII58DpPHFZ48Fy2arZ3pt31rLWx2YDwmODe_8sWeLWEWDvmvw9BBKfEk9G/pub)

@@ -1,9 +1,9 @@
 ---
 path: finance101/core-satellite-etf-strategy
-title: "Core-Satellite Investing: Balancing Benchmark ETFs with High-Growth Alternatives"
+title: Core-Satellite Investing: Balancing Benchmark ETFs with High-Growth Alternatives
 articleSlug: beyond-benchmarks-high-growth-etf-alternatives-qqq-voo
 date: 2025-11-12
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -38,4 +38,4 @@ VOO (S&P 500) and QQQ (Nasdaq-100) dominate ETF flows for good reason: low costs
 ## Related Reading
 
 - [Beyond the Benchmarks: A Deep Analysis of High-Growth ETF Alternatives to QQQ and VOO](/articles/beyond-benchmarks-high-growth-etf-alternatives-qqq-voo) — full article with the interactive ETF comparison tool.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSPuWvOuMwO7xi43iRaR_lOYjXFHr3QDhVpt2jxNyyE2CRf97THUUkINfR6BLwGA3tveFPI3U2BR79U/pub)
+- [Watch on YouTube](https://youtu.be/WTQIQb1TLns)

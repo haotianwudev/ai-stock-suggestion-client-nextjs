@@ -1,9 +1,9 @@
 ---
 path: option-strategy/leap-put-selling
-title: "Selling LEAP Puts: Institutional Mechanics & Retail Traps"
+title: Selling LEAP Puts: Institutional Mechanics & Retail Traps
 articleSlug: selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage
 date: 2025-12-13
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -44,4 +44,4 @@ Because of the illiquidity trap, a LEAP put seller should assume they're committ
 ## Related Reading
 
 - [Selling Long-Dated Put Options (LEAPs): Institutional Mechanics, Volatility Arbitrage, and the Retail Traps](/articles/selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage) — full article with the complete Greek comparison table, illiquidity data, and practical execution framework.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQvTNTE3JeoNILFL-FzOK2gUHdhk3ZG7FJCcILRgbVNA9YX1kPEWexRtWBrotSq9eh9KNjUsMrLN6-p/pub)
+- [Watch on YouTube](https://youtu.be/pdfm0osP4Ow)

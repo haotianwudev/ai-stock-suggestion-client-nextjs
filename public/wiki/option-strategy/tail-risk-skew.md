@@ -3,7 +3,7 @@ path: option-strategy/tail-risk-skew
 title: Quantitative Analysis of Tail Risk
 articleSlug: quantitative-analysis-tail-risk-cboe-skew-nations-skewdex
 date: 2026-03-07T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -43,6 +43,6 @@ $$
 $$
 
 ## Related Reading
+
 - [Quantitative Analysis of Tail Risk: CBOE SKEW and Nations SkewDex Deep Dive](/articles/quantitative-analysis-tail-risk-cboe-skew-nations-skewdex)
 - [Watch on YouTube](https://youtu.be/2LL3GzaFPWw)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTpMdTpkBDga5kYybZZ9q8C8UfxTupRUqTadAoUxDzu1mJheLbmkRw3wTzr9hMNDVufuCx1C0XbA4zI/pub)

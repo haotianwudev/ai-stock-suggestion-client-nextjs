@@ -1,9 +1,9 @@
 ---
 path: quant/hedge-fund-alternative-data-alpha
-title: "How Hedge Funds Use Alternative Data for Alpha"
+title: How Hedge Funds Use Alternative Data for Alpha
 articleSlug: hedge-fund-data-driven-edge-alpha-generation
 date: 2025-09-04
-labels: [Quantitative Finance, AI/ML]
+labels: ["Quantitative Finance", "AI/ML"]
 related: []
 ---
 
@@ -66,4 +66,3 @@ High-end institutional data platforms cost from roughly $12,000/user/year (FactS
 
 - [How Hedge Funds Use Alternative Data for Alpha](/articles/hedge-fund-data-driven-edge-alpha-generation)
 - [Watch on YouTube](https://youtu.be/U5iJM-xrGLs)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQAeRCVqt5_0WhENYxf9pjqHIu8lALTFyuCQAHaQrTVOGPJRl8msRMloUvT6tVfKzSKowYUq-tCvt-h/pub)

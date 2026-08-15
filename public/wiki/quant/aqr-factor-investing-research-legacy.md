@@ -1,9 +1,9 @@
 ---
 path: quant/aqr-factor-investing-research-legacy
-title: "The Architecture of Quantitative Insight: AQR's Research Legacy"
+title: The Architecture of Quantitative Insight: AQR's Research Legacy
 articleSlug: architecture-quantitative-insight-aqr-research-legacy
 date: 2025-08-14
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ AQR Capital Management's 25+ years of published research shaped how factor inves
 ## Related Reading
 
 - [The Architecture of Quantitative Insight: AQR's Research Legacy](/articles/architecture-quantitative-insight-aqr-research-legacy)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ_JV_qjhSYRA7pthINbLhOKrgCpkRDg8D4jgC8yGh-LObpjZvUMRstL1UyQ0Bed-jEU6LvFy-GtkXZ/pub)

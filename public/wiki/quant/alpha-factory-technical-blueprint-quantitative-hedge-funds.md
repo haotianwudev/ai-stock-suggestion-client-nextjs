@@ -1,4 +1,11 @@
-# The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds
+---
+path: quant/alpha-factory-technical-blueprint-quantitative-hedge-funds
+title: The Alpha Factory Blueprint
+articleSlug: alpha-factory-technical-blueprint-quantitative-hedge-funds
+date: 2026-05-20
+labels: ["Quantitative Finance", "AI & Machine Learning"]
+related: []
+---
 
 ## Overview
 A comprehensive technical deep-dive into the architecture, data infrastructure, machine learning pipelines, and risk management systems that power modern quantitative hedge funds. 
@@ -32,3 +39,8 @@ A comprehensive technical deep-dive into the architecture, data infrastructure, 
 - **Factor Models:** Solves the curse of dimensionality by decomposing risk into systematic factors (Market, Momentum, Value, Sector) and idiosyncratic risk.
 - **Constraints:** Implements strict leverage limits, turnover constraints, and neutrality (Dollar, Beta, Sector) to prevent blowout risk.
 - **Tail Risk (CVaR):** Optimizes for Expected Shortfall rather than simple VaR, accounting for the severity of extreme tail events.
+
+## Related Reading
+
+- [The Alpha Factory: A Technical Blueprint for Modern Quantitative Hedge Funds](/articles/alpha-factory-technical-blueprint-quantitative-hedge-funds)
+- [Watch on YouTube](https://youtu.be/tV8_MOdpPVQ)

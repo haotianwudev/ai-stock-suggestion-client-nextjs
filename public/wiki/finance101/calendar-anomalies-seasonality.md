@@ -1,9 +1,9 @@
 ---
 path: finance101/calendar-anomalies-seasonality
-title: "Seasons of the Market: Calendar Anomalies and Trading Adages"
+title: Seasons of the Market: Calendar Anomalies and Trading Adages
 articleSlug: seasons-market-calendar-anomalies-trading-adages
 date: 2025-08-05
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -59,4 +59,3 @@ Strength clusters in Q4 (Nov, Dec) and April; September is the clear weak point.
 ## Related Reading
 
 - [Seasons of the Market: Calendar Anomalies and Trading Adages](/articles/seasons-market-calendar-anomalies-trading-adages)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQaZMdRYj-8Ow0hd5jLxrtxpfaq6-VTpCUWoPYIH1bsWKlXeF5wHvXrsNfvEnRnn9Um5VA47tdCEJP2/pub)

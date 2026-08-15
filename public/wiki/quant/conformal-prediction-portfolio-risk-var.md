@@ -1,4 +1,11 @@
-# Conformal Prediction for Portfolio Risk: Beyond VaR
+---
+path: quant/conformal-prediction-portfolio-risk-var
+title: Conformal Prediction for Portfolio Risk
+articleSlug: conformal-prediction-portfolio-risk-var
+date: 2026-05-26
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A distribution-free, mathematically rigorous alternative to standard Value at Risk (VaR) models. This article covers conformal prediction mechanics, Conformal Risk Control (CRC), and Regime-Weighted Conformal (RWC) for adaptive capital allocation. Based on Marc Schmitt's research on "Taming Tail Risk in Financial Markets".
@@ -34,3 +41,8 @@ Standard conformal prediction assumes stationarity (exchangeability), which fail
 ## Advantages & Limitations
 - **Advantages:** Distribution-free, valid for finite samples, adapts to regimes automatically, model-agnostic, and optimizes true expected loss (CRC).
 - **Limitations:** Still requires some intra-regime stationarity, needs large calibration sets for extreme tail estimation (e.g., 99% VaR), is highly dependent on accurate regime detection, and can be computationally expensive for high-frequency updates.
+
+## Related Reading
+
+- [Conformal Prediction for Portfolio Risk: Beyond VaR](/articles/conformal-prediction-portfolio-risk-var)
+- [Watch on YouTube](https://youtu.be/HP6o-90qKos)

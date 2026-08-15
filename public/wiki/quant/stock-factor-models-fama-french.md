@@ -1,9 +1,9 @@
 ---
 path: quant/stock-factor-models-fama-french
-title: "Stock Factor Models: From CAPM to the Fama-French Five-Factor Model"
+title: Stock Factor Models: From CAPM to the Fama-French Five-Factor Model
 articleSlug: stock-factor-models-comprehensive-guide
 date: 2025-10-16
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -62,4 +62,4 @@ Over 315 factors have been documented in academic literature (Harvey, Liu & Zhu,
 ## Related Reading
 
 - [Stock Factor Models: Decomposing Returns, Managing Risk, and Finding Alpha](/articles/stock-factor-models-comprehensive-guide) — full article with the APT vs. CAPM comparison table, ESG integration, and cross-asset factor correlations.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT739O8yXqdJbrXLJcycJs2RYSYPu6xZIckGy-e_JSWPR6JaZu6Xy4_-IvxtGZtrcEDaFV4w2sO1ZbK/pub)
+- [Watch on YouTube](https://youtu.be/z32X0C5F5JE)

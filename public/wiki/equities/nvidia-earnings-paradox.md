@@ -1,9 +1,9 @@
 ---
 path: equities/nvidia-earnings-paradox
-title: "The Nvidia Earnings Paradox (Feb 2026)"
+title: The Nvidia Earnings Paradox (Feb 2026)
 articleSlug: decoding-reversal-nvidia-february-2026-earnings-paradox
 date: 2026-02-28T00:00:00Z
-labels: [STOCK_ANALYSIS]
+labels: ["STOCK_ANALYSIS"]
 related: []
 ---
 
@@ -30,5 +30,6 @@ The drop was entirely driven by a "perfect storm" of market structure mechanics:
 The February 2026 Nvidia earnings reversal was not a fundamental failure, but a complex interaction of extreme options positioning, institutional rebalancing, and narrative exhaustion at peak valuation.
 
 ## Related Reading
-- [Decoding the Nvidia Reversal](/articles/decoding-reversal-nvidia-february-2026-earnings-paradox)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTq90wFjN-oH9bB-e0x4_bY2l27E6IqO_H8tZlU6H9-8Y1b_62M3Fq_k3M3H-Q5T0g/pub)
+
+- [Decoding the Reversal: Nvidia's February 2026 Earnings Paradox](/articles/decoding-reversal-nvidia-february-2026-earnings-paradox)
+- [Watch on YouTube](https://youtu.be/vuTmzLnjfYc)

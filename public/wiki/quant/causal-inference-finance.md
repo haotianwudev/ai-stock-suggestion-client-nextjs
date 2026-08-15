@@ -3,7 +3,7 @@ path: quant/causal-inference-finance
 title: Causal Inference in Finance
 articleSlug: structural-revolution-quantitative-finance
 date: 2026-08-08
-labels: [Quantitative Finance, AI & Machine Learning]
+labels: ["Quantitative Finance", "AI & Machine Learning"]
 related: []
 ---
 
@@ -23,18 +23,78 @@ Quantitative finance has historically relied on **associational** statistics —
 
 ## Formulas
 
-**DML orthogonalization** (given outcome Y, treatment T, high-dimensional covariates X):
-1. Cross-fit via ML: predict Y from X → Ŷ; predict T from X → T̂.
-2. Residualize: Y_res = Y − Ŷ; T_res = T − T̂.
-3. Neyman-orthogonal estimation: causal effect θ = OLS(Y_res ~ T_res).
+### 1. Pearl's Backdoor Adjustment (Do-Calculus)
 
-θ achieves root-n consistency despite the ML regularization bias in step 1 — the variance in T independent of X explains the variance in Y independent of X.
+While correlational models compute observational conditional probability $P(Y \mid X)$, causal models isolate the interventional distribution by blocking non-causal backdoor paths:
 
 $$
-\Sigma_{do}
+P(Y \mid \operatorname{do}(T = t)) = \sum_{X} P(Y \mid T = t, X = x) P(X = x)
 $$
 
-The **Interventional Covariance Matrix** replaces the standard Pearson correlation matrix in portfolio construction. It isolates structural dependencies by controlling for shared causal ancestors, instead of the raw correlations that notoriously converge toward 1.0 during market crashes.
+### 2. Double Machine Learning (DML) Partially Linear Model
+
+Given outcome asset return $Y$, treatment policy shock $D$, and high-dimensional confounder vector $X$:
+
+$$
+Y = \theta_0 D + g_0(X) + U, \quad \mathbb{E}[U \mid X, D] = 0
+$$
+
+$$
+D = m_0(X) + V, \quad \mathbb{E}[V \mid X] = 0
+$$
+
+**Robinson Residualization & Orthogonal Estimator:**
+Using ML cross-fitting to compute out-of-fold residuals $\tilde{Y} = Y - \hat{g}(X)$ and $\tilde{D} = D - \hat{m}(X)$:
+
+$$
+\hat{\theta} = \left( \frac{1}{n} \sum_{i=1}^n \tilde{D}_i^2 \right)^{-1} \left( \frac{1}{n} \sum_{i=1}^n \tilde{D}_i \tilde{Y}_i \right)
+$$
+
+The Neyman score condition $\mathbb{E}\left[ \left. \frac{\partial}{\partial \eta} \psi(W; \theta_0, \eta) \right|_{\eta = \eta_0} \right] = 0$ guarantees that $\hat{\theta}$ achieves $\sqrt{n}$-consistency and asymptotic normality even when nuisance functions $\hat{g}$ and $\hat{m}$ converge at slower non-parametric rates ($n^{-1/4}$).
+
+### 3. Continuous Acyclicity Constraint (NOTEARS)
+
+Transforms combinatorial DAG search into a continuous optimization problem using a differentiable trace exponential constraint:
+
+$$
+\min_{W \in \mathbb{R}^{d \times d}} \frac{1}{2n} \|X - X W\|_F^2 + \lambda \|W\|_1 \quad \text{s.t.} \quad h(W) = \operatorname{tr}\left(e^{W \circ W}\right) - d = 0
+$$
+
+Where $W \circ W$ is the Hadamard (element-wise) product and $\operatorname{tr}(e^A) = \sum_{k=0}^\infty \frac{\operatorname{tr}(A^k)}{k!}$.
+
+### 4. Linear Non-Gaussian Acyclic Model (LiNGAM)
+
+Exploits non-Gaussian asset returns and Independent Component Analysis (ICA) to uniquely identify causal arrow directionality without interventional experiments:
+
+$$
+X = B X + e = (I - B)^{-1} e, \quad e_i \sim \text{Non-Gaussian (mutually independent)}
+$$
+
+### 5. Deep Instrumental Variables (Deep IV)
+
+Overcomes unobserved confounding $U$ via exogenous instruments $Z$ ($\mathbb{E}[U \mid Z, X] = 0$) using two-stage neural networks to solve the non-linear operator:
+
+$$
+\mathbb{E}[Y \mid Z, X] = \int g(d, X) \, dP(d \mid Z, X)
+$$
+
+### 6. The Interventional Covariance Matrix ($\Sigma_{do}$)
+
+Replaces the fragile Pearson sample covariance matrix $\Sigma_{\text{Pearson}}$ by isolating true structural DAG dependencies and filtering out crash-induced spurious correlations:
+
+$$
+\mathbf{R} = (I - B)^{-1} (\Gamma \mathbf{F} + \mathbf{\epsilon})
+$$
+
+$$
+\Sigma_{do} = (I - B)^{-1} \left( \Gamma \Sigma_F \Gamma^T + \Sigma_\epsilon \right) ((I - B)^{-1})^T
+$$
+
+**Causal Mean-Variance Portfolio Optimization:**
+
+$$
+\min_{\mathbf{w}} \mathbf{w}^T \Sigma_{do} \mathbf{w} \quad \text{s.t.} \quad \mathbf{w}^T \mathbf{\mu} \ge \mu_{\text{target}}, \quad \mathbf{w}^T \mathbf{1} = 1
+$$
 
 ## Key Takeaways
 
@@ -46,5 +106,4 @@ The **Interventional Covariance Matrix** replaces the standard Pearson correlati
 
 ## Related Reading
 
-- [The Structural Revolution in Quantitative Finance](/articles/structural-revolution-quantitative-finance) — full article with the DML mechanics panel, causal discovery algorithm comparison, and the case for the Interventional Covariance Matrix.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQkzf2BRMxk6r75pn0EGCnRjDO1LGBI-wHNPNMWl6GOAwhxvX3JFRs9fa8ODDiWDWCxDd4YIyTQ48D7/pub)
+- [The Structural Revolution in Causal Quantitative Finance](/articles/structural-revolution-quantitative-finance) — full article with the DML mechanics panel, causal discovery algorithm comparison, and the case for the Interventional Covariance Matrix.

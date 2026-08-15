@@ -1,9 +1,9 @@
 ---
 path: finance101/essential-reading-value-investors
-title: "Essential Reading for Value Investors"
+title: Essential Reading for Value Investors
 articleSlug: essential-reading-for-investors
 date: 2025-07-14
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 

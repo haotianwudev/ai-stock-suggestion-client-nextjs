@@ -29,4 +29,4 @@ The integration of Large Language Models (LLMs) into quantitative finance has sh
 ## Related Reading
 
 - [Architecting AI Agent Testing in Quantitative Finance](/articles/architecting-ai-agent-testing-quantitative-finance)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQcPHZeL7cqAsc-vana14vl4oRiZ_T9c5sEfE-ZX2Yhvh860zzx4WVZes1gQIB2FFPBF5Uc-qv2-Rsl/pub)
+- [Watch on YouTube](https://youtu.be/Bl3v2F2jAjg)

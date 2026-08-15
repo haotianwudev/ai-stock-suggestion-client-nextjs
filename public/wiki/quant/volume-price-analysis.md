@@ -1,9 +1,9 @@
 ---
 path: quant/volume-price-analysis
-title: "Volume Price Analysis (VPA)"
+title: Volume Price Analysis (VPA)
 articleSlug: volume-price-analysis-market-lore-algorithmic-execution
 date: 2025-10-07
-labels: [Quantitative Finance, Stock Analysis]
+labels: ["Quantitative Finance", "Stock Analysis"]
 related: []
 ---
 
@@ -54,4 +54,4 @@ Machine learning extends VPA with volume-derived features (momentum, acceleratio
 ## Related Reading
 
 - [Volume Price Analysis: From Market Lore to Algorithmic Execution](/articles/volume-price-analysis-market-lore-algorithmic-execution)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQpo-HQmmBfl5iUqh54ez_4Y84C9y63TABJSQfNWJsHFcmm-7eoEABjLV-MZNJEiyXjIwsbcVE216CX/pub)
+- [Watch on YouTube](https://youtu.be/VjOsdoln7Bo)

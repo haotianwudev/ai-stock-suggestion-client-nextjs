@@ -37,4 +37,6 @@ The transition is rarely instantaneous. It begins with a "stealthy" deterioratio
 - **Volatility-Based Scaling:** As the Average True Range (ATR) expands, position sizing must mathematically contract to keep absolute dollar-risk constant.
 
 ## Related Reading
-- [Navigating the Bull-to-Bear Regime Shift](/articles/navigating-bull-to-bear-regime-shift-quantitative-signals)
+
+- [Navigating the Bull-to-Bear Regime Shift: Quantitative Signals and Systematic Strategies](/articles/navigating-bull-to-bear-regime-shift-quantitative-signals)
+- [Watch on YouTube](https://youtu.be/A16B5cx3_yc)

@@ -1,4 +1,11 @@
-# Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread
+---
+path: quant/unlocking-volatility-surface-risk-neutral-densities-butterfly-spread
+title: Unlocking the Volatility Surface
+articleSlug: unlocking-volatility-surface-risk-neutral-densities-butterfly-spread
+date: 2026-03-28
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 Master the theoretical framework of Risk-Neutral Densities (RND) and learn how to use the Butterfly Spread not just as a strategy, but as a mathematical scalpel to extract market probabilities from option prices. 
@@ -25,3 +32,8 @@ This structure perfectly replicates a discrete second derivative! The price of a
 - **Extracting RNDs:** By pricing butterfly spreads across the entire option chain, we can plot the full Risk-Neutral Density curve.
 - **Fat Tails:** Options markets almost always price in fatter tails than a log-normal distribution would suggest, resulting in the volatility smile.
 - **Event Risk Pricing:** Before an earnings call, the RND often becomes bimodal (two peaks), representing the market pricing in a binary "beat or miss" outcome.
+
+## Related Reading
+
+- [Unlocking the Volatility Surface: Risk-Neutral Densities and the Butterfly Spread as a Probability Microscope](/articles/unlocking-volatility-surface-risk-neutral-densities-butterfly-spread)
+- [Watch on YouTube](https://youtu.be/KG66_1FnRSg)

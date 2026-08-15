@@ -1,4 +1,11 @@
-# The Trader's Guide to Futures Specials: Market Structure Anomalies
+---
+path: quant/traders-guide-futures-specials-market-structure-anomalies
+title: The Trader's Guide to Futures Specials
+articleSlug: traders-guide-futures-specials-market-structure-anomalies
+date: 2026-03-22
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive analysis of structural anomalies in futures markets - from the "Widowmaker" spread to negative oil prices. Understanding the physics of time, delivery mechanics, and embedded options that define alpha opportunities and catastrophic risks.
@@ -17,3 +24,8 @@ Futures markets break down at the extremes, creating what traders call "specials
 Understanding *how* a futures contract physically settles is often more important than understanding the underlying asset.
 - **Cheapest to Deliver (CTD):** In bond futures, the short seller has the option of which specific Treasury bond to deliver. They will always choose the one that is cheapest, creating a complex embedded option for the buyer.
 - **Squeezes:** When a single entity controls most of the deliverable physical supply (e.g., the Hunt brothers in silver, or Porsche in VW stock), they can force short sellers to pay astronomical prices to exit their contracts before expiration.
+
+## Related Reading
+
+- [The Trader's Guide to Futures Specials: Market Structure Anomalies](/articles/traders-guide-futures-specials-market-structure-anomalies)
+- [Watch on YouTube](https://youtu.be/bC2Fb6yIOlA)

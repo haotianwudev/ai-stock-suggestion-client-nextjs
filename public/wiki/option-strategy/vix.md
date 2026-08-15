@@ -4,7 +4,6 @@ title: Cboe Volatility Index (VIX)
 articleSlug: mathematics-microstructure-cboe-vix
 date: 2026-07-24
 labels: ["Quant"]
-summary: A comprehensive quantitative guide to the VIX — from stochastic variance replication and discrete approximation to market microstructure dynamics, derivatives ecosystems, and the August 2024 liquidity shock.
 related: []
 ---
 
@@ -59,5 +58,6 @@ Market makers hedge VIX Delta using VIX futures, managing the "Greek Trinity" of
 During the August 2024 shock, the VIX surged 180% intraday while front-month futures barely moved. This was due to panic bidding for exceptionally deep OTM puts circumventing the zero-bid termination rule, combined with liquidity collapse and the $1/K^2$ weighting magnifying inflated mid-quotes.
 
 ## Related Reading
+
 - [The Mathematics & Microstructure of the Cboe VIX](/articles/mathematics-microstructure-cboe-vix)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSTq5-n3aNC0BQjj0NR4eK-VCSKorx8m6KUv9rE_4YlkTjcdDj725nSQusUAPUObFv8juT7qq2Wmf1W/pub)
+- [Watch on YouTube](https://youtu.be/IXumgPJ5D-A)

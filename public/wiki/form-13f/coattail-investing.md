@@ -3,7 +3,7 @@ path: form-13f/coattail-investing
 title: Mastering Coattail Investing
 articleSlug: mastering-coattail-investing-sec-form-13f-analysis
 date: 2026-02-21T00:00:00Z
-labels: [FORM13F]
+labels: ["FORM13F"]
 related: []
 ---
 
@@ -42,6 +42,6 @@ The latest filings show massive structural disagreements among the masters regar
 6. **Crowding & Exit Strategy:** Monitor the exit. If the tracked master liquidates, you must re-evaluate your position. Never outsource your exit strategy.
 
 ## Related Reading
+
 - [Mastering Coattail Investing: A Comprehensive Tutorial on SEC Form 13F Analysis](/articles/mastering-coattail-investing-sec-form-13f-analysis)
 - [Watch on YouTube](https://youtu.be/OAyHoIbIR4o)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRDX5UeUekiSkhclQLd-q7qVfcwW4vf6aYK8gjKcPpYyQH4F-ZS5xqrqUolGNjGkP0CouUOe9NdeWtn/pub)

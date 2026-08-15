@@ -1,9 +1,9 @@
 ---
 path: finance101/trusts-estate-planning
-title: "A Comprehensive Guide to Trusts: Estate Planning"
+title: A Comprehensive Guide to Trusts: Estate Planning
 articleSlug: comprehensive-guide-trusts-estate-planning
 date: 2025-12-09
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -63,4 +63,4 @@ Strong candidates include anyone who: owns real estate, has minor children/grand
 ## Related Reading
 
 - [A Comprehensive Guide to Trusts: Estate Planning for Wealth Protection and Transfer](/articles/comprehensive-guide-trusts-estate-planning) — full article with the complete trust type catalogue, setup costs, and myth-busting section.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ1YJ12JJvfFofZHb51aIH_Xq0uIC-lNKx9NC4HmOGdoAaa4piPHo6c__7UQXTbV3oIbpR4HIw5TOKi/pub)
+- [Watch on YouTube](https://youtu.be/_HHOkj3iFco)

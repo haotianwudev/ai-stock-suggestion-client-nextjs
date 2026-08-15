@@ -1,9 +1,9 @@
 ---
 path: macro/2025-fixed-income-income-paradigm
-title: "2025 Fixed Income: The Shift to Income-Driven Returns"
+title: 2025 Fixed Income: The Shift to Income-Driven Returns
 articleSlug: navigating-turning-point-2025-fixed-income-analysis
 date: 2025-09-30
-labels: [Macro]
+labels: ["Macro"]
 related: []
 ---
 
@@ -41,4 +41,3 @@ related: []
 
 - [Navigating the Turning Point: 2025 Long-Term Fixed Income Market Analysis](/articles/navigating-turning-point-2025-fixed-income-analysis)
 - [Watch on YouTube](https://youtu.be/2xcK1hjcPfg)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQrCZ4kHWWwxrk-J0ZOP1b7I_fucHXtVcnRLSDm0nnTAZB7iEMmqwtWGZ65vVIvamHkLQW2IfT7dJy4/pub)

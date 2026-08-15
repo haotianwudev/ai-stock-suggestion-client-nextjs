@@ -1,9 +1,9 @@
 ---
 path: quant/trend-vs-momentum-indicators
-title: "Trend vs. Momentum in Technical Analysis"
+title: Trend vs. Momentum in Technical Analysis
 articleSlug: trend-vs-momentum-technical-analysis-guide
 date: 2025-07-27
-labels: [Quantitative Finance, Stock Analysis]
+labels: ["Quantitative Finance", "Stock Analysis"]
 related: []
 ---
 
@@ -51,4 +51,3 @@ MACD (`EMA(12) − EMA(26)`) is both trend and momentum: the MACD line itself is
 ## Related Reading
 
 - [Trend vs. Momentum in Technical Analysis](/articles/trend-vs-momentum-technical-analysis-guide)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTi2rZ4bmlTH0EaEuc2mJNiiSDYZlXypCofMAqUnlsAz-G0jBBXbvgVpUk-aE4oI0L7i-vj3Cd0s0bz/pub)

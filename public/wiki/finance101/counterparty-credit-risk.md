@@ -4,6 +4,7 @@ title: Counterparty Credit Risk & Margin Mechanics
 articleSlug: infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release
 date: 2026-08-25T00:00:00.000Z
 labels: ["QUANT", "FINANCE101"]
+related: []
 ---
 
 ## Overview
@@ -26,5 +27,5 @@ The extension of credit—whether provided to a highly levered quantitative hedg
 - **Collateral Velocity:** Rehypothecation of collateral forms the backbone of the shadow banking system; spiking margins slow collateral velocity, freezing wholesale repo markets.
 
 ## Related Reading
-- [The Infrastructure of Counterparty Credit Risk](/articles/infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSPp9dSJS5W6DUK5i8ZXP02ru8ChIP6sPdoy0rnK0Nn_cHG4mAeH155vBRaDTYpCmaldziPSHufV5CU/pub)
+
+- [The Infrastructure of Counterparty Credit Risk: Margin, WCL, Excess, Shortfall, and Release](/articles/infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release)

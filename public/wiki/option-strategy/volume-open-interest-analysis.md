@@ -1,9 +1,9 @@
 ---
 path: option-strategy/volume-open-interest-analysis
-title: "Decoding Options Volume and Open Interest"
+title: Decoding Options Volume and Open Interest
 articleSlug: decoding-options-market-volume-open-interest-analysis
 date: 2025-11-01
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -48,4 +48,4 @@ Volume and Open Interest (OI) are the two foundational activity metrics in optio
 ## Related Reading
 
 - [Decoding the Options Market: Volume & Open Interest Analysis](/articles/decoding-options-market-volume-open-interest-analysis) — full article with the price/volume/OI interpretation table and gamma exposure framework.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTPVO8a1EpsE5aZcZLqLf2V8kABWtqnZfPCLuPclso4_uYCwca8wMn33AGgVmq2nGFrbws-eii0JMF3/pub)
+- [Watch on YouTube](https://youtu.be/DOhaPf3eJXM)

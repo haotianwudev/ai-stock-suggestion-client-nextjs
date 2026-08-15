@@ -1,9 +1,9 @@
 ---
 path: form13f/burry-q2-2025-cassandra-pivot
-title: "The Cassandra Pivot: Reading Michael Burry's Q2 2025 13F"
+title: The Cassandra Pivot: Reading Michael Burry's Q2 2025 13F
 articleSlug: michael-burry-q2-2025-portfolio-analysis-cassandra-pivot
 date: 2025-08-24
-labels: [Form 13F]
+labels: ["Form 13F"]
 related: []
 ---
 
@@ -44,4 +44,3 @@ The Q2 portfolio carries significant idiosyncratic risk: it is highly concentrat
 
 - [The Cassandra Pivot: Michael Burry's Q2 2025 Market Reversal Analysis](/articles/michael-burry-q2-2025-portfolio-analysis-cassandra-pivot)
 - [Watch on YouTube](https://youtu.be/j7oFt5F_0Ik)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTVoXgNCWd0DuULODI7qXh5u7315FCyNBIX4e4MR72ZNF_Rdd3AwmniONXIvLjruGi8-smNE3L5EBCm/pub)

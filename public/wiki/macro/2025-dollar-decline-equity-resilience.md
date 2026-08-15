@@ -1,9 +1,9 @@
 ---
 path: macro/2025-dollar-decline-equity-resilience
-title: "The 2025 Dollar Decline and Equity Resilience"
+title: The 2025 Dollar Decline and Equity Resilience
 articleSlug: navigating-turning-tide-2025-macro-analysis
 date: 2025-09-04
-labels: [Macro]
+labels: ["Macro"]
 related: []
 ---
 
@@ -51,4 +51,3 @@ Consider unhedged international investments to capture currency tailwinds; favor
 
 - [Navigating the Turning Tide: A 2025 Macro Analysis](/articles/navigating-turning-tide-2025-macro-analysis)
 - [Watch on YouTube](https://youtu.be/UWaJ6GyRoyo)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQVpe5KZsRlrz4ltqj9Ft_1TQXtt_iMQwMsO1BZbLu7GQ15RWpf9DmiUawMLt5FxfLtYhfX751xBGzL/pub)

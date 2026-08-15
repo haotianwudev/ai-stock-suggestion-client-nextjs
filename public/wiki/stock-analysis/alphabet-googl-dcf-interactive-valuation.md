@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/alphabet-googl-dcf-interactive-valuation
-title: "DCF Valuation Analysis of Google"
+title: DCF Valuation Analysis of Google
 articleSlug: interactive-alphabet-googl-valuation-analysis
 date: 2025-06-06
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 

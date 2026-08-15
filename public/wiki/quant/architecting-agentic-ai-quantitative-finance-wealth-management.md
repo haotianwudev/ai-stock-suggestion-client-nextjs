@@ -1,4 +1,11 @@
-# Architecting Agentic AI in Quantitative Finance
+---
+path: quant/architecting-agentic-ai-quantitative-finance-wealth-management
+title: Agentic AI in Quant Finance
+articleSlug: architecting-agentic-ai-quantitative-finance-wealth-management
+date: 2026-04-27
+labels: ["Quantitative Finance", "Generative AI"]
+related: []
+---
 
 ## Overview
 Unlike foundational LLMs that function as passive co-pilots (e.g., ChatGPT, GitHub Copilot), agentic AI systems possess autonomous reasoning, dynamic tool invocation, state persistence, and goal-directed execution. This paradigm shift from human-directed analysis to autonomous execution is redefining alpha generation and wealth management operations.
@@ -32,3 +39,8 @@ Agents excel at processing the "Four Vs" (Volume, Velocity, Variety, Veracity) o
 - **Computer Vision:** Parsing satellite imagery to estimate agricultural yields or track shipping port activity.
 - **Consumer Behavior:** Processing anonymized credit card data and web traffic for precise retail demand forecasting ("nowcasting").
 - **NLP Sentiment:** Autonomously parsing 10-K filings, earnings call transcripts, and global news feeds to quantify market sentiment.
+
+## Related Reading
+
+- [Architecting Agentic AI in Quantitative Finance & Wealth Management](/articles/architecting-agentic-ai-quantitative-finance-wealth-management)
+- [Watch on YouTube](https://youtu.be/tXqQe2wgR8A)

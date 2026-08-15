@@ -1,9 +1,9 @@
 ---
 path: quant/dspx-dispersion-index
-title: "DSPX: The Cboe S&P 500 Dispersion Index"
+title: DSPX: The Cboe S&P 500 Dispersion Index
 articleSlug: dspx-measure-market-divergence-cboe-sp500-dispersion-index
 date: 2025-12-22
-labels: [Quantitative Finance, Finance 101]
+labels: ["Quantitative Finance", "Finance 101"]
 related: []
 ---
 
@@ -55,5 +55,5 @@ While VIX measures how much the market fears a broad move, DSPX measures how dif
 
 ## Related Reading
 
-- [DSPX: The Measure of Market Divergence](/articles/dspx-measure-market-divergence-cboe-sp500-dispersion-index) — full article with the formula derivation, historical regimes, and the complete trading strategy toolkit.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRQMkTeGVs00ktOo8cKiUlFewzE1EV-U0eGsnTeTvJ_xsFIc2ildzvPZ9Qcky1W_-U9vjhDl90WpRUf/pub)
+- [DSPX: The Measure of Market Divergence - Understanding the Cboe S&P 500 Dispersion Index](/articles/dspx-measure-market-divergence-cboe-sp500-dispersion-index) — full article with the formula derivation, historical regimes, and the complete trading strategy toolkit.
+- [Watch on YouTube](https://youtu.be/1tN9LuKi3Os)

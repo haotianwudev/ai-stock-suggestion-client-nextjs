@@ -3,7 +3,7 @@ path: stock-analysis/nvidia-earnings-paradox
 title: Nvidia's Feb 2026 Earnings Paradox
 articleSlug: decoding-reversal-nvidia-february-2026-earnings-paradox
 date: 2026-03-01T00:00:00Z
-labels: [STOCK_ANALYSIS, QUANT]
+labels: ["STOCK_ANALYSIS", "QUANT"]
 related: []
 ---
 
@@ -36,6 +36,6 @@ The immediate catalyst for the violent intraday reversal was deeply rooted in qu
 The severe drop was not a fundamental failure, but a "perfect storm" of market structure mechanics: IV Crush (catalyst) + Negative Gamma (accelerant) + Institutional De-grossing (execution) + CTA Algorithms (cascade).
 
 ## Related Reading
-- [Decoding the Reversal: Nvidia's Feb 2026 Earnings Paradox](/articles/decoding-reversal-nvidia-february-2026-earnings-paradox)
+
+- [Decoding the Reversal: Nvidia's February 2026 Earnings Paradox](/articles/decoding-reversal-nvidia-february-2026-earnings-paradox)
 - [Watch on YouTube](https://youtu.be/vuTmzLnjfYc)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQMOUcMpYBhtjgtEm8CHiUV1pBkeyI9quH0WaT-ReDFJp4QZrGlcvx3E2wD4pRH9_495FIXTPjZ72YX/pub)

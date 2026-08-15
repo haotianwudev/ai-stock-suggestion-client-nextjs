@@ -3,7 +3,7 @@ path: quant/expected-returns-modeling
 title: Modeling Expected Returns & Portfolio Theory
 articleSlug: modeling-expected-returns-quantitative-foundation-modern-portfolio-theory
 date: 2026-02-11T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -39,5 +39,6 @@ Modern implementations extend these models using:
 - **Dynamic Rebalancing:** Updating parameters based on changing market regimes (e.g., bull vs. bear markets, high vs. low volatility).
 
 ## Related Reading
-- [Modeling Expected Returns](/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTq90wFjN-oH9bB-e0x4_bY2l27E6IqO_H8tZlU6H9-8Y1b_62M3Fq_k3M3H-Q5T0g/pub)
+
+- [Modeling Expected Returns: The Quantitative Foundation of Modern Portfolio Theory](/articles/modeling-expected-returns-quantitative-foundation-modern-portfolio-theory)
+- [Watch on YouTube](https://youtu.be/i0WiCcwcsFs)

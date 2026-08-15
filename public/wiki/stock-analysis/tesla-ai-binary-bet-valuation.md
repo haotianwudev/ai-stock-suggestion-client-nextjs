@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/tesla-ai-binary-bet-valuation
-title: "Tesla's AI Binary Bet: When a Stock Valuation Detaches From Its Core Business"
+title: Tesla's AI Binary Bet: When a Stock Valuation Detaches From Its Core Business
 articleSlug: tesla-tsla-fundamental-dashboard-ai-binary-bet
 date: 2025-11-09
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -46,4 +46,4 @@ Blending these scenarios implies an expected value of roughly $300-350/share —
 ## Related Reading
 
 - [Tesla (TSLA) Fundamental Dashboard: The AI Binary Bet](/articles/tesla-tsla-fundamental-dashboard-ai-binary-bet) — full article with the interactive Bull/Bear/Metrics dashboard.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRZ4JaDN8SMc9WcOeCBvK_nP69iZotqfB0ZjAod9Rr0YCSk6ksZ-vXF7XQ_r9UDJOdYvmK-BjN2Zs2p/pub)
+- [Watch on YouTube](https://youtu.be/TcGcYSa-aSQ)

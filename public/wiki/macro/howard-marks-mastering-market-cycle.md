@@ -1,9 +1,9 @@
 ---
 path: macro/howard-marks-mastering-market-cycle
-title: "Howard Marks: Mastering the Market Cycle"
+title: Howard Marks: Mastering the Market Cycle
 articleSlug: mastering-market-cycle-howard-marks-summary
 date: 2025-09-08
-labels: [Macro, Finance 101]
+labels: ["Macro", "Finance 101"]
 related: []
 ---
 

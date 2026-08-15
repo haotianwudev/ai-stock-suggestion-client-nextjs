@@ -1,4 +1,11 @@
-# Entropy Methods in Portfolio Construction
+---
+path: quant/entropy-methods-portfolio-construction
+title: Entropy Methods in Portfolio Construction
+articleSlug: entropy-methods-portfolio-construction
+date: 2026-06-08
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to the historical evolution of portfolio construction from rigid mean-variance frameworks to flexible information-theoretic paradigms. It introduces the mathematical mechanics of Entropy Pooling and its benefits over classical approaches like Black-Litterman.
@@ -23,3 +30,8 @@ Introduced by Attilio Meucci (2008), EP merges minimum relative entropy with non
 - **Effective Number of Scenarios (ENS):** A metric tracking internal diversity to prevent over-fitting aggressive views.
 - **Synthetic Data (Vine Copulas):** Pairs EP with Copulas to generate synthetic scenarios deep in the unobserved tails for Black Swan stress-testing.
 - **Dynamic EP:** Extends the framework across consecutive time steps for optimal trade sequencing and market impact cost management.
+
+## Related Reading
+
+- [Entropy Methods in Portfolio Construction: From Mean-Variance to Information-Theoretic Paradigms](/articles/entropy-methods-portfolio-construction)
+- [Watch on YouTube](https://youtu.be/gr4Z7fOsVk0)

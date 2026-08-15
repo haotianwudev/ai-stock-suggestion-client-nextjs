@@ -3,7 +3,7 @@ path: quant/systematic-vs-model
 title: Systematic vs. Model Quantitative Trading
 articleSlug: systematic-vs-model-quantitative-trading-evolution
 date: 2026-01-14
-labels: [QUANT, AI_ML]
+labels: ["QUANT", "AI_ML"]
 related: []
 ---
 
@@ -47,5 +47,6 @@ Modern trading firms are increasingly blurring the lines between approaches. The
 3. **Execution Layer:** Systematic algorithmic execution (TWAP/VWAP)
 
 ## Related Reading
+
 - [Systematic vs. Model Quantitative Trading: The Evolution of Algorithmic Finance](/articles/systematic-vs-model-quantitative-trading-evolution)
 - [Watch on YouTube](https://youtu.be/72sh2YIWD8U)

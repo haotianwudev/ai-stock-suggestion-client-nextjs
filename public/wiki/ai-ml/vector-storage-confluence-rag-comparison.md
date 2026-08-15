@@ -1,9 +1,9 @@
 ---
 path: ai-ml/vector-storage-confluence-rag-comparison
-title: "Vector Storage Solutions for Confluence RAG"
+title: Vector Storage Solutions for Confluence RAG
 articleSlug: vector-storage-confluence-rag
 date: 2025-06-22
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 

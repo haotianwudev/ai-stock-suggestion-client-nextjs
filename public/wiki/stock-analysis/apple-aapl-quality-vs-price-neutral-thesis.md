@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/apple-aapl-quality-vs-price-neutral-thesis
-title: "Gemini Deep Research on AAPL"
+title: Gemini Deep Research on AAPL
 articleSlug: gemini-deep-research-aapl
 date: 2025-05-31
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 

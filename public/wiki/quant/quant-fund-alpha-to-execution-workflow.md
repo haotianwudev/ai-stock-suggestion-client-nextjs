@@ -1,9 +1,9 @@
 ---
 path: quant/quant-fund-alpha-to-execution-workflow
-title: "The Anatomy of a Quant Fund: Alpha to Execution"
+title: The Anatomy of a Quant Fund: Alpha to Execution
 articleSlug: anatomy-quant-fund-alpha-discovery-automated-execution
 date: 2025-10-02
-labels: [Quantitative Finance, AI/ML]
+labels: ["Quantitative Finance", "AI/ML"]
 related: []
 ---
 
@@ -52,4 +52,4 @@ Alpha decays as strategies become known or crowded, requiring continuous researc
 ## Related Reading
 
 - [The Anatomy of a Quant Fund: From Alpha Discovery to Automated Execution](/articles/anatomy-quant-fund-alpha-discovery-automated-execution)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSfuwe6YvcQpBwLBF8M8qbKNl4tF6Vdi5cgWgQoOuaCIi3X7EeiX6ryme22sB6QNV1rHCQgZ_SLZope/pub)
+- [Watch on YouTube](https://youtu.be/QQjvEWV9-WQ)

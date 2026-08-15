@@ -3,7 +3,7 @@ path: option-strategy/vertical-debit-spreads
 title: Vertical Debit Spreads
 articleSlug: vertical-debit-spreads-strategic-architecture-defined-risk-trading
 date: 2026-02-27T00:00:00Z
-labels: [OPTIONS]
+labels: ["OPTIONS"]
 related: []
 ---
 
@@ -50,6 +50,6 @@ Never execute a debit spread without passing these gates:
 4. **Earnings Date:** Avoid holding through earnings unless specifically playing an earnings strategy, as the post-earnings "IV Crush" will devalue the long leg.
 
 ## Related Reading
+
 - [Vertical Debit Spreads: The Strategic Architecture of Defined-Risk Trading](/articles/vertical-debit-spreads-strategic-architecture-defined-risk-trading)
 - [Watch on YouTube](https://youtu.be/OZh8KnJobic)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSFUCr-eIksR12Xk1XQRKnzaXyW86hVVupvOVi7ILRO04o-6Jxfj_KpWDzbtqkLw_rqYWtcJvMDvHAo/pub)

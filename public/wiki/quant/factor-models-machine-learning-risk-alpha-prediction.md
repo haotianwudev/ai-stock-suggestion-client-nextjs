@@ -1,4 +1,11 @@
-# Factor Models in Machine Learning
+---
+path: quant/factor-models-machine-learning-risk-alpha-prediction
+title: Factor Models in Machine Learning
+articleSlug: factor-models-machine-learning-risk-alpha-prediction
+date: 2026-06-05
+labels: ["Quantitative Finance", "AI & Machine Learning"]
+related: []
+---
 
 ## Overview
 A deep dive into the mathematical bridge between risk management and alpha prediction in algorithmic trading systems. Explores how machine learning transforms traditional static factor models into dynamic prediction engines.
@@ -32,3 +39,8 @@ Translating predictions into executable trades using Mean-Variance Optimization.
 - **Constraints:** Leverage limits, dollar neutrality, factor neutrality, position caps, and turnover limits.
 - **Transaction Costs:** Accounts for linear costs (spread/commission), non-linear costs (market impact), and opportunity costs (slippage).
 - **The Sharpe Ratio Ceiling:** Governed by the Fundamental Law of Active Management ($Sharpe \approx IC \times \sqrt{Breadth}$). Reaching high Sharpe ratios requires massive breadth, extraordinary skill, or high-frequency execution.
+
+## Related Reading
+
+- [Factor Models in Machine Learning: The Mathematical Bridge Between Risk Management and Alpha Prediction](/articles/factor-models-machine-learning-risk-alpha-prediction)
+- [Watch on YouTube](https://youtu.be/3FS6Yqd-zDU)

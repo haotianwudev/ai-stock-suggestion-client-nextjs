@@ -3,7 +3,7 @@ path: option-strategy/single-leg-long-call
 title: The Single-Leg Long Call
 articleSlug: single-leg-long-call-asymmetric-leverage-options-trading
 date: 2026-01-16
-labels: [OPTIONS]
+labels: ["OPTIONS"]
 related: []
 ---
 
@@ -46,6 +46,6 @@ In traditional equity, risk is linear. The long call introduces **convexity**. Y
 4. **The 21 DTE Rule:** If a swing trade reaches 21 Days To Expiration, close it regardless of profit or loss, as Gamma risk and Theta decay escalate dramatically.
 
 ## Related Reading
-- [The Single-Leg Long Call: Mastering Asymmetric Leverage](/articles/single-leg-long-call-asymmetric-leverage-options-trading)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT9UoDlmtwwKvTpbZLGXM4JlrXZlVpVCmDi6F-I111n_qnOaK6fE-ROfroHlfZS8xQ4YwFuiLoC628-/pub)
+
+- [The Single-Leg Long Call: Mastering Asymmetric Leverage in Options Trading](/articles/single-leg-long-call-asymmetric-leverage-options-trading)
 - [Watch on YouTube](https://youtu.be/JldPgH31X3U)

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/option-traders-mindset-wolfinger
-title: "The Option Trader's Mindset: Think Like a Winner"
+title: The Option Trader's Mindset: Think Like a Winner
 articleSlug: option-traders-mindset-book-summary
 date: 2025-06-23
-labels: [Options, Finance 101]
+labels: ["Options", "Finance 101"]
 related: []
 ---
 

@@ -1,4 +1,11 @@
-# Sticky Strike vs. Sticky Delta: Volatility Surface Dynamics
+---
+path: quant/sticky-strike-vs-sticky-delta-volatility-surface-dynamics
+title: Volatility Surface Dynamics
+articleSlug: sticky-strike-vs-sticky-delta-volatility-surface-dynamics
+date: 2026-05-09
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive deep dive into the geometry of market risk and the volatility surface. This guide covers the Total Derivative, Shadow Delta, Skew Stickiness Ratio (SSR), and how to calculate true Greeks that account for the dynamic relationship between spot price and implied volatility.
@@ -36,3 +43,8 @@ A comprehensive deep dive into the geometry of market risk and the volatility su
 - **Rule of Thumb Adjustments:**
   - *Adjusted Delta:* $\Delta_{\text{adj}} \approx \Delta_{\text{BS}} + \text{Vega} \times (\text{Skew}_{\text{slope}} / \text{Spot})$
   - *Adjusted Gamma:* $\Gamma_{\text{adj}} \approx \Gamma_{\text{BS}} + 2 \times \text{Vanna} \times (d\Sigma/dS)$
+
+## Related Reading
+
+- [Sticky Strike vs. Sticky Delta: The Hidden Dynamics of the Volatility Surface](/articles/sticky-strike-vs-sticky-delta-volatility-surface-dynamics)
+- [Watch on YouTube](https://youtu.be/LgSXvwCOy0o)

@@ -1,9 +1,9 @@
 ---
 path: quant/vrp-theory-measurement
-title: "Demystifying the Volatility Risk Premium: Theory & Measurement"
+title: Demystifying the Volatility Risk Premium: Theory & Measurement
 articleSlug: demystifying-volatility-risk-premium-theory-measurement-trading
 date: 2025-11-22
-labels: [Quantitative Finance, Options Trading]
+labels: ["Quantitative Finance", "Options Trading"]
 related: []
 ---
 
@@ -58,4 +58,4 @@ On Feb 5, 2018, the S&amp;P 500 dropped ~4%, triggering forced end-of-day rebala
 ## Related Reading
 
 - [Demystifying the Volatility Risk Premium: Theory, Measurement, and Trading Strategies](/articles/demystifying-volatility-risk-premium-theory-measurement-trading) — full article with the complete strategy comparison table and academic literature review.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vR44M1bZWgq9EHSupKZsOVhTm_3nxoSK1kohiKnmcW2W0CXktVwIZkLdzvyXUMsN7NUVcGDJofCg3fs/pub)
+- [Watch on YouTube](https://youtu.be/eHu9X04D7Ss)

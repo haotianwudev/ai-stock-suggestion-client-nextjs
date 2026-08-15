@@ -1,9 +1,9 @@
 ---
 path: finance101/tax-loss-harvesting
-title: "Tax-Loss Harvesting: Strategy, Execution & Risk Mitigation"
+title: Tax-Loss Harvesting: Strategy, Execution & Risk Mitigation
 articleSlug: comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation
 date: 2025-11-24
-labels: [Quantitative Finance, Finance 101]
+labels: ["Quantitative Finance", "Finance 101"]
 related: []
 ---
 
@@ -58,4 +58,4 @@ Tax-loss harvesting (TLH) systematically realizes capital losses in taxable acco
 ## Related Reading
 
 - [A Comprehensive Analysis of Tax-Loss Harvesting: Strategy, Execution, and Risk Mitigation](/articles/comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation) — full article with the complete wash-sale compliance framework and replacement security guidance.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTWHZ29v8CNzNPk_6Guqin3NGbAvPxd-SdYF3AxdYOVTPni-2vvzPQZzhDSOTBwqgQQwOtk2mQdxC9m/pub)
+- [Watch on YouTube](https://youtu.be/DtF2uyr2Uus)

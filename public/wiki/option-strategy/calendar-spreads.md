@@ -3,7 +3,7 @@ path: option-strategy/calendar-spreads
 title: Calendar Spread Architecture
 articleSlug: calendar-spread-architecture-time-decay-options-trading
 date: 2026-02-07
-labels: [OPTIONS]
+labels: ["OPTIONS"]
 related: []
 ---
 
@@ -72,6 +72,6 @@ Visualizing where you make money. Your profit zone is a specific price range tha
 - **Iron Condor**: Neutrality, Short Vega, Wide Plateau profit zone, best in Range Bound markets.
 
 ## Related Reading
+
 - [The Calendar Spread Architecture: Exploiting Time Decay Differentials in Options Trading](/articles/calendar-spread-architecture-time-decay-options-trading)
 - [Watch on YouTube](https://youtu.be/83U-tqsVHdY)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQmTbu5pc4fWxtK6XTEPU3nMFvVH4V7rTMK56jlX376JP8S3lA5QQtt9su6AfpDMwKElpTuhMpGom7-/pub)

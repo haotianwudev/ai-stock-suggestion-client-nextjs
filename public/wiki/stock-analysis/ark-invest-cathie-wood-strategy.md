@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/ark-invest-cathie-wood-strategy
-title: "The ARK Invest Enigma: Cathie Wood's Strategy Decoded"
+title: The ARK Invest Enigma: Cathie Wood's Strategy Decoded
 articleSlug: ark-invest-cathie-wood-strategy-analysis
 date: 2025-06-23
-labels: [Stock Analysis, 13F Analysis]
+labels: ["Stock Analysis", "13F Analysis"]
 related: []
 ---
 

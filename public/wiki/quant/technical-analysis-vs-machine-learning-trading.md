@@ -1,9 +1,9 @@
 ---
 path: quant/technical-analysis-vs-machine-learning-trading
-title: "Technical Analysis vs ML Trading"
+title: Technical Analysis vs ML Trading
 articleSlug: deep-research-ta-vs-ml-trading
 date: 2025-06-02
-labels: [Quantitative Finance, AI/ML]
+labels: ["Quantitative Finance", "AI/ML"]
 related: []
 ---
 

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/option-collar-protective-strategy
-title: "The Option Collar: Protect Gains, Define Risk"
+title: The Option Collar: Protect Gains, Define Risk
 articleSlug: option-collar-strategy-protect-gains-define-risk
 date: 2025-09-20
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -54,4 +54,3 @@ With stock price S, put strike K_p, call strike K_c, and net premium (call premi
 
 - [Option Collar Strategy: Protect Gains, Define Risk](/articles/option-collar-strategy-protect-gains-define-risk)
 - [Watch on YouTube](https://youtu.be/AuBIzqvQdEw)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSzPjT1iXtsc_FpV97jUUsi5EGSB-2VXBn6ZxKgeoEmL49X78m0pPHBxiIZPRuHrslQQBicBIh1bcn6/pub)

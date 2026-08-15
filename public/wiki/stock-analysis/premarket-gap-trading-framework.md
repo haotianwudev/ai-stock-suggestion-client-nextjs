@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/premarket-gap-trading-framework
-title: "Trading the Opening Gap: A Pre-Market Signal Framework"
+title: Trading the Opening Gap: A Pre-Market Signal Framework
 articleSlug: quantitative-approach-predicting-market-direction-premarket-data
 date: 2025-10-29
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -52,4 +52,4 @@ The pre-market session (4:00-9:30 a.m. ET) is a fundamentally different trading 
 ## Related Reading
 
 - [A Quantitative Approach to Predicting Market Direction Using Pre-Market Data](/articles/quantitative-approach-predicting-market-direction-premarket-data) — full article with the complete gap decision matrix and pre-market checklist.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSPeY1kvLzoeDaRR_X9fVjrY6LWj20hRuQJ6GVmnZVT8jxfATLeE-V1sr2ixhnJIZUJTsTTV_yXwHLL/pub)
+- [Watch on YouTube](https://youtu.be/5WuCFfwFCd4)

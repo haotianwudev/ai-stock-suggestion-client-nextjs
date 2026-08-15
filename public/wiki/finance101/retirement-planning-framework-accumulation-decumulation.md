@@ -1,9 +1,9 @@
 ---
 path: finance101/retirement-planning-framework-accumulation-decumulation
-title: "The Retirement Architect Framework: From Savings Target to Sustainable Income"
+title: The Retirement Architect Framework: From Savings Target to Sustainable Income
 articleSlug: retirement-architect-guide-secure-retirement
 date: 2025-10-27
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -51,4 +51,4 @@ Contributing to both Traditional and Roth accounts builds "tax diversification" 
 ## Related Reading
 
 - [The Architect's Guide to a Secure Retirement](/articles/retirement-architect-guide-secure-retirement) — full article with the complete rules-of-thumb comparison, account comparison table, and advisor vetting checklist.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRTSS7BoJthbapAwuz8BpFOwPKX0f1kcpPTj_o9xOuyW9I7lL3tZaVl_O6q0eBj6S1CKYM4aXihFraw/pub)
+- [Watch on YouTube](https://youtu.be/dZ5THqfE9ys)

@@ -1,9 +1,9 @@
 ---
 path: option-strategy/vertical-credit-spreads
-title: "Vertical Credit Spreads: Defined-Risk Premium Selling"
+title: Vertical Credit Spreads: Defined-Risk Premium Selling
 articleSlug: vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling
 date: 2025-10-25
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -55,4 +55,4 @@ A vertical credit spread sells an option and simultaneously buys a further out-o
 ## Related Reading
 
 - [Vertical Credit Spreads: A Comprehensive Guide to Defined-Risk Premium Selling](/articles/vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling) — full article with a complete trade walkthrough and spreads-vs-naked-options comparison table.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTX5OTxEBDIL3oWyOJ_VY1iw1SLrcJl8tVvWxuAfaoVqUo467i0yGoX66RqXDO1En1gBGO38px-ZIWo/pub)
+- [Watch on YouTube](https://youtu.be/g5e-nZERjLE)

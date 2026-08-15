@@ -1,4 +1,11 @@
-# Model Context Protocol in Quantitative Finance
+---
+path: quant/model-context-protocol-quantitative-finance
+title: Model Context Protocol in Quant Finance
+articleSlug: model-context-protocol-quantitative-finance
+date: 2026-05-11
+labels: ["Quantitative Finance", "Generative AI"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to the Model Context Protocol (MCP) — the open standard transforming how Large Language Models (LLMs) integrate with quantitative finance systems. It details system architecture, state management, and UX engineering for autonomous AI agents in financial environments.
@@ -28,3 +35,8 @@ A comprehensive guide to the Model Context Protocol (MCP) — the open standard 
 - **The "Tool-Use" Loop:** The core engine of autonomous agents. The LLM decides what to do, calls an MCP tool, receives the result, and loops until the task is complete.
 - **Data Engineering Integration:** MCP servers can wrap massive data lakes (Snowflake, BigQuery), exposing schema metadata to the LLM so it can construct its own precise SQL queries.
 - **Model Deployment:** Agents can orchestrate the deployment of quantitative models by interacting with CI/CD pipelines and Kubernetes clusters via specialized MCP tools.
+
+## Related Reading
+
+- [Model Context Protocol in Quantitative Finance: System Architecture, State Management, and Agent Design](/articles/model-context-protocol-quantitative-finance)
+- [Watch on YouTube](https://youtu.be/98zl2mTQY-g)

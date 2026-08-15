@@ -3,7 +3,7 @@ path: form-13f/li-lu-himalaya-capital
 title: Masterclass of Li Lu
 articleSlug: masterclass-li-lu-himalaya-capital-investment-philosophy
 date: 2026-02-25T00:00:00Z
-labels: [FORM13F]
+labels: ["FORM13F"]
 related: []
 ---
 
@@ -39,6 +39,6 @@ Why retail investors frequently lose money trying to clone Li Lu's 13F filings:
 - **Psychological Asymmetry:** You can borrow a ticker symbol, but you cannot borrow Li Lu's deep-seated conviction when the stock suffers a 50% drawdown.
 
 ## Related Reading
+
 - [The Masterclass of Li Lu: Philosophy, Portfolio Architecture, and the Himalaya Capital Compounding Machine](/articles/masterclass-li-lu-himalaya-capital-investment-philosophy)
 - [Watch on YouTube](https://youtu.be/rfjw97edq48)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS_XA6uyaa-byWpwTjslsAVnrlcDtYp4qKiGMD8xRQgxQiSbrt779JIhF1CEPV4xE3egJsVZoRGg_kg/pub)

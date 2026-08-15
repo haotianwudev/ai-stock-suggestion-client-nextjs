@@ -3,7 +3,7 @@ path: quant/monte-carlo-finance-overview
 title: Monte Carlo Simulation for Quant Finance — Overview
 articleSlug: monte-carlo-simulation-quantitative-finance-stochastic-modeling
 date: 2025-11-26
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -45,4 +45,4 @@ Monte Carlo Simulation (MCS) estimates the outcomes of uncertain events by model
 ## Related Reading
 
 - [Monte Carlo Simulation for Quant Finance Overview](/articles/monte-carlo-simulation-quantitative-finance-stochastic-modeling) — full article with the complete workflow, VRT derivations, and application details.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQQKNAELVon2-aHvD3z3Kx8Y-ltrh9d8kLO4ZZRPfbO35-yGiYfvXuZn9Y3HNtuh18vT5-l0GNrGx81/pub)
+- [Watch on YouTube](https://youtu.be/5gA1ifx7wPg)

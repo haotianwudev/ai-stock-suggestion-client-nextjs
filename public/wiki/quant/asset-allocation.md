@@ -1,12 +1,11 @@
 ---
-title: "Strategic & Tactical Asset Allocation"
-path: "quant/asset-allocation"
-date: "2026-08-07"
+path: quant/asset-allocation
+title: Strategic & Tactical Asset Allocation
+articleSlug: strategic-tactical-asset-allocation-comprehensive-guide
+date: 2026-08-07
+labels: ["Quantitative Finance"]
+related: []
 ---
-
-# Strategic vs. Tactical Asset Allocation
-
-Asset allocation is the most critical decision in portfolio management. It drives over 90% of a portfolio's return variability. The two primary frameworks for managing asset allocation are **Strategic Asset Allocation (SAA)** and **Tactical Asset Allocation (TAA)**.
 
 ## Strategic Asset Allocation (SAA)
 
@@ -70,9 +69,7 @@ A hybrid strategy combining SAA and TAA:
 - **Style Drift:** Deviating from the fundamental mandate (e.g., a conservative bond manager buying high-yield junk bonds).
 - **Anchoring Bias:** Sticking to initial price targets even when fundamentals change.
 
----
+## Related Reading
 
-## Related Resources
-- **Article:** [Strategic vs Tactical Asset Allocation Comprehensive Guide](/articles/strategic-tactical-asset-allocation-comprehensive-guide)
-- **Video Tutorial:** [YouTube](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-- **Research Paper:** [Google Doc](https://docs.google.com/document/d/1_yPntJ35-yO7N_T-b2B8s-kO-8g9A-0K/edit)
+- [Strategic vs. Tactical Asset Allocation: A Comprehensive Investment Framework](/articles/strategic-tactical-asset-allocation-comprehensive-guide)
+- [Watch on YouTube](https://youtu.be/Ef2bnyet0wA)

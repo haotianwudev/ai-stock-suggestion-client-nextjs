@@ -1,4 +1,11 @@
-# The Seagull Spread Options Strategy
+---
+path: quant/seagull-spread-options-strategy-architecture
+title: The Seagull Spread
+articleSlug: seagull-spread-options-strategy-architecture
+date: 2026-05-02
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive institutional tutorial on the Seagull spread — a sophisticated three-legged options strategy that finances directional speculation through volatility skew arbitrage. This strategy is frequently deployed by corporate treasurers and portfolio managers to hedge currency risk or express a directional view at zero or near-zero cost.
@@ -28,3 +35,8 @@ The Seagull spread involves three distinct option legs. In a bullish configurati
 - **Currency Hedging:** Corporate treasurers routinely use Seagulls to hedge foreign exchange exposure without upfront cash outlay, accepting capped upside in exchange for protection within a specific band.
 - **Commodity Producers:** Airlines or oil producers use it to lock in price floors/ceilings, optimizing their working capital by avoiding the premium drain of pure long options.
 - **The Naked Leg Risk:** Because the short put is unprotected, this strategy requires Portfolio Margin and sophisticated dynamic delta-hedging protocols. It is fundamentally unsuitable for undercapitalized retail accounts facing standard margin requirements.
+
+## Related Reading
+
+- [The Seagull Spread: Strategic Architecture, Volatility Skew Arbitrage, and Institutional Implementation](/articles/seagull-spread-options-strategy-architecture)
+- [Watch on YouTube](https://youtu.be/DGOML4Zpt5E)

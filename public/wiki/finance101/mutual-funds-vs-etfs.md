@@ -1,9 +1,9 @@
 ---
 path: finance101/mutual-funds-vs-etfs
-title: "Mutual Funds vs. ETFs: A Decision Framework"
+title: Mutual Funds vs. ETFs: A Decision Framework
 articleSlug: mutual-funds-vs-etfs-definitive-investment-guide
 date: 2025-09-09
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -48,4 +48,3 @@ Before choosing a vehicle, choose a philosophy. **Passive investing** aims to *b
 ## Related Reading
 
 - [Mutual Funds vs ETFs: The Definitive Investment Guide](/articles/mutual-funds-vs-etfs-definitive-investment-guide)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vST0TMTGIMyJXP9CPCB8Hr-EMKCrs_wIhiHzvEB9kAvWohhT8WgdoacElpCdBh-Ubvn8jeLwpiHHuac/pub)

@@ -1,9 +1,9 @@
 ---
 path: ai-ml/advanced-rag-context-engineering
-title: "Architectures of Intelligence: Advanced RAG and Context Engineering"
+title: Architectures of Intelligence: Advanced RAG and Context Engineering
 articleSlug: architectures-intelligence-advanced-rag-context-engineering
 date: 2025-08-01
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 
@@ -83,4 +83,3 @@ Advanced RAG moves from a linear retrieve→augment→generate pipeline to a cyc
 ## Related Reading
 
 - [Advanced RAG and Context Engineering](/articles/architectures-intelligence-advanced-rag-context-engineering)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS4WNttd_CKQxFbfE2JTMFjkh0Sw0EJ4-8_n4QG5a77pQ01AMmOkfnVJKzt2_MCkDgc2b_Wn2TnBzBs/pub)

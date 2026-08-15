@@ -1,9 +1,9 @@
 ---
 path: form13f/druckenmiller-q2-2025-ai-america-conviction
-title: "Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction"
+title: Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction
 articleSlug: druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction
 date: 2025-08-22
-labels: [Form 13F]
+labels: ["Form 13F"]
 related: []
 ---
 
@@ -58,4 +58,3 @@ Stanley Druckenmiller's Duquesne Family Office 13F for Q2 2025 shows a decisive 
 
 - [Druckenmiller's Q2 2025 Playbook: AI, America, and Aggressive Conviction](/articles/druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction)
 - [Watch on YouTube](https://youtu.be/AkHQPJ8K6Uo)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRqQRKlSjvTCRVaoE8GVlCjRhsXZd3g2Yf3DTyD0im65mLouXTXowITkoO-jrVszxpF-YllnTx6MxTF/pub)

@@ -3,7 +3,7 @@ path: quant/intraday-option-speculation
 title: The Microstructure of Intraday Option Speculation
 articleSlug: microstructure-intraday-option-speculation-mechanics-strategies-risks
 date: 2026-02-13T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -44,6 +44,6 @@ Retail traders face insurmountable structural disadvantages:
 3. **Order Routing (PFOF):** Retail orders are sold to Wholesalers whose imperative is spread capture, not execution quality.
 
 ## Related Reading
-- [The Microstructure of Intraday Option Speculation](/articles/microstructure-intraday-option-speculation-mechanics-strategies-risks)
+
+- [The Microstructure of Intraday Option Speculation: Mechanics, Strategies, and Structural Risks](/articles/microstructure-intraday-option-speculation-mechanics-strategies-risks)
 - [Watch on YouTube](https://youtu.be/94XcRcFfnxo)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vR7q9V8ZnPc4Xral63NfryOYdp3rDx0hLjdz3Wqpz6VlZphBUHCpdhxFei2RdXYGa2oFArScgA4iEDn/pub)

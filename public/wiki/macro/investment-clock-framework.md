@@ -3,7 +3,7 @@ path: macro/investment-clock-framework
 title: The Investment Clock Framework
 articleSlug: investment-clock-framework-quantitative-macro-regime-detection
 date: 2026-02-15T00:00:00Z
-labels: [MACRO, QUANT]
+labels: ["MACRO", "QUANT"]
 related: []
 ---
 
@@ -52,6 +52,6 @@ Successful practitioners combine the Investment Clock with additional signals to
 - **Citi Economic Surprise Index:** High surprise scores (delta between expectations and reality) can keep equities rising even if the Clock technically sits in 'Overheat'.
 
 ## Related Reading
+
 - [Investment Clock Framework: Quantitative Guide to Macro Regime Detection](/articles/investment-clock-framework-quantitative-macro-regime-detection)
 - [Watch on YouTube](https://youtu.be/ns0nlaE74Ac)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS9gMIeiFuK5XIja_s9U8khIB3TkEIjEdbQP-594sa6kcBJzz3UR2i8ihEtVXZBVe03m04rWYPRcfg1/pub)

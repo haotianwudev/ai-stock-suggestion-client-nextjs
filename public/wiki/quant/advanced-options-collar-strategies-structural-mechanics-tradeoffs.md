@@ -1,4 +1,11 @@
-# Advanced Options Collar Strategies
+---
+path: quant/advanced-options-collar-strategies-structural-mechanics-tradeoffs
+title: Advanced Options Collar Strategies
+articleSlug: advanced-options-collar-strategies-structural-mechanics-tradeoffs
+date: 2026-05-23
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive masterclass on options collar variants used by institutional portfolio managers and corporate treasurers for dynamic risk management, covering structural mechanics, tradeoffs, and real-world applications.
@@ -27,3 +34,8 @@ A comprehensive masterclass on options collar variants used by institutional por
 ## Temporal Dynamics & Rolling Strategies
 - **Forward Collar (Static):** Long-dated collar used to bound risk over a lengthy period (e.g., IPO lock-ups). High premium costs but set-and-forget.
 - **Rolling Collar (Dynamic):** Continuously rolling 30-90 day options. Allows the investor to step up the floor/cap as the stock climbs, but introduces path dependency and higher transaction costs.
+
+## Related Reading
+
+- [Advanced Options Collar Strategies: Structural Mechanics, Tradeoffs, and Institutional Applications](/articles/advanced-options-collar-strategies-structural-mechanics-tradeoffs)
+- [Watch on YouTube](https://youtu.be/qkbNo52noE4)

@@ -1,9 +1,9 @@
 ---
 path: ai-ml/database-agents-mcp-langgraph
-title: "Database Agents with MCP and LangChain"
+title: Database Agents with MCP and LangChain
 articleSlug: database-agents-mcp-langchain
 date: 2025-06-22
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 

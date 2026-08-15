@@ -1,9 +1,9 @@
 ---
 path: option-strategy/navigating-option-trading-strategies-taxonomy
-title: "Navigating Option Trading Strategies"
+title: Navigating Option Trading Strategies
 articleSlug: navigating-option-trading-strategies
 date: 2025-06-05
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 

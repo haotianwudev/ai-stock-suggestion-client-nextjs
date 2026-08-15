@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/magnificent-seven-q2-2025-earnings
-title: "The Magnificent Seven: Q2 2025 Earnings and the AI Bubble Debate"
+title: The Magnificent Seven: Q2 2025 Earnings and the AI Bubble Debate
 articleSlug: magnificent-seven-ai-titans-bubble-analysis
 date: 2025-09-02
-labels: [Stock Analysis, Macro]
+labels: ["Stock Analysis", "Macro"]
 related: []
 ---
 
@@ -57,4 +57,3 @@ All beat consensus except Tesla, which missed.
 
 - [The Magnificent Seven: AI-Fueled Titans or a Bubble in the Making?](/articles/magnificent-seven-ai-titans-bubble-analysis)
 - [Watch on YouTube](https://youtu.be/uG0l1ZBPPOE)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSXRngq-N5LBYfpRaU6UVvkJuWb9pS_hpfYRDFUhzyx_xjwERFq8atlCVgNGTziP-nbpnJZIOIMGeCz/pub)

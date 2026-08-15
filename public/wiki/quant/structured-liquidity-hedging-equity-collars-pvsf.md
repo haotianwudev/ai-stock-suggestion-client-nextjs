@@ -1,4 +1,11 @@
-# Structured Liquidity & Hedging: Equity Collars and PVSFs
+---
+path: quant/structured-liquidity-hedging-equity-collars-pvsf
+title: Structured Liquidity & Hedging
+articleSlug: structured-liquidity-hedging-equity-collars-pvsf
+date: 2026-04-24
+labels: ["Quantitative Finance", "Finance 101"]
+related: []
+---
 
 ## Overview
 A comprehensive masterclass on navigating concentrated wealth. The contemporary financial landscape presents a complex paradox for corporate founders and executives: massive paper wealth juxtaposed with an acute lack of liquid capital. Selling highly appreciated stock triggers punitive capital gains taxes, signals lack of confidence to the market, and may violate insider trading policies. Financial engineering solves this triad of challenges using Equity Collars and Prepaid Variable Share Forwards (PVSFs).
@@ -38,3 +45,8 @@ Insiders are subject to strict scrutiny to prevent illegal insider trading and e
 - **Section 16(a) Form 4 Filings:** Cannot use standard buy/sell codes. Must use Code "J" or "K" (Derivative Securities) with explicit footnotes detailing the floor, cap, term, and cash advance.
 - **Rule 10b5-1 Trading Plans:** Execution must occur under heavily enforced cooling-off periods (e.g., 90 days post-adoption) to prove the executive lacked Material Non-Public Information (MNPI).
 - **Proxy Regulation S-K Item 407(i):** Companies must publicly disclose to shareholders if executives are permitted to hedge. Many boards now strictly prohibit PVSFs as they contradict pay-for-performance.
+
+## Related Reading
+
+- [Structured Liquidity & Hedging: Equity Collars and Prepaid Variable Share Forwards](/articles/structured-liquidity-hedging-equity-collars-pvsf)
+- [Watch on YouTube](https://youtu.be/H0btkOFsAvc)

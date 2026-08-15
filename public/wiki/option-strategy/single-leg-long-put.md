@@ -3,7 +3,7 @@ path: option-strategy/single-leg-long-put
 title: The Single Leg Long Put: Asymmetric Utility
 articleSlug: single-leg-put-strategy-asymmetric-utility
 date: 2025-12-20
-labels: [Options Trading]
+labels: ["Options Trading"]
 related: []
 ---
 
@@ -58,4 +58,4 @@ A long put gives the buyer the right, not the obligation, to sell an underlying 
 ## Related Reading
 
 - [The Single Leg Long Put: Asymmetric Utility in Options Trading](/articles/single-leg-put-strategy-asymmetric-utility) — full article with the trade simulation, selection matrix, and exit protocols.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSUcNgYFVsQenDObEoDJiuX4Boe1m6rLmoIjARy2vh3LVlK44G2lZUiX4H7ZDDMydjcUlGodaPUbsLx/pub)
+- [Watch on YouTube](https://youtu.be/X2IJngJv4G0)

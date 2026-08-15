@@ -3,7 +3,7 @@ path: quant/black-scholes-analytics-laboratory-axioms-option-pricing
 title: Black-Scholes Analytics
 articleSlug: black-scholes-analytics-laboratory-axioms-option-pricing
 date: 2026-01-24
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -42,6 +42,6 @@ In a complete market, any payoff can be perfectly replicated. Because of this, t
 - **The Volatility Smile:** Since the model assumes flat volatility, traders reverse-engineer prices to quote "Implied Volatility," creating a smile or skew that reflects true market fears (Crashophobia).
 
 ## Related Reading
+
 - [Black-Scholes Analytics: The Laboratory Axioms of Option Pricing](/articles/black-scholes-analytics-laboratory-axioms-option-pricing)
 - [Watch on YouTube](https://youtu.be/BfU9H60nepI)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ3D_1alifzLfFgLskOD56Bsooyb68NrCNFQAGXkopqzG3jCXKxUIrh4_lG5AFktsJikfurbfbVWM82/pub)

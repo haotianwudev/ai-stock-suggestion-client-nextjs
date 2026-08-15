@@ -3,7 +3,7 @@ path: quant/prediction-markets-financialization-truth-complete-trading-guide
 title: Prediction Markets Complete Trading Guide
 articleSlug: prediction-markets-financialization-truth-complete-trading-guide
 date: 2026-02-03
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -40,6 +40,6 @@ Prediction markets can be heavily influenced by "Whales" (large-capital players)
 Professional traders use APIs (both Kalshi and Polymarket) to run Python scripts that monitor spreads, auto-hedge, and scrape news using LLMs to trade sentiment. Analytical dashboards chart historical probabilities to differentiate between news reactions and noise.
 
 ## Related Reading
+
 - [Prediction Markets: The Financialization of Truth - Complete Trading Guide](/articles/prediction-markets-financialization-truth-complete-trading-guide)
 - [Watch on YouTube](https://youtu.be/0gJhGy9m2VA)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTkHO4z-6dJegqMb2UHTZduNYLGW3xQzwPiAzN359fnDG5ZCDF23zmQLGMiakcQiz7XBDW7Ci0WfYO8/pub)

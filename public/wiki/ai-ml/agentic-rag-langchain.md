@@ -3,7 +3,7 @@ path: ai-ml/agentic-rag-langchain
 title: Agentic RAG with LangChain
 articleSlug: architecting-agentic-retrieval-systems-langchain-proprietary-wikis
 date: 2026-08-15
-labels: [Quantitative Finance, AI & Machine Learning]
+labels: ["Quantitative Finance", "AI & Machine Learning"]
 related: []
 ---
 
@@ -64,4 +64,3 @@ A splitter that breaks the text between these lines hands the LLM `d_2` with no 
 ## Related Reading
 
 - [Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance](/articles/architecting-agentic-retrieval-systems-langchain-proprietary-wikis)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRRGHdhwwkgxYFefJSj0B94I6KZ9dWLXDDA9hJlBApcHr0C9SPHuR46zouMwqC-S5-DaPoUobsOTXpe/pub)

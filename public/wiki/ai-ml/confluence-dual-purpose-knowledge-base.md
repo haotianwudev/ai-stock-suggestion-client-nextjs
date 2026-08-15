@@ -1,9 +1,9 @@
 ---
 path: ai-ml/confluence-dual-purpose-knowledge-base
-title: "The Dual-Purpose Playbook: Confluence for Human and AI"
+title: The Dual-Purpose Playbook: Confluence for Human and AI
 articleSlug: confluence-dual-purpose-playbook-human-ai-collaboration
 date: 2025-06-27
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 
@@ -64,4 +64,4 @@ This benefits humans (a live, consistent project dashboard) and AI equally (stru
 
 ## Related Reading
 
-- [The Dual-Purpose Playbook: Confluence for Human and AI](/articles/confluence-dual-purpose-playbook-human-ai-collaboration)
+- [Dual-Purpose Playbook: Confluence for Human and AI](/articles/confluence-dual-purpose-playbook-human-ai-collaboration)

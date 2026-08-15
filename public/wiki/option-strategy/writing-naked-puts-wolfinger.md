@@ -1,9 +1,9 @@
 ---
 path: option-strategy/writing-naked-puts-wolfinger
-title: "Writing Naked Puts: A Complete Guide"
+title: Writing Naked Puts: A Complete Guide
 articleSlug: writing-naked-puts-complete-interactive-guide
 date: 2025-06-10
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 

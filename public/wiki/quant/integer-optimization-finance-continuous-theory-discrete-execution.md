@@ -1,4 +1,11 @@
-# Integer Optimization in Finance
+---
+path: quant/integer-optimization-finance-continuous-theory-discrete-execution
+title: Integer Optimization in Finance
+articleSlug: integer-optimization-finance-continuous-theory-discrete-execution
+date: 2026-05-04
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to bridging the gap between continuous theoretical models and the discrete reality of execution. Mixed-Integer Programming (MIP) solves the NP-Hard problems of real-world trading, encompassing portfolio construction, tax management, and arbitrage strategies under strict constraints.
@@ -28,3 +35,8 @@ A comprehensive guide to bridging the gap between continuous theoretical models 
   - *Rounding & Local Search:* Solving the continuous LP and intelligently rounding to nearby integers.
   - *Simulated Annealing & Genetic Algorithms:* Exploring the discrete space stochastically.
 - **Neural Branching:** The bleeding edge involves using Graph Neural Networks (GNNs) via imitation learning to predict the optimal branching decisions in the Branch-and-Bound tree, drastically speeding up inference times.
+
+## Related Reading
+
+- [Integer Optimization in Finance: From Continuous Theory to Discrete Execution](/articles/integer-optimization-finance-continuous-theory-discrete-execution)
+- [Watch on YouTube](https://youtu.be/MY8LRTrnPKk)

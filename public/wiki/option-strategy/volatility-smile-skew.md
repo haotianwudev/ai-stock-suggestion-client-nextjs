@@ -1,9 +1,9 @@
 ---
 path: option-strategy/volatility-smile-skew
-title: "The Volatility Smile and Skew: Why Black-Scholes Fails in Practice"
+title: The Volatility Smile and Skew: Why Black-Scholes Fails in Practice
 articleSlug: volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage
 date: 2025-10-18
-labels: [Options Trading, Quantitative Finance]
+labels: ["Options Trading", "Quantitative Finance"]
 related: []
 ---
 
@@ -51,4 +51,4 @@ If the Black-Scholes model were correct, implied volatility (IV) would be identi
 ## Related Reading
 
 - [The Volatility Smile: A Quantitative Analysis of Market Structure, Sentiment, and Arbitrage](/articles/volatility-smile-quantitative-analysis-market-structure-sentiment-arbitrage) — full article with the smile/skew chart and stochastic volatility model comparison.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSrbL7cogay9R8XbO_N_6W1a61S7lk-PWSpfMXMrcUq53qvtkouBwAjXlfcLqgCjZPI0pC-GNqKN_Uj/pub)
+- [Watch on YouTube](https://youtu.be/p8nblr4NyNc)

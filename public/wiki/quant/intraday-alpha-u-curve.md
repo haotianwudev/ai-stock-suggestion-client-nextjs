@@ -3,7 +3,7 @@ path: quant/intraday-alpha-u-curve
 title: Intraday Alpha and the U-Curve Volatility Engine
 articleSlug: quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow
 date: 2026-02-19T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -48,6 +48,6 @@ Volume drops significantly. This phase is dominated by Passive Execution Algos a
 - **Spread Monitoring:** If bid-ask spreads widen to >2x normal, reduce size significantly.
 
 ## Related Reading
+
 - [Quantifying Intraday Alpha: The U-Curve Volatility Engine and Institutional Flow Dynamics](/articles/quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow)
 - [Watch on YouTube](https://youtu.be/ij2nWJXmb04)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQXuQlk71kH8nP3E5s2CTHan--24DHJMjIYaUfIYuuxJZHnB4ELHTyqqlNSL6BIYFG18QSClxIaPema/pub)

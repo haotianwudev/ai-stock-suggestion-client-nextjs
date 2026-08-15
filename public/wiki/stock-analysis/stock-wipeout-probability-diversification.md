@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/stock-wipeout-probability-diversification
-title: "Stock Wipeout Probability Analysis"
+title: Stock Wipeout Probability Analysis
 articleSlug: stock-wipeout-probability-analysis
 date: 2025-07-01
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 

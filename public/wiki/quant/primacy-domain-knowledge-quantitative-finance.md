@@ -1,4 +1,11 @@
-# The Primacy of Domain Knowledge in Quantitative Finance
+---
+path: quant/primacy-domain-knowledge-quantitative-finance
+title: The Primacy of Domain Knowledge
+articleSlug: primacy-domain-knowledge-quantitative-finance
+date: 2026-05-29
+labels: ["Quantitative Finance", "Generative AI"]
+related: []
+---
 
 ## Overview
 An exhaustive exploration of modern quantitative finance principles asserting that deep financial domain expertise and market intuition are the indispensable cornerstones of successful quantitative research, overriding pure unguided algorithmic approaches.
@@ -27,3 +34,8 @@ An exhaustive exploration of modern quantitative finance principles asserting th
 ## Post-Training Alignment
 - **FinDPO Framework:** Direct Preference Optimization directly aligns the AI with human risk preferences, solving issues seen in basic Supervised Fine-Tuning.
 - Through proper mathematical translation (converting text token logits to continuous probability weights via softmax), aligned models display massive alpha improvements (e.g., producing strong Sharpe ratios during walk-forward backtests).
+
+## Related Reading
+
+- [The Primacy of Domain Knowledge in Quantitative Finance](/articles/primacy-domain-knowledge-quantitative-finance)
+- [Watch on YouTube](https://youtu.be/T6Fgad-WZ60)

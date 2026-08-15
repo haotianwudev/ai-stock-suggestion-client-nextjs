@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/insider-trading-signal-form4
-title: "Reading Insider Trading: Form 4 Filings as a Market Sentiment Signal"
+title: Reading Insider Trading: Form 4 Filings as a Market Sentiment Signal
 articleSlug: insiders-edge-comprehensive-analysis
 date: 2025-10-22
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -46,4 +46,4 @@ related: []
 ## Related Reading
 
 - [The Insider's Edge: Signal from Insider Trading](/articles/insiders-edge-comprehensive-analysis) — full article with the legal-vs-illegal comparison table and landmark case studies.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTrrtDQ12baE9z57X3EV_jUqM4PjUgqQyvbmTyFymeiLsIRGaxYXTKgAvaeKXYon2v379fYUgFZfFT9/pub)
+- [Watch on YouTube](https://youtu.be/RpaZZsz5J5U)

@@ -1,9 +1,9 @@
 ---
 path: form-13f/david-tepper-appaloosa-q3-2025
-title: "David Tepper: The Contrarian Master — Q3 2025 Portfolio"
+title: David Tepper: The Contrarian Master — Q3 2025 Portfolio
 articleSlug: david-tepper-contrarian-master-q3-2025-portfolio
 date: 2025-11-18
-labels: [13F Analysis]
+labels: ["13F Analysis"]
 related: []
 ---
 
@@ -55,4 +55,4 @@ David Tepper's Appaloosa Management doctrine was forged by a career-defining rej
 ## Related Reading
 
 - [David Tepper: The Contrarian Master - Q3 2025 Portfolio Analysis](/articles/david-tepper-contrarian-master-q3-2025-portfolio) — full article with the complete portfolio comparison table and career history.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQ6L1ulgpD7a0ir6p6UvHU2fEcNFdFJScf5rQorJP2vXsBkUOBjAyY9HNg_JhiY6UU8ubwTCymeIVp5/pub)
+- [Watch on YouTube](https://youtu.be/pGO7nYdHCT0)

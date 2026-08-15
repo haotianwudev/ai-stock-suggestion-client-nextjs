@@ -1,9 +1,9 @@
 ---
 path: form-13f/druckenmiller-q3-2025-bessent-edge
-title: "Druckenmiller Q3 2025: Rotation, Conviction & the Bessent Edge"
+title: Druckenmiller Q3 2025: Rotation, Conviction & the Bessent Edge
 articleSlug: druckenmiller-q3-2025-rotation-conviction-bessent-edge
 date: 2025-11-16
-labels: [13F Analysis]
+labels: ["13F Analysis"]
 related: []
 ---
 
@@ -59,5 +59,5 @@ Treasury Secretary Scott Bessent is Druckenmiller's former colleague, both train
 
 ## Related Reading
 
-- [The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge](/articles/druckenmiller-q3-2025-rotation-conviction-bessent-edge) — full article with the complete holdings tables and sector allocation breakdown.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTrrx_N8DTUy7YUnat4IZ18LBBO1m0YJy0vZp6Dgv1dn9_QnOWBDjVrTYRQGX4Jt71XLAFyhJL5xbjA/pub)
+- [The Q3 2025 Druckenmiller Thesis: Rotation, Conviction, & the Bessent Edge - Druckenmiller's Portfolio Masterclass](/articles/druckenmiller-q3-2025-rotation-conviction-bessent-edge) — full article with the complete holdings tables and sector allocation breakdown.
+- [Watch on YouTube](https://youtu.be/rXKGJGI4hvQ)

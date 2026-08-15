@@ -1,9 +1,9 @@
 ---
 path: quant/signal-noise-filtering-techniques
-title: "Signal in the Noise: Filtering Techniques for Quant Trading"
+title: Signal in the Noise: Filtering Techniques for Quant Trading
 articleSlug: signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading
 date: 2025-11-13
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -56,4 +56,4 @@ Financial markets have a notoriously low signal-to-noise ratio (SNR often estima
 ## Related Reading
 
 - [Signal in the Noise: A Comprehensive Analysis of Filtering Techniques in Quantitative Trading](/articles/signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading) — full article with the interactive filter comparison and complete academic research review.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSLsH3soSXkPz1j6pD75ZhQxlNs7rbVozggvGQTAGb1rsp2gN5xq-866fCkAnbubv1lpLJOTADUaQys/pub)
+- [Watch on YouTube](https://youtu.be/xtwugnNA6Ac)

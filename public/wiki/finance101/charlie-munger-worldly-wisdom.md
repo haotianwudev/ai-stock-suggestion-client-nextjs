@@ -1,9 +1,9 @@
 ---
 path: finance101/charlie-munger-worldly-wisdom
-title: "The Worldly Wisdom of Charles T. Munger"
+title: The Worldly Wisdom of Charles T. Munger
 articleSlug: worldly-wisdom-charles-munger-multidisciplinary-approach
 date: 2025-08-15
-labels: [Finance 101, 13F Analysis]
+labels: ["Finance 101", "13F Analysis"]
 related: []
 ---
 

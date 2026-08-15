@@ -1,9 +1,9 @@
 ---
 path: finance101/rich-dad-poor-dad-kiyosaki-summary
-title: "Rich Dad, Poor Dad: Key Stories and Lessons"
+title: Rich Dad, Poor Dad: Key Stories and Lessons
 articleSlug: rich-dad-poor-dad-book-summary
 date: 2025-07-05
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 

@@ -3,7 +3,7 @@ path: quant/long-short-equity
 title: Long-Short Equity Portfolios
 articleSlug: quantitative-foundations-long-short-equity-portfolios
 date: 2026-07-16
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -45,5 +45,6 @@ $$
 - **Portfolio Optimization:** Composite alpha scores are translated into precise portfolio weights using mathematical optimizers (like MIQP solvers) that balance expected returns against tracking error and real-world trading frictions.
 
 ## Related Reading
+
 - [Quantitative Foundations of Long-Short Equity Portfolios](/articles/quantitative-foundations-long-short-equity-portfolios)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQmLhoOJleFcGU-iDE5xPb0k_o2PMHR3GpWMLe0OGkyROJdNKDtvAbQvKNFi69iMxoqJ96mG7eb1Laa/pub)
+- [Watch on YouTube](https://youtu.be/-gVI9UIGoeQ)

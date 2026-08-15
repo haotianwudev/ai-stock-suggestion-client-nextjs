@@ -1,9 +1,9 @@
 ---
 path: quant/high-frequency-trading-strategies-technology
-title: "High-Frequency Trading: Core Strategies and the Technology Arms Race"
+title: High-Frequency Trading: Core Strategies and the Technology Arms Race
 articleSlug: microsecond-battlefield-competitive-strategies-high-frequency-trading
 date: 2025-10-13
-labels: [Quantitative Finance, AI & Machine Learning]
+labels: ["Quantitative Finance", "AI & Machine Learning"]
 related: []
 ---
 
@@ -51,4 +51,4 @@ Regulation NMS was meant to unify the U.S. national market but inadvertently cre
 ## Related Reading
 
 - [The Microsecond Battlefield: Competitive Strategies in High-Frequency Trading](/articles/microsecond-battlefield-competitive-strategies-high-frequency-trading) — full article with detailed strategy breakdowns and the HFT titans comparison.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQwnhtkIWxyExGVHaELDxXqUwjL6uwhOJHSLhBxH3bx1_SsvF8qHAVd-THXyaMV8dpx-eTtA2xxNz49/pub)
+- [Watch on YouTube](https://youtu.be/Zp-ZmWc1G3A)

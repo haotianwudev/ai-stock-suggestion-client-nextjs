@@ -1,4 +1,11 @@
-# A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility
+---
+path: quant/unified-theory-market-dynamics-order-flow-impact-volatility
+title: A Unified Theory of Market Dynamics
+articleSlug: unified-theory-market-dynamics-order-flow-impact-volatility
+date: 2026-04-05
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 Exploring the microstructural foundations of order flow, market impact, and volatility through a unified mathematical framework. Based on breakthrough research by Muhle-Karbe et al., this deep dive reveals how a single structural statistic binds together long memory, square-root scaling, and rough volatility.
@@ -26,3 +33,8 @@ $H_0 \in (0, 1/2)$ is the fundamental parameter dictating the entire market ecol
 If order flow has long memory, why isn't the price process highly predictable (which would violate no-arbitrage)?
 - Market makers observe the long-memory order flow and dynamically adjust quotes. The "reaction flow" perfectly offsets the predictability of the "core flow".
 - **Rough Volatility as a Consequence:** Because market makers must rapidly adjust prices to prevent statistical arbitrage against persistent institutional flow, the resulting price path exhibits rough volatility. Roughness is not an exogenous market feature; it is the mathematical cost of enforcing no-arbitrage against long-memory order flow.
+
+## Related Reading
+
+- [A Unified Theory of Market Dynamics: Order Flow, Market Impact, and Volatility](/articles/unified-theory-market-dynamics-order-flow-impact-volatility)
+- [Watch on YouTube](https://youtu.be/wF1vaW8WwzU)

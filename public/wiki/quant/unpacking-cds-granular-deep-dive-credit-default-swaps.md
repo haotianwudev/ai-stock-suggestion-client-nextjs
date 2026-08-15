@@ -1,4 +1,11 @@
-# Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps
+---
+path: quant/unpacking-cds-granular-deep-dive-credit-default-swaps
+title: Unpacking CDS: A Granular Deep-Dive
+articleSlug: unpacking-cds-granular-deep-dive-credit-default-swaps
+date: 2026-05-13
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive quantitative analysis of Credit Default Swaps (CDS) from basic bilateral insurance mechanics to advanced Greeks. It covers hazard rates, the Credit Triangle, the Big Bang standardization, CS01 risk sensitivities, and professional stress testing frameworks used by institutional credit desks.
@@ -33,3 +40,8 @@ A comprehensive quantitative analysis of Credit Default Swaps (CDS) from basic b
 ## 5. Institutional Infrastructure
 - **Trading Desks & Market Makers:** Dealers provide liquidity by quoting bid-ask spreads on CDS indices (like CDX and iTraxx) and single names. They manage massive books of complex cross-gamma and correlation risks.
 - **Stress Testing Frameworks:** Professional risk management involves daily shifts (CS01, IR01), weekly shocks (e.g., +500bps spread widening, recovery rate drops), and monthly deep-dive Monte Carlo simulations to quantify tail risk and hedge effectiveness.
+
+## Related Reading
+
+- [Unpacking CDS: A Granular Deep-Dive into Credit Default Swaps](/articles/unpacking-cds-granular-deep-dive-credit-default-swaps)
+- [Watch on YouTube](https://youtu.be/EtDXXSIffTQ)

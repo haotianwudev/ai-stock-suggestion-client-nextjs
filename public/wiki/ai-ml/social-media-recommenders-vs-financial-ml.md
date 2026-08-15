@@ -1,9 +1,9 @@
 ---
 path: ai-ml/social-media-recommenders-vs-financial-ml
-title: "Why Social Media Recommender Algorithms Can't Pick Stocks"
+title: Why Social Media Recommender Algorithms Can't Pick Stocks
 articleSlug: viral-videos-volatile-valuations-ai-algorithms-stock-picking
 date: 2025-09-17
-labels: [AI/ML, Finance 101]
+labels: ["AI/ML", "Finance 101"]
 related: []
 ---
 
@@ -62,4 +62,3 @@ The viable pivot is from *prescriptive* recommendations ("buy this") to *descrip
 
 - [From Viral Videos to Volatile Valuations: Can AI Algorithms Pick Your Next Stock?](/articles/viral-videos-volatile-valuations-ai-algorithms-stock-picking)
 - [Watch on YouTube](https://youtu.be/g3vVAfBu84c)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTrX4_X404giJLFmVnWcLanvOEVi3sAVtESKEfonVtcwjhAg8PKRuN4sWyKJMvHJqxRmyDVaomT06ec/pub)

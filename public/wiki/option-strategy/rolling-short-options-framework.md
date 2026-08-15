@@ -1,9 +1,9 @@
 ---
 path: option-strategy/rolling-short-options-framework
-title: "Rolling Short Options: A Defensive and Offensive Framework"
+title: Rolling Short Options: A Defensive and Offensive Framework
 articleSlug: strategic-framework-rolling-options-quantitative-approach
 date: 2025-09-13
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -71,4 +71,3 @@ Thesis still 100% valid? Rolling for a defensible reason (not just avoiding a lo
 
 - [Defensive and Offensive Rolling on Short Options](/articles/strategic-framework-rolling-options-quantitative-approach)
 - [Watch on YouTube](https://youtu.be/q5FSpOKtcFM)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSTKltePzIDadeG7XV_9boPEYxEe3apzPnmMOTV_wrn9XGG0JcEvLY3_FL0BlqpC-gUAX-ZUfE0eOGv/pub)

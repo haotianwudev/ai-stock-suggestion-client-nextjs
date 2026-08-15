@@ -29,6 +29,6 @@ A defensive strategy prioritizing downside protection while targeting specific g
 - **Alternatives & Cash (25%)** — Maintain 10% in Gold and 15% in short-term T-Bills/cash to deploy during volatility spikes.
 
 ## Related Reading
+
 - [Navigating the 2026 Shift: A Comprehensive Macro Economic Outlook](/articles/navigating-2026-shift-comprehensive-macro-economic-outlook)
 - [Watch on YouTube](https://youtu.be/oY2XSiVxYtQ)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTgVz7tn0HDMAVIzkJJHFXLaEuUmSv9Ag16gG1cAPbyIY4jx6sqbGZThKT3TbohbGwOM5TsDe8G1paF/pub)

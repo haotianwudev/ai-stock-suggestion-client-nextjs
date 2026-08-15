@@ -1,4 +1,11 @@
-# The Mechanics of Alpha: From Raw Data to Realized Returns
+---
+path: quant/mechanics-of-alpha-raw-data-realized-returns
+title: The Mechanics of Alpha
+articleSlug: mechanics-of-alpha-raw-data-realized-returns
+date: 2026-04-01
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive tutorial on factor engineering, signal processing, and performance attribution for quantitative trading. Master the Fundamental Law of Active Management, implementation shortfall, and the reality of backtest overfitting.
@@ -33,3 +40,8 @@ The real world has friction. Backtests assume frictionless execution, which lead
 
 - **Implementation Shortfall (IS):** The total cost of trading.
 - **The "Leakage" Problem:** In finance, Monday's price is 99% correlated with Tuesday's price. Purged K-Fold enforces a "Gap" (Embargo) between training and testing data to prevent "peeking".
+
+## Related Reading
+
+- [The Mechanics of Alpha: From Raw Data to Realized Returns](/articles/mechanics-of-alpha-raw-data-realized-returns)
+- [Watch on YouTube](https://youtu.be/rv_9yM5vn6k)

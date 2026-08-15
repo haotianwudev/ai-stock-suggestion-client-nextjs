@@ -3,7 +3,7 @@ path: quant/monte-carlo-derivative-pricing
 title: Monte Carlo Simulation for Derivative Pricing
 articleSlug: monte-carlo-advanced-stochastic-modeling-derivatives-cva
 date: 2025-12-11
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -51,4 +51,4 @@ Monte Carlo (MC) simulation estimates the risk-neutral expected payoff integral 
 ## Related Reading
 
 - [Monte Carlo Simulation for Derivative Pricing](/articles/monte-carlo-advanced-stochastic-modeling-derivatives-cva) — full article with the complete formula derivations and the copula comparison table.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSOjVWGG9ULZaVtdFEji9LVwKr7pXs_qFhg3MVchFt3fCvBLrWMichR0dm9ZPM_B_XKtFyP2mFE885v/pub)
+- [Watch on YouTube](https://youtu.be/nBAnWHAzD6I)

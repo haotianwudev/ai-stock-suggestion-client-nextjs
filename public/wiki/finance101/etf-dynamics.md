@@ -50,5 +50,6 @@ $$
 $$
 
 ## Related Reading
-- [Dynamics of the Global ETF Market](/articles/dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSSXAWeHw3zu-ykv2MmCcHn2vZpSzvfM7IsGKkZMMUL97lHIADyni5CM9EYoW_KcnjOLxLT159SGbxN/pub)
+
+- [Dynamics of the Global ETF Market: Scale, Strategic Utility, and Quantitative Mechanics](/articles/dynamics-global-etf-market-scale-strategic-utility-quantitative-mechanics)
+- [Watch on YouTube](https://youtu.be/KXLmOi9HV9o)

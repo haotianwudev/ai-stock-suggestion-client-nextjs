@@ -1,9 +1,9 @@
 ---
 path: quant/sp500-inclusion-anomaly-event-trading
-title: "Trading the S&P 500 Inclusion Anomaly"
+title: Trading the S&P 500 Inclusion Anomaly
 articleSlug: sp500-inclusion-anomaly-december-2025-deep-research
 date: 2025-09-15
-labels: [Quantitative Finance, Finance 101]
+labels: ["Quantitative Finance", "Finance 101"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ Bull put spreads are generally preferred for this specific event because they pr
 
 - [Mastering the S&P 500 Inclusion Anomaly: December 2025 Deep Research](/articles/sp500-inclusion-anomaly-december-2025-deep-research)
 - [Watch on YouTube](https://youtu.be/IMS-1JMTbc0)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSkXerTQU28ElMzivvTOj3dRbhqfDHpLKjmGfhInEaJKMfdeArjQ8N2DWfLHsu_p40xzQv2J1-m5xSX/pub)

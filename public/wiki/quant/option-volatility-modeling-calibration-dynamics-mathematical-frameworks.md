@@ -1,4 +1,11 @@
-# Option Volatility Modeling: Calibration Dynamics & Mathematical Frameworks
+---
+path: quant/option-volatility-modeling-calibration-dynamics-mathematical-frameworks
+title: Option Volatility Modeling: Calibration Dynamics
+articleSlug: option-volatility-modeling-calibration-dynamics-mathematical-frameworks
+date: 2026-04-11
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive masterclass exploring the evolution from Black-Scholes to modern volatility surfaces. Master SVI parametric models, Dupire local volatility, Heston stochastic volatility, hybrid LSV architectures, rough volatility frontiers, and deep learning applications for derivative pricing.
@@ -26,3 +33,8 @@ To capture the dynamic evolution of the smile, Stochastic Volatility (SV) models
 LSV models combine the best of both worlds: the perfect European option calibration of Dupire Local Volatility, and the realistic forward-smile dynamics of Stochastic Volatility.
 - **Architecture:** It takes a base SV model (like Heston) and multiplies it by a deterministic leverage function $L(S,t)$ calibrated to match the European surface.
 - **Application:** LSV is the mandatory standard for pricing path-dependent exotics (e.g., Barrier, Autocallable, and Asian options) where hedging depends on the joint dynamics of spot and vol.
+
+## Related Reading
+
+- [Option Volatility Modeling: Calibration Dynamics, Mathematical Frameworks, and Modern Market Applications](/articles/option-volatility-modeling-calibration-dynamics-mathematical-frameworks)
+- [Watch on YouTube](https://youtu.be/EjaO4UaVLJA)

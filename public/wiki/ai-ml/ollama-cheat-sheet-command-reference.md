@@ -1,9 +1,9 @@
 ---
 path: ai-ml/ollama-cheat-sheet-command-reference
-title: "Ollama Cheat Sheet: Complete Command Reference"
+title: Ollama Cheat Sheet: Complete Command Reference
 articleSlug: ollama-cheat-sheet-complete-command-reference
 date: 2025-07-04
-labels: [AI/ML]
+labels: ["AI/ML"]
 related: []
 ---
 

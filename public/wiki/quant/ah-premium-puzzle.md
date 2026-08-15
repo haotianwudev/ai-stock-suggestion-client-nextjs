@@ -46,5 +46,6 @@ Models long-term equilibrium and short-term dynamics simultaneously, where $\alp
 - **Quantitative Trading Strategy**: Quants use statistical arbitrage techniques like VECM and Machine Learning models to harvest alpha from mean-reverting properties of the AH spread, factoring in threshold cointegration due to transaction costs.
 
 ## Related Reading
+
 - [The Pricing of Cross-Border Dual-Listed Equities](/articles/pricing-cross-border-dual-listed-equities)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSlps3VVwZRPj9F3lTniY0May4HrDzprH8cTc6JyXpHdWmRsXdUwA0gX6lStUOgEMmVid86CjmXyy9m/pub)
+- [Watch on YouTube](https://youtu.be/dbnmFlVnOQQ)

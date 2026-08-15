@@ -1,9 +1,9 @@
 ---
 path: option-strategy/losing-money-options-common-pitfalls
-title: "Losing Money With Options: Common Pitfalls"
+title: Losing Money With Options: Common Pitfalls
 articleSlug: losing-money-with-options-common-pitfalls
 date: 2025-06-07
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -57,4 +57,4 @@ Three pillars: **Technical Knowledge** → **Alertness & Discipline** → **Risk
 
 ## Related Reading
 
-- [Losing Money With Options: Common Pitfalls](/articles/losing-money-with-options-common-pitfalls)
+- [Options Losing Money:Common Pitfalls](/articles/losing-money-with-options-common-pitfalls)

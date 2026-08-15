@@ -1,9 +1,9 @@
 ---
 path: quant/backtrader-cheatsheet-python-framework
-title: "The Definitive backtrader Cheatsheet"
+title: The Definitive backtrader Cheatsheet
 articleSlug: definitive-backtrader-cheatsheet-guide
 date: 2025-07-30
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -81,4 +81,3 @@ A backtest that ignores transaction costs is explicitly called out as &ldquo;fun
 ## Related Reading
 
 - [The Definitive backtrader Cheatsheet](/articles/definitive-backtrader-cheatsheet-guide)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTaw73N8uwy5Af2dhof_XI86yHb46mTpEVEUaca1e3u8EAE7CmIRRlRi22kM7ZvfmDIyvUr6lhG12ML/pub)

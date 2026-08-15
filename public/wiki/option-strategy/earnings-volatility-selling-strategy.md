@@ -1,9 +1,9 @@
 ---
 path: option-strategy/earnings-volatility-selling-strategy
-title: "Advanced Option Strategy: Earnings Volatility Selling"
+title: Advanced Option Strategy: Earnings Volatility Selling
 articleSlug: earnings-volatility-selling-strategy-complete-guide
 date: 2025-07-13
-labels: [Options, Quantitative Finance]
+labels: ["Options", "Quantitative Finance"]
 related: []
 ---
 

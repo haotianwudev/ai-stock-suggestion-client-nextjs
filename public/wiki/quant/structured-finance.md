@@ -3,7 +3,7 @@ path: quant/structured-finance
 title: Structured Finance 2026
 articleSlug: structured-finance-2026-rmbs-cmbs-abs-pricing-models
 date: 2026-02-12T00:00:00Z
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -46,5 +46,6 @@ Structured finance securities with embedded options require path-dependent prici
 4. **Option-Adjusted Spread (OAS):** The pure credit and liquidity premium after removing interest rate risk and embedded options. RMBS exhibit **negative convexity** (prices rise less when rates fall than they fall when rates rise).
 
 ## Related Reading
-- [Structured Finance 2026](/articles/structured-finance-2026-rmbs-cmbs-abs-pricing-models)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT1T50Gv3h-o1mP0x74N-005088c22O6s2e_79bE62a0-4_eI65zQ6eYm3b08wF33G2/pub)
+
+- [Structured Finance 2026: Advanced Tutorial on RMBS, CMBS, and ABS Pricing Models](/articles/structured-finance-2026-rmbs-cmbs-abs-pricing-models)
+- [Watch on YouTube](https://youtu.be/vpiIPto8Mao)

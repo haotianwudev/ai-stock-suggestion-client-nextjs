@@ -1,4 +1,11 @@
-# The Ontology of Value: Financial Data Classification
+---
+path: quant/ontology-of-value-financial-data-classification-lifecycle-management
+title: The Ontology of Value
+articleSlug: ontology-of-value-financial-data-classification-lifecycle-management
+date: 2026-04-29
+labels: ["Quantitative Finance", "Finance 101"]
+related: []
+---
 
 ## Overview
 A comprehensive guide to financial data classification, architecture, and lifecycle management. In the modern financial ecosystem, data is not merely information—it is the structural DNA that enables every transaction, valuation, and risk calculation. 
@@ -38,3 +45,8 @@ When a position is liquidated, the system must determine *which specific shares*
 - **Market Risk (VaR):** Requires massive historical time-series data to simulate potential portfolio drawdowns.
 - **Credit Risk:** Relies on the Entity Master and LEI to calculate aggregate exposure to a single counterparty across all instruments and subsidiaries.
 - **Liquidity Risk:** Requires classifying assets based on their time-to-liquidation (e.g., Level 1, Level 2, Level 3 assets under Basel III).
+
+## Related Reading
+
+- [The Ontology of Value: Financial Data Classification and Lifecycle Management](/articles/ontology-of-value-financial-data-classification-lifecycle-management)
+- [Watch on YouTube](https://youtu.be/r4DG-C7B0yw)

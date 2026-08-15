@@ -1,4 +1,11 @@
-# Advanced Option Rolling Mechanics
+---
+path: quant/advanced-option-rolling-mechanics
+title: Advanced Option Rolling Mechanics
+articleSlug: advanced-option-rolling-mechanics
+date: 2026-04-17
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive masterclass on option rolling mechanics. Master the P&L accounting reality behind the "rolling for a credit" fallacy, systematic trigger frameworks (21 DTE, delta-based, P&L-based), volatility surface dynamics including the Vega trap, diagonal roll risk transformations, and mechanical rulebooks for covered calls, short puts, and strangles.
@@ -33,3 +40,8 @@ Rolling down and out on a short put often involves selling into a steeper volati
 ## 4. The Diagonal Roll (Strike and Time)
 The most common defensive maneuver is the Diagonal Roll: extending duration (further expiration) while simultaneously improving the strike (lower strike for puts, higher strike for calls).
 - **The Trade-Off:** Achieving a structural improvement in the strike while maintaining a net credit inherently requires selling a significant amount of additional time (extending the duration by several months). This locks up buying power and exposes the portfolio to prolonged Vega risk. It is a calculated exchange of time for price.
+
+## Related Reading
+
+- [Advanced Option Rolling Mechanics: Mathematical Frameworks, Volatility Surface Dynamics, and Systematic Implementation](/articles/advanced-option-rolling-mechanics)
+- [Watch on YouTube](https://youtu.be/2L_UPaxTy_c)

@@ -3,7 +3,7 @@ path: crypto/bitcoin
 title: The Digital Sovereign (Bitcoin Architecture)
 articleSlug: digital-sovereign-bitcoin-architecture-mining-investment-guide
 date: 2026-01-12
-labels: [CRYPTO, FINANCE101]
+labels: ["CRYPTO", "FINANCE101"]
 related: []
 ---
 
@@ -41,6 +41,6 @@ Bitcoin remains the king due to powerful network effects.
 - **Self-Custody Rights**: A major legislative theme protecting the right to hold private keys without third-party interference.
 
 ## Related Reading
-- [The Digital Sovereign](/articles/digital-sovereign-bitcoin-architecture-mining-investment-guide)
+
+- [The Digital Sovereign: A Comprehensive Guide to Bitcoin's Architecture, Mining, and Investment Ecosystem](/articles/digital-sovereign-bitcoin-architecture-mining-investment-guide)
 - [Watch on YouTube](https://youtu.be/ZN_GbavKYxk)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSGbEDAaB_RDYvmT8Q5YFtTomkmil02n4Ikp6geon24JaLlCjHZE25DMUgSIYgn6u_34KmeebhJCNQg/pub)

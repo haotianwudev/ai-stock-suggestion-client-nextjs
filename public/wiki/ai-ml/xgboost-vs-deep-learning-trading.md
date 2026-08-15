@@ -1,9 +1,9 @@
 ---
 path: ai-ml/xgboost-vs-deep-learning-trading
-title: "XGBoost vs. Deep Learning in Systematic Trading"
+title: XGBoost vs. Deep Learning in Systematic Trading
 articleSlug: strategic-role-xgboost-systematic-trading-2025
 date: 2025-09-11
-labels: [AI/ML, Quantitative Finance]
+labels: ["AI/ML", "Quantitative Finance"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ The future-proofed quant stack is modular: Transformers for unstructured data (n
 
 - [The Strategic Role of XGBoost in Systematic Trading: A 2025 Perspective](/articles/strategic-role-xgboost-systematic-trading-2025)
 - [Watch on YouTube](https://youtu.be/6mXc-7dDLS0)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSU2p81xP1Wm__2p9F9TSrH6ngHqT4KZpHrA3vFcYowTbyl6E-aKcHQfm9OotjHAe1HoorVlgdaB5-i/pub)

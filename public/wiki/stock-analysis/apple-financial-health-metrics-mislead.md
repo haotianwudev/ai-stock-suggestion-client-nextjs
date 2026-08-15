@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/apple-financial-health-metrics-mislead
-title: "Apple's Financial Health: When Traditional Metrics Mislead"
+title: Apple's Financial Health: When Traditional Metrics Mislead
 articleSlug: apple-financial-health-analysis-traditional-metrics-mislead
 date: 2025-07-05
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 

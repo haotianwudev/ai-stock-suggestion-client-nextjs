@@ -3,7 +3,7 @@ path: quant/efficient-frontier-portfolio-optimization-mathematics
 title: The Efficient Frontier
 articleSlug: efficient-frontier-portfolio-optimization-mathematics
 date: 2026-01-22
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -42,6 +42,6 @@ Constraints turn theoretical math into investable reality. Common constraints in
 - **Hierarchical Risk Parity (HRP):** Uses Machine Learning clustering to group correlated assets and allocates risk hierarchically, avoiding the instability of inverted covariance matrices.
 
 ## Related Reading
+
 - [The Efficient Frontier: Mathematical Foundations of Modern Portfolio Optimization](/articles/efficient-frontier-portfolio-optimization-mathematics)
 - [Watch on YouTube](https://youtu.be/_XSExYXACic)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTPgw9iql2uq-7aQ7tLcsfYSZ7Ymv9m8rMZCYEQhpje8D6fs3R_0MVbdjUIXK6M67XrePgZEIHGW_LQ/pub)

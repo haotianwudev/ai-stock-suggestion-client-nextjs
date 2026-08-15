@@ -3,7 +3,7 @@ path: quant/mean-reversion
 title: Mean Reversion & Statistical Arbitrage
 articleSlug: quantitative-trading-mean-reversion-factor-models-execution-dynamics
 date: 2026-08-04
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -71,5 +71,6 @@ Backtest overfitting is prevented using Winsorization (managing fat tails withou
 - Overfitting is the most pervasive failure point; robust research requires strict use of Winsorization, CPCV, and the Deflated Sharpe Ratio.
 
 ## Related Reading
-- [Quantitative Trading of Mean Reversion](/articles/quantitative-trading-mean-reversion-factor-models-execution-dynamics)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSK4rFGjYnaD1bcaqxVqER3XZLyvMyJXBxYfUxHd5YA19779S_j4zjTIVPnc4SxDqqIl9FogEmPBfpf/pub)
+
+- [Quantitative Trading of Mean Reversion: Factor Models, Execution Dynamics, and Rigorous Research Practices](/articles/quantitative-trading-mean-reversion-factor-models-execution-dynamics)
+- [Watch on YouTube](https://youtu.be/8BLEdEnxGi4)

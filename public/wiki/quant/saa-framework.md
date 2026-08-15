@@ -1,7 +1,10 @@
 ---
-title: "Strategic Asset Allocation Quantitative Framework"
-path: "quant/saa-framework"
-date: "2026-08-07"
+path: quant/saa-framework
+title: Strategic Asset Allocation Quantitative Framework
+articleSlug: strategic-asset-allocation-quantitative-framework-wealth-preservation
+date: 2026-08-07
+labels: ["Quantitative Finance"]
+related: []
 ---
 
 # Strategic Asset Allocation (SAA) Quantitative Framework
@@ -68,3 +71,8 @@ Garbage-In, Garbage-Out (GIGO) is the Achilles' heel of quantitative finance. In
 ## Related Resources
 - **Article:** [Strategic Asset Allocation Quantitative Framework for Wealth Preservation](/articles/strategic-asset-allocation-quantitative-framework-wealth-preservation)
 - **Infographic:** Strategic Asset Allocation Framework Matrix
+
+## Related Reading
+
+- [Strategic Asset Allocation: A Quantitative Framework for Multi-Generational Wealth Preservation](/articles/strategic-asset-allocation-quantitative-framework-wealth-preservation)
+- [Watch on YouTube](https://youtu.be/IvgZO_QcUJs)

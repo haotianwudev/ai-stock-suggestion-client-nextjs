@@ -3,7 +3,7 @@ path: macro/warsh-era
 title: The Warsh Era & Supply-Side Monetarism
 articleSlug: warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism
 date: 2026-02-01
-labels: [MARCO]
+labels: ["MARCO"]
 related: []
 ---
 
@@ -46,7 +46,7 @@ The market's reaction to the nomination provides a real-time stress test of the 
 5. **Wildcard Hedging**: Maintain small defensive allocations (5% gold) in case Senate confirmation fails.
 
 ## Related Reading
-- [The Warsh Era: Reconfiguring American Monetary Policy](/articles/warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism)
+
+- [The Warsh Era: Reconfiguring American Monetary Policy in the Age of Supply-Side Monetarism](/articles/warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism)
 - [Watch on YouTube](https://youtu.be/f_RHGL3pbM4)
 - [Listen to Podcast](https://open.spotify.com/episode/0fDjR6VCgc9924gZdUIUKL?si=O01JreneQZ23xeSO4BA_Wg)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQZbpHYYw2xCg7jD70n5sb6qq_2AwW_DNovrrnGka_bq7EHgR_lZqvdzQw2MQSRWXhESfMFmienmVq6/pub)

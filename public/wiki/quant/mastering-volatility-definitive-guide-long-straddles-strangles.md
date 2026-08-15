@@ -3,7 +3,7 @@ path: quant/mastering-volatility-definitive-guide-long-straddles-strangles
 title: Mastering Volatility
 articleSlug: mastering-volatility-definitive-guide-long-straddles-strangles
 date: 2026-03-20
-labels: [QUANT]
+labels: ["QUANT"]
 related: []
 ---
 
@@ -36,6 +36,6 @@ To remain delta-neutral, a trader must buy the underlying stock. If the stock re
 One size does not fit all. Select the right structure for your market view, including Straddles, Strangles, Condors, Backspreads, and Calendars.
 
 ## Related Reading
+
 - [Mastering Volatility: The Definitive Guide to Long Straddles and Strangles](/articles/mastering-volatility-definitive-guide-long-straddles-strangles)
 - [Watch on YouTube](https://youtu.be/3UfLDV7Y8Ps)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT7OK7jlI96YietOEyDQcgKD1k--5WbrNy2FPkldCsq91RcCkcyOlLtn1g-qdS1hfZouQMTfjzq7TlA/pub)

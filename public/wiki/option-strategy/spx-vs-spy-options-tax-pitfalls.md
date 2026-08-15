@@ -1,9 +1,9 @@
 ---
 path: option-strategy/spx-vs-spy-options-tax-pitfalls
-title: "Common Options Trading Pitfalls: Greeks, Assignment, and SPX vs. SPY"
+title: Common Options Trading Pitfalls: Greeks, Assignment, and SPX vs. SPY
 articleSlug: navigating-minefield-options-trading-pitfalls
 date: 2025-09-28
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -54,4 +54,3 @@ A $10,000 gain taxed at a 32% bracket costs $3,200 as a pure short-term SPY gain
 
 - [Navigating the Minefield: An Analytical Report on the Common Pitfalls of Options Trading](/articles/navigating-minefield-options-trading-pitfalls)
 - [Watch on YouTube](https://youtu.be/IvWGgDNQoUk)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTV1VQ5LmH7aDpgPpFc8YWPYlOUCn6LkyG1FPKvZW4dA8_iZbk8JeivrRwdz_3838Z4cvc6K9gkZxMA/pub)

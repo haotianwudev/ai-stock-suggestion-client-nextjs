@@ -1,9 +1,9 @@
 ---
 path: option-strategy/tax-efficient-option-writing
-title: "Tax-Efficient Option Writing: Section 1256, the 60/40 Rule, and Common Traps"
+title: Tax-Efficient Option Writing: Section 1256, the 60/40 Rule, and Common Traps
 articleSlug: tax-efficient-option-writing-comprehensive-guide
 date: 2025-09-12
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -45,4 +45,3 @@ The instrument choice behind an otherwise identical option-writing strategy can 
 
 - [Tax-Efficient Option Writing and Common Pitfalls](/articles/tax-efficient-option-writing-comprehensive-guide)
 - [Watch on YouTube](https://youtu.be/PkibBIsGHzk)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSIPlvhI9oPsWhxnofoxgn6awSS_ONPUp5vxC_K_Y58zQu9SpuaqjfjjMNJsjKqGyURi-gnffU2rGaR/pub)

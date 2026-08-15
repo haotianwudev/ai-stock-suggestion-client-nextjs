@@ -3,7 +3,7 @@ path: finance101/wealth-preservation-tax-strategies
 title: Advanced Wealth Preservation
 articleSlug: strategic-wealth-considerations-tax-and-behavioral-finance
 date: 2026-08-08
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ $$
 ## Related Reading
 
 - [Strategic Wealth Considerations: Tax Mechanics, Asset Location, and Behavioral Finance](/articles/strategic-wealth-considerations-tax-and-behavioral-finance) — full article with worked examples and defense strategies for each trap.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSzRJelwSmt6ZmYZsW15UR6XEhT6h4lwU5ebDYLTGeLm9BQF5EVBPP4yggTIHxVYprjvRWtRLQ2T7xJ/pub)

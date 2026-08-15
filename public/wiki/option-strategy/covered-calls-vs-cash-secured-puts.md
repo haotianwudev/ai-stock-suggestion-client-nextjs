@@ -1,9 +1,9 @@
 ---
 path: option-strategy/covered-calls-vs-cash-secured-puts
-title: "Covered Calls vs. Cash-Secured Puts: Theory vs. Practice"
+title: Covered Calls vs. Cash-Secured Puts: Theory vs. Practice
 articleSlug: covered-calls-vs-cash-secured-puts
 date: 2025-08-30
-labels: [Options]
+labels: ["Options"]
 related: []
 ---
 
@@ -54,4 +54,3 @@ Both strategies carry unlimited downside risk if the underlying declines signifi
 
 - [Covered Calls vs Cash-Secured Puts](/articles/covered-calls-vs-cash-secured-puts)
 - [Watch on YouTube](https://youtu.be/fKpmR9DxYpk)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQmkYLuHPc5AzNNBbpux00HeeoGnszoxXmMcVu2dY9HCj5ddi6vosuCivIYzRZx8ufcgeegPnbR-HiY/pub)

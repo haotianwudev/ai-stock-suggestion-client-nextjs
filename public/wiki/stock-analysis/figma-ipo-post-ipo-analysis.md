@@ -1,9 +1,9 @@
 ---
 path: stock-analysis/figma-ipo-post-ipo-analysis
-title: "Figma (NYSE: FIG): A Post-IPO Deep Dive into the Generational SaaS Company"
+title: Figma (NYSE: FIG): A Post-IPO Deep Dive into the Generational SaaS Company
 articleSlug: figma-ipo-deep-dive-post-ipo-analysis-generational-saas
 date: 2025-08-03
-labels: [Stock Analysis]
+labels: ["Stock Analysis"]
 related: []
 ---
 
@@ -68,4 +68,3 @@ Figma trades at roughly 10x Adobe's and Salesforce's multiples despite comparabl
 ## Related Reading
 
 - [Figma IPO Deep Dive: A Post-IPO Analysis of the Generational SaaS Company](/articles/figma-ipo-deep-dive-post-ipo-analysis-generational-saas)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTf2lM2OSqhbj1lS2_-tvppa_O7Rnwcp7q7uxMMOCD0sidUHqZgWO-DlIg9-hPD24px9cuo8Pv6ipZc/pub)

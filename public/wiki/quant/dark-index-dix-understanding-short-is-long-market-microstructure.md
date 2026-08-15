@@ -1,4 +1,11 @@
-# The Dark Index (DIX): Understanding Why Short is Long
+---
+path: quant/dark-index-dix-understanding-short-is-long-market-microstructure
+title: The Dark Index (DIX): Understanding Why Short is Long
+articleSlug: dark-index-dix-understanding-short-is-long-market-microstructure
+date: 2026-04-07
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive deep dive into the Dark Index (DIX) and the counterintuitive 'Short is Long' hypothesis. Master the quantitative architecture of dark pool liquidity, market maker rebates, and how institutional accumulation manifests as short volume in off-exchange trading.
@@ -27,3 +34,8 @@ $$DIX = \frac{\sum_{i=1}^{500} (Short Volume_i \times Price_i)}{\sum_{i=1}^{500}
 The DIX is rarely traded in isolation. It is most powerful when combined with the Gamma Exposure Index (GEX).
 - **The Setup:** High DIX implies Market Makers are short stock. Low/Negative GEX implies Market Makers are short gamma (meaning they must buy stock if the price goes up to hedge their options delta).
 - **The Ignition:** If the market rallies slightly, negative GEX forces MMs to buy. Simultaneously, high DIX means MMs are already short stock and need to buy to cover their dark pool inventory. This double buying pressure creates violent, face-ripping rallies.
+
+## Related Reading
+
+- [The Dark Index (DIX): Understanding Why Short is Long in Modern Market Microstructure](/articles/dark-index-dix-understanding-short-is-long-market-microstructure)
+- [Watch on YouTube](https://youtu.be/f5yZ7wdjEOY)

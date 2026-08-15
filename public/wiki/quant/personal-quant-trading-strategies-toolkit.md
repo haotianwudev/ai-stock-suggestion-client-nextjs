@@ -1,9 +1,9 @@
 ---
 path: quant/personal-quant-trading-strategies-toolkit
-title: "Quantitative Trading for the Independent Analyst"
+title: Quantitative Trading for the Independent Analyst
 articleSlug: personal-quant-trading-strategies-independent-analysts
 date: 2025-10-09
-labels: [Quantitative Finance]
+labels: ["Quantitative Finance"]
 related: []
 ---
 
@@ -49,4 +49,3 @@ Retail quants can't out-speed HFT firms or out-spend hedge funds on alternative 
 ## Related Reading
 
 - [Personal Quant Trading Strategies](/articles/personal-quant-trading-strategies-independent-analysts) — full article with the complete strategy comparison matrix and curated self-study reading list.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQjb79GthAak_7qvTQTox9W67SzSVFDOctP-i3zMAQEunK8jBuDJCtCfcP-l9RTZjpADb7QG_WsXmsT/pub)

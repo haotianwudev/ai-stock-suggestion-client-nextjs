@@ -1,9 +1,9 @@
 ---
 path: finance101/little-book-behavioral-investing-montier
-title: "The Little Book of Behavioral Investing: How Not to Be Your Own Worst Enemy"
+title: The Little Book of Behavioral Investing: How Not to Be Your Own Worst Enemy
 articleSlug: little-book-behavioral-investing-summary
 date: 2025-07-30
-labels: [Finance 101]
+labels: ["Finance 101"]
 related: []
 ---
 

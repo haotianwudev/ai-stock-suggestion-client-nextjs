@@ -35,5 +35,6 @@ In June 2026, global financial markets experienced a synchronized deleveraging e
 - In moments of systemic stress, cross-asset correlations inevitably converge to one.
 
 ## Related Reading
+
 - [The June 2026 Cross-Asset Contagion](/articles/june-2026-cross-asset-contagion)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS-Gd42WQ1__Nif8Mr6vhdJrLDlS3nGDMe_MGzGgQseEg8ZuSVyUZEOg_W-R1IGERryqZ4N0ZDKaYYc/pub)
+- [Watch on YouTube](https://youtu.be/i-s0lWdK8LE)

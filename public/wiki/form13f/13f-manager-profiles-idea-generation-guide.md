@@ -1,9 +1,9 @@
 ---
 path: form13f/13f-manager-profiles-idea-generation-guide
-title: "Unlocking Institutional Portfolios: A Strategic Guide to SEC Form 13F"
+title: Unlocking Institutional Portfolios: A Strategic Guide to SEC Form 13F
 articleSlug: unlocking-institutional-portfolios-strategic-guide-sec-form-13f
 date: 2025-08-09
-labels: [Form 13F, Finance 101]
+labels: ["Form 13F", "Finance 101"]
 related: []
 ---
 
@@ -56,4 +56,3 @@ Notably, Michael Burry's Q1 2025 book was expressed almost entirely through **pu
 
 - [Unlocking SEC Form 13F](/articles/unlocking-institutional-portfolios-strategic-guide-sec-form-13f)
 - [Watch on YouTube](https://youtu.be/QpFSjEhKIaU)
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vR3Wim-IZxHF_CgRXgpA9v3TD6Y7p85z7WqkdsY_7PQfo8wfbpJPbrJe0XjVqLcUNgDk1ho7ExqJwey/pub)

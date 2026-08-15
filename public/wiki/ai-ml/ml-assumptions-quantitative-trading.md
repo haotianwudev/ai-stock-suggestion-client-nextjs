@@ -1,9 +1,9 @@
 ---
 path: ai-ml/ml-assumptions-quantitative-trading
-title: "Why Machine Learning Assumptions Break in Financial Markets"
+title: Why Machine Learning Assumptions Break in Financial Markets
 articleSlug: foundational-assumptions-machine-learning-quantitative-trading
 date: 2025-10-31
-labels: [AI & Machine Learning, Quantitative Finance]
+labels: ["AI & Machine Learning", "Quantitative Finance"]
 related: []
 ---
 
@@ -41,4 +41,4 @@ Machine learning applied to quantitative trading faces a fundamentally harder pr
 ## Related Reading
 
 - [Assumptions of Machine Learning in Quantitative Trading](/articles/foundational-assumptions-machine-learning-quantitative-trading) — full article with the ARCH model framework and model trade-off comparison table.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS28MZwzcyJ9CscIpJO6t7WpmWI2NuM0UpQgYFu9jX8w94aP3qBaLXLj8MIcx7bOsGr1D5H8NM8jDoj/pub)
+- [Watch on YouTube](https://youtu.be/pR821HLbl3c)

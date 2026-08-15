@@ -1,4 +1,11 @@
-# The Autocallable Strategy: Engineered Yield for Sideways Markets
+---
+path: quant/autocallable-strategy-engineered-yield-sideways-markets
+title: The Autocallable Strategy: Engineered Yield for Sideways Markets
+articleSlug: autocallable-strategy-engineered-yield-sideways-markets
+date: 2026-03-14
+labels: ["Quantitative Finance"]
+related: []
+---
 
 ## Overview
 A comprehensive technical guide to autocallable structured products - understanding the barrier mechanics, pricing components, and implementation strategies for generating yield in flat market environments.
@@ -17,3 +24,8 @@ The classic "Snowball" note is a specific type of autocallable popular in Asia. 
 - **Barrier Risk (The Cliff Effect):** If the underlying asset crashes through the Knock-In barrier, the protection vanishes. The investor is now effectively long the asset from the initial price, suffering massive mark-to-market losses.
 - **Reinvestment Risk:** If the market rallies and the note is autocalled early, the investor gets their money back quickly but must now find a new investment in a higher-priced market, missing out on the upside of the rally. 
 - **Liquidity Risk:** These are OTC (Over-The-Counter) products created by banks. They are highly illiquid and difficult to exit before maturity or an autocall event.
+
+## Related Reading
+
+- [The Autocallable Strategy: Engineered Yield for Sideways Markets](/articles/autocallable-strategy-engineered-yield-sideways-markets)
+- [Watch on YouTube](https://youtu.be/Y2zHP9umJXo)
