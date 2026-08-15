@@ -19,6 +19,21 @@ export interface CacheEntry<T> {
 const memoryCache = new Map<string, CacheEntry<unknown>>();
 
 /**
+ * Safely resolve a Storage object. In privacy-mode Safari (and some locked-down browser
+ * configs), merely *accessing* `window.localStorage`/`window.sessionStorage` throws a
+ * SecurityError rather than returning undefined — so the access itself needs the try/catch,
+ * not just the calls made against it once obtained.
+ */
+function getStorage(kind: 'localStorage' | 'sessionStorage'): Storage | null {
+    if (typeof window === 'undefined') return null;
+    try {
+        return window[kind] || null;
+    } catch {
+        return null;
+    }
+}
+
+/**
  * Retrieve raw cache entry from memory, sessionStorage, or localStorage
  */
 export function getCacheEntry<T>(key: string): CacheEntry<T> | null {
@@ -29,9 +44,10 @@ export function getCacheEntry<T>(key: string): CacheEntry<T> | null {
     }
 
     // 2. Check localStorage (persistent across browser refreshes & tab closes)
-    if (typeof window !== 'undefined' && window.localStorage) {
+    const localStore = getStorage('localStorage');
+    if (localStore) {
         try {
-            const raw = window.localStorage.getItem(CACHE_PREFIX + key);
+            const raw = localStore.getItem(CACHE_PREFIX + key);
             if (raw) {
                 const entry: CacheEntry<T> = JSON.parse(raw);
                 memoryCache.set(key, entry);
@@ -43,9 +59,10 @@ export function getCacheEntry<T>(key: string): CacheEntry<T> | null {
     }
 
     // 3. Fallback to sessionStorage
-    if (typeof window !== 'undefined' && window.sessionStorage) {
+    const sessionStore = getStorage('sessionStorage');
+    if (sessionStore) {
         try {
-            const raw = window.sessionStorage.getItem(CACHE_PREFIX + key);
+            const raw = sessionStore.getItem(CACHE_PREFIX + key);
             if (raw) {
                 const entry: CacheEntry<T> = JSON.parse(raw);
                 memoryCache.set(key, entry);

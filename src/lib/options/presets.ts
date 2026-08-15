@@ -72,6 +72,44 @@ function buildPutButterflyLegs(chain: ExpirationChain, spot: number): OptionLeg[
     ];
 }
 
+// Long stock (or, for SPX, a synthetic long-index position — see payoff.ts's OptionLegType
+// comment) plus option legs. Conventional retail deltas, same disclosure as elsewhere in this
+// file: not backtested, just reasonable starting points the user can drag to any real strike.
+function buildCoveredCallLegs(chain: ExpirationChain, spot: number): OptionLeg[] {
+    const shortCall = nearestByDelta(chain.calls, 0.30);
+    return [
+        { type: 'stock', side: 'long', strike: spot, premium: 0 },
+        { type: 'call', side: 'short', strike: shortCall.strike, premium: shortCall.mid },
+    ];
+}
+
+// Roughly symmetric ~0.20-delta wings on both sides — the common "low/zero-cost collar" retail
+// convention (protective put financed mostly by the covered call's credit).
+function buildCollarLegs(chain: ExpirationChain, spot: number): OptionLeg[] {
+    const longPut = nearestByDelta(chain.puts, 0.20);
+    const shortCall = nearestByDelta(chain.calls, 0.20);
+    return [
+        { type: 'stock', side: 'long', strike: spot, premium: 0 },
+        { type: 'put', side: 'long', strike: longPut.strike, premium: longPut.mid },
+        { type: 'call', side: 'short', strike: shortCall.strike, premium: shortCall.mid },
+    ];
+}
+
+// Stock + a put spread (long put closer to spot, short put further out defines where the
+// "buffer" of absorbed loss ends) + a short call cap — the standard defined-outcome structure.
+function buildBufferedLegs(chain: ExpirationChain, spot: number): OptionLeg[] {
+    const longPut = nearestByDelta(chain.puts, 0.35);
+    const furtherPuts = chain.puts.filter(c => c.strike < longPut.strike);
+    const shortPut = nearestByDelta(furtherPuts.length ? furtherPuts : chain.puts, 0.10);
+    const shortCall = nearestByDelta(chain.calls, 0.20);
+    return [
+        { type: 'stock', side: 'long', strike: spot, premium: 0 },
+        { type: 'put', side: 'long', strike: longPut.strike, premium: longPut.mid },
+        { type: 'put', side: 'short', strike: shortPut.strike, premium: shortPut.mid },
+        { type: 'call', side: 'short', strike: shortCall.strike, premium: shortCall.mid },
+    ];
+}
+
 export const STRATEGY_PRESETS: StrategyPreset[] = [
     {
         // Deltas straight from sophie-option-research's real iron_condor_45dte.yaml backtest
@@ -173,6 +211,9 @@ export const STRATEGY_PRESETS: StrategyPreset[] = [
     },
     { id: 'call_butterfly', label: 'Call Butterfly', legs: [], custom: buildCallButterflyLegs },
     { id: 'put_butterfly', label: 'Put Butterfly', legs: [], custom: buildPutButterflyLegs },
+    { id: 'covered_call', label: 'Covered Call', legs: [], custom: buildCoveredCallLegs },
+    { id: 'collar', label: 'Collar', legs: [], custom: buildCollarLegs },
+    { id: 'buffered', label: 'Buffered (Defined Outcome)', legs: [], custom: buildBufferedLegs },
     { id: 'long_call', label: 'Long Call', legs: [{ type: 'call', side: 'long', delta: 'atm' }] },
     { id: 'long_put', label: 'Long Put', legs: [{ type: 'put', side: 'long', delta: 'atm' }] },
     { id: 'short_put', label: 'Short Put', legs: [{ type: 'put', side: 'short', delta: 0.30 }] },

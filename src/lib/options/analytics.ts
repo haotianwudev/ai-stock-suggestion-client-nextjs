@@ -34,6 +34,12 @@ export function solveImpliedVol(price: number, S: number, K: number, T: number, 
 
 function legValueAt(leg: PricedLeg, spot: number, T: number, r: number, q: number): number {
     const quantity = leg.quantity ?? 1;
+    if (leg.type === 'stock') {
+        // A share's mark-to-market value is just its current price — no time value or vol
+        // component, so "today" and "at expiration" are the same formula (unlike an option).
+        const directional = leg.side === 'long' ? (spot - leg.strike) : (leg.strike - spot);
+        return quantity * directional;
+    }
     const bsType = leg.type === 'call' ? 'Call' : 'Put';
     // T > 0: Black-Scholes mark (today's fair value). T <= 0: blackScholes' own intrinsic-value
     // edge case — so this converges to legPnL's expiration payoff as T -> 0, by construction.
@@ -60,15 +66,20 @@ export interface NetGreeks {
     vega: number;
 }
 
-/** Position Greeks, signed by side and scaled by quantity x contract multiplier. */
+/** Position Greeks, signed by side and scaled by quantity x contract multiplier. A stock leg
+ * contributes pure delta (full 1:1 participation, no gamma/theta/vega — it has no optionality). */
 export function netGreeks(legs: PricedLeg[], S: number, T: number, r: number, q: number, multiplier: number = SPX_MULTIPLIER): NetGreeks {
     const totals: NetGreeks = { delta: 0, gamma: 0, theta: 0, vega: 0 };
     for (const leg of legs) {
         const quantity = leg.quantity ?? 1;
-        const bsType = leg.type === 'call' ? 'Call' : 'Put';
-        const g = blackScholes(S, leg.strike, T, r, leg.iv, bsType, q);
         const sign = leg.side === 'long' ? 1 : -1;
         const scale = sign * quantity * multiplier;
+        if (leg.type === 'stock') {
+            totals.delta += scale;
+            continue;
+        }
+        const bsType = leg.type === 'call' ? 'Call' : 'Put';
+        const g = blackScholes(S, leg.strike, T, r, leg.iv, bsType, q);
         totals.delta += scale * g.delta;
         totals.gamma += scale * g.gamma;
         totals.theta += scale * g.theta;

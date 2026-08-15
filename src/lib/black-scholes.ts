@@ -7,6 +7,12 @@ export interface GreekResults {
   vega: number;
   theta: number;
   rho: number;
+  /** dDelta/dVol (== dVega/dSpot), scaled per 1 vol point like vega. Same for calls and puts —
+   * verified against finite-difference derivatives of delta and vega before shipping. */
+  vanna: number;
+  /** -dDelta/dT (delta decay per calendar day, matching theta's /365 convention), sign differs
+   * between calls and puts via the dividend term, same as delta itself does. */
+  charm: number;
 }
 
 export const standardNormalCDF = (x: number): number => {
@@ -36,13 +42,18 @@ export const blackScholes = (S: number, K: number, T: number, r: number, v: numb
       gamma: 0,
       vega: 0,
       theta: 0,
-      rho: 0
+      rho: 0,
+      vanna: 0,
+      charm: 0
     };
   }
 
   const d1 = (Math.log(S / K) + (r - q + v * v / 2) * T) / (v * Math.sqrt(T));
   const d2 = d1 - v * Math.sqrt(T);
   const discountDiv = Math.exp(-q * T);
+  // Shared by both calls and puts, like gamma/vega — only the dividend term below differs by side.
+  const vanna = -discountDiv * standardNormalPDF(d1) * d2 / v / 100;
+  const charmTimeTerm = discountDiv * standardNormalPDF(d1) * ((2 * (r - q) * T - d2 * v * Math.sqrt(T)) / (2 * T * v * Math.sqrt(T)));
 
   if (optionType === 'Call') {
     const price = S * discountDiv * standardNormalCDF(d1) - K * Math.exp(-r * T) * standardNormalCDF(d2);
@@ -51,7 +62,8 @@ export const blackScholes = (S: number, K: number, T: number, r: number, v: numb
     const vega = S * discountDiv * standardNormalPDF(d1) * Math.sqrt(T) / 100;
     const theta = (- (S * discountDiv * standardNormalPDF(d1) * v) / (2 * Math.sqrt(T)) - r * K * Math.exp(-r * T) * standardNormalCDF(d2) + q * S * discountDiv * standardNormalCDF(d1)) / 365;
     const rho = K * T * Math.exp(-r * T) * standardNormalCDF(d2) / 100;
-    return { price, delta, gamma, vega, theta, rho };
+    const charm = (q * discountDiv * standardNormalCDF(d1) - charmTimeTerm) / 365;
+    return { price, delta, gamma, vega, theta, rho, vanna, charm };
   } else {
     const price = K * Math.exp(-r * T) * standardNormalCDF(-d2) - S * discountDiv * standardNormalCDF(-d1);
     const delta = discountDiv * (standardNormalCDF(d1) - 1);
@@ -59,6 +71,7 @@ export const blackScholes = (S: number, K: number, T: number, r: number, v: numb
     const vega = S * discountDiv * standardNormalPDF(d1) * Math.sqrt(T) / 100;
     const theta = (- (S * discountDiv * standardNormalPDF(d1) * v) / (2 * Math.sqrt(T)) + r * K * Math.exp(-r * T) * standardNormalCDF(-d2) - q * S * discountDiv * standardNormalCDF(-d1)) / 365;
     const rho = -K * T * Math.exp(-r * T) * standardNormalCDF(-d2) / 100;
-    return { price, delta, gamma, vega, theta, rho };
+    const charm = (-q * discountDiv * standardNormalCDF(-d1) - charmTimeTerm) / 365;
+    return { price, delta, gamma, vega, theta, rho, vanna, charm };
   }
 };

@@ -15,7 +15,19 @@ export interface ChainContract {
      * sources that don't precompute it (e.g. the live feed), in which case callers fall back to
      * solveImpliedVol(). */
     iv?: number | null;
+    /** Closed-form Black-Scholes Greeks derived from `iv` at export time (see export_spx_chain_sample.py) —
+     * same null convention as `iv`: null wherever iv itself is null, absent entirely on sources that
+     * don't precompute it. */
+    gamma?: number | null;
+    vega?: number | null;
+    theta?: number | null;
+    rho?: number | null;
     volume?: number | null;
+    /** OptionsDX's EOD schema has no open-interest column, so for the historical source this is
+     * synthetic — a plausible value calibrated against a real live SPX chain (see
+     * export_spx_chain_sample.py's module docstring), not a real reported number. Still absent
+     * entirely on sources that don't populate it. */
+    openInterest?: number | null;
 }
 
 export interface ExpirationChain {
