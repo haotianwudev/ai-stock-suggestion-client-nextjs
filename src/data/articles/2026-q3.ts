@@ -68,6 +68,17 @@ export const articles2026Q3: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
+    title: "Duquesne Family Office Q2 2026 13F Analysis: Strategic Rotation in Macro and AI Infrastructures",
+    description: "Druckenmiller dumped chipmakers for cloud monopolies and stranded-power crypto miners, barbelled with LatAm commodities and aviation stocks.",
+    slug: "duquesne-family-office-q2-2026-13f-rotation",
+    date: "August 15, 2026",
+    imageUrl: "https://i.imgur.com/uY9JJ0t.png",
+    infographicUrl: "https://i.imgur.com/uY9JJ0t.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRndoKShgivOiMoV0NUVdPAaMCI6_1YsWPbAH63eCdduPXgIZngePTM-6h-_EEWMKIqFXW9L-JdlV6F/pub",
+    labels: [ArticleLabel.FORM13F, ArticleLabel.MACRO],
+  },
+  {
     title: "The Hidden Mechanics of Form 13F Disclosures: Microstructure, Copycat Economics, and Systemic Risk",
     description: "Inside 13F filings: millisecond XML parsing, copycat trades worth 5.5-6.7% alpha, confidential treatment requests, and front-running's 2.6% drag.",
     slug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",

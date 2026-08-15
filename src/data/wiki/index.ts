@@ -12,6 +12,14 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "form13f/druckenmiller-q2-2026-ai-infrastructure-rotation",
+    title: "Druckenmiller's Q2 2026 Rotation",
+    articleSlug: "duquesne-family-office-q2-2026-13f-rotation",
+    date: "2026-08-15",
+    labels: [ArticleLabel.FORM13F, ArticleLabel.MACRO],
+    summary: "Duquesne's Q2 2026 13F shows AUM up 54% to $5.21B and 60% turnover, rotating out of broad semiconductors into AI infrastructure bottlenecks — cloud platform monopolies, stranded-power crypto miners, and high-density storage — barbelled against LatAm commodities, precision diagnostics, and aviation.",
+  },
+  {
     path: "quant/causal-inference-finance",
     title: "Causal Inference in Finance",
     articleSlug: "structural-revolution-quantitative-finance",

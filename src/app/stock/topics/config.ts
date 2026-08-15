@@ -106,6 +106,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
         },
         {
+          text: "Druckenmiller's Q2 2026 Rotation",
+          articleSlug: "duquesne-family-office-q2-2026-13f-rotation",
+        },
+        {
           text: "Burry's Q2 2025 Reversal",
           articleSlug: "michael-burry-q2-2025-portfolio-analysis-cassandra-pivot",
         },
