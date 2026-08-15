@@ -1,7 +1,7 @@
 import { OptionChainSnapshot } from './chain-types';
 import { SPX_CHAIN_SAMPLE_PATH } from '@/data/spx-chain-sample';
 import { adaptLiveResponseToSnapshot, LiveOptionsAPIResponse } from './chain-adapters';
-import { fetchWithOptionsCache } from './options-cache';
+import { fetchWithOptionsCache, getLiveCacheIntervalMs } from './options-cache';
 
 /**
  * Historical SPX chain snapshot (see src/data/spx-chain-sample.ts for provenance).
@@ -22,6 +22,9 @@ export async function getLiveChainSnapshot(
     forceRefresh: boolean = false
 ): Promise<OptionChainSnapshot> {
     const url = `${LIVE_CHAIN_API_ENDPOINT}?ticker=${encodeURIComponent(ticker.toUpperCase())}`;
-    const result = await fetchWithOptionsCache<LiveOptionsAPIResponse>(url, { forceRefresh });
+    const result = await fetchWithOptionsCache<LiveOptionsAPIResponse>(url, {
+        forceRefresh,
+        minIntervalMs: getLiveCacheIntervalMs(),
+    });
     return adaptLiveResponseToSnapshot(result);
 }

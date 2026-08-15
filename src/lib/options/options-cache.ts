@@ -10,6 +10,40 @@
 export const MIN_REFRESH_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes (900,000 ms)
 const CACHE_PREFIX = 'sophie_spx_options_v2_';
 
+const LIVE_MARKET_HOURS_CACHE_MS = MIN_REFRESH_INTERVAL_MS; // 15 min while the market can actually move
+const LIVE_AFTER_HOURS_CACHE_MS = 8 * 60 * 60 * 1000; // 8 h once it's closed — quotes are frozen at the close print until the next session, nothing to refresh toward
+
+/**
+ * Whether US equity markets are in their regular trading session (9:30am-4:00pm America/New_York,
+ * Mon-Fri) right now. Doesn't know about market holidays — no holiday calendar available
+ * client-side — so a holiday reads as "in session" here, which just means the shorter 15-minute
+ * cache still applies on a holiday (safe: a possibly-unneeded refresh, never stale data trusted
+ * too long).
+ */
+export function isRegularTradingHours(now: Date = new Date()): boolean {
+    const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        weekday: 'short',
+        hour: 'numeric',
+        minute: 'numeric',
+        hourCycle: 'h23',
+    }).formatToParts(now);
+    const weekday = parts.find(p => p.type === 'weekday')?.value ?? '';
+    const hour = Number(parts.find(p => p.type === 'hour')?.value ?? 0);
+    const minute = Number(parts.find(p => p.type === 'minute')?.value ?? 0);
+
+    if (weekday === 'Sat' || weekday === 'Sun') return false;
+    const minutesSinceMidnight = hour * 60 + minute;
+    return minutesSinceMidnight >= 9 * 60 + 30 && minutesSinceMidnight < 16 * 60;
+}
+
+/** The right cache window for LIVE option-chain data right now: the normal 15-minute cooldown
+ * during regular trading hours, or 8 hours outside them. Historical/other sources keep using
+ * MIN_REFRESH_INTERVAL_MS directly — this only applies where a caller is fetching the live feed. */
+export function getLiveCacheIntervalMs(now: Date = new Date()): number {
+    return isRegularTradingHours(now) ? LIVE_MARKET_HOURS_CACHE_MS : LIVE_AFTER_HOURS_CACHE_MS;
+}
+
 export interface CacheEntry<T> {
     data: T;
     timestamp: number;

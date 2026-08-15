@@ -66,7 +66,7 @@ export function GexChartView({
   const effectiveScope: GexScope = canAggregate && (subView === 'netGex' || subView === 'grossGex') ? scope : 'expiration';
 
   // Compute Net GEX, Gross GEX, Vanna, Charm, and Price Shift Simulation
-  const { chartData, shiftCurveData, vannaCharmData, totalNetGex, totalCallGex, totalPutGex, gammaFlipLevel } = useMemo(() => {
+  const { chartData, shiftCurveData, vannaCharmData, totalNetGex, totalCallGex, totalPutGex, gammaFlipLevel, gammaFlipChartStrike, spotChartStrike, callWallStrike, putWallStrike } = useMemo(() => {
     const contractMultiplier = 100;
     const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
     const inRange = (strike: number) => strike >= spotPrice * 0.88 && strike <= spotPrice * 1.12;
@@ -165,6 +165,23 @@ export function GexChartView({
       puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
     }
 
+    // Call Wall / Put Wall: the strike carrying the most resting open interest on each side —
+    // the same definition the Positioning tab's HUD cards use, just also plotted here since a
+    // wall's location is exactly the kind of thing worth reading alongside GEX (heavy OI at a
+    // strike is usually *why* gamma concentrates there). Reuses flipFlatContracts, which already
+    // flattens whichever scope is active (single expiration or summed across all of them) into
+    // one list — just needs OI summed per strike per side rather than per (strike, expiration).
+    let callWallStrike: number | null = null, maxCallOI = 0;
+    let putWallStrike: number | null = null, maxPutOI = 0;
+    const callOIByStrike = new Map<number, number>();
+    const putOIByStrike = new Map<number, number>();
+    flipFlatContracts.forEach(({ strike, openInterest, isCall }) => {
+      const map = isCall ? callOIByStrike : putOIByStrike;
+      map.set(strike, (map.get(strike) || 0) + openInterest);
+    });
+    callOIByStrike.forEach((oi, strike) => { if (oi > maxCallOI) { maxCallOI = oi; callWallStrike = strike; } });
+    putOIByStrike.forEach((oi, strike) => { if (oi > maxPutOI) { maxPutOI = oi; putWallStrike = strike; } });
+
     const simNetGexAt = (simSpot: number): number => {
       let total = 0;
       flipFlatContracts.forEach(({ strike, gamma, openInterest, isCall }) => {
@@ -256,6 +273,15 @@ export function GexChartView({
       };
     });
 
+    // The Net GEX chart's x-axis is categorical (one bar per listed strike) — a ReferenceLine can
+    // only render at a value that's literally one of those categories. gammaFlipLevel itself is a
+    // precise, continuously-interpolated price (from the spot-shift simulation, not tied to any
+    // listed strike), so drawing the line at that exact value silently fails on this axis type.
+    // Snap it to the nearest strike actually in `rows` for the chart; the stat card still shows
+    // the precise number.
+    const nearestChartStrike = (target: number): number | null =>
+      rows.length > 0 ? rows.reduce((best, r) => Math.abs(r.strike - target) < Math.abs(best - target) ? r.strike : best, rows[0].strike) : null;
+
     return {
       chartData: rows,
       shiftCurveData: shiftCurve,
@@ -263,7 +289,11 @@ export function GexChartView({
       totalNetGex: Number(totalNet.toFixed(1)),
       totalCallGex: Number(totCallGex.toFixed(1)),
       totalPutGex: Number(totPutGex.toFixed(1)),
-      gammaFlipLevel: flip
+      gammaFlipLevel: flip,
+      gammaFlipChartStrike: flip !== null ? nearestChartStrike(flip) : null,
+      spotChartStrike: nearestChartStrike(spotPrice),
+      callWallStrike,
+      putWallStrike
     };
   }, [calls, puts, spotPrice, effectiveScope, allExpirations, dte]);
 
@@ -475,18 +505,36 @@ export function GexChartView({
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
                   />
                   <ReferenceLine y={0} stroke="#94a3b8" />
-                  <ReferenceLine 
-                    x={spotPrice} 
-                    stroke="#f59e0b" 
-                    strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
-                  />
-                  {gammaFlipLevel && (
-                    <ReferenceLine 
-                      x={gammaFlipLevel} 
-                      stroke="#f97316" 
-                      strokeDasharray="3 3" 
+                  {spotChartStrike !== null && (
+                    <ReferenceLine
+                      x={spotChartStrike}
+                      stroke="#f59e0b"
+                      strokeDasharray="4 4"
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    />
+                  )}
+                  {gammaFlipLevel && gammaFlipChartStrike !== null && (
+                    <ReferenceLine
+                      x={gammaFlipChartStrike}
+                      stroke="#f97316"
+                      strokeDasharray="3 3"
                       label={{ value: `Flip: $${gammaFlipLevel}`, position: 'top', fill: '#ea580c', fontSize: 10 }}
+                    />
+                  )}
+                  {callWallStrike !== null && (
+                    <ReferenceLine
+                      x={callWallStrike}
+                      stroke="#2563eb"
+                      strokeDasharray="2 2"
+                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10 }}
+                    />
+                  )}
+                  {putWallStrike !== null && (
+                    <ReferenceLine
+                      x={putWallStrike}
+                      stroke="#e11d48"
+                      strokeDasharray="2 2"
+                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10 }}
                     />
                   )}
                   <Bar dataKey="netGex" name="Net Gamma ($M)" radius={[2, 2, 0, 0]}>
@@ -526,12 +574,30 @@ export function GexChartView({
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
                   />
                   <Legend verticalAlign="top" height={36} />
-                  <ReferenceLine 
-                    x={spotPrice} 
-                    stroke="#f59e0b" 
-                    strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
-                  />
+                  {spotChartStrike !== null && (
+                    <ReferenceLine
+                      x={spotChartStrike}
+                      stroke="#f59e0b"
+                      strokeDasharray="4 4"
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    />
+                  )}
+                  {callWallStrike !== null && (
+                    <ReferenceLine
+                      x={callWallStrike}
+                      stroke="#2563eb"
+                      strokeDasharray="2 2"
+                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10 }}
+                    />
+                  )}
+                  {putWallStrike !== null && (
+                    <ReferenceLine
+                      x={putWallStrike}
+                      stroke="#e11d48"
+                      strokeDasharray="2 2"
+                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10 }}
+                    />
+                  )}
                   <Bar dataKey="callGex" name="Call Gamma ($M)" fill="#10b981" radius={[2, 2, 0, 0]} />
                   <Bar dataKey="putGex" name="Put Gamma ($M)" fill="#f43f5e" radius={[2, 2, 0, 0]} />
                 </BarChart>
@@ -607,12 +673,14 @@ export function GexChartView({
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine y={0} stroke="#94a3b8" />
-                  <ReferenceLine 
-                    x={spotPrice} 
-                    stroke="#f59e0b" 
-                    strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
-                  />
+                  {spotChartStrike !== null && (
+                    <ReferenceLine
+                      x={spotChartStrike}
+                      stroke="#f59e0b"
+                      strokeDasharray="4 4"
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    />
+                  )}
                   <Bar dataKey="vanna" name="Vanna Sensitivity" fill="#8b5cf6" radius={[2, 2, 0, 0]} />
                   <Bar dataKey="charm" name="Charm Sensitivity" fill="#06b6d4" radius={[2, 2, 0, 0]} />
                 </BarChart>

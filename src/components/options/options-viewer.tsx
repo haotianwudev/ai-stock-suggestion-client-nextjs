@@ -18,11 +18,12 @@ import {
 } from 'lucide-react';
 import { LIVE_CHAIN_API_ENDPOINT as API_ENDPOINT, getChainSnapshot } from '@/lib/options/chain-provider';
 import { adaptSnapshotToOptionsAPIResponse } from '@/lib/options/chain-adapters';
-import { 
-  fetchWithOptionsCache, 
-  getCacheAgeSeconds, 
+import {
+  fetchWithOptionsCache,
+  getCacheAgeSeconds,
   canRefresh,
-  getValidCachedData
+  getValidCachedData,
+  getLiveCacheIntervalMs
 } from '@/lib/options/options-cache';
 import { OptionsMetricsBar } from './viewer/options-metrics-bar';
 import { OptionsMatrixTable, OptionContractData } from './viewer/options-matrix-table';
@@ -89,7 +90,10 @@ export function OptionsViewer() {
         }
       } else {
         // Live Cloud Run feed
-        const result = await fetchWithOptionsCache<OptionsAPIResponse>(SPX_URL, { forceRefresh: manualRefresh });
+        const result = await fetchWithOptionsCache<OptionsAPIResponse>(SPX_URL, {
+          forceRefresh: manualRefresh,
+          minIntervalMs: getLiveCacheIntervalMs(),
+        });
         setData(result);
 
         if (result.expirationDates && result.expirationDates.length > 0) {
@@ -101,7 +105,7 @@ export function OptionsViewer() {
 
         const age = getCacheAgeSeconds(SPX_URL);
         setCacheAge(age);
-        setReadyToRefresh(canRefresh(SPX_URL));
+        setReadyToRefresh(canRefresh(SPX_URL, getLiveCacheIntervalMs()));
       }
     } catch (err) {
       console.error('Error loading SPX option chain:', err);
@@ -121,7 +125,7 @@ export function OptionsViewer() {
     if (source === 'live') {
       const interval = setInterval(() => {
         setCacheAge(getCacheAgeSeconds(SPX_URL));
-        setReadyToRefresh(canRefresh(SPX_URL));
+        setReadyToRefresh(canRefresh(SPX_URL, getLiveCacheIntervalMs()));
       }, 5000);
       return () => clearInterval(interval);
     }
