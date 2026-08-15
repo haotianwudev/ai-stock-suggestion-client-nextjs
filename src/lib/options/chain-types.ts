@@ -9,6 +9,12 @@ export interface ChainContract {
     mid: number;
     /** Signed delta: positive for calls, negative for puts. */
     delta: number;
+    /** Precomputed at export time from the real mid price (see export_spx_chain_sample.py's
+     * module docstring) — solved once at a fixed default rate/dividend-yield, not live. null for
+     * 0 DTE or non-positive-mid contracts where a solve isn't meaningful. Absent entirely on
+     * sources that don't precompute it (e.g. the live feed), in which case callers fall back to
+     * solveImpliedVol(). */
+    iv?: number | null;
     volume?: number | null;
 }
 

@@ -107,16 +107,22 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     const r = ratePct / 100;
     const q = divYieldPct / 100;
 
-    // Solve each leg's IV from its own current premium — the T+0 curve must reproduce the
-    // position's actual entry cost, which only holds if the priced IV matches the charged mid.
+    // Prefer the chain's precomputed IV (export_spx_chain_sample.py) — it's a lookup, not a
+    // solve, so long as the leg's premium still matches that contract's real mid. A hand-edited
+    // premium genuinely implies a different IV, so it's re-solved live, same as data sources
+    // (e.g. the live feed) that don't carry a precomputed value at all.
     const pricedLegs: PricedLeg[] = useMemo(() => {
-        if (!snapshot || T <= 0) return [];
-        return legs.map(leg => ({
-            ...leg,
-            iv: solveImpliedVol(leg.premium, snapshot.underlyingPrice, leg.strike, T, r, q, leg.type),
-        }));
+        if (!snapshot || !chain || T <= 0) return [];
+        return legs.map(leg => {
+            const contract = contractsFor(chain, leg.type).find(c => c.strike === leg.strike);
+            const premiumUnedited = contract && Math.abs(contract.mid - leg.premium) < 0.005;
+            const iv = (premiumUnedited && contract.iv != null)
+                ? contract.iv
+                : solveImpliedVol(leg.premium, snapshot.underlyingPrice, leg.strike, T, r, q, leg.type);
+            return { ...leg, iv };
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [legs, snapshot, T, r, q]);
+    }, [legs, chain, snapshot, T, r, q]);
 
     const { labels, payoffData, overlayData } = useMemo(() => {
         if (!snapshot) return { labels: [] as number[], payoffData: [] as number[], overlayData: [] as number[] };
@@ -142,8 +148,8 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
         const atmCall = nearestByStrike(chain!.calls, snapshot.underlyingPrice);
         const atmPut = nearestByStrike(chain!.puts, snapshot.underlyingPrice);
         const atmIV = (
-            solveImpliedVol(atmCall.mid, snapshot.underlyingPrice, atmCall.strike, T, r, q, 'call') +
-            solveImpliedVol(atmPut.mid, snapshot.underlyingPrice, atmPut.strike, T, r, q, 'put')
+            (atmCall.iv ?? solveImpliedVol(atmCall.mid, snapshot.underlyingPrice, atmCall.strike, T, r, q, 'call')) +
+            (atmPut.iv ?? solveImpliedVol(atmPut.mid, snapshot.underlyingPrice, atmPut.strike, T, r, q, 'put'))
         ) / 2;
         return probabilityOfProfit(p => legsPnL(p, legs), breakevens, snapshot.underlyingPrice, T, r, q, atmIV);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -305,7 +311,11 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                                                 if (c) updateLeg(leg._id, { strike: c.strike, premium: c.mid });
                                             }}
                                         >
-                                            {contracts.map(c => <option key={c.strike} value={c.strike}>{c.strike}</option>)}
+                                            {contracts.map(c => (
+                                                <option key={c.strike} value={c.strike}>
+                                                    {c.strike} (Δ{Math.abs(c.delta).toFixed(2)}{c.iv != null ? `, IV ${(c.iv * 100).toFixed(1)}%` : ''}, mid ${c.mid.toFixed(2)})
+                                                </option>
+                                            ))}
                                         </select>
                                     </td>
                                     <td className="px-3 py-2">
