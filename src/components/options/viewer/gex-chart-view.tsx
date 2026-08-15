@@ -23,6 +23,7 @@ import { OptionContractData } from './options-matrix-table';
 import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info } from 'lucide-react';
 import { blackScholes } from '@/lib/black-scholes';
 import { SPX_DEFAULT_RATE, SPX_DEFAULT_DIV_YIELD } from '@/lib/options/analytics';
+import { GexHeatmapView } from './gex-heatmap-view';
 
 interface ExpirationSlice {
   expiration: string;
@@ -44,7 +45,7 @@ interface GexChartViewProps {
   allExpirations?: ExpirationSlice[];
 }
 
-type GexSubView = 'netGex' | 'grossGex' | 'gammaShift' | 'vannaCharm';
+type GexSubView = 'netGex' | 'grossGex' | 'gammaShift' | 'vannaCharm' | 'heatmap';
 type GexScope = 'expiration' | 'all';
 
 export function GexChartView({
@@ -364,6 +365,7 @@ export function GexChartView({
               {subView === 'grossGex' && `Call Gamma vs Put Gamma Inventory ($M)${effectiveScope === 'all' ? ' — All Expirations' : ''}`}
               {subView === 'gammaShift' && 'Simulated Market Maker Gamma Curve across Spot Moves'}
               {subView === 'vannaCharm' && 'Vanna & Charm Hedging Flow Sensitivity'}
+              {subView === 'heatmap' && 'Gamma Exposure Heatmap — Strike × Expiration'}
             </CardTitle>
             <CardDescription className="text-xs text-slate-500 mt-0.5">
               {subView === 'netGex' && (effectiveScope === 'all'
@@ -372,6 +374,7 @@ export function GexChartView({
               {subView === 'grossGex' && `Gross dealer positioning from customer Call vs Put open interest${effectiveScope === 'all' ? ', summed across every expiration' : ''}`}
               {subView === 'gammaShift' && `How total dealer net gamma changes as SPX price rallies or falls by -5% to +5% (this expiration only)`}
               {subView === 'vannaCharm' && `Flow pressures induced by changes in Implied Volatility (Vanna) and Time Decay (Charm)`}
+              {subView === 'heatmap' && `Where dealer gamma concentrates across the whole expiration cycle at a glance`}
             </CardDescription>
           </div>
 
@@ -409,6 +412,16 @@ export function GexChartView({
               >
                 Vanna / Charm
               </button>
+              {canAggregate && (
+                <button
+                  onClick={() => setSubView('heatmap')}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    subView === 'heatmap' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Heatmap
+                </button>
+              )}
             </div>
             {canAggregate && (subView === 'netGex' || subView === 'grossGex') && (
               <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-[11px] font-semibold">
@@ -434,7 +447,12 @@ export function GexChartView({
         </CardHeader>
 
         <CardContent className="p-4">
-          <div className="h-[400px] w-full">
+          <div className={`w-full ${subView === 'heatmap' ? '' : 'h-[400px]'}`}>
+            {/* VIEW 0: HEATMAP */}
+            {subView === 'heatmap' && allExpirations && (
+              <GexHeatmapView allExpirations={allExpirations} spotPrice={spotPrice} />
+            )}
+
             {/* VIEW 1: NET GEX */}
             {subView === 'netGex' && (
               <ResponsiveContainer width="100%" height="100%">
