@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 import { PayoffChartView } from './payoff-chart-view';
 import { OptionChainSnapshot, ExpirationChain, ChainContract } from '@/lib/options/chain-types';
 import { OptionLeg, legsPnL, netPremium, findBreakevens } from '@/lib/options/payoff';
@@ -60,11 +61,11 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     const [ratePct, setRatePct] = useState(SPX_DEFAULT_RATE * 100);
     const [divYieldPct, setDivYieldPct] = useState(SPX_DEFAULT_DIV_YIELD * 100);
 
-    const loadSource = (next: Source) => {
+    const loadSource = (next: Source, forceRefresh: boolean = false) => {
         setSource(next);
         setLoading(true);
         setError(null);
-        const fetcher = next === 'historical' ? getChainSnapshot() : getLiveChainSnapshot('^SPX');
+        const fetcher = next === 'historical' ? getChainSnapshot(forceRefresh) : getLiveChainSnapshot('^SPX', forceRefresh);
         fetcher
             .then(s => {
                 setSnapshot(s);
@@ -192,27 +193,35 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
             {/* Source toggle */}
             <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-flex rounded-lg border border-gray-300 overflow-hidden text-sm">
-                    {(['historical', 'live'] as Source[]).map(s => {
-                        // Live ^SPX is wired (getLiveChainSnapshot -> adaptLiveResponseToSnapshot)
-                        // but not yet verified against the real endpoint from this environment —
-                        // disabled rather than removed, so re-enabling later is a one-line flip.
-                        const disabled = s === 'live';
-                        return (
-                            <button
-                                key={s}
-                                disabled={disabled}
-                                title={disabled ? 'Coming soon — not yet verified against the live feed' : undefined}
-                                onClick={() => !disabled && s !== source && loadSource(s)}
-                                className={`px-3 py-1.5 font-medium ${source === s ? 'bg-blue-600 text-white' : disabled ? 'bg-gray-50 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
-                            >
-                                {s === 'historical' ? `Historical (${snapshot.quoteDate})` : 'Live ^SPX (coming soon)'}
-                            </button>
-                        );
-                    })}
+                    {(['historical', 'live'] as Source[]).map(s => (
+                        <button
+                            key={s}
+                            onClick={() => s !== source && loadSource(s)}
+                            className={`px-3 py-1.5 font-medium transition-colors ${
+                                source === s
+                                    ? 'bg-blue-600 text-white shadow-sm'
+                                    : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600'
+                            }`}
+                        >
+                            {s === 'historical' ? `Historical (${snapshot.quoteDate})` : 'Live ^SPX'}
+                        </button>
+                    ))}
                 </div>
                 {loading && <span className="text-xs text-gray-500">Loading…</span>}
                 {error && <span className="text-xs text-red-600">{error} — showing last loaded data.</span>}
-                <span className="text-xs text-gray-500 ml-auto">Spot: ${snapshot.underlyingPrice.toLocaleString()}</span>
+                <div className="flex items-center gap-2 ml-auto">
+                    <span className="text-xs text-gray-500">Spot: ${snapshot.underlyingPrice.toLocaleString()}</span>
+                    {source === 'live' && (
+                        <button
+                            onClick={() => loadSource('live', true)}
+                            disabled={loading}
+                            title="Refresh live SPX quotes"
+                            className="p-1 rounded text-gray-400 hover:text-blue-600 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                        >
+                            <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
+                        </button>
+                    )}
+                </div>
             </div>
 
             {/* Preset + expiration */}

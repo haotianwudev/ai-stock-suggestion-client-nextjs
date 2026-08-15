@@ -1,6 +1,6 @@
 import { OptionChainSnapshot, ExpirationChain, ChainContract } from './chain-types';
 
-// Mirrors the response shape options-viewer.tsx already parses from its live AWS endpoint —
+// Mirrors the response shape options-viewer.tsx parses from the Cloud Run options-analytics endpoint —
 // duplicated (not imported) because that file's types aren't exported; kept in sync by hand.
 interface LiveOptionContract {
     strike: number;
@@ -19,16 +19,13 @@ interface LiveExpirationData {
 }
 export interface LiveOptionsAPIResponse {
     ticker: string;
-    stock: { price: number };
+    stock: { price: number; previousClose?: number; percentChange?: number; timestamp?: string };
     expirationDates: LiveExpirationData[];
 }
 
 function toContract(c: LiveOptionContract, type: 'call' | 'put'): ChainContract {
     const bid = c.bid ?? c.lastPrice;
     const ask = c.ask ?? c.lastPrice;
-    // Normalize sign by option type rather than trusting the live feed's own convention, so
-    // ChainContract's documented "positive for calls, negative for puts" contract always holds
-    // regardless of source.
     const magnitude = Math.abs(c.delta ?? 0);
     return {
         strike: c.strike,
@@ -57,5 +54,58 @@ export function adaptLiveResponseToSnapshot(response: LiveOptionsAPIResponse): O
         quoteDate: new Date().toISOString().slice(0, 10),
         underlyingPrice: response.stock.price,
         expirations,
+    };
+}
+
+/**
+ * Adapts historical OptionChainSnapshot (from /data/spx-chain-sample.json) into the full OptionsAPIResponse
+ * so the OptionsViewer can render off historical by default with zero network latency.
+ */
+export function adaptSnapshotToOptionsAPIResponse(snapshot: OptionChainSnapshot): any {
+    return {
+        ticker: snapshot.symbol || '^SPX',
+        stock: {
+            price: snapshot.underlyingPrice,
+            previousClose: snapshot.underlyingPrice,
+            percentChange: 0,
+            timestamp: snapshot.quoteDate
+        },
+        expirationDates: snapshot.expirations.map(exp => ({
+            expiration: exp.expiration,
+            daysToExpiration: exp.dte,
+            expirationLabel: exp.expiration,
+            calls: exp.calls.map((c: any) => ({
+                strike: c.strike,
+                lastPrice: c.mid ?? c.bid ?? 0,
+                midPrice: c.mid ?? ((c.bid + c.ask) / 2) ?? 0,
+                bid: c.bid ?? null,
+                ask: c.ask ?? null,
+                delta: c.delta ?? null,
+                gamma: c.gamma ?? 0,
+                theta: c.theta ?? 0,
+                vega: c.vega ?? 0,
+                rho: c.rho ?? 0,
+                impliedVolatilityMid: c.iv ?? null,
+                volume: c.volume ?? 0,
+                openInterest: c.openInterest ?? 0,
+                contractSymbol: `SPX_${exp.expiration}_C_${c.strike}`
+            })),
+            puts: exp.puts.map((p: any) => ({
+                strike: p.strike,
+                lastPrice: p.mid ?? p.bid ?? 0,
+                midPrice: p.mid ?? ((p.bid + p.ask) / 2) ?? 0,
+                bid: p.bid ?? null,
+                ask: p.ask ?? null,
+                delta: p.delta ?? null,
+                gamma: p.gamma ?? 0,
+                theta: p.theta ?? 0,
+                vega: p.vega ?? 0,
+                rho: p.rho ?? 0,
+                impliedVolatilityMid: p.iv ?? null,
+                volume: p.volume ?? 0,
+                openInterest: p.openInterest ?? 0,
+                contractSymbol: `SPX_${exp.expiration}_P_${p.strike}`
+            }))
+        }))
     };
 }

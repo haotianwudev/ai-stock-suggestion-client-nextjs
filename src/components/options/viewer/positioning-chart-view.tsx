@@ -1,0 +1,504 @@
+"use client";
+
+import React, { useState, useMemo } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer, 
+  ReferenceLine,
+  Legend,
+  LineChart,
+  Line,
+  Area,
+  AreaChart
+} from 'recharts';
+import { OptionContractData } from './options-matrix-table';
+import { BarChart3, Target, Shield, Flame, Scale, Layers } from 'lucide-react';
+
+interface PositioningChartViewProps {
+  calls: OptionContractData[];
+  puts: OptionContractData[];
+  spotPrice: number;
+  maxPainStrike: number | null;
+  expiration: string;
+  dte: number;
+}
+
+type PositioningSubView = 'oi' | 'volume' | 'maxPainCurve' | 'cumulativeOI';
+
+export function PositioningChartView({
+  calls,
+  puts,
+  spotPrice,
+  maxPainStrike,
+  expiration,
+  dte
+}: PositioningChartViewProps) {
+  const [subView, setSubView] = useState<PositioningSubView>('oi');
+
+  // Build strike-by-strike datasets
+  const { chartData, maxPainCurveData, cumulativeOIData, callWall, putWall, totalCallOI, totalPutOI, totalCallVol, totalPutVol } = useMemo(() => {
+    const callMap = new Map<number, { oi: number; vol: number }>();
+    const putMap = new Map<number, { oi: number; vol: number }>();
+    const strikes = new Set<number>();
+
+    let totalCOI = 0;
+    let totalPOI = 0;
+    let totalCVol = 0;
+    let totalPVol = 0;
+
+    let maxCOI = 0;
+    let cWall = 0;
+    let maxPOI = 0;
+    let pWall = 0;
+
+    calls.forEach(c => {
+      const oi = c.openInterest || 0;
+      const vol = c.volume || 0;
+      callMap.set(c.strike, { oi, vol });
+      strikes.add(c.strike);
+      totalCOI += oi;
+      totalCVol += vol;
+
+      if (oi > maxCOI) {
+        maxCOI = oi;
+        cWall = c.strike;
+      }
+    });
+
+    puts.forEach(p => {
+      const oi = p.openInterest || 0;
+      const vol = p.volume || 0;
+      putMap.set(p.strike, { oi, vol });
+      strikes.add(p.strike);
+      totalPOI += oi;
+      totalPVol += vol;
+
+      if (oi > maxPOI) {
+        maxPOI = oi;
+        pWall = p.strike;
+      }
+    });
+
+    const sortedStrikes = Array.from(strikes).sort((a, b) => a - b);
+    const filteredStrikes = sortedStrikes.filter(
+      s => s >= spotPrice * 0.84 && s <= spotPrice * 1.16
+    );
+
+    // 1. Strike rows
+    const rows = filteredStrikes.map(strike => {
+      const c = callMap.get(strike) || { oi: 0, vol: 0 };
+      const p = putMap.get(strike) || { oi: 0, vol: 0 };
+
+      return {
+        strike,
+        strikeLabel: `$${strike}`,
+        callOI: c.oi,
+        putOI: p.oi,
+        callVol: c.vol,
+        putVol: p.vol,
+        netOI: c.oi - p.oi,
+        totalOI: c.oi + p.oi
+      };
+    });
+
+    // 2. Max Pain Total Payout Curve ($ Millions)
+    const painCurve = filteredStrikes.map(testStrike => {
+      let callPayout = 0;
+      let putPayout = 0;
+
+      calls.forEach(c => {
+        if (testStrike > c.strike) {
+          callPayout += (testStrike - c.strike) * (c.openInterest || 0) * 100;
+        }
+      });
+      puts.forEach(p => {
+        if (testStrike < p.strike) {
+          putPayout += (p.strike - testStrike) * (p.openInterest || 0) * 100;
+        }
+      });
+
+      const totalPayoutM = (callPayout + putPayout) / 1_000_000;
+
+      return {
+        strike: testStrike,
+        strikeLabel: `$${testStrike}`,
+        totalPayoutM: Number(totalPayoutM.toFixed(1)),
+        callPayoutM: Number((callPayout / 1_000_000).toFixed(1)),
+        putPayoutM: Number((putPayout / 1_000_000).toFixed(1)),
+        isMaxPain: testStrike === maxPainStrike
+      };
+    });
+
+    // 3. Cumulative Open Interest Curve
+    let runningCallOI = 0;
+    let runningPutOI = 0;
+    const cumOIData = filteredStrikes.map(strike => {
+      const c = callMap.get(strike)?.oi || 0;
+      const p = putMap.get(strike)?.oi || 0;
+      runningCallOI += c;
+      runningPutOI += p;
+
+      return {
+        strike,
+        strikeLabel: `$${strike}`,
+        cumCallOI: runningCallOI,
+        cumPutOI: runningPutOI
+      };
+    });
+
+    return {
+      chartData: rows,
+      maxPainCurveData: painCurve,
+      cumulativeOIData: cumOIData,
+      callWall: cWall,
+      putWall: pWall,
+      totalCallOI: totalCOI,
+      totalPutOI: totalPOI,
+      totalCallVol: totalCVol,
+      totalPutVol: totalPVol
+    };
+  }, [calls, puts, spotPrice, maxPainStrike]);
+
+  return (
+    <div className="space-y-4">
+      {/* HUD Cards for Positioning */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {/* Card 1: Call Wall */}
+        <Card className="bg-white border-slate-200 shadow-2xs">
+          <CardContent className="p-3.5">
+            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Call Wall (Resistance)</span>
+            <div className="flex items-baseline gap-1.5 mt-0.5">
+              <span className="text-xl font-extrabold text-blue-600">
+                ${callWall.toLocaleString()}
+              </span>
+              <span className="text-xs text-slate-500 font-medium">
+                (+{((callWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">Highest Call Open Interest</p>
+          </CardContent>
+        </Card>
+
+        {/* Card 2: Put Wall */}
+        <Card className="bg-white border-slate-200 shadow-2xs">
+          <CardContent className="p-3.5">
+            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Put Wall (Support)</span>
+            <div className="flex items-baseline gap-1.5 mt-0.5">
+              <span className="text-xl font-extrabold text-rose-600">
+                ${putWall.toLocaleString()}
+              </span>
+              <span className="text-xs text-slate-500 font-medium">
+                ({((putWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">Highest Put Open Interest</p>
+          </CardContent>
+        </Card>
+
+        {/* Card 3: Max Pain */}
+        <Card className="bg-white border-slate-200 shadow-2xs">
+          <CardContent className="p-3.5">
+            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Max Pain Strike</span>
+            <div className="flex items-baseline gap-1.5 mt-0.5">
+              <span className="text-xl font-extrabold text-cyan-700">
+                {maxPainStrike ? `$${maxPainStrike.toLocaleString()}` : '—'}
+              </span>
+              {maxPainStrike && (
+                <span className="text-xs text-slate-500 font-medium">
+                  ({maxPainStrike >= spotPrice ? '+' : ''}{(maxPainStrike - spotPrice).toFixed(1)})
+                </span>
+              )}
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">Where buyers lose most payout</p>
+          </CardContent>
+        </Card>
+
+        {/* Card 4: Open Interest Distribution */}
+        <Card className="bg-white border-slate-200 shadow-2xs">
+          <CardContent className="p-3.5">
+            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Total OI Ratio</span>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-sm font-bold text-blue-600">C: {(totalCallOI / 1000).toFixed(1)}k</span>
+              <span className="text-slate-300">/</span>
+              <span className="text-sm font-bold text-rose-600">P: {(totalPutOI / 1000).toFixed(1)}k</span>
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Main Chart */}
+      <Card className="bg-white border-slate-200 shadow-xs">
+        <CardHeader className="p-4 pb-3 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-blue-600" />
+              {subView === 'oi' && 'Open Interest (OI) by Strike'}
+              {subView === 'volume' && 'Trading Volume Distribution by Strike'}
+              {subView === 'maxPainCurve' && 'Max Pain Cumulative Payout Loss Curve ($M)'}
+              {subView === 'cumulativeOI' && 'Cumulative Open Interest Curve (Calls vs Puts)'}
+            </CardTitle>
+            <CardDescription className="text-xs text-slate-500 mt-0.5">
+              {subView === 'oi' && `${expiration} (${dte} DTE) — Open contracts resting at each strike`}
+              {subView === 'volume' && `${expiration} (${dte} DTE) — Day's traded volume across strikes`}
+              {subView === 'maxPainCurve' && `Total dollar amount option sellers must pay out if SPX settles at each strike`}
+              {subView === 'cumulativeOI' && `Running sum of open contracts accumulating across the strike spectrum`}
+            </CardDescription>
+          </div>
+
+          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
+            <button
+              onClick={() => setSubView('oi')}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                subView === 'oi' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Open Interest
+            </button>
+            <button
+              onClick={() => setSubView('volume')}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                subView === 'volume' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Volume
+            </button>
+            <button
+              onClick={() => setSubView('maxPainCurve')}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                subView === 'maxPainCurve' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Max Pain Curve
+            </button>
+            <button
+              onClick={() => setSubView('cumulativeOI')}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                subView === 'cumulativeOI' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Cumulative OI
+            </button>
+          </div>
+        </CardHeader>
+
+        <CardContent className="p-4">
+          <div className="h-[400px] w-full">
+            {/* VIEW 1: OPEN INTEREST */}
+            {subView === 'oi' && (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis 
+                    dataKey="strike" 
+                    tickFormatter={(val) => `$${val}`}
+                    stroke="#64748b" 
+                    fontSize={11}
+                  />
+                  <YAxis 
+                    stroke="#64748b" 
+                    fontSize={11}
+                    tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
+                  />
+                  <Tooltip 
+                    formatter={(value: number, name: string) => [
+                      value.toLocaleString(),
+                      name === 'callOI' ? 'Call OI' : 'Put OI'
+                    ]}
+                    labelFormatter={(label) => `Strike: $${label}`}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                  />
+                  <Legend verticalAlign="top" height={36} />
+                  <ReferenceLine 
+                    x={spotPrice} 
+                    stroke="#f59e0b" 
+                    strokeDasharray="4 4" 
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                  />
+                  {maxPainStrike && (
+                    <ReferenceLine 
+                      x={maxPainStrike} 
+                      stroke="#06b6d4" 
+                      strokeDasharray="3 3" 
+                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'top', fill: '#0891b2', fontSize: 10 }}
+                    />
+                  )}
+                  <Bar dataKey="callOI" name="Call Open Interest" fill="#3b82f6" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="putOI" name="Put Open Interest" fill="#f43f5e" radius={[2, 2, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
+
+            {/* VIEW 2: VOLUME */}
+            {subView === 'volume' && (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis 
+                    dataKey="strike" 
+                    tickFormatter={(val) => `$${val}`}
+                    stroke="#64748b" 
+                    fontSize={11}
+                  />
+                  <YAxis 
+                    stroke="#64748b" 
+                    fontSize={11}
+                    tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
+                  />
+                  <Tooltip 
+                    formatter={(value: number, name: string) => [
+                      value.toLocaleString(),
+                      name === 'callVol' ? 'Call Volume' : 'Put Volume'
+                    ]}
+                    labelFormatter={(label) => `Strike: $${label}`}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                  />
+                  <Legend verticalAlign="top" height={36} />
+                  <ReferenceLine 
+                    x={spotPrice} 
+                    stroke="#f59e0b" 
+                    strokeDasharray="4 4" 
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                  />
+                  <Bar dataKey="callVol" name="Call Volume" fill="#2563eb" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="putVol" name="Put Volume" fill="#e11d48" radius={[2, 2, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
+
+            {/* VIEW 3: MAX PAIN TOTAL LOSS CURVE */}
+            {subView === 'maxPainCurve' && (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={maxPainCurveData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis 
+                    dataKey="strike" 
+                    tickFormatter={(val) => `$${val}`}
+                    stroke="#64748b" 
+                    fontSize={11}
+                  />
+                  <YAxis 
+                    stroke="#64748b" 
+                    fontSize={11}
+                    tickFormatter={(val) => `$${val}M`}
+                  />
+                  <Tooltip 
+                    formatter={(value: number, name: string) => [
+                      `$${value}M`,
+                      name === 'totalPayoutM' ? 'Total Payout' : name === 'callPayoutM' ? 'Call Payout' : 'Put Payout'
+                    ]}
+                    labelFormatter={(label) => `Settlement Strike: $${label}`}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                  />
+                  <Legend verticalAlign="top" height={36} />
+                  <ReferenceLine 
+                    x={spotPrice} 
+                    stroke="#f59e0b" 
+                    strokeDasharray="4 4" 
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                  />
+                  {maxPainStrike && (
+                    <ReferenceLine 
+                      x={maxPainStrike} 
+                      stroke="#06b6d4" 
+                      strokeWidth={2}
+                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'top', fill: '#0891b2', fontSize: 11 }}
+                    />
+                  )}
+                  <Line 
+                    type="monotone" 
+                    dataKey="totalPayoutM" 
+                    name="Total Option Payout ($M)" 
+                    stroke="#0284c7" 
+                    strokeWidth={3} 
+                    dot={false} 
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="callPayoutM" 
+                    name="Call Payout ($M)" 
+                    stroke="#3b82f6" 
+                    strokeWidth={1.5} 
+                    strokeDasharray="3 3" 
+                    dot={false} 
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="putPayoutM" 
+                    name="Put Payout ($M)" 
+                    stroke="#f43f5e" 
+                    strokeWidth={1.5} 
+                    strokeDasharray="3 3" 
+                    dot={false} 
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
+
+            {/* VIEW 4: CUMULATIVE OPEN INTEREST */}
+            {subView === 'cumulativeOI' && (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={cumulativeOIData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis 
+                    dataKey="strike" 
+                    tickFormatter={(val) => `$${val}`}
+                    stroke="#64748b" 
+                    fontSize={11}
+                  />
+                  <YAxis 
+                    stroke="#64748b" 
+                    fontSize={11}
+                    tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
+                  />
+                  <Tooltip 
+                    formatter={(value: number, name: string) => [
+                      value.toLocaleString(),
+                      name === 'cumCallOI' ? 'Cumulative Call OI' : 'Cumulative Put OI'
+                    ]}
+                    labelFormatter={(label) => `Strike: $${label}`}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                  />
+                  <Legend verticalAlign="top" height={36} />
+                  <ReferenceLine 
+                    x={spotPrice} 
+                    stroke="#f59e0b" 
+                    strokeDasharray="4 4" 
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="cumCallOI" 
+                    name="Cumulative Call OI" 
+                    stroke="#3b82f6" 
+                    fill="#3b82f6" 
+                    fillOpacity={0.2} 
+                    strokeWidth={2.5} 
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="cumPutOI" 
+                    name="Cumulative Put OI" 
+                    stroke="#f43f5e" 
+                    fill="#f43f5e" 
+                    fillOpacity={0.2} 
+                    strokeWidth={2.5} 
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
