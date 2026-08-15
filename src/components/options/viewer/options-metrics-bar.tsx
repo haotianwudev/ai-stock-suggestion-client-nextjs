@@ -26,9 +26,9 @@ interface OptionsMetricsBarProps {
   expectedMove: { dollars: number; percent: number } | null;
   maxPainStrike: number | null;
   putCallVolumeRatio: number;
-  putCallOIRatio: number;
+  putCallOIRatio: number | null;
   totalVolume: number;
-  totalOpenInterest: number;
+  totalOpenInterest: number | null;
   atmIV: number | null;
   loading: boolean;
   onRefresh: () => void;
@@ -197,7 +197,7 @@ export function OptionsMetricsBar({
                 </span>
                 <span className="text-xs text-slate-400 font-normal">/</span>
                 <span className="text-sm font-semibold text-slate-700">
-                  {putCallOIRatio.toFixed(2)} OI
+                  {putCallOIRatio !== null ? `${putCallOIRatio.toFixed(2)} OI` : '— OI'}
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 mt-0.5">
@@ -221,7 +221,7 @@ export function OptionsMetricsBar({
                 </span>
                 <span className="text-xs text-slate-400 font-normal">/</span>
                 <span className="text-sm font-semibold text-slate-700">
-                  {(totalOpenInterest / 1000).toFixed(1)}k OI
+                  {totalOpenInterest !== null ? `${(totalOpenInterest / 1000).toFixed(1)}k OI` : '— OI'}
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 mt-0.5">Combined activity</p>

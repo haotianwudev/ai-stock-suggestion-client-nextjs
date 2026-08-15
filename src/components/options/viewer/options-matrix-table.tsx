@@ -107,11 +107,16 @@ export function OptionsMatrixTable({
       }
     }
 
-    // Moneyness filtering
+    // Moneyness filtering. Each row shows one call leg and one put leg at the same strike, and
+    // isCallITM/isPutITM (strike < spot / strike > spot) are mutually exclusive — so a row-level
+    // "both ITM" or "both OTM" condition can never hold except right at the ATM strike, which is
+    // why `isCallITM || isPutITM` and `!isCallITM || !isPutITM` were both effectively always-true
+    // no-ops. Use the call leg as the row's reference side (the conventional default in combined
+    // call+put matrix views) so the two filters actually partition the strikes.
     if (moneynessFilter === 'itm') {
-      list = list.filter(r => r.isCallITM || r.isPutITM);
+      list = list.filter(r => r.strike <= spotPrice);
     } else if (moneynessFilter === 'otm') {
-      list = list.filter(r => !r.isCallITM || !r.isPutITM);
+      list = list.filter(r => r.strike > spotPrice);
     }
 
     return list;

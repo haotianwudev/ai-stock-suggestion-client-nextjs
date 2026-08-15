@@ -19,7 +19,7 @@ import {
   AreaChart
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
-import { BarChart3, Target, Shield, Flame, Scale, Layers } from 'lucide-react';
+import { BarChart3, Target, Shield, Flame, Scale, Layers, Info } from 'lucide-react';
 
 interface PositioningChartViewProps {
   calls: OptionContractData[];
@@ -42,6 +42,11 @@ export function PositioningChartView({
 }: PositioningChartViewProps) {
   const [subView, setSubView] = useState<PositioningSubView>('oi');
 
+  // OptionsDX's EOD schema (the Historical Snapshot source) carries no open-interest column at
+  // all, so every contract's openInterest is null there, not a real zero — gate every OI-derived
+  // figure below on this rather than let them silently compute off fabricated zeros.
+  const hasOpenInterest = calls.some(c => c.openInterest != null) || puts.some(p => p.openInterest != null);
+
   // Build strike-by-strike datasets
   const { chartData, maxPainCurveData, cumulativeOIData, callWall, putWall, totalCallOI, totalPutOI, totalCallVol, totalPutVol } = useMemo(() => {
     const callMap = new Map<number, { oi: number; vol: number }>();
@@ -54,9 +59,9 @@ export function PositioningChartView({
     let totalPVol = 0;
 
     let maxCOI = 0;
-    let cWall = 0;
+    let cWallRaw = 0;
     let maxPOI = 0;
-    let pWall = 0;
+    let pWallRaw = 0;
 
     calls.forEach(c => {
       const oi = c.openInterest || 0;
@@ -68,7 +73,7 @@ export function PositioningChartView({
 
       if (oi > maxCOI) {
         maxCOI = oi;
-        cWall = c.strike;
+        cWallRaw = c.strike;
       }
     });
 
@@ -82,7 +87,7 @@ export function PositioningChartView({
 
       if (oi > maxPOI) {
         maxPOI = oi;
-        pWall = p.strike;
+        pWallRaw = p.strike;
       }
     });
 
@@ -157,8 +162,8 @@ export function PositioningChartView({
       chartData: rows,
       maxPainCurveData: painCurve,
       cumulativeOIData: cumOIData,
-      callWall: cWall,
-      putWall: pWall,
+      callWall: maxCOI > 0 ? cWallRaw : null,
+      putWall: maxPOI > 0 ? pWallRaw : null,
       totalCallOI: totalCOI,
       totalPutOI: totalPOI,
       totalCallVol: totalCVol,
@@ -176,13 +181,17 @@ export function PositioningChartView({
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Call Wall (Resistance)</span>
             <div className="flex items-baseline gap-1.5 mt-0.5">
               <span className="text-xl font-extrabold text-blue-600">
-                ${callWall.toLocaleString()}
+                {callWall !== null ? `$${callWall.toLocaleString()}` : '—'}
               </span>
-              <span className="text-xs text-slate-500 font-medium">
-                (+{((callWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
-              </span>
+              {callWall !== null && (
+                <span className="text-xs text-slate-500 font-medium">
+                  (+{((callWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
+                </span>
+              )}
             </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Highest Call Open Interest</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              {hasOpenInterest ? 'Highest Call Open Interest' : 'No open interest data for this source'}
+            </p>
           </CardContent>
         </Card>
 
@@ -192,13 +201,17 @@ export function PositioningChartView({
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Put Wall (Support)</span>
             <div className="flex items-baseline gap-1.5 mt-0.5">
               <span className="text-xl font-extrabold text-rose-600">
-                ${putWall.toLocaleString()}
+                {putWall !== null ? `$${putWall.toLocaleString()}` : '—'}
               </span>
-              <span className="text-xs text-slate-500 font-medium">
-                ({((putWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
-              </span>
+              {putWall !== null && (
+                <span className="text-xs text-slate-500 font-medium">
+                  ({((putWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
+                </span>
+              )}
             </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Highest Put Open Interest</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              {hasOpenInterest ? 'Highest Put Open Interest' : 'No open interest data for this source'}
+            </p>
           </CardContent>
         </Card>
 
@@ -224,14 +237,23 @@ export function PositioningChartView({
         <Card className="bg-white border-slate-200 shadow-2xs">
           <CardContent className="p-3.5">
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Total OI Ratio</span>
-            <div className="flex items-center gap-2 mt-0.5">
-              <span className="text-sm font-bold text-blue-600">C: {(totalCallOI / 1000).toFixed(1)}k</span>
-              <span className="text-slate-300">/</span>
-              <span className="text-sm font-bold text-rose-600">P: {(totalPutOI / 1000).toFixed(1)}k</span>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
-            </p>
+            {hasOpenInterest ? (
+              <>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="text-sm font-bold text-blue-600">C: {(totalCallOI / 1000).toFixed(1)}k</span>
+                  <span className="text-slate-300">/</span>
+                  <span className="text-sm font-bold text-rose-600">P: {(totalPutOI / 1000).toFixed(1)}k</span>
+                </div>
+                <p className="text-[10px] text-slate-400 mt-0.5">
+                  P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="text-sm font-bold text-slate-400 mt-0.5">—</div>
+                <p className="text-[10px] text-slate-400 mt-0.5">No open interest data for this source</p>
+              </>
+            )}
           </CardContent>
         </Card>
       </div>
@@ -293,6 +315,18 @@ export function PositioningChartView({
 
         <CardContent className="p-4">
           <div className="h-[400px] w-full">
+            {!hasOpenInterest && subView !== 'volume' ? (
+              <div className="h-full flex flex-col items-center justify-center text-center gap-2">
+                <Info className="h-6 w-6 text-slate-400" />
+                <p className="text-sm font-semibold text-slate-700">Open interest data not available</p>
+                <p className="text-xs text-slate-500 max-w-md">
+                  This view is built from each contract&apos;s open interest, which the Historical
+                  Snapshot source doesn&apos;t include. Switch to the Live source, or see the Volume tab
+                  for real historical activity.
+                </p>
+              </div>
+            ) : (
+              <>
             {/* VIEW 1: OPEN INTEREST */}
             {subView === 'oi' && (
               <ResponsiveContainer width="100%" height="100%">
@@ -495,6 +529,8 @@ export function PositioningChartView({
                   />
                 </AreaChart>
               </ResponsiveContainer>
+            )}
+              </>
             )}
           </div>
         </CardContent>

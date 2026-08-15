@@ -159,9 +159,9 @@ export function OptionsViewer() {
         expectedMove: null,
         maxPainStrike: null,
         putCallVolumeRatio: 1.0,
-        putCallOIRatio: 1.0,
+        putCallOIRatio: null,
         totalVolume: 0,
-        totalOpenInterest: 0,
+        totalOpenInterest: null,
         atmIV: null
       };
     }
@@ -175,6 +175,11 @@ export function OptionsViewer() {
     let putVol = 0;
     let callOI = 0;
     let putOI = 0;
+    // OptionsDX's EOD schema (the Historical Snapshot source) has no open-interest column at
+    // all — every contract's openInterest is null there, not a real zero. Detect that so OI-
+    // derived figures (P/C OI ratio, total OI, max pain) can report "no data" instead of a
+    // misleading computed value that happens to be all-zero.
+    const hasOpenInterest = calls.some(c => c.openInterest != null) || puts.some(p => p.openInterest != null);
 
     calls.forEach(c => {
       callVol += c.volume || 0;
@@ -187,7 +192,7 @@ export function OptionsViewer() {
     });
 
     const pcVolRatio = callVol > 0 ? putVol / callVol : 1.0;
-    const pcOIRatio = callOI > 0 ? putOI / callOI : 1.0;
+    const pcOIRatio = hasOpenInterest ? (callOI > 0 ? putOI / callOI : 1.0) : null;
 
     // 2. ATM Contract & IV
     const atmCall = calls.reduce((best, c) => 
@@ -216,29 +221,33 @@ export function OptionsViewer() {
       };
     }
 
-    // 4. Max Pain Strike Calculation
-    const allStrikes = Array.from(new Set([...calls.map(c => c.strike), ...puts.map(p => p.strike)])).sort((a, b) => a - b);
-    let minLoss = Infinity;
+    // 4. Max Pain Strike Calculation — meaningless without real OI data (every strike's total
+    // loss would tie at 0, and the "lowest strike wins ties" iteration order would present an
+    // arbitrary strike as if it were a computed answer), so skip it entirely when OI is absent.
     let maxPain: number | null = null;
+    if (hasOpenInterest) {
+      const allStrikes = Array.from(new Set([...calls.map(c => c.strike), ...puts.map(p => p.strike)])).sort((a, b) => a - b);
+      let minLoss = Infinity;
 
-    allStrikes.forEach(testStrike => {
-      let totalLoss = 0;
-      calls.forEach(c => {
-        if (testStrike > c.strike) {
-          totalLoss += (testStrike - c.strike) * (c.openInterest || 0);
+      allStrikes.forEach(testStrike => {
+        let totalLoss = 0;
+        calls.forEach(c => {
+          if (testStrike > c.strike) {
+            totalLoss += (testStrike - c.strike) * (c.openInterest || 0);
+          }
+        });
+        puts.forEach(p => {
+          if (testStrike < p.strike) {
+            totalLoss += (p.strike - testStrike) * (p.openInterest || 0);
+          }
+        });
+
+        if (totalLoss < minLoss) {
+          minLoss = totalLoss;
+          maxPain = testStrike;
         }
       });
-      puts.forEach(p => {
-        if (testStrike < p.strike) {
-          totalLoss += (p.strike - testStrike) * (p.openInterest || 0);
-        }
-      });
-
-      if (totalLoss < minLoss) {
-        minLoss = totalLoss;
-        maxPain = testStrike;
-      }
-    });
+    }
 
     return {
       expectedMove: expMove,
@@ -246,7 +255,7 @@ export function OptionsViewer() {
       putCallVolumeRatio: pcVolRatio,
       putCallOIRatio: pcOIRatio,
       totalVolume: callVol + putVol,
-      totalOpenInterest: callOI + putOI,
+      totalOpenInterest: hasOpenInterest ? callOI + putOI : null,
       atmIV: iv
     };
   }, [currentExpData, data]);
@@ -494,6 +503,7 @@ export function OptionsViewer() {
               ticker="^SPX"
               expiration={currentExpData.expiration}
               dte={currentExpData.daysToExpiration}
+              allExpirations={data.expirationDates}
             />
           </TabsContent>
         </Tabs>

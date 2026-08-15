@@ -20,7 +20,16 @@ import {
   AreaChart
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
-import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity } from 'lucide-react';
+import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info } from 'lucide-react';
+import { blackScholes } from '@/lib/black-scholes';
+import { SPX_DEFAULT_RATE, SPX_DEFAULT_DIV_YIELD } from '@/lib/options/analytics';
+
+interface ExpirationSlice {
+  expiration: string;
+  daysToExpiration: number;
+  calls: OptionContractData[];
+  puts: OptionContractData[];
+}
 
 interface GexChartViewProps {
   calls: OptionContractData[];
@@ -29,9 +38,14 @@ interface GexChartViewProps {
   ticker: string;
   expiration: string;
   dte: number;
+  /** Every expiration's contracts — enables the "All Expirations" aggregate scope on the Net GEX
+   * and Gross GEX views (the standard "whole dealer book" GEX reading), which single-expiration
+   * data can't answer. Optional so this component still works if a caller doesn't have it handy. */
+  allExpirations?: ExpirationSlice[];
 }
 
 type GexSubView = 'netGex' | 'grossGex' | 'gammaShift' | 'vannaCharm';
+type GexScope = 'expiration' | 'all';
 
 export function GexChartView({
   calls,
@@ -39,73 +53,146 @@ export function GexChartView({
   spotPrice,
   ticker,
   expiration,
-  dte
+  dte,
+  allExpirations
 }: GexChartViewProps) {
   const [subView, setSubView] = useState<GexSubView>('netGex');
+  // Only netGex/grossGex support the aggregate scope — gammaShift's decay-with-distance model
+  // and vannaCharm are inherently tied to one expiration's own time-to-expiry, not a sum across
+  // many different DTEs, so they always read the single selected expiration regardless of scope.
+  const [scope, setScope] = useState<GexScope>('expiration');
+  const canAggregate = !!allExpirations && allExpirations.length > 1;
+  const effectiveScope: GexScope = canAggregate && (subView === 'netGex' || subView === 'grossGex') ? scope : 'expiration';
 
   // Compute Net GEX, Gross GEX, Vanna, Charm, and Price Shift Simulation
   const { chartData, shiftCurveData, vannaCharmData, totalNetGex, totalCallGex, totalPutGex, gammaFlipLevel } = useMemo(() => {
+    const contractMultiplier = 100;
+    const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
+    const inRange = (strike: number) => strike >= spotPrice * 0.88 && strike <= spotPrice * 1.12;
+
+    // Always built from the single selected expiration — the shift-sim and vanna/charm sections
+    // below use these regardless of scope, and the per-expiration rows branch reuses them too.
     const callMap = new Map<number, OptionContractData>();
     const putMap = new Map<number, OptionContractData>();
     const strikes = new Set<number>();
-
-    calls.forEach(c => {
-      callMap.set(c.strike, c);
-      strikes.add(c.strike);
-    });
-
-    puts.forEach(p => {
-      putMap.set(p.strike, p);
-      strikes.add(p.strike);
-    });
-
-    const sortedStrikes = Array.from(strikes).sort((a, b) => a - b);
-    const contractMultiplier = 100;
-    const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
+    calls.forEach(c => { callMap.set(c.strike, c); strikes.add(c.strike); });
+    puts.forEach(p => { putMap.set(p.strike, p); strikes.add(p.strike); });
+    const filteredStrikes = Array.from(strikes).sort((a, b) => a - b).filter(inRange);
 
     let totCallGex = 0;
     let totPutGex = 0;
+    let rows: { strike: number; strikeLabel: string; callGex: number; putGex: number; netGex: number }[];
 
-    const filteredStrikes = sortedStrikes.filter(
-      s => s >= spotPrice * 0.88 && s <= spotPrice * 1.12
-    );
+    if (effectiveScope === 'all' && allExpirations) {
+      // Sum gamma*OI contributions from every expiration that lists a given strike — the "whole
+      // book" GEX reading, since dealers' hedging pressure at a strike comes from every open
+      // contract there regardless of which expiration it belongs to.
+      const strikeAgg = new Map<number, { callGex: number; putGex: number }>();
+      allExpirations.forEach(exp => {
+        exp.calls.forEach(c => {
+          if (!inRange(c.strike)) return;
+          const gex = (c.gamma || 0) * (c.openInterest || 0) * contractMultiplier * spotSquared1Pct;
+          const entry = strikeAgg.get(c.strike) || { callGex: 0, putGex: 0 };
+          entry.callGex += gex;
+          strikeAgg.set(c.strike, entry);
+        });
+        exp.puts.forEach(p => {
+          if (!inRange(p.strike)) return;
+          const gex = -((p.gamma || 0) * (p.openInterest || 0) * contractMultiplier * spotSquared1Pct);
+          const entry = strikeAgg.get(p.strike) || { callGex: 0, putGex: 0 };
+          entry.putGex += gex;
+          strikeAgg.set(p.strike, entry);
+        });
+      });
+      rows = Array.from(strikeAgg.entries())
+        .sort((a, b) => a[0] - b[0])
+        .map(([strike, { callGex, putGex }]) => {
+          totCallGex += callGex;
+          totPutGex += putGex;
+          return {
+            strike,
+            strikeLabel: `$${strike}`,
+            callGex: Number(callGex.toFixed(2)),
+            putGex: Number(Math.abs(putGex).toFixed(2)),
+            netGex: Number((callGex + putGex).toFixed(2))
+          };
+        });
+    } else {
+      rows = filteredStrikes.map(strike => {
+        const c = callMap.get(strike);
+        const p = putMap.get(strike);
 
-    // 1. Strike GEX Rows
-    const rows = filteredStrikes.map(strike => {
-      const c = callMap.get(strike);
-      const p = putMap.get(strike);
+        const callGex = (c?.gamma || 0) * (c?.openInterest || 0) * contractMultiplier * spotSquared1Pct;
+        // Market makers short customer puts -> negative gamma
+        const putGex = -((p?.gamma || 0) * (p?.openInterest || 0) * contractMultiplier * spotSquared1Pct);
 
-      const cGamma = c?.gamma || 0;
-      const cOI = c?.openInterest || 0;
-      const callGex = cGamma * cOI * contractMultiplier * spotSquared1Pct;
+        totCallGex += callGex;
+        totPutGex += putGex;
 
-      const pGamma = p?.gamma || 0;
-      const pOI = p?.openInterest || 0;
-      // Market makers short customer puts -> negative gamma
-      const putGex = -(pGamma * pOI * contractMultiplier * spotSquared1Pct);
-
-      const netGex = callGex + putGex;
-
-      totCallGex += callGex;
-      totPutGex += putGex;
-
-      return {
-        strike,
-        strikeLabel: `$${strike}`,
-        callGex: Number(callGex.toFixed(2)),
-        putGex: Number(Math.abs(putGex).toFixed(2)),
-        netGex: Number(netGex.toFixed(2))
-      };
-    });
+        return {
+          strike,
+          strikeLabel: `$${strike}`,
+          callGex: Number(callGex.toFixed(2)),
+          putGex: Number(Math.abs(putGex).toFixed(2)),
+          netGex: Number((callGex + putGex).toFixed(2))
+        };
+      });
+    }
 
     const totalNet = totCallGex + totPutGex;
 
-    // Find Gamma Flip Level
+    // Gamma Flip Level: the hypothetical SPOT PRICE at which total dealer gamma exposure —
+    // evaluated as if the underlying traded there — crosses zero. This is the actual industry
+    // definition (SpotGamma/SqueezeMetrics etc.), and it's a function of *spot*, not of strike —
+    // it is NOT "the strike where this strike's own bar changes color" (that's each strike's own
+    // local exposure, a different, real, but separate quantity) and NOT "the strike where the
+    // cumulative-by-strike sum crosses zero" (an earlier attempt at fixing this — cross-checked
+    // against real chain data and found to still misfire: it can report a strike as "the flip"
+    // purely because that's where the running total first dips negative, even when dealer gamma
+    // stays negative at every nearby *simulated spot price*, i.e. there's no real nearby flip at
+    // all). Reuses the same Gaussian-decay spot-shift model as the "Spot Move Sim" view below —
+    // that decay weighting also naturally smooths out the single-strike rounding noise 0DTE
+    // gamma is prone to, rather than being thrown off by it strike-by-strike.
+    const flipFlatContracts: { strike: number; gamma: number; openInterest: number; isCall: boolean }[] = [];
+    if (effectiveScope === 'all' && allExpirations) {
+      allExpirations.forEach(exp => {
+        exp.calls.forEach(c => { if (inRange(c.strike)) flipFlatContracts.push({ strike: c.strike, gamma: c.gamma || 0, openInterest: c.openInterest || 0, isCall: true }); });
+        exp.puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
+      });
+    } else {
+      calls.forEach(c => { if (inRange(c.strike)) flipFlatContracts.push({ strike: c.strike, gamma: c.gamma || 0, openInterest: c.openInterest || 0, isCall: true }); });
+      puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
+    }
+
+    const simNetGexAt = (simSpot: number): number => {
+      let total = 0;
+      flipFlatContracts.forEach(({ strike, gamma, openInterest, isCall }) => {
+        const dK = Math.abs(strike - simSpot);
+        const decay = Math.exp(-0.5 * ((dK / (simSpot * 0.03)) ** 2));
+        const signed = (isCall ? gamma : -gamma) * openInterest * decay;
+        total += signed * contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
+      });
+      return total;
+    };
+
     let flip: number | null = null;
-    for (let i = 0; i < rows.length - 1; i++) {
-      if ((rows[i].netGex <= 0 && rows[i + 1].netGex > 0) || (rows[i].netGex >= 0 && rows[i + 1].netGex < 0)) {
-        flip = rows[i].strike;
-        break;
+    if (flipFlatContracts.length > 0) {
+      const stepPct = 0.1;
+      let prevSpot = spotPrice * (1 - 0.08);
+      let prevVal = simNetGexAt(prevSpot);
+      let bestDist = Infinity;
+      for (let pct = -8 + stepPct; pct <= 8; pct += stepPct) {
+        const simSpot = spotPrice * (1 + pct / 100);
+        const val = simNetGexAt(simSpot);
+        if ((prevVal <= 0 && val > 0) || (prevVal >= 0 && val < 0)) {
+          // Linear interpolation between the two bracketing sim-spot points for a precise level.
+          const t = -prevVal / (val - prevVal);
+          const crossing = prevSpot + t * (simSpot - prevSpot);
+          const dist = Math.abs(crossing - spotPrice);
+          if (dist < bestDist) { bestDist = dist; flip = Math.round(crossing); }
+        }
+        prevSpot = simSpot;
+        prevVal = val;
       }
     }
 
@@ -123,8 +210,8 @@ export function GexChartView({
         // Gamma decays with distance from spot: approx bell curve peak at ATM
         const decay = Math.exp(-0.5 * ((dK / (simSpot * 0.03)) ** 2));
 
-        const cG = (c?.gamma || 0.001) * (c?.openInterest || 0) * decay;
-        const pG = -(p?.gamma || 0.001) * (p?.openInterest || 0) * decay;
+        const cG = (c?.gamma || 0) * (c?.openInterest || 0) * decay;
+        const pG = -(p?.gamma || 0) * (p?.openInterest || 0) * decay;
 
         simGex += (cG + pG) * contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
       });
@@ -137,25 +224,34 @@ export function GexChartView({
       };
     });
 
-    // 3. Vanna & Charm Exposure Estimates
+    // 3. Vanna & Charm Exposure — real closed-form Greeks (verified against finite-difference
+    // derivatives of delta/vega before shipping — see black-scholes.ts), not a shape-alike proxy.
+    // Dollar-exposure scaling matches how GEX itself is scaled: per-contract Greek * open interest
+    // * the 100-share multiplier. Needs each contract's own IV, so unlike gamma/theta (already on
+    // OptionContractData), this solves fresh per contract from spot/strike/DTE/IV.
+    const T = Math.max(dte, 0) / 365;
     const vannaCharmRows = filteredStrikes.map(strike => {
       const c = callMap.get(strike);
       const p = putMap.get(strike);
 
-      // Vanna approx: Delta * (1 - Delta) * Vega-weight
-      const cDelta = c?.delta || 0;
-      const pDelta = p?.delta || 0;
-      const cOI = c?.openInterest || 0;
-      const pOI = p?.openInterest || 0;
-
-      const vannaFlow = ((cDelta * (1 - cDelta) * cOI) - (Math.abs(pDelta) * (1 - Math.abs(pDelta)) * pOI)) * 0.01;
-      const charmFlow = (-((c?.theta || 0) * cOI) + ((p?.theta || 0) * pOI)) * 0.001;
+      let cVanna = 0, cCharm = 0;
+      if (c?.impliedVolatilityMid && c.impliedVolatilityMid > 0 && T > 0) {
+        const g = blackScholes(spotPrice, strike, T, SPX_DEFAULT_RATE, c.impliedVolatilityMid, 'Call', SPX_DEFAULT_DIV_YIELD);
+        cVanna = g.vanna * (c.openInterest || 0) * contractMultiplier;
+        cCharm = g.charm * (c.openInterest || 0) * contractMultiplier;
+      }
+      let pVanna = 0, pCharm = 0;
+      if (p?.impliedVolatilityMid && p.impliedVolatilityMid > 0 && T > 0) {
+        const g = blackScholes(spotPrice, strike, T, SPX_DEFAULT_RATE, p.impliedVolatilityMid, 'Put', SPX_DEFAULT_DIV_YIELD);
+        pVanna = g.vanna * (p.openInterest || 0) * contractMultiplier;
+        pCharm = g.charm * (p.openInterest || 0) * contractMultiplier;
+      }
 
       return {
         strike,
         strikeLabel: `$${strike}`,
-        vanna: Number(vannaFlow.toFixed(2)),
-        charm: Number(charmFlow.toFixed(2))
+        vanna: Number((cVanna + pVanna).toFixed(2)),
+        charm: Number((cCharm + pCharm).toFixed(2))
       };
     });
 
@@ -168,9 +264,30 @@ export function GexChartView({
       totalPutGex: Number(totPutGex.toFixed(1)),
       gammaFlipLevel: flip
     };
-  }, [calls, puts, spotPrice]);
+  }, [calls, puts, spotPrice, effectiveScope, allExpirations, dte]);
 
   const isPositiveRegime = totalNetGex >= 0;
+
+  // GEX is gamma * open interest at every strike — with no open interest data at all (the
+  // Historical Snapshot source, since OptionsDX's EOD schema doesn't carry it), every figure
+  // in this tab would compute to a misleading flat zero rather than a real "no data" state.
+  const hasOpenInterest = calls.some(c => c.openInterest != null && c.openInterest > 0)
+    || puts.some(p => p.openInterest != null && p.openInterest > 0);
+
+  if (!hasOpenInterest) {
+    return (
+      <Card className="bg-white border-slate-200 shadow-xs">
+        <CardContent className="p-8 flex flex-col items-center text-center gap-2">
+          <Info className="h-6 w-6 text-slate-400" />
+          <p className="text-sm font-semibold text-slate-700">Open interest data not available</p>
+          <p className="text-xs text-slate-500 max-w-md">
+            Gamma exposure (GEX) is calculated from each contract&apos;s open interest, which the
+            Historical Snapshot source doesn&apos;t include. Switch to the Live source to see GEX.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <div className="space-y-4">
@@ -243,52 +360,76 @@ export function GexChartView({
           <div>
             <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Zap className="h-5 w-5 text-amber-500" />
-              {subView === 'netGex' && 'SPX Net Gamma Exposure (GEX) by Strike ($M)'}
-              {subView === 'grossGex' && 'Call Gamma vs Put Gamma Inventory ($M)'}
+              {subView === 'netGex' && `SPX Net Gamma Exposure (GEX) by Strike ($M)${effectiveScope === 'all' ? ' — All Expirations' : ''}`}
+              {subView === 'grossGex' && `Call Gamma vs Put Gamma Inventory ($M)${effectiveScope === 'all' ? ' — All Expirations' : ''}`}
               {subView === 'gammaShift' && 'Simulated Market Maker Gamma Curve across Spot Moves'}
               {subView === 'vannaCharm' && 'Vanna & Charm Hedging Flow Sensitivity'}
             </CardTitle>
             <CardDescription className="text-xs text-slate-500 mt-0.5">
-              {subView === 'netGex' && `${expiration} (${dte} DTE) — Hedging flow pressure per 1% underlying price move`}
-              {subView === 'grossGex' && `Gross dealer positioning from customer Call vs Put open interest`}
-              {subView === 'gammaShift' && `How total dealer net gamma changes as SPX price rallies or falls by -5% to +5%`}
+              {subView === 'netGex' && (effectiveScope === 'all'
+                ? 'Every listed expiration — the full dealer book\'s hedging flow pressure per 1% underlying price move'
+                : `${expiration} (${dte} DTE) — Hedging flow pressure per 1% underlying price move`)}
+              {subView === 'grossGex' && `Gross dealer positioning from customer Call vs Put open interest${effectiveScope === 'all' ? ', summed across every expiration' : ''}`}
+              {subView === 'gammaShift' && `How total dealer net gamma changes as SPX price rallies or falls by -5% to +5% (this expiration only)`}
               {subView === 'vannaCharm' && `Flow pressures induced by changes in Implied Volatility (Vanna) and Time Decay (Charm)`}
             </CardDescription>
           </div>
 
-          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
-            <button
-              onClick={() => setSubView('netGex')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'netGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Net GEX
-            </button>
-            <button
-              onClick={() => setSubView('grossGex')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'grossGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Gross Call/Put
-            </button>
-            <button
-              onClick={() => setSubView('gammaShift')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'gammaShift' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Spot Move Sim
-            </button>
-            <button
-              onClick={() => setSubView('vannaCharm')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'vannaCharm' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Vanna / Charm
-            </button>
+          <div className="flex flex-col items-end gap-2">
+            <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
+              <button
+                onClick={() => setSubView('netGex')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  subView === 'netGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Net GEX
+              </button>
+              <button
+                onClick={() => setSubView('grossGex')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  subView === 'grossGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Gross Call/Put
+              </button>
+              <button
+                onClick={() => setSubView('gammaShift')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  subView === 'gammaShift' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Spot Move Sim
+              </button>
+              <button
+                onClick={() => setSubView('vannaCharm')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  subView === 'vannaCharm' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Vanna / Charm
+              </button>
+            </div>
+            {canAggregate && (subView === 'netGex' || subView === 'grossGex') && (
+              <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-[11px] font-semibold">
+                <button
+                  onClick={() => setScope('expiration')}
+                  className={`px-2 py-0.5 rounded-md transition-all ${
+                    scope === 'expiration' ? 'bg-blue-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  This Expiration
+                </button>
+                <button
+                  onClick={() => setScope('all')}
+                  className={`px-2 py-0.5 rounded-md transition-all ${
+                    scope === 'all' ? 'bg-blue-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  All Expirations
+                </button>
+              </div>
+            )}
           </div>
         </CardHeader>
 

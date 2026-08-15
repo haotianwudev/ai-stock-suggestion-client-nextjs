@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -62,7 +62,7 @@ export function VolatilityChartView({
   }, [expirations, currentExpiration]);
 
   // Set default comparison expirations (e.g. next 2 liquid cycles)
-  useMemo(() => {
+  useEffect(() => {
     if (expirations.length > 1 && compareExpirations.length === 0) {
       const candidates = expirations.slice(0, 4).map(e => e.expiration);
       setCompareExpirations(candidates);
@@ -216,7 +216,6 @@ export function VolatilityChartView({
 
     if (calls.length < 5) return [];
 
-    const step = 5; // SPX 5-point strike interval
     const densityRows = [];
     let sumDensity = 0;
 
@@ -229,8 +228,13 @@ export function VolatilityChartView({
       const dK2 = next.strike - curr.strike;
 
       if (dK1 > 0 && dK2 > 0 && dK1 <= 25 && dK2 <= 25) {
-        // Second derivative of Call price with respect to Strike: C''(K)
-        const d2C = (next.midPrice! - 2 * curr.midPrice! + prev.midPrice!) / (dK1 * dK2);
+        // Second derivative of Call price with respect to Strike: C''(K). The textbook
+        // (next - 2*curr + prev) / h^2 three-point formula only holds for EQUAL spacing
+        // (dK1 === dK2) — real SPX chains alternate 5pt/10pt strike gaps constantly near the
+        // money, so that formula was picking up huge, often sign-flipped error at nearly every
+        // point. This is the general non-uniform-grid second-derivative formula instead (reduces
+        // to the textbook one exactly when dK1 === dK2).
+        const d2C = 2 * (dK1 * next.midPrice! - (dK1 + dK2) * curr.midPrice! + dK2 * prev.midPrice!) / (dK1 * dK2 * (dK1 + dK2));
         const density = Math.max(0, d2C);
         sumDensity += density;
 
@@ -344,7 +348,7 @@ export function VolatilityChartView({
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">25Δ Risk Reversal (Skew)</span>
             <div className="flex items-baseline gap-1.5 mt-0.5">
               <span className="text-xl font-extrabold text-slate-900">
-                {activeMetrics?.skewRR !== null ? `${activeMetrics?.skewRR! > 0 ? '+' : ''}${activeMetrics?.skewRR}%` : '—'}
+                {activeMetrics?.skewRR != null ? `${activeMetrics.skewRR > 0 ? '+' : ''}${activeMetrics.skewRR}%` : '—'}
               </span>
               <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${
                 (activeMetrics?.skewRR ?? 0) > 0 ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200'
@@ -361,7 +365,7 @@ export function VolatilityChartView({
           <CardContent className="p-3.5">
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">25Δ Butterfly (Convexity)</span>
             <div className="text-xl font-extrabold text-slate-800 mt-0.5">
-              {activeMetrics?.fly !== null ? `+${activeMetrics?.fly}%` : '—'}
+              {activeMetrics?.fly != null ? `${activeMetrics.fly > 0 ? '+' : ''}${activeMetrics.fly}%` : '—'}
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">Wing curvature over ATM base</p>
           </CardContent>
