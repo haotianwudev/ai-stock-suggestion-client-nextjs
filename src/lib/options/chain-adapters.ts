@@ -39,7 +39,7 @@ function toContract(c: LiveOptionContract, type: 'call' | 'put'): ChainContract 
 
 /**
  * Adapts the live "Options Viewer" API response into the same OptionChainSnapshot shape the
- * historical sample uses, so IronCondorLegPicker can render off either source unchanged.
+ * historical sample uses, so SpxPayoffBuilder can render off either source unchanged.
  */
 export function adaptLiveResponseToSnapshot(response: LiveOptionsAPIResponse): OptionChainSnapshot {
     const expirations: ExpirationChain[] = response.expirationDates.map(exp => ({

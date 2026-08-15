@@ -21,6 +21,6 @@ export function Alert({ children, variant = "default", className }: AlertProps) 
   );
 }
 
-export function AlertDescription({ children }: { children: React.ReactNode }) {
-  return <div className="text-sm">{children}</div>;
-} 
+export function AlertDescription({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <div className={cn("text-sm", className)}>{children}</div>;
+}

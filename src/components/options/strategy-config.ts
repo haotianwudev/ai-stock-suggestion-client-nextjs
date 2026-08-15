@@ -2,7 +2,6 @@
 // Centralized configuration for all options strategies
 
 import { ComponentType } from 'react';
-import { SHORT_PUT_DEMO } from '../../data/options-backtest-samples';
 
 export type StrategyCategory = 'Bullish' | 'Bearish' | 'Neutral' | 'Volatility' | 'Income' | 'Featured' | 'Risk Defined';
 
@@ -46,7 +45,6 @@ export interface Strategy {
 // Import strategy detail components
 import { WheelStrategyDetail } from './strategies/wheel-strategy';
 import { IronCondorStrategyDetail } from './strategies/iron-condor-strategy';
-import { IronCondorBuilder } from './iron-condor-builder';
 import { LongPutStrategyDetail } from './strategies/long-put-strategy';
 import { LongCallStrategyDetail } from './strategies/long-call-strategy';
 import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
@@ -77,8 +75,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Unlimited Profit',
         volatility: 'Benefits from rising IV (Long Vega)',
         time: 'Hurt by time decay (Short Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
-            Math.max(0, p - strike1) - premium,
+        payoffPresetId: 'long_call',
+        payoffExplanation: "Legs are pre-filled with a real SPX call from the current chain. Change the expiration or strike to see the payoff update live. Maximum loss is the premium paid, occurring if the stock stays below the strike; profit is unlimited above it.",
         relatedArticles: ["single-leg-long-call-asymmetric-leverage-options-trading"],
         primaryArticleSlug: 'single-leg-long-call-asymmetric-leverage-options-trading',
         detailComponent: LongCallStrategyDetail as ComponentType<StrategyDetailProps>
@@ -91,17 +89,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Less sensitive to IV changes',
         time: 'Less sensitive to time decay',
-        payoffCalculator: (p, { strike1, strike2, premium }) => {
-            // Bull Call Spread: Buy call at strike1 (lower), sell call at strike2 (higher)
-            // Premium represents the net debit paid (long call premium - short call premium)
-            const longCallPayoff = Math.max(0, p - strike1);
-            const shortCallPayoff = -Math.max(0, p - strike2);
-            const netDebit = premium;
-            
-            // Total P&L = Long Call Payoff + Short Call Payoff - Net Debit Paid
-            return longCallPayoff + shortCallPayoff - netDebit;
-        },
-        payoffExplanation: "Maximum profit occurs when the stock price equals or exceeds the short call strike at expiration. Maximum loss occurs when stock stays below the long call strike.",
+        payoffPresetId: 'bull_call_spread',
+        payoffExplanation: "Legs are pre-filled with a real long call (near the money) and short call (further OTM) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit occurs at or above the short call strike; maximum loss is the net debit paid, occurring at or below the long call strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         primaryArticleSlug: 'vertical-debit-spreads-strategic-architecture-defined-risk-trading',
         detailComponent: BullCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
@@ -114,9 +103,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike3, strike4, premium }) => 
-            (premium * 0.5) + Math.min(0, p - strike3) - Math.min(0, p - strike4),
-        payoffExplanation: "Maximum profit occurs when the stock price stays above the short put strike at expiration. Maximum loss occurs when stock falls below the long put strike.",
+        payoffPresetId: 'bull_put_spread',
+        payoffExplanation: "Legs are pre-filled with a real short put (~30 delta) and a further-OTM long put (~10 delta) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, occurring at or above the short put strike; maximum loss occurs at or below the long put strike.",
         relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         primaryArticleSlug: 'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling',
         detailComponent: BullPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
@@ -146,8 +134,8 @@ export const strategies: Strategy[] = [
         time: 'Benefits from time decay (Long Theta)',
         payoffCalculator: (p, { strike1, premium }) =>
             (p >= strike1 ? premium : premium + (p - strike1)),
-        payoffDemoParams: SHORT_PUT_DEMO,
-        payoffExplanation: "Maximum profit occurs when stock price stays above the put strike at expiration. Maximum loss occurs when stock falls to zero (minus premium received).",
+        payoffPresetId: 'short_put',
+        payoffExplanation: "Legs are pre-filled with a real ~30-delta short put from the current SPX chain. Change the expiration or strike to see the payoff update live. Maximum profit is the premium collected, earned above the strike; loss grows below it, down to (in principle) the stock reaching zero.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'covered-calls-vs-cash-secured-puts',
         detailComponent: PutWritingStrategyDetail as ComponentType<StrategyDetailProps>
@@ -160,8 +148,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Substantial Profit',
         volatility: 'Benefits from rising IV (Long Vega)',
         time: 'Hurt by time decay (Short Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
-            Math.max(0, strike1 - p) - premium,
+        payoffPresetId: 'long_put',
+        payoffExplanation: "Legs are pre-filled with a real SPX put from the current chain. Change the expiration or strike to see the payoff update live. Maximum loss is the premium paid, occurring if the stock stays above the strike; profit grows as the stock falls below it, capped only by the stock reaching zero.",
         relatedArticles: ["single-leg-put-strategy-asymmetric-utility"],
         primaryArticleSlug: 'single-leg-put-strategy-asymmetric-utility',
         detailComponent: LongPutStrategyDetail as ComponentType<StrategyDetailProps>
@@ -174,17 +162,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Less sensitive to IV changes',
         time: 'Less sensitive to time decay',
-        payoffCalculator: (p, { strike1, strike3, premium }) => {
-            // Bear Put Spread: Buy put at strike1 (higher), sell put at strike3 (lower)
-            // Premium represents the net debit paid (long put premium - short put premium)
-            const longPutPayoff = Math.max(0, strike1 - p);
-            const shortPutPayoff = -Math.max(0, strike3 - p);
-            const netDebit = premium;
-            
-            // Total P&L = Long Put Payoff + Short Put Payoff - Net Debit Paid
-            return longPutPayoff + shortPutPayoff - netDebit;
-        },
-        payoffExplanation: "Maximum profit occurs when the stock price equals or falls below the short put strike at expiration. Maximum loss occurs when stock stays above the long put strike.",
+        payoffPresetId: 'bear_put_spread',
+        payoffExplanation: "Legs are pre-filled with a real long put (near the money) and short put (further OTM) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit occurs at or below the short put strike; maximum loss is the net debit paid, occurring at or above the long put strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         primaryArticleSlug: 'vertical-debit-spreads-strategic-architecture-defined-risk-trading',
         detailComponent: BearPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
@@ -197,9 +176,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, strike3, premium }) => 
-            (premium * 0.5) - Math.max(0, p - strike3) + Math.max(0, p - strike1),
-        payoffExplanation: "Maximum profit occurs when the stock price stays below the short call strike at expiration. Maximum loss occurs when stock rises above the long call strike.",
+        payoffPresetId: 'bear_call_spread',
+        payoffExplanation: "Legs are pre-filled with a real short call (~30 delta) and a further-OTM long call (~10 delta) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, occurring at or below the short call strike; maximum loss occurs at or above the long call strike.",
         relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         primaryArticleSlug: 'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling',
         detailComponent: BearCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
@@ -212,9 +190,8 @@ export const strategies: Strategy[] = [
         profile: 'Unlimited Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
-            (premium * 2) - Math.abs(p - strike1),
-        payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at expiration. Losses increase as price moves away from the strike in either direction.",
+        payoffPresetId: 'short_straddle',
+        payoffExplanation: "Legs are pre-filled with a real ATM call and put (same strike) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, earned right at the strike; losses grow without limit as the stock moves away in either direction.",
         relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         primaryArticleSlug: 'mastering-short-volatility-straddles-strangles-systematic-premium-collection',
         detailComponent: ShortStraddleStrategyDetail as ComponentType<StrategyDetailProps>
@@ -227,9 +204,8 @@ export const strategies: Strategy[] = [
         profile: 'Unlimited Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike2, strike3, premium }) => 
-            (premium * 1.5) - Math.max(0, p - strike2) - Math.max(0, strike3 - p),
-        payoffExplanation: "Maximum profit occurs when the stock price stays between the put and call strikes at expiration. Losses increase as price moves beyond either strike.",
+        payoffPresetId: 'short_strangle',
+        payoffExplanation: "Legs are pre-filled with a real ~16-delta short call and short put from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, earned when the stock stays between the two strikes; losses grow without limit beyond either strike.",
         relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         primaryArticleSlug: 'mastering-short-volatility-straddles-strangles-systematic-premium-collection',
         detailComponent: ShortStrangleStrategyDetail as ComponentType<StrategyDetailProps>
@@ -242,9 +218,10 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        // No payoffCalculator: the diagram below is fully interactive, built from a real SPX
-        // option chain rather than an illustrative formula — see iron-condor-builder.tsx.
-        customPayoffBuilder: IronCondorBuilder,
+        // No payoffCalculator: the diagram below is the generic interactive SpxPayoffBuilder,
+        // locked to the 'iron_condor' preset (src/lib/options/presets.ts) — real chain data,
+        // not an illustrative formula.
+        payoffPresetId: 'iron_condor',
         payoffExplanation: "Legs are pre-filled with realistic ~16-20 delta strikes from a real SPX option chain (sophie-option-research, historical). Change the expiration or any leg to see the payoff update live. Maximum profit is the net credit collected, earned when the stock stays between the short strikes at expiration; losses grow beyond either short strike and are capped once price passes the long (protective) strikes.",
         relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         primaryArticleSlug: 'iron-condor-quantitative-delta-neutral-premium-harvesting',
@@ -258,9 +235,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Unlimited Profit',
         volatility: 'Benefits from rising IV (Long Vega)',
         time: 'Hurt by time decay (Short Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
-            Math.max(0, p - strike1) + Math.max(0, strike1 - p) - (premium * 2),
-        payoffExplanation: "Maximum profit occurs when the stock price moves significantly away from the strike price in either direction. Maximum loss occurs when stock price equals the strike price at expiration.",
+        payoffPresetId: 'long_straddle',
+        payoffExplanation: "Legs are pre-filled with a real ATM call and put (same strike) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum loss is the combined premium paid, occurring right at the strike; profit is unlimited as the stock moves away in either direction, once past breakeven.",
         relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         primaryArticleSlug: 'mastering-volatility-definitive-guide-long-straddles-strangles',
         detailComponent: LongStraddleStrategyDetail as ComponentType<StrategyDetailProps>
@@ -273,9 +249,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Unlimited Profit',
         volatility: 'Benefits from rising IV (Long Vega)',
         time: 'Hurt by time decay (Short Theta)',
-        payoffCalculator: (p, { strike2, strike3, premium }) => 
-            Math.max(0, p - strike2) + Math.max(0, strike3 - p) - (premium * 1.5),
-        payoffExplanation: "Maximum profit occurs when the stock price moves significantly beyond either the call or put strike. Maximum loss occurs when stock price stays between the two strikes at expiration.",
+        payoffPresetId: 'long_strangle',
+        payoffExplanation: "Legs are pre-filled with a real ~30-delta call and put from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum loss is the combined premium paid, occurring anywhere between the two strikes; profit is unlimited beyond either strike, once past breakeven.",
         relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         primaryArticleSlug: 'mastering-volatility-definitive-guide-long-straddles-strangles',
         detailComponent: LongStrangleStrategyDetail as ComponentType<StrategyDetailProps>
@@ -308,9 +283,9 @@ export const strategies: Strategy[] = [
         profile: 'Substantial Risk, Premium Income',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, premium }) => 
-            (p >= strike1 ? premium : premium + (p - strike1)),
-        payoffExplanation: "LEAPS put selling generates premium income upfront. If assigned, you acquire the stock at the strike price minus premium received.",
+        payoffPresetId: 'short_put',
+        payoffExpirationTargetDte: 365, // LEAPS framing — far-dated expiration, not the 45 DTE default
+        payoffExplanation: "Legs are pre-filled with a real ~30-delta short put from the current SPX chain, defaulted to a ~1-year expiration for the LEAPS framing. Change the expiration or strike to see the payoff update live. LEAPS put selling generates premium income upfront; if assigned, you acquire the stock at the strike price minus premium received.",
         relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage"],
         primaryArticleSlug: 'selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage',
         detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
@@ -394,31 +369,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Mixed impact - benefits near middle strike',
-        payoffCalculator: (p, { strike1, strike2, strike3, premium }) => {
-            // Long Call Butterfly with strike mapping from explorer:
-            // strike3 = 95 (lower), strike1 = 100 (middle/ATM), strike2 = 105 (upper)
-            const lowerStrike = strike3;  // 95
-            const middleStrike = strike1; // 100 - PEAK HERE
-            const upperStrike = strike2;  // 105
-            
-            const wingWidth = middleStrike - lowerStrike; // 5
-            const netDebit = wingWidth * 0.3; // Net debit paid
-            const maxProfit = wingWidth - netDebit; // Max profit at middleStrike (100)
-            
-            // Create symmetric tent with sharp peak at middleStrike (100)
-            if (p <= lowerStrike) {
-                return -netDebit;
-            } else if (p <= middleStrike) {
-                // Ascending: slope = +1
-                return (p - lowerStrike) - netDebit;
-            } else if (p <= upperStrike) {
-                // Descending: slope = -1 (symmetric)
-                return maxProfit - (p - middleStrike);
-            } else {
-                return -netDebit;
-            }
-        },
-        payoffExplanation: "Maximum profit occurs when the stock price equals the middle strike at expiration. Maximum loss is limited to the net debit paid. The payoff diagram resembles a butterfly's wings.",
+        payoffPresetId: 'call_butterfly',
+        payoffExplanation: "Legs are pre-filled with a real equal-width call butterfly (long lower wing, short 2x middle, long upper wing) from the current SPX chain. Change the expiration or any strike to see the payoff update live. Maximum profit occurs at the middle strike; maximum loss is the net debit paid, capped once price passes either wing.",
         relatedArticles: ["unlocking-volatility-surface-risk-neutral-densities-butterfly-spread"],
         primaryArticleSlug: 'unlocking-volatility-surface-risk-neutral-densities-butterfly-spread',
         detailComponent: ButterflySpreadStrategyDetail as ComponentType<StrategyDetailProps>
@@ -431,9 +383,8 @@ export const strategies: Strategy[] = [
         profile: 'Substantial Risk, Capped Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { strike1, strike2, strike3, premium }) =>
-            Math.max(0, p - strike1) - Math.max(0, p - strike2) - Math.max(0, strike3 - p) - premium,
-        payoffExplanation: "Maximum profit occurs when the stock price rises to the short call strike. Loss occurs below the short put strike. Profit is capped at the spread between the two call strikes.",
+        payoffPresetId: 'seagull_spread',
+        payoffExplanation: "Legs are pre-filled with a real long call spread (0.40/0.20 delta) financed by a short put (0.20 delta) from the current SPX chain — checked against real data to actually be close to zero-cost. Change the expiration or any strike to see the payoff update live. Profit is capped at the call spread's width; loss grows below the short put strike (naked, not protected by a long put).",
         relatedArticles: ["seagull-spread-options-strategy-architecture"],
         primaryArticleSlug: 'seagull-spread-options-strategy-architecture',
         detailComponent: SeagullSpreadStrategyDetail as ComponentType<StrategyDetailProps>
