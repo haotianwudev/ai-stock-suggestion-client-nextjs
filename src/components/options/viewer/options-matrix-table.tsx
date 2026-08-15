@@ -3,15 +3,16 @@
 import React, { useState, useMemo } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  SlidersHorizontal, 
-  Layers, 
-  ArrowUpDown, 
-  Eye, 
+import {
+  SlidersHorizontal,
+  Layers,
+  ArrowUpDown,
+  Eye,
   Check,
   Percent,
   Activity
 } from 'lucide-react';
+import { computeLiquidity, LiquidityTier } from '@/lib/options/liquidity';
 
 export interface OptionContractData {
   strike: number;
@@ -40,7 +41,18 @@ interface OptionsMatrixTableProps {
   dte: number;
 }
 
-type ColumnMode = 'standard' | 'greeks' | 'full';
+type ColumnMode = 'standard' | 'greeks' | 'full' | 'liquidity';
+
+const TIER_STYLE: Record<LiquidityTier, string> = {
+  excellent: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+  good: 'bg-blue-100 text-blue-800 border-blue-300',
+  fair: 'bg-amber-100 text-amber-800 border-amber-300',
+  poor: 'bg-rose-100 text-rose-800 border-rose-300',
+  unknown: 'bg-slate-100 text-slate-500 border-slate-300',
+};
+const TIER_LABEL: Record<LiquidityTier, string> = {
+  excellent: 'Excellent', good: 'Good', fair: 'Fair', poor: 'Poor', unknown: '—',
+};
 type MoneynessFilter = 'all' | 'itm' | 'otm';
 type StrikeRange = 10 | 20 | 50 | 'all';
 
@@ -168,6 +180,14 @@ export function OptionsMatrixTable({
             >
               Full Matrix
             </button>
+            <button
+              onClick={() => setColumnMode('liquidity')}
+              className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+                columnMode === 'liquidity' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Liquidity
+            </button>
           </div>
 
           <div className="h-4 w-px bg-slate-300 hidden sm:block" />
@@ -208,13 +228,13 @@ export function OptionsMatrixTable({
           {/* Main Top Header */}
           <thead className="sticky top-0 z-20 bg-slate-900 text-white shadow-sm text-center">
             <tr>
-              <th colSpan={columnMode === 'standard' ? 5 : columnMode === 'greeks' ? 6 : 9} className="py-2 px-3 text-center border-r border-slate-700 bg-blue-950/80 uppercase font-bold text-[11px] tracking-wider text-blue-200">
+              <th colSpan={columnMode === 'standard' ? 5 : columnMode === 'greeks' ? 6 : columnMode === 'liquidity' ? 7 : 9} className="py-2 px-3 text-center border-r border-slate-700 bg-blue-950/80 uppercase font-bold text-[11px] tracking-wider text-blue-200">
                 Calls
               </th>
               <th className="py-2 px-4 bg-slate-950 text-amber-300 font-bold uppercase text-[11px] tracking-wider border-x border-slate-700 w-28">
                 Strike
               </th>
-              <th colSpan={columnMode === 'standard' ? 5 : columnMode === 'greeks' ? 6 : 9} className="py-2 px-3 text-center border-l border-slate-700 bg-purple-950/80 uppercase font-bold text-[11px] tracking-wider text-purple-200">
+              <th colSpan={columnMode === 'standard' ? 5 : columnMode === 'greeks' ? 6 : columnMode === 'liquidity' ? 7 : 9} className="py-2 px-3 text-center border-l border-slate-700 bg-purple-950/80 uppercase font-bold text-[11px] tracking-wider text-purple-200">
                 Puts
               </th>
             </tr>
@@ -230,7 +250,9 @@ export function OptionsMatrixTable({
               {columnMode === 'full' && <th className="py-1.5 px-2 text-right text-blue-300">Vega</th>}
               <th className="py-1.5 px-2 text-right">Bid</th>
               <th className="py-1.5 px-2 text-right">Ask</th>
-              <th className="py-1.5 px-2 text-right font-bold text-white border-r border-slate-700">Mid</th>
+              <th className={`py-1.5 px-2 text-right font-bold text-white ${columnMode !== 'liquidity' ? 'border-r border-slate-700' : ''}`}>Mid</th>
+              {columnMode === 'liquidity' && <th className="py-1.5 px-2 text-right text-cyan-300">Spread %</th>}
+              {columnMode === 'liquidity' && <th className="py-1.5 px-2 text-right border-r border-slate-700">Liquidity</th>}
 
               {/* Center Strike Column */}
               <th className="py-1.5 px-3 text-center bg-slate-850 font-bold text-amber-300 border-x border-slate-700">
@@ -238,7 +260,9 @@ export function OptionsMatrixTable({
               </th>
 
               {/* Put Columns */}
-              <th className="py-1.5 px-2 text-left font-bold text-white border-l border-slate-700">Mid</th>
+              {columnMode === 'liquidity' && <th className="py-1.5 px-2 text-left border-l border-slate-700">Liquidity</th>}
+              {columnMode === 'liquidity' && <th className="py-1.5 px-2 text-left text-cyan-300">Spread %</th>}
+              <th className={`py-1.5 px-2 text-left font-bold text-white ${columnMode !== 'liquidity' ? 'border-l border-slate-700' : ''}`}>Mid</th>
               <th className="py-1.5 px-2 text-left">Bid</th>
               <th className="py-1.5 px-2 text-left">Ask</th>
               {columnMode === 'full' && <th className="py-1.5 px-2 text-left text-purple-300">IV</th>}
@@ -258,6 +282,8 @@ export function OptionsMatrixTable({
               const isHovered = hoveredStrike === row.strike;
               const call = row.call;
               const put = row.put;
+              const callLiq = columnMode === 'liquidity' ? computeLiquidity(call?.bid, call?.ask, call?.midPrice, call?.volume, call?.openInterest) : null;
+              const putLiq = columnMode === 'liquidity' ? computeLiquidity(put?.bid, put?.ask, put?.midPrice, put?.volume, put?.openInterest) : null;
 
               return (
                 <tr
@@ -306,9 +332,23 @@ export function OptionsMatrixTable({
                   <td className={`py-1.5 px-2 text-right text-slate-600 ${row.isCallITM ? 'bg-emerald-50/70' : ''}`}>
                     {fmtNum(call?.ask)}
                   </td>
-                  <td className={`py-1.5 px-2 text-right font-bold text-slate-900 border-r border-slate-300 ${row.isCallITM ? 'bg-emerald-100/80 text-emerald-900' : 'bg-slate-50/50'}`}>
+                  <td className={`py-1.5 px-2 text-right font-bold text-slate-900 ${columnMode !== 'liquidity' ? 'border-r border-slate-300' : ''} ${row.isCallITM ? 'bg-emerald-100/80 text-emerald-900' : 'bg-slate-50/50'}`}>
                     {fmtNum(call?.midPrice)}
                   </td>
+                  {columnMode === 'liquidity' && (
+                    <td className={`py-1.5 px-2 text-right text-cyan-700 ${row.isCallITM ? 'bg-emerald-50/70' : ''}`}>
+                      {callLiq?.spreadPct != null ? `${(callLiq.spreadPct * 100).toFixed(1)}%` : '—'}
+                    </td>
+                  )}
+                  {columnMode === 'liquidity' && (
+                    <td className={`py-1.5 px-2 text-right border-r border-slate-300 ${row.isCallITM ? 'bg-emerald-50/70' : ''}`}>
+                      {callLiq && callLiq.tier !== 'unknown' ? (
+                        <span className={`inline-block px-1.5 py-0.5 rounded border text-[10px] font-semibold ${TIER_STYLE[callLiq.tier]}`}>
+                          {TIER_LABEL[callLiq.tier]}
+                        </span>
+                      ) : '—'}
+                    </td>
+                  )}
 
                   {/* ================= CENTER STRIKE PIN ================= */}
                   <td className={`py-1.5 px-3 text-center font-bold border-x border-slate-300 tracking-tight ${
@@ -329,7 +369,21 @@ export function OptionsMatrixTable({
                   </td>
 
                   {/* ================= PUT SIDE ================= */}
-                  <td className={`py-1.5 px-2 text-left font-bold text-slate-900 border-l border-slate-300 ${row.isPutITM ? 'bg-purple-100/80 text-purple-900' : 'bg-slate-50/50'}`}>
+                  {columnMode === 'liquidity' && (
+                    <td className={`py-1.5 px-2 text-left border-l border-slate-300 ${row.isPutITM ? 'bg-purple-50/70' : ''}`}>
+                      {putLiq && putLiq.tier !== 'unknown' ? (
+                        <span className={`inline-block px-1.5 py-0.5 rounded border text-[10px] font-semibold ${TIER_STYLE[putLiq.tier]}`}>
+                          {TIER_LABEL[putLiq.tier]}
+                        </span>
+                      ) : '—'}
+                    </td>
+                  )}
+                  {columnMode === 'liquidity' && (
+                    <td className={`py-1.5 px-2 text-left text-cyan-700 ${row.isPutITM ? 'bg-purple-50/70' : ''}`}>
+                      {putLiq?.spreadPct != null ? `${(putLiq.spreadPct * 100).toFixed(1)}%` : '—'}
+                    </td>
+                  )}
+                  <td className={`py-1.5 px-2 text-left font-bold text-slate-900 ${columnMode !== 'liquidity' ? 'border-l border-slate-300' : ''} ${row.isPutITM ? 'bg-purple-100/80 text-purple-900' : 'bg-slate-50/50'}`}>
                     {fmtNum(put?.midPrice)}
                   </td>
                   <td className={`py-1.5 px-2 text-left text-slate-600 ${row.isPutITM ? 'bg-purple-50/70' : ''}`}>

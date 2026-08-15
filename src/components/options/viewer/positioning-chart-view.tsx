@@ -19,7 +19,8 @@ import {
   AreaChart
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
-import { BarChart3, Target, Shield, Flame, Scale, Layers, Info } from 'lucide-react';
+import { BarChart3, Target, Shield, Flame, Scale, Layers, Info, Droplets } from 'lucide-react';
+import { computeLiquidity } from '@/lib/options/liquidity';
 
 interface PositioningChartViewProps {
   calls: OptionContractData[];
@@ -30,7 +31,7 @@ interface PositioningChartViewProps {
   dte: number;
 }
 
-type PositioningSubView = 'oi' | 'volume' | 'maxPainCurve' | 'cumulativeOI';
+type PositioningSubView = 'oi' | 'volume' | 'maxPainCurve' | 'cumulativeOI' | 'liquidity';
 
 export function PositioningChartView({
   calls,
@@ -48,9 +49,11 @@ export function PositioningChartView({
   const hasOpenInterest = calls.some(c => c.openInterest != null) || puts.some(p => p.openInterest != null);
 
   // Build strike-by-strike datasets
-  const { chartData, maxPainCurveData, cumulativeOIData, callWall, putWall, totalCallOI, totalPutOI, totalCallVol, totalPutVol } = useMemo(() => {
+  const { chartData, maxPainCurveData, cumulativeOIData, liquidityData, callWall, putWall, totalCallOI, totalPutOI, totalCallVol, totalPutVol } = useMemo(() => {
     const callMap = new Map<number, { oi: number; vol: number }>();
     const putMap = new Map<number, { oi: number; vol: number }>();
+    const callRawMap = new Map<number, OptionContractData>();
+    const putRawMap = new Map<number, OptionContractData>();
     const strikes = new Set<number>();
 
     let totalCOI = 0;
@@ -67,6 +70,7 @@ export function PositioningChartView({
       const oi = c.openInterest || 0;
       const vol = c.volume || 0;
       callMap.set(c.strike, { oi, vol });
+      callRawMap.set(c.strike, c);
       strikes.add(c.strike);
       totalCOI += oi;
       totalCVol += vol;
@@ -81,6 +85,7 @@ export function PositioningChartView({
       const oi = p.openInterest || 0;
       const vol = p.volume || 0;
       putMap.set(p.strike, { oi, vol });
+      putRawMap.set(p.strike, p);
       strikes.add(p.strike);
       totalPOI += oi;
       totalPVol += vol;
@@ -158,10 +163,28 @@ export function PositioningChartView({
       };
     });
 
+    // 4. Liquidity: composite score (spread + volume + OI) per strike, both sides — see
+    // lib/options/liquidity.ts for why spread gates rather than just averages into the score.
+    const liquidity = filteredStrikes.map(strike => {
+      const c = callRawMap.get(strike);
+      const p = putRawMap.get(strike);
+      const cLiq = computeLiquidity(c?.bid, c?.ask, c?.midPrice, c?.volume, c?.openInterest);
+      const pLiq = computeLiquidity(p?.bid, p?.ask, p?.midPrice, p?.volume, p?.openInterest);
+      return {
+        strike,
+        strikeLabel: `$${strike}`,
+        callScore: cLiq.score ?? 0,
+        putScore: pLiq.score ?? 0,
+        callSpreadPct: cLiq.spreadPct != null ? Number((cLiq.spreadPct * 100).toFixed(2)) : null,
+        putSpreadPct: pLiq.spreadPct != null ? Number((pLiq.spreadPct * 100).toFixed(2)) : null,
+      };
+    });
+
     return {
       chartData: rows,
       maxPainCurveData: painCurve,
       cumulativeOIData: cumOIData,
+      liquidityData: liquidity,
       callWall: maxCOI > 0 ? cWallRaw : null,
       putWall: maxPOI > 0 ? pWallRaw : null,
       totalCallOI: totalCOI,
@@ -268,12 +291,14 @@ export function PositioningChartView({
               {subView === 'volume' && 'Trading Volume Distribution by Strike'}
               {subView === 'maxPainCurve' && 'Max Pain Cumulative Payout Loss Curve ($M)'}
               {subView === 'cumulativeOI' && 'Cumulative Open Interest Curve (Calls vs Puts)'}
+              {subView === 'liquidity' && 'Liquidity Score by Strike (0-100)'}
             </CardTitle>
             <CardDescription className="text-xs text-slate-500 mt-0.5">
               {subView === 'oi' && `${expiration} (${dte} DTE) — Open contracts resting at each strike`}
               {subView === 'volume' && `${expiration} (${dte} DTE) — Day's traded volume across strikes`}
               {subView === 'maxPainCurve' && `Total dollar amount option sellers must pay out if SPX settles at each strike`}
               {subView === 'cumulativeOI' && `Running sum of open contracts accumulating across the strike spectrum`}
+              {subView === 'liquidity' && `Composite of bid-ask spread, volume, and open interest — higher means easier to get filled near mid`}
             </CardDescription>
           </div>
 
@@ -310,12 +335,20 @@ export function PositioningChartView({
             >
               Cumulative OI
             </button>
+            <button
+              onClick={() => setSubView('liquidity')}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                subView === 'liquidity' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Liquidity
+            </button>
           </div>
         </CardHeader>
 
         <CardContent className="p-4">
           <div className="h-[400px] w-full">
-            {!hasOpenInterest && subView !== 'volume' ? (
+            {!hasOpenInterest && subView !== 'volume' && subView !== 'liquidity' ? (
               <div className="h-full flex flex-col items-center justify-center text-center gap-2">
                 <Info className="h-6 w-6 text-slate-400" />
                 <p className="text-sm font-semibold text-slate-700">Open interest data not available</p>
@@ -528,6 +561,43 @@ export function PositioningChartView({
                     strokeWidth={2.5} 
                   />
                 </AreaChart>
+              </ResponsiveContainer>
+            )}
+
+            {/* VIEW 5: LIQUIDITY */}
+            {subView === 'liquidity' && (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={liquidityData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis
+                    dataKey="strike"
+                    tickFormatter={(val) => `$${val}`}
+                    stroke="#64748b"
+                    fontSize={11}
+                  />
+                  <YAxis
+                    stroke="#64748b"
+                    fontSize={11}
+                    domain={[0, 100]}
+                  />
+                  <Tooltip
+                    formatter={(value: number, name: string) => [
+                      `${value} / 100`,
+                      name === 'callScore' ? 'Call Liquidity' : 'Put Liquidity'
+                    ]}
+                    labelFormatter={(label) => `Strike: $${label}`}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                  />
+                  <Legend verticalAlign="top" height={36} />
+                  <ReferenceLine
+                    x={spotPrice}
+                    stroke="#f59e0b"
+                    strokeDasharray="4 4"
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                  />
+                  <Bar dataKey="callScore" name="Call Liquidity" fill="#3b82f6" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="putScore" name="Put Liquidity" fill="#f43f5e" radius={[2, 2, 0, 0]} />
+                </BarChart>
               </ResponsiveContainer>
             )}
               </>
