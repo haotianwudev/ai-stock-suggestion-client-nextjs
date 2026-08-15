@@ -117,9 +117,8 @@ export const strategies: Strategy[] = [
         profile: 'Stock Risk, Limited Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p, { stockPrice, strike1, premium }) => 
-            (p >= strike1 ? (strike1 - stockPrice + premium) : (p - stockPrice + premium)),
-        payoffExplanation: "Maximum profit occurs when stock price equals or exceeds the call strike at expiration. Profit is capped at strike price plus premium received.",
+        payoffPresetId: 'covered_call',
+        payoffExplanation: "Legs are pre-filled with a synthetic long index position plus a real ~30-delta short call from the current SPX chain (SPX is cash-settled with no deliverable shares, so this is illustrative, same as every other diagram on this page — but now priced against real chain data). Change the expiration or the call strike to see the payoff update live. Maximum profit occurs when the price is at or above the call strike, capped at strike minus entry price plus premium received; loss is uncapped on the downside (offset by the premium collected), same as owning the stock outright.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'covered-calls-vs-cash-secured-puts',
         detailComponent: CoveredCallStrategyDetail as ComponentType<StrategyDetailProps>
@@ -263,14 +262,8 @@ export const strategies: Strategy[] = [
         profile: 'Stock Risk, Triple Income',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        payoffCalculator: (p) => {
-            const putPremium = 2.0, callPremium = 1.5, stockBuyPrice = 97, callStrike = 105;
-            const totalPremium = putPremium + callPremium;
-            if (p <= stockBuyPrice) return totalPremium + (p - stockBuyPrice);
-            else if (p <= callStrike) return totalPremium + (p - stockBuyPrice);
-            else return totalPremium + (callStrike - stockBuyPrice);
-        },
-        payoffExplanation: "According to put-call parity C + X = P + S, the payoff of wheel is the same as call writing or put writing",
+        payoffPresetId: 'covered_call',
+        payoffExplanation: "The wheel cycles between two phases — selling a cash-secured put (see Put Writing's diagram) until assigned, then selling covered calls against the acquired shares. This diagram shows the covered-call phase: legs are pre-filled with a synthetic long index position plus a real ~30-delta short call from the current SPX chain. By put-call parity (C + X = P + S), a covered call's payoff shape is mathematically identical to a naked short put, which is why the wheel's two phases have the same-shaped risk profile despite looking structurally different.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'options-wheel-trading-plan-quantitative-approach',
         detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
@@ -298,10 +291,8 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Mixed impact (Long Put Vega, Short Call Vega)',
         time: 'Mixed impact (Short Put Theta, Long Call Theta)',
-        payoffCalculator: (p, { stockPrice, strike2, strike3 }) => {            
-            return p - stockPrice + Math.max(strike3 - p, 0) + -Math.max(p - strike2, 0);
-        },
-        payoffExplanation: "The collar creates a defined range of outcomes. Maximum loss occurs if stock falls to put strike, maximum profit if stock rises to call strike.",
+        payoffPresetId: 'collar',
+        payoffExplanation: "Legs are pre-filled with a synthetic long index position, a real ~20-delta protective put, and a real ~20-delta short call from the current SPX chain. Change the expiration or either strike to see the payoff update live. The collar creates a defined range of outcomes: maximum loss occurs at or below the put strike, maximum profit at or above the call strike.",
         relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "structured-liquidity-hedging-equity-collars-pvsf", "advanced-options-collar-strategies-structural-mechanics-tradeoffs"],
         primaryArticleSlug: 'option-collar-strategy-protect-gains-define-risk',
         detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
@@ -314,17 +305,8 @@ export const strategies: Strategy[] = [
         profile: 'Buffered Risk, Defined Profit',
         volatility: 'Mixed impact (Long Put Vega, Short Call/Put Vega)',
         time: 'Mixed impact (Long Put Theta, Short Call/Put Theta)',
-        payoffCalculator: (p, { stockPrice, strike1, strike2, strike3 }) => {
-            // Buffered Strategy: Long Stock + Long Put (strike1) + Short Put (strike3) + Short Call (strike2)
-            // stockPrice = initial stock price, strike1 = protective put, strike2 = short call (cap), strike3 = short put (buffer limit)
-            const stockPnL = p - stockPrice;
-            const longPutPnL = Math.max(0, strike1 - p);
-            const shortPutPnL = -Math.max(0, strike3 - p);
-            const shortCallPnL = -Math.max(0, p - strike2);
-            
-            return stockPnL + longPutPnL + shortPutPnL + shortCallPnL;
-        },
-        payoffExplanation: "The strategy creates a defined range of outcomes. Maximum loss occurs if stock falls below the buffer limit (short put strike), maximum profit if stock rises to the cap (short call strike).",
+        payoffPresetId: 'buffered',
+        payoffExplanation: "Legs are pre-filled with a synthetic long index position, a real ~35-delta protective put, a real ~10-delta short put (defining where the buffer ends), and a real ~20-delta short call (the cap) from the current SPX chain. Change the expiration or any strike to see the payoff update live. The strategy creates a defined range of outcomes: the put spread absorbs losses down to the short put's strike (the 'buffer'), below which loss resumes uncapped; maximum profit occurs at or above the short call's strike.",
         relatedArticles: ["mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
         primaryArticleSlug: 'mastering-buffered-yield-strategies-defined-outcome-investing',
         detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>

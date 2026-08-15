@@ -12,9 +12,11 @@ import { resolveStrategyMedia } from '@/lib/article-utils';
 const DEFAULT_DEMO_PARAMS = { stockPrice: 100, strike1: 100, strike2: 105, strike3: 95, strike4: 90, premium: 2.5 };
 
 const PayoffChart = ({ strategy }: { strategy: Strategy }) => {
-    // Only the handful of strategies without a payoffPresetId reach this static illustration
-    // (covered_call, wheel_strategy, collar_strategy, buffered_strategy, calendar_spread — all
-    // need either a stock leg or multi-expiry pricing the interactive builder doesn't support).
+    // Only calendar_spread still reaches this static illustration — it needs multi-expiry pricing
+    // (different IV per leg, different expirations) the interactive builder doesn't support. Every
+    // other strategy either has a payoffPresetId directly, or (covered_call, wheel_strategy,
+    // collar_strategy, buffered_strategy) uses a synthetic stock leg alongside real chain-priced
+    // options — see payoff.ts's OptionLegType comment for why a stock leg is synthetic for SPX.
     const demo = { ...DEFAULT_DEMO_PARAMS, ...strategy.payoffDemoParams };
     const labels = Array.from({ length: 41 }, (_, i) => demo.stockPrice - 20 + i);
     const payoffData = labels.map(p => strategy.payoffCalculator!(p, demo));

@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from 'react';
-import { RefreshCw } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { RefreshCw, ChevronDown } from 'lucide-react';
 import { PayoffChartView } from './payoff-chart-view';
 import { OptionChainSnapshot, ExpirationChain, ChainContract } from '@/lib/options/chain-types';
 import { OptionLeg, legsPnL, netPremium, findBreakevens } from '@/lib/options/payoff';
@@ -60,6 +60,11 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     const [legs, setLegs] = useState<EditableLeg[]>([]);
     const [ratePct, setRatePct] = useState(SPX_DEFAULT_RATE * 100);
     const [divYieldPct, setDivYieldPct] = useState(SPX_DEFAULT_DIV_YIELD * 100);
+    // True once the user hand-edits a leg (side/qty/type/strike/premium, add, or remove) — while
+    // dirty, switching expiration or data source remaps existing legs onto the new chain instead
+    // of discarding them via a full preset rebuild. Switching preset always rebuilds and clears it.
+    const [dirty, setDirty] = useState(false);
+    const [addMenuOpen, setAddMenuOpen] = useState(false);
 
     const loadSource = (next: Source, forceRefresh: boolean = false) => {
         setSource(next);
@@ -84,24 +89,56 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     }, [snapshot, expiration]);
 
     const preset = STRATEGY_PRESETS.find(p => p.id === presetId)!;
+    const prevPresetIdRef = useRef(presetId);
 
-    // Rebuild legs from the preset whenever the preset or the underlying chain (expiration or
-    // data source) changes. Manual per-leg edits below don't fight this — they only apply between
-    // rebuilds.
+    // Rebuild legs from the preset whenever the preset changes (always) or the chain changes
+    // (expiration/source) while the user hasn't hand-edited anything yet. Once dirty, a chain
+    // change instead remaps each existing leg onto the new chain (nearest strike, refreshed
+    // premium) so manual edits survive switching expiration — only switching preset discards them,
+    // since that's an explicit "start over" action.
     useEffect(() => {
         if (!chain || !snapshot) return;
-        setLegs(withIds(buildPresetLegs(chain, preset, snapshot.underlyingPrice)));
+        const presetChanged = prevPresetIdRef.current !== presetId;
+        prevPresetIdRef.current = presetId;
+
+        if (presetChanged || !dirty) {
+            setLegs(withIds(buildPresetLegs(chain, preset, snapshot.underlyingPrice)));
+            setDirty(false);
+            return;
+        }
+
+        setLegs(prev => prev.map(leg => {
+            if (leg.type === 'stock') return leg; // entry price is fixed at when it was "bought", not remapped to the new snapshot's spot
+            const nearest = nearestByStrike(contractsFor(chain, leg.type), leg.strike);
+            return { ...leg, strike: nearest.strike, premium: nearest.mid };
+        }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [chain, presetId]);
 
+    const resetToPreset = () => {
+        if (!chain || !snapshot) return;
+        setLegs(withIds(buildPresetLegs(chain, preset, snapshot.underlyingPrice)));
+        setDirty(false);
+    };
+
     const updateLeg = (id: number, patch: Partial<OptionLeg>) => {
+        setDirty(true);
         setLegs(prev => prev.map(l => l._id === id ? { ...l, ...patch } : l));
     };
-    const removeLeg = (id: number) => setLegs(prev => prev.filter(l => l._id !== id));
-    const addLeg = () => {
+    const removeLeg = (id: number) => {
+        setDirty(true);
+        setLegs(prev => prev.filter(l => l._id !== id));
+    };
+    const addLeg = (type: 'call' | 'put' | 'stock') => {
         if (!chain || !snapshot) return;
-        const c = nearestByStrike(chain.calls, snapshot.underlyingPrice);
-        setLegs(prev => [...prev, { _id: legIdCounter++, type: 'call', side: 'long', strike: c.strike, premium: c.mid }]);
+        setDirty(true);
+        setAddMenuOpen(false);
+        if (type === 'stock') {
+            setLegs(prev => [...prev, { _id: legIdCounter++, type: 'stock', side: 'long', strike: snapshot.underlyingPrice, premium: 0 }]);
+            return;
+        }
+        const c = nearestByStrike(contractsFor(chain, type), snapshot.underlyingPrice);
+        setLegs(prev => [...prev, { _id: legIdCounter++, type, side: 'long', strike: c.strike, premium: c.mid }]);
     };
 
     const T = chain ? chain.dte / 365 : 0;
@@ -115,6 +152,7 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     const pricedLegs: PricedLeg[] = useMemo(() => {
         if (!snapshot || !chain || T <= 0) return [];
         return legs.map(leg => {
+            if (leg.type === 'stock') return { ...leg, iv: 0 }; // no volatility concept for a stock leg
             const contract = contractsFor(chain, leg.type).find(c => c.strike === leg.strike);
             const premiumUnedited = contract && Math.abs(contract.mid - leg.premium) < 0.005;
             const iv = (premiumUnedited && contract.iv != null)
@@ -256,6 +294,15 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                 </div>
             </div>
 
+            {dirty && (
+                <div className="flex items-center justify-between text-xs bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                    <span className="text-amber-800">Legs have been hand-edited — they'll carry over if you change the expiration or source.</span>
+                    <button onClick={resetToPreset} className="font-medium text-amber-900 underline hover:no-underline flex-shrink-0 ml-3">
+                        Reset to preset
+                    </button>
+                </div>
+            )}
+
             {/* Leg table */}
             <div className="overflow-x-auto border border-gray-200 rounded-lg">
                 <table className="w-full text-sm">
@@ -273,7 +320,8 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                         {legs.map((leg, i) => {
-                            const contracts = contractsFor(chain, leg.type);
+                            const isStock = leg.type === 'stock';
+                            const contracts = leg.type === 'call' || leg.type === 'put' ? contractsFor(chain, leg.type) : [];
                             const selected = contracts.find(c => c.strike === leg.strike);
                             // pricedLegs is derived from legs via map(), same order/length, so index correlation is safe.
                             const priced = pricedLegs[i];
@@ -302,41 +350,62 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                                             className="border border-gray-300 rounded px-2 py-1 text-xs bg-white"
                                             value={leg.type}
                                             onChange={e => {
-                                                const type = e.target.value as 'call' | 'put';
+                                                const type = e.target.value as 'call' | 'put' | 'stock';
+                                                if (type === 'stock') {
+                                                    updateLeg(leg._id, { type, strike: snapshot.underlyingPrice, premium: 0 });
+                                                    return;
+                                                }
                                                 const c = nearestByStrike(contractsFor(chain, type), leg.strike);
                                                 updateLeg(leg._id, { type, strike: c.strike, premium: c.mid });
                                             }}
                                         >
                                             <option value="call">Call</option>
                                             <option value="put">Put</option>
+                                            <option value="stock">Stock</option>
                                         </select>
                                     </td>
                                     <td className="px-3 py-2">
-                                        <select
-                                            className="border border-gray-300 rounded px-2 py-1 text-xs bg-white"
-                                            value={leg.strike}
-                                            onChange={e => {
-                                                const c = contracts.find(c => c.strike === Number(e.target.value));
-                                                if (c) updateLeg(leg._id, { strike: c.strike, premium: c.mid });
-                                            }}
-                                        >
-                                            {contracts.map(c => (
-                                                <option key={c.strike} value={c.strike}>
-                                                    {c.strike} (Δ{Math.abs(c.delta).toFixed(2)}{c.iv != null ? `, IV ${(c.iv * 100).toFixed(1)}%` : ''}, mid ${c.mid.toFixed(2)})
-                                                </option>
-                                            ))}
-                                        </select>
+                                        {isStock ? (
+                                            <div className="flex items-center gap-1">
+                                                <span className="text-xs text-gray-400">Entry $</span>
+                                                <input
+                                                    type="number" step={0.01}
+                                                    className="w-20 border border-gray-300 rounded px-2 py-1 text-xs"
+                                                    value={leg.strike}
+                                                    onChange={e => updateLeg(leg._id, { strike: Number(e.target.value) || 0 })}
+                                                />
+                                            </div>
+                                        ) : (
+                                            <select
+                                                className="border border-gray-300 rounded px-2 py-1 text-xs bg-white"
+                                                value={leg.strike}
+                                                onChange={e => {
+                                                    const c = contracts.find(c => c.strike === Number(e.target.value));
+                                                    if (c) updateLeg(leg._id, { strike: c.strike, premium: c.mid });
+                                                }}
+                                            >
+                                                {contracts.map(c => (
+                                                    <option key={c.strike} value={c.strike}>
+                                                        {c.strike} (Δ{Math.abs(c.delta).toFixed(2)}{c.iv != null ? `, IV ${(c.iv * 100).toFixed(1)}%` : ''}, mid ${c.mid.toFixed(2)})
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        )}
                                     </td>
                                     <td className="px-3 py-2">
-                                        <input
-                                            type="number" step={0.01}
-                                            className="w-20 border border-gray-300 rounded px-2 py-1 text-xs"
-                                            value={leg.premium}
-                                            onChange={e => updateLeg(leg._id, { premium: Number(e.target.value) || 0 })}
-                                        />
+                                        {isStock ? (
+                                            <span className="text-xs text-gray-400">— (no premium)</span>
+                                        ) : (
+                                            <input
+                                                type="number" step={0.01}
+                                                className="w-20 border border-gray-300 rounded px-2 py-1 text-xs"
+                                                value={leg.premium}
+                                                onChange={e => updateLeg(leg._id, { premium: Number(e.target.value) || 0 })}
+                                            />
+                                        )}
                                     </td>
-                                    <td className="px-3 py-2 text-xs text-gray-600">{priced ? fmtPct(priced.iv) : '—'}</td>
-                                    <td className="px-3 py-2 text-xs text-gray-600">{selected ? Math.abs(selected.delta).toFixed(2) : '—'}</td>
+                                    <td className="px-3 py-2 text-xs text-gray-600">{isStock ? '—' : priced ? fmtPct(priced.iv) : '—'}</td>
+                                    <td className="px-3 py-2 text-xs text-gray-600">{isStock ? '1.00' : selected ? Math.abs(selected.delta).toFixed(2) : '—'}</td>
                                     <td className="px-3 py-2">
                                         <button onClick={() => removeLeg(leg._id)} className="text-xs text-red-600 hover:text-red-800" aria-label="Remove leg">✕</button>
                                     </td>
@@ -348,7 +417,21 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                         )}
                     </tbody>
                 </table>
-                <button onClick={addLeg} className="w-full text-xs font-medium text-blue-600 hover:bg-blue-50 py-2 border-t border-gray-200">+ Add leg</button>
+                <div className="relative border-t border-gray-200">
+                    <button
+                        onClick={() => setAddMenuOpen(v => !v)}
+                        className="w-full text-xs font-medium text-blue-600 hover:bg-blue-50 py-2 flex items-center justify-center gap-1"
+                    >
+                        + Add leg <ChevronDown className="h-3 w-3" />
+                    </button>
+                    {addMenuOpen && (
+                        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1 z-10 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden text-xs">
+                            <button onClick={() => addLeg('call')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-700">+ Call</button>
+                            <button onClick={() => addLeg('put')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-700 border-t border-gray-100">+ Put</button>
+                            <button onClick={() => addLeg('stock')} className="block w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-700 border-t border-gray-100">+ Stock</button>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {/* Assumptions */}
