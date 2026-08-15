@@ -1,4 +1,4 @@
-import { blackScholes, standardNormalCDF } from '@/lib/black-scholes';
+import { blackScholes, standardNormalCDF, inverseStandardNormalCDF } from '@/lib/black-scholes';
 import { OptionLeg } from './payoff';
 
 // SPX-specific constants. Multiplier is unambiguous for an index (100, no exceptions). The rate
@@ -125,4 +125,46 @@ export function probabilityOfProfit(
         }
     }
     return Math.min(1, Math.max(0, pop));
+}
+
+/**
+ * One-sided lognormal price quantile — the boundary a `confidence`-level two-sided interval would
+ * put on this side, for this side's own IV. impliedPriceRange (below) calls this with the same IV
+ * on both sides (a flat-vol model); a skew-aware caller can pass each side's own market IV
+ * instead — real equity-index skew means an OTM put trades at meaningfully higher IV than an OTM
+ * call, so a boundary built from each side's own IV comes out asymmetric, wider on the downside.
+ */
+export function impliedBoundaryPrice(S: number, T: number, r: number, q: number, iv: number, confidence: number, side: 'lower' | 'upper'): number {
+    if (T <= 0 || iv <= 0) return S;
+    const z = inverseStandardNormalCDF((1 + confidence) / 2);
+    const drift = (r - q - (iv * iv) / 2) * T;
+    const spread = iv * Math.sqrt(T) * z;
+    return S * Math.exp(drift + (side === 'upper' ? spread : -spread));
+}
+
+/**
+ * Two-sided implied price range at expiration for a given confidence level (e.g. 0.68, 0.80) —
+ * "there's a `confidence` chance the underlying settles between `lower` and `upper`". Same
+ * risk-neutral lognormal model and drift convention as probabilityOfProfit above, just inverted:
+ * instead of integrating probability over a fixed price range, this solves for the price range
+ * that encloses a fixed probability, via the confidence level's z-score. Flat: both sides share
+ * the position's one ATM IV — see impliedBoundaryPrice for the skew-aware, asymmetric version.
+ */
+export function impliedPriceRange(S: number, T: number, r: number, q: number, iv: number, confidence: number): { lower: number; upper: number } {
+    if (T <= 0 || iv <= 0) return { lower: S, upper: S };
+    return {
+        lower: impliedBoundaryPrice(S, T, r, q, iv, confidence, 'lower'),
+        upper: impliedBoundaryPrice(S, T, r, q, iv, confidence, 'upper'),
+    };
+}
+
+/** Risk-neutral lognormal probability density of the terminal price at `x`, for plotting the
+ * implied distribution curve — same model as impliedPriceRange/probabilityOfProfit, just the
+ * density instead of a quantile or a CDF integral. */
+export function lognormalDensity(x: number, S: number, T: number, r: number, q: number, iv: number): number {
+    if (T <= 0 || iv <= 0 || x <= 0) return 0;
+    const mu = Math.log(S) + (r - q - (iv * iv) / 2) * T;
+    const sigma = iv * Math.sqrt(T);
+    const z = (Math.log(x) - mu) / sigma;
+    return Math.exp(-0.5 * z * z) / (x * sigma * Math.sqrt(2 * Math.PI));
 }
