@@ -704,7 +704,7 @@ export function ArticleFrame({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-4">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             {currentArticle.options && (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
                 {t("articleFrame.optionsBadge")}
               </span>
             )}
@@ -714,7 +714,7 @@ export function ArticleFrame({
               .map((label) => (
                 <span
                   key={label}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800"
+                  className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800"
                 >
                   {label}
                 </span>
@@ -749,7 +749,7 @@ export function ArticleFrame({
                 <aside className="order-1 lg:order-2 lg:sticky lg:top-24 space-y-4">
                   <Link
                     href="/"
-                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     {t("articleFrame.returnToHome")}

@@ -148,7 +148,7 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
             <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
                 <button
                     onClick={onBack}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold font-mono text-slate-500 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors py-1.5 px-3 -ml-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800/60"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold font-mono text-slate-500 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors py-1.5 px-3 -ml-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/60"
                     aria-label="Back to all strategies"
                 >
                     <ArrowLeft className="h-3.5 w-3.5" />
@@ -159,7 +159,7 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
                     {strategy.category.map((cat) => (
                         <span
                             key={cat}
-                            className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-400 border border-gray-200 dark:border-gray-700"
+                            className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-400 border border-gray-200 dark:border-gray-700"
                         >
                             {cat}
                         </span>
@@ -184,7 +184,7 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
                     <aside className="order-1 lg:order-2 lg:sticky lg:top-24 space-y-4">
                         <button
                             onClick={onBack}
-                            className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-semibold text-sm shadow-xs transition-colors"
+                            className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-semibold text-sm shadow-xs transition-colors"
                         >
                             <ArrowLeft className="h-4 w-4" />
                             Back to all strategies

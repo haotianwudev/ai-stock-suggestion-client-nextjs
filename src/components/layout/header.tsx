@@ -70,7 +70,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 rounded-xl transition-colors whitespace-nowrap",
+                    "inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap",
                     isDonate
                       ? "text-[#BC4128] dark:text-[#E2694A] hover:bg-[#BC4128]/10 dark:hover:bg-[#E2694A]/15 font-semibold"
                       : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:bg-[#A8672E]/5 dark:hover:bg-[#D08F52]/10"
@@ -84,7 +84,7 @@ export function Header() {
             {isAdmin && (
               <Link
                 href="/admin"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] hover:bg-[#A8672E]/10 dark:hover:bg-[#D08F52]/15 px-2.5 py-1.5 rounded-xl transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] hover:bg-[#A8672E]/10 dark:hover:bg-[#D08F52]/15 px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap"
               >
                 <Crown className="h-3.5 w-3.5" />
                 {t("header.admin")}
@@ -110,12 +110,12 @@ export function Header() {
             <DropdownMenuTrigger asChild className="sm:hidden">
               <button
                 aria-label={t("header.openNavMenu")}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:text-[#A8672E] dark:hover:text-[#D08F52] shadow-xs transition-colors"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:text-[#A8672E] dark:hover:text-[#D08F52] shadow-xs transition-colors"
               >
                 <Menu className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 rounded-2xl border border-gray-200 dark:border-gray-800 bg-[#FDFBF7] dark:bg-[#14171B] p-1.5 shadow-lg">
+            <DropdownMenuContent align="end" className="w-56 rounded-xl border border-gray-200 dark:border-gray-800 bg-[#FDFBF7] dark:bg-[#14171B] p-1.5 shadow-lg">
               <div className="px-2 py-2 mb-1 sm:hidden">
                 <SearchBar />
               </div>
@@ -126,7 +126,7 @@ export function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "flex items-center gap-2 text-xs font-medium rounded-xl text-slate-700 dark:text-slate-300 hover:text-[#A8672E] dark:hover:text-[#D08F52]",
+                        "flex items-center gap-2 text-xs font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:text-[#A8672E] dark:hover:text-[#D08F52]",
                         isDonate && "text-[#BC4128] dark:text-[#E2694A] font-semibold"
                       )}
                     >
@@ -138,7 +138,7 @@ export function Header() {
               })}
               {isAdmin && (
                 <DropdownMenuItem asChild>
-                  <Link href="/admin" className="flex items-center gap-2 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] rounded-xl">
+                  <Link href="/admin" className="flex items-center gap-2 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] rounded-lg">
                     <Crown className="h-4 w-4" />
                     {t("header.admin")}
                   </Link>

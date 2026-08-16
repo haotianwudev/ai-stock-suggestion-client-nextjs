@@ -152,38 +152,38 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Quantitative Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-5 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+        <TabsList className="grid w-full grid-cols-5 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="systematic-strategies"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Systematic</span>
             <span className="hidden sm:block">Systematic</span>
           </TabsTrigger>
           <TabsTrigger 
             value="asset-allocation" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Portfolio</span>
             <span className="hidden sm:block">Portfolio</span>
           </TabsTrigger>
           <TabsTrigger 
             value="machine-learning" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">ML</span>
             <span className="hidden sm:block">Machine Learning</span>
           </TabsTrigger>
           <TabsTrigger 
             value="backtest" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Backtest</span>
             <span className="hidden sm:block">Backtesting</span>
           </TabsTrigger>
           <TabsTrigger
             value="trading-system"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">System</span>
             <span className="hidden sm:block">Trading System</span>

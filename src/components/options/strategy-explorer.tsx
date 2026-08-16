@@ -26,7 +26,7 @@ const FEATURED_BADGE = "bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:te
 function CategoryBadge({ category }: { category: string }) {
     if (category === 'Featured') {
         return (
-            <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${FEATURED_BADGE}`}>
+            <span className={`inline-flex items-center gap-1 text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md ${FEATURED_BADGE}`}>
                 <Star className="h-3 w-3" />
                 {category}
             </span>
@@ -34,7 +34,7 @@ function CategoryBadge({ category }: { category: string }) {
     }
     const classes = DIRECTIONAL_BADGE[category] ?? NEUTRAL_BADGE;
     return (
-        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${classes}`}>
+        <span className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md ${classes}`}>
             {category}
         </span>
     );
@@ -48,40 +48,40 @@ interface StrategyExplorerProps {
 
 export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack }: StrategyExplorerProps) => {
     const [filter, setFilter] = useState('Featured');
-    const [selectedId, setSelectedId] = useState<string | null>(null);
 
-    // Sync with URL parameter
     useEffect(() => {
         if (selectedStrategyId) {
-            const strategyId = slugToStrategyId(selectedStrategyId);
-            setSelectedId(strategyId);
-        } else {
-            setSelectedId(null);
+            const found = strategies.find(s => s.id === selectedStrategyId);
+            if (found) {
+                // If a strategy is explicitly passed in from an external tab/URL, show all or ensure it's visible
+                setFilter('All');
+            }
         }
     }, [selectedStrategyId]);
 
-    const filteredStrategies = filter === 'All' ? strategies : strategies.filter(s => s.category.includes(filter as any));
-    const selectedStrategy = selectedId ? strategies.find(s => s.id === selectedId) : null;
+    const filteredStrategies = strategies.filter(s => {
+        if (filter === 'All') return true;
+        if (filter === 'Featured') return s.category.includes('Featured');
+        if (filter === 'Bullish') return s.category.includes('Bullish');
+        if (filter === 'Bearish') return s.category.includes('Bearish');
+        if (filter === 'Neutral') return s.category.includes('Neutral');
+        if (filter === 'Volatility') return s.category.includes('Volatility');
+        if (filter === 'Income') return s.category.includes('Income');
+        if (filter === 'Risk Defined') return s.category.includes('Risk Defined');
+        return true;
+    });
 
     const handleStrategyClick = (strategyId: string) => {
         const slug = strategyIdToSlug(strategyId);
         if (onStrategySelect) {
             onStrategySelect(slug);
-        } else {
-            setSelectedId(strategyId);
         }
     };
 
-    const handleBack = () => {
-        if (onBack) {
-            onBack();
-        } else {
-            setSelectedId(null);
-        }
-    };
+    const selectedStrategy = selectedStrategyId ? strategies.find(s => s.id === selectedStrategyId) : undefined;
 
     if (selectedStrategy) {
-        return <StrategyDetailShell strategy={selectedStrategy} onBack={handleBack} />;
+        return <StrategyDetailShell strategy={selectedStrategy} onBack={onBack || (() => {})} />;
     }
 
     return (
@@ -94,7 +94,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                 </p>
             </div>
 
-            <div className="flex flex-wrap gap-2 p-3 md:p-4 bg-gray-50 dark:bg-gray-950 rounded-2xl border border-gray-200 dark:border-gray-800">
+            <div className="flex flex-wrap gap-2 p-2.5 md:p-3 bg-gray-50 dark:bg-gray-950 rounded-xl border border-gray-200 dark:border-gray-800">
                 {FILTERS.map((f) => {
                     const Icon = FILTER_ICONS[f];
                     const active = filter === f;
@@ -102,7 +102,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
                         <button
                             key={f}
                             onClick={() => setFilter(f)}
-                            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-medium text-sm transition-colors ${
+                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-medium text-xs sm:text-sm transition-colors ${
                                 active
                                     ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white dark:text-[#14171B]'
                                     : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40'
