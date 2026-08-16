@@ -80,12 +80,11 @@ const TIER_ROWS = Object.keys(TIER_NAMES)
 export default function AboutPage() {
   const aiTools: Array<{ name: string; rating: number; comment: string; link?: string }> = [
     { name: "NotebookLM", rating: 5, comment: "Best AI tool for research and grounding!" },
-    { name: "Gemini", rating: 5, comment: "Ultra-fast online search and synthesis." },
+    { name: "Gemini", rating: 4, comment: "Fast online search, Canvas workspace, and custom Gems context." },
     { name: "Gemini Deep Research", rating: 5, comment: "Comprehensive institutional-grade deep research reports." },
-    { name: "Antigravity", rating: 5, comment: "Advanced agentic coding and paired AI development." },
+    { name: "Antigravity", rating: 4, comment: "Advanced agentic coding and paired AI development." },
     { name: "Claude Code", rating: 5, comment: "Autonomous terminal agent and deep workflow automation." },
     { name: "Google Cloud", rating: 5, comment: "Scalable cloud infrastructure, BigQuery, and enterprise AI." },
-    { name: "Gems", rating: 3, comment: "Handy to inject domain-specific financial context." },
     { name: "Deepseek", rating: 4, comment: "Cost-effective reasoning and fast code generation." },
     { name: "Kiro", rating: 3, comment: "Lightweight vibe coding." },
     { name: "Ollama", rating: 3, comment: "Local LLM runtime — check out my complete cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
