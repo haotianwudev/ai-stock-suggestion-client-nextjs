@@ -290,10 +290,11 @@ export function ProfileSettingsClient() {
           </p>
 
           <div className="mt-6 border-t pt-6">
-            <p className="text-sm font-medium">Support the site directly</p>
+            <p className="text-sm font-medium">Buy Sophie a gift</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Donated ${((profile?.donatedCents ?? 0) / 100).toFixed(2)} total — donations promote your tier
-              immediately and never expire.
+              The site is free either way — donations just help keep it running and buy real gifts for
+              Sophie. You&apos;ve given ${((profile?.donatedCents ?? 0) / 100).toFixed(2)} total so far,
+              which also promotes your tier as a bonus and never expires.
             </p>
             <Link href="/donate">
               <Button variant="outline" size="sm" className="mt-3">

@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/hooks/use-user";
 import { useLanguage } from "@/hooks/use-language";
 import { getTierName } from "@/lib/tiers";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -62,15 +63,24 @@ export function Header() {
 
           {/* Desktop nav links */}
           <nav className="hidden sm:flex items-center gap-4">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="inline-flex items-center text-xs font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isDonate = link.href === "/donate";
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "inline-flex items-center gap-1 text-xs font-medium transition-colors whitespace-nowrap",
+                    isDonate
+                      ? "text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {isDonate && <link.icon className="h-3.5 w-3.5" />}
+                  {link.label}
+                </Link>
+              );
+            })}
             {isAdmin && (
               <Link
                 href="/admin"
@@ -108,14 +118,23 @@ export function Header() {
               <div className="px-2 py-2 mb-2 sm:hidden">
                 <SearchBar />
               </div>
-              {NAV_LINKS.map((link) => (
-                <DropdownMenuItem key={link.href} asChild>
-                  <Link href={link.href} className="flex items-center gap-2">
-                    <link.icon className="h-4 w-4" />
-                    {link.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isDonate = link.href === "/donate";
+                return (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "flex items-center gap-2",
+                        isDonate && "text-pink-600 dark:text-pink-400 font-semibold"
+                      )}
+                    >
+                      <link.icon className="h-4 w-4" />
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                );
+              })}
               {isAdmin && (
                 <DropdownMenuItem asChild>
                   <Link href="/admin" className="flex items-center gap-2 font-semibold text-purple-600 dark:text-purple-400">

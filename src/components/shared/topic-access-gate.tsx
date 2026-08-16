@@ -4,11 +4,17 @@ import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { toast } from "sonner";
-import { Youtube, Lock } from "lucide-react";
+import { Youtube, Lock, HeartHandshake } from "lucide-react";
 import { useUser } from "@/hooks/use-user";
 import { ME, SET_YOUTUBE_SUBSCRIBED } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
-import { canAccessTopicContentByTier, MIN_PREMIUM_TIER, getTierName } from "@/lib/tiers";
+import {
+  canAccessTopicContentByTier,
+  MIN_PREMIUM_TIER,
+  getTierName,
+  LIKE_TIER_LADDER,
+  DONATION_TIER_LADDER,
+} from "@/lib/tiers";
 
 export const SOPHIE_YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@SOPHIEAIFinance";
 
@@ -121,10 +127,22 @@ export function TopicAccessGate({
                 {getTierName(MIN_PREMIUM_TIER)}+ access required
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                This topic is reserved for {getTierName(MIN_PREMIUM_TIER)} tier and above — there&apos;s no self-serve unlock for it.
+                This topic is reserved for {getTierName(MIN_PREMIUM_TIER)} tier and above — reach it by
+                liking {LIKE_TIER_LADDER.find((step) => step.tier === MIN_PREMIUM_TIER)?.likesNeeded} paired-video
+                articles, or unlock it immediately with a{" "}
+                ${((DONATION_TIER_LADDER.find((step) => step.tier === MIN_PREMIUM_TIER)?.minCents ?? 0) / 100).toFixed(2)}+
+                {" "}donation.
               </p>
             </div>
-            {!user && (
+            {user ? (
+              <Link
+                href="/donate"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm shadow-sm transition-colors"
+              >
+                <HeartHandshake className="size-4" />
+                Donate to unlock
+              </Link>
+            ) : (
               <Link
                 href="/settings/profile"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm shadow-sm transition-colors"

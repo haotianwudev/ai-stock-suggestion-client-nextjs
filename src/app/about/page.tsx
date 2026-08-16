@@ -215,12 +215,13 @@ export default function AboutPage() {
                     subscribe on YouTube
                   </a>{" "}
                   — <Link href="/settings/profile" className="font-semibold underline hover:text-green-800">log in and confirm it on your profile</Link>{" "}
-                  to unlock articles going forward. Prefer to{" "}
+                  to unlock articles going forward. Or, if you&apos;d rather{" "}
                   <Link href="/donate" className="font-semibold underline hover:text-green-800">
-                    donate directly
+                    buy Sophie a gift
                   </Link>
-                  ? It promotes your tier immediately — $9.99+ unlocks premium articles, and higher tiers get
-                  a page review, a custom video, or a dedicated page in the Quant Neighborhood.
+                  — this site is free either way, but donations help keep it running and, as a bonus,
+                  $9.99+ unlocks premium articles, with higher amounts unlocking a page review, a custom
+                  video, or a dedicated page in the Quant Neighborhood.
                 </p>
               </div>
             </CardContent>
@@ -240,8 +241,10 @@ export default function AboutPage() {
                 library, or the market tools. Just signing in earns your first rank and unlocks
                 bookmarks, and each rank above that unlocks more — topic pages, comments, and
                 premium articles plus a preferred video platform (YouTube or Bilibili) for the
-                Watch card. Ranks 5-8 are earned the same way but don&apos;t unlock anything
-                yet; that&apos;s coming later.
+                Watch card. Ranks 5-7 unlock concierge perks — a 1:1 page review, help creating a
+                video, or a dedicated Quant Neighborhood page — reachable by liking paired videos
+                or by <Link href="/donate" className="font-semibold underline hover:text-amber-800">donating</Link>.
+                Rank 8 doesn&apos;t unlock anything yet; that&apos;s coming later.
               </p>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
@@ -284,8 +287,10 @@ export default function AboutPage() {
                 likes count once per video, not per click. Ranks only ever go up: earning one a
                 second way never lowers a rank you already have. The single exception is
                 un-subscribing on YouTube, which drops {getTierName(MIN_TOPIC_TIER)} back to{" "}
-                {getTierName(1)} and leaves anything higher untouched. Supporting with a donation
-                will unlock ranks too — that&apos;s coming soon.
+                {getTierName(1)} and leaves anything higher untouched. Donations promote ranks
+                immediately and are cumulative — see the{" "}
+                <Link href="/donate" className="font-semibold underline hover:text-amber-800">donate page</Link>{" "}
+                for exact amounts.
               </p>
             </CardContent>
           </Card>

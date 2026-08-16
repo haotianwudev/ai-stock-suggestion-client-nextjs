@@ -9,8 +9,14 @@ import { useLanguage } from "@/hooks/use-language";
 import { CREATE_DONATION_CHECKOUT } from "@/lib/graphql/queries";
 import { DonationCheckoutResult } from "@/lib/graphql/types";
 import { getTierName, tierUnlockKey, DONATION_TIER_LADDER } from "@/lib/tiers";
+import {
+  PRESET_GIFTS,
+  MIN_DONATION_CENTS,
+  formatDollars,
+  DONATE_PREV_TIER_KEY,
+  DONATE_PREV_CENTS_KEY,
+} from "@/lib/donate";
 import { LoginButton } from "@/components/auth/login-button";
-import { TierUpDialog } from "@/components/shared/tier-up-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,63 +24,25 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-const PRESET_AMOUNTS_CENTS = [1000, 2500, 5000, 10000];
-const MIN_DONATION_CENTS = 100;
-const PREV_TIER_SESSION_KEY = "donate_prev_tier";
-
-function formatDollars(cents: number): string {
-  return `$${(cents / 100).toFixed(2)}`;
-}
-
 export function DonateClient() {
-  const { user, profile, loading, refetchProfile } = useUser();
+  const { user, profile, loading } = useUser();
   const { t } = useLanguage();
-  const [selectedPreset, setSelectedPreset] = useState<number | null>(2500);
+  const [selectedPreset, setSelectedPreset] = useState<number | null>(1000);
   const [customAmount, setCustomAmount] = useState("");
-  const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
-  const [capturedPrevTier, setCapturedPrevTier] = useState<number | null>(null);
 
   const [createDonationCheckout, { loading: submitting }] = useMutation<{
     createDonationCheckout: DonationCheckoutResult;
   }>(CREATE_DONATION_CHECKOUT);
 
-  // Stripe Checkout is a full-page navigation away and back -- Apollo's
-  // in-memory cache (and any component state) doesn't survive that round
-  // trip, so the pre-donation tier was stashed in sessionStorage before the
-  // redirect. Pick it up here to detect a tier-up once we're back.
+  // Stripe redirects here on a canceled checkout (success lands on
+  // /donate/thanks instead, see the resolver's success_url).
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("success") === "true") {
-      const stored = sessionStorage.getItem(PREV_TIER_SESSION_KEY);
-      sessionStorage.removeItem(PREV_TIER_SESSION_KEY);
-      setCapturedPrevTier(stored ? parseInt(stored, 10) : 1);
-      toast.success("Thank you for your donation!");
-      // The webhook may land a beat after Stripe's redirect -- refetch now
-      // and once more shortly after to catch a delayed tier bump.
-      refetchProfile();
-      const timer = setTimeout(() => refetchProfile(), 2500);
-      window.history.replaceState({}, "", "/donate");
-      return () => clearTimeout(timer);
-    }
     if (params.get("canceled") === "true") {
       toast.info("Donation canceled — no charge was made.");
       window.history.replaceState({}, "", "/donate");
     }
-  }, [refetchProfile]);
-
-  // Once the refetched profile catches up, compare against the captured
-  // prior tier and show the congrats dialog only if it actually went up.
-  useEffect(() => {
-    if (capturedPrevTier === null || !profile) return;
-    if (profile.tier > capturedPrevTier) {
-      const unlockKey = tierUnlockKey(profile.tier);
-      setCongrats({
-        title: `You're now ${getTierName(profile.tier)}!`,
-        description: unlockKey ? t(unlockKey) : "Thank you for your support!",
-      });
-      setCapturedPrevTier(null);
-    }
-  }, [capturedPrevTier, profile, t]);
+  }, []);
 
   if (loading) return null;
 
@@ -84,8 +52,12 @@ export function DonateClient() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartHandshake className="size-5 text-[#A8672E] dark:text-[#D08F52]" />
-            Support SOPHIE
+            Buy Sophie a gift
           </CardTitle>
+          <p className="text-sm text-muted-foreground">
+            SOPHIE is free to read, and always will be. If you&apos;d like to chip in anyway, it goes toward
+            keeping the site running and — literally — real gifts for my daughter Sophie.
+          </p>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-between rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
@@ -117,7 +89,8 @@ export function DonateClient() {
       const { data } = await createDonationCheckout({ variables: { amountCents: effectiveCents } });
       const checkoutUrl = data?.createDonationCheckout.checkoutUrl;
       if (!checkoutUrl) throw new Error("No checkout URL returned.");
-      sessionStorage.setItem(PREV_TIER_SESSION_KEY, String(profile?.tier ?? 1));
+      sessionStorage.setItem(DONATE_PREV_TIER_KEY, String(profile?.tier ?? 1));
+      sessionStorage.setItem(DONATE_PREV_CENTS_KEY, String(profile?.donatedCents ?? 0));
       window.location.href = checkoutUrl;
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong.");
@@ -130,32 +103,50 @@ export function DonateClient() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartHandshake className="size-5 text-[#A8672E] dark:text-[#D08F52]" />
-            Support SOPHIE
+            Buy Sophie a gift
           </CardTitle>
           <p className="text-sm text-muted-foreground">
+            SOPHIE is free to read, and always will be. This isn&apos;t a paywall — if you&apos;d like to
+            chip in anyway, it goes toward keeping the site running and, literally, real gifts for my
+            daughter Sophie.
+          </p>
+          <div className="text-sm text-muted-foreground">
             You&apos;re currently <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>, having
             donated {formatDollars(profile?.donatedCents ?? 0)} total.
-          </p>
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
-            <Label>Amount</Label>
-            <div className="grid grid-cols-4 gap-2">
-              {PRESET_AMOUNTS_CENTS.map((cents) => (
-                <button
-                  key={cents}
-                  type="button"
-                  onClick={() => handlePresetClick(cents)}
-                  className={cn(
-                    "rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
-                    selectedPreset === cents && !customAmount
-                      ? "border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/10 dark:text-[#D08F52]"
-                      : "border-border hover:bg-accent"
-                  )}
-                >
-                  {formatDollars(cents)}
-                </button>
-              ))}
+            <Label>What should it be?</Label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {PRESET_GIFTS.map((gift) => {
+                // Highest ladder rung this preset alone would clear, for a first-time donor.
+                const unlockedTier = [...DONATION_TIER_LADDER]
+                  .reverse()
+                  .find((step) => gift.cents >= step.minCents)?.tier;
+                return (
+                  <button
+                    key={gift.cents}
+                    type="button"
+                    onClick={() => handlePresetClick(gift.cents)}
+                    className={cn(
+                      "flex flex-col items-center gap-1 rounded-lg border px-3 py-3 text-center transition-colors",
+                      selectedPreset === gift.cents && !customAmount
+                        ? "border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/10 dark:text-[#D08F52]"
+                        : "border-border hover:bg-accent"
+                    )}
+                  >
+                    <span className="text-lg" aria-hidden>{gift.emoji}</span>
+                    <span className="text-sm font-semibold">{formatDollars(gift.cents)}</span>
+                    <span className="text-xs text-muted-foreground leading-tight">{gift.label}</span>
+                    {unlockedTier && (
+                      <span className="text-[10px] font-medium text-[#A8672E] dark:text-[#D08F52]">
+                        Unlocks {getTierName(unlockedTier)}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">$</span>
@@ -163,7 +154,7 @@ export function DonateClient() {
                 type="number"
                 min="1"
                 step="0.01"
-                placeholder="Custom amount"
+                placeholder="Or name your own amount"
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
               />
@@ -181,8 +172,9 @@ export function DonateClient() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">What donations unlock</CardTitle>
+          <CardTitle className="text-lg">A little thank-you, as a bonus</CardTitle>
           <p className="text-sm text-muted-foreground">
+            The site stays free either way — but if you donate, these unlock automatically on top.
             Cumulative total, tracked automatically — tiers never downgrade.
           </p>
         </CardHeader>
@@ -207,13 +199,6 @@ export function DonateClient() {
           </div>
         </CardContent>
       </Card>
-
-      <TierUpDialog
-        open={!!congrats}
-        onOpenChange={(open) => !open && setCongrats(null)}
-        title={congrats?.title ?? ""}
-        description={congrats?.description ?? ""}
-      />
     </div>
   );
 }
