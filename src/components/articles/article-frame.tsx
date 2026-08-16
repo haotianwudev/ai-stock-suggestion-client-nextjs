@@ -292,16 +292,16 @@ export function VideoCard({
           </button>
         )}
       </div>
-      <div className="p-4 pt-3 flex items-center gap-2">
+      <div className="p-3 pt-2.5 flex items-center gap-2">
         <button
           onClick={likeOnYoutube}
-          className={`flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+          className={`flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
             liked
               ? "bg-red-600/10 text-red-600 dark:text-red-500"
               : "bg-red-600 hover:bg-red-700 text-white"
           }`}
         >
-          <ThumbsUp className="size-4" fill={liked ? "currentColor" : "none"} />
+          <ThumbsUp className="size-3.5" fill={liked ? "currentColor" : "none"} />
           {liked ? t("articleFrame.liked") : t("articleFrame.likeOnYoutube")}
         </button>
         {articleSlug && (
@@ -309,13 +309,13 @@ export function VideoCard({
             onClick={handleBookmark}
             disabled={bookmarking}
             aria-label={bookmarked ? t("articleFrame.bookmarkRemove") : t("articleFrame.bookmarkAdd")}
-            className={`inline-flex items-center justify-center size-9 rounded-lg border transition-colors disabled:opacity-50 ${
+            className={`inline-flex items-center justify-center size-8 rounded-lg border transition-colors disabled:opacity-50 ${
               bookmarked
                 ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
                 : "border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
             }`}
           >
-            <Bookmark className="size-4" fill={bookmarked ? "currentColor" : "none"} />
+            <Bookmark className="size-3.5" fill={bookmarked ? "currentColor" : "none"} />
           </button>
         )}
       </div>
