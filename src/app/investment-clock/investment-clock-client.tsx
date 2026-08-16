@@ -35,8 +35,8 @@ import { getWikiEntryForArticle } from "@/data/wiki";
 import { Article } from "@/data/articles/types";
 
 const RELATED_ARTICLE_SLUGS = [
-  "investment-clock-framework-quantitative-macro-regime-detection",
   "quantitative-guide-calculate-investment-clock",
+  "investment-clock-framework-quantitative-macro-regime-detection",
   "navigating-bull-to-bear-regime-shift-quantitative-signals",
 ];
 
