@@ -245,10 +245,10 @@ export interface LikeTierStep {
 }
 export const LIKE_TIER_LADDER: LikeTierStep[] = [
   { tier: 3, likesNeeded: 1, alsoNeedsSubscribe: true },
-  { tier: 4, likesNeeded: 5 },
-  { tier: 5, likesNeeded: 25 },
-  { tier: 6, likesNeeded: 100 },
-  { tier: 7, likesNeeded: 200 },
+  { tier: 4, likesNeeded: 10 },
+  { tier: 5, likesNeeded: 50 },
+  { tier: 6, likesNeeded: 200 },
+  { tier: 7, likesNeeded: 400 },
 ];
 
 // Cumulative donation totals that promote a supporter, independent of the like
@@ -349,7 +349,7 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     name: "Senior Quant",
     shortName: "T4",
     unlocksSummary: "Premium Articles, Live Options & Video Pref",
-    howToEarn: "5 video likes or $9.99+ donation",
+    howToEarn: "10 video likes or $9.99+ donation",
     perks: [
       "Full access to locked premium research deep-dives",
       "Real-time SPX live options chain & volatility surface",
@@ -362,7 +362,7 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     name: "Vice President",
     shortName: "T5",
     unlocksSummary: "1:1 Page Review",
-    howToEarn: "25 video likes or $29.99+ donation",
+    howToEarn: "50 video likes or $29.99+ donation",
     perks: [
       "Personalized 1:1 page or project review with expert feedback",
       "All Senior Quant perks included",
@@ -373,7 +373,7 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     name: "Director",
     shortName: "T6",
     unlocksSummary: "Custom Video Collaboration",
-    howToEarn: "100 video likes or $99.99+ donation",
+    howToEarn: "200 video likes or $99.99+ donation",
     perks: [
       "Collaborate with Sophie Daddy to produce a custom video",
       "Direct technical feedback on quantitative strategies",
@@ -384,7 +384,7 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     name: "Managing Director",
     shortName: "T7",
     unlocksSummary: "Quant Neighborhood Page",
-    howToEarn: "200 video likes or $199.99+ donation",
+    howToEarn: "400 video likes or $199.99+ donation",
     perks: [
       "Dedicated featured page in the Quant Neighborhood",
       "Highlighted supporter status across the platform",
