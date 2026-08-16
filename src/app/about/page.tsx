@@ -89,7 +89,6 @@ export default function AboutPage() {
     { name: "Deepseek", rating: 4, comment: "Cost-effective reasoning and fast code generation." },
     { name: "Kiro", rating: 4, comment: "Lightweight vibe coding." },
     { name: "Ollama", rating: 4, comment: "Local LLM runtime — check out my complete cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
-    { name: "Canvas", rating: 5, comment: "Iterative Knowledge -> Websites -> Knowledge loops." },
     { name: "Neon", rating: 5, comment: "Serverless PostgreSQL database." },
     { name: "Vercel", rating: 5, comment: "Production Next.js edge deployment." },
     { name: "Render", rating: 4, comment: "Reliable backend server hosting." },
