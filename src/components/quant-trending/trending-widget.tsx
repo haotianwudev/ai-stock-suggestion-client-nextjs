@@ -84,7 +84,7 @@ export function QuantTrendingWidget() {
   return (
     <div
       className="block group cursor-pointer"
-      onClick={() => router.push("/quant-trending")}
+      onClick={() => router.push("/forum?tab=quant-trending")}
     >
       <div className="rounded-xl border-2 border-purple-500/20 bg-purple-500/5 px-4 py-3 transition-all hover:shadow-lg hover:scale-[1.005]">
         {/* Header row */}
@@ -99,7 +99,7 @@ export function QuantTrendingWidget() {
             </span>
           </div>
           <Link
-            href="/quant-trending"
+            href="/forum?tab=quant-trending"
             onClick={e => e.stopPropagation()}
             className="shrink-0 text-[11px] font-medium flex items-center gap-0.5 text-purple-500 hover:gap-1.5 transition-all"
           >
