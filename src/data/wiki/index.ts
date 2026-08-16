@@ -12,6 +12,24 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "form13f/appaloosa-q2-2026-rotation-hedge",
+    title: "Tepper's Q2 2026 Rotation",
+    articleSlug: "appaloosa-management-q2-2026-13f-institutional-analysis",
+    date: "2026-08-18",
+    labels: [ArticleLabel.FORM13F, ArticleLabel.MACRO],
+    summary:
+      "Appaloosa's Q2 2026 13F shows assets up to $7.47B as Tepper harvested cyclical memory-chip gains (Micron, SanDisk) for platform monopolies (Amazon, Alphabet), layered a $241.6M Apple put hedge, whipsawed back into airlines, and fully exited Chinese ADR exposure.",
+  },
+  {
+    path: "quant/institutional-trading-landscape",
+    title: "Institutional Trading Landscape",
+    articleSlug: "modern-topography-quant-finance-institutional-trading",
+    date: "2026-09-06",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    summary:
+      "How institutional finance splits into fiduciary hedge funds, unregulated proprietary trading firms, and multi-manager pod platforms, plus the HFT latency arms race and the Avellaneda-Stoikov math behind algorithmic market making.",
+  },
+  {
     path: "macro/calculate-investment-clock",
     title: "Calculating the Investment Clock",
     articleSlug: "quantitative-guide-calculate-investment-clock",
