@@ -718,31 +718,36 @@ export function InvestmentClockClient() {
           )}
 
           {/* Deep Research Paper Preview */}
-          {(selectedArticle?.paper || selectedArticle?.googleDoc) && (
+          {selectedArticle?.googleDoc && (
             <PaperCard
-              paper={selectedArticle.paper}
               googleDoc={selectedArticle.googleDoc}
-              title={selectedArticle.title}
-              onOpen={() => setPaperOpen(true)}
+              onExpand={() => setPaperOpen(true)}
             />
           )}
 
           {/* Wiki Term Card */}
-          {wikiEntry && <WikiCard entry={wikiEntry} onOpen={() => setWikiOpen(true)} />}
+          {wikiEntry && (
+            <WikiCard
+              entry={wikiEntry}
+              onExpand={() => setWikiOpen(true)}
+            />
+          )}
         </div>
       </div>
 
       {/* ── Modals ────────────────────────────────────────────────────────── */}
-      <PaperModal
-        isOpen={paperOpen}
-        onClose={() => setPaperOpen(false)}
-        paper={selectedArticle?.paper}
-        googleDoc={selectedArticle?.googleDoc}
-        title={selectedArticle?.title ?? ""}
-      />
+      {paperOpen && selectedArticle?.googleDoc && (
+        <PaperModal
+          googleDoc={selectedArticle.googleDoc}
+          onClose={() => setPaperOpen(false)}
+        />
+      )}
 
-      {wikiEntry && (
-        <WikiModal isOpen={wikiOpen} onClose={() => setWikiOpen(false)} entry={wikiEntry} />
+      {wikiOpen && wikiEntry && (
+        <WikiModal
+          entry={wikiEntry}
+          onClose={() => setWikiOpen(false)}
+        />
       )}
     </div>
   );
