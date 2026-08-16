@@ -356,9 +356,7 @@ export function AdminClient() {
               <div className="flex items-center gap-2 mb-1">
                 <Crown className="h-5 w-5 text-purple-500" />
                 <h1 className="text-2xl font-bold">Admin Panel</h1>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
-                  Head Quant
-                </span>
+                <TierBadge tier={9} size="sm" />
               </div>
               <p className="text-muted-foreground text-sm">
                 {lastRefresh

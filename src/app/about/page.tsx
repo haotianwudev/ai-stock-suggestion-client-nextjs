@@ -229,7 +229,7 @@ export default function AboutPage() {
           </Card>
 
           {/* Membership Tiers Section */}
-          <Card className="mb-8 border-2 border-amber-200 bg-gradient-to-br from-amber-50/50 to-yellow-50/50">
+          <Card id="membership-tiers" className="mb-8 border-2 border-amber-200 bg-gradient-to-br from-amber-50/50 to-yellow-50/50 scroll-mt-20">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Trophy className="h-6 w-6 text-amber-600" />

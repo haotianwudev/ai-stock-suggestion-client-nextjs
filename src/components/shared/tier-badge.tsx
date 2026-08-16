@@ -52,61 +52,68 @@ const ICON_SIZE_CLASSES = {
   lg: "size-4 shrink-0",
 };
 
-export function TierBadge({
-  tier = 1,
-  size = "sm",
-  variant = "default",
-  showIcon = true,
-  showTierNumber = false,
-  showLabel = true,
-  interactive = false,
-  className,
-  children,
-  ...props
-}: TierBadgeProps) {
-  const meta = getTierMetadata(tier);
-  const Icon = ICON_MAP[meta.iconName] ?? GraduationCap;
+export const TierBadge = React.forwardRef<HTMLSpanElement, TierBadgeProps>(
+  (
+    {
+      tier = 1,
+      size = "sm",
+      variant = "default",
+      showIcon = true,
+      showTierNumber = false,
+      showLabel = true,
+      interactive = false,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const meta = getTierMetadata(tier);
+    const Icon = ICON_MAP[meta.iconName] ?? GraduationCap;
 
-  let variantClasses = meta.classes.badge;
-  if (variant === "solid") {
-    variantClasses = meta.classes.solid;
-  } else if (variant === "outline") {
-    variantClasses = meta.classes.outline;
-  } else if (variant === "glow") {
-    variantClasses = cn(
-      meta.classes.badge,
-      "shadow-[0_0_12px_rgba(0,0,0,0.06)] dark:shadow-[0_0_14px_rgba(255,255,255,0.06)]"
+    let variantClasses = meta.classes.badge;
+    if (variant === "solid") {
+      variantClasses = meta.classes.solid;
+    } else if (variant === "outline") {
+      variantClasses = meta.classes.outline;
+    } else if (variant === "glow") {
+      variantClasses = cn(
+        meta.classes.badge,
+        "shadow-[0_0_12px_rgba(0,0,0,0.06)] dark:shadow-[0_0_14px_rgba(255,255,255,0.06)]"
+      );
+    }
+
+    const iconColorClass = variant === "solid" ? "text-white" : meta.classes.icon;
+
+    return (
+      <span
+        ref={ref}
+        className={cn(
+          "inline-flex items-center border transition-all duration-200 select-none whitespace-nowrap",
+          SIZE_CLASSES[size],
+          variantClasses,
+          interactive && "hover:scale-[1.03] active:scale-[0.98]",
+          className
+        )}
+        {...props}
+      >
+        {showIcon && (
+          <Icon className={cn(ICON_SIZE_CLASSES[size], iconColorClass)} aria-hidden="true" />
+        )}
+        {showTierNumber === "badge" && (
+          <span className="opacity-75 font-mono text-[0.85em]">#{meta.tier}</span>
+        )}
+        {showTierNumber === "prefix" && (
+          <span className="opacity-75 font-mono text-[0.85em]">{meta.shortName}</span>
+        )}
+        {children ? (
+          children
+        ) : showLabel ? (
+          <span>{meta.name}</span>
+        ) : null}
+      </span>
     );
   }
+);
 
-  const iconColorClass = variant === "solid" ? "text-white" : meta.classes.icon;
-
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center border transition-all duration-200 select-none whitespace-nowrap",
-        SIZE_CLASSES[size],
-        variantClasses,
-        interactive && "cursor-pointer hover:scale-[1.03] active:scale-[0.98]",
-        className
-      )}
-      title={`Tier ${meta.tier}: ${meta.name}`}
-      {...props}
-    >
-      {showIcon && (
-        <Icon className={cn(ICON_SIZE_CLASSES[size], iconColorClass)} aria-hidden="true" />
-      )}
-      {showTierNumber === "badge" && (
-        <span className="opacity-75 font-mono text-[0.85em]">#{meta.tier}</span>
-      )}
-      {showTierNumber === "prefix" && (
-        <span className="opacity-75 font-mono text-[0.85em]">{meta.shortName}</span>
-      )}
-      {children ? (
-        children
-      ) : showLabel ? (
-        <span>{meta.name}</span>
-      ) : null}
-    </span>
-  );
-}
+TierBadge.displayName = "TierBadge";

@@ -299,3 +299,126 @@ export function tierUnlockKey(tier: number): TranslationKey | null {
       return null;
   }
 }
+
+export interface TierPerkDefinition {
+  tier: number;
+  name: string;
+  shortName: string;
+  unlocksSummary: string;
+  howToEarn: string;
+  perks: string[];
+}
+
+export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
+  {
+    tier: 1,
+    name: "Intern",
+    shortName: "T1",
+    unlocksSummary: "Bookmarks & Profile",
+    howToEarn: "Free account signup",
+    perks: [
+      "Save and bookmark favorite articles",
+      "Custom display name and avatar",
+      "Track your reading and likes",
+    ],
+  },
+  {
+    tier: 2,
+    name: "Analyst",
+    shortName: "T2",
+    unlocksSummary: "Topic Pages & Study Guides",
+    howToEarn: "Subscribe to YouTube channel",
+    perks: [
+      "Access all curated topic pages & study guides",
+      "Full reading access to core research series",
+    ],
+  },
+  {
+    tier: 3,
+    name: "Associate",
+    shortName: "T3",
+    unlocksSummary: "Comments & Forum Discussions",
+    howToEarn: "1 video like while subscribed",
+    perks: [
+      "Post comments and replies on articles",
+      "Participate in community forum discussions",
+    ],
+  },
+  {
+    tier: 4,
+    name: "Senior Quant",
+    shortName: "T4",
+    unlocksSummary: "Premium Articles, Live Options & Video Pref",
+    howToEarn: "5 video likes or $9.99+ donation",
+    perks: [
+      "Full access to locked premium research deep-dives",
+      "Real-time SPX live options chain & volatility surface",
+      "Choose preferred video platform (YouTube vs Bilibili)",
+      "Topic sidebar layout customization",
+    ],
+  },
+  {
+    tier: 5,
+    name: "Vice President",
+    shortName: "T5",
+    unlocksSummary: "1:1 Page Review",
+    howToEarn: "25 video likes or $29.99+ donation",
+    perks: [
+      "Personalized 1:1 page or project review with expert feedback",
+      "All Senior Quant perks included",
+    ],
+  },
+  {
+    tier: 6,
+    name: "Director",
+    shortName: "T6",
+    unlocksSummary: "Custom Video Collaboration",
+    howToEarn: "100 video likes or $99.99+ donation",
+    perks: [
+      "Collaborate with Sophie Daddy to produce a custom video",
+      "Direct technical feedback on quantitative strategies",
+    ],
+  },
+  {
+    tier: 7,
+    name: "Managing Director",
+    shortName: "T7",
+    unlocksSummary: "Quant Neighborhood Page",
+    howToEarn: "200 video likes or $199.99+ donation",
+    perks: [
+      "Dedicated featured page in the Quant Neighborhood",
+      "Highlighted supporter status across the platform",
+    ],
+  },
+  {
+    tier: 8,
+    name: "Partner",
+    shortName: "T8",
+    unlocksSummary: "Forum Moderation & Leadership",
+    howToEarn: "Awarded manually",
+    perks: [
+      "Community moderation capabilities (delete / moderate posts)",
+      "Distinguished Partner rank badge",
+    ],
+  },
+  {
+    tier: 9,
+    name: "Head Quant",
+    shortName: "T9",
+    unlocksSummary: "Full Admin Privileges",
+    howToEarn: "Site Administrator",
+    perks: [
+      "Full admin console access (/admin)",
+      "Manage user tiers and site configurations",
+      "Global content and forum administration",
+    ],
+  },
+];
+
+export function getTierPerkInfo(tier: number): TierPerkDefinition {
+  return (
+    TIER_PERKS_LADDER.find((item) => item.tier === tier) ??
+    TIER_PERKS_LADDER[0]
+  );
+}
+
