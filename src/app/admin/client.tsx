@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
 import {
   Users,
   ShieldAlert,
@@ -25,6 +26,12 @@ import {
   TrendingUp,
   Youtube,
   Search,
+  Rss,
+  SearchCheck,
+  Smartphone,
+  ExternalLink,
+  Wrench,
+  Globe,
 } from "lucide-react";
 
 const ADMIN_TIER = 9;
@@ -487,6 +494,103 @@ export function AdminClient() {
                   </table>
                 </div>
               )}
+            </CardContent>
+          </Card>
+
+          {/* ── Admin Tools & Utilities ───────────────────────────────────── */}
+          <Card>
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-2">
+                <Wrench className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52]" />
+                <CardTitle className="text-base">Admin Tools & Developer Resources</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* RSS Feeds */}
+                <div className="p-4 rounded-xl border border-border bg-card flex flex-col justify-between space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                      <Rss className="h-4 w-4" />
+                      <span className="font-semibold text-sm">RSS Feeds</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      RSS 2.0 & Atom feeds generator across all content categories.
+                    </p>
+                  </div>
+                  <Link
+                    href="/rss"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-orange-600 text-white hover:bg-orange-700 font-medium text-xs transition-colors"
+                  >
+                    Open RSS Hub
+                    <ExternalLink className="h-3 w-3" />
+                  </Link>
+                </div>
+
+                {/* SEO Audit */}
+                <div className="p-4 rounded-xl border border-border bg-card flex flex-col justify-between space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
+                      <SearchCheck className="h-4 w-4" />
+                      <span className="font-semibold text-sm">SEO Audit</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Audit meta tags, canonical URLs, and Open Graph previews.
+                    </p>
+                  </div>
+                  <Link
+                    href="/seo-audit"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-medium text-xs transition-colors"
+                  >
+                    Launch SEO Audit
+                    <ExternalLink className="h-3 w-3" />
+                  </Link>
+                </div>
+
+                {/* Android App */}
+                <div className="p-4 rounded-xl border border-border bg-card flex flex-col justify-between space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                      <Smartphone className="h-4 w-4" />
+                      <span className="font-semibold text-sm">Android App</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Direct download link for the standalone Expo APK artifact.
+                    </p>
+                  </div>
+                  <a
+                    href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-medium text-xs transition-colors"
+                  >
+                    Download APK
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+
+                {/* Sitemap XML */}
+                <div className="p-4 rounded-xl border border-border bg-card flex flex-col justify-between space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400">
+                      <Globe className="h-4 w-4" />
+                      <span className="font-semibold text-sm">Sitemap XML</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Public XML sitemap index for search engines indexing.
+                    </p>
+                  </div>
+                  <a
+                    href="/sitemap.xml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 font-medium text-xs transition-colors"
+                  >
+                    View Sitemap
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
