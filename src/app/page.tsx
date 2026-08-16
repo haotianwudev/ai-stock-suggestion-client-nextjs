@@ -208,11 +208,11 @@ export default function Home() {
   const displayedArticles = nonPinnedFilteredArticles.slice(0, displayedCount);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
         {/* Hero: value prop on the left, live product widgets on the right */}
-        <section className="pb-4 pt-6 md:pt-10 lg:pt-12">
+        <section className="pb-6 pt-6 md:pt-10 lg:pt-12">
           <div className="container max-w-screen-2xl mx-auto px-4">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-8 items-center max-w-6xl mx-auto">
 
@@ -220,7 +220,7 @@ export default function Home() {
               <div className="flex flex-col items-center lg:items-start gap-5 text-center lg:text-left">
                 <div className="flex items-center gap-4">
                   <Link href="/about">
-                    <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden border-2 border-primary/40 shadow-md cursor-pointer hover:scale-105 transition-transform duration-200">
+                    <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden border-2 border-[#A8672E]/40 dark:border-[#D08F52]/40 shadow-sm cursor-pointer hover:scale-105 transition-transform duration-200">
                       <Image
                         src="/images/agents/SOPHIE.png"
                         alt="SOPHIE"
@@ -238,32 +238,42 @@ export default function Home() {
                   </Link>
                 </div>
 
-                <p className="text-lg md:text-xl text-muted-foreground">
+                <p className="font-serif text-lg md:text-xl font-bold text-slate-800 dark:text-slate-200 tracking-tight">
                   SOPHIE Daddy Quant Blog
                 </p>
-                <p className="max-w-xl text-sm md:text-base text-muted-foreground">
+                <p className="max-w-xl text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
                   {t("homepage.tagline")}
                 </p>
 
                 {/* Core feature shortcuts */}
-                <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full">
-                  {FEATURE_PILLARS.map((pillar) => (
-                    <Link
-                      key={pillar.href}
-                      href={pillar.href}
-                      className="group rounded-xl border bg-card p-3 sm:p-5 text-left transition-all hover:shadow-md hover:border-primary/40"
-                    >
-                      <div className="flex items-center gap-2">
-                        <pillar.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
-                        <h3 className="font-semibold text-sm sm:text-base group-hover:text-primary transition-colors">
-                          {pillar.title}
-                        </h3>
-                      </div>
-                      <p className="mt-1 text-sm text-muted-foreground hidden sm:block">
-                        {pillar.description}
-                      </p>
-                    </Link>
-                  ))}
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full">
+                  {FEATURE_PILLARS.map((pillar, idx) => {
+                    const iconColors = [
+                      "bg-[#A8672E]/10 dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52]",
+                      "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/15 text-[#1D8A70] dark:text-[#3CBF9C]",
+                      "bg-[#BC4128]/10 dark:bg-[#E2694A]/15 text-[#BC4128] dark:text-[#E2694A]",
+                      "bg-[#A8672E]/10 dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52]",
+                    ][idx % 4];
+                    return (
+                      <Link
+                        key={pillar.href}
+                        href={pillar.href}
+                        className="group rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-3.5 sm:p-4 text-left shadow-xs transition-all duration-200 hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:-translate-y-0.5"
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className={`flex h-7 w-7 items-center justify-center rounded-lg ${iconColors} shrink-0`}>
+                            <pillar.icon className="h-4 w-4" />
+                          </div>
+                          <h3 className="font-serif font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors">
+                            {pillar.title}
+                          </h3>
+                        </div>
+                        <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 hidden sm:block leading-snug">
+                          {pillar.description}
+                        </p>
+                      </Link>
+                    );
+                  })}
                 </div>
 
                 {/* Compact social/utility row */}
@@ -277,7 +287,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       aria-label={social.label}
                       title={social.label}
-                      className={`inline-flex h-9 w-9 items-center justify-center rounded-full shadow-sm transition-colors ${social.colorClass}`}
+                      className={`inline-flex h-9 w-9 items-center justify-center rounded-full shadow-xs transition-colors ${social.colorClass}`}
                     >
                       {social.icon}
                     </a>
@@ -287,16 +297,16 @@ export default function Home() {
                     aria-label={t("homepage.copyRssFeedUrl")}
                     title={rssCopied ? t("homepage.rssCopied") : t("homepage.copyRssFeedUrl")}
                     className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${rssCopied
-                      ? "border-primary/40 text-primary bg-accent"
-                      : "border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-accent"
+                      ? "border-[#A8672E] text-[#A8672E] bg-[#A8672E]/10 dark:border-[#D08F52] dark:text-[#D08F52] dark:bg-[#D08F52]/10"
+                      : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 shadow-xs"
                       }`}
                   >
                     {rssCopied ? <Check className="h-4 w-4" /> : <Rss className="h-4 w-4" />}
                   </button>
-                  <span className="mx-1 h-4 w-px bg-border hidden sm:block" />
+                  <span className="mx-1 h-4 w-px bg-gray-200 dark:bg-gray-800 hidden sm:block" />
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    className="inline-flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium transition-colors"
                   >
                     <Users className="h-3.5 w-3.5" />
                     {t("homepage.meetSophieDaddy")}
@@ -304,7 +314,7 @@ export default function Home() {
                   {isAdmin && (
                     <Link
                       href="/admin"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] hover:underline transition-colors"
                     >
                       <Crown className="h-3.5 w-3.5" />
                       {t("header.admin")}
@@ -316,11 +326,11 @@ export default function Home() {
 
               {/* Right: live product UI as the hero visual */}
               <div className="space-y-3 w-full">
-                <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-64" />}>
+                <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-64 shadow-xs" />}>
                   <DynamicClockWidget />
                 </Suspense>
                 <div className="hidden sm:block">
-                  <Suspense fallback={<div className="animate-pulse rounded-xl border border-border bg-card h-24" />}>
+                  <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />}>
                     <DynamicTrendingWidget />
                   </Suspense>
                 </div>
@@ -339,12 +349,13 @@ export default function Home() {
         </section>
 
         {/* Articles Section */}
-        <section className="container max-w-screen-2xl mx-auto space-y-6 py-8 md:py-12 border-t border-border px-4">
-          <div className="flex flex-col items-center space-y-4 text-center mb-6">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+        <section className="container max-w-screen-2xl mx-auto space-y-6 py-10 md:py-14 border-t border-gray-200/80 dark:border-gray-800/80 px-4">
+          <div className="flex flex-col items-center space-y-2 text-center mb-6">
+            <SlotKicker icon={BookOpen} label="Research & Articles" tone="accent" />
+            <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-slate-900 dark:text-slate-100">
               {t("homepage.interactiveArticles")}
             </h2>
-            <p className="text-muted-foreground text-sm max-w-2xl">
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed mt-1">
               {t("homepage.exploreArticlesCount", {
                 count: articles.filter(a => canViewPremium ? true : !a.premiumContent).length,
               })}
@@ -371,7 +382,9 @@ export default function Home() {
             return pinnedArticle && shouldShowPinned && (
               <div className="mb-8 relative">
                 <div className="absolute -top-3 left-3 z-10">
-                  <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded shadow">{t("homepage.featured")}</span>
+                  <span className="bg-[#A8672E] dark:bg-[#D08F52] text-white dark:text-[#14171B] text-xs font-bold px-3 py-1 rounded-lg shadow-sm font-mono uppercase tracking-wider">
+                    {t("homepage.featured")}
+                  </span>
                 </div>
                 <ArticleCard
                   key={pinnedArticle.slug}
@@ -421,27 +434,26 @@ export default function Home() {
 
           {/* Results Count and Show More/Less Button */}
           <div className="flex flex-col items-center gap-4 mt-8">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-slate-600 dark:text-slate-400">
               {t("homepage.showingArticlesCount", {
                 shown: displayedCount,
                 total: nonPinnedFilteredArticles.length,
               })}
             </p>
             {nonPinnedFilteredArticles.length > 12 && (
-              <Button
+              <button
                 onClick={() => setShowAllArticles(!showAllArticles)}
-                variant="outline"
-                size="lg"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-semibold text-sm shadow-xs transition-colors"
               >
                 {showAllArticles
                   ? t("homepage.showLess")
                   : t("homepage.showAllArticlesButton", { count: nonPinnedFilteredArticles.length })}
-              </Button>
+              </button>
             )}
             {nonPinnedFilteredArticles.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">{t("homepage.noArticlesFound")}</p>
-                <p className="text-sm text-muted-foreground mt-2">{t("homepage.tryAdjustingFilters")}</p>
+                <p className="text-lg text-slate-600 dark:text-slate-400">{t("homepage.noArticlesFound")}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">{t("homepage.tryAdjustingFilters")}</p>
               </div>
             )}
           </div>

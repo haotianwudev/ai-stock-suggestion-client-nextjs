@@ -55,10 +55,10 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
 
   return (
     <>
-      <Card className="overflow-hidden flex flex-col shadow-sm border border-border h-auto">
+      <Card className="overflow-hidden flex flex-col shadow-xs border border-gray-200 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-900 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:shadow-md transition-all duration-200 h-auto">
         <div className="flex flex-col sm:flex-row gap-2 md:gap-3 p-2 md:p-3 pb-0">
           {displayImageUrl && (
-            <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-lg overflow-hidden bg-gray-100 group">
+            <div className="relative flex-shrink-0 w-full sm:w-64 h-48 sm:h-48 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 group">
               <img
                 src={displayImageUrl}
                 alt={displayTitle}
@@ -79,23 +79,23 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
               {/* Full-screen button overlay */}
               <button
                 onClick={() => setIsImageViewerOpen(true)}
-                className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+                className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
                 title={t("articleCard.viewFullScreen")}
               >
                 <Maximize2 className="h-3 w-3" />
               </button>
               {(isVideo || hasAttachedVideo) && (
-                <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
+                <span className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-gradient-to-r from-red-600 to-red-700 text-xs text-white font-semibold shadow">
                   {t("articleCard.video")}
                 </span>
               )}
               {podcastUrl && !isVideo && !hasAttachedVideo && (
-                <span className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
+                <span className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-gradient-to-r from-green-600 to-green-700 text-xs text-white font-semibold shadow">
                   {t("articleCard.podcast")}
                 </span>
               )}
               {options && (
-                <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
+                <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-gradient-to-r from-orange-500 to-yellow-600 text-xs text-white font-semibold shadow">
                   {t("articleCard.options")}
                 </span>
               )}
@@ -106,7 +106,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     e.stopPropagation();
                     setShowVideoThumb((prev) => !prev);
                   }}
-                  className="absolute bottom-2 left-2 inline-flex items-center gap-1 px-2 py-1 rounded bg-black/60 hover:bg-black/80 text-white text-[10px] font-medium shadow transition-colors z-10 touch-manipulation"
+                  className="absolute bottom-2 left-2 inline-flex items-center gap-1 px-2 py-1 rounded-md bg-black/60 hover:bg-black/80 text-white text-[10px] font-medium shadow transition-colors z-10 touch-manipulation"
                   title={showVideoThumb ? t("articleCard.showInfographic") : t("articleCard.showVideoThumbnail")}
                 >
                   {showVideoThumb ? <ImageIcon className="h-3 w-3" /> : <PlayCircle className="h-3 w-3" />}
@@ -118,7 +118,7 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
         <div className="flex-1 flex flex-col justify-between min-w-0">
           <div>
             <div className="flex items-start justify-between gap-2">
-              <CardTitle className="text-xl font-bold leading-tight line-clamp-2 mb-0.5">{displayTitle}</CardTitle>
+              <CardTitle className="font-serif text-lg sm:text-xl font-bold leading-tight line-clamp-2 mb-0.5 text-slate-900 dark:text-slate-100">{displayTitle}</CardTitle>
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -130,8 +130,8 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                 title={bookmarked ? t("articleCard.bookmarkRemove") : t("articleCard.bookmarkAdd")}
                 className={`shrink-0 inline-flex items-center justify-center size-7 rounded-lg border transition-colors disabled:opacity-50 ${
                   bookmarked
-                    ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
-                    : "border-border text-muted-foreground hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
+                    ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10"
+                    : "border-gray-200 dark:border-gray-800 text-slate-400 dark:text-slate-500 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:text-[#A8672E] dark:hover:text-[#D08F52]"
                 }`}
               >
                 <Bookmark className="size-3.5" fill={bookmarked ? "currentColor" : "none"} />
@@ -265,10 +265,10 @@ export function ArticleCard({ title, description, slug, date, imageUrl, googleDo
                     {!noSummary && (
                       <Link
                         href={`/articles/${slug}`}
-                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg border border-primary/40 text-primary font-semibold bg-card hover:bg-accent transition-colors text-sm"
+                        className="flex-1 inline-flex items-center justify-center px-2 py-2 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-800 dark:text-slate-200 hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 font-semibold shadow-xs transition-colors text-sm"
                       >
                         <span className="truncate">{t("articleCard.readArticle")}</span>
-                        <ArrowRight className="ml-1.5 h-4 w-4 shrink-0 hidden sm:block" />
+                        <ArrowRight className="ml-1.5 h-4 w-4 shrink-0 hidden sm:block text-[#A8672E] dark:text-[#D08F52]" />
                       </Link>
                     )}
                   </>
