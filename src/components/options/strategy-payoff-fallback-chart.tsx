@@ -9,7 +9,6 @@ const DEFAULT_DEMO_PARAMS = { stockPrice: 100, strike1: 100, strike2: 105, strik
  * other strategy either has a payoffPresetId directly, or (covered_call, wheel_strategy,
  * collar_strategy, buffered_strategy) uses a synthetic stock leg alongside real chain-priced
  * options — see payoff.ts's OptionLegType comment for why a stock leg is synthetic for SPX.
- * Shared unmodified by the legacy detail view and the new StrategyPayoffPanel.
  */
 export const PayoffChart = ({ strategy }: { strategy: Strategy }) => {
     const demo = { ...DEFAULT_DEMO_PARAMS, ...strategy.payoffDemoParams };

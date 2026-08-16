@@ -79,15 +79,15 @@ function StudyGuideCard({
 }
 
 /**
- * New ArticleFrame-styled per-strategy shell, used only when strategy.detailSections is set
- * (see strategy-explorer.tsx's branch). One continuous scrolling page — no tabs — mirroring
- * how article pages read: Overview flows straight into a connected Payoff+Playbook section.
- * The sticky sidebar leads with a Study Guide — every related article, primary one first —
- * and selecting one drives the Video/Paper/Wiki cards below it (reusing ArticleFrame's own
- * components, not reimplementations) to that article's media — no strategy-level infographic.
+ * ArticleFrame-styled per-strategy shell — every strategy renders through this now (no legacy
+ * track left). One continuous scrolling page — no tabs — mirroring how article pages read:
+ * Overview flows straight into a connected Payoff+Playbook section. The sticky sidebar leads
+ * with a Study Guide — every related article, primary one first — and selecting one drives the
+ * Video/Paper/Wiki cards below it (reusing ArticleFrame's own components, not reimplementations)
+ * to that article's media — no strategy-level infographic.
  */
 export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; onBack: () => void }) {
-    const sections = strategy.detailSections;
+    const { overview: Overview, playbook: Playbook } = strategy.detailSections;
     const [paperOpen, setPaperOpen] = useState(false);
     const [wikiOpen, setWikiOpen] = useState(false);
 
@@ -114,9 +114,6 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
             ),
         [relatedArticles, strategy.studyGuideLabels]
     );
-
-    if (!sections) return null;
-    const { overview: Overview, playbook: Playbook } = sections;
 
     const selectedArticle = relatedArticles.find((a) => a.slug === selectedSlug);
     const hasVideo = Boolean(selectedArticle?.youtubeUrl);

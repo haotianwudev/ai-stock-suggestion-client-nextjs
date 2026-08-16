@@ -1,8 +1,6 @@
 import { articles } from '@/data/articles';
 import { Article } from '@/data/articles/types';
 import { BaseConfig, ResolvedStudyGuideItem, StudyGuideItem } from '@/components/shared/config-types';
-import { Strategy } from '@/components/options/strategy-config';
-import { extractYouTubeId } from '@/lib/youtube';
 import { SITE_URL } from '@/lib/site';
 
 /**
@@ -170,19 +168,6 @@ export function resolveRelatedArticleSlugs(config: BaseConfig): string[] {
     if (item.articleSlug) slugs.push(item.articleSlug);
   }
   return [...new Set(slugs)].filter((slug) => getArticleBySlug(slug) !== undefined);
-}
-
-// Same idea as resolveTopicMedia, for options/strategy-config.ts: a strategy's youtubeId/
-// infographicUrl fall back to its primaryArticleSlug's article when not given explicitly.
-export function resolveStrategyMedia(strategy: Strategy): { youtubeId?: string; infographicUrl?: string } {
-  if (!strategy.primaryArticleSlug) {
-    return { youtubeId: strategy.youtubeId, infographicUrl: strategy.infographicUrl };
-  }
-  const article = getArticleBySlug(strategy.primaryArticleSlug);
-  return {
-    youtubeId: strategy.youtubeId ?? (article?.youtubeUrl ? extractYouTubeId(article.youtubeUrl) ?? undefined : undefined),
-    infographicUrl: strategy.infographicUrl ?? article?.infographicUrl,
-  };
 }
 
 // Get article categories (used by RSS, SEO, etc.)

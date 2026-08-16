@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { TrendingUp, TrendingDown, Minus, Zap, DollarSign, Shield, Star } from 'lucide-react';
 import { strategies, strategyIdToSlug, slugToStrategyId } from './strategy-config';
 import { StrategyDetailShell } from './strategy-detail-shell';
-import { StrategyDetailLegacy } from './strategy-detail-legacy';
 
 const FILTERS = ['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income', 'Risk Defined'] as const;
 
@@ -82,9 +81,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
     };
 
     if (selectedStrategy) {
-        return selectedStrategy.detailSections
-            ? <StrategyDetailShell strategy={selectedStrategy} onBack={handleBack} />
-            : <StrategyDetailLegacy strategy={selectedStrategy} onBack={handleBack} />;
+        return <StrategyDetailShell strategy={selectedStrategy} onBack={handleBack} />;
     }
 
     return (

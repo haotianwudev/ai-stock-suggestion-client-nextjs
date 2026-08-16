@@ -16,11 +16,6 @@ export interface PayoffParams {
 
 export type PayoffCalculator = (price: number, params: PayoffParams) => number;
 
-export interface StrategyDetailProps {
-    strategy: Strategy;
-    onBack: () => void;
-}
-
 export interface StrategyDetailSections {
     overview: ComponentType<{ strategy: Strategy }>;
     playbook: ComponentType<{ strategy: Strategy }>;
@@ -39,22 +34,14 @@ export interface Strategy {
     payoffPresetId?: string; // Renders the generic interactive SpxPayoffBuilder locked to this preset id (see src/lib/options/presets.ts) instead of the static diagram
     payoffExpirationTargetDte?: number; // Initial expiration DTE target for the interactive builder (default 45); set higher for LEAPS-framed strategies
     customPayoffBuilder?: ComponentType<{ strategy: Strategy }>; // Lower-level escape hatch for a payoff diagram that isn't expressible as a preset
-    youtubeId?: string;  // Explicit override; falls back to primaryArticleSlug's article when unset
     payoffExplanation?: string;  // Explanation for the payoff diagram
-    relatedArticles?: string[];  // Array of article slugs
-    infographicUrl?: string;     // Explicit override; falls back to primaryArticleSlug's article when unset
-    primaryArticleSlug?: string; // Article whose youtubeUrl/infographicUrl this strategy's media derives from
-    /** LEGACY — ad hoc 7-section stacked layout rendered by StrategyDetailLegacy. Strategies not
-     * yet migrated to the new shell use this. Do not set this for new strategies — use
-     * `detailSections` instead (see sophie-option-strategy skill for the migration procedure). */
-    detailComponent?: ComponentType<StrategyDetailProps>;
-    /** Overview + Playbook content for the ArticleFrame-styled StrategyDetailShell. Presence of
-     * this field is what switches strategy-explorer.tsx to render the new shell (single scrolling
-     * page + sidebar) instead of the legacy single-scroll view. */
-    detailSections?: StrategyDetailSections;
-    /** New-shell-only. Short display labels for the sidebar Study Guide list, keyed by article
-     * slug — falls back to the article's own (often much longer) title when not set. The
-     * sidebar column is only 336px, so set this whenever an article's real title runs long. */
+    relatedArticles?: string[];  // Article slugs — populates the sidebar's Study Guide selector
+    primaryArticleSlug?: string; // Which relatedArticles entry the Study Guide selector picks by default
+    /** Overview + Playbook content rendered by the ArticleFrame-styled StrategyDetailShell. */
+    detailSections: StrategyDetailSections;
+    /** Short display labels for the sidebar Study Guide list, keyed by article slug — falls back
+     * to the article's own (often much longer) title when not set. The sidebar column is only
+     * 336px, so set this whenever an article's real title runs long. */
     studyGuideLabels?: Record<string, string>;
 }
 
@@ -75,7 +62,6 @@ import { CoveredCallOverview, CoveredCallPlaybook } from './strategies/covered-c
 import { PutWritingOverview, PutWritingPlaybook } from './strategies/put-writing-strategy';
 import { LongStraddleOverview, LongStraddlePlaybook } from './strategies/long-straddle-strategy';
 import { LongStrangleOverview, LongStranglePlaybook } from './strategies/long-strangle-strategy';
-import { DefaultStrategyDetail } from './strategies/default-strategy';
 import { BufferedOverview, BufferedPlaybook } from './strategies/buffered-strategy';
 import { CalendarSpreadOverview, CalendarSpreadPlaybook } from './strategies/calendar-spread-strategy';
 import { ButterflySpreadOverview, ButterflySpreadPlaybook } from './strategies/butterfly-spread-strategy';
@@ -465,11 +451,6 @@ export const strategies: Strategy[] = [
 ];
 
 // --- UTILITY FUNCTIONS ---
-export const getStrategyDetailComponent = (strategyId: string) => {
-    const strategy = strategies.find(s => s.id === strategyId);
-    return strategy?.detailComponent || DefaultStrategyDetail;
-};
-
 // Strategy <-> URL slug conversion (/option/strategies/{slug}), shared by strategy-explorer.tsx
 // and the article-backlink lookup in lib/topic-links.ts so both agree on the same URLs.
 export const strategyIdToSlug = (id: string): string => id.replace(/_/g, '-');
