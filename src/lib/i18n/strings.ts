@@ -201,9 +201,9 @@ export const en = {
     aboutCardOpenTitle: "Open to everyone",
     aboutCardOpenDescription:
       "The entire article library, investment clock, and live market tools are 100% free with no sign-in required. Free sign-in unlocks bookmarking, forum discussions, and subscriber perks.",
-    aboutCardGooglePrivacyTitle: "Google sign-in privacy",
-    aboutCardGooglePrivacyDescription:
-      "Signing in with Google is one optional way to create that account. SOPHIE receives only your name, email address, and profile picture, used solely to create your profile and attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other Google data.",
+    aboutCardToolsTitle: "Live Tools & Investment Clock",
+    aboutCardToolsDescription:
+      "Explore interactive macroeconomic dashboards, the live Investment Clock, quant trending trackers, and options modeling tools directly in your browser.",
     aboutSuggestTopicForum: "Suggest a Topic in Forum",
   },
 };
@@ -391,9 +391,9 @@ export const zh: typeof en = {
     aboutCardOpenTitle: "面向所有人免费开放",
     aboutCardOpenDescription:
       "本首页、文章库、投资时钟及实时市场工具均完全公开，无需注册即可浏览。免费登录可解锁文章收藏、学习大纲、论坛讨论与订阅特权。",
-    aboutCardGooglePrivacyTitle: "Google 登录隐私说明",
-    aboutCardGooglePrivacyDescription:
-      "使用 Google 登录是创建账户的可选方式。SOPHIE 仅获取你的姓名、电子邮箱地址和头像用于创建档案与发表署名，绝不会访问你的 Gmail、Drive 或任何隐私数据。",
+    aboutCardToolsTitle: "实时工具与宏观时钟",
+    aboutCardToolsDescription:
+      "体验互动式宏观经济仪表盘、实时美林投资时钟、量化热点追踪器与期权建模分析工具，浏览器内即开即用。",
     aboutSuggestTopicForum: "在论坛提交选题建议",
   },
 };

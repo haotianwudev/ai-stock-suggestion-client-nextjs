@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles, Layers, BookOpen, GraduationCap, Lightbulb, MessageSquare } from "lucide-react";
+import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles, Layers, BookOpen, GraduationCap, Lightbulb, MessageSquare, Activity } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
@@ -117,9 +117,9 @@ export default function Home() {
       iconClass: "text-[#1D8A70] dark:text-[#3CBF9C]",
     },
     {
-      icon: ShieldCheck,
-      title: t("homepage.aboutCardGooglePrivacyTitle"),
-      description: t("homepage.aboutCardGooglePrivacyDescription"),
+      icon: Activity,
+      title: t("homepage.aboutCardToolsTitle"),
+      description: t("homepage.aboutCardToolsDescription"),
       iconBgClass: "bg-[#A8672E]/10 dark:bg-[#D08F52]/15",
       iconClass: "text-[#A8672E] dark:text-[#D08F52]",
     },
