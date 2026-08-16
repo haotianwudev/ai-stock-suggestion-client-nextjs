@@ -187,6 +187,15 @@ export function canAccessPremiumContent(tier: number): boolean {
  * server/src/resolvers/forum.js -- keep both in sync. */
 export const MIN_COMMENT_TIER = 3;
 
+/** Tier required to moderate / remove comments and forum posts (Partner = 8, Head Quant / Admin = 9).
+ * Mirrors MIN_MODERATOR_TIER in server/src/resolvers/forum.js. */
+export const MIN_MODERATOR_TIER = 8;
+
+/** Returns true when the user tier allows moderating / deleting any comment or forum post. */
+export function canModerateComments(tier: number): boolean {
+  return tier >= MIN_MODERATOR_TIER;
+}
+
 /** Tier required to view non-default topic pages (see TopicAccessGate). */
 export const MIN_TOPIC_TIER = 2;
 

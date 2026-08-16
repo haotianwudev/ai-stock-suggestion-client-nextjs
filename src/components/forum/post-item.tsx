@@ -9,10 +9,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { EDIT_POST, DELETE_POST, GET_FORUM_POSTS } from "@/lib/graphql/queries";
 import { ForumPost } from "@/lib/graphql/types";
 import { useUser } from "@/hooks/use-user";
+import { canDeletePost } from "@/lib/forum";
 
 export function PostItem({ post, indented = false }: { post: ForumPost; indented?: boolean }) {
-  const { user } = useUser();
+  const { user, profile } = useUser();
   const isOwner = user?.id === post.authorId;
+  const canDelete = canDeletePost(user?.id, post.authorId, profile?.tier ?? 1);
+  const isModerator = !isOwner && canDelete;
+
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(post.body);
 
@@ -38,11 +42,15 @@ export function PostItem({ post, indented = false }: { post: ForumPost; indented
   }
 
   async function handleDelete() {
-    if (!confirm("Delete this post?")) return;
+    const promptMsg = isModerator
+      ? "Delete this comment as moderator?"
+      : "Delete your comment?";
+    if (!confirm(promptMsg)) return;
     try {
       await deletePost({ variables: { id: post.id } });
+      toast.success("Comment deleted.");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Couldn't delete your post.");
+      toast.error(e instanceof Error ? e.message : "Couldn't delete comment.");
     }
   }
 
@@ -84,20 +92,22 @@ export function PostItem({ post, indented = false }: { post: ForumPost; indented
           <p className="mt-1 whitespace-pre-wrap text-sm">{post.body}</p>
         )}
 
-        {isOwner && !isEditing && (
+        {!isEditing && (isOwner || canDelete) && (
           <div className="mt-1 flex gap-3">
-            <button
-              className="text-xs text-muted-foreground hover:text-foreground"
-              onClick={() => setIsEditing(true)}
-            >
-              Edit
-            </button>
+            {isOwner && (
+              <button
+                className="text-xs text-muted-foreground hover:text-foreground"
+                onClick={() => setIsEditing(true)}
+              >
+                Edit
+              </button>
+            )}
             <button
               className="text-xs text-muted-foreground hover:text-destructive"
               onClick={handleDelete}
               disabled={deleting}
             >
-              Delete
+              {isModerator ? "Delete (Mod)" : "Delete"}
             </button>
           </div>
         )}
