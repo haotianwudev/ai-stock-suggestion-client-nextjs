@@ -21,6 +21,11 @@ export interface StrategyDetailProps {
     onBack: () => void;
 }
 
+export interface StrategyDetailSections {
+    overview: ComponentType<{ strategy: Strategy }>;
+    playbook: ComponentType<{ strategy: Strategy }>;
+}
+
 export interface Strategy {
     id: string;
     category: StrategyCategory[];  // Changed to array to support multiple categories
@@ -39,31 +44,42 @@ export interface Strategy {
     relatedArticles?: string[];  // Array of article slugs
     infographicUrl?: string;     // Explicit override; falls back to primaryArticleSlug's article when unset
     primaryArticleSlug?: string; // Article whose youtubeUrl/infographicUrl this strategy's media derives from
-    detailComponent?: ComponentType<StrategyDetailProps>; // Component for detailed view
+    /** LEGACY — ad hoc 7-section stacked layout rendered by StrategyDetailLegacy. Strategies not
+     * yet migrated to the new shell use this. Do not set this for new strategies — use
+     * `detailSections` instead (see sophie-option-strategy skill for the migration procedure). */
+    detailComponent?: ComponentType<StrategyDetailProps>;
+    /** Overview + Playbook content for the ArticleFrame-styled StrategyDetailShell. Presence of
+     * this field is what switches strategy-explorer.tsx to render the new shell (single scrolling
+     * page + sidebar) instead of the legacy single-scroll view. */
+    detailSections?: StrategyDetailSections;
+    /** New-shell-only. Short display labels for the sidebar Study Guide list, keyed by article
+     * slug — falls back to the article's own (often much longer) title when not set. The
+     * sidebar column is only 336px, so set this whenever an article's real title runs long. */
+    studyGuideLabels?: Record<string, string>;
 }
 
 // Import strategy detail components
-import { WheelStrategyDetail } from './strategies/wheel-strategy';
-import { IronCondorStrategyDetail } from './strategies/iron-condor-strategy';
-import { LongPutStrategyDetail } from './strategies/long-put-strategy';
-import { LongCallStrategyDetail } from './strategies/long-call-strategy';
-import { LeapsPutStrategyDetail } from './strategies/leaps-put-strategy';
-import { CollarStrategyDetail } from './strategies/collar-strategy';
-import { ShortStraddleStrategyDetail } from './strategies/short-straddle-strategy';
-import { ShortStrangleStrategyDetail } from './strategies/short-strangle-strategy';
-import { BullPutSpreadStrategyDetail } from './strategies/bull-put-spread-strategy';
-import { BullCallSpreadStrategyDetail } from './strategies/bull-call-spread-strategy';
-import { BearPutSpreadStrategyDetail } from './strategies/bear-put-spread-strategy';
-import { BearCallSpreadStrategyDetail } from './strategies/bear-call-spread-strategy';
-import { CoveredCallStrategyDetail } from './strategies/covered-call-strategy';
-import { PutWritingStrategyDetail } from './strategies/put-writing-strategy';
-import { LongStraddleStrategyDetail } from './strategies/long-straddle-strategy';
-import { LongStrangleStrategyDetail } from './strategies/long-strangle-strategy';
+import { WheelOverview, WheelPlaybook } from './strategies/wheel-strategy';
+import { IronCondorOverview, IronCondorPlaybook } from './strategies/iron-condor-strategy';
+import { LongPutOverview, LongPutPlaybook } from './strategies/long-put-strategy';
+import { LongCallOverview, LongCallPlaybook } from './strategies/long-call-strategy';
+import { LeapsPutOverview, LeapsPutPlaybook } from './strategies/leaps-put-strategy';
+import { CollarOverview, CollarPlaybook } from './strategies/collar-strategy';
+import { ShortStraddleOverview, ShortStraddlePlaybook } from './strategies/short-straddle-strategy';
+import { ShortStrangleOverview, ShortStranglePlaybook } from './strategies/short-strangle-strategy';
+import { BullPutSpreadOverview, BullPutSpreadPlaybook } from './strategies/bull-put-spread-strategy';
+import { BullCallSpreadOverview, BullCallSpreadPlaybook } from './strategies/bull-call-spread-strategy';
+import { BearPutSpreadOverview, BearPutSpreadPlaybook } from './strategies/bear-put-spread-strategy';
+import { BearCallSpreadOverview, BearCallSpreadPlaybook } from './strategies/bear-call-spread-strategy';
+import { CoveredCallOverview, CoveredCallPlaybook } from './strategies/covered-call-strategy';
+import { PutWritingOverview, PutWritingPlaybook } from './strategies/put-writing-strategy';
+import { LongStraddleOverview, LongStraddlePlaybook } from './strategies/long-straddle-strategy';
+import { LongStrangleOverview, LongStranglePlaybook } from './strategies/long-strangle-strategy';
 import { DefaultStrategyDetail } from './strategies/default-strategy';
-import { BufferedStrategyDetail } from './strategies/buffered-strategy';
-import { CalendarSpreadStrategyDetail } from './strategies/calendar-spread-strategy';
-import { ButterflySpreadStrategyDetail } from './strategies/butterfly-spread-strategy';
-import { SeagullSpreadStrategyDetail } from './strategies/seagull-spread-strategy';
+import { BufferedOverview, BufferedPlaybook } from './strategies/buffered-strategy';
+import { CalendarSpreadOverview, CalendarSpreadPlaybook } from './strategies/calendar-spread-strategy';
+import { ButterflySpreadOverview, ButterflySpreadPlaybook } from './strategies/butterfly-spread-strategy';
+import { SeagullSpreadOverview, SeagullSpreadPlaybook } from './strategies/seagull-spread-strategy';
 
 // --- STRATEGY DATA ---
 export const strategies: Strategy[] = [
@@ -79,7 +95,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real SPX call from the current chain. Change the expiration or strike to see the payoff update live. Maximum loss is the premium paid, occurring if the stock stays below the strike; profit is unlimited above it.",
         relatedArticles: ["single-leg-long-call-asymmetric-leverage-options-trading"],
         primaryArticleSlug: 'single-leg-long-call-asymmetric-leverage-options-trading',
-        detailComponent: LongCallStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: LongCallOverview, playbook: LongCallPlaybook },
+        studyGuideLabels: {
+            'single-leg-long-call-asymmetric-leverage-options-trading': 'Single-Leg Long Call',
+        },
     },
     {
         id: 'bull_call_spread',
@@ -93,7 +112,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real long call (near the money) and short call (further OTM) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit occurs at or above the short call strike; maximum loss is the net debit paid, occurring at or below the long call strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         primaryArticleSlug: 'vertical-debit-spreads-strategic-architecture-defined-risk-trading',
-        detailComponent: BullCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: BullCallSpreadOverview, playbook: BullCallSpreadPlaybook },
+        studyGuideLabels: {
+            'vertical-debit-spreads-strategic-architecture-defined-risk-trading': 'Vertical Debit Spreads',
+        },
     },
     {
         id: 'bull_put_spread',
@@ -107,7 +129,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real short put (~30 delta) and a further-OTM long put (~10 delta) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, occurring at or above the short put strike; maximum loss occurs at or below the long put strike.",
         relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         primaryArticleSlug: 'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling',
-        detailComponent: BullPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: BullPutSpreadOverview, playbook: BullPutSpreadPlaybook },
+        studyGuideLabels: {
+            'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling': 'Vertical Credit Spreads',
+        },
     },
     {
         id: 'covered_call',
@@ -121,7 +146,15 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a synthetic long index position plus a real ~30-delta short call from the current SPX chain (SPX is cash-settled with no deliverable shares, so this is illustrative, same as every other diagram on this page — but now priced against real chain data). Change the expiration or the call strike to see the payoff update live. Maximum profit occurs when the price is at or above the call strike, capped at strike minus entry price plus premium received; loss is uncapped on the downside (offset by the premium collected), same as owning the stock outright.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'covered-calls-vs-cash-secured-puts',
-        detailComponent: CoveredCallStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: CoveredCallOverview, playbook: CoveredCallPlaybook },
+        studyGuideLabels: {
+            'optionalpha-select-systematic-underlyer-selection-premium-selling': 'Systematic Underlyer Selection',
+            'covered-calls-vs-cash-secured-puts': 'Covered Calls vs CSPs',
+            'covering-world-global-evidence-covered-calls': 'Global Evidence on Covered Calls',
+            'strategic-portfolio-management-option-writing': 'Strategic Portfolio Management',
+            'options-wheel-trading-plan-quantitative-approach': 'The Wheel Trading Plan',
+            'mastering-volatility-risk-premium-spx-options-selling': 'Volatility Risk Premium',
+        },
     },
     {
         id: 'put_writing',
@@ -137,7 +170,15 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ~30-delta short put from the current SPX chain. Change the expiration or strike to see the payoff update live. Maximum profit is the premium collected, earned above the strike; loss grows below it, down to (in principle) the stock reaching zero.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'covered-calls-vs-cash-secured-puts',
-        detailComponent: PutWritingStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: PutWritingOverview, playbook: PutWritingPlaybook },
+        studyGuideLabels: {
+            'optionalpha-select-systematic-underlyer-selection-premium-selling': 'Systematic Underlyer Selection',
+            'covered-calls-vs-cash-secured-puts': 'Covered Calls vs CSPs',
+            'covering-world-global-evidence-covered-calls': 'Global Evidence on Covered Calls',
+            'strategic-portfolio-management-option-writing': 'Strategic Portfolio Management',
+            'options-wheel-trading-plan-quantitative-approach': 'The Wheel Trading Plan',
+            'mastering-volatility-risk-premium-spx-options-selling': 'Volatility Risk Premium',
+        },
     },
     {
         id: 'long_put',
@@ -151,7 +192,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real SPX put from the current chain. Change the expiration or strike to see the payoff update live. Maximum loss is the premium paid, occurring if the stock stays above the strike; profit grows as the stock falls below it, capped only by the stock reaching zero.",
         relatedArticles: ["single-leg-put-strategy-asymmetric-utility"],
         primaryArticleSlug: 'single-leg-put-strategy-asymmetric-utility',
-        detailComponent: LongPutStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: LongPutOverview, playbook: LongPutPlaybook },
+        studyGuideLabels: {
+            'single-leg-put-strategy-asymmetric-utility': 'Single-Leg Put Strategy',
+        },
     },
     {
         id: 'bear_put_spread',
@@ -165,7 +209,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real long put (near the money) and short put (further OTM) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit occurs at or below the short put strike; maximum loss is the net debit paid, occurring at or above the long put strike.",
         relatedArticles: ["vertical-debit-spreads-strategic-architecture-defined-risk-trading"],
         primaryArticleSlug: 'vertical-debit-spreads-strategic-architecture-defined-risk-trading',
-        detailComponent: BearPutSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: BearPutSpreadOverview, playbook: BearPutSpreadPlaybook },
+        studyGuideLabels: {
+            'vertical-debit-spreads-strategic-architecture-defined-risk-trading': 'Vertical Debit Spreads',
+        },
     },
     {
         id: 'bear_call_spread',
@@ -179,7 +226,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real short call (~30 delta) and a further-OTM long call (~10 delta) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, occurring at or below the short call strike; maximum loss occurs at or above the long call strike.",
         relatedArticles: ["vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling"],
         primaryArticleSlug: 'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling',
-        detailComponent: BearCallSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: BearCallSpreadOverview, playbook: BearCallSpreadPlaybook },
+        studyGuideLabels: {
+            'vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling': 'Vertical Credit Spreads',
+        },
     },
     {
         id: 'short_straddle',
@@ -193,7 +243,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ATM call and put (same strike) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, earned right at the strike; losses grow without limit as the stock moves away in either direction.",
         relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         primaryArticleSlug: 'mastering-short-volatility-straddles-strangles-systematic-premium-collection',
-        detailComponent: ShortStraddleStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: ShortStraddleOverview, playbook: ShortStraddlePlaybook },
+        studyGuideLabels: {
+            'mastering-short-volatility-straddles-strangles-systematic-premium-collection': 'Short Straddles & Strangles',
+        },
     },
     {
         id: 'short_strangle',
@@ -207,7 +260,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ~16-delta short call and short put from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum profit is the net credit collected, earned when the stock stays between the two strikes; losses grow without limit beyond either strike.",
         relatedArticles: ["mastering-short-volatility-straddles-strangles-systematic-premium-collection"],
         primaryArticleSlug: 'mastering-short-volatility-straddles-strangles-systematic-premium-collection',
-        detailComponent: ShortStrangleStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: ShortStrangleOverview, playbook: ShortStranglePlaybook },
+        studyGuideLabels: {
+            'mastering-short-volatility-straddles-strangles-systematic-premium-collection': 'Short Straddles & Strangles',
+        },
     },
     {
         id: 'iron_condor',
@@ -217,14 +273,14 @@ export const strategies: Strategy[] = [
         profile: 'Defined Risk, Defined Profit',
         volatility: 'Benefits from falling IV (Short Vega)',
         time: 'Benefits from time decay (Long Theta)',
-        // No payoffCalculator: the diagram below is the generic interactive SpxPayoffBuilder,
-        // locked to the 'iron_condor' preset (src/lib/options/presets.ts) — real chain data,
-        // not an illustrative formula.
         payoffPresetId: 'iron_condor',
         payoffExplanation: "Legs are pre-filled with realistic ~16-20 delta strikes from a real SPX option chain (sophie-option-research, historical). Change the expiration or any leg to see the payoff update live. Maximum profit is the net credit collected, earned when the stock stays between the short strikes at expiration; losses grow beyond either short strike and are capped once price passes the long (protective) strikes.",
         relatedArticles: ["iron-condor-quantitative-delta-neutral-premium-harvesting"],
         primaryArticleSlug: 'iron-condor-quantitative-delta-neutral-premium-harvesting',
-        detailComponent: IronCondorStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: IronCondorOverview, playbook: IronCondorPlaybook },
+        studyGuideLabels: {
+            'iron-condor-quantitative-delta-neutral-premium-harvesting': 'Iron Condor Quantitative Guide',
+        },
     },
     {
         id: 'long_straddle',
@@ -238,7 +294,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ATM call and put (same strike) from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum loss is the combined premium paid, occurring right at the strike; profit is unlimited as the stock moves away in either direction, once past breakeven.",
         relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         primaryArticleSlug: 'mastering-volatility-definitive-guide-long-straddles-strangles',
-        detailComponent: LongStraddleStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: LongStraddleOverview, playbook: LongStraddlePlaybook },
+        studyGuideLabels: {
+            'mastering-volatility-definitive-guide-long-straddles-strangles': 'Long Straddles & Strangles',
+        },
     },
     {
         id: 'long_strangle',
@@ -252,7 +311,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ~30-delta call and put from the current SPX chain. Change the expiration or either strike to see the payoff update live. Maximum loss is the combined premium paid, occurring anywhere between the two strikes; profit is unlimited beyond either strike, once past breakeven.",
         relatedArticles: ["mastering-volatility-definitive-guide-long-straddles-strangles"],
         primaryArticleSlug: 'mastering-volatility-definitive-guide-long-straddles-strangles',
-        detailComponent: LongStrangleStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: LongStrangleOverview, playbook: LongStranglePlaybook },
+        studyGuideLabels: {
+            'mastering-volatility-definitive-guide-long-straddles-strangles': 'Long Straddles & Strangles',
+        },
     },
     {
         id: 'wheel_strategy',
@@ -266,7 +328,15 @@ export const strategies: Strategy[] = [
         payoffExplanation: "The wheel cycles between two phases — selling a cash-secured put (see Put Writing's diagram) until assigned, then selling covered calls against the acquired shares. This diagram shows the covered-call phase: legs are pre-filled with a synthetic long index position plus a real ~30-delta short call from the current SPX chain. By put-call parity (C + X = P + S), a covered call's payoff shape is mathematically identical to a naked short put, which is why the wheel's two phases have the same-shaped risk profile despite looking structurally different.",
         relatedArticles: ["optionalpha-select-systematic-underlyer-selection-premium-selling", "covered-calls-vs-cash-secured-puts", "covering-world-global-evidence-covered-calls", "strategic-portfolio-management-option-writing", "options-wheel-trading-plan-quantitative-approach", "mastering-volatility-risk-premium-spx-options-selling"],
         primaryArticleSlug: 'options-wheel-trading-plan-quantitative-approach',
-        detailComponent: WheelStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: WheelOverview, playbook: WheelPlaybook },
+        studyGuideLabels: {
+            'optionalpha-select-systematic-underlyer-selection-premium-selling': 'Systematic Underlyer Selection',
+            'covered-calls-vs-cash-secured-puts': 'Covered Calls vs CSPs',
+            'covering-world-global-evidence-covered-calls': 'Global Evidence on Covered Calls',
+            'strategic-portfolio-management-option-writing': 'Strategic Portfolio Management',
+            'options-wheel-trading-plan-quantitative-approach': 'The Wheel Trading Plan',
+            'mastering-volatility-risk-premium-spx-options-selling': 'Volatility Risk Premium',
+        },
     },
     {
         id: 'leaps_put_selling',
@@ -281,7 +351,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real ~30-delta short put from the current SPX chain, defaulted to a ~1-year expiration for the LEAPS framing. Change the expiration or strike to see the payoff update live. LEAPS put selling generates premium income upfront; if assigned, you acquire the stock at the strike price minus premium received.",
         relatedArticles: ["selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage"],
         primaryArticleSlug: 'selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage',
-        detailComponent: LeapsPutStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: LeapsPutOverview, playbook: LeapsPutPlaybook },
+        studyGuideLabels: {
+            'selling-long-dated-put-options-leaps-institutional-mechanics-volatility-arbitrage': 'LEAPS Put Selling',
+        },
     },
     {
         id: 'collar_strategy',
@@ -295,7 +368,12 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a synthetic long index position, a real ~20-delta protective put, and a real ~20-delta short call from the current SPX chain. Change the expiration or either strike to see the payoff update live. The collar creates a defined range of outcomes: maximum loss occurs at or below the put strike, maximum profit at or above the call strike.",
         relatedArticles: ["option-collar-strategy-protect-gains-define-risk", "structured-liquidity-hedging-equity-collars-pvsf", "advanced-options-collar-strategies-structural-mechanics-tradeoffs"],
         primaryArticleSlug: 'option-collar-strategy-protect-gains-define-risk',
-        detailComponent: CollarStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: CollarOverview, playbook: CollarPlaybook },
+        studyGuideLabels: {
+            'option-collar-strategy-protect-gains-define-risk': 'Option Collar Strategy',
+            'structured-liquidity-hedging-equity-collars-pvsf': 'Structured Equity Collars',
+            'advanced-options-collar-strategies-structural-mechanics-tradeoffs': 'Advanced Collar Mechanics',
+        },
     },
     {
         id: 'buffered_strategy',
@@ -309,7 +387,11 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a synthetic long index position, a real ~35-delta protective put, a real ~10-delta short put (defining where the buffer ends), and a real ~20-delta short call (the cap) from the current SPX chain. Change the expiration or any strike to see the payoff update live. The strategy creates a defined range of outcomes: the put spread absorbs losses down to the short put's strike (the 'buffer'), below which loss resumes uncapped; maximum profit occurs at or above the short call's strike.",
         relatedArticles: ["mastering-buffered-yield-strategies-defined-outcome-investing", "option-collar-strategy-protect-gains-define-risk"],
         primaryArticleSlug: 'mastering-buffered-yield-strategies-defined-outcome-investing',
-        detailComponent: BufferedStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: BufferedOverview, playbook: BufferedPlaybook },
+        studyGuideLabels: {
+            'mastering-buffered-yield-strategies-defined-outcome-investing': 'Buffered Yield Strategies',
+            'option-collar-strategy-protect-gains-define-risk': 'Option Collar Strategy',
+        },
     },
     {
         id: 'calendar_spread',
@@ -341,7 +423,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Maximum profit occurs when the stock price equals the strike price at front month expiration. The back month option retains maximum time value while the front month expires worthless.",
         relatedArticles: ["calendar-spread-architecture-time-decay-options-trading"],
         primaryArticleSlug: 'calendar-spread-architecture-time-decay-options-trading',
-        detailComponent: CalendarSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: CalendarSpreadOverview, playbook: CalendarSpreadPlaybook },
+        studyGuideLabels: {
+            'calendar-spread-architecture-time-decay-options-trading': 'Calendar Spread Architecture',
+        },
     },
     {
         id: 'butterfly_spread',
@@ -355,7 +440,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real equal-width call butterfly (long lower wing, short 2x middle, long upper wing) from the current SPX chain. Change the expiration or any strike to see the payoff update live. Maximum profit occurs at the middle strike; maximum loss is the net debit paid, capped once price passes either wing.",
         relatedArticles: ["unlocking-volatility-surface-risk-neutral-densities-butterfly-spread"],
         primaryArticleSlug: 'unlocking-volatility-surface-risk-neutral-densities-butterfly-spread',
-        detailComponent: ButterflySpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: ButterflySpreadOverview, playbook: ButterflySpreadPlaybook },
+        studyGuideLabels: {
+            'unlocking-volatility-surface-risk-neutral-densities-butterfly-spread': 'Butterfly Spread & Vol Surface',
+        },
     },
     {
         id: 'seagull_spread',
@@ -369,7 +457,10 @@ export const strategies: Strategy[] = [
         payoffExplanation: "Legs are pre-filled with a real long call spread (0.40/0.20 delta) financed by a short put (0.20 delta) from the current SPX chain — checked against real data to actually be close to zero-cost. Change the expiration or any strike to see the payoff update live. Profit is capped at the call spread's width; loss grows below the short put strike (naked, not protected by a long put).",
         relatedArticles: ["seagull-spread-options-strategy-architecture"],
         primaryArticleSlug: 'seagull-spread-options-strategy-architecture',
-        detailComponent: SeagullSpreadStrategyDetail as ComponentType<StrategyDetailProps>
+        detailSections: { overview: SeagullSpreadOverview, playbook: SeagullSpreadPlaybook },
+        studyGuideLabels: {
+            'seagull-spread-options-strategy-architecture': 'Seagull Spread Architecture',
+        },
     },
 ];
 

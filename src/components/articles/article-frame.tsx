@@ -55,7 +55,7 @@ function toEmbedUrl(googleDoc: string): string | null {
   return googleDoc.includes("embedded=true") ? googleDoc : `${googleDoc}${separator}embedded=true`;
 }
 
-function SlotKicker({ icon: Icon, label, tone }: { icon: React.ElementType; label: string; tone: "accent" | "red" }) {
+export function SlotKicker({ icon: Icon, label, tone }: { icon: React.ElementType; label: string; tone: "accent" | "red" }) {
   const toneClass = tone === "red" ? "text-red-600 dark:text-red-400" : "text-[#A8672E] dark:text-[#D08F52]";
   return (
     <div className={`flex items-center gap-1.5 mb-2 text-xs font-bold uppercase tracking-wider ${toneClass}`}>
@@ -135,7 +135,7 @@ export function InfographicSlot({
 // Like/bookmark live here (not a content-blocking gate) since every article's fully
 // readable once you're past Tier 2 anyway -- this is just the natural place to act on
 // the video you're already looking at.
-function VideoCard({
+export function VideoCard({
   youtubeUrl,
   bilibiliUrl,
   title,
@@ -370,7 +370,7 @@ function ArticleNavLinks({
 // pages) — computed from those configs via getTopicsForArticle/getStrategiesForArticle, so this
 // article doesn't need its own separate "where am I referenced" config. TopicsCard/StrategiesCard
 // below are thin wrappers supplying the icon + label for their respective link set.
-function LinksCard({ icon, label, links }: { icon: React.ElementType; label: string; links: TopicLink[] }) {
+export function LinksCard({ icon, label, links }: { icon: React.ElementType; label: string; links: TopicLink[] }) {
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
       <SlotKicker icon={icon} label={label} tone="accent" />
@@ -400,7 +400,7 @@ function StrategiesCard({ links }: { links: TopicLink[] }) {
   return <LinksCard icon={TrendingUp} label={t("articleFrame.relatedStrategies")} links={links} />;
 }
 
-function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () => void }) {
+export function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () => void }) {
   const { t } = useLanguage();
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
@@ -433,7 +433,7 @@ function PaperCard({ googleDoc, onExpand }: { googleDoc: string; onExpand: () =>
 // PaperCard: an inline "Read inline" modal for the full entry, plus a link to the
 // standalone page. Mirrors the Research Paper card on purpose — both are "the full
 // source material behind this article," so they should behave the same way.
-function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void }) {
+export function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void }) {
   const { t } = useLanguage();
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
@@ -462,7 +462,7 @@ function WikiCard({ entry, onExpand }: { entry: WikiEntry; onExpand: () => void 
 // Opened from the Wiki card's "Read inline" action — same modal-over-the-article
 // shape as PaperModal, so both "source material" cards behave identically. Fetches
 // the markdown lazily (only once opened) since the teaser card never needed it.
-function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }) {
+export function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }) {
   const { t } = useLanguage();
   const [content, setContent] = useState<string | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
@@ -548,7 +548,7 @@ function WikiModal({ entry, onClose }: { entry: WikiEntry; onClose: () => void }
 // Opened from the Research Paper card's "Read inline" action — a roomy overlay rather
 // than a cramped sidebar iframe, and it doesn't disturb the reader's scroll position
 // in the main article underneath.
-function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => void }) {
+export function PaperModal({ googleDoc, onClose }: { googleDoc: string; onClose: () => void }) {
   const { t } = useLanguage();
   const embedUrl = toEmbedUrl(googleDoc);
 

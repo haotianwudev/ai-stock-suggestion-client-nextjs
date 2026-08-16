@@ -1,395 +1,155 @@
-import { StrategyDetailProps } from '../strategy-config';
+import { Compass, Sliders, AlertTriangle } from 'lucide-react';
+import { Strategy } from '../strategy-config';
+import { SectionCard } from '../strategy-visuals';
+import { ComparisonGrid, ComparisonCard, FormulaPanel, Jargon } from '@/components/articles/article-visuals';
 
-export const BufferedStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
-  return (
-    <div className="mt-6 space-y-6">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200 mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <span className="text-2xl">📚</span>
-                Strategy Details
-            </h3>
-        </div>
+const BUFFER_ELEMENTS = [
+    { label: 'Long Stock / ETF', desc: 'Provides core underlying equity exposure and dividend flow.' },
+    { label: 'Long Put (ATM / Near-ATM)', desc: 'Initiates immediate downside protection starting at the entry price.' },
+    { label: 'Short Put (OTM Buffer Boundary)', desc: 'Ends the buffer zone and re-exposes downside, financing the long put.' },
+    { label: 'Short Call (The Cap)', desc: 'Caps upside gains to achieve an exact zero net debit cost.' },
+];
 
-        {/* Strategy Intuition */}
-        <div className="bg-slate-50 p-4 md:p-6 rounded-xl shadow-lg border border-slate-200">
-          <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">🧠</span>
-            Strategy Intuition
-          </h3>
-          <div className="text-sm text-slate-700 space-y-4">
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">Core Concept:</h4>
-              <p className="mb-2">The Buffered Strategy is a <strong>defined outcome investment</strong> that explicitly defines the range of possible returns over a specific period. You trade <strong>upside potential</strong> (the Cap) to fund <strong>downside protection</strong> (the Buffer), creating a predictable risk-reward profile.</p>
-              <p>This strategy combines stock ownership with a protective put spread collar, creating a "safety net" that absorbs the first X% of losses while capping gains at a predetermined level.</p>
-            </div>
-            
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">Why It Works:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Psychological Safety:</strong> Knowing you can't lose the first 15% allows investors to stay invested during market volatility</li>
-                <li>• <strong>Sequence of Return Risk:</strong> Critical for retirees - mitigates the risk of a crash right after retirement</li>
-                <li>• <strong>Bond Alternative:</strong> Offers non-correlated risk profile when bonds and stocks fall together</li>
-                <li>• <strong>Volatility Monetization:</strong> Converts market fear (high IV) into protection premium</li>
-                <li>• <strong>Defined Outcomes:</strong> Unlike traditional investing with infinite outcomes, this creates predictable ranges</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">The Four Components Explained:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                <div className="bg-blue-100 p-3 rounded">
-                  <p className="font-medium text-blue-800">1. Long Asset (Stock/ETF)</p>
-                  <p className="text-xs text-blue-700">Provides the underlying exposure and dividend income</p>
-                </div>
-                <div className="bg-green-100 p-3 rounded">
-                  <p className="font-medium text-green-800">2. Long Put (The Floor)</p>
-                  <p className="text-xs text-green-700">Protects from losses below the buffer level</p>
-                </div>
-                <div className="bg-amber-100 p-3 rounded">
-                  <p className="font-medium text-amber-800">3. Short Put (Buffer Limit)</p>
-                  <p className="text-xs text-amber-700">Re-introduces risk below buffer, funds the trade</p>
-                </div>
-                <div className="bg-rose-100 p-3 rounded">
-                  <p className="font-medium text-rose-800">4. Short Call (The Cap)</p>
-                  <p className="text-xs text-rose-700">Limits upside profits, provides additional funding</p>
-                </div>
-              </div>
-              <p className="text-xs mt-2">The goal is to make this a "zero-cost" collar where the credits from selling options fund the protective put purchase.</p>
-            </div>
-
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">Mathematical Edge - Risk Transfer:</h4>
-              <div className="mb-3">
-                <p className="mb-2">The core alpha comes from <strong>risk transfer</strong>: you're essentially buying insurance against market crashes while selling your lottery ticket for massive gains.</p>
-                <div className="bg-amber-100 p-3 rounded-lg">
-                  <p className="font-medium text-amber-800 text-center">"Trade Unlimited Upside for Defined Downside Protection"</p>
-                  <p className="text-xs text-amber-700 text-center mt-1">Perfect for risk-averse investors or those near retirement</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">Why Called "Buffered":</h4>
-              <p className="mb-2">The name comes from the <strong>buffer zone</strong> of protection:</p>
-              <div className="bg-slate-100 p-3 rounded-lg mt-2">
-                <p className="text-center font-medium text-slate-800">📉 Loss Zone → 🛡️ Buffer Zone → 📈 Capped Gains</p>
-              </div>
-              <p className="mt-2 text-xs">Like a car's crumple zone, the buffer absorbs the first impact (market decline) before damage reaches the passenger (your capital).</p>
-            </div>
-
-            <div className="border-l-4 border-slate-300 pl-4">
-              <h4 className="font-semibold text-slate-800 mb-2">Outcome Scenarios:</h4>
-              <div className="space-y-2">
-                <div className="bg-emerald-100 p-2 rounded">
-                  <p className="font-medium text-emerald-800 text-sm">🎯 Ideal Scenario (Sideways/Small Gains):</p>
-                  <ul className="text-xs text-emerald-700 space-y-1 ml-4 mt-1">
-                    <li>• <strong>Market +5%:</strong> You get +5% with no insurance cost</li>
-                    <li>• <strong>Market -10%:</strong> You lose 0% while market investors lose 10%</li>
-                    <li>• <strong>Market flat:</strong> You break even with peace of mind</li>
-                  </ul>
-                </div>
-                <div className="bg-rose-100 p-2 rounded">
-                  <p className="font-medium text-rose-800 text-sm">⚠️ Challenging Scenarios:</p>
-                  <ul className="text-xs text-rose-700 space-y-1 ml-4 mt-1">
-                    <li>• <strong>Bull Market +30%:</strong> You're capped at +15%, missing significant gains</li>
-                    <li>• <strong>Crash -40%:</strong> With 15% buffer, you still lose -25%</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Implementation Framework */}
-        <div className="bg-indigo-50 p-4 md:p-6 rounded-xl shadow-lg border border-indigo-200">
-          <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">📋</span>
-            Implementation Framework
-          </h3>
-          <div className="text-sm text-indigo-700 space-y-4">
-            <div className="border-l-4 border-indigo-300 pl-4">
-              <h4 className="font-semibold text-indigo-800">Phase 1: Strategy Selection</h4>
-              <ol className="list-decimal list-inside space-y-1 mt-2">
-                <li><strong>Choose Vehicle:</strong> Buffered ETFs (recommended) vs. DIY options vs. Structured Notes</li>
-                <li><strong>Select Buffer Level:</strong> 9% (aggressive), 15% (typical), or 30% (conservative)</li>
-                <li><strong>Understand the Cap:</strong> Higher buffers = lower caps (typically 8-18% annually)</li>
-                <li><strong>Check Outcome Period:</strong> Most strategies reset annually</li>
-                <li><strong>Timing Consideration:</strong> Best to enter at cycle start, not mid-cycle</li>
-              </ol>
-            </div>
-            
-            <div className="border-l-4 border-indigo-300 pl-4">
-              <h4 className="font-semibold text-indigo-800">Phase 2: DIY Construction (Advanced)</h4>
-              <ol className="list-decimal list-inside space-y-1 mt-2">
-                <li><strong>Buy the underlying:</strong> 100 shares of SPY/QQQ at current price</li>
-                <li><strong>Buy protective put:</strong> At-the-money put for floor protection</li>
-                <li><strong>Sell lower put:</strong> Out-of-the-money put to create buffer limit</li>
-                <li><strong>Sell call:</strong> Out-of-the-money call to cap gains and fund trade</li>
-                <li><strong>Target zero cost:</strong> Credits from short options should offset long put cost</li>
-              </ol>
-            </div>
-
-            <div className="border-l-4 border-indigo-300 pl-4">
-              <h4 className="font-semibold text-indigo-800">Phase 3: Position Monitoring</h4>
-              <ol className="list-decimal list-inside space-y-1 mt-2">
-                <li><strong>Track to outcome period:</strong> Strategy designed to be held to expiration</li>
-                <li><strong>Monitor cap proximity:</strong> If near cap, consider profit-taking</li>
-                <li><strong>Watch buffer breach:</strong> If market approaches buffer limit, prepare for losses</li>
-                <li><strong>Plan for reset:</strong> Understand new terms when options expire</li>
-                <li><strong>Dividend considerations:</strong> DIY versions may miss dividend income</li>
-              </ol>
-            </div>
-
-            <div className="border-l-4 border-indigo-300 pl-4">
-              <h4 className="font-semibold text-indigo-800">Phase 4: Exit Strategy</h4>
-              <ol className="list-decimal list-inside space-y-1 mt-2">
-                <li><strong>Hold to maturity:</strong> Optimal for defined outcome realization</li>
-                <li><strong>Early exit considerations:</strong> ETFs offer liquidity, but outcomes may differ</li>
-                <li><strong>Roll to new cycle:</strong> Evaluate new cap/buffer terms before rolling</li>
-                <li><strong>Rebalance allocation:</strong> Adjust position size based on market conditions</li>
-                <li><strong>Tax implications:</strong> Consider 1256 treatment for index options</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        {/* Best Practices */}
-        <div className="bg-green-50 p-4 md:p-6 rounded-xl shadow-lg border border-green-200">
-          <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">🎯</span>
-            Best Practices
-          </h3>
-          <div className="text-sm text-green-700 space-y-3">
-            <div>
-              <h4 className="font-semibold text-green-800 mb-2">Vehicle Selection:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Buffered ETFs (Recommended):</strong> Innovator, First Trust - liquid, transparent, bankruptcy remote</li>
-                <li>• <strong>Avoid Structured Notes:</strong> Credit risk, liquidity issues, opaque pricing</li>
-                <li>• <strong>DIY Only for Advanced:</strong> Requires options expertise and active management</li>
-                <li>• <strong>Index vs. Single Stock:</strong> Diversified indices preferred over individual stocks</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-green-800 mb-2">Timing and Allocation:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Cycle timing:</strong> Enter at outcome period start for full protection</li>
-                <li>• <strong>Position sizing:</strong> 10-30% of portfolio for diversification</li>
-                <li>• <strong>Complement, don't replace:</strong> Use alongside traditional equity allocation</li>
-                <li>• <strong>Rebalancing discipline:</strong> Don't chase performance, stick to allocation</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-green-800 mb-2">Risk Management:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Understand the cap:</strong> Accept that you'll miss big bull runs</li>
-                <li>• <strong>Buffer isn't guarantee:</strong> Severe crashes can still cause losses</li>
-                <li>• <strong>Dividend drag:</strong> Factor in missed dividend income vs. SPY</li>
-                <li>• <strong>Reset risk:</strong> New terms may be less favorable in low volatility</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Market Conditions */}
-        <div className="bg-blue-50 p-4 md:p-6 rounded-xl shadow-lg border border-blue-200">
-          <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">📊</span>
-            Optimal Market Conditions
-          </h3>
-          <div className="text-sm text-blue-700 space-y-3">
-            <div>
-              <h4 className="font-semibold text-blue-800 mb-2">Ideal Environments:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>High volatility periods:</strong> Better caps available when VIX is elevated</li>
-                <li>• <strong>Sideways/choppy markets:</strong> Perfect for range-bound conditions</li>
-                <li>• <strong>Late cycle markets:</strong> When crash risk is elevated but timing uncertain</li>
-                <li>• <strong>Retirement transition:</strong> Sequence of return risk mitigation</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-blue-800 mb-2">Avoid During:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Strong bull markets:</strong> You'll be frustrated by the cap limitation</li>
-                <li>• <strong>Low volatility environments:</strong> Caps will be disappointingly low</li>
-                <li>• <strong>Post-crash recoveries:</strong> V-shaped recoveries will hit your cap quickly</li>
-                <li>• <strong>When you need growth:</strong> Not suitable for aggressive growth objectives</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Vehicle Comparison */}
-        <div className="bg-purple-50 p-4 md:p-6 rounded-xl shadow-lg border border-purple-200">
-          <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">🏆</span>
-            Implementation Vehicles Comparison
-          </h3>
-          <div className="text-sm text-purple-700 space-y-4">
-            <div className="overflow-hidden border rounded-lg border-purple-200">
-              <table className="w-full text-xs">
-                <thead className="bg-purple-100">
-                  <tr>
-                    <th className="px-3 py-2 text-left font-bold">Feature</th>
-                    <th className="px-3 py-2 text-center font-bold text-green-700">Buffered ETF</th>
-                    <th className="px-3 py-2 text-center font-bold text-blue-700">DIY Options</th>
-                    <th className="px-3 py-2 text-center font-bold text-red-700">Structured Note</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-purple-100">
-                  <tr>
-                    <td className="px-3 py-2 font-medium">Credit Risk</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">None</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">None</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-bold">High</td>
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 font-medium">Liquidity</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">Daily</td>
-                    <td className="px-3 py-2 text-center text-yellow-600 font-bold">Good</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-bold">Poor</td>
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 font-medium">Complexity</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">Low</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-bold">High</td>
-                    <td className="px-3 py-2 text-center text-yellow-600 font-bold">Medium</td>
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 font-medium">Customization</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-bold">Limited</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">Full</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">High</td>
-                  </tr>
-                  <tr>
-                    <td className="px-3 py-2 font-medium">Min Investment</td>
-                    <td className="px-3 py-2 text-center text-green-600 font-bold">~$30</td>
-                    <td className="px-3 py-2 text-center text-yellow-600 font-bold">~$5,000</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-bold">$25,000+</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        {/* Common Pitfalls */}
-        <div className="bg-red-50 p-4 md:p-6 rounded-xl shadow-lg border border-red-200">
-          <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">⚠️</span>
-            Common Pitfalls
-          </h3>
-          <div className="text-sm text-red-700 space-y-3">
-            <div>
-              <h4 className="font-semibold text-red-800 mb-2">Timing Mistakes:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Mid-cycle entry:</strong> Buying after significant moves reduces protection effectiveness</li>
-                <li>• <strong>Chasing performance:</strong> Entering after good performance when cap is nearly reached</li>
-                <li>• <strong>Ignoring reset dates:</strong> Not understanding when new terms take effect</li>
-                <li>• <strong>FOMO during bull runs:</strong> Abandoning strategy when market is rallying</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-red-800 mb-2">Expectation Errors:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Expecting no losses:</strong> Buffer can be breached in severe crashes</li>
-                <li>• <strong>Ignoring opportunity cost:</strong> Missing out on dividend income and unlimited upside</li>
-                <li>• <strong>Over-allocation:</strong> Making this 100% of portfolio instead of complement</li>
-                <li>• <strong>Short-term thinking:</strong> Evaluating success over months instead of full cycles</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-red-800 mb-2">Implementation Failures:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>DIY complexity:</strong> Underestimating the skill required for options management</li>
-                <li>• <strong>Structured note risks:</strong> Ignoring credit risk and liquidity constraints</li>
-                <li>• <strong>Tax inefficiency:</strong> Not considering tax implications of different vehicles</li>
-                <li>• <strong>Cost blindness:</strong> Not factoring in all embedded costs and fees</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-red-800 mb-2">The Dividend Trap:</h4>
-              <div className="bg-red-100 p-3 rounded mt-2">
-                <p className="font-medium text-red-800 mb-1">Hidden Cost of Protection:</p>
-                <p className="font-mono text-xs text-red-700">SPY Dividend Yield: ~1.5% annually</p>
-                <p className="text-xs text-red-700 mt-1"><strong>Impact:</strong> Over 10 years, missed dividends compound to ~15% total return drag vs. unhedged SPY</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Performance Expectations */}
-        <div className="bg-yellow-50 p-4 md:p-6 rounded-xl shadow-lg border border-yellow-200">
-          <h3 className="text-xl font-bold text-yellow-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">📈</span>
-            Performance Expectations
-          </h3>
-          <div className="text-sm text-yellow-700 space-y-3">
-            <div>
-              <h4 className="font-semibold text-yellow-800 mb-2">Typical Outcomes:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Annual caps:</strong> 8-18% depending on volatility at reset</li>
-                <li>• <strong>Buffer levels:</strong> 9%, 15%, or 30% downside protection</li>
-                <li>• <strong>Win scenarios:</strong> Sideways markets, moderate corrections, slow bleeds</li>
-                <li>• <strong>Lose scenarios:</strong> Strong bull runs, severe crashes beyond buffer</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-yellow-800 mb-2">Historical Context:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>2008 Crisis:</strong> 15% buffer would have reduced -37% SPY loss to -22%</li>
-                <li>• <strong>2020 Pandemic:</strong> Quick V-recovery would have hit caps early</li>
-                <li>• <strong>2022 Bear Market:</strong> Sideways grind perfect for buffered strategies</li>
-                <li>• <strong>Bull Markets 2009-2021:</strong> Significant underperformance due to caps</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-yellow-800 mb-2">Suitability Profile:</h4>
-              <ul className="space-y-1 ml-4">
-                <li>• <strong>Risk tolerance:</strong> Conservative to moderate investors</li>
-                <li>• <strong>Time horizon:</strong> 3-10 years, not suitable for very long-term growth</li>
-                <li>• <strong>Life stage:</strong> Pre-retirees and early retirees (sequence risk)</li>
-                <li>• <strong>Portfolio role:</strong> 10-30% allocation as equity alternative</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Learn More Resources */}
-        <div className="bg-teal-50 p-4 md:p-6 rounded-xl shadow-lg border border-teal-200">
-          <h3 className="text-xl font-bold text-teal-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">📚</span>
-            Learn More Resources
-          </h3>
-          <div className="text-sm text-teal-700 space-y-3">
-            <div>
-              <h4 className="font-semibold text-teal-800 mb-2">Educational Content:</h4>
-              <div className="space-y-1 ml-4">
-                <a href="/articles/mastering-buffered-yield-strategies-defined-outcome-investing" 
-                   className="text-blue-600 hover:underline block">
-                   • Deep Research: Mastering Buffered Yield Strategies
-                </a>
-                <a href="/articles/option-collar-strategy-protect-gains-define-risk" 
-                   className="text-blue-600 hover:underline block">
-                   • Related: Option Collar Strategy Guide
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-teal-800 mb-2">Popular Buffered ETFs:</h4>
-              <div className="space-y-1 ml-4">
-                <p className="text-xs text-teal-600">
-                  <strong>Innovator ETFs:</strong> BJAN, BJUL, BOCT (S&P 500 with 15% buffer)
+export function BufferedOverview({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-8">
+            <div className="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-3">
+                <p>
+                    A <strong>buffered strategy</strong> (the structural architecture behind popular <em>Defined Outcome ETFs</em>)
+                    is a 4-legged equity overlay that absorbs the first 10–20% of market losses while capping gains at a predetermined ceiling.
                 </p>
-                <p className="text-xs text-teal-600">
-                  <strong>First Trust:</strong> Various buffer levels and underlying indices
+                <p>
+                    It combines long stock with a <Jargon term="put spread collar" definition="Buying an at-the-money put and selling an out-of-the-money put to create a protected 'buffer zone', financed by selling an out-of-the-money call." />.
+                    This structure guarantees that if the market drops anywhere within the buffer zone over the holding period, your account
+                    suffers 0% loss, providing institutional-grade risk shielding for wealth preservation and retirement portfolios.
                 </p>
-                <p className="text-xs text-teal-600">
-                  <strong>Research:</strong> Always read the prospectus before investing
-                </p>
-              </div>
             </div>
-          </div>
+
+            <FormulaPanel
+                title="Defined Outcome Architecture"
+                formula="\text{Buffer Zone} = [K_{\text{short put}}, K_{\text{long put}}], \quad \text{Max Gain} = K_{\text{call}} - S_0"
+                legend={[
+                    { label: 'K_{long put}', value: 'ATM strike where downside protection begins' },
+                    { label: 'K_{short put}', value: 'Lower strike where buffer ends and risk resumes' },
+                    { label: 'K_{call}', value: 'Upper strike capping maximum upside profit' },
+                ]}
+                example={{
+                    label: '15% Buffer with 12% Cap ($100 Stock)',
+                    rows: [
+                        { label: 'Long Stock + Long $100 Put', value: 'Protected against drop below $100' },
+                        { label: 'Sell $85 Put (Buffer Limit)', value: 'Finances put purchase; risk resumes below $85' },
+                        { label: 'Sell $112 Call (Upside Cap)', value: 'Finances remaining cost → Zero Net Debit' },
+                    ],
+                    result: { label: 'Defined Outcome', value: '0% loss between $85 and $100; max gain +12% above $112' },
+                    note: 'If the market falls 10% to $90, your return is 0%. If the market falls 25% to $75, your loss is only -10% ($85 - $75).',
+                }}
+            />
+
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">The 4 Structural Building Blocks</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {BUFFER_ELEMENTS.map((elem) => (
+                        <div key={elem.label} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-3.5">
+                            <p className="font-semibold text-xs text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider mb-1">{elem.label}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-snug">{elem.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">Buffered Strategy vs. Standard Collar</h3>
+                <ComparisonGrid>
+                    <ComparisonCard
+                        title="Buffered Strategy (Put Spread Collar)"
+                        tone="pos"
+                        items={[
+                            "Protection zone: absorbs the first 10-20% of losses (the most frequent correction magnitude).",
+                            "Upside Cap: higher cap allowed because the short put finances a large portion of the long put.",
+                            "Tail risk: risk resumes below the buffer boundary (e.g. below -15%).",
+                        ]}
+                    />
+                    <ComparisonCard
+                        title="Standard Collar (Single Put)"
+                        tone="neutral"
+                        items={[
+                            "Protection zone: absorbs 100% of losses below a chosen strike all the way to $0.",
+                            "Upside Cap: lower cap required to finance an unhedged long put.",
+                            "Tail risk: zero tail risk below the put strike.",
+                        ]}
+                    />
+                </ComparisonGrid>
+            </div>
         </div>
-    </div>
-  );
-};
+    );
+}
+
+export function BufferedPlaybook({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-6">
+            <SectionCard title="How to Trade It" icon={Compass} tone="accent">
+                <h4>Strike Selection (1-Year Outcome Period)</h4>
+                <ul>
+                    <li><strong>Long Put (ATM):</strong> buy a 100% strike put (0.50 delta) to immediately protect against any downward correction.</li>
+                    <li><strong>Short Put (OTM Buffer Boundary):</strong> sell an 85–90% strike put (0.15–0.25 delta) to establish a 10–15% buffer.</li>
+                    <li><strong>Short Call (OTM Cap):</strong> sell an out-of-the-money call (e.g. 110–115% strike) priced to make the net options package cost $0.</li>
+                </ul>
+                <h4>Holding Duration</h4>
+                <ul>
+                    <li><strong>1 Year (365 DTE):</strong> defined outcome characteristics are calibrated to mature at expiration. Intra-period values fluctuate with market volatility.</li>
+                </ul>
+                <h4>Step-by-Step Execution</h4>
+                <ol>
+                    <li>Hold index ETF shares (e.g., SPY, QQQ).</li>
+                    <li>Select a 1-year expiration cycle.</li>
+                    <li>Buy the ATM put, sell the buffer-boundary put, and sell the financing call as a single 3-way combination order.</li>
+                    <li>Verify net debit is $0.00 (Zero-Cost).</li>
+                    <li>Hold through the annual outcome cycle and rebalance at expiration.</li>
+                </ol>
+            </SectionCard>
+
+            <SectionCard title="Manage the Position" icon={Sliders} tone="accent">
+                <h4>Outcome Period Management</h4>
+                <ul>
+                    <li><strong>Hold to Expiration:</strong> the mathematical buffer guarantees apply strictly at the expiration date; avoid panic-selling during mid-cycle drawdowns.</li>
+                    <li><strong>Annual Reset / Roll:</strong> at the end of the 1-year cycle, close expiring options and reset strikes around the new current market price.</li>
+                </ul>
+            </SectionCard>
+
+            <FormulaPanel
+                title="Worked Example: Market Scenarios at 1-Year Expiration"
+                formula="\text{P\&L} = \begin{cases} \text{Cap} & \text{if } S_T \ge K_{\text{call}} \\ S_T - S_0 & \text{if } K_{\text{long put}} < S_T < K_{\text{call}} \\ 0\% & \text{if } K_{\text{short put}} \le S_T \le K_{\text{long put}} \\ (S_T - K_{\text{short put}}) & \text{if } S_T < K_{\text{short put}} \end{cases}"
+                legend={[
+                    { label: 'Entry Price', value: '$100.00 with 15% Buffer ($85) and 12% Cap ($112)' },
+                ]}
+                example={{
+                    label: 'Scenario Comparison',
+                    rows: [
+                        { label: 'Bull Rally (+20% to $120)', value: '+12% Return ($112 Cap hit)' },
+                        { label: 'Moderate Gain (+8% to $108)', value: '+8% Return (Full participation)' },
+                        { label: 'Correction (-10% to $90)', value: '0% Return (Buffer absorbs full 10% loss)' },
+                        { label: 'Severe Crash (-30% to $70)', value: '-15% Return ($85 - $70, saving 15% in losses)' },
+                    ],
+                    result: { label: 'Optimal Market Fit', value: 'Outperforms standard equities in flat, choppy, or moderate bear markets' },
+                    note: 'The strategy delivers complete peace of mind across normal market correction regimes.',
+                }}
+            />
+
+            <SectionCard title="Risks & Common Mistakes" icon={AlertTriangle} tone="neg">
+                <h4>Risks &amp; Considerations</h4>
+                <ul>
+                    <li><strong>Tail Risk Beyond Buffer:</strong> losses beyond the buffer (e.g. below -15%) are fully absorbed by the investor.</li>
+                    <li><strong>Mid-Period Volatility:</strong> before expiration, the position will show partial drawdown due to delta and option pricing dynamics.</li>
+                    <li><strong>Capped Upside:</strong> misses out on runaway bull market gains above the short call strike.</li>
+                </ul>
+            </SectionCard>
+
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 rounded-r-lg p-4">
+                <p className="text-xs text-amber-800 dark:text-amber-400">
+                    <strong>Risk Disclosure:</strong> Buffered strategies provide downside protection only within the defined buffer zone.
+                    Losses beyond the buffer are uncapped down to zero. This content is for educational purposes only.
+                </p>
+            </div>
+        </div>
+    );
+}

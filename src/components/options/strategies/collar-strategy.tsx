@@ -1,257 +1,159 @@
-import { StrategyDetailProps } from '../strategy-config';
+import { Compass, Sliders, AlertTriangle } from 'lucide-react';
+import { Strategy } from '../strategy-config';
+import { SectionCard } from '../strategy-visuals';
+import { ComparisonGrid, ComparisonCard, FormulaPanel, Jargon } from '@/components/articles/article-visuals';
 
-export const CollarStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
-  return (
-    <div className="mt-6 space-y-6">
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200 mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-          <span className="text-2xl">📚</span>
-          Strategy Details
-        </h3>
-      </div>
+const GREEKS = [
+    { label: 'Delta', tone: 'text-[#1D8A70] dark:text-[#3CBF9C]', text: 'Net positive but bounded between 0 and 1 — delta approaches 0 below the put strike and near the call strike.' },
+    { label: 'Theta', tone: 'text-[#A8672E] dark:text-[#D08F52]', text: 'Near neutral — short call theta income offsets long protective put theta decay.' },
+    { label: 'Vega', tone: 'text-[#A8672E] dark:text-[#D08F52]', text: 'Balanced — long put vega balances short call vega across moderate price ranges.' },
+    { label: 'Greeks Role', tone: 'text-[#1D8A70] dark:text-[#3CBF9C]', text: 'Engineered to bracket risk: establishes a guaranteed floor and defined cap on stock equity.' },
+];
 
-      {/* Strategy Intuition Section */}
-      <div className="bg-slate-50 p-4 md:p-6 rounded-xl shadow-lg border border-slate-200">
-        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">🧠</span>
-          Strategy Intuition
-        </h3>
-        <div className="text-sm text-slate-700 space-y-4">
-          <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
-            <h4 className="font-bold text-blue-900 mb-2">📋 Definition</h4>
-            <p className="text-blue-800">
-              A <strong>collar strategy</strong> is a three-legged options position that combines:
-            </p>
-            <ul className="list-disc list-inside mt-2 space-y-1 text-blue-800">
-              <li><strong>Long Stock Position:</strong> Own 100 shares of the underlying asset</li>
-              <li><strong>Long Protective Put:</strong> Buy an out-of-the-money put option (downside protection)</li>
-              <li><strong>Short Covered Call:</strong> Sell an out-of-the-money call option (income generation)</li>
-            </ul>
-            <p className="mt-2 text-blue-800">
-              This creates a "collar" around your stock position with <strong>defined maximum loss</strong> (put strike) 
-              and <strong>defined maximum profit</strong> (call strike).
-            </p>
-          </div>
-          
-          <p>
-            The collar strategy is fundamentally a <strong>defensive position</strong> designed for investors who want to 
-            protect existing gains in a stock position while maintaining some upside potential. It's particularly effective 
-            when you're bullish long-term but concerned about short-term volatility or market corrections.
-          </p>
-          
-          <p>
-            Think of it as <strong>portfolio insurance with a financing mechanism</strong>. The put option acts as insurance 
-            against downside moves below a certain level, while the call option generates premium income to help offset the 
-            cost of that insurance. In many cases, you can create a "zero-cost collar" where the call premium received 
-            approximately equals the put premium paid.
-          </p>
-          
-          <p>
-            The strategy is particularly popular among <strong>institutional investors, corporate executives, and high-net-worth 
-            individuals</strong> who have concentrated stock positions and want to protect against downside risk without selling 
-            their shares (which might trigger significant tax consequences or violate insider trading restrictions).
-          </p>
-          
-          <div className="bg-green-100 p-4 rounded-lg border border-green-200">
-            <h4 className="font-bold text-green-900 mb-2">💡 Key Insight</h4>
-            <p className="text-green-800">
-              The collar transforms an unlimited risk/unlimited reward stock position into a <strong>defined risk/defined reward</strong> 
-              position. You sacrifice unlimited upside potential in exchange for downside protection, creating a more predictable 
-              risk-return profile.
-            </p>
-          </div>
+export function CollarOverview({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-8">
+            <div className="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-3">
+                <p>
+                    A <strong>collar strategy</strong> is a three-legged protective structure combining 100 shares of underlying
+                    stock with a long out-of-the-money protective put (a downside floor) and a short out-of-the-money call (an upside cap).
+                </p>
+                <p>
+                    By selling the call, you collect premium that directly finances the purchase of the protective put, frequently
+                    achieving a <Jargon term="zero-cost collar" definition="A collar structure where the premium collected from the short call exactly equals the premium paid for the protective put, providing downside protection at zero initial cash outlay." />.
+                    It is widely favored by corporate executives and institutional investors to protect accumulated gains in
+                    concentrated equity positions without triggering immediate taxable sales.
+                </p>
+            </div>
+
+            <FormulaPanel
+                title="Collar Payoff Boundaries"
+                formula="\text{Floor} = K_{\text{put}} - \text{Net Cost}, \quad \text{Cap} = K_{\text{call}} - \text{Net Cost}"
+                legend={[
+                    { label: 'K_{put}', value: 'Protective put strike (downside floor)' },
+                    { label: 'K_{call}', value: 'Covered call strike (upside profit cap)' },
+                    { label: 'Net Cost', value: 'Put premium paid minus Call premium received' },
+                ]}
+                example={{
+                    label: 'Worked Example ($100 Stock)',
+                    rows: [
+                        { label: 'Stock Price at Entry', value: '$100.00' },
+                        { label: 'Buy $90 Put (Floor)', value: '$2.00 debit' },
+                        { label: 'Sell $110 Call (Cap)', value: '$2.00 credit' },
+                        { label: 'Net Cash Outlay', value: '$0.00 (Zero-Cost Collar)' },
+                    ],
+                    result: { label: 'Protected Range', value: 'Max loss limited to -$10 (-10%); Max gain capped at +$10 (+10%)' },
+                    note: 'Regardless of how far the stock drops below $90, losses cannot exceed $10/share. In exchange, gains above $110 are surrendered.',
+                }}
+            />
+
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">Collar vs. Stop-Loss Order</h3>
+                <ComparisonGrid>
+                    <ComparisonCard
+                        title="Equity Collar"
+                        tone="pos"
+                        items={[
+                            "Guaranteed protection: put option provides an inviolable floor against overnight gaps and black swan crashes.",
+                            "Zero execution slippage: contractual right to sell at the strike.",
+                            "Cost: financed entirely by selling the OTM call.",
+                        ]}
+                    />
+                    <ComparisonCard
+                        title="Traditional Stop-Loss Order"
+                        tone="neutral"
+                        items={[
+                            "Gap risk vulnerability: order executes at the market open price during weekend gaps, ignoring the stop trigger price.",
+                            "False whipsaws: sharp intraday dips can trigger premature sales right before a rebound.",
+                            "Cost: free, but lacks contractual protection.",
+                        ]}
+                    />
+                </ComparisonGrid>
+            </div>
+
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">Greeks at a Glance</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {GREEKS.map((g) => (
+                        <div key={g.label} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-3">
+                            <p className={`font-mono text-xs font-bold mb-1 ${g.tone}`}>{g.label}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-snug">{g.text}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
+    );
+}
 
-      {/* Implementation Framework */}
-      <div className="bg-indigo-50 p-4 md:p-6 rounded-xl shadow-lg border border-indigo-200">
-        <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">⚙️</span>
-          Implementation Framework
-        </h3>
-        <div className="text-sm text-indigo-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Step 1: Position Assessment</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Own 100 shares of the underlying stock (or multiples of 100)</li>
-              <li>Determine your maximum acceptable loss (sets put strike)</li>
-              <li>Determine your target exit price (sets call strike)</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Step 2: Option Selection</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><strong>Buy Put:</strong> Out-of-the-money put at your maximum loss level</li>
-              <li><strong>Sell Call:</strong> Out-of-the-money call at your target profit level</li>
-              <li>Choose expiration dates (typically 30-90 days for active management)</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Step 3: Execution</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Execute as a single trade or leg into the position</li>
-              <li>Monitor net premium (debit or credit)</li>
-              <li>Consider volatility environment when timing entry</li>
-            </ul>
-          </div>
+export function CollarPlaybook({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-6">
+            <SectionCard title="How to Trade It" icon={Compass} tone="accent">
+                <h4>Strike Selection</h4>
+                <ul>
+                    <li><strong>Protective Put:</strong> buy a 10–20 delta put (typically 5–15% below current stock price) to establish your worst-case loss floor.</li>
+                    <li><strong>Covered Call:</strong> sell a 20–30 delta call (typically 5–15% above current stock price) priced to match or exceed the put's cost.</li>
+                    <li><strong>Zero-Cost Objective:</strong> adjust the call strike until net credit matches the put debit.</li>
+                </ul>
+                <h4>Duration &amp; Expiration</h4>
+                <ul>
+                    <li><strong>60–180 DTE:</strong> longer durations reduce annual rebalancing friction and allow wider collar boundaries for the same zero net cost.</li>
+                </ul>
+                <h4>Step-by-Step Execution</h4>
+                <ol>
+                    <li>Hold 100 shares of underlying stock per collar contract.</li>
+                    <li>Select a target expiration 60–180 days out.</li>
+                    <li>Price the desired downside put strike (e.g. -10%).</li>
+                    <li>Find the call strike that generates equal or higher premium (+10% to +15%).</li>
+                    <li>Execute the put purchase and call sale simultaneously.</li>
+                </ol>
+            </SectionCard>
+
+            <SectionCard title="Manage the Position" icon={Sliders} tone="accent">
+                <h4>Position Adjustments</h4>
+                <ul>
+                    <li><strong>Rolling Collars Forward:</strong> as expiration approaches (within 21–30 DTE), roll both legs to a new expiration cycle to maintain perpetual protection.</li>
+                    <li><strong>Rolling the Call Up:</strong> if the stock rallies strongly towards the call strike and you wish to avoid assignment, buy back the call and roll to a higher strike and later date.</li>
+                    <li><strong>Exercising the Put:</strong> if the company suffers catastrophic breakdown, exercise the put at expiration to exit at the strike price.</li>
+                </ul>
+            </SectionCard>
+
+            <FormulaPanel
+                title="Total Position Return at Expiration"
+                formula="\text{P\&L} = \max\left(K_{\text{put}}, \min(S_T, K_{\text{call}})\right) - S_0 + \text{Dividends} - \text{Net Debit}"
+                legend={[
+                    { label: 'S_0', value: 'Stock purchase price' },
+                    { label: 'S_T', value: 'Stock price at expiration' },
+                    { label: 'Dividends', value: 'Dividends collected during holding period' },
+                ]}
+                example={{
+                    label: 'Downside Crash Outcome',
+                    rows: [
+                        { label: 'Stock Bought at', value: '$100.00' },
+                        { label: 'Put Strike / Call Strike', value: '$90 / $110 (Zero Cost)' },
+                        { label: 'Stock Crashes to', value: '$50.00 at expiration' },
+                    ],
+                    result: { label: 'Protected Position Value', value: '$90.00 per share (Loss strictly limited to -$10.00, saving $40.00/share)' },
+                    note: 'The protective put cushions 80% of the drop, preventing catastrophic capital loss.',
+                }}
+            />
+
+            <SectionCard title="Risks & Common Mistakes" icon={AlertTriangle} tone="neg">
+                <h4>Key Considerations</h4>
+                <ul>
+                    <li><strong>Opportunity Regret:</strong> if the stock enters a massive multi-bagger rally, upside is capped at the call strike unless rolled for a debit.</li>
+                    <li><strong>Early Assignment Risk:</strong> watch short in-the-money calls closely right before ex-dividend dates to prevent surprise share assignment.</li>
+                    <li><strong>Trading Wide Bids:</strong> on illiquid stock options, wide spreads on both legs can create unnecessary execution slippage.</li>
+                </ul>
+            </SectionCard>
+
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 rounded-r-lg p-4">
+                <p className="text-xs text-amber-800 dark:text-amber-400">
+                    <strong>Risk Disclosure:</strong> Collars define maximum profit and maximum loss. While downside risk is limited
+                    to the put strike, capital loss is still possible down to that level. This content is for educational purposes only.
+                </p>
+            </div>
         </div>
-      </div>
-
-      {/* Best Practices */}
-      <div className="bg-green-50 p-4 md:p-6 rounded-xl shadow-lg border border-green-200">
-        <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">✅</span>
-          Best Practices
-        </h3>
-        <div className="text-sm text-green-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Strike Selection</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Put strike: 5-15% below current stock price for meaningful protection</li>
-              <li>Call strike: 5-15% above current stock price for reasonable upside</li>
-              <li>Consider volatility skew when selecting strikes</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Timing Considerations</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Initiate when implied volatility is elevated (cheaper puts, expensive calls)</li>
-              <li>Avoid earnings announcements unless specifically hedging for them</li>
-              <li>Consider dividend dates for early assignment risk on calls</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Position Management</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Roll positions before expiration to maintain protection</li>
-              <li>Consider closing profitable positions at 25-50% of maximum profit</li>
-              <li>Monitor for early assignment risk on short calls</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Market Conditions */}
-      <div className="bg-blue-50 p-4 md:p-6 rounded-xl shadow-lg border border-blue-200">
-        <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">🌤️</span>
-          Optimal Market Conditions
-        </h3>
-        <div className="text-sm text-blue-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Ideal Scenarios</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><strong>High Market Valuations:</strong> When indexes are at or near all-time highs</li>
-              <li><strong>Elevated Volatility:</strong> When put options are expensive but call premiums help offset costs</li>
-              <li><strong>Uncertain Economic Environment:</strong> During periods of geopolitical tension or economic uncertainty</li>
-              <li><strong>Concentrated Positions:</strong> When you have a large, low-cost-basis position you don't want to sell</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Avoid When</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Expecting strong bullish momentum (upside is capped)</li>
-              <li>Volatility is extremely low (puts are cheap but calls are also cheap)</li>
-              <li>In strongly trending markets where you want full participation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Risk Management */}
-      <div className="bg-red-50 p-4 md:p-6 rounded-xl shadow-lg border border-red-200">
-        <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">⚠️</span>
-          Risk Management
-        </h3>
-        <div className="text-sm text-red-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Key Risks</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><strong>Opportunity Cost:</strong> Upside is capped at the call strike price</li>
-              <li><strong>Early Assignment:</strong> Short calls may be assigned before expiration</li>
-              <li><strong>Tax Implications:</strong> May affect holding period and create straddle rules</li>
-              <li><strong>Whipsaw Risk:</strong> Sideways markets can erode premium over time</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Risk Mitigation</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Consult tax advisor before implementing in taxable accounts</li>
-              <li>Monitor dividend dates for early assignment risk</li>
-              <li>Have a plan for rolling or closing positions</li>
-              <li>Consider position sizing relative to overall portfolio</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Advanced Applications */}
-      <div className="bg-purple-50 p-4 md:p-6 rounded-xl shadow-lg border border-purple-200">
-        <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">🎯</span>
-          Advanced Applications
-        </h3>
-        <div className="text-sm text-purple-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Volatility Skew Exploitation</h4>
-            <p>
-              Due to volatility skew, out-of-the-money puts typically trade at higher implied volatility than 
-              equidistant calls. This creates opportunities to structure collars that are naturally credit-generating 
-              while still providing meaningful protection.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Rolling Strategies</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><strong>Rolling Up:</strong> If stock rallies, roll entire collar to higher strikes</li>
-              <li><strong>Rolling Out:</strong> Extend expiration dates to maintain protection</li>
-              <li><strong>Legging Strategies:</strong> Advanced technique of entering legs at different times</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Portfolio Integration</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Use on concentrated positions while maintaining diversified core</li>
-              <li>Implement during portfolio rebalancing periods</li>
-              <li>Coordinate with overall portfolio hedging strategy</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Educational Resources */}
-      <div className="bg-teal-50 p-4 md:p-6 rounded-xl shadow-lg border border-teal-200">
-        <h3 className="text-xl font-bold text-teal-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">📖</span>
-          Educational Resources
-        </h3>
-        <div className="text-sm text-teal-700 space-y-4">
-          <div>
-            <h4 className="font-semibold mb-2">Further Reading</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="https://www.investopedia.com/terms/c/collar.asp" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Investopedia: Collar Definition</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Tools & Calculators</h4>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li><a href="https://www.optionsprofitcalculator.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Options Profit Calculator</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Risk Disclaimer */}
-      <div className="bg-gray-100 p-4 rounded-lg border border-gray-300">
-        <p className="text-xs text-gray-600">
-          <strong>Risk Disclosure:</strong> Options trading involves significant risk and is not suitable for all investors. 
-          The collar strategy, while defensive, still carries substantial risk including the risk of loss of the entire 
-          investment. Past performance does not guarantee future results. This information is for educational purposes 
-          only and does not constitute investment advice. Please consult with a qualified financial advisor before 
-          implementing any options strategy.
-        </p>
-      </div>
-    </div>
-  );
-};
+    );
+}

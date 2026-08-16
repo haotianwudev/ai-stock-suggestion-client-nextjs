@@ -1,358 +1,138 @@
-import { StrategyDetailProps } from '../strategy-config';
+import { Compass, Sliders, AlertTriangle } from 'lucide-react';
+import { Strategy } from '../strategy-config';
+import { SectionCard } from '../strategy-visuals';
+import { ComparisonGrid, ComparisonCard, FormulaPanel, Jargon } from '@/components/articles/article-visuals';
 
-export const LeapsPutStrategyDetail = ({ strategy, onBack }: StrategyDetailProps) => {
-  return (
-    <div className="mt-6 space-y-6">
-      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-xl border border-purple-200 mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-          <span className="text-2xl">📚</span>
-          LEAPS Put Selling Strategy Details
-        </h3>
-        <p className="text-gray-700">
-          A sophisticated institutional approach to volatility arbitrage and strategic stock acquisition through long-dated put options.
-        </p>
-      </div>
+const GREEKS = [
+    { label: 'Delta', tone: 'text-[#1D8A70] dark:text-[#3CBF9C]', text: 'Positive — stable and less volatile day-to-day than short-dated options.' },
+    { label: 'Vega', tone: 'text-[#BC4128] dark:text-[#E2694A]', text: 'High negative vega — vega dominates over theta in LEAPS; highly sensitive to multi-year volatility shifts.' },
+    { label: 'Theta', tone: 'text-[#A8672E] dark:text-[#D08F52]', text: 'Mildly positive — time decay is slow initially, accelerating only in the final 6–9 months.' },
+    { label: 'Strategic Role', tone: 'text-[#1D8A70] dark:text-[#3CBF9C]', text: 'Institutional cash-flow generation and patient, value-based stock acquisition.' },
+];
 
-      {/* Strategy Intuition Section */}
-      <div className="bg-slate-50 p-4 md:p-6 rounded-xl shadow-lg border border-slate-200">
-        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">🧠</span>
-          Strategy Intuition
-        </h3>
-        <div className="text-sm text-slate-700 space-y-4">
-          <div className="bg-blue-100 p-4 rounded-lg border border-blue-200">
-            <h4 className="font-bold text-blue-900 mb-2">📋 What are LEAPS?</h4>
-            <p className="text-blue-800 mb-2">
-              <strong>LEAPS</strong> stands for <strong>Long-term Equity Anticipation Securities</strong>. These are options contracts with expiration dates 
-              extending beyond one year, typically ranging from 12 to 39 months from the current date.
-            </p>
-            <ul className="list-disc list-inside space-y-1 text-blue-800">
-              <li><strong>Time Frame:</strong> 12+ months to expiration (vs. standard options: days to 12 months)</li>
-              <li><strong>Availability:</strong> Only available on highly liquid, large-cap stocks and major ETFs</li>
-              <li><strong>Expiration Cycle:</strong> Typically expire in January of each year</li>
-              <li><strong>Greek Characteristics:</strong> High Vega, low Theta, moderate Delta and Gamma</li>
-            </ul>
-          </div>
+export function LeapsPutOverview({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-8">
+            <div className="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-3">
+                <p>
+                    <strong>LEAPS put selling</strong> involves writing long-dated put options (<Jargon term="LEAPS" definition="Long-Term Equity Anticipation Securities — options contracts with expiration horizons extending 12 to 39 months into the future." />)
+                    on highest-conviction, wide-moat businesses or major index benchmarks.
+                </p>
+                <p>
+                    Made famous by institutional investors like <strong>Warren Buffett (Berkshire Hathaway)</strong>, this approach
+                    treats put selling not as a weekly income race, but as a <strong>strategic capital allocation framework</strong>: you
+                    collect massive upfront premiums, benefit from long-term volatility mean reversion, and secure contractual commitments
+                    to acquire premier businesses at deep historical discounts.
+                </p>
+            </div>
 
-          <div className="bg-purple-100 p-4 rounded-lg border border-purple-200">
-            <h4 className="font-bold text-purple-900 mb-2">🎯 LEAPS Put Selling Definition</h4>
-            <p className="text-purple-800">
-              <strong>LEAPS Put Selling</strong> involves selling (writing) long-dated put options to collect premium income while potentially 
-              acquiring quality stocks at predetermined prices. Unlike short-term put selling focused on income generation, 
-              LEAPS put selling is primarily a <strong>volatility arbitrage</strong> and <strong>strategic acquisition</strong> strategy.
-            </p>
-          </div>
-          
-          <p>
-            The fundamental difference from regular put selling: <strong>Vega dominates Theta</strong> in long-dated options. 
-            You're not primarily collecting time decay (which is minimal for the first 12-18 months) - you're betting on 
-            <strong>volatility compression</strong> and positioning for potential stock acquisition at attractive prices.
-          </p>
-          
-          <p>
-            This strategy transforms you from a premium collector into a <strong>volatility trader</strong> and <strong>patient capital allocator</strong>. 
-            The goal isn't quick income but rather exploiting volatility inefficiencies while maintaining optionality for strategic stock purchases.
-          </p>
-          
-          <div className="bg-green-100 p-4 rounded-lg border border-green-200">
-            <h4 className="font-bold text-green-900 mb-2">💡 Institutional Perspective</h4>
-            <p className="text-green-800">
-              <strong>Warren Buffett's Approach:</strong> Berkshire Hathaway has famously used this strategy to acquire positions in quality companies, 
-              effectively getting paid to wait for attractive entry prices. When Buffett sells puts on Coca-Cola or Apple, he's not seeking income - 
-              he's positioning for strategic acquisition while collecting volatility premium.
-            </p>
-          </div>
-          
-          <div className="bg-amber-100 p-4 rounded-lg border border-amber-200">
-            <h4 className="font-bold text-amber-900 mb-2">⚠️ Key Distinction</h4>
-            <p className="text-amber-800">
-              <strong>Retail vs. Institutional Mindset:</strong> Retail traders often view LEAPS put selling as "enhanced income generation," 
-              leading to poor position sizing and risk management. Institutions understand it's primarily a <strong>volatility trade</strong> 
-              with significant mark-to-market risk that requires substantial capital and patience.
-            </p>
-          </div>
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">Greeks Profile: The Multi-Year Dynamic</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {GREEKS.map((g) => (
+                        <div key={g.label} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-3">
+                            <p className={`font-mono text-xs font-bold mb-1 ${g.tone}`}>{g.label}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-snug">{g.text}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <h3 className="font-serif text-lg text-gray-900 dark:text-gray-100 mb-3">LEAPS Put Selling vs. Short-Dated Put Selling</h3>
+                <ComparisonGrid>
+                    <ComparisonCard
+                        title="LEAPS Put Selling (1–3 Years)"
+                        tone="pos"
+                        items={[
+                            "Primary driver: volatility mean-reversion and multi-year fundamental growth.",
+                            "Management: hands-off, low maintenance; immune to short-term intraday noise.",
+                            "Upfront cash: collects massive cash sums upfront to redeploy into yield assets.",
+                            "Acquisition strike: placed at deep margin-of-safety discounts (-20% to -40%).",
+                        ]}
+                    />
+                    <ComparisonCard
+                        title="Short-Dated Puts (30–45 DTE)"
+                        tone="neutral"
+                        items={[
+                            "Primary driver: rapid gamma/theta decay cycle.",
+                            "Management: high-frequency rolling, rebalancing every month.",
+                            "Upfront cash: small monthly cash increments.",
+                            "Acquisition strike: typically placed close to spot price (-3% to -7%).",
+                        ]}
+                    />
+                </ComparisonGrid>
+            </div>
         </div>
-      </div>
+    );
+}
 
-      {/* Greek Profile Analysis */}
-      <div className="bg-indigo-50 p-4 md:p-6 rounded-xl shadow-lg border border-indigo-200">
-        <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">📊</span>
-          Greek Profile Analysis
-        </h3>
-        <div className="text-sm text-indigo-700 space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white p-3 rounded-lg border border-indigo-100">
-              <h4 className="font-semibold text-indigo-800 mb-2">Vega (Volatility Risk)</h4>
-              <p>
-                <strong>Dominant Greek</strong> - Long-dated options have massive Vega exposure. 
-                A 1% change in implied volatility can impact position value by 10-20%.
-              </p>
+export function LeapsPutPlaybook({ strategy }: { strategy: Strategy }) {
+    return (
+        <div className="space-y-6">
+            <SectionCard title="How to Trade It" icon={Compass} tone="accent">
+                <h4>Underlyer Selection (The Buffett Standard)</h4>
+                <ul>
+                    <li><strong>Wide-Moat Franchises:</strong> durable competitive advantages, stellar balance sheets, predictable cash flows (e.g., BRK.B, AAPL, MSFT) or broad indices (SPX, SPY).</li>
+                    <li><strong>Avoid Cyclical or High-Debt Names:</strong> companies with fragile 3-year survival odds are disqualified.</li>
+                </ul>
+                <h4>Strike Selection &amp; Margin of Safety</h4>
+                <ul>
+                    <li><strong>15–25 Delta (Deep OTM):</strong> choose strikes 20–35% below current market prices to establish a generational margin of safety.</li>
+                    <li><strong>12–24 Months Duration:</strong> target expirations 1 to 2 years out (e.g. 365–730 DTE).</li>
+                </ul>
+                <h4>Step-by-Step Execution</h4>
+                <ol>
+                    <li>Identify a premier wide-moat company trading at or below fair value during an elevated IV regime.</li>
+                    <li>Select a LEAPS expiration cycle 12–24 months out.</li>
+                    <li>Sell the 20-delta out-of-the-money put option and collect the upfront cash premium.</li>
+                    <li>Deposit the cash collateral into interest-bearing Treasury bills or money markets to earn risk-free yield.</li>
+                    <li>Place a GTC buyback order at 50% profit.</li>
+                </ol>
+            </SectionCard>
+
+            <SectionCard title="Manage the Position" icon={Sliders} tone="accent">
+                <h4>Profit Taking &amp; Assignment</h4>
+                <ul>
+                    <li><strong>Early Volatility Collapse Exit:</strong> if a market rally collapses implied volatility and the put reaches 50% profit within the first 6 months, close early to capture an annualized gain far ahead of schedule.</li>
+                    <li><strong>Accept Assignment Willingly:</strong> if assigned at expiration after a multi-year bear market, celebrate buying a fortress balance sheet company at 30–40% below its historical highs.</li>
+                </ul>
+            </SectionCard>
+
+            <FormulaPanel
+                title="Worked Example: 2-Year LEAPS Put Sale"
+                formula="\text{Effective Cost Basis} = K_{\text{put}} - P_{\text{collected}}"
+                legend={[
+                    { label: 'K_{put}', value: 'Put strike price' },
+                    { label: 'P_{collected}', value: 'Upfront cash premium collected per share' },
+                ]}
+                example={{
+                    label: 'Fortress Stock ($150 Spot Price)',
+                    rows: [
+                        { label: 'Sell 2-Year $120 Put (20% OTM)', value: '$15.00 cash credit ($1,500/contract)' },
+                        { label: 'Cash Collateral Earning 4.5% in T-Bills', value: '+$1,080 interest over 2 years' },
+                        { label: 'Effective Entry Price if Assigned', value: '$105.00 ($120 strike - $15 premium)' },
+                    ],
+                    result: { label: 'Discount to Entry Price', value: 'Acquisition price is -30.0% below initial market spot' },
+                    note: 'If never assigned, total return equals the $1,500 option premium + $1,080 T-bill interest = $2,580 on $12,000 collateral (+21.5% total return).',
+                }}
+            />
+
+            <SectionCard title="Risks & Common Mistakes" icon={AlertTriangle} tone="neg">
+                <h4>Risks to Monitor</h4>
+                <ul>
+                    <li><strong>Multi-Year Fundamental Decay:</strong> business model disruption occurring over a 2-year horizon.</li>
+                    <li><strong>Capital Lockup:</strong> committing cash collateral for multiple years limits tactical agility unless managed actively.</li>
+                    <li><strong>Overleveraging on Margin:</strong> selling too many naked LEAPS puts and facing severe margin calls during market panics.</li>
+                </ul>
+            </SectionCard>
+
+            <div className="bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 rounded-r-lg p-4">
+                <p className="text-xs text-amber-800 dark:text-amber-400">
+                    <strong>Risk Disclosure:</strong> LEAPS put selling requires committing capital over multi-year horizons.
+                    Downside risk below the strike price is substantial. This information is for educational purposes only.
+                </p>
             </div>
-            <div className="bg-white p-3 rounded-lg border border-indigo-100">
-              <h4 className="font-semibold text-indigo-800 mb-2">Theta (Time Decay)</h4>
-              <p>
-                <strong>Minimal Impact</strong> - Time decay is slow for LEAPS. 
-                Don't expect meaningful theta collection until final 3-6 months.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-indigo-100">
-              <h4 className="font-semibold text-indigo-800 mb-2">Delta (Directional Risk)</h4>
-              <p>
-                <strong>Moderate Exposure</strong> - Typically 20-40 delta, providing 
-                significant but manageable directional exposure.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-indigo-100">
-              <h4 className="font-semibold text-indigo-800 mb-2">Gamma (Delta Sensitivity)</h4>
-              <p>
-                <strong>Low but Persistent</strong> - Gamma remains relatively stable 
-                throughout the option's life, unlike short-term options.
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
-
-      {/* Implementation Framework */}
-      <div className="bg-green-50 p-4 md:p-6 rounded-xl shadow-lg border border-green-200">
-        <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">⚙️</span>
-          Implementation Framework
-        </h3>
-        <div className="text-sm text-green-700 space-y-4">
-          <div className="space-y-3">
-            <div className="bg-white p-3 rounded-lg border border-green-100">
-              <h4 className="font-semibold text-green-800 mb-2">1. Stock Selection Criteria</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>High-quality companies with strong fundamentals</li>
-                <li>Stocks you'd be comfortable owning long-term</li>
-                <li>Sufficient liquidity in LEAPS options (open interest &gt; 100)</li>
-                <li>Historical volatility patterns that support mean reversion</li>
-              </ul>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-green-100">
-              <h4 className="font-semibold text-green-800 mb-2">2. Strike Selection Strategy</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Target 15-25 delta puts (20-30% out-of-the-money)</li>
-                <li>Strike price should represent attractive acquisition level</li>
-                <li>Consider technical support levels and valuation metrics</li>
-                <li>Avoid strikes too close to current price (high assignment risk)</li>
-              </ul>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-green-100">
-              <h4 className="font-semibold text-green-800 mb-2">3. Expiration Selection</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>12-24 months to expiration for optimal Vega/Theta balance</li>
-                <li>Avoid options with less than 9 months (Vega decay accelerates)</li>
-                <li>Consider earnings cycles and known catalysts</li>
-                <li>January expirations often have better liquidity</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Institutional Applications */}
-      <div className="bg-blue-50 p-4 md:p-6 rounded-xl shadow-lg border border-blue-200">
-        <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">🏛️</span>
-          Institutional Applications
-        </h3>
-        <div className="text-sm text-blue-700 space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white p-3 rounded-lg border border-blue-100">
-              <h4 className="font-semibold text-blue-800 mb-2">Strategic Acquisition</h4>
-              <p>
-                Use LEAPS puts to establish positions in quality companies at predetermined prices, 
-                getting paid to wait for attractive entry points.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-blue-100">
-              <h4 className="font-semibold text-blue-800 mb-2">Volatility Arbitrage</h4>
-              <p>
-                Exploit periods of elevated implied volatility by selling when IV is high 
-                and benefiting from volatility mean reversion.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-blue-100">
-              <h4 className="font-semibold text-blue-800 mb-2">Dividend Arbitrage</h4>
-              <p>
-                Position as counterparty to dividend arbitrage strategies, 
-                collecting premium from sophisticated dividend capture trades.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-blue-100">
-              <h4 className="font-semibold text-blue-800 mb-2">Portfolio Hedging</h4>
-              <p>
-                Use as a hedge against concentrated positions or as part of 
-                a broader volatility management strategy.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Risk Management */}
-      <div className="bg-red-50 p-4 md:p-6 rounded-xl shadow-lg border border-red-200">
-        <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">⚠️</span>
-          Risk Management & Retail Traps
-        </h3>
-        <div className="text-sm text-red-700 space-y-4">
-          <div className="bg-red-100 p-3 rounded-lg border-l-4 border-red-500 mb-4">
-            <p className="font-semibold text-red-800">
-              Warning: LEAPS put selling is NOT a "set and forget" income strategy. 
-              The Vega exposure creates significant mark-to-market volatility.
-            </p>
-          </div>
-          <div className="space-y-3">
-            <div className="bg-white p-3 rounded-lg border border-red-100">
-              <h4 className="font-semibold text-red-800 mb-2">The Vega Time Bomb</h4>
-              <p>
-                As volatility spikes, unrealized losses can be massive (50-100% of premium received). 
-                Many retail traders panic and close at the worst possible time.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-red-100">
-              <h4 className="font-semibold text-red-800 mb-2">Capital Inefficiency</h4>
-              <p>
-                Requires substantial buying power (20-30% of strike value). 
-                Capital is tied up for extended periods with uncertain returns.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-red-100">
-              <h4 className="font-semibold text-red-800 mb-2">Liquidity Challenges</h4>
-              <p>
-                LEAPS often have wide bid-ask spreads and limited liquidity. 
-                Early exit can be costly and difficult to execute.
-              </p>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-red-100">
-              <h4 className="font-semibold text-red-800 mb-2">Assignment Risk</h4>
-              <p>
-                Early assignment risk increases near ex-dividend dates and during market stress. 
-                Must be prepared for immediate stock ownership.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Best Practices */}
-      <div className="bg-purple-50 p-4 md:p-6 rounded-xl shadow-lg border border-purple-200">
-        <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">✅</span>
-          Best Practices
-        </h3>
-        <div className="text-sm text-purple-700 space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white p-3 rounded-lg border border-purple-100">
-              <h4 className="font-semibold text-purple-800 mb-2">Position Sizing</h4>
-              <ul className="list-disc list-inside space-y-1 text-xs">
-                <li>Never risk more than 5-10% of portfolio on single position</li>
-                <li>Account for potential assignment and stock ownership</li>
-                <li>Maintain adequate cash reserves for margin requirements</li>
-              </ul>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-purple-100">
-              <h4 className="font-semibold text-purple-800 mb-2">Volatility Timing</h4>
-              <ul className="list-disc list-inside space-y-1 text-xs">
-                <li>Sell when IV rank is above 50th percentile</li>
-                <li>Avoid selling during low volatility periods</li>
-                <li>Monitor VIX and sector-specific volatility indicators</li>
-              </ul>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-purple-100">
-              <h4 className="font-semibold text-purple-800 mb-2">Exit Strategies</h4>
-              <ul className="list-disc list-inside space-y-1 text-xs">
-                <li>Close at 25-50% of maximum profit</li>
-                <li>Roll down and out when possible</li>
-                <li>Accept assignment if fundamentals remain strong</li>
-              </ul>
-            </div>
-            <div className="bg-white p-3 rounded-lg border border-purple-100">
-              <h4 className="font-semibold text-purple-800 mb-2">Monitoring Requirements</h4>
-              <ul className="list-disc list-inside space-y-1 text-xs">
-                <li>Daily P&L monitoring due to Vega sensitivity</li>
-                <li>Track implied volatility changes</li>
-                <li>Monitor earnings announcements and catalysts</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Performance Expectations */}
-      <div className="bg-yellow-50 p-4 md:p-6 rounded-xl shadow-lg border border-yellow-200">
-        <h3 className="text-xl font-bold text-yellow-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">📈</span>
-          Performance Expectations
-        </h3>
-        <div className="text-sm text-yellow-700 space-y-4">
-          <div className="bg-white p-3 rounded-lg border border-yellow-100">
-            <h4 className="font-semibold text-yellow-800 mb-2">Realistic Returns</h4>
-            <p>
-              Annualized returns of 8-15% are realistic for skilled practitioners, but with significant volatility. 
-              Many positions will show large unrealized losses before eventual profitability.
-            </p>
-          </div>
-          <div className="bg-white p-3 rounded-lg border border-yellow-100">
-            <h4 className="font-semibold text-yellow-800 mb-2">Win Rate Expectations</h4>
-            <p>
-              High win rate (70-80%) but with occasional large losses. The strategy requires patience 
-              and strong conviction in underlying stock selection.
-            </p>
-          </div>
-          <div className="bg-white p-3 rounded-lg border border-yellow-100">
-            <h4 className="font-semibold text-yellow-800 mb-2">Capital Requirements</h4>
-            <p>
-              Minimum $50,000-$100,000 to properly diversify across multiple positions. 
-              Smaller accounts should focus on shorter-term strategies.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Educational Resources */}
-      <div className="bg-teal-50 p-4 md:p-6 rounded-xl shadow-lg border border-teal-200">
-        <h3 className="text-xl font-bold text-teal-800 mb-4 flex items-center gap-2">
-          <span className="text-2xl">📖</span>
-          Educational Resources
-        </h3>
-        <div className="text-sm text-teal-700 space-y-3">
-          <div className="bg-white p-3 rounded-lg border border-teal-100">
-            <h4 className="font-semibold text-teal-800 mb-2">Recommended Reading</h4>
-            <ul className="list-disc list-inside space-y-1 text-xs">
-              <li>
-                <a href="https://www.berkshirehathaway.com/letters/letters.html" 
-                   target="_blank" rel="noopener noreferrer" 
-                   className="text-teal-600 hover:text-teal-800 underline">
-                  Berkshire Hathaway Annual Letters
-                </a> - Warren Buffett's approach to put selling
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white p-3 rounded-lg border border-teal-100">
-            <h4 className="font-semibold text-teal-800 mb-2">Key Concepts to Master</h4>
-            <ul className="list-disc list-inside space-y-1 text-xs">
-              <li>Implied volatility rank and percentile analysis</li>
-              <li>Greek risk management and hedging techniques</li>
-              <li>Dividend arbitrage and ex-dividend date effects</li>
-              <li>Early assignment probabilities and management</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="text-center pt-6">
-        <button
-          onClick={onBack}
-          className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 font-medium"
-        >
-          ← Back to Strategy Overview
-        </button>
-      </div>
-    </div>
-  );
-};
+    );
+}

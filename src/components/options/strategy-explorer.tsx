@@ -1,228 +1,45 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Maximize2 } from 'lucide-react';
-import { strategies, type Strategy, getStrategyDetailComponent, strategyIdToSlug, slugToStrategyId } from './strategy-config';
-import { PayoffChartView } from './payoff-chart-view';
-import { SpxPayoffBuilder } from './spx-payoff-builder';
-import { articles } from '@/data/articles';
-import { ArticleCard } from '@/components/articles/article-card';
-import { FullScreenImageViewer } from '@/components/ui/full-screen-image-viewer';
-import { resolveStrategyMedia } from '@/lib/article-utils';
+import { TrendingUp, TrendingDown, Minus, Zap, DollarSign, Shield, Star } from 'lucide-react';
+import { strategies, strategyIdToSlug, slugToStrategyId } from './strategy-config';
+import { StrategyDetailShell } from './strategy-detail-shell';
+import { StrategyDetailLegacy } from './strategy-detail-legacy';
 
-const DEFAULT_DEMO_PARAMS = { stockPrice: 100, strike1: 100, strike2: 105, strike3: 95, strike4: 90, premium: 2.5 };
+const FILTERS = ['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income', 'Risk Defined'] as const;
 
-const PayoffChart = ({ strategy }: { strategy: Strategy }) => {
-    // Only calendar_spread still reaches this static illustration — it needs multi-expiry pricing
-    // (different IV per leg, different expirations) the interactive builder doesn't support. Every
-    // other strategy either has a payoffPresetId directly, or (covered_call, wheel_strategy,
-    // collar_strategy, buffered_strategy) uses a synthetic stock leg alongside real chain-priced
-    // options — see payoff.ts's OptionLegType comment for why a stock leg is synthetic for SPX.
-    const demo = { ...DEFAULT_DEMO_PARAMS, ...strategy.payoffDemoParams };
-    const labels = Array.from({ length: 41 }, (_, i) => demo.stockPrice - 20 + i);
-    const payoffData = labels.map(p => strategy.payoffCalculator!(p, demo));
-    return <PayoffChartView labels={labels} payoffData={payoffData} profile={strategy.profile} />;
+const FILTER_ICONS: Record<string, typeof Star> = {
+    Featured: Star,
+    Bullish: TrendingUp,
+    Bearish: TrendingDown,
+    Neutral: Minus,
+    Volatility: Zap,
+    Income: DollarSign,
+    'Risk Defined': Shield,
 };
 
-const StrategyDetail = ({ strategy, onBack }: { strategy: any, onBack: () => void }) => {
-    const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-    const media = resolveStrategyMedia(strategy);
+const DIRECTIONAL_BADGE: Record<string, string> = {
+    Bullish: "bg-[#1D8A70]/10 text-[#1D8A70] dark:bg-[#3CBF9C]/10 dark:text-[#3CBF9C] border border-[#1D8A70]/30 dark:border-[#3CBF9C]/30",
+    Bearish: "bg-[#BC4128]/10 text-[#BC4128] dark:bg-[#E2694A]/10 dark:text-[#E2694A] border border-[#BC4128]/30 dark:border-[#E2694A]/30",
+};
+const NEUTRAL_BADGE = "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800";
+const FEATURED_BADGE = "bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800";
 
+function CategoryBadge({ category }: { category: string }) {
+    if (category === 'Featured') {
+        return (
+            <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${FEATURED_BADGE}`}>
+                <Star className="h-3 w-3" />
+                {category}
+            </span>
+        );
+    }
+    const classes = DIRECTIONAL_BADGE[category] ?? NEUTRAL_BADGE;
     return (
-        <div className="animate-fade-in">
-            <button 
-                onClick={onBack} 
-                className="mb-6 inline-flex items-center gap-2 px-4 py-2 text-sm md:text-base font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all duration-200 border border-blue-200 hover:border-blue-300"
-                aria-label="Back to all strategies"
-            >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                <span>Back to all strategies</span>
-            </button>
-            
-            <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-6 md:p-8 rounded-xl border border-blue-200 shadow-lg mb-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">{strategy.name}</h2>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">{strategy.description}</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
-                    <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Risk / Reward</p>
-                    <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.profile}</p>
-                </div>
-                <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
-                    <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Volatility View</p>
-                    <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.volatility}</p>
-                </div>
-                <div className="bg-white p-4 md:p-5 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition-shadow">
-                    <p className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Time Decay View</p>
-                    <p className="text-sm md:text-lg font-bold text-gray-900 leading-tight">{strategy.time}</p>
-                </div>
-            </div>
-
-            {/* Payoff Diagram and Video Section */}
-            {(() => {
-                const hasVideo = media.youtubeId;
-                const CustomBuilder = strategy.customPayoffBuilder;
-                const payoffSection = strategy.payoffPresetId
-                    ? <SpxPayoffBuilder initialPresetId={strategy.payoffPresetId} lockPreset initialExpirationTargetDte={strategy.payoffExpirationTargetDte} />
-                    : CustomBuilder
-                    ? <CustomBuilder strategy={strategy} />
-                    : <PayoffChart strategy={strategy} />;
-
-                if (hasVideo) {
-                    return (
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            {/* Payoff Diagram */}
-                            <div className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-gray-200">
-                                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                                    <span className="text-2xl">📊</span>
-                                    Risk Profile (Payoff Diagram)
-                                </h3>
-                                {strategy.payoffExplanation && (
-                                    <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-                                        <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                                            <span className="font-semibold text-blue-700">💡 How to Read:</span>
-                                            <br />
-                                            {strategy.payoffExplanation}
-                                        </p>
-                                    </div>
-                                )}
-                                {payoffSection}
-                            </div>
-
-                            {/* YouTube Video */}
-                            <div className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-gray-200">
-                                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                                    <span className="text-2xl">🎥</span>
-                                    Video Tutorial
-                                </h3>
-                                <div className="relative w-full h-[280px] md:h-[350px] bg-gray-50 rounded-lg overflow-hidden">
-                                    <iframe
-                                        className="absolute top-0 left-0 w-full h-full"
-                                        src={`https://www.youtube.com/embed/${media.youtubeId}`}
-                                        title={`${strategy.name} Tutorial`}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    );
-                }
-
-                // Payoff Diagram Only - For strategies without videos
-                return (
-                    <div className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-gray-200">
-                        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <span className="text-2xl">📊</span>
-                            Risk Profile (Payoff Diagram)
-                        </h3>
-                        {strategy.payoffExplanation && (
-                            <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-                                <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                                    <span className="font-semibold text-blue-700">💡 How to Read:</span>
-                                    <br />
-                                    {strategy.payoffExplanation}
-                                </p>
-                            </div>
-                        )}
-                        {payoffSection}
-                    </div>
-                );
-            })()}
-
-            {/* Infographic Section - Display if available */}
-            {media.infographicUrl && (
-                <section className="mb-6">
-                    <div
-                        className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 cursor-pointer group relative"
-                        onClick={() => setIsImageViewerOpen(true)}
-                    >
-                        <img
-                            src={media.infographicUrl}
-                            alt={`${strategy.name} Strategy Infographic`} 
-                            className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.02]"
-                        />
-                        {/* Full-screen button overlay */}
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setIsImageViewerOpen(true);
-                            }}
-                            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
-                            title="View full screen"
-                        >
-                            <Maximize2 className="h-4 w-4" />
-                        </button>
-                        {/* Click hint */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none">
-                            <div className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium">
-                                Click to view full screen
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            )}
-
-            {/* Related Articles Section */}
-            {strategy.relatedArticles && strategy.relatedArticles.length > 0 && (
-                <div className="mt-6">
-                    <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200 mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                            <span className="text-2xl">📚</span>
-                            Related Articles
-                        </h3>
-                    </div>
-                    
-                    <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
-                        {strategy.relatedArticles.map((slug: string) => {
-                            const article = articles.find(a => a.slug === slug);
-                            if (!article || !article.title || !article.slug) return null;
-                            
-                            return (
-                                <ArticleCard 
-                                    key={article.slug}
-                                    title={article.title}
-                                    description={article.description}
-                                    slug={article.slug}
-                                    date={article.date}
-                                    imageUrl={article.imageUrl}
-                                    googleDoc={article.googleDoc}
-                                    deepResearch={article.deepResearch}
-                                    youtubeUrl={article.youtubeUrl}
-                                    bilibiliUrl={article.bilibiliUrl}
-                                    bilibiliTitle={article.bilibiliTitle}
-                                    isVideo={article.isVideo}
-                                    options={article.options}
-                                    noSummary={article.noSummary}
-                                    podcastUrl={article.podcastUrl}
-                                    websiteUrl={article.websiteUrl}
-                                />
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-
-            {/* Strategy Detail Component */}
-            {(() => {
-                const StrategyDetailComponent = getStrategyDetailComponent(strategy.id);
-                return <StrategyDetailComponent strategy={strategy} onBack={onBack} />;
-            })()}
-
-            {/* Full-screen image viewer */}
-            {media.infographicUrl && (
-                <FullScreenImageViewer
-                    src={media.infographicUrl}
-                    alt={`${strategy.name} Strategy Infographic`}
-                    isOpen={isImageViewerOpen}
-                    onClose={() => setIsImageViewerOpen(false)}
-                />
-            )}
-        </div>
+        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${classes}`}>
+            {category}
+        </span>
     );
-};
+}
 
 interface StrategyExplorerProps {
     selectedStrategyId?: string;
@@ -265,89 +82,65 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
     };
 
     if (selectedStrategy) {
-        return <StrategyDetail strategy={selectedStrategy} onBack={handleBack} />;
+        return selectedStrategy.detailSections
+            ? <StrategyDetailShell strategy={selectedStrategy} onBack={handleBack} />
+            : <StrategyDetailLegacy strategy={selectedStrategy} onBack={handleBack} />;
     }
 
     return (
         <div className="space-y-6 md:space-y-8">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 md:p-8 rounded-xl border border-blue-100">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">Strategy Explorer</h2>
-                <p className="text-sm md:text-lg text-gray-600 leading-relaxed">
-                    Explore a comprehensive taxonomy of options strategies. Each strategy is designed for a specific market outlook. 
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 md:p-8 shadow-sm">
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 leading-tight mb-3">Strategy Explorer</h2>
+                <p className="text-sm md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Explore a comprehensive taxonomy of options strategies. Each strategy is designed for a specific market outlook.
                     Use the filters below to discover strategies based on your view of the market's direction and volatility.
                 </p>
             </div>
-            
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 p-3 md:p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 shadow-sm">
-                {['All', 'Featured', 'Bullish', 'Bearish', 'Neutral', 'Volatility', 'Income', 'Risk Defined'].map(f => (
-                    <button 
-                        key={f} 
-                        onClick={() => setFilter(f)} 
-                        className={`btn px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold text-sm md:text-base min-h-[44px] flex-1 sm:flex-initial transition-all duration-200 shadow-sm ${
-                            filter === f 
-                                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md transform scale-105' 
-                                : 'bg-white text-gray-700 hover:bg-gray-50 hover:shadow-md hover:scale-102'
-                        }`}
-                    >
-                        <span className="flex items-center justify-center gap-2">
+
+            <div className="flex flex-wrap gap-2 p-3 md:p-4 bg-gray-50 dark:bg-gray-950 rounded-2xl border border-gray-200 dark:border-gray-800">
+                {FILTERS.map((f) => {
+                    const Icon = FILTER_ICONS[f];
+                    const active = filter === f;
+                    return (
+                        <button
+                            key={f}
+                            onClick={() => setFilter(f)}
+                            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-medium text-sm transition-colors ${
+                                active
+                                    ? 'bg-[#A8672E] dark:bg-[#D08F52] text-white dark:text-[#14171B]'
+                                    : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40'
+                            }`}
+                        >
+                            {Icon && <Icon className="h-3.5 w-3.5" />}
                             {f}
-                            <span className="text-lg">{({'Featured': '⭐', 'Bullish': '🐂', 'Bearish': '🐻', 'Neutral': '😐', 'Volatility': '⚡', 'Income': '💰', 'Risk Defined': '🛡️'} as any)[f] || ''}</span>
-                        </span>
-                    </button>
-                ))}
+                        </button>
+                    );
+                })}
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {filteredStrategies.map(s => (
                     <div
                         key={s.id}
                         onClick={() => handleStrategyClick(s.id)}
-                        className="group content-card p-5 md:p-6 cursor-pointer strategy-card border-2 border-gray-200 bg-white hover:border-blue-400 hover:shadow-xl transition-all duration-300 rounded-xl min-h-[160px] flex flex-col transform hover:-translate-y-1"
+                        className="group bg-white dark:bg-gray-900 p-5 md:p-6 cursor-pointer border border-gray-200 dark:border-gray-800 hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-colors rounded-2xl shadow-sm min-h-[160px] flex flex-col"
                     >
                         <div className="flex flex-col gap-3 mb-3">
                             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                                <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-tight flex-1 group-hover:text-blue-600 transition-colors">{s.name}</h3>
+                                <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 leading-tight flex-1 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors">{s.name}</h3>
                                 {s.category.length <= 2 && (
                                     <div className="flex flex-wrap gap-1">
-                                        {s.category.map((cat, index) => (
-                                            <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
-                                                ({
-                                                    'Featured': 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
-                                                    'Bullish': 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                                    'Bearish': 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                                    'Neutral': 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                                    'Volatility': 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-                                                    'Income': 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300',
-                                                    'Risk Defined': 'bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800 border border-slate-300'
-                                                } as any)[cat]
-                                            }`}>
-                                                {cat}
-                                            </span>
-                                        ))}
+                                        {s.category.map((cat) => <CategoryBadge key={cat} category={cat} />)}
                                     </div>
                                 )}
                             </div>
                             {s.category.length > 2 && (
                                 <div className="flex flex-wrap gap-1 justify-end">
-                                    {s.category.map((cat, index) => (
-                                        <span key={index} className={`text-xs md:text-sm font-semibold px-3 py-1.5 rounded-full inline-block shadow-sm ${
-                                            ({
-                                                'Featured': 'bg-gradient-to-r from-yellow-100 to-amber-200 text-amber-800 border border-amber-300',
-                                                'Bullish': 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-                                                'Bearish': 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-                                                'Neutral': 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-                                                'Volatility': 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-                                                'Income': 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300',
-                                                'Risk Defined': 'bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800 border border-slate-300'
-                                            } as any)[cat]
-                                        }`}>
-                                            {cat}
-                                        </span>
-                                    ))}
+                                    {s.category.map((cat) => <CategoryBadge key={cat} category={cat} />)}
                                 </div>
                             )}
                         </div>
-                        <p className="text-xs md:text-sm text-gray-600 leading-relaxed flex-1 group-hover:text-gray-700 transition-colors">
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                             {s.description.split('.')[0]}.
                         </p>
                     </div>
@@ -355,4 +148,4 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
             </div>
         </div>
     );
-}; 
+};
