@@ -9,6 +9,7 @@ import { getArticleBySlug } from '@/lib/article-utils';
 import { getWikiEntryForArticle } from '@/data/wiki';
 import { Article } from '@/data/articles/types';
 import { CommentSection } from '@/components/comments/comment-section';
+import { StrategyTitleSwitcher } from './strategy-title-switcher';
 
 const statAccent = {
     profile: "border-[#A8672E] dark:border-[#D08F52]",
@@ -152,9 +153,7 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
                 Back to all strategies
             </button>
 
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
-                {strategy.name}
-            </h1>
+            <StrategyTitleSwitcher currentStrategyId={strategy.id} name={strategy.name} />
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-6">
                 {strategy.description}
             </p>

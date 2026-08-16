@@ -16,6 +16,7 @@ import { stripFrontmatter, wikiPathToPublicFile, wikiPathToRoute } from "@/lib/w
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { WikiMarkdown } from "@/components/wiki/wiki-markdown";
 import { CommentSection } from "@/components/comments/comment-section";
+import { ArticleTitleSwitcher } from "@/components/articles/article-title-switcher";
 import { YoutubeSubscribeGate } from "@/components/articles/youtube-subscribe-gate";
 import { getTopicsForArticle, getStrategiesForArticle, type TopicLink } from "@/lib/topic-links";
 import { useUser } from "@/hooks/use-user";
@@ -720,10 +721,12 @@ export function ArticleFrame({
               ))}
             <span className="text-xs text-slate-400 dark:text-slate-500 ml-1">{currentArticle.date}</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
-            {title}
-          </h1>
-          <p className="text-xs sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+          <ArticleTitleSwitcher
+            currentSlug={currentArticle.slug || slug}
+            title={title}
+            labels={currentArticle.labels}
+          />
+          <p className="text-xs sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mt-2">
             {description}
           </p>
         </div>

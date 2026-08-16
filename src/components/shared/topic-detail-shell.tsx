@@ -8,6 +8,7 @@ import { getArticleBySlug, resolveTopicMedia } from "@/lib/article-utils";
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
 import { CommentSection } from "@/components/comments/comment-section";
+import { TopicTitleSwitcher } from "@/components/shared/topic-title-switcher";
 import { useUser } from "@/hooks/use-user";
 import { getPreferredTopicLayout } from "@/lib/topics/topic-layout-preference";
 
@@ -212,10 +213,8 @@ export function TopicDetailShell({
                         <Icon className="h-5 w-5 md:h-6 md:w-6" />
                     </div>
                     <div className="min-w-0">
-                        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-1.5 leading-tight">
-                            {config.title}
-                        </h1>
-                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+                        <TopicTitleSwitcher currentTopicId={config.id} title={config.title} />
+                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mt-1">
                             {config.description}
                         </p>
                     </div>
