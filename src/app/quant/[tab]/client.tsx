@@ -57,45 +57,45 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="monte-carlo"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Monte Carlo</span>
             <span className="hidden md:block">Monte Carlo Simulation</span>
           </TabsTrigger>
           <TabsTrigger
             value="statistical-analysis"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Statistics</span>
             <span className="hidden md:block">Statistical Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="derivatives-pricing"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Derivatives</span>
             <span className="hidden md:block">Derivatives Pricing</span>
           </TabsTrigger>
           <TabsTrigger
             value="ai-in-quant"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">AI</span>
             <span className="hidden md:block">AI in Quant</span>
           </TabsTrigger>
           <TabsTrigger
             value="risk-management"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Risk</span>
             <span className="hidden md:block">Risk Management</span>
           </TabsTrigger>
           <TabsTrigger
             value="books"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             Books
           </TabsTrigger>
@@ -353,23 +353,23 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+            <TabsList className="grid w-full grid-cols-3 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
               <TabsTrigger 
                 value="topics" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="quanttrading" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block sm:hidden">Quant Trading</span>
                 <span className="hidden sm:block">Quantitative Trading</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block sm:hidden">Articles</span>
                 <span className="hidden sm:block">Research Articles</span>

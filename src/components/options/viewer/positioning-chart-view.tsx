@@ -295,10 +295,10 @@ export function PositioningChartView({
             </p>
           </div>
 
-          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
             <button
               onClick={() => setSubView('oi')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'oi' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -308,7 +308,7 @@ export function PositioningChartView({
             </button>
             <button
               onClick={() => setSubView('volume')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'volume' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -318,7 +318,7 @@ export function PositioningChartView({
             </button>
             <button
               onClick={() => setSubView('maxPainCurve')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'maxPainCurve' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -328,7 +328,7 @@ export function PositioningChartView({
             </button>
             <button
               onClick={() => setSubView('cumulativeOI')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'cumulativeOI' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -338,7 +338,7 @@ export function PositioningChartView({
             </button>
             <button
               onClick={() => setSubView('liquidity')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'liquidity' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'

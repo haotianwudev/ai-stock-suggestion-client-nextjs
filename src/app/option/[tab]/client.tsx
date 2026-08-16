@@ -77,50 +77,50 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger 
             value="option101" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">101</span>
             <span className="hidden md:block">Option 101</span>
           </TabsTrigger>
           <TabsTrigger 
             value="greeks" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Greeks</span>
             <span className="hidden md:block">Option Greeks</span>
           </TabsTrigger>
           <TabsTrigger 
             value="roll" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Roll</span>
             <span className="hidden md:block">Art of Roll</span>
           </TabsTrigger>
           <TabsTrigger 
             value="volatility" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Vol</span>
             <span className="hidden md:block">Volatility</span>
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             VRP
           </TabsTrigger>
-          <TabsTrigger
-            value="gex"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+          <TabsTrigger 
+            value="gex" 
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             GEX
           </TabsTrigger>
-          <TabsTrigger
-            value="books"
-            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+          <TabsTrigger 
+            value="books" 
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             Books
           </TabsTrigger>
@@ -163,16 +163,16 @@ function ViewerTab() {
   const [activeTool, setActiveTool] = useState('chain');
   return (
     <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
-      <TabsList className="grid w-full grid-cols-2 mb-5 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+      <TabsList className="grid w-full grid-cols-2 mb-5 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
         <TabsTrigger
           value="chain"
-          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
         >
           Options Chain & Volatility
         </TabsTrigger>
         <TabsTrigger
           value="builder"
-          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
         >
           SPX Payoff Builder
         </TabsTrigger>
@@ -340,30 +340,30 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+            <TabsList className="grid w-full grid-cols-4 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
               <TabsTrigger 
                 value="viewer" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block md:hidden">Viewer</span>
                 <span className="hidden md:block">Options Viewer</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="topics" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block md:hidden">Articles</span>
                 <span className="hidden md:block">Research Articles</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="strategies" 
-                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Strategies
               </TabsTrigger>

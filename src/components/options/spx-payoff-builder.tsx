@@ -582,7 +582,7 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                     <div className="flex items-center gap-1 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 px-3 pt-2.5">
                         <button
                             onClick={() => setAnalysisTab('payoff')}
-                            className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all ${
+                            className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all ${
                                 analysisTab === 'payoff' 
                                     ? 'bg-white dark:bg-gray-900 text-[#A8672E] dark:text-[#D08F52] border border-gray-200 dark:border-gray-800 border-b-transparent -mb-px shadow-xs' 
                                     : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -592,7 +592,7 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                         </button>
                         <button
                             onClick={() => setAnalysisTab('probability')}
-                            className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all ${
+                            className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all ${
                                 analysisTab === 'probability' 
                                     ? 'bg-white dark:bg-gray-900 text-[#A8672E] dark:text-[#D08F52] border border-gray-200 dark:border-gray-800 border-b-transparent -mb-px shadow-xs' 
                                     : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'

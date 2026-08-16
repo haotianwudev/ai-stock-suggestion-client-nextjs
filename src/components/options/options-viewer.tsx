@@ -293,10 +293,10 @@ export function OptionsViewer() {
           </div>
 
           {/* Source Toggle: Historical (Default) vs Live */}
-          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100/80 dark:bg-gray-800/80 p-0.5 shadow-2xs">
+          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-100/80 dark:bg-gray-800/80 p-0.5 shadow-2xs">
             <button
               onClick={() => source !== 'historical' && loadSource('historical')}
-              className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
+              className={`px-3 py-1 rounded-md font-semibold text-xs transition-all ${
                 source === 'historical' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -312,7 +312,7 @@ export function OptionsViewer() {
                 }
                 if (source !== 'live') loadSource('live');
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold text-xs transition-all ${
                 source === 'live' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : isTier4Plus
@@ -341,7 +341,7 @@ export function OptionsViewer() {
 
       {/* Error Alert */}
       {error && (
-        <Alert variant="destructive" className="rounded-2xl border-rose-300 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200">
+        <Alert variant="destructive" className="rounded-xl border-rose-300 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200">
           <AlertCircle className="h-4 w-4 text-rose-600 dark:text-rose-400" />
           <AlertDescription className="text-xs font-medium">
             {error}
@@ -374,7 +374,7 @@ export function OptionsViewer() {
 
       {/* SPX Expiration Date Carousel Strip with Filter Category Chips */}
       {data && data.expirationDates.length > 0 && (
-        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs space-y-3">
+        <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Calendar className="h-3.5 w-3.5 text-[#A8672E] dark:text-[#D08F52]" />
@@ -382,10 +382,10 @@ export function OptionsViewer() {
             </div>
 
             {/* Quick Filter: 0DTE / Weeklies / Monthlies / All */}
-            <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('all')}
-                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'all' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -395,7 +395,7 @@ export function OptionsViewer() {
               </button>
               <button
                 onClick={() => setExpCategory('0dte')}
-                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === '0dte' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -405,7 +405,7 @@ export function OptionsViewer() {
               </button>
               <button
                 onClick={() => setExpCategory('weeklies')}
-                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'weeklies' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -415,7 +415,7 @@ export function OptionsViewer() {
               </button>
               <button
                 onClick={() => setExpCategory('monthlies')}
-                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'monthlies' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -437,7 +437,7 @@ export function OptionsViewer() {
                 <button
                   key={exp.expiration}
                   onClick={() => setSelectedExpiration(exp.expiration)}
-                  className={`flex-shrink-0 px-3 py-2 rounded-xl border text-left transition-all ${
+                  className={`flex-shrink-0 px-3 py-2 rounded-lg border text-left transition-all ${
                     isSelected
                       ? 'border-[#A8672E] bg-[#A8672E]/10 dark:border-[#D08F52] dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
                       : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200'
@@ -449,7 +449,7 @@ export function OptionsViewer() {
                     </span>
                     <Badge 
                       variant="outline" 
-                      className={`text-[10px] px-1 py-0 font-mono font-bold ${
+                      className={`text-[9px] px-1 py-0 font-mono font-bold ${
                         is0DTE 
                           ? 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30' 
                           : is1DTE 
@@ -473,31 +473,31 @@ export function OptionsViewer() {
       {/* Main Analysis Views Switcher */}
       {data && currentExpData && (
         <Tabs value={activeTab} onValueChange={(val) => setActiveTab(val as any)} className="space-y-4">
-          <TabsList className="grid w-full grid-cols-4 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs h-auto gap-1">
+          <TabsList className="grid w-full grid-cols-4 p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs h-auto gap-1">
             <TabsTrigger 
               value="matrix" 
-              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
               <Layers className="h-4 w-4" />
               <span className="hidden sm:inline">SPX</span> Matrix
             </TabsTrigger>
             <TabsTrigger 
               value="volatility" 
-              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
               <Gauge className="h-4 w-4" />
               <span className="hidden sm:inline">Volatility</span> (Vol)
             </TabsTrigger>
             <TabsTrigger 
               value="positioning" 
-              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
               <BarChart3 className="h-4 w-4" />
               OI / Volume
             </TabsTrigger>
             <TabsTrigger 
               value="gex" 
-              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
               <Zap className="h-4 w-4" />
               Gamma (GEX)

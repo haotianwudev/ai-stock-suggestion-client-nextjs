@@ -252,17 +252,17 @@ export function QuantTrendingClient() {
             placeholder="Search by title, author, or tag..."
             value={searchText}
             onChange={e => setSearchText(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm shadow-xs transition-colors"
+            className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm shadow-xs transition-colors"
           />
         </div>
-        <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 bg-white dark:bg-gray-900 p-1 rounded-xl border border-gray-200 dark:border-gray-800 shadow-xs text-xs">
+        <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 bg-white dark:bg-gray-900 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 shadow-xs text-xs">
           <span className="text-slate-500 dark:text-slate-400 px-2 flex items-center gap-1 font-medium text-[11px]">
             <ArrowUpDown className="h-3 w-3" /> Sort:
           </span>
           <button
             type="button"
             onClick={() => setSortBy("date")}
-            className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+            className={`px-3 py-1 rounded-md font-medium transition-colors ${
               sortBy === "date"
                 ? "bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold"
                 : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52]"
@@ -273,7 +273,7 @@ export function QuantTrendingClient() {
           <button
             type="button"
             onClick={() => setSortBy("heat")}
-            className={`px-3 py-1 rounded-lg font-medium transition-colors ${
+            className={`px-3 py-1 rounded-md font-medium transition-colors ${
               sortBy === "heat"
                 ? "bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold"
                 : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52]"
@@ -288,17 +288,17 @@ export function QuantTrendingClient() {
       {loading && !data ? (
         <LoadingSkeleton />
       ) : error ? (
-        <div className="rounded-2xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/20 p-4 text-xs sm:text-sm text-red-700 dark:text-red-300">
+        <div className="rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/20 p-4 text-xs sm:text-sm text-red-700 dark:text-red-300">
           Failed to load trending data. Please try again later.
         </div>
       ) : (
         <Tabs defaultValue="all">
-          <TabsList className="flex-wrap h-auto gap-1 mb-4 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
+          <TabsList className="flex-wrap h-auto gap-1 mb-4 p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
             {SOURCES.map(s => (
               <TabsTrigger
                 key={s.key}
                 value={s.key}
-                className="text-xs sm:text-sm py-1.5 px-3 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+                className="text-xs sm:text-sm py-1.5 px-3 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
               >
                 {s.label}
                 <span className="ml-1.5 text-[10px] opacity-75 font-mono">

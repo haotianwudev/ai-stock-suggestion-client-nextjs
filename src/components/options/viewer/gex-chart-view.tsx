@@ -401,10 +401,10 @@ export function GexChartView({
           </div>
 
           <div className="flex flex-col items-end gap-2">
-            <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
               <button
                 onClick={() => setSubView('netGex')}
-                className={`px-3 py-1 rounded-lg transition-all ${
+                className={`px-3 py-1 rounded-md transition-all ${
                   subView === 'netGex' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -414,7 +414,7 @@ export function GexChartView({
               </button>
               <button
                 onClick={() => setSubView('grossGex')}
-                className={`px-3 py-1 rounded-lg transition-all ${
+                className={`px-3 py-1 rounded-md transition-all ${
                   subView === 'grossGex' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -424,7 +424,7 @@ export function GexChartView({
               </button>
               <button
                 onClick={() => setSubView('gammaShift')}
-                className={`px-3 py-1 rounded-lg transition-all ${
+                className={`px-3 py-1 rounded-md transition-all ${
                   subView === 'gammaShift' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -434,7 +434,7 @@ export function GexChartView({
               </button>
               <button
                 onClick={() => setSubView('vannaCharm')}
-                className={`px-3 py-1 rounded-lg transition-all ${
+                className={`px-3 py-1 rounded-md transition-all ${
                   subView === 'vannaCharm' 
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -445,7 +445,7 @@ export function GexChartView({
               {canAggregate && (
                 <button
                   onClick={() => setSubView('heatmap')}
-                  className={`px-3 py-1 rounded-lg transition-all ${
+                  className={`px-3 py-1 rounded-md transition-all ${
                     subView === 'heatmap' 
                       ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -456,10 +456,10 @@ export function GexChartView({
               )}
             </div>
             {canAggregate && (subView === 'netGex' || subView === 'grossGex') && (
-              <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
+              <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
                 <button
                   onClick={() => setScope('expiration')}
-                  className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                  className={`px-2.5 py-0.5 rounded-md transition-all ${
                     scope === 'expiration' 
                       ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -469,7 +469,7 @@ export function GexChartView({
                 </button>
                 <button
                   onClick={() => setScope('all')}
-                  className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                  className={`px-2.5 py-0.5 rounded-md transition-all ${
                     scope === 'all' 
                       ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'

@@ -406,10 +406,10 @@ export function VolatilityChartView({
           </div>
 
           {/* 5-Way Sub-View Selector */}
-          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
             <button
               onClick={() => setSubView('smile')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'smile' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -419,7 +419,7 @@ export function VolatilityChartView({
             </button>
             <button
               onClick={() => setSubView('multiSmile')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'multiSmile' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -429,7 +429,7 @@ export function VolatilityChartView({
             </button>
             <button
               onClick={() => setSubView('termStructure')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'termStructure' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -439,7 +439,7 @@ export function VolatilityChartView({
             </button>
             <button
               onClick={() => setSubView('rnd')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'rnd' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -449,7 +449,7 @@ export function VolatilityChartView({
             </button>
             <button
               onClick={() => setSubView('skewCurve')}
-              className={`px-3 py-1 rounded-lg transition-all ${
+              className={`px-3 py-1 rounded-md transition-all ${
                 subView === 'skewCurve' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'

@@ -152,13 +152,13 @@ export function OptionsMatrixTable({
   return (
     <div className="space-y-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xs overflow-hidden">
       {/* Control Bar: Columns, Moneyness, Strike Range */}
-      <div className="p-3.5 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="p-3 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2.5">
           {/* Column Mode Selector */}
-          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-0.5 shadow-2xs">
+          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-0.5 shadow-2xs">
             <button
               onClick={() => setColumnMode('standard')}
-              className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+              className={`px-3 py-1 rounded-md font-semibold transition-all ${
                 columnMode === 'standard' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -168,7 +168,7 @@ export function OptionsMatrixTable({
             </button>
             <button
               onClick={() => setColumnMode('greeks')}
-              className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+              className={`px-3 py-1 rounded-md font-semibold transition-all ${
                 columnMode === 'greeks' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -178,7 +178,7 @@ export function OptionsMatrixTable({
             </button>
             <button
               onClick={() => setColumnMode('full')}
-              className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+              className={`px-3 py-1 rounded-md font-semibold transition-all ${
                 columnMode === 'full' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -188,7 +188,7 @@ export function OptionsMatrixTable({
             </button>
             <button
               onClick={() => setColumnMode('liquidity')}
-              className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+              className={`px-3 py-1 rounded-md font-semibold transition-all ${
                 columnMode === 'liquidity' 
                   ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
@@ -207,7 +207,7 @@ export function OptionsMatrixTable({
               <button
                 key={String(r)}
                 onClick={() => setStrikeRange(r as StrikeRange)}
-                className={`px-2 py-0.5 rounded-lg text-xs font-mono font-semibold border transition-all ${
+                className={`px-2 py-0.5 rounded-md text-xs font-mono font-semibold border transition-all ${
                   strikeRange === r
                     ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
                     : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400 hover:border-[#A8672E]/40'

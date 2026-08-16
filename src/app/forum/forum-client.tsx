@@ -56,38 +56,38 @@ export function ForumClient({ initialTab }: { initialTab?: string }) {
       </div>
 
       <Tabs value={tab} onValueChange={handleTabChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 max-w-3xl h-auto p-1.5 gap-1 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 max-w-3xl h-auto p-1 gap-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
           <TabsTrigger
             value="all"
-            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
           >
             <MessagesSquare className="size-3.5 shrink-0" />
             <span>All Discussions</span>
           </TabsTrigger>
           <TabsTrigger
             value="articles"
-            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
           >
             <BookOpen className="size-3.5 shrink-0" />
             <span>Article Comments</span>
           </TabsTrigger>
           <TabsTrigger
             value="quant-trending"
-            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
           >
             <Flame className="size-3.5 shrink-0 text-orange-500 data-[state=active]:text-white" />
             <span>Quant Trending</span>
           </TabsTrigger>
           <TabsTrigger
             value="feedback"
-            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
           >
             <MessageSquarePlus className="size-3.5 shrink-0" />
             <span>Feedback</span>
           </TabsTrigger>
           <TabsTrigger
             value="categories"
-            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+            className="flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
           >
             <Layers className="size-3.5 shrink-0" />
             <span>Categories</span>
