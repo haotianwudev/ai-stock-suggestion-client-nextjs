@@ -59,8 +59,6 @@ export function ArticleTitleSwitcher({
       list = list.filter((a) => a.options || a.labels?.includes("Options Trading" as any));
     } else if (selectedFilter === "quant") {
       list = list.filter((a) => a.labels?.includes("Quantitative Finance" as any));
-    } else if (selectedFilter === "research") {
-      list = list.filter((a) => a.deepResearch);
     } else if (selectedFilter === "recent") {
       list = list.slice(0, 20);
     }
@@ -144,7 +142,6 @@ export function ArticleTitleSwitcher({
                 { id: "recent", label: "Latest" },
                 { id: "options", label: "Options" },
                 { id: "quant", label: "Quant" },
-                { id: "research", label: "Research" },
               ].map((filter) => (
                 <button
                   key={filter.id}
