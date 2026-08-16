@@ -59,6 +59,16 @@ export function canSetVideoPreference(tier: number): boolean {
   return tier >= MIN_VIDEO_PREFERENCE_TIER;
 }
 
+/** Tier required to default topic pages to the "Sidebar" layout instead of "Classic" (see
+ * lib/topics/topic-layout-preference.ts). Purely a client-side/localStorage preference (no
+ * server field), same shape as MIN_LIVE_OPTIONS_TIER below -- not tied to a DB column. */
+export const MIN_TOPIC_LAYOUT_TIER = 4;
+
+/** Returns true when the given tier is allowed to set the topic-layout preference. */
+export function canSetTopicLayoutPreference(tier: number): boolean {
+  return tier >= MIN_TOPIC_LAYOUT_TIER;
+}
+
 /** Returns true when the tier alone (no YouTube-subscription bypass) unlocks topic pages. */
 export function canAccessTopicContentByTier(tier: number): boolean {
   return tier >= MIN_TOPIC_TIER;

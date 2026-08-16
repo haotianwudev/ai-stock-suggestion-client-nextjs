@@ -12,8 +12,9 @@ import { useState } from "react";
 import { useUser } from "@/hooks/use-user";
 import { useLanguage } from "@/hooks/use-language";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { getTierName, tierUnlockKey, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER, canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER } from "@/lib/tiers";
+import { getTierName, tierUnlockKey, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER, canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER, canSetTopicLayoutPreference, MIN_TOPIC_LAYOUT_TIER } from "@/lib/tiers";
 import { getPreferredOptionSource, setPreferredOptionSource, OptionDataSource } from "@/lib/options/options-preferences";
+import { getPreferredTopicLayout, setPreferredTopicLayout, TopicLayout } from "@/lib/topics/topic-layout-preference";
 import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED, SET_PREFERRED_VIDEO_SOURCE } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
@@ -23,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
@@ -32,11 +33,67 @@ const schema = z.object({
 });
 type FormValues = z.infer<typeof schema>;
 
+// One row of a tier-gated preference toggle — the three Premium Settings rows (video platform,
+// option chain source, topic layout) are otherwise identical, differing only in labels/options/
+// the currently active value, so this is the one place their shared behavior lives.
+function PreferenceRow<T extends string>({
+  label,
+  description,
+  options,
+  value,
+  onSelect,
+  minTier,
+  hasAccess,
+}: {
+  label: string;
+  description: string;
+  options: { value: T; label: string; requiresAccess?: boolean }[];
+  value: T;
+  onSelect: (value: T) => void;
+  minTier: number;
+  hasAccess: boolean;
+}) {
+  const { t } = useLanguage();
+  return (
+    <div className="space-y-2">
+      <Label className="flex items-center gap-2">
+        {label}
+        {!hasAccess && (
+          <Badge variant="outline" className="font-normal">
+            {t("profileSettings.unlocksAt", { tier: getTierName(minTier) })}
+          </Badge>
+        )}
+      </Label>
+      <p className="text-xs text-muted-foreground">{description}</p>
+      <div className="flex flex-wrap gap-2 pt-1">
+        {options.map((option) => {
+          const disabled = option.requiresAccess && !hasAccess;
+          return (
+            <button
+              key={option.value}
+              type="button"
+              disabled={disabled}
+              onClick={() => onSelect(option.value)}
+              className={cn(
+                "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                value === option.value ? "border-primary ring-2 ring-primary bg-primary/5" : "border-border hover:bg-accent"
+              )}
+            >
+              {option.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function ProfileSettingsClient() {
   const { user, profile, loading } = useUser();
   const { t } = useLanguage();
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
   const [optionSource, setOptionSource] = useState<OptionDataSource>(() => getPreferredOptionSource(profile?.tier ?? 1));
+  const [topicLayout, setTopicLayout] = useState<TopicLayout>(() => getPreferredTopicLayout(profile?.tier ?? 1));
   const [updateProfile, { loading: saving }] = useMutation<{ updateProfile: MeResult }>(
     UPDATE_PROFILE,
     { refetchQueries: [{ query: ME }] }
@@ -67,6 +124,7 @@ export function ProfileSettingsClient() {
         avatarUrl: profile.avatarUrl ?? AVATAR_OPTIONS[0].src,
       });
       setOptionSource(getPreferredOptionSource(profile.tier));
+      setTopicLayout(getPreferredTopicLayout(profile.tier));
     }
     // Depend on the primitive fields, not `profile` itself -- useUser() returns a
     // freshly-constructed object on every render, so depending on the object
@@ -85,6 +143,7 @@ export function ProfileSettingsClient() {
   }
 
   const selectedAvatar = watch("avatarUrl");
+  const tier = profile?.tier ?? 1;
 
   const submit = handleSubmit(async ({ displayName, avatarUrl }) => {
     try {
@@ -97,7 +156,7 @@ export function ProfileSettingsClient() {
 
   const toggleYoutubeSubscribed = async (subscribed: boolean) => {
     try {
-      const prevTier = profile?.tier ?? 1;
+      const prevTier = tier;
       const { data } = await setYoutubeSubscribed({ variables: { subscribed } });
       if (!subscribed) {
         toast.success(t("profileSettings.updated"));
@@ -122,8 +181,7 @@ export function ProfileSettingsClient() {
   };
 
   const changeVideoSource = async (source: "youtube" | "bilibili") => {
-    if (!canSetVideoPreference(profile?.tier ?? 1)) return;
-    if (source === profile?.preferredVideoSource) return;
+    if (!canSetVideoPreference(tier) || source === profile?.preferredVideoSource) return;
     try {
       await setPreferredVideoSource({ variables: { source } });
       toast.success(t("profileSettings.updated"));
@@ -132,60 +190,81 @@ export function ProfileSettingsClient() {
     }
   };
 
+  const changeOptionSource = (source: OptionDataSource) => {
+    if (source === "live" && !canAccessLiveOptions(tier)) return;
+    setPreferredOptionSource(source);
+    setOptionSource(source);
+    toast.success(t("profileSettings.updated"));
+  };
+
+  const changeTopicLayout = (layout: TopicLayout) => {
+    if (layout === "sidebar" && !canSetTopicLayoutPreference(tier)) return;
+    setPreferredTopicLayout(layout);
+    setTopicLayout(layout);
+    toast.success(t("profileSettings.updated"));
+  };
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          {t("profileSettings.heading")}
-          <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>
-        </CardTitle>
-        <TierStatusBanner profile={profile} />
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={submit} className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="displayName">{t("profileSettings.displayNameLabel")}</Label>
-            <Input id="displayName" maxLength={50} {...register("displayName")} />
-            {errors.displayName && (
-              <p className="text-xs text-destructive">{errors.displayName.message}</p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <Label>{t("profileSettings.avatarLabel")}</Label>
-            <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-              {AVATAR_OPTIONS.map((option) => (
-                <button
-                  key={option.key}
-                  type="button"
-                  onClick={() => setValue("avatarUrl", option.src, { shouldDirty: true })}
-                  className={cn(
-                    "flex flex-col items-center gap-1 rounded-lg border p-2 transition-colors hover:bg-accent",
-                    selectedAvatar === option.src
-                      ? "border-primary ring-2 ring-primary"
-                      : "border-border"
-                  )}
-                >
-                  <div className="relative size-12 overflow-hidden rounded-full">
-                    <Image src={option.src} alt={option.label} fill className="object-cover" />
-                  </div>
-                  <span className="text-xs text-muted-foreground">{option.label}</span>
-                </button>
-              ))}
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            {t("profileSettings.heading")}
+            <Badge variant="outline">{getTierName(tier)}</Badge>
+          </CardTitle>
+          <TierStatusBanner profile={profile} />
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={submit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="displayName">{t("profileSettings.displayNameLabel")}</Label>
+              <Input id="displayName" maxLength={50} {...register("displayName")} />
+              {errors.displayName && (
+                <p className="text-xs text-destructive">{errors.displayName.message}</p>
+              )}
             </div>
-            {errors.avatarUrl && (
-              <p className="text-xs text-destructive">{errors.avatarUrl.message}</p>
-            )}
-          </div>
 
-          <div className="flex justify-end">
-            <Button type="submit" disabled={saving || !isDirty}>
-              {saving ? t("profileSettings.saving") : t("profileSettings.saveChanges")}
-            </Button>
-          </div>
-        </form>
+            <div className="space-y-2">
+              <Label>{t("profileSettings.avatarLabel")}</Label>
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                {AVATAR_OPTIONS.map((option) => (
+                  <button
+                    key={option.key}
+                    type="button"
+                    onClick={() => setValue("avatarUrl", option.src, { shouldDirty: true })}
+                    className={cn(
+                      "flex flex-col items-center gap-1 rounded-lg border p-2 transition-colors hover:bg-accent",
+                      selectedAvatar === option.src
+                        ? "border-primary ring-2 ring-primary"
+                        : "border-border"
+                    )}
+                  >
+                    <div className="relative size-12 overflow-hidden rounded-full">
+                      <Image src={option.src} alt={option.label} fill className="object-cover" />
+                    </div>
+                    <span className="text-xs text-muted-foreground">{option.label}</span>
+                  </button>
+                ))}
+              </div>
+              {errors.avatarUrl && (
+                <p className="text-xs text-destructive">{errors.avatarUrl.message}</p>
+              )}
+            </div>
 
-        <div className="mt-6 border-t pt-6">
+            <div className="flex justify-end">
+              <Button type="submit" disabled={saving || !isDirty}>
+                {saving ? t("profileSettings.saving") : t("profileSettings.saveChanges")}
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">{t("profileSettings.engagementHeading")}</CardTitle>
+        </CardHeader>
+        <CardContent>
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
@@ -208,106 +287,69 @@ export function ProfileSettingsClient() {
               plural: (profile?.likedCount ?? 0) === 1 ? "" : "s",
             })}
           </p>
-        </div>
+        </CardContent>
+      </Card>
 
-        <div className="mt-6 border-t pt-6">
-          <Label className="flex items-center gap-2">
-            {t("profileSettings.preferredVideoPlatform")}
-            <Badge
-              variant="outline"
-              className="gap-1 border-amber-600/30 bg-amber-600/10 font-normal text-amber-700 dark:text-amber-500"
-            >
-              <Crown className="size-3" />
-              {t("profileSettings.premiumBadge")}
-            </Badge>
-            {!canSetVideoPreference(profile?.tier ?? 1) && (
-              <Badge variant="outline" className="font-normal">
-                {t("profileSettings.unlocksAt", { tier: getTierName(MIN_VIDEO_PREFERENCE_TIER) })}
-              </Badge>
-            )}
-          </Label>
-          <p className="mt-1 text-xs text-muted-foreground">
-            {t("profileSettings.videoPlatformDescription")}
-          </p>
-          <div className="mt-3 flex gap-2">
-            {(["youtube", "bilibili"] as const).map((s) => (
-              <button
-                key={s}
-                type="button"
-                disabled={savingVideoSource || !canSetVideoPreference(profile?.tier ?? 1)}
-                onClick={() => changeVideoSource(s)}
-                className={cn(
-                  "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                  (profile?.preferredVideoSource ?? "youtube") === s
-                    ? "border-primary ring-2 ring-primary"
-                    : "border-border hover:bg-accent"
-                )}
-              >
-                {s === "youtube" ? "YouTube" : "Bilibili"}
-              </button>
-            ))}
-          </div>
-          {!canSetVideoPreference(profile?.tier ?? 1) && (
-            <p className="mt-2 text-xs text-muted-foreground">
-              {t("profileSettings.reachTierToChoose", { tier: getTierName(MIN_VIDEO_PREFERENCE_TIER) })}
-            </p>
-          )}
-        </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Crown className="size-4 text-amber-600 dark:text-amber-500" />
+            {t("profileSettings.premiumSettingsHeading")}
+          </CardTitle>
+          <CardDescription>{t("profileSettings.premiumSettingsDescription")}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <PreferenceRow
+            label={t("profileSettings.preferredVideoPlatform")}
+            description={t("profileSettings.videoPlatformDescription")}
+            options={[
+              { value: "youtube" as const, label: "YouTube" },
+              { value: "bilibili" as const, label: "Bilibili" },
+            ]}
+            value={profile?.preferredVideoSource ?? "youtube"}
+            onSelect={changeVideoSource}
+            minTier={MIN_VIDEO_PREFERENCE_TIER}
+            hasAccess={canSetVideoPreference(tier)}
+          />
 
-        <div className="mt-6 border-t pt-6">
-          <Label className="flex items-center gap-2">
-            {t("profileSettings.defaultOptionSource")}
-            <Badge
-              variant="outline"
-              className="gap-1 border-amber-600/30 bg-amber-600/10 font-normal text-amber-700 dark:text-amber-500"
-            >
-              <Crown className="size-3" />
-              {t("profileSettings.premiumBadge")}
-            </Badge>
-            {!canAccessLiveOptions(profile?.tier ?? 1) && (
-              <Badge variant="outline" className="font-normal">
-                {t("profileSettings.unlocksAt", { tier: getTierName(MIN_LIVE_OPTIONS_TIER) })}
-              </Badge>
-            )}
-          </Label>
-          <p className="mt-1 text-xs text-muted-foreground">
-            {t("profileSettings.defaultOptionSourceDescription")}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {(["historical", "live"] as const).map((s) => (
-              <button
-                key={s}
-                type="button"
-                disabled={s === "live" && !canAccessLiveOptions(profile?.tier ?? 1)}
-                onClick={() => {
-                  setPreferredOptionSource(s);
-                  setOptionSource(s);
-                  toast.success(t("profileSettings.updated"));
-                }}
-                className={cn(
-                  "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                  optionSource === s
-                    ? "border-primary ring-2 ring-primary bg-primary/5"
-                    : "border-border hover:bg-accent"
-                )}
-              >
-                {s === "historical" ? t("profileSettings.optionSourceHistorical") : t("profileSettings.optionSourceLive")}
-              </button>
-            ))}
+          <div className="border-t pt-6">
+            <PreferenceRow
+              label={t("profileSettings.defaultOptionSource")}
+              description={t("profileSettings.defaultOptionSourceDescription")}
+              options={[
+                { value: "historical" as const, label: t("profileSettings.optionSourceHistorical") },
+                { value: "live" as const, label: t("profileSettings.optionSourceLive"), requiresAccess: true },
+              ]}
+              value={optionSource}
+              onSelect={changeOptionSource}
+              minTier={MIN_LIVE_OPTIONS_TIER}
+              hasAccess={canAccessLiveOptions(tier)}
+            />
           </div>
-          {!canAccessLiveOptions(profile?.tier ?? 1) && (
-            <p className="mt-2 text-xs text-muted-foreground">
-              {t("profileSettings.reachTierForLiveOption", { tier: getTierName(MIN_LIVE_OPTIONS_TIER) })}
-            </p>
-          )}
-        </div>
-      </CardContent>
+
+          <div className="border-t pt-6">
+            <PreferenceRow
+              label={t("profileSettings.defaultTopicLayout")}
+              description={t("profileSettings.defaultTopicLayoutDescription")}
+              options={[
+                { value: "classic" as const, label: t("profileSettings.topicLayoutClassic") },
+                { value: "sidebar" as const, label: t("profileSettings.topicLayoutSidebar"), requiresAccess: true },
+              ]}
+              value={topicLayout}
+              onSelect={changeTopicLayout}
+              minTier={MIN_TOPIC_LAYOUT_TIER}
+              hasAccess={canSetTopicLayoutPreference(tier)}
+            />
+          </div>
+        </CardContent>
+      </Card>
+
       <TierUpDialog
         open={!!congrats}
         onOpenChange={(open) => !open && setCongrats(null)}
         title={congrats?.title ?? ""}
         description={congrats?.description ?? ""}
       />
-    </Card>
+    </div>
   );
 }

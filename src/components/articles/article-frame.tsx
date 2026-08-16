@@ -144,7 +144,9 @@ export function VideoCard({
   youtubeUrl: string;
   bilibiliUrl?: string;
   title: string;
-  articleSlug: string;
+  /** Omit for a video with no backing article (e.g. a topic's own hero video) — the like/bookmark
+   * row (which attributes to a specific article) is hidden when this is unset. */
+  articleSlug?: string;
 }) {
   const [playing, setPlaying] = useState(false);
   const [enlarged, setEnlarged] = useState(false);
@@ -167,11 +169,11 @@ export function VideoCard({
   const thumbnailUrl = youtubeThumbnailUrl(youtubeUrl);
 
   const { data: likedData } = useQuery<{ myLikedArticleSlugs: string[] }>(MY_LIKED_ARTICLES, {
-    skip: !user,
+    skip: !user || !articleSlug,
   });
-  const liked = likedData?.myLikedArticleSlugs.includes(articleSlug) ?? false;
+  const liked = (!!articleSlug && likedData?.myLikedArticleSlugs.includes(articleSlug)) ?? false;
   const { isBookmarked, toggleBookmark: toggleBookmarkSlug, bookmarking } = useBookmarks();
-  const bookmarked = isBookmarked(articleSlug);
+  const bookmarked = !!articleSlug && isBookmarked(articleSlug);
 
   const [attestLiked] = useMutation<{ attestLiked: LikeResult }>(ATTEST_LIKED, {
     refetchQueries: [{ query: MY_LIKED_ARTICLES }],
@@ -181,7 +183,7 @@ export function VideoCard({
     // window.open must run synchronously in the click handler, before any
     // await -- otherwise popup blockers treat it as not user-initiated.
     window.open(youtubeUrl, "_blank", "noopener,noreferrer");
-    if (!user || liked) return;
+    if (!user || liked || !articleSlug) return;
     const prevTier = profile?.tier ?? 1;
     attestLiked({ variables: { articleSlug } })
       .then(({ data }) => {
@@ -207,7 +209,9 @@ export function VideoCard({
       });
   };
 
-  const handleBookmark = () => toggleBookmarkSlug(articleSlug);
+  const handleBookmark = () => {
+    if (articleSlug) toggleBookmarkSlug(articleSlug);
+  };
 
   const autoplaySrc = embedUrl ? `${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1` : null;
 
@@ -299,20 +303,22 @@ export function VideoCard({
           <ThumbsUp className="size-4" fill={liked ? "currentColor" : "none"} />
           {liked ? t("articleFrame.liked") : t("articleFrame.likeOnYoutube")}
         </button>
-        <button
-          onClick={handleBookmark}
-          disabled={bookmarking}
-          aria-label={bookmarked ? t("articleFrame.bookmarkRemove") : t("articleFrame.bookmarkAdd")}
-          className={`inline-flex items-center justify-center size-9 rounded-lg border transition-colors disabled:opacity-50 ${
-            bookmarked
-              ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
-              : "border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
-          }`}
-        >
-          <Bookmark className="size-4" fill={bookmarked ? "currentColor" : "none"} />
-        </button>
+        {articleSlug && (
+          <button
+            onClick={handleBookmark}
+            disabled={bookmarking}
+            aria-label={bookmarked ? t("articleFrame.bookmarkRemove") : t("articleFrame.bookmarkAdd")}
+            className={`inline-flex items-center justify-center size-9 rounded-lg border transition-colors disabled:opacity-50 ${
+              bookmarked
+                ? "border-[#A8672E] text-[#A8672E] dark:border-[#D08F52] dark:text-[#D08F52]"
+                : "border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40"
+            }`}
+          >
+            <Bookmark className="size-4" fill={bookmarked ? "currentColor" : "none"} />
+          </button>
+        )}
       </div>
-      {user && (
+      {user && articleSlug && (
         <div className="px-4 pb-4">
           <TierStatusBanner profile={profile} />
         </div>
