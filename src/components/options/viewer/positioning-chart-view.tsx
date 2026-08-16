@@ -197,156 +197,159 @@ export function PositioningChartView({
   return (
     <div className="space-y-4">
       {/* HUD Cards for Positioning */}
+      {/* 4 Top KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Card 1: Call Wall */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Call Wall (Resistance)</span>
-            <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className="text-xl font-extrabold text-blue-600">
-                {callWall !== null ? `$${callWall.toLocaleString()}` : '—'}
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Call Wall (Resistance)</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className="text-xl font-mono font-extrabold text-teal-600 dark:text-teal-400">
+              {callWall !== null ? `$${callWall.toLocaleString()}` : '—'}
+            </span>
+            {callWall !== null && (
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">
+                (+{((callWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
               </span>
-              {callWall !== null && (
-                <span className="text-xs text-slate-500 font-medium">
-                  (+{((callWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
-                </span>
-              )}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              {hasOpenInterest ? 'Highest Call Open Interest' : 'No open interest data for this source'}
-            </p>
-          </CardContent>
-        </Card>
+            )}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {hasOpenInterest ? 'Highest Call Open Interest' : 'No open interest data for this source'}
+          </p>
+        </div>
 
         {/* Card 2: Put Wall */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Put Wall (Support)</span>
-            <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className="text-xl font-extrabold text-rose-600">
-                {putWall !== null ? `$${putWall.toLocaleString()}` : '—'}
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Put Wall (Support)</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className="text-xl font-mono font-extrabold text-[#A8672E] dark:text-[#D08F52]">
+              {putWall !== null ? `$${putWall.toLocaleString()}` : '—'}
+            </span>
+            {putWall !== null && (
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">
+                ({((putWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
               </span>
-              {putWall !== null && (
-                <span className="text-xs text-slate-500 font-medium">
-                  ({((putWall - spotPrice) / spotPrice * 100).toFixed(1)}%)
-                </span>
-              )}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              {hasOpenInterest ? 'Highest Put Open Interest' : 'No open interest data for this source'}
-            </p>
-          </CardContent>
-        </Card>
+            )}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {hasOpenInterest ? 'Highest Put Open Interest' : 'No open interest data for this source'}
+          </p>
+        </div>
 
         {/* Card 3: Max Pain */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Max Pain Strike</span>
-            <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className="text-xl font-extrabold text-cyan-700">
-                {maxPainStrike ? `$${maxPainStrike.toLocaleString()}` : '—'}
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Max Pain Strike</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className="text-xl font-mono font-extrabold text-slate-900 dark:text-slate-100">
+              {maxPainStrike ? `$${maxPainStrike.toLocaleString()}` : '—'}
+            </span>
+            {maxPainStrike && (
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">
+                ({maxPainStrike >= spotPrice ? '+' : ''}{(maxPainStrike - spotPrice).toFixed(1)})
               </span>
-              {maxPainStrike && (
-                <span className="text-xs text-slate-500 font-medium">
-                  ({maxPainStrike >= spotPrice ? '+' : ''}{(maxPainStrike - spotPrice).toFixed(1)})
-                </span>
-              )}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Where buyers lose most payout</p>
-          </CardContent>
-        </Card>
+            )}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Where buyers lose most payout</p>
+        </div>
 
         {/* Card 4: Open Interest Distribution */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Total OI Ratio</span>
-            {hasOpenInterest ? (
-              <>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-sm font-bold text-blue-600">C: {(totalCallOI / 1000).toFixed(1)}k</span>
-                  <span className="text-slate-300">/</span>
-                  <span className="text-sm font-bold text-rose-600">P: {(totalPutOI / 1000).toFixed(1)}k</span>
-                </div>
-                <p className="text-[10px] text-slate-400 mt-0.5">
-                  P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
-                </p>
-              </>
-            ) : (
-              <>
-                <div className="text-sm font-bold text-slate-400 mt-0.5">—</div>
-                <p className="text-[10px] text-slate-400 mt-0.5">No open interest data for this source</p>
-              </>
-            )}
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total OI Ratio</span>
+          {hasOpenInterest ? (
+            <>
+              <div className="flex items-center gap-2 mt-1 font-mono">
+                <span className="text-sm font-bold text-teal-600 dark:text-teal-400">C: {(totalCallOI / 1000).toFixed(1)}k</span>
+                <span className="text-gray-300 dark:text-gray-700">/</span>
+                <span className="text-sm font-bold text-[#A8672E] dark:text-[#D08F52]">P: {(totalPutOI / 1000).toFixed(1)}k</span>
+              </div>
+              <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+                P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="text-sm font-mono font-bold text-slate-400 mt-1">—</div>
+              <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">No open interest data for this source</p>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Main Chart */}
-      <Card className="bg-white border-slate-200 shadow-xs">
-        <CardHeader className="p-4 pb-3 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
+        <div className="p-4 pb-3 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <BarChart3 className="h-5 w-5 text-blue-600" />
+            <h3 className="text-base font-serif font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              <BarChart3 className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
               {subView === 'oi' && 'Open Interest (OI) by Strike'}
               {subView === 'volume' && 'Trading Volume Distribution by Strike'}
               {subView === 'maxPainCurve' && 'Max Pain Cumulative Payout Loss Curve ($M)'}
               {subView === 'cumulativeOI' && 'Cumulative Open Interest Curve (Calls vs Puts)'}
               {subView === 'liquidity' && 'Liquidity Score by Strike (0-100)'}
-            </CardTitle>
-            <CardDescription className="text-xs text-slate-500 mt-0.5">
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {subView === 'oi' && `${expiration} (${dte} DTE) — Open contracts resting at each strike`}
               {subView === 'volume' && `${expiration} (${dte} DTE) — Day's traded volume across strikes`}
               {subView === 'maxPainCurve' && `Total dollar amount option sellers must pay out if SPX settles at each strike`}
               {subView === 'cumulativeOI' && `Running sum of open contracts accumulating across the strike spectrum`}
               {subView === 'liquidity' && `Composite of bid-ask spread, volume, and open interest — higher means easier to get filled near mid`}
-            </CardDescription>
+            </p>
           </div>
 
-          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
+          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
             <button
               onClick={() => setSubView('oi')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'oi' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'oi' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Open Interest
             </button>
             <button
               onClick={() => setSubView('volume')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'volume' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'volume' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Volume
             </button>
             <button
               onClick={() => setSubView('maxPainCurve')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'maxPainCurve' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'maxPainCurve' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Max Pain Curve
             </button>
             <button
               onClick={() => setSubView('cumulativeOI')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'cumulativeOI' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'cumulativeOI' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Cumulative OI
             </button>
             <button
               onClick={() => setSubView('liquidity')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'liquidity' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'liquidity' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Liquidity
             </button>
           </div>
-        </CardHeader>
+        </div>
 
-        <CardContent className="p-4">
+        <div className="p-4">
           <div className="h-[400px] w-full">
             {!hasOpenInterest && subView !== 'volume' && subView !== 'liquidity' ? (
               <div className="h-full flex flex-col items-center justify-center text-center gap-2">
@@ -603,8 +606,8 @@ export function PositioningChartView({
               </>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

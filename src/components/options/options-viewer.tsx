@@ -283,23 +283,23 @@ export function OptionsViewer() {
   return (
     <div className="space-y-4 max-w-[1440px] mx-auto">
       {/* SPX Dedicated Header Sub-Banner with Source Toggle */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 bg-slate-100 border border-slate-200/90 rounded-xl text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl text-xs shadow-xs">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            <span className="font-bold text-slate-900 tracking-wide uppercase">
+            <ShieldCheck className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
+            <span className="font-serif font-bold text-slate-900 dark:text-slate-100 tracking-wide uppercase">
               S&P 500 Index Options (^SPX)
             </span>
           </div>
 
           {/* Source Toggle: Historical (Default) vs Live */}
-          <div className="inline-flex rounded-lg border border-slate-300 bg-white p-0.5 shadow-2xs">
+          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100/80 dark:bg-gray-800/80 p-0.5 shadow-2xs">
             <button
               onClick={() => source !== 'historical' && loadSource('historical')}
-              className={`px-3 py-1 rounded-md font-semibold transition-all ${
+              className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
                 source === 'historical' 
-                  ? 'bg-slate-900 text-white shadow-2xs' 
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Historical Snapshot
@@ -312,19 +312,19 @@ export function OptionsViewer() {
                 }
                 if (source !== 'live') loadSource('live');
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
                 source === 'live' 
-                  ? 'bg-blue-600 text-white shadow-2xs' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
                   : isTier4Plus
-                  ? 'text-slate-600 hover:text-slate-900'
-                  : 'text-slate-400 hover:text-slate-600'
+                  ? 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  : 'text-slate-400 dark:text-slate-500 hover:text-slate-600'
               }`}
               title={isTier4Plus ? "Switch to Live Cboe Feed" : `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (Senior Quant)`}
             >
-              {!isTier4Plus && <Lock className="h-3 w-3 text-amber-500" />}
+              {!isTier4Plus && <Lock className="h-3 w-3 text-[#A8672E] dark:text-[#D08F52]" />}
               <span>Live ^SPX (Cboe)</span>
               {!isTier4Plus && (
-                <Badge variant="outline" className="text-[9px] px-1 py-0 border-amber-500/40 text-amber-600 bg-amber-50 font-semibold">
+                <Badge variant="outline" className="text-[9px] px-1 py-0 border-[#A8672E]/40 text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 font-mono font-semibold">
                   Tier 4+
                 </Badge>
               )}
@@ -332,17 +332,17 @@ export function OptionsViewer() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-slate-500 font-medium">
+        <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400 font-mono text-xs">
           <span className="hidden sm:inline">European Exercise • Cash Settled</span>
-          <span className="text-slate-300 hidden sm:inline">|</span>
-          <span>Multiplier: <strong className="text-slate-900">$100/pt</strong></span>
+          <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
+          <span>Multiplier: <strong className="text-slate-900 dark:text-slate-100 font-bold">$100/pt</strong></span>
         </div>
       </div>
 
       {/* Error Alert */}
       {error && (
-        <Alert variant="destructive" className="border-rose-300 bg-rose-50 text-rose-900">
-          <AlertCircle className="h-4 w-4 text-rose-600" />
+        <Alert variant="destructive" className="rounded-2xl border-rose-300 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200">
+          <AlertCircle className="h-4 w-4 text-rose-600 dark:text-rose-400" />
           <AlertDescription className="text-xs font-medium">
             {error}
           </AlertDescription>
@@ -374,43 +374,51 @@ export function OptionsViewer() {
 
       {/* SPX Expiration Date Carousel Strip with Filter Category Chips */}
       {data && data.expirationDates.length > 0 && (
-        <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-2.5">
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
-            <div className="flex items-center gap-2 text-slate-700">
-              <Calendar className="h-3.5 w-3.5 text-blue-600" />
-              <span>SPX Expiration Cycles ({data.expirationDates.length} Total)</span>
+            <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
+              <Calendar className="h-3.5 w-3.5 text-[#A8672E] dark:text-[#D08F52]" />
+              <span className="font-serif font-bold text-sm">SPX Expiration Cycles ({data.expirationDates.length} Total)</span>
             </div>
 
             {/* Quick Filter: 0DTE / Weeklies / Monthlies / All */}
-            <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs">
+            <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('all')}
-                className={`px-2.5 py-0.5 rounded-md font-medium transition-all ${
-                  expCategory === 'all' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                  expCategory === 'all' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 All
               </button>
               <button
                 onClick={() => setExpCategory('0dte')}
-                className={`px-2.5 py-0.5 rounded-md font-medium transition-all ${
-                  expCategory === '0dte' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                  expCategory === '0dte' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 0DTE & 1DTE
               </button>
               <button
                 onClick={() => setExpCategory('weeklies')}
-                className={`px-2.5 py-0.5 rounded-md font-medium transition-all ${
-                  expCategory === 'weeklies' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                  expCategory === 'weeklies' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 &lt; 30 Days
               </button>
               <button
                 onClick={() => setExpCategory('monthlies')}
-                className={`px-2.5 py-0.5 rounded-md font-medium transition-all ${
-                  expCategory === 'monthlies' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
+                  expCategory === 'monthlies' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 Monthlies & LEAPS
@@ -419,7 +427,7 @@ export function OptionsViewer() {
           </div>
 
           {/* Horizontal Scrollable Dates */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-200">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
             {filteredExpirations.map(exp => {
               const isSelected = exp.expiration === selectedExpiration;
               const is0DTE = exp.daysToExpiration === 0;
@@ -429,30 +437,30 @@ export function OptionsViewer() {
                 <button
                   key={exp.expiration}
                   onClick={() => setSelectedExpiration(exp.expiration)}
-                  className={`flex-shrink-0 px-3 py-2 rounded-lg border text-left transition-all ${
+                  className={`flex-shrink-0 px-3 py-2 rounded-xl border text-left transition-all ${
                     isSelected
-                      ? 'border-blue-600 bg-blue-50/80 shadow-xs ring-1 ring-blue-600'
-                      : 'border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300'
+                      ? 'border-[#A8672E] bg-[#A8672E]/10 dark:border-[#D08F52] dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200'
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className={`text-xs font-bold ${isSelected ? 'text-blue-900' : 'text-slate-800'}`}>
+                    <span className={`text-xs font-bold font-mono ${isSelected ? 'text-[#A8672E] dark:text-[#D08F52]' : 'text-slate-800 dark:text-slate-200'}`}>
                       {exp.expiration.slice(5)}
                     </span>
                     <Badge 
                       variant="outline" 
-                      className={`text-[10px] px-1 py-0 font-bold ${
+                      className={`text-[10px] px-1 py-0 font-mono font-bold ${
                         is0DTE 
-                          ? 'bg-rose-100 text-rose-700 border-rose-200' 
+                          ? 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30' 
                           : is1DTE 
-                          ? 'bg-amber-100 text-amber-800 border-amber-200' 
-                          : 'bg-slate-100 text-slate-600 border-slate-200'
+                          ? 'bg-[#A8672E]/15 text-[#A8672E] dark:text-[#D08F52] border-[#A8672E]/30' 
+                          : 'bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-400 border-gray-200 dark:border-gray-700'
                       }`}
                     >
                       {exp.daysToExpiration}d
                     </Badge>
                   </div>
-                  <span className="text-[10px] text-slate-400 block mt-0.5 font-medium">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 block mt-0.5 font-medium font-mono">
                     {exp.expirationLabel.split(',')[0]}
                   </span>
                 </button>
@@ -465,33 +473,33 @@ export function OptionsViewer() {
       {/* Main Analysis Views Switcher */}
       {data && currentExpData && (
         <Tabs value={activeTab} onValueChange={(val) => setActiveTab(val as any)} className="space-y-4">
-          <TabsList className="grid w-full grid-cols-4 bg-slate-100/90 p-1 rounded-xl h-11 border border-slate-200">
+          <TabsList className="grid w-full grid-cols-4 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs h-auto gap-1">
             <TabsTrigger 
               value="matrix" 
-              className="text-xs sm:text-sm font-semibold data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-xs flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
-              <Layers className="h-4 w-4 text-blue-600" />
+              <Layers className="h-4 w-4" />
               <span className="hidden sm:inline">SPX</span> Matrix
             </TabsTrigger>
             <TabsTrigger 
               value="volatility" 
-              className="text-xs sm:text-sm font-semibold data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-xs flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
-              <Gauge className="h-4 w-4 text-purple-600" />
+              <Gauge className="h-4 w-4" />
               <span className="hidden sm:inline">Volatility</span> (Vol)
             </TabsTrigger>
             <TabsTrigger 
               value="positioning" 
-              className="text-xs sm:text-sm font-semibold data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-xs flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
-              <BarChart3 className="h-4 w-4 text-cyan-600" />
+              <BarChart3 className="h-4 w-4" />
               OI / Volume
             </TabsTrigger>
             <TabsTrigger 
               value="gex" 
-              className="text-xs sm:text-sm font-semibold data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-xs flex items-center justify-center gap-1.5"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
             >
-              <Zap className="h-4 w-4 text-amber-500" />
+              <Zap className="h-4 w-4" />
               Gamma (GEX)
             </TabsTrigger>
           </TabsList>
@@ -546,10 +554,10 @@ export function OptionsViewer() {
 
       {/* Loading Overlay */}
       {loading && !data && (
-        <div className="flex flex-col justify-center items-center py-20 px-4 bg-white border border-slate-200 rounded-xl shadow-xs">
-          <RefreshCw className="h-9 w-9 animate-spin text-blue-600 mb-3" />
-          <span className="text-base font-bold text-slate-800">Loading SPX Options Matrix & Vol Surface…</span>
-          <span className="text-xs text-slate-500 mt-1">Retrieving 30,000+ contracts, Greeks, and volatility curves</span>
+        <div className="flex flex-col justify-center items-center py-20 px-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
+          <RefreshCw className="h-9 w-9 animate-spin text-[#A8672E] dark:text-[#D08F52] mb-3" />
+          <span className="text-base font-serif font-bold text-slate-800 dark:text-slate-200">Loading SPX Options Matrix & Vol Surface…</span>
+          <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">Retrieving 30,000+ contracts, Greeks, and volatility curves</span>
         </div>
       )}
     </div>

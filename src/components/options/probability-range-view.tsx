@@ -172,44 +172,44 @@ export const ProbabilityRangeView = ({
     };
 
     return (
-        <div className="space-y-2">
+        <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1">
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 font-mono shadow-xs">
                     <span className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0" />
-                    <span className="text-gray-500 font-medium">68% range:</span>
-                    <span className="text-gray-900 font-semibold">{fmtPrice(range68.lower)} – {fmtPrice(range68.upper)}</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">68% range:</span>
+                    <span className="text-slate-900 dark:text-slate-100 font-bold">{fmtPrice(range68.lower)} – {fmtPrice(range68.upper)}</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1">
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 font-mono shadow-xs">
                     <span className="w-2 h-2 rounded-full bg-blue-300 flex-shrink-0" />
-                    <span className="text-gray-500 font-medium">80% range:</span>
-                    <span className="text-gray-900 font-semibold">{fmtPrice(range80.lower)} – {fmtPrice(range80.upper)}</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">80% range:</span>
+                    <span className="text-slate-900 dark:text-slate-100 font-bold">{fmtPrice(range80.lower)} – {fmtPrice(range80.upper)}</span>
                 </span>
-                <span className="text-gray-400">Implied by this expiration's ATM IV — the market's own view, not a directional forecast.</span>
+                <span className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">Implied by this expiration's ATM IV — the market's own view, not a directional forecast.</span>
             </div>
             {skewRanges && (
                 <div className="flex flex-wrap items-center gap-2 text-xs">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1">
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 font-mono shadow-xs">
                         <span className="w-2 h-2 rounded-full bg-purple-500 flex-shrink-0" />
-                        <span className="text-gray-500 font-medium">Skew-adjusted 68%:</span>
-                        <span className="text-gray-900 font-semibold">{fmtPrice(skewRanges.r68.lower)} – {fmtPrice(skewRanges.r68.upper)}</span>
+                        <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">Skew-adjusted 68%:</span>
+                        <span className="text-slate-900 dark:text-slate-100 font-bold">{fmtPrice(skewRanges.r68.lower)} – {fmtPrice(skewRanges.r68.upper)}</span>
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1">
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 font-mono shadow-xs">
                         <span className="w-2 h-2 rounded-full bg-purple-300 flex-shrink-0" />
-                        <span className="text-gray-500 font-medium">Skew-adjusted 80%:</span>
-                        <span className="text-gray-900 font-semibold">{fmtPrice(skewRanges.r80.lower)} – {fmtPrice(skewRanges.r80.upper)}</span>
+                        <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">Skew-adjusted 80%:</span>
+                        <span className="text-slate-900 dark:text-slate-100 font-bold">{fmtPrice(skewRanges.r80.lower)} – {fmtPrice(skewRanges.r80.upper)}</span>
                     </span>
                     {skew25Delta && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1">
-                            <span className="text-gray-500 font-medium">25Δ skew (put − call IV):</span>
-                            <span className={`font-semibold ${skew25Delta.riskReversal >= 0 ? 'text-rose-700' : 'text-emerald-700'}`}>
+                        <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 font-mono shadow-xs">
+                            <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">25Δ skew (put − call IV):</span>
+                            <span className={`font-bold ${skew25Delta.riskReversal >= 0 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
                                 {fmtPct(skew25Delta.riskReversal)}
                             </span>
                         </span>
                     )}
-                    <span className="text-gray-400">Uses each side's own real market IV instead of one flat IV — reflects the actual put/call skew.</span>
+                    <span className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">Uses each side's own real market IV instead of one flat IV — reflects the actual put/call skew.</span>
                 </div>
             )}
-            <div className="h-[180px] w-full bg-gray-50 rounded-lg p-3">
+            <div className="h-[180px] w-full bg-gray-50/70 dark:bg-gray-800/30 rounded-2xl p-3 border border-gray-100 dark:border-gray-800">
                 <Line data={chartData} options={options} />
             </div>
         </div>

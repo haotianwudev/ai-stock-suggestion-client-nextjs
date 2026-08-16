@@ -88,16 +88,18 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
           Net gamma exposure by strike (rows, % from spot) and expiration (columns). Darker = larger dealer gamma concentration.
         </p>
-        <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-[11px] font-semibold flex-shrink-0">
+        <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold flex-shrink-0">
           {([21, 45, 90, 'all'] as DteWindow[]).map(w => (
             <button
               key={String(w)}
               onClick={() => setDteWindow(w)}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                dteWindow === w ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-2.5 py-1 rounded-lg transition-all font-mono ${
+                dteWindow === w 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               {w === 'all' ? 'All' : `≤${w}d`}
@@ -107,19 +109,19 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
       </div>
 
       {columns.length === 0 ? (
-        <div className="p-8 text-center text-sm text-slate-500">No expirations in this window.</div>
+        <div className="p-8 text-center text-sm font-mono text-slate-500">No expirations in this window.</div>
       ) : (
-        <div className="overflow-x-auto border border-slate-200 rounded-lg">
-          <table className="border-collapse text-[11px]" style={{ tableLayout: 'fixed' }}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-2xl">
+          <table className="border-collapse text-[11px] font-mono" style={{ tableLayout: 'fixed' }}>
             <thead>
               <tr>
-                <th className="sticky left-0 z-10 bg-slate-50 border-b border-r border-slate-200 px-2 py-1.5 text-left text-slate-500 font-semibold w-16">
+                <th className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 border-b border-r border-gray-200 dark:border-gray-700 px-2 py-1.5 text-left text-slate-500 dark:text-slate-400 font-semibold w-16">
                   Strike
                 </th>
                 {columns.map(col => (
                   <th
                     key={col.expiration}
-                    className="bg-slate-50 border-b border-slate-200 px-1 py-1.5 text-center text-slate-500 font-semibold whitespace-nowrap"
+                    className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-1 py-1.5 text-center text-slate-500 dark:text-slate-400 font-semibold whitespace-nowrap"
                     style={{ minWidth: 46 }}
                     title={`${col.expiration} (${col.daysToExpiration} DTE)`}
                   >
@@ -135,19 +137,19 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
                 return (
                   <tr key={pct}>
                     <td
-                      className={`sticky left-0 z-10 border-r border-slate-200 px-2 py-1 text-right font-medium whitespace-nowrap ${
-                        isAtm ? 'bg-amber-50 text-amber-800' : 'bg-white text-slate-600'
+                      className={`sticky left-0 z-10 border-r border-gray-200 dark:border-gray-700 px-2 py-1 text-right font-medium whitespace-nowrap ${
+                        isAtm ? 'bg-[#A8672E]/15 text-[#A8672E] dark:text-[#D08F52]' : 'bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400'
                       }`}
                     >
                       {pct > 0 ? `+${pct}%` : `${pct}%`}
-                      <span className="text-slate-400 font-normal"> · ~{approxStrike}</span>
+                      <span className="text-slate-400 dark:text-slate-500 font-normal"> · ~{approxStrike}</span>
                     </td>
                     {grid[rowIdx].map((value, colIdx) => (
                       <td
                         key={colIdx}
                         tabIndex={0}
                         title={`Strike ~${approxStrike} (${pct > 0 ? '+' : ''}${pct}% from spot) · ${columns[colIdx].expiration} (${columns[colIdx].daysToExpiration} DTE)\nNet GEX: ${fmtM(value)}`}
-                        className="border-r border-b border-slate-100 last:border-r-0 text-center focus:outline focus:outline-2 focus:outline-blue-500 focus:z-10 focus:relative"
+                        className="border-r border-b border-gray-100 dark:border-gray-800 last:border-r-0 text-center focus:outline focus:outline-2 focus:outline-[#A8672E] focus:z-10 focus:relative"
                         style={{ backgroundColor: cellColor(value, maxAbs), height: 20 }}
                       />
                     ))}
@@ -160,14 +162,14 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
       )}
 
       {/* Legend: diverging gradient, matches the emerald/rose polarity used across this tab */}
-      <div className="flex items-center gap-2 text-[11px] text-slate-500">
-        <span className="font-medium text-rose-700">Short Gamma</span>
+      <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+        <span className="font-medium text-rose-700 dark:text-rose-400">Short Gamma</span>
         <div
           className="h-2.5 flex-1 max-w-[220px] rounded-full"
           style={{ background: `linear-gradient(to right, ${NEGATIVE_STEPS[NEGATIVE_STEPS.length - 1]}, ${NEUTRAL}, ${POSITIVE_STEPS[POSITIVE_STEPS.length - 1]})` }}
         />
-        <span className="font-medium text-emerald-700">Long Gamma</span>
-        <span className="text-slate-400 ml-1">(max {fmtM(maxAbs)} in view · hover a cell for its exact value)</span>
+        <span className="font-medium text-emerald-700 dark:text-emerald-400">Long Gamma</span>
+        <span className="text-slate-400 dark:text-slate-500 ml-1">(max {fmtM(maxAbs)} in view · hover a cell for its exact value)</span>
       </div>
     </div>
   );

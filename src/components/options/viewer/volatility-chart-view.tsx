@@ -332,133 +332,135 @@ export function VolatilityChartView({
       {/* 4 Top KPI Volatility Metric Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Card 1: ATM IV */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">ATM Implied Volatility</span>
-            <div className="text-xl font-extrabold text-purple-700 mt-0.5">
-              {activeMetrics?.atmIV ? `${activeMetrics.atmIV.toFixed(1)}%` : '—'}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">{currentExpData?.expiration} ({currentExpData?.daysToExpiration} DTE)</p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">ATM Implied Volatility</span>
+          <div className="text-xl font-mono font-extrabold text-[#A8672E] dark:text-[#D08F52] mt-1">
+            {activeMetrics?.atmIV ? `${activeMetrics.atmIV.toFixed(1)}%` : '—'}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">{currentExpData?.expiration} ({currentExpData?.daysToExpiration} DTE)</p>
+        </div>
 
         {/* Card 2: 25-Delta Skew / Risk Reversal */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">25Δ Risk Reversal (Skew)</span>
-            <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className="text-xl font-extrabold text-slate-900">
-                {activeMetrics?.skewRR != null ? `${activeMetrics.skewRR > 0 ? '+' : ''}${activeMetrics.skewRR}%` : '—'}
-              </span>
-              <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${
-                (activeMetrics?.skewRR ?? 0) > 0 ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200'
-              }`}>
-                {(activeMetrics?.skewRR ?? 0) > 0 ? 'Put Skew' : 'Call Skew'}
-              </Badge>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">P 25Δ ({activeMetrics?.put25}%) vs C 25Δ ({activeMetrics?.call25}%)</p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">25Δ Risk Reversal (Skew)</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className="text-xl font-mono font-extrabold text-slate-900 dark:text-slate-100">
+              {activeMetrics?.skewRR != null ? `${activeMetrics.skewRR > 0 ? '+' : ''}${activeMetrics.skewRR}%` : '—'}
+            </span>
+            <Badge variant="outline" className={`text-[10px] font-mono px-1.5 py-0 ${
+              (activeMetrics?.skewRR ?? 0) > 0 ? 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30' : 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
+            }`}>
+              {(activeMetrics?.skewRR ?? 0) > 0 ? 'Put Skew' : 'Call Skew'}
+            </Badge>
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">P 25Δ ({activeMetrics?.put25}%) vs C 25Δ ({activeMetrics?.call25}%)</p>
+        </div>
 
         {/* Card 3: 25-Delta Butterfly (Kurtosis/Tails) */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">25Δ Butterfly (Convexity)</span>
-            <div className="text-xl font-extrabold text-slate-800 mt-0.5">
-              {activeMetrics?.fly != null ? `${activeMetrics.fly > 0 ? '+' : ''}${activeMetrics.fly}%` : '—'}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Wing curvature over ATM base</p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">25Δ Butterfly (Convexity)</span>
+          <div className="text-xl font-mono font-extrabold text-slate-900 dark:text-slate-100 mt-1">
+            {activeMetrics?.fly != null ? `${activeMetrics.fly > 0 ? '+' : ''}${activeMetrics.fly}%` : '—'}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Wing curvature over ATM base</p>
+        </div>
 
         {/* Card 4: Term Structure Regime */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Term Structure Slope</span>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="text-lg font-bold text-slate-900">
-                {activeMetrics?.isContango ? 'Contango' : 'Backwardation'}
-              </span>
-              <Badge className={`text-[10px] px-1.5 py-0 ${
-                activeMetrics?.isContango ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
-              }`}>
-                {activeMetrics?.isContango ? 'Normal' : 'Inverted'}
-              </Badge>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              Front {activeMetrics?.frontATM}% → Back {activeMetrics?.backATM}%
-            </p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Term Structure Slope</span>
+          <div className="flex items-center gap-1.5 mt-1">
+            <span className="text-lg font-mono font-bold text-slate-900 dark:text-slate-100">
+              {activeMetrics?.isContango ? 'Contango' : 'Backwardation'}
+            </span>
+            <Badge className={`text-[10px] font-mono px-1.5 py-0 ${
+              activeMetrics?.isContango ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30' : 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30'
+            }`}>
+              {activeMetrics?.isContango ? 'Normal' : 'Inverted'}
+            </Badge>
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            Front {activeMetrics?.frontATM}% → Back {activeMetrics?.backATM}%
+          </p>
+        </div>
       </div>
 
       {/* Comprehensive Chart Window */}
-      <Card className="bg-white border-slate-200 shadow-xs">
-        <CardHeader className="p-4 pb-3 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
+        <div className="p-4 pb-3 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Gauge className="h-5 w-5 text-purple-600" />
+            <h3 className="text-base font-serif font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              <Gauge className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
               {subView === 'smile' && `SPX Volatility Smile & Skew (${currentExpData?.expiration})`}
               {subView === 'multiSmile' && `Multi-Expiration Volatility Surface Comparison`}
               {subView === 'termStructure' && `SPX Volatility Term Structure & Forward Vol Curve`}
               {subView === 'rnd' && `Breeden-Litzenberger Implied Probability Density (RND)`}
               {subView === 'skewCurve' && `25-Delta Risk Reversal & Skew Term Structure`}
-            </CardTitle>
-            <CardDescription className="text-xs text-slate-500 mt-0.5">
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {subView === 'smile' && `Implied Volatility (%) curve across strikes for ${currentExpData?.expiration} (${currentExpData?.daysToExpiration} DTE)`}
               {subView === 'multiSmile' && `Comparing volatility smiles across multiple SPX expiration cycles`}
               {subView === 'termStructure' && `ATM Implied Volatility and Forward Volatility across all ${expirations.length} expiration dates`}
               {subView === 'rnd' && `Market-implied probability distribution where SPX will settle at ${currentExpData?.expiration} expiration`}
               {subView === 'skewCurve' && `Put downside tail-risk demand (25Δ Put IV - 25Δ Call IV) plotted across DTE`}
-            </CardDescription>
+            </p>
           </div>
 
           {/* 5-Way Sub-View Selector */}
-          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
+          <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
             <button
               onClick={() => setSubView('smile')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'smile' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'smile' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               IV Smile
             </button>
             <button
               onClick={() => setSubView('multiSmile')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'multiSmile' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'multiSmile' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Multi-Cycle
             </button>
             <button
               onClick={() => setSubView('termStructure')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'termStructure' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'termStructure' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Term Structure
             </button>
             <button
               onClick={() => setSubView('rnd')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'rnd' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'rnd' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               Probability (RND)
             </button>
             <button
               onClick={() => setSubView('skewCurve')}
-              className={`px-2.5 py-1 rounded-md transition-all ${
-                subView === 'skewCurve' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1 rounded-lg transition-all ${
+                subView === 'skewCurve' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               25Δ Skew
             </button>
           </div>
-        </CardHeader>
+        </div>
 
-        <CardContent className="p-4">
+        <div className="p-4">
           <div className="h-[400px] w-full">
             {/* VIEW 1: SINGLE IV SMILE */}
             {subView === 'smile' && (
@@ -707,8 +709,8 @@ export function VolatilityChartView({
               </ResponsiveContainer>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

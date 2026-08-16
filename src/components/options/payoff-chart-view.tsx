@@ -38,10 +38,10 @@ const fmtTick = (v: number) => (Math.abs(v) >= 1000 ? `$${Math.round(v).toLocale
 const StatChip = ({ tone, label, value }: { tone: 'good' | 'critical' | 'neutral'; label: string; value: string }) => {
     const dot = tone === 'good' ? GOOD : tone === 'critical' ? CRITICAL : BASELINE;
     return (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1 text-xs">
+        <span className="inline-flex items-center gap-1.5 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-mono shadow-xs">
             <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
-            <span className="text-gray-500 font-medium">{label}:</span>
-            <span className="text-gray-900 font-semibold">{value}</span>
+            <span className="text-slate-500 dark:text-slate-400 font-medium font-serif">{label}:</span>
+            <span className="text-slate-900 dark:text-slate-100 font-bold">{value}</span>
         </span>
     );
 };
@@ -159,7 +159,7 @@ export const PayoffChartView = ({
 
     return (
         <>
-            <div className="chart-container h-[280px] md:h-[350px] bg-gray-50 rounded-lg p-4">
+            <div className="chart-container h-[280px] md:h-[350px] bg-gray-50/70 dark:bg-gray-800/30 rounded-2xl p-4 border border-gray-100 dark:border-gray-800">
                 <Line data={chartData} options={options} />
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2">

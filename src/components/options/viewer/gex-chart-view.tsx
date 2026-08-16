@@ -325,79 +325,71 @@ export function GexChartView({
       {/* GEX HUD Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Card 1: Total Net GEX */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Total Net Gamma (GEX)</span>
-            <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className={`text-xl font-extrabold ${isPositiveRegime ? 'text-emerald-600' : 'text-rose-600'}`}>
-                {totalNetGex > 0 ? '+' : ''}${totalNetGex}M
-              </span>
-              <span className="text-[10px] text-slate-400 font-medium">/ 1% move</span>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              {isPositiveRegime ? 'Dampens volatility (Mean reverting)' : 'Amplifies volatility (Trend following)'}
-            </p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Net Gamma (GEX)</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className={`text-xl font-mono font-extrabold ${isPositiveRegime ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+              {totalNetGex > 0 ? '+' : ''}${totalNetGex}M
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-medium">/ 1% move</span>
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {isPositiveRegime ? 'Dampens volatility (Mean reverting)' : 'Amplifies volatility (Trend following)'}
+          </p>
+        </div>
 
         {/* Card 2: Market Maker Regime */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">MM Gamma Regime</span>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="text-lg font-bold text-slate-900">
-                {isPositiveRegime ? 'Long Gamma' : 'Short Gamma'}
-              </span>
-              <Badge className={`text-[10px] px-1.5 py-0 ${
-                isPositiveRegime ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
-              }`}>
-                {isPositiveRegime ? 'Stabilizing' : 'Accelerating'}
-              </Badge>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">
-              {isPositiveRegime ? 'Dealers buy dips, sell rips' : 'Dealers sell dips, buy rips'}
-            </p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">MM Gamma Regime</span>
+          <div className="flex items-center gap-1.5 mt-1">
+            <span className="text-lg font-mono font-bold text-slate-900 dark:text-slate-100">
+              {isPositiveRegime ? 'Long Gamma' : 'Short Gamma'}
+            </span>
+            <Badge className={`text-[10px] font-mono px-1.5 py-0 ${
+              isPositiveRegime ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30' : 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30'
+            }`}>
+              {isPositiveRegime ? 'Stabilizing' : 'Accelerating'}
+            </Badge>
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {isPositiveRegime ? 'Dealers buy dips, sell rips' : 'Dealers sell dips, buy rips'}
+          </p>
+        </div>
 
         {/* Card 3: Gamma Flip Level */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Gamma Flip Level</span>
-            <div className="text-xl font-extrabold text-amber-600 mt-0.5">
-              {gammaFlipLevel ? `$${gammaFlipLevel.toLocaleString()}` : '—'}
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Transition to Short Gamma regime</p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Gamma Flip Level</span>
+          <div className="text-xl font-mono font-extrabold text-[#A8672E] dark:text-[#D08F52] mt-1">
+            {gammaFlipLevel ? `$${gammaFlipLevel.toLocaleString()}` : '—'}
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Transition to Short Gamma regime</p>
+        </div>
 
         {/* Card 4: Call GEX vs Put GEX */}
-        <Card className="bg-white border-slate-200 shadow-2xs">
-          <CardContent className="p-3.5">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">Call vs Put GEX</span>
-            <div className="flex items-center gap-1.5 mt-0.5 text-sm sm:text-base font-bold">
-              <span className="text-emerald-600">+${totalCallGex}M</span>
-              <span className="text-slate-300">/</span>
-              <span className="text-rose-600">${totalPutGex}M</span>
-            </div>
-            <p className="text-[10px] text-slate-400 mt-0.5">Gross market maker inventory</p>
-          </CardContent>
-        </Card>
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Call vs Put GEX</span>
+          <div className="flex items-center gap-1.5 mt-1 text-sm sm:text-base font-mono font-bold">
+            <span className="text-emerald-600 dark:text-emerald-400">+${totalCallGex}M</span>
+            <span className="text-gray-300 dark:text-gray-700">/</span>
+            <span className="text-rose-600 dark:text-rose-400">${totalPutGex}M</span>
+          </div>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Gross market maker inventory</p>
+        </div>
       </div>
 
       {/* Main GEX Chart Card */}
-      <Card className="bg-white border-slate-200 shadow-xs">
-        <CardHeader className="p-4 pb-3 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
+        <div className="p-4 pb-3 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Zap className="h-5 w-5 text-amber-500" />
+            <h3 className="text-base font-serif font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              <Zap className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
               {subView === 'netGex' && `SPX Net Gamma Exposure (GEX) by Strike ($M)${effectiveScope === 'all' ? ' — All Expirations' : ''}`}
               {subView === 'grossGex' && `Call Gamma vs Put Gamma Inventory ($M)${effectiveScope === 'all' ? ' — All Expirations' : ''}`}
               {subView === 'gammaShift' && 'Simulated Market Maker Gamma Curve across Spot Moves'}
               {subView === 'vannaCharm' && 'Vanna & Charm Hedging Flow Sensitivity'}
               {subView === 'heatmap' && 'Gamma Exposure Heatmap — Strike × Expiration'}
-            </CardTitle>
-            <CardDescription className="text-xs text-slate-500 mt-0.5">
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {subView === 'netGex' && (effectiveScope === 'all'
                 ? 'Every listed expiration — the full dealer book\'s hedging flow pressure per 1% underlying price move'
                 : `${expiration} (${dte} DTE) — Hedging flow pressure per 1% underlying price move`)}
@@ -405,39 +397,47 @@ export function GexChartView({
               {subView === 'gammaShift' && `How total dealer net gamma changes as SPX price rallies or falls by -5% to +5% (this expiration only)`}
               {subView === 'vannaCharm' && `Flow pressures induced by changes in Implied Volatility (Vanna) and Time Decay (Charm)`}
               {subView === 'heatmap' && `Where dealer gamma concentrates across the whole expiration cycle at a glance`}
-            </CardDescription>
+            </p>
           </div>
 
           <div className="flex flex-col items-end gap-2">
-            <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs font-semibold">
+            <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
               <button
                 onClick={() => setSubView('netGex')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  subView === 'netGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-3 py-1 rounded-lg transition-all ${
+                  subView === 'netGex' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 Net GEX
               </button>
               <button
                 onClick={() => setSubView('grossGex')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  subView === 'grossGex' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-3 py-1 rounded-lg transition-all ${
+                  subView === 'grossGex' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 Gross Call/Put
               </button>
               <button
                 onClick={() => setSubView('gammaShift')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  subView === 'gammaShift' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-3 py-1 rounded-lg transition-all ${
+                  subView === 'gammaShift' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 Spot Move Sim
               </button>
               <button
                 onClick={() => setSubView('vannaCharm')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  subView === 'vannaCharm' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-3 py-1 rounded-lg transition-all ${
+                  subView === 'vannaCharm' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                 }`}
               >
                 Vanna / Charm
@@ -445,8 +445,10 @@ export function GexChartView({
               {canAggregate && (
                 <button
                   onClick={() => setSubView('heatmap')}
-                  className={`px-2.5 py-1 rounded-md transition-all ${
-                    subView === 'heatmap' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  className={`px-3 py-1 rounded-lg transition-all ${
+                    subView === 'heatmap' 
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                   }`}
                 >
                   Heatmap
@@ -454,19 +456,23 @@ export function GexChartView({
               )}
             </div>
             {canAggregate && (subView === 'netGex' || subView === 'grossGex') && (
-              <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-[11px] font-semibold">
+              <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
                 <button
                   onClick={() => setScope('expiration')}
-                  className={`px-2 py-0.5 rounded-md transition-all ${
-                    scope === 'expiration' ? 'bg-blue-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                    scope === 'expiration' 
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                   }`}
                 >
                   This Expiration
                 </button>
                 <button
                   onClick={() => setScope('all')}
-                  className={`px-2 py-0.5 rounded-md transition-all ${
-                    scope === 'all' ? 'bg-blue-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                  className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                    scope === 'all' 
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                   }`}
                 >
                   All Expirations
@@ -474,9 +480,9 @@ export function GexChartView({
               </div>
             )}
           </div>
-        </CardHeader>
+        </div>
 
-        <CardContent className="p-4">
+        <div className="p-4">
           <div className={`w-full ${subView === 'heatmap' ? '' : 'h-[400px]'}`}>
             {/* VIEW 0: HEATMAP */}
             {subView === 'heatmap' && allExpirations && (
@@ -687,8 +693,8 @@ export function GexChartView({
               </ResponsiveContainer>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

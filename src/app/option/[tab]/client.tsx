@@ -163,12 +163,18 @@ function ViewerTab() {
   const [activeTool, setActiveTool] = useState('chain');
   return (
     <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
-      <TabsList className="grid w-full grid-cols-2 mb-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
-        <TabsTrigger value="chain" className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation">
-          Options Chain
+      <TabsList className="grid w-full grid-cols-2 mb-5 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+        <TabsTrigger
+          value="chain"
+          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+        >
+          Options Chain & Volatility
         </TabsTrigger>
-        <TabsTrigger value="builder" className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation">
-          Payoff Builder
+        <TabsTrigger
+          value="builder"
+          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+        >
+          SPX Payoff Builder
         </TabsTrigger>
       </TabsList>
 
@@ -177,17 +183,17 @@ function ViewerTab() {
       </TabsContent>
 
       <TabsContent value="builder" className="mt-0">
-        <Card>
-          <CardHeader className="pb-3 md:pb-6">
-            <CardTitle className="text-lg md:text-2xl">SPX Payoff Builder</CardTitle>
-            <CardDescription className="text-sm md:text-base">
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 md:p-8 shadow-xs space-y-6">
+          <div className="space-y-1">
+            <h2 className="text-xl md:text-2xl font-serif font-bold text-slate-900 dark:text-slate-100">
+              SPX Payoff Builder
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               Build any multi-leg SPX position from a real option chain — presets, net Greeks, solved IV, probability of profit, and a today-vs-expiration payoff comparison.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <SpxPayoffBuilder />
-          </CardContent>
-        </Card>
+            </p>
+          </div>
+          <SpxPayoffBuilder />
+        </div>
       </TabsContent>
     </Tabs>
   );
