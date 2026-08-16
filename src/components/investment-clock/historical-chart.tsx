@@ -164,7 +164,16 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
               name="Growth Z"
               stroke="#16a34a"
               strokeWidth={2}
-              dot={(props: any) => <PhaseDot key={`g-${props.index}`} {...props} rowCount={rows.length} />}
+              dot={({ cx, cy, payload, index }: any) => (
+                <PhaseDot
+                  key={`g-${index}`}
+                  cx={cx}
+                  cy={cy}
+                  payload={payload}
+                  index={index}
+                  rowCount={rows.length}
+                />
+              )}
               activeDot={{ r: 5 }}
               isAnimationActive={false}
             />
@@ -174,7 +183,16 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
               name="Inflation Z"
               stroke="#d97706"
               strokeWidth={2}
-              dot={(props: any) => <PhaseDot key={`i-${props.index}`} {...props} rowCount={rows.length} />}
+              dot={({ cx, cy, payload, index }: any) => (
+                <PhaseDot
+                  key={`i-${index}`}
+                  cx={cx}
+                  cy={cy}
+                  payload={payload}
+                  index={index}
+                  rowCount={rows.length}
+                />
+              )}
               activeDot={{ r: 5 }}
               isAnimationActive={false}
             />
