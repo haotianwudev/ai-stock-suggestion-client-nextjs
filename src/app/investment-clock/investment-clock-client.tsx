@@ -246,7 +246,7 @@ export function InvestmentClockClient() {
   }, [relatedArticles, selectedArticleSlug]);
 
   const wikiEntry = useMemo(
-    () => (selectedArticle ? getWikiEntryForArticle(selectedArticle) : null),
+    () => (selectedArticle?.slug ? getWikiEntryForArticle(selectedArticle.slug) : null),
     [selectedArticle]
   );
 
