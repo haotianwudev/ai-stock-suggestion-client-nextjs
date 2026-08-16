@@ -19,7 +19,7 @@ export const TIER_NAMES: Record<number, string> = {
   6: "Director",
   7: "Managing Director",
   8: "Partner",
-  9: "SOPHIE Daddy (Admin)",
+  9: "Head Quant",
 };
 
 export function getTierName(tier: number): string {
@@ -158,8 +158,8 @@ export const TIER_METADATA: Record<number, TierMetadata> = {
   },
   9: {
     tier: 9,
-    name: "SOPHIE Daddy (Admin)",
-    shortName: "Admin",
+    name: "Head Quant",
+    shortName: "T9",
     iconName: "Crown",
     colorKey: "purple",
     classes: {
@@ -403,14 +403,14 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
   },
   {
     tier: 9,
-    name: "SOPHIE Daddy (Admin)",
-    shortName: "Admin",
-    unlocksSummary: "Full Admin Privileges",
-    howToEarn: "Site Administrator",
+    name: "Head Quant",
+    shortName: "T9",
+    unlocksSummary: "SOPHIE Daddy Admin",
+    howToEarn: "SOPHIE Daddy Admin",
     perks: [
+      "SOPHIE Daddy Admin privileges",
       "Full admin console access (/admin)",
       "Manage user tiers and site configurations",
-      "Global content and forum administration",
     ],
   },
 ];
