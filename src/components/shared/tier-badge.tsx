@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getTierMetadata, type TierIconName } from "@/lib/tiers";
 import { cn } from "@/lib/utils";
+import { TierHoverCard } from "./tier-hover-card";
 
 const ICON_MAP: Record<TierIconName, LucideIcon> = {
   GraduationCap,
@@ -36,6 +37,8 @@ export interface TierBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   showTierNumber?: boolean | "prefix" | "badge";
   showLabel?: boolean;
   interactive?: boolean;
+  showHoverCard?: boolean;
+  hoverAlign?: "start" | "center" | "end";
 }
 
 const SIZE_CLASSES = {
@@ -62,6 +65,8 @@ export const TierBadge = React.forwardRef<HTMLSpanElement, TierBadgeProps>(
       showTierNumber = false,
       showLabel = true,
       interactive = false,
+      showHoverCard = true,
+      hoverAlign = "center",
       className,
       children,
       ...props
@@ -85,14 +90,14 @@ export const TierBadge = React.forwardRef<HTMLSpanElement, TierBadgeProps>(
 
     const iconColorClass = variant === "solid" ? "text-white" : meta.classes.icon;
 
-    return (
+    const badgeContent = (
       <span
         ref={ref}
         className={cn(
-          "inline-flex items-center border transition-all duration-200 select-none whitespace-nowrap",
+          "inline-flex items-center border transition-all duration-200 select-none whitespace-nowrap cursor-pointer",
           SIZE_CLASSES[size],
           variantClasses,
-          interactive && "hover:scale-[1.03] active:scale-[0.98]",
+          (interactive || showHoverCard) && "hover:scale-[1.03] active:scale-[0.98]",
           className
         )}
         {...props}
@@ -113,6 +118,16 @@ export const TierBadge = React.forwardRef<HTMLSpanElement, TierBadgeProps>(
         ) : null}
       </span>
     );
+
+    if (showHoverCard) {
+      return (
+        <TierHoverCard highlightTier={tier} align={hoverAlign}>
+          {badgeContent}
+        </TierHoverCard>
+      );
+    }
+
+    return badgeContent;
   }
 );
 
