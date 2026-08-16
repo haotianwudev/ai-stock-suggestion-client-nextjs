@@ -227,8 +227,8 @@ function AccessDenied({ isLoggedIn }: { isLoggedIn: boolean }) {
         <h1 className="text-2xl font-bold">Access Denied</h1>
         <p className="text-muted-foreground max-w-sm">
           {isLoggedIn
-            ? "This page is restricted to Head Quant (tier 9) accounts."
-            : "Sign in with a Head Quant account to access this page."}
+            ? "This page is restricted to Admin (tier 9) accounts."
+            : "Sign in with an Admin account to access this page."}
         </p>
       </div>
       {!isLoggedIn && <LoginButton />}
