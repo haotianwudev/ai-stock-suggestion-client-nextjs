@@ -34,13 +34,13 @@ export function Header() {
     { href: "/donate", label: t("header.navDonate"), icon: HeartHandshake },
   ];
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <header className="sticky top-0 z-40 w-full border-b border-gray-200/80 dark:border-gray-800/80 bg-[#FDFBF7]/90 dark:bg-[#121110]/90 backdrop-blur-md transition-colors">
       <WelcomeGate />
       <RegisterServiceWorker />
       <div className="container mx-auto flex h-14 sm:h-16 max-w-screen-2xl items-center px-4 sm:px-6">
         <div className="flex items-center flex-1 min-w-0">
-          <Link href="/" className="flex items-center space-x-2 min-w-0">
-            <div className="relative h-6 w-6 sm:h-8 sm:w-8 rounded-full overflow-hidden border border-primary/40 shadow-sm flex-shrink-0">
+          <Link href="/" className="flex items-center space-x-2.5 min-w-0 group">
+            <div className="relative h-7 w-7 sm:h-8 sm:w-8 rounded-full overflow-hidden border border-[#A8672E]/40 dark:border-[#D08F52]/40 shadow-xs flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
               <Image
                 src="/images/agents/SOPHIE.png"
                 alt="SOPHIE"
@@ -49,20 +49,20 @@ export function Header() {
                 className="object-cover"
               />
             </div>
-            <span className="font-bold text-sm sm:text-lg lg:text-xl truncate">
+            <span className="font-serif font-bold text-sm sm:text-base lg:text-lg text-slate-900 dark:text-slate-100 truncate group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors">
               <span className="sm:hidden">SOPHIE</span>
               <span className="hidden sm:inline">SOPHIE Daddy Quant Blog</span>
             </span>
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <div className="hidden sm:block w-40 md:w-48 lg:w-auto lg:flex-1 lg:max-w-md">
             <SearchBar />
           </div>
 
           {/* Desktop nav links */}
-          <nav className="hidden sm:flex items-center gap-4">
+          <nav className="hidden sm:flex items-center gap-1.5 md:gap-2">
             {NAV_LINKS.map((link) => {
               const isDonate = link.href === "/donate";
               return (
@@ -70,10 +70,10 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "inline-flex items-center gap-1 text-xs font-medium transition-colors whitespace-nowrap",
+                    "inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 rounded-xl transition-colors whitespace-nowrap",
                     isDonate
-                      ? "text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 font-semibold"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-[#BC4128] dark:text-[#E2694A] hover:bg-[#BC4128]/10 dark:hover:bg-[#E2694A]/15 font-semibold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:bg-[#A8672E]/5 dark:hover:bg-[#D08F52]/10"
                   )}
                 >
                   {isDonate && <link.icon className="h-3.5 w-3.5" />}
@@ -84,9 +84,9 @@ export function Header() {
             {isAdmin && (
               <Link
                 href="/admin"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] hover:bg-[#A8672E]/10 dark:hover:bg-[#D08F52]/15 px-2.5 py-1.5 rounded-xl transition-colors whitespace-nowrap"
               >
-                <Crown className="h-3 w-3" />
+                <Crown className="h-3.5 w-3.5" />
                 {t("header.admin")}
               </Link>
             )}
@@ -108,12 +108,15 @@ export function Header() {
           {/* Mobile nav menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="sm:hidden">
-              <Button variant="ghost" size="icon" aria-label={t("header.openNavMenu")}>
-                <Menu className="h-5 w-5" />
-              </Button>
+              <button
+                aria-label={t("header.openNavMenu")}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-700 dark:text-slate-300 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:text-[#A8672E] dark:hover:text-[#D08F52] shadow-xs transition-colors"
+              >
+                <Menu className="h-4 w-4" />
+              </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <div className="px-2 py-2 mb-2 sm:hidden">
+            <DropdownMenuContent align="end" className="w-56 rounded-2xl border border-gray-200 dark:border-gray-800 bg-[#FDFBF7] dark:bg-[#14171B] p-1.5 shadow-lg">
+              <div className="px-2 py-2 mb-1 sm:hidden">
                 <SearchBar />
               </div>
               {NAV_LINKS.map((link) => {
@@ -123,8 +126,8 @@ export function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "flex items-center gap-2",
-                        isDonate && "text-pink-600 dark:text-pink-400 font-semibold"
+                        "flex items-center gap-2 text-xs font-medium rounded-xl text-slate-700 dark:text-slate-300 hover:text-[#A8672E] dark:hover:text-[#D08F52]",
+                        isDonate && "text-[#BC4128] dark:text-[#E2694A] font-semibold"
                       )}
                     >
                       <link.icon className="h-4 w-4" />
@@ -135,7 +138,7 @@ export function Header() {
               })}
               {isAdmin && (
                 <DropdownMenuItem asChild>
-                  <Link href="/admin" className="flex items-center gap-2 font-semibold text-purple-600 dark:text-purple-400">
+                  <Link href="/admin" className="flex items-center gap-2 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] rounded-xl">
                     <Crown className="h-4 w-4" />
                     {t("header.admin")}
                   </Link>

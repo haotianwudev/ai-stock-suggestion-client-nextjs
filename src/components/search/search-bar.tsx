@@ -180,18 +180,18 @@ export function SearchBar() {
 
   return (
     <>
-      <Button
-        variant="outline"
-        className="relative h-9 w-full justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
+      <button
+        type="button"
+        className="relative flex items-center h-9 w-full justify-start rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-3 text-xs font-normal text-slate-500 dark:text-slate-400 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:text-slate-900 dark:hover:text-slate-100 shadow-xs sm:pr-12 md:w-40 lg:w-64 transition-colors"
         onClick={() => setOpen(true)}
       >
-        <SearchIcon className="mr-2 h-4 w-4" />
+        <SearchIcon className="mr-2 h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
         <span className="hidden lg:inline-flex">Search...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-1 rounded-md border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-1.5 font-mono text-[10px] font-medium text-slate-500 dark:text-slate-400 opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
-      </Button>
+      </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
           placeholder="Search stocks or articles..."
