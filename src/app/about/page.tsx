@@ -87,11 +87,10 @@ export default function AboutPage() {
     { name: "Google Cloud", rating: 5, comment: "Scalable cloud infrastructure, BigQuery, and enterprise AI." },
     { name: "Gems", rating: 3, comment: "Handy to inject domain-specific financial context." },
     { name: "Deepseek", rating: 4, comment: "Cost-effective reasoning and fast code generation." },
-    { name: "Kiro", rating: 4, comment: "Lightweight vibe coding." },
+    { name: "Kiro", rating: 3, comment: "Lightweight vibe coding." },
     { name: "Ollama", rating: 4, comment: "Local LLM runtime — check out my complete cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
     { name: "Neon", rating: 5, comment: "Serverless PostgreSQL database." },
     { name: "Vercel", rating: 5, comment: "Production Next.js edge deployment." },
-    { name: "Render", rating: 4, comment: "Reliable backend server hosting." },
   ];
 
   const renderStars = (rating: number) => {
