@@ -142,14 +142,14 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
     const comparisonColor = getComparisonColor(metric.value, metric.threshold, metric.isHigherBetter);
     
     return (
-      <div key={metric.name} className="space-y-1 mb-4">
-        <div className="flex justify-between">
-          <span className="font-medium">{metric.name}</span>
-          <span className={`font-medium ${comparisonColor}`}>
+      <div key={metric.name} className="space-y-1 mb-3 bg-gray-50/50 dark:bg-gray-800/30 p-2.5 rounded-xl border border-gray-100 dark:border-gray-800/60">
+        <div className="flex justify-between items-center">
+          <span className="text-xs font-semibold text-gray-900 dark:text-gray-100">{metric.name}</span>
+          <span className={`text-xs sm:text-sm font-bold ${comparisonColor}`}>
             {formattedValue}
           </span>
         </div>
-        <p className="text-xs text-muted-foreground break-words hyphens-auto">
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 break-words hyphens-auto leading-relaxed">
           {metric.description}
         </p>
       </div>
@@ -157,19 +157,19 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
   };
 
   const renderDimension = (title: string, metrics: any[], score: number, signal: string, description: string) => (
-    <Card>
-      <CardContent className="pt-6">
+    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+      <CardContent className="pt-5 sm:pt-6 px-4 sm:px-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-bold">{title}</h3>
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">{title}</h3>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 text-xs sm:text-sm">
             <span className={`font-bold ${SIGNAL_COLORS[signal.toLowerCase() as SignalType]} capitalize`}>{signal}</span>
-            <span className="text-sm text-muted-foreground ml-1">({score}/3 metrics)</span>
+            <span className="text-slate-400 dark:text-slate-500">({score}/3 metrics)</span>
           </div>
         </div>
         
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
           {description}
         </p>
         
@@ -188,67 +188,67 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Overall Fundamental Signal */}
-      <div className="bg-card rounded-lg p-6 shadow-sm border">
-        <div className="flex justify-between items-center mb-3">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2 sm:gap-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-xl font-bold">Fundamental Analysis</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Fundamental Analysis</h3>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Analysis Date:</span>
-            <span className="font-medium">{date}</span>
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <span>Analysis Date:</span>
+            <span className="font-semibold text-gray-900 dark:text-gray-100">{date}</span>
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4">
-          Ideal for long-term investment decisions based on company financial strength and business quality rather than short-term price movements
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+          Ideal for long-term investment decisions based on company financial strength and business quality rather than short-term price movements.
         </p>
 
         <div className="flex flex-col space-y-4">
           <div className="flex items-center gap-2">
-            <div className={`w-4 h-4 rounded-full ${SIGNAL_BG_COLORS[fundamentals.overall_signal.toLowerCase() as SignalType]}`}></div>
-            <div className="flex items-center gap-1">
+            <div className={`w-3.5 h-3.5 rounded-full ${SIGNAL_BG_COLORS[fundamentals.overall_signal.toLowerCase() as SignalType]}`}></div>
+            <div className="flex items-center gap-1 text-sm">
               <span className={`font-semibold capitalize ${SIGNAL_COLORS[fundamentals.overall_signal.toLowerCase() as SignalType]}`}>{fundamentals.overall_signal}</span>
-              <span className="text-sm text-muted-foreground">with {Math.round(fundamentals.confidence)}% confidence</span>
+              <span className="text-slate-500 dark:text-slate-400">with {Math.round(fundamentals.confidence)}% confidence</span>
             </div>
           </div>
 
           {/* Dimension Overview Cards */}
-          <div className="grid md:grid-cols-4 gap-2 mt-4">
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.profitability_signal.toLowerCase() as SignalType]}`}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-2">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-xl p-2.5 text-center border border-gray-200 dark:border-gray-800">
+              <div className={`text-xs font-bold capitalize ${SIGNAL_COLORS[fundamentals.profitability_signal.toLowerCase() as SignalType]}`}>
                 {fundamentals.profitability_signal}
               </div>
-              <div className="text-xs text-muted-foreground">Profitability</div>
+              <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mt-0.5">Profitability</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.growth_signal.toLowerCase() as SignalType]}`}>
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-xl p-2.5 text-center border border-gray-200 dark:border-gray-800">
+              <div className={`text-xs font-bold capitalize ${SIGNAL_COLORS[fundamentals.growth_signal.toLowerCase() as SignalType]}`}>
                 {fundamentals.growth_signal}
               </div>
-              <div className="text-xs text-muted-foreground">Growth</div>
+              <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mt-0.5">Growth</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.health_signal.toLowerCase() as SignalType]}`}>
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-xl p-2.5 text-center border border-gray-200 dark:border-gray-800">
+              <div className={`text-xs font-bold capitalize ${SIGNAL_COLORS[fundamentals.health_signal.toLowerCase() as SignalType]}`}>
                 {fundamentals.health_signal}
               </div>
-              <div className="text-xs text-muted-foreground">Financial Health</div>
+              <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mt-0.5">Financial Health</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-2 text-center">
-              <div className={`text-xs font-semibold capitalize ${SIGNAL_COLORS[fundamentals.valuation_signal.toLowerCase() as SignalType]}`}>
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-xl p-2.5 text-center border border-gray-200 dark:border-gray-800">
+              <div className={`text-xs font-bold capitalize ${SIGNAL_COLORS[fundamentals.valuation_signal.toLowerCase() as SignalType]}`}>
                 {fundamentals.valuation_signal}
               </div>
-              <div className="text-xs text-muted-foreground">Valuation</div>
+              <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mt-0.5">Valuation</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Detail Cards */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
         {renderDimension(
           "Profitability", 
           profitabilityMetrics, 
@@ -266,28 +266,28 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
         )}
         
         {/* Enhanced Financial Health Section with Video Tutorial */}
-        <Card>
-          <CardContent className="pt-6">
+        <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+          <CardContent className="pt-5 sm:pt-6 px-4 sm:px-6">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-bold">Financial Health</h3>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">Financial Health</h3>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 text-xs sm:text-sm">
                 <span className={`font-bold ${SIGNAL_COLORS[fundamentals.health_signal.toLowerCase() as SignalType]} capitalize`}>{fundamentals.health_signal}</span>
-                <span className="text-sm text-muted-foreground ml-1">({fundamentals.health_score}/3 metrics)</span>
+                <span className="text-slate-400 dark:text-slate-500">({fundamentals.health_score}/3 metrics)</span>
               </div>
             </div>
             
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
               {DIMENSION_DESCRIPTIONS.health}
             </p>
             
             {/* Video Tutorial Section */}
             <VideoTutorial
               title="Video Tutorial: Understanding Financial Health"
-              description="Understand how financial health metrics work and why they can sometimes be misleading."
+              description="Understand how financial health metrics work and why traditional metrics can sometimes mislead."
               videoId="qOzB4WtPRok"
-              className="mb-6"
+              className="mb-5"
             />
             
             <div className="space-y-2 mb-4">
@@ -313,23 +313,23 @@ export function StockFundamentalsAnalysis({ fundamentals }: StockFundamentalsAna
       </div>
 
       {/* Methodology */}
-      <div className="bg-muted/50 p-4 rounded-lg text-sm">
+      <div className="bg-gray-50/70 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm shadow-xs">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <p className="font-semibold mb-2">Methodology:</p>
-            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+            <p className="font-bold text-gray-900 dark:text-gray-100 mb-2">Methodology:</p>
+            <ul className="list-disc list-inside space-y-1 text-slate-500 dark:text-slate-400">
               <li>Profitability (33% weight): Measures how effectively a company generates profit</li>
-              <li>Growth (33% weight): Examines a company's expansion rates across revenue, earnings, and book value</li>
-              <li>Financial Health (17% weight): Assesses stability, risk levels, and cash flow quality</li>
-              <li>Valuation (17% weight): Determines if the current stock price is reasonably valued</li>
+              <li>Growth (33% weight): Examines expansion across revenue, earnings, and book value</li>
+              <li>Financial Health (17% weight): Assesses liquidity, leverage, and cash conversion</li>
+              <li>Valuation (17% weight): Evaluates multiple ratios against fundamental baseline</li>
             </ul>
           </div>
           <div>
-            <p className="font-semibold mb-2">Signal Generation:</p>
-            <ul className="space-y-1 text-muted-foreground">
-              <li><span className="text-green-500 font-medium">Bullish:</span> More bullish than bearish dimensions</li>
-              <li><span className="text-red-500 font-medium">Bearish:</span> More bearish than bullish dimensions</li>
-              <li><span className="text-yellow-500 font-medium">Neutral:</span> Equal bullish and bearish dimensions</li>
+            <p className="font-bold text-gray-900 dark:text-gray-100 mb-2">Signal Generation:</p>
+            <ul className="space-y-1 text-slate-500 dark:text-slate-400">
+              <li><span className="text-emerald-600 dark:text-emerald-400 font-semibold">Bullish:</span> More bullish than bearish dimensions</li>
+              <li><span className="text-rose-600 dark:text-rose-400 font-semibold">Bearish:</span> More bearish than bullish dimensions</li>
+              <li><span className="text-amber-600 dark:text-amber-400 font-semibold">Neutral:</span> Equal bullish and bearish dimensions</li>
             </ul>
           </div>
         </div>

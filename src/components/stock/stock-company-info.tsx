@@ -240,36 +240,36 @@ export function StockCompanyInfo({ company, prices, financialMetrics, className 
   const dividendInfo = getDividendInfo();
 
   return (
-    <Card className={cn("w-full", className)}>
-      <CardHeader className="pb-2 sm:pb-3">
-        <CardTitle className="text-sm sm:text-base font-medium">Company Information</CardTitle>
+    <Card className={cn("w-full rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm", className)}>
+      <CardHeader className="pb-2 sm:pb-3 border-b border-gray-100 dark:border-gray-800">
+        <CardTitle className="text-sm sm:text-base font-bold text-gray-900 dark:text-gray-100">Company Information</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="grid gap-2 sm:gap-3">
+      <CardContent className="pt-4">
+        <div className="grid gap-2.5 sm:gap-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Ticker</span>
-            <span className="text-sm sm:text-base font-medium text-right">{company.ticker}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Ticker</span>
+            <span className="text-xs sm:text-sm font-bold px-2 py-0.5 rounded-md bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800">{company.ticker}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Name</span>
-            <span className="text-sm sm:text-base font-medium text-right break-words">{company.name}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Name</span>
+            <span className="text-sm sm:text-base font-medium text-right text-gray-900 dark:text-gray-100 break-words">{company.name}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Sector</span>
-            <span className="text-sm sm:text-base font-medium text-right break-words">{company.sector}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Sector</span>
+            <span className="text-sm sm:text-base font-medium text-right text-gray-900 dark:text-gray-100 break-words">{company.sector}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Industry</span>
-            <span className="text-sm sm:text-base font-medium text-right break-words">{company.industry}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Industry</span>
+            <span className="text-sm sm:text-base font-medium text-right text-gray-900 dark:text-gray-100 break-words">{company.industry}</span>
           </div>
           {company.website_url && (
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Website</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Website</span>
               <a 
                 href={company.website_url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center text-blue-500 hover:underline text-sm"
+                className="flex items-center text-[#A8672E] dark:text-[#D08F52] hover:text-[#8f5726] dark:hover:text-[#e2a877] font-medium text-xs sm:text-sm hover:underline transition-colors"
               >
                 Visit Site <ExternalLinkIcon className="ml-1 h-3 w-3" />
               </a>
@@ -277,95 +277,95 @@ export function StockCompanyInfo({ company, prices, financialMetrics, className 
           )}
           
           {/* Market Statistics Section - Always displayed */}
-          <div className="mt-3 sm:mt-4 border-t pt-2 sm:pt-3">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-sm sm:text-base font-medium">Market Statistics</span>
+          <div className="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#A8672E] dark:text-[#D08F52]">Market Statistics</span>
               {metrics?.latestDate && (
-                <span className="text-xs sm:text-sm text-muted-foreground">
-                  As of {formatDate(metrics.latestDate)}
+                <span className="text-[11px] text-slate-400 dark:text-slate-500">
+                  {formatDate(metrics.latestDate)}
                 </span>
               )}
             </div>
           </div>
           
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Current Price</span>
-            <span className="text-sm sm:text-base font-medium text-right">{metrics?.currentPrice ? formatCurrency(metrics.currentPrice) : 'N/A'}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Current Price</span>
+            <span className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100 text-right">{metrics?.currentPrice ? formatCurrency(metrics.currentPrice) : 'N/A'}</span>
           </div>
           
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Daily Range</span>
-            <span className="text-sm sm:text-base font-medium text-right">
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Daily Range</span>
+            <span className="text-xs sm:text-sm font-medium text-right text-slate-700 dark:text-slate-300">
               {metrics?.dailyLow ? formatCurrency(metrics.dailyLow) : 'N/A'} - {metrics?.dailyHigh ? formatCurrency(metrics.dailyHigh) : 'N/A'}
             </span>
           </div>
           
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">52 Week Range</span>
-            <span className="text-sm sm:text-base font-medium text-right">
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">52 Week Range</span>
+            <span className="text-xs sm:text-sm font-medium text-right text-slate-700 dark:text-slate-300">
               {metrics?.low52Week ? formatCurrency(metrics.low52Week) : 'N/A'} - {metrics?.high52Week ? formatCurrency(metrics.high52Week) : 'N/A'}
             </span>
           </div>
           
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">Volume</span>
-            <span className="text-sm sm:text-base font-medium text-right">{metrics?.dailyVolume ? formatLargeNumber(metrics.dailyVolume) : 'N/A'}</span>
+            <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Volume</span>
+            <span className="text-xs sm:text-sm font-medium text-right text-slate-700 dark:text-slate-300">{metrics?.dailyVolume ? formatLargeNumber(metrics.dailyVolume) : 'N/A'}</span>
           </div>
           
           {metrics?.averageVolume && (
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Avg. Volume</span>
-              <span className="text-sm sm:text-base font-medium text-right">{formatLargeNumber(metrics.averageVolume)}</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Avg. Volume</span>
+              <span className="text-xs sm:text-sm font-medium text-right text-slate-700 dark:text-slate-300">{formatLargeNumber(metrics.averageVolume)}</span>
             </div>
           )}
           
           {metrics?.volatility && (
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Volatility</span>
-              <span className="text-sm sm:text-base font-medium text-right">{formatPercent(metrics.volatility)}</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Volatility</span>
+              <span className="text-xs sm:text-sm font-medium text-right text-slate-700 dark:text-slate-300">{formatPercent(metrics.volatility)}</span>
             </div>
           )}
           
           {/* Financial Metrics Section */}
           {financialMetrics && (
             <>
-              <div className="mt-3 sm:mt-4 border-t pt-2 sm:pt-3">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm sm:text-base font-medium">Financial Metrics</span>
-                  <span className="text-xs sm:text-sm text-muted-foreground">
+              <div className="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#A8672E] dark:text-[#D08F52]">Financial Metrics</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500">
                     {formatReportDate()} ({financialMetrics.period})
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Market Cap</span>
-                <span className="text-sm sm:text-base font-medium text-right">{formatLargeNumber(financialMetrics.market_cap)}</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Market Cap</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">{formatLargeNumber(financialMetrics.market_cap)}</span>
               </div>
 
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">EPS</span>
-                <span className="text-sm sm:text-base font-medium text-right">{formatCurrency(financialMetrics.earnings_per_share)}</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">EPS</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">{formatCurrency(financialMetrics.earnings_per_share)}</span>
               </div>
 
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/E Ratio</span>
-                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_earnings_ratio?.toFixed(2) || 'N/A'}</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">P/E Ratio</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">{financialMetrics.price_to_earnings_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/B Ratio</span>
-                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_book_ratio?.toFixed(2) || 'N/A'}</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">P/B Ratio</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">{financialMetrics.price_to_book_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">P/S Ratio</span>
-                <span className="text-sm sm:text-base font-medium text-right">{financialMetrics.price_to_sales_ratio?.toFixed(2) || 'N/A'}</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">P/S Ratio</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">{financialMetrics.price_to_sales_ratio?.toFixed(2) || 'N/A'}</span>
               </div>
 
               <div className="flex items-start justify-between gap-2">
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Forward Dividend & Yield</span>
-                <span className="text-sm sm:text-base font-medium text-right">
+                <span className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Forward Dividend & Yield</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 text-right">
                   {dividendInfo.forwardDividend !== "N/A" ? `$${dividendInfo.forwardDividend}` : "N/A"}
                   {dividendInfo.dividendYield !== "N/A" && dividendInfo.forwardDividend !== "N/A" 
                     ? ` (${dividendInfo.dividendYield})` 

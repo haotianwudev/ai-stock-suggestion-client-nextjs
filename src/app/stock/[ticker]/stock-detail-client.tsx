@@ -21,8 +21,9 @@ import {
   type StockAgentSuggestion,
   type SophieAnalysis
 } from "@/lib/graphql/types";
+import Link from "next/link";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import { StockChart } from "@/components/stock/stock-chart";
-import { StockCombinedInfo } from "@/components/stock/stock-combined-info";
 import { StockCompanyInfo } from "@/components/stock/stock-company-info";
 import { StockValuation as StockValuationComponent } from "@/components/stock/stock-valuation";
 import { StockFundamentalsAnalysis } from "@/components/stock/stock-fundamentals-analysis";
@@ -238,20 +239,28 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
   }
 
   if (detailsLoading) return (
-    <div className="flex justify-center items-center h-64">
-      <p>Loading stock information...</p>
+    <div className="flex flex-col items-center justify-center min-h-[400px] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+      <Loader2 className="h-8 w-8 animate-spin text-[#A8672E] dark:text-[#D08F52] mb-3" />
+      <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Loading stock information for {ticker}...</p>
     </div>
   );
 
   if (detailsError) return (
-    <div className="flex justify-center items-center h-64">
-      <p>Error loading stock information: {detailsError.message}</p>
+    <div className="flex flex-col items-center justify-center min-h-[300px] p-8 rounded-2xl border border-red-200 dark:border-red-900/50 bg-white dark:bg-gray-900 shadow-sm text-center">
+      <p className="text-base font-semibold text-red-600 dark:text-red-400 mb-2">Error loading stock information</p>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{detailsError.message}</p>
+      <Link href="/" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-800 text-sm font-medium hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors">
+        <ArrowLeft className="h-4 w-4" /> Return to Home
+      </Link>
     </div>
   );
 
   if (!stockData) return (
-    <div className="flex justify-center items-center h-64">
-      <p>No stock data found for ticker: {ticker}</p>
+    <div className="flex flex-col items-center justify-center min-h-[300px] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm text-center">
+      <p className="text-base font-semibold text-slate-700 dark:text-slate-300 mb-2">No stock data found for ticker: {ticker}</p>
+      <Link href="/" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-800 text-sm font-medium hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors mt-2">
+        <ArrowLeft className="h-4 w-4" /> Return to Home
+      </Link>
     </div>
   );
 
@@ -392,7 +401,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
     );
   }
 
-      return (
+  return (
     <>
       {/* SEO Components */}
       <StockSEO ticker={ticker} company={stockData.company} stockData={stockData}>
@@ -402,83 +411,114 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         {createNavigationStructuredData()}
       </StockSEO>
       
-      <div className="space-y-4 sm:space-y-6">
-        {/* Header section with improved mobile layout */}
-        <div className="space-y-4">
-          <div className="flex flex-col space-y-4 lg:flex-row lg:items-start lg:justify-between lg:space-y-0">
+      <div className="space-y-6">
+        {/* Navigation & Kicker */}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium text-sm shadow-sm transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Return to Home
+          </Link>
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#A8672E]/10 text-[#A8672E] dark:bg-[#D08F52]/20 dark:text-[#D08F52] border border-[#A8672E]/20 dark:border-[#D08F52]/30 uppercase tracking-wider">
+              Stock Research
+            </span>
+          </div>
+        </div>
+
+        {/* Hero meta: ticker, company name, sector, and mini-disclaimer */}
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
+              {stockData.company.ticker}
+            </span>
+            {stockData.company.sector && (
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800">
+                {stockData.company.sector}
+              </span>
+            )}
+            {stockData.company.industry && (
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-slate-800/60 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                {stockData.company.industry}
+              </span>
+            )}
+          </div>
+
+          <div className="flex flex-col space-y-4 lg:flex-row lg:items-start lg:justify-between lg:space-y-0 gap-4">
             <div className="min-w-0 flex-1">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight break-words">
-                {stockData.company.name} ({stockData.company.ticker})
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 break-words">
+                {stockData.company.name} <span className="text-[#A8672E] dark:text-[#D08F52]">({stockData.company.ticker})</span>
               </h1>
-              <p className="text-sm sm:text-base text-muted-foreground mt-1">
-                {stockData.company.sector} - {stockData.company.industry}
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                Quantitative fundamentals, valuation models, market sentiment, technical momentum, and AI bot signals.
               </p>
             </div>
             
-            {/* Disclaimer moved to separate row on mobile */}
             <div className="lg:max-w-md lg:flex-shrink-0">
-              <div className="p-3 sm:p-4 bg-muted/50 rounded-lg text-xs sm:text-sm text-muted-foreground">
-                <p><strong>Disclaimer:</strong> SOPHIE analysis is for educational purposes only, intended for people to learn more about finance, but not giving financial advice. All suggestions are generated by AI models.</p>
+              <div className="p-3.5 bg-amber-50/70 dark:bg-amber-950/30 rounded-xl border border-amber-200/80 dark:border-amber-800/40 text-xs text-amber-800 dark:text-amber-300/90 leading-relaxed shadow-sm">
+                <p><strong>Disclaimer:</strong> SOPHIE analysis is for educational purposes only and does not constitute financial advice. All suggestions are generated by AI models and quantitative algorithms.</p>
               </div>
             </div>
           </div>
         </div>
       
-      {/* Main analysis section with improved mobile grid */}
-      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3 xl:grid-cols-7">
-        <StockCompanyInfo 
-          company={stockData.company} 
-          prices={stockData.prices} 
-          financialMetrics={stockData.financialMetricsLatest} 
-          className="lg:col-span-1 xl:col-span-2" 
-        />
-        <StockAnalysisSummary 
-          technicals={technicals || mockTechnicals}
-          sentiment={sentiment || mockSentiment}
-          fundamentals={fundamentals || mockFundamentals}
-          valuations={valuations}
-          className="lg:col-span-2 xl:col-span-5"
-          sophieData={sophieAnalysis || {
-            signal: "neutral",
-            confidence: 60,
-            overall_score: 55,
-            reasoning: `${stockData.company.ticker} presents a mixed picture across valuation, technicals, sentiment, and fundamentals. The stock shows strong profitability metrics but faces challenges with valuation multiples and technical indicators. Consider time horizon and risk tolerance before investing.`,
-            short_term_outlook: "Cautious approach recommended due to technical weakness",
-            medium_term_outlook: "Monitor catalysts and sentiment shifts for potential opportunities",
-            long_term_outlook: "May fit within diversified portfolios if fundamentals remain strong",
-            bullish_factors: ["Strong profitability metrics", "Market leadership", "Innovation potential"],
-            bearish_factors: ["Valuation concerns", "Technical weakness", "Competitive pressures"],
-            risks: ["Market volatility", "Sector rotation", "Macroeconomic headwinds"],
-            model_name: "sophie",
-            model_display_name: "SOPHIE"
-          }}
-          loading={sophieLoading && !sophieAnalysis}
-        />
-      </div>
-      
-      {/* Agent suggestions section */}
-      {agentSuggestions.length > 0 && (
-        <div className="space-y-4">
-          <StockAgentSuggestions suggestions={agentSuggestions} />
+        {/* Main analysis section with improved mobile grid */}
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3 xl:grid-cols-7">
+          <StockCompanyInfo 
+            company={stockData.company} 
+            prices={stockData.prices} 
+            financialMetrics={stockData.financialMetricsLatest} 
+            className="lg:col-span-1 xl:col-span-2" 
+          />
+          <StockAnalysisSummary 
+            technicals={technicals || mockTechnicals}
+            sentiment={sentiment || mockSentiment}
+            fundamentals={fundamentals || mockFundamentals}
+            valuations={valuations}
+            className="lg:col-span-2 xl:col-span-5"
+            sophieData={sophieAnalysis || {
+              signal: "neutral",
+              confidence: 60,
+              overall_score: 55,
+              reasoning: `${stockData.company.ticker} presents a mixed picture across valuation, technicals, sentiment, and fundamentals. The stock shows strong profitability metrics but faces challenges with valuation multiples and technical indicators. Consider time horizon and risk tolerance before investing.`,
+              short_term_outlook: "Cautious approach recommended due to technical weakness",
+              medium_term_outlook: "Monitor catalysts and sentiment shifts for potential opportunities",
+              long_term_outlook: "May fit within diversified portfolios if fundamentals remain strong",
+              bullish_factors: ["Strong profitability metrics", "Market leadership", "Innovation potential"],
+              bearish_factors: ["Valuation concerns", "Technical weakness", "Competitive pressures"],
+              risks: ["Market volatility", "Sector rotation", "Macroeconomic headwinds"],
+              model_name: "sophie",
+              model_display_name: "SOPHIE"
+            }}
+            loading={sophieLoading && !sophieAnalysis}
+          />
         </div>
-      )}
       
-      {/* Loading state for agents */}
-      {loadingAgents && (
-        <div className="flex justify-center items-center h-24 sm:h-32">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-            <p className="text-sm sm:text-base text-muted-foreground">Loading AI agent analysis...</p>
+        {/* Agent suggestions section */}
+        {agentSuggestions.length > 0 && (
+          <div className="space-y-4">
+            <StockAgentSuggestions suggestions={agentSuggestions} />
           </div>
-        </div>
-      )}
+        )}
       
-              {/* Analysis sections with improved mobile spacing and SEO structure */}
+        {/* Loading state for agents */}
+        {loadingAgents && (
+          <div className="flex justify-center items-center h-24 sm:h-32 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+            <div className="text-center">
+              <Loader2 className="animate-spin h-6 w-6 text-[#A8672E] dark:text-[#D08F52] mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Loading AI agent analysis...</p>
+            </div>
+          </div>
+        )}
+      
+        {/* Analysis sections with improved mobile spacing and SEO structure */}
         <section className="space-y-4 sm:space-y-6">
-          <Card id="technical-analysis" className="overflow-hidden">
+          <Card id="technical-analysis" className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
             <CardHeader className="pb-3 sm:pb-4">
-              <CardTitle className="text-lg sm:text-xl">Technical Analysis</CardTitle>
-              <CardDescription className="text-sm sm:text-base">
+              <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-gray-100">Technical Analysis</CardTitle>
+              <CardDescription className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
                 Best for short-term trading decisions and timing market entry/exit points based on price patterns and momentum
               </CardDescription>
             </CardHeader>
@@ -489,10 +529,10 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         </section>
 
         <section className="space-y-4 sm:space-y-6">
-          <Card id="sentiment-analysis" className="overflow-hidden">
+          <Card id="sentiment-analysis" className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
             <CardHeader className="pb-3 sm:pb-4">
-              <CardTitle className="text-lg sm:text-xl">Market Sentiment Analysis</CardTitle>
-              <CardDescription className="text-sm sm:text-base">
+              <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-gray-100">Market Sentiment Analysis</CardTitle>
+              <CardDescription className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
                 Useful for gauging market psychology and institutional interest in the short to medium term
               </CardDescription>
             </CardHeader>
@@ -511,7 +551,7 @@ export function StockDetailClient({ ticker }: StockDetailClientProps) {
         <section className="space-y-4 sm:space-y-6" id="valuation-analysis">
           <StockValuationComponent valuations={valuations} />
         </section>
-    </div>
+      </div>
     </>
   );
 } 

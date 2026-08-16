@@ -153,13 +153,13 @@ export function StockChart({ prices }: StockChartProps) {
     
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip bg-white p-3 border rounded shadow-sm">
-          <p className="font-medium">{`Date: ${label}`}</p>
+        <div className="custom-tooltip bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg text-xs sm:text-sm">
+          <p className="font-semibold text-slate-800 dark:text-slate-200 mb-1">{`Date: ${label}`}</p>
           {payload.map((entry: any, index: number) => {
             // Special formatting for volume
             if (entry.name === 'Volume') {
               return (
-                <p key={`item-${index}`} style={{ color: entry.color }}>
+                <p key={`item-${index}`} style={{ color: entry.color }} className="font-medium">
                   {`${entry.name}: ${formatVolumeWithUnits(entry.value)}`}
                 </p>
               );
@@ -169,7 +169,7 @@ export function StockChart({ prices }: StockChartProps) {
             if (entry.value !== null && entry.value !== undefined) {
               if (['Price', 'EMA(8)', 'EMA(21)', 'EMA(55)', 'Upper BB', 'Lower BB'].includes(entry.name)) {
                 return (
-                  <p key={`item-${index}`} style={{ color: entry.color }}>
+                  <p key={`item-${index}`} style={{ color: entry.color }} className="font-medium">
                     {`${entry.name}: $${Number(entry.value).toFixed(2)}`}
                   </p>
                 );
@@ -177,7 +177,7 @@ export function StockChart({ prices }: StockChartProps) {
             }
             
             return (
-              <p key={`item-${index}`} style={{ color: entry.color }}>
+              <p key={`item-${index}`} style={{ color: entry.color }} className="font-medium">
                 {`${entry.name}: ${entry.value}`}
               </p>
             );

@@ -151,36 +151,36 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
     indicators: {label: string; value: string | number; tooltip?: string; colorClass?: string}[];
     tooltipContent: string;
   }) => (
-    <Card>
-      <CardContent className="pt-4 sm:pt-6 px-4 sm:px-6">
+    <Card className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+      <CardContent className="pt-5 sm:pt-6 px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2 sm:gap-0">
-          <div className="flex items-center gap-2">
-            <div className="p-1.5 sm:p-2 rounded-full bg-muted">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
               {icon}
             </div>
-            <h3 className="text-base sm:text-lg font-bold">{title}</h3>
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">{title}</h3>
           </div>
-          <div className="flex items-center gap-2 text-sm sm:text-base">
+          <div className="flex items-center gap-2 text-sm">
             <span className={`font-bold ${getSignalColor(signal)} capitalize`}>{signal}</span>
-            <span className="text-xs sm:text-sm text-muted-foreground">({confidence}% confidence)</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">({confidence}% confidence)</span>
           </div>
         </div>
         
-        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
           {tooltipContent}
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-2">
           {indicators.map((indicator, index) => (
-            <div key={index} className="space-y-1">
+            <div key={index} className="space-y-1 bg-gray-50/50 dark:bg-gray-800/30 p-2.5 rounded-xl border border-gray-100 dark:border-gray-800/60">
               <div className="flex items-center gap-1">
-                <span className="text-sm font-medium">{indicator.label}</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{indicator.label}</span>
               </div>
-              <div className={`text-sm sm:text-base break-words ${indicator.colorClass || ''}`}>
+              <div className={`text-sm sm:text-base font-bold break-words ${indicator.colorClass || 'text-gray-900 dark:text-gray-100'}`}>
                 {typeof indicator.value === 'string' ? indicator.value : indicator.value.toFixed(2)}
               </div>
               {indicator.tooltip && (
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed">
                   {indicator.tooltip}
                 </p>
               )}
@@ -192,109 +192,109 @@ export function StockTechnicalsAnalysis({ technicals, prices }: StockTechnicalsA
   );
 
   return (
-    <div className="space-y-4 sm:space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Price Chart */}
       <div className="mb-4 sm:mb-6">
-        <h3 className="text-base sm:text-lg font-semibold mb-2">Price Chart with Technical Indicators</h3>
-        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
+        <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Price Chart with Technical Indicators</h3>
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-3 sm:mb-4 leading-relaxed">
           Historical price data with EMAs (8, 21, 55) and Bollinger Bands overlaid
         </p>
         <StockChart prices={prices} />
       </div>
 
       {/* Overall Technical Signal */}
-      <div className="bg-card rounded-lg p-4 sm:p-6 shadow-sm border">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2 sm:gap-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg sm:text-xl font-bold">Technical Analysis</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Technical Analysis</h3>
           </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-muted-foreground">Analysis Date:</span>
-            <span className="font-medium">{formatDateString(technicals.biz_date)}</span>
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <span>Analysis Date:</span>
+            <span className="font-semibold text-gray-900 dark:text-gray-100">{formatDateString(technicals.biz_date)}</span>
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-5 leading-relaxed">
           Technical analysis combines multiple quantitative trading strategies to generate signals based on price action and market statistics. It uses an ensemble approach with weighted signals from five different methodologies.
         </p>
 
         {/* Technical Analysis Video Tutorial */}
         <VideoTutorial
           title="Technical Analysis Why and When it Works"
-          description="Dive deep into a surprising academic research paper to find out the truth. Does technical analysis actually work?."
+          description="Dive deep into academic research to understand the microstructure and momentum behind technical analysis."
           videoId="AeIqXXreunA"
           className="mb-6"
         />
 
         <div className="flex flex-col space-y-4">
           <div className="flex items-center gap-2">
-            <div className={`w-4 h-4 rounded-full ${getSignalBgColor(technicals.signal)}`}></div>
-            <div className="flex items-center gap-1">
+            <div className={`w-3.5 h-3.5 rounded-full ${getSignalBgColor(technicals.signal)}`}></div>
+            <div className="flex items-center gap-1 text-sm">
               <span className={`font-semibold capitalize ${getSignalColor(technicals.signal)}`}>{technicals.signal}</span>
-              <span className="text-sm text-muted-foreground">with {Math.round(technicals.confidence)}% confidence</span>
+              <span className="text-slate-500 dark:text-slate-400">with {Math.round(technicals.confidence)}% confidence</span>
             </div>
           </div>
 
           {/* Strategy Overview Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 mt-6 sm:mt-8 mb-6 sm:mb-8">
-            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mt-4 mb-2">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-2xl p-3 sm:p-4 text-center shadow-xs border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all">
               <div className="mb-2 flex justify-center">
-                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
+                <div className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-xs border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
                   {getStrategyIcon('trend')}
                 </div>
               </div>
-              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.trend_signal)}`}>
+              <div className={`text-sm sm:text-base font-bold capitalize ${getSignalColor(technicals.trend_signal)}`}>
                 {technicals.trend_signal.toUpperCase()}
               </div>
-              <div className="text-xs sm:text-base font-semibold">Trend Following</div>
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">Trend Following</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-2xl p-3 sm:p-4 text-center shadow-xs border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all">
               <div className="mb-2 flex justify-center">
-                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
+                <div className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-xs border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
                   {getStrategyIcon('mr')}
                 </div>
               </div>
-              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.mr_signal)}`}>
+              <div className={`text-sm sm:text-base font-bold capitalize ${getSignalColor(technicals.mr_signal)}`}>
                 {technicals.mr_signal.toUpperCase()}
               </div>
-              <div className="text-xs sm:text-base font-semibold">Mean Reversion</div>
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">Mean Reversion</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-2xl p-3 sm:p-4 text-center shadow-xs border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all">
               <div className="mb-2 flex justify-center">
-                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
+                <div className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-xs border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
                   {getStrategyIcon('momentum')}
                 </div>
               </div>
-              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
+              <div className={`text-sm sm:text-base font-bold capitalize ${getSignalColor(technicals.momentum_signal)}`}>
                 {technicals.momentum_signal.toUpperCase()}
               </div>
-              <div className="text-xs sm:text-base font-semibold">Momentum</div>
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">Momentum</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-2xl p-3 sm:p-4 text-center shadow-xs border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all">
               <div className="mb-2 flex justify-center">
-                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
+                <div className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-xs border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
                   {getStrategyIcon('volatility')}
                 </div>
               </div>
-              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
+              <div className={`text-sm sm:text-base font-bold capitalize ${getSignalColor(technicals.volatility_signal)}`}>
                 {technicals.volatility_signal.toUpperCase()}
               </div>
-              <div className="text-xs sm:text-base font-semibold">Volatility</div>
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">Volatility</div>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3 sm:p-4 text-center shadow-md border-2 hover:bg-muted transition-colors">
+            <div className="bg-gray-50/70 dark:bg-gray-800/40 rounded-2xl p-3 sm:p-4 text-center shadow-xs border border-gray-200 dark:border-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all">
               <div className="mb-2 flex justify-center">
-                <div className="p-1.5 sm:p-2 bg-background rounded-full shadow-inner">
+                <div className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-xs border border-gray-200/60 dark:border-gray-700 text-[#A8672E] dark:text-[#D08F52]">
                   {getStrategyIcon('stat_arb')}
                 </div>
               </div>
-              <div className={`text-sm sm:text-lg font-extrabold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
+              <div className={`text-sm sm:text-base font-bold capitalize ${getSignalColor(technicals.stat_arb_signal)}`}>
                 {technicals.stat_arb_signal.toUpperCase()}
               </div>
-              <div className="text-xs sm:text-base font-semibold">Statistical</div>
+              <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-0.5">Statistical Arb</div>
             </div>
           </div>
         </div>
