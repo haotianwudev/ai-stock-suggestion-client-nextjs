@@ -232,6 +232,23 @@ export function canAccessTopicContentByTier(tier: number): boolean {
   return tier >= MIN_TOPIC_TIER;
 }
 
+// Centralized engagement like milestones to unlock tiers (mirrors server src/lib/tiers.js)
+export const LIKE_THRESHOLDS = {
+  TIER_3: 1,
+  TIER_4: 10,
+  TIER_5: 50,
+  TIER_6: 200,
+  TIER_7: 400,
+} as const;
+
+// Centralized donation milestones (in cents) to unlock tiers (mirrors server src/lib/tiers.js)
+export const DONATION_THRESHOLDS_CENTS = {
+  TIER_4: 999,   // $9.99
+  TIER_5: 2999,  // $29.99
+  TIER_6: 9999,  // $99.99
+  TIER_7: 19999, // $199.99
+} as const;
+
 // Honor-system rank-up ladder driven by liked_count (see attestLiked in
 // server/src/db/engagement.js and setYoutubeSubscribed in server/src/db/auth.js
 // -- keep both in sync). No verification that they liked it on YouTube, but
@@ -244,11 +261,11 @@ export interface LikeTierStep {
   alsoNeedsSubscribe?: boolean;
 }
 export const LIKE_TIER_LADDER: LikeTierStep[] = [
-  { tier: 3, likesNeeded: 1, alsoNeedsSubscribe: true },
-  { tier: 4, likesNeeded: 10 },
-  { tier: 5, likesNeeded: 50 },
-  { tier: 6, likesNeeded: 200 },
-  { tier: 7, likesNeeded: 400 },
+  { tier: 3, likesNeeded: LIKE_THRESHOLDS.TIER_3, alsoNeedsSubscribe: true },
+  { tier: 4, likesNeeded: LIKE_THRESHOLDS.TIER_4 },
+  { tier: 5, likesNeeded: LIKE_THRESHOLDS.TIER_5 },
+  { tier: 6, likesNeeded: LIKE_THRESHOLDS.TIER_6 },
+  { tier: 7, likesNeeded: LIKE_THRESHOLDS.TIER_7 },
 ];
 
 // Cumulative donation totals that promote a supporter, independent of the like
@@ -260,10 +277,10 @@ export interface DonationTierStep {
   minCents: number;
 }
 export const DONATION_TIER_LADDER: DonationTierStep[] = [
-  { tier: 4, minCents: 999 },
-  { tier: 5, minCents: 2999 },
-  { tier: 6, minCents: 9999 },
-  { tier: 7, minCents: 19999 },
+  { tier: 4, minCents: DONATION_THRESHOLDS_CENTS.TIER_4 },
+  { tier: 5, minCents: DONATION_THRESHOLDS_CENTS.TIER_5 },
+  { tier: 6, minCents: DONATION_THRESHOLDS_CENTS.TIER_6 },
+  { tier: 7, minCents: DONATION_THRESHOLDS_CENTS.TIER_7 },
 ];
 
 /** The next rung above `tier` on the like ladder, or null once past tier 7. */
