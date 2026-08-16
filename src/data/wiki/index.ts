@@ -12,6 +12,15 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "macro/calculate-investment-clock",
+    title: "Calculating the Investment Clock",
+    articleSlug: "quantitative-guide-calculate-investment-clock",
+    date: "2026-04-20",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+    summary:
+      "Mathematical specification for calculating the Merrill Lynch Investment Clock in real time: 10-indicator FRED pipeline, exponential rolling Z-scores, and phase angle cartesian mapping.",
+  },
+  {
     path: "form13f/druckenmiller-q2-2026-ai-infrastructure-rotation",
     title: "Druckenmiller's Q2 2026 Rotation",
     articleSlug: "duquesne-family-office-q2-2026-13f-rotation",
