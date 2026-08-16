@@ -8,7 +8,7 @@ import { PostList } from "@/components/forum/post-list";
 import { PostComposer } from "@/components/forum/post-composer";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, BookOpen, ExternalLink } from "lucide-react";
 
 export function ThreadDetailClient({ threadId }: { threadId: string }) {
   const { data, loading } = useQuery<{ forumThread: ForumThread | null }>(GET_FORUM_THREAD, {
@@ -21,30 +21,65 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
   });
 
   const thread = data?.forumThread;
-  const categorySlug = thread?.categorySlug ?? "general";
+  const categorySlug = thread?.categorySlug ?? (thread?.contentSlug ? "articles" : "general");
+
+  let contentUrl: string | null = null;
+  let contentLabel = "Article";
+  if (thread?.contentSlug) {
+    if (thread.contentSlug.startsWith("strategy-")) {
+      contentUrl = `/option/strategies/${thread.contentSlug.replace(/^strategy-/, "")}`;
+      contentLabel = "Option Strategy";
+    } else if (["option101", "greeks", "volatility", "vrp", "gex", "roll", "books"].includes(thread.contentSlug)) {
+      contentUrl = `/option/topics/${thread.contentSlug}`;
+      contentLabel = "Option Topic";
+    } else {
+      contentUrl = `/articles/${thread.contentSlug}`;
+      contentLabel = "Article";
+    }
+  }
 
   return (
     <div className="space-y-6">
       <Link
-        href={`/forum/${categorySlug}`}
+        href={thread?.contentSlug ? "/forum/articles" : `/forum/${categorySlug}`}
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
       >
         <ChevronLeft className="size-4" />
-        Back
+        Back to {thread?.contentSlug ? "Article Discussions" : "Discussions"}
       </Link>
 
       {loading && !data ? (
         <Skeleton className="h-8 w-2/3" />
       ) : thread ? (
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold tracking-tight">{thread.title}</h1>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+              {thread.title}
+            </h1>
             {thread.locked && <Badge variant="outline">Locked</Badge>}
           </div>
-          <p className="mt-0.5 text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             Started by {thread.authorDisplayName ?? "Anonymous"} on{" "}
             {new Date(thread.createdAt).toLocaleDateString()}
           </p>
+
+          {contentUrl && (
+            <div className="flex items-center justify-between gap-3 rounded-xl border border-primary/25 bg-primary/5 px-4 py-3 text-sm">
+              <div className="flex items-center gap-2 text-primary font-medium min-w-0">
+                <BookOpen className="size-4 shrink-0" />
+                <span className="truncate">
+                  Discussion on {contentLabel}: <strong>{thread.title}</strong>
+                </span>
+              </div>
+              <Link
+                href={contentUrl}
+                className="shrink-0 inline-flex items-center gap-1 font-semibold text-primary underline hover:opacity-80 text-xs"
+              >
+                <span>Read {contentLabel}</span>
+                <ExternalLink className="size-3" />
+              </Link>
+            </div>
+          )}
         </div>
       ) : (
         <p className="text-sm text-muted-foreground">Thread not found.</p>

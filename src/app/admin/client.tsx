@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Header } from "@/components/layout/header";
 import { useUser } from "@/hooks/use-user";
 import { TIER_NAMES, getTierName } from "@/lib/tiers";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { AdminUser } from "@/lib/supabase/admin";
 import { LoginButton } from "@/components/auth/login-button";
 import { Button } from "@/components/ui/button";
@@ -27,33 +28,6 @@ import {
 } from "lucide-react";
 
 const ADMIN_TIER = 9;
-
-// ─── Tier badge colours ──────────────────────────────────────────────────────
-
-const TIER_COLOURS: Record<number, string> = {
-  1: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
-  2: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
-  3: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900 dark:text-cyan-300",
-  4: "bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300",
-  5: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
-  6: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
-  7: "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
-  8: "bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-300",
-  9: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-};
-
-// ─── Helper ──────────────────────────────────────────────────────────────────
-
-function TierBadge({ tier }: { tier: number }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${TIER_COLOURS[tier] ?? TIER_COLOURS[1]}`}
-    >
-      {tier === ADMIN_TIER && <Crown className="mr-1 h-3 w-3" />}
-      {getTierName(tier)}
-    </span>
-  );
-}
 
 // ─── Stats card ──────────────────────────────────────────────────────────────
 

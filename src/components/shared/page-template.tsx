@@ -11,6 +11,7 @@ import { ArticleCard } from "@/components/articles/article-card";
 import { resolveStudyGuideItems, resolveTopicMedia, resolveRelatedArticleSlugs, getArticleBySlug } from "@/lib/article-utils";
 import { BaseConfig, ResolvedStudyGuideItem } from "@/components/shared/config-types";
 import { TopicAccessGate, FREE_TOPIC_IDS, PREMIUM_TOPIC_IDS } from "@/components/shared/topic-access-gate";
+import { CommentSection } from "@/components/comments/comment-section";
 
 interface PageTemplateProps {
   config?: BaseConfig | null;
@@ -212,6 +213,10 @@ export function PageTemplate({
           <div className="space-y-4 md:space-y-6">
             {contentSections}
           </div>
+
+          {config?.id && (
+            <CommentSection contentSlug={config.id} title={config.title || "Topic Discussion"} />
+          )}
         </>
         </TopicAccessGate>
         </CardContent>

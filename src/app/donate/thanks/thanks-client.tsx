@@ -13,7 +13,7 @@ import {
   DONATE_PREV_CENTS_KEY,
 } from "@/lib/donate";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function ThanksClient() {
@@ -83,9 +83,10 @@ export function ThanksClient() {
               That means the world — for real.
             </p>
           </div>
-          <div className="rounded-lg border bg-white/70 dark:bg-white/5 px-4 py-2 text-sm">
-            You&apos;re now <Badge variant="outline">{getTierName(tier)}</Badge>, having donated{" "}
-            {formatDollars(donatedCents)} total.
+          <div className="rounded-lg border bg-white/70 dark:bg-white/5 px-4 py-2 text-sm flex items-center justify-center gap-1.5 flex-wrap">
+            <span>You&apos;re now</span>
+            <TierBadge tier={tier} size="sm" />
+            <span>, having donated {formatDollars(donatedCents)} total.</span>
           </div>
         </CardContent>
       </Card>
@@ -97,9 +98,11 @@ export function ThanksClient() {
               <PartyPopper className="size-5" />
             </div>
             <div>
-              <p className="font-semibold text-amber-800 dark:text-amber-300">
-                Bonus: you&apos;re now {getTierName(tier)}!
-              </p>
+              <div className="font-semibold text-amber-800 dark:text-amber-300 flex items-center gap-1.5 flex-wrap">
+                <span>Bonus: you&apos;re now</span>
+                <TierBadge tier={tier} size="sm" />
+                <span>!</span>
+              </div>
               {unlockKey && (
                 <p className="mt-1 text-sm text-amber-700/90 dark:text-amber-400/90">{t(unlockKey)}</p>
               )}

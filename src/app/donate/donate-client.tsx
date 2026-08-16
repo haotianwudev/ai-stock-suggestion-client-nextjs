@@ -17,6 +17,7 @@ import {
   DONATE_PREV_CENTS_KEY,
 } from "@/lib/donate";
 import { LoginButton } from "@/components/auth/login-button";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -110,9 +111,10 @@ export function DonateClient() {
             chip in anyway, it goes toward keeping the site running and, literally, real gifts for my
             daughter Sophie.
           </p>
-          <div className="text-sm text-muted-foreground">
-            You&apos;re currently <Badge variant="outline">{getTierName(profile?.tier ?? 1)}</Badge>, having
-            donated {formatDollars(profile?.donatedCents ?? 0)} total.
+          <div className="text-sm text-muted-foreground flex items-center gap-1.5 flex-wrap">
+            <span>You&apos;re currently</span>
+            <TierBadge tier={profile?.tier ?? 1} size="sm" />
+            <span>, having donated {formatDollars(profile?.donatedCents ?? 0)} total.</span>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -140,9 +142,9 @@ export function DonateClient() {
                     <span className="text-sm font-semibold">{formatDollars(gift.cents)}</span>
                     <span className="text-xs text-muted-foreground leading-tight">{gift.label}</span>
                     {unlockedTier && (
-                      <span className="text-[10px] font-medium text-[#A8672E] dark:text-[#D08F52]">
+                      <TierBadge tier={unlockedTier} size="xs" variant="outline">
                         Unlocks {getTierName(unlockedTier)}
-                      </span>
+                      </TierBadge>
                     )}
                   </button>
                 );
@@ -186,7 +188,7 @@ export function DonateClient() {
                 <div key={step.tier} className="flex items-start justify-between gap-4 border-b pb-3 last:border-0 last:pb-0">
                   <div>
                     <div className="flex items-center gap-2">
-                      <Badge variant="outline">{getTierName(step.tier)}</Badge>
+                      <TierBadge tier={step.tier} size="sm" />
                       <span className="text-sm font-medium text-muted-foreground">
                         {formatDollars(step.minCents)}+ total
                       </span>

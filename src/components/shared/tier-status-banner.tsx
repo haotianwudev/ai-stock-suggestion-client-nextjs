@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 import type { Profile } from "@/hooks/use-user";
 import { getTierName, nextLikeMilestone } from "@/lib/tiers";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { cn } from "@/lib/utils";
 
 /**
@@ -51,10 +52,9 @@ export function TierStatusBanner({ profile }: { profile: Profile | null }) {
       )}
     >
       <Sparkles className="size-3.5 shrink-0 text-primary" />
-      <span>
-        <span className="font-medium text-foreground">{getTierName(profile.tier)}</span>
-        {" — "}
-        {nextStepText}
+      <span className="flex items-center gap-1.5 flex-wrap">
+        <TierBadge tier={profile.tier} size="xs" />
+        <span>— {nextStepText}</span>
       </span>
     </div>
   );

@@ -2,12 +2,13 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, GraduationCap } from 'lucide-react';
-import { Strategy } from './strategy-config';
+import { Strategy, strategyIdToSlug } from './strategy-config';
 import { StrategyPayoffPanel } from './strategy-payoff-panel';
 import { VideoCard, PaperCard, PaperModal, WikiCard, WikiModal, SlotKicker } from '@/components/articles/article-frame';
 import { getArticleBySlug } from '@/lib/article-utils';
 import { getWikiEntryForArticle } from '@/data/wiki';
 import { Article } from '@/data/articles/types';
+import { CommentSection } from '@/components/comments/comment-section';
 
 const statAccent = {
     profile: "border-[#A8672E] dark:border-[#D08F52]",
@@ -133,6 +134,10 @@ export function StrategyDetailShell({ strategy, onBack }: { strategy: Strategy; 
                     <Playbook strategy={strategy} />
                 </div>
             </div>
+            <CommentSection
+                contentSlug={`strategy-${strategyIdToSlug(strategy.id)}`}
+                title={`${strategy.name} Strategy`}
+            />
         </>
     );
 

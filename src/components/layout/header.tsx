@@ -10,7 +10,7 @@ import { AuthStatus } from "@/components/auth/auth-status";
 import { WelcomeGate } from "@/components/auth/welcome-gate";
 import { RegisterServiceWorker } from "@/components/pwa/register-service-worker";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { useUser } from "@/hooks/use-user";
 import { useLanguage } from "@/hooks/use-language";
 import { getTierName } from "@/lib/tiers";
@@ -93,9 +93,7 @@ export function Header() {
           </nav>
 
           {user && profile && (
-            <Badge variant="outline" className="hidden sm:inline-flex whitespace-nowrap">
-              {getTierName(profile.tier)}
-            </Badge>
+            <TierBadge tier={profile.tier} size="sm" className="hidden sm:inline-flex" />
           )}
           <div className="hidden sm:block">
             <ThemeToggle />
@@ -157,7 +155,7 @@ export function Header() {
               {user && profile && (
                 <div className="flex items-center justify-between px-2 py-2 mt-1 border-t sm:hidden">
                   <span className="text-sm font-medium">{t("header.rank")}</span>
-                  <Badge variant="outline">{getTierName(profile.tier)}</Badge>
+                  <TierBadge tier={profile.tier} size="sm" />
                 </div>
               )}
               <div className="flex items-center justify-between px-2 py-2 border-t sm:hidden">

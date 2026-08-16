@@ -26,6 +26,155 @@ export function getTierName(tier: number): string {
   return TIER_NAMES[tier] ?? TIER_NAMES[1];
 }
 
+export type TierIconName =
+  | "GraduationCap"
+  | "BarChart3"
+  | "TrendingUp"
+  | "Brain"
+  | "Award"
+  | "Flame"
+  | "Gem"
+  | "Trophy"
+  | "Crown";
+
+export interface TierMetadata {
+  tier: number;
+  name: string;
+  shortName: string;
+  iconName: TierIconName;
+  colorKey: string;
+  classes: {
+    badge: string;
+    solid: string;
+    outline: string;
+    icon: string;
+  };
+}
+
+export const TIER_METADATA: Record<number, TierMetadata> = {
+  1: {
+    tier: 1,
+    name: "Intern",
+    shortName: "T1",
+    iconName: "GraduationCap",
+    colorKey: "slate",
+    classes: {
+      badge: "bg-slate-100/90 text-slate-700 border-slate-300/80 dark:bg-slate-800/80 dark:text-slate-200 dark:border-slate-700",
+      solid: "bg-slate-600 text-white border-transparent",
+      outline: "bg-transparent text-slate-700 border-slate-300 dark:text-slate-300 dark:border-slate-700",
+      icon: "text-slate-500 dark:text-slate-400",
+    },
+  },
+  2: {
+    tier: 2,
+    name: "Analyst",
+    shortName: "T2",
+    iconName: "BarChart3",
+    colorKey: "sky",
+    classes: {
+      badge: "bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-950/60 dark:text-sky-300 dark:border-sky-800",
+      solid: "bg-sky-600 text-white border-transparent",
+      outline: "bg-transparent text-sky-700 border-sky-300 dark:text-sky-300 dark:border-sky-700",
+      icon: "text-sky-600 dark:text-sky-400",
+    },
+  },
+  3: {
+    tier: 3,
+    name: "Associate",
+    shortName: "T3",
+    iconName: "TrendingUp",
+    colorKey: "teal",
+    classes: {
+      badge: "bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800",
+      solid: "bg-teal-600 text-white border-transparent",
+      outline: "bg-transparent text-teal-700 border-teal-300 dark:text-teal-300 dark:border-teal-700",
+      icon: "text-teal-600 dark:text-teal-400",
+    },
+  },
+  4: {
+    tier: 4,
+    name: "Senior Quant",
+    shortName: "T4",
+    iconName: "Brain",
+    colorKey: "emerald",
+    classes: {
+      badge: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800",
+      solid: "bg-emerald-600 text-white border-transparent",
+      outline: "bg-transparent text-emerald-700 border-emerald-300 dark:text-emerald-300 dark:border-emerald-700",
+      icon: "text-emerald-600 dark:text-emerald-400",
+    },
+  },
+  5: {
+    tier: 5,
+    name: "Vice President",
+    shortName: "T5",
+    iconName: "Award",
+    colorKey: "amber",
+    classes: {
+      badge: "bg-amber-50 text-amber-800 border-amber-300 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-700/80",
+      solid: "bg-amber-600 text-white border-transparent",
+      outline: "bg-transparent text-amber-700 border-amber-400 dark:text-amber-300 dark:border-amber-700",
+      icon: "text-amber-600 dark:text-amber-400",
+    },
+  },
+  6: {
+    tier: 6,
+    name: "Director",
+    shortName: "T6",
+    iconName: "Flame",
+    colorKey: "orange",
+    classes: {
+      badge: "bg-orange-50 text-orange-800 border-orange-300 dark:bg-orange-950/60 dark:text-orange-300 dark:border-orange-700/80",
+      solid: "bg-orange-600 text-white border-transparent",
+      outline: "bg-transparent text-orange-700 border-orange-400 dark:text-orange-300 dark:border-orange-700",
+      icon: "text-orange-600 dark:text-orange-400",
+    },
+  },
+  7: {
+    tier: 7,
+    name: "Managing Director",
+    shortName: "T7",
+    iconName: "Gem",
+    colorKey: "rose",
+    classes: {
+      badge: "bg-rose-50 text-rose-800 border-rose-300 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-700/80 ring-1 ring-rose-400/20",
+      solid: "bg-rose-600 text-white border-transparent shadow-sm",
+      outline: "bg-transparent text-rose-700 border-rose-400 dark:text-rose-300 dark:border-rose-700",
+      icon: "text-rose-600 dark:text-rose-400",
+    },
+  },
+  8: {
+    tier: 8,
+    name: "Partner",
+    shortName: "T8",
+    iconName: "Trophy",
+    colorKey: "indigo",
+    classes: {
+      badge: "bg-indigo-50 text-indigo-800 border-indigo-300 dark:bg-indigo-950/60 dark:text-indigo-300 dark:border-indigo-700/80 ring-1 ring-indigo-400/20",
+      solid: "bg-indigo-600 text-white border-transparent shadow-sm",
+      outline: "bg-transparent text-indigo-700 border-indigo-400 dark:text-indigo-300 dark:border-indigo-700",
+      icon: "text-indigo-600 dark:text-indigo-400",
+    },
+  },
+  9: {
+    tier: 9,
+    name: "Head Quant",
+    shortName: "T9",
+    iconName: "Crown",
+    colorKey: "purple",
+    classes: {
+      badge: "bg-purple-50 text-purple-900 border-purple-300/90 dark:bg-purple-950/70 dark:text-purple-200 dark:border-purple-600/80 shadow-sm ring-1 ring-purple-500/30",
+      solid: "bg-gradient-to-r from-purple-700 to-indigo-700 text-white border-transparent shadow-sm",
+      outline: "bg-transparent text-purple-700 border-purple-400 dark:text-purple-300 dark:border-purple-600",
+      icon: "text-amber-500 dark:text-amber-400",
+    },
+  },
+};
+
+export function getTierMetadata(tier: number): TierMetadata {
+  return TIER_METADATA[tier] ?? TIER_METADATA[1];
+}
+
 /** Tier required to view articles flagged with `premiumContent: true`. */
 export const MIN_PREMIUM_TIER = 4;
 

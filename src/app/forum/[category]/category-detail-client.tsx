@@ -8,25 +8,39 @@ import { NewThreadForm } from "@/components/forum/new-thread-form";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function CategoryDetailClient({ categorySlug }: { categorySlug: string }) {
+  const isArticleCategory = categorySlug === "articles";
   const { data, loading } = useQuery<{ forumCategories: ForumCategory[] }>(GET_FORUM_CATEGORIES);
   const category = data?.forumCategories.find((c) => c.slug === categorySlug);
 
   return (
-    <div className="space-y-4">
-      {loading && !data ? (
+    <div className="space-y-6">
+      {isArticleCategory ? (
+        <div>
+          <h1 className="text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            Article & Content Discussions
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Reader comments and discussions from research articles, option strategies, and study guides.
+          </p>
+        </div>
+      ) : loading && !data ? (
         <Skeleton className="h-8 w-48" />
       ) : (
         <div>
-          <h1 className="text-xl font-bold tracking-tight">{category?.name ?? categorySlug}</h1>
+          <h1 className="text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            {category?.name ?? categorySlug}
+          </h1>
           {category?.description && (
-            <p className="mt-0.5 text-sm text-muted-foreground">{category.description}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{category.description}</p>
           )}
         </div>
       )}
 
-      {category && <NewThreadForm categoryId={category.id} categorySlug={categorySlug} />}
+      {category && !isArticleCategory && (
+        <NewThreadForm categoryId={category.id} categorySlug={categorySlug} />
+      )}
 
-      <ThreadList categorySlug={categorySlug} />
+      <ThreadList categorySlug={categorySlug} filterType={isArticleCategory ? "articles" : undefined} />
     </div>
   );
 }

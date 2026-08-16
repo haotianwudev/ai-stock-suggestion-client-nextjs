@@ -7,6 +7,7 @@ import { VideoCard, PaperCard, PaperModal, WikiCard, WikiModal, SlotKicker } fro
 import { getArticleBySlug, resolveTopicMedia } from "@/lib/article-utils";
 import { getWikiEntryForArticle, type WikiEntry } from "@/data/wiki";
 import { FullScreenImageViewer } from "@/components/ui/full-screen-image-viewer";
+import { CommentSection } from "@/components/comments/comment-section";
 import { useUser } from "@/hooks/use-user";
 import { getPreferredTopicLayout } from "@/lib/topics/topic-layout-preference";
 
@@ -199,6 +200,7 @@ export function TopicDetailShell({
         <>
             {infographicBlock}
             {children}
+            <CommentSection contentSlug={config.id} title={config.title} />
         </>
     );
 

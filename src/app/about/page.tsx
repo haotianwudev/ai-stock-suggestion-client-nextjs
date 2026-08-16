@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp, Trophy } from "lucide-react";
 import {
   TIER_NAMES,
@@ -259,8 +260,10 @@ export default function AboutPage() {
                   <tbody>
                     {TIER_ROWS.map((row) => (
                       <tr key={row.tier} className="border-b border-amber-100 align-top">
-                        <td className="py-2 pr-4 font-mono text-amber-700">{row.tier}</td>
-                        <td className="py-2 pr-4 font-medium whitespace-nowrap">{row.name}</td>
+                        <td className="py-2 pr-4 font-mono text-amber-700 font-semibold">{row.tier}</td>
+                        <td className="py-2 pr-4 whitespace-nowrap">
+                          <TierBadge tier={row.tier} size="sm" />
+                        </td>
                         <td className="py-2 pr-4 text-slate-600">{row.how}</td>
                         <td className="py-2">
                           {row.unlocks === "Coming later" ? (

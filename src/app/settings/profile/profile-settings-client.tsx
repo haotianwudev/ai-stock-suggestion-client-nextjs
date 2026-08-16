@@ -21,6 +21,7 @@ import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
 import { TierUpDialog } from "@/components/shared/tier-up-dialog";
 import { TierStatusBanner } from "@/components/shared/tier-status-banner";
+import { TierBadge } from "@/components/shared/tier-badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -60,9 +61,9 @@ function PreferenceRow<T extends string>({
       <Label className="flex items-center gap-2">
         {label}
         {!hasAccess && (
-          <Badge variant="outline" className="font-normal">
+          <TierBadge tier={minTier} size="xs" variant="outline">
             {t("profileSettings.unlocksAt", { tier: getTierName(minTier) })}
-          </Badge>
+          </TierBadge>
         )}
       </Label>
       <p className="text-xs text-muted-foreground">{description}</p>
@@ -211,7 +212,7 @@ export function ProfileSettingsClient() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             {t("profileSettings.heading")}
-            <Badge variant="outline">{getTierName(tier)}</Badge>
+            <TierBadge tier={tier} size="md" />
           </CardTitle>
           <TierStatusBanner profile={profile} />
         </CardHeader>
