@@ -5,6 +5,7 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calculator, BookOpen } from "lucide-react";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -56,45 +57,45 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="monte-carlo"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Monte Carlo</span>
             <span className="hidden md:block">Monte Carlo Simulation</span>
           </TabsTrigger>
           <TabsTrigger
             value="statistical-analysis"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Statistics</span>
             <span className="hidden md:block">Statistical Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="derivatives-pricing"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Derivatives</span>
             <span className="hidden md:block">Derivatives Pricing</span>
           </TabsTrigger>
           <TabsTrigger
             value="ai-in-quant"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">AI</span>
             <span className="hidden md:block">AI in Quant</span>
           </TabsTrigger>
           <TabsTrigger
             value="risk-management"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Risk</span>
             <span className="hidden md:block">Risk Management</span>
           </TabsTrigger>
           <TabsTrigger
             value="books"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             Books
           </TabsTrigger>
@@ -151,38 +152,38 @@ function QuantTradingTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Quantitative Trading */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-5 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-5 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="systematic-strategies"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Systematic</span>
             <span className="hidden sm:block">Systematic</span>
           </TabsTrigger>
           <TabsTrigger 
             value="asset-allocation" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Portfolio</span>
             <span className="hidden sm:block">Portfolio</span>
           </TabsTrigger>
           <TabsTrigger 
             value="machine-learning" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">ML</span>
             <span className="hidden sm:block">Machine Learning</span>
           </TabsTrigger>
           <TabsTrigger 
             value="backtest" 
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Backtest</span>
             <span className="hidden sm:block">Backtesting</span>
           </TabsTrigger>
           <TabsTrigger
             value="trading-system"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">System</span>
             <span className="hidden sm:block">Trading System</span>
@@ -232,68 +233,67 @@ function QuantArticlesTab() {
     );
 
   return (
-    <Card>
-      <CardHeader className="pb-3 md:pb-6">
-        <CardTitle className="text-lg md:text-2xl flex items-center gap-2">
-          <BookOpen className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 md:p-8 shadow-xs space-y-6">
+      <div>
+        <h2 className="text-xl md:text-2xl font-serif font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100">
+          <BookOpen className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
           <span>Quantitative Finance Research Articles</span>
-        </CardTitle>
-        <CardDescription className="text-sm md:text-base">
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Comprehensive articles on quantitative finance covering mathematical models, algorithms, and systematic trading approaches.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4 md:space-y-6">
-        {/* Filter Component */}
-        <ArticleFilter
-          searchText={searchText}
-          onSearchChange={setSearchText}
-          selectedLabels={selectedLabels}
-          onLabelsChange={setSelectedLabels}
-          availableLabels={availableLabels}
-          bookmarkedOnly={bookmarkedOnly}
-          onBookmarkedOnlyChange={setBookmarkedOnly}
-        />
+        </p>
+      </div>
 
-        {/* Articles Grid */}
-        <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
-          {quantArticles.map((article) => (
-            <ArticleCard 
-              key={article.slug}
-              title={article.title}
-              description={article.description}
-              slug={article.slug}
-              date={article.date}
-              imageUrl={article.imageUrl}
-              googleDoc={article.googleDoc}
-              deepResearch={article.deepResearch}
-              youtubeUrl={article.youtubeUrl}
-              bilibiliUrl={article.bilibiliUrl}
-              bilibiliTitle={article.bilibiliTitle}
-              isVideo={article.isVideo}
-              options={article.options}
-              noSummary={article.noSummary}
-              podcastUrl={article.podcastUrl}
-              websiteUrl={article.websiteUrl}
-            />
-          ))}
+      {/* Filter Component */}
+      <ArticleFilter
+        searchText={searchText}
+        onSearchChange={setSearchText}
+        selectedLabels={selectedLabels}
+        onLabelsChange={setSelectedLabels}
+        availableLabels={availableLabels}
+        bookmarkedOnly={bookmarkedOnly}
+        onBookmarkedOnlyChange={setBookmarkedOnly}
+      />
+
+      {/* Articles Grid */}
+      <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
+        {quantArticles.map((article) => (
+          <ArticleCard 
+            key={article.slug}
+            title={article.title}
+            description={article.description}
+            slug={article.slug}
+            date={article.date}
+            imageUrl={article.imageUrl}
+            googleDoc={article.googleDoc}
+            deepResearch={article.deepResearch}
+            youtubeUrl={article.youtubeUrl}
+            bilibiliUrl={article.bilibiliUrl}
+            bilibiliTitle={article.bilibiliTitle}
+            isVideo={article.isVideo}
+            options={article.options}
+            noSummary={article.noSummary}
+            podcastUrl={article.podcastUrl}
+            websiteUrl={article.websiteUrl}
+          />
+        ))}
+      </div>
+
+      {/* No Results Message */}
+      {quantArticles.length === 0 && (
+        <div className="text-center py-8 md:py-12">
+          <p className="text-base text-slate-500">No articles found matching your filters.</p>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">Try adjusting your search or filters.</p>
         </div>
+      )}
 
-        {/* No Results Message */}
-        {quantArticles.length === 0 && (
-          <div className="text-center py-8 md:py-12">
-            <p className="text-base md:text-lg text-muted-foreground">No articles found matching your filters.</p>
-            <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
-          </div>
-        )}
-
-        {/* Results Count */}
-        {quantArticles.length > 0 && (
-          <p className="text-sm text-muted-foreground text-center">
-            Showing {quantArticles.length} article{quantArticles.length !== 1 ? 's' : ''}
-          </p>
-        )}
-      </CardContent>
-    </Card>
+      {/* Results Count */}
+      {quantArticles.length > 0 && (
+        <p className="text-xs sm:text-sm text-slate-500 text-center font-mono">
+          Showing {quantArticles.length} article{quantArticles.length !== 1 ? 's' : ''}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -323,15 +323,15 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       
       <main className="flex-1">
-        <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
-          <div className="text-center mb-4 md:mb-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+        <div className="container max-w-screen-2xl mx-auto py-6 px-4 md:py-10 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-3">
               <div 
-                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-blue-300 flex-shrink-0 cursor-pointer hover:shadow-lg transition-shadow duration-200 group"
+                className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-[#A8672E]/30 dark:border-[#D08F52]/30 flex-shrink-0 cursor-pointer hover:shadow-lg transition-all duration-200 group"
                 onClick={() => setIsImageViewerOpen(true)}
                 title="Click to view full screen"
               >
@@ -343,33 +343,33 @@ export default function QuantTabClient({ tab, subtopic }: QuantTabClientProps) {
                   className="object-cover group-hover:scale-110 transition-transform duration-200"
                 />
               </div>
-              <div className="text-center sm:text-left">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
+              <div className="text-center sm:text-left space-y-1">
+                <SlotKicker icon={Calculator} label="Systematic Research & Modeling" tone="accent" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
                   Quantitative Finance
                 </h1>
-                <p className="text-xs sm:text-sm md:text-base text-blue-600 font-medium">SOPHIE Daddy Quant Blog</p>
               </div>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+            <TabsList className="grid w-full grid-cols-3 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
               <TabsTrigger 
                 value="topics" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="quanttrading" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block sm:hidden">Quant Trading</span>
                 <span className="hidden sm:block">Quantitative Trading</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block sm:hidden">Articles</span>
                 <span className="hidden sm:block">Research Articles</span>

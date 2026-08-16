@@ -10,14 +10,16 @@ const LAST_UPDATED = "August 9, 2026";
 
 export default function PrivacyPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
-        <div className="container mx-auto max-w-3xl px-4 py-12">
-          <h1 className="text-3xl font-bold tracking-tight">Privacy Policy</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Last updated: {LAST_UPDATED}</p>
+        <div className="container mx-auto max-w-3xl px-4 py-12 space-y-2">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            Privacy Policy
+          </h1>
+          <p className="font-mono text-xs text-slate-500 dark:text-slate-400">Last updated: {LAST_UPDATED}</p>
 
-          <div className="mt-8 space-y-8 text-sm leading-relaxed text-foreground/90">
+          <div className="pt-6 space-y-8 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             <section className="space-y-2">
               <p>
                 SOPHIE Daddy Quant Blog (&quot;SOPHIE,&quot; &quot;we,&quot; &quot;us&quot;) is a personal,

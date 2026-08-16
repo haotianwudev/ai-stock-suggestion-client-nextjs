@@ -3,7 +3,7 @@
 import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Globe, ExternalLink, BookOpen, TrendingUp, Brain, BarChart2 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { Badge } from "@/components/ui/badge";
 import { ArticleCard } from "@/components/articles/article-card";
 import { articles } from "@/data/articles";
@@ -20,11 +20,11 @@ export interface NeighborhoodSite {
 }
 
 const categoryConfig: Record<NeighborhoodSite['category'], { label: string; color: string; icon: React.ReactNode }> = {
-  blog: { label: 'Blog', color: 'bg-blue-100 text-blue-800', icon: <BookOpen className="h-3 w-3" /> },
-  tool: { label: 'Tool', color: 'bg-green-100 text-green-800', icon: <TrendingUp className="h-3 w-3" /> },
-  research: { label: 'Research', color: 'bg-purple-100 text-purple-800', icon: <Brain className="h-3 w-3" /> },
-  community: { label: 'Community', color: 'bg-orange-100 text-orange-800', icon: <Globe className="h-3 w-3" /> },
-  data: { label: 'Data', color: 'bg-teal-100 text-teal-800', icon: <BarChart2 className="h-3 w-3" /> },
+  blog: { label: 'Blog', color: 'bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/20', icon: <BookOpen className="h-3 w-3" /> },
+  tool: { label: 'Tool', color: 'bg-green-500/10 text-green-700 dark:text-green-300 border border-green-500/20', icon: <TrendingUp className="h-3 w-3" /> },
+  research: { label: 'Research', color: 'bg-[#A8672E]/10 text-[#A8672E] dark:text-[#D08F52] border border-[#A8672E]/20', icon: <Brain className="h-3 w-3" /> },
+  community: { label: 'Community', color: 'bg-orange-500/10 text-orange-700 dark:text-orange-300 border border-orange-500/20', icon: <Globe className="h-3 w-3" /> },
+  data: { label: 'Data', color: 'bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20', icon: <BarChart2 className="h-3 w-3" /> },
 };
 
 const neighborhoodSites: NeighborhoodSite[] = [
@@ -75,54 +75,56 @@ function NeighborhoodEntry({ site }: { site: NeighborhoodSite }) {
     : [];
 
   return (
-    <Card className={`overflow-hidden ${site.featured ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 to-white' : ''}`}>
+    <div className={`rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-xs hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all duration-200 ${site.featured ? 'ring-1 ring-[#A8672E]/20 dark:ring-[#D08F52]/20' : ''}`}>
       {/* Clickable site header */}
       <a href={site.url} target="_blank" rel="noopener noreferrer" className="block group">
         {site.imageUrl && (
-          <div className="overflow-hidden border-b border-slate-100">
+          <div className="overflow-hidden border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/40">
             <img
               src={site.imageUrl}
               alt={`${site.name} preview`}
-              className="w-full h-auto transition-transform duration-200 group-hover:scale-[1.03]"
+              className="w-full h-auto max-h-48 object-cover transition-transform duration-200 group-hover:scale-[1.02]"
             />
           </div>
         )}
-        <CardHeader className="pb-2">
+        <div className="p-5 pb-3 space-y-2">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
-              <CardTitle className="text-base md:text-lg font-semibold text-slate-900 group-hover:text-blue-700 transition-colors truncate">
+              <h3 className="font-serif font-bold text-base md:text-lg text-slate-900 dark:text-slate-100 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors truncate">
                 {site.name}
-              </CardTitle>
+              </h3>
               {site.featured && (
-                <Badge className="bg-yellow-100 text-yellow-800 text-xs shrink-0">Featured</Badge>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#A8672E]/10 dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52] text-[10px] font-bold font-mono uppercase tracking-wider shrink-0">
+                  Featured
+                </span>
               )}
             </div>
-            <ExternalLink className="h-4 w-4 text-slate-400 group-hover:text-blue-500 transition-colors shrink-0 mt-0.5" />
+            <ExternalLink className="h-4 w-4 text-slate-400 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors shrink-0 mt-0.5" />
           </div>
-          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium w-fit ${cat.color}`}>
+          <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-semibold w-fit ${cat.color}`}>
             {cat.icon}
             {cat.label}
           </span>
-        </CardHeader>
-        <CardContent className="pt-0 space-y-3">
-          <CardDescription className="text-sm text-slate-600 leading-relaxed">
+        </div>
+        <div className="px-5 pb-5 pt-0 space-y-3">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             {site.description}
-          </CardDescription>
+          </p>
           <div className="flex flex-wrap gap-1.5">
             {site.tags.map(tag => (
-              <Badge key={tag} variant="secondary" className="text-xs bg-slate-100 text-slate-600">
-                {tag}
-              </Badge>
+              <span key={tag} className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-[11px] font-mono text-slate-600 dark:text-slate-400">
+                #{tag}
+              </span>
             ))}
           </div>
-          <p className="text-xs text-blue-500 truncate">{site.url}</p>
-        </CardContent>
+          <p className="text-xs font-mono text-[#A8672E] dark:text-[#D08F52] hover:underline truncate">{site.url}</p>
+        </div>
       </a>
 
       {/* Related articles inside the card */}
       {relatedArticles.length > 0 && (
-        <div className="border-t border-slate-100 px-4 pb-4 pt-3 space-y-3">
-          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Related Articles</h3>
+        <div className="border-t border-gray-100 dark:border-gray-800/80 px-5 pb-5 pt-4 space-y-3 bg-gray-50/40 dark:bg-gray-800/20">
+          <h4 className="text-xs font-bold text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider font-mono">Related Articles</h4>
           <div className="space-y-3">
             {relatedArticles.map(article => (
               <ArticleCard
@@ -147,7 +149,7 @@ function NeighborhoodEntry({ site }: { site: NeighborhoodSite }) {
           </div>
         </div>
       )}
-    </Card>
+    </div>
   );
 }
 
@@ -156,28 +158,28 @@ export default function NeighborhoodPage() {
   const rest = neighborhoodSites.filter(s => !s.featured);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
 
       <main className="flex-1">
-        <div className="container max-w-screen-2xl mx-auto py-4 px-4 md:py-8 md:px-6">
+        <div className="container max-w-screen-2xl mx-auto py-8 px-4 md:py-12 md:px-6">
           {/* Hero */}
-          <div className="text-center mb-8 md:mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Globe className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
-                Quant Neighborhood
-              </h1>
+          <div className="text-center mb-10 md:mb-14 space-y-2">
+            <div className="flex justify-center">
+              <SlotKicker icon={Globe} label="Curated Ecosystem" tone="accent" />
             </div>
-            <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
+              Quant Neighborhood
+            </h1>
+            <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
               Interesting websites, blogs, and tools from the quant and options community worth bookmarking.
             </p>
           </div>
 
           {/* Featured */}
           {featured.length > 0 && (
-            <div className="space-y-3 mb-8">
-              <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Featured</h2>
+            <div className="space-y-4 mb-10">
+              <h2 className="text-xs font-bold font-mono text-[#A8672E] dark:text-[#D08F52] uppercase tracking-wider">Featured Research & Tools</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
                 {featured.map(site => (
                   <NeighborhoodEntry key={site.url} site={site} />
@@ -188,8 +190,8 @@ export default function NeighborhoodPage() {
 
           {/* All Sites */}
           {rest.length > 0 && (
-            <div className="space-y-3">
-              <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">All Sites</h2>
+            <div className="space-y-4">
+              <h2 className="text-xs font-bold font-mono text-slate-500 uppercase tracking-wider">All Community Sites</h2>
               <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 items-start">
                 {rest.map(site => <NeighborhoodEntry key={site.url} site={site} />)}
               </div>

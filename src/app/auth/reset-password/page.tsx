@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function ResetPasswordPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
-        <div className="container mx-auto max-w-sm px-4 py-8">
+        <div className="container mx-auto max-w-sm px-4 py-12 md:py-16">
           <ResetPasswordClient />
         </div>
       </main>

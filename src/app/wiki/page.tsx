@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function WikiPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">

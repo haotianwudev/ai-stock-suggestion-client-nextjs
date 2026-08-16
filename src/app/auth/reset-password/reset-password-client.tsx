@@ -63,48 +63,55 @@ export function ResetPasswordClient() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Reset your password</CardTitle>
-        <CardDescription>Choose a new password for your account.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 sm:p-8 shadow-xs space-y-4">
+      <div>
+        <h1 className="font-serif font-bold text-xl text-slate-900 dark:text-slate-100">Reset your password</h1>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Choose a new password for your account.</p>
+      </div>
+
+      <div>
         {hasSession === null ? null : hasSession ? (
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3.5">
             <div className="space-y-1.5">
-              <Label htmlFor="password">New password</Label>
+              <Label htmlFor="password" className="text-xs font-semibold text-slate-700 dark:text-slate-300">New password</Label>
               <Input
                 id="password"
                 type="password"
                 autoComplete="new-password"
                 {...register("password")}
+                className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm"
               />
               {errors.password && (
-                <p className="text-sm text-destructive">{errors.password.message}</p>
+                <p className="text-xs text-red-600 dark:text-red-400">{errors.password.message}</p>
               )}
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="confirmPassword">Confirm password</Label>
+              <Label htmlFor="confirmPassword" className="text-xs font-semibold text-slate-700 dark:text-slate-300">Confirm password</Label>
               <Input
                 id="confirmPassword"
                 type="password"
                 autoComplete="new-password"
                 {...register("confirmPassword")}
+                className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm"
               />
               {errors.confirmPassword && (
-                <p className="text-sm text-destructive">{errors.confirmPassword.message}</p>
+                <p className="text-xs text-red-600 dark:text-red-400">{errors.confirmPassword.message}</p>
               )}
             </div>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <button
+              type="submit"
+              className="w-full py-2 px-4 rounded-xl bg-[#A8672E] hover:bg-[#8e5625] dark:bg-[#D08F52] dark:hover:bg-[#b87c44] text-white dark:text-[#14171B] font-semibold text-xs sm:text-sm shadow-xs disabled:opacity-50 transition-colors"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "Updating..." : "Update password"}
-            </Button>
+            </button>
           </form>
         ) : (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
             This reset link is invalid or has expired. Request a new one from the sign-in dialog.
           </p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

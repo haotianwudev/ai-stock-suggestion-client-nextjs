@@ -4,7 +4,8 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircleIcon } from "lucide-react";
+import { AlertCircleIcon, TrendingUp } from "lucide-react";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -341,24 +342,24 @@ function StockAnalysisTab({ subtopic }: { subtopic?: string }) {
   return (
     <div>
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-3 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="stock-analysis"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Stocks</span>
             <span className="hidden sm:block">Stock Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="13f-analysis"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">13F</span>
             <span className="hidden sm:block">13F Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="etf-mutual-fund"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">ETF</span>
             <span className="hidden sm:block">ETF & Mutual Fund</span>
@@ -404,31 +405,31 @@ function InvestmentTab({ subtopic }: { subtopic?: string }) {
   return (
     <div>
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger
             value="macro-analysis"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Macro</span>
             <span className="hidden sm:block">Macro Analysis</span>
           </TabsTrigger>
           <TabsTrigger
             value="wealth-planning"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Wealth</span>
             <span className="hidden sm:block">Wealth & Planning</span>
           </TabsTrigger>
           <TabsTrigger
             value="finance-101"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">101</span>
             <span className="hidden sm:block">Finance 101</span>
           </TabsTrigger>
           <TabsTrigger
             value="books"
-            className="text-sm md:text-sm py-4 md:py-1.5 px-2 md:px-3 min-h-[52px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block sm:hidden">Books</span>
             <span className="hidden sm:block">Books</span>
@@ -486,15 +487,15 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
 
       <main className="flex-1">
-        <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
-          <div className="text-center mb-4 md:mb-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+        <div className="container max-w-screen-2xl mx-auto py-6 px-4 md:py-10 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-3">
               <div
-                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-blue-300 flex-shrink-0 cursor-pointer hover:shadow-lg transition-shadow duration-200 group"
+                className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-[#A8672E]/30 dark:border-[#D08F52]/30 flex-shrink-0 cursor-pointer hover:shadow-lg transition-all duration-200 group"
                 onClick={() => setIsImageViewerOpen(true)}
                 title="Click to view full screen"
               >
@@ -506,33 +507,33 @@ export default function StockTabClient({ tab, subtopic }: StockTabClientProps) {
                   className="object-cover group-hover:scale-110 transition-transform duration-200"
                 />
               </div>
-              <div className="text-center sm:text-left">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              <div className="text-center sm:text-left space-y-1">
+                <SlotKicker icon={TrendingUp} label="Equities & Macro Frameworks" tone="accent" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
                   Stock & Investment
                 </h1>
-                <p className="text-xs sm:text-sm md:text-base text-blue-600 font-medium">SOPHIE Daddy Quant Blog</p>
               </div>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+            <TabsList className="grid w-full grid-cols-3 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
               <TabsTrigger
                 value="trending"
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block sm:hidden">Trending</span>
                 <span className="hidden sm:block">Trending Stocks</span>
               </TabsTrigger>
               <TabsTrigger
                 value="stock-analysis"
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Stock Analysis
               </TabsTrigger>
               <TabsTrigger
                 value="investment"
-                className="text-sm sm:text-xs md:text-sm py-4 md:py-1.5 px-2 sm:px-2 md:px-3 min-h-[52px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Investment
               </TabsTrigger>

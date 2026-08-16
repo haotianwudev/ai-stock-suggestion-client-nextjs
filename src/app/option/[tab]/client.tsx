@@ -4,7 +4,8 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Layers } from "lucide-react";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -76,50 +77,50 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
     <div>
       {/* Sub-navigation for Topics */}
       <Tabs value={activeSubtopic} onValueChange={handleSubtopicChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto md:h-10 gap-1 md:gap-0 p-1 bg-slate-100 border-t touch-manipulation">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
           <TabsTrigger 
             value="option101" 
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">101</span>
             <span className="hidden md:block">Option 101</span>
           </TabsTrigger>
           <TabsTrigger 
             value="greeks" 
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Greeks</span>
             <span className="hidden md:block">Option Greeks</span>
           </TabsTrigger>
           <TabsTrigger 
             value="roll" 
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Roll</span>
             <span className="hidden md:block">Art of Roll</span>
           </TabsTrigger>
           <TabsTrigger 
             value="volatility" 
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             <span className="block md:hidden">Vol</span>
             <span className="hidden md:block">Volatility</span>
           </TabsTrigger>
           <TabsTrigger 
             value="vrp" 
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             VRP
           </TabsTrigger>
           <TabsTrigger
             value="gex"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             GEX
           </TabsTrigger>
           <TabsTrigger
             value="books"
-            className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto data-[state=active]:bg-slate-200 leading-tight font-medium touch-manipulation"
+            className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
           >
             Books
           </TabsTrigger>
@@ -205,68 +206,67 @@ function OptionsArticlesTab() {
     .filter(article => article.options === true && (canViewPremium || !article.premiumContent));
 
   return (
-    <Card>
-      <CardHeader className="pb-3 md:pb-6">
-        <CardTitle className="text-lg md:text-2xl flex items-center gap-2">
-          <BookOpen className="h-4 w-4 md:h-6 md:w-6 flex-shrink-0" />
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 md:p-8 shadow-xs space-y-6">
+      <div>
+        <h2 className="text-xl md:text-2xl font-serif font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100">
+          <BookOpen className="h-5 w-5 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
           <span>Options Research Articles</span>
-        </CardTitle>
-        <CardDescription className="text-sm md:text-base">
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Comprehensive articles on options trading covering key concepts, strategies, and common pitfalls to avoid.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4 md:space-y-6">
-        {/* Filter Component */}
-        <ArticleFilter
-          searchText={searchText}
-          onSearchChange={setSearchText}
-          selectedLabels={selectedLabels}
-          onLabelsChange={setSelectedLabels}
-          availableLabels={availableLabels}
-          bookmarkedOnly={bookmarkedOnly}
-          onBookmarkedOnlyChange={setBookmarkedOnly}
-        />
+        </p>
+      </div>
 
-        {/* Articles Grid */}
-        <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
-          {optionsArticles.map((article) => (
-            <ArticleCard 
-              key={article.slug}
-              title={article.title}
-              description={article.description}
-              slug={article.slug}
-              date={article.date}
-              imageUrl={article.imageUrl}
-              googleDoc={article.googleDoc}
-              deepResearch={article.deepResearch}
-              youtubeUrl={article.youtubeUrl}
-              bilibiliUrl={article.bilibiliUrl}
-              bilibiliTitle={article.bilibiliTitle}
-              isVideo={article.isVideo}
-              options={article.options}
-              noSummary={article.noSummary}
-              podcastUrl={article.podcastUrl}
-              websiteUrl={article.websiteUrl}
-            />
-          ))}
+      {/* Filter Component */}
+      <ArticleFilter
+        searchText={searchText}
+        onSearchChange={setSearchText}
+        selectedLabels={selectedLabels}
+        onLabelsChange={setSelectedLabels}
+        availableLabels={availableLabels}
+        bookmarkedOnly={bookmarkedOnly}
+        onBookmarkedOnlyChange={setBookmarkedOnly}
+      />
+
+      {/* Articles Grid */}
+      <div className="grid gap-3 md:gap-6 grid-cols-1 lg:grid-cols-2">
+        {optionsArticles.map((article) => (
+          <ArticleCard 
+            key={article.slug}
+            title={article.title}
+            description={article.description}
+            slug={article.slug}
+            date={article.date}
+            imageUrl={article.imageUrl}
+            googleDoc={article.googleDoc}
+            deepResearch={article.deepResearch}
+            youtubeUrl={article.youtubeUrl}
+            bilibiliUrl={article.bilibiliUrl}
+            bilibiliTitle={article.bilibiliTitle}
+            isVideo={article.isVideo}
+            options={article.options}
+            noSummary={article.noSummary}
+            podcastUrl={article.podcastUrl}
+            websiteUrl={article.websiteUrl}
+          />
+        ))}
+      </div>
+
+      {/* No Results Message */}
+      {optionsArticles.length === 0 && (
+        <div className="text-center py-8 md:py-12">
+          <p className="text-base text-slate-500">No articles found matching your filters.</p>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">Try adjusting your search or filters.</p>
         </div>
+      )}
 
-        {/* No Results Message */}
-        {optionsArticles.length === 0 && (
-          <div className="text-center py-8 md:py-12">
-            <p className="text-base md:text-lg text-muted-foreground">No articles found matching your filters.</p>
-            <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters.</p>
-          </div>
-        )}
-
-        {/* Results Count */}
-        {optionsArticles.length > 0 && (
-          <p className="text-sm text-muted-foreground text-center">
-            Showing {optionsArticles.length} article{optionsArticles.length !== 1 ? 's' : ''}
-          </p>
-        )}
-      </CardContent>
-    </Card>
+      {/* Results Count */}
+      {optionsArticles.length > 0 && (
+        <p className="text-xs sm:text-sm text-slate-500 text-center font-mono">
+          Showing {optionsArticles.length} article{optionsArticles.length !== 1 ? 's' : ''}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -304,15 +304,15 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       
       <main className="flex-1">
-        <div className="container max-w-screen-2xl mx-auto py-2 px-3 md:py-8 md:px-6">
-          <div className="text-center mb-4 md:mb-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+        <div className="container max-w-screen-2xl mx-auto py-6 px-4 md:py-10 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-3">
               <div 
-                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-purple-300 flex-shrink-0 cursor-pointer hover:shadow-lg transition-shadow duration-200 group"
+                className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-md border-2 border-[#A8672E]/30 dark:border-[#D08F52]/30 flex-shrink-0 cursor-pointer hover:shadow-lg transition-all duration-200 group"
                 onClick={() => setIsImageViewerOpen(true)}
                 title="Click to view full screen"
               >
@@ -324,40 +324,40 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
                   className="object-cover group-hover:scale-110 transition-transform duration-200"
                 />
               </div>
-              <div className="text-center sm:text-left">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+              <div className="text-center sm:text-left space-y-1">
+                <SlotKicker icon={Layers} label="Options Derivatives & Volatility" tone="accent" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
                   Options Education
                 </h1>
-                <p className="text-xs sm:text-sm md:text-base text-purple-600 font-medium">SOPHIE Daddy Quant Blog</p>
               </div>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 h-auto md:h-10 gap-1 md:gap-0 p-1 touch-manipulation">
+            <TabsList className="grid w-full grid-cols-4 h-auto p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
               <TabsTrigger 
                 value="viewer" 
-                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block md:hidden">Viewer</span>
                 <span className="hidden md:block">Options Viewer</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="topics" 
-                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Topics
               </TabsTrigger>
               <TabsTrigger 
                 value="articles" 
-                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 <span className="block md:hidden">Articles</span>
                 <span className="hidden md:block">Research Articles</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="strategies" 
-                className="text-xs md:text-sm py-3 md:py-1.5 px-1 md:px-3 min-h-[48px] md:min-h-auto leading-tight font-medium touch-manipulation"
+                className="text-xs md:text-sm py-2.5 px-1 md:px-3 rounded-xl font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
               >
                 Strategies
               </TabsTrigger>

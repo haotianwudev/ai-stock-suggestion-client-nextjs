@@ -67,7 +67,7 @@ export default async function WikiEntryPage({ params }: { params: Promise<Params
     const categoryTitle = CATEGORY_NAMES[category] ?? category.replace(/-/g, " ");
 
     return (
-      <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen flex flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
         <Header />
         <main className="flex-1">
           <WikiCategory
@@ -95,7 +95,7 @@ export default async function WikiEntryPage({ params }: { params: Promise<Params
   const allCategories = getWikiCategories();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
         <WikiDetail
