@@ -93,6 +93,12 @@ function StatChip({
   );
 }
 
+const SHORT_TITLES: Record<string, string> = {
+  "investment-clock-framework-quantitative-macro-regime-detection": "Macro Regime Detection Framework",
+  "quantitative-guide-calculate-investment-clock": "How to Calculate the Clock",
+  "navigating-bull-to-bear-regime-shift-quantitative-signals": "Bull-to-Bear Regime Shift Signals",
+};
+
 function StudyGuideCard({
   articles,
   selectedSlug,
@@ -108,6 +114,7 @@ function StudyGuideCard({
       <div className="flex flex-col gap-2">
         {articles.map((article) => {
           const active = article.slug === selectedSlug;
+          const displayTitle = SHORT_TITLES[article.slug] ?? article.title;
           return (
             <div
               key={article.slug}
@@ -119,18 +126,19 @@ function StudyGuideCard({
             >
               <button
                 onClick={() => onSelect(article.slug!)}
-                className={`flex-1 min-w-0 text-left text-sm font-medium px-3 py-2.5 truncate transition-colors ${
+                className={`flex-1 min-w-0 text-left text-xs sm:text-sm font-medium px-3 py-2 truncate transition-colors ${
                   active
                     ? "text-[#A8672E] dark:text-[#D08F52] font-semibold"
                     : "text-gray-700 dark:text-gray-300"
                 }`}
+                title={article.title}
               >
-                {article.title}
+                {displayTitle}
               </button>
               <Link
                 href={`/articles/${article.slug}`}
                 className="shrink-0 pr-3 text-gray-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
-                title="Open article"
+                title={`Open article: ${article.title}`}
               >
                 <ExternalLink className="h-3.5 w-3.5" />
               </Link>
