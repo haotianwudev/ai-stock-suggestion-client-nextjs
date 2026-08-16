@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function ForumPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
-        <div className="container mx-auto max-w-5xl px-4 py-8">
-          <Suspense fallback={<div className="animate-pulse h-96 rounded-2xl bg-muted/40" />}>
+        <div className="container mx-auto max-w-5xl px-4 py-8 md:py-12">
+          <Suspense fallback={<div className="animate-pulse h-96 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900" />}>
             <ForumClient />
           </Suspense>
         </div>

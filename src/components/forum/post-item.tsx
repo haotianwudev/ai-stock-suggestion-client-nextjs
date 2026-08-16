@@ -56,54 +56,64 @@ export function PostItem({ post, indented = false }: { post: ForumPost; indented
 
   return (
     <div className={`flex gap-3 ${indented ? "ml-10 mt-3" : ""}`}>
-      <Avatar size="sm" className="mt-0.5 shrink-0">
+      <Avatar size="sm" className="mt-0.5 shrink-0 border border-gray-200 dark:border-gray-800">
         <AvatarImage src={post.authorAvatarUrl ?? undefined} alt={authorName} />
-        <AvatarFallback>{initials}</AvatarFallback>
+        <AvatarFallback className="font-semibold text-xs text-slate-700 dark:text-slate-300">{initials}</AvatarFallback>
       </Avatar>
-      <div className="min-w-0 flex-1 rounded-lg border bg-card px-3 py-2">
+      <div className="min-w-0 flex-1 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-3 shadow-xs">
         <div className="flex items-baseline gap-2">
-          <span className="text-sm font-medium">{authorName}</span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100">{authorName}</span>
+          <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
             {new Date(post.createdAt).toLocaleString()}
             {post.editedAt && " (edited)"}
           </span>
         </div>
 
         {isEditing ? (
-          <div className="mt-1 space-y-2">
-            <Textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={3} />
+          <div className="mt-2 space-y-2">
+            <Textarea
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              rows={3}
+              className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-1 focus:ring-[#A8672E]/20"
+            />
             <div className="flex gap-2">
-              <Button size="sm" onClick={handleSaveEdit} disabled={editing}>
+              <button
+                type="button"
+                onClick={handleSaveEdit}
+                disabled={editing}
+                className="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] text-xs font-semibold shadow-xs disabled:opacity-50"
+              >
                 Save
-              </Button>
-              <Button
-                size="sm"
-                variant="ghost"
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-gray-200 dark:border-gray-800 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                 onClick={() => {
                   setIsEditing(false);
                   setDraft(post.body);
                 }}
               >
                 Cancel
-              </Button>
+              </button>
             </div>
           </div>
         ) : (
-          <p className="mt-1 whitespace-pre-wrap text-sm">{post.body}</p>
+          <p className="mt-1.5 whitespace-pre-wrap text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{post.body}</p>
         )}
 
         {!isEditing && (isOwner || canDelete) && (
-          <div className="mt-1 flex gap-3">
+          <div className="mt-2 flex gap-3 pt-1 border-t border-gray-100 dark:border-gray-800/60">
             {isOwner && (
               <button
-                className="text-xs text-muted-foreground hover:text-foreground"
+                className="text-xs font-medium text-slate-500 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
                 onClick={() => setIsEditing(true)}
               >
                 Edit
               </button>
             )}
             <button
-              className="text-xs text-muted-foreground hover:text-destructive"
+              className="text-xs font-medium text-slate-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
               onClick={handleDelete}
               disabled={deleting}
             >

@@ -86,57 +86,57 @@ export function QuantTrendingWidget() {
       className="block group cursor-pointer"
       onClick={() => router.push("/forum?tab=quant-trending")}
     >
-      <div className="rounded-xl border-2 border-purple-500/20 bg-purple-500/5 px-4 py-3 transition-all hover:shadow-lg hover:scale-[1.005]">
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-3.5 shadow-xs transition-all duration-200 hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:-translate-y-0.5">
         {/* Header row */}
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1.5">
             <Flame className="h-3.5 w-3.5 text-orange-500" />
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#A8672E] dark:text-[#D08F52] font-mono">
               Quant Trending
             </span>
-            <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${src.badge}`}>
+            <span className={`rounded-md px-2 py-0.5 text-[10px] font-semibold ${src.badge}`}>
               {src.label}
             </span>
           </div>
           <Link
             href="/forum?tab=quant-trending"
             onClick={e => e.stopPropagation()}
-            className="shrink-0 text-[11px] font-medium flex items-center gap-0.5 text-purple-500 hover:gap-1.5 transition-all"
+            className="shrink-0 text-xs font-semibold flex items-center gap-1 text-[#A8672E] dark:text-[#D08F52] hover:underline transition-all"
           >
             {total > 0 ? `${total} items` : "See all"} <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
 
-        {/* Item title + description — clicking goes to /quant-trending */}
-        <p className="text-sm font-medium leading-snug line-clamp-2">
+        {/* Item title + description */}
+        <p className="font-serif font-bold text-sm text-slate-900 dark:text-slate-100 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors leading-snug line-clamp-2">
           {item.title}
         </p>
         {item.description && (
-          <p className="text-xs text-muted-foreground mt-1 line-clamp-1">{item.description}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-1 leading-relaxed">{item.description}</p>
         )}
 
         {/* Footer */}
-        <div className="flex items-center gap-3 mt-2 pt-2 border-t border-border/40">
+        <div className="flex items-center gap-3 mt-2.5 pt-2 border-t border-gray-200/80 dark:border-gray-800/80">
           {/* Heat bar */}
           <div className="flex items-center gap-1.5">
-            <div className="h-1.5 w-16 rounded-full bg-muted overflow-hidden">
+            <div className="h-1.5 w-16 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
               <div className={`h-full rounded-full ${heatColor}`} style={{ width: `${heat}%` }} />
             </div>
-            <span className="text-[10px] text-muted-foreground">{heat}</span>
+            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">{heat}</span>
           </div>
           {item.author && (
-            <span className="text-[10px] text-muted-foreground truncate max-w-[120px]">{item.author}</span>
+            <span className="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[120px]">{item.author}</span>
           )}
-          <span className="text-[10px] text-muted-foreground">
+          <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">
             {timeAgo(item.publishedAt || item.fetchedAt)}
           </span>
-          {/* External link — opens source directly, stops navigation to /quant-trending */}
+          {/* External link */}
           <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            className="ml-auto flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+            className="ml-auto flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
           >
             Open source <ExternalLink className="h-3 w-3" />
           </a>

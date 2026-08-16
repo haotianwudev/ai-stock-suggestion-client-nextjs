@@ -67,9 +67,13 @@ export function NewThreadForm({
 
   if (!open) {
     return (
-      <Button size="sm" onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-[#A8672E] hover:bg-[#8e5625] dark:bg-[#D08F52] dark:hover:bg-[#b87c44] text-white dark:text-[#14171B] font-semibold text-xs sm:text-sm shadow-xs transition-colors"
+      >
         New thread
-      </Button>
+      </button>
     );
   }
 
@@ -90,23 +94,38 @@ export function NewThreadForm({
   });
 
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <form onSubmit={submit} className="space-y-2">
-          <Input placeholder="Thread title" {...register("title")} />
-          {errors.title && <p className="text-xs text-destructive">{errors.title.message}</p>}
-          <Textarea placeholder="What's on your mind?" rows={4} {...register("body")} />
-          {errors.body && <p className="text-xs text-destructive">{errors.body.message}</p>}
-          <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" size="sm" onClick={() => setOpen(false)}>
-              Cancel
-            </Button>
-            <Button type="submit" size="sm" disabled={isSubmitting}>
-              {isSubmitting ? "Posting..." : "Post thread"}
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-xs">
+      <form onSubmit={submit} className="space-y-3">
+        <Input
+          placeholder="Thread title"
+          {...register("title")}
+          className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm"
+        />
+        {errors.title && <p className="text-xs text-red-600 dark:text-red-400">{errors.title.message}</p>}
+        <Textarea
+          placeholder="What's on your mind?"
+          rows={4}
+          {...register("body")}
+          className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm"
+        />
+        {errors.body && <p className="text-xs text-red-600 dark:text-red-400">{errors.body.message}</p>}
+        <div className="flex justify-end gap-2">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-gray-200 dark:border-gray-800 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+            onClick={() => setOpen(false)}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-xl bg-[#A8672E] hover:bg-[#8e5625] dark:bg-[#D08F52] dark:hover:bg-[#b87c44] text-white dark:text-[#14171B] font-semibold text-xs sm:text-sm shadow-xs disabled:opacity-50 transition-colors"
+          >
+            {isSubmitting ? "Posting..." : "Post thread"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

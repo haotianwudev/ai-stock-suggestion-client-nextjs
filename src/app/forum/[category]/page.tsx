@@ -13,13 +13,13 @@ export default async function ForumCategoryPage({ params }: { params: Params }) 
   const { category } = await params;
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
       <main className="flex-1">
-        <div className="container mx-auto max-w-4xl px-4 py-8 space-y-6">
+        <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12 space-y-6">
           <Link
             href="/forum"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
           >
             <ChevronLeft className="size-4" />
             All categories

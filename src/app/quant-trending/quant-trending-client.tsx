@@ -6,6 +6,7 @@ import { Flame, Search, ArrowUpDown } from "lucide-react";
 import { GET_QUANT_TRENDING } from "@/lib/graphql/queries";
 import { QuantTrendingResult, QuantTrendingItem } from "@/lib/graphql/types";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -99,48 +100,46 @@ function HeatBar({ score }: { score: number }) {
 
 function ItemCard({ item }: { item: QuantTrendingItem }) {
   return (
-    <Card className="hover:shadow-md transition-shadow">
-      <CardContent className="p-4 space-y-2">
-        {/* Title */}
-        <a
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-semibold leading-snug hover:underline line-clamp-2 block"
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 space-y-2 shadow-xs transition-all duration-200 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:shadow-md">
+      {/* Title */}
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-serif font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors leading-snug line-clamp-2 block"
+      >
+        {item.title}
+      </a>
+
+      {/* Description */}
+      {item.description && (
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">{item.description}</p>
+      )}
+
+      {/* Meta row */}
+      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 pt-1 border-t border-gray-200/80 dark:border-gray-800/80">
+        <Badge
+          variant="outline"
+          className={`text-[10px] px-2 py-0.5 rounded-md font-semibold ${sourceBadgeClass(item.source)}`}
         >
-          {item.title}
-        </a>
+          {sourceLabel(item.source)}
+        </Badge>
+        <HeatBar score={item.heatScore} />
+        {item.author && <span className="truncate max-w-[140px]">{item.author}</span>}
+        <span className="ml-auto font-mono text-[11px]">{timeAgo(item.publishedAt || item.fetchedAt)}</span>
+      </div>
 
-        {/* Description */}
-        {item.description && (
-          <p className="text-xs text-muted-foreground line-clamp-2">{item.description}</p>
-        )}
-
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground pt-1 border-t border-border/40">
-          <Badge
-            variant="outline"
-            className={`text-[10px] px-2 py-0 font-semibold ${sourceBadgeClass(item.source)}`}
-          >
-            {sourceLabel(item.source)}
-          </Badge>
-          <HeatBar score={item.heatScore} />
-          {item.author && <span className="truncate max-w-[140px]">{item.author}</span>}
-          <span className="ml-auto">{timeAgo(item.publishedAt || item.fetchedAt)}</span>
+      {/* Tags */}
+      {item.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1 pt-0.5">
+          {item.tags.slice(0, 5).map(tag => (
+            <span key={tag} className="inline-flex items-center rounded-md border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 px-2 py-0.5 text-[10px] font-mono text-slate-600 dark:text-slate-400">
+              #{tag}
+            </span>
+          ))}
         </div>
-
-        {/* Tags */}
-        {item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
-            {item.tags.slice(0, 5).map(tag => (
-              <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0 font-normal">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </CardContent>
-    </Card>
+      )}
+    </div>
   );
 }
 
@@ -225,47 +224,48 @@ export function QuantTrendingClient() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <Flame className="h-5 w-5 text-orange-500" />
-            <h1 className="text-2xl font-bold tracking-tight">Quant Trending</h1>
-          </div>
-          <p className="text-sm text-muted-foreground">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div className="space-y-1.5">
+          <SlotKicker icon={Flame} label="Real-Time Quant Pulse" tone="accent" />
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            Quant Trending
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
             Trending quant finance content from ArXiv, GitHub, Reddit, Hacker News, and Google News.
             {lastUpdated && <> Updated {timeAgo(lastUpdated)}.</>}
           </p>
         </div>
         {/* Count badge */}
         {allItems.length > 0 && (
-          <Badge variant="outline" className="self-start sm:self-auto text-xs shrink-0">
+          <span className="self-start sm:self-auto inline-flex items-center px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-xs font-mono font-semibold text-[#A8672E] dark:text-[#D08F52] shadow-xs shrink-0">
             {allItems.length} items
-          </Badge>
+          </span>
         )}
       </div>
 
       {/* Search & Sort */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-          <Input
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500 pointer-events-none" />
+          <input
+            type="text"
             placeholder="Search by title, author, or tag..."
             value={searchText}
             onChange={e => setSearchText(e.target.value)}
-            className="pl-9"
+            className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm shadow-xs transition-colors"
           />
         </div>
-        <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 bg-muted/60 p-1 rounded-lg border text-xs">
-          <span className="text-muted-foreground px-1.5 flex items-center gap-1 font-medium">
+        <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 bg-white dark:bg-gray-900 p-1 rounded-xl border border-gray-200 dark:border-gray-800 shadow-xs text-xs">
+          <span className="text-slate-500 dark:text-slate-400 px-2 flex items-center gap-1 font-medium text-[11px]">
             <ArrowUpDown className="h-3 w-3" /> Sort:
           </span>
           <button
             type="button"
             onClick={() => setSortBy("date")}
-            className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+            className={`px-3 py-1 rounded-lg font-medium transition-colors ${
               sortBy === "date"
-                ? "bg-background text-foreground shadow-sm font-semibold"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold"
+                : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52]"
             }`}
           >
             Newest Date
@@ -273,10 +273,10 @@ export function QuantTrendingClient() {
           <button
             type="button"
             onClick={() => setSortBy("heat")}
-            className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+            className={`px-3 py-1 rounded-lg font-medium transition-colors ${
               sortBy === "heat"
-                ? "bg-background text-foreground shadow-sm font-semibold"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold"
+                : "text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52]"
             }`}
           >
             Heat Score
@@ -288,16 +288,20 @@ export function QuantTrendingClient() {
       {loading && !data ? (
         <LoadingSkeleton />
       ) : error ? (
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
+        <div className="rounded-2xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/20 p-4 text-xs sm:text-sm text-red-700 dark:text-red-300">
           Failed to load trending data. Please try again later.
         </div>
       ) : (
         <Tabs defaultValue="all">
-          <TabsList className="flex-wrap h-auto gap-1 mb-4">
+          <TabsList className="flex-wrap h-auto gap-1 mb-4 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
             {SOURCES.map(s => (
-              <TabsTrigger key={s.key} value={s.key} className="text-xs sm:text-sm">
+              <TabsTrigger
+                key={s.key}
+                value={s.key}
+                className="text-xs sm:text-sm py-1.5 px-3 rounded-xl text-slate-700 dark:text-slate-300 data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] font-medium transition-all"
+              >
                 {s.label}
-                <span className="ml-1.5 text-[10px] text-muted-foreground">
+                <span className="ml-1.5 text-[10px] opacity-75 font-mono">
                   {bySource[s.key]?.length ?? 0}
                 </span>
               </TabsTrigger>

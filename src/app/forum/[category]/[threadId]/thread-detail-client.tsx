@@ -42,38 +42,38 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
     <div className="space-y-6">
       <Link
         href={thread?.contentSlug ? "/forum/articles" : `/forum/${categorySlug}`}
-        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
       >
         <ChevronLeft className="size-4" />
         Back to {thread?.contentSlug ? "Article Discussions" : "Discussions"}
       </Link>
 
       {loading && !data ? (
-        <Skeleton className="h-8 w-2/3" />
+        <Skeleton className="h-8 w-2/3 rounded-xl" />
       ) : thread ? (
         <div className="space-y-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-slate-900 dark:text-slate-100">
               {thread.title}
             </h1>
-            {thread.locked && <Badge variant="outline">Locked</Badge>}
+            {thread.locked && <Badge variant="outline" className="rounded-lg">Locked</Badge>}
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             Started by {thread.authorDisplayName ?? "Anonymous"} on{" "}
             {new Date(thread.createdAt).toLocaleDateString()}
           </p>
 
           {contentUrl && (
-            <div className="flex items-center justify-between gap-3 rounded-xl border border-primary/25 bg-primary/5 px-4 py-3 text-sm">
-              <div className="flex items-center gap-2 text-primary font-medium min-w-0">
+            <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#A8672E]/30 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 px-4 py-3 text-sm shadow-xs">
+              <div className="flex items-center gap-2 text-[#A8672E] dark:text-[#D08F52] font-medium min-w-0">
                 <BookOpen className="size-4 shrink-0" />
-                <span className="truncate">
-                  Discussion on {contentLabel}: <strong>{thread.title}</strong>
+                <span className="truncate text-xs sm:text-sm">
+                  Discussion on {contentLabel}: <strong className="text-slate-900 dark:text-slate-100 font-serif">{thread.title}</strong>
                 </span>
               </div>
               <Link
                 href={contentUrl}
-                className="shrink-0 inline-flex items-center gap-1 font-semibold text-primary underline hover:opacity-80 text-xs"
+                className="shrink-0 inline-flex items-center gap-1 font-semibold text-[#A8672E] dark:text-[#D08F52] hover:underline text-xs"
               >
                 <span>Read {contentLabel}</span>
                 <ExternalLink className="size-3" />
@@ -82,7 +82,7 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
           )}
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground">Thread not found.</p>
+        <p className="text-sm text-slate-500">Thread not found.</p>
       )}
 
       {thread && <PostList threadId={thread.id} />}

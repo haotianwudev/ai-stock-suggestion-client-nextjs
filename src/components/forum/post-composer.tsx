@@ -47,7 +47,7 @@ export function PostComposer({
 
   if (!user) {
     return (
-      <div className="flex items-center justify-between rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
+      <div className="flex items-center justify-between rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 px-4 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         <span>Sign in to join the discussion.</span>
         <LoginButton />
       </div>
@@ -56,7 +56,7 @@ export function PostComposer({
 
   if (!canCommentInCategory(profile?.tier ?? 1, categorySlug)) {
     return (
-      <p className="rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
+      <p className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 px-4 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         Commenting is reserved for premium members right now — this tier isn&apos;t open yet, stay tuned.
       </p>
     );
@@ -64,7 +64,7 @@ export function PostComposer({
 
   if (disabled) {
     return (
-      <p className="rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
+      <p className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 px-4 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         {disabledMessage ?? "This discussion is closed."}
       </p>
     );
@@ -81,12 +81,21 @@ export function PostComposer({
 
   return (
     <form onSubmit={submit} className="space-y-2">
-      <Textarea placeholder={placeholder} rows={3} {...register("body")} />
-      {errors.body && <p className="text-xs text-destructive">{errors.body.message}</p>}
+      <Textarea
+        placeholder={placeholder}
+        rows={3}
+        {...register("body")}
+        className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-[#A8672E]/60 dark:focus:border-[#D08F52]/60 focus:ring-2 focus:ring-[#A8672E]/20 text-xs sm:text-sm shadow-xs"
+      />
+      {errors.body && <p className="text-xs text-red-600 dark:text-red-400">{errors.body.message}</p>}
       <div className="flex justify-end">
-        <Button type="submit" size="sm" disabled={isSubmitting}>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-[#A8672E] hover:bg-[#8e5625] dark:bg-[#D08F52] dark:hover:bg-[#b87c44] text-white dark:text-[#14171B] font-semibold text-xs sm:text-sm shadow-xs disabled:opacity-50 transition-colors"
+        >
           {isSubmitting ? "Posting..." : submitLabel}
-        </Button>
+        </button>
       </div>
     </form>
   );
