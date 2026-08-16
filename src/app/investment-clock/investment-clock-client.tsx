@@ -689,7 +689,10 @@ export function InvestmentClockClient() {
 
           {/* Section 6: Community Discussion */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
-            <CommentSection threadId="investment-clock" category="quant" />
+            <CommentSection
+              contentSlug="investment-clock"
+              title="Investment Clock Discussion"
+            />
           </div>
         </div>
 
