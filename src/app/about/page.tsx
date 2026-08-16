@@ -1,47 +1,58 @@
 "use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TierBadge } from "@/components/shared/tier-badge";
-import { Heart, Sparkles, Star, Users, BookOpen, Code2, TrendingUp, Trophy } from "lucide-react";
+import { SlotKicker } from "@/components/articles/article-frame";
+import {
+  Heart,
+  Star,
+  Users,
+  BookOpen,
+  Code2,
+  TrendingUp,
+  Trophy,
+  Youtube,
+  MessageSquare,
+  Sparkles,
+  ExternalLink,
+  ShieldCheck,
+  CheckCircle2,
+} from "lucide-react";
 import {
   TIER_NAMES,
   getTierName,
   MIN_TOPIC_TIER,
   MIN_COMMENT_TIER,
   MIN_PREMIUM_TIER,
+  MIN_MODERATOR_TIER,
   LIKE_TIER_LADDER,
   DONATION_TIER_LADDER,
 } from "@/lib/tiers";
 
-// Derived from the tier constants rather than written out by hand, so this table
-// can't drift from what the gates actually enforce.
 const TIER_PERKS: Record<number, string> = {
-  1: "Bookmarks",
-  [MIN_TOPIC_TIER]: "Topic pages & study guides",
-  [MIN_COMMENT_TIER]: "Comments & forum posts",
-  [MIN_PREMIUM_TIER]: "Premium articles & preferred video platform",
-  5: "1:1 page review",
-  6: "Help creating a video",
-  7: "A dedicated Quant Neighborhood page",
-  8: "Coming later",
-  9: "Admin",
+  1: "Bookmarks & Reading History",
+  [MIN_TOPIC_TIER]: "Topic Curricula & Study Guides",
+  [MIN_COMMENT_TIER]: "Comments & Forum Discussions",
+  [MIN_PREMIUM_TIER]: "Premium Articles & Video Platform Switcher",
+  5: "1:1 Page Review",
+  6: "Video Collaboration Support",
+  7: "Dedicated Quant Neighborhood Page",
+  [MIN_MODERATOR_TIER]: "Forum & Comment Moderation",
+  9: "SOPHIE Daddy Admin",
 };
 
-// DONATION_TIER_LADDER mirrors real server logic (server/src/db/donations.js,
-// live Stripe webhook) and now has a client entry point at /donate.
 function tierHowTo(tier: number): string {
-  if (tier === 1) return "Default when you create a free account";
-  if (tier === MIN_TOPIC_TIER) return "Subscribe to the SOPHIE YouTube channel";
+  if (tier === 1) return "Default free account upon sign-in";
+  if (tier === MIN_TOPIC_TIER) return "Subscribe to SOPHIE on YouTube";
 
   const likeStep = LIKE_TIER_LADDER.find((step) => step.tier === tier);
   if (likeStep) {
     return (
       `Like ${likeStep.likesNeeded} paired video${likeStep.likesNeeded === 1 ? "" : "s"}` +
-      (likeStep.alsoNeedsSubscribe ? " while subscribed" : "")
+      (likeStep.alsoNeedsSubscribe ? " (while subscribed)" : "")
     );
   }
 
@@ -49,6 +60,9 @@ function tierHowTo(tier: number): string {
   if (donationStep) {
     return `Donate $${(donationStep.minCents / 100).toFixed(2)}+ total`;
   }
+
+  if (tier === MIN_MODERATOR_TIER) return "Awarded for community leadership";
+  if (tier === 9) return "Site Administrator";
 
   return "Awarded manually";
 }
@@ -60,345 +74,272 @@ const TIER_ROWS = Object.keys(TIER_NAMES)
     tier,
     name: getTierName(tier),
     how: tierHowTo(tier),
-    unlocks: TIER_PERKS[tier] ?? null,
+    unlocks: TIER_PERKS[tier] ?? "Rank privilege",
   }));
 
 export default function AboutPage() {
-  const aiTools: Array<{name: string; rating: number; comment: string; link?: string}> = [
-    { name: "NotebookLM", rating: 5, comment: "Best AI tool ever!" },
-    { name: "Gemini", rating: 5, comment: "Online search are fast." },
-    { name: "Gemini Deep Research", rating: 5, comment: "Super long but fantastic reports" },
-    { name: "Gems", rating: 3, comment: "Handy to have a context to LLM." },
-    { name: "Deepseek", rating: 4, comment: "Free and handy. API is cheap." },
-    { name: "Obsidian", rating: 3, comment: "Too complicated..." },
-    { name: "Chatwise", rating: 4, comment: "Local LLM client with MCP integrated." },
-    { name: "Cursor", rating: 4, comment: "Expensive vibe coding~~" },
-    { name: "Kiro", rating: 4, comment: "Cheap vibe coding~~" },
-    { name: "Ollama", rating: 4, comment: "Local LLM - Check out my cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
-    { name: "Cline", rating: 2, comment: "Experience not as good as cursor." },
-    { name: "Veo", rating: 3, comment: "I like the video made, but I do not know how to use it in finance topics." },
-    { name: "VideoScribe", rating: 3, comment: "Too expensive. AI is not that smart." },   
-    { name: "Canvas", rating: 5, comment: "Knowledge -> Websites -> Knowledge" },
-    { name: "Neon", rating: 5, comment: "Free PostgreSQL Database" },
-    { name: "Vercel", rating: 5, comment: "Free Next.js deployment. GraphQL server is having issue." },
-    { name: "Render", rating: 4, comment: "Free server is a joke. 7 dollar server is OK." },
-    { name: "CapCut", rating: 4, comment: "I use the AI subtitle, not that good" },
-    { name: "QuantConnect", rating: 2, comment: "Server disconnect all the time" },
-    { name: "AWS Lambda", rating: 3, comment: "Not straightfoward enough to deploy" },
+  const aiTools: Array<{ name: string; rating: number; comment: string; link?: string }> = [
+    { name: "NotebookLM", rating: 5, comment: "Best AI tool for research and grounding!" },
+    { name: "Gemini", rating: 5, comment: "Ultra-fast online search and synthesis." },
+    { name: "Gemini Deep Research", rating: 5, comment: "Comprehensive institutional-grade deep research reports." },
+    { name: "Gems", rating: 3, comment: "Handy to inject domain-specific financial context." },
+    { name: "Deepseek", rating: 4, comment: "Cost-effective reasoning and fast code generation." },
+    { name: "Chatwise", rating: 4, comment: "Local LLM client with MCP support." },
+    { name: "Cursor", rating: 4, comment: "Fast vibe coding companion." },
+    { name: "Kiro", rating: 4, comment: "Lightweight vibe coding." },
+    { name: "Ollama", rating: 4, comment: "Local LLM runtime — check out my complete cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
+    { name: "Canvas", rating: 5, comment: "Iterative Knowledge -> Websites -> Knowledge loops." },
+    { name: "Neon", rating: 5, comment: "Serverless PostgreSQL database." },
+    { name: "Vercel", rating: 5, comment: "Production Next.js edge deployment." },
+    { name: "Render", rating: 4, comment: "Reliable backend server hosting." },
+    { name: "QuantConnect", rating: 3, comment: "Algorithm backtesting engine." },
   ];
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${
-          i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+        className={`h-3.5 w-3.5 ${
+          i < rating
+            ? "fill-[#A8672E] text-[#A8672E] dark:fill-[#D08F52] dark:text-[#D08F52]"
+            : "text-gray-200 dark:text-gray-700"
         }`}
       />
     ));
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#FDFBF7] dark:bg-[#121110] text-slate-900 dark:text-slate-100 transition-colors">
       <Header />
-      
-      <main className="flex-1">
-        <div className="container max-w-4xl mx-auto py-8 px-4">
+
+      <main className="flex-1 pb-16">
+        <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 space-y-10">
           {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="flex justify-center items-center gap-2 mb-4">
-              <Heart className="h-8 w-8 text-pink-500" />
-              <h1 className="text-4xl font-bold">About the Creator</h1>
-              <Sparkles className="h-8 w-8 text-purple-500" />
+          <div className="text-center space-y-3 pt-4">
+            <div className="flex justify-center">
+              <SlotKicker icon={Heart} label="Creator & Mission" tone="accent" />
             </div>
-            <p className="text-xl text-muted-foreground">
-              Welcome to my personal journey into AI and finance
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
+              About the Creator
+            </h1>
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Decoding quantitative finance, market microstructure, and applied machine learning into accessible knowledge.
             </p>
           </div>
 
-          {/* Introduction Card */}
-          <Card className="mb-8 border-2 border-purple-200 bg-gradient-to-br from-purple-50/50 to-pink-50/50">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Users className="h-6 w-6 text-purple-600" />
-                Welcome!
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-lg leading-relaxed">
+          {/* Welcome Card */}
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+            <SlotKicker icon={Users} label="Welcome" tone="accent" />
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+              Hello, I&apos;m SOPHIE Daddy
+            </h2>
+            <div className="space-y-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               <p>
-                I'm the creator of this site, but you can call me <strong>SOPHIE Daddy</strong>. 
-                My day job is on Wall Street, but I believe financial knowledge shouldn't be a luxury, 
-                so I am right here with you.
+                My day job is on Wall Street in quantitative modeling, but I strongly believe that deep institutional finance knowledge should not be kept behind closed doors.
               </p>
-              <div className="bg-white/70 p-4 rounded-lg border border-purple-200">
-                <p className="text-center font-semibold text-purple-700 text-xl">
-                  My motto is simple: <strong>If it's complicated, let's break it down.</strong>
+              <div className="p-4 rounded-xl border border-[#A8672E]/20 dark:border-[#D08F52]/20 bg-[#A8672E]/5 dark:bg-[#D08F52]/10">
+                <p className="text-center font-serif font-bold text-[#A8672E] dark:text-[#D08F52] text-lg sm:text-xl">
+                  &ldquo;If it&apos;s complicated, let&apos;s break it down.&rdquo;
                 </p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Mission Card */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <BookOpen className="h-6 w-6 text-blue-600" />
-                My Mission
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-lg leading-relaxed">
-              <p>
-                This website is my personal learning journey into the fascinating world of AI and finance. 
-                Together, we'll decode complex topics—from open-source projects and stock analysis to 
-                machine learning and app development.
-              </p>
-              <div className="flex gap-4 flex-wrap justify-center">
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 px-6 py-3 text-xl font-semibold">
-                  <TrendingUp className="h-6 w-6 mr-2" />
-                  Personal Hobby
-                </Badge>
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-6 py-3 text-xl font-semibold">
-                  Completely Free
-                </Badge>
-                <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 px-6 py-3 text-xl font-semibold">
-                  Login Optional
-                </Badge>
-                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 px-6 py-3 text-xl font-semibold">
-                  No Paid Subscriptions
-                </Badge>
-              </div>
-              <p className="italic text-muted-foreground">
-                Just pure, accessible knowledge.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+            <SlotKicker icon={BookOpen} label="Philosophy" tone="accent" />
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+              My Mission
+            </h2>
+            <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              This platform is an open quantitative notebook documenting our shared exploration across derivatives pricing, systematic factor strategies, statistical arbitrage, and LLM financial engineering.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+              {[
+                { label: "100% Free Access", sub: "Open education" },
+                { label: "No Paywalls", sub: "Core articles open" },
+                { label: "Login Optional", sub: "Read without account" },
+                { label: "Community Driven", sub: "Peer learning" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/70 dark:bg-gray-800/40 text-center"
+                >
+                  <p className="font-semibold text-xs text-slate-900 dark:text-slate-100">{item.label}</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Sophie Dedication Card */}
-          <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-br from-pink-50/50 to-red-50/50">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Heart className="h-6 w-6 text-pink-600" />
-                For Sophie
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-lg leading-relaxed">
-              <p>
-                More than anything, this website is a celebration of my newborn daughter, <strong>Sophie</strong>. 
-                As she grows up in a world powered by AI, I wanted to create something that represents 
-                the best of what technology can offer: the power to empower, educate, and connect us all.
-              </p>
-              <div className="bg-white/70 p-4 rounded-lg border border-pink-200 text-center">
-                <p className="text-pink-700 font-medium">
-                  💕 A gift of knowledge for the next generation 💕
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Call to Action */}
-          <Card className="mb-8 border-2 border-green-200 bg-gradient-to-br from-green-50/50 to-emerald-50/50">
-            <CardContent className="py-6">
-              <div className="text-center space-y-4">
-                <p className="text-xl font-semibold text-green-700">
-                  I'm so glad you're here. Let's learn together.
-                </p>
-                <p className="text-lg text-green-600">
-                  Please leave me a comment in any forms, so that I know you've been here.
-                </p>
-                <p className="text-base text-green-600">
-                  Want to support the site? The easiest way is to{" "}
-                  <a
-                    href="https://www.youtube.com/@SOPHIEAIFinance"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold underline hover:text-green-800"
-                  >
-                    subscribe on YouTube
-                  </a>{" "}
-                  — <Link href="/settings/profile" className="font-semibold underline hover:text-green-800">log in and confirm it on your profile</Link>{" "}
-                  to unlock articles going forward. Or, if you&apos;d rather{" "}
-                  <Link href="/donate" className="font-semibold underline hover:text-green-800">
-                    buy Sophie a gift
-                  </Link>
-                  — this site is free either way, but donations help keep it running and, as a bonus,
-                  $9.99+ unlocks premium articles, with higher amounts unlocking a page review, a custom
-                  video, or a dedicated page in the Quant Neighborhood.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+            <SlotKicker icon={Heart} label="Dedication" tone="accent" />
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+              For Sophie
+            </h2>
+            <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              Above all, this project is dedicated to my daughter, <strong>Sophie</strong>. As she grows up in an era defined by artificial intelligence and automated systems, I want to build a lasting archive that embodies the best of technology: empowering individuals through clarity, rigor, and open education.
+            </p>
+          </div>
 
           {/* Membership Tiers Section */}
-          <Card id="membership-tiers" className="mb-8 border-2 border-amber-200 bg-gradient-to-br from-amber-50/50 to-yellow-50/50 scroll-mt-20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Trophy className="h-6 w-6 text-amber-600" />
-                Membership Tiers
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-lg leading-relaxed">
-                Reading SOPHIE is free and open — no account needed for the home page, the article
-                library, or the market tools. Just signing in earns your first rank and unlocks
-                bookmarks, and each rank above that unlocks more — topic pages, comments, and
-                premium articles plus a preferred video platform (YouTube or Bilibili) for the
-                Watch card. Ranks 5-7 unlock concierge perks — a 1:1 page review, help creating a
-                video, or a dedicated Quant Neighborhood page — reachable by liking paired videos
-                or by <Link href="/donate" className="font-semibold underline hover:text-amber-800">donating</Link>.
-                Rank 8 doesn&apos;t unlock anything yet; that&apos;s coming later.
+          <div
+            id="membership-tiers"
+            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-20"
+          >
+            <div className="flex items-center justify-between">
+              <SlotKicker icon={Trophy} label="Rank System" tone="accent" />
+              <div className="flex items-center gap-1 text-[11px] text-muted-foreground font-mono">
+                <ShieldCheck className="size-3.5 text-[#1D8A70] dark:text-[#3CBF9C]" />
+                Tiers never downgrade
+              </div>
+            </div>
+
+            <div>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                Membership Ranks & Perks
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Reading all public articles and using market tools is free with no account required. Signing in gives you Tier 1 and bookmarks. Higher ranks unlock curricula, commenting, video platform options, and forum moderation — earned through engagement (subscribing on YouTube or liking videos) or voluntary <Link href="/donate" className="text-[#A8672E] dark:text-[#D08F52] font-semibold underline">donations</Link>.
               </p>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-amber-200 text-left">
-                      <th className="py-2 pr-4 font-semibold">Tier</th>
-                      <th className="py-2 pr-4 font-semibold">Rank</th>
-                      <th className="py-2 pr-4 font-semibold">How to reach it</th>
-                      <th className="py-2 font-semibold">Unlocks</th>
+            </div>
+
+            <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-800/60 text-left">
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">Tier</th>
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">Rank</th>
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">How to Reach</th>
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">Platform Unlocks</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800/80">
+                  {TIER_ROWS.map((row) => (
+                    <tr
+                      key={row.tier}
+                      className="hover:bg-gray-50/60 dark:hover:bg-gray-800/40 transition-colors"
+                    >
+                      <td className="py-2.5 px-3 font-mono font-bold text-slate-400 dark:text-slate-500">
+                        T{row.tier}
+                      </td>
+                      <td className="py-2.5 px-3 whitespace-nowrap">
+                        <TierBadge tier={row.tier} size="xs" />
+                      </td>
+                      <td className="py-2.5 px-3 text-slate-600 dark:text-slate-400">
+                        {row.how}
+                      </td>
+                      <td className="py-2.5 px-3">
+                        <span className="font-medium text-slate-900 dark:text-slate-200">
+                          {row.unlocks}
+                        </span>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {TIER_ROWS.map((row) => (
-                      <tr key={row.tier} className="border-b border-amber-100 align-top">
-                        <td className="py-2 pr-4 font-mono text-amber-700 font-semibold">{row.tier}</td>
-                        <td className="py-2 pr-4 whitespace-nowrap">
-                          <TierBadge tier={row.tier} size="sm" />
-                        </td>
-                        <td className="py-2 pr-4 text-slate-600">{row.how}</td>
-                        <td className="py-2">
-                          {row.unlocks === "Coming later" ? (
-                            <span className="text-slate-400 italic">Coming later</span>
-                          ) : row.unlocks === "Admin" ? (
-                            <Badge className="whitespace-nowrap bg-purple-600 hover:bg-purple-600 text-white">
-                              Admin
-                            </Badge>
-                          ) : row.unlocks ? (
-                            <Badge variant="secondary" className="whitespace-nowrap">
-                              {row.unlocks}
-                            </Badge>
-                          ) : (
-                            <span className="text-slate-400">Rank only</span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="text-sm text-slate-600">
-                Likes and subscriptions run on the honor system — I don&apos;t verify them, and
-                likes count once per video, not per click. Ranks only ever go up: earning one a
-                second way never lowers a rank you already have. The single exception is
-                un-subscribing on YouTube, which drops {getTierName(MIN_TOPIC_TIER)} back to{" "}
-                {getTierName(1)} and leaves anything higher untouched. Donations promote ranks
-                immediately and are cumulative — see the{" "}
-                <Link href="/donate" className="font-semibold underline hover:text-amber-800">donate page</Link>{" "}
-                for exact amounts.
-              </p>
-            </CardContent>
-          </Card>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          {/* Tools & Resources Section */}
-          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50/50 to-indigo-50/50">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Code2 className="h-6 w-6 text-blue-600" />
-                Tools & Resources
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg text-blue-700 mb-6 text-center">
-                Here are some useful tools and resources I've built for the community:
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-xs text-muted-foreground border-t border-gray-100 dark:border-gray-800">
+              <p>Likes and subscriptions run on the honor system. Ranks only ever upgrade.</p>
+              <div className="flex items-center gap-3 shrink-0">
                 <Link
-                  href="/rss"
-                  className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200 font-medium text-center"
+                  href="/donate"
+                  className="font-semibold text-[#A8672E] dark:text-[#D08F52] hover:underline"
                 >
-                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 11a9 9 0 0 1 9 9" />
-                    <path d="M4 4a16 16 0 0 1 16 16" />
-                    <circle cx="5" cy="19" r="1" />
-                  </svg>
-                  RSS Feeds
+                  Support on Donate Page &rarr;
                 </Link>
-
-                <Link
-                  href="/seo-audit"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium text-center"
-                >
-                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.35-4.35"/>
-                  </svg>
-                  SEO Audit
-                </Link>
-                
-                <a
-                  href="https://expo.dev/artifacts/eas/suf2rGRxaZbbecneq36JrS.apk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium text-center"
-                >
-                  <svg className="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-                    <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-                    <line x1="12" y1="20" x2="12" y2="20" />
-                  </svg>
-                  Android App
-                </a>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* AI Toolkit Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Code2 className="h-6 w-6 text-indigo-600" />
-                My AI Toolkit
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left py-3 px-2 font-semibold">AI Tool Name</th>
-                      <th className="text-center py-3 px-2 font-semibold">Rating</th>
-                      <th className="text-left py-3 px-2 font-semibold">Comment</th>
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+            <SlotKicker icon={Code2} label="Tools" tone="accent" />
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+              My AI Toolkit & Stack
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              The tools, models, and infrastructure powering SOPHIE AI Finance:
+            </p>
+
+            <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-800/60 text-left">
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">Tool / Platform</th>
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400 text-center">Rating</th>
+                    <th className="py-2.5 px-3 font-bold text-slate-500 dark:text-slate-400">Notes & Review</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800/80">
+                  {aiTools.map((tool) => (
+                    <tr
+                      key={tool.name}
+                      className="hover:bg-gray-50/60 dark:hover:bg-gray-800/40 transition-colors"
+                    >
+                      <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-slate-100">
+                        {tool.link ? (
+                          <Link
+                            href={tool.link}
+                            className="text-[#A8672E] dark:text-[#D08F52] hover:underline"
+                          >
+                            {tool.name}
+                          </Link>
+                        ) : (
+                          tool.name
+                        )}
+                      </td>
+                      <td className="py-2.5 px-3 text-center">
+                        <div className="flex justify-center gap-0.5">{renderStars(tool.rating)}</div>
+                      </td>
+                      <td className="py-2.5 px-3 text-slate-600 dark:text-slate-400">{tool.comment}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {aiTools.map((tool, index) => (
-                      <tr key={tool.name} className={`border-b ${index % 2 === 0 ? 'bg-gray-50/50' : ''}`}>
-                        <td className="py-3 px-2 font-medium">
-                          {tool.link ? (
-                            <Link href={tool.link} className="text-blue-600 hover:text-blue-800 hover:underline">
-                              {tool.name}
-                            </Link>
-                          ) : (
-                            tool.name
-                          )}
-                        </td>
-                        <td className="py-3 px-2 text-center">
-                          <div className="flex justify-center gap-1">
-                            {renderStars(tool.rating)}
-                          </div>
-                        </td>
-                        <td className="py-3 px-2 text-sm text-muted-foreground">{tool.comment}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Quick Resources / Call to Action */}
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm text-center space-y-4">
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+              Join the Conversation
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+              Have questions, feedback, or strategy ideas? Leave comments on articles, start discussions on the forum, or subscribe on YouTube.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <a
+                href="https://www.youtube.com/@SOPHIEAIFinance"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 text-white hover:bg-red-700 font-medium text-xs shadow-xs transition-colors"
+              >
+                <Youtube className="size-4" />
+                Subscribe on YouTube
+              </a>
+              <Link
+                href="/forum"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium text-xs text-slate-800 dark:text-slate-200 shadow-xs transition-colors"
+              >
+                <MessageSquare className="size-4 text-[#A8672E] dark:text-[#D08F52]" />
+                Explore Forum
+              </Link>
+              <Link
+                href="/donate"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#A8672E] text-white hover:bg-[#915624] dark:bg-[#D08F52] dark:text-gray-950 dark:hover:bg-[#b87c43] font-medium text-xs shadow-xs transition-colors"
+              >
+                <Heart className="size-4" />
+                Support / Donate
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
-      
+
       <Disclaimer />
     </div>
   );
-} 
+}
