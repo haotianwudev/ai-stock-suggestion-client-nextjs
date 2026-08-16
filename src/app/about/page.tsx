@@ -82,17 +82,17 @@ export default function AboutPage() {
     { name: "NotebookLM", rating: 5, comment: "Best AI tool for research and grounding!" },
     { name: "Gemini", rating: 5, comment: "Ultra-fast online search and synthesis." },
     { name: "Gemini Deep Research", rating: 5, comment: "Comprehensive institutional-grade deep research reports." },
+    { name: "Antigravity", rating: 5, comment: "Advanced agentic coding and paired AI development." },
+    { name: "Claude Code", rating: 5, comment: "Autonomous terminal agent and deep workflow automation." },
+    { name: "Google Cloud", rating: 5, comment: "Scalable cloud infrastructure, BigQuery, and enterprise AI." },
     { name: "Gems", rating: 3, comment: "Handy to inject domain-specific financial context." },
     { name: "Deepseek", rating: 4, comment: "Cost-effective reasoning and fast code generation." },
-    { name: "Chatwise", rating: 4, comment: "Local LLM client with MCP support." },
-    { name: "Cursor", rating: 4, comment: "Fast vibe coding companion." },
     { name: "Kiro", rating: 4, comment: "Lightweight vibe coding." },
     { name: "Ollama", rating: 4, comment: "Local LLM runtime — check out my complete cheat sheet!", link: "/articles/ollama-cheat-sheet-complete-command-reference" },
     { name: "Canvas", rating: 5, comment: "Iterative Knowledge -> Websites -> Knowledge loops." },
     { name: "Neon", rating: 5, comment: "Serverless PostgreSQL database." },
     { name: "Vercel", rating: 5, comment: "Production Next.js edge deployment." },
     { name: "Render", rating: 4, comment: "Reliable backend server hosting." },
-    { name: "QuantConnect", rating: 3, comment: "Algorithm backtesting engine." },
   ];
 
   const renderStars = (rating: number) => {
