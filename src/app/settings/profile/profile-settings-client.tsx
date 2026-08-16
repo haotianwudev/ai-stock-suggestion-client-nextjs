@@ -12,7 +12,8 @@ import { useState } from "react";
 import { useUser } from "@/hooks/use-user";
 import { useLanguage } from "@/hooks/use-language";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { getTierName, tierUnlockKey, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER } from "@/lib/tiers";
+import { getTierName, tierUnlockKey, canSetVideoPreference, MIN_VIDEO_PREFERENCE_TIER, canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER } from "@/lib/tiers";
+import { getPreferredOptionSource, setPreferredOptionSource, OptionDataSource } from "@/lib/options/options-preferences";
 import { ME, UPDATE_PROFILE, SET_YOUTUBE_SUBSCRIBED, SET_PREFERRED_VIDEO_SOURCE } from "@/lib/graphql/queries";
 import { User as MeResult } from "@/lib/graphql/types";
 import { LoginButton } from "@/components/auth/login-button";
@@ -35,6 +36,7 @@ export function ProfileSettingsClient() {
   const { user, profile, loading } = useUser();
   const { t } = useLanguage();
   const [congrats, setCongrats] = useState<{ title: string; description: string } | null>(null);
+  const [optionSource, setOptionSource] = useState<OptionDataSource>(() => getPreferredOptionSource(profile?.tier ?? 1));
   const [updateProfile, { loading: saving }] = useMutation<{ updateProfile: MeResult }>(
     UPDATE_PROFILE,
     { refetchQueries: [{ query: ME }] }
@@ -64,6 +66,7 @@ export function ProfileSettingsClient() {
         displayName: profile.displayName ?? "",
         avatarUrl: profile.avatarUrl ?? AVATAR_OPTIONS[0].src,
       });
+      setOptionSource(getPreferredOptionSource(profile.tier));
     }
     // Depend on the primitive fields, not `profile` itself -- useUser() returns a
     // freshly-constructed object on every render, so depending on the object
@@ -247,6 +250,54 @@ export function ProfileSettingsClient() {
           {!canSetVideoPreference(profile?.tier ?? 1) && (
             <p className="mt-2 text-xs text-muted-foreground">
               {t("profileSettings.reachTierToChoose", { tier: getTierName(MIN_VIDEO_PREFERENCE_TIER) })}
+            </p>
+          )}
+        </div>
+
+        <div className="mt-6 border-t pt-6">
+          <Label className="flex items-center gap-2">
+            {t("profileSettings.defaultOptionSource")}
+            <Badge
+              variant="outline"
+              className="gap-1 border-amber-600/30 bg-amber-600/10 font-normal text-amber-700 dark:text-amber-500"
+            >
+              <Crown className="size-3" />
+              {t("profileSettings.premiumBadge")}
+            </Badge>
+            {!canAccessLiveOptions(profile?.tier ?? 1) && (
+              <Badge variant="outline" className="font-normal">
+                {t("profileSettings.unlocksAt", { tier: getTierName(MIN_LIVE_OPTIONS_TIER) })}
+              </Badge>
+            )}
+          </Label>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {t("profileSettings.defaultOptionSourceDescription")}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(["historical", "live"] as const).map((s) => (
+              <button
+                key={s}
+                type="button"
+                disabled={s === "live" && !canAccessLiveOptions(profile?.tier ?? 1)}
+                onClick={() => {
+                  setPreferredOptionSource(s);
+                  setOptionSource(s);
+                  toast.success(t("profileSettings.updated"));
+                }}
+                className={cn(
+                  "rounded-lg border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                  optionSource === s
+                    ? "border-primary ring-2 ring-primary bg-primary/5"
+                    : "border-border hover:bg-accent"
+                )}
+              >
+                {s === "historical" ? t("profileSettings.optionSourceHistorical") : t("profileSettings.optionSourceLive")}
+              </button>
+            ))}
+          </div>
+          {!canAccessLiveOptions(profile?.tier ?? 1) && (
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t("profileSettings.reachTierForLiveOption", { tier: getTierName(MIN_LIVE_OPTIONS_TIER) })}
             </p>
           )}
         </div>

@@ -1,6 +1,10 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { RefreshCw, ChevronDown, Settings2 } from 'lucide-react';
+import { RefreshCw, ChevronDown, Settings2, Lock } from 'lucide-react';
+import { toast } from 'sonner';
+import { useUser } from '@/hooks/use-user';
+import { canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER } from '@/lib/tiers';
+import { getPreferredOptionSource } from '@/lib/options/options-preferences';
 import { PayoffChartView } from './payoff-chart-view';
 import { ProbabilityRangeView, ProbabilityMarker } from './probability-range-view';
 import { OptionChainSnapshot, ExpirationChain, ChainContract } from '@/lib/options/chain-types';
@@ -55,7 +59,11 @@ export interface SpxPayoffBuilderProps {
  * on individual Strategy Explorer pages (locked to that strategy's own preset).
  */
 export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset = false, initialExpirationTargetDte = 45 }: SpxPayoffBuilderProps = {}) => {
-    const [source, setSource] = useState<Source>('historical');
+    const { profile } = useUser();
+    const userTier = profile?.tier ?? 1;
+    const isTier4Plus = canAccessLiveOptions(userTier);
+
+    const [source, setSource] = useState<Source>(() => getPreferredOptionSource(userTier));
     const [snapshot, setSnapshot] = useState<OptionChainSnapshot | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -74,6 +82,10 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
     const [analysisTab, setAnalysisTab] = useState<'payoff' | 'probability'>('payoff');
 
     const loadSource = (next: Source, forceRefresh: boolean = false) => {
+        if (next === 'live' && !canAccessLiveOptions(userTier)) {
+            toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+            return;
+        }
         setSource(next);
         setLoading(true);
         setError(null);
@@ -88,7 +100,11 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
             .finally(() => setLoading(false));
     };
 
-    useEffect(() => { loadSource('historical'); /* eslint-disable-line react-hooks/exhaustive-deps */ }, []);
+    useEffect(() => {
+        const initial = getPreferredOptionSource(userTier);
+        loadSource(initial);
+        /* eslint-disable-line react-hooks/exhaustive-deps */
+    }, [userTier]);
 
     const chain = useMemo<ExpirationChain | null>(() => {
         if (!snapshot) return null;
@@ -312,19 +328,37 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
             {/* Source toggle */}
             <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-flex rounded-lg border border-gray-300 overflow-hidden text-sm">
-                    {(['historical', 'live'] as Source[]).map(s => (
-                        <button
-                            key={s}
-                            onClick={() => s !== source && loadSource(s)}
-                            className={`px-3 py-1.5 font-medium transition-colors ${
-                                source === s
-                                    ? 'bg-blue-600 text-white shadow-sm'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600'
-                            }`}
-                        >
-                            {s === 'historical' ? `Historical (${snapshot.quoteDate})` : 'Live ^SPX'}
-                        </button>
-                    ))}
+                    {(['historical', 'live'] as Source[]).map(s => {
+                        const isLive = s === 'live';
+                        return (
+                            <button
+                                key={s}
+                                onClick={() => {
+                                    if (isLive && !isTier4Plus) {
+                                        toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+                                        return;
+                                    }
+                                    if (s !== source) loadSource(s);
+                                }}
+                                className={`flex items-center gap-1 px-3 py-1.5 font-medium transition-colors ${
+                                    source === s
+                                        ? 'bg-blue-600 text-white shadow-sm'
+                                        : isLive && !isTier4Plus
+                                        ? 'bg-white text-gray-400 hover:bg-gray-50'
+                                        : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-blue-600'
+                                }`}
+                                title={isLive && !isTier4Plus ? `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (Senior Quant)` : undefined}
+                            >
+                                {isLive && !isTier4Plus && <Lock className="h-3 w-3 text-amber-500" />}
+                                <span>{s === 'historical' ? `Historical (${snapshot.quoteDate})` : 'Live ^SPX'}</span>
+                                {isLive && !isTier4Plus && (
+                                    <span className="text-[9px] px-1 py-0 border border-amber-400/40 text-amber-600 bg-amber-50 rounded">
+                                        Tier 4+
+                                    </span>
+                                )}
+                            </button>
+                        );
+                    })}
                 </div>
                 {loading && <span className="text-xs text-gray-500">Loading…</span>}
                 {error && <span className="text-xs text-red-600">{error} — showing last loaded data.</span>}

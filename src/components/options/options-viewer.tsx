@@ -14,8 +14,14 @@ import {
   Calendar,
   ShieldCheck,
   Clock,
-  Database
+  Database,
+  Lock,
+  Crown
 } from 'lucide-react';
+import { toast } from 'sonner';
+import { useUser } from '@/hooks/use-user';
+import { canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER, getTierName } from '@/lib/tiers';
+import { getPreferredOptionSource, OptionDataSource } from '@/lib/options/options-preferences';
 import { LIVE_CHAIN_API_ENDPOINT as API_ENDPOINT, getChainSnapshot } from '@/lib/options/chain-provider';
 import { adaptSnapshotToOptionsAPIResponse } from '@/lib/options/chain-adapters';
 import {
@@ -57,8 +63,11 @@ type DataSource = 'historical' | 'live';
 
 export function OptionsViewer() {
   const SPX_URL = `${API_ENDPOINT}?ticker=%5ESPX`;
+  const { profile } = useUser();
+  const userTier = profile?.tier ?? 1;
+  const isTier4Plus = canAccessLiveOptions(userTier);
 
-  const [source, setSource] = useState<DataSource>('historical');
+  const [source, setSource] = useState<DataSource>(() => getPreferredOptionSource(userTier));
   const [data, setData] = useState<OptionsAPIResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -68,8 +77,14 @@ export function OptionsViewer() {
   const [cacheAge, setCacheAge] = useState<number | null>(null);
   const [readyToRefresh, setReadyToRefresh] = useState(true);
 
-  // Load either historical snapshot (default) or live Cloud Run API
+  // Load either historical snapshot or live Cloud Run API
   const loadSource = useCallback(async (nextSource: DataSource, manualRefresh = false) => {
+    // Tier gate check for Live data
+    if (nextSource === 'live' && !canAccessLiveOptions(userTier)) {
+      toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+      return;
+    }
+
     setSource(nextSource);
     setLoading(true);
     setError(null);
@@ -113,12 +128,13 @@ export function OptionsViewer() {
     } finally {
       setLoading(false);
     }
-  }, [SPX_URL]);
+  }, [SPX_URL, userTier]);
 
-  // Default: load historical on mount
+  // Load initial source based on user preferences and tier
   useEffect(() => {
-    loadSource('historical');
-  }, [loadSource]);
+    const initialSource = getPreferredOptionSource(userTier);
+    loadSource(initialSource);
+  }, [userTier, loadSource]);
 
   // Periodic check for cache timer when on live source
   useEffect(() => {
@@ -289,14 +305,29 @@ export function OptionsViewer() {
               Historical Snapshot
             </button>
             <button
-              onClick={() => source !== 'live' && loadSource('live')}
-              className={`px-3 py-1 rounded-md font-semibold transition-all ${
+              onClick={() => {
+                if (!isTier4Plus) {
+                  toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+                  return;
+                }
+                if (source !== 'live') loadSource('live');
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold transition-all ${
                 source === 'live' 
                   ? 'bg-blue-600 text-white shadow-2xs' 
-                  : 'text-slate-600 hover:text-slate-900'
+                  : isTier4Plus
+                  ? 'text-slate-600 hover:text-slate-900'
+                  : 'text-slate-400 hover:text-slate-600'
               }`}
+              title={isTier4Plus ? "Switch to Live Cboe Feed" : `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (Senior Quant)`}
             >
-              Live ^SPX (Cboe)
+              {!isTier4Plus && <Lock className="h-3 w-3 text-amber-500" />}
+              <span>Live ^SPX (Cboe)</span>
+              {!isTier4Plus && (
+                <Badge variant="outline" className="text-[9px] px-1 py-0 border-amber-500/40 text-amber-600 bg-amber-50 font-semibold">
+                  Tier 4+
+                </Badge>
+              )}
             </button>
           </div>
         </div>

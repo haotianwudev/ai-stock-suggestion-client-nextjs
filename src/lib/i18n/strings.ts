@@ -130,6 +130,12 @@ export const en = {
       "When an article has both a YouTube and Bilibili version, the Watch card plays this one by default. " +
       "You can still switch per-video from the toggle on the card itself.",
     reachTierToChoose: "Reach {tier} to choose your default — see the rank-up tip above for what's next.",
+    defaultOptionSource: "Default Option Chain Source",
+    defaultOptionSourceDescription:
+      "Choose whether the Option Chain Viewer & SPX Payoff Builder automatically load live real-time Cboe quotes by default.",
+    optionSourceHistorical: "Historical Snapshot",
+    optionSourceLive: "Live ^SPX (Real-Time)",
+    reachTierForLiveOption: "Reach {tier} to enable Real-Time options by default.",
     congratsSubscribed: "Thanks for subscribing!",
     congratsAppreciate: "We really appreciate it.",
   },

@@ -41,6 +41,14 @@ export const MIN_COMMENT_TIER = 3;
 /** Tier required to view non-default topic pages (see TopicAccessGate). */
 export const MIN_TOPIC_TIER = 2;
 
+/** Tier required for Live Real-Time Options (SPX Cboe feed). */
+export const MIN_LIVE_OPTIONS_TIER = 4;
+
+/** Returns true when the given tier is allowed to access Live Real-Time options data. */
+export function canAccessLiveOptions(tier: number): boolean {
+  return tier >= MIN_LIVE_OPTIONS_TIER;
+}
+
 /** Tier required to set a preferred video platform (YouTube vs Bilibili) in
  * profile settings. Mirrors MIN_VIDEO_PREFERENCE_TIER in
  * server/src/resolvers/auth.js -- keep both in sync. */
