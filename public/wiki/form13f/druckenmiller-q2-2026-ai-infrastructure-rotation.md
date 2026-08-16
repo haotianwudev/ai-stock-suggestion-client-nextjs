@@ -46,4 +46,5 @@ New 603,000-share Delta position and a 202.8% increase in United Airlines (to 79
 ## Related Reading
 
 - [Duquesne Family Office Q2 2026 13F Analysis](/articles/duquesne-family-office-q2-2026-13f-rotation) — full article with the Alphabet FCF breakdown, Bitdeer metrics, and Natera financials.
+- [Watch on YouTube](https://youtu.be/SFgEtVRfsWo)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRndoKShgivOiMoV0NUVdPAaMCI6_1YsWPbAH63eCdduPXgIZngePTM-6h-_EEWMKIqFXW9L-JdlV6F/pub)
