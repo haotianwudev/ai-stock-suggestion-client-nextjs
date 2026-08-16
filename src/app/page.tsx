@@ -5,11 +5,12 @@ import { Footer } from "@/components/layout/footer";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles, Layers, BookOpen } from "lucide-react";
+import { LineChart, Users, Globe, TrendingUp, Sigma, Rss, Check, Crown, Star, ShieldCheck, Sparkles, Layers, BookOpen, GraduationCap, Lightbulb, MessageSquare } from "lucide-react";
 import { useEffect, useState, Suspense, lazy } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/components/articles/article-card";
 import { ArticleFilter, getFilteredArticles, getAllLabels } from "@/components/articles/article-filter";
+import { SlotKicker } from "@/components/articles/article-frame";
 import { articles } from "@/data/articles";
 import { useUser } from "@/hooks/use-user";
 import { useLanguage } from "@/hooks/use-language";
@@ -77,63 +78,50 @@ export default function Home() {
     },
   ];
 
-  // "About SOPHIE" highlight cards — colors echo the hero's indigo → purple → pink gradient.
-  // First three sell what makes SOPHIE worth reading; last three cover access + the
-  // Google sign-in disclosure required for OAuth app verification (keep those facts intact).
+  // "About SOPHIE" highlight cards — aligned with ArticleFrame aesthetic
+  // (warm clean surfaces, bronze/teal/amber semantic accents, serif typography, and scannable summaries).
   const ABOUT_CARDS = [
+    {
+      icon: GraduationCap,
+      title: t("homepage.aboutCardLearningTitle"),
+      description: t("homepage.aboutCardLearningDescription"),
+      iconBgClass: "bg-[#A8672E]/10 dark:bg-[#D08F52]/15",
+      iconClass: "text-[#A8672E] dark:text-[#D08F52]",
+    },
+    {
+      icon: TrendingUp,
+      title: t("homepage.aboutCardPractitionerTitle"),
+      description: t("homepage.aboutCardPractitionerDescription"),
+      iconBgClass: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/15",
+      iconClass: "text-[#1D8A70] dark:text-[#3CBF9C]",
+    },
+    {
+      icon: Lightbulb,
+      title: t("homepage.aboutCardCommunityTitle"),
+      description: t("homepage.aboutCardCommunityDescription"),
+      iconBgClass: "bg-[#BC4128]/10 dark:bg-[#E2694A]/15",
+      iconClass: "text-[#BC4128] dark:text-[#E2694A]",
+    },
     {
       icon: Layers,
       title: t("homepage.aboutCardOneFrameTitle"),
       description: t("homepage.aboutCardOneFrameDescription"),
-      borderClass: "border-indigo-200 dark:border-indigo-800/60",
-      bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
-      iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
-      iconClass: "text-indigo-600 dark:text-indigo-400",
-    },
-    {
-      icon: TrendingUp,
-      title: t("homepage.aboutCardTrendingTitle"),
-      description: t("homepage.aboutCardTrendingDescription"),
-      borderClass: "border-purple-200 dark:border-purple-800/60",
-      bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
-      iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
-      iconClass: "text-purple-600 dark:text-purple-400",
-    },
-    {
-      icon: BookOpen,
-      title: t("homepage.aboutCardStudyPathsTitle"),
-      description: t("homepage.aboutCardStudyPathsDescription"),
-      borderClass: "border-pink-200 dark:border-pink-800/60",
-      bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
-      iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
-      iconClass: "text-pink-600 dark:text-pink-400",
+      iconBgClass: "bg-[#A8672E]/10 dark:bg-[#D08F52]/15",
+      iconClass: "text-[#A8672E] dark:text-[#D08F52]",
     },
     {
       icon: Globe,
       title: t("homepage.aboutCardOpenTitle"),
       description: t("homepage.aboutCardOpenDescription"),
-      borderClass: "border-indigo-200 dark:border-indigo-800/60",
-      bgClass: "bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-background",
-      iconBgClass: "bg-indigo-100 dark:bg-indigo-900/50",
-      iconClass: "text-indigo-600 dark:text-indigo-400",
-    },
-    {
-      icon: Star,
-      title: t("homepage.aboutCardFreeAccountTitle"),
-      description: t("homepage.aboutCardFreeAccountDescription"),
-      borderClass: "border-purple-200 dark:border-purple-800/60",
-      bgClass: "bg-gradient-to-br from-purple-50 to-white dark:from-purple-950/40 dark:to-background",
-      iconBgClass: "bg-purple-100 dark:bg-purple-900/50",
-      iconClass: "text-purple-600 dark:text-purple-400",
+      iconBgClass: "bg-[#1D8A70]/10 dark:bg-[#3CBF9C]/15",
+      iconClass: "text-[#1D8A70] dark:text-[#3CBF9C]",
     },
     {
       icon: ShieldCheck,
       title: t("homepage.aboutCardGooglePrivacyTitle"),
       description: t("homepage.aboutCardGooglePrivacyDescription"),
-      borderClass: "border-pink-200 dark:border-pink-800/60",
-      bgClass: "bg-gradient-to-br from-pink-50 to-white dark:from-pink-950/40 dark:to-background",
-      iconBgClass: "bg-pink-100 dark:bg-pink-900/50",
-      iconClass: "text-pink-600 dark:text-pink-400",
+      iconBgClass: "bg-[#A8672E]/10 dark:bg-[#D08F52]/15",
+      iconClass: "text-[#A8672E] dark:text-[#D08F52]",
     },
   ];
 
@@ -459,44 +447,69 @@ export default function Home() {
           </div>
         </section>
 
-        {/* "About SOPHIE" — advocates the platform (content format, trending topics, study
-            guides) while keeping the free-access + Google sign-in disclosure that Google's
-            OAuth app verification checks for, in case of re-review. */}
-        <section className="container max-w-screen-2xl mx-auto py-10 md:py-14 border-t border-border px-4">
-          <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-gradient-to-br from-indigo-50/70 via-purple-50/40 to-pink-50/70 dark:from-indigo-950/20 dark:via-purple-950/10 dark:to-pink-950/20 p-5 sm:p-8 md:p-10">
-            <div className="flex flex-col items-center text-center gap-3 mb-8">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                <Sparkles className="h-3.5 w-3.5" />
-                {t("homepage.aboutThePlatform")}
-              </span>
-              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("homepage.aboutSophieHeading")}</h2>
-              <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+        {/* "About SOPHIE" — styled in harmony with ArticleFrame:
+            warm background container, SlotKicker, serif headings, bronze/teal/amber semantic accents,
+            and clean card chrome with dark-mode support. */}
+        <section className="container max-w-screen-2xl mx-auto py-12 md:py-16 border-t border-border px-4">
+          <div className="max-w-4xl mx-auto rounded-3xl border border-gray-200 dark:border-gray-800 bg-[#FDFBF7] dark:bg-[#14171B]/80 p-5 sm:p-8 md:p-10 shadow-xs">
+            <div className="flex flex-col items-center text-center gap-2 mb-8">
+              <SlotKicker icon={Sparkles} label={t("homepage.aboutThePlatform")} tone="accent" />
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+                {t("homepage.aboutSophieHeading")}
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mt-1">
                 {t("homepage.aboutSophieDescription")}
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {ABOUT_CARDS.map((card) => (
                 <div
                   key={card.title}
-                  className={`rounded-2xl border-2 p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${card.borderClass} ${card.bgClass}`}
+                  className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-xs transition-all duration-200 hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:-translate-y-0.5"
                 >
-                  <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-full ${card.iconBgClass}`}>
+                  <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${card.iconBgClass}`}>
                     <card.icon className={`h-5 w-5 ${card.iconClass}`} />
                   </div>
-                  <h3 className="font-semibold text-sm sm:text-base mb-1.5">{card.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+                  <h3 className="font-serif font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100 mb-1.5">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {card.description}
+                  </p>
                 </div>
               ))}
             </div>
 
-            <div className="flex items-center justify-center gap-4 pt-7">
-              <Link href="/privacy" className="text-sm font-medium text-primary hover:underline">
-                {t("footer.privacyPolicy")}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-7 text-xs sm:text-sm border-t border-gray-200/80 dark:border-gray-800/80 mt-8">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200 hover:text-[#A8672E] dark:hover:text-[#D08F52] font-medium shadow-xs transition-colors"
+              >
+                {t("homepage.meetSophieDaddy")} &rarr;
               </Link>
-              <Link href="/terms" className="text-sm font-medium text-primary hover:underline">
-                {t("footer.termsOfService")}
+              <Link
+                href="/forum?tab=feedback"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#A8672E] hover:bg-[#8f5726] dark:bg-[#D08F52] dark:hover:bg-[#c17f47] text-white dark:text-[#14171B] font-semibold shadow-xs transition-colors"
+              >
+                <MessageSquare className="h-3.5 w-3.5" />
+                {t("homepage.aboutSuggestTopicForum")}
               </Link>
+              <div className="flex items-center gap-3 px-1 text-slate-500 dark:text-slate-400">
+                <Link
+                  href="/privacy"
+                  className="hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:underline transition-colors"
+                >
+                  {t("footer.privacyPolicy")}
+                </Link>
+                <span>•</span>
+                <Link
+                  href="/terms"
+                  className="hover:text-[#A8672E] dark:hover:text-[#D08F52] hover:underline transition-colors"
+                >
+                  {t("footer.termsOfService")}
+                </Link>
+              </div>
             </div>
           </div>
         </section>

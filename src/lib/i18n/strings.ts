@@ -179,40 +179,32 @@ export const en = {
     showAllArticlesButton: "Show All {count} Articles",
     noArticlesFound: "No articles found matching your filters.",
     tryAdjustingFilters: "Try adjusting your search or filters.",
-    aboutThePlatform: "About the platform",
+    aboutThePlatform: "About the Platform",
     aboutSophieHeading: "About SOPHIE",
     aboutSophieDescription:
-      "SOPHIE turns scattered market research into one place worth coming back to. " +
-      "Every topic pairs its article with the video, primary research paper, and wiki " +
-      "reference in a single scrollable frame, backed by a live trending-topics board " +
-      "and guided study paths — all free, no account required.",
+      "SOPHIE is an open quantitative finance platform designed for students and amateurs to build systematic foundations, " +
+      "and for industry practitioners like SOPHIE Daddy to discuss market news, micro/macro views, and deep-dive research. " +
+      "Every topic connects in-depth articles, YouTube video walkthroughs, primary research papers, and live market tools — " +
+      "and we warmly welcome your topic requests for upcoming blogs and videos.",
+    aboutCardLearningTitle: "Systematic Learning",
+    aboutCardLearningDescription:
+      "Structured curricula, curated study paths, and foundational breakdowns help students and quant enthusiasts master financial engineering, options pricing, and factor models step by step.",
+    aboutCardPractitionerTitle: "Practitioner Views & Research",
+    aboutCardPractitionerDescription:
+      "Wall Street practitioners like SOPHIE Daddy analyze breaking financial news, macro cycles, micro stock views, causal inference models, and cutting-edge academic papers.",
+    aboutCardCommunityTitle: "Blog & YouTube Topics",
+    aboutCardCommunityDescription:
+      "We actively welcome research topics and strategy questions from our community to be explored in future in-depth blog articles and companion YouTube videos.",
     aboutCardOneFrameTitle: "One frame, every format",
     aboutCardOneFrameDescription:
-      "Each topic's article, video walkthrough, primary research paper, and wiki reference " +
-      "live in the same scrollable frame — read, watch, or dig into the source without " +
-      "hunting across tabs.",
-    aboutCardTrendingTitle: "Trending quant topics",
-    aboutCardTrendingDescription:
-      "A live-ranked board surfaces what's moving in quant finance and options right now, " +
-      "so you always know what's actually worth reading today.",
-    aboutCardStudyPathsTitle: "Guided study paths",
-    aboutCardStudyPathsDescription:
-      "Topic pages come with curated study guides — an ordered reading path that takes you " +
-      "from first principles to fluent, instead of a random pile of articles.",
+      "Each topic pairs its article, companion video walkthrough, primary research paper, and wiki references in one seamless frame — read, watch, and learn without tab-switching.",
     aboutCardOpenTitle: "Open to everyone",
     aboutCardOpenDescription:
-      "This home page, the article library, and the live market tools are publicly " +
-      "accessible with no account and no sign-in.",
-    aboutCardFreeAccountTitle: "Free account unlocks more",
-    aboutCardFreeAccountDescription:
-      "Signing in lets you bookmark articles, join forum discussions, open topic study " +
-      "guides, and read premium articles reserved for subscribers and supporters of the channel.",
+      "The entire article library, investment clock, and live market tools are 100% free with no sign-in required. Free sign-in unlocks bookmarking, forum discussions, and subscriber perks.",
     aboutCardGooglePrivacyTitle: "Google sign-in privacy",
     aboutCardGooglePrivacyDescription:
-      "Signing in with Google is one optional way to create that account. SOPHIE receives " +
-      "only your name, email address, and profile picture, used solely to create your profile " +
-      "and attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any " +
-      "other Google data.",
+      "Signing in with Google is one optional way to create that account. SOPHIE receives only your name, email address, and profile picture, used solely to create your profile and attribute your posts. SOPHIE does not access your Gmail, Drive, Calendar, or any other Google data.",
+    aboutSuggestTopicForum: "Suggest a Topic in Forum",
   },
 };
 
@@ -381,32 +373,28 @@ export const zh: typeof en = {
     aboutThePlatform: "关于本平台",
     aboutSophieHeading: "关于 SOPHIE",
     aboutSophieDescription:
-      "SOPHIE 把分散的市场研究整合成一个值得反复回看的地方。每个主题都将文章与视频、" +
-      "原始研究论文和百科参考资料整合在同一个可滚动的界面中，并配有实时热点榜单和" +
-      "引导式学习路径——完全免费，无需注册账户。",
+      "SOPHIE 是一个开放的量化金融平台，致力于帮助学生和量化爱好者进行系统化的进阶学习，" +
+      "同时也为像 SOPHIE Daddy 这样的华尔街一线从业者提供交流财经新闻、宏微观市场观点与深度研究论文的阵地。" +
+      "每个主题均融合了深度博客、YouTube 配套视频、原始研究论文与实用市场工具，并真诚欢迎大家提交希望在后续内容中探讨的选题。",
+    aboutCardLearningTitle: "系统化学习与进阶",
+    aboutCardLearningDescription:
+      "精心编排的课程大纲、引导式学习路径与由浅入深的知识拆解，帮助学生与量化爱好者稳步掌握金融工程、期权定价与多因子模型等核心知识。",
+    aboutCardPractitionerTitle: "从业者观点与前沿研讨",
+    aboutCardPractitionerDescription:
+      "像 SOPHIE Daddy 这样的华尔街一线从业者在此深入剖析实时财经新闻、宏观经济周期、微观个股研判、因果推断模型与前沿学术论文。",
+    aboutCardCommunityTitle: "博客与视频选题征集",
+    aboutCardCommunityDescription:
+      "真诚欢迎社区读者与观众提出想深入了解的量化与投资课题，我们将在后续的深度博客文章与 YouTube 配套视频中展开专题研究与分享。",
     aboutCardOneFrameTitle: "一个界面，全部形式",
     aboutCardOneFrameDescription:
-      "每个主题的文章、视频讲解、原始研究论文和百科参考资料，都在同一个可滚动界面中呈现——" +
-      "阅读、观看或深入研究原始资料，无需在多个标签页间切换。",
-    aboutCardTrendingTitle: "量化热点话题",
-    aboutCardTrendingDescription:
-      "实时排行榜展示当下量化金融与期权领域的热门动态，让你随时了解今天真正值得一读的内容。",
-    aboutCardStudyPathsTitle: "引导式学习路径",
-    aboutCardStudyPathsDescription:
-      "主题页面配有精心编排的学习指南——按顺序排列的阅读路径，带你从基础概念逐步进阶，" +
-      "而不是杂乱无章的文章堆砌。",
-    aboutCardOpenTitle: "面向所有人开放",
+      "每个主题的文章、视频讲解、原始研究论文和百科参考资料，都在同一个可滚动界面中完整呈现——无需在多个标签页间来回切换。",
+    aboutCardOpenTitle: "面向所有人免费开放",
     aboutCardOpenDescription:
-      "本首页、文章库以及实时市场工具均公开可用，无需注册账户，也无需登录。",
-    aboutCardFreeAccountTitle: "免费账户解锁更多内容",
-    aboutCardFreeAccountDescription:
-      "登录后即可收藏文章、参与论坛讨论、打开主题学习指南，并阅读专为频道订阅者与" +
-      "支持者保留的付费文章。",
+      "本首页、文章库、投资时钟及实时市场工具均完全公开，无需注册即可浏览。免费登录可解锁文章收藏、学习大纲、论坛讨论与订阅特权。",
     aboutCardGooglePrivacyTitle: "Google 登录隐私说明",
     aboutCardGooglePrivacyDescription:
-      "使用 Google 登录是创建账户的一种可选方式。SOPHIE 仅获取你的姓名、电子邮箱地址和头像，" +
-      "仅用于创建你的个人资料并标注你发布的内容。SOPHIE 不会访问你的 Gmail、Drive、日历或" +
-      "任何其他 Google 数据。",
+      "使用 Google 登录是创建账户的可选方式。SOPHIE 仅获取你的姓名、电子邮箱地址和头像用于创建档案与发表署名，绝不会访问你的 Gmail、Drive 或任何隐私数据。",
+    aboutSuggestTopicForum: "在论坛提交选题建议",
   },
 };
 
