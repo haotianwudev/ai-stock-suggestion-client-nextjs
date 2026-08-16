@@ -14,7 +14,7 @@ export default function InvestmentClockPage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <div className="container mx-auto max-w-5xl px-4 py-8">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">
           <InvestmentClockClient />
         </div>
       </main>

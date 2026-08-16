@@ -57,7 +57,7 @@ export function AssetAllocationCards({ phase, recommendedSectors, sectorRational
   const rationaleMap = Object.fromEntries((sectorRationale ?? []).map((r) => [r.etf, r.rationale]));
 
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {ALL_PHASES.map((p) => {
         const data = PHASE_DATA[p];
         const isActive = p === phase;
@@ -66,41 +66,53 @@ export function AssetAllocationCards({ phase, recommendedSectors, sectorRational
           : data.sectors;
 
         return (
-          <Card
+          <div
             key={p}
-            className={`transition-all ${isActive ? `${data.bgColor} border-2` : "opacity-40"}`}
+            className={`rounded-2xl border transition-all p-4 flex flex-col justify-between ${
+              isActive
+                ? "bg-white dark:bg-gray-900 border-[#A8672E] dark:border-[#D08F52] shadow-md ring-2 ring-[#A8672E]/20"
+                : "bg-white/60 dark:bg-gray-900/40 border-gray-200 dark:border-gray-800 opacity-60 hover:opacity-90"
+            }`}
           >
-            <CardHeader className="pb-2 pt-3 px-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className={`text-sm font-semibold ${isActive ? data.color : ""}`}>
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className={`text-sm font-bold font-serif ${isActive ? "text-[#A8672E] dark:text-[#D08F52]" : "text-gray-900 dark:text-gray-100"}`}>
                   {p}
-                </CardTitle>
+                </span>
                 {isActive && (
-                  <Badge variant="secondary" className="text-[10px] px-1 py-0">
-                    NOW
-                  </Badge>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] border border-[#A8672E]/30">
+                    CURRENT
+                  </span>
                 )}
               </div>
-              <p className={`text-xs font-medium mt-1 ${isActive ? data.color : "text-muted-foreground"}`}>
-                {data.bestAsset}
-              </p>
-            </CardHeader>
-            <CardContent className="px-3 pb-3 space-y-2">
-              <div className="flex flex-wrap gap-1">
+
+              <div className="mb-3">
+                <p className="text-xs text-muted-foreground">Optimal Asset:</p>
+                <p className="text-sm font-bold text-gray-900 dark:text-gray-100 mt-0.5">{data.bestAsset}</p>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {data.etfs.map((etf) => (
-                  <Badge key={etf} variant="outline" className="text-[10px] px-1.5 py-0">
+                  <span
+                    key={etf}
+                    className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${
+                      isActive
+                        ? "bg-[#A8672E]/5 border-[#A8672E]/20 text-[#A8672E] dark:text-[#D08F52]"
+                        : "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-muted-foreground"
+                    }`}
+                  >
                     {etf}
-                  </Badge>
+                  </span>
                 ))}
               </div>
 
               {/* Active card: show ETF-level rationale if available, else sector names */}
               {isActive && data.etfs.some((etf) => rationaleMap[etf]) ? (
-                <div className="space-y-2 pt-0.5">
+                <div className="space-y-2 pt-1 border-t border-gray-100 dark:border-gray-800">
                   {data.etfs.map((etf) =>
                     rationaleMap[etf] ? (
-                      <div key={etf}>
-                        <span className="text-[11px] font-semibold text-foreground">{etf}</span>
+                      <div key={etf} className="text-xs">
+                        <span className="font-semibold text-foreground">{etf}</span>
                         <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
                           {rationaleMap[etf]}
                         </p>
@@ -109,20 +121,20 @@ export function AssetAllocationCards({ phase, recommendedSectors, sectorRational
                   )}
                 </div>
               ) : (
-                <div className="space-y-0.5">
+                <div className="space-y-1 pt-1 border-t border-gray-100 dark:border-gray-800">
                   {sectors.map((s) => (
-                    <p key={s} className="text-[11px] text-muted-foreground leading-tight">
-                      · {s}
+                    <p key={s} className="text-xs text-muted-foreground leading-tight">
+                      • {s}
                     </p>
                   ))}
                 </div>
               )}
+            </div>
 
-              <p className="text-[10px] text-muted-foreground/70 pt-1">
-                Yield curve: {data.yieldCurve}
-              </p>
-            </CardContent>
-          </Card>
+            <p className="text-[10px] text-muted-foreground/70 pt-3 mt-3 border-t border-gray-100 dark:border-gray-800">
+              Yield curve: <span className="font-medium text-foreground">{data.yieldCurve}</span>
+            </p>
+          </div>
         );
       })}
     </div>
