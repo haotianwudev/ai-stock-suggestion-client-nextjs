@@ -165,22 +165,19 @@ export function GexChartView({
       puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
     }
 
-    // Call Wall / Put Wall: the strike carrying the most resting open interest on each side —
-    // the same definition the Positioning tab's HUD cards use, just also plotted here since a
-    // wall's location is exactly the kind of thing worth reading alongside GEX (heavy OI at a
-    // strike is usually *why* gamma concentrates there). Reuses flipFlatContracts, which already
-    // flattens whichever scope is active (single expiration or summed across all of them) into
-    // one list — just needs OI summed per strike per side rather than per (strike, expiration).
-    let callWallStrike: number | null = null, maxCallOI = 0;
-    let putWallStrike: number | null = null, maxPutOI = 0;
-    const callOIByStrike = new Map<number, number>();
-    const putOIByStrike = new Map<number, number>();
-    flipFlatContracts.forEach(({ strike, openInterest, isCall }) => {
-      const map = isCall ? callOIByStrike : putOIByStrike;
-      map.set(strike, (map.get(strike) || 0) + openInterest);
+    // Call Wall / Put Wall: the strike where gamma exposure itself peaks on each side — the
+    // standard "GEX wall" definition, and consistent with the gamma-flip line above (both driven
+    // by actual dealer gamma, not raw resting open interest). Raw OI is the wrong proxy here: a
+    // deep ITM/OTM strike can carry huge legacy OI while contributing almost no gamma, which let
+    // the wall land anywhere — including below the flip point, an ordering that shouldn't happen
+    // since both are gamma-driven quantities. Reuses `rows`, which already carries callGex/putGex
+    // per strike for whichever scope is active (single expiration or summed across all of them).
+    let callWallStrike: number | null = null, maxCallGex = 0;
+    let putWallStrike: number | null = null, maxPutGex = 0;
+    rows.forEach(({ strike, callGex, putGex }) => {
+      if (callGex > maxCallGex) { maxCallGex = callGex; callWallStrike = strike; }
+      if (putGex > maxPutGex) { maxPutGex = putGex; putWallStrike = strike; }
     });
-    callOIByStrike.forEach((oi, strike) => { if (oi > maxCallOI) { maxCallOI = oi; callWallStrike = strike; } });
-    putOIByStrike.forEach((oi, strike) => { if (oi > maxPutOI) { maxPutOI = oi; putWallStrike = strike; } });
 
     const simNetGexAt = (simSpot: number): number => {
       let total = 0;
