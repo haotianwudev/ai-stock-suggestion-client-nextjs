@@ -25,10 +25,25 @@ import {
 import { Send, Loader2, Code2, Check } from "lucide-react";
 import { ChatMarkdown } from "./chat-markdown";
 import { TOOL_UI, parseEnvelope, ToolInspector } from "./tool-ui";
+import { DelegatePersonaCard, DelegateParallelPersonaCard } from "./tool-ui/delegate-persona-card";
 import { ModelSelector } from "./model-selector";
 import { cn } from "@/lib/utils";
 
 const AGENT_API_URL = process.env.NEXT_PUBLIC_AGENT_API_URL ?? "http://localhost:8000";
+
+// The chat always talks to SOPHIE (the `supervisor` profile, core/profiles.py) — she plans and
+// delegates to specialist agents (option strategist, quant, ...) herself via the delegate/
+// delegate_parallel tools rather than the user manually picking a profile chip. See
+// docs/SOPHIE_AGENT.md's "Persona-per-delegation" section for the full design.
+const SOPHIE_PROFILE = "supervisor";
+const SOPHIE_DEFAULT_MODEL = "deepseek-chat";
+const SOPHIE_DEFAULT_PROVIDER = "DeepSeek";
+
+export interface AgentPersona {
+  displayName: string;
+  icon: string;
+  description?: string;
+}
 
 interface ChatConfig {
   verbose: boolean;
@@ -37,7 +52,11 @@ interface ChatConfig {
   setSelectedModel: (m: string) => void;
   selectedProvider: string;
   setSelectedProvider: (p: string) => void;
+  personas: Record<string, AgentPersona>;
+  sophiePersona: AgentPersona;
 }
+
+const DEFAULT_SOPHIE_PERSONA: AgentPersona = { displayName: "Sophie", icon: "✨" };
 
 export const ChatConfigContext = createContext<ChatConfig>({
   verbose: false,
@@ -46,15 +65,9 @@ export const ChatConfigContext = createContext<ChatConfig>({
   setSelectedModel: () => {},
   selectedProvider: "",
   setSelectedProvider: () => {},
+  personas: {},
+  sophiePersona: DEFAULT_SOPHIE_PERSONA,
 });
-
-const PROFILES = [
-  { key: "generalist", label: "Generalist", defaultModel: "deepseek-chat", defaultProvider: "DeepSeek" },
-  { key: "option_strategist", label: "Option Strategist", defaultModel: "deepseek-chat", defaultProvider: "DeepSeek" },
-  { key: "quant", label: "Quant", defaultModel: "deepseek-chat", defaultProvider: "DeepSeek" },
-  { key: "wiki_researcher", label: "Wiki Researcher", defaultModel: "qwen3.5:latest", defaultProvider: "Ollama" },
-  { key: "supervisor", label: "Supervisor", defaultModel: "deepseek-chat", defaultProvider: "DeepSeek" },
-] as const;
 
 function wrapToolUi(Component: ComponentType<{ ui: any }>): ToolCallMessagePartComponent {
   return (props) => {
@@ -96,9 +109,14 @@ function wrapToolUi(Component: ComponentType<{ ui: any }>): ToolCallMessagePartC
   };
 }
 
-const TOOL_BY_NAME: Record<string, ToolCallMessagePartComponent> = Object.fromEntries(
-  Object.entries(TOOL_UI).map(([name, Component]) => [name, wrapToolUi(Component)])
-);
+const TOOL_BY_NAME: Record<string, ToolCallMessagePartComponent> = {
+  ...Object.fromEntries(Object.entries(TOOL_UI).map(([name, Component]) => [name, wrapToolUi(Component)])),
+  // delegate/delegate_parallel return plain text (a specialist's final answer), never the
+  // {text, ui} envelope wrapToolUi()/parseEnvelope() expect, so they're registered directly
+  // rather than routed through the TOOL_UI/wrapToolUi path every other custom card uses.
+  delegate: DelegatePersonaCard as ToolCallMessagePartComponent,
+  delegate_parallel: DelegateParallelPersonaCard as ToolCallMessagePartComponent,
+};
 
 const TOOL_FALLBACK: ToolCallMessagePartComponent = (props) => {
   const { toolName, result, args, argsText, isError, status } = props as any;
@@ -116,13 +134,37 @@ const TOOL_FALLBACK: ToolCallMessagePartComponent = (props) => {
   );
 };
 
-export function ChatThread({
-  profile,
-  onProfileChange,
-}: {
-  profile: string;
-  onProfileChange: (p: string) => void;
-}) {
+export function ChatThread() {
+  const [personas, setPersonas] = useState<Record<string, AgentPersona>>({});
+  const [sophiePersona, setSophiePersona] = useState<AgentPersona>(DEFAULT_SOPHIE_PERSONA);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`${AGENT_API_URL}/agents`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        const list = Array.isArray(data.agents) ? data.agents : [];
+        setPersonas(
+          Object.fromEntries(
+            list.map((a: { key: string; displayName: string; icon: string; description?: string }) => [
+              a.key,
+              { displayName: a.displayName, icon: a.icon, description: a.description },
+            ])
+          )
+        );
+        if (data.supervisor?.displayName) {
+          setSophiePersona({ displayName: data.supervisor.displayName, icon: data.supervisor.icon ?? "✨" });
+        }
+      })
+      .catch(() => {
+        // Best-effort — DelegatePersonaCard's personaFor() fallback covers an empty registry.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const [selectedModel, setSelectedModel] = useState<string>(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("sophie_agent_model") || "";
@@ -163,10 +205,8 @@ export function ChatThread({
     });
   };
 
-  const activeProfileInfo = PROFILES.find((p) => p.key === profile) || PROFILES[0];
-
   const agentUrl = useMemo(() => {
-    const url = new URL(`${AGENT_API_URL}/agent/${profile}`);
+    const url = new URL(`${AGENT_API_URL}/agent/${SOPHIE_PROFILE}`);
     if (selectedModel) {
       url.searchParams.set("model", selectedModel);
     }
@@ -174,7 +214,7 @@ export function ChatThread({
       url.searchParams.set("provider", selectedProvider);
     }
     return url.toString();
-  }, [profile, selectedModel, selectedProvider]);
+  }, [selectedModel, selectedProvider]);
 
   const agent = useMemo(() => new HttpAgent({ url: agentUrl }), [agentUrl]);
   const runtime = useAgUiRuntime({ agent });
@@ -187,24 +227,33 @@ export function ChatThread({
       setSelectedModel,
       selectedProvider,
       setSelectedProvider,
+      personas,
+      sophiePersona,
     }),
-    [verbose, selectedModel, selectedProvider]
+    [verbose, selectedModel, selectedProvider, personas, sophiePersona]
   );
 
   return (
     <ChatConfigContext.Provider value={configValue}>
       <AssistantRuntimeProvider runtime={runtime}>
         <div className="flex flex-col h-full bg-white dark:bg-gray-900">
-          {/* Controls Bar: Profiles, Model Selector & Verbose Toggle */}
-          <div className="flex flex-col border-b border-gray-100 dark:border-gray-800 bg-[#FDFBF7]/60 dark:bg-[#121110]/60 p-2 gap-2 shrink-0">
-            {/* Top row: Model selector dropdown + Verbose toggle */}
-            <div className="flex items-center justify-between gap-2">
+          {/* Controls Bar: Model Selector & Verbose Toggle. No profile chips — the chat always
+              talks to SOPHIE, who delegates to specialists herself; see DelegatePersonaCard. */}
+          <div className="flex items-center justify-between gap-2 border-b border-gray-100 dark:border-gray-800 bg-[#FDFBF7]/60 dark:bg-[#121110]/60 p-2 shrink-0">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="text-base leading-none">{sophiePersona.icon}</span>
+              <span className="font-serif font-semibold text-sm text-gray-800 dark:text-gray-200 truncate">
+                {sophiePersona.displayName}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
               <ModelSelector
                 selectedModel={selectedModel}
                 selectedProvider={selectedProvider}
                 onModelChange={handleModelChange}
-                profileDefaultModel={activeProfileInfo.defaultModel}
-                profileDefaultProvider={activeProfileInfo.defaultProvider}
+                profileDefaultModel={SOPHIE_DEFAULT_MODEL}
+                profileDefaultProvider={SOPHIE_DEFAULT_PROVIDER}
               />
 
               <button
@@ -222,25 +271,6 @@ export function ChatThread({
                 <span>Verbose</span>
                 {verbose && <Check className="size-3 ml-0.5 text-[#A8672E] dark:text-[#D08F52]" />}
               </button>
-            </div>
-
-            {/* Bottom row: Profile Chips */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 no-scrollbar">
-              {PROFILES.map((p) => (
-                <button
-                  key={p.key}
-                  type="button"
-                  onClick={() => onProfileChange(p.key)}
-                  className={cn(
-                    "text-[11px] px-2.5 py-1 rounded-full whitespace-nowrap transition-colors select-none font-medium",
-                    profile === p.key
-                      ? "bg-[#A8672E] text-white dark:bg-[#D08F52] shadow-xs"
-                      : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-200/80 dark:hover:bg-gray-700/80"
-                  )}
-                >
-                  {p.label}
-                </button>
-              ))}
             </div>
           </div>
 

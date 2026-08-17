@@ -12,6 +12,25 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import Link from "next/link";
 
+// The model sometimes writes citation links as a full absolute URL (e.g. a GraphQL/article
+// query returned a canonical URL) rather than a relative path. A plain `href?.startsWith("/")`
+// check misses those and sends them down the target="_blank" branch below — a real new tab,
+// which boots a second empty ChatWidget and detaches the conversation from the one the user was
+// having. Resolving against window.location.origin catches the same-origin case either way, so
+// an in-app link is always a same-tab Link regardless of which form the model wrote it in.
+function toInternalPath(href?: string): string | null {
+  if (!href) return null;
+  if (href.startsWith("/")) return href;
+  if (typeof window === "undefined") return null;
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.origin !== window.location.origin) return null;
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return null;
+  }
+}
+
 const components: NonNullable<MarkdownTextPrimitiveProps["components"]> = {
   h1: ({ children }) => <h3 className="font-serif text-base font-bold text-gray-900 dark:text-gray-100 mt-3 mb-1.5">{children}</h3>,
   h2: ({ children }) => <h4 className="font-serif text-sm font-bold text-gray-900 dark:text-gray-100 mt-3 mb-1">{children}</h4>,
@@ -21,10 +40,10 @@ const components: NonNullable<MarkdownTextPrimitiveProps["components"]> = {
   ol: ({ children }) => <ol className="list-decimal pl-5 mb-2 space-y-0.5 text-sm text-gray-700 dark:text-gray-300">{children}</ol>,
   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
   a: ({ href, children }) => {
-    const isInternal = href?.startsWith("/");
+    const internalPath = toInternalPath(href);
     const cls = "text-[#A8672E] dark:text-[#D08F52] underline underline-offset-2 font-medium";
-    if (isInternal && href) {
-      return <Link href={href} className={cls}>{children}</Link>;
+    if (internalPath) {
+      return <Link href={internalPath} className={cls}>{children}</Link>;
     }
     return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}</a>;
   },

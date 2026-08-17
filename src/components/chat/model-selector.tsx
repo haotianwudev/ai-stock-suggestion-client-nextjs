@@ -20,6 +20,34 @@ interface ModelsResponse {
   default: { model_name: string; provider: string };
 }
 
+// The agent server's GET /models (sophie_agent/server/server.py) returns a flat
+// { models: [{ name, provider, displayName, supportsToolCalling, isLocal, pulled }],
+//   defaultModel, defaultProvider } — camelCase, ungrouped. This component's render logic
+// (and its FALLBACK_MODELS) is built around the grouped { ollama, remote, default } /
+// snake_case ModelItem shape instead, so the raw fetch response must be normalized before
+// it goes into state. Without this, `data.ollama`/`data.remote` are undefined on the real
+// response, silently emptying both lists down to just "Profile Default" in the dropdown.
+function normalizeModelsResponse(raw: unknown): ModelsResponse {
+  const list = Array.isArray((raw as { models?: unknown })?.models)
+    ? ((raw as { models: Record<string, unknown>[] }).models)
+    : [];
+  const toItem = (m: Record<string, unknown>): ModelItem => ({
+    model_name: String(m.name ?? ""),
+    display_name: String(m.displayName ?? m.name ?? ""),
+    provider: String(m.provider ?? ""),
+    supports_tool_calling: !!m.supportsToolCalling,
+    is_pulled: m.pulled === undefined ? undefined : !!m.pulled,
+  });
+  return {
+    ollama: list.filter((m) => m.isLocal).map(toItem),
+    remote: list.filter((m) => !m.isLocal).map(toItem),
+    default: {
+      model_name: String((raw as { defaultModel?: unknown })?.defaultModel ?? FALLBACK_MODELS.default.model_name),
+      provider: String((raw as { defaultProvider?: unknown })?.defaultProvider ?? FALLBACK_MODELS.default.provider),
+    },
+  };
+}
+
 const FALLBACK_MODELS: ModelsResponse = {
   ollama: [
     { model_name: "qwen3.5:latest", display_name: "qwen3.5:latest (local)", provider: "Ollama", supports_tool_calling: true, is_pulled: true },
@@ -64,7 +92,7 @@ export function ModelSelector({
       const res = await fetch(`${AGENT_API_URL}/models`);
       if (res.ok) {
         const data = await res.json();
-        setModelsData(data);
+        setModelsData(normalizeModelsResponse(data));
       }
     } catch {
       // Fallback silently if server offline

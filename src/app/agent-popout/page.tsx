@@ -12,7 +12,6 @@ const ChatThread = dynamic(
 const LOCAL_HOSTNAMES = ["localhost", "127.0.0.1"];
 
 export default function AgentPopoutPage() {
-  const [profile, setProfile] = useState("generalist");
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
@@ -54,7 +53,7 @@ export default function AgentPopoutPage() {
 
       {/* Main Chat Thread */}
       <div className="flex-1 min-h-0 relative">
-        <ChatThread profile={profile} onProfileChange={setProfile} />
+        <ChatThread />
       </div>
     </div>
   );

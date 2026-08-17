@@ -38,7 +38,6 @@ type ResizeDirection = "n" | "s" | "e" | "w" | "ne" | "nw" | "se" | "sw";
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [profile, setProfile] = useState("generalist");
   const [allowed, setAllowed] = useState(false);
 
   // Position & size state
@@ -365,7 +364,7 @@ export function ChatWidget() {
 
           {/* Main Chat Thread */}
           <div className="flex-1 min-h-0 relative">
-            <ChatThread profile={profile} onProfileChange={setProfile} />
+            <ChatThread />
           </div>
 
           {/* Resizing Edge Handles (Only active when not maximized) */}
