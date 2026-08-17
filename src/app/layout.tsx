@@ -7,6 +7,7 @@ import { ApolloWrapper } from "@/lib/apollo/apollo-wrapper";
 import { UserProvider } from "@/hooks/use-user";
 import { LanguageProvider } from "@/hooks/use-language";
 import { Toaster } from "@/components/ui/sonner";
+import { DevChatMount } from "@/components/chat/dev-chat-mount";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -129,6 +130,7 @@ export default function RootLayout({
             <ApolloWrapper>
               <UserProvider>
                 {children}
+                <DevChatMount />
               </UserProvider>
             </ApolloWrapper>
             <Toaster />

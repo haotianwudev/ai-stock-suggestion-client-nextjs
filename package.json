@@ -16,7 +16,11 @@
     "use:custom-gql": "node scripts/switch-gql.js --local --port"
   },
   "dependencies": {
+    "@ag-ui/client": "^0.0.57",
     "@apollo/client": "^3.13.8",
+    "@assistant-ui/react": "^0.15.14",
+    "@assistant-ui/react-ag-ui": "^0.0.54",
+    "@assistant-ui/react-markdown": "^0.14.10",
     "@hookform/resolvers": "^5.7.1",
     "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-progress": "^1.1.4",
