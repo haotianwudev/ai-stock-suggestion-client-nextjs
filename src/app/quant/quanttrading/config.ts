@@ -202,6 +202,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "anatomy-of-speed-modern-market-making-hft",
         },
         {
+          text: "Modern Topography of Quant Finance",
+          articleSlug: "modern-topography-quant-finance-institutional-trading",
+        },
+        {
           text: "WorldQuant Alpha Factory",
           articleSlug: "worldquant-alpha-factory-industrialized-quantitative-signal-generation",
         },

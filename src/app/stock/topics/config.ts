@@ -122,6 +122,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "david-tepper-contrarian-master-q3-2025-portfolio",
         },
         {
+          text: "Appaloosa's Q2 2026 13F (Aug 2026)",
+          articleSlug: "appaloosa-management-q2-2026-13f-institutional-analysis",
+        },
+        {
           text: "Buffett's Legacy and Succession (Nov 2025)",
           articleSlug: "buffett-legacy-berkshire-succession",
         },

@@ -12,6 +12,7 @@
 // sophie-pipeline/docs/SOPHIE_AGENT.md's Phase 2 verification steps.
 
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 const ChatWidget =
   process.env.NODE_ENV === "development"
@@ -19,6 +20,8 @@ const ChatWidget =
     : null;
 
 export function DevChatMount() {
+  const pathname = usePathname();
+  if (pathname === "/agent-popout" || pathname?.startsWith("/agent-popout/")) return null;
   if (!ChatWidget) return null;
   if (process.env.NEXT_PUBLIC_ENABLE_CHAT !== "true") return null;
   return <ChatWidget />;

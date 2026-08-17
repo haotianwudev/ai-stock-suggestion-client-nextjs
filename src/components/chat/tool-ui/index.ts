@@ -9,6 +9,7 @@ import { GexChart } from "./gex-chart";
 import { DataFrameTable } from "./dataframe-table";
 
 export { parseEnvelope, type ToolUiEnvelope } from "./envelope";
+export { ToolInspector, type ToolInspectorProps } from "./tool-inspector";
 
 export const TOOL_UI: Record<string, ComponentType<{ ui: any }>> = {
   build_strategy: StrategyLegsCard,
