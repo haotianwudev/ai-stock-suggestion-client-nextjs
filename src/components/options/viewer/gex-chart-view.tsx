@@ -258,8 +258,12 @@ export function GexChartView({
       let pVanna = 0, pCharm = 0;
       if (p?.impliedVolatilityMid && p.impliedVolatilityMid > 0 && T > 0) {
         const g = blackScholes(spotPrice, strike, T, SPX_DEFAULT_RATE, p.impliedVolatilityMid, 'Put', SPX_DEFAULT_DIV_YIELD);
-        pVanna = g.vanna * (p.openInterest || 0) * contractMultiplier;
-        pCharm = g.charm * (p.openInterest || 0) * contractMultiplier;
+        // Same "dealers short the puts customers bought" convention as putGex above. Needed here
+        // specifically because vanna is identical for calls and puts in Black-Scholes (see
+        // black-scholes.ts) — without this negation, cVanna+pVanna roughly doubles up on the same
+        // value instead of netting call/put dealer exposure against each other.
+        pVanna = -(g.vanna * (p.openInterest || 0) * contractMultiplier);
+        pCharm = -(g.charm * (p.openInterest || 0) * contractMultiplier);
       }
 
       return {
