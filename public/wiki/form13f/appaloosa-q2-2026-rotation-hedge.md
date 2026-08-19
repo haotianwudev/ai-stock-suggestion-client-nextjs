@@ -60,3 +60,4 @@ Appaloosa fully exited airlines (AAL, DAL, UAL) in Q1 2026, then reversed hard i
 
 - [Appaloosa Management Q2 2026 13F Institutional Analysis](/articles/appaloosa-management-q2-2026-13f-institutional-analysis)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQaNFHe2oxaBesB5RoQ10C7P83RzY7WOaiE9plng4TDSFUJ6jlo6bqx7dqkyWaAzC2D4SSgsOiM91z6/pub)
+- [Watch on YouTube](https://youtu.be/_G4VRhYf-Ig)
