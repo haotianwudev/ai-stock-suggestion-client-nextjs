@@ -51,7 +51,7 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
 
     useEffect(() => {
         if (selectedStrategyId) {
-            const found = strategies.find(s => s.id === selectedStrategyId);
+            const found = strategies.find(s => s.id === slugToStrategyId(selectedStrategyId));
             if (found) {
                 // If a strategy is explicitly passed in from an external tab/URL, show all or ensure it's visible
                 setFilter('All');
@@ -78,7 +78,11 @@ export const StrategyExplorer = ({ selectedStrategyId, onStrategySelect, onBack 
         }
     };
 
-    const selectedStrategy = selectedStrategyId ? strategies.find(s => s.id === selectedStrategyId) : undefined;
+    // selectedStrategyId arrives from the URL (the hyphenated slug, e.g. "long-call"),
+    // not the internal id (e.g. "long_call") -- convert before comparing.
+    const selectedStrategy = selectedStrategyId
+        ? strategies.find(s => s.id === slugToStrategyId(selectedStrategyId))
+        : undefined;
 
     if (selectedStrategy) {
         return <StrategyDetailShell strategy={selectedStrategy} onBack={onBack || (() => {})} />;
