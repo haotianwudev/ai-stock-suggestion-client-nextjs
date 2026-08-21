@@ -354,3 +354,42 @@ export interface ForumPostList {
   items: ForumPost[];
   totalCount: number;
 }
+// --- Volatility regime / variance risk premium (precomputed by sophie-pipeline) ---
+
+export type VolRegimeLabel =
+  | "Harvest"
+  | "Stressed Premium"
+  | "Thin"
+  | "Crisis";
+
+export interface VolRegimeDataPoint {
+  bizDate: string;
+  spxClose?: number;
+  vix?: number;
+  vix3m?: number;
+  realizedVol20d?: number;
+  realizedVol10d?: number;
+  vrp?: number;
+  vrpZ?: number;
+  vrpPercentile?: number;
+  vixRank?: number;
+  termSlope?: number;
+  termStructure?: string;
+  regime: VolRegimeLabel | string;
+  regimeScore?: number;
+}
+
+export interface VolRegimeStat {
+  regime: string;
+  days: number;
+  avgVrp?: number;
+  avgVix?: number;
+  avgVixRank?: number;
+  pctOfDays?: number;
+}
+
+export interface VolRegimeResult {
+  latestData?: VolRegimeDataPoint;
+  history: VolRegimeDataPoint[];
+  stats: VolRegimeStat[];
+}

@@ -523,3 +523,42 @@ export const GET_INVESTMENT_CLOCK = gql`
     }
   }
 `; 
+export const GET_VOL_REGIME = gql`
+  query GetVolRegime($days: Int) {
+    volRegime(days: $days) {
+      latestData {
+        bizDate
+        spxClose
+        vix
+        vix3m
+        realizedVol20d
+        realizedVol10d
+        vrp
+        vrpZ
+        vrpPercentile
+        vixRank
+        termSlope
+        termStructure
+        regime
+        regimeScore
+      }
+      history {
+        bizDate
+        vix
+        realizedVol20d
+        vrp
+        vrpZ
+        vixRank
+        regime
+      }
+      stats {
+        regime
+        days
+        avgVrp
+        avgVix
+        avgVixRank
+        pctOfDays
+      }
+    }
+  }
+`;
