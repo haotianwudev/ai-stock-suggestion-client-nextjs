@@ -372,6 +372,10 @@ export interface VolRegimeDataPoint {
   vrp?: number;
   vrpZ?: number;
   vrpPercentile?: number;
+  vrpVariance?: number;
+  downsideVarianceShare?: number;
+  fwdRealizedVol21d?: number;
+  fwdEarnedPremium?: number;
   vixRank?: number;
   termSlope?: number;
   termStructure?: string;
@@ -383,13 +387,33 @@ export interface VolRegimeStat {
   regime: string;
   days: number;
   avgVrp?: number;
+  avgVrpVariance?: number;
+  avgDownsideVarianceShare?: number;
   avgVix?: number;
   avgVixRank?: number;
   pctOfDays?: number;
+}
+
+export interface VrpQuintileStat {
+  quintile: number;
+  days: number;
+  vrpZMin?: number;
+  vrpZMax?: number;
+  avgForwardEarned?: number;
+  hitRatePct?: number;
+}
+
+export interface RegimeTransition {
+  fromRegime: string;
+  toRegime: string;
+  count: number;
+  probability: number;
 }
 
 export interface VolRegimeResult {
   latestData?: VolRegimeDataPoint;
   history: VolRegimeDataPoint[];
   stats: VolRegimeStat[];
+  vrpQuintiles: VrpQuintileStat[];
+  transitions: RegimeTransition[];
 }

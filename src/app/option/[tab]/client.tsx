@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { OptionsViewer } from "@/components/options/options-viewer";
 import { SpxPayoffBuilder } from "@/components/options/spx-payoff-builder";
+import { VrpResearchTab } from "@/components/options/vrp-research-tab";
 import { VRPContent } from "../topics/vrp";
 import { Option101Content } from "../topics/option101";
 import { GreeksContent } from "../topics/greeks";
@@ -163,7 +164,7 @@ function ViewerTab() {
   const [activeTool, setActiveTool] = useState('chain');
   return (
     <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
-      <TabsList className="grid w-full grid-cols-2 mb-5 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
+      <TabsList className="grid w-full grid-cols-3 mb-5 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
         <TabsTrigger
           value="chain"
           className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
@@ -175,6 +176,12 @@ function ViewerTab() {
           className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
         >
           SPX Payoff Builder
+        </TabsTrigger>
+        <TabsTrigger
+          value="vrp"
+          className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
+        >
+          VRP Research
         </TabsTrigger>
       </TabsList>
 
@@ -194,6 +201,21 @@ function ViewerTab() {
           </div>
           <SpxPayoffBuilder />
         </div>
+      </TabsContent>
+
+      <TabsContent value="vrp" className="mt-0">
+        <div className="space-y-1 mb-4">
+          <h2 className="text-xl md:text-2xl font-serif font-bold text-slate-900 dark:text-slate-100">
+            Volatility Regime & VRP Research
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Today&apos;s premium-selling regime, precomputed from 26 years of SPX/VIX history, plus
+            the decomposition research behind it: what the premium is actually worth once
+            convexity is stripped out, whether its level predicts what you earn, and what it
+            predicts instead.
+          </p>
+        </div>
+        <VrpResearchTab />
       </TabsContent>
     </Tabs>
   );

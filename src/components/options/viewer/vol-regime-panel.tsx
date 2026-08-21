@@ -361,7 +361,9 @@ export function VolRegimePanel() {
               <thead>
                 <tr className="border-b border-gray-200 dark:border-gray-800 text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   <th className="px-4 py-2 text-left font-semibold">Regime</th>
-                  <th className="px-4 py-2 text-right font-semibold">Avg VRP</th>
+                  <th className="px-4 py-2 text-right font-semibold">Avg VRP (vol pts)</th>
+                  <th className="px-4 py-2 text-right font-semibold">Avg VRP (variance pts)</th>
+                  <th className="px-4 py-2 text-right font-semibold">Downside var. share</th>
                   <th className="px-4 py-2 text-right font-semibold">Avg VIX</th>
                   <th className="px-4 py-2 text-right font-semibold">Sessions</th>
                   <th className="px-4 py-2 text-right font-semibold">% of time</th>
@@ -407,6 +409,16 @@ export function VolRegimePanel() {
                         {(s.avgVrp ?? 0) >= 0 ? "+" : ""}
                         {fmt(s.avgVrp, 2)}
                       </td>
+                      <td
+                        className="px-4 py-2.5 text-right font-mono tabular-nums"
+                        style={{ color: (s.avgVrpVariance ?? 0) >= 0 ? "#059669" : "#E11D48" }}
+                      >
+                        {(s.avgVrpVariance ?? 0) >= 0 ? "+" : ""}
+                        {fmt(s.avgVrpVariance, 2)}
+                      </td>
+                      <td className="px-4 py-2.5 text-right font-mono tabular-nums text-slate-600 dark:text-slate-400">
+                        {fmt((s.avgDownsideVarianceShare ?? 0) * 100, 0, "%")}
+                      </td>
                       <td className="px-4 py-2.5 text-right font-mono tabular-nums text-slate-600 dark:text-slate-400">
                         {fmt(s.avgVix, 1)}
                       </td>
@@ -422,9 +434,17 @@ export function VolRegimePanel() {
               </tbody>
             </table>
           </div>
-          <div className="px-4 py-2.5 border-t border-gray-100 dark:border-gray-800/60 text-[11px] text-slate-500 dark:text-slate-400">
-            Historical averages, not a forecast. Regime is computed from SPX and VIX closes
-            through the prior session.
+          <div className="px-4 py-2.5 border-t border-gray-100 dark:border-gray-800/60 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+            <p>
+              &quot;Vol pts&quot; is VIX minus realized vol directly — the number usually quoted, but it
+              overstates the true premium (Jensen&apos;s inequality: E[σ] ≠ √E[σ²]). &quot;Variance pts&quot;
+              (VIX² − realized²) is what a variance swap actually pays, and shrinks Harvest&apos;s
+              headline premium by roughly two-thirds.
+            </p>
+            <p>
+              Historical averages, not a forecast. Regime is computed from SPX and VIX closes
+              through the prior session.
+            </p>
           </div>
         </div>
       ) : null}

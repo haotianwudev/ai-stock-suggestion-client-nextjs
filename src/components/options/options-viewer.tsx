@@ -34,7 +34,6 @@ import {
 import { OptionsMetricsBar } from './viewer/options-metrics-bar';
 import { OptionsMatrixTable, OptionContractData } from './viewer/options-matrix-table';
 import { VolatilityChartView } from './viewer/volatility-chart-view';
-import { VolRegimePanel } from './viewer/vol-regime-panel';
 import { PositioningChartView } from './viewer/positioning-chart-view';
 import { GexChartView } from './viewer/gex-chart-view';
 
@@ -518,11 +517,6 @@ export function OptionsViewer() {
 
           {/* Tab 2: SPX Volatility Viewer */}
           <TabsContent value="volatility" className="mt-0 space-y-3">
-            {/* Regime context first: is premium worth selling today, before
-                looking at which strike to sell. */}
-            {/* Regime context first: is premium worth selling today, before
-                looking at which strike to sell. */}
-            <VolRegimePanel />
             <VolatilityChartView
               currentExpiration={currentExpData.expiration}
               expirations={data.expirationDates}

@@ -536,6 +536,10 @@ export const GET_VOL_REGIME = gql`
         vrp
         vrpZ
         vrpPercentile
+        vrpVariance
+        downsideVarianceShare
+        fwdRealizedVol21d
+        fwdEarnedPremium
         vixRank
         termSlope
         termStructure
@@ -555,9 +559,25 @@ export const GET_VOL_REGIME = gql`
         regime
         days
         avgVrp
+        avgVrpVariance
+        avgDownsideVarianceShare
         avgVix
         avgVixRank
         pctOfDays
+      }
+      vrpQuintiles {
+        quintile
+        days
+        vrpZMin
+        vrpZMax
+        avgForwardEarned
+        hitRatePct
+      }
+      transitions {
+        fromRegime
+        toRegime
+        count
+        probability
       }
     }
   }
