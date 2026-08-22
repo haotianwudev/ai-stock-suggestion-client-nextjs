@@ -15,13 +15,17 @@ Every signal here is **precomputed daily in the data pipeline**, not derived in 
 
 ## Data Sources
 
-| Series | Source | Coverage |
-|---|---|---|
-| SPX daily OHLCV | Yahoo Finance (`^GSPC`) → Postgres | 2000-01-03 onward |
-| VIX daily OHLCV | Yahoo Finance (`^VIX`) → Postgres | 2000-01-03 onward |
-| VIX3M (3-month VIX) | FRED `VXVCLS` | 2007-12-04 onward |
+| Series | Source | Coverage | Used for |
+|---|---|---|---|
+| SPX daily OHLCV (`^GSPC`) | Yahoo Finance → Postgres `prices` table | 2000-01-03 onward | Realized vol input (`RV_20`, `fwd_earned_premium`) and the entry/backtest overlay price |
+| VIX daily OHLCV (`^VIX`) | Yahoo Finance → Postgres `prices` table | 2000-01-03 onward | Implied vol side of VRP, `vix_rank`, entry price shown on the backtest chart |
+| VIX3M (3-month VIX) | FRED series `VXVCLS` | 2007-12-04 onward | `term_slope`, term-structure/backwardation classification |
 
-Two notes on sourcing. Yahoo no longer serves `^VIX3M` history (it returns a single row, and the legacy `^VXV` symbol is dead), so term structure comes from FRED. And the 2000 start is a deliberate choice, not a data ceiling — VIX itself reaches back to 1990, but VIX3M only begins in 2007, so every row before that is already classified on one axis instead of two. Extending further would deepen that inconsistency rather than fix it.
+This is a distinct data path from the **live/real-time** VIX and SPX shown elsewhere in the Options Viewer (e.g. the GEX tab's stat tiles), which are streamed from Cboe's public delayed-quotes CDN, not from this Postgres history — the two are sourced differently because one needs 25 years of daily closes and the other needs a current snapshot.
+
+Both SPX and VIX are pulled with the **same ticker mapping and backfill job** (`YFINANCE_TICKER_MAP` in the pipeline's upload tool), so they are aligned to the same trading calendar row-for-row — there is no date-join step where the two series could silently drift apart.
+
+Two notes on sourcing. Yahoo no longer serves `^VIX3M` history (it returns a single row, and the legacy `^VXV` symbol is dead), so term structure comes from FRED instead. And the 2000 start is a deliberate choice, not a data ceiling — VIX itself reaches back to 1990, but VIX3M only begins in 2007, so every row before that is already classified on one axis instead of two. Extending further would deepen that inconsistency rather than fix it.
 
 ## Core Signals
 
@@ -34,6 +38,18 @@ $$
 $$
 \text{VRP} = \text{VIX} - \text{RV}_{20}
 $$
+
+### How realized vol is actually calculated
+
+Spelled out, since "stdev of returns" hides a few choices that change the number materially:
+
+1. **Input.** Daily SPX closing prices from the Postgres `prices` table (see Data Sources above) — not intraday, not adjusted for the overnight session in any special way. Close-to-close only.
+2. **Log returns.** $r_t = \ln(S_t / S_{t-1})$ for each of the trailing 20 trading sessions (calendar days are irrelevant here; this is 20 *sessions*, so it stretches over roughly 4 calendar weeks depending on holidays).
+3. **Sample standard deviation**, not population — divides by $n-1 = 19$, not $n = 20$. This matters slightly more in short windows; it's the standard unbiased-estimator choice and matches what the backtest's client-side recomputation was verified against.
+4. **Annualize** by $\sqrt{252}$ (252 trading days/year), the same convention VIX itself uses, so the two are on a comparable scale.
+5. **Scale to vol points** by multiplying by 100 (i.e. report 15.3, not 0.153), matching how VIX is quoted.
+
+The **forward-looking version** used by the backtest (`fwd_earned_premium`, and the client-side recomputation for other holding periods — see Backtest View below) is the *identical formula* applied to the **following** $N$ sessions instead of the trailing 20: same log-return construction, same sample stdev (ddof=1), same $\sqrt{252}$ annualization. Only the direction of the window changes — trailing for the tradeable "quoted" signal, forward for the hindsight "actually earned" one. Keeping the formula identical in both directions is deliberate: it means the "quoted vs. earned" gap documented later on this page is a genuine finding about mean reversion, not an artifact of two different vol estimators being compared.
 
 Supporting context measures:
 
