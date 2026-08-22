@@ -79,8 +79,6 @@ const REGIME_STYLES: Record<string, {
 
 const FALLBACK_STYLE = REGIME_STYLES["Thin"];
 
-type VrpTimeframe = '3M' | '6M' | '1Y' | 'ALL';
-
 function fmt(n: number | undefined | null, digits = 2, suffix = ""): string {
   if (n === undefined || n === null || Number.isNaN(n)) return "—";
   return `${n.toFixed(digits)}${suffix}`;
@@ -122,14 +120,15 @@ function StatTile({ label, value, sub, accent, hint }: StatTileProps) {
 }
 
 export function VolRegimePanel() {
-  const [timeframe, setTimeframe] = useState<VrpTimeframe>('1Y');
   const [showVix, setShowVix] = useState(true);
   const [showRealized, setShowRealized] = useState(true);
   const [showVrpArea, setShowVrpArea] = useState(true);
 
+  // Request 280 days so the initial 20-day warmup window needed to compute rolling realized vol
+  // is absorbed behind the scenes, leaving a full 252 trading sessions (1 year) of complete data.
   const { data, loading, error } = useQuery<{ volRegime: VolRegimeResult }>(
     GET_VOL_REGIME,
-    { variables: { days: 500 }, fetchPolicy: "cache-and-network" }
+    { variables: { days: 280 }, fetchPolicy: "cache-and-network" }
   );
 
   const result = data?.volRegime;
@@ -137,14 +136,12 @@ export function VolRegimePanel() {
 
   const rawHistory = result?.history ?? [];
 
-  // Filter history based on selected timeframe
+  // Filter out any uncomputed warmup days and take exactly the trailing 252 sessions (1 trading year)
   const filteredHistory = useMemo(() => {
     if (!rawHistory.length) return [];
-    if (timeframe === '3M') return rawHistory.slice(-63);
-    if (timeframe === '6M') return rawHistory.slice(-126);
-    if (timeframe === '1Y') return rawHistory.slice(-252);
-    return rawHistory;
-  }, [rawHistory, timeframe]);
+    const validHistory = rawHistory.filter(d => d.realizedVol20d != null && d.vrp != null);
+    return validHistory.slice(-252);
+  }, [rawHistory]);
 
   // Chart data with separated positive and negative VRP for dual-color gradient fills
   const chartData = useMemo(() => {
@@ -439,26 +436,14 @@ export function VolRegimePanel() {
               </button>
             </div>
 
-            {/* Timeframe Selector Buttons */}
-            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
-              {(['3M', '6M', '1Y', 'ALL'] as VrpTimeframe[]).map(tf => (
-                <button
-                  key={tf}
-                  onClick={() => setTimeframe(tf)}
-                  className={`px-3 py-1 rounded-md transition-all font-mono ${
-                    timeframe === tf
-                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  {tf}
-                </button>
-              ))}
+            {/* 1-Year Scope Badge */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 px-3 py-1 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300">
+              Trailing 1 Year (252 Sessions)
             </div>
           </div>
         </div>
 
-        {/* Statistical Summary HUD Bar across active window */}
+        {/* Statistical Summary HUD Bar across active 1Y window */}
         {windowStats && (
           <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
             <div className="flex flex-wrap items-center gap-4">
@@ -475,7 +460,7 @@ export function VolRegimePanel() {
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-slate-400">{timeframe} Range:</span>
+                <span className="text-slate-400">1Y Range:</span>
                 <span className="text-slate-700 dark:text-slate-300">
                   {windowStats.minVrp.toFixed(1)} → +{windowStats.maxVrp.toFixed(1)} pts
                 </span>
