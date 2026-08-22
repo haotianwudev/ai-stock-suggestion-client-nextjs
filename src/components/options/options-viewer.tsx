@@ -83,8 +83,8 @@ function isFriday(dateStr: string): boolean {
 // lives on Fridays, so mid-week cycles at 3-5 DTE just pad the strip.
 const KEY_SHORT_TERM_MAX_DTE = 2;  // today + next session, any weekday
 const KEY_WEEKLY_COUNT = 4;        // next 4 Friday weeklies
-const KEY_MONTHLY_COUNT = 6;       // next 6 standard monthlies (~6 months out)
-const KEY_LEAPS_TARGET_DTES = [365, 730]; // ~1y and ~2y long-term anchors
+const KEY_MONTHLY_COUNT = 4;       // next 4 standard monthlies (~4 months out)
+const KEY_LEAPS_TARGET_DTES = [365]; // ~1y long-term anchor
 
 /** Compact open-interest label, e.g. 5354461 -> "5.4M", 404444 -> "404K". */
 function formatOpenInterest(oi: number): string {
@@ -143,6 +143,19 @@ function selectKeyExpirations<T extends ExpirationLike>(all: T[]): T[] {
 
   return all.filter(e => keep.has(e.expiration));
 }
+
+/** Default landing expiration: the standard monthly nearest 30 DTE — the most liquid
+ *  "front month" cycle — rather than expirationDates[0], which is whatever expires
+ *  soonest (often today's 0DTE). Falls back to the nearest-dated cycle if the chain
+ *  has no monthly for some reason. */
+function pickDefaultExpiration<T extends ExpirationLike>(expirations: T[]): T | undefined {
+  const monthlies = expirations.filter(e => isThirdFriday(e.expiration));
+  const pool = monthlies.length > 0 ? monthlies : expirations;
+  return pool.reduce<T | undefined>((best, e) =>
+    !best || Math.abs(e.daysToExpiration - 30) < Math.abs(best.daysToExpiration - 30) ? e : best
+  , undefined);
+}
+
 type DataSource = 'historical' | 'live';
 
 export function OptionsViewer() {
@@ -184,7 +197,8 @@ export function OptionsViewer() {
         if (adapted.expirationDates && adapted.expirationDates.length > 0) {
           setSelectedExpiration(prev => {
             const exists = adapted.expirationDates.some((e: any) => e.expiration === prev);
-            return exists ? prev : adapted.expirationDates[0].expiration;
+            if (exists) return prev;
+            return (pickDefaultExpiration(adapted.expirationDates) ?? adapted.expirationDates[0]).expiration;
           });
         }
       } else {
@@ -198,7 +212,8 @@ export function OptionsViewer() {
         if (result.expirationDates && result.expirationDates.length > 0) {
           setSelectedExpiration(prev => {
             const exists = result.expirationDates.some(e => e.expiration === prev);
-            return exists ? prev : result.expirationDates[0].expiration;
+            if (exists) return prev;
+            return (pickDefaultExpiration(result.expirationDates) ?? result.expirationDates[0]).expiration;
           });
         }
 
@@ -506,7 +521,7 @@ export function OptionsViewer() {
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('key')}
-                title="0DTE plus the next session, 4 Friday weeklies, 6 standard monthlies, and ~1y/~2y long-term anchors — where SPX open interest actually sits"
+                title="0DTE plus the next session, 4 Friday weeklies, 4 standard monthlies, and a ~1y long-term anchor — where SPX open interest actually sits"
                 className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'key'
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
