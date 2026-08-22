@@ -132,6 +132,37 @@ Stressed Premium is roughly **5× more likely** to become Crisis than Harvest is
 
 The practical conclusion: use the regime for **position sizing and risk**, not for timing entries. The level of VRP tells you little about the next month's return; the regime label tells you a great deal about the chance of the tape turning against a short-vol position.
 
+## VIX Distribution vs. VRP
+
+The chart's third mode buckets the window's sessions by VIX level and shows, for each bucket, how often that level occurred alongside two different premium measures. It answers the question traders reach for most naturally — *does selling volatility pay better when VIX is high?* — which is distinct from the `vrp_z` test above (that one asks whether the premium being rich **relative to its own history** predicts anything; this asks about the **absolute level**).
+
+The two measures are deliberately different:
+
+- **Quoted VRP** — VIX minus the *trailing* 20-session realized vol. What the premium looked like at the time.
+- **Actually earned** — VIX minus the *forward* 21-session realized vol. What a seller of that session's implied vol actually collected.
+
+Full-sample results (2000–2026, 6,575 sessions):
+
+| VIX | Sessions | Avg realized | Quoted VRP | Actually earned | Gap |
+|---|---|---|---|---|---|
+| <12 | 558 | 7.5 | +3.52 | +2.29 | **−1.23** |
+| 12–15 | 1,540 | 10.3 | +3.12 | +2.33 | −0.79 |
+| 15–20 | 2,013 | 13.1 | +4.16 | +3.70 | −0.46 |
+| 20–25 | 1,217 | 18.2 | +4.07 | +4.18 | +0.11 |
+| 25–30 | 625 | 23.1 | +4.02 | +4.92 | +0.90 |
+| 30–40 | 429 | 29.8 | +3.72 | +5.37 | +1.65 |
+| 40+ | 193 | 54.8 | **−3.97** | **+4.40** | **+8.37** |
+
+Two things stand out, and both invert the naive reading.
+
+**Quoted VRP is almost flat across VIX levels** (+3.1 to +4.2) right up until VIX 40+, where it turns sharply *negative*. On the quoted number alone, crisis-level VIX looks like the worst possible time to sell premium.
+
+**But what a seller actually earned rises steadily with VIX** — +2.29 in the calmest bucket to +5.37 at VIX 30–40 — and at VIX 40+, despite quoted VRP reading −3.97, sellers actually collected **+4.40**.
+
+The mechanism is mean reversion in the measurement window. Quoted VRP compares implied against *trailing* realized, which at VIX 40+ is already enormously elevated (54.8), so the spread looks negative. Forward realized over the following 21 sessions mean-reverts substantially lower, so the seller collects far more than the quote implied. Low-VIX buckets run the other way: trailing realized is unusually calm, quoted VRP flatters, and forward realized drifts up.
+
+This does **not** contradict the near-zero `vrp_z` timing result above — they measure different things. `vrp_z` normalizes VRP against its own recent history and has no forward power; absolute VIX level does carry information about forward-earned premium. Nor does it make high-VIX selling "safe": the 40+ bucket has the *lowest* share of positive-quoted-VRP sessions (44%) and is exactly where the backtest's worst trades cluster (see the next section) — the same COVID and Lehman entries that lost 30–55 points. The honest summary is that high VIX offered a **larger average premium with far heavier tails**, which is a sizing argument, not a green light.
+
 ## Backtest View
 
 The VRP Research tab's chart has two modes. **Levels** plots implied vs. realized over the selected window. **Backtest** runs the canonical VRP harvest and plots its result: sell this session's implied vol, hold ~21 sessions to expiry, collect implied minus subsequently-realized, repeat.
@@ -166,6 +197,8 @@ The shape is the classic short-vol profile: a long, steady climb punctuated by r
 - VRP *level* has almost no power to time entries (IC ≈ 0.008), despite the premium itself being real and persistent.
 - The regime label is a **risk** signal: Stressed Premium carries a 26.7% chance of becoming Crisis within a month versus 5.7% from Harvest.
 - The Backtest view harvests on non-overlapping ~monthly windows because `fwd_earned_premium` overlaps day-to-day — summing it daily would inflate the curve ~21×.
+- Quoted VRP measures against *trailing* realized vol, earned premium against *forward* realized. At VIX 40+ the two disagree by 8+ vol points and even flip sign — quoted reads −3.97 while sellers actually collected +4.40, because trailing realized is elevated and forward realized mean-reverts.
+- Absolute VIX level *does* carry forward information (earned premium rises from +2.29 to +5.37 across the VIX range) even though `vrp_z` does not — different signals, not a contradiction. High VIX means a bigger average premium with much heavier tails.
 - Full-sample backtest: 311 trades, +3.58 avg, 85% win rate, −86 pt max drawdown, with the worst trades landing on COVID and Lehman — steady climb, rare severe losses.
 
 ## Related Reading

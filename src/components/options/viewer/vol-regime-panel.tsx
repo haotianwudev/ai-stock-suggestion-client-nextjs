@@ -80,8 +80,35 @@ const REGIME_STYLES: Record<string, {
 
 const FALLBACK_STYLE = REGIME_STYLES["Thin"];
 
-type VrpTimeframe = '3M' | '6M' | '1Y' | '2Y' | '5Y' | 'ALL';
-type VrpChartMode = 'levels' | 'backtest';
+type VrpTimeframe = '3M' | '6M' | '1Y' | '2Y' | '5Y' | 'ALL' | 'CUSTOM';
+type VrpChartMode = 'levels' | 'backtest' | 'distribution';
+
+// VIX level buckets for the distribution view. Boundaries follow the levels practitioners
+// actually talk in (sub-12 complacency, the 15-20 "normal" band, 30+ crisis) rather than
+// equal-width bins, which would put ~90% of sessions in two buckets and strand the tail.
+const VIX_BUCKETS: { label: string; min: number; max: number }[] = [
+  { label: '<12',   min: 0,  max: 12 },
+  { label: '12–15', min: 12, max: 15 },
+  { label: '15–20', min: 15, max: 20 },
+  { label: '20–25', min: 20, max: 25 },
+  { label: '25–30', min: 25, max: 30 },
+  { label: '30–40', min: 30, max: 40 },
+  { label: '40+',   min: 40, max: Infinity },
+];
+
+// Earliest date with a computable VRP. The underlying table starts 2000-01-03, but the
+// first rows are consumed by the 20-session realized-vol warmup, so the first row with a
+// non-null vrp/realizedVol20d is 2000-05-01. Used to bound the custom date pickers.
+const EARLIEST_VRP_DATE = '2000-05-01';
+
+const toISODate = (d: Date) => d.toISOString().slice(0, 10);
+
+/** Calendar days between an ISO date and today, floored at 0. */
+function daysSince(isoDate: string): number {
+  const then = new Date(`${isoDate}T00:00:00Z`).getTime();
+  if (Number.isNaN(then)) return 0;
+  return Math.max(0, Math.ceil((Date.now() - then) / 86_400_000));
+}
 
 // The API window is expressed in CALENDAR days, but the chart is sized in TRADING
 // sessions. Under-requesting silently truncates the window rather than erroring: the
@@ -98,13 +125,16 @@ const calendarDaysFor = (sessions: number) => Math.ceil(sessions * 1.55) + 45;
 // vol_regime_data begins 2000-01-03 (~26 years); this covers it with room to grow.
 const ALL_HISTORY_DAYS = 20000;
 
+// `sessions: null` means "no trailing-session trim" -- All and Custom are bounded by
+// available data / explicit dates rather than by a session count.
 const TIMEFRAMES: Record<VrpTimeframe, { label: string; sessions: number | null; fetchDays: number }> = {
-  '3M':  { label: '3M',  sessions: 63,   fetchDays: calendarDaysFor(63) },
-  '6M':  { label: '6M',  sessions: 126,  fetchDays: calendarDaysFor(126) },
-  '1Y':  { label: '1Y',  sessions: 252,  fetchDays: calendarDaysFor(252) },
-  '2Y':  { label: '2Y',  sessions: 504,  fetchDays: calendarDaysFor(504) },
-  '5Y':  { label: '5Y',  sessions: 1260, fetchDays: calendarDaysFor(1260) },
-  'ALL': { label: 'All', sessions: null, fetchDays: ALL_HISTORY_DAYS },
+  '3M':     { label: '3M',     sessions: 63,   fetchDays: calendarDaysFor(63) },
+  '6M':     { label: '6M',     sessions: 126,  fetchDays: calendarDaysFor(126) },
+  '1Y':     { label: '1Y',     sessions: 252,  fetchDays: calendarDaysFor(252) },
+  '2Y':     { label: '2Y',     sessions: 504,  fetchDays: calendarDaysFor(504) },
+  '5Y':     { label: '5Y',     sessions: 1260, fetchDays: calendarDaysFor(1260) },
+  'ALL':    { label: 'All',    sessions: null, fetchDays: ALL_HISTORY_DAYS },
+  'CUSTOM': { label: 'Custom', sessions: null, fetchDays: ALL_HISTORY_DAYS },
 };
 
 // Sessions per rebalance in the backtest view -- ~1 trading month, matching the horizon
@@ -186,11 +216,31 @@ export function VolRegimePanel() {
   const [timeframe, setTimeframe] = useState<VrpTimeframe>('1Y');
   const [chartMode, setChartMode] = useState<VrpChartMode>('levels');
 
+  // Custom range defaults to the trailing year, so switching to Custom starts from the
+  // same window the default preset shows rather than an empty/arbitrary one.
+  const today = useMemo(() => toISODate(new Date()), []);
+  const oneYearAgo = useMemo(() => {
+    const d = new Date();
+    d.setFullYear(d.getFullYear() - 1);
+    return toISODate(d);
+  }, []);
+  const [customStart, setCustomStart] = useState(oneYearAgo);
+  const [customEnd, setCustomEnd] = useState(today);
+
+  const isCustom = timeframe === 'CUSTOM';
+  const customRangeValid = !isCustom || (!!customStart && !!customEnd && customStart <= customEnd);
+
   const tf = TIMEFRAMES[timeframe];
+
+  // For a custom range, fetch back only as far as its start date rather than all 26 years.
+  const fetchDays = useMemo(() => {
+    if (!isCustom || !customRangeValid) return tf.fetchDays;
+    return Math.min(ALL_HISTORY_DAYS, daysSince(customStart) + 60);
+  }, [isCustom, customRangeValid, customStart, tf.fetchDays]);
 
   const { data, loading, error } = useQuery<{ volRegime: VolRegimeResult }>(
     GET_VOL_REGIME,
-    { variables: { days: tf.fetchDays }, fetchPolicy: "cache-and-network" }
+    { variables: { days: fetchDays }, fetchPolicy: "cache-and-network" }
   );
 
   const result = data?.volRegime;
@@ -198,15 +248,25 @@ export function VolRegimePanel() {
 
   const rawHistory = result?.history ?? [];
 
-  // Drop uncomputed warmup days, then trim to the requested number of trading sessions.
+  // Drop uncomputed warmup days, then bound the window: an explicit date range for Custom,
+  // otherwise a trailing session count (or everything, for All).
   const filteredHistory = useMemo(() => {
     if (!rawHistory.length) return [];
     const validHistory = rawHistory.filter(d => d.realizedVol20d != null && d.vrp != null);
+    if (isCustom) {
+      if (!customRangeValid) return [];
+      return validHistory.filter(d => d.bizDate >= customStart && d.bizDate <= customEnd);
+    }
     return tf.sessions == null ? validHistory : validHistory.slice(-tf.sessions);
-  }, [rawHistory, tf.sessions]);
+  }, [rawHistory, tf.sessions, isCustom, customRangeValid, customStart, customEnd]);
 
   // Multi-year windows need the year in the axis label; MM-DD alone repeats every cycle.
-  const isMultiYear = timeframe === '2Y' || timeframe === '5Y' || timeframe === 'ALL';
+  const spansMultipleYears = useMemo(() => {
+    if (filteredHistory.length < 2) return false;
+    return filteredHistory[0].bizDate.slice(0, 4) !== filteredHistory[filteredHistory.length - 1].bizDate.slice(0, 4);
+  }, [filteredHistory]);
+  const isMultiYear = timeframe === '2Y' || timeframe === '5Y' || timeframe === 'ALL'
+    || (isCustom && spansMultipleYears);
 
   // Chart data with separated positive and negative VRP for dual-color gradient fills
   const chartData = useMemo(() => {
@@ -229,6 +289,52 @@ export function VolRegimePanel() {
   }, [filteredHistory, isMultiYear]);
 
   const isSampled = filteredHistory.length > MAX_CHART_POINTS;
+
+  /**
+   * VIX distribution vs. VRP: bucket the window's sessions by VIX level and show both how
+   * often each level occurs and what the premium looked like there. This is the natural
+   * companion to the vrp_z quintile test elsewhere on this tab -- that one asks whether the
+   * premium being rich *relative to its own history* predicts anything; this one asks the
+   * more intuitive question traders actually reach for, whether selling vol pays better
+   * when VIX is simply high.
+   *
+   * `avgFwdEarned` is the honest column: VRP is what was quoted, forward-earned is what a
+   * seller of that session's implied vol actually collected once the next 21 sessions
+   * realized. They can diverge sharply in exactly the buckets that matter.
+   */
+  const vixDistribution = useMemo(() => {
+    if (!filteredHistory.length) return [];
+    const total = filteredHistory.length;
+    return VIX_BUCKETS.map(bucket => {
+      const rows = filteredHistory.filter(d => {
+        const v = d.vix;
+        return v != null && v >= bucket.min && v < bucket.max;
+      });
+      if (!rows.length) {
+        return {
+          label: bucket.label, sessions: 0, pctOfSessions: 0,
+          avgVrp: null, avgFwdEarned: null, pctPositiveVrp: null, avgRealized: null,
+        };
+      }
+      const sum = (pick: (d: VolRegimeDataPoint) => number | null | undefined) =>
+        rows.reduce((acc, d) => acc + (pick(d) ?? 0), 0);
+      const countOf = (pick: (d: VolRegimeDataPoint) => number | null | undefined) =>
+        rows.filter(d => pick(d) != null).length;
+
+      const fwdRows = rows.filter(d => d.fwdEarnedPremium != null);
+      return {
+        label: bucket.label,
+        sessions: rows.length,
+        pctOfSessions: Number(((rows.length / total) * 100).toFixed(1)),
+        avgVrp: Number((sum(d => d.vrp) / Math.max(1, countOf(d => d.vrp))).toFixed(2)),
+        avgRealized: Number((sum(d => d.realizedVol20d) / Math.max(1, countOf(d => d.realizedVol20d))).toFixed(1)),
+        avgFwdEarned: fwdRows.length
+          ? Number((fwdRows.reduce((a, d) => a + (d.fwdEarnedPremium ?? 0), 0) / fwdRows.length).toFixed(2))
+          : null,
+        pctPositiveVrp: Number(((rows.filter(d => (d.vrp ?? 0) > 0).length / rows.length) * 100).toFixed(0)),
+      };
+    });
+  }, [filteredHistory]);
 
   /**
    * Backtest view: the classic VRP harvest, run on non-overlapping ~1-month blocks --
@@ -507,15 +613,15 @@ export function VolRegimePanel() {
             <div className="flex items-center gap-2">
               <Activity className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
               <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
-                {chartMode === 'levels'
-                  ? 'Variance Risk Premium (VRP) History — Implied vs. Realized'
-                  : 'VRP Harvest Backtest — Monthly Rebalance'}
+                {chartMode === 'levels' && 'Variance Risk Premium (VRP) History — Implied vs. Realized'}
+                {chartMode === 'backtest' && 'VRP Harvest Backtest — Monthly Rebalance'}
+                {chartMode === 'distribution' && 'VIX Distribution vs. VRP — Does High Vol Pay Better?'}
               </h4>
             </div>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-              {chartMode === 'levels'
-                ? "The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller's edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk)."
-                : `Sell this session's implied vol, hold ~${BACKTEST_HOLD_SESSIONS} sessions to expiry, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L.`}
+              {chartMode === 'levels' && "The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller's edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk)."}
+              {chartMode === 'backtest' && `Sell this session's implied vol, hold ~${BACKTEST_HOLD_SESSIONS} sessions to expiry, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L.`}
+              {chartMode === 'distribution' && 'Bars show how often each VIX level occurred; lines show the premium there — quoted VRP versus what a seller actually collected over the following 21 sessions. Where the two diverge, the quoted premium was an illusion.'}
             </p>
             {chartMode === 'levels' && isSampled && (
               <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
@@ -584,6 +690,16 @@ export function VolRegimePanel() {
               >
                 Backtest
               </button>
+              <button
+                onClick={() => setChartMode('distribution')}
+                className={`px-2.5 py-0.5 rounded-md transition-all ${
+                  chartMode === 'distribution'
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                VIX Dist.
+              </button>
             </div>
 
             {/* Timeframe selector */}
@@ -605,6 +721,58 @@ export function VolRegimePanel() {
           </div>
         </div>
 
+        {/* Custom date range pickers */}
+        {isCustom && (
+          <div className="px-4 py-2.5 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 flex flex-wrap items-center gap-3 text-[11px] font-mono">
+            <label className="flex items-center gap-1.5">
+              <span className="text-slate-500 dark:text-slate-400">From</span>
+              <input
+                type="date"
+                value={customStart}
+                min={EARLIEST_VRP_DATE}
+                max={customEnd || today}
+                onChange={(e) => setCustomStart(e.target.value)}
+                className="rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-[#A8672E] dark:focus:ring-[#D08F52]"
+              />
+            </label>
+            <label className="flex items-center gap-1.5">
+              <span className="text-slate-500 dark:text-slate-400">To</span>
+              <input
+                type="date"
+                value={customEnd}
+                min={customStart || EARLIEST_VRP_DATE}
+                max={today}
+                onChange={(e) => setCustomEnd(e.target.value)}
+                className="rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-[#A8672E] dark:focus:ring-[#D08F52]"
+              />
+            </label>
+
+            {/* One-click jumps to the episodes this data is most often used to study */}
+            <span className="text-slate-300 dark:text-slate-600">|</span>
+            <span className="text-slate-400 dark:text-slate-500">Jump to</span>
+            {([
+              { label: 'GFC 2008', start: '2008-01-01', end: '2009-06-30' },
+              { label: 'COVID 2020', start: '2020-01-01', end: '2020-12-31' },
+              { label: 'Volmageddon', start: '2018-01-01', end: '2018-04-30' },
+            ] as const).map(preset => (
+              <button
+                key={preset.label}
+                onClick={() => { setCustomStart(preset.start); setCustomEnd(preset.end); }}
+                className="px-2 py-0.5 rounded-md border border-gray-200 dark:border-gray-700 text-slate-600 dark:text-slate-400 hover:border-[#A8672E]/50 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-all"
+              >
+                {preset.label}
+              </button>
+            ))}
+
+            {!customRangeValid && (
+              <span className="text-rose-600 dark:text-rose-400">Start date must be on or before end date.</span>
+            )}
+            {customRangeValid && filteredHistory.length === 0 && !loading && (
+              <span className="text-amber-600 dark:text-amber-400">No sessions in this range.</span>
+            )}
+          </div>
+        )}
+
         {/* Statistical Summary HUD Bar across active 1Y window */}
         {chartMode === 'levels' && windowStats && (
           <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
@@ -622,7 +790,7 @@ export function VolRegimePanel() {
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-slate-400">{tf.label} Range:</span>
+                <span className="text-slate-400">VRP Range:</span>
                 <span className="text-slate-700 dark:text-slate-300">
                   {windowStats.minVrp.toFixed(1)} → +{windowStats.maxVrp.toFixed(1)} pts
                 </span>
@@ -630,8 +798,54 @@ export function VolRegimePanel() {
             </div>
 
             <div className="text-[11px] text-slate-400">
-              {windowStats.sessions.toLocaleString()} trading sessions in view
+              {windowStats.sessions.toLocaleString()} sessions
+              {filteredHistory.length > 0 && (
+                <> · {filteredHistory[0].bizDate} → {filteredHistory[filteredHistory.length - 1].bizDate}</>
+              )}
             </div>
+          </div>
+        )}
+
+        {chartMode === 'distribution' && vixDistribution.some(b => b.sessions > 0) && (
+          <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 overflow-x-auto">
+            <table className="w-full text-[11px] font-mono min-w-[560px]">
+              <thead>
+                <tr className="text-slate-400 dark:text-slate-500 text-left">
+                  <th className="font-semibold pb-1">VIX</th>
+                  <th className="font-semibold pb-1 text-right">Sessions</th>
+                  <th className="font-semibold pb-1 text-right">% of window</th>
+                  <th className="font-semibold pb-1 text-right">Avg realized</th>
+                  <th className="font-semibold pb-1 text-right">Avg quoted VRP</th>
+                  <th className="font-semibold pb-1 text-right">Avg earned</th>
+                  <th className="font-semibold pb-1 text-right">% positive</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vixDistribution.filter(b => b.sessions > 0).map(b => (
+                  <tr key={b.label} className="border-t border-gray-200/60 dark:border-gray-700/60">
+                    <td className="py-1 font-semibold text-slate-700 dark:text-slate-300">{b.label}</td>
+                    <td className="py-1 text-right text-slate-600 dark:text-slate-400">{b.sessions.toLocaleString()}</td>
+                    <td className="py-1 text-right text-slate-600 dark:text-slate-400">{b.pctOfSessions}%</td>
+                    <td className="py-1 text-right text-slate-600 dark:text-slate-400">{b.avgRealized ?? '—'}</td>
+                    <td className={`py-1 text-right font-semibold ${(b.avgVrp ?? 0) >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                      {b.avgVrp == null ? '—' : `${b.avgVrp >= 0 ? '+' : ''}${b.avgVrp}`}
+                    </td>
+                    <td className={`py-1 text-right font-semibold ${(b.avgFwdEarned ?? 0) >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                      {b.avgFwdEarned == null ? '—' : `${b.avgFwdEarned >= 0 ? '+' : ''}${b.avgFwdEarned}`}
+                    </td>
+                    <td className="py-1 text-right text-slate-600 dark:text-slate-400">{b.pctPositiveVrp}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <span className="font-semibold text-slate-600 dark:text-slate-300">Reading the gap:</span> quoted VRP compares
+              implied against the <em>trailing</em> 20 sessions, while &ldquo;earned&rdquo; compares it against the{' '}
+              <em>next</em> {BACKTEST_HOLD_SESSIONS}. In high-VIX buckets trailing realized is already elevated, so quoted VRP
+              looks poor — even negative — while forward realized mean-reverts lower and the seller collects more than the
+              quote implied. Low-VIX buckets run the other way. That divergence, not the quoted number, is what a seller
+              actually receives.
+            </p>
           </div>
         )}
 
@@ -672,7 +886,75 @@ export function VolRegimePanel() {
 
         {/* Chart Canvas */}
         <div className="h-[360px] w-full p-4">
-          {chartMode === 'backtest' ? (
+          {chartMode === 'distribution' ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <ComposedChart data={vixDistribution} margin={{ top: 12, right: 16, left: 0, bottom: 15 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" vertical={false} />
+                <XAxis dataKey="label" tick={{ fontSize: 11 }} stroke="#64748b" dy={5} />
+                <YAxis
+                  yAxisId="left"
+                  tick={{ fontSize: 11 }}
+                  width={48}
+                  stroke="#64748b"
+                  tickFormatter={(v) => `${v}`}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tick={{ fontSize: 11 }}
+                  width={48}
+                  stroke="#94a3b8"
+                  tickFormatter={(v) => `${v}`}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#0f172a',
+                    borderColor: '#1e293b',
+                    borderRadius: '12px',
+                    color: '#f8fafc',
+                    fontSize: '12px',
+                  }}
+                  formatter={(value, name) => {
+                    const label = name === 'sessions'
+                      ? 'Frequency'
+                      : name === 'avgVrp' ? 'Avg quoted VRP' : 'Avg actually earned';
+                    if (typeof value !== 'number') return ['—', label];
+                    if (name === 'sessions') return [`${value.toLocaleString()} sessions`, label];
+                    return [`${value >= 0 ? '+' : ''}${value} vol pts`, label];
+                  }}
+                  labelFormatter={(label, payload) => {
+                    const d = payload?.[0]?.payload;
+                    if (!d) return `VIX ${label}`;
+                    return `VIX ${label} — ${d.pctOfSessions}% of window · ${d.pctPositiveVrp}% positive VRP · avg realized ${d.avgRealized}`;
+                  }}
+                />
+                <Legend wrapperStyle={{ fontSize: '11px' }} />
+                <ReferenceLine yAxisId="right" y={0} stroke="#94a3b8" strokeDasharray="2 2" />
+                <Bar yAxisId="left" dataKey="sessions" name="Sessions" fill="#94a3b8" opacity={0.45} radius={[3, 3, 0, 0]} />
+                <Line
+                  yAxisId="right"
+                  type="monotone"
+                  dataKey="avgVrp"
+                  name="Avg quoted VRP"
+                  stroke="#A8672E"
+                  strokeWidth={2.5}
+                  dot={{ r: 3 }}
+                  connectNulls
+                />
+                <Line
+                  yAxisId="right"
+                  type="monotone"
+                  dataKey="avgFwdEarned"
+                  name="Avg actually earned (fwd 21d)"
+                  stroke="#059669"
+                  strokeWidth={2}
+                  strokeDasharray="4 3"
+                  dot={{ r: 3 }}
+                  connectNulls
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
+          ) : chartMode === 'backtest' ? (
             backtest ? (
               <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart data={backtest.rows} margin={{ top: 12, right: 16, left: 0, bottom: 15 }}>
