@@ -229,8 +229,63 @@ Two cautions on reading that table. **Totals are not directly comparable across 
 
 **Timeframes.** The chart supports 3M / 6M / 1Y / 2Y / 5Y / All / Custom, defaulting to 1Y. Two mechanical notes: the API window is expressed in *calendar* days while the chart is sized in *trading sessions*, so each timeframe over-requests using a measured ~1.55 calendar-days-per-session ratio (the textbook 365/252 = 1.448 is too optimistic once holidays are counted, and under-requesting silently truncates the window instead of erroring). And windows longer than ~900 sessions are decimated for chart performance by keeping each interval's largest-|VRP| session rather than plain striding — striding would drop exactly the crash days that matter most in this series. Summary statistics are always computed on the full window, never the decimated one.
 
+## How This Compares to the Academic Literature
+
+The VRP has a substantial academic literature with its own conventions, and they don't match ours in every respect. This section records where we align, where we deliberately differ, and — importantly — one place where our numbers are **not directly comparable** to published research.
+
+### Where we align
+
+**Sign and direction.** The literature's central empirical finding is that the risk-neutral expectation of variance sits above subsequently realized variance, so VRP is positive most of the time ([Bollerslev, Tauchen & Zhou 2009](https://public.econ.duke.edu/~boller/Published_Papers/rfs_09.pdf)). Our full sample is **84.8% positive** across 6,575 sessions, consistent with that.
+
+**Using both a trailing and a forward measure.** The standard empirical VRP relies on a martingale assumption — that expected future realized variance is proxied by the most recently observed realized variance — which makes the headline measure *implied minus trailing realized*. That is exactly our "quoted VRP." The forward version (*implied minus subsequently realized*) is the ex-post realization, which is our "actually earned." Mapping our two labels onto the literature:
+
+| Our label | Literature framing | Basis |
+|---|---|---|
+| **Quoted VRP** | Ex-ante VRP, using trailing RV as the martingale proxy for expected RV | Point-in-time |
+| **Actually earned** | Ex-post realized variance premium | Forward / hindsight |
+
+Showing both is deliberate, and the gap between them is the substance of the VIX distribution finding above.
+
+### Where we deliberately differ
+
+**We lead in volatility points, the literature leads in variance.** The academic definition is in variance (squared) units. We headline VIX − RV in vol points because that is how practitioners actually quote it, and we surface the variance form alongside it. This is a presentation choice, not a disagreement: we verified that the two are a monotonic transform of each other over the full sample — **the sign agrees on every one of the 6,575 sessions**, so the regime classification (which keys off the sign of the z-scored premium) is completely unaffected by which unit leads.
+
+**Our variance scaling is a display convention.** The `vrp_variance` column is (VIX² − RV²) ÷ 100. That ÷100 exists only to put the number near the vol-point magnitude for side-by-side reading; it is not a standard unit. For the same session:
+
+| Convention | Value |
+|---|---|
+| Our `vrp_variance` | 0.38 |
+| Annualized variance, %² | 38.08 |
+| Annualized variance, decimal | 0.003808 |
+| Monthly variance %² (common in the literature) | 3.17 |
+
+If you are comparing our figure against a paper, multiply by 100 for annualized %², or by 100/12 for the monthly convention. The column header carries this note as a tooltip.
+
+### Where we are genuinely not comparable — realized variance construction
+
+This is the one that matters most, and it cannot be fixed with the data we have.
+
+The literature computes **"model-free realized variance" from high-frequency intraday returns** — typically 5-minute sampling — precisely because that gives far more accurate ex-post observations of actual return variation than sample variances built from daily or coarser returns ([Bollerslev, Tauchen & Zhou 2009](https://public.econ.duke.edu/~boller/Published_Papers/rfs_09.pdf); see also [Carr & Wu 2009](https://engineering.nyu.edu/sites/default/files/2019-01/CarrReviewofFinStudiesMarch2009-a.pdf)).
+
+**We compute realized volatility from daily closes.** A 20-session window gives us 20 return observations; a 5-minute intraday estimator over the same month uses on the order of 1,600. Ours is therefore a much noisier estimator of the same underlying quantity. It is also measuring a subtly different thing: close-to-close returns include the overnight gap, which a purely intraday estimator excludes unless explicitly adjusted.
+
+Practical consequences:
+
+- Our VRP figures should be treated as **directionally faithful but not numerically interchangeable** with published VRP series. Do not expect our +3.5 average to match a paper's number to the decimal.
+- The noise is largest exactly where it hurts most — short windows and violent tapes, where 20 daily observations is a thin sample and a single gap dominates the estimate.
+- Fixing this requires intraday SPX data, which the platform does not currently ingest. It is a data-availability limitation, not a modelling choice.
+
+### Practitioner benchmarks
+
+On the product side, CBOE has published two distinct benchmarks that harvest this premium in different ways — the **S&P 500 VARB-X** index (short three-month realized variance via variance futures) and the **VIX Premium Index** (short one-month forward implied vol via VIX futures). They behave differently by construction: VARB-X's volatility exposure decays as each day resolves another portion of the final realized variance, while the VIX futures version holds roughly constant exposure into maturity. Our backtest is closer in spirit to the VARB-X framing (realized-variance settlement over a fixed window) than to the VIX-futures one, though it models neither instrument's actual mechanics — see the Backtest View caveats about costs and position sizing.
+
+### Verification note
+
+The numerical claims in this section (84.8% positive, sign agreement across all 6,575 sessions, the scaling comparison table) were computed directly against our own data and are reproducible. The characterizations of the academic conventions come from the sources linked above as surfaced in search summaries; the underlying PDFs did not extract cleanly for direct quotation, so treat the specific attributions as indicative of the standard approach rather than verbatim citation.
+
 ## Limitations
 
+- **Realized vol comes from daily closes, not intraday.** The academic standard builds realized variance from 5-minute returns; our 20-session window has 20 observations against roughly 1,600 for an intraday estimator, making ours materially noisier and not numerically interchangeable with published VRP series. Fixing it requires intraday SPX data the platform doesn't ingest. See the literature comparison section above.
 - **Forward-earned premium is a proxy**, not realised option P&L.
 - **Term structure is unavailable before 2007-12**, so pre-2008 rows classify stress on `vix_rank` alone.
 - **Regime thresholds are chosen, not fitted** — `vrp_z > 0` and `vix_rank > 0.8`. They are interpretable and stable, but not optimised, and results near a boundary should not be over-read.
@@ -259,3 +314,10 @@ Two cautions on reading that table. **Totals are not directly comparable across 
 - [Variance Risk Premium](/wiki/option-strategy/variance-risk-premium) — the underlying concept and trading case
 - [GEX Calculation Methodology](/wiki/option-strategy/gex-methodology) — the companion gamma-exposure spec
 - [VIX](/wiki/option-strategy/vix)
+
+### Academic sources
+
+- Bollerslev, Tauchen & Zhou (2009), *Expected Stock Returns and Variance Risk Premia*, Review of Financial Studies — [paper](https://public.econ.duke.edu/~boller/Published_Papers/rfs_09.pdf) · [Fed working-paper version](https://www.federalreserve.gov/pubs/feds/2007/200711/200711pap.pdf). The standard reference for the empirical VRP measure, the martingale proxy for expected realized variance, and high-frequency realized-variance construction.
+- Carr & Wu (2009), *Variance Risk Premia*, Review of Financial Studies — [paper](https://engineering.nyu.edu/sites/default/files/2019-01/CarrReviewofFinStudiesMarch2009-a.pdf). Variance-swap framing of the premium across underlyings.
+- [Exploring the Variance Risk Premium Across Assets](https://afajof.org/management/viewp.php?n=41580) (AFA) — cross-asset evidence that the premium is not an equity-index quirk.
+- [Realized GARCH, CBOE VIX, and the Volatility Risk Premium](https://arxiv.org/pdf/2112.05302) — on VIX-formula edge cases and alternative model-free implied-variance estimators.

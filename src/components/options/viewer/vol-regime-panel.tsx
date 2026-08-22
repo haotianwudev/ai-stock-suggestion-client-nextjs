@@ -1319,7 +1319,12 @@ export function VolRegimePanel() {
                 <tr className="border-b border-gray-200 dark:border-gray-800 text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   <th className="px-4 py-2 text-left font-semibold">Regime</th>
                   <th className="px-4 py-2 text-right font-semibold">Avg VRP (vol pts)</th>
-                  <th className="px-4 py-2 text-right font-semibold">Avg VRP (variance pts)</th>
+                  <th
+                    className="px-4 py-2 text-right font-semibold"
+                    title="(VIX² − RV²) ÷ 100. A display scaling chosen so the magnitude sits near the vol-point column — not a standard academic unit. Multiply by 100 for annualized variance in %²."
+                  >
+                    Avg VRP (variance pts)
+                  </th>
                   <th className="px-4 py-2 text-right font-semibold">Downside var. share</th>
                   <th className="px-4 py-2 text-right font-semibold">Avg VIX</th>
                   <th className="px-4 py-2 text-right font-semibold">Sessions</th>
