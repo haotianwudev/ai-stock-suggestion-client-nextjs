@@ -52,6 +52,22 @@ export const inverseStandardNormalCDF = (p: number): number => {
 };
 
 /**
+ * Gamma only, identical to `blackScholes(...).gamma` but skipping every other Greek.
+ * Gamma is the same for calls and puts, so no option type is needed.
+ *
+ * Exists for the GEX spot-shift simulation, which re-prices the whole option book at
+ * ~30 hypothetical spot prices — hundreds of thousands of evaluations, where computing
+ * price/delta/vega/theta/rho/vanna/charm (and their normal-CDF calls) purely to read
+ * gamma is the dominant cost.
+ */
+export const blackScholesGamma = (S: number, K: number, T: number, r: number, v: number, q: number = 0): number => {
+  if (T <= 0 || v <= 0 || S <= 0 || K <= 0) return 0;
+  const sqrtT = Math.sqrt(T);
+  const d1 = (Math.log(S / K) + (r - q + v * v / 2) * T) / (v * sqrtT);
+  return Math.exp(-q * T) * standardNormalPDF(d1) / (S * v * sqrtT);
+};
+
+/**
  * Black-Scholes-Merton. `q` is the continuous dividend yield of the underlying and defaults to 0,
  * which reduces every formula below to plain Black-Scholes — so existing callers that omit it are
  * unaffected. Pass it for index options (SPX yields ~1.3%): ignoring it biases delta and skews any

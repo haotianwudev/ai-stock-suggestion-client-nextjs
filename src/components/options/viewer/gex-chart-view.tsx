@@ -21,7 +21,7 @@ import {
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
 import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info } from 'lucide-react';
-import { blackScholes } from '@/lib/black-scholes';
+import { blackScholes, blackScholesGamma } from '@/lib/black-scholes';
 import { SPX_DEFAULT_RATE, SPX_DEFAULT_DIV_YIELD } from '@/lib/options/analytics';
 import { GexHeatmapView } from './gex-heatmap-view';
 
@@ -58,18 +58,30 @@ export function GexChartView({
   allExpirations
 }: GexChartViewProps) {
   const [subView, setSubView] = useState<GexSubView>('netGex');
-  // Only netGex/grossGex support the aggregate scope — gammaShift and vannaCharm are inherently
-  // tied to one expiration's own time-to-expiry, not a sum across many different DTEs, so they
-  // always read the single selected expiration regardless of scope.
-  const [scope, setScope] = useState<GexScope>('expiration');
+  // Whole-book ("All Expirations") is the default because that's what GEX, Zero Gamma and the
+  // gamma walls mean at every major provider — SpotGamma defines all of them as aggregating
+  // "across all included strikes and expirations". A single expiration's GEX is a legitimate
+  // secondary view, but it answers a different question and can read the opposite regime: on a
+  // typical SPX chain the front monthly alone prints slightly negative net GEX while the whole
+  // book is strongly positive.
+  const [scope, setScope] = useState<GexScope>('all');
   const canAggregate = !!allExpirations && allExpirations.length > 1;
-  const effectiveScope: GexScope = canAggregate && (subView === 'netGex' || subView === 'grossGex') ? scope : 'expiration';
+  // Deliberately NOT keyed off subView. The headline stat cards (Net GEX, Gamma Flip, walls)
+  // render on every sub-view, so letting the sub-view override scope made those numbers change
+  // as the user switched chart tabs. Vanna/Charm stays single-expiration regardless, since it
+  // reads callMap/putMap directly rather than going through this scope.
+  const effectiveScope: GexScope = canAggregate ? scope : 'expiration';
 
   // Compute Net GEX, Gross GEX, Vanna, Charm, and Price Shift Simulation
   const { chartData, shiftCurveData, vannaCharmData, totalNetGex, totalCallGex, totalPutGex, gammaFlipLevel, gammaFlipChartStrike, spotChartStrike, callWallStrike, putWallStrike } = useMemo(() => {
     const contractMultiplier = 100;
     const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
-    const inRange = (strike: number) => strike >= spotPrice * 0.88 && strike <= spotPrice * 1.12;
+    // Strike inclusion band. Widened from +/-12% because that was materially truncating the
+    // whole-book aggregate: far-OTM puts carry large open interest and net negative gamma, so
+    // cutting them overstated net GEX by roughly 50% against a +/-35% band on live SPX data.
+    // +/-20% is where both net GEX and the flip level start converging, and the gamma-only
+    // re-pricing path is cheap enough (~500k evaluations in ~10ms) to afford the extra strikes.
+    const inRange = (strike: number) => strike >= spotPrice * 0.80 && strike <= spotPrice * 1.20;
 
     // Always built from the single selected expiration — the shift-sim and vanna/charm sections
     // below use these regardless of scope, and the per-expiration rows branch reuses them too.
@@ -237,10 +249,12 @@ export function GexChartView({
       for (const ct of simContracts) {
         let g: number;
         if (ct.iv > 0) {
-          g = blackScholes(
+          // Gamma-only variant: this runs ~500k times across the sweep, and gamma is
+          // identical for calls and puts, so the full Greek set is pure overhead here.
+          g = blackScholesGamma(
             simSpot, ct.strike, Math.max(ct.T, MIN_SIM_T), SPX_DEFAULT_RATE, ct.iv,
-            ct.isCall ? 'Call' : 'Put', SPX_DEFAULT_DIV_YIELD
-          ).gamma;
+            SPX_DEFAULT_DIV_YIELD
+          );
         } else {
           // No IV quoted for this contract — hold its observed gamma flat rather than
           // inventing a shape for it.
@@ -515,7 +529,10 @@ export function GexChartView({
                 </button>
               )}
             </div>
-            {canAggregate && (subView === 'netGex' || subView === 'grossGex') && (
+            {/* Shown on every sub-view except Vanna/Charm, which is single-expiration by
+                construction. Scope now drives the headline stat cards too, so hiding the control
+                on some tabs would leave those numbers unexplained. */}
+            {canAggregate && subView !== 'vannaCharm' && (
               <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
                 <button
                   onClick={() => setScope('expiration')}
