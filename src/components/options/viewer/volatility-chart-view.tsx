@@ -52,6 +52,26 @@ interface VolatilityChartViewProps {
 type VolSubView = 'smile' | 'multiSmile' | 'termStructure' | 'rnd' | 'skewCurve';
 type StrikeRangeOption = 15 | 25 | 'all';
 
+// Today's calendar date in the SPX exchange's own timezone (America/New_York), as
+// 'YYYY-MM-DD' -- matching the format expiration dates are already given in, so the
+// two compare directly as strings.
+function todayEasternDateStr(): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(new Date());
+}
+
+// A cycle's `daysToExpiration` is computed upstream relative to the data feed's own
+// last-refreshed timestamp, not real wall-clock time. When the feed is frozen (markets
+// closed -- weekends, evenings, holidays), a cycle that already expired can still be
+// labeled 0 DTE. Its remaining quotes are then frozen at end-of-day levels with near-
+// zero time value, and inverting price -> IV is numerically unstable as T -> 0: on a
+// weekend snapshot this produced solved IVs of 78%, 193%, and 336% on strikes just $5
+// apart on the SAME already-dead cycle -- noise, not a real smile. Excluding any cycle
+// whose expiration date has already passed in ET, independent of what the feed's own
+// DTE field claims, is what actually filters this out.
+function isLiveCycle(expirationDate: string, todayET: string): boolean {
+  return expirationDate >= todayET;
+}
+
 export function VolatilityChartView({
   currentExpiration,
   expirations,
@@ -68,16 +88,27 @@ export function VolatilityChartView({
     return expirations.find(e => e.expiration === currentExpiration) || expirations[0];
   }, [expirations, currentExpiration]);
 
+  // Cycles that haven't actually expired yet, independent of the feed's own (possibly
+  // stale) daysToExpiration field. See isLiveCycle() above. Falls back to the full list
+  // in the pathological case where every cycle reads as expired -- e.g. the whole feed
+  // itself is stale -- rather than rendering nothing.
+  const liveExpirations = useMemo(() => {
+    const todayET = todayEasternDateStr();
+    const live = expirations.filter(e => isLiveCycle(e.expiration, todayET));
+    return live.length > 0 ? live : expirations;
+  }, [expirations]);
+  const staleCycleCount = expirations.length - liveExpirations.length;
+
   // Set default comparison expirations (first 4 liquid cycles, excluding 0DTE by default)
   useEffect(() => {
-    if (expirations.length > 1 && compareExpirations.length === 0) {
+    if (liveExpirations.length > 1 && compareExpirations.length === 0) {
       // Exclude 0DTE (daysToExpiration === 0) by default to prevent asymptotic expiration distortions in multi-cycle smile comparisons
-      const nonZeroExps = expirations.filter(e => e.daysToExpiration > 0);
-      const pool = nonZeroExps.length >= 2 ? nonZeroExps : expirations;
+      const nonZeroExps = liveExpirations.filter(e => e.daysToExpiration > 0);
+      const pool = nonZeroExps.length >= 2 ? nonZeroExps : liveExpirations;
       const candidates = pool.slice(0, 4).map(e => e.expiration);
       setCompareExpirations(candidates);
     }
-  }, [expirations, compareExpirations.length]);
+  }, [liveExpirations, compareExpirations.length]);
 
   const toggleCompareExp = (exp: string) => {
     if (compareExpirations.includes(exp)) {
@@ -141,9 +172,9 @@ export function VolatilityChartView({
 
   // 2. Multi-Expiration IV Smile Overlay
   const multiSmileData = useMemo(() => {
-    if (expirations.length === 0) return [];
+    if (liveExpirations.length === 0) return [];
 
-    const selectedExps = expirations.filter(e => compareExpirations.includes(e.expiration));
+    const selectedExps = liveExpirations.filter(e => compareExpirations.includes(e.expiration));
     if (selectedExps.length === 0) return [];
 
     const allStrikes = new Set<number>();
@@ -182,11 +213,11 @@ export function VolatilityChartView({
       });
       return row;
     });
-  }, [expirations, compareExpirations, spotPrice, strikeRange]);
+  }, [liveExpirations, compareExpirations, spotPrice, strikeRange]);
 
   // 3. Vol Term Structure & Forward Implied Volatility
   const termStructureData = useMemo(() => {
-    const raw = expirations
+    const raw = liveExpirations
       .map(exp => {
         const allContracts = [...exp.calls, ...exp.puts].filter(
           c => c.impliedVolatilityMid && c.impliedVolatilityMid > 0
@@ -230,7 +261,7 @@ export function VolatilityChartView({
         forwardIV: fwdIV ?? item.atmIV
       };
     });
-  }, [expirations, spotPrice]);
+  }, [liveExpirations, spotPrice]);
 
   // 4. Risk-Neutral Implied Probability Density Function (RND - Breeden-Litzenberger)
   const rndData = useMemo(() => {
@@ -280,7 +311,7 @@ export function VolatilityChartView({
 
   // 5. 25-Delta Skew & Kurtosis Curve across all Expirations
   const skewTermData = useMemo(() => {
-    return expirations
+    return liveExpirations
       .map(exp => {
         const callsWithDelta = exp.calls.filter(c => c.delta && c.delta > 0 && c.impliedVolatilityMid);
         const putsWithDelta = exp.puts.filter(p => p.delta && p.delta < 0 && p.impliedVolatilityMid);
@@ -318,7 +349,7 @@ export function VolatilityChartView({
       })
       .filter((item): item is NonNullable<typeof item> => item !== null)
       .sort((a, b) => a.dte - b.dte);
-  }, [expirations, spotPrice]);
+  }, [liveExpirations, spotPrice]);
 
   // Overall active summary stats
   const activeMetrics = useMemo(() => {
@@ -466,10 +497,16 @@ export function VolatilityChartView({
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {subView === 'smile' && `Implied Volatility (%) curve across strikes for ${currentExpData?.expiration} (${currentExpData?.daysToExpiration} DTE)`}
               {subView === 'multiSmile' && `Comparing volatility smiles across multiple SPX expiration cycles`}
-              {subView === 'termStructure' && `ATM Implied Volatility and Forward Volatility across all ${expirations.length} expiration dates`}
+              {subView === 'termStructure' && `ATM Implied Volatility and Forward Volatility across ${termStructureData.length} live expiration dates`}
               {subView === 'rnd' && `Market-implied probability distribution where SPX will settle at ${currentExpData?.expiration} expiration`}
               {subView === 'skewCurve' && `Put downside tail-risk demand (25Δ Put IV - 25Δ Call IV) plotted across DTE`}
             </p>
+            {staleCycleCount > 0 && (subView === 'termStructure' || subView === 'multiSmile' || subView === 'skewCurve') && (
+              <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-1 flex items-center gap-1">
+                <Info className="h-3 w-3 shrink-0" />
+                Excluded {staleCycleCount} already-expired {staleCycleCount === 1 ? 'cycle' : 'cycles'} — their frozen end-of-day quotes solve to unstable, meaningless IV.
+              </p>
+            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -553,7 +590,7 @@ export function VolatilityChartView({
         {subView === 'multiSmile' && (
           <div className="px-4 py-2 bg-gray-50/80 dark:bg-gray-800/40 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center gap-1.5 text-xs font-mono">
             <span className="text-slate-400 text-[11px] mr-1">Overlay Expirations:</span>
-            {expirations.slice(0, 8).map((exp, idx) => {
+            {liveExpirations.slice(0, 8).map((exp, idx) => {
               const isSelected = compareExpirations.includes(exp.expiration);
               return (
                 <button

@@ -22,6 +22,14 @@ Plots ATM implied volatility across all expirations, ordered by DTE.
 - **Contango (normal):** $\sigma_{\text{far}} > \sigma_{\text{near}}$ — upward sloping, calm market.
 - **Backwardation (inverted):** $\sigma_{\text{near}} > \sigma_{\text{far}}$ — downward sloping, near-term event risk or panic.
 
+### Genuine near-term richness vs. dead-contract noise
+
+Short-dated options do legitimately carry a **modest** term-structure hump — a few vol points, from weekend theta, event risk, or a thin liquidity premium. That's real and common. What's *not* common, and not the same thing, is what a stale front cycle can do to this chart.
+
+A cycle's listed `daysToExpiration` is computed relative to the data feed's own last-refreshed timestamp, not real wall-clock time. When the feed is frozen — markets closed, a weekend, an evening — a contract that has **already expired** can still be labeled 0 DTE. Its quotes are then frozen at end-of-day levels with near-zero remaining time value, and inverting a price back to an implied volatility is numerically unstable as $T \to 0$: on one weekend snapshot this produced solved IVs of **78%, 193%, and 336%** on SPX strikes just $5 apart on the same already-dead cycle — a spread that has nothing to do with a real smile, and swamped the entire chart. The Term Structure Slope card read **Backwardation** purely from that dead front point; the true, live-cycle reading was **Contango**.
+
+The fix is to exclude any cycle whose expiration date has already passed in the exchange's own timezone (America/New_York) from every chart on this tab — term structure, forward vol, multi-expiration smile overlay, and the 25-delta skew term structure — regardless of what the feed's own DTE field claims. A small amber notice appears above the affected charts whenever a cycle was excluded this way, so it's visible rather than silently correcting the picture.
+
 The **forward implied volatility** between two horizons $T_1 < T_2$ strips out the overlapping near-term vol to isolate what the market prices for the period *between* them:
 
 $$
@@ -89,6 +97,7 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 - **RND is only as good as the quotes.** The second derivative amplifies quote noise; a single stale mid mid-chain produces a visible artefact.
 - **Delta-based wings are model-dependent.** The 25-delta strike is itself derived from a model, so risk reversal and butterfly inherit that model's assumptions.
 - **The ±22% smile band hides genuine tail information** — deliberately, but it does mean the smile view is not the place to study far-tail pricing.
+- **Live-cycle filtering trusts the exchange calendar, not the feed's own DTE label.** If the feed's clock is wrong in the *other* direction — reporting a cycle as already expired when it's actually still live — that cycle would be dropped instead. This hasn't been observed, but the filter is only as reliable as `Intl.DateTimeFormat`'s America/New_York conversion and the browser's system clock.
 
 ## Key Takeaways
 
@@ -96,6 +105,7 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 - SPX strike grids are non-uniform, so the RND must use the general three-point second derivative — the uniform formula produces artefacts at every spacing change.
 - Densities are floored at zero and normalised to 100%.
 - Risk reversal measures directional skew; butterfly measures tail convexity.
+- Cycles that have already expired in wall-clock time are excluded from every chart on this tab — a stale front cycle can flip the Term Structure Slope's regime call entirely, not just shift a number.
 
 ## Related Reading
 
