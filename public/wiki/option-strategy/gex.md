@@ -35,8 +35,16 @@ Market makers who sell options to retail and institutional traders are typically
 
 ## Formulas
 
+GEX is quoted two ways, and they differ by a factor of $S$. In **shares** to be hedged per 1% move:
+
 $$
-\text{GEX} = \sum_{i} \left( \Gamma_i \times \text{OI}_i \times C \times S \times 1\% \right)
+\text{GEX}_{\text{shares}} = \sum_{i} \left( \Gamma_i \times \text{OI}_i \times C \times S \times 1\% \right)
+$$
+
+In **dollars** of notional per 1% move — the form most services publish, and the one SOPHIE's Options Viewer reports:
+
+$$
+\text{GEX}_{\$} = \sum_{i} \left( \Gamma_i \times \text{OI}_i \times C \times S^2 \times 1\% \right)
 $$
 
 Where the sum is taken across all strikes and expirations:
@@ -45,15 +53,21 @@ Where the sum is taken across all strikes and expirations:
 - $\text{OI}_i$ — Open interest at strike $i$
 - $C$ — Contract multiplier (typically 100 for equity/index options)
 - $S$ — Spot price of the underlying
-- The $1\%$ term expresses GEX as dollars of hedging flow per 1% move in the underlying, rather than per single point — this makes GEX comparable across underlyings trading at very different price levels.
+- The $1\%$ term expresses GEX per 1% move in the underlying, rather than per single point — this makes GEX comparable across underlyings trading at very different price levels.
+
+The second factor of $S$ is what converts a share count into a dollar figure. Dropping it is the most common error in GEX write-ups.
 
 **Worked example:** a single call strike with Gamma = 0.05, 10,000 contracts of open interest, a 100-share multiplier, and the underlying at $4,000 (so a 1% move = $40):
 
 $$
-\text{GEX} = 0.05 \times 10{,}000 \times 100 \times 4{,}000 \times 0.01 = \$2{,}000{,}000
+\text{GEX}_{\text{shares}} = 0.05 \times 10{,}000 \times 100 \times 4{,}000 \times 0.01 = 2{,}000{,}000 \text{ shares}
 $$
 
-Meaning: for a 1% move in the underlying, market makers must hedge roughly $2M of notional exposure from this single strike alone.
+$$
+\text{GEX}_{\$} = 2{,}000{,}000 \times \$4{,}000 = \$8\text{B}
+$$
+
+Step by step: gamma of 0.05 means delta moves 0.05 per $1 of underlying, so a $40 move shifts delta by 2.0 per contract, or 200 shares once the 100-share multiplier is applied. Across 10,000 contracts that is 2,000,000 shares — **$8B of notional** — that market makers must hedge from this single strike alone.
 
 ## Key Takeaways
 
@@ -67,4 +81,5 @@ Meaning: for a 1% move in the underlying, market makers must hedge roughly $2M o
 ## Related Reading
 
 - [Gamma Exposure (GEX): The GPS of Market Volatility](/articles/gamma-exposure-gex-gps-market-volatility) — full article with Market Regime breakdowns and trading playbooks.
+- [GEX Calculation Methodology](/wiki/option-strategy/gex-methodology) — how SOPHIE computes the flip level and call/put walls, and the assumptions behind them.
 - [Watch on YouTube](https://youtu.be/t_5yWuxn0WY)
