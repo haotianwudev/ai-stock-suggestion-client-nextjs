@@ -354,10 +354,19 @@ export function OptionsMatrixTable({
     ).strike;
   }, [strikeRows, spotPrice]);
 
-  // Filter rows: only Good+ liquid strikes by default, or all strikes
+  // Filter rows: only ATM & OTM for single-side views, and Good+ liquid strikes by default
   const filteredRows = useMemo(() => {
+    let list = strikeRows;
+
+    // Single-side view: Calls shows only ATM & OTM (strike >= atmStrike), Puts shows only ATM & OTM (strike <= atmStrike)
+    if (sideView === 'calls') {
+      list = list.filter(r => r.strike >= atmStrike || !r.isCallITM);
+    } else if (sideView === 'puts') {
+      list = list.filter(r => r.strike <= atmStrike || !r.isPutITM);
+    }
+
     if (liquidityFilter === 'good') {
-      const liquidList = strikeRows.filter(r => {
+      const liquidList = list.filter(r => {
         const cLiq = computeLiquidity(r.call?.bid, r.call?.ask, r.call?.midPrice, r.call?.volume, r.call?.openInterest);
         const pLiq = computeLiquidity(r.put?.bid, r.put?.ask, r.put?.midPrice, r.put?.volume, r.put?.openInterest);
         if (sideView === 'calls') {
@@ -368,10 +377,10 @@ export function OptionsMatrixTable({
         }
         return cLiq.tier === 'excellent' || cLiq.tier === 'good' || pLiq.tier === 'excellent' || pLiq.tier === 'good';
       });
-      return liquidList.length > 0 ? liquidList : strikeRows;
+      return liquidList.length > 0 ? liquidList : list;
     }
-    return strikeRows;
-  }, [strikeRows, liquidityFilter, sideView]);
+    return list;
+  }, [strikeRows, liquidityFilter, sideView, atmStrike]);
 
   // Max volume for proportional bar rendering
   const maxVol = useMemo(() => {
@@ -526,7 +535,13 @@ export function OptionsMatrixTable({
         <div className="mx-3 mt-2 mb-1 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/40 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
           <Info className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
           <span>
-            Click any {sideView === 'both' ? <><strong className="text-teal-600 dark:text-teal-400">Call</strong> or <strong className="text-amber-600 dark:text-amber-400">Put</strong></> : sideView === 'calls' ? <strong className="text-teal-600 dark:text-teal-400">Call</strong> : <strong className="text-amber-600 dark:text-amber-400">Put</strong>} row to inspect full contract details
+            {sideView === 'both' ? (
+              <>Click any <strong className="text-teal-600 dark:text-teal-400">Call</strong> or <strong className="text-amber-600 dark:text-amber-400">Put</strong> side to inspect full contract details</>
+            ) : sideView === 'calls' ? (
+              <>Showing ATM &amp; OTM <strong className="text-teal-600 dark:text-teal-400">Calls</strong> (Strikes &ge; Spot) · Click any row to inspect details</>
+            ) : (
+              <>Showing ATM &amp; OTM <strong className="text-amber-600 dark:text-amber-400">Puts</strong> (Strikes &le; Spot) · Click any row to inspect details</>
+            )}
           </span>
         </div>
       )}
