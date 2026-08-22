@@ -12,6 +12,24 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "option-strategy/gex-methodology",
+    title: "GEX Calculation Methodology",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Implementation spec for the Options Viewer's gamma exposure numbers: why dollar GEX needs S-squared rather than S, the naive dealer sign convention, whole-book scope, and how the gamma flip and call/put walls are actually computed — including the Black-Scholes repricing that replaced an arbitrary decay approximation.",
+  },
+  {
+    path: "option-strategy/vol-regime-methodology",
+    title: "Volatility Regime & VRP Methodology",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "How SOPHIE computes the daily volatility regime and variance risk premium: the four-regime taxonomy validated against COVID and the GFC, the convexity and downside-variance decompositions, and the finding that VRP level has near-zero power to time entries (IC ~0.008) while the regime label is a strong risk signal.",
+  },
+  {
     path: "form13f/appaloosa-q2-2026-rotation-hedge",
     title: "Tepper's Q2 2026 Rotation",
     articleSlug: "appaloosa-management-q2-2026-13f-institutional-analysis",
