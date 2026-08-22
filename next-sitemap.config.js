@@ -15,7 +15,10 @@ module.exports = {
       'https://www.sophie-ai-finance.com/feed.xml',
     ],
   },
-  exclude: ['/api/*'],
+  // '/option' and '/option/viewer/chain' both 308 elsewhere. Submitting a redirecting URL makes
+  // Google report it as "Page with redirect" and refuse to index it, so list the destinations
+  // instead (see additionalPaths below).
+  exclude: ['/api/*', '/option', '/option/viewer/chain'],
   generateIndexSitemap: false,
   changefreq: 'daily',
   priority: 0.7,
@@ -58,4 +61,12 @@ module.exports = {
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },
+  // Routes served by dynamic segments ('/option/[tab]', '/option/strategies/[[...slug]]') are
+  // not enumerated by next-sitemap's static scan, so the viewer -- the destination /option now
+  // redirects to -- was missing from the sitemap entirely while the redirect itself was listed.
+  // These are the real landing pages and are added explicitly.
+  additionalPaths: async (config) => [
+    await config.transform(config, '/option/viewer'),
+    await config.transform(config, '/option/strategies'),
+  ],
 }; 

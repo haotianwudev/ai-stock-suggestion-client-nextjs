@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import OptionsTabClient from '../../[tab]/client';
 
 /**
@@ -84,8 +84,10 @@ export default async function OptionsViewerToolPage({
 }) {
   const { tool } = await params;
 
-  // The default tool has a canonical home at /option/viewer.
-  if (tool === 'chain') redirect('/option/viewer');
+  // The default tool has a canonical home at /option/viewer. 308 rather than 307 so any link
+  // that reaches this alias consolidates onto the canonical URL instead of splitting signal
+  // across two paths serving identical content.
+  if (tool === 'chain') permanentRedirect('/option/viewer');
 
   if (!validTools.includes(tool as (typeof validTools)[number])) {
     notFound();
