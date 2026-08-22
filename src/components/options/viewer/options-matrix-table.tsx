@@ -309,6 +309,7 @@ export function OptionsMatrixTable({
   dte
 }: OptionsMatrixTableProps) {
   const [strikeRange, setStrikeRange] = useState<StrikeRange>(20);
+  const [liquidityFilter, setLiquidityFilter] = useState<'all' | 'excellent'>('all');
   const [hoveredStrike, setHoveredStrike] = useState<number | null>(null);
   const [selectedContract, setSelectedContract] = useState<SelectedContract>(null);
 
@@ -360,8 +361,15 @@ export function OptionsMatrixTable({
         list = list.slice(start, end);
       }
     }
+    if (liquidityFilter === 'excellent') {
+      list = list.filter(r => {
+        const cLiq = computeLiquidity(r.call?.bid, r.call?.ask, r.call?.midPrice, r.call?.volume, r.call?.openInterest);
+        const pLiq = computeLiquidity(r.put?.bid, r.put?.ask, r.put?.midPrice, r.put?.volume, r.put?.openInterest);
+        return cLiq.tier === 'excellent' || pLiq.tier === 'excellent';
+      });
+    }
     return list;
-  }, [strikeRows, strikeRange, atmStrike]);
+  }, [strikeRows, strikeRange, atmStrike, liquidityFilter]);
 
   // Max volume for proportional bar rendering
   const maxVol = useMemo(() => {
@@ -414,6 +422,35 @@ export function OptionsMatrixTable({
                 {r === 'all' ? 'All' : `±${r}`}
               </button>
             ))}
+          </div>
+
+          <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
+
+          {/* Liquidity Filter */}
+          <div className="flex items-center gap-1">
+            <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5 hidden sm:inline">Liq:</span>
+            <button
+              onClick={() => setLiquidityFilter('all')}
+              className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                liquidityFilter === 'all'
+                  ? 'border-[#A8672E]/60 bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52]/60 dark:bg-[#D08F52]/15 dark:text-[#D08F52]'
+                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-[#A8672E]/30 hover:text-slate-600'
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => setLiquidityFilter(prev => prev === 'excellent' ? 'all' : 'excellent')}
+              title="Filter strikes to only those with Excellent liquidity"
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                liquidityFilter === 'excellent'
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-800 dark:border-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-300 ring-1 ring-emerald-500/30 font-semibold'
+                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-emerald-500/40 hover:text-slate-600'
+              }`}
+            >
+              <Circle className={`w-1.5 h-1.5 ${liquidityFilter === 'excellent' ? 'fill-emerald-500 text-emerald-500' : 'fill-slate-400 text-slate-400'}`} />
+              Excellent Only
+            </button>
           </div>
 
           <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
