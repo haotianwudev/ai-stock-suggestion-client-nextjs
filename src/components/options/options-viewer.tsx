@@ -58,7 +58,7 @@ export interface OptionsAPIResponse {
   expirationDates: ExpirationData[];
 }
 
-type ExpirationCategory = 'key' | 'all' | '0dte' | 'weeklies' | 'monthlies';
+type ExpirationCategory = 'key' | 'all' | 'weeklies' | 'monthlies';
 
 // SPX lists ~55 expirations (near-dated dailies plus weeklies and LEAPS), but open
 // interest is heavily concentrated in a handful of them. These helpers pick out the
@@ -180,7 +180,9 @@ export function OptionsViewer() {
     loadSource(source, true);
   };
 
-  // Filtered Expiration cycles (Key, 0DTE, Weeklies, Monthlies, All)
+  // Filtered Expiration cycles (Key, All, Weeklies, Monthlies).
+  // 0DTE/1DTE have no chip of their own — the Key filter's front-week rule always
+  // includes them, and they stay visually flagged by the rose 0d/1d badge.
   const filteredExpirations = useMemo(() => {
     if (!data) return [];
     const all = data.expirationDates;
@@ -188,8 +190,6 @@ export function OptionsViewer() {
     let subset = all;
     if (expCategory === 'key') {
       subset = all.filter(isKeyExpiration);
-    } else if (expCategory === '0dte') {
-      subset = all.filter(e => e.daysToExpiration <= 1);
     } else if (expCategory === 'weeklies') {
       subset = all.filter(e => e.daysToExpiration <= 30);
     } else if (expCategory === 'monthlies') {
@@ -428,11 +428,11 @@ export function OptionsViewer() {
               </span>
             </div>
 
-            {/* Quick Filter: Key / All / 0DTE / Weeklies / Monthlies */}
+            {/* Quick Filter: Key / All / Weeklies / Monthlies */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('key')}
-                title="Front week, near-term Friday weeklies, and every standard monthly — where SPX open interest actually sits"
+                title="0DTE and the rest of the front week, near-term Friday weeklies, and standard monthlies — where SPX open interest actually sits"
                 className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'key'
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
@@ -450,16 +450,6 @@ export function OptionsViewer() {
                 }`}
               >
                 All
-              </button>
-              <button
-                onClick={() => setExpCategory('0dte')}
-                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
-                  expCategory === '0dte' 
-                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                0DTE & 1DTE
               </button>
               <button
                 onClick={() => setExpCategory('weeklies')}
