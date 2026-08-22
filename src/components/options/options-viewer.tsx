@@ -86,6 +86,24 @@ const KEY_WEEKLY_COUNT = 4;        // next 4 Friday weeklies
 const KEY_MONTHLY_COUNT = 6;       // next 6 standard monthlies (~6 months out)
 const KEY_LEAPS_TARGET_DTES = [365, 730]; // ~1y and ~2y long-term anchors
 
+/** Compact open-interest label, e.g. 5354461 -> "5.4M", 404444 -> "404K". */
+function formatOpenInterest(oi: number): string {
+  if (oi >= 1_000_000) return `${(oi / 1_000_000).toFixed(1)}M`;
+  if (oi >= 1_000) return `${Math.round(oi / 1_000)}K`;
+  return `${oi}`;
+}
+
+/** Rank a cycle by its share of the busiest visible cycle's open interest.
+ *  The cut-offs match how SPX OI actually clusters: monthlies sit far above
+ *  everything else, Friday weeklies form a middle band, and mid-week dailies
+ *  trail well below both. */
+type LiquidityTier = 'deep' | 'active' | 'thin';
+function liquidityTier(share: number): LiquidityTier {
+  if (share >= 0.25) return 'deep';
+  if (share >= 0.05) return 'active';
+  return 'thin';
+}
+
 /** The liquid subset shown by default: near-term dailies, Friday weeklies, standard
  *  monthlies, and a couple of long-dated anchors — rather than all ~56 cycles. */
 type ExpirationLike = { expiration: string; daysToExpiration: number };
@@ -243,6 +261,32 @@ export function OptionsViewer() {
     }
     return subset;
   }, [data, expCategory, selectedExpiration]);
+
+  // Total open interest per expiration, straight from the chain. SPX OI spans ~3
+  // orders of magnitude across cycles (monthlies clear 5M while a mid-week daily can
+  // sit under 2K), so this is what actually ranks a cycle's importance — the
+  // weekday heuristics above only decide which ones get listed.
+  const openInterestByExpiration = useMemo(() => {
+    const map = new Map<string, number>();
+    if (!data) return map;
+    for (const exp of data.expirationDates) {
+      let oi = 0;
+      for (const c of exp.calls) oi += c.openInterest ?? 0;
+      for (const p of exp.puts) oi += p.openInterest ?? 0;
+      map.set(exp.expiration, oi);
+    }
+    return map;
+  }, [data]);
+
+  // Scale bars/tiers against the busiest cycle currently on screen, so the strip
+  // stays readable whichever filter is active.
+  const maxVisibleOpenInterest = useMemo(() => {
+    let max = 0;
+    for (const exp of filteredExpirations) {
+      max = Math.max(max, openInterestByExpiration.get(exp.expiration) ?? 0);
+    }
+    return max;
+  }, [filteredExpirations, openInterestByExpiration]);
 
   // Selected expiration payload
   const currentExpData = useMemo(() => {
@@ -511,6 +555,19 @@ export function OptionsViewer() {
             </div>
           </div>
 
+          <div className="flex items-center gap-1.5 text-[10px] text-slate-400 dark:text-slate-500">
+            <span>Bar + number is open interest — the actual liquidity, not a guess from the date.</span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#A8672E] dark:bg-[#D08F52]" />deep
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#A8672E]/50 dark:bg-[#D08F52]/50" />active
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700" />thin
+            </span>
+          </div>
+
           {/* Horizontal Scrollable Dates */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
             {filteredExpirations.map(exp => {
@@ -519,19 +576,28 @@ export function OptionsViewer() {
               const is1DTE = exp.daysToExpiration === 1;
               const isMonthly = isThirdFriday(exp.expiration);
 
+              const openInterest = openInterestByExpiration.get(exp.expiration) ?? 0;
+              const oiShare = maxVisibleOpenInterest > 0 ? openInterest / maxVisibleOpenInterest : 0;
+              const tier = liquidityTier(oiShare);
+              const isThin = tier === 'thin';
+
               return (
                 <button
                   key={exp.expiration}
-                  title={isMonthly ? 'Standard monthly expiration (3rd Friday) — deepest open interest' : undefined}
+                  title={`${exp.expirationLabel} — ${openInterest.toLocaleString()} contracts open interest${
+                    isMonthly ? ' · standard monthly (3rd Friday), deepest OI on the board' : ''
+                  }`}
                   onClick={() => setSelectedExpiration(exp.expiration)}
                   className={`flex-shrink-0 px-3 py-2 rounded-lg border text-left transition-all ${
                     isSelected
                       ? 'border-[#A8672E] bg-[#A8672E]/10 dark:border-[#D08F52] dark:bg-[#D08F52]/15 text-[#A8672E] dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
+                      : tier === 'deep'
+                      ? 'border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200'
                       : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 text-slate-800 dark:text-slate-200'
-                  }`}
+                  } ${isThin && !isSelected ? 'opacity-65 hover:opacity-100' : ''}`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className={`text-xs font-bold font-mono ${isSelected ? 'text-[#A8672E] dark:text-[#D08F52]' : 'text-slate-800 dark:text-slate-200'}`}>
+                    <span className={`text-xs font-mono ${tier === 'deep' ? 'font-extrabold' : 'font-bold'} ${isSelected ? 'text-[#A8672E] dark:text-[#D08F52]' : 'text-slate-800 dark:text-slate-200'}`}>
                       {exp.expiration.slice(5)}
                     </span>
                     <Badge 
@@ -558,6 +624,30 @@ export function OptionsViewer() {
                   <span className="text-[10px] text-slate-400 dark:text-slate-500 block mt-0.5 font-medium font-mono">
                     {exp.expirationLabel.split(',')[0]}
                   </span>
+                  {/* Open interest: the actual liquidity signal, not just a weekday guess */}
+                  <div className="mt-1.5 flex items-center gap-1.5">
+                    <div className="h-1 flex-1 min-w-[28px] rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${
+                          tier === 'deep'
+                            ? 'bg-[#A8672E] dark:bg-[#D08F52]'
+                            : tier === 'active'
+                            ? 'bg-[#A8672E]/50 dark:bg-[#D08F52]/50'
+                            : 'bg-gray-300 dark:bg-gray-700'
+                        }`}
+                        style={{ width: `${Math.max(4, oiShare * 100)}%` }}
+                      />
+                    </div>
+                    <span
+                      className={`text-[9px] font-mono tabular-nums shrink-0 ${
+                        tier === 'deep'
+                          ? 'font-bold text-slate-700 dark:text-slate-300'
+                          : 'text-slate-400 dark:text-slate-500'
+                      }`}
+                    >
+                      {formatOpenInterest(openInterest)}
+                    </span>
+                  </div>
                 </button>
               );
             })}
