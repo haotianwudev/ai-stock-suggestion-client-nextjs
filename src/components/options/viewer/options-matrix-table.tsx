@@ -54,7 +54,7 @@ const TIER_LABEL: Record<LiquidityTier, string> = {
   excellent: 'Excellent', good: 'Good', fair: 'Fair', poor: 'Poor', unknown: '—',
 };
 
-type StrikeRangeOption = 15 | 25 | 'all';
+type LiquidityFilterOption = 'good' | 'all';
 
 /* ─── Liquidity dot: small colored circle indicating tier ─── */
 const LIQ_DOT: Record<LiquidityTier, string> = {
@@ -308,7 +308,8 @@ export function OptionsMatrixTable({
   expiration,
   dte
 }: OptionsMatrixTableProps) {
-  const [strikeRange, setStrikeRange] = useState<StrikeRangeOption>(15);
+  // Filter by Good+ Liquidity by default
+  const [liquidityFilter, setLiquidityFilter] = useState<LiquidityFilterOption>('good');
   const [hoveredStrike, setHoveredStrike] = useState<number | null>(null);
   const [selectedContract, setSelectedContract] = useState<SelectedContract>(null);
 
@@ -350,12 +351,18 @@ export function OptionsMatrixTable({
     ).strike;
   }, [strikeRows, spotPrice]);
 
+  // Filter rows: only Good+ liquid strikes by default, or all strikes
   const filteredRows = useMemo(() => {
-    if (strikeRange === 'all') return strikeRows;
-    const minStrike = spotPrice * (1 - strikeRange / 100);
-    const maxStrike = spotPrice * (1 + strikeRange / 100);
-    return strikeRows.filter(r => r.strike >= minStrike && r.strike <= maxStrike);
-  }, [strikeRows, strikeRange, spotPrice]);
+    if (liquidityFilter === 'good') {
+      const liquidList = strikeRows.filter(r => {
+        const cLiq = computeLiquidity(r.call?.bid, r.call?.ask, r.call?.midPrice, r.call?.volume, r.call?.openInterest);
+        const pLiq = computeLiquidity(r.put?.bid, r.put?.ask, r.put?.midPrice, r.put?.volume, r.put?.openInterest);
+        return cLiq.tier === 'excellent' || cLiq.tier === 'good' || pLiq.tier === 'excellent' || pLiq.tier === 'good';
+      });
+      return liquidList.length > 0 ? liquidList : strikeRows;
+    }
+    return strikeRows;
+  }, [strikeRows, liquidityFilter]);
 
   // Max volume for proportional bar rendering
   const maxVol = useMemo(() => {
@@ -389,25 +396,34 @@ export function OptionsMatrixTable({
 
   return (
     <div className="space-y-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xs overflow-hidden">
-      {/* ═══ Control Bar: Strike Range (±15%, ±25%, All) & Column Toggles ═══ */}
+      {/* ═══ Control Bar: Liquidity Filter (Good+ default / All) & Column Toggles ═══ */}
       <div className="p-3 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Strike Range Selector */}
-          <div className="flex items-center gap-1">
-            <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px] mr-1 hidden sm:inline">Strikes:</span>
-            {([15, 25, 'all'] as StrikeRangeOption[]).map(r => (
-              <button
-                key={String(r)}
-                onClick={() => setStrikeRange(r)}
-                className={`px-2.5 py-0.5 rounded-md text-xs font-mono font-semibold border transition-all ${
-                  strikeRange === r
-                    ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
-                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400 hover:border-[#A8672E]/40'
-                }`}
-              >
-                {r === 'all' ? 'All' : `±${r}%`}
-              </button>
-            ))}
+          {/* Liquidity Filter: Good+ (Default) / All */}
+          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-0.5 shadow-2xs">
+            <button
+              onClick={() => setLiquidityFilter('good')}
+              title="Show only strikes with Good or Excellent liquidity (tight spreads & active trading)"
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold text-xs transition-all ${
+                liquidityFilter === 'good'
+                  ? 'bg-emerald-600 text-white dark:bg-emerald-600 dark:text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+              }`}
+            >
+              <Circle className="w-2 h-2 fill-current" />
+              <span>Good+ Liquidity</span>
+            </button>
+            <button
+              onClick={() => setLiquidityFilter('all')}
+              title="Show all listed strikes regardless of liquidity"
+              className={`px-3 py-1 rounded-md font-semibold text-xs transition-all ${
+                liquidityFilter === 'all'
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+              }`}
+            >
+              All Strikes
+            </button>
           </div>
 
           <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
@@ -451,7 +467,9 @@ export function OptionsMatrixTable({
             </>
           )}
           <span className="text-gray-300 dark:text-gray-700">|</span>
-          <span className="text-[11px] text-[#A8672E] dark:text-[#D08F52] font-semibold">{filteredRows.length} Strikes</span>
+          <span className="text-[11px] text-[#A8672E] dark:text-[#D08F52] font-semibold">
+            {filteredRows.length} {liquidityFilter === 'good' ? `of ${strikeRows.length} ` : ''}Strikes
+          </span>
         </div>
       </div>
 
