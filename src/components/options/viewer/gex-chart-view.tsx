@@ -58,9 +58,9 @@ export function GexChartView({
   allExpirations
 }: GexChartViewProps) {
   const [subView, setSubView] = useState<GexSubView>('netGex');
-  // Only netGex/grossGex support the aggregate scope — gammaShift's decay-with-distance model
-  // and vannaCharm are inherently tied to one expiration's own time-to-expiry, not a sum across
-  // many different DTEs, so they always read the single selected expiration regardless of scope.
+  // Only netGex/grossGex support the aggregate scope — gammaShift and vannaCharm are inherently
+  // tied to one expiration's own time-to-expiry, not a sum across many different DTEs, so they
+  // always read the single selected expiration regardless of scope.
   const [scope, setScope] = useState<GexScope>('expiration');
   const canAggregate = !!allExpirations && allExpirations.length > 1;
   const effectiveScope: GexScope = canAggregate && (subView === 'netGex' || subView === 'grossGex') ? scope : 'expiration';
@@ -151,18 +151,38 @@ export function GexChartView({
     // against real chain data and found to still misfire: it can report a strike as "the flip"
     // purely because that's where the running total first dips negative, even when dealer gamma
     // stays negative at every nearby *simulated spot price*, i.e. there's no real nearby flip at
-    // all). Reuses the same Gaussian-decay spot-shift model as the "Spot Move Sim" view below —
-    // that decay weighting also naturally smooths out the single-strike rounding noise 0DTE
-    // gamma is prone to, rather than being thrown off by it strike-by-strike.
-    const flipFlatContracts: { strike: number; gamma: number; openInterest: number; isCall: boolean }[] = [];
+    // all). Shares one spot-shift model with the "Spot Move Sim" view below, so the flip level
+    // and that curve are guaranteed to agree.
+    // Each simulated contract carries its own IV and time-to-expiry so gamma can be
+    // genuinely RE-PRICED at a shifted spot (see simNetGexAt). The previous version kept
+    // each contract's observed gamma fixed and multiplied it by an ad-hoc Gaussian decay
+    // with a hardcoded 3%-of-spot width — that number had no basis in the option's actual
+    // vol or expiry, so the reported flip level was really a function of that constant.
+    type SimContract = {
+      strike: number; openInterest: number; isCall: boolean; iv: number; T: number; observedGamma: number;
+    };
+    const simContracts: SimContract[] = [];
+    const pushSim = (o: OptionContractData, isCall: boolean, dteDays: number) => {
+      if (!inRange(o.strike)) return;
+      const oi = o.openInterest || 0;
+      if (oi <= 0) return;   // contributes nothing to dealer gamma
+      simContracts.push({
+        strike: o.strike,
+        openInterest: oi,
+        isCall,
+        iv: o.impliedVolatilityMid && o.impliedVolatilityMid > 0 ? o.impliedVolatilityMid : 0,
+        T: Math.max(dteDays, 0) / 365,
+        observedGamma: o.gamma || 0,
+      });
+    };
     if (effectiveScope === 'all' && allExpirations) {
       allExpirations.forEach(exp => {
-        exp.calls.forEach(c => { if (inRange(c.strike)) flipFlatContracts.push({ strike: c.strike, gamma: c.gamma || 0, openInterest: c.openInterest || 0, isCall: true }); });
-        exp.puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
+        exp.calls.forEach(c => pushSim(c, true, exp.daysToExpiration));
+        exp.puts.forEach(p => pushSim(p, false, exp.daysToExpiration));
       });
     } else {
-      calls.forEach(c => { if (inRange(c.strike)) flipFlatContracts.push({ strike: c.strike, gamma: c.gamma || 0, openInterest: c.openInterest || 0, isCall: true }); });
-      puts.forEach(p => { if (inRange(p.strike)) flipFlatContracts.push({ strike: p.strike, gamma: p.gamma || 0, openInterest: p.openInterest || 0, isCall: false }); });
+      calls.forEach(c => pushSim(c, true, dte));
+      puts.forEach(p => pushSim(p, false, dte));
     }
 
     // Call Wall / Put Wall: the strike where gamma exposure itself peaks on each side — the
@@ -172,69 +192,108 @@ export function GexChartView({
     // the wall land anywhere — including below the flip point, an ordering that shouldn't happen
     // since both are gamma-driven quantities. Reuses `rows`, which already carries callGex/putGex
     // per strike for whichever scope is active (single expiration or summed across all of them).
-    let callWallStrike: number | null = null, maxCallGex = 0;
-    let putWallStrike: number | null = null, maxPutGex = 0;
-    rows.forEach(({ strike, callGex, putGex }) => {
-      if (callGex > maxCallGex) { maxCallGex = callGex; callWallStrike = strike; }
-      if (putGex > maxPutGex) { maxPutGex = putGex; putWallStrike = strike; }
-    });
+    //
+    // Two corrections here. First, the definitional one: a call wall is overhead
+    // resistance and a put wall is downside support, so they sit on opposite sides of
+    // spot by construction. Scanning every strike (what this did before) let the "call
+    // wall" print below spot and the "put wall" above it — which inverts what both lines
+    // are telling you, and is the main reason these read as wrong.
+    //
+    // Second, stability: neighbouring SPX strikes routinely carry near-identical gamma,
+    // so a raw argmax hops between adjacent strikes on trivial data refreshes. Smoothing
+    // with a [0.25, 0.5, 0.25] kernel over the strike-ordered series before taking the
+    // peak keeps the wall anchored unless the surrounding gamma genuinely shifts.
+    const smoothPeak = (
+      values: { strike: number; value: number }[],
+      side: 'above' | 'below'
+    ): number | null => {
+      let bestStrike: number | null = null;
+      let bestValue = 0;
+      for (let i = 0; i < values.length; i++) {
+        const { strike } = values[i];
+        if (side === 'above' && strike < spotPrice) continue;
+        if (side === 'below' && strike > spotPrice) continue;
+        const prev = values[i - 1]?.value ?? values[i].value;
+        const next = values[i + 1]?.value ?? values[i].value;
+        const smoothed = 0.5 * values[i].value + 0.25 * prev + 0.25 * next;
+        if (smoothed > bestValue) { bestValue = smoothed; bestStrike = strike; }
+      }
+      return bestStrike;
+    };
+
+    // rows.putGex is already stored as a positive magnitude, so both sides compare peaks
+    // of |gamma exposure| the same way.
+    const callWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.callGex })), 'above');
+    const putWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.putGex })), 'below');
+
+    // Black-Scholes gamma diverges as T -> 0, so 0DTE contracts are floored at roughly
+    // half a session. Without this a single expiring strike produces an unbounded spike
+    // that swamps the rest of the book and makes the flip jump around.
+    const MIN_SIM_T = 0.5 / 365;
 
     const simNetGexAt = (simSpot: number): number => {
+      const scale = contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
       let total = 0;
-      flipFlatContracts.forEach(({ strike, gamma, openInterest, isCall }) => {
-        const dK = Math.abs(strike - simSpot);
-        const decay = Math.exp(-0.5 * ((dK / (simSpot * 0.03)) ** 2));
-        const signed = (isCall ? gamma : -gamma) * openInterest * decay;
-        total += signed * contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
-      });
+      for (const ct of simContracts) {
+        let g: number;
+        if (ct.iv > 0) {
+          g = blackScholes(
+            simSpot, ct.strike, Math.max(ct.T, MIN_SIM_T), SPX_DEFAULT_RATE, ct.iv,
+            ct.isCall ? 'Call' : 'Put', SPX_DEFAULT_DIV_YIELD
+          ).gamma;
+        } else {
+          // No IV quoted for this contract — hold its observed gamma flat rather than
+          // inventing a shape for it.
+          g = ct.observedGamma;
+        }
+        total += (ct.isCall ? g : -g) * ct.openInterest * scale;
+      }
       return total;
     };
 
+    // Root-find in two phases: a coarse 1% sweep to bracket sign changes, then bisection
+    // to refine. Re-pricing every contract is far costlier than the old fixed-gamma
+    // approximation, so a flat 0.1% sweep (160 full revaluations) isn't affordable at
+    // whole-book scope; this gets the same precision in ~30.
     let flip: number | null = null;
-    if (flipFlatContracts.length > 0) {
-      const stepPct = 0.1;
-      let prevSpot = spotPrice * (1 - 0.08);
-      let prevVal = simNetGexAt(prevSpot);
+    if (simContracts.length > 0) {
+      const evalAt = (pct: number) => ({ spot: spotPrice * (1 + pct / 100), val: simNetGexAt(spotPrice * (1 + pct / 100)) });
+      let prev = evalAt(-8);
       let bestDist = Infinity;
-      for (let pct = -8 + stepPct; pct <= 8; pct += stepPct) {
-        const simSpot = spotPrice * (1 + pct / 100);
-        const val = simNetGexAt(simSpot);
-        if ((prevVal <= 0 && val > 0) || (prevVal >= 0 && val < 0)) {
-          // Linear interpolation between the two bracketing sim-spot points for a precise level.
-          const t = -prevVal / (val - prevVal);
-          const crossing = prevSpot + t * (simSpot - prevSpot);
+      for (let pct = -7; pct <= 8; pct += 1) {
+        const cur = evalAt(pct);
+        if ((prev.val <= 0 && cur.val > 0) || (prev.val >= 0 && cur.val < 0)) {
+          // Bisect the bracketing interval for a precise crossing.
+          let lo = prev, hi = cur;
+          for (let i = 0; i < 14; i++) {
+            const midSpot = (lo.spot + hi.spot) / 2;
+            const midVal = simNetGexAt(midSpot);
+            if ((lo.val <= 0 && midVal > 0) || (lo.val >= 0 && midVal < 0)) {
+              hi = { spot: midSpot, val: midVal };
+            } else {
+              lo = { spot: midSpot, val: midVal };
+            }
+          }
+          const crossing = (lo.spot + hi.spot) / 2;
           const dist = Math.abs(crossing - spotPrice);
           if (dist < bestDist) { bestDist = dist; flip = Math.round(crossing); }
         }
-        prevSpot = simSpot;
-        prevVal = val;
+        prev = cur;
       }
     }
 
     // 2. Simulated Price Shift Curve (Simulating Spot from -5% to +5%)
     const shiftSteps = [-5, -4, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3, 4, 5];
+    // Uses the identical re-pricing model as the gamma flip above. Previously this ran its
+    // own copy of the Gaussian-decay approximation over only the selected expiration's
+    // strikes, so the curve and the flip level could contradict each other — the curve
+    // could sit entirely above zero while the flip claimed a crossing nearby.
     const shiftCurve = shiftSteps.map(pct => {
       const simSpot = spotPrice * (1 + pct / 100);
-      let simGex = 0;
-
-      filteredStrikes.forEach(strike => {
-        const c = callMap.get(strike);
-        const p = putMap.get(strike);
-
-        const dK = Math.abs(strike - simSpot);
-        // Gamma decays with distance from spot: approx bell curve peak at ATM
-        const decay = Math.exp(-0.5 * ((dK / (simSpot * 0.03)) ** 2));
-
-        const cG = (c?.gamma || 0) * (c?.openInterest || 0) * decay;
-        const pG = -(p?.gamma || 0) * (p?.openInterest || 0) * decay;
-
-        simGex += (cG + pG) * contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
-      });
-
       return {
         pctShift: `${pct > 0 ? '+' : ''}${pct}%`,
         simSpot: Math.round(simSpot),
-        simNetGex: Number(simGex.toFixed(1)),
+        simNetGex: Number(simNetGexAt(simSpot).toFixed(1)),
         isCurrent: pct === 0
       };
     });
