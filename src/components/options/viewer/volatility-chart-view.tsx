@@ -127,17 +127,21 @@ function dedupeByStrike<T extends { strike: number; contractSymbol?: string; ope
 // unreliable one).
 function makeQualityDot(color: string) {
   return (props: any) => {
-    const { cx, cy, payload } = props;
-    if (cx == null || cy == null) return <g />;
+    // Recharts calls this once per data point to build a list of dots itself, so each
+    // returned element needs its own `key` -- the `key` prop it passes in isn't
+    // automatically forwarded into a new element the way other props are.
+    const { cx, cy, payload, index } = props;
+    const key = `quality-dot-${index}`;
+    if (cx == null || cy == null) return <g key={key} />;
     if (payload?.suspect) {
       return (
-        <g>
+        <g key={key}>
           <circle cx={cx} cy={cy} r={6} fill="none" stroke="#f59e0b" strokeWidth={2} />
           <circle cx={cx} cy={cy} r={2.5} fill="#f59e0b" />
         </g>
       );
     }
-    return <circle cx={cx} cy={cy} r={3} fill={color} />;
+    return <circle key={key} cx={cx} cy={cy} r={3} fill={color} />;
   };
 }
 
