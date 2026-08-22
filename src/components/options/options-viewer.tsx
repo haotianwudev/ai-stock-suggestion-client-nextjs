@@ -58,7 +58,36 @@ export interface OptionsAPIResponse {
   expirationDates: ExpirationData[];
 }
 
-type ExpirationCategory = 'all' | '0dte' | 'weeklies' | 'monthlies';
+type ExpirationCategory = 'key' | 'all' | '0dte' | 'weeklies' | 'monthlies';
+
+// SPX lists ~55 expirations (near-dated dailies plus weeklies and LEAPS), but open
+// interest is heavily concentrated in a handful of them. These helpers pick out the
+// cycles that actually carry liquidity so the default strip isn't 55 chips wide.
+
+/** Standard monthly expiration: the 3rd Friday, which always falls on the 15th-21st.
+ *  AM-settled on SPX and the deepest open interest of any cycle. */
+function isThirdFriday(dateStr: string): boolean {
+  const d = new Date(`${dateStr}T00:00:00`);
+  if (Number.isNaN(d.getTime()) || d.getDay() !== 5) return false;
+  const dom = d.getDate();
+  return dom >= 15 && dom <= 21;
+}
+
+function isFriday(dateStr: string): boolean {
+  const d = new Date(`${dateStr}T00:00:00`);
+  return !Number.isNaN(d.getTime()) && d.getDay() === 5;
+}
+
+/** The liquid subset: the current trading week (0DTE is among the most active SPX
+ *  cycles), near-term Friday weeklies, and standard monthlies out to one year.
+ *  Long-dated LEAPS monthlies are excluded here — they're technically monthlies but
+ *  trade thinly, and they're still reachable via the "Monthlies & LEAPS" filter. */
+function isKeyExpiration(exp: { expiration: string; daysToExpiration: number }): boolean {
+  if (exp.daysToExpiration <= 5) return true;                              // front week, incl. 0DTE
+  if (isFriday(exp.expiration) && exp.daysToExpiration <= 45) return true; // near Friday weeklies
+  if (isThirdFriday(exp.expiration) && exp.daysToExpiration <= 365) return true; // monthlies to 1y
+  return false;
+}
 type DataSource = 'historical' | 'live';
 
 export function OptionsViewer() {
@@ -73,7 +102,7 @@ export function OptionsViewer() {
   const [error, setError] = useState<string | null>(null);
   const [selectedExpiration, setSelectedExpiration] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'matrix' | 'volatility' | 'positioning' | 'gex'>('matrix');
-  const [expCategory, setExpCategory] = useState<ExpirationCategory>('all');
+  const [expCategory, setExpCategory] = useState<ExpirationCategory>('key');
   const [cacheAge, setCacheAge] = useState<number | null>(null);
   const [readyToRefresh, setReadyToRefresh] = useState(true);
 
@@ -151,20 +180,32 @@ export function OptionsViewer() {
     loadSource(source, true);
   };
 
-  // Filtered Expiration cycles (0DTE, Weeklies, Monthlies, All)
+  // Filtered Expiration cycles (Key, 0DTE, Weeklies, Monthlies, All)
   const filteredExpirations = useMemo(() => {
     if (!data) return [];
-    if (expCategory === '0dte') {
-      return data.expirationDates.filter(e => e.daysToExpiration <= 1);
+    const all = data.expirationDates;
+
+    let subset = all;
+    if (expCategory === 'key') {
+      subset = all.filter(isKeyExpiration);
+    } else if (expCategory === '0dte') {
+      subset = all.filter(e => e.daysToExpiration <= 1);
+    } else if (expCategory === 'weeklies') {
+      subset = all.filter(e => e.daysToExpiration <= 30);
+    } else if (expCategory === 'monthlies') {
+      subset = all.filter(e => e.daysToExpiration >= 30);
     }
-    if (expCategory === 'weeklies') {
-      return data.expirationDates.filter(e => e.daysToExpiration <= 30);
+
+    // Never hide the cycle currently being analysed — otherwise switching filters
+    // leaves the chart showing an expiration with no visible selected chip.
+    if (selectedExpiration && !subset.some(e => e.expiration === selectedExpiration)) {
+      const selected = all.find(e => e.expiration === selectedExpiration);
+      if (selected) {
+        subset = [...subset, selected].sort((a, b) => a.daysToExpiration - b.daysToExpiration);
+      }
     }
-    if (expCategory === 'monthlies') {
-      return data.expirationDates.filter(e => e.daysToExpiration >= 30);
-    }
-    return data.expirationDates;
-  }, [data, expCategory]);
+    return subset;
+  }, [data, expCategory, selectedExpiration]);
 
   // Selected expiration payload
   const currentExpData = useMemo(() => {
@@ -378,11 +419,28 @@ export function OptionsViewer() {
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Calendar className="h-3.5 w-3.5 text-[#A8672E] dark:text-[#D08F52]" />
-              <span className="font-serif font-bold text-sm">SPX Expiration Cycles ({data.expirationDates.length} Total)</span>
+              <span className="font-serif font-bold text-sm">
+                SPX Expiration Cycles ({filteredExpirations.length}
+                {filteredExpirations.length !== data.expirationDates.length
+                  ? ` of ${data.expirationDates.length}`
+                  : ' Total'}
+                )
+              </span>
             </div>
 
-            {/* Quick Filter: 0DTE / Weeklies / Monthlies / All */}
+            {/* Quick Filter: Key / All / 0DTE / Weeklies / Monthlies */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
+              <button
+                onClick={() => setExpCategory('key')}
+                title="Front week, near-term Friday weeklies, and every standard monthly — where SPX open interest actually sits"
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
+                  expCategory === 'key'
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Key Expiries
+              </button>
               <button
                 onClick={() => setExpCategory('all')}
                 className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
@@ -432,10 +490,12 @@ export function OptionsViewer() {
               const isSelected = exp.expiration === selectedExpiration;
               const is0DTE = exp.daysToExpiration === 0;
               const is1DTE = exp.daysToExpiration === 1;
+              const isMonthly = isThirdFriday(exp.expiration);
 
               return (
                 <button
                   key={exp.expiration}
+                  title={isMonthly ? 'Standard monthly expiration (3rd Friday) — deepest open interest' : undefined}
                   onClick={() => setSelectedExpiration(exp.expiration)}
                   className={`flex-shrink-0 px-3 py-2 rounded-lg border text-left transition-all ${
                     isSelected
@@ -459,6 +519,14 @@ export function OptionsViewer() {
                     >
                       {exp.daysToExpiration}d
                     </Badge>
+                    {isMonthly && (
+                      <Badge
+                        variant="outline"
+                        className="text-[9px] px-1 py-0 font-mono font-bold bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/30"
+                      >
+                        M
+                      </Badge>
+                    )}
                   </div>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500 block mt-0.5 font-medium font-mono">
                     {exp.expirationLabel.split(',')[0]}
