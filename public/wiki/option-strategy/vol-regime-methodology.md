@@ -4,7 +4,7 @@ title: Volatility Regime & VRP Methodology
 articleSlug: ""
 date: 2026-08-21
 labels: ["Quantitative Finance", "Options Trading"]
-related: ["option-strategy/variance-risk-premium", "option-strategy/gex-methodology"]
+related: ["option-strategy/options-viewer-methodology", "option-strategy/variance-risk-premium", "option-strategy/gex-methodology"]
 ---
 
 ## Overview

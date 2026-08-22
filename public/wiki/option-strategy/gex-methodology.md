@@ -4,7 +4,7 @@ title: GEX Calculation Methodology
 articleSlug: ""
 date: 2026-08-21
 labels: ["Quantitative Finance", "Options Trading"]
-related: ["option-strategy/gex", "option-strategy/vol-regime-methodology"]
+related: ["option-strategy/options-viewer-methodology", "option-strategy/gex", "option-strategy/vol-regime-methodology"]
 ---
 
 ## Overview

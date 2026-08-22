@@ -4,7 +4,7 @@ title: Decoding the Analyst Consensus: Target Prices & Conflicts
 articleSlug: decoding-analyst-consensus-target-prices-conflicts-epistemology
 date: 2025-12-01
 labels: ["Stock Analysis", "Finance 101"]
-related: []
+related: ["stock-analysis/stock-analysis-methodology"]
 ---
 
 ## Overview

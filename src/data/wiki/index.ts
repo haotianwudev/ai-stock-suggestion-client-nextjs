@@ -12,6 +12,24 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "stock-analysis/stock-analysis-methodology",
+    title: "Stock Analysis & Trending Equities Methodology Guide",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.STOCK_ANALYSIS, ArticleLabel.MACRO],
+    summary:
+      "Complete mathematical specification and quantitative architecture for SOPHIE's Equities & Trending Analysis Suite: 4 valuation models (DCF, Owner Earnings, EV/EBITDA, Residual Income), 4-dimensional fundamental scoring, 5-strategy technical ensemble (EMAs, ADX, Z-score, RSI, Hurst exponent, Volatility regime), Form 4 insider trading + NLP sentiment weighting, 5 AI investor bots, and SOPHIE's master synthesis engine.",
+  },
+  {
+    path: "option-strategy/options-viewer-methodology",
+    title: "Options Viewer Calculation & Methodology Guide",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Complete mathematical specification, calculation dictionary, and architectural guide for SOPHIE's Options Viewer across all three sub-tools: Option Chain & Matrix (spread %, liquidity score), Volatility Surface (forward IV, Breeden-Litzenberger RND, skew/butterfly), Positioning (Max Pain payout curves), GEX, SPX Payoff Builder (POP, T+0 curve, net Greeks), and VRP Research.",
+  },
+  {
     path: "option-strategy/gex-methodology",
     title: "GEX Calculation Methodology",
     articleSlug: "",
