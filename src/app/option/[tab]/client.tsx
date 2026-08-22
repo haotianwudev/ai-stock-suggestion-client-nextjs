@@ -53,6 +53,19 @@ interface OptionsTabClientProps {
   tab: string;
   strategyId?: string;
   subtopic?: string;
+  /** Which viewer tool is active: 'chain' (default), 'builder', or 'vrp'. */
+  tool?: string;
+}
+
+/**
+ * The default viewer tool lives at the bare /option/viewer rather than /option/viewer/chain,
+ * so the landing view has exactly one URL instead of two that serve identical content.
+ * /option/viewer/chain is accepted and redirected there.
+ */
+export const VIEWER_DEFAULT_TOOL = 'chain';
+
+function viewerToolUrl(tool: string): string {
+  return tool === VIEWER_DEFAULT_TOOL ? '/option/viewer' : `/option/viewer/${tool}`;
 }
 
 // Topics Tab Component with Sub-navigation
@@ -160,10 +173,23 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
 }
 // Options Viewer Tab — two sub-tools: the live chain lookup and the SPX payoff builder.
 // Local state only (no deep-linking sub-routes), same pattern as TopicsTab above.
-function ViewerTab() {
-  const [activeTool, setActiveTool] = useState('chain');
+function ViewerTab({ tool }: { tool?: string }) {
+  const router = useRouter();
+  const [activeTool, setActiveTool] = useState(tool || VIEWER_DEFAULT_TOOL);
+
+  // Keep in sync when the URL changes (back/forward, or a direct link into a tool).
+  useEffect(() => {
+    setActiveTool(tool || VIEWER_DEFAULT_TOOL);
+  }, [tool]);
+
+  // Each tool is its own URL, so a view can be linked, bookmarked and survives a refresh.
+  const handleToolChange = (value: string) => {
+    setActiveTool(value);
+    router.push(viewerToolUrl(value), { scroll: false });
+  };
+
   return (
-    <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
+    <Tabs value={activeTool} onValueChange={handleToolChange} className="w-full">
       <TabsList className="grid w-full grid-cols-3 mb-5 h-auto p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs touch-manipulation gap-1">
         <TabsTrigger
           value="chain"
@@ -298,7 +324,7 @@ function OptionsArticlesTab() {
   );
 }
 
-export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsTabClientProps) {
+export default function OptionsTabClient({ tab, strategyId, subtopic, tool }: OptionsTabClientProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(tab);
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
@@ -315,6 +341,10 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
       // For topics, use the subtopic or default to option101
       const defaultSubtopic = subtopic || 'option101';
       router.push(`/option/topics/${defaultSubtopic}`, { scroll: false });
+    } else if (value === 'viewer') {
+      // Return to whichever tool was active rather than resetting to the chain, matching how
+      // topics preserves its subtopic when you navigate away and back.
+      router.push(viewerToolUrl(tool || VIEWER_DEFAULT_TOOL), { scroll: false });
     } else {
       const newUrl = `/option/${value}`;
       router.push(newUrl, { scroll: false });
@@ -392,7 +422,7 @@ export default function OptionsTabClient({ tab, strategyId, subtopic }: OptionsT
             </TabsList>
             
             <TabsContent value="viewer" className="mt-2 md:mt-6">
-              <ViewerTab />
+              <ViewerTab tool={tool} />
             </TabsContent>
             
             <TabsContent value="topics" className="mt-0">
