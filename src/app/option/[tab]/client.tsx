@@ -4,7 +4,9 @@ import { Header } from "@/components/layout/header";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Layers } from "lucide-react";
+import { BookOpen, Layers, Lock } from "lucide-react";
+import { canAccessVrpResearch, MIN_VRP_RESEARCH_TIER } from "@/lib/tiers";
+import { ViewerTierGate } from "@/components/options/viewer/tier-gate";
 import { SlotKicker } from "@/components/articles/article-frame";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -175,6 +177,9 @@ function TopicsTab({ subtopic }: { subtopic?: string }) {
 // Local state only (no deep-linking sub-routes), same pattern as TopicsTab above.
 function ViewerTab({ tool }: { tool?: string }) {
   const router = useRouter();
+  const { profile } = useUser();
+  const userTier = profile?.tier ?? 1;
+  const vrpLocked = !canAccessVrpResearch(userTier);
   const [activeTool, setActiveTool] = useState(tool || VIEWER_DEFAULT_TOOL);
 
   // Keep in sync when the URL changes (back/forward, or a direct link into a tool).
@@ -205,9 +210,15 @@ function ViewerTab({ tool }: { tool?: string }) {
         </TabsTrigger>
         <TabsTrigger
           value="vrp"
+          title={vrpLocked ? `Requires Tier ${MIN_VRP_RESEARCH_TIER} (Senior Quant)` : undefined}
           className="text-xs md:text-sm py-2 px-1 md:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all leading-tight touch-manipulation"
         >
-          VRP Research
+          {/* Stays selectable when locked: the tab opens the gate, which is the upsell. Hiding
+              it would mean lower tiers never learn the tool exists. */}
+          <span className="inline-flex items-center gap-1.5">
+            {vrpLocked && <Lock className="h-3 w-3 shrink-0" />}
+            VRP Research
+          </span>
         </TabsTrigger>
       </TabsList>
 
@@ -230,18 +241,35 @@ function ViewerTab({ tool }: { tool?: string }) {
       </TabsContent>
 
       <TabsContent value="vrp" className="mt-0">
-        <div className="space-y-1 mb-4">
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-slate-900 dark:text-slate-100">
-            Volatility Regime & VRP Research
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Today&apos;s premium-selling regime, precomputed from 26 years of SPX/VIX history, plus
-            the decomposition research behind it: what the premium is actually worth once
-            convexity is stripped out, whether its level predicts what you earn, and what it
-            predicts instead.
-          </p>
-        </div>
-        <VrpResearchTab />
+        {canAccessVrpResearch(userTier) ? (
+          <>
+            <div className="space-y-1 mb-4">
+              <h2 className="text-xl md:text-2xl font-serif font-bold text-slate-900 dark:text-slate-100">
+                Volatility Regime & VRP Research
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                Today&apos;s premium-selling regime, precomputed from 26 years of SPX/VIX history, plus
+                the decomposition research behind it: what the premium is actually worth once
+                convexity is stripped out, whether its level predicts what you earn, and what it
+                predicts instead.
+              </p>
+            </div>
+            <VrpResearchTab />
+          </>
+        ) : (
+          <ViewerTierGate
+            title="Volatility Regime & VRP Research"
+            description="Today's premium-selling regime, precomputed from 26 years of SPX and VIX history, plus the decomposition research behind it — what the premium is actually worth once convexity is stripped out, whether its level predicts what you earn, and what it predicts instead."
+            features={[
+              'Daily volatility regime across 6,500+ sessions since 2000',
+              'Implied vs. realized volatility with a custom date range',
+              'VIX distribution against quoted and actually-earned premium',
+              'Non-overlapping harvest backtest with selectable holding periods',
+            ]}
+            requiredTier={MIN_VRP_RESEARCH_TIER}
+            currentTier={userTier}
+          />
+        )}
       </TabsContent>
     </Tabs>
   );

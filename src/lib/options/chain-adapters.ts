@@ -64,6 +64,9 @@ export function adaptLiveResponseToSnapshot(response: LiveOptionsAPIResponse): O
 export function adaptSnapshotToOptionsAPIResponse(snapshot: OptionChainSnapshot): any {
     return {
         ticker: snapshot.symbol || '^SPX',
+        // Carried through so the UI can label OI-derived figures (GEX, walls, Max Pain, P/C OI)
+        // as illustrative on this source rather than presenting them as observed positioning.
+        openInterestSynthetic: snapshot.openInterestSynthetic === true,
         stock: {
             price: snapshot.underlyingPrice,
             previousClose: snapshot.underlyingPrice,

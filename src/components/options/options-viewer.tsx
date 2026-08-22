@@ -69,6 +69,8 @@ export interface OptionsAPIResponse {
     percentChange: number;
     timestamp: string;
   } | null;
+  /** True when open interest is synthesised rather than observed (historical sample only). */
+  openInterestSynthetic?: boolean;
 }
 
 type ExpirationCategory = 'key' | 'all';
@@ -564,6 +566,7 @@ export function OptionsViewer() {
           bookTotalVolume={bookTotals.totalVolume}
           bookTotalOpenInterest={bookTotals.totalOpenInterest}
           cycleCount={data.expirationDates.length}
+          openInterestSynthetic={data.openInterestSynthetic === true}
           loading={loading}
           onRefresh={handleManualRefresh}
           canRefreshNow={source === 'historical' ? true : readyToRefresh}

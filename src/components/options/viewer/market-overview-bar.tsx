@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
-import { RefreshCw, Clock, TrendingUp, TrendingDown } from 'lucide-react';
+import { RefreshCw, Clock, TrendingUp, TrendingDown, AlertTriangle } from 'lucide-react';
 
 /**
  * Market-wide SPX picture. Everything here is WHOLE BOOK or index-level — never a single
@@ -45,6 +45,12 @@ export interface MarketOverviewProps {
   bookTotalVolume: number;
   bookTotalOpenInterest: number | null;
   cycleCount: number;
+  /**
+   * True when this source's open interest is synthesised rather than observed. Everything in
+   * the dealer-book group derives from OI, so the whole group is labelled instead of quietly
+   * presenting generated positioning as real.
+   */
+  openInterestSynthetic?: boolean;
 
   loading: boolean;
   onRefresh: () => void;
@@ -133,7 +139,7 @@ export function MarketOverviewBar(props: MarketOverviewProps) {
     vix, vixPercentChange, regime, vrp, vrpZ, realizedVol20d, vixRank, termSlope, regimeAsOf,
     netGex, gammaFlip, callWall, putWall,
     bookPutCallVolRatio, bookPutCallOIRatio, bookTotalVolume, bookTotalOpenInterest, cycleCount,
-    loading, onRefresh, canRefreshNow, cacheAgeSeconds,
+    openInterestSynthetic, loading, onRefresh, canRefreshNow, cacheAgeSeconds,
   } = props;
 
   const isPositive = priceChange >= 0;
@@ -240,7 +246,20 @@ export function MarketOverviewBar(props: MarketOverviewProps) {
         </div>
 
         <div className="min-w-0">
-          <GroupLabel>Dealer book</GroupLabel>
+          <GroupLabel>
+            <span className="inline-flex items-center gap-1.5">
+              Dealer book
+              {openInterestSynthetic && (
+                <span
+                  className="inline-flex items-center gap-1 rounded-full border border-amber-300 dark:border-amber-500/40 bg-amber-50 dark:bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300 normal-case"
+                  title="This source has no observed open interest, so it was synthesised to keep these views renderable. Net GEX, the gamma flip, the walls and the put/call OI ratio are therefore illustrative, not real positioning. Prices, implied vol and greeks in this snapshot are real. Switch to the live Cboe feed for observed open interest."
+                >
+                  <AlertTriangle className="h-2.5 w-2.5" />
+                  Simulated OI
+                </span>
+              )}
+            </span>
+          </GroupLabel>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div
               className={`rounded-lg px-3 py-2 min-w-0 ${

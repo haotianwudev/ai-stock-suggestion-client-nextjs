@@ -207,6 +207,15 @@ export function canAccessLiveOptions(tier: number): boolean {
   return tier >= MIN_LIVE_OPTIONS_TIER;
 }
 
+/** Tier required for the VRP Research tool (volatility regime, VRP decomposition, backtest).
+ * Held to the same bar as the live options feed, with no honor-system bypass. */
+export const MIN_VRP_RESEARCH_TIER = 4;
+
+/** Returns true when the given tier is allowed to open VRP Research. */
+export function canAccessVrpResearch(tier: number): boolean {
+  return tier >= MIN_VRP_RESEARCH_TIER;
+}
+
 /** Tier required to set a preferred video platform (YouTube vs Bilibili) in
  * profile settings. Mirrors MIN_VIDEO_PREFERENCE_TIER in
  * server/src/resolvers/auth.js -- keep both in sync. */

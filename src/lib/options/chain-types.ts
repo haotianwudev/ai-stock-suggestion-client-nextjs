@@ -44,4 +44,14 @@ export interface OptionChainSnapshot {
     quoteDate: string;
     underlyingPrice: number;
     expirations: ExpirationChain[];
+    /**
+     * True when the snapshot's open interest was generated rather than observed. The bundled
+     * historical sample sets this: its source (OptionsDX EOD) has no open-interest column, so
+     * the values were synthesised to keep OI-derived views renderable.
+     *
+     * Everything downstream of open interest is therefore illustrative on this source — GEX and
+     * its gamma flip and walls, Max Pain, put/call OI ratio, book OI. It must be surfaced in the
+     * UI rather than silently trusted; prices, IV and greeks in the same snapshot are real.
+     */
+    openInterestSynthetic?: boolean;
 }

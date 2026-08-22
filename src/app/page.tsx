@@ -23,6 +23,7 @@ const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-sto
 const DynamicStickyPodcastPlayer = lazy(() => import("@/components/ui/sticky-podcast-player").then(module => ({ default: module.StickyPodcastPlayer })));
 const DynamicClockWidget = lazy(() => import("@/components/investment-clock/clock-widget").then(m => ({ default: m.InvestmentClockWidget })));
 const DynamicTrendingWidget = lazy(() => import("@/components/quant-trending/trending-widget").then(m => ({ default: m.QuantTrendingWidget })));
+const DynamicOptionsWidget = lazy(() => import("@/components/options/options-entry-widget").then(m => ({ default: m.OptionsEntryWidget })));
 
 // Loading skeleton for the compact hero stock cards
 const CompactStockSkeleton = () => (
@@ -328,6 +329,9 @@ export default function Home() {
               <div className="space-y-3 w-full">
                 <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-64 shadow-xs" />}>
                   <DynamicClockWidget />
+                </Suspense>
+                <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-44 shadow-xs" />}>
+                  <DynamicOptionsWidget />
                 </Suspense>
                 <div className="hidden sm:block">
                   <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />}>
