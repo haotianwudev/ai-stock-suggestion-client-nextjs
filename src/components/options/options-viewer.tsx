@@ -58,7 +58,7 @@ export interface OptionsAPIResponse {
   expirationDates: ExpirationData[];
 }
 
-type ExpirationCategory = 'key' | 'all';
+type ExpirationCategory = 'key' | 'deep' | 'all';
 
 // SPX lists ~55 expirations (near-dated dailies plus weeklies and LEAPS), but open
 // interest is heavily concentrated in a handful of them. These helpers pick out the
@@ -257,7 +257,30 @@ export function OptionsViewer() {
     if (!data) return [];
     const all = data.expirationDates;
 
-    let subset = expCategory === 'key' ? selectKeyExpirations(all) : all;
+    let subset: ExpirationData[];
+    if (expCategory === 'key') {
+      subset = selectKeyExpirations(all);
+    } else if (expCategory === 'deep') {
+      // Only cycles with a "deep" OI share — the truly excellent-liquidity expirations.
+      // We compute OI share against the global max (not the filtered max) so the threshold
+      // stays stable regardless of what's currently on screen.
+      const globalMax = all.reduce((m, e) => {
+        let oi = 0;
+        for (const c of e.calls) oi += c.openInterest ?? 0;
+        for (const p of e.puts) oi += p.openInterest ?? 0;
+        return Math.max(m, oi);
+      }, 0);
+      subset = globalMax > 0
+        ? all.filter(e => {
+            let oi = 0;
+            for (const c of e.calls) oi += c.openInterest ?? 0;
+            for (const p of e.puts) oi += p.openInterest ?? 0;
+            return liquidityTier(oi / globalMax) === 'deep';
+          })
+        : all;
+    } else {
+      subset = all;
+    }
 
     // Never hide the cycle currently being analysed — otherwise switching filters
     // leaves the chart showing an expiration with no visible selected chip.
@@ -517,7 +540,7 @@ export function OptionsViewer() {
               </span>
             </div>
 
-            {/* Quick Filter: Key Expiries (default, liquid subset) / All */}
+            {/* Quick Filter: Key Expiries (default, liquid subset) / Excellent Only / All */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('key')}
@@ -529,6 +552,17 @@ export function OptionsViewer() {
                 }`}
               >
                 Key Expiries
+              </button>
+              <button
+                onClick={() => setExpCategory('deep')}
+                title="Only cycles with deep open interest and premier liquidity (≥25% of peak open interest)"
+                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
+                  expCategory === 'deep'
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Excellent Only
               </button>
               <button
                 onClick={() => setExpCategory('all')}
