@@ -31,7 +31,12 @@ import {
   getValidCachedData,
   getLiveCacheIntervalMs
 } from '@/lib/options/options-cache';
-import { OptionsMetricsBar } from './viewer/options-metrics-bar';
+import { useQuery } from '@apollo/client';
+import { GET_VOL_REGIME } from '@/lib/graphql/queries';
+import { VolRegimeResult } from '@/lib/graphql/types';
+import { computeGexProfile, type GexExpirationInput } from '@/lib/options/gex';
+import { MarketOverviewBar } from './viewer/market-overview-bar';
+import { CycleSummaryPanel } from './viewer/cycle-summary-panel';
 import { OptionsMatrixTable, OptionContractData } from './viewer/options-matrix-table';
 import { VolatilityChartView } from './viewer/volatility-chart-view';
 import { PositioningChartView } from './viewer/positioning-chart-view';
@@ -56,6 +61,14 @@ export interface OptionsAPIResponse {
   ticker: string;
   stock: StockData;
   expirationDates: ExpirationData[];
+  /** Live VIX from the Cboe feed. Absent on the historical-snapshot source, which has no
+   *  index-level quote — the market band falls back to the pipeline's stored VIX there. */
+  vix?: {
+    value: number;
+    previousClose: number;
+    percentChange: number;
+    timestamp: string;
+  } | null;
 }
 
 type ExpirationCategory = 'key' | 'all';
@@ -410,6 +423,53 @@ export function OptionsViewer() {
     };
   }, [currentExpData, data]);
 
+  // ---- Market-wide (whole book) aggregates -------------------------------------------------
+  // Deliberately separate from the per-expiration block above: every metric here spans EVERY
+  // listed cycle, which is what the top band claims to show. SPX and SPXW contracts at the same
+  // strike are both counted, since volume and open interest are additive across the two.
+  const bookTotals = useMemo(() => {
+    if (!data) {
+      return {
+        putCallVolRatio: null as number | null,
+        putCallOIRatio: null as number | null,
+        totalVolume: 0,
+        totalOpenInterest: null as number | null,
+      };
+    }
+    let callVol = 0, putVol = 0, callOI = 0, putOI = 0;
+    let sawOI = false;
+    for (const exp of data.expirationDates) {
+      for (const c of exp.calls) {
+        callVol += c.volume || 0;
+        if (c.openInterest != null) { sawOI = true; callOI += c.openInterest; }
+      }
+      for (const p of exp.puts) {
+        putVol += p.volume || 0;
+        if (p.openInterest != null) { sawOI = true; putOI += p.openInterest; }
+      }
+    }
+    return {
+      putCallVolRatio: callVol > 0 ? putVol / callVol : null,
+      putCallOIRatio: sawOI && callOI > 0 ? putOI / callOI : null,
+      totalVolume: callVol + putVol,
+      totalOpenInterest: sawOI ? callOI + putOI : null,
+    };
+  }, [data]);
+
+  // Whole-book gamma, from the same shared lib the GEX tab and cycle panel use.
+  const bookGex = useMemo(() => {
+    if (!data || data.expirationDates.length === 0) return null;
+    return computeGexProfile(data.expirationDates as GexExpirationInput[], data.stock.price);
+  }, [data]);
+
+  // Vol regime / VRP. Precomputed daily in the pipeline — a 252-day percentile and an EWM
+  // z-score can't be derived from a live quote, so this comes from Postgres, not the chain feed.
+  const { data: volRegimeData } = useQuery<{ volRegime: VolRegimeResult }>(GET_VOL_REGIME, {
+    variables: { days: 400 },
+    fetchPolicy: 'cache-and-network',
+  });
+  const regimeLatest = volRegimeData?.volRegime?.latestData ?? null;
+
   return (
     <div className="space-y-4 max-w-[1440px] mx-auto">
       {/* SPX Dedicated Header Sub-Banner with Source Toggle */}
@@ -479,22 +539,31 @@ export function OptionsViewer() {
         </Alert>
       )}
 
-      {/* Hero Metrics HUD */}
+      {/* Market-wide picture — whole book + index-level vol regime. Never per-expiration. */}
       {data && (
-        <OptionsMetricsBar
+        <MarketOverviewBar
           ticker="^SPX"
           spotPrice={data.stock.price}
-          previousClose={data.stock.previousClose}
           priceChange={data.stock.price - data.stock.previousClose}
           percentChange={data.stock.percentChange}
-          timestamp={data.stock.timestamp}
-          expectedMove={expectedMove}
-          maxPainStrike={maxPainStrike}
-          putCallVolumeRatio={putCallVolumeRatio}
-          putCallOIRatio={putCallOIRatio}
-          totalVolume={totalVolume}
-          totalOpenInterest={totalOpenInterest}
-          atmIV={atmIV}
+          vix={data.vix?.value ?? regimeLatest?.vix ?? null}
+          vixPercentChange={data.vix?.percentChange ?? null}
+          regime={regimeLatest?.regime ?? null}
+          vrp={regimeLatest?.vrp ?? null}
+          vrpZ={regimeLatest?.vrpZ ?? null}
+          realizedVol20d={regimeLatest?.realizedVol20d ?? null}
+          vixRank={regimeLatest?.vixRank ?? null}
+          termSlope={regimeLatest?.termSlope ?? null}
+          regimeAsOf={regimeLatest?.bizDate ?? null}
+          netGex={bookGex?.totalNetGex ?? null}
+          gammaFlip={bookGex?.gammaFlip ?? null}
+          callWall={bookGex?.callWall ?? null}
+          putWall={bookGex?.putWall ?? null}
+          bookPutCallVolRatio={bookTotals.putCallVolRatio}
+          bookPutCallOIRatio={bookTotals.putCallOIRatio}
+          bookTotalVolume={bookTotals.totalVolume}
+          bookTotalOpenInterest={bookTotals.totalOpenInterest}
+          cycleCount={data.expirationDates.length}
           loading={loading}
           onRefresh={handleManualRefresh}
           canRefreshNow={source === 'historical' ? true : readyToRefresh}
@@ -641,6 +710,21 @@ export function OptionsViewer() {
             })}
           </div>
         </div>
+      )}
+
+      {/* Summary for the selected cycle — the per-expiration counterpart to the market band */}
+      {data && currentExpData && (
+        <CycleSummaryPanel
+          expiration={currentExpData.expiration}
+          expirationLabel={currentExpData.expirationLabel}
+          daysToExpiration={currentExpData.daysToExpiration}
+          calls={currentExpData.calls}
+          puts={currentExpData.puts}
+          spotPrice={data.stock.price}
+          bookTotalOpenInterest={bookTotals.totalOpenInterest}
+          bookNetGex={bookGex?.totalNetGex ?? null}
+          isMonthly={isThirdFriday(currentExpData.expiration)}
+        />
       )}
 
       {/* Main Analysis Views Switcher */}

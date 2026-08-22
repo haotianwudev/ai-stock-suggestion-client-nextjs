@@ -9,9 +9,36 @@ related: ["option-strategy/options-viewer-methodology", "option-strategy/option-
 
 ## Overview
 
-Implementation spec for the summary metrics in the top banner of SOPHIE's **Options Viewer** (`OptionsMetricsBar`), plus the expiration-cycle selector beneath it. These are the numbers that frame every other view — what the market expects to move, where sellers are positioned, and which expirations are actually worth looking at.
+Implementation spec for the summary metrics at the top of SOPHIE's **Options Viewer**, plus the expiration-cycle selector beneath them. These are the numbers that frame every other view — what the market expects to move, where dealers are positioned, and which expirations are actually worth looking at.
 
 All calculations assume standard **^SPX** conventions: European exercise, cash settlement, and a **$100 contract multiplier**.
+
+## Two Scopes: Market-Wide vs. Selected Cycle
+
+The single most important thing to know when reading the top of the viewer is **which scope a number belongs to**. There are exactly two, and they are deliberately separated into two components:
+
+| Scope | Component | What it covers |
+|---|---|---|
+| **Market-wide** | `MarketOverviewBar` (dark band) | Index level, vol regime, and the **whole dealer book** — every listed expiration summed together |
+| **Selected cycle** | `CycleSummaryPanel` (below the date strip) | One expiration only — whichever chip is selected |
+
+This split exists because it was previously wrong. The old single banner computed Expected Move, Max Pain, put/call ratios and total volume/OI **from the selected expiration alone**, then presented them in a top-level banner that read as a market summary. A reader could reasonably conclude the whole SPX board had 2.3M contracts of open interest when that was one monthly cycle's figure, and the put/call ratio shown was one cycle's flow rather than the market's.
+
+The fix is structural rather than cosmetic: market-wide aggregates are computed across `expirationDates` in full, per-cycle figures are computed on the selected slice, and the two live in visually distinct components. The cycle panel carries an explicit "figures on this row are for *&lt;date&gt;* only" note, and the market band is badged "Whole book · N cycles."
+
+### What lives in the market-wide band
+
+- **Index level** — spot, change, and live VIX from the Cboe feed.
+- **Vol regime** — the regime label (Harvest / Thin / Stressed Premium / Crisis), quoted VRP and its z-score, trailing 20-session realized vol, VIX rank, and the VIX3M−VIX term slope. These come from the pipeline's precomputed daily table, not the chain feed — a 252-day percentile and an EWM z-score cannot be derived from a live quote. See [Volatility Regime & VRP Methodology](/wiki/option-strategy/vol-regime-methodology).
+- **Dealer book** — whole-book net GEX, the gamma flip level, and book-wide call/put walls, plus whole-book put/call ratios and total OI/volume. See [GEX Calculation Methodology](/wiki/option-strategy/gex-methodology).
+
+### What lives in the cycle panel
+
+Expected Move, ATM IV, Max Pain, that cycle's net GEX and its share of the book, that cycle's own call/put walls, and its put/call ratios — each defined below. Because a single cycle's gamma can carry the opposite sign to the whole book's, the cycle panel reports its own sign rather than inheriting the band's.
+
+### One GEX implementation
+
+Net GEX, the gamma flip and the walls are computed by a **single shared module** (`lib/options/gex.ts`) used by the GEX tab, the market band, and the cycle panel. Keeping one implementation is deliberate: three separate copies would be free to drift, and a viewer showing two different flip levels for the same chain on two different rows is worse than showing none. The module sums duplicate strikes rather than overwriting them — see the SPX/SPXW note in [GEX Calculation Methodology](/wiki/option-strategy/gex-methodology).
 
 ## At-the-Money Implied Volatility
 

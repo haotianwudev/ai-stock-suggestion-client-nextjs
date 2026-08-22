@@ -56,6 +56,22 @@ Net GEX, the gamma flip, and both walls aggregate across **all listed expiration
 
 A single-expiration view remains available via the **This Expiration** toggle. It answers a genuinely different question (what does *this* expiry's hedging flow look like) and is useful around a large expiration, but it is not the standard GEX reading and should not be compared to a provider's published levels.
 
+## SPX/SPXW Duplicate Strikes Must Be Summed
+
+A standard SPX monthly (3rd Friday) shares its calendar date with a separately-traded **SPXW** contract at the same strike — AM-settled versus PM-settled, two different products, each with its own open interest. Gamma exposure is **additive** across them: both sets of contracts are real positions that dealers hedge, so a strike's total gamma is the sum of the two.
+
+This was a live bug in the single-expiration scope. The per-strike aggregation built its map with an overwrite (`map.set(strike, contract)`) rather than an accumulate, so at every strike carrying both products it kept only whichever the feed listed last and silently discarded the other. Because the feed consistently orders the high-OI standard SPX contract *before* its lower-OI SPXW twin, the discarded side was almost always the larger one. Measured on a live chain:
+
+| Expiration | Shown (overwrite) | Correct (summed) | Dropped |
+|---|---|---|---|
+| Front monthly, 27 DTE | $828M | $5,179M | **84%** |
+| 118 DTE monthly | $165M | $3,311M | **95%** |
+| Weeklies / dailies | — | — | 0% |
+
+Weeklies and dailies showed a 0% difference, which is the confirmation that SPX/SPXW duplication is the cause: only monthly dates carry both products. The whole-book scope was never affected — it already accumulated — so the two scopes disagreed with each other by up to 20× on the same chain.
+
+Both scopes now run through one shared module that accumulates unconditionally. This is the same defect class as the one fixed on the [positioning tab](/wiki/option-strategy/options-positioning-analysis), and the opposite of the fix applied to the [volatility surface](/wiki/option-strategy/volatility-surface-analytics) — where IV is *not* additive and duplicates must instead be resolved to one representative quote.
+
 ## Strike Inclusion Band
 
 Strikes within **±20% of spot** are included. Two competing pressures set this:

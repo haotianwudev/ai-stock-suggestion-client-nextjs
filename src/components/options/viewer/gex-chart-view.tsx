@@ -21,8 +21,14 @@ import {
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
 import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info, ZoomIn, Compass, ArrowRight, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
-import { blackScholes, blackScholesGamma } from '@/lib/black-scholes';
+import { blackScholes } from '@/lib/black-scholes';
 import { SPX_DEFAULT_RATE, SPX_DEFAULT_DIV_YIELD } from '@/lib/options/analytics';
+import {
+  computeGexProfile,
+  GEX_BAND_LOW,
+  GEX_BAND_HIGH,
+  type GexExpirationInput,
+} from '@/lib/options/gex';
 import { GexHeatmapView } from './gex-heatmap-view';
 
 interface ExpirationSlice {
@@ -83,10 +89,7 @@ export function GexChartView({
     putWallStrike 
   } = useMemo(() => {
     const contractMultiplier = 100;
-    const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
-    
-    // Core calculation band: covers wide range so whole-book GEX, walls, and flip are calculated properly
-    const inRange = (strike: number) => strike >= spotPrice * 0.65 && strike <= spotPrice * 1.35;
+
     // Display zoom band: controlled by user selection (15%, 25%, all)
     const inDisplayRange = (strike: number) => strikeRange === 'all' ? true : (strike >= spotPrice * (1 - strikeRange / 100) && strike <= spotPrice * (1 + strikeRange / 100));
 
@@ -95,162 +98,26 @@ export function GexChartView({
     const strikes = new Set<number>();
     calls.forEach(c => { callMap.set(c.strike, c); strikes.add(c.strike); });
     puts.forEach(p => { putMap.set(p.strike, p); strikes.add(p.strike); });
-    const filteredStrikes = Array.from(strikes).sort((a, b) => a - b).filter(inRange);
+    const filteredStrikes = Array.from(strikes)
+      .sort((a, b) => a - b)
+      .filter(s => s >= spotPrice * GEX_BAND_LOW && s <= spotPrice * GEX_BAND_HIGH);
 
-    let totCallGex = 0;
-    let totPutGex = 0;
-    let rows: { strike: number; strikeLabel: string; callGex: number; putGex: number; netGex: number }[];
+    // Core GEX (rows, totals, walls, flip) comes from the shared lib so this tab, the market
+    // HUD and the per-cycle summary can never disagree about the same book.
+    const slices: GexExpirationInput[] =
+      effectiveScope === 'all' && allExpirations
+        ? allExpirations
+        : [{ expiration, daysToExpiration: dte, calls, puts }];
+    const profile = computeGexProfile(slices, spotPrice);
 
-    if (effectiveScope === 'all' && allExpirations) {
-      const strikeAgg = new Map<number, { callGex: number; putGex: number }>();
-      allExpirations.forEach(exp => {
-        exp.calls.forEach(c => {
-          if (!inRange(c.strike)) return;
-          const gex = (c.gamma || 0) * (c.openInterest || 0) * contractMultiplier * spotSquared1Pct;
-          const entry = strikeAgg.get(c.strike) || { callGex: 0, putGex: 0 };
-          entry.callGex += gex;
-          strikeAgg.set(c.strike, entry);
-        });
-        exp.puts.forEach(p => {
-          if (!inRange(p.strike)) return;
-          const gex = -((p.gamma || 0) * (p.openInterest || 0) * contractMultiplier * spotSquared1Pct);
-          const entry = strikeAgg.get(p.strike) || { callGex: 0, putGex: 0 };
-          entry.putGex += gex;
-          strikeAgg.set(p.strike, entry);
-        });
-      });
-      rows = Array.from(strikeAgg.entries())
-        .sort((a, b) => a[0] - b[0])
-        .map(([strike, { callGex, putGex }]) => {
-          totCallGex += callGex;
-          totPutGex += putGex;
-          return {
-            strike,
-            strikeLabel: `$${strike}`,
-            callGex: Number(callGex.toFixed(2)),
-            putGex: Number(Math.abs(putGex).toFixed(2)),
-            netGex: Number((callGex + putGex).toFixed(2))
-          };
-        });
-    } else {
-      rows = filteredStrikes.map(strike => {
-        const c = callMap.get(strike);
-        const p = putMap.get(strike);
-
-        const callGex = (c?.gamma || 0) * (c?.openInterest || 0) * contractMultiplier * spotSquared1Pct;
-        const putGex = -((p?.gamma || 0) * (p?.openInterest || 0) * contractMultiplier * spotSquared1Pct);
-
-        totCallGex += callGex;
-        totPutGex += putGex;
-
-        return {
-          strike,
-          strikeLabel: `$${strike}`,
-          callGex: Number(callGex.toFixed(2)),
-          putGex: Number(Math.abs(putGex).toFixed(2)),
-          netGex: Number((callGex + putGex).toFixed(2))
-        };
-      });
-    }
-
-    const totalNet = totCallGex + totPutGex;
-
-    // Build contracts array for continuous spot-shift re-pricing
-    type SimContract = {
-      strike: number; openInterest: number; isCall: boolean; iv: number; T: number; observedGamma: number;
-    };
-    const simContracts: SimContract[] = [];
-    const pushSim = (o: OptionContractData, isCall: boolean, dteDays: number) => {
-      if (!inRange(o.strike)) return;
-      const oi = o.openInterest || 0;
-      if (oi <= 0) return;
-      simContracts.push({
-        strike: o.strike,
-        openInterest: oi,
-        isCall,
-        iv: o.impliedVolatilityMid && o.impliedVolatilityMid > 0 ? o.impliedVolatilityMid : 0,
-        T: Math.max(dteDays, 0) / 365,
-        observedGamma: o.gamma || 0,
-      });
-    };
-    if (effectiveScope === 'all' && allExpirations) {
-      allExpirations.forEach(exp => {
-        exp.calls.forEach(c => pushSim(c, true, exp.daysToExpiration));
-        exp.puts.forEach(p => pushSim(p, false, exp.daysToExpiration));
-      });
-    } else {
-      calls.forEach(c => pushSim(c, true, dte));
-      puts.forEach(p => pushSim(p, false, dte));
-    }
-
-    // Call Wall / Put Wall with directional constraint and [0.25, 0.5, 0.25] smoothing
-    const smoothPeak = (
-      values: { strike: number; value: number }[],
-      side: 'above' | 'below'
-    ): number | null => {
-      let bestStrike: number | null = null;
-      let bestValue = 0;
-      for (let i = 0; i < values.length; i++) {
-        const { strike } = values[i];
-        if (side === 'above' && strike < spotPrice) continue;
-        if (side === 'below' && strike > spotPrice) continue;
-        const prev = values[i - 1]?.value ?? values[i].value;
-        const next = values[i + 1]?.value ?? values[i].value;
-        const smoothed = 0.5 * values[i].value + 0.25 * prev + 0.25 * next;
-        if (smoothed > bestValue) { bestValue = smoothed; bestStrike = strike; }
-      }
-      return bestStrike;
-    };
-
-    const callWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.callGex })), 'above');
-    const putWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.putGex })), 'below');
-
-    const MIN_SIM_T = 0.5 / 365;
-
-    const simNetGexAt = (simSpot: number): number => {
-      const scale = contractMultiplier * ((simSpot * simSpot * 0.01) / 1_000_000);
-      let total = 0;
-      for (const ct of simContracts) {
-        let g: number;
-        if (ct.iv > 0) {
-          g = blackScholesGamma(
-            simSpot, ct.strike, Math.max(ct.T, MIN_SIM_T), SPX_DEFAULT_RATE, ct.iv,
-            SPX_DEFAULT_DIV_YIELD
-          );
-        } else {
-          g = ct.observedGamma;
-        }
-        total += (ct.isCall ? g : -g) * ct.openInterest * scale;
-      }
-      return total;
-    };
-
-    // Root-finding for Gamma Flip Level via sweep + bisection
-    let flip: number | null = null;
-    if (simContracts.length > 0) {
-      const evalAt = (pct: number) => ({ spot: spotPrice * (1 + pct / 100), val: simNetGexAt(spotPrice * (1 + pct / 100)) });
-      let prev = evalAt(-8);
-      let bestDist = Infinity;
-      for (let pct = -7; pct <= 8; pct += 1) {
-        const cur = evalAt(pct);
-        if ((prev.val <= 0 && cur.val > 0) || (prev.val >= 0 && cur.val < 0)) {
-          let lo = prev, hi = cur;
-          for (let i = 0; i < 14; i++) {
-            const midSpot = (lo.spot + hi.spot) / 2;
-            const midVal = simNetGexAt(midSpot);
-            if ((lo.val <= 0 && midVal > 0) || (lo.val >= 0 && midVal < 0)) {
-              hi = { spot: midSpot, val: midVal };
-            } else {
-              lo = { spot: midSpot, val: midVal };
-            }
-          }
-          const crossing = (lo.spot + hi.spot) / 2;
-          const dist = Math.abs(crossing - spotPrice);
-          if (dist < bestDist) { bestDist = dist; flip = Math.round(crossing); }
-        }
-        prev = cur;
-      }
-    }
+    const rows = profile.byStrike;
+    const totalNet = profile.totalNetGex;
+    const totCallGex = profile.totalCallGex;
+    const totPutGex = profile.totalPutGex;
+    const callWallStrike = profile.callWall;
+    const putWallStrike = profile.putWall;
+    const flip = profile.gammaFlip;
+    const simNetGexAt = profile.simNetGexAt;
 
     // 2. Simulated Price Shift Curve (-6% to +6%)
     const shiftSteps = [-6, -5, -4, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3, 4, 5, 6];
@@ -308,9 +175,9 @@ export function GexChartView({
       shiftCurveData: shiftCurve,
       vannaCharmData: vannaCharmRows,
       displayVannaCharmData: displayVannaCharm,
-      totalNetGex: Number(totalNet.toFixed(1)),
-      totalCallGex: Number(totCallGex.toFixed(1)),
-      totalPutGex: Number(totPutGex.toFixed(1)),
+      totalNetGex: totalNet,
+      totalCallGex: totCallGex,
+      totalPutGex: totPutGex,
       gammaFlipLevel: flip,
       gammaFlipChartStrike: flip !== null ? nearestChartStrike(flip, displayRows) : null,
       spotChartStrike: nearestChartStrike(spotPrice, displayRows),
