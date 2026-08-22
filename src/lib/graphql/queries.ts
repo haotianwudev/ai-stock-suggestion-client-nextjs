@@ -554,6 +554,7 @@ export const GET_VOL_REGIME = gql`
         vrpZ
         vixRank
         regime
+        fwdEarnedPremium
       }
       stats {
         regime

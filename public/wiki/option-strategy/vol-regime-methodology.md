@@ -132,12 +132,31 @@ Stressed Premium is roughly **5× more likely** to become Crisis than Harvest is
 
 The practical conclusion: use the regime for **position sizing and risk**, not for timing entries. The level of VRP tells you little about the next month's return; the regime label tells you a great deal about the chance of the tape turning against a short-vol position.
 
+## Backtest View
+
+The VRP Research tab's chart has two modes. **Levels** plots implied vs. realized over the selected window. **Backtest** runs the canonical VRP harvest and plots its result: sell this session's implied vol, hold ~21 sessions to expiry, collect implied minus subsequently-realized, repeat.
+
+Two implementation points matter for reading it honestly:
+
+- **Non-overlapping windows.** `fwd_earned_premium` is defined per session over the *following* 21 sessions, so consecutive rows overlap almost entirely. Summing it daily would count each session's move roughly 21 times over and produce a wildly inflated curve. The backtest steps 21 sessions at a time instead, so each trade's holding period is disjoint from the next.
+- **Units are volatility points, not dollars.** This is premium captured per unit of vol exposure. Converting to P&L would require assuming a position size, a strike, and a delta-hedging policy — none of which this platform models, so it deliberately stops short of implying one.
+
+The last ~21 sessions have no `fwd_earned_premium` yet (the future hasn't happened) and are simply not traded.
+
+Over the full 2000–2026 sample this produces **311 trades, +1,114 total vol points, +3.58 average per trade, an 85% win rate, and a −86 point maximum drawdown**. Those first two match the unconditional figures in the section above (~+3.5 at ~82%), which is the consistency check you'd want — the backtest is just a different lens on the same premium, not a new claim.
+
+The shape is the classic short-vol profile: a long, steady climb punctuated by rare severe losses. The three worst trades are exactly where you'd expect if the calculation is sound — **2020-02-12 (−54.6)** entering the COVID crash, **2008-09-08 (−36.1)** entering Lehman week, and **2008-10-07 (−29.4)** deeper into the GFC. A single trade losing 54.6 points against a 3.58-point average is the whole risk argument for VRP harvesting in one number, and it's why the [Volmageddon](https://en.wikipedia.org/wiki/2018_VIX_termination_event)-style caution applies to any levered version of this strategy.
+
+**Timeframes.** The chart supports 3M / 6M / 1Y / 2Y / 5Y / All, defaulting to 1Y. Two mechanical notes: the API window is expressed in *calendar* days while the chart is sized in *trading sessions*, so each timeframe over-requests using a measured ~1.55 calendar-days-per-session ratio (the textbook 365/252 = 1.448 is too optimistic once holidays are counted, and under-requesting silently truncates the window instead of erroring). And windows longer than ~900 sessions are decimated for chart performance by keeping each interval's largest-|VRP| session rather than plain striding — striding would drop exactly the crash days that matter most in this series. Summary statistics are always computed on the full window, never the decimated one.
+
 ## Limitations
 
 - **Forward-earned premium is a proxy**, not realised option P&L.
 - **Term structure is unavailable before 2007-12**, so pre-2008 rows classify stress on `vix_rank` alone.
 - **Regime thresholds are chosen, not fitted** — `vrp_z > 0` and `vix_rank > 0.8`. They are interpretable and stable, but not optimised, and results near a boundary should not be over-read.
 - **Historical averages are not forecasts.** A 26-year sample contains a handful of genuinely distinct volatility eras.
+- **The backtest has no costs, slippage, or capacity assumptions**, and no delta-hedging. It measures the premium that was *available*, not what a specific implementation would have netted after execution — a real strategy selling actual options would keep meaningfully less.
+- **The backtest's entry schedule is arbitrary.** Stepping every 21st session from the window's start means a different start date produces a different (though similarly-shaped) set of trades. It is not optimised, and shouldn't be read as one.
 
 ## Key Takeaways
 
@@ -146,6 +165,8 @@ The practical conclusion: use the regime for **position sizing and risk**, not f
 - VRP is compensation for **downside** risk; stress-regime variance is 58–64% downside-driven.
 - VRP *level* has almost no power to time entries (IC ≈ 0.008), despite the premium itself being real and persistent.
 - The regime label is a **risk** signal: Stressed Premium carries a 26.7% chance of becoming Crisis within a month versus 5.7% from Harvest.
+- The Backtest view harvests on non-overlapping ~monthly windows because `fwd_earned_premium` overlaps day-to-day — summing it daily would inflate the curve ~21×.
+- Full-sample backtest: 311 trades, +3.58 avg, 85% win rate, −86 pt max drawdown, with the worst trades landing on COVID and Lehman — steady climb, rare severe losses.
 
 ## Related Reading
 

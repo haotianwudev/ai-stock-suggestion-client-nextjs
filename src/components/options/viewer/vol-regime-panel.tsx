@@ -6,6 +6,7 @@ import {
   ComposedChart,
   Line,
   Area,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -79,6 +80,65 @@ const REGIME_STYLES: Record<string, {
 
 const FALLBACK_STYLE = REGIME_STYLES["Thin"];
 
+type VrpTimeframe = '3M' | '6M' | '1Y' | '2Y' | '5Y' | 'ALL';
+type VrpChartMode = 'levels' | 'backtest';
+
+// The API window is expressed in CALENDAR days, but the chart is sized in TRADING
+// sessions. Under-requesting silently truncates the window rather than erroring: the
+// previous hardcoded 280-day request returned only 169 sessions while the UI badge
+// claimed "252 Sessions", so "1 Year" was really ~8 months of data.
+//
+// The textbook 365/252 ratio (1.448) is too optimistic once holidays are counted --
+// measured against this API, 1,870 calendar days yields 1,244 sessions (~1.50 calendar
+// days per session), which left a 5Y request 16 sessions short. 1.55 plus a flat buffer
+// clears every timeframe with margin; over-fetching only costs a slightly larger response
+// since the extra rows are trimmed by the slice below.
+const calendarDaysFor = (sessions: number) => Math.ceil(sessions * 1.55) + 45;
+
+// vol_regime_data begins 2000-01-03 (~26 years); this covers it with room to grow.
+const ALL_HISTORY_DAYS = 20000;
+
+const TIMEFRAMES: Record<VrpTimeframe, { label: string; sessions: number | null; fetchDays: number }> = {
+  '3M':  { label: '3M',  sessions: 63,   fetchDays: calendarDaysFor(63) },
+  '6M':  { label: '6M',  sessions: 126,  fetchDays: calendarDaysFor(126) },
+  '1Y':  { label: '1Y',  sessions: 252,  fetchDays: calendarDaysFor(252) },
+  '2Y':  { label: '2Y',  sessions: 504,  fetchDays: calendarDaysFor(504) },
+  '5Y':  { label: '5Y',  sessions: 1260, fetchDays: calendarDaysFor(1260) },
+  'ALL': { label: 'All', sessions: null, fetchDays: ALL_HISTORY_DAYS },
+};
+
+// Sessions per rebalance in the backtest view -- ~1 trading month, matching the horizon
+// fwdEarnedPremium is measured over (VIX today minus realized vol over the next 21).
+const BACKTEST_HOLD_SESSIONS = 21;
+
+const MAX_CHART_POINTS = 900;
+
+/**
+ * Decimate a long series for chart performance. Plain striding would drop exactly the
+ * sessions that matter most in a VRP series -- the COVID crash prints VRP near -33 on a
+ * handful of days -- so each bucket contributes its largest-|VRP| row instead. Whole rows
+ * are kept, so VIX/realized stay internally consistent with the VRP shown. Summary stats
+ * are computed on the FULL window, never on this reduced set.
+ */
+function downsamplePreservingExtremes<T extends { vrp?: number | null }>(rows: T[], maxPoints: number): T[] {
+  if (rows.length <= maxPoints) return rows;
+  const bucketSize = rows.length / maxPoints;
+  const out: T[] = [];
+  for (let i = 0; i < maxPoints; i++) {
+    const start = Math.floor(i * bucketSize);
+    const end = Math.min(rows.length, Math.floor((i + 1) * bucketSize));
+    if (start >= end) continue;
+    let best = rows[start];
+    for (let j = start + 1; j < end; j++) {
+      if (Math.abs(rows[j].vrp ?? 0) > Math.abs(best.vrp ?? 0)) best = rows[j];
+    }
+    out.push(best);
+  }
+  const lastRow = rows[rows.length - 1];
+  if (out[out.length - 1] !== lastRow) out.push(lastRow); // always end on the latest session
+  return out;
+}
+
 function fmt(n: number | undefined | null, digits = 2, suffix = ""): string {
   if (n === undefined || n === null || Number.isNaN(n)) return "—";
   return `${n.toFixed(digits)}${suffix}`;
@@ -123,12 +183,14 @@ export function VolRegimePanel() {
   const [showVix, setShowVix] = useState(true);
   const [showRealized, setShowRealized] = useState(true);
   const [showVrpArea, setShowVrpArea] = useState(true);
+  const [timeframe, setTimeframe] = useState<VrpTimeframe>('1Y');
+  const [chartMode, setChartMode] = useState<VrpChartMode>('levels');
 
-  // Request 280 days so the initial 20-day warmup window needed to compute rolling realized vol
-  // is absorbed behind the scenes, leaving a full 252 trading sessions (1 year) of complete data.
+  const tf = TIMEFRAMES[timeframe];
+
   const { data, loading, error } = useQuery<{ volRegime: VolRegimeResult }>(
     GET_VOL_REGIME,
-    { variables: { days: 280 }, fetchPolicy: "cache-and-network" }
+    { variables: { days: tf.fetchDays }, fetchPolicy: "cache-and-network" }
   );
 
   const result = data?.volRegime;
@@ -136,19 +198,23 @@ export function VolRegimePanel() {
 
   const rawHistory = result?.history ?? [];
 
-  // Filter out any uncomputed warmup days and take exactly the trailing 252 sessions (1 trading year)
+  // Drop uncomputed warmup days, then trim to the requested number of trading sessions.
   const filteredHistory = useMemo(() => {
     if (!rawHistory.length) return [];
     const validHistory = rawHistory.filter(d => d.realizedVol20d != null && d.vrp != null);
-    return validHistory.slice(-252);
-  }, [rawHistory]);
+    return tf.sessions == null ? validHistory : validHistory.slice(-tf.sessions);
+  }, [rawHistory, tf.sessions]);
+
+  // Multi-year windows need the year in the axis label; MM-DD alone repeats every cycle.
+  const isMultiYear = timeframe === '2Y' || timeframe === '5Y' || timeframe === 'ALL';
 
   // Chart data with separated positive and negative VRP for dual-color gradient fills
   const chartData = useMemo(() => {
-    return filteredHistory.map((d: VolRegimeDataPoint) => {
+    const sampled = downsamplePreservingExtremes(filteredHistory, MAX_CHART_POINTS);
+    return sampled.map((d: VolRegimeDataPoint) => {
       const vrpVal = d.vrp ?? null;
       return {
-        date: d.bizDate?.slice(5) ?? "",
+        date: isMultiYear ? (d.bizDate?.slice(0, 7) ?? "") : (d.bizDate?.slice(5) ?? ""),
         fullDate: d.bizDate,
         vix: d.vix ?? null,
         realized: d.realizedVol20d ?? null,
@@ -160,7 +226,58 @@ export function VolRegimePanel() {
         regime: d.regime,
       };
     });
-  }, [filteredHistory]);
+  }, [filteredHistory, isMultiYear]);
+
+  const isSampled = filteredHistory.length > MAX_CHART_POINTS;
+
+  /**
+   * Backtest view: the classic VRP harvest, run on non-overlapping ~1-month blocks --
+   * sell this session's implied vol, hold to expiry, collect (implied - subsequently
+   * realized), repeat. fwdEarnedPremium already carries that per-session outcome, so the
+   * only work here is stepping 21 sessions at a time so windows don't overlap (summing it
+   * daily would count each session's move ~21 times over).
+   *
+   * Units are volatility points, not dollars: this is the premium captured per unit of
+   * vol exposure, deliberately not converted into a P&L that would imply a position size,
+   * a strike, or delta-hedging the platform isn't modelling. The last ~21 sessions have no
+   * fwdEarnedPremium yet (the future hasn't happened) and are simply not traded here.
+   */
+  const backtest = useMemo(() => {
+    const trades: { date: string; earned: number; cumulative: number; drawdown: number; regime: string }[] = [];
+    let cumulative = 0;
+    let peak = 0;
+    let wins = 0;
+    let worst = 0;
+
+    for (let i = 0; i < filteredHistory.length; i += BACKTEST_HOLD_SESSIONS) {
+      const row = filteredHistory[i];
+      const earned = row.fwdEarnedPremium;
+      if (earned == null) continue;
+      cumulative += earned;
+      peak = Math.max(peak, cumulative);
+      if (earned > 0) wins++;
+      if (earned < worst) worst = earned;
+      trades.push({
+        date: isMultiYear ? (row.bizDate?.slice(0, 7) ?? "") : (row.bizDate?.slice(5) ?? ""),
+        earned: Number(earned.toFixed(2)),
+        cumulative: Number(cumulative.toFixed(2)),
+        drawdown: Number((cumulative - peak).toFixed(2)),
+        regime: row.regime,
+      });
+    }
+
+    if (!trades.length) return null;
+    const maxDrawdown = trades.reduce((mn, t) => Math.min(mn, t.drawdown), 0);
+    return {
+      rows: trades,
+      total: cumulative,
+      count: trades.length,
+      winRatePct: (wins / trades.length) * 100,
+      avgPerTrade: cumulative / trades.length,
+      maxDrawdown,
+      worstTrade: worst,
+    };
+  }, [filteredHistory, isMultiYear]);
 
   // High-level summary metrics across the selected window
   const windowStats = useMemo(() => {
@@ -390,17 +507,26 @@ export function VolRegimePanel() {
             <div className="flex items-center gap-2">
               <Activity className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
               <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
-                Variance Risk Premium (VRP) History — Implied vs. Realized
+                {chartMode === 'levels'
+                  ? 'Variance Risk Premium (VRP) History — Implied vs. Realized'
+                  : 'VRP Harvest Backtest — Monthly Rebalance'}
               </h4>
             </div>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-              The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller&apos;s edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk).
+              {chartMode === 'levels'
+                ? "The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller's edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk)."
+                : `Sell this session's implied vol, hold ~${BACKTEST_HOLD_SESSIONS} sessions to expiry, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L.`}
             </p>
+            {chartMode === 'levels' && isSampled && (
+              <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
+                Showing {chartData.length.toLocaleString()} of {filteredHistory.length.toLocaleString()} sessions — sampled for readability, keeping each interval&apos;s most extreme VRP. Stats below use all sessions.
+              </p>
+            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* Series Visibility Toggles */}
-            <div className="hidden sm:inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono">
+            {/* Series Visibility Toggles — only meaningful for the Levels chart */}
+            <div className={`${chartMode === 'levels' ? 'hidden sm:inline-flex' : 'hidden'} items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono`}>
               <button
                 onClick={() => setShowVix(!showVix)}
                 className={`px-2 py-0.5 rounded-md transition-all flex items-center gap-1.5 ${
@@ -436,15 +562,51 @@ export function VolRegimePanel() {
               </button>
             </div>
 
-            {/* 1-Year Scope Badge */}
-            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 px-3 py-1 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300">
-              Trailing 1 Year (252 Sessions)
+            {/* Levels vs Backtest mode */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-mono font-semibold">
+              <button
+                onClick={() => setChartMode('levels')}
+                className={`px-2.5 py-0.5 rounded-md transition-all ${
+                  chartMode === 'levels'
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Levels
+              </button>
+              <button
+                onClick={() => setChartMode('backtest')}
+                className={`px-2.5 py-0.5 rounded-md transition-all ${
+                  chartMode === 'backtest'
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Backtest
+              </button>
+            </div>
+
+            {/* Timeframe selector */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-mono font-semibold">
+              {(Object.keys(TIMEFRAMES) as VrpTimeframe[]).map(key => (
+                <button
+                  key={key}
+                  onClick={() => setTimeframe(key)}
+                  className={`px-2 py-0.5 rounded-md transition-all ${
+                    timeframe === key
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  {TIMEFRAMES[key].label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Statistical Summary HUD Bar across active 1Y window */}
-        {windowStats && (
+        {chartMode === 'levels' && windowStats && (
           <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-1.5">
@@ -454,13 +616,13 @@ export function VolRegimePanel() {
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-slate-400">Harvest Win Rate:</span>
+                <span className="text-slate-400">Positive Sessions:</span>
                 <span className="font-bold text-slate-800 dark:text-slate-200">
-                  {windowStats.positivePct.toFixed(1)}% of sessions
+                  {windowStats.positivePct.toFixed(1)}%
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-slate-400">1Y Range:</span>
+                <span className="text-slate-400">{tf.label} Range:</span>
                 <span className="text-slate-700 dark:text-slate-300">
                   {windowStats.minVrp.toFixed(1)} → +{windowStats.maxVrp.toFixed(1)} pts
                 </span>
@@ -468,13 +630,138 @@ export function VolRegimePanel() {
             </div>
 
             <div className="text-[11px] text-slate-400">
-              {windowStats.sessions} trading sessions in view
+              {windowStats.sessions.toLocaleString()} trading sessions in view
+            </div>
+          </div>
+        )}
+
+        {chartMode === 'backtest' && backtest && (
+          <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Total Harvested:</span>
+                <span className={`font-bold ${backtest.total >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                  {backtest.total >= 0 ? '+' : ''}{backtest.total.toFixed(1)} pts
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Avg / Trade:</span>
+                <span className={`font-bold ${backtest.avgPerTrade >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                  {backtest.avgPerTrade >= 0 ? '+' : ''}{backtest.avgPerTrade.toFixed(2)}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Win Rate:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-200">{backtest.winRatePct.toFixed(0)}%</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Max Drawdown:</span>
+                <span className="font-bold text-rose-600 dark:text-rose-400">{backtest.maxDrawdown.toFixed(1)} pts</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Worst Trade:</span>
+                <span className="font-bold text-rose-600 dark:text-rose-400">{backtest.worstTrade.toFixed(1)}</span>
+              </div>
+            </div>
+
+            <div className="text-[11px] text-slate-400">
+              {backtest.count.toLocaleString()} non-overlapping trades
             </div>
           </div>
         )}
 
         {/* Chart Canvas */}
         <div className="h-[360px] w-full p-4">
+          {chartMode === 'backtest' ? (
+            backtest ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={backtest.rows} margin={{ top: 12, right: 16, left: 0, bottom: 15 }}>
+                  <defs>
+                    <linearGradient id="btEquityGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#A8672E" stopOpacity={0.35} />
+                      <stop offset="95%" stopColor="#A8672E" stopOpacity={0.02} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" vertical={false} />
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 11 }}
+                    interval="preserveStartEnd"
+                    minTickGap={45}
+                    stroke="#64748b"
+                    dy={5}
+                  />
+                  <YAxis
+                    yAxisId="left"
+                    tick={{ fontSize: 11 }}
+                    width={48}
+                    stroke="#64748b"
+                    tickFormatter={(val) => `${val}`}
+                  />
+                  <YAxis
+                    yAxisId="right"
+                    orientation="right"
+                    tick={{ fontSize: 11 }}
+                    width={48}
+                    stroke="#94a3b8"
+                    tickFormatter={(val) => `${val}`}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#0f172a',
+                      borderColor: '#1e293b',
+                      borderRadius: '12px',
+                      color: '#f8fafc',
+                      fontSize: '12px',
+                    }}
+                    formatter={(value: number, name: string) => {
+                      const labels: Record<string, string> = {
+                        cumulative: 'Cumulative harvested',
+                        earned: 'This trade',
+                        drawdown: 'Drawdown from peak',
+                      };
+                      return [`${value >= 0 ? '+' : ''}${value} vol pts`, labels[name] ?? name];
+                    }}
+                    labelFormatter={(label, payload) => {
+                      const item = payload?.[0]?.payload;
+                      return item ? `Entry ${label} — regime at entry: ${item.regime}` : label;
+                    }}
+                  />
+                  <Legend wrapperStyle={{ fontSize: '11px' }} />
+                  <ReferenceLine yAxisId="left" y={0} stroke="#94a3b8" strokeDasharray="2 2" />
+                  <Area
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="drawdown"
+                    name="Drawdown"
+                    stroke="#f43f5e"
+                    strokeWidth={1}
+                    fill="#f43f5e"
+                    fillOpacity={0.12}
+                  />
+                  <Bar yAxisId="left" dataKey="earned" name="Per-trade" fill="#94a3b8" opacity={0.45} />
+                  <Line
+                    yAxisId="left"
+                    type="monotone"
+                    dataKey="cumulative"
+                    name="Cumulative harvested"
+                    stroke="#A8672E"
+                    strokeWidth={2.5}
+                    dot={false}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center gap-2">
+                <Info className="h-5 w-5 text-slate-400" />
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Not enough completed windows</p>
+                <p className="text-xs text-slate-500 max-w-md">
+                  The backtest needs at least one {BACKTEST_HOLD_SESSIONS}-session window that has already
+                  fully elapsed. Try a longer timeframe.
+                </p>
+              </div>
+            )
+          ) : (
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 12, right: 16, left: 0, bottom: 15 }}>
               <defs>
@@ -557,6 +844,7 @@ export function VolRegimePanel() {
               )}
             </ComposedChart>
           </ResponsiveContainer>
+          )}
         </div>
       </div>
 
