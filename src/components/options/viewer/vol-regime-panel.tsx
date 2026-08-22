@@ -137,9 +137,49 @@ const TIMEFRAMES: Record<VrpTimeframe, { label: string; sessions: number | null;
   'CUSTOM': { label: 'Custom', sessions: null, fetchDays: ALL_HISTORY_DAYS },
 };
 
-// Sessions per rebalance in the backtest view -- ~1 trading month, matching the horizon
-// fwdEarnedPremium is measured over (VIX today minus realized vol over the next 21).
+// Default holding period for the backtest -- ~1 trading month, matching the horizon the
+// stored fwdEarnedPremium column is measured over.
 const BACKTEST_HOLD_SESSIONS = 21;
+
+// Selectable holding periods. Only 21 is precomputed server-side; the rest are derived
+// client-side from the spxClose series (see forwardRealizedVol below), which is exact --
+// the client formula was checked against all 1,960 stored fwdEarnedPremium values and
+// agrees to 5e-5, so switching horizons doesn't switch methodologies.
+const HOLD_PERIOD_OPTIONS: { label: string; sessions: number }[] = [
+  { label: '1W', sessions: 5 },
+  { label: '2W', sessions: 10 },
+  { label: '1M', sessions: 21 },
+  { label: '2M', sessions: 42 },
+  { label: '3M', sessions: 63 },
+];
+
+/**
+ * Annualized realized volatility over the `horizon` sessions AFTER row `i`, computed from
+ * daily closes. Mirrors the pipeline exactly: sample stdev (ddof=1) of log returns from
+ * i+1..i+horizon, annualized by sqrt(252), expressed in vol points.
+ *
+ * Returns null when the window would run past the end of the data -- the future genuinely
+ * hasn't happened for the most recent `horizon` sessions.
+ */
+function forwardRealizedVol(
+  rows: { spxClose?: number | null }[],
+  i: number,
+  horizon: number
+): number | null {
+  if (i + horizon >= rows.length) return null;
+  const rets: number[] = [];
+  for (let k = i + 1; k <= i + horizon; k++) {
+    const prev = rows[k - 1].spxClose;
+    const cur = rows[k].spxClose;
+    if (!prev || !cur) return null;
+    rets.push(Math.log(cur / prev));
+  }
+  const n = rets.length;
+  if (n < 2) return null;
+  const mean = rets.reduce((a, b) => a + b, 0) / n;
+  const variance = rets.reduce((a, b) => a + (b - mean) ** 2, 0) / (n - 1);
+  return Math.sqrt(variance) * Math.sqrt(252) * 100;
+}
 
 const MAX_CHART_POINTS = 900;
 
@@ -215,6 +255,7 @@ export function VolRegimePanel() {
   const [showVrpArea, setShowVrpArea] = useState(true);
   const [timeframe, setTimeframe] = useState<VrpTimeframe>('1Y');
   const [chartMode, setChartMode] = useState<VrpChartMode>('levels');
+  const [holdSessions, setHoldSessions] = useState<number>(BACKTEST_HOLD_SESSIONS);
 
   // Custom range defaults to the trailing year, so switching to Custom starts from the
   // same window the default preset shows rather than an empty/arbitrary one.
@@ -259,6 +300,15 @@ export function VolRegimePanel() {
     }
     return tf.sessions == null ? validHistory : validHistory.slice(-tf.sessions);
   }, [rawHistory, tf.sessions, isCustom, customRangeValid, customStart, customEnd]);
+
+  // Full valid series, kept separately from the display window. The backtest computes
+  // forward-looking values against THIS, not the window: for a custom range ending in the
+  // past, the sessions after the range end really did happen and are legitimate inputs.
+  // Slicing first would blank out the final trades of every historical range.
+  const fullValidHistory = useMemo(
+    () => rawHistory.filter(d => d.realizedVol20d != null && d.vrp != null),
+    [rawHistory]
+  );
 
   // Multi-year windows need the year in the axis label; MM-DD alone repeats every cycle.
   const spansMultipleYears = useMemo(() => {
@@ -364,26 +414,53 @@ export function VolRegimePanel() {
    * fwdEarnedPremium yet (the future hasn't happened) and are simply not traded here.
    */
   const backtest = useMemo(() => {
-    const trades: { date: string; earned: number; cumulative: number; drawdown: number; regime: string }[] = [];
+    if (!fullValidHistory.length || !filteredHistory.length) return null;
+
+    // Entries are stepped through the FULL series (so forward vol can look past a
+    // historical window's end), then kept only if the entry date falls inside the
+    // displayed window.
+    const windowStart = filteredHistory[0].bizDate;
+    const windowEnd = filteredHistory[filteredHistory.length - 1].bizDate;
+
+    const trades: {
+      date: string; fullDate: string; earned: number; cumulative: number;
+      drawdown: number; regime: string; vixAtEntry: number | null; fwdRealized: number | null;
+    }[] = [];
     let cumulative = 0;
     let peak = 0;
     let wins = 0;
     let worst = 0;
 
-    for (let i = 0; i < filteredHistory.length; i += BACKTEST_HOLD_SESSIONS) {
-      const row = filteredHistory[i];
-      const earned = row.fwdEarnedPremium;
-      if (earned == null) continue;
+    // Align the stepping grid to the window start so changing timeframe doesn't reshuffle
+    // which sessions become entries.
+    const firstIdx = fullValidHistory.findIndex(d => d.bizDate >= windowStart);
+    if (firstIdx < 0) return null;
+
+    for (let i = firstIdx; i < fullValidHistory.length; i += holdSessions) {
+      const row = fullValidHistory[i];
+      if (row.bizDate > windowEnd) break;
+
+      // Use the precomputed column when the horizon matches what the pipeline stored;
+      // otherwise derive it from closes with the identical formula.
+      const fwdRealized = holdSessions === BACKTEST_HOLD_SESSIONS && row.fwdEarnedPremium != null && row.vix != null
+        ? row.vix - row.fwdEarnedPremium
+        : forwardRealizedVol(fullValidHistory, i, holdSessions);
+      if (fwdRealized == null || row.vix == null) continue;
+
+      const earned = row.vix - fwdRealized;
       cumulative += earned;
       peak = Math.max(peak, cumulative);
       if (earned > 0) wins++;
       if (earned < worst) worst = earned;
       trades.push({
         date: isMultiYear ? (row.bizDate?.slice(0, 7) ?? "") : (row.bizDate?.slice(5) ?? ""),
+        fullDate: row.bizDate,
         earned: Number(earned.toFixed(2)),
         cumulative: Number(cumulative.toFixed(2)),
         drawdown: Number((cumulative - peak).toFixed(2)),
         regime: row.regime,
+        vixAtEntry: row.vix != null ? Number(row.vix.toFixed(1)) : null,
+        fwdRealized: Number(fwdRealized.toFixed(1)),
       });
     }
 
@@ -398,7 +475,7 @@ export function VolRegimePanel() {
       maxDrawdown,
       worstTrade: worst,
     };
-  }, [filteredHistory, isMultiYear]);
+  }, [fullValidHistory, filteredHistory, isMultiYear, holdSessions]);
 
   // High-level summary metrics across the selected window
   const windowStats = useMemo(() => {
@@ -643,7 +720,7 @@ export function VolRegimePanel() {
             </div>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               {chartMode === 'levels' && "The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller's edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk)."}
-              {chartMode === 'backtest' && `Sell this session's implied vol, hold ~${BACKTEST_HOLD_SESSIONS} sessions to expiry, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L.`}
+              {chartMode === 'backtest' && `Sell this session's implied vol, hold ${holdSessions} sessions, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L. The dashed blue line shows what VIX level each trade was sold into.`}
               {chartMode === 'distribution' && 'Bars show how often each VIX level occurred; lines show the premium there — quoted VRP versus what a seller actually collected over the following 21 sessions. Where the two diverge, the quoted premium was an illusion.'}
             </p>
 
@@ -658,7 +735,7 @@ export function VolRegimePanel() {
               {chartMode === 'backtest' && (
                 <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
-                  <span><span className="font-semibold">Backtest (uses hindsight).</span> Each trade&apos;s result is VIX at entry minus what realized vol <em>actually turned out to be</em> over the following {BACKTEST_HOLD_SESSIONS} sessions — knowable only after the fact, never at entry. The most recent ~{BACKTEST_HOLD_SESSIONS} sessions have no result yet and are excluded.</span>
+                  <span><span className="font-semibold">Backtest (uses hindsight).</span> Each trade&apos;s result is VIX at entry minus what realized vol <em>actually turned out to be</em> over the following {holdSessions} sessions — knowable only after the fact, never at entry. The most recent ~{holdSessions} sessions have no result yet and are excluded.</span>
                 </span>
               )}
               {chartMode === 'distribution' && (
@@ -750,6 +827,27 @@ export function VolRegimePanel() {
                 VIX Dist.
               </button>
             </div>
+
+            {/* Holding period — backtest only, since it defines the trade, not the view */}
+            {chartMode === 'backtest' && (
+              <div className="inline-flex items-center gap-1 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-mono font-semibold">
+                <span className="text-slate-400 pl-1.5 pr-0.5 text-[10px] font-normal">Hold:</span>
+                {HOLD_PERIOD_OPTIONS.map(opt => (
+                  <button
+                    key={opt.sessions}
+                    onClick={() => setHoldSessions(opt.sessions)}
+                    title={`Sell implied vol and hold ${opt.sessions} sessions`}
+                    className={`px-2 py-0.5 rounded-md transition-all ${
+                      holdSessions === opt.sessions
+                        ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Timeframe selector */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-mono font-semibold">
@@ -1045,17 +1143,22 @@ export function VolRegimePanel() {
                       color: '#f8fafc',
                       fontSize: '12px',
                     }}
-                    formatter={(value: number, name: string) => {
+                    formatter={(value, name) => {
                       const labels: Record<string, string> = {
                         cumulative: 'Cumulative harvested',
                         earned: 'This trade',
                         drawdown: 'Drawdown from peak',
+                        vixAtEntry: 'VIX at entry',
                       };
-                      return [`${value >= 0 ? '+' : ''}${value} vol pts`, labels[name] ?? name];
+                      const label = labels[String(name)] ?? String(name);
+                      if (typeof value !== 'number') return ['—', label];
+                      if (name === 'vixAtEntry') return [`${value}`, label];
+                      return [`${value >= 0 ? '+' : ''}${value} vol pts`, label];
                     }}
                     labelFormatter={(label, payload) => {
                       const item = payload?.[0]?.payload;
-                      return item ? `Entry ${label} — regime at entry: ${item.regime}` : label;
+                      if (!item) return label;
+                      return `Entry ${item.fullDate ?? label} · ${item.regime} · sold VIX ${item.vixAtEntry} vs ${item.fwdRealized} realized over next ${holdSessions}`;
                     }}
                   />
                   <Legend wrapperStyle={{ fontSize: '11px' }} />
@@ -1080,6 +1183,18 @@ export function VolRegimePanel() {
                     strokeWidth={2.5}
                     dot={false}
                   />
+                  {/* VIX at entry as context: shows what vol level each trade was sold into,
+                      which is what makes a losing cluster interpretable rather than mysterious. */}
+                  <Line
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="vixAtEntry"
+                    name="VIX at entry"
+                    stroke="#2563eb"
+                    strokeWidth={1.5}
+                    strokeDasharray="3 3"
+                    dot={false}
+                  />
                 </ComposedChart>
               </ResponsiveContainer>
             ) : (
@@ -1087,7 +1202,7 @@ export function VolRegimePanel() {
                 <Info className="h-5 w-5 text-slate-400" />
                 <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Not enough completed windows</p>
                 <p className="text-xs text-slate-500 max-w-md">
-                  The backtest needs at least one {BACKTEST_HOLD_SESSIONS}-session window that has already
+                  The backtest needs at least one {holdSessions}-session window that has already
                   fully elapsed. Try a longer timeframe.
                 </p>
               </div>

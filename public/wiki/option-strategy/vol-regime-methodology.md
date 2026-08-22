@@ -205,7 +205,29 @@ Over the full 2000–2026 sample this produces **311 trades, +1,114 total vol po
 
 The shape is the classic short-vol profile: a long, steady climb punctuated by rare severe losses. The three worst trades are exactly where you'd expect if the calculation is sound — **2020-02-12 (−54.6)** entering the COVID crash, **2008-09-08 (−36.1)** entering Lehman week, and **2008-10-07 (−29.4)** deeper into the GFC. A single trade losing 54.6 points against a 3.58-point average is the whole risk argument for VRP harvesting in one number, and it's why the [Volmageddon](https://en.wikipedia.org/wiki/2018_VIX_termination_event)-style caution applies to any levered version of this strategy.
 
-**Timeframes.** The chart supports 3M / 6M / 1Y / 2Y / 5Y / All, defaulting to 1Y. Two mechanical notes: the API window is expressed in *calendar* days while the chart is sized in *trading sessions*, so each timeframe over-requests using a measured ~1.55 calendar-days-per-session ratio (the textbook 365/252 = 1.448 is too optimistic once holidays are counted, and under-requesting silently truncates the window instead of erroring). And windows longer than ~900 sessions are decimated for chart performance by keeping each interval's largest-|VRP| session rather than plain striding — striding would drop exactly the crash days that matter most in this series. Summary statistics are always computed on the full window, never the decimated one.
+### Selectable holding period
+
+The holding period is adjustable — 1W / 2W / 1M / 2M / 3M (5 / 10 / 21 / 42 / 63 sessions). Only the 21-session horizon is precomputed in Postgres; the others are derived client-side from the stored `spx_close` series using the identical formula (sample stdev of log returns over the forward window, annualized by √252). That equivalence was verified rather than assumed: the client-side calculation reproduces all 1,960 stored `fwd_earned_premium` values to within 5×10⁻⁵, so changing horizon doesn't quietly change methodology.
+
+Forward windows are computed against the **full fetched series**, not the displayed window. For a custom range ending in the past, the sessions after the range end genuinely happened and are legitimate inputs — slicing first would blank out the final trades of every historical range.
+
+Full-sample results by holding period:
+
+| Hold | Trades | Total | Avg/trade | Win rate | Max drawdown | Worst trade |
+|---|---|---|---|---|---|---|
+| 1W (5) | 1,314 | +5,696 | **+4.33** | 81% | **−292** | **−104.7** |
+| 2W (10) | 657 | +2,566 | +3.91 | 83% | −168 | −80.2 |
+| 1M (21) | 313 | +1,115 | +3.56 | **84%** | −86 | −54.6 |
+| 2M (42) | 156 | +474 | +3.04 | 78% | −52 | −48.8 |
+| 3M (63) | 104 | +319 | +3.07 | 78% | **−48** | **−48.3** |
+
+Per-trade premium **falls** as the horizon lengthens (+4.33 at a week to ~+3.0 at a quarter), while tail risk falls much faster: the worst single week loses 104.7 vol points against 48.3 for the worst quarter, and maximum drawdown shrinks six-fold from −292 to −48.
+
+Two cautions on reading that table. **Totals are not directly comparable across rows** — a 1W schedule trades 1,314 times against the quarterly schedule's 104, so its larger total reflects ~12× the turnover, not a better trade. And the short-horizon tail is genuinely brutal: a single week during the COVID crash can realize vol far above any level implied beforehand, which is exactly the −104.7. Shorter holds harvest more premium more often *and* concentrate more risk into each event.
+
+**Context series.** The backtest chart overlays VIX at entry (dashed blue, right axis) alongside cumulative harvest and drawdown, so a losing cluster is interpretable — you can see directly whether the trades that hurt were sold into low vol that then exploded, or into already-elevated vol that kept climbing.
+
+**Timeframes.** The chart supports 3M / 6M / 1Y / 2Y / 5Y / All / Custom, defaulting to 1Y. Two mechanical notes: the API window is expressed in *calendar* days while the chart is sized in *trading sessions*, so each timeframe over-requests using a measured ~1.55 calendar-days-per-session ratio (the textbook 365/252 = 1.448 is too optimistic once holidays are counted, and under-requesting silently truncates the window instead of erroring). And windows longer than ~900 sessions are decimated for chart performance by keeping each interval's largest-|VRP| session rather than plain striding — striding would drop exactly the crash days that matter most in this series. Summary statistics are always computed on the full window, never the decimated one.
 
 ## Limitations
 
@@ -229,6 +251,8 @@ The shape is the classic short-vol profile: a long, steady climb punctuated by r
 - Quoted VRP measures against *trailing* realized vol, earned premium against *forward* realized. At VIX 40+ the two disagree by 8+ vol points and even flip sign — quoted reads −3.97 while sellers actually collected +4.40, because trailing realized is elevated and forward realized mean-reverts.
 - Absolute VIX level *does* carry forward information (earned premium rises from +2.29 to +5.37 across the VIX range) even though `vrp_z` does not — different signals, not a contradiction. High VIX means a bigger average premium with much heavier tails.
 - Full-sample backtest: 311 trades, +3.58 avg, 85% win rate, −86 pt max drawdown, with the worst trades landing on COVID and Lehman — steady climb, rare severe losses.
+- Holding period is selectable (1W–3M). Per-trade premium falls with horizon (+4.33 weekly → ~+3.0 quarterly) while tail risk falls faster still (worst trade −104.7 weekly → −48.3 quarterly, max drawdown −292 → −48). Shorter holds harvest more, more often, and concentrate more risk per event.
+- Non-21-session horizons are derived client-side from stored closes, verified to reproduce the precomputed 21-session column to 5×10⁻⁵ — same methodology, not an approximation.
 
 ## Related Reading
 

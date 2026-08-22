@@ -548,6 +548,7 @@ export const GET_VOL_REGIME = gql`
       }
       history {
         bizDate
+        spxClose
         vix
         realizedVol20d
         vrp
