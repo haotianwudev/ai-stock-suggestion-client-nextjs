@@ -22,7 +22,7 @@ A standard SPX monthly expiration (3rd Friday) is frequently shared with a same-
 | `SPX260918C07275000` | 435.70 | 438.20 | 855 | 2026-08-18 15:57 |
 | `SPXW260918C07275000` | 434.50 | 440.40 | 302 | 2026-08-03 10:02 |
 
-Two different instruments, two different OI pools, two different last-trade times — merged into one "expiration" bucket by whatever code groups contracts by calendar date alone. For any per-strike single-value view (smile, RND, skew, the term structure's ATM pick), interleaving both as if they were one instrument corrupts the shape entirely: iterating the strike-sorted array hits each strike twice with different quotes, and — critically for the [Breeden-Litzenberger density](#breeden-litzenberger-risk-neutral-density) below, which differentiates a *sequence* of adjacent strikes — scrambles the neighbor relationships the second derivative depends on. On one affected monthly this alone was enough to make a straightforward thin-quote check (see below) flag **98% of the density curve**, not because the market was that illiquid, but because half the "neighbors" in the sequence were the wrong instrument's quote.
+Two different instruments, two different OI pools, two different last-trade times — merged into one "expiration" bucket by whatever code groups contracts by calendar date alone. For any per-strike single-value view (smile, RND, skew, the term structure's ATM pick), interleaving both as if they were one instrument corrupts the shape entirely: iterating the strike-sorted array hits each strike twice with different quotes, and — critically for the Breeden-Litzenberger density further down this page, which differentiates a *sequence* of adjacent strikes — scrambles the neighbor relationships the second derivative depends on. On one affected monthly this alone was enough to make a straightforward thin-quote check (see below) flag **98% of the density curve**, not because the market was that illiquid, but because half the "neighbors" in the sequence were the wrong instrument's quote.
 
 The fix, scoped to this tab only: collapse duplicate strikes to a single contract per calendar date, preferring the standard AM-settled `SPX` root over `SPXW` when both are present (falling back to whichever has higher open interest if the root can't be parsed). **Deliberately not applied to GEX** — summing both instruments' gamma at a strike is the *correct* whole-book dealer-hedging reading there, not an error. Whether the platform should instead treat same-day SPX/SPXW as two genuinely separate, independently selectable expiration entries everywhere (the chain matrix, the payoff builder, the expiration selector itself) is a broader question this fix does not attempt to answer.
 
@@ -37,6 +37,31 @@ thin quote  =  spread% > 20%   OR   (volume == 0  AND  open interest < 10)
 A flagged point renders as an amber ring instead of a solid dot, and its tooltip adds an explicit caution note. Nothing is hidden — the point (and the line connecting it) still renders normally — the flag just tells you not to over-read that specific number.
 
 Checked against a live chain after fixing the SPX/SPXW duplication above, the flag rate rises smoothly with distance from spot, which is the shape you'd want from a genuine liquidity signal rather than noise: 0% within ±5% of spot (the true ATM core), 25% by ±10%, 28% by ±15% (the tab's default display range), 43% by ±25%. Before the duplication fix, an affected monthly's RND showed 98% flagged — the duplication bug, not real thinness.
+
+### Why each condition actually signals a problem
+
+The two conditions in the flag catch two different failure modes, not one:
+
+- **Wide spread (> 20%)** means the quote itself is unreliable *right now* — the market maker isn't committing to a tight two-sided price, so the midpoint used to solve for IV could be far from where the contract would actually trade. A 20-point-wide market on a $2 option isn't "expensive," it's a market maker declining to make a real market.
+- **Zero volume with under 10 open interest** means nobody has *traded* this contract and almost nobody is *holding* it. The quoted price is theoretical — likely a market maker's own model output re-quoted, not something arrived at through actual price discovery. IV solved from a theoretical quote just gives you the market maker's model back, which tells you nothing about what the market as a whole thinks.
+
+Either condition alone can produce a wrong number; a strike hitting both at once (common at the far wings) is the least trustworthy of all.
+
+### What to actually do when you see the amber ring
+
+The flag is a caution, not a stop sign — these are real, tradeable strikes. What changes is how much weight to put on the number and how to approach the trade itself.
+
+**Before placing an order on a flagged strike:** the displayed quote is a snapshot, possibly stale. Pull up a live quote for that specific contract before sizing a limit order — don't route off the chart's numbers directly. Expect the real fill to require more price improvement patience than an unflagged, tightly-quoted strike at the same delta.
+
+**When choosing between two similar strikes:** if a strategy calls for, say, a ~30-delta short put and the strikes bracketing that delta differ in flag status, prefer the unflagged one. It isn't just about a cleaner-looking chart — a tight, actively-traded market is direct evidence you'll get filled near the displayed price rather than eating the full spread. All else equal, liquidity should win the tie.
+
+**Reading Term Structure:** if the ATM point for one specific expiration is flagged, treat that single cycle's contribution to the curve skeptically — don't anchor a contango/backwardation call on one flagged point at either end. Look at the trend across several *unflagged* neighboring cycles instead; a slope that only appears because of one thin point isn't a real regime read (this is exactly the mechanism behind the stale-cycle bug documented above — a bad single point drove the entire Term Structure Slope card to the wrong regime).
+
+**Reading the Risk-Neutral Density:** the second derivative amplifies noise in its inputs, so a cluster of flagged points can manufacture a bump or dip in the curve that isn't a real market view — it's numerical noise from a wide quote getting differentiated twice. Trust the *overall shape* (where the bulk of probability mass sits, whether the tails look fat) in regions with few flags; don't read fine local wiggles inside a flagged cluster as genuine skew or kurtosis.
+
+**Reading 25-Delta Skew:** if a cycle's 25-delta call, put, or ATM contract is flagged, that cycle's risk-reversal or butterfly reading may reflect a stale quote rather than a real shift in demand for downside protection. Cross-check against that expiration's own smile chart directly — if the flagged 25-delta point sits far off the smooth curve traced by its unflagged neighbors, the skew number computed from it is not to be trusted; use a nearby unflagged expiration's skew reading instead when timing a skew-based trade (e.g. a risk reversal, or choosing which cycle to sell a put spread in based on relative put-side richness).
+
+**The general principle:** a flag doesn't mean "avoid this strike" — plenty of legitimate trades happen in modestly thin names. It means "verify before you rely on this number," the same discipline any experienced options trader already applies before sizing an order in a name they don't usually trade.
 
 ## IV Smile & Skew Curve
 
@@ -95,7 +120,7 @@ where $\Delta K_1 = K_i - K_{i-1}$ and $\Delta K_2 = K_{i+1} - K_i$.
 
 Post-processing: densities are floored at zero ($\max(0, \partial^2 C / \partial K^2)$, since a negative probability density is a numerical artefact rather than a signal) and normalised so $\sum f(K_i)\,\Delta K_i = 100\%$.
 
-**How it's used:** the RND is how risk desks convert an entire options chain into "what does the market actually think the probability distribution of the underlying looks like" — genuinely richer than a single implied vol number, because it captures the market's *skew* and *kurtosis* views directly rather than assuming a lognormal shape. It's used to compare the option-implied (risk-neutral) distribution against a physical-measure forecast to find where the market's pricing of tail risk looks rich or cheap, and it underlies more sophisticated hedge construction than a flat-vol confidence interval can — see [Implied Price Ranges](/wiki/option-strategy/spx-payoff-builder-methodology#implied-price-ranges-confidence-intervals) for the simpler symmetric/skew-adjusted alternative most retail platforms use instead.
+**How it's used:** the RND is how risk desks convert an entire options chain into "what does the market actually think the probability distribution of the underlying looks like" — genuinely richer than a single implied vol number, because it captures the market's *skew* and *kurtosis* views directly rather than assuming a lognormal shape. It's used to compare the option-implied (risk-neutral) distribution against a physical-measure forecast to find where the market's pricing of tail risk looks rich or cheap, and it underlies more sophisticated hedge construction than a flat-vol confidence interval can — see the Implied Price Ranges section of the [Multi-Leg Payoff & Probability of Profit Methodology](/wiki/option-strategy/spx-payoff-builder-methodology) page for the simpler symmetric/skew-adjusted alternative most retail platforms use instead.
 
 ## 25-Delta Skew & Kurtosis
 
