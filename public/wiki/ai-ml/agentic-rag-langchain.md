@@ -64,3 +64,4 @@ A splitter that breaks the text between these lines hands the LLM `d_2` with no 
 ## Related Reading
 
 - [Architecting Agentic Retrieval Systems: Integrating LangChain with Proprietary Wikis for Quantitative Finance](/articles/architecting-agentic-retrieval-systems-langchain-proprietary-wikis)
+- [Watch on YouTube](https://youtu.be/Y_75_zX5z1U)
