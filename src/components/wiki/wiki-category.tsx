@@ -30,6 +30,13 @@ export function WikiCategory({ category, categoryTitle, entries }: WikiCategoryP
     [entries]
   );
 
+  // Entries can carry several topics, so per-topic counts overlap and sum past entries.length.
+  // Surfaced in the UI rather than left for the reader to notice the arithmetic doesn't add up.
+  const multiTopicCount = useMemo(
+    () => entries.filter((e) => (e.topics?.length ?? 0) > 1).length,
+    [entries]
+  );
+
   const [active, setActive] = useState<string>(ALL);
 
   const visible = useMemo(
@@ -92,9 +99,20 @@ export function WikiCategory({ category, categoryTitle, entries }: WikiCategoryP
                 );
               })}
             </div>
-            {untaggedCount > 0 && (
+            {(untaggedCount > 0 || multiTopicCount > 0) && (
               <p className="mt-2 text-[11px] text-muted-foreground">
-                {untaggedCount} page{untaggedCount === 1 ? "" : "s"} in this category have no topic yet and appear only under “{ALL}”.
+                {multiTopicCount > 0 && (
+                  <>
+                    {multiTopicCount} page{multiTopicCount === 1 ? "" : "s"} carry more than one topic, so the
+                    counts above overlap and sum to more than {entries.length}.
+                  </>
+                )}
+                {untaggedCount > 0 && (
+                  <>
+                    {multiTopicCount > 0 ? " " : ""}
+                    {untaggedCount} page{untaggedCount === 1 ? "" : "s"} have no topic yet and appear only under “{ALL}”.
+                  </>
+                )}
               </p>
             )}
           </div>
@@ -110,11 +128,23 @@ export function WikiCategory({ category, categoryTitle, entries }: WikiCategoryP
             className="group flex flex-col justify-between p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-[#A8672E]/50 dark:hover:border-[#D08F52]/50 hover:shadow-md transition-all"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                {/* Topic, not category: the category is redundant here — you're already on
-                    its page — whereas the topic is what distinguishes one card from another. */}
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] border border-[#A8672E]/20 truncate max-w-[70%]">
-                  {entry.topics?.[0] ?? category}
+              <div className="flex items-start justify-between gap-2 mb-2">
+                {/* Topics, not category: the category is redundant here — you're already on
+                    its page — whereas the topics are what distinguish one card from another.
+                    An entry can carry several, so this wraps rather than showing only the first. */}
+                <span className="flex flex-wrap gap-1 min-w-0">
+                  {(entry.topics?.length ? entry.topics : [category]).map((t) => (
+                    <span
+                      key={t}
+                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                        t === active
+                          ? "bg-[#A8672E] dark:bg-[#D08F52] text-white dark:text-[#14171B] border-transparent"
+                          : "bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] border-[#A8672E]/20"
+                      }`}
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </span>
                 {entry.date && (
                   <span className="text-[10px] font-mono text-muted-foreground shrink-0">

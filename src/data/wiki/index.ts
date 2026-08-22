@@ -45,7 +45,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/gex-methodology",
-    topics: ["Platform Methodology"],
+    topics: ["Platform Methodology", "Greeks & Mechanics"],
     title: "GEX Calculation Methodology",
     articleSlug: "",
     date: "2026-08-21",
@@ -55,7 +55,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/vol-regime-methodology",
-    topics: ["Platform Methodology"],
+    topics: ["Platform Methodology", "Volatility & VRP"],
     title: "Volatility Regime & VRP Methodology",
     articleSlug: "",
     date: "2026-08-21",
@@ -85,7 +85,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/volatility-surface-analytics",
-    topics: ["Platform Methodology"],
+    topics: ["Platform Methodology", "Volatility & VRP"],
     title: "Volatility Surface Analytics",
     articleSlug: "",
     date: "2026-08-21",
@@ -95,7 +95,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/options-positioning-analysis",
-    topics: ["Platform Methodology"],
+    topics: ["Platform Methodology", "Greeks & Mechanics"],
     title: "Options Positioning Analysis",
     articleSlug: "",
     date: "2026-08-21",
@@ -105,7 +105,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/spx-payoff-builder-methodology",
-    topics: ["Platform Methodology"],
+    topics: ["Platform Methodology", "Spreads & Structures"],
     title: "Multi-Leg Payoff & Probability of Profit Methodology",
     articleSlug: "",
     date: "2026-08-21",
@@ -306,7 +306,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/earnings-volatility-selling-strategy",
-    topics: ["Income & Writing"],
+    topics: ["Income & Writing", "Volatility & VRP"],
     title: "Advanced Option Strategy: Earnings Volatility Selling",
     articleSlug: "earnings-volatility-selling-strategy-complete-guide",
     date: "2025-07-13",
@@ -339,7 +339,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/iron-condor-benklifa-summary",
-    topics: ["Spreads & Structures"],
+    topics: ["Spreads & Structures", "Income & Writing"],
     title: "Profiting with Iron Condor Options: Trade the Math, Not the Myth",
     articleSlug: "profiting-iron-condor-options-book-summary",
     date: "2025-07-22",
@@ -404,7 +404,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/diagonal-spread-vs-covered-call-pmcc",
-    topics: ["Spreads & Structures"],
+    topics: ["Spreads & Structures", "Income & Writing"],
     title: "Diagonal Spread vs. Covered Call: A Strategic and Quantitative Comparison",
     articleSlug: "diagonal-spread-vs-covered-call-strategic-quantitative-comparison",
     date: "2025-08-02",
@@ -653,7 +653,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/tax-efficient-option-writing",
-    topics: ["Practice & Tax"],
+    topics: ["Practice & Tax", "Income & Writing"],
     title: "Tax-Efficient Option Writing: Section 1256, the 60/40 Rule, and Common Traps",
     articleSlug: "tax-efficient-option-writing-comprehensive-guide",
     date: "2025-09-12",
@@ -663,7 +663,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/rolling-short-options-framework",
-    topics: ["Greeks & Mechanics"],
+    topics: ["Greeks & Mechanics", "Income & Writing"],
     title: "Rolling Short Options: A Defensive and Offensive Framework",
     articleSlug: "strategic-framework-rolling-options-quantitative-approach",
     date: "2025-09-13",
@@ -700,7 +700,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/option-collar-protective-strategy",
-    topics: ["Spreads & Structures"],
+    topics: ["Spreads & Structures", "Income & Writing"],
     title: "The Option Collar: Protect Gains, Define Risk",
     articleSlug: "option-collar-strategy-protect-gains-define-risk",
     date: "2025-09-20",
@@ -710,7 +710,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/academic-vrp-option-writing-research",
-    topics: ["Volatility & VRP"],
+    topics: ["Volatility & VRP", "Income & Writing"],
     title: "Academic Foundations of Option Writing: VRP, Performance, and Tail Risk",
     articleSlug: "academic-foundations-option-writing-research-review",
     date: "2025-09-21",
@@ -914,7 +914,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/vertical-credit-spreads",
-    topics: ["Spreads & Structures"],
+    topics: ["Spreads & Structures", "Income & Writing"],
     title: "Vertical Credit Spreads: Defined-Risk Premium Selling",
     articleSlug: "vertical-credit-spreads-comprehensive-guide-defined-risk-premium-selling",
     date: "2025-10-25",
@@ -1043,7 +1043,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/short-straddles-strangles",
-    topics: ["Spreads & Structures"],
+    topics: ["Spreads & Structures", "Income & Writing"],
     title: "Mastering Short Volatility: Straddles & Strangles",
     articleSlug: "mastering-short-volatility-straddles-strangles-systematic-premium-collection",
     date: "2025-11-15",
@@ -1116,7 +1116,7 @@ export const wikiEntries: WikiEntry[] = [
   },
   {
     path: "option-strategy/vrp-spx-options-selling",
-    topics: ["Volatility & VRP"],
+    topics: ["Volatility & VRP", "Income & Writing"],
     title: "Mastering the Volatility Risk Premium: SPX Options Selling",
     articleSlug: "mastering-volatility-risk-premium-spx-options-selling",
     date: "2025-11-28",
