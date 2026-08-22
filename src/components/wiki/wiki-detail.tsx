@@ -142,33 +142,52 @@ export function WikiDetail({
 
           {/* Sibling Concepts in Category */}
           {siblingEntries.length > 0 && (
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
-              <SlotKicker icon={Layers} label={`More in ${categoryTitle}`} tone="accent" />
-              <div className="flex flex-col gap-1.5 max-h-80 overflow-y-auto pr-1">
-                {siblingEntries.slice(0, 10).map((sib) => (
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm space-y-3.5">
+              <div className="flex items-center justify-between gap-2">
+                <SlotKicker icon={Layers} label="In This Domain" tone="accent" />
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] border border-[#A8672E]/20">
+                  {siblingEntries.length + 1} Concepts
+                </span>
+              </div>
+
+              <div className="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                {categoryTitle}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                {siblingEntries.slice(0, 5).map((sib) => (
                   <Link
                     key={sib.path}
                     href={`/wiki/${sib.path}`}
-                    className="p-2.5 rounded-lg border border-transparent hover:border-[#A8672E]/30 dark:hover:border-[#D08F52]/30 hover:bg-[#A8672E]/5 dark:hover:bg-[#D08F52]/5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors truncate block"
-                    title={sib.title}
+                    className="group flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-100 dark:border-gray-800/80 bg-gray-50/40 dark:bg-gray-800/30 hover:border-[#A8672E]/30 dark:hover:border-[#D08F52]/30 hover:bg-[#A8672E]/5 dark:hover:bg-[#D08F52]/5 transition-all"
                   >
-                    {sib.title}
+                    <ChevronRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] shrink-0 mt-0.5 group-hover:translate-x-0.5 transition-all" />
+                    <div className="min-w-0 flex-1">
+                      <span className="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-[#A8672E] dark:group-hover:text-[#D08F52] transition-colors line-clamp-2 leading-snug">
+                        {sib.title}
+                      </span>
+                      {sib.date && (
+                        <span className="text-[10px] font-mono text-muted-foreground mt-0.5 block">
+                          {sib.date}
+                        </span>
+                      )}
+                    </div>
                   </Link>
                 ))}
-                {siblingEntries.length > 10 && (
-                  <Link
-                    href={`/wiki/${category}`}
-                    className="text-center py-2 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] hover:underline"
-                  >
-                    View all {siblingEntries.length + 1} concepts →
-                  </Link>
-                )}
               </div>
+
+              <Link
+                href={`/wiki/${category}`}
+                className="flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50 hover:bg-[#A8672E]/10 dark:hover:bg-[#D08F52]/10 hover:border-[#A8672E]/30 dark:hover:border-[#D08F52]/30 text-xs font-semibold text-[#A8672E] dark:text-[#D08F52] transition-colors"
+              >
+                <span>View all {siblingEntries.length + 1} concepts</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
             </div>
           )}
 
           {/* Browse All Domains */}
-          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm space-y-3.5">
             <SlotKicker icon={BookOpen} label="All Knowledge Domains" tone="accent" />
             <div className="flex flex-col gap-1.5">
               {allCategories.map((cat) => {
@@ -178,10 +197,10 @@ export function WikiDetail({
                   <Link
                     key={cat}
                     href={`/wiki/${cat}`}
-                    className={`flex items-center justify-between p-2.5 rounded-lg border text-xs font-medium transition-colors ${
+                    className={`flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium transition-all ${
                       isCurrent
-                        ? "border-[#A8672E] dark:border-[#D08F52] bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] font-semibold"
-                        : "border-transparent hover:border-gray-200 dark:hover:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                        ? "border-[#A8672E]/40 dark:border-[#D08F52]/40 bg-[#A8672E]/10 dark:bg-[#D08F52]/10 text-[#A8672E] dark:text-[#D08F52] font-semibold"
+                        : "border-transparent hover:border-gray-200 dark:hover:border-gray-800/80 hover:bg-gray-50/60 dark:hover:bg-gray-800/40 text-gray-700 dark:text-gray-300"
                     }`}
                   >
                     <span className="truncate">{catName}</span>
