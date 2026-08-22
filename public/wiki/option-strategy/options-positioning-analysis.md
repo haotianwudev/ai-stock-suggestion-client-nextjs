@@ -21,6 +21,8 @@ $$
 
 Max Pain itself is the strike at the bottom of this curve. Plotting the whole curve rather than just the minimum shows how sharply it bottoms out — a shallow, wide minimum means many nearby strikes carry similar seller liability and the pin is weak; a sharp V means one strike is genuinely favoured.
 
+**How it's used:** the curve shape is what separates a real Max Pain signal from noise. Traders who take the concept seriously look for a sharp, well-defined minimum near a round strike with high OI concentration — a shallow bowl is treated as no signal at all, since many strikes are then roughly equally "convenient" for sellers and there's no reason to expect one over another. This is the same reasoning [the HUD metrics page](/wiki/option-strategy/options-hud-metrics) uses to caution against over-weighting the single-number version of Max Pain.
+
 ## Cumulative Open Interest Curve
 
 The running sum of call and put open interest across the strike spectrum:
@@ -30,6 +32,8 @@ $$
 $$
 
 This reframes the raw per-strike OI bars (which spike at a handful of strikes and are hard to compare visually) as a monotonic curve. Where the two curves are steepest is where OI is densest; the strike where they cross is roughly where cumulative put and call positioning balance.
+
+**How it's used:** raw per-strike open interest is the single most common ingredient in informal "support and resistance" heuristics among options-focused traders — the intuition being that a strike with heavy resting call OI is a level dealers have an interest in keeping price below (and heavy put OI, above). This is the same underlying data GEX walls formalise properly by weighting for *gamma*, not just raw contract count (see [GEX Calculation Methodology](/wiki/option-strategy/gex-methodology) for why that distinction matters — a deep ITM strike can carry enormous legacy OI while contributing almost no actual hedging pressure). Cumulative OI curves specifically are used to spot where positioning is genuinely concentrated versus spread thin across the chain, which is a useful sanity check before reading anything into a single strike's bar.
 
 ## Limitations
 

@@ -30,6 +30,8 @@ $$
 
 This follows from variance being additive in time while volatility is not — total variance to $T_2$ is the sum of variance to $T_1$ and forward variance across the gap. A steep front-month spike often leaves forward vol nearly flat, which tells you the event risk is genuinely localised rather than a repricing of the whole curve.
 
+**How it's used:** term structure shape is a direct trading signal in its own right for volatility desks — backwardation (near-term vol above far-term) is the textbook setup for calendar spreads (sell the rich front month, buy the cheaper back month) and is closely watched around known binary events (earnings, FOMC, CPI) where the front-month IV bump is expected to collapse once the event passes. In index vol specifically, VIX futures traders watch the VIX/VIX3M ratio the same way — a ratio above roughly 1 signals backwardation and is one of the standard triggers cited for de-risking short-vol ETN/ETF positions (see the [VRP methodology](/wiki/option-strategy/vol-regime-methodology) page for how this feeds into regime classification).
+
 ## Breeden-Litzenberger Risk-Neutral Density
 
 Extracts the market's implied probability density $f(K)$ for the underlying at expiration, directly from call prices, via the Breeden & Litzenberger (1978) result:
@@ -58,6 +60,8 @@ where $\Delta K_1 = K_i - K_{i-1}$ and $\Delta K_2 = K_{i+1} - K_i$.
 
 Post-processing: densities are floored at zero ($\max(0, \partial^2 C / \partial K^2)$, since a negative probability density is a numerical artefact rather than a signal) and normalised so $\sum f(K_i)\,\Delta K_i = 100\%$.
 
+**How it's used:** the RND is how risk desks convert an entire options chain into "what does the market actually think the probability distribution of the underlying looks like" — genuinely richer than a single implied vol number, because it captures the market's *skew* and *kurtosis* views directly rather than assuming a lognormal shape. It's used to compare the option-implied (risk-neutral) distribution against a physical-measure forecast to find where the market's pricing of tail risk looks rich or cheap, and it underlies more sophisticated hedge construction than a flat-vol confidence interval can — see [Implied Price Ranges](/wiki/option-strategy/spx-payoff-builder-methodology#implied-price-ranges-confidence-intervals) for the simpler symmetric/skew-adjusted alternative most retail platforms use instead.
+
 ## 25-Delta Skew & Kurtosis
 
 Two standard summary measures of surface shape, both quoted off the 25-delta wings:
@@ -77,6 +81,8 @@ $$
 $$
 
 A rising butterfly means the market is paying up for tail outcomes on both sides — fat-tail probability being repriced independently of direction.
+
+**How they're used:** risk reversal is a standard sentiment and positioning gauge — a sharp rise in put skew (independent of the VIX level itself) is read as crash-hedging demand building, and is watched by both directional traders (as a contrarian fear gauge) and vol desks pricing their own skew risk. Butterfly is the more specialised of the two: convexity/vol-of-vol traders express views on it directly via iron butterflies and condors, and a persistently elevated butterfly across a chain is one of the standard reasons a "sell premium everywhere" strategy underperforms a delta-neutral one that specifically targets skew.
 
 ## Limitations
 
