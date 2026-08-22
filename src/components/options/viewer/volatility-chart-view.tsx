@@ -28,7 +28,11 @@ import {
   Flame, 
   Scale, 
   Sparkles,
-  PieChart
+  PieChart,
+  Compass,
+  ChevronDown,
+  ChevronUp,
+  Info
 } from 'lucide-react';
 
 interface ExpirationItem {
@@ -46,6 +50,7 @@ interface VolatilityChartViewProps {
 }
 
 type VolSubView = 'smile' | 'multiSmile' | 'termStructure' | 'rnd' | 'skewCurve';
+type StrikeRangeOption = 15 | 25 | 'all';
 
 export function VolatilityChartView({
   currentExpiration,
@@ -55,13 +60,15 @@ export function VolatilityChartView({
 }: VolatilityChartViewProps) {
   const [subView, setSubView] = useState<VolSubView>('smile');
   const [compareExpirations, setCompareExpirations] = useState<string[]>([]);
+  const [strikeRange, setStrikeRange] = useState<StrikeRangeOption>(15);
+  const [showGuide, setShowGuide] = useState(false);
 
   // Active expiration data
   const currentExpData = useMemo(() => {
     return expirations.find(e => e.expiration === currentExpiration) || expirations[0];
   }, [expirations, currentExpiration]);
 
-  // Set default comparison expirations (e.g. next 2 liquid cycles)
+  // Set default comparison expirations (first 4 liquid cycles)
   useEffect(() => {
     if (expirations.length > 1 && compareExpirations.length === 0) {
       const candidates = expirations.slice(0, 4).map(e => e.expiration);
@@ -69,9 +76,19 @@ export function VolatilityChartView({
     }
   }, [expirations, compareExpirations.length]);
 
+  const toggleCompareExp = (exp: string) => {
+    if (compareExpirations.includes(exp)) {
+      if (compareExpirations.length > 1) {
+        setCompareExpirations(compareExpirations.filter(e => e !== exp));
+      }
+    } else {
+      setCompareExpirations([...compareExpirations, exp]);
+    }
+  };
+
   // 1. Single Expiration IV Smile / Skew Dataset (Strike vs IV)
-  const smileData = useMemo(() => {
-    if (!currentExpData) return [];
+  const { smileData, displaySmileData } = useMemo(() => {
+    if (!currentExpData) return { smileData: [], displaySmileData: [] };
 
     const callMap = new Map<number, number>();
     const putMap = new Map<number, number>();
@@ -93,10 +110,10 @@ export function VolatilityChartView({
 
     const sortedStrikes = Array.from(strikes).sort((a, b) => a - b);
     const filteredStrikes = sortedStrikes.filter(
-      s => s >= spotPrice * 0.78 && s <= spotPrice * 1.22
+      s => s >= spotPrice * 0.65 && s <= spotPrice * 1.35
     );
 
-    return filteredStrikes.map(strike => {
+    const rows = filteredStrikes.map(strike => {
       const callIV = callMap.get(strike) ?? null;
       const putIV = putMap.get(strike) ?? null;
       const avgIV = callIV && putIV ? Number(((callIV + putIV) / 2).toFixed(1)) : (callIV || putIV);
@@ -110,7 +127,14 @@ export function VolatilityChartView({
         moneyness: Number((strike / spotPrice).toFixed(3))
       };
     });
-  }, [currentExpData, spotPrice]);
+
+    const inDisplayRange = (s: number) => strikeRange === 'all' ? true : (s >= spotPrice * (1 - strikeRange / 100) && s <= spotPrice * (1 + strikeRange / 100));
+
+    return {
+      smileData: rows,
+      displaySmileData: rows.filter(r => inDisplayRange(r.strike))
+    };
+  }, [currentExpData, spotPrice, strikeRange]);
 
   // 2. Multi-Expiration IV Smile Overlay
   const multiSmileData = useMemo(() => {
@@ -142,7 +166,7 @@ export function VolatilityChartView({
     });
 
     const sortedStrikes = Array.from(allStrikes).sort((a, b) => a - b).filter(
-      s => s >= spotPrice * 0.82 && s <= spotPrice * 1.18
+      s => strikeRange === 'all' ? true : (s >= spotPrice * (1 - strikeRange / 100) && s <= spotPrice * (1 + strikeRange / 100))
     );
 
     return sortedStrikes.map(strike => {
@@ -155,7 +179,7 @@ export function VolatilityChartView({
       });
       return row;
     });
-  }, [expirations, compareExpirations, spotPrice]);
+  }, [expirations, compareExpirations, spotPrice, strikeRange]);
 
   // 3. Vol Term Structure & Forward Implied Volatility
   const termStructureData = useMemo(() => {
@@ -184,7 +208,6 @@ export function VolatilityChartView({
       .filter((item): item is NonNullable<typeof item> => item !== null)
       .sort((a, b) => a.dte - b.dte);
 
-    // Compute Forward Implied Volatility: Fwd_IV = sqrt((T2*IV2^2 - T1*IV1^2)/(T2 - T1))
     return raw.map((item, idx) => {
       let fwdIV: number | null = null;
       if (idx > 0) {
@@ -228,12 +251,6 @@ export function VolatilityChartView({
       const dK2 = next.strike - curr.strike;
 
       if (dK1 > 0 && dK2 > 0 && dK1 <= 25 && dK2 <= 25) {
-        // Second derivative of Call price with respect to Strike: C''(K). The textbook
-        // (next - 2*curr + prev) / h^2 three-point formula only holds for EQUAL spacing
-        // (dK1 === dK2) — real SPX chains alternate 5pt/10pt strike gaps constantly near the
-        // money, so that formula was picking up huge, often sign-flipped error at nearly every
-        // point. This is the general non-uniform-grid second-derivative formula instead (reduces
-        // to the textbook one exactly when dK1 === dK2).
         const d2C = 2 * (dK1 * next.midPrice! - (dK1 + dK2) * curr.midPrice! + dK2 * prev.midPrice!) / (dK1 * dK2 * (dK1 + dK2));
         const density = Math.max(0, d2C);
         sumDensity += density;
@@ -248,16 +265,15 @@ export function VolatilityChartView({
 
     if (sumDensity === 0) return [];
 
-    // Filter within +/- 15% of spot
     return densityRows
-      .filter(r => r.strike >= spotPrice * 0.88 && r.strike <= spotPrice * 1.12)
+      .filter(r => strikeRange === 'all' ? true : (r.strike >= spotPrice * (1 - strikeRange / 100) && r.strike <= spotPrice * (1 + strikeRange / 100)))
       .map(r => ({
         strike: r.strike,
         strikeLabel: `$${r.strike}`,
         probabilityPct: Number(((r.rawDensity / sumDensity) * 100).toFixed(3)),
         isATM: Math.abs(r.strike - spotPrice) <= 5
       }));
-  }, [currentExpData, spotPrice]);
+  }, [currentExpData, spotPrice, strikeRange]);
 
   // 5. 25-Delta Skew & Kurtosis Curve across all Expirations
   const skewTermData = useMemo(() => {
@@ -325,7 +341,55 @@ export function VolatilityChartView({
     };
   }, [currentExpData, smileData, spotPrice, skewTermData, termStructureData]);
 
-  const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4'];
+  const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#6366f1', '#14b8a6'];
+
+  // Custom IV Smile Tooltip
+  const CustomSmileTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      const strike = data.strike;
+      const diffDollars = strike - spotPrice;
+      const diffPct = (diffDollars / spotPrice) * 100;
+      const skewDiff = data.putIV && data.callIV ? (data.putIV - data.callIV).toFixed(1) : null;
+
+      return (
+        <div className="bg-slate-900/95 dark:bg-slate-950/95 text-white border border-slate-700/80 rounded-xl p-3 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs space-y-2">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-700/80 pb-1.5">
+            <span className="font-bold text-sm text-amber-400">${strike.toLocaleString()}</span>
+            <span className="text-[11px] text-slate-400">
+              {diffDollars >= 0 ? `+${diffDollars.toFixed(1)}` : diffDollars.toFixed(1)} ({diffPct >= 0 ? '+' : ''}{diffPct.toFixed(2)}%)
+            </span>
+          </div>
+
+          <div className="space-y-1 pt-0.5">
+            <div className="flex justify-between items-center text-purple-300">
+              <span>Composite Mid IV:</span>
+              <span className="font-bold">{data.midIV}%</span>
+            </div>
+            {data.putIV != null && (
+              <div className="flex justify-between items-center text-rose-400 text-[11px]">
+                <span>Put Implied Vol:</span>
+                <span>{data.putIV}%</span>
+              </div>
+            )}
+            {data.callIV != null && (
+              <div className="flex justify-between items-center text-blue-400 text-[11px]">
+                <span>Call Implied Vol:</span>
+                <span>{data.callIV}%</span>
+              </div>
+            )}
+            {skewDiff && (
+              <div className="flex justify-between items-center text-slate-400 text-[10px] border-t border-slate-700/60 pt-1">
+                <span>Put-Call IV Skew:</span>
+                <span>{Number(skewDiff) > 0 ? `+${skewDiff}%` : `${skewDiff}%`}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="space-y-4">
@@ -362,7 +426,7 @@ export function VolatilityChartView({
           <div className="text-xl font-mono font-extrabold text-slate-900 dark:text-slate-100 mt-1">
             {activeMetrics?.fly != null ? `${activeMetrics.fly > 0 ? '+' : ''}${activeMetrics.fly}%` : '—'}
           </div>
-          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Wing curvature over ATM base</p>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Wing curvature over ATM baseline</p>
         </div>
 
         {/* Card 4: Term Structure Regime */}
@@ -405,73 +469,120 @@ export function VolatilityChartView({
             </p>
           </div>
 
-          {/* 5-Way Sub-View Selector */}
-          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
-            <button
-              onClick={() => setSubView('smile')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'smile' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              IV Smile
-            </button>
-            <button
-              onClick={() => setSubView('multiSmile')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'multiSmile' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Multi-Cycle
-            </button>
-            <button
-              onClick={() => setSubView('termStructure')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'termStructure' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Term Structure
-            </button>
-            <button
-              onClick={() => setSubView('rnd')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'rnd' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Probability (RND)
-            </button>
-            <button
-              onClick={() => setSubView('skewCurve')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'skewCurve' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              25Δ Skew
-            </button>
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Strike Range Controls (for smile, multiSmile, and rnd) */}
+            {(subView === 'smile' || subView === 'multiSmile' || subView === 'rnd') && (
+              <div className="inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono">
+                <span className="text-slate-400 pl-1.5 pr-0.5 text-[10px]">Range:</span>
+                {([15, 25, 'all'] as StrikeRangeOption[]).map(r => (
+                  <button
+                    key={String(r)}
+                    onClick={() => setStrikeRange(r)}
+                    className={`px-2 py-0.5 rounded-md transition-all ${
+                      strikeRange === r
+                        ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                    }`}
+                  >
+                    {r === 'all' ? 'All' : `±${r}%`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* 5-Way Sub-View Selector */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+              <button
+                onClick={() => setSubView('smile')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'smile' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                IV Smile
+              </button>
+              <button
+                onClick={() => setSubView('multiSmile')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'multiSmile' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Multi-Cycle
+              </button>
+              <button
+                onClick={() => setSubView('termStructure')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'termStructure' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Term Structure
+              </button>
+              <button
+                onClick={() => setSubView('rnd')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'rnd' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Probability (RND)
+              </button>
+              <button
+                onClick={() => setSubView('skewCurve')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'skewCurve' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                25Δ Skew
+              </button>
+            </div>
           </div>
         </div>
 
+        {/* Multi-Cycle Expiration Toggle Chips */}
+        {subView === 'multiSmile' && (
+          <div className="px-4 py-2 bg-gray-50/80 dark:bg-gray-800/40 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center gap-1.5 text-xs font-mono">
+            <span className="text-slate-400 text-[11px] mr-1">Overlay Expirations:</span>
+            {expirations.slice(0, 8).map((exp, idx) => {
+              const isSelected = compareExpirations.includes(exp.expiration);
+              return (
+                <button
+                  key={exp.expiration}
+                  onClick={() => toggleCompareExp(exp.expiration)}
+                  className={`px-2 py-0.5 rounded-md border text-[11px] transition-all flex items-center gap-1.5 ${
+                    isSelected
+                      ? 'bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-100 border-gray-300 dark:border-gray-700 shadow-2xs font-semibold'
+                      : 'bg-transparent text-slate-400 border-transparent hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLORS[idx % COLORS.length] }} />
+                  <span>{exp.expiration.slice(5)} ({exp.daysToExpiration}d)</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         <div className="p-4">
-          <div className="h-[400px] w-full">
+          <div className="h-[420px] w-full">
             {/* VIEW 1: SINGLE IV SMILE */}
             {subView === 'smile' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={smileData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <LineChart data={displaySmileData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     domain={['dataMin - 2', 'dataMax + 2']} 
@@ -479,17 +590,14 @@ export function VolatilityChartView({
                     stroke="#64748b" 
                     fontSize={11}
                   />
-                  <Tooltip 
-                    formatter={(value: number, name: string) => [`${value}%`, name === 'midIV' ? 'Mid IV' : name === 'putIV' ? 'Put IV' : 'Call IV']}
-                    labelFormatter={(label) => `Strike: $${label} (Spot: $${spotPrice.toFixed(1)})`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
-                  />
+                  <Tooltip content={<CustomSmileTooltip />} />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(1)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    strokeWidth={1.5}
+                    label={{ value: `Spot: $${spotPrice.toFixed(1)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   <Line 
                     type="monotone" 
@@ -525,13 +633,14 @@ export function VolatilityChartView({
             {/* VIEW 2: MULTI-EXPIRATION SMILE OVERLAY */}
             {subView === 'multiSmile' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={multiSmileData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <LineChart data={multiSmileData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     domain={['dataMin - 2', 'dataMax + 2']} 
@@ -542,14 +651,14 @@ export function VolatilityChartView({
                   <Tooltip 
                     formatter={(value: number, name: string) => [`${value}%`, name]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   {compareExpirations.map((exp, idx) => (
                     <Line 
@@ -570,12 +679,13 @@ export function VolatilityChartView({
             {/* VIEW 3: TERM STRUCTURE & FORWARD VOL */}
             {subView === 'termStructure' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={termStructureData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <LineChart data={termStructureData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="label" 
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     domain={['dataMin - 3', 'dataMax + 3']} 
@@ -589,7 +699,7 @@ export function VolatilityChartView({
                       const item = payload[0]?.payload;
                       return item ? `${item.expiration} (${item.dte} Days) - ATM Strike: $${item.atmStrike}` : label;
                     }}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <Line 
@@ -607,8 +717,8 @@ export function VolatilityChartView({
                     name="Forward Implied Vol" 
                     stroke="#06b6d4" 
                     strokeWidth={1.5} 
-                    strokeDasharray="3 3"
-                    dot={false}
+                    strokeDasharray="3 3" 
+                    dot={false} 
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -617,19 +727,20 @@ export function VolatilityChartView({
             {/* VIEW 4: BREEDEN-LITZENBERGER RISK-NEUTRAL DENSITY (RND) */}
             {subView === 'rnd' && (
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={rndData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
+                <AreaChart data={rndData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
                   <defs>
                     <linearGradient id="rndGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.6}/>
                       <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     tickFormatter={(val) => `${val}%`}
@@ -639,13 +750,13 @@ export function VolatilityChartView({
                   <Tooltip 
                     formatter={(value: number) => [`${value}%`, 'Implied Settlement Probability']}
                     labelFormatter={(label) => `SPX Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   <Area 
                     type="monotone" 
@@ -663,12 +774,13 @@ export function VolatilityChartView({
             {/* VIEW 5: 25-DELTA SKEW & BUTTERFLY TERM STRUCTURE */}
             {subView === 'skewCurve' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={skewTermData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <LineChart data={skewTermData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="label" 
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     tickFormatter={(val) => `${val}%`}
@@ -684,7 +796,7 @@ export function VolatilityChartView({
                       const item = payload[0]?.payload;
                       return item ? `${item.expiration} (${item.dte}d) - 25Δ Put: ${item.put25IV}% | 25Δ Call: ${item.call25IV}%` : label;
                     }}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine y={0} stroke="#94a3b8" />
@@ -709,6 +821,53 @@ export function VolatilityChartView({
               </ResponsiveContainer>
             )}
           </div>
+        </div>
+
+        {/* Volatility Regime & Strategy Insights */}
+        <div className="border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 p-3.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <Compass className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
+                Vol Regime Insight:
+              </span>
+              <span className="text-slate-600 dark:text-slate-400">
+                {activeMetrics?.isContango
+                  ? `Normal Contango curve (${activeMetrics?.frontATM}% front → ${activeMetrics?.backATM}% back). Calendar spreads and short front-month volatility structures enjoy positive roll yield.`
+                  : `Inverted Backwardation curve (${activeMetrics?.frontATM}% front > ${activeMetrics?.backATM}% back). Near-term event risk or panic hedging priced in; caution with short front-month gamma.`}
+              </span>
+            </div>
+            <button
+              onClick={() => setShowGuide(!showGuide)}
+              className="text-[#A8672E] dark:text-[#D08F52] font-semibold hover:underline flex items-center gap-1 self-start sm:self-auto flex-shrink-0"
+            >
+              <span>{showGuide ? 'Hide Methodology' : 'Learn Vol Surface Theory'}</span>
+              {showGuide ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+            </button>
+          </div>
+
+          {showGuide && (
+            <div className="mt-3 pt-3 border-t border-gray-200/60 dark:border-gray-700/60 grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed font-mono">
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <Activity className="h-3.5 w-3.5 text-purple-500" /> IV Smile &amp; Skew
+                </span>
+                OTM Put IV trades at a persistent premium over ATM and OTM Call IV due to structural demand for downside portfolio catastrophe insurance.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <TrendingUp className="h-3.5 w-3.5 text-cyan-500" /> Forward Volatility
+                </span>
+                Derived via variance addition: Fwd IV = sqrt((T2*IV2^2 - T1*IV1^2)/(T2 - T1)). Isolates the implied volatility priced between two future expiration windows.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <PieChart className="h-3.5 w-3.5 text-blue-500" /> Breeden-Litzenberger RND
+                </span>
+                Calculates market-implied risk-neutral probability density from call option curvature (d2C/dK2). Reveals non-Gaussian fat tails and skew directly from live prices.
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ import {
   AreaChart
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
-import { BarChart3, Target, Shield, Flame, Scale, Layers, Info, Droplets } from 'lucide-react';
+import { BarChart3, Target, Shield, Flame, Scale, Layers, Info, Droplets, Compass, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { computeLiquidity } from '@/lib/options/liquidity';
 
 interface PositioningChartViewProps {
@@ -32,6 +32,7 @@ interface PositioningChartViewProps {
 }
 
 type PositioningSubView = 'oi' | 'volume' | 'maxPainCurve' | 'cumulativeOI' | 'liquidity';
+type StrikeRangeOption = 15 | 25 | 'all';
 
 export function PositioningChartView({
   calls,
@@ -42,14 +43,28 @@ export function PositioningChartView({
   dte
 }: PositioningChartViewProps) {
   const [subView, setSubView] = useState<PositioningSubView>('oi');
+  const [strikeRange, setStrikeRange] = useState<StrikeRangeOption>(15);
+  const [showGuide, setShowGuide] = useState(false);
 
-  // OptionsDX's EOD schema (the Historical Snapshot source) carries no open-interest column at
-  // all, so every contract's openInterest is null there, not a real zero — gate every OI-derived
-  // figure below on this rather than let them silently compute off fabricated zeros.
   const hasOpenInterest = calls.some(c => c.openInterest != null) || puts.some(p => p.openInterest != null);
 
   // Build strike-by-strike datasets
-  const { chartData, maxPainCurveData, cumulativeOIData, liquidityData, callWall, putWall, totalCallOI, totalPutOI, totalCallVol, totalPutVol } = useMemo(() => {
+  const { 
+    chartData, 
+    displayChartData,
+    maxPainCurveData, 
+    displayMaxPainData,
+    cumulativeOIData, 
+    displayCumulativeOIData,
+    liquidityData, 
+    displayLiquidityData,
+    callWall, 
+    putWall, 
+    totalCallOI, 
+    totalPutOI, 
+    totalCallVol, 
+    totalPutVol 
+  } = useMemo(() => {
     const callMap = new Map<number, { oi: number; vol: number }>();
     const putMap = new Map<number, { oi: number; vol: number }>();
     const callRawMap = new Map<number, OptionContractData>();
@@ -98,8 +113,10 @@ export function PositioningChartView({
 
     const sortedStrikes = Array.from(strikes).sort((a, b) => a - b);
     const filteredStrikes = sortedStrikes.filter(
-      s => s >= spotPrice * 0.84 && s <= spotPrice * 1.16
+      s => s >= spotPrice * 0.65 && s <= spotPrice * 1.35
     );
+
+    const inDisplayRange = (s: number) => strikeRange === 'all' ? true : (s >= spotPrice * (1 - strikeRange / 100) && s <= spotPrice * (1 + strikeRange / 100));
 
     // 1. Strike rows
     const rows = filteredStrikes.map(strike => {
@@ -163,8 +180,7 @@ export function PositioningChartView({
       };
     });
 
-    // 4. Liquidity: composite score (spread + volume + OI) per strike, both sides — see
-    // lib/options/liquidity.ts for why spread gates rather than just averages into the score.
+    // 4. Liquidity: composite score (spread + volume + OI) per strike
     const liquidity = filteredStrikes.map(strike => {
       const c = callRawMap.get(strike);
       const p = putRawMap.get(strike);
@@ -182,9 +198,13 @@ export function PositioningChartView({
 
     return {
       chartData: rows,
+      displayChartData: rows.filter(r => inDisplayRange(r.strike)),
       maxPainCurveData: painCurve,
+      displayMaxPainData: painCurve.filter(r => inDisplayRange(r.strike)),
       cumulativeOIData: cumOIData,
+      displayCumulativeOIData: cumOIData.filter(r => inDisplayRange(r.strike)),
       liquidityData: liquidity,
+      displayLiquidityData: liquidity.filter(r => inDisplayRange(r.strike)),
       callWall: maxCOI > 0 ? cWallRaw : null,
       putWall: maxPOI > 0 ? pWallRaw : null,
       totalCallOI: totalCOI,
@@ -192,11 +212,63 @@ export function PositioningChartView({
       totalCallVol: totalCVol,
       totalPutVol: totalPVol
     };
-  }, [calls, puts, spotPrice, maxPainStrike]);
+  }, [calls, puts, spotPrice, maxPainStrike, strikeRange]);
+
+  // Custom Rich Tooltip for Open Interest
+  const CustomOITooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      const strike = data.strike;
+      const diffDollars = strike - spotPrice;
+      const diffPct = (diffDollars / spotPrice) * 100;
+      const isCallWall = strike === callWall;
+      const isPutWall = strike === putWall;
+      const isMaxPain = strike === maxPainStrike;
+      const pcStrikeRatio = data.callOI > 0 ? (data.putOI / data.callOI).toFixed(2) : '—';
+
+      return (
+        <div className="bg-slate-900/95 dark:bg-slate-950/95 text-white border border-slate-700/80 rounded-xl p-3 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs space-y-2">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-700/80 pb-1.5">
+            <span className="font-bold text-sm text-amber-400">${strike.toLocaleString()}</span>
+            <span className="text-[11px] text-slate-400">
+              {diffDollars >= 0 ? `+${diffDollars.toFixed(1)}` : diffDollars.toFixed(1)} ({diffPct >= 0 ? '+' : ''}{diffPct.toFixed(2)}%)
+            </span>
+          </div>
+
+          {(isCallWall || isPutWall || isMaxPain) && (
+            <div className="flex flex-wrap gap-1">
+              {isCallWall && <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/40 text-[10px] py-0">Call Wall (Peak OI)</Badge>}
+              {isPutWall && <Badge className="bg-rose-500/20 text-rose-300 border-rose-500/40 text-[10px] py-0">Put Wall (Peak OI)</Badge>}
+              {isMaxPain && <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/40 text-[10px] py-0">Max Pain Point</Badge>}
+            </div>
+          )}
+
+          <div className="space-y-1 pt-0.5">
+            <div className="flex justify-between items-center text-blue-400">
+              <span>Call Open Interest:</span>
+              <span className="font-bold">{data.callOI.toLocaleString()} contracts</span>
+            </div>
+            <div className="flex justify-between items-center text-rose-400">
+              <span>Put Open Interest:</span>
+              <span className="font-bold">{data.putOI.toLocaleString()} contracts</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-300 border-t border-slate-700/60 pt-1">
+              <span>Total Strike OI:</span>
+              <span className="font-bold">{data.totalOI.toLocaleString()}</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-400 text-[11px]">
+              <span>Put/Call OI Ratio:</span>
+              <span>{pcStrikeRatio}</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="space-y-4">
-      {/* HUD Cards for Positioning */}
       {/* 4 Top KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Card 1: Call Wall */}
@@ -213,7 +285,7 @@ export function PositioningChartView({
             )}
           </div>
           <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
-            {hasOpenInterest ? 'Highest Call Open Interest' : 'No open interest data for this source'}
+            {hasOpenInterest ? 'Highest Call Open Interest cluster' : 'No open interest data for this source'}
           </p>
         </div>
 
@@ -231,7 +303,7 @@ export function PositioningChartView({
             )}
           </div>
           <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
-            {hasOpenInterest ? 'Highest Put Open Interest' : 'No open interest data for this source'}
+            {hasOpenInterest ? 'Highest Put Open Interest cluster' : 'No open interest data for this source'}
           </p>
         </div>
 
@@ -248,7 +320,7 @@ export function PositioningChartView({
               </span>
             )}
           </div>
-          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Where buyers lose most payout</p>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Settlement minimizes option buyer payout</p>
         </div>
 
         {/* Card 4: Open Interest Distribution */}
@@ -262,7 +334,7 @@ export function PositioningChartView({
                 <span className="text-sm font-bold text-[#A8672E] dark:text-[#D08F52]">P: {(totalPutOI / 1000).toFixed(1)}k</span>
               </div>
               <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
-                P/C OI: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'}
+                P/C Ratio: {totalCallOI > 0 ? (totalPutOI / totalCallOI).toFixed(2) : '1.0'} {totalPutOI > totalCallOI ? '(Put Skewed)' : '(Call Skewed)'}
               </p>
             </>
           ) : (
@@ -287,74 +359,95 @@ export function PositioningChartView({
               {subView === 'liquidity' && 'Liquidity Score by Strike (0-100)'}
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              {subView === 'oi' && `${expiration} (${dte} DTE) — Open contracts resting at each strike`}
+              {subView === 'oi' && `${expiration} (${dte} DTE) — Open contracts resting across strikes`}
               {subView === 'volume' && `${expiration} (${dte} DTE) — Day's traded volume across strikes`}
               {subView === 'maxPainCurve' && `Total dollar amount option sellers must pay out if SPX settles at each strike`}
               {subView === 'cumulativeOI' && `Running sum of open contracts accumulating across the strike spectrum`}
-              {subView === 'liquidity' && `Composite of bid-ask spread, volume, and open interest — higher means easier to get filled near mid`}
+              {subView === 'liquidity' && `Composite of bid-ask spread, volume, and open interest — higher means tighter fills near mid`}
             </p>
           </div>
 
-          <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
-            <button
-              onClick={() => setSubView('oi')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'oi' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Open Interest
-            </button>
-            <button
-              onClick={() => setSubView('volume')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'volume' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Volume
-            </button>
-            <button
-              onClick={() => setSubView('maxPainCurve')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'maxPainCurve' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Max Pain Curve
-            </button>
-            <button
-              onClick={() => setSubView('cumulativeOI')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'cumulativeOI' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Cumulative OI
-            </button>
-            <button
-              onClick={() => setSubView('liquidity')}
-              className={`px-3 py-1 rounded-md transition-all ${
-                subView === 'liquidity' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-              }`}
-            >
-              Liquidity
-            </button>
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Strike Range Zoom Controls */}
+            <div className="inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono">
+              <span className="text-slate-400 pl-1.5 pr-0.5 text-[10px]">Range:</span>
+              {([15, 25, 'all'] as StrikeRangeOption[]).map(r => (
+                <button
+                  key={String(r)}
+                  onClick={() => setStrikeRange(r)}
+                  className={`px-2 py-0.5 rounded-md transition-all ${
+                    strikeRange === r
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  {r === 'all' ? 'All' : `±${r}%`}
+                </button>
+              ))}
+            </div>
+
+            {/* Sub-view Selector */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+              <button
+                onClick={() => setSubView('oi')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'oi' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Open Interest
+              </button>
+              <button
+                onClick={() => setSubView('volume')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'volume' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Volume
+              </button>
+              <button
+                onClick={() => setSubView('maxPainCurve')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'maxPainCurve' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Max Pain Curve
+              </button>
+              <button
+                onClick={() => setSubView('cumulativeOI')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'cumulativeOI' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Cumulative OI
+              </button>
+              <button
+                onClick={() => setSubView('liquidity')}
+                className={`px-3 py-1 rounded-md transition-all ${
+                  subView === 'liquidity' 
+                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                Liquidity
+              </button>
+            </div>
           </div>
         </div>
 
         <div className="p-4">
-          <div className="h-[400px] w-full">
+          <div className="h-[420px] w-full">
             {!hasOpenInterest && subView !== 'volume' && subView !== 'liquidity' ? (
               <div className="h-full flex flex-col items-center justify-center text-center gap-2">
                 <Info className="h-6 w-6 text-slate-400" />
-                <p className="text-sm font-semibold text-slate-700">Open interest data not available</p>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Open interest data not available</p>
                 <p className="text-xs text-slate-500 max-w-md">
                   This view is built from each contract&apos;s open interest, which the Historical
                   Snapshot source doesn&apos;t include. Switch to the Live source, or see the Volume tab
@@ -366,44 +459,40 @@ export function PositioningChartView({
             {/* VIEW 1: OPEN INTEREST */}
             {subView === 'oi' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayChartData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
                     fontSize={11}
                     tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
                   />
-                  <Tooltip 
-                    formatter={(value: number, name: string) => [
-                      value.toLocaleString(),
-                      name === 'callOI' ? 'Call OI' : 'Put OI'
-                    ]}
-                    labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
-                  />
+                  <Tooltip content={<CustomOITooltip />} />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    strokeWidth={1.5}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   {maxPainStrike && (
                     <ReferenceLine 
                       x={maxPainStrike} 
                       stroke="#06b6d4" 
                       strokeDasharray="3 3" 
-                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'top', fill: '#0891b2', fontSize: 10 }}
+                      strokeWidth={1.5}
+                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'insideTop', fill: '#0891b2', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
-                  <Bar dataKey="callOI" name="Call Open Interest" fill="#3b82f6" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="putOI" name="Put Open Interest" fill="#f43f5e" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="callOI" name="Call Open Interest" fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="putOI" name="Put Open Interest" fill="#f43f5e" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
@@ -411,13 +500,14 @@ export function PositioningChartView({
             {/* VIEW 2: VOLUME */}
             {subView === 'volume' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayChartData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -430,17 +520,17 @@ export function PositioningChartView({
                       name === 'callVol' ? 'Call Volume' : 'Put Volume'
                     ]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
-                  <Bar dataKey="callVol" name="Call Volume" fill="#2563eb" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="putVol" name="Put Volume" fill="#e11d48" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="callVol" name="Call Volume" fill="#2563eb" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="putVol" name="Put Volume" fill="#e11d48" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
@@ -448,13 +538,14 @@ export function PositioningChartView({
             {/* VIEW 3: MAX PAIN TOTAL LOSS CURVE */}
             {subView === 'maxPainCurve' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={maxPainCurveData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <LineChart data={displayMaxPainData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -467,21 +558,21 @@ export function PositioningChartView({
                       name === 'totalPayoutM' ? 'Total Payout' : name === 'callPayoutM' ? 'Call Payout' : 'Put Payout'
                     ]}
                     labelFormatter={(label) => `Settlement Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   {maxPainStrike && (
                     <ReferenceLine 
                       x={maxPainStrike} 
                       stroke="#06b6d4" 
                       strokeWidth={2}
-                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'top', fill: '#0891b2', fontSize: 11 }}
+                      label={{ value: `Max Pain: $${maxPainStrike}`, position: 'insideTop', fill: '#0891b2', fontSize: 11, fontWeight: 'bold' }}
                     />
                   )}
                   <Line 
@@ -517,13 +608,14 @@ export function PositioningChartView({
             {/* VIEW 4: CUMULATIVE OPEN INTEREST */}
             {subView === 'cumulativeOI' && (
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={cumulativeOIData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <AreaChart data={displayCumulativeOIData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -536,14 +628,14 @@ export function PositioningChartView({
                       name === 'cumCallOI' ? 'Cumulative Call OI' : 'Cumulative Put OI'
                     ]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine 
                     x={spotPrice} 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
                   <Area 
                     type="monotone" 
@@ -570,13 +662,14 @@ export function PositioningChartView({
             {/* VIEW 5: LIQUIDITY */}
             {subView === 'liquidity' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={liquidityData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayLiquidityData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis
                     dataKey="strike"
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b"
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis
                     stroke="#64748b"
@@ -589,23 +682,70 @@ export function PositioningChartView({
                       name === 'callScore' ? 'Call Liquidity' : 'Put Liquidity'
                     ]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine
                     x={spotPrice}
                     stroke="#f59e0b"
                     strokeDasharray="4 4"
-                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
-                  <Bar dataKey="callScore" name="Call Liquidity" fill="#3b82f6" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="putScore" name="Put Liquidity" fill="#f43f5e" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="callScore" name="Call Liquidity" fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="putScore" name="Put Liquidity" fill="#f43f5e" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
               </>
             )}
           </div>
+        </div>
+
+        {/* Positioning Strategy Insights */}
+        <div className="border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 p-3.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <Compass className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
+                Structure Summary:
+              </span>
+              <span className="text-slate-600 dark:text-slate-400">
+                {maxPainStrike 
+                  ? `Max Pain sits at $${maxPainStrike} (${maxPainStrike >= spotPrice ? `+$${(maxPainStrike - spotPrice).toFixed(0)} above spot` : `-$${(spotPrice - maxPainStrike).toFixed(0)} below spot`}). Call resistance at $${callWall ?? '—'}, Put floor at $${putWall ?? '—'}.`
+                  : 'Open interest and volume distribution across strikes.'}
+              </span>
+            </div>
+            <button
+              onClick={() => setShowGuide(!showGuide)}
+              className="text-[#A8672E] dark:text-[#D08F52] font-semibold hover:underline flex items-center gap-1 self-start sm:self-auto flex-shrink-0"
+            >
+              <span>{showGuide ? 'Hide Methodology' : 'Learn Positioning Theory'}</span>
+              {showGuide ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+            </button>
+          </div>
+
+          {showGuide && (
+            <div className="mt-3 pt-3 border-t border-gray-200/60 dark:border-gray-700/60 grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed font-mono">
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <Target className="h-3.5 w-3.5 text-cyan-500" /> Max Pain Gravitation
+                </span>
+                Option sellers (institutional market makers) seek to minimize cumulative payouts at expiration. Near expiration, price often exhibits a statistical &ldquo;pin&rdquo; toward the Max Pain point.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <Shield className="h-3.5 w-3.5 text-blue-500" /> Call &amp; Put Walls
+                </span>
+                Strikes with massive open interest act as structural support and resistance. Call walls create overhead supply as calls are sold to close or dealer hedges unwind; put walls provide downside cushioning.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <Droplets className="h-3.5 w-3.5 text-amber-500" /> Liquidity Composite
+                </span>
+                Combines proportional bid-ask spread with traded volume and open interest. High liquidity scores indicate deep order books where multi-leg orders execute close to theoretical fair value.
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

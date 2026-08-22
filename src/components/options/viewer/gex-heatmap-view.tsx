@@ -2,6 +2,8 @@
 
 import React, { useMemo, useState } from 'react';
 import { OptionContractData } from './options-matrix-table';
+import { Badge } from '@/components/ui/badge';
+import { ShieldCheck, ShieldAlert, Zap, Info, Crosshair } from 'lucide-react';
 
 interface ExpirationSlice {
   expiration: string;
@@ -15,18 +17,11 @@ interface GexHeatmapViewProps {
   spotPrice: number;
 }
 
-type DteWindow = 21 | 45 | 90 | 'all';
+type DteWindow = 7 | 21 | 45 | 90 | 'all';
 
-// Moneyness buckets, not raw strikes: different expirations list different strikes, so a grid
-// keyed by literal strike wouldn't line up column to column. 1% steps from -10% to +10% is a
-// standard resolution for this kind of view — fine enough to see structure, coarse enough that
-// SPX's $5-25 strike spacing always has real contracts landing in every bucket near the money.
+// Moneyness buckets from -10% to +10%
 const BUCKET_PCTS = Array.from({ length: 21 }, (_, i) => 10 - i); // [10, 9, ..., -10], high-to-low for display
 
-// Diverging ramp: same emerald/rose polarity convention as the rest of this GEX tab (Net GEX
-// cards, bars) — kept consistent within this view rather than switching hue families for a
-// single sub-view. Steps chosen off Tailwind's own emerald/rose scale (already used pervasively
-// elsewhere in this file) rather than hand-picked hex values.
 const POSITIVE_STEPS = ['#d1fae5', '#6ee7b7', '#34d399', '#10b981', '#059669', '#047857'];
 const NEGATIVE_STEPS = ['#fee2e2', '#fca5a5', '#f87171', '#f43f5e', '#e11d48', '#be123c'];
 const NEUTRAL = '#f8fafc';
@@ -39,18 +34,19 @@ function cellColor(value: number, maxAbs: number): string {
   return steps[idx];
 }
 
-function cellTextColor(value: number, maxAbs: number): string {
-  if (maxAbs <= 0) return '#64748b';
-  const intensity = Math.abs(value) / maxAbs;
-  return intensity > 0.55 ? '#ffffff' : '#334155';
-}
-
 const fmtM = (v: number) => `${v >= 0 ? '+' : '-'}$${Math.abs(v).toFixed(1)}M`;
 
 export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProps) {
   const [dteWindow, setDteWindow] = useState<DteWindow>(45);
+  const [hoveredCell, setHoveredCell] = useState<{
+    pct: number;
+    approxStrike: number;
+    expiration: string;
+    dte: number;
+    netGex: number;
+  } | null>(null);
 
-  const { columns, grid, maxAbs } = useMemo(() => {
+  const { columns, grid, maxAbs, atmStrike } = useMemo(() => {
     const contractMultiplier = 100;
     const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
 
@@ -82,50 +78,57 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
     let maxAbs = 0;
     grid.forEach(row => row.forEach(v => { if (Math.abs(v) > maxAbs) maxAbs = Math.abs(v); }));
 
-    return { columns: filteredExps, grid, maxAbs };
+    const atmStrike = Math.round(spotPrice / 5) * 5;
+
+    return { columns: filteredExps, grid, maxAbs, atmStrike };
   }, [allExpirations, spotPrice, dteWindow]);
 
   return (
     <div className="space-y-3">
+      {/* Controls & Header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-          Net gamma exposure by strike (rows, % from spot) and expiration (columns). Darker = larger dealer gamma concentration.
+          Net gamma exposure matrix: Strike moneyness (rows, % from spot) × Expiration cycle (columns). Darker = larger dealer gamma cluster.
         </p>
         <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold flex-shrink-0">
-          {([21, 45, 90, 'all'] as DteWindow[]).map(w => (
+          <span className="text-slate-400 pl-2 pr-1 self-center text-[10px] font-mono">DTE:</span>
+          {([7, 21, 45, 90, 'all'] as DteWindow[]).map(w => (
             <button
               key={String(w)}
               onClick={() => setDteWindow(w)}
               className={`px-2.5 py-1 rounded-lg transition-all font-mono ${
                 dteWindow === w 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
-              {w === 'all' ? 'All' : `≤${w}d`}
+              {w === 'all' ? 'All Expiries' : `≤${w}d`}
             </button>
           ))}
         </div>
       </div>
 
       {columns.length === 0 ? (
-        <div className="p-8 text-center text-sm font-mono text-slate-500">No expirations in this window.</div>
+        <div className="p-8 text-center text-sm font-mono text-slate-500 bg-gray-50 dark:bg-gray-800/40 rounded-xl border border-gray-200 dark:border-gray-800">
+          No expirations in this window. Try selecting a wider DTE filter.
+        </div>
       ) : (
-        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-2xl">
-          <table className="border-collapse text-[11px] font-mono" style={{ tableLayout: 'fixed' }}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-900 shadow-xs">
+          <table className="border-collapse text-[11px] font-mono w-full" style={{ tableLayout: 'fixed' }}>
             <thead>
               <tr>
-                <th className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 border-b border-r border-gray-200 dark:border-gray-700 px-2 py-1.5 text-left text-slate-500 dark:text-slate-400 font-semibold w-16">
-                  Strike
+                <th className="sticky left-0 z-20 bg-gray-100 dark:bg-gray-800 border-b border-r border-gray-200 dark:border-gray-700 px-2 py-2 text-left text-slate-700 dark:text-slate-300 font-bold w-24">
+                  Moneyness
                 </th>
                 {columns.map(col => (
                   <th
                     key={col.expiration}
-                    className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-1 py-1.5 text-center text-slate-500 dark:text-slate-400 font-semibold whitespace-nowrap"
-                    style={{ minWidth: 46 }}
+                    className="bg-gray-50 dark:bg-gray-800/80 border-b border-r border-gray-200 dark:border-gray-700 last:border-r-0 px-1 py-1.5 text-center text-slate-600 dark:text-slate-400 font-semibold whitespace-nowrap"
+                    style={{ minWidth: 52 }}
                     title={`${col.expiration} (${col.daysToExpiration} DTE)`}
                   >
-                    {col.expiration.slice(5)}
+                    <div>{col.expiration.slice(5)}</div>
+                    <div className="text-[9px] text-slate-400 font-normal">{col.daysToExpiration}d</div>
                   </th>
                 ))}
               </tr>
@@ -135,24 +138,41 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
                 const approxStrike = Math.round((spotPrice * (1 + pct / 100)) / 5) * 5;
                 const isAtm = pct === 0;
                 return (
-                  <tr key={pct}>
+                  <tr key={pct} className={isAtm ? 'ring-1 ring-amber-500/50' : ''}>
                     <td
-                      className={`sticky left-0 z-10 border-r border-gray-200 dark:border-gray-700 px-2 py-1 text-right font-medium whitespace-nowrap ${
-                        isAtm ? 'bg-[#A8672E]/15 text-[#A8672E] dark:text-[#D08F52]' : 'bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400'
+                      className={`sticky left-0 z-10 border-r border-b border-gray-200 dark:border-gray-700 px-2 py-1 text-right font-medium whitespace-nowrap transition-colors ${
+                        isAtm 
+                          ? 'bg-amber-500/15 text-amber-900 dark:text-amber-300 font-bold' 
+                          : 'bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400'
                       }`}
                     >
-                      {pct > 0 ? `+${pct}%` : `${pct}%`}
-                      <span className="text-slate-400 dark:text-slate-500 font-normal"> · ~{approxStrike}</span>
+                      <span>{pct > 0 ? `+${pct}%` : `${pct}%`}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 font-normal ml-1">
+                        ~{approxStrike}
+                      </span>
                     </td>
-                    {grid[rowIdx].map((value, colIdx) => (
-                      <td
-                        key={colIdx}
-                        tabIndex={0}
-                        title={`Strike ~${approxStrike} (${pct > 0 ? '+' : ''}${pct}% from spot) · ${columns[colIdx].expiration} (${columns[colIdx].daysToExpiration} DTE)\nNet GEX: ${fmtM(value)}`}
-                        className="border-r border-b border-gray-100 dark:border-gray-800 last:border-r-0 text-center focus:outline focus:outline-2 focus:outline-[#A8672E] focus:z-10 focus:relative"
-                        style={{ backgroundColor: cellColor(value, maxAbs), height: 20 }}
-                      />
-                    ))}
+                    {grid[rowIdx].map((value, colIdx) => {
+                      const expCol = columns[colIdx];
+                      const isHovered = hoveredCell && hoveredCell.pct === pct && hoveredCell.expiration === expCol.expiration;
+
+                      return (
+                        <td
+                          key={colIdx}
+                          tabIndex={0}
+                          onMouseEnter={() => setHoveredCell({
+                            pct,
+                            approxStrike,
+                            expiration: expCol.expiration,
+                            dte: expCol.daysToExpiration,
+                            netGex: value
+                          })}
+                          className={`border-r border-b border-gray-100 dark:border-gray-800 last:border-r-0 text-center cursor-pointer transition-all ${
+                            isHovered ? 'ring-2 ring-[#A8672E] z-10 relative shadow-sm' : ''
+                          }`}
+                          style={{ backgroundColor: cellColor(value, maxAbs), height: 22 }}
+                        />
+                      );
+                    })}
                   </tr>
                 );
               })}
@@ -161,15 +181,53 @@ export function GexHeatmapView({ allExpirations, spotPrice }: GexHeatmapViewProp
         </div>
       )}
 
-      {/* Legend: diverging gradient, matches the emerald/rose polarity used across this tab */}
-      <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
-        <span className="font-medium text-rose-700 dark:text-rose-400">Short Gamma</span>
-        <div
-          className="h-2.5 flex-1 max-w-[220px] rounded-full"
-          style={{ background: `linear-gradient(to right, ${NEGATIVE_STEPS[NEGATIVE_STEPS.length - 1]}, ${NEUTRAL}, ${POSITIVE_STEPS[POSITIVE_STEPS.length - 1]})` }}
-        />
-        <span className="font-medium text-emerald-700 dark:text-emerald-400">Long Gamma</span>
-        <span className="text-slate-400 dark:text-slate-500 ml-1">(max {fmtM(maxAbs)} in view · hover a cell for its exact value)</span>
+      {/* Dynamic Hover Inspector Card */}
+      {hoveredCell ? (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-50/60 dark:bg-amber-950/20 p-3 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+          <div className="flex items-center gap-3">
+            <Crosshair className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
+            <div>
+              <span className="font-bold text-slate-900 dark:text-slate-100">
+                Strike ~${hoveredCell.approxStrike.toLocaleString()} ({hoveredCell.pct > 0 ? '+' : ''}{hoveredCell.pct}% from Spot)
+              </span>
+              <span className="text-slate-500 dark:text-slate-400 ml-2">
+                • Exp: {hoveredCell.expiration} ({hoveredCell.dte} DTE)
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-slate-500">Net Gamma:</span>
+            <span className={`font-bold text-sm ${hoveredCell.netGex >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+              {fmtM(hoveredCell.netGex)}
+            </span>
+            <Badge className={`text-[10px] py-0 ${
+              hoveredCell.netGex >= 0 
+                ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30' 
+                : 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30'
+            }`}>
+              {hoveredCell.netGex >= 0 ? 'Stabilizing (Long Γ)' : 'Accelerating (Short Γ)'}
+            </Badge>
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/20 p-2.5 flex items-center justify-center text-xs font-mono text-slate-400">
+          Hover or tap any cell in the matrix above to inspect exact gamma exposure &amp; strike breakdown.
+        </div>
+      )}
+
+      {/* Legend & Polarity Explanation */}
+      <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-slate-500 dark:text-slate-400 pt-1">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-rose-600 dark:text-rose-400">Short Gamma (-{fmtM(maxAbs)})</span>
+          <div
+            className="h-2.5 w-32 sm:w-44 rounded-full border border-gray-200 dark:border-gray-700"
+            style={{ background: `linear-gradient(to right, ${NEGATIVE_STEPS[NEGATIVE_STEPS.length - 1]}, ${NEUTRAL}, ${POSITIVE_STEPS[POSITIVE_STEPS.length - 1]})` }}
+          />
+          <span className="font-semibold text-emerald-600 dark:text-emerald-400">Long Gamma (+{fmtM(maxAbs)})</span>
+        </div>
+        <div className="text-[10px] text-slate-400">
+          Spot Anchor: ${spotPrice.toFixed(0)} (~{atmStrike})
+        </div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ import {
   AreaChart
 } from 'recharts';
 import { OptionContractData } from './options-matrix-table';
-import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info } from 'lucide-react';
+import { Zap, ShieldCheck, ShieldAlert, TrendingUp, Sliders, Activity, Info, ZoomIn, Compass, ArrowRight, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { blackScholes, blackScholesGamma } from '@/lib/black-scholes';
 import { SPX_DEFAULT_RATE, SPX_DEFAULT_DIV_YIELD } from '@/lib/options/analytics';
 import { GexHeatmapView } from './gex-heatmap-view';
@@ -47,6 +47,7 @@ interface GexChartViewProps {
 
 type GexSubView = 'netGex' | 'grossGex' | 'gammaShift' | 'vannaCharm' | 'heatmap';
 type GexScope = 'expiration' | 'all';
+type StrikeRangeOption = 15 | 25 | 'all';
 
 export function GexChartView({
   calls,
@@ -58,33 +59,37 @@ export function GexChartView({
   allExpirations
 }: GexChartViewProps) {
   const [subView, setSubView] = useState<GexSubView>('netGex');
-  // Whole-book ("All Expirations") is the default because that's what GEX, Zero Gamma and the
-  // gamma walls mean at every major provider — SpotGamma defines all of them as aggregating
-  // "across all included strikes and expirations". A single expiration's GEX is a legitimate
-  // secondary view, but it answers a different question and can read the opposite regime: on a
-  // typical SPX chain the front monthly alone prints slightly negative net GEX while the whole
-  // book is strongly positive.
   const [scope, setScope] = useState<GexScope>('all');
+  const [strikeRange, setStrikeRange] = useState<StrikeRangeOption>(15);
+  const [showGuide, setShowGuide] = useState(false);
+
   const canAggregate = !!allExpirations && allExpirations.length > 1;
-  // Deliberately NOT keyed off subView. The headline stat cards (Net GEX, Gamma Flip, walls)
-  // render on every sub-view, so letting the sub-view override scope made those numbers change
-  // as the user switched chart tabs. Vanna/Charm stays single-expiration regardless, since it
-  // reads callMap/putMap directly rather than going through this scope.
   const effectiveScope: GexScope = canAggregate ? scope : 'expiration';
 
   // Compute Net GEX, Gross GEX, Vanna, Charm, and Price Shift Simulation
-  const { chartData, shiftCurveData, vannaCharmData, totalNetGex, totalCallGex, totalPutGex, gammaFlipLevel, gammaFlipChartStrike, spotChartStrike, callWallStrike, putWallStrike } = useMemo(() => {
+  const { 
+    chartData, 
+    displayChartData,
+    shiftCurveData, 
+    vannaCharmData, 
+    displayVannaCharmData,
+    totalNetGex, 
+    totalCallGex, 
+    totalPutGex, 
+    gammaFlipLevel, 
+    gammaFlipChartStrike, 
+    spotChartStrike, 
+    callWallStrike, 
+    putWallStrike 
+  } = useMemo(() => {
     const contractMultiplier = 100;
     const spotSquared1Pct = (spotPrice * spotPrice * 0.01) / 1_000_000;
-    // Strike inclusion band. Widened from +/-12% because that was materially truncating the
-    // whole-book aggregate: far-OTM puts carry large open interest and net negative gamma, so
-    // cutting them overstated net GEX by roughly 50% against a +/-35% band on live SPX data.
-    // +/-20% is where both net GEX and the flip level start converging, and the gamma-only
-    // re-pricing path is cheap enough (~500k evaluations in ~10ms) to afford the extra strikes.
-    const inRange = (strike: number) => strike >= spotPrice * 0.80 && strike <= spotPrice * 1.20;
+    
+    // Core calculation band: covers wide range so whole-book GEX, walls, and flip are calculated properly
+    const inRange = (strike: number) => strike >= spotPrice * 0.65 && strike <= spotPrice * 1.35;
+    // Display zoom band: controlled by user selection (15%, 25%, all)
+    const inDisplayRange = (strike: number) => strikeRange === 'all' ? true : (strike >= spotPrice * (1 - strikeRange / 100) && strike <= spotPrice * (1 + strikeRange / 100));
 
-    // Always built from the single selected expiration — the shift-sim and vanna/charm sections
-    // below use these regardless of scope, and the per-expiration rows branch reuses them too.
     const callMap = new Map<number, OptionContractData>();
     const putMap = new Map<number, OptionContractData>();
     const strikes = new Set<number>();
@@ -97,9 +102,6 @@ export function GexChartView({
     let rows: { strike: number; strikeLabel: string; callGex: number; putGex: number; netGex: number }[];
 
     if (effectiveScope === 'all' && allExpirations) {
-      // Sum gamma*OI contributions from every expiration that lists a given strike — the "whole
-      // book" GEX reading, since dealers' hedging pressure at a strike comes from every open
-      // contract there regardless of which expiration it belongs to.
       const strikeAgg = new Map<number, { callGex: number; putGex: number }>();
       allExpirations.forEach(exp => {
         exp.calls.forEach(c => {
@@ -136,7 +138,6 @@ export function GexChartView({
         const p = putMap.get(strike);
 
         const callGex = (c?.gamma || 0) * (c?.openInterest || 0) * contractMultiplier * spotSquared1Pct;
-        // Market makers short customer puts -> negative gamma
         const putGex = -((p?.gamma || 0) * (p?.openInterest || 0) * contractMultiplier * spotSquared1Pct);
 
         totCallGex += callGex;
@@ -154,22 +155,7 @@ export function GexChartView({
 
     const totalNet = totCallGex + totPutGex;
 
-    // Gamma Flip Level: the hypothetical SPOT PRICE at which total dealer gamma exposure —
-    // evaluated as if the underlying traded there — crosses zero. This is the actual industry
-    // definition (SpotGamma/SqueezeMetrics etc.), and it's a function of *spot*, not of strike —
-    // it is NOT "the strike where this strike's own bar changes color" (that's each strike's own
-    // local exposure, a different, real, but separate quantity) and NOT "the strike where the
-    // cumulative-by-strike sum crosses zero" (an earlier attempt at fixing this — cross-checked
-    // against real chain data and found to still misfire: it can report a strike as "the flip"
-    // purely because that's where the running total first dips negative, even when dealer gamma
-    // stays negative at every nearby *simulated spot price*, i.e. there's no real nearby flip at
-    // all). Shares one spot-shift model with the "Spot Move Sim" view below, so the flip level
-    // and that curve are guaranteed to agree.
-    // Each simulated contract carries its own IV and time-to-expiry so gamma can be
-    // genuinely RE-PRICED at a shifted spot (see simNetGexAt). The previous version kept
-    // each contract's observed gamma fixed and multiplied it by an ad-hoc Gaussian decay
-    // with a hardcoded 3%-of-spot width — that number had no basis in the option's actual
-    // vol or expiry, so the reported flip level was really a function of that constant.
+    // Build contracts array for continuous spot-shift re-pricing
     type SimContract = {
       strike: number; openInterest: number; isCall: boolean; iv: number; T: number; observedGamma: number;
     };
@@ -177,7 +163,7 @@ export function GexChartView({
     const pushSim = (o: OptionContractData, isCall: boolean, dteDays: number) => {
       if (!inRange(o.strike)) return;
       const oi = o.openInterest || 0;
-      if (oi <= 0) return;   // contributes nothing to dealer gamma
+      if (oi <= 0) return;
       simContracts.push({
         strike: o.strike,
         openInterest: oi,
@@ -197,24 +183,7 @@ export function GexChartView({
       puts.forEach(p => pushSim(p, false, dte));
     }
 
-    // Call Wall / Put Wall: the strike where gamma exposure itself peaks on each side — the
-    // standard "GEX wall" definition, and consistent with the gamma-flip line above (both driven
-    // by actual dealer gamma, not raw resting open interest). Raw OI is the wrong proxy here: a
-    // deep ITM/OTM strike can carry huge legacy OI while contributing almost no gamma, which let
-    // the wall land anywhere — including below the flip point, an ordering that shouldn't happen
-    // since both are gamma-driven quantities. Reuses `rows`, which already carries callGex/putGex
-    // per strike for whichever scope is active (single expiration or summed across all of them).
-    //
-    // Two corrections here. First, the definitional one: a call wall is overhead
-    // resistance and a put wall is downside support, so they sit on opposite sides of
-    // spot by construction. Scanning every strike (what this did before) let the "call
-    // wall" print below spot and the "put wall" above it — which inverts what both lines
-    // are telling you, and is the main reason these read as wrong.
-    //
-    // Second, stability: neighbouring SPX strikes routinely carry near-identical gamma,
-    // so a raw argmax hops between adjacent strikes on trivial data refreshes. Smoothing
-    // with a [0.25, 0.5, 0.25] kernel over the strike-ordered series before taking the
-    // peak keeps the wall anchored unless the surrounding gamma genuinely shifts.
+    // Call Wall / Put Wall with directional constraint and [0.25, 0.5, 0.25] smoothing
     const smoothPeak = (
       values: { strike: number; value: number }[],
       side: 'above' | 'below'
@@ -233,14 +202,9 @@ export function GexChartView({
       return bestStrike;
     };
 
-    // rows.putGex is already stored as a positive magnitude, so both sides compare peaks
-    // of |gamma exposure| the same way.
     const callWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.callGex })), 'above');
     const putWallStrike = smoothPeak(rows.map(r => ({ strike: r.strike, value: r.putGex })), 'below');
 
-    // Black-Scholes gamma diverges as T -> 0, so 0DTE contracts are floored at roughly
-    // half a session. Without this a single expiring strike produces an unbounded spike
-    // that swamps the rest of the book and makes the flip jump around.
     const MIN_SIM_T = 0.5 / 365;
 
     const simNetGexAt = (simSpot: number): number => {
@@ -249,15 +213,11 @@ export function GexChartView({
       for (const ct of simContracts) {
         let g: number;
         if (ct.iv > 0) {
-          // Gamma-only variant: this runs ~500k times across the sweep, and gamma is
-          // identical for calls and puts, so the full Greek set is pure overhead here.
           g = blackScholesGamma(
             simSpot, ct.strike, Math.max(ct.T, MIN_SIM_T), SPX_DEFAULT_RATE, ct.iv,
             SPX_DEFAULT_DIV_YIELD
           );
         } else {
-          // No IV quoted for this contract — hold its observed gamma flat rather than
-          // inventing a shape for it.
           g = ct.observedGamma;
         }
         total += (ct.isCall ? g : -g) * ct.openInterest * scale;
@@ -265,10 +225,7 @@ export function GexChartView({
       return total;
     };
 
-    // Root-find in two phases: a coarse 1% sweep to bracket sign changes, then bisection
-    // to refine. Re-pricing every contract is far costlier than the old fixed-gamma
-    // approximation, so a flat 0.1% sweep (160 full revaluations) isn't affordable at
-    // whole-book scope; this gets the same precision in ~30.
+    // Root-finding for Gamma Flip Level via sweep + bisection
     let flip: number | null = null;
     if (simContracts.length > 0) {
       const evalAt = (pct: number) => ({ spot: spotPrice * (1 + pct / 100), val: simNetGexAt(spotPrice * (1 + pct / 100)) });
@@ -277,7 +234,6 @@ export function GexChartView({
       for (let pct = -7; pct <= 8; pct += 1) {
         const cur = evalAt(pct);
         if ((prev.val <= 0 && cur.val > 0) || (prev.val >= 0 && cur.val < 0)) {
-          // Bisect the bracketing interval for a precise crossing.
           let lo = prev, hi = cur;
           for (let i = 0; i < 14; i++) {
             const midSpot = (lo.spot + hi.spot) / 2;
@@ -296,27 +252,22 @@ export function GexChartView({
       }
     }
 
-    // 2. Simulated Price Shift Curve (Simulating Spot from -5% to +5%)
-    const shiftSteps = [-5, -4, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3, 4, 5];
-    // Uses the identical re-pricing model as the gamma flip above. Previously this ran its
-    // own copy of the Gaussian-decay approximation over only the selected expiration's
-    // strikes, so the curve and the flip level could contradict each other — the curve
-    // could sit entirely above zero while the flip claimed a crossing nearby.
+    // 2. Simulated Price Shift Curve (-6% to +6%)
+    const shiftSteps = [-6, -5, -4, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3, 4, 5, 6];
     const shiftCurve = shiftSteps.map(pct => {
       const simSpot = spotPrice * (1 + pct / 100);
+      const netGex = Number(simNetGexAt(simSpot).toFixed(1));
       return {
         pctShift: `${pct > 0 ? '+' : ''}${pct}%`,
         simSpot: Math.round(simSpot),
-        simNetGex: Number(simNetGexAt(simSpot).toFixed(1)),
+        simNetGex: netGex,
+        posGex: netGex >= 0 ? netGex : 0,
+        negGex: netGex < 0 ? netGex : 0,
         isCurrent: pct === 0
       };
     });
 
-    // 3. Vanna & Charm Exposure — real closed-form Greeks (verified against finite-difference
-    // derivatives of delta/vega before shipping — see black-scholes.ts), not a shape-alike proxy.
-    // Dollar-exposure scaling matches how GEX itself is scaled: per-contract Greek * open interest
-    // * the 100-share multiplier. Needs each contract's own IV, so unlike gamma/theta (already on
-    // OptionContractData), this solves fresh per contract from spot/strike/DTE/IV.
+    // 3. Vanna & Charm Exposure
     const T = Math.max(dte, 0) / 365;
     const vannaCharmRows = filteredStrikes.map(strike => {
       const c = callMap.get(strike);
@@ -331,10 +282,6 @@ export function GexChartView({
       let pVanna = 0, pCharm = 0;
       if (p?.impliedVolatilityMid && p.impliedVolatilityMid > 0 && T > 0) {
         const g = blackScholes(spotPrice, strike, T, SPX_DEFAULT_RATE, p.impliedVolatilityMid, 'Put', SPX_DEFAULT_DIV_YIELD);
-        // Same "dealers short the puts customers bought" convention as putGex above. Needed here
-        // specifically because vanna is identical for calls and puts in Black-Scholes (see
-        // black-scholes.ts) — without this negation, cVanna+pVanna roughly doubles up on the same
-        // value instead of netting call/put dealer exposure against each other.
         pVanna = -(g.vanna * (p.openInterest || 0) * contractMultiplier);
         pCharm = -(g.charm * (p.openInterest || 0) * contractMultiplier);
       }
@@ -343,48 +290,46 @@ export function GexChartView({
         strike,
         strikeLabel: `$${strike}`,
         vanna: Number((cVanna + pVanna).toFixed(2)),
-        charm: Number((cCharm + pCharm).toFixed(2))
+        charm: Number((cCharm + pCharm).toFixed(2)),
+        callVanna: Number(cVanna.toFixed(2)),
+        putVanna: Number(pVanna.toFixed(2))
       };
     });
 
-    // The Net GEX chart's x-axis is categorical (one bar per listed strike) — a ReferenceLine can
-    // only render at a value that's literally one of those categories. gammaFlipLevel itself is a
-    // precise, continuously-interpolated price (from the spot-shift simulation, not tied to any
-    // listed strike), so drawing the line at that exact value silently fails on this axis type.
-    // Snap it to the nearest strike actually in `rows` for the chart; the stat card still shows
-    // the precise number.
-    const nearestChartStrike = (target: number): number | null =>
-      rows.length > 0 ? rows.reduce((best, r) => Math.abs(r.strike - target) < Math.abs(best - target) ? r.strike : best, rows[0].strike) : null;
+    const nearestChartStrike = (target: number, searchRows: typeof rows): number | null =>
+      searchRows.length > 0 ? searchRows.reduce((best, r) => Math.abs(r.strike - target) < Math.abs(best - target) ? r.strike : best, searchRows[0].strike) : null;
+
+    const displayRows = rows.filter(r => inDisplayRange(r.strike));
+    const displayVannaCharm = vannaCharmRows.filter(r => inDisplayRange(r.strike));
 
     return {
       chartData: rows,
+      displayChartData: displayRows,
       shiftCurveData: shiftCurve,
       vannaCharmData: vannaCharmRows,
+      displayVannaCharmData: displayVannaCharm,
       totalNetGex: Number(totalNet.toFixed(1)),
       totalCallGex: Number(totCallGex.toFixed(1)),
       totalPutGex: Number(totPutGex.toFixed(1)),
       gammaFlipLevel: flip,
-      gammaFlipChartStrike: flip !== null ? nearestChartStrike(flip) : null,
-      spotChartStrike: nearestChartStrike(spotPrice),
+      gammaFlipChartStrike: flip !== null ? nearestChartStrike(flip, displayRows) : null,
+      spotChartStrike: nearestChartStrike(spotPrice, displayRows),
       callWallStrike,
       putWallStrike
     };
-  }, [calls, puts, spotPrice, effectiveScope, allExpirations, dte]);
+  }, [calls, puts, spotPrice, effectiveScope, allExpirations, dte, strikeRange]);
 
   const isPositiveRegime = totalNetGex >= 0;
 
-  // GEX is gamma * open interest at every strike — with no open interest data at all (the
-  // Historical Snapshot source, since OptionsDX's EOD schema doesn't carry it), every figure
-  // in this tab would compute to a misleading flat zero rather than a real "no data" state.
   const hasOpenInterest = calls.some(c => c.openInterest != null && c.openInterest > 0)
     || puts.some(p => p.openInterest != null && p.openInterest > 0);
 
   if (!hasOpenInterest) {
     return (
-      <Card className="bg-white border-slate-200 shadow-xs">
+      <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 shadow-xs">
         <CardContent className="p-8 flex flex-col items-center text-center gap-2">
           <Info className="h-6 w-6 text-slate-400" />
-          <p className="text-sm font-semibold text-slate-700">Open interest data not available</p>
+          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Open interest data not available</p>
           <p className="text-xs text-slate-500 max-w-md">
             Gamma exposure (GEX) is calculated from each contract&apos;s open interest, which the
             Historical Snapshot source doesn&apos;t include. Switch to the Live source to see GEX.
@@ -394,13 +339,76 @@ export function GexChartView({
     );
   }
 
+  // Custom Net GEX Tooltip
+  const CustomNetGexTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      const strike = data.strike;
+      const diffDollars = strike - spotPrice;
+      const diffPct = (diffDollars / spotPrice) * 100;
+      const isCallWall = strike === callWallStrike;
+      const isPutWall = strike === putWallStrike;
+      const isFlip = strike === gammaFlipChartStrike;
+      const isSpotNear = Math.abs(strike - spotPrice) <= 5;
+
+      return (
+        <div className="bg-slate-900/95 dark:bg-slate-950/95 text-white border border-slate-700/80 rounded-xl p-3 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs space-y-2">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-700/80 pb-1.5">
+            <span className="font-bold text-sm text-amber-400">${strike.toLocaleString()}</span>
+            <span className="text-[11px] text-slate-400">
+              {diffDollars >= 0 ? `+${diffDollars.toFixed(1)}` : diffDollars.toFixed(1)} ({diffPct >= 0 ? '+' : ''}{diffPct.toFixed(2)}%)
+            </span>
+          </div>
+
+          {(isCallWall || isPutWall || isFlip || isSpotNear) && (
+            <div className="flex flex-wrap gap-1">
+              {isSpotNear && <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/40 text-[10px] py-0">Spot Reference</Badge>}
+              {isCallWall && <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/40 text-[10px] py-0">Call Wall (Resistance)</Badge>}
+              {isPutWall && <Badge className="bg-rose-500/20 text-rose-300 border-rose-500/40 text-[10px] py-0">Put Wall (Support)</Badge>}
+              {isFlip && <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/40 text-[10px] py-0">Gamma Flip Pivot</Badge>}
+            </div>
+          )}
+
+          <div className="space-y-1 pt-0.5">
+            <div className="flex justify-between items-center">
+              <span className="text-slate-400">Net Gamma:</span>
+              <span className={`font-bold ${data.netGex >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {data.netGex >= 0 ? '+' : ''}${data.netGex}M
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-[11px]">
+              <span className="text-emerald-400/90">Call GEX:</span>
+              <span>+${data.callGex}M</span>
+            </div>
+            <div className="flex justify-between items-center text-[11px]">
+              <span className="text-rose-400/90">Put GEX:</span>
+              <span>-${data.putGex}M</span>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-700/80 pt-1.5 text-[10px] text-slate-400 leading-tight">
+            {data.netGex >= 0 
+              ? '🟢 Market makers long gamma: hedging dampens volatility (sell rallies, buy dips).'
+              : '🔴 Market makers short gamma: hedging accelerates momentum (sell drops, buy rips).'}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="space-y-4">
-      {/* GEX HUD Cards */}
+      {/* GEX Top HUD KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Card 1: Total Net GEX */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
-          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Net Gamma (GEX)</span>
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Net Gamma (GEX)</span>
+            <Badge variant="outline" className="text-[9px] font-mono px-1 py-0 border-gray-200 dark:border-gray-700 text-slate-500">
+              {effectiveScope === 'all' ? 'Whole Book' : `${dte}d Expiry`}
+            </Badge>
+          </div>
           <div className="flex items-baseline gap-1.5 mt-1">
             <span className={`text-xl font-mono font-extrabold ${isPositiveRegime ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
               {totalNetGex > 0 ? '+' : ''}${totalNetGex}M
@@ -432,22 +440,33 @@ export function GexChartView({
 
         {/* Card 3: Gamma Flip Level */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
-          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Gamma Flip Level</span>
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Gamma Flip Level</span>
+            {gammaFlipLevel && (
+              <span className="text-[10px] font-mono text-slate-400">
+                {gammaFlipLevel >= spotPrice ? `+${(gammaFlipLevel - spotPrice).toFixed(0)}` : (gammaFlipLevel - spotPrice).toFixed(0)}
+              </span>
+            )}
+          </div>
           <div className="text-xl font-mono font-extrabold text-[#A8672E] dark:text-[#D08F52] mt-1">
             {gammaFlipLevel ? `$${gammaFlipLevel.toLocaleString()}` : '—'}
           </div>
-          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Transition to Short Gamma regime</p>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {gammaFlipLevel ? (gammaFlipLevel > spotPrice ? 'Above spot (Currently short gamma)' : 'Below spot (Buffer above flip)') : 'Transition to Short Gamma'}
+          </p>
         </div>
 
-        {/* Card 4: Call GEX vs Put GEX */}
+        {/* Card 4: Call GEX vs Put GEX & Walls */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-xs hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 transition-all">
-          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Call vs Put GEX</span>
+          <span className="text-[11px] font-serif font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Call vs Put Walls</span>
           <div className="flex items-center gap-1.5 mt-1 text-sm sm:text-base font-mono font-bold">
-            <span className="text-emerald-600 dark:text-emerald-400">+${totalCallGex}M</span>
+            <span className="text-blue-600 dark:text-blue-400">${callWallStrike ?? '—'}</span>
             <span className="text-gray-300 dark:text-gray-700">/</span>
-            <span className="text-rose-600 dark:text-rose-400">${totalPutGex}M</span>
+            <span className="text-rose-600 dark:text-rose-400">${putWallStrike ?? '—'}</span>
           </div>
-          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">Gross market maker inventory</p>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            Gross: +${totalCallGex}M C / -${totalPutGex}M P
+          </p>
         </div>
       </div>
 
@@ -468,13 +487,60 @@ export function GexChartView({
                 ? 'Every listed expiration — the full dealer book\'s hedging flow pressure per 1% underlying price move'
                 : `${expiration} (${dte} DTE) — Hedging flow pressure per 1% underlying price move`)}
               {subView === 'grossGex' && `Gross dealer positioning from customer Call vs Put open interest${effectiveScope === 'all' ? ', summed across every expiration' : ''}`}
-              {subView === 'gammaShift' && `How total dealer net gamma changes as SPX price rallies or falls by -5% to +5% (this expiration only)`}
+              {subView === 'gammaShift' && `Continuous re-pricing of whole dealer book across simulated SPX spot price changes (-6% to +6%)`}
               {subView === 'vannaCharm' && `Flow pressures induced by changes in Implied Volatility (Vanna) and Time Decay (Charm)`}
               {subView === 'heatmap' && `Where dealer gamma concentrates across the whole expiration cycle at a glance`}
             </p>
           </div>
 
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Strike Range Zoom Controls (shown for strike-based views) */}
+            {(subView === 'netGex' || subView === 'grossGex' || subView === 'vannaCharm') && (
+              <div className="inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono">
+                <span className="text-slate-400 pl-1.5 pr-0.5 text-[10px]">Range:</span>
+                {([15, 25, 'all'] as StrikeRangeOption[]).map(r => (
+                  <button
+                    key={String(r)}
+                    onClick={() => setStrikeRange(r)}
+                    className={`px-2 py-0.5 rounded-md transition-all ${
+                      strikeRange === r
+                        ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                    }`}
+                  >
+                    {r === 'all' ? 'All' : `±${r}%`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Scope Selector */}
+            {canAggregate && subView !== 'vannaCharm' && subView !== 'heatmap' && (
+              <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
+                <button
+                  onClick={() => setScope('expiration')}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    scope === 'expiration' 
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  This Expiry
+                </button>
+                <button
+                  onClick={() => setScope('all')}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
+                    scope === 'all' 
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  All Expirations
+                </button>
+              </div>
+            )}
+
+            {/* 5-Way Sub-View Selector */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
               <button
                 onClick={() => setSubView('netGex')}
@@ -529,38 +595,11 @@ export function GexChartView({
                 </button>
               )}
             </div>
-            {/* Shown on every sub-view except Vanna/Charm, which is single-expiration by
-                construction. Scope now drives the headline stat cards too, so hiding the control
-                on some tabs would leave those numbers unexplained. */}
-            {canAggregate && subView !== 'vannaCharm' && (
-              <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-[11px] font-semibold">
-                <button
-                  onClick={() => setScope('expiration')}
-                  className={`px-2.5 py-0.5 rounded-md transition-all ${
-                    scope === 'expiration' 
-                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  This Expiration
-                </button>
-                <button
-                  onClick={() => setScope('all')}
-                  className={`px-2.5 py-0.5 rounded-md transition-all ${
-                    scope === 'all' 
-                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  All Expirations
-                </button>
-              </div>
-            )}
           </div>
         </div>
 
         <div className="p-4">
-          <div className={`w-full ${subView === 'heatmap' ? '' : 'h-[400px]'}`}>
+          <div className={`w-full ${subView === 'heatmap' ? '' : 'h-[420px]'}`}>
             {/* VIEW 0: HEATMAP */}
             {subView === 'heatmap' && allExpirations && (
               <GexHeatmapView allExpirations={allExpirations} spotPrice={spotPrice} />
@@ -569,39 +608,39 @@ export function GexChartView({
             {/* VIEW 1: NET GEX */}
             {subView === 'netGex' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayChartData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
                     fontSize={11}
                     tickFormatter={(val) => `$${val}M`}
                   />
-                  <Tooltip 
-                    formatter={(value: number) => [`$${value}M`, 'Net GEX']}
-                    labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
-                  />
-                  <ReferenceLine y={0} stroke="#94a3b8" />
+                  <Tooltip content={<CustomNetGexTooltip />} />
+                  <ReferenceLine y={0} stroke="#94a3b8" strokeWidth={1} />
+                  
                   {spotChartStrike !== null && (
                     <ReferenceLine
                       x={spotChartStrike}
                       stroke="#f59e0b"
                       strokeDasharray="4 4"
-                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                      strokeWidth={1.5}
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                     />
                   )}
                   {gammaFlipLevel && gammaFlipChartStrike !== null && (
                     <ReferenceLine
                       x={gammaFlipChartStrike}
-                      stroke="#f97316"
+                      stroke="#ea580c"
                       strokeDasharray="3 3"
-                      label={{ value: `Flip: $${gammaFlipLevel}`, position: 'top', fill: '#ea580c', fontSize: 10 }}
+                      strokeWidth={1.5}
+                      label={{ value: `Flip: $${gammaFlipLevel}`, position: 'insideTop', fill: '#ea580c', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
                   {callWallStrike !== null && (
@@ -609,7 +648,8 @@ export function GexChartView({
                       x={callWallStrike}
                       stroke="#2563eb"
                       strokeDasharray="2 2"
-                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10 }}
+                      strokeWidth={1.5}
+                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
                   {putWallStrike !== null && (
@@ -617,11 +657,12 @@ export function GexChartView({
                       x={putWallStrike}
                       stroke="#e11d48"
                       strokeDasharray="2 2"
-                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10 }}
+                      strokeWidth={1.5}
+                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
-                  <Bar dataKey="netGex" name="Net Gamma ($M)" radius={[2, 2, 0, 0]}>
-                    {chartData.map((entry, index) => (
+                  <Bar dataKey="netGex" name="Net Gamma ($M)" radius={[3, 3, 0, 0]}>
+                    {displayChartData.map((entry, index) => (
                       <Cell 
                         key={`cell-${index}`} 
                         fill={entry.netGex >= 0 ? '#10b981' : '#f43f5e'} 
@@ -635,13 +676,14 @@ export function GexChartView({
             {/* VIEW 2: GROSS CALL VS PUT GEX */}
             {subView === 'grossGex' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayChartData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -654,7 +696,7 @@ export function GexChartView({
                       name === 'callGex' ? 'Call Gamma (+)' : 'Put Gamma (-)'
                     ]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   {spotChartStrike !== null && (
@@ -662,7 +704,7 @@ export function GexChartView({
                       x={spotChartStrike}
                       stroke="#f59e0b"
                       strokeDasharray="4 4"
-                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                     />
                   )}
                   {callWallStrike !== null && (
@@ -670,7 +712,7 @@ export function GexChartView({
                       x={callWallStrike}
                       stroke="#2563eb"
                       strokeDasharray="2 2"
-                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10 }}
+                      label={{ value: `Call Wall: $${callWallStrike}`, position: 'insideTopLeft', fill: '#1d4ed8', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
                   {putWallStrike !== null && (
@@ -678,11 +720,11 @@ export function GexChartView({
                       x={putWallStrike}
                       stroke="#e11d48"
                       strokeDasharray="2 2"
-                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10 }}
+                      label={{ value: `Put Wall: $${putWallStrike}`, position: 'insideTopRight', fill: '#be123c', fontSize: 10, fontWeight: 'bold' }}
                     />
                   )}
-                  <Bar dataKey="callGex" name="Call Gamma ($M)" fill="#10b981" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="putGex" name="Put Gamma ($M)" fill="#f43f5e" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="callGex" name="Call Gamma ($M)" fill="#10b981" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="putGex" name="Put Gamma ($M)" fill="#f43f5e" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
@@ -690,12 +732,19 @@ export function GexChartView({
             {/* VIEW 3: SIMULATED SPOT MOVE GAMMA CURVE */}
             {subView === 'gammaShift' && (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={shiftCurveData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <AreaChart data={shiftCurveData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <defs>
+                    <linearGradient id="posGexGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.35}/>
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0.0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="pctShift" 
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -708,39 +757,42 @@ export function GexChartView({
                       const item = payload[0]?.payload;
                       return item ? `SPX Move: ${label} (Simulated Price: $${item.simSpot})` : label;
                     }}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
-                  <ReferenceLine y={0} stroke="#94a3b8" />
+                  <ReferenceLine y={0} stroke="#94a3b8" strokeWidth={1.5} />
                   <ReferenceLine 
                     x="0%" 
                     stroke="#f59e0b" 
                     strokeDasharray="4 4" 
-                    label={{ value: `Current Spot`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                    strokeWidth={2}
+                    label={{ value: `Current Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="simNetGex" 
-                    name="Simulated Net GEX ($M)" 
-                    stroke="#f59e0b" 
-                    strokeWidth={3} 
-                    dot={{ r: 4, fill: '#f59e0b' }} 
-                    activeDot={{ r: 7 }} 
+                  <Area
+                    type="monotone"
+                    dataKey="simNetGex"
+                    name="Simulated Net GEX ($M)"
+                    stroke="#f59e0b"
+                    strokeWidth={3}
+                    fill="url(#posGexGrad)"
+                    dot={{ r: 4, fill: '#f59e0b' }}
+                    activeDot={{ r: 7 }}
                   />
-                </LineChart>
+                </AreaChart>
               </ResponsiveContainer>
             )}
 
             {/* VIEW 4: VANNA & CHARM EXPOSURE */}
             {subView === 'vannaCharm' && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={vannaCharmData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <BarChart data={displayVannaCharmData} margin={{ top: 15, right: 30, left: 10, bottom: 25 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" />
                   <XAxis 
                     dataKey="strike" 
                     tickFormatter={(val) => `$${val}`}
                     stroke="#64748b" 
                     fontSize={11}
+                    dy={5}
                   />
                   <YAxis 
                     stroke="#64748b" 
@@ -748,11 +800,11 @@ export function GexChartView({
                   />
                   <Tooltip 
                     formatter={(value: number, name: string) => [
-                      value,
-                      name === 'vanna' ? 'Vanna (dDelta/dVol)' : 'Charm (dDelta/dt)'
+                      value.toLocaleString(),
+                      name === 'vanna' ? 'Net Vanna (dDelta/dVol)' : 'Net Charm (dDelta/dt)'
                     ]}
                     labelFormatter={(label) => `Strike: $${label}`}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine y={0} stroke="#94a3b8" />
@@ -761,15 +813,62 @@ export function GexChartView({
                       x={spotChartStrike}
                       stroke="#f59e0b"
                       strokeDasharray="4 4"
-                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11 }}
+                      label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                     />
                   )}
-                  <Bar dataKey="vanna" name="Vanna Sensitivity" fill="#8b5cf6" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="charm" name="Charm Sensitivity" fill="#06b6d4" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="vanna" name="Vanna Sensitivity (dDelta/dVol)" fill="#8b5cf6" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="charm" name="Charm Sensitivity (dDelta/dt)" fill="#06b6d4" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
           </div>
+        </div>
+
+        {/* Actionable GEX Interpretation Guide Bar */}
+        <div className="border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 p-3.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <Compass className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52] flex-shrink-0" />
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
+                Current Playbook:
+              </span>
+              <span className="text-slate-600 dark:text-slate-400">
+                {isPositiveRegime 
+                  ? 'Long Gamma Regime: Volatility dampened. Mean-reverting strategies (Iron Condors, Credit Spreads, selling OTM wings) are structurally favored.' 
+                  : 'Short Gamma Regime: Volatility amplified. Trend-following and long-gamma convex strategies (Debit Spreads, Straddles, Breakouts) are favored.'}
+              </span>
+            </div>
+            <button
+              onClick={() => setShowGuide(!showGuide)}
+              className="text-[#A8672E] dark:text-[#D08F52] font-semibold hover:underline flex items-center gap-1 self-start sm:self-auto flex-shrink-0"
+            >
+              <span>{showGuide ? 'Hide Methodology' : 'Learn How GEX Works'}</span>
+              {showGuide ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+            </button>
+          </div>
+
+          {showGuide && (
+            <div className="mt-3 pt-3 border-t border-gray-200/60 dark:border-gray-700/60 grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed font-mono">
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Positive Gamma (GEX &gt; 0)
+                </span>
+                Dealers are net long options against customer short positions. When market rallies, dealers sell index futures to hedge delta; when market drops, dealers buy. This acts as an automated shock absorber.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <ShieldAlert className="h-3.5 w-3.5 text-rose-500" /> Negative Gamma (GEX &lt; 0)
+                </span>
+                Dealers are net short options (especially customer downside puts). When market falls, dealer delta becomes more negative, forcing dealers to sell more stock/futures into declines, cascading the sell-off.
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1 mb-1">
+                  <Sliders className="h-3.5 w-3.5 text-amber-500" /> Gamma Flip &amp; Walls
+                </span>
+                The <strong>Gamma Flip</strong> is the exact price level where net dealer gamma crosses zero. <strong>Call Wall</strong> (peak call gamma overhead) and <strong>Put Wall</strong> (peak put gamma below) act as major gravitational pins and hedging barriers.
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

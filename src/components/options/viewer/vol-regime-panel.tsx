@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useQuery } from "@apollo/client";
 import {
   ComposedChart,
@@ -22,7 +22,12 @@ import {
   TrendingUp,
   TrendingDown,
   Info,
+  Calendar,
+  Layers,
+  Activity,
+  Zap,
 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { GET_VOL_REGIME } from "@/lib/graphql/queries";
 import type { VolRegimeResult, VolRegimeDataPoint } from "@/lib/graphql/types";
 
@@ -74,6 +79,8 @@ const REGIME_STYLES: Record<string, {
 
 const FALLBACK_STYLE = REGIME_STYLES["Thin"];
 
+type VrpTimeframe = '3M' | '6M' | '1Y' | 'ALL';
+
 function fmt(n: number | undefined | null, digits = 2, suffix = ""): string {
   if (n === undefined || n === null || Number.isNaN(n)) return "—";
   return `${n.toFixed(digits)}${suffix}`;
@@ -115,25 +122,79 @@ function StatTile({ label, value, sub, accent, hint }: StatTileProps) {
 }
 
 export function VolRegimePanel() {
+  const [timeframe, setTimeframe] = useState<VrpTimeframe>('1Y');
+  const [showVix, setShowVix] = useState(true);
+  const [showRealized, setShowRealized] = useState(true);
+  const [showVrpArea, setShowVrpArea] = useState(true);
+
   const { data, loading, error } = useQuery<{ volRegime: VolRegimeResult }>(
     GET_VOL_REGIME,
-    { variables: { days: 252 }, fetchPolicy: "cache-and-network" }
+    { variables: { days: 500 }, fetchPolicy: "cache-and-network" }
   );
 
   const result = data?.volRegime;
   const latest = result?.latestData;
 
+  const rawHistory = result?.history ?? [];
+
+  // Filter history based on selected timeframe
+  const filteredHistory = useMemo(() => {
+    if (!rawHistory.length) return [];
+    if (timeframe === '3M') return rawHistory.slice(-63);
+    if (timeframe === '6M') return rawHistory.slice(-126);
+    if (timeframe === '1Y') return rawHistory.slice(-252);
+    return rawHistory;
+  }, [rawHistory, timeframe]);
+
+  // Chart data with separated positive and negative VRP for dual-color gradient fills
   const chartData = useMemo(() => {
-    if (!result?.history?.length) return [];
-    return result.history.map((d: VolRegimeDataPoint) => ({
-      date: d.bizDate?.slice(5) ?? "",
-      fullDate: d.bizDate,
-      vix: d.vix ?? null,
-      realized: d.realizedVol20d ?? null,
-      vrp: d.vrp ?? null,
-      regime: d.regime,
-    }));
-  }, [result]);
+    return filteredHistory.map((d: VolRegimeDataPoint) => {
+      const vrpVal = d.vrp ?? null;
+      return {
+        date: d.bizDate?.slice(5) ?? "",
+        fullDate: d.bizDate,
+        vix: d.vix ?? null,
+        realized: d.realizedVol20d ?? null,
+        vrp: vrpVal,
+        posVrp: vrpVal != null ? Math.max(0, vrpVal) : null,
+        negVrp: vrpVal != null ? Math.min(0, vrpVal) : null,
+        vrpZ: d.vrpZ ?? null,
+        vixRank: d.vixRank ?? null,
+        regime: d.regime,
+      };
+    });
+  }, [filteredHistory]);
+
+  // High-level summary metrics across the selected window
+  const windowStats = useMemo(() => {
+    if (!filteredHistory.length) return null;
+    let sumVrp = 0;
+    let positiveDays = 0;
+    let minVrp = Infinity;
+    let maxVrp = -Infinity;
+    let count = 0;
+
+    filteredHistory.forEach(d => {
+      if (d.vrp != null) {
+        sumVrp += d.vrp;
+        count++;
+        if (d.vrp > 0) positiveDays++;
+        if (d.vrp < minVrp) minVrp = d.vrp;
+        if (d.vrp > maxVrp) maxVrp = d.vrp;
+      }
+    });
+
+    const avgVrp = count > 0 ? sumVrp / count : 0;
+    const positivePct = count > 0 ? (positiveDays / count) * 100 : 0;
+
+    return {
+      avgVrp,
+      positivePct,
+      minVrp: minVrp !== Infinity ? minVrp : 0,
+      maxVrp: maxVrp !== -Infinity ? maxVrp : 0,
+      sessions: count,
+    };
+  }, [filteredHistory]);
 
   const currentStat = useMemo(
     () => result?.stats?.find((s) => s.regime === latest?.regime),
@@ -172,6 +233,67 @@ export function VolRegimePanel() {
   const RegimeIcon = style.icon;
   const vrpPositive = (latest.vrp ?? 0) >= 0;
   const backwardated = latest.termStructure === "Backwardation";
+
+  // Rich Custom Tooltip for VRP History Chart
+  const CustomVrpTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const d = payload[0].payload;
+      const rStyle = REGIME_STYLES[d.regime] ?? FALLBACK_STYLE;
+      const isPositive = (d.vrp ?? 0) >= 0;
+
+      return (
+        <div className="bg-slate-900/95 dark:bg-slate-950/95 text-white border border-slate-700/80 rounded-xl p-3.5 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs space-y-2">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-700/80 pb-2">
+            <div className="flex items-center gap-2">
+              <Calendar className="h-3.5 w-3.5 text-slate-400" />
+              <span className="font-bold text-sm text-slate-100">{d.fullDate}</span>
+            </div>
+            {d.regime && (
+              <Badge className={`text-[10px] py-0 px-2 font-bold ${rStyle.badge}`}>
+                {d.regime}
+              </Badge>
+            )}
+          </div>
+
+          <div className="space-y-1.5 pt-0.5">
+            <div className="flex justify-between items-center text-blue-400">
+              <span>Implied Vol (VIX):</span>
+              <span className="font-bold">{d.vix != null ? `${d.vix.toFixed(2)}%` : '—'}</span>
+            </div>
+            <div className="flex justify-between items-center text-rose-400">
+              <span>Realized Vol (20d):</span>
+              <span className="font-bold">{d.realized != null ? `${d.realized.toFixed(2)}%` : '—'}</span>
+            </div>
+            <div className="flex justify-between items-center pt-1 border-t border-slate-700/60">
+              <span className="text-slate-300 font-semibold">Net VRP (Implied − Realized):</span>
+              <span className={`font-extrabold ${isPositive ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {isPositive ? '+' : ''}{d.vrp != null ? `${d.vrp.toFixed(2)} pts` : '—'}
+              </span>
+            </div>
+            {d.vrpZ != null && (
+              <div className="flex justify-between items-center text-[11px] text-slate-400">
+                <span>VRP Z-Score:</span>
+                <span>{d.vrpZ >= 0 ? '+' : ''}{d.vrpZ.toFixed(2)}σ</span>
+              </div>
+            )}
+            {d.vixRank != null && (
+              <div className="flex justify-between items-center text-[11px] text-slate-400">
+                <span>VIX 1Y Percentile:</span>
+                <span>{(d.vixRank * 100).toFixed(0)}%</span>
+              </div>
+            )}
+          </div>
+
+          <div className="border-t border-slate-700/80 pt-1.5 text-[10px] text-slate-400 leading-tight">
+            {isPositive 
+              ? '🟢 Implied exceeds realized: option sellers collected edge over market movement.'
+              : '🔴 Realized exceeds implied: market moved more than options priced (seller tail risk).'}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="space-y-3">
@@ -263,82 +385,191 @@ export function VolRegimePanel() {
         />
       </div>
 
-      {/* Implied vs realized over the last year */}
+      {/* Redesigned VRP History Chart Window */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
-        <div className="px-4 pt-4 pb-2">
-          <div className="flex items-center gap-2">
-            {vrpPositive ? (
-              <TrendingUp className="h-4 w-4 text-emerald-600" />
-            ) : (
-              <TrendingDown className="h-4 w-4 text-rose-600" />
-            )}
-            <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
-              Implied vs Realized — trailing year
-            </h4>
+        {/* Header & Interactive Filter Bar */}
+        <div className="p-4 pb-3 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <Activity className="h-4 w-4 text-[#A8672E] dark:text-[#D08F52]" />
+              <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
+                Variance Risk Premium (VRP) History — Implied vs. Realized
+              </h4>
+            </div>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+              The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller&apos;s edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk).
+            </p>
           </div>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-            The gap between the two lines is the premium a seller collects. Below zero, the
-            index is moving more than options are pricing.
-          </p>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Series Visibility Toggles */}
+            <div className="hidden sm:inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800/60 p-0.5 rounded-lg border border-gray-200 dark:border-gray-800 text-[11px] font-mono">
+              <button
+                onClick={() => setShowVix(!showVix)}
+                className={`px-2 py-0.5 rounded-md transition-all flex items-center gap-1.5 ${
+                  showVix
+                    ? 'bg-blue-500/10 text-blue-700 dark:text-blue-300 font-semibold'
+                    : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
+                }`}
+              >
+                <span className="h-2 w-2 rounded-full bg-blue-500" />
+                VIX
+              </button>
+              <button
+                onClick={() => setShowRealized(!showRealized)}
+                className={`px-2 py-0.5 rounded-md transition-all flex items-center gap-1.5 ${
+                  showRealized
+                    ? 'bg-rose-500/10 text-rose-700 dark:text-rose-300 font-semibold'
+                    : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
+                }`}
+              >
+                <span className="h-2 w-2 rounded-full bg-rose-500" />
+                Realized 20d
+              </button>
+              <button
+                onClick={() => setShowVrpArea(!showVrpArea)}
+                className={`px-2 py-0.5 rounded-md transition-all flex items-center gap-1.5 ${
+                  showVrpArea
+                    ? 'bg-[#A8672E]/10 text-[#A8672E] dark:text-[#D08F52] font-semibold'
+                    : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
+                }`}
+              >
+                <span className="h-2 w-2 rounded-full bg-[#A8672E]" />
+                VRP Shading
+              </button>
+            </div>
+
+            {/* Timeframe Selector Buttons */}
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs font-semibold">
+              {(['3M', '6M', '1Y', 'ALL'] as VrpTimeframe[]).map(tf => (
+                <button
+                  key={tf}
+                  onClick={() => setTimeframe(tf)}
+                  className={`px-3 py-1 rounded-md transition-all font-mono ${
+                    timeframe === tf
+                      ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  {tf}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="h-64 w-full px-1 pb-3">
+
+        {/* Statistical Summary HUD Bar across active window */}
+        {windowStats && (
+          <div className="px-4 py-2.5 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Avg VRP:</span>
+                <span className={`font-bold ${windowStats.avgVrp >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                  {windowStats.avgVrp >= 0 ? '+' : ''}{windowStats.avgVrp.toFixed(2)} pts
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">Harvest Win Rate:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-200">
+                  {windowStats.positivePct.toFixed(1)}% of sessions
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-400">{timeframe} Range:</span>
+                <span className="text-slate-700 dark:text-slate-300">
+                  {windowStats.minVrp.toFixed(1)} → +{windowStats.maxVrp.toFixed(1)} pts
+                </span>
+              </div>
+            </div>
+
+            <div className="text-[11px] text-slate-400">
+              {windowStats.sessions} trading sessions in view
+            </div>
+          </div>
+        )}
+
+        {/* Chart Canvas */}
+        <div className="h-[360px] w-full p-4">
           <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+            <ComposedChart data={chartData} margin={{ top: 12, right: 16, left: 0, bottom: 15 }}>
               <defs>
-                <linearGradient id="vrpFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#A8672E" stopOpacity={0.35} />
-                  <stop offset="95%" stopColor="#A8672E" stopOpacity={0.03} />
+                <linearGradient id="vrpGreenGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.38} />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.02} />
+                </linearGradient>
+                <linearGradient id="vrpRedGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.05} />
+                  <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.35} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200 dark:stroke-gray-800" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:opacity-10" vertical={false} />
               <XAxis
                 dataKey="date"
-                tick={{ fontSize: 10 }}
+                tick={{ fontSize: 11 }}
                 interval="preserveStartEnd"
-                minTickGap={40}
-                className="fill-slate-500"
+                minTickGap={45}
+                stroke="#64748b"
+                dy={5}
               />
-              <YAxis tick={{ fontSize: 10 }} width={38} className="fill-slate-500" />
-              <Tooltip
-                contentStyle={{
-                  borderRadius: "0.75rem",
-                  border: "1px solid rgba(148,163,184,0.35)",
-                  fontSize: "12px",
-                }}
-                labelFormatter={(_label, payload) =>
-                  payload?.[0]?.payload?.fullDate ?? ""
-                }
-                formatter={(value: number | string, name: string) => [
-                  typeof value === "number" ? value.toFixed(2) : value,
-                  name,
-                ]}
+              <YAxis 
+                tick={{ fontSize: 11 }} 
+                width={42} 
+                stroke="#64748b" 
+                tickFormatter={(val) => `${val}`}
               />
-              <Legend wrapperStyle={{ fontSize: "11px" }} />
-              <ReferenceLine y={0} stroke="#94A3B8" strokeDasharray="2 2" />
-              <Area
-                type="monotone"
-                dataKey="vrp"
-                name="VRP"
-                stroke="#A8672E"
-                strokeWidth={1}
-                fill="url(#vrpFill)"
-              />
-              <Line
-                type="monotone"
-                dataKey="vix"
-                name="Implied (VIX)"
-                stroke="#2563EB"
-                strokeWidth={1.6}
-                dot={false}
-              />
-              <Line
-                type="monotone"
-                dataKey="realized"
-                name="Realized 20d"
-                stroke="#E11D48"
-                strokeWidth={1.6}
-                dot={false}
-              />
+              <Tooltip content={<CustomVrpTooltip />} />
+              <Legend verticalAlign="top" height={36} wrapperStyle={{ fontSize: "11px", fontFamily: "monospace" }} />
+              <ReferenceLine y={0} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="2 2" />
+
+              {/* Shaded Area for Positive VRP (Harvesting Zone) */}
+              {showVrpArea && (
+                <Area
+                  type="monotone"
+                  dataKey="posVrp"
+                  name="Positive VRP (Harvest)"
+                  stroke="#10b981"
+                  strokeWidth={1}
+                  fill="url(#vrpGreenGrad)"
+                />
+              )}
+
+              {/* Shaded Area for Negative VRP (Crisis / Inversion Zone) */}
+              {showVrpArea && (
+                <Area
+                  type="monotone"
+                  dataKey="negVrp"
+                  name="Negative VRP (Inverted)"
+                  stroke="#f43f5e"
+                  strokeWidth={1}
+                  fill="url(#vrpRedGrad)"
+                />
+              )}
+
+              {/* Implied Volatility (VIX) */}
+              {showVix && (
+                <Line
+                  type="monotone"
+                  dataKey="vix"
+                  name="Implied (VIX)"
+                  stroke="#2563eb"
+                  strokeWidth={2.2}
+                  dot={false}
+                  activeDot={{ r: 5 }}
+                />
+              )}
+
+              {/* Realized Volatility (20d) */}
+              {showRealized && (
+                <Line
+                  type="monotone"
+                  dataKey="realized"
+                  name="Realized 20d"
+                  stroke="#e11d48"
+                  strokeWidth={2.2}
+                  dot={false}
+                  activeDot={{ r: 5 }}
+                />
+              )}
             </ComposedChart>
           </ResponsiveContainer>
         </div>
