@@ -68,10 +68,13 @@ export function VolatilityChartView({
     return expirations.find(e => e.expiration === currentExpiration) || expirations[0];
   }, [expirations, currentExpiration]);
 
-  // Set default comparison expirations (first 4 liquid cycles)
+  // Set default comparison expirations (first 4 liquid cycles, excluding 0DTE by default)
   useEffect(() => {
     if (expirations.length > 1 && compareExpirations.length === 0) {
-      const candidates = expirations.slice(0, 4).map(e => e.expiration);
+      // Exclude 0DTE (daysToExpiration === 0) by default to prevent asymptotic expiration distortions in multi-cycle smile comparisons
+      const nonZeroExps = expirations.filter(e => e.daysToExpiration > 0);
+      const pool = nonZeroExps.length >= 2 ? nonZeroExps : expirations;
+      const candidates = pool.slice(0, 4).map(e => e.expiration);
       setCompareExpirations(candidates);
     }
   }, [expirations, compareExpirations.length]);
