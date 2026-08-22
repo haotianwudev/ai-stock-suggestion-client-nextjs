@@ -2270,9 +2270,43 @@ export function getWikiEntryForArticle(articleSlug: string): WikiEntry | undefin
   return wikiEntries.find((entry) => entry.articleSlug === articleSlug);
 }
 
+/**
+ * Display order for wiki categories, used by the index chips and the category sections.
+ *
+ * Explicit rather than derived: `wikiEntries` is maintained newest-first, so deriving the order
+ * from first appearance made it a side effect of which category happened to publish most
+ * recently — it would reshuffle on its own every time content was added. Categories not listed
+ * here fall to the end, alphabetically, so a new category still renders without a code change.
+ */
+const CATEGORY_ORDER = [
+  "option-strategy",
+  "quant",
+  "stock-analysis",
+  "macro",
+  "finance101",
+  "ai-ml",
+  "form13f",
+  "form-13f",
+  "crypto",
+  "equities",
+  "options",
+];
+
+/** Sort comparator for category slugs, following CATEGORY_ORDER. Exported so the index's
+ *  filter chips and its grouped sections order identically — they are built from different
+ *  sources (the category list vs. the filtered entries) and would otherwise disagree. */
+export function compareWikiCategories(a: string, b: string): number {
+  const ia = CATEGORY_ORDER.indexOf(a);
+  const ib = CATEGORY_ORDER.indexOf(b);
+  if (ia !== -1 && ib !== -1) return ia - ib;
+  if (ia !== -1) return -1;
+  if (ib !== -1) return 1;
+  return a.localeCompare(b);
+}
+
 export function getWikiCategories(): string[] {
-  const categories = wikiEntries.map((entry) => entry.path.split("/")[0]);
-  return [...new Set(categories)];
+  const categories = [...new Set(wikiEntries.map((entry) => entry.path.split("/")[0]))];
+  return categories.sort(compareWikiCategories);
 }
 
 export function getWikiEntriesByCategory(category: string): WikiEntry[] {

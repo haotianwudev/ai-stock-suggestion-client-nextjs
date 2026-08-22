@@ -1,36 +1,14 @@
-"use client";
+import { redirect } from 'next/navigation';
 
-import { Header } from "@/components/layout/header";
-import { Disclaimer } from "@/components/ui/disclaimer";
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-
+/**
+ * /option has no content of its own — it lands on the Options Viewer.
+ *
+ * Server-side redirect rather than the previous client-side useEffect + router.replace: that
+ * shipped a full page (header, "Redirecting…" copy, disclaimer) and only navigated after React
+ * hydrated, so the user saw an interstitial flash and crawlers saw a real 200 page whose content
+ * was the word "Redirecting". This resolves before anything renders and gives crawlers a proper
+ * redirect to follow.
+ */
 export default function OptionsPage() {
-  const router = useRouter();
-
-  // Redirect to strategies tab by default
-  useEffect(() => {
-    router.replace('/option/strategies');
-  }, [router]);
-
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      
-      <main className="flex-1">
-        <div className="container max-w-screen-2xl mx-auto py-4 px-4 md:py-8 md:px-6">
-          <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Redirecting...</h1>
-            <p className="text-base md:text-lg text-muted-foreground">
-              Taking you to the Options Strategies page.
-            </p>
-          </div>
-        </div>
-      </main>
-      
-      <Disclaimer />
-    </div>
-  );
+  redirect('/option/viewer');
 }
-
- 

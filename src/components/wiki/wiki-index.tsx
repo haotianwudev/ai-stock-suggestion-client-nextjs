@@ -11,7 +11,7 @@ import {
   Layers,
   FileText,
 } from "lucide-react";
-import { wikiEntries, getWikiCategories } from "@/data/wiki";
+import { wikiEntries, getWikiCategories, compareWikiCategories } from "@/data/wiki";
 import { SlotKicker } from "@/components/articles/article-frame";
 
 const CATEGORY_NAMES: Record<string, string> = {
@@ -56,7 +56,12 @@ export function WikiIndex() {
       const category = entry.path.split("/")[0];
       map.set(category, [...(map.get(category) ?? []), entry]);
     }
-    return map;
+    // Insertion order here follows the entry list (newest-first), which would put whichever
+    // category published most recently at the top. Re-sort so the sections match the filter
+    // chips above, both driven by CATEGORY_ORDER.
+    return new Map(
+      [...map.entries()].sort(([a], [b]) => compareWikiCategories(a, b))
+    );
   }, [filtered]);
 
   return (
