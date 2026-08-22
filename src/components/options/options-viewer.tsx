@@ -58,7 +58,7 @@ export interface OptionsAPIResponse {
   expirationDates: ExpirationData[];
 }
 
-type ExpirationCategory = 'key' | 'all' | 'weeklies' | 'monthlies';
+type ExpirationCategory = 'key' | 'all';
 
 // SPX lists ~55 expirations (near-dated dailies plus weeklies and LEAPS), but open
 // interest is heavily concentrated in a handful of them. These helpers pick out the
@@ -242,14 +242,7 @@ export function OptionsViewer() {
     if (!data) return [];
     const all = data.expirationDates;
 
-    let subset = all;
-    if (expCategory === 'key') {
-      subset = selectKeyExpirations(all);
-    } else if (expCategory === 'weeklies') {
-      subset = all.filter(e => e.daysToExpiration <= 30);
-    } else if (expCategory === 'monthlies') {
-      subset = all.filter(e => e.daysToExpiration >= 30);
-    }
+    let subset = expCategory === 'key' ? selectKeyExpirations(all) : all;
 
     // Never hide the cycle currently being analysed — otherwise switching filters
     // leaves the chart showing an expiration with no visible selected chip.
@@ -509,7 +502,7 @@ export function OptionsViewer() {
               </span>
             </div>
 
-            {/* Quick Filter: Key / All / Weeklies / Monthlies */}
+            {/* Quick Filter: Key Expiries (default, liquid subset) / All */}
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('key')}
@@ -531,26 +524,6 @@ export function OptionsViewer() {
                 }`}
               >
                 All
-              </button>
-              <button
-                onClick={() => setExpCategory('weeklies')}
-                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
-                  expCategory === 'weeklies' 
-                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                &lt; 30 Days
-              </button>
-              <button
-                onClick={() => setExpCategory('monthlies')}
-                className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
-                  expCategory === 'monthlies' 
-                    ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold' 
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                Monthlies & LEAPS
               </button>
             </div>
           </div>
