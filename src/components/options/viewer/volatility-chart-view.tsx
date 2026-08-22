@@ -72,6 +72,75 @@ function isLiveCycle(expirationDate: string, todayET: string): boolean {
   return expirationDate >= todayET;
 }
 
+// Excluding fully-expired cycles (above) catches the extreme case. The same underlying
+// mechanism -- a wide or dead quote making price -> IV inversion unstable -- shows up in
+// milder form on plenty of individually thin/stale contracts within otherwise-live
+// cycles: a strike nobody has traded today sitting on a wide resting quote. Rather than
+// filter those out (they're still real, tradeable strikes), flag them so a chart reader
+// can see when a data point is standing on thin ice.
+function isThinQuote(c: { bid?: number | null; ask?: number | null; volume?: number | null; openInterest?: number | null } | null | undefined): boolean {
+  if (!c) return true;
+  const bid = c.bid ?? 0;
+  const ask = c.ask ?? 0;
+  const mid = (bid + ask) / 2;
+  if (mid <= 0) return true; // no real two-sided quote at all
+  const spreadPct = (ask - bid) / mid;
+  const vol = c.volume ?? 0;
+  const oi = c.openInterest ?? 0;
+  return spreadPct > 0.2 || (vol === 0 && oi < 10);
+}
+
+function contractRoot(symbol: string | undefined): string {
+  if (!symbol) return '';
+  const m = symbol.match(/^([A-Z]+)/);
+  return m ? m[1] : '';
+}
+
+// A standard monthly expiration (3rd Friday) is frequently shared with a same-day SPXW
+// contract -- a genuinely different, separately-traded PM-settled product with its own
+// open-interest pool, listed under the identical calendar date. On live data this
+// duplicates 26-46% of strikes on every monthly, each pair with different OI/last-trade
+// info. For per-strike single-value views (smile, RND, skew, term structure's ATM pick)
+// interleaving both as if one instrument corrupts the shape entirely -- e.g. it inflated
+// a straightforward "flag the thin points" check on one monthly's RND from a handful of
+// genuinely thin far-OTM strikes to 98% of the whole curve. GEX is unaffected by this and
+// deliberately untouched here: summing both instruments' gamma at a strike is the correct
+// whole-book reading, not an error to fix.
+//
+// Prefer the standard AM-settled SPX contract; fall back to the higher-open-interest
+// listing if the symbol's root can't be read.
+function dedupeByStrike<T extends { strike: number; contractSymbol?: string; openInterest?: number | null }>(contracts: T[]): T[] {
+  const byStrike = new Map<number, T>();
+  for (const c of contracts) {
+    const existing = byStrike.get(c.strike);
+    if (!existing) { byStrike.set(c.strike, c); continue; }
+    const cIsSPX = contractRoot(c.contractSymbol) === 'SPX';
+    const existingIsSPX = contractRoot(existing.contractSymbol) === 'SPX';
+    if (cIsSPX && !existingIsSPX) byStrike.set(c.strike, c);
+    else if (cIsSPX === existingIsSPX && (c.openInterest ?? 0) > (existing.openInterest ?? 0)) byStrike.set(c.strike, c);
+  }
+  return Array.from(byStrike.values());
+}
+
+// Renders a normal small dot for reliable points, and an amber ring for ones flagged by
+// isThinQuote -- visually distinct without hiding the point (it's a real quote, just an
+// unreliable one).
+function makeQualityDot(color: string) {
+  return (props: any) => {
+    const { cx, cy, payload } = props;
+    if (cx == null || cy == null) return <g />;
+    if (payload?.suspect) {
+      return (
+        <g>
+          <circle cx={cx} cy={cy} r={6} fill="none" stroke="#f59e0b" strokeWidth={2} />
+          <circle cx={cx} cy={cy} r={2.5} fill="#f59e0b" />
+        </g>
+      );
+    }
+    return <circle cx={cx} cy={cy} r={3} fill={color} />;
+  };
+}
+
 export function VolatilityChartView({
   currentExpiration,
   expirations,
@@ -88,6 +157,18 @@ export function VolatilityChartView({
     return expirations.find(e => e.expiration === currentExpiration) || expirations[0];
   }, [expirations, currentExpiration]);
 
+  // currentExpData with SPX/SPXW same-day duplicates collapsed -- see dedupeByStrike().
+  // Only used for the per-strike single-value views (smile, RND); currentExpData itself
+  // is kept as-is for header labels (expiration, daysToExpiration) which don't care.
+  const dedupedCurrentExpData = useMemo(() => {
+    if (!currentExpData) return currentExpData;
+    return {
+      ...currentExpData,
+      calls: dedupeByStrike(currentExpData.calls),
+      puts: dedupeByStrike(currentExpData.puts),
+    };
+  }, [currentExpData]);
+
   // Cycles that haven't actually expired yet, independent of the feed's own (possibly
   // stale) daysToExpiration field. See isLiveCycle() above. Falls back to the full list
   // in the pathological case where every cycle reads as expired -- e.g. the whole feed
@@ -98,6 +179,17 @@ export function VolatilityChartView({
     return live.length > 0 ? live : expirations;
   }, [expirations]);
   const staleCycleCount = expirations.length - liveExpirations.length;
+
+  // liveExpirations with SPX/SPXW same-day duplicates collapsed within each cycle. Used
+  // by every multi-cycle, per-strike single-value view (multi-smile overlay, term
+  // structure, skew term structure).
+  const dedupedLiveExpirations = useMemo(() => {
+    return liveExpirations.map(exp => ({
+      ...exp,
+      calls: dedupeByStrike(exp.calls),
+      puts: dedupeByStrike(exp.puts),
+    }));
+  }, [liveExpirations]);
 
   // Set default comparison expirations (first 4 liquid cycles, excluding 0DTE by default)
   useEffect(() => {
@@ -122,20 +214,20 @@ export function VolatilityChartView({
 
   // 1. Single Expiration IV Smile / Skew Dataset (Strike vs IV)
   const { smileData, displaySmileData } = useMemo(() => {
-    if (!currentExpData) return { smileData: [], displaySmileData: [] };
+    if (!dedupedCurrentExpData) return { smileData: [], displaySmileData: [] };
 
     const callMap = new Map<number, number>();
     const putMap = new Map<number, number>();
     const strikes = new Set<number>();
 
-    currentExpData.calls.forEach(c => {
+    dedupedCurrentExpData.calls.forEach(c => {
       if (c.impliedVolatilityMid && c.impliedVolatilityMid > 0) {
         callMap.set(c.strike, Math.round(c.impliedVolatilityMid * 1000) / 10);
         strikes.add(c.strike);
       }
     });
 
-    currentExpData.puts.forEach(p => {
+    dedupedCurrentExpData.puts.forEach(p => {
       if (p.impliedVolatilityMid && p.impliedVolatilityMid > 0) {
         putMap.set(p.strike, Math.round(p.impliedVolatilityMid * 1000) / 10);
         strikes.add(p.strike);
@@ -168,13 +260,13 @@ export function VolatilityChartView({
       smileData: rows,
       displaySmileData: rows.filter(r => inDisplayRange(r.strike))
     };
-  }, [currentExpData, spotPrice, strikeRange]);
+  }, [dedupedCurrentExpData, spotPrice, strikeRange]);
 
   // 2. Multi-Expiration IV Smile Overlay
   const multiSmileData = useMemo(() => {
-    if (liveExpirations.length === 0) return [];
+    if (dedupedLiveExpirations.length === 0) return [];
 
-    const selectedExps = liveExpirations.filter(e => compareExpirations.includes(e.expiration));
+    const selectedExps = dedupedLiveExpirations.filter(e => compareExpirations.includes(e.expiration));
     if (selectedExps.length === 0) return [];
 
     const allStrikes = new Set<number>();
@@ -213,11 +305,11 @@ export function VolatilityChartView({
       });
       return row;
     });
-  }, [liveExpirations, compareExpirations, spotPrice, strikeRange]);
+  }, [dedupedLiveExpirations, compareExpirations, spotPrice, strikeRange]);
 
   // 3. Vol Term Structure & Forward Implied Volatility
   const termStructureData = useMemo(() => {
-    const raw = liveExpirations
+    const raw = dedupedLiveExpirations
       .map(exp => {
         const allContracts = [...exp.calls, ...exp.puts].filter(
           c => c.impliedVolatilityMid && c.impliedVolatilityMid > 0
@@ -236,7 +328,8 @@ export function VolatilityChartView({
           dte: exp.daysToExpiration,
           atmIV: ivPct,
           atmStrike: atmContract.strike,
-          tYears: Math.max(0.001, exp.daysToExpiration / 365)
+          tYears: Math.max(0.001, exp.daysToExpiration / 365),
+          suspect: isThinQuote(atmContract)
         };
       })
       .filter((item): item is NonNullable<typeof item> => item !== null)
@@ -261,13 +354,13 @@ export function VolatilityChartView({
         forwardIV: fwdIV ?? item.atmIV
       };
     });
-  }, [liveExpirations, spotPrice]);
+  }, [dedupedLiveExpirations, spotPrice]);
 
   // 4. Risk-Neutral Implied Probability Density Function (RND - Breeden-Litzenberger)
   const rndData = useMemo(() => {
-    if (!currentExpData || currentExpData.calls.length < 5) return [];
+    if (!dedupedCurrentExpData || dedupedCurrentExpData.calls.length < 5) return [];
 
-    const calls = currentExpData.calls
+    const calls = dedupedCurrentExpData.calls
       .filter(c => c.midPrice && c.midPrice > 0)
       .sort((a, b) => a.strike - b.strike);
 
@@ -292,7 +385,10 @@ export function VolatilityChartView({
         densityRows.push({
           strike: curr.strike,
           rawDensity: density,
-          midPrice: curr.midPrice
+          midPrice: curr.midPrice,
+          // The 2nd derivative amplifies noise in any of its 3 inputs -- flag the point
+          // if prev/curr/next quote looks unreliable, not just the point's own strike.
+          suspect: isThinQuote(prev) || isThinQuote(curr) || isThinQuote(next)
         });
       }
     }
@@ -305,13 +401,14 @@ export function VolatilityChartView({
         strike: r.strike,
         strikeLabel: `$${r.strike}`,
         probabilityPct: Number(((r.rawDensity / sumDensity) * 100).toFixed(3)),
-        isATM: Math.abs(r.strike - spotPrice) <= 5
+        isATM: Math.abs(r.strike - spotPrice) <= 5,
+        suspect: r.suspect
       }));
-  }, [currentExpData, spotPrice, strikeRange]);
+  }, [dedupedCurrentExpData, spotPrice, strikeRange]);
 
   // 5. 25-Delta Skew & Kurtosis Curve across all Expirations
   const skewTermData = useMemo(() => {
-    return liveExpirations
+    return dedupedLiveExpirations
       .map(exp => {
         const callsWithDelta = exp.calls.filter(c => c.delta && c.delta > 0 && c.impliedVolatilityMid);
         const putsWithDelta = exp.puts.filter(p => p.delta && p.delta < 0 && p.impliedVolatilityMid);
@@ -344,12 +441,13 @@ export function VolatilityChartView({
           riskReversal25: skewRR,
           butterfly25: butterfly,
           put25IV: Number(p25.toFixed(1)),
-          call25IV: Number(c25.toFixed(1))
+          call25IV: Number(c25.toFixed(1)),
+          suspect: isThinQuote(call25) || isThinQuote(put25) || isThinQuote(atm)
         };
       })
       .filter((item): item is NonNullable<typeof item> => item !== null)
       .sort((a, b) => a.dte - b.dte);
-  }, [liveExpirations, spotPrice]);
+  }, [dedupedLiveExpirations, spotPrice]);
 
   // Overall active summary stats
   const activeMetrics = useMemo(() => {
@@ -505,6 +603,12 @@ export function VolatilityChartView({
               <p className="text-[10px] text-amber-600 dark:text-amber-400 mt-1 flex items-center gap-1">
                 <Info className="h-3 w-3 shrink-0" />
                 Excluded {staleCycleCount} already-expired {staleCycleCount === 1 ? 'cycle' : 'cycles'} — their frozen end-of-day quotes solve to unstable, meaningless IV.
+              </p>
+            )}
+            {(subView === 'termStructure' || subView === 'rnd' || subView === 'skewCurve') && (
+              <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 flex items-center gap-1.5">
+                <span className="inline-flex items-center justify-center h-3 w-3 rounded-full border-2 border-amber-500 shrink-0" />
+                Amber-ringed points sit on a wide or untraded quote — still real, but read with caution rather than as a clean signal.
               </p>
             )}
           </div>
@@ -737,19 +841,21 @@ export function VolatilityChartView({
                     formatter={(value: number, name: string) => [`${value}%`, name === 'atmIV' ? 'ATM Implied Vol' : 'Forward Implied Vol']}
                     labelFormatter={(label, payload) => {
                       const item = payload[0]?.payload;
-                      return item ? `${item.expiration} (${item.dte} Days) - ATM Strike: $${item.atmStrike}` : label;
+                      if (!item) return label;
+                      const flag = item.suspect ? ' ⚠ thin/wide quote — read with caution' : '';
+                      return `${item.expiration} (${item.dte} Days) - ATM Strike: $${item.atmStrike}${flag}`;
                     }}
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
-                  <Line 
-                    type="monotone" 
-                    dataKey="atmIV" 
-                    name="ATM Implied Vol" 
-                    stroke="#7c3aed" 
-                    strokeWidth={3} 
-                    dot={{ r: 3, fill: '#7c3aed' }} 
-                    activeDot={{ r: 6 }} 
+                  <Line
+                    type="monotone"
+                    dataKey="atmIV"
+                    name="ATM Implied Vol"
+                    stroke="#7c3aed"
+                    strokeWidth={3}
+                    dot={makeQualityDot('#7c3aed')}
+                    activeDot={{ r: 6 }}
                   />
                   <Line 
                     type="monotone" 
@@ -787,9 +893,13 @@ export function VolatilityChartView({
                     stroke="#64748b" 
                     fontSize={11}
                   />
-                  <Tooltip 
+                  <Tooltip
                     formatter={(value: number) => [`${value}%`, 'Implied Settlement Probability']}
-                    labelFormatter={(label) => `SPX Strike: $${label}`}
+                    labelFormatter={(label, payload) => {
+                      const item = payload[0]?.payload;
+                      const flag = item?.suspect ? ' ⚠ derived from a thin/wide quote — read with caution' : '';
+                      return `SPX Strike: $${label}${flag}`;
+                    }}
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <ReferenceLine 
@@ -798,14 +908,15 @@ export function VolatilityChartView({
                     strokeDasharray="4 4" 
                     label={{ value: `Spot: $${spotPrice.toFixed(0)}`, position: 'top', fill: '#d97706', fontSize: 11, fontWeight: 'bold' }}
                   />
-                  <Area 
-                    type="monotone" 
-                    dataKey="probabilityPct" 
-                    name="Probability Density (%)" 
-                    stroke="#2563eb" 
-                    strokeWidth={2.5} 
-                    fillOpacity={1} 
-                    fill="url(#rndGrad)" 
+                  <Area
+                    type="monotone"
+                    dataKey="probabilityPct"
+                    name="Probability Density (%)"
+                    stroke="#2563eb"
+                    strokeWidth={2.5}
+                    fillOpacity={1}
+                    fill="url(#rndGrad)"
+                    dot={makeQualityDot('#2563eb')}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -834,28 +945,30 @@ export function VolatilityChartView({
                     ]}
                     labelFormatter={(label, payload) => {
                       const item = payload[0]?.payload;
-                      return item ? `${item.expiration} (${item.dte}d) - 25Δ Put: ${item.put25IV}% | 25Δ Call: ${item.call25IV}%` : label;
+                      if (!item) return label;
+                      const flag = item.suspect ? ' ⚠ thin/wide quote — read with caution' : '';
+                      return `${item.expiration} (${item.dte}d) - 25Δ Put: ${item.put25IV}% | 25Δ Call: ${item.call25IV}%${flag}`;
                     }}
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <ReferenceLine y={0} stroke="#94a3b8" />
-                  <Line 
-                    type="monotone" 
-                    dataKey="riskReversal25" 
-                    name="25Δ Risk Reversal (Skew)" 
-                    stroke="#f43f5e" 
-                    strokeWidth={2.5} 
-                    dot={{ r: 3, fill: '#f43f5e' }} 
+                  <Line
+                    type="monotone"
+                    dataKey="riskReversal25"
+                    name="25Δ Risk Reversal (Skew)"
+                    stroke="#f43f5e"
+                    strokeWidth={2.5}
+                    dot={makeQualityDot('#f43f5e')}
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="butterfly25" 
-                    name="25Δ Butterfly (Convexity)" 
-                    stroke="#3b82f6" 
-                    strokeWidth={2} 
+                  <Line
+                    type="monotone"
+                    dataKey="butterfly25"
+                    name="25Δ Butterfly (Convexity)"
+                    stroke="#3b82f6"
+                    strokeWidth={2}
                     strokeDasharray="4 4"
-                    dot={{ r: 2, fill: '#3b82f6' }} 
+                    dot={makeQualityDot('#3b82f6')}
                   />
                 </LineChart>
               </ResponsiveContainer>

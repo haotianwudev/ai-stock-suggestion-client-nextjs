@@ -11,6 +11,33 @@ related: ["option-strategy/options-viewer-methodology", "option-strategy/volatil
 
 Implementation spec for the **Volatility** tab of SOPHIE's Options Viewer (`VolatilityChartView`) — the smile, term structure, risk-neutral density, and skew/kurtosis measures. [The Volatility Surface](/wiki/option-strategy/volatility-surface) and [Volatility Smile & Skew](/wiki/option-strategy/volatility-smile-skew) cover the concepts; this page documents the computation.
 
+## Data Quality: SPX/SPXW Duplicate Listings
+
+A finding that applies to every chart on this tab, so it's documented once here rather than repeated per section.
+
+A standard SPX monthly expiration (3rd Friday) is frequently shared with a same-day **SPXW** contract — a genuinely different, separately-traded PM-settled product, with its own open interest pool, listed under the identical calendar date. On live data this duplicated **26–46% of strikes on every single monthly** checked. Two real examples at strike 7275 on the same nominal expiration:
+
+| Symbol | Bid | Ask | Open Interest | Last Trade |
+|---|---|---|---|---|
+| `SPX260918C07275000` | 435.70 | 438.20 | 855 | 2026-08-18 15:57 |
+| `SPXW260918C07275000` | 434.50 | 440.40 | 302 | 2026-08-03 10:02 |
+
+Two different instruments, two different OI pools, two different last-trade times — merged into one "expiration" bucket by whatever code groups contracts by calendar date alone. For any per-strike single-value view (smile, RND, skew, the term structure's ATM pick), interleaving both as if they were one instrument corrupts the shape entirely: iterating the strike-sorted array hits each strike twice with different quotes, and — critically for the [Breeden-Litzenberger density](#breeden-litzenberger-risk-neutral-density) below, which differentiates a *sequence* of adjacent strikes — scrambles the neighbor relationships the second derivative depends on. On one affected monthly this alone was enough to make a straightforward thin-quote check (see below) flag **98% of the density curve**, not because the market was that illiquid, but because half the "neighbors" in the sequence were the wrong instrument's quote.
+
+The fix, scoped to this tab only: collapse duplicate strikes to a single contract per calendar date, preferring the standard AM-settled `SPX` root over `SPXW` when both are present (falling back to whichever has higher open interest if the root can't be parsed). **Deliberately not applied to GEX** — summing both instruments' gamma at a strike is the *correct* whole-book dealer-hedging reading there, not an error. Whether the platform should instead treat same-day SPX/SPXW as two genuinely separate, independently selectable expiration entries everywhere (the chain matrix, the payoff builder, the expiration selector itself) is a broader question this fix does not attempt to answer.
+
+## Per-Point Data Quality Flags
+
+Excluding fully-expired cycles (below) catches the extreme case. The same underlying mechanism — a wide or untraded quote making price-to-IV inversion unreliable — shows up in milder form on individual strikes within otherwise-healthy, live cycles: a strike nobody has traded today, sitting on a wide resting quote. Rather than exclude those (they're still real, tradeable strikes), the term structure, RND, and skew charts mark them:
+
+```
+thin quote  =  spread% > 20%   OR   (volume == 0  AND  open interest < 10)
+```
+
+A flagged point renders as an amber ring instead of a solid dot, and its tooltip adds an explicit caution note. Nothing is hidden — the point (and the line connecting it) still renders normally — the flag just tells you not to over-read that specific number.
+
+Checked against a live chain after fixing the SPX/SPXW duplication above, the flag rate rises smoothly with distance from spot, which is the shape you'd want from a genuine liquidity signal rather than noise: 0% within ±5% of spot (the true ATM core), 25% by ±10%, 28% by ±15% (the tab's default display range), 43% by ±25%. Before the duplication fix, an affected monthly's RND showed 98% flagged — the duplication bug, not real thinness.
+
 ## IV Smile & Skew Curve
 
 Plots strike $K$ against implied volatility $\sigma(K)$ for the selected cycle, restricted to within **±22% of spot**. The band is deliberate: far-tail strikes quote wide and thin, and their implied vols are numerically unstable enough to visually dominate a curve they tell you nothing reliable about.
@@ -98,6 +125,8 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 - **Delta-based wings are model-dependent.** The 25-delta strike is itself derived from a model, so risk reversal and butterfly inherit that model's assumptions.
 - **The ±22% smile band hides genuine tail information** — deliberately, but it does mean the smile view is not the place to study far-tail pricing.
 - **Live-cycle filtering trusts the exchange calendar, not the feed's own DTE label.** If the feed's clock is wrong in the *other* direction — reporting a cycle as already expired when it's actually still live — that cycle would be dropped instead. This hasn't been observed, but the filter is only as reliable as `Intl.DateTimeFormat`'s America/New_York conversion and the browser's system clock.
+- **SPX/SPXW dedup keeps one instrument per strike, not both.** Preferring the standard SPX root discards the SPXW quote entirely for that strike on this tab — correct for a single-instrument IV curve, but it means the SPXW-specific liquidity at that strike (its own OI, its own spread) is invisible here. It's still fully visible in the Options Chain matrix and GEX, which are unaffected by this fix.
+- **The thin-quote threshold (20% spread, or zero volume with under 10 OI) is a judgment call**, not derived from a model. It was tuned by checking that the resulting flag rate rises smoothly with distance from spot on real data rather than being arbitrary, but a different threshold would flag a different set of points.
 
 ## Key Takeaways
 
@@ -106,6 +135,8 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 - Densities are floored at zero and normalised to 100%.
 - Risk reversal measures directional skew; butterfly measures tail convexity.
 - Cycles that have already expired in wall-clock time are excluded from every chart on this tab — a stale front cycle can flip the Term Structure Slope's regime call entirely, not just shift a number.
+- Standard monthlies routinely list a same-day SPXW contract as a separate instrument under the same calendar date — deduping to one contract per strike is what makes the per-point quality flag (and the smile/RND/skew shape generally) meaningful rather than noise.
+- Individual thin or wide-spread points are flagged with an amber ring rather than hidden — the flag rate should rise smoothly with distance from spot; a flat, high rate near the money is itself a sign something upstream (like the duplication above) needs checking.
 
 ## Related Reading
 
