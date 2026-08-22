@@ -54,7 +54,7 @@ const TIER_LABEL: Record<LiquidityTier, string> = {
   excellent: 'Excellent', good: 'Good', fair: 'Fair', poor: 'Poor', unknown: '—',
 };
 
-type LiquidityFilterOption = 'good' | 'all';
+type LiquidityFilterOption = 'excellent' | 'all';
 
 /* ─── Liquidity dot: small colored circle indicating tier ─── */
 const LIQ_DOT: Record<LiquidityTier, string> = {
@@ -308,8 +308,8 @@ export function OptionsMatrixTable({
   expiration,
   dte
 }: OptionsMatrixTableProps) {
-  // Filter by Good+ Liquidity by default
-  const [liquidityFilter, setLiquidityFilter] = useState<LiquidityFilterOption>('good');
+  // Filter by Excellent Liquidity by default
+  const [liquidityFilter, setLiquidityFilter] = useState<LiquidityFilterOption>('excellent');
   const [hoveredStrike, setHoveredStrike] = useState<number | null>(null);
   const [selectedContract, setSelectedContract] = useState<SelectedContract>(null);
 
@@ -351,13 +351,13 @@ export function OptionsMatrixTable({
     ).strike;
   }, [strikeRows, spotPrice]);
 
-  // Filter rows: only Good+ liquid strikes by default, or all strikes
+  // Filter rows: only Excellent liquid strikes by default, or all strikes
   const filteredRows = useMemo(() => {
-    if (liquidityFilter === 'good') {
+    if (liquidityFilter === 'excellent') {
       const liquidList = strikeRows.filter(r => {
         const cLiq = computeLiquidity(r.call?.bid, r.call?.ask, r.call?.midPrice, r.call?.volume, r.call?.openInterest);
         const pLiq = computeLiquidity(r.put?.bid, r.put?.ask, r.put?.midPrice, r.put?.volume, r.put?.openInterest);
-        return cLiq.tier === 'excellent' || cLiq.tier === 'good' || pLiq.tier === 'excellent' || pLiq.tier === 'good';
+        return cLiq.tier === 'excellent' || pLiq.tier === 'excellent';
       });
       return liquidList.length > 0 ? liquidList : strikeRows;
     }
@@ -396,22 +396,22 @@ export function OptionsMatrixTable({
 
   return (
     <div className="space-y-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xs overflow-hidden">
-      {/* ═══ Control Bar: Liquidity Filter (Good+ default / All) & Column Toggles ═══ */}
+      {/* ═══ Control Bar: Liquidity Filter (Excellent default / All) & Column Toggles ═══ */}
       <div className="p-3 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Liquidity Filter: Good+ (Default) / All */}
+          {/* Liquidity Filter: Excellent (Default) / All */}
           <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-0.5 shadow-2xs">
             <button
-              onClick={() => setLiquidityFilter('good')}
-              title="Show only strikes with Good or Excellent liquidity (tight spreads & active trading)"
+              onClick={() => setLiquidityFilter('excellent')}
+              title="Show only strikes with Excellent liquidity (tightest spreads & highest activity)"
               className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold text-xs transition-all ${
-                liquidityFilter === 'good'
+                liquidityFilter === 'excellent'
                   ? 'bg-emerald-600 text-white dark:bg-emerald-600 dark:text-white shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
             >
               <Circle className="w-2 h-2 fill-current" />
-              <span>Good+ Liquidity</span>
+              <span>Excellent Liquidity</span>
             </button>
             <button
               onClick={() => setLiquidityFilter('all')}
@@ -468,7 +468,7 @@ export function OptionsMatrixTable({
           )}
           <span className="text-gray-300 dark:text-gray-700">|</span>
           <span className="text-[11px] text-[#A8672E] dark:text-[#D08F52] font-semibold">
-            {filteredRows.length} {liquidityFilter === 'good' ? `of ${strikeRows.length} ` : ''}Strikes
+            {filteredRows.length} {liquidityFilter === 'excellent' ? `of ${strikeRows.length} ` : ''}Strikes
           </span>
         </div>
       </div>
