@@ -8,6 +8,8 @@ import {
   ChevronDown,
   Info,
   Circle,
+  Search,
+  RotateCcw
 } from 'lucide-react';
 import { computeLiquidity, LiquidityTier } from '@/lib/options/liquidity';
 
@@ -54,7 +56,9 @@ const TIER_LABEL: Record<LiquidityTier, string> = {
   excellent: 'Excellent', good: 'Good', fair: 'Fair', poor: 'Poor', unknown: '—',
 };
 
-type StrikeRange = 10 | 20 | 50 | 'all';
+type StrikeRangeOption = 15 | 25 | 'all';
+type StrikeStepOption = 'all' | 25 | 50 | 100;
+type MoneynessOption = 'all' | 'itm_calls' | 'itm_puts' | 'near_atm';
 
 /* ─── Liquidity dot: small colored circle indicating tier ─── */
 const LIQ_DOT: Record<LiquidityTier, string> = {
@@ -308,7 +312,10 @@ export function OptionsMatrixTable({
   expiration,
   dte
 }: OptionsMatrixTableProps) {
-  const [strikeRange, setStrikeRange] = useState<StrikeRange>(20);
+  const [strikeRange, setStrikeRange] = useState<StrikeRangeOption>(15);
+  const [strikeStep, setStrikeStep] = useState<StrikeStepOption>('all');
+  const [moneynessFilter, setMoneynessFilter] = useState<MoneynessOption>('all');
+  const [strikeSearch, setStrikeSearch] = useState<string>('');
   const [liquidityFilter, setLiquidityFilter] = useState<'all' | 'excellent'>('all');
   const [hoveredStrike, setHoveredStrike] = useState<number | null>(null);
   const [selectedContract, setSelectedContract] = useState<SelectedContract>(null);
@@ -353,14 +360,42 @@ export function OptionsMatrixTable({
 
   const filteredRows = useMemo(() => {
     let list = strikeRows;
-    if (strikeRange !== 'all') {
-      const atmIndex = list.findIndex(r => r.strike === atmStrike);
-      if (atmIndex !== -1) {
-        const start = Math.max(0, atmIndex - strikeRange);
-        const end = Math.min(list.length, atmIndex + strikeRange + 1);
-        list = list.slice(start, end);
+
+    // 1. Text search / specific strike or range filter (e.g. "5850" or "5800-6000")
+    const query = strikeSearch.trim();
+    if (query) {
+      const rangeMatch = query.match(/^(\d+(?:\.\d+)?)\s*[-:]\s*(\d+(?:\.\d+)?)$/);
+      if (rangeMatch) {
+        const minS = parseFloat(rangeMatch[1]);
+        const maxS = parseFloat(rangeMatch[2]);
+        list = list.filter(r => r.strike >= Math.min(minS, maxS) && r.strike <= Math.max(minS, maxS));
+      } else {
+        list = list.filter(r => String(r.strike).includes(query));
+      }
+    } else {
+      // 2. Percentage range filter around spot (±15%, ±25%, or All)
+      if (strikeRange !== 'all') {
+        const minStrike = spotPrice * (1 - strikeRange / 100);
+        const maxStrike = spotPrice * (1 + strikeRange / 100);
+        list = list.filter(r => r.strike >= minStrike && r.strike <= maxStrike);
       }
     }
+
+    // 3. Strike Step (Milestone intervals: 25pt, 50pt, 100pt)
+    if (strikeStep !== 'all') {
+      list = list.filter(r => r.strike % strikeStep === 0);
+    }
+
+    // 4. Moneyness filter
+    if (moneynessFilter === 'itm_calls') {
+      list = list.filter(r => r.strike <= spotPrice);
+    } else if (moneynessFilter === 'itm_puts') {
+      list = list.filter(r => r.strike >= spotPrice);
+    } else if (moneynessFilter === 'near_atm') {
+      list = list.filter(r => Math.abs(r.strike - spotPrice) / spotPrice <= 0.05);
+    }
+
+    // 5. Liquidity tier filter
     if (liquidityFilter === 'excellent') {
       list = list.filter(r => {
         const cLiq = computeLiquidity(r.call?.bid, r.call?.ask, r.call?.midPrice, r.call?.volume, r.call?.openInterest);
@@ -368,8 +403,9 @@ export function OptionsMatrixTable({
         return cLiq.tier === 'excellent' || pLiq.tier === 'excellent';
       });
     }
+
     return list;
-  }, [strikeRows, strikeRange, atmStrike, liquidityFilter]);
+  }, [strikeRows, strikeSearch, strikeRange, spotPrice, strikeStep, moneynessFilter, liquidityFilter]);
 
   // Max volume for proportional bar rendering
   const maxVol = useMemo(() => {
@@ -396,6 +432,16 @@ export function OptionsMatrixTable({
     return `${(val * 100).toFixed(1)}%`;
   };
 
+  const hasActiveFilters = strikeSearch !== '' || strikeRange !== 'all' || strikeStep !== 'all' || moneynessFilter !== 'all' || liquidityFilter !== 'all';
+
+  const handleResetFilters = () => {
+    setStrikeSearch('');
+    setStrikeRange('all');
+    setStrikeStep('all');
+    setMoneynessFilter('all');
+    setLiquidityFilter('all');
+  };
+
   // Column count for detail row colspan
   // Always: (per side: Vol + [OI] + IV + Δ + Γ + [Θ] + [ν] + Bid + Ask + Mid + Liq) + Strike
   const perSideCols = 7 + (showOI ? 1 : 0) + (showTheta ? 1 : 0) + (showVega ? 1 : 0);
@@ -403,98 +449,208 @@ export function OptionsMatrixTable({
 
   return (
     <div className="space-y-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xs overflow-hidden">
-      {/* ═══ Control Bar ═══ */}
-      <div className="p-3 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div className="flex flex-wrap items-center gap-2.5">
-          {/* Strike Range */}
-          <div className="flex items-center gap-1">
-            <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px] mr-1 hidden sm:inline">Strikes:</span>
-            {([10, 20, 50, 'all'] as StrikeRange[]).map(r => (
+      {/* ═══ Control Bar with Comprehensive Strike Filters ═══ */}
+      <div className="p-3 bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-200 dark:border-gray-800 flex flex-col gap-2.5 text-xs">
+        {/* Row 1: Primary Strike Filters */}
+        <div className="flex flex-wrap items-center justify-between gap-2.5">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Strike Range Selector */}
+            <div className="flex items-center gap-1">
+              <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px] mr-1 hidden sm:inline">Range:</span>
+              {([15, 25, 'all'] as StrikeRangeOption[]).map(r => (
+                <button
+                  key={String(r)}
+                  onClick={() => { setStrikeRange(r); if (strikeSearch) setStrikeSearch(''); }}
+                  className={`px-2 py-0.5 rounded-md text-xs font-mono font-semibold border transition-all ${
+                    strikeRange === r && !strikeSearch
+                      ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400 hover:border-[#A8672E]/40'
+                  }`}
+                >
+                  {r === 'all' ? 'All' : `±${r}%`}
+                </button>
+              ))}
+            </div>
+
+            <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
+
+            {/* Direct Strike Search Input */}
+            <div className="relative flex items-center">
+              <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Strike (e.g. 5850 or 5800-6000)"
+                value={strikeSearch}
+                onChange={e => setStrikeSearch(e.target.value)}
+                className="pl-7 pr-6 py-0.5 h-6 text-xs font-mono bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-[#A8672E] w-52 sm:w-56"
+              />
+              {strikeSearch && (
+                <button
+                  onClick={() => setStrikeSearch('')}
+                  className="absolute right-1.5 p-0.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+            </div>
+
+            <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
+
+            {/* Strike Step (Interval) Filter */}
+            <div className="flex items-center gap-1">
+              <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5 hidden md:inline">Step:</span>
+              {(['all', 25, 50, 100] as StrikeStepOption[]).map(step => (
+                <button
+                  key={String(step)}
+                  onClick={() => setStrikeStep(step)}
+                  className={`px-1.5 py-0.5 rounded-md text-[10px] font-mono font-semibold border transition-all ${
+                    strikeStep === step
+                      ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52]'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-500 dark:text-slate-400 hover:border-[#A8672E]/30'
+                  }`}
+                >
+                  {step === 'all' ? 'All' : `${step}pt`}
+                </button>
+              ))}
+            </div>
+
+            <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden md:block" />
+
+            {/* Moneyness Filter */}
+            <div className="flex items-center gap-1">
+              <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5 hidden lg:inline">Side:</span>
               <button
-                key={String(r)}
-                onClick={() => setStrikeRange(r)}
-                className={`px-2 py-0.5 rounded-md text-xs font-mono font-semibold border transition-all ${
-                  strikeRange === r
-                    ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52] ring-1 ring-[#A8672E]/30'
-                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-600 dark:text-slate-400 hover:border-[#A8672E]/40'
+                onClick={() => setMoneynessFilter('all')}
+                className={`px-1.5 py-0.5 rounded-md text-[10px] font-semibold border transition-all ${
+                  moneynessFilter === 'all'
+                    ? 'border-[#A8672E] bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52] dark:bg-[#D08F52]/15 dark:text-[#D08F52]'
+                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-500 dark:text-slate-400 hover:border-[#A8672E]/30'
                 }`}
               >
-                {r === 'all' ? 'All' : `±${r}`}
+                All
               </button>
-            ))}
+              <button
+                onClick={() => setMoneynessFilter('itm_calls')}
+                className={`px-1.5 py-0.5 rounded-md text-[10px] font-semibold border transition-all ${
+                  moneynessFilter === 'itm_calls'
+                    ? 'border-teal-500 bg-teal-50 text-teal-800 dark:border-teal-600 dark:bg-teal-950/40 dark:text-teal-300'
+                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-500 dark:text-slate-400 hover:border-teal-500/40'
+                }`}
+              >
+                ITM Calls
+              </button>
+              <button
+                onClick={() => setMoneynessFilter('itm_puts')}
+                className={`px-1.5 py-0.5 rounded-md text-[10px] font-semibold border transition-all ${
+                  moneynessFilter === 'itm_puts'
+                    ? 'border-amber-500 bg-amber-50 text-amber-800 dark:border-amber-600 dark:bg-amber-950/40 dark:text-amber-300'
+                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-500 dark:text-slate-400 hover:border-amber-500/40'
+                }`}
+              >
+                ITM Puts
+              </button>
+              <button
+                onClick={() => setMoneynessFilter('near_atm')}
+                className={`px-1.5 py-0.5 rounded-md text-[10px] font-semibold border transition-all ${
+                  moneynessFilter === 'near_atm'
+                    ? 'border-indigo-500 bg-indigo-50 text-indigo-800 dark:border-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300'
+                    : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-slate-500 dark:text-slate-400 hover:border-indigo-500/40'
+                }`}
+              >
+                ATM ±5%
+              </button>
+            </div>
           </div>
 
-          <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
-
-          {/* Liquidity Filter */}
-          <div className="flex items-center gap-1">
-            <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5 hidden sm:inline">Liq:</span>
-            <button
-              onClick={() => setLiquidityFilter('all')}
-              className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
-                liquidityFilter === 'all'
-                  ? 'border-[#A8672E]/60 bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52]/60 dark:bg-[#D08F52]/15 dark:text-[#D08F52]'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-[#A8672E]/30 hover:text-slate-600'
-              }`}
-            >
-              All
-            </button>
-            <button
-              onClick={() => setLiquidityFilter(prev => prev === 'excellent' ? 'all' : 'excellent')}
-              title="Filter strikes to only those with Excellent liquidity"
-              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
-                liquidityFilter === 'excellent'
-                  ? 'border-emerald-500 bg-emerald-50 text-emerald-800 dark:border-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-300 ring-1 ring-emerald-500/30 font-semibold'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-emerald-500/40 hover:text-slate-600'
-              }`}
-            >
-              <Circle className={`w-1.5 h-1.5 ${liquidityFilter === 'excellent' ? 'fill-emerald-500 text-emerald-500' : 'fill-slate-400 text-slate-400'}`} />
-              Excellent Only
-            </button>
-          </div>
-
-          <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
-
-          {/* Optional Column Toggles */}
-          <div className="flex items-center gap-1">
-            <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5 hidden sm:inline">Cols:</span>
-            <ColToggle label="Θ" active={showTheta} onClick={() => setShowTheta(v => !v)} />
-            <ColToggle label="ν" active={showVega} onClick={() => setShowVega(v => !v)} />
-            <ColToggle label="OI" active={showOI} onClick={() => setShowOI(v => !v)} />
+          {/* Right: Stats, Reset & Clear */}
+          <div className="flex items-center gap-2.5 text-slate-500 dark:text-slate-400 font-mono text-xs">
+            {hasActiveFilters && (
+              <button
+                onClick={handleResetFilters}
+                className="flex items-center gap-1 text-[10px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors"
+                title="Reset all strike filters"
+              >
+                <RotateCcw className="w-2.5 h-2.5" />
+                Reset
+              </button>
+            )}
+            <span className="text-[11px] text-[#A8672E] dark:text-[#D08F52] font-semibold">
+              {filteredRows.length} of {strikeRows.length} Strikes
+            </span>
           </div>
         </div>
 
-        {/* Right: Legend & Stats */}
-        <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400 font-mono text-xs">
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-xs bg-teal-500/20 border border-teal-500/40 inline-block" />
-            <span className="text-[11px]">ITM Calls</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-xs bg-amber-500/20 border border-amber-500/40 inline-block" />
-            <span className="text-[11px]">ITM Puts</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Circle className="w-2 h-2 fill-emerald-500 text-emerald-500" />
-            <Circle className="w-2 h-2 fill-blue-500 text-blue-500" />
-            <Circle className="w-2 h-2 fill-amber-500 text-amber-500" />
-            <Circle className="w-2 h-2 fill-rose-500 text-rose-500" />
-            <span className="text-[10px]">Liq</span>
-          </div>
-          {selectedContract && (
-            <>
-              <span className="text-gray-300 dark:text-gray-700">|</span>
+        {/* Row 2: Liquidity, Column Toggles & Legend */}
+        <div className="flex flex-wrap items-center justify-between gap-2.5 pt-1.5 border-t border-gray-200/60 dark:border-gray-800/60">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Liquidity Filter */}
+            <div className="flex items-center gap-1">
+              <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5">Liq:</span>
               <button
-                onClick={() => setSelectedContract(null)}
-                className="flex items-center gap-1 text-[11px] text-rose-500 hover:text-rose-600 dark:text-rose-400 font-semibold transition-colors"
+                onClick={() => setLiquidityFilter('all')}
+                className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                  liquidityFilter === 'all'
+                    ? 'border-[#A8672E]/60 bg-[#A8672E]/10 text-[#A8672E] dark:border-[#D08F52]/60 dark:bg-[#D08F52]/15 dark:text-[#D08F52]'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-[#A8672E]/30 hover:text-slate-600'
+                }`}
               >
-                <X className="w-3 h-3" />
-                Clear
+                All
               </button>
-            </>
-          )}
-          <span className="text-gray-300 dark:text-gray-700">|</span>
-          <span className="text-[11px] text-[#A8672E] dark:text-[#D08F52] font-semibold">{filteredRows.length} Strikes</span>
+              <button
+                onClick={() => setLiquidityFilter(prev => prev === 'excellent' ? 'all' : 'excellent')}
+                title="Filter strikes to only those with Excellent liquidity"
+                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                  liquidityFilter === 'excellent'
+                    ? 'border-emerald-500 bg-emerald-50 text-emerald-800 dark:border-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-300 ring-1 ring-emerald-500/30 font-semibold'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-400 dark:text-slate-500 hover:border-emerald-500/40 hover:text-slate-600'
+                }`}
+              >
+                <Circle className={`w-1.5 h-1.5 ${liquidityFilter === 'excellent' ? 'fill-emerald-500 text-emerald-500' : 'fill-slate-400 text-slate-400'}`} />
+                Excellent Only
+              </button>
+            </div>
+
+            <div className="h-3.5 w-px bg-gray-200 dark:bg-gray-700 hidden sm:block" />
+
+            {/* Optional Column Toggles */}
+            <div className="flex items-center gap-1">
+              <span className="text-slate-500 dark:text-slate-400 font-mono text-[10px] mr-0.5">Cols:</span>
+              <ColToggle label="Θ" active={showTheta} onClick={() => setShowTheta(v => !v)} />
+              <ColToggle label="ν" active={showVega} onClick={() => setShowVega(v => !v)} />
+              <ColToggle label="OI" active={showOI} onClick={() => setShowOI(v => !v)} />
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400 font-mono text-xs">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-xs bg-teal-500/20 border border-teal-500/40 inline-block" />
+              <span className="text-[11px]">ITM Calls</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-xs bg-amber-500/20 border border-amber-500/40 inline-block" />
+              <span className="text-[11px]">ITM Puts</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Circle className="w-2 h-2 fill-emerald-500 text-emerald-500" />
+              <Circle className="w-2 h-2 fill-blue-500 text-blue-500" />
+              <Circle className="w-2 h-2 fill-amber-500 text-amber-500" />
+              <Circle className="w-2 h-2 fill-rose-500 text-rose-500" />
+              <span className="text-[10px]">Liq</span>
+            </div>
+            {selectedContract && (
+              <>
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <button
+                  onClick={() => setSelectedContract(null)}
+                  className="flex items-center gap-1 text-[11px] text-rose-500 hover:text-rose-600 dark:text-rose-400 font-semibold transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                  Clear Selection
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -558,200 +714,214 @@ export function OptionsMatrixTable({
           </thead>
 
           <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-            {filteredRows.map(row => {
-              const isATM = row.strike === atmStrike;
-              const isHovered = hoveredStrike === row.strike;
-              const call = row.call;
-              const put = row.put;
-              const callLiq = computeLiquidity(call?.bid, call?.ask, call?.midPrice, call?.volume, call?.openInterest);
-              const putLiq = computeLiquidity(put?.bid, put?.ask, put?.midPrice, put?.volume, put?.openInterest);
-              const isCallSelected = selectedContract?.strike === row.strike && selectedContract?.side === 'call';
-              const isPutSelected = selectedContract?.strike === row.strike && selectedContract?.side === 'put';
-              const isRowSelected = isCallSelected || isPutSelected;
-
-              const callClick = call ? () => handleContractClick(row.strike, 'call', call) : undefined;
-              const putClick = put ? () => handleContractClick(row.strike, 'put', put) : undefined;
-              const callCursor = call ? 'cursor-pointer' : '';
-              const putCursor = put ? 'cursor-pointer' : '';
-              const callRing = isCallSelected ? 'ring-2 ring-teal-500/60 ring-inset' : '';
-              const putRing = isPutSelected ? 'ring-2 ring-amber-500/60 ring-inset' : '';
-
-              // ITM background
-              const cITM = row.isCallITM ? 'bg-teal-500/8 dark:bg-teal-950/15' : '';
-              const pITM = row.isPutITM ? 'bg-amber-500/8 dark:bg-amber-950/15' : '';
-
-              return (
-                <React.Fragment key={row.strike}>
-                  <tr
-                    onMouseEnter={() => setHoveredStrike(row.strike)}
-                    onMouseLeave={() => setHoveredStrike(null)}
-                    className={`transition-colors text-[11px] ${
-                      isRowSelected ? 'bg-slate-100 dark:bg-slate-800/80' :
-                      isHovered ? 'bg-gray-50/80 dark:bg-gray-800/50' : ''
-                    }`}
+            {filteredRows.length === 0 ? (
+              <tr>
+                <td colSpan={totalCols} className="py-8 text-center text-slate-400 dark:text-slate-500 font-mono">
+                  No strikes match the selected filters.
+                  <button
+                    onClick={handleResetFilters}
+                    className="ml-2 text-[#A8672E] dark:text-[#D08F52] underline hover:no-underline font-semibold"
                   >
-                    {/* ══════ CALL SIDE ══════ */}
+                    Reset filters
+                  </button>
+                </td>
+              </tr>
+            ) : (
+              filteredRows.map(row => {
+                const isATM = row.strike === atmStrike;
+                const isHovered = hoveredStrike === row.strike;
+                const call = row.call;
+                const put = row.put;
+                const callLiq = computeLiquidity(call?.bid, call?.ask, call?.midPrice, call?.volume, call?.openInterest);
+                const putLiq = computeLiquidity(put?.bid, put?.ask, put?.midPrice, put?.volume, put?.openInterest);
+                const isCallSelected = selectedContract?.strike === row.strike && selectedContract?.side === 'call';
+                const isPutSelected = selectedContract?.strike === row.strike && selectedContract?.side === 'put';
+                const isRowSelected = isCallSelected || isPutSelected;
 
-                    {/* Liquidity dot */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right ${callCursor} ${cITM} ${callRing}`}>
-                      <Circle className={`w-2 h-2 inline-block ${LIQ_DOT[callLiq.tier]} ${callLiq.tier !== 'unknown' ? 'fill-current' : ''}`} />
-                    </td>
+                const callClick = call ? () => handleContractClick(row.strike, 'call', call) : undefined;
+                const putClick = put ? () => handleContractClick(row.strike, 'put', put) : undefined;
+                const callCursor = call ? 'cursor-pointer' : '';
+                const putCursor = put ? 'cursor-pointer' : '';
+                const callRing = isCallSelected ? 'ring-2 ring-teal-500/60 ring-inset' : '';
+                const putRing = isPutSelected ? 'ring-2 ring-amber-500/60 ring-inset' : '';
 
-                    {/* Volume with proportional bar */}
-                    <td
-                      onClick={callClick}
-                      style={volBarStyle(call?.volume, maxVol, 'call')}
-                      className={`py-1 px-1.5 text-right ${callCursor} ${cITM} ${callRing} ${row.isCallITM ? 'text-teal-800 dark:text-teal-300 font-medium' : ''}`}
+                // ITM background
+                const cITM = row.isCallITM ? 'bg-teal-500/8 dark:bg-teal-950/15' : '';
+                const pITM = row.isPutITM ? 'bg-amber-500/8 dark:bg-amber-950/15' : '';
+
+                return (
+                  <React.Fragment key={row.strike}>
+                    <tr
+                      onMouseEnter={() => setHoveredStrike(row.strike)}
+                      onMouseLeave={() => setHoveredStrike(null)}
+                      className={`transition-colors text-[11px] ${
+                        isRowSelected ? 'bg-slate-100 dark:bg-slate-800/80' :
+                        isHovered ? 'bg-gray-50/80 dark:bg-gray-800/50' : ''
+                      }`}
                     >
-                      {fmtInt(call?.volume)}
-                    </td>
+                      {/* ══════ CALL SIDE ══════ */}
 
-                    {/* OI */}
-                    {showOI && (
-                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
-                        {fmtInt(call?.openInterest)}
+                      {/* Liquidity dot */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right ${callCursor} ${cITM} ${callRing}`}>
+                        <Circle className={`w-2 h-2 inline-block ${LIQ_DOT[callLiq.tier]} ${callLiq.tier !== 'unknown' ? 'fill-current' : ''}`} />
                       </td>
-                    )}
 
-                    {/* IV with heat */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right text-purple-600 dark:text-purple-400 ${callCursor} ${cITM} ${callRing} ${ivHeatBg(call?.impliedVolatilityMid)}`}>
-                      {fmtIV(call?.impliedVolatilityMid)}
-                    </td>
-
-                    {/* Delta */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right ${deltaColor(call?.delta, 'call')} ${callCursor} ${cITM} ${callRing}`}>
-                      {fmtNum(call?.delta, 3)}
-                    </td>
-
-                    {/* Gamma */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-600 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
-                      {fmtNum(call?.gamma, 4)}
-                    </td>
-
-                    {/* Theta */}
-                    {showTheta && (
-                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
-                        {fmtNum(call?.theta, 2)}
+                      {/* Volume with proportional bar */}
+                      <td
+                        onClick={callClick}
+                        style={volBarStyle(call?.volume, maxVol, 'call')}
+                        className={`py-1 px-1.5 text-right ${callCursor} ${cITM} ${callRing} ${row.isCallITM ? 'text-teal-800 dark:text-teal-300 font-medium' : ''}`}
+                      >
+                        {fmtInt(call?.volume)}
                       </td>
-                    )}
 
-                    {/* Vega */}
-                    {showVega && (
-                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
-                        {fmtNum(call?.vega, 2)}
+                      {/* OI */}
+                      {showOI && (
+                        <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
+                          {fmtInt(call?.openInterest)}
+                        </td>
+                      )}
+
+                      {/* IV with heat */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-purple-600 dark:text-purple-400 ${callCursor} ${cITM} ${callRing} ${ivHeatBg(call?.impliedVolatilityMid)}`}>
+                        {fmtIV(call?.impliedVolatilityMid)}
                       </td>
-                    )}
 
-                    {/* Bid */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-600 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
-                      {fmtNum(call?.bid)}
-                    </td>
-
-                    {/* Ask (border) */}
-                    <td onClick={callClick} className={`py-1 px-1.5 text-right font-bold border-r border-gray-200 dark:border-gray-800 ${callCursor} ${callRing} ${row.isCallITM ? 'bg-teal-500/15 dark:bg-teal-950/35 text-teal-900 dark:text-teal-100' : 'bg-gray-50/50 dark:bg-gray-800/30 text-slate-900 dark:text-slate-100'}`}>
-                      {fmtNum(call?.ask)}
-                    </td>
-
-                    {/* ══════ CENTER STRIKE ══════ */}
-                    <td className={`py-1 px-3 text-center font-bold border-x border-gray-200 dark:border-gray-800 tracking-tight ${
-                      isATM
-                        ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-inner'
-                        : isHovered
-                        ? 'bg-slate-900 text-[#D08F52] dark:bg-gray-800'
-                        : 'bg-gray-50/80 dark:bg-gray-800/40 text-slate-800 dark:text-slate-200'
-                    }`}>
-                      <div className="flex items-center justify-center gap-1 font-mono">
-                        <span>{row.strike.toLocaleString()}</span>
-                        {isATM && (
-                          <span className="text-[8px] px-1 py-0.5 bg-black/30 text-white rounded font-bold uppercase leading-none">
-                            ATM
-                          </span>
-                        )}
-                        {isRowSelected && (
-                          <ChevronDown className="w-3 h-3 inline-block ml-0.5 animate-bounce" />
-                        )}
-                      </div>
-                    </td>
-
-                    {/* ══════ PUT SIDE ══════ */}
-
-                    {/* Bid (border) */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left font-bold border-l border-gray-200 dark:border-gray-800 ${putCursor} ${putRing} ${row.isPutITM ? 'bg-amber-500/15 dark:bg-amber-950/35 text-amber-900 dark:text-amber-100' : 'bg-gray-50/50 dark:bg-gray-800/30 text-slate-900 dark:text-slate-100'}`}>
-                      {fmtNum(put?.bid)}
-                    </td>
-
-                    {/* Ask */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-600 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
-                      {fmtNum(put?.ask)}
-                    </td>
-
-                    {/* Vega */}
-                    {showVega && (
-                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
-                        {fmtNum(put?.vega, 2)}
+                      {/* Delta */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right ${deltaColor(call?.delta, 'call')} ${callCursor} ${cITM} ${callRing}`}>
+                        {fmtNum(call?.delta, 3)}
                       </td>
-                    )}
 
-                    {/* Theta */}
-                    {showTheta && (
-                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
-                        {fmtNum(put?.theta, 2)}
+                      {/* Gamma */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-600 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
+                        {fmtNum(call?.gamma, 4)}
                       </td>
-                    )}
 
-                    {/* Gamma */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-600 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
-                      {fmtNum(put?.gamma, 4)}
-                    </td>
+                      {/* Theta */}
+                      {showTheta && (
+                        <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
+                          {fmtNum(call?.theta, 2)}
+                        </td>
+                      )}
 
-                    {/* Delta */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left ${deltaColor(put?.delta, 'put')} ${putCursor} ${pITM} ${putRing}`}>
-                      {fmtNum(put?.delta, 3)}
-                    </td>
+                      {/* Vega */}
+                      {showVega && (
+                        <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-500 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
+                          {fmtNum(call?.vega, 2)}
+                        </td>
+                      )}
 
-                    {/* IV with heat */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left text-purple-600 dark:text-purple-400 ${putCursor} ${pITM} ${putRing} ${ivHeatBg(put?.impliedVolatilityMid)}`}>
-                      {fmtIV(put?.impliedVolatilityMid)}
-                    </td>
-
-                    {/* OI */}
-                    {showOI && (
-                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
-                        {fmtInt(put?.openInterest)}
+                      {/* Bid */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right text-slate-600 dark:text-slate-400 ${callCursor} ${cITM} ${callRing}`}>
+                        {fmtNum(call?.bid)}
                       </td>
-                    )}
 
-                    {/* Volume with proportional bar */}
-                    <td
-                      onClick={putClick}
-                      style={volBarStyle(put?.volume, maxVol, 'put')}
-                      className={`py-1 px-1.5 text-left ${putCursor} ${pITM} ${putRing} ${row.isPutITM ? 'text-amber-800 dark:text-amber-300 font-medium' : ''}`}
-                    >
-                      {fmtInt(put?.volume)}
-                    </td>
+                      {/* Ask (border) */}
+                      <td onClick={callClick} className={`py-1 px-1.5 text-right font-bold border-r border-gray-200 dark:border-gray-800 ${callCursor} ${callRing} ${row.isCallITM ? 'bg-teal-500/15 dark:bg-teal-950/35 text-teal-900 dark:text-teal-100' : 'bg-gray-50/50 dark:bg-gray-800/30 text-slate-900 dark:text-slate-100'}`}>
+                        {fmtNum(call?.ask)}
+                      </td>
 
-                    {/* Liquidity dot */}
-                    <td onClick={putClick} className={`py-1 px-1.5 text-left ${putCursor} ${pITM} ${putRing}`}>
-                      <Circle className={`w-2 h-2 inline-block ${LIQ_DOT[putLiq.tier]} ${putLiq.tier !== 'unknown' ? 'fill-current' : ''}`} />
-                    </td>
-                  </tr>
+                      {/* ══════ CENTER STRIKE ══════ */}
+                      <td className={`py-1 px-3 text-center font-bold border-x border-gray-200 dark:border-gray-800 tracking-tight ${
+                        isATM
+                          ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-inner'
+                          : isHovered
+                          ? 'bg-slate-900 text-[#D08F52] dark:bg-gray-800'
+                          : 'bg-gray-50/80 dark:bg-gray-800/40 text-slate-800 dark:text-slate-200'
+                      }`}>
+                        <div className="flex items-center justify-center gap-1 font-mono">
+                          <span>{row.strike.toLocaleString()}</span>
+                          {isATM && (
+                            <span className="text-[8px] px-1 py-0.5 bg-black/30 text-white rounded font-bold uppercase leading-none">
+                              ATM
+                            </span>
+                          )}
+                          {isRowSelected && (
+                            <ChevronDown className="w-3 h-3 inline-block ml-0.5 animate-bounce" />
+                          )}
+                        </div>
+                      </td>
 
-                  {/* ══════ DETAIL INSPECTOR ROW ══════ */}
-                  {isRowSelected && (
-                    <tr>
-                      <td colSpan={totalCols} className="p-0 bg-white dark:bg-gray-900">
-                        {isCallSelected && call && (
-                          <ContractDetailPanel contract={call} side="call" spotPrice={spotPrice} dte={dte} onClose={() => setSelectedContract(null)} />
-                        )}
-                        {isPutSelected && put && (
-                          <ContractDetailPanel contract={put} side="put" spotPrice={spotPrice} dte={dte} onClose={() => setSelectedContract(null)} />
-                        )}
+                      {/* ══════ PUT SIDE ══════ */}
+
+                      {/* Bid (border) */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left font-bold border-l border-gray-200 dark:border-gray-800 ${putCursor} ${putRing} ${row.isPutITM ? 'bg-amber-500/15 dark:bg-amber-950/35 text-amber-900 dark:text-amber-100' : 'bg-gray-50/50 dark:bg-gray-800/30 text-slate-900 dark:text-slate-100'}`}>
+                        {fmtNum(put?.bid)}
+                      </td>
+
+                      {/* Ask */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-600 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
+                        {fmtNum(put?.ask)}
+                      </td>
+
+                      {/* Vega */}
+                      {showVega && (
+                        <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
+                          {fmtNum(put?.vega, 2)}
+                        </td>
+                      )}
+
+                      {/* Theta */}
+                      {showTheta && (
+                        <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
+                          {fmtNum(put?.theta, 2)}
+                        </td>
+                      )}
+
+                      {/* Gamma */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-600 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
+                        {fmtNum(put?.gamma, 4)}
+                      </td>
+
+                      {/* Delta */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left ${deltaColor(put?.delta, 'put')} ${putCursor} ${pITM} ${putRing}`}>
+                        {fmtNum(put?.delta, 3)}
+                      </td>
+
+                      {/* IV with heat */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left text-purple-600 dark:text-purple-400 ${putCursor} ${pITM} ${putRing} ${ivHeatBg(put?.impliedVolatilityMid)}`}>
+                        {fmtIV(put?.impliedVolatilityMid)}
+                      </td>
+
+                      {/* OI */}
+                      {showOI && (
+                        <td onClick={putClick} className={`py-1 px-1.5 text-left text-slate-500 dark:text-slate-400 ${putCursor} ${pITM} ${putRing}`}>
+                          {fmtInt(put?.openInterest)}
+                        </td>
+                      )}
+
+                      {/* Volume with proportional bar */}
+                      <td
+                        onClick={putClick}
+                        style={volBarStyle(put?.volume, maxVol, 'put')}
+                        className={`py-1 px-1.5 text-left ${putCursor} ${pITM} ${putRing} ${row.isPutITM ? 'text-amber-800 dark:text-amber-300 font-medium' : ''}`}
+                      >
+                        {fmtInt(put?.volume)}
+                      </td>
+
+                      {/* Liquidity dot */}
+                      <td onClick={putClick} className={`py-1 px-1.5 text-left ${putCursor} ${pITM} ${putRing}`}>
+                        <Circle className={`w-2 h-2 inline-block ${LIQ_DOT[putLiq.tier]} ${putLiq.tier !== 'unknown' ? 'fill-current' : ''}`} />
                       </td>
                     </tr>
-                  )}
-                </React.Fragment>
-              );
-            })}
+
+                    {/* ══════ DETAIL INSPECTOR ROW ══════ */}
+                    {isRowSelected && (
+                      <tr>
+                        <td colSpan={totalCols} className="p-0 bg-white dark:bg-gray-900">
+                          {isCallSelected && call && (
+                            <ContractDetailPanel contract={call} side="call" spotPrice={spotPrice} dte={dte} onClose={() => setSelectedContract(null)} />
+                          )}
+                          {isPutSelected && put && (
+                            <ContractDetailPanel contract={put} side="put" spotPrice={spotPrice} dte={dte} onClose={() => setSelectedContract(null)} />
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>
