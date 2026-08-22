@@ -51,6 +51,14 @@ Spelled out, since "stdev of returns" hides a few choices that change the number
 
 The **forward-looking version** used by the backtest (`fwd_earned_premium`, and the client-side recomputation for other holding periods — see Backtest View below) is the *identical formula* applied to the **following** $N$ sessions instead of the trailing 20: same log-return construction, same sample stdev (ddof=1), same $\sqrt{252}$ annualization. Only the direction of the window changes — trailing for the tradeable "quoted" signal, forward for the hindsight "actually earned" one. Keeping the formula identical in both directions is deliberate: it means the "quoted vs. earned" gap documented later on this page is a genuine finding about mean reversion, not an artifact of two different vol estimators being compared.
 
+### Why 20 trading days?
+
+VIX targets a constant **30-calendar-day** expected volatility (Cboe interpolates between the near- and next-term option chains to hit exactly that horizon). Twenty trading sessions cover roughly 29 calendar days — close enough to VIX's actual referent that the comparison is measuring "the same month," not two different-length periods. This is standard practitioner convention, not a platform-specific choice: 20-session historical volatility is the most commonly cited single-window proxy for comparing against a 30-day implied measure, with some sources using 21 sessions as the slightly more exact calendar-day match ([Topstep](https://www.topstep.com/blog/implied-vs-realized-volatility-the-vix); [Macroption](https://www.macroption.com/implied-vs-realized-vs-historical-volatility/)).
+
+That 20-vs-21 split is visible in our own pipeline: the **trailing** window (`RV_20`, used for quoted VRP and the regime classification) uses 20 sessions, while the **forward** window (`fwd_realized_vol_21d`, used for the backtest and "actually earned") uses 21. Both are legitimate — 20 is the more common round-number convention for a trailing snapshot, 21 is the marginally tighter calendar-day match and was chosen for the forward side to line up with a standard trading month. The half-session difference this creates between "quoted" and "earned" is immaterial (it changes the realized-vol estimate by a fraction of a percentage point, far below the day-to-day noise in a 20-observation sample) and does not affect any of the sign or ranking results on this page.
+
+**Is one window enough?** The pipeline also computes and stores `realized_vol_10d` alongside `realized_vol_20d` — a faster-reacting cross-check — but today it is only surfaced as a footnote stat on the panel, not used in the VRP calculation, the regime classification, or the backtest. That is a known simplification: right after a volatility spike rolls out of a 20-session lookback, RV_20 can stay elevated for another two-plus weeks after the tape has actually calmed (and the reverse going into a shock), and nothing on the panel currently flags when the 10-day and 20-day readings materially diverge. Relying on a single window is standard practice for a headline number, but a 10-vs-20 divergence check would be a legitimate future enhancement rather than a correction — it would sit alongside the existing trailing/forward pair as a third, orthogonal cross-check (window length) rather than replace either.
+
 Supporting context measures:
 
 - **`vrp_z`** — EWM z-score of VRP (span 126, ~6 months). Is today's premium rich relative to its *own* recent history?
@@ -217,7 +225,7 @@ Two implementation points matter for reading it honestly:
 
 The last ~21 sessions have no `fwd_earned_premium` yet (the future hasn't happened) and are simply not traded.
 
-Over the full 2000–2026 sample this produces **311 trades, +1,114 total vol points, +3.58 average per trade, an 85% win rate, and a −86 point maximum drawdown**. Those first two match the unconditional figures in the section above (~+3.5 at ~82%), which is the consistency check you'd want — the backtest is just a different lens on the same premium, not a new claim.
+Over the full 2000–2026 sample (holding 21 sessions) this produces **313 trades, +1,115 total vol points, +3.56 average per trade, an 84% win rate, and a −86 point maximum drawdown**. Those figures match the unconditional numbers in the section above (~+3.5 at ~82%), which is the consistency check you'd want — the backtest is just a different lens on the same premium, not a new claim.
 
 The shape is the classic short-vol profile: a long, steady climb punctuated by rare severe losses. The three worst trades are exactly where you'd expect if the calculation is sound — **2020-02-12 (−54.6)** entering the COVID crash, **2008-09-08 (−36.1)** entering Lehman week, and **2008-10-07 (−29.4)** deeper into the GFC. A single trade losing 54.6 points against a 3.58-point average is the whole risk argument for VRP harvesting in one number, and it's why the [Volmageddon](https://en.wikipedia.org/wiki/2018_VIX_termination_event)-style caution applies to any levered version of this strategy.
 
@@ -244,6 +252,17 @@ Two cautions on reading that table. **Totals are not directly comparable across 
 **Context series.** The backtest chart overlays VIX at entry (dashed blue, right axis) alongside cumulative harvest and drawdown, so a losing cluster is interpretable — you can see directly whether the trades that hurt were sold into low vol that then exploded, or into already-elevated vol that kept climbing.
 
 **Timeframes.** The chart supports 3M / 6M / 1Y / 2Y / 5Y / All / Custom, defaulting to 1Y. Two mechanical notes: the API window is expressed in *calendar* days while the chart is sized in *trading sessions*, so each timeframe over-requests using a measured ~1.55 calendar-days-per-session ratio (the textbook 365/252 = 1.448 is too optimistic once holidays are counted, and under-requesting silently truncates the window instead of erroring). And windows longer than ~900 sessions are decimated for chart performance by keeping each interval's largest-|VRP| session rather than plain striding — striding would drop exactly the crash days that matter most in this series. Summary statistics are always computed on the full window, never the decimated one.
+
+### Is the backtest mathematically sound?
+
+Checked directly against the live implementation rather than assumed. Four properties matter for calling a backtest like this trustworthy, and all four hold:
+
+1. **No lookahead in trade selection.** Entries are chosen on a fixed calendar grid — every `holdSessions`-th session starting from the window's first valid date — never by looking at what a trade would have earned. A signal-selected entry schedule (e.g. "only enter when `vrp_z` is high") would leak future information into which trades get counted; a fixed step schedule cannot, by construction. This is the same reason the earlier "Does VRP Level Predict What You Earn?" quintile test is trustworthy: neither test lets the outcome influence which sessions are sampled.
+2. **Non-overlapping windows, correctly enforced.** The loop advances by exactly `holdSessions` each iteration (`i += holdSessions`), so no two trades' forward-realized-vol windows share a session. This was the one identified failure mode worth checking for — summing daily instead would inflate the total roughly 21× — and the step logic rules it out structurally, not just empirically.
+3. **Peak/drawdown/win-rate arithmetic is standard and correctly wired.** Cumulative harvest is a running sum of each trade's `VIX_entry − realizedVol_forward`; drawdown at each point is cumulative minus the running peak-so-far (so it is ≤ 0 by construction); max drawdown is the minimum of those; win rate is the share of trades with positive earned premium. All of this runs on the raw unrounded cumulative value — the `.toFixed()` calls are display-only and never feed back into the running total, so there's no accumulated rounding drift over hundreds of trades.
+4. **The holding-period table's numbers reproduce exactly.** Re-running the live GraphQL history (6,575 sessions, 2000-05-01 → the latest session) through the identical algorithm gives **313 trades, +1,115.4 total, +3.56 avg, 84% win rate, −86.0 max drawdown, −54.6 worst trade** at the 21-session hold — matching the table above to the decimal. This check also caught a stale inconsistency in an earlier draft of this page (a paragraph that quoted 311 trades / 85% / +3.58 from before the entry-grid alignment logic was finalized); that paragraph has been corrected to match the verified figures.
+
+What this does *not* claim: the backtest still has no transaction costs, no slippage, no delta-hedging, and an arbitrary (not optimised) entry grid — all already listed under Limitations. "Mathematically sound" here means the arithmetic and sampling are internally consistent and lookahead-free, not that it estimates a tradeable strategy's real-world P&L.
 
 ## How This Compares to the Academic Literature
 
@@ -337,3 +356,8 @@ The numerical claims in this section (84.8% positive, sign agreement across all 
 - Carr & Wu (2009), *Variance Risk Premia*, Review of Financial Studies — [paper](https://engineering.nyu.edu/sites/default/files/2019-01/CarrReviewofFinStudiesMarch2009-a.pdf). Variance-swap framing of the premium across underlyings.
 - [Exploring the Variance Risk Premium Across Assets](https://afajof.org/management/viewp.php?n=41580) (AFA) — cross-asset evidence that the premium is not an equity-index quirk.
 - [Realized GARCH, CBOE VIX, and the Volatility Risk Premium](https://arxiv.org/pdf/2112.05302) — on VIX-formula edge cases and alternative model-free implied-variance estimators.
+
+### Practitioner convention sources
+
+- [Topstep — Implied vs. realized volatility & the VIX](https://www.topstep.com/blog/implied-vs-realized-volatility-the-vix) — on VIX's 30-calendar-day (~21-trading-day) target horizon.
+- [Macroption — Implied, Realized and Historical Volatility](https://www.macroption.com/implied-vs-realized-vs-historical-volatility/) — on 20/21-session historical volatility as the standard single-window proxy for a one-month implied comparison.
