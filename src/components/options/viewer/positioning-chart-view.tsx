@@ -34,6 +34,22 @@ interface PositioningChartViewProps {
 type PositioningSubView = 'oi' | 'volume' | 'maxPainCurve' | 'cumulativeOI' | 'liquidity';
 type StrikeRangeOption = 15 | 25 | 'all';
 
+function contractRoot(symbol: string | undefined): string {
+  const m = symbol && symbol.match(/^([A-Z]+)/);
+  return m ? m[1] : '';
+}
+
+// Picks between two same-strike contracts (SPX vs SPXW) for views that need a single
+// representative quote rather than an additive sum. Prefer the standard SPX root; fall
+// back to higher open interest if neither/both match.
+function preferContract(candidate: OptionContractData, current: OptionContractData): boolean {
+  const candidateIsSPX = contractRoot(candidate.contractSymbol) === 'SPX';
+  const currentIsSPX = contractRoot(current.contractSymbol) === 'SPX';
+  if (candidateIsSPX && !currentIsSPX) return true;
+  if (!candidateIsSPX && currentIsSPX) return false;
+  return (candidate.openInterest ?? 0) > (current.openInterest ?? 0);
+}
+
 export function PositioningChartView({
   calls,
   puts,
@@ -76,40 +92,66 @@ export function PositioningChartView({
     let totalCVol = 0;
     let totalPVol = 0;
 
-    let maxCOI = 0;
-    let cWallRaw = 0;
-    let maxPOI = 0;
-    let pWallRaw = 0;
-
+    // A standard SPX monthly is frequently shared with a same-day SPXW contract -- a
+    // genuinely different, separately-traded product with its own OI pool, listed under
+    // the identical strike and calendar date. Unlike the IV surface (where two different
+    // IVs at one strike must be resolved to a single curve value), open interest and
+    // volume are additive: dealer hedging pressure and resting size at a strike come from
+    // BOTH instruments, same reasoning as GEX already uses. So duplicates are SUMMED here,
+    // not deduped to one -- accumulate into the map instead of overwriting.
+    //
+    // This was a real, severe bug before the summing fix, not just noise: the raw feed
+    // consistently lists the high-OI SPX contract before its low-OI SPXW twin at every
+    // major round-number strike, and the previous Map.set() call kept whichever came
+    // LAST -- so it was systematically discarding the dominant SPX open interest and
+    // keeping only the SPXW leftover at exactly the strikes that matter most. On one
+    // monthly this made the Cumulative OI curve peak at ~107K contracts while the Total
+    // OI KPI card (which does sum correctly) read ~2.27M -- 95% of open interest was
+    // silently missing from the curve.
     calls.forEach(c => {
       const oi = c.openInterest || 0;
       const vol = c.volume || 0;
-      callMap.set(c.strike, { oi, vol });
-      callRawMap.set(c.strike, c);
+      const existing = callMap.get(c.strike);
+      if (existing) {
+        existing.oi += oi;
+        existing.vol += vol;
+      } else {
+        callMap.set(c.strike, { oi, vol });
+      }
+      // The Liquidity view needs ONE representative quote per strike (spread can't be
+      // summed) -- prefer the standard SPX root over SPXW, matching the Volatility tab's
+      // dedupeByStrike(); fall back to whichever has higher open interest.
+      const existingRaw = callRawMap.get(c.strike);
+      if (!existingRaw || preferContract(c, existingRaw)) callRawMap.set(c.strike, c);
       strikes.add(c.strike);
       totalCOI += oi;
       totalCVol += vol;
-
-      if (oi > maxCOI) {
-        maxCOI = oi;
-        cWallRaw = c.strike;
-      }
     });
 
     puts.forEach(p => {
       const oi = p.openInterest || 0;
       const vol = p.volume || 0;
-      putMap.set(p.strike, { oi, vol });
-      putRawMap.set(p.strike, p);
+      const existing = putMap.get(p.strike);
+      if (existing) {
+        existing.oi += oi;
+        existing.vol += vol;
+      } else {
+        putMap.set(p.strike, { oi, vol });
+      }
+      const existingRaw = putRawMap.get(p.strike);
+      if (!existingRaw || preferContract(p, existingRaw)) putRawMap.set(p.strike, p);
       strikes.add(p.strike);
       totalPOI += oi;
       totalPVol += vol;
-
-      if (oi > maxPOI) {
-        maxPOI = oi;
-        pWallRaw = p.strike;
-      }
     });
+
+    // Call/Put Wall: peak OI strike, computed from the summed map -- not inline during
+    // accumulation, since a strike's true (summed) OI is only known once every duplicate
+    // for it has been folded in.
+    let maxCOI = 0, cWallRaw = 0;
+    callMap.forEach((v, strike) => { if (v.oi > maxCOI) { maxCOI = v.oi; cWallRaw = strike; } });
+    let maxPOI = 0, pWallRaw = 0;
+    putMap.forEach((v, strike) => { if (v.oi > maxPOI) { maxPOI = v.oi; pWallRaw = strike; } });
 
     const sortedStrikes = Array.from(strikes).sort((a, b) => a - b);
     const filteredStrikes = sortedStrikes.filter(
