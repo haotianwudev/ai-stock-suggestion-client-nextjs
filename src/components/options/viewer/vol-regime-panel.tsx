@@ -290,6 +290,21 @@ export function VolRegimePanel() {
 
   const isSampled = filteredHistory.length > MAX_CHART_POINTS;
 
+  // Everything on this panel falls into one of three scopes, and mixing them up is the
+  // easiest way to misread the numbers. Label each explicitly rather than leaving the
+  // reader to infer it:
+  //   - "as of" a single date  -> the stat tiles (today's regime reading)
+  //   - the SELECTED WINDOW    -> the chart, its stats bar, VIX distribution, backtest
+  //   - FULL HISTORY since 2000 -> the regime table at the bottom (server-side aggregate,
+  //     deliberately independent of the timeframe picker so its baseline doesn't shift)
+  const windowLabel = useMemo(() => {
+    if (!filteredHistory.length) return null;
+    const from = filteredHistory[0].bizDate;
+    const to = filteredHistory[filteredHistory.length - 1].bizDate;
+    const scope = isCustom ? 'Custom' : tf.label === 'All' ? 'All history' : tf.label;
+    return { scope, from, to, sessions: filteredHistory.length };
+  }, [filteredHistory, isCustom, tf.label]);
+
   /**
    * VIX distribution vs. VRP: bucket the window's sessions by VIX level and show both how
    * often each level occurs and what the premium looked like there. This is the natural
@@ -553,6 +568,9 @@ export function VolRegimePanel() {
             <div className="font-mono text-sm font-semibold text-slate-700 dark:text-slate-300">
               {latest.bizDate}
             </div>
+            <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">
+              Point-in-time
+            </div>
           </div>
         </div>
 
@@ -617,12 +635,43 @@ export function VolRegimePanel() {
                 {chartMode === 'backtest' && 'VRP Harvest Backtest — Monthly Rebalance'}
                 {chartMode === 'distribution' && 'VIX Distribution vs. VRP — Does High Vol Pay Better?'}
               </h4>
+              {windowLabel && (
+                <Badge className="bg-[#A8672E]/10 text-[#A8672E] dark:bg-[#D08F52]/15 dark:text-[#D08F52] border-[#A8672E]/30 text-[10px] font-mono px-2 py-0 whitespace-nowrap">
+                  {windowLabel.scope}: {windowLabel.from} → {windowLabel.to} · {windowLabel.sessions.toLocaleString()} sessions
+                </Badge>
+              )}
             </div>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               {chartMode === 'levels' && "The spread between Implied Volatility (VIX) and 20-Day Realized Volatility represents the options seller's edge. Green area = positive VRP; Red area = inverted volatility (seller tail risk)."}
               {chartMode === 'backtest' && `Sell this session's implied vol, hold ~${BACKTEST_HOLD_SESSIONS} sessions to expiry, collect implied minus subsequently-realized, repeat. Non-overlapping windows, measured in volatility points per unit of vol exposure — not a dollar P&L.`}
               {chartMode === 'distribution' && 'Bars show how often each VIX level occurred; lines show the premium there — quoted VRP versus what a seller actually collected over the following 21 sessions. Where the two diverge, the quoted premium was an illusion.'}
             </p>
+
+            {/* Measurement basis -- the distinction most likely to be misread on this panel */}
+            <div className="mt-1.5 flex flex-wrap items-start gap-x-3 gap-y-1 text-[10px]">
+              {chartMode === 'levels' && (
+                <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
+                  <span><span className="font-semibold">Point-in-time.</span> Every value here was knowable on its own date — VIX against the <em>trailing</em> 20 sessions. No lookahead.</span>
+                </span>
+              )}
+              {chartMode === 'backtest' && (
+                <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                  <span><span className="font-semibold">Backtest (uses hindsight).</span> Each trade&apos;s result is VIX at entry minus what realized vol <em>actually turned out to be</em> over the following {BACKTEST_HOLD_SESSIONS} sessions — knowable only after the fact, never at entry. The most recent ~{BACKTEST_HOLD_SESSIONS} sessions have no result yet and are excluded.</span>
+                </span>
+              )}
+              {chartMode === 'distribution' && (
+                <span className="inline-flex items-start gap-1 text-slate-500 dark:text-slate-400">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                  <span>
+                    <span className="font-semibold">Mixed basis — read the two lines differently.</span>{' '}
+                    <span className="text-[#A8672E] dark:text-[#D08F52] font-semibold">Quoted VRP</span> is point-in-time (VIX vs <em>trailing</em> 20d, knowable that day).{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Actually earned</span> uses hindsight (VIX vs <em>forward</em> {BACKTEST_HOLD_SESSIONS}d, knowable only later). You could have traded on the first; the second is what it turned out to be worth.
+                  </span>
+                </span>
+              )}
+            </div>
             {chartMode === 'levels' && isSampled && (
               <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
                 Showing {chartData.length.toLocaleString()} of {filteredHistory.length.toLocaleString()} sessions — sampled for readability, keeping each interval&apos;s most extreme VRP. Stats below use all sessions.
@@ -814,10 +863,10 @@ export function VolRegimePanel() {
                   <th className="font-semibold pb-1">VIX</th>
                   <th className="font-semibold pb-1 text-right">Sessions</th>
                   <th className="font-semibold pb-1 text-right">% of window</th>
-                  <th className="font-semibold pb-1 text-right">Avg realized</th>
-                  <th className="font-semibold pb-1 text-right">Avg quoted VRP</th>
-                  <th className="font-semibold pb-1 text-right">Avg earned</th>
-                  <th className="font-semibold pb-1 text-right">% positive</th>
+                  <th className="font-semibold pb-1 text-right">Avg realized<span className="block font-normal text-[9px] normal-case">trailing 20d</span></th>
+                  <th className="font-semibold pb-1 text-right">Avg quoted VRP<span className="block font-normal text-[9px] normal-case text-[#A8672E] dark:text-[#D08F52]">point-in-time</span></th>
+                  <th className="font-semibold pb-1 text-right">Avg earned<span className="block font-normal text-[9px] normal-case text-emerald-600 dark:text-emerald-400">forward {BACKTEST_HOLD_SESSIONS}d · hindsight</span></th>
+                  <th className="font-semibold pb-1 text-right">% positive<span className="block font-normal text-[9px] normal-case">quoted VRP</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -1134,12 +1183,19 @@ export function VolRegimePanel() {
       {result?.stats?.length ? (
         <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
           <div className="px-4 pt-4 pb-2">
-            <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
-              How each regime has paid since 2000
-            </h4>
+            <div className="flex flex-wrap items-center gap-2">
+              <h4 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
+                How each regime has paid
+              </h4>
+              <Badge className="bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700 text-[10px] font-mono px-2 py-0">
+                Full history since 2000 · fixed
+              </Badge>
+            </div>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-              Average premium available in each regime across the full sample — the context
-              that turns today&apos;s label into a decision.
+              Average premium available in each regime across the entire 2000–present sample — the
+              context that turns today&apos;s label into a decision. <span className="font-semibold">This table is
+              deliberately independent of the timeframe picker above</span>, so the historical baseline
+              stays fixed while you change the chart&apos;s window.
             </p>
           </div>
           <div className="overflow-x-auto">

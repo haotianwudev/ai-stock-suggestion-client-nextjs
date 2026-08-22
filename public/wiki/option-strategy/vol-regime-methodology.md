@@ -132,6 +132,33 @@ Stressed Premium is roughly **5× more likely** to become Crisis than Harvest is
 
 The practical conclusion: use the regime for **position sizing and risk**, not for timing entries. The level of VRP tells you little about the next month's return; the regime label tells you a great deal about the chance of the tape turning against a short-vol position.
 
+## Reading the Panel: Scope and Measurement Basis
+
+Two distinctions govern every number on the VRP Research tab, and conflating either is the easiest way to misread it. Both are labelled in the UI.
+
+### Scope — what window is this number over?
+
+| Scope | What it covers | Where it appears |
+|---|---|---|
+| **Point-in-time** | A single date's reading | The four stat tiles at the top ("As of &lt;date&gt;") |
+| **Selected window** | Whatever the timeframe picker is set to | The chart, its stats bar, the VIX distribution table, the backtest |
+| **Full history since 2000** | The entire ~6,575-session sample | The "How each regime has paid" table at the bottom |
+
+The bottom regime table is **deliberately independent of the timeframe picker**. Switching the chart to 3M does not re-scope it, so the historical baseline you're comparing today's regime against stays fixed rather than shifting under you. The chart card carries an explicit badge showing the active window's scope, date range, and session count.
+
+### Measurement basis — trailing, or forward?
+
+This is the subtler one, and it's the difference between a number you could have acted on and a number that only exists in hindsight.
+
+| Basis | Definition | Knowable when? |
+|---|---|---|
+| **Point-in-time** (trailing) | VIX vs. the **previous** 20 sessions' realized vol | On the day itself — tradeable |
+| **Backtest** (forward) | VIX vs. the **following** 21 sessions' realized vol | Only after those sessions elapse — hindsight |
+
+Everything in the Levels chart, the stat tiles, and the regime classification is point-in-time: computed from data available on that date, no lookahead. The Backtest view and the "actually earned" line in the VIX distribution are forward-looking by construction — they answer *what did that premium turn out to be worth*, which is a legitimate research question but is **not** something you could have known at entry.
+
+The VIX distribution view deliberately shows both side by side, because the gap between them is the finding (see below). Its table labels each column with its basis for exactly this reason. The most recent ~21 sessions have no forward measurement yet and are excluded from anything forward-looking.
+
 ## VIX Distribution vs. VRP
 
 The chart's third mode buckets the window's sessions by VIX level and shows, for each bucket, how often that level occurred alongside two different premium measures. It answers the question traders reach for most naturally — *does selling volatility pay better when VIX is high?* — which is distinct from the `vrp_z` test above (that one asks whether the premium being rich **relative to its own history** predicts anything; this asks about the **absolute level**).
@@ -197,6 +224,8 @@ The shape is the classic short-vol profile: a long, steady climb punctuated by r
 - VRP *level* has almost no power to time entries (IC ≈ 0.008), despite the premium itself being real and persistent.
 - The regime label is a **risk** signal: Stressed Premium carries a 26.7% chance of becoming Crisis within a month versus 5.7% from Harvest.
 - The Backtest view harvests on non-overlapping ~monthly windows because `fwd_earned_premium` overlaps day-to-day — summing it daily would inflate the curve ~21×.
+- Three scopes coexist on the panel — point-in-time (stat tiles), selected window (chart/distribution/backtest), and full history since 2000 (regime table, fixed regardless of the timeframe picker). Each is labelled in the UI.
+- Point-in-time metrics were knowable on their own date and are tradeable; forward/backtest metrics require hindsight and are research-only. The Levels chart is entirely the former; the Backtest view and "actually earned" are the latter.
 - Quoted VRP measures against *trailing* realized vol, earned premium against *forward* realized. At VIX 40+ the two disagree by 8+ vol points and even flip sign — quoted reads −3.97 while sellers actually collected +4.40, because trailing realized is elevated and forward realized mean-reverts.
 - Absolute VIX level *does* carry forward information (earned premium rises from +2.29 to +5.37 across the VIX range) even though `vrp_z` does not — different signals, not a contradiction. High VIX means a bigger average premium with much heavier tails.
 - Full-sample backtest: 311 trades, +3.58 avg, 85% win rate, −86 pt max drawdown, with the worst trades landing on COVID and Lehman — steady climb, rare severe losses.
