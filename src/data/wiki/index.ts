@@ -48,6 +48,51 @@ export const wikiEntries: WikiEntry[] = [
       "How SOPHIE computes the daily volatility regime and variance risk premium: the four-regime taxonomy validated against COVID and the GFC, the convexity and downside-variance decompositions, and the finding that VRP level has near-zero power to time entries (IC ~0.008) while the regime label is a strong risk signal.",
   },
   {
+    path: "option-strategy/options-hud-metrics",
+    title: "Options HUD Metrics",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Implementation spec for the Options Viewer's summary banner: Expected Move (ATM straddle vs. Black-Scholes fallback), Max Pain and why it's suppressed without open interest, Volume vs. OI put/call ratios, and how the ~55 SPX expirations get filtered and ranked by measured liquidity instead of just DTE.",
+  },
+  {
+    path: "option-strategy/option-liquidity-scoring",
+    title: "Option Liquidity Scoring",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "How SOPHIE's per-contract liquidity score works: why spread gates the score multiplicatively rather than being outvoted by open interest, the log-scaled volume/OI components, and how a contract with a wide unfillable quote can never be rescued by size.",
+  },
+  {
+    path: "option-strategy/volatility-surface-analytics",
+    title: "Volatility Surface Analytics",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Implementation spec for the Volatility tab: the IV smile, term structure and forward implied vol, the Breeden-Litzenberger risk-neutral density (and why SPX's non-uniform strike grid needs the general three-point second derivative, not the textbook uniform formula), and 25-delta risk reversal/butterfly.",
+  },
+  {
+    path: "option-strategy/options-positioning-analysis",
+    title: "Options Positioning Analysis",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Implementation spec for the OI/Volume tab: the full Max Pain cumulative payout curve (not just its minimum) and the cumulative open interest curve, plus how curve shape separates a real positioning signal from noise.",
+  },
+  {
+    path: "option-strategy/spx-payoff-builder-methodology",
+    title: "Multi-Leg Payoff & Probability of Profit Methodology",
+    articleSlug: "",
+    date: "2026-08-21",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "How the SPX Payoff Builder computes multi-leg expiration P&L, the T+0 mark-to-market curve, net position Greeks, risk-neutral probability of profit, and skew-adjusted implied price ranges — including why POP measures win rate, not expected value.",
+  },
+  {
     path: "form13f/appaloosa-q2-2026-rotation-hedge",
     title: "Tepper's Q2 2026 Rotation",
     articleSlug: "appaloosa-management-q2-2026-13f-institutional-analysis",
