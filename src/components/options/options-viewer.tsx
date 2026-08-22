@@ -78,15 +78,52 @@ function isFriday(dateStr: string): boolean {
   return !Number.isNaN(d.getTime()) && d.getDay() === 5;
 }
 
-/** The liquid subset: the current trading week (0DTE is among the most active SPX
- *  cycles), near-term Friday weeklies, and standard monthlies out to one year.
- *  Long-dated LEAPS monthlies are excluded here — they're technically monthlies but
- *  trade thinly, and they're still reachable via the "Monthlies & LEAPS" filter. */
-function isKeyExpiration(exp: { expiration: string; daysToExpiration: number }): boolean {
-  if (exp.daysToExpiration <= 5) return true;                              // front week, incl. 0DTE
-  if (isFriday(exp.expiration) && exp.daysToExpiration <= 45) return true; // near Friday weeklies
-  if (isThirdFriday(exp.expiration) && exp.daysToExpiration <= 365) return true; // monthlies to 1y
-  return false;
+// How many of each cycle type the default strip keeps. Non-Friday dailies are only
+// worth showing at the very front (0DTE/1DTE trade heavily); past that, liquidity
+// lives on Fridays, so mid-week cycles at 3-5 DTE just pad the strip.
+const KEY_SHORT_TERM_MAX_DTE = 2;  // today + next session, any weekday
+const KEY_WEEKLY_COUNT = 4;        // next 4 Friday weeklies
+const KEY_MONTHLY_COUNT = 6;       // next 6 standard monthlies (~6 months out)
+const KEY_LEAPS_TARGET_DTES = [365, 730]; // ~1y and ~2y long-term anchors
+
+/** The liquid subset shown by default: near-term dailies, Friday weeklies, standard
+ *  monthlies, and a couple of long-dated anchors — rather than all ~56 cycles. */
+type ExpirationLike = { expiration: string; daysToExpiration: number };
+
+function selectKeyExpirations<T extends ExpirationLike>(all: T[]): T[] {
+  const keep = new Set<string>();
+
+  // 1. Really short term — 0DTE/1DTE are among the most active SPX cycles, and at
+  //    this horizon the weekday doesn't matter.
+  for (const e of all) {
+    if (e.daysToExpiration <= KEY_SHORT_TERM_MAX_DTE) keep.add(e.expiration);
+  }
+
+  // 2. Friday weeklies (monthlies get their own allowance below, so exclude them
+  //    here or they'd eat into the weekly count).
+  all.filter(e => isFriday(e.expiration) && !isThirdFriday(e.expiration))
+    .slice(0, KEY_WEEKLY_COUNT)
+    .forEach(e => keep.add(e.expiration));
+
+  // 3. Standard monthlies — the deepest open interest on the board.
+  const monthlies = all.filter(e => isThirdFriday(e.expiration));
+  monthlies
+    .filter(e => e.daysToExpiration > KEY_SHORT_TERM_MAX_DTE)
+    .slice(0, KEY_MONTHLY_COUNT)
+    .forEach(e => keep.add(e.expiration));
+
+  // 4. One or two long-term anchors: the monthly nearest each LEAPS target, so the
+  //    strip still reaches out a year or two without listing every LEAPS cycle.
+  for (const target of KEY_LEAPS_TARGET_DTES) {
+    const candidates = monthlies.filter(e => !keep.has(e.expiration));
+    if (!candidates.length) continue;
+    const nearest = candidates.reduce((best, e) =>
+      Math.abs(e.daysToExpiration - target) < Math.abs(best.daysToExpiration - target) ? e : best
+    );
+    keep.add(nearest.expiration);
+  }
+
+  return all.filter(e => keep.has(e.expiration));
 }
 type DataSource = 'historical' | 'live';
 
@@ -189,7 +226,7 @@ export function OptionsViewer() {
 
     let subset = all;
     if (expCategory === 'key') {
-      subset = all.filter(isKeyExpiration);
+      subset = selectKeyExpirations(all);
     } else if (expCategory === 'weeklies') {
       subset = all.filter(e => e.daysToExpiration <= 30);
     } else if (expCategory === 'monthlies') {
@@ -432,7 +469,7 @@ export function OptionsViewer() {
             <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60 p-0.5 text-xs">
               <button
                 onClick={() => setExpCategory('key')}
-                title="0DTE and the rest of the front week, near-term Friday weeklies, and standard monthlies — where SPX open interest actually sits"
+                title="0DTE plus the next session, 4 Friday weeklies, 6 standard monthlies, and ~1y/~2y long-term anchors — where SPX open interest actually sits"
                 className={`px-2.5 py-1 rounded-md font-medium text-xs transition-all ${
                   expCategory === 'key'
                     ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs font-semibold'
