@@ -323,6 +323,7 @@ export interface ForumThread {
   authorId?: string;
   authorDisplayName?: string;
   authorAvatarUrl?: string;
+  authorTier?: number;
   status: string;
   pinned: boolean;
   locked: boolean;
@@ -343,6 +344,7 @@ export interface ForumPost {
   authorId: string;
   authorDisplayName?: string;
   authorAvatarUrl?: string;
+  authorTier?: number;
   body: string;
   status: string;
   createdAt: string;

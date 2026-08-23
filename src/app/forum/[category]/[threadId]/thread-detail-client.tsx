@@ -8,7 +8,8 @@ import { PostList } from "@/components/forum/post-list";
 import { PostComposer } from "@/components/forum/post-composer";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronLeft, BookOpen, ExternalLink } from "lucide-react";
+import { ChevronLeft, BookOpen, ExternalLink, ChevronRight, Home } from "lucide-react";
+import { TierBadge } from "@/components/shared/tier-badge";
 
 export function ThreadDetailClient({ threadId }: { threadId: string }) {
   const { data, loading } = useQuery<{ forumThread: ForumThread | null }>(GET_FORUM_THREAD, {
@@ -40,13 +41,31 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
 
   return (
     <div className="space-y-6">
-      <Link
-        href={thread?.contentSlug ? "/forum/articles" : `/forum/${categorySlug}`}
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
-      >
-        <ChevronLeft className="size-4" />
-        Back to {thread?.contentSlug ? "Article Discussions" : "Discussions"}
-      </Link>
+      {/* Breadcrumb Navigation */}
+      <nav className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 flex-wrap" aria-label="Breadcrumb">
+        <Link
+          href="/forum"
+          className="inline-flex items-center gap-1 font-medium hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors"
+        >
+          <Home className="size-3.5" />
+          <span>Forum</span>
+        </Link>
+        <ChevronRight className="size-3 text-slate-400" />
+        <Link
+          href={thread?.contentSlug ? "/forum/articles" : `/forum/${categorySlug}`}
+          className="font-medium hover:text-[#A8672E] dark:hover:text-[#D08F52] transition-colors capitalize"
+        >
+          {thread?.contentSlug ? "Article Discussions" : categorySlug}
+        </Link>
+        {thread && (
+          <>
+            <ChevronRight className="size-3 text-slate-400" />
+            <span className="truncate max-w-[200px] sm:max-w-xs text-slate-700 dark:text-slate-300 font-medium">
+              {thread.title}
+            </span>
+          </>
+        )}
+      </nav>
 
       {loading && !data ? (
         <Skeleton className="h-8 w-2/3 rounded-xl" />
@@ -58,10 +77,12 @@ export function ThreadDetailClient({ threadId }: { threadId: string }) {
             </h1>
             {thread.locked && <Badge variant="outline" className="rounded-lg">Locked</Badge>}
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            Started by {thread.authorDisplayName ?? "Anonymous"} on{" "}
-            {new Date(thread.createdAt).toLocaleDateString()}
-          </p>
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex-wrap">
+            <span>Started by <strong className="text-slate-700 dark:text-slate-300 font-medium">{thread.authorDisplayName ?? "Anonymous"}</strong></span>
+            <TierBadge tier={thread.authorTier ?? 1} size="xs" showTierNumber="prefix" />
+            <span>&middot;</span>
+            <span>{new Date(thread.createdAt).toLocaleDateString()}</span>
+          </div>
 
           {contentUrl && (
             <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#A8672E]/30 bg-[#A8672E]/5 dark:bg-[#D08F52]/10 px-4 py-3 text-sm shadow-xs">

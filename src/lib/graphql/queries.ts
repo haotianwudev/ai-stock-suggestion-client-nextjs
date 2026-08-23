@@ -273,6 +273,7 @@ const FORUM_THREAD_FIELDS = `
   authorId
   authorDisplayName
   authorAvatarUrl
+  authorTier
   status
   pinned
   locked
@@ -315,6 +316,7 @@ const FORUM_POST_FIELDS = `
   authorId
   authorDisplayName
   authorAvatarUrl
+  authorTier
   body
   status
   createdAt

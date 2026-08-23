@@ -3,6 +3,7 @@ import { ForumThread } from "@/lib/graphql/types";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare, Pin, ExternalLink } from "lucide-react";
 import { SITE_FEEDBACK_CATEGORY_SLUG } from "@/lib/forum";
+import { TierBadge } from "@/components/shared/tier-badge";
 
 export function ThreadCard({ thread }: { thread: ForumThread }) {
   const categorySlug = thread.categorySlug ?? (thread.contentSlug ? "articles" : "general");
@@ -63,7 +64,8 @@ export function ThreadCard({ thread }: { thread: ForumThread }) {
           {contextBadge}
         </div>
         <div className="mt-1 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 flex-wrap">
-          <span>{authorName}</span>
+          <span className="font-medium text-slate-700 dark:text-slate-300">{authorName}</span>
+          <TierBadge tier={thread.authorTier ?? 1} size="xs" showTierNumber="prefix" />
           <span>&middot;</span>
           <span>{new Date(thread.createdAt).toLocaleDateString()}</span>
           {contentLink && (

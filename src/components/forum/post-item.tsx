@@ -11,6 +11,7 @@ import { ForumPost } from "@/lib/graphql/types";
 import { useUser } from "@/hooks/use-user";
 import { canDeletePost } from "@/lib/forum";
 import { ForumMarkdown } from "@/components/forum/forum-markdown";
+import { TierBadge } from "@/components/shared/tier-badge";
 
 export function PostItem({ post, indented = false }: { post: ForumPost; indented?: boolean }) {
   const { user, profile } = useUser();
@@ -62,8 +63,9 @@ export function PostItem({ post, indented = false }: { post: ForumPost; indented
         <AvatarFallback className="font-semibold text-xs text-slate-700 dark:text-slate-300">{initials}</AvatarFallback>
       </Avatar>
       <div className="min-w-0 flex-1 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-3 shadow-xs">
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100">{authorName}</span>
+          <TierBadge tier={post.authorTier ?? 1} size="xs" showTierNumber="prefix" />
           <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
             {new Date(post.createdAt).toLocaleString()}
             {post.editedAt && " (edited)"}
