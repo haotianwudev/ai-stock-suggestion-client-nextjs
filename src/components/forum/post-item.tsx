@@ -10,6 +10,7 @@ import { EDIT_POST, DELETE_POST, GET_FORUM_POSTS } from "@/lib/graphql/queries";
 import { ForumPost } from "@/lib/graphql/types";
 import { useUser } from "@/hooks/use-user";
 import { canDeletePost } from "@/lib/forum";
+import { ForumMarkdown } from "@/components/forum/forum-markdown";
 
 export function PostItem({ post, indented = false }: { post: ForumPost; indented?: boolean }) {
   const { user, profile } = useUser();
@@ -99,7 +100,7 @@ export function PostItem({ post, indented = false }: { post: ForumPost; indented
             </div>
           </div>
         ) : (
-          <p className="mt-1.5 whitespace-pre-wrap text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{post.body}</p>
+          <ForumMarkdown content={post.body} className="mt-1.5" />
         )}
 
         {!isEditing && (isOwner || canDelete) && (
