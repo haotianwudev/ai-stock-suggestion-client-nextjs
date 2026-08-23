@@ -94,6 +94,16 @@ export const wikiEntries: WikiEntry[] = [
       "Implementation spec for the Volatility tab: the IV smile, term structure and forward implied vol, the Breeden-Litzenberger risk-neutral density (and why SPX's non-uniform strike grid needs the general three-point second derivative, not the textbook uniform formula), and 25-delta risk reversal/butterfly.",
   },
   {
+    path: "option-strategy/options-history-analytics",
+    topics: ["Platform Methodology", "Volatility & VRP"],
+    title: "Options History Analytics",
+    articleSlug: "",
+    date: "2026-08-23",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    summary:
+      "Implementation spec for the History tab, the only part of the viewer reading stored daily history rather than a single snapshot: percentile ranks and why they are withheld below 20 sessions, the Skew Stickiness Ratio (and how it tests the sticky-strike assumption the gamma flip level depends on), session-over-session open-interest flow, and the skew-versus-price divergence read.",
+  },
+  {
     path: "option-strategy/options-positioning-analysis",
     topics: ["Platform Methodology", "Greeks & Mechanics"],
     title: "Options Positioning Analysis",

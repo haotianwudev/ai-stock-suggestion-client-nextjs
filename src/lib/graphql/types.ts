@@ -419,3 +419,104 @@ export interface VolRegimeResult {
   vrpQuintiles: VrpQuintileStat[];
   transitions: RegimeTransition[];
 }
+
+// --- SPX option snapshot history (spx_option_snapshot / spx_option_chain_snapshot) ---
+// Rank fields are null until 20 sessions are stored; `sampleSize` drives the "building
+// history" state rather than an error, since a thin table is the expected early condition.
+
+export interface OptionSnapshot {
+  bizDate: string;
+  spot?: number | null;
+  refExpiration?: string | null;
+  refDte?: number | null;
+  atmIv?: number | null;
+  put25Iv?: number | null;
+  call25Iv?: number | null;
+  rr25?: number | null;
+  fly25?: number | null;
+  normalizedSkew?: number | null;
+  atmSkewSlope?: number | null;
+  ssr?: number | null;
+  frontAtmIv?: number | null;
+  backAtmIv?: number | null;
+  termSlope?: number | null;
+  pcrVolume?: number | null;
+  pcrOi?: number | null;
+  totalVolume?: number | null;
+  totalOpenInterest?: number | null;
+  netGexM?: number | null;
+  callWall?: number | null;
+  putWall?: number | null;
+  expirationCount?: number | null;
+  contractCount?: number | null;
+  sampleSize: number;
+  normalizedSkewRank?: number | null;
+  rr25Rank?: number | null;
+  fly25Rank?: number | null;
+  atmIvRank?: number | null;
+  netGexRank?: number | null;
+  pcrOiRank?: number | null;
+}
+
+export interface OptionSnapshotPoint {
+  bizDate: string;
+  spot?: number | null;
+  atmIv?: number | null;
+  rr25?: number | null;
+  fly25?: number | null;
+  normalizedSkew?: number | null;
+  atmSkewSlope?: number | null;
+  ssr?: number | null;
+  netGexM?: number | null;
+  pcrVolume?: number | null;
+  pcrOi?: number | null;
+}
+
+export type DivergenceState =
+  | 'WALL_OF_WORRY'
+  | 'EUPHORIA'
+  | 'FEAR_CONFIRMING'
+  | 'CAPITULATION_RELIEF';
+
+export interface SkewDivergence {
+  sessions: number;
+  fromDate?: string | null;
+  toDate?: string | null;
+  priceChange?: number | null;
+  priceChangePct?: number | null;
+  skewChange?: number | null;
+  state?: DivergenceState | null;
+}
+
+export type FlowState = 'BUILDING' | 'CLOSING' | 'CHURNING';
+
+export interface OpenInterestFlow {
+  bizDate?: string | null;
+  priorDate?: string | null;
+  sessionsAvailable: number;
+  callOiChange?: number | null;
+  putOiChange?: number | null;
+  callOi?: number | null;
+  putOi?: number | null;
+  callVolume?: number | null;
+  putVolume?: number | null;
+  callState?: FlowState | null;
+  putState?: FlowState | null;
+}
+
+export interface StrikeFlow {
+  expiration: string;
+  optType: string;
+  strike: number;
+  openInterest?: number | null;
+  oiChange?: number | null;
+  volume?: number | null;
+}
+
+export interface OptionSnapshotResult {
+  current?: OptionSnapshot | null;
+  history: OptionSnapshotPoint[];
+  divergence?: SkewDivergence | null;
+  flow?: OpenInterestFlow | null;
+  strikeFlow: StrikeFlow[];
+}

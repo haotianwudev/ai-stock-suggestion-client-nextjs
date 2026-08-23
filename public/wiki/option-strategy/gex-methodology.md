@@ -143,6 +143,7 @@ Note that SpotGamma's published definition does not explicitly require the walls
 ## Related Reading
 
 - [Gamma Exposure (GEX)](/wiki/option-strategy/gex) — the underlying concept
+- [Options History Analytics](/wiki/option-strategy/options-history-analytics) — the Skew Stickiness Ratio, which measures whether the sticky-strike assumption behind the gamma flip level actually held on a given day
 - [Volatility Regime & VRP Methodology](/wiki/option-strategy/vol-regime-methodology) — the companion volatility-regime spec
 - [SpotGamma — Gamma Exposure (GEX)](https://spotgamma.com/gamma-exposure-gex/)
 - [SqueezeMetrics research guide](https://squeezemetrics.com/monitor/static/guide.pdf)

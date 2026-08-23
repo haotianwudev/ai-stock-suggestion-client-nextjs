@@ -134,6 +134,28 @@ $$
 
 Positive means put skew, i.e. demand for downside protection exceeds upside calls. For index options this is nearly always positive; the informative signal is its *level* against its own history, not its sign.
 
+**Sign convention.** This platform quotes risk reversal as **put minus call**, so a normal equity surface reads positive. The FX/dealer convention — and most published index RR series — is the inverse, **call minus put**, where the same surface reads negative and a "rising, less negative" print means protection being sold off. Under our convention that same signal is a *falling* risk reversal. Neither convention is more correct, but they read backwards from each other, so check which one a source uses before comparing either levels or directions against this chart.
+
+**Normalised skew** — risk reversal divided by the same cycle's ATM implied vol:
+
+$$
+\text{Normalised Skew} = \frac{\text{IV}(\text{Put}_{25\Delta}) - \text{IV}(\text{Call}_{25\Delta})}{\text{IV}_{\text{ATM}}}
+$$
+
+Raw vol points are level-dependent: 5 points of skew against a 12% ATM is a heavy hedging bid, while the same 5 points against a 35% ATM is close to complacent. The ratio removes that dependence, which is what makes a fixed threshold table meaningful across regimes and comparable between cycles on the term structure.
+
+**Skew morphology** — the normalised value is classified into five states. The two below "Normal Smirk" trace the progression a complacent market walks through: structural put premium, then hedges abandoned, then calls bid over puts outright.
+
+| Normalised | State | Reading |
+|---|---|---|
+| < 0 | Forward Skew | Calls bid over puts — speculative upside demand outweighing hedging. Rare on index options |
+| 0 – 0.20 | Flattening | Protection unusually cheap against ATM; hedging demand has drained out |
+| 0.20 – 0.35 | Normal Smirk | Structural put premium in its usual band — the post-1987 baseline |
+| 0.35 – 0.55 | Elevated | Hedging demand building independently of the ATM level |
+| > 0.55 | Extreme | Crash-hedging bid — event-driven, or a market already under stress |
+
+The cuts correspond to the conventional raw bands (3–5 / 5–8 / over 8 vol points) evaluated at a typical ~15% SPX ATM IV, so the classification agrees with those thresholds in normal conditions and departs from them — correctly — when ATM IV is far from that level.
+
 **Butterfly (convexity / kurtosis)** — how much the wings are bid relative to the at-the-money base:
 
 $$
@@ -159,6 +181,8 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 - SPX strike grids are non-uniform, so the RND must use the general three-point second derivative — the uniform formula produces artefacts at every spacing change.
 - Densities are floored at zero and normalised to 100%.
 - Risk reversal measures directional skew; butterfly measures tail convexity.
+- Risk reversal is quoted put-minus-call here, the inverse of the FX/dealer convention — a normal surface reads positive, and complacency shows up as a *falling* value.
+- Skew is classified off the normalised value (RR ÷ ATM IV), not raw vol points, so the bands hold at any volatility level.
 - Cycles that have already expired in wall-clock time are excluded from every chart on this tab — a stale front cycle can flip the Term Structure Slope's regime call entirely, not just shift a number.
 - Standard monthlies routinely list a same-day SPXW contract as a separate instrument under the same calendar date — deduping to one contract per strike is what makes the per-point quality flag (and the smile/RND/skew shape generally) meaningful rather than noise.
 - Individual thin or wide-spread points are flagged with an amber ring rather than hidden — the flag rate should rise smoothly with distance from spot; a flat, high rate near the money is itself a sign something upstream (like the duplication above) needs checking.
@@ -166,6 +190,7 @@ A rising butterfly means the market is paying up for tail outcomes on both sides
 ## Related Reading
 
 - [Options Viewer Methodology](/wiki/option-strategy/options-viewer-methodology) — index of all viewer specs
+- [Options History Analytics](/wiki/option-strategy/options-history-analytics) — where these same metrics get ranked against their own history, plus the Skew Stickiness Ratio
 - [The Volatility Surface](/wiki/option-strategy/volatility-surface)
 - [Volatility Smile & Skew](/wiki/option-strategy/volatility-smile-skew)
 - [Tail Risk & Skew](/wiki/option-strategy/tail-risk-skew)

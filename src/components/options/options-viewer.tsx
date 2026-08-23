@@ -16,7 +16,8 @@ import {
   Clock,
   Database,
   Lock,
-  Crown
+  Crown,
+  History
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useUser } from '@/hooks/use-user';
@@ -39,6 +40,7 @@ import { MarketOverviewBar } from './viewer/market-overview-bar';
 import { CycleSummaryPanel } from './viewer/cycle-summary-panel';
 import { OptionsMatrixTable, OptionContractData } from './viewer/options-matrix-table';
 import { VolatilityChartView } from './viewer/volatility-chart-view';
+import { SnapshotHistoryView } from './viewer/snapshot-history-view';
 import { PositioningChartView } from './viewer/positioning-chart-view';
 import { GexChartView } from './viewer/gex-chart-view';
 
@@ -184,7 +186,7 @@ export function OptionsViewer() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedExpiration, setSelectedExpiration] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'matrix' | 'volatility' | 'positioning' | 'gex'>('matrix');
+  const [activeTab, setActiveTab] = useState<'matrix' | 'volatility' | 'positioning' | 'gex' | 'history'>('matrix');
   const [expCategory, setExpCategory] = useState<ExpirationCategory>('key');
   const [cacheAge, setCacheAge] = useState<number | null>(null);
   const [readyToRefresh, setReadyToRefresh] = useState(true);
@@ -733,7 +735,7 @@ export function OptionsViewer() {
       {/* Main Analysis Views Switcher */}
       {data && currentExpData && (
         <Tabs value={activeTab} onValueChange={(val) => setActiveTab(val as any)} className="space-y-4">
-          <TabsList className="grid w-full grid-cols-4 p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs h-auto gap-1">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5 p-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs h-auto gap-1">
             <TabsTrigger 
               value="matrix" 
               className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
@@ -761,6 +763,16 @@ export function OptionsViewer() {
             >
               <Zap className="h-4 w-4" />
               Gamma (GEX)
+            </TabsTrigger>
+            {/* Unlike the four tabs above -- all derived from the live chain snapshot -- this one
+                reads accumulated history from Postgres. It is the only tab that can answer "how
+                does today compare to normal". */}
+            <TabsTrigger
+              value="history"
+              className="text-xs sm:text-sm py-2.5 px-1 sm:px-3 rounded-lg font-medium data-[state=active]:bg-[#A8672E] data-[state=active]:text-white dark:data-[state=active]:bg-[#D08F52] dark:data-[state=active]:text-[#14171B] transition-all flex items-center justify-center gap-1.5"
+            >
+              <History className="h-4 w-4" />
+              History
             </TabsTrigger>
           </TabsList>
 
@@ -808,6 +820,11 @@ export function OptionsViewer() {
               dte={currentExpData.daysToExpiration}
               allExpirations={data.expirationDates}
             />
+          </TabsContent>
+
+          {/* Tab 5: Stored snapshot history — percentile ranks, OI flow, skew/price divergence */}
+          <TabsContent value="history" className="mt-0 space-y-3">
+            <SnapshotHistoryView />
           </TabsContent>
         </Tabs>
       )}

@@ -586,3 +586,90 @@ export const GET_VOL_REGIME = gql`
     }
   }
 `;
+
+// Stored SPX option-surface history, written daily by sophie-pipeline's spx_option_snapshot ETL.
+// Distinct from every other query in the viewer: the chain tabs read the live Cboe-backed Cloud
+// Run API, while this one reads accumulated history from Postgres -- it is the only source that
+// can answer "how does today compare to normal".
+export const GET_OPTION_SNAPSHOT = gql`
+  query GetOptionSnapshot($historySessions: Int, $divergenceWindow: Int) {
+    optionSnapshot(historySessions: $historySessions, divergenceWindow: $divergenceWindow) {
+      current {
+        bizDate
+        spot
+        refExpiration
+        refDte
+        atmIv
+        put25Iv
+        call25Iv
+        rr25
+        fly25
+        normalizedSkew
+        atmSkewSlope
+        ssr
+        frontAtmIv
+        backAtmIv
+        termSlope
+        pcrVolume
+        pcrOi
+        totalVolume
+        totalOpenInterest
+        netGexM
+        callWall
+        putWall
+        expirationCount
+        contractCount
+        sampleSize
+        normalizedSkewRank
+        rr25Rank
+        fly25Rank
+        atmIvRank
+        netGexRank
+        pcrOiRank
+      }
+      history {
+        bizDate
+        spot
+        atmIv
+        rr25
+        fly25
+        normalizedSkew
+        atmSkewSlope
+        ssr
+        netGexM
+        pcrVolume
+        pcrOi
+      }
+      divergence {
+        sessions
+        fromDate
+        toDate
+        priceChange
+        priceChangePct
+        skewChange
+        state
+      }
+      flow {
+        bizDate
+        priorDate
+        sessionsAvailable
+        callOiChange
+        putOiChange
+        callOi
+        putOi
+        callVolume
+        putVolume
+        callState
+        putState
+      }
+      strikeFlow {
+        expiration
+        optType
+        strike
+        openInterest
+        oiChange
+        volume
+      }
+    }
+  }
+`;

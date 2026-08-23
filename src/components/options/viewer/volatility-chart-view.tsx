@@ -52,6 +52,53 @@ interface VolatilityChartViewProps {
 type VolSubView = 'smile' | 'multiSmile' | 'termStructure' | 'rnd' | 'skewCurve';
 type StrikeRangeOption = 15 | 25 | 'all';
 
+// Skew morphology -- which shape the 25-delta risk reversal is currently in. Read off the
+// *normalised* value (RR / ATM IV) rather than raw vol points, so the bands hold at any
+// volatility level: 5 points of skew on a 12% ATM is a heavy hedging bid, the same 5 points
+// on a 35% ATM is noise. The two stages below "Normal Smirk" trace the progression a
+// complacent market walks through -- structural put premium, then hedges abandoned, then
+// calls bid over puts outright.
+type SkewMorphology = {
+  label: string;
+  tone: 'complacent' | 'normal' | 'fear';
+  detail: string;
+};
+
+function classifySkewMorphology(normalized: number | null): SkewMorphology | null {
+  if (normalized === null) return null;
+  if (normalized < 0) return {
+    label: 'Forward Skew',
+    tone: 'complacent',
+    detail: 'Calls bid over puts outright — speculative upside demand outweighing hedging. Rare on index options and historically a late-stage signature.',
+  };
+  if (normalized < 0.20) return {
+    label: 'Flattening',
+    tone: 'complacent',
+    detail: 'Downside protection unusually cheap against the ATM level. Hedging demand has drained out — protection is affordable, which is exactly when few are buying it.',
+  };
+  if (normalized < 0.35) return {
+    label: 'Normal Smirk',
+    tone: 'normal',
+    detail: 'Structural put premium sitting in its usual band — the post-1987 baseline for index options.',
+  };
+  if (normalized < 0.55) return {
+    label: 'Elevated',
+    tone: 'fear',
+    detail: 'Hedging demand building. Downside protection is being bid up independently of where the ATM level sits.',
+  };
+  return {
+    label: 'Extreme',
+    tone: 'fear',
+    detail: 'Crash-hedging bid. Typically event-driven, or a market already under visible stress.',
+  };
+}
+
+const SKEW_TONE_CLASSES: Record<SkewMorphology['tone'], string> = {
+  complacent: 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/30',
+  normal: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
+  fear: 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30',
+};
+
 // Today's calendar date in the SPX exchange's own timezone (America/New_York), as
 // 'YYYY-MM-DD' -- matching the format expiration dates are already given in, so the
 // two compare directly as strings.
@@ -437,6 +484,9 @@ export function VolatilityChartView({
 
         const skewRR = Number((p25 - c25).toFixed(2));
         const butterfly = Number((((p25 + c25) / 2) - atmIv).toFixed(2));
+        // Risk reversal as a fraction of this cycle's own ATM IV. Raw vol points are
+        // level-dependent, so the ratio is what compares across cycles and across regimes.
+        const normalizedSkew = atmIv > 0 ? Number((skewRR / atmIv).toFixed(3)) : null;
 
         return {
           expiration: exp.expiration,
@@ -444,6 +494,8 @@ export function VolatilityChartView({
           dte: exp.daysToExpiration,
           riskReversal25: skewRR,
           butterfly25: butterfly,
+          normalizedSkew,
+          atmIV: Number(atmIv.toFixed(1)),
           put25IV: Number(p25.toFixed(1)),
           call25IV: Number(c25.toFixed(1)),
           suspect: isThinQuote(call25) || isThinQuote(put25) || isThinQuote(atm)
@@ -468,6 +520,7 @@ export function VolatilityChartView({
     return {
       atmIV,
       skewRR: skewItem?.riskReversal25 ?? null,
+      normalizedSkew: skewItem?.normalizedSkew ?? null,
       fly: skewItem?.butterfly25 ?? null,
       put25: skewItem?.put25IV ?? null,
       call25: skewItem?.call25IV ?? null,
@@ -476,6 +529,8 @@ export function VolatilityChartView({
       backATM
     };
   }, [currentExpData, smileData, spotPrice, skewTermData, termStructureData]);
+
+  const skewMorphology = classifySkewMorphology(activeMetrics?.normalizedSkew ?? null);
 
   const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#6366f1', '#14b8a6'];
 
@@ -547,13 +602,20 @@ export function VolatilityChartView({
             <span className="text-xl font-mono font-extrabold text-slate-900 dark:text-slate-100">
               {activeMetrics?.skewRR != null ? `${activeMetrics.skewRR > 0 ? '+' : ''}${activeMetrics.skewRR}%` : '—'}
             </span>
-            <Badge variant="outline" className={`text-[10px] font-mono px-1.5 py-0 ${
-              (activeMetrics?.skewRR ?? 0) > 0 ? 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30' : 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
-            }`}>
-              {(activeMetrics?.skewRR ?? 0) > 0 ? 'Put Skew' : 'Call Skew'}
-            </Badge>
+            {skewMorphology && (
+              <Badge
+                variant="outline"
+                className={`text-[10px] font-mono px-1.5 py-0 ${SKEW_TONE_CLASSES[skewMorphology.tone]}`}
+                title={skewMorphology.detail}
+              >
+                {skewMorphology.label}
+              </Badge>
+            )}
           </div>
-          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">P 25Δ ({activeMetrics?.put25}%) vs C 25Δ ({activeMetrics?.call25}%)</p>
+          <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">
+            {activeMetrics?.normalizedSkew != null ? `${activeMetrics.normalizedSkew.toFixed(2)} × ATM` : '—'}
+            {' · '}P {activeMetrics?.put25}% / C {activeMetrics?.call25}%
+          </p>
         </div>
 
         {/* Card 3: 25-Delta Butterfly (Kurtosis/Tails) */}
@@ -951,7 +1013,10 @@ export function VolatilityChartView({
                       const item = payload[0]?.payload;
                       if (!item) return label;
                       const flag = item.suspect ? ' ⚠ thin/wide quote — read with caution' : '';
-                      return `${item.expiration} (${item.dte}d) - 25Δ Put: ${item.put25IV}% | 25Δ Call: ${item.call25IV}%${flag}`;
+                      const norm = item.normalizedSkew != null
+                        ? ` | Normalised: ${item.normalizedSkew.toFixed(2)} × ATM (${item.atmIV}%)`
+                        : '';
+                      return `${item.expiration} (${item.dte}d) - 25Δ Put: ${item.put25IV}% | 25Δ Call: ${item.call25IV}%${norm}${flag}`;
                     }}
                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px', color: '#f8fafc', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                   />
