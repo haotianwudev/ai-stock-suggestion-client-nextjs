@@ -118,7 +118,7 @@ export function ForumClient({ initialTab }: { initialTab?: string }) {
             </div>
           </div>
           <Link
-            href="/forum/feedback"
+            href="/forum/site-feedback/5"
             className="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#A8672E] hover:bg-[#8e5625] dark:bg-[#D08F52] dark:hover:bg-[#b87c44] text-white dark:text-[#14171B] font-semibold text-xs sm:text-sm shadow-xs transition-all"
           >
             <span>Request a Topic</span>

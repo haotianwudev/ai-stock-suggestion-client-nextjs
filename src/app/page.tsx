@@ -510,7 +510,7 @@ export default function Home() {
                 {t("homepage.meetSophieDaddy")} &rarr;
               </Link>
               <Link
-                href="/forum?tab=feedback"
+                href="/forum/site-feedback/5"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#A8672E] hover:bg-[#8f5726] dark:bg-[#D08F52] dark:hover:bg-[#c17f47] text-white dark:text-[#14171B] font-semibold shadow-xs transition-colors"
               >
                 <MessageSquare className="h-3.5 w-3.5" />
