@@ -205,6 +205,20 @@ export const en = {
     aboutCardToolsDescription:
       "Explore interactive macroeconomic dashboards, the live Investment Clock, quant trending trackers, and options modeling tools directly in your browser.",
     aboutSuggestTopicForum: "Suggest a Topic in Forum",
+    communityAndTrendingKicker: "Community & Real-Time Pulse",
+    communityAndTrendingHeading: "Discussions & Quant Trending",
+    communityAndTrendingDescription:
+      "Join community discussions on quantitative finance, market views, and option mechanics, and track live trending quant research from top sources.",
+    latestDiscussionsTitle: "Latest Discussions",
+    latestDiscussionsSubtitle: "Recent topics, article comments & feedback from members",
+    viewAllDiscussions: "View Forum",
+    noDiscussionsYet: "No forum discussions yet. Be the first to start a conversation!",
+    quantTrendingTitle: "Quant Trending Pulse",
+    quantTrendingSubtitle: "Top signals from ArXiv, GitHub, Reddit & Hacker News",
+    viewAllTrending: "See All Trending",
+    browseAllTopics: "Browse all topics",
+    leaveFeedback: "Leave Feedback",
+    exploreAllTrending: "Explore all {count} trending items",
   },
 };
 
@@ -395,6 +409,20 @@ export const zh: typeof en = {
     aboutCardToolsDescription:
       "体验互动式宏观经济仪表盘、实时美林投资时钟、量化热点追踪器与期权建模分析工具，浏览器内即开即用。",
     aboutSuggestTopicForum: "在论坛提交选题建议",
+    communityAndTrendingKicker: "社区交流与实时脉搏",
+    communityAndTrendingHeading: "社区探讨与量化热点",
+    communityAndTrendingDescription:
+      "参与量化金融、市场研判与期权策略的社区深度讨论，实时追踪来自全球前沿量化研究与开源动态。",
+    latestDiscussionsTitle: "最新社区探讨",
+    latestDiscussionsSubtitle: "来自社区成员的最新选题建议、文章评论与交流",
+    viewAllDiscussions: "进入论坛",
+    noDiscussionsYet: "暂无社区讨论，欢迎发表第一个话题！",
+    quantTrendingTitle: "实时量化热点",
+    quantTrendingSubtitle: "汇聚 ArXiv、GitHub、Reddit 及 Hacker News 实时量化动态",
+    viewAllTrending: "查看全部热点",
+    browseAllTopics: "浏览全部话题",
+    leaveFeedback: "提交反馈",
+    exploreAllTrending: "浏览全部 {count} 条量化热点",
   },
 };
 

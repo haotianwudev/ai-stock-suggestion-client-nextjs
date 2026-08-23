@@ -22,8 +22,9 @@ import { InstallAppButton } from "@/components/ui/install-app-button";
 const DynamicApolloComponents = lazy(() => import("@/components/stock/apollo-stock-data"));
 const DynamicStickyPodcastPlayer = lazy(() => import("@/components/ui/sticky-podcast-player").then(module => ({ default: module.StickyPodcastPlayer })));
 const DynamicClockWidget = lazy(() => import("@/components/investment-clock/clock-widget").then(m => ({ default: m.InvestmentClockWidget })));
-const DynamicTrendingWidget = lazy(() => import("@/components/quant-trending/trending-widget").then(m => ({ default: m.QuantTrendingWidget })));
 const DynamicOptionsWidget = lazy(() => import("@/components/options/options-entry-widget").then(m => ({ default: m.OptionsEntryWidget })));
+const DynamicTrendingWidget = lazy(() => import("@/components/quant-trending/trending-widget").then(m => ({ default: m.QuantTrendingWidget })));
+const DynamicLatestForumWidget = lazy(() => import("@/components/home/latest-forum-widget").then(m => ({ default: m.LatestForumWidget })));
 
 // Loading skeleton for the compact hero stock cards
 const CompactStockSkeleton = () => (
@@ -321,7 +322,16 @@ export default function Home() {
                       {t("header.admin")}
                     </Link>
                   )}
+                </div>
 
+                {/* Left side widgets: Latest Forum Discussion + Quant Trending */}
+                <div className="w-full space-y-2.5 pt-1">
+                  <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />}>
+                    <DynamicLatestForumWidget />
+                  </Suspense>
+                  <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />}>
+                    <DynamicTrendingWidget />
+                  </Suspense>
                 </div>
               </div>
 
@@ -333,11 +343,6 @@ export default function Home() {
                 <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-44 shadow-xs" />}>
                   <DynamicOptionsWidget />
                 </Suspense>
-                <div className="hidden sm:block">
-                  <Suspense fallback={<div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />}>
-                    <DynamicTrendingWidget />
-                  </Suspense>
-                </div>
                 <div className="hidden sm:block">
                   {showStockData ? (
                     <Suspense fallback={<CompactStockSkeleton />}>

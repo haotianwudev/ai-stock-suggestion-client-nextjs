@@ -67,7 +67,7 @@ export function QuantTrendingWidget() {
   const total = data?.quantTrending?.total ?? 0;
 
   if (loading && !data) {
-    return <div className="animate-pulse rounded-xl border border-border bg-card h-24" />;
+    return <div className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-24 shadow-xs" />;
   }
 
   if (!item) return null;
@@ -83,7 +83,7 @@ export function QuantTrendingWidget() {
 
   return (
     <div
-      className="block group cursor-pointer"
+      className="block group cursor-pointer w-full text-left"
       onClick={() => router.push("/forum?tab=quant-trending")}
     >
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-3.5 shadow-xs transition-all duration-200 hover:shadow-md hover:border-[#A8672E]/40 dark:hover:border-[#D08F52]/40 hover:-translate-y-0.5">
