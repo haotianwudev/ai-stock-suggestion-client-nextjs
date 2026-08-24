@@ -155,6 +155,7 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
                     src={getAgentImageSrc(agent)}
                     alt={formatAgentName(agent)}
                     fill
+                    sizes="36px"
                     className="object-cover"
                     onError={() => handleImageError(agent)}
                   />
@@ -184,6 +185,7 @@ export function StockAgentSuggestions({ suggestions }: StockAgentSuggestionsProp
                     src={getAgentImageSrc(currentAgent)}
                     alt={formatAgentName(currentAgent)}
                     fill
+                    sizes="96px"
                     className="object-cover"
                     onError={() => handleImageError(currentAgent)}
                     priority

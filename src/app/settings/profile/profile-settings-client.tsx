@@ -251,7 +251,7 @@ export function ProfileSettingsClient() {
                     )}
                   >
                     <div className="relative size-12 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700">
-                      <Image src={option.src} alt={option.label} fill className="object-cover" />
+                      <Image src={option.src} alt={option.label} fill sizes="48px" className="object-cover" />
                     </div>
                     <span className="text-[11px] font-mono text-slate-600 dark:text-slate-400">{option.label}</span>
                   </button>
