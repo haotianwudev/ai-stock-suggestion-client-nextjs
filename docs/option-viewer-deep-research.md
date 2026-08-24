@@ -152,6 +152,12 @@ $$
 
 On live SPX data, monthlies clear 3.5–5.4M contracts while a mid-week daily can sit under 2K — date proximity alone is a poor proxy.
 
+> **Not the same filter as the ETL's.** This one selects what the viewer *renders* from a live payload
+> that already contains every cycle, so a poor pick is cosmetic and self-correcting. The ETL's
+> selection (§ 7A) decides what gets *persisted*, where a poor pick is unrecoverable — which is why it
+> dropped the LEAPS anchor above in favour of measured OI share, and why it carries cycles forward
+> once stored. The two are intentionally independent.
+
 ---
 
 ## 3. Options Matrix & Proprietary Liquidity Scoring
@@ -621,6 +627,26 @@ a 2,000-lot day than on a 2,000,000-lot one:
 | **Building** | ΔOI / volume > +0.15 | New positions opened |
 | **Closing** | ΔOI / volume < −0.15 | Unwind or short cover |
 | **Churning** | between | Heavy trading, flat net positioning |
+
+**Comparability is the hard part.** Differencing two sessions assumes both describe the same book,
+which is not automatic: SPX lists cycles continuously, and the ETL's own selection rules roll (DTE ≤ 2
+daily, the 4-weekly window weekly), so 1–4 cycles enter or leave the stored set on a typical session.
+A contract with no prior row cannot be differenced — and defaulting it to zero prior OI books its
+entire resting position as opened today, indistinguishable from genuine conviction. Measured on a
+staged case where one 320-contract cycle (159,209 OI) was absent from the prior session, the naive
+join inflated reported net ΔOI by **3.4×** and flipped both sides from *Churning* to *Building*.
+
+Two guards, deliberately at different layers:
+
+| Layer | Guard | What it buys |
+|---|---|---|
+| ETL | A stored cycle is carried until it expires | Membership is monotone — exits are expiries, never drift |
+| GraphQL | ΔOI and volume summed only over contracts in **both** sessions; `comparableShare` reported | Survives new listings, skipped runs and backfills alike |
+
+Neither suffices alone. Hysteresis cannot prevent a genuinely new cycle's first appearance, and it
+cannot help at all across a missed session — only the query-side restriction covers those. Levels
+(`callOi`, `putOi`) stay summed over the full slice; only the *changes* are restricted, so the book
+is never understated while the flow stays honest.
 
 ### 7A.4 Skew vs. Price Divergence
 

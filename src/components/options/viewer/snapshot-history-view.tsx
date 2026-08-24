@@ -336,6 +336,15 @@ export function SnapshotHistoryView() {
                 positions. Rising OI on heavy volume is conviction being built — falling OI on the same
                 volume is an unwind wearing the identical signature.
               </p>
+              {/* Only worth the reader's attention when the basis is actually thin. In steady state
+                  this sits near 1 and saying so every session would be noise. */}
+              {typeof flow.comparableShare === 'number' && flow.comparableShare < 0.9 && (
+                <p className="text-[11px] font-mono text-amber-600 dark:text-amber-500 mt-2 leading-relaxed">
+                  Measured on {(flow.comparableShare * 100).toFixed(0)}% of stored contracts — the rest
+                  were not stored last session, so they have no prior value to difference against and are
+                  excluded rather than counted as new.
+                </p>
+              )}
             </>
           ) : (
             <p className="text-xs font-mono text-slate-500 dark:text-slate-400">

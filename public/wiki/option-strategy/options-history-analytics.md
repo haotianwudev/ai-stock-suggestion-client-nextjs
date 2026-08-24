@@ -97,6 +97,23 @@ The threshold is a **ratio rather than an absolute contract count** on purpose: 
 open-interest change means something completely different on a 2,000-lot day than on a 2,000,000-lot
 one.
 
+### What "differencing two sessions" quietly assumes
+
+That both sessions describe the *same book*. They do not, automatically. SPX lists new expiration
+cycles continuously, so a cycle can appear in today's stored chain having never been stored before —
+and a contract with no prior row cannot be differenced at all.
+
+Treating that absence as *zero* prior open interest is the trap: it books the cycle's entire resting
+position as opened today, which is indistinguishable from real conviction and large enough to
+dominate the total. The pipeline handles this from both ends. A cycle, once stored, is kept until it
+expires, so the set only ever grows by genuinely new listings. And the change itself is measured
+**only over contracts present in both sessions**, with the coverage reported alongside the reading —
+if it drops materially below 100%, the panel says so rather than quietly reporting a partial book as
+a whole one.
+
+This is the unglamorous half of any day-over-day signal: the arithmetic is trivial, and almost all
+the difficulty is in guaranteeing the two things being subtracted are actually comparable.
+
 ## Skew versus price divergence
 
 Over a trailing 20-session window, the *joint direction* of price and normalised skew:

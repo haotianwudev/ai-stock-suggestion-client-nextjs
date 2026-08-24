@@ -661,6 +661,7 @@ export const GET_OPTION_SNAPSHOT = gql`
         putVolume
         callState
         putState
+        comparableShare
       }
       strikeFlow {
         expiration

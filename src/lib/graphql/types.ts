@@ -502,6 +502,8 @@ export interface OpenInterestFlow {
   putVolume?: number | null;
   callState?: FlowState | null;
   putState?: FlowState | null;
+  /** Share of stored contracts present in both sessions — the basis the changes are measured on. */
+  comparableShare?: number | null;
 }
 
 export interface StrikeFlow {
