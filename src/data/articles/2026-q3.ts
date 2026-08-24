@@ -24,6 +24,17 @@ export const articles2026Q3: Article[] = [
     labels: [ArticleLabel.FINANCE101],
   },
   {
+    title: "Advanced Dynamics of Counterparty Credit Risk",
+    description: "Why MtM declines drive two-thirds of crisis losses: deconstructing CVA spikes during the 10-day MPoR window, the xVA framework, and Basel III SA-CVA rules.",
+    slug: "advanced-dynamics-counterparty-credit-risk",
+    date: "September 23, 2026",
+    imageUrl: "https://i.imgur.com/EPSe3zX.jpeg",
+    infographicUrl: "https://i.imgur.com/EPSe3zX.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTMZBgcy3S3Bb9naeEO7ZzOXgvzu_RKKP-nsQ0B54xcGKfkQYZIPaknNmEMQoRMJJsqQYbXd1llp-Ei/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "The Structural Revolution in Causal Quantitative Finance",
     description: "How causal finance is replacing correlation: Double Machine Learning, Deep IV, causal discovery algorithms, and a causally-robust covariance matrix.",
     slug: "structural-revolution-quantitative-finance",

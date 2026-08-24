@@ -25,6 +25,15 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/counterparty-risk-cva-xva",
+    title: "Counterparty Credit Risk & xVA",
+    articleSlug: "advanced-dynamics-counterparty-credit-risk",
+    date: "2026-08-23",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    summary:
+      "Quantitative framework for counterparty credit risk and xVA: mark-to-market exposure dynamics (EE, EPE, PFE, ENE), MPoR cash flow spikes, the complete xVA alphabet (CVA, DVA, FVA, MVA, KVA), Wrong-Way Risk copula modeling, and Basel III Endgame capital regimes (SA-CCR, SA-CVA vs BA-CVA).",
+  },
+  {
     path: "stock-analysis/stock-analysis-methodology",
     title: "Stock Analysis & Trending Equities Methodology Guide",
     articleSlug: "",
