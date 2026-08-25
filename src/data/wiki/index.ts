@@ -25,6 +25,24 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/alpha-creation-quant-ecosystem",
+    title: "Alpha Creation & Quant Ecosystem",
+    articleSlug: "foundations-quantitative-finance-alpha-ecosystem",
+    date: "2026-08-24",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    summary:
+      "Core architecture of quantitative finance: transitioning from discretionary to systematic trading, alternative data ingestion (120,000+ fields), alpha formulation vs. commoditized beta, simulation platforms (WorldQuant Brain, Numerai), and crowdsourced research consultant models.",
+  },
+  {
+    path: "ai-ml/agent-compiler-framework",
+    title: "Agent as a Compiler Framework",
+    articleSlug: "agent-compiler-framework-deterministic-ai-analysts",
+    date: "2026-08-24",
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
+    summary:
+      "Architectural evaluation of the 'Agent as a Compiler' framework for quantitative finance: replacing sequential ReAct loops with decoupled Chat and Coding agents, typed Analysis Plan IRs, O(1) DAG parallelization, AST-enforced semantic equivalence, and an automated continuous learning 'Teach' flywheel.",
+  },
+  {
     path: "quant/counterparty-risk-cva-xva",
     title: "Counterparty Credit Risk & xVA",
     articleSlug: "advanced-dynamics-counterparty-credit-risk",

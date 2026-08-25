@@ -2,6 +2,28 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Foundations of Quantitative Finance Research: Alpha Creation and the Quant Ecosystem",
+    description: "How systematic hedge funds build institutional alpha: the shift from human intuition to 120,000-field alternative data pipelines and global crowdsourced quants.",
+    slug: "foundations-quantitative-finance-alpha-ecosystem",
+    date: "September 26, 2026",
+    imageUrl: "https://i.imgur.com/YD68XID.jpeg",
+    infographicUrl: "https://i.imgur.com/YD68XID.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vT0cgEZL-Ojq5Gb7BHmjdHwmeHdfzwJ9HxkEoXj8HjKnWwmQbze8AAXaEQumBq60ftjp5sh1RldSPo6/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
+    title: "The \"Agent as a Compiler\" Framework for Deterministic AI Analysts",
+    description: "Why macro hedge funds are replacing ReAct loops with compiler pipelines: DAG parallelization for O(1) generation, AST validation, and the 'Teach' flywheel.",
+    slug: "agent-compiler-framework-deterministic-ai-analysts",
+    date: "September 26, 2026",
+    imageUrl: "https://i.imgur.com/VShML76.jpeg",
+    infographicUrl: "https://i.imgur.com/VShML76.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSp_CDNCtSUp-bjr1SfhVSv4OpzXjyK3W4AkgDhVrOPJ32jAzDSF-sELc52Mdq818Dx90LLcvaqCms4/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
+  },
+  {
     title: "The Modern Topography of Quantitative Finance and Institutional Trading",
     description: "Inside the pod model, the latency arms race between fiber and microwave, and the Avellaneda-Stoikov math market makers use to price inventory risk in real time.",
     slug: "modern-topography-quant-finance-institutional-trading",
