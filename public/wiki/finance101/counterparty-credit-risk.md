@@ -29,3 +29,4 @@ The extension of credit—whether provided to a highly levered quantitative hedg
 ## Related Reading
 
 - [The Infrastructure of Counterparty Credit Risk: Margin, WCL, Excess, Shortfall, and Release](/articles/infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release)
+- [Watch on YouTube](https://youtu.be/6zu_PtYmYrY)
