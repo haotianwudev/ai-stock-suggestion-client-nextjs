@@ -249,6 +249,9 @@ export function SnapshotHistoryView() {
             in place. <strong>~1</strong> means the smile stayed pinned to strikes (sticky strike);
             <strong> ~0</strong> means it travelled with spot (sticky delta). The Gamma tab&rsquo;s flip
             level assumes sticky strike, so a reading far from 1 is a warning about that number too.
+            Readings past <strong>~2</strong> are usually the prior session&rsquo;s skew slope having
+            been close to flat rather than a genuinely bigger repricing — check the ATM slope figure
+            above before reading it as a real regime shift.
           </p>
         </div>
       </div>
