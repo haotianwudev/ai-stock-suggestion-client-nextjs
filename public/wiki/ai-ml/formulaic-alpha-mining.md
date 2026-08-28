@@ -54,3 +54,4 @@ $$
 ## Related Reading
 
 - [Advancements in Formulaic Alpha Mining: Deep Search Mechanics, Application Strategies, and Statistical Robustness](/articles/advancements-formulaic-alpha-mining-deep-search-mechanics)
+- [Watch on YouTube](https://youtu.be/V7f-mneW2DY)
