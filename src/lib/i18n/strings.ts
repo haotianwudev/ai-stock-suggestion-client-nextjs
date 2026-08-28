@@ -105,7 +105,7 @@ export const en = {
     nice: "Nice!",
   },
   tierUnlock: {
-    topicPages: "Topic pages are now unlocked.",
+    topicPages: "Topic pages and real-time SPX live options data are now unlocked.",
     comments: "Comments are now unlocked.",
     premiumAndVideoPlatform: "Premium articles and your preferred video platform are now unlocked.",
     pageReview: "You've unlocked a 1:1 page review — reach out via Feedback and I'll review and help improve one of your pages.",
@@ -316,7 +316,7 @@ export const zh: typeof en = {
     nice: "太棒了！",
   },
   tierUnlock: {
-    topicPages: "主题页面已解锁。",
+    topicPages: "主题页面和实时SPX期权数据已解锁。",
     comments: "评论功能已解锁。",
     premiumAndVideoPlatform: "付费文章与首选视频平台已解锁。",
     pageReview: "你已解锁一对一页面点评——请通过反馈渠道联系我，我会为你评审并改进一个页面。",

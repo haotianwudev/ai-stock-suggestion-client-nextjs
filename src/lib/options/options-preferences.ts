@@ -6,7 +6,7 @@ const OPTION_SOURCE_PREF_KEY = 'sophie_preferred_option_source';
 
 /**
  * Get user's preferred option data source.
- * If user has chosen 'live' and has Tier 4+, returns 'live'.
+ * If user has chosen 'live' and meets MIN_LIVE_OPTIONS_TIER, returns 'live'.
  * Otherwise defaults to 'historical'.
  */
 export function getPreferredOptionSource(userTier: number = 1): OptionDataSource {

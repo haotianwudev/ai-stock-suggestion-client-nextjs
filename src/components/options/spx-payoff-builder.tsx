@@ -3,7 +3,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { RefreshCw, ChevronDown, Settings2, Lock } from 'lucide-react';
 import { toast } from 'sonner';
 import { useUser } from '@/hooks/use-user';
-import { canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER } from '@/lib/tiers';
+import { canAccessLiveOptions, getTierName, MIN_LIVE_OPTIONS_TIER } from '@/lib/tiers';
+import { SubscribeToUnlockDialog } from './viewer/subscribe-to-unlock-dialog';
 import { getPreferredOptionSource } from '@/lib/options/options-preferences';
 import { PayoffChartView } from './payoff-chart-view';
 import { ProbabilityRangeView, ProbabilityMarker } from './probability-range-view';
@@ -61,7 +62,8 @@ export interface SpxPayoffBuilderProps {
 export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset = false, initialExpirationTargetDte = 45 }: SpxPayoffBuilderProps = {}) => {
     const { profile } = useUser();
     const userTier = profile?.tier ?? 1;
-    const isTier4Plus = canAccessLiveOptions(userTier);
+    const hasLiveOptionsAccess = canAccessLiveOptions(userTier);
+    const [subscribeDialogOpen, setSubscribeDialogOpen] = useState(false);
 
     const [source, setSource] = useState<Source>(() => getPreferredOptionSource(userTier));
     const [snapshot, setSnapshot] = useState<OptionChainSnapshot | null>(null);
@@ -83,7 +85,7 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
 
     const loadSource = (next: Source, forceRefresh: boolean = false) => {
         if (next === 'live' && !canAccessLiveOptions(userTier)) {
-            toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+            toast.error(`Live Real-Time SPX options data is exclusive to ${getTierName(MIN_LIVE_OPTIONS_TIER)} (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
             return;
         }
         setSource(next);
@@ -334,8 +336,8 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                             <button
                                 key={s}
                                 onClick={() => {
-                                    if (isLive && !isTier4Plus) {
-                                        toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+                                    if (isLive && !hasLiveOptionsAccess) {
+                                        setSubscribeDialogOpen(true);
                                         return;
                                     }
                                     if (s !== source) loadSource(s);
@@ -343,17 +345,17 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
                                     source === s
                                         ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
-                                        : isLive && !isTier4Plus
+                                        : isLive && !hasLiveOptionsAccess
                                         ? 'text-slate-400 dark:text-slate-500'
                                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                                 }`}
-                                title={isLive && !isTier4Plus ? `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (Senior Quant)` : undefined}
+                                title={isLive && !hasLiveOptionsAccess ? `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (${getTierName(MIN_LIVE_OPTIONS_TIER)})` : undefined}
                             >
-                                {isLive && !isTier4Plus && <Lock className="h-3 w-3 text-[#A8672E] dark:text-[#D08F52]" />}
+                                {isLive && !hasLiveOptionsAccess && <Lock className="h-3 w-3 text-[#A8672E] dark:text-[#D08F52]" />}
                                 <span>{s === 'historical' ? `Historical (${snapshot.quoteDate})` : 'Live ^SPX (Cboe)'}</span>
-                                {isLive && !isTier4Plus && (
+                                {isLive && !hasLiveOptionsAccess && (
                                     <span className="text-[9px] px-1 py-0 font-mono border border-[#A8672E]/40 text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 rounded font-semibold">
-                                        Tier 4+
+                                        Tier {MIN_LIVE_OPTIONS_TIER}+
                                     </span>
                                 )}
                             </button>
@@ -649,6 +651,8 @@ export const SpxPayoffBuilder = ({ initialPresetId = 'iron_condor', lockPreset =
                     </div>
                 </div>
             )}
+
+            <SubscribeToUnlockDialog open={subscribeDialogOpen} onOpenChange={setSubscribeDialogOpen} />
         </div>
     );
 };

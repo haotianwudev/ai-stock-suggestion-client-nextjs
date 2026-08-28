@@ -200,7 +200,7 @@ export function canModerateComments(tier: number): boolean {
 export const MIN_TOPIC_TIER = 2;
 
 /** Tier required for Live Real-Time Options (SPX Cboe feed). */
-export const MIN_LIVE_OPTIONS_TIER = 4;
+export const MIN_LIVE_OPTIONS_TIER = 2;
 
 /** Returns true when the given tier is allowed to access Live Real-Time options data. */
 export function canAccessLiveOptions(tier: number): boolean {
@@ -352,11 +352,12 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     tier: 2,
     name: "Analyst",
     shortName: "T2",
-    unlocksSummary: "Topic Pages & Study Guides",
+    unlocksSummary: "Topic Pages, Study Guides & Live Options",
     howToEarn: "Subscribe to YouTube channel",
     perks: [
       "Access all curated topic pages & study guides",
       "Full reading access to core research series",
+      "Real-time SPX live options chain & volatility surface",
     ],
   },
   {
@@ -374,11 +375,10 @@ export const TIER_PERKS_LADDER: TierPerkDefinition[] = [
     tier: 4,
     name: "Senior Quant",
     shortName: "T4",
-    unlocksSummary: "Premium Articles, Live Options & Video Pref",
+    unlocksSummary: "Premium Articles & Video Pref",
     howToEarn: "10 video likes or $9.99+ donation",
     perks: [
       "Full access to locked premium research deep-dives",
-      "Real-time SPX live options chain & volatility surface",
       "Choose preferred video platform (YouTube vs Bilibili)",
       "Topic sidebar layout customization",
     ],

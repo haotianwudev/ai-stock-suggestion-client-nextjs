@@ -22,6 +22,7 @@ import {
 import { toast } from 'sonner';
 import { useUser } from '@/hooks/use-user';
 import { canAccessLiveOptions, MIN_LIVE_OPTIONS_TIER, getTierName } from '@/lib/tiers';
+import { SubscribeToUnlockDialog } from '@/components/options/viewer/subscribe-to-unlock-dialog';
 import { getPreferredOptionSource, OptionDataSource } from '@/lib/options/options-preferences';
 import { LIVE_CHAIN_API_ENDPOINT as API_ENDPOINT, getChainSnapshot } from '@/lib/options/chain-provider';
 import { adaptSnapshotToOptionsAPIResponse } from '@/lib/options/chain-adapters';
@@ -179,7 +180,8 @@ export function OptionsViewer() {
   const SPX_URL = `${API_ENDPOINT}?ticker=%5ESPX`;
   const { profile } = useUser();
   const userTier = profile?.tier ?? 1;
-  const isTier4Plus = canAccessLiveOptions(userTier);
+  const hasLiveOptionsAccess = canAccessLiveOptions(userTier);
+  const [subscribeDialogOpen, setSubscribeDialogOpen] = useState(false);
 
   const [source, setSource] = useState<DataSource>(() => getPreferredOptionSource(userTier));
   const [data, setData] = useState<OptionsAPIResponse | null>(null);
@@ -195,7 +197,7 @@ export function OptionsViewer() {
   const loadSource = useCallback(async (nextSource: DataSource, manualRefresh = false) => {
     // Tier gate check for Live data
     if (nextSource === 'live' && !canAccessLiveOptions(userTier)) {
-      toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+      toast.error(`Live Real-Time SPX options data is exclusive to ${getTierName(MIN_LIVE_OPTIONS_TIER)} (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
       return;
     }
 
@@ -500,26 +502,26 @@ export function OptionsViewer() {
             </button>
             <button
               onClick={() => {
-                if (!isTier4Plus) {
-                  toast.error(`Live Real-Time SPX options data is exclusive to Senior Quant (Tier ${MIN_LIVE_OPTIONS_TIER}+).`);
+                if (!hasLiveOptionsAccess) {
+                  setSubscribeDialogOpen(true);
                   return;
                 }
                 if (source !== 'live') loadSource('live');
               }}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold text-xs transition-all ${
-                source === 'live' 
-                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs' 
-                  : isTier4Plus
+                source === 'live'
+                  ? 'bg-[#A8672E] text-white dark:bg-[#D08F52] dark:text-[#14171B] shadow-xs'
+                  : hasLiveOptionsAccess
                   ? 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                   : 'text-slate-400 dark:text-slate-500 hover:text-slate-600'
               }`}
-              title={isTier4Plus ? "Switch to Live Cboe Feed" : `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (Senior Quant)`}
+              title={hasLiveOptionsAccess ? "Switch to Live Cboe Feed" : `Requires Tier ${MIN_LIVE_OPTIONS_TIER} (${getTierName(MIN_LIVE_OPTIONS_TIER)})`}
             >
-              {!isTier4Plus && <Lock className="h-3 w-3 text-[#A8672E] dark:text-[#D08F52]" />}
+              {!hasLiveOptionsAccess && <Lock className="h-3 w-3 text-[#A8672E] dark:text-[#D08F52]" />}
               <span>Live ^SPX (Cboe)</span>
-              {!isTier4Plus && (
+              {!hasLiveOptionsAccess && (
                 <Badge variant="outline" className="text-[9px] px-1 py-0 border-[#A8672E]/40 text-[#A8672E] dark:text-[#D08F52] bg-[#A8672E]/10 font-mono font-semibold">
-                  Tier 4+
+                  Tier {MIN_LIVE_OPTIONS_TIER}+
                 </Badge>
               )}
             </button>
@@ -837,6 +839,8 @@ export function OptionsViewer() {
           <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">Retrieving 30,000+ contracts, Greeks, and volatility curves</span>
         </div>
       )}
+
+      <SubscribeToUnlockDialog open={subscribeDialogOpen} onOpenChange={setSubscribeDialogOpen} />
     </div>
   );
 }
