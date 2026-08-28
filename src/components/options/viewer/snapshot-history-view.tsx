@@ -75,10 +75,15 @@ function classifySSR(ssr: number): { label: string; tone: string; detail: string
     tone: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
     detail: 'The smile stayed pinned to strikes and ATM vol slid along the existing skew — the regime the gamma-flip solver assumes.',
   };
-  return {
+  if (ssr <= 2) return {
     label: 'Repricing',
     tone: 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30',
     detail: 'ATM vol moved further than the skew implied — the surface repriced rather than merely shifted. Treat the gamma flip level with extra caution.',
+  };
+  return {
+    label: 'Extreme',
+    tone: 'bg-rose-500/15 text-rose-800 dark:text-rose-200 border-rose-500/40',
+    detail: 'Readings this far from 1 are more often the prior session’s skew slope having been close to flat than a genuinely extreme repricing day — SSR only guards against a flat spot move, not a flat skew, so a small denominator on that side amplifies ordinary IV noise the same way. Check the ATM slope figure above before reading this as a real regime shift rather than an artifact.',
   };
 }
 

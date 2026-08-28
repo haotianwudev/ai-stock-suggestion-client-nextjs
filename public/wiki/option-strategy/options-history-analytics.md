@@ -58,7 +58,8 @@ it is divided into.
 |---|---|---|
 | ~ 0 | **Sticky delta** | The smile travelled with spot; ATM vol barely moved. The market treated the move as trend |
 | ~ 1 | **Sticky strike** | The smile stayed pinned to strikes; ATM vol slid along the existing skew exactly as the skew implied |
-| > 1.3 | **Repricing** | Vol moved further than the skew implied — the surface repriced rather than merely shifted |
+| 1.3 – 2 | **Repricing** | Vol moved further than the skew implied — the surface repriced rather than merely shifted |
+| > 2 | **Extreme — check the denominator** | Not necessarily a bigger version of Repricing. See below |
 | < 0 | **Inverted** | ATM vol moved against the skew's implication, usually a volatility-regime change rather than a spot-driven move |
 
 **Why it matters beyond classification.** The Gamma tab's zero-gamma flip level is computed by
@@ -70,6 +71,19 @@ from 1 means the published flip level rests on shakier ground than its precision
 SSR is unavailable on the first stored session, and on any day the index moved less than roughly
 0.1%. In that second case the ratio is dividing by a near-zero denominator, which turns ordinary
 quote noise in ATM vol into an enormous and entirely meaningless number.
+
+**Readings past ~2 are usually the same failure mode on the other side of the ratio.** The
+0.1%-move guard only protects the numerator — it says nothing about the prior session's skew
+slope, which is SSR's *denominator*. On a session that closed with an unusually flat skew (a
+small but nonzero slope), dividing by it amplifies ordinary noise in the realised ATM-vol move
+into a large SSR the same way a near-flat spot tape does, just from the other side of the ratio.
+There is no guard against this today: `compute_ssr()` rejects `slope_prev` only when it is exactly
+zero or `None`, not when it is merely small. So a reading above roughly 2 should not automatically
+be read as "twice the repricing" — check the ATM skew slope figure shown on the surface-dynamics
+card for that prior session before treating it as a genuine extreme-repricing day rather than a
+flat-skew artifact. This is the same discipline the Volatility tab's thin-quote flag and dead-cycle
+filter ask for elsewhere in this wiki: an unusually large or noisy number is a prompt to check the
+inputs, not to read the output at face value.
 
 > **Convention warning.** SSR normalisations differ across the literature — some scale so that
 > sticky delta reads 1 and sticky strike reads 2. The definition above is this platform's. Check
@@ -143,6 +157,10 @@ rises* — a transition. The transition is the signal; the level is only the sta
   are captured.
 - **SSR uses a platform-specific normalisation** and is not directly comparable to published figures
   scaled to a different convention.
+- **SSR's flat-tape guard only covers the spot side.** A near-flat prior-session skew slope can
+  inflate SSR past 2 the same way a near-flat spot move does — there is no equivalent guard on
+  that side of the ratio today, so an extreme reading needs the same "check the inputs first"
+  treatment as the Volatility tab's thin-quote and dead-cycle artifacts.
 - **The per-strike history is a slice, not the whole chain** — key expirations within ±25% of spot.
   Deep-wing per-strike history exists only in the raw archive, not in the queryable tables.
 - **Percentile ranks are only as representative as the window they cover.** A young series ranks

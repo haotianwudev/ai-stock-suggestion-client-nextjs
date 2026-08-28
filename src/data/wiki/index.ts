@@ -125,10 +125,10 @@ export const wikiEntries: WikiEntry[] = [
     topics: ["Platform Methodology", "Volatility & VRP"],
     title: "Options History Analytics",
     articleSlug: "",
-    date: "2026-08-23",
+    date: "2026-08-27",
     labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
     summary:
-      "Implementation spec for the History tab, the only part of the viewer reading stored daily history rather than a single snapshot: percentile ranks and why they are withheld below 20 sessions, the Skew Stickiness Ratio (and how it tests the sticky-strike assumption the gamma flip level depends on), session-over-session open-interest flow, and the skew-versus-price divergence read.",
+      "Implementation spec for the History tab, the only part of the viewer reading stored daily history rather than a single snapshot: percentile ranks and why they are withheld below 20 sessions, the Skew Stickiness Ratio (and how it tests the sticky-strike assumption the gamma flip level depends on, plus why readings past ~2 are usually a flat-skew denominator artifact rather than genuine extreme repricing), session-over-session open-interest flow, and the skew-versus-price divergence read.",
   },
   {
     path: "option-strategy/options-positioning-analysis",
