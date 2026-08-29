@@ -31,7 +31,10 @@ export async function middleware(request: NextRequest) {
 
   // Refreshes the session cookie if it's expired — required so server
   // components/route handlers see a valid session on every request.
-  await supabase.auth.getUser();
+  // Timeout-guarded: a slow/unreachable Supabase auth endpoint must not
+  // hang the middleware invocation and take down every route on the site.
+  const timeout = new Promise((resolve) => setTimeout(resolve, 5000));
+  await Promise.race([supabase.auth.getUser(), timeout]);
 
   return response;
 }
