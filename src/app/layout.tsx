@@ -8,6 +8,7 @@ import { UserProvider } from "@/hooks/use-user";
 import { LanguageProvider } from "@/hooks/use-language";
 import { Toaster } from "@/components/ui/sonner";
 import { DevChatMount } from "@/components/chat/dev-chat-mount";
+import { AuthDegradedBanner } from "@/components/auth/auth-degraded-banner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -134,6 +135,7 @@ export default function RootLayout({
               </UserProvider>
             </ApolloWrapper>
             <Toaster />
+            <AuthDegradedBanner />
           </LanguageProvider>
         </ThemeProvider>
       </body>
