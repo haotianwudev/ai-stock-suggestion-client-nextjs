@@ -75,3 +75,4 @@ Where $\delta_a + \delta_b$ is the optimal combined quoted spread and $k$ is liq
 
 - [The Modern Topography of Quantitative Finance and Institutional Trading](/articles/modern-topography-quant-finance-institutional-trading)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRH6eOqAxe_bcKG7GeZHVymAXtl2hIT9iikaas7KRDCSQrI9099dQoIVZwXS6ErUKT3bH4Ixf6B6vhh/pub)
+- [Watch on YouTube](https://youtu.be/g_KcraIms_M)

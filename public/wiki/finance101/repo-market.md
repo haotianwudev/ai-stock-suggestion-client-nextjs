@@ -58,3 +58,4 @@ $$
 ## Related Reading
 
 - [The Repo Market & Dollar Funding: Mechanics, Strategies, and Systemic Risks](/articles/repo-market-dollar-funding-mechanics-strategies-systemic-risks)
+- [Watch on YouTube](https://youtu.be/D28mk_bOO4c)
