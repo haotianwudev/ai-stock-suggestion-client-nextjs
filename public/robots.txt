@@ -1,6 +1,35 @@
-# *
-User-agent: *
+# Search engines that actually send readers
+User-agent: Googlebot
 Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Social preview crawlers (link-unfurling for shared article URLs)
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+# Everyone else (AI-training scrapers, generic bots, etc.) is blocked
+User-agent: *
+Disallow: /
 
 # Host
 Host: https://www.sophie-ai-finance.com

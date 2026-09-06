@@ -13,6 +13,19 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
+  // Skip the Supabase network round trip when there's no session cookie to
+  // refresh. This is the overwhelming majority of requests (anonymous
+  // visitors, bots, RSS pollers) — they have nothing for getUser() to
+  // refresh, and client-side auth (use-user.tsx) already reads sessions
+  // locally without hitting the network. Running getUser() unconditionally
+  // on every one of these was the actual cost driver (84% of Function CPU).
+  const hasAuthCookie = request.cookies
+    .getAll()
+    .some((c) => /^sb-.*-auth-token/.test(c.name));
+  if (!hasAuthCookie) {
+    return response;
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
