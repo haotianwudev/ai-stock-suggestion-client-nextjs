@@ -25,6 +25,15 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "option-strategy/gamma-scalping",
+    title: "Gamma Scalping",
+    articleSlug: "gamma-scalping-mechanics-execution-risk",
+    date: "2026-09-30",
+    labels: [ArticleLabel.OPTIONS, ArticleLabel.QUANT],
+    summary:
+      "Strategic framework for delta-neutral gamma scalping: the Gamma-Theta core equilibrium, put-call parity volatility separation, peak expiration Greek dynamics, 'scalping in thirds' execution, and strict pin risk mitigation.",
+  },
+  {
     path: "quant/move-vix-spillover",
     title: "MOVE-VIX Disconnect & Spillover",
     articleSlug: "move-vix-disconnect-cross-asset-volatility-spillover",

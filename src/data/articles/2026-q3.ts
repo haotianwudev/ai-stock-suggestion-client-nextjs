@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "Strategic Analysis of Gamma Scalping: Mechanics, Execution, and Risk Control",
+    description: "Turning market movement into systematic yield: inside delta-neutral gamma scalping, the Leland friction band, peak expiration Greeks, and pin risk control.",
+    slug: "gamma-scalping-mechanics-execution-risk",
+    date: "September 30, 2026",
+    imageUrl: "https://i.imgur.com/9uommVh.jpeg",
+    infographicUrl: "https://i.imgur.com/9uommVh.jpeg",
+    deepResearch: true,
+    options: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQgHLGT4lgLrnZwKeyn6qm9HuROhiF6s2lv3GSGvG6mv8cb0jZH_qkLcV-NLh66P0NT6MSkENWad2Ge/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+  },
+  {
     title: "The MOVE-VIX Disconnect: Cross-Asset Volatility Spillover and the Fed's Hawkish Repricing",
     description: "Treasury volatility is exploding while the VIX sleeps: inside the 0DTE gamma trap, cross-asset spillover math, and the systemic risk of a hawkish Fed shock.",
     slug: "move-vix-disconnect-cross-asset-volatility-spillover",
