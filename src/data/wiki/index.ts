@@ -25,6 +25,15 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/move-vix-spillover",
+    title: "MOVE-VIX Disconnect & Spillover",
+    articleSlug: "move-vix-disconnect-cross-asset-volatility-spillover",
+    date: "2026-09-28",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.OPTIONS],
+    summary:
+      "Quantitative mechanics of the MOVE-VIX divergence: Bachelier normal rate volatility vs. model-free equity variance replication, 0DTE dealer gamma suppression, Diebold-Yilmaz and DCC-GARCH spillover models, Archimedean copula tail risk, and systematic deleveraging triggers.",
+  },
+  {
     path: "quant/alpha-creation-quant-ecosystem",
     title: "Alpha Creation & Quant Ecosystem",
     articleSlug: "foundations-quantitative-finance-alpha-ecosystem",

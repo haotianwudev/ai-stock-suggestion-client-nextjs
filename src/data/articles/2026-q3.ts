@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "The MOVE-VIX Disconnect: Cross-Asset Volatility Spillover and the Fed's Hawkish Repricing",
+    description: "Treasury volatility is exploding while the VIX sleeps: inside the 0DTE gamma trap, cross-asset spillover math, and the systemic risk of a hawkish Fed shock.",
+    slug: "move-vix-disconnect-cross-asset-volatility-spillover",
+    date: "September 28, 2026",
+    imageUrl: "https://i.imgur.com/FWpDNAE.jpeg",
+    infographicUrl: "https://i.imgur.com/FWpDNAE.jpeg",
+    deepResearch: true,
+    options: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vRv73Th6EtP9C23uMHj4aiQaJqPXBgi0ULh0SMAz3fFVfIP7bExhF-AlE909CkgVPXZGySI6hwuwLYd/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO],
+  },
+  {
     title: "Foundations of Quantitative Finance Research: Alpha Creation and the Quant Ecosystem",
     description: "How systematic hedge funds build institutional alpha: the shift from human intuition to 120,000-field alternative data pipelines and global crowdsourced quants.",
     slug: "foundations-quantitative-finance-alpha-ecosystem",
