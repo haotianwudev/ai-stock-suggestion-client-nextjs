@@ -87,3 +87,4 @@ Validation is a mandatory system constraint rather than an optional LLM reflecti
 ## Related Reading
 - [The "Agent as a Compiler" Framework for Deterministic AI Analysts](/articles/agent-compiler-framework-deterministic-ai-analysts)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSp_CDNCtSUp-bjr1SfhVSv4OpzXjyK3W4AkgDhVrOPJ32jAzDSF-sELc52Mdq818Dx90LLcvaqCms4/pub)
+- [Watch on YouTube](https://youtu.be/aJL53WBXIRY)

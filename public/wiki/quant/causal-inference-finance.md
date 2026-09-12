@@ -107,3 +107,4 @@ $$
 ## Related Reading
 
 - [The Structural Revolution in Causal Quantitative Finance](/articles/structural-revolution-quantitative-finance) — full article with the DML mechanics panel, causal discovery algorithm comparison, and the case for the Interventional Covariance Matrix.
+- [Watch on YouTube](https://youtu.be/_F2THMa9RgI)
