@@ -112,3 +112,4 @@ Under Basel III Endgame, regulatory capital rules establish a sharp bifurcation:
 - [Advanced Dynamics of Counterparty Credit Risk](/articles/advanced-dynamics-counterparty-credit-risk)
 - [The Infrastructure of Counterparty Credit Risk: Margin, WCL, Excess, Shortfall, and Release](/articles/infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTMZBgcy3S3Bb9naeEO7ZzOXgvzu_RKKP-nsQ0B54xcGKfkQYZIPaknNmEMQoRMJJsqQYbXd1llp-Ei/pub)
+- [Watch on YouTube](https://youtu.be/CqtjSjMtJHY)
