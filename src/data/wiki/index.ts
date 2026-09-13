@@ -34,6 +34,26 @@ export const wikiEntries: WikiEntry[] = [
       "Strategic framework for delta-neutral gamma scalping: the Gamma-Theta core equilibrium, put-call parity volatility separation, peak expiration Greek dynamics, 'scalping in thirds' execution, and strict pin risk mitigation.",
   },
   {
+    path: "stock-analysis/cloud-capex-roic",
+    title: "Hyperscaler Cloud Capex Dilemma (2026)",
+    articleSlug: "the-cloud-capex-dilemma-quantitative-roic-decay",
+    date: "2026-09-13",
+    labels: [ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT, ArticleLabel.GEN_AI],
+    topics: ["hyperscalers", "capex", "roic", "valuation", "reverse dcf", "depreciation accounting"],
+    summary:
+      "Quantitative investigation of the $725B hyperscaler AI capex surge: server useful life depreciation distortions, NOPAT/capex marginal efficiency collapse, 5-8 year grid bottlenecks, and reverse DCFs demanding $4.36T in 2036 FCF.",
+  },
+  {
+    path: "option-strategy/options-backtesting-architecture",
+    title: "Options Backtesting Architecture",
+    articleSlug: "systematic-options-backtesting-architecture-microstructure",
+    date: "2026-09-13",
+    labels: [ArticleLabel.OPTIONS, ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    topics: ["backtesting", "execution", "market microstructure", "settlement", "validation"],
+    summary:
+      "Six-stage options backtesting pipeline mechanics: surface IV calibration, natural execution modeling, phantom alpha from mid-price fills, physical vs. cash settlement assignment risk, and CPCV out-of-sample validation.",
+  },
+  {
     path: "quant/move-vix-spillover",
     title: "MOVE-VIX Disconnect & Spillover",
     articleSlug: "move-vix-disconnect-cross-asset-volatility-spillover",
