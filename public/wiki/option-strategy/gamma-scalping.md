@@ -144,3 +144,4 @@ For a long gamma position ($\Gamma > 0$), transaction friction strictly reduces 
 
 - [Strategic Analysis of Gamma Scalping: Mechanics, Execution, and Risk Control](/articles/gamma-scalping-mechanics-execution-risk) — Full interactive article with Greek breakdowns and execution matrices.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQgHLGT4lgLrnZwKeyn6qm9HuROhiF6s2lv3GSGvG6mv8cb0jZH_qkLcV-NLh66P0NT6MSkENWad2Ge/pub) — The unabridged quantitative study on gamma scalping mechanics.
+- [Watch on YouTube](https://youtu.be/bZhDGLKeok8)

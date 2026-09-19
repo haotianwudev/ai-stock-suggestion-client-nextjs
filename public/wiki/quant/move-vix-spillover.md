@@ -132,3 +132,4 @@ Linear correlation fails in non-linear market shocks:
 
 - [The MOVE-VIX Disconnect: Cross-Asset Volatility Spillover and the Fed's Hawkish Repricing](/articles/move-vix-disconnect-cross-asset-volatility-spillover) — Full interactive article with formulas, dealer gamma dynamics, and factor analysis.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRv73Th6EtP9C23uMHj4aiQaJqPXBgi0ULh0SMAz3fFVfIP7bExhF-AlE909CkgVPXZGySI6hwuwLYd/pub) — The unabridged quantitative research study and methodology.
+- [Watch on YouTube](https://youtu.be/5OWExbSdxhI)
