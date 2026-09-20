@@ -25,6 +25,16 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "macro/stop-and-go-monetary-trap",
+    title: "Stop-and-Go Monetary Trap (Sep 2026)",
+    articleSlug: "stop-and-go-monetary-trap-bear-flattening",
+    date: "2026-09-19",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+    topics: ["monetary policy", "yield curve", "nss", "afns", "convexity", "risk parity", "var"],
+    summary:
+      "Quantitative mechanics of the Fed's stop-and-go monetary trap: Taylor principle breakdown, Nelson-Siegel-Svensson & AFNS term structure repricing, bear flattener dynamics, MBS negative convexity duration spirals, and DCC-GARCH cross-asset VaR liquidation cascades.",
+  },
+  {
     path: "option-strategy/gamma-scalping",
     title: "Gamma Scalping",
     articleSlug: "gamma-scalping-mechanics-execution-risk",

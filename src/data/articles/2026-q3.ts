@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q3: Article[] = [
   {
+    title: "The Stop-and-Go Monetary Trap: Modeling the Fed's 2026 Re-Tightening and Bear Flattening Dynamics",
+    description: "Inside the Fed's surprise rate hike: how sticky 3.4% CPI triggered a bear flattening trap, the NSS-AFNS curve shock, and the MBS negative convexity spiral.",
+    slug: "stop-and-go-monetary-trap-bear-flattening",
+    date: "September 30, 2026",
+    imageUrl: "https://i.imgur.com/fvufS2U.png",
+    infographicUrl: "https://i.imgur.com/fvufS2U.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTZk2bWIgZFMCUL9jFJABIkyU752t9zNl9IIIa7Cnq4yghCVAUgpMPMhgeAeMqCeRpVQ-ikpq-jA-F2/pub",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+  },
+  {
     title: "Foundations of Quantitative Finance Research: Alpha Creation and the Quant Ecosystem",
     description: "How systematic hedge funds build institutional alpha: the shift from human intuition to 120,000-field alternative data pipelines and global crowdsourced quants.",
     slug: "foundations-quantitative-finance-alpha-ecosystem",
