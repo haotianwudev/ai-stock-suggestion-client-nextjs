@@ -125,7 +125,7 @@ export default function InvestmentClockFramework() {
                 <div className="bg-neutral-50 dark:bg-neutral-900/40 p-4 rounded-xl">
                   <h6 className="font-semibold text-xs uppercase tracking-wide text-neutral-400 dark:text-neutral-500 mb-2">Key Indicators</h6>
                   <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
-                    <li>• OECD CLI — USALOLITONOSTSAM (50%, leading)</li>
+                    <li>• OECD CLI — USALOLITOAASTSAM (50%, leading)</li>
                     <li>• Industrial Production — INDPRO (20%, coincident)</li>
                     <li>• Initial Jobless Claims — ICSA, inverted (15%, leading)</li>
                     <li>• Unemployment Rate — UNRATE, inverted (15%, lagging)</li>
@@ -288,7 +288,7 @@ export default function InvestmentClockFramework() {
                   { 
                     step: "Data Harvesting",
                     icon: <Layers />,
-                    desc: "Fetch multi-timeframe signals from FRED: OECD CLI (USALOLITONOSTSAM, 50%), INDPRO (20%), inv. ICSA (15%), inv. UNRATE (15%) for Growth; 5Y Breakeven (30%), Core PCE YoY (25%), PPI Final Demand (20%), Core PCE MoM annualized (15%), TCU (10%) for Inflation.",
+                    desc: "Fetch multi-timeframe signals from FRED: OECD CLI (USALOLITOAASTSAM, 50%), INDPRO (20%), inv. ICSA (15%), inv. UNRATE (15%) for Growth; 5Y Breakeven (30%), Core PCE YoY (25%), PPI Final Demand (20%), Core PCE MoM annualized (15%), TCU (10%) for Inflation.",
                     details: "Growth blends leading (CLI, jobless claims), coincident (industrial production), and lagging (unemployment) signals. Inflation blends leading (breakeven expectations, capacity utilization), pipeline (PPI), lagging (core PCE YoY), and real-time (core PCE MoM annualized) signals. A month a series has not yet published stays blank rather than being forward-filled, so no false year-over-year move is manufactured. Weekly ICSA is averaged to monthly. All series need 15 years for warm-up."
                   },
                   { 
