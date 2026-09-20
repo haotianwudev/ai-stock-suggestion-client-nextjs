@@ -54,6 +54,15 @@ const PHASE_ASSETS: Record<string, string> = {
   Reflation: "Government Bonds",
 };
 
+// Ranges for the phase-space tracer. Capped at the 120 months the API returns;
+// a range longer than the available history just plots everything.
+const TRACER_RANGES = [
+  { months: 12, label: "1Y" },
+  { months: 24, label: "2Y" },
+  { months: 60, label: "5Y" },
+  { months: 120, label: "10Y" },
+];
+
 const statAccent = {
   regime: "border-[#A8672E] dark:border-[#D08F52]",
   asset: "border-[#1D8A70] dark:border-[#3CBF9C]",
@@ -226,6 +235,7 @@ export function InvestmentClockClient() {
   );
 
   const [tracerHovered, setTracerHovered] = useState<number | null>(null);
+  const [tracerMonths, setTracerMonths] = useState<number>(24);
   const [selectedArticleSlug, setSelectedArticleSlug] = useState<string>(
     RELATED_ARTICLE_SLUGS[0]
   );
@@ -255,6 +265,14 @@ export function InvestmentClockClient() {
   const evaluation = clock?.current;
   const history = clock?.history ?? [];
 
+  // The tracer and the table beside it are one view: the table's row highlight is
+  // keyed by index into the same array the diagram plots, so both must read from
+  // this slice or hovering a dot lights up the wrong month.
+  const tracerHistory = useMemo(
+    () => (tracerMonths >= history.length ? history : history.slice(-tracerMonths)),
+    [history, tracerMonths]
+  );
+
   const displayPhase = evaluation?.finalPhase ?? latestData?.dataPhase ?? "Recovery";
   const clockAngle = latestData?.clockAngle ?? 45;
   const bestAsset = evaluation?.bestAsset ?? PHASE_ASSETS[displayPhase] ?? "Equities";
@@ -266,8 +284,15 @@ export function InvestmentClockClient() {
   const handleDotHover = (i: number | null) => {
     setTracerHovered(i);
     if (i == null) return;
-    const tableRowIdx = history.length - 1 - i;
+    const tableRowIdx = tracerHistory.length - 1 - i;
     rowRefs.current[tableRowIdx]?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
+
+  // A hovered index points into the old slice; changing range would otherwise
+  // leave a stale row highlighted somewhere unrelated.
+  const handleRangeChange = (months: number) => {
+    setTracerMonths(months);
+    setTracerHovered(null);
   };
 
   if (loading && !data) {
@@ -364,13 +389,47 @@ export function InvestmentClockClient() {
             <div>
               <SlotKicker icon={Activity} label="Phase Space Dynamics" tone="accent" />
               <h2 className="font-serif text-xl font-bold text-gray-900 dark:text-gray-100">
-                Cycle Clock &amp; 24-Month Trajectory Tracer
+                Cycle Clock &amp; Trajectory Tracer
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
-                The clock hand indicates the current composite angle in the four quadrants. The 10-year
-                phase space tracer plots Growth Z vs. Inflation Z, so the current reading can be judged
-                against a full decade rather than against the last two years alone.
+                The clock hand indicates the current composite angle in the four quadrants. The
+                phase space tracer plots Growth Z vs. Inflation Z over the range you choose &mdash;
+                a short window shows where the cycle is heading, a longer one shows whether today&apos;s
+                reading is unusual.
               </p>
+            </div>
+
+            {/* Tracer range */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[11px] uppercase tracking-wide text-muted-foreground mr-1">
+                Tracer range
+              </span>
+              {TRACER_RANGES.map((r) => {
+                const active = tracerMonths === r.months;
+                const available = history.length >= 2;
+                return (
+                  <button
+                    key={r.months}
+                    type="button"
+                    disabled={!available}
+                    aria-pressed={active}
+                    onClick={() => handleRangeChange(r.months)}
+                    className={`px-2.5 py-1 rounded-lg border text-xs font-mono transition-colors disabled:opacity-40 ${
+                      active
+                        ? "bg-[#A8672E] dark:bg-[#D08F52] border-[#A8672E] dark:border-[#D08F52] text-white dark:text-gray-950 font-semibold"
+                        : "bg-gray-50 dark:bg-gray-950/60 border-gray-200 dark:border-gray-800 text-muted-foreground hover:text-gray-900 dark:hover:text-gray-100"
+                    }`}
+                  >
+                    {r.label}
+                  </button>
+                );
+              })}
+              <span className="text-[11px] text-muted-foreground ml-auto font-mono">
+                {tracerHistory.length} mo
+                {tracerHistory.length > 0 && (
+                  <> &middot; {tracerHistory[0].bizDate.slice(0, 7)}&ndash;{tracerHistory[tracerHistory.length - 1].bizDate.slice(0, 7)}</>
+                )}
+              </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
@@ -379,13 +438,13 @@ export function InvestmentClockClient() {
                 <ClockFace clockAngle={clockAngle} phase={displayPhase} size={380} />
               </div>
 
-              {/* 24-Month Tracer & Table */}
+              {/* Tracer & table — both read tracerHistory so hover indices line up */}
               <div className="space-y-3 flex flex-col justify-between">
-                {history.length > 0 ? (
+                {tracerHistory.length > 0 ? (
                   <>
                     <div className="p-2 rounded-2xl bg-gray-50/50 dark:bg-gray-950/50 border border-gray-100 dark:border-gray-800 flex justify-center">
                       <TracerDiagram
-                        history={history}
+                        history={tracerHistory}
                         hoveredIndex={tracerHovered}
                         onHoverIndex={handleDotHover}
                       />
@@ -406,9 +465,9 @@ export function InvestmentClockClient() {
                           </tr>
                         </thead>
                         <tbody>
-                          {[...history].reverse().map((d, tableIdx) => {
-                            const histIdx = history.length - 1 - tableIdx;
-                            const isLatest = histIdx === history.length - 1;
+                          {[...tracerHistory].reverse().map((d, tableIdx) => {
+                            const histIdx = tracerHistory.length - 1 - tableIdx;
+                            const isLatest = histIdx === tracerHistory.length - 1;
                             const isHovered = tracerHovered === histIdx;
                             const phaseTextColor =
                               d.dataPhase === "Recovery"
