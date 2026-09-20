@@ -59,16 +59,33 @@ function buildPhaseSegments(rows: ChartRow[]): PhaseSegment[] {
   return segments;
 }
 
+/**
+ * Indices worth a dot. Over a 10-year window a dot per month collides with its
+ * neighbours on two overlapping series, so mark only the months that say something:
+ * where the phase turned over, plus the latest reading. Short windows keep every dot.
+ */
+function markedIndices(rows: ChartRow[]): Set<number> {
+  if (rows.length <= 36) return new Set(rows.map((_, i) => i));
+  const marks = new Set<number>();
+  rows.forEach((row, i) => {
+    if (i === 0 || row.dataPhase !== rows[i - 1].dataPhase) marks.add(i);
+  });
+  marks.add(rows.length - 1);
+  return marks;
+}
+
 function PhaseDot(props: {
   cx?: number;
   cy?: number;
   payload?: ChartRow;
   index?: number;
   rowCount: number;
+  marks: Set<number>;
 }) {
-  const { cx, cy, payload, index, rowCount } = props;
-  if (cx == null || cy == null || !payload) return null;
+  const { cx, cy, payload, index, rowCount, marks } = props;
+  if (cx == null || cy == null || !payload || index == null) return null;
   const isLatest = index === rowCount - 1;
+  if (!isLatest && !marks.has(index)) return null;
   return (
     <circle
       cx={cx}
@@ -124,6 +141,7 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
   }));
 
   const segments = buildPhaseSegments(rows);
+  const marks = markedIndices(rows);
 
   return (
     <div className="space-y-3">
@@ -148,7 +166,7 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
               axisLine={{ stroke: "#e2e8f0" }}
               tickLine={false}
               interval="preserveStartEnd"
-              minTickGap={24}
+              minTickGap={44}
             />
             <YAxis
               tick={{ fontSize: 10, fill: "#94a3b8" }}
@@ -172,6 +190,7 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
                   payload={payload}
                   index={index}
                   rowCount={rows.length}
+                  marks={marks}
                 />
               )}
               activeDot={{ r: 5 }}
@@ -191,6 +210,7 @@ export function HistoricalChart({ history }: HistoricalChartProps) {
                   payload={payload}
                   index={index}
                   rowCount={rows.length}
+                  marks={marks}
                 />
               )}
               activeDot={{ r: 5 }}

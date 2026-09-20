@@ -367,8 +367,9 @@ export function InvestmentClockClient() {
                 Cycle Clock &amp; 24-Month Trajectory Tracer
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
-                The clock hand indicates the current composite angle in the four quadrants. The 24-month
-                phase space tracer plots Growth Z vs. Inflation Z to highlight cycle rotation dynamics.
+                The clock hand indicates the current composite angle in the four quadrants. The 10-year
+                phase space tracer plots Growth Z vs. Inflation Z, so the current reading can be judged
+                against a full decade rather than against the last two years alone.
               </p>
             </div>
 
@@ -486,7 +487,8 @@ export function InvestmentClockClient() {
                 Growth &amp; Inflation Momentum Timeline
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                24-month timeline tracing composite Growth Z and Inflation Z against historical regime bands.
+                10-year timeline tracing composite Growth Z and Inflation Z against historical regime bands.
+                Dots mark the months the phase turned over.
               </p>
             </div>
             <HistoricalChart history={history} />
