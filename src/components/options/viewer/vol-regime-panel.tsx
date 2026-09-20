@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GET_VOL_REGIME } from "@/lib/graphql/queries";
+import { useLiveVix } from "@/lib/options/use-live-vix";
 import type { VolRegimeResult, VolRegimeDataPoint } from "@/lib/graphql/types";
 
 /**
@@ -286,6 +287,9 @@ export function VolRegimePanel() {
 
   const result = data?.volRegime;
   const latest = result?.latestData;
+
+  // Intraday: today's live VIX against the realized vol as of the last stored close.
+  const liveVix = useLiveVix();
 
   const rawHistory = result?.history ?? [];
 
@@ -699,6 +703,52 @@ export function VolRegimePanel() {
           hint="3-month VIX minus front-month VIX. Negative (backwardation) signals near-term stress"
         />
       </div>
+
+      {/* Intraday: live VIX vs realized vol */}
+      {liveVix && latest && latest.realizedVol20d != null && (() => {
+        const rv20 = latest.realizedVol20d as number;
+        const rv10 = latest.realizedVol10d;
+        const liveVrp = liveVix.value - rv20;
+        const closeVrp = latest.vrp;
+        const positive = liveVrp >= 0;
+        const color = positive ? "#059669" : "#E11D48";
+        return (
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-3 shadow-xs">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide font-semibold text-slate-500 dark:text-slate-400">
+                <Zap className="h-3.5 w-3.5 text-[#A8672E] dark:text-[#D08F52]" />
+                Intraday
+              </div>
+              <div className="text-sm font-mono">
+                <span className="text-slate-500 dark:text-slate-400">VIX now </span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{fmt(liveVix.value, 2)}</span>
+                <span className={`ml-1 text-xs ${liveVix.percentChange >= 0 ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}>
+                  {liveVix.percentChange >= 0 ? "+" : ""}{fmt(liveVix.percentChange, 1, "%")}
+                </span>
+              </div>
+              <div className="text-sm font-mono">
+                <span className="text-slate-500 dark:text-slate-400">vs Realized 20d </span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{fmt(rv20, 2)}</span>
+                <span className="ml-1 text-xs text-slate-400">(10d {fmt(rv10, 2)})</span>
+              </div>
+              <div className="text-sm font-mono">
+                <span className="text-slate-500 dark:text-slate-400">Live VRP </span>
+                <span className="font-bold" style={{ color }}>
+                  {positive ? "+" : ""}{fmt(liveVrp, 2)}
+                </span>
+                {closeVrp != null && (
+                  <span className="ml-1 text-xs text-slate-400">
+                    (last close {closeVrp >= 0 ? "+" : ""}{fmt(closeVrp, 2)})
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500">
+              Live VIX from Cboe vs. realized vol through {latest.bizDate}. Refreshes with the viewer's live feed.
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Redesigned VRP History Chart Window */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs overflow-hidden">
