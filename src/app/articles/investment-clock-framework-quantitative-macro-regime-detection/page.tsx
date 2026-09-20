@@ -144,10 +144,18 @@ export default function InvestmentClockFramework() {
                 <div className="bg-neutral-50 dark:bg-neutral-900/40 p-4 rounded-xl">
                   <h6 className="font-semibold text-xs uppercase tracking-wide text-neutral-400 dark:text-neutral-500 mb-2">Key Indicators</h6>
                   <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
-                    <li>• Core CPI YoY — CPILFESL, 12m % change (40%, lagging)</li>
-                    <li>• Core CPI MoM Annualized — CPILFESL, compound (30%, real-time)</li>
-                    <li>• Capacity Utilization — TCU (30%, leading pressure)</li>
+                    <li>• 5Y Breakeven — T5YIE (30%, leading expectation)</li>
+                    <li>• Core PCE YoY — PCEPILFE, 12m % change (25%, lagging)</li>
+                    <li>• PPI Final Demand YoY — PPIFID (20%, pipeline)</li>
+                    <li>• Core PCE MoM Annualized — PCEPILFE, compound (15%, real-time)</li>
+                    <li>• Capacity Utilization — TCU (10%, leading pressure)</li>
                   </ul>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed mt-3">
+                    Every input except TCU is scored against the Fed&apos;s 2% target rather than
+                    its own rolling mean, so inflation that stays above target keeps registering
+                    instead of being absorbed into a drifting baseline. Core PCE is used in place
+                    of core CPI because the FOMC&apos;s 2% goal is defined on PCE.
+                  </p>
                 </div>
               </div>
             </div>
@@ -277,14 +285,14 @@ export default function InvestmentClockFramework() {
                   { 
                     step: "Data Harvesting",
                     icon: <Layers />,
-                    desc: "Fetch multi-timeframe signals from FRED: OECD CLI (USALOLITONOSTSAM, 50%), INDPRO (20%), inv. ICSA (15%), inv. UNRATE (15%) for Growth; CPI YoY (40%), CPI MoM annualized (30%), TCU (30%) for Inflation.",
-                    details: "Growth blends leading (CLI, jobless claims), coincident (industrial production), and lagging (unemployment) signals. Inflation blends lagging (CPI YoY), real-time (CPI MoM annualized), and leading (capacity utilization) signals. Weekly ICSA is averaged to monthly. All series need 10+ years for warm-up."
+                    desc: "Fetch multi-timeframe signals from FRED: OECD CLI (USALOLITONOSTSAM, 50%), INDPRO (20%), inv. ICSA (15%), inv. UNRATE (15%) for Growth; 5Y Breakeven (30%), Core PCE YoY (25%), PPI Final Demand (20%), Core PCE MoM annualized (15%), TCU (10%) for Inflation.",
+                    details: "Growth blends leading (CLI, jobless claims), coincident (industrial production), and lagging (unemployment) signals. Inflation blends leading (breakeven expectations, capacity utilization), pipeline (PPI), lagging (core PCE YoY), and real-time (core PCE MoM annualized) signals. A month a series has not yet published stays blank rather than being forward-filled, so no false year-over-year move is manufactured. Weekly ICSA is averaged to monthly. All series need 15 years for warm-up."
                   },
                   { 
                     step: "Normalization",
                     icon: <Settings />,
-                    desc: "Apply Exponential Rolling Z-Score (span=24 months) to each signal. Recent data is weighted more heavily, adapting quickly to regime shifts.",
-                    details: "EWM Z-score uses exponential weighting (~12-month halflife) instead of equal-weight rolling windows. This avoids HP-filter end-point bias where the most recent 12-24 months are unreliable. Values beyond ±2 standard deviations indicate extreme conditions."
+                    desc: "Apply Exponential Rolling Z-Score (span=24 months) to each signal. Growth is measured against its own trend; inflation against the Fed's 2% target.",
+                    details: "EWM Z-score uses exponential weighting (~12-month halflife) instead of equal-weight rolling windows. This avoids HP-filter end-point bias where the most recent 12-24 months are unreliable. Growth signals are centred on their own rolling mean, since 'above or below trend' is the meaningful question. Inflation signals keep the rolling standard deviation for scale but are centred on 2%, not on their own mean — otherwise a rate that stays above target for two years drags the baseline up with it and reads as neutral, hiding exactly the condition the clock exists to detect. Values beyond ±2 standard deviations indicate extreme conditions."
                   },
                   { 
                     step: "Phase Mapping", 

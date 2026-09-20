@@ -214,6 +214,10 @@ export interface InvestmentClockDataPoint {
   icsaValue?: number;
   cpiYoy?: number;
   cpiMomAnn?: number;
+  /** Core PCE — the FOMC's own target gauge; drives the inflation composite. */
+  pceValue?: number;
+  pceYoy?: number;
+  pceMomAnn?: number;
   t5yieValue?: number;
   ppiYoy?: number;
   gdpYoyPct?: number;

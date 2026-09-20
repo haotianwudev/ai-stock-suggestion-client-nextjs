@@ -223,7 +223,7 @@ export const wikiEntries: WikiEntry[] = [
     date: "2026-04-20",
     labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
     summary:
-      "Mathematical specification for calculating the Merrill Lynch Investment Clock in real time: 10-indicator FRED pipeline, exponential rolling Z-scores, and phase angle cartesian mapping.",
+      "Mathematical specification for calculating the Merrill Lynch Investment Clock in real time: 11-indicator FRED pipeline, target-anchored inflation Z-scores measured against the Fed's 2% goal (core PCE, not core CPI), exponential rolling growth Z-scores, and phase angle cartesian mapping.",
   },
   {
     path: "form13f/druckenmiller-q2-2026-ai-infrastructure-rotation",

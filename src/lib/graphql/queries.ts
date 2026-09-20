@@ -506,6 +506,9 @@ export const GET_INVESTMENT_CLOCK = gql`
         icsaValue
         cpiYoy
         cpiMomAnn
+        pceValue
+        pceYoy
+        pceMomAnn
         t5yieValue
         ppiYoy
         gdpYoyPct

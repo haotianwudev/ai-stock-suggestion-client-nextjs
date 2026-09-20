@@ -536,7 +536,8 @@ export function InvestmentClockClient() {
                   Raw FRED Macroeconomic Indicators
                 </h2>
                 <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                  10 federal economic indicators processed via exponential rolling Z-scores (span=24 months).
+                  11 federal economic indicators processed via exponential rolling Z-scores (span=24 months).
+                  Growth inputs are scored against their own trend; inflation inputs against the Fed&apos;s 2% target.
                 </p>
               </div>
 
@@ -602,12 +603,12 @@ export function InvestmentClockClient() {
                     description="Market's 5-year inflation expectation (TIPS spread). >2% = above Fed target."
                   />
                   <RawIndicator
-                    label="CPI YoY"
-                    value={latestData.cpiYoy}
+                    label="Core PCE YoY"
+                    value={latestData.pceYoy}
                     unit="%"
                     decimals={2}
                     role="Inflation 25%"
-                    description="Core CPI 12-month rate vs 2% target. Lagging trend confirmer."
+                    description="Core PCE 12-month rate vs 2% target — the gauge the Fed's 2% goal is actually defined on."
                   />
                   <RawIndicator
                     label="PPI Final Demand"
@@ -618,12 +619,12 @@ export function InvestmentClockClient() {
                     description="Producer prices YoY vs 2% target. Leads CPI by 2-6 months."
                   />
                   <RawIndicator
-                    label="CPI MoM Ann."
-                    value={latestData.cpiMomAnn}
+                    label="Core PCE MoM Ann."
+                    value={latestData.pceMomAnn}
                     unit="%"
                     decimals={2}
                     role="Inflation 15%"
-                    description="Annualized monthly CPI rate vs 2% target. Real-time inflection."
+                    description="Annualized monthly core PCE rate vs 2% target. Real-time inflection."
                   />
                   <RawIndicator
                     label="Cap. Utilization"
@@ -632,6 +633,13 @@ export function InvestmentClockClient() {
                     decimals={1}
                     role="Inflation 10%"
                     description="% of industrial capacity in use. >80% signals pricing pressure."
+                  />
+                  <RawIndicator
+                    label="Core CPI YoY"
+                    value={latestData.cpiYoy}
+                    unit="%"
+                    decimals={2}
+                    description="Core CPI 12-month rate. Lands ~2 weeks before PCE, so it's the timelier read — but it is not in the composite."
                   />
                   <RawIndicator
                     label="Real GDP"
@@ -687,8 +695,9 @@ export function InvestmentClockClient() {
                     </span>
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    Weighted composite: 5Y Breakeven (30%) + CPI YoY (25%) + PPI (20%) + CPI MoM Ann (15%) + Cap Utilization (10%).
-                    {(latestData.inflationZScore ?? 0) >= 0 ? " Above trend indicates Overheat/Stagflation." : " Below trend indicates Reflation/Recovery."}
+                    Weighted composite: 5Y Breakeven (30%) + Core PCE YoY (25%) + PPI (20%) + Core PCE MoM Ann (15%) + Cap Utilization (10%).
+                    Inflation inputs are scored against the Fed&apos;s 2% target rather than their own moving average, so inflation that stays above target keeps reading positive instead of normalising away.
+                    {(latestData.inflationZScore ?? 0) >= 0 ? " Above target indicates Overheat/Stagflation." : " Below target indicates Reflation/Recovery."}
                   </p>
                 </div>
               </div>
