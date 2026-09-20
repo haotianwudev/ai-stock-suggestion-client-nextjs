@@ -696,7 +696,7 @@ export function InvestmentClockClient() {
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
                     Weighted composite: 5Y Breakeven (30%) + Core PCE YoY (25%) + PPI (20%) + Core PCE MoM Ann (15%) + Cap Utilization (10%).
-                    Inflation inputs are scored against the Fed&apos;s 2% target rather than their own moving average, so inflation that stays above target keeps reading positive instead of normalising away.
+                    Inflation inputs are scored against the Fed&apos;s 2% target rather than their own moving average, so inflation that stays above target keeps reading positive instead of normalising away. The gap is scaled by each series&apos; 10-year dispersion, so a series that is merely having a quiet stretch is not mistaken for an extreme reading. PPI is centred at 2.15%, its structural level when consumer inflation sits at target.
                     {(latestData.inflationZScore ?? 0) >= 0 ? " Above target indicates Overheat/Stagflation." : " Below target indicates Reflation/Recovery."}
                   </p>
                 </div>

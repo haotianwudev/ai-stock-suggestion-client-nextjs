@@ -154,7 +154,10 @@ export default function InvestmentClockFramework() {
                     Every input except TCU is scored against the Fed&apos;s 2% target rather than
                     its own rolling mean, so inflation that stays above target keeps registering
                     instead of being absorbed into a drifting baseline. Core PCE is used in place
-                    of core CPI because the FOMC&apos;s 2% goal is defined on PCE.
+                    of core CPI because the FOMC&apos;s 2% goal is defined on PCE. PPI is centred
+                    at 2.15% instead — its structural level when consumer inflation is at target.
+                    The gap is divided by each series&apos; 10-year dispersion, not a two-year
+                    window, so a series in a quiet stretch is not scored as an extreme deviation.
                   </p>
                 </div>
               </div>
@@ -292,7 +295,7 @@ export default function InvestmentClockFramework() {
                     step: "Normalization",
                     icon: <Settings />,
                     desc: "Apply Exponential Rolling Z-Score (span=24 months) to each signal. Growth is measured against its own trend; inflation against the Fed's 2% target.",
-                    details: "EWM Z-score uses exponential weighting (~12-month halflife) instead of equal-weight rolling windows. This avoids HP-filter end-point bias where the most recent 12-24 months are unreliable. Growth signals are centred on their own rolling mean, since 'above or below trend' is the meaningful question. Inflation signals keep the rolling standard deviation for scale but are centred on 2%, not on their own mean — otherwise a rate that stays above target for two years drags the baseline up with it and reads as neutral, hiding exactly the condition the clock exists to detect. Values beyond ±2 standard deviations indicate extreme conditions."
+                    details: "EWM Z-score uses exponential weighting instead of equal-weight rolling windows, avoiding the HP-filter end-point bias where the most recent 12-24 months are unreliable. Growth signals are centred on their own rolling mean over 24 months, since 'above or below trend' is the meaningful question. Inflation signals are instead centred on the 2% target — otherwise a rate that stays above target for two years drags the baseline up with it and reads as neutral, hiding exactly the condition the clock exists to detect. Their scale comes from a 10-year dispersion estimate rather than a two-year one: a short window collapses during calm periods, so a well-anchored series sitting a fraction of a point above target would otherwise score as an extreme reading purely for having stopped moving. Values beyond ±2 standard deviations indicate extreme conditions."
                   },
                   { 
                     step: "Phase Mapping", 
