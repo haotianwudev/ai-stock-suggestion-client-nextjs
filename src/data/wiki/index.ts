@@ -25,6 +25,26 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/equity-quant-strats",
+    title: "Equity Quant Desk Architecture",
+    articleSlug: "equity-quantitative-research-strategist-functions",
+    date: "2026-09-24",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS, ArticleLabel.FINANCE101],
+    topics: ["equity derivatives", "desk strats", "p-measure", "q-measure", "svi", "heston", "slv", "autocallables", "els", "xva", "aad", "deeponets"],
+    summary:
+      "Institutional operations, theoretical modeling, and computational frameworks of modern equity quantitative desks: P-measure vs. Q-measure paradigms, desk strats vs. core quants, SVI/SSVI arbitrage-free volatility surfaces, Heston and Stochastic Local Volatility (SLV), ELS autocallable knock-in feedback loops, the comprehensive XVA framework, and differential machine learning via AAD and DeepONets.",
+  },
+  {
+    path: "quant/quant-private-equity",
+    title: "Quantitative Private Equity",
+    articleSlug: "convergence-private-equity-quantitative-research",
+    date: "2026-09-24",
+    labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
+    topics: ["private equity", "deal origination", "motherbrain", "pme", "direct alpha", "volatility laundering", "unsmoothing", "takahashi-alexander", "secondaries"],
+    summary:
+      "The institutionalization of quantitative research in private equity: algorithmic deal origination via CNNs, ISD for VDR due diligence, PME benchmarking (Direct Alpha, GPME), econometric unsmoothing of appraisal NAVs, and deep learning cash flow forecasting.",
+  },
+  {
     path: "macro/stop-and-go-monetary-trap",
     title: "Stop-and-Go Monetary Trap (Sep 2026)",
     articleSlug: "stop-and-go-monetary-trap-bear-flattening",
