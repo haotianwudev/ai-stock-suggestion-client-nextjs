@@ -120,4 +120,5 @@ $$
 ## Related Reading
 
 - [The Stop-and-Go Monetary Trap: Modeling the Fed's 2026 Re-Tightening and Bear Flattening Dynamics](/articles/stop-and-go-monetary-trap-bear-flattening)
+- [Watch on YouTube](https://youtu.be/faJpY074wxY)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTZk2bWIgZFMCUL9jFJABIkyU752t9zNl9IIIa7Cnq4yghCVAUgpMPMhgeAeMqCeRpVQ-ikpq-jA-F2/pub)

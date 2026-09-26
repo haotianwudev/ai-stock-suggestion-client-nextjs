@@ -64,6 +64,7 @@ Where current market valuation $P_0$ implies required compound annual growth rat
 
 - [The Cloud Capex Dilemma: Quantitative ROIC Decay in Hyperscaler AI Infrastructure](/articles/the-cloud-capex-dilemma-quantitative-roic-decay)
 - [Listen to the Podcast on Spotify](https://open.spotify.com/episode/76abYDLpqbWn5xaOPNw14O?si=x2sv5ZpfQMKDKyCE4HJqTg)
+- [Watch on YouTube](https://youtu.be/vxSm6FpCadk)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQKNUrynWkNgM9EBZOBnDsymY8EbizQ_GlZLZImec5gfiLyCj1FIL5sJMrSoYpk-8b2TP9_38alZiy_/pub)
 - [Microsoft: EV/EBITDA vs DCF Valuation](/wiki/stock-analysis/microsoft-msft-ev-ebitda-vs-dcf)
 - [Alphabet: DCF Interactive Valuation](/wiki/stock-analysis/alphabet-googl-dcf-interactive-valuation)
