@@ -1,4 +1,5 @@
 import { Article, generateSlugFromTitle, postprocessArticles } from './types';
+import { articles2026Q4 } from './2026-q4';
 import { articles2026Q3 } from './2026-q3';
 import { articles2026Q2 } from './2026-q2';
 import { articles2026Q1 } from './2026-q1';
@@ -8,6 +9,7 @@ import { articles2025Q2 } from './2025-q2';
 
 // All articles combined
 const allArticlesRaw = [
+  ...articles2026Q4,
   ...articles2026Q3,
   ...articles2026Q2,
   ...articles2026Q1,
