@@ -79,6 +79,7 @@ When rising interest rates make carrying cash proceeds more valuable than holdin
 ## Related Reading
 
 - [Systematic Options Backtesting Architecture and Market Microstructure Realities](/articles/systematic-options-backtesting-architecture-microstructure)
+- [Watch on YouTube](https://youtu.be/5yd0l1NDyCI)
 - [Variance Risk Premium and SPX Options Selling](/wiki/option-strategy/vrp-spx-options-selling)
 - [Gamma Scalping](/wiki/option-strategy/gamma-scalping)
 - [Iron Condor: Benklifa Summary](/wiki/option-strategy/iron-condor-benklifa-summary)
