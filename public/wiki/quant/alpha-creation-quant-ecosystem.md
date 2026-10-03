@@ -64,3 +64,4 @@ The democratization of quantitative research via cloud platforms unlocks global 
 ## Related Reading
 - [Foundations of Quantitative Finance Research: Alpha Creation and the Quant Ecosystem](/articles/foundations-quantitative-finance-alpha-ecosystem)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vT0cgEZL-Ojq5Gb7BHmjdHwmeHdfzwJ9HxkEoXj8HjKnWwmQbze8AAXaEQumBq60ftjp5sh1RldSPo6/pub)
+- [Watch on YouTube](https://youtu.be/QfzOPS5qcFQ)

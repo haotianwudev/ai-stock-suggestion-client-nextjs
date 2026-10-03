@@ -56,3 +56,4 @@ $$
 ## Related Reading
 
 - [Strategic Wealth Considerations: Tax Mechanics, Asset Location, and Behavioral Finance](/articles/strategic-wealth-considerations-tax-and-behavioral-finance) — full article with worked examples and defense strategies for each trap.
+- [Watch on YouTube](https://youtu.be/C0IhEd_l7I4)
