@@ -25,6 +25,26 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "macro/precious-metals-macro-risks",
+    title: "Precious Metals & Macro Risks (Oct 2026)",
+    articleSlug: "precious-metals-macroeconomic-risks",
+    date: "2026-10-08",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+    topics: ["gold", "precious metals", "real yields", "tips", "treasury yields", "fomc", "kevin warsh", "central bank buying", "russell 2000", "fiscal dominance"],
+    summary:
+      "Quantitative analysis of the precious metals and macroeconomic regime in Q4 2026: spot gold pullback to ~$4,100, 10Y TIPS real yields reaching 2.95%, the Warsh Federal Reserve rate hike to 4.00%, the structural bifurcation between sovereign central bank buying (+289t) and Western ETF liquidations (-45t), and systemic risks including the small-cap refinancing cliff and fiscal dominance.",
+  },
+  {
+    path: "macro/cross-currency-basis",
+    title: "Cross-Currency Basis Squeeze",
+    articleSlug: "cross-currency-basis-squeeze",
+    date: "2026-10-08",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+    topics: ["cross-currency basis", "cip", "fx swaps", "sofr", "tona", "hedged yield", "esr", "j-ics", "yen carry trade", "var"],
+    summary:
+      "Quantitative mechanics of the cross-currency basis squeeze: post-GFC failure of Covered Interest Parity, balance sheet shadow costs under SLR, institutional hedged yield formulas, Japan's April 2026 ESR regulatory transition, and systemic multi-manager cross-margining cascades during yen carry unwinds.",
+  },
+  {
     path: "quant/equity-quant-strats",
     title: "Equity Quant Desk Architecture",
     articleSlug: "equity-quantitative-research-strategist-functions",

@@ -2,6 +2,28 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q4: Article[] = [
   {
+    title: "Quantitative Analysis of Precious Metals and Macroeconomic Risks: Gold at Nine-Week Lows Amidst Elevated Yields and Rate Hike Prospects",
+    description: "Spot gold retreats to nine-week lows as long-dated Treasury yields surge and the Warsh Federal Reserve maintains a hawkish stance. An empirical analysis of real yields, central bank accumulation versus ETF outflows, and small-cap refinancing risks.",
+    slug: "precious-metals-macroeconomic-risks",
+    date: "October 8, 2026",
+    imageUrl: "https://i.imgur.com/6GJHEg4.png",
+    infographicUrl: "https://i.imgur.com/6GJHEg4.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQpkuqOtLkfRcvsno9ksoMJfoYN2-PvPnybk-VBYS08QNX3sQ2ZHaYMF6zzrwtMIGgHB82efRQE6ON9/pub",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+  },
+  {
+    title: "The Cross-Currency Basis Squeeze: Plumbing, Yield Hurdles, and Systemic Reflexivity in Global Macro",
+    description: "Post-2008 banking regulations fractured Covered Interest Parity into a structural cross-currency basis wedge. Explore the mechanics of FX basis swaps, the 2026 Japanese ESR regulatory shock, and how yen carry unwinds trigger cross-asset margin cascades.",
+    slug: "cross-currency-basis-squeeze",
+    date: "October 8, 2026",
+    imageUrl: "https://i.imgur.com/PzrQnxD.jpeg",
+    infographicUrl: "https://i.imgur.com/PzrQnxD.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vTPhJQkoLSXbzle1NixdcRgaRhh4BHoRL4jjaZqimu8T2Prjq8BxHkKH5PHuIes8uKWeD0NTEABn6Rx/pub",
+    labels: [ArticleLabel.MACRO, ArticleLabel.QUANT],
+  },
+  {
     title: "Equity Quantitative Research and Strategist Functions",
     description: "Inside top quant desks: P vs Q measures, arbitrage-free SVI surfaces, stochastic local volatility, XVA pricing, and AAD-driven differential deep learning.",
     slug: "equity-quantitative-research-strategist-functions",
