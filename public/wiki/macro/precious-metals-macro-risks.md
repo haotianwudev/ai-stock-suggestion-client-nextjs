@@ -171,3 +171,4 @@ Over $420 billion in non-financial Russell 2000 debt matures across 2026–2027.
 
 - [Quantitative Analysis of Precious Metals and Macroeconomic Risks: Gold at Nine-Week Lows Amidst Elevated Yields and Rate Hike Prospects](/articles/precious-metals-macroeconomic-risks) — Interactive analysis featuring live calculations, regime tables, and risk breakdowns.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQpkuqOtLkfRcvsno9ksoMJfoYN2-PvPnybk-VBYS08QNX3sQ2ZHaYMF6zzrwtMIGgHB82efRQE6ON9/pub) — Comprehensive deep research report on precious metals valuation, Treasury yields, and systemic macro risks.
+- [Watch on YouTube](https://youtu.be/d38CmTircnM) — Video walkthrough of this analysis.

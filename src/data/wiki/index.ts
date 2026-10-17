@@ -25,6 +25,51 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/barrier-options",
+    title: "Barrier Option Valuation",
+    articleSlug: "reflection-principle-barrier-option-valuation",
+    date: "2026-10-14",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS, ArticleLabel.FINANCE101],
+    topics: [
+      "barrier options",
+      "reflection principle",
+      "first passage time",
+      "girsanov theorem",
+      "method of images",
+      "reiner-rubinstein",
+      "bgk correction",
+      "brownian bridge",
+      "rao-blackwellization",
+      "pin risk",
+      "vibrato mc",
+      "malliavin calculus",
+    ],
+    summary:
+      "Stochastic foundations and numerical architectures of single-barrier contingent claims: deriving Reiner-Rubinstein analytical closed forms via Girsanov pathwise reflection and PDE method of images, asymptotic BGK boundary corrections, Brownian bridge Rao-Blackwellization to eliminate discrete monitoring bias, and unbiased sensitivity estimation near pin-risk boundaries.",
+  },
+  {
+    path: "finance101/rent-vs-buy",
+    title: "Rent vs. Buy Economic Parity",
+    articleSlug: "rent-versus-buy-frameworks",
+    date: "2026-10-14",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.QUANT],
+    topics: [
+      "rent vs buy",
+      "unrecoverable costs",
+      "terminal net worth parity",
+      "5% rule",
+      "price-to-rent ratio",
+      "capex lifecycle",
+      "obbba",
+      "salt cap",
+      "negative leverage",
+      "forced savings",
+      "fire",
+    ],
+    summary:
+      "Quantitative frameworks for the rent-versus-buy decision: unrecoverable cost flow parity, multi-period terminal net worth stock parity, physical CapEx lifecycle reserves, 2026 OBBBA SALT and mortgage deduction dynamics, retail leverage decay, and empirical behavioral forced savings.",
+  },
+  {
     path: "macro/precious-metals-macro-risks",
     title: "Precious Metals & Macro Risks (Oct 2026)",
     articleSlug: "precious-metals-macroeconomic-risks",

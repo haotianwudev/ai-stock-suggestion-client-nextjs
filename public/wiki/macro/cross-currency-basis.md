@@ -155,3 +155,4 @@ The unwinding of the global yen carry trade exposes multiple systemic feedback l
 
 - [The Cross-Currency Basis Squeeze: Plumbing, Yield Hurdles, and Systemic Reflexivity in Global Macro](/articles/cross-currency-basis-squeeze) — Full interactive analysis with worked comparisons and institutional mechanics.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTPhJQkoLSXbzle1NixdcRgaRhh4BHoRL4jjaZqimu8T2Prjq8BxHkKH5PHuIes8uKWeD0NTEABn6Rx/pub) — Comprehensive deep research document on Covered Interest Parity and the plumbing of offshore dollar funding.
+- [Watch on YouTube](https://youtu.be/nXdZt4oXg_s) — Video walkthrough of this analysis.
