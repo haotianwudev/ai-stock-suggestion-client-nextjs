@@ -125,3 +125,4 @@ Where:
 
 - [The Convergence of Private Equity and Quantitative Research](/articles/convergence-private-equity-quantitative-research)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQekLMQqN7BqECQkHa1WqVBfVk-z0AsoIWonDxKtshTwj_EGpQ0E20JQKi2pmFEfK-IhGKBePFyHOV2/pub)
+- [Watch on YouTube](https://youtu.be/d2K3x9zk2tg)

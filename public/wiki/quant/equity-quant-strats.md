@@ -146,3 +146,4 @@ $$
 
 - [Equity Quantitative Research and Strategist Functions](/articles/equity-quantitative-research-strategist-functions)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQxRWYZdTlYE9B-tvyENVu71YZ4W8p6zhZVE4Zx9WVa0IswwOM8JuSMt7WWsTLy5uiX79ILI0LlZdOZ/pub)
+- [Watch on YouTube](https://youtu.be/4PCntY8kcvM)
