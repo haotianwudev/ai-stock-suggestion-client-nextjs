@@ -10,7 +10,7 @@ export const articles2026Q4: Article[] = [
     infographicUrl: "https://i.imgur.com/RHWZ2EU.jpeg",
     deepResearch: true,
     options: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vR8jOlRRENYeI3eSKYmLDnEvhtJy3wVqeSKM4j7LjUucXHnN-3AmLZ68xcyQkcIV4PMHRQKwJbL3Bf4/pub",
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQDv5hxVpqEFL5R1kmD8fqmBtbKTtN5st37l81byCHUoa5XdDzr-alobLh5bpxe3gT2SbtB1wjynquP/pub",
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {

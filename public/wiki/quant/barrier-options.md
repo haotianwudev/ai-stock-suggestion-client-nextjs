@@ -221,4 +221,4 @@ As expiration approaches ($T \to 0$), Delta explodes into deeply negative territ
 ## Related Reading
 
 - [The Reflection Principle and Barrier Option Valuation](/articles/reflection-principle-barrier-option-valuation) — Complete analytical architecture, interactive Reiner-Rubinstein benchmark suite, and convergence tables.
-- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vR8jOlRRENYeI3eSKYmLDnEvhtJy3wVqeSKM4j7LjUucXHnN-3AmLZ68xcyQkcIV4PMHRQKwJbL3Bf4/pub) — Exhaustive formal derivations, renewal theory proofs, and stochastic calculus lemmas.
+- [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQDv5hxVpqEFL5R1kmD8fqmBtbKTtN5st37l81byCHUoa5XdDzr-alobLh5bpxe3gT2SbtB1wjynquP/pub) — Exhaustive formal derivations, renewal theory proofs, and stochastic calculus lemmas.
