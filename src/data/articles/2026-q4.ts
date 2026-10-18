@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q4: Article[] = [
   {
+    title: "The Quantitative Architecture of Credit Card Profitability: Cross-Subsidization, Stochastic Risk Modeling, and Consumer Arbitrage",
+    description: "Issuers earn a 6.0% ROA funding premium rewards through revolving debt. Unpack the cross-subsidy math, roll-rate Markov models, and consumer arbitrage tactics.",
+    slug: "credit-card-profitability-architecture",
+    date: "October 29, 2026",
+    imageUrl: "https://i.imgur.com/WuYeJYH.jpeg",
+    infographicUrl: "https://i.imgur.com/WuYeJYH.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQLK_oYYdTAqrcsDtcaDs4-3CNSQYWa2B3Q7llsJpjZrXfMwnCLWBpEr-7yMyjmDMd40WtyFNaBcbHZ/pub",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.QUANT],
+  },
+  {
     title: "Quantitative Frameworks for the Rent-versus-Buy Decision: Unrecoverable Cost Accounting, Terminal Net Worth Parity, and Capital Allocation Mechanics",
     description: "Compare unrecoverable costs and terminal net worth parity to decode whether buying or renting maximizes long-term household wealth under 2026 rates and taxes.",
     slug: "rent-versus-buy-frameworks",

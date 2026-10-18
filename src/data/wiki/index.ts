@@ -25,6 +25,37 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "finance101/credit-card-economics",
+    title: "Credit Card Economics",
+    articleSlug: "credit-card-profitability-architecture",
+    date: "2026-10-29",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.QUANT],
+    topics: [
+      "credit card profitability",
+      "return on assets",
+      "net credit margin",
+      "net transaction margin",
+      "cross-subsidization",
+      "tiered interchange",
+      "charge-off beta",
+      "elastic-net scorecard",
+      "absorbing markov chain",
+      "roll rate matrix",
+      "fundamental matrix",
+      "expected credit loss",
+      "cox proportional hazard",
+      "basel irb qrre",
+      "vasicek model",
+      "bellman equation",
+      "asc 606 breakage",
+      "stoozing",
+      "deferred interest",
+      "willingness to pay inflation",
+    ],
+    summary:
+      "Quantitative architecture of credit card issuer profitability: pre-tax 6.0% ROA mechanics, the revolving Net Credit Margin (80% of profits) vs. Net Transaction Margin dual engine, single-factor Charge-Off Beta pricing (λ_CO = 4.3%/yr), Absorbing Markov Chain delinquency roll-rate matrices, Basel IRB QRRE capital advantage (R = 0.04), Bellman dynamic credit limit optimization, ASC 606 loyalty breakage, and systematic consumer arbitrage versus behavioral debt traps.",
+  },
+  {
     path: "quant/ai-credit-repricing",
     title: "AI Credit Repricing (Oct 2026)",
     articleSlug: "ai-infrastructure-credit-repricing-oracle-coreweave",
