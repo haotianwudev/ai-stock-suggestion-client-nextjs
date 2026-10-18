@@ -25,6 +25,28 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/ai-credit-repricing",
+    title: "AI Credit Repricing (Oct 2026)",
+    articleSlug: "ai-infrastructure-credit-repricing-oracle-coreweave",
+    date: "2026-10-18",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.AI_ML],
+    topics: [
+      "credit default swaps",
+      "cds spreads",
+      "corporate debt",
+      "ai infrastructure capex",
+      "oracle lease liabilities",
+      "coreweave spv",
+      "delayed draw term loans",
+      "merton model",
+      "hazard rate",
+      "wrong-way risk",
+      "fallen angel",
+    ],
+    summary:
+      "Quantitative credit analysis of the October 2026 AI infrastructure debt repricing: reduced-form hazard rates and recovery rate sensitivity across Oracle (288 bps) and CoreWeave (1,140 bps), Merton Distance-to-Default asset substitution dynamics, ASC 842 uncommenced data center leases ($288B stack), GPU-collateralized SPV structural subordination, and CDS-bond basis microstructures.",
+  },
+  {
     path: "quant/barrier-options",
     title: "Barrier Option Valuation",
     articleSlug: "reflection-principle-barrier-option-valuation",

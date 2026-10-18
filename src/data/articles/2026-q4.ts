@@ -2,6 +2,17 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q4: Article[] = [
   {
+    title: "Quantitative Frameworks for the Rent-versus-Buy Decision: Unrecoverable Cost Accounting, Terminal Net Worth Parity, and Capital Allocation Mechanics",
+    description: "Compare unrecoverable costs and terminal net worth parity to decode whether buying or renting maximizes long-term household wealth under 2026 rates and taxes.",
+    slug: "rent-versus-buy-frameworks",
+    date: "October 26, 2026",
+    imageUrl: "https://i.imgur.com/l2lckFk.png",
+    infographicUrl: "https://i.imgur.com/l2lckFk.png",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQHWz6A-Z4anOXsJ1DBizYxH3c_t9d-i5z-LUnrC320AtB_-xiFNJWkcMxe5UaGqRv6nkukXZ18Ym6x/pub",
+    labels: [ArticleLabel.FINANCE101, ArticleLabel.QUANT],
+  },
+  {
     title: "The Reflection Principle and Barrier Option Valuation: Analytical Architecture vs. Monte Carlo Simulation",
     description: "Bridge Brownian path symmetry and discrete simulation: derive exact Reiner-Rubinstein closed forms via Girsanov reflection and cure Monte Carlo boundary bias.",
     slug: "reflection-principle-barrier-option-valuation",
@@ -14,15 +25,15 @@ export const articles2026Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.FINANCE101],
   },
   {
-    title: "Quantitative Frameworks for the Rent-versus-Buy Decision: Unrecoverable Cost Accounting, Terminal Net Worth Parity, and Capital Allocation Mechanics",
-    description: "Compare unrecoverable costs and terminal net worth parity to decode whether buying or renting maximizes long-term household wealth under 2026 rates and taxes.",
-    slug: "rent-versus-buy-frameworks",
+    title: "Quantitative Credit Analysis of the AI Infrastructure Repricing: Corporate Debt, CDS Dynamics, and Structural Risk in Oracle and CoreWeave",
+    description: "Record CDS spikes in Oracle and CoreWeave signal a shift from AI chip bottlenecks to balance sheet solvency, $288B in lease stacks, and refinancing walls.",
+    slug: "ai-infrastructure-credit-repricing-oracle-coreweave",
     date: "October 19, 2026",
-    imageUrl: "https://i.imgur.com/l2lckFk.png",
-    infographicUrl: "https://i.imgur.com/l2lckFk.png",
+    imageUrl: "https://i.imgur.com/CvSdYMu.png",
+    infographicUrl: "https://i.imgur.com/CvSdYMu.png",
     deepResearch: true,
-    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQHWz6A-Z4anOXsJ1DBizYxH3c_t9d-i5z-LUnrC320AtB_-xiFNJWkcMxe5UaGqRv6nkukXZ18Ym6x/pub",
-    labels: [ArticleLabel.FINANCE101, ArticleLabel.QUANT],
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vS9dTHEs4fJQrJ_Ycbj17aRTT6ySbiNYQ1wwUjQfULxBtLGj_-PkPVrPL3YDUkMM4xUOoWQDItz1uX3/pub",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
   },
   {
     title: "The Cross-Currency Basis Squeeze: Plumbing, Yield Hurdles, and Systemic Reflexivity in Global Macro",
