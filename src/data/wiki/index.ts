@@ -25,6 +25,27 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/ai-decompression-oct-2026",
+    title: "AI Decompression (Oct 2026)",
+    articleSlug: "ai-decompression-october-2026-credit-capex-microstructure",
+    date: "2026-10-24",
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
+    topics: [
+      "ai capex",
+      "neocloud credit",
+      "merton model",
+      "wrong-way risk",
+      "roic hurdle",
+      "implied correlation",
+      "dealer gamma",
+      "vix term structure",
+      "bubble benchmarking",
+      "capital cycle",
+    ],
+    summary:
+      "Quantitative anatomy of the October 2026 AI selloff: the double squeeze of an AI cash-flow and credit shock (CoreWeave CDS >1,000 bps, $2.9T projected AI debt) and a rate/energy shock (10Y at 5.3%), Merton distance-to-default and wrong-way collateral risk, the $300B-$1T ROIC revenue hurdle and 94%-54%-12% capex second-derivative, the implied-correlation VIX spike with dealer negative gamma, benchmarking against 2000, and a capital-cycle reset positioning framework.",
+  },
+  {
     path: "finance101/credit-card-economics",
     title: "Credit Card Economics",
     articleSlug: "credit-card-profitability-architecture",
