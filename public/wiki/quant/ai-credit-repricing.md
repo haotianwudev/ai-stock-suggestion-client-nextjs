@@ -159,3 +159,4 @@ Lenders assume GPU collateral can be seized and re-leased if an offtaker default
 
 - [Quantitative Credit Analysis of the AI Infrastructure Repricing: Corporate Debt, CDS Dynamics, and Structural Risk in Oracle and CoreWeave](/articles/ai-infrastructure-credit-repricing-oracle-coreweave)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vS9dTHEs4fJQrJ_Ycbj17aRTT6ySbiNYQ1wwUjQfULxBtLGj_-PkPVrPL3YDUkMM4xUOoWQDItz1uX3/pub)
+- [Watch on YouTube](https://youtu.be/lGeX86xEe8k)
