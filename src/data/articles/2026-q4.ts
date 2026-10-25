@@ -2,6 +2,18 @@ import { Article, ArticleLabel } from './types';
 
 export const articles2026Q4: Article[] = [
   {
+    title: "Quantitative Mechanics, Valuation Architecture, and Correlation Risk of Fixed Coupon Notes",
+    description: "FCNs pay 8–14% by embedding a short worst-of knock-in put. See how skew adds 350 bps, why desks run short correlation, and how KI cliffs fed the HSCEI crash.",
+    slug: "fixed-coupon-notes-valuation-correlation-risk",
+    date: "November 10, 2026",
+    imageUrl: "https://i.imgur.com/hxZwuW2.jpeg",
+    infographicUrl: "https://i.imgur.com/hxZwuW2.jpeg",
+    deepResearch: true,
+    options: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vSe0N5Cn1s9bNFoq4wuPayMDZcFC69vaO_G2UJk-NLliEbqf30ugzpBkG7V4y52nOcRj5d6i3PtI_TM/pub",
+    labels: [ArticleLabel.QUANT],
+  },
+  {
     title: "The Quantitative Architecture of Credit Card Profitability: Cross-Subsidization, Stochastic Risk Modeling, and Consumer Arbitrage",
     description: "Issuers earn a 6.0% ROA funding premium rewards through revolving debt. Unpack the cross-subsidy math, roll-rate Markov models, and consumer arbitrage tactics.",
     slug: "credit-card-profitability-architecture",

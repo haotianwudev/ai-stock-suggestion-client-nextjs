@@ -25,6 +25,28 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/fixed-coupon-notes",
+    title: "Fixed Coupon Notes (FCNs)",
+    articleSlug: "fixed-coupon-notes-valuation-correlation-risk",
+    date: "2026-11-10",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS],
+    topics: [
+      "fixed coupon notes",
+      "autocallables",
+      "worst-of put",
+      "knock-in barrier",
+      "stochastic local volatility",
+      "fuzzy logic smoothing",
+      "cross-gamma",
+      "local correlation",
+      "wishart process",
+      "pin risk",
+      "hscei els",
+    ],
+    summary:
+      "How Fixed Coupon Notes turn a short worst-of down-and-in put into 8–14% unconditional coupons: payoff decomposition, skew-driven coupon pricing, Heston-SLV McKean calibration, fuzzy-logic Greek smoothing, the investor-long / desk-short correlation split, cross-gamma P&L, Langnau local correlation and Wishart diffusions, and the barrier pin, vega-flip, dividend and HSCEI feedback-loop crises.",
+  },
+  {
     path: "quant/ai-decompression-oct-2026",
     title: "AI Decompression (Oct 2026)",
     articleSlug: "ai-decompression-october-2026-credit-capex-microstructure",
