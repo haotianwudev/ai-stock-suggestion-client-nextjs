@@ -118,5 +118,6 @@ $$
 ## Related Reading
 
 - [Quantitative Anatomy of the October 2026 AI Decompression](/articles/ai-decompression-october-2026-credit-capex-microstructure)
+- [Watch on YouTube](https://youtu.be/fmaAXDVOwnc)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQgkhKt6wTPah746KcDZxQ739FFHrONVijkS2WoURfeMpue-EEgDs1cG6bq_SSKichs56IRXhQZL8nK/pub)
 - [AI Credit Repricing (Oct 2026)](/wiki/quant/ai-credit-repricing) — the Oct 19 Oracle and CoreWeave CDS analysis this builds on.

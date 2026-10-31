@@ -212,4 +212,5 @@ Empirical data from the Federal Reserve Survey of Consumer Finances (SCF) demons
 ## Related Reading
 
 - [Quantitative Frameworks for the Rent-versus-Buy Decision: Unrecoverable Cost Accounting, Terminal Net Worth Parity, and Capital Allocation Mechanics](/articles/rent-versus-buy-frameworks) — Full interactive analysis with worked comparisons, regime calculators, and sensitivity matrices.
+- [Watch on YouTube](https://youtu.be/9ogRbejgdlg)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQHWz6A-Z4anOXsJ1DBizYxH3c_t9d-i5z-LUnrC320AtB_-xiFNJWkcMxe5UaGqRv6nkukXZ18Ym6x/pub) — Complete quantitative deep research documentation on shelter accounting, cash-flow parity, and household portfolio allocation.
