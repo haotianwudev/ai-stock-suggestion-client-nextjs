@@ -171,6 +171,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           url: "https://www.portfoliovisualizer.com/",
         },
         {
+          text: "Options Backtesting Architecture",
+          articleSlug: "systematic-options-backtesting-architecture-microstructure",
+        },
+        {
           text: "Backtest Lie",
           articleSlug: "mechanics-of-alpha-raw-data-realized-returns",
         },
@@ -194,6 +198,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "anatomy-quant-fund-alpha-discovery-automated-execution",
         },
         {
+          text: "Foundations of Quant Research",
+          articleSlug: "foundations-quantitative-finance-alpha-ecosystem",
+        },
+        {
           text: "High Frequency Trading",
           articleSlug: "microsecond-battlefield-competitive-strategies-high-frequency-trading",
         },
@@ -204,6 +212,14 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
         {
           text: "Modern Topography of Quant Finance",
           articleSlug: "modern-topography-quant-finance-institutional-trading",
+        },
+        {
+          text: "Equity Quant Research & Strategists",
+          articleSlug: "equity-quantitative-research-strategist-functions",
+        },
+        {
+          text: "Private Equity Meets Quant Research",
+          articleSlug: "convergence-private-equity-quantitative-research",
         },
         {
           text: "WorldQuant Alpha Factory",

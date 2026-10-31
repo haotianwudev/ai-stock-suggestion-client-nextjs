@@ -110,8 +110,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "autocallable-strategy-engineered-yield-sideways-markets",
         },
         {
+          text: "Fixed Coupon Notes",
+          articleSlug: "fixed-coupon-notes-valuation-correlation-risk",
+        },
+        {
           text: "Monte Carlo for Derivative Pricing",
           articleSlug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
+        },
+        {
+          text: "Barrier Options & the Reflection Principle",
+          articleSlug: "reflection-principle-barrier-option-valuation",
         },
         {
           text: "SVI, Dupire & Heston Models",
@@ -232,8 +240,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "infrastructure-counterparty-credit-risk-margin-wcl-excess-shortfall-release",
         },
         {
+          text: "CVA & xVA: Counterparty Dynamics",
+          articleSlug: "advanced-dynamics-counterparty-credit-risk",
+        },
+        {
           text: "The Repo Market & Dollar Funding",
           articleSlug: "repo-market-dollar-funding-mechanics-strategies-systemic-risks",
+        },
+        {
+          text: "Cross-Currency Basis Squeeze (Oct 2026)",
+          articleSlug: "cross-currency-basis-squeeze",
         },
         {
           text: "The Architecture of Private Credit",
@@ -254,6 +270,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Example: SpaceX Mega-IPO Systemic Risk Analysis",
           articleSlug: "spacex-public-market-integration-systemic-risk-analysis",
+        },
+        {
+          text: "Example: AI Credit Repricing (Oct 2026)",
+          articleSlug: "ai-infrastructure-credit-repricing-oracle-coreweave",
         },
       ]
     }

@@ -51,6 +51,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "sp500-inclusion-anomaly-december-2025-deep-research",
         },
         {
+          text: "SOPHIE Option Viewer",
+          articleSlug: "sophie-option-viewer",
+        },
+        {
           text: "Barchart Option Chain",
           url: "https://www.barchart.com/stocks/quotes/$SPX/options",
         },
@@ -82,6 +86,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Black-Scholes Model",
           articleSlug: "black-scholes-analytics-laboratory-axioms-option-pricing",
+        },
+        {
+          text: "Gamma Scalping",
+          articleSlug: "gamma-scalping-mechanics-execution-risk",
         },
         {
           text: "Barchart Volatility & Greeks",
@@ -153,6 +161,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Cboe VIX Microstructure",
           articleSlug: "mathematics-microstructure-cboe-vix",
+        },
+        {
+          text: "The MOVE-VIX Disconnect (Sep 2026)",
+          articleSlug: "move-vix-disconnect-cross-asset-volatility-spillover",
         },
       ]
     }

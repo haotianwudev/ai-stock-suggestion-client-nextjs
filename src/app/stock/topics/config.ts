@@ -71,6 +71,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "2026-mega-ipo-convergence-market-analysis-systemic-risk",
         },
         {
+          text: "The Cloud Capex Dilemma (Sep 2026)",
+          articleSlug: "the-cloud-capex-dilemma-quantitative-roic-decay",
+        },
+        {
           text: "Stock Wipeout Probability Analysis",
           articleSlug: "stock-wipeout-probability-analysis",
         },
@@ -228,6 +232,18 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "2026 Fixed Income Turning Points (Aug 2026)",
           articleSlug: "quantitative-assessment-fixed-income-market-turning-points",
         },
+        {
+          text: "The Stop-and-Go Monetary Trap (Sep 2026)",
+          articleSlug: "stop-and-go-monetary-trap-bear-flattening",
+        },
+        {
+          text: "Gold at Nine-Week Lows (Oct 2026)",
+          articleSlug: "precious-metals-macroeconomic-risks",
+        },
+        {
+          text: "The AI Decompression (Oct 2026)",
+          articleSlug: "ai-decompression-october-2026-credit-capex-microstructure",
+        },
       ]
     }
   },
@@ -299,6 +315,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "strategic-wealth-considerations-tax-and-behavioral-finance",
         },
         {
+          text: "Rent vs. Buy: The Real Math",
+          articleSlug: "rent-versus-buy-frameworks",
+        },
+        {
           text: "Wealth Preservation Allocation",
           articleSlug: "strategic-asset-allocation-quantitative-framework-wealth-preservation",
         },
@@ -344,6 +364,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Guide to Stablecoins",
           articleSlug: "investors-guide-stablecoins-profiting-digital-dollars",
+        },
+        {
+          text: "Credit Card Profitability",
+          articleSlug: "credit-card-profitability-architecture",
         },
       ]
     }
