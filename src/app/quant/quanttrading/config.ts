@@ -269,6 +269,10 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           text: "Advanced GitLab SDLC",
           articleSlug: "advanced-gitlab-sdlc-quantitative-development-ci-cd-best-practices",
         },
+        {
+          text: "Quant Leadership & Communication",
+          articleSlug: "quant-leadership-communication-architecture",
+        },
       ]
     }
   },

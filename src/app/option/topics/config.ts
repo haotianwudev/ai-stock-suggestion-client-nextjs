@@ -246,6 +246,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "What happened in Markets Plunge?",
           articleSlug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
         },
+        {
+          text: "Nasdaq Drawdown Microstructure (Oct 2026)",
+          articleSlug: "anatomy-nasdaq-drawdown-derivatives-microstructure",
+        },
       ]
     }
   },

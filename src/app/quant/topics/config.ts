@@ -204,6 +204,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "The Primacy of Domain Knowledge",
           articleSlug: "primacy-domain-knowledge-quantitative-finance",
         },
+        {
+          text: "The Post-Syntax Quant Paradigm",
+          articleSlug: "post-syntax-quant-paradigm-adversarial-verification",
+        },
       ]
     }
   },
