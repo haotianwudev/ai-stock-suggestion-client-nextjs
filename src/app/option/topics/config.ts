@@ -250,6 +250,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "Nasdaq Drawdown Microstructure (Oct 2026)",
           articleSlug: "anatomy-nasdaq-drawdown-derivatives-microstructure",
         },
+        {
+          text: "Nov 5 Equity Drawdown Diagnostics (Nov 2026)",
+          articleSlug: "nov-5-2026-equity-drawdown-post-mortem",
+        },
       ]
     }
   },

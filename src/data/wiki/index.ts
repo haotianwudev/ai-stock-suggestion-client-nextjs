@@ -25,6 +25,27 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "quant/nov-5-2026-drawdown-diagnostics",
+    title: "Nov 5 Drawdown Diagnostics (Nov 2026)",
+    articleSlug: "nov-5-2026-equity-drawdown-post-mortem",
+    date: "2026-11-06",
+    labels: [ArticleLabel.QUANT, ArticleLabel.OPTIONS, ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
+    topics: [
+      "volatility risk premium",
+      "vrp regime",
+      "dealer gamma",
+      "gamma flip",
+      "gex",
+      "volatility surface",
+      "sticky delta",
+      "cboe skew",
+      "sox crash",
+      "drawdown post-mortem",
+    ],
+    summary:
+      "Quantitative post-mortem of the November 5, 2026 equity drawdown (-4.36% SPX, -6.36% NDX, -12.25% SOX): VRP regime score diagnostics, the -$57B intraday dealer gamma flip, BKM Skew vs. ATM IV expansion mechanics, and historical 1-day VIX spike analogs.",
+  },
+  {
     path: "quant/post-syntax-quant-paradigm",
     title: "The Post-Syntax Quant Paradigm",
     articleSlug: "post-syntax-quant-paradigm-adversarial-verification",
@@ -166,7 +187,7 @@ export const wikiEntries: WikiEntry[] = [
     title: "AI Credit Repricing (Oct 2026)",
     articleSlug: "ai-infrastructure-credit-repricing-oracle-coreweave",
     date: "2026-10-18",
-    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.AI_ML],
+    labels: [ArticleLabel.QUANT, ArticleLabel.MACRO, ArticleLabel.GEN_AI],
     topics: [
       "credit default swaps",
       "cds spreads",
