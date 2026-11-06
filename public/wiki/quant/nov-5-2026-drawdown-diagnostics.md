@@ -120,3 +120,4 @@ Across $n = 79$ single-day VIX spikes ($\ge 20\%$ jump) since 1990:
 - [Nasdaq Drawdown Microstructure (Oct 2026)](/wiki/quant/nasdaq-drawdown-oct-2026) — dealer gamma dynamics and charm decay during the October 30 technology correction.
 - [Gamma Exposure (GEX): The GPS of Market Volatility](/wiki/option-strategy/gex) — foundational methodology for zero-gamma flips and dealer positioning.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQnqNhDPzaydBF93Fzzo3XLab6PVP_jYY7w_u_PMavR-647VspTeq3-p7URsf0aFUy78I1LCR4dZkI7/pub) — complete empirical study and data appendix.
+- [Watch on YouTube](https://youtu.be/kM3_YNgDZ-U)

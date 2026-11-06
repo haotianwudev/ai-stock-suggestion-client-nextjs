@@ -154,4 +154,5 @@ $$
 
 - [Quantitative Mechanics, Valuation Architecture, and Correlation Risk of Fixed Coupon Notes](/articles/fixed-coupon-notes-valuation-correlation-risk)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSe0N5Cn1s9bNFoq4wuPayMDZcFC69vaO_G2UJk-NLliEbqf30ugzpBkG7V4y52nOcRj5d6i3PtI_TM/pub)
+- [Watch on YouTube](https://youtu.be/pRdSA2ilNP8)
 - [Barrier Option Valuation](/wiki/quant/barrier-options): the reflection-principle and Monte Carlo foundations behind the KI and autocall barriers.

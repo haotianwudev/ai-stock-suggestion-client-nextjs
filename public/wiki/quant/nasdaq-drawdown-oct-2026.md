@@ -117,3 +117,4 @@ Despite the 291-point intraday bounce, market microstructure remained structural
 
 - [Anatomy of the Nasdaq Drawdown: Derivatives Microstructure, Dealer Gamma Dynamics, and AI Capex Repricing](/articles/anatomy-nasdaq-drawdown-derivatives-microstructure)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vSaRifwthVkPc_NaZXGW3l5LQUutFgbFzJYk0rJR9N2tBJ7AnKYTrZUpsPpRH70g4jZ40z9fkVOb5gm/pub)
+- [Watch on YouTube](https://youtu.be/VwJZwSLCcDQ)
