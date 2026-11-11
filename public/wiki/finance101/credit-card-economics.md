@@ -234,3 +234,4 @@ In 2024, U.S. cardholders forfeited **$4.5 billion (~9.5%)** of earned rewards t
 
 - [The Quantitative Architecture of Credit Card Profitability: Cross-Subsidization, Stochastic Risk Modeling, and Consumer Arbitrage](/articles/credit-card-profitability-architecture) — full interactive article with Markov roll-rate inspector, portfolio metrics, and empirical calibration panels.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQLK_oYYdTAqrcsDtcaDs4-3CNSQYWa2B3Q7llsJpjZrXfMwnCLWBpEr-7yMyjmDMd40WtyFNaBcbHZ/pub) — complete empirical study, econometric derivations, and Federal Reserve references.
+- [Watch on YouTube](https://youtu.be/YMVUwrhypPk)
