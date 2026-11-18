@@ -82,3 +82,4 @@ Risk governance in quantitative leadership requires adherence to evolved supervi
 
 - [Communication Architecture and Active Listening Protocols for Quantitative Finance Leadership](/articles/quant-leadership-communication-architecture)
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vTfrwOFLvRm1TiQJ4Wwbs3wbJtmXszdGiZTXSUATDAZP3ePH4KUfrphmms9zP4IkEUSB0PnKvonjJ05/pub)
+- [Watch on YouTube](https://youtu.be/bC7m9DKr7o0)

@@ -119,3 +119,4 @@ Despite the -\$362.03M Q4 pullback (\$1,306.34M to \$944.31M), the stake remains
 - [Druckenmiller's Q2 2026 Rotation](/wiki/form13f/druckenmiller-q2-2026-ai-infrastructure-rotation) — the prior quarter's Q2 2026 repositioning into hyperscalers and stranded-power crypto miners.
 - [Form 13F Disclosures](/wiki/finance101/form-13f) — microstructure mechanics, 45-day reporting lags, and copycat alpha limits.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vRCyFBxA0zO7sXJcwUBLTgrDW7xG6AwUb2isHp2Grjm-UikrHtG_rMLtO8_EyoKu8daUK4imh2wmsrL/pub)
+- [Watch on YouTube](https://youtu.be/cpu5I3S-VVY)
