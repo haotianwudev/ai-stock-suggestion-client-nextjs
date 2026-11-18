@@ -25,6 +25,27 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "form13f/druckenmiller-q3-2026-portfolio-overhaul",
+    title: "Druckenmiller's Q3 2026 Overhaul (Nov 2026)",
+    articleSlug: "stanley-druckenmiller-q3-2026-13f-portfolio-overhaul",
+    date: "2026-11-17",
+    labels: [ArticleLabel.FORM13F, ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS],
+    topics: [
+      "form 13f",
+      "stanley druckenmiller",
+      "duquesne family office",
+      "hhi concentration",
+      "fiscal dominance",
+      "kevin warsh",
+      "ai value chain",
+      "hamr storage",
+      "gold miners",
+      "natera",
+    ],
+    summary:
+      "Duquesne Family Office's Q3 2026 Form 13F compresses $4.47B from 95 to 65 lines (HHI 0.049 to 0.1110): 72.25% of the headline book decline reflects option de-leveraging (-62.41% notional) rather than cash-equity exits, as Druckenmiller exited TSM, AMD, SNDK, and GOOGL for STX/WDC storage, AI monetizers, $138M in gold miners, and a 29.22% Natera anchor.",
+  },
+  {
     path: "quant/nov-5-2026-drawdown-diagnostics",
     title: "Nov 5 Drawdown Diagnostics (Nov 2026)",
     articleSlug: "nov-5-2026-equity-drawdown-post-mortem",
