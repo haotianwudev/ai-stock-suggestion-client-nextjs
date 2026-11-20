@@ -25,6 +25,27 @@ export interface WikiEntry {
 // Newest first. New entries are prepended here by the sophie-deep-research-article skill.
 export const wikiEntries: WikiEntry[] = [
   {
+    path: "macro/nov-19-2026-market-drawdown",
+    title: "Nov 19 Drawdown: ANT IPO & NVDA (Nov 2026)",
+    articleSlug: "wall-street-nov-19-drawdown-anthropic-ipo-nvidia",
+    date: "2026-11-19",
+    labels: [ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
+    topics: [
+      "market drawdown",
+      "anthropic ipo",
+      "nvidia earnings",
+      "stagflation",
+      "hawkish fed",
+      "cta floor",
+      "negative gamma",
+      "circular financing",
+      "ai credit",
+      "staggered lock-up",
+    ],
+    summary:
+      "Post-mortem of Wall Street's November 19, 2026 cross-asset drawdown (S&P 500 -2.02% to 7,175.83, Nasdaq -2.25%, VIX 28.44, 10Y at 5.051%): Philly Fed stagflation + hawkish FOMC/Waller 50-bp risks, Anthropic's $107.34B IPO liquidity draw vs. $19B passive inflows and 23 staggered unlock dates, Nvidia's $115.84B earnings paradox (13-week cadence compression, -340 bps Q4 margin guide, Huang exit/probes, CUDA moat shifts), and the 7,133 CTA floor.",
+  },
+  {
     path: "form13f/druckenmiller-q3-2026-portfolio-overhaul",
     title: "Druckenmiller's Q3 2026 Overhaul (Nov 2026)",
     articleSlug: "stanley-druckenmiller-q3-2026-13f-portfolio-overhaul",

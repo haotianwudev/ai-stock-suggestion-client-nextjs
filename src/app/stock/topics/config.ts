@@ -248,6 +248,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           text: "The AI Decompression (Oct 2026)",
           articleSlug: "ai-decompression-october-2026-credit-capex-microstructure",
         },
+        {
+          text: "Nov 19 Drawdown: ANT IPO & NVDA (Nov 2026)",
+          articleSlug: "wall-street-nov-19-drawdown-anthropic-ipo-nvidia",
+        },
       ]
     }
   },

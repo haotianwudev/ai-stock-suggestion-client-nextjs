@@ -13,6 +13,17 @@ export const articles2026Q4: Article[] = [
     labels: [ArticleLabel.QUANT, ArticleLabel.GEN_AI],
   },
   {
+    title: "Wall Street's November 19 Drawdown: Anthropic's Record IPO, Nvidia's Earnings Paradox, and the Road Ahead",
+    description: "An early tech-led rally collapsed into a cross-asset liquidation as stagflation signals, a hawkish Fed, and Anthropic's record $107.3B IPO collided with Nvidia's earnings paradox, leaving the S&P 500 just 0.60% above its 7,133 CTA floor.",
+    slug: "wall-street-nov-19-drawdown-anthropic-ipo-nvidia",
+    date: "November 19, 2026",
+    imageUrl: "https://i.imgur.com/HWF0CZf.jpeg",
+    infographicUrl: "https://i.imgur.com/HWF0CZf.jpeg",
+    deepResearch: true,
+    googleDoc: "https://docs.google.com/document/d/e/2PACX-1vQKGUfR-_CbB9HFAVWeyHgttlcLypKzWltxZWN9rQnnCH5y6uRk8t86RSfGPnlNvBPNVpDWsMG8I4S_/pub",
+    labels: [ArticleLabel.MACRO, ArticleLabel.STOCK_ANALYSIS, ArticleLabel.QUANT],
+  },
+  {
     title: "Institutional Analysis of Stanley Druckenmiller's Q3 2026 Form 13F Filing: Portfolio Overhaul, Macro Catalysts, and Q4 Market Echoes",
     description: "Duquesne's Q3 2026 13F compresses $4.47B across 65 lines: Druckenmiller cut call notional 62.4%, exited TSM and Alphabet, and pivoted into Seagate storage, AI monetizers, and $138M in gold miners.",
     slug: "stanley-druckenmiller-q3-2026-13f-portfolio-overhaul",
