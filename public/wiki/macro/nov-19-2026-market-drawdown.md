@@ -111,3 +111,4 @@ $$
 - [Nov 5 Drawdown Diagnostics (Nov 2026)](/wiki/quant/nov-5-2026-drawdown-diagnostics) — dealer gamma flip and VRP lag mechanics during the early-November rout.
 - [The 2026 Mega-IPO Convergence](/wiki/stock-analysis/2026-mega-ipo-convergence) — structural market distortions and post-listing performance risks of \$1T+ AI IPOs.
 - [Full Research Paper](https://docs.google.com/document/d/e/2PACX-1vQKGUfR-_CbB9HFAVWeyHgttlcLypKzWltxZWN9rQnnCH5y6uRk8t86RSfGPnlNvBPNVpDWsMG8I4S_/pub)
+- [Watch on YouTube](https://youtu.be/mjtfQW5sQL0)
