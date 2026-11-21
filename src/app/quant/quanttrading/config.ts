@@ -155,7 +155,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "measuring-immeasurable-hedge-fund-performance-metrics",
         },
         {
-          text: "Performance Attribution",
+          text: "Allocation & Performance Attribution",
           articleSlug: "strategic-tactical-asset-allocation-comprehensive-guide",
         },
         {
