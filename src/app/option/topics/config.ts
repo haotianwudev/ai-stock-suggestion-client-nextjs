@@ -27,7 +27,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "losing-money-with-options-common-pitfalls",
         },
         {
-          text: "Option Strategies for Market Shock",
+          text: "Options for a Market Shock (Oct 2025)",
           articleSlug: "options-strategy-report-october-10-market-event",
         },
         {
@@ -51,8 +51,16 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "sp500-inclusion-anomaly-december-2025-deep-research",
         },
         {
+          text: "Bull-to-Bear Regime Shift",
+          articleSlug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
+        },
+        {
           text: "SOPHIE Option Viewer",
           articleSlug: "sophie-option-viewer",
+        },
+        {
+          text: "SOPHIE Option Viewer Demo",
+          articleSlug: "sophie-option-viewer-video",
         },
         {
           text: "Barchart Option Chain",
@@ -61,10 +69,6 @@ export const topicsConfig: Record<string, TopicConfig> = {
         {
           text: "Yahoo Finance Option Chain",
           url: "https://finance.yahoo.com/quote/%5ESPX/options/",
-        },
-        {
-          text: "Bull-to-Bear Regime Shift",
-          articleSlug: "navigating-bull-to-bear-regime-shift-quantitative-signals",
         },
       ]
     }
@@ -79,7 +83,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "How to understand Greeks",
+          text: "Understanding the Greeks",
           articleSlug: "option-greeks-traders-poetic-guide-risk",
           visualGuideUrl: "https://i.imgur.com/Fre6XfJ.jpeg",
         },
@@ -135,7 +139,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
         },
         {
-          text: "Example: NVDA IV Crush and Gamma Flip",
+          text: "Example: NVDA IV Crush (Feb 2026)",
           articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
         },
         {
@@ -227,15 +231,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           visualGuideUrl: "https://i.imgur.com/4FiUTqH.jpeg",
         },
         {
-          text: "0DTE",
+          text: "0DTE Option Speculation",
           articleSlug: "microstructure-intraday-option-speculation-mechanics-strategies-risks",
         },
         {
-          text: "Example: NVDA IV Crush and Gamma Flip",
+          text: "Example: NVDA IV Crush (Feb 2026)",
           articleSlug: "decoding-reversal-nvidia-february-2026-earnings-paradox",
         },
         {
-          text: "Barchart GEX viewer",
+          text: "Barchart GEX Viewer",
           url: "https://www.barchart.com/stocks/quotes/$SPX/gamma-exposure",
         },
         {
@@ -243,15 +247,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "dark-index-dix-understanding-short-is-long-market-microstructure",
         },
         {
-          text: "What happened in Markets Plunge?",
+          text: "Anatomy of a Market Drop (Jun 2026)",
           articleSlug: "anatomy-market-drop-systemic-risk-options-microstructure-crisis-alpha",
         },
         {
-          text: "Nasdaq Drawdown Microstructure (Oct 2026)",
+          text: "Nasdaq Drawdown Diagnostics (Oct 2026)",
           articleSlug: "anatomy-nasdaq-drawdown-derivatives-microstructure",
         },
         {
-          text: "Nov 5 Equity Drawdown Diagnostics (Nov 2026)",
+          text: "Nov 5 Drawdown Diagnostics (Nov 2026)",
           articleSlug: "nov-5-2026-equity-drawdown-post-mortem",
         },
       ]
@@ -278,7 +282,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "optimal-early-exercise-american-call-options-dividend-stocks",
         },
         {
-          text: "The Kelly Criterion: Optimal Position Sizing",
+          text: "Kelly Criterion Position Sizing",
           articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
         },
       ]

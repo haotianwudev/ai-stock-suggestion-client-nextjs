@@ -19,7 +19,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "stock-factor-models-comprehensive-guide",
         },
         {
-          text: "Rule Based Strategies",
+          text: "Rule-Based Strategies",
           articleSlug: "personal-quant-trading-strategies-independent-analysts",
           videoUrl: "https://youtu.be/72sh2YIWD8U",
         },
@@ -36,11 +36,11 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "volume-price-analysis-market-lore-algorithmic-execution",
         },
         {
-          text: "Pre-market Prediction Strategies",
+          text: "Pre-Market Prediction Signals",
           articleSlug: "quantitative-approach-predicting-market-direction-premarket-data",
         },
         {
-          text: "Intra-day price movement",
+          text: "Intraday Alpha: The U-Curve",
           articleSlug: "quantifying-intraday-alpha-u-curve-volatility-engine-institutional-flow",
         },
         {
@@ -81,7 +81,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "direct-indexing-tax-loss-harvesting-algorithmic-mechanics",
         },
         {
-          text: "The Kelly Criterion: Optimal Position Sizing",
+          text: "Kelly Criterion Position Sizing",
           articleSlug: "kelly-criterion-optimal-position-sizing-information-theory",
         },
         {
@@ -116,7 +116,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "foundational-assumptions-machine-learning-quantitative-trading",
         },
         {
-          text: "Battle the Overfitting",
+          text: "Battling Overfitting",
           articleSlug: "science-robust-alpha-eliminating-overfitting-statistical-validation",
         },
         {
@@ -124,7 +124,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "quantitative-analyst-guide-volatility-forecasting",
         },
         {
-          text: "Boosted Tree in Quant Trading",
+          text: "XGBoost in Quant Trading",
           articleSlug: "strategic-role-xgboost-systematic-trading-2025",
         },
         {
@@ -132,7 +132,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "lstm-systematic-trading-deep-dive-architecture-application-performance",
         },
         {
-          text: "Transformer in Quant Trading",
+          text: "Transformers in Quant Trading",
           articleSlug: "transformer-systematic-trading-architecture-applications",
         },
         {
@@ -175,7 +175,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "systematic-options-backtesting-architecture-microstructure",
         },
         {
-          text: "Backtest Lie",
+          text: "The Backtest Lie",
           articleSlug: "mechanics-of-alpha-raw-data-realized-returns",
         },
         {
@@ -234,7 +234,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "industrialization-volatility-hedge-funds-operational-architecture",
         },
         {
-          text: "Alternative Data for trading",
+          text: "Alternative Data for Alpha",
           articleSlug: "hedge-fund-data-driven-edge-alpha-generation",
         },
         {
@@ -246,7 +246,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "signal-noise-comprehensive-analysis-filtering-techniques-quantitative-trading",
         },
         {
-          text: "Jane Street",
+          text: "Jane Street & HFT Manipulation (Mar 2026)",
           articleSlug: "institutional-hft-market-manipulation-regulatory-framework",
         },
         {
@@ -321,7 +321,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "modeling-expected-returns-quantitative-foundation-modern-portfolio-theory",
         },
         {
-          text: "Risk Model",
+          text: "The Risk Prism: Factor Models",
           articleSlug: "risk-prism-architecture-modern-factor-models",
         },
         {
@@ -347,7 +347,7 @@ export const quantTopicsConfig: Record<string, QuantTopicConfig> = {
           articleSlug: "factor-models-machine-learning-risk-alpha-prediction",
         },
         {
-          text: "Entropy Methods in Portfolio Construction",
+          text: "Entropy Methods in Portfolios",
           articleSlug: "entropy-methods-portfolio-construction",
         },
         {

@@ -23,7 +23,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "deep-research-microsoft-valuation-analysis",
         },
         {
-          text: "DCF Valuation Analysis of Google (Jun 2025)",
+          text: "GOOGL: DCF Valuation (Jun 2025)",
           articleSlug: "interactive-alphabet-googl-valuation-analysis",
         },
         {
@@ -39,7 +39,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "trend-vs-momentum-technical-analysis-guide",
         },
         {
-          text: "Technical Analysis: Performance & Practice",
+          text: "Technical Analysis in Practice",
           articleSlug: "technical-analysis-portfolio-management-performance-practice",
         },
         {
@@ -106,6 +106,14 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "druckenmiller-doctrine-asymmetric-returns",
         },
         {
+          text: "Druckenmiller's Q2 2025 AI Bets",
+          articleSlug: "druckenmiller-q2-2025-portfolio-analysis-ai-america-conviction",
+        },
+        {
+          text: "Druckenmiller's Q3 2025 Bessent Edge",
+          articleSlug: "druckenmiller-q3-2025-rotation-conviction-bessent-edge",
+        },
+        {
           text: "Druckenmiller's Q4 2025 Shift",
           articleSlug: "duquesne-paradigm-druckenmiller-portfolio-shift-q4-2025",
         },
@@ -114,7 +122,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "duquesne-family-office-q2-2026-13f-rotation",
         },
         {
-          text: "Druckenmiller's Q3 2026 Overhaul (Nov 2026)",
+          text: "Druckenmiller's Q3 2026 Overhaul",
           articleSlug: "stanley-druckenmiller-q3-2026-13f-portfolio-overhaul",
         },
         {
@@ -126,15 +134,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "ai-antithesis-deconstructing-michael-burry-q3-2025-pivot",
         },
         {
-          text: "David Tepper: The Contrarian Master (Nov 2025)",
+          text: "Tepper's Q3 2025 Contrarian Bets",
           articleSlug: "david-tepper-contrarian-master-q3-2025-portfolio",
         },
         {
-          text: "Appaloosa's Q2 2026 13F (Aug 2026)",
+          text: "Appaloosa's Q2 2026 13F",
           articleSlug: "appaloosa-management-q2-2026-13f-institutional-analysis",
         },
         {
-          text: "Buffett's Legacy and Succession (Nov 2025)",
+          text: "Buffett's Succession (Nov 2025)",
           articleSlug: "buffett-legacy-berkshire-succession",
         },
         {
@@ -173,7 +181,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "navigating-turning-tide-2025-macro-analysis",
         },
         {
-          text: "The Multi-Asset Inflection Point (Sep 2025)",
+          text: "Multi-Asset Inflection Point (Sep 2025)",
           articleSlug: "navigating-inflection-point-multi-asset-strategy-peak-valuations",
         },
         {
@@ -189,7 +197,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "navigating-rarified-air-quantitative-analysis-us-market-valuations",
         },
         {
-          text: "2025 Fixed Income Turning Point (Sep 2025)",
+          text: "Fixed Income Turning Point (Sep 2025)",
           articleSlug: "navigating-turning-point-2025-fixed-income-analysis",
         },
         {
@@ -209,7 +217,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "es-nq-futures-engine-room-global-economy",
         },
         {
-          text: "The 2025 Financial Market Retrospective (Dec 2025)",
+          text: "2025 Market Retrospective (Dec 2025)",
           articleSlug: "2025-financial-market-retrospective-seven-pivotal-events",
         },
         {
@@ -221,7 +229,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "warsh-era-reconfiguring-american-monetary-policy-supply-side-monetarism",
         },
         {
-          text: "Calculating the Investment Clock (Apr 2026)",
+          text: "Calculating the Investment Clock",
           articleSlug: "quantitative-guide-calculate-investment-clock",
         },
         {
@@ -233,7 +241,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "anatomy-transient-shock-stagflation-fears-2026-disinflationary-trend",
         },
         {
-          text: "2026 Fixed Income Turning Points (Aug 2026)",
+          text: "Fixed Income Turning Points (Aug 2026)",
           articleSlug: "quantitative-assessment-fixed-income-market-turning-points",
         },
         {
@@ -249,7 +257,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "ai-decompression-october-2026-credit-capex-microstructure",
         },
         {
-          text: "Nov 19 Drawdown: ANT IPO & NVDA (Nov 2026)",
+          text: "Anthropic IPO & NVDA Selloff (Nov 2026)",
           articleSlug: "wall-street-nov-19-drawdown-anthropic-ipo-nvidia",
         },
       ]
@@ -311,7 +319,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "quantitative-analysis-insurance-products-retirement-security",
         },
         {
-          text: "Tax-Loss Harvesting: Strategy & Execution",
+          text: "Tax-Loss Harvesting Strategy",
           articleSlug: "comprehensive-analysis-tax-loss-harvesting-strategy-execution-risk-mitigation",
         },
         {
@@ -354,7 +362,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "viral-videos-volatile-valuations-ai-algorithms-stock-picking",
         },
         {
-          text: "India's Option Market and Jane Street",
+          text: "Do Finfluencers Nail the Market?",
+          articleSlug: "ai-uncovers-truth-finfluencers-nail-market",
+        },
+        {
+          text: "5 AI Stock-Picking Traps",
+          articleSlug: "5-questions-to-ai-to-get-rich-until-you-wake-up",
+        },
+        {
+          text: "India's Options & Jane Street (Jul 2025)",
           articleSlug: "jane-street-precedent-market-manipulation",
         },
         {

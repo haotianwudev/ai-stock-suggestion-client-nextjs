@@ -42,7 +42,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
     studyGuide: {
       items: [
         {
-          text: "The Geometry of Rates: PCA in Fixed Income",
+          text: "PCA in Fixed Income",
           articleSlug: "geometry-of-rates-pca-fixed-income-markets",
         },
         {
@@ -118,7 +118,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "monte-carlo-advanced-stochastic-modeling-derivatives-cva",
         },
         {
-          text: "Barrier Options & the Reflection Principle",
+          text: "Barrier Options & Reflection Principle",
           articleSlug: "reflection-principle-barrier-option-valuation",
         },
         {
@@ -157,6 +157,10 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "autonomous-ai-agents-architecture-harness-engineering",
         },
         {
+          text: "The Agent-as-Compiler Framework",
+          articleSlug: "agent-compiler-framework-deterministic-ai-analysts",
+        },
+        {
           text: "Model Context Protocol",
           articleSlug: "model-context-protocol-quantitative-finance",
         },
@@ -193,12 +197,20 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "architecting-agentic-ai-quantitative-finance-wealth-management",
         },
         {
+          text: "Decoding an AI Agent Stock Analyst",
+          articleSlug: "sophie-youtube-introduction",
+        },
+        {
           text: "Interactive Financial Copilots",
           articleSlug: "building-interactive-financial-copilots-generative-ui-state-synchronization",
         },
         {
           text: "Architecting AI Agent Testing",
           articleSlug: "architecting-ai-agent-testing-quantitative-finance",
+        },
+        {
+          text: "Claude Code Financial Cheatsheet",
+          articleSlug: "claude-code-financial-cheatsheet-enterprise-reference",
         },
         {
           text: "The Primacy of Domain Knowledge",
@@ -256,7 +268,7 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "cross-currency-basis-squeeze",
         },
         {
-          text: "The Architecture of Private Credit",
+          text: "Private Credit",
           articleSlug: "architecture-private-credit-structural-mechanics-vulnerabilities",
         },
         {
@@ -264,15 +276,15 @@ export const topicsConfig: Record<string, TopicConfig> = {
           articleSlug: "hidden-mechanics-form-13f-disclosures-microstructure-copycat-economics-systemic-risk",
         },
         {
-          text: "Example: The 2026 South Korean Equity Crisis",
+          text: "Example: Korean Equity Crisis (Jul 2026)",
           articleSlug: "systemic-fragility-quantitative-contagion-2026-korean-crisis",
         },
         {
-          text: "Example: The June 2026 Cross-Asset Contagion",
+          text: "Example: Cross-Asset Contagion (Jun 2026)",
           articleSlug: "june-2026-cross-asset-contagion",
         },
         {
-          text: "Example: SpaceX Mega-IPO Systemic Risk Analysis",
+          text: "Example: SpaceX Mega-IPO Risk (Jul 2026)",
           articleSlug: "spacex-public-market-integration-systemic-risk-analysis",
         },
         {
